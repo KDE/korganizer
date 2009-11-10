@@ -201,6 +201,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     void setDateRange( const QDate &start, const QDate &end );
 
+    QDate startDate() const;
+    QDate endDate() const;
+
   public Q_SLOTS:
     /**
       Shows given incidences. Depending on the actual view it might not

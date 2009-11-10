@@ -31,6 +31,7 @@
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 
+#include <akonadi/kcal/calendarsearch.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/Incidence>
@@ -112,6 +113,17 @@ MonthView::MonthView( QWidget *parent )
 
   connect( mScene, SIGNAL(newEventSignal()),
            this, SIGNAL(newEventSignal()) );
+  updateConfig();
+}
+
+void MonthView::updateConfig() {
+  CalendarSearch::IncidenceTypes types;
+  if ( KOPrefs::instance()->showTodosMonthView() )
+    types |= CalendarSearch::Todos;
+  if ( KOPrefs::instance()->showJournalsMonthView() )
+    types |= CalendarSearch::Journals;
+  types |= CalendarSearch::Events;
+  calendarSearch()->setIncidenceTypes( types );
 }
 
 MonthView::~MonthView()
@@ -264,15 +276,13 @@ void MonthView::moveFwdMonth()
 
 void MonthView::moveStartDate( int weeks, int months )
 {
-  QDate startDate;
-  if ( weeks != 0 ) {
-    startDate = mStartDate.addDays( weeks * 7 );
-  }
-  if ( months != 0 ) {
-    startDate = mStartDate.addMonths( months );
-  }
-
-  setStartDate( startDate );
+  QDate start = startDate();
+  QDate end = endDate();
+  start = start.addDays( weeks * 7 );
+  end = end.addDays( weeks * 7 );
+  start = start.addMonths( months );
+  end = end.addMonths( months );
+  setDateRange( start, end );
 }
 
 void MonthView::showDates( const QDate &start, const QDate &end )

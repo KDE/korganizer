@@ -81,6 +81,8 @@ public:
   CollectionSelectionProxyModel* collectionSelectionModel;
   EntityModelStateSaver* stateSaver;
   QByteArray identifier;
+  QDate startDate;
+  QDate endDate;
   void setUpModels();
   void reconnectCollectionSelection();
 };
@@ -189,10 +191,24 @@ bool BaseView::hasConfigurationDialog() const
 
 void BaseView::setDateRange( const QDate& start, const QDate& end )
 {
+  if ( d->startDate == start && d->endDate == end )
+    return;
+  d->startDate = start;
+  d->endDate = end;
   showDates( start, end );
   const QPair<QDate,QDate> adjusted = actualDateRange( start, end );
   d->calendarSearch->setStartDate( KDateTime( adjusted.first ) );
   d->calendarSearch->setEndDate( KDateTime( adjusted.second ) );
+}
+
+QDate BaseView::startDate() const
+{
+  return d->startDate;
+}\
+
+QDate BaseView::endDate() const
+{
+  return d->endDate;
 }
 
 void BaseView::showConfigurationDialog( QWidget* )

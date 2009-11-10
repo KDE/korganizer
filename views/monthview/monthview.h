@@ -86,6 +86,8 @@ class MonthView : public KOEventView
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );
 
+    /* reimp */ void updateConfig();
+
   protected slots:
     void moveBackMonth();
     void moveBackWeek();
