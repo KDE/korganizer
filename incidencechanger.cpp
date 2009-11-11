@@ -431,6 +431,8 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Coll
   //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
   item.setMimeType( QString::fromLatin1("application/x-vnd.akonadi.calendar.%1").arg(QLatin1String(incidence->type().toLower())) ); //PENDING(AKONADI_PORT) shouldn't be hardcoded?
   ItemCreateJob *job = new ItemCreateJob( item, collection );
+  // The connection needs to be queued to be sure addIncidenceFinished is called after the kjob finished
+  // it's eventloop. That's needed cause KOGroupware uses synchron job->exec() calls.
   connect( job, SIGNAL( result(KJob*)), this, SLOT( addIncidenceFinished(KJob*) ), Qt::QueuedConnection );
   return true;
 }
