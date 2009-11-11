@@ -1359,7 +1359,7 @@ bool KOAgendaItem::event( QEvent *event )
       QToolTip::showText(
         helpEvent->globalPos(),
         IncidenceFormatter::toolTipStr(
-          mIncidence.url().url(), Akonadi::incidence( mIncidence ).get(), mDate, true, KOPrefs::instance()->timeSpec() ),
+        Akonadi::displayName( mIncidence.parentCollection() ), Akonadi::incidence( mIncidence ).get(), mDate, true, KOPrefs::instance()->timeSpec() ),
         this );
     }
   }
