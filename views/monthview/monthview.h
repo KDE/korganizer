@@ -75,14 +75,6 @@ class MonthView : public KOEventView
   public slots:
     virtual void updateView();
 
-    /**
-     * Tells the month view which month should be displayed.
-     * "start" is used to get the month
-     *
-     * "end" is never used.
-     */
-    virtual void showDates( const QDate &start, const QDate &end );
-
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );
@@ -107,6 +99,11 @@ class MonthView : public KOEventView
     /* reimp */ void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
     /* reimp */ void incidencesChanged( const Akonadi::Item::List& incidences );
     /* reimp */ QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end ) const;
+
+    /**
+     * @deprecated
+     */
+    void showDates( const QDate &start, const QDate &end );
 
   private slots:
     // Compute and update the whole view
