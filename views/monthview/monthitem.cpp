@@ -562,7 +562,7 @@ QString IncidenceMonthItem::toolTipText() const
     date = monthScene()->mMonthView->selectedDates().first();
   }
   return IncidenceFormatter::toolTipStr(
-         mIncidence.url().url(), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
+           Akonadi::displayName( mIncidence.parentCollection() ), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

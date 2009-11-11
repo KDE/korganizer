@@ -33,8 +33,6 @@
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
-#include <Akonadi/EntityDisplayAttribute>
-
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
@@ -131,8 +129,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     const Collection::List collections = colSel->selectedCollections();
 
     Q_FOREACH( const Collection &collection, collections ) {
-      const EntityDisplayAttribute* attr = collection.attribute<EntityDisplayAttribute>();
-      item = new TimelineItem( ( attr && !attr->displayName().isEmpty() ) ? attr->displayName() : collection.name(), calendar(), mGantt );
+      item = new TimelineItem( Akonadi::displayName( collection ), calendar(), mGantt );
       const QColor resourceColor = KOHelper::resourceColor( collection );
       if ( resourceColor.isValid() )
         item->setColors( resourceColor, resourceColor, resourceColor );

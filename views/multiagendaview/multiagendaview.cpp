@@ -26,11 +26,11 @@
 
 #include "ui_multiagendaviewconfigwidget.h"
 
-#include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeView>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
+#include <akonadi/kcal/utils.h>
 
 
 #include <KGlobalSettings>
@@ -396,8 +396,7 @@ KOAgendaView* MultiAgendaView::createView( const QString &title )
 
 void MultiAgendaView::addView( const Collection &collection )
 {
-  const EntityDisplayAttribute* attr = collection.attribute<EntityDisplayAttribute>();
-  KOAgendaView* av = createView( ( attr && !attr->displayName().isEmpty() ) ? attr->displayName() : collection.name() );
+  KOAgendaView* av = createView( Akonadi::displayName( collection ) );
   av->setCollection( collection.id() );
 }
 
