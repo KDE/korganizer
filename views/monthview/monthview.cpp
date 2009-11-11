@@ -1,4 +1,5 @@
 /*
+
   This file is part of KOrganizer.
 
   Copyright (c) 2008 Bruno Virlet <bruno.virlet@gmail.com>
@@ -115,6 +116,7 @@ MonthView::MonthView( QWidget *parent )
            this, SIGNAL(newEventSignal()) );
   mReloadTimer.setSingleShot( true );
   connect( &mReloadTimer, SIGNAL(timeout()), this, SLOT(reloadIncidences()) );
+  mReloadTimer.start( 50 );
   updateConfig();
 }
 
