@@ -92,7 +92,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QStringList mimety
   connect(mCalSelector, SIGNAL(currentChanged(Akonadi::Collection)), SLOT(slotSelectedCollectionChanged()));
   connect(mCalSelector->model(), SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(slotSelectedCollectionChanged()));
   connect(mCalSelector->model(), SIGNAL(rowsRemoved(QModelIndex,int,int)), SLOT(slotSelectedCollectionChanged()));
-  connect(mCalSelector->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)()), SLOT(slotSelectedCollectionChanged()));
+  connect(mCalSelector->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)), SLOT(slotSelectedCollectionChanged()));
   connect(mCalSelector->model(), SIGNAL(modelReset()), SLOT(slotSelectedCollectionChanged()));
   //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
   QLabel *callabel = new QLabel( i18n("Calendar:"), mainWidget() );
