@@ -54,6 +54,8 @@ class IncidenceChanger::Private {
 public:
   QList<Akonadi::Item::Id> m_changes; //list of item ids that are modified atm
   KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
+  Item m_itemBeingChanged;
+  QHash<const KJob*,Item> oldItemByJob;
 };
 
 IncidenceChanger::IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent )
@@ -78,6 +80,7 @@ bool IncidenceChanger::beginChange( const Item &item )
   Q_ASSERT( ! d->m_changes.contains( item.id() ) ); // no nested changes allowed
   d->m_changes.push_back( item.id() );
   d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
+  d->m_itemBeingChanged = item;
   return true;
 }
 
@@ -156,6 +159,8 @@ bool IncidenceChanger::endChange( const Item &item )
   KCal::ComparisonVisitor v;
   Incidence::Ptr incidencePtr( d->m_incidenceBeingChanged );
   d->m_incidenceBeingChanged.reset();
+  const Item oldItem = d->m_itemBeingChanged;
+  d->m_itemBeingChanged = Item();
   if ( v.compare( incidence.get(), incidencePtr.get() ) ) {
     kDebug()<<"Incidence is unmodified";
     return true;
@@ -163,6 +168,7 @@ bool IncidenceChanger::endChange( const Item &item )
 
   kDebug() << "modify id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   ItemModifyJob *job = new ItemModifyJob( item );
+  d->oldItemByJob.insert( job, oldItem );
   connect( job, SIGNAL(result( KJob*)), this, SLOT(changeIncidenceFinished(KJob*)) );
   return true;
 }
@@ -196,7 +202,10 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
   const ItemModifyJob* job = qobject_cast<const ItemModifyJob*>( j );
   Q_ASSERT( job );
 
-  Incidence::Ptr tmp = Akonadi::incidence( job->item() );
+  const Item oldItem = d->oldItemByJob.value( job );
+  d->oldItemByJob.remove( job );
+  const Item newItem = job->item();
+  Incidence::Ptr tmp = Akonadi::incidence( newItem );
   Q_ASSERT( tmp );
 
   if ( job->error() ) {
@@ -207,6 +216,8 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
                               tmp->summary(),
                               job->errorString( )) );
   }
+  else
+    emit incidenceChanged( oldItem, newItem );
 }
 
 void IncidenceChanger::deleteIncidenceFinished( KJob* j )
@@ -373,9 +384,6 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, cons
                                         KOGlobals::WhatChanged action,
                                         QWidget *parent )
 {
-  Akonadi::Item oldItem;
-  oldItem.setPayload(oldinc);
-
   const Incidence::Ptr newinc = Akonadi::incidence( newItem );
 
   kDebug() << "for incidence \"" << newinc->summary() << "\""
@@ -401,9 +409,7 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, cons
         newinc.get(), KOGlobals::INCIDENCEEDITED, attendeeStatusChanged );
     }
 
-    if ( success ) {
-      emit incidenceChanged( oldItem, newItem, action );
-    } else {
+    if ( !success ) {
       kDebug() << "Changing incidence failed. Reverting changes.";
       assignIncidence( newinc.get(), oldinc.get() );
       return false;
