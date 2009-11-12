@@ -193,8 +193,10 @@ bool BaseView::hasConfigurationDialog() const
 
 void BaseView::setDateRange( const KDateTime& start, const KDateTime& end )
 {
+#if 0 //AKONADI_PORT the old code called showDates() (below), which triggers a repaint, which the old code relies on
   if ( d->startDateTime == start && d->endDateTime == end )
     return;
+#endif
   d->startDateTime = start;
   d->endDateTime = end;
   showDates( start.date(), end.date() );
