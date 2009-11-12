@@ -494,7 +494,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showMonthView()) );
 
-  action = new KAction( KIcon( "view-calendar-week" ), i18n( "&Agenda" ), this );
+  action = new KAction( KIcon( "view-calendar-agenda" ), i18n( "&Agenda" ), this );
   mACollection->addAction( "view_agenda", action );
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showAgendaView()) );
