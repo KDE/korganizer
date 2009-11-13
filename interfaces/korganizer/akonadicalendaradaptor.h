@@ -169,7 +169,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
 
     virtual Alarm::List alarms( const KDateTime &from, const KDateTime &to )
     {
-      return itemsToIncidences<Alarm>( mCalendar->alarms( from, to ) );
+      return mCalendar->alarms( from, to );
     }
 
   private:
