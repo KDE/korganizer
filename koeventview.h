@@ -102,7 +102,7 @@ class KOEventView : public KOrg::BaseView
      * Sets the QObject that will receive key events that were made
      * while the new event dialog was still being created.
      */
-    void setTypeAheadReceiver( QObject *o ) { mTypeAheadReceiver = o; }
+    void setTypeAheadReceiver( QObject *o );
 
     /*
      * Returns true if the view item, that represents a to-do, should use the "completed"
@@ -118,12 +118,7 @@ class KOEventView : public KOrg::BaseView
 
   public slots:
 
-    /*
-     * This is called when the new event dialog is shown. It sends
-     * all events in mTypeAheadEvents to the receiver.
-     */
-    void finishTypeAhead();
-
+    void focusChanged( QWidget*, QWidget* );
     /**
      Perform the default action for an incidence, e.g. open the event editor,
      when double-clicking an event in the agenda view.
@@ -157,6 +152,13 @@ class KOEventView : public KOrg::BaseView
 
   protected:
     Akonadi::Item mCurrentIncidence;  // Incidence selected e.g. for a context menu
+
+  private:
+    /*
+     * This is called when the new event dialog is shown. It sends
+     * all events in mTypeAheadEvents to the receiver.
+     */
+    void finishTypeAhead();
 
   private:
 

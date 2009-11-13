@@ -240,8 +240,6 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOEventView *view
 {
   if ( editor && view ) {
     view->setTypeAheadReceiver( editor->typeAheadReceiver() );
-    connect( editor, SIGNAL(focusReceivedSignal()),
-             view, SLOT(finishTypeAhead()) );
   }
 }
 

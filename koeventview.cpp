@@ -51,6 +51,11 @@ KOEventView::KOEventView( QWidget *parent )
   mReturnPressed = false;
   mTypeAhead = false;
   mTypeAheadReceiver = 0;
+
+  //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(), which triggered finishTypeAhead.
+  //But the global focus widget in QApplication is changed later, thus subsequent keyevents still went to this view, triggering another editor, for each keypress
+  //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112 -Frank)
+  connect( QApplication::instance(), SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)) );
 }
 
 //---------------------------------------------------------------------------
@@ -267,6 +272,17 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
     }
   }
   return false;
+}
+
+void KOEventView::setTypeAheadReceiver( QObject *o )
+{
+  mTypeAheadReceiver = o;
+}
+
+void KOEventView::focusChanged( QWidget*, QWidget* now )
+{
+  if ( mTypeAhead && now && now == mTypeAheadReceiver )
+    finishTypeAhead();
 }
 
 void KOEventView::finishTypeAhead()
