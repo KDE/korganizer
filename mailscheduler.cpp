@@ -197,9 +197,6 @@ bool MailScheduler::acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTI
       virtual bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients ) {
         return m_scheduler->performTransaction( incidence, method, recipients );
       }
-      virtual bool acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, KCal::ScheduleMessage::Status status, const QString &email ) {
-        return m_scheduler->acceptTransaction( incidence, method, status, email );
-      }
       virtual bool acceptCounterProposal( KCal::Incidence *incidence ) {
         return m_scheduler->acceptCounterProposal( incidence );
       }
