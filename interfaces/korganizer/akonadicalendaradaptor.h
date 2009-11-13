@@ -43,6 +43,8 @@
 namespace KOrg {
 
 template<class T> inline T* itemToIncidence(const Akonadi::Item &item) {
+  if ( !item.hasPayload< boost::shared_ptr<T> >() )
+    return 0;
   return item.payload< boost::shared_ptr<T> >().get();
 }
 
