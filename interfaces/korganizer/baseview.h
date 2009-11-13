@@ -32,6 +32,7 @@
 #include <kdebug.h>
 #include <kmessagebox.h>
 
+#include <Akonadi/Collection>
 #include <Akonadi/Item>
 
 #include <QtCore/QPair>
@@ -314,26 +315,26 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void endMultiModify();
 
     /**
-     * instructs the receiver to create a new event.  Doesn't make
+     * instructs the receiver to create a new event in given collection. Doesn't make
      * sense to connect to more than one receiver.
      */
-    void newEventSignal();
+    void newEventSignal( const Akonadi::Collection::List & );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( const QDate & );
+    void newEventSignal( const Akonadi::Collection::List &, const QDate & );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( const QDateTime & );
+    void newEventSignal( const Akonadi::Collection::List &, const QDateTime & );
     /**
      * instructs the receiver to create a new event, with the specified
      * beginning end ending times.  Doesn't make sense to connect to more
      * than one receiver.
      */
-    void newEventSignal( const QDateTime &, const QDateTime & );
+    void newEventSignal( const Akonadi::Collection::List &, const QDateTime &, const QDateTime & );
 
     void newTodoSignal( const QDate & );
     void newSubTodoSignal( const Akonadi::Item & );

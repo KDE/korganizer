@@ -1664,6 +1664,11 @@ void KOAgendaView::setCollection( Collection::Id coll )
   mCollectionId = coll;
 }
 
+Akonadi::Collection::Id KOAgendaView::collection() const
+{
+  return mCollectionId;
+}
+
 bool KOAgendaView::filterByCollectionSelection( const Item &incidence )
 {
   if ( customCollectionSelection() ) {

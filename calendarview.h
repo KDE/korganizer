@@ -287,15 +287,20 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void connectIncidenceEditor( KOIncidenceEditor * );
 
+    /** create new event without having a hint for the calendar. */
+    void newEvent();
+    void newEvent( const QDateTime & );
+
     /** create new event without having a date hint. Takes current date as
      default hint. */
-    void newEvent();
+    void newEvent( const Akonadi::Collection::List &selectedCollections );
 
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
-    void newEvent( const QDate &startDt );
-    void newEvent( const QDateTime &startDt );
-    void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay=false );
+    void newEvent( const Akonadi::Collection::List &selectedCollections, const QDate &startDt );
+    void newEvent( const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt );
+    void newEvent( const Akonadi::Collection::List &selectedCollections,
+                   const QDateTime &startDt, const QDateTime &EndDt, bool allDay=false );
 
     /**
       Create new Event from given summary, description, attachment list and

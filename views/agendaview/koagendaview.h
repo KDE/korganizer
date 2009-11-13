@@ -146,6 +146,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::Cale
     /** Show only incidences from the given collection selection. */
 //    void setCollectionSelection( CollectionSelection* selection );
     void setCollection( Akonadi::Collection::Id id );
+    Akonadi::Collection::Id collection() const;
 
     KOAgenda *agenda() const { return mAgenda; }
     QSplitter *splitter() const { return mSplitterAgenda; }

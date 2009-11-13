@@ -25,12 +25,14 @@
 
 #include "koeventview.h"
 #include "kocore.h"
+#include "views/agendaview/koagendaview.h" // TODO AKONADI_PORT
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 #include "komessagebox.h"
 
 #include <Akonadi/Item>
 
+#include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
 #include <QApplication>
@@ -221,7 +223,15 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
       mReturnPressed = true;
     } else if ( ke->type() == QEvent::KeyRelease ) {
       if ( mReturnPressed ) {
-        emit newEventSignal();
+        // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
+        if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
+          if ( view->collection() >= 0 )
+            emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
+          else
+            emit newEventSignal( collectionSelection()->selectedCollections() );
+        } else
+          emit newEventSignal( collectionSelection()->selectedCollections() );
+
         mReturnPressed = false;
         return true;
       } else {
@@ -266,7 +276,14 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
                        static_cast<ushort>( ke->count() ) ) );
       if ( !mTypeAhead ) {
         mTypeAhead = true;
-        emit newEventSignal();
+        // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
+        if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
+          if ( view->collection() >= 0 )
+            emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
+          else
+            emit newEventSignal( collectionSelection()->selectedCollections() );
+        } else
+          emit newEventSignal( collectionSelection()->selectedCollections() );
       }
       return true;
     }

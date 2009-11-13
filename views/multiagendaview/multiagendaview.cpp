@@ -204,8 +204,8 @@ void MultiAgendaView::deleteViews()
 void MultiAgendaView::setupViews()
 {
   foreach ( KOAgendaView *agenda, mAgendaViews ) {
-    connect( agenda, SIGNAL(newEventSignal()),
-             SIGNAL(newEventSignal()) );
+    connect( agenda, SIGNAL(newEventSignal(Akonadi::Collection::List)),
+             SIGNAL(newEventSignal(Akonadi::Collection::List)) );
     connect( agenda, SIGNAL(editIncidenceSignal(Akonadi::Item)),
              SIGNAL(editIncidenceSignal(Akonadi::Item)) );
     connect( agenda, SIGNAL(showIncidenceSignal(Akonadi::Item)),
@@ -230,12 +230,14 @@ void MultiAgendaView::setupViews()
              SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
     connect( agenda, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item, const QDate&)),
              SIGNAL(dissociateOccurrencesSignal(Akonadi::Item, const QDate&)) );
-    connect( agenda, SIGNAL(newEventSignal(const QDate&)),
-             SIGNAL(newEventSignal(const QDate&)) );
-    connect( agenda, SIGNAL(newEventSignal(const QDateTime&)),
-             SIGNAL(newEventSignal(const QDateTime&)) );
-    connect( agenda, SIGNAL(newEventSignal(const QDateTime&, const QDateTime&)),
-             SIGNAL(newEventSignal(const QDateTime&, const QDateTime&)) );
+
+    connect( agenda, SIGNAL(newEventSignal(Akonadi::Collection::List,const QDate&)),
+             SIGNAL(newEventSignal(Akonadi::Collection::List,const QDate&)) );
+    connect( agenda, SIGNAL(newEventSignal(Akonadi::Collection::List,const QDateTime&)),
+             SIGNAL(newEventSignal(Akonadi::Collection::List,const QDateTime&)) );
+    connect( agenda, SIGNAL(newEventSignal(Akonadi::Collection::List,const QDateTime&, const QDateTime&)),
+             SIGNAL(newEventSignal(Akonadi::Collection::List,const QDateTime&, const QDateTime&)) );
+
     connect( agenda, SIGNAL(newTodoSignal(const QDate&)),
              SIGNAL(newTodoSignal(const QDate&)) );
 

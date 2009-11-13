@@ -973,23 +973,36 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
 
 void CalendarView::newEvent()
 {
-  newEvent( QDateTime(), QDateTime() );
-}
-
-void CalendarView::newEvent( const QDate &dt )
-{
-  QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
-  return newEvent( QDateTime( dt ), QDateTime() );
+  newEvent( Akonadi::Collection::List(), QDateTime(), QDateTime() );
 }
 
 void CalendarView::newEvent( const QDateTime &startDt )
 {
-  return newEvent( startDt, QDateTime() );
+  newEvent( Akonadi::Collection::List(), startDt, QDateTime() );
 }
 
-void CalendarView::newEvent( const QDateTime &startDt, const QDateTime &endDt, bool allDay )
+void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections )
+{
+  newEvent( selectedCollections, QDateTime(), QDateTime() );
+}
+
+void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDate &dt )
+{
+  QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
+  return newEvent( selectedCollections, QDateTime( dt ), QDateTime() );
+}
+
+void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
+{
+  return newEvent( selectedCollections, startDt, QDateTime() );
+}
+
+void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
+                              const QDateTime &startDt, const QDateTime &endDt, bool allDay )
 {
   KOEventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
+  if ( !selectedCollections.isEmpty() )
+    eventEditor->selectCollection( selectedCollections.first() );
   eventEditor->show();
 }
 
@@ -1104,7 +1117,9 @@ void CalendarView::newSubTodo( const Item &parentEvent )
 void CalendarView::newFloatingEvent()
 {
   QDate date = activeDate();
-  newEvent( QDateTime( date, QTime( 12, 0, 0 ) ),
+  // TODO_BERTJAN: Find out from where this is called and see if we can get a reasonable default collection
+  newEvent( Akonadi::Collection::List(),
+            QDateTime( date, QTime( 12, 0, 0 ) ),
             QDateTime( date, QTime( 12, 0, 0 ) ), true );
 }
 
@@ -2363,6 +2378,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
 
 void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
 {
+  // TODO_BERTJAN: Remove, should be set already at this point.
   if ( currentView()->collectionSelection()->hasSelection() )
     editor->selectCollection( currentView()->collectionSelection()->selectedCollections().first() );
 

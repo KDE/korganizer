@@ -225,7 +225,7 @@ bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bo
 void KOTimelineView::newEventWithHint( const QDateTime &dt )
 {
   mHintDate = dt;
-  emit newEventSignal( dt );
+  emit newEventSignal( collectionSelection()->selectedCollections(), dt );
 }
 
 TimelineItem *KOTimelineView::calendarItemForIncidence( const Item &incidence )
