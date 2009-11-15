@@ -50,7 +50,8 @@ if(KMAIL_SUPPORTED)
                       ${CMAKE_SOURCE_DIR}/korganizer/printing
                       ${CMAKE_SOURCE_DIR}/kdgantt1
                       ${CMAKE_BINARY_DIR}/libkdepim
-                      ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
+                      ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR}
+                      ${Boost_INCLUDE_DIRS} )
 
   add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
