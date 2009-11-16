@@ -394,8 +394,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
     }
     // Send the mail
     MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
-    scheduler.performTransaction( incidence, method );
-    return true;
+    return scheduler.performTransaction( incidence, method );
   } else if ( rc == KMessageBox::No ) {
     return true;
   } else {
