@@ -394,7 +394,12 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
     }
     // Send the mail
     MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
-    return scheduler.performTransaction( incidence, method );
+    if( scheduler.performTransaction( incidence, method ) )
+      return true;
+    rc = KMessageBox::questionYesNo(
+           parent, i18n( "Sending group scheduling email failed." ), i18n( "Group Scheduling Email" ),
+           KGuiItem( i18n( "Abort Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+    return rc == KMessageBox::No;
   } else if ( rc == KMessageBox::No ) {
     return true;
   } else {
