@@ -976,9 +976,9 @@ void CalendarView::newEvent()
   newEvent( Akonadi::Collection::List(), QDateTime(), QDateTime() );
 }
 
-void CalendarView::newEvent( const QDateTime &startDt )
+void CalendarView::newEvent( const QDate &startDt )
 {
-  newEvent( Akonadi::Collection::List(), startDt, QDateTime() );
+  newEvent( Akonadi::Collection::List(), QDateTime( startDt ), QDateTime() );
 }
 
 void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections )

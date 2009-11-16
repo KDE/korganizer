@@ -289,7 +289,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** create new event without having a hint for the calendar. */
     void newEvent();
-    void newEvent( const QDateTime & );
+    void newEvent( const QDate & );
 
     /** create new event without having a date hint. Takes current date as
      default hint. */

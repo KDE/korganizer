@@ -266,7 +266,9 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
   agenda->setCalendar( calendar() );
 
   // Create/Show/Edit/Delete Event
-  connect( agenda, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()) );
+  // Is the newEventSignal even emitted? It doesn't seem to reach handleNewEventRequest()
+  // at least.
+  connect( agenda, SIGNAL(newEventSignal()), SLOT(handleNewEventRequest()) );
 
   connect( agenda, SIGNAL(newStartSelectSignal()),
            otherAgenda, SLOT(clearSelection()) );
@@ -1588,6 +1590,11 @@ void KOAgendaView::newTimeSpanSelectedAllDay( const QPoint &start, const QPoint 
 {
   newTimeSpanSelected( start, end );
   mTimeSpanInAllDay = true;
+}
+
+void KOAgendaView::handleNewEventRequest()
+{
+  emit newEventSignal( Akonadi::Collection::List() << Collection( collection() ) );
 }
 
 void KOAgendaView::newTimeSpanSelected( const QPoint &start, const QPoint &end )

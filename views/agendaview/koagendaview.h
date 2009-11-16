@@ -245,6 +245,8 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::Cale
     /** Updates data for selected timespan for all day event*/
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
+    void handleNewEventRequest();
+
   private:
 
     bool filterByCollectionSelection( const Akonadi::Item &incidence );
