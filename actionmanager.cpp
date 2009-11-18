@@ -509,7 +509,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTodoView()) );
 
-  action = new KAction( KIcon( "view-pim-journal" ), i18n( "&Journal" ), this );
+  action = new KAction( KIcon( "view-calendar-journal" ), i18n( "&Journal" ), this );
   mACollection->addAction( "view_journal", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showJournalView()) );

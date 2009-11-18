@@ -41,8 +41,7 @@
 #include "korganizer.h"
 #include "akonadicalendar.h"
 
-#include <kabc/stdaddressbook.h>
-#include <kabc/addressee.h>
+#include <akonadi/contact/contactsearchjob.h>
 
 #include <kcal/calendar.h>
 #include <kcal/incidencebase.h>
@@ -441,11 +440,15 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email ) const
     return KUrl( url );
   }
   // Try with the url configurated by preferred email in kcontactmanager
-  KABC::Addressee::List list= KABC::StdAddressBook::self( true )->findByEmail( email );
-  KABC::Addressee::List::Iterator it;
+  Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob();
+  job->setQuery( Akonadi::ContactSearchJob::Email, email );
+  if ( !job->exec() )
+    return KUrl();
+
   QString pref;
-  for ( it = list.begin(); it != list.end(); ++it ) {
-    pref = (*it).preferredEmail();
+  const KABC::Addressee::List contacts = job->contacts();
+  foreach ( const KABC::Addressee &contact, contacts ) {
+    pref = contact.preferredEmail();
     if ( !pref.isEmpty() && pref != email ) {
       kDebug() << "Preferred email of" << email << "is" << pref;
       group = cfg.group( pref );
