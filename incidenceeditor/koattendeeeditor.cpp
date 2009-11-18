@@ -39,6 +39,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QTimer>
+#include <QEvent>
 
 KOAttendeeEditor::KOAttendeeEditor( QWidget *parent )
   : QWidget( parent ), mDisableItemUpdate( true )
