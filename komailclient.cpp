@@ -57,8 +57,8 @@
 #include <Akonadi/CollectionCreateJob>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstance>
-#include <akonadi/kmime/specialcollections.h>
-#include <akonadi/kmime/specialcollectionsrequestjob.h>
+#include <akonadi/kmime/specialmailcollections.h>
+#include <akonadi/kmime/specialmailcollectionsrequestjob.h>
 
 #include <KApplication>
 #include <KDebug>
@@ -229,9 +229,9 @@ bool KOMailClient::send( const Identity &identity,
 
   // First we need to check if the default outbox is known already. If not then we need to fetch it
   // using a SpecialCollectionsRequestJob to have the outbox ready.
-  if( ! Akonadi::SpecialCollections::self()->hasDefaultCollection( Akonadi::SpecialCollections::Outbox ) ) {
-    Akonadi::SpecialCollectionsRequestJob *rjob = new Akonadi::SpecialCollectionsRequestJob( this );
-    rjob->requestDefaultCollection( Akonadi::SpecialCollections::Outbox );
+  if( ! Akonadi::SpecialMailCollections::self()->hasDefaultCollection( Akonadi::SpecialMailCollections::Outbox ) ) {
+    Akonadi::SpecialMailCollectionsRequestJob *rjob = new Akonadi::SpecialMailCollectionsRequestJob( this );
+    rjob->requestDefaultCollection( Akonadi::SpecialMailCollections::Outbox );
     if( ! rjob->exec()) {
       kWarning() << "Error requesting outbox folder:" << rjob->errorText();
       return false;
@@ -239,8 +239,8 @@ bool KOMailClient::send( const Identity &identity,
   }
 
   // Outbox should be ready now.
-  Q_ASSERT( Akonadi::SpecialCollections::self()->hasDefaultCollection( Akonadi::SpecialCollections::Outbox ) );
-  Akonadi::Collection outbox = Akonadi::SpecialCollections::self()->defaultCollection( Akonadi::SpecialCollections::Outbox );
+  Q_ASSERT( Akonadi::SpecialMailCollections::self()->hasDefaultCollection( Akonadi::SpecialMailCollections::Outbox ) );
+  Akonadi::Collection outbox = Akonadi::SpecialMailCollections::self()->defaultCollection( Akonadi::SpecialMailCollections::Outbox );
   Q_ASSERT( outbox.isValid() );
 
   // Now build the message we like to send. The message KMime::Message::Ptr instance
