@@ -37,6 +37,7 @@
 #include "searchdialog.h"
 
 #include <libkdepim/categoryeditdialog.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <Akonadi/Item>
 
@@ -285,8 +286,10 @@ void KODialogManager::updateSearchDialog()
 void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
+
+    KPIM::CategoryConfig* cc = new KPIM::CategoryConfig( KOPrefs::instance(), this );
     mCategoryEditDialog =
-      new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
+      new KPIM::CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );
     mCategoryEditDialog->setHelp( "categories-view", "korganizer" );
     connect( mMainView, SIGNAL(categoriesChanged()),

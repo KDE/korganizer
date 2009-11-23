@@ -341,8 +341,9 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
 
 void KOEditorGeneral::selectCategories()
 {
+  KPIM::CategoryConfig cc( KOEditorConfig::instance()->config() );
   KPIM::CategorySelectDialog *categoryDialog =
-    new KPIM::CategorySelectDialog( KOEditorConfig::instance(), mCategoriesButton );
+    new KPIM::CategorySelectDialog( &cc, mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
   categoryDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
   categoryDialog->setSelected( mCategories );

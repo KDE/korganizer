@@ -28,6 +28,7 @@
 #include "koprefs.h"
 
 #include <libkdepim/categoryselectdialog.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <KCal/CalFilter>
 
@@ -280,7 +281,8 @@ void FilterEdit::editCategorySelection()
   }
 
   if ( !mCategorySelectDialog ) {
-    mCategorySelectDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
+    KPIM::CategoryConfig* cc = new KPIM::CategoryConfig( KOPrefs::instance(), this );
+    mCategorySelectDialog = new KPIM::CategorySelectDialog( cc, this );
     mCategorySelectDialog->setHelp( "categories-view", "korganizer" );
     mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
     connect( mCategorySelectDialog, SIGNAL(categoriesSelected(const QStringList&)),

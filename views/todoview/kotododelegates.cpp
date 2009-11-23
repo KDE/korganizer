@@ -33,6 +33,7 @@
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryhierarchyreader.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <kcal/calfilter.h>
 
@@ -335,7 +336,8 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
       categories = filter->categoryList();
       categories.sort();
     } else {
-      categories = KOPrefs::instance()->mCustomCategories;
+      KPIM::CategoryConfig cc( KOPrefs::instance() );
+      categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();
       filterCategories.sort();

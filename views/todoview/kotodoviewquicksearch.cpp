@@ -31,10 +31,9 @@
 
 #include <libkdepim/categoryhierarchyreader.h>
 #include <libkdepim/kcheckcombobox.h>
-using namespace KPIM;
+#include <libkdepim/kpimprefs.h>
 
 #include <KCal/CalFilter>
-using namespace KCal;
 
 #include <KLineEdit>
 
@@ -45,6 +44,9 @@ using namespace KCal;
 #include <QStandardItem>
 #include <QAbstractItemView>
 #include <QHBoxLayout>
+
+using namespace KPIM;
+using namespace KCal;
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( KOrg::AkonadiCalendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
@@ -104,7 +106,8 @@ void KOTodoViewQuickSearch::fillCategories()
       categories = filter->categoryList();
       categories.sort();
     } else {
-      categories = KOPrefs::instance()->mCustomCategories;
+      KPIM::CategoryConfig cc( KOPrefs::instance() );
+      categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();
       filterCategories.sort();

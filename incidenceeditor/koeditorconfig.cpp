@@ -39,8 +39,7 @@ class KOEditorConfig::Private
 KOEditorConfig *KOEditorConfig::Private::config = 0;
 
 KOEditorConfig::KOEditorConfig()
-  : KPIM::KPimPrefs()
-  , d(new Private)
+  : d(new Private)
 {
 }
 
@@ -51,8 +50,6 @@ KOEditorConfig::~KOEditorConfig()
 
 KOEditorConfig* KOEditorConfig::instance()
 {
-  if( ! Private::config)
-    setKOEditorConfig(new KOEditorConfig());
   return Private::config;
 }
 

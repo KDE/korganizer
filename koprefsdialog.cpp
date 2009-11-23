@@ -30,6 +30,7 @@
 #include "ui_kogroupwareprefspage.h"
 
 #include <libkdepim/ktimeedit.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <KCal/CalendarResources>
 
@@ -711,7 +712,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   unsetCategoryColor->label()->setToolTip( unsetCategoryColor->button()->toolTip() );
 
   mCategoryCombo = new KComboBox( categoryGroup );
-  mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
+  mCategoryCombo->addItems( KPIM::CategoryConfig( KOPrefs::instance() ).customCategories() );
   mCategoryCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select here the event category you want to modify. "
@@ -829,7 +830,7 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
 void KOPrefsDialogColorsAndFonts::updateCategories()
 {
   mCategoryCombo->clear();
-  mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
+  mCategoryCombo->addItems( KPIM::CategoryConfig( KOPrefs::instance() ).customCategories() );
   updateCategoryColor();
 }
 

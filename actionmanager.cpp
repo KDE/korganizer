@@ -108,6 +108,11 @@ class KOrganizerEditorConfig : public KOEditorConfig
     explicit KOrganizerEditorConfig() : KOEditorConfig() {}
     virtual ~KOrganizerEditorConfig() {}
 
+    virtual KConfigSkeleton* config() const
+    {
+      return KOPrefs::instance();
+    }
+
     virtual QString fullName() const {
       return KOPrefs::instance()->fullName();
     }

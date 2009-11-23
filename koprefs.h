@@ -54,7 +54,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     void usrWriteConfig();
 
   protected:
-    void setCategoryDefaults();
     void setTimeZoneDefault();
 
     /** Fill empty mail fields with default values. */

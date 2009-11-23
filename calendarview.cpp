@@ -77,6 +77,8 @@
 
 #include <KPIMIdentities/IdentityManager>
 
+#include <libkdepim/kpimprefs.h>
+
 #include <KDialog>
 #include <KFileDialog>
 #include <KNotification>
@@ -2484,14 +2486,17 @@ void CalendarView::updateCategories()
 {
   QStringList allCats( AkonadiCalendar::categories( calendar() ) );
   allCats.sort();
-  QStringList categories( KOPrefs::instance()->mCustomCategories );
+
+  KPIM::CategoryConfig cc( KOPrefs::instance() );
+
+  QStringList categories( cc.customCategories() );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
     if ( !categories.contains( *si ) ) {
       categories.append( *si );
     }
   }
-  KOPrefs::instance()->mCustomCategories = categories;
-  KOPrefs::instance()->writeConfig();
+  cc.setCustomCategories( categories );
+  cc.writeConfig();
   // Make the category editor update the list!
   emit categoriesChanged();
 }

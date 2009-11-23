@@ -40,6 +40,7 @@
 #include "kotodoviewview.h"
 
 #include <libkdepim/kdatepickerpopup.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -698,13 +699,12 @@ QMenu *KOTodoView::createCategoryPopupMenu()
   QStringList checkedCategories = todo->categories();
 
   QStringList::Iterator it;
-  for ( it = KOPrefs::instance()->mCustomCategories.begin();
-        it != KOPrefs::instance()->mCustomCategories.end();
-        ++it ) {
-    QAction *action = tempMenu->addAction( *it );
+  KPIM::CategoryConfig cc( KOPrefs::instance() );
+  Q_FOREACH( const QString& i, cc.customCategories() ) {
+    QAction *action = tempMenu->addAction( i );
     action->setCheckable(true);
-    mCategory[ action ] = *it;
-    if ( checkedCategories.contains( *it ) ) {
+    mCategory[ action ] = i;
+    if ( checkedCategories.contains( i ) ) {
       action->setChecked( true );
     }
   }

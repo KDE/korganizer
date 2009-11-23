@@ -38,15 +38,16 @@
  *
  * KOrganizer's ActionManager inherits from this class.
  */
-class KORG_INCIDENCEEDITOR_EXPORT KOEditorConfig : public KPIM::KPimPrefs
+class KORG_INCIDENCEEDITOR_EXPORT KOEditorConfig
 {
-    Q_OBJECT
   public:
     explicit KOEditorConfig();
     virtual ~KOEditorConfig();
 
     static KOEditorConfig* instance();
     static void setKOEditorConfig(KOEditorConfig*);
+
+    virtual KConfigSkeleton* config() const = 0;
 
     /// Return the own full name.
     virtual QString fullName() const;
