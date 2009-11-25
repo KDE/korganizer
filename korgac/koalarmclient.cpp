@@ -48,7 +48,7 @@
 #include <KDebug>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
-#include <kdescendantsproxymodel.h> // fix when forwarding header is there
+#include "kdescendantsproxymodel_p.h" // fix when forwarding header is there
 
 using namespace Akonadi;
 using namespace KCal;
