@@ -35,7 +35,7 @@
 #include "koeventeditor.h"
 #include "kojournaleditor.h"
 
-class AKONADI_KCAL_EXPORT CalItemModel : public Akonadi::ItemModel
+class CalItemModel : public Akonadi::ItemModel
 {
   public:
     explicit CalItemModel(QObject *parent = 0) : Akonadi::ItemModel(parent) { fetchScope().fetchFullPayload(); }

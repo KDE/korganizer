@@ -61,7 +61,7 @@ template<class T> inline Akonadi::Item incidenceToItem(T* incidence) {
   return item;
 }
 
-class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calendar
+class AkonadiCalendarAdaptor : public KCal::Calendar
 {
   public:
     explicit AkonadiCalendarAdaptor(AkonadiCalendar *calendar, IncidenceChangerBase* changer)
