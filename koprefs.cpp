@@ -26,7 +26,6 @@
 #include "koprefs.h"
 #include "kocore.h"
 
-#include <kabc/stdaddressbook.h>
 #include <kmime/kmime_header_parsing.h>
 #include <kpimidentities/identitymanager.h>
 #include <kpimidentities/identity.h>
@@ -91,13 +90,6 @@ KOPrefs *KOPrefs::instance()
 {
   if ( !mInstance ) {
     insd.setObject( mInstance, new KOPrefs() );
-
-    // Load it now, not deep within some painting code
-    // Don't load inside constructor since synchronous loading could
-    // require resources to do a nested eventloop or similar and
-    // cause re-entrance, resulting in more than once call to KOPrefs::instance()
-    // before the constructor has finished and thus create more than once instance
-    mInstance->mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();
 
     mInstance->readConfig();
   }
@@ -360,8 +352,6 @@ QStringList KOPrefs::allEmails()
   QStringList lst = KOCore::self()->identityManager()->allEmails();
   // Add emails configured in korganizer
   lst += mAdditionalMails;
-  // Add emails from the user's kcontactmanager entry
-  lst += mMyAddrBookMails;
   // Add the email entered as the userEmail here
   lst += email();
 
@@ -387,12 +377,6 @@ QStringList KOPrefs::fullEmails()
   lst = mAdditionalMails;
   for ( it = lst.begin(); it != lst.end(); ++it ) {
     fullEmails << QString( "%1 <%2>" ).arg( fullName() ).arg( *it );
-  }
-  // Add emails from the user's kcontactmanager entry
-  KABC::Addressee me = KABC::StdAddressBook::self( true )->whoAmI();
-  lst = me.emails();
-  for ( it = lst.begin(); it != lst.end(); ++it ) {
-    fullEmails << me.fullEmail( *it );
   }
 
   // Warning, this list could contain duplicates.
@@ -437,10 +421,7 @@ bool KOPrefs::thatIsMe( const QString &_email )
   if ( mAdditionalMails.contains( email ) ) {
     return true;
   }
-  QStringList lst = mMyAddrBookMails;
-  if ( lst.contains( email ) ) {
-    return true;
-  }
+
   return false;
 }
 

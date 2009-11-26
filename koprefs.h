@@ -112,8 +112,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     KDateTime::Spec mTimeSpec;
     QStringList mTimeScaleTimeZones;
 
-    QStringList mMyAddrBookMails;
-
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;
     QString mEmail;
