@@ -25,6 +25,7 @@
 
 #include "kotodoviewquickaddline.h"
 
+#include <KLocale>
 #include <QWidget>
 #include <QKeyEvent>
 
@@ -33,6 +34,9 @@ KOTodoViewQuickAddLine::KOTodoViewQuickAddLine( QWidget *parent )
 {
   connect( this, SIGNAL(returnPressed()),
            this, SLOT(returnPressed()) );
+
+  mClickMessage = i18n( "Click to add a new to-do" );
+  setToolTip( mClickMessage );
 }
 
 void KOTodoViewQuickAddLine::keyPressEvent( QKeyEvent *event )
@@ -47,6 +51,16 @@ void KOTodoViewQuickAddLine::keyPressEvent( QKeyEvent *event )
 void KOTodoViewQuickAddLine::returnPressed()
 {
   emit returnPressed( mModifiers );
+}
+
+void KOTodoViewQuickAddLine::resizeEvent ( QResizeEvent * event )
+{
+  KLineEdit::resizeEvent( event );
+
+  setClickMessage( fontMetrics().elidedText(
+                     mClickMessage,
+                     Qt::ElideRight,
+                     width() - clearButtonUsedSize().width() ) );
 }
 
 #include "kotodoviewquickaddline.moc"

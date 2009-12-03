@@ -112,8 +112,6 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   mQuickAdd = new KOTodoViewQuickAddLine( this );
   mQuickAdd->setClearButtonShown( true );
-  QString clickText = i18n( "Click to add a new to-do" );
-  mQuickAdd->setToolTip( clickText );
   mQuickAdd->setVisible( KOPrefs::instance()->enableQuickTodo() );
   connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
            this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
@@ -139,12 +137,6 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   layout->addWidget( mFlatView, 2, 1 );
 
   setLayout( layout );
-
-  // Do elided text after the layout is set so the width is properly computed
-  mQuickAdd->setClickMessage(
-    fontMetrics().elidedText(
-      clickText, Qt::ElideRight,
-      mQuickAdd->width() + mQuickAdd->clearButtonUsedSize().width() ) );
 
   // ---------------- POPUP-MENUS -----------------------
   mItemPopupMenu = new QMenu( this );
