@@ -1003,7 +1003,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
   eventEditor->setTexts( summary, description );
 
   // if attach or attendee list is empty, these methods don't do anything, so
-  // it's save to call them in every case
+  // it's safe to call them in every case
   eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   eventEditor->addAttendees( attendees );
   eventEditor->show();
@@ -1657,27 +1657,32 @@ void CalendarView::processTodoListSelection( Incidence *incidence, const QDate &
 
 void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate &date )
 {
-  if ( !incidence || incidence == mSelectedIncidence ) {
+  if ( !incidence ) {
     return;
+  }
+  if ( incidence == mSelectedIncidence ) {
+    if ( !incidence->recurs() || mSaveDate == date ) {
+      return;
+    }
   }
 
   mSelectedIncidence = incidence;
-  emit incidenceSelected( mSelectedIncidence, date );
+  mSaveDate = date;
 
+  emit incidenceSelected( mSelectedIncidence, date );
   bool organizerEvents = false;
   bool groupEvents = false;
   bool todo = false;
   bool subtodo = false;
 
-  if ( incidence ) {
-    organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
-    groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
+  organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
+  groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
 
-    if ( incidence && incidence->type() == "Todo" ) {
-      todo = true;
-      subtodo = ( incidence->relatedTo() != 0 );
-    }
+  if ( incidence->type() == "Todo" ) {
+    todo = true;
+    subtodo = ( incidence->relatedTo() != 0 );
   }
+
   emit todoSelected( todo );
   emit subtodoSelected( subtodo );
   emit organizerEventsSelected( organizerEvents );
