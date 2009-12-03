@@ -604,9 +604,9 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     // various housekeeping variables.
     bool            mModified; // flag indicating if calendar is modified
     bool            mReadOnly; // flag indicating if calendar is read-only
-    QDate mSaveSingleDate;
 
     Incidence *mSelectedIncidence;
+    QDate mSaveDate;
 
     KOTodoView *mTodoList;
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
