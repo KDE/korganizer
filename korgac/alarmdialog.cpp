@@ -57,7 +57,7 @@
 #include <QSpinBox>
 #include <QTreeWidget>
 #include <QVBoxLayout>
-#include <Phonon/MediaObject>
+#include <phonon/mediaobject.h>
 
 class ReminderListItem : public QTreeWidgetItem
 {
