@@ -64,6 +64,8 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
   mReadonlyPixmap  = KOGlobals::self()->smallIcon( "object-locked" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
   mHolidayPixmap   = KOGlobals::self()->smallIcon( "view-calendar-holiday" );
+
+  setSceneRect( 0, 0, parent->width(), parent->height() );
 }
 
 MonthScene::~MonthScene()
