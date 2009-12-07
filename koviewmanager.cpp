@@ -93,11 +93,11 @@ void KOViewManager::readSettings( KConfig *config )
     showJournalView();
   } else if ( view == QLatin1String( "Todo" ) ) {
     showTodoView();
-  } else if ( view == "Timeline" ) {
+  } else if ( view == QLatin1String( "Timeline" ) ) {
     showTimeLineView();
-  } else if ( view == "TimeSpent" ) {
+  } else if ( view == QLatin1String( "TimeSpent" ) ) {
     showTimeSpentView();
-  } else if ( view == "Month" ) {
+  } else if ( view == QLatin1String( "Month" ) ) {
     showMonthView();
   } else {
     showAgendaView();
@@ -110,21 +110,21 @@ void KOViewManager::writeSettings( KConfig *config )
 
   QString view;
   if ( mCurrentView == mWhatsNextView ) {
-    view = "WhatsNext";
+    view = QLatin1String( "WhatsNext" );
   } else if ( mCurrentView == mListView ) {
-    view = "List";
+    view = QLatin1String( "List" );
   } else if ( mCurrentView == mJournalView ) {
-    view = "Journal";
+    view = QLatin1String( "Journal" );
   } else if ( mCurrentView == mTodoView ) {
-    view = "Todo";
+    view = QLatin1String( "Todo" );
   } else if ( mCurrentView == mTimelineView ) {
-    view = "Timeline";
+    view = QLatin1String( "Timeline" );
   } else if ( mCurrentView == mTimeSpentView ) {
-    view = "TimeSpent";
+    view = QLatin1String( "TimeSpent" );
   } else if ( mCurrentView == mMonthView ) {
-    view = "Month";
+    view = QLatin1String( "Month" );
   } else {
-    view = "Agenda";
+    view = QLatin1String( "Agenda" );
   }
 
   generalConfig.writeEntry( "Current View", view );
