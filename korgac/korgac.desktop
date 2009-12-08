@@ -2,6 +2,7 @@
 [Desktop Entry]
 Name=KOrganizer Reminder Client
 Name[af]=KOrganizer herhinner kliënt
+Name[ar]=عميل رسائل التذكير لبرنامج المنظم
 Name[bg]=Клиент за аларма на KOrganizer
 Name[ca]=Client de l'alarma de KOrganizer
 Name[cs]=Klient upomínek KOrganizeru
@@ -53,6 +54,7 @@ Icon=korgac
 Type=Application
 GenericName=KOrganizer Reminder Daemon Client
 GenericName[af]=Korganizer herhinner bediener kliënt
+GenericName[ar]=عميل مراقب رسائل تذكير المنظم
 GenericName[bg]=Клиент за демон за аларма на KOrganizer
 GenericName[ca]=Client del dimoni d'alarma de KOrganizer
 GenericName[cs]=Klient démona přípomínek KOrganizeru
