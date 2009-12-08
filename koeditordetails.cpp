@@ -294,7 +294,8 @@ void KOEditorDetails::fillIncidence( Incidence *incidence )
       const KABC::ContactGroup::List groups = job->contactGroups();
       if ( !groups.isEmpty() ) {
         toBeDeleted.push_back( item ); // remove it once we are done expanding
-        Akonadi::ContactGroupExpandJob *expandJob = new Akonadi::ContactGroupExpandJob( groups.first() );
+        Akonadi::ContactGroupExpandJob *expandJob =
+          new Akonadi::ContactGroupExpandJob( groups.first() );
         expandJob->exec();
 
         const KABC::Addressee::List contacts = expandJob->contacts();
