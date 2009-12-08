@@ -266,11 +266,10 @@ bool KOEventEditor::processInput()
     } else {
       if ( mIsCounter ) {
         Q_ASSERT( mIncidence.hasPayload<KCal::Event::Ptr>() );
-        KCal::Event::Ptr incidenceEvent = mIncidence.payload<KCal::Event::Ptr>();
-        KOGroupware::instance()->sendCounterProposal( oldEvent.get(), incidenceEvent.get() );
+        KOGroupware::instance()->sendCounterProposal( oldEvent.get(), event.get() );
 
         // add dummy event at the position of the counter proposal
-        Event::Ptr event2( ev->clone() );
+        Event::Ptr event2( event->clone() );
         event2->clearAttendees();
         event2->setSummary( i18nc( "@item", "My counter proposal for: %1", ev->summary() ) );
 
