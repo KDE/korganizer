@@ -300,7 +300,6 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
         }
         break;
       case KOGlobals::INCIDENCEADDED:
-        Q_ASSERT( incidence->type() == "Event" || incidence->type() == "Todo" );
         if ( incidence->type() == "Event" ) {
           txt = i18n( "The event \"%1\" includes other people.\n"
                       "Do you want to email the invitation to the attendees?",
@@ -309,6 +308,11 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
           txt = i18n( "The todo \"%1\" includes other people.\n"
                       "Do you want to email the invitation to the attendees?",
                       incidence->summary() );
+        } else {
+          QString type = incidence->type();
+          txt = i18n( "This %1 includes other people. "
+                      "Should email be sent out to the attendees?",
+                      type );
         }
         break;
       default:
