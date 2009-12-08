@@ -373,6 +373,10 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
           parent, txt, i18n( "Group Scheduling Email" ),
           KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
         setDoNotNotify( rc == KMessageBox::No );
+      } else if ( action == KOGlobals::INCIDENCEADDED ) {
+        // We just got this event from the groupware stack, so add it right away
+        // the notification mail was sent on the KMail side.
+        return true;
       } else {
         txt = i18n( "You are not the organizer of this event. Editing it will "
                     "bring your calendar out of sync with the organizer's calendar. "
