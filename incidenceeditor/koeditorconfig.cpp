@@ -22,7 +22,6 @@
 */
 
 #include "koeditorconfig.h"
-#include "koeditorconfig.moc"
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QStringList>
