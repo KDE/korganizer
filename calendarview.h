@@ -242,7 +242,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    virtual void newIncidenceChanger( IncidenceChangerBase * );
+    void newIncidenceChanger( IncidenceChangerBase * );
     void exportHTML( KOrg::HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );
