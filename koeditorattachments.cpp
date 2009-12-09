@@ -94,9 +94,9 @@ class AttachmentListItem : public KIconViewItem
       mAttachment->setUri( uri );
       readAttachment();
     }
-    void setData( const char *base64 )
+    void setData( const QByteArray data )
     {
-      mAttachment->setData( base64 );
+      mAttachment->setDecodedData( data );
       readAttachment();
     }
     const QString mimeType() const
@@ -148,7 +148,7 @@ class AttachmentListItem : public KIconViewItem
         if ( mAttachment->isUri() ) {
           mimeType = KMimeType::findByURL( mAttachment->uri() );
         } else {
-          mimeType = KMimeType::findByContent( QCString( mAttachment->data() ) );
+          mimeType = KMimeType::findByContent( mAttachment->decodedData() );
         }
         mAttachment->setMimeType( mimeType->name() );
       }
@@ -330,7 +330,7 @@ KURL AttachmentIconView::tempFileForAttachment( KCal::Attachment *attachment )
   file->setAutoDelete( true );
   file->file()->open( IO_WriteOnly );
   QTextStream stream( file->file() );
-  stream << attachment->data();
+  stream << attachment->decodedData().data();
   KURL url( file->name() );
   mTempFiles.insert( attachment, url );
   file->close();
