@@ -279,6 +279,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
               arg( incidence->summary() );
         break;
       case KOGlobals::INCIDENCEDELETED:
+        Q_ASSERT( incidence->type() == "Event" || incidence->type() == "Todo" );
         if ( incidence->type() == "Event" ) {
           txt = i18n( "You removed the invitation \"%1\".\n"
                       "Do you want to email the attendees that the event is canceled?" ).
@@ -288,14 +289,9 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           txt = i18n( "You removed the invitation \"%1\".\n"
                       "Do you want to email the attendees that the todo is canceled?" ).
                 arg( incidence->summary() );
-        } else {
-          QString type = incidence->type();
-          txt = i18n( "This %1 includes other people. "
-                      "Should email be sent out to the attendees?" ).arg( type );
         }
         break;
       case KOGlobals::INCIDENCEADDED:
-        Q_ASSERT( incidence->type() == "Event" || incidence->type() == "Todo" );
         if ( incidence->type() == "Event" ) {
           txt = i18n( "The event \"%1\" includes other people.\n"
                       "Do you want to email the invitation to the attendees?" ).
@@ -305,6 +301,10 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           txt = i18n( "The todo \"%1\" includes other people.\n"
                       "Do you want to email the invitation to the attendees?" ).
                 arg( incidence->summary() );
+        } else {
+          QString type = incidence->type();
+          txt = i18n( "This %1 includes other people. "
+                      "Should email be sent out to the attendees?" ).arg( type );
         }
         break;
       default:
