@@ -13,6 +13,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=200
 
 Name=Time and Date
+Name[ar]=الوقت و التاريخ
 Name[bg]=Дата и час
 Name[ca]=Hora i data
 Name[cs]=Datum a čas
@@ -53,6 +54,7 @@ Name[x-test]=xxTime and Datexx
 Name[zh_CN]=时间和日期
 Name[zh_TW]=時間與日期
 Comment=KOrganizer Time and Date Configuration
+Comment[ar]= إعدادات الوقت و التاريخ لبرنامج المنظَم
 Comment[bg]=Настройване на дата и час за KOrganizer
 Comment[ca]=Configuració de la data i hora al KOrganizer
 Comment[cs]=Nastavení data a času pro KOrganizer

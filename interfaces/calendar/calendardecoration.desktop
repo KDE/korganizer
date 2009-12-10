@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Calendar Decoration Interface
+Name[ar]=واجهة ديكور التقويم
 Name[ca]=Interfície de decoració del calendari
 Name[cs]=Rozhraní dekorace kalendáře
 Name[da]=Kalenderdekorations-plugin
@@ -39,6 +40,7 @@ Type=ServiceType
 X-KDE-ServiceType=Calendar/Decoration
 Comment=Calendar Decoration Plugin
 Comment[af]=Kalender Versiering Inplak
+Comment[ar]=ملحق ديكور التقويم
 Comment[bg]=Приставка за декорация на календара
 Comment[br]=Lugent kinkladur an deiziadur
 Comment[ca]=Connector de decoració del calendari

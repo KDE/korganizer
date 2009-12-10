@@ -13,6 +13,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=400
 
 Name=Colors and Fonts
+Name[ar]=الألوان و الخطوط
 Name[ca]=Colors i tipus de lletra
 Name[cs]=Barvy a písma
 Name[da]=Farver og skrifttyper
@@ -51,6 +52,7 @@ Name[x-test]=xxColors and Fontsxx
 Name[zh_CN]=颜色和字体
 Name[zh_TW]=顏色與字型
 Comment=KOrganizer Colors and Fonts Configuration
+Comment[ar]=إعداد الألوان والخطوط لبرنامج المنظم 
 Comment[ca]=Configuració de colors i tipus de lletra del KOrganizer
 Comment[cs]=Nastavení barev a písem KOrganizeru
 Comment[da]=Konfiguration af farver og skrifttyper for KOrganizer

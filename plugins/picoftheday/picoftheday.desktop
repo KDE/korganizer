@@ -1,6 +1,7 @@
 [Desktop Entry]
 X-KDE-Library=korg_picoftheday
 Name=Wikipedia Picture Of the Day Plugin for Calendars
+Name[ar]=ملحق صورة ويكيبيديا لهذا اليوم للتقويمات
 Name[bg]=Приставка на календара за дати и смятане с дати
 Name[ca]=Connector d'imatge del dia de la Viquipèdia per als calendaris
 Name[cs]=Wikipedia modul 'Obrázek dne' pro kalendáře
@@ -40,6 +41,7 @@ Name[zh_CN]=日历的每日 Wikipedia 贴图插件
 Name[zh_TW]=行事曆維基「本日圖片」外掛程式
 Type=Service
 Comment=This plugin provides the Wikipedia Picture of the Day
+Comment[ar]=هذا الملحق يوفر صور لهذا اليوم من الويكيبيديا
 Comment[ca]=Aquest connector proporciona la imatge del dia de la Viquipèdia
 Comment[cs]=Wikipedia modul 'Obrázek dne'
 Comment[da]=Dette plugin viser Dagens billede fra Wikipedia

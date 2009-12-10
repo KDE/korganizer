@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KOrganizer Print Plugin Interface
+Name[ar]=واجهة ملحق طباعة برنامج المنظم
 Name[ca]=Interfície de connector d'impressió del KOrganizer
 Name[cs]=Tiskové rozhraní komponenty KOrganizeru
 Name[da]=Grænseflade til KOrganizer print-plugin
@@ -38,6 +39,7 @@ Type=ServiceType
 X-KDE-ServiceType=KOrganizer/PrintPlugin
 Comment=KOrganizer Part
 Comment[af]=Korganizer Deel
+Comment[ar]=جزء برنامج المنظم
 Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
 Comment[ca]=Part de KOrganizer

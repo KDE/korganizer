@@ -2,6 +2,7 @@
 X-KDE-Library=korg_yearprint
 Name=Yearly Print Style
 Name[af]=Druk styl: Jaarliks
+Name[ar]=نمط الطباعة السنوي
 Name[bg]=Yearly Print Style
 Name[ca]=Estil d'impressió anual
 Name[cs]=Roční tiskový styl
@@ -46,6 +47,7 @@ Name[zh_CN]=按年打印样式
 Name[zh_TW]=年度列印風格
 Comment=This plugin allows you to print out a yearly calendar.
 Comment[af]=Hierdie inprop module maak dit moontlik om 'n kalender vir 'n hele jaar te druk.
+Comment[ar]=هذا الملحق يتيح طباعة التقويم السنوي
 Comment[bg]=Приставката служи за печат на годишния календар.
 Comment[ca]=Aquest connector us permet imprimir un calenadri anual.
 Comment[cs]=Tento modul umožňuje tisk ročního kalendáře.

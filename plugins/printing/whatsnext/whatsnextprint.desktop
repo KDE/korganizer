@@ -2,6 +2,7 @@
 X-KDE-Library=korg_whatsnextprint
 Name=What's Next Print Style
 Name[af]=Wat is volgende - druk styl
+Name[ar]=ما هو نمط الطباعة التالي
 Name[bg]=What's Next Print Style
 Name[ca]=Estil d'impressió Què toca ara?
 Name[cs]=Styl deníku - co je nového
@@ -51,6 +52,7 @@ Name[zh_CN]=下步安排打印样式
 Name[zh_TW]=「下一個是什麼」列印風格
 Comment=This plugin allows you to print out a list of all upcoming events and to-dos.
 Comment[af]=Hierdie inprop module druk 'n lys van al die opkomende afsprake en te-doen itemme.
+Comment[ar]=هذا الملحق يتيح طباعة قائمة لجميع الأحداث و الواجِبات القادمة
 Comment[bg]=Приставката служи за печат на бъдещи събития и задачи в списъчна форма.
 Comment[ca]=Aquest connector us permet imprimir una llista de tots els esdeveniments i tasques pendents propers.
 Comment[cs]=Tento modul umožňuje tisk seznamu všech budoucích událostí a úkolů.

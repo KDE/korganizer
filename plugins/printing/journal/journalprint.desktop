@@ -2,6 +2,7 @@
 X-KDE-Library=korg_journalprint
 Name=Journal Print Style
 Name[af]=Joernaal druk styl
+Name[ar]=نمط طباعة السّجل اليومي
 Name[bg]=Journal Print Style
 Name[ca]=Estil d'impressió del diari
 Name[cs]=Tiskový styl deníku
@@ -51,6 +52,7 @@ Name[zh_CN]=日记打印样式
 Name[zh_TW]=日誌列印風格
 Comment=This plugin allows you to print out journal entries (diary entries).
 Comment[af]=Hierdie inprop module maak dit moontlik om joernaal inskrywings (dagboek inskrywings) te druk.
+Comment[ar]=هذا الملحق يتيح طباعة إدخالات السّجل (مفكرات)
 Comment[bg]=Приставката служи за печат на дневника.
 Comment[ca]=Aquest connector us permet imprimir entrades del diari.
 Comment[cs]=tento modul umožňuje tisk položek deníku.

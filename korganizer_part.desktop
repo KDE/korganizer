@@ -2,6 +2,7 @@
 MimeType=text/calendar;
 Comment=Calendar and Scheduling Program
 Comment[af]=Kalender en Skedulering Program
+Comment[ar]=برنامج التقويم والجدولة
 Comment[bg]=Програма за календар и разписание
 Comment[ca]=Un programa de calendari i planificació
 Comment[cs]=Kalendářový a plánovací program
@@ -65,6 +66,7 @@ X-DocPath=korganizer/index.html
 Type=Service
 Name=KOrganizer
 Name[af]=Korganizer
+Name[ar]=برنامج المنظَم KOrganizer
 Name[bg]=KOrganizer
 Name[br]=KOrganizer
 Name[ca]=KOrganizer

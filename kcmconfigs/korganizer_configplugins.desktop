@@ -14,6 +14,7 @@ X-KDE-Weight=700
 
 Name=Plugins
 Name[af]=Inprop modules
+Name[ar]=الملحقات
 Name[bg]=Приставки
 Name[br]=Lugantoù
 Name[ca]=Connectors
@@ -72,6 +73,7 @@ Name[zh_CN]=插件
 Name[zh_TW]=外掛程式
 Comment=KOrganizer Plugin Configuration
 Comment[af]=Korganizer inprop module opstelling
+Comment[ar]=إعدادات ملحق برنامج المنظَم
 Comment[bg]=Настройки на приставките за KOrganizer
 Comment[br]=Kefluniadur al lugent KOrganizer
 Comment[ca]=Configuració del connector del KOrganizer
