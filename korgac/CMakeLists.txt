@@ -38,6 +38,7 @@ target_link_libraries(korgac
        	korganizerprivate 
 	korganizer_eventviewer
 	korganizer_core
+  kdepim
 	)
 
 install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
