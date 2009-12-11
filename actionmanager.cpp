@@ -57,7 +57,7 @@
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
-#include <akonadi/kcal/kcalmimetypevisitor.h>
+#include <kcal/mimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
 #include <akonadi/entitytreemodel.h>
@@ -286,9 +286,9 @@ void ActionManager::createCalendarAkonadi()
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
   monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
-  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::eventMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::todoMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::journalMimeType(), true );
+  monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::eventMimeType(), true );
+  monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::todoMimeType(), true );
+  monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::journalMimeType(), true );
   mCalendarModel = new CalendarModel( session, monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 

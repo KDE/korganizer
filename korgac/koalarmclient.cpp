@@ -37,7 +37,7 @@
 #include <Akonadi/ItemFetchScope>
 
 #include <akonadi/kcal/calendarmodel.h>
-#include <akonadi/kcal/kcalmimetypevisitor.h>
+#include <kcal/mimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/CalendarResources>
@@ -78,9 +78,9 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
   monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
-  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::eventMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::todoMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::journalMimeType(), true );
+  monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::eventMimeType(), true );
+  monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::todoMimeType(), true );
+  monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::journalMimeType(), true );
   CalendarModel *calendarModel = new CalendarModel( session, monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
