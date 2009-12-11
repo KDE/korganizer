@@ -26,6 +26,7 @@
 #include "koapp.h"
 #include "aboutdata.h"
 
+#include <akonadi/control.h>
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kaboutdata.h>
@@ -58,6 +59,12 @@ int main ( int argc, char **argv )
 
   if ( app.isSessionRestored() ) {
     RESTORE( KOrganizer )
+  }
+
+  if ( !Akonadi::Control::start() ) {
+    //TODO: add message box after string freeze
+    kWarning() << "Unable to start Akonadi server, exit application";
+    return 1;
   }
 
   return app.exec();
