@@ -305,13 +305,13 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           QString type = incidence->type();
           if ( incidence->type() == "Event" )
             txt = i18n( "This event includes other people. "
-                        "Should email be sent out to the attendees?" );
+                        "Should an email be sent to the attendees?" );
           else if ( incidence->type() == "Todo" )
             txt = i18n( "This todo includes other people. "
-                        "Should email be sent out to the attendees?" );
+                        "Should an email be sent to the attendees?" );
           else
             txt = i18n( "This incidence includes other people. "
-                        "Should email be sent out to the attendees?" );
+                        "Should an email be sent to the attendees?" );
         }
         break;
       default:
