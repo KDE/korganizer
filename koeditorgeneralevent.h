@@ -117,7 +117,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mHasTimeCheckbox;
     KComboBox               *mFreeTimeCombo;
-    QLabel                  *mRecurrenceSummary;
+    QPushButton             *mRecEditButton;
     KPIM::KTimeZoneComboBox *mTimeZoneComboStart;
     KPIM::KTimeZoneComboBox *mTimeZoneComboEnd;
     QFrame                  *mInvitationBar;
