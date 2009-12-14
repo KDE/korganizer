@@ -526,10 +526,6 @@ class KOPrefsDialogViews : public KPrefsModule
 
       topLayout->addWidget( agendaGroup );
 
-      /*** Month and Todo view groups side by side, to save space. ***/
-      QHBoxLayout *hbox = new QHBoxLayout();
-      topLayout->addLayout( hbox );
-
       /*** Month View Group ***/
       QGroupBox *monthGroup = new QGroupBox( 1, Horizontal,
                                              i18n("Month View"),
@@ -537,7 +533,7 @@ class KOPrefsDialogViews : public KPrefsModule
       addWidBool( KOPrefs::instance()->enableMonthScrollItem(), monthGroup );
       addWidBool( KOPrefs::instance()->fullViewMonthItem(), monthGroup );
       addWidCombo( KOPrefs::instance()->monthItemColorsItem(), monthGroup );
-      hbox->addWidget( monthGroup );
+      topLayout->addWidget( monthGroup );
 
 
       /*** Todo View Group ***/
@@ -546,7 +542,7 @@ class KOPrefsDialogViews : public KPrefsModule
                                             topFrame );
       addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
       addWidBool( KOPrefs::instance()->recordTodosInJournalsItem(), todoGroup );
-      hbox->addWidget( todoGroup );
+      topLayout->addWidget( todoGroup );
 
       topLayout->addStretch( 1 );
 
