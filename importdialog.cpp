@@ -42,10 +42,9 @@
 using namespace KCal;
 
 ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
-  : KDialog( parent),
-    mUrl( url )
+  : KDialog( parent), mUrl( url )
 {
-  setCaption( i18n("Import Calendar") );
+  setCaption( i18n("Import Calendar/Event") );
   setButtons( Ok | Cancel );
   setDefaultButton( Ok );
   setModal( true );
@@ -56,9 +55,8 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
-  QString txt = i18n("Import calendar at '%1' into KOrganizer.",
+  QString txt = i18n("Import calendar/event at '%1' into KOrganizer.",
                   mUrl.prettyUrl() );
-
   topLayout->addWidget( new QLabel( txt, topFrame ) );
 
   QGroupBox *radioBox = new QGroupBox( topFrame );
