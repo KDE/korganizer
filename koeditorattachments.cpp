@@ -52,6 +52,7 @@
 #include <klineedit.h>
 #include <kseparator.h>
 #include <kurlrequester.h>
+#include <libkmime/kmime_message.h>
 
 #include <qcheckbox.h>
 #include <qfile.h>
@@ -770,14 +771,10 @@ void KOEditorAttachments::addAttachment( const QByteArray &data,
   QString nlabel = label;
   if ( mimeType == "message/rfc822" ) {
     // mail message. try to set the label from the mail Subject:
-    QString line( data );
-    int index = line.find( "Subject:" );
-    if ( index >= 0 ) {
-      QString substr = line.mid( index, 100 );
-      int len = substr.find( '\n' );
-      nlabel = substr.left( len ).remove( "Subject:" ).
-               simplifyWhiteSpace().replace( ' ', '_' ).section( '_', 0, 3 );
-    }
+    KMime::Message msg;
+    msg.setContent( data.data() );
+    msg.parse();
+    nlabel = msg.subject()->asUnicodeString();
   }
 
   item->setData( data );
