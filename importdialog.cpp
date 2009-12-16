@@ -38,14 +38,14 @@
 using namespace KCal;
 
 ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
-  : KDialogBase( Plain, i18n("Import Calendar"), Ok | Cancel, Ok, parent,
+  : KDialogBase( Plain, i18n("Import Calendar/Event"), Ok | Cancel, Ok, parent,
                  0, true, true ),
     mUrl( url )
 {
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-  QString txt = i18n("Import calendar at '%1' into KOrganizer.")
+  QString txt = i18n("Import calendar/event at '%1' into KOrganizer.")
                 .arg( mUrl.prettyURL() );
 
   topLayout->addWidget( new QLabel( txt, topFrame ) );

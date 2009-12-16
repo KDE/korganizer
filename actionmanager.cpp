@@ -250,9 +250,9 @@ void ActionManager::initActions()
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("Import &Calendar..."), 0, this, SLOT( file_merge() ),
+  new KAction( i18n("Import &Calendar/Event (ICS-/VCS-File)..."), 0, this, SLOT( file_merge() ),
                mACollection, "import_icalendar" );
-  new KAction( i18n("&Import From UNIX Ical tool"), 0, this, SLOT( file_icalimport() ),
+  new KAction( i18n("&Import From UNIX Ical tool (.calendar-File)"), 0, this, SLOT( file_icalimport() ),
                mACollection, "import_ical" );
   new KAction( i18n("Get &Hot New Stuff..."), 0, this,
                SLOT( downloadNewStuff() ), mACollection,
@@ -745,7 +745,7 @@ void ActionManager::file_icalimport()
 
   if ( !QFile::exists( homeDir ) ) {
     KMessageBox::error( dialogParent(),
-                       i18n( "You have no ical file in your home directory.\n"
+                       i18n( "You have no .calendar file in your home directory.\n"
                             "Import cannot proceed.\n" ) );
     return;
   }
