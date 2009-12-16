@@ -31,6 +31,8 @@
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kvcarddrag.h>
 
+#include <kmime/kmime_message.h>
+
 #include <kio/job.h>
 #include <kio/copyjob.h>
 #include <kio/jobclasses.h>
@@ -766,14 +768,10 @@ void KOEditorAttachments::addAttachment( const QByteArray &data,
   QString nlabel = label;
   if ( mimeType == "message/rfc822" ) {
     // mail message. try to set the label from the mail Subject:
-    QString line( data );
-    int index = line.indexOf( "Subject:" );
-    if ( index >= 0 ) {
-      QString substr = line.mid( index, 100 );
-      int len = substr.indexOf( '\n' );
-      nlabel = substr.left( len ).remove( "Subject:" ).
-               simplified().replace( ' ', '_' ).section( '_', 0, 3 );
-    }
+    KMime::Message msg;
+    msg.setContent( data );
+    msg.parse();
+    nlabel = msg.subject()->asUnicodeString();
   }
 
   item->setData( data );
