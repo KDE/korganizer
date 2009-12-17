@@ -1836,7 +1836,7 @@ void ActionManager::openTodoEditor( const QString &summary,
     case KOPrefs::TodoAttachLink:
       attData = uri;
       break;
-    case KOPrefs::TodoAttachInlineFull:
+  case KOPrefs::TodoAttachInlineFull:
       attData = file;
       break;
     default:
@@ -1844,9 +1844,9 @@ void ActionManager::openTodoEditor( const QString &summary,
       return;
   }
 
-  mCalendarView->newTodo( summary, description, QStringList(attData),
-                          attendees, QStringList(attachmentMimetype),
-                          action != KOPrefs::Link, isTask );
+  mCalendarView->newTodo( summary, description, QStringList( attData ),
+                          attendees, QStringList( attachmentMimetype ),
+                          action != KOPrefs::TodoAttachLink, isTask );
 }
 
 void ActionManager::openJournalEditor( const QDate &date )
