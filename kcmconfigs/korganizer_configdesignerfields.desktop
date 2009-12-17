@@ -11,6 +11,7 @@ X-KDE-ParentApp=kaddressbook
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=800
+X-DocPath=korganizer/index.html#config
 
 Name=Custom Pages
 Name[af]=Pasmaak Blaaie

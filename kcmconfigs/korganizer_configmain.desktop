@@ -11,6 +11,7 @@ X-KDE-ParentApp=korganizer
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=100
+X-DocPath=korganizer/index.html#config-main
 
 Name=General
 Name[af]=Algemeen
