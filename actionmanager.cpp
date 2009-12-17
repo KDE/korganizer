@@ -1686,22 +1686,26 @@ void ActionManager::openTodoEditor(const QString & summary,
     delete menu;
   }
 
-  QString attData;
+  QStringList attData;
   switch ( action ) {
     case KOPrefs::TodoAttachAsk:
       return;
     case KOPrefs::TodoAttachLink:
-      attData = uri;
+      attData << uri;
       break;
-    case KOPrefs::TodoAttachInlineFull:
-      attData = file;
+  case KOPrefs::TodoAttachInlineFull:
+      attData << file;
       break;
     default:
       // menu could have been closed by cancel, if so, do nothing
       return;
   }
 
-  mCalendarView->newTodo( summary, description, attData, attendees, attachmentMimetype, action != KOPrefs::Link, isTask );
+  mCalendarView->newTodo( summary, description,
+                          attData, attendees,
+                          QStringList( attachmentMimetype ),
+                          action != KOPrefs::TodoAttachLink,
+                          isTask );
 }
 
 void ActionManager::openJournalEditor( const QDate& date )
