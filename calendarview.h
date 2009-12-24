@@ -687,7 +687,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     Incidence *mSelectedIncidence;
     QDate mSaveDate;
 
-  KOTodoView *mTodoList;
+    KOTodoView *mTodoList;
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
 
     KOrg::IncidenceChangerBase *mChanger;
