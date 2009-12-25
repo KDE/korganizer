@@ -36,6 +36,8 @@
 #include "koeventpopupmenu.h"
 #include "koalternatelabel.h"
 
+#include <kcal/tzmapping.h>
+
 #include <kapplication.h>
 #include <kcalendarsystem.h>
 #include <kdebug.h>
@@ -393,10 +395,18 @@ QString TimeLabels::headerToolTip() const
     toolTip += "<br/>";
     toolTip += i18n( "Country Code: %1", tz.countryCode() );
   }
-  if ( !tz.abbreviations().isEmpty() ) {
+
+#if defined(Q_OS_WIN32) //krazy:exclude=cpp
+  QList<QByteArray> abbr =
+    TZMaps::utcOffsetToAbbreviation( TZMaps::winZoneToUtcOffset( tz.name() ) );
+#else
+  QList<QByteArray> abbr =
+    TZMaps::utcOffsetToAbbreviation( TZMaps::olsonToUtcOffset( tz.name() ) );
+#endif
+  if ( !abbr.isEmpty() ) {
     toolTip += "<br/>";
     toolTip += i18n( "Abbreviations:" );
-    foreach ( const QByteArray &a, tz.abbreviations() ) {
+    foreach ( const QByteArray &a, abbr ) {
       toolTip += "<br/>";
       toolTip += "&nbsp;" + QString::fromLocal8Bit( a );
     }
