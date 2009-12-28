@@ -396,13 +396,8 @@ QString TimeLabels::headerToolTip() const
     toolTip += i18n( "Country Code: %1", tz.countryCode() );
   }
 
-#if defined(Q_OS_WIN32) //krazy:exclude=cpp
   QList<QByteArray> abbr =
-    TZMaps::utcOffsetToAbbreviation( TZMaps::winZoneToUtcOffset( tz.name() ) );
-#else
-  QList<QByteArray> abbr =
-    TZMaps::utcOffsetToAbbreviation( TZMaps::olsonToUtcOffset( tz.name() ) );
-#endif
+    TZMaps::utcOffsetToAbbreviation( TZMaps::timezoneToUtcOffset( tz.name() ) );
   if ( !abbr.isEmpty() ) {
     toolTip += "<br/>";
     toolTip += i18n( "Abbreviations:" );
