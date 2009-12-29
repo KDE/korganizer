@@ -65,8 +65,8 @@ class MarcusBains : public QFrame
     QTimer *minutes;
     QLabel *mTimeBox;
     KOAgenda *agenda;
-    QTime oldTime;
-    int oldToday;
+    QTime mOldTime;
+    int mOldToday;
 };
 
 class KOAgenda : public QScrollView

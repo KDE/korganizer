@@ -80,7 +80,8 @@ MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
 
   agenda->addChild(mTimeBox);
 
-  oldToday = -1;
+  mOldTime = QTime( 0, 0 );
+  mOldToday = -1;
 }
 
 MarcusBains::~MarcusBains()
@@ -113,24 +114,27 @@ void MarcusBains::updateLocation()
 void MarcusBains::updateLocationRecalc( bool recalculate )
 {
   QTime tim = QTime::currentTime();
-  if((tim.hour() == 0) && (oldTime.hour()==23))
+  if((tim.hour() == 0) && (mOldTime.hour()==23))
     recalculate = true;
 
   int mins = tim.hour()*60 + tim.minute();
   int minutesPerCell = 24 * 60 / agenda->rows();
   int y = int( mins * agenda->gridSpacingY() / minutesPerCell );
-  int today = recalculate ? todayColumn() : oldToday;
+  int today = recalculate ? todayColumn() : mOldToday;
   int x = int( agenda->gridSpacingX() * today );
-  bool disabled = !(KOPrefs::instance()->mMarcusBainsEnabled);
 
-  oldTime = tim;
-  oldToday = today;
+  mOldTime = tim;
+  mOldToday = today;
 
-  if(disabled || (today<0)) {
+  bool hideIt = !( KOPrefs::instance()->mMarcusBainsEnabled );
+
+  if ( !isHidden() && ( hideIt || ( today < 0 ) ) ) {
     hide();
     mTimeBox->hide();
     return;
-  } else {
+  }
+
+  if ( isHidden() && !hideIt ) {
     show();
     mTimeBox->show();
   }
@@ -1808,16 +1812,18 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
 void KOAgenda::resizeAllContents()
 {
   double subCellWidth;
-  KOAgendaItem *item;
-  if (mAllDayMode) {
-    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-      subCellWidth = calcSubCellWidth( item );
-      placeAgendaItem( item, subCellWidth );
-    }
-  } else {
-    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-      subCellWidth = calcSubCellWidth( item );
-      placeAgendaItem( item, subCellWidth );
+  if ( mItems.count() > 0 ) {
+    KOAgendaItem *item;
+    if (mAllDayMode) {
+      for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+        subCellWidth = calcSubCellWidth( item );
+        placeAgendaItem( item, subCellWidth );
+      }
+    } else {
+      for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+        subCellWidth = calcSubCellWidth( item );
+        placeAgendaItem( item, subCellWidth );
+      }
     }
   }
   checkScrollBoundaries();
