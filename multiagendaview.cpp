@@ -48,7 +48,7 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *n
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
 
   QFontMetrics fm( font() );
-  int topLabelHeight = 2 * fm.height();
+  int topLabelHeight = 2 * fm.height() + fm.lineSpacing();
 
   QVBox *topSideBox = new QVBox( this );
   QWidget *topSideSpacer = new QWidget( topSideBox );
