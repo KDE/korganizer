@@ -374,14 +374,7 @@ KDateTime::Spec TimeLabels::timeSpec()
 
 QString TimeLabels::header() const
 {
-  KTimeZone tz = mSpec.timeZone();
-
-  QString header = tz.countryCode();
-  if ( header.isEmpty() ) {
-    header = tz.name();
-  }
-
-  return header;
+  return mSpec.timeZone().name();
 }
 
 QString TimeLabels::headerToolTip() const

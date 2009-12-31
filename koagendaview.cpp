@@ -766,9 +766,10 @@ void KOAgendaView::createTimeBarHeaders()
   mTimeBarHeaders.clear();
 
   foreach ( TimeLabels *timeLabel, mTimeLabelsZone->timeLabels() ) {
-    QLabel *label = new QLabel( i18n( "All Day" ), mTimeBarHeaderFrame );
-    label->setText( timeLabel->header() );
-    label->setAlignment( Qt::AlignBottom | Qt::AlignHCenter );
+    QLabel *label = new QLabel( timeLabel->header().replace( '/', "/ " ),
+                                mTimeBarHeaderFrame );
+    label->setAlignment( Qt::AlignBottom | Qt::AlignLeft );
+    label->setMargin( 2 );
     label->setWordWrap( true );
     label->setToolTip( timeLabel->headerToolTip() );
     mTimeBarHeaders.append( label );
@@ -779,7 +780,23 @@ void KOAgendaView::updateTimeBarWidth()
 {
   createTimeBarHeaders();
 
+  QFontMetrics fm( font() );
+
+  int num = 0;
   int width = mTimeLabelsZone->timeLabelsWidth();
+  foreach( QLabel *l, mTimeBarHeaders ) {
+    num++;
+    foreach( const QString &word, l->text().split( ' ' ) ) {
+      width = qMax( width, fm.width( word ) );
+    }
+  }
+
+  if ( num > 0 ) {
+    width += ( num * 2 ) + 2;
+    if ( num > 1 ) {
+      width += ( num * fm.averageCharWidth() );
+    }
+  }
 
   mTimeBarHeaderFrame->setFixedWidth( width );
   mTimeLabelsZone->setTimeLabelsWidth( width );
