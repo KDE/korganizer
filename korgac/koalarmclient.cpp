@@ -74,6 +74,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   const KTimeZone zone = KSystemTimeZones::local();
   Session *session = new Session( "KOAlarmClient", this );
   ChangeRecorder *monitor = new ChangeRecorder( this );
+  monitor->setSession( session );
   monitor->itemFetchScope().fetchFullPayload( true );
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
@@ -81,7 +82,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::journalMimeType(), true );
-  CalendarModel *calendarModel = new CalendarModel( session, monitor, this );
+  CalendarModel *calendarModel = new CalendarModel( monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
   KDescendantsProxyModel *flattener = new KDescendantsProxyModel(this);

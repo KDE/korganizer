@@ -282,6 +282,7 @@ void ActionManager::createCalendarAkonadi()
   scope.fetchFullPayload( true );
   scope.fetchAttribute<EntityDisplayAttribute>();
 
+  monitor->setSession( session );
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
@@ -289,7 +290,7 @@ void ActionManager::createCalendarAkonadi()
   monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCal::MimeTypeVisitor::journalMimeType(), true );
-  mCalendarModel = new CalendarModel( session, monitor, this );
+  mCalendarModel = new CalendarModel( monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
 
