@@ -227,22 +227,6 @@ bool KOMailClient::send( const Identity &identity,
 
   const int transportId = transport->id();
 
-  // First we need to check if the default outbox is known already. If not then we need to fetch it
-  // using a SpecialCollectionsRequestJob to have the outbox ready.
-  if( ! Akonadi::SpecialMailCollections::self()->hasDefaultCollection( Akonadi::SpecialMailCollections::Outbox ) ) {
-    Akonadi::SpecialMailCollectionsRequestJob *rjob = new Akonadi::SpecialMailCollectionsRequestJob( this );
-    rjob->requestDefaultCollection( Akonadi::SpecialMailCollections::Outbox );
-    if( ! rjob->exec()) {
-      kWarning() << "Error requesting outbox folder:" << rjob->errorText();
-      return false;
-    }
-  }
-
-  // Outbox should be ready now.
-  Q_ASSERT( Akonadi::SpecialMailCollections::self()->hasDefaultCollection( Akonadi::SpecialMailCollections::Outbox ) );
-  Akonadi::Collection outbox = Akonadi::SpecialMailCollections::self()->defaultCollection( Akonadi::SpecialMailCollections::Outbox );
-  Q_ASSERT( outbox.isValid() );
-
   // Now build the message we like to send. The message KMime::Message::Ptr instance
   // will be the root message that has 2 additional message. The body itself and
   // the attached cal.ics calendar file.
@@ -286,43 +270,17 @@ bool KOMailClient::send( const Identity &identity,
   message->addContent( attachMessage );
   message->assemble();
 
-  /*
-  MailTransport::TransportJob *tjob = MailTransport::TransportManager::self()->createTransportJob( transportId );
-  Q_ASSERT( tjob );
-  Q_ASSERT( tjob->transport() );
-  tjob->setSender( from );
-  tjob->setTo( KPIMUtils::splitAddressList( to ) );
-  tjob->setCc( KPIMUtils::splitAddressList( cc ) );
-  if( bccMe )
-    tjob->setBcc( KPIMUtils::splitAddressList(from) ); //from==me, right?
-  if( ! tjob->exec() ) {
-    kWarning() << "Error executing the transport job:" << tjob->errorText();
-    return false;
-  }
-  Akonadi::Item item( transport->id() );
-  item.setMimeType( KMime::Message::mimeType() );
-  item.setPayload( message );
-  Akonadi::ItemCreateJob *cjob = new Akonadi::ItemCreateJob( item, outbox, this );
-  if( ! cjob->exec() ) {
-    kWarning() << "Error creating message in outbox:" << cjob->errorText();
-    return false;
-  }
-  item = cjob->item();
-  Q_ASSERT( item.isValid() );
-  Q_ASSERT( item.hasPayload<KMime::Message::Ptr>() );
-  Q_ASSERT( MailTransport::TransportManager::self()->transportById(transportId, false) );
-  */
-
   // Put the newly created item in the MessageQueueJob.
   MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob( this );
-  qjob->setTransportId( transportId );
-  qjob->setSentBehaviour( MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection );
-  qjob->setMoveToCollection( -1 );
-  qjob->setFrom( from );
-  qjob->setTo( KPIMUtils::splitAddressList( to ) );
-  qjob->setCc( KPIMUtils::splitAddressList( cc ) );
+  qjob->transportAttribute().setTransportId( transportId );
+  qjob->sentBehaviourAttribute().setSentBehaviour(
+           MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection );
+  qjob->sentBehaviourAttribute().setMoveToCollection( Akonadi::Collection( -1 ) );
+  qjob->addressAttribute().setFrom( from );
+  qjob->addressAttribute().setTo( KPIMUtils::splitAddressList( to ) );
+  qjob->addressAttribute().setCc( KPIMUtils::splitAddressList( cc ) );
   if( bccMe )
-    qjob->setBcc( KPIMUtils::splitAddressList( from ) );
+    qjob->addressAttribute().setBcc( KPIMUtils::splitAddressList( from ) );
   qjob->setMessage( message );
   if( ! qjob->exec() ) {
     kWarning() << "Error queuing message in outbox:" << qjob->errorText();
