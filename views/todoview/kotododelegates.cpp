@@ -456,7 +456,11 @@ void KOTodoRichTextDelegate::paint( QPainter *painter,
 
     painter->restore();
   } else {
-    QStyledItemDelegate::paint( painter, option, index );
+    // align the text at top so that when it has more than two lines
+    // it will just cut the extra lines out instead of aligning centered vertically
+    QStyleOptionViewItem copy = option;
+    copy.displayAlignment = Qt::AlignLeft | Qt::AlignTop;
+    QStyledItemDelegate::paint( painter, copy, index );
   }
 }
 
