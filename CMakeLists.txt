@@ -79,7 +79,8 @@ target_link_libraries(korganizer
 	${KDE4_KDEUI_LIBS}
 	${KDE4_KDE3SUPPORT_LIBRARY}
 	${KDE4_KPARTS_LIBRARY} 
-	${KDEPIMLIBS_KCAL_LIBS} 
+	${KDEPIMLIBS_KCAL_LIBS}
+ 	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
 	${KDEPIMLIBS_KHOLIDAYS_LIBS} 
 	${KDEPIMLIBS_KONTACTINTERFACE_LIBS} 
 	${KDEPIMLIBS_AKONADI_LIBS} 
@@ -88,7 +89,7 @@ target_link_libraries(korganizer
 	korganizerprivate 
 	korganizer_interfaces
 	korganizer_core
-	akonadi-kcal
+	akonadi-kcal_next
 )
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -115,7 +116,7 @@ set(korganizerpart_PART_SRCS korganizer_part.cpp )
 
 kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 
-target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizer_interfaces akonadi-kcal korganizer_core korganizerprivate)
+target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} korganizer_interfaces akonadi-kcal_next korganizer_core korganizerprivate)
 
 install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -129,7 +130,7 @@ qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kor
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 
-target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} kdepim kdepimdbusinterfaces kmime akonadi-kcal akonadi-kmime mailtransport)
+target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim kdepimdbusinterfaces kmime akonadi-kcal_next akonadi-kmime mailtransport)
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -151,7 +152,7 @@ kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
 
-target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim akonadi-kcal korganizer_eventviewer korganizer_interfaces)
+target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim akonadi-kcal_next korganizer_eventviewer korganizer_interfaces)
 
 set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
@@ -248,12 +249,13 @@ target_link_libraries(korganizerprivate
   ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
   ${KDEPIMLIBS_KHOLIDAYS_LIBS}
   ${KDEPIMLIBS_AKONADI_LIBS}
+  ${KDEPIMLIBS_AKONADI_KCAL_LIBS}
   korganizer_eventviewer
   kdepim
   korganizer_interfaces
   kdepimdbusinterfaces
   korganizer_core
-  akonadi-kcal
+  akonadi-kcal_next
   korg_incidenceeditor
 )
 

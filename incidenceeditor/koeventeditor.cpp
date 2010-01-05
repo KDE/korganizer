@@ -34,7 +34,7 @@
 
 #include <akonadi/kcal/utils.h>
 
-#include <kcal/mimetypevisitor.h>
+#include <akonadi/kcal/incidencemimetypevisitor.h>
 
 #include <KCal/IncidenceFormatter>
 
@@ -47,7 +47,7 @@
 using namespace Akonadi;
 
 KOEventEditor::KOEventEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), QStringList() << KCal::MimeTypeVisitor::eventMimeType(), parent ),
+  : KOIncidenceEditor( QString(), QStringList() << Akonadi::IncidenceMimeTypeVisitor::eventMimeType(), parent ),
     mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
   mInitialEvent = Event::Ptr( new Event );

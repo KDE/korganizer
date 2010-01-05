@@ -34,7 +34,8 @@ target_link_libraries(korgac
 	${KDEPIMLIBS_KCAL_LIBS} 
 	${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
 	${KDEPIMLIBS_AKONADI_LIBS}
-	akonadi-kcal
+	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
+	akonadi-kcal_next
        	korganizerprivate 
 	korganizer_eventviewer
 	korganizer_core

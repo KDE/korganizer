@@ -48,10 +48,11 @@ target_link_libraries(korg_incidenceeditor
    ${KDE4_KDE3SUPPORT_LIBRARY}
    ${KDEPIMLIBS_KCAL_LIBS}
    ${KDEPIMLIBS_AKONADI_LIBS}
+   ${KDEPIMLIBS_AKONADI_KCAL_LIBRARY}
    kdepim
    kdepimdbusinterfaces
    korganizer_core
-   akonadi-kcal
+   akonadi-kcal_next
 )
 
 set_target_properties(korg_incidenceeditor PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION})
@@ -66,7 +67,8 @@ target_link_libraries(incidenceeditorapp
 	${KDE4_KDEUI_LIBS}
    	${KDEPIMLIBS_AKONADI_LIBS}
 	${KDEPIMLIBS_KCAL_LIBS}
-       	akonadi-kcal 
+	${KDEPIMLIBS_AKONADI_KCAL_LIBRARY}
+       	akonadi-kcal_next
 	korg_incidenceeditor
 )
 #install(TARGETS incidenceeditorapp ${INSTALL_TARGETS_DEFAULT_ARGS})
