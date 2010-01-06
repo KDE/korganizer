@@ -59,7 +59,7 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
-#include <interfaces/korganizer/akonadicalendaradaptor.h>
+#include "akonadicalendaradaptor.h"
 
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/collectionselection.h>
@@ -368,7 +368,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     return false;
   }
 
-  AkonadiCalendarAdaptor adaptor( mCalendar, mChanger );
+  AkonadiCalendarAdaptor adaptor( mCalendar );
   // merge in a file
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
@@ -400,7 +400,7 @@ bool CalendarView::saveCalendar( const QString &filename )
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  AkonadiCalendarAdaptor adaptor( mCalendar, mChanger );  
+  AkonadiCalendarAdaptor adaptor( mCalendar );
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
   storage.setSaveFormat( new ICalFormat );
@@ -843,7 +843,7 @@ void CalendarView::edit_copy()
     return;
   }
 
-  AkonadiCalendarAdaptor cal( mCalendar, mChanger );
+  AkonadiCalendarAdaptor cal( mCalendar );
   DndFactory factory( &cal );
   Incidence::Ptr incidence = Akonadi::incidence(item);
   if ( !factory.copyIncidence( incidence.get() ) ) {
@@ -893,7 +893,7 @@ void CalendarView::edit_paste()
     return;
   }
 
-  AkonadiCalendarAdaptor cal( mCalendar, mChanger );
+  AkonadiCalendarAdaptor cal( mCalendar );
   DndFactory factory( &cal );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
@@ -1691,7 +1691,7 @@ void CalendarView::exportICalendar()
       }
     }
     ICalFormat *format = new ICalFormat;
-    AkonadiCalendarAdaptor calendar( mCalendar, mChanger );
+    AkonadiCalendarAdaptor calendar( mCalendar );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
@@ -1740,7 +1740,7 @@ void CalendarView::exportVCalendar()
       }
     }
     VCalFormat *format = new VCalFormat;
-    AkonadiCalendarAdaptor calendar( mCalendar, mChanger );
+    AkonadiCalendarAdaptor calendar( mCalendar );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;

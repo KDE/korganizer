@@ -139,6 +139,7 @@ install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 ########### next target ###############
 
 set(korganizer_core_LIB_SRCS
+    akonadicalendaradaptor.cpp
     kogroupware.cpp
     freebusymanager.cpp
     freebusyurldialog.cpp

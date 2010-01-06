@@ -27,6 +27,7 @@
 #include "akonadicalendar.h"
 #include "koprefs.h"
 #include "incidencechanger.h"
+#include "akonadicalendaradaptor.h"
 
 #include <kio/netaccess.h>
 #include <kcal/icalformat.h>
@@ -35,7 +36,6 @@
 #include <kcal/calendarlocal.h>
 
 #include <akonadi/kcal/utils.h>
-#include <interfaces/korganizer/akonadicalendaradaptor.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -165,7 +165,7 @@ void EventArchiver::archiveIncidences( KOrg::AkonadiCalendar *calendar, KOrg::In
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
 
-  AkonadiCalendarAdaptor cal( calendar, changer );
+  AkonadiCalendarAdaptor cal( calendar );
   FileStorage storage( &cal );
 
   // Save current calendar to disk

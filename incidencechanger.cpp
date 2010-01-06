@@ -29,7 +29,7 @@
 #include "akonadicalendar.h"
 #include "akonadicalendar.h"
 #include <akonadi/kcal/utils.h>
-#include <interfaces/korganizer/akonadicalendaradaptor.h>
+#include "akonadicalendaradaptor.h"
 
 #include <Akonadi/ItemCreateJob>
 #include <Akonadi/ItemDeleteJob>
@@ -280,7 +280,7 @@ bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
   if( doDelete ) {
 
     // @TODO: the factory needs to do the locking!
-    AkonadiCalendarAdaptor cal( mCalendar, this );
+    AkonadiCalendarAdaptor cal( mCalendar );
     DndFactory factory( &cal );
     Akonadi::Item incidenceItem;
     incidenceItem.setPayload<Incidence::Ptr>( incidence );

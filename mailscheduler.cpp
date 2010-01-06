@@ -28,7 +28,7 @@
 #include "komailclient.h"
 #include "koprefs.h"
 #include "akonadicalendar.h"
-#include <interfaces/korganizer/akonadicalendaradaptor.h>
+#include "akonadicalendaradaptor.h"
 
 #include <KCal/Calendar>
 #include <KCal/ICalFormat>
@@ -142,9 +142,9 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
         messageString.remove( QRegExp( "\n[ \t]" ) );
         messageString = QString::fromUtf8( messageString.toLatin1() );
 
-        AkonadiCalendarAdaptor caladaptor(mCalendar, mChanger);
+        AkonadiCalendarAdaptor caladaptor(mCalendar);
         ScheduleMessage *mess = mFormat->parseScheduleMessage( &caladaptor, messageString );
-        
+
         if ( mess ) {
           kDebug() << "got message '" << (*it) << "'";
           messageList.append( mess );
@@ -211,7 +211,7 @@ bool MailScheduler::acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTI
       AkonadiCalendarAdaptor *m_calendar;
   };
 
-  AkonadiCalendarAdaptor caladaptor(mCalendar, mChanger);
+  AkonadiCalendarAdaptor caladaptor(mCalendar);
   SchedulerAdaptor scheduleradaptor(this, &caladaptor);
   return scheduleradaptor.acceptTransaction(incidence, method, status, email);
 }

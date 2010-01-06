@@ -42,7 +42,7 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 #include "akonadicalendar.h"
-#include "interfaces/korganizer/akonadicalendaradaptor.h"
+#include "akonadicalendaradaptor.h"
 #include "akonadicollectionview.h"
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
@@ -1655,7 +1655,7 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
   } else {
     IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
 
-    AkonadiCalendarAdaptor cal( mCalendar, &changer );  FileStorage storage( &cal );
+    AkonadiCalendarAdaptor cal( mCalendar );  FileStorage storage( &cal );
     storage.setFileName( filename );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {

@@ -163,7 +163,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
 
   f.remove();
 
-  AkonadiCalendarAdaptor adaptor(mCalendar, mView->incidenceChanger());
+  AkonadiCalendarAdaptor adaptor(mCalendar);
   ScheduleMessage *message = mFormat.parseScheduleMessage( &adaptor, iCal );
   if ( !message ) {
     QString errorMessage;
