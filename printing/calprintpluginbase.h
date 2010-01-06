@@ -50,6 +50,8 @@ using namespace KCal;
 #define PORTRAIT_HEADER_HEIGHT 72   // header height, for portrait orientation
 #define LANDSCAPE_HEADER_HEIGHT 54  // header height, for landscape orientation
 #define SUBHEADER_HEIGHT 20         // subheader height, for all orientations
+#define PORTRAIT_FOOTER_HEIGHT 16   // footer height, for portrait orientation
+#define LANDSCAPE_FOOTER_HEIGHT 14  // footer height, for landscape orientation
 #define MARGIN_SIZE 36              // margins, for all orientations
 #define PADDING_SIZE 7              // padding between the various top-level boxes
 #define BOX_BORDER_WIDTH 2          // width of the border of all top-level boxes
@@ -146,6 +148,14 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
     int subHeaderHeight() const;
     void setSubHeaderHeight( const int height );
+    /** Returns the height of the page footer. If the height was explicitly
+        set using setFooterHeight, that value is returned, otherwise a
+        default value based on the printer orientation.
+        @return height of the page footer of the printout
+    */
+    int footerHeight() const;
+    void setFooterHeight( const int height );
+
     int margin() const;
     void setMargin( const int margin );
 
@@ -267,6 +277,16 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     int drawHeader( QPainter &p, const QString &title,
                      const QDate &month1, const QDate &month2,
                      const QRect &box, bool expand = false );
+
+    /**
+      Draw a page footer containing the printing date and possibly
+      other things, like a page number.
+      @param p QPainter of the printout
+      @param box coordinates of the footer
+      @return The bottom of the printed box.
+    */
+    int drawFooter( QPainter &p, QRect &box );
+
     /**
       Draw a small calendar with the days of a month into the given area.
       Used for example in the title bar of the sheet.
@@ -517,6 +537,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     bool mUseColors;
     int mHeaderHeight;
     int mSubHeaderHeight;
+    int mFooterHeight;
     int mMargin;
     int mPadding;
     int mBorder;

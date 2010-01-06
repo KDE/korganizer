@@ -97,7 +97,7 @@ class PrintCellItem : public KOrg::CellItem
 
 CalPrintPluginBase::CalPrintPluginBase()
   : PrintPlugin(), mUseColors( true ),
-    mHeaderHeight(-1), mSubHeaderHeight( SUBHEADER_HEIGHT ),
+    mHeaderHeight( -1 ), mSubHeaderHeight( SUBHEADER_HEIGHT ), mFooterHeight( -1 ),
     mMargin( MARGIN_SIZE ), mPadding( PADDING_SIZE ), mCalSys( 0 )
 {
 }
@@ -312,6 +312,20 @@ int CalPrintPluginBase::subHeaderHeight() const
 void CalPrintPluginBase::setSubHeaderHeight( const int height )
 {
   mSubHeaderHeight = height;
+}
+
+int CalPrintPluginBase::footerHeight() const
+{
+  if ( mFooterHeight >= 0 )
+    return mFooterHeight;
+  else if ( orientation() == QPrinter::Portrait )
+    return PORTRAIT_FOOTER_HEIGHT;
+  else
+    return LANDSCAPE_FOOTER_HEIGHT;
+}
+void CalPrintPluginBase::setFooterHeight( const int height )
+{
+  mFooterHeight = height;
 }
 
 int CalPrintPluginBase::margin() const
@@ -535,6 +549,20 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
   p.setFont( oldFont );
 
   return textRect.bottom();
+}
+
+int CalPrintPluginBase::drawFooter( QPainter &p, QRect &footbox )
+{
+  // Print the timestamp
+  QFont stampFont("sans-serif", 10, QFont::Normal, true );
+  p.setFont( stampFont );
+  QDateTime now = QDateTime::currentDateTime();
+  QString str = i18nc( "printed <datetime>",
+                       "printed %1",
+                       KGlobal::locale()->formatDateTime( now ) );
+  p.drawText( footbox, Qt::AlignRight | Qt::AlignVCenter, str );
+
+  return footbox.bottom();
 }
 
 void CalPrintPluginBase::drawSmallMonth( QPainter &p, const QDate &qd, const QRect &box )
