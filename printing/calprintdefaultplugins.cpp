@@ -142,7 +142,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mStartCaption = i18n("No start date");
         mStartString = QString::null;
       }
-    
+
       if ( event->hasEndDate() ) {
         mEndCaption = i18n("End date: ");
         mEndString = (event->doesFloat()) ? (event->dtEndDateStr(false)) : (event->dtEndStr());
@@ -171,7 +171,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mStartCaption = i18n("No start date");
         mStartString = QString::null;
       }
-    
+
       if ( todo->hasDueDate() ) {
         mEndCaption = i18n("Due date: ");
         mEndString = (todo->doesFloat()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr());
@@ -270,7 +270,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect timesBox( titleBox );
     timesBox.setTop( titleBox.bottom() + padding() );
     timesBox.setHeight( height / 8 );
-    
+
     TimePrintStringsVisitor stringVis;
     int h = timesBox.top();
     if ( stringVis.act(*it) ) {
@@ -282,7 +282,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       textRect.setRight( timesBox.right() - padding() );
       h = QMAX( printCaptionAndText( p, textRect, stringVis.mEndCaption, stringVis.mEndString, captionFont, textFont ), h );
     }
-    
+
     // Convert recurrence to a string
     if ( (*it)->doesRecur() ) {
       QRect recurBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
@@ -311,12 +311,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       txt = QString();
     } else {
       cap = i18n("Reminder: ", "%n reminders: ", alarms.count() );
-      
+
       QStringList alarmStrings;
       KCal::Alarm::List::ConstIterator it;
       for ( it = alarms.begin(); it != alarms.end(); ++it ) {
         Alarm *alarm = *it;
-      
+
         // Alarm offset, copied from koeditoralarms.cpp:
         QString offsetstr;
         int offset = 0;
@@ -361,7 +361,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     QRect organizerBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
     h = QMAX( printCaptionAndText( p, organizerBox, i18n("Organizer: "), (*it)->organizer().fullName(), captionFont, textFont ), h );
-    
+
     // Finally, draw the frame around the time information...
     timesBox.setBottom( QMAX( timesBox.bottom(), h+padding() ) );
     drawBox( p, BOX_BORDER_WIDTH, timesBox );
@@ -376,10 +376,13 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
 
     // Now start constructing the boxes from the bottom:
-    QRect categoriesBox( locationBox );
-    categoriesBox.setBottom( box.bottom() );
-    categoriesBox.setTop( categoriesBox.bottom() - lineHeight - 2*padding() );
+    QRect footerBox( locationBox );
+    footerBox.setBottom( box.bottom() );
+    footerBox.setTop( footerBox.bottom() - lineHeight - 2*padding() );
 
+    QRect categoriesBox( footerBox );
+    categoriesBox.setBottom( footerBox.top() );
+    categoriesBox.setTop( categoriesBox.bottom() - lineHeight - 2*padding() );
 
     QRect attendeesBox( box.left(), categoriesBox.top()-padding()-box.height()/9, box.width(), box.height()/9 );
 
@@ -393,7 +396,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect descriptionBox( notesBox );
     descriptionBox.setLeft( box.left() );
     descriptionBox.setRight( attachmentsBox.right() );
-    // Adjust boxes depending on the show options...    
+    // Adjust boxes depending on the show options...
     if (!mShowSubitemsNotes) {
       descriptionBox.setRight( box.right() );
     }
@@ -407,17 +410,17 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         }
       if (!mShowAttachments && !mShowAttendees) {
         if (mShowSubitemsNotes) {
-          descriptionBox.setBottom( attendeesBox.bottom() );  
+          descriptionBox.setBottom( attendeesBox.bottom() );
         }
         if (!mShowOptions) {
-          descriptionBox.setBottom( attendeesBox.bottom() );  
+          descriptionBox.setBottom( attendeesBox.bottom() );
           notesBox.setBottom( attendeesBox.bottom() );
         }
       }
     }
     if (mShowAttachments) {
       if (!mShowOptions) {
-        attachmentsBox.setRight( box.right() );        
+        attachmentsBox.setRight( box.right() );
         attachmentsBox.setRight( box.right() );
       }
       if (!mShowAttendees) {
@@ -425,15 +428,15 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         attachmentsBox.setBottom( attendeesBox.bottom() );
       }
     }
-    
-    drawBoxWithCaption( p, descriptionBox, i18n("Description:"), 
-                        (*it)->description(), /*sameLine=*/false, 
+
+    drawBoxWithCaption( p, descriptionBox, i18n("Description:"),
+                        (*it)->description(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
-    
+
     if ( mShowSubitemsNotes ) {
       if ( (*it)->relations().isEmpty() || (*it)->type() != "Todo" ) {
-        int notesPosition = drawBoxWithCaption( p, notesBox, i18n("Notes:"), 
-                         QString::null, /*sameLine=*/false, /*expand=*/false, 
+        int notesPosition = drawBoxWithCaption( p, notesBox, i18n("Notes:"),
+                         QString::null, /*sameLine=*/false, /*expand=*/false,
                          captionFont, textFont );
         QPen oldPen( p.pen() );
         p.setPen( Qt::DotLine );
@@ -448,8 +451,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           subitemCaption = i18n( "No Subitems" );
           txt == "";
         } else {
-          subitemCaption = i18n( "1 Subitem:", 
-                          "%1 Subitems:", 
+          subitemCaption = i18n( "1 Subitem:",
+                          "%1 Subitems:",
                           relations.count() );
         }
         Incidence::List::ConstIterator rit;
@@ -474,26 +477,26 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           // format the dates if provided
           datesString = "";
           if ( (*rit)->dtStart().isValid() ) {
-                datesString += i18n( 
+                datesString += i18n(
                 "Start Date: %1\n").arg(
                 KGlobal::locale()->formatDate( (*rit)->dtStart().date(),
                                 true ) );
             if ( !(*rit)->doesFloat() ) {
-                datesString += i18n( 
+                datesString += i18n(
                 "Start Time: %1\n").arg(
                 KGlobal::locale()->formatTime((*rit)->dtStart().time(),
                      false, false) );
             }
           }
           if ( (*rit)->dtEnd().isValid() ) {
-            subitemString += i18n( 
+            subitemString += i18n(
                 "Due Date: %1\n").arg(
                 KGlobal::locale()->formatDate( (*rit)->dtEnd().date(),
                                 true ) );
             if ( !(*rit)->doesFloat() ) {
-              subitemString += i18n( 
+              subitemString += i18n(
                   "subitem due time", "Due Time: %1\n").arg(
-                  KGlobal::locale()->formatTime((*rit)->dtEnd().time(), 
+                  KGlobal::locale()->formatTime((*rit)->dtEnd().time(),
                       false, false) );
             }
           }
@@ -504,17 +507,17 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
             subitemString += datesString;
             subitemString += "\n";
           }
-          subitemString += i18n( "subitem Status: statusString", 
+          subitemString += i18n( "subitem Status: statusString",
                                   "Status: %1\n").arg( statusString );
           subitemString += IncidenceFormatter::recurrenceString((*rit)) + "\n";
-          subitemString += i18n( "subitem Priority: N", 
+          subitemString += i18n( "subitem Priority: N",
                                   "Priority: %1\n").arg( (*rit)->priority() );
           subitemString += i18n( "subitem Secrecy: secrecyString",
                                   "Secrecy: %1\n").arg( (*rit)->secrecyStr() );
           subitemString += "\n";
         }
-        drawBoxWithCaption( p, notesBox, i18n("Subitems:"), 
-                            (*it)->description(), /*sameLine=*/false, 
+        drawBoxWithCaption( p, notesBox, i18n("Subitems:"),
+                            (*it)->description(), /*sameLine=*/false,
                             /*expand=*/false, captionFont, textFont );
       }
     }
@@ -537,11 +540,11 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         attachmentString.append((*ait)->label());
       }
       drawBoxWithCaption( p, attachmentsBox,
-                        attachmentCaption, attachmentString, 
-                        /*sameLine=*/false, /*expand=*/false, 
+                        attachmentCaption, attachmentString,
+                        /*sameLine=*/false, /*expand=*/false,
                         captionFont, textFont );
-      int attachStart = drawBoxWithCaption( p, attachmentsBox, 
-                        QString()/*i18n("Attachments:")*/, QString(), /*sameLine=*/false, 
+      int attachStart = drawBoxWithCaption( p, attachmentsBox,
+                        QString()/*i18n("Attachments:")*/, QString(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
     }
 
@@ -562,7 +565,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                        .arg( (*ait)->fullName() )
                        .arg( (*ait)->roleStr() ).arg( (*ait)->statusStr() );
       }
-      drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString, 
+      drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString,
                /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
     }
 
@@ -596,10 +599,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       drawBoxWithCaption( p, optionsBox, i18n("Settings: "),
              optionsString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
     }
-    
+
     drawBoxWithCaption( p, categoriesBox, i18n("Categories: "),
            (*it)->categories().join( i18n("Spacer for the joined list of categories", ", ") ),
            /*sameLine=*/true, /*expand=*/false, captionFont, textFont );
+
+    drawFooter( p, footerBox );
   }
   p.setFont( oldFont );
 }
@@ -696,6 +701,10 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 {
   QDate curDay( mFromDate );
 
+  QRect headerBox( 0, 0, width, headerHeight() );
+  QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
+  height -= footerHeight();
+
   do {
     QTime curStartTime( mStartTime );
     QTime curEndTime( mEndTime );
@@ -708,7 +717,6 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     }
 
     KLocale *local = KGlobal::locale();
-    QRect headerBox( 0, 0, width, headerHeight() );
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
 
 
@@ -734,6 +742,9 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     tlBox.setLeft( 0 );
     tlBox.setWidth( TIMELINE_WIDTH );
     drawTimeLine( p, curStartTime, curEndTime, tlBox );
+
+    drawFooter( p, footerBox );
+
     curDay = curDay.addDays( 1 );
     if ( curDay <= mToDate ) mPrinter->newPage();
   } while ( curDay <= mToDate );
@@ -854,6 +865,9 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
 
   QString line1, line2, title;
   QRect headerBox( 0, 0, width, headerHeight() );
+  QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
+  height -= footerHeight();
+
   QRect weekBox( headerBox );
   weekBox.setTop( headerBox.bottom() + padding() );
   weekBox.setBottom( height );
@@ -870,7 +884,11 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         }
         title = title.arg( line1 ).arg( line2 );
         drawHeader( p, title, curWeek.addDays( -6 ), QDate(), headerBox );
+
         drawWeek( p, curWeek, weekBox );
+
+        drawFooter( p, footerBox );
+
         curWeek = curWeek.addDays( 7 );
         if ( curWeek <= toWeek )
           mPrinter->newPage();
@@ -889,11 +907,14 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         }
         title = title.arg( line1 ).arg( line2 ).arg( curWeek.weekNumber() );
         drawHeader( p, title, curWeek, QDate(), headerBox );
+
         QRect weekBox( headerBox );
         weekBox.setTop( headerBox.bottom() + padding() );
         weekBox.setBottom( height );
-
         drawTimeTable( p, fromWeek, curWeek, mStartTime, mEndTime, weekBox );
+
+        drawFooter( p, footerBox );
+
         fromWeek = fromWeek.addDays( 7 );
         curWeek = fromWeek.addDays( 6 );
         if ( curWeek <= toWeek )
@@ -917,6 +938,8 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
         drawTimeTable( p, endLeft.addDays( 1 ), curWeek,
                        mStartTime, mEndTime, weekBox1 );
+
+        drawFooter( p, footerBox );
 
         fromWeek = fromWeek.addDays( 7 );
         curWeek = fromWeek.addDays( 6 );
@@ -1036,6 +1059,9 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
   if ( !calSys ) return;
 
   QRect headerBox( 0, 0, width, headerHeight() );
+  QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
+  height -= footerHeight();
+
   QRect monthBox( 0, 0, width, height );
   monthBox.setTop( headerBox.bottom() + padding() );
 
@@ -1050,6 +1076,9 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
     drawHeader( p, title, curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
                 headerBox );
     drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly, monthBox );
+
+    drawFooter( p, footerBox );
+
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) mPrinter->newPage();
   } while ( curMonth <= toMonth );
@@ -1187,9 +1216,12 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   int lineSpacing = 15;
   int fontHeight = 10;
 
+  QRect headerBox( 0, 0, width, headerHeight() );
+  QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
+  height -= footerHeight();
+
   // Draw the First Page Header
-  drawHeader( p, mPageTitle, mFromDate, QDate(),
-                       QRect( 0, 0, width, headerHeight() ) );
+  drawHeader( p, mPageTitle, mFromDate, QDate(), headerBox );
 
   // Draw the Column Headers
   int mCurrentLinePos = headerHeight() + 5;
@@ -1305,8 +1337,9 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
                          0, 0, mCurrentLinePos, width, height, todoList );
     }
   }
+
+  drawFooter( p, footerBox );
   p.setFont( oldFont );
 }
-
 
 #endif

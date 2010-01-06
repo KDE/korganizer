@@ -137,12 +137,13 @@ void CalPrintYear::setDateRange( const QDate& from, const QDate& to )
 
 void CalPrintYear::print( QPainter &p, int width, int height )
 {
-kdDebug()<<"CalPrintYear::print, width: "<<width<<", height: "<<height<<endl;
-  QRect headerBox( 0, 0, width, headerHeight() );
-kdDebug()<<"headerBox: "<<headerBox<<endl;
   const KCalendarSystem *calsys = calendarSystem();
   KLocale *locale = KGlobal::locale();
   if ( !calsys || !locale ) return;
+
+  QRect headerBox( 0, 0, width, headerHeight() );
+  QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
+  height -= footerHeight();
 
   QDate start;
   calsys->setYMD( start, mYear, 1, 1 );
@@ -197,6 +198,8 @@ kdDebug()<<"headerBox: "<<headerBox<<endl;
 
       temp = calsys->addMonths( temp, 1 );
     }
+
+    drawFooter( p, footerBox );
     start = calsys->addMonths( start, monthsPerPage );
   }
 }
