@@ -122,7 +122,7 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
       // manually.
       // FIXME: Groupware scheduling should be factored out to it's own class
       //        anyway
-      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
+      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
       scheduler.performTransaction( incidence.get(), iTIPCancel );
     }
   }
@@ -257,7 +257,7 @@ void IncidenceChanger::deleteIncidenceFinished( KJob* j )
     }
 
     if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
+      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
       scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
     }
     //reset the doNotNotify flag

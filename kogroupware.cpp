@@ -184,7 +184,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
     delete message;
     return;
   }
-  MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
+  MailScheduler scheduler( mCalendar );
   if ( action.startsWith( QLatin1String( "accepted" ) ) ||
        action.startsWith( QLatin1String( "tentative" ) ) ||
        action.startsWith( QLatin1String( "delegated" ) ) ||
@@ -397,7 +397,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
       incidence->setSummary( i18n( "<placeholder>No summary given</placeholder>" ) );
     }
     // Send the mail
-    MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
+    MailScheduler scheduler( mCalendar );
     if( scheduler.performTransaction( incidence, method ) )
       return true;
     rc = KMessageBox::questionYesNo(
@@ -424,11 +424,11 @@ void KOGroupware::sendCounterProposal( KCal::Event *oldEvent, KCal::Event *newEv
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
                            IncidenceFormatter::dateToString( newEvent->dtStart() ),
                            IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
-    MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
+    MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( tmp, KCal::iTIPReply );
     delete tmp;
   } else {
-    MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
+    MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( newEvent, iTIPCounter );
   }
 }

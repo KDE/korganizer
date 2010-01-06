@@ -290,7 +290,7 @@ class KORGANIZER_CORE_EXPORT AkonadiCalendarAdaptor : public KCal::Calendar
         }
 
         if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-          MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), 0 );
+          MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
           scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
         }
         //reset the doNotNotify flag
@@ -333,7 +333,7 @@ class KORGANIZER_CORE_EXPORT AkonadiCalendarAdaptor : public KCal::Calendar
       inc->clearAttendees();
 
       // Send the mail
-      MailScheduler scheduler( mCalendar, 0 );
+      MailScheduler scheduler( mCalendar );
       if ( scheduler.performTransaction( incidence.get(), method ) ) {
         KMessageBox::information( 0,
                                   i18n( "The groupware message for item '%1' "

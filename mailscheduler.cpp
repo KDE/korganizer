@@ -23,12 +23,14 @@
 */
 
 #include "mailscheduler.h"
-#include "incidencechanger.h"
 #include "kocore.h"
 #include "komailclient.h"
 #include "koprefs.h"
 #include "akonadicalendar.h"
 #include "akonadicalendaradaptor.h"
+
+#include <Akonadi/ItemCreateJob>
+#include <Akonadi/ItemModifyJob>
 
 #include <KCal/Calendar>
 #include <KCal/ICalFormat>
@@ -44,9 +46,9 @@
 
 using namespace KOrg;
 
-MailScheduler::MailScheduler( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase *changer )
+MailScheduler::MailScheduler( KOrg::AkonadiCalendar *calendar )
   //: Scheduler( calendar )
-  : mCalendar( calendar ), mChanger( changer ), mFormat( new ICalFormat() )
+  : mCalendar( calendar ), mFormat( new ICalFormat() )
 {
   mFormat->setTimeSpec( calendar->timeSpec() );
 }
@@ -238,18 +240,23 @@ bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
     incidence->setSchedulingID( exIncPtr->schedulingID() );
     incidence->setUid( exIncPtr->uid() );
 
-    mChanger->beginChange( exInc );
-
     Q_ASSERT( exIncPtr.get() && incidence );
     KCal::AssignmentVisitor v;
     v.assign( exIncPtr.get(), incidence );
 
     exIncPtr->updated();
-    mChanger->endChange( exInc );
+    new Akonadi::ItemModifyJob( exInc );
+    //FIXME: Add error handling
   } else {
-#ifdef AKONADI_PORT_DISABLED
-    mChanger->addIncidence( Incidence::Ptr(incidence->clone()) );
-#endif
+    Akonadi::Collection collection = Akonadi::selectCollection( 0 );
+
+    Akonadi::Item item;
+    item.setPayload( Incidence::Ptr( incidence->clone() ) );
+    //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
+    item.setMimeType( QString::fromLatin1("application/x-vnd.akonadi.calendar.%1").arg(QLatin1String(incidence->type().toLower())) ); //PENDING(AKONADI_PORT) shouldn't be hardcoded?
+
+    new Akonadi::ItemCreateJob( item, collection );
+    //FIXME: Add error handling
   }
 
   return true;

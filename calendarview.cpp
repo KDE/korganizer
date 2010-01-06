@@ -1439,7 +1439,7 @@ void CalendarView::schedule_publish( const Item &item )
     inc->clearAttendees();
 
     // Send the mail
-    MailScheduler scheduler( mCalendar, mChanger );
+    MailScheduler scheduler( mCalendar );
     if ( scheduler.publish( incidence.get(), publishdlg->addresses() ) ) {
       KMessageBox::information( this, i18n( "The item information was successfully sent." ),
                                 i18n( "Publishing" ), "IncidencePublishSuccess" );
@@ -1546,7 +1546,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   QPointer<PublishDialog> publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
     // Send the mail
-    MailScheduler scheduler( mCalendar, mChanger );
+    MailScheduler scheduler( mCalendar );
     if ( scheduler.publish( freebusy, publishdlg->addresses() ) ) {
       KMessageBox::information(
         this,
@@ -1589,7 +1589,7 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
   inc->clearAttendees();
 
   // Send the mail
-  MailScheduler scheduler( mCalendar, mChanger );
+  MailScheduler scheduler( mCalendar );
   if ( scheduler.performTransaction( incidence.get(), method ) ) {
     KMessageBox::information( this,
                               i18n( "The groupware message for item '%1' "
