@@ -894,12 +894,21 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     int currentHeight = int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
-    QString str = i18n( "starttime - endtime summary, location",
-                        "%1-%2 %3, %4" ).
-                  arg( KGlobal::locale()->formatTime( startTime.time() ) ).
-                  arg( KGlobal::locale()->formatTime( endTime.time() ) ).
-                  arg( event->summary() ).
-                  arg( event->location() );
+    QString str;
+    if ( event->location().isEmpty() ) {
+      str = i18n( "starttime - endtime summary",
+                  "%1-%2 %3" ).
+            arg( KGlobal::locale()->formatTime( startTime.time() ) ).
+            arg( KGlobal::locale()->formatTime( endTime.time() ) ).
+            arg( event->summary() );
+    } else {
+      str = i18n( "starttime - endtime summary, location",
+                  "%1-%2 %3, %4" ).
+            arg( KGlobal::locale()->formatTime( startTime.time() ) ).
+            arg( KGlobal::locale()->formatTime( endTime.time() ) ).
+            arg( event->summary() ).
+            arg( event->location() );
+    }
     showEventBox( p, eventBox, event, str );
   }
 }
