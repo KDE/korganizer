@@ -85,14 +85,14 @@ class KOEditorAttachments : public QWidget
     explicit KOEditorAttachments( int spacing = 8, QWidget *parent = 0 );
     ~KOEditorAttachments();
 
-    void addAttachment( const QString &uri,
-                        const QString &mimeType = QString(),
-                        const QString &label = QString(),
-                        bool binary = false );
+    void addUriAttachment( const QString &uri,
+                           const QString &mimeType = QString(),
+                           const QString &label = QString(),
+                           bool inLine = false );
     void addAttachment( KCal::Attachment *attachment );
-    void addAttachment( const QByteArray &data,
-                        const QString &mimeType = QString(),
-                        const QString &label = QString() );
+    void addDataAttachment( const QByteArray &data,
+                            const QString &mimeType = QString(),
+                            const QString &label = QString() );
 
     /** Set widgets to default values */
     void setDefaults();

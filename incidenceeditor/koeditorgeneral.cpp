@@ -335,7 +335,7 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
     if ( mimeTypes.count() > i ) {
       mimeType = mimeTypes[ i ];
     }
-    mAttachments->addAttachment( *it, mimeType, QString(), inlineAttachments );
+    mAttachments->addUriAttachment( *it, mimeType, QString(), inlineAttachments );
   }
 }
 

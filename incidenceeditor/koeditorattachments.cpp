@@ -574,8 +574,8 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
     QStringList::ConstIterator jt = labels.constBegin();
     for ( KUrl::List::ConstIterator it = urls.constBegin();
           it != urls.constEnd(); ++it ) {
-      addAttachment( (*it).url(), QString(), ( jt == labels.constEnd() ?
-                                               QString() : *( jt++ ) ) );
+      addUriAttachment( (*it).url(), QString(), ( jt == labels.constEnd() ?
+                                                  QString() : *( jt++ ) ), true );
     }
   } else if ( cancelAction != ret ) {
     if ( probablyWeHaveUris ) {
@@ -585,8 +585,9 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
         connect( job, SIGNAL(result(KJob *)), SLOT(downloadComplete(KJob *)) );
       }
     } else { // we take anything
-      addAttachment( mimeData->data( mimeData->formats().first() ), mimeData->formats().first(),
-                     KMimeType::mimeType( mimeData->formats().first() )->name() );
+      addDataAttachment( mimeData->data( mimeData->formats().first() ),
+                         mimeData->formats().first(),
+                         KMimeType::mimeType( mimeData->formats().first() )->name() );
     }
   }
 }
@@ -602,9 +603,9 @@ void KOEditorAttachments::downloadComplete( KJob *job )
     static_cast<KIO::Job*>(job)->ui()->setWindow( this );
     static_cast<KIO::Job*>(job)->ui()->showErrorMessage();
   } else {
-    addAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(),
-                   QString(),
-                   static_cast<KIO::SimpleJob *>( job )->url().fileName() );
+    addDataAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(),
+                       QString(),
+                       static_cast<KIO::SimpleJob *>( job )->url().fileName() );
   }
 }
 
@@ -699,12 +700,12 @@ void KOEditorAttachments::setDefaults()
   mAttachments->clear();
 }
 
-void KOEditorAttachments::addAttachment( const QString &uri,
-                                         const QString &mimeType,
-                                         const QString &label,
-                                         bool binary )
+void KOEditorAttachments::addUriAttachment( const QString &uri,
+                                            const QString &mimeType,
+                                            const QString &label,
+                                            bool inLine )
 {
-  if ( !binary ) {
+  if ( !inLine ) {
     AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
     item->setUri( uri );
     item->setLabel( label );
@@ -720,26 +721,25 @@ void KOEditorAttachments::addAttachment( const QString &uri,
       } else {
         item->setMimeType( KMimeType::findByUrl( uri )->name() );
       }
-    } else {
-      QString tmpFile;
-      if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
-        QFile f( tmpFile );
-        if ( !f.open( QIODevice::ReadOnly ) ) {
-          return;
-        }
-        const QByteArray data = f.readAll();
-        f.close();
-        addAttachment( data, mimeType, label );
-      }
-      KIO::NetAccess::removeTempFile( tmpFile );
     }
   } else {
+    QString tmpFile;
+    if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
+      QFile f( tmpFile );
+      if ( !f.open( QIODevice::ReadOnly ) ) {
+        return;
+      }
+      const QByteArray data = f.readAll();
+      f.close();
+      addDataAttachment( data, mimeType, label );
+    }
+    KIO::NetAccess::removeTempFile( tmpFile );
   }
 }
 
-void KOEditorAttachments::addAttachment( const QByteArray &data,
-                                         const QString &mimeType,
-                                         const QString &label )
+void KOEditorAttachments::addDataAttachment( const QByteArray &data,
+                                             const QString &mimeType,
+                                             const QString &label )
 {
   AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
 
