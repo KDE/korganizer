@@ -1797,26 +1797,28 @@ void CalendarView::processTodoListSelection( const Item &item, const QDate &date
 void CalendarView::processIncidenceSelection( const Item &item, const QDate &date )
 {
   Incidence* const incidence = Akonadi::incidence( item ).get();
+  if ( item != mSelectedIncidence ) {
+    // This signal also must be emitted if incidence is 0
+    emit incidenceSelected( item, date );
+  }
+
   if ( !incidence || item == mSelectedIncidence ) {
     return;
   }
 
   mSelectedIncidence = item;
-  emit incidenceSelected( mSelectedIncidence, date );
 
   bool organizerEvents = false;
   bool groupEvents = false;
   bool todo = false;
   bool subtodo = false;
 
-  if ( incidence ) {
-    organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
-    groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
+  organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
+  groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
 
-    if ( incidence && incidence->type() == "Todo" ) {
-      todo = true;
-      subtodo = ( incidence->relatedTo() != 0 );
-    }
+  if ( incidence->type() == "Todo" ) {
+    todo = true;
+    subtodo = ( incidence->relatedTo() != 0 );
   }
   emit todoSelected( todo );
   emit subtodoSelected( subtodo );
