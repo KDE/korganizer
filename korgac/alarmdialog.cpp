@@ -346,17 +346,7 @@ void AlarmDialog::slotUser3()
 
 void AlarmDialog::dismissCurrent()
 {
-  ReminderList selection = selectedItems();
-  for ( ReminderList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
-    kDebug() << "removing " << Akonadi::incidence(( *it )->mIncidence)->summary();
-    if ( mIncidenceTree->itemBelow( *it ) ) {
-      mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
-    } else if ( mIncidenceTree->itemAbove( *it ) ) {
-      mIncidenceTree->setCurrentItem( mIncidenceTree->itemAbove( *it ) );
-    }
-    mIncidenceTree->removeItemWidget( *it, 0 );
-    delete *it;
-  }
+  dismiss( selectedItems() );
 
   if ( activeCount() == 0 ) {
     accept();
@@ -368,16 +358,34 @@ void AlarmDialog::dismissCurrent()
 
 void AlarmDialog::dismissAll()
 {
+  ReminderList selections;
+
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
     if ( !(*it)->isDisabled() ) { //do not disable suspended reminders
-      delete *it;
+      selections.append( static_cast<ReminderListItem *>( *it ) );
     }
     ++it;
   }
+  dismiss( selections );
+
   setTimer();
   accept();
   emit reminderCount( activeCount() );
+}
+
+void AlarmDialog::dismiss( ReminderList selections )
+{
+  for ( ReminderList::Iterator it = selections.begin(); it != selections.end(); ++it ) {
+    kDebug() << "removing " << Akonadi::incidence(( *it )->mIncidence)->summary(); 
+    if ( mIncidenceTree->itemBelow( *it ) ) {
+      mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
+    } else if ( mIncidenceTree->itemAbove( *it ) ) {
+      mIncidenceTree->setCurrentItem( mIncidenceTree->itemAbove( *it ) );
+    }
+    mIncidenceTree->removeItemWidget( *it, 0 );
+    delete *it;
+  }
 }
 
 void AlarmDialog::edit()

@@ -55,6 +55,7 @@ class QVBoxLayout;
 
 class AlarmDialog : public KDialog
 {
+
   Q_OBJECT
   public:
     explicit AlarmDialog( KOrg::AkonadiCalendar *calendar, QWidget *parent = 0 );
@@ -91,6 +92,7 @@ class AlarmDialog : public KDialog
   private:
     bool startKOrganizer();
     void setTimer();
+    void dismiss( QList<ReminderListItem *> selections );
     int activeCount();
     QList<ReminderListItem *> selectedItems() const;
     void updateButtons();
