@@ -75,6 +75,7 @@ MarcusBains::MarcusBains( KOAgenda *agenda )
   connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation()) );
   mTimer->start( 0 );
 
+  mOldTime = QTime( 0, 0 );
   mOldTodayCol = -1;
 }
 
@@ -126,11 +127,14 @@ void MarcusBains::updateLocationRecalc( bool recalculate )
   int y = int( minutes  *  mAgenda->gridSpacingY() / minutesPerCell );
   int x = int( mAgenda->gridSpacingX() * todayCol );
 
-  if ( !( KOPrefs::instance()->marcusBainsEnabled() ) || ( todayCol < 0 ) ) {
-    hide();
-    mTimeBox->hide();
-    return;
-  } else {
+  bool hideIt = !( KOPrefs::instance()->mMarcusBainsEnabled );
+  if ( !isHidden() && ( hideIt || ( todayCol < 0 ) ) ) {
+     hide();
+     mTimeBox->hide();
+     return;
+  }
+
+  if ( isHidden() && !hideIt ) {
     show();
     mTimeBox->show();
   }
