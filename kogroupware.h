@@ -62,7 +62,7 @@ class KORGANIZER_CORE_EXPORT KOGroupware : public QObject
 {
   Q_OBJECT
   public:
-    static KOGroupware *create( KOrg::CalendarViewBase *, KOrg::AkonadiCalendar * );
+    static KOGroupware *create( KOrg::AkonadiCalendar * );
     static KOGroupware *instance();
 
     FreeBusyManager *freeBusyManager();
@@ -92,18 +92,14 @@ class KORGANIZER_CORE_EXPORT KOGroupware : public QObject
     /** Handle iCals given by KMail. */
     void incomingDirChanged( const QString &path );
 
-    /** Updates some slot connections when the view incidence changer changes */
-    void slotViewNewIncidenceChanger( IncidenceChangerBase *changer );
-
     void initialCheckForChanges();
 
   protected:
-    KOGroupware( KOrg::CalendarViewBase *, KOrg::AkonadiCalendar * );
+    KOGroupware( KOrg::AkonadiCalendar * );
 
   private:
     static KOGroupware *mInstance;
     KCal::ICalFormat mFormat;
-    KOrg::CalendarViewBase *mView;
     KOrg::AkonadiCalendar *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
     bool mDoNotNotify;

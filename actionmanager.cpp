@@ -223,7 +223,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
 void ActionManager::init()
 {
   // Construct the groupware object
-  KOGroupware::create( mCalendarView, mCalendar );
+  KOGroupware::create( mCalendar );
 
   // add this instance of the window to the static list.
   if ( !mWindowList ) {

@@ -58,10 +58,10 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
 KOGroupware *KOGroupware::mInstance = 0;
 
-KOGroupware *KOGroupware::create( KOrg::CalendarViewBase *view, KOrg::AkonadiCalendar *calendar )
+KOGroupware *KOGroupware::create( KOrg::AkonadiCalendar *calendar )
 {
   if ( !mInstance ) {
-    mInstance = new KOGroupware( view, calendar );
+    mInstance = new KOGroupware( calendar );
   }
   return mInstance;
 }
@@ -73,8 +73,8 @@ KOGroupware *KOGroupware::instance()
   return mInstance;
 }
 
-KOGroupware::KOGroupware( KOrg::CalendarViewBase *view, KOrg::AkonadiCalendar *cal )
-  : QObject( 0 ), mView( view ), mCalendar( cal ), mDoNotNotify( false )
+KOGroupware::KOGroupware( KOrg::AkonadiCalendar *cal )
+  : QObject( 0 ), mCalendar( cal ), mDoNotNotify( false )
 {
   setObjectName( "kmgroupware_instance" );
   // Set up the dir watch of the three incoming dirs
@@ -106,23 +106,7 @@ void KOGroupware::initialCheckForChanges()
     mFreeBusyManager->setCalendar( mCalendar );
     connect( mCalendar, SIGNAL(calendarChanged()),
              mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-    connect( mView, SIGNAL(newIncidenceChanger(IncidenceChangerBase*)),
-             this, SLOT(slotViewNewIncidenceChanger(IncidenceChangerBase*)) );
-    slotViewNewIncidenceChanger( mView->incidenceChanger() );
   }
-}
-
-void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase *changer )
-{
-  // Call slot perhapsUploadFB if an incidence was added, changed or removed
-  connect( changer, SIGNAL(incidenceAdded(Akonadi::Item)),
-           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-  connect( changer, SIGNAL(incidenceChanged(Akonadi::Item, Akonadi::Item, int)),
-           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-  connect( changer, SIGNAL( incidenceChanged(Akonadi::Item, Akonadi::Item)),
-           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) ) ;
-  connect( changer, SIGNAL(incidenceDeleted(Akonadi::Item)),
-           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
@@ -171,7 +155,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
       errorMessage = i18n( "Error message: %1", mFormat.exception()->message() );
     }
     kDebug() << "Error parsing" << errorMessage;
-    KMessageBox::detailedError( mView,
+    KMessageBox::detailedError( 0,
                                 i18n( "Error while processing an invitation or update." ),
                                 errorMessage );
     return;
@@ -222,12 +206,14 @@ void KOGroupware::incomingDirChanged( const QString &path )
       // accept counter proposal
       scheduler.acceptCounterProposal( incidence );
       // send update to all attendees
-      sendICalMessage( mView, iTIPRequest, incidence, KOGlobals::INCIDENCEEDITED, false );
+      sendICalMessage( 0, iTIPRequest, incidence, KOGlobals::INCIDENCEEDITED, false );
     }
   } else {
     kError() << "Unknown incoming action" << action;
   }
 
+//Reenable once this part is independent from KOrganizer
+#if AKONADI_PORT_DISABLED
   if ( action.startsWith( QLatin1String( "counter" ) ) ) {
     Akonadi::Item item;
     item.setPayload( Incidence::Ptr( incidence->clone() ) );
@@ -235,7 +221,8 @@ void KOGroupware::incomingDirChanged( const QString &path )
     KOIncidenceEditor *tmp = mView->editorDialog( item );
     tmp->selectInvitationCounterProposal( true );
   }
-  mView->updateView();
+  mView->updateView(); // This one can probably go away
+#endif
   delete message;
 }
 
