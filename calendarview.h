@@ -674,10 +674,11 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     // various housekeeping variables.
     bool  mReadOnly; // flag indicating if calendar is read-only
-    QDate mSaveSingleDate;
 
     Akonadi::Item mSelectedIncidence;
-    KOTodoView *mTodoList;
+    QDate mSaveDate;
+
+  KOTodoView *mTodoList;
     QMap<Akonadi::Item::Id,KOIncidenceEditor*> mDialogList;
 
     KOrg::IncidenceChangerBase *mChanger;

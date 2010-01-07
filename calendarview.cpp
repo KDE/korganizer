@@ -1802,11 +1802,17 @@ void CalendarView::processIncidenceSelection( const Item &item, const QDate &dat
     emit incidenceSelected( item, date );
   }
 
-  if ( !incidence || item == mSelectedIncidence ) {
-    return;
+  if ( !incidence ) {
+   return;
+  }
+  if ( item == mSelectedIncidence ) {
+    if ( !incidence->recurs() || mSaveDate == date ) {
+      return;
+    }
   }
 
   mSelectedIncidence = item;
+  mSaveDate = date;
 
   bool organizerEvents = false;
   bool groupEvents = false;
