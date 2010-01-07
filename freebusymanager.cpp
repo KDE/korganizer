@@ -442,8 +442,9 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email ) const
   // Try with the url configurated by preferred email in kcontactmanager
   Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob();
   job->setQuery( Akonadi::ContactSearchJob::Email, email );
-  if ( !job->exec() )
+  if ( !job->exec() ) {
     return KUrl();
+  }
 
   QString pref;
   const KABC::Addressee::List contacts = job->contacts();
