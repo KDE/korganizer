@@ -390,7 +390,7 @@ QString TimeLabels::headerToolTip() const
   }
 
   QList<QByteArray> abbr =
-    TZMaps::utcOffsetToAbbreviation( TZMaps::timezoneToUtcOffset( tz.name() ) );
+    TzMaps::utcOffsetToAbbreviation( TzMaps::timezoneToUtcOffset( tz.name() ) );
   if ( !abbr.isEmpty() ) {
     toolTip += "<br/>";
     toolTip += i18n( "Abbreviations:" );
