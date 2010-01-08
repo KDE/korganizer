@@ -277,10 +277,8 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAdded(Akonadi::Item)),
            this, SLOT(incidenceAdded(Akonadi::Item)) );
-  connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item,int)),
-           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item,int)) );
-  connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item)),
-           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item)) );
+  connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item,KOGlobals::WhatChanged)),
+           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item,KOGlobals::WhatChanged)) );
   connect( mChanger, SIGNAL(incidenceToBeDeleted(Akonadi::Item)),
            this, SLOT(incidenceToBeDeleted(Akonadi::Item)) );
   connect( mChanger, SIGNAL(incidenceDeleted(Akonadi::Item)),
@@ -649,14 +647,9 @@ void CalendarView::incidenceAdded( const Item &incidence )
   checkForFilteredChange( incidence );
 }
 
-void CalendarView::incidenceChanged( const Item &oldIncidence,
-                                     const Item &newIncidence )
-{
-  incidenceChanged( oldIncidence, newIncidence, KOGlobals::UNKNOWN_MODIFIED );
-}
-
 void CalendarView::incidenceChanged( const Item &oldIncidence_,
-                                     const Item &newIncidence_, int what )
+                                     const Item &newIncidence_,
+                                     KOGlobals::WhatChanged modification )
 {
   Incidence* const oldIncidence = Akonadi::incidence( oldIncidence_ ).get();
   Incidence* const newIncidence = Akonadi::incidence( newIncidence_ ).get();
@@ -665,7 +658,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
   KOIncidenceEditor *tmp = editorDialog( newIncidence_ );
   if ( tmp ) {
     kDebug() << "Incidence modified and open";
-    tmp->modified( what );
+    tmp->modified();
   }
   history()->recordEdit( oldIncidence, newIncidence );
 
@@ -674,11 +667,11 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
   // as well.
   if ( newIncidence->type() == "Todo" &&
        KOPrefs::instance()->recordTodosInJournals() &&
-       ( what == KOGlobals::COMPLETION_MODIFIED ||
-         what == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
+       ( modification == KOGlobals::COMPLETION_MODIFIED ||
+         modification == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
     Todo *todo = static_cast<Todo *>(newIncidence);
     if ( todo->isCompleted() ||
-         what == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
+         modification == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
       QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
       QString description = i18n( "Todo completed: %1 (%2)", newIncidence->summary(), timeStr );
 
@@ -2411,7 +2404,7 @@ void CalendarView::deleteTodoIncidence ( const Item& todoItem, bool force )
   /* Ok, this to-do has sub-to-dos, ask what to do */
   int km = KMessageBox::No;
   if ( !force ) {
-    km=KMessageBox::questionYesNoCancel(
+    km = KMessageBox::questionYesNoCancel(
       this,
       i18n( "The item \"%1\" has sub-to-dos. "
             "Do you want to delete just this item and "

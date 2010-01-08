@@ -59,19 +59,13 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 
     virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent ) = 0;
     virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection, QWidget* parent ) = 0;
-  virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, KOGlobals::WhatChanged, QWidget *parent ) = 0;
+    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, KOGlobals::WhatChanged, QWidget *parent ) = 0;
     virtual bool deleteIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
     virtual bool cutIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
 
-/*
-    static bool incidencesEqual( const Akonadi::Item &inc1, const Akonadi::Item &inc2 );
-    static bool assignIncidence( const Akonadi::Item &inc1, const Akonadi::Item &inc2 );
-*/
-
   Q_SIGNALS:
     void incidenceAdded( const Akonadi::Item & );
-    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc, int );
-    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc );
+    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc, KOGlobals::WhatChanged  );
     void incidenceToBeDeleted( const Akonadi::Item & );
     void incidenceDeleted( const Akonadi::Item & );
 

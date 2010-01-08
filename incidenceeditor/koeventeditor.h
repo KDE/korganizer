@@ -60,7 +60,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     void init();
 
     /** This event has been modified externally */
-    void modified( int change=0 );
+    void modified();
 
     /**
       Clear event win for new event

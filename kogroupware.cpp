@@ -213,7 +213,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
   }
 
 //Reenable once this part is independent from KOrganizer
-#if AKONADI_PORT_DISABLED
+#ifdef AKONADI_PORT_DISABLED
   if ( action.startsWith( QLatin1String( "counter" ) ) ) {
     Akonadi::Item item;
     item.setPayload( Incidence::Ptr( incidence->clone() ) );

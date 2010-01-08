@@ -87,7 +87,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     bool processInput();
 
     /** This todo has been modified externally */
-    void modified( int change=0 );
+    void modified();
 
   public slots:
     void show();

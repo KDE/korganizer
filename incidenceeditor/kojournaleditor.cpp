@@ -217,10 +217,8 @@ bool KOJournalEditor::validateInput()
   return true;
 }
 
-void KOJournalEditor::modified( int modification )
+void KOJournalEditor::modified()
 {
-  Q_UNUSED( modification );
-
   // Play dumb, just reload the Journal. This dialog has become so complicated
   // that there is no point in trying to be smart here...
   readIncidence( mIncidence, QDate(), true );

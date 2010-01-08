@@ -36,7 +36,6 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
-#include "korganizer_export.h"
 #include "koglobals.h"
 #include <KCal/ICalFormat>
 

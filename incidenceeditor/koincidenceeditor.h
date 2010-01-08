@@ -66,7 +66,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     virtual ~KOIncidenceEditor();
 
     /** This incidence has been modified externally */
-    virtual void modified( int /*change*/= 0 ) {}
+    virtual void modified() {}
 
     /** Read incidence. */
     virtual void readIncidence( const Akonadi::Item &item, const QDate &date, bool tmpl = false );

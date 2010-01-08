@@ -23,6 +23,7 @@
 */
 
 #include "incidencechanger.h"
+#include "koglobals.h"
 #include "kogroupware.h"
 #include "koprefs.h"
 #include "mailscheduler.h"
@@ -215,9 +216,10 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
                               i18n( tmp->type() ),
                               tmp->summary(),
                               job->errorString( )) );
+  } else {
+    //PENDING(AKONADI_PORT) emit a real action here, not just UNKNOWN_MODIFIED
+    emit incidenceChanged( oldItem, newItem, KOGlobals::UNKNOWN_MODIFIED );
   }
-  else
-    emit incidenceChanged( oldItem, newItem );
 }
 
 void IncidenceChanger::deleteIncidenceFinished( KJob* j )
@@ -265,7 +267,6 @@ void IncidenceChanger::deleteIncidenceFinished( KJob* j )
   }
   emit incidenceDeleted( items.first() );
 }
-
 
 bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
 {
@@ -380,7 +381,8 @@ bool IncidenceChanger::myAttendeeStatusChanged( const Incidence* newInc, const I
   return false;
 }
 
-bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, const Item &newItem,
+bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
+                                        const Item &newItem,
                                         KOGlobals::WhatChanged action,
                                         QWidget *parent )
 {

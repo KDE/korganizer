@@ -996,9 +996,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   // FIXME: use a visitor here
   if ( const Event::Ptr ev = Akonadi::event( aitem ) ) {
-    /* setDtEnd() must be called before setDtStart(), otherwise, when moving events,
-     * CalendarLocal::incidenceUpdated() will not remove the old hash and that causes
-     * the event to be shown in the old date also (bug #179157).
+    /* setDtEnd() must be called before setDtStart(), otherwise, when moving
+     * events, CalendarLocal::incidenceUpdated() will not remove the old hash
+     * and that causes the event to be shown in the old date also (bug #179157).
      *
      * TODO: We need a better hashing mechanism for CalendarLocal.
      */
@@ -1477,7 +1477,7 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
         existingTodo->setDtDue( newTime );
         existingTodo->setAllDay( allDay );
         existingTodo->setHasDueDate( true );
-        mChanger->changeIncidence( oldTodo, existingTodoItem );
+        mChanger->changeIncidence( oldTodo, existingTodoItem, KOGlobals::DATE_MODIFIED, this );
         mChanger->endChange( existingTodoItem );
       } else {
         KMessageBox::sorry( this, i18n( "Unable to modify this to-do, "

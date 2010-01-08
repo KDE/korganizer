@@ -462,10 +462,11 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, parentWidget() );
         } else {
-          KMessageBox::sorry( parentWidget(),
-                              i18n( "Unable to add the exception item to the calendar. "
-                                    "No change will be done." ),
-                              i18n( "Error Occurred" ) );
+          KMessageBox::sorry(
+            parentWidget(),
+            i18n( "Unable to add the exception item to the calendar. "
+                  "No change will be done." ),
+            i18n( "Error Occurred" ) );
           modify = false;
         }
         break;
@@ -483,10 +484,11 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, parentWidget() );
         } else {
-          KMessageBox::sorry( parentWidget(),
-                              i18n( "Unable to add the future items to the calendar. "
-                                    "No change will be done." ),
-                              i18n( "Error Occurred" ) );
+          KMessageBox::sorry(
+            parentWidget(),
+            i18n( "Unable to add the future items to the calendar. "
+                  "No change will be done." ),
+            i18n( "Error Occurred" ) );
           modify = false;
         }
         break;

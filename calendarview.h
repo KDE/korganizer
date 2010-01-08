@@ -28,6 +28,7 @@
 
 #include "korganizer_export.h"
 #include "akonadicalendar.h"
+#include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
 #include <Akonadi/Item>
@@ -446,8 +447,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
 
     void incidenceAdded( const Akonadi::Item &incidence );
-    void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent );
-    void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent, int what );
+    void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
+                           KOGlobals::WhatChanged modification );
     void incidenceToBeDeleted( const Akonadi::Item &incidence );
     void incidenceDeleted( const Akonadi::Item &incidence );
     void startMultiModify( const QString &text );

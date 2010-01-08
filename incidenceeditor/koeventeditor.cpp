@@ -148,10 +148,8 @@ void KOEventEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOEventEditor::modified( int modification )
+void KOEventEditor::modified()
 {
-  Q_UNUSED( modification );
-
   // Play dumb, just reload the event. This dialog has become so complicated
   // that there is no point in trying to be smart here...
   readIncidence( mIncidence, QDate(), true );
@@ -271,7 +269,9 @@ bool KOEventEditor::processInput()
         // add dummy event at the position of the counter proposal
         Event::Ptr event2( event->clone() );
         event2->clearAttendees();
-        event2->setSummary( i18nc( "@item", "My counter proposal for: %1", ev->summary() ) );
+        event2->setSummary(
+          i18nc( "@item",
+                 "My counter proposal for: %1", ev->summary() ) );
 
         Akonadi::Collection col = mCalSelector->currentCollection();
         rc = mChanger->addIncidence( event2, col, this );

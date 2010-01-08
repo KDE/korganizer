@@ -317,10 +317,8 @@ bool KOTodoEditor::validateInput()
   return true;
 }
 
-void KOTodoEditor::modified( int modification )
+void KOTodoEditor::modified()
 {
-  Q_UNUSED( modification );
-
   // Play dumb, just reload the todo. This dialog has become so complicated
   // that there is no point in trying to be smart here...
   readIncidence( mIncidence, QDate(), true );
