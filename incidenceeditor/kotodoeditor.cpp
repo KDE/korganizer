@@ -262,14 +262,14 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, const Akonadi::I
   }
 }
 
-bool KOTodoEditor::read( const Item &todoItem, bool tmpl )
+bool KOTodoEditor::read( const Item &todoItem, const QDate &date, bool tmpl )
 {
   const Todo::Ptr todo = Akonadi::todo( todoItem );
   if ( !todo ) {
     return false;
   }
 
-  mGeneral->readTodo( todo.get(), tmpl );
+  mGeneral->readTodo( todo.get(), date, tmpl );
   mDetails->readIncidence( todo.get() );
   mRecurrence->readIncidence( todo.get() );
 
@@ -323,7 +323,7 @@ void KOTodoEditor::modified( int modification )
 
   // Play dumb, just reload the todo. This dialog has become so complicated
   // that there is no point in trying to be smart here...
-  readIncidence( mIncidence, true );
+  readIncidence( mIncidence, QDate(), true );
 }
 
 void KOTodoEditor::show()

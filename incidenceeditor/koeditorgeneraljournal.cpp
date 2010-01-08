@@ -139,8 +139,10 @@ void KOEditorGeneralJournal::initCategories( QWidget *parent, QBoxLayout *topLay
   categoriesLayout->addWidget( mCategoriesLabel, 1 );
 }
 
-void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
+void KOEditorGeneralJournal::readJournal( Journal *journal, const QDate &date, bool tmpl )
 {
+  Q_UNUSED( date ); //journals cannot recur, so this is not needed
+
   setSummary( journal->summary() );
   if ( !tmpl ) {
     KDateTime startDT = journal->dtStart();

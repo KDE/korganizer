@@ -112,9 +112,9 @@ KOIncidenceEditor::~KOIncidenceEditor()
 {
 }
 
-void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, bool tmpl )
+void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, const QDate &date, bool tmpl )
 {
-  if( ! read( item, tmpl ))
+  if( ! read( item, date, tmpl ))
     return;
 
   Akonadi::Entity::Id colId( item.storageCollectionId() );
@@ -127,7 +127,7 @@ void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, bool tmpl )
   mCalSelector->setEnabled(false);
 }
 
-void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
+void KOIncidenceEditor::editIncidence( const Akonadi::Item &item, const QDate &date )
 {
   Incidence::Ptr incidence = Akonadi::incidence(item);
   Q_ASSERT(incidence);
@@ -142,7 +142,7 @@ void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
     Q_ASSERT( ! mIncidence.hasPayload<Incidence::Ptr>()); // not possible, right?
   }
 
-  readIncidence( item, false );
+  readIncidence( item, date, false );
   mIncidence = item;
 
   if( ! mMonitor) {
@@ -166,7 +166,7 @@ bool KOIncidenceEditor::incidenceModified() {
 }
 
 void KOIncidenceEditor::reload() {
-  readIncidence( mIncidence, true );
+  readIncidence( mIncidence, QDate(), true );
 }
 
 void KOIncidenceEditor::slotButtonClicked( int button )
@@ -267,7 +267,7 @@ void KOIncidenceEditor::slotItemChanged( const Akonadi::Item &item )
   kDebug();
   Q_ASSERT(item == mIncidence);
   KMessageBox::information( this, i18nc( "@info", "The incidence got changed. Reloading editor now." ) );
-  readIncidence(item);
+  readIncidence( item, QDate() );
 }
 
 void KOIncidenceEditor::slotItemRemoved( const Akonadi::Item &item )
@@ -321,7 +321,7 @@ void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
   Incidence *incidence = incidences.first();
   Akonadi::Item incidenceItem;
   incidenceItem.setPayload( Incidence::Ptr(incidence->clone()) );
-  readIncidence( incidenceItem, true );
+  readIncidence( incidenceItem, QDate(), true );
 }
 
 void KOIncidenceEditor::slotSaveTemplate( const QString &templateName )

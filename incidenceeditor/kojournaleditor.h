@@ -112,7 +112,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
       @param tmpl If true, the journal is treated as a template, so the
       currently set time is preserved in the editor dialog.
     */
-    bool read( const Akonadi::Item &, bool tmpl = false );
+    bool read( const Akonadi::Item &journal, const QDate &date, bool tmpl = false );
 
     void setupGeneral();
     bool incidenceModified();

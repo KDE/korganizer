@@ -69,9 +69,9 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     virtual void modified( int /*change*/= 0 ) {}
 
     /** Read incidence. */
-    virtual void readIncidence( const Akonadi::Item &, bool tmpl = false );
+    virtual void readIncidence( const Akonadi::Item &item, const QDate &date, bool tmpl = false );
     /** Edit an existing incidence. */
-    virtual void editIncidence( const Akonadi::Item & );
+    virtual void editIncidence( const Akonadi::Item &item, const QDate &date );
 
     /** Calls readIncidence(mIncidence) */
     void reload();
@@ -130,7 +130,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void slotTemplatesChanged( const QStringList &templateNames );
 
   protected:
-    virtual bool read( const Akonadi::Item &, bool tmpl = false ) = 0;
+    virtual bool read( const Akonadi::Item &item, const QDate &date, bool tmpl = false ) = 0;
     virtual void closeEvent( QCloseEvent * );
 
     virtual QString type() = 0;
@@ -138,7 +138,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void setupAttendeesTab();
     void setupDesignerTabs( const QString &type );
 
-    void readDesignerFields( const Akonadi::Item & );
+    void readDesignerFields( const Akonadi::Item &item );
     void writeDesignerFields( KCal::Incidence* );
 
     /**

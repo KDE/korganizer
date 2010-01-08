@@ -55,7 +55,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setDefaults( const QDateTime &due, bool allDay );
 
     /** Read todo object and setup widgets accordingly */
-    void readTodo( Todo *todo, bool tmpl = false );
+    void readTodo( Todo *todo, const QDate &date, bool tmpl = false );
 
     /** Write todo settings to event object */
     void fillTodo( Todo * );

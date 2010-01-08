@@ -154,7 +154,7 @@ void KOEventEditor::modified( int modification )
 
   // Play dumb, just reload the event. This dialog has become so complicated
   // that there is no point in trying to be smart here...
-  readIncidence( mIncidence, true );
+  readIncidence( mIncidence, QDate(), true );
 }
 
 void KOEventEditor::setupRecurrence()
@@ -324,14 +324,14 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-bool KOEventEditor::read( const Item& eventItem, bool tmpl )
+bool KOEventEditor::read( const Item &eventItem, const QDate &date, bool tmpl )
 {
   if ( !Akonadi::hasEvent( eventItem ) ) {
     return false;
   }
 
   const Event::Ptr event = Akonadi::event( eventItem );
-  mGeneral->readEvent( event.get(), tmpl );
+  mGeneral->readEvent( event.get(), date, tmpl );
   mRecurrence->readIncidence( event.get() );
   if ( mFreeBusy ) {
     mFreeBusy->readIncidence( event.get() );

@@ -140,7 +140,7 @@ class MainWidget : public QWidget
     void filterChanged(const QString &text) {
       m_itemproxymodel->setFilterWildcard(text);
     }
-    
+
     void selectionChanged() {
       if(m_collectionview->selectionModel()->hasSelection()) {
         QModelIndex index = m_collectionview->selectionModel()->currentIndex();
@@ -166,7 +166,7 @@ class MainWidget : public QWidget
       if(incidence->type() == "Event") {
         KOEventEditor *editor = new KOEventEditor(this);
         editor->init();
-        editor->editIncidence(item);
+        editor->editIncidence(item, QDate());
         editor->show();
       } else if(incidence->type() == "Todo") {
         KOTodoEditor *editor = new KOTodoEditor(this);
@@ -180,19 +180,19 @@ class MainWidget : public QWidget
         connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
         connect( editor, SIGNAL(deleteAttendee(Incidence *)), mMainView, SIGNAL(cancelAttendees(Incidence *)) );
         */
-        editor->editIncidence(item);
+        editor->editIncidence(item, QDate());
         editor->show();
-        
+
       } else if(incidence->type() == "Journal") {
         KOJournalEditor *editor = new KOJournalEditor(this);
         editor->init();
-        editor->editIncidence(item);
+        editor->editIncidence(item, QDate());
         editor->show();
       } else {
         Q_ASSERT(false);
       }
     }
-    
+
   private:
     Akonadi::CollectionModel *m_collectionmodel;
     Akonadi::CollectionFilterProxyModel *m_collectionproxymodel;

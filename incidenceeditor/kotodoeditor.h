@@ -107,8 +107,8 @@ class KORG_INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
       @param tmpl If true, the todo is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    bool read( const Akonadi::Item &, bool tmpl = false );
-    
+    bool read( const Akonadi::Item &todo, const QDate &date, bool tmpl = false );
+
     void setupGeneral();
     void setupRecurrence();
     bool incidenceModified();

@@ -187,14 +187,14 @@ bool KOJournalEditor::incidenceModified()
   return modified;
 }
 
-bool KOJournalEditor::read( const Item &item, bool tmpl )
+bool KOJournalEditor::read( const Item &item, const QDate &date, bool tmpl )
 {
   const Journal::Ptr journal = Akonadi::journal( item );
   if ( !journal ) {
     return false;
   }
 
-  mGeneral->readJournal( journal.get(), tmpl );
+  mGeneral->readJournal( journal.get(), date, tmpl );
   mDetails->readIncidence( journal.get() );
 
   return true;
@@ -223,7 +223,7 @@ void KOJournalEditor::modified( int modification )
 
   // Play dumb, just reload the Journal. This dialog has become so complicated
   // that there is no point in trying to be smart here...
-  readIncidence( mIncidence, true );
+  readIncidence( mIncidence, QDate(), true );
 }
 
 void KOJournalEditor::show()

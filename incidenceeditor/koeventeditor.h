@@ -113,7 +113,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
       @param tmpl If true, the event is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    bool read( const Akonadi::Item &event, bool tmpl = false );
+    bool read( const Akonadi::Item &event, const QDate &date, bool tmpl = false );
 
     void setupGeneral();
     void setupRecurrence();
