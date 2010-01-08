@@ -691,10 +691,7 @@ void ActionManager::initActions()
   action->setEnabled( false );
   connect( mCalendarView, SIGNAL(subtodoSelected(bool)), action,
            SLOT(setEnabled(bool)) );
-// TODO: Add item to move the incidence to different resource
-//   mAssignResourceAction = new KAction( i18n( "Assign to &Calendar..." ), 0,
-//                                        mCalendarView, SLOT(assignResource()),
-//                                        mACollection, "assign_resource" );
+
 // TODO: Add item to quickly toggle the reminder of a given incidence
 //   mToggleAlarmAction = new KToggleAction( i18n( "&Activate Reminder" ), 0,
 //                                         mCalendarView, SLOT(toggleAlarm()),

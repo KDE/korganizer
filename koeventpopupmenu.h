@@ -66,6 +66,8 @@ class KOEventPopupMenu : public QMenu
     void toggleTodoCompleted();
     void dissociateOccurrences();
     void forward();
+    void copyIncidenceToResource( QAction *action );
+    void moveIncidenceToResource( QAction *action );
 
   signals:
     void configChanged();
@@ -77,9 +79,18 @@ class KOEventPopupMenu : public QMenu
     void pasteIncidenceSignal();
     void toggleAlarmSignal( const Akonadi::Item & );
     void toggleTodoCompletedSignal( const Akonadi::Item & );
+    void copyIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
+    void moveIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
     void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
   private:
+    QMenu *buildCalendarCopyMenu();
+    QMenu *buildCalendarMoveMenu();
+    bool hasOtherWriteableCalendars() const;
+#ifdef AKONADI_PORT_DISABLED
+    bool isResourceWritable( const ResourceCalendar *resource ) const;
+#endif
+
     KOEventView *mEventview;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
@@ -89,6 +100,8 @@ class KOEventPopupMenu : public QMenu
     QList<QAction *> mTodoOnlyItems;
     QList<QAction *> mRecurrenceItems;
     QAction *mDissociateOccurrences;
+    QMenu *mCopyToCalendarMenu;
+    QMenu *mMoveToCalendarMenu;
 };
 
 #endif

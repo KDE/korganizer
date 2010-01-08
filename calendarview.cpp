@@ -748,7 +748,8 @@ void CalendarView::checkForFilteredChange( const Item &item )
       i18n( "The item \"%1\" is filtered by your current filter rules, "
             "so it will be hidden and not appear in the view.",
             incidence->summary() ),
-      i18n( "Filter Applied" ), "ChangedIncidenceFiltered" );
+      i18n( "Filter Applied" ),
+      "ChangedIncidenceFiltered" );
   }
 }
 
@@ -888,8 +889,9 @@ void CalendarView::edit_paste()
   }
 
   if ( !date.isValid() ) {
-    KMessageBox::sorry( this,
-                        i18n( "Paste failed: unable to determine a valid target date." ) );
+    KMessageBox::sorry(
+      this,
+      i18n( "Paste failed: unable to determine a valid target date." ) );
     return;
   }
 
@@ -1192,8 +1194,10 @@ bool CalendarView::todo_unsub( const Item &todoItem )
       status = true;
   }
   if ( !status ) {
-    KMessageBox::sorry( this, i18n( "Unable to turn sub-to-do into a top-level "
-                                    "to-do, because it cannot be locked." ) );
+    KMessageBox::sorry(
+      this,
+      i18n( "Unable to turn sub-to-do into a top-level "
+            "to-do, because it cannot be locked." ) );
   }
 
   return status;
@@ -1307,6 +1311,154 @@ void CalendarView::toggleTodoCompleted( const Item &todoItem )
   mChanger->endChange( todoItem );
 }
 
+void CalendarView::copyIncidenceToResource( const Item &item, const QString &resourceId )
+{
+#ifdef AKONADI_PORT_DISABLED
+  if ( !incidence ) {
+    kDebug() << "called without having a clicked item";
+    return;
+  }
+
+  KCal::CalendarResources *const resources = KOrg::StdCalendar::self();
+  KCal::CalendarResourceManager *const manager = resources->resourceManager();
+
+  // Find the resource the incidence should be copied to
+  ResourceCalendar *newCal = 0;
+  KCal::CalendarResourceManager::iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    ResourceCalendar *const resource = *it;
+    if ( resource->identifier() == resourceId ) {
+      newCal = resource;
+      break;
+    }
+  }
+  if ( !newCal ) {
+    return;
+  }
+
+  // Clone a new Incidence from the selected Incidence and give it a new Uid.
+  Incidence *newInc;
+  if ( incidence->type() == "Event" ) {
+    KCal::Event *nEvent = static_cast<KCal::Event *>( incidence )->clone();
+    nEvent->setUid( KCal::CalFormat::createUniqueId() );
+    newInc = nEvent;
+  } else if ( incidence->type() == "Todo" ) {
+    KCal::Todo *nTodo = static_cast<KCal::Todo *>( incidence )->clone();
+    nTodo->setUid( KCal::CalFormat::createUniqueId() );
+    newInc = nTodo;
+  } else if ( incidence->type() == "Journal" ) {
+    KCal::Journal *nJournal = static_cast<KCal::Journal *>( incidence )->clone();
+    nJournal->setUid( KCal::CalFormat::createUniqueId() );
+    newInc = nJournal;
+  } else {
+    kWarning() << "Trying to copy an incidence type that cannot be copied";
+    return;
+  }
+
+  if ( resources->addIncidence( newInc, newCal ) ) {
+    incidenceAdded( newInc );
+    KMessageBox::information(
+      this,
+      i18nc( "@info",
+             "\"%1\" was successfully copied to %2.",
+             incidence->summary(),
+             newCal->resourceName() ),
+      i18nc( "@title:window", "Copying Succeeded" ),
+      "CalendarIncidenceCopy" );
+  } else {
+    KMessageBox::error(
+      this,
+      i18nc( "@info",
+             "Unable to copy the item \"%1\" to %2.",
+             incidence->summary(),
+             newCal->resourceName() ),
+      i18nc( "@title:window", "Copying Failed" ) );
+  }
+#endif
+}
+
+void CalendarView::moveIncidenceToResource( const Item &item, const QString &resourceId )
+{
+#ifdef AKONADI_PORT_DISABLED
+  if ( !incidence ) {
+    kDebug() << "called without having a clicked item";
+    return;
+  }
+
+  KCal::CalendarResources *const resources = KOrg::StdCalendar::self();
+  KCal::CalendarResourceManager *const manager = resources->resourceManager();
+
+  // Find the resource the incidence should be moved to
+  ResourceCalendar *newCal = 0;
+  KCal::CalendarResourceManager::iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    ResourceCalendar *const resource = *it;
+    if ( resource->identifier() == resourceId ) {
+      newCal = resource;
+      break;
+    }
+  }
+  if ( !newCal ) {
+    return;
+  }
+
+  // Clone a new Incidence from the selected Incidence and give it a new Uid.
+  Incidence *newInc;
+  if ( incidence->type() == "Event" ) {
+    KCal::Event *nEvent = static_cast<KCal::Event *>( incidence )->clone();
+    nEvent->setUid( KCal::CalFormat::createUniqueId() );
+    newInc = nEvent;
+  } else if ( incidence->type() == "Todo" ) {
+    KCal::Todo *nTodo = static_cast<KCal::Todo *>( incidence )->clone();
+    nTodo->setUid( KCal::CalFormat::createUniqueId() );
+    newInc = nTodo;
+  } else if ( incidence->type() == "Journal" ) {
+    KCal::Journal *nJournal = static_cast<KCal::Journal *>( incidence )->clone();
+    nJournal->setUid( KCal::CalFormat::createUniqueId() );
+    newInc = nJournal;
+  } else {
+    kWarning() << "Trying to move an incidence type that cannot be moved";
+    return;
+  }
+
+  if ( resources->addIncidence( newInc, newCal ) ) {
+    incidenceAdded( newInc );
+    ResourceCalendar *const oldCal = resources->resource( incidence );
+    if ( !oldCal || resources->deleteIncidence( incidence ) ) {
+      KMessageBox::error(
+        this,
+        i18nc( "@info",
+               "Unable to remove the item \"%1\" from %2. "
+               "However, a copy of this item has been put into %3.",
+               incidence->summary(),
+               oldCal->resourceName(),
+               newCal->resourceName() ),
+        i18nc( "@title:window", "Moving Failed" ) );
+    } else {
+      incidenceDeleted( incidence );
+      KMessageBox::information(
+        this,
+        i18nc( "@info",
+               "\"%1\" was successfully moved from %2 to %3.",
+               incidence->summary(),
+               oldCal->resourceName(),
+               newCal->resourceName() ),
+        i18nc( "@title:window", "Moving Succeeded" ),
+        "CalendarIncidenceMove" );
+    }
+  } else {
+    KMessageBox::error(
+      this,
+      i18nc( "@info",
+             "Unable to add the item \"%1\" into %2. "
+             "This item has not been moved.",
+             incidence->summary(),
+             newCal->resourceName() ),
+      i18nc( "@title:window", "Moving Failed" ) );
+  }
+#endif
+}
+
 void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
@@ -1324,26 +1476,28 @@ void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
   bool doFuture   = false;
 
   if ( isFirstOccurrence ) {
-    answer = KMessageBox::questionYesNo( this,
-                                         i18n( "Do you want to dissociate "
-                                               "the occurrence at %1 "
-                                               "from the recurrence?",
-                                                KGlobal::locale()->formatDate( date ) ),
-                                                i18n( "KOrganizer Confirmation" ),
-                                                KGuiItem( i18n( "&Dissociate" ) ),
-                                                KGuiItem( i18n( "&Cancel" ) ) );
+    answer = KMessageBox::questionYesNo(
+      this,
+      i18n( "Do you want to dissociate "
+            "the occurrence at %1 "
+            "from the recurrence?",
+            KGlobal::locale()->formatDate( date ) ),
+      i18n( "KOrganizer Confirmation" ),
+      KGuiItem( i18n( "&Dissociate" ) ),
+      KGuiItem( i18n( "&Cancel" ) ) );
 
     doOnlyThis = ( answer == KMessageBox::Yes );
   } else {
-    answer = KMessageBox::questionYesNoCancel( this,
-                                               i18n( "Do you want to dissociate "
-                                                     "the occurrence at %1 "
-                                                     "from the recurrence or also "
-                                                     "dissociate future ones?",
-                                                     KGlobal::locale()->formatDate( date ) ),
-                                               i18n( "KOrganizer Confirmation" ),
-                                               KGuiItem( i18n( "&Only Dissociate This One" ) ),
-                                               KGuiItem( i18n( "&Also Dissociate Future Ones" ) ) );
+    answer = KMessageBox::questionYesNoCancel(
+      this,
+      i18n( "Do you want to dissociate "
+            "the occurrence at %1 "
+            "from the recurrence or also "
+            "dissociate future ones?",
+            KGlobal::locale()->formatDate( date ) ),
+      i18n( "KOrganizer Confirmation" ),
+      KGuiItem( i18n( "&Only Dissociate This One" ) ),
+      KGuiItem( i18n( "&Also Dissociate Future Ones" ) ) );
 
     doOnlyThis = ( answer == KMessageBox::Yes );
     doFuture   = ( answer == KMessageBox::No );
@@ -1421,7 +1575,10 @@ void CalendarView::schedule_publish( const Item &item )
   }
 
   if ( !incidence ) {
-    KMessageBox::information( this, i18n( "No item selected." ), "PublishNoEventSelected" );
+    KMessageBox::information(
+      this,
+      i18n( "No item selected." ),
+      "PublishNoEventSelected" );
     return;
   }
 
@@ -1441,10 +1598,15 @@ void CalendarView::schedule_publish( const Item &item )
     // Send the mail
     MailScheduler scheduler( mCalendar );
     if ( scheduler.publish( incidence.get(), publishdlg->addresses() ) ) {
-      KMessageBox::information( this, i18n( "The item information was successfully sent." ),
-                                i18n( "Publishing" ), "IncidencePublishSuccess" );
+      KMessageBox::information(
+        this,
+        i18n( "The item information was successfully sent." ),
+        i18n( "Publishing" ),
+        "IncidencePublishSuccess" );
     } else {
-      KMessageBox::error( this, i18n( "Unable to publish the item '%1'", incidence->summary() ) );
+      KMessageBox::error(
+        this,
+        i18n( "Unable to publish the item '%1'", incidence->summary() ) );
     }
   }
   delete publishdlg;
@@ -1494,7 +1656,10 @@ void CalendarView::schedule_forward( const Item &item )
   }
 
   if ( !incidence ) {
-    KMessageBox::information( this, i18n( "No item selected." ), "ForwardNoEventSelected" );
+    KMessageBox::information(
+      this,
+      i18n( "No item selected." ),
+      "ForwardNoEventSelected" );
     return;
   }
 
@@ -1554,7 +1719,9 @@ void CalendarView::mailFreeBusy( int daysToPublish )
         i18n( "Sending Free/Busy" ),
         "FreeBusyPublishSuccess" );
     } else {
-      KMessageBox::error( this, i18n( "Unable to publish the free/busy data." ) );
+      KMessageBox::error(
+        this,
+        i18n( "Unable to publish the free/busy data." ) );
     }
   }
   delete freebusy;
@@ -1575,12 +1742,18 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
   }
 
   if ( !incidence ) {
-    KMessageBox::sorry( this, i18n( "No item selected." ), "ScheduleNoEventSelected" );
+    KMessageBox::sorry(
+      this,
+      i18n( "No item selected." ),
+      "ScheduleNoEventSelected" );
     return;
   }
 
   if ( incidence->attendeeCount() == 0 && method != iTIPPublish ) {
-    KMessageBox::information( this, i18n( "The item has no attendees." ), "ScheduleNoIncidences" );
+    KMessageBox::information(
+      this,
+      i18n( "The item has no attendees." ),
+      "ScheduleNoIncidences" );
     return;
   }
 
@@ -1591,20 +1764,22 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
   // Send the mail
   MailScheduler scheduler( mCalendar );
   if ( scheduler.performTransaction( incidence.get(), method ) ) {
-    KMessageBox::information( this,
-                              i18n( "The groupware message for item '%1' "
-                                    "was successfully sent.\nMethod: %2",
-                                    incidence->summary(),
-                                    Scheduler::methodName( method ) ),
-                              i18n( "Sending Free/Busy" ),
-                              "FreeBusyPublishSuccess" );
+    KMessageBox::information(
+      this,
+      i18n( "The groupware message for item '%1' "
+            "was successfully sent.\nMethod: %2",
+            incidence->summary(),
+            Scheduler::methodName( method ) ),
+      i18n( "Sending Free/Busy" ),
+      "FreeBusyPublishSuccess" );
   } else {
-    KMessageBox::error( this,
-                        i18nc( "Groupware message sending failed. "
-                               "%2 is request/reply/add/cancel/counter/etc.",
-                               "Unable to send the item '%1'.\nMethod: %2",
-                               incidence->summary(),
-                               Scheduler::methodName( method ) ) );
+    KMessageBox::error(
+      this,
+      i18nc( "Groupware message sending failed. "
+             "%2 is request/reply/add/cancel/counter/etc.",
+             "Unable to send the item '%1'.\nMethod: %2",
+             incidence->summary(),
+             Scheduler::methodName( method ) ) );
   }
 }
 
@@ -1700,11 +1875,11 @@ void CalendarView::exportICalendar()
       } else {
         errmess = i18nc( "save failure cause unknown", "Reason unknown" );
       }
-      KMessageBox::error( this,
-                          i18nc( "@info",
-                                 "Cannot write iCalendar file %1. %2",
-                                 filename, errmess ) );
-
+      KMessageBox::error(
+        this,
+        i18nc( "@info",
+               "Cannot write iCalendar file %1. %2",
+               filename, errmess ) );
     }
   }
 }
@@ -1749,10 +1924,11 @@ void CalendarView::exportVCalendar()
       } else {
         errmess = i18nc( "save failure cause unknown", "Reason unknown" );
       }
-      KMessageBox::error( this,
-                          i18nc( "@info",
-                                 "Cannot write vCalendar file %1. %2",
-                                 filename, errmess ) );
+      KMessageBox::error(
+        this,
+        i18nc( "@info",
+               "Cannot write vCalendar file %1. %2",
+               filename, errmess ) );
     }
   }
 }
@@ -2270,13 +2446,14 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
   }
   if ( incidence->isReadOnly() ) {
     if ( !force ) {
-      KMessageBox::information( this,
-                                i18n( "The item \"%1\" is marked read-only "
-                                      "and cannot be deleted; it probably "
-                                      "belongs to a read-only calendar.",
-                                      incidence->summary() ),
-                                i18n( "Removing not possible" ),
-                                "deleteReadOnlyIncidence" );
+      KMessageBox::information(
+        this,
+        i18n( "The item \"%1\" is marked read-only "
+              "and cannot be deleted; it probably "
+              "belongs to a read-only calendar.",
+              incidence->summary() ),
+        i18n( "Removing not possible" ),
+        "deleteReadOnlyIncidence" );
     }
     return false;
   }
@@ -2439,10 +2616,11 @@ bool CalendarView::purgeCompletedSubTodos( const Item &todoItem, bool &allPurged
 
 void CalendarView::purgeCompleted()
 {
-  int result = KMessageBox::warningContinueCancel( this,
-                                                   i18n( "Delete all completed to-dos?" ),
-                                                   i18n( "Purge To-dos" ),
-                                                   KGuiItem( i18n( "Purge" ) ) );
+  int result = KMessageBox::warningContinueCancel(
+    this,
+    i18n( "Delete all completed to-dos?" ),
+    i18n( "Purge To-dos" ),
+    KGuiItem( i18n( "Purge" ) ) );
 
   if ( result == KMessageBox::Continue ) {
     bool allDeleted = true;
@@ -2512,9 +2690,10 @@ void CalendarView::updateCategories()
 void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
 {
   if ( !Akonadi::hasIncidence( itemadd ) || !mChanger ) {
-    KMessageBox::sorry( this,
-                        i18n( "Unable to copy the item to %1.", dt.toString() ),
-                        i18n( "Copying Failed" ) );
+    KMessageBox::sorry(
+      this,
+      i18n( "Unable to copy the item to %1.", dt.toString() ),
+      i18n( "Copying Failed" ) );
     return;
   }
   Item item = mCalendar->incidence( itemadd.id() );
@@ -2554,9 +2733,10 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
 void CalendarView::moveIncidenceTo( const Item &itemmove, const QDate &dt )
 {
   if ( !Akonadi::hasIncidence( itemmove ) || !mChanger ) {
-    KMessageBox::sorry( this,
-                        i18n( "Unable to move the item to  %1.", dt.toString() ),
-                        i18n( "Moving Failed" ) );
+    KMessageBox::sorry(
+      this,
+      i18n( "Unable to move the item to  %1.", dt.toString() ),
+      i18n( "Moving Failed" ) );
     return;
   }
   Item item = mCalendar->incidence( itemmove.id() );

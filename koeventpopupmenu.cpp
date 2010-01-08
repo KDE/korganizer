@@ -40,9 +40,9 @@
 using namespace Akonadi;
 using namespace KCal;
 
-KOEventPopupMenu::KOEventPopupMenu(KOEventView *eventview)
-  : QMenu(eventview)
-  , mEventview(eventview)
+KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
+  : QMenu( eventview ), mEventview( eventview ),
+    mCopyToCalendarMenu( 0 ), mMoveToCalendarMenu( 0 )
 {
   mHasAdditionalItems = false;
 
@@ -99,6 +99,18 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
     kDebug() << "No event selected";
     return;
   }
+
+  if ( mCopyToCalendarMenu ) {
+    removeAction( mCopyToCalendarMenu->menuAction() );
+    delete mCopyToCalendarMenu;
+    mCopyToCalendarMenu = 0;
+  }
+  if ( mMoveToCalendarMenu ) {
+    removeAction( mMoveToCalendarMenu->menuAction() );
+    delete mMoveToCalendarMenu;
+    mMoveToCalendarMenu = 0;
+  }
+
   Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
   if ( incidence->recurs() ) {
@@ -146,7 +158,7 @@ void KOEventPopupMenu::print()
   KOCoreHelper helper;
   CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
-  
+
   //Item::List selectedIncidences;
   KCal::ListBase<KCal::Incidence> selectedIncidences;
   Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
@@ -232,6 +244,105 @@ void KOEventPopupMenu::toggleTodoCompleted()
   if ( Akonadi::hasTodo( mCurrentIncidence ) ) {
     emit toggleTodoCompletedSignal( mCurrentIncidence );
   }
+}
+
+#ifdef AKONADI_PORT_DISABLED
+bool KOEventPopupMenu::isResourceWritable( const ResourceCalendar *resource ) const
+{
+  const bool isCurrentIncidenceOwner =
+      KOrg::StdCalendar::self()->resource( mCurrentIncidence ) == resource;
+
+  // FIXME: only take into account writable subresources here
+  return
+    resource->isActive() &&
+    !resource->readOnly() &&
+    ( !isCurrentIncidenceOwner || resource->subresources().size() > 2 );
+}
+#endif
+
+QMenu *KOEventPopupMenu::buildCalendarCopyMenu()
+{
+  QMenu *const resourceMenu = new QMenu( i18n( "C&opy to Calendar" ), this );
+  resourceMenu->setIcon( KIcon( "edit-copy" ) );
+#ifdef AKONADI_PORT_DISABLED
+  KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
+  KCal::CalendarResourceManager::Iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    const ResourceCalendar *const resource = *it;
+
+    if ( !isResourceWritable( resource ) ) {
+      continue;
+    }
+
+    QAction *const resourceAction = new QAction( resource->resourceName(), resourceMenu );
+    resourceAction->setData( QVariant::fromValue( resource->identifier() ) );
+    resourceMenu->addAction( resourceAction );
+
+  }
+  connect( resourceMenu, SIGNAL(triggered(QAction*)),
+           this, SLOT(copyIncidenceToResource(QAction*)) );
+#endif
+  return resourceMenu;
+}
+
+QMenu *KOEventPopupMenu::buildCalendarMoveMenu()
+{
+  QMenu *const resourceMenu = new QMenu( i18n( "&Move to Calendar" ), this );
+  resourceMenu->setIcon( KIcon( "go-jump" ) );
+#ifdef AKONADI_PORT_DISABLED
+  KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
+  KCal::CalendarResourceManager::Iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    const ResourceCalendar *const resource = *it;
+
+    if ( !isResourceWritable( resource ) ) {
+      continue;
+    }
+
+    QAction *const resourceAction = new QAction( resource->resourceName(), resourceMenu );
+    resourceAction->setData( QVariant::fromValue( resource->identifier() ) );
+    resourceMenu->addAction( resourceAction );
+
+  }
+  connect( resourceMenu, SIGNAL(triggered(QAction*)),
+           this, SLOT(moveIncidenceToResource(QAction*)) );
+#endif
+  return resourceMenu;
+}
+
+bool KOEventPopupMenu::hasOtherWriteableCalendars() const
+{
+#ifdef AKONADI_PORT_DISABLED
+  KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
+  KCal::CalendarResourceManager::Iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    const ResourceCalendar *const resource = *it;
+    if ( isResourceWritable( resource ) ) {
+      return true;
+    }
+  }
+#endif
+  return false;
+}
+
+void KOEventPopupMenu::copyIncidenceToResource( QAction *action )
+{
+#ifdef AKONADI_PORT_DISABLED
+  const QString resourceId = action->data().toString();
+  if ( mCurrentIncidence && !resourceId.isEmpty() ) {
+    emit copyIncidenceToResourceSignal( mCurrentIncidence, resourceId );
+  }
+#endif
+}
+
+void KOEventPopupMenu::moveIncidenceToResource( QAction *action )
+{
+#ifdef AKONADI_PORT_DISABLED
+  const QString resourceId = action->data().toString();
+  if ( mCurrentIncidence && !resourceId.isEmpty() ) {
+    emit moveIncidenceToResourceSignal( mCurrentIncidence, resourceId );
+  }
+#endif
 }
 
 #include "koeventpopupmenu.moc"
