@@ -2,6 +2,7 @@
 Name=Calendar Plugin Interface
 Name[ar]=واجهة ملحق التقويم
 Name[ca]=Interfície de connector del calendari
+Name[ca@valencia]=Interfície de connector del calendari
 Name[cs]=Rozhraní modulu kalendáře
 Name[da]=Kalenders plugin-grænseflade
 Name[de]=Kalender-Modulschnittstelle
@@ -44,6 +45,7 @@ Comment[ar]=ملحق التقويم
 Comment[bg]=Приставка за календар
 Comment[br]=Lugent an deiziadur
 Comment[ca]=Connector calendari
+Comment[ca@valencia]=Connector calendari
 Comment[cs]=Kalendářový modul
 Comment[cy]=Ategyn Calendr
 Comment[da]=Calendar-plugin

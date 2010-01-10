@@ -2,6 +2,7 @@
 Name=KOrganizer Print Plugin Interface
 Name[ar]=واجهة ملحق طباعة برنامج المنظم
 Name[ca]=Interfície de connector d'impressió del KOrganizer
+Name[ca@valencia]=Interfície de connector d'impressió del KOrganizer
 Name[cs]=Tiskové rozhraní komponenty KOrganizeru
 Name[da]=Grænseflade til KOrganizer print-plugin
 Name[de]=KOrganizer-Druckschnittstelle
@@ -43,6 +44,7 @@ Comment[ar]=جزء برنامج المنظم
 Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
 Comment[ca]=Part de KOrganizer
+Comment[ca@valencia]=Part de KOrganizer
 Comment[cs]=KOrganizer Part
 Comment[cy]=KTrefnydd Part
 Comment[da]=KOrganizer Part

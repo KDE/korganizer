@@ -2,6 +2,7 @@
 Name=Calendar Decoration Interface
 Name[ar]=واجهة ديكور التقويم
 Name[ca]=Interfície de decoració del calendari
+Name[ca@valencia]=Interfície de decoració del calendari
 Name[cs]=Rozhraní dekorace kalendáře
 Name[da]=Kalenderdekorations-plugin
 Name[de]=Dekoration für den Kalender
@@ -44,6 +45,7 @@ Comment[ar]=ملحق ديكور التقويم
 Comment[bg]=Приставка за декорация на календара
 Comment[br]=Lugent kinkladur an deiziadur
 Comment[ca]=Connector de decoració del calendari
+Comment[ca@valencia]=Connector de decoració del calendari
 Comment[cs]=Modul dekorace kalendáře
 Comment[cy]=Ategyn Addurniad Calendr
 Comment[da]=Calendar-dekorations-plugin
