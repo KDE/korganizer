@@ -35,8 +35,8 @@ namespace KCal {
   class Incidence;
 }
 
-namespace KOrg {
-  class AkonadiCalendar;
+namespace Akonadi {
+  class Calendar;
 }
 
 using namespace KCal;
@@ -65,10 +65,10 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
       \param cal calendar to be printed
       \param helper is a pointer to the KOrg::CoreHelper object
     */
-    CalPrinter( QWidget *par, KOrg::AkonadiCalendar *cal, KOrg::CoreHelper *helper );
+    CalPrinter( QWidget *par, Akonadi::Calendar *cal, KOrg::CoreHelper *helper );
     virtual ~CalPrinter();
 
-    void init( KOrg::AkonadiCalendar *calendar );
+    void init( Akonadi::Calendar *calendar );
 
     /**
       Set date range to be printed.
@@ -89,14 +89,14 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
     void print( int type, const QDate &fd, const QDate &td,
                 Incidence::List selectedIncidences = Incidence::List(), bool preview = false );
 
-    Calendar *calendar() const;
+    Akonadi::Calendar *calendar() const;
     KConfig *config() const;
 
   protected:
     KOrg::PrintPlugin::List mPrintPlugins;
 
   private:
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     QWidget *mParent;
     KConfig *mConfig;
     KOrg::CoreHelper *mCoreHelper;

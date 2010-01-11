@@ -45,11 +45,11 @@ namespace KCal {
 }
 
 namespace KOrg {
-  class AkonadiCalendar;
   class HTMLExportSettings;
 }
 
 namespace Akonadi {
+  class Calendar;
   class CalendarModel;
   class EntityModelStateSaver;
   class EntityTreeViewStateSaver;
@@ -411,7 +411,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool mHtmlExportSync;
 
     Akonadi::CalendarModel *mCalendarModel;
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     AkonadiCollectionView *mCollectionView;
     Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
     Akonadi::EntityModelStateSaver *mCollectionSelectionModelStateSaver;

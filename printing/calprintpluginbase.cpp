@@ -28,8 +28,8 @@
 #include "cellitem.h"
 #include "koprefs.h"
 #include "kohelper.h"
-#include "akonadicalendar.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <kdebug.h>
@@ -1017,8 +1017,8 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr );
 
   const Item::List eventList = mCalendar->events( qd, KSystemTimeZones::local(),
-                                                  KOrg::EventSortStartDate,
-                                                  KOrg::SortDirectionAscending );
+                                                  Akonadi::EventSortStartDate,
+                                                  Akonadi::SortDirectionAscending );
 
   QString timeText;
   p.setFont( QFont( "sans-serif", 8 ) );
@@ -1324,8 +1324,8 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
     dayBox.setTop( tlBox.top() );
     dayBox.setBottom( box.bottom() );
     Item::List eventList = mCalendar->events( curDate, timeSpec,
-                                               KOrg::EventSortStartDate,
-                                               KOrg::SortDirectionAscending );
+                                               Akonadi::EventSortStartDate,
+                                               Akonadi::SortDirectionAscending );
 
     alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox,
                                   excludeConfidential, excludePrivate );
@@ -1686,7 +1686,7 @@ void CalPrintPluginBase::drawTodoLines( QPainter &p,
 }
 
 void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p,
-                                   KOrg::TodoSortField sortField, KOrg::SortDirection sortDir,
+                                   Akonadi::TodoSortField sortField, Akonadi::SortDirection sortDir,
                                    bool connectSubTodos, bool strikeoutCompleted,
                                    bool desc, int posPriority, int posSummary,
                                    int posDueDt, int posPercentComplete,

@@ -33,8 +33,8 @@
 class QScrollArea;
 class KVBox;
 
-namespace KOrg {
-    class AkonadiCalendar;
+namespace Akonadi {
+    class Calendar;
 }
 
 /**

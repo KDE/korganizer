@@ -29,31 +29,30 @@
 
 #include <QtCore/QObject>
 
-#include <akonadi/kcal/kogroupware.h>
+#include <akonadi/kcal/groupware.h>
 
 class QWidget;
 
 namespace Akonadi {
   class Item;
   class Collection;
+  class Calendar;
 }
-using namespace KCal;
 
 namespace KOrg {
 
-class AkonadiCalendar;
 
 class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 {
   Q_OBJECT
   public:
-    explicit IncidenceChangerBase( AkonadiCalendar *cal, QObject *parent = 0 );
+    explicit IncidenceChangerBase( Akonadi::Calendar *cal, QObject *parent = 0 );
 
     virtual ~IncidenceChangerBase();
 
     virtual bool sendGroupwareMessage( const Akonadi::Item &incidence,
                                        KCal::iTIPMethod method,
-                                       KOGroupware::HowChanged action,
+                                       Akonadi::Groupware::HowChanged action,
                                        QWidget *parent ) = 0;
 
     virtual bool beginChange( const Akonadi::Item &incidence ) = 0;
@@ -74,7 +73,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     void schedule( iTIPMethod method, const Akonadi::Item &incidence );
 
   protected:
-    AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 };
 
 }

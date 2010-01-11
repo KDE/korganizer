@@ -24,10 +24,8 @@
 */
 
 #include "eventarchiver.h"
-#include "akonadicalendar.h"
 #include "koprefs.h"
 #include "incidencechanger.h"
-#include "akonadicalendaradaptor.h"
 
 #include <kio/netaccess.h>
 #include <kcal/icalformat.h>
@@ -35,6 +33,8 @@
 #include <kcal/calendar.h>
 #include <kcal/calendarlocal.h>
 
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/utils.h>
 
 #include <kdebug.h>
@@ -55,12 +55,12 @@ EventArchiver::~EventArchiver()
 {
 }
 
-void EventArchiver::runOnce( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget )
+void EventArchiver::runOnce( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget )
 {
   run( calendar, changer, limitDate, widget, true, true );
 }
 
-void EventArchiver::runAuto( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, QWidget *widget, bool withGUI )
+void EventArchiver::runAuto( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, QWidget *widget, bool withGUI )
 {
   QDate limitDate( QDate::currentDate() );
   int expiryTime = KOPrefs::instance()->mExpiryTime;
@@ -80,7 +80,7 @@ void EventArchiver::runAuto( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceCha
   run( calendar, changer, limitDate, widget, withGUI, false );
 }
 
-void EventArchiver::run( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+void EventArchiver::run( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                          bool withGUI, bool errorIfNone )
 {
   // We need to use rawEvents, otherwise events hidden by filters will not be archived.
@@ -108,7 +108,7 @@ void EventArchiver::run( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChanger
     }
   }
 
-  const Item::List incidences = AkonadiCalendar::mergeIncidenceList( events, todos, journals );
+  const Item::List incidences = Akonadi::Calendar::mergeIncidenceList( events, todos, journals );
 
   kDebug() << "archiving incidences before" << limitDate
            << " ->" << incidences.count() <<" incidences found.";
@@ -132,7 +132,7 @@ void EventArchiver::run( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChanger
   }
 }
 
-void EventArchiver::deleteIncidences( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+void EventArchiver::deleteIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                                       const Item::List &incidences, bool withGUI )
 {
   QStringList incidenceStrs;
@@ -159,13 +159,13 @@ void EventArchiver::deleteIncidences( KOrg::AkonadiCalendar *calendar, KOrg::Inc
   emit eventsDeleted();
 }
 
-void EventArchiver::archiveIncidences( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                                        const Item::List &incidences, bool withGUI )
 {
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
 
-  AkonadiCalendarAdaptor cal( calendar );
+  Akonadi::CalendarAdaptor cal( calendar );
   FileStorage storage( &cal );
 
   // Save current calendar to disk

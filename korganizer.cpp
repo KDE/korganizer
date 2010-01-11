@@ -29,7 +29,6 @@
 */
 
 #include "korganizer.h"
-#include "komailclient.h"
 #include "calendarview.h"
 #include "koviewmanager.h"
 #include "kodialogmanager.h"

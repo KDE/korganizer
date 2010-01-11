@@ -25,11 +25,12 @@
 #include "kotododelegates.h"
 
 #include "koprefs.h"
-#include "akonadicalendar.h"
 
 #include "kcheckcombobox.h"
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
+
+#include <akonadi/kcal/calendar.h>
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryhierarchyreader.h>
@@ -390,7 +391,7 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-void KOTodoCategoriesDelegate::setCalendar( KOrg::AkonadiCalendar *cal )
+void KOTodoCategoriesDelegate::setCalendar( Akonadi::Calendar *cal )
 {
   mCalendar = cal;
 }

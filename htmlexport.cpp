@@ -22,7 +22,6 @@
 
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
-#include "akonadicalendar.h"
 
 #include <KCal/Calendar>
 #include <KCal/Event>
@@ -32,6 +31,7 @@
  #include <kabc/stdaddressbook.h>
 #endif
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <kglobal.h>
@@ -55,18 +55,18 @@ static QString cleanChars( const QString &txt );
 class KOrg::HtmlExport::Private
 {
   public:
-    Private( AkonadiCalendar *calendar, KOrg::HTMLExportSettings *settings )
+    Private( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings )
       : mCalendar( calendar ),
         mSettings( settings )
     {}
 
-    AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     KOrg::HTMLExportSettings *mSettings;
     QMap<QDate,QString> mHolidayMap;
 };
 //@endcond
 
-HtmlExport::HtmlExport( AkonadiCalendar *calendar, KOrg::HTMLExportSettings *settings )
+HtmlExport::HtmlExport( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings )
   : d( new Private( calendar, settings ) )
 {
 }
@@ -227,8 +227,8 @@ void HtmlExport::createMonthView( QTextStream *ts )
         // Only print events within the from-to range
         if ( start >= fromDate() && start <= toDate() ) {
           Akonadi::Item::List events = d->mCalendar->events( start, d->mCalendar->timeSpec(),
-                                                     EventSortStartDate,
-                                                     SortDirectionAscending );
+                                                     Akonadi::EventSortStartDate,
+                                                     Akonadi::SortDirectionAscending );
           if ( events.count() ) {
             *ts << "<table>";
             foreach(const Akonadi::Item &event, events) {
@@ -292,8 +292,8 @@ void HtmlExport::createEventList( QTextStream *ts )
   for ( QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1) ) {
     kDebug() << "Getting events for" << dt.toString();
     Akonadi::Item::List events = d->mCalendar->events( dt, d->mCalendar->timeSpec(),
-                                               EventSortStartDate,
-                                               SortDirectionAscending );
+                                               Akonadi::EventSortStartDate,
+                                               Akonadi::SortDirectionAscending );
     if ( events.count() ) {
       *ts << "  <tr><td colspan=\"" << QString::number( columns )
           << "\" class=\"datehead\"><i>"

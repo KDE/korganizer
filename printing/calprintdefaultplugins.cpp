@@ -27,8 +27,8 @@
 
 #include "calprintdefaultplugins.h"
 #include "koprefs.h"
-#include "akonadicalendar.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/Todo>
@@ -802,8 +802,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
     Item::List eventList = mCalendar->events( curDay, timeSpec,
-                                               KOrg::EventSortStartDate,
-                                               KOrg::SortDirectionAscending );
+                                               Akonadi::EventSortStartDate,
+                                               Akonadi::SortDirectionAscending );
 
     p.setFont( QFont( "sans-serif", 12 ) );
 
@@ -1434,13 +1434,13 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   }
 
-  KOrg::SortDirection sortDirection = KOrg::SortDirectionAscending;
+  Akonadi::SortDirection sortDirection = Akonadi::SortDirectionAscending;
   switch( mSortDirection ) {
   case TodoDirectionAscending:
-    sortDirection = KOrg::SortDirectionAscending;
+    sortDirection = Akonadi::SortDirectionAscending;
     break;
   case TodoDirectionDescending:
-    sortDirection = KOrg::SortDirectionDescending;
+    sortDirection = Akonadi::SortDirectionDescending;
     break;
   case TodoDirectionUnset:
     break;

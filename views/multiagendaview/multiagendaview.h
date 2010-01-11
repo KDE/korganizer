@@ -94,7 +94,7 @@ class MultiAgendaView : public AgendaView
     int maxDatesHint();
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    /* reimp */ void setCalendar( AkonadiCalendar *cal );
+    /* reimp */ void setCalendar( Akonadi::Calendar *cal );
 
     /**
      * reimplemented from KOrg::BaseView

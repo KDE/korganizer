@@ -36,10 +36,7 @@ class AlarmDockWindow;
 
 namespace Akonadi {
   class Item;
-}
-
-namespace KOrg {
-  class AkonadiCalendar;
+  class Calendar;
 }
 
 namespace KCal {
@@ -76,12 +73,12 @@ class KOAlarmClient : public QObject, public KSessionManager
     void saveAllSignal();
 
   private:
-    void createReminder( KOrg::AkonadiCalendar *calendar, const Akonadi::Item &incidence,
+    void createReminder( Akonadi::Calendar *calendar, const Akonadi::Item &incidence,
                          const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 
     QDateTime mLastChecked;
     QTimer mCheckTimer;

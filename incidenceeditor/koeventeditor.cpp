@@ -30,7 +30,7 @@
 #include "koeditorrecurrence.h"
 #include "koeditorconfig.h"
 #include "korganizer/incidencechangerbase.h"
-#include <akonadi/kcal/kogroupware.h>
+#include <akonadi/kcal/groupware.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -264,7 +264,7 @@ bool KOEventEditor::processInput()
     } else {
       if ( mIsCounter ) {
         Q_ASSERT( mIncidence.hasPayload<KCal::Event::Ptr>() );
-        KOGroupware::instance()->sendCounterProposal( oldEvent.get(), event.get() );
+        Akonadi::Groupware::instance()->sendCounterProposal( oldEvent.get(), event.get() );
 
         // add dummy event at the position of the counter proposal
         Event::Ptr event2( event->clone() );

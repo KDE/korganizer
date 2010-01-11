@@ -22,7 +22,7 @@
 
 #include "baseview.h"
 
-#include <akonadi/kcal/akonadicalendar.h>
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendarsearch.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
@@ -75,7 +75,7 @@ public:
     delete collectionSelectionModel;
   }
 
-  AkonadiCalendar *calendar;
+  Akonadi::Calendar *calendar;
   CalendarSearch *calendarSearch;
   CollectionSelection *customCollectionSelection;
   CollectionSelectionProxyModel* collectionSelectionModel;
@@ -136,7 +136,7 @@ BaseView::~BaseView()
   delete d;
 }
 
-void BaseView::setCalendar( AkonadiCalendar *cal )
+void BaseView::setCalendar( Akonadi::Calendar *cal )
 {
   if ( d->calendar == cal )
     return;
@@ -150,7 +150,7 @@ CalPrinterBase::PrintType BaseView::printType()
   return CalPrinterBase::Month;
 }
 
-AkonadiCalendar *BaseView::calendar()
+Akonadi::Calendar *BaseView::calendar()
 {
   return d->calendar;
 }

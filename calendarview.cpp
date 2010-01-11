@@ -35,7 +35,6 @@
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
 #include "exportwebdialog.h"
-#include "freebusymanager.h"
 #include "history.h"
 #include "incidencechanger.h"
 #include "kocorehelper.h"
@@ -43,15 +42,12 @@
 #include "koeventviewer.h"
 #include "koeventviewerdialog.h"
 #include "koglobals.h"
-#include "kogroupware.h"
 #include "incidenceeditor/koeventeditor.h"
 #include "incidenceeditor/koincidenceeditor.h"
 #include "incidenceeditor/kojournaleditor.h"
 #include "incidenceeditor/kotodoeditor.h"
-#include "komailclient.h"
 #include "komessagebox.h"
 #include "koviewmanager.h"
-#include "mailscheduler.h"
 #include "navigatorbar.h"
 #include "publishdialog.h"
 #include "htmlexportsettings.h"
@@ -59,10 +55,14 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
-#include "akonadicalendaradaptor.h"
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/groupware.h>
+#include <akonadi/kcal/freebusymanager.h>
+#include <akonadi/kcal/mailclient.h>
+#include <akonadi/kcal/mailscheduler.h>
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
@@ -252,7 +252,7 @@ CalendarView::~CalendarView()
   delete mHistory;
 }
 
-void CalendarView::setCalendar( KOrg::AkonadiCalendar *cal )
+void CalendarView::setCalendar( Akonadi::Calendar *cal )
 {
   mCalendar = cal;
 
@@ -291,7 +291,7 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
            mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
 }
 
-KOrg::AkonadiCalendar *CalendarView::calendar()
+Akonadi::Calendar *CalendarView::calendar()
 {
   return mCalendar;
 }
@@ -366,7 +366,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     return false;
   }
 
-  AkonadiCalendarAdaptor adaptor( mCalendar );
+  Akonadi::CalendarAdaptor adaptor( mCalendar );
   // merge in a file
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
@@ -398,7 +398,7 @@ bool CalendarView::saveCalendar( const QString &filename )
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  AkonadiCalendarAdaptor adaptor( mCalendar );
+  Akonadi::CalendarAdaptor adaptor( mCalendar );
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
   storage.setSaveFormat( new ICalFormat );
@@ -837,7 +837,7 @@ void CalendarView::edit_copy()
     return;
   }
 
-  AkonadiCalendarAdaptor cal( mCalendar );
+  Akonadi::CalendarAdaptor cal( mCalendar );
   DndFactory factory( &cal );
   Incidence::Ptr incidence = Akonadi::incidence(item);
   if ( !factory.copyIncidence( incidence.get() ) ) {
@@ -888,7 +888,7 @@ void CalendarView::edit_paste()
     return;
   }
 
-  AkonadiCalendarAdaptor cal( mCalendar );
+  Akonadi::CalendarAdaptor cal( mCalendar );
   DndFactory factory( &cal );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
@@ -1589,7 +1589,7 @@ void CalendarView::schedule_publish( const Item &item )
     inc->clearAttendees();
 
     // Send the mail
-    MailScheduler scheduler( mCalendar );
+    Akonadi::MailScheduler scheduler( mCalendar );
     if ( scheduler.publish( incidence.get(), publishdlg->addresses() ) ) {
       KMessageBox::information(
         this,
@@ -1668,7 +1668,7 @@ void CalendarView::schedule_forward( const Item &item )
     QString from = KOPrefs::instance()->email();
     bool bccMe = KOPrefs::instance()->mBcc;
     QString messageText = format.createScheduleMessage( incidence.get(), iTIPRequest );
-    KOMailClient mailer;
+    Akonadi::MailClient mailer;
     if ( mailer.mailTo(
            incidence.get(),
            KOCore::self()->identityManager()->identityForAddress( from ),
@@ -1704,7 +1704,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   QPointer<PublishDialog> publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
     // Send the mail
-    MailScheduler scheduler( mCalendar );
+    Akonadi::MailScheduler scheduler( mCalendar );
     if ( scheduler.publish( freebusy, publishdlg->addresses() ) ) {
       KMessageBox::information(
         this,
@@ -1723,7 +1723,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
 
 void CalendarView::uploadFreeBusy()
 {
-  KOGroupware::instance()->freeBusyManager()->publishFreeBusy();
+  Akonadi::Groupware::instance()->freeBusyManager()->publishFreeBusy();
 }
 
 void CalendarView::schedule( iTIPMethod method, const Item &item )
@@ -1755,7 +1755,7 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
   inc->clearAttendees();
 
   // Send the mail
-  MailScheduler scheduler( mCalendar );
+  Akonadi::MailScheduler scheduler( mCalendar );
   if ( scheduler.performTransaction( incidence.get(), method ) ) {
     KMessageBox::information(
       this,
@@ -1859,7 +1859,7 @@ void CalendarView::exportICalendar()
       }
     }
     ICalFormat *format = new ICalFormat;
-    AkonadiCalendarAdaptor calendar( mCalendar );
+    Akonadi::CalendarAdaptor calendar( mCalendar );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
@@ -1908,7 +1908,7 @@ void CalendarView::exportVCalendar()
       }
     }
     VCalFormat *format = new VCalFormat;
-    AkonadiCalendarAdaptor calendar( mCalendar );
+    Akonadi::CalendarAdaptor calendar( mCalendar );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
@@ -2663,7 +2663,7 @@ void CalendarView::showErrorMessage( const QString &msg )
 
 void CalendarView::updateCategories()
 {
-  QStringList allCats( AkonadiCalendar::categories( calendar() ) );
+  QStringList allCats( Akonadi::Calendar::categories( calendar() ) );
   allCats.sort();
 
   KPIM::CategoryConfig cc( KOPrefs::instance() );

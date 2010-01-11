@@ -23,10 +23,10 @@
 */
 
 #include "kotimespentview.h"
-#include "akonadicalendar.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <kcal/event.h>

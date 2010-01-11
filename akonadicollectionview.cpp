@@ -25,7 +25,6 @@
 */
 
 #include "akonadicollectionview.h"
-#include "akonadicalendar.h"
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"

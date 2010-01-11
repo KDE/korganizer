@@ -23,7 +23,6 @@
 */
 
 #include "monthitem.h"
-#include "akonadicalendar.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -33,6 +32,7 @@
 #include "monthscene.h"
 #include "monthview.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/Incidence>

@@ -25,12 +25,12 @@
 */
 
 #include "kolistview.h"
-#include "akonadicalendar.h"
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "kohelper.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/IncidenceFormatter>

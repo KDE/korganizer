@@ -27,12 +27,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelineitem.h"
-#include "akonadicalendar.h"
 #include "kohelper.h"
 
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
@@ -120,7 +120,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
 
   // item for every calendar
   TimelineItem *item = 0;
-  AkonadiCalendar *calres = calendar();
+  Akonadi::Calendar *calres = calendar();
   if ( !calres ) {
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
     mCalendarItemMap.insert( -1, item );
@@ -230,7 +230,7 @@ void KOTimelineView::newEventWithHint( const QDateTime &dt )
 
 TimelineItem *KOTimelineView::calendarItemForIncidence( const Item &incidence )
 {
-  AkonadiCalendar *calres = calendar();
+  Akonadi::Calendar *calres = calendar();
   TimelineItem *item = 0;
   if ( !calres ) {
     item = mCalendarItemMap.value( -1 );

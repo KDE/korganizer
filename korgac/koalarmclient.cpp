@@ -29,13 +29,13 @@
 #include "alarmdialog.h"
 #include "alarmdockwindow.h"
 #include "korgacadaptor.h"
-#include "akonadicalendar.h"
 
 #include <Akonadi/Item>
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/Session>
 #include <Akonadi/ItemFetchScope>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
@@ -88,7 +88,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   KDescendantsProxyModel *flattener = new KDescendantsProxyModel(this);
   flattener->setSourceModel( calendarModel );
 
-  mCalendar = new KOrg::AkonadiCalendar( calendarModel, flattener, zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  mCalendar = new Akonadi::Calendar( calendarModel, flattener, zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
@@ -161,7 +161,7 @@ void KOAlarmClient::checkAlarms()
   }
 }
 
-void KOAlarmClient::createReminder( KOrg::AkonadiCalendar *calendar,
+void KOAlarmClient::createReminder( Akonadi::Calendar *calendar,
                                     const Item &aitem,
                                     const QDateTime &dt,
                                     const QString &displayText )

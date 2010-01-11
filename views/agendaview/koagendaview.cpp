@@ -35,9 +35,9 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelabelszone.h"
-#include "akonadicalendar.h"
 #include "akonadicollectionview.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
@@ -244,7 +244,7 @@ KOAgendaView::~KOAgendaView()
   delete mAllDayAgendaPopup;
 }
 
-void KOAgendaView::setCalendar( AkonadiCalendar *cal )
+void KOAgendaView::setCalendar( Akonadi::Calendar *cal )
 {
   if( calendar() ) {
     calendar()->unregisterObserver( this );
@@ -1468,8 +1468,8 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
   newTime.setDateOnly( allDay );
 
   Todo::Ptr todo = Akonadi::todo( todoItem );
-  if ( todo &&  dynamic_cast<AkonadiCalendar*>( calendar() ) ) {
-    const Item existingTodoItem = dynamic_cast<AkonadiCalendar*>( calendar() )->itemForIncidence( calendar()->todo( todo->uid() ) );
+  if ( todo &&  dynamic_cast<Akonadi::Calendar*>( calendar() ) ) {
+    const Item existingTodoItem = dynamic_cast<Akonadi::Calendar*>( calendar() )->itemForIncidence( calendar()->todo( todo->uid() ) );
     if ( Todo::Ptr existingTodo = Akonadi::todo( existingTodoItem ) ) {
       kDebug() << "Drop existing Todo";
       Todo::Ptr oldTodo( existingTodo->clone() );

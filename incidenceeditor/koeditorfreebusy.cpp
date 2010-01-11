@@ -28,7 +28,7 @@
 #include <akonadi/kcal/freebusymanager.h>
 #include "../freebusyurldialog.h"
 #include "../koglobals.h"
-#include <akonadi/kcal/kogroupware.h>
+#include <akonadi/kcal/groupware.h>
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
@@ -109,7 +109,7 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     void startDownload( bool forceDownload ) {
       mIsDownloading = true;
-      FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
+      Akonadi::FreeBusyManager *m = Akonadi::Groupware::instance()->freeBusyManager();
       if ( !m->retrieveFreeBusy( attendee()->email(), forceDownload ) ) {
         mIsDownloading = false;
       }
@@ -354,7 +354,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
            this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
-  FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
+  Akonadi::FreeBusyManager *m = Akonadi::Groupware::instance()->freeBusyManager();
   connect( m, SIGNAL(freeBusyRetrieved(KCal::FreeBusy *,const QString &)),
            SLOT(slotInsertFreeBusy(KCal::FreeBusy *,const QString &)) );
 

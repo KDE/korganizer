@@ -27,7 +27,6 @@
 #include "alarmdialog.h"
 #include "kocore.h"
 #include "koeventviewer.h"
-#include "komailclient.h"
 #include "koprefs.h"
 #include "korganizer_interface.h"
 
@@ -40,6 +39,7 @@
 #include <KPIMIdentities/IdentityManager>
 
 #include <Akonadi/Item>
+#include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KComboBox>
@@ -58,6 +58,8 @@
 #include <QTreeWidget>
 #include <QVBoxLayout>
 #include <phonon/mediaobject.h>
+
+using namespace KCal;
 
 class ReminderListItem : public QTreeWidgetItem
 {
@@ -98,7 +100,7 @@ bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
 
 typedef QList<ReminderListItem *> ReminderList;
 
-AlarmDialog::AlarmDialog( KOrg::AkonadiCalendar *calendar, QWidget *parent )
+AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
   : KDialog( parent, Qt::WindowStaysOnTopHint ),
     mCalendar( calendar ), mSuspendTimer( this )
 {
@@ -628,7 +630,7 @@ void AlarmDialog::eventNotification()
         }
         //TODO: support attachments
         //TODO: transport
-        KOMailClient mailer;
+        Akonadi::MailClient mailer;
         mailer.send( id, from, to, QString(), subject, body, true );
       }
     }

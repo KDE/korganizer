@@ -29,21 +29,21 @@
 
 class KJob;
 
-namespace KOrg {
-  class AkonadiCalendar;
+namespace Akonadi {
+  class Calendar;
 }
 
 class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerBase
 {
   Q_OBJECT
   public:
-    IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent );
+    IncidenceChanger( Akonadi::Calendar *cal, QObject *parent );
     ~IncidenceChanger();
 
     bool beginChange( const Akonadi::Item & incidence );
     bool sendGroupwareMessage( const Akonadi::Item &incidence,
                                KCal::iTIPMethod method,
-                               KOGroupware::HowChanged action,
+                               Akonadi::Groupware::HowChanged action,
                                QWidget *parent );
     bool endChange( const Akonadi::Item &incidence );
 

@@ -26,11 +26,11 @@
 // View of Journal entries
 
 #include "kojournalview.h"
-#include "akonadicalendar.h"
 #include "journalview.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KDebug>

@@ -39,8 +39,8 @@ namespace KCal {
   class Incidence;
 }
 
-namespace KOrg {
-  class AkonadiCalendar;
+namespace Akonadi {
+  class Calendar;
 }
 
 using namespace KCal;
@@ -92,7 +92,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( KOrg::AkonadiCalendar *calendar, const Akonadi::Item &incidence, const QDate &qd, QWidget *parent );
+    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence, const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
@@ -230,7 +230,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int mSubCell;   // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     Akonadi::Item mIncidence;
     QDate mDate;
     bool mValid;

@@ -24,7 +24,6 @@
 */
 
 #include "monthview.h"
-#include "akonadicalendar.h"
 #include "monthscene.h"
 #include "monthitem.h"
 #include "monthgraphicsitems.h"
@@ -32,6 +31,7 @@
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendarsearch.h>
 #include <akonadi/kcal/utils.h>
 

@@ -31,7 +31,7 @@
 #include <libkdepim/kpimprefs.h>
 
 #include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/kogroupware.h>
+#include <akonadi/kcal/groupware.h>
 
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
@@ -143,10 +143,10 @@ void KOEventViewer::changeIncidenceDisplay( const Item &item, const QDate &date,
 {
   if ( item.id() == mIncidence.id() ) {
     switch ( action ) {
-    case KOGroupware::INCIDENCEEDITED:
+    case Groupware::INCIDENCEEDITED:
       setIncidence( item, date );
       break;
-    case KOGroupware::INCIDENCEDELETED:
+    case Groupware::INCIDENCEDELETED:
       setIncidence( Item(), date );
       break;
     }

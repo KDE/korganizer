@@ -29,9 +29,9 @@
 #include "calendarview.h"
 #include "koprefs.h"
 #include "views/listview/kolistview.h"
-#include "akonadicalendar.h"
 #include <libkdepim/kdateedit.h>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 using namespace KOrg;
@@ -179,7 +179,7 @@ void SearchDialog::search( const QRegExp &re )
   }
 
   mMatchedEvents.clear();
-  Q_FOREACH( const Item &item, AkonadiCalendar::mergeIncidenceList(events, todos, journals) ) {
+  Q_FOREACH( const Item &item, Akonadi::Calendar::mergeIncidenceList(events, todos, journals) ) {
     const Incidence::Ptr ev = Akonadi::incidence( item );
     Q_ASSERT( ev );
     if ( mSummaryCheck->isChecked() ) {

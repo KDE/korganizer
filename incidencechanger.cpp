@@ -24,13 +24,13 @@
 
 #include "incidencechanger.h"
 #include "koglobals.h"
-#include "kogroupware.h"
 #include "koprefs.h"
-#include "mailscheduler.h"
-#include "akonadicalendar.h"
-#include "akonadicalendar.h"
+
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/calendaradaptor.h>
+#include <akonadi/kcal/groupware.h>
+#include <akonadi/kcal/mailscheduler.h>
 #include <akonadi/kcal/utils.h>
-#include "akonadicalendaradaptor.h"
 
 #include <Akonadi/ItemCreateJob>
 #include <Akonadi/ItemDeleteJob>
@@ -59,7 +59,7 @@ public:
   QHash<const KJob*,Item> oldItemByJob;
 };
 
-IncidenceChanger::IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent )
+IncidenceChanger::IncidenceChanger( Akonadi::Calendar *cal, QObject *parent )
   : IncidenceChangerBase( cal, parent ), d( new Private )
 {
 }
@@ -87,7 +87,7 @@ bool IncidenceChanger::beginChange( const Item &item )
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
                                              KCal::iTIPMethod method,
-                                             KOGroupware::HowChanged action,
+                                             Akonadi::Groupware::HowChanged action,
                                              QWidget *parent )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
@@ -100,7 +100,7 @@ bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
     return true;
   } else if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     return
-      KOGroupware::instance()->sendICalMessage( parent, method, incidence.get(), action,  false );
+      Akonadi::Groupware::instance()->sendICalMessage( parent, method, incidence.get(), action,  false );
   }
   return true;
 }
@@ -116,14 +116,14 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
                  "Shall cancel messages be sent to these attendees?" ),
            i18n( "Attendees Removed" ), KGuiItem( i18n( "Send Messages" ) ),
            KGuiItem( i18n( "Do Not Send" ) ) ) == KMessageBox::Yes ) {
-      // don't use KOGroupware::sendICalMessage here, because that asks just
+      // don't use Akonadi::Groupware::sendICalMessage here, because that asks just
       // a very general question "Other people are involved, send message to
       // them?", which isn't helpful at all in this situation. Afterwards, it
-      // would only call the MailScheduler::performTransaction, so do this
+      // would only call the Akonadi::MailScheduler::performTransaction, so do this
       // manually.
       // FIXME: Groupware scheduling should be factored out to it's own class
       //        anyway
-      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
+      Akonadi::MailScheduler scheduler( static_cast<Akonadi::Calendar*>(mCalendar) );
       scheduler.performTransaction( incidence.get(), iTIPCancel );
     }
   }
@@ -183,7 +183,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )
 
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
-                                        KOGroupware::INCIDENCEDELETED, parent );
+                                        Akonadi::Groupware::INCIDENCEDELETED, parent );
   if( !doDelete )
     return false;
   emit incidenceToBeDeleted( aitem );
@@ -195,7 +195,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )
 
 void IncidenceChanger::changeIncidenceFinished( KJob* j )
 {
-  //AKONADI_PORT this is from the respective method in the old AkonadiCalendar, so I leave it here: --Frank
+  //AKONADI_PORT this is from the respective method in the old Akonadi::Calendar, so I leave it here: --Frank
   kDebug();
 
   // we should probably update the revision number here,or internally in the Event
@@ -258,12 +258,12 @@ void IncidenceChanger::deleteIncidenceFinished( KJob* j )
       }
     }
 
-    if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
+    if ( !Akonadi::Groupware::instance()->doNotNotify() && notifyOrganizer ) {
+      Akonadi::MailScheduler scheduler( static_cast<Akonadi::Calendar*>(mCalendar) );
       scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
     }
     //reset the doNotNotify flag
-    KOGroupware::instance()->setDoNotNotify( false );
+    Akonadi::Groupware::instance()->setDoNotNotify( false );
   }
   emit incidenceDeleted( items.first() );
 }
@@ -277,11 +277,11 @@ bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
 
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
-                                        KOGroupware::INCIDENCEDELETED, parent );
+                                        Akonadi::Groupware::INCIDENCEDELETED, parent );
   if( doDelete ) {
 
     // @TODO: the factory needs to do the locking!
-    AkonadiCalendarAdaptor cal( mCalendar );
+    Akonadi::CalendarAdaptor cal( mCalendar );
     DndFactory factory( &cal );
     Akonadi::Item incidenceItem;
     incidenceItem.setPayload<Incidence::Ptr>( incidence );
@@ -405,10 +405,10 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
     //        pattern...
     bool success = true;
     if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-      success = KOGroupware::instance()->sendICalMessage(
+      success = Akonadi::Groupware::instance()->sendICalMessage(
         parent,
         KCal::iTIPRequest,
-        newinc.get(), KOGroupware::INCIDENCEEDITED, attendeeStatusChanged );
+        newinc.get(), Akonadi::Groupware::INCIDENCEEDITED, attendeeStatusChanged );
     }
 
     if ( !success ) {
@@ -440,7 +440,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Coll
   item.setMimeType( QString::fromLatin1("application/x-vnd.akonadi.calendar.%1").arg(QLatin1String(incidence->type().toLower())) ); //PENDING(AKONADI_PORT) shouldn't be hardcoded?
   ItemCreateJob *job = new ItemCreateJob( item, collection );
   // The connection needs to be queued to be sure addIncidenceFinished is called after the kjob finished
-  // it's eventloop. That's needed cause KOGroupware uses synchron job->exec() calls.
+  // it's eventloop. That's needed cause Akonadi::Groupware uses synchron job->exec() calls.
   connect( job, SIGNAL( result(KJob*)), this, SLOT( addIncidenceFinished(KJob*) ), Qt::QueuedConnection );
   return true;
 }
@@ -463,10 +463,10 @@ void IncidenceChanger::addIncidenceFinished( KJob* j ) {
 
   Q_ASSERT( incidence );
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( !KOGroupware::instance()->sendICalMessage(
+    if ( !Akonadi::Groupware::instance()->sendICalMessage(
            0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
            KCal::iTIPRequest,
-           incidence.get(), KOGroupware::INCIDENCEADDED, false ) ) {
+           incidence.get(), Akonadi::Groupware::INCIDENCEADDED, false ) ) {
       kError() << "sendIcalMessage failed.";
     }
   }

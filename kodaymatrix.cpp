@@ -29,12 +29,12 @@
 #include "kodaymatrix.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "akonadicalendar.h"
 
 #include <KCal/DndFactory>
 #include <KCal/ICalDrag>
 #include <KCal/VCalDrag>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCalendarSystem>
@@ -78,7 +78,6 @@
 
 using namespace Akonadi;
 using namespace KCal;
-using namespace KOrg;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
@@ -100,7 +99,7 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mHighlightJournals = false;
 }
 
-void KODayMatrix::setCalendar( KOrg::AkonadiCalendar *cal )
+void KODayMatrix::setCalendar( Akonadi::Calendar *cal )
 {
   if ( mCalendar ) {
     mCalendar->unregisterObserver( this );

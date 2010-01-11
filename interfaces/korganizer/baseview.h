@@ -38,8 +38,6 @@
 #include <QtCore/QPair>
 #include <QtGui/QWidget>
 
-using namespace KCal;
-
 class QModelIndex;
 class QPoint;
 
@@ -49,10 +47,10 @@ namespace Akonadi {
   class CalendarSearch;
   class CollectionSelection;
   class CollectionSelectionProxyModel;
+  class Calendar;
 }
 namespace KOrg {
 
-class AkonadiCalendar;
 
 /**
   This class provides an interface for all views being displayed within the
@@ -83,11 +81,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual ~BaseView();
 
-    virtual void setCalendar( AkonadiCalendar *cal );
+    virtual void setCalendar( Akonadi::Calendar *cal );
     /**
       Return calendar object of this view.
     */
-    virtual AkonadiCalendar *calendar();
+    virtual Akonadi::Calendar *calendar();
 
     Akonadi::CalendarSearch* calendarSearch() const;
 

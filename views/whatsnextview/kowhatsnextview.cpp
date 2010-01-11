@@ -23,10 +23,10 @@
 */
 
 #include "kowhatsnextview.h"
-#include "akonadicalendar.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/IncidenceFormatter>
@@ -329,7 +329,7 @@ void KOWhatsNextView::showIncidence( const QString &uid )
 {
   Item incidence;
 
-  AkonadiCalendar* cal = dynamic_cast<AkonadiCalendar*>( calendar() );
+  Akonadi::Calendar* cal = dynamic_cast<Akonadi::Calendar*>( calendar() );
   if ( !cal )
     return;
 

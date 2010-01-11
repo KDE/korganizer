@@ -27,7 +27,7 @@
 #define CALENDARVIEW_H
 
 #include "korganizer_export.h"
-#include "akonadicalendar.h"
+#include <akonadi/kcal/calendar.h>
 #include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
@@ -38,6 +38,7 @@
 
 namespace Akonadi {
   class CollectionSelection;
+  class Calendar;
 }
 class CalPrinter;
 class DateChecker;
@@ -53,9 +54,7 @@ class NavigatorBar;
 
 namespace KOrg {
   class HTMLExportSettings;
-  class AkonadiCalendar;
   class History;
-  class AkonadiCalendar;
 }
 
 using namespace KCal;
@@ -89,7 +88,7 @@ class CalendarViewExtension : public QWidget
   @author Cornelius Schumacher
 */
 class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
-                                              public KOrg::AkonadiCalendar::CalendarObserver
+                                              public Akonadi::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -126,8 +125,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     };
 
-    void setCalendar( KOrg::AkonadiCalendar * );
-    KOrg::AkonadiCalendar *calendar();
+    void setCalendar( Akonadi::Calendar * );
+    Akonadi::Calendar *calendar();
 
     History *history() const { return mHistory; }
 
@@ -661,7 +660,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     QList<CalendarViewExtension*> mExtensions;
 
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;

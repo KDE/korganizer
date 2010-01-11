@@ -30,8 +30,8 @@
 #include <QSlider>
 
 
-namespace KOrg {
-  class  AkonadiCalendar;
+namespace Akonadi {
+  class Calendar;
 }
 
 class QWidget;
@@ -160,9 +160,9 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
                                const QStyleOptionViewItem &option,
                                const QModelIndex &index ) const;
 
-    void setCalendar( KOrg::AkonadiCalendar *cal );
+    void setCalendar( Akonadi::Calendar *cal );
   private:
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 };
 
 /**

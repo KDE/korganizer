@@ -44,8 +44,10 @@ class QGridLayout;
 class KTextBrowser;
 class QPushButton;
 
+namespace Akonadi {
+  class Calendar;
+}
 namespace KOrg {
-  class AkonadiCalendar;
   class IncidenceChangerBase;
 }
 using namespace KOrg;
@@ -63,7 +65,7 @@ class JournalView : public QWidget
     void setJournal( const Akonadi::Item &journal );
     Akonadi::Item journal() const { return mJournal; }
 
-    void setCalendar( KOrg::AkonadiCalendar *cal );
+    void setCalendar( Akonadi::Calendar *cal );
     QDate date() const { return mDate; }
 
     void clear();
@@ -93,7 +95,7 @@ class JournalView : public QWidget
 
   private:
     Akonadi::Item mJournal;
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     QDate mDate;
     bool mReadOnly;
 
@@ -115,7 +117,7 @@ class JournalDateView : public KVBox
   public:
     typedef ListBase<JournalDateView> List;
 
-    JournalDateView( KOrg::AkonadiCalendar *, QWidget *parent );
+    JournalDateView( Akonadi::Calendar *, QWidget *parent );
     virtual ~JournalDateView();
 
     void addJournal( const Akonadi::Item &journal );
@@ -141,7 +143,7 @@ class JournalDateView : public KVBox
     void journalDeleted( const Akonadi::Item & );
 
   private:
-    KOrg::AkonadiCalendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     QDate mDate;
     QMap<Akonadi::Item::Id,JournalView *> mEntries;
 

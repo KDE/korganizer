@@ -27,9 +27,10 @@
 #define CALPRINTPLUGINBASE_H
 
 #include "korganizer/korganizer_export.h"
-#include "akonadicalendar.h"
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
+
+#include <akonadi/kcal/calendar.h>
 
 #include <kcal/event.h>
 #include <kcal/todo.h>
@@ -541,7 +542,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       about its parent)
     */
     void drawTodo( int &count, const Akonadi::Item &todo, QPainter &p,
-                   KOrg::TodoSortField sortField, KOrg::SortDirection sortDir,
+                   Akonadi::TodoSortField sortField, Akonadi::SortDirection sortDir,
                    bool connectSubTodos, bool strikeoutCompleted, bool desc,
                    int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,

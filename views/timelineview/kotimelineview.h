@@ -39,8 +39,11 @@ namespace KCal {
   class ResourceCalendar;
 }
 
+namespace Akonadi {
+  class Calendar;
+}
+
 namespace KOrg {
-  class AkonadiCalendar;
   class TimelineItem;
 }
 

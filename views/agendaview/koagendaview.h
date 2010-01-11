@@ -27,7 +27,7 @@
 
 #include "agendaview.h"
 #include "calprinter.h"
-#include "akonadicalendar.h"
+#include <akonadi/kcal/calendar.h>
 
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
@@ -100,7 +100,7 @@ class EventIndicator : public QFrame
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::CalendarObserver
+class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -141,7 +141,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::Cale
     bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    virtual void setCalendar( AkonadiCalendar *cal );
+    virtual void setCalendar( Akonadi::Calendar *cal );
      
     /** Show only incidences from the given collection selection. */
 //    void setCollectionSelection( CollectionSelection* selection );

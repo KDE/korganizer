@@ -21,12 +21,13 @@
 #include "timelabelszone.h"
 #include "views/agendaview/koagenda.h"
 #include "views/agendaview/koagendaview.h"
-#include "akonadicalendar.h"
 #include "akonadicollectionview.h"
 
 #include "ui_multiagendaviewconfigwidget.h"
 
 #include <Akonadi/EntityTreeView>
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
@@ -137,7 +138,7 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   topLevelLayout->addWidget( topSideBox );
 }
 
-void MultiAgendaView::setCalendar( AkonadiCalendar *cal )
+void MultiAgendaView::setCalendar( Akonadi::Calendar *cal )
 {
   AgendaView::setCalendar( cal );
   Q_FOREACH( CollectionSelectionProxyModel* const i, mCollectionSelectionModels )

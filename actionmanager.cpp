@@ -30,19 +30,15 @@
 #include "calendaradaptor.h"
 #include "calendarview.h"
 #include "eventarchiver.h"
-#include "freebusymanager.h"
 #include "history.h"
 #include "importdialog.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
-#include "kogroupware.h"
 #include "koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "reminderclient.h"
-#include "akonadicalendar.h"
-#include "akonadicalendaradaptor.h"
 #include "akonadicollectionview.h"
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
@@ -53,11 +49,15 @@
 
 #include <KMime/KMimeMessage>
 
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi/kcal/freebusymanager.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
 #include <akonadi/kcal/incidencemimetypevisitor.h>
+#include <akonadi/kcal/groupware.h>
 #include <akonadi/kcal/utils.h>
 
 #include <akonadi/entitytreemodel.h>
@@ -172,7 +172,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
     mCollectionViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
     mCollectionView( 0 ), mCollectionViewStateSaver( 0 ), mIsClosing( false )
 {
-  new CalendarAdaptor( this );
+  new KOrgCalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
 
   KOEditorConfig::setKOEditorConfig( new KOrganizerEditorConfig );
@@ -223,7 +223,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
 void ActionManager::init()
 {
   // Construct the groupware object
-  KOGroupware::create( mCalendar );
+  Akonadi::Groupware::create( mCalendar );
 
   // add this instance of the window to the static list.
   if ( !mWindowList ) {
@@ -333,7 +333,7 @@ void ActionManager::createCalendarAkonadi()
   dlg->show();
 #endif
 
-  mCalendar = new AkonadiCalendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
+  mCalendar = new Akonadi::Calendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
@@ -1477,7 +1477,7 @@ void ActionManager::updateConfig()
     mCollectionView->updateView();
   }
 #endif
-  KOGroupware::instance()->freeBusyManager()->setBrokenUrl( false );
+  Akonadi::Groupware::instance()->freeBusyManager()->setBrokenUrl( false );
 }
 
 void ActionManager::configureDateTime()
@@ -1652,7 +1652,7 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
   } else {
     IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
 
-    AkonadiCalendarAdaptor cal( mCalendar );  FileStorage storage( &cal );
+    Akonadi::CalendarAdaptor cal( mCalendar );  FileStorage storage( &cal );
     storage.setFileName( filename );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {

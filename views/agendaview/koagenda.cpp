@@ -25,7 +25,6 @@
   without including the source code for Qt in the source distribution.
 */
 #include "koagenda.h"
-#include "akonadicalendar.h"
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -39,6 +38,7 @@
 #include <KCal/Todo>
 #include <KCal/VCalDrag>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KDebug>

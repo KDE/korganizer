@@ -42,7 +42,7 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
-CalPrinter::CalPrinter( QWidget *parent, KOrg::AkonadiCalendar *calendar, KOrg::CoreHelper *helper )
+CalPrinter::CalPrinter( QWidget *parent, Akonadi::Calendar *calendar, KOrg::CoreHelper *helper )
   : QObject( parent )
 {
   mParent = parent;
@@ -58,7 +58,7 @@ CalPrinter::~CalPrinter()
   delete mConfig;
 }
 
-void CalPrinter::init( KOrg::AkonadiCalendar *calendar )
+void CalPrinter::init( Akonadi::Calendar *calendar )
 {
   mCalendar = calendar;
 

@@ -23,7 +23,6 @@
 */
 
 #include "kotodomodel.h"
-#include "akonadicalendar.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "kodialogmanager.h"
@@ -39,6 +38,7 @@
 #include <KCal/VCalDrag>
 #endif
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KPIMUtils/Email>
@@ -193,7 +193,7 @@ KOTodoModel::~KOTodoModel()
   delete mRootNode;
 }
 
-void KOTodoModel::setCalendar( AkonadiCalendar *cal )
+void KOTodoModel::setCalendar( Akonadi::Calendar *cal )
 {
   mCalendar = cal;
   // old todos might no longer be valid, so clear them
