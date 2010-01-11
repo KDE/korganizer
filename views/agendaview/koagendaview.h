@@ -274,7 +274,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     QWidget *mTimeBarHeaderFrame;
     QGridLayout *mAgendaLayout;
     QSplitter *mSplitterAgenda;
-    QList<QWidget *> mTimeBarHeaders;
+    QList<QLabel *> mTimeBarHeaders;
 
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;

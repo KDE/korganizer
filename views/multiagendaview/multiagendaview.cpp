@@ -68,7 +68,7 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   topLevelLayout->setMargin( 0 );
 
   QFontMetrics fm( font() );
-  int topLabelHeight = 2 * fm.lineSpacing() + 6; // 3 * 2: spacing in the KOAgendaView
+  int topLabelHeight = 2 * fm.height() + fm.lineSpacing();
 
   KVBox *topSideBox = new KVBox( this );
 
