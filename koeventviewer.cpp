@@ -26,12 +26,12 @@
 #include "koeventviewer.h"
 #include "urihandler.h"
 #include "korganizerinterface.h"
-#include "koglobals.h"
 
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kpimprefs.h>
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/kogroupware.h>
 
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
@@ -143,10 +143,10 @@ void KOEventViewer::changeIncidenceDisplay( const Item &item, const QDate &date,
 {
   if ( item.id() == mIncidence.id() ) {
     switch ( action ) {
-    case KOGlobals::INCIDENCEEDITED:
+    case KOGroupware::INCIDENCEEDITED:
       setIncidence( item, date );
       break;
-    case KOGlobals::INCIDENCEDELETED:
+    case KOGroupware::INCIDENCEDELETED:
       setIncidence( Item(), date );
       break;
     }

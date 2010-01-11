@@ -123,7 +123,7 @@ install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 ########### next target ###############
 
-set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp koeventviewerdialog.cpp komailclient.cpp)
+set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp koeventviewerdialog.cpp)
 
 qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
 qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
@@ -139,11 +139,7 @@ install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 ########### next target ###############
 
 set(korganizer_core_LIB_SRCS
-    akonadicalendaradaptor.cpp
-    kogroupware.cpp
-    freebusymanager.cpp
     freebusyurldialog.cpp
-    mailscheduler.cpp
     koprefs.cpp
     kocore.cpp
     koidentitymanager.cpp

@@ -29,6 +29,8 @@
 
 #include <QtCore/QObject>
 
+#include <akonadi/kcal/kogroupware.h>
+
 class QWidget;
 
 namespace Akonadi {
@@ -51,7 +53,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 
     virtual bool sendGroupwareMessage( const Akonadi::Item &incidence,
                                        KCal::iTIPMethod method,
-                                       KOGlobals::HowChanged action,
+                                       KOGroupware::HowChanged action,
                                        QWidget *parent ) = 0;
 
     virtual bool beginChange( const Akonadi::Item &incidence ) = 0;

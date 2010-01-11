@@ -43,7 +43,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
     bool beginChange( const Akonadi::Item & incidence );
     bool sendGroupwareMessage( const Akonadi::Item &incidence,
                                KCal::iTIPMethod method,
-                               KOGlobals::HowChanged action,
+                               KOGroupware::HowChanged action,
                                QWidget *parent );
     bool endChange( const Akonadi::Item &incidence );
 

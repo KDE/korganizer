@@ -87,7 +87,7 @@ bool IncidenceChanger::beginChange( const Item &item )
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
                                              KCal::iTIPMethod method,
-                                             KOGlobals::HowChanged action,
+                                             KOGroupware::HowChanged action,
                                              QWidget *parent )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
@@ -183,7 +183,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )
 
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
-                                        KOGlobals::INCIDENCEDELETED, parent );
+                                        KOGroupware::INCIDENCEDELETED, parent );
   if( !doDelete )
     return false;
   emit incidenceToBeDeleted( aitem );
@@ -277,7 +277,7 @@ bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
 
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
-                                        KOGlobals::INCIDENCEDELETED, parent );
+                                        KOGroupware::INCIDENCEDELETED, parent );
   if( doDelete ) {
 
     // @TODO: the factory needs to do the locking!
@@ -408,7 +408,7 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
       success = KOGroupware::instance()->sendICalMessage(
         parent,
         KCal::iTIPRequest,
-        newinc.get(), KOGlobals::INCIDENCEEDITED, attendeeStatusChanged );
+        newinc.get(), KOGroupware::INCIDENCEEDITED, attendeeStatusChanged );
     }
 
     if ( !success ) {
@@ -466,7 +466,7 @@ void IncidenceChanger::addIncidenceFinished( KJob* j ) {
     if ( !KOGroupware::instance()->sendICalMessage(
            0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
            KCal::iTIPRequest,
-           incidence.get(), KOGlobals::INCIDENCEADDED, false ) ) {
+           incidence.get(), KOGroupware::INCIDENCEADDED, false ) ) {
       kError() << "sendIcalMessage failed.";
     }
   }

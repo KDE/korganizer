@@ -25,10 +25,10 @@
 #include "koeditorfreebusy.h"
 #include "koeditorconfig.h"
 
-#include "../freebusymanager.h"
+#include <akonadi/kcal/freebusymanager.h>
 #include "../freebusyurldialog.h"
 #include "../koglobals.h"
-#include "../kogroupware.h"
+#include <akonadi/kcal/kogroupware.h>
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>

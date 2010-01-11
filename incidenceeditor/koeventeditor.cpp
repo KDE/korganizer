@@ -30,7 +30,7 @@
 #include "koeditorrecurrence.h"
 #include "koeditorconfig.h"
 #include "korganizer/incidencechangerbase.h"
-#include "../kogroupware.h"
+#include <akonadi/kcal/kogroupware.h>
 
 #include <akonadi/kcal/utils.h>
 
