@@ -185,17 +185,16 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   connect( mTimeZoneComboEnd, SIGNAL(currentIndexChanged(int)),
            this, SLOT(endSpecChanged()) );
 
+  QLabel *label = new QLabel( i18n( "Repeat:" ), timeGroupBox );
+  layoutTimeBox->addWidget( label, 2, 0 );
   QBoxLayout *recLayout = new QHBoxLayout();
   layoutTimeBox->addLayout( recLayout, 2, 1, 1, 3 );
-  mRecurrenceSummary = new QLabel( QString(), timeGroupBox );
-  recLayout->addWidget( mRecurrenceSummary );
-  QPushButton *recEditButton =
-    new QPushButton( i18nc( "@action:button", "Edit..." ), timeGroupBox );
-  recLayout->addWidget( recEditButton );
-  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  mRecEditButton = new QPushButton( i18n( "Does not repeat..." ), timeGroupBox );
+  recLayout->addWidget( mRecEditButton );
+  connect( mRecEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
   recLayout->addStretch( 1 );
 
-  QLabel *label = new QLabel( i18nc( "@label", "Reminder:" ), timeGroupBox );
+  label = new QLabel( i18nc( "@label", "Reminder:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
   layoutTimeBox->addLayout( alarmLineLayout, 3, 1, 1, 3 );
@@ -479,7 +478,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, const QDate &date, bool isTe
     break;
   }
 
-  mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
+  mRecEditButton->setText( IncidenceFormatter::recurrenceString( event ) );
   const QStringList allEmails = KOEditorConfig::instance()->allEmails();
   Attendee *me = event->attendeeByMails( allEmails );
   if ( event->attendeeCount() > 1 &&
@@ -716,7 +715,7 @@ bool KOEditorGeneralEvent::setAlarmOffset( Alarm *alarm, int value ) const
 
 void KOEditorGeneralEvent::updateRecurrenceSummary( const QString &summary )
 {
-  mRecurrenceSummary->setText( summary );
+  mRecEditButton->setText( summary );
 }
 
 #include "koeditorgeneralevent.moc"
