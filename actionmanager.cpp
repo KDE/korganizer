@@ -43,6 +43,7 @@
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
 #include "incidenceeditor/koeditorconfig.h"
+#include "incidenceeditor/koincidenceeditor.h"
 #include "incidencechanger.h"
 
 #include <KCal/FileStorage>
@@ -223,7 +224,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
 void ActionManager::init()
 {
   // Construct the groupware object
-  Akonadi::Groupware::create( mCalendar );
+  Akonadi::Groupware::create( mCalendar, this );
 
   // add this instance of the window to the static list.
   if ( !mWindowList ) {
@@ -1652,7 +1653,7 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
   } else {
     IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
 
-    Akonadi::CalendarAdaptor cal( mCalendar );  FileStorage storage( &cal );
+    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView );  FileStorage storage( &cal );
     storage.setFileName( filename );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {
@@ -2127,6 +2128,14 @@ void ActionManager::slotAutoArchive()
 QWidget *ActionManager::dialogParent()
 {
   return mCalendarView->topLevelWidget();
+}
+
+void ActionManager::requestIncidenceEditor( const Akonadi::Item &item )
+{
+  mCalendarView->editIncidence( item, true ); //FIXME: what about the bools here?
+  KOIncidenceEditor *tmp = mCalendarView->editorDialog( item );
+  tmp->selectInvitationCounterProposal( true );
+  mCalendarView->updateView(); // This one can probably go away
 }
 
 #include "actionmanager.moc"

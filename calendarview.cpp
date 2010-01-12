@@ -366,7 +366,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     return false;
   }
 
-  Akonadi::CalendarAdaptor adaptor( mCalendar );
+  Akonadi::CalendarAdaptor adaptor( mCalendar, this );
   // merge in a file
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
@@ -398,7 +398,7 @@ bool CalendarView::saveCalendar( const QString &filename )
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  Akonadi::CalendarAdaptor adaptor( mCalendar );
+  Akonadi::CalendarAdaptor adaptor( mCalendar, this );
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
   storage.setSaveFormat( new ICalFormat );
@@ -837,7 +837,7 @@ void CalendarView::edit_copy()
     return;
   }
 
-  Akonadi::CalendarAdaptor cal( mCalendar );
+  Akonadi::CalendarAdaptor cal( mCalendar, this );
   DndFactory factory( &cal );
   Incidence::Ptr incidence = Akonadi::incidence(item);
   if ( !factory.copyIncidence( incidence.get() ) ) {
@@ -888,7 +888,7 @@ void CalendarView::edit_paste()
     return;
   }
 
-  Akonadi::CalendarAdaptor cal( mCalendar );
+  Akonadi::CalendarAdaptor cal( mCalendar, this );
   DndFactory factory( &cal );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
@@ -1859,7 +1859,7 @@ void CalendarView::exportICalendar()
       }
     }
     ICalFormat *format = new ICalFormat;
-    Akonadi::CalendarAdaptor calendar( mCalendar );
+    Akonadi::CalendarAdaptor calendar( mCalendar, this );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
@@ -1908,7 +1908,7 @@ void CalendarView::exportVCalendar()
       }
     }
     VCalFormat *format = new VCalFormat;
-    Akonadi::CalendarAdaptor calendar( mCalendar );
+    Akonadi::CalendarAdaptor calendar( mCalendar, this );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;

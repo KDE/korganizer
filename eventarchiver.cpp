@@ -165,7 +165,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, KOrg::Incide
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
 
-  Akonadi::CalendarAdaptor cal( calendar );
+  Akonadi::CalendarAdaptor cal( calendar, widget );
   FileStorage storage( &cal );
 
   // Save current calendar to disk

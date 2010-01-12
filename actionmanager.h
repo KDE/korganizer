@@ -38,6 +38,7 @@
 #include <QObject>
 
 #include <akonadi/item.h>
+#include <akonadi/kcal/groupware.h>
 
 namespace KCal {
   class Calendar;
@@ -73,7 +74,7 @@ class KToggleAction;
   actions are in one location.
   It also provides D-Bus interfaces.
 */
-class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
+class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject, public Akonadi::GroupwareUiDelegate
 {
   Q_OBJECT
   public:
@@ -352,6 +353,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void slotNewStuffDownloaded(KJob *job);
 
   private:
+    virtual void requestIncidenceEditor( const Akonadi::Item &item );
+
     class ActionStringsVisitor;
 
     /** Create all the actions. */

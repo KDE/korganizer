@@ -281,7 +281,7 @@ bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
   if( doDelete ) {
 
     // @TODO: the factory needs to do the locking!
-    Akonadi::CalendarAdaptor cal( mCalendar );
+    Akonadi::CalendarAdaptor cal( mCalendar, parent );
     DndFactory factory( &cal );
     Akonadi::Item incidenceItem;
     incidenceItem.setPayload<Incidence::Ptr>( incidence );
