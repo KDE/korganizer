@@ -34,7 +34,6 @@
 
 #include <kglobal.h>
 #include <klocale.h>
-#include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
 #include <ktextedit.h>
@@ -168,6 +167,18 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
            this, SLOT(startDateModified()) );
   connect( mTimeZoneComboDue, SIGNAL(currentIndexChanged(int)),
            this, SLOT(dateChanged()) );
+
+  QLabel *label = new QLabel( i18n( "Recurrence:" ), timeGroupBox );
+  layoutTimeBox->addWidget( label, 3, 0 );
+  QBoxLayout *recLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( recLayout, 3, 3, 1, 4 );
+  QPushButton *recEditButton = new QPushButton( timeGroupBox );
+  recEditButton->setIcon( KOGlobals::self()->smallIcon( "task-recurring" ) );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  mRecEditLabel = new QLabel( QString(), timeGroupBox );
+  recLayout->addWidget( mRecEditLabel );
+  recLayout->addStretch( 1 );
 
   // some more layouting
   layoutTimeBox->setColumnStretch( 3, 1 );
@@ -335,6 +346,8 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, const QDate &date, bool tmpl )
   }
 
   mTimeButton->setChecked( !todo->allDay() );
+
+  updateRecurrenceSummary( todo );
 
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentIndex( todo->percentComplete() / 10 );
@@ -540,6 +553,15 @@ bool KOEditorGeneralTodo::validateInput()
   }
 
   return KOEditorGeneral::validateInput();
+}
+
+void KOEditorGeneralTodo::updateRecurrenceSummary( Todo *todo )
+{
+  if ( todo->recurs() ) {
+    mRecEditLabel->setText( IncidenceFormatter::recurrenceString( todo ) );
+  } else {
+    mRecEditLabel->setText( QString() );
+  }
 }
 
 void KOEditorGeneralTodo::completedChanged( int index )

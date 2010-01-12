@@ -32,6 +32,7 @@
 class QDateTime;
 class KOEditorGeneralTodo;
 class KOEditorRecurrence;
+class KOEditorRecurrenceDialog;
 
 /**
   This class provides a dialog for editing a Todo.
@@ -99,7 +100,9 @@ class KOTodoEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteTodo();
+
     void slotSaveTemplate( const QString & );
+    void updateRecurrenceSummary();
 
   protected:
     void loadTemplate( CalendarLocal & );
@@ -116,6 +119,7 @@ class KOTodoEditor : public KOIncidenceEditor
     Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
+    KOEditorRecurrenceDialog *mRecurrenceDialog;
     KOEditorRecurrence *mRecurrence;
 };
 

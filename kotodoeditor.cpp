@@ -54,7 +54,7 @@
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
-    mTodo( 0 ), mCalendar( 0 ), mRelatedTodo( 0 )
+    mTodo( 0 ), mCalendar( 0 ), mRelatedTodo( 0 ), mGeneral( 0 ), mRecurrence( 0 )
 {
 }
 
@@ -81,6 +81,11 @@ void KOTodoEditor::init()
 
   connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
            mGeneral, SLOT(updateAttendeeSummary(int)) );
+
+  connect( mGeneral, SIGNAL(editRecurrence()),
+           mRecurrenceDialog, SLOT(show()) );
+  connect( mRecurrenceDialog, SIGNAL(okClicked()),
+           SLOT(updateRecurrenceSummary()) );
 }
 
 void KOTodoEditor::reload()
@@ -156,17 +161,9 @@ void KOTodoEditor::setupGeneral()
 
 void KOTodoEditor::setupRecurrence()
 {
-  QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mRecurrence = new KOEditorRecurrence( topFrame );
-  topLayout->addWidget( mRecurrence );
-
-  mRecurrence->setEnabled( false );
-  connect( mGeneral,SIGNAL(dueDateEditToggle(bool)),
-           mRecurrence, SLOT(setEnabled(bool)) );
+  mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
+  mRecurrenceDialog->hide();
+  mRecurrence = mRecurrenceDialog->editor();
 }
 
 void KOTodoEditor::editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar )
@@ -376,6 +373,14 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 QStringList &KOTodoEditor::templates() const
 {
   return KOPrefs::instance()->mTodoTemplates;
+}
+
+void KOTodoEditor::updateRecurrenceSummary()
+{
+  Todo *todo = new Todo();
+  writeTodo( todo );
+  mGeneral->updateRecurrenceSummary( todo );
+  delete todo;
 }
 
 #include "kotodoeditor.moc"

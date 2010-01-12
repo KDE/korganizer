@@ -181,19 +181,6 @@ void KOEventEditor::modified()
 
 void KOEventEditor::setupRecurrence()
 {
-#if 0
-  QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
-
-  topFrame->setWhatsThis( i18nc( "@info:whatsthis",
-                                 "The Recurrence tab allows you to set options "
-                                 "on how often this event recurs." ) );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mRecurrence = new KOEditorRecurrence( topFrame );
-  topLayout->addWidget( mRecurrence );
-#endif
   mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
   mRecurrenceDialog->hide();
   mRecurrence = mRecurrenceDialog->editor();
@@ -439,9 +426,9 @@ QObject *KOEventEditor::typeAheadReceiver() const
 
 void KOEventEditor::updateRecurrenceSummary()
 {
-  Event *ev =  new Event();
+  Event *ev = new Event();
   writeEvent( ev );
-  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
+  mGeneral->updateRecurrenceSummary( ev );
   delete ev;
 }
 
