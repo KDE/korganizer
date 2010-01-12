@@ -52,11 +52,9 @@
 #include "kocore.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( QString::null, calendar, parent )
+  KOIncidenceEditor( QString::null, calendar, parent ),
+  mTodo( 0 ), mCalendar( 0 ), mRelatedTodo( 0 ), mGeneral( 0 ), mRecurrence( 0 )
 {
-  mTodo = 0;
-  mCalendar = 0;
-  mRelatedTodo = 0;
 }
 
 KOTodoEditor::~KOTodoEditor()
@@ -66,11 +64,9 @@ KOTodoEditor::~KOTodoEditor()
 
 void KOTodoEditor::init()
 {
-  kdDebug(5850) << k_funcinfo << endl;
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
-//  setupAttachmentsTab();
 
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
@@ -82,6 +78,11 @@ void KOTodoEditor::init()
 
   connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
            mGeneral, SLOT(updateAttendeeSummary(int)) );
+
+  connect( mGeneral, SIGNAL(editRecurrence()),
+           mRecurrenceDialog, SLOT(show()) );
+  connect( mRecurrenceDialog, SIGNAL(okClicked()),
+           SLOT(updateRecurrenceSummary()) );
 }
 
 void KOTodoEditor::reload()
@@ -147,16 +148,9 @@ void KOTodoEditor::setupGeneral()
 
 void KOTodoEditor::setupRecurrence()
 {
-  QFrame *topFrame = addPage( i18n("Rec&urrence") );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mRecurrence = new KOEditorRecurrence( topFrame );
-  topLayout->addWidget( mRecurrence );
-
-  mRecurrence->setEnabled( false );
-  connect(mGeneral,SIGNAL(dueDateEditToggle( bool ) ),
-          mRecurrence, SLOT( setEnabled( bool ) ) );
+  mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
+  mRecurrenceDialog->hide();
+  mRecurrence = mRecurrenceDialog->editor();
 }
 
 void KOTodoEditor::editIncidence(Incidence *incidence, const QDate &date, Calendar *calendar)
@@ -358,6 +352,14 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 QStringList& KOTodoEditor::templates() const
 {
   return KOPrefs::instance()->mTodoTemplates;
+}
+
+void KOTodoEditor::updateRecurrenceSummary()
+{
+  Todo *todo = new Todo();
+  writeTodo( todo );
+  mGeneral->updateRecurrenceSummary( todo );
+  delete todo;
 }
 
 #include "kotodoeditor.moc"

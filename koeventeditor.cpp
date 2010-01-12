@@ -170,25 +170,13 @@ void KOEventEditor::setupGeneral()
 
 void KOEventEditor::modified()
 {
-  // Play dump, just reload the event. This dialog has become so complicated
+  // Play dumb, just reload the event. This dialog has become so complicated
   // that there is no point in trying to be smart here...
   reload();
 }
 
 void KOEventEditor::setupRecurrence()
 {
-#if 0
-  QFrame *topFrame = addPage( i18n("Rec&urrence") );
-
-  QWhatsThis::add( topFrame,
-        i18n("The Recurrence tab allows you to set options on "
-       "how often this event recurs.") );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mRecurrence = new KOEditorRecurrence( topFrame );
-  topLayout->addWidget( mRecurrence );
-#endif
   mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
   mRecurrenceDialog->hide();
   mRecurrence = mRecurrenceDialog->editor();
@@ -416,9 +404,9 @@ QObject *KOEventEditor::typeAheadReceiver() const
 
 void KOEventEditor::updateRecurrenceSummary()
 {
-  Event *ev =  new Event();
+  Event *ev = new Event();
   writeEvent( ev );
-  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
+  mGeneral->updateRecurrenceSummary( ev );
   delete ev;
 }
 

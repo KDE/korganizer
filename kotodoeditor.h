@@ -81,7 +81,9 @@ class KOTodoEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteTodo();
+
     void slotSaveTemplate( const QString & );
+    void updateRecurrenceSummary();
 
   protected:
     void loadTemplate( /*const*/ CalendarLocal& );
@@ -98,6 +100,7 @@ class KOTodoEditor : public KOIncidenceEditor
     Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
+    KOEditorRecurrenceDialog *mRecurrenceDialog;
     KOEditorRecurrence *mRecurrence;
 };
 

@@ -63,6 +63,8 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     /** Check if the input is valid. */
     bool validateInput();
 
+    void updateRecurrenceSummary( Todo *todo );
+
     /** The todo has been modified externally */
     void modified( Todo *todo, KOGlobals::HowChanged modification );
 
@@ -70,6 +72,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void dueDateEditToggle( bool );
     void dateTimeStrChanged( const QString & );
     void signalDateTimeChanged( const QDateTime &, const QDateTime & );
+    void editRecurrence();
 
   protected slots:
     void completedChanged(int);
@@ -94,6 +97,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
+    QLabel                  *mRecEditLabel;
     QComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;

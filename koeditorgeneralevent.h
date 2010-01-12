@@ -65,7 +65,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     /** Check if the input is valid. */
     bool validateInput();
 
-    void updateRecurrenceSummary( const QString &summary );
+    void updateRecurrenceSummary( Event *event );
 
     QFrame* invitationBar() const { return mInvitationBar; }
 
@@ -102,7 +102,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mAlldayEventCheckbox;
     QComboBox               *mFreeTimeCombo;
-    QPushButton             *mRecEditButton;
+    QLabel                  *mRecEditLabel;
     QFrame                  *mInvitationBar;
 
     // current start and end date and time

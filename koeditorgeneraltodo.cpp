@@ -38,13 +38,13 @@
 
 #include <kglobal.h>
 #include <klocale.h>
-#include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
 #include <kstandarddirs.h>
 #include <kfiledialog.h>
 #include <ktextedit.h>
 
+#include <libkcal/incidenceformatter.h>
 #include <libkcal/todo.h>
 
 #include <libkdepim/kdateedit.h>
@@ -159,8 +159,20 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
+  QLabel *label = new QLabel( i18n( "Recurrence:" ), timeBoxFrame );
+  layoutTimeBox->addWidget( label, 3, 0 );
+  QBoxLayout *recLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( recLayout, 3, 3, 1, 4 );
+  QPushButton *recEditButton = new QPushButton( timeBoxFrame );
+  recEditButton->setIconSet( KOGlobals::self()->smallIconSet( "recur", 16 ) );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  mRecEditLabel = new QLabel( QString(), timeBoxFrame );
+  recLayout->addWidget( mRecEditLabel );
+  recLayout->addStretch( 1 );
+
   // some more layouting
-  layoutTimeBox->setColStretch(3,1);
+  layoutTimeBox->setColStretch( 3, 1 );
 
   QBoxLayout *secLayout = new QHBoxLayout();
   layoutTimeBox->addLayout( secLayout, 0, 4 );
@@ -310,6 +322,8 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
   }
 
   mTimeButton->setChecked( !todo->doesFloat() );
+
+  updateRecurrenceSummary( todo );
 
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
@@ -497,6 +511,15 @@ bool KOEditorGeneralTodo::validateInput()
   }
 
   return KOEditorGeneral::validateInput();
+}
+
+void KOEditorGeneralTodo::updateRecurrenceSummary( Todo *todo )
+{
+  if ( todo->doesRecur() ) {
+    mRecEditLabel->setText( IncidenceFormatter::recurrenceString( todo ) );
+  } else {
+    mRecEditLabel->setText( QString() );
+  }
 }
 
 void KOEditorGeneralTodo::completedChanged(int index)

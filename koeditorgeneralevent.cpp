@@ -39,7 +39,6 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 #include <kstandarddirs.h>
@@ -52,6 +51,7 @@
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koeditorgeneralevent.h"
 #include "koeditorgeneralevent.moc"
@@ -151,13 +151,16 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mEndDateEdit, SIGNAL(dateChanged(const QDate&)),
           this, SLOT(endDateChanged(const QDate&)));
 
-  QLabel *label = new QLabel( i18n( "Repeat:" ), timeBoxFrame );
+  QLabel *label = new QLabel( i18n( "Recurrence:" ), timeBoxFrame );
   layoutTimeBox->addWidget( label, 2, 0 );
   QBoxLayout *recLayout = new QHBoxLayout();
   layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
-  mRecEditButton = new QPushButton( i18n("Does not repeat..."), timeBoxFrame );
-  recLayout->addWidget( mRecEditButton );
-  connect( mRecEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  QPushButton *recEditButton = new QPushButton( timeBoxFrame );
+  recEditButton->setIconSet( KOGlobals::self()->smallIconSet( "recur", 16 ) );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  mRecEditLabel = new QLabel( QString(), timeBoxFrame );
+  recLayout->addWidget( mRecEditLabel );
   recLayout->addStretch( 1 );
 
   label = new QLabel( i18n("Reminder:"), timeBoxFrame );
@@ -360,7 +363,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, const QD
     break;
   }
 
-  mRecEditButton->setText( IncidenceFormatter::recurrenceString( event ) );
+  updateRecurrenceSummary( event );
 
   Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
   if ( event->attendeeCount() > 1 &&
@@ -533,16 +536,22 @@ bool KOEditorGeneralEvent::validateInput()
     endDt.setTime(mEndTimeEdit->getTime());
   }
 
-  if (startDt > endDt) {
-    KMessageBox::sorry(0,i18n("The event ends before it starts.\n"
-                                 "Please correct dates and times."));
+  if ( startDt > endDt ) {
+    KMessageBox::sorry(
+      0,
+      i18n( "The event ends before it starts.\n"
+            "Please correct dates and times." ) );
     return false;
   }
 
   return KOEditorGeneral::validateInput();
 }
 
-void KOEditorGeneralEvent::updateRecurrenceSummary(const QString & summary)
+void KOEditorGeneralEvent::updateRecurrenceSummary( Event *event )
 {
-  mRecEditButton->setText( summary );
+  if ( event->doesRecur() ) {
+    mRecEditLabel->setText( IncidenceFormatter::recurrenceString( event ) );
+  } else {
+    mRecEditLabel->setText( QString() );
+  }
 }
