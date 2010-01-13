@@ -180,15 +180,8 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentListItem *item,
   grid->addWidget( mIcon, 0, 0 );
 
   mLabelEdit = new KLineEdit( topFrame );
+  mLabelEdit->setText( item->label().isEmpty() ? item->uri() : item->label() );
   mLabelEdit->setClickMessage( i18n( "Attachment name" ) );
-  if ( !item->uri().isEmpty() ) {
-    KURL url( item->uri() );
-    if ( url.isLocalFile() ) {
-      mLabelEdit->setText( url.fileName() );
-    } else {
-      mLabelEdit->setText( url.url() );
-    }
-  }
   QToolTip::add( mLabelEdit, i18n( "Give the attachment a name" ) );
   QWhatsThis::add( mLabelEdit,
                    i18n( "Type any string you desire here for the name of the attachment" ) );
@@ -238,7 +231,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentListItem *item,
     uint size = QCString( item->attachment()->data() ).size();
     grid->addWidget( new QLabel( i18n( "Size:" ), topFrame ), 4, 0 );
     grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" ).
-                                 arg( KIO::convertSize( size ) ).
+                      arg( KIO::convertSize( size ) ).
                                  arg( KGlobal::locale()->formatNumber(
                                         size, 0 ) ), topFrame ), 4, 2 );
   }
@@ -247,21 +240,24 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentListItem *item,
 
 void AttachmentEditDialog::slotApply()
 {
-  KURL url( mURLRequester->url() );
-  if ( mLabelEdit->text().isEmpty() ) {
-    if ( url.isLocalFile() ) {
-      mItem->setLabel( url.fileName() );
-    } else {
-      mItem->setLabel( url.url() );
-    }
-  } else {
+  if ( !mLabelEdit->text().isEmpty() ) {
     mItem->setLabel( mLabelEdit->text() );
+  } else {
+    if ( mURLRequester ) {
+      KURL url( mURLRequester->url() );
+      if ( url.isLocalFile() ) {
+        mItem->setLabel( url.fileName() );
+      } else {
+        mItem->setLabel( url.url() );
+      }
+    }
   }
   if ( mItem->label().isEmpty() ) {
     mItem->setLabel( i18n( "New attachment" ) );
   }
   mItem->setMimeType( mMimeType->name() );
   if ( mURLRequester ) {
+    KURL url( mURLRequester->url() );
     if ( mInline->isChecked() ) {
       QString tmpFile;
       if ( KIO::NetAccess::download( mURLRequester->url(), tmpFile, this ) ) {
