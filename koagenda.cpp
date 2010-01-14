@@ -146,8 +146,12 @@ void MarcusBains::updateLocationRecalc( bool recalculate )
   if(recalculate)
     mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
 
-  mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
-  mTimeBox->adjustSize();
+  QString timeStr = KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds);
+  QFontMetrics fm = fontMetrics();
+  mTimeBox->setText( timeStr );
+  QSize sz( fm.width( timeStr ), fm.height() );
+  mTimeBox->setFixedSize( sz );
+
   if (y-mTimeBox->height()>=0) y-=mTimeBox->height(); else y++;
   if (x-mTimeBox->width()+agenda->gridSpacingX() > 0)
     x += int( agenda->gridSpacingX() - mTimeBox->width() - 1 );
@@ -1843,7 +1847,6 @@ void KOAgenda::resizeAllContents()
   checkScrollBoundaries();
   marcus_bains();
 }
-
 
 void KOAgenda::scrollUp()
 {

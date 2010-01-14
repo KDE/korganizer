@@ -147,7 +147,17 @@ void MultiAgendaView::recreateViews()
 
   installSplitterEventFilter( mLeftSplitter );
   installSplitterEventFilter( mRightSplitter );
-  resizeSplitters();
+
+  QValueList<int> sizes = KOGlobals::self()->config()->readIntListEntry("Separator AgendaView");
+  if (sizes.count() != 2) {
+    sizes = mLeftSplitter->sizes();
+  }
+  FOREACH_VIEW( agenda ) {
+    agenda->splitter()->setSizes( sizes );
+  }
+  mLeftSplitter->setSizes( sizes );
+  mRightSplitter->setSizes( sizes );
+
   mTimeLabels->positionChanged();
 }
 
