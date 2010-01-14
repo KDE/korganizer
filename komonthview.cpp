@@ -398,11 +398,6 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mItemList->setLineWidth( 1 );
 
-  new KOMonthCellToolTip( mItemList->viewport(),
-                          monthView()->calendar(),
-                          mDate,
-                          static_cast<KNoScrollListBox *>( mItemList ) );
-
   topLayout->addWidget( mItemList );
 
   mLabel->raise();
@@ -442,6 +437,11 @@ void MonthViewCell::setDate( const QDate &date )
     text = QString::number( KOGlobals::self()->calendarSystem()->day(mDate) );
   }
   mLabel->setText( text );
+
+  new KOMonthCellToolTip( mItemList->viewport(),
+                          monthView()->calendar(),
+                          mDate,
+                          static_cast<KNoScrollListBox *>( mItemList ) );
 
   resizeEvent( 0 );
 }
