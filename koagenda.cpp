@@ -149,7 +149,7 @@ void MarcusBains::updateLocationRecalc( bool recalculate )
   QString timeStr = KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds);
   QFontMetrics fm = fontMetrics();
   mTimeBox->setText( timeStr );
-  QSize sz( fm.width( timeStr ), fm.height() );
+  QSize sz( fm.width( timeStr + ' ' ), fm.height() );
   mTimeBox->setFixedSize( sz );
 
   if (y-mTimeBox->height()>=0) y-=mTimeBox->height(); else y++;
