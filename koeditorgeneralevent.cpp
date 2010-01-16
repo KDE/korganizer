@@ -78,7 +78,8 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mStartTimeEdit, mEndDateEdit );
   QWidget::setTabOrder( mEndDateEdit, mEndTimeEdit );
   QWidget::setTabOrder( mEndTimeEdit, mAlldayEventCheckbox );
-  QWidget::setTabOrder( mAlldayEventCheckbox, mAlarmButton );
+  QWidget::setTabOrder( mAlldayEventCheckbox, mRecEditButton );
+  QWidget::setTabOrder( mRecEditButton, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
 //   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
@@ -121,7 +122,6 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
-
   mEndDateLabel = new QLabel(i18n("&End:"),timeBoxFrame);
   layoutTimeBox->addWidget(mEndDateLabel,1,0);
 
@@ -155,10 +155,10 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget( label, 2, 0 );
   QBoxLayout *recLayout = new QHBoxLayout();
   layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
-  QPushButton *recEditButton = new QPushButton( timeBoxFrame );
-  recEditButton->setIconSet( KOGlobals::self()->smallIconSet( "recur", 16 ) );
-  recLayout->addWidget( recEditButton );
-  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  QPushButton *mRecEditButton = new QPushButton( timeBoxFrame );
+  mRecEditButton->setIconSet( KOGlobals::self()->smallIconSet( "recur", 16 ) );
+  recLayout->addWidget( mRecEditButton );
+  connect( mRecEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
   mRecEditLabel = new QLabel( QString(), timeBoxFrame );
   recLayout->addWidget( mRecEditLabel );
   recLayout->addStretch( 1 );
