@@ -44,6 +44,7 @@
 #include "htmlexportsettings.h"
 #include "incidenceeditor/koeditorconfig.h"
 #include "incidenceeditor/koincidenceeditor.h"
+#include "incidenceeditor/kogroupwareintegration.h"
 #include "incidencechanger.h"
 
 #include <KCal/FileStorage>
@@ -103,67 +104,6 @@
 
 using namespace Akonadi;
 
-class KOrganizerEditorConfig : public KOEditorConfig
-{
-  public:
-    explicit KOrganizerEditorConfig() : KOEditorConfig() {}
-    virtual ~KOrganizerEditorConfig() {}
-
-    virtual KConfigSkeleton* config() const
-    {
-      return KOPrefs::instance();
-    }
-
-    virtual QString fullName() const {
-      return KOPrefs::instance()->fullName();
-    }
-    virtual QString email() const {
-      return KOPrefs::instance()->email();
-    }
-    virtual bool thatIsMe( const QString &email ) const {
-      return KOPrefs::instance()->thatIsMe(email);
-    }
-    virtual QStringList allEmails() const {
-      return KOPrefs::instance()->allEmails();
-    }
-    virtual QStringList fullEmails() const {
-      return KOPrefs::instance()->fullEmails();
-    }
-    virtual bool showTimeZoneSelectorInIncidenceEditor() const {
-      return KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
-    }
-    virtual QDateTime defaultDuration() const {
-      return KOPrefs::instance()->defaultDuration();
-    }
-    virtual QDateTime startTime() const {
-      return KOPrefs::instance()->startTime();
-    }
-    virtual int reminderTime() const {
-      return KOPrefs::instance()->reminderTime();
-    }
-    virtual int reminderTimeUnits() const {
-      return KOPrefs::instance()->reminderTimeUnits();
-    }
-    virtual bool defaultTodoReminders() const {
-      return KOPrefs::instance()->defaultTodoReminders();
-    }
-    virtual bool defaultEventReminders() const {
-      return KOPrefs::instance()->defaultEventReminders();
-    }
-    virtual QStringList activeDesignerFields() const {
-      return KOPrefs::instance()->activeDesignerFields();
-    }
-    virtual QStringList& templates(const QString &type) {
-      if(type == "Event") //TODO remove mEventTemplates+etc from KOPrefs::instance()
-        return KOPrefs::instance()->mEventTemplates;
-      if(type == "Todo")
-        return KOPrefs::instance()->mTodoTemplates;
-      if(type == "Journal")
-        return KOPrefs::instance()->mJournalTemplates;
-      return KOEditorConfig::templates(type);
-    }
-};
-
 KOWindowList *ActionManager::mWindowList = 0;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
@@ -176,7 +116,10 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   new KOrgCalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
 
-  KOEditorConfig::setKOEditorConfig( new KOrganizerEditorConfig );
+  // Construct the groupware object, it'll take care of the KOEditorConfig as well
+  if ( !KOGroupwareIntegration::isActive() ) {
+    KOGroupwareIntegration::activate();
+  }
 
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -223,9 +166,6 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
 // see the Note: below for why this method is necessary
 void ActionManager::init()
 {
-  // Construct the groupware object
-  Akonadi::Groupware::create( mCalendar, this );
-
   // add this instance of the window to the static list.
   if ( !mWindowList ) {
     mWindowList = new KOWindowList;
@@ -2128,14 +2068,6 @@ void ActionManager::slotAutoArchive()
 QWidget *ActionManager::dialogParent()
 {
   return mCalendarView->topLevelWidget();
-}
-
-void ActionManager::requestIncidenceEditor( const Akonadi::Item &item )
-{
-  mCalendarView->editIncidence( item, true ); //FIXME: what about the bools here?
-  KOIncidenceEditor *tmp = mCalendarView->editorDialog( item );
-  tmp->selectInvitationCounterProposal( true );
-  mCalendarView->updateView(); // This one can probably go away
 }
 
 #include "actionmanager.moc"
