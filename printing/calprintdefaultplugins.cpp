@@ -705,6 +705,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
   QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
   height -= footerHeight();
 
+  KLocale *local = KGlobal::locale();
+
   do {
     QTime curStartTime( mStartTime );
     QTime curEndTime( mEndTime );
@@ -716,10 +718,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       curEndTime = curStartTime.addSecs( 3600 );
     }
 
-    KLocale *local = KGlobal::locale();
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
-
-
     Event::List eventList = mCalendar->events( curDay,
                                                EventSortStartDate,
                                                SortDirectionAscending );
@@ -728,13 +727,10 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     // TODO: Find a good way to determine the height of the all-day box
     QRect allDayBox( TIMELINE_WIDTH + padding(), headerBox.bottom() + padding(),
-                     0, height / 20 );
+                     0, height - headerBox.bottom() - padding() );
     allDayBox.setRight( width );
-    int allDayHeight = drawAllDayBox( p, eventList, curDay, true, allDayBox );
 
     QRect dayBox( allDayBox );
-    dayBox.setTop( allDayHeight /*allDayBox.bottom()*/ );
-    dayBox.setBottom( height );
     drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
                       curStartTime, curEndTime, dayBox );
 
@@ -746,7 +742,9 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     drawFooter( p, footerBox );
 
     curDay = curDay.addDays( 1 );
-    if ( curDay <= mToDate ) mPrinter->newPage();
+    if ( curDay <= mToDate ) {
+      mPrinter->newPage();
+    }
   } while ( curDay <= mToDate );
 }
 
