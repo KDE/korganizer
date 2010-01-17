@@ -155,8 +155,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   QWhatsThis::add( mTimeButton,
                    i18n("Sets whether or not this to-do's start and due dates "
                         "have times associated with them.") );
-  layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
-
+  layoutTimeBox->addWidget( mTimeButton, 0, 3 );
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
