@@ -155,7 +155,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget( label, 2, 0 );
   QBoxLayout *recLayout = new QHBoxLayout();
   layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
-  QPushButton *mRecEditButton = new QPushButton( timeBoxFrame );
+  mRecEditButton = new QPushButton( timeBoxFrame );
   mRecEditButton->setIconSet( KOGlobals::self()->smallIconSet( "recur", 16 ) );
   recLayout->addWidget( mRecEditButton );
   connect( mRecEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );

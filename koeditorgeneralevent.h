@@ -102,8 +102,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mAlldayEventCheckbox;
     QComboBox               *mFreeTimeCombo;
-    QPushButton             *mRecEditButton;
-    QLabel                  *mRecEditLabel;
     QFrame                  *mInvitationBar;
 
     // current start and end date and time

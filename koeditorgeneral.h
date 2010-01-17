@@ -119,6 +119,8 @@ class KOEditorGeneral : public QObject
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;
     QLabel                  *mAttendeeSummaryLabel;
+    QLabel                  *mRecEditLabel;
+    QPushButton             *mRecEditButton;
     QLabel                  *mAlarmBell;
     QWidgetStack            *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;

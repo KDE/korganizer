@@ -97,8 +97,6 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
-    QPushButton             *mRecEditButton;
-    QLabel                  *mRecEditLabel;
     QComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;
