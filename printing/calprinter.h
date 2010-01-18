@@ -25,8 +25,6 @@
 #ifndef _CALPRINTER_H
 #define _CALPRINTER_H
 
-#ifndef KORG_NOPRINTER
-
 #include "korganizer/korganizer_export.h"
 #include "korganizer/printplugin.h"
 
@@ -34,9 +32,13 @@
 #include <KDialog>
 
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
+
+namespace Akonadi {
+  class Calendar;
+}
+
 using namespace KCal;
 
 class QButtonGroup;
@@ -47,7 +49,7 @@ class QStackedWidget;
   different formats (day, week, month).  It also provides a way for setting
   up the printer and remembering these preferences.
 */
-class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
+class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
   Q_OBJECT
   public:
@@ -63,10 +65,10 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
       \param cal calendar to be printed
       \param helper is a pointer to the KOrg::CoreHelper object
     */
-    CalPrinter( QWidget *par, Calendar *cal, KOrg::CoreHelper *helper );
+    CalPrinter( QWidget *par, Akonadi::Calendar *cal, KOrg::CoreHelper *helper );
     virtual ~CalPrinter();
 
-    void init( Calendar *calendar );
+    void init( Akonadi::Calendar *calendar );
 
     /**
       Set date range to be printed.
@@ -87,14 +89,14 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
     void print( int type, const QDate &fd, const QDate &td,
                 Incidence::List selectedIncidences = Incidence::List(), bool preview = false );
 
-    Calendar *calendar() const;
+    Akonadi::Calendar *calendar() const;
     KConfig *config() const;
 
   protected:
     KOrg::PrintPlugin::List mPrintPlugins;
 
   private:
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     QWidget *mParent;
     KConfig *mConfig;
     KOrg::CoreHelper *mCoreHelper;
@@ -126,7 +128,5 @@ class CalPrintDialog : public KDialog
 
     CalPrinter::ePrintOrientation mOrientation;
 };
-
-#endif
 
 #endif

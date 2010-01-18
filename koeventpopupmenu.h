@@ -29,12 +29,17 @@
 #include <QDate>
 #include <QMenu>
 
+#include <Akonadi/Item>
+
 namespace KCal {
-  class Calendar;
   class Incidence;
-  class ResourceCalendar;
 }
-using namespace KCal;
+
+namespace KOrg {
+  class AkonadiCalendar;
+}
+
+class KOEventView;
 
 /**
  * Context menu for event views with standard event actions.
@@ -43,10 +48,10 @@ class KOEventPopupMenu : public QMenu
 {
   Q_OBJECT
   public:
-    KOEventPopupMenu();
+    explicit KOEventPopupMenu(KOEventView *);
 
   public slots:
-    void showIncidencePopup( Calendar *, Incidence *, const QDate & );
+    void showIncidencePopup( const Akonadi::Item &, const QDate & );
 
   protected slots:
     void popupShow();
@@ -66,26 +71,28 @@ class KOEventPopupMenu : public QMenu
 
   signals:
     void configChanged();
-    void editIncidenceSignal( Incidence * );
-    void showIncidenceSignal( Incidence * );
-    void deleteIncidenceSignal( Incidence * );
-    void cutIncidenceSignal( Incidence * );
-    void copyIncidenceSignal( Incidence * );
+    void editIncidenceSignal( const Akonadi::Item & );
+    void showIncidenceSignal( const Akonadi::Item & );
+    void deleteIncidenceSignal( const Akonadi::Item & );
+    void cutIncidenceSignal( const Akonadi::Item & );
+    void copyIncidenceSignal( const Akonadi::Item & );
     void pasteIncidenceSignal();
-    void toggleAlarmSignal( Incidence * );
-    void toggleTodoCompletedSignal( Incidence * );
-    void copyIncidenceToResourceSignal( Incidence *, const QString & );
-    void moveIncidenceToResourceSignal( Incidence *, const QString & );
-    void dissociateOccurrencesSignal( Incidence *, const QDate & );
+    void toggleAlarmSignal( const Akonadi::Item & );
+    void toggleTodoCompletedSignal( const Akonadi::Item & );
+    void copyIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
+    void moveIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
+    void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
   private:
     QMenu *buildCalendarCopyMenu();
     QMenu *buildCalendarMoveMenu();
     bool hasOtherWriteableCalendars() const;
+#ifdef AKONADI_PORT_DISABLED
     bool isResourceWritable( const ResourceCalendar *resource ) const;
+#endif
 
-    Calendar *mCalendar;
-    Incidence *mCurrentIncidence;
+    KOEventView *mEventview;
+    Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 
     bool mHasAdditionalItems;

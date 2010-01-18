@@ -21,8 +21,6 @@
 #ifndef PRINTPLUGINBASE_H
 #define PRINTPLUGINBASE_H
 
-#ifndef KORG_NOPRINTER
-
 #include "calendar/plugin.h"
 
 #include <kcal/incidence.h>
@@ -33,7 +31,7 @@
 #include <QtGui/QPrinter>
 #include <QtGui/QWidget>
 
-namespace KCal {
+namespace Akonadi {
   class Calendar;
 }
 
@@ -80,7 +78,7 @@ class PrintPlugin : public KOrg::Plugin
 
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
 
-    virtual void setCalendar( KCal::Calendar *cal ) { mCalendar = cal; }
+    virtual void setCalendar( Akonadi::Calendar *cal ) { mCalendar = cal; }
 
     virtual void setSelectedIncidences( KCal::Incidence::List inc )
     { mSelectedIncidences = inc; }
@@ -177,7 +175,7 @@ class PrintPlugin : public KOrg::Plugin
     /** The printer object. This will only be available in the doPrint method
         of the selected plugin */
     QPrinter *mPrinter;
-    KCal::Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     KCal::Incidence::List mSelectedIncidences;
     KConfig *mConfig;
 };
@@ -189,7 +187,5 @@ class PrintPluginFactory : public PluginFactory
 };
 
 }
-
-#endif
 
 #endif

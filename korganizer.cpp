@@ -29,7 +29,6 @@
 */
 
 #include "korganizer.h"
-#include "komailclient.h"
 #include "calendarview.h"
 #include "koviewmanager.h"
 #include "kodialogmanager.h"
@@ -38,17 +37,12 @@
 #include "kocore.h"
 #include "actionmanager.h"
 #include "koglobals.h"
-#include "resourceview.h"
 #include "korganizerifaceimpl.h"
 
 #include <korganizer/part.h>
 
 #include <libkdepim/statusbarprogresswidget.h>
 #include <libkdepim/progressdialog.h>
-
-#include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
 
 #include <kio/netaccess.h>
 
@@ -111,17 +105,13 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kDebug() << ( document ? "hasDocument" : "resources" );
+  kDebug() << ( document ? "hasDocument" : "akonadi" );
 
   setHasDocument( document );
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
-  if ( hasDocument() ) {
-    mActionManager->createCalendarLocal();
-  } else {
-    mActionManager->createCalendarResources();
-  }
+  mActionManager->createCalendarAkonadi();
 
   setComponentData( KGlobal::mainComponent() );
 
@@ -310,6 +300,5 @@ void KOrganizer::setTitle()
     title += " - <" + mCalendarView->currentFilterName() + "> ";
   }
 
-  setCaption( title, !mCalendarView->isReadOnly() &&
-                      mCalendarView->isModified() );
+  setCaption( title, false );
 }

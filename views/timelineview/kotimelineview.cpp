@@ -27,20 +27,24 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelineitem.h"
+#include "kohelper.h"
 
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
-#include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/utils.h>
 
 #include <QLayout>
 
+using namespace Akonadi;
 using namespace KOrg;
 using namespace KCal;
 
-KOTimelineView::KOTimelineView( Calendar *calendar, QWidget *parent )
-  : KOEventView( calendar, parent ), mEventPopup( 0 )
+KOTimelineView::KOTimelineView( QWidget *parent )
+  : KOEventView( parent )
+  , mEventPopup( 0 )
 {
     QVBoxLayout *vbox = new QVBoxLayout( this );
     mGantt = new KDGanttView( this );
@@ -78,9 +82,9 @@ KOTimelineView::~KOTimelineView()
 }
 
 /*virtual*/
-KCal::Incidence::List KOTimelineView::selectedIncidences()
+Akonadi::Item::List KOTimelineView::selectedIncidences()
 {
-  return KCal::Incidence::List();
+  return Akonadi::Item::List();
 }
 
 /*virtual*/
@@ -98,6 +102,8 @@ int KOTimelineView::currentDateCount()
 /*virtual*/
 void KOTimelineView::showDates( const QDate &start, const QDate &end )
 {
+  kDebug() << "start=" << start << "end=" << end;
+  
   mStartDate = start;
   mEndDate = end;
   mHintDate = QDateTime();
@@ -114,60 +120,37 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
 
   // item for every calendar
   TimelineItem *item = 0;
-  CalendarResources *calres = dynamic_cast<CalendarResources *>( calendar() );
+  Akonadi::Calendar *calres = calendar();
   if ( !calres ) {
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
-    mCalendarItemMap[0][QString()] = item;
+    mCalendarItemMap.insert( -1, item );
   } else {
-    CalendarResourceManager *manager = calres->resourceManager();
-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin();
-          it != manager->activeEnd(); ++it ) {
-      QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
-      if ( (*it)->canHaveSubresources() ) {
-        QStringList subResources = (*it)->subresources();
-        for ( QStringList::ConstIterator subit = subResources.constBegin();
-              subit != subResources.constEnd(); ++subit ) {
-          QString type = (*it)->subresourceType( *subit );
-          if ( !(*it)->subresourceActive( *subit ) ||
-               ( !type.isEmpty() && type != "event" ) ) {
-            continue;
-          }
-          item = new TimelineItem( (*it)->labelForSubresource( *subit ), calendar(), mGantt );
-          resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
-          QColor subrescol = KOPrefs::instance()->resourceColor( *subit );
-          if ( subrescol.isValid() ) {
-            resourceColor = subrescol;
-          }
-          if ( resourceColor.isValid() ) {
-            item->setColors( resourceColor, resourceColor, resourceColor );
-          }
-          mCalendarItemMap[*it][*subit] = item;
-        }
-      } else {
-        item = new TimelineItem( (*it)->resourceName(), calendar(), mGantt );
-        if ( resourceColor.isValid() ) {
-          item->setColors( resourceColor, resourceColor, resourceColor );
-        }
-        mCalendarItemMap[*it][QString()] = item;
-      }
+    const CollectionSelection* colSel = collectionSelection();
+    const Collection::List collections = colSel->selectedCollections();
+
+    Q_FOREACH( const Collection &collection, collections ) {
+      item = new TimelineItem( Akonadi::displayName( collection ), calendar(), mGantt );
+      const QColor resourceColor = KOHelper::resourceColor( collection );
+      if ( resourceColor.isValid() )
+        item->setColors( resourceColor, resourceColor, resourceColor );
+      mCalendarItemMap.insert( collection.id(), item );
     }
   }
 
   // add incidences
-  Event::List events;
+  Item::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
     events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
-    for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
-      insertIncidence( *it, day );
-    }
+    Q_FOREACH( const Item& i, events )
+      insertIncidence( i, day );
   }
 
   mGantt->setUpdateEnabled( true );
 }
 
 /*virtual*/
-void KOTimelineView::showIncidences( const KCal::Incidence::List &incidenceList, const QDate &date )
+void KOTimelineView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
@@ -182,7 +165,7 @@ void KOTimelineView::updateView()
 }
 
 /*virtual*/
-void KOTimelineView::changeIncidenceDisplay( KCal::Incidence *incidence, int mode )
+void KOTimelineView::changeIncidenceDisplay( const Item &incidence, int mode )
 {
   switch ( mode ) {
   case KOGlobals::INCIDENCEADDED:
@@ -227,8 +210,7 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
   if ( !mEventPopup ) {
     mEventPopup = eventPopup();
   }
-  mEventPopup->showIncidencePopup(
-    calendar(), tlitem->incidence(), tlitem->incidence()->dtStart().date() );
+  mEventPopup->showIncidencePopup( tlitem->incidence(), Akonadi::incidence( tlitem->incidence() )->dtStart().date() );
 }
 
 bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
@@ -243,33 +225,25 @@ bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bo
 void KOTimelineView::newEventWithHint( const QDateTime &dt )
 {
   mHintDate = dt;
-  emit newEventSignal( dt );
+  emit newEventSignal( collectionSelection()->selectedCollections(), dt );
 }
 
-TimelineItem *KOTimelineView::calendarItemForIncidence( KCal::Incidence *incidence )
+TimelineItem *KOTimelineView::calendarItemForIncidence( const Item &incidence )
 {
-  CalendarResources *calres = dynamic_cast<CalendarResources *>( calendar() );
+  Akonadi::Calendar *calres = calendar();
   TimelineItem *item = 0;
   if ( !calres ) {
-    item = mCalendarItemMap[0][QString()];
+    item = mCalendarItemMap.value( -1 );
   } else {
-    ResourceCalendar *res = calres->resource( incidence );
-    if ( !res ) {
-      return 0;
-    }
-    if ( res->canHaveSubresources() ) {
-      QString subRes = res->subresourceIdentifier( incidence );
-      item = mCalendarItemMap[res][subRes];
-    } else {
-      item = mCalendarItemMap[res][QString()];
-    }
+    item = mCalendarItemMap.value( incidence.parentCollection().id() );
   }
   return item;
 }
 
-void KOTimelineView::insertIncidence( KCal::Incidence *incidence, const QDate &day )
+void KOTimelineView::insertIncidence( const Item &aitem, const QDate &day )
 {
-  TimelineItem *item = calendarItemForIncidence( incidence );
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  TimelineItem *item = calendarItemForIncidence( aitem );
   if ( !item ) {
     kWarning() << "Help! Something is really wrong here!";
     return;
@@ -279,50 +253,49 @@ void KOTimelineView::insertIncidence( KCal::Incidence *incidence, const QDate &d
     QList<KDateTime> l = incidence->startDateTimesForDate( day );
     if ( l.isEmpty() ) {
       // strange, but seems to happen for some recurring events...
-      item->insertIncidence( incidence, KDateTime( day, incidence->dtStart().time() ),
+      item->insertIncidence( aitem, KDateTime( day, incidence->dtStart().time() ),
                               KDateTime( day, incidence->dtEnd().time() ) );
     } else {
       for ( QList<KDateTime>::ConstIterator it = l.constBegin(); it != l.constEnd(); ++it ) {
-        item->insertIncidence( incidence, *it, incidence->endDateForStart( *it ) );
+        item->insertIncidence( aitem, *it, incidence->endDateForStart( *it ) );
       }
     }
   } else {
     if ( incidence->dtStart().date() == day ||
          incidence->dtStart().date() < mStartDate ) {
-      item->insertIncidence( incidence );
+      item->insertIncidence( aitem );
     }
   }
 }
 
-void KOTimelineView::insertIncidence( KCal::Incidence *incidence )
+void KOTimelineView::insertIncidence( const Item &incidence )
 {
-  KCal::Event *event = dynamic_cast<KCal::Event *>( incidence );
-  if ( !event ) {
+  const Event::Ptr event = Akonadi::event( incidence );
+  if ( !event )
     return;
-  }
 
-  if ( incidence->recurs() ) {
+  if ( event->recurs() ) {
     insertIncidence( incidence, QDate() );
   }
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
-    Event::List events = calendar()->events(
+    Item::List events = calendar()->events(
       day, timeSpec, EventSortStartDate, SortDirectionAscending );
-    for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
-      if ( events.contains( event ) ) {
+    if ( events.contains( incidence ) ) //PENDING(AKONADI_PORT) check if correct. also check the original if, was inside the for loop (unnecessarily)
+      for ( Item::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
         insertIncidence( *it, day );
-      }
     }
   }
 }
 
-void KOTimelineView::removeIncidence( KCal::Incidence *incidence )
+void KOTimelineView::removeIncidence( const Item &incidence )
 {
   TimelineItem *item = calendarItemForIncidence( incidence );
   if ( item ) {
     item->removeIncidence( incidence );
   } else {
+#if 0 //AKONADI_PORT_DISABLED
     // try harder, the incidence might already be removed from the resource
     typedef QMap<QString, KOrg::TimelineItem *> M2_t;
     typedef QMap<KCal::ResourceCalendar *, M2_t> M1_t;
@@ -335,6 +308,7 @@ void KOTimelineView::removeIncidence( KCal::Incidence *incidence )
         }
       }
     }
+#endif
   }
 }
 
@@ -345,19 +319,20 @@ void KOTimelineView::itemMoved( KDGanttViewItem *item )
     return;
   }
 
-  Incidence *i = tlit->incidence();
+  const Item i = tlit->incidence();
+  const Incidence::Ptr inc = Akonadi::incidence( i );
   mChanger->beginChange( i );
 
   KDateTime newStart( tlit->startTime() );
-  if ( i->allDay() ) {
+  if ( inc->allDay() ) {
     newStart = KDateTime( newStart.date() );
   }
 
   int delta = tlit->originalStart().secsTo( newStart );
-  i->setDtStart( i->dtStart().addSecs( delta ) );
+  inc->setDtStart( inc->dtStart().addSecs( delta ) );
   int duration = tlit->startTime().secsTo( tlit->endTime() );
   int allDayOffset = 0;
-  if ( i->allDay() ) {
+  if ( inc->allDay() ) {
     int secsPerDay = 60 * 60 * 24;
     duration /= secsPerDay;
     duration *= secsPerDay;
@@ -367,7 +342,7 @@ void KOTimelineView::itemMoved( KDGanttViewItem *item )
       duration = 0;
     }
   }
-  i->setDuration( duration );
+  inc->setDuration( duration );
   TimelineItem *parent = static_cast<TimelineItem *>( tlit->parent() );
   parent->moveItems( i, tlit->originalStart().secsTo( newStart ), duration + allDayOffset );
   mChanger->endChange( i );

@@ -51,6 +51,8 @@
 
 #include "koviewmanager.moc"
 
+using namespace Akonadi;
+
 KOViewManager::KOViewManager( CalendarView *mainView )
   : QObject(), mMainView( mainView )
 {
@@ -107,7 +109,6 @@ void KOViewManager::readSettings( KConfig *config )
 void KOViewManager::writeSettings( KConfig *config )
 {
   KConfigGroup generalConfig( config, "General" );
-
   QString view;
   if ( mCurrentView == mWhatsNextView ) {
     view = QLatin1String( "WhatsNext" );
@@ -138,6 +139,12 @@ void KOViewManager::writeSettings( KConfig *config )
   if ( mTodoView ) {
     mTodoView->saveLayout( config, "Todo View" );
   }
+
+  // write out custom view configuration
+  Q_FOREACH( KOrg::BaseView* const view, mViews ) {
+    KConfigGroup group = KGlobal::config()->group( view->identifier() );
+    view->saveConfig( group );
+  }
 }
 
 void KOViewManager::showView( KOrg::BaseView *view )
@@ -158,9 +165,19 @@ void KOViewManager::showView( KOrg::BaseView *view )
   }
 
   raiseCurrentView();
-  mMainView->processIncidenceSelection( 0, QDate() );
+  mMainView->processIncidenceSelection( Item(), QDate() );
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
+  KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
+  if ( !w )
+    return;
+  KActionCollection *ac = w->getActionCollection();\
+  if ( !ac )
+    return;
+  if ( QAction* action = ac->action( "configure_view" ) )
+    action->setEnabled( view->hasConfigurationDialog() );
+
+
 }
 
 void KOViewManager::goMenu( bool enable )
@@ -212,7 +229,7 @@ void KOViewManager::updateView()
 void KOViewManager::updateView( const QDate &start, const QDate &end )
 {
   if ( mCurrentView ) {
-    mCurrentView->showDates( start, end );
+    mCurrentView->setDateRange( KDateTime( start ), KDateTime( end ) );
   }
 
   if ( mTodoView ) {
@@ -227,48 +244,49 @@ void KOViewManager::connectView( KOrg::BaseView *view )
   }
 
   // selecting an incidence
-  connect( view, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           mMainView, SLOT(processMainViewSelection(Incidence *,const QDate &)) );
+  connect( view, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           mMainView, SLOT(processMainViewSelection(Akonadi::Item,QDate)) );
 
   // showing/editing/deleting an incidence. The calendar view takes care of the action.
-  connect( view, SIGNAL(showIncidenceSignal(Incidence *)),
-           mMainView, SLOT(showIncidence(Incidence *)) );
-  connect( view, SIGNAL(editIncidenceSignal(Incidence *)),
-           mMainView, SLOT(editIncidence(Incidence *)) );
-  connect( view, SIGNAL(deleteIncidenceSignal(Incidence *)),
-           mMainView, SLOT(deleteIncidence(Incidence *)) );
-  connect( view, SIGNAL(copyIncidenceSignal(Incidence *)),
-           mMainView, SLOT(copyIncidence(Incidence *)) );
-  connect( view, SIGNAL(cutIncidenceSignal(Incidence *)),
-           mMainView, SLOT(cutIncidence(Incidence *)) );
+  connect( view, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(showIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(editIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(copyIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(cutIncidence(Akonadi::Item)) );
   connect( view, SIGNAL(pasteIncidenceSignal()),
            mMainView, SLOT(pasteIncidence()) );
-  connect( view, SIGNAL(toggleAlarmSignal(Incidence *)),
-           mMainView, SLOT(toggleAlarm(Incidence *)) );
-  connect( view, SIGNAL(toggleTodoCompletedSignal(Incidence *)),
-           mMainView, SLOT(toggleTodoCompleted(Incidence *)) );
-  connect( view, SIGNAL(copyIncidenceToResourceSignal(Incidence *,const QString &)),
-           mMainView, SLOT(copyIncidenceToResource(Incidence *,const QString &)) );
-  connect( view, SIGNAL(moveIncidenceToResourceSignal(Incidence *,const QString &)),
-           mMainView, SLOT(moveIncidenceToResource(Incidence *,const QString &)) );
-  connect( view, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
-           mMainView, SLOT(dissociateOccurrences(Incidence *,const QDate &)) );
+  connect( view, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           mMainView, SLOT(toggleAlarm(Akonadi::Item)) );
+  connect( view, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           mMainView, SLOT(toggleTodoCompleted(Akonadi::Item)) );
+  connect( view, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,const QString &)),
+           mMainView, SLOT(copyIncidenceToResource(Akonadi::Item,const QString &)) );
+  connect( view, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,const QString &)),
+           mMainView, SLOT(moveIncidenceToResource(Akonadi::Item,const QString &)) );
+  connect( view, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           mMainView, SLOT(dissociateOccurrences(Akonadi::Item,QDate)) );
 
   // signals to create new incidences
-  connect( view, SIGNAL(newEventSignal()),
-           mMainView, SLOT(newEvent()) );
-  connect( view, SIGNAL(newEventSignal(const QDateTime &)),
-           mMainView, SLOT(newEvent(const QDateTime &)) );
-  connect( view, SIGNAL(newEventSignal(const QDateTime &, const QDateTime &)),
-           mMainView, SLOT(newEvent(const QDateTime &,const QDateTime &)) );
-  connect( view, SIGNAL(newEventSignal(const QDate &)),
-           mMainView, SLOT(newEvent(const QDate &)) );
-  connect( view, SIGNAL(newTodoSignal(const QDate &)),
-           mMainView, SLOT(newTodo(const QDate &)) );
-  connect( view, SIGNAL(newSubTodoSignal(Todo *)),
-           mMainView, SLOT(newSubTodo(Todo *)) );
-  connect( view, SIGNAL(newJournalSignal(const QDate &)),
-           mMainView, SLOT(newJournal(const QDate &)) );
+  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::List)),
+           mMainView, SLOT(newEvent(Akonadi::Collection::List)) );
+  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)),
+           mMainView, SLOT(newEvent(Akonadi::Collection::List,QDateTime)) );
+  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime, QDateTime)),
+           mMainView, SLOT(newEvent(Akonadi::Collection::List,QDateTime,QDateTime)) );
+  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)),
+           mMainView, SLOT(newEvent(Akonadi::Collection::List,QDate)) );
+
+  connect( view, SIGNAL(newTodoSignal(QDate)),
+           mMainView, SLOT(newTodo(QDate)) );
+  connect( view, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           mMainView, SLOT(newSubTodo(Akonadi::Item)) );
+  connect( view, SIGNAL(newJournalSignal(QDate)),
+           mMainView, SLOT(newJournal(QDate)) );
 
   // reload settings
   connect( mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()) );
@@ -334,6 +352,9 @@ void KOViewManager::zoomOutVertically()
 void KOViewManager::addView( KOrg::BaseView *view, bool isTab )
 {
   connectView( view );
+  mViews.append( view );
+  const KConfigGroup group = KGlobal::config()->group( view->identifier() );
+  view->restoreConfig( group );
   if ( !isTab ) {
     mMainView->viewStack()->addWidget( view );
   }
@@ -342,8 +363,9 @@ void KOViewManager::addView( KOrg::BaseView *view, bool isTab )
 void KOViewManager::showTimeSpentView()
 {
   if ( !mTimeSpentView ) {
-    mTimeSpentView = new KOTimeSpentView( mMainView->calendar(), mMainView->viewStack() );
-    mTimeSpentView->setObjectName( "KOViewManager::TimeSpentView" );
+    mTimeSpentView = new KOTimeSpentView( mMainView->viewStack() );
+    mTimeSpentView->setCalendar( mMainView->calendar() );
+    mTimeSpentView->setIdentifier( "DefaultTimeSpentView" );
     addView( mTimeSpentView );
   }
   goMenu( true );
@@ -353,8 +375,9 @@ void KOViewManager::showTimeSpentView()
 void KOViewManager::showMonthView()
 {
   if ( !mMonthView ) {
-    mMonthView = new KOrg::MonthView( mMainView->calendar(), mMainView->viewStack() );
-    mMonthView->setObjectName( "KOViewManager::MonthView" );
+    mMonthView = new KOrg::MonthView( mMainView->viewStack() );
+    mMonthView->setCalendar( mMainView->calendar() );
+    mMonthView->setIdentifier( "DefaultMonthView" );
     addView( mMonthView );
   }
   goMenu( true );
@@ -364,8 +387,9 @@ void KOViewManager::showMonthView()
 void KOViewManager::showWhatsNextView()
 {
   if ( !mWhatsNextView ) {
-    mWhatsNextView = new KOWhatsNextView( mMainView->calendar(), mMainView->viewStack() );
-    mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
+    mWhatsNextView = new KOWhatsNextView( mMainView->viewStack() );
+    mWhatsNextView->setCalendar( mMainView->calendar() );
+    mWhatsNextView->setIdentifier( "DefaultWhatsNextView" );
     addView( mWhatsNextView );
   }
   goMenu( true );
@@ -375,8 +399,9 @@ void KOViewManager::showWhatsNextView()
 void KOViewManager::showListView()
 {
   if ( !mListView ) {
-    mListView = new KOListView( mMainView->calendar(), mMainView->viewStack() );
-    mListView->setObjectName( "KOViewManager::ListView" );
+    mListView = new KOListView( mMainView->viewStack() );
+    mListView->setCalendar( mMainView->calendar() );
+    mListView->setIdentifier( "DefaultListView" );
     addView( mListView );
   }
   goMenu( true );
@@ -405,8 +430,9 @@ void KOViewManager::showAgendaView()
 
   if ( showMerged ) {
     if ( !mAgendaView ) {
-      mAgendaView = new KOAgendaView( mMainView->calendar(), parent );
-      mAgendaView->setObjectName( "KOViewManager::AgendaView" );
+      mAgendaView = new KOAgendaView( parent );
+      mAgendaView->setCalendar( mMainView->calendar() );
+      mAgendaView->setIdentifier( "DefaultAgendaView" );
 
       addView( mAgendaView, showBoth );
 
@@ -424,8 +450,9 @@ void KOViewManager::showAgendaView()
 
   if ( showSideBySide ) {
     if ( !mAgendaSideBySideView ) {
-      mAgendaSideBySideView = new MultiAgendaView( mMainView->calendar(), parent );
-      mAgendaSideBySideView->setObjectName( "KOViewManager::AgendaSideBySideView" );
+      mAgendaSideBySideView = new MultiAgendaView( parent );
+      mAgendaSideBySideView->setCalendar( mMainView->calendar() );
+      mAgendaSideBySideView->setIdentifier( "DefaultAgendaSideBySideView" );
       addView( mAgendaSideBySideView, showBoth );
 
 /*
@@ -450,37 +477,33 @@ void KOViewManager::showAgendaView()
   }
 }
 
-void KOViewManager::showDayView()
+void KOViewManager::selectDay()
 {
-  QDate date = mMainView->activeDate();
-  showAgendaView();
+  const QDate date = mMainView->activeDate();
   mMainView->dateNavigator()->selectDate( date );
 }
 
-void KOViewManager::showWorkWeekView()
+void KOViewManager::selectWorkWeek()
 {
   if ( KOGlobals::self()->getWorkWeekMask() != 0 ) {
     QDate date = mMainView->activeDate();
-    showAgendaView();
     mMainView->dateNavigator()->selectWorkWeek( date );
   } else {
     KMessageBox::sorry(
       mMainView,
-      i18n( "Unable to display the work week view since there are no work days configured. "
+      i18n( "Unable to display the work week since there are no work days configured. "
             "Please properly configure at least 1 work day in the Time and Date preferences." ) );
   }
 }
 
-void KOViewManager::showWeekView()
+void KOViewManager::selectWeek()
 {
   QDate date = mMainView->activeDate();
-  showAgendaView();
   mMainView->dateNavigator()->selectWeek( date );
 }
 
-void KOViewManager::showNextXView()
+void KOViewManager::selectNextX()
 {
-  showAgendaView();
   mMainView->dateNavigator()->selectDates( QDate::currentDate(),
                                            KOPrefs::instance()->mNextXDays );
 }
@@ -488,8 +511,9 @@ void KOViewManager::showNextXView()
 void KOViewManager::showTodoView()
 {
   if ( !mTodoView ) {
-    mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack() );
-    mTodoView->setObjectName( "KOViewManager::TodoView" );
+    mTodoView = new KOTodoView( mMainView->viewStack() );
+    mTodoView->setCalendar( mMainView->calendar() );
+    mTodoView->setIdentifier( "DefaultTodoView" );
     mTodoView->setCalendar( mMainView->calendar() );
     addView( mTodoView );
     connectTodoView( mTodoView );
@@ -504,8 +528,9 @@ void KOViewManager::showTodoView()
 void KOViewManager::showJournalView()
 {
   if ( !mJournalView ) {
-    mJournalView = new KOJournalView( mMainView->calendar(), mMainView->viewStack() );
-    mJournalView->setObjectName( "KOViewManager::JournalView" );
+    mJournalView = new KOJournalView( mMainView->viewStack() );
+    mJournalView->setCalendar( mMainView->calendar() );
+    mJournalView->setIdentifier( "DefaultJournalView" );
     addView( mJournalView );
   }
   goMenu( true );
@@ -515,8 +540,9 @@ void KOViewManager::showJournalView()
 void KOViewManager::showTimeLineView()
 {
   if ( !mTimelineView ) {
-    mTimelineView = new KOTimelineView( mMainView->calendar(), mMainView->viewStack() );
-    mTimelineView->setObjectName( "KOViewManager::TimelineView" );
+    mTimelineView = new KOTimelineView( mMainView->viewStack() );
+    mTimelineView->setCalendar( mMainView->calendar() );
+    mTimelineView->setIdentifier( "DefaultTimelineView" );
     addView( mTimelineView );
   }
   goMenu( true );
@@ -529,19 +555,20 @@ void KOViewManager::showEventView()
     goMenu( true );
     showView( mLastEventView );
   } else {
-    showWeekView();
+    showAgendaView();
+    selectWeek();
   }
 }
 
-Incidence *KOViewManager::currentSelection()
+Item KOViewManager::currentSelection()
 {
   if ( !mCurrentView ) {
-    return 0;
+    return Item();
   }
 
-  Incidence::List incidenceList = mCurrentView->selectedIncidences();
+  Item::List incidenceList = mCurrentView->selectedIncidences();
   if ( incidenceList.isEmpty() ) {
-    return 0;
+    return Item();
   }
   return incidenceList.first();
 }

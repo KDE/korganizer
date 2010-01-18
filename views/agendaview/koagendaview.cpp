@@ -35,11 +35,13 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelabelszone.h"
-using namespace KOrg;
+#include "akonadicollectionview.h"
+
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/utils.h>
 
 #include <KCal/CalFilter>
-#include <KCal/DndFactory>
-#include <KCal/CalendarResources>
 
 #include <KCalendarSystem>
 #include <KGlobalSettings>
@@ -51,6 +53,9 @@ using namespace KOrg;
 #include <QPainter>
 #include <QSplitter>
 #include <KWordWrap>
+
+using namespace KOrg;
+using namespace Akonadi;
 
 EventIndicator::EventIndicator( Location loc, QWidget *parent )
   : QFrame( parent )
@@ -107,12 +112,12 @@ void EventIndicator::enableColumn( int column, bool enable )
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) :
-  KOrg::AgendaView( cal, parent ),
+KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
+  KOrg::AgendaView( parent ),
   mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 ),
+  mCollectionId( -1 ),
   mIsSideBySide( isSideBySide ),
   mPendingChanges( true )
 {
@@ -185,8 +190,8 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
   mAgendaPopup = eventPopup();
 
   // Scrolling
-  connect( mAgenda, SIGNAL(zoomView(const int,const QPoint &,const Qt::Orientation)),
-           SLOT(zoomView(const int,const QPoint &,const Qt::Orientation)) );
+  connect( mAgenda, SIGNAL(zoomView(const int,QPoint,const Qt::Orientation)),
+           SLOT(zoomView(const int,QPoint,const Qt::Orientation)) );
 
   // Event indicator updates
   connect( mAgenda, SIGNAL(lowerYChanged(int)),
@@ -227,10 +232,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
   connect( mAllDayAgenda,
            SIGNAL(newTimeSpanSignal(const QPoint &,const QPoint &)),
            SLOT(newTimeSpanSelectedAllDay(const QPoint &,const QPoint &)) );
-
-  if ( cal ) {
-    cal->registerObserver( this );
-  }
 }
 
 KOAgendaView::~KOAgendaView()
@@ -243,11 +244,21 @@ KOAgendaView::~KOAgendaView()
   delete mAllDayAgendaPopup;
 }
 
+void KOAgendaView::setCalendar( Akonadi::Calendar *cal )
+{
+  if( calendar() ) {
+    calendar()->unregisterObserver( this );
+  }
+  Q_ASSERT( cal );
+  KOrg::AgendaView::setCalendar(cal);
+  calendar()->registerObserver( this );
+}
+
 void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
                                   KOAgenda *otherAgenda )
 {
-  connect( agenda, SIGNAL(showIncidencePopupSignal(Calendar *,Incidence *,const QDate &)),
-           popup, SLOT(showIncidencePopup(Calendar *,Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+           popup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
 
   connect( agenda, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
@@ -255,19 +266,21 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
   agenda->setCalendar( calendar() );
 
   // Create/Show/Edit/Delete Event
-  connect( agenda, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()) );
+  // Is the newEventSignal even emitted? It doesn't seem to reach handleNewEventRequest()
+  // at least.
+  connect( agenda, SIGNAL(newEventSignal()), SLOT(handleNewEventRequest()) );
 
   connect( agenda, SIGNAL(newStartSelectSignal()),
            otherAgenda, SLOT(clearSelection()) );
   connect( agenda, SIGNAL(newStartSelectSignal()),
            SIGNAL(timeSpanSelectionChanged()) );
 
-  connect( agenda, SIGNAL(editIncidenceSignal(Incidence *)),
-                   SIGNAL(editIncidenceSignal(Incidence *)) );
-  connect( agenda, SIGNAL(showIncidenceSignal(Incidence *)),
-                   SIGNAL(showIncidenceSignal(Incidence *)) );
-  connect( agenda, SIGNAL(deleteIncidenceSignal(Incidence *)),
-                   SIGNAL(deleteIncidenceSignal(Incidence *)) );
+  connect( agenda, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+                   SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+  connect( agenda, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+                   SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+  connect( agenda, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+                   SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
 
   connect( agenda, SIGNAL(startMultiModify(const QString &)),
                    SIGNAL(startMultiModify(const QString &)) );
@@ -280,18 +293,20 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
                    SLOT(enableAgendaUpdate(bool)) );
 
   // drag signals
-  connect( agenda, SIGNAL(startDragSignal(Incidence *)),
-           SLOT(startDrag(Incidence *)) );
+  connect( agenda, SIGNAL(startDragSignal(Akonadi::Item)),
+           SLOT(startDrag(Akonadi::Item)) );
 
   // synchronize selections
-  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+  connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
            otherAgenda, SLOT(deselectItem()) );
-  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
+           SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)) );
 
   // rescheduling of todos by d'n'd
-  connect( agenda, SIGNAL(droppedToDo(Todo *,const QPoint &,bool)),
-           SLOT(slotTodoDropped(Todo *,const QPoint &,bool)) );
+  connect( agenda, SIGNAL(droppedToDos(QList<KCal::Todo::Ptr>,const QPoint &,bool)),
+           SLOT(slotTodosDropped(QList<KCal::Todo::Ptr>,const QPoint &,bool)) );
+  connect( agenda, SIGNAL(droppedToDos(QList<KUrl>,const QPoint &,bool)),
+           SLOT(slotTodosDropped(QList<KUrl>,const QPoint &,bool)) );
 
 }
 
@@ -593,19 +608,18 @@ int KOAgendaView::currentDateCount()
   return mSelectedDates.count();
 }
 
-Incidence::List KOAgendaView::selectedIncidences()
+Akonadi::Item::List KOAgendaView::selectedIncidences()
 {
-  Incidence::List selected;
-  Incidence *incidence;
+  Akonadi::Item::List selected;
 
-  incidence = mAgenda->selectedIncidence();
-  if ( incidence ) {
-    selected.append( incidence );
+  Akonadi::Item agendaitem = mAgenda->selectedIncidence();
+  if ( agendaitem.isValid() ) {
+    selected.append( agendaitem );
   }
 
-  incidence = mAllDayAgenda->selectedIncidence();
-  if ( incidence ) {
-    selected.append( incidence );
+  Akonadi::Item dayitem = mAllDayAgenda->selectedIncidence();
+  if ( dayitem.isValid() ) {
+    selected.append( dayitem );
   }
 
   return selected;
@@ -762,14 +776,15 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   int daysLength = 0;
 //  startDt.setDate( startDate );
 
-  Incidence *incidence = item->incidence();
+  const Item aitem = item->incidence();
+  Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence ) {
     return;
   }
-  if ( !mChanger || !mChanger->beginChange( incidence ) ) {
+  if ( !mChanger || !mChanger->beginChange( aitem ) ) {
     return;
   }
-  Incidence *oldIncidence = incidence->clone();
+  Incidence::Ptr oldIncidence( incidence->clone() );
 
   QTime startTime( 0, 0, 0 ), endTime( 0, 0, 0 );
   if ( incidence->allDay() ) {
@@ -785,7 +800,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
 
   // FIXME: use a visitor here
-  if ( incidence->type() == "Event" ) {
+  if ( const Event::Ptr ev = Akonadi::event( aitem ) ) {
     startDt = incidence->dtStart();
     // convert to calendar timespec because we then manipulate it
     // with time coming from the calendar
@@ -798,16 +813,14 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     if ( !endDt.isDateOnly() ) {
       endDt.setTime( endTime );
     }
-    Event*ev = static_cast<Event*>( incidence );
     if ( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) == startDt &&
          ev->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) == endDt ) {
       // No change
-      delete oldIncidence;
+      mChanger->endChange( aitem );
+      QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *td = static_cast<Todo*>( incidence );
-
+  } else if ( const Todo::Ptr td = Akonadi::todo( aitem ) ) {
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
     // convert to calendar timespec because we then manipulate it with time coming from
     // the calendar
@@ -825,7 +838,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
     if( td->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() )  == endDt ) {
       // No change
-      delete oldIncidence;
+      mChanger->endChange( aitem );
+      QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
   }
@@ -998,18 +1012,17 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 */
 
   // FIXME: use a visitor here
-  if ( incidence->type() == "Event" ) {
+  if ( const Event::Ptr ev = Akonadi::event( aitem ) ) {
     /* setDtEnd() must be called before setDtStart(), otherwise, when moving
      * events, CalendarLocal::incidenceUpdated() will not remove the old hash
      * and that causes the event to be shown in the old date also (bug #179157).
      *
      * TODO: We need a better hashing mechanism for CalendarLocal.
      */
-    ( static_cast<Event*>( incidence ) )->setDtEnd(
+    ev->setDtEnd(
       endDt.toTimeSpec( incidence->dtEnd().timeSpec() ) );
     incidence->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *td = static_cast<Todo*>( incidence );
+  } else if ( const Todo::Ptr td = Akonadi::todo( aitem ) ) {
     if ( td->hasStartDate() ) {
       td->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
     }
@@ -1017,10 +1030,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
-  const bool result = mChanger->changeIncidence( oldIncidence, incidence,
+  const bool result = mChanger->changeIncidence( oldIncidence, aitem,
                                                  KOGlobals::DATE_MODIFIED, this );
-  mChanger->endChange( incidence );
-  delete oldIncidence;
+  mChanger->endChange( aitem );
 
   // Update the view correctly if an agenda item move was aborted by
   // cancelling one of the subsequent dialogs.
@@ -1039,7 +1051,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // Only the actually moved agenda item is already at the correct position and mustn't be
   // recreated. All others have to!!!
   if ( incidence->recurs() ) {
-    mUpdateItem = incidence;
+    mUpdateItem = aitem;
     QTimer::singleShot( 0, this, SLOT(doUpdateItem()) );
   }
 
@@ -1048,9 +1060,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
 void KOAgendaView::doUpdateItem()
 {
-  if ( mUpdateItem ) {
+  if ( Akonadi::hasIncidence( mUpdateItem ) ) {
     changeIncidenceDisplay( mUpdateItem, KOGlobals::INCIDENCEEDITED );
-    mUpdateItem = 0;
+    mUpdateItem = Item();
   }
 }
 
@@ -1075,7 +1087,7 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
   fillAgenda();
 }
 
-void KOAgendaView::showIncidences( const Incidence::List &incidences, const QDate &date )
+void KOAgendaView::showIncidences( const Item::List &incidences, const QDate &date )
 {
   Q_UNUSED( date );
 
@@ -1083,9 +1095,8 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences, const QDat
   CalFilter *filter = calendar()->filter();
   bool wehaveall = true;
   if ( filter ) {
-    for ( Incidence::List::ConstIterator it = incidences.constBegin();
-          it != incidences.constEnd(); ++it ) {
-      if ( !( wehaveall = filter->filterIncidence( *it ) ) ) {
+    Q_FOREACH( const Item& aitem, incidences ){
+      if ( !( wehaveall = filter->filterIncidence( Akonadi::incidence( aitem ).get() ) ) ) {
         break;
       }
     }
@@ -1095,16 +1106,15 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences, const QDat
     calendar()->setFilter( 0 );
   }
 
-  KDateTime start = incidences.first()->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ),
-            end = incidences.first()->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
-  Incidence *first = incidences.first();
-  for ( Incidence::List::ConstIterator it = incidences.constBegin();
-        it != incidences.constEnd(); ++it ) {
-    if ( ( *it )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) < start ) {
-      first = *it;
+  KDateTime start = Akonadi::incidence( incidences.first() )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ),
+            end = Akonadi::incidence( incidences.first() )->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
+  Item first = incidences.first();
+  Q_FOREACH( const Item &aitem, incidences ) {
+    if ( Akonadi::incidence( aitem )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) < start ) {
+      first = aitem;
     }
-    start = qMin( start, ( *it )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
-    end = qMax( start, ( *it )->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
+    start = qMin( start, Akonadi::incidence( aitem )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
+    end = qMax( start, Akonadi::incidence( aitem )->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
   }
 
   end.toTimeSpec( start );    // allow direct comparison of dates
@@ -1114,18 +1124,19 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences, const QDat
     showDates( start.date(), start.date().addDays( currentDateCount() - 1 ) );
   }
 
-  mAgenda->selectItemByUID( first->uid() );
+  mAgenda->selectItem( first );
 }
 
-void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
+void KOAgendaView::insertIncidence( const Item &aitem, const QDate &curDate )
 {
-  if ( !filterByResource( incidence ) ) {
+  if ( !filterByCollectionSelection( aitem ) ) {
     return;
   }
 
   // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's
-  Event *event = dynamic_cast<Event *>( incidence );
-  Todo  *todo  = dynamic_cast<Todo  *>( incidence );
+  Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  Event::Ptr event = Akonadi::event( aitem );
+  Todo::Ptr todo = Akonadi::todo( aitem );
 
   int curCol = mSelectedDates.first().daysTo( curDate );
 
@@ -1169,9 +1180,9 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     return;
   }
   if ( todo && todo->isOverdue() ) {
-    mAllDayAgenda->insertAllDayItem( incidence, columnDate, curCol, curCol );
+    mAllDayAgenda->insertAllDayItem( aitem, columnDate, curCol, curCol );
   } else if ( incidence->allDay() ) {
-      mAllDayAgenda->insertAllDayItem( incidence, columnDate, beginX, endX );
+      mAllDayAgenda->insertAllDayItem( aitem, columnDate, beginX, endX );
   } else if ( event && event->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
     int startY = mAgenda->timeToY(
       event->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
@@ -1181,7 +1192,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     }
     int endY = mAgenda->timeToY( endtime ) - 1;
     if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
-      mAgenda->insertMultiItem( event, columnDate, beginX, endX, startY, endY );
+      mAgenda->insertMultiItem( aitem, columnDate, beginX, endX, startY, endY );
 
     }
     if ( beginX == curCol ) {
@@ -1224,7 +1235,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     if ( endY < startY ) {
       endY = startY;
     }
-    mAgenda->insertItem( incidence, columnDate, curCol, startY, endY );
+    mAgenda->insertItem( aitem, columnDate, curCol, startY, endY );
     if ( startY < mMinY[curCol] ) {
       mMinY[curCol] = startY;
     }
@@ -1234,19 +1245,19 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
   }
 }
 
-void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
+void KOAgendaView::changeIncidenceDisplayAdded( const Item &aitem )
 {
-  Todo *todo = dynamic_cast<Todo *>(incidence);
+  Todo::Ptr todo = Akonadi::todo( aitem );
   CalFilter *filter = calendar()->filter();
-  if ( ( filter && !filter->filterIncidence( incidence ) ) ||
+  if ( ( filter && !filter->filterIncidence( Akonadi::incidence( aitem ).get() ) ) ||
        ( ( todo && !KOPrefs::instance()->showTodosAgendaView() ) ) ) {
     return;
   }
 
-  displayIncidence( incidence );
+  displayIncidence( aitem );
 }
 
-void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
+void KOAgendaView::changeIncidenceDisplay( const Item &aitem, int mode )
 {
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED:
@@ -1256,23 +1267,24 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
       // day matrix recreates the agenda items, but the evaluation is
       // still in an agendaItems' code, which was deleted in the mean time.
       // Thus KOrg crashes...
-      changeIncidenceDisplayAdded( incidence );
+      changeIncidenceDisplayAdded( aitem );
       updateEventIndicators();
       break;
     }
     case KOGlobals::INCIDENCEEDITED:
     {
       if ( mAllowAgendaUpdate ) {
-        removeIncidence( incidence );
-        changeIncidenceDisplayAdded( incidence );
+        //PENDING(AKONADI_PORT) try harder not to recreate the items here, this causes flicker with the delayed notification from Akonadi, after a dnd operation
+        removeIncidence( aitem );
+        changeIncidenceDisplayAdded( aitem );
       }
       updateEventIndicators();
       break;
     }
     case KOGlobals::INCIDENCEDELETED:
     {
-      mAgenda->removeIncidence( incidence );
-      mAllDayAgenda->removeIncidence( incidence );
+      mAgenda->removeIncidence( aitem );
+      mAllDayAgenda->removeIncidence( aitem );
       updateEventIndicators();
       break;
     }
@@ -1290,10 +1302,10 @@ void KOAgendaView::fillAgenda()
 {
   mPendingChanges = false;
 
-  /* Remember the uids of the selected items. In case one of the
+  /* Remember the item Ids of the selected items. In case one of the
    * items was deleted and re-added, we want to reselect it. */
-  const QString &selectedAgendaUid = mAgenda->lastSelectedUid();
-  const QString &selectedAllDayAgendaUid = mAllDayAgenda->lastSelectedUid();
+  const Item::Id selectedAgendaId = mAgenda->lastSelectedItemId();
+  const Item::Id selectedAllDayAgendaId = mAllDayAgenda->lastSelectedItemId();
 
   enableAgendaUpdate( true );
   clearView();
@@ -1312,18 +1324,17 @@ void KOAgendaView::fillAgenda()
   mAgenda->setDateList( mSelectedDates );
 
   bool somethingReselected = false;
-  Incidence::List incidences = calendar()->incidences();
+  const Item::List incidences = calendar()->incidences();
 
-  foreach ( Incidence *incidence, incidences ) {
-    displayIncidence( incidence );
-
-    if( incidence->uid() == selectedAgendaUid && !selectedAgendaUid.isNull() ) {
-      mAgenda->selectItemByUID( incidence->uid() );
+  foreach ( const Item& aitem, incidences ) {
+    displayIncidence( aitem );
+    if( aitem.id() == selectedAgendaId ) {
+      mAgenda->selectItem( aitem );
       somethingReselected = true;
     }
 
-    if( incidence->uid() == selectedAllDayAgendaUid && !selectedAllDayAgendaUid.isNull() ) {
-      mAllDayAgenda->selectItemByUID( incidence->uid() );
+    if( aitem.id() == selectedAllDayAgendaId ) {
+      mAllDayAgenda->selectItem( aitem );
       somethingReselected = true;
     }
   }
@@ -1338,18 +1349,19 @@ void KOAgendaView::fillAgenda()
   deleteSelectedDateTime();
 
   if( !somethingReselected ) {
-    emit incidenceSelected( 0, QDate() );
+    emit incidenceSelected( Item(), QDate() );
   }
 }
 
-void KOAgendaView::displayIncidence( Incidence *incidence )
+void KOAgendaView::displayIncidence( const Item &aitem )
 {
   QDate today = QDate::currentDate();
   DateTimeList::iterator t;
 
   // FIXME: use a visitor here
-  Todo *todo = dynamic_cast<Todo *>( incidence );
-  Event *event = dynamic_cast<Event *>( incidence );
+  Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  Todo::Ptr todo = Akonadi::todo( aitem );
+  Event::Ptr event = Akonadi::event( aitem );
 
   KDateTime firstVisibleDateTime( mSelectedDates.first(), KOPrefs::instance()->timeSpec() );
   KDateTime lastVisibleDateTime( mSelectedDates.last(), KOPrefs::instance()->timeSpec() );
@@ -1426,7 +1438,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
   }
 
   for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
-    insertIncidence( incidence, t->toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
+    insertIncidence( aitem, t->toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
   }
 }
 
@@ -1436,7 +1448,6 @@ void KOAgendaView::clearView()
   mAgenda->clear();
 }
 
-#ifndef KORG_NOPRINTER
 CalPrinter::PrintType KOAgendaView::printType()
 {
   if ( currentDateCount() == 1 ) {
@@ -1445,7 +1456,6 @@ CalPrinter::PrintType KOAgendaView::printType()
     return CalPrinter::Week;
   }
 }
-#endif
 
 void KOAgendaView::updateEventIndicatorTop( int newY )
 {
@@ -1463,8 +1473,8 @@ void KOAgendaView::updateEventIndicatorBottom( int newY )
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay )
-{
+void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpos, bool allDay ) {
+#ifdef AKONADI_PORT_DISABLED // one item -> multiple items, Incidence* -> akonadi item url (we might have to fetch the items here first!)
   if ( gpos.x() < 0 || gpos.y() < 0 ) {
     return;
   }
@@ -1474,22 +1484,22 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
   KDateTime newTime( day, time, KOPrefs::instance()->timeSpec() );
   newTime.setDateOnly( allDay );
 
-  if ( todo ) {
-    Todo *existingTodo = calendar()->todo( todo->uid() );
-    if ( existingTodo ) {
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  if ( todo &&  dynamic_cast<Akonadi::Calendar*>( calendar() ) ) {
+    const Item existingTodoItem = dynamic_cast<Akonadi::Calendar*>( calendar() )->itemForIncidence( calendar()->todo( todo->uid() ) );
+    if ( Todo::Ptr existingTodo = Akonadi::todo( existingTodoItem ) ) {
       kDebug() << "Drop existing Todo";
-      Todo *oldTodo = existingTodo->clone();
-      if ( mChanger && mChanger->beginChange( existingTodo ) ) {
+      Todo::Ptr oldTodo( existingTodo->clone() );
+      if ( mChanger && mChanger->beginChange( existingTodoItem ) ) {
         existingTodo->setDtDue( newTime );
         existingTodo->setAllDay( allDay );
         existingTodo->setHasDueDate( true );
-        mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::DATE_MODIFIED, this );
-        mChanger->endChange( existingTodo );
+        mChanger->changeIncidence( oldTodo, existingTodoItem, KOGlobals::DATE_MODIFIED, this );
+        mChanger->endChange( existingTodoItem );
       } else {
         KMessageBox::sorry( this, i18n( "Unable to modify this to-do, "
                                         "because it cannot be locked." ) );
       }
-      delete oldTodo;
     } else {
       kDebug() << "Drop new Todo";
       todo->setDtDue( newTime );
@@ -1500,17 +1510,35 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
       }
     }
   }
+#else
+  kWarning()<<"TODO";
+#endif
 }
 
-void KOAgendaView::startDrag( Incidence *incidence )
+void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint &gpos, bool allDay )
 {
-#ifndef KORG_NODND
-  DndFactory factory( calendar() );
-  QDrag *drag = factory.createDrag( incidence, this );
-  if ( drag->start() ) {
-    kDebug() << "Delete drag source";
+  if ( gpos.x() < 0 || gpos.y() < 0 ) {
+    return;
   }
-#endif
+
+  QDate day = mSelectedDates[gpos.x()];
+  QTime time = mAgenda->gyToTime( gpos.y() );
+  KDateTime newTime( day, time, KOPrefs::instance()->timeSpec() );
+  newTime.setDateOnly( allDay );
+
+  Q_FOREACH( const Todo::Ptr &todo, items ) {
+    todo->setDtDue( newTime );
+    todo->setAllDay( allDay );
+    todo->setHasDueDate( true );
+    if ( !mChanger->addIncidence( todo, this ) ) {
+      KODialogManager::errorSaveIncidence( this, todo );
+    }
+  }
+}
+void KOAgendaView::startDrag( const Item &incidence )
+{
+  if ( QDrag *drag = Akonadi::createDrag( incidence, calendar()->timeSpec(), this ) )
+    drag->exec();
 }
 
 void KOAgendaView::readSettings()
@@ -1581,6 +1609,11 @@ void KOAgendaView::newTimeSpanSelectedAllDay( const QPoint &start, const QPoint 
   mTimeSpanInAllDay = true;
 }
 
+void KOAgendaView::handleNewEventRequest()
+{
+  emit newEventSignal( Akonadi::Collection::List() << Collection( collection() ) );
+}
+
 void KOAgendaView::newTimeSpanSelected( const QPoint &start, const QPoint &end )
 {
   if ( !mSelectedDates.count() ) {
@@ -1609,7 +1642,7 @@ void KOAgendaView::deleteSelectedDateTime()
   mTimeSpanInAllDay = false;
 }
 
-void KOAgendaView::removeIncidence( Incidence *incidence )
+void KOAgendaView::removeIncidence( const Item &incidence )
 {
   mAgenda->removeIncidence( incidence );
   mAllDayAgenda->removeIncidence( incidence );
@@ -1639,33 +1672,36 @@ void KOAgendaView::clearTimeSpanSelection()
   deleteSelectedDateTime();
 }
 
-void KOAgendaView::setResource( KCal::ResourceCalendar *res, const QString &subResource )
+#if 0
+void KOAgendaView::setCollectionSelection( CollectionSelection* sel )
 {
-  mResource = res;
-  mSubResource = subResource;
+  if ( mCollectionSelection == sel )
+    return;
+  mCollectionSelection = sel;
+}
+#endif
+
+void KOAgendaView::setCollection( Collection::Id coll )
+{
+  if ( mCollectionId == coll )
+    return;
+  mCollectionId = coll;
 }
 
-bool KOAgendaView::filterByResource( Incidence *incidence )
+Akonadi::Collection::Id KOAgendaView::collection() const
 {
-  if ( !mResource ) {
+  return mCollectionId;
+}
+
+bool KOAgendaView::filterByCollectionSelection( const Item &incidence )
+{
+  if ( customCollectionSelection() ) {
+    return customCollectionSelection()->contains( incidence.parentCollection().id() );
+  }
+  if ( mCollectionId < 0 )
     return true;
-  }
-
-  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
-  if ( !calRes ) {
-    return true;
-  }
-
-  if ( calRes->resource( incidence ) != mResource ) {
-    return false;
-  }
-
-  if ( !mSubResource.isEmpty() ) {
-    if ( mResource->subresourceIdentifier( incidence ) != mSubResource ) {
-      return false;
-    }
-  }
-  return true;
+  else
+    return mCollectionId == incidence.storageCollectionId();
 }
 
 void KOAgendaView::setUpdateNeeded()
@@ -1673,19 +1709,19 @@ void KOAgendaView::setUpdateNeeded()
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceAdded( Incidence *incidence )
+void KOAgendaView::calendarIncidenceAdded( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceChanged( Incidence *incidence )
+void KOAgendaView::calendarIncidenceChanged( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceRemoved( Incidence *incidence )
+void KOAgendaView::calendarIncidenceRemoved( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;

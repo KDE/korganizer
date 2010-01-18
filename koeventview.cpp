@@ -25,9 +25,15 @@
 
 #include "koeventview.h"
 #include "kocore.h"
+#include "views/agendaview/koagendaview.h" // TODO AKONADI_PORT
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 #include "komessagebox.h"
+
+#include <Akonadi/Item>
+
+#include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/utils.h>
 
 #include <QApplication>
 #include <QKeyEvent>
@@ -37,14 +43,21 @@
 
 #include <QMenu>
 
+using namespace Akonadi;
+
 //---------------------------------------------------------------------------
 
-KOEventView::KOEventView( Calendar *cal, QWidget *parent )
-  : KOrg::BaseView( cal, parent )
+KOEventView::KOEventView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   mReturnPressed = false;
   mTypeAhead = false;
   mTypeAheadReceiver = 0;
+
+  //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(), which triggered finishTypeAhead.
+  //But the global focus widget in QApplication is changed later, thus subsequent keyevents still went to this view, triggering another editor, for each keypress
+  //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112 -Frank)
+  connect( QApplication::instance(), SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)) );
 }
 
 //---------------------------------------------------------------------------
@@ -57,30 +70,30 @@ KOEventView::~KOEventView()
 
 KOEventPopupMenu *KOEventView::eventPopup()
 {
-  KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
+  KOEventPopupMenu *eventPopup = new KOEventPopupMenu(this);
 
-  connect( eventPopup, SIGNAL(editIncidenceSignal(Incidence *)),
-           SIGNAL(editIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(showIncidenceSignal(Incidence *)),
-           SIGNAL(showIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Incidence *)),
-           SIGNAL(deleteIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(cutIncidenceSignal(Incidence *)),
-           SIGNAL(cutIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(copyIncidenceSignal(Incidence *)),
-           SIGNAL(copyIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)));
   connect( eventPopup, SIGNAL(pasteIncidenceSignal()),
            SIGNAL(pasteIncidenceSignal()));
-  connect( eventPopup, SIGNAL(toggleAlarmSignal(Incidence *)),
-           SIGNAL(toggleAlarmSignal(Incidence*)));
-  connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Incidence *)),
-           SIGNAL(toggleTodoCompletedSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(copyIncidenceToResourceSignal(Incidence *,const QString &)),
-           SIGNAL(copyIncidenceToResourceSignal(Incidence *,const QString &)));
-  connect( eventPopup, SIGNAL(moveIncidenceToResourceSignal(Incidence *,const QString &)),
-           SIGNAL(moveIncidenceToResourceSignal(Incidence *,const QString &)));
-  connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
-           SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,const QString &)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,const QString &)));
+  connect( eventPopup, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,const QString &)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,const QString &)));
+  connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
   return eventPopup;
 }
@@ -150,10 +163,10 @@ void KOEventView::showNewEventPopup()
 
 //---------------------------------------------------------------------------
 
-void KOEventView::defaultAction( Incidence *incidence )
+void KOEventView::defaultAction( const Item &aitem )
 {
   kDebug();
-
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence ) {
     return;
   }
@@ -161,16 +174,16 @@ void KOEventView::defaultAction( Incidence *incidence )
   kDebug() << "  type:" << incidence->type();
 
   if ( incidence->isReadOnly() ) {
-    emit showIncidenceSignal(incidence);
+    emit showIncidenceSignal(aitem);
   } else {
-    emit editIncidenceSignal(incidence);
+    emit editIncidenceSignal(aitem);
   }
 }
 
 //---------------------------------------------------------------------------
-int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date )
+int KOEventView::showMoveRecurDialog( const Item &aitem, const QDate &date )
 {
-
+  const Incidence::Ptr inc = Akonadi::incidence( aitem );
   int answer = KMessageBox::Ok;
   KGuiItem itemFuture( i18n( "Also &Future Items" ) );
 
@@ -214,7 +227,15 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
       mReturnPressed = true;
     } else if ( ke->type() == QEvent::KeyRelease ) {
       if ( mReturnPressed ) {
-        emit newEventSignal();
+        // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
+        if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
+          if ( view->collection() >= 0 )
+            emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
+          else
+            emit newEventSignal( collectionSelection()->selectedCollections() );
+        } else
+          emit newEventSignal( collectionSelection()->selectedCollections() );
+
         mReturnPressed = false;
         return true;
       } else {
@@ -259,12 +280,30 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
                        static_cast<ushort>( ke->count() ) ) );
       if ( !mTypeAhead ) {
         mTypeAhead = true;
-        emit newEventSignal();
+        // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
+        if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
+          if ( view->collection() >= 0 )
+            emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
+          else
+            emit newEventSignal( collectionSelection()->selectedCollections() );
+        } else
+          emit newEventSignal( collectionSelection()->selectedCollections() );
       }
       return true;
     }
   }
   return false;
+}
+
+void KOEventView::setTypeAheadReceiver( QObject *o )
+{
+  mTypeAheadReceiver = o;
+}
+
+void KOEventView::focusChanged( QWidget*, QWidget* now )
+{
+  if ( mTypeAhead && now && now == mTypeAheadReceiver )
+    finishTypeAhead();
 }
 
 void KOEventView::finishTypeAhead()
@@ -279,8 +318,12 @@ void KOEventView::finishTypeAhead()
   mTypeAhead = false;
 }
 
-bool KOEventView::usesCompletedTodoPixmap( Todo *todo, const QDate &date )
+bool KOEventView::usesCompletedTodoPixmap( const Item& aitem, const QDate &date )
 {
+  const Todo::Ptr todo = Akonadi::todo( aitem );
+  if ( !todo )
+    return false;
+
   if ( todo->isCompleted() ) {
     return true;
   } else if ( todo->recurs() ) {

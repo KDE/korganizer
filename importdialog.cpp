@@ -26,7 +26,6 @@
 #include "importdialog.h"
 
 #include "koprefs.h"
-#include "stdcalendar.h"
 
 #include <KLocale>
 #include <KSqueezedTextLabel>
@@ -40,7 +39,6 @@
 #include <QVBoxLayout>
 #include <QFrame>
 
-using namespace KCal;
 
 ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   : KDialog( parent ), mUrl( url )

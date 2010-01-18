@@ -27,7 +27,7 @@
 #define KOLISTVIEW_H
 
 #include "koeventview.h"
-#include "customlistviewitem.h"
+#include "incidenceeditor/customlistviewitem.h"
 
 #include <KCal/Incidence>
 
@@ -36,7 +36,11 @@
 
 using namespace KCal;
 
-typedef CustomListViewItem<Incidence *> KOListViewItem;
+namespace KOrg {
+    class AkonadiCalendar;
+}
+
+typedef CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;
 
@@ -68,12 +72,12 @@ class KOListView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit KOListView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOListView( QWidget *parent = 0 );
     ~KOListView();
 
     virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
     virtual DateList selectedDates();
 
     void showDates( bool show );
@@ -86,14 +90,14 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void clearSelection();
 
     void showDates();
     void hideDates();
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
     void defaultItemAction( Q3ListViewItem *item );
     void popupMenu( Q3ListViewItem *item, const QPoint &, int );
@@ -102,17 +106,20 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addIncidences( const Incidence::List &incidenceList, const QDate & );
-    void addIncidence( Incidence *incidence, const QDate &date );
-    KOListViewItem *getItemForIncidence( Incidence *incidence );
+    void addIncidences( const Akonadi::Item::List &incidenceList, const QDate & );
+    void addIncidence( const Akonadi::Item &, const QDate &date );
+
+  private:
+    KOListViewItem *getItemForIncidence( const Akonadi::Item & );
+    KCal::Incidence::Ptr incidenceForId( const Akonadi::Item::Id &id ) const;
 
   private:
     class ListItemVisitor;
     K3ListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
-    QList<QString> mUidList;
-    QHash<QString, QDate> mDateList;
+    QHash<Akonadi::Item::Id,Akonadi::Item> mItems;
+    QHash<Akonadi::Item::Id, QDate> mDateList;
     QDate mStartDate;
     QDate mEndDate;
     DateList mSelectedDates;

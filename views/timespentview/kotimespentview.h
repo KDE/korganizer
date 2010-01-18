@@ -29,6 +29,8 @@
 
 #include <korganizer/baseview.h>
 
+#include <Akonadi/Item>
+
 class QDate;
 class TimeSpentWidget;
 
@@ -39,13 +41,13 @@ class KOTimeSpentView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOTimeSpentView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOTimeSpentView( QWidget *parent = 0 );
     ~KOTimeSpentView();
 
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences()
+    virtual Akonadi::Item::List selectedIncidences()
     {
-      return Incidence::List();
+      return Akonadi::Item::List();
     }
     DateList selectedDates()
     {
@@ -55,9 +57,9 @@ class KOTimeSpentView : public KOrg::BaseView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
   private:
     TimeSpentWidget *mView;

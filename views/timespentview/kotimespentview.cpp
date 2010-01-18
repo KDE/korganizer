@@ -26,7 +26,9 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <kcal/calendar.h>
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/utils.h>
+
 #include <kcal/event.h>
 
 #include <QDate>
@@ -34,6 +36,8 @@
 #include <QBoxLayout>
 #include <QPainter>
 #include <QPainterPath>
+
+using namespace Akonadi;
 
 class TimeSpentWidget : public QWidget
 {
@@ -80,8 +84,9 @@ class TimeSpentWidget : public QWidget
 
       int total = 0;
 
-      foreach ( Event *e, mEventList ) {
-
+      foreach ( const Item &item, mEventList ) {
+        const Event::ConstPtr e = Akonadi::event( item );
+        Q_ASSERT( e );
         KDateTime selectedStart( mTimeSpentView->mStartDate,
                                  QTime( 0, 0 ),
                                  e->dtStart().timeSpec() );
@@ -179,12 +184,12 @@ class TimeSpentWidget : public QWidget
       }
     }
 
-    Event::List mEventList;
+    Item::List mEventList;
     KOTimeSpentView *mTimeSpentView;
 };
 
-KOTimeSpentView::KOTimeSpentView( Calendar *calendar, QWidget *parent )
-  : KOrg::BaseView( calendar, parent )
+KOTimeSpentView::KOTimeSpentView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   mView = new TimeSpentWidget( this );
 
@@ -208,13 +213,13 @@ void KOTimeSpentView::showDates( const QDate &start, const QDate &end )
   updateView();
 }
 
-void KOTimeSpentView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
+void KOTimeSpentView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
 }
 
-void KOTimeSpentView::changeIncidenceDisplay( Incidence *incidence, int action )
+void KOTimeSpentView::changeIncidenceDisplay( const Item &incidence, int action )
 {
   Q_UNUSED( incidence );
 

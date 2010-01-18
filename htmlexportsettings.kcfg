@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <include>korganizer_export.h</include>
+  <kcfgfile name="korganizer_htmlexportrc">
+    <parameter name="application" />
+  </kcfgfile>
+
+  <group name="$(application)-General">
+    <entry type="String" key="Name">
+      <label>Full name of the calendar owner</label>
+      <whatsthis>WhatsThis text for FullName setting</whatsthis>
+    </entry>
+    <entry type="String" key="EMail">
+      <label>Email of the calendar owner</label>
+      <whatsthis>WhatsThis text for Email setting</whatsthis>
+    </entry>
+    <entry type="String" key="Credit Name">
+      <label>Creator application</label>
+      <whatsthis>Creator application of the calendar</whatsthis>
+    </entry>
+    <entry type="String" key="Credit URL">
+      <label>Creator URL</label>
+      <whatsthis>URL of the creator application of the calendar.</whatsthis>
+      <default></default>
+    </entry>
+    <entry type="String" key="Page Title">
+      <label>Page Title</label>
+      <default code="true">i18n("Calendar")</default>
+    </entry>
+
+    <entry type="DateTime" key="Date Start">
+      <label>Date start</label>
+      <whatsthis>First day of the range that shall be exported to HTML.</whatsthis>
+    </entry>
+    <entry type="DateTime" key="Date End">
+      <label>Date end</label>
+      <whatsthis>Last day of the range that shall be exported to HTML.</whatsthis>
+    </entry>
+
+    <entry type="Path" key="Output File">
+      <label>Output filename</label>
+      <whatsthis>The output file name for the HTML export.</whatsthis>
+      <default>$HOME/calendar.html</default>
+    </entry>
+    <entry type="String" key="Style Sheet">
+      <label>Style sheet</label>
+      <whatsthis>CSS style sheet to be used by the final HTML page. This string contains the actual contents of the CSS, not a path to the style sheet.</whatsthis>
+    </entry>
+
+    <entry type="Bool" key="Exclude Private">
+      <label>Exclude private incidences from the export</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Exclude Confidential">
+      <label>Exclude confidential incidences from the export</label>
+      <default>true</default>
+    </entry>
+
+  </group>
+
+  <group name="$(application)-Events">
+    <entry type="Bool" key="Event View">
+      <label>Export events as list</label>
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="Month View">
+      <label>Export in month view</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Week View">
+      <label>Export in week view</label>
+      <default>false</default>
+    </entry>
+    <entry type="String" name="EventTitle" key="Title">
+      <label>Title of the calendar</label>
+      <default code="true">i18n("Calendar")</default>
+    </entry>
+
+    <entry type="Bool" name="EventLocation" key="Export Location">
+      <label>Export location of the events</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" name="EventCategories" key="Export Categories">
+      <label>Export categories of the events</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" name="EventAttendees" key="Export Attendees">
+      <label>Export attendees of the events</label>
+      <default>false</default>
+    </entry>
+
+  </group>
+
+  <group name="$(application)-Todos">
+    <entry type="Bool" key="Todo View">
+      <label>Export to-do list</label>
+      <default>true</default>
+    </entry>
+    <entry type="String" key="TodoList Title">
+      <label>Title of the to-do list</label>
+      <default code="true">i18n("To-do List")</default>
+    </entry>
+
+    <entry type="Bool" name="TaskDueDate" key="Export Due Date">
+      <label>Export due dates of the to-dos</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" name="TaskLocation" key="Export Location">
+      <label>Export location of the to-dos</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" name="TaskCategories" key="Export Categories">
+      <label>Export categories of the to-dos</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" name="TaskAttendees" key="Export Attendees">
+      <label>Export attendees of the to-dos</label>
+      <default>false</default>
+    </entry>
+
+  </group>
+
+  <group name="$(application)-Journals">
+    <entry type="Bool" key="Journal View">
+      <label>Export journals</label>
+      <default>false</default>
+    </entry>
+    <entry type="String" key="Journal Title">
+      <label>Title of the journal list</label>
+      <default code="true">i18n("Journals")</default>
+    </entry>
+  </group>
+
+  <group name="$(application)-FreeBusy">
+    <entry type="Bool" key="FreeBusy View">
+      <label>Export journals</label>
+      <default>false</default>
+    </entry>
+    <entry type="String" name="FreeBusyTitle" key="Free/Busy Title">
+      <label>Title of the free/busy list</label>
+      <default code="true">i18n("Busy times")</default>
+    </entry>
+  </group>
+
+</kcfg>

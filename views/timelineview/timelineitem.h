@@ -21,6 +21,8 @@
 
 #include <kdgantt1/KDGanttViewTaskItem.h>
 
+#include <Akonadi/Item>
+
 #include <KDateTime>
 
 #include <QMap>
@@ -30,39 +32,41 @@ class KDGanttView;
 class KDCanvasPolygon;
 
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
 using namespace KCal;
 
-namespace KOrg {
+namespace Akonadi {
+  class Calendar;
+}
 
+namespace KOrg {
 class TimelineSubItem;
 
 class TimelineItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineItem( const QString &label, KCal::Calendar *calendar, KDGanttView *parent );
+    TimelineItem( const QString &label, Akonadi::Calendar *calendar, KDGanttView *parent );
 
-    void insertIncidence( KCal::Incidence *incidence,
+    void insertIncidence( const Akonadi::Item &incidence,
                           const KDateTime &start = KDateTime(),
                           const KDateTime &end = KDateTime() );
-    void removeIncidence( KCal::Incidence *incidence );
+    void removeIncidence( const Akonadi::Item &incidence );
 
-    void moveItems( KCal::Incidence *incidence, int delta, int duration );
+    void moveItems( const Akonadi::Item &incidence, int delta, int duration );
 
   private:
-    KCal::Calendar *mCalendar;
-    QMap<KCal::Incidence*, QList<TimelineSubItem*> > mItemMap;
+    Akonadi::Calendar *mCalendar;
+    QMap<Akonadi::Item::Id, QList<TimelineSubItem*> > mItemMap;
 };
 
 class TimelineSubItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineSubItem( KCal::Calendar *calendar, KCal::Incidence *incidence, TimelineItem *parent );
+    TimelineSubItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence, TimelineItem *parent );
     ~TimelineSubItem();
 
-    KCal::Incidence *incidence() const { return mIncidence; }
+    Akonadi::Item  incidence() const { return mIncidence; }
 
     KDateTime originalStart() const { return mStart; }
     void setOriginalStart( const KDateTime &dt ) { mStart = dt; }
@@ -71,7 +75,7 @@ class TimelineSubItem : public KDGanttViewTaskItem
     void showItem( bool show = true, int coordY = 0 );
 
   private:
-    KCal::Incidence *mIncidence;
+    Akonadi::Item mIncidence;
     KDateTime mStart;
     KDCanvasPolygon *mLeft, *mRight;
     int mMarkerWidth;

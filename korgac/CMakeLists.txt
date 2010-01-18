@@ -28,7 +28,19 @@ kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
-target_link_libraries(korgac ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} korganizer_eventviewer korganizer_core)
+target_link_libraries(korgac 
+	${KDE4_KDEUI_LIBS} 
+	${KDE4_PHONON_LIBS} 
+	${KDEPIMLIBS_KCAL_LIBS} 
+	${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
+	${KDEPIMLIBS_AKONADI_LIBS}
+	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
+	akonadi-kcal_next
+       	korganizerprivate 
+	korganizer_eventviewer
+	korganizer_core
+  kdepim
+	)
 
 install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
 

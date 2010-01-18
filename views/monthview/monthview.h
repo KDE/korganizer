@@ -27,6 +27,10 @@
 
 #include "koeventview.h"
 
+#include <Akonadi/Item>
+
+#include <QtCore/QTimer>
+
 class KOEventPopupMenu;
 
 class QWheelEvent;
@@ -44,11 +48,13 @@ class MonthView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit MonthView( Calendar *calendar, QWidget *parent = 0 );
+    explicit MonthView( QWidget *parent = 0 );
     ~MonthView();
 
     virtual int currentDateCount();
-    Incidence::List selectedIncidences();
+    int currentMonth() const;
+
+    Akonadi::Item::List selectedIncidences();
 
     /** Returns dates of the currently selected events */
     virtual DateList selectedDates();
@@ -58,9 +64,6 @@ class MonthView : public KOEventView
     virtual QDateTime selectionEnd();
 
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-
-    QDate startDate() const { return mStartDate; }
-    QDate endDate() const { return mEndDate; }
 
     /**
      * Returns the average date in the view
@@ -72,23 +75,18 @@ class MonthView : public KOEventView
   public slots:
     virtual void updateView();
 
-    /**
-     * Tells the month view which month should be displayed.
-     * "start" is used to get the month
-     *
-     * "end" is never used.
-     */
-    virtual void showDates( const QDate &start, const QDate &end );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
-    void changeIncidenceDisplay( Incidence *, int );
+    /* reimp */ void updateConfig();
 
   protected slots:
     void moveBackMonth();
     void moveBackWeek();
     void moveFwdWeek();
     void moveFwdMonth();
+    /* reimp */ void calendarReset();
 
   protected:
     int maxDatesHint();
@@ -97,22 +95,34 @@ class MonthView : public KOEventView
     virtual void keyPressEvent( QKeyEvent *event );
     virtual void keyReleaseEvent( QKeyEvent *event );
 
+    /* reimp */ void incidencesAdded( const Akonadi::Item::List& incidences );
+    /* reimp */ void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
+    /* reimp */ void incidencesChanged( const Akonadi::Item::List& incidences );
+    /* reimp */ QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end ) const;
+
+    /**
+     * @deprecated
+     */
+    void showDates( const QDate &start, const QDate &end );
+
   private slots:
     // Compute and update the whole view
     void reloadIncidences();
 
   private:
-    void addIncidence( Incidence *incidence );
+    void addIncidence( const Akonadi::Item &incidence );
     void moveStartDate( int weeks, int months );
-    void setStartDate( const QDate &start );
+    void triggerDelayedReload() {
+      if ( !mReloadTimer.isActive() )
+        mReloadTimer.start( 50 );
+    }
 
     MonthGraphicsView *mView;
     MonthScene *mScene;
+    Akonadi::Item::Id mSelectedItemId;
+    QDate mSelectedItemDate;
 
-    QDate mStartDate;
-    QDate mEndDate;
-
-    int mCurrentMonth;
+    QTimer mReloadTimer;
 
     KOEventPopupMenu *mViewPopup;
 

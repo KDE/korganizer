@@ -25,9 +25,12 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <KCal/CalendarResources>
+#include <Akonadi/Collection>
+#include <akonadi/item.h>
 
 #include <QDate>
+
+using namespace Akonadi;
 
 QColor KOHelper::getTextColor( const QColor &c )
 {
@@ -35,37 +38,21 @@ QColor KOHelper::getTextColor( const QColor &c )
   return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
 }
 
-QColor KOHelper::resourceColor( KCal::Calendar *calendar,
-                                KCal::Incidence *incidence )
-{
-  QColor resourceColor = QColor(); //Default invalid color
-  //FIXME: dynamic_cast are dirty, Better We implements interface to get
-  // the color from the calendar
-  KCal::CalendarResources *calendarResource =
-    dynamic_cast<KCal::CalendarResources*>( calendar );
-
-  if ( calendarResource ) {
-    KCal::ResourceCalendar *resourceCalendar =
-      calendarResource->resource( incidence );
-
-    if ( resourceCalendar ) {
-      QString identifier = resourceCalendar->identifier();
-      resourceColor = KOPrefs::instance()->resourceColor( identifier );
-
-      if ( !resourceCalendar->subresources().isEmpty() ) {
-        identifier = resourceCalendar->subresourceIdentifier( incidence );
-        if ( identifier.isEmpty() ) {
-          identifier = resourceCalendar->identifier();
-        }
-        QColor subrescolor( KOPrefs::instance()->resourceColor( identifier ) );
-        if ( subrescolor.isValid() ) {
-          resourceColor = subrescolor;
-        }
-      }
-    }
-  }
-  return resourceColor;
+QColor KOHelper::resourceColor( const Collection &coll ) {
+  if ( !coll.isValid() )
+    return QColor();
+  const QString id = QString::number( coll.id() );
+  return KOPrefs::instance()->resourceColor( id );
 }
+
+QColor KOHelper::resourceColor( const Item &item ) {
+  if ( !item.isValid() )
+    return QColor();
+  const QString id = QString::number( item.storageCollectionId() );
+  return KOPrefs::instance()->resourceColor( id );
+}
+
+
 
 qint64 KOHelper::yearDiff( const QDate &start, const QDate &end )
 {

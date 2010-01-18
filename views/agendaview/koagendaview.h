@@ -26,11 +26,11 @@
 #define KOAGENDAVIEW_H
 
 #include "agendaview.h"
-#ifndef KORG_NOPRINTER
 #include "calprinter.h"
-#endif
+#include <akonadi/kcal/calendar.h>
 
-#include <KCal/Calendar>
+#include <Akonadi/Collection>
+#include <Akonadi/Item>
 
 #include <QFrame>
 #include <QPixmap>
@@ -56,6 +56,10 @@ namespace KCal {
   class ResourceCalendar;
 }
 using namespace KCal;
+
+namespace Akonadi {
+  class CollectionSelection;
+}
 
 namespace KOrg {
 #ifndef KORG_NODECOS
@@ -96,11 +100,11 @@ class EventIndicator : public QFrame
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObserver
+class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
-    explicit KOAgendaView( Calendar *cal, QWidget *parent = 0, bool isSideBySide = false );
+    explicit KOAgendaView( QWidget *parent = 0, bool isSideBySide = false );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
@@ -110,7 +114,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     virtual int currentDateCount();
 
     /** returns the currently selected events */
-    virtual Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
 
     /** returns the currently selected incidence's dates */
     virtual DateList selectedDates();
@@ -121,9 +125,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** Remove all events from view */
     void clearView();
 
-#ifndef KORG_NOPRINTER
     CalPrinter::PrintType printType();
-#endif
 
     /** start-datetime of selection */
     virtual QDateTime selectionStart() { return mTimeSpanBegin; }
@@ -138,30 +140,35 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** returns if only a single cell is selected, or a range of cells */
     bool selectedIsSingleCell();
 
-    /** Show only incidences from the given resource. */
-    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
+    /* reimp from BaseView */
+    virtual void setCalendar( Akonadi::Calendar *cal );
+     
+    /** Show only incidences from the given collection selection. */
+//    void setCollectionSelection( CollectionSelection* selection );
+    void setCollection( Akonadi::Collection::Id id );
+    Akonadi::Collection::Id collection() const;
 
     KOAgenda *agenda() const { return mAgenda; }
     QSplitter *splitter() const { return mSplitterAgenda; }
 
     /* reimplemented from KCal::Calendar::CalendarObserver */
-    void calendarIncidenceAdded( Incidence *incidence );
-    void calendarIncidenceChanged( Incidence *incidence );
-    void calendarIncidenceRemoved( Incidence *incidence );
+    void calendarIncidenceAdded( const Akonadi::Item &incidence );
+    void calendarIncidenceChanged( const Akonadi::Item &incidence );
+    void calendarIncidenceRemoved( const Akonadi::Item &incidence );
 
   public slots:
     virtual void updateView();
     virtual void updateConfig();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void insertIncidence( Incidence *incidence, const QDate &curDate );
-    void changeIncidenceDisplayAdded( Incidence *incidence );
-    void changeIncidenceDisplay( Incidence *incidence, int mode );
+    void insertIncidence( const Akonadi::Item &incidence, const QDate &curDate );
+    void changeIncidenceDisplayAdded( const Akonadi::Item &incidence );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
 
     void clearSelection();
 
-    void startDrag( Incidence * );
+    void startDrag( const Akonadi::Item & );
 
     void readSettings();
     void readSettings( KConfig * );
@@ -171,7 +178,8 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
 
     /** reschedule the todo  to the given x- and y- coordinates.
         Third parameter determines all-day (no time specified) */
-    void slotTodoDropped( Todo *, const QPoint &, bool );
+    void slotTodosDropped( const QList<KCal::Todo::Ptr> & todos, const QPoint &, bool );
+    void slotTodosDropped( const QList<KUrl>& todos, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( IncidenceChangerBase *changer );
@@ -216,7 +224,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     */
     void setHolidayMasks();
 
-    void removeIncidence( Incidence * );
+    void removeIncidence( const Akonadi::Item & );
     /**
       Updates the event indicators after a certain incidence was modified or
       removed.
@@ -237,12 +245,14 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** Updates data for selected timespan for all day event*/
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
+    void handleNewEventRequest();
+
   private:
 
-    bool filterByResource( Incidence *incidence );
+    bool filterByCollectionSelection( const Akonadi::Item &incidence );
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
-    void displayIncidence( Incidence *incidence );
+    void displayIncidence( const Akonadi::Item &incidence );
 #ifndef KORG_NODECOS
     typedef QList<KOrg::CalendarDecoration::Decoration *> DecorationList;
     bool loadDecorations( const QStringList &decorations, DecorationList &decoList );
@@ -290,10 +300,10 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     bool mTimeSpanInAllDay;
     bool mAllowAgendaUpdate;
 
-    Incidence *mUpdateItem;
+    Akonadi::Item mUpdateItem;
 
-    KCal::ResourceCalendar *mResource;
-    QString mSubResource;
+    //CollectionSelection *mCollectionSelection;
+    Akonadi::Collection::Id mCollectionId;
 
     bool mIsSideBySide;
     bool mPendingChanges;

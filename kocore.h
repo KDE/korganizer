@@ -29,9 +29,7 @@
 
 #include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
-#ifndef KORG_NOPRINTER
 #include <korganizer/printplugin.h>
-#endif
 #include <kservice.h>
 
 namespace KPIMIdentities { class IdentityManager; }
@@ -46,9 +44,7 @@ class KORGANIZER_CORE_EXPORT KOCore
     KService::List availablePlugins();
     KService::List availableCalendarDecorations();
     KService::List availableParts();
-#ifndef KORG_NOPRINTER
     KService::List availablePrintPlugins();
-#endif
 
     KOrg::Plugin *loadPlugin( KService::Ptr service );
     KOrg::Plugin *loadPlugin( const QString & );
@@ -59,11 +55,9 @@ class KORGANIZER_CORE_EXPORT KOCore
     KOrg::Part *loadPart( KService::Ptr, KOrg::MainWindow *parent );
     KOrg::Part *loadPart( const QString &, KOrg::MainWindow *parent );
 
-#ifndef KORG_NOPRINTER
     KOrg::PrintPlugin *loadPrintPlugin( KService::Ptr service );
     KOrg::PrintPlugin *loadPrintPlugin( const QString & );
     KOrg::PrintPlugin::List loadPrintPlugins();
-#endif
     KOrg::CalendarDecoration::Decoration::List loadCalendarDecorations();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 

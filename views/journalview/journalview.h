@@ -37,19 +37,20 @@
 #include <QGridLayout>
 #include <QLabel>
 
+#include <Akonadi/Item>
+
 class QLabel;
 class QGridLayout;
 class KTextBrowser;
 class QPushButton;
 
+namespace Akonadi {
+  class Calendar;
+}
 namespace KOrg {
   class IncidenceChangerBase;
 }
 using namespace KOrg;
-
-namespace KCal {
-  class Calendar;
-}
 using namespace KCal;
 
 class JournalView : public QWidget
@@ -58,17 +59,17 @@ class JournalView : public QWidget
   public:
     typedef ListBase<JournalView> List;
 
-    JournalView( Journal *j, QWidget *parent );
+    JournalView( const Akonadi::Item &journal, QWidget *parent );
     virtual ~JournalView();
 
-    void setJournal( Journal * );
-    Journal *journal() const { return mJournal; }
+    void setJournal( const Akonadi::Item &journal );
+    Akonadi::Item journal() const { return mJournal; }
 
-    void setCalendar( Calendar *cal );
+    void setCalendar( Akonadi::Calendar *cal );
     QDate date() const { return mDate; }
 
     void clear();
-    void readJournal( Journal *j );
+    void readJournal( const Akonadi::Item &journal );
 
     bool isReadOnly() const { return mReadOnly; }
     void setReadOnly( bool readonly );
@@ -85,16 +86,16 @@ class JournalView : public QWidget
 
   signals:
     void configChanged();
-    void deleteIncidence( Incidence * );
-    void editIncidence( Incidence * );
+    void deleteIncidence( const Akonadi::Item & );
+    void editIncidence( const Akonadi::Item & );
 
   protected:
     void clearFields();
     bool eventFilter( QObject *o, QEvent *e );
 
   private:
-    Journal *mJournal;
-    Calendar *mCalendar;
+    Akonadi::Item mJournal;
+    Akonadi::Calendar *mCalendar;
     QDate mDate;
     bool mReadOnly;
 
@@ -116,11 +117,11 @@ class JournalDateView : public KVBox
   public:
     typedef ListBase<JournalDateView> List;
 
-    JournalDateView( Calendar *, QWidget *parent );
+    JournalDateView( Akonadi::Calendar *, QWidget *parent );
     virtual ~JournalDateView();
 
-    void addJournal( Journal * );
-    Journal::List journals() const;
+    void addJournal( const Akonadi::Item &journal );
+    Akonadi::Item::List journals() const;
 
     void setDate( const QDate &date );
     QDate date() const { return mDate; }
@@ -131,20 +132,20 @@ class JournalDateView : public KVBox
     void setIncidenceChangerSignal( IncidenceChangerBase *changer );
     void setDateSignal( const QDate & );
     void flushEntries();
-    void editIncidence( Incidence * );
-    void deleteIncidence( Incidence * );
+    void editIncidence( const Akonadi::Item &journal );
+    void deleteIncidence( const Akonadi::Item &journal );
     void newJournal( const QDate & );
 
   public slots:
     void emitNewJournal();
     void setIncidenceChanger( IncidenceChangerBase *changer );
-    void journalEdited( Journal * );
-    void journalDeleted( Journal * );
+    void journalEdited( const Akonadi::Item & );
+    void journalDeleted( const Akonadi::Item & );
 
   private:
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     QDate mDate;
-    QMap<Journal *,JournalView *> mEntries;
+    QMap<Akonadi::Item::Id,JournalView *> mEntries;
 
     IncidenceChangerBase *mChanger;
 };

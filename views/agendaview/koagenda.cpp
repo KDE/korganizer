@@ -33,11 +33,13 @@
 #include "kohelper.h"
 #include "korganizer/baseview.h"
 
-#include <KCal/Calendar>
 #include <KCal/DndFactory>
 #include <KCal/ICalDrag>
 #include <KCal/Todo>
 #include <KCal/VCalDrag>
+
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/utils.h>
 
 #include <KDebug>
 #include <KGlobal>
@@ -61,6 +63,8 @@
 #include <QMouseEvent>
 
 #include <cmath>
+
+using namespace Akonadi;
 
 ///////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains( KOAgenda *agenda )
@@ -223,9 +227,9 @@ KOAgenda::~KOAgenda()
   delete mMarcusBains;
 }
 
-Incidence *KOAgenda::selectedIncidence() const
+Akonadi::Item KOAgenda::selectedIncidence() const
 {
-  return ( mSelectedItem ? mSelectedItem->incidence() : 0 );
+  return ( mSelectedItem ? mSelectedItem->incidence() : Item() );
 }
 
 QDate KOAgenda::selectedIncidenceDate() const
@@ -233,9 +237,9 @@ QDate KOAgenda::selectedIncidenceDate() const
   return ( mSelectedItem ? mSelectedItem->itemDate() : QDate() );
 }
 
-const QString KOAgenda::lastSelectedUid() const
+Item::Id KOAgenda::lastSelectedItemId() const
 {
-  return mSelectedUid;
+  return mSelectedId;
 }
 
 void KOAgenda::init()
@@ -274,7 +278,7 @@ void KOAgenda::init()
   mItemMoved = false;
 
   mSelectedItem = 0;
-  mSelectedUid.clear();
+  mSelectedId = -1;
 
   setAcceptDrops( true );
   installEventFilter( this );
@@ -406,7 +410,6 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 
 bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 {
-#ifndef KORG_NODND
   // FIXME: Implement dropping of events!
   QPoint viewportPos;
   if ( object != viewport() && object != this ) {
@@ -419,48 +422,44 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
   switch ( de->type() ) {
   case QEvent::DragEnter:
   case QEvent::DragMove:
-    if ( ICalDrag::canDecode( md ) || VCalDrag::canDecode( md ) ) {
-
-      DndFactory factory( mCalendar );
-      Todo *todo = factory.createDropTodo( de );
-      if ( todo ) {
-        de->accept();
-        delete todo;
-      } else {
-        de->ignore();
-      }
-      return true;
-    } else {
+    if ( !Akonadi::canDecode( md ) )
       return false;
-    }
+
+    if ( Akonadi::mimeDataHasTodo( md ) )
+      de->accept();
+    else
+      de->ignore();
+    return true;
     break;
   case QEvent::DragLeave:
     return false;
     break;
   case QEvent::Drop:
   {
-    if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
+    if ( !Akonadi::canDecode( md ) )
       return false;
-    }
 
-    DndFactory factory( mCalendar );
-    Todo *todo = factory.createDropTodo( de );
+    const QList<KUrl> todoUrls = Akonadi::todoItemUrls( md );
+    const QList<Todo::Ptr> todos = Akonadi::todos( md, mCalendar->timeSpec() );
 
-    if ( todo ) {
-      de->setDropAction( Qt::MoveAction );
-      QPoint pos;
-      // FIXME: This is a bad hack, as the viewportToContents seems to be off by
-      // 2000 (which is the left upper corner of the viewport). It works correctly
-      // for agendaItems.
-      if ( object == this ) {
-        pos = viewportPos + QPoint( contentsX(), contentsY() );
-      } else {
-        pos = viewportToContents( viewportPos );
-      }
-      QPoint gpos = contentsToGrid( pos );
-      emit droppedToDo( todo, gpos, mAllDayMode );
-      return true;
+    Q_ASSERT( !todoUrls.isEmpty() || !todos.isEmpty() );
+
+    de->setDropAction( Qt::MoveAction );
+    QPoint pos;
+    // FIXME: This is a bad hack, as the viewportToContents seems to be off by
+    // 2000 (which is the left upper corner of the viewport). It works correctly
+    // for agendaItems.
+    if ( object == this ) {
+      pos = viewportPos + QPoint( contentsX(), contentsY() );
+    } else {
+      pos = viewportToContents( viewportPos );
     }
+    QPoint gpos = contentsToGrid( pos );
+    if ( !todoUrls.isEmpty() )
+      emit droppedToDos( todoUrls, gpos, mAllDayMode );
+    else
+      emit droppedToDos( todos, gpos, mAllDayMode );
+    return true;
   }
   break;
 
@@ -468,8 +467,6 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
   default:
     break;
   }
-#endif
-
   return false;
 }
 
@@ -528,14 +525,14 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
         mClickedItem = dynamic_cast<KOAgendaItem *>( object );
         if ( mClickedItem ) {
           selectItem( mClickedItem );
-          emit showIncidencePopupSignal( mCalendar,
-                                         mClickedItem->incidence(),
+          emit showIncidencePopupSignal( mClickedItem->incidence(),
                                          mClickedItem->itemDate() );
         }
       } else {
         KOAgendaItem *item = dynamic_cast<KOAgendaItem *>(object);
         if (item) {
-          Incidence *incidence = item->incidence();
+          const Item aitem = item->incidence();
+          Incidence::Ptr incidence = Akonadi::incidence( aitem );
           if ( incidence->isReadOnly() ) {
             mActionItem = 0;
           } else {
@@ -589,7 +586,9 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
     QPoint indicatorPos = gridToContents( contentsToGrid( viewportToContents( viewportPos ) ) );
     if ( object != viewport() ) {
       KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>( object );
-      if ( moveItem && moveItem->incidence() && !moveItem->incidence()->isReadOnly() ) {
+      const Item aitem = moveItem ? moveItem->incidence() : Item();
+      Incidence::Ptr incidence = Akonadi::incidence( aitem );
+      if ( incidence && !incidence->isReadOnly() ) {
         if ( !mActionItem ) {
           setNoActionCursor( moveItem, viewportPos );
         } else {
@@ -792,7 +791,7 @@ void KOAgenda::startItemAction( const QPoint &viewportPos )
   mStartCell = contentsToGrid( pos );
   mEndCell = mStartCell;
 
-  bool noResize = ( mActionItem->incidence()->type() == "Todo" );
+  bool noResize = Akonadi::hasTodo( mActionItem->incidence() );
 
   mActionType = MOVE;
   if ( !noResize ) {
@@ -1001,21 +1000,22 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
 
 void KOAgenda::endItemAction()
 {
-// kDebug();
+  //PENDING(AKONADI_PORT) review all this cloning and changer calls
+  // kDebug();
   mActionType = NOP;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
   setCursor( Qt::ArrowCursor );
   bool multiModify = false;
   // FIXME: do the cloning here...
-  Incidence *inc = mActionItem->incidence();
-
+  Akonadi::Item inc = mActionItem->incidence();
+  const Incidence::Ptr incidence = Akonadi::incidence( inc );
   mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
                                 mStartCell.y() == mEndCell.y() );
 
   if ( mItemMoved ) {
-    bool modify = true;
-    if ( mActionItem->incidence()->recurs() ) {
+    bool modify = false;
+    if ( incidence->recurs() ) {
       int res = mEventView->showMoveRecurDialog( mActionItem->incidence(),
                                                  mActionItem->itemDate() );
       switch ( res ) {
@@ -1034,18 +1034,20 @@ void KOAgenda::endItemAction()
         modify = true;
         multiModify = true;
         emit startMultiModify( i18n( "Dissociate event from recurrence" ) );
-        Incidence *oldInc = mActionItem->incidence();
-        Incidence *oldIncSaved = mActionItem->incidence()->clone();
-        Incidence *newInc = mCalendar->dissociateOccurrence(
-          oldInc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() );
+        Incidence::Ptr oldIncSaved( incidence->clone() );
+        Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
+          inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
           // don't recreate items, they already have the correct position
           emit enableAgendaUpdate( false );
-          mChanger->changeIncidence( oldIncSaved, oldInc,
+          mChanger->changeIncidence( oldIncSaved, inc,
                                      KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
-          mActionItem->setIncidence( newInc );
-
+#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
+          Akonadi::Item item;
+          item.setPayload( newInc );
+          mActionItem->setIncidence( item );
           mActionItem->dissociateFromMultiItem();
+#endif
           mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
         } else {
@@ -1055,7 +1057,6 @@ void KOAgenda::endItemAction()
                   "No change will be done." ),
             i18n( "Error Occurred" ) );
         }
-        delete oldIncSaved;
         break;
       }
       case KMessageBox::No/*Future*/:
@@ -1069,17 +1070,20 @@ void KOAgenda::endItemAction()
         modify = true;
         multiModify = true;
         emit startMultiModify( i18n( "Split future recurrences" ) );
-        Incidence *oldInc = mActionItem->incidence();
-        Incidence *oldIncSaved = mActionItem->incidence()->clone();
-        Incidence *newInc = mCalendar->dissociateOccurrence(
-          oldInc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false );
+        Incidence::Ptr oldIncSaved( incidence->clone() );
+        Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
+          inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
           emit enableAgendaUpdate( false );
+#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
           mActionItem->dissociateFromMultiItem();
-          mActionItem->setIncidence( newInc );
+          Item item;
+          item.setPayload( newInc );
+          mActionItem->setIncidence( item );
+#endif
           mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
-          mChanger->changeIncidence( oldIncSaved, oldInc,
+          mChanger->changeIncidence( oldIncSaved, inc,
                                      KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
         } else {
           KMessageBox::sorry(
@@ -1088,13 +1092,12 @@ void KOAgenda::endItemAction()
                   "No change will be done." ),
             i18n( "Error Occurred" ) );
         }
-        delete oldIncSaved;
         break;
       }
       default:
         modify = false;
         mActionItem->resetMove();
-        placeSubCells( mActionItem );
+        placeSubCells( mActionItem ); //PENDING(AKONADI_PORT) should this be done after the new item was asynchronously added?
       }
     }
 
@@ -1119,9 +1122,15 @@ void KOAgenda::endItemAction()
 
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
+      mChanger->endChange( inc );
       emit itemModified( modif );
+    } else {
+      // the item was moved, but not further modified, since it's not recurring
+      // make sure the view updates anyhow, with the right item
+      mChanger->endChange( inc );
+      emit itemModified( mActionItem );
     }
-    // FIXME: If the change failed, we need to update the view!
+  } else {
     mChanger->endChange( inc );
   }
 
@@ -1167,7 +1176,9 @@ void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint &viewport
 //  kDebug() << "clipper:" << point.x() << "," << point.y();
 
   QPoint pos = viewportToContents( viewportPos );
-  bool noResize = ( moveItem && moveItem->incidence() && moveItem->incidence()->type() == "Todo" );
+  const Item item = moveItem ? moveItem->incidence() : Item();
+
+  const bool noResize = Akonadi::hasTodo( item );
 
   KOAgenda::MouseActionType resizeType = MOVE;
   if ( !noResize ) {
@@ -1530,7 +1541,7 @@ void KOAgenda::setStartTime( const QTime &startHour )
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd,
+KOAgendaItem *KOAgenda::insertItem( const Item &incidence, const QDate &qd,
                                     int X, int YTop, int YBottom )
 {
   if ( mAllDayMode ) {
@@ -1557,7 +1568,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd,
                       int( ( YBottom + 1 ) * mGridSpacingY ) );
   agendaItem->setCellXY( X, YTop, YBottom );
   agendaItem->setCellXRight( X );
-  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, incidence ) );
+  agendaItem->setResourceColor( KOHelper::resourceColor( incidence ) );
   agendaItem->installEventFilter( this );
 
   addChild( agendaItem, int( X * mGridSpacingX ), int( YTop * mGridSpacingY ) );
@@ -1575,7 +1586,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd,
 /*
   Insert all-day KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
+KOAgendaItem *KOAgenda::insertAllDayItem( const Item &incidence, const QDate &qd,
                                           int XBegin, int XEnd )
 {
   if ( !mAllDayMode ) {
@@ -1585,7 +1596,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
 
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, event, qd, viewport() );
+  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, incidence, qd, viewport() );
   connect( agendaItem, SIGNAL(removeAgendaItem(KOAgendaItem *)),
            SLOT(removeAgendaItem(KOAgendaItem *)) );
   connect( agendaItem, SIGNAL(showAgendaItem(KOAgendaItem *)),
@@ -1601,7 +1612,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
   agendaItem->resize( int( endIt ) - int( startIt ), int( mGridSpacingY ) );
 
   agendaItem->installEventFilter( this );
-  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, event ) );
+  agendaItem->setResourceColor( KOHelper::resourceColor( incidence ) );
   addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
   mItems.append( agendaItem );
 
@@ -1612,9 +1623,11 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
   return agendaItem;
 }
 
-void KOAgenda::insertMultiItem( Event *event, const QDate &qd, int XBegin,
+void KOAgenda::insertMultiItem( const Item &event, const QDate &qd, int XBegin,
                                 int XEnd, int YTop, int YBottom )
 {
+  Event::Ptr ev = Akonadi::event( event );
+  Q_ASSERT( ev );
   if ( mAllDayMode ) {
     kDebug() << "using this in all-day mode is illegal.";
     return;
@@ -1643,7 +1656,7 @@ void KOAgenda::insertMultiItem( Event *event, const QDate &qd, int XBegin,
         cellYBottom = rows() - 1;
       }
       newtext = QString( "(%1/%2): " ).arg( count ).arg( width );
-      newtext.append( event->summary() );
+      newtext.append( ev->summary() );
 
       current = insertItem( event, qd, cellX, cellYTop, cellYBottom );
       current->setText( newtext );
@@ -1675,21 +1688,22 @@ void KOAgenda::insertMultiItem( Event *event, const QDate &qd, int XBegin,
   marcus_bains();
 }
 
-void KOAgenda::removeIncidence( Incidence *incidence )
+QList<KOAgendaItem*> KOAgenda::agendaItems( const Akonadi::Item &aitem ) const {
+  QList<KOAgendaItem*> items;
+  Q_FOREACH ( KOAgendaItem* const item, mItems )
+    if ( item && item->incidence() == aitem )
+      items.push_back( item );
+  return items;
+}
+
+void KOAgenda::removeIncidence( const Item &incidence )
 {
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position in the iterator-loop and mess the logic up.
-  QList<KOAgendaItem*> itemsToRemove;
-  KOAgendaItem *item;
+  const QList<KOAgendaItem*> itemsToRemove = agendaItems( incidence );
 
-  foreach ( item, mItems ) {
-    if ( item && item->incidence() == incidence ) {
-      itemsToRemove.append( item );
-    }
-  }
-
-  foreach ( item, itemsToRemove ) {
+  foreach ( KOAgendaItem * const item, itemsToRemove ) {
     removeAgendaItem( item );
   }
 }
@@ -1889,11 +1903,11 @@ void KOAgenda::deselectItem()
     return;
   }
 
-  Incidence *selectedInc = mSelectedItem->incidence();
+  const Item selectedItem = mSelectedItem->incidence();
 
   foreach ( KOAgendaItem *item, mItems ) {
-    Incidence *itemInc = item->incidence();
-    if( itemInc && selectedInc && itemInc->uid() == selectedInc->uid() ) {
+    const Item itemInc = item->incidence();
+    if( itemInc.isValid() && selectedItem.isValid() && itemInc.id() == selectedItem.id() ) {
       item->select( false );
     }
   }
@@ -1908,30 +1922,35 @@ void KOAgenda::selectItem( KOAgendaItem *item )
   }
   deselectItem();
   if ( item == 0 ) {
-    emit incidenceSelected( 0, QDate() );
+    emit incidenceSelected( Item(), QDate() );
     return;
   }
   mSelectedItem = item;
   mSelectedItem->select();
-  Q_ASSERT( mSelectedItem->incidence() );
-  mSelectedUid = mSelectedItem->incidence()->uid();
+  Q_ASSERT( Akonadi::hasIncidence( mSelectedItem->incidence() ) );
+  mSelectedId = mSelectedItem->incidence().id();
 
   foreach ( KOAgendaItem *item, mItems ) {
-    if( item->incidence() && item->incidence()->uid() == mSelectedUid ) {
+    if( item->incidence().id() == mSelectedId ) {
       item->select();
     }
   }
   emit incidenceSelected( mSelectedItem->incidence(), mSelectedItem->itemDate() );
 }
 
-void KOAgenda::selectItemByUID( const QString &uid )
+void KOAgenda::selectItemByItemId( const Item::Id &id )
 {
   foreach ( KOAgendaItem *item, mItems ) {
-    if( item->incidence() && item->incidence()->uid() == uid ) {
+    if( item->incidence().id() == id ) {
       selectItem( item );
       break;
     }
   }
+}
+
+void KOAgenda::selectItem( const Item &item )
+{
+  selectItemByItemId( item.id() );
 }
 
 // This function seems never be called.

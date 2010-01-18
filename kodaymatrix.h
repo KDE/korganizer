@@ -26,7 +26,7 @@
 #ifndef KODAYMATRIX_H
 #define KODAYMATRIX_H
 
-#include <KCal/Calendar>
+#include <akonadi/kcal/calendar.h>
 
 #include <QColor>
 #include <QFrame>
@@ -34,6 +34,9 @@
 
 namespace KCal {
   class Incidence;
+}
+namespace Akonadi {
+  class Item;
 }
 using namespace KCal;
 
@@ -82,7 +85,7 @@ class QDropEvent;
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
+class KODayMatrix: public QFrame, public Akonadi::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -101,7 +104,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
       Associate a calendar with this day matrix. If there is a calendar, the
       day matrix will accept drops and days with events will be highlighted.
     */
-    void setCalendar( Calendar * );
+    void setCalendar( Akonadi::Calendar * );
 
     /** updates the day matrix to start with the given date. Does all the
      *  necessary checks for holidays or events on a day and stores them
@@ -217,7 +220,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
      * @param incidence the dropped calendar incidence
      * @param dt QDate that has been selected
      */
-    void incidenceDropped( Incidence *incidence, const QDate &dt );
+    void incidenceDropped( const Akonadi::Item &item, const QDate &dt );
 
     /**
      * Emitted if the user has dropped an event inside the matrix and chose
@@ -226,7 +229,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
      * @param oldincidence the new calendar incidence
      * @param dt QDate that has been selected
      */
-    void incidenceDroppedMove( Incidence *oldincidence, const QDate &dt );
+    void incidenceDroppedMove( const Akonadi::Item &item, const QDate &dt );
 
   protected:
     bool event( QEvent *e );
@@ -285,7 +288,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 
     /** starting date of the matrix */
     QDate mStartDate;

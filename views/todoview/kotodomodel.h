@@ -29,16 +29,17 @@
 #include <QString>
 #include <QHash>
 
+#include <Akonadi/Item>
+
 namespace KCal {
-  class Calendar;
   class Incidence;
   class Todo;
-#ifndef KORG_NODND
-  class DndFactory;
-#endif
 }
 using namespace KCal;
 
+namespace Akonadi {
+  class Calendar;
+}
 namespace KOrg {
   class IncidenceChangerBase;
 }
@@ -70,23 +71,24 @@ class KOTodoModel : public QAbstractItemModel
     };
 
   public:
-    explicit KOTodoModel( Calendar *cal, QObject *parent = 0 );
+    explicit KOTodoModel( QObject *parent = 0 );
     virtual ~KOTodoModel();
 
     /** Set the calendar */
-    void setCalendar( Calendar *cal );
+    void setCalendar( Akonadi::Calendar *cal );
     /** Resets the model and deletes the whole todo tree */
     void clearTodos();
     /** Reloads all todos from the Calendar provided during construction */
     void reloadTodos();
     /** Reloads only the specified todo (if the incidence is a todo) */
-    void processChange( Incidence *incidence, int action );
+    void processChange( const Akonadi::Item &incidence, int action );
 
     /** Creates a new todo with the given text as summary under the given parent */
-    QModelIndex addTodo( const QString &summary,
-                         const QModelIndex &parent = QModelIndex() );
-    /** Copy the todo with the given index to the given date */
-    void copyTodo( const QModelIndex &index, const QDate &date );
+
+public:
+    Akonadi::Item todoForIndex( const QModelIndex &idx ) const;
+
+public:
 
     /** Sets the incidence changer used to edit incidences (todos)
      *
@@ -147,7 +149,7 @@ class KOTodoModel : public QAbstractItemModel
     /** Move the TodoTreeNode if the relationship of the todo's parent has
      *  changed and return a model index to the current node.
      */
-    QModelIndex moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
+    QModelIndex moveIfParentChanged( TodoTreeNode *curNode, const Akonadi::Item &todo,
                                      bool addParentIfMissing );
 
    /** Recursively find a todo.
@@ -156,7 +158,7 @@ class KOTodoModel : public QAbstractItemModel
     * @return Pointer to the TodoTreeNode node which represents the todo
     *         searched for or 0 if not found.
     */
-    TodoTreeNode *findTodo( const Todo *todo ) const;
+    TodoTreeNode *findTodo( const Akonadi::Item &todo ) const;
 
     /**
      * If the todo is overdue or due today, the expandIndex signal
@@ -165,7 +167,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param todo the todo whose parents will be expanded if needed
      */
-    void expandTodoIfNeeded( const Todo *todo );
+    void expandTodoIfNeeded( const Akonadi::Item &todo );
 
     /**
      * Returns true if there's a loop, e.g.: t1 is parent of
@@ -173,7 +175,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param todo the todo that will be checked
      */
-    bool isInHierarchyLoop( const Todo *todo ) const;
+    bool isInHierarchyLoop( const KCal::Todo* todo ) const;
 
     /** Insert a todo at the right place in the todo tree.
      *
@@ -183,27 +185,23 @@ class KOTodoModel : public QAbstractItemModel
      *                     recursively linked todos.
      * @return Pointer to the newly inserted TodoTreeNode node.
      */
-    TodoTreeNode *insertTodo( Todo *todo, bool checkRelated = true );
+    TodoTreeNode *insertTodo( const Akonadi::Item &todo, bool checkRelated = true );
 
     /** Count of columns each item has */
     const int mColumnCount;
 
     /** Calendar to get data from */
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */
-    QHash<QString, TodoTreeNode*> mTodoHash;
+    QHash<Akonadi::Item::Id, TodoTreeNode*> mTodoHash;
 
     /** This IncidenceChanger is used to change todos */
     IncidenceChangerBase *mChanger;
 
     /** Display the todos without hierarchy? */
     bool mFlatView;
-
-#ifndef KORG_NODND
-    DndFactory *mDndFactory;
-#endif
 };
 
 #endif

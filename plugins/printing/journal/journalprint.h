@@ -29,7 +29,6 @@
 
 #include <klocale.h>
 
-#ifndef KORG_NOPRINTER
 using namespace KOrg;
 
 class CalPrintJournal : public CalPrintPluginBase
@@ -63,5 +62,4 @@ class CalPrintJournalConfig : public QWidget, public Ui::CalPrintJournalConfig_B
     }
 };
 
-#endif
 #endif

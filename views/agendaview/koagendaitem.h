@@ -27,6 +27,8 @@
 
 #include "cellitem.h"
 
+#include <Akonadi/Item>
+
 #include <QDate>
 #include <QList>
 #include <QWidget>
@@ -34,9 +36,13 @@
 class KOAgendaItem;
 
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
+
+namespace Akonadi {
+  class Calendar;
+}
+
 using namespace KCal;
 
 class QDragEnterEvent;
@@ -86,7 +92,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( Calendar *calendar, Incidence *incidence, const QDate &qd, QWidget *parent );
+    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence, const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
@@ -158,8 +164,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     bool dissociateFromMultiItem();
 
-    void setIncidence( Incidence *incidence );
-    Incidence *incidence() const { return mIncidence; }
+    void setIncidence( const Akonadi::Item &incidence );
+    const Akonadi::Item & incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
 
     /** Update the date of this item's occurrence (not in the event) */
@@ -224,8 +230,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int mSubCell;   // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
-    Calendar *mCalendar;
-    Incidence *mIncidence;
+    Akonadi::Calendar *mCalendar;
+    Akonadi::Item mIncidence;
     QDate mDate;
     bool mValid;
     bool mCloned;

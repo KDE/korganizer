@@ -30,6 +30,7 @@
 #include <kpimidentities/identitymanager.h>
 #include <kpimidentities/identity.h>
 #include <kpimutils/email.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>
@@ -117,7 +118,7 @@ void KOPrefs::usrSetDefaults()
 
   setTimeZoneDefault();
 
-  KPimPrefs::usrSetDefaults();
+  KConfigSkeleton::usrSetDefaults();
 }
 
 void KOPrefs::fillMailDefaults()
@@ -158,52 +159,22 @@ void KOPrefs::setTimeSpec( const KDateTime::Spec &spec )
   mTimeSpec = spec;
 }
 
-void KOPrefs::setCategoryDefaults()
-{
-  mCustomCategories.clear();
-
-  mCustomCategories
-    << i18nc( "incidence category: appointment", "Appointment" )
-    << i18nc( "incidence category", "Business" )
-    << i18nc( "incidence category", "Meeting" )
-    << i18nc( "incidence category: phone call","Phone Call" )
-    << i18nc( "incidence category", "Education" )
-    << i18nc( "incidence category: "
-              "official or unofficial observance of "
-              "religious/national/cultural/other significance, "
-              "often accompanied by celebrations or festivities", "Holiday" )
-    << i18nc( "incidence category: "
-              "a lengthy time away from work or school, a trip abroad, "
-              "or simply a pleasure trip away from home", "Vacation" )
-    << i18nc( "incidence category: "
-              "examples: anniversary of historical or personal event; "
-              "big date; remembrance, etc", "Special Occasion" )
-    << i18nc( "incidence category", "Personal" )
-    << i18nc( "incidence category: "
-              "typically associated with leaving home for business, "
-              "and not pleasure", "Travel" )
-    << i18nc( "incidence category", "Miscellaneous" )
-    << i18nc( "incidence category", "Birthday" );
-}
-
 void KOPrefs::usrReadConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
-  mCustomCategories = generalConfig.readEntry( "Custom Categories", QStringList() );
-  if ( mCustomCategories.isEmpty() ) {
-    setCategoryDefaults();
-  }
+  mMailTransport = generalConfig.readEntry( "MailTransport", QString() );
 
   // Note that the [Category Colors] group was removed after 3.2 due to
   // an algorithm change. That's why we now use [Category Colors2]
 
   // Category colors
   KConfigGroup colorsConfig( config(), "Category Colors2" );
-  QStringList::Iterator it;
-  for ( it = mCustomCategories.begin(); it != mCustomCategories.end(); ++it ) {
-    QColor c = colorsConfig.readEntry( *it, mDefaultCategoryColor );
+  KPIM::CategoryConfig cc( this );
+  const QStringList cats = cc.customCategories();
+  Q_FOREACH( const QString& i, cats ) {
+    QColor c = colorsConfig.readEntry( i, mDefaultCategoryColor );
     if ( c != mDefaultCategoryColor ) {
-      setCategoryColor( *it, c );
+      setCategoryColor( i, c );
     }
   }
 
@@ -232,14 +203,15 @@ void KOPrefs::usrReadConfig()
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
 
-  KPimPrefs::usrReadConfig();
+  KConfigSkeleton::usrReadConfig();
   fillMailDefaults();
 }
 
 void KOPrefs::usrWriteConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
-  generalConfig.writeEntry( "Custom Categories", mCustomCategories );
+  if( ! mMailTransport.isNull() )
+    generalConfig.writeEntry( "MailTransport", mMailTransport );
 
   KConfigGroup colorsConfig( config(), "Category Colors2" );
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
@@ -278,7 +250,7 @@ void KOPrefs::usrWriteConfig()
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
-  KPimPrefs::usrWriteConfig();
+  KConfigSkeleton::usrWriteConfig();
 }
 
 void KOPrefs::setCategoryColor( const QString &cat, const QColor &color )

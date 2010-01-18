@@ -28,11 +28,9 @@
 #include "koeventviewer.h"
 #include <KDialog>
 
-namespace KCal {
-  class Incidence;
+namespace Akonadi {
+  class Item;
 }
-using namespace KCal;
-
 class KOEventViewer;
 
 /**
@@ -42,19 +40,18 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEventViewerDialog( Calendar *calendar, QWidget *parent = 0, bool compact = false );
+    explicit KOEventViewerDialog( QWidget *parent = 0);
     virtual ~KOEventViewerDialog();
 
-    void setIncidence( Incidence *incidence, const QDate &date )
+    void setIncidence( const Akonadi::Item &incidence, const QDate &date )
     {
       mEventViewer->setIncidence( incidence, date );
     }
-    void appendIncidence( Incidence *incidence, const QDate &date )
+    void appendIncidence( const Akonadi::Item &incidence, const QDate &date )
     {
       mEventViewer->appendIncidence( incidence, date );
     }
 
-    void setCalendar( Calendar *calendar );
     void addText( const QString &text );
 
   private:

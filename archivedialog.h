@@ -36,16 +36,18 @@ class QCheckBox;
 namespace KPIM {
 class KDateEdit;
 }
-namespace KCal {
+namespace Akonadi {
 class Calendar;
 }
-using namespace KCal;
+namespace KOrg {
+class IncidenceChangerBase;
+}
 
 class ArchiveDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit ArchiveDialog( Calendar *calendar, QWidget *parent=0 );
+    explicit ArchiveDialog( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, QWidget *parent=0 );
     virtual ~ArchiveDialog();
 
   signals:
@@ -69,8 +71,8 @@ class ArchiveDialog : public KDialog
     KComboBox *mExpiryUnitsComboBox;
     QCheckBox *mEvents;
     QCheckBox *mTodos;
-
-    Calendar *mCalendar;
+    KOrg::IncidenceChangerBase *mChanger;
+    Akonadi::Calendar *mCalendar;
 };
 
 #endif

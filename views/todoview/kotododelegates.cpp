@@ -30,10 +30,12 @@
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
 
+#include <akonadi/kcal/calendar.h>
+
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryhierarchyreader.h>
+#include <libkdepim/kpimprefs.h>
 
-#include <kcal/calendar.h>
 #include <kcal/calfilter.h>
 
 #include <kcolorscheme.h>
@@ -310,10 +312,9 @@ void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
 // ---------------- CATEGORIES DELEGATE --------------------------
 // ---------------------------------------------------------------
 
-KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( Calendar *cal, QObject *parent )
-  : QStyledItemDelegate( parent )
+KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( QObject *parent )
+  : QStyledItemDelegate( parent ), mCalendar(0)
 {
-  setCalendar( cal );
 }
 
 KOTodoCategoriesDelegate::~KOTodoCategoriesDelegate()
@@ -336,7 +337,8 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
       categories = filter->categoryList();
       categories.sort();
     } else {
-      categories = KOPrefs::instance()->mCustomCategories;
+      KPIM::CategoryConfig cc( KOPrefs::instance() );
+      categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();
       filterCategories.sort();
@@ -389,7 +391,7 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-void KOTodoCategoriesDelegate::setCalendar( Calendar *cal )
+void KOTodoCategoriesDelegate::setCalendar( Akonadi::Calendar *cal )
 {
   mCalendar = cal;
 }

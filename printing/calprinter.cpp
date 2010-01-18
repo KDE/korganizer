@@ -24,6 +24,7 @@
 */
 
 #include "calprinter.h"
+#include "calprinter.moc"
 #include "calprintdefaultplugins.h"
 #include "korganizer/corehelper.h"
 
@@ -41,9 +42,7 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
-#ifndef KORG_NOPRINTER
-
-CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *helper )
+CalPrinter::CalPrinter( QWidget *parent, Akonadi::Calendar *calendar, KOrg::CoreHelper *helper )
   : QObject( parent )
 {
   mParent = parent;
@@ -59,7 +58,7 @@ CalPrinter::~CalPrinter()
   delete mConfig;
 }
 
-void CalPrinter::init( Calendar *calendar )
+void CalPrinter::init( Akonadi::Calendar *calendar )
 {
   mCalendar = calendar;
 
@@ -281,7 +280,3 @@ void CalPrintDialog::slotOk()
     }
   }
 }
-
-#include "calprinter.moc"
-
-#endif

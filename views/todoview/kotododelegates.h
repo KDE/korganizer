@@ -29,8 +29,10 @@
 #include <QModelIndex>
 #include <QSlider>
 
-namespace KCal { class Calendar; }
-using namespace KCal;
+
+namespace Akonadi {
+  class Calendar;
+}
 
 class QWidget;
 class QPainter;
@@ -145,7 +147,7 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    explicit KOTodoCategoriesDelegate( Calendar *cal, QObject *parent = 0 );
+    explicit KOTodoCategoriesDelegate( QObject *parent = 0 );
 
     ~KOTodoCategoriesDelegate();
 
@@ -158,9 +160,9 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
                                const QStyleOptionViewItem &option,
                                const QModelIndex &index ) const;
 
-    void setCalendar( Calendar *cal );
+    void setCalendar( Akonadi::Calendar *cal );
   private:
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 };
 
 /**

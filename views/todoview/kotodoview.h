@@ -29,10 +29,18 @@
 
 #include "korganizer/baseview.h"
 
+#include <Akonadi/Item>
+
+#include <KCal/Todo>
+
 namespace KCal {
   class Incidence;
+}
+
+namespace Akonadi {
   class Calendar;
 }
+
 using namespace KCal;
 using namespace KOrg;
 
@@ -55,12 +63,12 @@ class KOTodoView : public BaseView
   Q_OBJECT
 
   public:
-    KOTodoView( Calendar *cal, QWidget *parent );
+    KOTodoView( QWidget *parent );
     ~KOTodoView();
 
-    virtual void setCalendar( Calendar *cal );
+    virtual void setCalendar( Akonadi::Calendar *cal );
 
-    virtual Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
     virtual DateList selectedDates();
     virtual int currentDateCount() { return 0; }
 
@@ -80,10 +88,10 @@ class KOTodoView : public BaseView
   public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
     void updateCategories();
-    virtual void changeIncidenceDisplay( Incidence *incidence, int action );
+    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int action );
     virtual void updateConfig();
     virtual void clearSelection();
     void expandIndex( const QModelIndex &index );
@@ -122,6 +130,7 @@ class KOTodoView : public BaseView
 
   private:
     QMenu *createCategoryPopupMenu();
+    void addTodo( const QString &summary, const KCal::Todo::Ptr &parent=KCal::Todo::Ptr() );
 
     KOTodoViewView *mView;
     KOTodoModel *mModel;

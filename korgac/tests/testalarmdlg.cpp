@@ -26,15 +26,23 @@
 
 #include <kcal/event.h>
 #include <kcal/todo.h>
-using namespace KCal;
-
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
-
+#include <boost/shared_ptr.hpp>
+#include <akonadi/item.h>
 #include <QWidget>
+
+using namespace KCal;
+
+template<class T> Akonadi::Item incidenceToItem(T* incidence)
+{
+  Akonadi::Item item;
+  item.setPayload< boost::shared_ptr<T> >( boost::shared_ptr<T>(incidence) );
+  return item;
+}
 
 int main( int argc, char **argv )
 {
@@ -87,22 +95,22 @@ int main( int argc, char **argv )
   e4->newAlarm();
 
   AlarmDialog dlg( 0 );
-  dlg.addIncidence( e2, QDateTime::currentDateTime().addSecs( 60 ),
+  dlg.addIncidence( incidenceToItem(e2), QDateTime::currentDateTime().addSecs( 60 ),
                     QString() );
-  dlg.addIncidence( t1, QDateTime::currentDateTime().addSecs( 300 ),
+  dlg.addIncidence( incidenceToItem(t1), QDateTime::currentDateTime().addSecs( 300 ),
                     QString( "THIS IS DISPLAY TEXT" ) );
-  dlg.addIncidence( e4, QDateTime::currentDateTime().addSecs( 120 ),
+  dlg.addIncidence( incidenceToItem(e4), QDateTime::currentDateTime().addSecs( 120 ),
                     QString( "Fred and Barney get cloned" ) );
-  dlg.addIncidence( e3, QDateTime::currentDateTime().addSecs( 240 ),
+  dlg.addIncidence( incidenceToItem(e3), QDateTime::currentDateTime().addSecs( 240 ),
                     QString() );
-  dlg.addIncidence( e1, QDateTime::currentDateTime().addSecs( 180 ),
+  dlg.addIncidence( incidenceToItem(e1), QDateTime::currentDateTime().addSecs( 180 ),
                     QString() );
-  dlg.addIncidence( t2, QDateTime::currentDateTime().addSecs( 600 ),
+  dlg.addIncidence( incidenceToItem(t2), QDateTime::currentDateTime().addSecs( 600 ),
                     QString( "THIS IS DISPLAY TEXT" ) );
-  dlg.addIncidence( t3, QDateTime::currentDateTime().addSecs( 360 ),
+  dlg.addIncidence( incidenceToItem(t3), QDateTime::currentDateTime().addSecs( 360 ),
                     QString() );
   dlg.show();
   dlg.eventNotification();
 
-  app.exec();
+  return app.exec();
 }

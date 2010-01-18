@@ -26,6 +26,7 @@
 #include "koapp.h"
 #include "aboutdata.h"
 
+#include <akonadi/control.h>
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kaboutdata.h>
@@ -43,7 +44,9 @@ int main ( int argc, char **argv )
   KCmdLineArgs::addCmdLineOptions( korganizer_options() );
   KUniqueApplication::addCmdLineOptions();
 
-  if ( !KOrganizerApp::start() ) {
+  KUniqueApplication::StartFlags flags;
+  //flags |= KUniqueApplication::NonUniqueInstance;
+  if ( !KOrganizerApp::start(flags) ) {
     return 0;
   }
 
@@ -56,6 +59,12 @@ int main ( int argc, char **argv )
 
   if ( app.isSessionRestored() ) {
     RESTORE( KOrganizer )
+  }
+
+  if ( !Akonadi::Control::start() ) {
+    //TODO: add message box after string freeze
+    kWarning() << "Unable to start Akonadi server, exit application";
+    return 1;
   }
 
   return app.exec();

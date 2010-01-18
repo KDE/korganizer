@@ -25,13 +25,19 @@
 #ifndef DATENAVIGATORCONTAINER_H
 #define DATENAVIGATORCONTAINER_H
 
-#include <kcal/calendar.h>
-using namespace KCal;
+#include <akonadi/kcal/calendar.h>
 
 #include <QFrame>
 #include <QList>
 
+namespace KCal {
+  class Incidence;
+}
+
+using namespace KCal;
+
 class KDateNavigator;
+class QDate;
 class QResizeEvent;
 
 class DateNavigatorContainer: public QFrame
@@ -44,7 +50,7 @@ class DateNavigatorContainer: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( Calendar * );
+    void setCalendar( Akonadi::Calendar * );
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
@@ -63,8 +69,8 @@ class DateNavigatorContainer: public QFrame
 
   signals:
     void datesSelected( const KCal::DateList & );
-    void incidenceDropped( Incidence *, const QDate & );
-    void incidenceDroppedMove( Incidence *, const QDate & );
+    void incidenceDropped( const Akonadi::Item &, const QDate & );
+    void incidenceDroppedMove( const Akonadi::Item &, const QDate & );
     void newEventSignal( const QDate & );
     void newTodoSignal( const QDate & );
     void newJournalSignal( const QDate & );
@@ -96,7 +102,7 @@ class DateNavigatorContainer: public QFrame
 
     KDateNavigator *mNavigatorView;
 
-    KCal::Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 
     QList<KDateNavigator*> mExtraViews;
 

@@ -28,13 +28,13 @@
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/calendar.h>
+
 #include <libkdepim/categoryhierarchyreader.h>
 #include <libkdepim/kcheckcombobox.h>
-using namespace KPIM;
+#include <libkdepim/kpimprefs.h>
 
-#include <KCal/Calendar>
 #include <KCal/CalFilter>
-using namespace KCal;
 
 #include <KLineEdit>
 
@@ -46,7 +46,10 @@ using namespace KCal;
 #include <QAbstractItemView>
 #include <QHBoxLayout>
 
-KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *parent )
+using namespace KPIM;
+using namespace KCal;
+
+KOTodoViewQuickSearch::KOTodoViewQuickSearch( Akonadi::Calendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
@@ -74,7 +77,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
   setLayout( layout );
 }
 
-void KOTodoViewQuickSearch::setCalendar( Calendar *calendar )
+void KOTodoViewQuickSearch::setCalendar( Akonadi::Calendar *calendar )
 {
   mCalendar = calendar;
   fillCategories();
@@ -104,7 +107,8 @@ void KOTodoViewQuickSearch::fillCategories()
       categories = filter->categoryList();
       categories.sort();
     } else {
-      categories = KOPrefs::instance()->mCustomCategories;
+      KPIM::CategoryConfig cc( KOPrefs::instance() );
+      categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();
       filterCategories.sort();

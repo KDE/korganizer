@@ -27,6 +27,9 @@
 #include "korganizer/baseview.h"
 using namespace KOrg;
 
+namespace Akonadi {
+  class Calendar;
+}
 #include <KTextBrowser>
 
 class QUrl;
@@ -50,24 +53,24 @@ class KOWhatsNextView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOWhatsNextView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOWhatsNextView( QWidget *parent = 0 );
     ~KOWhatsNextView();
 
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences() { return Incidence::List(); }
+    virtual Akonadi::Item::List selectedIncidences() { return Akonadi::Item::List(); }
     DateList selectedDates() { return DateList(); }
 
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
   protected:
-    void appendEvent( Incidence *, const QDateTime &start = QDateTime(),
+    void appendEvent( const Akonadi::Item &, const QDateTime &start = QDateTime(),
                       const QDateTime &end = QDateTime() );
-    void appendTodo( Incidence * );
+    void appendTodo( const Akonadi::Item & );
 
   private slots:
     void showIncidence( const QString & );
@@ -78,7 +81,7 @@ class KOWhatsNextView : public KOrg::BaseView
     QDate mStartDate;
     QDate mEndDate;
 
-    Incidence::List mTodos;
+    Akonadi::Item::List mTodos;
 };
 
 #endif

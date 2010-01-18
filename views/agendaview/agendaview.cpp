@@ -17,22 +17,14 @@
 */
 
 #include "agendaview.h"
-#include <kcal/calendarresources.h>
+#include <akonadi/kcal/calendar.h>
 
 using namespace KOrg;
 
-AgendaView::AgendaView( Calendar *cal, QWidget *parent )
-  : KOEventView( cal, parent )
+AgendaView::AgendaView( QWidget *parent )
+  : KOEventView( parent )
 {
-  KCal::CalendarResources *calres = dynamic_cast<KCal::CalendarResources *>( cal );
-  if ( calres ) {
-    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
-             SLOT(setUpdateNeeded()) );
-    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
-             SLOT(setUpdateNeeded()) );
-    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
-             SLOT(setUpdateNeeded()) );
-  }
+  //Akonadi::Calendar *calres = dynamic_cast<Akonadi::Calendar *>( cal );
 }
 
 #include "agendaview.moc"

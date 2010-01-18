@@ -28,12 +28,20 @@
 
 #include <kcal/event.h>
 
+#include <Akonadi/Item>
+
 #include <QObject>
 
 class QDate;
 
-namespace KCal {
+namespace Akonadi {
   class Calendar;
+}
+namespace KOrg {
+  class AkonadiCalendar;
+  class IncidenceChangerBase;
+}
+namespace KCal {
   class Event;
 }
 using namespace KCal;
@@ -61,7 +69,7 @@ class EventArchiver : public QObject
      * @param widget parent widget for message boxes
      * Confirmation and "no events to process" dialogs will be shown
      */
-    void runOnce( Calendar *calendar, const QDate &limitDate, QWidget *widget );
+    void runOnce( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget );
 
     /**
      * Delete or archive events. This is called regularly, when auto-archiving
@@ -72,19 +80,19 @@ class EventArchiver : public QObject
      * Note that error dialogs like "cannot save" are shown even if from this method, so widget
      * should be set in all cases.
      */
-    void runAuto( Calendar *calendar, QWidget *widget, bool withGUI );
+    void runAuto( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, QWidget *widget, bool withGUI );
 
   signals:
     void eventsDeleted();
 
   private:
-    void run( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+    void run( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
               bool withGUI, bool errorIfNone );
 
-    void deleteIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
-                           const Incidence::List &incidences, bool withGUI );
-    void archiveIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
-                            const Incidence::List &incidences, bool withGUI );
+    void deleteIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+                           const Akonadi::Item::List &incidences, bool withGUI );
+    void archiveIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+                            const Akonadi::Item::List &incidences, bool withGUI );
 };
 
 #endif /* EVENTARCHIVER_H */

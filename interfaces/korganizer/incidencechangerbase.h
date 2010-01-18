@@ -24,50 +24,56 @@
 #include "korganizer/korganizer_export.h"
 #include "korganizer/koglobals.h"
 
+#include <KCal/Incidence>
 #include <KCal/Scheduler>
 
-#include <QObject>
+#include <QtCore/QObject>
 
-namespace KCal {
+#include <akonadi/kcal/groupware.h>
+
+class QWidget;
+
+namespace Akonadi {
+  class Item;
+  class Collection;
   class Calendar;
-  class Incidence;
 }
-using namespace KCal;
 
 namespace KOrg {
+
 
 class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 {
   Q_OBJECT
   public:
-    explicit IncidenceChangerBase( Calendar *cal, QObject *parent = 0 );
+    explicit IncidenceChangerBase( Akonadi::Calendar *cal, QObject *parent = 0 );
 
     virtual ~IncidenceChangerBase();
 
-    virtual bool sendGroupwareMessage( Incidence *incidence,
-                                       iTIPMethod method,
-                                       KOGlobals::HowChanged action,
+    virtual bool sendGroupwareMessage( const Akonadi::Item &incidence,
+                                       KCal::iTIPMethod method,
+                                       Akonadi::Groupware::HowChanged action,
                                        QWidget *parent ) = 0;
 
-    virtual bool beginChange( Incidence * incidence ) = 0;
-    virtual bool endChange( Incidence *incidence ) = 0;
+    virtual bool beginChange( const Akonadi::Item &incidence ) = 0;
+    virtual bool endChange( const Akonadi::Item &incidence ) = 0;
 
-    virtual bool addIncidence( Incidence *incidence, QWidget *parent ) = 0;
-    virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                  KOGlobals::WhatChanged, QWidget *parent ) = 0;
-    virtual bool deleteIncidence( Incidence *incidence, QWidget *parent ) = 0;
-    virtual bool cutIncidence( Incidence *incidence, QWidget *parent ) = 0;
+    virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent ) = 0;
+    virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection, QWidget* parent ) = 0;
+    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, KOGlobals::WhatChanged, QWidget *parent ) = 0;
+    virtual bool deleteIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
+    virtual bool cutIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
 
   Q_SIGNALS:
-    void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldInc, Incidence *newInc, KOGlobals::WhatChanged );
-    void incidenceToBeDeleted( Incidence * );
-    void incidenceDeleted( Incidence * );
+    void incidenceAdded( const Akonadi::Item & );
+    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc, KOGlobals::WhatChanged  );
+    void incidenceToBeDeleted( const Akonadi::Item & );
+    void incidenceDeleted( const Akonadi::Item & );
 
-    void schedule( iTIPMethod method, Incidence *incidence );
+    void schedule( iTIPMethod method, const Akonadi::Item &incidence );
 
   protected:
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 };
 
 }

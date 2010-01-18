@@ -27,7 +27,7 @@
 #include "koeventviewer.h"
 #include <KLocale>
 
-KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent, bool compact )
+KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18n( "Event Viewer" ) );
@@ -35,16 +35,11 @@ KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent, b
   setModal( false );
   setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
-  mEventViewer = new KOEventViewer( calendar, this );
+  mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
 
-  // FIXME: Set a sensible size (based on the content?).
-  if ( compact ) {
-    setFixedSize( 240, 284 );
-    move( 0, 15 );
-  } else {
-    setMinimumSize( 300, 200 );
-  }
+  resize( QSize(300, 200).expandedTo(minimumSizeHint()) );
+
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
   connect( this, SIGNAL(user1Clicked()), mEventViewer,
            SLOT(editIncidence()) );
@@ -55,11 +50,6 @@ KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent, b
 KOEventViewerDialog::~KOEventViewerDialog()
 {
   delete mEventViewer;
-}
-
-void KOEventViewerDialog::setCalendar( Calendar *calendar )
-{
-  mEventViewer->setCalendar( calendar );
 }
 
 void KOEventViewerDialog::addText( const QString &text )

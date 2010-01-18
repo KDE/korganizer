@@ -28,12 +28,19 @@
 
 #include <kdgantt1/KDGanttView.h>
 
+#include <Akonadi/Collection>
+#include <Akonadi/Item>
+
 #include <QMap>
 
 class KDGanttViewItem;
 
 namespace KCal {
   class ResourceCalendar;
+}
+
+namespace Akonadi {
+  class Calendar;
 }
 
 namespace KOrg {
@@ -47,25 +54,25 @@ class KOTimelineView : public KOEventView
 {
     Q_OBJECT
   public:
-    explicit KOTimelineView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOTimelineView( QWidget *parent = 0 );
     ~KOTimelineView();
 
-    virtual KCal::Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
     virtual KCal::DateList selectedDates();
     virtual int currentDateCount();
     virtual void showDates( const QDate &, const QDate & );
-    virtual void showIncidences( const KCal::Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
-    virtual void changeIncidenceDisplay( KCal::Incidence *incidence, int mode );
+    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
     virtual int maxDatesHint() { return 0; }
 
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
   private:
-    KOrg::TimelineItem *calendarItemForIncidence( KCal::Incidence *incidence );
-    void insertIncidence( KCal::Incidence *incidence );
-    void insertIncidence( KCal::Incidence *incidence, const QDate &day );
-    void removeIncidence( KCal::Incidence *incidence );
+    KOrg::TimelineItem *calendarItemForIncidence( const Akonadi::Item &incidence );
+    void insertIncidence( const Akonadi::Item &incidence );
+    void insertIncidence( const Akonadi::Item &incidence, const QDate &day );
+    void removeIncidence( const Akonadi::Item &incidence );
 
   private slots:
     void itemSelected( KDGanttViewItem *item );
@@ -77,7 +84,7 @@ class KOTimelineView : public KOEventView
 
   private:
     KDGanttView *mGantt;
-    QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
+    QMap<Akonadi::Collection::Id, KOrg::TimelineItem*> mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;
     QDate mStartDate, mEndDate;
     QDateTime mHintDate;

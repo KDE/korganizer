@@ -33,9 +33,8 @@
 #include "importdialog.h"
 #include "kocore.h"
 #include "calendarview.h"
-#include "stdcalendar.h"
 
-#include <libkdepim/reminderclient.h>
+#include "reminderclient.h"
 
 #include <kcal/calformat.h>
 #include <kcal/calendarresources.h>
@@ -75,7 +74,6 @@ int KOrganizerApp::newInstance()
   if ( isSessionRestored() && first ) {
      KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
      if ( korg ) {
-       KOrg::StdCalendar::self()->load();
        korg->view()->updateCategories();
        korg->view()->updateView();
      }
@@ -142,7 +140,6 @@ void KOrganizerApp::processCalendar( const KUrl &url )
     if ( hasDocument ) {
       korg->openURL( url );
     } else {
-      KOrg::StdCalendar::self()->load();
       korg->view()->updateCategories();
       korg->view()->updateView();
     }

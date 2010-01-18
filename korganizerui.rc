@@ -1,6 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="411">
-
+<kpartgui name="korganizer" version="417">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
@@ -29,19 +28,13 @@
       <Action name="edit_delete" append="edit_paste_merge"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
+      <Action name="view_agenda"/>
+      <Action name="view_month"/>
+      <Action name="view_timeline"/>
+      <Action name="view_todo"/>      
+      <Action name="view_list"/>
       <Action name="view_whatsnext"/>
       <Action name="view_timespent"/>
-      <Action name="view_timeline"/>
-      <Separator/>
-      <Action name="view_day"/>
-      <Action name="view_nextx"/>
-      <Action name="view_workweek"/>
-      <Action name="view_week"/>
-      <Action name="view_month"/>
-      <Action name="view_newmonth"/>
-      <Separator/>
-      <Action name="view_list"/>
-      <Action name="view_todo"/>
       <Action name="view_journal"/>
       <Merge/>
       <Separator/>
@@ -64,6 +57,13 @@
       <Action name="go_next"/>
       <Separator/>
       <Action name="go_today"/>
+      <Separator/>
+      <Action name="select_day"/>
+      <Action name="select_nextx"/>
+      <Action name="select_workweek"/>
+      <Action name="select_week"/>
+      <Action name="select_newmonth"/>
+      <Merge/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
@@ -118,20 +118,23 @@
     <Action name="new_event"/>
     <Action name="new_todo"/>
     <Action name="new_journal"/>
-    <Action name="file_print"/>
-    <Action name="mail_appointment"/>
+    <!--
     <Separator/>
     <Action name="edit_find"/>
+    -->
     <Separator/>
     <Action name="go_previous"/>
     <Action name="go_next"/>
     <Action name="go_today"/>
+    <Action name="select_day"/>
+    <Action name="select_week"/>
   </ToolBar>
 
+  
   <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>
-    <Action name="view_day"/>
-    <Action name="view_week"/>
+    <Action name="view_agenda"/>
     <Action name="view_month"/>
+    <Action name="view_timeline"/>
     <Action name="view_todo"/>
     <Action name="view_journal"/>
     <Merge/>
@@ -155,7 +158,28 @@
     <Action name="new_journal"/>
     <Separator/>
     <Action name="edit_paste"/>
+    <Separator/>
+    <Action name="configure_view"/>
     <Merge/>
   </Menu>
+
+  <Menu name="akonadi_collectionview_contextmenu">
+    <!--
+    <Action name="akonadi_collection_create"/>
+    <Separator/>
+    <Action name="akonadi_collection_copy"/>
+    <Action name="akonadi_paste"/>
+    <Separator/>
+    <Action name="akonadi_collection_delete"/>
+    <Separator/>
+    <Action name="akonadi_collection_sync"/>
+    <Separator/>
+    -->
+    <Action name="akonadi_calendar_create"/>
+    <Action name="akonadi_calendar_delete"/>
+    <Separator/>
+    <Action name="akonadi_collection_properties"/>
+
+</Menu>
 
 </kpartgui>

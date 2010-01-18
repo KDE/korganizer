@@ -25,15 +25,13 @@
 */
 #ifndef CALPRINTPLUGINBASE_H
 #define CALPRINTPLUGINBASE_H
-// #define KORG_NOPRINTER
-
-#ifndef KORG_NOPRINTER
 
 #include "korganizer/korganizer_export.h"
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
 
-#include <kcal/calendar.h>
+#include <akonadi/kcal/calendar.h>
+
 #include <kcal/event.h>
 #include <kcal/todo.h>
 
@@ -62,7 +60,7 @@ using namespace KCal;
   Base class for KOrganizer printing classes. Each sub class represents one
   calendar print format.
 */
-class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
+class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 {
   public:
     enum DisplayFlags {
@@ -124,7 +122,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     QTime dayStart();
     bool isWorkingDay( const QDate &dt );
     QString holidayString( const QDate &dt );
-    Event *holiday( const QDate &dt );
+    Event::Ptr holiday( const QDate &dt );
 
     /**
       Determines the column of the given weekday ( 1=Monday, 7=Sunday ), taking the
@@ -194,7 +192,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                        color will be deduced, if applicable.
       @param str The string to print inside the box
     */
-    void showEventBox( QPainter &p, const QRect &box, Incidence *incidence,
+    void showEventBox( QPainter &p, const QRect &box, const Incidence::Ptr &incidence,
                        const QString &str, int flags = -1 );
 
     /**
@@ -335,7 +333,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param excludePrivate Whether to exclude Incidence marked private.
       @return The height used for the all-day box.
     */
-    int drawAllDayBox( QPainter &p, Event::List &eventList,
+    int drawAllDayBox( QPainter &p, const Akonadi::Item::List &eventList,
                         const QDate &qd, bool expandable,
                         const QRect &box,
                         bool mExcludeConfidential, bool mExcludePrivate );
@@ -362,7 +360,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param excludeConfidential Whether to exclude Incidence marked confidential.
       @param excludePrivate Whether to exclude Incidence marked private.
     */
-    void drawAgendaDayBox( QPainter &p, Event::List &eventList,
+    void drawAgendaDayBox( QPainter &p, const Akonadi::Item::List &eventList,
                            const QDate &qd, bool expandable,
                            QTime &fromTime, QTime &toTime,
                            const QRect &box,
@@ -543,13 +541,13 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param r Internal (used when printing sub-to-dos to give information
       about its parent)
     */
-    void drawTodo( int &count, Todo *todo, QPainter &p,
-                   TodoSortField sortField, SortDirection sortDir,
+    void drawTodo( int &count, const Akonadi::Item &todo, QPainter &p,
+                   Akonadi::TodoSortField sortField, Akonadi::SortDirection sortDir,
                    bool connectSubTodos, bool strikeoutCompleted, bool desc,
                    int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,
                    int width, int pageHeight,
-                   const Todo::List &todoList, TodoParentStart *r,
+                   const Akonadi::Item::List &todoList, TodoParentStart *r,
                    bool excludeConfidential, bool excludePrivate );
 
     /**
@@ -562,7 +560,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param pageHeight Total height allowed for the list on a page. If an item
                    would be below that line, a new page is started.
     */
-    void drawJournal( Journal * journal, QPainter &p, int x, int &y,
+    void drawJournal( const Journal::Ptr &journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
     /**
       Draws text lines splitting on page boundaries.
@@ -619,7 +617,5 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
   public:
 };
-
-#endif
 
 #endif

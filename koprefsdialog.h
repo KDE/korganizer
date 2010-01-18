@@ -46,6 +46,7 @@ class QGroupBox;
 class QLabel;
 class QRadioButton;
 class QTreeWidget;
+class QListWidget;
 
 using namespace KPIM;
 
@@ -93,8 +94,6 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
     KComboBox     *mResourceCombo;
     KColorButton  *mResourceButton;
     QHash<QString, QColor> mResourceDict;
-    //For translation Identifier <->idx in Combo
-    QStringList mResourceIdentifier;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
@@ -115,6 +114,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
     void updateInput();
 
   private:
+    QListWidget *mTransportList;
     Q3ListView *mAMails;
     KLineEdit *aEmailsEdit;
 };

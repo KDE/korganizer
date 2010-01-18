@@ -38,6 +38,8 @@
 #include <KCal/Todo>
 #include <KCal/VCalDrag>
 
+#include <akonadi/kcal/utils.h>
+
 #include <KPIMUtils/Email>
 
 #include <KLocale>
@@ -48,6 +50,9 @@
 #include <QPainter>
 #include <QPixmapCache>
 #include <QToolTip>
+
+using namespace Akonadi;
+using namespace KOrg;
 
 //-----------------------------------------------------------------------------
 
@@ -64,30 +69,32 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
+KOAgendaItem::KOAgendaItem( Akonadi::Calendar *calendar, const Item &item,
                             const QDate &qd, QWidget *parent )
-  : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ),
+  : QWidget( parent ), mCalendar( calendar ), mIncidence( item ),
     mDate( qd ), mValid( true ), mCloned( false ), mSpecialEvent( false )
 {
-  if ( !mIncidence ) {
+  if ( !Akonadi::hasIncidence( mIncidence ) ) {
     mValid = false;
     return;
   }
 
-  if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
-       mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-    qint64 years = KOHelper::yearDiff( mIncidence->dtStart().date(), qd );
+  Incidence::Ptr incidence = Akonadi::incidence( item );
+  Q_ASSERT( incidence );
+  if ( incidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
+       incidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    qint64 years = KOHelper::yearDiff( incidence->dtStart().date(), qd );
     if ( years > 0 ) {
-      mIncidence = incidence->clone();
-      mIncidence->setReadOnly( false );
-      mIncidence->setSummary(
-        i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
-      mIncidence->setReadOnly( true );
+      incidence = Incidence::Ptr( incidence->clone() );
+      incidence->setReadOnly( false );
+      incidence->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
+      incidence->setReadOnly( true );
       mCloned = true;
+      mIncidence.setPayload<Incidence::Ptr>( incidence );
     }
   }
 
-  mLabelText = mIncidence->summary();
+  mLabelText = incidence->summary();
   mIconAlarm = false;
   mIconRecur = false;
   mIconReadonly = false;
@@ -117,9 +124,6 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
 
 KOAgendaItem::~KOAgendaItem()
 {
-  if ( mCloned ) {
-    delete mIncidence;
-  }
 }
 
 void KOAgendaItem::updateIcons()
@@ -127,17 +131,19 @@ void KOAgendaItem::updateIcons()
   if ( !mValid ) {
     return;
   }
-  mIconReadonly = mIncidence->isReadOnly();
-  mIconRecur = mIncidence->recurs();
-  mIconAlarm = mIncidence->isAlarmEnabled();
-  if ( mIncidence->attendeeCount() > 1 ) {
-    if ( KOPrefs::instance()->thatIsMe( mIncidence->organizer().email() ) ) {
+  Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  Q_ASSERT( incidence );
+  mIconReadonly = incidence->isReadOnly();
+  mIconRecur = incidence->recurs();
+  mIconAlarm = incidence->isAlarmEnabled();
+  if ( incidence->attendeeCount() > 1 ) {
+    if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
       mIconReply = false;
       mIconGroup = false;
       mIconGroupTent = false;
       mIconOrganizer = true;
     } else {
-      Attendee *me = mIncidence->attendeeByMails( KOPrefs::instance()->allEmails() );
+      Attendee *me = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
       if ( me ) {
         if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
           mIconReply = true;
@@ -206,10 +212,10 @@ bool KOAgendaItem::dissociateFromMultiItem()
   return true;
 }
 
-void KOAgendaItem::setIncidence( Incidence *incidence )
+void KOAgendaItem::setIncidence( const Item &incidence )
 {
   mValid = false;
-  if ( incidence ) {
+  if ( Akonadi::hasIncidence( incidence ) ) {
     mValid = true;
     mIncidence = incidence;
     updateIcons();
@@ -629,10 +635,11 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
     return;
   }
 
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
   QString name, email;
   KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
-    mIncidence->addAttendee( new Attendee( name, email ) );
+    incidence->addAttendee( new Attendee( name, email ) );
     KMessageBox::information(
       this,
       i18n( "Attendee \"%1\" added to the calendar item \"%2\"",
@@ -657,7 +664,8 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   bool decoded = md->hasText();
   QString text = md->text();
   if ( decoded && text.startsWith( QLatin1String( "file:" ) ) ) {
-    mIncidence->addAttachment( new Attachment( text ) );
+    const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+    incidence->addAttachment( new Attachment( text ) );
     return;
   }
 
@@ -728,42 +736,37 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int y,
 
 void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !mValid ) {
+  const Event::Ptr event = Akonadi::event( mIncidence );
+  if ( !event )
     return;
-  }
 
-  if ( mIncidence && mIncidence->type() == "Event" ) {
-    QPixmap tPxmp;
-    if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
-      mSpecialEvent = true;
-      if ( mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-        tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
-      } else {
-        tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
-      }
-      conditionalPaint( p, true, x, y, ft, tPxmp );
+  QPixmap tPxmp;
+  if ( event->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+    mSpecialEvent = true;
+    if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+      tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
     } else {
-      // Disabling the event Pixmap because:
-      // 1. We don't need a pixmap to tell us an item is an event we
-      //    only need one to tell us it's not, as agenda view was
-      //    designed for events.
-      // 2. If only to-dos have a pixmap they will be distinguished
-      //    from event's much easier.
-      // 3. Be consistent with month view
-      //conditionalPaint( p, true, x, y, ft, *eventPxmp );
+      tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
     }
+    conditionalPaint( p, true, x, y, ft, tPxmp );
+  } else {
+    // Disabling the event Pixmap because:
+    // 1. We don't need a pixmap to tell us an item is an event we
+    //    only need one to tell us it's not, as agenda view was
+    //    designed for events.
+    // 2. If only to-dos have a pixmap they will be distinguished
+    //    from event's much easier.
+    // 3. Be consistent with month view
+    //conditionalPaint( p, true, x, y, ft, *eventPxmp );
   }
 }
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !mValid || mIncidence->type() != "Todo" ) {
+  if ( !Akonadi::hasTodo( mIncidence ) )
     return;
-  }
 
-  Todo *todo = static_cast<Todo *>( mIncidence );
-
-  bool isCompleted = KOEventView::usesCompletedTodoPixmap( todo, mDate );
+  const bool isCompleted = KOEventView::usesCompletedTodoPixmap( mIncidence, mDate );
 
   conditionalPaint( p, !isCompleted, x, y, ft, *todoPxmp );
   conditionalPaint( p, isCompleted, x, y, ft, *completedPxmp );
@@ -832,17 +835,19 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
 
   QColor bgColor;
 
-  if ( mIncidence->type() == "Todo" && !KOPrefs::instance()->todosUseCategoryColors() ) {
-    if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
+  if ( Akonadi::hasTodo( mIncidence) && !KOPrefs::instance()->todosUseCategoryColors() ) {
+    if ( Akonadi::todo( mIncidence )->isOverdue() ) {
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
-    } else if ( static_cast<Todo*>( mIncidence )->dtDue().date() ==
+    } else if ( Akonadi::todo( mIncidence )->dtDue().date() ==
                 QDateTime::currentDateTime().date() ) {
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
     }
   }
 
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  Q_ASSERT( incidence );
   QColor categoryColor;
-  QStringList categories = mIncidence->categories();
+  QStringList categories = incidence->categories();
   QString cat;
   if ( !categories.isEmpty() ) {
     cat = categories.first();
@@ -926,22 +931,22 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   QString longH;
   if ( !isMultiItem() ) {
     shortH = KGlobal::locale()->formatTime(
-      mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
-    if ( mIncidence->type() != "Todo" ) {
+      incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+    if ( !Akonadi::hasTodo( mIncidence ) ) {
       longH = i18n( "%1 - %2",
                     shortH,
                     KGlobal::locale()->formatTime(
-                      mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
+                      incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
     } else {
       longH = shortH;
     }
   } else if ( !mMultiItemInfo->mFirstMultiItem ) {
     shortH = KGlobal::locale()->formatTime(
-      mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
     longH = shortH;
   } else {
     shortH = KGlobal::locale()->formatTime(
-      mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
     longH = i18n( "- %1", shortH );
   }
 
@@ -975,7 +980,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   if ( ( 2 * singleLineHeight ) > ( height() - 2 * margin ) ) {
     int x = margin, txtWidth;
 
-    if ( mIncidence->allDay() ) {
+    if ( incidence->allDay() ) {
       x += visRect.left();
       int y =  qRound( ( height() - 16 ) / 2.0 );
       paintIcons( &p, x, y, ft );
@@ -998,7 +1003,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
        ( isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem ) ) {
     int x = margin, txtWidth;
 
-    if ( mIncidence->allDay() ) {
+    if ( incidence->allDay() ) {
       x += visRect.left();
       paintIcons( &p, x, margin, ft );
       txtWidth = visRect.right() - margin - x;
@@ -1024,18 +1029,18 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
 
   int x = margin, txtWidth, hTxtWidth, eventX;
 
-  if ( mIncidence->allDay() ) {
+  if ( incidence->allDay() ) {
     shortH = longH = "";
 
-    if ( mIncidence->type() == "Event" ) {
-      if ( static_cast<Event*>( mIncidence )->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
+    if ( const Event::Ptr event = Akonadi::event( mIncidence ) ) {
+      if ( event->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
         // multi-day, all-day event
         shortH =
           i18n( "%1 - %2",
                 KGlobal::locale()->formatDate(
-                  mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ),
+                  incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ),
                 KGlobal::locale()->formatDate(
-                  mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) );
+                  incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) );
         longH = shortH;
 
         // paint headline
@@ -1200,10 +1205,13 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect &rect,
 
   QLinearGradient gradient( QPointF( r.x(), r.y() ), QPointF( r.x(), r.height() ) );
 
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  Q_ASSERT( incidence );
+
   if ( r.height() > 50 ) {
-    if ( mIncidence->allDay() &&
-         mIncidence->dtStart() == mIncidence->dtEnd() &&
-         mIncidence->type() != "Todo" ) {
+    if ( incidence->allDay() &&
+         incidence->dtStart() == incidence->dtEnd() &&
+         !Akonadi::hasTodo( mIncidence ) ) {
       gradient.setColorAt( 0, bgColor.light( 130 ) );
       qreal t = 1.0 - ( r.height() - 18.0 ) / r.height();
       gradient.setColorAt( t, bgColor.light( 115 ) );
@@ -1216,9 +1224,9 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect &rect,
     }
     gradient.setColorAt( 1, bgColor.dark( 110 ) );
   } else {
-    if ( mIncidence->allDay() &&
-         mIncidence->dtStart() == mIncidence->dtEnd() &&
-         mIncidence->type() != "Todo" ) {
+    if ( incidence->allDay() &&
+         incidence->dtStart() == incidence->dtEnd() &&
+         !Akonadi::hasTodo( mIncidence ) ) {
       gradient.setColorAt( 0, bgColor.light( 130 ) );
       gradient.setColorAt( 0.35, bgColor.light( 115 ) );
       gradient.setColorAt( 0.65, bgColor );
@@ -1348,11 +1356,10 @@ bool KOAgendaItem::event( QEvent *event )
       return true;
     } else if ( mValid ) {
       QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
-
       QToolTip::showText(
         helpEvent->globalPos(),
         IncidenceFormatter::toolTipStr(
-          mCalendar, mIncidence, mDate, true, KOPrefs::instance()->timeSpec() ),
+        Akonadi::displayName( mIncidence.parentCollection() ), Akonadi::incidence( mIncidence ).get(), mDate, true, KOPrefs::instance()->timeSpec() ),
         this );
     }
   }

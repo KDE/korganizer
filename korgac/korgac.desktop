@@ -101,8 +101,13 @@ GenericName[x-test]=xxKOrganizer Reminder Daemon Clientxx
 GenericName[zh_CN]=KOrganizer 提醒守护进程的客户端
 GenericName[zh_TW]=KOrganizr 提醒守護程式客戶端
 Terminal=false
-X-KDE-autostart-after=panel
+
+X-KDE-autostart-phase=2
 X-KDE-autostart-condition=korgacrc:General:Autostart:true
+X-DBUS-StartupType=Unique
+
 #do not uncomment the following line, else autostart fails
 #NoDisplay=true
 OnlyShowIn=KDE;
+
+

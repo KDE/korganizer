@@ -24,6 +24,8 @@
 #ifndef FREEBUSYURLDIALOG_H
 #define FREEBUSYURLDIALOG_H
 
+#include "korganizer_export.h"
+
 #include <KDialog>
 
 class FreeBusyUrlWidget;
@@ -33,7 +35,7 @@ namespace KCal {
   class Attendee;
 }
 
-class FreeBusyUrlDialog : public KDialog
+class KORGANIZER_CORE_EXPORT FreeBusyUrlDialog : public KDialog
 {
   Q_OBJECT
   public:
@@ -46,7 +48,7 @@ class FreeBusyUrlDialog : public KDialog
     FreeBusyUrlWidget *mWidget;
 };
 
-class FreeBusyUrlWidget : public QWidget
+class KORGANIZER_CORE_EXPORT FreeBusyUrlWidget : public QWidget
 {
   Q_OBJECT
   public:

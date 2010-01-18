@@ -35,14 +35,18 @@ class QResizeEvent;
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 
+namespace Akonadi {
+  class Item;
+}
+
 namespace KCal {
   class Incidence;
-  class Calendar;
 }
 using namespace KCal;
 
 namespace KOrg {
 
+class AkonadiCalendar;
 class IncidenceChangerBase;
 
 class MonthItem;
@@ -67,7 +71,7 @@ class MonthScene : public QGraphicsScene
       ResizeRight
     };
 
-    MonthScene( MonthView *parent, Calendar *calendar );
+    MonthScene( MonthView *parent );
     ~MonthScene();
 
     int columnWidth() const;
@@ -80,12 +84,12 @@ class MonthScene : public QGraphicsScene
     QList<MonthItem *> mManagerList;
     MonthView *mMonthView;
 
+    MonthView* monthView() const { return mMonthView; }
     QMap<QDate, MonthCell*> mMonthCellMap;
 
     bool initialized() { return mInitialized; }
     void setInitialized( bool i ) { mInitialized = i; }
     void resetAll();
-    Calendar *calendar() { return mCalendar; }
     IncidenceChangerBase *incidenceChanger() const;
 
     int totalHeight();
@@ -169,8 +173,8 @@ class MonthScene : public QGraphicsScene
     QPixmap *holidayPixmap() { return &mHolidayPixmap; }
 
   signals:
-    void incidenceSelected( Incidence *incidence, const QDate & );
-    void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
+    void incidenceSelected( const Akonadi::Item &incidence, const QDate & );
+    void showIncidencePopupSignal( const Akonadi::Item &, const QDate &);
     void showNewEventPopupSignal();
     void newEventSignal();
 
@@ -244,9 +248,6 @@ class MonthScene : public QGraphicsScene
     bool isInMonthGrid( int x, int y );
 
     bool mInitialized;
-
-    // Calendar associated to the view
-    Calendar *mCalendar;
 
     // User interaction.
     MonthItem *mClickedItem; // todo ini in ctor

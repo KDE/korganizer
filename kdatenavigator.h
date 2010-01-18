@@ -34,8 +34,11 @@ class KODayMatrix;
 class NavigatorBar;
 
 namespace KCal {
-  class Calendar;
   class Incidence;
+}
+namespace Akonadi {
+  class Item;
+  class Calendar;
 }
 using namespace KCal;
 
@@ -53,7 +56,7 @@ class KDateNavigator: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( Calendar * );
+    void setCalendar( Akonadi::Calendar * );
 
     void setBaseDate( const QDate & );
 
@@ -86,8 +89,8 @@ class KDateNavigator: public QFrame
 
   signals:
     void datesSelected( const KCal::DateList & );
-    void incidenceDropped( Incidence *, const QDate & );
-    void incidenceDroppedMove( Incidence *, const QDate & );
+    void incidenceDropped( const Akonadi::Item &, const QDate & );
+    void incidenceDroppedMove( const Akonadi::Item &, const QDate & );
     void newEventSignal( const QDate & );
     void newTodoSignal( const QDate & );
     void newJournalSignal( const QDate & );

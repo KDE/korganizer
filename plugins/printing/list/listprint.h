@@ -29,8 +29,6 @@
 
 #include <klocale.h>
 
-#ifndef KORG_NOPRINTER
-
 using namespace KCal;
 
 class CalPrintList : public CalPrintPluginBase
@@ -62,5 +60,4 @@ class CalPrintListConfig : public QWidget, public Ui::CalPrintListConfig_Base
     }
 };
 
-#endif
 #endif

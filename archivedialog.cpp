@@ -55,7 +55,7 @@
 
 #include "archivedialog.moc"
 
-ArchiveDialog::ArchiveDialog( Calendar *cal, QWidget *parent )
+ArchiveDialog::ArchiveDialog( Akonadi::Calendar *cal, KOrg::IncidenceChangerBase* changer, QWidget *parent )
   : KDialog (parent)
 {
   setCaption( i18nc( "@title:window", "Archive/Delete Past Events and To-dos" ) );
@@ -65,6 +65,7 @@ ArchiveDialog::ArchiveDialog( Calendar *cal, QWidget *parent )
   showButtonSeparator( true );
   setButtonText( User1, i18nc( "@action:button", "&Archive" ) );
   mCalendar = cal;
+  mChanger = changer;
 
   QFrame *topFrame = new QFrame( this );
   setMainWidget( topFrame );
@@ -256,11 +257,11 @@ void ArchiveDialog::slotUser1()
     KOPrefs::instance()->mArchiveFile = destUrl.url();
   }
   if ( KOPrefs::instance()->mAutoArchive ) {
-    archiver.runAuto( mCalendar, this, true /*with gui*/);
+    archiver.runAuto( mCalendar, mChanger, this, true /*with gui*/);
     emit autoArchivingSettingsModified();
     accept();
   } else {
-    archiver.runOnce( mCalendar, mDateEdit->date(), this );
+    archiver.runOnce( mCalendar, mChanger, mDateEdit->date(), this );
   }
 }
 

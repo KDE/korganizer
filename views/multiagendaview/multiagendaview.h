@@ -21,21 +21,62 @@
 
 #include "views/agendaview/agendaview.h"
 
+#include <Akonadi/Item>
+
+#include <KDialog>
+
 class KOAgendaView;
 class TimeLabelsZone;
 
 class KHBox;
 
 class Q3ScrollView;
+class QAbstractItemModel;
+class QModelIndex;
 class QResizeEvent;
 class QScrollBar;
 class QSplitter;
 
-namespace KCal {
-  class ResourceCalendar;
+namespace Akonadi {
+  class CollectionSelectionProxyModel;
 }
 
 namespace KOrg {
+
+class MultiAgendaViewConfigDialog : public KDialog
+{
+  Q_OBJECT
+public:
+  explicit MultiAgendaViewConfigDialog( QAbstractItemModel* baseModel, QWidget* parent=0 );
+  ~MultiAgendaViewConfigDialog();
+
+  bool useCustomColumns() const;
+  void setUseCustomColumns( bool );
+
+  int numberOfColumns() const;
+  void setNumberOfColumns( int n );
+
+  QString columnTitle( int column ) const;
+  void setColumnTitle( int column, const QString &title );
+  Akonadi::CollectionSelectionProxyModel* takeSelectionModel( int column );
+  void setSelectionModel( int column, Akonadi::CollectionSelectionProxyModel* model );
+
+public Q_SLOTS:
+  /**
+   * reimplemented from QDialog
+   */
+  void accept();
+
+private Q_SLOTS:
+  void useCustomToggled( bool );
+  void numberOfColumnsChanged( int );
+  void currentChanged( const QModelIndex &index );
+  void titleEdited( const QString &text );
+
+private:
+  class Private;
+  Private* const d;
+};
 
 /**
   Shows one agenda for every resource side-by-side.
@@ -44,21 +85,32 @@ class MultiAgendaView : public AgendaView
 {
   Q_OBJECT
   public:
-    explicit MultiAgendaView( Calendar *cal, QWidget *parent = 0 );
+    explicit MultiAgendaView( QWidget *parent = 0 );
     ~MultiAgendaView();
 
-    Incidence::List selectedIncidences();
+    Akonadi::Item::List selectedIncidences();
     DateList selectedDates();
     int currentDateCount();
     int maxDatesHint();
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    /* reimp */ void setCalendar( Akonadi::Calendar *cal );
+
+    /**
+     * reimplemented from KOrg::BaseView
+     */
+    bool hasConfigurationDialog() const;
+
+    /**
+     * reimplemented from KOrg::BaseView
+     */
+    void showConfigurationDialog( QWidget* parent );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     void updateView();
-    void changeIncidenceDisplay( Incidence *incidence, int mode );
+    void changeIncidenceDisplay( const Akonadi::Item &, int mode );
     void updateConfig();
 
     void setIncidenceChanger( IncidenceChangerBase *changer );
@@ -69,11 +121,21 @@ class MultiAgendaView : public AgendaView
     void resizeEvent( QResizeEvent *ev );
     void showEvent( QShowEvent *event );
 
+    /* reimp */ void doRestoreConfig( const KConfigGroup &configGroup );
+    /* reimp */ void doSaveConfig( KConfigGroup &configGroup );
+
+  protected Q_SLOTS:
+    /**
+     * Reimplemented from KOrg::BaseView
+     */
+    void collectionSelectionChanged();
+
   private:
-    void addView( const QString &label, KCal::ResourceCalendar *res,
-                  const QString &subRes = QString() );
+    void addView( const Akonadi::Collection &collection );
+    void addView( Akonadi::CollectionSelectionProxyModel* selectionProxy, const QString &title );
+    KOAgendaView* createView( const QString &title );
+
     void deleteViews();
-    void recreateViews();
     void setupViews();
     void resizeScrollView( const QSize &size );
 
@@ -84,6 +146,7 @@ class MultiAgendaView : public AgendaView
     void setupScrollBar();
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation ori );
     void slotResizeScrollView();
+    void recreateViews();
 
   private:
     QList<KOAgendaView*> mAgendaViews;
@@ -97,6 +160,10 @@ class MultiAgendaView : public AgendaView
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
     bool mPendingChanges;
+    bool mCustomColumnSetupUsed;
+    QVector<Akonadi::CollectionSelectionProxyModel*> mCollectionSelectionModels;
+    QVector<QString> mCustomColumnTitles;
+    int mCustomNumberOfColumns;
 };
 
 }

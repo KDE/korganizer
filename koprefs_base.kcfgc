@@ -3,7 +3,6 @@ File=korganizer.kcfg
 ClassName=KOPrefsBase
 Singleton=false
 Mutators=true
-Inherits=KPIM::KPimPrefs
 IncludeFiles=libkdepim/kpimprefs.h
 MemberVariables=public
 GlobalEnums=true

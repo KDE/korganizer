@@ -30,10 +30,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCal/CalendarResources>
 #include <KCal/DndFactory>
 #include <KCal/ICalDrag>
 #include <KCal/VCalDrag>
+
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/utils.h>
 
 #include <KCalendarSystem>
 #include <KIcon>
@@ -69,9 +71,13 @@
 #include <QCursor>
 #endif
 
+
 // ============================================================================
 //  K O D A Y M A T R I X
 // ============================================================================
+
+using namespace Akonadi;
+using namespace KCal;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
@@ -93,7 +99,7 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mHighlightJournals = false;
 }
 
-void KODayMatrix::setCalendar( Calendar *cal )
+void KODayMatrix::setCalendar( Akonadi::Calendar *cal )
 {
   if ( mCalendar ) {
     mCalendar->unregisterObserver( this );
@@ -102,15 +108,6 @@ void KODayMatrix::setCalendar( Calendar *cal )
 
   mCalendar = cal;
   mCalendar->registerObserver( this );
-  CalendarResources *calres = dynamic_cast<CalendarResources*>( cal );
-  if ( calres ) {
-    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
-    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
-    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
-  }
 
   setAcceptDrops( mCalendar != 0 );
   updateIncidences();
@@ -301,9 +298,11 @@ void KODayMatrix::updateIncidences()
 
 void KODayMatrix::updateJournals()
 {
-  Incidence::List incidences = mCalendar->incidences();
+  const Item::List items = mCalendar->incidences();
 
-  foreach ( Incidence *inc, incidences ) {
+  foreach ( const Item & item, items ) {
+    Incidence::Ptr inc = Akonadi::incidence( item );
+    Q_ASSERT( inc );
     QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
     if ( inc->type() == "Journal" &&
          d >= mDays[0] &&
@@ -325,35 +324,34 @@ void KODayMatrix::updateJournals()
   */
 void KODayMatrix::updateTodos()
 {
-  Incidence::List incidences = mCalendar->incidences();
+  const Item::List items = mCalendar->todos();
   QDate d;
-  foreach ( Incidence *inc, incidences ) {
-    if ( inc->type() == "Todo" ) {
-      Todo *t = static_cast<Todo *>( inc );
-      if ( t->hasDueDate() ) {
-        ushort recurType = t->recurrenceType();
+  foreach ( const Item &item, items ) {
+    const Todo::Ptr t = Akonadi::todo( item );
+    Q_ASSERT( t );
+    if ( t->hasDueDate() ) {
+      ushort recurType = t->recurrenceType();
 
-        if ( t->recurs() &&
-             !( recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur ) &&
-             !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) )  {
+      if ( t->recurs() &&
+           !( recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur ) &&
+           !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) )  {
 
-          // It's a recurring todo, find out in which days it occurs
-          DateTimeList timeDateList = t->recurrence()->timesInInterval(
-                                            KDateTime( mDays[0], mCalendar->timeSpec() ),
-                                            KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+        // It's a recurring todo, find out in which days it occurs
+        DateTimeList timeDateList = t->recurrence()->timesInInterval(
+                                          KDateTime( mDays[0], mCalendar->timeSpec() ),
+                                          KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
 
-          foreach ( const KDateTime &dt, timeDateList ) {
-            d = dt.toTimeSpec( mCalendar->timeSpec() ).date();
-            if ( !mEvents.contains( d ) ) {
-              mEvents.append( d );
-            }
-          }
-
-        } else {
-          d = t->dtDue().toTimeSpec( mCalendar->timeSpec() ).date();
-          if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
+        foreach ( const KDateTime &dt, timeDateList ) {
+          d = dt.toTimeSpec( mCalendar->timeSpec() ).date();
+          if ( !mEvents.contains( d ) ) {
             mEvents.append( d );
           }
+        }
+
+      } else {
+        d = t->dtDue().toTimeSpec( mCalendar->timeSpec() ).date();
+        if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
+          mEvents.append( d );
         }
       }
     }
@@ -362,13 +360,12 @@ void KODayMatrix::updateTodos()
 
 void KODayMatrix::updateEvents()
 {
-  Event::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
-                                             mCalendar->timeSpec() );
+  Item::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
+                                                      mCalendar->timeSpec() );
 
-  Event::List::ConstIterator it;
-
-  for ( it=eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
-    Event *event = *it;
+  Q_FOREACH ( const Item & item, eventlist ) {
+    const Event::ConstPtr event = Akonadi::event( item );
+    Q_ASSERT( event );
     ushort recurType = event->recurrenceType();
 
     KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );
@@ -660,7 +657,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     e->ignore();
     return;
   }
-
+#ifdef AKONADI_PORT_DISABLED
   DndFactory factory( mCalendar );
   Event *event = factory.createDropEvent( e );
   Todo *todo = factory.createDropTodo( e );
@@ -731,6 +728,9 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   }
   delete event;
   delete todo;
+#else
+  kWarning()<<"TODO";
+#endif // AKONADI_PORT_DISABLED
 }
 #endif
 

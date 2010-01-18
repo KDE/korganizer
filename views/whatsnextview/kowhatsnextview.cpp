@@ -26,11 +26,15 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCal/Calendar>
+#include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/IncidenceFormatter>
 #include <KCal/Todo>
 
 #include <QBoxLayout>
+
+using namespace Akonadi;
 
 void WhatsNextTextBrowser::setSource( const QUrl &name )
 {
@@ -44,8 +48,8 @@ void WhatsNextTextBrowser::setSource( const QUrl &name )
   }
 }
 
-KOWhatsNextView::KOWhatsNextView( Calendar *calendar, QWidget *parent )
-  : KOrg::BaseView( calendar, parent )
+KOWhatsNextView::KOWhatsNextView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   mView = new WhatsNextTextBrowser( this );
   connect( mView, SIGNAL(showIncidence(const QString &)),
@@ -91,11 +95,11 @@ void KOWhatsNextView::updateView()
   }
   mText+="</h2>\n";
 
-  Event::List events;
+  Item::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
 
   events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
-  calendar()->sortEvents( &events, EventSortStartDate, SortDirectionAscending );
+  events = calendar()->sortEvents( events, EventSortStartDate, SortDirectionAscending );
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
@@ -107,10 +111,10 @@ void KOWhatsNextView::updateView()
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
     Event::List::ConstIterator it;
-    for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
-      Event *ev = *it;
+    Q_FOREACH( const Item& evItem, events ) {
+      Event::Ptr ev = Akonadi::event( evItem );
       if ( !ev->recurs() ) {
-        appendEvent( ev );
+        appendEvent( evItem );
       } else {
         Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
@@ -118,7 +122,7 @@ void KOWhatsNextView::updateView()
         KDateTime end = start.addSecs( duration );
         KDateTime endDate( mEndDate, QTime( 23, 59, 59 ), timeSpec );
         if ( end.date() >= mStartDate ) {
-          appendEvent( ev, start.dateTime(), end.dateTime() );
+          appendEvent( evItem, start.dateTime(), end.dateTime() );
         }
         DateTimeList times = recur->timesInInterval( start, endDate );
         int count = times.count();
@@ -131,7 +135,7 @@ void KOWhatsNextView::updateView()
             --count;  // list overflow
           }
           for ( ;  i < count && times[i].date() <= mEndDate;  ++i ) {
-            appendEvent( ev, times[i].dateTime() );
+            appendEvent( evItem, times[i].dateTime() );
           }
         }
       }
@@ -140,7 +144,7 @@ void KOWhatsNextView::updateView()
   }
 
   mTodos.clear();
-  Todo::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
+  Item::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
     kil.loadIcon( "view-calendar-tasks", KIconLoader::NoGroup, 22,
                   KIconLoader::DefaultState, QStringList(), &ipath );
@@ -150,19 +154,19 @@ void KOWhatsNextView::updateView()
     mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
     Todo::List::ConstIterator it;
-    for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
-      Todo *todo = *it;
+    Q_FOREACH( const Item & todoItem, todos ) {
+      Todo::Ptr todo = Akonadi::todo( todoItem );
       if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate ) {
-        appendTodo( todo );
+        appendTodo( todoItem );
       }
     }
     bool gotone = false;
     int priority = 1;
     while ( !gotone && priority <= 9 ) {
-      for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
-        Todo *todo = *it;
+      Q_FOREACH( const Item & todoItem, todos ) {
+        Todo::Ptr todo = Akonadi::todo( todoItem );
         if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
-          appendTodo( todo );
+          appendTodo( todoItem );
           gotone = true;
         }
       }
@@ -174,9 +178,8 @@ void KOWhatsNextView::updateView()
   QStringList myEmails( KOPrefs::instance()->allEmails() );
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
-  Event::List::ConstIterator it2;
-  for ( it2 = events.constBegin(); it2 != events.constEnd(); ++it2 ) {
-    Event *ev = *it2;
+  Q_FOREACH( const Item& evItem, events ) {
+    Event::Ptr ev = Akonadi::event( evItem );
     Attendee *me = ev->attendeeByMails( myEmails );
     if ( me != 0 ) {
       if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
@@ -191,14 +194,14 @@ void KOWhatsNextView::updateView()
           mText += "<table>\n";
         }
         replies++;
-        appendEvent( ev );
+        appendEvent( evItem );
       }
     }
   }
   todos = calendar()->todos();
   Todo::List::ConstIterator it3;
-  for ( it3 = todos.constBegin(); it3 != todos.constEnd(); ++it3 ) {
-    Todo *to = *it3;
+  Q_FOREACH( const Item & todoItem, todos ) {
+    Todo::Ptr to = Akonadi::todo( todoItem );
     Attendee *me = to->attendeeByMails( myEmails );
     if ( me != 0 ) {
       if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
@@ -213,7 +216,7 @@ void KOWhatsNextView::updateView()
           mText += "<table>\n";
         }
         replies++;
-        appendEvent( to );
+        appendEvent( todoItem );
       }
     }
   }
@@ -233,13 +236,13 @@ void KOWhatsNextView::showDates( const QDate &start, const QDate &end )
   updateView();
 }
 
-void KOWhatsNextView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
+void KOWhatsNextView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
 }
 
-void KOWhatsNextView::changeIncidenceDisplay( Incidence *incidence, int action )
+void KOWhatsNextView::changeIncidenceDisplay( const Item &incidence, int action )
 {
   Q_UNUSED( incidence );
 
@@ -254,13 +257,12 @@ void KOWhatsNextView::changeIncidenceDisplay( Incidence *incidence, int action )
   }
 }
 
-void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
+void KOWhatsNextView::appendEvent( const Item &aitem, const QDateTime &start,
                                    const QDateTime &end )
 {
-
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   mText += "<tr><td><b>";
-  if ( ev->type() == "Event" ) {
-    Event *event = static_cast<Event *>(ev);
+  if ( const Event::Ptr event = Akonadi::event( aitem ) ) {
     KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
     KDateTime starttime( start, timeSpec );
     if ( !starttime.isValid() ) {
@@ -290,31 +292,31 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
     }
   }
   mText += "</b></td><td><a ";
-  if ( ev->type() == "Event" ) {
+  if ( incidence->type() == "Event" ) {
     mText += "href=\"event:";
   }
-  if ( ev->type() == "Todo" ) {
+  if ( incidence->type() == "Todo" ) {
     mText += "href=\"todo:";
   }
-  mText += ev->uid() + "\">";
-  mText += ev->summary();
+  mText += incidence->uid() + "\">";
+  mText += incidence->summary();
   mText += "</a></td></tr>\n";
 }
 
-void KOWhatsNextView::appendTodo( Incidence *incidence )
+void KOWhatsNextView::appendTodo( const Item &aitem )
 {
-  if ( mTodos.contains( incidence ) ) {
+  if ( mTodos.contains( aitem ) ) {
     return;
   }
 
-  mTodos.append( incidence );
+  mTodos.append( aitem );
 
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   mText += "<li><a href=\"todo:" + incidence->uid() + "\">";
   mText += incidence->summary();
   mText += "</a>";
 
-  if ( incidence->type() == "Todo" ) {
-    Todo *todo = static_cast<Todo*>( incidence );
+  if ( const Todo::Ptr todo = Akonadi::todo( aitem ) ) {
     if ( todo->hasDueDate() ) {
       mText += i18nc( "to-do due date", "  (Due: %1)",
                       IncidenceFormatter::dateTimeToString( todo->dtDue(), todo->allDay() ) );
@@ -325,14 +327,19 @@ void KOWhatsNextView::appendTodo( Incidence *incidence )
 
 void KOWhatsNextView::showIncidence( const QString &uid )
 {
-  Incidence *incidence = 0;
+  Item incidence;
+
+  Akonadi::Calendar* cal = dynamic_cast<Akonadi::Calendar*>( calendar() );
+  if ( !cal )
+    return;
 
   if ( uid.startsWith( QLatin1String( "event:" ) ) ) {
-    incidence = calendar()->incidence( uid.mid( 6 ) );
+    incidence = cal->incidence( cal->itemIdForIncidenceUid(uid.mid( 6 )) );
   } else if ( uid.startsWith( QLatin1String( "todo:" ) ) ) {
-    incidence = calendar()->incidence( uid.mid( 5 ) );
+    incidence = cal->incidence( cal->itemIdForIncidenceUid(uid.mid( 5 )) );
   }
-  if ( incidence ) {
+
+  if ( incidence.isValid() ) {
     emit showIncidenceSignal( incidence );
   }
 }

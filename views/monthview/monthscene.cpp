@@ -29,21 +29,26 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
+#include <akonadi/kcal/utils.h>
+
+#include <Akonadi/Item>
+
 #include <KCal/Incidence>
 
 #include <KCalendarSystem>
+
 
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>
 #include <QPaintEvent>
 
+using namespace Akonadi;
 using namespace KOrg;
 
-MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
+MonthScene::MonthScene( MonthView *parent )
   : QGraphicsScene( parent ),
     mMonthView( parent ),
     mInitialized( false ),
-    mCalendar( calendar ),
     mClickedItem( 0 ),
     mActionItem( 0 ),
     mActionInitiated( false ),
@@ -207,8 +212,8 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
 
   font.setPixelSize( dayLabelsHeight - 10 );
   p->setFont( font );
-  for ( QDate d = mMonthView->mStartDate;
-        d <= mMonthView->mStartDate.addDays( 6 ); d = d.addDays( 1 ) ) {
+  for ( QDate d = mMonthView->actualStartDateTime().date();
+        d <= mMonthView->actualStartDateTime().date().addDays( 6 ); d = d.addDays( 1 ) ) {
     MonthCell *cell = mScene->mMonthCellMap[ d ];
 
     if ( !cell ) {
@@ -231,7 +236,7 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
   int columnWidth = mScene->columnWidth();
   int rowHeight = mScene->rowHeight();
 
-  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mEndDate; d = d.addDays( 1 ) ) {
+  for ( QDate d = mMonthView->actualStartDateTime().date(); d <= mMonthView->actualEndDateTime().date(); d = d.addDays( 1 ) ) {
     MonthCell *cell = mScene->mMonthCellMap[ d ];
 
     QColor color;
@@ -279,7 +284,7 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
   QPen oldPen =  KOPrefs::instance()->monthGridBackgroundColor().dark( 150 );
 
   // Draw dates
-  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mEndDate; d = d.addDays( 1 ) ) {
+  for ( QDate d = mMonthView->actualStartDateTime().date(); d <= mMonthView->actualEndDateTime().date(); d = d.addDays( 1 ) ) {
     MonthCell *cell = mScene->mMonthCellMap.value( d );
 
     QFont font = p->font();
@@ -290,7 +295,7 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
     }
     p->setFont( font );
 
-    if ( d.month() == mMonthView->mCurrentMonth ) {
+    if ( d.month() == mMonthView->currentMonth() ) {
       p->setPen( QPalette::Text );
     } else {
       p->setPen( oldPen );
@@ -365,7 +370,7 @@ IncidenceChangerBase *MonthScene::incidenceChanger() const
 
 QDate MonthScene::firstDateOnRow( int row ) const
 {
-  return mMonthView->startDate().addDays( 7 * row );
+  return mMonthView->actualStartDateTime().date().addDays( 7 * row );
 }
 
 bool MonthScene::lastItemFit( MonthCell *cell )
@@ -380,7 +385,7 @@ bool MonthScene::lastItemFit( MonthCell *cell )
 int MonthScene::totalHeight()
 {
   int max = 0;
-  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mEndDate; d = d.addDays( 1 ) ) {
+  for ( QDate d = mMonthView->actualStartDateTime().date(); d <= mMonthView->actualEndDateTime().date(); d = d.addDays( 1 ) ) {
     int c = mMonthCellMap[ d ]->firstFreeSpace();
     if ( c > max ) {
       max = c;
@@ -566,8 +571,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
     if ( mouseEvent->button() == Qt::RightButton ) {
       IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
-        emit showIncidencePopupSignal( mCalendar,
-                                       tmp->incidence(), tmp->realStartDate() );
+        emit showIncidencePopupSignal( tmp->incidence(), tmp->realStartDate() );
       }
     }
 
@@ -657,7 +661,7 @@ MonthCell *MonthScene::getCellFromPos( const QPointF &pos )
   }
   int id = ( int )( y / rowHeight() ) * 7 + ( int )( x / columnWidth() );
 
-  return mMonthCellMap.value( mMonthView->mStartDate.addDays( id ) );
+  return mMonthCellMap.value( mMonthView->actualStartDateTime().date().addDays( id ) );
 }
 
 void MonthScene::selectItem( MonthItem *item )
@@ -669,12 +673,12 @@ void MonthScene::selectItem( MonthItem *item )
 
   if ( !tmp ) {
     mSelectedItem = 0;
-    emit incidenceSelected( 0, QDate() );
+    emit incidenceSelected( Item(), QDate() );
     return;
   }
 
   mSelectedItem = item;
-  Q_ASSERT( tmp->incidence() );
+  Q_ASSERT( Akonadi::hasIncidence( tmp->incidence() ) );
 
   if ( mMonthView && mMonthView->selectedDates().isEmpty() ) {
     emit incidenceSelected( tmp->incidence(), QDate() );

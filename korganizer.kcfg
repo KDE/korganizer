@@ -480,6 +480,7 @@
       <default>false</default>
     </entry>
 
+<!--
     <entry type="Enum" key="Mail Client">
       <label>Mail Client</label>
       <choices>
@@ -494,6 +495,7 @@
       </choices>
       <default>MailClientKMail</default>
     </entry>
+-->
 
     <entry type="StringList" name="AdditionalMails">
     </entry>

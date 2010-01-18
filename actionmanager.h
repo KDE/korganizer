@@ -37,18 +37,29 @@
 #include <QDateTime>
 #include <QObject>
 
-class CalendarView;
-class ImportDialog;
-class KOWindowList;
-class ResourceView;
+#include <akonadi/item.h>
 
 namespace KCal {
   class Calendar;
-  class CalendarResources;
-  class HTMLExportSettings;
   class Incidence;
-  class ResourceCalendar;
 }
+
+namespace KOrg {
+  class HTMLExportSettings;
+}
+
+namespace Akonadi {
+  class Calendar;
+  class CalendarModel;
+  class EntityModelStateSaver;
+  class EntityTreeViewStateSaver;
+}
+
+class AkonadiCollectionView;
+class CalendarView;
+class ImportDialog;
+class KOWindowList;
+
 using namespace KCal;
 
 class KRecentFilesAction;
@@ -77,25 +88,10 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     CalendarView *view() const { return mCalendarView; }
 
     /**
-      Create a Calendar object based on local file and set it on the view.
+      Create Calendar object based on the akonadi framework and set it on the view.
     */
-    void createCalendarLocal();
+    void createCalendarAkonadi();
 
-    /**
-      Create a Calendar object based on the resource framework and set it on the view.
-    */
-    void createCalendarResources();
-
-    /**
-      Save calendar to disk.
-    */
-    void saveCalendar();
-
-    /**
-      Save the resource based calendar. Return false if an error occurred and
-      the user decides to not ignore the error. Otherwise it returns true.
-    */
-    bool saveResourceCalendar();
 
   public slots:
     /** Add a new resource
@@ -119,11 +115,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Save calendar file to URL */
     bool saveAsURL( const KUrl &kurl );
 
-    /** Save calendar if it is modified by the user. Ask user what to do. */
-    bool saveModifiedURL();
-
     void exportHTML();
-    void exportHTML( HTMLExportSettings * );
+    void exportHTML( KOrg::HTMLExportSettings * );
     void toggleMenubar( bool dontShowWarning = false );
 
   public:
@@ -154,25 +147,25 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
       @param force If true, all recurrences and sub-todos (if applicable) will
       be deleted without prompting for confirmation.
     */
-    virtual bool deleteIncidence( const QString &uid, bool force = false );
+    virtual bool deleteIncidence( const Akonadi::Item::Id &uid, bool force = false );
 
-    bool editIncidence( const QString &uid );
+    bool editIncidence( const Akonadi::Item::Id &uid );
 
     /**
       Add an incidence to the active calendar.
       @param ical A calendar in iCalendar format containing the incidence.
     */
-
     bool addIncidence( const QString &ical );
+    //bool addIncidence( const Akonadi::Item::Id &ical );
 
-    bool showIncidence( const QString &uid );
+    bool showIncidence( const Akonadi::Item::Id &uid );
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param uid Unique ID of the incidence to show.
     */
-    bool showIncidenceContext( const QString &uid );
+    bool showIncidenceContext( const Akonadi::Item::Id &uid );
 
   public slots:
     void openEventEditor( const QString &);
@@ -242,9 +235,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void closingDown();
 
-    /** Indicates that a new resource was added */
-    void resourceAdded( ResourceCalendar * );
-
   public slots:
     /**
       Options dialog made a changed to the configuration. we catch this
@@ -252,9 +242,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void updateConfig();
 
-    void setDestinationPolicy();
-
-    void processIncidenceSelection( Incidence *incidence, const QDate &date );
+    void processIncidenceSelection( const Akonadi::Item &item, const QDate &date );
     void keyBindings();
 
     /**
@@ -322,15 +310,12 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void showTipOnStart();
 
     void downloadNewStuff();
-    void uploadNewStuff();
 
     void toggleDateNavigator();
     void toggleTodoView();
     void toggleEventViewer();
     void toggleResourceView();
 
-    /** called by the autoSaveTimer to automatically save the calendar */
-    void checkAutoSave();
 
     /** connected to CalendarView's signal which comes from the ArchiveDialog */
     void slotAutoArchivingSettingsModified();
@@ -346,13 +331,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void slotImportDialogFinished( ImportDialog * );
 
+    void agentCreated( KJob* );
+
   protected:
     /** Get URL for saving. Opens FileDialog. */
     KUrl getSaveURL();
 
     void showStatusMessageOpen( const KUrl &url, bool merge );
-
-    void initCalendar( Calendar *cal );
 
     /**
       Return widget used as parent for dialogs and message boxes.
@@ -362,7 +347,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
   private slots:
     void dumpText( const QString & );  // only for debugging purposes
 
+    void slotResourcesChanged(bool);
     void slotChangeComboActionItem(int);
+    void slotNewStuffDownloaded(KJob *job);
 
   private:
     class ActionStringsVisitor;
@@ -377,7 +364,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     QString mLastUrl;        // URL of last loaded calendar.
 
     KTemporaryFile *mTempFile;
-    QTimer *mAutoSaveTimer;    // used if calendar is to be autosaved
     QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
@@ -388,10 +374,16 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     KToggleAction *mDateNavigatorShowAction;
     KToggleAction *mTodoViewShowAction;
-    KToggleAction *mResourceViewShowAction;
+    KToggleAction *mCollectionViewShowAction;
     KToggleAction *mEventViewerShowAction;
 
     KToggleAction *mHideMenuBarAction;
+
+    KAction *mNewEventAction;
+    KAction *mNewTodoAction;
+    KAction *mNewSubtodoAction;
+    KAction *mNewJournalAction;
+    KAction *mConfigureViewAction;
 
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
@@ -418,12 +410,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
-    // Either mCalendar *or* mCalendarResources is set.
-    Calendar *mCalendar;
-    CalendarResources *mCalendarResources;
-
-    ResourceView *mResourceView;
-
+    Akonadi::CalendarModel *mCalendarModel;
+    Akonadi::Calendar *mCalendar;
+    AkonadiCollectionView *mCollectionView;
+    Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
+    Akonadi::EntityModelStateSaver *mCollectionSelectionModelStateSaver;
     bool mIsClosing;
 };
 

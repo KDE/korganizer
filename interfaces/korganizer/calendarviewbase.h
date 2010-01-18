@@ -24,9 +24,15 @@
 
 #include <QtGui/QWidget>
 
-#include <kcal/calendar.h>
-
 #include <korganizer/baseview.h>
+#include <korganizer/incidencechangerbase.h>
+
+namespace Akonadi {
+  class Item;
+  class Calendar;
+}
+
+class KOIncidenceEditor;
 
 namespace KOrg {
 
@@ -40,21 +46,30 @@ class CalendarViewBase : public QWidget
     explicit CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
     virtual ~CalendarViewBase() {}
 
-    virtual KCal::Calendar *calendar() = 0;
+    virtual Akonadi::Calendar *calendar() = 0;
+    virtual IncidenceChangerBase *incidenceChanger() const = 0;
 
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;
 
-    virtual Incidence *currentSelection() = 0;
+    virtual Akonadi::Item currentSelection() = 0;
 
     virtual void addView( KOrg::BaseView * ) = 0;
 
     /** changes the view to be the currently selected view */
     virtual void showView( KOrg::BaseView * ) = 0;
 
+    virtual bool editIncidence( const Akonadi::Item &item, bool isCounter = false ) = 0;
+
+    virtual KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const = 0;
+
   public Q_SLOTS:
     virtual void updateView() = 0;
     virtual void updateCategories() = 0;
+
+  signals:
+    virtual void newIncidenceChanger( IncidenceChangerBase * ) = 0;
+
 };
 
 }

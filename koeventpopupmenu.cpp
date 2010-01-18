@@ -25,31 +25,25 @@
 
 #include "koeventpopupmenu.h"
 #include "actionmanager.h"
-#include "calendarview.h"
-#ifndef KORG_NOPRINTER
 #include "calprinter.h"
-#endif
 #include "kocorehelper.h"
 #include "koglobals.h"
-#include "stdcalendar.h"
-#include "incidencechanger.h"
+#include "koeventview.h"
 
-#include <KCal/CalendarResources>
-#include <KCal/CalFormat>
-#include <KCal/Event>
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/Incidence>
-#include <KCal/Journal>
-#include <KCal/Todo>
 
 #include <KActionCollection>
 #include <KLocale>
 
-KOEventPopupMenu::KOEventPopupMenu()
-  : mCopyToCalendarMenu( 0 ), mMoveToCalendarMenu( 0 )
+using namespace Akonadi;
+using namespace KCal;
+
+KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
+  : QMenu( eventview ), mEventview( eventview ),
+    mCopyToCalendarMenu( 0 ), mMoveToCalendarMenu( 0 )
 {
-  mCalendar = 0;
-  mCurrentIncidence = 0;
-  mCurrentDate = QDate();
   mHasAdditionalItems = false;
 
   addAction( KOGlobals::self()->smallIcon( "document-preview" ), i18n( "&Show" ),
@@ -57,13 +51,11 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append(
     addAction( KOGlobals::self()->smallIcon( "document-edit" ), i18n( "&Edit..." ),
                this, SLOT( popupEdit() ) ) );
-#ifndef KORG_NOPRINTER
   mEditOnlyItems.append( addSeparator() );
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT( print() ) );
   addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
              this, SLOT( printPreview() ) );
-#endif
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-cut" ),
@@ -98,11 +90,15 @@ KOEventPopupMenu::KOEventPopupMenu()
              this, SLOT(forward()) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDate &qd )
 {
-  mCalendar = cal;
-  mCurrentIncidence = incidence;
+  mCurrentIncidence = item;
   mCurrentDate = qd;
+
+  if ( !Akonadi::hasIncidence( mCurrentIncidence ) && qd.isValid() ) {
+    kDebug() << "No event selected";
+    return;
+  }
 
   if ( mCopyToCalendarMenu ) {
     removeAction( mCopyToCalendarMenu->menuAction() );
@@ -115,112 +111,95 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
     mMoveToCalendarMenu = 0;
   }
 
-  if ( mCurrentIncidence && qd.isValid() ) {
-
-    if ( mCurrentIncidence->recurs() ) {
-      KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
-      bool isLastOccurrence =
-        !mCurrentIncidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
-      bool isFirstOccurrence =
-        !mCurrentIncidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
-      mDissociateOccurrences->setEnabled(
-        !( isFirstOccurrence && isLastOccurrence ) &&
-        !mCurrentIncidence->isReadOnly() );
-    }
-
-    // Enable/Disabled menu items only valid for editable events.
-    QList<QAction *>::Iterator it;
-    for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-      (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
-    }
-    for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
-      (*it)->setVisible( mCurrentIncidence->recurs() );
-    }
-    for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
-      (*it)->setVisible( mCurrentIncidence->type() == "Todo" );
-      (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
-    }
-
-    // If we can determine the resource for the selected incidence, also add
-    // menu selections for moving/copying that incidence to another resource.
-    if ( KOrg::StdCalendar::self()->resource( mCurrentIncidence ) ) {
-      if ( hasOtherWriteableCalendars() ) {
-        mCopyToCalendarMenu = buildCalendarCopyMenu();
-        addMenu( mCopyToCalendarMenu );
-      }
-      if ( !mCurrentIncidence->isReadOnly() && hasOtherWriteableCalendars() ) {
-        mMoveToCalendarMenu = buildCalendarMoveMenu();
-        addMenu( mMoveToCalendarMenu );
-      }
-    }
-
-    popup( QCursor::pos() );
-  } else {
-    kDebug() << "No event selected";
+  Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
+  Q_ASSERT( incidence );
+  if ( incidence->recurs() ) {
+    KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
+    bool isLastOccurrence =
+      !incidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
+    bool isFirstOccurrence =
+      !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
+    mDissociateOccurrences->setEnabled(
+      !( isFirstOccurrence && isLastOccurrence ) &&
+      !incidence->isReadOnly() );
   }
+
+  // Enable/Disabled menu items only valid for editable events.
+  QList<QAction *>::Iterator it;
+  for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
+    (*it)->setEnabled( !incidence->isReadOnly() );
+  }
+  for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
+    (*it)->setVisible( incidence->recurs() );
+  }
+  for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
+    (*it)->setVisible( incidence->type() == "Todo" );
+    (*it)->setEnabled( !incidence->isReadOnly() );
+  }
+  popup( QCursor::pos() );
 }
 
 void KOEventPopupMenu::popupShow()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit showIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupEdit()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit editIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::print()
 {
-#ifndef KORG_NOPRINTER
   KOCoreHelper helper;
-  CalPrinter printer( this, mCalendar, &helper );
+  CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
-  Incidence::List selectedIncidences;
-  selectedIncidences.append( mCurrentIncidence );
+  //Item::List selectedIncidences;
+  KCal::ListBase<KCal::Incidence> selectedIncidences;
+  Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
+  selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
-#endif
 }
 
 void KOEventPopupMenu::printPreview()
 {
-#ifndef KORG_NOPRINTER
   KOCoreHelper helper;
-  CalPrinter printer( this, mCalendar, &helper );
+  CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
-  Incidence::List selectedIncidences;
-  selectedIncidences.append( mCurrentIncidence );
+  //Item::List selectedIncidences;
+  KCal::ListBase<KCal::Incidence> selectedIncidences;
+  Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
+  selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, true );
-#endif
 }
 
 void KOEventPopupMenu::popupDelete()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit deleteIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupCut()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit cutIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupCopy()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit copyIncidenceSignal( mCurrentIncidence );
   }
 }
@@ -232,14 +211,14 @@ void KOEventPopupMenu::popupPaste()
 
 void KOEventPopupMenu::toggleAlarm()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit toggleAlarmSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::dissociateOccurrences()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit dissociateOccurrencesSignal( mCurrentIncidence, mCurrentDate );
   }
 }
@@ -247,7 +226,7 @@ void KOEventPopupMenu::dissociateOccurrences()
 void KOEventPopupMenu::forward()
 {
   KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
-  if ( !w || !mCurrentIncidence ) {
+  if ( !w || !Akonadi::hasIncidence( mCurrentIncidence ) ) {
     return;
   }
 
@@ -262,11 +241,12 @@ void KOEventPopupMenu::forward()
 
 void KOEventPopupMenu::toggleTodoCompleted()
 {
-  if ( mCurrentIncidence && mCurrentIncidence->type() == "Todo" ) {
+  if ( Akonadi::hasTodo( mCurrentIncidence ) ) {
     emit toggleTodoCompletedSignal( mCurrentIncidence );
   }
 }
 
+#ifdef AKONADI_PORT_DISABLED
 bool KOEventPopupMenu::isResourceWritable( const ResourceCalendar *resource ) const
 {
   const bool isCurrentIncidenceOwner =
@@ -278,11 +258,13 @@ bool KOEventPopupMenu::isResourceWritable( const ResourceCalendar *resource ) co
     !resource->readOnly() &&
     ( !isCurrentIncidenceOwner || resource->subresources().size() > 2 );
 }
+#endif
 
 QMenu *KOEventPopupMenu::buildCalendarCopyMenu()
 {
   QMenu *const resourceMenu = new QMenu( i18n( "C&opy to Calendar" ), this );
   resourceMenu->setIcon( KIcon( "edit-copy" ) );
+#ifdef AKONADI_PORT_DISABLED
   KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
   KCal::CalendarResourceManager::Iterator it;
   for ( it = manager->begin(); it != manager->end(); ++it ) {
@@ -299,6 +281,7 @@ QMenu *KOEventPopupMenu::buildCalendarCopyMenu()
   }
   connect( resourceMenu, SIGNAL(triggered(QAction*)),
            this, SLOT(copyIncidenceToResource(QAction*)) );
+#endif
   return resourceMenu;
 }
 
@@ -306,6 +289,7 @@ QMenu *KOEventPopupMenu::buildCalendarMoveMenu()
 {
   QMenu *const resourceMenu = new QMenu( i18n( "&Move to Calendar" ), this );
   resourceMenu->setIcon( KIcon( "go-jump" ) );
+#ifdef AKONADI_PORT_DISABLED
   KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
   KCal::CalendarResourceManager::Iterator it;
   for ( it = manager->begin(); it != manager->end(); ++it ) {
@@ -322,11 +306,13 @@ QMenu *KOEventPopupMenu::buildCalendarMoveMenu()
   }
   connect( resourceMenu, SIGNAL(triggered(QAction*)),
            this, SLOT(moveIncidenceToResource(QAction*)) );
+#endif
   return resourceMenu;
 }
 
 bool KOEventPopupMenu::hasOtherWriteableCalendars() const
 {
+#ifdef AKONADI_PORT_DISABLED
   KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
   KCal::CalendarResourceManager::Iterator it;
   for ( it = manager->begin(); it != manager->end(); ++it ) {
@@ -335,23 +321,28 @@ bool KOEventPopupMenu::hasOtherWriteableCalendars() const
       return true;
     }
   }
+#endif
   return false;
 }
 
 void KOEventPopupMenu::copyIncidenceToResource( QAction *action )
 {
+#ifdef AKONADI_PORT_DISABLED
   const QString resourceId = action->data().toString();
   if ( mCurrentIncidence && !resourceId.isEmpty() ) {
     emit copyIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
+#endif
 }
 
 void KOEventPopupMenu::moveIncidenceToResource( QAction *action )
 {
+#ifdef AKONADI_PORT_DISABLED
   const QString resourceId = action->data().toString();
   if ( mCurrentIncidence && !resourceId.isEmpty() ) {
     emit moveIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
+#endif
 }
 
 #include "koeventpopupmenu.moc"

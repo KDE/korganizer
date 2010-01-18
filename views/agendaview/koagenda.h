@@ -27,6 +27,8 @@
 #include "koeventview.h"
 #include <kcal/incidence.h>
 
+#include <Akonadi/Item>
+
 #include <q3scrollview.h>
 #include <QFrame>
 #include <QList>
@@ -46,6 +48,11 @@ class QResizeEvent;
 class QTime;
 class QWheelEvent;
 
+namespace Akonadi
+{
+  class Calendar;
+}
+
 namespace KOrg {
   class IncidenceChangerBase;
 }
@@ -54,7 +61,6 @@ using namespace KOrg;
 namespace KCal {
   class Event;
   class Todo;
-  class Calendar;
 }
 using namespace KCal;
 
@@ -88,7 +94,7 @@ class KOAgenda : public Q3ScrollView
                         QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
-    Incidence *selectedIncidence() const;
+    Akonadi::Item selectedIncidence() const;
     QDate selectedIncidenceDate() const;
 
     /**
@@ -96,7 +102,7 @@ class KOAgenda : public Q3ScrollView
       persists across reloads and clear, so that if the same uid
       reappears, it can be reselected.
     */
-    const QString lastSelectedUid() const;
+    Akonadi::Item::Id lastSelectedItemId() const;
 
     bool eventFilter ( QObject *, QEvent * );
 
@@ -114,11 +120,11 @@ class KOAgenda : public Q3ScrollView
 
     void setStartTime( const QTime &startHour );
 
-    KOAgendaItem *insertItem ( Incidence *incidence, const QDate &qd, int X, int YTop,
+    KOAgendaItem *insertItem ( const Akonadi::Item &incidence, const QDate &qd, int X, int YTop,
                                int YBottom );
-    KOAgendaItem *insertAllDayItem ( Incidence *event, const QDate &qd, int XBegin,
+    KOAgendaItem *insertAllDayItem ( const Akonadi::Item &event, const QDate &qd, int XBegin,
                                      int XEnd );
-    void insertMultiItem ( Event *event, const QDate &qd, int XBegin, int XEnd,
+    void insertMultiItem ( const Akonadi::Item &event, const QDate &qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
     /**
@@ -128,7 +134,7 @@ class KOAgenda : public Q3ScrollView
       slot deleteItemsToDelete() (called by QTimer::singleShot ).
       @param incidence The pointer to the incidence that should be removed.
     */
-    void removeIncidence( Incidence *incidence );
+    void removeIncidence( const Akonadi::Item &incidence );
 
     void changeColumns( int columns );
 
@@ -151,10 +157,12 @@ class KOAgenda : public Q3ScrollView
     void setDateList( const DateList &selectedDates );
     DateList dateList() const;
 
-    void setCalendar( Calendar *cal )
+    void setCalendar( Akonadi::Calendar *cal )
     { mCalendar = cal; }
     void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
+
+    QList<KOAgendaItem*> agendaItems( const Akonadi::Item &item ) const;
 
   public slots:
     void scrollUp();
@@ -175,12 +183,14 @@ class KOAgenda : public Q3ScrollView
     void selectItem( KOAgendaItem * );
 
     /**
-      Selects the item associated with a given uid.
+      Selects the item associated with a given Akonadi Item id.
       Linear search, use carefully.
-      @param uid the UID of the item that should be selected. If no such
+      @param id the item id of the item that should be selected. If no such
       item exists, the selection is not changed.
     */
-    void selectItemByUID( const QString &uid );
+    void selectItemByItemId( const Akonadi::Item::Id &id );
+    void selectItem( const Akonadi::Item& item );
+
     bool removeAgendaItem( KOAgendaItem *item );
     void showAgendaItem( KOAgendaItem *item );
 
@@ -189,22 +199,23 @@ class KOAgenda : public Q3ScrollView
     void newTimeSpanSignal( const QPoint &, const QPoint & );
     void newStartSelectSignal();
 
-    void showIncidenceSignal( Incidence * );
-    void editIncidenceSignal( Incidence * );
-    void deleteIncidenceSignal( Incidence * );
-    void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
+    void showIncidenceSignal( const Akonadi::Item & );
+    void editIncidenceSignal( const Akonadi::Item & );
+    void deleteIncidenceSignal( const Akonadi::Item & );
+    void showIncidencePopupSignal( const Akonadi::Item &, const QDate &);
     void showNewEventPopupSignal();
 
     void itemModified( KOAgendaItem *item );
-    void incidenceSelected( Incidence *, const QDate & );
+    void incidenceSelected( const Akonadi::Item &, const QDate & );
     void startMultiModify( const QString & );
     void endMultiModify();
 
     void lowerYChanged( int );
     void upperYChanged( int );
 
-    void startDragSignal( Incidence * );
-    void droppedToDo( Todo *todo, const QPoint &gpos, bool allDay );
+    void startDragSignal( const Akonadi::Item & );
+    void droppedToDos( const QList<KCal::Todo::Ptr> &todo, const QPoint &gpos, bool allDay );
+    void droppedToDos( const QList<KUrl> &todo, const QPoint &gpos, bool allDay );
 
     void enableAgendaUpdate( bool enable );
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation );
@@ -329,7 +340,7 @@ class KOAgenda : public Q3ScrollView
     bool mAllDayMode;
 
     // We need the calendar for drag'n'drop and for paint the ResourceColor
-    Calendar *mCalendar;
+    Akonadi::Calendar *mCalendar;
 
     // Width and height of agenda cells. mDesiredGridSpacingY is the height
     // set in the config. The actual height might be larger since otherwise
@@ -380,10 +391,10 @@ class KOAgenda : public Q3ScrollView
 
     // Currently selected item
     QPointer<KOAgendaItem> mSelectedItem;
-    // Uid of the last selected item. Used for reselecting in situations
+    // Id of the last selected item. Used for reselecting in situations
     // where the selected item points to a no longer valid incidence, for
     // example during resource reload.
-    QString mSelectedUid;
+    Akonadi::Item::Id mSelectedId;
 
     // The Marcus Bains Line widget.
     MarcusBains *mMarcusBains;

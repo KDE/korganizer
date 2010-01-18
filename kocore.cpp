@@ -89,13 +89,11 @@ KService::List KOCore::availableParts()
   return availablePlugins( KOrg::Part::serviceType(), KOrg::Part::interfaceVersion() );
 }
 
-#ifndef KORG_NOPRINTER
 KService::List KOCore::availablePrintPlugins()
 {
   return
     availablePlugins( KOrg::PrintPlugin::serviceType(), KOrg::PrintPlugin::interfaceVersion() );
 }
-#endif
 
 KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
@@ -195,7 +193,6 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   return pluginFactory->createPluginFactory( parent );
 }
 
-#ifndef KORG_NOPRINTER
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
 {
   kDebug() << service->library();
@@ -222,7 +219,6 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
 
   return pluginFactory->createPluginFactory();
 }
-#endif
 
 void KOCore::addXMLGUIClient( QWidget *wdg, KXMLGUIClient *guiclient )
 {
@@ -236,6 +232,8 @@ void KOCore::removeXMLGUIClient( QWidget *wdg )
 
 KXMLGUIClient *KOCore::xmlguiClient( QWidget *wdg ) const
 {
+  if ( !wdg )
+    return 0;
   QWidget *topLevel = wdg->topLevelWidget();
   QMap<QWidget*, KXMLGUIClient*>::ConstIterator it = mXMLGUIClients.find( topLevel );
   if ( it != mXMLGUIClients.constEnd() ) {
@@ -257,7 +255,6 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
   return 0;
 }
 
-#ifndef KORG_NOPRINTER
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
 {
   KService::List list = availablePrintPlugins();
@@ -269,7 +266,6 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
   }
   return 0;
 }
-#endif
 
 KOrg::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
 {
@@ -318,7 +314,6 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
   return parts;
 }
 
-#ifndef KORG_NOPRINTER
 KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 {
   KOrg::PrintPlugin::List loadedPlugins;
@@ -337,7 +332,6 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
   }
   return loadedPlugins;
 }
-#endif
 
 void KOCore::unloadPlugins()
 {

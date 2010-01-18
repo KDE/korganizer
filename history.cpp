@@ -24,8 +24,8 @@
 */
 
 #include "history.h"
+#include <akonadi/kcal/calendar.h>
 
-#include <kcal/calendar.h>
 #include <kcal/incidence.h>
 
 #include <klocale.h>
@@ -33,7 +33,7 @@
 using namespace KCal;
 using namespace KOrg;
 
-History::History( Calendar *calendar )
+History::History( Akonadi::Calendar *calendar )
   : mCalendar( calendar ), mCurrentMultiEntry( 0 )
 {
 }
@@ -143,7 +143,7 @@ void History::endMultiModify()
   mCurrentMultiEntry = 0;
 }
 
-History::Entry::Entry( Calendar *calendar )
+History::Entry::Entry( Akonadi::Calendar *calendar )
   : mCalendar( calendar )
 {
 }
@@ -152,7 +152,7 @@ History::Entry::~Entry()
 {
 }
 
-History::EntryDelete::EntryDelete( Calendar *calendar, Incidence *incidence )
+History::EntryDelete::EntryDelete( Akonadi::Calendar *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
@@ -164,14 +164,18 @@ History::EntryDelete::~EntryDelete()
 
 void History::EntryDelete::undo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   // TODO: Use the proper resource instead of asking!
   mCalendar->addIncidence( mIncidence->clone() );
+#endif
 }
 
 void History::EntryDelete::redo()
 {
+#ifdef AKONADI_PORT_DISABLED
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
   mCalendar->deleteIncidence( incidence );
+#endif
 }
 
 QString History::EntryDelete::text()
@@ -179,7 +183,7 @@ QString History::EntryDelete::text()
   return i18n( "Delete %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryAdd::EntryAdd( Calendar *calendar, Incidence *incidence )
+History::EntryAdd::EntryAdd( Akonadi::Calendar *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
@@ -191,16 +195,20 @@ History::EntryAdd::~EntryAdd()
 
 void History::EntryAdd::undo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
+#endif
 }
 
 void History::EntryAdd::redo()
 {
+#ifdef AKONADI_PORT_DISABLED
   // TODO: User the proper resource instead of asking again
   mCalendar->addIncidence( mIncidence->clone() );
+#endif
 }
 
 QString History::EntryAdd::text()
@@ -208,7 +216,7 @@ QString History::EntryAdd::text()
   return i18n( "Add %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryEdit::EntryEdit( Calendar *calendar, Incidence *oldIncidence,
+History::EntryEdit::EntryEdit( Akonadi::Calendar *calendar, Incidence *oldIncidence,
                                Incidence *newIncidence )
   : Entry( calendar ), mOldIncidence( oldIncidence->clone() ),
     mNewIncidence( newIncidence->clone() )
@@ -223,22 +231,26 @@ History::EntryEdit::~EntryEdit()
 
 void History::EntryEdit::undo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   Incidence *incidence = mCalendar->incidence( mNewIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mOldIncidence->clone() );
+#endif
 }
 
 void History::EntryEdit::redo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   Incidence *incidence = mCalendar->incidence( mOldIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mNewIncidence->clone() );
+#endif
 }
 
 QString History::EntryEdit::text()
@@ -246,7 +258,7 @@ QString History::EntryEdit::text()
   return i18n( "Edit %1", QString::fromLatin1( mNewIncidence->type() ) );
 }
 
-History::MultiEntry::MultiEntry( Calendar *calendar, const QString &text )
+History::MultiEntry::MultiEntry( Akonadi::Calendar *calendar, const QString &text )
   : Entry( calendar ), mText( text )
 {
 }

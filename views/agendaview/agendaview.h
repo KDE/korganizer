@@ -28,7 +28,7 @@ class AgendaView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit AgendaView( Calendar *cal, QWidget *parent = 0 );
+    explicit AgendaView( QWidget *parent = 0 );
 
   public slots:
     virtual void setUpdateNeeded() = 0;

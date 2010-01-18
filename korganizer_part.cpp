@@ -29,9 +29,12 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
-#include "stdcalendar.h"
 
 #include <KCal/IncidenceFormatter>
+
+#include <akonadi/kcal/utils.h>
+
+#include <akonadi/item.h>
 
 #include <KAboutData>
 #include <KStatusBar>
@@ -55,7 +58,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   KGlobal::locale()->insertCatalog( "libkcal" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
   KGlobal::locale()->insertCatalog( "kdgantt1" );
-  KGlobal::locale()->insertCatalog( "libkresources" );
+  KGlobal::locale()->insertCatalog( "libakonadi" );
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
@@ -68,15 +71,9 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   mActionManager = new ActionManager( this, mView, this, this, true );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
-  if ( KGlobal::mainComponent().componentName() == QLatin1String( "kontact" ) ) {
-    mActionManager->createCalendarResources();
-    setHasDocument( false );
-    KOrg::StdCalendar::self()->load();
-    mView->updateCategories();
-  } else {
-    mActionManager->createCalendarLocal();
-    setHasDocument( true );
-  }
+  mActionManager->createCalendarAkonadi();
+  setHasDocument( false );
+  mView->updateCategories();
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 
@@ -86,8 +83,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   topLayout->addWidget( mView );
   topLayout->setMargin( 0 );
 
-  connect( mView, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           SLOT(slotChangeInfo(Incidence *,const QDate &)) );
+  connect( mView, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
+           SLOT(slotChangeInfo(const Akonadi::Item &, const QDate &)) );
 
   mActionManager->init();
   mActionManager->readSettings();
@@ -99,7 +96,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 
 KOrganizerPart::~KOrganizerPart()
 {
-  mActionManager->saveCalendar();
   mActionManager->writeSettings();
 
   delete mActionManager;
@@ -110,9 +106,10 @@ KOrganizerPart::~KOrganizerPart()
   KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
 }
 
-void KOrganizerPart::slotChangeInfo( Incidence *incidence, const QDate &date )
+void KOrganizerPart::slotChangeInfo( const Akonadi::Item &item, const QDate &date )
 {
   Q_UNUSED( date );
+  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
                       IncidenceFormatter::timeToString( incidence->dtStart() ) );
