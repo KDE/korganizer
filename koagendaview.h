@@ -154,7 +154,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     /* reimplmented from KCal::Calendar::Observer */
     void calendarIncidenceAdded( Incidence *incidence );
     void calendarIncidenceChanged( Incidence *incidence );
-    void calendarIncidenceRemoved( Incidence *incidence );
+    void calendarIncidenceDeleted( Incidence *incidence );
 
   public slots:
     virtual void updateView();

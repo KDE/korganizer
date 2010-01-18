@@ -348,7 +348,7 @@ void KODayMatrix::calendarIncidenceChanged(Incidence * incidence)
   mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceRemoved(Incidence * incidence)
+void KODayMatrix::calendarIncidenceDeleted(Incidence * incidence)
 {
   mPendingChanges = true;
 }
