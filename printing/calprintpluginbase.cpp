@@ -650,79 +650,78 @@ void CalPrintPluginBase::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
 }
 
 
-void CalPrintPluginBase::drawTimeLine(QPainter &p,
-    const QTime &fromTime, const QTime &toTime,
-    const QRect &box)
+void CalPrintPluginBase::drawTimeLine( QPainter &p, const QTime &fromTime,
+                                       const QTime &toTime, const QRect &box )
 {
   drawBox( p, BOX_BORDER_WIDTH, box );
 
-  int totalsecs=fromTime.secsTo(toTime);
-  float minlen=(float)box.height()*60./(float)totalsecs;
-  float cellHeight=(60.*(float)minlen);
-  float currY=box.top();
+  int totalsecs = fromTime.secsTo( toTime );
+  float minlen = (float)box.height() * 60. / (float)totalsecs;
+  float cellHeight = ( 60. * (float)minlen );
+  float currY = box.top();
   // TODO: Don't use half of the width, but less, for the minutes!
-  int xcenter = box.left()+box.width()/2;
+  int xcenter = box.left() + box.width() / 2;
 
   QTime curTime( fromTime );
   QTime endTime( toTime );
-  if ( fromTime.minute() > 30 )
+  if ( fromTime.minute() > 30 ) {
     curTime = QTime( fromTime.hour()+1, 0, 0 );
-  else if ( fromTime.minute() > 0 ) {
+  } else if ( fromTime.minute() > 0 ) {
     curTime = QTime( fromTime.hour(), 30, 0 );
-    float yy = currY + minlen*(float)fromTime.secsTo( curTime )/60.;
+    float yy = currY + minlen * (float)fromTime.secsTo( curTime ) / 60.;
     p.drawLine( xcenter, (int)yy, box.right(), (int)yy );
-    curTime = QTime( fromTime.hour()+1, 0, 0 );
+    curTime = QTime( fromTime.hour() + 1, 0, 0 );
   }
-  currY += ( float( fromTime.secsTo(curTime)*minlen ) / 60. );
+  currY += ( float( fromTime.secsTo( curTime ) * minlen ) / 60. );
 
   while ( curTime < endTime ) {
     p.drawLine( box.left(), (int)currY, box.right(), (int)currY );
-    int newY=(int)(currY+cellHeight/2.);
+    int newY = (int)( currY + cellHeight / 2. );
     QString numStr;
     if ( newY < box.bottom() ) {
       QFont oldFont( p.font() );
       // draw the time:
       if ( !KGlobal::locale()->use12Clock() ) {
-        p.drawLine( xcenter, (int)newY, box.right(), (int)newY);
-        numStr.setNum(curTime.hour());
-        if (cellHeight > 30) {
-          p.setFont(QFont("sans-serif", 16, QFont::Bold));
+        p.drawLine( xcenter, (int)newY, box.right(), (int)newY );
+        numStr.setNum( curTime.hour() );
+        if  ( cellHeight > 30 ) {
+          p.setFont( QFont( "sans-serif", 14, QFont::Bold ) );
         } else {
-          p.setFont(QFont("sans-serif", 12, QFont::Bold));
+          p.setFont( QFont( "sans-serif", 12, QFont::Bold ) );
         }
-        p.drawText( box.left()+2, (int)currY+2, box.width()/2-2, (int)cellHeight,
-                  Qt::AlignTop | Qt::AlignRight, numStr);
-        p.setFont(QFont("sans-serif", 10, QFont::Normal));
-        p.drawText( xcenter, (int)currY+2, box.width()/2+2, (int)(cellHeight/2)-3,
-                  Qt::AlignTop | Qt::AlignLeft, "00");
+        p.drawText( box.left() + 4, (int)currY + 2, box.width() / 2 - 2, (int)cellHeight,
+                    Qt::AlignTop | Qt::AlignRight, numStr );
+        p.setFont( QFont ( "helvetica", 10, QFont::Normal ) );
+        p.drawText( xcenter + 4, (int)currY + 2, box.width() / 2 + 2, (int)(cellHeight / 2 ) - 3,
+                    Qt::AlignTop | Qt::AlignLeft, "00" );
       } else {
-        p.drawLine( box.left(), (int)newY, box.right(), (int)newY);
+        p.drawLine( box.left(), (int)newY, box.right(), (int)newY );
         QTime time( curTime.hour(), 0 );
         numStr = KGlobal::locale()->formatTime( time );
         if ( box.width() < 60 ) {
-          p.setFont(QFont("sans-serif", 8, QFont::Bold)); // for weekprint
+          p.setFont( QFont( "sans-serif", 7, QFont::Bold ) ); // for weekprint
         } else {
-          p.setFont(QFont("sans-serif", 12, QFont::Bold)); // for dayprint
+          p.setFont( QFont( "sans-serif", 12, QFont::Bold ) ); // for dayprint
         }
-        p.drawText(box.left()+2, (int)currY+2, box.width()-4, (int)cellHeight/2-3,
-                  Qt::AlignTop|Qt::AlignLeft, numStr);
+        p.drawText( box.left() + 2, (int)currY + 2, box.width() - 4, (int)cellHeight / 2 - 3,
+                    Qt::AlignTop|Qt::AlignLeft, numStr );
       }
-      currY+=cellHeight;
+      currY += cellHeight;
       p.setFont( oldFont );
     } // enough space for half-hour line and time
-    if (curTime.secsTo(endTime)>3600)
-      curTime=curTime.addSecs(3600);
-    else curTime=endTime;
+    if ( curTime.secsTo( endTime ) > 3600 ) {
+      curTime = curTime.addSecs( 3600 );
+    } else {
+      curTime = endTime;
+    }
   } // currTime<endTime
 }
 
-
-///////////////////////////////////////////////////////////////////////////////
-
-/** prints the all-day box for the agenda print view. if expandable is set,
-    height is the cell height of a single cell, and the returned height will
-    be the total height used for the all-day events. If !expandable, only one
-    cell will be used, and multiple events are concatenated using ", ".
+/**
+  prints the all-day box for the agenda print view. if expandable is set,
+  height is the cell height of a single cell, and the returned height will
+  be the total height used for the all-day events. If !expandable, only one
+  cell will be used, and multiple events are concatenated using ", ".
 */
 int CalPrintPluginBase::drawAllDayBox(QPainter &p, Event::List &eventList,
     const QDate &qd, bool expandable, const QRect &box )
