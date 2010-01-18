@@ -546,13 +546,13 @@ int CalPrintPluginBase::drawHeader( QPainter &p, QString title,
 
 int CalPrintPluginBase::drawFooter( QPainter &p, QRect &footbox )
 {
-  // Print the timestamp
-  QFont stampFont("sans-serif", 10, QFont::Normal, true );
-  p.setFont( stampFont );
-  QDateTime now = QDateTime::currentDateTime();
-  QString str = i18n( "printed %1" ).
-                arg( KGlobal::locale()->formatDateTime( now ) );
-  p.drawText( footbox, Qt::AlignRight | Qt::AlignVCenter, str );
+  QFont oldfont( p.font() );
+  p.setFont( QFont( "sans-serif", 6 ) );
+  QFontMetrics fm( p.font() );
+  QString dateStr = KGlobal::locale()->formatDateTime( QDateTime::currentDateTime() );
+  p.drawText( footbox, Qt::AlignCenter | Qt::AlignVCenter | Qt::SingleLine,
+              i18n( "print date: formatted-datetime", "printed: %1" ).arg( dateStr ) );
+  p.setFont( oldfont );
 
   return footbox.bottom();
 }
