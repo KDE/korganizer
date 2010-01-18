@@ -956,7 +956,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   Event::List eventList = mCalendar->events( qd,
                                              EventSortStartDate,
                                              SortDirectionAscending );
-  QString text;
+  QString timeText;
   p.setFont( QFont( "sans-serif", 8 ) );
 
   int textY=mSubHeaderHeight+3; // gives the relative y-coord of the next printed entry
@@ -966,11 +966,13 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     Event *currEvent = *it;
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily  ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
-      continue; }
-    if ( currEvent->doesFloat() || currEvent->isMultiDay() )
-      text = "";
-    else
-      text = local->formatTime( currEvent->dtStart().time() );
+      continue;
+    }
+    if ( currEvent->doesFloat() || currEvent->isMultiDay() ) {
+      timeText = "";
+    } else {
+      timeText = local->formatTime( currEvent->dtStart().time() );
+    }
 
     QString str;
     if ( !currEvent->location().isEmpty() ) {
@@ -979,29 +981,45 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     } else {
       str = currEvent->summary();
     }
-    drawIncidence( p, box, text, str, textY );
+    drawIncidence( p, box, timeText, str, textY );
   }
 
-  if ( textY<box.height() ) {
+  if ( textY < box.height() ) {
     Todo::List todos = mCalendar->todos( qd );
     Todo::List::ConstIterator it2;
-    for( it2 = todos.begin(); it2 != todos.end() && textY<box.height(); ++it2 ) {
+    for ( it2 = todos.begin(); it2 != todos.end() && textY <box.height(); ++it2 ) {
       Todo *todo = *it2;
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily  ) ||
-           ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) )
+           ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
         continue;
-      if ( todo->hasDueDate() && !todo->doesFloat() )
-        text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";
-      else
-        text = "";
-      QString str;
-      if ( !todo->location().isEmpty() ) {
-        str = i18n( "summary, location", "%1, %2" ).
-                    arg( todo->summary() ).arg( todo->location() );
-      } else {
-        str = todo->summary();
       }
-      drawIncidence( p, box, text, i18n("To-do: %1").arg(str), textY );
+      if ( todo->hasStartDate() && !todo->doesFloat() ) {
+        timeText = KGlobal::locale()->formatTime( todo->dtStart().time() ) + " ";
+      } else {
+        timeText = "";
+      }
+      QString summaryStr;
+      if ( !todo->location().isEmpty() ) {
+        summaryStr = i18n( "summary, location", "%1, %2" ).
+                     arg( todo->summary() ).arg( todo->location() );
+      } else {
+        summaryStr = todo->summary();
+      }
+      QString str;
+      if ( todo->hasDueDate() ) {
+        if ( !todo->doesFloat() ) {
+          str = i18n( "%1 (Due: %2)" ).
+                arg( summaryStr ).
+                arg( KGlobal::locale()->formatDateTime( todo->dtDue() ) );
+        } else {
+          str = i18n( "%1 (Due: %2)" ).
+                arg( summaryStr ).
+                arg( KGlobal::locale()->formatDate( todo->dtDue().date(), true ) );
+        }
+      } else {
+        str = summaryStr;
+      }
+      drawIncidence( p, box, timeText, i18n("To-do: %1").arg( str ), textY );
     }
   }
 
