@@ -198,7 +198,7 @@ void AkonadiCollectionView::newCalendar()
   Akonadi::AgentTypeDialog dlg( this );
   dlg.setWindowTitle( i18n( "Add Calendar" ) );
   dlg.agentFilterProxyModel()->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
-  //dlg.agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
+  dlg.agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
   if ( dlg.exec() ) {
     const Akonadi::AgentType agentType = dlg.agentType();
     if ( agentType.isValid() ) {
