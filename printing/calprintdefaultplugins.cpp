@@ -1443,7 +1443,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   }
 
   Akonadi::SortDirection sortDirection = Akonadi::SortDirectionAscending;
-  switch( mSortDirection ) {
+  switch( mTodoSortDirection ) {
   case TodoDirectionAscending:
     sortDirection = Akonadi::SortDirectionAscending;
     break;
