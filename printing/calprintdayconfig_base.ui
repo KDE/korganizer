@@ -224,6 +224,19 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="mPrintTypeSingleTimetable">
+        <property name="whatsThis">
+         <string>The timetable print view has the times to the left of the page, all days are printed as columns in one big timetable.</string>
+        </property>
+        <property name="text">
+         <string>Print as timetable view, all days on a single page</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

@@ -124,7 +124,8 @@ class CalPrintDay : public CalPrintPluginBase
   protected:
     enum eDayPrintType {
       Filofax=0,
-      Timetable
+      Timetable,
+      SingleTimetable
     } mDayPrintType;
     QTime mStartTime, mEndTime;
     bool mIncludeDescription;

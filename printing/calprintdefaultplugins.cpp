@@ -659,7 +659,7 @@ void CalPrintDay::readSettingsWidget()
     } else if ( cfg->mPrintTypeTimetable->isChecked() ) {
       mDayPrintType = Timetable;
     } else {
-      mDayPrintType = Timetable;
+      mDayPrintType = SingleTimetable;
     }
 
     mStartTime = cfg->mFromTime->time();
@@ -686,6 +686,7 @@ void CalPrintDay::setSettingsWidget()
 
     cfg->mPrintTypeFilofax->setChecked( mDayPrintType == Filofax );
     cfg->mPrintTypeTimetable->setChecked( mDayPrintType == Timetable );
+    cfg->mPrintTypeSingleTimetable->setChecked( mDayPrintType == SingleTimetable );
 
     cfg->mFromTime->setTime( mStartTime );
     cfg->mToTime->setTime( mEndTime );
@@ -762,24 +763,31 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
   switch ( mDayPrintType ) {
   case Filofax:
+  case SingleTimetable:
     {
-      QString line1, line2, title;
       QRect headerBox( 0, 0, width, headerHeight() );
       QRect daysBox( headerBox );
-      KLocale *local = KGlobal::locale();
       daysBox.setTop( headerBox.bottom() + padding() );
       daysBox.setBottom( height );
-      line1 = local->formatDate( mFromDate );
-      line2 = local->formatDate( mToDate );
+      KLocale *local = KGlobal::locale();
+      QString line1 = local->formatDate( mFromDate );
+      QString line2 = local->formatDate( mToDate );
+      QString title;
       if ( orientation() == QPrinter::Landscape ) {
         title = i18nc( "date from-to", "%1 - %2", line1, line2 );
       } else {
         title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
       }
       drawHeader( p, title, mFromDate, QDate(), headerBox );
-      drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit,
-                mShowNoteLines, mIncludeDescription,
-                mExcludeConfidential, mExcludePrivate );
+      if (mDayPrintType == Filofax) {
+        drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit,
+                  mShowNoteLines, mIncludeDescription,
+                  mExcludeConfidential, mExcludePrivate );
+      } else if (mDayPrintType == SingleTimetable) {
+        drawTimeTable( p, mFromDate, mToDate, mStartTime, mEndTime, daysBox,
+                       mIncludeDescription, mExcludeTime, mExcludeConfidential,
+                       mExcludePrivate );
+      }
       drawFooter( p, daysBox );
     }
     break;
