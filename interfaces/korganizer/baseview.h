@@ -306,12 +306,12 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
      * Copy the incidence to the specified resource.
      */
-    void copyIncidenceToResourceSignal( Incidence *, const QString & );
+    void copyIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
 
     /**
      * Move the incidence to the specified resource.
      */
-    void moveIncidenceToResourceSignal( Incidence *, const QString & );
+    void moveIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
 
     /** Dissociate from a recurring incidence the occurrence on the given
      *  date to a new incidence or dissociate all occurrences from the
