@@ -72,12 +72,12 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   connect( this, SIGNAL(user1Clicked()), SLOT(doSearch()) );
 
   // Propagate edit and delete event signals from event list view
-  connect( listView, SIGNAL(showIncidenceSignal(Incidence *)),
-          SIGNAL(showIncidenceSignal(Incidence *)) );
-  connect( listView, SIGNAL(editIncidenceSignal(Incidence *)),
-          SIGNAL(editIncidenceSignal(Incidence *)) );
-  connect( listView, SIGNAL(deleteIncidenceSignal(Incidence *)),
-          SIGNAL(deleteIncidenceSignal(Incidence *)) );
+  connect( listView, SIGNAL(showIncidenceSignal(const Akonadi::Item &)),
+          SIGNAL(showIncidenceSignal(const Akonadi::Item&)) );
+  connect( listView, SIGNAL(editIncidenceSignal(const Akonadi::Item&)),
+          SIGNAL(editIncidenceSignal(const Akonadi::Item&)) );
+  connect( listView, SIGNAL(deleteIncidenceSignal(const Akonadi::Item&)),
+          SIGNAL(deleteIncidenceSignal(const Akonadi::Item&)) );
 }
 
 SearchDialog::~SearchDialog()
