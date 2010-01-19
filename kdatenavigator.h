@@ -33,9 +33,6 @@
 class KODayMatrix;
 class NavigatorBar;
 
-namespace KCal {
-  class Incidence;
-}
 namespace Akonadi {
   class Item;
   class Calendar;

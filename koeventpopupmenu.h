@@ -35,10 +35,6 @@ namespace KCal {
   class Incidence;
 }
 
-namespace KOrg {
-  class AkonadiCalendar;
-}
-
 class KOEventView;
 
 /**

@@ -35,9 +35,6 @@
 
 class KDGanttViewItem;
 
-namespace KCal {
-  class ResourceCalendar;
-}
 
 namespace Akonadi {
   class Calendar;

@@ -38,7 +38,6 @@ namespace Akonadi {
   class Calendar;
 }
 namespace KOrg {
-  class AkonadiCalendar;
   class IncidenceChangerBase;
 }
 namespace KCal {

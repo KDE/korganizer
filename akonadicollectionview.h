@@ -34,18 +34,13 @@
 #include <QList>
 
 class QAbstractProxyModel;
-class QItemSelectionModel;
 
-namespace KOrg {
-  class AkonadiCalendar;
-}
 
 namespace Akonadi {
   class CalendarModel;
   class Collection;
   class CollectionSelectionProxyModel;
   class EntityTreeView;
-  class EntityModelStateSaver;
   class StandardActionManager;
 }
 

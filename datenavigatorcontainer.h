@@ -30,10 +30,6 @@
 #include <QFrame>
 #include <QList>
 
-namespace KCal {
-  class Incidence;
-}
-
 using namespace KCal;
 
 class KDateNavigator;

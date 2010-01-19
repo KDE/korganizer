@@ -27,9 +27,6 @@
 #include "korganizer/baseview.h"
 using namespace KOrg;
 
-namespace Akonadi {
-  class Calendar;
-}
 #include <KTextBrowser>
 
 class QUrl;

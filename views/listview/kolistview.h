@@ -36,10 +36,6 @@
 
 using namespace KCal;
 
-namespace KOrg {
-    class AkonadiCalendar;
-}
-
 typedef CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;

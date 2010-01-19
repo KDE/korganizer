@@ -33,10 +33,6 @@
 class QScrollArea;
 class KVBox;
 
-namespace Akonadi {
-    class Calendar;
-}
-
 /**
  * This class provides a journal view.
 

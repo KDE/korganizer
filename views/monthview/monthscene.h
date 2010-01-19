@@ -46,7 +46,6 @@ using namespace KCal;
 
 namespace KOrg {
 
-class AkonadiCalendar;
 class IncidenceChangerBase;
 
 class MonthItem;

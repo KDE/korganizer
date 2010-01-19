@@ -37,7 +37,6 @@
 #include <QWidget>
 
 namespace Akonadi {
-  class CollectionSelection;
   class Calendar;
 }
 class CalPrinter;

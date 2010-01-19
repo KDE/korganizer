@@ -40,9 +40,6 @@ class KOJournalEditor;
 class KOTodoEditor;
 class SearchDialog;
 
-namespace KOrg {
-  class AgendaView;
-}
 
 namespace KPIM {
   class CategoryEditDialog;

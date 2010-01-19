@@ -43,7 +43,6 @@ namespace KOrg {
 
 namespace KCal {
   class Calendar;
-  class Incidence;
 }
 
 namespace KParts {

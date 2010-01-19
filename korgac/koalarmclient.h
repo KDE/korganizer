@@ -39,10 +39,6 @@ namespace Akonadi {
   class Calendar;
 }
 
-namespace KCal {
-  class Incidence;
-}
-
 class KOAlarmClient : public QObject, public KSessionManager
 {
   Q_OBJECT
