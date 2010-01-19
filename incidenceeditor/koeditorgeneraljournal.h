@@ -64,9 +64,6 @@ class KOEditorGeneralJournal : public KOEditorGeneral
     void setSummary( const QString &text );
     void finishSetup();
 
-  signals:
-    void openCategoryDialog();
-
   protected:
     virtual bool setAlarmOffset( Alarm *alarm, int value ) const;
 
