@@ -228,10 +228,10 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentListItem *item,
              SLOT( urlChanged( const QString& ) ) );
     urlChanged( item->uri() );
   } else {
-    uint size = QCString( item->attachment()->data() ).size();
+    uint size = item->attachment()->size();
     grid->addWidget( new QLabel( i18n( "Size:" ), topFrame ), 4, 0 );
     grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" ).
-                      arg( KIO::convertSize( size ) ).
+                                 arg( KIO::convertSize( size ) ).
                                  arg( KGlobal::locale()->formatNumber(
                                         size, 0 ) ), topFrame ), 4, 2 );
   }
@@ -327,7 +327,7 @@ KURL AttachmentIconView::tempFileForAttachment( KCal::Attachment *attachment )
   file->setAutoDelete( true );
   file->file()->open( IO_WriteOnly );
   QTextStream stream( file->file() );
-  stream << attachment->decodedData().data();
+  stream.writeRawBytes( attachment->decodedData().data(), attachment->size() );
   KURL url( file->name() );
   mTempFiles.insert( attachment, url );
   file->close();
