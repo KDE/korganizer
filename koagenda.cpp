@@ -1075,6 +1075,9 @@ void KOAgenda::endItemAction()
   // FIXME: do the cloning here...
   Incidence* inc = mActionItem->incidence();
 
+  mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
+                                mStartCell.y() == mEndCell.y() );
+
   if ( mItemMoved ) {
     bool modify = true;
     if ( mActionItem->incidence()->doesRecur() ) {
@@ -1102,7 +1105,7 @@ void KOAgenda::endItemAction()
             Incidence* oldInc = mActionItem->incidence();
             Incidence* oldIncSaved = mActionItem->incidence()->clone();
             Incidence* newInc = mCalendar->dissociateOccurrence(
-                oldInc, mActionItem->itemDate() );
+              oldInc, mActionItem->itemDate() );
             if ( newInc ) {
               // don't recreate items, they already have the correct position
               emit enableAgendaUpdate( false );
@@ -1175,9 +1178,15 @@ void KOAgenda::endItemAction()
 
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
+      mChanger->endChange( inc );
       emit itemModified( modif );
+    } else {
+      // the item was moved, but not further modified, since it's not recurring
+      // make sure the view updates anyhow, with the right item
+      mChanger->endChange( inc );
+      emit itemModified( mActionItem );
     }
-    // FIXME: If the change failed, we need to update the view!
+  } else {
     mChanger->endChange( inc );
   }
 
