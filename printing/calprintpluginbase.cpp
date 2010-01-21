@@ -424,8 +424,9 @@ void CalPrintPluginBase::drawVerticalBox( QPainter &p, const QRect &box, const Q
 {
   p.save();
   p.rotate( -90 );
-  QRect rotatedBox( -box.top()-box.height(), box.left(), box.height(), box.width() );
-  showEventBox( p, rotatedBox, Incidence::Ptr(), str, Qt::AlignLeft | Qt::AlignVCenter | Qt::SingleLine );
+  QRect rotatedBox( -box.top() - box.height(), box.left(), box.height(), box.width() );
+  showEventBox( p, rotatedBox, Incidence::Ptr(), str,
+                Qt::AlignLeft | Qt::AlignVCenter | Qt::SingleLine );
 
   p.restore();
 }
@@ -1496,7 +1497,8 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
     if ( (*mit).start.date() == (*mit).end.date() ) {
       // Show also single-day events as time line boxes
       if ( subDailyFlags & TimeBoxes ) {
-        timeboxItems.append( new PrintCellItem( Akonadi::event( (*mit).event ), (*mit).start, (*mit).end ) );
+        timeboxItems.append(
+          new PrintCellItem( Akonadi::event( (*mit).event ), (*mit).start, (*mit).end ) );
       }
       // Show as text in the box
       if ( subDailyFlags & Text ) {
@@ -1512,7 +1514,8 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
       if ( thisend > endofmonth ) {
         thisend = endofmonth;
       }
-      timeboxItems.append( new PrintCellItem( Akonadi::event( (*mit).event ), thisstart, thisend ) );
+      timeboxItems.append(
+        new PrintCellItem( Akonadi::event( (*mit).event ), thisstart, thisend ) );
     }
   }
 
@@ -1826,8 +1829,8 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
 #else
     bool subtodoOk = false;
     if ( subtodo ) {
-      foreach(const Akonadi::Item &item, todoList) {
-        if( item.payload<Todo::Ptr>().get() == subtodo ) {
+      foreach ( const Akonadi::Item &item, todoList ) {
+        if ( item.payload<Todo::Ptr>().get() == subtodo ) {
           subtodoOk = true;
           break;
         }
@@ -1865,9 +1868,9 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
   Item::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
 #else
   Akonadi::Item::List tl;
-  foreach(Todo* todo, t) {
+  foreach ( Todo *todo, t ) {
     Akonadi::Item todoitem;
-    todoitem.setPayload( Todo::Ptr(todo->clone()) );
+    todoitem.setPayload( Todo::Ptr( todo->clone() ) );
     tl.append( todoitem );
   }
   Item::List sl = mCalendar->sortTodos( tl, sortField, sortDir );

@@ -779,11 +779,11 @@ void CalPrintDay::print( QPainter &p, int width, int height )
         title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
       }
       drawHeader( p, title, mFromDate, QDate(), headerBox );
-      if (mDayPrintType == Filofax) {
+      if ( mDayPrintType == Filofax ) {
         drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit,
                   mShowNoteLines, mIncludeDescription,
                   mExcludeConfidential, mExcludePrivate );
-      } else if (mDayPrintType == SingleTimetable) {
+      } else if ( mDayPrintType == SingleTimetable ) {
         drawTimeTable( p, mFromDate, mToDate, mStartTime, mEndTime, daysBox,
                        mIncludeDescription, mExcludeTime, mExcludeConfidential,
                        mExcludePrivate );

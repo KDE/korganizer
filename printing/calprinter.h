@@ -22,8 +22,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _CALPRINTER_H
-#define _CALPRINTER_H
+#ifndef CALPRINTER_H
+#define CALPRINTER_H
 
 #include "korganizer/korganizer_export.h"
 #include "korganizer/printplugin.h"
