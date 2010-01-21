@@ -376,9 +376,25 @@ void KOAttendeeEditor::updateAttendee()
   if ( !a || mDisableItemUpdate )
     return;
 
-  QString name;
-  QString email;
-  KPIM::getNameAndMail(mNameEdit->text(), name, email);
+  // Quote the text as it might contain commas and other quotable chars.
+  QString text = KPIM::quoteNameIfNecessary( mNameEdit->text() );
+
+  QString name, email;
+  if ( KPIM::getNameAndMail( text, name, email ) ) {
+    name.remove( '"' );
+    if ( name.contains( ',' ) ) {
+      QStringList lastfirst = QStringList::split( ',', name );
+      if ( lastfirst.count() > 1 ) {
+        name = lastfirst[1] + ' ' + lastfirst[0];
+      } else {
+        name = lastfirst[0];
+      }
+    }
+    email.remove( '"' ).remove( '>' );
+  } else {
+    name = QString();
+    email = mNameEdit->text();
+  }
 
   bool iAmTheOrganizer = mOrganizerCombo &&
     KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
