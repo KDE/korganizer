@@ -343,6 +343,9 @@ void KOEditorAlarms::selectionChanged( QListViewItem *listviewitem )
 
 void KOEditorAlarms::slotOk()
 {
+  // save the current item settings, if any
+  changed();
+
   // copy the mAlarms list
   if ( mAlarms ) {
     mAlarms->clear();
