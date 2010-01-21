@@ -30,13 +30,14 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QPixmap>
-
+#include <akonadi/collection.h>
 class QResizeEvent;
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 
 namespace Akonadi {
   class Item;
+  class Collection;
 }
 
 namespace KCal {
@@ -175,7 +176,7 @@ class MonthScene : public QGraphicsScene
     void incidenceSelected( const Akonadi::Item &incidence, const QDate & );
     void showIncidencePopupSignal( const Akonadi::Item &, const QDate &);
     void showNewEventPopupSignal();
-    void newEventSignal();
+    void newEventSignal(const Akonadi::Collection::List &);
 
   protected:
     virtual void mouseDoubleClickEvent( QGraphicsSceneMouseEvent *mouseEvent );

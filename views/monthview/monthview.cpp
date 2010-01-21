@@ -112,8 +112,8 @@ MonthView::MonthView( QWidget *parent )
   connect( mScene, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            this, SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
 
-  connect( mScene, SIGNAL(newEventSignal()),
-           this, SIGNAL(newEventSignal()) );
+  connect( mScene, SIGNAL(newEventSignal(Akonadi::Collection::List)),
+           this, SIGNAL(newEventSignal(Akonadi::Collection::List)) );
   mReloadTimer.setSingleShot( true );
   connect( &mReloadTimer, SIGNAL(timeout()), this, SLOT(reloadIncidences()) );
   mReloadTimer.start( 50 );
