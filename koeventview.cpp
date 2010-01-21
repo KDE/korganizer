@@ -229,13 +229,14 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
       if ( mReturnPressed ) {
         // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
         if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
-          if ( view->collection() >= 0 )
+          if ( view->collection() >= 0 ) {
             emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
-          else
+          } else {
             emit newEventSignal( collectionSelection()->selectedCollections() );
-        } else
+          }
+        } else {
           emit newEventSignal( collectionSelection()->selectedCollections() );
-
+        }
         mReturnPressed = false;
         return true;
       } else {
@@ -282,12 +283,14 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
         mTypeAhead = true;
         // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
         if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
-          if ( view->collection() >= 0 )
+          if ( view->collection() >= 0 ) {
             emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
-          else
+          } else {
             emit newEventSignal( collectionSelection()->selectedCollections() );
-        } else
+          }
+        } else {
           emit newEventSignal( collectionSelection()->selectedCollections() );
+        }
       }
       return true;
     }
