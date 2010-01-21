@@ -122,10 +122,14 @@ MonthView::MonthView( QWidget *parent )
 
 void MonthView::updateConfig() {
   CalendarSearch::IncidenceTypes types;
-  if ( KOPrefs::instance()->showTodosMonthView() )
+  if ( KOPrefs::instance()->showTodosMonthView() ) {
     types |= CalendarSearch::Todos;
-  if ( KOPrefs::instance()->showJournalsMonthView() )
+  }
+
+  if ( KOPrefs::instance()->showJournalsMonthView() ) {
     types |= CalendarSearch::Journals;
+  }
+
   types |= CalendarSearch::Events;
   calendarSearch()->setIncidenceTypes( types );
 }
