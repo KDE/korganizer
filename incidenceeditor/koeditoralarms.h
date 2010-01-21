@@ -53,7 +53,7 @@ class KOEditorAlarms : public KDialog
     void slotSoundRadioClicked();
     void slotAppRadioClicked();
     void slotEmailRadioClicked();
-
+    void slotUpdateButtons();
   protected:
     void init();
     void readAlarm( Alarm *alarm );

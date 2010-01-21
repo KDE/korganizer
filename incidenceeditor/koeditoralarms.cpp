@@ -176,6 +176,7 @@ KOEditorAlarms::KOEditorAlarms( const QByteArray &type,
 
   connect( mWidget.mDisplayText, SIGNAL(textChanged()), SLOT(changed()) );
   connect( mWidget.mSoundFile, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
+  connect( mWidget.mSoundFile, SIGNAL( textChanged( const QString& ) ), SLOT( slotUpdateButtons() ) );
   connect( mWidget.mApplication, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
   connect( mWidget.mAppArguments, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
   connect( mWidget.mEmailAddress, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
@@ -201,26 +202,40 @@ KOEditorAlarms::~KOEditorAlarms()
 
 void KOEditorAlarms::slotDisplayRadioClicked()
 {
+  slotUpdateButtons();
   mWidget.mTypeStack->setCurrentIndex(0);
   changed();
 }
 
 void KOEditorAlarms::slotSoundRadioClicked()
 {
+  slotUpdateButtons();
   mWidget.mTypeStack->setCurrentIndex(1);
   changed();
 }
 
 void KOEditorAlarms::slotAppRadioClicked()
 {
+  slotUpdateButtons();
   mWidget.mTypeStack->setCurrentIndex(2);
   changed();
 }
 
 void KOEditorAlarms::slotEmailRadioClicked()
 {
+  slotUpdateButtons();
   mWidget.mTypeStack->setCurrentIndex(3);
   changed();
+}
+
+void KOEditorAlarms::slotUpdateButtons()
+{
+  bool enabledButtons = true;
+  if ( mWidget.mTypeSoundRadio->isChecked() ) {
+    enabledButtons = !mWidget.mSoundFile->url().isEmpty();
+  }
+  enableButtonOk( enabledButtons );
+  enableButtonApply( enabledButtons );
 }
 
 void KOEditorAlarms::changed()
@@ -469,7 +484,7 @@ void KOEditorAlarms::init()
   }
 
   mWidget.mAlarmOffset->setFocus();
-
+  slotUpdateButtons();
   mInitializing = false;
 }
 
