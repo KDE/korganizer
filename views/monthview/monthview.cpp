@@ -372,7 +372,7 @@ void MonthView::reloadIncidences()
         dateToAdd = incidence->dtStart();
       }
 
-      if ( dateToAdd >= actualStartDateTime() && dateToAdd <= actualEndDateTime() );
+      if ( dateToAdd >= actualStartDateTime() && dateToAdd <= actualEndDateTime() )
         dateTimeList += dateToAdd;
 
     }
