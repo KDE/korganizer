@@ -140,8 +140,6 @@ MonthGraphicsItem::MonthGraphicsItem( MonthItem *manager )
   QTransform transform;
   transform = transform.translate( 0.5, 0.5 );
   setTransform( transform );
-
-  setToolTip( mMonthItem->toolTipText() );
 }
 
 MonthGraphicsItem::~MonthGraphicsItem()
@@ -336,6 +334,8 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
 void MonthGraphicsItem::setStartDate( const QDate &date )
 {
   mStartDate = date;
+
+  setToolTip( mMonthItem->toolTipText( date ) );
 }
 
 QDate MonthGraphicsItem::endDate() const
