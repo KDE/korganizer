@@ -543,7 +543,9 @@
           <item row="0" column="1">
            <widget class="KPIM::AddresseeLineEdit" name="mEmailAddress">
             <property name="toolTip">
-		    <string>Specify a list of addresses to send email when the reminder triggers.If the 'To:' field stays empty the email reminder will be sent to the default email configured in Kmail (Settings menu/Configure Kmail/Idnetities).</string>
+             <string>Specify a list of addresses to send email when the reminder triggers.
+If the 'To:' field stays empty the email reminder will be sent to the
+default email configured in Kmail (Settings menu/Configure Kmail/Idnetities).</string>
             </property>
             <property name="whatsThis">
              <string>Enter a list comma-sepatered addresses where an email will be sent when the reminder triggers</string>
@@ -688,6 +690,11 @@
    <class>KComboBox</class>
    <extends>QComboBox</extends>
    <header>kcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>ktextedit.h</header>
   </customwidget>
  </customwidgets>
  <includes>
