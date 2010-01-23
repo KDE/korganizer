@@ -150,6 +150,18 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual bool usesFullWindow();
 
+    /**
+     * returns whether this view supports zoom.
+     * Base implementation returns false.
+     */
+    virtual bool supportsZoom();
+
+    /**
+     * returns whether this view supports date range selection
+     * Base implementation returns true.
+     */
+    virtual bool supportsDateRangeSelection();
+
     virtual bool hasConfigurationDialog() const;
 
     virtual void showConfigurationDialog( QWidget* parent );

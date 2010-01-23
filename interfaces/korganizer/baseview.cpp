@@ -352,6 +352,17 @@ bool BaseView::usesFullWindow()
 {
   return false;
 }
+
+bool BaseView::supportsZoom()
+{
+  return false;
+}
+
+bool BaseView::supportsDateRangeSelection()
+{
+  return true;
+}
+
 void BaseView::incidencesAdded( const Akonadi::Item::List & )
 {
 }

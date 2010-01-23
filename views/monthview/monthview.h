@@ -72,6 +72,8 @@ class MonthView : public KOEventView
 
     bool usesFullWindow();
 
+    bool supportsDateRangeSelection() { return false; }
+
   public slots:
     virtual void updateView();
 

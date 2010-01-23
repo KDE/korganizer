@@ -494,21 +494,25 @@ void ActionManager::initActions()
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions
   action = new KAction( KIcon( "zoom-in" ), i18n( "In Horizontally" ), this );
+  action->setEnabled( mCalendarView->currentView()->supportsZoom() );
   mACollection->addAction( "zoom_in_horizontally", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomInHorizontally()) );
 
   action = new KAction( KIcon( "zoom-out" ), i18n( "Out Horizontally" ), this );
+  action->setEnabled( mCalendarView->currentView()->supportsZoom() );
   mACollection->addAction( "zoom_out_horizontally", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomOutHorizontally()) );
 
   action = new KAction( KIcon( "zoom-in" ), i18n( "In Vertically" ), this );
+  action->setEnabled( mCalendarView->currentView()->supportsZoom() );
   mACollection->addAction( "zoom_in_vertically", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomInVertically()) );
 
   action = new KAction( KIcon( "zoom-out" ), i18n( "Out Vertically" ), this );
+  action->setEnabled( mCalendarView->currentView()->supportsZoom() );
   mACollection->addAction( "zoom_out_vertically", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomOutVertically()) );
@@ -552,21 +556,25 @@ void ActionManager::initActions()
 
   action = new KAction( KIcon( "view-calendar-day" ), i18n( "&Day" ), this );
   mACollection->addAction( "select_day", action );
+  action->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectDay()) );
 
   mNextXDays = new KAction( KIcon( "view-calendar-upcoming-days" ), QString(), this );
+  mNextXDays->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
   mACollection->addAction( "select_nextx", mNextXDays );
   connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectNextX()) );
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays ) );
 
   action = new KAction( KIcon( "view-calendar-workweek" ), i18n( "W&ork Week" ), this );
+  action->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
   mACollection->addAction( "select_workweek", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectWorkWeek()) );
 
   action = new KAction( KIcon( "view-calendar-week" ), i18n( "&Week" ), this );
+  action->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
   mACollection->addAction( "select_week", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectWeek()) );

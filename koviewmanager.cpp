@@ -169,15 +169,33 @@ void KOViewManager::showView( KOrg::BaseView *view )
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
   KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
-  if ( !w )
-    return;
-  KActionCollection *ac = w->getActionCollection();\
-  if ( !ac )
-    return;
-  if ( QAction* action = ac->action( "configure_view" ) )
-    action->setEnabled( view->hasConfigurationDialog() );
 
+  if ( w ) {
+    KActionCollection *ac = w->getActionCollection();
+    if ( ac ) {
+      if ( QAction* action = ac->action( "configure_view" ) ) {
+        action->setEnabled( view->hasConfigurationDialog() );
+      }
 
+      QStringList zoomActions;
+      QStringList rangeActions;
+
+      zoomActions << "zoom_in_horizontally" << "zoom_out_horizontally" << "zoom_in_vertically" << "zoom_out_vertically";
+      rangeActions << "select_workweek" << "select_week" << "select_day" << "select_nextx";
+
+      for ( int i = 0; i < zoomActions.size(); ++i ) {
+        if ( QAction* action = ac->action( zoomActions[i] ) ) {
+          action->setEnabled( view->supportsZoom() );
+        }
+      }
+
+      for ( int i = 0; i < rangeActions.size(); ++i ) {
+        if ( QAction* action = ac->action( rangeActions[i] ) ) {
+          action->setEnabled( view->supportsDateRangeSelection() );
+        }
+      }
+    }
+  }
 }
 
 void KOViewManager::goMenu( bool enable )

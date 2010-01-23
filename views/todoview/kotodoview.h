@@ -85,6 +85,8 @@ class KOTodoView : public BaseView
 
     bool usesFullWindow();
 
+    bool supportsDateRangeSelection() { return false; }
+
   public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
