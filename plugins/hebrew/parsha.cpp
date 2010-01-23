@@ -36,9 +36,9 @@ QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
   // The names of the Parshiot.
   static QStringList parshiotNames = QStringList();
   parshiotNames
-    << i18n( "These are weekly readings and do not have translations. "
+    << i18nc( "These are weekly readings and do not have translations. "
              "They may have different spellings in your language; "
-             "otherwise, just translate the sound to your characters Bereshit" )
+             "otherwise, just translate the sound to your characters", "Bereshit" )
     <<  i18n( "Noach" )
     <<  i18n( "Lech L'cha" )
     <<  i18n( "Vayera" )
