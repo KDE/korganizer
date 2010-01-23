@@ -135,12 +135,17 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
     }
   }
 
-  drawHeader( p, i18n( "Journal entries" ), QDate(), QDate(),
-              QRect( 0, 0, width, headerHeight() ) );
+  QRect headerBox( 0, 0, width, headerHeight() );
+  QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
+  height -= footerHeight();
+
+  drawHeader( p, i18n( "Journal entries" ), QDate(), QDate(), headerBox );
   y = headerHeight() + 15;
 
   Item::List::Iterator it = journals.begin();
   for ( ; it != journals.end(); ++it ) {
     drawJournal( Akonadi::journal( *it ), p, x, y, width, height );
   }
+
+  drawFooter( p, footerBox );
 }
