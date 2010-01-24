@@ -31,9 +31,10 @@
 #include "koeditorrecurrence.h"
 #include "korganizer/incidencechangerbase.h"
 
-#include <akonadi/collectioncombobox.h>
-#include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/incidencemimetypevisitor.h>
+#include <akonadi/kcal/utils.h> //krazy:exclude=camelcase since kdepim/akonadi
+
+#include <Akonadi/CollectionComboBox>
+#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
 
 #include <KLocale>
 #include <KMessageBox>

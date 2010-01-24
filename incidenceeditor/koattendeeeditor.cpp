@@ -24,8 +24,8 @@
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
 
-#include <KABC/AddresseeDialog>
 #include <KCal/Incidence>
+
 #include <KPIMUtils/Email>
 
 #include <KComboBox>
@@ -33,13 +33,13 @@
 #include <KLocale>
 #include <KMessageBox>
 
-#include <Q3ListViewItem>
 #include <QBoxLayout>
 #include <QCheckBox>
+#include <QEvent>
 #include <QLabel>
 #include <QPushButton>
 #include <QTimer>
-#include <QEvent>
+#include <Q3ListViewItem>
 
 KOAttendeeEditor::KOAttendeeEditor( QWidget *parent )
   : QWidget( parent ), mDisableItemUpdate( true )
@@ -231,11 +231,11 @@ void KOAttendeeEditor::insertAttendeeFromAddressee( const KABC::Addressee &a, co
   const bool sameAsOrganizer = mOrganizerCombo &&
                          KPIMUtils::compareEmail( a.preferredEmail(),
                                                   mOrganizerCombo->currentText(), false );
-  KCal::Attendee::PartStat partStat = at ? at->status() : KCal::Attendee::NeedsAction;
+  Attendee::PartStat partStat = at ? at->status() : Attendee::NeedsAction;
   bool rsvp = at? at->RSVP() : true;
 
   if ( myself && sameAsOrganizer ) {
-    partStat = KCal::Attendee::Accepted;
+    partStat = Attendee::Accepted;
     rsvp = false;
   }
   Attendee *newAt = new Attendee( a.realName(), a.preferredEmail(), !myself,
@@ -294,7 +294,7 @@ void KOAttendeeEditor::addNewAttendee()
   QTimer::singleShot( 0, mNameEdit, SLOT(selectAll()) );
 }
 
-void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
+void KOAttendeeEditor::readIncidence( Incidence *incidence )
 {
   qDeleteAll( mDelAttendees );
   mDelAttendees.clear();
@@ -351,17 +351,17 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
     mNameEdit->setText( first->fullName() );
     mUid = first->uid();
     mRoleCombo->setCurrentIndex( first->role() );
-    if ( first->status() != KCal::Attendee::None ) {
+    if ( first->status() != Attendee::None ) {
       mStatusCombo->setCurrentIndex( first->status() );
     } else {
-      mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
+      mStatusCombo->setCurrentIndex( Attendee::NeedsAction );
     }
     mRsvpButton->setChecked( first->RSVP() );
     mRsvpButton->setEnabled( true );
   }
 }
 
-void KOAttendeeEditor::fillIncidence( KCal::Incidence *incidence )
+void KOAttendeeEditor::fillIncidence( Incidence *incidence )
 {
   if ( mOrganizerCombo ) {
     // TODO: Don't take a string and split it up... Is there a better way?
@@ -412,7 +412,7 @@ void KOAttendeeEditor::updateAttendee()
       mRsvpButton->setEnabled( false );
     } else if ( wasMyself ) {
       // this was me, but is no longer, reset
-      mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
+      mStatusCombo->setCurrentIndex( Attendee::NeedsAction );
       mRsvpButton->setChecked( true );
       mRsvpButton->setEnabled( true );
     }
@@ -427,7 +427,7 @@ void KOAttendeeEditor::updateAttendee()
   updateCurrentItem();
 }
 
-void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
+void KOAttendeeEditor::fillAttendeeInput( Attendee *a )
 {
   mDisableItemUpdate = true;
 
@@ -447,21 +447,21 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
   const bool sameAsOrganizer = mOrganizerCombo &&
                          KPIMUtils::compareEmail( a->email(),
                                                   mOrganizerCombo->currentText(), false );
-  KCal::Attendee::PartStat partStat = a->status();
+  Attendee::PartStat partStat = a->status();
   bool rsvp = a->RSVP();
 
-  if ( myself && sameAsOrganizer && a->status() == KCal::Attendee::None ) {
-    partStat = KCal::Attendee::Accepted;
+  if ( myself && sameAsOrganizer && a->status() == Attendee::None ) {
+    partStat = Attendee::Accepted;
     rsvp = false;
   }
 
   mNameEdit->setText( tname );
   mUid = a->uid();
   mRoleCombo->setCurrentIndex( a->role() );
-  if ( partStat != KCal::Attendee::None ) {
+  if ( partStat != Attendee::None ) {
     mStatusCombo->setCurrentIndex( partStat );
   } else {
-    mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
+    mStatusCombo->setCurrentIndex( Attendee::NeedsAction );
   }
   mRsvpButton->setChecked( rsvp );
 
@@ -493,7 +493,7 @@ void KOAttendeeEditor::updateAttendeeInput()
   }
 }
 
-void KOAttendeeEditor::cancelAttendeeIncidence( KCal::Incidence *incidence )
+void KOAttendeeEditor::cancelAttendeeIncidence( Incidence *incidence )
 {
   incidence->clearAttendees();
 
@@ -525,7 +525,7 @@ bool KOAttendeeEditor::eventFilter( QObject *watched, QEvent *ev )
   return QWidget::eventFilter( watched, ev );
 }
 
-bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee *attendee ) const
+bool KOAttendeeEditor::isExampleAttendee( const Attendee *attendee ) const
 {
   if ( !attendee ) {
     return false;

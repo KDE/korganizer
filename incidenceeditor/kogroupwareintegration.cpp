@@ -23,14 +23,15 @@
 #include "kotodoeditor.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/calendar.h>  //krazy:exclude=camelcase since kdepim/akonadi
+#include <akonadi/kcal/calendarmodel.h> //krazy:exclude=camelcase since kdepim/akonadi
+#include <akonadi/kcal/groupware.h> //krazy:exclude=camelcase since kdepim/akonadi
+#include <akonadi/kcal/utils.h>     //krazy:exclude=camelcase since kdepim/akonadi
+
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/Session>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/calendarmodel.h>
-#include <akonadi/kcal/groupware.h>
-#include <akonadi/kcal/incidencemimetypevisitor.h>
-#include <akonadi/kcal/utils.h>
+#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
 
 #include <KSystemTimeZones>
 

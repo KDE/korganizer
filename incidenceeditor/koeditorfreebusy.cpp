@@ -26,15 +26,15 @@
 #include "freebusyurldialog.h"
 #include "koeditorconfig.h"
 
-#include <akonadi/kcal/freebusymanager.h>
-#include <akonadi/kcal/groupware.h>
+#include <akonadi/kcal/freebusymanager.h> //krazy:exclude=camelcase since kdepim/akonadi
+#include <akonadi/kcal/groupware.h> //krazy:exclude=camelcase since kdepim/akonadi
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 #include <kdgantt1/KDGanttViewTaskItem.h>
 
-#include <akonadi/contact/contactgroupexpandjob.h>
-#include <akonadi/contact/contactgroupsearchjob.h>
+#include <Akonadi/Contact/ContactGroupExpandJob>
+#include <Akonadi/Contact/ContactGroupSearchJob>
 
 #include <KCal/Incidence>
 #include <KCal/FreeBusy>

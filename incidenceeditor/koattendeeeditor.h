@@ -42,11 +42,11 @@ using namespace KCal;
 class KComboBox;
 class KHBox;
 
-class Q3ListViewItem;
 class QBoxLayout;
 class QCheckBox;
 class QLabel;
 class QPushButton;
+class Q3ListViewItem;
 
 /**
   Common base class for attendee editor and free busy view.
@@ -57,13 +57,13 @@ class KOAttendeeEditor : public QWidget
   public:
     KOAttendeeEditor( QWidget *parent );
 
-    virtual void insertAttendee( KCal::Attendee *attendee, bool fetchFB = true ) = 0;
+    virtual void insertAttendee( Attendee *attendee, bool fetchFB = true ) = 0;
 
-    virtual void readIncidence( KCal::Incidence *incidence );
-    virtual void fillIncidence( KCal::Incidence *incidence );
+    virtual void readIncidence( Incidence *incidence );
+    virtual void fillIncidence( Incidence *incidence );
 
     /** return a clone of the incidence with attendees to be canceled */
-    void cancelAttendeeIncidence( KCal::Incidence *incidence );
+    void cancelAttendeeIncidence( Incidence *incidence );
 
   public slots:
     void acceptForMe();
@@ -81,15 +81,15 @@ class KOAttendeeEditor : public QWidget
      * from the addressbook and expanding distribution lists.
      * The optional Attendee parameter can be used to pass in default values
      * to be used by the new Attendee. */
-    void insertAttendeeFromAddressee( const KABC::Addressee &a, const KCal::Attendee *at = 0 );
+    void insertAttendeeFromAddressee( const KABC::Addressee &a, const Attendee *at = 0 );
 
     void fillOrganizerCombo();
     virtual Q3ListViewItem *hasExampleAttendee() const = 0;
-    bool isExampleAttendee( const KCal::Attendee * ) const;
-    virtual KCal::Attendee *currentAttendee() const = 0;
+    bool isExampleAttendee( const Attendee * ) const;
+    virtual Attendee *currentAttendee() const = 0;
     virtual void updateCurrentItem() = 0;
 
-    virtual void changeStatusForMe( KCal::Attendee::PartStat status ) = 0;
+    virtual void changeStatusForMe( Attendee::PartStat status ) = 0;
 
     virtual bool eventFilter( QObject *, QEvent * );
 
@@ -100,7 +100,7 @@ class KOAttendeeEditor : public QWidget
     void setEnableAttendeeInput( bool enabled );
     void updateAttendeeInput();
     void clearAttendeeInput();
-    void fillAttendeeInput( KCal::Attendee *a );
+    void fillAttendeeInput( Attendee *a );
     void updateAttendee();
 
   protected:
@@ -120,7 +120,7 @@ class KOAttendeeEditor : public QWidget
     QPushButton *mRemoveButton;
     QPushButton *mAddressBookButton;
 
-    QList<KCal::Attendee*> mDelAttendees;
+    QList<Attendee*> mDelAttendees;
 
   private:
     bool mDisableItemUpdate;

@@ -35,7 +35,7 @@ namespace KCal {
 }
 using namespace KCal;
 
-typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
+typedef CustomListViewItem<Attendee *> AttendeeListItem;
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
  *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
@@ -93,7 +93,7 @@ class KOEditorDetails : public KOAttendeeEditor
   protected:
     void changeStatusForMe( Attendee::PartStat status );
 
-    KCal::Attendee *currentAttendee() const;
+    Attendee *currentAttendee() const;
     /* reimpl */
     Q3ListViewItem *hasExampleAttendee() const;
     void updateCurrentItem();

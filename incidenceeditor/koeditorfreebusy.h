@@ -29,20 +29,18 @@
 #include <QDateTime>
 #include <QTimer>
 
-class KComboBox;
-class KDateTime;
+class FreeBusyItem;
 
 class KDGanttView;
 class KDGanttViewItem;
 class KDIntervalColorRectangle;
-class FreeBusyItem;
 
 namespace KCal {
-  class Attendee;
   class FreeBusy;
-  class Incidence;
 }
 using namespace KCal;
+
+class KDateTime;
 
 class KOEditorFreeBusy : public KOAttendeeEditor
 {
@@ -54,12 +52,12 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
 
-    void insertAttendee( KCal::Attendee *, bool readFBList = true );
-    void removeAttendee( KCal::Attendee * );
+    void insertAttendee( Attendee *, bool readFBList = true );
+    void removeAttendee( Attendee * );
     void clearAttendees();
 
-    void readIncidence( KCal::Incidence *incidence );
-    void fillIncidence( KCal::Incidence *incidence );
+    void readIncidence( Incidence *incidence );
+    void fillIncidence( Incidence *incidence );
 
     void triggerReload();
     void cancelReload();
@@ -94,12 +92,12 @@ class KOEditorFreeBusy : public KOAttendeeEditor
 
   protected:
     void timerEvent( QTimerEvent * );
-    KCal::Attendee *currentAttendee() const;
+    Attendee *currentAttendee() const;
     /* reimpl */
     Q3ListViewItem *hasExampleAttendee() const;
     void updateCurrentItem();
     void clearSelection() const;
-    void changeStatusForMe( KCal::Attendee::PartStat status );
+    void changeStatusForMe( Attendee::PartStat status );
     virtual bool eventFilter( QObject *watched, QEvent *event );
 
   private slots:

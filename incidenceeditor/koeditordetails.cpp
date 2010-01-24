@@ -28,21 +28,21 @@
 
 #include <libkdepim/kvcarddrag.h>
 
-#include <akonadi/contact/contactgroupexpandjob.h>
-#include <akonadi/contact/contactgroupsearchjob.h>
+#include <Akonadi/Contact/ContactGroupExpandJob>
+#include <Akonadi/Contact/ContactGroupSearchJob>
+
 #include <KCal/Incidence>
+
 #include <KPIMUtils/Email>
 
 #include <KDebug>
 #include <KLocale>
 #include <KMessageBox>
 
-#include <QBoxLayout>
 #include <QCheckBox>
 #include <QMimeData>
 #include <QPushButton>
 #include <QVBoxLayout>
-
 #ifndef KORG_NODND
 #include <QDragEnterEvent>
 #include <QDragMoveEvent>
@@ -169,7 +169,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   : KOAttendeeEditor( parent ), mDisableItemUpdate( false )
 {
-  QBoxLayout *topLayout = new QVBoxLayout( this );
+  QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
 
   initOrganizerWidgets( this, topLayout );

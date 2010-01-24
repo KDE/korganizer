@@ -27,16 +27,16 @@
 #include "koeditordetails.h"
 #include "templatemanagementdialog.h"
 
+#include <akonadi/kcal/utils.h> //krazy:exclude=camelcase since kdepim/akonadi
+
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
 #include <libkdepimdbusinterfaces/urihandler.h>
 
-//#include <Akonadi/CollectionComboBox> todo
-#include <akonadi/collectioncombobox.h>
+#include <Akonadi/CollectionComboBox>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/Monitor>
-#include <akonadi/kcal/utils.h>
 
 #include <KABC/Addressee>
 
