@@ -60,17 +60,4 @@ target_link_libraries(korg_incidenceeditor
 set_target_properties(korg_incidenceeditor PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION})
 install(TARGETS korg_incidenceeditor ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-########### next target ###############
-
-set(incidenceeditorapp_SRCS main.cpp)
-qt_wrap_cpp(incidenceeditorapp ${incidenceeditorapp_SRCS} main.cpp)
-kde4_add_executable(incidenceeditorapp ${incidenceeditorapp_SRCS})
-target_link_libraries(incidenceeditorapp 
-	${KDE4_KDEUI_LIBS}
-   	${KDEPIMLIBS_AKONADI_LIBS}
-	${KDEPIMLIBS_KCAL_LIBS}
-	${KDEPIMLIBS_AKONADI_KCAL_LIBRARY}
-       	akonadi-kcal_next
-	korg_incidenceeditor
-)
-#install(TARGETS incidenceeditorapp ${INSTALL_TARGETS_DEFAULT_ARGS})
+add_subdirectory( tests )
