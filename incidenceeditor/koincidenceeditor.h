@@ -159,7 +159,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
 
     void setupEmbeddedURLPage( const QString &label, const QString &url,
                                const QString &mimetype );
-    void createEmbeddedURLPages( const Incidence* inc );
+    void createEmbeddedURLPages( const Incidence *inc );
 
     /**
       Process user input and create or update event.

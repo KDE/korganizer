@@ -94,13 +94,19 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
   mCalSelector->setMimeTypeFilter( QStringList() << mimetypes );
-  connect(mCalSelector, SIGNAL(currentChanged(Akonadi::Collection)), SLOT(slotSelectedCollectionChanged()));
-  connect(mCalSelector->model(), SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(slotSelectedCollectionChanged()));
-  connect(mCalSelector->model(), SIGNAL(rowsRemoved(QModelIndex,int,int)), SLOT(slotSelectedCollectionChanged()));
-  connect(mCalSelector->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)), SLOT(slotSelectedCollectionChanged()));
-  connect(mCalSelector->model(), SIGNAL(modelReset()), SLOT(slotSelectedCollectionChanged()));
+  connect( mCalSelector, SIGNAL(currentChanged(Akonadi::Collection)),
+           SLOT(slotSelectedCollectionChanged()) );
+  connect( mCalSelector->model(), SIGNAL(rowsInserted(QModelIndex,int,int)),
+           SLOT(slotSelectedCollectionChanged()) );
+  connect( mCalSelector->model(), SIGNAL(rowsRemoved(QModelIndex,int,int)),
+           SLOT(slotSelectedCollectionChanged()) );
+  connect( mCalSelector->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)),
+           SLOT(slotSelectedCollectionChanged()) );
+  connect( mCalSelector->model(), SIGNAL(modelReset()),
+           SLOT(slotSelectedCollectionChanged()) );
   //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
-  QLabel *callabel = new QLabel( i18n("Calendar:"), mainWidget() );
+
+  QLabel *callabel = new QLabel( i18n( "Calendar:" ), mainWidget() );
   callabel->setBuddy( mCalSelector );
   callayout->addWidget( callabel );
   callayout->addWidget( mCalSelector, 1 );
@@ -163,9 +169,10 @@ void KOIncidenceEditor::editIncidence( const Akonadi::Item &item, const QDate &d
     //connect( mMonitor, SIGNAL(itemMoved(Akonadi::Item,Akonadi::Collection,Akonadi::Collection)),
     //         this, SLOT(readIncidence(Akonadi::Item)) );
   }
-  mMonitor->setItemMonitored(item, true);
+  mMonitor->setItemMonitored( item, true );
 
-  setCaption( i18nc( "@title:window", "Edit %1: %2", QString(incidence->type()), incidence->summary() ) );
+  setCaption( i18nc( "@title:window",
+                     "Edit %1: %2", QString( incidence->type() ), incidence->summary() ) );
 }
 
 bool KOIncidenceEditor::incidenceModified() {
@@ -272,16 +279,20 @@ void KOIncidenceEditor::slotSelectedCollectionChanged()
 void KOIncidenceEditor::slotItemChanged( const Akonadi::Item &item )
 {
   kDebug();
-  Q_ASSERT(item == mIncidence);
-  KMessageBox::information( this, i18nc( "@info", "The incidence got changed. Reloading editor now." ) );
+  Q_ASSERT( item == mIncidence );
+  KMessageBox::information(
+    this,
+    i18nc( "@info", "The incidence got changed. Reloading editor now." ) );
   readIncidence( item, QDate() );
 }
 
 void KOIncidenceEditor::slotItemRemoved( const Akonadi::Item &item )
 {
   kDebug();
-  Q_ASSERT(item == mIncidence);
-  KMessageBox::information( this, i18nc( "@info", "The incidence got removed. Closing editor now." ) );
+  Q_ASSERT( item == mIncidence );
+  KMessageBox::information(
+    this,
+    i18nc( "@info", "The incidence got removed. Closing editor now." ) );
   KDialog::reject();
 }
 
@@ -327,7 +338,7 @@ void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
 
   Incidence *incidence = incidences.first();
   Akonadi::Item incidenceItem;
-  incidenceItem.setPayload( Incidence::Ptr(incidence->clone()) );
+  incidenceItem.setPayload( Incidence::Ptr( incidence->clone() ) );
   readIncidence( incidenceItem, QDate(), true );
 }
 
@@ -441,7 +452,7 @@ void KOIncidenceEditor::readDesignerFields( const Item &i )
   }
 }
 
-void KOIncidenceEditor::writeDesignerFields( Incidence* i )
+void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 {
   KCalStorage storage( i );
   foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {

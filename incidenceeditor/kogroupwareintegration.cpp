@@ -40,57 +40,88 @@ class KOrganizerEditorConfig : public KOEditorConfig
     explicit KOrganizerEditorConfig() : KOEditorConfig() {}
     virtual ~KOrganizerEditorConfig() {}
 
-    virtual KConfigSkeleton* config() const
+    virtual KConfigSkeleton *config() const
     {
       return KOPrefs::instance();
     }
 
-    virtual QString fullName() const {
+    virtual QString fullName() const
+    {
       return KOPrefs::instance()->fullName();
     }
-    virtual QString email() const {
+
+    virtual QString email() const
+    {
       return KOPrefs::instance()->email();
     }
-    virtual bool thatIsMe( const QString &email ) const {
+
+    virtual bool thatIsMe( const QString &email ) const
+    {
       return KOPrefs::instance()->thatIsMe(email);
     }
-    virtual QStringList allEmails() const {
+
+    virtual QStringList allEmails() const
+    {
       return KOPrefs::instance()->allEmails();
     }
-    virtual QStringList fullEmails() const {
+
+    virtual QStringList fullEmails() const
+    {
       return KOPrefs::instance()->fullEmails();
     }
-    virtual bool showTimeZoneSelectorInIncidenceEditor() const {
+
+    virtual bool showTimeZoneSelectorInIncidenceEditor() const
+    {
       return KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
     }
-    virtual QDateTime defaultDuration() const {
+
+    virtual QDateTime defaultDuration() const
+    {
       return KOPrefs::instance()->defaultDuration();
     }
-    virtual QDateTime startTime() const {
+
+    virtual QDateTime startTime() const
+    {
       return KOPrefs::instance()->startTime();
     }
-    virtual int reminderTime() const {
+
+    virtual int reminderTime() const
+    {
       return KOPrefs::instance()->reminderTime();
     }
-    virtual int reminderTimeUnits() const {
+
+    virtual int reminderTimeUnits() const
+    {
       return KOPrefs::instance()->reminderTimeUnits();
     }
-    virtual bool defaultTodoReminders() const {
+
+    virtual bool defaultTodoReminders() const
+    {
       return KOPrefs::instance()->defaultTodoReminders();
     }
-    virtual bool defaultEventReminders() const {
+
+    virtual bool defaultEventReminders() const
+    {
       return KOPrefs::instance()->defaultEventReminders();
     }
-    virtual QStringList activeDesignerFields() const {
+
+    virtual QStringList activeDesignerFields() const
+    {
       return KOPrefs::instance()->activeDesignerFields();
     }
-    virtual QStringList& templates(const QString &type) {
-      if(type == "Event") //TODO remove mEventTemplates+etc from KOPrefs::instance()
+
+    virtual QStringList &templates( const QString &type )
+    {
+      if ( type == "Event" ) {
+        //TODO remove mEventTemplates+etc from KOPrefs::instance()
         return KOPrefs::instance()->mEventTemplates;
-      if(type == "Todo")
+      }
+      if ( type == "Todo" ) {
         return KOPrefs::instance()->mTodoTemplates;
-      if(type == "Journal")
+      }
+      if ( type == "Journal" ) {
         return KOPrefs::instance()->mJournalTemplates;
+      }
       return KOEditorConfig::templates(type);
     }
 };
@@ -124,7 +155,6 @@ class EditorDialogVisitor : public IncidenceBase::Visitor
 
     KOIncidenceEditor *mEditor;
 };
-
 
 class KOGroupwareUiDelegate : public QObject, public Akonadi::GroupwareUiDelegate
 {

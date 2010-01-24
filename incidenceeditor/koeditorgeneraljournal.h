@@ -42,7 +42,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-  explicit KOEditorGeneralJournal ( QObject *parent=0 );
+    explicit KOEditorGeneralJournal ( QObject *parent=0 );
     virtual ~KOEditorGeneralJournal();
 
     void initDate( QWidget *, QBoxLayout * );

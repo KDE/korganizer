@@ -30,7 +30,11 @@ class KOEditorConfig::Private
 {
   public:
     static KOEditorConfig *config;
-    static void cleanup_config() { delete config; config = 0; }
+    static void cleanup_config()
+    {
+      delete config;
+      config = 0;
+    }
 
     QHash<QString, QStringList> mTemplates;
 };
@@ -38,7 +42,7 @@ class KOEditorConfig::Private
 KOEditorConfig *KOEditorConfig::Private::config = 0;
 
 KOEditorConfig::KOEditorConfig()
-  : d(new Private)
+  : d( new Private )
 {
 }
 
@@ -47,66 +51,73 @@ KOEditorConfig::~KOEditorConfig()
   delete d;
 }
 
-KOEditorConfig* KOEditorConfig::instance()
+KOEditorConfig *KOEditorConfig::instance()
 {
   return Private::config;
 }
 
-void KOEditorConfig::setKOEditorConfig(KOEditorConfig *config)
+void KOEditorConfig::setKOEditorConfig( KOEditorConfig *config )
 {
   delete Private::config;
   Private::config = config;
-  qAddPostRoutine(Private::cleanup_config);
+  qAddPostRoutine( Private::cleanup_config );
 }
 
 QString KOEditorConfig::fullName() const
 {
-  if(Private::config != this)
+  if ( Private::config != this ) {
     return Private::config->fullName();
+  }
   return QString();
 }
 
 QString KOEditorConfig::email() const
 {
-  if(Private::config != this)
+  if ( Private::config != this ) {
     return Private::config->email();
+  }
   return QString();
 }
 
 bool KOEditorConfig::thatIsMe( const QString &mail ) const
 {
-  if(Private::config != this)
-    return Private::config->thatIsMe(mail);
+  if ( Private::config != this ) {
+    return Private::config->thatIsMe( mail );
+  }
   return false;
 }
 
 QStringList KOEditorConfig::allEmails() const
 {
-  if(Private::config != this)
+  if ( Private::config != this ) {
     return Private::config->allEmails();
+  }
 
   QStringList mails;
   const QString m = email();
-  if( ! m.isEmpty())
+  if ( !m.isEmpty() ) {
     mails << m;
+  }
   return mails;
 }
 
 QStringList KOEditorConfig::fullEmails() const
 {
-  if(Private::config != this)
+  if ( Private::config != this ) {
     return Private::config->fullEmails();
+  }
   return QStringList();
 }
 
 bool KOEditorConfig::showTimeZoneSelectorInIncidenceEditor() const
 {
-  if(Private::config != this)
+  if ( Private::config != this ) {
     return Private::config->showTimeZoneSelectorInIncidenceEditor();
+  }
   return true;
 }
 
-QStringList& KOEditorConfig::templates(const QString &type)
+QStringList &KOEditorConfig::templates( const QString &type )
 {
   return d->mTemplates[type];
 }

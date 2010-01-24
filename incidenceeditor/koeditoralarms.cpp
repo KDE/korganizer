@@ -176,7 +176,7 @@ KOEditorAlarms::KOEditorAlarms( const QByteArray &type,
 
   connect( mWidget.mDisplayText, SIGNAL(textChanged()), SLOT(changed()) );
   connect( mWidget.mSoundFile, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
-  connect( mWidget.mSoundFile, SIGNAL( textChanged( const QString& ) ), SLOT( slotUpdateButtons() ) );
+  connect( mWidget.mSoundFile, SIGNAL(textChanged(const QString&)), SLOT(slotUpdateButtons()) );
   connect( mWidget.mApplication, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
   connect( mWidget.mAppArguments, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
   connect( mWidget.mEmailAddress, SIGNAL(textChanged(const QString&)), SLOT(changed()) );

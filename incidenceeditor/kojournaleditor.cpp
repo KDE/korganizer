@@ -199,7 +199,7 @@ bool KOJournalEditor::read( const Item &item, const QDate &date, bool tmpl )
   return true;
 }
 
-void KOJournalEditor::fillJournal( Journal* journal )
+void KOJournalEditor::fillJournal( Journal *journal )
 {
   mGeneral->fillJournal( journal );
   mDetails->fillIncidence( journal );
