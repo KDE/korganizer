@@ -166,7 +166,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   QLabel *label = new QLabel( i18nc( "@label", "Recurrence:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *recLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( recLayout, 3, 3, 1, 4 );
+  layoutTimeBox->addLayout( recLayout, 3, 1, 1, 3 );
   QPushButton *recEditButton = new QPushButton( timeGroupBox );
   recEditButton->setIcon(
     KIconLoader::global()->loadIcon(
