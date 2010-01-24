@@ -581,7 +581,7 @@ void ActionManager::initActions()
 
   /************************** Actions MENU *********************************/
   mNewEventAction = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
-  mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
+  //mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
   mNewEventAction->setHelpText( i18n( "Create a new Event" ) );
 
   mACollection->addAction( "new_event", mNewEventAction );
@@ -589,7 +589,7 @@ void ActionManager::initActions()
            SLOT(newEvent()) );
 
   mNewTodoAction = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
-  mNewTodoAction->setIconText( i18n( "To-do" ) );
+  //mNewTodoAction->setIconText( i18n( "To-do" ) );
   mNewTodoAction->setHelpText( i18n( "Create a new To-do" ) );
   mACollection->addAction( "new_todo", mNewTodoAction );
   connect( mNewTodoAction, SIGNAL(triggered(bool)), mCalendarView,
@@ -604,7 +604,7 @@ void ActionManager::initActions()
            SLOT(setEnabled(bool)) );
 
   mNewJournalAction = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
-  mNewJournalAction->setIconText( i18n( "Journal" ) );
+  //mNewJournalAction->setIconText( i18n( "Journal" ) );
   mNewJournalAction->setHelpText( i18n( "Create a new Journal" ) );
   mACollection->addAction( "new_journal", mNewJournalAction );
   connect( mNewJournalAction, SIGNAL(triggered(bool)), mCalendarView,
