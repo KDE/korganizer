@@ -23,11 +23,10 @@
 */
 
 #include "koeditorfreebusy.h"
+#include "freebusyurldialog.h"
 #include "koeditorconfig.h"
 
 #include <akonadi/kcal/freebusymanager.h>
-#include "../freebusyurldialog.h"
-#include "../koglobals.h"
 #include <akonadi/kcal/groupware.h>
 
 #include <kdgantt1/KDGanttView.h>
@@ -766,7 +765,7 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   if ( !item ) {
     return;
   }
-  
+
   Attendee *attendee = item->attendee();
   QPointer<FreeBusyUrlDialog> dialog = new FreeBusyUrlDialog( attendee, this );
   dialog->exec();

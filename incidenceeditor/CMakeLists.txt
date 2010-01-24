@@ -27,6 +27,7 @@ set( korg_incidenceeditor_LIB_SRCS
     koeditorfreebusy.cpp
     koattendeeeditor.cpp
     kogroupwareintegration.cpp
+    freebusyurldialog.cpp
     templatemanagementdialog.cpp
 )
 

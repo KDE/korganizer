@@ -139,7 +139,6 @@ install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 ########### next target ###############
 
 set(korganizer_core_LIB_SRCS
-    freebusyurldialog.cpp
     koprefs.cpp
     kocore.cpp
     koidentitymanager.cpp
