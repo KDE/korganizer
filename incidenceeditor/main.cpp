@@ -44,11 +44,12 @@ class CalItemModel : public Akonadi::ItemModel
 
     virtual int rowCount( const QModelIndex &parent = QModelIndex() ) const
     {
-      return ItemModel::rowCount(parent);
+      return ItemModel::rowCount( parent );
     }
 
     virtual int columnCount( const QModelIndex &parent = QModelIndex() ) const
     {
+      Q_UNUSED( parent );
       return 4;
     }
 
