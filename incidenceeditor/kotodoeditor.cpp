@@ -24,12 +24,11 @@
   without including the source code for Qt in the source distribution.
 */
 #include "kotodoeditor.h"
-#include "koeditorconfig.h"
 #include "koeditorattachments.h"
-#include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
+#include "koeditorconfig.h"
+#include "koeditorgeneraltodo.h"
 #include "koeditorrecurrence.h"
-#include "../koglobals.h"
 #include "korganizer/incidencechangerbase.h"
 
 #include <KCal/IncidenceFormatter>
