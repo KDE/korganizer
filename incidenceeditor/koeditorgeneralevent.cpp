@@ -33,10 +33,11 @@
 #include <KCal/IncidenceFormatter>
 
 #include <KDialog>
+#include <KIconLoader>
+#include <KLocale>
 #include <KMessageBox>
 #include <KRichTextWidget>
 #include <KSystemTimeZone>
-#include <klocale.h>
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -185,13 +186,18 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   connect( mTimeZoneComboEnd, SIGNAL(currentIndexChanged(int)),
            this, SLOT(endSpecChanged()) );
 
-  QLabel *label = new QLabel( i18n( "Repeat:" ), timeGroupBox );
+  QLabel *label = new QLabel( i18nc( "@label", "Recurrence:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 2, 0 );
   QBoxLayout *recLayout = new QHBoxLayout();
   layoutTimeBox->addLayout( recLayout, 2, 1, 1, 3 );
-  mRecEditButton = new QPushButton( i18n( "Does not repeat..." ), timeGroupBox );
-  recLayout->addWidget( mRecEditButton );
-  connect( mRecEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  QPushButton *recEditButton = new QPushButton( timeGroupBox );
+  recEditButton->setIcon(
+    KIconLoader::global()->loadIcon(
+      "appointment-recurring", KIconLoader::Desktop, KIconLoader::SizeSmall ) );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  mRecEditLabel = new QLabel( QString(), timeGroupBox );
+  recLayout->addWidget( mRecEditLabel );
   recLayout->addStretch( 1 );
 
   label = new QLabel( i18nc( "@label", "Reminder:" ), timeGroupBox );
@@ -478,7 +484,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, const QDate &date, bool isTe
     break;
   }
 
-  mRecEditButton->setText( IncidenceFormatter::recurrenceString( event ) );
+  updateRecurrenceSummary( event );
   const QStringList allEmails = KOEditorConfig::instance()->allEmails();
   Attendee *me = event->attendeeByMails( allEmails );
   if ( event->attendeeCount() > 1 &&
@@ -713,9 +719,13 @@ bool KOEditorGeneralEvent::setAlarmOffset( Alarm *alarm, int value ) const
   return true;
 }
 
-void KOEditorGeneralEvent::updateRecurrenceSummary( const QString &summary )
+void KOEditorGeneralEvent::updateRecurrenceSummary( Event *event )
 {
-  mRecEditButton->setText( summary );
+  if ( event->recurs() ) {
+    mRecEditLabel->setText( IncidenceFormatter::recurrenceString( event ) );
+  } else {
+    mRecEditLabel->setText( QString() );
+  }
 }
 
 #include "koeditorgeneralevent.moc"

@@ -29,6 +29,7 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
+#include "../koglobals.h"
 #include "korganizer/incidencechangerbase.h"
 
 #include <KCal/IncidenceFormatter>
@@ -54,7 +55,10 @@ using namespace Akonadi;
 using namespace KOrg;
 
 KOTodoEditor::KOTodoEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), QStringList() << Akonadi::IncidenceMimeTypeVisitor::todoMimeType(), parent ), mRelatedTodo()
+  : KOIncidenceEditor( QString(),
+                       QStringList() << Akonadi::IncidenceMimeTypeVisitor::todoMimeType(),
+                       parent ),
+    mRelatedTodo(), mGeneral( 0 ), mRecurrence( 0 )
 {
   mInitialTodo = Todo::Ptr( new Todo );
   mInitialTodoItem.setPayload(mInitialTodo);
@@ -105,6 +109,11 @@ void KOTodoEditor::init()
 
   connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
            mGeneral, SLOT(updateAttendeeSummary(int)) );
+
+  connect( mGeneral, SIGNAL(editRecurrence()),
+           mRecurrenceDialog, SLOT(show()) );
+  connect( mRecurrenceDialog, SIGNAL(okClicked()),
+           SLOT(updateRecurrenceSummary()) );
 }
 
 void KOTodoEditor::setupGeneral()
@@ -141,16 +150,9 @@ void KOTodoEditor::setupGeneral()
 
 void KOTodoEditor::setupRecurrence()
 {
-  QFrame *topFrame = new QFrame();
-  mTabWidget->addTab( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  mRecurrence = new KOEditorRecurrence( topFrame );
-  topLayout->addWidget( mRecurrence );
-
-  mRecurrence->setEnabled( false );
-  connect( mGeneral,SIGNAL(dueDateEditToggle(bool)),
-           mRecurrence, SLOT(setEnabled(bool)) );
+  mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
+  mRecurrenceDialog->hide();
+  mRecurrence = mRecurrenceDialog->editor();
 }
 
 void KOTodoEditor::newTodo()
@@ -200,7 +202,8 @@ bool KOTodoEditor::processInput()
       // Don't do anything cause no changes where done
     } else {
       mChanger->beginChange( mIncidence );
-      Akonadi::todo( mIncidence )->startUpdates(); //merge multiple mIncidence->updated() calls into one
+      //merge multiple mIncidence->updated() calls into one
+      Akonadi::todo( mIncidence )->startUpdates();
       fillTodo(mIncidence);
       rc = mChanger->changeIncidence( oldTodo, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
       Akonadi::todo( mIncidence )->endUpdates();
@@ -328,6 +331,17 @@ void KOTodoEditor::show()
 {
   fillTodo( mInitialTodoItem );
   KOIncidenceEditor::show();
+}
+
+void KOTodoEditor::updateRecurrenceSummary()
+{
+  Todo::Ptr todo( new Todo );
+
+  Akonadi::Item todoItem;
+  todoItem.setPayload( todo );
+  fillTodo( todoItem );
+
+  mGeneral->updateRecurrenceSummary( todo.get() );
 }
 
 #include "kotodoeditor.moc"

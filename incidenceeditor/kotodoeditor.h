@@ -36,6 +36,7 @@
 class QDateTime;
 class KOEditorGeneralTodo;
 class KOEditorRecurrence;
+class KOEditorRecurrenceDialog;
 
 namespace Akonadi {
   class Item;
@@ -72,7 +73,8 @@ class KORG_INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /** Set widgets to default values */
-    void setDates( const QDateTime &due, bool allDay = true, const Akonadi::Item &relatedTodo = Akonadi::Item() );
+    void setDates( const QDateTime &due, bool allDay = true,
+                   const Akonadi::Item &relatedTodo = Akonadi::Item() );
 
     /** Write To-do settings to todo object */
     void fillTodo( const Akonadi::Item &item );
@@ -95,6 +97,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteTodo();
+    void updateRecurrenceSummary();
 
   protected:
     QString type() { return "Todo"; }
@@ -123,6 +126,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     Todo::Ptr mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
+    KOEditorRecurrenceDialog *mRecurrenceDialog;
     KOEditorRecurrence *mRecurrence;
 };
 

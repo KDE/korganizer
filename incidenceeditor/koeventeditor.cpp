@@ -47,7 +47,9 @@
 using namespace Akonadi;
 
 KOEventEditor::KOEventEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), QStringList() << Akonadi::IncidenceMimeTypeVisitor::eventMimeType(), parent ),
+  : KOIncidenceEditor( QString(),
+                       QStringList() << Akonadi::IncidenceMimeTypeVisitor::eventMimeType(),
+                       parent ),
     mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
   mInitialEvent = Event::Ptr( new Event );
@@ -157,17 +159,6 @@ void KOEventEditor::modified()
 
 void KOEventEditor::setupRecurrence()
 {
-#if 0
-  QFrame *topFrame = new QFrame();
-  mTabWidget->addTab( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
-
-  topFrame->setWhatsThis( i18nc( "@info:whatsthis",
-                                 "The Recurrence tab allows you to set options "
-                                 "on how often this event recurs." ) );
-  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  mRecurrence = new KOEditorRecurrence( topFrame );
-  topLayout->addWidget( mRecurrence );
-#endif
   mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
   mRecurrenceDialog->hide();
   mRecurrence = mRecurrenceDialog->editor();
@@ -386,7 +377,7 @@ void KOEventEditor::updateRecurrenceSummary()
   evItem.setPayload(ev);
   fillEvent( evItem );
 
-  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev.get() ) );
+  mGeneral->updateRecurrenceSummary( ev.get() );
 }
 
 void KOEventEditor::selectInvitationCounterProposal( bool enable )

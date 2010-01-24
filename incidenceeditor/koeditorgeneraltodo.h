@@ -63,10 +63,13 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     /** Check if the input is valid. */
     bool validateInput();
 
+    void updateRecurrenceSummary( Todo *todo );
+
   signals:
     void dueDateEditToggle( bool );
     void dateTimeStrChanged( const QString & );
     void signalDateTimeChanged( const QDateTime &, const QDateTime & );
+    void editRecurrence();
 
   protected slots:
     void completedChanged(int);
@@ -97,6 +100,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QCheckBox               *mDueCheck;
     KPIM::KDateEdit         *mDueDateEdit;
     KPIM::KTimeEdit         *mDueTimeEdit;
+    QLabel                  *mRecEditLabel;
     KComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;
