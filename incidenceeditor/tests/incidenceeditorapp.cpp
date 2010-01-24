@@ -7,13 +7,12 @@
 #include <kaboutdata.h>
 #include <kurl.h>
 #include <ksystemtimezone.h>
-#include <QLineEdit>
+#include <KLineEdit>
 
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
 #include <akonadi/collectionfilterproxymodel.h>
 #include <akonadi/collectionmodel.h>
-#include <akonadi/collectionview.h>
 #include <akonadi/collectiondeletejob.h>
 #include <akonadi/itemmodel.h>
 #include <akonadi/itemview.h>
@@ -142,13 +141,13 @@ class MainWidget : public QWidget
       m_collectionview->setModel( m_collectionproxymodel );
       m_collectionview->setRootIsDecorated( true );
 
-      QWidget *mainwidget = new QWidget(splitter);
-      QLayout *mainlayout = new QVBoxLayout(mainwidget);
+      QWidget *mainwidget = new QWidget( splitter );
+      QLayout *mainlayout = new QVBoxLayout( mainwidget );
       mainlayout->setMargin( 0 );
       mainlayout->setSpacing( 0 );
       mainwidget->setLayout( mainlayout );
 
-      QLineEdit *edit = new QLineEdit( this );
+      KLineEdit *edit = new KLineEdit( this );
       connect( edit, SIGNAL(textChanged(QString)),
                this, SLOT(filterChanged(QString)) );
       mainlayout->addWidget( edit );
