@@ -24,27 +24,23 @@
 */
 
 #include "koeventeditor.h"
+#include "koeditorconfig.h"
 #include "koeditordetails.h"
 #include "koeditorfreebusy.h"
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
-#include "koeditorconfig.h"
 #include "korganizer/incidencechangerbase.h"
-#include <akonadi/kcal/groupware.h>
 
+#include <akonadi/collectioncombobox.h>
 #include <akonadi/kcal/utils.h>
-
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 
-#include <KCal/IncidenceFormatter>
-
+#include <KLocale>
 #include <KMessageBox>
-#include <klocale.h>
-#include <QTabWidget>
-#include <QFrame>
-#include <QVBoxLayout>
 
-using namespace Akonadi;
+#include <QFrame>
+#include <QTabWidget>
+#include <QVBoxLayout>
 
 KOEventEditor::KOEventEditor( QWidget *parent )
   : KOIncidenceEditor( QString(),

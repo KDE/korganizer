@@ -25,36 +25,41 @@
 #include "koincidenceeditor.h"
 #include "koeditorconfig.h"
 #include "koeditordetails.h"
-#include "urihandler.h"
 #include "templatemanagementdialog.h"
 
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
-#include <ksystemtimezone.h>
-#include <klocale.h>
+#include <libkdepimdbusinterfaces/urihandler.h>
 
+//#include <Akonadi/CollectionComboBox> todo
+#include <akonadi/collectioncombobox.h>
+#include <Akonadi/ItemFetchScope>
+#include <Akonadi/Monitor>
 #include <akonadi/kcal/utils.h>
-#include <akonadi/itemfetchscope.h>
 
 #include <KABC/Addressee>
-#include <KCal/Incidence>
+
 #include <KCal/CalendarLocal>
 #include <KCal/ICalFormat>
 
-#include <QBoxLayout>
-#include <QCloseEvent>
-#include <QList>
+#include <KLocale>
 #include <KMessageBox>
-#include <QPointer>
 #include <KStandardDirs>
+#include <KSystemTimeZones>
+
+#include <QCloseEvent>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPointer>
 #include <QTabWidget>
+#include <QVBoxLayout>
 
-using namespace Akonadi;
-using namespace KCal;
-
-KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QStringList mimetypes, QWidget *parent )
-  : KDialog( parent ), mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false ), mMonitor( 0 )
+KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
+                                      QStringList mimetypes,
+                                      QWidget *parent )
+  : KDialog( parent ), mAttendeeEditor( 0 ), mIsCounter( false ),
+    mIsCreateTask( false ), mMonitor( 0 )
 {
   setCaption( caption );
   setButtons( Ok | Apply | Cancel | Default );
@@ -114,39 +119,41 @@ KOIncidenceEditor::~KOIncidenceEditor()
 
 void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, const QDate &date, bool tmpl )
 {
-  if( ! read( item, date, tmpl ))
+  if ( !read( item, date, tmpl ) ) {
     return;
+  }
 
   Akonadi::Entity::Id colId( item.storageCollectionId() );
   Akonadi::Collection col( colId );
-  if( col.isValid() )
+  if ( col.isValid() ) {
     mCalSelector->setDefaultCollection( col );
+  }
 
   //TODO read-only ATM till we support moving of existing incidences from
   // one collection to another.
-  mCalSelector->setEnabled(false);
+  mCalSelector->setEnabled( false );
 }
 
 void KOIncidenceEditor::editIncidence( const Akonadi::Item &item, const QDate &date )
 {
-  Incidence::Ptr incidence = Akonadi::incidence(item);
-  Q_ASSERT(incidence);
-  Q_ASSERT(incidence->type() == type());
+  Incidence::Ptr incidence = Akonadi::incidence( item );
+  Q_ASSERT( incidence );
+  Q_ASSERT( incidence->type() == type() );
 
   init();
 
-  if( mIncidence.isValid() ) {
-    Q_ASSERT(mMonitor);
-    mMonitor->setItemMonitored(mIncidence, false);
+  if ( mIncidence.isValid() ) {
+    Q_ASSERT( mMonitor );
+    mMonitor->setItemMonitored( mIncidence, false );
   } else {
-    Q_ASSERT( ! mIncidence.hasPayload<Incidence::Ptr>()); // not possible, right?
+    Q_ASSERT( !mIncidence.hasPayload<Incidence::Ptr>() ); // not possible, right?
   }
 
   readIncidence( item, date, false );
   mIncidence = item;
 
-  if( ! mMonitor) {
-    mMonitor = new Akonadi::Monitor(this);
+  if ( !mMonitor ) {
+    mMonitor = new Akonadi::Monitor( this );
     mMonitor->itemFetchScope().fetchFullPayload();
     //mMonitor->itemFetchScope().setAncestorRetrieval( Akonadi::ItemFetchScope::Parent );
     connect( mMonitor, SIGNAL(itemChanged(Akonadi::Item,QSet<QByteArray>)),
@@ -214,7 +221,7 @@ void KOIncidenceEditor::setupAttendeesTab()
            "The Attendees tab allows you to Add or Remove "
            "Attendees to/from this event or to-do." ) );
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setMargin(0);
 
   mAttendeeEditor = mDetails = new KOEditorDetails( spacingHint(), topFrame );
@@ -237,7 +244,7 @@ void KOIncidenceEditor::closeEvent( QCloseEvent *event )
 
 void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
 {
-  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
+  const Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     return;
   }
@@ -371,7 +378,7 @@ QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
   QFrame *topFrame = new QFrame();
   mTabWidget->addTab( topFrame, wid->title() );
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setMargin(0);
 
   wid->setParent( topFrame );
@@ -451,7 +458,7 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
   QFrame *topFrame = new QFrame();
   mTabWidget->addTab( topFrame, label );
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setMargin(0);
 
   KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype, topFrame );

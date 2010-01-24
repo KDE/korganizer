@@ -24,19 +24,16 @@
 
 #include "freebusyurldialog.h"
 
-#include <kcal/attendee.h>
-#include <kcal/freebusyurlstore.h>
+#include <KCal/Attendee>
+#include <KCal/FreeBusyUrlStore>
 
-#include <klineedit.h>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
+#include <KDebug>
+#include <KLineEdit>
+#include <KLocale>
 
-#include <QLayout>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QFrame>
 #include <QBoxLayout>
+#include <QFrame>
+#include <QLabel>
 
 FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent )
   : KDialog( parent )

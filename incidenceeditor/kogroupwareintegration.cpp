@@ -17,29 +17,22 @@
 */
 
 #include "kogroupwareintegration.h"
+#include "koeditorconfig.h"
+#include "koeventeditor.h"
+#include "kojournaleditor.h"
+#include "kotodoeditor.h"
+#include "koprefs.h"
 
-#include <kglobal.h>
-#include <ksystemtimezone.h>
-
-#include <akonadi/changerecorder.h>
-#include <akonadi/collection.h>
-#include <akonadi/item.h>
-#include <akonadi/itemfetchscope.h>
-#include <akonadi/session.h>
-
+#include <Akonadi/ChangeRecorder>
+#include <Akonadi/ItemFetchScope>
+#include <Akonadi/Session>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/groupware.h>
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
-#include <kcal/incidence.h>
-
-#include "koprefs.h"
-#include "koeditorconfig.h"
-#include "koeventeditor.h"
-#include "kojournaleditor.h"
-#include "kotodoeditor.h"
+#include <KSystemTimeZones>
 
 class KOrganizerEditorConfig : public KOEditorConfig
 {

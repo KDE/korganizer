@@ -27,11 +27,12 @@
 #include "koeditorconfig.h"
 #include "koeditorattachments.h"
 
-#include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryselectdialog.h>
+#include <libkdepim/kdateedit.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <KCal/Incidence>
-#include <kcal/icaltimezones.h>
+#include <KCal/ICalTimeZones>
 
 #include <KActionCollection>
 #include <KComboBox>
@@ -68,7 +69,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 }
 
 KOEditorGeneral::KOEditorGeneral( QObject *parent )
-  : QObject( parent ), mAttachments( 0 ), mTimeZones( new KCal::ICalTimeZones )
+  : QObject( parent ), mAttachments( 0 ), mTimeZones( new ICalTimeZones )
 {
   mType = "Event";
   mAlarmList.setAutoDelete( true );

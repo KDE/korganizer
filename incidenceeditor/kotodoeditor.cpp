@@ -25,33 +25,24 @@
 */
 #include "kotodoeditor.h"
 #include "koeditorattachments.h"
-#include "koeditordetails.h"
 #include "koeditorconfig.h"
+#include "koeditordetails.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditorrecurrence.h"
 #include "korganizer/incidencechangerbase.h"
 
-#include <KCal/IncidenceFormatter>
-
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <ksystemtimezone.h>
-
-#include <QFrame>
-#include <QPixmap>
-#include <QLayout>
-#include <QDateTime>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QBoxLayout>
-#include <QTabWidget>
-
+#include <akonadi/collectioncombobox.h>
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 
-using namespace Akonadi;
-using namespace KOrg;
+#include <KLocale>
+#include <KSystemTimeZones>
+
+#include <QDateTime>
+#include <QFrame>
+#include <QHBoxLayout>
+#include <QTabWidget>
+#include <QVBoxLayout>
 
 KOTodoEditor::KOTodoEditor( QWidget *parent )
   : KOIncidenceEditor( QString(),
@@ -60,7 +51,7 @@ KOTodoEditor::KOTodoEditor( QWidget *parent )
     mRelatedTodo(), mGeneral( 0 ), mRecurrence( 0 )
 {
   mInitialTodo = Todo::Ptr( new Todo );
-  mInitialTodoItem.setPayload(mInitialTodo);
+  mInitialTodoItem.setPayload( mInitialTodo );
 }
 
 KOTodoEditor::~KOTodoEditor()
@@ -122,13 +113,13 @@ void KOTodoEditor::setupGeneral()
   QFrame *topFrame = new QFrame();
   mTabWidget->addTab( topFrame, i18nc( "@title:tab general to-do settings", "&General" ) );
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
   mGeneral->initHeader( topFrame, topLayout );
   mGeneral->initTime( topFrame, topLayout );
   mGeneral->initStatus( topFrame, topLayout );
 
-  QBoxLayout *alarmLineLayout = new QHBoxLayout();
+  QHBoxLayout *alarmLineLayout = new QHBoxLayout();
   alarmLineLayout->setSpacing( spacingHint() );
   topLayout->addItem( alarmLineLayout );
   mGeneral->initAlarm( topFrame, alarmLineLayout );

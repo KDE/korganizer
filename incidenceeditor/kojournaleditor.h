@@ -27,16 +27,16 @@
 #define KOJOURNALEDITOR_H
 
 #include "incidenceeditor_export.h"
-
 #include "koincidenceeditor.h"
 
 #include <KCal/Journal>
 
-#include <Akonadi/Item>
-
 class KOEditorGeneralJournal;
 
-using namespace KCal;
+namespace Akonadi {
+  class Item;
+}
+using namespace Akonadi;
 
 /**
   This class provides a dialog for editing a Journal.
@@ -80,7 +80,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
     void setTime( const QTime &time );
 
     /** Write Journal settings to journal object */
-    void fillJournal( Journal* );
+    void fillJournal( Journal * );
 
     /** Check if the input is valid. */
     bool validateInput();

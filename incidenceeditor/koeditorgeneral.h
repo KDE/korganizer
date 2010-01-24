@@ -24,8 +24,9 @@
 #ifndef KOEDITORGENERAL_H
 #define KOEDITORGENERAL_H
 
-#include <KCal/Alarm>
 #include <KLineEdit>
+
+#include <KCal/Alarm>
 
 class KOEditorAttachments;
 
@@ -152,12 +153,12 @@ class KOEditorGeneral : public QObject
       AdvancedAlarmLabel
     };
 
-    KCal::ICalTimeZones *mTimeZones;
-    
+    ICalTimeZones *mTimeZones;
+
   private:
     void toggleDescriptionRichButtons( bool rich );
     QByteArray mType; // as in Incidence::type()
-    KCal::Alarm::List mAlarmList;
+    Alarm::List mAlarmList;
 };
 
 #endif

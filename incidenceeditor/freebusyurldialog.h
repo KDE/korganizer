@@ -34,12 +34,13 @@ class KLineEdit;
 namespace KCal {
   class Attendee;
 }
+using namespace KCal;
 
 class KORG_INCIDENCEEDITOR_EXPORT FreeBusyUrlDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit FreeBusyUrlDialog( KCal::Attendee *, QWidget *parent = 0 );
+    explicit FreeBusyUrlDialog( Attendee *, QWidget *parent = 0 );
 
   public slots:
     void slotOk();
@@ -52,7 +53,7 @@ class KORG_INCIDENCEEDITOR_EXPORT FreeBusyUrlWidget : public QWidget
 {
   Q_OBJECT
   public:
-    explicit FreeBusyUrlWidget( KCal::Attendee *, QWidget *parent = 0 );
+    explicit FreeBusyUrlWidget( Attendee *, QWidget *parent = 0 );
     ~FreeBusyUrlWidget();
 
     void loadConfig();
@@ -60,7 +61,7 @@ class KORG_INCIDENCEEDITOR_EXPORT FreeBusyUrlWidget : public QWidget
 
   private:
     KLineEdit *mUrlEdit;
-    KCal::Attendee *mAttendee;
+    Attendee *mAttendee;
 };
 
 #endif

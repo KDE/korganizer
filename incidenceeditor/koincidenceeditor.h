@@ -27,30 +27,38 @@
 
 #include "incidenceeditor_export.h"
 
-#include <kdialog.h>
-#include <kurl.h>
-#include <QList>
+#include <Akonadi/Item>
 
 #include <KCal/Incidence>
-#include <Akonadi/Item>
-#include <Akonadi/Collection>
-#include <Akonadi/Monitor>
-#include <akonadi/collectioncombobox.h>
+
+#include <KDialog>
+
+#include <QList>
+
+class KOAttendeeEditor;
+class KOEditorDetails;
+
+namespace KOrg {
+  class IncidenceChangerBase;
+}
+using namespace KOrg;
 
 namespace KPIM {
   class DesignerFields;
   class EmbeddedURLPage;
 }
-namespace KOrg {
-  class IncidenceChangerBase;
-}
 
-class KOEditorDetails;
-class KOAttendeeEditor;
-class QTabWidget;
+namespace Akonadi {
+  class CollectionComboBox;
+  class Monitor;
+}
+using namespace Akonadi;
 
 using namespace KCal;
-using namespace KOrg;
+
+class KUrl;
+
+class QTabWidget;
 
 /**
   This is the base class for the calendar component editors.
@@ -139,7 +147,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void setupDesignerTabs( const QString &type );
 
     void readDesignerFields( const Akonadi::Item &item );
-    void writeDesignerFields( KCal::Incidence* );
+    void writeDesignerFields( Incidence * );
 
     /**
       Returns true if the user made any alteration
@@ -167,7 +175,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     Akonadi::CollectionComboBox *mCalSelector;
     KOEditorDetails *mDetails;
     KOAttendeeEditor *mAttendeeEditor;
-    KOrg::IncidenceChangerBase *mChanger;
+    IncidenceChangerBase *mChanger;
 
     QList<KPIM::DesignerFields*> mDesignerFields;
     QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;

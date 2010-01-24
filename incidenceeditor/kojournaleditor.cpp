@@ -25,25 +25,24 @@
 */
 
 #include "kojournaleditor.h"
+#include "koeditorconfig.h"
 #include "koeditordetails.h"
 #include "koeditorgeneraljournal.h"
-#include "koeditorconfig.h"
-#include "korganizer/baseview.h"
+#include "korganizer/incidencechangerbase.h"
 
+#include <akonadi/collectioncombobox.h>
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 
-#include <KCal/IncidenceFormatter>
-
 #include <KLocale>
-#include <KMessageBox>
+
 #include <QTabWidget>
 #include <QVBoxLayout>
 
-using namespace Akonadi;
-
 KOJournalEditor::KOJournalEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), QStringList() << Akonadi::IncidenceMimeTypeVisitor::journalMimeType(), parent )
+  : KOIncidenceEditor( QString(),
+                       QStringList() << Akonadi::IncidenceMimeTypeVisitor::journalMimeType(),
+                       parent )
 {
 }
 

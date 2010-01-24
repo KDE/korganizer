@@ -26,15 +26,11 @@
 #define KOEVENTEDITOR_H
 
 #include "incidenceeditor_export.h"
-
 #include "koincidenceeditor.h"
 
 #include <KCal/Event>
 
-#include <Akonadi/Item>
-
-using namespace KCal;
-
+class QDateTime;
 class KOEditorFreeBusy;
 class KOEditorGeneralEvent;
 class KOEditorRecurrence;
@@ -43,6 +39,7 @@ class KOEditorRecurrenceDialog;
 namespace Akonadi {
   class Item;
 }
+using namespace Akonadi;
 
 /**
   This class provides a dialog for editing an event.

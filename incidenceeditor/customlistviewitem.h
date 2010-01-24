@@ -26,7 +26,7 @@
 
 #include <QMap>
 #include <QString>
-#include <k3listview.h>
+#include <K3ListView>
 
 template<class T>
 class CustomListViewItem : public K3ListViewItem

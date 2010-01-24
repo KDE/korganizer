@@ -27,11 +27,9 @@
 #define KOTODOEDITOR_H
 
 #include "incidenceeditor_export.h"
-
 #include "koincidenceeditor.h"
-#include <kcal/todo.h>
 
-#include <Akonadi/Item>
+#include <KCal/Todo>
 
 class QDateTime;
 class KOEditorGeneralTodo;
@@ -41,6 +39,7 @@ class KOEditorRecurrenceDialog;
 namespace Akonadi {
   class Item;
 }
+using namespace Akonadi;
 
 /**
   This class provides a dialog for editing a Todo.

@@ -26,17 +26,15 @@
 
 #include "incidenceeditor_export.h"
 
-#include <kpimprefs.h>
+#include <KConfigSkeleton>
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
 #include <QtCore/QDateTime>
+#include <QtCore/QStringList>
 
 /**
  * Configuration details. An application can inherit from this class
  * to provide application specific configurations to the editor.
  *
- * KOrganizer's ActionManager inherits from this class.
  */
 class KORG_INCIDENCEEDITOR_EXPORT KOEditorConfig
 {
@@ -44,36 +42,45 @@ class KORG_INCIDENCEEDITOR_EXPORT KOEditorConfig
     explicit KOEditorConfig();
     virtual ~KOEditorConfig();
 
-    static KOEditorConfig* instance();
-    static void setKOEditorConfig(KOEditorConfig*);
+    static KOEditorConfig *instance();
+    static void setKOEditorConfig( KOEditorConfig * );
 
-    virtual KConfigSkeleton* config() const = 0;
+    virtual KConfigSkeleton *config() const = 0;
 
     /// Return the own full name.
     virtual QString fullName() const;
+
     /// Return the own mail address.
     virtual QString email() const;
+
     /// Return true if the given email belongs to the user.
     virtual bool thatIsMe( const QString &email ) const;
+
     /// Returns all email addresses for the user.
     virtual QStringList allEmails() const;
+
     /// Returns all email addresses together with the full username for the user.
     virtual QStringList fullEmails() const;
+
     /// Show timezone selectors in the event and todo editor dialog.
     virtual bool showTimeZoneSelectorInIncidenceEditor() const;
 
-    virtual QDateTime defaultDuration() const { return QDateTime(QDate(1752,1,1), QTime(2,0)); }
-    virtual QDateTime startTime() const { return QDateTime(QDate(1752,1,1), QTime(10,0)); }
+    virtual QDateTime defaultDuration() const
+    { return QDateTime( QDate( 1752, 1, 1 ), QTime( 2, 0 ) ); }
+
+    virtual QDateTime startTime() const
+    { return QDateTime( QDate( 1752, 1, 1 ), QTime( 10, 0 ) ); }
+
     virtual int reminderTime() const { return 15; }
     virtual int reminderTimeUnits() const { return 0; }
     virtual bool defaultTodoReminders() const { return false; }
     virtual bool defaultEventReminders() const { return false; }
     virtual QStringList activeDesignerFields() const { return QStringList(); }
-    virtual QStringList& templates(const QString &type);
+    virtual QStringList &templates( const QString &type );
 
   private:
     class Private;
-    Private* const d;
+    Private *const d;
 };
 
 #endif
