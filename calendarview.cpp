@@ -1658,7 +1658,7 @@ void CalendarView::schedule_forward( const Item &item )
 
   QPointer<PublishDialog> publishdlg = new PublishDialog;
   if ( publishdlg->exec() == QDialog::Accepted ) {
-    QString recipients = publishdlg->addresses();
+    const QString recipients = publishdlg->addresses();
     if ( incidence->organizer().isEmpty() ) {
       incidence->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                        KOPrefs::instance()->email() ) );
