@@ -200,10 +200,8 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   recLayout->addWidget( mRecEditLabel );
   recLayout->addStretch( 1 );
 
-  label = new QLabel( i18nc( "@label", "Reminder:" ), timeGroupBox );
-  layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
-  layoutTimeBox->addLayout( alarmLineLayout, 3, 1, 1, 3 );
+  layoutTimeBox->addLayout( alarmLineLayout, 3, 0, 1, 4 );
   initAlarm( timeGroupBox, alarmLineLayout );
   alarmLineLayout->addStretch( 1 );
 
