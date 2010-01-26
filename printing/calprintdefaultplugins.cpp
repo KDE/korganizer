@@ -770,6 +770,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
   QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
   height -= footerHeight();
 
+  KLocale *local = KGlobal::locale();
+
   switch ( mDayPrintType ) {
   case Filofax:
   case SingleTimetable:
@@ -777,7 +779,6 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       QRect daysBox( headerBox );
       daysBox.setTop( headerBox.bottom() + padding() );
       daysBox.setBottom( height );
-      KLocale *local = KGlobal::locale();
       QString line1 = local->formatDate( mFromDate );
       QString line2 = local->formatDate( mToDate );
       QString title;
@@ -813,7 +814,6 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       curEndTime = curStartTime.addSecs( 3600 );
     }
 
-    KLocale *local = KGlobal::locale();
 
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
     Item::List eventList = mCalendar->events( curDay, timeSpec,
