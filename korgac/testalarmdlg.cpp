@@ -46,7 +46,7 @@ int main(int argc,char **argv)
   e1->setDtEnd( now.addDays( 1 ) );
   Alarm *a = e1->newAlarm();
 //  a->setProcedureAlarm( "/usr/X11R6/bin/xeyes" );
-  a->setAudioAlarm( "/opt/kde/share/apps/korganizer/sounds/spinout.wav" );
+  a->setAudioAlarm( "/data/kde/share/apps/korganizer/sounds/spinout.wav" );
 
   Todo *t1 = new Todo;
   t1->setSummary( "To-do A" );
@@ -65,6 +65,16 @@ int main(int argc,char **argv)
   e3->setDtEnd( now.addDays( 3 ) );
   e3->newAlarm();
 
+  Todo *t2 = new Todo;
+  t2->setSummary( "Something big is due today" );
+  t2->setDtDue( now );
+  t2->newAlarm();
+
+  Todo *t3 = new Todo;
+  t3->setSummary( "Be lazy" );
+  t3->setDtDue( now );
+  t3->newAlarm();
+
   Event *e4 = new Event;
   e4->setSummary( "Watch TV" );
   e4->setDtStart( now.addSecs( 120 ) );
@@ -73,11 +83,20 @@ int main(int argc,char **argv)
 
   AlarmDialog dlg( 0 );
   app.setMainWidget( &dlg );
-  dlg.addIncidence( e2, QDateTime::currentDateTime().addSecs( 60 ) );
-  dlg.addIncidence( t1, QDateTime::currentDateTime().addSecs( 300 ) );
-  dlg.addIncidence( e4, QDateTime::currentDateTime().addSecs( 120 ) );
-  dlg.addIncidence( e3, QDateTime::currentDateTime().addSecs( 240 ) );
-  dlg.addIncidence( e1, QDateTime::currentDateTime().addSecs( 180 ) );
+  dlg.addIncidence( e2, QDateTime::currentDateTime().addSecs( 60 ),
+                    QString() );
+  dlg.addIncidence( t1, QDateTime::currentDateTime().addSecs( 300 ),
+                    QString( "THIS IS DISPLAY TEXT" ) );
+  dlg.addIncidence( e4, QDateTime::currentDateTime().addSecs( 120 ),
+                    QString( "Fred and Barney get cloned" ) );
+  dlg.addIncidence( e3, QDateTime::currentDateTime().addSecs( 240 ),
+                    QString() );
+  dlg.addIncidence( e1, QDateTime::currentDateTime().addSecs( 180 ),
+                    QString() );
+  dlg.addIncidence( t2, QDateTime::currentDateTime().addSecs( 600 ),
+                    QString( "THIS IS DISPLAY TEXT" ) );
+  dlg.addIncidence( t3, QDateTime::currentDateTime().addSecs( 360 ),
+                    QString() );
   dlg.show();
   dlg.eventNotification();
 

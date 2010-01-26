@@ -72,6 +72,7 @@ class AlarmListItem : public KListViewItem
 
     int compare( KListViewItem *item, int iCol, bool bAscending ) const;
 
+    QString mDisplayText;
     Incidence *mIncidence;
     QDateTime mRemindAt;
     QDateTime mHappening;
@@ -158,11 +159,15 @@ AlarmDialog::~AlarmDialog()
   mIncidenceListView->clear();
 }
 
-void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderAt )
+void AlarmDialog::addIncidence( Incidence *incidence,
+                                const QDateTime &reminderAt,
+                                const QString &displayText )
 {
   AlarmListItem *item = new AlarmListItem( incidence, mIncidenceListView );
   item->setText( 0, incidence->summary() );
   item->mRemindAt = reminderAt;
+  item->mDisplayText = displayText;
+
   Todo *todo;
   if ( dynamic_cast<Event*>( incidence ) ) {
     item->setPixmap( 0, SmallIcon( "appointment" ) );
@@ -175,7 +180,7 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
     }
     if ( item->text( 1 ).isEmpty() )
       item->mHappening = incidence->dtStart();
-      item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true ) );
+    item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true ) );
   } else if ( (todo = dynamic_cast<Todo*>( incidence )) ) {
     item->setPixmap( 0, SmallIcon( "todo" ) );
     item->mHappening = todo->dtDue();
@@ -501,5 +506,10 @@ void AlarmDialog::showDetails()
   AlarmListItem *item = static_cast<AlarmListItem*>( mIncidenceListView->currentItem() );
   if ( !item || !item->isVisible() )
     return;
+
+  if ( !item->mDisplayText.isEmpty() ) {
+    QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
+    mDetailView->addText( txt );
+  }
   mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
 }

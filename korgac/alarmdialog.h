@@ -47,7 +47,8 @@ class AlarmDialog : public KDialogBase {
     explicit AlarmDialog( Calendar *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~AlarmDialog();
 
-    void addIncidence( Incidence *incidence, const QDateTime &reminderAt );
+    void addIncidence( Incidence *incidence, const QDateTime &reminderAt,
+                       const QString &displayText );
     void eventNotification();
 
   public slots:

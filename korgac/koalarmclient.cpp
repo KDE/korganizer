@@ -77,7 +77,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
     QString uid = config->readEntry( "UID" );
     QDateTime dt = config->readDateTimeEntry( "RemindAt" );
     if ( !uid.isEmpty() )
-      createReminder( mCalendar, mCalendar->incidence( uid ), dt );
+      createReminder( mCalendar, mCalendar->incidence( uid ), dt, QString() );
     config->deleteGroup( group );
   }
   config->setGroup( "General" );
@@ -115,12 +115,14 @@ void KOAlarmClient::checkAlarms()
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     kdDebug(5891) << "REMINDER: " << (*it)->parent()->summary() << endl;
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
-    createReminder( mCalendar, incidence, from );
+    createReminder( mCalendar, incidence, from, (*it)->text() );
   }
 }
 
 void KOAlarmClient::createReminder( KCal::Calendar *calendar,
-                                    KCal::Incidence *incidence, QDateTime dt )
+                                    KCal::Incidence *incidence,
+                                    QDateTime dt,
+                                    const QString &displayText )
 {
   if ( !incidence )
     return;
@@ -133,7 +135,7 @@ void KOAlarmClient::createReminder( KCal::Calendar *calendar,
     connect( this, SIGNAL( saveAllSignal() ), mDialog, SLOT( slotSave() ) );
   }
 
-  mDialog->addIncidence( incidence, dt );
+  mDialog->addIncidence( incidence, dt, displayText );
   mDialog->wakeUp();
   saveLastCheckTime();
 }
