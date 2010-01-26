@@ -614,7 +614,8 @@ int CalPrintPluginBase::drawFooter( QPainter &p, const QRect &footbox )
   QFont oldfont( p.font() );
   p.setFont( QFont( "sans-serif", 6 ) );
   QFontMetrics fm( p.font() );
-  QString dateStr = KGlobal::locale()->formatDateTime( QDateTime::currentDateTime() );
+  QString dateStr =
+    KGlobal::locale()->formatDateTime( QDateTime::currentDateTime(), KLocale::LongDate );
   p.drawText( footbox, Qt::AlignCenter | Qt::AlignVCenter | Qt::SingleLine,
               i18nc( "print date: formatted-datetime", "printed: %1", dateStr ) );
   p.setFont( oldfont );
