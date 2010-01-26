@@ -1100,19 +1100,35 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
            ( excludePrivate      && todo->secrecy() == Incidence::SecrecyPrivate ) ) {
         continue;
       }
-      if ( todo->hasDueDate() && !todo->allDay() ) {
-        timeText += KGlobal::locale()->formatTime( todo->dtDue().toLocalZone().time() ) + ' ';
+      if ( todo->hasStartDate() && !todo->allDay() ) {
+        timeText = KGlobal::locale()->formatTime( todo->dtStart().toLocalZone().time() ) + ' ';
       } else {
         timeText.clear();
       }
       p.save();
       setCategoryColors( p, todo.get() );
-      QString str;
+      QString summaryStr;
       if ( !todo->location().isEmpty() ) {
-        str = i18nc( "summary, location", "%1, %2",
-                     todo->summary(), todo->location() );
+        summaryStr = i18nc( "summary, location", "%1, %2",
+                            todo->summary(), todo->location() );
       } else {
-        str = todo->summary();
+        summaryStr = todo->summary();
+      }
+
+      QString str;
+      if ( todo->hasDueDate() ) {
+        if ( !todo->allDay() ) {
+          str = i18nc( "to-do summary (Due: datetime)", "%1 (Due: %2)",
+                      summaryStr,
+                      KGlobal::locale()->formatDateTime( todo->dtDue().toLocalZone() ) );
+        } else {
+          str = i18nc( "to-do summary (Due: date)", "%1 (Due: %2)",
+                      summaryStr,
+                      KGlobal::locale()->formatDate(
+                        todo->dtDue().toLocalZone().date(), KLocale::ShortDate ) );
+        }
+      } else {
+        str = summaryStr;
       }
       drawIncidence( p, box, timeText,
                      i18n( "To-do: %1", str ), todo->description(),
