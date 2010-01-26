@@ -287,7 +287,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the footer
       @return The bottom of the printed box.
     */
-    int drawFooter( QPainter &p, QRect &box );
+    int drawFooter( QPainter &p, const QRect &box );
 
     /**
       Draw a small calendar with the days of a month into the given area.
@@ -605,12 +605,6 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param startY starting y-coordinate for the first line
     */
     void drawNoteLines( QPainter &p, const QRect &box, int startY );
-    /**
-      Draw footer information, date printed, etc.
-      @param p QPainter of the printout
-      @param box coordinates of the box, footer is placed underneath
-    */
-    void drawFooter( QPainter &p, const QRect &box );
 
   protected:
     void drawIncidence( QPainter &p, const QRect &dayBox, const QString &time,

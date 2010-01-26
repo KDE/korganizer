@@ -609,16 +609,15 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
   return textRect.bottom();
 }
 
-int CalPrintPluginBase::drawFooter( QPainter &p, QRect &footbox )
+int CalPrintPluginBase::drawFooter( QPainter &p, const QRect &footbox )
 {
-  // Print the timestamp
-  QFont stampFont( "sans-serif", 10, QFont::Normal, true );
-  p.setFont( stampFont );
-  QDateTime now = QDateTime::currentDateTime();
-  QString str = i18nc( "printed <datetime>",
-                       "printed %1",
-                       KGlobal::locale()->formatDateTime( now ) );
-  p.drawText( footbox, Qt::AlignRight | Qt::AlignVCenter, str );
+  QFont oldfont( p.font() );
+  p.setFont( QFont( "sans-serif", 6 ) );
+  QFontMetrics fm( p.font() );
+  QString dateStr = KGlobal::locale()->formatDateTime( QDateTime::currentDateTime() );
+  p.drawText( footbox, Qt::AlignCenter | Qt::AlignVCenter | Qt::SingleLine,
+              i18nc( "print date: formatted-datetime", "printed: %1", dateStr ) );
+  p.setFont( oldfont );
 
   return footbox.bottom();
 }
@@ -2076,16 +2075,4 @@ QString CalPrintPluginBase::toPlainText( const QString &htmlText )
 {
   // this converts possible rich text to plain text
   return QTextDocumentFragment::fromHtml( htmlText ).toPlainText();
-}
-
-void CalPrintPluginBase::drawFooter( QPainter &p, const QRect &box )
-{
-  QFont oldfont( p.font() );
-  p.setFont( QFont( "sans-serif", 6 ) );
-  QFontMetrics fm( p.font() );
-  QRect footerBox( box.left(), box.bottom() + padding(), box.width(), fm.height() );
-  QString dateStr = KGlobal::locale()->formatDateTime( QDateTime::currentDateTime() );
-  p.drawText( footerBox, Qt::AlignCenter | Qt::AlignVCenter | Qt::SingleLine,
-              i18nc( "print date: formatted-datetime", "printed: %1", dateStr ) );
-  p.setFont( oldfont );
 }
