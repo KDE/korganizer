@@ -55,6 +55,8 @@ KOJournalView::KOJournalView( QWidget *parent )
   mSA->setWidgetResizable ( true );
   mSA->setWidget( mVBox );
   topLayout->addWidget( mSA );
+
+  installEventFilter( this );
 }
 
 KOJournalView::~KOJournalView()
@@ -203,6 +205,18 @@ void KOJournalView::getHighlightMode( bool &highlightEvents,
   highlightJournals = KOPrefs::instance()->mHighlightJournals;
   highlightTodos    = false;
   highlightEvents   = !highlightJournals;
+}
+
+bool KOJournalView::eventFilter ( QObject *object, QEvent *event )
+{
+  Q_UNUSED( object );
+  switch( event->type() ) {
+  case QEvent::MouseButtonDblClick:
+    emit newJournalSignal( QDate::currentDate() );
+    return true;
+  default:
+    return false;
+  }
 }
 
 #include "kojournalview.moc"

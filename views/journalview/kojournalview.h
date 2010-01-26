@@ -57,6 +57,8 @@ class KOJournalView : public KOrg::BaseView
                            bool &highlightTodos,
                            bool &highlightJournals );
 
+    bool eventFilter ( QObject *, QEvent * );
+
   public slots:
     // Don't update the view when midnight passed, otherwise we'll have data loss (bug 79145)
     virtual void dayPassed( const QDate & ) {}
