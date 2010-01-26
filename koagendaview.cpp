@@ -167,7 +167,7 @@ void KOAlternateLabel::useExtensiveText()
   mTextTypeFixed = true;
   QLabel::setText( mExtensiveText );
   QToolTip::remove( this );
-  QToolTip::hide();
+  QToolTip::add( this, "" );
 }
 
 void KOAlternateLabel::useDefaultText()
@@ -187,7 +187,7 @@ void KOAlternateLabel::squeezeTextToLabel()
   if (longTextWidth <= labelWidth) {
     QLabel::setText( mExtensiveText );
     QToolTip::remove( this );
-    QToolTip::hide();
+    QToolTip::add( this, "" );
   } else if (textWidth <= labelWidth) {
     QLabel::setText( mLongText );
     QToolTip::remove( this );
