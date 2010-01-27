@@ -36,7 +36,6 @@
 #include <Akonadi/ItemDeleteJob>
 #include <Akonadi/ItemModifyJob>
 #include <Akonadi/Collection>
-#include <akonadi/kcal/utils.h>
 
 #include <KCal/AssignmentVisitor>
 #include <KCal/DndFactory>
