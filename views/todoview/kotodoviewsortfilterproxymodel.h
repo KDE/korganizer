@@ -39,6 +39,7 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
     KOTodoViewSortFilterProxyModel( QObject *parent = 0 );
 
     void sort( int column, Qt::SortOrder order = Qt::AscendingOrder );
+    const QStringList& categories() const { return mCategories; }
 
   protected:
     bool filterAcceptsRow( int source_row, const QModelIndex &source_parent ) const;

@@ -36,7 +36,6 @@
 #include "kotodomodel.h"
 #include "kotodoviewquickaddline.h"
 #include "kotodoviewquicksearch.h"
-#include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
 #include <libkdepim/kdatepickerpopup.h>
@@ -411,30 +410,33 @@ void KOTodoView::clearSelection()
 }
 
 void KOTodoView::addTodo( const QString &summary,
-                                 const Todo::Ptr &parent )
+                          const Todo::Ptr &parent,
+                          const QStringList &categories )
 {
-  if ( !mChanger )
+  if ( !mChanger || summary.trimmed().isEmpty() ) {
     return;
-
-  if ( summary.trimmed().isEmpty() )
-    return;
+  }
 
   Todo::Ptr todo( new Todo );
   todo->setSummary( summary.trimmed() );
   todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                               KOPrefs::instance()->email() ) );
 
-  if ( parent )
-    todo->setRelatedTo( parent.get() );
+  todo->setCategories( categories );
 
-  if ( !mChanger->addIncidence( todo, this ) )
+  if ( parent ) {
+    todo->setRelatedTo( parent.get() );
+  }
+
+  if ( !mChanger->addIncidence( todo, this ) ) {
     KODialogManager::errorSaveIncidence( this, todo );
+  }
 }
 
 void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 {
   if ( modifiers == Qt::NoModifier ) {
-    /*const QModelIndex index = */ addTodo( mQuickAdd->text() );
+    /*const QModelIndex index = */ addTodo( mQuickAdd->text(), KCal::Todo::Ptr(), mProxyModel->categories() );
 
 #ifdef AKONADI_PORT_DISABLED // the todo is added asynchronously now, so we have to wait until the new item is actually added before selecting the item
 
@@ -456,7 +458,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
     }
     const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
     const Item parent = mModel->todoForIndex( idx );
-    addTodo( mQuickAdd->text(), Akonadi::todo( parent ) );
+    addTodo( mQuickAdd->text(), Akonadi::todo( parent ), mProxyModel->categories() );
   } else {
     return;
   }

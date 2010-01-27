@@ -28,6 +28,7 @@
 #define KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
+#include "kotodoviewsortfilterproxymodel.h"
 
 #include <Akonadi/Item>
 
@@ -132,11 +133,15 @@ class KOTodoView : public BaseView
 
   private:
     QMenu *createCategoryPopupMenu();
-    void addTodo( const QString &summary, const KCal::Todo::Ptr &parent=KCal::Todo::Ptr() );
+
+    /** Creates a new todo with the given text as summary under the given parent */
+    void addTodo( const QString &summary,
+                  const KCal::Todo::Ptr &parent = KCal::Todo::Ptr(),
+                  const QStringList &categories = QStringList() );
 
     KOTodoViewView *mView;
     KOTodoModel *mModel;
-    QSortFilterProxyModel *mProxyModel;
+    KOTodoViewSortFilterProxyModel *mProxyModel;
     KOTodoCategoriesDelegate *mCategoriesDelegate;
 
     KOTodoViewQuickSearch *mQuickSearch;

@@ -83,8 +83,6 @@ class KOTodoModel : public QAbstractItemModel
     /** Reloads only the specified todo (if the incidence is a todo) */
     void processChange( const Akonadi::Item &incidence, int action );
 
-    /** Creates a new todo with the given text as summary under the given parent */
-
 public:
     Akonadi::Item todoForIndex( const QModelIndex &idx ) const;
 
