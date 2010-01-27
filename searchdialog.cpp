@@ -108,10 +108,13 @@ void SearchDialog::doSearch()
   search( re );
   listView->showIncidences( mMatchedEvents, QDate() );
   if ( mMatchedEvents.count() == 0 ) {
+    mNumItems->setText ( QString() );
     KMessageBox::information(
       this,
       i18n( "No items were found that match your search pattern." ),
       "NoSearchResults" );
+  } else {
+    mNumItems->setText( i18np("%1 item","%1 items", mMatchedEvents.count() ) );
   }
 }
 
