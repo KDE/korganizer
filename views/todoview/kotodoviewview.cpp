@@ -43,7 +43,7 @@ KOTodoViewView::KOTodoViewView( QWidget *parent )
   header()->installEventFilter( this );
 }
 
-#if QT_VERSION >= 0x040600
+#if QT_VERSION >= 0x040700
 #ifdef __GNUC__
 #warning QTreeView should now set State_Editing correctly, remove the workaround
 #endif
