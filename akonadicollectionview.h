@@ -83,7 +83,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void setCollectionSelectionProxyModel( Akonadi::CollectionSelectionProxyModel* );
 
   signals:
-    void resourcesChanged(bool enabled);
+    void resourcesChanged( bool enabled );
   private:
     void updateView();
 
