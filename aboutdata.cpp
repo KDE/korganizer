@@ -36,6 +36,14 @@ AboutData::AboutData()
                 KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
+#if defined( KDEPIM_SVN_REVISION_STRING ) && defined( KDEPIM_SVN_LAST_CHANGE )
+  QByteArray versionInfo( korgVersion );
+  versionInfo += '-' + QByteArray( KDEPIM_SVN_REVISION_STRING ) +
+                 ' ' +
+                 '(' + QByteArray( KDEPIM_SVN_LAST_CHANGE ) + ')';
+  setVersion( versionInfo );
+#endif
+
   addAuthor( ki18n( "Allen Winter"),ki18n( "Maintainer" ),
              "winter@kde.org" );
   addAuthor( ki18n( "Reinhold Kainhofer"),ki18n( "Former Maintainer" ),
