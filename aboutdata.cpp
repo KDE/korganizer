@@ -61,6 +61,7 @@ AboutData::AboutData()
   addCredit( ki18n( "Tobias König" ) );
   addCredit( ki18n( "Martin Koller" ) );
   addCredit( ki18n( "Uwe Koloska" ) );
+  addCredit( ki18n( "Sergio Luis Martins" ) );
   addCredit( ki18n( "Glen Parker" ) );
   addCredit( ki18n( "Dan Pilone" ) );
   addCredit( ki18n( "Roman Rohr" ) );
