@@ -92,21 +92,23 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
 #warning QTreeView should now set State_Editing correctly, remove the workaround
 #endif
 #endif
-  bool isEditing = false;
-  KOTodoViewView *view = qobject_cast<KOTodoViewView*>( parent() );
-  if ( view ) {
-    isEditing = view->isEditing( index );
-  }
+  if ( index.data( Qt::EditRole ).toInt() > 0 ) {
+    bool isEditing = false;
+    KOTodoViewView *view = qobject_cast<KOTodoViewView*>( parent() );
+    if ( view ) {
+      isEditing = view->isEditing( index );
+    }
 
-  // TODO QTreeView does not set State_Editing. Qt task id 205051
-  // should be fixed with Qt 4.5, but wasn't. According to the
-  // task tracker the fix arrives in "Some future release".
-  if ( !( opt.state & QStyle::State_Editing ) && !isEditing ) {
-    QStyleOptionProgressBar pbOption;
-    pbOption.QStyleOption::operator=( option );
-    initStyleOptionProgressBar( &pbOption, index );
+    // TODO QTreeView does not set State_Editing. Qt task id 205051
+    // should be fixed with Qt 4.5, but wasn't. According to the
+    // task tracker the fix arrives in "Some future release".
+    if ( !( opt.state & QStyle::State_Editing ) && !isEditing ) {
+      QStyleOptionProgressBar pbOption;
+      pbOption.QStyleOption::operator=( option );
+      initStyleOptionProgressBar( &pbOption, index );
 
-    style->drawControl( QStyle::CE_ProgressBar, &pbOption, painter );
+      style->drawControl( QStyle::CE_ProgressBar, &pbOption, painter );
+    }
   }
 }
 
