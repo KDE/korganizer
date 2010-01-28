@@ -128,6 +128,9 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
   mCollectionview->setRootIsDecorated( true );
   mCollectionview->setModel( colorProxy );
 
+  connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+           this, SLOT(selectionChanged()) );
+
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
   if( xmlclient ) {
