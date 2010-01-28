@@ -376,8 +376,11 @@ void KOAttendeeEditor::updateAttendee()
   if ( !a || mDisableItemUpdate )
     return;
 
-  // Quote the text as it might contain commas and other quotable chars.
-  QString text = KPIM::quoteNameIfNecessary( mNameEdit->text() );
+  QString text = mNameEdit->text();
+  if ( !mNameEdit->text().startsWith( "\"" ) ) {
+    // Quote the text as it might contain commas and other quotable chars.
+    text = KPIM::quoteNameIfNecessary( text );
+  }
 
   QString name, email;
   if ( KPIM::getNameAndMail( text, name, email ) ) {
