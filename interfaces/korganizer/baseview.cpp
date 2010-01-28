@@ -386,19 +386,20 @@ QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime& start, co
 
 void BaseView::dataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight )
 {
-  incidencesChanged( Akonadi::itemsFromModel( d->calendarSearch->model(), topLeft.row(), bottomRight.row() ) );
+  Q_ASSERT( topLeft.parent() == bottomRight.parent() );
+
+  incidencesChanged( Akonadi::itemsFromModel( d->calendarSearch->model(), topLeft.parent(),
+                     topLeft.row(), bottomRight.row() ) );
 }
 
 void BaseView::rowsInserted( const QModelIndex& parent, int start, int end )
 {
-  Q_UNUSED( parent );
-  incidencesAdded( Akonadi::itemsFromModel( d->calendarSearch->model(), start, end ) );
+  incidencesAdded( Akonadi::itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
 }
 
 void BaseView::rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end )
 {
-  Q_UNUSED( parent );
-  incidencesAboutToBeRemoved( Akonadi::itemsFromModel( d->calendarSearch->model(), start, end ) );
+  incidencesAboutToBeRemoved( Akonadi::itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
 }
 
 #include "baseview.moc"
