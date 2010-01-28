@@ -42,9 +42,18 @@
 #include <QListWidget>
 
 TimeScaleConfigDialog::TimeScaleConfigDialog( QWidget *parent )
-  : QDialog( parent )
+  : KDialog( parent )
 {
-  ui.setupUi( this );
+  setCaption( i18n( "Timezone" ) );
+  setButtons( Ok | Cancel );
+  setDefaultButton( Ok );
+  setModal( true );
+  showButtonSeparator( false );
+
+  QWidget *mainwidget = new QWidget( this );
+  setupUi( mainwidget );
+  setMainWidget( mainwidget );
+
 
   QStringList list;
   const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
@@ -52,23 +61,23 @@ TimeScaleConfigDialog::TimeScaleConfigDialog( QWidget *parent )
     list.append( i18n( it.key().toUtf8() ) );
   }
   list.sort();
-  ui.zoneCombo->addItems( list );
-  ui.zoneCombo->setCurrentIndex( 0 );
+  zoneCombo->addItems( list );
+  zoneCombo->setCurrentIndex( 0 );
 
-  ui.addButton->setIcon( KIcon( "list-add" ) );
-  ui.removeButton->setIcon( KIcon( "list-remove" ) );
-  ui.upButton->setIcon( KIcon( "go-up" ) );
-  ui.downButton->setIcon( KIcon( "go-down" ) );
+  addButton->setIcon( KIcon( "list-add" ) );
+  removeButton->setIcon( KIcon( "list-remove" ) );
+  upButton->setIcon( KIcon( "go-up" ) );
+  downButton->setIcon( KIcon( "go-down" ) );
 
-  connect( ui.addButton, SIGNAL( clicked() ), SLOT( add() ) );
-  connect( ui.removeButton, SIGNAL( clicked() ), SLOT( remove() ) );
-  connect( ui.upButton, SIGNAL( clicked() ), SLOT( up() ) );
-  connect( ui.downButton, SIGNAL( clicked() ), SLOT( down() ) );
+  connect( addButton, SIGNAL( clicked() ), SLOT( add() ) );
+  connect( removeButton, SIGNAL( clicked() ), SLOT( remove() ) );
+  connect( upButton, SIGNAL( clicked() ), SLOT( up() ) );
+  connect( downButton, SIGNAL( clicked() ), SLOT( down() ) );
 
-  connect( ui.okButton, SIGNAL( clicked() ), SLOT( okClicked() ) );
-  connect( ui.cancelButton, SIGNAL( clicked() ), SLOT( reject() ) );
+  connect( this, SIGNAL( okClicked() ), SLOT( okClicked() ) );
+  connect( this, SIGNAL( cancelClicked() ), SLOT( reject() ) );
 
-  ui.listWidget->addItems( KOPrefs::instance()->timeScaleTimezones() );
+  listWidget->addItems( KOPrefs::instance()->timeScaleTimezones() );
 }
 
 void TimeScaleConfigDialog::okClicked()
@@ -80,41 +89,41 @@ void TimeScaleConfigDialog::okClicked()
 void TimeScaleConfigDialog::add()
 {
   // Do not add duplicates
-  for ( int i=0; i < ui.listWidget->count(); i++ ) {
-    if ( ui.listWidget->item( i )->text() == ui.zoneCombo->currentText() ) {
+  for ( int i=0; i < listWidget->count(); i++ ) {
+    if ( listWidget->item( i )->text() == zoneCombo->currentText() ) {
       return;
     }
   }
 
-  ui.listWidget->addItem( ui.zoneCombo->currentText() );
+  listWidget->addItem( zoneCombo->currentText() );
 }
 
 void TimeScaleConfigDialog::remove()
 {
-  delete ui.listWidget->takeItem( ui.listWidget->currentRow() );
+  delete listWidget->takeItem( listWidget->currentRow() );
 }
 
 void TimeScaleConfigDialog::up()
 {
-  int row = ui.listWidget->currentRow();
-  QListWidgetItem *item = ui.listWidget->takeItem( row );
-  ui.listWidget->insertItem( qMax( row - 1, 0 ), item );
-  ui.listWidget->setCurrentRow( qMax( row - 1, 0 ) );
+  int row = listWidget->currentRow();
+  QListWidgetItem *item = listWidget->takeItem( row );
+  listWidget->insertItem( qMax( row - 1, 0 ), item );
+  listWidget->setCurrentRow( qMax( row - 1, 0 ) );
 }
 
 void TimeScaleConfigDialog::down()
 {
-  int row = ui.listWidget->currentRow();
-  QListWidgetItem *item = ui.listWidget->takeItem( row );
-  ui.listWidget->insertItem( qMin( row + 1, ui.listWidget->count() ), item );
-  ui.listWidget->setCurrentRow( qMin( row + 1, ui.listWidget->count() - 1 ) );
+  int row = listWidget->currentRow();
+  QListWidgetItem *item = listWidget->takeItem( row );
+  listWidget->insertItem( qMin( row + 1, listWidget->count() ), item );
+  listWidget->setCurrentRow( qMin( row + 1, listWidget->count() - 1 ) );
 }
 
 QStringList TimeScaleConfigDialog::zones()
 {
   QStringList list;
-  for ( int i=0; i < ui.listWidget->count(); i++ ) {
-    list << ui.listWidget->item( i )->text();
+  for ( int i=0; i < listWidget->count(); i++ ) {
+    list << listWidget->item( i )->text();
   }
   return list;
 }

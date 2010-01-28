@@ -24,11 +24,11 @@
 #ifndef TIMESCALECONFIGDIALOG_H
 #define TIMESCALECONFIGDIALOG_H
 
-#include <QDialog>
+#include <KDialog>
 
 #include "ui_timescaleedit_base.h"
 
-class TimeScaleConfigDialog : public QDialog
+class TimeScaleConfigDialog : public KDialog, private Ui::TimeScaleEditWidget
 {
   Q_OBJECT
 
@@ -44,7 +44,6 @@ class TimeScaleConfigDialog : public QDialog
 
   private:
     QStringList zones();
-    Ui::TimeScaleEditDialog ui;
 };
 
 #endif
