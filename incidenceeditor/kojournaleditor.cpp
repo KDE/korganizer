@@ -91,9 +91,9 @@ void KOJournalEditor::newJournal()
 void KOJournalEditor::setTexts( const QString &summary, const QString &description,
                                 bool richDescription )
 {
-  if ( description.isEmpty() && summary.contains( "\n" ) ) {
+  if ( description.isEmpty() && summary.contains( '\n' ) ) {
     mGeneral->setDescription( summary, false );
-    int pos = summary.indexOf( "\n" );
+    int pos = summary.indexOf( '\n' );
     mGeneral->setSummary( summary.left( pos ) );
   } else {
     mGeneral->setSummary( summary );
