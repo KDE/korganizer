@@ -118,6 +118,8 @@ MonthView::MonthView( QWidget *parent )
   connect( &mReloadTimer, SIGNAL(timeout()), this, SLOT(reloadIncidences()) );
   mReloadTimer.start( 50 );
   updateConfig();
+
+  mSelectedItemId = -1;
 }
 
 void MonthView::updateConfig() {
