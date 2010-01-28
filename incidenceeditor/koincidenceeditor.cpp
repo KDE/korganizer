@@ -93,6 +93,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   QHBoxLayout *callayout = new QHBoxLayout;
   callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
+  mCalSelector->setAccessRightsFilter(Akonadi::Collection::CanCreateItem);
   mCalSelector->setMimeTypeFilter( QStringList() << mimetypes );
   connect( mCalSelector, SIGNAL(currentChanged(Akonadi::Collection)),
            SLOT(slotSelectedCollectionChanged()) );
