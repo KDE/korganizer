@@ -56,7 +56,7 @@
 #include <QVBoxLayout>
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
-                                      QStringList mimetypes,
+                                      const QStringList& mimetypes,
                                       QWidget *parent )
   : KDialog( parent ), mAttendeeEditor( 0 ), mIsCounter( false ),
     mIsCreateTask( false ), mMonitor( 0 )

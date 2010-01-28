@@ -70,7 +70,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     /**
       Construct new IncidenceEditor.
     */
-    KOIncidenceEditor( const QString &caption, QStringList mimetypes, QWidget *parent );
+    KOIncidenceEditor( const QString &caption, const QStringList &mimetypes, QWidget *parent );
     virtual ~KOIncidenceEditor();
 
     /** This incidence has been modified externally */
