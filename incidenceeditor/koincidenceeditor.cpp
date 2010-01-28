@@ -90,7 +90,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   layout->setSpacing( 0 );
   mainWidget()->setLayout( layout );
 
-  QHBoxLayout *callayout = new QHBoxLayout( mainWidget() );
+  QHBoxLayout *callayout = new QHBoxLayout;
   callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
   mCalSelector->setMimeTypeFilter( QStringList() << mimetypes );
