@@ -842,7 +842,7 @@ void KOPrefsDialogColorsAndFonts::setCategoryColor()
 
 void KOPrefsDialogColorsAndFonts::updateCategoryColor()
 {
-  QString cat = mCategoryCombo->currentText();
+  const QString cat = mCategoryCombo->currentText();
   QColor color = mCategoryDict.value( cat );
   if ( !color.isValid() ) {
     color = KOPrefs::instance()->categoryColor( cat );
@@ -860,7 +860,7 @@ void KOPrefsDialogColorsAndFonts::updateResources()
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
   bool ok;
-  QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
+  const QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
   if( ! ok ) return;
   mResourceDict.insert( id, mResourceButton->color() );
   slotWidChanged();
@@ -869,7 +869,7 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
   bool ok;
-  QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
+  const QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
   if( ! ok ) return;
   kDebug()<<id<<mResourceCombo->itemText(mResourceCombo->currentIndex());
   QColor color = mResourceDict.value( id );
