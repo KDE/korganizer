@@ -263,17 +263,6 @@ void ActionManager::createCalendarAkonadi()
   filterProxy2->setSourceModel( selectionProxy );
   filterProxy2->setSortRole( CalendarModel::SortRole );
 
-#if 0 //this is for viewing the calendar model while debugging and can be deleted later
-  QDialog* dlg = new QDialog( mCalendarView );
-  dlg->setModal( false );
-  QVBoxLayout* layout = new QVBoxLayout( dlg );
-  EntityTreeView* testview = new EntityTreeView( dlg );
-  layout->addWidget( testview );
-  testview->setModel( filterProxy2 );
-
-  dlg->show();
-#endif
-
   mCalendar = new Akonadi::Calendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
@@ -860,7 +849,7 @@ void ActionManager::file_new()
 void ActionManager::file_open()
 {
   KUrl url;
-  QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
+  const QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
   url = KFileDialog::getOpenUrl( defaultPath, i18n( "*.vcs *.ics|Calendar Files" ),
                                  dialogParent() );
 
@@ -946,7 +935,7 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_merge()
 {
-  KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
+  const KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
                                       i18n( "*.vcs *.ics|Calendar Files" ),
                                       dialogParent() );
   if ( !url.isEmpty() ) { // isEmpty if user canceled the dialog

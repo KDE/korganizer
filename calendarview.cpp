@@ -360,6 +360,8 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
   if ( !merge ) {
 #ifdef AKONADI_PORT_DISABLED
     mCalendar->close();
+#else
+    kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;    
 #endif
     // otherwise something is majorly wrong
     // openCalendar called without merge and a filename, what should we do?
@@ -387,6 +389,8 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     if ( !merge ) {
       mCalendar->close();
     }
+#else
+    kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;    
 #endif
     KMessageBox::error( this, i18n( "Could not load calendar '%1'.", filename ) );
     return false;
@@ -1232,7 +1236,7 @@ bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
   endMultiModify();
   return true;
 #else
-  kWarning()<<"TODO";
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
   return false;
 #endif
 }
@@ -1367,6 +1371,8 @@ void CalendarView::copyIncidenceToResource( const Item &item, const QString &res
              newCal->resourceName() ),
       i18nc( "@title:window", "Copying Failed" ) );
   }
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
 }
 
@@ -1449,6 +1455,8 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
              newCal->resourceName() ),
       i18nc( "@title:window", "Moving Failed" ) );
   }
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
 }
 
@@ -2376,7 +2384,7 @@ void CalendarView::deleteSubTodosIncidence ( const Item &todoItem )
     }
   }
 #else
-  kWarning()<<"TODO";
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif // AKONADI_PORT_DISABLED
   mChanger->deleteIncidence ( todoItem, this );
 }
@@ -2602,7 +2610,7 @@ bool CalendarView::purgeCompletedSubTodos( const Item &todoItem, bool &allPurged
   }
   return deleteThisTodo;
 #else
-  kWarning()<<"TODO";
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
   return false;
 #endif // AKONADI_PORT_DISABLED
 }

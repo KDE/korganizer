@@ -167,6 +167,8 @@ void History::EntryDelete::undo()
 #ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   // TODO: Use the proper resource instead of asking!
   mCalendar->addIncidence( mIncidence->clone() );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -175,6 +177,8 @@ void History::EntryDelete::redo()
 #ifdef AKONADI_PORT_DISABLED
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
   mCalendar->deleteIncidence( incidence );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -200,6 +204,8 @@ void History::EntryAdd::undo()
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -208,6 +214,8 @@ void History::EntryAdd::redo()
 #ifdef AKONADI_PORT_DISABLED
   // TODO: User the proper resource instead of asking again
   mCalendar->addIncidence( mIncidence->clone() );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
 }
 
@@ -238,6 +246,8 @@ void History::EntryEdit::undo()
   }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mOldIncidence->clone() );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -250,6 +260,8 @@ void History::EntryEdit::redo()
   }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mNewIncidence->clone() );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
 }
 

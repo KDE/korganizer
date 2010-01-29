@@ -281,6 +281,8 @@ QMenu *KOEventPopupMenu::buildCalendarCopyMenu()
   }
   connect( resourceMenu, SIGNAL(triggered(QAction*)),
            this, SLOT(copyIncidenceToResource(QAction*)) );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
   return resourceMenu;
 }
@@ -306,6 +308,8 @@ QMenu *KOEventPopupMenu::buildCalendarMoveMenu()
   }
   connect( resourceMenu, SIGNAL(triggered(QAction*)),
            this, SLOT(moveIncidenceToResource(QAction*)) );
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
   return resourceMenu;
 }
@@ -321,6 +325,8 @@ bool KOEventPopupMenu::hasOtherWriteableCalendars() const
       return true;
     }
   }
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
   return false;
 }
@@ -332,6 +338,8 @@ void KOEventPopupMenu::copyIncidenceToResource( QAction *action )
   if ( mCurrentIncidence && !resourceId.isEmpty() ) {
     emit copyIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
 }
 
@@ -342,6 +350,8 @@ void KOEventPopupMenu::moveIncidenceToResource( QAction *action )
   if ( mCurrentIncidence && !resourceId.isEmpty() ) {
     emit moveIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
+#else
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
 #endif
 }
 

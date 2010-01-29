@@ -729,7 +729,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   delete event;
   delete todo;
 #else
-  kWarning()<<"TODO";
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif // AKONADI_PORT_DISABLED
 }
 #endif
