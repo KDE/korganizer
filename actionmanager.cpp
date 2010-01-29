@@ -774,12 +774,15 @@ void ActionManager::initActions()
   mACollection->addAction( "help_tipofday", a );
 }
 
-void ActionManager::slotResourcesChanged(bool enabled)
+void ActionManager::slotResourcesChanged( bool enabled )
 {
-  mNewEventAction->setEnabled(enabled);
-  mNewTodoAction->setEnabled(enabled);
-  mNewSubtodoAction->setEnabled(enabled);
-  mNewJournalAction->setEnabled(enabled);
+  mNewEventAction->setEnabled( enabled );
+  mNewTodoAction->setEnabled( enabled );
+
+  Akonadi::Item item = mCalendarView->currentSelection();
+  mNewSubtodoAction->setEnabled( enabled && Akonadi::hasTodo( item ) );
+
+  mNewJournalAction->setEnabled( enabled );
 }
 
 void ActionManager::slotChangeComboActionItem( int index )
