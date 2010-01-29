@@ -51,7 +51,7 @@ using namespace KHolidays;
 #include <KTabWidget>
 
 #include <Q3ButtonGroup>
-#include <Q3ListView>
+#include <QListWidget>
 #include <QBoxLayout>
 #include <QFormLayout>
 #include <QGridLayout>
@@ -945,11 +945,9 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
                              "recognize it as yours." );
   aMailsLabel->setWhatsThis( whatsThis );
   topLayout->addWidget( aMailsLabel, 4, 0, 1, 2 );
-  mAMails = new Q3ListView( topFrame );
-  mAMails->setResizeMode(Q3ListView::LastColumn);
+  mAMails = new QListWidget( topFrame );
   mAMails->setWhatsThis( whatsThis );
 
-  mAMails->addColumn( i18nc( "@title:column email addresses", "Email" ), 300 );
   topLayout->addWidget( mAMails, 5, 0, 1, 2 );
 
   QLabel *aEmailsEditLabel = new QLabel( i18nc( "@label", "Additional email address:" ), topFrame );
@@ -985,7 +983,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   connect( del, SIGNAL(clicked()), this, SLOT(removeItem()) );
   connect( aEmailsEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateItem()) );
   connect( aEmailsEdit, SIGNAL(lostFocus()), this, SLOT(checkEmptyMail()) );
-  connect( mAMails, SIGNAL(selectionChanged(Q3ListViewItem *)), SLOT(updateInput()) );
+  connect( mAMails, SIGNAL(itemSelectionChanged()), SLOT(updateInput()) );
 
   load();
 }
@@ -996,9 +994,7 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
   QStringList::const_iterator begin( KOPrefs::instance()->mAdditionalMails.constBegin() );
   QStringList::const_iterator end( KOPrefs::instance()->mAdditionalMails.constEnd() );
   for ( QStringList::const_iterator it = begin; it != end; ++it ) {
-    Q3ListViewItem *item = new Q3ListViewItem(mAMails);
-    item->setText( 0, *it );
-    mAMails->insertItem( item );
+    new QListWidgetItem(( *it ), mAMails);
   }
 
   for( int i = 0; i < mTransportList->count(); ++i ) {
@@ -1011,11 +1007,9 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
 void KOPrefsDialogGroupScheduling::usrWriteConfig()
 {
   KOPrefs::instance()->mAdditionalMails.clear();
-  Q3ListViewItem *item;
-  item = mAMails->firstChild();
-  while ( item ) {
-    KOPrefs::instance()->mAdditionalMails.append( item->text( 0 ) );
-    item = item->nextSibling();
+
+  for ( int i = 0; i<mAMails->count(); ++i ) {
+    KOPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
   }
   if( QListWidgetItem *item = mTransportList->currentItem() )
     KOPrefs::instance()->mMailTransport = item->text();
@@ -1024,27 +1018,26 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
 void KOPrefsDialogGroupScheduling::addItem()
 {
   aEmailsEdit->setEnabled( true );
-  Q3ListViewItem *item = new Q3ListViewItem( mAMails );
-  mAMails->insertItem( item );
-  mAMails->setSelected( item, true );
+  QListWidgetItem *item = new QListWidgetItem( mAMails );
+  mAMails->setCurrentItem( item );
   aEmailsEdit->setText( i18nc( "@label", "(EmptyEmail)" ) );
   slotWidChanged();
 }
 
 void KOPrefsDialogGroupScheduling::removeItem()
 {
-  Q3ListViewItem *item;
-  item = mAMails->selectedItem();
+  QListWidgetItem *item;
+  item = mAMails->currentItem();
   if ( !item ) {
     return;
   }
-  mAMails->takeItem( item );
-  item = mAMails->selectedItem();
+  mAMails->takeItem( mAMails->row( item ) );
+  item = mAMails->currentItem();
   if ( !item ) {
     aEmailsEdit->setText( "" );
     aEmailsEdit->setEnabled( false );
   }
-  if ( mAMails->childCount() == 0 ) {
+  if ( mAMails->count() == 0 ) {
     aEmailsEdit->setEnabled( false );
   }
   slotWidChanged();
@@ -1052,12 +1045,12 @@ void KOPrefsDialogGroupScheduling::removeItem()
 
 void KOPrefsDialogGroupScheduling::updateItem()
 {
-  Q3ListViewItem *item;
-  item = mAMails->selectedItem();
+  QListWidgetItem *item;
+  item = mAMails->currentItem();
   if ( !item ) {
     return;
   }
-  item->setText( 0, aEmailsEdit->text() );
+  item->setText(aEmailsEdit->text() );
   slotWidChanged();
 }
 
@@ -1070,13 +1063,13 @@ void KOPrefsDialogGroupScheduling::checkEmptyMail()
 
 void KOPrefsDialogGroupScheduling::updateInput()
 {
-  Q3ListViewItem *item;
-  item = mAMails->selectedItem();
+  QListWidgetItem *item;
+  item = mAMails->currentItem();
   if ( !item ) {
     return;
   }
   aEmailsEdit->setEnabled( true );
-  aEmailsEdit->setText( item->text( 0 ) );
+  aEmailsEdit->setText( item->text() );
 }
 
 extern "C"

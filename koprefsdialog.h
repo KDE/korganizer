@@ -39,7 +39,7 @@ class KComponentData;
 class KLineEdit;
 class KPushButton;
 
-class Q3ListView;
+class QListWidget;
 class QCheckBox;
 class QColor;
 class QGroupBox;
@@ -115,7 +115,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 
   private:
     QListWidget *mTransportList;
-    Q3ListView *mAMails;
+    QListWidget *mAMails;
     KLineEdit *aEmailsEdit;
 };
 
