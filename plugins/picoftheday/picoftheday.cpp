@@ -403,6 +403,8 @@ QPixmap POTDElement::newPixmap( const QSize &size )
   /* else, either we already got a sufficiently big pixmap (stored in mPixmap),
      or we will get one anytime soon (we are downloading it already) and we will
      actualize what we return here later via gotNewPixmap */
+  if(mPixmap.isNull())
+    return QPixmap();
   return mPixmap.scaled( size, Qt::KeepAspectRatio, Qt::SmoothTransformation );
 }
 
