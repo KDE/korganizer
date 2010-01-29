@@ -102,7 +102,6 @@ set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
 kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
 target_link_libraries(kcm_korganizer
-  ${QT_QT3SUPPORT_LIBRARY}
   ${KDE4_KDEUI_LIBS}
   ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}
   mailtransport korganizerprivate korganizer_core kdepim )
