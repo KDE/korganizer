@@ -32,7 +32,7 @@ QColor KOCoreHelper::categoryColor( const QStringList &categories )
     return KOPrefs::instance()->unsetCategoryColor();
   }
   // FIXME: Correctly treat events with multiple categories
-  QString cat = categories.first();
+  const QString cat = categories.first();
   QColor bgColor;
   if ( cat.isEmpty() ) {
     bgColor = KOPrefs::instance()->unsetCategoryColor();
