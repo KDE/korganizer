@@ -94,6 +94,8 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   mAkonadiCollectionView = new AkonadiCollectionView( view(), parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
+  QObject::connect( mAkonadiCollectionView, SIGNAL( resourcesAddedRemoved() ), mView, SLOT( resourcesChanged() ) );
+  QObject::connect( mAkonadiCollectionView, SIGNAL( resourcesAddedRemoved() ), mView, SLOT( updateCategories() ) );
   return mAkonadiCollectionView;
 }
 
@@ -108,7 +110,7 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
 }
 
 AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *parent )
-  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 )
+  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 ), mNotSendAddRemoveSignal( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -130,6 +132,9 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
 
   connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            this, SLOT(selectionChanged()) );
+
+  connect( mBaseModel, SIGNAL( rowsInserted( const QModelIndex&, int, int ) ),
+           this, SLOT( rowsInserted( const QModelIndex&, int, int ) ) );
 
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
@@ -203,6 +208,7 @@ void AkonadiCollectionView::newCalendar()
   dlg.agentFilterProxyModel()->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
   dlg.agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
   if ( dlg.exec() ) {
+    mNotSendAddRemoveSignal = true;
     const Akonadi::AgentType agentType = dlg.agentType();
     if ( agentType.isValid() ) {
       Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
@@ -219,9 +225,11 @@ void AkonadiCollectionView::newCalendarDone( KJob *job )
   Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
   if ( createjob->error() ) {
     //TODO(AKONADI_PORT) this should show an error dialog and should be merged with the identical code in ActionManager
-      kWarning( 5250 ) << "Create calendar failed:" << createjob->errorString();
-      return;
+    kWarning( 5250 ) << "Create calendar failed:" << createjob->errorString();
+    mNotSendAddRemoveSignal = false;
+    return;
   }
+  mNotSendAddRemoveSignal = false;
   //TODO
 }
 
@@ -247,6 +255,7 @@ void AkonadiCollectionView::deleteCalendar()
                                   KMessageBox::Dangerous )
     == KMessageBox::Yes )
   {
+    mNotSendAddRemoveSignal = true;
     Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
     connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
   }
@@ -257,10 +266,18 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
   kDebug();
   Akonadi::CollectionDeleteJob *deletejob = static_cast<Akonadi::CollectionDeleteJob*>( job );
   if ( deletejob->error() ) {
-      kWarning( 5250 ) << "Delete calendar failed:" << deletejob->errorString();
-      return;
+    kWarning( 5250 ) << "Delete calendar failed:" << deletejob->errorString();
+    mNotSendAddRemoveSignal = false;
+    return;
   }
+  mNotSendAddRemoveSignal = false;
   //TODO
+}
+
+void AkonadiCollectionView::rowsInserted( const QModelIndex&, int, int )
+{
+  if ( !mNotSendAddRemoveSignal )
+    emit resourcesAddedRemoved();
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

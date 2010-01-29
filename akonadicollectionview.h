@@ -84,6 +84,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 
   signals:
     void resourcesChanged( bool enabled );
+    void resourcesAddedRemoved();
   private:
     void updateView();
 
@@ -95,7 +96,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     void deleteCalendar();
     void deleteCalendarDone( KJob* );
-
+    void rowsInserted( const QModelIndex&, int, int );
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
@@ -106,6 +107,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     KAction *mCreateAction;
     KAction *mDeleteAction;
     Akonadi::CollectionSelection *mCollectionSelection;
+    bool mNotSendAddRemoveSignal;
   };
 
 #endif

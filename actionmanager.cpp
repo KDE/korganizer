@@ -249,6 +249,7 @@ void ActionManager::createCalendarAkonadi()
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
+  connect( mCollectionView, SIGNAL( resourcesAddedRemoved() ), SLOT( slotResourcesAddedRemoved() ) );
   mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
   mCollectionView->setCollectionSelectionProxyModel( selectionProxyModel );
 
@@ -791,6 +792,11 @@ void ActionManager::setItems( const QStringList &lst )
   mFilterAction->setItems( lst );
 }
 
+void ActionManager::slotResourcesAddedRemoved()
+{
+  restoreCollectionViewSetting();
+}
+
 void ActionManager::readSettings()
 {
   // read settings from the KConfig, supplying reasonable
@@ -801,6 +807,12 @@ void ActionManager::readSettings()
     mRecent->loadEntries( config->group( "RecentFiles" ) );
   }
   mCalendarView->readSettings();
+  restoreCollectionViewSetting();
+}
+
+void ActionManager::restoreCollectionViewSetting()
+{
+  KConfig *config = KOGlobals::self()->config();
   mCollectionViewStateSaver->restoreState( config->group( "GlobalCollectionView" ) );
   mCollectionSelectionModelStateSaver->restoreConfig( config->group( "GlobalCollectionSelection") );
 }
