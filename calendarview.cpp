@@ -2779,7 +2779,6 @@ void CalendarView::resourcesChanged()
 {
   mViewManager->setUpdateNeeded();
   updateView();
-  qDebug()<<" DDDDDDDDDDDDDDDDDDDDDDDDDDDD";
 }
 
 bool CalendarView::eventFilter( QObject *watched, QEvent *event )
