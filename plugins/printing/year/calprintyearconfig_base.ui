@@ -16,7 +16,7 @@
         <number>0</number>
       </property>
       <item>
-        <widget class="Q3ButtonGroup" name="mDateRangeGroup" >
+        <widget class="QGroupBox" name="mDateRangeGroup" >
           <property name="title" >
             <string>Yearly Print Options</string>
           </property>
