@@ -32,6 +32,7 @@
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
+#include <KMessageBox>
 
 #include "korganizer.h"
 #include "korganizer_options.h"
@@ -62,8 +63,9 @@ int main ( int argc, char **argv )
   }
 
   if ( !Akonadi::Control::start() ) {
-    //TODO: add message box after string freeze
     kWarning() << "Unable to start Akonadi server, exit application";
+    KMessageBox::sorry( 0, i18n( "Akonadi failed to start. Please check your configuration." ),
+                        i18n( "Korganizer" ) );
     return 1;
   }
 
