@@ -985,8 +985,9 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
 void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
   mAMails->clear();
-  for ( QStringList::Iterator it = KOPrefs::instance()->mAdditionalMails.begin();
-            it != KOPrefs::instance()->mAdditionalMails.end(); ++it ) {
+  QStringList::const_iterator begin( KOPrefs::instance()->mAdditionalMails.constBegin() );
+  QStringList::const_iterator end( KOPrefs::instance()->mAdditionalMails.constEnd() );
+  for ( QStringList::const_iterator it = begin; it != end; ++it ) {
     Q3ListViewItem *item = new Q3ListViewItem(mAMails);
     item->setText( 0, *it );
     mAMails->insertItem( item );
