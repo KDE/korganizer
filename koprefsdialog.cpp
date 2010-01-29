@@ -946,6 +946,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   aMailsLabel->setWhatsThis( whatsThis );
   topLayout->addWidget( aMailsLabel, 4, 0, 1, 2 );
   mAMails = new Q3ListView( topFrame );
+  mAMails->setResizeMode(Q3ListView::LastColumn);
   mAMails->setWhatsThis( whatsThis );
 
   mAMails->addColumn( i18nc( "@title:column email addresses", "Email" ), 300 );
