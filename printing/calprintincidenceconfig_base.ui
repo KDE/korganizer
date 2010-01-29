@@ -23,12 +23,9 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="1" column="0" >
-    <widget class="Q3ButtonGroup" name="mComponentsGroup" >
+    <widget class="QGroupBox" name="mComponentsGroup" >
      <property name="title" >
       <string>Include Information</string>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
      </property>
      <property name="selectedId" stdset="0" >
       <number>-1</number>
@@ -100,14 +97,6 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends>Q3GroupBox</extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>mShowDetails</tabstop>
   <tabstop>mShowAttendees</tabstop>
