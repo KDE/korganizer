@@ -923,7 +923,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
     const QString n( transport->name() );
     QListWidgetItem *item = new QListWidgetItem( transport->name(), mTransportList );
     mTransportList->addItem( item );
-    if( n == KOPrefs::instance()->mMailTransport ) 
+    if( n == KOPrefs::instance()->mMailTransport )
       selectedItem = item;
     else if( n == defaultTransportName )
       defaultItem = item;
@@ -993,8 +993,9 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
 void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
   mAMails->clear();
-  for ( QStringList::Iterator it = KOPrefs::instance()->mAdditionalMails.begin();
-            it != KOPrefs::instance()->mAdditionalMails.end(); ++it ) {
+  QStringList::const_iterator begin( KOPrefs::instance()->mAdditionalMails.constBegin() );
+  QStringList::const_iterator end( KOPrefs::instance()->mAdditionalMails.constEnd() );
+  for ( QStringList::const_iterator it = begin; it != end; ++it ) {
     Q3ListViewItem *item = new Q3ListViewItem(mAMails);
     item->setText( 0, *it );
     mAMails->insertItem( item );
@@ -1002,7 +1003,7 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
 
   for( int i = 0; i < mTransportList->count(); ++i ) {
     QListWidgetItem *item = mTransportList->item( i );
-    if( item->text() == KOPrefs::instance()->mMailTransport ) 
+    if( item->text() == KOPrefs::instance()->mMailTransport )
       mTransportList->setCurrentItem( item );
   }
 }
