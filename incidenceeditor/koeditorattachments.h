@@ -47,7 +47,6 @@ class KMenu;
 class KUrlRequester;
 
 class Q3IconDragItem;
-class Q3IconView;
 class Q3IconViewItem;
 class QCheckBox;
 class QDragEnterEvent;
