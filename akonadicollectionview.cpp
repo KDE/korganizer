@@ -234,7 +234,7 @@ void AkonadiCollectionView::deleteCalendar()
   const Akonadi::Collection collection = collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
   //Q_ASSERT( mCollectionview->selectionModel()->isSelected(index) );
-  
+
   const QString displayname = index.model()->data( index, Qt::DisplayRole ).toString();
   Q_ASSERT( ! displayname.isEmpty() );
 
@@ -247,7 +247,7 @@ void AkonadiCollectionView::deleteCalendar()
                                   KMessageBox::Dangerous )
     == KMessageBox::Yes )
   {
-    Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection /* , m_session */ );
+    Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
     connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
   }
 }
@@ -255,9 +255,9 @@ void AkonadiCollectionView::deleteCalendar()
 void AkonadiCollectionView::deleteCalendarDone( KJob *job )
 {
   kDebug();
-  Akonadi::CollectionDeleteJob *createjob = static_cast<Akonadi::CollectionDeleteJob*>( job );
-  if ( createjob->error() ) {
-      kWarning( 5250 ) << "Delete calendar failed:" << createjob->errorString();
+  Akonadi::CollectionDeleteJob *deletejob = static_cast<Akonadi::CollectionDeleteJob*>( job );
+  if ( deletejob->error() ) {
+      kWarning( 5250 ) << "Delete calendar failed:" << deletejob->errorString();
       return;
   }
   //TODO
