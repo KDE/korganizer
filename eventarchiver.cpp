@@ -124,7 +124,7 @@ void EventArchiver::run( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase
 
   switch ( KOPrefs::instance()->mArchiveAction ) {
   case KOPrefs::actionDelete:
-    deleteIncidences( calendar, changer, limitDate, widget, incidences, withGUI );
+    deleteIncidences( changer, limitDate, widget, incidences, withGUI );
     break;
   case KOPrefs::actionArchive:
     archiveIncidences( calendar, changer, limitDate, widget, incidences, withGUI );
@@ -132,7 +132,7 @@ void EventArchiver::run( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase
   }
 }
 
-void EventArchiver::deleteIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+void EventArchiver::deleteIncidences( KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                                       const Item::List &incidences, bool withGUI )
 {
   QStringList incidenceStrs;

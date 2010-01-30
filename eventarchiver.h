@@ -88,7 +88,7 @@ class EventArchiver : public QObject
     void run( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
               bool withGUI, bool errorIfNone );
 
-    void deleteIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
+    void deleteIncidences( KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                            const Akonadi::Item::List &incidences, bool withGUI );
     void archiveIncidences( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                             const Akonadi::Item::List &incidences, bool withGUI );
