@@ -270,8 +270,9 @@ Akonadi::Item::List KOTodoView::selectedIncidences()
 {
   Akonadi::Item::List ret;
   const QModelIndexList selection = mView->selectionModel()->selectedRows();
-  Q_FOREACH( const QModelIndex &mi, selection )
-    ret << selection[0].data ( KOTodoModel::TodoRole ).value<Item>();;
+  Q_FOREACH( const QModelIndex &mi, selection ) {
+    ret << mi.data ( KOTodoModel::TodoRole ).value<Item>();
+  }
   return ret;
 }
 
