@@ -170,12 +170,12 @@ class KODayMatrix: public QFrame, public Akonadi::Calendar::CalendarObserver
     bool isEndOfMonth() const { return mToday >= 27; }
 
     /**
-     *  Reimplemented from KCal::Calendar::Observer
+     *  Reimplemented from Akonadi::Calendar
      *  They set mPendingChanges to true
      */
-    void calendarIncidenceAdded( Incidence *incidence );
-    void calendarIncidenceChanged( Incidence *incidence );
-    void calendarIncidenceDeleted( Incidence *incidence );
+    void calendarIncidenceAdded( const Akonadi::Item &incidence );
+    void calendarIncidenceChanged( const Akonadi::Item &incidence );
+    void calendarIncidenceDeleted( const Akonadi::Item &incidence );
 
     /** Sets which incidences should be highlighted */
     void setHighlightMode( bool highlightEvents,

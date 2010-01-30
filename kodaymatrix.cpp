@@ -439,19 +439,19 @@ int KODayMatrix::getDayIndexFrom( int x, int y ) const
            6 - x / mDaySize.width() : x / mDaySize.width() );
 }
 
-void KODayMatrix::calendarIncidenceAdded( Incidence *incidence )
+void KODayMatrix::calendarIncidenceAdded( const Akonadi::Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceChanged( Incidence *incidence )
+void KODayMatrix::calendarIncidenceChanged( const Akonadi::Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceDeleted( Incidence *incidence )
+void KODayMatrix::calendarIncidenceDeleted( const Akonadi::Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
