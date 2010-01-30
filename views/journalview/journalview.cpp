@@ -147,7 +147,7 @@ void JournalDateView::journalDeleted( const Item &journal )
   }
 
   delete pos.value();
-  mEntries.erase( journal.id() );
+  mEntries.remove( journal.id() );
 }
 
 JournalView::JournalView( const Item &j, QWidget *parent )
@@ -162,7 +162,7 @@ JournalView::JournalView( const Item &j, QWidget *parent )
   mLayout->setSpacing( KDialog::spacingHint() );
   mLayout->setMargin( KDialog::marginHint() );
 
-  mBrowser = new KTextBrowser(this);
+  mBrowser = new KTextBrowser( this );
   mBrowser->setFrameStyle( QFrame::StyledPanel );
   mLayout->addWidget( mBrowser, 0, 0, 1, 3 );
 
