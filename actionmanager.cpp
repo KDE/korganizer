@@ -719,7 +719,7 @@ void ActionManager::file_open( const KURL &url )
   // is that URL already opened somewhere else? Activate that window
   KOrg::MainWindow *korg=ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
-    KWin::setActiveWindow( korg->topLevelWidget()->winId() );
+    KWin::activateWindow( korg->topLevelWidget()->winId() );
     return;
   }
 
