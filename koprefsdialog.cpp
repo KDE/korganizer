@@ -488,6 +488,19 @@ class KOPrefsDialogViews : public KPrefsModule
       // GroupBox: Views->General->Display Options
       QVBoxLayout *gdisplayLayout = new QVBoxLayout;
       QGroupBox *gdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
+                                                                                           
+      QBoxLayout *nextDaysLayout = new QHBoxLayout;                                        
+      gdisplayLayout->addLayout( nextDaysLayout );                                         
+                                                                                           
+      KPrefsWidInt *nextDays =                                                             
+        addWidInt( KOPrefs::instance()->nextXDaysItem() );                                 
+      nextDays->spinBox()->setSuffix(                                                      
+        i18nc( "@label suffix in the N days spin box", " days" ) );                        
+                                                                                           
+      nextDaysLayout->addWidget( nextDays->label() );                                      
+      nextDaysLayout->addWidget( nextDays->spinBox() );                                    
+      nextDaysLayout->addStretch( 1 );                                                     
+                                                                                           
       gdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableToolTipsItem() )->checkBox() );
       gdisplayLayout->addWidget(
@@ -532,18 +545,6 @@ class KOPrefsDialogViews : public KPrefsModule
       hourSizeLayout->addWidget( hourSize->label() );
       hourSizeLayout->addWidget( hourSize->spinBox() );
       hourSizeLayout->addStretch( 1 );
-
-      QBoxLayout *nextDaysLayout = new QHBoxLayout;
-      adisplayLayout->addLayout( nextDaysLayout );
-
-      KPrefsWidInt *nextDays =
-        addWidInt( KOPrefs::instance()->nextXDaysItem() );
-      nextDays->spinBox()->setSuffix(
-        i18nc( "@label suffix in the N days spin box", " days" ) );
-
-      nextDaysLayout->addWidget( nextDays->label() );
-      nextDaysLayout->addWidget( nextDays->spinBox() );
-      nextDaysLayout->addStretch( 1 );
 
       adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableAgendaItemIconsItem() )->checkBox() );
