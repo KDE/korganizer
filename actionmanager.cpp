@@ -603,6 +603,8 @@ void ActionManager::initActions()
   mConfigureViewAction = new KAction( KIcon( "configure" ), i18n( "Configure View..." ), this );
   mConfigureViewAction->setIconText( i18n( "Configure" ) );
   mConfigureViewAction->setHelpText( i18n( "Configure the view" ) );
+  mConfigureViewAction->setEnabled( mCalendarView->currentView() &&
+                                    mCalendarView->currentView()->hasConfigurationDialog() );
   mACollection->addAction( "configure_view", mConfigureViewAction );
   connect( mConfigureViewAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(configureCurrentView()) );
