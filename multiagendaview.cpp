@@ -30,6 +30,7 @@
 #include <qlayout.h>
 #include <qvbox.h>
 #include <qobjectlist.h>
+#include <qheader.h>
 
 #define FOREACH_VIEW(av) \
 for(QValueList<KOAgendaView*>::ConstIterator it = mAgendaViews.constBegin(); \
@@ -41,6 +42,7 @@ using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *name ) :
     AgendaView( cal, parent, name ),
+    mSelectedAgendaView( 0 ),
     mLastMovedSplitter( 0 ),
     mUpdateOnShow( false ),
     mPendingChanges( true )
@@ -108,6 +110,7 @@ void MultiAgendaView::recreateViews()
     KOAgendaView* av = new KOAgendaView( calendar(), mTopBox );
     mAgendaViews.append( av );
     mAgendaWidgets.append( av );
+    mSelectedAgendaView = av;
     av->show();
   } else {
     CalendarResourceManager *manager = calres->resourceManager();
@@ -175,52 +178,76 @@ void MultiAgendaView::deleteViews()
 void MultiAgendaView::setupViews()
 {
   FOREACH_VIEW( agenda ) {
-    connect( agenda, SIGNAL( newEventSignal() ),
-             SIGNAL( newEventSignal() ) );
-    connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
-             SIGNAL( editIncidenceSignal( Incidence * ) ) );
-    connect( agenda, SIGNAL( showIncidenceSignal( Incidence * ) ),
-             SIGNAL( showIncidenceSignal( Incidence * ) ) );
-    connect( agenda, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
-             SIGNAL( deleteIncidenceSignal( Incidence * ) ) );
-    connect( agenda, SIGNAL( startMultiModify( const QString & ) ),
-             SIGNAL( startMultiModify( const QString & ) ) );
-    connect( agenda, SIGNAL( endMultiModify() ),
-             SIGNAL( endMultiModify() ) );
+    if ( !agenda->readOnly() ) {
+      connect( agenda,
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &)),
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &)) );
+      connect( agenda,
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDate &)),
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDate &)) );
+      connect( agenda,
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDateTime &)),
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDateTime &)) );
+      connect( agenda,
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDateTime &,const QDateTime &)),
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDateTime &,const QDateTime&)) );
 
-    connect( agenda, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
-             SIGNAL( incidenceSelected( Incidence *,const QDate & ) ) );
+      connect( agenda,
+               SIGNAL(newTodoSignal(ResourceCalendar *,const QString &,const QDate &)),
+               SIGNAL(newTodoSignal(ResourceCalendar *,const QString &,const QDate &)) );
 
-    connect( agenda, SIGNAL(cutIncidenceSignal(Incidence*)),
-             SIGNAL(cutIncidenceSignal(Incidence*)) );
-    connect( agenda, SIGNAL(copyIncidenceSignal(Incidence*)),
+      connect( agenda,
+               SIGNAL(editIncidenceSignal(Incidence *)),
+               SIGNAL(editIncidenceSignal(Incidence *)) );
+      connect( agenda,
+               SIGNAL(deleteIncidenceSignal(Incidence *)),
+               SIGNAL(deleteIncidenceSignal(Incidence *)) );
+      connect( agenda,
+               SIGNAL(startMultiModify(const QString &)),
+               SIGNAL(startMultiModify(const QString &)) );
+      connect( agenda,
+               SIGNAL(endMultiModify()),
+               SIGNAL(endMultiModify()) );
+
+      connect( agenda,
+               SIGNAL(cutIncidenceSignal(Incidence*)),
+               SIGNAL(cutIncidenceSignal(Incidence*)) );
+      connect( agenda,
+               SIGNAL(pasteIncidenceSignal()),
+               SIGNAL(pasteIncidenceSignal()) );
+      connect( agenda,
+               SIGNAL(toggleAlarmSignal(Incidence*)),
+               SIGNAL(toggleAlarmSignal(Incidence*)) );
+      connect( agenda,
+               SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)),
+               SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)) );
+      connect( agenda,
+               SIGNAL(dissociateFutureOccurrenceSignal(Incidence*, const QDate&)),
+               SIGNAL(dissociateFutureOccurrenceSignal(Incidence*, const QDate&)) );
+    }
+
+    connect( agenda,
+             SIGNAL(copyIncidenceSignal(Incidence*)),
              SIGNAL(copyIncidenceSignal(Incidence*)) );
-    connect( agenda, SIGNAL(pasteIncidenceSignal()),
-             SIGNAL(pasteIncidenceSignal()) );
-    connect( agenda, SIGNAL(toggleAlarmSignal(Incidence*)),
-             SIGNAL(toggleAlarmSignal(Incidence*)) );
-    connect( agenda, SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)),
-             SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)) );
-    connect( agenda, SIGNAL(dissociateFutureOccurrenceSignal(Incidence*, const QDate&)),
-             SIGNAL(dissociateFutureOccurrenceSignal(Incidence*, const QDate&)) );
-
-    connect( agenda, SIGNAL(newEventSignal(const QDate&)),
-             SIGNAL(newEventSignal(const QDate&)) );
-    connect( agenda, SIGNAL(newEventSignal(const QDateTime&)),
-             SIGNAL(newEventSignal(const QDateTime&)) );
-    connect( agenda, SIGNAL(newEventSignal(const QDateTime&, const QDateTime&)),
-             SIGNAL(newEventSignal(const QDateTime&, const QDateTime&)) );
-    connect( agenda, SIGNAL(newTodoSignal(const QDate&)),
-             SIGNAL(newTodoSignal(const QDate&)) );
-
-    connect( agenda, SIGNAL(incidenceSelected(Incidence*, const QDate &)),
+    connect( agenda,
+             SIGNAL(showIncidenceSignal(Incidence *)),
+             SIGNAL(showIncidenceSignal(Incidence *)) );
+    connect( agenda,
+             SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+             SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
+    connect( agenda,
+             SIGNAL(incidenceSelected(Incidence*,const QDate &)),
              SLOT(slotSelectionChanged()) );
 
-    connect( agenda, SIGNAL(timeSpanSelectionChanged()),
+    connect( agenda,
+             SIGNAL(timeSpanSelectionChanged()),
              SLOT(slotClearTimeSpanSelection()) );
 
-    disconnect( agenda->agenda(), SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)), agenda, 0 );
-    connect( agenda->agenda(), SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)),
+    disconnect( agenda->agenda(),
+                SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)),
+                agenda, 0 );
+    connect( agenda->agenda(),
+             SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)),
              SLOT(zoomView(const int,const QPoint&,const Qt::Orientation)) );
   }
 
@@ -339,10 +366,34 @@ void MultiAgendaView::finishTypeAhead()
 
 void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * res, const QString & subRes )
 {
+  bool readOnlyView = false;
+
   QVBox *box = new QVBox( mTopBox );
-  QLabel *l = new QLabel( label, box );
-  l->setAlignment( AlignVCenter | AlignHCenter );
+
+  // First, the calendar folder title
+  QHeader *title = new QHeader( 1, box );
+  title->setClickEnabled( false );
+  title->setStretchEnabled( true );
+  if ( res->readOnly() || !res->subresourceWritable( subRes ) ) {
+    readOnlyView = true;
+    title->setLabel( 0, QIconSet( KOGlobals::self()->smallIcon( "readonlyevent" ) ), label );
+  } else {
+    QColor resColor;
+    if ( subRes.isEmpty() ) {
+      resColor = *KOPrefs::instance()->resourceColor( res->identifier() );
+    } else {
+      resColor = *KOPrefs::instance()->resourceColor( subRes );
+    }
+    QFontMetrics fm = fontMetrics();
+    QPixmap px( fm.height(), fm.height() );
+    px.fill( resColor );
+    title->setLabel( 0, QIconSet( px, QIconSet::Small ), label );
+  }
+
+  // Now, the sub agenda view
   KOAgendaView* av = new KOAgendaView( calendar(), box, 0, true );
+  mSelectedAgendaView = av;
+  av->setReadOnly( readOnlyView );
   av->setResource( res, subRes );
   av->setIncidenceChanger( mChanger );
   av->agenda()->setVScrollBarMode( QScrollView::AlwaysOff );
@@ -356,6 +407,7 @@ void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * re
   connect( mTimeLabels->verticalScrollBar(), SIGNAL(valueChanged(int)),
            av, SLOT(setContentsPos(int)) );
 
+  av->installEventFilter( this );
   installSplitterEventFilter( av->splitter() );
 }
 
@@ -398,10 +450,10 @@ void MultiAgendaView::updateConfig()
     agenda->updateConfig();
 }
 
-// KDE4: not needed anymore, QSplitter has a moved signal there
 bool MultiAgendaView::eventFilter(QObject * obj, QEvent * event)
 {
   if ( obj->className() == QCString("QSplitterHandle") ) {
+    // KDE4: not needed anymore, QSplitter has a moved signal there
     if ( (event->type() == QEvent::MouseMove && KGlobalSettings::opaqueResize())
            || event->type() == QEvent::MouseButtonRelease ) {
       FOREACH_VIEW( agenda ) {
@@ -415,6 +467,13 @@ bool MultiAgendaView::eventFilter(QObject * obj, QEvent * event)
       QTimer::singleShot( 0, this, SLOT(resizeSplitters()) );
     }
   }
+
+  if ( obj->className() == QCString( "KOAgendaView" ) ) {
+    if ( event->type() == QEvent::Enter ) {
+      mSelectedAgendaView = (KOAgendaView *)obj;
+    }
+  }
+
   return AgendaView::eventFilter( obj, event );
 }
 

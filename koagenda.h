@@ -37,17 +37,18 @@ class KConfig;
 class KOAgenda;
 class KOAgendaItem;
 
-using namespace KOrg;
 namespace KOrg {
-class IncidenceChangerBase;
+  class IncidenceChangerBase;
 }
+using namespace KOrg;
 
-using namespace KCal;
 namespace KCal {
-class Event;
-class Todo;
-class Calendar;
+  class Event;
+  class Todo;
+  class Calendar;
+  class ResourceCalendar;
 }
+using namespace KCal;
 
 class MarcusBains : public QFrame
 {
@@ -172,7 +173,7 @@ class KOAgenda : public QScrollView
     void showAgendaItem( KOAgendaItem *item );
 
   signals:
-    void newEventSignal();
+    void newEventSignal( ResourceCalendar *res, const QString &subResource );
     void newTimeSpanSignal( const QPoint &, const QPoint & );
     void newStartSelectSignal();
 

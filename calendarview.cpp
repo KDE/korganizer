@@ -685,7 +685,7 @@ void CalendarView::updateConfig( const QCString& receiver)
   const bool showMerged = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
   const bool showSideBySide = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
   KOrg::BaseView *view = mViewManager->currentView();
-  mViewManager->showAgendaView();
+
   if ( view == mViewManager->agendaView() && showSideBySide )
     view = mViewManager->multiAgendaView();
   else if ( view == mViewManager->multiAgendaView() && showMerged )
@@ -965,8 +965,9 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, b
   mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 }
 
-KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
-     const QDateTime &endDtParam, bool allDayParam)
+KOEventEditor *CalendarView::newEventEditor( ResourceCalendar *res, const QString &subRes,
+                                             const QDateTime &startDtParam,
+                                             const QDateTime &endDtParam, bool allDayParam )
 {
   // let the current view change the default start/end datetime
   bool allDay = allDayParam;
@@ -978,6 +979,7 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   eventEditor->newEvent();
   connectIncidenceEditor( eventEditor );
+  eventEditor->setResource( res, subRes );
   eventEditor->setDates( startDt, endDt, allDay );
   mDialogManager->connectTypeAhead( eventEditor, dynamic_cast<KOrg::AgendaView*>(viewManager()->currentView()) );
   return eventEditor;
@@ -988,33 +990,49 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
 
 void CalendarView::newEvent()
 {
-  kdDebug(5850) << "CalendarView::newEvent()" << endl;
-  newEvent( QDateTime(), QDateTime() );
+  KOrg::BaseView *currentView = mViewManager->currentView();
+  if ( currentView == mViewManager->multiAgendaView() ) {
+    currentView = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+
+  newEvent( currentView->resourceCalendar(),
+            currentView->subResourceCalendar() );
 }
 
-void CalendarView::newEvent( const QDate &dt )
+void CalendarView::newEvent( ResourceCalendar *res, const QString &subRes )
+{
+  kdDebug(5850) << "CalendarView::newEvent()" << endl;
+  newEvent( res, subRes, QDateTime(), QDateTime() );
+}
+
+void CalendarView::newEvent( ResourceCalendar *res, const QString &subRes,
+                             const QDate &dt )
 {
   QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
-  return newEvent( QDateTime( dt ), QDateTime() );
+  newEvent( res, subRes, QDateTime( dt ), QDateTime() );
 }
 
-void CalendarView::newEvent( const QDateTime &startDt )
+void CalendarView::newEvent( ResourceCalendar *res, const QString &subRes,
+                             const QDateTime &startDt )
 {
-  return newEvent( startDt, QDateTime() );
+  newEvent( res, subRes, startDt, QDateTime() );
 }
 
-void CalendarView::newEvent( const QDateTime &startDt, const QDateTime &endDt,
+void CalendarView::newEvent( ResourceCalendar *res, const QString &subRes,
+                             const QDateTime &startDt, const QDateTime &endDt,
                              bool allDay )
 {
-  KOEventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
+  KOEventEditor *eventEditor = newEventEditor( res, subRes,
+                                               startDt, endDt, allDay );
   eventEditor->show();
 }
 
-void CalendarView::newEvent( const QString &summary, const QString &description,
+void CalendarView::newEvent( ResourceCalendar *res, const QString &subRes,
+                             const QString &summary, const QString &description,
                              const QStringList &attachments, const QStringList &attendees,
                              const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
-  KOEventEditor *eventEditor = newEventEditor();
+  KOEventEditor *eventEditor = newEventEditor( res, subRes );
   eventEditor->setTexts( summary, description );
   // if attach or attendee list is empty, these methods don't do anything, so
   // it's safe to call them in every case
@@ -1023,7 +1041,8 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
   eventEditor->show();
 }
 
-void CalendarView::newTodo( const QString &summary, const QString &description,
+void CalendarView::newTodo( ResourceCalendar *res, const QString &subRes,
+                            const QString &summary, const QString &description,
                             const QStringList &attachments, const QStringList &attendees,
                             const QStringList &attachmentMimetypes,
                             bool inlineAttachment, bool isTask )
@@ -1032,6 +1051,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
+  todoEditor->setResource( res, subRes );
   todoEditor->setTexts( summary, description );
   todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   todoEditor->addAttendees( attendees );
@@ -1041,47 +1061,74 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
 
 void CalendarView::newTodo()
 {
+  KOrg::BaseView *currentView = mViewManager->currentView();
+  if ( currentView == mViewManager->multiAgendaView() ) {
+    currentView = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+
+  newTodo( currentView->resourceCalendar(),
+           currentView->subResourceCalendar() );
+}
+
+void CalendarView::newTodo( ResourceCalendar *res, const QString &subRes )
+{
   kdDebug(5850) << k_funcinfo << endl;
   QDateTime dtDue;
   bool allday = true;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
+  todoEditor->setResource( res, subRes );
   if ( mViewManager->currentView()->isEventView() ) {
     dtDue.setDate( mNavigator->selectedDates().first() );
     QDateTime dtDummy = QDateTime::currentDateTime();
-    mViewManager->currentView()->
-      eventDurationHint( dtDue, dtDummy, allday );
+    mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
     todoEditor->setDates( dtDue, allday );
   }
   todoEditor->show();
 }
 
-void CalendarView::newTodo( const QDate &date )
+void CalendarView::newTodo( ResourceCalendar *res, const QString &subRes,
+                            const QDate &date )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
+  todoEditor->setResource( res, subRes );
   todoEditor->setDates( QDateTime( date, QTime::currentTime() ), true );
   todoEditor->show();
 }
 
 void CalendarView::newJournal()
 {
-  kdDebug(5850) << "CalendarView::newJournal()" << endl;
-  newJournal( QString::null, QDate() );
+  KOrg::BaseView *currentView = mViewManager->currentView();
+  if ( currentView == mViewManager->multiAgendaView() ) {
+    currentView = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+
+  newJournal( currentView->resourceCalendar(),
+              currentView->subResourceCalendar() );
 }
 
-void CalendarView::newJournal( const QDate &date)
+void CalendarView::newJournal( ResourceCalendar *res, const QString &subRes )
 {
-  newJournal( QString::null, date );
+  kdDebug(5850) << "CalendarView::newJournal()" << endl;
+  newJournal( res, subRes, QString::null, QDate() );
 }
 
-void CalendarView::newJournal( const QString &text, const QDate &date )
+void CalendarView::newJournal( ResourceCalendar *res, const QString &subRes,
+                               const QDate &date)
+{
+  newJournal( res, subRes, QString::null, date );
+}
+
+void CalendarView::newJournal( ResourceCalendar *res, const QString &subRes,
+                               const QString &text, const QDate &date )
 {
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
   connectIncidenceEditor( journalEditor );
   journalEditor->newJournal();
+  journalEditor->setResource( res, subRes );
   journalEditor->setTexts( text );
   if ( !date.isValid() ) {
     journalEditor->setDate( mNavigator->selectedDates().first() );
@@ -1104,15 +1151,6 @@ void CalendarView::newSubTodo(Todo *parentEvent)
   todoEditor->newTodo();
   todoEditor->setDates( QDateTime(), false, parentEvent );
   todoEditor->show();
-}
-
-void CalendarView::newFloatingEvent()
-{
-  DateList tmpList = mNavigator->selectedDates();
-  QDate date = tmpList.first();
-
-  newEvent( QDateTime( date, QTime( 12, 0, 0 ) ),
-            QDateTime( date, QTime( 12, 0, 0 ) ), true );
 }
 
 bool CalendarView::addIncidence( const QString &ical )

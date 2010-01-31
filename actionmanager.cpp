@@ -447,11 +447,11 @@ void ActionManager::initActions()
   //************************** Actions MENU *********************************
   new KAction( i18n("New E&vent..."),
                KOGlobals::self()->smallIcon( "newappointment" ), 0,
-               mCalendarView, SLOT( newEvent() ),
+               mCalendarView, SLOT(newEvent()),
                mACollection, "new_event" );
   new KAction( i18n("New &To-do..."),
                KOGlobals::self()->smallIcon( "newtodo" ), 0,
-               mCalendarView, SLOT( newTodo() ),
+               mCalendarView, SLOT(newTodo()),
                mACollection, "new_todo" );
   action = new KAction( i18n("New Su&b-to-do..."), 0,
                         mCalendarView,SLOT( newSubTodo() ),
@@ -461,7 +461,7 @@ void ActionManager::initActions()
            action,SLOT( setEnabled( bool ) ) );
   new KAction( i18n("New &Journal..."),
                KOGlobals::self()->smallIcon( "newjournal" ), 0,
-               mCalendarView, SLOT( newJournal() ),
+               mCalendarView, SLOT(newJournal()),
                mACollection, "new_journal" );
 
   mShowIncidenceAction = new KAction( i18n("&Show"), 0,
@@ -1532,14 +1532,14 @@ KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValu
 
 void ActionManager::openEventEditor( const QString& text )
 {
-  mCalendarView->newEvent( text );
+  mCalendarView->newEvent( 0, QString(), text );
 }
 
 void ActionManager::openEventEditor( const QString& summary,
                                      const QString& description,
                                      const QString& attachment )
 {
-  mCalendarView->newEvent( summary, description, attachment );
+  mCalendarView->newEvent( 0, QString(), summary, description, attachment );
 }
 
 void ActionManager::openEventEditor( const QString& summary,
@@ -1547,7 +1547,7 @@ void ActionManager::openEventEditor( const QString& summary,
                                      const QString& attachment,
                                      const QStringList& attendees )
 {
-  mCalendarView->newEvent( summary, description, attachment, attendees );
+  mCalendarView->newEvent( 0,  QString(), summary, description, attachment, attendees );
 }
 
 void ActionManager::openEventEditor( const QString & summary,
@@ -1642,19 +1642,20 @@ void ActionManager::openEventEditor( const QString & summary,
       return;
   }
 
-  mCalendarView->newEvent( summary, description, attData, attendees, attachmentMimetype, action != KOPrefs::Link );
+  mCalendarView->newEvent( 0, QString(), summary, description, attData,
+                           attendees, attachmentMimetype, action != KOPrefs::Link );
 }
 
 void ActionManager::openTodoEditor( const QString& text )
 {
-  mCalendarView->newTodo( text );
+  mCalendarView->newTodo( 0, QString(), text );
 }
 
 void ActionManager::openTodoEditor( const QString& summary,
                                     const QString& description,
                                     const QString& attachment )
 {
-  mCalendarView->newTodo( summary, description, attachment );
+  mCalendarView->newTodo( 0, QString(), summary, description, attachment );
 }
 
 void ActionManager::openTodoEditor( const QString& summary,
@@ -1662,7 +1663,7 @@ void ActionManager::openTodoEditor( const QString& summary,
                                     const QString& attachment,
                                     const QStringList& attendees )
 {
-  mCalendarView->newTodo( summary, description, attachment, attendees );
+  mCalendarView->newTodo( 0, QString(), summary, description, attachment, attendees );
 }
 
 void ActionManager::openTodoEditor(const QString & summary,
@@ -1701,7 +1702,8 @@ void ActionManager::openTodoEditor(const QString & summary,
       return;
   }
 
-  mCalendarView->newTodo( summary, description,
+  mCalendarView->newTodo( 0, QString(),
+                          summary, description,
                           attData, attendees,
                           QStringList( attachmentMimetype ),
                           action != KOPrefs::TodoAttachLink,
@@ -1710,17 +1712,17 @@ void ActionManager::openTodoEditor(const QString & summary,
 
 void ActionManager::openJournalEditor( const QDate& date )
 {
-  mCalendarView->newJournal( date );
+  mCalendarView->newJournal( 0, QString(), date );
 }
 
 void ActionManager::openJournalEditor( const QString& text, const QDate& date )
 {
-  mCalendarView->newJournal( text, date );
+  mCalendarView->newJournal( 0, QString(), text, date );
 }
 
 void ActionManager::openJournalEditor( const QString& text )
 {
-  mCalendarView->newJournal( text );
+  mCalendarView->newJournal( 0, QString(), text );
 }
 
 //TODO:
@@ -1728,7 +1730,7 @@ void ActionManager::openJournalEditor( const QString& text )
 //                                        const QString& description,
 //                                        const QString& attachment )
 // {
-//   mCalendarView->newJournal( summary, description, attachment );
+//   mCalendarView->newJournal( 0, QString(),summary, description, attachment );
 // }
 
 

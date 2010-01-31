@@ -91,7 +91,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     CalendarView( QWidget *parent = 0, const char *name = 0 );
     virtual ~CalendarView();
 
-
     class CalendarViewVisitor : public IncidenceBase::Visitor
     {
       public:
@@ -112,7 +111,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
         bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
         bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
     };
-
 
     void setCalendar( Calendar * );
     Calendar *calendar();
@@ -266,24 +264,32 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     */
     bool addIncidence( const QString &ical );
 
-    void connectIncidenceEditor( KOIncidenceEditor * );
+    void connectIncidenceEditor( KOIncidenceEditor *editor );
 
     /** create new event without having a date hint. Takes current date as
      default hint. */
     void newEvent();
+    void newEvent( ResourceCalendar *res, const QString &subRes );
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
-    void newEvent( const QDate &startDt );
-    void newEvent( const QDateTime &startDt );
-    void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false );
+    void newEvent( ResourceCalendar *res, const QString &subRes,
+                   const QDate &startDt );
+    void newEvent( ResourceCalendar *res, const QString &subRes,
+                   const QDateTime &startDt );
+    void newEvent( ResourceCalendar *res, const QString &subRes,
+                   const QDateTime &startDt, const QDateTime &EndDt,
+                   bool allDay = false );
     /**
       Create new Event from given summary, description, attachment list and
       attendees list
     */
-    void newEvent( const QString &summary, const QString &description = QString::null,
-                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList(),
-                   const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
-    void newFloatingEvent();
+    void newEvent( ResourceCalendar *res, const QString &subRes,
+                   const QString &summary,
+                   const QString &description = QString::null,
+                   const QStringList &attachment = QStringList(),
+                   const QStringList &attendees = QStringList(),
+                   const QStringList &attachmentMimetypes = QStringList(),
+                   bool inlineAttachment = false );
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
     void showIncidence( Incidence * );
@@ -332,21 +338,29 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     /** create new todo */
     void newTodo();
+    void newTodo( ResourceCalendar *res, const QString &subRes );
     /** create new todo, due on date */
-    void newTodo( const QDate &date );
+    void newTodo( ResourceCalendar *res, const QString &subRes,
+                  const QDate &date );
     /** create new todo with a parent todo */
     void newSubTodo();
     /** create new todo with a parent todo */
     void newSubTodo( Todo * );
 
-    void newTodo( const QString &summary, const QString &description = QString::null,
-                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(),
+    void newTodo( ResourceCalendar *res, const QString &subRes,
+                  const QString &summary,
+                  const QString &description = QString::null,
+                  const QStringList &attachments = QStringList(),
+                  const QStringList &attendees = QStringList(),
                   const QStringList &attachmentMimetypes = QStringList(),
                   bool inlineAttachment = false, bool createTask = false );
 
     void newJournal();
-    void newJournal( const QDate &date );
-    void newJournal( const QString &text, const QDate &date = QDate() );
+    void newJournal( ResourceCalendar *res, const QString &subRes );
+    void newJournal( ResourceCalendar *res, const QString &subRes,
+                     const QDate &date );
+    void newJournal( ResourceCalendar *res, const QString &subRes,
+                     const QString &text, const QDate &date = QDate() );
 
     void toggleAlarm( Incidence * );
     void dissociateOccurrence( Incidence *, const QDate & );
@@ -562,8 +576,10 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
         defaults, if invalid values are given) and allow the view to adjust the
         type. */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(),
-         const QDateTime &endDtParam = QDateTime() , bool allDayParam = false );
+    KOEventEditor *newEventEditor( ResourceCalendar *res, const QString &subRes,
+                                   const QDateTime &startDtParam = QDateTime(),
+                                   const QDateTime &endDtParam = QDateTime() ,
+                                   bool allDayParam = false );
 
   private:
     void init();

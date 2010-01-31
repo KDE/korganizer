@@ -60,7 +60,7 @@ KOEventView::~KOEventView()
 KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
-  
+
   connect(eventPopup,SIGNAL(editIncidenceSignal(Incidence *)),
                      SIGNAL(editIncidenceSignal(Incidence *)));
   connect(eventPopup,SIGNAL(showIncidenceSignal(Incidence *)),
@@ -137,14 +137,16 @@ void KOEventView::popupCopy()
 
 void KOEventView::showNewEventPopup()
 {
-  QPopupMenu *popup = newEventPopup();
-  if ( !popup ) {
-    kdError() << "KOEventView::showNewEventPopup(): popup creation failed"
-              << endl;
-    return;
-  }
+  if ( !readOnly() ) {
+    QPopupMenu *popup = newEventPopup();
+    if ( !popup ) {
+      kdError() << "KOEventView::showNewEventPopup(): popup creation failed"
+                << endl;
+      return;
+    }
 
-  popup->popup( QCursor::pos() );
+    popup->popup( QCursor::pos() );
+  }
 }
 
 //---------------------------------------------------------------------------

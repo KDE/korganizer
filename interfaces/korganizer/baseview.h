@@ -38,17 +38,19 @@
 
 using namespace KCal;
 
-namespace KCal { class Calendar; }
+namespace KCal {
+  class Calendar;
+  class ResourceCalendar;
+}
 
 namespace KOrg {
 
-
 /**
-  This class provides an interface for all views being displayed within the main
-  calendar view. It has functions to update the view, to specify date range and
-  other display parameter and to return selected objects. An important class,
-  which inherits KOBaseView is KOEventView, which provides the interface for all
-  views of event data like the agenda or the month view.
+  This class provides an interface for all views being displayed within the
+  main calendar view. It has functions to update the view, to specify date
+  range and other display parameter and to return selected objects. An
+  important class, which inherits KOBaseView is KOEventView, which provides
+  the interface for all views of event data like the agenda or the month view.
 
   @short Base class for calendar views
   @author Preston Brown, Cornelius Schumacher
@@ -56,7 +58,7 @@ namespace KOrg {
 */
 class KDE_EXPORT BaseView : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     /**
       Constructs a view.
@@ -66,20 +68,40 @@ class KDE_EXPORT BaseView : public QWidget
       @param parent parent widget.
       @param name   name of this widget.
     */
-    BaseView( Calendar *cal, QWidget *parent = 0,
-              const char *name = 0 )
-      : QWidget( parent, name ), mCalendar( cal ), mChanger( 0 ) {}
+    BaseView( Calendar *cal, QWidget *parent = 0, const char *name = 0 )
+      : QWidget( parent, name ),
+        mReadOnly( false ), mCalendar( cal ), mResource( 0 ), mChanger( 0 ) {}
 
     /**
       Destructor.  Views will do view-specific cleanups here.
     */
     virtual ~BaseView() {}
 
+    /** Flag indicating if the view is read-only */
+    void setReadOnly( bool readonly ) { mReadOnly = readonly; }
+    bool readOnly() { return mReadOnly; }
+
     virtual void setCalendar( Calendar *cal ) { mCalendar = cal; }
     /**
       Return calendar object of this view.
     */
     virtual Calendar *calendar() { return mCalendar; }
+
+    virtual void setResource( ResourceCalendar *res, const QString &subResource )
+    {
+      mResource = res;
+      mSubResource = subResource;
+    }
+
+    /**
+      Return resourceCalendar of this view.
+    */
+    ResourceCalendar *resourceCalendar() { return mResource; }
+
+    /**
+      Return subResourceCalendar of this view.
+    */
+    QString subResourceCalendar() const { return mSubResource; }
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -221,31 +243,40 @@ class KDE_EXPORT BaseView : public QWidget
      * instructs the receiver to create a new event.  Doesn't make
      * sense to connect to more than one receiver.
      */
-    void newEventSignal();
+    void newEventSignal( ResourceCalendar *res, const QString &subResource );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( const QDate & );
+    void newEventSignal( ResourceCalendar *res, const QString &subResource,
+                         const QDate & );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( const QDateTime & );
+    void newEventSignal( ResourceCalendar *res, const QString &subResource,
+                         const QDateTime & );
     /**
      * instructs the receiver to create a new event, with the specified
      * beginning end ending times.  Doesn't make sense to connect to more
      * than one receiver.
      */
-    void newEventSignal( const QDateTime &, const QDateTime & );
+    void newEventSignal( ResourceCalendar *res, const QString &subResource,
+                         const QDateTime &, const QDateTime & );
 
-    void newTodoSignal( const QDate & );
+    void newTodoSignal( ResourceCalendar *res,const QString &subResource,
+                        const QDate & );
     void newSubTodoSignal( Todo * );
 
-    void newJournalSignal( const QDate & );
+    void newJournalSignal( ResourceCalendar *res,const QString &subResource,
+                           const QDate & );
 
   private:
+    bool mReadOnly;
     Calendar *mCalendar;
+    ResourceCalendar *mResource;
+    QString mSubResource;
+
   protected:
     IncidenceChangerBase *mChanger;
 };

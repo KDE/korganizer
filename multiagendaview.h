@@ -44,6 +44,7 @@ class MultiAgendaView : public AgendaView
     explicit MultiAgendaView( Calendar* cal, QWidget *parent = 0, const char *name = 0 );
     ~MultiAgendaView();
 
+    KOAgendaView *selectedAgendaView() { return mSelectedAgendaView; }
     Incidence::List selectedIncidences();
     DateList selectedDates();
     int currentDateCount();
@@ -88,6 +89,7 @@ class MultiAgendaView : public AgendaView
     void slotResizeScrollView();
 
   private:
+    KOAgendaView *mSelectedAgendaView;
     QValueList<KOAgendaView*> mAgendaViews;
     QValueList<QWidget*> mAgendaWidgets;
     QHBox *mTopBox;

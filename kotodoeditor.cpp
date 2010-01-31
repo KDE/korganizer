@@ -233,7 +233,7 @@ bool KOTodoEditor::processInput()
 
     writeTodo( mTodo );
 
-    if ( !mChanger->addIncidence( mTodo, this ) ) {
+    if ( !mChanger->addIncidence( mTodo, mResource, mSubResource, this ) ) {
       delete mTodo;
       mTodo = 0;
       return false;

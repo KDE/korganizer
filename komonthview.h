@@ -199,7 +199,8 @@ class MonthViewCell : public QWidget
       will pop up.
       @param date The date of the event we want create.
     */
-    void newEventSignal( const QDate &date );
+    void newEventSignal( ResourceCalendar *res,const QString &subResource,
+                         const QDate &date );
 
   public slots:
     void select();

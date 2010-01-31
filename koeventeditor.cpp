@@ -297,7 +297,7 @@ bool KOEventEditor::processInput()
                           KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
     // NOTE: triggered by addIncidence, the kolab resource might open a non-modal dialog (parent is not available in the resource) to select a resource folder. Thus the user can close this dialog before addIncidence() returns.
-    if ( !mChanger->addIncidence( mEvent, this ) ) {
+    if ( !mChanger->addIncidence( mEvent, mResource, mSubResource, this ) ) {
       delete mEvent;
       mEvent = 0;
       return false;

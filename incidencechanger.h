@@ -26,6 +26,10 @@
 
 #include "korganizer/incidencechangerbase.h"
 
+namespace KCal {
+  class ResourceCalendar;
+}
+
 class IncidenceChanger : public KOrg::IncidenceChangerBase
 {
 Q_OBJECT
@@ -41,6 +45,7 @@ public:
   bool endChange( Incidence *incidence );
 
   bool addIncidence( Incidence *incidence, QWidget *parent );
+  bool addIncidence( Incidence *incidence, ResourceCalendar *res, const QString &subRes, QWidget *parent );
   bool changeIncidence( Incidence *oldinc, Incidence *newinc,
                         KOGlobals::WhatChanged, QWidget *parent );
   bool deleteIncidence( Incidence *incidence, QWidget *parent );

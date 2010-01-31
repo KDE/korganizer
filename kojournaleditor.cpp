@@ -151,8 +151,7 @@ bool KOJournalEditor::processInput()
 
     writeJournal( mJournal );
 
-    if ( !mChanger->addIncidence( mJournal, this ) ) {
-      KODialogManager::errorSaveIncidence( this, mJournal );
+    if ( !mChanger->addIncidence( mJournal, mResource, mSubResource, this ) ) {
       delete mJournal;
       mJournal = 0;
       return false;

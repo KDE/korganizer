@@ -43,10 +43,6 @@ class KOAgendaItem;
 class TimeLabels;
 class KConfig;
 
-namespace KCal {
-  class ResourceCalendar;
-}
-
 namespace KOrg {
   class IncidenceChangerBase;
 }
@@ -110,8 +106,6 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0, bool isSideBySide = false );
     virtual ~KOAgendaView();
 
-
-
     /** Returns maximum number of days supported by the koagendaview */
     virtual int maxDatesHint();
 
@@ -144,9 +138,6 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     bool selectedIsSingleCell();
 
     void setTypeAheadReceiver( QObject * );
-
-    /** Show only incidences from the given resource. */
-    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString::null );
 
     KOAgenda* agenda() const { return mAgenda; }
     QSplitter* splitter() const { return mSplitterAgenda; }
@@ -284,9 +275,6 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     bool mAllowAgendaUpdate;
 
     Incidence *mUpdateItem;
-
-    KCal::ResourceCalendar *mResource;
-    QString mSubResource;
 
     bool mIsSideBySide;
     bool mPendingChanges;

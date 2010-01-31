@@ -463,7 +463,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              SLOT (deleteTodo()), 0, ePopupDelete );
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New &To-do..."), this,
-                             SLOT (newTodo()));
+                             SLOT (newTodo()) );
   mItemPopupMenu->insertItem(i18n("New Su&b-to-do..."), this,
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertItem( i18n("&Make this To-do Independent"), this,
@@ -484,7 +484,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 
   mPopupMenu = new QPopupMenu(this);
   mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
-                         SLOT (newTodo()));
+                         SLOT(newTodo()) );
   mPopupMenu->insertItem(i18n("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));
 
@@ -832,7 +832,8 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 void KOTodoView::newTodo()
 {
   kdDebug() << k_funcinfo << endl;
-  emit newTodoSignal( QDate::currentDate().addDays(7) );
+  emit newTodoSignal( 0/*ResourceCalendar*/, QString()/*subResource*/,
+                      QDate::currentDate().addDays(7) );
 }
 
 void KOTodoView::newSubTodo()

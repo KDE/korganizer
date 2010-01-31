@@ -221,20 +221,22 @@ void KOViewManager::connectView(KOrg::BaseView *view)
           mMainView, SLOT(dissociateFutureOccurrence( Incidence *, const QDate & )));
 
   // signals to create new incidences
-  connect( view, SIGNAL( newEventSignal() ),
-           mMainView, SLOT( newEvent() ) );
-  connect( view, SIGNAL( newEventSignal( const QDateTime & ) ),
-           mMainView, SLOT( newEvent( const QDateTime & ) ) );
-  connect( view, SIGNAL( newEventSignal( const QDateTime &, const QDateTime & ) ),
-           mMainView, SLOT( newEvent( const QDateTime &, const QDateTime & ) ) );
-  connect( view, SIGNAL( newEventSignal( const QDate & ) ),
-           mMainView, SLOT( newEvent( const QDate & ) ) );
-  connect( view, SIGNAL( newTodoSignal( const QDate & ) ),
-           mMainView, SLOT( newTodo( const QDate & ) ) );
-  connect( view, SIGNAL( newSubTodoSignal( Todo * ) ),
-           mMainView, SLOT( newSubTodo( Todo *) ) );
-  connect( view, SIGNAL( newJournalSignal( const QDate & ) ),
-           mMainView, SLOT( newJournal( const QDate & ) ) );
+  connect( view, SIGNAL(newEventSignal(ResourceCalendar *,const QString &)),
+           mMainView, SLOT(newEvent(ResourceCalendar *,const QString &)) );
+  connect( view, SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDate &)),
+           mMainView, SLOT(newEvent(ResourceCalendar *,const QString &,const QDate &)) );
+  connect( view, SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDateTime &)),
+           mMainView, SLOT(newEvent(ResourceCalendar *,const QString &,const QDateTime &)) );
+  connect( view, SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDateTime &,const QDateTime &)),
+           mMainView, SLOT(newEvent(ResourceCalendar *,const QString &,const QDateTime &,const QDateTime &)) );
+
+  connect( view, SIGNAL(newTodoSignal(ResourceCalendar *,const QString &,const QDate &)),
+           mMainView, SLOT(newTodo(ResourceCalendar *,const QString &,const QDate &)) );
+  connect( view, SIGNAL(newSubTodoSignal(Todo *)),
+           mMainView, SLOT(newSubTodo(Todo *)) );
+
+  connect( view, SIGNAL(newJournalSignal(ResourceCalendar *,const QString &,const QDate &)),
+           mMainView, SLOT(newJournal(ResourceCalendar *,const QString &,const QDate &)) );
 
   // reload settings
   connect(mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()));

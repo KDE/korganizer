@@ -45,6 +45,7 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/incidence.h>
 #include <libkcal/icalformat.h>
+#include <libkcal/resourcecalendar.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -58,7 +59,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false )
+    mAttendeeEditor( 0 ), mResource( 0 ), mIsCounter( false ), mIsCreateTask( false )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -356,7 +357,7 @@ void KOIncidenceEditor::addAttachments( const QStringList &attachments,
                                         const QStringList &mimeTypes,
                                         bool inlineAttachments )
 {
-    emit signalAddAttachments( attachments, mimeTypes, inlineAttachments );
+  emit signalAddAttachments( attachments, mimeTypes, inlineAttachments );
 }
 
 void KOIncidenceEditor::addAttendees( const QStringList &attendees )
@@ -368,6 +369,22 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
     mAttendeeEditor->insertAttendee( new Attendee( name, email ) );
   }
 }
+
+void KOIncidenceEditor::setResource( ResourceCalendar *res, const QString &subRes )
+{
+  QString label;
+  if ( res ) {
+    if ( !res->subresources().isEmpty() && !subRes.isEmpty() ) {
+      label = res->labelForSubresource( subRes );
+    } else {
+      label = res->resourceName();
+    }
+  }
+
+  mResource = res;
+  mSubResource = subRes;
+}
+
 
 void KOIncidenceEditor::selectCreateTask( bool enable )
 {

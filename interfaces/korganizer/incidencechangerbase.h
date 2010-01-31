@@ -27,8 +27,9 @@
 
 class QWidget;
 namespace KCal {
-class Calendar;
-class Incidence;
+  class Calendar;
+  class Incidence;
+  class ResourceCalendar;
 }
 using namespace KCal;
 
@@ -51,6 +52,10 @@ public:
   virtual bool endChange( Incidence *incidence ) = 0;
 
   virtual bool addIncidence( Incidence *incidence, QWidget *parent ) = 0;
+  virtual bool addIncidence( Incidence *incidence,
+                             ResourceCalendar *res, const QString &subRes,
+                             QWidget *parent ) = 0;
+
   virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc,
                                 KOGlobals::WhatChanged, QWidget *parent ) = 0;
   virtual bool deleteIncidence( Incidence *incidence, QWidget *parent ) = 0;

@@ -43,9 +43,10 @@ class KOEditorDetails;
 class KOAttendeeEditor;
 
 namespace KCal {
-class Calendar;
-class CalendarLocal;
-class Incidence;
+  class Calendar;
+  class CalendarLocal;
+  class Incidence;
+  class ResourceCalendar;
 }
 using namespace KCal;
 using namespace KOrg;
@@ -55,7 +56,7 @@ using namespace KOrg;
 */
 class KOIncidenceEditor : public KDialogBase
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     /**
       Construct new IncidenceEditor.
@@ -69,6 +70,7 @@ class KOIncidenceEditor : public KDialogBase
 
     virtual void reload() = 0;
 
+    virtual void setResource( ResourceCalendar *res, const QString &subRes );
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
 
@@ -89,7 +91,6 @@ class KOIncidenceEditor : public KDialogBase
       Adds attendees to the editor
     */
     void addAttendees( const QStringList &attendees );
-
 
   signals:
     void deleteAttendee( Incidence * );
@@ -155,6 +156,8 @@ class KOIncidenceEditor : public KDialogBase
     QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;
     QPtrList<QWidget> mEmbeddedURLPages;
     QPtrList<QWidget> mAttachedDesignerFields;
+    ResourceCalendar *mResource;
+    QString mSubResource;
     bool mIsCounter;
     bool mIsCreateTask;
 };

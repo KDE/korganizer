@@ -782,7 +782,7 @@ void MonthViewCell::defaultAction( QListBoxItem *item )
   select();
 
   if ( !item ) {
-    emit newEventSignal( date() );
+    emit newEventSignal( 0/*ResourceCalendar*/, QString()/*subResource*/, date() );
   } else {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
@@ -856,10 +856,10 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
       mCells.insert( row * mDaysPerWeek + col, cell );
       dayLayout->addWidget( cell, row + 2, col );
 
-      connect( cell, SIGNAL( defaultAction( Incidence * ) ),
-               SLOT( defaultAction( Incidence * ) ) );
-      connect( cell, SIGNAL( newEventSignal( const QDate & ) ),
-               SIGNAL( newEventSignal( const QDate & ) ) );
+      connect( cell, SIGNAL(defaultAction(Incidence *)),
+               SLOT(defaultAction(Incidence *)) );
+      connect( cell, SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDate &)),
+               SIGNAL(newEventSignal(ResourceCalendar *,const QString &,const QDate &)) );
     }
     dayLayout->setRowStretch( row + 2, 1 );
   }

@@ -319,6 +319,56 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
   return true;
 }
 
+bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res, const QString &subRes, QWidget *parent )
+{
+  if ( !res ) {
+    return addIncidence( incidence, parent );
+  }
+
+  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
+  if( stdcal && !stdcal->hasCalendarResources() ) {
+    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ));
+    return false;
+  }
+kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
+  // FIXME: This is a nasty hack, since we need to set a parent for the
+  //        resource selection dialog. However, we don't have any UI methods
+  //        in the calendar, only in the CalendarResources::DestinationPolicy
+  //        So we need to type-cast it and extract it from the CalendarResources
+  QWidget *tmpparent = 0;
+  if ( stdcal ) {
+    tmpparent = stdcal->dialogParentWidget();
+    stdcal->setDialogParentWidget( parent );
+  }
+  bool success = stdcal->addIncidence( incidence, res );
+
+  if ( !success ) {
+    QString resName = res->resourceName();
+    if ( !subRes.isEmpty() ) {
+      resName = res->labelForSubresource( subRes );
+    }
+    KMessageBox::sorry(
+      parent,
+      i18n( "Unable to save %1 \"%2\" to calendar %3." ).
+      arg( i18n( incidence->type() ) ).
+      arg( incidence->summary() ).
+      arg( resName ) );
+    return false;
+  }
+
+  if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
+    if ( !KOGroupware::instance()->sendICalMessage(
+           parent,
+           KCal::Scheduler::Request,
+           incidence, KOGlobals::INCIDENCEADDED, false ) ) {
+      kdError() << "sendIcalMessage failed." << endl;
+    }
+  }
+
+  emit incidenceAdded( incidence );
+  return true;
+}
+
 bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
   CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );

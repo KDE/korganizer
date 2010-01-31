@@ -221,10 +221,9 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool isSideBySide ) :
+KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent,const char *name, bool isSideBySide ) :
   KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 ),
   mIsSideBySide( isSideBySide ),
   mPendingChanges( true )
 {
@@ -292,6 +291,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool 
   }
 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
+  mAllDayAgenda->setCalendar( calendar() );
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
   // Create agenda frame
@@ -313,6 +313,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool 
 
   // Create agenda
   mAgenda = new KOAgenda(1,96,KOPrefs::instance()->mHourSize,agendaFrame);
+  mAgenda->setCalendar( calendar() );
   agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
   agendaLayout->setColStretch(1,1);
 
@@ -363,8 +364,10 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool 
   connect( mAgenda, SIGNAL(upperYChanged(int)),
                     SLOT(updateEventIndicatorBottom(int)));
 
-  connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
-  connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
+  if ( !readOnly() ) {
+    connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
+    connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
+  }
 
   if ( cal ) {
     cal->registerObserver( this );
@@ -383,16 +386,16 @@ KOAgendaView::~KOAgendaView()
 void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
                                   KOAgenda *otherAgenda )
 {
-  connect( agenda, SIGNAL( showIncidencePopupSignal( Calendar *, Incidence *, const QDate & ) ),
-           popup, SLOT( showIncidencePopup( Calendar *, Incidence *, const QDate & ) ) );
+  connect( agenda, SIGNAL(showIncidencePopupSignal(Calendar *,Incidence *,const QDate &)),
+           popup, SLOT(showIncidencePopup(Calendar *,Incidence *,const QDate &)) );
 
-  connect( agenda, SIGNAL( showNewEventPopupSignal() ),
-           SLOT( showNewEventPopup() ) );
+  connect( agenda, SIGNAL(showNewEventPopupSignal()),
+           SLOT(showNewEventPopup()) );
 
-  agenda->setCalendar( calendar() );
 
   // Create/Show/Edit/Delete Event
-  connect( agenda, SIGNAL( newEventSignal() ), SIGNAL( newEventSignal() ) );
+  connect( agenda, SIGNAL(newEventSignal(ResourceCalendar *,const QString &)),
+           SIGNAL(newEventSignal(ResourceCalendar *,const QString &)) );
 
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
@@ -1201,7 +1204,7 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
-        //  Add an event. No need to recreate the whole view!
+    // Add an event. No need to recreate the whole view!
         // recreating everything even causes troubles: dropping to the day matrix
         // recreates the agenda items, but the evaluation is still in an agendaItems' code,
         // which was deleted in the mean time. Thus KOrg crashes...
@@ -1227,7 +1230,7 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     }
     default:
       updateView();
-  }
+    }
 }
 
 void KOAgendaView::fillAgenda( const QDate & )
@@ -1586,23 +1589,17 @@ void KOAgendaView::clearTimeSpanSelection()
   deleteSelectedDateTime();
 }
 
-void KOAgendaView::setResource(KCal::ResourceCalendar * res, const QString & subResource)
-{
-  mResource = res;
-  mSubResource = subResource;
-}
-
 bool KOAgendaView::filterByResource(Incidence * incidence)
 {
-  if ( !mResource )
+  if ( !resourceCalendar() )
     return true;
   CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
   if ( !calRes )
     return true;
-  if ( calRes->resource( incidence ) != mResource )
+  if ( calRes->resource( incidence ) != resourceCalendar() )
     return false;
-  if ( !mSubResource.isEmpty() ) {
-    if ( mResource->subresourceIdentifier( incidence ) != mSubResource )
+  if ( !subResourceCalendar().isEmpty() ) {
+    if ( resourceCalendar()->subresourceIdentifier( incidence ) != subResourceCalendar() )
       return false;
   }
   return true;

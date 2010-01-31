@@ -71,20 +71,24 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
     entry->setDate( dt );
     entry->setIncidenceChanger( mChanger );
     entry->show();
-    connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
-    connect( this, SIGNAL(setIncidenceChangerSignal( IncidenceChangerBase * ) ),
-             entry, SLOT(setIncidenceChanger( IncidenceChangerBase * ) ) );
-    connect( this, SIGNAL( journalEdited( Journal* ) ),
-             entry, SLOT( journalEdited( Journal* ) ) );
-    connect( this, SIGNAL( journalDeleted( Journal* ) ),
-             entry, SLOT( journalDeleted( Journal* ) ) );
+    connect( this, SIGNAL(flushEntries()),
+             entry, SIGNAL(flushEntries()) );
 
-    connect( entry, SIGNAL( editIncidence( Incidence* ) ),
-             this, SIGNAL( editIncidenceSignal( Incidence* ) ) );
-    connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
-             this, SIGNAL( deleteIncidenceSignal( Incidence* ) ) );
-    connect( entry, SIGNAL( newJournal( const QDate & ) ),
-             this, SIGNAL( newJournalSignal( const QDate & ) ) );
+    connect( this, SIGNAL(setIncidenceChangerSignal(IncidenceChangerBase *)),
+             entry, SLOT(setIncidenceChanger( IncidenceChangerBase *)) );
+
+    connect( this, SIGNAL(journalEdited(Journal *)),
+             entry, SLOT(journalEdited(Journal *)) );
+    connect( this, SIGNAL(journalDeleted(Journal *)),
+             entry, SLOT(journalDeleted(Journal *)) );
+
+    connect( entry, SIGNAL(editIncidence(Incidence *)),
+             this, SIGNAL(editIncidenceSignal(Incidence *)) );
+    connect( entry, SIGNAL(deleteIncidence(Incidence *)),
+             this, SIGNAL(deleteIncidenceSignal(Incidence *)) );
+
+    connect( entry, SIGNAL(newJournal(ResourceCalendar *,const QString &,const QDate &)),
+             this, SIGNAL(newJournalSignal(ResourceCalendar *,const QString &,const QDate &)) );
     mEntries.insert( dt, entry );
   }
 
@@ -202,7 +206,8 @@ void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer )
 
 void KOJournalView::newJournal()
 {
-  emit newJournalSignal( QDate::currentDate() );
+  emit newJournalSignal( 0/*ResourceCalendar*/, QString()/*subResource*/,
+                         QDate::currentDate() );
 }
 
 #include "kojournalview.moc"
