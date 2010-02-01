@@ -101,9 +101,8 @@ TimelineSubItem::TimelineSubItem( Akonadi::Calendar *calendar,
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
-  //FIXME: incidence.url().url() doesn't return the collection name
   setTooltipText( IncidenceFormatter::toolTipStr(
-                  incidence.url().url(), Akonadi::incidence( incidence ).get(), originalStart().date(),
+                  Akonadi::displayName(incidence.parentCollection()), Akonadi::incidence( incidence ).get(), originalStart().date(),
                   true, KOPrefs::instance()->timeSpec() ) );
   if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
     setMoveable( true );
