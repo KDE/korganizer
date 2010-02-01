@@ -685,7 +685,7 @@ void CalendarView::updateConfig( const QCString& receiver)
   const bool showMerged = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
   const bool showSideBySide = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
   KOrg::BaseView *view = mViewManager->currentView();
-
+  mViewManager->showAgendaView();
   if ( view == mViewManager->agendaView() && showSideBySide )
     view = mViewManager->multiAgendaView();
   else if ( view == mViewManager->multiAgendaView() && showMerged )
