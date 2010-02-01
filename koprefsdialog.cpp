@@ -37,6 +37,9 @@
 #include <KHolidays/Holidays>
 using namespace KHolidays;
 
+#include <mailtransport/transportmanagementwidget.h>
+using MailTransport::TransportManagementWidget;
+
 #include <KCalendarSystem>
 #include <KColorButton>
 #include <KComboBox>
@@ -488,19 +491,19 @@ class KOPrefsDialogViews : public KPrefsModule
       // GroupBox: Views->General->Display Options
       QVBoxLayout *gdisplayLayout = new QVBoxLayout;
       QGroupBox *gdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
-                                                                                           
-      QBoxLayout *nextDaysLayout = new QHBoxLayout;                                        
-      gdisplayLayout->addLayout( nextDaysLayout );                                         
-                                                                                           
-      KPrefsWidInt *nextDays =                                                             
-        addWidInt( KOPrefs::instance()->nextXDaysItem() );                                 
-      nextDays->spinBox()->setSuffix(                                                      
-        i18nc( "@label suffix in the N days spin box", " days" ) );                        
-                                                                                           
-      nextDaysLayout->addWidget( nextDays->label() );                                      
-      nextDaysLayout->addWidget( nextDays->spinBox() );                                    
-      nextDaysLayout->addStretch( 1 );                                                     
-                                                                                           
+
+      QBoxLayout *nextDaysLayout = new QHBoxLayout;
+      gdisplayLayout->addLayout( nextDaysLayout );
+
+      KPrefsWidInt *nextDays =
+        addWidInt( KOPrefs::instance()->nextXDaysItem() );
+      nextDays->spinBox()->setSuffix(
+        i18nc( "@label suffix in the N days spin box", " days" ) );
+
+      nextDaysLayout->addWidget( nextDays->label() );
+      nextDaysLayout->addWidget( nextDays->spinBox() );
+      nextDaysLayout->addStretch( 1 );
+
       gdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableToolTipsItem() )->checkBox() );
       gdisplayLayout->addWidget(
@@ -915,24 +918,10 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
     i18nc( "@label", "Mail transport:" ), topFrame );
   topLayout->addWidget( aTransportLabel, 2, 0, 1, 2 );
 
-  QListWidgetItem *defaultItem = 0;
-  QListWidgetItem *selectedItem = 0;
-  const QString defaultTransportName( MailTransport::TransportManager::self()->defaultTransportName() );
-  mTransportList = new QListWidget( topFrame );
-  topLayout->addWidget( mTransportList, 3, 0, 1, 2 );
-  foreach( MailTransport::Transport *transport, MailTransport::TransportManager::self()->transports() ) {
-    const QString n( transport->name() );
-    QListWidgetItem *item = new QListWidgetItem( transport->name(), mTransportList );
-    mTransportList->addItem( item );
-    if( n == KOPrefs::instance()->mMailTransport )
-      selectedItem = item;
-    else if( n == defaultTransportName )
-      defaultItem = item;
-  }
-  if( selectedItem )
-    mTransportList->setCurrentItem( selectedItem );
-  else if( defaultItem )
-    mTransportList->setCurrentItem( defaultItem );
+  TransportManagementWidget *tmw = new TransportManagementWidget( topFrame );
+  tmw->layout()->setContentsMargins( 0, 0, 0, 0 );
+  topLayout->addWidget(tmw, 3, 0, 1, 2);
+
 
   QLabel *aMailsLabel = new QLabel(
     i18nc( "@label", "Additional email addresses:" ), topFrame );
@@ -997,12 +986,6 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
   for ( QStringList::const_iterator it = begin; it != end; ++it ) {
     new QListWidgetItem(( *it ), mAMails);
   }
-
-  for( int i = 0; i < mTransportList->count(); ++i ) {
-    QListWidgetItem *item = mTransportList->item( i );
-    if( item->text() == KOPrefs::instance()->mMailTransport )
-      mTransportList->setCurrentItem( item );
-  }
 }
 
 void KOPrefsDialogGroupScheduling::usrWriteConfig()
@@ -1012,8 +995,6 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
   for ( int i = 0; i<mAMails->count(); ++i ) {
     KOPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
   }
-  if( QListWidgetItem *item = mTransportList->currentItem() )
-    KOPrefs::instance()->mMailTransport = item->text();
 }
 
 void KOPrefsDialogGroupScheduling::addItem()

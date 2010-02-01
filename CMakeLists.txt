@@ -245,6 +245,7 @@ target_link_libraries(korganizerprivate
   ${KDEPIMLIBS_KHOLIDAYS_LIBS}
   ${KDEPIMLIBS_AKONADI_LIBS}
   ${KDEPIMLIBS_AKONADI_KCAL_LIBS}
+  ${KDEPIMLIBS_MAILTRANSPORT_LIBRARY}
   korganizer_eventviewer
   kdepim
   korganizer_interfaces

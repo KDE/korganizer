@@ -79,6 +79,8 @@
 
 #include <libkdepim/kpimprefs.h>
 
+#include <mailtransport/transportmanager.h>
+
 #include <KDialog>
 #include <KFileDialog>
 #include <KNotification>
@@ -1680,7 +1682,7 @@ void CalendarView::schedule_forward( const Item &item )
     if ( mailer.mailTo(
            incidence.get(),
            KOCore::self()->identityManager()->identityForAddress( from ),
-           from, bccMe, recipients, messageText, KOPrefs::instance()->mMailTransport ) ) {
+           from, bccMe, recipients, messageText, MailTransport::TransportManager::self()->defaultTransportName() ) ) {
       KMessageBox::information(
         this,
         i18n( "The item information was successfully sent." ),

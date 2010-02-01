@@ -162,7 +162,6 @@ void KOPrefs::setTimeSpec( const KDateTime::Spec &spec )
 void KOPrefs::usrReadConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
-  mMailTransport = generalConfig.readEntry( "MailTransport", QString() );
 
   // Note that the [Category Colors] group was removed after 3.2 due to
   // an algorithm change. That's why we now use [Category Colors2]
@@ -210,8 +209,6 @@ void KOPrefs::usrReadConfig()
 void KOPrefs::usrWriteConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
-  if( ! mMailTransport.isNull() )
-    generalConfig.writeEntry( "MailTransport", mMailTransport );
 
   KConfigGroup colorsConfig( config(), "Category Colors2" );
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();

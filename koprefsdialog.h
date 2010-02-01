@@ -114,7 +114,6 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
     void updateInput();
 
   private:
-    QListWidget *mTransportList;
     QListWidget *mAMails;
     KLineEdit *aEmailsEdit;
 };

@@ -89,7 +89,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     void setTimeSpec( const KDateTime::Spec &spec );
     KDateTime::Spec timeSpec();
 
-    QString mMailTransport;    
     QString mHtmlExportFile;
 
     // Groupware passwords
