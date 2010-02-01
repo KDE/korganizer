@@ -103,7 +103,7 @@ bool KOEventViewer::appendIncidence( const Item &item, const QDate &date )
   if ( !Akonadi::hasIncidence( item ) )
     return false;
   addText( IncidenceFormatter::extensiveDisplayStr(
-           item.url().url(), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
+           Akonadi::displayName(item.parentCollection()), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
   return true;
 }
 
