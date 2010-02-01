@@ -685,7 +685,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
       return QVariant( IncidenceFormatter::toolTipStr(
-                       node->mTodo.url().url(), todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
+                       Akonadi::displayName(node->mTodo.parentCollection()), todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
   } else {
       return QVariant();
     }
