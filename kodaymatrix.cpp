@@ -617,7 +617,7 @@ void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 {
   e->acceptProposedAction();
   const QMimeData *md = e->mimeData();
-  if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
+  if ( !Akonadi::canDecode( md )) {
     e->ignore();
     return;
   }
@@ -633,7 +633,7 @@ void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 void KODayMatrix::dragMoveEvent( QDragMoveEvent *e )
 {
   const QMimeData *md = e->mimeData();
-  if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
+  if ( !Akonadi::canDecode( md ) ) {
     e->ignore();
     return;
   }
