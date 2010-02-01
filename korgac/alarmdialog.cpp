@@ -603,7 +603,7 @@ void AlarmDialog::eventNotification()
         if ( alarm->mailAddresses().isEmpty() ) {
           to = from;
         } else {
-          QList<Person> addresses = alarm->mailAddresses();
+          const QList<Person> addresses = alarm->mailAddresses();
           QStringList add;
           for ( QList<Person>::ConstIterator it = addresses.constBegin();
                 it != addresses.constEnd(); ++it ) {
