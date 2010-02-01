@@ -33,7 +33,7 @@
 #include "kocorehelper.h"
 #include "calprinter.h"
 
-#include <kcal/calendar.h>
+#include <akonadi/kcal/calendar.h>
 #include <kcal/incidenceformatter.h>
 #include <kcal/journal.h>
 

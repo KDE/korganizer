@@ -30,7 +30,7 @@
 #include <kio/netaccess.h>
 #include <kcal/icalformat.h>
 #include <kcal/filestorage.h>
-#include <kcal/calendar.h>
+#include <akonadi/kcal/calendar.h>
 #include <kcal/calendarlocal.h>
 
 #include <akonadi/kcal/calendar.h>

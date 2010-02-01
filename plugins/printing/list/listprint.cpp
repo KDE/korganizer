@@ -30,7 +30,7 @@
 
 #include <kcal/event.h>
 #include <kcal/todo.h>
-#include <kcal/calendar.h>
+#include <akonadi/kcal/calendar.h>
 
 #include <kconfig.h>
 #include <kdebug.h>
