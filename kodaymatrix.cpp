@@ -36,6 +36,8 @@
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
+#include <akonadi/itemfetchscope.h>
+#include <akonadi/itemfetchjob.h>
 
 #include <KCalendarSystem>
 #include <KIcon>
@@ -657,80 +659,65 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     e->ignore();
     return;
   }
-#ifdef AKONADI_PORT_DISABLED
-  DndFactory factory( mCalendar );
-  Event *event = factory.createDropEvent( e );
-  Todo *todo = factory.createDropTodo( e );
-  if ( !event && !todo ) {
+  QList<QUrl> urls = ( e->mimeData()->urls() );
+  kDebug()<<" urls :"<<urls;
+  if ( urls.isEmpty() ) {
     e->ignore();
     return;
   }
+  Akonadi::Item items;
+  //For the moment support 1 url
+  if ( urls.count() >= 1 ) {
+    KUrl res = urls.at( 0 );
 
-  Todo *existingTodo = 0;
-  Event *existingEvent = 0;
-
-  // Find the incidence in the calendar, then we don't need the drag object any more
-  if ( event ) {
-    existingEvent = mCalendar->event( event->uid() );
-  }
-  if ( todo ) {
-    existingTodo = mCalendar->todo( todo->uid() );
-  }
-
-  int action = DRAG_CANCEL;
-
-  Qt::KeyboardModifiers keyboardModifiers = e->keyboardModifiers();
-
-  if ( keyboardModifiers & Qt::ControlModifier ) {
-    action = DRAG_COPY;
-  } else if ( keyboardModifiers & Qt::ShiftModifier ) {
-    action = DRAG_MOVE;
-  } else {
-    QAction *copy = 0, *move = 0, *cancel = 0;
-    KMenu *menu = new KMenu( this );
-    if ( existingEvent || existingTodo ) {
-      move = menu->addAction( KOGlobals::self()->smallIcon( "edit-paste" ), i18n( "&Move" ) );
-      if ( existingEvent ) {
-        copy = menu->addAction( KOGlobals::self()->smallIcon( "edit-copy" ), i18n( "&Copy" ) );
-      }
-    } else {
-      move = menu->addAction( KOGlobals::self()->smallIcon( "list-add" ), i18n( "&Add" ) );
+    Akonadi::ItemFetchJob *job = new Akonadi::ItemFetchJob( Akonadi::Item::fromUrl( res ) );
+    job->fetchScope().setAncestorRetrieval( ItemFetchScope::Parent );
+    job->fetchScope().fetchFullPayload();
+    Akonadi::Item::List items;
+    if ( job->exec() ) {
+      items = job->items();
     }
-    menu->addSeparator();
-    cancel = menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
-    QAction *a = menu->exec( QCursor::pos() );
-    if ( a == copy ) {
+    bool exist = items.at( 0 ).isValid();
+    int action = DRAG_CANCEL;
+
+    Qt::KeyboardModifiers keyboardModifiers = e->keyboardModifiers();
+
+    if ( keyboardModifiers & Qt::ControlModifier ) {
       action = DRAG_COPY;
-    } else if ( a == move ) {
+    } else if ( keyboardModifiers & Qt::ShiftModifier ) {
       action = DRAG_MOVE;
-    }
-  }
-
-  if ( action == DRAG_COPY  || action == DRAG_MOVE ) {
-    e->accept();
-    int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
-
-    if ( action == DRAG_COPY ) {
-      if ( event ) {
-        emit incidenceDropped( event, mDays[idx] );
+    } else {
+      QAction *copy = 0, *move = 0, *cancel = 0;
+      KMenu *menu = new KMenu( this );
+      if ( exist ) {
+        move = menu->addAction( KOGlobals::self()->smallIcon( "edit-paste" ), i18n( "&Move" ) );
+        if ( /*existingEvent*/1 ) {
+          copy = menu->addAction( KOGlobals::self()->smallIcon( "edit-copy" ), i18n( "&Copy" ) );
+        }
+      } else {
+        move = menu->addAction( KOGlobals::self()->smallIcon( "list-add" ), i18n( "&Add" ) );
       }
-      if ( todo ) {
-        emit incidenceDropped( todo, mDays[idx] );
-      }
-    } else if ( action == DRAG_MOVE ) {
-      if ( event ) {
-        emit incidenceDroppedMove( event, mDays[idx] );
-      }
-      if ( todo ) {
-        emit incidenceDroppedMove( todo, mDays[idx] );
+      menu->addSeparator();
+      cancel = menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
+      QAction *a = menu->exec( QCursor::pos() );
+      if ( a == copy ) {
+        action = DRAG_COPY;
+      } else if ( a == move ) {
+        action = DRAG_MOVE;
       }
     }
+
+    if ( action == DRAG_COPY  || action == DRAG_MOVE ) {
+      e->accept();
+      int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
+
+      if ( action == DRAG_COPY ) {
+          emit incidenceDropped( items.at( 0 ), mDays[idx] );
+      } else if ( action == DRAG_MOVE ) {
+          emit incidenceDroppedMove( items.at( 0 ), mDays[idx] );
+      }
+    }
   }
-  delete event;
-  delete todo;
-#else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
-#endif // AKONADI_PORT_DISABLED
 }
 #endif
 
