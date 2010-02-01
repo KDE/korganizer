@@ -480,23 +480,6 @@
       <default>false</default>
     </entry>
 
-<!--
-    <entry type="Enum" key="Mail Client">
-      <label>Mail Client</label>
-      <choices>
-        <choice name="MailClientKMail">
-          <label>KMail</label>
-          <whatsthis>Select this option to use KMail as the mail transport. The mail transport is used for groupware functionality.</whatsthis>
-        </choice>
-        <choice name="MailClientSendmail">
-          <label>Sendmail</label>
-          <whatsthis>Select this option to use sendmail as the mail transport. The mail transport is used for groupware functionality. Please check if you have sendmail installed before selecting this option.</whatsthis>
-        </choice>
-      </choices>
-      <default>MailClientKMail</default>
-    </entry>
--->
-
     <entry type="StringList" name="AdditionalMails">
     </entry>
   </group>
