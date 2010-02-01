@@ -33,7 +33,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   setCaption( i18n( "Event Viewer" ) );
   setButtons( Close | User1 | User2 );
   setModal( false );
-  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ) ) );
+  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( "document-edit" ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
   mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
