@@ -1675,9 +1675,9 @@ void CalendarView::schedule_forward( const Item &item )
     }
 
     ICalFormat format;
-    QString from = KOPrefs::instance()->email();
-    bool bccMe = KOPrefs::instance()->mBcc;
-    QString messageText = format.createScheduleMessage( incidence.get(), iTIPRequest );
+    const QString from = KOPrefs::instance()->email();
+    const bool bccMe = KOPrefs::instance()->mBcc;
+    const QString messageText = format.createScheduleMessage( incidence.get(), iTIPRequest );
     Akonadi::MailClient mailer;
     if ( mailer.mailTo(
            incidence.get(),
