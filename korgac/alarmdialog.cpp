@@ -42,6 +42,8 @@
 #include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/utils.h>
 
+#include <mailtransport/transportmanager.h>
+
 #include <KComboBox>
 #include <KDebug>
 #include <KHBox>
@@ -379,7 +381,7 @@ void AlarmDialog::dismissAll()
 void AlarmDialog::dismiss( ReminderList selections )
 {
   for ( ReminderList::Iterator it = selections.begin(); it != selections.end(); ++it ) {
-    kDebug() << "removing " << Akonadi::incidence(( *it )->mIncidence)->summary(); 
+    kDebug() << "removing " << Akonadi::incidence(( *it )->mIncidence)->summary();
     if ( mIncidenceTree->itemBelow( *it ) ) {
       mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
     } else if ( mIncidenceTree->itemAbove( *it ) ) {
@@ -629,9 +631,8 @@ void AlarmDialog::eventNotification()
           body = alarm->mailText();
         }
         //TODO: support attachments
-        //TODO: transport
         Akonadi::MailClient mailer;
-        mailer.send( id, from, to, QString(), subject, body, true );
+        mailer.send( id, from, to, QString(), subject, body, true,false,QString(),MailTransport::TransportManager::self()->defaultTransportName());
       }
     }
   }
