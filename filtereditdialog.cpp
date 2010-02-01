@@ -86,6 +86,7 @@ FilterEdit::FilterEdit( QList<CalFilter*> *filters, QWidget *parent )
   : QWidget( parent ), mCurrent( 0 ), mCategorySelectDialog( 0 )
 {
   setupUi( this );
+  mDetailsFrame->setEnabled( false );
   mFilters = filters;
   mNewButton->setWhatsThis(
     i18nc( "@info:whatsthis",
@@ -117,8 +118,11 @@ FilterEdit::~FilterEdit()
 void FilterEdit::updateFilterList()
 {
   mRulesList->clear();
-
+  qDebug()<<"  FilterEdit::updateFilterList() :"<<mFilters;
+  if ( mFilters )
+    qDebug()<<" mFilters->empty() :"<<mFilters->empty();
   if ( !mFilters || mFilters->empty() ) {
+    mDetailsFrame->setEnabled( false );
     emit( dataConsistent( false ) );
   } else {
     QList<CalFilter*>::iterator i;
@@ -183,6 +187,7 @@ void FilterEdit::saveChanges()
 void FilterEdit::filterSelected()
 {
   if ( mRulesList->currentRow() < mFilters->count() ) {
+    mDetailsFrame->setEnabled( true );
     filterSelected( mFilters->at( mRulesList->currentRow() ) );
   }
 }
@@ -219,6 +224,7 @@ void FilterEdit::filterSelected( CalFilter *filter )
 
 void FilterEdit::bNewPressed()
 {
+  mDetailsFrame->setEnabled( true );
   saveChanges();
   CalFilter *newFilter = new CalFilter( i18nc( "@label default filter name",
                                                "New Filter %1", mFilters->count() ) );
