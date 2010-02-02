@@ -1,7 +1,5 @@
 project(korganizer)
 
-find_package( Akonadi REQUIRED )
-
 #
 # The following macros can be defined to alter KOrganizer behavior.
 # (if desired, use add_definitions() to define them)
@@ -129,7 +127,8 @@ qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kor
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 
-target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim kdepimdbusinterfaces kmime akonadi-kcal_next akonadi-kmime mailtransport)
+target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim kdepimdbusinterfaces akonadi-kcal_next ${KDEPIMLIBS_AKONADI_KMIME_LIBS} ${KDEPIMLIBS_KMIME_LIBS} ${KDEPIMLIBS_MAILTRANSPORT_LIBS})
+
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
