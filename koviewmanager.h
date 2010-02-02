@@ -104,6 +104,8 @@ class KOViewManager : public QObject
     KOTodoView *todoView() const { return mTodoView; }
     KOrg::MonthView *monthView() const { return mMonthView; }
 
+    void updateMultiCalendarDisplay();
+
   signals:
     void configChanged();
 

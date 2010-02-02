@@ -635,3 +635,14 @@ void KOViewManager::setUpdateNeeded()
     mAgendaSideBySideView->setUpdateNeeded();
   }
 }
+
+void KOViewManager::updateMultiCalendarDisplay()
+{
+  if ( mCurrentView == mAgendaView            ||
+       mCurrentView == mAgendaSideBySideView  ||
+       ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() ) ) {
+    showAgendaView();
+  } else {
+    updateView();
+  }
+}
