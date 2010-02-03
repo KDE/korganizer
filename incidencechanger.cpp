@@ -321,16 +321,14 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
 
 bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res, const QString &subRes, QWidget *parent )
 {
-  if ( !res ) {
-    return addIncidence( incidence, parent );
-  }
-
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
+  CalendarResources *stdcal = dynamic_cast<CalendarResources *>( mCalendar );
   if( stdcal && !stdcal->hasCalendarResources() ) {
-    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ));
+    KMessageBox::sorry(
+      parent,
+      i18n( "No resources found. We can not add event." ) );
     return false;
   }
-kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
+
   // FIXME: This is a nasty hack, since we need to set a parent for the
   //        resource selection dialog. However, we don't have any UI methods
   //        in the calendar, only in the CalendarResources::DestinationPolicy
@@ -340,19 +338,39 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
     tmpparent = stdcal->dialogParentWidget();
     stdcal->setDialogParentWidget( parent );
   }
-  bool success = stdcal->addIncidence( incidence, res, subRes );
+
+  // If a ResourceCalendar isn't provided, then try to compute one
+  // along with any subResource from the incidence.
+  ResourceCalendar *pRes = res;
+  QString pSubRes = subRes;
+  QString pResName = i18n( "the selected calendar", "selected" );
+  if ( !pRes ) {
+    if ( stdcal ) {
+      pRes = stdcal->resource( incidence );
+      if ( pRes ) {
+        pResName = pRes->resourceName();
+        if ( pRes->canHaveSubresources() ) {
+          pSubRes = pRes->subresourceIdentifier( incidence );
+          pResName = pRes->labelForSubresource( pSubRes );
+        }
+      }
+    }
+  }
+
+  bool success = false;
+  if ( stdcal && pRes ) {
+    success = stdcal->addIncidence( incidence, pRes, pSubRes );
+  } else {
+    success = mCalendar->addIncidence( incidence );
+  }
 
   if ( !success ) {
-    QString resName = res->resourceName();
-    if ( !subRes.isEmpty() ) {
-      resName = res->labelForSubresource( subRes );
-    }
     KMessageBox::sorry(
       parent,
       i18n( "Unable to save %1 \"%2\" to calendar %3." ).
       arg( i18n( incidence->type() ) ).
       arg( incidence->summary() ).
-      arg( resName ) );
+      arg( pResName ) );
     return false;
   }
 
@@ -361,7 +379,11 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
            parent,
            KCal::Scheduler::Request,
            incidence, KOGlobals::INCIDENCEADDED, false ) ) {
-      kdError() << "sendIcalMessage failed." << endl;
+      KMessageBox::sorry(
+        parent,
+        i18n( "Attempt to send the scheduling message failed. "
+              "Please check your Group Scheduling settings. "
+              "Contact your system administrator for more help.") );
     }
   }
 
@@ -369,48 +391,6 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
   return true;
 }
 
-bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
-{
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
-  if( stdcal && !stdcal->hasCalendarResources() ) {
-    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ));
-    return false;
-  }
-kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
-  // FIXME: This is a nasty hack, since we need to set a parent for the
-  //        resource selection dialog. However, we don't have any UI methods
-  //        in the calendar, only in the CalendarResources::DestinationPolicy
-  //        So we need to type-cast it and extract it from the CalendarResources
-  QWidget *tmpparent = 0;
-  if ( stdcal ) {
-    tmpparent = stdcal->dialogParentWidget();
-    stdcal->setDialogParentWidget( parent );
-  }
-  bool success = mCalendar->addIncidence( incidence );
-  if ( stdcal ) {
-    // Reset the parent widget, otherwise we'll end up with pointers to deleted
-    // widgets sooner or later
-    stdcal->setDialogParentWidget( tmpparent );
-  }
-  if ( !success ) {
-    KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".")
-                        .arg( i18n( incidence->type() ) )
-                        .arg( incidence->summary() ) );
-    return false;
-  }
-
-  if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( !KOGroupware::instance()->sendICalMessage(
-           parent,
-           KCal::Scheduler::Request,
-           incidence, KOGlobals::INCIDENCEADDED, false ) ) {
-      kdError() << "sendIcalMessage failed." << endl;
-    }
-  }
-
-  emit incidenceAdded( incidence );
-  return true;
-}
 
 #include "incidencechanger.moc"
 #include "incidencechangerbase.moc"

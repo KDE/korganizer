@@ -44,7 +44,6 @@ public:
                              QWidget *parent );
   bool endChange( Incidence *incidence );
 
-  bool addIncidence( Incidence *incidence, QWidget *parent );
   bool addIncidence( Incidence *incidence, ResourceCalendar *res, const QString &subRes, QWidget *parent );
   bool changeIncidence( Incidence *oldinc, Incidence *newinc,
                         KOGlobals::WhatChanged, QWidget *parent );

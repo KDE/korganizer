@@ -283,7 +283,7 @@ bool KOEventEditor::processInput()
         Event *event = mEvent->clone();
         event->clearAttendees();
         event->setSummary( i18n("My counter proposal for: %1").arg( mEvent->summary() ) );
-        mChanger->addIncidence( event, this );
+        mChanger->addIncidence( event, 0, QString(), this );
       } else {
         mChanger->changeIncidence( oldEvent, mEvent, KOGlobals::NOTHING_MODIFIED, this );
       }

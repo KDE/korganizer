@@ -65,6 +65,7 @@
 #include "komailclient.h"
 #include "multiagendaview.h"
 
+#include <libkcal/calhelper.h>
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
 #include <libkcal/icalformat.h>
@@ -345,6 +346,19 @@ Calendar *CalendarView::calendar()
 {
   if ( mCalendar ) return mCalendar;
   else return CalendarNull::self();
+}
+
+QPair<ResourceCalendar *, QString> CalendarView::viewSubResourceCalendar()
+{
+  QPair<ResourceCalendar *, QString> p( 0, QString() );
+  KOrg::BaseView *cV = mViewManager->currentView();
+  if ( cV && cV == mViewManager->multiAgendaView() ) {
+    cV = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+  if ( cV ) {
+    p = qMakePair( cV->resourceCalendar(), cV->subResourceCalendar() );
+  }
+  return p;
 }
 
 KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence ) const
@@ -744,7 +758,8 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
           journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
           journal->setDescription( description );
 
-          if ( !mChanger->addIncidence( journal, this ) ) {
+          //TODO: recorded to-dos should save into the standard resource always
+          if ( !mChanger->addIncidence( journal, 0, QString(), this ) ) {
             KODialogManager::errorSaveIncidence( this, journal );
             delete journal;
             return;
@@ -917,6 +932,8 @@ void CalendarView::edit_paste()
     pastedIncidence = factory.pasteIncidence( date );
   if ( !pastedIncidence ) return;
 
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+
   // FIXME: use a visitor here
   if (pastedIncidence->type() == "Event" ) {
 
@@ -929,14 +946,14 @@ void CalendarView::edit_paste()
         pastedEvent->setDtEnd(endDT);
       }
     }
-    mChanger->addIncidence( pastedEvent, this );
+    mChanger->addIncidence( pastedEvent, p.first, p.second, this );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
     Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
     Todo* _selectedTodo = selectedTodo();
     if ( _selectedTodo )
       pastedTodo->setRelatedTo( _selectedTodo );
-    mChanger->addIncidence( pastedTodo, this );
+    mChanger->addIncidence( pastedTodo, p.first, p.second, this );
   }
 }
 
@@ -984,9 +1001,6 @@ KOEventEditor *CalendarView::newEventEditor( ResourceCalendar *res, const QStrin
   mDialogManager->connectTypeAhead( eventEditor, dynamic_cast<KOrg::AgendaView*>(viewManager()->currentView()) );
   return eventEditor;
 }
-
-
-
 
 void CalendarView::newEvent()
 {
@@ -1160,7 +1174,7 @@ bool CalendarView::addIncidence( const QString &ical )
   format.setTimeZone( mCalendar->timeZoneId(), true );
   Incidence *incidence = format.fromString( ical );
   if ( !incidence ) return false;
-  if ( !mChanger->addIncidence( incidence, this ) ) {
+  if ( !mChanger->addIncidence( incidence, 0, QString(), this ) ) {
     delete incidence;
     return false;
   }
@@ -1313,9 +1327,11 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
 
   if ( newInc ) {
-    // TODO: Use the same resource instead of asking again!
+    QPair<ResourceCalendar *, QString>p =
+      CalHelper::incSubResourceCalendar( calendar(), incidence );
+
     mChanger->changeIncidence( oldincidence, incidence, KOGlobals::NOTHING_MODIFIED, this );
-    mChanger->addIncidence( newInc, this );
+    mChanger->addIncidence( newInc, p.first, p.second, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."),
       i18n("Dissociating Failed") );
@@ -1340,9 +1356,11 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
 
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
-    // TODO: Use the same resource instead of asking again!
+    QPair<ResourceCalendar *, QString>p =
+      CalHelper::incSubResourceCalendar( calendar(), incidence );
+
     mChanger->changeIncidence( oldincidence, incidence, KOGlobals::NOTHING_MODIFIED, this );
-    mChanger->addIncidence( newInc, this );
+    mChanger->addIncidence( newInc, p.first, p.second, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."),
       i18n("Dissociating Failed") );
@@ -2323,7 +2341,9 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
     todo->setHasDueDate( true );
   }
 
-  if ( !mChanger->addIncidence( incidence, this ) ) {
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+
+  if ( !mChanger->addIncidence( incidence, p.first, p.second, this ) ) {
     KODialogManager::errorSaveIncidence( this, incidence );
     delete incidence;
   }

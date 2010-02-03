@@ -381,7 +381,7 @@ void JournalEntry::writeJournal()
     newJournal = true;
     mJournal = new Journal;
     writeJournalPrivate( mJournal );
-    if ( !mChanger->addIncidence( mJournal, this ) ) {
+    if ( !mChanger->addIncidence( mJournal, 0, QString(), this ) ) {
       KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;

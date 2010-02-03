@@ -1111,7 +1111,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc, this );
+              mChanger->addIncidence( newInc, 0, QString(), this );
               emit enableAgendaUpdate( true );
               mChanger->changeIncidence( oldIncSaved, oldInc,
                                          KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
@@ -1139,7 +1139,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc, this );
+              mChanger->addIncidence( newInc, 0, QString(), this );
               emit enableAgendaUpdate( true );
               mChanger->changeIncidence( oldIncSaved, oldInc,
                                          KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );

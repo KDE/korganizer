@@ -35,6 +35,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
+#include <libkcal/calhelper.h>
 #include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
 #include <libkcal/dndfactory.h>
@@ -237,14 +238,13 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     } else {
 //      kdDebug(5850) << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
-      if ( !mChanger->addIncidence( todo, this ) ) {
+      if ( !mChanger->addIncidence( todo, 0, QString(), this ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
         delete todo;
         return;
       }
     }
-  }
-  else {
+  } else {
     QString text;
     KOTodoViewItem *todoi = dynamic_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
     if ( ! todoi ) {
@@ -985,7 +985,10 @@ void KOTodoView::copyTodoToDate( QDate date )
    if ( newTodo->doesRecur() )
      newTodo->recurrence()->unsetRecurs();
 
-   mChanger->addIncidence( newTodo, this );
+   QPair<ResourceCalendar *, QString>p =
+     CalHelper::incSubResourceCalendar( calendar(), mActiveItem->todo() );
+
+   mChanger->addIncidence( newTodo, p.first, p.second, this );
  }
 }
 
@@ -1114,7 +1117,7 @@ void KOTodoView::addQuickTodo()
     todo->setSummary( mQuickAdd->text() );
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                         KOPrefs::instance()->email() ) );
-    if ( !mChanger->addIncidence( todo, this ) ) {
+    if ( !mChanger->addIncidence( todo, 0, QString(), this ) ) {
       KODialogManager::errorSaveIncidence( this, todo );
       delete todo;
       return;

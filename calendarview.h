@@ -115,6 +115,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void setCalendar( Calendar * );
     Calendar *calendar();
 
+    QPair<ResourceCalendar *, QString> viewSubResourceCalendar();
+
     KOrg::History *history() const { return mHistory; }
 
     KOViewManager *viewManager() const { return mViewManager; }
