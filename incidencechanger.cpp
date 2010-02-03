@@ -340,7 +340,7 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
     tmpparent = stdcal->dialogParentWidget();
     stdcal->setDialogParentWidget( parent );
   }
-  bool success = stdcal->addIncidence( incidence, res );
+  bool success = stdcal->addIncidence( incidence, res, subRes );
 
   if ( !success ) {
     QString resName = res->resourceName();
