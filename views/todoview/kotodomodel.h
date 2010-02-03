@@ -158,6 +158,14 @@ public:
     */
     TodoTreeNode *findTodo( const Akonadi::Item &todo ) const;
 
+    /** Recursively find a todo.
+     *
+     * @param uid uid to the todo to find.
+     * @return Pointer to the TodoTreeNode node which represents the todo
+     *         searched for or 0 if not found.
+     */
+     TodoTreeNode *findTodo( const QString &uid ) const;
+
     /**
      * If the todo is overdue or due today, the expandIndex signal
      * is emitted so that the view can expand the parents of this
@@ -194,6 +202,8 @@ public:
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */
     QHash<Akonadi::Item::Id, TodoTreeNode*> mTodoHash;
+
+    QHash<QString, TodoTreeNode*> mTodoUidHash;
 
     /** This IncidenceChanger is used to change todos */
     IncidenceChangerBase *mChanger;

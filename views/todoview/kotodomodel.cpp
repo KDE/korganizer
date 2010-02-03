@@ -65,6 +65,7 @@ struct KOTodoModel::TodoTreeNode : QObject
     if ( Akonadi::hasTodo( mTodo ) ) {
       mItemId = mTodo.id();
       mModel->mTodoHash.insert( mTodo.id(), this );
+      mModel->mTodoUidHash.insert( Akonadi::todo( mTodo )->uid(), this );
     }
   }
 
@@ -73,9 +74,11 @@ struct KOTodoModel::TodoTreeNode : QObject
   {
     if ( Akonadi::hasTodo( mTodo ) ) {
       mModel->mTodoHash.remove( mItemId );
+      mModel->mTodoUidHash.remove( Akonadi::todo( mTodo )->uid() );
     } else {
       // root node gets deleted, clear the whole hash
       mModel->mTodoHash.clear();
+      mModel->mTodoUidHash.clear();
     }
     qDeleteAll( mChildren );
   }
@@ -405,6 +408,11 @@ KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Item &todo ) const
   return mTodoHash.value( todo.id() );
 }
 
+KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const QString &uid ) const
+{
+  return mTodoUidHash.value( uid );
+}
+
 void KOTodoModel::expandTodoIfNeeded( const Item &todoItem )
 {
   Todo::Ptr todo = Akonadi::todo( todoItem );
@@ -472,7 +480,8 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
 
     // if the parent is not already in the tree, we have to insert it first.
     // necessary because we can't rely on todos coming in a defined order.
-    TodoTreeNode *parent = findTodo( relatedTodoItem );
+    TodoTreeNode *parent = findTodo( relatedTodo->uid() );
+
     if ( !parent ) {
       parent = insertTodo( relatedTodoItem, checkRelated );
     }
