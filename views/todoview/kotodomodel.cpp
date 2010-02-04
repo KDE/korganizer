@@ -894,8 +894,9 @@ QMimeData *KOTodoModel::mimeData( const QModelIndexList &indexes ) const
   Item::List items;
   Q_FOREACH ( const QModelIndex &index, indexes ) {
     const TodoTreeNode * const node = static_cast<TodoTreeNode *>( index.internalPointer() );
-    if ( node->isValid() )
+    if ( node->isValid() && !items.contains( node->mTodo ) ) {
       items.push_back( node->mTodo );
+    }
   }
   return Akonadi::createMimeData( items, mCalendar->timeSpec() );
 }
