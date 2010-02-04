@@ -85,7 +85,8 @@ class KOViewManager : public QObject
 
     KOAgendaView *agendaView() const { return mAgendaView; }
     KOrg::MultiAgendaView *multiAgendaView() const { return mAgendaSideBySideView; }
-    KOTodoView   *todoView() const { return mTodoView; }
+    KOTodoView *todoView() const { return mTodoView; }
+    KOMonthView *monthView() const { return mMonthView; }
 
   public slots:
     void showWhatsNextView();

@@ -900,59 +900,77 @@ void CalendarView::edit_copy()
 
 void CalendarView::edit_paste()
 {
-// If in agenda view, use the selected time and date from there.
-// In all other cases, paste the event on the first day of the
-// selection in the day matrix on the left
+// If in agenda and month view, use the selected time and date from there.
+// In all other cases, use the navigator's selected date.
 
-  QDate date;
-  // create an invalid time to check if we got a new time for the eevent
-  QTime time(-1,-1);
-  QDateTime startDT, endDT;
+  QDate date;          // null dates are invalid, that's what we want
+  QTime time( -1, -1 );// create an invalid time, that's what we want
+  QDateTime endDT;     // null datetimes are invalid, that's what we want
   bool useEndTime = false;
 
+  KOrg::BaseView *curView = mViewManager->currentView();
+  if ( !curView ) {
+    return;
+  }
+
   KOAgendaView *aView = mViewManager->agendaView();
-  if (aView && aView->selectionStart().isValid()) {
-      date = aView->selectionStart().date();
-    startDT = aView->selectionStart();
+  KOMonthView *mView = mViewManager->monthView();
+
+  if ( curView == aView && aView->selectionStart().isValid() ) {
+    date = aView->selectionStart().date();
     endDT = aView->selectionEnd();
     useEndTime = !aView->selectedIsSingleCell();
-    if (!aView->selectedIsAllDay()) {
-        time = aView->selectionStart().time();
+    if ( !aView->selectedIsAllDay() ) {
+      time = aView->selectionStart().time();
     }
-
+  } else if ( curView == mView && !mView->selectedDates().isEmpty() ) {
+    date = mView->selectedDates().first();
   } else {
-    date = mNavigator->selectedDates().first();
+    // default to the selected date from the navigator
+    if ( !mNavigator->selectedDates().isEmpty() ) {
+      date = mNavigator->selectedDates().first();
+    }
+  }
+
+  if ( !date.isValid() ) {
+    KMessageBox::sorry(
+      this,
+      i18n( "Paste failed: unable to determine a valid target date." ) );
+    return;
   }
 
   DndFactory factory( mCalendar );
   Incidence *pastedIncidence;
-  if (time.isValid())
+  if ( time.isValid() ) {
     pastedIncidence = factory.pasteIncidence( date, &time );
-  else
+  } else {
     pastedIncidence = factory.pasteIncidence( date );
-  if ( !pastedIncidence ) return;
+  }
+  if ( !pastedIncidence ) {
+    return;
+  }
 
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
 
   // FIXME: use a visitor here
-  if (pastedIncidence->type() == "Event" ) {
-
-    Event* pastedEvent = static_cast<Event*>(pastedIncidence);
-    // only use selected area if event is of the same type (all-day or non-all-day
-    // as the current selection is
+  if ( pastedIncidence->type() == "Event" ) {
+    Event *pastedEvent = static_cast<Event*>( pastedIncidence );
+    // only use selected area if event is of the same type
+    // (all-day or non-all-day) as the current selection is
     if ( aView && endDT.isValid() && useEndTime ) {
-      if ( (pastedEvent->doesFloat() && aView->selectedIsAllDay()) ||
-           (!pastedEvent->doesFloat() && ! aView->selectedIsAllDay()) ) {
-        pastedEvent->setDtEnd(endDT);
+      if ( ( pastedEvent->doesFloat() && aView->selectedIsAllDay() ) ||
+           ( !pastedEvent->doesFloat() && !aView->selectedIsAllDay() ) ) {
+        pastedEvent->setDtEnd( endDT );
       }
     }
     mChanger->addIncidence( pastedEvent, p.first, p.second, this );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
-    Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
-    Todo* _selectedTodo = selectedTodo();
-    if ( _selectedTodo )
+    Todo *pastedTodo = static_cast<Todo*>( pastedIncidence );
+    Todo *_selectedTodo = selectedTodo();
+    if ( _selectedTodo ) {
       pastedTodo->setRelatedTo( _selectedTodo );
+    }
     mChanger->addIncidence( pastedTodo, p.first, p.second, this );
   }
 }
