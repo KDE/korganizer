@@ -53,8 +53,8 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *n
   int topLabelHeight = 2 * fm.height() + fm.lineSpacing();
 
   QVBox *topSideBox = new QVBox( this );
-  QWidget *topSideSpacer = new QWidget( topSideBox );
-  topSideSpacer->setFixedHeight( topLabelHeight );
+  mLeftTopSpacer = new QWidget( topSideBox );
+  mLeftTopSpacer->setFixedHeight( topLabelHeight );
   mLeftSplitter = new QSplitter( Qt::Vertical, topSideBox );
   mLeftSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
   QLabel *label = new QLabel( i18n("All Day"), mLeftSplitter );
@@ -77,8 +77,8 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *n
   mScrollView->addChild( mTopBox );
 
   topSideBox = new QVBox( this );
-  topSideSpacer = new QWidget( topSideBox );
-  topSideSpacer->setFixedHeight( topLabelHeight );
+  mRightTopSpacer = new QWidget( topSideBox );
+  mRightTopSpacer->setFixedHeight( topLabelHeight );
   mRightSplitter = new QSplitter( Qt::Vertical, topSideBox );
   mRightSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
   new QWidget( mRightSplitter );
@@ -250,6 +250,9 @@ void MultiAgendaView::setupViews()
              SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)),
              SLOT(zoomView(const int,const QPoint&,const Qt::Orientation)) );
   }
+
+  KOAgenda *anAgenda = mAgendaViews.first()->agenda();
+  connect( anAgenda, SIGNAL(lowerYChanged(int) ), SLOT(resizeSpacers(int)) );
 
   FOREACH_VIEW( agenda ) {
     agenda->readSettings();
@@ -490,6 +493,17 @@ void MultiAgendaView::resizeSplitters()
     mLeftSplitter->setSizes( mLastMovedSplitter->sizes() );
   if ( mLastMovedSplitter != mRightSplitter )
     mRightSplitter->setSizes( mLastMovedSplitter->sizes() );
+}
+
+void MultiAgendaView::resizeSpacers( int newY )
+{
+  // this slot is needed because the Agenda view's day labels frame height
+  // can change depending if holidays are shown. When this happens, all
+  // the widgets move down except the timelabels.
+  int topLabelHeight = mAgendaViews.first()->dayLabels()->height() +
+                       newY - mLeftSplitter->handleWidth() + 1;
+  mLeftTopSpacer->setFixedHeight( topLabelHeight );
+  mRightTopSpacer->setFixedHeight( topLabelHeight );
 }
 
 void MultiAgendaView::zoomView( const int delta, const QPoint & pos, const Qt::Orientation ori )

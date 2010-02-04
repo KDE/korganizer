@@ -141,6 +141,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
 
     KOAgenda* agenda() const { return mAgenda; }
     QSplitter* splitter() const { return mSplitterAgenda; }
+    QFrame *dayLabels() const { return mDayLabels; }
 
     /* reimplmented from KCal::Calendar::Observer */
     void calendarIncidenceAdded( Incidence *incidence );

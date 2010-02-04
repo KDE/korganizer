@@ -85,6 +85,7 @@ class MultiAgendaView : public AgendaView
     void slotSelectionChanged();
     void slotClearTimeSpanSelection();
     void resizeSplitters();
+    void resizeSpacers( int );
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation ori );
     void slotResizeScrollView();
 
@@ -98,6 +99,7 @@ class MultiAgendaView : public AgendaView
     QSplitter *mLeftSplitter, *mRightSplitter;
     QSplitter *mLastMovedSplitter;
     QScrollBar *mScrollBar;
+    QWidget *mLeftTopSpacer, *mRightTopSpacer;
     QWidget *mLeftBottomSpacer, *mRightBottomSpacer;
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
