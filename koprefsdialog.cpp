@@ -963,14 +963,13 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
                      "box above to edit the new entry." );
   add->setWhatsThis( whatsThis );
   topLayout->addWidget( add, 7, 0 );
-  QPushButton *del = new QPushButton( i18nc( "@action:button", "Remove" ), topFrame );
-  del->setObjectName( "remove" );
-  del->setWhatsThis( whatsThis );
-  topLayout->addWidget( del, 7, 1 );
+  mRemove = new QPushButton( i18nc( "@action:button", "Remove" ), topFrame );
+  mRemove->setWhatsThis( whatsThis );
+  topLayout->addWidget( mRemove, 7, 1 );
 
   //topLayout->setRowStretch( 2, 1 );
   connect( add, SIGNAL(clicked()), this, SLOT(addItem()) );
-  connect( del, SIGNAL(clicked()), this, SLOT(removeItem()) );
+  connect( mRemove, SIGNAL(clicked()), this, SLOT(removeItem()) );
   connect( aEmailsEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateItem()) );
   connect( aEmailsEdit, SIGNAL(lostFocus()), this, SLOT(checkEmptyMail()) );
   connect( mAMails, SIGNAL(itemSelectionChanged()), SLOT(updateInput()) );
@@ -1000,6 +999,7 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
 void KOPrefsDialogGroupScheduling::addItem()
 {
   aEmailsEdit->setEnabled( true );
+  mRemove->setEnabled( true );
   QListWidgetItem *item = new QListWidgetItem( mAMails );
   mAMails->setCurrentItem( item );
   aEmailsEdit->setText( i18nc( "@label", "(EmptyEmail)" ) );
@@ -1018,9 +1018,11 @@ void KOPrefsDialogGroupScheduling::removeItem()
   if ( !item ) {
     aEmailsEdit->setText( "" );
     aEmailsEdit->setEnabled( false );
+    mRemove->setEnabled( false );
   }
-  if ( mAMails->count() == 0 ) {
+  else if ( mAMails->count() == 0 ) {
     aEmailsEdit->setEnabled( false );
+    mRemove->setEnabled( false );
   }
   slotWidChanged();
 }

@@ -116,6 +116,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
   private:
     QListWidget *mAMails;
     KLineEdit *aEmailsEdit;
+    QPushButton *mRemove;
 };
 
 class KOGroupwarePrefsPage;
