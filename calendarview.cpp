@@ -915,6 +915,10 @@ void CalendarView::edit_paste()
 
   KOAgendaView *aView = mViewManager->agendaView();
   KOMonthView *mView = mViewManager->monthView();
+  if ( curView == mViewManager->multiAgendaView() ) {
+    aView = mViewManager->multiAgendaView()->selectedAgendaView();
+    curView = aView;
+  }
 
   if ( curView == aView && aView->selectionStart().isValid() ) {
     date = aView->selectionStart().date();
