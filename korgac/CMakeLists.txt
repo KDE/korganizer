@@ -35,6 +35,7 @@ target_link_libraries(korgac
 	${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
 	${KDEPIMLIBS_AKONADI_LIBS}
 	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
+	${KDEPIMLIBS_MAILTRANSPORT_LIBRARY}
 	akonadi-kcal_next
        	korganizerprivate 
 	korganizer_eventviewer
