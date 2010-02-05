@@ -181,7 +181,7 @@ class KODayMatrix: public QFrame, public Akonadi::Calendar::CalendarObserver
     void setHighlightMode( bool highlightEvents,
                            bool highlightTodos,
                            bool highlightJournals );
-
+    void setUpdateNeeded();
   public slots:
     /**
      * Recalculates all the flags of the days in the matrix like holidays or

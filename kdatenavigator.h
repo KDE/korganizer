@@ -74,7 +74,7 @@ class KDateNavigator: public QFrame
     void setHighlightMode( bool highlightEvents,
                            bool highlightTodos,
                            bool highlightJournals ) const;
-
+    void setUpdateNeeded();
   public slots:
     void selectDates( const KCal::DateList & );
     void selectPreviousMonth();
