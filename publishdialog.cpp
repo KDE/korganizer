@@ -92,7 +92,7 @@ void PublishDialog::addAttendee( Attendee *attendee )
   Person person( attendee->name(), attendee->email() );
   item->setText( person.fullName() );
   mUI.mListWidget->addItem( item );
-  mUI.mRemove->setEnabled( true );
+  mUI.mRemove->setEnabled( !mUI.mListWidget->selectedItems().isEmpty() );
 }
 
 QString PublishDialog::addresses()
