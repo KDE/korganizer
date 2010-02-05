@@ -1780,7 +1780,7 @@ void CalendarView::openAddressbook()
   KRun::runCommand( "kcontactmanager", topLevelWidget() );
 }
 
-bool CalendarView::isReadOnly()
+bool CalendarView::isReadOnly() const
 {
   return mReadOnly;
 }

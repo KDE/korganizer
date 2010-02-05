@@ -519,7 +519,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void takeOverCalendar();
 
     /** query if the calendar is read-only. */
-    bool isReadOnly();
+    bool isReadOnly() const;
 
     /** set state of calendar to read-only
         @param readOnly whether the calendar view should be set read-only or not
