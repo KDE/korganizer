@@ -1971,6 +1971,7 @@ void CalendarView::processIncidenceSelection( const Item &item, const QDate &dat
   }
 
   if ( !incidence ) {
+   mSelectedIncidence = item;
    return;
   }
   if ( item == mSelectedIncidence ) {
