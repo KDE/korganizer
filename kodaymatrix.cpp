@@ -209,12 +209,16 @@ void KODayMatrix::updateView()
   updateView( mStartDate );
 }
 
+void KODayMatrix::setUpdateNeeded()
+{
+  mPendingChanges = true;
+}
+
 void KODayMatrix::updateView( const QDate &actdate )
 {
   if ( !actdate.isValid() ) {
     return;
   }
-
   //flag to indicate if the starting day of the matrix has changed by this call
   bool daychanged = false;
 

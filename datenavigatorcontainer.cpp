@@ -127,12 +127,22 @@ void DateNavigatorContainer::updateToday()
   }
 }
 
+void DateNavigatorContainer::setUpdateNeeded()
+{
+  mNavigatorView->setUpdateNeeded();
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->setUpdateNeeded();
+    }
+  }
+}
+
 void DateNavigatorContainer::updateView()
 {
   mNavigatorView->updateView();
   foreach ( KDateNavigator *n, mExtraViews ) {
     if ( n ) {
-      n->updateView();
+      n->setUpdateNeeded();
     }
   }
 }
