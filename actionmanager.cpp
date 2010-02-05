@@ -644,40 +644,40 @@ void ActionManager::initActions()
   connect( mPublishEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_publish()) );
   mPublishEvent->setEnabled( false );
 
-  action = new KAction( KIcon( "mail-send" ), i18n( "Send &Invitation to Attendees" ), this );
-  mACollection->addAction( "schedule_request", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_request()) );
-  action->setEnabled( false );
+  mSendInvitation = new KAction( KIcon( "mail-send" ), i18n( "Send &Invitation to Attendees" ), this );
+  mACollection->addAction( "schedule_request", mSendInvitation );
+  connect( mSendInvitation, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_request()) );
+  mSendInvitation->setEnabled( false );
   connect( mCalendarView, SIGNAL(organizerEventsSelected(bool)),
-           action, SLOT(setEnabled(bool)) );
+           mSendInvitation, SLOT(setEnabled(bool)) );
 
-  action = new KAction( i18n( "Re&quest Update" ), this );
-  mACollection->addAction( "schedule_refresh", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_refresh()) );
-  action->setEnabled( false );
+  mRequestUpdate = new KAction( i18n( "Re&quest Update" ), this );
+  mACollection->addAction( "schedule_refresh", mRequestUpdate );
+  connect( mRequestUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_refresh()) );
+  mRequestUpdate->setEnabled( false );
   connect( mCalendarView, SIGNAL(groupEventsSelected(bool)),
-           action, SLOT(setEnabled(bool)) );
+           mRequestUpdate, SLOT(setEnabled(bool)) );
 
-  action = new KAction( i18n( "Send &Cancellation to Attendees" ), this );
-  mACollection->addAction( "schedule_cancel", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_cancel()) );
-  action->setEnabled( false );
+  mSendCancel = new KAction( i18n( "Send &Cancellation to Attendees" ), this );
+  mACollection->addAction( "schedule_cancel", mSendCancel );
+  connect( mSendCancel, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_cancel()) );
+  mSendCancel->setEnabled( false );
   connect( mCalendarView, SIGNAL(organizerEventsSelected(bool)),
-           action, SLOT(setEnabled(bool)) );
+           mSendCancel, SLOT(setEnabled(bool)) );
 
-  action = new KAction( KIcon( "mail-reply-sender" ), i18n( "Send Status &Update" ), this );
-  mACollection->addAction( "schedule_reply", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_reply()) );
-  action->setEnabled( false );
+  mSendStatusUpdate = new KAction( KIcon( "mail-reply-sender" ), i18n( "Send Status &Update" ), this );
+  mACollection->addAction( "schedule_reply", mSendStatusUpdate );
+  connect( mSendStatusUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_reply()) );
+  mSendStatusUpdate->setEnabled( false );
   connect( mCalendarView, SIGNAL(groupEventsSelected(bool)),
-           action, SLOT(setEnabled(bool)) );
+           mSendStatusUpdate, SLOT(setEnabled(bool)) );
 
-  action = new KAction( i18nc( "counter proposal", "Request Chan&ge" ), this );
-  mACollection->addAction( "schedule_counter", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_counter()) );
-  action->setEnabled( false );
+  mRequestChange = new KAction( i18nc( "counter proposal", "Request Chan&ge" ), this );
+  mACollection->addAction( "schedule_counter", mRequestChange );
+  connect( mRequestChange, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_counter()) );
+  mRequestChange->setEnabled( false );
   connect( mCalendarView, SIGNAL(groupEventsSelected(bool)),
-           action, SLOT(setEnabled(bool)) );
+           mRequestChange, SLOT(setEnabled(bool)) );
 
   action = new KAction( i18n( "&Mail Free Busy Information..." ), this );
   mACollection->addAction( "mail_freebusy", action );
@@ -1746,6 +1746,11 @@ void ActionManager::enableIncidenceActions( bool enabled )
   mDeleteAction->setEnabled( enabled );
   mPublishEvent->setEnabled( enabled );
   mForwardEvent->setEnabled( enabled );
+  mSendInvitation->setEnabled( enabled );
+  mSendCancel->setEnabled( enabled );
+  mSendStatusUpdate->setEnabled( enabled );
+  mRequestChange->setEnabled( enabled );
+  mRequestUpdate->setEnabled( enabled );
 }
 
 void ActionManager::keyBindings()

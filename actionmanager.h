@@ -397,6 +397,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KAction *mPublishEvent;
     KAction *mForwardEvent;
 
+    KAction *mSendInvitation;
+    KAction *mSendCancel;
+    KAction *mSendStatusUpdate;
+
+    KAction *mRequestChange;
+    KAction *mRequestUpdate;
+
     KAction *mUndoAction;
     KAction *mRedoAction;
     KMenuBar *mMenuBar;
