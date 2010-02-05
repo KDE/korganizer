@@ -662,7 +662,7 @@ void HtmlExport::formatAttendees( QTextStream *ts, Incidence *incidence )
 
 QString HtmlExport::breakString( const QString &text )
 {
-  int number = text.count( "\n" );
+  int number = text.count( '\n' );
   if ( number <= 0 ) {
     return text;
   } else {
@@ -671,7 +671,7 @@ QString HtmlExport::breakString( const QString &text )
     int pos = 0;
     QString tmp;
     for ( int i = 0; i <= number; ++i ) {
-      pos = tmpText.indexOf( "\n" );
+      pos = tmpText.indexOf( '\n' );
       tmp = tmpText.left( pos );
       tmpText = tmpText.right( tmpText.length() - pos - 1 );
       out += tmp + "<br />";

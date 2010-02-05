@@ -157,9 +157,9 @@ void KOTodoEditor::newTodo()
 void KOTodoEditor::setTexts( const QString &summary, const QString &description,
                              bool richDescription )
 {
-  if ( description.isEmpty() && summary.contains( "\n" ) ) {
+  if ( description.isEmpty() && summary.contains( '\n' ) ) {
     mGeneral->setDescription( summary, richDescription );
-    int pos = summary.indexOf( "\n" );
+    const int pos = summary.indexOf( '\n' );
     mGeneral->setSummary( summary.left( pos ) );
   } else {
     mGeneral->setSummary( summary );
