@@ -1949,7 +1949,7 @@ void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate 
   }
 
   if ( !incidence ) {
-   mSelectedIncidence = item;
+   mSelectedIncidence = incidence;
    return;
   }
   if ( incidence == mSelectedIncidence ) {
