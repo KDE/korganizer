@@ -128,11 +128,12 @@ void PublishDialog::addItem()
 
 void PublishDialog::removeItem()
 {
-  QListWidgetItem *item;
-  item = mUI.mListWidget->selectedItems().first();
-  if ( !item ) {
+  if ( mUI.mListWidget->selectedItems().isEmpty() ) {
     return;
   }
+  QListWidgetItem *item;
+  item = mUI.mListWidget->selectedItems().first();
+
 
   int row = mUI.mListWidget->row( item );
   mUI.mListWidget->takeItem( row );
