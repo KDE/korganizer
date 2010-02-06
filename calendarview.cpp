@@ -1722,8 +1722,14 @@ void CalendarView::processTodoListSelection( Incidence *incidence, const QDate &
 
 void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate &date )
 {
+  if ( incidence != mSelectedIncidence ) {
+    // This signal also must be emitted if incidence is 0
+    emit incidenceSelected( incidence, date );
+  }
+
   if ( !incidence ) {
-    return;
+   mSelectedIncidence = incidence;
+   return;
   }
   if ( incidence == mSelectedIncidence ) {
     if ( !incidence->doesRecur() || mSaveDate == date ) {
