@@ -499,9 +499,13 @@ void MultiAgendaView::resizeSpacers( int newY )
 {
   // this slot is needed because the Agenda view's day labels frame height
   // can change depending if holidays are shown. When this happens, all
-  // the widgets move down except the timelabels.
+  // the widgets move down except the timelabels, so we need to change
+  // the top spacer height accordingly to move the timelabels up/down.
+  // kolab/issue2656
+  Q_UNUSED( newY );
+  QFontMetrics fm( font() );
   int topLabelHeight = mAgendaViews.first()->dayLabels()->height() +
-                       newY - mLeftSplitter->handleWidth() + 1;
+                       fm.height() + mLeftSplitter->handleWidth();
   mLeftTopSpacer->setFixedHeight( topLabelHeight );
   mRightTopSpacer->setFixedHeight( topLabelHeight );
 }
