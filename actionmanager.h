@@ -397,6 +397,13 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     KAction *mPublishEvent;
     KAction *mForwardEvent;
 
+    KAction *mSendInvitation;
+    KAction *mSendCancel;
+    KAction *mSendStatusUpdate;
+
+    KAction *mRequestChange;
+    KAction *mRequestUpdate;
+
     KAction *mUndoAction;
     KAction *mRedoAction;
 
