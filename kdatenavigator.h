@@ -63,7 +63,7 @@ class KDateNavigator: public QFrame
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     QDate startDate() const;
     QDate endDate() const;
-
+    void setUpdateNeeded();
   public slots:
     void selectDates( const KCal::DateList & );
     void updateView();

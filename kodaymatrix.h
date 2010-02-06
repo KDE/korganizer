@@ -184,6 +184,8 @@ class KODayMatrix: public QFrame, public KCal::Calendar::Observer
     void calendarIncidenceChanged( Incidence *incidence );
     void calendarIncidenceDeleted( Incidence *incidence );
 
+    void setUpdateNeeded();
+
   public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or events
      *  on a day (Actually calls above method with the actual startdate).

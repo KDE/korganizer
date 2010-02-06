@@ -43,7 +43,7 @@ class DateNavigatorContainer: public QFrame
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
-
+    void setUpdateNeeded();
   public slots:
     void selectDates( const KCal::DateList & );
     void updateView();

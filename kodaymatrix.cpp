@@ -228,11 +228,15 @@ void KODayMatrix::recalculateToday()
   updateView( mStartDate );
 }
 
+void KODayMatrix::setUpdateNeeded()
+{
+  mPendingChanges = true;
+}
+
 void KODayMatrix::updateView( const QDate &actdate )
 {
  kdDebug(5850) << "KODayMatrix::updateView() " << actdate << ", day start="<<mStartDate<< endl;
  if ( !actdate.isValid() ) return;
-
   //flag to indicate if the starting day of the matrix has changed by this call
   bool daychanged = false;
 

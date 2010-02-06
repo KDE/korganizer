@@ -118,12 +118,21 @@ void DateNavigatorContainer::updateToday()
   }
 }
 
+void DateNavigatorContainer::setUpdateNeeded()
+{
+  mNavigatorView->setUpdateNeeded();
+  KDateNavigator *n;
+  for ( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
+    n->setUpdateNeeded();
+  }
+}
+
 void DateNavigatorContainer::updateView()
 {
   mNavigatorView->updateView();
   KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-    n->updateView();
+  for ( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
+    n->setUpdateNeeded();
   }
 }
 

@@ -2419,6 +2419,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 void CalendarView::resourcesChanged()
 {
   mViewManager->resourcesChanged();
+  mDateNavigator->setUpdateNeeded();
   updateView();
 }
 
