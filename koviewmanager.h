@@ -88,6 +88,8 @@ class KOViewManager : public QObject
     KOTodoView *todoView() const { return mTodoView; }
     KOMonthView *monthView() const { return mMonthView; }
 
+    void updateMultiCalendarDisplay();
+
   public slots:
     void showWhatsNextView();
     void showListView();

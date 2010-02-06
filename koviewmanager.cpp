@@ -516,3 +516,14 @@ void KOViewManager::resourcesChanged()
   if ( mAgendaSideBySideView )
     mAgendaSideBySideView->resourcesChanged();
 }
+
+void KOViewManager::updateMultiCalendarDisplay()
+{
+  if ( mCurrentView == mAgendaView            ||
+       mCurrentView == mAgendaSideBySideView  ||
+       ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentPage() ) ) {
+    showAgendaView();
+  } else {
+    updateView();
+  }
+}

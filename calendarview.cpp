@@ -695,16 +695,8 @@ void CalendarView::updateConfig( const QCString& receiver)
   }
   emit configChanged();
 
-  // force reload and handle agenda view type switch
-  const bool showMerged = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
-  const bool showSideBySide = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
-  KOrg::BaseView *view = mViewManager->currentView();
-  mViewManager->showAgendaView();
-  if ( view == mViewManager->agendaView() && showSideBySide )
-    view = mViewManager->multiAgendaView();
-  else if ( view == mViewManager->multiAgendaView() && showMerged )
-    view = mViewManager->agendaView();
-  mViewManager->showView( view );
+  //switch beetween merged, side by side and tabbed agenda if needed
+  mViewManager->updateMultiCalendarDisplay();
 
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
