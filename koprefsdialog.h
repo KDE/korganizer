@@ -54,6 +54,10 @@ namespace Ui {
   class KOGroupwarePrefsPage;
 }
 
+namespace Akonadi {
+  class CollectionComboBox;
+}
+
 class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
   Q_OBJECT
@@ -91,7 +95,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
     KColorButton  *mCategoryButton;
     QHash<QString, QColor> mCategoryDict;
 
-    KComboBox     *mResourceCombo;
+  Akonadi::CollectionComboBox    *mResourceCombo;
     KColorButton  *mResourceButton;
     QHash<QString, QColor> mResourceDict;
 };

@@ -40,6 +40,9 @@ using namespace KHolidays;
 #include <mailtransport/transportmanagementwidget.h>
 using MailTransport::TransportManagementWidget;
 
+#include <Akonadi/CollectionComboBox>
+#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
+
 #include <KCalendarSystem>
 #include <KColorButton>
 #include <KComboBox>
@@ -742,7 +745,15 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   QBoxLayout *resourceLayout = new QHBoxLayout;
   resourceGroup->setLayout( resourceLayout );
 
-  mResourceCombo = new KComboBox( resourceGroup );
+  mResourceCombo = new Akonadi::CollectionComboBox( resourceGroup );
+  mResourceCombo->setAccessRightsFilter(Akonadi::Collection::CanCreateItem);
+  mResourceCombo->addExcludeResourcesType(QStringList()<<"akonadi_search_resource");
+  QStringList mimetypes;
+  mimetypes << Akonadi::IncidenceMimeTypeVisitor::todoMimeType();
+  mimetypes << Akonadi::IncidenceMimeTypeVisitor::journalMimeType();
+  mimetypes << Akonadi::IncidenceMimeTypeVisitor::eventMimeType();
+
+  mResourceCombo->setMimeTypeFilter( mimetypes );
   mResourceCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select the calendar you want to modify. "
@@ -750,12 +761,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
            "the button below." ) );
   connect( mResourceCombo, SIGNAL(activated(int)), SLOT(updateResourceColor()) );
   resourceLayout->addWidget( mResourceCombo );
-
-  Akonadi::CollectionModel *collectionmodel = new Akonadi::CollectionModel( this );
-  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
-  collectionproxymodel->setSourceModel( collectionmodel );
-  collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
-  mResourceCombo->setModel( collectionproxymodel );
 
   mResourceButton = new KColorButton( resourceGroup );
   mResourceButton->setWhatsThis(
