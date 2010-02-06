@@ -106,7 +106,6 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
            SLOT(slotSelectedCollectionChanged()) );
   connect( mCalSelector->model(), SIGNAL(modelReset()),
            SLOT(slotSelectedCollectionChanged()) );
-  //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
 
   QLabel *callabel = new QLabel( i18n( "Calendar:" ), mainWidget() );
   callabel->setBuddy( mCalSelector );
