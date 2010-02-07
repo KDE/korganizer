@@ -55,7 +55,9 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
+#include "collectiongeneralpage.h"
 
+#include <akonadi/collectionpropertiesdialog.h>
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/collectionselection.h>
@@ -63,6 +65,7 @@
 #include <akonadi/kcal/freebusymanager.h>
 #include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/mailscheduler.h>
+
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
@@ -97,6 +100,8 @@
 using namespace boost;
 using namespace Akonadi;
 using namespace KHolidays;
+
+AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage )
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
@@ -144,6 +149,9 @@ CalendarView::CalendarView( QWidget *parent )
 
   mLeftFrame = mLeftSplitter;
   mLeftFrame->installEventFilter( this );
+
+  CollectionPropertiesDialog::useDefaultPage( false );
+  CollectionPropertiesDialog::registerPage( new CollectionGeneralPageFactory() );
 
   connect( mDateNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
            SLOT(showDates(const KCal::DateList &)) );
@@ -363,7 +371,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
 #ifdef AKONADI_PORT_DISABLED
     mCalendar->close();
 #else
-    kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;    
+    kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
     // otherwise something is majorly wrong
     // openCalendar called without merge and a filename, what should we do?
@@ -392,7 +400,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
       mCalendar->close();
     }
 #else
-    kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;    
+    kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
     KMessageBox::error( this, i18n( "Could not load calendar '%1'.", filename ) );
     return false;
@@ -1363,7 +1371,7 @@ void CalendarView::copyIncidenceToResource( const Item &item, const QString &res
       i18nc( "@title:window", "Copying Failed" ) );
   }
 #else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -1447,7 +1455,7 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
       i18nc( "@title:window", "Moving Failed" ) );
   }
 #else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -2284,7 +2292,6 @@ void CalendarView::showIncidence( const Item &item )
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
   eventViewer->setIncidence( item, QDate() );
-
   // Disable the Edit button for read-only Incidences.
   if ( incidence->isReadOnly() ) {
     eventViewer->enableButton( KDialog::User1, false );
