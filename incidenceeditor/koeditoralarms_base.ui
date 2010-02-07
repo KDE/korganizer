@@ -548,7 +548,7 @@ If the 'To:' field stays empty the email reminder will be sent to the
 default email configured in Kmail (Settings menu/Configure Kmail/Identities).</string>
             </property>
             <property name="whatsThis">
-             <string>Enter a list comma-sepatered addresses where an email will be sent when the reminder triggers</string>
+             <string>Enter a list comma-separated addresses to which an email will be sent when the reminder triggers</string>
             </property>
            </widget>
           </item>
