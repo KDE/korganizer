@@ -341,6 +341,7 @@ void BaseView::getHighlightMode( bool &highlightEvents,
 
 void BaseView::handleBackendError( const QString &errorString )
 {
+  kError() << errorString;
 }
 
 void BaseView::backendErrorOccurred()
