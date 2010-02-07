@@ -26,6 +26,8 @@
 #define KOPREFSDIALOG_H
 
 #include "korganizer_export.h"
+#include "ui_accountscalendarwidget.h"
+
 
 #include <libkdepim/kcmdesignerfields.h>
 #include <libkdepim/kprefsdialog.h>
@@ -66,9 +68,14 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 
   protected slots:
     void toggleEmailSettings( bool on );
+    void slotAccountSelected(const Akonadi::AgentInstance&);
+    void slotAddAccount();
+    void slotModifySelectedAccount();
+    void slotRemoveSelectedAccount();
 
   private:
     QWidget *mUserEmailSettings;
+    Ui_AccountsCalendarWidget mAccountsCalendar;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule

@@ -28,6 +28,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
+#include "ui_accountscalendarwidget.h"
 
 #include <libkdepim/ktimeedit.h>
 #include <libkdepim/kpimprefs.h>
@@ -42,6 +43,12 @@ using MailTransport::TransportManagementWidget;
 
 #include <Akonadi/CollectionComboBox>
 #include <Akonadi/KCal/IncidenceMimeTypeVisitor>
+#include <akonadi/agentfilterproxymodel.h>
+#include <akonadi/agentinstancemodel.h>
+#include <akonadi/agenttype.h>
+#include <akonadi/agentmanager.h>
+#include <akonadi/agenttypedialog.h>
+#include <akonadi/agentinstancecreatejob.h>
 
 #include <KCalendarSystem>
 #include <KColorButton>
@@ -55,6 +62,7 @@ using MailTransport::TransportManagementWidget;
 #include <KStandardDirs>
 #include <KSystemTimeZones>
 #include <KTabWidget>
+#include <KWindowSystem>
 
 #include <Q3ButtonGroup>
 #include <QListWidget>
@@ -179,8 +187,87 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   systrayLayout->addStretch( 1 );
 
+  //Calendar Account
+  QFrame *calendarFrame = new QFrame( this );
+  tabWidget->addTab( calendarFrame, KIcon( "preferences-other" ),
+                     i18nc( "@title:tab calendar account settings", "Calendar Account" ) );
+
+  mAccountsCalendar.setupUi( calendarFrame );
+
+  mAccountsCalendar.vlay->setSpacing( KDialog::spacingHint() );
+  mAccountsCalendar.vlay->setMargin( KDialog::marginHint() );
+
+  mAccountsCalendar.mAccountList->agentFilterProxyModel()->addMimeTypeFilter( "text/calendar" );
+  mAccountsCalendar.mAccountList->agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
+
+  connect( mAccountsCalendar.mAccountList, SIGNAL( currentChanged( const Akonadi::AgentInstance&, const Akonadi::AgentInstance& ) ),
+           SLOT( slotAccountSelected( const Akonadi::AgentInstance& ) ) );
+  connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
+           this, SLOT(slotModifySelectedAccount()) );
+
+  mAccountsCalendar.hlay->insertWidget(0, mAccountsCalendar.mAccountList);
+
+  connect( mAccountsCalendar.mAddAccountButton, SIGNAL(clicked()),
+           this, SLOT(slotAddAccount()) );
+
+  connect( mAccountsCalendar.mModifyAccountButton, SIGNAL(clicked()),
+           this, SLOT(slotModifySelectedAccount()) );
+
+  connect( mAccountsCalendar.mRemoveAccountButton, SIGNAL(clicked()),
+           this, SLOT(slotRemoveSelectedAccount()) );
+
   load();
 }
+
+
+void KOPrefsDialogMain::slotAccountSelected(const Akonadi::AgentInstance& current)
+{
+  if ( !current.isValid() ) {
+    mAccountsCalendar.mModifyAccountButton->setEnabled( false );
+    mAccountsCalendar.mRemoveAccountButton->setEnabled( false );
+  } else {
+    mAccountsCalendar.mModifyAccountButton->setEnabled( !current.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
+    mAccountsCalendar.mRemoveAccountButton->setEnabled( true );
+  }
+}
+
+void KOPrefsDialogMain::slotAddAccount()
+{
+  //TODO verify this dialog box. We can see note etc...
+  Akonadi::AgentTypeDialog dlg( this );
+  Akonadi::AgentFilterProxyModel* filter = dlg.agentFilterProxyModel();
+  filter->addMimeTypeFilter( "text/calendar" );
+  filter->addCapabilityFilter( "Resource" );
+  if ( dlg.exec() ) {
+    const Akonadi::AgentType agentType = dlg.agentType();
+
+    if ( agentType.isValid() ) {
+
+      Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
+      job->configure( this );
+      job->start();
+    }
+  }
+}
+
+void KOPrefsDialogMain::slotModifySelectedAccount()
+{
+  Akonadi::AgentInstance instance = mAccountsCalendar.mAccountList->currentAgentInstance();
+  if ( instance.isValid() ) {
+    KWindowSystem::allowExternalProcessWindowActivation();
+    instance.configure( this );
+  }
+}
+
+void KOPrefsDialogMain::slotRemoveSelectedAccount()
+{
+  const Akonadi::AgentInstance instance =  mAccountsCalendar.mAccountList->currentAgentInstance();
+  if ( instance.isValid() )
+    Akonadi::AgentManager::self()->removeInstance( instance );
+
+  slotAccountSelected( mAccountsCalendar.mAccountList->currentAgentInstance() );
+}
+
 
 void KOPrefsDialogMain::toggleEmailSettings( bool on )
 {
@@ -747,7 +834,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   mResourceCombo = new Akonadi::CollectionComboBox( resourceGroup );
   mResourceCombo->setAccessRightsFilter(Akonadi::Collection::CanCreateItem);
-  mResourceCombo->addExcludeResourcesType(QStringList()<<"akonadi_search_resource");
+  //mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
   QStringList mimetypes;
   mimetypes << Akonadi::IncidenceMimeTypeVisitor::todoMimeType();
   mimetypes << Akonadi::IncidenceMimeTypeVisitor::journalMimeType();
