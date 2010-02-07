@@ -118,6 +118,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
+  //collectionproxymodel->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
   colorProxy->setDynamicSortFilter( true );
@@ -164,11 +165,49 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     //mDeleteAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), mDeleteAction );
     connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
+
+    mDisableColor = new KAction( mCollectionview );
+    mDisableColor->setText( "&Disable Color...");
+    mDisableColor->setEnabled( false );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ), mDisableColor );
+    connect( mDisableColor, SIGNAL( triggered( bool ) ), this, SLOT(disableColor() ) );
+
+    mAssignColor = new KAction( mCollectionview );
+    mAssignColor->setText( i18n( "&Assign Color..." ) );
+    mAssignColor->setEnabled( false );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "assign_color" ), mAssignColor );
+    connect( mAssignColor, SIGNAL( triggered( bool ) ), this, SLOT(assignColor()) );
   }
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
 {
+}
+
+void AkonadiCollectionView::assignColor()
+{
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  Q_ASSERT( index.isValid() );
+  Akonadi::Collection collection = collectionFromIndex( index );
+  Q_ASSERT( collection.isValid() );
+#if 0
+  int result = KColorDialog::getColor( myColor, defaultColor );
+  if ( result == KColorDialog::Accepted ) {
+    KOPrefs::instance()->setResourceColor( identifier, myColor );
+    item->setResourceColor( myColor );
+    item->update();
+    emitResourcesChanged();
+  }
+#endif
+}
+
+void AkonadiCollectionView::disableColor()
+{
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  Q_ASSERT( index.isValid() );
+  Akonadi::Collection collection = collectionFromIndex( index );
+  Q_ASSERT( collection.isValid() );
+
 }
 
 void AkonadiCollectionView::setCollectionSelectionProxyModel( CollectionSelectionProxyModel* m )
@@ -195,8 +234,13 @@ void AkonadiCollectionView::updateView()
 void AkonadiCollectionView::selectionChanged()
 {
   kDebug();
-  if ( mDeleteAction )
-    mDeleteAction->setEnabled( mCollectionview->selectionModel()->hasSelection() );
+  if ( mDeleteAction ) {
+    bool enableAction = mCollectionview->selectionModel()->hasSelection();
+    mDeleteAction->setEnabled( enableAction );
+    enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
+    mDisableColor->setEnabled( enableAction );
+    mAssignColor->setEnabled( enableAction );
+  }
   updateView();
 }
 

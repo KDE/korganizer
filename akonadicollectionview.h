@@ -97,15 +97,17 @@ class AkonadiCollectionView : public CalendarViewExtension
     void deleteCalendar();
     void deleteCalendarDone( KJob* );
     void rowsInserted( const QModelIndex&, int, int );
+    void assignColor();
+    void disableColor();
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     QAbstractProxyModel* mBaseModel;
     Akonadi::CollectionSelectionProxyModel *mSelectionProxyModel;
-    //QList<ResourceCalendar*> mResourcesToClose;
-    //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
     KAction *mDeleteAction;
+    KAction *mAssignColor;
+    KAction *mDisableColor;
     Akonadi::CollectionSelection *mCollectionSelection;
     bool mNotSendAddRemoveSignal;
   };
