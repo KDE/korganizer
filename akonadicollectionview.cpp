@@ -173,7 +173,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
 
     mDisableColor = new KAction( mCollectionview );
-    mDisableColor->setText( "&Disable Color...");
+    mDisableColor->setText( "&Disable Color");
     mDisableColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ), mDisableColor );
     connect( mDisableColor, SIGNAL( triggered( bool ) ), this, SLOT(disableColor() ) );
