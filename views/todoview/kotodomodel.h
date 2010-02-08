@@ -150,14 +150,6 @@ public:
     QModelIndex moveIfParentChanged( TodoTreeNode *curNode, const Akonadi::Item &todo,
                                      bool addParentIfMissing );
 
-   /** Recursively find a todo.
-    *
-    * @param todo Pointer to the todo to find.
-    * @return Pointer to the TodoTreeNode node which represents the todo
-    *         searched for or 0 if not found.
-    */
-    TodoTreeNode *findTodo( const Akonadi::Item &todo ) const;
-
     /** Recursively find a todo.
      *
      * @param uid uid to the todo to find.

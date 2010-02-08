@@ -64,7 +64,6 @@ struct KOTodoModel::TodoTreeNode : QObject
   {
     if ( Akonadi::hasTodo( mTodo ) ) {
       mItemId = mTodo.id();
-      mModel->mTodoHash.insert( mTodo.id(), this );
       mModel->mTodoUidHash.insert( Akonadi::todo( mTodo )->uid(), this );
     }
   }
@@ -73,11 +72,9 @@ struct KOTodoModel::TodoTreeNode : QObject
   ~TodoTreeNode()
   {
     if ( Akonadi::hasTodo( mTodo ) ) {
-      mModel->mTodoHash.remove( mItemId );
       mModel->mTodoUidHash.remove( Akonadi::todo( mTodo )->uid() );
     } else {
       // root node gets deleted, clear the whole hash
-      mModel->mTodoHash.clear();
       mModel->mTodoUidHash.clear();
     }
     qDeleteAll( mChildren );
@@ -228,7 +225,7 @@ void KOTodoModel::reloadTodos()
   Item::List::ConstIterator it;
   QList<TodoTreeNode*> changedNodes;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    TodoTreeNode *tmp = findTodo( *it );
+    TodoTreeNode *tmp = findTodo( Akonadi::incidence( *it )->uid() );
     if ( !tmp ) {
       insertTodo( *it );
     } else {
@@ -262,7 +259,7 @@ void KOTodoModel::processChange( const Item & aitem, int action )
   }
 
   if ( action == KOGlobals::INCIDENCEEDITED ) {
-    TodoTreeNode *ttTodo = findTodo( aitem );
+    TodoTreeNode *ttTodo = findTodo( Akonadi::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
     }
@@ -275,11 +272,11 @@ void KOTodoModel::processChange( const Item & aitem, int action )
                       miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
   } else if ( action == KOGlobals::INCIDENCEADDED ) {
     // the todo should not be in our tree...
-    Q_ASSERT( !findTodo( aitem ) );
+    Q_ASSERT( !findTodo( Akonadi::incidence ( aitem )->uid() ) );
 
     insertTodo( aitem );
   } else if ( action == KOGlobals::INCIDENCEDELETED ) {
-    TodoTreeNode *ttTodo = findTodo( aitem );
+    TodoTreeNode *ttTodo = findTodo( Akonadi::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
     }
@@ -356,7 +353,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
     if ( newParent ) {
       Akonadi::Item newParentItem;
       newParentItem.setPayload<Todo::Ptr>(newParent);
-      ttNewParent = findTodo( newParentItem );
+      ttNewParent = findTodo( Akonadi::incidence ( newParentItem )->uid() );
       if ( !ttNewParent && addParentIfMissing ) {
         ttNewParent = insertTodo( newParentItem );
       }
@@ -403,11 +400,6 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
   return miChanged;
 }
 
-KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Item &todo ) const
-{
-  return mTodoHash.value( todo.id() );
-}
-
 KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const QString &uid ) const
 {
   return mTodoUidHash.value( uid );
@@ -420,7 +412,7 @@ void KOTodoModel::expandTodoIfNeeded( const Item &todoItem )
     return;
   if ( todo->isOverdue() ||
        isDueToday( todo.get() ) ) {
-    QModelIndex index = getModelIndex( findTodo( todoItem ) );
+    QModelIndex index = getModelIndex( findTodo( Akonadi::incidence( todoItem )->uid() ) );
     emit expandIndex( index );
   }
 }
