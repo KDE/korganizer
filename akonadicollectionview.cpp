@@ -25,6 +25,7 @@
 */
 
 #include "akonadicollectionview.h"
+#include <kcolordialog.h>
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"
@@ -188,25 +189,26 @@ void AkonadiCollectionView::assignColor()
 {
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
-  Akonadi::Collection collection = collectionFromIndex( index );
+  const Akonadi::Collection collection = collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
-#if 0
+
+  const QString identifier = QString::number( collection.id() );
+  const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
+  QColor myColor;
   int result = KColorDialog::getColor( myColor, defaultColor );
   if ( result == KColorDialog::Accepted ) {
     KOPrefs::instance()->setResourceColor( identifier, myColor );
-    item->setResourceColor( myColor );
-    item->update();
-    emitResourcesChanged();
   }
-#endif
 }
 
 void AkonadiCollectionView::disableColor()
 {
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
-  Akonadi::Collection collection = collectionFromIndex( index );
+  const Akonadi::Collection collection = collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
+  const QString identifier = QString::number( collection.id() );
+  KOPrefs::instance()->setResourceColor( identifier, QColor() );
 
 }
 
