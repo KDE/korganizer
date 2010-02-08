@@ -291,25 +291,21 @@ void AlarmDialog::edit()
     return;
   }
 
-  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
-    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) ) {
-      KMessageBox::error(
-        this,
-        i18n( "Could not start KOrganizer so editing is not possible.") );
-      return;
-    }
+  if ( !ensureKorganizerRunning() ) {
+    KMessageBox::error(
+      this,
+      i18n( "Could not start KOrganizer so editing is not possible." ) );
+    return;
   }
 
-  ensureKorganizerRunning();
-
-  kdDebug(5890) << "editing incidence " << incidence->summary() << endl;
+  //kdDebug(5890) << "editing incidence " << incidence->summary() << endl;
   if ( !kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
                                   "editIncidence(QString)",
                                   incidence->uid() ) ) {
     KMessageBox::error(
       this,
-      i18n( "An internal KOrganizer error occurred attempting to modify \"%1\"" ).
-      arg( incidence->summary() ) );
+      i18n( "An internal KOrganizer error occurred attempting to start the incidence editor" ) );
+    return;
   }
 
   // get desktop # where korganizer (or kontact) runs
@@ -545,13 +541,14 @@ void AlarmDialog::showDetails()
   mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
 }
 
-void AlarmDialog::ensureKorganizerRunning()
+bool AlarmDialog::ensureKorganizerRunning() const
 {
   QString error;
   QCString dcopService;
 
   int result = KDCOPServiceStarter::self()->findServiceFor(
     "DCOP/Organizer", QString::null, QString::null, &error, &dcopService );
+
   if ( result == 0 ) {
     // OK, so korganizer (or kontact) is running. Now ensure the object we
     // want is available [that's not the case when kontact was already running,
@@ -571,8 +568,11 @@ void AlarmDialog::ensureKorganizerRunning()
     }
 
     // We don't do anything with it we just need it to be running
+    return true;
+
   } else {
     kdWarning() << "Couldn't start DCOP/Organizer: " << dcopService
                 << " " << error << endl;
   }
+  return false;
 }

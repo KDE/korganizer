@@ -73,7 +73,7 @@ class AlarmDialog : public KDialogBase {
     void showDetails();
 
   private:
-    void ensureKorganizerRunning();
+    bool ensureKorganizerRunning() const;
     void setTimer();
     int activeCount();
     QValueList<AlarmListItem*> selectedItems() const;
