@@ -203,6 +203,7 @@ void AkonadiCollectionView::assignColor()
   int result = KColorDialog::getColor( myColor, defaultColor );
   if ( result == KColorDialog::Accepted ) {
     KOPrefs::instance()->setResourceColor( identifier, myColor );
+    updateMenu();
     updateView();
   }
 }
@@ -215,6 +216,7 @@ void AkonadiCollectionView::disableColor()
   Q_ASSERT( collection.isValid() );
   const QString identifier = QString::number( collection.id() );
   KOPrefs::instance()->setResourceColor( identifier, QColor() );
+  updateMenu();
   updateView();
 }
 
@@ -239,9 +241,8 @@ void AkonadiCollectionView::updateView()
   emit resourcesChanged( mSelectionProxyModel ? mSelectionProxyModel->selectionModel()->hasSelection() : false );
 }
 
-void AkonadiCollectionView::selectionChanged()
+void AkonadiCollectionView::updateMenu()
 {
-  kDebug();
   if ( mDeleteAction ) {
     bool enableAction = mCollectionview->selectionModel()->hasSelection();
     mDeleteAction->setEnabled( enableAction );
@@ -258,6 +259,13 @@ void AkonadiCollectionView::selectionChanged()
     enableAction = enableAction && defaultColor.isValid();
     mDisableColor->setEnabled( enableAction );
   }
+
+}
+
+void AkonadiCollectionView::selectionChanged()
+{
+  kDebug();
+  updateMenu();
   updateView();
 }
 

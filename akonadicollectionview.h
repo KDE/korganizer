@@ -87,7 +87,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void resourcesAddedRemoved();
   private:
     void updateView();
-
+    void updateMenu();
   private Q_SLOTS:
     void selectionChanged();
 
