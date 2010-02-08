@@ -60,6 +60,8 @@
 #include <akonadi/control.h>
 #include <akonadi/session.h>
 #include <akonadi/changerecorder.h>
+#include <akonadi/agentmanager.h>
+#include <akonadi/agentinstance.h>
 
 #include <QHash>
 
@@ -183,11 +185,31 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     mAssignColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "assign_color" ), mAssignColor );
     connect( mAssignColor, SIGNAL( triggered( bool ) ), this, SLOT(assignColor()) );
+
+    mEditAction = new KAction( mCollectionview );
+    mEditAction->setText( i18n( "&Edit..." ) );
+    mEditAction->setEnabled( false );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "edit_calendar" ),mEditAction );
+    connect( mEditAction, SIGNAL( triggered( bool ) ), this, SLOT( editCalendar()) );
+
   }
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
 {
+}
+
+void AkonadiCollectionView::editCalendar()
+{
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  Q_ASSERT( index.isValid() );
+  const Akonadi::Collection collection = collectionFromIndex( index );
+  Q_ASSERT( collection.isValid() );
+  const QString resource = collection.resource();
+  qDebug()<<" resource :"<<resource;
+  Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
+  if ( instance.isValid() )
+    instance.configure( this );
 }
 
 void AkonadiCollectionView::assignColor()
@@ -246,6 +268,7 @@ void AkonadiCollectionView::updateMenu()
   if ( mDeleteAction ) {
     bool enableAction = mCollectionview->selectionModel()->hasSelection();
     mDeleteAction->setEnabled( enableAction );
+    mEditAction->setEnabled( enableAction );
     enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
     mAssignColor->setEnabled( enableAction );
 

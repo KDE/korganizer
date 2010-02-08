@@ -99,6 +99,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void rowsInserted( const QModelIndex&, int, int );
     void assignColor();
     void disableColor();
+    void editCalendar();
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
@@ -108,6 +109,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     KAction *mDeleteAction;
     KAction *mAssignColor;
     KAction *mDisableColor;
+    KAction *mEditAction;
     Akonadi::CollectionSelection *mCollectionSelection;
     bool mNotSendAddRemoveSignal;
   };
