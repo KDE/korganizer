@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="418">
+<kpartgui name="korganizer" version="419">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -193,8 +193,8 @@
     <Action name="akonadi_calendar_delete"/>
     <Separator/>
       <Menu name="calendar_color"><text>Calendar Colors</text>
-      <Action name="disable_color"/>
       <Action name="assign_color"/>
+      <Action name="disable_color"/>
       </Menu>
     <Separator/>
     <Action name="akonadi_collection_properties"/>
