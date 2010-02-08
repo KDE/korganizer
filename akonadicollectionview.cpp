@@ -203,6 +203,7 @@ void AkonadiCollectionView::assignColor()
   int result = KColorDialog::getColor( myColor, defaultColor );
   if ( result == KColorDialog::Accepted ) {
     KOPrefs::instance()->setResourceColor( identifier, myColor );
+    updateView();
   }
 }
 
@@ -214,7 +215,7 @@ void AkonadiCollectionView::disableColor()
   Q_ASSERT( collection.isValid() );
   const QString identifier = QString::number( collection.id() );
   KOPrefs::instance()->setResourceColor( identifier, QColor() );
-
+  updateView();
 }
 
 void AkonadiCollectionView::setCollectionSelectionProxyModel( CollectionSelectionProxyModel* m )
