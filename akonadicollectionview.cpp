@@ -246,8 +246,17 @@ void AkonadiCollectionView::selectionChanged()
     bool enableAction = mCollectionview->selectionModel()->hasSelection();
     mDeleteAction->setEnabled( enableAction );
     enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
-    mDisableColor->setEnabled( enableAction );
     mAssignColor->setEnabled( enableAction );
+
+    QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+    Q_ASSERT( index.isValid() );
+    const Akonadi::Collection collection = collectionFromIndex( index );
+    Q_ASSERT( collection.isValid() );
+
+    const QString identifier = QString::number( collection.id() );
+    const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
+    enableAction = enableAction && defaultColor.isValid();
+    mDisableColor->setEnabled( enableAction );
   }
   updateView();
 }
