@@ -833,7 +833,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   resourceGroup->setLayout( resourceLayout );
 
   mResourceCombo = new Akonadi::CollectionComboBox( resourceGroup );
-  mResourceCombo->setAccessRightsFilter(Akonadi::Collection::CanCreateItem);
   //mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
   QStringList mimetypes;
   mimetypes << Akonadi::IncidenceMimeTypeVisitor::todoMimeType();
