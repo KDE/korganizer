@@ -33,10 +33,12 @@
 #include <qcstring.h>
 #include <qdatastream.h>
 
+#include <dcopclient.h>
+#include <dcopref.h>
 #include <kapplication.h>
 #include <kconfig.h>
+#include <kdcopservicestarter.h>
 #include <kiconloader.h>
-#include <dcopclient.h>
 #include <klocale.h>
 #include <kprocess.h>
 #include <kaudioplayer.h>
@@ -298,6 +300,8 @@ void AlarmDialog::edit()
     }
   }
 
+  ensureKorganizerRunning();
+
   kdDebug(5890) << "editing incidence " << incidence->summary() << endl;
   if ( !kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
                                   "editIncidence(QString)",
@@ -539,4 +543,36 @@ void AlarmDialog::showDetails()
     mDetailView->addText( txt );
   }
   mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
+}
+
+void AlarmDialog::ensureKorganizerRunning()
+{
+  QString error;
+  QCString dcopService;
+
+  int result = KDCOPServiceStarter::self()->findServiceFor(
+    "DCOP/Organizer", QString::null, QString::null, &error, &dcopService );
+  if ( result == 0 ) {
+    // OK, so korganizer (or kontact) is running. Now ensure the object we
+    // want is available [that's not the case when kontact was already running,
+    // but korganizer not loaded into it...]
+    static const char* const dcopObjectId = "KOrganizerIface";
+    QCString dummy;
+    if ( !kapp->dcopClient()->findObject(
+           dcopService, dcopObjectId, "", QByteArray(), dummy, dummy ) ) {
+      DCOPRef ref( dcopService, dcopService ); // talk to KUniqueApplication or its kontact wrapper
+      DCOPReply reply = ref.call( "load()" );
+      if ( reply.isValid() && (bool)reply ) {
+        Q_ASSERT( kapp->dcopClient()->findObject(
+                    dcopService, dcopObjectId, "", QByteArray(), dummy, dummy ) );
+      } else {
+        kdWarning() << "Error loading " << dcopService << endl;
+      }
+    }
+
+    // We don't do anything with it we just need it to be running
+  } else {
+    kdWarning() << "Couldn't start DCOP/Organizer: " << dcopService
+                << " " << error << endl;
+  }
 }
