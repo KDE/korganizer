@@ -82,8 +82,13 @@ namespace {
             return QVariant();
         if ( role == Qt::DecorationRole ) {
           const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-          if ( !collection.contentMimeTypes().isEmpty() )
-            return KOHelper::resourceColor( collection );
+          if ( !collection.contentMimeTypes().isEmpty() ) {
+            QColor col = KOHelper::resourceColor( collection );
+            if ( col.isValid() )
+              return col;
+            else
+              return QVariant();
+          }
         }
        return QSortFilterProxyModel::data( index, role );
      }

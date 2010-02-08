@@ -286,6 +286,8 @@ QColor KOPrefs::resourceColor( const QString &cal )
   QColor color;
   if ( !cal.isEmpty() ) {
     color = mResourceColors.value( cal );
+    if ( !color.isValid() )
+      return color;
   } else {
     return mDefaultResourceColor;
   }
