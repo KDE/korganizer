@@ -206,7 +206,6 @@ void AkonadiCollectionView::editCalendar()
   const Akonadi::Collection collection = collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
   const QString resource = collection.resource();
-  qDebug()<<" resource :"<<resource;
   Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
   if ( instance.isValid() )
     instance.configure( this );
