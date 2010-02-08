@@ -64,7 +64,6 @@ using MailTransport::TransportManagementWidget;
 #include <KTabWidget>
 #include <KWindowSystem>
 
-#include <Q3ButtonGroup>
 #include <QListWidget>
 #include <QBoxLayout>
 #include <QFormLayout>
