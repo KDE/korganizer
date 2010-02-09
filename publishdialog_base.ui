@@ -101,6 +101,9 @@
      </item>
      <item>
       <widget class="KLineEdit" name="mNameLineEdit">
+       <property name="ClearButtonShown">
+         <bool>true</bool>
+       </property>
        <property name="toolTip">
         <string>The recipient's name</string>
        </property>
@@ -122,6 +125,9 @@
      </item>
      <item>
       <widget class="KLineEdit" name="mEmailLineEdit">
+       <property name="ClearButtonShown">
+        <bool>true</bool>
+       </property>
        <property name="toolTip">
         <string>The recipient's email address</string>
        </property>
