@@ -349,7 +349,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void slotResourcesChanged(bool);
     void slotChangeComboActionItem(int);
-    void slotNewStuffDownloaded(KJob *job);
     void slotResourcesAddedRemoved();
   private:
     class ActionStringsVisitor;

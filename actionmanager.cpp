@@ -6,6 +6,7 @@
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  Copyright (c) 2010 Laurent Montel <montel@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -90,7 +91,8 @@
 #include <KToggleAction>
 #include <KWindowSystem>
 #include <KIO/NetAccess>
-#include <KNS/Engine>
+#include <knewstuff3/downloaddialog.h>
+
 
 #include <kselectionproxymodel.h>
 
@@ -1562,56 +1564,28 @@ bool ActionManager::addIncidence( const QString &ical )
 void ActionManager::downloadNewStuff()
 {
   kDebug();
-
-  // FIXME (KNS2): use mCalendarView as parent widget
-  KNS::Entry::List entries = KNS::Engine::download();
-
-  KNS::Entry::List::Iterator it;
-  for ( it = entries.begin(); it != entries.end(); ++it ) {
-    KNS::Entry *entry = (*it);
-
-    if( entry->status() != KNS::Entry::Installed ) {
+  KNS3::DownloadDialog dialog(mCalendarView);
+  dialog.exec();
+  foreach (const KNS3::Entry& e, dialog.installedEntries()) {
+    kDebug()<<" downloadNewStuff :";
+    const QStringList lstFile = e.installedFiles();
+    kDebug()<<" lstFile :"<<lstFile;
+    if ( lstFile.count() != 1 )
       continue;
-    }
-
-    const KUrl filename( entry->payload().representation() );
+    const KUrl filename( /*entry->payload().representation()*/lstFile.at( 0 ) );
+    kDebug()<< "filename :"<<filename;
     if( ! filename.isValid() ) {
       continue;
     }
 
-#if 0
-    srand(time(NULL));
-    KUrl tempfile( QFileInfo( QDir::home(),
-                              QString("%1-%2").arg(rand()).arg(QFileInfo(filename.toLocalFile()).fileName())
-                              ).absoluteFilePath() );
-#else
-   QTemporaryFile tempfile;
-#endif
-    KIO::FileCopyJob *job = KIO::file_copy(filename, KUrl::fromPath(tempfile.fileName()),
-                                           -1, KIO::Overwrite | KIO::HideProgressInfo);
-    connect(job, SIGNAL(result(KJob*)), this, SLOT(slotNewStuffDownloaded(KJob*)));
-  }
-
-  // FIXME (KNS2): monday change
-
-  //qDeleteAll(entries);
-}
-
-void ActionManager::slotNewStuffDownloaded(KJob *_job)
-{
-  KIO::FileCopyJob *job = static_cast<KIO::FileCopyJob*>(_job);
-  const QString filename = job->destUrl().toLocalFile();
-  if ( job->error() ) {
-    KMessageBox::error( mCalendarView, i18n( "Could not download calendar %1: %2.",
-                                             job->srcUrl().url(), job->errorString() ) );
-  } else {
     IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
 
-    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView );  FileStorage storage( &cal );
-    storage.setFileName( filename );
+    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView );
+    FileStorage storage( &cal );
+    storage.setFileName( lstFile.at( 0 ) );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {
-      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", filename ) );
+      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", lstFile.at( 0 ) ) );
     } else {
       QStringList eventList;
       foreach(Event* e, cal.events()) {
@@ -1626,13 +1600,11 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
         // FIXME (KNS2): hm, no way out here :-)
       }
 
-      if ( mCalendarView->openCalendar( filename, true ) ) {
+      if ( mCalendarView->openCalendar( lstFile.at( 0 ), true ) ) {
         // FIXME (KNS2): here neither
       }
     }
   }
-
-  QFile(filename).remove(); // remove tempfile again
 }
 
 QString ActionManager::localFileName()
