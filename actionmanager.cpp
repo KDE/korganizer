@@ -1569,10 +1569,10 @@ void ActionManager::downloadNewStuff()
   foreach (const KNS3::Entry& e, dialog.installedEntries()) {
     kDebug()<<" downloadNewStuff :";
     const QStringList lstFile = e.installedFiles();
-    kDebug()<<" lstFile :"<<lstFile;
     if ( lstFile.count() != 1 )
       continue;
-    const KUrl filename( /*entry->payload().representation()*/lstFile.at( 0 ) );
+    const QString file = lstFile.at( 0 );
+    const KUrl filename( file );
     kDebug()<< "filename :"<<filename;
     if( ! filename.isValid() ) {
       continue;
@@ -1582,10 +1582,10 @@ void ActionManager::downloadNewStuff()
 
     Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView );
     FileStorage storage( &cal );
-    storage.setFileName( lstFile.at( 0 ) );
+    storage.setFileName( file );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {
-      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", lstFile.at( 0 ) ) );
+      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", file ) );
     } else {
       QStringList eventList;
       foreach(Event* e, cal.events()) {
@@ -1600,7 +1600,7 @@ void ActionManager::downloadNewStuff()
         // FIXME (KNS2): hm, no way out here :-)
       }
 
-      if ( mCalendarView->openCalendar( lstFile.at( 0 ), true ) ) {
+      if ( mCalendarView->openCalendar( file, true ) ) {
         // FIXME (KNS2): here neither
       }
     }
