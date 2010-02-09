@@ -105,11 +105,13 @@ class KOEditorAttachments : public QWidget
 
   protected slots:
     void showAttachment( QIconViewItem *item );
+    void saveAttachment( QIconViewItem *item );
     void slotAdd();
     void slotAddData();
     void slotEdit();
     void slotRemove();
     void slotShow();
+    void slotSaveAs();
     void dragEnterEvent( QDragEnterEvent *event );
     void dragMoveEvent( QDragMoveEvent *event );
     void dropEvent( QDropEvent *event );
@@ -118,6 +120,7 @@ class KOEditorAttachments : public QWidget
     void slotPaste();
     void selectionChanged();
     void contextMenu( QIconViewItem* item, const QPoint &pos );
+
   signals:
     void openURL( const KURL &url );
 
@@ -135,8 +138,12 @@ class KOEditorAttachments : public QWidget
     AttachmentIconView *mAttachments;
     QPushButton *mRemoveBtn;
     QPopupMenu *mContextMenu, *mAddMenu;
-    KAction *mOpenAction, *mCopyAction, *mCutAction;
-    KAction *mDeleteAction, *mEditAction;
+    KAction *mOpenAction;
+    KAction *mSaveAsAction;
+    KAction *mCopyAction;
+    KAction *mCutAction;
+    KAction *mDeleteAction;
+    KAction *mEditAction;
 };
 
 

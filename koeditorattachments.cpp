@@ -476,6 +476,9 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   mOpenAction = new KAction( i18n("Open"), 0, this, SLOT(slotShow()), ac );
   mOpenAction->plug( mContextMenu );
+
+  mSaveAsAction = new KAction( i18n( "Save As..." ), 0, this, SLOT(slotSaveAs()), ac );
+  mSaveAsAction->plug( mContextMenu );
   mContextMenu->insertSeparator();
 
   mCopyAction = KStdAction::copy(this, SLOT(slotCopy()), ac );
@@ -628,6 +631,40 @@ void KOEditorAttachments::showAttachment( QIconViewItem *item )
   }
 }
 
+void KOEditorAttachments::saveAttachment( QIconViewItem *item )
+{
+  AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
+  if ( !attitem || !attitem->attachment() ) return;
+
+  KCal::Attachment *att = attitem->attachment();
+
+  // get the saveas file name
+  QString saveAsFile =
+    KFileDialog::getSaveFileName( att->label(),
+                                  QString::null, 0,
+                                  i18n( "Save  Attachment" ) );
+  if ( saveAsFile.isEmpty() ||
+       ( QFile( saveAsFile ).exists() &&
+         ( KMessageBox::warningYesNo(
+           0,
+           i18n( "%1 already exists. Do you want to overwrite it?").
+           arg( saveAsFile ) ) == KMessageBox::No ) ) ) {
+    return;
+  }
+
+  KURL sourceUrl;
+  if ( att->isUri() ) {
+    sourceUrl = att->uri();
+  } else {
+    sourceUrl = mAttachments->tempFileForAttachment( att );
+  }
+  // save the attachment url
+  if ( !KIO::NetAccess::file_copy( sourceUrl, KURL( saveAsFile ), -1, true ) &&
+       KIO::NetAccess::lastError() ) {
+    KMessageBox::error( this, KIO::NetAccess::lastErrorString() );
+  }
+}
+
 void KOEditorAttachments::slotAdd()
 {
   AttachmentListItem *item = new AttachmentListItem( 0, mAttachments );
@@ -694,6 +731,15 @@ void KOEditorAttachments::slotShow()
     if ( !it->isSelected() )
       continue;
     showAttachment( it );
+  }
+}
+
+void KOEditorAttachments::slotSaveAs()
+{
+  for ( QIconViewItem *it = mAttachments->firstItem(); it; it = it->nextItem() ) {
+    if ( !it->isSelected() )
+      continue;
+    saveAttachment( it );
   }
 }
 
@@ -845,9 +891,19 @@ void KOEditorAttachments::selectionChanged()
 void KOEditorAttachments::contextMenu(QIconViewItem * item, const QPoint & pos)
 {
   const bool enable = item != 0;
+
+  int numSelected = 0;
+  for ( QIconViewItem *item = mAttachments->firstItem(); item; item = item->nextItem() ) {
+    if ( item->isSelected() ) {
+      numSelected++;
+    }
+  }
+
   mOpenAction->setEnabled( enable );
-  mCopyAction->setEnabled( enable );
-  mCutAction->setEnabled( enable );
+  //TODO: support saving multiple attachments into a directory
+  mSaveAsAction->setEnabled( enable && numSelected == 1 );
+  mCopyAction->setEnabled( enable && numSelected == 1 );
+  mCutAction->setEnabled( enable && numSelected == 1 );
   mDeleteAction->setEnabled( enable );
   mEditAction->setEnabled( enable );
   mContextMenu->exec( pos );
