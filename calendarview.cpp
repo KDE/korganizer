@@ -979,18 +979,13 @@ void CalendarView::edit_options()
 void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
   if ( !startDt.isValid() ) {
-    // Default start is the first selected date with the preferred time as set
-    // in the config dlg.
-    if ( !startDt.date().isValid() ) {
-      startDt.setDate( mNavigator->selectedDates().first() );
-    }
-    if ( !startDt.time().isValid() ) {
-      startDt.setTime( KOPrefs::instance()->mStartTime.time() );
-    }
+    startDt.setDate( activeDate() );
+    startDt.setTime( KOPrefs::instance()->mStartTime.time() );
   }
   if ( !endDt.isValid() ) {
-    int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
-                  ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+    int addSecs =
+      ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
+      ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
     endDt = startDt.addSecs( addSecs );
   }
   mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
