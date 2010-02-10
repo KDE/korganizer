@@ -57,6 +57,7 @@
 #include "views/todoview/kotodoview.h"
 #include "collectiongeneralpage.h"
 
+#include <akonadi/control.h>
 #include <akonadi/collectionpropertiesdialog.h>
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/calendaradaptor.h>
@@ -110,6 +111,8 @@ CalendarView::CalendarView( QWidget *parent )
     mChanger( 0 ),
     mSplitterSizesValid( false )
 {
+  Akonadi::Control::widgetNeedsAkonadi( this );
+
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 

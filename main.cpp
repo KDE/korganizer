@@ -62,12 +62,5 @@ int main ( int argc, char **argv )
     RESTORE( KOrganizer )
   }
 
-  if ( !Akonadi::Control::start() ) {
-    kWarning() << "Unable to start Akonadi server, exit application";
-    KMessageBox::sorry( 0, i18n( "Akonadi failed to start. Please check your configuration." ),
-                        i18n( "Korganizer" ) );
-    return 1;
-  }
-
   return app.exec();
 }
