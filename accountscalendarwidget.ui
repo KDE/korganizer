@@ -10,8 +10,11 @@
     <height>291</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="KFilterProxySearchLine" name="mFilterAccount"/>
+   </item>
+   <item row="1" column="0">
     <layout class="QVBoxLayout" name="vlay">
      <item>
       <layout class="QHBoxLayout" name="hlay">
@@ -70,6 +73,11 @@
  </widget>
  <layoutdefault spacing="6" margin="0"/>
  <customwidgets>
+  <customwidget>
+   <class>KFilterProxySearchLine</class>
+   <extends>QWidget</extends>
+   <header>kfilterproxysearchline.h</header>
+  </customwidget>
   <customwidget>
    <class>KPushButton</class>
    <extends>QPushButton</extends>

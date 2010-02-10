@@ -198,7 +198,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addMimeTypeFilter( "text/calendar" );
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
-
+  mAccountsCalendar.mFilterAccount->setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
   connect( mAccountsCalendar.mAccountList, SIGNAL( currentChanged( const Akonadi::AgentInstance&, const Akonadi::AgentInstance& ) ),
            SLOT( slotAccountSelected( const Akonadi::AgentInstance& ) ) );
   connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
