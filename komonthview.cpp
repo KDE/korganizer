@@ -603,7 +603,8 @@ class MonthViewCell::CreateItemVisitor :
       if ( !KOPrefs::instance()->showAllDayTodo() )
         return false;
       QDateTime dt( mDate );
-      if ( todo->hasDueDate() && !todo->doesFloat() ) {
+      if ( todo->hasDueDate() && !todo->doesFloat() &&
+           todo->dtDue().time() != QTime( 0,0 ) && todo->dtDue().time().isValid() ) {
         text += KGlobal::locale()->formatTime( todo->dtDue().time() );
         text += ' ';
         dt.setTime( todo->dtDue().time() );
@@ -1029,8 +1030,14 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
     }
     bool visit( Todo *todo ) {
       if ( todo->hasDueDate() ) {
-        mStartDate = todo->dtDue();
-        mEndDate = todo->dtDue();
+        if ( todo->dtDue().time() != QTime( 0, 0 ) &&
+             todo->dtDue().time().isValid() ) {
+          mStartDate = todo->dtDue();
+          mEndDate = todo->dtDue();
+        } else {
+          mStartDate = QDateTime( todo->dtDue().date(), QTime( 23,59 ) );
+          mEndDate = mStartDate;
+        }
       }// else
 //         return false;
       return true;

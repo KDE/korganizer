@@ -1204,10 +1204,10 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
-    // Add an event. No need to recreate the whole view!
-        // recreating everything even causes troubles: dropping to the day matrix
-        // recreates the agenda items, but the evaluation is still in an agendaItems' code,
-        // which was deleted in the mean time. Thus KOrg crashes...
+      // Add an event. No need to recreate the whole view!
+      // recreating everything even causes troubles: dropping to the day matrix
+      // recreates the agenda items, but the evaluation is still in an agendaItems' code,
+      // which was deleted in the mean time. Thus KOrg crashes...
       if ( mAllowAgendaUpdate )
         changeIncidenceDisplayAdded( incidence );
       break;
@@ -1313,7 +1313,24 @@ void KOAgendaView::fillAgenda()
 
         if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
 
-        if ( !filterByResource( todo ) ) continue;
+        if ( !filterByResource( todo ) ) {
+          // Special handling for groupware to-dos that are in Task folders.
+          // Put them in the top-level "Calendar" folder for lack of a better
+          // place since we never show Task type folders even in the
+          // multiagenda view.
+          bool showInGroupwareEvents = false;
+          if ( resourceCalendar() ) {
+            QString subRes = resourceCalendar()->subresourceIdentifier( todo );
+            if ( resourceCalendar()->subresourceType( subRes ) == "todo" ) {
+              if ( subResourceCalendar().contains( "/.INBOX.directory/Calendar" ) ) {
+                showInGroupwareEvents = true;
+              }
+            }
+          }
+          if ( !showInGroupwareEvents ) {
+            continue;
+          }
+        }
 
         // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
         // Already completed items can be displayed on their original due date
@@ -1322,7 +1339,9 @@ void KOAgendaView::fillAgenda()
         if ( (( todo->dtDue().date() == currentDate) && !overdue) ||
              (( currentDate == today) && overdue) ||
              ( todo->recursOn( currentDate ) ) ) {
-          if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
+          if ( todo->doesFloat() || overdue ||
+               todo->dtDue().time() == QTime( 0,0 ) || !todo->dtDue().time().isValid() ) {
+            // Todo has no due-time set or is already overdue
             //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
             mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
