@@ -272,14 +272,17 @@ void AkonadiCollectionView::updateMenu()
     mAssignColor->setEnabled( enableAction );
 
     QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
-    Q_ASSERT( index.isValid() );
-    const Akonadi::Collection collection = collectionFromIndex( index );
-    Q_ASSERT( collection.isValid() );
+    if ( index.isValid() ) {
+      const Akonadi::Collection collection = collectionFromIndex( index );
+      Q_ASSERT( collection.isValid() );
 
-    const QString identifier = QString::number( collection.id() );
-    const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
-    enableAction = enableAction && defaultColor.isValid();
-    mDisableColor->setEnabled( enableAction );
+      const QString identifier = QString::number( collection.id() );
+      const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
+      enableAction = enableAction && defaultColor.isValid();
+      mDisableColor->setEnabled( enableAction );
+    } else {
+      mDisableColor->setEnabled( false );
+    }
   }
 
 }
