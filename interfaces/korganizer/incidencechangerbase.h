@@ -55,7 +55,7 @@ public:
                              ResourceCalendar *res, const QString &subRes,
                              QWidget *parent ) = 0;
 
-  virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc,
+  virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
                                 KOGlobals::WhatChanged, QWidget *parent ) = 0;
   virtual bool deleteIncidence( Incidence *incidence, QWidget *parent ) = 0;
   virtual bool cutIncidence( Incidence *incidence, QWidget *parent ) = 0;
