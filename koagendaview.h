@@ -154,7 +154,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
-    void insertIncidence( Incidence *incidence, const QDate &curDate, int curCol = -1 );
+    void insertIncidence( Incidence *incidence, const QDate &curDate );
     void changeIncidenceDisplayAdded( Incidence *incidence );
     void changeIncidenceDisplay( Incidence *incidence, int mode );
 
@@ -239,6 +239,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
 
   private:
     bool filterByResource( Incidence *incidence );
+    void displayIncidence( Incidence *incidence );
 
   private:
     // view widgets

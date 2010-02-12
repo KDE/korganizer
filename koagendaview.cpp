@@ -1076,84 +1076,121 @@ void KOAgendaView::showIncidences( const Incidence::List &, const QDate & )
   kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
 }
 
-void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
-                                    int curCol )
+void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
 {
-  if ( !filterByResource( incidence ) )
+  if ( !filterByResource( incidence ) ) {
     return;
+  }
 
   // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's
   Event *event = dynamic_cast<Event *>( incidence );
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
 
+  int curCol = mSelectedDates.first().daysTo( curDate );
+
+  // In case incidence->dtStart() isn't visible (crosses bounderies)
   if ( curCol < 0 ) {
-    curCol = mSelectedDates.findIndex( curDate );
+    curCol = 0;
   }
+
   // The date for the event is not displayed, just ignore it
-  if ( curCol < 0 || curCol > int( mSelectedDates.size() ) )
+  if ( curCol >= int( mSelectedDates.count() ) ) {
     return;
+  }
+
+  // Default values, which can never be reached
+  mMinY[curCol] = mAgenda->timeToY( QTime( 23, 59 ) ) + 1;
+  mMaxY[curCol] = mAgenda->timeToY( QTime( 0, 0 ) ) - 1;
 
   int beginX;
   int endX;
+  QDate columnDate;
   if ( event ) {
-    beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
-    endX = curDate.daysTo( event->dateEnd() ) + curCol;
+    QDate firstVisibleDate = mSelectedDates.first();
+    // its crossing bounderies, lets calculate beginX and endX
+    if ( curDate < firstVisibleDate ) {
+      beginX = curCol + firstVisibleDate.daysTo( curDate );
+      endX   = beginX + event->dtStart().daysTo( event->dtEnd() );
+      columnDate = firstVisibleDate;
+    } else {
+      beginX = curCol;
+      endX   = beginX + event->dtStart().daysTo( event->dtEnd() );
+      columnDate = curDate;
+    }
   } else if ( todo ) {
-    if ( ! todo->hasDueDate() ) return;  // todo shall not be displayed if it has no date
-    beginX = curDate.daysTo( todo->dtDue().date() ) + curCol;
-    endX = beginX;
+    if ( !todo->hasDueDate() ) {
+      return;  // todo shall not be displayed if it has no date
+    }
+    columnDate = curDate;
+    beginX = endX = curCol;
+
   } else {
     return;
   }
-
   if ( todo && todo->isOverdue() ) {
-    mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
-  } else if ( incidence->doesFloat() ) {
-// FIXME: This breaks with recurring multi-day events!
-    if ( incidence->recurrence()->doesRecur() ) {
-      mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
-    } else {
-      // Insert multi-day events only on the first day, otherwise it will
-      // appear multiple times
-      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
-        mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
-      }
-    }
+    mAllDayAgenda->insertAllDayItem( incidence, columnDate, curCol, curCol );
+  } else if ( incidence->doesFloat() ||
+              ( todo &&
+                ( todo->dtDue().time() == QTime( 0, 0 ) ||
+                  !todo->dtDue().isValid() ) ) ) {
+      mAllDayAgenda->insertAllDayItem( incidence, columnDate, beginX, endX );
   } else if ( event && event->isMultiDay() ) {
     int startY = mAgenda->timeToY( event->dtStart().time() );
-    QTime endtime( event->dtEnd().time() );
-    if ( endtime == QTime( 0, 0, 0 ) ) endtime = QTime( 23, 59, 59 );
+    QTime endtime = event->dtEnd().time();
+    if ( endtime == QTime( 0, 0, 0 ) ) {
+      endtime = QTime( 23, 59, 59 );
+    }
     int endY = mAgenda->timeToY( endtime ) - 1;
-    if ( (beginX <= 0 && curCol == 0) || beginX == curCol ) {
-      mAgenda->insertMultiItem( event, curDate, beginX, endX, startY, endY );
+    if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
+      mAgenda->insertMultiItem( event, columnDate, beginX, endX, startY, endY );
+
     }
     if ( beginX == curCol ) {
-      mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
-      if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
+      mMaxY[curCol] = mAgenda->timeToY( QTime( 23, 59 ) );
+      if ( startY < mMinY[curCol] ) {
+        mMinY[curCol] = startY;
+      }
     } else if ( endX == curCol ) {
-      mMinY[curCol] = mAgenda->timeToY( QTime(0,0) );
-      if ( endY > mMaxY[curCol] ) mMaxY[curCol] = endY;
+      mMinY[curCol] = mAgenda->timeToY( QTime( 0, 0 ) );
+      if ( endY > mMaxY[curCol] ) {
+        mMaxY[curCol] = endY;
+      }
     } else {
-      mMinY[curCol] = mAgenda->timeToY( QTime(0,0) );
-      mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
+      mMinY[curCol] = mAgenda->timeToY( QTime( 0, 0 ) );
+      mMaxY[curCol] = mAgenda->timeToY( QTime( 23, 59 ) );
     }
   } else {
     int startY = 0, endY = 0;
     if ( event ) {
       startY = mAgenda->timeToY( incidence->dtStart().time() );
-      QTime endtime( event->dtEnd().time() );
-      if ( endtime == QTime( 0, 0, 0 ) ) endtime = QTime( 23, 59, 59 );
+      QTime endtime = event->dtEnd().time();
+      if ( endtime == QTime( 0, 0, 0 ) ) {
+        endtime = QTime( 23, 59, 59 );
+      }
       endY = mAgenda->timeToY( endtime ) - 1;
     }
     if ( todo ) {
       QTime t = todo->dtDue().time();
-      endY = mAgenda->timeToY( t ) - 1;
-      startY = mAgenda->timeToY( t.addSecs( -1800 ) );
+
+      int halfHour = 1800;
+      if ( t.addSecs( -halfHour ) < t ) {
+        startY = mAgenda->timeToY( t.addSecs( -halfHour ) );
+        endY   = mAgenda->timeToY( t ) - 1;
+      } else {
+        startY = 0;
+        endY   = mAgenda->timeToY( t.addSecs( halfHour ) ) - 1;
+      }
     }
-    if ( endY < startY ) endY = startY;
-    mAgenda->insertItem( incidence, curDate, curCol, startY, endY );
-    if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
-    if ( endY > mMaxY[curCol] ) mMaxY[curCol] = endY;
+    if ( endY < startY ) {
+      endY = startY;
+    }
+    mAgenda->insertItem( incidence, columnDate, curCol, startY, endY );
+    if ( startY < mMinY[curCol] ) {
+      mMinY[curCol] = startY;
+    }
+    if ( endY > mMaxY[curCol] ) {
+      mMaxY[curCol] = endY;
+    }
   }
 }
 
@@ -1162,67 +1199,38 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   Todo *todo = dynamic_cast<Todo *>(incidence);
   CalFilter *filter = calendar()->filter();
   if ( ( filter && !filter->filterIncidence( incidence ) ) ||
-       ( todo && !KOPrefs::instance()->showAllDayTodo() ) )
-    return;
-
-  QDate f = mSelectedDates.first();
-  QDate l = mSelectedDates.last();
-  QDate startDt = incidence->dtStart().date();
-
-  if ( incidence->doesRecur() ) {
-    DateList::ConstIterator dit;
-    QDate curDate;
-    for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
-      curDate = *dit;
-// FIXME: This breaks with recurring multi-day events!
-      if ( incidence->recursOn( curDate ) ) {
-        insertIncidence( incidence, curDate );
-      }
-    }
+       ( ( todo && !KOPrefs::instance()->showAllDayTodo() ) ) ) {
     return;
   }
 
-  QDate endDt;
-  if ( incidence->type() == "Event" )
-    endDt = (static_cast<Event *>(incidence))->dateEnd();
-  if ( todo ) {
-    endDt = todo->isOverdue() ? QDate::currentDate()
-                              : todo->dtDue().date();
-
-    if ( endDt >= f && endDt <= l ) {
-      insertIncidence( incidence, endDt );
-      return;
-    }
-  }
-
-  if ( startDt >= f && startDt <= l ) {
-    insertIncidence( incidence, startDt );
-  }
+  displayIncidence( incidence );
 }
 
 void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
   switch ( mode ) {
-    case KOGlobals::INCIDENCEADDED: {
+    case KOGlobals::INCIDENCEADDED:
+    {
       // Add an event. No need to recreate the whole view!
-      // recreating everything even causes troubles: dropping to the day matrix
-      // recreates the agenda items, but the evaluation is still in an agendaItems' code,
-      // which was deleted in the mean time. Thus KOrg crashes...
-      if ( mAllowAgendaUpdate )
-        changeIncidenceDisplayAdded( incidence );
+      // recreating everything even causes troubles: dropping to the
+      // day matrix recreates the agenda items, but the evaluation is
+      // still in an agendaItems' code, which was deleted in the mean time.
+      // Thus KOrg crashes...
+      changeIncidenceDisplayAdded( incidence );
+      updateEventIndicators();
       break;
     }
-    case KOGlobals::INCIDENCEEDITED: {
-      if ( !mAllowAgendaUpdate ) {
-        updateEventIndicators();
-      } else {
+    case KOGlobals::INCIDENCEEDITED:
+    {
+      if ( mAllowAgendaUpdate ) {
         removeIncidence( incidence );
-        updateEventIndicators();
         changeIncidenceDisplayAdded( incidence );
       }
+      updateEventIndicators();
       break;
     }
-    case KOGlobals::INCIDENCEDELETED: {
+    case KOGlobals::INCIDENCEDELETED:
+    {
       mAgenda->removeIncidence( incidence );
       mAllDayAgenda->removeIncidence( incidence );
       updateEventIndicators();
@@ -1230,7 +1238,7 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     }
     default:
       updateView();
-    }
+  }
 }
 
 void KOAgendaView::fillAgenda( const QDate & )
@@ -1250,134 +1258,138 @@ void KOAgendaView::fillAgenda()
   enableAgendaUpdate( true );
   clearView();
 
-  mAllDayAgenda->changeColumns(mSelectedDates.count());
-  mAgenda->changeColumns(mSelectedDates.count());
-  mEventIndicatorTop->changeColumns(mSelectedDates.count());
-  mEventIndicatorBottom->changeColumns(mSelectedDates.count());
+  mAllDayAgenda->changeColumns( mSelectedDates.count() );
+  mAgenda->changeColumns( mSelectedDates.count() );
+  mEventIndicatorTop->changeColumns( mSelectedDates.count() );
+  mEventIndicatorBottom->changeColumns( mSelectedDates.count() );
 
   createDayLabels();
   setHolidayMasks();
 
-  mMinY.resize(mSelectedDates.count());
-  mMaxY.resize(mSelectedDates.count());
+  mMinY.resize( mSelectedDates.count() );
+  mMaxY.resize( mSelectedDates.count() );
 
-  Event::List dayEvents;
-
-  // ToDo items shall be displayed for the day they are due, but only shown today if they are already overdue.
-  // Therefore, get all of them.
-  Todo::List todos  = calendar()->todos();
-
-  mAgenda->setDateList(mSelectedDates);
-
-  QDate today = QDate::currentDate();
+  mAgenda->setDateList( mSelectedDates );
 
   bool somethingReselected = false;
-  DateList::ConstIterator dit;
-  int curCol = 0;
-  for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
-    QDate currentDate = *dit;
-//    kdDebug(5850) << "KOAgendaView::fillAgenda(): " << currentDate.toString()
-//              << endl;
+  Incidence::List incidences = calendar()->incidences();
 
-    dayEvents = calendar()->events(currentDate,
-                                   EventSortStartDate,
-                                   SortDirectionAscending);
+  for ( Incidence::List::ConstIterator it = incidences.begin(); it!=incidences.constEnd(); ++it ) {
+    Incidence *incidence = (*it);
+    displayIncidence( incidence );
 
-    // Default values, which can never be reached
-    mMinY[curCol] = mAgenda->timeToY(QTime(23,59)) + 1;
-    mMaxY[curCol] = mAgenda->timeToY(QTime(0,0)) - 1;
-
-    unsigned int numEvent;
-    for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
-      Event *event = *dayEvents.at(numEvent);
-//      kdDebug(5850) << " Event: " << event->summary() << endl;
-      insertIncidence( event, currentDate, curCol );
-      if( event->uid() == selectedAgendaUid && !selectedAgendaUid.isNull() ) {
-        mAgenda->selectItemByUID( event->uid() );
-        somethingReselected = true;
-      }
-      if( event->uid() == selectedAllDayAgendaUid && !selectedAllDayAgendaUid.isNull() ) {
-        mAllDayAgenda->selectItemByUID( event->uid() );
-        somethingReselected = true;
-      }
-
+    if( incidence->uid() == selectedAgendaUid && !selectedAgendaUid.isNull() ) {
+      mAgenda->selectItemByUID( incidence->uid() );
+      somethingReselected = true;
     }
-//    if (numEvent == 0) kdDebug(5850) << " No events" << endl;
 
-
-    // ---------- [display Todos --------------
-    if ( KOPrefs::instance()->showAllDayTodo() ) {
-      unsigned int numTodo;
-      for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
-        Todo *todo = *todos.at(numTodo);
-
-        if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
-
-        if ( !filterByResource( todo ) ) {
-          // Special handling for groupware to-dos that are in Task folders.
-          // Put them in the top-level "Calendar" folder for lack of a better
-          // place since we never show Task type folders even in the
-          // multiagenda view.
-          bool showInGroupwareEvents = false;
-          if ( resourceCalendar() ) {
-            QString subRes = resourceCalendar()->subresourceIdentifier( todo );
-            if ( resourceCalendar()->subresourceType( subRes ) == "todo" ) {
-              if ( subResourceCalendar().contains( "/.INBOX.directory/Calendar" ) ) {
-                showInGroupwareEvents = true;
-              }
-            }
-          }
-          if ( !showInGroupwareEvents ) {
-            continue;
-          }
-        }
-
-        // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
-        // Already completed items can be displayed on their original due date
-        bool overdue = todo->isOverdue();
-
-        if ( (( todo->dtDue().date() == currentDate) && !overdue) ||
-             (( currentDate == today) && overdue) ||
-             ( todo->recursOn( currentDate ) ) ) {
-          if ( todo->doesFloat() || overdue ||
-               todo->dtDue().time() == QTime( 0,0 ) || !todo->dtDue().time().isValid() ) {
-            // Todo has no due-time set or is already overdue
-            //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
-
-            mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
-          } else {
-            //kdDebug(5850) << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
-
-            int endY = mAgenda->timeToY(todo->dtDue().time()) - 1;
-            int startY = endY - 1;
-
-            mAgenda->insertItem(todo,currentDate,curCol,startY,endY);
-
-            if (startY < mMinY[curCol]) mMinY[curCol] = startY;
-            if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
-          }
-        }
-      }
+    if( incidence->uid() == selectedAllDayAgendaUid && !selectedAllDayAgendaUid.isNull() ) {
+      mAllDayAgenda->selectItemByUID( incidence->uid() );
+      somethingReselected = true;
     }
-    // ---------- display Todos] --------------
 
-    ++curCol;
   }
 
   mAgenda->checkScrollBoundaries();
   updateEventIndicators();
 
-//  mAgenda->viewport()->update();
-//  mAllDayAgenda->viewport()->update();
+  //  mAgenda->viewport()->update();
+  //  mAllDayAgenda->viewport()->update();
 
-// make invalid
+  // make invalid
   deleteSelectedDateTime();
 
   if( !somethingReselected ) {
     emit incidenceSelected( 0, QDate() );
   }
+}
 
-//  kdDebug(5850) << "Fill Agenda done" << endl;
+void KOAgendaView::displayIncidence( Incidence *incidence )
+{
+  QDate today = QDate::currentDate();
+  DateTimeList::iterator t;
+
+  // FIXME: use a visitor here
+  Todo *todo = dynamic_cast<Todo *>( incidence );
+  Event *event = dynamic_cast<Event *>( incidence );
+
+  QDateTime firstVisibleDateTime = mSelectedDates.first();
+  QDateTime lastVisibleDateTime = mSelectedDates.last();
+
+  lastVisibleDateTime.setTime( QTime( 23, 59 ) );
+  firstVisibleDateTime.setTime( QTime( 0, 0 ) );
+  DateTimeList dateTimeList;
+
+  QDateTime incDtStart = incidence->dtStart();
+  QDateTime incDtEnd   = incidence->dtEnd();
+
+  if ( todo &&
+       ( !KOPrefs::instance()->showAllDayTodo() || !todo->hasDueDate() ) ) {
+    return;
+  }
+
+  if ( incidence->doesRecur() ) {
+    int eventDuration = incDtStart.daysTo( incDtEnd );
+
+    // if there's a multiday event that starts before firstVisibleDateTime but ends after
+    // lets include it. timesInInterval() ignores incidences that aren't totaly inside
+    // the range
+    QDateTime startDateTimeWithOffset = firstVisibleDateTime.addDays( -eventDuration );
+    dateTimeList =
+      incidence->recurrence()->timesInInterval( startDateTimeWithOffset,
+                                                lastVisibleDateTime );
+  } else {
+    QDateTime dateToAdd; // date to add to our date list
+    QDateTime incidenceStart;
+    QDateTime incidenceEnd;
+
+    if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
+      // If it's not overdue it will be shown at the original date (not today)
+      dateToAdd = todo->dtDue();
+      incidenceEnd = dateToAdd;
+    } else if ( event ) {
+      dateToAdd = incDtStart;
+      incidenceEnd = incDtEnd;
+
+      if ( !dateToAdd.time().isValid() ) {
+        // so comparisons with < > actually work
+        dateToAdd.setTime( QTime( 0, 0 ) );
+      }
+    }
+
+    if  ( dateToAdd <= lastVisibleDateTime && incidenceEnd >= firstVisibleDateTime ) {
+      dateTimeList += dateToAdd;
+    }
+  }
+
+  // ToDo items shall be displayed today if they are already overdude
+  QDateTime dateTimeToday = today;
+  if ( todo &&
+       todo->isOverdue() &&
+       dateTimeToday >= firstVisibleDateTime &&
+       dateTimeToday <= lastVisibleDateTime ) {
+
+    bool doAdd = true;
+
+    if ( todo->doesRecur() ) {
+      /* If there's a recurring instance showing up today don't add "today" again
+       * we don't want the event to appear duplicated */
+      for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
+        if ( (*t).date() == today ) {
+          doAdd = false;
+          break;
+       }
+      }
+    }
+
+    if ( doAdd ) {
+      dateTimeList += dateTimeToday;
+    }
+  }
+
+  for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
+    insertIncidence( incidence, (*t).date() );
+  }
 }
 
 void KOAgendaView::clearView()
@@ -1608,8 +1620,22 @@ void KOAgendaView::clearTimeSpanSelection()
   deleteSelectedDateTime();
 }
 
-bool KOAgendaView::filterByResource(Incidence * incidence)
+bool KOAgendaView::filterByResource( Incidence *incidence )
 {
+  // Special handling for groupware to-dos that are in Task folders.
+  // Put them in the top-level "Calendar" folder for lack of a better
+  // place since we never show Task type folders even in the
+  // multiagenda view.
+  if ( resourceCalendar() && incidence->type() == "Todo" ) {
+    QString subRes = resourceCalendar()->subresourceIdentifier( incidence );
+    if ( resourceCalendar()->subresourceType( subRes ) == "todo" ) {
+      if ( subResourceCalendar().contains( "/.INBOX.directory/Calendar" ) ) {
+        return true;
+      }
+    }
+  }
+
+  // Normal handling
   if ( !resourceCalendar() )
     return true;
   CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
