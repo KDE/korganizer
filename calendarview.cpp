@@ -1788,7 +1788,7 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
 
 void CalendarView::openAddressbook()
 {
-  KRun::runCommand( "kcontactmanager", topLevelWidget() );
+  KRun::runCommand( "kaddressbook", topLevelWidget() );
 }
 
 bool CalendarView::isReadOnly() const
