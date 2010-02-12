@@ -321,7 +321,7 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, const QDate &date, bool tmpl )
   }
 
   if ( todo->hasStartDate() ) {
-    KDateTime startDT = todo->dtStart();
+    KDateTime startDT = todo->dtStart( true );
     if ( todo->recurs() && date.isValid() ) {
       startDT.setDate( date );
     }
@@ -415,6 +415,8 @@ void KOEditorGeneralTodo::fillTodo( Todo *todo )
   // TODO: Don't use the due date for the recurrence, but the start date (cf. rfc 2445)
   if ( todo->recurs() && !mStartDateModified ) {
     todo->setDtDue( tmpDueDT );
+    IncidenceBase *ib = static_cast<Todo *>( todo );
+    ib->setDtStart( tmpStartDT );
   } else {
     if ( mDueCheck->isChecked() ) {
       todo->setDtDue( tmpDueDT, true );
