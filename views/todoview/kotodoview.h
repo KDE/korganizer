@@ -51,7 +51,6 @@ class QCheckBox;
 class QDate;
 class QItemSelection;
 class QModelIndex;
-class QSortFilterProxyModel;
 
 class KOTodoModel;
 class KOTodoViewView;

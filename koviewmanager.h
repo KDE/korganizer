@@ -51,10 +51,6 @@ namespace KOrg {
 }
 using namespace KOrg;
 
-namespace KCal {
-  class Incidence;
-}
-using namespace KCal;
 
 /**
   This class manages the views of the calendar. It owns the objects and handles
