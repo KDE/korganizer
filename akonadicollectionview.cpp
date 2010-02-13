@@ -280,11 +280,14 @@ void AkonadiCollectionView::updateMenu()
       const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
       enableAction = enableAction && defaultColor.isValid();
       mDisableColor->setEnabled( enableAction );
+      const QString resource = collection.resource();
+      Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
+      mEditAction->setEnabled( !instance.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
     } else {
       mDisableColor->setEnabled( false );
+      mEditAction->setEnabled( false );
     }
   }
-
 }
 
 void AkonadiCollectionView::selectionChanged()
