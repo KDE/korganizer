@@ -49,31 +49,6 @@
 #include <QPen>
 #include <QToolTip>
 
-#if 0
-#include "kodialogmanager.h"
-
-#include <kcal/resourcecalendar.h>
-
-#include <kaction.h>
-#include <kstandardaction.h>
-#include <kglobal.h>
-#include <kdebug.h>
-#include <kiconloader.h>
-
-#include <QEvent>
-#include <QPixmap>
-#include <QApplication>
-#include <QDragLeaveEvent>
-#include <QPaintEvent>
-#include <QDragMoveEvent>
-#include <QFrame>
-#include <QDropEvent>
-#include <QResizeEvent>
-#include <QDragEnterEvent>
-#include <QCursor>
-#endif
-
-
 // ============================================================================
 //  K O D A Y M A T R I X
 // ============================================================================
