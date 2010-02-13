@@ -864,7 +864,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     // draw selected days with special color
     // DO NOT specially highlight holidays in selection !
     if ( i >= mSelStart && i <= mSelEnd ) {
-      p.setPen( QColor( "white" ) );
+      p.setPen( Qt::white );
     }
 
     p.drawText( col * dwidth, row * dheight, dwidth, dheight,
