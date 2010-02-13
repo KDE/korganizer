@@ -97,6 +97,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   mNameEdit = new KPIM::AddresseeLineEdit( parent );
   mNameEdit->setWhatsThis( whatsThis );
   mNameEdit->setClickMessage( i18nc( "@label", "Click to add a new attendee" ) );
+  mNameEdit->setClearButtonShown( true );
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
   connect( mNameEdit, SIGNAL(textChanged(const QString &)), SLOT(updateAttendee()) );
