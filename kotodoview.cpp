@@ -1118,7 +1118,6 @@ void KOTodoView::addQuickTodo()
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                         KOPrefs::instance()->email() ) );
     if ( !mChanger->addIncidence( todo, 0, QString(), this ) ) {
-      KODialogManager::errorSaveIncidence( this, todo );
       delete todo;
       return;
     }
