@@ -58,6 +58,9 @@
 #include "alarmdialog.h"
 #include "alarmdialog.moc"
 
+static int defSuspendVal = 5;
+static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
+
 class AlarmListItem : public KListViewItem
 {
   public:
@@ -143,7 +146,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char 
 
   QLabel *l = new QLabel( i18n("Suspend &duration:"), suspendBox );
   mSuspendSpin = new QSpinBox( 1, 9999, 1, suspendBox );
-  mSuspendSpin->setValue( 5 );  // default suspend duration
+  mSuspendSpin->setValue( defSuspendVal );  // default suspend duration
   l->setBuddy( mSuspendSpin );
 
   mSuspendUnit = new KComboBox( suspendBox );
@@ -151,6 +154,8 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char 
   mSuspendUnit->insertItem( i18n("hour(s)") );
   mSuspendUnit->insertItem( i18n("day(s)") );
   mSuspendUnit->insertItem( i18n("week(s)") );
+  mSuspendUnit->setCurrentItem( defSuspendUnit );
+
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
   setMinimumSize( 300, 200 );
@@ -362,9 +367,9 @@ void AlarmDialog::suspend()
   }
 
   setTimer();
-  if ( activeCount() == 0 )
+  if ( activeCount() == 0 ) {
     accept();
-  else {
+  } else {
     updateButtons();
     showDetails();
   }
@@ -398,6 +403,10 @@ void AlarmDialog::show()
 
   updateButtons();
   showDetails();
+
+  // reset the default suspend time
+  mSuspendSpin->setValue( defSuspendVal );
+  mSuspendUnit->setCurrentItem( defSuspendUnit );
 
   KDialogBase::show();
   KWin::setState( winId(), NET::KeepAbove );
