@@ -117,6 +117,18 @@ class KDE_EXPORT BaseView : public QWidget
     */
     virtual DateList selectedDates() = 0;
 
+    /**
+      Returns the start of the selection, or an invalid QDateTime if there is no selection
+      or the view doesn't support selecting cells.
+    */
+    virtual QDateTime selectionStart() { return QDateTime(); }
+
+    /**
+       Returns the end of the selection, or an invalid QDateTime if there is no selection
+       or the view doesn't support selecting cells.
+     */
+    virtual QDateTime selectionEnd() { return QDateTime(); }
+
     virtual CalPrinterBase::PrintType printType()
     {
       return CalPrinterBase::Month;

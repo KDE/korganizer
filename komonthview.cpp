@@ -1005,6 +1005,21 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   updateView();
 }
 
+QDateTime KOMonthView::selectionStart()
+{
+  if ( mSelectedCell) {
+    return QDateTime( mSelectedCell->date() );
+  } else {
+    return QDateTime();
+  }
+}
+
+QDateTime KOMonthView::selectionEnd()
+{
+  // Only one cell can be selected (for now)
+  return selectionStart();
+}
+
 void KOMonthView::showIncidences( const Incidence::List &, const QDate & )
 {
   kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;

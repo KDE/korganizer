@@ -372,6 +372,10 @@ QDate CalendarView::activeDate( bool fallbackToToday )
 {
   KOrg::BaseView *curView = mViewManager->currentView();
   if ( curView ) {
+    if ( curView->selectionStart().isValid() ) {
+      return curView->selectionStart().date();
+    }
+
     // Try the view's selectedDates()
     if ( !curView->selectedDates().isEmpty() ) {
       if ( curView->selectedDates().first().isValid() ) {
@@ -384,8 +388,7 @@ QDate CalendarView::activeDate( bool fallbackToToday )
   if ( fallbackToToday ) {
     return QDate::currentDate();
   } else {
-    return QDate();
-    //mDateNavigator->selectedDates().first();
+    return mNavigator->selectedDates().first();
   }
 }
 
