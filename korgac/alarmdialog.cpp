@@ -63,6 +63,9 @@
 
 using namespace KCal;
 
+static int defSuspendVal = 5;
+static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
+
 class ReminderListItem : public QTreeWidgetItem
 {
   public:
@@ -210,7 +213,7 @@ AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
 
   mSuspendSpin = new QSpinBox( suspendBox );
   mSuspendSpin->setRange( 1, 9999 );
-  mSuspendSpin->setValue( 5 );  // default suspend duration
+  mSuspendSpin->setValue( defSuspendVal );  // default suspend duration
   mSuspendSpin->setToolTip(
     i18nc( "@info:tooltip",
            "Suspend the reminders by this amount of time" ) );
@@ -235,6 +238,8 @@ AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
            "Each reminder for the selected incidences will be suspended "
            "using this time unit. You can set the number of time units "
            "in the adjacent number entry input." ) );
+
+  mSuspendUnit->setCurrentIndex( defSuspendUnit );
 
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
@@ -524,6 +529,10 @@ void AlarmDialog::show()
 
   // make sure no items are selected so pressing <enter> cannot do anything.
   mIncidenceTree->setItemSelected( mIncidenceTree->topLevelItem( 0 ), false );
+
+  // reset the default suspend time
+  mSuspendSpin->setValue( defSuspendVal );
+  mSuspendUnit->setCurrentIndex( defSuspendUnit );
 
   KDialog::show();
   if ( !mPos.isNull() ) {
