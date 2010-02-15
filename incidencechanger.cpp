@@ -343,7 +343,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res
   // along with any subResource from the incidence.
   ResourceCalendar *pRes = res;
   QString pSubRes = subRes;
-  QString pResName = i18n( "the selected calendar", "selected" );
+  QString pResName;
   if ( !pRes ) {
     if ( stdcal ) {
       pRes = stdcal->resource( incidence );
@@ -365,12 +365,19 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res
   }
 
   if ( !success ) {
-    KMessageBox::sorry(
-      parent,
-      i18n( "Unable to save %1 \"%2\" to calendar %3." ).
-      arg( i18n( incidence->type() ) ).
-      arg( incidence->summary() ).
-      arg( pResName ) );
+    QString errMessage;
+    if ( pResName.isEmpty() ) {
+      errMessage = i18n( "Unable to save %1 \"%2\"." ).
+                   arg( i18n( incidence->type() ) ).
+                   arg( incidence->summary() );
+    } else {
+      errMessage = i18n( "Unable to save %1 \"%2\" to calendar %3." ).
+                   arg( i18n( incidence->type() ) ).
+                   arg( incidence->summary() ).
+                   arg( pResName );
+    }
+
+    KMessageBox::sorry( parent, errMessage );
     return false;
   }
 
