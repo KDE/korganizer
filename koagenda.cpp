@@ -540,7 +540,8 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 
 void KOAgenda::emitNewEventForSelection()
 {
-  emit newEventSignal( 0/*ResourceCalendar*/, QString()/*subResource*/);
+  QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
+  emit newEventSignal( p.first, p.second );
 }
 
 void KOAgenda::finishTypeAhead()
@@ -716,7 +717,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseButtonDblClick:
       if (object == viewport()) {
         selectItem(0);
-        emit newEventSignal( 0/*ResourceCalendar*/, QString()/*subResource*/);
+        QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
+        emit newEventSignal( p.first, p.second );
       } else {
         KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>(object);
         if (doubleClickedItem) {
