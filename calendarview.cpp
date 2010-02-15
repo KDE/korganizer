@@ -2044,21 +2044,38 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
     showIncidence( incidence );
     return true;
   }
+  Incidence *savedIncidence = incidence->clone();
+  Incidence *incToChange;
 
-  if ( !isCounter && !mChanger->beginChange( incidence ) ) {
-    warningChangeFailed( incidence );
-    showIncidence( incidence );
-    return false;
+  if ( incidence->doesRecur() ) {
+    incToChange = handleRecurringIncAboutToBeEdited( incidence );
+  } else {
+    incToChange = incidence;
   }
 
-  kdDebug(5850) << "CalendarView::editIncidence() new IncidenceEditor" << endl;
-  KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence );
-  connectIncidenceEditor( incidenceEditor );
+  // If the user pressed cancel incToChange is 0
+  if ( incToChange ) {
+    if ( !isCounter && !mChanger->beginChange( incToChange ) ) {
+      warningChangeFailed( incToChange );
+      showIncidence( incToChange );
 
-  mDialogList.insert( incidence, incidenceEditor );
-  incidenceEditor->editIncidence( incidence, activeDate(), mCalendar );
-  incidenceEditor->show();
-  return true;
+      return false;
+    }
+
+    kdDebug(5850) << "CalendarView::editIncidence() new IncidenceEditor" << endl;
+    KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incToChange );
+    connectIncidenceEditor( incidenceEditor );
+
+    mDialogList.insert( incToChange, incidenceEditor );
+    if ( incidence != incToChange ) {
+      incidenceEditor->setRecurringIncidence( savedIncidence, incidence );
+    }
+    incidenceEditor->editIncidence( incToChange, activeDate(), mCalendar );
+    incidenceEditor->show();
+    return true;
+  } else {
+    return false;
+  }
 }
 
 void CalendarView::deleteSubTodosIncidence ( Todo *todo )
@@ -2417,6 +2434,61 @@ void CalendarView::resourcesChanged()
   mViewManager->resourcesChanged();
   mDateNavigator->setUpdateNeeded();
   updateView();
+}
+
+Incidence* CalendarView::handleRecurringIncAboutToBeEdited( Incidence *inc,
+                                                            const QDate &itemDate )
+{
+  Incidence *incToReturn = 0;
+
+  const QDate &dt = itemDate.isValid() ? itemDate : activeDate();
+
+  int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
+            i18n("The item you try to change is a recurring item. Shall the changes "
+                  "be applied only to this single occurrence, only to the future items, "
+                  "or to all items in the recurrence?"),
+            i18n("Changing Recurring Item"),
+            i18n("Only &This Item"), i18n("Only &Future Items"), i18n("&All Occurrences") );
+  switch ( res ) {
+    case KMessageBox::Ok: // All occurrences
+      incToReturn = inc;
+      break;
+    case KMessageBox::Yes: { // Just this occurrence
+      // Dissociate this occurrence:
+      // create clone of event, set relation to old event, set cloned event
+      // for mActionItem, add exception date to old event, changeIncidence
+      // for the old event, remove the recurrence from the new copy and then just
+      // go on with the newly adjusted mActionItem and let the usual code take
+      // care of the new time!
+      startMultiModify( i18n("Dissociate event from recurrence") );
+
+      incToReturn = mCalendar->dissociateOccurrence( inc, dt );
+      if ( !incToReturn ) {
+        KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
+            "calendar. No change will be done."), i18n("Error Occurred") );
+      }
+
+      break; }
+    case KMessageBox::No/*Future*/: { // All future occurrences
+      // Dissociate this occurrence:
+      // create clone of event, set relation to old event, set cloned event
+      // for mActionItem, add recurrence end date to old event, changeIncidence
+      // for the old event, adjust the recurrence for the new copy and then just
+      // go on with the newly adjusted mActionItem and let the usual code take
+      // care of the new time!
+      startMultiModify( i18n("Split future recurrences") );
+
+      incToReturn = mCalendar->dissociateOccurrence( inc, dt, false );
+      if ( !incToReturn ) {
+        // por aqui controlo de erros
+        KMessageBox::sorry( this, i18n("Unable to add the future items to the "
+            "calendar. No change will be done."), i18n("Error Occurred") );
+      }
+
+      break; }
+  }
+
+  return incToReturn;
 }
 
 #include "calendarview.moc"

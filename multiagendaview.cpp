@@ -40,12 +40,14 @@ for(QValueList<KOAgendaView*>::ConstIterator it = mAgendaViews.constBegin(); \
 
 using namespace KOrg;
 
-MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *name ) :
+MultiAgendaView::MultiAgendaView( Calendar * cal, CalendarView *calendarView,
+                                 QWidget * parent, const char *name ) :
     AgendaView( cal, parent, name ),
     mSelectedAgendaView( 0 ),
     mLastMovedSplitter( 0 ),
     mUpdateOnShow( false ),
-    mPendingChanges( true )
+    mPendingChanges( true ),
+    mCalendarView( calendarView )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
 
@@ -107,7 +109,7 @@ void MultiAgendaView::recreateViews()
   CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
   if ( !calres ) {
     // fallback to single-agenda
-    KOAgendaView* av = new KOAgendaView( calendar(), mTopBox );
+    KOAgendaView* av = new KOAgendaView( calendar(), mCalendarView, mTopBox );
     mAgendaViews.append( av );
     mAgendaWidgets.append( av );
     mSelectedAgendaView = av;
@@ -394,7 +396,7 @@ void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * re
   }
 
   // Now, the sub agenda view
-  KOAgendaView* av = new KOAgendaView( calendar(), box, 0, true );
+  KOAgendaView* av = new KOAgendaView( calendar(), mCalendarView, box, 0, true );
   mSelectedAgendaView = av;
   av->setReadOnly( readOnlyView );
   av->setResource( res, subRes );

@@ -29,6 +29,7 @@
 #include <qguardedptr.h>
 #include <libkcal/incidencebase.h>
 
+#include "calendarview.h"
 
 class QPopupMenu;
 class QTime;
@@ -74,9 +75,10 @@ class KOAgenda : public QScrollView
 {
   Q_OBJECT
   public:
-    KOAgenda ( int columns, int rows, int columnSize, QWidget *parent=0,
-               const char *name = 0, WFlags f = 0 );
-    KOAgenda ( int columns, QWidget *parent = 0,
+    KOAgenda ( int columns, int rows, int columnSize, CalendarView *calendarView,
+               QWidget *parent=0, const char *name = 0, WFlags f = 0 );
+
+    KOAgenda ( int columns, CalendarView *calendarView, QWidget *parent = 0,
                const char *name = 0, WFlags f = 0 );
     virtual ~KOAgenda();
 
@@ -375,6 +377,8 @@ class KOAgenda : public QScrollView
 
     bool mReturnPressed;
     KOrg::IncidenceChangerBase *mChanger;
+
+    CalendarView *mCalendarView;
 };
 
 #endif // KOAGENDA_H

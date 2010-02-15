@@ -195,7 +195,9 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar )
+void KOEventEditor::editIncidence( Incidence *incidence,
+                                   const QDate &date,
+                                   Calendar *calendar )
 {
   Event*event = dynamic_cast<Event*>(incidence);
   if ( event ) {
@@ -203,7 +205,9 @@ void KOEventEditor::editIncidence( Incidence *incidence, const QDate &date, Cale
 
     mEvent = event;
     mCalendar = calendar;
-    readEvent( mEvent, mCalendar, date );
+
+    const QDate &dt = mRecurIncidence ? date : incidence->dtStart().date();
+    readEvent( mEvent, mCalendar, dt );
   }
 
   setCaption( i18n("Edit Event") );
@@ -285,7 +289,15 @@ bool KOEventEditor::processInput()
         event->setSummary( i18n("My counter proposal for: %1").arg( mEvent->summary() ) );
         mChanger->addIncidence( event, 0, QString(), this );
       } else {
-        mChanger->changeIncidence( oldEvent, mEvent, KOGlobals::NOTHING_MODIFIED, this );
+        if ( mRecurIncidence && mRecurIncidenceAfterDissoc ) {
+          mChanger->addIncidence( mEvent, 0, QString(), this );
+
+          mChanger->changeIncidence( mRecurIncidence, mRecurIncidenceAfterDissoc,
+                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
+
+        } else {
+          mChanger->changeIncidence( oldEvent, mEvent, KOGlobals::NOTHING_MODIFIED, this );
+        }
       }
     }
     delete event;
@@ -314,6 +326,11 @@ void KOEventEditor::processCancel()
   kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
 
   if ( mFreeBusy ) mFreeBusy->cancelReload();
+
+  if ( mRecurIncidence && mRecurIncidenceAfterDissoc ) {
+    *mRecurIncidenceAfterDissoc = *mRecurIncidence;
+  }
+
 }
 
 void KOEventEditor::deleteEvent()

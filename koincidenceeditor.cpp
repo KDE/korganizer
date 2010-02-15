@@ -59,7 +59,8 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mAttendeeEditor( 0 ), mResource( 0 ), mIsCounter( false ), mIsCreateTask( false )
+    mAttendeeEditor( 0 ), mResource( 0 ), mIsCounter( false ), mIsCreateTask( false ),
+    mRecurIncidence( 0 ), mRecurIncidenceAfterDissoc( 0 )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -404,6 +405,13 @@ void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
     setButtonOK( i18n( "Counter proposal" ) );
     showButtonApply( false );
   }
+}
+
+void KOIncidenceEditor::setRecurringIncidence ( Incidence *originalIncidence,
+                                                Incidence *incAfterDissociation )
+{
+  mRecurIncidence = originalIncidence;
+  mRecurIncidenceAfterDissoc = incAfterDissociation;
 }
 
 

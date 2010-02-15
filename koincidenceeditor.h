@@ -74,6 +74,20 @@ class KOIncidenceEditor : public KDialogBase
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
 
+    /**
+      This should be called when editing only one occurrence of a recurring incidence,
+      before showing the editor.
+
+      It gives the editor a pointer to the original incidence, which contains all occurrences
+      and a pointer to the original incidence already dissociated from the event (mEvent).
+
+      If the user presses ok/apply the changes made to the incAfterDissociation are commited
+      to the callendar through mChanger.
+
+      If the user presses cancel we restore originalIncidence and all dissociations are discarded
+    */
+    void setRecurringIncidence( Incidence *originalIncidence, Incidence *incAfterDissociation );
+
   public slots:
     /** Edit an existing todo. */
     virtual void editIncidence(Incidence *, const QDate &, Calendar *) = 0;
@@ -160,6 +174,10 @@ class KOIncidenceEditor : public KDialogBase
     QString mSubResource;
     bool mIsCounter;
     bool mIsCreateTask;
+
+    Incidence *mRecurIncidence;
+    Incidence *mRecurIncidenceAfterDissoc;
+
 };
 
 #endif

@@ -564,6 +564,23 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     */
     QDate activeDate( bool fallbackToToday = false );
 
+    /**
+       Asks the user if he wants to edit only this occurrence, all
+       occurrences or only future occurrences, and then dissociates
+       the incidence if needed.
+
+       @param inc The recurring incidence that's about to be edited.
+       @param itemDate The date of the selected view item
+
+       @return A pointer to the incidence that should be edited which is
+               0 if the user pressed cancel, inc if the user pressed
+               "All Occurrences", or points to a newly created incidence
+               when dissociation is involved in which case the caller
+               is responsible to add it to the calendar and freeing it.
+     **/
+    Incidence* handleRecurringIncAboutToBeEdited( Incidence *inc,
+                                                  const QDate &itemDate = QDate() );
+
   protected:
     void setIncidenceChanger( IncidenceChangerBase *changer );
 

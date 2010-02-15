@@ -330,7 +330,10 @@ void KOViewManager::showAgendaView()
   }
 
   if ( !mAgendaView && showMerged ) {
-    mAgendaView = new KOAgendaView(mMainView->calendar(), parent, "KOViewManager::AgendaView");
+    mAgendaView = new KOAgendaView( mMainView->calendar(),
+                                    mMainView,
+                                    parent,
+                                    "KOViewManager::AgendaView" );
 
     addView(mAgendaView);
 
@@ -346,7 +349,7 @@ void KOViewManager::showAgendaView()
 
   if ( !mAgendaSideBySideView && showSideBySide ) {
     mAgendaSideBySideView =
-      new MultiAgendaView( mMainView->calendar(), parent,
+      new MultiAgendaView( mMainView->calendar(), mMainView, parent,
                         "KOViewManager::AgendaSideBySideView" );
 
     addView(mAgendaSideBySideView);

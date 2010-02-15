@@ -126,6 +126,7 @@ class KOEventView : public KOrg::BaseView
 
   protected:
     Incidence *mCurrentIncidence;  // Incidence selected e.g. for a context menu
+
 };
 
 #endif

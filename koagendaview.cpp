@@ -221,8 +221,13 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent,const char *name, bool isSideBySide ) :
-  KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
+KOAgendaView::KOAgendaView( Calendar *cal,
+                            CalendarView *calendarView,
+                            QWidget *parent,
+                            const char *name,
+                            bool isSideBySide ) :
+  KOrg::AgendaView (cal, parent,name), mExpandButton( 0 ),
+  mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
   mIsSideBySide( isSideBySide ),
   mPendingChanges( true )
@@ -290,7 +295,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent,const char *name, boo
     label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::WordBreak );
   }
 
-  mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
+  mAllDayAgenda = new KOAgenda( 1, calendarView, mAllDayFrame );
   mAllDayAgenda->setCalendar( calendar() );
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
@@ -312,7 +317,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent,const char *name, boo
   agendaLayout->addWidget(mTimeLabels,1,0);
 
   // Create agenda
-  mAgenda = new KOAgenda(1,96,KOPrefs::instance()->mHourSize,agendaFrame);
+  mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, calendarView, agendaFrame );
   mAgenda->setCalendar( calendar() );
   agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
   agendaLayout->setColStretch(1,1);
@@ -416,6 +421,7 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
 
   connect( agenda, SIGNAL( itemModified( KOAgendaItem * ) ),
                    SLOT( updateEventDates( KOAgendaItem * ) ) );
+
   connect( agenda, SIGNAL( enableAgendaUpdate( bool ) ),
                    SLOT( enableAgendaUpdate( bool ) ) );
 

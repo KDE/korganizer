@@ -31,6 +31,7 @@
 #include <libkcal/calendar.h>
 
 #include "calprinter.h"
+#include "calendarview.h"
 
 #include "agendaview.h"
 
@@ -103,7 +104,11 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
 {
     Q_OBJECT
   public:
-    KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0, bool isSideBySide = false );
+    KOAgendaView( Calendar *cal,
+                  CalendarView *calendarView,
+                  QWidget *parent = 0,
+                  const char *name = 0,
+                  bool isSideBySide = false );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */

@@ -61,8 +61,8 @@
 #include <math.h>
 
 ////////////////////////////////////////////////////////////////////////////
-MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
-    : QFrame(_agenda->viewport(),name), agenda(_agenda)
+MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name )
+    : QFrame(_agenda->viewport(), name), agenda(_agenda)
 {
   setLineWidth(0);
   setMargin(0);
@@ -170,8 +170,8 @@ void MarcusBains::updateLocationRecalc( bool recalculate )
 /*
   Create an agenda widget with rows rows and columns columns.
 */
-KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
-                    const char *name, WFlags f )
+KOAgenda::KOAgenda( int columns, int rows, int rowSize, CalendarView *calendarView,
+                    QWidget *parent, const char *name, WFlags f )
   : QScrollView( parent, name, f ), mChanger( 0 )
 {
   mColumns = columns;
@@ -180,6 +180,8 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
   if ( mGridSpacingY < 4 || mGridSpacingY > 30 ) {
     mGridSpacingY = 10;
   }
+
+  mCalendarView = calendarView;
 
   mAllDayMode = false;
 
@@ -192,13 +194,14 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
   Create an agenda widget with columns columns and one row. This is used for
   all-day events.
 */
-KOAgenda::KOAgenda( int columns, QWidget *parent, const char *name, WFlags f )
-  : QScrollView( parent, name, f )
+KOAgenda::KOAgenda( int columns, CalendarView *calendarView, QWidget *parent,
+                    const char *name, WFlags f ) : QScrollView( parent, name, f )
 {
   mColumns = columns;
   mRows = 1;
   mGridSpacingY = 24;
   mAllDayMode = true;
+  mCalendarView = calendarView;
   setVScrollBarMode( AlwaysOff );
 
   init();
@@ -718,7 +721,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
         KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>(object);
         if (doubleClickedItem) {
           selectItem(doubleClickedItem);
-          emit editIncidenceSignal(doubleClickedItem->incidence());
+          emit editIncidenceSignal( doubleClickedItem->incidence() );
         }
       }
       break;
@@ -1073,90 +1076,36 @@ void KOAgenda::endItemAction()
   setCursor( arrowCursor );
   bool multiModify = false;
   // FIXME: do the cloning here...
-  Incidence* inc = mActionItem->incidence();
+  Incidence *inc = mActionItem->incidence();
 
   mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
                                 mStartCell.y() == mEndCell.y() );
 
   if ( mItemMoved ) {
-    bool modify = true;
+    Incidence *incToChange = inc;
     if ( mActionItem->incidence()->doesRecur() ) {
-      int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
-          i18n("The item you try to change is a recurring item. Shall the changes "
-               "be applied only to this single occurrence, only to the future items, "
-               "or to all items in the recurrence?"),
-          i18n("Changing Recurring Item"),
-          i18n("Only &This Item"), i18n("Only &Future Items"), i18n("&All Occurrences") );
-      switch ( res ) {
-        case KMessageBox::Ok: // All occurrences
-            // Moving the whole sequene of events is handled by the itemModified below.
-            modify = true;
-            break;
-        case KMessageBox::Yes: { // Just this occurrence
-            // Dissociate this occurrence:
-            // create clone of event, set relation to old event, set cloned event
-            // for mActionItem, add exception date to old event, changeIncidence
-            // for the old event, remove the recurrence from the new copy and then just
-            // go on with the newly adjusted mActionItem and let the usual code take
-            // care of the new time!
-            modify = true;
-            multiModify = true;
-            emit startMultiModify( i18n("Dissociate event from recurrence") );
-            Incidence* oldInc = mActionItem->incidence();
-            Incidence* oldIncSaved = mActionItem->incidence()->clone();
-            Incidence* newInc = mCalendar->dissociateOccurrence(
-              oldInc, mActionItem->itemDate() );
-            if ( newInc ) {
-              // don't recreate items, they already have the correct position
-              emit enableAgendaUpdate( false );
-              mActionItem->dissociateFromMultiItem();
-              mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc, 0, QString(), this );
-              emit enableAgendaUpdate( true );
-              mChanger->changeIncidence( oldIncSaved, oldInc,
-                                         KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
-            } else {
-              KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
-                  "calendar. No change will be done."), i18n("Error Occurred") );
-            }
-            delete oldIncSaved;
-            break; }
-        case KMessageBox::No/*Future*/: { // All future occurrences
-            // Dissociate this occurrence:
-            // create clone of event, set relation to old event, set cloned event
-            // for mActionItem, add recurrence end date to old event, changeIncidence
-            // for the old event, adjust the recurrence for the new copy and then just
-            // go on with the newly adjusted mActionItem and let the usual code take
-            // care of the new time!
-            modify = true;
-            multiModify = true;
-            emit startMultiModify( i18n("Split future recurrences") );
-            Incidence* oldInc = mActionItem->incidence();
-            Incidence* oldIncSaved = mActionItem->incidence()->clone();
-            Incidence* newInc = mCalendar->dissociateOccurrence(
-                oldInc, mActionItem->itemDate(), false );
-            if ( newInc ) {
-              emit enableAgendaUpdate( false );
-              mActionItem->dissociateFromMultiItem();
-              mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc, 0, QString(), this );
-              emit enableAgendaUpdate( true );
-              mChanger->changeIncidence( oldIncSaved, oldInc,
-                                         KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
-            } else {
-              KMessageBox::sorry( this, i18n("Unable to add the future items to the "
-                  "calendar. No change will be done."), i18n("Error Occurred") );
-            }
-            delete oldIncSaved;
-            break; }
-        default:
-          modify = false;
-          mActionItem->resetMove();
-          placeSubCells( mActionItem );
+
+      Incidence* oldIncSaved = inc->clone();
+
+      incToChange = mCalendarView->handleRecurringIncAboutToBeEdited( inc,
+                                                                      mActionItem->itemDate() );
+
+      if ( incToChange && incToChange != inc ) {
+        multiModify = true;
+        enableAgendaUpdate( false );
+
+        mChanger->addIncidence( incToChange, 0, QString(), this );
+        enableAgendaUpdate( true );
+
+        mChanger->changeIncidence( oldIncSaved, inc,
+                                    KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
+
+        mActionItem->dissociateFromMultiItem();
+        mActionItem->setIncidence( incToChange );
       }
     }
 
-    if ( modify ) {
+    if ( incToChange ) {
       mActionItem->endMove();
       KOAgendaItem *placeItem = mActionItem->firstMultiItem();
       if  ( !placeItem ) {
@@ -1181,6 +1130,10 @@ void KOAgenda::endItemAction()
       mChanger->endChange( inc );
       emit itemModified( modif );
     } else {
+
+      mActionItem->resetMove();
+      placeSubCells( mActionItem );
+
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
       mChanger->endChange( inc );
@@ -1193,7 +1146,9 @@ void KOAgenda::endItemAction()
   mActionItem = 0;
   mItemMoved = false;
 
-  if ( multiModify ) emit endMultiModify();
+  if ( multiModify ) {
+    emit endMultiModify();
+  }
 
   kdDebug(5850) << "KOAgenda::endItemAction() done" << endl;
 }

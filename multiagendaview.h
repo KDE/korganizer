@@ -20,6 +20,7 @@
 #define KORG_MULTIAGENDAVIEW_H_H
 
 #include "agendaview.h"
+#include "calendarview.h"
 
 class QScrollView;
 class QHBox;
@@ -41,7 +42,8 @@ class MultiAgendaView : public AgendaView
 {
   Q_OBJECT
   public:
-    explicit MultiAgendaView( Calendar* cal, QWidget *parent = 0, const char *name = 0 );
+    explicit MultiAgendaView( Calendar* cal, CalendarView *calendarView,
+                              QWidget *parent = 0, const char *name = 0 );
     ~MultiAgendaView();
 
     KOAgendaView *selectedAgendaView() { return mSelectedAgendaView; }
@@ -104,6 +106,7 @@ class MultiAgendaView : public AgendaView
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
     bool mPendingChanges;
+    CalendarView *mCalendarView;
 };
 
 }
