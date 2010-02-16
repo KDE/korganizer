@@ -367,6 +367,10 @@ void AlarmDialog::suspend()
     }
   }
 
+  // save suspended alarms too so they can be restored on restart
+  // kolab/issue4108
+  slotSave();
+
   setTimer();
   if ( activeCount() == 0 ) {
     accept();
