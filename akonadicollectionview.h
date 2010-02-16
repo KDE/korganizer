@@ -100,6 +100,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void assignColor();
     void disableColor();
     void editCalendar();
+    void setDefaultCalendar();
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
@@ -110,6 +111,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     KAction *mAssignColor;
     KAction *mDisableColor;
     KAction *mEditAction;
+    KAction *mDefaultCalendar;
     Akonadi::CollectionSelection *mCollectionSelection;
     bool mNotSendAddRemoveSignal;
   };

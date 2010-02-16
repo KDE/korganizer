@@ -4,6 +4,7 @@
   Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (C) 2009 Sebastian Sauer <sebsauer@kdab.net>
+  Copyright (C) 2010 Laurent Montel <montel@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -192,11 +193,25 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "edit_calendar" ),mEditAction );
     connect( mEditAction, SIGNAL( triggered( bool ) ), this, SLOT( editCalendar()) );
 
+    mDefaultCalendar = new KAction( mCollectionview );
+    mDefaultCalendar->setText( i18n( "Use as &Default Calendar" ) );
+    mDefaultCalendar->setEnabled( false );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),mDefaultCalendar );
+    connect( mDefaultCalendar, SIGNAL( triggered( bool ) ), this, SLOT( setDefaultCalendar()) );
+
   }
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
 {
+}
+
+void AkonadiCollectionView::setDefaultCalendar()
+{
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  Q_ASSERT( index.isValid() );
+  const Akonadi::Collection collection = collectionFromIndex( index );
+  //TODO
 }
 
 void AkonadiCollectionView::editCalendar()
