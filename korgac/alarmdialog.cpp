@@ -64,21 +64,21 @@ static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
 class AlarmListItem : public KListViewItem
 {
   public:
-    AlarmListItem( Incidence *incidence, QListView *parent ) :
+    AlarmListItem( const QString &uid, QListView *parent ) :
       KListViewItem( parent ),
-      mIncidence( incidence->clone() ),
+      mUid( uid ),
       mNotified( false )
     {}
 
     ~AlarmListItem()
     {
-      delete mIncidence;
     }
 
     int compare( KListViewItem *item, int iCol, bool bAscending ) const;
 
     QString mDisplayText;
-    Incidence *mIncidence;
+
+    QString mUid;
     QDateTime mRemindAt;
     QDateTime mHappening;
     bool mNotified;
@@ -96,7 +96,7 @@ int AlarmListItem::compare( KListViewItem *item, int iCol, bool bAscending ) con
 
 typedef QValueList<AlarmListItem*> ItemList;
 
-AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char *name )
+AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"),
@@ -170,7 +170,7 @@ void AlarmDialog::addIncidence( Incidence *incidence,
                                 const QDateTime &reminderAt,
                                 const QString &displayText )
 {
-  AlarmListItem *item = new AlarmListItem( incidence, mIncidenceListView );
+  AlarmListItem *item = new AlarmListItem( incidence->uid(), mIncidenceListView );
   item->setText( 0, incidence->summary() );
   item->mRemindAt = reminderAt;
   item->mDisplayText = displayText;
@@ -287,7 +287,8 @@ void AlarmDialog::edit()
   if ( selection.count() != 1 ) {
     return;
   }
-  Incidence *incidence = selection.first()->mIncidence;
+  Incidence *incidence = mCalendar->incidence( selection.first()->mUid );
+
   if ( incidence->isReadOnly() ) {
     KMessageBox::sorry(
       this,
@@ -421,11 +422,16 @@ void AlarmDialog::eventNotification()
   QValueList<AlarmListItem*> list;
   for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
     AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
-    if ( !item->isVisible() || item->mNotified )
+    if ( !item->isVisible() || item->mNotified ) {
       continue;
+    }
+    Incidence *incidence = mCalendar->incidence( item->mUid );
+    if ( !incidence ) {
+      continue;
+    }
     found = true;
     item->mNotified = true;
-    Alarm::List alarms = item->mIncidence->alarms();
+    Alarm::List alarms = incidence->alarms();
     Alarm::List::ConstIterator it;
     for ( it = alarms.begin(); it != alarms.end(); ++it ) {
       Alarm *alarm = *it;
@@ -453,7 +459,13 @@ void AlarmDialog::wakeUp()
 {
   bool activeReminders = false;
   for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
-    AlarmListItem * item = static_cast<AlarmListItem*>( it.current() );
+    AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
+    Incidence *incidence = mCalendar->incidence( item->mUid );
+    if ( !incidence ) {
+      delete item;
+      continue;
+    }
+
     if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
       if ( !item->isVisible() ) {
         item->setVisible( true );
@@ -483,9 +495,13 @@ void AlarmDialog::slotSave()
   int numReminders = config->readNumEntry("Reminders", 0);
 
   for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
-    AlarmListItem * item = static_cast<AlarmListItem*>( it.current() );
+    AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
+    Incidence *incidence = mCalendar->incidence( item->mUid );
+    if ( !incidence ) {
+      continue;
+    }
     config->setGroup( QString("Incidence-%1").arg(numReminders + 1) );
-    config->writeEntry( "UID", item->mIncidence->uid() );
+    config->writeEntry( "UID", incidence->uid() );
     config->writeEntry( "RemindAt", item->mRemindAt );
     ++numReminders;
   }
@@ -543,11 +559,17 @@ void AlarmDialog::showDetails()
   if ( !item || !item->isVisible() )
     return;
 
+  Incidence *incidence = mCalendar->incidence( item->mUid );
+  if ( !incidence ) {
+    return;
+  }
+
   if ( !item->mDisplayText.isEmpty() ) {
     QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
     mDetailView->addText( txt );
   }
-  mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
+  item->setText( 0, incidence->summary() );
+  mDetailView->appendIncidence( incidence, item->mRemindAt.date() );
 }
 
 bool AlarmDialog::ensureKorganizerRunning() const

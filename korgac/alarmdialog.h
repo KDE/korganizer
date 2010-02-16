@@ -31,7 +31,7 @@
 #include <kdialogbase.h>
 
 #include <libkcal/event.h>
-#include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
 
 using namespace KCal;
 
@@ -44,7 +44,7 @@ class AlarmListItem;
 class AlarmDialog : public KDialogBase {
     Q_OBJECT
   public:
-    explicit AlarmDialog( Calendar *calendar, QWidget *parent = 0, const char *name = 0 );
+    explicit AlarmDialog( CalendarResources *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~AlarmDialog();
 
     void addIncidence( Incidence *incidence, const QDateTime &reminderAt,
@@ -78,7 +78,7 @@ class AlarmDialog : public KDialogBase {
     int activeCount();
     QValueList<AlarmListItem*> selectedItems() const;
 
-    Calendar *mCalendar;
+    CalendarResources *mCalendar;
     KListView *mIncidenceListView;
     KOEventViewer *mDetailView;
 

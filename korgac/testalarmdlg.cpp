@@ -29,6 +29,8 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
+#include <kconfig.h>
+#include <kstandarddirs.h>
 
 #include "alarmdialog.h"
 
@@ -39,6 +41,11 @@ int main(int argc,char **argv)
 
   KApplication app;
 
+  KConfig c( locate( "config", "korganizerrc" ) );
+  c.setGroup( "Time & Date" );
+  QString tz = c.readEntry( "TimeZoneId" );
+  CalendarResources *mCalendar = new CalendarResources( tz );
+
   Event *e1 = new Event;
   e1->setSummary( "This is a summary." );
   QDateTime now = QDateTime::currentDateTime();
@@ -47,41 +54,48 @@ int main(int argc,char **argv)
   Alarm *a = e1->newAlarm();
 //  a->setProcedureAlarm( "/usr/X11R6/bin/xeyes" );
   a->setAudioAlarm( "/data/kde/share/apps/korganizer/sounds/spinout.wav" );
+  mCalendar->addEvent( e1 );
 
   Todo *t1 = new Todo;
   t1->setSummary( "To-do A" );
   t1->setDtDue( now );
   t1->newAlarm();
+  mCalendar->addTodo( t1 );
 
   Event *e2 = new Event;
   e2->setSummary( "This is another summary." );
   e2->setDtStart( now.addDays( 1 ) );
   e2->setDtEnd( now.addDays( 2 ) );
   e2->newAlarm();
+  mCalendar->addEvent( e2 );
 
   Event *e3 = new Event;
   e3->setSummary( "Meet with Fred" );
   e3->setDtStart( now.addDays( 2 ) );
   e3->setDtEnd( now.addDays( 3 ) );
   e3->newAlarm();
+  mCalendar->addEvent( e3 );
 
   Todo *t2 = new Todo;
   t2->setSummary( "Something big is due today" );
   t2->setDtDue( now );
   t2->newAlarm();
+  mCalendar->addTodo( t2 );
 
   Todo *t3 = new Todo;
   t3->setSummary( "Be lazy" );
   t3->setDtDue( now );
   t3->newAlarm();
+  mCalendar->addTodo( t3 );
 
   Event *e4 = new Event;
   e4->setSummary( "Watch TV" );
   e4->setDtStart( now.addSecs( 120 ) );
   e4->setDtEnd( now.addSecs( 180 ) );
   e4->newAlarm();
+  mCalendar->addEvent( e4 );
 
-  AlarmDialog dlg( 0 );
+  AlarmDialog dlg( mCalendar, 0 );
   app.setMainWidget( &dlg );
   dlg.addIncidence( e2, QDateTime::currentDateTime().addSecs( 60 ),
                     QString() );
