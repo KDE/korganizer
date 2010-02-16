@@ -560,7 +560,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
       If the selected incidence is recurring, it will return
       the date of the selected occurrence
-    **/
+    */
     QDate activeIncidenceDate();
 
     /**
@@ -581,7 +581,14 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
        the incidence if needed.
 
        @param inc The recurring incidence that's about to be edited.
+       @param userAction Specifies what the user is doing with the occurrence,
+              like cutting, pasting or editing, it only influences the strings
+              in the message box.
+       @param chosenOption After calling this function, it will hold the user's
+              chosen option.
        @param itemDate The date of the selected view item
+       @param commitToCalendar If true, mChanger is called and the dissociation
+              is saved to the calendar. If false, it's up to the caller to do that.
 
        @return A pointer to the incidence that should be edited which is
                0 if the user pressed cancel, inc if the user pressed
@@ -589,8 +596,11 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
                when dissociation is involved in which case the caller
                is responsible to add it to the calendar and freeing it.
      **/
-    Incidence* handleRecurringIncAboutToBeEdited( Incidence *inc,
-                                                  const QDate &itemDate = QDate() );
+    Incidence* singleOccurrenceOrAll( Incidence *inc,
+                                      KOGlobals::OccurrenceAction userAction,
+                                      KOGlobals::WhichOccurrences &chosenOption,
+                                      const QDate &itemDate = QDate(),
+                                      const bool commitToCalendar = false );
 
   protected:
     void setIncidenceChanger( IncidenceChangerBase *changer );
@@ -613,6 +623,14 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
   private:
     void init();
+
+    /**
+      Returns the incidence that should be sent to clipboard.
+      Usually it's just returns the selected incidence, but, if
+      the incidence is recurring, it will ask the user what he wants to
+      cut/paste and dissociate the incidence if necesssary.
+    **/
+    Incidence *incToSendToClipboard( bool cut );
 
     void calendarModified( bool, Calendar * );
     // Helper function for purgeCompleted that recursively purges a todo and

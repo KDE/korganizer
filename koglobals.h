@@ -63,6 +63,19 @@ class KDE_EXPORT KOGlobals
       NOTHING_MODIFIED
     };
 
+    enum WhichOccurrences {
+      NONE,
+      ONLY_THIS_ONE,
+      ONLY_FUTURE,
+      ALL
+    };
+
+    enum OccurrenceAction {
+      CUT,
+      COPY,
+      EDIT
+    };
+
     static void fitDialogToScreen( QWidget *widget, bool force=false );
     KConfig *config() const;
 

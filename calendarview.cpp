@@ -883,7 +883,7 @@ int CalendarView::msgItemDelete( Incidence *incidence )
 
 void CalendarView::edit_cut()
 {
-  Incidence *incidence = selectedIncidence();
+  Incidence *incidence = incToSendToClipboard( true );
 
   if ( !incidence || !mChanger ) {
     KNotifyClient::beep();
@@ -894,7 +894,7 @@ void CalendarView::edit_cut()
 
 void CalendarView::edit_copy()
 {
-  Incidence *incidence = selectedIncidence();
+  Incidence *incidence = incToSendToClipboard( false );
 
   if (!incidence) {
     KNotifyClient::beep();
@@ -903,6 +903,41 @@ void CalendarView::edit_copy()
   DndFactory factory( mCalendar );
   if ( !factory.copyIncidence( incidence ) ) {
     KNotifyClient::beep();
+  }
+}
+
+Incidence* CalendarView::incToSendToClipboard( bool cut )
+{
+  Incidence *originalInc = selectedIncidence();
+
+  if ( originalInc && originalInc->doesRecur() &&
+       originalInc->type() == "Event" ) { // temporary, until recurring to-dos are fixed
+
+    Incidence *inc;
+    KOGlobals::WhichOccurrences chosenOption;
+    if ( cut ) {
+      inc = singleOccurrenceOrAll( originalInc, KOGlobals::CUT, chosenOption, QDate(), true );
+    } else {
+      // The user is copying, the original incidence can't be changed
+      // we can only dissociate a copy
+      Incidence *originalIncSaved = originalInc->clone();
+      inc = singleOccurrenceOrAll( originalIncSaved, KOGlobals::COPY, chosenOption, QDate(), false );
+
+      // no dissociation, no need to leak our clone
+      if ( chosenOption == KOGlobals::ALL ) {
+        inc = originalInc;
+        delete originalIncSaved;
+      }
+
+      // no need to leak our clone
+      if ( chosenOption == KOGlobals::NONE ) {
+        delete originalIncSaved;
+      }
+    }
+
+    return inc;
+  } else {
+    return originalInc;
   }
 }
 
@@ -2061,7 +2096,8 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
   Incidence *incToChange;
 
   if ( incidence->doesRecur() ) {
-    incToChange = handleRecurringIncAboutToBeEdited( incidence );
+    KOGlobals::WhichOccurrences chosenOption;
+    incToChange = singleOccurrenceOrAll( incidence, KOGlobals::EDIT, chosenOption );
   } else {
     incToChange = incidence;
   }
@@ -2449,22 +2485,58 @@ void CalendarView::resourcesChanged()
   updateView();
 }
 
-Incidence* CalendarView::handleRecurringIncAboutToBeEdited( Incidence *inc,
-                                                            const QDate &itemDate )
+Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
+                                                KOGlobals::OccurrenceAction userAction,
+                                                KOGlobals::WhichOccurrences &chosenOption,
+                                                const QDate &itemDate,
+                                                const bool commitToCalendar )
 {
-  Incidence *incToReturn = 0;
 
+  // temporary, until recurring to-dos are fixed
+  if ( inc->type() != "Event" ) {
+    chosenOption = KOGlobals::ALL;
+    return inc;
+  }
+
+  Incidence *incToReturn = 0;
+  Incidence *incSaved = 0;
+  KOGlobals::WhatChanged whatChanged;
+
+  bool dissociationOccurred = false;
   const QDate &dt = itemDate.isValid() ? itemDate : activeIncidenceDate();
 
+  QString dialogTitle;
+  QString dialogText;
+
+  if ( userAction == KOGlobals::CUT ) {
+    dialogTitle = i18n( "Cutting Recurring Item" );
+
+    dialogText = i18n("The item you try to cut is a recurring item. Do you want to cut "
+                       "only this single occurrence, only future items, "
+                       "or all items in the recurrence?");
+
+  } else if ( userAction == KOGlobals::COPY ) {
+    dialogTitle = i18n( "Copying Recurring Item" );
+
+    dialogText = i18n("The item you try to copy is a recurring item. Do you want to copy "
+                       "only this single occurrence, only future items, "
+                       "or all items in the recurrence?");
+  } else {
+    dialogTitle = i18n( "Changing Recurring Item" );
+
+    dialogText = i18n( "The item you try to change is a recurring item. Shall the changes "
+                       "be applied only to this single occurrence, only to the future items, "
+                       "or to all items in the recurrence?" );
+  }
+
   int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
-            i18n("The item you try to change is a recurring item. Shall the changes "
-                  "be applied only to this single occurrence, only to the future items, "
-                  "or to all items in the recurrence?"),
-            i18n("Changing Recurring Item"),
+            dialogText,
+            dialogTitle,
             i18n("Only &This Item"), i18n("Only &Future Items"), i18n("&All Occurrences") );
   switch ( res ) {
     case KMessageBox::Ok: // All occurrences
       incToReturn = inc;
+      chosenOption = KOGlobals::ALL;
       break;
     case KMessageBox::Yes: { // Just this occurrence
       // Dissociate this occurrence:
@@ -2473,12 +2545,18 @@ Incidence* CalendarView::handleRecurringIncAboutToBeEdited( Incidence *inc,
       // for the old event, remove the recurrence from the new copy and then just
       // go on with the newly adjusted mActionItem and let the usual code take
       // care of the new time!
-      startMultiModify( i18n("Dissociate event from recurrence") );
 
+      chosenOption = KOGlobals::ONLY_THIS_ONE;
+      whatChanged  = KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY;
+      startMultiModify( i18n("Dissociate event from recurrence") );
+      incSaved = inc->clone();
       incToReturn = mCalendar->dissociateOccurrence( inc, dt );
-      if ( !incToReturn ) {
+      if ( incToReturn ) {
+        dissociationOccurred = true;
+      } else {
         KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
             "calendar. No change will be done."), i18n("Error Occurred") );
+        incToReturn = 0;
       }
 
       break; }
@@ -2489,16 +2567,29 @@ Incidence* CalendarView::handleRecurringIncAboutToBeEdited( Incidence *inc,
       // for the old event, adjust the recurrence for the new copy and then just
       // go on with the newly adjusted mActionItem and let the usual code take
       // care of the new time!
+      chosenOption = KOGlobals::ONLY_FUTURE;
+      whatChanged  = KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE;
       startMultiModify( i18n("Split future recurrences") );
-
+      incSaved = inc->clone();
       incToReturn = mCalendar->dissociateOccurrence( inc, dt, false );
-      if ( !incToReturn ) {
+      if ( incToReturn ) {
+        dissociationOccurred = true;
+      } else {
         // por aqui controlo de erros
         KMessageBox::sorry( this, i18n("Unable to add the future items to the "
             "calendar. No change will be done."), i18n("Error Occurred") );
+
+        incToReturn = 0;
       }
 
       break; }
+    default:
+      chosenOption = KOGlobals::NONE;
+  }
+
+  if ( dissociationOccurred && commitToCalendar ) {
+    mChanger->addIncidence( incToReturn, 0, QString(), this );
+    mChanger->changeIncidence( incSaved, inc, whatChanged, this );
   }
 
   return incToReturn;

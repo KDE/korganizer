@@ -1088,19 +1088,24 @@ void KOAgenda::endItemAction()
     if ( mActionItem->incidence()->doesRecur() ) {
 
       Incidence* oldIncSaved = inc->clone();
+      KOGlobals::WhichOccurrences chosenOption;
+      incToChange = mCalendarView->singleOccurrenceOrAll( inc,
+                                                          KOGlobals::EDIT,
+                                                          chosenOption,
+                                                          mActionItem->itemDate() );
 
-      incToChange = mCalendarView->handleRecurringIncAboutToBeEdited( inc,
-                                                                      mActionItem->itemDate() );
-
-      if ( incToChange && incToChange != inc ) {
+      if ( chosenOption == KOGlobals::ONLY_THIS_ONE ||
+           chosenOption == KOGlobals::ONLY_FUTURE ) {
         multiModify = true;
         enableAgendaUpdate( false );
 
         mChanger->addIncidence( incToChange, 0, QString(), this );
         enableAgendaUpdate( true );
+        KOGlobals::WhatChanged wc = chosenOption == KOGlobals::ONLY_THIS_ONE ?
+                                    KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY :
+                                    KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE;
 
-        mChanger->changeIncidence( oldIncSaved, inc,
-                                    KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
+        mChanger->changeIncidence( oldIncSaved, inc, wc, this );
 
         mActionItem->dissociateFromMultiItem();
         mActionItem->setIncidence( incToChange );
