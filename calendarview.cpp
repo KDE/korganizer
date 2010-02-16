@@ -392,6 +392,19 @@ QDate CalendarView::activeDate( bool fallbackToToday )
   }
 }
 
+QDate CalendarView::activeIncidenceDate()
+{
+  KOrg::BaseView *curView = mViewManager->currentView();
+  if ( curView ) {
+    DateList dates = curView->selectedDates();
+    if ( !dates.isEmpty() ) {
+      return dates.first();
+    }
+  }
+
+  return QDate();
+}
+
 QDate CalendarView::startDate()
 {
   DateList dates = mNavigator->selectedDates();
@@ -2070,7 +2083,7 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
     if ( incidence != incToChange ) {
       incidenceEditor->setRecurringIncidence( savedIncidence, incidence );
     }
-    incidenceEditor->editIncidence( incToChange, activeDate(), mCalendar );
+    incidenceEditor->editIncidence( incToChange, activeIncidenceDate(), mCalendar );
     incidenceEditor->show();
     return true;
   } else {
@@ -2441,7 +2454,7 @@ Incidence* CalendarView::handleRecurringIncAboutToBeEdited( Incidence *inc,
 {
   Incidence *incToReturn = 0;
 
-  const QDate &dt = itemDate.isValid() ? itemDate : activeDate();
+  const QDate &dt = itemDate.isValid() ? itemDate : activeIncidenceDate();
 
   int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
             i18n("The item you try to change is a recurring item. Shall the changes "

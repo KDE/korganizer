@@ -206,7 +206,7 @@ void KOEventEditor::editIncidence( Incidence *incidence,
     mEvent = event;
     mCalendar = calendar;
 
-    const QDate &dt = mRecurIncidence ? date : incidence->dtStart().date();
+    const QDate &dt = mRecurIncidence && date.isValid() ? date : incidence->dtStart().date();
     readEvent( mEvent, mCalendar, dt );
   }
 
