@@ -344,16 +344,19 @@ int KODayMatrix::getDayIndexFrom( int x, int y )
 
 void KODayMatrix::calendarIncidenceAdded(Incidence * incidence)
 {
+  Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
 void KODayMatrix::calendarIncidenceChanged(Incidence * incidence)
 {
+  Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
 void KODayMatrix::calendarIncidenceDeleted(Incidence * incidence)
 {
+  Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
