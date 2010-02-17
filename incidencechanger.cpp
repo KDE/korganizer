@@ -421,7 +421,7 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
 
 bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent )
 {
-  Akonadi::Collection c = Akonadi::selectCollection(parent);
+  const Akonadi::Collection c = Akonadi::selectCollection(parent);
   if ( !c.isValid() )
     return false;
   return addIncidence( incidence, c, parent );

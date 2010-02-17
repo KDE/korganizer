@@ -114,6 +114,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     KAction *mDefaultCalendar;
     Akonadi::CollectionSelection *mCollectionSelection;
     bool mNotSendAddRemoveSignal;
+    bool mWasDefaultCalendar;
   };
 
 #endif

@@ -126,7 +126,14 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
 }
 
 AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *parent )
-  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 ), mNotSendAddRemoveSignal( false )
+  : CalendarViewExtension( parent ),
+    mActionManager(0),
+    mCollectionview(0),
+    mBaseModel( 0 ),
+    mSelectionProxyModel( 0 ),
+    mDeleteAction( 0 ),
+    mNotSendAddRemoveSignal( false ),
+    mWasDefaultCalendar( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -378,6 +385,7 @@ void AkonadiCollectionView::deleteCalendar()
     == KMessageBox::Yes )
   {
     mNotSendAddRemoveSignal = true;
+    mWasDefaultCalendar = KOHelper::isStandardCalendar( collection );
     Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
     connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
   }
@@ -392,6 +400,8 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
     mNotSendAddRemoveSignal = false;
     return;
   }
+  if ( mWasDefaultCalendar )
+    KOPrefs::instance()->setDefaultCalendar( "" );
   mNotSendAddRemoveSignal = false;
   //TODO
 }
