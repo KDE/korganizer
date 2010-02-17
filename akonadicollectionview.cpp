@@ -92,6 +92,13 @@ namespace {
             else
               return QVariant();
           }
+        } else if ( role == Qt::FontRole ) {
+          const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
+          if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection )) {
+            QFont font = qvariant_cast<QFont>( QSortFilterProxyModel::data( index, Qt::FontRole ) );
+            font.setBold( true );
+            return font;
+          }
         }
        return QSortFilterProxyModel::data( index, role );
      }
@@ -211,7 +218,9 @@ void AkonadiCollectionView::setDefaultCalendar()
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = collectionFromIndex( index );
-  //TODO
+  KOPrefs::instance()->setDefaultCalendar( QString::number( collection.id() ) );
+  updateMenu();
+  updateView();
 }
 
 void AkonadiCollectionView::editCalendar()
@@ -285,7 +294,6 @@ void AkonadiCollectionView::updateMenu()
     mEditAction->setEnabled( enableAction );
     enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
     mAssignColor->setEnabled( enableAction );
-
     QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
     if ( index.isValid() ) {
       const Akonadi::Collection collection = collectionFromIndex( index );
@@ -298,9 +306,11 @@ void AkonadiCollectionView::updateMenu()
       const QString resource = collection.resource();
       Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
       mEditAction->setEnabled( !instance.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
+      mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection ) );
     } else {
       mDisableColor->setEnabled( false );
       mEditAction->setEnabled( false );
+      mDefaultCalendar->setEnabled( false );
     }
   }
 }

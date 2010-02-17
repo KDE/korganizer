@@ -65,6 +65,12 @@ namespace KOHelper
     Returns the number of years between the @p start QDate and the @p end QDate
   */
   KORGANIZERPRIVATE_EXPORT qint64 yearDiff( const QDate &start, const QDate &end );
+
+
+  /**
+    Return true if it's the standard calendar
+  */
+  KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Collection &collection );
 }
 
 #endif

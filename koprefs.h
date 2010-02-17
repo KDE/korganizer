@@ -98,6 +98,9 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     QStringList timeScaleTimezones();
     void setTimeScaleTimezones( const QStringList &list );
 
+    QString defaultCalendar() const;
+    void setDefaultCalendar( const QString &);
+
   private:
     QHash<QString,QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
@@ -110,6 +113,8 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 
     KDateTime::Spec mTimeSpec;
     QStringList mTimeScaleTimeZones;
+
+    QString mDefaultCalendar;
 
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;

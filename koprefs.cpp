@@ -199,6 +199,9 @@ void KOPrefs::usrReadConfig()
       KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
   }
 #endif
+  KConfigGroup defaultCalendarConfig( config(), "Calendar" );
+  setDefaultCalendar( defaultCalendarConfig.readEntry( "Default Calendar", QString() ) );
+
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
 
@@ -244,8 +247,12 @@ void KOPrefs::usrWriteConfig()
   }
 #endif
 
+  KConfigGroup defaultCalendarConfig( config(), "Calendar" );
+  defaultCalendarConfig.writeEntry( "Default Calendar", defaultCalendar() );
+
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
+
 
   KConfigSkeleton::usrWriteConfig();
 }
@@ -274,6 +281,17 @@ bool KOPrefs::hasCategoryColor( const QString &cat ) const
 {
     return mCategoryColors[ cat ].isValid();
 }
+
+QString KOPrefs::defaultCalendar() const
+{
+  return mDefaultCalendar;
+}
+
+void KOPrefs::setDefaultCalendar( const QString& cal)
+{
+  mDefaultCalendar = cal;
+}
+
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
