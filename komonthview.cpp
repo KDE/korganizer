@@ -384,7 +384,8 @@ int MonthViewItem::width( const QListBox *lb ) const
 
 MonthViewCell::MonthViewCell( KOMonthView *parent)
   : QWidget( parent ),
-    mMonthView( parent ), mPrimary( false ), mHoliday( false )
+    mMonthView( parent ), mPrimary( false ), mHoliday( false ),
+    isSelected( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -454,10 +455,11 @@ QDate MonthViewCell::date() const
 void MonthViewCell::setFrameWidth()
 {
   // show current day with a thicker frame
-  if ( mDate == QDate::currentDate() )
+  if ( mDate == QDate::currentDate() ) {
     mItemList->setLineWidth( 3 );
-  else
+  } else if ( !isSelected ) {
     mItemList->setLineWidth( 1 );
+  }
 }
 
 void MonthViewCell::setPrimary( bool primary )
@@ -751,6 +753,9 @@ QDate MonthViewCell::selectedIncidenceDate()
 
 void MonthViewCell::select()
 {
+
+  isSelected = true;
+
   // setSelectedCell will deselect currently selected cells
   mMonthView->setSelectedCell( this );
 
@@ -766,6 +771,8 @@ void MonthViewCell::select()
 
 void MonthViewCell::deselect()
 {
+  isSelected = false;
+
   mItemList->clearSelection();
   mItemList->setFrameStyle( QFrame::Plain | QFrame::Panel );
   setFrameWidth();
@@ -988,8 +995,9 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
     mCells[i]->setDate( date );
     mDateToCell[ date ] = mCells[ i ];
-    if( date == start )
+    if( date == start ) {
       mCells[i]->select();
+    }
 
     mCells[i]->setPrimary( primary );
 

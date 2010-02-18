@@ -224,6 +224,8 @@ class MonthViewCell : public QWidget
     QLabel *mLabel;
     KNoScrollListBox *mItemList;
 
+    bool isSelected;
+
     QSize mLabelSize;
 //    QPalette mOriginalPalette;
     QPalette mHolidayPalette;
