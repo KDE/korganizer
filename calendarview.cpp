@@ -1662,7 +1662,7 @@ void CalendarView::schedule_forward( const Item &item )
     KMessageBox::information(
       this,
       i18n( "No item selected." ),
-      "ForwardNoEventSelected" );
+      QString(), "ForwardNoEventSelected" );
     return;
   }
 
