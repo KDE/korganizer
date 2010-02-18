@@ -298,7 +298,6 @@ void AkonadiCollectionView::updateMenu()
   if ( mDeleteAction ) {
     bool enableAction = mCollectionview->selectionModel()->hasSelection();
     mDeleteAction->setEnabled( enableAction );
-    mEditAction->setEnabled( enableAction );
     enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
     mAssignColor->setEnabled( enableAction );
     QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
