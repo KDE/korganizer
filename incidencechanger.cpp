@@ -37,6 +37,10 @@
 #include <Akonadi/ItemModifyJob>
 #include <Akonadi/Collection>
 
+#include <akonadi/collectionfetchjob.h>
+#include <akonadi/collectionfetchscope.h>
+
+
 #include <KCal/AssignmentVisitor>
 #include <KCal/DndFactory>
 #include <KCal/FreeBusy>
@@ -421,7 +425,13 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
 
 bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent )
 {
-  const Akonadi::Collection c = Akonadi::selectCollection(parent);
+  Akonadi::CollectionFetchJob *job = new Akonadi::CollectionFetchJob( Akonadi::Collection(KOPrefs::instance()->defaultCalendar().toULongLong()));
+  job->exec();
+  Akonadi::Collection col;
+  Akonadi::Collection::List lst = job->collections();
+  if ( lst.count()>= 1 )
+    col= lst.at( 0 );
+  const Akonadi::Collection c = Akonadi::selectCollection(parent,col);
   if ( !c.isValid() )
     return false;
   return addIncidence( incidence, c, parent );
