@@ -65,6 +65,7 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   mJournalView = 0;
   mTimelineView = 0;
   mAgendaViewTabs = 0;
+  mAgendaMode = AGENDA_NONE;
 }
 
 KOViewManager::~KOViewManager()
@@ -386,24 +387,28 @@ void KOViewManager::showAgendaView()
 
 void KOViewManager::showDayView()
 {
+  mAgendaMode = AGENDA_DAY;
   showAgendaView();
   mMainView->dateNavigator()->selectDates( 1 );
 }
 
 void KOViewManager::showWorkWeekView()
 {
+  mAgendaMode = AGENDA_WORK_WEEK;
   showAgendaView();
   mMainView->dateNavigator()->selectWorkWeek();
 }
 
 void KOViewManager::showWeekView()
 {
+  mAgendaMode = AGENDA_WEEK;
   showAgendaView();
   mMainView->dateNavigator()->selectWeek();
 }
 
 void KOViewManager::showNextXView()
 {
+  mAgendaMode = AGENDA_NEXTX;
   showAgendaView();
   mMainView->dateNavigator()->selectDates( QDate::currentDate(),
                                            KOPrefs::instance()->mNextXDays );

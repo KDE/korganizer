@@ -195,6 +195,11 @@
       <whatsthis>Check this box to show the days containing weekly recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non weekly recurring) events.</whatsthis>
       <default>true</default>
     </entry>
+    <entry type="Bool" key="Week Numbers Show Work Week" name="weekNumbersShowWork">
+      <label>Week numbers select a work week when in work week view</label>
+      <whatsthis>Check this box to select a work week when clicking on date navigator's week numbers or uncheck it to chose the whole week.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry type="Bool" key="Enable ToolTips">
       <label>Enable tooltips displaying summary of events</label>
       <whatsthis>Check this box to display an event summary tooltip when hovering the mouse over an event.</whatsthis>

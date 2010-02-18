@@ -489,6 +489,7 @@ class KOPrefsDialogViews : public KPrefsModule
                                                topFrame );
       addWidBool( KOPrefs::instance()->dailyRecurItem(), dateNavGroup );
       addWidBool( KOPrefs::instance()->weeklyRecurItem(), dateNavGroup );
+      addWidBool( KOPrefs::instance()->weekNumbersShowWorkItem(), dateNavGroup );
       topLayout->addWidget( dateNavGroup );
 
 

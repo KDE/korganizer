@@ -219,7 +219,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
 
   connect( mDateNavigator, SIGNAL( weekClicked( const QDate & ) ),
-           mNavigator, SLOT( selectWeek( const QDate & ) ) );
+           this, SLOT( selectWeek( const QDate & ) ) );
 
   connect( mDateNavigator, SIGNAL( goPrevYear() ),
            mNavigator, SLOT( selectPreviousYear() ) );
@@ -2593,6 +2593,17 @@ Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
   }
 
   return incToReturn;
+}
+
+void CalendarView::selectWeek( const QDate &date )
+{
+  if ( KOPrefs::instance()->mWeekNumbersShowWork                 &&
+       mViewManager->currentView() == mViewManager->agendaView() &&
+       mViewManager->agendaMode()  == KOViewManager::AGENDA_WORK_WEEK ) {
+    mNavigator->selectWorkWeek( date );
+  } else {
+    mNavigator->selectWeek( date );
+  }
 }
 
 #include "calendarview.moc"
