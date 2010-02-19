@@ -678,8 +678,8 @@ class KOPrefsDialogViews : public KPrefsModule
       // GroupBox: Views->Month View->Display Options
       QVBoxLayout *mdisplayLayout = new QVBoxLayout;
       QGroupBox *mdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
-      mdisplayLayout->addWidget(
-        addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );
+      /*mdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
       mdisplayLayout->addWidget(
