@@ -1505,14 +1505,18 @@ void CalendarView::schedule_declinecounter(Incidence *incidence)
   schedule(Scheduler::Declinecounter,incidence);
 }
 
-void CalendarView::schedule_forward(Incidence * incidence)
+void CalendarView::schedule_forward( Incidence *incidence )
 {
-  if (incidence == 0)
+  if ( !incidence ) {
     incidence = selectedIncidence();
+  }
 
-  if (!incidence) {
-    KMessageBox::information( this, i18n("No item selected."),
-                              "ForwardNoEventSelected" );
+  if ( !incidence ) {
+    KMessageBox::information(
+      this,
+      i18n( "No item selected." ),
+      i18n( "Forwarding" ),
+      "ForwardNoEventSelected" );
     return;
   }
 
@@ -1528,11 +1532,16 @@ void CalendarView::schedule_forward(Incidence * incidence)
     QString messageText = format.createScheduleMessage( incidence, Scheduler::Request );
     KOMailClient mailer;
     if ( mailer.mailTo( incidence, recipients, messageText ) ) {
-
-      KMessageBox::information( this, i18n("The item information was successfully sent."),
-                                i18n("Forwarding"), "IncidenceForwardSuccess" );
+      KMessageBox::information(
+        this,
+        i18n( "The item information was successfully sent." ),
+        i18n( "Forwarding" ),
+        "IncidenceForwardSuccess" );
     } else {
-      KMessageBox::error( this, i18n("Unable to forward the item '%1'").arg( incidence->summary() ) );
+      KMessageBox::error(
+        this,
+        i18n( "Unable to forward the item '%1'" ).arg( incidence->summary() ),
+        i18n( "Forwarding Error" ) );
     }
   }
 }
@@ -2030,7 +2039,7 @@ void CalendarView::editIncidence()
   editIncidence( selectedIncidence() );
 }
 
-bool CalendarView::editIncidence( const QString& uid )
+bool CalendarView::editIncidence( const QString &uid )
 {
   kdDebug(5850) << "CalendarView::editIncidence()" << endl;
   return editIncidence( mCalendar->incidence( uid ) );
