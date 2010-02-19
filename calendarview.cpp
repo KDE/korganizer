@@ -1662,7 +1662,8 @@ void CalendarView::schedule_forward( const Item &item )
     KMessageBox::information(
       this,
       i18n( "No item selected." ),
-      QString(), "ForwardNoEventSelected" );
+      i18n( "Forwarding" ),
+      "ForwardNoEventSelected" );
     return;
   }
 
@@ -1686,11 +1687,13 @@ void CalendarView::schedule_forward( const Item &item )
       KMessageBox::information(
         this,
         i18n( "The item information was successfully sent." ),
-        i18n( "Forwarding" ), "IncidenceForwardSuccess" );
+        i18n( "Forwarding" ),
+        "IncidenceForwardSuccess" );
     } else {
       KMessageBox::error(
         this,
-        i18n( "Unable to forward the item '%1'", incidence->summary() ) );
+        i18n( "Unable to forward the item '%1'", incidence->summary() ),
+        i18n( "Forwarding Error" ) );
     }
   }
   delete publishdlg;
