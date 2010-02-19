@@ -219,7 +219,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     kdError(5850) << "Unknown incoming action " << action << endl;
 
   if ( action.startsWith( "counter" ) ) {
-    mView->editIncidence( incidence, true );
+    mView->editIncidence( incidence, QDate(), true );
     KOIncidenceEditor *tmp = mView->editorDialog( incidence );
     tmp->selectInvitationCounterProposal( true );
   }

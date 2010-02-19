@@ -53,6 +53,8 @@ public:
   QString getCurrentURLasString() const;
 
   bool editIncidence( const QString &uid );
+  bool editIncidence( const QString &uid, const QDate &date );
+
   /** @reimp from KOrganizerIface::deleteIncidence() */
   bool deleteIncidence( const QString &uid )  { return deleteIncidence( uid, false ); }
   /** @reimp from KOrganizerIface::deleteIncidence() */

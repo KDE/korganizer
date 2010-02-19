@@ -325,7 +325,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res
   if( stdcal && !stdcal->hasCalendarResources() ) {
     KMessageBox::sorry(
       parent,
-      i18n( "No resources found. We can not add event." ) );
+      i18n( "No resources found. We can not add the item." ) );
     return false;
   }
 

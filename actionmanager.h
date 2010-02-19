@@ -147,7 +147,8 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     */
     virtual bool deleteIncidence( const QString& uid, bool force = false );
 
-    bool editIncidence( const QString& uid );
+    bool editIncidence( const QString &uid );
+    bool editIncidence( const QString &uid, const QDate &date );
 
     /**
       Add an incidence to the active calendar.

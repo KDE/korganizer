@@ -1253,10 +1253,11 @@ void CalendarView::appointment_show()
 void CalendarView::appointment_edit()
 {
   Incidence *incidence = selectedIncidence();
-  if (incidence)
-    editIncidence( incidence );
-  else
+  if ( incidence ) {
+    editIncidence( incidence, activeIncidenceDate() );
+  } else {
     KNotifyClient::beep();
+  }
 }
 
 void CalendarView::appointment_delete()
@@ -2036,13 +2037,17 @@ void CalendarView::showIncidence()
 
 void CalendarView::editIncidence()
 {
-  editIncidence( selectedIncidence() );
+  editIncidence( selectedIncidence(), activeIncidenceDate() );
 }
 
 bool CalendarView::editIncidence( const QString &uid )
 {
-  kdDebug(5850) << "CalendarView::editIncidence()" << endl;
-  return editIncidence( mCalendar->incidence( uid ) );
+  return editIncidence( mCalendar->incidence( uid ), QDate() );
+}
+
+bool CalendarView::editIncidence( const QString &uid, const QDate &date )
+{
+  return editIncidence( mCalendar->incidence( uid ), date );
 }
 
 void CalendarView::deleteIncidence()
@@ -2072,9 +2077,32 @@ void CalendarView::showIncidence( Incidence *incidence )
   eventViewer->show();
 }
 
-bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
+bool CalendarView::editIncidence( Incidence *incidence )
+{
+  return editIncidence( incidence, QDate(), false );
+}
+
+bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool isCounter )
 {
   kdDebug(5850) << "CalendarView::editEvent()" << endl;
+
+  CalendarResources *stdcal = dynamic_cast<CalendarResources *>( mCalendar );
+  if( stdcal && !stdcal->hasCalendarResources() ) {
+    KMessageBox::sorry(
+      this,
+      i18n( "No resources found. We can not edit the item." ) );
+    return false;
+  }
+
+  // FIXME: This is a nasty hack, since we need to set a parent for the
+  //        resource selection dialog. However, we don't have any UI methods
+  //        in the calendar, only in the CalendarResources::DestinationPolicy
+  //        So we need to type-cast it and extract it from the CalendarResources
+  QWidget *tmpparent = 0;
+  if ( stdcal ) {
+    tmpparent = stdcal->dialogParentWidget();
+    stdcal->setDialogParentWidget( this );
+  }
 
   if ( !incidence ) {
     kdDebug(5850) << "Empty Incidence" << endl;
@@ -2106,7 +2134,7 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
 
   if ( incidence->doesRecur() ) {
     KOGlobals::WhichOccurrences chosenOption;
-    incToChange = singleOccurrenceOrAll( incidence, KOGlobals::EDIT, chosenOption );
+    incToChange = singleOccurrenceOrAll( incidence, KOGlobals::EDIT, chosenOption, date );
   } else {
     incToChange = incidence;
   }
@@ -2128,7 +2156,9 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
     if ( incidence != incToChange ) {
       incidenceEditor->setRecurringIncidence( savedIncidence, incidence );
     }
-    incidenceEditor->editIncidence( incToChange, activeIncidenceDate(), mCalendar );
+    QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+    incidenceEditor->setResource( p.first, p.second );
+    incidenceEditor->editIncidence( incToChange, date, mCalendar );
     incidenceEditor->show();
     return true;
   } else {
@@ -2597,7 +2627,8 @@ Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
   }
 
   if ( dissociationOccurred && commitToCalendar ) {
-    mChanger->addIncidence( incToReturn, 0, QString(), this );
+    QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+    mChanger->addIncidence( incToReturn, p.first, p.second, this );
     mChanger->changeIncidence( incSaved, inc, whatChanged, this );
   }
 

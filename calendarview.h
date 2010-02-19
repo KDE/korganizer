@@ -253,7 +253,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void showIncidence();
     void editIncidence();
-    bool editIncidence( const QString& uid );
+    bool editIncidence( const QString &uid );
+    bool editIncidence( const QString &uid, const QDate &date );
     void deleteIncidence();
 
     /**
@@ -296,7 +297,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
     void showIncidence( Incidence * );
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    bool editIncidence( Incidence *incidence, bool isCounter = false );
+    bool editIncidence( Incidence *incidence );
+    bool editIncidence( Incidence *incidence, const QDate &date, bool isCounter = false );
     /**
       Delete the supplied incidence. It calls the correct deleteXXX method
       @param force If true, all recurrences and sub-todos (if applicable) will be

@@ -21,7 +21,7 @@
 #define KORGANIZERIFACE_H
 
 #include <dcopobject.h>
-
+#include <qdatetime.h>
 
 class KOrganizerIface : virtual public DCOPObject
 {
@@ -34,6 +34,7 @@ class KOrganizerIface : virtual public DCOPObject
     virtual bool saveAsURL(const QString &url) = 0;
     virtual QString getCurrentURLasString() const = 0;
     virtual bool editIncidence(const QString &uid) = 0;
+    virtual bool editIncidence( const QString &uid, const QDate &date ) = 0;
     virtual bool deleteIncidence(const QString &uid) = 0;
     /**
       Delete the incidence with the given unique ID from the active calendar.

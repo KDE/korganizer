@@ -1383,9 +1383,14 @@ QString ActionManager::getCurrentURLasString() const
   return mURL.url();
 }
 
-bool ActionManager::editIncidence( const QString& uid )
+bool ActionManager::editIncidence( const QString &uid )
 {
   return mCalendarView->editIncidence( uid );
+}
+
+bool ActionManager::editIncidence( const QString &uid, const QDate &date )
+{
+  return mCalendarView->editIncidence( uid, date );
 }
 
 bool ActionManager::deleteIncidence( const QString& uid, bool force )

@@ -288,6 +288,7 @@ void AlarmDialog::edit()
     return;
   }
   Incidence *incidence = mCalendar->incidence( selection.first()->mUid );
+  QDate dt = selection.first()->mRemindAt.date();
 
   if ( incidence->isReadOnly() ) {
     KMessageBox::sorry(
@@ -304,10 +305,14 @@ void AlarmDialog::edit()
     return;
   }
 
+  QByteArray data;
+  QDataStream arg( data, IO_WriteOnly );
+  arg << incidence->uid();
+  arg << dt;
   //kdDebug(5890) << "editing incidence " << incidence->summary() << endl;
   if ( !kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
-                                  "editIncidence(QString)",
-                                  incidence->uid() ) ) {
+                                  "editIncidence(QString,QDate)",
+                                  data ) ) {
     KMessageBox::error(
       this,
       i18n( "An internal KOrganizer error occurred attempting to start the incidence editor" ) );
