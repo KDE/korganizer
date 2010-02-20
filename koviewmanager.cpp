@@ -89,7 +89,29 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == "Journal") showJournalView();
   else if (view == "Todo") showTodoView();
   else if (view == "Timeline") showTimelineView();
-  else showAgendaView();
+  else {
+    mAgendaMode = AgendaMode( config->readNumEntry( "Agenda Mode", AGENDA_OTHER ) );
+
+    switch ( mAgendaMode ) {
+      case AGENDA_WORK_WEEK:
+        showWorkWeekView();
+        break;
+      case AGENDA_WEEK:
+        showWeekView();
+        break;
+      case AGENDA_NEXTX:
+        showNextXView();
+        break;
+      case AGENDA_DAY:
+        showDayView();
+        break;
+      case AGENDA_NONE:
+        // Someone has been playing with the config file.
+      default:
+        mAgendaMode = AGENDA_OTHER;
+        showAgendaView();
+    }
+  }
 }
 
 void KOViewManager::writeSettings(KConfig *config)
@@ -103,7 +125,10 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mJournalView) view = "Journal";
   else if (mCurrentView == mTodoView) view = "Todo";
   else if (mCurrentView == mTimelineView) view = "Timeline";
-  else view = "Agenda";
+  else {
+    view = "Agenda";
+    config->writeEntry( "Agenda Mode", mAgendaMode );
+  }
 
   config->writeEntry("Current View",view);
 

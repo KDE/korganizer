@@ -59,7 +59,8 @@ class KOViewManager : public QObject
       AGENDA_DAY,
       AGENDA_WORK_WEEK,
       AGENDA_WEEK,
-      AGENDA_NEXTX
+      AGENDA_NEXTX,
+      AGENDA_OTHER // for example, showing 8 days
     };
 
     KOViewManager( CalendarView * );
