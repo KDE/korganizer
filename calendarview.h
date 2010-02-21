@@ -125,7 +125,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     QWidgetStack *viewStack() const { return mRightFrame; }
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
-    DateNavigator *dateNavigator() const { return mNavigator; }
+    DateNavigator *dateNavigator() const { return mDateNavigator; }
 
     KOIncidenceEditor *editorDialog( Incidence* ) const;
     IncidenceChangerBase *incidenceChanger() const { return mChanger; }
@@ -657,14 +657,14 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     NavigatorBar *mNavigatorBar;
 
-    DateNavigatorContainer *mDateNavigator;
+    DateNavigatorContainer *mDateNavigatorContainer;
 
 
     QPtrList<CalendarViewExtension> mExtensions;
 
     Calendar *mCalendar;
 
-    DateNavigator *mNavigator;
+    DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;
 
     KOEventViewer *mEventViewer;

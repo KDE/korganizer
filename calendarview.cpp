@@ -131,7 +131,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mExtensions.setAutoDelete( true );
 
-  mNavigator = new DateNavigator( this );
+  mDateNavigator = new DateNavigator( this );
   mDateChecker = new DateChecker( this );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
@@ -146,11 +146,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
                                  "CalendarView::LeftFrame" );
 //  mPanner->setResizeMode( mLeftSplitter, QSplitter::Stretch );
 
-  mDateNavigator = new DateNavigatorContainer( mLeftSplitter,
+  mDateNavigatorContainer = new DateNavigatorContainer( mLeftSplitter,
                                                "CalendarView::DateNavigator" );
 
-//  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
-  mLeftSplitter->setCollapsible( mDateNavigator, true );
+//  mLeftSplitter->setResizeMode( mDateNavigatorContainer, QSplitter::Stretch );
+  mLeftSplitter->setCollapsible( mDateNavigatorContainer, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
 
   mEventViewer = new KOEventViewer( CalendarNull::self(), mLeftSplitter,"EventViewer" );
@@ -175,7 +175,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   topLayout->addWidget( mainBox );
 
-  mDateNavigator = new KDateNavigator( leftFrame, true,
+  mDateNavigatorContainer = new KDateNavigator( leftFrame, true,
                                        "CalendarView::DateNavigator",
                                        QDate::currentDate() );
   mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
@@ -195,54 +195,54 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   if ( KOPrefs::instance()->mVerticalScreen ) {
 //    mTodoList->setFixedHeight( 60 );
-    mTodoList->setFixedHeight( mDateNavigator->sizeHint().height() );
+    mTodoList->setFixedHeight( mDateNavigatorContainer->sizeHint().height() );
   }
 #endif
 
-  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
+  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
            SLOT( showDates( const KCal::DateList & ) ) );
-  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mDateNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
+           mDateNavigatorContainer, SLOT( selectDates( const KCal::DateList & ) ) );
 
   connect( mNavigatorBar, SIGNAL( goPrevYear() ),
-           mNavigator, SLOT( selectPreviousYear() ) );
+           mDateNavigator, SLOT( selectPreviousYear() ) );
   connect( mNavigatorBar, SIGNAL( goNextYear() ),
-           mNavigator, SLOT( selectNextYear() ) );
+           mDateNavigator, SLOT( selectNextYear() ) );
   connect( mNavigatorBar, SIGNAL( goPrevMonth() ),
-           mNavigator, SLOT( selectPreviousMonth() ) );
+           mDateNavigator, SLOT( selectPreviousMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextMonth() ),
-           mNavigator, SLOT( selectNextMonth() ) );
+           mDateNavigator, SLOT( selectNextMonth() ) );
   connect( mNavigatorBar, SIGNAL( goMonth(int) ),
-           mNavigator, SLOT( selectMonth(int) ) );
-
-  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
-
-  connect( mDateNavigator, SIGNAL( weekClicked( const QDate & ) ),
-           this, SLOT( selectWeek( const QDate & ) ) );
-
-  connect( mDateNavigator, SIGNAL( goPrevYear() ),
-           mNavigator, SLOT( selectPreviousYear() ) );
-  connect( mDateNavigator, SIGNAL( goNextYear() ),
-           mNavigator, SLOT( selectNextYear() ) );
-  connect( mDateNavigator, SIGNAL( goPrevMonth() ),
-           mNavigator, SLOT( selectPreviousMonth() ) );
-  connect( mDateNavigator, SIGNAL( goNextMonth() ),
-           mNavigator, SLOT( selectNextMonth() ) );
-  connect( mDateNavigator, SIGNAL( goMonth(int) ),
-           mNavigator, SLOT( selectMonth(int) ) );
-
-  connect( mDateNavigator, SIGNAL( goPrevious() ),
-           mNavigator, SLOT( selectPrevious() ) );
-  connect( mDateNavigator, SIGNAL( goNext() ),
-           mNavigator, SLOT( selectNext() ) );
+           mDateNavigator, SLOT( selectMonth(int) ) );
 
   connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+           mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
 
-  connect( mDateNavigator, SIGNAL(incidenceDropped(Incidence*, const QDate&)),
+  connect( mDateNavigatorContainer, SIGNAL( weekClicked( const QDate & ) ),
+           this, SLOT( selectWeek( const QDate & ) ) );
+
+  connect( mDateNavigatorContainer, SIGNAL( goPrevYear() ),
+           mDateNavigator, SLOT( selectPreviousYear() ) );
+  connect( mDateNavigatorContainer, SIGNAL( goNextYear() ),
+           mDateNavigator, SLOT( selectNextYear() ) );
+  connect( mDateNavigatorContainer, SIGNAL( goPrevMonth() ),
+           mDateNavigator, SLOT( selectPreviousMonth() ) );
+  connect( mDateNavigatorContainer, SIGNAL( goNextMonth() ),
+           mDateNavigator, SLOT( selectNextMonth() ) );
+  connect( mDateNavigatorContainer, SIGNAL( goMonth(int) ),
+           mDateNavigator, SLOT( selectMonth(int) ) );
+
+  connect( mDateNavigatorContainer, SIGNAL( goPrevious() ),
+           mDateNavigator, SLOT( selectPrevious() ) );
+  connect( mDateNavigatorContainer, SIGNAL( goNext() ),
+           mDateNavigator, SLOT( selectNext() ) );
+
+  connect( mDateNavigatorContainer, SIGNAL( datesSelected( const KCal::DateList & ) ),
+           mDateNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+
+  connect( mDateNavigatorContainer, SIGNAL(incidenceDropped(Incidence*, const QDate&)),
            SLOT( addIncidenceOn( Incidence *, const QDate & ) ) );
-  connect( mDateNavigator, SIGNAL(incidenceDroppedMove(Incidence*,const QDate&)),
+  connect( mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Incidence*,const QDate&)),
            SLOT( moveIncidenceTo( Incidence *, const QDate & ) ) );
 
   connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
@@ -250,10 +250,10 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
            SIGNAL( dayPassed( const QDate & ) ) );
   connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
-           mDateNavigator, SLOT( updateToday() ) );
+           mDateNavigatorContainer, SLOT( updateToday() ) );
 
   connect( this, SIGNAL( configChanged() ),
-           mDateNavigator, SLOT( updateConfig() ) );
+           mDateNavigatorContainer, SLOT( updateConfig() ) );
 
   connect( this, SIGNAL( incidenceSelected(Incidence *, const QDate &) ),
            mEventViewer, SLOT ( setIncidence (Incidence *, const QDate &) ) );
@@ -314,7 +314,7 @@ void CalendarView::setCalendar( Calendar *cal )
 
   mCalendar->registerObserver( this );
 
-  mDateNavigator->setCalendar( mCalendar );
+  mDateNavigatorContainer->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
 
@@ -388,7 +388,7 @@ QDate CalendarView::activeDate( bool fallbackToToday )
   if ( fallbackToToday ) {
     return QDate::currentDate();
   } else {
-    return mNavigator->selectedDates().first();
+    return mDateNavigator->selectedDates().first();
   }
 }
 
@@ -407,14 +407,14 @@ QDate CalendarView::activeIncidenceDate()
 
 QDate CalendarView::startDate()
 {
-  DateList dates = mNavigator->selectedDates();
+  DateList dates = mDateNavigator->selectedDates();
 
   return dates.first();
 }
 
 QDate CalendarView::endDate()
 {
-  DateList dates = mNavigator->selectedDates();
+  DateList dates = mDateNavigator->selectedDates();
 
   return dates.last();
 }
@@ -529,7 +529,7 @@ void CalendarView::readSettings()
 
   QValueList<int> sizes = config->readIntListEntry( "Separator1" );
   if ( sizes.count() != 2 ) {
-    sizes << mDateNavigator->minimumSizeHint().width();
+    sizes << mDateNavigatorContainer->minimumSizeHint().width();
     sizes << 300;
   }
   mPanner->setSizes( sizes );
@@ -547,8 +547,8 @@ void CalendarView::readSettings()
 
   config->setGroup( "Views" );
   int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
-  if ( dateCount == 7 ) mNavigator->selectWeek();
-  else mNavigator->selectDates( mNavigator->selectedDates().first(), dateCount );
+  if ( dateCount == 7 ) mDateNavigator->selectWeek();
+  else mDateNavigator->selectDates( mDateNavigator->selectedDates().first(), dateCount );
 }
 
 
@@ -576,7 +576,7 @@ void CalendarView::writeSettings()
   writeFilterSettings( config );
 
   config->setGroup( "Views" );
-  config->writeEntry( "ShownDatesCount", mNavigator->selectedDates().count() );
+  config->writeEntry( "ShownDatesCount", mDateNavigator->selectedDates().count() );
 
   config->sync();
 }
@@ -646,37 +646,37 @@ void CalendarView::writeFilterSettings( KConfig *config )
 
 void CalendarView::goDate( const QDate& date )
 {
-  mNavigator->selectDate( date );
+  mDateNavigator->selectDate( date );
 }
 
 void CalendarView::showDate(const QDate & date)
 {
-  int dateCount = mNavigator->datesCount();
+  int dateCount = mDateNavigator->datesCount();
   if ( dateCount == 7 )
-    mNavigator->selectWeek( date );
+    mDateNavigator->selectWeek( date );
   else
-    mNavigator->selectDates( date, dateCount );
+    mDateNavigator->selectDates( date, dateCount );
 }
 
 void CalendarView::goToday()
 {
-  mNavigator->selectToday();
+  mDateNavigator->selectToday();
 }
 
 void CalendarView::goNext()
 {
   if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) )
-    mNavigator->selectNextMonth();
+    mDateNavigator->selectNextMonth();
   else
-    mNavigator->selectNext();
+    mDateNavigator->selectNext();
 }
 
 void CalendarView::goPrevious()
 {
   if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) )
-    mNavigator->selectPreviousMonth();
+    mDateNavigator->selectPreviousMonth();
   else
-    mNavigator->selectPrevious();
+    mDateNavigator->selectPrevious();
 }
 
 void CalendarView::updateConfig( const QCString& receiver)
@@ -838,7 +838,7 @@ void CalendarView::endMultiModify()
 
 void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
-  mDateNavigator->updateView();
+  mDateNavigatorContainer->updateView();
   mDialogManager->updateSearchDialog();
 
   if ( incidence ) {
@@ -857,12 +857,12 @@ void CalendarView::updateView(const QDate &start, const QDate &end)
 {
   mTodoList->updateView();
   mViewManager->updateView(start, end);
-  mDateNavigator->updateView();
+  mDateNavigatorContainer->updateView();
 }
 
 void CalendarView::updateView()
 {
-  DateList tmpList = mNavigator->selectedDates();
+  DateList tmpList = mDateNavigator->selectedDates();
 
   // We assume that the navigator only selects consecutive days.
   updateView( tmpList.first(), tmpList.last() );
@@ -870,7 +870,7 @@ void CalendarView::updateView()
 
 void CalendarView::updateUnmanagedViews()
 {
-  mDateNavigator->updateDayMatrix();
+  mDateNavigatorContainer->updateDayMatrix();
 }
 
 int CalendarView::msgItemDelete( Incidence *incidence )
@@ -974,8 +974,8 @@ void CalendarView::edit_paste()
     date = mView->selectedDates().first();
   } else {
     // default to the selected date from the navigator
-    if ( !mNavigator->selectedDates().isEmpty() ) {
-      date = mNavigator->selectedDates().first();
+    if ( !mDateNavigator->selectedDates().isEmpty() ) {
+      date = mDateNavigator->selectedDates().first();
     }
   }
 
@@ -1154,7 +1154,7 @@ void CalendarView::newTodo( ResourceCalendar *res, const QString &subRes )
   todoEditor->newTodo();
   todoEditor->setResource( res, subRes );
   if ( mViewManager->currentView()->isEventView() ) {
-    dtDue.setDate( mNavigator->selectedDates().first() );
+    dtDue.setDate( mDateNavigator->selectedDates().first() );
     QDateTime dtDummy = QDateTime::currentDateTime();
     mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
     todoEditor->setDates( dtDue, allday );
@@ -1205,7 +1205,7 @@ void CalendarView::newJournal( ResourceCalendar *res, const QString &subRes,
   journalEditor->setResource( res, subRes );
   journalEditor->setTexts( text );
   if ( !date.isValid() ) {
-    journalEditor->setDate( mNavigator->selectedDates().first() );
+    journalEditor->setDate( mDateNavigator->selectedDates().first() );
   } else {
     journalEditor->setDate( date );
   }
@@ -1663,7 +1663,7 @@ void CalendarView::print()
   CalPrinterBase::PrintType printType = CalPrinterBase::Month;
   if ( currentView ) printType = currentView->printType();
 
-  DateList tmpDateList = mNavigator->selectedDates();
+  DateList tmpDateList = mDateNavigator->selectedDates();
   Incidence::List selectedIncidences;
   if ( mViewManager->currentView() ) {
     selectedIncidences = mViewManager->currentView()->selectedIncidences();
@@ -1930,9 +1930,9 @@ void CalendarView::showIntro()
 void CalendarView::showDateNavigator( bool show )
 {
   if( show )
-    mDateNavigator->show();
+    mDateNavigatorContainer->show();
   else
-    mDateNavigator->hide();
+    mDateNavigatorContainer->hide();
 }
 
 void CalendarView::showTodoView( bool show )
@@ -2520,7 +2520,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 void CalendarView::resourcesChanged()
 {
   mViewManager->resourcesChanged();
-  mDateNavigator->setUpdateNeeded();
+  mDateNavigatorContainer->setUpdateNeeded();
   updateView();
 }
 
@@ -2640,9 +2640,9 @@ void CalendarView::selectWeek( const QDate &date )
   if ( KOPrefs::instance()->mWeekNumbersShowWork                 &&
        mViewManager->currentView() == mViewManager->agendaView() &&
        mViewManager->agendaMode()  == KOViewManager::AGENDA_WORK_WEEK ) {
-    mNavigator->selectWorkWeek( date );
+    mDateNavigator->selectWorkWeek( date );
   } else {
-    mNavigator->selectWeek( date );
+    mDateNavigator->selectWeek( date );
   }
 }
 
