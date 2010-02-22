@@ -291,6 +291,8 @@ class KOMonthView: public KOEventView
     void updateDayLabels();
 
   private:
+    void showLabel( bool show );
+      
     class GetDateVisitor;
     int mDaysPerWeek;
     int mNumWeeks;

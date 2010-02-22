@@ -947,6 +947,8 @@ void KOMonthView::updateConfig()
   for ( uint i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateConfig();
   }
+  
+  showLabel( !KOPrefs::instance()->fullViewMonth() );
 }
 
 void KOMonthView::updateDayLabels()
@@ -979,11 +981,8 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   mLabel->setText( i18n( "monthname year", "%1 %2" )
                    .arg( calSys->monthName( start ) )
                    .arg( calSys->year( start ) ) );
-  if ( !KOPrefs::instance()->fullViewMonth() ) {
-    mLabel->show();
-  } else {
-    mLabel->hide();
-  }
+  
+  showLabel( !KOPrefs::instance()->fullViewMonth() );
 
   bool primary = false;
   uint i;
@@ -1212,5 +1211,14 @@ void KOMonthView::clearSelection()
   if ( mSelectedCell ) {
     mSelectedCell->deselect();
     mSelectedCell = 0;
+  }
+}
+
+void KOMonthView::showLabel( bool show )
+{
+  if ( show ) {
+    mLabel->show();
+  } else {
+    mLabel->hide();
   }
 }
