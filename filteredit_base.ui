@@ -18,7 +18,11 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="KListWidgetSearchLine" name="searchline"/>
+          <widget class="KListWidgetSearchLine" name="searchline">
+           <property name="clickMessage">
+             <string>Search</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QListWidget" name="mRulesList"/>
