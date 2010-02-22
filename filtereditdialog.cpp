@@ -86,6 +86,7 @@ FilterEdit::FilterEdit( QList<CalFilter*> *filters, QWidget *parent )
   : QWidget( parent ), mCurrent( 0 ), mCategorySelectDialog( 0 )
 {
   setupUi( this );
+  searchline->setListWidget( mRulesList );
   mDetailsFrame->setEnabled( false );
   mFilters = filters;
   mNewButton->setWhatsThis(
