@@ -288,10 +288,10 @@ bool KOEventEditor::processInput()
         Event *event = mEvent->clone();
         event->clearAttendees();
         event->setSummary( i18n("My counter proposal for: %1").arg( mEvent->summary() ) );
-        mChanger->addIncidence( event, 0, QString(), this );
+        mChanger->addIncidence( event, mResource, mSubResource, this );
       } else {
         if ( mRecurIncidence && mRecurIncidenceAfterDissoc ) {
-          mChanger->addIncidence( mEvent, 0, QString(), this );
+          mChanger->addIncidence( mEvent, mResource, mSubResource, this );
 
           mChanger->changeIncidence( mRecurIncidence, mRecurIncidenceAfterDissoc,
                                      KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
