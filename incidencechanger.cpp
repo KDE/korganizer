@@ -367,19 +367,23 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res
   }
 
   if ( !success ) {
-    QString errMessage;
-    if ( pResName.isEmpty() ) {
-      errMessage = i18n( "Unable to save %1 \"%2\"." ).
-                   arg( i18n( incidence->type() ) ).
-                   arg( incidence->summary() );
-    } else {
-      errMessage = i18n( "Unable to save %1 \"%2\" to calendar %3." ).
-                   arg( i18n( incidence->type() ) ).
-                   arg( incidence->summary() ).
-                   arg( pResName );
+    // We can have a failure if the user pressed [cancel] in the resource
+    // selectdialog, so check the exception.
+    ErrorFormat *e = stdcal ? stdcal->exception() : 0;
+    if ( !e || ( e && ( e->errorCode() != KCal::ErrorFormat::UserCancel ) ) ) {
+      QString errMessage;
+      if ( pResName.isEmpty() ) {
+        errMessage = i18n( "Unable to save %1 \"%2\"." ).
+                     arg( i18n( incidence->type() ) ).
+                     arg( incidence->summary() );
+      } else {
+        errMessage = i18n( "Unable to save %1 \"%2\" to calendar %3." ).
+                     arg( i18n( incidence->type() ) ).
+                     arg( incidence->summary() ).
+                     arg( pResName );
+      }
+      KMessageBox::sorry( parent, errMessage );
     }
-
-    KMessageBox::sorry( parent, errMessage );
     return false;
   }
 
