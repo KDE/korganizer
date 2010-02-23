@@ -397,7 +397,9 @@ void KOGroupware::sendCounterProposal(KCal::Calendar *calendar, KCal::Event * ol
     Incidence* tmp = oldEvent->clone();
     tmp->setSummary( i18n("Counter proposal: %1").arg( newEvent->summary() ) );
     tmp->setDescription( newEvent->description() );
-    tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( newEvent->dtStartStr(), newEvent->dtEndStr() ) );
+    tmp->addComment( i18n("Proposed new meeting time: %1 - %2").
+                     arg( IncidenceFormatter::dateToString( newEvent->dtStart() ),
+                          IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
     KCal::MailScheduler scheduler( calendar );
     scheduler.performTransaction( tmp, Scheduler::Reply );
     delete tmp;
