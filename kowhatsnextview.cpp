@@ -35,6 +35,7 @@
 #include <kmessagebox.h>
 
 #include <libkcal/calendar.h>
+#include <libkcal/incidenceformatter.h>
 
 #include "koglobals.h"
 #include "koprefs.h"
@@ -312,8 +313,8 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
   if ( ev->type()=="Todo" ) {
     Todo *todo = static_cast<Todo*>(ev);
     if ( todo->hasDueDate() ) {
-      mText += i18n("  (Due: %1)")
-         .arg( (todo->doesFloat())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
+      mText += i18n( "  (Due: %1)" ).
+               arg( IncidenceFormatter::dateTimeToString( todo->dtDue(), todo->doesFloat() ) );
     }
   }
   mText += "</li>\n";
