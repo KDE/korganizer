@@ -128,10 +128,12 @@ bool KOListView::ListItemVisitor::visit( Event *e )
     mItem->setText( 4, e->dtStartTimeStr() );
     mItem->setSortKey( 4,e->dtStart().time().toString(Qt::ISODate));
   }
-  mItem->setText( 5,e->dtEndDateStr());
+  mItem->setText( 5, IncidenceFormatter::dateToString( e->dtEnd(), true ) );
   mItem->setSortKey( 5, e->dtEnd().toString(Qt::ISODate));
-  if (e->doesFloat()) mItem->setText(6, "---"); else {
-    mItem->setText( 6, e->dtEndTimeStr() );
+  if ( e->doesFloat() ) {
+    mItem->setText(6, "---");
+  } else {
+    mItem->setText( 6, IncidenceFormatter::timeToString(e->dtEnd(), true ) );
     mItem->setSortKey( 6, e->dtEnd().time().toString(Qt::ISODate));
   }
   mItem->setText( 7,e->categoriesStr());
@@ -176,12 +178,12 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   }
 
   if (t->hasDueDate()) {
-    mItem->setText(5,t->dtDueDateStr());
+    mItem->setText(5, IncidenceFormatter::dateToString( t->dtDue(), true ) );
     mItem->setSortKey( 5, t->dtDue().toString(Qt::ISODate) );
     if (t->doesFloat()) {
       mItem->setText(6,"---");
     } else {
-      mItem->setText(6,t->dtDueTimeStr());
+      mItem->setText(6, IncidenceFormatter::timeToString( t->dtDue(), true ) );
       mItem->setSortKey( 6, t->dtDue().time().toString(Qt::ISODate) );
     }
   } else {
