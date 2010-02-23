@@ -134,18 +134,18 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
   protected:
     bool visit( Event *event ) {
       if ( event->dtStart().isValid() ) {
-        mStartCaption =  i18n("Start date: ");
-        // Show date/time or only date, depending on whether it's an all-day event
-// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
-        mStartString = (event->doesFloat()) ? (event->dtStartDateStr(false)) : (event->dtStartStr());
+        mStartCaption =  i18n( "Start date: " );
+        mStartString = IncidenceFormatter::dateTimeToString(
+          event->dtStart(), event->doesFloat(), false );
       } else {
-        mStartCaption = i18n("No start date");
+        mStartCaption = i18n( "No start date" );
         mStartString = QString::null;
       }
 
       if ( event->hasEndDate() ) {
-        mEndCaption = i18n("End date: ");
-        mEndString = (event->doesFloat()) ? (event->dtEndDateStr(false)) : (event->dtEndStr());
+        mEndCaption = i18n( "End date: " );
+        mEndString = IncidenceFormatter::dateTimeToString(
+          event->dtEnd(), event->doesFloat(), false );
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n("Duration: ");
         int mins = event->duration() / 60;
@@ -163,18 +163,18 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     }
     bool visit( Todo *todo ) {
       if ( todo->hasStartDate() ) {
-        mStartCaption =  i18n("Start date: ");
-        // Show date/time or only date, depending on whether it's an all-day event
-// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
-        mStartString = (todo->doesFloat()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr());
+        mStartCaption =  i18n( "Start date: " );
+        mStartString = IncidenceFormatter::dateTimeToString(
+          todo->dtStart(), todo->doesFloat(), false );
       } else {
-        mStartCaption = i18n("No start date");
+        mStartCaption = i18n( "No start date" );
         mStartString = QString::null;
       }
 
       if ( todo->hasDueDate() ) {
-        mEndCaption = i18n("Due date: ");
-        mEndString = (todo->doesFloat()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr());
+        mEndCaption = i18n( "Due date: " );
+        mEndString = IncidenceFormatter::dateTimeToString(
+          todo->dtDue(), todo->doesFloat(), false );
       } else {
         mEndCaption = i18n("No due date");
         mEndString = QString::null;
@@ -182,9 +182,9 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       return true;
     }
     bool visit( Journal *journal ) {
-      mStartCaption = i18n("Start date: ");
-// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
-      mStartString = (journal->doesFloat()) ? (journal->dtStartDateStr(false)) : (journal->dtStartStr());
+      mStartCaption = i18n( "Start date: " );
+      mStartString = IncidenceFormatter::dateTimeToString(
+        journal->dtStart(), journal->doesFloat(), false );
       mEndCaption = QString::null;
       mEndString = QString::null;
       return true;
@@ -213,8 +213,6 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box, const
 #include <qfontdatabase.h>
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
-  KLocale *local = KGlobal::locale();
-
   QFont oldFont(p.font());
   QFont textFont( "sans-serif", 11, QFont::Normal );
   QFont captionFont( "sans-serif", 11, QFont::Bold );
@@ -543,9 +541,6 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                         attachmentCaption, attachmentString,
                         /*sameLine=*/false, /*expand=*/false,
                         captionFont, textFont );
-      int attachStart = drawBoxWithCaption( p, attachmentsBox,
-                        QString()/*i18n("Attachments:")*/, QString(), /*sameLine=*/false,
-                        /*expand=*/false, captionFont, textFont );
     }
 
     if ( mShowAttendees ) {
