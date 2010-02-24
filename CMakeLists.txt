@@ -37,6 +37,7 @@ add_subdirectory( tests )
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${CMAKE_SOURCE_DIR}/akonadi/kcal
+		    ${CMAKE_SOURCE_DIR}/akonadi/
                     ${CMAKE_SOURCE_DIR}/korganizer/printing
                     ${CMAKE_SOURCE_DIR}/kdgantt1
                     ${CMAKE_BINARY_DIR}/libkdepim
@@ -87,7 +88,7 @@ target_link_libraries(korganizer
 	korganizerprivate 
 	korganizer_interfaces
 	korganizer_core
-	akonadi-kcal_next
+	akonadi_next
 )
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -253,6 +254,7 @@ target_link_libraries(korganizerprivate
   kdepimdbusinterfaces
   korganizer_core
   akonadi-kcal_next
+  akonadi_next
   korg_incidenceeditor
 )
 

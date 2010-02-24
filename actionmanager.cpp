@@ -58,7 +58,7 @@
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/freebusymanager.h>
-#include <akonadi/kcal/entitymodelstatesaver.h>
+#include <akonadi/akonadi_next/entitymodelstatesaver.h>
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/groupware.h>
 #include <akonadi/kcal/utils.h>
