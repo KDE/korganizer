@@ -1282,11 +1282,11 @@ bool CalendarView::todo_unsub( Todo *todo )
   bool status= false;
   if ( !todo || !todo->relatedTo() ) return false;
 
-  if ( mChanger->beginChange( todo ) ) {
+  if ( mChanger->beginChange( todo, 0, QString() ) ) {
       Todo *oldTodo = todo->clone();
       todo->setRelatedTo(0);
       mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED, this );
-      mChanger->endChange( todo );
+      mChanger->endChange( todo, 0, QString() );
       delete oldTodo;
       setModified(true);
       status = true;
@@ -1350,7 +1350,7 @@ void CalendarView::toggleAlarm( Incidence *incidence )
     return;
   }
   Incidence*oldincidence = incidence->clone();
-  if ( !mChanger->beginChange( incidence ) ) {
+  if ( !mChanger->beginChange( incidence, 0, QString() ) ) {
     kdDebug(5850) << "Unable to lock incidence " << endl;
     delete oldincidence;
     return;
@@ -1366,7 +1366,7 @@ void CalendarView::toggleAlarm( Incidence *incidence )
     alm->setEnabled(true);
   }
   mChanger->changeIncidence( oldincidence, incidence, KOGlobals::ALARM_MODIFIED, this );
-  mChanger->endChange( incidence );
+  mChanger->endChange( incidence, 0, QString() );
   delete oldincidence;
 
 //  mClickedItem->updateIcons();
@@ -1378,7 +1378,11 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
     kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
     return;
   }
-  if ( !mChanger->beginChange( incidence ) ) {
+
+  QPair<ResourceCalendar *, QString>p =
+    CalHelper::incSubResourceCalendar( calendar(), incidence );
+
+  if ( !mChanger->beginChange( incidence, p.first, p.second ) ) {
     kdDebug(5850) << "Unable to lock incidence " << endl;
     return;
   }
@@ -1388,16 +1392,13 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
 
   if ( newInc ) {
-    QPair<ResourceCalendar *, QString>p =
-      CalHelper::incSubResourceCalendar( calendar(), incidence );
-
     mChanger->changeIncidence( oldincidence, incidence, KOGlobals::NOTHING_MODIFIED, this );
     mChanger->addIncidence( newInc, p.first, p.second, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."),
       i18n("Dissociating Failed") );
   }
-  mChanger->endChange( incidence );
+  mChanger->endChange( incidence, p.first, p.second );
   endMultiModify();
   delete oldincidence;
 }
@@ -1408,7 +1409,11 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
     kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
     return;
   }
-  if ( !mChanger->beginChange( incidence ) ) {
+
+  QPair<ResourceCalendar *, QString>p =
+    CalHelper::incSubResourceCalendar( calendar(), incidence );
+
+  if ( !mChanger->beginChange( incidence, p.first, p.second ) ) {
     kdDebug(5850) << "Unable to lock incidence " << endl;
     return;
   }
@@ -1417,9 +1422,6 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
 
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
-    QPair<ResourceCalendar *, QString>p =
-      CalHelper::incSubResourceCalendar( calendar(), incidence );
-
     mChanger->changeIncidence( oldincidence, incidence, KOGlobals::NOTHING_MODIFIED, this );
     mChanger->addIncidence( newInc, p.first, p.second, this );
   } else {
@@ -1427,7 +1429,7 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
       i18n("Dissociating Failed") );
   }
   endMultiModify();
-  mChanger->endChange( incidence );
+  mChanger->endChange( incidence, p.first, p.second );
   delete oldincidence;
 }
 
@@ -2010,7 +2012,7 @@ Todo *CalendarView::selectedTodo()
 void CalendarView::dialogClosing( Incidence *in )
 {
   // FIXME: this doesn't work, because if it's a new incidence, it's not locked!
-  mChanger->endChange( in );
+  mChanger->endChange( in, 0, QString() );
   mDialogList.remove( in );
 }
 
@@ -2129,6 +2131,10 @@ bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool 
     showIncidence( incidence );
     return true;
   }
+
+  QPair<ResourceCalendar *, QString>p =
+    CalHelper::incSubResourceCalendar( calendar(), incidence );
+
   Incidence *savedIncidence = incidence->clone();
   Incidence *incToChange;
 
@@ -2141,7 +2147,7 @@ bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool 
 
   // If the user pressed cancel incToChange is 0
   if ( incToChange ) {
-    if ( !isCounter && !mChanger->beginChange( incToChange ) ) {
+    if ( !isCounter && !mChanger->beginChange( incToChange, p.first, p.second ) ) {
       warningChangeFailed( incToChange );
       showIncidence( incToChange );
 
@@ -2156,7 +2162,6 @@ bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool 
     if ( incidence != incToChange ) {
       incidenceEditor->setRecurringIncidence( savedIncidence, incidence );
     }
-    QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
     incidenceEditor->setResource( p.first, p.second );
     incidenceEditor->editIncidence( incToChange, date, mCalendar );
     incidenceEditor->show();
@@ -2285,6 +2290,10 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
                i18n("Delete &All"));
       }
     }
+
+    QPair<ResourceCalendar *, QString>p =
+      CalHelper::incSubResourceCalendar( calendar(), incidence );
+
     switch(km) {
       case KMessageBox::Ok: // Continue // all
       case KMessageBox::Continue:
@@ -2292,23 +2301,23 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
         break;
 
       case KMessageBox::Yes: // just this one
-        if ( mChanger->beginChange( incidence ) ) {
+        if ( mChanger->beginChange( incidence, p.first, p.second ) ) {
           Incidence *oldIncidence = incidence->clone();
           incidence->recurrence()->addExDate( itemDate );
           mChanger->changeIncidence( oldIncidence, incidence,
                                      KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
-          mChanger->endChange( incidence );
+          mChanger->endChange( incidence, p.first, p.second );
           delete oldIncidence;
         }
         break;
       case KMessageBox::No: // all future items
-        if ( mChanger->beginChange( incidence ) ) {
+        if ( mChanger->beginChange( incidence, p.first, p.second ) ) {
           Incidence *oldIncidence = incidence->clone();
           Recurrence *recur = incidence->recurrence();
           recur->setEndDate( itemDate.addDays(-1) );
           mChanger->changeIncidence( oldIncidence, incidence,
                                      KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE,  this );
-          mChanger->endChange( incidence );
+          mChanger->endChange( incidence, p.first, p.second );
           delete oldIncidence;
         }
         break;
@@ -2484,8 +2493,11 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
     addIncidenceOn( incidence, dt );
     return;
   }
+
   Incidence *oldIncidence = incidence->clone();
-  if ( !mChanger->beginChange( incidence ) ) {
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+
+  if ( !mChanger->beginChange( incidence, p.first, p.second ) ) {
     delete oldIncidence;
     return;
   }
@@ -2513,7 +2525,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
     todo->setHasDueDate( true );
   }
   mChanger->changeIncidence( oldIncidence, incidence, KOGlobals::DATE_MODIFIED,this );
-  mChanger->endChange( incidence );
+  mChanger->endChange( incidence, p.first, p.second );
   delete oldIncidence;
 }
 

@@ -34,11 +34,22 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 
-bool IncidenceChanger::beginChange( Incidence * incidence )
+bool IncidenceChanger::beginChange( Incidence *incidence,
+                                    ResourceCalendar *res, const QString &subRes )
 {
-  if ( !incidence ) return false;
-kdDebug(5850)<<"IncidenceChanger::beginChange for incidence \""<<incidence->summary()<<"\""<<endl;
-  return mCalendar->beginChange( incidence );
+  if ( !incidence ) {
+    return false;
+  }
+
+  kdDebug(5850) << "IncidenceChanger::beginChange for incidence \""
+                << incidence->summary() << "\"" << endl;
+
+  CalendarResources *calRes = dynamic_cast<CalendarResources*>( mCalendar );
+  if ( !calRes ) {
+    return false;
+  }
+
+  return calRes->beginChange( incidence, res, subRes );
 }
 
 bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence,
@@ -76,16 +87,28 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
   }
 }
 
-bool IncidenceChanger::endChange( Incidence *incidence )
+bool IncidenceChanger::endChange( Incidence *incidence,
+                                  ResourceCalendar *res, const QString &subRes )
 {
   // FIXME: if that's a groupware incidence, and I'm not the organizer,
   // send out a mail to the organizer with a counterproposal instead
   // of actually changing the incidence. Then no locking is needed.
   // FIXME: if that's a groupware incidence, and the incidence was
   // never locked, we can't unlock it with endChange().
-  if ( !incidence ) return false;
-kdDebug(5850)<<"IncidenceChanger::endChange for incidence \""<<incidence->summary()<<"\""<<endl;
-  return mCalendar->endChange( incidence );
+
+  if ( !incidence ) {
+    return false;
+  }
+
+  kdDebug(5850) << "IncidenceChanger::endChange for incidence \""
+                << incidence->summary() << "\"" << endl;
+
+  CalendarResources *calRes = dynamic_cast<CalendarResources*>( mCalendar );
+  if ( !calRes ) {
+    return false;
+  }
+
+  return calRes->endChange( incidence, res, subRes );
 }
 
 bool IncidenceChanger::deleteIncidence( Incidence *incidence, QWidget *parent )
@@ -319,7 +342,9 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
   return true;
 }
 
-bool IncidenceChanger::addIncidence( Incidence *incidence, ResourceCalendar *res, const QString &subRes, QWidget *parent )
+bool IncidenceChanger::addIncidence( Incidence *incidence,
+                                     ResourceCalendar *res, const QString &subRes,
+                                     QWidget *parent )
 {
   CalendarResources *stdcal = dynamic_cast<CalendarResources *>( mCalendar );
   if( stdcal && !stdcal->hasCalendarResources() ) {

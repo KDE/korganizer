@@ -899,6 +899,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
   QPoint clipperPos = clipper()->
                       mapFromGlobal(viewport()->mapToGlobal(viewportPos));
 
+  QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
+
   // Cursor left active agenda area.
   // This starts a drag.
   if ( clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
@@ -914,7 +916,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       mActionType = NOP;
       mItemMoved = false;
       if ( mItemMoved && mChanger )
-        mChanger->endChange( mActionItem->incidence() );
+        mChanger->endChange( mActionItem->incidence(), p.first, p.second );
       return;
     }
   } else {
@@ -935,7 +937,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
   // Move or resize item if necessary
   if ( mEndCell != gpos ) {
     if ( !mItemMoved ) {
-      if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
+      if ( !mChanger ||
+           !mChanger->beginChange( mActionItem->incidence(), p.first, p.second ) ) {
         KMessageBox::information( this, i18n("Unable to lock item for "
                              "modification. You cannot make any changes."),
                              i18n("Locking Failed"), "AgendaLockingFailed" );
@@ -1082,6 +1085,7 @@ void KOAgenda::endItemAction()
 
   mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
                                 mStartCell.y() == mEndCell.y() );
+  QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
 
   if ( mItemMoved ) {
     Incidence *incToChange = inc;
@@ -1134,7 +1138,7 @@ void KOAgenda::endItemAction()
 
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
-      mChanger->endChange( inc );
+      mChanger->endChange( inc, p.first, p.second );
       emit itemModified( modif );
     } else {
 
@@ -1143,11 +1147,11 @@ void KOAgenda::endItemAction()
 
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
-      mChanger->endChange( inc );
+      mChanger->endChange( inc, p.first, p.second );
       emit itemModified( mActionItem );
     }
   } else {
-    mChanger->endChange( inc );
+    mChanger->endChange( inc, p.first, p.second );
   }
 
   mActionItem = 0;

@@ -224,11 +224,12 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         }
         to = to->relatedTo();
       }
+
       Todo*oldTodo = existingTodo->clone();
-      if ( mChanger->beginChange( existingTodo ) ) {
+      if ( mChanger->beginChange( existingTodo, 0, QString() ) ) {
         existingTodo->setRelatedTo( destinationEvent );
         mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::RELATION_MODIFIED, this );
-        mChanger->endChange( existingTodo );
+        mChanger->endChange( existingTodo, 0, QString() );
       } else {
         KMessageBox::sorry( this, i18n("Unable to change to-do's parent, "
                             "because the to-do cannot be locked.") );
@@ -257,7 +258,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
       kdDebug(5850) << "Dropped : " << text << endl;
       Todo*todo = todoi->todo();
-      if( mChanger->beginChange( todo ) ) {
+      if( mChanger->beginChange( todo, 0, QString() ) ) {
         Todo*oldtodo = todo->clone();
 
         if( text.startsWith( "file:" ) ) {
@@ -276,7 +277,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         }
         //FIXME: attendees or attachment added, so there is something modified
         mChanger->changeIncidence( oldtodo, todo, KOGlobals::NOTHING_MODIFIED, this );
-        mChanger->endChange( todo );
+        mChanger->endChange( todo, 0, QString() );
       } else {
         KMessageBox::sorry( this, i18n("Unable to add attendees to the to-do, "
             "because the to-do cannot be locked.") );
@@ -880,13 +881,13 @@ void KOTodoView::setNewPriority(int index)
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
   if ( !todo->isReadOnly () &&
-       mChanger->beginChange( todo ) ) {
+       mChanger->beginChange( todo, 0, QString() ) ) {
     Todo *oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
 
     mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED, this );
-    mChanger->endChange( todo );
+    mChanger->endChange( todo, 0, QString() );
     delete oldTodo;
   }
 }
@@ -898,7 +899,8 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
   Todo *todo = item->todo();
   if ( !todo ) return;
 
-  if ( !todo->isReadOnly () && mChanger->beginChange( todo ) ) {
+  if ( !todo->isReadOnly () &&
+       mChanger->beginChange( todo, 0, QString() ) ) {
     Todo *oldTodo = todo->clone();
 
 /*  Old code to make sub-items's percentage related to this one's:
@@ -926,7 +928,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
     else
       mChanger->changeIncidence( oldTodo, todo,
                                  KOGlobals::COMPLETION_MODIFIED, this );
-    mChanger->endChange( todo );
+    mChanger->endChange( todo, 0, QString() );
     delete oldTodo;
   } else {
     item->construct();
@@ -945,7 +947,7 @@ void KOTodoView::setNewDate( QDate date )
   Todo *todo = mActiveItem->todo();
   if ( !todo ) return;
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo, 0, QString() ) ) {
     Todo *oldTodo = todo->clone();
 
     QDateTime dt;
@@ -962,7 +964,7 @@ void KOTodoView::setNewDate( QDate date )
 
     mActiveItem->construct();
     mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED, this );
-    mChanger->endChange( todo );
+    mChanger->endChange( todo, 0, QString() );
     delete oldTodo;
   } else {
     kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
@@ -1019,7 +1021,7 @@ void KOTodoView::changedCategories(int index)
   Todo *todo = mActiveItem->todo();
   if ( !todo ) return;
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo, 0, QString() ) ) {
     Todo *oldTodo = todo->clone();
 
     QStringList categories = todo->categories ();
@@ -1031,7 +1033,7 @@ void KOTodoView::changedCategories(int index)
     todo->setCategories( categories );
     mActiveItem->construct();
     mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED, this );
-    mChanger->endChange( todo );
+    mChanger->endChange( todo, 0, QString() );
     delete oldTodo;
   } else {
     kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;

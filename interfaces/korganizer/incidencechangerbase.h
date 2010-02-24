@@ -48,8 +48,10 @@ public:
                                      KOGlobals::HowChanged action,
                                      QWidget *parent ) = 0;
 
-  virtual bool beginChange( Incidence * incidence ) = 0;
-  virtual bool endChange( Incidence *incidence ) = 0;
+  virtual bool beginChange( Incidence *incidence,
+                            ResourceCalendar *res, const QString &subRes ) = 0;
+  virtual bool endChange( Incidence *incidence,
+                          ResourceCalendar *res, const QString &subRes ) = 0;
 
   virtual bool addIncidence( Incidence *incidence,
                              ResourceCalendar *res, const QString &subRes,

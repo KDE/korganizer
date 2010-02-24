@@ -32,35 +32,46 @@ namespace KCal {
 
 class IncidenceChanger : public KOrg::IncidenceChangerBase
 {
-Q_OBJECT
-public:
-  IncidenceChanger( Calendar*cal, QObject *parent ) : IncidenceChangerBase( cal, parent ) {}
-  ~IncidenceChanger() {}
+  Q_OBJECT
+  public:
+    IncidenceChanger( Calendar *cal, QObject *parent )
+      : IncidenceChangerBase( cal, parent ) {}
+    ~IncidenceChanger() {}
 
-  bool beginChange( Incidence *incidence );
-  bool sendGroupwareMessage( Incidence *incidence,
-                             KCal::Scheduler::Method method,
-                             KOGlobals::HowChanged action,
-                             QWidget *parent );
-  bool endChange( Incidence *incidence );
+    bool beginChange( Incidence *incidence,
+                      ResourceCalendar *res, const QString &subRes );
 
-  bool addIncidence( Incidence *incidence, ResourceCalendar *res, const QString &subRes, QWidget *parent );
-  bool changeIncidence( Incidence *oldinc, Incidence *newinc,
-                        KOGlobals::WhatChanged, QWidget *parent );
-  bool deleteIncidence( Incidence *incidence, QWidget *parent );
+    bool sendGroupwareMessage( Incidence *incidence,
+                               KCal::Scheduler::Method method,
+                               KOGlobals::HowChanged action,
+                               QWidget *parent );
 
-  bool cutIncidence( Incidence *incidence, QWidget *parent );
-  static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
-  static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
-public slots:
-  void cancelAttendees( Incidence *incidence );
+    bool endChange( Incidence *incidence,
+                    ResourceCalendar *res, const QString &subRes );
 
-protected:
-  bool myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc );
+    bool addIncidence( Incidence *incidence,
+                       ResourceCalendar *res, const QString &subRes,
+                       QWidget *parent );
 
-private:
-  class ComparisonVisitor;
-  class AssignmentVisitor;
+    bool changeIncidence( Incidence *oldinc, Incidence *newinc,
+                          KOGlobals::WhatChanged, QWidget *parent );
+
+    bool deleteIncidence( Incidence *incidence, QWidget *parent );
+
+    bool cutIncidence( Incidence *incidence, QWidget *parent );
+
+    static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
+    static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
+
+  public slots:
+    void cancelAttendees( Incidence *incidence );
+
+  protected:
+    bool myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc );
+
+  private:
+    class ComparisonVisitor;
+    class AssignmentVisitor;
 };
 
 #endif

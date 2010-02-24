@@ -810,7 +810,10 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   Incidence *incidence = item->incidence();
   if ( !incidence ) return;
-  if ( !mChanger || !mChanger->beginChange(incidence) ) return;
+  if ( !mChanger ||
+       !mChanger->beginChange( incidence, resourceCalendar(), subResourceCalendar() ) ) {
+    return;
+  }
   Incidence *oldIncidence = incidence->clone();
 
   QTime startTime(0,0,0), endTime(0,0,0);
@@ -1020,7 +1023,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   const bool result = mChanger->changeIncidence( oldIncidence, incidence,
                                                  KOGlobals::DATE_MODIFIED, this );
-  mChanger->endChange( incidence );
+  mChanger->endChange( incidence, resourceCalendar(), subResourceCalendar() );
   delete oldIncidence;
 
   if ( !result ) {
@@ -1441,13 +1444,14 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
     if ( existingTodo ) {
       kdDebug(5850) << "Drop existing Todo" << endl;
       Todo *oldTodo = existingTodo->clone();
-      if ( mChanger && mChanger->beginChange( existingTodo ) ) {
+      if ( mChanger &&
+           mChanger->beginChange( existingTodo, resourceCalendar(), subResourceCalendar() ) ) {
         existingTodo->setDtDue( newTime );
         existingTodo->setFloats( allDay );
         existingTodo->setHasDueDate( true );
         mChanger->changeIncidence( oldTodo, existingTodo,
                                    KOGlobals::DATE_MODIFIED, this );
-        mChanger->endChange( existingTodo );
+        mChanger->endChange( existingTodo, resourceCalendar(), subResourceCalendar() );
       } else {
         KMessageBox::sorry( this, i18n("Unable to modify this to-do, "
                             "because it cannot be locked.") );
