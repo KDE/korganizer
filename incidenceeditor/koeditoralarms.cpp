@@ -151,7 +151,7 @@ KOEditorAlarms::KOEditorAlarms( const QByteArray &type,
     mType = "Event";
   }
   setCaption( i18nc( "@title", "Edit Reminders" ) );
-  setButtons( Ok | Apply | Cancel );
+  setButtons( Ok | Cancel );
   setDefaultButton( Ok );
   QWidget *widget = new QWidget( this );
   mWidget.setupUi( widget );
