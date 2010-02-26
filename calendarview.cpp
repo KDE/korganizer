@@ -2649,8 +2649,8 @@ Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
 
 void CalendarView::selectWeek( const QDate &date )
 {
-  if ( KOPrefs::instance()->mWeekNumbersShowWork                 &&
-       mViewManager->currentView() == mViewManager->agendaView() &&
+  if ( KOPrefs::instance()->mWeekNumbersShowWork    &&
+       mViewManager->agendaIsSelected()             &&
        mViewManager->agendaMode()  == KOViewManager::AGENDA_WORK_WEEK ) {
     mDateNavigator->selectWorkWeek( date );
   } else {
