@@ -59,7 +59,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       const QStringList& mimetypes,
                                       QWidget *parent )
   : KDialog( parent ), mAttendeeEditor( 0 ), mIsCounter( false ),
-    mIsCreateTask( false ), mMonitor( 0 )
+    mIsCreateTask( false ), mApplyClicked( false ), mMonitor( 0 )
 {
   setCaption( caption );
   setButtons( Ok | Apply | Cancel | Default );
@@ -200,8 +200,11 @@ void KOIncidenceEditor::slotButtonClicked( int button )
     break;
   }
   case KDialog::Apply:
+  {
+    mApplyClicked = true;
     processInput();
     break;
+  }
   case KDialog::Cancel:
     dontQuit = incidenceModified() &&
                KMessageBox::questionYesNo(
@@ -281,9 +284,15 @@ void KOIncidenceEditor::slotItemChanged( const Akonadi::Item &item )
 {
   kDebug();
   Q_ASSERT( item == mIncidence );
-  KMessageBox::information(
-    this,
-    i18nc( "@info", "The incidence got changed. Reloading editor now." ) );
+  //Don't display messagebox when we click on apply, you know what you do
+  //Bug #228526
+  if ( !mApplyClicked ) {
+    KMessageBox::information(
+      this,
+      i18nc( "@info", "The incidence got changed. Reloading editor now." ) );
+  }
+  else
+    mApplyClicked = false;
   readIncidence( item, QDate() );
 }
 

@@ -183,6 +183,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     QList<QWidget*> mAttachedDesignerFields;
     bool mIsCounter;
     bool mIsCreateTask;
+    bool mApplyClicked;
 
     Akonadi::Item mIncidence;
     Akonadi::Monitor *mMonitor;
