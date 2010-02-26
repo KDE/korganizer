@@ -632,12 +632,9 @@ void AlarmDialog::eventNotification()
           subject = i18nc( "@title", "Reminder: %1", alarm->mailSubject() );
         }
 
-        QString body;
-        if ( alarm->mailText().isEmpty() ) {
-          body = IncidenceFormatter::mailBodyStr(
-            alarm->parent(), KSystemTimeZones::local() );
-        } else {
-          body = alarm->mailText();
+        QString body = IncidenceFormatter::mailBodyStr( alarm->parent(), KSystemTimeZones::local() );
+        if ( !alarm->mailText().isEmpty() ) {
+          body += '\n' + alarm->mailText();
         }
         //TODO: support attachments
         Akonadi::MailClient mailer;
