@@ -395,7 +395,9 @@ bool IncidenceChanger::addIncidence( Incidence *incidence,
     // We can have a failure if the user pressed [cancel] in the resource
     // selectdialog, so check the exception.
     ErrorFormat *e = stdcal ? stdcal->exception() : 0;
-    if ( !e || ( e && ( e->errorCode() != KCal::ErrorFormat::UserCancel ) ) ) {
+    if ( !e ||
+         ( e && ( e->errorCode() != KCal::ErrorFormat::UserCancel &&
+                  e->errorCode() != KCal::ErrorFormat::NoWritableFound ) ) ) {
       QString errMessage;
       if ( pResName.isEmpty() ) {
         errMessage = i18n( "Unable to save %1 \"%2\"." ).
