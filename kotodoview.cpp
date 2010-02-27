@@ -105,9 +105,6 @@ KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
 {
   mOldCurrent = 0;
   mMousePressed = false;
-
-  /* Create a Tooltip */
-  tooltip = new KOTodoListViewToolTip( viewport(), mCalendar, this );
 }
 
 KOTodoListView::~KOTodoListView()
@@ -517,6 +514,8 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( processSelectionChange() ) );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
+
+  new KOTodoListViewToolTip( mTodoListView->viewport(), calendar, mTodoListView );
 }
 
 KOTodoView::~KOTodoView()
