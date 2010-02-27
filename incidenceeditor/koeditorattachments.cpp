@@ -548,7 +548,6 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
     }
     probablyWeHaveUris = true;
   }
-
   KMenu menu( this );
   QAction *linkAction = 0, *cancelAction;
   if ( probablyWeHaveUris ) {
@@ -569,6 +568,17 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
   menu.addSeparator();
   cancelAction = menu.addAction( i18nc( "@action:inmenu", "C&ancel" ) );
 
+  QByteArray data;
+  QString mimeType;
+  QString label;
+
+  if(!mimeData->formats().isEmpty()) {
+    data=mimeData->data( mimeData->formats().first() );
+    mimeType = mimeData->formats().first();
+    label = KMimeType::mimeType( mimeData->formats().first() )->name();
+
+  }
+
   QAction *ret = menu.exec( QCursor::pos() );
   if ( linkAction == ret ) {
     QStringList::ConstIterator jt = labels.constBegin();
@@ -585,9 +595,9 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
         connect( job, SIGNAL(result(KJob *)), SLOT(downloadComplete(KJob *)) );
       }
     } else { // we take anything
-      addDataAttachment( mimeData->data( mimeData->formats().first() ),
-                         mimeData->formats().first(),
-                         KMimeType::mimeType( mimeData->formats().first() )->name() );
+      addDataAttachment( data,
+                         mimeType,
+                         label );
     }
   }
 }
