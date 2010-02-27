@@ -109,7 +109,6 @@ KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
 
 KOTodoListView::~KOTodoListView()
 {
-  delete tooltip;
 }
 
 void KOTodoListView::setCalendar( Calendar *cal )

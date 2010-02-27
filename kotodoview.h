@@ -100,7 +100,6 @@ class KOTodoListView : public KListView
     QPoint mPressPos;
     bool mMousePressed;
     QListViewItem *mOldCurrent;
-    KOTodoListViewToolTip *tooltip;
 };
 
 
