@@ -107,13 +107,13 @@ class KOViewManager : public QObject
     * to know if agenda is selected, because agenda has other modes
     * (tabbed, side by side). Use this function instead.
     */ 
-    bool agendaIsSelected();
+    bool agendaIsSelected() const;
 
     /**
       If the agenda view is selected it returns the current range mode:
       week, work week, day or nextX days
     */
-    AgendaMode agendaMode() { return mAgendaMode; }
+    AgendaMode agendaMode() const { return mAgendaMode; }
 
   public slots:
     void showWhatsNextView();

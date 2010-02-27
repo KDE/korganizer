@@ -559,7 +559,7 @@ void KOViewManager::updateMultiCalendarDisplay()
   }
 }
 
-bool KOViewManager::agendaIsSelected()
+bool KOViewManager::agendaIsSelected() const
 {
   return mCurrentView == mAgendaView            ||
          mCurrentView == mAgendaSideBySideView  ||
