@@ -572,10 +572,11 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
   QString mimeType;
   QString label;
 
-  if(!mimeData->formats().isEmpty()) {
+  if(!mimeData->formats().isEmpty() && !probablyWeHaveUris) {
     data=mimeData->data( mimeData->formats().first() );
     mimeType = mimeData->formats().first();
-    label = KMimeType::mimeType( mimeData->formats().first() )->name();
+    if( KMimeType::mimeType( mimeData->formats().first() ) )
+       label = KMimeType::mimeType( mimeData->formats().first() )->name();
 
   }
 
