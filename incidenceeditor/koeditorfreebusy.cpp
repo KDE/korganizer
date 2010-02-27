@@ -567,11 +567,14 @@ void KOEditorFreeBusy::slotPickDate()
         "MeetingTimeOKFreeBusy" );
     } else {
       if ( KMessageBox::questionYesNo(
-        this,
-        i18nc( "@info", "<html>The next available slot for the meeting is:<br/>Start: %1<br/>End: %2.<br/>Would you like to move the meeting to this slot?</html>",
-               start.dateTime().toString(), end.dateTime().toString() ), QString(),
-               KStandardGuiItem::yes(), KStandardGuiItem::no(),
-        "MeetingMovedFreeBusy") == KMessageBox::Yes ) {
+             this,
+             i18nc( "@info",
+                    "The next available time slot for the meeting is:<nl/>"
+                    "Start: %1<nl/>End: %2<nl/>"
+                    "Would you like to move the meeting to this time slot?",
+                    start.dateTime().toString(), end.dateTime().toString() ), QString(),
+             KStandardGuiItem::yes(), KStandardGuiItem::no(),
+             "MeetingMovedFreeBusy" ) == KMessageBox::Yes ) {
         emit dateTimesChanged( start.dateTime(), end.dateTime() );
         slotUpdateGanttView( start.dateTime(), end.dateTime() );
       }
