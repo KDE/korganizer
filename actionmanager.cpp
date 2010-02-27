@@ -34,6 +34,8 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "koviewmanager.h"
+#include "koagendaview.h"
+#include "multiagendaview.h"
 #include "kowindowlist.h"
 #include "kprocess.h"
 #include "konewstuff.h"
@@ -73,7 +75,6 @@
 #include <qcursor.h>
 #include <qtimer.h>
 #include <qlabel.h>
-
 
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
@@ -1542,16 +1543,31 @@ KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValu
     return reply;
 }
 
+QPair<ResourceCalendar *, QString> ActionManager::viewSubResourceCalendar()
+{
+  QPair<ResourceCalendar *, QString> p( 0, QString() );
+  KOrg::BaseView *cV = mCalendarView->viewManager()->currentView();
+  if ( cV && cV == mCalendarView->viewManager()->multiAgendaView() ) {
+    cV = mCalendarView->viewManager()->multiAgendaView()->selectedAgendaView();
+  }
+  if ( cV ) {
+    p = qMakePair( cV->resourceCalendar(), cV->subResourceCalendar() );
+  }
+  return p;
+}
+
 void ActionManager::openEventEditor( const QString& text )
 {
-  mCalendarView->newEvent( 0, QString(), text );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newEvent( p.first, p.second, text );
 }
 
 void ActionManager::openEventEditor( const QString& summary,
                                      const QString& description,
                                      const QString& attachment )
 {
-  mCalendarView->newEvent( 0, QString(), summary, description, attachment );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newEvent( p.first, p.second, summary, description, attachment );
 }
 
 void ActionManager::openEventEditor( const QString& summary,
@@ -1654,20 +1670,23 @@ void ActionManager::openEventEditor( const QString & summary,
       return;
   }
 
-  mCalendarView->newEvent( 0, QString(), summary, description, attData,
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newEvent( p.first, p.second, summary, description, attData,
                            attendees, attachmentMimetype, action != KOPrefs::Link );
 }
 
 void ActionManager::openTodoEditor( const QString& text )
 {
-  mCalendarView->newTodo( 0, QString(), text );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newTodo( p.first, p.second, text );
 }
 
 void ActionManager::openTodoEditor( const QString& summary,
                                     const QString& description,
                                     const QString& attachment )
 {
-  mCalendarView->newTodo( 0, QString(), summary, description, attachment );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newTodo( p.first, p.second, summary, description, attachment );
 }
 
 void ActionManager::openTodoEditor( const QString& summary,
@@ -1675,7 +1694,8 @@ void ActionManager::openTodoEditor( const QString& summary,
                                     const QString& attachment,
                                     const QStringList& attendees )
 {
-  mCalendarView->newTodo( 0, QString(), summary, description, attachment, attendees );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newTodo( p.first, p.second, summary, description, attachment, attendees );
 }
 
 void ActionManager::openTodoEditor(const QString & summary,
@@ -1714,7 +1734,8 @@ void ActionManager::openTodoEditor(const QString & summary,
       return;
   }
 
-  mCalendarView->newTodo( 0, QString(),
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newTodo( p.first, p.second,
                           summary, description,
                           attData, attendees,
                           QStringList( attachmentMimetype ),
@@ -1724,17 +1745,20 @@ void ActionManager::openTodoEditor(const QString & summary,
 
 void ActionManager::openJournalEditor( const QDate& date )
 {
-  mCalendarView->newJournal( 0, QString(), date );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newJournal( p.first, p.second, date );
 }
 
 void ActionManager::openJournalEditor( const QString& text, const QDate& date )
 {
-  mCalendarView->newJournal( 0, QString(), text, date );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newJournal( p.first, p.second, text, date );
 }
 
 void ActionManager::openJournalEditor( const QString& text )
 {
-  mCalendarView->newJournal( 0, QString(), text );
+  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  mCalendarView->newJournal( p.first, p.second, text );
 }
 
 //TODO:
@@ -1742,7 +1766,8 @@ void ActionManager::openJournalEditor( const QString& text )
 //                                        const QString& description,
 //                                        const QString& attachment )
 // {
-//   mCalendarView->newJournal( 0, QString(),summary, description, attachment );
+//   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+//   mCalendarView->newJournal( p.first, p.second, summary, description, attachment );
 // }
 
 

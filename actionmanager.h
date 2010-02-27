@@ -41,8 +41,7 @@ namespace KCal
   class Incidence;
   class ResourceCalendar;
 }
-namespace KOrg
-{
+namespace KOrg {
   class MainWindow;
 }
 
@@ -363,6 +362,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions( bool enable );
+    QPair<ResourceCalendar *, QString> viewSubResourceCalendar();
 
     KOrg::Part::List mParts; // List of parts loaded
     KURL mURL;      // URL of calendar file
