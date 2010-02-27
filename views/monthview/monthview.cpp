@@ -153,7 +153,6 @@ int MonthView::maxDatesHint()
 DateList MonthView::selectedDates()
 {
   DateList list;
-
   if ( mScene->selectedItem() ) {
     IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
@@ -162,6 +161,8 @@ DateList MonthView::selectedDates()
         list << selectedItemDate;
       }
     }
+  } else if( mScene->selectedCell()) {
+    list << mScene->selectedCell()->date();
   }
 
   return list;
