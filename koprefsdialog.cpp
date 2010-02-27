@@ -969,8 +969,7 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
   QColor color = mResourceDict.value( id );
   if( ! color.isValid() )
     color = KOPrefs::instance()->resourceColor( id );
-  if( color.isValid() )
-    mResourceButton->setColor( color );
+  mResourceButton->setColor( color );
 }
 
 extern "C"
