@@ -217,7 +217,6 @@ void MonthView::changeIncidenceDisplay( const Item &incidence, int action )
 void MonthView::addIncidence( const Item &incidence )
 {
   Q_UNUSED( incidence );
-
   //TODO: add some more intelligence here...
   reloadIncidences();
 }
@@ -299,6 +298,7 @@ void MonthView::showDates( const QDate &start, const QDate &end )
 {
   Q_UNUSED( start );
   Q_UNUSED( end );
+  triggerDelayedReload();
 }
 
 QPair<KDateTime,KDateTime> MonthView::actualDateRange( const KDateTime& start, const KDateTime& ) const {
@@ -343,7 +343,6 @@ void MonthView::reloadIncidences()
   }
 
   mScene->resetAll();
-
   // build monthcells hash
   int i = 0;
   for ( QDate d = actualStartDateTime().date(); d <= actualEndDateTime().date(); d = d.addDays( 1 ) ) {
@@ -454,15 +453,17 @@ void MonthView::incidencesAdded( const Item::List& incidences )
 
 void MonthView::incidencesAboutToBeRemoved( const Item::List& incidences )
 {
-  Q_FOREACH( const Item& i, incidences )
-      kDebug() << "item removed: " << Akonadi::incidence( i )->summary();
+  Q_FOREACH( const Item& i, incidences ) {
+    kDebug() << "item removed: " << Akonadi::incidence( i )->summary();
+  }
   triggerDelayedReload();
 }
 
 void MonthView::incidencesChanged( const Item::List& incidences )
 {
-  Q_FOREACH( const Item& i, incidences )
-      kDebug() << "item changed: " << Akonadi::incidence( i )->summary();
+  Q_FOREACH( const Item& i, incidences ) {
+    kDebug() << "item changed: " << Akonadi::incidence( i )->summary();
+  }
   triggerDelayedReload();
 }
 
