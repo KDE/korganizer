@@ -529,12 +529,18 @@ void KOEditorFreeBusy::slotPickDate()
           i18n( "The meeting already has suitable start/end times." ), QString::null,
           "MeetingTimeOKFreeBusy" );
     } else {
-      emit dateTimesChanged( start, end );
-      slotUpdateGanttView( start, end );
-      KMessageBox::information( this,
-          i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." )
-          .arg( start.toString() ).arg( end.toString() ), QString::null,
-          "MeetingMovedFreeBusy" );
+      if ( KMessageBox::questionYesNo(
+             this,
+             i18n( "<qt>The next available time slot for the meeting is:<br>"
+                   "Start: %1<br>End: %2<br>"
+                   "Would you like to move the meeting to this time slot?</qt>" ).
+             arg( start.toString(), end.toString() ),
+             QString::null,
+             KStdGuiItem::yes(), KStdGuiItem::no(),
+             "MeetingMovedFreeBusy" ) == KMessageBox::Yes ) {
+        emit dateTimesChanged( start, end );
+        slotUpdateGanttView( start, end );
+      }
     }
   } else
     KMessageBox::sorry( this, i18n( "No suitable date found." ) );
