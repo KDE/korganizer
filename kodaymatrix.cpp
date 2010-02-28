@@ -30,7 +30,6 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCal/DndFactory>
 #include <KCal/ICalDrag>
 #include <KCal/VCalDrag>
 
