@@ -1039,6 +1039,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   aEmailsEditLabel->setWhatsThis( whatsThis );
   topLayout->addWidget( aEmailsEditLabel, 6, 0 );
   aEmailsEdit = new KLineEdit( topFrame );
+  aEmailsEdit->setClearButtonShown( true );
   aEmailsEdit->setWhatsThis( whatsThis );
   aEmailsEdit->setEnabled( false );
   topLayout->addWidget( aEmailsEdit, 6, 1 );
