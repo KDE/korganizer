@@ -806,7 +806,6 @@ void MonthViewCell::contextMenu( QListBoxItem *item )
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
     if ( incidence ) {
-      kdDebug() << "ZZZZZZZZZZZZZZ: Date=" << mDate << endl;
       mMonthView->showEventContextMenu( monthView()->calendar(), incidence, mDate );
     }
   }  else {

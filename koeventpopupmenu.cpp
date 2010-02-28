@@ -105,7 +105,6 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
     for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
       setItemVisible( *it, mCurrentIncidence->doesRecur() );
     }
-    kdDebug() << "ZZZZZZZZZZ popup for Date=" << mCurrentDate << endl;
     popup(QCursor::pos());
   } else {
     kdDebug(5850) << "KOEventPopupMenu::showEventPopup(): No event selected" << endl;
