@@ -291,7 +291,9 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
     enableAlarm( true );
     dueDT = todo->dtDue();
     if ( todo->doesRecur() && date.isValid() ) {
-      dueDT.addDays( todo->dtDue().date().daysTo( date ) );
+      QDateTime dt( date, QTime( 0, 0, 0 ) );
+      dt = dt.addSecs( -1 );
+      dueDT.setDate( todo->recurrence()->getNextDateTime( dt ).date() );
     }
     mDueDateEdit->setDate(dueDT.date());
     mDueTimeEdit->setTime(dueDT.time());
