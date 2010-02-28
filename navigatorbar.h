@@ -63,9 +63,11 @@ class NavigatorBar: public QWidget
     void goNextYear();
     void goPrevYear();
     void goMonth(int month);
+    void goYear( int year );
 
   private slots:
-    void selectMonth();
+    void selectMonthFromMenu();
+    void selectYearFromMenu();
 
   private:
     bool mHasMinWidth;
@@ -75,6 +77,7 @@ class NavigatorBar: public QWidget
     QPushButton *mPrevYear;
     QPushButton *mPrevMonth;
     ActiveLabel *mMonth;
+    ActiveLabel *mYear;
     QPushButton *mNextMonth;
     QPushButton *mNextYear;
 };

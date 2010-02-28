@@ -262,6 +262,16 @@ void DateNavigator::selectMonth(int month)
   selectWeekByDay( weekDay, firstSelected );
 }
 
+void DateNavigator::selectYear( int year )
+{
+  QDate firstSelected = mSelectedDates.first();
+  int deltaYear = year - KOGlobals::self()->calendarSystem()->year( firstSelected );
+  firstSelected = KOGlobals::self()->calendarSystem()->addYears( firstSelected, deltaYear );
+
+  int weekDay = firstSelected.dayOfWeek();
+  selectWeekByDay( weekDay, firstSelected );
+}
+
 void DateNavigator::emitSelected()
 {
   emit datesSelected( mSelectedDates );

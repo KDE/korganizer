@@ -58,6 +58,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
   connect( mNavigatorBar, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
+  connect( mNavigatorBar, SIGNAL( goYear( int ) ), SIGNAL( goYear( int ) ) );
 
   int i;
   QString generalFont = KGlobalSettings::generalFont().family();

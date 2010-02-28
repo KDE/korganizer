@@ -85,6 +85,7 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
 
   connect( v, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
+  connect( v, SIGNAL( goYear( int ) ), SIGNAL( goYear( int ) ) );
 }
 
 void DateNavigatorContainer::setCalendar( Calendar *cal )

@@ -86,6 +86,7 @@ class KDateNavigator: public QFrame
     void goPrevYear();
 
     void goMonth( int month );
+    void goYear( int year );
 
   protected:
     void updateDates();

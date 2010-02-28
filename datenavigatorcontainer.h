@@ -66,6 +66,7 @@ class DateNavigatorContainer: public QFrame
     void goPrevYear();
 
     void goMonth( int month );
+    void goYear( int year );
 
   protected:
     void resizeEvent( QResizeEvent * );

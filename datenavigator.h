@@ -58,21 +58,22 @@ class DateNavigator : public QObject
     void selectWorkWeek( const QDate & );
 
     void selectWeekByDay( int weekDay, const QDate & );
-   
+
     void selectToday();
-   
+
     void selectPreviousYear();
     void selectPreviousMonth();
     void selectPreviousWeek();
     void selectNextWeek();
     void selectNextMonth();
     void selectNextYear();
-   
+
     void selectPrevious();
     void selectNext();
 
     void selectMonth(int month);
-   
+    void selectYear(int year);
+
   signals:
     void datesSelected( const KCal::DateList & );
 
