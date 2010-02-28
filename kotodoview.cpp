@@ -759,8 +759,9 @@ CalPrinterBase::PrintType KOTodoView::printType()
 
 void KOTodoView::editItem( QListViewItem *item )
 {
-  if (item)
-    emit editIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
+  if ( item ) {
+    emit editIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo(), QDate () );
+  }
 }
 
 void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
@@ -770,8 +771,9 @@ void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
 
 void KOTodoView::showItem( QListViewItem *item )
 {
-  if (item)
-    emit showIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
+  if ( item ) {
+    emit showIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo(), QDate() );
+  }
 }
 
 void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )

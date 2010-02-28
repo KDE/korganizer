@@ -805,9 +805,11 @@ void MonthViewCell::contextMenu( QListBoxItem *item )
   if ( item ) {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
-    if ( incidence ) mMonthView->showEventContextMenu( monthView()->calendar(), incidence, date() );
-  }
-  else {
+    if ( incidence ) {
+      kdDebug() << "ZZZZZZZZZZZZZZ: Date=" << mDate << endl;
+      mMonthView->showEventContextMenu( monthView()->calendar(), incidence, mDate );
+    }
+  }  else {
     mMonthView->showGeneralContextMenu();
   }
 }
@@ -947,7 +949,7 @@ void KOMonthView::updateConfig()
   for ( uint i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateConfig();
   }
-  
+
   showLabel( !KOPrefs::instance()->fullViewMonth() );
 }
 
@@ -981,7 +983,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   mLabel->setText( i18n( "monthname year", "%1 %2" )
                    .arg( calSys->monthName( start ) )
                    .arg( calSys->year( start ) ) );
-  
+
   showLabel( !KOPrefs::instance()->fullViewMonth() );
 
   bool primary = false;

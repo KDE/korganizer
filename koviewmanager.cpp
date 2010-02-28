@@ -227,24 +227,24 @@ void KOViewManager::connectView(KOrg::BaseView *view)
            mMainView, SLOT( processMainViewSelection( Incidence *,const QDate & ) ) );
 
   // showing/editing/deleting an incidence. The calendar view takes care of the action.
-  connect(view, SIGNAL(showIncidenceSignal(Incidence *)),
-          mMainView, SLOT(showIncidence(Incidence *)));
-  connect(view, SIGNAL(editIncidenceSignal(Incidence *)),
-          mMainView, SLOT(editIncidence(Incidence *)));
-  connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
-          mMainView, SLOT(deleteIncidence(Incidence *)));
-  connect(view, SIGNAL(copyIncidenceSignal(Incidence *)),
-          mMainView, SLOT(copyIncidence(Incidence *)));
-  connect(view, SIGNAL(cutIncidenceSignal(Incidence *)),
-          mMainView, SLOT(cutIncidence(Incidence *)));
-  connect(view, SIGNAL(pasteIncidenceSignal()),
-          mMainView, SLOT(pasteIncidence()));
-  connect(view, SIGNAL(toggleAlarmSignal(Incidence *)),
-          mMainView, SLOT(toggleAlarm(Incidence *)));
-  connect(view,SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )),
-          mMainView, SLOT(dissociateOccurrence( Incidence *, const QDate & )));
-  connect(view,SIGNAL(dissociateFutureOccurrenceSignal( Incidence *, const QDate & )),
-          mMainView, SLOT(dissociateFutureOccurrence( Incidence *, const QDate & )));
+  connect( view, SIGNAL(showIncidenceSignal(Incidence *,const QDate &)),
+           mMainView, SLOT(showIncidence(Incidence *,const QDate &)) );
+  connect( view, SIGNAL(editIncidenceSignal(Incidence *,const QDate &)),
+           mMainView, SLOT(editIncidence(Incidence *,const QDate &)) );
+  connect( view, SIGNAL(deleteIncidenceSignal(Incidence *)),
+           mMainView, SLOT(deleteIncidence(Incidence *)) );
+  connect( view, SIGNAL(copyIncidenceSignal(Incidence *)),
+           mMainView, SLOT(copyIncidence(Incidence *)) );
+  connect( view, SIGNAL(cutIncidenceSignal(Incidence *)),
+           mMainView, SLOT(cutIncidence(Incidence *)) );
+  connect( view, SIGNAL(pasteIncidenceSignal()),
+           mMainView, SLOT(pasteIncidence()));
+  connect( view, SIGNAL(toggleAlarmSignal(Incidence *)),
+           mMainView, SLOT(toggleAlarm(Incidence *)) );
+  connect( view,SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)),
+           mMainView, SLOT(dissociateOccurrence(Incidence *,const QDate &)) );
+  connect( view,SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)),
+           mMainView, SLOT(dissociateFutureOccurrence(Incidence *,const QDate &)) );
 
   // signals to create new incidences
   connect( view, SIGNAL(newEventSignal(ResourceCalendar *,const QString &)),

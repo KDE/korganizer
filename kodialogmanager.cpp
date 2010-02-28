@@ -170,15 +170,15 @@ void KODialogManager::showCategoryEditDialog()
 
 void KODialogManager::showSearchDialog()
 {
-  if (!mSearchDialog) {
-    mSearchDialog = new SearchDialog(mMainView->calendar(),mMainView);
-    connect(mSearchDialog,SIGNAL(showIncidenceSignal(Incidence *)),
-            mMainView,SLOT(showIncidence(Incidence *)));
-    connect(mSearchDialog,SIGNAL(editIncidenceSignal(Incidence *)),
-            mMainView,SLOT(editIncidence(Incidence *)));
-    connect(mSearchDialog,SIGNAL(deleteIncidenceSignal(Incidence *)),
-            mMainView, SLOT(deleteIncidence(Incidence *)));
-    connect(mMainView,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
+  if ( !mSearchDialog ) {
+    mSearchDialog = new SearchDialog( mMainView->calendar(), mMainView );
+    connect( mSearchDialog, SIGNAL(showIncidenceSignal(Incidence *,const QDate &)),
+             mMainView, SLOT(showIncidence(Incidence *,const QDate &)) );
+    connect( mSearchDialog, SIGNAL(editIncidenceSignal(Incidence *,const QDate &)),
+             mMainView, SLOT(editIncidence(Incidence *,const QDate &)) );
+    connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Incidence *)),
+             mMainView, SLOT(deleteIncidence(Incidence *)) );
+    connect( mMainView, SIGNAL(closingDown()),mSearchDialog,SLOT(reject()) );
   }
   // make sure the widget is on top again
   mSearchDialog->show();

@@ -402,42 +402,42 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   connect( agenda, SIGNAL(newEventSignal(ResourceCalendar *,const QString &)),
            SIGNAL(newEventSignal(ResourceCalendar *,const QString &)) );
 
-  connect( agenda, SIGNAL( newStartSelectSignal() ),
-           otherAgenda, SLOT( clearSelection() ) );
-  connect( agenda, SIGNAL( newStartSelectSignal() ),
-           SIGNAL( timeSpanSelectionChanged()) );
+  connect( agenda, SIGNAL(newStartSelectSignal()),
+           otherAgenda, SLOT(clearSelection()) );
+  connect( agenda, SIGNAL(newStartSelectSignal()),
+           SIGNAL(timeSpanSelectionChanged()) );
 
-  connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
-                   SIGNAL( editIncidenceSignal( Incidence * ) ) );
-  connect( agenda, SIGNAL( showIncidenceSignal( Incidence * ) ),
-                   SIGNAL( showIncidenceSignal( Incidence * ) ) );
-  connect( agenda, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
-                   SIGNAL( deleteIncidenceSignal( Incidence * ) ) );
+  connect( agenda, SIGNAL(editIncidenceSignal(Incidence *,const QDate &)),
+           SIGNAL(editIncidenceSignal(Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(showIncidenceSignal(Incidence *,const QDate &)),
+           SIGNAL(showIncidenceSignal(Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(deleteIncidenceSignal(Incidence *)),
+           SIGNAL(deleteIncidenceSignal(Incidence *)) );
 
-  connect( agenda, SIGNAL( startMultiModify( const QString & ) ),
-                   SIGNAL( startMultiModify( const QString & ) ) );
-  connect( agenda, SIGNAL( endMultiModify() ),
-                   SIGNAL( endMultiModify() ) );
+  connect( agenda, SIGNAL(startMultiModify(const QString &)),
+           SIGNAL(startMultiModify(const QString &)) );
+  connect( agenda, SIGNAL(endMultiModify()),
+           SIGNAL(endMultiModify()) );
 
-  connect( agenda, SIGNAL( itemModified( KOAgendaItem * ) ),
-                   SLOT( updateEventDates( KOAgendaItem * ) ) );
+  connect( agenda, SIGNAL(itemModified(KOAgendaItem *)),
+           SLOT(updateEventDates(KOAgendaItem *)) );
 
-  connect( agenda, SIGNAL( enableAgendaUpdate( bool ) ),
-                   SLOT( enableAgendaUpdate( bool ) ) );
+  connect( agenda, SIGNAL(enableAgendaUpdate(bool)),
+           SLOT(enableAgendaUpdate(bool)) );
 
   // drag signals
-  connect( agenda, SIGNAL( startDragSignal( Incidence * ) ),
-           SLOT( startDrag( Incidence * ) ) );
+  connect( agenda, SIGNAL(startDragSignal(Incidence *)),
+           SLOT(startDrag(Incidence *)) );
 
   // synchronize selections
-  connect( agenda, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
-           otherAgenda, SLOT( deselectItem() ) );
-  connect( agenda, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
-           SIGNAL( incidenceSelected( Incidence *, const QDate & ) ) );
+  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           otherAgenda, SLOT(deselectItem()) );
+  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
 
   // rescheduling of todos by d'n'd
-  connect( agenda, SIGNAL( droppedToDo( Todo *, const QPoint &, bool ) ),
-           SLOT( slotTodoDropped( Todo *, const QPoint &, bool ) ) );
+  connect( agenda, SIGNAL(droppedToDo(Todo *,const QPoint &,bool)),
+           SLOT(slotTodoDropped(Todo *,const QPoint &,bool)) );
 
 }
 

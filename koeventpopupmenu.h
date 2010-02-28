@@ -64,13 +64,13 @@ class KOEventPopupMenu : public QPopupMenu {
 
   signals:
     void configChanged();
-    void editIncidenceSignal(Incidence *);
-    void showIncidenceSignal(Incidence *);
-    void deleteIncidenceSignal(Incidence *);
-    void cutIncidenceSignal(Incidence *);
-    void copyIncidenceSignal(Incidence *);
+    void editIncidenceSignal( Incidence *, const QDate & );
+    void showIncidenceSignal( Incidence *, const QDate & );
+    void deleteIncidenceSignal( Incidence * );
+    void cutIncidenceSignal( Incidence * );
+    void copyIncidenceSignal( Incidence * );
     void pasteIncidenceSignal();
-    void toggleAlarmSignal(Incidence *);
+    void toggleAlarmSignal( Incidence * );
     void dissociateOccurrenceSignal( Incidence *, const QDate & );
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
 

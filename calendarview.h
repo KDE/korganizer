@@ -295,9 +295,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
                    bool inlineAttachment = false );
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
-    void showIncidence( Incidence * );
+    void showIncidence( Incidence *, const QDate & );
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    bool editIncidence( Incidence *incidence );
     bool editIncidence( Incidence *incidence, const QDate &date, bool isCounter = false );
     /**
       Delete the supplied incidence. It calls the correct deleteXXX method

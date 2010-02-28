@@ -199,8 +199,8 @@ void MultiAgendaView::setupViews()
                SIGNAL(newTodoSignal(ResourceCalendar *,const QString &,const QDate &)) );
 
       connect( agenda,
-               SIGNAL(editIncidenceSignal(Incidence *)),
-               SIGNAL(editIncidenceSignal(Incidence *)) );
+               SIGNAL(editIncidenceSignal(Incidence *,const QDate &)),
+               SIGNAL(editIncidenceSignal(Incidence *,const QDate &)) );
       connect( agenda,
                SIGNAL(deleteIncidenceSignal(Incidence *)),
                SIGNAL(deleteIncidenceSignal(Incidence *)) );
@@ -232,8 +232,8 @@ void MultiAgendaView::setupViews()
              SIGNAL(copyIncidenceSignal(Incidence*)),
              SIGNAL(copyIncidenceSignal(Incidence*)) );
     connect( agenda,
-             SIGNAL(showIncidenceSignal(Incidence *)),
-             SIGNAL(showIncidenceSignal(Incidence *)) );
+             SIGNAL(showIncidenceSignal(Incidence *,const QDate &)),
+             SIGNAL(showIncidenceSignal(Incidence *,const QDate &)) );
     connect( agenda,
              SIGNAL(incidenceSelected(Incidence *,const QDate &)),
              SIGNAL(incidenceSelected(Incidence *,const QDate &)) );

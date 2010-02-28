@@ -105,6 +105,7 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
     for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
       setItemVisible( *it, mCurrentIncidence->doesRecur() );
     }
+    kdDebug() << "ZZZZZZZZZZ popup for Date=" << mCurrentDate << endl;
     popup(QCursor::pos());
   } else {
     kdDebug(5850) << "KOEventPopupMenu::showEventPopup(): No event selected" << endl;
@@ -125,12 +126,16 @@ void KOEventPopupMenu::addAdditionalItem(const QIconSet &icon,const QString &tex
 
 void KOEventPopupMenu::popupShow()
 {
-  if (mCurrentIncidence) emit showIncidenceSignal(mCurrentIncidence);
+  if ( mCurrentIncidence ) {
+    emit showIncidenceSignal( mCurrentIncidence, mCurrentDate );
+  }
 }
 
 void KOEventPopupMenu::popupEdit()
 {
-  if (mCurrentIncidence) emit editIncidenceSignal(mCurrentIncidence);
+  if ( mCurrentIncidence ) {
+    emit editIncidenceSignal( mCurrentIncidence, mCurrentDate );
+  }
 }
 
 void KOEventPopupMenu::print()

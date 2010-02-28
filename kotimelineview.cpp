@@ -204,8 +204,9 @@ void KOTimelineView::itemSelected( KDGanttViewItem *item )
 void KOTimelineView::itemDoubleClicked( KDGanttViewItem *item )
 {
   TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
-  if ( tlitem )
-    emit editIncidenceSignal( tlitem->incidence() );
+  if ( tlitem ) {
+    emit editIncidenceSignal( tlitem->incidence(), QDate() );
+  }
 }
 
 void KOTimelineView::itemRightClicked( KDGanttViewItem *item )

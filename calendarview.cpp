@@ -1244,10 +1244,11 @@ bool CalendarView::addIncidence( const QString &ical )
 void CalendarView::appointment_show()
 {
   Incidence *incidence = selectedIncidence();
-  if (incidence)
-    showIncidence( incidence );
-  else
+  if ( incidence ) {
+    showIncidence( incidence, activeIncidenceDate() );
+  } else {
     KNotifyClient::beep();
+  }
 }
 
 void CalendarView::appointment_edit()
@@ -2034,7 +2035,7 @@ Incidence* CalendarView::selectedIncidence()
 
 void CalendarView::showIncidence()
 {
-  showIncidence( selectedIncidence() );
+  showIncidence( selectedIncidence(), activeIncidenceDate() );
 }
 
 void CalendarView::editIncidence()
@@ -2072,16 +2073,11 @@ void CalendarView::pasteIncidence()
   edit_paste();
 }
 
-void CalendarView::showIncidence( Incidence *incidence )
+void CalendarView::showIncidence( Incidence *incidence, const QDate &date )
 {
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
-  eventViewer->setIncidence( incidence, QDate() );
+  eventViewer->setIncidence( incidence, date );
   eventViewer->show();
-}
-
-bool CalendarView::editIncidence( Incidence *incidence )
-{
-  return editIncidence( incidence, QDate(), false );
 }
 
 bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool isCounter )
@@ -2128,7 +2124,7 @@ bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool 
   }
 
   if ( incidence->isReadOnly() ) {
-    showIncidence( incidence );
+    showIncidence( incidence, date );
     return true;
   }
 
@@ -2149,7 +2145,7 @@ bool CalendarView::editIncidence( Incidence *incidence, const QDate &date, bool 
   if ( incToChange ) {
     if ( !isCounter && !mChanger->beginChange( incToChange, p.first, p.second ) ) {
       warningChangeFailed( incToChange );
-      showIncidence( incToChange );
+      showIncidence( incToChange, date );
 
       return false;
     }

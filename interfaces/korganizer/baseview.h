@@ -206,14 +206,14 @@ class KDE_EXPORT BaseView : public QWidget
     /**
      * instructs the receiver to show the incidence in read-only mode.
      */
-    void showIncidenceSignal(Incidence *);
+    void showIncidenceSignal( Incidence *, const QDate & );
 
     /**
      * instructs the receiver to begin editing the incidence specified in
      * some manner.  Doesn't make sense to connect to more than one
      * receiver.
      */
-    void editIncidenceSignal(Incidence *);
+    void editIncidenceSignal( Incidence *, const QDate & );
 
     /**
      * instructs the receiver to delete the Incidence in some manner; some

@@ -60,9 +60,9 @@ class SearchDialog : public KDialogBase
     void searchTextChanged( const QString &_text );
 
   signals:
-    void showIncidenceSignal(Incidence *);
-    void editIncidenceSignal(Incidence *);
-    void deleteIncidenceSignal(Incidence *);
+    void showIncidenceSignal( Incidence *, const QDate & );
+    void editIncidenceSignal( Incidence *, const QDate & );
+    void deleteIncidenceSignal( Incidence * );
 
   private:
     void search(const QRegExp &);

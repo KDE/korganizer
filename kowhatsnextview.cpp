@@ -330,7 +330,9 @@ void KOWhatsNextView::showIncidence( const QString &uid )
   } else if ( uid.startsWith( "todo://" ) ) {
     incidence = calendar()->incidence( uid.mid( 7 ) );
   }
-  if ( incidence ) emit showIncidenceSignal( incidence );
+  if ( incidence ) {
+    emit showIncidenceSignal( incidence, QDate() );
+  }
 }
 
 #include "kowhatsnextview.moc"

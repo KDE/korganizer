@@ -61,24 +61,24 @@ KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
 
-  connect(eventPopup,SIGNAL(editIncidenceSignal(Incidence *)),
-                     SIGNAL(editIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(showIncidenceSignal(Incidence *)),
-                     SIGNAL(showIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(deleteIncidenceSignal(Incidence *)),
-                     SIGNAL(deleteIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(cutIncidenceSignal(Incidence *)),
-                     SIGNAL(cutIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(copyIncidenceSignal(Incidence *)),
-                     SIGNAL(copyIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(pasteIncidenceSignal()),
-                     SIGNAL(pasteIncidenceSignal()));
-  connect(eventPopup,SIGNAL(toggleAlarmSignal(Incidence *)),
-                     SIGNAL(toggleAlarmSignal(Incidence*)));
-  connect(eventPopup,SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )),
-                     SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )));
-  connect(eventPopup,SIGNAL(dissociateFutureOccurrenceSignal( Incidence *, const QDate & )),
-                     SIGNAL(dissociateFutureOccurrenceSignal( Incidence *, const QDate & )));
+  connect( eventPopup, SIGNAL(editIncidenceSignal(Incidence *,const QDate &)),
+           SIGNAL(editIncidenceSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(showIncidenceSignal(Incidence *,const QDate &)),
+           SIGNAL(showIncidenceSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Incidence *)),
+           SIGNAL(deleteIncidenceSignal(Incidence *)) );
+  connect( eventPopup, SIGNAL(cutIncidenceSignal(Incidence *)),
+           SIGNAL(cutIncidenceSignal(Incidence *)) );
+  connect( eventPopup, SIGNAL(copyIncidenceSignal(Incidence *)),
+           SIGNAL(copyIncidenceSignal(Incidence *)) );
+  connect( eventPopup, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()) );
+  connect( eventPopup, SIGNAL(toggleAlarmSignal(Incidence *)),
+           SIGNAL(toggleAlarmSignal(Incidence*)) );
+  connect( eventPopup, SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)),
+           SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)),
+           SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)) );
 
   return eventPopup;
 }
@@ -102,14 +102,14 @@ QPopupMenu *KOEventView::newEventPopup()
 
 void KOEventView::popupShow()
 {
-  emit showIncidenceSignal(mCurrentIncidence);
+  emit showIncidenceSignal(mCurrentIncidence,  QDate() );
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupEdit()
 {
-  emit editIncidenceSignal(mCurrentIncidence);
+  emit editIncidenceSignal( mCurrentIncidence, QDate() );
 }
 
 //---------------------------------------------------------------------------
@@ -159,10 +159,11 @@ void KOEventView::defaultAction( Incidence *incidence )
 
   kdDebug(5850) << "  type: " << incidence->type() << endl;
 
-  if ( incidence->isReadOnly() )
-    emit showIncidenceSignal(incidence);
-  else
-    emit editIncidenceSignal(incidence);
+  if ( incidence->isReadOnly() ) {
+    emit showIncidenceSignal( incidence, QDate() );
+  } else {
+    emit editIncidenceSignal( incidence, QDate() );
+  }
 }
 
 //---------------------------------------------------------------------------

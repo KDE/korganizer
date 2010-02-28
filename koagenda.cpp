@@ -720,10 +720,10 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
         QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
         emit newEventSignal( p.first, p.second );
       } else {
-        KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>(object);
-        if (doubleClickedItem) {
-          selectItem(doubleClickedItem);
-          emit editIncidenceSignal( doubleClickedItem->incidence() );
+        KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>( object );
+        if ( doubleClickedItem ) {
+          selectItem( doubleClickedItem );
+          emit editIncidenceSignal( doubleClickedItem->incidence(), doubleClickedItem->itemDate() );
         }
       }
       break;
