@@ -66,11 +66,10 @@
 #include <akonadi/kcal/freebusymanager.h>
 #include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/mailscheduler.h>
-
+#include <akonadi/kcal/dndfactory.h>
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
-#include <KCal/DndFactory>
 #include <KCal/FileStorage>
 #include <KCal/FreeBusy>
 #include <KCal/ICalDrag>
@@ -720,6 +719,7 @@ void CalendarView::incidenceToBeDeleted( const Item &item )
 {
   Incidence* const incidence = Akonadi::incidence( item ).get();
   KOIncidenceEditor *tmp = editorDialog( item );
+  kDebug()<<"incidenceToBeDeleted item.id() :"<<item.id();
   if (tmp) {
     kDebug() << "Incidence to be deleted and open in editor";
     tmp->delayedDestruct();
@@ -844,9 +844,8 @@ void CalendarView::edit_copy()
   }
 
   Akonadi::CalendarAdaptor cal( mCalendar, this );
-  DndFactory factory( &cal );
-  Incidence::Ptr incidence = Akonadi::incidence(item);
-  if ( !factory.copyIncidence( incidence.get() ) ) {
+  Akonadi::DndFactory factory( &cal );
+  if ( !factory.copyIncidence( item ) ) {
     KNotification::beep();
   }
 
@@ -895,7 +894,7 @@ void CalendarView::edit_paste()
   }
 
   Akonadi::CalendarAdaptor cal( mCalendar, this );
-  DndFactory factory( &cal );
+  Akonadi::DndFactory factory( &cal );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
     pastedIncidence = factory.pasteIncidence( date, &time );

@@ -31,6 +31,7 @@
 #include <akonadi/kcal/groupware.h>
 #include <akonadi/kcal/mailscheduler.h>
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/dndfactory.h>
 
 #include <Akonadi/ItemCreateJob>
 #include <Akonadi/ItemDeleteJob>
@@ -42,7 +43,6 @@
 
 
 #include <KCal/AssignmentVisitor>
-#include <KCal/DndFactory>
 #include <KCal/FreeBusy>
 #include <KCal/Incidence>
 #include <kcal/comparisonvisitor.h>
@@ -273,22 +273,19 @@ void IncidenceChanger::deleteIncidenceFinished( KJob* j )
 
 bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
-  if ( !incidence ) {
+  if ( !aitem.isValid() ) {
     return true;
   }
 
-  kDebug() << "\"" << incidence->summary() << "\"";
+  //kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
                                         Akonadi::Groupware::INCIDENCEDELETED, parent );
   if( doDelete ) {
-
     // @TODO: the factory needs to do the locking!
-
-    Akonadi::CalendarAdaptor cal( mCalendar, parent );
-    DndFactory factory( &cal );
+    Akonadi::CalendarAdaptor *cal = new Akonadi::CalendarAdaptor( mCalendar, parent );
+    Akonadi::DndFactory factory( cal );
     emit incidenceToBeDeleted( aitem );
-    factory.cutIncidence( incidence.get() );
+    factory.cutIncidence( aitem );
     emit incidenceDeleted( aitem );
   }
   return doDelete;
