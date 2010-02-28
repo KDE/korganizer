@@ -30,6 +30,7 @@
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"
+#include <KLineEdit>
 
 #include <KDebug>
 #include <KDialog>
@@ -63,6 +64,7 @@
 #include <akonadi/changerecorder.h>
 #include <akonadi/agentmanager.h>
 #include <akonadi/agentinstance.h>
+#include <akonadi/krecursivefilterproxymodel.h>
 
 #include <QHash>
 
@@ -138,6 +140,13 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
+  KLineEdit *searchCol = new KLineEdit( this );
+  searchCol->setClearButtonShown( true );
+  searchCol->setClickMessage( i18nc( "@info/plain Displayed grayed-out inside the "
+                                                   "textbox, verb to search", "Search" ) );
+  topLayout->addWidget( searchCol );
+
+
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
@@ -152,7 +161,15 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setRootIsDecorated( true );
-  mCollectionview->setModel( colorProxy );
+
+  //Filter tree view.
+  KRecursiveFilterProxyModel* filterTreeViewModel = new KRecursiveFilterProxyModel( this );
+  filterTreeViewModel->setDynamicSortFilter( true );
+  filterTreeViewModel->setSourceModel( colorProxy );
+  filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
+  mCollectionview->setModel( filterTreeViewModel );
+
+  connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
 
   connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            this, SLOT(selectionChanged()) );
