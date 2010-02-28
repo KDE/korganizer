@@ -1711,7 +1711,6 @@ void ActionManager::enableIncidenceActions( bool enabled )
   mShowIncidenceAction->setEnabled( enabled );
   mEditIncidenceAction->setEnabled( enabled );
   mDeleteIncidenceAction->setEnabled( enabled );
-//   mAssignResourceAction->setEnabled( enabled );
 
   mCutAction->setEnabled( enabled );
   mCopyAction->setEnabled( enabled );
