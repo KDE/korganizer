@@ -53,3 +53,26 @@ Group=Views
 Key=ShowAllDayTodo,ShowTodosAgendaView
 Key=ShowAllDayTodo,ShowTodosMonthView
 RemoveKey=ShowAllDayTodo
+#
+#
+#
+Id=korganizer_4.4_MoveFreeBusy
+File=korganizerrc
+Group=FreeBusy,FreeBusy Publish
+Key=FreeBusyPublishAuto,FreeBusyPublishAuto
+Key=FreeBusyPublishPassword,FreeBusyPublishPassword
+Key=FreeBusyPublishSavePassword,FreeBusyPublishSavePassword
+Key=FreeBusyPublishUser,FreeBusyPublishUser
+Key=FreeBusyPublishDelay,FreeBusyPublishDelay
+Key=FreeBusyPublishDays,FreeBusyPublishDays
+Key=FreeBusyPublishUrl,FreeBusyPublishUrl
+
+Group=FreeBusy,FreeBusy Retrieve
+Key=FreeBusyFullDomainRetrieval,FreeBusyFullDomainRetrieval
+Key=FreeBusyRetrieveSavePassword,FreeBusyRetrieveSavePassword
+Key=FreeBusyRetrieveUrl,FreeBusyRetrieveUrl
+Key=FreeBusyRetrieveUser,FreeBusyRetrieveUser
+Key=FreeBusyRetrieveAuto,FreeBusyRetrieveAuto
+Key=FreeBusyRetrievePassword,FreeBusyRetrievePassword
+
+RemoveGroup=FreeBusy
