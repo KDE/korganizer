@@ -1338,7 +1338,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
   }
 
   if ( incidence->doesRecur() ) {
-    int eventDuration = incDtStart.daysTo( incDtEnd );
+    int eventDuration = event ? incDtStart.daysTo( incDtEnd ) : 0;
 
     // if there's a multiday event that starts before firstVisibleDateTime but ends after
     // lets include it. timesInInterval() ignores incidences that aren't totaly inside
