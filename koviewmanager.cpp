@@ -68,6 +68,7 @@ KOViewManager::KOViewManager( CalendarView *mainView )
   mAgendaViewTabs = 0;
   mTimeSpentView = 0;
   mMonthView = 0;
+  mRangeMode = NO_RANGE;
 }
 
 KOViewManager::~KOViewManager()
@@ -103,6 +104,27 @@ void KOViewManager::readSettings( KConfig *config )
     showMonthView();
   } else {
     showAgendaView();
+  }
+
+  mRangeMode = RangeMode( generalConfig.readEntry( "Range Mode", int( OTHER_RANGE ) ) );
+
+  switch ( mRangeMode ) {
+    case WORK_WEEK_RANGE:
+      selectWorkWeek();
+      break;
+    case WEEK_RANGE:
+      selectWeek();
+      break;
+    case NEXTX_RANGE:
+      selectNextX();
+      break;
+    case DAY_RANGE:
+      selectDay();
+      break;
+    case NO_RANGE:
+    default:
+      // Someone has been playing with the config file.
+      mRangeMode = OTHER_RANGE;
   }
 }
 
@@ -145,6 +167,8 @@ void KOViewManager::writeSettings( KConfig *config )
     KConfigGroup group = KGlobal::config()->group( view->identifier() );
     view->saveConfig( group );
   }
+
+  generalConfig.writeEntry( "Range Mode", int( mRangeMode ) );
 }
 
 void KOViewManager::showView( KOrg::BaseView *view )
@@ -504,6 +528,7 @@ void KOViewManager::selectDay()
 void KOViewManager::selectWorkWeek()
 {
   if ( KOGlobals::self()->getWorkWeekMask() != 0 ) {
+    mRangeMode = WORK_WEEK_RANGE;
     QDate date = mMainView->activeDate();
     mMainView->dateNavigator()->selectWorkWeek( date );
   } else {
@@ -516,12 +541,14 @@ void KOViewManager::selectWorkWeek()
 
 void KOViewManager::selectWeek()
 {
+  mRangeMode = WEEK_RANGE;
   QDate date = mMainView->activeDate();
   mMainView->dateNavigator()->selectWeek( date );
 }
 
 void KOViewManager::selectNextX()
 {
+  mRangeMode = NEXTX_RANGE;
   mMainView->dateNavigator()->selectDates( QDate::currentDate(),
                                            KOPrefs::instance()->mNextXDays );
 }

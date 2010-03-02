@@ -60,6 +60,16 @@ class KOViewManager : public QObject
 {
   Q_OBJECT
   public:
+
+    enum RangeMode {
+      NO_RANGE,
+      DAY_RANGE,
+      WORK_WEEK_RANGE,
+      WEEK_RANGE,
+      NEXTX_RANGE,
+      OTHER_RANGE // for example, showing 8 days
+    };
+
     explicit KOViewManager( CalendarView * );
     virtual ~KOViewManager();
 
@@ -101,6 +111,12 @@ class KOViewManager : public QObject
     KOrg::MonthView *monthView() const { return mMonthView; }
 
     void updateMultiCalendarDisplay();
+
+    /**
+      Return the current range mode:
+      week, work week, day or nextX days, etc.
+    */
+    RangeMode rangeMode() const { return mRangeMode; }
 
   signals:
     void configChanged();
@@ -151,6 +167,8 @@ class KOViewManager : public QObject
 
     KOrg::BaseView *mLastEventView;
     KTabWidget *mAgendaViewTabs;
+
+    RangeMode mRangeMode;
 };
 
 #endif
