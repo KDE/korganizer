@@ -232,7 +232,7 @@ class KOTodoView : public KOrg::BaseView
       ePercentColumn = 3,
       eDueDateColumn = 4,
       eCategoriesColumn = 5,
-      eDescriptionColumn = 6
+      eFolderColumn = 6
     };
     enum {
       ePopupEdit = 1300,

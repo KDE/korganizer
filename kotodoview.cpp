@@ -392,6 +392,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->addColumn( i18n("Due Date/Time") );
   mTodoListView->setColumnAlignment( eDueDateColumn, AlignLeft );
   mTodoListView->addColumn( i18n("Categories") );
+  mTodoListView->addColumn( i18n( "Calendar" ) );
 #if 0
   mTodoListView->addColumn( i18n("Sort Id") );
   mTodoListView->setColumnAlignment( 4, AlignHCenter );
@@ -407,6 +408,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->setColumnWidthMode( ePercentColumn, QListView::Manual );
   mTodoListView->setColumnWidthMode( eDueDateColumn, QListView::Manual );
   mTodoListView->setColumnWidthMode( eCategoriesColumn, QListView::Manual );
+  mTodoListView->setColumnWidthMode( eFolderColumn, QListView::Manual );
 #if 0
   mTodoListView->setColumnWidthMode( eDescriptionColumn, QListView::Manual );
 #endif

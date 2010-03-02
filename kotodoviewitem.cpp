@@ -24,17 +24,19 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qpainter.h>
+#include "kotodoviewitem.h"
+#include "kotodoview.h"
+#include "koprefs.h"
+#include "koglobals.h"
+
+#include <libkcal/incidenceformatter.h>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <qpainter.h>
 #include <qpixmap.h>
 
-#include "kotodoviewitem.h"
-#include "kotodoview.h"
-#include "koprefs.h"
-#include "koglobals.h"
+#include <qpainter.h>
 
 KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo, KOTodoView *kotodo)
   : QCheckListItem( parent , "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
@@ -50,7 +52,7 @@ KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *
 
 inline int KOTodoViewItem::compareDueDates( const KOTodoViewItem *b ) const
 {
-  if ( mEffectiveDueDate.isValid() && 
+  if ( mEffectiveDueDate.isValid() &&
        !b->mEffectiveDueDate.isValid() )
     return -1;
   else if ( !mEffectiveDueDate.isValid() &&
@@ -63,41 +65,57 @@ inline int KOTodoViewItem::compareDueDates( const KOTodoViewItem *b ) const
 int KOTodoViewItem::compare( QListViewItem *it, int col, bool ascending ) const
 {
   KOTodoViewItem *i = dynamic_cast<KOTodoViewItem *>( it );
-  if ( !i )
+  if ( !i ) {
     return QListViewItem::compare( it, col, ascending );
-  
+  }
+
   // throw completed todos to the bottom
-  if ( mTodo->isCompleted() && !i->todo()->isCompleted() )
+  if ( mTodo->isCompleted() && !i->todo()->isCompleted() ) {
     return ascending ? 1 : -1;
-  else if ( !mTodo->isCompleted() && i->todo()->isCompleted() )
+  } else if ( !mTodo->isCompleted() && i->todo()->isCompleted() ) {
     return ascending ? -1 : 1;
-  
+  }
+
   int c;
   switch ( col ) {
-    case ( KOTodoView::eSummaryColumn ):
-      return mTodo->summary().localeAwareCompare( i->todo()->summary() );
-    case ( KOTodoView::eRecurColumn ):
-      return ( mTodo->doesRecur() ? 1 : 0 ) - (i->todo()->doesRecur() ? 1 : 0 );
-    case ( KOTodoView::ePriorityColumn ):
-      c = mTodo->priority() - i->todo()->priority();
-      if ( c )
-        return c;
+  case KOTodoView::eSummaryColumn:
+    return mTodo->summary().localeAwareCompare( i->todo()->summary() );
+
+  case KOTodoView::eRecurColumn:
+    return ( mTodo->doesRecur() ? 1 : 0 ) - ( i->todo()->doesRecur() ? 1 : 0 );
+
+  case KOTodoView::ePriorityColumn:
+    c = mTodo->priority() - i->todo()->priority();
+    if ( c ) {
+      return c;
+    } else {
       return compareDueDates( i );
-    case ( KOTodoView::ePercentColumn ):
-      return mTodo->percentComplete() - i->todo()->percentComplete();
-    case ( KOTodoView::eDueDateColumn ):
-      c = compareDueDates( i );
-      if ( c )
-        return c;
+    }
+
+  case KOTodoView::ePercentColumn:
+    return mTodo->percentComplete() - i->todo()->percentComplete();
+
+  case KOTodoView::eDueDateColumn:
+    c = compareDueDates( i );
+    if ( c ) {
+      return c;
+    } else {
       return mTodo->priority() - i->todo()->priority();
-    case ( KOTodoView::eCategoriesColumn ):
-      return mTodo->categoriesStr().localeAwareCompare( 
-                                                  i->todo()->categoriesStr() );
-    case ( KOTodoView::eDescriptionColumn ):
-      return mTodo->description().localeAwareCompare( i->todo()->description() );
-    default:
-      Q_ASSERT( false && "unknown column to compare" );
-      return QListViewItem::compare( it, col, ascending );
+    }
+  case KOTodoView::eCategoriesColumn:
+    return mTodo->categoriesStr().localeAwareCompare( i->todo()->categoriesStr() );
+
+  case KOTodoView::eFolderColumn:
+    return QListViewItem::compare( it, col, ascending );
+
+#if 0
+  case KOTodoView::eDescriptionColumn:
+    return mTodo->description().localeAwareCompare( i->todo()->description() );
+#endif
+
+  default:
+    Q_ASSERT( false && "unknown column to compare" );
+    return QListViewItem::compare( it, col, ascending );
   }
 }
 
@@ -120,14 +138,14 @@ void KOTodoViewItem::construct()
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
   if ( mTodo->doesRecur() )
     setPixmap( KOTodoView::eRecurColumn, recurPxmp );
-  
+
   if ( mTodo->priority()==0 ) {
     setText( KOTodoView::ePriorityColumn, i18n("--") );
   } else {
     setText( KOTodoView::ePriorityColumn, QString::number(mTodo->priority()) );
   }
   setText( KOTodoView::ePercentColumn, QString::number(mTodo->percentComplete()) );
-  
+
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();
     if (!mTodo->doesFloat()) {
@@ -143,8 +161,11 @@ void KOTodoViewItem::construct()
       }
   } else
     setText( KOTodoView::eDueDateColumn, "" );
-  
+
   setText( KOTodoView::eCategoriesColumn, mTodo->categoriesStr() );
+
+  setText( KOTodoView::eFolderColumn,
+           IncidenceFormatter::resourceString( mTodoView->calendar(), mTodo ) );
 
 #if 0
   // Find sort id in description. It's the text behind the last '#' character
@@ -173,7 +194,7 @@ void KOTodoViewItem::stateChange( bool state )
     setOn( mTodo->isCompleted() );
     return;
   }
-  
+
   kdDebug(5850) << "State changed, modified " << state << endl;
   mTodoView->setNewPercentageDelayed( this, state ? 100 : 0 );
 }
