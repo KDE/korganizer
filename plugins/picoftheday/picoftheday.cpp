@@ -149,6 +149,7 @@ void POTDElement::step1Result( KJob *job )
   KIO::StoredTransferJob *const transferJob = static_cast<KIO::StoredTransferJob*>( job );
   mFileName = QString::fromUtf8( transferJob->data().data(), transferJob->data().size() );
   mFileName = mFileName.left( mFileName.indexOf( "<noinclude>" ) );
+  mFileName = mFileName.section( '|', 1, 1 );
   kDebug() << "POTD:" << mDate << ": got POTD file name:" << mFileName;
 
   if ( !mFileName.isEmpty() ) {
