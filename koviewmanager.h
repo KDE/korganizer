@@ -112,6 +112,15 @@ class KOViewManager : public QObject
 
     void updateMultiCalendarDisplay();
 
+    /*
+    * Returns true if agenda is the current view.
+    *
+    * Never use the pointer returned by agendaView()
+    * to know if agenda is selected, because agenda has other modes
+    * (tabbed, side by side). Use this function instead.
+    */
+    bool agendaIsSelected() const;
+
     /**
       Return the current range mode:
       week, work week, day or nextX days, etc.

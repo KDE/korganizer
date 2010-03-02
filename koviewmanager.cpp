@@ -666,11 +666,16 @@ void KOViewManager::setUpdateNeeded()
 
 void KOViewManager::updateMultiCalendarDisplay()
 {
-  if ( mCurrentView == mAgendaView            ||
-       mCurrentView == mAgendaSideBySideView  ||
-       ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() ) ) {
+  if ( agendaIsSelected() ) {
     showAgendaView();
   } else {
     updateView();
   }
+}
+
+bool KOViewManager::agendaIsSelected() const
+{
+  return mCurrentView == mAgendaView            ||
+         mCurrentView == mAgendaSideBySideView  ||
+        ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentPage() );
 }

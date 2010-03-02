@@ -589,6 +589,14 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void resourcesChanged();
 
+    /**
+      The user clicked on a week number in the date navigator
+
+      Lets select a week or a work week depending on the user's
+      config option.
+    */
+    void selectWeek( const QDate & );
+
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
     void showDates( const KCal::DateList & );

@@ -611,6 +611,8 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->highlightTodosItem() )->checkBox() );
       datenavLayout->addWidget(
         addWidBool( KOPrefs::instance()->highlightJournalsItem() )->checkBox() );
+      datenavLayout->addWidget(
+        addWidBool( KOPrefs::instance()->weekNumbersShowWorkItem() )->checkBox() );
       datenavBox->setLayout( datenavLayout );
       generalLayout->addWidget( datenavBox );
       generalLayout->addStretch( 1 );
