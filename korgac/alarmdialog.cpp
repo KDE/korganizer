@@ -538,6 +538,7 @@ void AlarmDialog::show()
   if ( !mPos.isNull() ) {
     KDialog::move( mPos );
   }
+  KWindowSystem::unminimizeWindow( winId(), false );
   KWindowSystem::setState( winId(), NET::KeepAbove );
   KWindowSystem::setOnAllDesktops( winId(), true );
 
