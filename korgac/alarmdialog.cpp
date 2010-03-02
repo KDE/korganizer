@@ -87,7 +87,7 @@ class AlarmListItem : public KListViewItem
 int AlarmListItem::compare( KListViewItem *item, int iCol, bool bAscending ) const
 {
   if ( iCol == 1 ) {
-    AlarmListItem *pItem = dynamic_cast<AlarmListItem *>( item );
+    AlarmListItem *pItem = static_cast<AlarmListItem *>( item );
     return mHappening < pItem->mHappening;
   } else {
     return KListViewItem::compare( item, iCol, bAscending );
@@ -419,6 +419,7 @@ void AlarmDialog::show()
   mSuspendUnit->setCurrentItem( defSuspendUnit );
 
   KDialogBase::show();
+  KWin::deIconifyWindow( winId(), false );
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );
   eventNotification();
