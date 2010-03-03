@@ -939,17 +939,17 @@ void CalendarView::edit_options()
 void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
                                          bool &allDay )
 {
-  if ( !startDt.isValid() ) {
-    startDt.setDate( activeDate() );
+  mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
+
+  if ( !startDt.isValid() || !endDt.isValid() ) {
+    startDt.setDate( activeDate( true ) );
     startDt.setTime( KOPrefs::instance()->mStartTime.time() );
-  }
-  if ( !endDt.isValid() ) {
+
     int addSecs =
       ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
       ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
     endDt = startDt.addSecs( addSecs );
   }
-  mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 }
 
 KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
