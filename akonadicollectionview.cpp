@@ -183,12 +183,13 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     mCollectionview->setXmlGuiClient( xmlclient );
 
     mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), mCollectionview );
-    mActionManager->createAllActions();
-    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
-    mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
-    mActionManager->action( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
-    mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
-    mActionManager->action( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
+    //Laurent: don't create all actions not necessary for korganizer and create action with shortcut which conflicts bug #229332
+    //mActionManager->createAllActions();
+    mActionManager->createAction( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
+    //mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
+    mActionManager->createAction( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
+    mActionManager->createAction( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
+    mActionManager->createAction( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
     mCreateAction = new KAction( mCollectionview );
