@@ -1493,7 +1493,7 @@ void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
     answer = KMessageBox::questionYesNoCancel(
       this,
       i18n( "Do you want to dissociate "
-            "the occurrence at %1 "
+            "the occurrence on %1 "
             "from the recurrence or also "
             "dissociate future ones?",
             KGlobal::locale()->formatDate( date ) ),
