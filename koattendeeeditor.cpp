@@ -385,14 +385,6 @@ void KOAttendeeEditor::updateAttendee()
   QString name, email;
   if ( KPIM::getNameAndMail( text, name, email ) ) {
     name.remove( '"' );
-    if ( name.contains( ',' ) ) {
-      QStringList lastfirst = QStringList::split( ',', name );
-      if ( lastfirst.count() > 1 ) {
-        name = lastfirst[1] + ' ' + lastfirst[0];
-      } else {
-        name = lastfirst[0];
-      }
-    }
     email.remove( '"' ).remove( '>' );
   } else {
     name = QString();

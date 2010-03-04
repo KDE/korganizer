@@ -130,7 +130,8 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
 void FreeBusyItem::updateItem()
 {
-  setListViewText( 0, mAttendee->fullName() );
+  QString text = i18n( "%1 <%2>" ).arg( mAttendee->name(), mAttendee->email() );
+  setListViewText( 0, text );
   switch ( mAttendee->status() ) {
     case Attendee::Accepted:
       setPixmap( 0, KOGlobals::self()->smallIcon( "ok" ) );
