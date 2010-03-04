@@ -308,7 +308,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
   }
 
   if (todo->hasStartDate()) {
-    QDateTime startDT = todo->dtStart( true );
+    QDateTime startDT = todo->dtStart();
     if ( todo->doesRecur() && date.isValid() ) {
       startDT.setDate( date );
     }
@@ -393,12 +393,10 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   // TODO: Don't use the due date for the recurrence, but the start date (cf. rfc 2445)
   if ( todo->doesRecur() && !mStartDateModified ) {
     todo->setDtDue( tmpDueDT );
-    IncidenceBase *ib = static_cast<Todo *>( todo );
-    ib->setDtStart( tmpStartDT );
   } else {
-    todo->setDtDue( tmpDueDT, true );
-    todo->setDtStart( tmpStartDT );
-    todo->setDtRecurrence( tmpDueDT );
+      todo->setDtDue( tmpDueDT, true );
+      todo->setDtStart( tmpStartDT );
+      todo->setDtRecurrence( tmpDueDT );
   }
 
   todo->setPriority( mPriorityCombo->currentItem() );
