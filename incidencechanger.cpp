@@ -57,16 +57,13 @@ using namespace Akonadi;
 class IncidenceChanger::Private {
 public:
   Private() {
-    cal = 0;
   }
   ~Private() {
-    delete cal;
   }
   QList<Akonadi::Item::Id> m_changes; //list of item ids that are modified atm
   KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
   Item m_itemBeingChanged;
   QHash<const KJob*,Item> oldItemByJob;
-  Akonadi::CalendarAdaptor *cal;
 };
 
 IncidenceChanger::IncidenceChanger( Akonadi::Calendar *cal, QObject *parent )
@@ -289,9 +286,8 @@ bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
                                         Akonadi::Groupware::INCIDENCEDELETED, parent );
   if( doDelete ) {
     // @TODO: the factory needs to do the locking!
-    delete d->cal;
-    d->cal = new Akonadi::CalendarAdaptor( mCalendar, parent );
-    Akonadi::DndFactory factory( d->cal );
+    Akonadi::CalendarAdaptor *cal = new Akonadi::CalendarAdaptor( mCalendar, parent );
+    Akonadi::DndFactory factory( cal, true /*delete calendarAdaptor*/ );
     emit incidenceToBeDeleted( aitem );
     factory.cutIncidence( aitem );
     emit incidenceDeleted( aitem );
