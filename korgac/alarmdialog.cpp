@@ -368,17 +368,16 @@ void AlarmDialog::edit()
              incidence->summary() ) );
   }
 
-#ifdef Q_WS_X11
   // get desktop # where korganizer (or kontact) runs
   QString object =
     QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
-    "kontact/mainwindow_1" : "korganizer/MainWindow_1";
+    "kontact/MainWindow_1" : "korganizer/MainWindow_1";
   QDBusInterface korganizerObj( "org.kde.korganizer", '/' + object );
+#ifdef Q_WS_X11
   QDBusReply<int> reply = korganizerObj.call( "winId" );
   if ( reply.isValid() ) {
     int window = reply;
     int desktop = KWindowSystem::windowInfo( window, NET::WMDesktop ).desktop();
-
     if ( KWindowSystem::currentDesktop() == desktop ) {
       KWindowSystem::minimizeWindow( winId(), false );
     } else {
@@ -386,6 +385,17 @@ void AlarmDialog::edit()
     }
     KWindowSystem::activateWindow( KWindowSystem::transientFor( window ) );
   }
+#elif defined(Q_WS_WIN)
+  // WId is a typedef to a void* on windows
+  QDBusReply<qlonglong> reply = korganizerObj.call( "winId" );
+  if ( reply.isValid() ) {
+	qlonglong window = reply;
+    KWindowSystem::minimizeWindow( winId(), false );
+    KWindowSystem::allowExternalProcessWindowActivation();
+    KWindowSystem::activateWindow( reinterpret_cast<WId>(window) );
+  }
+#else
+  // TODO (mac)
 #endif
 }
 
