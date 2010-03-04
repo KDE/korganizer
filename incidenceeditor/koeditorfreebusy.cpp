@@ -131,7 +131,8 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
 void FreeBusyItem::updateItem()
 {
-  setListViewText( 0, mAttendee->fullName() );
+  QString text = mAttendee->name() + " <" + mAttendee->email() + '>';
+  setListViewText( 0, text );
   switch ( mAttendee->status() ) {
     case Attendee::Accepted:
       setPixmap( 0, SmallIcon( "dialog-ok-apply" ) );
