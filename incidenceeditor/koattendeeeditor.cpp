@@ -398,9 +398,25 @@ void KOAttendeeEditor::updateAttendee()
     return;
   }
 
-  QString name;
-  QString email;
-  KPIMUtils::extractEmailAddressAndName( mNameEdit->text(), email, name );
+  // Quote the text as it might contain commas and other quotable chars.
+  QString text = KPIMUtils::quoteNameIfNecessary( mNameEdit->text() );
+
+  QString name, email;
+  if ( KPIMUtils::extractEmailAddressAndName( text, email, name ) ) {
+    name.remove( '"' );
+    if ( name.contains( ',' ) ) {
+      QStringList lastfirst = QStringList::split( ',', name );
+      if ( lastfirst.count() > 1 ) {
+        name = lastfirst[1] + ' ' + lastfirst[0];
+      } else {
+        name = lastfirst[0];
+      }
+    }
+    email.remove( '"' ).remove( '>' );
+  } else {
+    name.clear();
+    email = mNameEdit->text();
+  }
 
   const bool iAmTheOrganizer = mOrganizerCombo &&
                          KOEditorConfig::instance()->thatIsMe( mOrganizerCombo->currentText() );
