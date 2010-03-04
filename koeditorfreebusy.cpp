@@ -130,7 +130,7 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
 void FreeBusyItem::updateItem()
 {
-  QString text = i18n( "%1 <%2>" ).arg( mAttendee->name(), mAttendee->email() );
+  QString text = mAttendee->name() + " <" + mAttendee->email() + '>';
   setListViewText( 0, text );
   switch ( mAttendee->status() ) {
     case Attendee::Accepted:
