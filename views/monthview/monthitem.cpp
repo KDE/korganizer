@@ -460,7 +460,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           changer->changeIncidence( oldIncSaved, mIncidence,
                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
           changer->endChange( mIncidence );
-          changer->addIncidence( newInc, parentWidget() );
+          changer->addIncidence( newInc, mIncidence.parentCollection(), parentWidget() );
         } else {
           KMessageBox::sorry(
             parentWidget(),
@@ -482,7 +482,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           changer->changeIncidence( oldIncSaved, mIncidence,
                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
           changer->endChange( mIncidence );
-          changer->addIncidence( newInc, parentWidget() );
+          changer->addIncidence( newInc, mIncidence.parentCollection(), parentWidget() );
         } else {
           KMessageBox::sorry(
             parentWidget(),

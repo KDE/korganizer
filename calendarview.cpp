@@ -1514,21 +1514,17 @@ void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
 void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
-
   if ( !mChanger->beginChange( item ) ) {
     kDebug() << "Unable to lock incidence";
     return;
   }
   startMultiModify( i18n( "Dissociate occurrence" ) );
   Incidence::Ptr oldincidence( incidence->clone() );
-
   Incidence::Ptr newInc(
     mCalendar->dissociateOccurrence( item, date, KOPrefs::instance()->timeSpec(), true ) );
-
   if ( newInc ) {
-    // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, item, KOGlobals::NOTHING_MODIFIED, this );
-    mChanger->addIncidence( newInc, this );
+    mChanger->addIncidence( newInc, item.parentCollection(), this );
   } else {
     KMessageBox::sorry(
       this,
@@ -1554,9 +1550,8 @@ void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &da
     mCalendar->dissociateOccurrence( item, date,
                                      KOPrefs::instance()->timeSpec(), false ) );
   if ( newInc ) {
-    // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, item, KOGlobals::NOTHING_MODIFIED, this );
-    mChanger->addIncidence( newInc, this );
+    mChanger->addIncidence( newInc, item.parentCollection(), this );
   } else {
     KMessageBox::sorry(
       this,
