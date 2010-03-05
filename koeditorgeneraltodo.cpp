@@ -309,8 +309,9 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
 
   if (todo->hasStartDate()) {
     QDateTime startDT = todo->dtStart();
-    if ( todo->doesRecur() && date.isValid() ) {
-      startDT.setDate( date );
+    if ( todo->doesRecur() && date.isValid() && todo->hasDueDate() ) {
+      int days = todo->dtStart( true ).daysTo( todo->dtDue( true ) );
+      startDT.setDate( date.addDays( -days ) );
     }
     mStartDateEdit->setDate(startDT.date());
     mStartTimeEdit->setTime(startDT.time());
