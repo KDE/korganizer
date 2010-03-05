@@ -322,8 +322,9 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, const QDate &date, bool tmpl )
 
   if ( todo->hasStartDate() ) {
     KDateTime startDT = todo->dtStart();
-    if ( todo->recurs() && date.isValid() ) {
-      startDT.setDate( date );
+    if ( todo->recurs() && date.isValid() && todo->hasDueDate() ) {
+      int days = todo->dtStart( true ).daysTo( todo->dtDue( true ) );
+      startDT.setDate( date.addDays( -days ) );
     }
     if ( startDT.isUtc() ) {
       startDT = startDT.toLocalZone();
