@@ -195,7 +195,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )
     return false;
   emit incidenceToBeDeleted( aitem );
   d->m_changes.removeAll( aitem.id() ); //abort changes to this incidence cause we will just delete it
-  ItemDeleteJob* job = new ItemDeleteJob( aitem );
+  ItemDeleteJob* job = new ItemDeleteJob( aitem, parent );
   connect( job, SIGNAL(result(KJob*)), this, SLOT(deleteIncidenceFinished(KJob*)) );
   return true;
 }
@@ -447,7 +447,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Coll
   item.setPayload( incidence );
   //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
   item.setMimeType( QString::fromLatin1("application/x-vnd.akonadi.calendar.%1").arg(QLatin1String(incidence->type().toLower())) ); //PENDING(AKONADI_PORT) shouldn't be hardcoded?
-  ItemCreateJob *job = new ItemCreateJob( item, collection );
+  ItemCreateJob *job = new ItemCreateJob( item, collection, parent );
   // The connection needs to be queued to be sure addIncidenceFinished is called after the kjob finished
   // it's eventloop. That's needed cause Akonadi::Groupware uses synchron job->exec() calls.
   connect( job, SIGNAL( result(KJob*)), this, SLOT( addIncidenceFinished(KJob*) ), Qt::QueuedConnection );
