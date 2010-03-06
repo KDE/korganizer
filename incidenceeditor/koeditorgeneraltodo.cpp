@@ -296,11 +296,14 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, const QDate &date, bool tmpl )
 
   KOEditorGeneral::readIncidence( todo );
 
+  KDateTime dueDT = todo->dtDue();
+
   if ( todo->hasDueDate() ) {
-    enableAlarm( true );
-    KDateTime dueDT = todo->dtDue();
+    enableAlarm( true );    
     if ( todo->recurs() && date.isValid() ) {
-      dueDT.addDays( todo->dtDue().date().daysTo( date ) );
+      KDateTime dt( date, QTime( 0, 0, 0 ) );
+      dt = dt.addSecs( -1 );
+      dueDT.setDate( todo->recurrence()->getNextDateTime( dt ).date() );
     }
     if ( dueDT.isUtc() ) {
       dueDT = dueDT.toLocalZone();
@@ -324,7 +327,7 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, const QDate &date, bool tmpl )
     KDateTime startDT = todo->dtStart();
     if ( todo->recurs() && date.isValid() && todo->hasDueDate() ) {
       int days = todo->dtStart( true ).daysTo( todo->dtDue( true ) );
-      startDT.setDate( date.addDays( -days ) );
+      startDT.setDate( dueDT.date().addDays( -days ) );
     }
     if ( startDT.isUtc() ) {
       startDT = startDT.toLocalZone();
