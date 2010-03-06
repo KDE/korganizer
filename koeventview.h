@@ -90,6 +90,8 @@ class KOEventView : public KOrg::BaseView
     /** This view is an view for displaying events. */
     bool isEventView() { return true; }
 
+    bool supportsDateNavigation() const { return true; }
+
   public slots:
 
     /**

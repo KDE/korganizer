@@ -59,6 +59,8 @@ class KOWhatsNextView : public KOrg::BaseView
     virtual Incidence::List selectedIncidences() { return Incidence::List(); }
     DateList selectedDates() { return DateList(); }
 
+    bool supportsDateNavigation() const { return true; }
+
   public slots:
     virtual void updateView();
     virtual void showDates(const QDate &start, const QDate &end);

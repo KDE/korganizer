@@ -142,6 +142,9 @@ class KDE_EXPORT BaseView : public QWidget
     /** Return if this view is a view for displaying events. */
     virtual bool isEventView() { return false; }
 
+    /** Returns if the view supports date navigation */
+    virtual bool supportsDateNavigation() const { return false; }
+
   public slots:
     /**
       Show incidences for the given date range. The date range actually shown may be
