@@ -142,7 +142,9 @@ class KDE_EXPORT BaseView : public QWidget
     /** Return if this view is a view for displaying events. */
     virtual bool isEventView() { return false; }
 
-    /** Returns if the view supports date navigation */
+    /** Returns true if the view supports navigation through the date navigator
+        ( selecting a date range, changing month, changing year, etc. )
+     */
     virtual bool supportsDateNavigation() const { return false; }
 
   public slots:
