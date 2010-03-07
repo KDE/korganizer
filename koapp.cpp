@@ -37,7 +37,7 @@
 #include "reminderclient.h"
 
 #include <kcal/calformat.h>
-#include <kcal/calendarresources.h>
+#include <kcal/calendar.h>
 
 #include <kstartupinfo.h>
 #include <kglobal.h>

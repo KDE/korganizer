@@ -40,7 +40,7 @@
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/CalendarResources>
+#include <KCal/Calendar>
 
 #include <KApplication>
 #include <KConfig>

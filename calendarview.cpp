@@ -68,7 +68,7 @@
 #include <akonadi/kcal/mailscheduler.h>
 #include <akonadi/kcal/dndfactory.h>
 
-#include <KCal/CalendarResources>
+#include <KCal/Calendar>
 #include <KCal/CalFilter>
 #include <KCal/FileStorage>
 #include <KCal/FreeBusy>

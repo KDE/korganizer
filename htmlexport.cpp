@@ -27,7 +27,7 @@
 #include <KCal/Event>
 #include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
-#ifndef KORG_NOKABC
+#if !defined(KORG_NOKABC) && !defined(KDEPIM_NO_KRESOURCES)
  #include <kabc/stdaddressbook.h>
 #endif
 
@@ -627,7 +627,7 @@ void HtmlExport::formatAttendees( QTextStream *ts, Incidence *incidence )
   Attendee::List attendees = incidence->attendees();
   if ( attendees.count() ) {
     *ts << "<em>";
-#ifndef KORG_NOKABC
+#if !defined(KORG_NOKABC) && !defined(KDEPIM_NO_KRESOURCES)
     KABC::AddressBook *add_book = KABC::StdAddressBook::self( true );
     KABC::Addressee::List addressList;
     addressList = add_book->findByEmail( incidence->organizer().email() );
