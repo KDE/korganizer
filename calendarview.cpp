@@ -381,9 +381,9 @@ QDate CalendarView::activeDate( bool fallbackToToday )
     }
 
     // Try the view's selectedDates()
-    if ( !curView->selectedDates().isEmpty() ) {
-      if ( curView->selectedDates().first().isValid() ) {
-        return curView->selectedDates().first();
+    if ( !curView->selectedIncidenceDates().isEmpty() ) {
+      if ( curView->selectedIncidenceDates().first().isValid() ) {
+        return curView->selectedIncidenceDates().first();
       }
     }
   }
@@ -400,7 +400,7 @@ QDate CalendarView::activeIncidenceDate()
 {
   KOrg::BaseView *curView = mViewManager->currentView();
   if ( curView ) {
-    DateList dates = curView->selectedDates();
+    DateList dates = curView->selectedIncidenceDates();
     if ( !dates.isEmpty() ) {
       return dates.first();
     }
@@ -974,8 +974,8 @@ void CalendarView::edit_paste()
     if ( !aView->selectedIsAllDay() ) {
       time = aView->selectionStart().time();
     }
-  } else if ( curView == mView && !mView->selectedDates().isEmpty() ) {
-    date = mView->selectedDates().first();
+  } else if ( curView == mView && !mView->selectedIncidenceDates().isEmpty() ) {
+    date = mView->selectedIncidenceDates().first();
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator

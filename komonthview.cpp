@@ -907,7 +907,7 @@ Incidence::List KOMonthView::selectedIncidences()
   return selected;
 }
 
-DateList KOMonthView::selectedDates()
+DateList KOMonthView::selectedIncidenceDates()
 {
   DateList selected;
 
@@ -1186,10 +1186,10 @@ void KOMonthView::setSelectedCell( MonthViewCell *cell )
   if ( !mSelectedCell )
     emit incidenceSelected( 0, QDate() );
   else
-    if ( selectedDates().isEmpty() ) {
+    if ( selectedIncidenceDates().isEmpty() ) {
       emit incidenceSelected( mSelectedCell->selectedIncidence(), QDate() );
     } else {
-      emit incidenceSelected( mSelectedCell->selectedIncidence(), selectedDates().first() );
+      emit incidenceSelected( mSelectedCell->selectedIncidence(), selectedIncidenceDates().first() );
     }
 }
 
@@ -1197,10 +1197,10 @@ void KOMonthView::processSelectionChange()
 {
   Incidence::List incidences = selectedIncidences();
   if (incidences.count() > 0) {
-    if ( selectedDates().isEmpty() ) {
+    if ( selectedIncidenceDates().isEmpty() ) {
       emit incidenceSelected( incidences.first(), QDate() );
     } else {
-      emit incidenceSelected( incidences.first(), selectedDates().first() );
+      emit incidenceSelected( incidences.first(), selectedIncidenceDates().first() );
     }
   } else {
     emit incidenceSelected( 0, QDate() );

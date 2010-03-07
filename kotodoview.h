@@ -121,7 +121,7 @@ class KOTodoView : public KOrg::BaseView
     Incidence::List selectedIncidences();
     Todo::List selectedTodos();
 
-    DateList selectedDates() { return DateList(); }
+    DateList selectedIncidenceDates() { return DateList(); }
 
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }

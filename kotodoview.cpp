@@ -1096,10 +1096,10 @@ void KOTodoView::processSelectionChange()
   if ( !item ) {
     emit incidenceSelected( 0, QDate() );
   } else {
-    if ( selectedDates().isEmpty() ) {
+    if ( selectedIncidenceDates().isEmpty() ) {
       emit incidenceSelected( item->todo(), QDate() );
     } else {
-      emit incidenceSelected( item->todo(), selectedDates().first() );
+      emit incidenceSelected( item->todo(), selectedIncidenceDates().first() );
     }
   }
 }

@@ -88,7 +88,7 @@ KCal::ListBase<KCal::Incidence> KOTimelineView::selectedIncidences()
 }
 
 /*virtual*/
-KCal::DateList KOTimelineView::selectedDates()
+KCal::DateList KOTimelineView::selectedIncidenceDates()
 {
     return KCal::DateList();
 }

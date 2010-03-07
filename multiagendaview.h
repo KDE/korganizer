@@ -48,7 +48,7 @@ class MultiAgendaView : public AgendaView
 
     KOAgendaView *selectedAgendaView() { return mSelectedAgendaView; }
     Incidence::List selectedIncidences();
-    DateList selectedDates();
+    DateList selectedIncidenceDates();
     int currentDateCount();
     int maxDatesHint();
 

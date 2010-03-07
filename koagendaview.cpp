@@ -681,7 +681,7 @@ Incidence::List KOAgendaView::selectedIncidences()
   return selected;
 }
 
-DateList KOAgendaView::selectedDates()
+DateList KOAgendaView::selectedIncidenceDates()
 {
   DateList selected;
   QDate qd;

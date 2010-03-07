@@ -48,7 +48,7 @@ class KOJournalView : public KOrg::BaseView
 
     virtual int currentDateCount();
     virtual Incidence::List selectedIncidences();
-    DateList selectedDates() { return DateList(); }
+    DateList selectedIncidenceDates() { return DateList(); }
     void appendJournal( Journal*journal, const QDate &dt);
 
     CalPrinterBase::PrintType printType();

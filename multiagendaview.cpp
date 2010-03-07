@@ -276,11 +276,11 @@ Incidence::List MultiAgendaView::selectedIncidences()
   return list;
 }
 
-DateList MultiAgendaView::selectedDates()
+DateList MultiAgendaView::selectedIncidenceDates()
 {
   DateList list;
   FOREACH_VIEW(agendaView) {
-    list += agendaView->selectedDates();
+    list += agendaView->selectedIncidenceDates();
   }
   return list;
 }
