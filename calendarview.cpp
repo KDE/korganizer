@@ -877,8 +877,8 @@ void CalendarView::edit_paste()
     if ( !aView->selectedIsAllDay() ) {
       time = aView->selectionStart().time();
     }
-  } else if ( curView == mView && !mView->selectedIncidenceDates().isEmpty() ) {
-    date = mView->selectedIncidenceDates().first();
+  } else if ( curView == mView && mView->selectionStart().isValid() ) {
+    date = mView->selectionStart().date();
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
