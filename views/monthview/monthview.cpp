@@ -150,7 +150,7 @@ int MonthView::maxDatesHint()
   return 6 * 7;
 }
 
-DateList MonthView::selectedDates()
+DateList MonthView::selectedIncidenceDates()
 {
   DateList list;
   if ( mScene->selectedItem() ) {

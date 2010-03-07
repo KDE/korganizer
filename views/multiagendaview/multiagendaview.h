@@ -89,7 +89,7 @@ class MultiAgendaView : public AgendaView
     ~MultiAgendaView();
 
     Akonadi::Item::List selectedIncidences();
-    DateList selectedDates();
+    DateList selectedIncidenceDates();
     int currentDateCount();
     int maxDatesHint();
 

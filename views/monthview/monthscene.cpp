@@ -680,10 +680,10 @@ void MonthScene::selectItem( MonthItem *item )
   mSelectedItem = item;
   Q_ASSERT( Akonadi::hasIncidence( tmp->incidence() ) );
 
-  if ( mMonthView && mMonthView->selectedDates().isEmpty() ) {
+  if ( mMonthView && mMonthView->selectedIncidenceDates().isEmpty() ) {
     emit incidenceSelected( tmp->incidence(), QDate() );
   } else {
-    emit incidenceSelected( tmp->incidence(), mMonthView->selectedDates().first() );
+    emit incidenceSelected( tmp->incidence(), mMonthView->selectedIncidenceDates().first() );
   }
 }
 

@@ -49,7 +49,7 @@ class KOJournalView : public KOrg::BaseView
 
     virtual int currentDateCount();
     virtual Akonadi::Item::List selectedIncidences();
-    DateList selectedDates() { return DateList(); }
+    DateList selectedIncidenceDates() { return DateList(); }
     void appendJournal( const Akonadi::Item &journal, const QDate &dt );
 
     /** documentation in baseview.h */

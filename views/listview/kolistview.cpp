@@ -307,7 +307,7 @@ Akonadi::Item::List KOListView::selectedIncidences()
   return eventList;
 }
 
-DateList KOListView::selectedDates()
+DateList KOListView::selectedIncidenceDates()
 {
   return mSelectedDates;
 }

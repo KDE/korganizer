@@ -55,7 +55,7 @@ class KOWhatsNextView : public KOrg::BaseView
 
     virtual int currentDateCount();
     virtual Akonadi::Item::List selectedIncidences() { return Akonadi::Item::List(); }
-    DateList selectedDates() { return DateList(); }
+    DateList selectedIncidenceDates() { return DateList(); }
 
     bool supportsDateNavigation() const { return true; }
 

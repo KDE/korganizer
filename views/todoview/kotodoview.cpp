@@ -276,7 +276,7 @@ Akonadi::Item::List KOTodoView::selectedIncidences()
   return ret;
 }
 
-DateList KOTodoView::selectedDates()
+DateList KOTodoView::selectedIncidenceDates()
 {
   // The todo view only lists todo's. It's probably not a good idea to
   // return something about the selected todo here, because it has got
@@ -518,10 +518,10 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
 
   const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
 
-  if ( selectedDates().isEmpty() ) {
+  if ( selectedIncidenceDates().isEmpty() ) {
     emit incidenceSelected( todoItem, QDate() );
   } else {
-    emit incidenceSelected( todoItem, selectedDates().first() );
+    emit incidenceSelected( todoItem, selectedIncidenceDates().first() );
   }
 }
 

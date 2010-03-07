@@ -49,7 +49,7 @@ class KOTimeSpentView : public KOrg::BaseView
     {
       return Akonadi::Item::List();
     }
-    DateList selectedDates()
+    DateList selectedIncidenceDates()
     {
       return DateList();
     }

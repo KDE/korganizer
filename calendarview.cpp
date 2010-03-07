@@ -321,10 +321,10 @@ QDate CalendarView::activeDate( bool fallbackToToday )
       return curView->selectionStart().date();
     }
 
-    // Try the view's selectedDates()
-    if ( !curView->selectedDates().isEmpty() ) {
-      if ( curView->selectedDates().first().isValid() ) {
-        return curView->selectedDates().first();
+    // Try the view's selectedIncidenceDates()
+    if ( !curView->selectedIncidenceDates().isEmpty() ) {
+      if ( curView->selectedIncidenceDates().first().isValid() ) {
+        return curView->selectedIncidenceDates().first();
       }
     }
   }
@@ -877,8 +877,8 @@ void CalendarView::edit_paste()
     if ( !aView->selectedIsAllDay() ) {
       time = aView->selectionStart().time();
     }
-  } else if ( curView == mView && !mView->selectedDates().isEmpty() ) {
-    date = mView->selectedDates().first();
+  } else if ( curView == mView && !mView->selectedIncidenceDates().isEmpty() ) {
+    date = mView->selectedIncidenceDates().first();
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
