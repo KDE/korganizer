@@ -116,6 +116,8 @@ class KOEventView : public KOrg::BaseView
      */
     static bool usesCompletedTodoPixmap( const Akonadi::Item &todo, const QDate &date );
 
+    bool supportsDateNavigation() const { return true; }
+
   public slots:
 
     void focusChanged( QWidget*, QWidget* );

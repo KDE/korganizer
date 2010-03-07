@@ -879,14 +879,13 @@ void CalendarView::edit_paste()
     }
   } else if ( curView == mView && !mView->selectedDates().isEmpty() ) {
     date = mView->selectedDates().first();
-  } else {
+  } else if ( !mDateNavigator->selectedDates().isEmpty() &&
+              curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
-    if ( !mDateNavigator->selectedDates().isEmpty() ) {
-      date = mDateNavigator->selectedDates().first();
-    }
+    date = mDateNavigator->selectedDates().first();
   }
 
-  if ( !date.isValid() ) {
+  if ( !date.isValid() && curView->supportsDateNavigation() ) {
     KMessageBox::sorry(
       this,
       i18n( "Paste failed: unable to determine a valid target date." ) );

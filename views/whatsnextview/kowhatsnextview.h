@@ -57,6 +57,8 @@ class KOWhatsNextView : public KOrg::BaseView
     virtual Akonadi::Item::List selectedIncidences() { return Akonadi::Item::List(); }
     DateList selectedDates() { return DateList(); }
 
+    bool supportsDateNavigation() const { return true; }
+
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );

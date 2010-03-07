@@ -218,6 +218,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     KDateTime actualStartDateTime() const;
     KDateTime actualEndDateTime() const;
 
+    /** Returns true if the view supports navigation through the date navigator
+        ( selecting a date range, changing month, changing year, etc. )
+     */
+    virtual bool supportsDateNavigation() const { return false; }
+
   public Q_SLOTS:
     /**
       Shows given incidences. Depending on the actual view it might not
