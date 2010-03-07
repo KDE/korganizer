@@ -41,7 +41,6 @@
 
 #include "koprefs.h"
 #include "koeditorgeneralevent.h"
-#include "koeditoralarms.h"
 #include "koeditorrecurrence.h"
 #include "koeditordetails.h"
 #include "koeditorfreebusy.h"
@@ -66,7 +65,6 @@ KOEventEditor::~KOEventEditor()
 void KOEventEditor::init()
 {
   setupGeneral();
-//  setupAlarmsTab();
   setupRecurrence();
   setupFreeBusy();
   setupDesignerTabs( "event" );
@@ -131,9 +129,6 @@ void KOEventEditor::setupGeneral()
 
     mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
-//    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-    mGeneral->initAlarm(topFrame,topLayout);
-    mGeneral->enableAlarm( false );
 
     topLayout->addStretch( 1 );
 
@@ -347,7 +342,7 @@ void KOEventEditor::readEvent( Event *event, Calendar *calendar, const QDate &da
 {
   mGeneral->readEvent( event, calendar, date, tmpl );
   mRecurrence->readIncidence( event );
-//  mAlarms->readIncidence( event );
+
   if ( mFreeBusy ) {
     mFreeBusy->readEvent( event );
     mFreeBusy->triggerReload();

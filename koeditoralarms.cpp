@@ -25,6 +25,9 @@
 
 #include "koeditoralarms_base.h"
 #include "koeditoralarms.h"
+#include "koprefs.h"
+
+#include <libkcal/duration.h>
 
 #include <qlayout.h>
 #include <qlistview.h>
@@ -51,22 +54,46 @@
 class AlarmListViewItem : public QListViewItem
 {
   public:
-    AlarmListViewItem( QListView *parent, KCal::Alarm *alarm );
+    AlarmListViewItem( QListView *parent, KCal::Alarm *alarm, const QCString &inctype );
     virtual ~AlarmListViewItem();
     KCal::Alarm *alarm() const { return mAlarm; }
     void construct();
     enum AlarmViewColumns { ColAlarmType=0, ColAlarmOffset, ColAlarmRepeat };
+
   protected:
     KCal::Alarm *mAlarm;
+
+  private:
+    QCString mIncType;
 };
 
-AlarmListViewItem::AlarmListViewItem( QListView *parent, KCal::Alarm *alarm )
-    : QListViewItem( parent )
+AlarmListViewItem::AlarmListViewItem( QListView *parent, KCal::Alarm *alarm,
+                                      const QCString &inctype )
+    : QListViewItem( parent ), mIncType( inctype )
 {
   if ( alarm ) {
     mAlarm = new KCal::Alarm( *alarm );
   } else {
     mAlarm = new KCal::Alarm( 0 );
+    mAlarm->setType( KCal::Alarm::Display );
+    int duration; // in secs
+    switch( KOPrefs::instance()->mReminderTimeUnits ) {
+    default:
+    case 0: // mins
+      duration = KOPrefs::instance()->mReminderTime * 60;
+      break;
+    case 1: // hours
+      duration = KOPrefs::instance()->mReminderTime * 60 * 60;
+      break;
+    case 2: // days
+      duration = KOPrefs::instance()->mReminderTime * 60 * 60 * 24;
+      break;
+    }
+    if ( mIncType == "Event" ) {
+      mAlarm->setStartOffset( KCal::Duration( -duration ) );
+    } else {
+      mAlarm->setEndOffset( KCal::Duration( -duration ) );
+    }
   }
   construct();
 }
@@ -106,18 +133,32 @@ void AlarmListViewItem::construct()
     if ( mAlarm->hasStartOffset() ) {
       offset = mAlarm->startOffset().asSeconds();
       if ( offset < 0 ) {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 before the start");
+        offsetstr = i18n( "N days/hours/minutes before/after the start/end",
+                          "%1 before the start" );
         offset = -offset;
       } else {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 after the start");
+        offsetstr = i18n( "N days/hours/minutes before/after the start/end",
+                          "%1 after the start" );
       }
     } else if ( mAlarm->hasEndOffset() ) {
       offset = mAlarm->endOffset().asSeconds();
       if ( offset < 0 ) {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 before the end");
+        if ( mIncType == "Todo" ) {
+          offsetstr = i18n( "N days/hours/minutes before/after the due date",
+                            "%1 before the to-do is due" );
+        } else {
+          offsetstr = i18n( "N days/hours/minutes before/after the start/end",
+                            "%1 before the end" );
+        }
         offset = -offset;
       } else {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 after the end");
+        if ( mIncType == "Todo" ) {
+          offsetstr = i18n( "N days/hours/minutes before/after the due date",
+                            "%1 after the to-do is due" );
+        } else {
+          offsetstr = i18n( "N days/hours/minutes before/after the start/end",
+                            "%1 after the end" );
+        }
       }
     }
 
@@ -149,14 +190,15 @@ void AlarmListViewItem::construct()
 KOEditorAlarms::KOEditorAlarms( const QCString &type,
                                 KCal::Alarm::List *alarms, QWidget *parent,
                                 const char *name )
-  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Cancel ),
-    mType( type ), mAlarms( alarms ),mCurrentItem(0L)
+  : KDialogBase( parent, name, true, i18n("Advanced Reminders"), Ok | Cancel ),
+    mType( type ), mAlarms( alarms ),mCurrentItem( 0 )
 {
   if ( mType != "Todo" ) {
     // only Todos and Events can have reminders
     mType = "Event";
   }
   setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
+  mWidget->mAlarmList->setResizeMode( QListView::LastColumn );
   mWidget->mAlarmList->setColumnWidthMode( 0, QListView::Maximum );
   mWidget->mAlarmList->setColumnWidthMode( 1, QListView::Maximum );
   connect( mWidget->mAlarmList, SIGNAL( selectionChanged( QListViewItem * ) ),
@@ -180,7 +222,11 @@ KOEditorAlarms::KOEditorAlarms( const QCString &type,
   connect( mWidget->mEmailText, SIGNAL( textChanged() ), SLOT( changed() ) );
 
   init();
-  mWidget->mTypeEmailRadio->hide();
+
+  //TODO: backport email reminders from trunk
+  mWidget->mTypeEmailRadio->hide(); //email reminders not implemented yet
+
+  mWidget->setMinimumSize( 500, 500 );
 }
 
 KOEditorAlarms::~KOEditorAlarms()
@@ -204,6 +250,9 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   // Offsets
   int offset;
   int beforeafterpos = 0;
+  if ( mType == "Todo" ) {
+    beforeafterpos = 2; // to-dos default to alarms before the due start
+  }
   if ( alarm->hasEndOffset() ) {
     beforeafterpos = 2;
     offset = alarm->endOffset().asSeconds();
@@ -363,17 +412,15 @@ void KOEditorAlarms::slotOk()
 
 void KOEditorAlarms::slotAdd()
 {
-  mCurrentItem = new AlarmListViewItem( mWidget->mAlarmList, 0 );
+  mCurrentItem = new AlarmListViewItem( mWidget->mAlarmList, 0, mType );
   mWidget->mAlarmList->setCurrentItem( mCurrentItem );
-//   selectionChanged( mCurrentItem );
 }
 
 void KOEditorAlarms::slotDuplicate()
 {
   if ( mCurrentItem ) {
-    mCurrentItem = new AlarmListViewItem( mWidget->mAlarmList, mCurrentItem->alarm() );
+    mCurrentItem = new AlarmListViewItem( mWidget->mAlarmList, mCurrentItem->alarm(), mType );
     mWidget->mAlarmList->setCurrentItem( mCurrentItem );
-//     selectionChanged( mCurrentItem );
   }
 }
 
@@ -383,7 +430,6 @@ void KOEditorAlarms::slotRemove()
     delete mCurrentItem;
     mCurrentItem = dynamic_cast<AlarmListViewItem*>( mWidget->mAlarmList->currentItem() );
     mWidget->mAlarmList->setSelected( mCurrentItem, true );
-
   }
 }
 
@@ -406,12 +452,14 @@ void KOEditorAlarms::init()
       mWidget->mBeforeAfter,
       i18n( "Use this combobox to specify if you want the reminder to "
             "trigger before or after the start or due time." ) );
+
+    mWidget->mBeforeAfter->setCurrentItem( 2 );  // default is before due start
   }
 
   // Fill-in existing alarms
   KCal::Alarm::List::ConstIterator it;
   for ( it = mAlarms->begin(); it != mAlarms->end(); ++it ) {
-    new AlarmListViewItem( mWidget->mAlarmList, *it );
+    new AlarmListViewItem( mWidget->mAlarmList, *it, mType );
   }
   mWidget->mAlarmList->setSelected( mWidget->mAlarmList->firstChild(), true );
   mInitializing = false;

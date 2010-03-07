@@ -349,6 +349,23 @@ void KOEditorGeneral::updateDefaultAlarmTime()
   mAlarmIncrCombo->setCurrentItem( index );
 }
 
+bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm )
+{
+  // Check if its the trivial type of alarm, which can be
+  // configured with a simply spin box...
+
+  bool simple = false;
+  if ( alarm->type() == Alarm::Display && alarm->text().isEmpty() &&
+       alarm->repeatCount() == 0 && !alarm->hasTime() &&
+       ( ( mType == "Event" &&
+           alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) ||
+         ( mType == "Todo" &&
+           alarm->hasEndOffset() && alarm->endOffset().asSeconds() < 0 ) ) ) {
+    simple = true;
+  }
+  return simple;
+}
+
 void KOEditorGeneral::updateAlarmWidgets()
 {
   if ( mAlarmList.isEmpty() ) {
@@ -371,15 +388,15 @@ void KOEditorGeneral::updateAlarmWidgets()
     mAlarmEditButton->setEnabled( true );
   } else {
     Alarm *alarm = mAlarmList.first();
-    // Check if its the trivial type of alarm, which can be
-    // configured with a simply spin box...
-
-    if ( alarm->type() == Alarm::Display && alarm->text().isEmpty()
-         && alarm->repeatCount() == 0 && !alarm->hasTime()
-         && alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 )  {
+    if ( isSimpleAlarm( alarm ) ) {
       mAlarmStack->raiseWidget( SimpleAlarmPage );
       mAlarmButton->setChecked( true );
-      int offset = alarm->startOffset().asSeconds();
+      int offset;
+      if ( mType == "Event" ) {
+        offset = alarm->startOffset().asSeconds();
+      } else {
+        offset = alarm->endOffset().asSeconds();
+      }
 
       offset = offset / -60; // make minutes
       int useoffset = offset;
@@ -448,7 +465,11 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
       j = j * 60;
     else if (mAlarmIncrCombo->currentItem() == 2)
       j = j * (60 * 24);
-    alarm->setStartOffset( j );
+    if ( mType == "Event" ) {
+      alarm->setStartOffset( j );
+    } else {
+      alarm->setEndOffset( j );
+    }
     return alarm;
   } else {
     return 0;

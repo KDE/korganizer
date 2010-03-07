@@ -83,14 +83,10 @@ void KOEditorGeneralTodo::finishSetup()
   QWidget::setTabOrder( mPriorityCombo, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
-//   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmEditButton );
-//   QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
-//   QWidget::setTabOrder( mAlarmProgramButton, mDescriptionEdit );
   QWidget::setTabOrder( mAlarmEditButton, mDescriptionEdit );
   QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
   QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
-//  QWidget::setTabOrder( mSecrecyCombo, mDescriptionEdit );
 
   mSummaryEdit->setFocus();
 }
@@ -136,7 +132,6 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   QWhatsThis::add( mDueCheck, whatsThis );
   layoutTimeBox->addWidget(mDueCheck,1,0);
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
-  connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm()));
   connect(mDueCheck,SIGNAL(toggled(bool)),SIGNAL(dueDateEditToggle(bool)));
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
@@ -170,6 +165,13 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mRecEditLabel = new QLabel( QString(), timeBoxFrame );
   recLayout->addWidget( mRecEditLabel );
   recLayout->addStretch( 1 );
+
+  label = new QLabel( i18n("Reminder:"), timeBoxFrame );
+  layoutTimeBox->addWidget( label, 4, 0 );
+  QBoxLayout *alarmLineLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 4, 4, 1, 4 );
+  initAlarm( timeBoxFrame, alarmLineLayout );
+  alarmLineLayout->addStretch( 1 );
 
   // some more layouting
   layoutTimeBox->setColStretch( 3, 1 );
@@ -288,7 +290,6 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
   QDateTime dueDT;
 
   if (todo->hasDueDate()) {
-    enableAlarm( true );
     dueDT = todo->dtDue();
     if ( todo->doesRecur() && date.isValid() ) {
       QDateTime dt( date, QTime( 0, 0, 0 ) );
@@ -299,7 +300,6 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
     mDueTimeEdit->setTime(dueDT.time());
     mDueCheck->setChecked(true);
   } else {
-    enableAlarm( false );
     mDueDateEdit->setEnabled(false);
     mDueTimeEdit->setEnabled(false);
     mDueDateEdit->setDate(QDate::currentDate());
@@ -463,11 +463,6 @@ void KOEditorGeneralTodo::enableTimeEdits(bool enable)
   if(mDueCheck->isChecked()) {
     mDueTimeEdit->setEnabled( enable );
   }
-}
-
-void KOEditorGeneralTodo::showAlarm()
-{
-  enableAlarm( mDueCheck->isChecked() );
 }
 
 bool KOEditorGeneralTodo::validateInput()

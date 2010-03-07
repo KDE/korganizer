@@ -47,10 +47,12 @@ class KOEditorAlarms : public KDialogBase
     void slotRemove();
     void changed();
     void selectionChanged( QListViewItem *listviewitem );
+
   protected:
     void init();
     void readAlarm( KCal::Alarm *alarm );
     void writeAlarm( KCal::Alarm *alarm );
+
   private:
     QCString mType; // as in the Incidence::type
     KCal::Alarm::List *mAlarms;

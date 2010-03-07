@@ -139,6 +139,7 @@ class KOEditorGeneral : public QObject
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 
   private:
+    bool isSimpleAlarm( Alarm *alarm );
     QStringList mCategories;
     QCString mType; // as in Incidence::type()
     KCal::Alarm::List mAlarmList;

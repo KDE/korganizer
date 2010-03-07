@@ -82,15 +82,11 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mRecEditButton, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
-//   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmEditButton );
-//   QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
-//   QWidget::setTabOrder( mAlarmProgramButton, mFreeTimeCombo );
   QWidget::setTabOrder( mAlarmEditButton, mFreeTimeCombo );
   QWidget::setTabOrder( mFreeTimeCombo, mDescriptionEdit );
   QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
   QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
-//  QWidget::setTabOrder( mSecrecyCombo, mDescriptionEdit );
 
   mSummaryEdit->setFocus();
 }
@@ -233,7 +229,6 @@ void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 void KOEditorGeneralEvent::associateTime(bool time)
 {
   timeStuffDisable(time);
-  //if(alarmButton->isChecked()) alarmStuffDisable(noTime);
   allDayChanged(time);
 }
 
