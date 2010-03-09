@@ -88,7 +88,7 @@ int AlarmListItem::compare( KListViewItem *item, int iCol, bool bAscending ) con
 {
   if ( iCol == 1 ) {
     AlarmListItem *pItem = static_cast<AlarmListItem *>( item );
-    return mHappening < pItem->mHappening;
+    return pItem->mHappening.secsTo( mHappening );
   } else {
     return KListViewItem::compare( item, iCol, bAscending );
   }
@@ -180,7 +180,7 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   Event *event;
   Todo *todo;
   Alarm *alarm = incidence->alarms().first();
-  if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
+  if ( ( event = static_cast<Event *>( incidence ) ) ) {
     item->setPixmap( 0, SmallIcon( "appointment" ) );
     if ( event->doesRecur() ) {
       QDateTime nextStart = event->recurrence()->getNextDateTime( reminderAt );
@@ -199,7 +199,7 @@ void AlarmDialog::addIncidence( Incidence *incidence,
       item->mHappening = qdt;
       item->setText( 1, IncidenceFormatter::dateTimeToString( qdt, false, true ) );
     }
-  } else if ( ( todo = dynamic_cast<Todo *>( incidence ) ) ) {
+  } else if ( ( todo = static_cast<Todo *>( incidence ) ) ) {
     item->setPixmap( 0, SmallIcon( "todo" ) );
     if ( todo->doesRecur() ) {
       QDateTime nextStart = todo->recurrence()->getNextDateTime( reminderAt );
@@ -288,6 +288,9 @@ void AlarmDialog::edit()
     return;
   }
   Incidence *incidence = mCalendar->incidence( selection.first()->mUid );
+  if ( !incidence ) {
+    return;
+  }
   QDate dt = selection.first()->mRemindAt.date();
 
   if ( incidence->isReadOnly() ) {
