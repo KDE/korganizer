@@ -79,6 +79,7 @@ class AlarmListItem : public KListViewItem
     QString mDisplayText;
 
     QString mUid;
+    int mLastRevision;
     QDateTime mRemindAt;
     QDateTime mHappening;
     bool mNotified;
@@ -174,8 +175,7 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   item->setText( 0, incidence->summary() );
   item->mRemindAt = reminderAt;
   item->mDisplayText = displayText;
-
-  //TODO: this function needs to consider all Display type alarms in each incidence.
+  item->mLastRevision = incidence->revision();
 
   Event *event;
   Todo *todo;
@@ -257,9 +257,9 @@ void AlarmDialog::dismissCurrent()
       (*it)->itemAbove()->setSelected( true );
     delete *it;
   }
-  if ( activeCount() == 0 )
+  if ( activeCount() == 0 ) {
     accept();
-  else {
+  } else {
     updateButtons();
     showDetails();
   }
@@ -479,11 +479,13 @@ void AlarmDialog::wakeUp()
       continue;
     }
 
-    if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
+    if ( item->mRemindAt <= QDateTime::currentDateTime() &&
+         incidence->revision() <= item->mLastRevision ) {
       if ( !item->isVisible() ) {
         item->setVisible( true );
         item->setSelected( false );
       }
+      item->mLastRevision = incidence->revision();
       activeReminders = true;
     } else {
       item->setVisible( false );
