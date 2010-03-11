@@ -52,41 +52,48 @@ CollectionSelection* BaseView::globalCollectionSelection()
   return sGlobalCollectionSelection;
 }
 
-class BaseView::Private {
+class BaseView::Private
+{
   BaseView *const q;
-public:
-  explicit Private( BaseView* qq )
-    : q( qq )
-    , calendar( 0 )
-    , customCollectionSelection( 0 )
-    , collectionSelectionModel( 0 )
-    , stateSaver( 0 ) {
-    QByteArray cname = q->metaObject()->className();
-    cname.replace( ":", "_" );
-    identifier = cname + "_" + KRandom::randomString( 8 ).toLatin1();
-    calendarSearch = new CalendarSearch( q );
-    connect( calendarSearch->model(), SIGNAL(rowsInserted(QModelIndex,int,int)), q, SLOT(rowsInserted(QModelIndex,int,int)) );
-    connect( calendarSearch->model(), SIGNAL(rowsAboutToBeRemoved(QModelIndex,int,int)), q, SLOT(rowsAboutToBeRemoved(QModelIndex,int,int)) );
-    connect( calendarSearch->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)), q, SLOT(dataChanged(QModelIndex,QModelIndex)) );
-    connect( calendarSearch->model(), SIGNAL(modelReset()), q, SLOT(calendarReset()) );
-  }
 
-  ~Private() {
-    delete collectionSelectionModel;
-  }
+  public:
+    explicit Private( BaseView* qq )
+      : q( qq ),
+        calendar( 0 ),
+        customCollectionSelection( 0 ),
+        collectionSelectionModel( 0 ),
+        stateSaver( 0 )
+    {
+      QByteArray cname = q->metaObject()->className();
+      cname.replace( ":", "_" );
+      identifier = cname + "_" + KRandom::randomString( 8 ).toLatin1();
+      calendarSearch = new CalendarSearch( q );
+      connect( calendarSearch->model(), SIGNAL( rowsInserted( const QModelIndex&, int, int ) ),
+               q, SLOT( rowsInserted( const QModelIndex&, int, int ) ) );
+      connect( calendarSearch->model(), SIGNAL( rowsAboutToBeRemoved( const QModelIndex&, int, int ) ),
+               q, SLOT( rowsAboutToBeRemoved( const QModelIndex&, int, int ) ) );
+      connect( calendarSearch->model(), SIGNAL( dataChanged( const QModelIndex&, const QModelIndex& ) ),
+               q, SLOT( dataChanged( const QModelIndex&, const QModelIndex& ) ) );
+      connect( calendarSearch->model(), SIGNAL( modelReset() ), q, SLOT( calendarReset() ) );
+    }
 
-  Akonadi::Calendar *calendar;
-  CalendarSearch *calendarSearch;
-  CollectionSelection *customCollectionSelection;
-  CollectionSelectionProxyModel* collectionSelectionModel;
-  EntityModelStateSaver* stateSaver;
-  QByteArray identifier;
-  KDateTime startDateTime;
-  KDateTime endDateTime;
-  KDateTime actualStartDateTime;
-  KDateTime actualEndDateTime;
-  void setUpModels();
-  void reconnectCollectionSelection();
+    ~Private()
+    {
+      delete collectionSelectionModel;
+    }
+
+    Akonadi::Calendar *calendar;
+    CalendarSearch *calendarSearch;
+    CollectionSelection *customCollectionSelection;
+    CollectionSelectionProxyModel* collectionSelectionModel;
+    EntityModelStateSaver* stateSaver;
+    QByteArray identifier;
+    KDateTime startDateTime;
+    KDateTime endDateTime;
+    KDateTime actualStartDateTime;
+    KDateTime actualEndDateTime;
+    void setUpModels();
+    void reconnectCollectionSelection();
 };
 
 void BaseView::Private::setUpModels()
@@ -120,8 +127,10 @@ void BaseView::Private::reconnectCollectionSelection()
 {
   if ( q->globalCollectionSelection() )
     q->globalCollectionSelection()->disconnect( q );
+
   if ( customCollectionSelection )
     customCollectionSelection->disconnect( q );
+
   QObject::connect( q->collectionSelection(), SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), q, SLOT(collectionSelectionChanged()) );
 }
 
@@ -184,7 +193,8 @@ BaseView* BaseView::viewAt( const QPoint & )
 }
 
 void BaseView::updateConfig()
-{}
+{
+}
 
 bool BaseView::hasConfigurationDialog() const
 {
@@ -210,7 +220,7 @@ void BaseView::setDateRange( const KDateTime& start, const KDateTime& end )
 KDateTime BaseView::startDateTime() const
 {
   return d->startDateTime;
-}\
+}
 
 KDateTime BaseView::endDateTime() const
 {
@@ -220,7 +230,7 @@ KDateTime BaseView::endDateTime() const
 KDateTime BaseView::actualStartDateTime() const
 {
   return d->actualStartDateTime;
-}\
+}
 
 KDateTime BaseView::actualEndDateTime() const
 {
@@ -250,8 +260,7 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
     d->setUpModels();
   } else if ( useCustom ) {
 
-    if ( !d->collectionSelectionModel )
-    {
+    if ( !d->collectionSelectionModel ) {
       d->collectionSelectionModel = new CollectionSelectionProxyModel( this );
       d->collectionSelectionModel->setDynamicSortFilter( true );
       d->collectionSelectionModel->setSortCaseSensitivity( Qt::CaseInsensitive );
@@ -260,28 +269,31 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
       d->setUpModels();
     }
 
-    const KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String("_selectionSetup") );
+    const KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String( "_selectionSetup" ) );
     d->stateSaver->restoreConfig( selectionGroup );
   }
+
   doRestoreConfig( configGroup );
 }
 
 void BaseView::saveConfig( KConfigGroup &configGroup )
 {
   configGroup.writeEntry( "UseCustomCollectionSelection", d->collectionSelectionModel != 0 );
-  if ( d->stateSaver )
-  {
-    KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String("_selectionSetup") );
+  if ( d->stateSaver ) {
+    KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String( "_selectionSetup" ) );
     d->stateSaver->saveConfig( selectionGroup );
   }
+
   doSaveConfig( configGroup );
 }
 
 void BaseView::doRestoreConfig( const KConfigGroup & )
-{}
+{
+}
 
 void BaseView::doSaveConfig( KConfigGroup & )
-{}
+{
+}
 
 CollectionSelection* BaseView::collectionSelection() const
 {
@@ -292,6 +304,7 @@ void BaseView::setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelect
 {
   if ( d->collectionSelectionModel == model )
     return;
+
   delete d->collectionSelectionModel;
   d->collectionSelectionModel = model;
   d->setUpModels();
@@ -321,7 +334,8 @@ CollectionSelection *BaseView::customCollectionSelection() const
 }
 
 void BaseView::clearSelection()
-{}
+{
+}
 
 bool BaseView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
@@ -333,7 +347,8 @@ bool BaseView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &al
 
 void BaseView::getHighlightMode( bool &highlightEvents,
                                  bool &highlightTodos,
-                                 bool &highlightJournals ) {
+                                 bool &highlightJournals )
+{
   highlightEvents   = true;
   highlightTodos    = false;
   highlightJournals = false;

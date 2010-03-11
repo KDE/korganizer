@@ -814,7 +814,6 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       curEndTime = curStartTime.addSecs( 3600 );
     }
 
-
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
     Item::List eventList = mCalendar->events( curDay, timeSpec,
                                                Akonadi::EventSortStartDate,

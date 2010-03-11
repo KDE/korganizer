@@ -318,7 +318,8 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   }
   item->setText( 2, IncidenceFormatter::dateTimeToString(
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
-  QString tip = IncidenceFormatter::toolTipStr( Akonadi::displayName(incidenceitem.parentCollection()), incidence.get(),
+  QString tip = IncidenceFormatter::toolTipStr( Akonadi::displayName( incidenceitem.parentCollection() ),
+                                                incidence.get(),
                                                 item->mRemindAt.date(), true,
                                                 KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
@@ -386,7 +387,7 @@ void AlarmDialog::dismissAll()
 void AlarmDialog::dismiss( ReminderList selections )
 {
   for ( ReminderList::Iterator it = selections.begin(); it != selections.end(); ++it ) {
-    kDebug() << "removing " << Akonadi::incidence(( *it )->mIncidence)->summary();
+    kDebug() << "removing " << Akonadi::incidence( (*it)->mIncidence )->summary();
     if ( mIncidenceTree->itemBelow( *it ) ) {
       mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
     } else if ( mIncidenceTree->itemAbove( *it ) ) {
@@ -455,7 +456,7 @@ void AlarmDialog::edit()
   // WId is a typedef to a void* on windows
   QDBusReply<qlonglong> reply = korganizerObj.call( "winId" );
   if ( reply.isValid() ) {
-	qlonglong window = reply;
+    qlonglong window = reply;
     KWindowSystem::minimizeWindow( winId(), false );
     KWindowSystem::allowExternalProcessWindowActivation();
     KWindowSystem::activateWindow( reinterpret_cast<WId>(window) );
@@ -649,7 +650,8 @@ void AlarmDialog::eventNotification()
         }
         //TODO: support attachments
         Akonadi::MailClient mailer;
-        mailer.send( id, from, to, QString(), subject, body, true,false,QString(),MailTransport::TransportManager::self()->defaultTransportName());
+        mailer.send( id, from, to, QString(), subject, body, true, false, QString(),
+                     MailTransport::TransportManager::self()->defaultTransportName() );
       }
     }
   }

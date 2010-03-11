@@ -88,7 +88,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   KDescendantsProxyModel *flattener = new KDescendantsProxyModel(this);
   flattener->setSourceModel( calendarModel );
 
-  mCalendar = new Akonadi::Calendar( calendarModel, flattener, zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  mCalendar = new Akonadi::Calendar( calendarModel, flattener,
+                                     zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
@@ -153,7 +154,7 @@ void KOAlarmClient::checkAlarms()
   Alarm::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                             KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
-  foreach(Alarm* a, alarms) {
+  foreach( Alarm* a, alarms ) {
     const QString uid = a->parent()->uid();
     const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( uid );
     const Akonadi::Item incidence = mCalendar->incidence( itemId );
@@ -242,7 +243,7 @@ QStringList KOAlarmClient::dumpAlarms()
          end.toString();
 
   Alarm::List alarms = mCalendar->alarms( start, end );
-  foreach(Alarm* a, alarms) {
+  foreach( Alarm* a, alarms ) {
     lst << QString( "  " ) + a->parent()->summary() + " (" + a->time().toString() + ')';
   }
 
