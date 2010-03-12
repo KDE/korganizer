@@ -349,7 +349,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
   // Repeating
   if ( mWidget->mRepeats->isChecked() ) {
     alarm->setRepeatCount( mWidget->mRepeatCount->value() );
-    alarm->setSnoozeTime( mWidget->mRepeatInterval->value() * 60 ); // convert back to seconds
+    alarm->setSnoozeTime( KCal::Duration( mWidget->mRepeatInterval->value() * 60 ) ); // convert back to seconds
   } else {
     alarm->setRepeatCount( 0 );
   }
