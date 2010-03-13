@@ -441,15 +441,11 @@ void KOEditorGeneralEvent::readEvent( Event *event, const QDate &date, bool isTe
     if ( event->recurs() && date.isValid() ) {
       // Consider the active date when editing recurring Events.
       KDateTime kdt( date, QTime( 0, 0, 0 ), KSystemTimeZones::local() );
-      int diffDays = startDT.daysTo( kdt );
+      const int eventLength = startDT.daysTo( endDT );
       kdt = kdt.addSecs( -1 );
       startDT.setDate( event->recurrence()->getNextDateTime( kdt ).date() );
       if ( event->hasEndDate() ) {
-        endDT = endDT.addDays( diffDays );
-        if ( startDT > endDT ) {
-          startDT.setDate( event->recurrence()->getPreviousDateTime( kdt ).date() );
-          endDT = startDT.addDays( event->dtStart().daysTo( event->dtEnd() ) );
-        }
+        endDT.setDate( startDT.addDays( eventLength ).date() );
       } else {
         if ( event->hasDuration() ) {
           endDT = startDT.addSecs( event->duration().asSeconds() );
