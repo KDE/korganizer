@@ -80,6 +80,7 @@ class AlarmListItem : public KListViewItem
 
     QString mUid;
     int mLastRevision;
+    QDateTime mLastModified;
     QDateTime mRemindAt;
     QDateTime mHappening;
     bool mNotified;
@@ -176,6 +177,7 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   item->mRemindAt = reminderAt;
   item->mDisplayText = displayText;
   item->mLastRevision = incidence->revision();
+  item->mLastModified = incidence->lastModified();
 
   Event *event;
   Todo *todo;
@@ -479,17 +481,22 @@ void AlarmDialog::wakeUp()
       continue;
     }
 
+    // Check revision and last-modified to see if the incidence has been
+    // edited since the last time we woke up.  If it was edited, then
+    // remove it as the new version will have been added in addIncidence().
     if ( item->mRemindAt <= QDateTime::currentDateTime() &&
-         incidence->revision() <= item->mLastRevision ) {
+         incidence->revision() <= item->mLastRevision &&
+         incidence->lastModified() <= item->mLastModified ) {
       if ( !item->isVisible() ) {
         item->setVisible( true );
         item->setSelected( false );
       }
-      item->mLastRevision = incidence->revision();
       activeReminders = true;
     } else {
       item->setVisible( false );
     }
+    item->mLastRevision = incidence->revision();
+    item->mLastModified = incidence->lastModified();
   }
 
   if ( activeReminders )
