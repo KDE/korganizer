@@ -610,7 +610,18 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void adaptNavigationUnits();
 
     /**
+      Returns the date of the selected incidence.
+
+      If the selected incidence is recurring, it will return
+      the date of the selected occurrence
+    **/
+    QDate activeIncidenceDate();
+
+    /**
       Returns the best guess at the current active date in the view.
+      This has nothing to do with selected incidences, use activeIncidenceDate()
+      for that, for example, agenda supports time selection and incidence selection
+      and they can have diferent dates.
 
       @param fallbackToToday If guessing doesn't work, some views will prefer
       today to be returned instead of the first select date in the day matrix,
