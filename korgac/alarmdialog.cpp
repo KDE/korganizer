@@ -60,6 +60,7 @@
 
 static int defSuspendVal = 5;
 static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
+static QDateTime defModDateTime = QDateTime( QDate( 1970, 1, 1 ), QTime( 0, 0, 0 ) );
 
 class AlarmListItem : public KListViewItem
 {
@@ -177,7 +178,11 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   item->mRemindAt = reminderAt;
   item->mDisplayText = displayText;
   item->mLastRevision = incidence->revision();
-  item->mLastModified = incidence->lastModified();
+  if ( incidence->lastModified().isValid() ) {
+    item->mLastModified = incidence->lastModified();
+  } else {
+    item->mLastModified = defModDateTime;
+  }
 
   Event *event;
   Todo *todo;
@@ -481,12 +486,19 @@ void AlarmDialog::wakeUp()
       continue;
     }
 
+    QDateTime ilm;
+    if ( incidence->lastModified().isValid() ) {
+      ilm = incidence->lastModified();
+    } else {
+      ilm = defModDateTime;
+    }
+
     // Check revision and last-modified to see if the incidence has been
     // edited since the last time we woke up.  If it was edited, then
     // remove it as the new version will have been added in addIncidence().
     if ( item->mRemindAt <= QDateTime::currentDateTime() &&
          incidence->revision() <= item->mLastRevision &&
-         incidence->lastModified() <= item->mLastModified ) {
+         ilm <= item->mLastModified ) {
       if ( !item->isVisible() ) {
         item->setVisible( true );
         item->setSelected( false );
