@@ -347,6 +347,7 @@ class KOAgenda : public QScrollView
 
     // The KOAgendaItem, which is being moved/resized
     QGuardedPtr<KOAgendaItem> mActionItem;
+    QPair<ResourceCalendar *, QString> mResPair;
 
     // Currently selected item
     QGuardedPtr<KOAgendaItem> mSelectedItem;

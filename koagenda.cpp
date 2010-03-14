@@ -58,6 +58,7 @@
 #include <libkcal/vcaldrag.h>
 #include <libkcal/calendar.h>
 #include <libkcal/calendarresources.h>
+#include <libkcal/calhelper.h>
 #include <math.h>
 
 ////////////////////////////////////////////////////////////////////////////
@@ -273,6 +274,7 @@ void KOAgenda::init()
   mClickedItem = 0;
 
   mActionItem = 0;
+  mResPair = qMakePair( static_cast<ResourceCalendar *>( 0 ), QString() );
   mActionType = NOP;
   mItemMoved = false;
 
@@ -619,8 +621,10 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             Incidence *incidence = item->incidence();
             if ( incidence->isReadOnly() ) {
               mActionItem = 0;
+              mResPair = qMakePair( static_cast<ResourceCalendar *>( 0 ), QString() );
             } else {
               mActionItem = item;
+              mResPair = CalHelper::incSubResourceCalendar( mCalendar, incidence );
               startItemAction(viewportPos);
             }
             // Warning: do selectItem() as late as possible, since all
@@ -652,6 +656,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           if ( !ptInSelection( gpos ) ) {
             selectItem(0);
             mActionItem = 0;
+            mResPair = qMakePair( static_cast<ResourceCalendar *>( 0 ), QString() );
             setCursor(arrowCursor);
             startSelectAction(viewportPos);
           }
@@ -700,17 +705,17 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           } // If we have an action item
         } // If move item && !read only
       } else {
-          if ( mActionType == SELECT ) {
-            performSelectAction( viewportPos );
+        if ( mActionType == SELECT ) {
+          performSelectAction( viewportPos );
 
-            // show cursor at end of timespan
-            if ( ((mStartCell.y() < mEndCell.y()) && (mEndCell.x() >= mStartCell.x())) ||
-                 (mEndCell.x() > mStartCell.x()) )
-              indicatorPos = gridToContents( QPoint(mEndCell.x(), mEndCell.y()+1) );
-            else
-              indicatorPos = gridToContents( mEndCell );
-          }
+          // show cursor at end of timespan
+          if ( ((mStartCell.y() < mEndCell.y()) && (mEndCell.x() >= mStartCell.x())) ||
+               (mEndCell.x() > mStartCell.x()) )
+            indicatorPos = gridToContents( QPoint(mEndCell.x(), mEndCell.y()+1) );
+          else
+            indicatorPos = gridToContents( mEndCell );
         }
+      }
       emit mousePosSignal( indicatorPos );
       break; }
 
@@ -899,8 +904,6 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
   QPoint clipperPos = clipper()->
                       mapFromGlobal(viewport()->mapToGlobal(viewportPos));
 
-  QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
-
   // Cursor left active agenda area.
   // This starts a drag.
   if ( clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
@@ -913,10 +916,9 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       emit startDragSignal( mActionItem->incidence() );
       setCursor( arrowCursor );
       mActionItem = 0;
+      mResPair = qMakePair( static_cast<ResourceCalendar *>( 0 ), QString() );
       mActionType = NOP;
       mItemMoved = false;
-      if ( mItemMoved && mChanger )
-        mChanger->endChange( mActionItem->incidence(), p.first, p.second );
       return;
     }
   } else {
@@ -938,7 +940,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
   if ( mEndCell != gpos ) {
     if ( !mItemMoved ) {
       if ( !mChanger ||
-           !mChanger->beginChange( mActionItem->incidence(), p.first, p.second ) ) {
+           !mChanger->beginChange( mActionItem->incidence(), mResPair.first, mResPair.second ) ) {
         KMessageBox::information( this, i18n("Unable to lock item for "
                              "modification. You cannot make any changes."),
                              i18n("Locking Failed"), "AgendaLockingFailed" );
@@ -948,6 +950,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
         placeSubCells( mActionItem );
         setCursor( arrowCursor );
         mActionItem = 0;
+        mResPair = qMakePair( static_cast<ResourceCalendar *>( 0 ), QString() );
         mActionType = NOP;
         mItemMoved = false;
         return;
@@ -1083,9 +1086,13 @@ void KOAgenda::endItemAction()
   // FIXME: do the cloning here...
   Incidence *inc = mActionItem->incidence();
 
-  mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
-                                mStartCell.y() == mEndCell.y() );
-  QPair<ResourceCalendar *, QString>p = mCalendarView->viewSubResourceCalendar();
+  if ( mStartCell.x() == mEndCell.x() && mStartCell.y() == mEndCell.y() ) {
+    // not really moved, so stop any change
+    if ( mItemMoved ) {
+      mItemMoved = false;
+      mChanger->endChange( inc, mResPair.first, mResPair.second );
+    }
+  }
 
   if ( mItemMoved ) {
     Incidence *incToChange = inc;
@@ -1138,7 +1145,7 @@ void KOAgenda::endItemAction()
 
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
-      mChanger->endChange( inc, p.first, p.second );
+      mChanger->endChange( inc, mResPair.first, mResPair.second );
       emit itemModified( modif );
     } else {
 
@@ -1147,14 +1154,13 @@ void KOAgenda::endItemAction()
 
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
-      mChanger->endChange( inc, p.first, p.second );
+      mChanger->endChange( inc, mResPair.first, mResPair.second );
       emit itemModified( mActionItem );
     }
-  } else {
-    mChanger->endChange( inc, p.first, p.second );
   }
 
   mActionItem = 0;
+  mResPair = qMakePair( static_cast<ResourceCalendar *>( 0 ), QString() );
   mItemMoved = false;
 
   if ( multiModify ) {
