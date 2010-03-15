@@ -187,8 +187,9 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   Event *event;
   Todo *todo;
   Alarm *alarm = incidence->alarms().first();
-  if ( ( event = static_cast<Event *>( incidence ) ) ) {
+  if ( incidence->type() == "Event" ) {
     item->setPixmap( 0, SmallIcon( "appointment" ) );
+    event = static_cast<Event *>( incidence );
     if ( event->doesRecur() ) {
       QDateTime nextStart = event->recurrence()->getNextDateTime( reminderAt );
       if ( nextStart.isValid() ) {
@@ -206,8 +207,9 @@ void AlarmDialog::addIncidence( Incidence *incidence,
       item->mHappening = qdt;
       item->setText( 1, IncidenceFormatter::dateTimeToString( qdt, false, true ) );
     }
-  } else if ( ( todo = static_cast<Todo *>( incidence ) ) ) {
+  } else if ( incidence->type() == "Todo" ) {
     item->setPixmap( 0, SmallIcon( "todo" ) );
+    todo = static_cast<Todo *>( incidence );
     if ( todo->doesRecur() ) {
       QDateTime nextStart = todo->recurrence()->getNextDateTime( reminderAt );
       if ( nextStart.isValid() ) {
