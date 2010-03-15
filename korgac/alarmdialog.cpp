@@ -79,6 +79,7 @@ class ReminderListItem : public QTreeWidgetItem
 
     QString mDisplayText;
     const Akonadi::Item mIncidence;
+    int mLastRevision;
     QDateTime mRemindAt;
     KDateTime mTrigger;
     KDateTime mHappening;
@@ -267,8 +268,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->mRemindAt = reminderAt;
   item->mTrigger = KDateTime::currentLocalDateTime();
   item->mDisplayText = displayText;
-
-  //TODO: this function needs to consider all Display type alarms in each incidence.
+  item->mLastRevision = incidence->revision();
 
   Event *event;
   Todo *todo;
@@ -671,11 +671,14 @@ void AlarmDialog::wakeUp()
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
-    if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
+    Incidence::Ptr incidence = Akonadi::incidence( item->mIncidence );
+    if ( item->mRemindAt <= QDateTime::currentDateTime() &&
+         incidence->revision() <= item->mLastRevision ) {
       if ( item->isDisabled() ) { //do not wakeup non-suspended reminders
         item->setDisabled( false );
         item->setSelected( false );
       }
+      item->mLastRevision = incidence->revision();
       activeReminders = true;
     } else {
       item->setDisabled( true );
