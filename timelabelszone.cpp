@@ -108,7 +108,7 @@ void TimeLabelsZone::updateAll()
   foreach ( TimeLabels *timeLabel, mTimeLabelsList ) {
     timeLabel->updateConfig();
     timeLabel->positionChanged();
-    timeLabel->repaint();
+    timeLabel->repaintContents();
   }
 }
 
