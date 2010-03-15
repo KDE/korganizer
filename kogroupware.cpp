@@ -42,7 +42,6 @@
 #include "koincidenceeditor.h"
 #include <libemailfunctions/email.h>
 #include <libkcal/attendee.h>
-#include <libkcal/calhelper.h>
 #include <libkcal/journal.h>
 #include <libkcal/incidenceformatter.h>
 #include <kdebug.h>
@@ -360,27 +359,11 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
         setDoNotNotify( rc == KMessageBox::No );
       } else {
-        bool isWritable = false;
-        QPair<ResourceCalendar *, QString>p =
-          CalHelper::incSubResourceCalendar( mCalendar, incidence );
-        if ( p.first ) {
-          isWritable = p.first->subresourceWritable( p.second );
-        }
-
-        if ( !isWritable ) {
-          txt = i18n( "You are not the organizer of this event. "
-                      "Editing it will bring your calendar out of sync with "
-                      "the organizer's calendar. "
-                      "Do you really want to edit it?" );
-          rc = KMessageBox::warningYesNo( parent, txt );
-          return ( rc == KMessageBox::Yes );
-        } else {
-          txt = i18n( "You are not the organizer of this event but since you "
-                      "have write access to the corresponding calendar you "
-                      "may modify the event if you wish. "
-                      "Do you really want to edit it?" );
-          rc = KMessageBox::warningYesNo( parent, txt );
-        }
+        txt = i18n( "You are not the organizer of this event. Editing it will "
+                    "bring your calendar out of sync with the organizer's calendar. "
+                    "Do you really want to edit it?" );
+        rc = KMessageBox::warningYesNo( parent, txt );
+        return ( rc == KMessageBox::Yes );
       }
     }
   } else {
