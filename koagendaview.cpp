@@ -1364,9 +1364,13 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
         // so comparisons with < > actually work
         dateToAdd.setTime( QTime( 0, 0 ) );
       }
+
+      if ( event->doesFloat() ) {
+        incidenceEnd.setTime( QTime( 23, 59 ) );
+      }
     }
 
-    if  ( dateToAdd <= lastVisibleDateTime && incidenceEnd >= firstVisibleDateTime ) {
+    if ( dateToAdd <= lastVisibleDateTime && incidenceEnd > firstVisibleDateTime ) {
       dateTimeList += dateToAdd;
     }
   }
