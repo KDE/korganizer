@@ -42,8 +42,8 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
-CalPrinter::CalPrinter( QWidget *parent, Akonadi::Calendar *calendar, KOrg::CoreHelper *helper )
-  : QObject( parent )
+CalPrinter::CalPrinter( QWidget *parent, Akonadi::Calendar *calendar, KOrg::CoreHelper *helper, bool uniqItem )
+  : QObject( parent ), mUniqItem( uniqItem )
 {
   mParent = parent;
   mConfig = new KConfig( "korganizer_printing.rc", KConfig::SimpleConfig );
@@ -97,7 +97,7 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td,
   for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
     (*it)->setSelectedIncidences( selectedIncidences );
   }
-  QPointer<CalPrintDialog> printDialog = new CalPrintDialog( mPrintPlugins, mParent );
+  QPointer<CalPrintDialog> printDialog = new CalPrintDialog( mPrintPlugins, mParent, mUniqItem );
   KConfigGroup grp( mConfig, "" ); //orientation setting isn't in a group
   printDialog->setOrientation( CalPrinter::ePrintOrientation( grp.readEntry( "Orientation", 1 ) ) );
   printDialog->setPreview( preview );
@@ -164,7 +164,7 @@ void CalPrinter::updateConfig()
 {
 }
 
-CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent )
+CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent, bool uniqItem )
   : KDialog( parent )
 {
   setCaption( i18n( "Print" ) );
@@ -227,6 +227,8 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
     typeLayout->addWidget( radioButton );
     id++;
   }
+  if ( uniqItem )
+    typeBox->hide();
   typeLayout->insertStretch( -1, 100 );
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
   setMinimumSize( minimumSizeHint() );

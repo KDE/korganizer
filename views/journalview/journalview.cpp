@@ -223,7 +223,7 @@ void JournalView::printItem()
 {
   if ( const Journal::Ptr j = Akonadi::journal( mJournal ) ) {
     KOCoreHelper helper;
-    CalPrinter printer( this, mCalendar, &helper );
+    CalPrinter printer( this, mCalendar, &helper, true );
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;

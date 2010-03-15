@@ -571,7 +571,7 @@ void KOTodoView::printTodo( bool preview )
   Q_ASSERT( todo );
 
   KOCoreHelper helper;
-  CalPrinter printer( this, BaseView::calendar(), &helper );
+  CalPrinter printer( this, BaseView::calendar(), &helper, true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
