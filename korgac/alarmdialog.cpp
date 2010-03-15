@@ -2,7 +2,7 @@
     This file is part of the KOrganizer alarm daemon.
 
     Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+    Copyright (c) 2009-2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -75,7 +75,7 @@ class AlarmListItem : public KListViewItem
     {
     }
 
-    int compare( KListViewItem *item, int iCol, bool bAscending ) const;
+    int compare( QListViewItem *item, int iCol, bool bAscending ) const;
 
     QString mDisplayText;
 
@@ -87,7 +87,7 @@ class AlarmListItem : public KListViewItem
     bool mNotified;
 };
 
-int AlarmListItem::compare( KListViewItem *item, int iCol, bool bAscending ) const
+int AlarmListItem::compare( QListViewItem *item, int iCol, bool bAscending ) const
 {
   if ( iCol == 1 ) {
     AlarmListItem *pItem = static_cast<AlarmListItem *>( item );
