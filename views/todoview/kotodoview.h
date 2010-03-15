@@ -129,6 +129,7 @@ class KOTodoView : public BaseView
     void purgeCompletedSignal();
     void unSubTodoSignal();
     void unAllSubTodoSignal();
+    void configChanged();
 
   private:
     QMenu *createCategoryPopupMenu();
