@@ -550,36 +550,18 @@ void KOTodoView::editTodo()
 
 void KOTodoView::printTodo()
 {
-  QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) {
-    return;
-  }
-
-  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
-  Todo::Ptr todo = Akonadi::todo( todoItem );
-  Q_ASSERT( todo );
-
-  KOCoreHelper helper;
-  CalPrinter printer( this, BaseView::calendar(), &helper );
-  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
-
-  Incidence::List selectedIncidences;
-  selectedIncidences.append( todo.get() );
-
-  KDateTime todoDate;
-  if ( todo->hasStartDate() ) {
-    todoDate = todo->dtStart();
-  } else {
-    todoDate = todo->dtDue();
-  }
-
-  printer.print( KOrg::CalPrinterBase::Incidence,
-                 todoDate.date(), todoDate.date(), selectedIncidences, false );
+  printTodo( false );
 }
 
 void KOTodoView::printPreviewTodo()
 {
-  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  printTodo( true );
+}
+
+
+void KOTodoView::printTodo( bool preview )
+{
+   QModelIndexList selection = mView->selectionModel()->selectedRows();
   if ( selection.size() != 1 ) {
     return;
   }
@@ -603,7 +585,8 @@ void KOTodoView::printPreviewTodo()
   }
 
   printer.print( KOrg::CalPrinterBase::Incidence,
-                 todoDate.date(), todoDate.date(), selectedIncidences, true );
+                 todoDate.date(), todoDate.date(), selectedIncidences, preview );
+
 }
 
 void KOTodoView::deleteTodo()

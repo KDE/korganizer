@@ -132,6 +132,7 @@ class KOTodoView : public BaseView
 
   private:
     QMenu *createCategoryPopupMenu();
+    void printTodo( bool preview );
 
     /** Creates a new todo with the given text as summary under the given parent */
     void addTodo( const QString &summary,
