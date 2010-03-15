@@ -325,10 +325,11 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   }
   item->setText( 2, IncidenceFormatter::dateTimeToString(
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
-  QString tip = IncidenceFormatter::toolTipStr( Akonadi::displayName( incidenceitem.parentCollection() ),
-                                                incidence.get(),
-                                                item->mRemindAt.date(), true,
-                                                KDateTime::Spec::LocalZone() );
+  QString tip =
+    IncidenceFormatter::toolTipStr( Akonadi::displayName( incidenceitem.parentCollection() ),
+                                    incidence.get(),
+                                    item->mRemindAt.date(), true,
+                                    KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
     tip += "<br>" + item->mDisplayText;
   }
