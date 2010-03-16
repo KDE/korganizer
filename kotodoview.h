@@ -177,8 +177,8 @@ class KOTodoView : public KOrg::BaseView
   signals:
     void unSubTodoSignal();
     void unAllSubTodoSignal();
-
     void purgeCompletedSignal();
+    void configChanged();
 
   protected slots:
     void processSelectionChange();
