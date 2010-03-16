@@ -1140,8 +1140,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     mAllDayAgenda->insertAllDayItem( incidence, columnDate, curCol, curCol );
   } else if ( incidence->doesFloat() ||
               ( todo &&
-                ( todo->dtDue().time() == QTime( 0, 0 ) ||
-                  !todo->dtDue().isValid() ) ) ) {
+                  !todo->dtDue().isValid() ) ) {
       mAllDayAgenda->insertAllDayItem( incidence, columnDate, beginX, endX );
   } else if ( event && event->isMultiDay() ) {
     int startY = mAgenda->timeToY( event->dtStart().time() );
@@ -1180,6 +1179,10 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     }
     if ( todo ) {
       QTime t = todo->dtDue().time();
+
+      if ( t == QTime( 0, 0 ) ) {
+        t = QTime( 23, 59 );
+      }
 
       int halfHour = 1800;
       if ( t.addSecs( -halfHour ) < t ) {
@@ -1355,6 +1358,13 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
     if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
       // If it's not overdue it will be shown at the original date (not today)
       dateToAdd = todo->dtDue();
+
+      // To-dos are drawn with the bottom of the rectangle at dtDue
+      // if dtDue is at 00:00, then it should be displayed in the previous day, at 23:59
+      if ( dateToAdd.time() == QTime( 0, 0 ) ) {
+        dateToAdd = dateToAdd.addSecs( -1 );
+      }
+
       incidenceEnd = dateToAdd;
     } else if ( event ) {
       dateToAdd = incDtStart;
