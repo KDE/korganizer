@@ -95,7 +95,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   mCurrentIncidence = item;
   mCurrentDate = qd;
 
-  if ( !Akonadi::hasIncidence( mCurrentIncidence ) && qd.isValid() ) {
+  if ( !Akonadi::hasIncidence( mCurrentIncidence ) /*&& qd.isValid()*/ ) {
     kDebug() << "No event selected";
     return;
   }
