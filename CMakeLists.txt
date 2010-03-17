@@ -89,6 +89,7 @@ target_link_libraries(korganizer
 	korganizer_interfaces
 	korganizer_core
 	akonadi_next
+	akonadi-kcal_next
 )
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
