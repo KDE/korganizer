@@ -162,7 +162,7 @@ void KOEventPopupMenu::print()
 void KOEventPopupMenu::print(bool preview)
 {
   KOCoreHelper helper;
-  CalPrinter printer( this, mEventview->calendar(), &helper );
+  CalPrinter printer( this, mEventview->calendar(), &helper, true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   //Item::List selectedIncidences;
