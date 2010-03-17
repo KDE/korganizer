@@ -60,16 +60,14 @@
 
 static int defSuspendVal = 5;
 static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
-static QDateTime defModDateTime = QDateTime( QDate( 1970, 1, 1 ), QTime( 0, 0, 0 ) );
 
 class AlarmListItem : public KListViewItem
 {
   public:
-    AlarmListItem( const QString &uid, QListView *parent ) :
-      KListViewItem( parent ),
-      mUid( uid ),
-      mNotified( false )
-    {}
+    AlarmListItem( const QString &uid, QListView *parent )
+      : KListViewItem( parent ), mUid( uid ), mNotified( false )
+    {
+    }
 
     ~AlarmListItem()
     {
@@ -80,8 +78,6 @@ class AlarmListItem : public KListViewItem
     QString mDisplayText;
 
     QString mUid;
-    int mLastRevision;
-    QDateTime mLastModified;
     QDateTime mRemindAt;
     QDateTime mHappening;
     bool mNotified;
@@ -169,20 +165,34 @@ AlarmDialog::~AlarmDialog()
   mIncidenceListView->clear();
 }
 
+AlarmListItem *AlarmDialog::searchByUid( const QString &uid )
+{
+  AlarmListItem *found = 0;
+  for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ) {
+    AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
+    if ( item->mUid == uid ) {
+      found = item;
+      break;
+    }
+    ++it;
+  }
+  return found;
+}
+
 void AlarmDialog::addIncidence( Incidence *incidence,
                                 const QDateTime &reminderAt,
                                 const QString &displayText )
 {
-  AlarmListItem *item = new AlarmListItem( incidence->uid(), mIncidenceListView );
-  item->setText( 0, incidence->summary() );
+  AlarmListItem *item = searchByUid( incidence->uid() );
+  if ( !item ) {
+    item = new AlarmListItem( incidence->uid(), mIncidenceListView );
+  }
+  item->mNotified = false;
+  item->mHappening = QDateTime();
   item->mRemindAt = reminderAt;
   item->mDisplayText = displayText;
-  item->mLastRevision = incidence->revision();
-  if ( incidence->lastModified().isValid() ) {
-    item->mLastModified = incidence->lastModified();
-  } else {
-    item->mLastModified = defModDateTime;
-  }
+  item->setText( 0, incidence->summary() );
+  item->setText( 1, QString() );
 
   Event *event;
   Todo *todo;
@@ -488,19 +498,7 @@ void AlarmDialog::wakeUp()
       continue;
     }
 
-    QDateTime ilm;
-    if ( incidence->lastModified().isValid() ) {
-      ilm = incidence->lastModified();
-    } else {
-      ilm = defModDateTime;
-    }
-
-    // Check revision and last-modified to see if the incidence has been
-    // edited since the last time we woke up.  If it was edited, then
-    // remove it as the new version will have been added in addIncidence().
-    if ( item->mRemindAt <= QDateTime::currentDateTime() &&
-         incidence->revision() <= item->mLastRevision &&
-         ilm <= item->mLastModified ) {
+    if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
       if ( !item->isVisible() ) {
         item->setVisible( true );
         item->setSelected( false );
@@ -509,8 +507,6 @@ void AlarmDialog::wakeUp()
     } else {
       item->setVisible( false );
     }
-    item->mLastRevision = incidence->revision();
-    item->mLastModified = incidence->lastModified();
   }
 
   if ( activeReminders )

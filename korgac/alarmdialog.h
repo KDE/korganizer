@@ -73,6 +73,7 @@ class AlarmDialog : public KDialogBase {
     void showDetails();
 
   private:
+    AlarmListItem *searchByUid( const QString &uid );
     bool ensureKorganizerRunning() const;
     void setTimer();
     int activeCount();
