@@ -153,7 +153,13 @@ void KOEventPopupMenu::popupEdit()
   }
 }
 
+
 void KOEventPopupMenu::print()
+{
+  print( false );
+}
+
+void KOEventPopupMenu::print(bool preview)
 {
   KOCoreHelper helper;
   CalPrinter printer( this, mEventview->calendar(), &helper );
@@ -165,22 +171,12 @@ void KOEventPopupMenu::print()
   selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
 
   printer.print( KOrg::CalPrinterBase::Incidence,
-                 mCurrentDate, mCurrentDate, selectedIncidences, false );
+                 mCurrentDate, mCurrentDate, selectedIncidences, preview );
 }
 
 void KOEventPopupMenu::printPreview()
 {
-  KOCoreHelper helper;
-  CalPrinter printer( this, mEventview->calendar(), &helper );
-  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
-
-  //Item::List selectedIncidences;
-  KCal::ListBase<KCal::Incidence> selectedIncidences;
-  Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
-  selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
-
-  printer.print( KOrg::CalPrinterBase::Incidence,
-                 mCurrentDate, mCurrentDate, selectedIncidences, true );
+  print( true );
 }
 
 void KOEventPopupMenu::popupDelete()
@@ -309,7 +305,7 @@ QMenu *KOEventPopupMenu::buildCalendarMoveMenu()
   connect( resourceMenu, SIGNAL(triggered(QAction*)),
            this, SLOT(moveIncidenceToResource(QAction*)) );
 #else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
   return resourceMenu;
 }
@@ -326,7 +322,7 @@ bool KOEventPopupMenu::hasOtherWriteableCalendars() const
     }
   }
 #else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
   return false;
 }
@@ -339,7 +335,7 @@ void KOEventPopupMenu::copyIncidenceToResource( QAction *action )
     emit copyIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
 #else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -351,7 +347,7 @@ void KOEventPopupMenu::moveIncidenceToResource( QAction *action )
     emit moveIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
 #else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;  
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 

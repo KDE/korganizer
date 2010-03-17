@@ -83,6 +83,7 @@ class KOEventPopupMenu : public QMenu
     QMenu *buildCalendarCopyMenu();
     QMenu *buildCalendarMoveMenu();
     bool hasOtherWriteableCalendars() const;
+    void print( bool previous );
 #ifdef AKONADI_PORT_DISABLED
     bool isResourceWritable( const ResourceCalendar *resource ) const;
 #endif
