@@ -88,6 +88,7 @@ class AlarmDialog : public KDialog
 
   private:
     bool startKOrganizer();
+    ReminderListItem *searchByItem( const Akonadi::Item &incidence );
     void setTimer();
     void dismiss( QList<ReminderListItem *> selections );
     int activeCount();

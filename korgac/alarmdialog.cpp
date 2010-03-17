@@ -65,23 +65,18 @@ using namespace KCal;
 
 static int defSuspendVal = 5;
 static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
-static KDateTime defModDateTime = KDateTime( QDate( 1970, 1, 1 ), QTime( 0, 0, 0 ) );
 
 class ReminderListItem : public QTreeWidgetItem
 {
   public:
-    ReminderListItem( const Akonadi::Item &incidence, QTreeWidget *parent ) :
-      QTreeWidgetItem( parent ),
-      mIncidence( incidence ),
-      mNotified( false )
+    ReminderListItem( const Akonadi::Item &incidence, QTreeWidget *parent )
+      : QTreeWidgetItem( parent ), mIncidence( incidence ), mNotified( false )
     {}
-
     bool operator < ( const QTreeWidgetItem & other ) const;
 
     QString mDisplayText;
+
     const Akonadi::Item mIncidence;
-    int mLastRevision;
-    KDateTime mLastModified;
     QDateTime mRemindAt;
     KDateTime mTrigger;
     KDateTime mHappening;
@@ -257,25 +252,39 @@ AlarmDialog::~AlarmDialog()
   mIncidenceTree->clear();
 }
 
+ReminderListItem *AlarmDialog::searchByItem( const Akonadi::Item &incidence )
+{
+  ReminderListItem *found = 0;
+  QTreeWidgetItemIterator it( mIncidenceTree );
+  while ( *it ) {
+    ReminderListItem *item = static_cast<ReminderListItem *>( *it );
+    if ( item->mIncidence == incidence ) {
+      found = item;
+      break;
+    }
+    ++it;
+  }
+  return found;
+}
+
 void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
                                 const QDateTime &reminderAt,
                                 const QString &displayText )
 {
   Incidence::Ptr incidence = Akonadi::incidence( incidenceitem );
-  ReminderListItem *item = new ReminderListItem( incidenceitem, mIncidenceTree );
-  QString summStr = incidence->summary();
-  kDebug() << "adding incidence " << summStr;
-  summStr.truncate( 30 );
-  item->setText( 0, summStr );
+  ReminderListItem *item = searchByItem( incidenceitem );
+  if ( !item ) {
+    item = new ReminderListItem( incidenceitem, mIncidenceTree );
+  }
+  item->mNotified = false;
+  item->mHappening = KDateTime();
   item->mRemindAt = reminderAt;
   item->mTrigger = KDateTime::currentLocalDateTime();
   item->mDisplayText = displayText;
-  item->mLastRevision = incidence->revision();
-  if ( incidence->lastModified().isValid() ) {
-    item->mLastModified = incidence->lastModified();
-  } else {
-    item->mLastModified = defModDateTime;
-  }
+  QString summStr = incidence->summary();
+  summStr.truncate( 30 );
+  item->setText( 0, summStr );
+  item->setText( 1, QString() );
 
   Event *event;
   Todo *todo;
@@ -680,19 +689,8 @@ void AlarmDialog::wakeUp()
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     Incidence::Ptr incidence = Akonadi::incidence( item->mIncidence );
-    KDateTime ilm;
-    if ( incidence->lastModified().isValid() ) {
-      ilm = incidence->lastModified();
-    } else {
-      ilm = defModDateTime;
-    }
 
-    // Check revision and last-modified to see if the incidence has been
-    // edited since the last time we woke up.  If it was edited, then
-    // remove it as the new version will have been added in addIncidence().
-    if ( item->mRemindAt <= QDateTime::currentDateTime() &&
-         incidence->revision() <= item->mLastRevision &&
-         ilm <= item->mLastModified ) {
+    if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
       if ( item->isDisabled() ) { //do not wakeup non-suspended reminders
         item->setDisabled( false );
         item->setSelected( false );
@@ -701,8 +699,6 @@ void AlarmDialog::wakeUp()
     } else {
       item->setDisabled( true );
     }
-    item->mLastRevision = incidence->revision();
-    item->mLastModified = incidence->lastModified();
 
     ++it;
   }
