@@ -111,6 +111,8 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
   KGlobal::iconLoader()->addAppDir( "kdepim" );
   setButtonOK( i18n( "Suspend" ) );
 
+  setEscapeButton( User2 ); // escape acts like Dismiss All
+
   QWidget *topBox = plainPage();
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
