@@ -101,9 +101,9 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
     bool rightIsString  = sourceModel()->data( right ).type() == QVariant::String;
 
     // unspecified priority is a low priority, so, if we don't have two QVariant:Ints
-    // we return true if right is a string
+    // we return true ("left is less") if left is a string (i.e. unspecified)
     if ( leftIsString || rightIsString ) {
-      return rightIsString;
+      return leftIsString;
     }
   }
 
