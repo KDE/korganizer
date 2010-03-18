@@ -24,11 +24,11 @@
 */
 
 #include "koeventviewer.h"
+#include "categoryconfig.h"
 #include "urihandler.h"
 #include "korganizerinterface.h"
 
 #include <libkdepim/kdepimprotocols.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/groupware.h>

@@ -28,6 +28,8 @@
 #include "archivedialog.h"
 #endif
 #include "calendarview.h"
+#include "categoryconfig.h"
+#include "categoryeditdialog.h"
 #include "incidenceeditor/koeventeditor.h"
 #include "incidenceeditor/kojournaleditor.h"
 #include "incidenceeditor/kotodoeditor.h"
@@ -35,9 +37,6 @@
 #include "koprefs.h"
 #include "filtereditdialog.h"
 #include "searchdialog.h"
-
-#include <libkdepim/categoryeditdialog.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <Akonadi/Item>
 
@@ -287,9 +286,9 @@ void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
 
-    KPIM::CategoryConfig* cc = new KPIM::CategoryConfig( KOPrefs::instance(), this );
+    CategoryConfig* cc = new CategoryConfig( KOPrefs::instance(), this );
     mCategoryEditDialog =
-      new KPIM::CategoryEditDialog( cc, mMainView );
+      new CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );
     mCategoryEditDialog->setHelp( "categories-view", "korganizer" );
     connect( mMainView, SIGNAL(categoriesChanged()),

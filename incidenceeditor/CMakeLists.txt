@@ -1,5 +1,6 @@
-include_directories( 
-    ${CMAKE_SOURCE_DIR}/korganizer/interfaces 
+include_directories(
+    ${CMAKE_SOURCE_DIR}/korganizer
+    ${CMAKE_SOURCE_DIR}/korganizer/interfaces
     ${CMAKE_SOURCE_DIR}/korganizer/incidenceeditor
     ${CMAKE_BINARY_DIR}/korganizer/incidenceeditor
     ${CMAKE_SOURCE_DIR}/kdgantt1

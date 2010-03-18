@@ -27,9 +27,10 @@
 #include "koeditorconfig.h"
 #include "koeditorattachments.h"
 
-#include <libkdepim/categoryselectdialog.h>
+#include "categoryconfig.h"
+#include "categoryselectdialog.h"
+
 #include <libkdepim/kdateedit.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <KCal/Incidence>
 #include <KCal/ICalTimeZones>
@@ -342,9 +343,9 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
 
 void KOEditorGeneral::selectCategories()
 {
-  KPIM::CategoryConfig cc( KOEditorConfig::instance()->config() );
-  KPIM::CategorySelectDialog *categoryDialog =
-    new KPIM::CategorySelectDialog( &cc, mCategoriesButton );
+  CategoryConfig cc( KOEditorConfig::instance()->config() );
+  CategorySelectDialog *categoryDialog =
+    new CategorySelectDialog( &cc, mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
   categoryDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
   categoryDialog->setSelected( mCategories );

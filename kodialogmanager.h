@@ -32,6 +32,7 @@
 
 class ArchiveDialog;
 class CalendarView;
+class CategoryEditDialog;
 class FilterEditDialog;
 class KCMultiDialog;
 class KOEventEditor;
@@ -39,11 +40,6 @@ class KOIncidenceEditor;
 class KOJournalEditor;
 class KOTodoEditor;
 class SearchDialog;
-
-
-namespace KPIM {
-  class CategoryEditDialog;
-}
 
 namespace Akonadi {
   class Item;
@@ -98,7 +94,7 @@ class KODialogManager : public QObject
 
     CalendarView *mMainView;
     KCMultiDialog *mOptionsDialog;
-    QPointer<KPIM::CategoryEditDialog> mCategoryEditDialog;
+    QPointer<CategoryEditDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog;
     ArchiveDialog *mArchiveDialog;
     FilterEditDialog *mFilterEditDialog;

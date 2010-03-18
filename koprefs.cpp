@@ -26,11 +26,12 @@
 #include "koprefs.h"
 #include "kocore.h"
 
+#include "categoryconfig.h"
+
 #include <kmime/kmime_header_parsing.h>
 #include <kpimidentities/identitymanager.h>
 #include <kpimidentities/identity.h>
 #include <kpimutils/email.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>
@@ -168,7 +169,7 @@ void KOPrefs::usrReadConfig()
 
   // Category colors
   KConfigGroup colorsConfig( config(), "Category Colors2" );
-  KPIM::CategoryConfig cc( this );
+  CategoryConfig cc( this );
   const QStringList cats = cc.customCategories();
   Q_FOREACH( const QString& i, cats ) {
     QColor c = colorsConfig.readEntry( i, mDefaultCategoryColor );

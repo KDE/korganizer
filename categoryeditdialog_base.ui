@@ -1,0 +1,164 @@
+<ui version="4.0" >
+ <class>CategoryEditDialog_base</class>
+ <widget class="QWidget" name="CategoryEditDialog_base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>386</width>
+    <height>270</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Edit Categories</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" colspan="2" >
+    <widget class="KLineEdit" name="mEdit" >
+     <property name="ClearButtonShown" >
+      <bool>true</bool>
+     </property>
+     <property name="toolTip" >
+      <string>New category entry</string>
+     </property>
+     <property name="whatsThis" >
+      <string>Type in any text you want to use as a new category or sub-category.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <layout class="QVBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="KPushButton" name="mButtonAdd" >
+       <property name="toolTip" >
+        <string>Add the entry to the category list</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Click this button to insert the entry into the category list.</string>
+       </property>
+       <property name="text" >
+        <string>A&amp;dd</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="KPushButton" name="mButtonAddSubcategory" >
+       <property name="toolTip" >
+        <string>Add the entry as a subcategory of the selected category</string>
+       </property>
+       <property name="statusTip" >
+        <string/>
+       </property>
+       <property name="whatsThis" >
+        <string>Click this button to insert the entry as a subcategory of the currently selected category.</string>
+       </property>
+       <property name="text" >
+        <string>Add &amp;Subcategory</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="KPushButton" name="mButtonRemove" >
+       <property name="toolTip" >
+        <string>Remove the selected category</string>
+       </property>
+       <property name="statusTip" >
+        <string/>
+       </property>
+       <property name="whatsThis" >
+        <string>Click this button to remove the selected category from the category list.</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Remove</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>20</width>
+         <height>50</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <widget class="AutoCheckTreeWidget" name="mCategories" >
+     <property name="toolTip" >
+      <string>Category list</string>
+     </property>
+     <property name="whatsThis" >
+      <string>This is a list of all the categories available. You can create as many sub-categories as you want here.</string>
+     </property>
+     <property name="dragDropMode" >
+      <enum>QAbstractItemView::InternalMove</enum>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::ExtendedSelection</enum>
+     </property>
+     <property name="allColumnsShowFocus" >
+      <bool>true</bool>
+     </property>
+     <property name="columnCount" >
+      <number>1</number>
+     </property>
+     <property name="autoCheck" stdset="0" >
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Default Category</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KPushButton</class>
+   <extends>QPushButton</extends>
+   <header>kpushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>AutoCheckTreeWidget</class>
+   <extends>QTreeWidget</extends>
+   <header>autochecktreewidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>mCategories</tabstop>
+  <tabstop>mEdit</tabstop>
+  <tabstop>mButtonAdd</tabstop>
+  <tabstop>mButtonAddSubcategory</tabstop>
+  <tabstop>mButtonRemove</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

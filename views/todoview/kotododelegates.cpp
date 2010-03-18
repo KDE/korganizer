@@ -24,6 +24,9 @@
 
 #include "kotododelegates.h"
 
+#include "categoryconfig.h"
+#include "categoryhierarchyreader.h"
+
 #include "koprefs.h"
 
 #include "kcheckcombobox.h"
@@ -33,8 +36,6 @@
 #include <akonadi/kcal/calendar.h>
 
 #include <libkdepim/kdateedit.h>
-#include <libkdepim/categoryhierarchyreader.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <kcal/calfilter.h>
 
@@ -339,7 +340,7 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
       categories = filter->categoryList();
       categories.sort();
     } else {
-      KPIM::CategoryConfig cc( KOPrefs::instance() );
+      CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();

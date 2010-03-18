@@ -28,11 +28,12 @@
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
 
+#include "categoryconfig.h"
+#include "categoryhierarchyreader.h"
+
 #include <akonadi/kcal/calendar.h>
 
-#include <libkdepim/categoryhierarchyreader.h>
 #include <libkdepim/kcheckcombobox.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <KCal/CalFilter>
 
@@ -107,7 +108,7 @@ void KOTodoViewQuickSearch::fillCategories()
       categories = filter->categoryList();
       categories.sort();
     } else {
-      KPIM::CategoryConfig cc( KOPrefs::instance() );
+      CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();

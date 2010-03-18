@@ -31,6 +31,7 @@
 
 #include "calendarview.h"
 #include "calprinter.h"
+#include "categoryconfig.h"
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
@@ -79,8 +80,6 @@
 #include <KHolidays/Holidays>
 
 #include <KPIMIdentities/IdentityManager>
-
-#include <libkdepim/kpimprefs.h>
 
 #include <mailtransport/transportmanager.h>
 
@@ -2685,7 +2684,7 @@ void CalendarView::updateCategories()
   QStringList allCats( Akonadi::Calendar::categories( calendar() ) );
   allCats.sort();
 
-  KPIM::CategoryConfig cc( KOPrefs::instance() );
+  CategoryConfig cc( KOPrefs::instance() );
 
   QStringList categories( cc.customCategories() );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
