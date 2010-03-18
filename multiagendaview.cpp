@@ -100,8 +100,10 @@ MultiAgendaView::MultiAgendaView( Calendar * cal, CalendarView *calendarView,
 
 void MultiAgendaView::recreateViews()
 {
-  if ( !mPendingChanges )
+  if ( !mPendingChanges ) {
     return;
+  }
+
   mPendingChanges = false;
 
   deleteViews();
@@ -121,8 +123,11 @@ void MultiAgendaView::recreateViews()
         QStringList subResources = (*it)->subresources();
         for ( QStringList::ConstIterator subit = subResources.constBegin(); subit != subResources.constEnd(); ++subit ) {
           QString type = (*it)->subresourceType( *subit );
-          if ( !(*it)->subresourceActive( *subit ) || (!type.isEmpty() && type != "event") )
+
+          if ( !(*it)->subresourceActive( *subit ) || (!type.isEmpty() && type != "event") ) {
             continue;
+          }
+
           addView( (*it)->labelForSubresource( *subit ), *it, *subit );
         }
       } else {
@@ -132,8 +137,9 @@ void MultiAgendaView::recreateViews()
   }
 
   // no resources activated, so stop here to avoid crashing somewhere down the line, TODO: show a nice message instead
-  if ( mAgendaViews.isEmpty() )
+  if ( mAgendaViews.isEmpty() ) {
     return;
+  }
 
   setupViews();
   QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
@@ -147,8 +153,8 @@ void MultiAgendaView::recreateViews()
   installSplitterEventFilter( mLeftSplitter );
   installSplitterEventFilter( mRightSplitter );
 
-  QValueList<int> sizes = KOGlobals::self()->config()->readIntListEntry("Separator AgendaView");
-  if (sizes.count() != 2) {
+  QValueList<int> sizes = KOGlobals::self()->config()->readIntListEntry( "Separator AgendaView" );
+  if ( sizes.count() != 2 ) {
     sizes = mLeftSplitter->sizes();
   }
   FOREACH_VIEW( agenda ) {
