@@ -114,6 +114,8 @@ AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
 
   KIconLoader::global()->addAppDir( "korgac" );
 
+  setEscapeButton( User2 ); // escape acts like Dismiss All
+
   KSharedConfig::Ptr config = KGlobal::config();
   KConfigGroup generalConfig( config, "General" );
   QPoint pos = generalConfig.readEntry( "Position", QPoint( 0, 0 ) );
