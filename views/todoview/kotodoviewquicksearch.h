@@ -33,11 +33,7 @@ namespace Akonadi {
   class Calendar;
 }
 
-namespace KPIM {
-  class KCheckComboBox;
-}
-using namespace KPIM;
-
+class KCheckComboBox;
 class KLineEdit;
 
 class QString;

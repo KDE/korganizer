@@ -182,6 +182,7 @@ set(korganizerprivate_LIB_SRCS
   timelabels.cpp
   timescaleconfigdialog.cpp
   datenavigator.cpp
+  kcheckcombobox.cpp
   kdatenavigator.cpp
   datenavigatorcontainer.cpp
   datechecker.cpp
