@@ -47,6 +47,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
 {
   mRows = rows;
   mMiniWidth = 0;
+  mAgenda = 0;
 
   mCellHeight = KOPrefs::instance()->mHourSize*4;
 
@@ -199,16 +200,19 @@ void TimeLabels::updateConfig()
   // If the agenda is zoomed out so that more then 24 would be shown,
   // the agenda only shows 24 hours, so we need to take the cell height
   // from the agenda, which is larger than the configured one!
-  if ( mCellHeight < 4*mAgenda->gridSpacingY() )
+  if ( mAgenda && mCellHeight < 4*mAgenda->gridSpacingY() ) {
        mCellHeight = 4*mAgenda->gridSpacingY();
+  }
   resizeContents( mMiniWidth, int(mRows * mCellHeight+1) );
 }
 
 /** update time label positions */
 void TimeLabels::positionChanged()
 {
-  int adjustment = mAgenda->contentsY();
-  setContentsPos(0, adjustment);
+  if ( mAgenda ) {
+    int adjustment = mAgenda->contentsY();
+    setContentsPos( 0, adjustment );
+  }
 }
 
 void TimeLabels::positionChanged( int pos )
@@ -217,7 +221,7 @@ void TimeLabels::positionChanged( int pos )
 }
 
 /**  */
-void TimeLabels::setAgenda(KOAgenda* agenda)
+void TimeLabels::setAgenda( KOAgenda* agenda )
 {
   mAgenda = agenda;
 
