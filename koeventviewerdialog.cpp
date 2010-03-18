@@ -41,8 +41,8 @@ KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent,
     setFixedSize( 240,284 );
     move( 0, 15 );
   } else {
-    setMinimumSize( 300, 200 );
-    resize( 320, 300 );
+    setMinimumSize( 400, 400 );
+    resize( 420, 400 );
   }
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
 }
