@@ -985,10 +985,6 @@ void KOTodoView::copyTodoToDate( QDate date )
    newTodo->setDtDue( dt );
    newTodo->setPercentComplete( 0 );
 
-   // avoid forking
-   if ( newTodo->doesRecur() )
-     newTodo->recurrence()->unsetRecurs();
-
    QPair<ResourceCalendar *, QString>p =
      CalHelper::incSubResourceCalendar( calendar(), mActiveItem->todo() );
 
