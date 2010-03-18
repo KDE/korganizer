@@ -26,6 +26,7 @@
 #include <qwidgetstack.h>
 #include <qtabwidget.h>
 
+#include <libkcal/calendarresources.h>
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kglobal.h>
@@ -343,9 +344,18 @@ void KOViewManager::showListView()
 
 void KOViewManager::showAgendaView()
 {
-  const bool showBoth = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
-  const bool showMerged = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
-  const bool showSideBySide = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
+  // If the user opens a local file, through menu->open ( for example ), then
+  // it doesn't make sense to use multiagenda.
+  CalendarResources *calres = dynamic_cast<CalendarResources*>( mMainView->calendar() );
+  bool isLocalFile = !calres;
+
+  int mode = KOPrefs::instance()->agendaViewCalendarDisplay();
+
+  const bool showBoth = ( mode == KOPrefs::AllCalendarViews && !isLocalFile );
+
+  const bool showMerged = showBoth || mode == KOPrefs::CalendarsMerged || isLocalFile;
+
+  const bool showSideBySide = !isLocalFile && ( showBoth || mode == KOPrefs::CalendarsSideBySide );
 
   QWidget *parent = mMainView->viewStack();
   if ( !mAgendaViewTabs && showBoth ) {
