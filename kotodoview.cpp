@@ -955,13 +955,11 @@ void KOTodoView::setNewDate( QDate date )
     QDateTime dt;
     dt.setDate( date );
 
-    if ( !todo->doesFloat() )
+    if ( !todo->doesFloat() ) {
       dt.setTime( todo->dtDue().time() );
+    }
 
-    if ( date.isNull() )
-      todo->setHasDueDate( false );
-    else if ( !todo->hasDueDate() )
-      todo->setHasDueDate( true );
+    todo->setHasDueDate( !date.isNull() );
     todo->setDtDue( dt );
 
     mActiveItem->construct();
@@ -978,18 +976,24 @@ void KOTodoView::copyTodoToDate( QDate date )
   QDateTime dt( date );
 
   if ( mActiveItem && mChanger ) {
-    Todo *newTodo = mActiveItem->todo()->clone();
+    Todo *oldTodo = mActiveItem->todo();
+    Todo *newTodo = oldTodo->clone();
     newTodo->recreate();
 
-   newTodo->setHasDueDate( !date.isNull() );
-   newTodo->setDtDue( dt );
-   newTodo->setPercentComplete( 0 );
+    newTodo->setHasDueDate( !date.isNull() );
 
-   QPair<ResourceCalendar *, QString>p =
-     CalHelper::incSubResourceCalendar( calendar(), mActiveItem->todo() );
+    if ( oldTodo->hasDueDate() && !oldTodo->doesFloat() ) {
+      dt.setTime( oldTodo->dtDue().time() );
+    }
 
-   mChanger->addIncidence( newTodo, p.first, p.second, this );
- }
+    newTodo->setDtDue( dt );
+    newTodo->setPercentComplete( 0 );
+
+    QPair<ResourceCalendar *, QString>p =
+      CalHelper::incSubResourceCalendar( calendar(), mActiveItem->todo() );
+
+    mChanger->addIncidence( newTodo, p.first, p.second, this );
+  }
 }
 
 QPopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
