@@ -450,7 +450,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
                                        QItemSelectionModel::Rows );
     }
 #else
-    kWarning()<<"TODO";
+   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO; 
 #endif
   } else if ( modifiers == Qt::ControlModifier ) {
     QModelIndexList selection = mView->selectionModel()->selectedRows();
