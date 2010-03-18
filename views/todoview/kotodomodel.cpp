@@ -999,7 +999,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
     return false;
   }
 #endif
-  kWarning()<<"TODO";
+  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
   return false;
 }
 #endif /*KORG_NODND*/
