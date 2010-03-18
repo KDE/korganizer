@@ -324,8 +324,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
     mStartCheck->setChecked(false);
   }
 
-  mTimeButton->setChecked( !todo->doesFloat() &&
-                           todo->dtDue().time() != QTime( 0, 0 ) );
+  mTimeButton->setChecked( !todo->doesFloat() );
 
   updateRecurrenceSummary( todo );
 
