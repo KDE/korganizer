@@ -113,8 +113,10 @@ class KOEditorGeneral : public QObject
     void updateCategoryConfig();
     void focusReceivedSignal();
     void openURL( const KURL & );
+
   protected:
-    Alarm *alarmFromSimplePage() const;
+    Alarm *alarmFromSimplePage( Incidence *incidence ) const;
+    bool isSimpleAlarm( Alarm *alarm ) const;
 
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;
@@ -139,7 +141,6 @@ class KOEditorGeneral : public QObject
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 
   private:
-    bool isSimpleAlarm( Alarm *alarm );
     QStringList mCategories;
     QCString mType; // as in Incidence::type()
     KCal::Alarm::List mAlarmList;

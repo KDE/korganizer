@@ -251,7 +251,9 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   int offset;
   int beforeafterpos = 0;
   if ( mType == "Todo" ) {
-    beforeafterpos = 2; // to-dos default to alarms before the due start
+    if ( !alarm->hasStartOffset() ) {
+      beforeafterpos = 2;
+    }
   }
   if ( alarm->hasEndOffset() ) {
     beforeafterpos = 2;

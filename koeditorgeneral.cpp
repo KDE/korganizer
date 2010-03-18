@@ -293,7 +293,7 @@ void KOEditorGeneral::editAlarms()
 {
   if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
     mAlarmList.clear();
-    Alarm *al = alarmFromSimplePage();
+    Alarm *al = alarmFromSimplePage( 0 );
     if ( al ) {
       mAlarmList.append( al );
     }
@@ -349,19 +349,24 @@ void KOEditorGeneral::updateDefaultAlarmTime()
   mAlarmIncrCombo->setCurrentItem( index );
 }
 
-bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm )
+bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm ) const
 {
   // Check if its the trivial type of alarm, which can be
   // configured with a simply spin box...
 
   bool simple = false;
   if ( alarm->type() == Alarm::Display && alarm->text().isEmpty() &&
-       alarm->repeatCount() == 0 && !alarm->hasTime() &&
-       ( ( mType == "Event" &&
-           alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) ||
-         ( mType == "Todo" &&
-           alarm->hasEndOffset() && alarm->endOffset().asSeconds() < 0 ) ) ) {
-    simple = true;
+       alarm->repeatCount() == 0 && !alarm->hasTime() ) {
+    if ( mType == "Event" &&
+         alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) {
+      simple = true;
+    }
+    if ( mType == "Todo" ) {
+      if ( ( alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) ||
+           ( alarm->hasEndOffset() && alarm->endOffset().asSeconds() < 0 ) ) {
+        simple = true;
+      }
+    }
   }
   return simple;
 }
@@ -394,8 +399,13 @@ void KOEditorGeneral::updateAlarmWidgets()
       int offset;
       if ( mType == "Event" ) {
         offset = alarm->startOffset().asSeconds();
-      } else {
-        offset = alarm->endOffset().asSeconds();
+      }
+      if ( mType == "Todo" ) {
+        if ( alarm->hasStartOffset() ) {
+          offset = alarm->startOffset().asSeconds();
+        } else {
+          offset = alarm->endOffset().asSeconds();
+        }
       }
 
       offset = offset / -60; // make minutes
@@ -453,7 +463,7 @@ void KOEditorGeneral::readIncidence(Incidence *event, Calendar *calendar)
   }
 }
 
-Alarm *KOEditorGeneral::alarmFromSimplePage() const
+Alarm *KOEditorGeneral::alarmFromSimplePage( Incidence *incidence ) const
 {
   if ( mAlarmButton->isChecked() ) {
     Alarm *alarm = new Alarm( 0 );
@@ -467,43 +477,49 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
       j = j * (60 * 24);
     if ( mType == "Event" ) {
       alarm->setStartOffset( j );
-    } else {
-      alarm->setEndOffset( j );
+    }
+    if ( mType == "Todo" ) {
+      Todo *todo = static_cast<Todo *>( incidence );
+      if ( todo && todo->hasStartDate() ) {
+        alarm->setStartOffset( j );
+      } else {
+        alarm->setEndOffset( j );
+      }
     }
     return alarm;
   } else {
     return 0;
   }
 }
-void KOEditorGeneral::writeIncidence(Incidence *event)
+void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
-//  kdDebug(5850) << "KOEditorGeneral::writeEvent()" << endl;
+//  kdDebug(5850) << "KOEditorGeneral::writeIncidence()" << endl;
 
-  event->setSummary(mSummaryEdit->text());
-  event->setLocation(mLocationEdit->text());
-  event->setDescription(mDescriptionEdit->text());
-  event->setCategories(mCategories);
-  event->setSecrecy(mSecrecyCombo->currentItem());
+  incidence->setSummary(mSummaryEdit->text());
+  incidence->setLocation(mLocationEdit->text());
+  incidence->setDescription(mDescriptionEdit->text());
+  incidence->setCategories(mCategories);
+  incidence->setSecrecy(mSecrecyCombo->currentItem());
 
   // alarm stuff
-  event->clearAlarms();
+  incidence->clearAlarms();
   if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
-    Alarm *al = alarmFromSimplePage();
+    Alarm *al = alarmFromSimplePage( incidence );
     if ( al ) {
-      al->setParent( event );
-      event->addAlarm( al );
+      al->setParent( incidence );
+      incidence->addAlarm( al );
     }
   } else {
     // simply assign the list of alarms
     Alarm::List::ConstIterator it;
     for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
       Alarm *al = new Alarm( *(*it) );
-      al->setParent( event );
+      al->setParent( incidence );
       al->setEnabled( true );
-      event->addAlarm( al );
+      incidence->addAlarm( al );
     }
   }
-  mAttachments->writeIncidence( event );
+  mAttachments->writeIncidence( incidence );
 }
 
 void KOEditorGeneral::setSummary( const QString &text )
