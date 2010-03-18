@@ -65,10 +65,12 @@ void CalPrinter::init( Akonadi::Calendar *calendar )
   mPrintPlugins.clear();
 
   mPrintPlugins = mCoreHelper->loadPrintPlugins();
-  mPrintPlugins.prepend( new CalPrintTodos() );
-  mPrintPlugins.prepend( new CalPrintMonth() );
-  mPrintPlugins.prepend( new CalPrintWeek() );
-  mPrintPlugins.prepend( new CalPrintDay() );
+  if( !mUniqItem ) {
+    mPrintPlugins.prepend( new CalPrintTodos() );
+    mPrintPlugins.prepend( new CalPrintMonth() );
+    mPrintPlugins.prepend( new CalPrintWeek() );
+    mPrintPlugins.prepend( new CalPrintDay() );
+  }
   mPrintPlugins.prepend( new CalPrintIncidence() );
 
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
