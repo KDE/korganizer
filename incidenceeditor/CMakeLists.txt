@@ -31,6 +31,7 @@ set( korg_incidenceeditor_LIB_SRCS
     freebusyurldialog.cpp
     templatemanagementdialog.cpp
     ../designerfields.cpp
+    ../embeddedurlpage.cpp
 )
 
 

@@ -41,8 +41,6 @@
 #include <QVBoxLayout>
 #include <QDateTimeEdit>
 
-using namespace KPIM;
-
 DesignerFields::DesignerFields( const QString &uiFile, QWidget *parent,
   const char *name )
   : QWidget( parent )

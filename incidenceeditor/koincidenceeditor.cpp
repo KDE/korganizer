@@ -26,11 +26,10 @@
 #include "koeditorconfig.h"
 #include "koeditordetails.h"
 #include "designerfields.h"
+#include "embeddedurlpage.h"
 #include "templatemanagementdialog.h"
 
 #include <akonadi/kcal/utils.h> //krazy:exclude=camelcase since kdepim/akonadi
-
-#include <libkdepim/embeddedurlpage.h>
 
 #include <libkdepimdbusinterfaces/urihandler.h>
 
@@ -482,7 +481,7 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setMargin(0);
 
-  KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype, topFrame );
+  EmbeddedURLPage *wid = new EmbeddedURLPage( url, mimetype, topFrame );
   topLayout->addWidget( wid );
   mEmbeddedURLPages.append( topFrame );
   connect( wid, SIGNAL(openURL(const KUrl &)),

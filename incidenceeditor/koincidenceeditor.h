@@ -43,10 +43,8 @@ namespace KOrg {
 }
 using namespace KOrg;
 
-namespace KPIM {
-  class DesignerFields;
-  class EmbeddedURLPage;
-}
+class DesignerFields;
+class EmbeddedURLPage;
 
 namespace Akonadi {
   class CollectionComboBox;
@@ -177,8 +175,8 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     KOAttendeeEditor *mAttendeeEditor;
     IncidenceChangerBase *mChanger;
 
-    QList<KPIM::DesignerFields*> mDesignerFields;
-    QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;
+    QList<DesignerFields*> mDesignerFields;
+    QMap<QWidget*, DesignerFields*> mDesignerFieldForWidget;
     QList<QWidget*> mEmbeddedURLPages;
     QList<QWidget*> mAttachedDesignerFields;
     bool mIsCounter;

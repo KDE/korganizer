@@ -19,19 +19,15 @@
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
-#ifndef KDEPIM_DESIGNERFIELDS_H
-#define KDEPIM_DESIGNERFIELDS_H
-
-#include "kdepim_export.h"
+#ifndef DESIGNERFIELDS_H
+#define DESIGNERFIELDS_H
 
 #include <QMap>
 #include <QPair>
 #include <QStringList>
 #include <QWidget>
 
-namespace KPIM {
-
-class KDEPIM_EXPORT DesignerFields : public QWidget
+class DesignerFields : public QWidget
 {
     Q_OBJECT
   public:
@@ -67,7 +63,5 @@ class KDEPIM_EXPORT DesignerFields : public QWidget
     QString mTitle;
     QString mIdentifier;
 };
-
-}
 
 #endif
