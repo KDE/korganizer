@@ -55,10 +55,6 @@
 
 #include <unistd.h>
 
-using namespace KPIM;
-
-namespace KPIM {
-
 class PageItem : public QTreeWidgetItem
 {
   public:
@@ -136,9 +132,6 @@ class PageItem : public QTreeWidgetItem
     QPixmap mPreview;
     bool mIsActive;
 };
-
-}
-
 
 KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent, const QStringList &args )
   : KCModule( instance, parent, args )

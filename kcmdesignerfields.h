@@ -19,10 +19,8 @@
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
-#ifndef KDEPIM_KCMDESIGNERFIELDS_H
-#define KDEPIM_KCMDESIGNERFIELDS_H
-
-#include "kdepim_export.h"
+#ifndef KCMDESIGNERFIELDS_H
+#define KCMDESIGNERFIELDS_H
 
 #define KDE3_SUPPORT
 #include <KCModule>
@@ -36,9 +34,7 @@ class QTreeWidgetItem;
 class QPushButton;
 class QStringList;
 
-namespace KPIM {
-
-class KDEPIM_EXPORT KCMDesignerFields : public KCModule
+class KCMDesignerFields : public KCModule
 {
   Q_OBJECT
 
@@ -80,7 +76,5 @@ class KDEPIM_EXPORT KCMDesignerFields : public KCModule
     QPushButton *mImportButton;
     QPushButton *mDesignerButton;
 };
-
-}
 
 #endif
