@@ -403,6 +403,9 @@ void KOEditorAlarms::itemSelectionChanged()
 
 void KOEditorAlarms::slotApply()
 {
+  // save the current item settings, if any
+  changed();
+
   // copy the mAlarms list
   if ( mAlarms ) {
     mAlarms->clear();
