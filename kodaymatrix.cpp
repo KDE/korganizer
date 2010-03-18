@@ -676,8 +676,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     }
 
     // draw selected days with special color
-    // DO NOT specially highlight holidays in selection !
-    if (i >= mSelStart && i <= mSelEnd) {
+    if ( i >= mSelStart && i <= mSelEnd && !holiday ) {
       p.setPen( QColor( "white" ) );
     }
 
@@ -685,7 +684,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
               Qt::AlignHCenter | Qt::AlignVCenter,  mDayLabels[i]);
 
     // reset color to actual color
-    if (holiday) {
+    if ( holiday ) {
       p.setPen(actcol);
     }
     // reset bold font to plain font
@@ -696,7 +695,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     }
   }
   p.end();
-  bitBlt(  this, 0, 0, &pm );
+  bitBlt( this, 0, 0, &pm );
 }
 
 // ----------------------------------------------------------------------------
