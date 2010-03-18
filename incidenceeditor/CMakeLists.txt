@@ -30,6 +30,7 @@ set( korg_incidenceeditor_LIB_SRCS
     kogroupwareintegration.cpp
     freebusyurldialog.cpp
     templatemanagementdialog.cpp
+    ../designerfields.cpp
 )
 
 
@@ -45,6 +46,7 @@ target_link_libraries(korg_incidenceeditor
    ${QT_QT3SUPPORT_LIBRARY}
    ${QT_QTCORE_LIBRARY}
    ${QT_QTGUI_LIBRARY}
+   ${QT_QTUITOOLS_LIBRARY}
    ${KDE4_KDEUI_LIBS}
    ${KDE4_KPARTS_LIBS}
    ${KDE4_KMIME_LIBRARY}

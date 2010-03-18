@@ -26,10 +26,9 @@
 #define KOPREFSDIALOG_H
 
 #include "korganizer_export.h"
+#include "kcmdesignerfields.h"
 #include "ui_accountscalendarwidget.h"
 
-
-#include <libkdepim/kcmdesignerfields.h>
 #include <libkdepim/kprefsdialog.h>
 
 #include <QHash>
@@ -50,8 +49,6 @@ class QRadioButton;
 class QTreeWidget;
 class QListWidget;
 
-using namespace KPIM;
-
 namespace Ui {
   class KOGroupwarePrefsPage;
 }
@@ -59,6 +56,8 @@ namespace Ui {
 namespace Akonadi {
   class CollectionComboBox;
 }
+
+using namespace KPIM;
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
@@ -177,7 +176,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
     QSet<QString> mDecorationsAtAgendaViewBottom;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
+class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
 {
   public:
     explicit KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent = 0 );

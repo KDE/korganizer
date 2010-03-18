@@ -25,11 +25,11 @@
 #include "koincidenceeditor.h"
 #include "koeditorconfig.h"
 #include "koeditordetails.h"
+#include "designerfields.h"
 #include "templatemanagementdialog.h"
 
 #include <akonadi/kcal/utils.h> //krazy:exclude=camelcase since kdepim/akonadi
 
-#include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
 #include <libkdepimdbusinterfaces/urihandler.h>
@@ -393,7 +393,7 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 
 QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
 {
-  KPIM::DesignerFields *wid = new KPIM::DesignerFields( uifile, 0 );
+  DesignerFields *wid = new DesignerFields( uifile, 0 );
   mDesignerFields.append( wid );
 
   QFrame *topFrame = new QFrame();
@@ -409,7 +409,7 @@ QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
   return topFrame;
 }
 
-class KCalStorage : public KPIM::DesignerFields::Storage
+class KCalStorage : public DesignerFields::Storage
 {
   public:
     KCalStorage( Incidence *incidence )
@@ -455,7 +455,7 @@ class KCalStorage : public KPIM::DesignerFields::Storage
 void KOIncidenceEditor::readDesignerFields( const Item &i )
 {
   KCalStorage storage( Akonadi::incidence( i ).get() );
-  foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
+  foreach ( DesignerFields *fields, mDesignerFields ) {
     if ( fields ) {
       fields->load( &storage );
     }
@@ -465,7 +465,7 @@ void KOIncidenceEditor::readDesignerFields( const Item &i )
 void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 {
   KCalStorage storage( i );
-  foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
+  foreach ( DesignerFields *fields, mDesignerFields ) {
     if ( fields ) {
       fields->save( &storage );
     }

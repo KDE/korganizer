@@ -97,11 +97,16 @@ install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### next target ###############
 
-set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
+set(kcm_korganizer_PART_SRCS
+    designerfields.cpp
+    kcmdesignerfields.cpp
+    koprefsdialog.cpp
+   )
 
 kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS} )
 
 target_link_libraries(kcm_korganizer
+  ${QT_QTUITOOLS_LIBRARY}
   ${KDE4_KDEUI_LIBS}
   ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS}
   mailtransport korganizerprivate korganizer_core kdepim )
