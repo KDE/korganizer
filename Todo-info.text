@@ -1,0 +1,18 @@
+
+                             TODO's behavior in agenda and month views
+
+
+Here are the rules for how/when/where should to-dos be displayed in agenda/month view:
+
+* startDt doesn't influence to-do behavior, it's irrelevant
+* To-dos without dueDt aren't shown
+* The time component doesn't influence the behavior in month view, only agenda
+* Overdue to-dos appear today, and not at dtDue, so we don't forget them
+* In agenda, if the to-do is overdue and has time, it should appear in the all
+  day area  because, since it's overdue, you must do it ASAP and not wait for the
+  original time.
+
+* In agenda, a not-overdue to-do, with time, is drawn with the rectangle ending
+  at dtDue, and not starting at dtDue. If dtDue is at 00h00, then it should be
+  displayed in the previous day, ending at 23:59:59
+
