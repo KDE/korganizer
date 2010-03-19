@@ -410,7 +410,9 @@ void KOEditorGeneral::updateAlarmWidgets()
 
       offset = offset / -60; // make minutes
       int useoffset = offset;
-      if (offset % (24*60) == 0) { // divides evenly into days?
+      if ( offset == 0 ) {
+        mAlarmIncrCombo->setCurrentItem( 0 ); // use minute units for 0 offset
+      } else if (offset % (24*60) == 0) { // divides evenly into days?
         useoffset = offset / (24*60);
         mAlarmIncrCombo->setCurrentItem(2);
       } else if (offset % 60 == 0) { // divides evenly into hours?
