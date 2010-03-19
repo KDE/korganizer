@@ -49,7 +49,7 @@
                                 <number>99999</number>
                             </property>
                             <property name="minValue">
-                                <number>1</number>
+                                <number>0</number>
                             </property>
                             <property name="sizePolicy">
                                 <sizepolicy>

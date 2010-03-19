@@ -358,12 +358,12 @@ bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm ) const
   if ( alarm->type() == Alarm::Display && alarm->text().isEmpty() &&
        alarm->repeatCount() == 0 && !alarm->hasTime() ) {
     if ( mType == "Event" &&
-         alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) {
+         alarm->hasStartOffset() && alarm->startOffset().asSeconds() <= 0 ) {
       simple = true;
     }
     if ( mType == "Todo" ) {
-      if ( ( alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) ||
-           ( alarm->hasEndOffset() && alarm->endOffset().asSeconds() < 0 ) ) {
+      if ( ( alarm->hasStartOffset() && alarm->startOffset().asSeconds() <= 0 ) ||
+           ( alarm->hasEndOffset() && alarm->endOffset().asSeconds() <= 0 ) ) {
         simple = true;
       }
     }

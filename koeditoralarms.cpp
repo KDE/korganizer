@@ -132,7 +132,7 @@ void AlarmListViewItem::construct()
     int offset = 0;
     if ( mAlarm->hasStartOffset() ) {
       offset = mAlarm->startOffset().asSeconds();
-      if ( offset < 0 ) {
+      if ( offset <= 0 ) {
         offsetstr = i18n( "N days/hours/minutes before/after the start/end",
                           "%1 before the start" );
         offset = -offset;
@@ -142,7 +142,7 @@ void AlarmListViewItem::construct()
       }
     } else if ( mAlarm->hasEndOffset() ) {
       offset = mAlarm->endOffset().asSeconds();
-      if ( offset < 0 ) {
+      if ( offset <= 0 ) {
         if ( mIncType == "Todo" ) {
           offsetstr = i18n( "N days/hours/minutes before/after the due date",
                             "%1 before the to-do is due" );
@@ -263,7 +263,7 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
     offset = alarm->startOffset().asSeconds();
   }
   // Negative offset means before the start/end...
-  if ( offset < 0 ) {
+  if ( offset <= 0 ) {
     offset = -offset;
   } else {
     ++beforeafterpos;
