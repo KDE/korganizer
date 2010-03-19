@@ -37,7 +37,7 @@
 
 using namespace KCal;
 
-ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
+ImportDialog::ImportDialog( const KURL &url, QWidget *parent, bool isPart )
   : KDialogBase( Plain, i18n("Import Calendar/Event"), Ok | Cancel, Ok, parent,
                  0, true, true ),
     mUrl( url )
@@ -59,7 +59,7 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
   mMergeButton = new QRadioButton( i18n("Merge into existing calendar"),
                                    radioBox );
 
-  mOpenButton = new QRadioButton( i18n("Open in separate window"), radioBox );
+  mOpenButton = isPart ? 0 : new QRadioButton( i18n("Open in separate window"), radioBox );
 
   mAddButton->setChecked( true );
 }
@@ -77,7 +77,7 @@ void ImportDialog::slotOk()
   } else if ( mMergeButton->isChecked() ) {
     // emit a signal to action manager to merge mUrl into the current calendar
     emit openURL( mUrl, true );
-  } else if ( mOpenButton->isChecked() ) {
+  } else if ( mOpenButton && mOpenButton->isChecked() ) {
     // emit a signal to the action manager to open mUrl in a separate window
     emit newWindow( mUrl );
   } else {

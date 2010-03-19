@@ -36,7 +36,7 @@ class ImportDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ImportDialog( const KURL &url, QWidget *parent );
+    ImportDialog( const KURL &url, QWidget *parent, bool isPart );
     ~ImportDialog();
 
   public slots:
