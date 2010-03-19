@@ -295,6 +295,7 @@ void AlarmDialog::dismissAll()
       ++it;
       continue;
     }
+    mIncidenceListView->takeItem( item );
     delete item;
   }
   setTimer();
