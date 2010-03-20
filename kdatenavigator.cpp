@@ -247,7 +247,7 @@ void KDateNavigator::updateConfig()
     mHeadings[i]->setWhatsThis(
       i18n( "A column header of the %1 dates in the month.", longDayName ) );
   }
-
+  repaint();
   // FIXME: Use actual config setting here
 //  setShowWeekNums( true );
 }
