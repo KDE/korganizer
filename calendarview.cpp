@@ -1002,12 +1002,12 @@ void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollection
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDate &dt )
 {
   QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
-  return newEvent( selectedCollections, QDateTime( dt ), QDateTime() );
+  return newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
 {
-  return newEvent( selectedCollections, startDt, QDateTime() );
+  return newEvent( selectedCollections, startDt, QDateTime( startDt ) );
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
