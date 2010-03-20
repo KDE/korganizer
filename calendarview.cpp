@@ -1022,6 +1022,10 @@ void CalendarView::edit_paste()
     Todo *_selectedTodo = selectedTodo();
     if ( _selectedTodo ) {
       pastedTodo->setRelatedTo( _selectedTodo );
+    } else {
+      //ensure pasted todo has no relations if there is not a current selection
+      pastedTodo->setRelatedTo( 0 );
+      pastedTodo->setRelatedToUid( QString() );
     }
     mChanger->addIncidence( pastedTodo, p.first, p.second, this );
   }
