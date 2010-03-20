@@ -201,7 +201,7 @@ void KOPrefs::usrReadConfig()
   }
 #endif
   KConfigGroup defaultCalendarConfig( config(), "Calendar" );
-  setDefaultCalendar( defaultCalendarConfig.readEntry( "Default Calendar", QString() ) );
+  mDefaultCalendar = defaultCalendarConfig.readEntry( "Default Calendar", QString() );
 
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
@@ -285,14 +285,20 @@ bool KOPrefs::hasCategoryColor( const QString &cat ) const
 
 QString KOPrefs::defaultCalendar() const
 {
-  return mDefaultCalendar;
+  return mDefaultCollection.isValid() ? QString::number( mDefaultCollection.id() ) : mDefaultCalendar;
 }
 
-void KOPrefs::setDefaultCalendar( const QString& cal)
+Akonadi::Collection KOPrefs::defaultCollection() const
 {
-  mDefaultCalendar = cal;
+  return mDefaultCollection;
 }
 
+void KOPrefs::setDefaultCollection( const Akonadi::Collection& col )
+{
+  mDefaultCollection = col;
+  if ( !col.isValid() )
+    mDefaultCalendar ="";
+}
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {

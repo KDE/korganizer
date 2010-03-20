@@ -79,7 +79,11 @@ namespace {
   class ColorProxyModel : public QSortFilterProxyModel
   {
   public:
-    explicit ColorProxyModel( QObject* parent=0 ) : QSortFilterProxyModel( parent ) {}
+    explicit ColorProxyModel( QObject* parent=0 )
+      : QSortFilterProxyModel( parent ),
+        mInitDefaultCalendar( false )
+      {
+      }
 
     /* reimp */ QVariant data( const QModelIndex &index, int role ) const
     {
@@ -99,11 +103,17 @@ namespace {
           if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection )) {
             QFont font = qvariant_cast<QFont>( QSortFilterProxyModel::data( index, Qt::FontRole ) );
             font.setBold( true );
+            if ( !mInitDefaultCalendar ) {
+              mInitDefaultCalendar = true;
+              KOPrefs::instance()->setDefaultCollection( collection );
+            }
             return font;
           }
         }
        return QSortFilterProxyModel::data( index, role );
      }
+  private:
+    mutable bool mInitDefaultCalendar;
   };
 }
 
@@ -135,7 +145,8 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     mSelectionProxyModel( 0 ),
     mDeleteAction( 0 ),
     mNotSendAddRemoveSignal( false ),
-    mWasDefaultCalendar( false )
+    mWasDefaultCalendar( false ),
+    mInitDefaultCalendar( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -243,7 +254,7 @@ void AkonadiCollectionView::setDefaultCalendar()
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = collectionFromIndex( index );
-  KOPrefs::instance()->setDefaultCalendar( QString::number( collection.id() ) );
+  KOPrefs::instance()->setDefaultCollection( collection );
   updateMenu();
   updateView();
 }
@@ -418,7 +429,7 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
     return;
   }
   if ( mWasDefaultCalendar )
-    KOPrefs::instance()->setDefaultCalendar( "" );
+    KOPrefs::instance()->setDefaultCollection( Akonadi::Collection() );
   mNotSendAddRemoveSignal = false;
   //TODO
 }

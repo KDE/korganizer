@@ -425,13 +425,8 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
 
 bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent )
 {
-  Akonadi::CollectionFetchJob *job = new Akonadi::CollectionFetchJob( Akonadi::Collection(KOPrefs::instance()->defaultCalendar().toULongLong()));
-  job->exec();
-  Akonadi::Collection col;
-  Akonadi::Collection::List lst = job->collections();
-  if ( lst.count()>= 1 )
-    col= lst.at( 0 );
-  const Akonadi::Collection c = Akonadi::selectCollection(parent,col);
+	kDebug()<<" KOPrefs::instance()->defaultCollection() :"<<KOPrefs::instance()->defaultCollection();
+  const Akonadi::Collection c = Akonadi::selectCollection(parent, KOPrefs::instance()->defaultCollection());
   if ( !c.isValid() )
     return false;
   return addIncidence( incidence, c, parent );

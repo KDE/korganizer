@@ -28,6 +28,7 @@
 #include "designerfields.h"
 #include "embeddedurlpage.h"
 #include "templatemanagementdialog.h"
+#include "../koprefs.h"
 
 #include <akonadi/kcal/utils.h> //krazy:exclude=camelcase since kdepim/akonadi
 
@@ -93,6 +94,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
   mCalSelector->setAccessRightsFilter(Akonadi::Collection::CanCreateItem);
+  mCalSelector->setDefaultCollection( KOPrefs::instance()->defaultCollection() );
   //mCalSelector->addExcludeResourcesType(QStringList()<<"akonadi_search_resource");
   mCalSelector->setMimeTypeFilter( QStringList() << mimetypes );
   connect( mCalSelector, SIGNAL(currentChanged(Akonadi::Collection)),
