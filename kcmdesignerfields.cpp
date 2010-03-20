@@ -330,7 +330,7 @@ void KCMDesignerFields::initGUI()
   hbox->setSpacing( KDialog::spacingHint() );
 
   QString cwHowto = i18n("<qt><p>This section allows you to add your own GUI"
-                         "  Elements ('<i>Widgets</i>') to store your own values"
+                         " Elements ('<i>Widgets</i>') to store your own values"
                          " into %1. Proceed as described below:</p>"
                          "<ol>"
                          "<li>Click on '<i>Edit with Qt Designer</i>'</li>"
