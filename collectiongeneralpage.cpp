@@ -77,7 +77,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &col)
   mNormalIconButton->setStrictIconSize( true );
   mNormalIconButton->setFixedSize( 28, 28 );
   // Can't use iconset here.
-  mNormalIconButton->setIcon( "folder" );
+  mNormalIconButton->setIcon( QLatin1String( "korganizer" ) );
   mNormalIconButton->setEnabled( false );
 
   QHBoxLayout * iconHLayout = new QHBoxLayout();
@@ -110,7 +110,7 @@ void CollectionGeneralPage::load(const Akonadi::Collection & col)
     mNameEdit->setText( displayName );
 
   if ( iconName.isEmpty() )
-    mNormalIconButton->setIcon( "folder" );
+    mNormalIconButton->setIcon( QLatin1String( "korganizer" ) );
   else
     mNormalIconButton->setIcon( iconName );
   mIconsCheckBox->setChecked( !iconName.isEmpty() );
