@@ -1110,7 +1110,7 @@ void KOAgenda::endItemAction()
         multiModify = true;
         enableAgendaUpdate( false );
 
-        mChanger->addIncidence( incToChange, 0, QString(), this );
+        mChanger->addIncidence( incToChange, mResPair.first, mResPair.second, this );
         enableAgendaUpdate( true );
         KOGlobals::WhatChanged wc = chosenOption == KOGlobals::ONLY_THIS_ONE ?
                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY :
