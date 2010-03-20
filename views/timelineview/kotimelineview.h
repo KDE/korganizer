@@ -80,6 +80,7 @@ class KOTimelineView : public KOEventView
     void newEventWithHint( const QDateTime & );
 
   private:
+    Akonadi::Item::List mSelectedItemList;
     KDGanttView *mGantt;
     QMap<Akonadi::Collection::Id, KOrg::TimelineItem*> mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;

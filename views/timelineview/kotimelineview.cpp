@@ -84,7 +84,7 @@ KOTimelineView::~KOTimelineView()
 /*virtual*/
 Akonadi::Item::List KOTimelineView::selectedIncidences()
 {
-  return Akonadi::Item::List();
+  return mSelectedItemList;
 }
 
 /*virtual*/
@@ -103,7 +103,7 @@ int KOTimelineView::currentDateCount()
 void KOTimelineView::showDates( const QDate &start, const QDate &end )
 {
   kDebug() << "start=" << start << "end=" << end;
-  
+
   mStartDate = start;
   mEndDate = end;
   mHintDate = QDateTime();
@@ -205,12 +205,14 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
   TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem *>( item );
   if ( !tlitem ) {
     showNewEventPopup();
+    mSelectedItemList = Akonadi::Item::List();
     return;
   }
   if ( !mEventPopup ) {
     mEventPopup = eventPopup();
   }
   mEventPopup->showIncidencePopup( tlitem->incidence(), Akonadi::incidence( tlitem->incidence() )->dtStart().date() );
+  mSelectedItemList << tlitem->incidence();
 }
 
 bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
