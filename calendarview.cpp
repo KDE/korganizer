@@ -989,9 +989,16 @@ void CalendarView::newEvent()
   newEvent( Akonadi::Collection::List(), QDateTime(), QDateTime() );
 }
 
-void CalendarView::newEvent( const QDate &startDt )
+void CalendarView::newEvent( const QDate &dt )
 {
-  newEvent( Akonadi::Collection::List(), QDateTime( startDt ), QDateTime( startDt ) );
+  QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
+  QTime duration = KOPrefs::instance()->defaultDuration().time();
+  QTime time = startDt.time();
+
+  time = time.addSecs( duration.hour()*3600 + duration.minute() * 60 +  duration.second() );
+  QDateTime endDt( startDt );
+  endDt.setTime( time );
+  newEvent( Akonadi::Collection::List(), startDt, endDt );
 }
 
 void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections )
