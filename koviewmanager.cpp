@@ -66,6 +66,7 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   mJournalView = 0;
   mTimelineView = 0;
   mAgendaViewTabs = 0;
+  mAgendaViewTabIndex = 0;
   mAgendaMode = AGENDA_NONE;
 }
 
@@ -363,6 +364,10 @@ void KOViewManager::showAgendaView()
     connect( mAgendaViewTabs, SIGNAL( currentChanged( QWidget* ) ),
              this, SLOT( currentAgendaViewTabChanged( QWidget* ) ) );
     parent = mAgendaViewTabs;
+
+    KConfig *config = KOGlobals::self()->config();
+    config->setGroup( "Views" );
+    mAgendaViewTabIndex = config->readNumEntry( "Agenda View Tab Index", 0 );
   }
 
   if ( !mAgendaView && showMerged ) {
@@ -402,8 +407,9 @@ void KOViewManager::showAgendaView()
   if ( showBoth && mAgendaViewTabs ) {
     if ( mAgendaView && mAgendaViewTabs->indexOf( mAgendaView ) < 0 )
       mAgendaViewTabs->addTab( mAgendaView, i18n("Merged calendar") );
-    if ( mAgendaSideBySideView  && mAgendaViewTabs->indexOf( mAgendaSideBySideView ) < 0 )
+    if ( mAgendaSideBySideView && mAgendaViewTabs->indexOf( mAgendaSideBySideView ) < 0 )
       mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n("Calendars Side by Side") );
+    mAgendaViewTabs->setCurrentPage( mAgendaViewTabIndex );
   } else {
     if ( mAgendaView && mMainView->viewStack()->id( mAgendaView ) < 0 )
       mMainView->viewStack()->addWidget( mAgendaView );
@@ -548,6 +554,10 @@ QWidget* KOViewManager::widgetForView( KOrg::BaseView* view ) const
 
 void KOViewManager::currentAgendaViewTabChanged( QWidget* widget )
 {
+  KConfig *config = KOGlobals::self()->config();
+  config->setGroup( "Views" );
+  config->writeEntry( "Agenda View Tab Index", mAgendaViewTabs->currentPageIndex() );
+
   goMenu( true );
   showView( static_cast<KOrg::BaseView*>( widget ) );
 }

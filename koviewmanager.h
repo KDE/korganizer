@@ -102,11 +102,11 @@ class KOViewManager : public QObject
 
     /*
     * Returns true if the agenda is the current view.
-    * 
+    *
     * Never use the pointer returned by agendaView()
     * to know if agenda is selected, because agenda has other modes
     * (tabbed, side by side). Use this function instead.
-    */ 
+    */
     bool agendaIsSelected() const;
 
     /**
@@ -158,6 +158,7 @@ class KOViewManager : public QObject
 
     KOrg::BaseView *mLastEventView;
     QTabWidget *mAgendaViewTabs;
+    int mAgendaViewTabIndex;
 
     AgendaMode mAgendaMode;
 
