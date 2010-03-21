@@ -935,6 +935,10 @@ void CalendarView::edit_paste()
     Akonadi::Item _selectedTodoItem = selectedTodo();
     if ( Todo::Ptr _selectedTodo = Akonadi::todo(_selectedTodoItem) ) {
       pastedTodo->setRelatedTo( _selectedTodo.get() );
+    } else {
+      //ensure pasted todo has no relations if there is not a current selection
+      pastedTodo->setRelatedTo( 0 );
+      pastedTodo->setRelatedToUid( QString() );
     }
     mChanger->addIncidence( Todo::Ptr(pastedTodo->clone()), this );
   } else if ( pastedIncidence->type() == "Journal" ) {
