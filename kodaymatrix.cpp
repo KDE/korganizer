@@ -507,7 +507,6 @@ void KODayMatrix::popupMenu( const QDate &date )
     KIcon( "task-new" ), i18n( "New &To-do..." ) );
   QAction *newJournalAction = popup.addAction(
     KIcon( "journal-new" ), i18n( "New &Journal..." ) );
-
   QAction *ret = popup.exec( QCursor::pos() );
   if ( ret == newEventAction ) {
     emit newEventSignal( date );
@@ -638,7 +637,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     return;
   }
   QList<QUrl> urls = ( e->mimeData()->urls() );
-  kDebug()<<" urls :"<<urls;
+  //kDebug()<<" urls :"<<urls;
   if ( urls.isEmpty() ) {
     e->ignore();
     return;
