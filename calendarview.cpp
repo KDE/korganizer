@@ -870,7 +870,8 @@ void CalendarView::edit_paste()
 // In all other cases, use the navigator's selected date.
 
   QDate date;          // null dates are invalid, that's what we want
-  QTime time( -1, -1 );// create an invalid time, that's what we want
+  bool timeSet = false;// flag denoting if the time has been set.
+  QTime time;          // null dates are valid, so rely on the timeSet flag
   QDateTime endDT;     // null datetimes are invalid, that's what we want
   bool useEndTime = false;
 
@@ -888,6 +889,7 @@ void CalendarView::edit_paste()
     useEndTime = !aView->selectedIsSingleCell();
     if ( !aView->selectedIsAllDay() ) {
       time = aView->selectionStart().time();
+      timeSet = true;
     }
   } else if ( curView == mView && mView->selectionStart().isValid() ) {
     date = mView->selectionStart().date();
@@ -907,7 +909,7 @@ void CalendarView::edit_paste()
   Akonadi::CalendarAdaptor cal( mCalendar, this );
   Akonadi::DndFactory factory( &cal );
   Incidence *pastedIncidence;
-  if ( time.isValid() ) {
+  if ( timeSet && time.isValid() ) {
     pastedIncidence = factory.pasteIncidence( date, &time );
   } else {
     pastedIncidence = factory.pasteIncidence( date );
