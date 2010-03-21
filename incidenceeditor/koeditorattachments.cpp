@@ -551,7 +551,7 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
   KMenu menu( this );
   QAction *linkAction = 0, *cancelAction;
   if ( probablyWeHaveUris ) {
-    linkAction = menu.addAction( i18nc( "@action:inmenu", "&Link here" ) );
+    linkAction = menu.addAction( KIcon( "insert-link" ), i18nc( "@action:inmenu", "&Link here" ) );
     // we need to check if we can reasonably expect to copy the objects
     for ( KUrl::List::ConstIterator it = urls.constBegin(); it != urls.constEnd(); ++it ) {
       if ( !( weCanCopy = KProtocolManager::supportsReading( *it ) ) ) {
@@ -559,14 +559,14 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
       }
     }
     if ( weCanCopy ) {
-      menu.addAction( i18nc( "@action:inmenu", "&Copy here" ) );
+      menu.addAction( KIcon( "edit-copy" ), i18nc( "@action:inmenu", "&Copy here" ) );
     }
   } else {
-    menu.addAction( i18nc( "@action:inmenu", "&Copy here" ) );
+    menu.addAction( KIcon( "edit-copy" ), i18nc( "@action:inmenu", "&Copy here" ) );
   }
 
   menu.addSeparator();
-  cancelAction = menu.addAction( i18nc( "@action:inmenu", "C&ancel" ) );
+  cancelAction = menu.addAction( KIcon( "process-stop" ) , i18nc( "@action:inmenu", "C&ancel" ) );
 
   QByteArray data;
   QString mimeType;
