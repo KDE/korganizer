@@ -20,24 +20,25 @@
   Boston, MA 02110-1301, USA.
 */
 
-#include "htmlexport.h"
+#include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
 #include <KCal/Calendar>
 #include <KCal/Event>
 #include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
-#if !defined(KORG_NOKABC) && !defined(KDEPIM_NO_KRESOURCES)
- #include <kabc/stdaddressbook.h>
-#endif
 
+#include <akonadi/contact/contactsearchjob.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
-#include <kglobal.h>
-#include <klocale.h>
-#include <kdebug.h>
 #include <kcalendarsystem.h>
+#include <kdebug.h>
+#include <kglobal.h>
+#include <kio/netaccess.h>
+#include <klocale.h>
+#include <kmessagebox.h>
+#include <ktemporaryfile.h>
 
 #include <QtCore/QFile>
 #include <QtCore/QTextStream>
@@ -52,31 +53,122 @@ using namespace KOrg;
 static QString cleanChars( const QString &txt );
 
 //@cond PRIVATE
-class KOrg::HtmlExport::Private
+class KOrg::HtmlExportJob::Private
 {
   public:
-    Private( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings )
+    Private( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
       : mCalendar( calendar ),
-        mSettings( settings )
+        mSettings( settings ),
+        mParentWidget( parent ),
+        mSubJobCount( 0 )
     {}
 
     Akonadi::Calendar *mCalendar;
     KOrg::HTMLExportSettings *mSettings;
+    QWidget *mParentWidget;
     QMap<QDate,QString> mHolidayMap;
+    qulonglong mSubJobCount;
+    QMap<QString, KABC::Addressee> mOrganizersMap;
 };
 //@endcond
 
-HtmlExport::HtmlExport( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings )
-  : d( new Private( calendar, settings ) )
+HtmlExportJob::HtmlExportJob( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+  : KJob( parent ), d( new Private( calendar, settings, parent ) )
 {
 }
 
-HtmlExport::~HtmlExport()
+HtmlExportJob::~HtmlExportJob()
 {
   delete d;
 }
 
-bool HtmlExport::save( const QString &fileName )
+void HtmlExportJob::start()
+{
+  // first collect the email addresses of all organisators
+  const Akonadi::Item::List events = d->mCalendar->events();
+  foreach ( const Akonadi::Item &event, events ) {
+    Q_ASSERT( event.hasPayload<Event::Ptr>() );
+    const Event::Ptr eventPtr = event.payload<Event::Ptr>();
+    const Attendee::List attendees = eventPtr->attendees();
+    if ( !attendees.isEmpty() ) {
+      Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
+      job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer().email() );
+      job->setProperty( "incidenceUid", eventPtr->uid() );
+      connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
+      job->start();
+
+      d->mSubJobCount++;
+    }
+  }
+
+  const Akonadi::Item::List todos = d->mCalendar->todos();
+  foreach ( const Akonadi::Item &todo, todos ) {
+    Q_ASSERT( todo.hasPayload<Todo::Ptr>() );
+    const Todo::Ptr todoPtr = todo.payload<Todo::Ptr>();
+    const Attendee::List attendees = todoPtr->attendees();
+    if ( !attendees.isEmpty() ) {
+      Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
+      job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer().email() );
+      job->setProperty( "incidenceUid", todoPtr->uid() );
+      connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
+      job->start();
+
+      d->mSubJobCount++;
+    }
+  }
+}
+
+void HtmlExportJob::receivedOrganizerInfo( KJob *job )
+{
+  d->mSubJobCount--;
+
+  if ( !job->error() ) {
+    Akonadi::ContactSearchJob *searchJob = qobject_cast<Akonadi::ContactSearchJob*>( job );
+    const KABC::Addressee::List contacts = searchJob->contacts();
+    if ( !contacts.isEmpty() )
+      d->mOrganizersMap.insert( searchJob->property( "incidenceUid" ).toString(), contacts.first() );
+  }
+
+  if ( d->mSubJobCount == 0 )
+    finishExport();
+}
+
+void HtmlExportJob::finishExport()
+{
+  QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
+
+  bool saveStatus;
+  QString errorMessage;
+  KUrl dest( d->mSettings->outputFile() );
+  if ( dest.isLocalFile() ) {
+    saveStatus = save( dest.toLocalFile() );
+    errorMessage = i18n( "Unable to write the output file." );
+  } else {
+    KTemporaryFile tf;
+    tf.open();
+    QString tfile = tf.fileName();
+    saveStatus = save( tfile );
+    errorMessage = i18n( "Unable to write the temporary file for uploading." );
+    if ( !KIO::NetAccess::upload( tfile, dest, d->mParentWidget ) ) {
+      saveStatus = false;
+      errorMessage = i18n( "Unable to upload the export file." );
+    }
+  }
+
+  QApplication::restoreOverrideCursor();
+
+  QString saveMessage;
+  if ( saveStatus ) {
+    saveMessage = i18n( "Web page successfully written to \"%1\"", dest.url() );
+  } else {
+    saveMessage = i18n( "Export failed. %1", errorMessage );
+  }
+
+  KMessageBox::information( d->mParentWidget, saveMessage,
+               i18nc( "@title:window", "Export Status" ) );
+}
+
+bool HtmlExportJob::save( const QString &fileName )
 {
   QString fn( fileName );
   if ( fn.isEmpty() && d->mSettings ) {
@@ -95,7 +187,7 @@ bool HtmlExport::save( const QString &fileName )
   return success;
 }
 
-bool HtmlExport::save( QTextStream *ts )
+bool HtmlExportJob::save( QTextStream *ts )
 {
   if ( !d->mSettings ) {
     return false;
@@ -170,7 +262,7 @@ bool HtmlExport::save( QTextStream *ts )
   return true;
 }
 
-void HtmlExport::createMonthView( QTextStream *ts )
+void HtmlExportJob::createMonthView( QTextStream *ts )
 {
   QDate start = fromDate();
   start.setYMD( start.year(), start.month(), 1 );  // go back to first day in month
@@ -260,7 +352,7 @@ void HtmlExport::createMonthView( QTextStream *ts )
   }
 }
 
-void HtmlExport::createEventList( QTextStream *ts )
+void HtmlExportJob::createEventList( QTextStream *ts )
 {
   int columns = 3;
   *ts << "<table border=\"0\" cellpadding=\"3\" cellspacing=\"3\">" << endl;
@@ -313,7 +405,7 @@ void HtmlExport::createEventList( QTextStream *ts )
   *ts << "</table>" << endl;
 }
 
-void HtmlExport::createEvent ( QTextStream *ts, Event *event,
+void HtmlExportJob::createEvent ( QTextStream *ts, Event *event,
                                QDate date, bool withDescription )
 {
   kDebug() << event->summary();
@@ -366,7 +458,7 @@ void HtmlExport::createEvent ( QTextStream *ts, Event *event,
   *ts << "  </tr>" << endl;
 }
 
-void HtmlExport::createTodoList ( QTextStream *ts )
+void HtmlExportJob::createTodoList ( QTextStream *ts )
 {
   Akonadi::Item::List rawTodoList = d->mCalendar->todos();
 
@@ -481,7 +573,7 @@ void HtmlExport::createTodoList ( QTextStream *ts )
   *ts << "</table>" << endl;
 }
 
-void HtmlExport::createTodo( QTextStream *ts, Todo *todo )
+void HtmlExportJob::createTodo( QTextStream *ts, Todo *todo )
 {
   kDebug();
 
@@ -569,26 +661,26 @@ void HtmlExport::createTodo( QTextStream *ts, Todo *todo )
   *ts << "</tr>" << endl;
 }
 
-void HtmlExport::createWeekView( QTextStream *ts )
+void HtmlExportJob::createWeekView( QTextStream *ts )
 {
   Q_UNUSED( ts );
   // FIXME: Implement this!
 }
 
-void HtmlExport::createJournalView( QTextStream *ts )
+void HtmlExportJob::createJournalView( QTextStream *ts )
 {
   Q_UNUSED( ts );
 //   Journal::List rawJournalList = d->mCalendar->journals();
   // FIXME: Implement this!
 }
 
-void HtmlExport::createFreeBusyView( QTextStream *ts )
+void HtmlExportJob::createFreeBusyView( QTextStream *ts )
 {
   Q_UNUSED( ts );
   // FIXME: Implement this!
 }
 
-bool HtmlExport::checkSecrecy( Incidence *incidence )
+bool HtmlExportJob::checkSecrecy( Incidence *incidence )
 {
   int secrecy = incidence->secrecy();
   if ( secrecy == Incidence::SecrecyPublic ) {
@@ -604,7 +696,7 @@ bool HtmlExport::checkSecrecy( Incidence *incidence )
   return false;
 }
 
-void HtmlExport::formatLocation( QTextStream *ts, Incidence *incidence )
+void HtmlExportJob::formatLocation( QTextStream *ts, Incidence *incidence )
 {
   if ( !incidence->location().isEmpty() ) {
     *ts << "    " << cleanChars( incidence->location() ) << endl;
@@ -613,7 +705,7 @@ void HtmlExport::formatLocation( QTextStream *ts, Incidence *incidence )
   }
 }
 
-void HtmlExport::formatCategories( QTextStream *ts, Incidence *incidence )
+void HtmlExportJob::formatCategories( QTextStream *ts, Incidence *incidence )
 {
   if ( !incidence->categoriesStr().isEmpty() ) {
     *ts << "    " << cleanChars( incidence->categoriesStr() ) << endl;
@@ -622,27 +714,18 @@ void HtmlExport::formatCategories( QTextStream *ts, Incidence *incidence )
   }
 }
 
-void HtmlExport::formatAttendees( QTextStream *ts, Incidence *incidence )
+void HtmlExportJob::formatAttendees( QTextStream *ts, Incidence *incidence )
 {
   Attendee::List attendees = incidence->attendees();
   if ( attendees.count() ) {
     *ts << "<em>";
-#if !defined(KORG_NOKABC) && !defined(KDEPIM_NO_KRESOURCES)
-    KABC::AddressBook *add_book = KABC::StdAddressBook::self( true );
-    KABC::Addressee::List addressList;
-    addressList = add_book->findByEmail( incidence->organizer().email() );
-    if ( !addressList.isEmpty() ) {
-      KABC::Addressee o = addressList.first();
-      if ( !o.isEmpty() && addressList.size() < 2 ) {
-        *ts << "<a href=\"mailto:" << incidence->organizer().email() << "\">";
-        *ts << cleanChars( o.formattedName() ) << "</a>" << endl;
-      } else {
-        *ts << incidence->organizer().fullName();
-      }
+    const KABC::Addressee organizer = d->mOrganizersMap.value( incidence->uid() );
+    if ( !organizer.isEmpty() ) {
+      *ts << "<a href=\"mailto:" << incidence->organizer().email() << "\">";
+      *ts << cleanChars( organizer.formattedName() ) << "</a>" << endl;
+    } else {
+      *ts << incidence->organizer().fullName();
     }
-#else
-    *ts << incidence->organizer().fullName();
-#endif
     *ts << "</em><br />";
     Attendee::List::ConstIterator it;
     for ( it = attendees.constBegin(); it != attendees.constEnd(); ++it ) {
@@ -660,7 +743,7 @@ void HtmlExport::formatAttendees( QTextStream *ts, Incidence *incidence )
   }
 }
 
-QString HtmlExport::breakString( const QString &text )
+QString HtmlExportJob::breakString( const QString &text )
 {
   int number = text.count( '\n' );
   if ( number <= 0 ) {
@@ -680,7 +763,7 @@ QString HtmlExport::breakString( const QString &text )
   }
 }
 
-void HtmlExport::createFooter( QTextStream *ts )
+void HtmlExportJob::createFooter( QTextStream *ts )
 {
   // FIXME: Implement this in a translatable way!
   QString trailer = i18nc( "@info/plain", "This page was created " );
@@ -738,7 +821,7 @@ QString cleanChars( const QString &text )
   return txt;
 }
 
-QString HtmlExport::styleSheet() const
+QString HtmlExportJob::styleSheet() const
 {
   if ( !d->mSettings->styleSheet().isEmpty() ) {
     return d->mSettings->styleSheet();
@@ -773,7 +856,7 @@ QString HtmlExport::styleSheet() const
   return css;
 }
 
-void HtmlExport::addHoliday( const QDate &date, const QString &name )
+void HtmlExportJob::addHoliday( const QDate &date, const QString &name )
 {
   if ( d->mHolidayMap[date].isEmpty() ) {
     d->mHolidayMap[date] = name;
@@ -783,12 +866,14 @@ void HtmlExport::addHoliday( const QDate &date, const QString &name )
   }
 }
 
-QDate HtmlExport::fromDate() const
+QDate HtmlExportJob::fromDate() const
 {
   return d->mSettings->dateStart().date();
 }
 
-QDate HtmlExport::toDate() const
+QDate HtmlExportJob::toDate() const
 {
   return d->mSettings->dateEnd().date();
 }
+
+#include "htmlexportjob.moc"

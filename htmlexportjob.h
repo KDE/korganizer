@@ -19,8 +19,10 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_HTMLEXPORT_H
-#define KORG_HTMLEXPORT_H
+#ifndef KORG_HTMLEXPORTJOB_H
+#define KORG_HTMLEXPORTJOB_H
+
+#include <kjob.h>
 
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
@@ -48,26 +50,20 @@ class HTMLExportSettings;
 /**
   This class provides the functions to export a calendar as a HTML page.
 */
-class HtmlExport
+class HtmlExportJob : public KJob
 {
+  Q_OBJECT
+
   public:
     /**
       Create new HTML exporter for calendar.
     */
-    HtmlExport( Akonadi::Calendar *calendar, HTMLExportSettings *settings );
-    virtual ~HtmlExport();
-
-    /**
-      Writes out the calendar in HTML format.
-    */
-    bool save( const QString &fileName = QString() );
-
-    /**
-      Writes out calendar to text stream.
-    */
-    bool save( QTextStream *ts );
+    HtmlExportJob( Akonadi::Calendar *calendar, HTMLExportSettings *settings, QWidget *parent = 0 );
+    virtual ~HtmlExportJob();
 
     void addHoliday( const QDate &date, const QString &name );
+
+    virtual void start();
 
   protected:
     void createWeekView( QTextStream *ts );
@@ -94,9 +90,24 @@ class HtmlExport
     QDate toDate() const;
     QString styleSheet() const;
 
+  private Q_SLOTS:
+    void receivedOrganizerInfo( KJob* );
+
   private:
+    /**
+      Writes out the calendar in HTML format.
+    */
+    bool save( const QString &fileName = QString() );
+
+    /**
+      Writes out calendar to text stream.
+    */
+    bool save( QTextStream *ts );
+
+    void finishExport();
+
     //@cond PRIVATE
-    Q_DISABLE_COPY( HtmlExport )
+    Q_DISABLE_COPY( HtmlExportJob )
     class Private;
     Private *const d;
     //@endcond

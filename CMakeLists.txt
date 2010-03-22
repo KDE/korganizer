@@ -236,7 +236,7 @@ set(korganizerprivate_LIB_SRCS
   kohelper.cpp
   cellitem.cpp
   akonadicollectionview.cpp
-  htmlexport.cpp
+  htmlexportjob.cpp
   printing/calprinter.cpp
   printing/calprintpluginbase.cpp
   printing/calprintdefaultplugins.cpp

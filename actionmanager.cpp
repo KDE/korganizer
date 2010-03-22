@@ -41,7 +41,7 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 #include "akonadicollectionview.h"
-#include "htmlexport.h"
+#include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 #include "incidenceeditor/koeditorconfig.h"
 #include "incidenceeditor/koincidenceeditor.h"
@@ -1216,14 +1216,13 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
     }
   }
 
-  QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
   settings->setEMail( KOPrefs::instance()->email() );
   settings->setName( KOPrefs::instance()->fullName() );
 
   settings->setCreditName( "KOrganizer" );
   settings->setCreditURL( "http://korganizer.kde.org" );
 
-  KOrg::HtmlExport mExport( mCalendarView->calendar(), settings );
+  KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob( mCalendarView->calendar(), settings, view() );
 
   QDate cdate = settings->dateStart().date();
   QDate qd2 = settings->dateEnd().date();
@@ -1232,40 +1231,13 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
     if ( !holidays.isEmpty() ) {
       QStringList::ConstIterator it = holidays.constBegin();
       for ( ; it != holidays.constEnd(); ++it ) {
-        mExport.addHoliday( cdate, *it );
+        exportJob->addHoliday( cdate, *it );
       }
     }
     cdate = cdate.addDays( 1 );
   }
 
-  bool saveStatus;
-  QString errorMessage;
-  KUrl dest( settings->outputFile() );
-  if ( dest.isLocalFile() ) {
-    saveStatus = mExport.save( dest.toLocalFile() );
-    errorMessage = i18n( "Unable to write the output file." );
-  } else {
-    KTemporaryFile tf;
-    tf.open();
-    QString tfile = tf.fileName();
-    saveStatus = mExport.save( tfile );
-    errorMessage = i18n( "Unable to write the temporary file for uploading." );
-    if ( !KIO::NetAccess::upload( tfile, dest, view() ) ) {
-      saveStatus = false;
-      errorMessage = i18n( "Unable to upload the export file." );
-    }
-  }
-
-  QApplication::restoreOverrideCursor();
-
-  QString saveMessage;
-  if ( saveStatus ) {
-    saveMessage = i18n( "Web page successfully written to \"%1\"", dest.url() );
-  } else {
-    saveMessage = i18n( "Export failed. %1", errorMessage );
-  }
-  KMessageBox::information( dialogParent(), saveMessage,
-               i18nc( "@title:window", "Export Status" ) );
+  exportJob->start();
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
