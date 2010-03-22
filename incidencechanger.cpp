@@ -64,6 +64,7 @@ public:
   KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
   Item m_itemBeingChanged;
 
+  QHash<Akonadi::Item::Id, int> m_latestVersionByItemId;
   QHash<const KJob*, Item> m_oldItemByJob;
 };
 
@@ -83,6 +84,14 @@ bool IncidenceChanger::beginChange( const Item &item )
     kDebug() << "Skipping invalid item id=" << item.id();
     return false;
   }
+
+  // Don't start two modify jobs over the same revision
+  if ( d->m_latestVersionByItemId.contains( item.id() ) &&
+       d->m_latestVersionByItemId[item.id()] > item.revision() ) {
+    kDebug() << "Skipping item " << item.id() << " with revision " << item.revision();
+    return false;
+  }
+
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   Q_ASSERT( incidence );
   kDebug() << "id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
@@ -242,6 +251,7 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
     emit incidenceChanged( oldItem, newItem, KOGlobals::UNKNOWN_MODIFIED );
   }
 
+  d->m_latestVersionByItemId[newItem.id()] = newItem.revision();
   d->m_changes.removeAll( oldItem.id() );
 }
 
