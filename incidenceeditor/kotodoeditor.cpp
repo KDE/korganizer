@@ -192,13 +192,16 @@ bool KOTodoEditor::processInput()
     if( *oldTodo == *todo ) {
       // Don't do anything cause no changes where done
     } else {
-      mChanger->beginChange( mIncidence );
-      //merge multiple mIncidence->updated() calls into one
-      Akonadi::todo( mIncidence )->startUpdates();
-      fillTodo(mIncidence);
-      rc = mChanger->changeIncidence( oldTodo, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
-      Akonadi::todo( mIncidence )->endUpdates();
-      mChanger->endChange( mIncidence );
+      if ( mChanger->beginChange( mIncidence ) ) {
+        //merge multiple mIncidence->updated() calls into one
+        Akonadi::todo( mIncidence )->startUpdates();
+        fillTodo(mIncidence);
+        rc = mChanger->changeIncidence( oldTodo, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
+        Akonadi::todo( mIncidence )->endUpdates();
+        mChanger->endChange( mIncidence );
+      } else {
+        return false;
+      }
     }
     return rc;
   } else {

@@ -63,7 +63,8 @@ public:
   QList<Akonadi::Item::Id> m_changes; //list of item ids that are modified atm
   KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
   Item m_itemBeingChanged;
-  QHash<const KJob*,Item> oldItemByJob;
+
+  QHash<const KJob*, Item> m_oldItemByJob;
 };
 
 IncidenceChanger::IncidenceChanger( Akonadi::Calendar *cal, QObject *parent )
@@ -85,11 +86,16 @@ bool IncidenceChanger::beginChange( const Item &item )
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   Q_ASSERT( incidence );
   kDebug() << "id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
-  Q_ASSERT( ! d->m_changes.contains( item.id() ) ); // no nested changes allowed
-  d->m_changes.push_back( item.id() );
-  d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
-  d->m_itemBeingChanged = item;
-  return true;
+  
+  if ( !d->m_changes.contains( item.id() ) ) { // no nested changes allowed
+    d->m_changes.push_back( item.id() );
+    d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
+    d->m_itemBeingChanged = item;
+    return true;
+  } else {
+    kDebug() << "No nested changes allowed id = " << item.id();
+    return false;
+  }
 }
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
@@ -151,12 +157,15 @@ bool IncidenceChanger::endChange( const Item &item )
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   Q_ASSERT( incidence );
 
-  const bool isModification = d->m_changes.removeAll( item.id() ) >= 1;
+  const bool isModification = d->m_changes.contains( item.id() );
 
-  if( ! isModification || !d->m_incidenceBeingChanged ) {
+  if ( !isModification || !d->m_incidenceBeingChanged ) {
     // only if beginChange() with the incidence was called then this is a modification else it
     // is e.g. a new event/todo/journal that was not added yet or an existing one got deleted.
     kDebug() << "Skipping modify uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+
+    d->m_changes.removeAll( item.id() );
+
     return false;
   }
 
@@ -172,12 +181,15 @@ bool IncidenceChanger::endChange( const Item &item )
   d->m_itemBeingChanged = Item();
   if ( v.compare( incidence.get(), incidencePtr.get() ) ) {
     kDebug()<<"Incidence is unmodified";
+
+    d->m_changes.removeAll( item.id() );
+
     return true;
   }
 
   kDebug() << "modify id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   ItemModifyJob *job = new ItemModifyJob( item );
-  d->oldItemByJob.insert( job, oldItem );
+  d->m_oldItemByJob.insert( job, oldItem );
   connect( job, SIGNAL(result( KJob*)), this, SLOT(changeIncidenceFinished(KJob*)) );
   return true;
 }
@@ -212,8 +224,8 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
   const ItemModifyJob* job = qobject_cast<const ItemModifyJob*>( j );
   Q_ASSERT( job );
 
-  const Item oldItem = d->oldItemByJob.value( job );
-  d->oldItemByJob.remove( job );
+  const Item oldItem = d->m_oldItemByJob.value( job );
+  d->m_oldItemByJob.remove( job );
   const Item newItem = job->item();
   Incidence::Ptr tmp = Akonadi::incidence( newItem );
   Q_ASSERT( tmp );
@@ -229,6 +241,8 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
     //PENDING(AKONADI_PORT) emit a real action here, not just UNKNOWN_MODIFIED
     emit incidenceChanged( oldItem, newItem, KOGlobals::UNKNOWN_MODIFIED );
   }
+
+  d->m_changes.removeAll( oldItem.id() );
 }
 
 void IncidenceChanger::deleteIncidenceFinished( KJob* j )

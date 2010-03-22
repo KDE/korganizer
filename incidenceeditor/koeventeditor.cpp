@@ -264,12 +264,15 @@ bool KOEventEditor::processInput()
         Akonadi::Collection col = mCalSelector->currentCollection();
         rc = mChanger->addIncidence( event2, col, this );
       } else {
-        mChanger->beginChange( mIncidence );
-        ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
-        fillEvent(mIncidence);
-        rc = mChanger->changeIncidence( oldEvent, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
-        ev->endUpdates();
-        mChanger->endChange( mIncidence );
+        if ( mChanger->beginChange( mIncidence ) ) {
+          ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
+          fillEvent(mIncidence);
+          rc = mChanger->changeIncidence( oldEvent, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
+          ev->endUpdates();
+          mChanger->endChange( mIncidence );
+        } else {
+          return false;
+        }
       }
     }
     return rc;
