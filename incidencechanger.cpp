@@ -138,8 +138,9 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
 
 bool IncidenceChanger::endChange( const Item &item )
 {
-  if ( !Akonadi::hasIncidence( item ) )
+  if ( !Akonadi::hasIncidence( item ) ) {
     return false;
+  }
 
   // FIXME: if that's a groupware incidence, and I'm not the organizer,
   // send out a mail to the organizer with a counterproposal instead
@@ -191,8 +192,9 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
                                         Akonadi::Groupware::INCIDENCEDELETED, parent );
-  if( !doDelete )
+  if( !doDelete ) {
     return false;
+  }
   emit incidenceToBeDeleted( aitem );
   d->m_changes.removeAll( aitem.id() ); //abort changes to this incidence cause we will just delete it
   ItemDeleteJob* job = new ItemDeleteJob( aitem );
@@ -425,17 +427,19 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
 
 bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent )
 {
-	kDebug()<<" KOPrefs::instance()->defaultCollection() :"<<KOPrefs::instance()->defaultCollection();
+  kDebug()<<" KOPrefs::instance()->defaultCollection() :"<<KOPrefs::instance()->defaultCollection();
   const Akonadi::Collection c = Akonadi::selectCollection(parent, KOPrefs::instance()->defaultCollection());
-  if ( !c.isValid() )
+  if ( !c.isValid() ) {
     return false;
+  }
   return addIncidence( incidence, c, parent );
 }
 
 bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Collection &collection, QWidget* parent )
 {
-  if( !incidence || !collection.isValid() )
+  if( !incidence || !collection.isValid() ) {
     return false;
+  }
   kDebug() << "\"" << incidence->summary() << "\"";
 
   Item item;
