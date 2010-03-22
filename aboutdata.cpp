@@ -30,9 +30,10 @@ AboutData::AboutData()
   : KAboutData( "korganizer", 0, ki18n( "KOrganizer" ), korgVersion,
                 ki18n( "A Personal Organizer" ),
                 KAboutData::License_GPL,
-                ki18n( "(c) 1997-1999 Preston Brown\n"
-                       "(c) 2000-2004,2007 Cornelius Schumacher\n"
-                       "(c) 2004-2005 Reinhold Kainhofer" ),
+                ki18n( "Copyright © 1997–1999 Preston Brown\n"
+                       "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
+                       "Copyright © 2004–2005 Reinhold Kainhofer\n"
+                       "Copyright © 2006–2010 Allen Winter),
                 KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
