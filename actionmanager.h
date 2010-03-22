@@ -216,6 +216,8 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     void saveToProfile( const QString & path ) const;
 
+    bool handleCommandLine();
+
   signals:
     /**
       Emitted when the "New" action is activated.

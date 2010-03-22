@@ -69,6 +69,9 @@ public:
   /** @reimp from KOrganizerIface::saveToProfile() */
   void saveToProfile( const QString& path ) const;
 
+  /** @reimp from KOrganizerIface::handleCommandLine() */
+  bool handleCommandLine();
+
 private:
   ActionManager* mActionManager;
 };

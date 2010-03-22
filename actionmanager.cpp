@@ -70,6 +70,7 @@
 #include <kstdguiitem.h>
 #include <kdeversion.h>
 #include <kactionclasses.h>
+#include <kcmdlineargs.h>
 
 #include <qapplication.h>
 #include <qcursor.h>
@@ -1995,6 +1996,42 @@ void ActionManager::saveToProfile( const QString & path ) const
 
   KConfig profile( path+"/korganizerrc", /*read-only=*/false, /*useglobals=*/false );
   ::copyConfigEntry( cfg, &profile, "Views", "Agenda View Calendar Display" );
+}
+
+bool ActionManager::handleCommandLine()
+{
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  KOrg::MainWindow *mainWindow = ActionManager::findInstance( KURL() );
+
+  bool ret = true;
+
+  if ( !mainWindow ) {
+    kdError() << "Unable to find default calendar resources view." << endl;
+    ret = false;
+  } else if ( args->count() <= 0 ) {
+     // No filenames given => all other args are meaningless, show main Window
+    mainWindow->topLevelWidget()->show();
+  } else if ( !args->isSet( "open" ) ) {
+    // Import, merge, or ask => we need the resource calendar window anyway.
+    mainWindow->topLevelWidget()->show();
+
+    // Check for import, merge or ask
+    if ( args->isSet( "import" ) ) {
+      for( int i = 0; i < args->count(); ++i ) {
+        mainWindow->actionManager()->addResource( args->url( i ) );
+      }
+    } else if ( args->isSet( "merge" ) ) {
+      for( int i = 0; i < args->count(); ++i ) {
+        mainWindow->actionManager()->mergeURL( args->url( i ).url() );
+      }
+    } else {
+      for( int i = 0; i < args->count(); ++i ) {
+        mainWindow->actionManager()->importCalendar( args->url( i ) );
+      }
+    }
+  }
+
+  return ret;
 }
 
 QWidget *ActionManager::dialogParent()

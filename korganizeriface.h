@@ -55,6 +55,13 @@ class KOrganizerIface : virtual public DCOPObject
 
     virtual void loadProfile( const QString& path ) = 0;
     virtual void saveToProfile( const QString& path ) const = 0;
+
+    /**
+     * DCOP-enabled for KOrganizerUniqueAppHandler in the kontact plugin
+     * Returns true if the command line was successfully handled
+     * false otherwise.
+     */
+    virtual bool handleCommandLine() = 0;
 };
 
 #endif
