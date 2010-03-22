@@ -33,7 +33,7 @@ AboutData::AboutData()
                 ki18n( "Copyright © 1997–1999 Preston Brown\n"
                        "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
                        "Copyright © 2004–2005 Reinhold Kainhofer\n"
-                       "Copyright © 2006–2010 Allen Winter),
+                       "Copyright © 2006–2010 Allen Winter" ),
                 KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
