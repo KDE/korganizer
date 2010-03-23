@@ -84,7 +84,7 @@ class MonthScene : public QGraphicsScene
     QList<MonthItem *> mManagerList;
     MonthView *mMonthView;
 
-    MonthView* monthView() const { return mMonthView; }
+    MonthView *monthView() const { return mMonthView; }
     QMap<QDate, MonthCell*> mMonthCellMap;
 
     bool initialized() { return mInitialized; }
@@ -174,9 +174,9 @@ class MonthScene : public QGraphicsScene
 
   signals:
     void incidenceSelected( const Akonadi::Item &incidence, const QDate & );
-    void showIncidencePopupSignal( const Akonadi::Item &, const QDate &);
+    void showIncidencePopupSignal( const Akonadi::Item &, const QDate & );
     void showNewEventPopupSignal();
-    void newEventSignal(const Akonadi::Collection::List &);
+    void newEventSignal( const Akonadi::Collection::List & );
 
   protected:
     virtual void mouseDoubleClickEvent( QGraphicsSceneMouseEvent *mouseEvent );

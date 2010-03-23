@@ -81,14 +81,14 @@ class MonthView : public KOEventView
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );
 
-    /* reimp */ void updateConfig();
+    /* reimp */void updateConfig();
 
   protected slots:
     void moveBackMonth();
     void moveBackWeek();
     void moveFwdWeek();
     void moveFwdMonth();
-    /* reimp */ void calendarReset();
+    /* reimp */void calendarReset();
 
   protected:
     int maxDatesHint();
@@ -97,10 +97,11 @@ class MonthView : public KOEventView
     virtual void keyPressEvent( QKeyEvent *event );
     virtual void keyReleaseEvent( QKeyEvent *event );
 
-    /* reimp */ void incidencesAdded( const Akonadi::Item::List& incidences );
-    /* reimp */ void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
-    /* reimp */ void incidencesChanged( const Akonadi::Item::List& incidences );
-    /* reimp */ QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end ) const;
+    /* reimp */void incidencesAdded( const Akonadi::Item::List &incidences );
+    /* reimp */void incidencesAboutToBeRemoved( const Akonadi::Item::List &incidences );
+    /* reimp */void incidencesChanged( const Akonadi::Item::List &incidences );
+    /* reimp */QPair<KDateTime,KDateTime> actualDateRange( const KDateTime &start,
+                                                           const KDateTime &end ) const;
 
     /**
      * @deprecated
@@ -115,8 +116,9 @@ class MonthView : public KOEventView
     void addIncidence( const Akonadi::Item &incidence );
     void moveStartDate( int weeks, int months );
     void triggerDelayedReload() {
-      if ( !mReloadTimer.isActive() )
+      if ( !mReloadTimer.isActive() ) {
         mReloadTimer.start( 50 );
+      }
     }
 
     MonthGraphicsView *mView;

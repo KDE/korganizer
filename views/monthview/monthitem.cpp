@@ -62,7 +62,7 @@ void MonthItem::deleteAll()
   mMonthGraphicsItemList.clear();
 }
 
-QWidget* MonthItem::parentWidget() const
+QWidget *MonthItem::parentWidget() const
 {
   return mMonthScene ? mMonthScene->monthView() : 0;
 }
@@ -560,7 +560,9 @@ QString IncidenceMonthItem::text( bool end ) const
 QString IncidenceMonthItem::toolTipText( const QDate &date ) const
 {
   return IncidenceFormatter::toolTipStr(
-           Akonadi::displayName( mIncidence.parentCollection() ), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
+    Akonadi::displayName( mIncidence.parentCollection() ),
+    Akonadi::incidence( mIncidence ).get(),
+    date, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const
