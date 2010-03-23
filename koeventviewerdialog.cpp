@@ -36,13 +36,12 @@ KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent,
   mEventViewer = new KOEventViewer( calendar, this );
   setMainWidget( mEventViewer );
 
-  // FIXME: Set a sensible size (based on the content?).
   if ( compact ) {
     setFixedSize( 240,284 );
     move( 0, 15 );
   } else {
-    setMinimumSize( 400, 400 );
-    resize( 420, 400 );
+    setMinimumSize( 500, 500 );
+    resize( 520, 500 );
   }
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
 }
