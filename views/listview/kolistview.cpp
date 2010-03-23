@@ -365,14 +365,16 @@ void KOListView::showDates( const QDate &start, const QDate &end )
 
 void KOListView::addIncidences( const Item::List &incidenceList, const QDate &date )
 {
-  Q_FOREACH( const Item & i, incidenceList )
+  Q_FOREACH ( const Item & i, incidenceList ) {
     addIncidence( i, date );
+  }
 }
 
 void KOListView::addIncidence( const Item &aitem, const QDate &date )
 {
-  if ( !Akonadi::hasIncidence( aitem ) && mItems.contains( aitem.id() ) )
+  if ( !Akonadi::hasIncidence( aitem ) && mItems.contains( aitem.id() ) ) {
     return;
+  }
 
   mDateList.insert( aitem.id(), date );
   mItems.insert( aitem.id(), aitem );
@@ -391,8 +393,9 @@ void KOListView::addIncidence( const Item &aitem, const QDate &date )
   }
   KOListViewItem *item = new KOListViewItem( aitem.id(), mListView );
   ListItemVisitor v( item );
-  if ( !tinc->accept( v ) )
+  if ( !tinc->accept( v ) ) {
     delete item;
+  }
 }
 
 void KOListView::showIncidences( const Item::List &incidenceList, const QDate &date )
@@ -467,7 +470,8 @@ KOListViewItem *KOListView::getItemForIncidence( const Item &aitem )
   return 0;
 }
 
-Incidence::Ptr KOListView::incidenceForId( const Item::Id &id ) const {
+Incidence::Ptr KOListView::incidenceForId( const Item::Id &id ) const
+{
   return Akonadi::incidence( mItems.value( id ) );
 }
 
