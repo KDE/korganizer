@@ -102,7 +102,8 @@ TimelineSubItem::TimelineSubItem( Akonadi::Calendar *calendar,
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
   setTooltipText( IncidenceFormatter::toolTipStr(
-                  Akonadi::displayName(incidence.parentCollection()), Akonadi::incidence( incidence ).get(), originalStart().date(),
+                  Akonadi::displayName( incidence.parentCollection() ),
+                  Akonadi::incidence( incidence ).get(), originalStart().date(),
                   true, KOPrefs::instance()->timeSpec() ) );
   if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
     setMoveable( true );

@@ -35,7 +35,6 @@
 
 class KDGanttViewItem;
 
-
 namespace Akonadi {
   class Calendar;
 }

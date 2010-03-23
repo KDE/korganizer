@@ -43,37 +43,36 @@ using namespace KOrg;
 using namespace KCal;
 
 KOTimelineView::KOTimelineView( QWidget *parent )
-  : KOEventView( parent )
-  , mEventPopup( 0 )
+  : KOEventView( parent ), mEventPopup( 0 )
 {
-    QVBoxLayout *vbox = new QVBoxLayout( this );
-    mGantt = new KDGanttView( this );
-    mGantt->setCalendarMode( true );
-    mGantt->setShowLegendButton( false );
-    mGantt->setFixedHorizon( true );
-    mGantt->removeColumn( 0 );
-    mGantt->addColumn( i18n( "Calendar" ) );
-    mGantt->setHeaderVisible( true );
-    if ( KGlobal::locale()->use12Clock() ) {
-      mGantt->setHourFormat( KDGanttView::Hour_12 );
-    } else {
-      mGantt->setHourFormat( KDGanttView::Hour_24_FourDigit );
-    }
+  QVBoxLayout *vbox = new QVBoxLayout( this );
+  mGantt = new KDGanttView( this );
+  mGantt->setCalendarMode( true );
+  mGantt->setShowLegendButton( false );
+  mGantt->setFixedHorizon( true );
+  mGantt->removeColumn( 0 );
+  mGantt->addColumn( i18n( "Calendar" ) );
+  mGantt->setHeaderVisible( true );
+  if ( KGlobal::locale()->use12Clock() ) {
+    mGantt->setHourFormat( KDGanttView::Hour_12 );
+  } else {
+    mGantt->setHourFormat( KDGanttView::Hour_24_FourDigit );
+  }
 
-    vbox->addWidget( mGantt );
+  vbox->addWidget( mGantt );
 
-    connect( mGantt, SIGNAL(gvCurrentChanged(KDGanttViewItem *)),
-             SLOT(itemSelected(KDGanttViewItem *)) );
-    connect( mGantt, SIGNAL(itemDoubleClicked(KDGanttViewItem *)),
-             SLOT(itemDoubleClicked(KDGanttViewItem *)) );
-    connect( mGantt, SIGNAL(itemRightClicked(KDGanttViewItem *)),
-             SLOT(itemRightClicked(KDGanttViewItem *)) );
-    connect( mGantt, SIGNAL(gvItemMoved(KDGanttViewItem *)),
-             SLOT(itemMoved(KDGanttViewItem *)) );
-    connect( mGantt, SIGNAL(rescaling(KDGanttView::Scale)),
-             SLOT(overscale(KDGanttView::Scale)) );
-    connect( mGantt, SIGNAL(dateTimeDoubleClicked(const QDateTime &)),
-             SLOT(newEventWithHint(const QDateTime &)) );
+  connect( mGantt, SIGNAL(gvCurrentChanged(KDGanttViewItem *)),
+           SLOT(itemSelected(KDGanttViewItem *)) );
+  connect( mGantt, SIGNAL(itemDoubleClicked(KDGanttViewItem *)),
+           SLOT(itemDoubleClicked(KDGanttViewItem *)) );
+  connect( mGantt, SIGNAL(itemRightClicked(KDGanttViewItem *)),
+           SLOT(itemRightClicked(KDGanttViewItem *)) );
+  connect( mGantt, SIGNAL(gvItemMoved(KDGanttViewItem *)),
+           SLOT(itemMoved(KDGanttViewItem *)) );
+  connect( mGantt, SIGNAL(rescaling(KDGanttView::Scale)),
+           SLOT(overscale(KDGanttView::Scale)) );
+  connect( mGantt, SIGNAL(dateTimeDoubleClicked(const QDateTime &)),
+           SLOT(newEventWithHint(const QDateTime &)) );
 }
 
 KOTimelineView::~KOTimelineView()
@@ -125,14 +124,15 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
     mCalendarItemMap.insert( -1, item );
   } else {
-    const CollectionSelection* colSel = collectionSelection();
+    const CollectionSelection *colSel = collectionSelection();
     const Collection::List collections = colSel->selectedCollections();
 
-    Q_FOREACH( const Collection &collection, collections ) {
+    Q_FOREACH ( const Collection &collection, collections ) {
       item = new TimelineItem( Akonadi::displayName( collection ), calendar(), mGantt );
       const QColor resourceColor = KOHelper::resourceColor( collection );
-      if ( resourceColor.isValid() )
+      if ( resourceColor.isValid() ) {
         item->setColors( resourceColor, resourceColor, resourceColor );
+      }
       mCalendarItemMap.insert( collection.id(), item );
     }
   }
@@ -142,8 +142,9 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
     events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
-    Q_FOREACH( const Item& i, events )
+    Q_FOREACH ( const Item &i, events ) {
       insertIncidence( i, day );
+    }
   }
 
   mGantt->setUpdateEnabled( true );
@@ -211,7 +212,8 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
   if ( !mEventPopup ) {
     mEventPopup = eventPopup();
   }
-  mEventPopup->showIncidencePopup( tlitem->incidence(), Akonadi::incidence( tlitem->incidence() )->dtStart().date() );
+  mEventPopup->showIncidencePopup( tlitem->incidence(),
+                                   Akonadi::incidence( tlitem->incidence() )->dtStart().date() );
   mSelectedItemList << tlitem->incidence();
 }
 
@@ -273,8 +275,9 @@ void KOTimelineView::insertIncidence( const Item &aitem, const QDate &day )
 void KOTimelineView::insertIncidence( const Item &incidence )
 {
   const Event::Ptr event = Akonadi::event( incidence );
-  if ( !event )
+  if ( !event ) {
     return;
+  }
 
   if ( event->recurs() ) {
     insertIncidence( incidence, QDate() );
@@ -287,7 +290,7 @@ void KOTimelineView::insertIncidence( const Item &incidence )
     if ( events.contains( incidence ) ) //PENDING(AKONADI_PORT) check if correct. also check the original if, was inside the for loop (unnecessarily)
       for ( Item::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
         insertIncidence( *it, day );
-    }
+      }
   }
 }
 

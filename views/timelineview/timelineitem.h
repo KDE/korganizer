@@ -63,7 +63,8 @@ class TimelineItem : public KDGanttViewTaskItem
 class TimelineSubItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineSubItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence, TimelineItem *parent );
+    TimelineSubItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence,
+                     TimelineItem *parent );
     ~TimelineSubItem();
 
     Akonadi::Item  incidence() const { return mIncidence; }
