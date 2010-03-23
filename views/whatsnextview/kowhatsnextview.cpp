@@ -111,7 +111,7 @@ void KOWhatsNextView::updateView()
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
     Event::List::ConstIterator it;
-    Q_FOREACH( const Item& evItem, events ) {
+    Q_FOREACH ( const Item &evItem, events ) {
       Event::Ptr ev = Akonadi::event( evItem );
       if ( !ev->recurs() ) {
         appendEvent( evItem );
@@ -178,7 +178,7 @@ void KOWhatsNextView::updateView()
   QStringList myEmails( KOPrefs::instance()->allEmails() );
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
-  Q_FOREACH( const Item& evItem, events ) {
+  Q_FOREACH ( const Item &evItem, events ) {
     Event::Ptr ev = Akonadi::event( evItem );
     Attendee *me = ev->attendeeByMails( myEmails );
     if ( me != 0 ) {
@@ -330,13 +330,14 @@ void KOWhatsNextView::showIncidence( const QString &uid )
   Item incidence;
 
   Akonadi::Calendar* cal = dynamic_cast<Akonadi::Calendar*>( calendar() );
-  if ( !cal )
+  if ( !cal ) {
     return;
+  }
 
   if ( uid.startsWith( QLatin1String( "event:" ) ) ) {
-    incidence = cal->incidence( cal->itemIdForIncidenceUid(uid.mid( 6 )) );
+    incidence = cal->incidence( cal->itemIdForIncidenceUid( uid.mid( 6 ) ) );
   } else if ( uid.startsWith( QLatin1String( "todo:" ) ) ) {
-    incidence = cal->incidence( cal->itemIdForIncidenceUid(uid.mid( 5 )) );
+    incidence = cal->incidence( cal->itemIdForIncidenceUid( uid.mid( 5 ) ) );
   }
 
   if ( incidence.isValid() ) {
