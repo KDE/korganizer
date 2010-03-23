@@ -83,10 +83,7 @@ class KOTodoModel : public QAbstractItemModel
     /** Reloads only the specified todo (if the incidence is a todo) */
     void processChange( const Akonadi::Item &incidence, int action );
 
-public:
     Akonadi::Item todoForIndex( const QModelIndex &idx ) const;
-
-public:
 
     /** Sets the incidence changer used to edit incidences (todos)
      *
@@ -156,7 +153,7 @@ public:
      * @return Pointer to the TodoTreeNode node which represents the todo
      *         searched for or 0 if not found.
      */
-     TodoTreeNode *findTodo( const QString &uid ) const;
+    TodoTreeNode *findTodo( const QString &uid ) const;
 
     /**
      * If the todo is overdue or due today, the expandIndex signal
@@ -173,7 +170,7 @@ public:
      *
      * @param todo the todo that will be checked
      */
-    bool isInHierarchyLoop( const KCal::Todo* todo ) const;
+    bool isInHierarchyLoop( const KCal::Todo *todo ) const;
 
     /** Insert a todo at the right place in the todo tree.
      *

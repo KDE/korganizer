@@ -184,7 +184,7 @@ KOTodoModel::KOTodoModel( QObject *parent )
   mFlatView = false;
 }
 
-static bool isDueToday( const Todo* todo )
+static bool isDueToday( const Todo *todo )
 {
   return !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate();
 }
@@ -300,8 +300,10 @@ void KOTodoModel::processChange( const Item & aitem, int action )
 
 Akonadi::Item KOTodoModel::todoForIndex( const QModelIndex &idx ) const
 {
-  if ( !idx.isValid() )
+  if ( !idx.isValid() ) {
     return Item();
+  }
+
   TodoTreeNode *node = static_cast<TodoTreeNode *>( idx.internalPointer() );
   Q_ASSERT( node );
   return node->isValid() ? node->mTodo : Akonadi::Item();
@@ -408,10 +410,11 @@ KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const QString &uid ) const
 void KOTodoModel::expandTodoIfNeeded( const Item &todoItem )
 {
   Todo::Ptr todo = Akonadi::todo( todoItem );
-  if ( !todo )
+  if ( !todo ) {
     return;
-  if ( todo->isOverdue() ||
-       isDueToday( todo.get() ) ) {
+  }
+
+  if ( todo->isOverdue() || isDueToday( todo.get() ) ) {
     QModelIndex index = getModelIndex( findTodo( Akonadi::incidence( todoItem )->uid() ) );
     emit expandIndex( index );
   }
@@ -468,7 +471,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
 
     // FIXME(AKONADI_PORT) how to handle the related incidences where we don't know the item?
     Akonadi::Item relatedTodoItem;
-    relatedTodoItem.setPayload( Todo::Ptr(relatedTodo->clone()) );
+    relatedTodoItem.setPayload( Todo::Ptr( relatedTodo->clone() ) );
 
     // if the parent is not already in the tree, we have to insert it first.
     // necessary because we can't rely on todos coming in a defined order.
@@ -686,7 +689,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
       return QVariant( IncidenceFormatter::toolTipStr(
-                       Akonadi::displayName(node->mTodo.parentCollection()), todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
+                         Akonadi::displayName( node->mTodo.parentCollection() ),
+                         todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
   } else {
       return QVariant();
     }

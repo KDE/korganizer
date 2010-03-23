@@ -450,7 +450,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
                                        QItemSelectionModel::Rows );
     }
 #else
-   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO; 
+   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
   } else if ( modifiers == Qt::ControlModifier ) {
     QModelIndexList selection = mView->selectionModel()->selectedRows();
@@ -558,7 +558,6 @@ void KOTodoView::printPreviewTodo()
   printTodo( true );
 }
 
-
 void KOTodoView::printTodo( bool preview )
 {
    QModelIndexList selection = mView->selectionModel()->selectedRows();
@@ -620,8 +619,9 @@ void KOTodoView::newSubTodo()
 
 void KOTodoView::copyTodoToDate( const QDate &date )
 {
-  if ( !mChanger )
+  if ( !mChanger ) {
     return;
+  }
 
   QModelIndexList selection = mView->selectionModel()->selectedRows();
   if ( selection.size() != 1 ) {
@@ -633,8 +633,9 @@ void KOTodoView::copyTodoToDate( const QDate &date )
 
   const Item origItem = mModel->todoForIndex( origIndex );
   const Todo::Ptr orig = Akonadi::todo( origItem );
-  if ( !orig )
+  if ( !orig ) {
     return;
+  }
 
   Todo::Ptr todo( orig->clone() );
 
@@ -678,9 +679,9 @@ QMenu *KOTodoView::createCategoryPopupMenu()
 
   QStringList::Iterator it;
   CategoryConfig cc( KOPrefs::instance() );
-  Q_FOREACH( const QString& i, cc.customCategories() ) {
+  Q_FOREACH ( const QString &i, cc.customCategories() ) {
     QAction *action = tempMenu->addAction( i );
-    action->setCheckable(true);
+    action->setCheckable( true );
     mCategory[ action ] = i;
     if ( checkedCategories.contains( i ) ) {
       action->setChecked( true );

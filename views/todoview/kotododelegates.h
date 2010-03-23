@@ -29,7 +29,6 @@
 #include <QModelIndex>
 #include <QSlider>
 
-
 namespace Akonadi {
   class Calendar;
 }
