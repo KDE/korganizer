@@ -61,7 +61,7 @@ class PageItem : public QTreeWidgetItem
     PageItem( QTreeWidget *parent, const QString &path )
       : QTreeWidgetItem( parent ),
         mPath( path ), mIsActive( false )
-    { 
+    {
       setFlags( flags() | Qt::ItemIsUserCheckable );
       setCheckState( 0, Qt::Unchecked );
       mName = path.mid( path.lastIndexOf( '/' ) + 1 );
@@ -95,7 +95,7 @@ class PageItem : public QTreeWidgetItem
         Q_FOREACH( it, list ) {
           if ( allowedTypes.contains( it->metaObject()->className() )  ) {
             QString name = it->objectName();
-            if ( name.startsWith( "X_" ) ) {
+            if ( name.startsWith( QLatin1String( "X_" ) ) ) {
               new QTreeWidgetItem( this, QStringList()
                 << name
                 << allowedTypes[ it->metaObject()->className() ]
@@ -154,7 +154,7 @@ KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *p
 
 void KCMDesignerFields::delayedInit()
 {
-  kDebug() <<"KCMDesignerFields::delayedInit()";
+  kDebug() << "KCMDesignerFields::delayedInit()";
 
   initGUI();
 
@@ -456,14 +456,14 @@ void KCMDesignerFields::startDesigner()
     cmdLine += ' ' + KShell::quoteArg( pageItem->path() );
   }
 
-  KRun::runCommand( cmdLine, topLevelWidget());
+  KRun::runCommand( cmdLine, topLevelWidget() );
 }
 
 void KCMDesignerFields::showWhatsThis(const QString &href)
 {
-  if (href.startsWith("whatsthis:")) {
+  if ( href.startsWith( QLatin1String( "whatsthis:" ) ) ) {
     QPoint pos = QCursor::pos();
-    QWhatsThis::showText(pos, href.mid(10), this);
+    QWhatsThis::showText( pos, href.mid( 10 ), this );
   }
 }
 

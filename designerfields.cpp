@@ -84,7 +84,7 @@ void DesignerFields::initGUI( const QString &uiFile )
   Q_FOREACH( it, list ) {
     if ( allowedTypes.contains( it->metaObject()->className() ) ) {
       QString name = it->objectName();
-      if ( name.startsWith( "X_" ) ) {
+      if ( name.startsWith( QLatin1String( "X_" ) ) ) {
         name = name.mid( 2 );
 
         QWidget *widget = it;
