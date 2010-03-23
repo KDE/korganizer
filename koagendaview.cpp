@@ -1328,7 +1328,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
   QDateTime firstVisibleDateTime = mSelectedDates.first();
   QDateTime lastVisibleDateTime = mSelectedDates.last();
 
-  lastVisibleDateTime.setTime( QTime( 23, 59 ) );
+  lastVisibleDateTime.setTime( QTime( 23, 59, 59, 59 ) );
   firstVisibleDateTime.setTime( QTime( 0, 0 ) );
   DateTimeList dateTimeList;
 
@@ -1369,15 +1369,12 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
     } else if ( event ) {
       dateToAdd = incDtStart;
       incidenceEnd = incDtEnd;
+    }
 
-      if ( !dateToAdd.time().isValid() ) {
-        // so comparisons with < > actually work
-        dateToAdd.setTime( QTime( 0, 0 ) );
-      }
-
-      if ( event->doesFloat() ) {
-        incidenceEnd.setTime( QTime( 23, 59 ) );
-      }
+    if ( incidence->doesFloat() ) {
+      // so comparisons with < > actually work
+      dateToAdd.setTime( QTime( 0, 0 ) );
+      incidenceEnd.setTime( QTime( 23, 59, 59, 59 ) );
     }
 
     if ( dateToAdd <= lastVisibleDateTime && incidenceEnd > firstVisibleDateTime ) {
