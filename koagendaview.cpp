@@ -1361,7 +1361,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
 
       // To-dos are drawn with the bottom of the rectangle at dtDue
       // if dtDue is at 00:00, then it should be displayed in the previous day, at 23:59
-      if ( dateToAdd.time() == QTime( 0, 0 ) ) {
+      if ( !todo->doesFloat() && dateToAdd.time() == QTime( 0, 0 ) ) {
         dateToAdd = dateToAdd.addSecs( -1 );
       }
 
