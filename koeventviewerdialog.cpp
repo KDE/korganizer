@@ -38,7 +38,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
 
-  resize( QSize(400, 420).expandedTo(minimumSizeHint()) );
+  resize( QSize(500, 520).expandedTo(minimumSizeHint()) );
 
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
   connect( this, SIGNAL(user1Clicked()), mEventViewer,
