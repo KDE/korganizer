@@ -124,8 +124,9 @@ void KOJournalView::updateView()
     --it;
     it.value()->clear();
     const Item::List journals = calendar()->journals( it.key() );
-    Q_FOREACH( const Item& i, journals )
+    Q_FOREACH ( const Item &i, journals ) {
       it.value()->addJournal( i );
+    }
   }
 }
 
@@ -163,9 +164,11 @@ void KOJournalView::showIncidences( const Item::List &incidences, const QDate &d
 {
   Q_UNUSED( date );
   clearEntries();
-  Q_FOREACH (const Item &i, incidences )
-    if ( const Journal::Ptr j = Akonadi::journal( i ) )
+  Q_FOREACH ( const Item &i, incidences ) {
+    if ( const Journal::Ptr j = Akonadi::journal( i ) ) {
       appendJournal( i, j->dtStart().date() );
+    }
+  }
 }
 
 void KOJournalView::changeIncidenceDisplay( const Item &incidence, int action )

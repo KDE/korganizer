@@ -112,8 +112,9 @@ void JournalDateView::addJournal( const Item &j )
 Item::List JournalDateView::journals() const
 {
   Item::List l;
-  Q_FOREACH( const JournalView* const i, mEntries )
-      l.push_back( i->journal() );
+  Q_FOREACH ( const JournalView *const i, mEntries ) {
+    l.push_back( i->journal() );
+  }
   return l;
 }
 
