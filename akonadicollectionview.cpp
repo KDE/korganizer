@@ -382,7 +382,7 @@ void AkonadiCollectionView::newCalendarDone( KJob *job )
   Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
   if ( createjob->error() ) {
     //TODO(AKONADI_PORT) this should show an error dialog and should be merged with the identical code in ActionManager
-    kWarning( 5250 ) << "Create calendar failed:" << createjob->errorString();
+    kWarning() << "Create calendar failed:" << createjob->errorString();
     mNotSendAddRemoveSignal = false;
     return;
   }
@@ -424,7 +424,7 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
   kDebug();
   Akonadi::CollectionDeleteJob *deletejob = static_cast<Akonadi::CollectionDeleteJob*>( job );
   if ( deletejob->error() ) {
-    kWarning( 5250 ) << "Delete calendar failed:" << deletejob->errorString();
+    kWarning() << "Delete calendar failed:" << deletejob->errorString();
     mNotSendAddRemoveSignal = false;
     return;
   }
