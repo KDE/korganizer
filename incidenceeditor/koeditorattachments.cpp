@@ -26,7 +26,6 @@
 
 #include "koeditorattachments.h"
 
-#include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kvcarddrag.h>
 
 #include <KCal/Attachment>
@@ -526,7 +525,7 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
     KPIM::KVCardDrag::fromMimeData( mimeData, addressees );
     for ( KABC::Addressee::List::ConstIterator it = addressees.constBegin();
           it != addressees.constEnd(); ++it ) {
-      urls.append( KDEPIMPROTOCOL_CONTACT + ( *it ).uid() );
+      urls.append( QLatin1String( "uid:" ) + ( *it ).uid() );
       // there is some weirdness about realName(), hence fromUtf8
       labels.append( QString::fromUtf8( ( *it ).realName().toLatin1() ) );
     }
@@ -721,13 +720,13 @@ void KOEditorAttachments::addUriAttachment( const QString &uri,
     item->setUri( uri );
     item->setLabel( label );
     if ( mimeType.isEmpty() ) {
-      if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
+      if ( uri.startsWith( QLatin1String( "uid:" ) ) ) {
         item->setMimeType( "text/directory" );
-      } else if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
+      } else if ( uri.startsWith( QLatin1String( "kmail:" ) ) ) {
         item->setMimeType( "message/rfc822" );
-      } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
+      } else if ( uri.startsWith( QLatin1String( "urn:x-ical" ) ) ) {
         item->setMimeType( "text/calendar" );
-      } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
+      } else if ( uri.startsWith( QLatin1String( "news:" ) ) ) {
         item->setMimeType( "message/news" );
       } else {
         item->setMimeType( KMimeType::findByUrl( uri )->name() );

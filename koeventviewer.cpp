@@ -28,8 +28,6 @@
 #include "urihandler.h"
 #include "korganizerinterface.h"
 
-#include <libkdepim/kdepimprotocols.h>
-
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/groupware.h>
 
@@ -87,10 +85,10 @@ void KOEventViewer::setSource( const QUrl &name )
   QString uri = name.toString();
   // QTextBrowser for some reason insists on putting // or / in links,
   // this is a crude workaround
-  if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ||
-       uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ||
-       uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).section( ':', 0, 0 ) ) ||
-       uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ||
+  if ( uri.startsWith( QLatin1String( "uid:" ) ) ||
+       uri.startsWith( QLatin1String( "kmail:" ) ) ||
+       uri.startsWith( QString( "urn:x-ical" ).section( ':', 0, 0 ) ) ||
+       uri.startsWith( QLatin1String( "news:" ) ) ||
        uri.startsWith( QLatin1String( "mailto:" ) ) ) {
     uri.replace( QRegExp( "^([^:]+:)/+" ), "\\1" );
   }
