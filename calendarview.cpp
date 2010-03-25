@@ -1015,12 +1015,12 @@ void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollection
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDate &dt )
 {
   QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
-  return newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
+  newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
 {
-  return newEvent( selectedCollections, startDt, QDateTime( startDt ) );
+  newEvent( selectedCollections, startDt, QDateTime( startDt ) );
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
@@ -1297,6 +1297,7 @@ void CalendarView::toggleAlarm( const Item &item )
     Alarm *alm = incidence->newAlarm();
     alm->setType( Alarm::Display );
     alm->setEnabled( true );
+    alm->setStartOffset( Duration( 60 ) ); //Set to 1 minute
   }
   mChanger->changeIncidence( oldincidence, item, KOGlobals::ALARM_MODIFIED, this );
   mChanger->endChange( item );
