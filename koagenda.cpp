@@ -1683,23 +1683,25 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
       multiItems.append( current );
     }
   }
+  QPtrList<KOAgendaItem>::iterator it = multiItems.begin();
+  QPtrList<KOAgendaItem>::iterator e = multiItems.end();
 
-  KOAgendaItem *next = 0;
-  KOAgendaItem *prev = 0;
-  KOAgendaItem *last = multiItems.last();
-  KOAgendaItem *first = multiItems.first();
-  KOAgendaItem *setFirst,*setLast;
-  current = first;
-  while (current) {
-    next = multiItems.next();
-    if (current == first) setFirst = 0;
-    else setFirst = first;
-    if (current == last) setLast = 0;
-    else setLast = last;
+  if ( it != e ) { // .first asserts if the list is empty
+    KOAgendaItem *first = multiItems.first();
+    KOAgendaItem *last = multiItems.last();
+    KOAgendaItem *prev = 0, *next = 0;
 
-    current->setMultiItem(setFirst, prev, next, setLast);
-    prev=current;
-    current = next;
+    while ( it != e ) {
+      KOAgendaItem *item = *it;
+      ++it;
+      next = ( it == e ) ? 0 : (*it);
+      if ( item ) {
+        item->setMultiItem( ( item == first ) ? 0 : first,
+                            prev, next,
+                            ( item == last ) ? 0 : last );
+      }
+      prev = item;
+    }
   }
 
   marcus_bains();
@@ -1728,11 +1730,15 @@ void KOAgenda::removeIncidence( Incidence *incidence )
 
 void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
 {
-  if ( !agendaItem ) return;
+  if ( !agendaItem ) {
+    return;
+  }
+
   agendaItem->hide();
   addChild( agendaItem );
-  if ( !mItems.containsRef( agendaItem ) )
+  if ( !mItems.containsRef( agendaItem ) ) {
     mItems.append( agendaItem );
+  }
   placeSubCells( agendaItem );
 
   agendaItem->show();
@@ -1745,8 +1751,9 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
   KOAgendaItem *thisItem = item;
   QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
   removeChild( thisItem );
+
   int pos = mItems.find( thisItem );
-  if ( pos>=0 ) {
+  if ( pos >= 0 ) {
     mItems.take( pos );
     taken = true;
   }
@@ -1918,7 +1925,9 @@ int KOAgenda::visibleContentsYMax()
 
 void KOAgenda::deselectItem()
 {
-  if (mSelectedItem.isNull()) return;
+  if ( mSelectedItem.isNull() ) {
+    return;
+  }
   mSelectedItem->select(false);
   mSelectedItem = 0;
 }
