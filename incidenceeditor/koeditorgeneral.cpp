@@ -455,6 +455,8 @@ void KOEditorGeneral::updateAlarmWidgets()
       } else if ( offset % 60 == 0 ) { // divides evenly into hours?
         useoffset = offset / 60;
         mAlarmIncrCombo->setCurrentIndex( 1 );
+      } else { 
+        mAlarmIncrCombo->setCurrentIndex( 0 );
       }
       mAlarmTimeEdit->setValue( useoffset );
     } else {
