@@ -181,6 +181,12 @@ AlarmListItem *AlarmDialog::searchByUid( const QString &uid )
   return found;
 }
 
+static QString cleanSummary( const QString &summary )
+{
+  QString ret = summary;
+  return ret.replace( '\n', ' ' );
+}
+
 void AlarmDialog::addIncidence( Incidence *incidence,
                                 const QDateTime &reminderAt,
                                 const QString &displayText )
@@ -193,7 +199,7 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   item->mHappening = QDateTime();
   item->mRemindAt = reminderAt;
   item->mDisplayText = displayText;
-  item->setText( 0, incidence->summary() );
+  item->setText( 0, cleanSummary( incidence->summary() ) );
   item->setText( 1, QString() );
 
   Event *event;
@@ -319,7 +325,7 @@ void AlarmDialog::edit()
     KMessageBox::sorry(
       this,
       i18n( "\"%1\" is a read-only item so modifications are not possible." ).
-      arg( incidence->summary() ) );
+      arg( cleanSummary( incidence->summary() ) ) );
     return;
   }
 
@@ -603,7 +609,7 @@ void AlarmDialog::showDetails()
     QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
     mDetailView->addText( txt );
   }
-  item->setText( 0, incidence->summary() );
+  item->setText( 0, cleanSummary( incidence->summary() ) );
   mDetailView->appendIncidence( incidence, item->mRemindAt.date() );
 }
 
