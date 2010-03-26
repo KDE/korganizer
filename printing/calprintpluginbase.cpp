@@ -39,9 +39,16 @@
 #ifndef KORG_NOPRINTER
 
 inline int round(const double x)
- {
- return int(x > 0.0 ? x + 0.5 : x - 0.5);
- }
+{
+  return int(x > 0.0 ? x + 0.5 : x - 0.5);
+}
+
+static QString cleanStr( const QString &instr )
+{
+  QString ret = instr;
+  return ret.replace( '\n', ' ' );
+}
+
 /******************************************************************
  **              The Todo positioning structure                  **
  ******************************************************************/
@@ -899,14 +906,14 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
                   "%1-%2 %3" ).
             arg( KGlobal::locale()->formatTime( startTime.time() ) ).
             arg( KGlobal::locale()->formatTime( endTime.time() ) ).
-            arg( event->summary() );
+            arg( cleanStr( event->summary() ) );
     } else {
       str = i18n( "starttime - endtime summary, location",
                   "%1-%2 %3, %4" ).
             arg( KGlobal::locale()->formatTime( startTime.time() ) ).
             arg( KGlobal::locale()->formatTime( endTime.time() ) ).
-            arg( event->summary() ).
-            arg( event->location() );
+            arg( cleanStr( event->summary() ) ).
+            arg( cleanStr( event->location() ) );
     }
     showEventBox( p, eventBox, event, str );
   }
@@ -918,9 +925,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     bool fullDate, bool printRecurDaily, bool printRecurWeekly )
 {
   QString dayNumStr;
-  QString ampm;
   const KLocale*local = KGlobal::locale();
-
 
   // This has to be localized
   if ( fullDate && mCalSys ) {
