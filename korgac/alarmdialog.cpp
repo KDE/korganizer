@@ -269,6 +269,12 @@ ReminderListItem *AlarmDialog::searchByItem( const Akonadi::Item &incidence )
   return found;
 }
 
+static QString cleanSummary( const QString &summary )
+{
+  QString ret = summary;
+  return ret.replace( '\n', ' ' );
+}
+
 void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
                                 const QDateTime &reminderAt,
                                 const QString &displayText )
@@ -285,7 +291,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->mDisplayText = displayText;
   QString summStr = incidence->summary();
   summStr.truncate( 30 );
-  item->setText( 0, summStr );
+  item->setText( 0, cleanSummary( summStr ) );
   item->setText( 1, QString() );
 
   Event *event;
@@ -429,7 +435,7 @@ void AlarmDialog::edit()
       this,
       i18nc( "@info",
              "\"%1\" is a read-only item so modifications are not possible.",
-             incidence->summary() ) );
+             cleanSummary( incidence->summary() ) ) );
     return;
   }
 
@@ -451,7 +457,7 @@ void AlarmDialog::edit()
       this,
       i18nc( "@info",
              "An internal KOrganizer error occurred attempting to modify \"%1\"",
-             incidence->summary() ) );
+             cleanSummary( incidence->summary() ) ) );
   }
 
   // get desktop # where korganizer (or kontact) runs
@@ -661,13 +667,14 @@ void AlarmDialog::eventNotification()
           if ( alarm->parent()->summary().isEmpty() ) {
             subject = i18nc( "@title", "Reminder" );
           } else {
-            subject = i18nc( "@title", "Reminder: %1", alarm->parent()->summary() );
+            subject = i18nc( "@title", "Reminder: %1", cleanSummary( alarm->parent()->summary() ) );
           }
         } else {
           subject = i18nc( "@title", "Reminder: %1", alarm->mailSubject() );
         }
 
-        QString body = IncidenceFormatter::mailBodyStr( alarm->parent(), KSystemTimeZones::local() );
+        QString body =
+          IncidenceFormatter::mailBodyStr( alarm->parent(), KSystemTimeZones::local() );
         if ( !alarm->mailText().isEmpty() ) {
           body += '\n' + alarm->mailText();
         }
