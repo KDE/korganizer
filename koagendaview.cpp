@@ -1429,7 +1429,7 @@ void KOAgendaView::updateEventIndicatorTop( int newY )
 {
   uint i;
   for( i = 0; i < mMinY.size(); ++i ) {
-    mEventIndicatorTop->enableColumn( i, newY >= mMinY[i] );
+    mEventIndicatorTop->enableColumn( i, newY > mMinY[i] );
   }
   mEventIndicatorTop->update();
 }
