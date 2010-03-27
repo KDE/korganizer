@@ -1,4 +1,4 @@
-/*YetAnother
+/*
   This file is part of KOrganizer.
 
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
