@@ -79,6 +79,7 @@ HtmlExportJob::HtmlExportJob( Akonadi::Calendar *calendar, KOrg::HTMLExportSetti
 
 HtmlExportJob::~HtmlExportJob()
 {
+  //kDebug()<<"HtmlExportJob::~HtmlExportJob()";
   delete d;
 }
 
@@ -120,9 +121,7 @@ void HtmlExportJob::start()
     }
   }
   if( !canExportItem ) {
-    KMessageBox::information( d->mParentWidget, i18n("No event found in date specified, no HTML file will created"),
-                              i18nc( "@title:window", "Export Status" ) );
-    deleteLater();
+    finishExport();
   }
 }
 
@@ -173,6 +172,7 @@ void HtmlExportJob::finishExport()
 
   KMessageBox::information( d->mParentWidget, saveMessage,
                i18nc( "@title:window", "Export Status" ) );
+  deleteLater();
 }
 
 bool HtmlExportJob::save( const QString &fileName )
