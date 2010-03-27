@@ -84,6 +84,7 @@ HtmlExportJob::~HtmlExportJob()
 
 void HtmlExportJob::start()
 {
+  bool canExportItem = false;
   // first collect the email addresses of all organisators
   const Akonadi::Item::List events = d->mCalendar->events();
   foreach ( const Akonadi::Item &event, events ) {
@@ -98,6 +99,7 @@ void HtmlExportJob::start()
       job->start();
 
       d->mSubJobCount++;
+      canExportItem = true;
     }
   }
 
@@ -114,7 +116,13 @@ void HtmlExportJob::start()
       job->start();
 
       d->mSubJobCount++;
+      canExportItem = true;
     }
+  }
+  if( !canExportItem ) {
+    KMessageBox::information( d->mParentWidget, i18n("No event found in date specified, no HTML file will created"),
+                              i18nc( "@title:window", "Export Status" ) );
+    deleteLater();
   }
 }
 
@@ -128,7 +136,6 @@ void HtmlExportJob::receivedOrganizerInfo( KJob *job )
     if ( !contacts.isEmpty() )
       d->mOrganizersMap.insert( searchJob->property( "incidenceUid" ).toString(), contacts.first() );
   }
-
   if ( d->mSubJobCount == 0 )
     finishExport();
 }
