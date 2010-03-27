@@ -94,8 +94,9 @@ bool IncidenceChanger::beginChange( const Item &item )
 
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   Q_ASSERT( incidence );
-  kDebug() << "id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
-  
+  kDebug() << "id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision()
+           << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
+
   if ( !d->m_changes.contains( item.id() ) ) { // no nested changes allowed
     d->m_changes.push_back( item.id() );
     d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
@@ -171,9 +172,9 @@ bool IncidenceChanger::endChange( const Item &item )
   if ( !isModification || !d->m_incidenceBeingChanged ) {
     // only if beginChange() with the incidence was called then this is a modification else it
     // is e.g. a new event/todo/journal that was not added yet or an existing one got deleted.
-    kDebug() << "Skipping modify uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
-
-    d->m_changes.removeAll( item.id() );
+    kDebug() << "Skipping modify uid=" << incidence->uid() << "summary=" << incidence->summary()
+             << "type=" << incidence->type();
+    cancelChange( item );
 
     return false;
   }
@@ -190,8 +191,7 @@ bool IncidenceChanger::endChange( const Item &item )
   d->m_itemBeingChanged = Item();
   if ( v.compare( incidence.get(), incidencePtr.get() ) ) {
     kDebug()<<"Incidence is unmodified";
-
-    d->m_changes.removeAll( item.id() );
+    cancelChange( item );
 
     return true;
   }
@@ -201,6 +201,14 @@ bool IncidenceChanger::endChange( const Item &item )
   d->m_oldItemByJob.insert( job, oldItem );
   connect( job, SIGNAL(result( KJob*)), this, SLOT(changeIncidenceFinished(KJob*)) );
   return true;
+}
+
+void IncidenceChanger::cancelChange( const Akonadi::Item &item )
+{
+  if ( Akonadi::hasIncidence( item ) ) {
+    kDebug() << "Canceling change";
+    d->m_changes.removeAll( item.id() );
+  }
 }
 
 bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )

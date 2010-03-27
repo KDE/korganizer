@@ -40,18 +40,27 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
     IncidenceChanger( Akonadi::Calendar *cal, QObject *parent );
     ~IncidenceChanger();
 
+    /** Locks the incidence */
     bool beginChange( const Akonadi::Item & incidence );
+
+    /** Commits the change by starting an akonadi modify job
+     *  The lock is removed in changeIncidenceFinished()
+     */
+    bool endChange( const Akonadi::Item &incidence );
+
+    /** Removes the lock in case you don't want to call endchange() anymore */
+    void cancelChange( const Akonadi::Item &incidence );
+
     bool sendGroupwareMessage( const Akonadi::Item &incidence,
                                KCal::iTIPMethod method,
                                Akonadi::Groupware::HowChanged action,
                                QWidget *parent );
-    bool endChange( const Akonadi::Item &incidence );
 
     bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent );
     bool addIncidence( const KCal::Incidence::Ptr &incidence,
                        const Akonadi::Collection &collection, QWidget *parent );
-  bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newItem,
-                        KOGlobals::WhatChanged, QWidget *parent );
+    bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newItem,
+                          KOGlobals::WhatChanged, QWidget *parent );
     bool deleteIncidence( const Akonadi::Item &incidence, QWidget *parent );
 
     bool cutIncidence( const Akonadi::Item &incidence, QWidget *parent );
