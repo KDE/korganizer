@@ -2009,7 +2009,7 @@ bool ActionManager::handleCommandLine()
     kdError() << "Unable to find default calendar resources view." << endl;
     ret = false;
   } else if ( args->count() <= 0 ) {
-     // No filenames given => all other args are meaningless, show main Window
+    // No filenames given => all other args are meaningless, show main Window
     mainWindow->topLevelWidget()->show();
   } else if ( !args->isSet( "open" ) ) {
     // Import, merge, or ask => we need the resource calendar window anyway.
