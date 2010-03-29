@@ -94,6 +94,13 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
     */
     bool showIncidenceContext( const QString &akonadiUrl );
 
+    /**
+     * Called by KOrganizerUniqueAppHandler in the kontact plugin
+     * Returns true if the command line was successfully handled
+     * false otherwise.
+     */
+    bool handleCommandLine();
+
   private:
     ActionManager *mActionManager;
 };

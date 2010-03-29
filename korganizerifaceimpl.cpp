@@ -136,4 +136,9 @@ bool KOrganizerIfaceImpl::showIncidenceContext( const QString &uid )
   return mActionManager->showIncidenceContext( id );
 }
 
+bool KOrganizerIfaceImpl::handleCommandLine()
+{
+  return mActionManager->handleCommandLine();
+}
+
 #include "korganizerifaceimpl.moc"

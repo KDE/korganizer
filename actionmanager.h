@@ -167,6 +167,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     bool showIncidenceContext( const Akonadi::Item::Id &uid );
 
+    /**
+     * Called by KOrganizerUniqueAppHandler in the kontact plugin
+     * Returns true if the command line was successfully handled
+     * false otherwise.
+     */
+    bool handleCommandLine();
+
   public slots:
     void openEventEditor( const QString &);
     void openEventEditor( const QString &summary,

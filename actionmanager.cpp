@@ -91,6 +91,7 @@
 #include <KToggleAction>
 #include <KWindowSystem>
 #include <KIO/NetAccess>
+#include <kcmdlineargs.h>
 #include <knewstuff3/downloaddialog.h>
 
 
@@ -1521,6 +1522,41 @@ bool ActionManager::showIncidence( const Akonadi::Item::Id &uid )
 bool ActionManager::showIncidenceContext( const Akonadi::Item::Id &uid )
 {
   return mCalendarView->showIncidenceContext( uid );
+}
+
+bool ActionManager::handleCommandLine()
+{
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  KOrg::MainWindow *mainWindow = ActionManager::findInstance( KUrl() );
+
+  bool ret = true;
+
+  if ( !mainWindow ) {
+    kError() << "Unable to find default calendar resources view." << endl;
+    ret = false;
+  } else if ( args->count() <= 0 ) {
+    // No filenames given => all other args are meaningless, show main Window
+    mainWindow->topLevelWidget()->show();
+  } else if ( !args->isSet( "open" ) ) {
+    // Import, merge, or ask => we need the resource calendar window anyway.
+    mainWindow->topLevelWidget()->show();
+
+    // Check for import, merge or ask
+    if ( args->isSet( "import" ) ) {
+      for( int i = 0; i < args->count(); ++i ) {
+        mainWindow->actionManager()->addResource( args->url( i ) );
+      }
+    } else if ( args->isSet( "merge" ) ) {
+      for( int i = 0; i < args->count(); ++i ) {
+        mainWindow->actionManager()->mergeURL( args->url( i ).url() );
+      }
+    } else {
+      for( int i = 0; i < args->count(); ++i ) {
+        mainWindow->actionManager()->importCalendar( args->url( i ) );
+      }
+    }
+  }
+  return ret;
 }
 
 bool ActionManager::deleteIncidence( const Akonadi::Item::Id &uid, bool force )
