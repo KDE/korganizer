@@ -30,7 +30,6 @@
 #include <qhbox.h>
 #include <qbuttongroup.h>
 #include <qvgroupbox.h>
-#include <qwidgetstack.h>
 #include <qdatetime.h>
 #include <qlineedit.h>
 #include <qlabel.h>
@@ -68,7 +67,7 @@
 #include "koeditorgeneral.moc"
 #include "kohelper.h"
 
-KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
+KOEditorGeneral::KOEditorGeneral( QObject *parent, const char* name) :
   QObject( parent, name ), mAttachments(0)
 {
   mType = "Event";
@@ -101,11 +100,6 @@ void KOEditorGeneral::initHeader( QWidget *parent,QBoxLayout *topLayout)
   QGridLayout *headerLayout = new QGridLayout();
   headerLayout->setSpacing( topLayout->spacing() );
   topLayout->addLayout( headerLayout );
-
-#if 0
-  mOwnerLabel = new QLabel(i18n("Owner:"),parent);
-  headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
-#endif
 
   QString whatsThis = i18n("Sets the Title of this event or to-do.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
@@ -197,52 +191,63 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   topLayout->addWidget(mDescriptionEdit, 4);
 }
 
-void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
 {
-  QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);
+  QBoxLayout *alarmLayout = new QHBoxLayout( topLayout );
 
-  mAlarmBell = new QLabel(parent);
-  mAlarmBell->setPixmap(KOGlobals::self()->smallIcon("bell"));
-  alarmLayout->addWidget( mAlarmBell );
+  mAlarmButton = new QCheckBox( parent );
+  QWhatsThis::add( mAlarmButton, i18n( "Enable reminders for this event or to-do." ) );
+  QToolTip::add( mAlarmButton, i18n( "Enable reminders" ) );
+  alarmLayout->addWidget( mAlarmButton );
 
+  mAlarmAdvancedButton = new QPushButton( parent );
+  mAlarmAdvancedButton->setIconSet( KOGlobals::self()->smallIconSet( "bell", 16 ) );
+  QWhatsThis::add( mAlarmAdvancedButton,
+                   i18n( "Push this button to create an advanced set of reminders "
+                         "for this event or to-do." ) );
+  QToolTip::add( mAlarmAdvancedButton, i18n( "Set an advanced reminder" ) );
+  connect( mAlarmAdvancedButton, SIGNAL(clicked()), SLOT(editAlarms()) );
+  alarmLayout->addWidget( mAlarmAdvancedButton );
 
-  mAlarmStack = new QWidgetStack( parent );
-  alarmLayout->addWidget( mAlarmStack );
+  mSimpleAlarmBox = new QHBox( parent );
+  alarmLayout->addWidget( mSimpleAlarmBox );
 
-  mAlarmInfoLabel = new QLabel( i18n("No reminders configured"), mAlarmStack );
-  mAlarmStack->addWidget( mAlarmInfoLabel, AdvancedAlarmLabel );
-
-  QHBox *simpleAlarmBox = new QHBox( mAlarmStack );
-  mAlarmStack->addWidget( simpleAlarmBox, SimpleAlarmPage );
-
-  mAlarmButton = new QCheckBox(i18n("&Reminder:"), simpleAlarmBox );
-  QWhatsThis::add( mAlarmButton,
-       i18n("Activates a reminder for this event or to-do.") );
-
-  QString whatsThis = i18n("Sets how long before the event occurs "
-                           "the reminder will be triggered.");
-  mAlarmTimeEdit = new QSpinBox( 0, 99999, 1, simpleAlarmBox, "alarmTimeEdit" );
+  QString whatsThis, toolTip;
+  if ( mType == "Event" ) {
+    whatsThis = i18n( "Set the time before the event starts when the reminder will be triggered." );
+    toolTip = i18n( "Set the start time trigger offset" );
+  } else {
+    whatsThis = i18n( "Set the time before the to-do is due when the reminder will be triggered." );
+    toolTip = i18n( "Set the due time trigger offset" );
+  }
+  mAlarmTimeEdit = new QSpinBox( 0, 99999, 1, mSimpleAlarmBox, "alarmTimeEdit" );
   mAlarmTimeEdit->setValue( 0 );
   QWhatsThis::add( mAlarmTimeEdit, whatsThis );
+  QToolTip::add( mAlarmTimeEdit, toolTip );
 
-  mAlarmIncrCombo = new QComboBox( false, simpleAlarmBox );
-  QWhatsThis::add( mAlarmIncrCombo, whatsThis );
+  mAlarmIncrCombo = new QComboBox( false, mSimpleAlarmBox );
   mAlarmIncrCombo->insertItem( i18n("minute(s)") );
   mAlarmIncrCombo->insertItem( i18n("hour(s)") );
   mAlarmIncrCombo->insertItem( i18n("day(s)") );
-//  mAlarmIncrCombo->setMinimumHeight(20);
-  connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)));
-  connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)));
+  QWhatsThis::add( mAlarmIncrCombo, whatsThis );
+  QToolTip::add( mAlarmIncrCombo, toolTip );
+
+  mAlarmInfoLabel = new QLabel( parent );
+  if ( mType == "Event" ) {
+    mAlarmInfoLabel->setText( i18n( "before the start" ) );
+  } else {
+    mAlarmInfoLabel->setText( i18n( "before the due time" ) );
+  }
+  alarmLayout->addWidget( mAlarmInfoLabel );
+
+  mAlarmAdvancedButton->setEnabled( false );
   mAlarmTimeEdit->setEnabled( false );
   mAlarmIncrCombo->setEnabled( false );
-
-  mAlarmEditButton = new QPushButton( i18n("Advanced..."), parent );
-  mAlarmEditButton->setEnabled( false );
-  alarmLayout->addWidget( mAlarmEditButton );
-  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmEditButton, SLOT(setEnabled( bool)));
-  connect( mAlarmEditButton, SIGNAL( clicked() ),
-      SLOT( editAlarms() ) );
-
+  mAlarmInfoLabel->setEnabled( false );
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmAdvancedButton, SLOT(setEnabled(bool)) );
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)) );
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)) );
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmInfoLabel, SLOT(setEnabled(bool)) );
 }
 
 void KOEditorGeneral::initAttachments(QWidget *parent,QBoxLayout *topLayout)
@@ -291,7 +296,7 @@ void KOEditorGeneral::selectCategories()
 
 void KOEditorGeneral::editAlarms()
 {
-  if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
+  if ( mAlarmIsSimple ) {
     mAlarmList.clear();
     Alarm *al = alarmFromSimplePage( 0 );
     if ( al ) {
@@ -299,19 +304,36 @@ void KOEditorGeneral::editAlarms()
     }
   }
 
-  KOEditorAlarms *dlg = new KOEditorAlarms( mType, &mAlarmList, mAlarmEditButton );
+  KOEditorAlarms *dlg = new KOEditorAlarms( mType, &mAlarmList, mAlarmAdvancedButton );
   if ( dlg->exec() != KDialogBase::Cancel ) {
-    updateAlarmWidgets();
+    if ( mType == "Event" ) {
+      Event *e = new Event;
+      Alarm::List::ConstIterator it;
+      for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
+        Alarm *a = (*it)->clone();
+        a->setParent( e );
+        e->addAlarm( a );
+      }
+      updateAlarmWidgets( e );
+      delete e;
+    } else {
+      Todo *t = new Todo;
+      Alarm::List::ConstIterator it;
+      for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
+        Alarm *a = (*it)->clone();
+        a->setParent( t );
+        t->addAlarm( a );
+      }
+      updateAlarmWidgets( t );
+      delete t;
+    }
   }
 }
 
-
 void KOEditorGeneral::enableAlarm( bool enable )
 {
-  mAlarmStack->setEnabled( enable );
-  mAlarmEditButton->setEnabled( enable );
+  mAlarmAdvancedButton->setEnabled( enable );
 }
-
 
 void KOEditorGeneral::toggleAlarm( bool on )
 {
@@ -326,15 +348,11 @@ void KOEditorGeneral::setCategories( const QStringList &categories )
 
 void KOEditorGeneral::setDefaults(bool /*allDay*/)
 {
-#if 0
-  mOwnerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
-#endif
-
   mAlarmList.clear();
   updateDefaultAlarmTime();
-  updateAlarmWidgets();
+  updateAlarmWidgets( 0 );
 
-  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+  mSecrecyCombo->setCurrentItem( Incidence::SecrecyPublic );
   mAttachments->setDefaults();
 }
 
@@ -371,10 +389,18 @@ bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm ) const
   return simple;
 }
 
-void KOEditorGeneral::updateAlarmWidgets()
+static QString etc = i18n( "elipsis", "..." );
+void KOEditorGeneral::updateAlarmWidgets( Incidence *incidence )
 {
+  int maxLen = 75; //TODO: compute from the font and dialog width
+
+  if ( incidence ) {
+    mAlarmButton->setChecked( incidence->isAlarmEnabled() );
+  }
+
   if ( mAlarmList.isEmpty() ) {
-    mAlarmStack->raiseWidget( SimpleAlarmPage );
+    mAlarmIsSimple = true;
+    mSimpleAlarmBox->show();
     bool on;
     if ( mType == "Event" ) {
       on = KOPrefs::instance()->defaultEventReminders();
@@ -384,30 +410,39 @@ void KOEditorGeneral::updateAlarmWidgets()
       on = false;
     }
     mAlarmButton->setChecked( on );
-    mAlarmEditButton->setEnabled( on );
+    mAlarmAdvancedButton->setEnabled( on );
   } else if ( mAlarmList.count() > 1 ) {
-    mAlarmStack->raiseWidget( AdvancedAlarmLabel );
-    mAlarmInfoLabel->setText( i18n("1 advanced reminder configured",
-                                   "%n advanced reminders configured",
-                                   mAlarmList.count() ) );
-    mAlarmEditButton->setEnabled( true );
-  } else {
+    mAlarmIsSimple = false;
+    mAlarmAdvancedButton->setEnabled( true );
+    mSimpleAlarmBox->hide();
+    if ( incidence ) {
+      QString remStr = IncidenceFormatter::reminderStringList( incidence ).join( ", " );
+      if ( remStr.length() > maxLen ) {
+        maxLen -= etc.length();
+        remStr = remStr.left( maxLen );
+        remStr += etc;
+      }
+      mAlarmInfoLabel->setText( i18n( "Triggers %1" ).arg( remStr ) );
+    }
+  } else {  // alarm count is 1
     Alarm *alarm = mAlarmList.first();
     if ( isSimpleAlarm( alarm ) ) {
-      mAlarmStack->raiseWidget( SimpleAlarmPage );
-      mAlarmButton->setChecked( true );
+      mAlarmIsSimple = true;
+      mSimpleAlarmBox->show();
       int offset;
       if ( mType == "Event" ) {
         offset = alarm->startOffset().asSeconds();
+        mAlarmInfoLabel->setText( i18n( "before the start" ) );
       }
       if ( mType == "Todo" ) {
         if ( alarm->hasStartOffset() ) {
           offset = alarm->startOffset().asSeconds();
+          mAlarmInfoLabel->setText( i18n( "before the start" ) );
         } else {
           offset = alarm->endOffset().asSeconds();
+          mAlarmInfoLabel->setText( i18n( "before the due time" ) );
         }
       }
-
       offset = offset / -60; // make minutes
       int useoffset = offset;
       if ( offset == 0 ) {
@@ -421,44 +456,42 @@ void KOEditorGeneral::updateAlarmWidgets()
       }
       mAlarmTimeEdit->setValue( useoffset );
     } else {
-      mAlarmStack->raiseWidget( AdvancedAlarmLabel );
-      mAlarmInfoLabel->setText( i18n("1 advanced reminder configured") );
-      mAlarmEditButton->setEnabled( true );
+      mAlarmIsSimple = false;
+      mAlarmAdvancedButton->setEnabled( true );
+      mSimpleAlarmBox->hide();
+      if ( incidence ) {
+        QString remStr = IncidenceFormatter::reminderStringList( incidence ).first();
+        mAlarmInfoLabel->setText( i18n( "Triggers %1" ).arg( remStr ) );
+      }
     }
   }
 }
 
-void KOEditorGeneral::readIncidence(Incidence *event, Calendar *calendar)
+void KOEditorGeneral::readIncidence( Incidence *incidence, Calendar *calendar )
 {
-  mSummaryEdit->setText(event->summary());
-  mLocationEdit->setText(event->location());
+  mSummaryEdit->setText( incidence->summary() );
+  mLocationEdit->setText( incidence->location() );
+  mDescriptionEdit->setText( incidence->description() );
 
-  mDescriptionEdit->setText(event->description());
-
-#if 0
-  // organizer information
-  mOwnerLabel->setText(i18n("Owner: ") + event->organizer().fullName() );
-#endif
-
-  mSecrecyCombo->setCurrentItem(event->secrecy());
+  mSecrecyCombo->setCurrentItem( incidence->secrecy() );
 
   // set up alarm stuff
   mAlarmList.clear();
   Alarm::List::ConstIterator it;
-  Alarm::List alarms = event->alarms();
+  Alarm::List alarms = incidence->alarms();
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     Alarm *al = new Alarm( *(*it) );
     al->setParent( 0 );
     mAlarmList.append( al );
   }
   updateDefaultAlarmTime();
-  updateAlarmWidgets();
+  updateAlarmWidgets( incidence );
 
-  setCategories(event->categories());
+  setCategories( incidence->categories() );
 
-  mAttachments->readIncidence( event );
+  mAttachments->readIncidence( incidence );
 
-  QString resLabel = IncidenceFormatter::resourceString( calendar, event );
+  QString resLabel = IncidenceFormatter::resourceString( calendar, incidence );
   if ( !resLabel.isEmpty() ) {
     mResourceLabel->setText( i18n( "Calendar: %1" ).arg( resLabel ) );
     mResourceLabel->show();
@@ -505,10 +538,11 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
 
   // alarm stuff
   incidence->clearAlarms();
-  if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
+  if ( mAlarmIsSimple ) {
     Alarm *al = alarmFromSimplePage( incidence );
     if ( al ) {
       al->setParent( incidence );
+      al->setEnabled( mAlarmButton->isChecked() );
       incidence->addAlarm( al );
     }
   } else {
@@ -517,7 +551,7 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
     for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
       Alarm *al = new Alarm( *(*it) );
       al->setParent( incidence );
-      al->setEnabled( true );
+      al->setEnabled( mAlarmButton->isChecked() );
       incidence->addAlarm( al );
     }
   }

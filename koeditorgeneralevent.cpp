@@ -82,8 +82,8 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mRecEditButton, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
-  QWidget::setTabOrder( mAlarmIncrCombo, mAlarmEditButton );
-  QWidget::setTabOrder( mAlarmEditButton, mFreeTimeCombo );
+  QWidget::setTabOrder( mAlarmIncrCombo, mAlarmAdvancedButton );
+  QWidget::setTabOrder( mAlarmAdvancedButton, mFreeTimeCombo );
   QWidget::setTabOrder( mFreeTimeCombo, mDescriptionEdit );
   QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
   QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
