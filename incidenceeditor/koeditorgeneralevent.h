@@ -86,9 +86,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void setTimeEditorsEnabled( bool enabled );
     void slotHasTimeCheckboxToggled( bool checked );
 
-    void startTimeChanged( QTime );
+    void startTimeChanged( const QTime & );
     void startDateChanged( const QDate & );
-    void endTimeChanged( QTime );
+    void endTimeChanged( const QTime & );
     void endDateChanged( const QDate & );
     void startSpecChanged();
     void endSpecChanged();

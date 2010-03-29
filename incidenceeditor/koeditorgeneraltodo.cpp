@@ -129,7 +129,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   mStartTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
   mStartTimeEdit->setWhatsThis( i18n( "Sets the start time for this to-do." ) );
   layoutTimeBox->addWidget( mStartTimeEdit, 0, 2 );
-  connect( mStartTimeEdit, SIGNAL(timeChanged(QTime)), SLOT(startDateModified()) );
+  connect( mStartTimeEdit, SIGNAL(timeChanged(const QTime&)), SLOT(startDateModified()) );
 
   whatsThis = i18n( "Sets the due date for this to-do." );
   mDueCheck = new QCheckBox( i18nc( "to-do due datetime", "&Due:" ), timeGroupBox );
@@ -148,7 +148,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   mDueTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
   mDueTimeEdit->setWhatsThis( i18n( "Sets the due time for this to-do." ) );
   layoutTimeBox->addWidget( mDueTimeEdit, 1, 2 );
-  connect( mDueTimeEdit, SIGNAL(timeChanged( QTime )), SLOT(dateChanged()) );
+  connect( mDueTimeEdit, SIGNAL(timeChanged(const QTime&)), SLOT(dateChanged()) );
 
   mTimeButton = new QCheckBox( i18n( "Ti&me associated" ), timeGroupBox );
   mTimeButton->setWhatsThis(
@@ -386,14 +386,14 @@ void KOEditorGeneralTodo::fillTodo( Todo *todo )
 
     // set due date/time
     tmpDDate = mDueDateEdit->date();
-    tmpDTime = mDueTimeEdit->getTime();
+    tmpDTime = mDueTimeEdit->time();
     tmpDueDT.setDate( tmpDDate );
     tmpDueDT.setTime( tmpDTime );
 
     // set start date/time
     if ( mStartCheck->isChecked() ) {
       tmpSDate = mStartDateEdit->date();
-      tmpSTime = mStartTimeEdit->getTime();
+      tmpSTime = mStartTimeEdit->time();
       tmpStartDT.setDate( tmpSDate );
       tmpStartDT.setTime( tmpSTime );
     } else {
@@ -434,7 +434,7 @@ void KOEditorGeneralTodo::fillTodo( Todo *todo )
   todo->setPercentComplete( mCompletedCombo->currentIndex() * 10 );
 
   if ( mCompletedCombo->currentIndex() == 10 && mCompleted.isValid() ) {
-    QDateTime completed( mCompletionDateEdit->date(), mCompletionTimeEdit->getTime() );
+    QDateTime completed( mCompletionDateEdit->date(), mCompletionTimeEdit->time() );
     int difference = mCompleted.secsTo( completed );
     if ( ( difference < 60 ) && ( difference > -60 ) &&
          ( completed.time().minute() == mCompleted.time().minute() ) ) {
@@ -547,8 +547,8 @@ bool KOEditorGeneralTodo::validateInput()
     startDate.setDate( mStartDateEdit->date() );
     dueDate.setDate( mDueDateEdit->date() );
     if ( mTimeButton->isChecked() ) {
-      startDate.setTime( mStartTimeEdit->getTime() );
-      dueDate.setTime( mDueTimeEdit->getTime() );
+      startDate.setTime( mStartTimeEdit->time() );
+      dueDate.setTime( mDueTimeEdit->time() );
     }
     if ( startDate > dueDate ) {
       KMessageBox::sorry( mParent,
@@ -586,7 +586,7 @@ void KOEditorGeneralTodo::dateChanged()
     dateTimeStr += i18nc( "to-do start datetime",
                           "Start: %1", l->formatDate( mStartDateEdit->date() ) );
     if ( mTimeButton->isChecked() ) {
-      dateTimeStr += QString( " %1" ).arg( l->formatTime( mStartTimeEdit->getTime() ) );
+      dateTimeStr += QString( " %1" ).arg( l->formatTime( mStartTimeEdit->time() ) );
       dateTimeStr += ' ';
       dateTimeStr += mTimeZoneComboStart->selectedTimeSpec().timeZone().name();
     }
@@ -596,7 +596,7 @@ void KOEditorGeneralTodo::dateChanged()
     dateTimeStr += i18nc( "to-do due datetime", "   Due: %1",
                           l->formatDate( mDueDateEdit->date() ) );
     if ( mTimeButton->isChecked() ) {
-      dateTimeStr += QString( " %1" ).arg( l->formatTime( mDueTimeEdit->getTime() ) );
+      dateTimeStr += QString( " %1" ).arg( l->formatTime( mDueTimeEdit->time() ) );
       dateTimeStr += ' ';
       dateTimeStr += mTimeZoneComboDue->selectedTimeSpec().timeZone().name();
     }
@@ -605,7 +605,7 @@ void KOEditorGeneralTodo::dateChanged()
   mDueSpec = mTimeZoneComboDue->selectedTimeSpec();
 
   emit dateTimeStrChanged( dateTimeStr );
-  QDateTime endDt( mDueDateEdit->date(), mDueTimeEdit->getTime() );
+  QDateTime endDt( mDueDateEdit->date(), mDueTimeEdit->time() );
   emit signalDateTimeChanged( endDt, endDt );
 }
 

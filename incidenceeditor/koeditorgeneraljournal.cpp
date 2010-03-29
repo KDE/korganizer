@@ -174,7 +174,7 @@ void KOEditorGeneralJournal::fillJournal( Journal *journal )
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setAllDay( !hasTime );
   if ( hasTime ) {
-    tmpDT.setTime( mTimeEdit->getTime() );
+    tmpDT.setTime( mTimeEdit->time() );
   }
   journal->setDtStart( tmpDT );
   journal->setCategories( mCategories );

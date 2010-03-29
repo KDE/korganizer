@@ -170,10 +170,10 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->addWidget( mDurationLabel, 1, 4 );
 
   // time widgets are checked if they contain a valid time
-  connect( mStartTimeEdit, SIGNAL(timeChanged(QTime)),
-           this, SLOT(startTimeChanged(QTime)) );
-  connect( mEndTimeEdit, SIGNAL(timeChanged(QTime)),
-           this, SLOT(endTimeChanged(QTime)) );
+  connect( mStartTimeEdit, SIGNAL(timeChanged(const QTime&)),
+           this, SLOT(startTimeChanged(const QTime&)) );
+  connect( mEndTimeEdit, SIGNAL(timeChanged(const QTime&)),
+           this, SLOT(endTimeChanged(const QTime&)) );
 
   // date widgets are checked if they contain a valid date
   connect( mStartDateEdit, SIGNAL(dateChanged(const QDate&)),
@@ -354,7 +354,7 @@ void KOEditorGeneralEvent::setTimes( const KDateTime &start, const KDateTime &en
   emitDateTimeStr();
 }
 
-void KOEditorGeneralEvent::startTimeChanged( QTime newtime )
+void KOEditorGeneralEvent::startTimeChanged( const QTime &newtime )
 {
   int secsep = mCurrStartDateTime.secsTo( mCurrEndDateTime );
 
@@ -368,7 +368,7 @@ void KOEditorGeneralEvent::startTimeChanged( QTime newtime )
   emit dateTimesChanged( mCurrStartDateTime, mCurrEndDateTime );
 }
 
-void KOEditorGeneralEvent::endTimeChanged( QTime newtime )
+void KOEditorGeneralEvent::endTimeChanged( const QTime &newtime )
 {
   QDateTime newdt( mCurrEndDateTime.date(), newtime );
   mCurrEndDateTime = newdt;
@@ -522,7 +522,7 @@ void KOEditorGeneralEvent::fillEvent( Event *event )
 
     // set date/time end
     tmpDate = mEndDateEdit->date();
-    tmpTime = mEndTimeEdit->getTime();
+    tmpTime = mEndTimeEdit->time();
     tmpDT.setDate( tmpDate );
     tmpDT.setTime( tmpTime );
     tmpDT.setTimeSpec( mTimeZoneComboEnd->selectedTimeSpec() );
@@ -530,7 +530,7 @@ void KOEditorGeneralEvent::fillEvent( Event *event )
 
     // set date/time start
     tmpDate = mStartDateEdit->date();
-    tmpTime = mStartTimeEdit->getTime();
+    tmpTime = mStartTimeEdit->time();
     event->setDtStart( KDateTime( tmpDate, tmpTime, mTimeZoneComboStart->selectedTimeSpec() ) );
   } // check for all-day
 
@@ -658,8 +658,8 @@ bool KOEditorGeneralEvent::validateInput()
   startDt.setDate( mStartDateEdit->date() );
   endDt.setDate( mEndDateEdit->date() );
   if ( mHasTimeCheckbox->isChecked() ) {
-    startDt.setTime( mStartTimeEdit->getTime() );
-    endDt.setTime( mEndTimeEdit->getTime() );
+    startDt.setTime( mStartTimeEdit->time() );
+    endDt.setTime( mEndTimeEdit->time() );
   }
 
   if ( startDt > endDt ) {
