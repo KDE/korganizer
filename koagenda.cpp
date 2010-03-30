@@ -1248,7 +1248,7 @@ void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
   QPoint pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
   // right lower corner
   QPoint pt1 = gridToContents( QPoint( item->cellXLeft() + item->cellWidth(),
-      item->cellYBottom()+1 ) );
+                                   item->cellYBottom()+1 ) );
 
   double subCellPos = item->subCell() * subCellWidth;
 
@@ -1817,19 +1817,16 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
 
 void KOAgenda::resizeAllContents()
 {
-  double subCellWidth;
   if ( mItems.count() > 0 ) {
+    double subCellWidth = 10000.00; // some large value
     KOAgendaItem *item;
-    if (mAllDayMode) {
-      for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-        subCellWidth = calcSubCellWidth( item );
-        placeAgendaItem( item, subCellWidth );
-      }
-    } else {
-      for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-        subCellWidth = calcSubCellWidth( item );
-        placeAgendaItem( item, subCellWidth );
-      }
+    // first compute the smallest cell width for all the items
+    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+      subCellWidth = QMIN( subCellWidth, calcSubCellWidth( item ) );
+    }
+    // now use that smallest cell width when placing each item
+    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+      placeAgendaItem( item, subCellWidth );
     }
   }
   checkScrollBoundaries();
