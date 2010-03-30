@@ -360,8 +360,6 @@ void ResourceView::addResource()
     return;
   }
 
-  resource->setResourceName( i18n("%1 resource").arg( type ) );
-
   KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString("calendar"), resource,
                           "KRES::ConfigDialog" );
 
