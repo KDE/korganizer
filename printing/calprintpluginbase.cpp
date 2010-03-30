@@ -53,6 +53,12 @@
 using namespace KCal;
 using namespace Akonadi;
 
+static QString cleanStr( const QString &instr )
+{
+  QString ret = instr;
+  return ret.replace( '\n', ' ' );
+}
+
 /******************************************************************
  **              The Todo positioning structure                  **
  ******************************************************************/
@@ -973,25 +979,25 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     QString str;
     if ( excludeTime ) {
       if ( event->location().isEmpty() ) {
-        str = event->summary();
+        str = cleanStr( event->summary() );
       } else {
         str = i18nc( "summary, location", "%1, %2",
-                    event->summary(), event->location() );
+                     cleanStr( event->summary() ), cleanStr( event->location() ) );
       }
     } else {
       if ( event->location().isEmpty() ) {
         str = i18nc( "starttime - endtime summary",
-                    "%1-%2 %3",
-                    KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
-                    KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
-                    event->summary() );
+                     "%1-%2 %3",
+                     KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
+                     KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
+                     cleanStr( event->summary() ) );
       } else {
         str = i18nc( "starttime - endtime summary, location",
-                    "%1-%2 %3, %4",
-                    KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
-                    KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
-                    event->summary(),
-                    event->location() );
+                     "%1-%2 %3, %4",
+                     KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
+                     KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
+                     cleanStr( event->summary() ),
+                     cleanStr( event->location() ) );
       }
     }
     if ( includeDescription ) {
@@ -1015,7 +1021,6 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
                                      bool excludePrivate )
 {
   QString dayNumStr;
-  QString ampm;
   const KLocale *local = KGlobal::locale();
 
   if ( fullDate && mCalSys ) {
