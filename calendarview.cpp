@@ -2594,17 +2594,12 @@ bool CalendarView::purgeCompletedSubTodos( const Item &todoItem, bool &allPurged
   if ( !todo ) {
     return true;
   }
-#ifdef AKONADI_PORT_DISABLED
+
   bool deleteThisTodo = true;
-  Incidence::List subTodos( todo->relations() );
-  Incidence *aIncidence;
-  Todo *aTodo;
-  Incidence::List::Iterator it;
-  for ( it = subTodos.begin(); it != subTodos.end(); ++it ) {
-    aIncidence = *it;
-    if ( aIncidence && aIncidence->type() == "Todo" ) {
-      aTodo = static_cast<Todo*>( aIncidence );
-      deleteThisTodo &= purgeCompletedSubTodos( aTodo, allPurged );
+  Item::List subTodos = mCalendar->findChildren( todoItem );
+  foreach( const Item &item,  subTodos ) {
+    if ( Akonadi::hasTodo( item ) ) {
+      deleteThisTodo &= purgeCompletedSubTodos( item, allPurged );
     }
   }
 
@@ -2622,10 +2617,6 @@ bool CalendarView::purgeCompletedSubTodos( const Item &todoItem, bool &allPurged
     }
   }
   return deleteThisTodo;
-#else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
-  return false;
-#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::purgeCompleted()
