@@ -648,18 +648,19 @@ void CalendarView::writeFilterSettings( KConfig *config )
 }
 
 
-void CalendarView::goDate( const QDate& date )
+void CalendarView::goDate( const QDate &date )
 {
   mDateNavigator->selectDate( date );
 }
 
-void CalendarView::showDate(const QDate & date)
+void CalendarView::showDate( const QDate &date )
 {
   int dateCount = mDateNavigator->datesCount();
-  if ( dateCount == 7 )
+  if ( dateCount == 7 ) {
     mDateNavigator->selectWeek( date );
-  else
+  } else {
     mDateNavigator->selectDates( date, dateCount );
+  }
 }
 
 void CalendarView::goToday()
@@ -669,18 +670,20 @@ void CalendarView::goToday()
 
 void CalendarView::goNext()
 {
-  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) )
+  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) ) {
     mDateNavigator->selectNextMonth();
-  else
+  } else {
     mDateNavigator->selectNext();
+  }
 }
 
 void CalendarView::goPrevious()
 {
-  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) )
+  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) ) {
     mDateNavigator->selectPreviousMonth();
-  else
+  } else {
     mDateNavigator->selectPrevious();
+  }
 }
 
 void CalendarView::updateConfig( const QCString& receiver)
@@ -1834,7 +1837,7 @@ void CalendarView::checkClipboard()
 #endif
 }
 
-void CalendarView::showDates(const DateList &selectedDates)
+void CalendarView::showDates( const DateList &selectedDates )
 {
 //  kdDebug(5850) << "CalendarView::selectDates()" << endl;
 
@@ -1850,7 +1853,7 @@ void CalendarView::editFilters()
   kdDebug(5850) << "CalendarView::editFilters()" << endl;
 
   CalFilter *filter = mFilters.first();
-  while(filter) {
+  while( filter ) {
     kdDebug(5850) << " Filter: " << filter->name() << endl;
     filter = mFilters.next();
   }

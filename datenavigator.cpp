@@ -54,7 +54,7 @@ int DateNavigator::datesCount() const
   return mSelectedDates.count();
 }
 
-void DateNavigator::selectDates( const DateList& dateList )
+void DateNavigator::selectDates( const DateList &dateList )
 {
   if (dateList.count() > 0) {
     mSelectedDates = dateList;
@@ -101,8 +101,11 @@ void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
-  if ( weekStart && dateCount == 7 ) selectWeek( d );
-  else selectDates( d, dateCount );
+  if ( weekStart && dateCount == 7 ) {
+    selectWeek( d );
+  } else {
+    selectDates( d, dateCount );
+  }
 }
 
 void DateNavigator::selectWeek()
@@ -147,7 +150,7 @@ void DateNavigator::selectWorkWeek( const QDate &d )
 
   for ( int i = 0; i < 7; ++i ) {
     if( (1<< ((i + weekStart + 6) % 7)) & (mask) ) {
-	mSelectedDates.append(currentDate.addDays(i));
+	mSelectedDates.append( currentDate.addDays(i) );
     }
   }
 
@@ -245,18 +248,20 @@ void DateNavigator::selectNext()
   selectDates( mSelectedDates.first().addDays( offset ), datesCount() );
 }
 
-void DateNavigator::selectMonth(int month)
+void DateNavigator::selectMonth( int month )
 {
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   int day = calSys->day( firstSelected );
-  calSys->setYMD( firstSelected, calSys->year(firstSelected), month, 1 );
+  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, 1 );
   int days = calSys->daysInMonth( firstSelected );
   // As day we use either the selected date, or if the month has less days
   // than that, we use the max day of that month
-  if ( day > days ) day = days;
+  if ( day > days ) {
+    day = days;
+  }
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
 
   selectWeekByDay( weekDay, firstSelected );

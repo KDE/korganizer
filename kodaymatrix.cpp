@@ -413,7 +413,7 @@ void KODayMatrix::mouseMoveEvent( QMouseEvent *e )
 
   if (mSelInit > tmp) {
     mSelEnd = mSelInit;
-    if (tmp != mSelStart) {
+    if ( tmp != mSelStart ) {
       mSelStart = tmp;
       repaint();
     }
@@ -421,7 +421,7 @@ void KODayMatrix::mouseMoveEvent( QMouseEvent *e )
     mSelStart = mSelInit;
 
     //repaint only if selection has changed
-    if (tmp != mSelEnd) {
+    if ( tmp != mSelEnd ) {
       mSelEnd = tmp;
       repaint();
     }
