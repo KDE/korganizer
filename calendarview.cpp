@@ -2393,22 +2393,12 @@ void CalendarView::deleteSubTodosIncidence ( const Item &todoItem )
   if ( !todo ) {
     return;
   }
-#ifdef AKONADI_PORT_DISABLED
-  Incidence::List subTodos( todo->relations() );
-  Incidence::List::Iterator it;
-  Incidence *aIncidence;
-  Todo *aTodo;
-
-  for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
-    aIncidence = *it;
-    if( aIncidence && aIncidence->type() == "Todo" ) {
-      aTodo = static_cast<Todo*>( aIncidence );
-      deleteSubTodosIncidence ( aTodo );
+  Item::List subTodos = mCalendar->findChildren( todoItem );
+  foreach( const Item &item,  subTodos ) {
+    if ( Akonadi::hasTodo( item ) ) {
+      deleteSubTodosIncidence ( item );
     }
   }
-#else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
-#endif // AKONADI_PORT_DISABLED
   mChanger->deleteIncidence ( todoItem, this );
 }
 
