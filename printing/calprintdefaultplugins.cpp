@@ -5,6 +5,7 @@
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008 Ron Goodheart <rong.dev@gmail.com>
+  Copyright (c) 2010 Laurent Montel <montel@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -388,9 +389,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect locationBox( timesBox );
     locationBox.setTop( timesBox.bottom() + padding() );
     locationBox.setHeight( 0 );
-    int locationBottom = drawBoxWithCaption( p, locationBox, i18n( "Location: " ),
-                                             (*it)->location(), /*sameLine=*/true,
-                                             /*expand=*/true, captionFont, textFont );
+    int locationBottom = 0;
+    if ( !isJournal ) {
+      locationBottom = drawBoxWithCaption( p, locationBox, i18n( "Location: " ),
+                                           (*it)->location(), /*sameLine=*/true,
+                                           /*expand=*/true, captionFont, textFont );
+    }
     locationBox.setBottom( locationBottom );
 
     // Now start constructing the boxes from the bottom:
@@ -408,7 +412,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect optionsBox( isJournal ? box.left() :  attachmentsBox.right() + padding(), attachmentsBox.top(), 0, 0 );
     optionsBox.setRight( box.right() );
     optionsBox.setBottom( attachmentsBox.bottom() );
-    QRect notesBox( optionsBox.left(), locationBox.bottom() + padding(),
+    QRect notesBox( optionsBox.left(), isJournal ? ( timesBox.bottom() + padding() ) : ( locationBox.bottom() + padding() ),
                     optionsBox.width(), 0 );
     notesBox.setBottom( optionsBox.top() - padding() );
     QRect descriptionBox( notesBox );
