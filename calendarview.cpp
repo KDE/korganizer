@@ -841,6 +841,11 @@ void CalendarView::edit_cut()
     KNotification::beep();
     return;
   }
+
+  // Unparent child to-dos.
+  // (Doesn't do nothing if the item isn't a to-do, with children)
+  makeSubTodosIndependents( item );
+
   mChanger->cutIncidence( item, this );
 
   checkClipboard();
