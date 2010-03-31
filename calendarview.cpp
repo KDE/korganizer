@@ -1249,26 +1249,20 @@ bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
   if ( !todo || todo->relations().isEmpty() ) {
     return false;
   }
-#ifdef AKONADI_PORT_DISABLED
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
-  Incidence::List subTodos( todo->relations() );
-  Incidence::List::Iterator it;
-  Incidence *aIncidence;
-  Todo *aTodo;
 
-  for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
-    aIncidence = *it;
-    if( aIncidence && aIncidence->type() == "Todo" ) {
-      aTodo = static_cast<Todo*>( aIncidence );
-      todo_unsub ( aTodo );
+  Item::List subTodos = mCalendar->findChildren( todoItem );
+
+  Incidence::List::Iterator it;
+
+  foreach( const Item &item,  subTodos ) {
+    if ( Akonadi::hasTodo( item ) ) {
+      todo_unsub( item );
     }
   }
+
   endMultiModify();
   return true;
-#else
-  kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
-  return false;
-#endif
 }
 
 bool CalendarView::deleteIncidence( const Item::Id &uid, bool force )
