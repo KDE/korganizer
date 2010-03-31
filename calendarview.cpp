@@ -1214,11 +1214,11 @@ bool CalendarView::todo_unsub( const Item &todoItem )
   }
 
   if ( mChanger->beginChange( todoItem ) ) {
-      Todo::Ptr oldTodo( todo->clone() );
-      todo->setRelatedTo(0);
-      mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::RELATION_MODIFIED, this );
-      mChanger->endChange( todoItem );
-      status = true;
+    Todo::Ptr oldTodo( todo->clone() );
+    todo->setRelatedTo( 0 );
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::RELATION_MODIFIED, this );
+    mChanger->endChange( todoItem );
+    status = true;
   }
   if ( !status ) {
     KMessageBox::sorry(
