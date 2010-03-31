@@ -96,8 +96,8 @@ int AlarmListItem::compare( QListViewItem *item, int iCol, bool bAscending ) con
 typedef QValueList<AlarmListItem*> ItemList;
 
 AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, const char *name )
-  : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
-                 WStyle_DialogBorder,
+  : KDialogBase( Plain,
+                 WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop | WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"),
                  Ok | User1 | User2 | User3, NoDefault,
                  false, i18n("Edit..."), i18n("Dismiss All"), i18n("Dismiss Reminder") ),
@@ -159,7 +159,8 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
 
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
-  setMinimumSize( 300, 200 );
+  setMainWidget( mIncidenceListView );
+  mIncidenceListView->setMinimumSize( 500, 200 );
 }
 
 AlarmDialog::~AlarmDialog()
@@ -181,10 +182,18 @@ AlarmListItem *AlarmDialog::searchByUid( const QString &uid )
   return found;
 }
 
+static QString etc = i18n( "elipsis", "..." );
 static QString cleanSummary( const QString &summary )
 {
-  QString ret = summary;
-  return ret.replace( '\n', ' ' );
+  uint maxLen = 45;
+  QString retStr = summary;
+  retStr.replace( '\n', ' ' );
+  if ( retStr.length() > maxLen ) {
+    maxLen -= etc.length();
+    retStr = retStr.left( maxLen );
+    retStr += etc;
+  }
+  return retStr;
 }
 
 void AlarmDialog::addIncidence( Incidence *incidence,
