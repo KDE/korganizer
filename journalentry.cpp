@@ -151,7 +151,7 @@ void JournalDateEntry::setIncidenceChanger( IncidenceChangerBase *changer )
 
 void JournalDateEntry::emitNewJournal()
 {
-  emit newJournal( mDate );
+  emit newJournal( 0/*ResourceCalendar*/, QString()/*subResource*/, mDate );
 }
 
 void JournalDateEntry::journalEdited( Journal *journal )

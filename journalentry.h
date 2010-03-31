@@ -26,6 +26,7 @@
 //
 // Widget showing one Journal entry
 
+#include <libkcal/resourcecalendar.h>
 #include <qvbox.h>
 
 class QLabel;
@@ -133,7 +134,7 @@ class JournalDateEntry : public QVBox {
     void flushEntries();
     void editIncidence( Incidence * );
     void deleteIncidence( Incidence * );
-    void newJournal( const QDate & );
+    void newJournal( ResourceCalendar *, const QString &, const QDate & );
 
   public slots:
     void emitNewJournal();
