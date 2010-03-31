@@ -269,10 +269,18 @@ ReminderListItem *AlarmDialog::searchByItem( const Akonadi::Item &incidence )
   return found;
 }
 
+static QString etc = i18nc( "@label an elipsis", "..." );
 static QString cleanSummary( const QString &summary )
 {
-  QString ret = summary;
-  return ret.replace( '\n', ' ' );
+  int maxLen = 30;
+  QString retStr = summary;
+  retStr.replace( '\n', ' ' );
+  if ( retStr.length() > maxLen ) {
+    maxLen -= etc.length();
+    retStr = retStr.left( maxLen );
+    retStr += etc;
+  }
+  return retStr;
 }
 
 void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
@@ -289,9 +297,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->mRemindAt = reminderAt;
   item->mTrigger = KDateTime::currentLocalDateTime();
   item->mDisplayText = displayText;
-  QString summStr = incidence->summary();
-  summStr.truncate( 30 );
-  item->setText( 0, cleanSummary( summStr ) );
+  item->setText( 0, cleanSummary( incidence->summary() ) );
   item->setText( 1, QString() );
 
   Event *event;
