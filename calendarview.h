@@ -657,6 +657,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     QWidget      *mLeftFrame;
     QWidgetStack *mRightFrame;
 
+    // This navigator bar is used when in full window month view
+    // It has nothing to do with the date navigator
     NavigatorBar *mNavigatorBar;
 
     DateNavigatorContainer *mDateNavigatorContainer;
