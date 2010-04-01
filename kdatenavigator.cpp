@@ -137,6 +137,7 @@ void KDateNavigator::updateToday()
   mDayMatrix->recalculateToday();
   mDayMatrix->repaint();
 }
+
 QDate KDateNavigator::startDate() const
 {
   // Find the first day of the week of the current month.
@@ -161,6 +162,7 @@ QDate KDateNavigator::startDate() const
 
   return dayone;
 }
+
 QDate KDateNavigator::endDate() const
 {
   return startDate().addDays( 6*7 );
@@ -235,10 +237,11 @@ void KDateNavigator::updateConfig()
 void KDateNavigator::setShowWeekNums( bool enabled )
 {
   for( int i = 0; i < 6; i++ ) {
-    if( enabled )
+    if ( enabled ) {
       mWeeknos[i]->show();
-    else
+    } else {
       mWeeknos[i]->hide();
+    }
   }
 }
 
@@ -256,15 +259,18 @@ void KDateNavigator::selectDates( const DateList &dateList )
   }
 }
 
-void KDateNavigator::wheelEvent ( QWheelEvent *e )
+void KDateNavigator::wheelEvent( QWheelEvent *e )
 {
-  if( e->delta() > 0 ) emit goPrevious();
-  else emit goNext();
+  if ( e->delta() > 0 ) {
+    emit goPrevious();
+  } else {
+    emit goNext();
+  }
 
   e->accept();
 }
 
-bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
+bool KDateNavigator::eventFilter( QObject *o, QEvent *e )
 {
   if ( e->type() == QEvent::MouseButtonPress ) {
     int i;

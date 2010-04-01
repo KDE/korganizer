@@ -163,7 +163,9 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
       int w = QFontMetrics( mMonth->font() ).
               width( QString( "%1" ).
                      arg( calSys->monthName( i, calSys->year( mDate ) ) ) );
-      if ( w > maxwidth ) maxwidth = w;
+      if ( w > maxwidth ) {
+        maxwidth = w;
+      }
     }
     mMonth->setMinimumWidth( maxwidth );
 

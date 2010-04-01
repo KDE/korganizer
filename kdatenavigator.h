@@ -93,7 +93,7 @@ class KDateNavigator: public QFrame
 
     void wheelEvent( QWheelEvent * );
 
-    bool eventFilter( QObject *,QEvent * );
+    bool eventFilter( QObject *, QEvent * );
 
     void setShowWeekNums( bool enabled );
 
