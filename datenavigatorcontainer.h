@@ -45,7 +45,12 @@ class DateNavigatorContainer: public QFrame
     QSize sizeHint() const;
     void setUpdateNeeded();
   public slots:
-    void selectDates( const KCal::DateList & );
+    /**
+       preferredMonth is useful when the datelist crosses months, if different
+       from -1, it has the month that the kdatenavigator should show in case
+       of ambiguity
+    */
+    void selectDates( const KCal::DateList &, int preferredMonth = -1 );
     void updateView();
     void updateConfig();
     void updateDayMatrix();
@@ -55,17 +60,16 @@ class DateNavigatorContainer: public QFrame
     void datesSelected( const KCal::DateList & );
     void incidenceDropped( Incidence *, const QDate & );
     void incidenceDroppedMove( Incidence *, const QDate & );
-    void weekClicked( const QDate &);
+    void weekClicked( const QDate & );
 
     void goPrevious();
     void goNext();
 
-    void goNextMonth();
-    void goPrevMonth();
     void goNextYear();
     void goPrevYear();
 
-    void goMonth( int month );
+    void goMonth( int month, bool preserveYear );
+
     void goYear( int year );
 
   protected:

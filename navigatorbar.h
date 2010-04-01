@@ -55,14 +55,14 @@ class NavigatorBar: public QWidget
     void showButtons( bool left, bool right );
 
   public slots:
-    void selectDates( const KCal::DateList & );
+    void selectDates( const KCal::DateList &, int preferredMonth = -1 );
 
   signals:
     void goNextMonth();
     void goPrevMonth();
     void goNextYear();
     void goPrevYear();
-    void goMonth(int month);
+    void goMonth( int month, bool preserveYear );
     void goYear( int year );
 
   private slots:

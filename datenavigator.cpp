@@ -83,7 +83,7 @@ void DateNavigator::selectDates( int count )
   selectDates( mSelectedDates.first(), count );
 }
 
-void DateNavigator::selectDates( const QDate &d, int count )
+void DateNavigator::selectDates( const QDate &d, int count, int preferredMonth )
 {
   DateList dates;
 
@@ -94,17 +94,17 @@ void DateNavigator::selectDates( const QDate &d, int count )
 
   mSelectedDates = dates;
 
-  emitSelected();
+  emitSelected( preferredMonth );
 }
 
-void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
+void DateNavigator::selectWeekByDay( int weekDay, const QDate &d, int preferredMonth )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
   if ( weekStart && dateCount == 7 ) {
-    selectWeek( d );
+    selectWeek( d, preferredMonth );
   } else {
-    selectDates( d, dateCount );
+    selectDates( d, dateCount, preferredMonth );
   }
 }
 
@@ -113,7 +113,7 @@ void DateNavigator::selectWeek()
   selectWeek( mSelectedDates.first() );
 }
 
-void DateNavigator::selectWeek( const QDate &d )
+void DateNavigator::selectWeek( const QDate &d, int preferredMonth )
 {
   int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
 
@@ -125,7 +125,7 @@ void DateNavigator::selectWeek( const QDate &d )
     firstDate = firstDate.addDays( -7 );
   }
 
-  selectDates( firstDate, 7 );
+  selectDates( firstDate, 7, preferredMonth );
 }
 
 void DateNavigator::selectWorkWeek()
@@ -248,14 +248,20 @@ void DateNavigator::selectNext()
   selectDates( mSelectedDates.first().addDays( offset ), datesCount() );
 }
 
-void DateNavigator::selectMonth( int month )
+void DateNavigator::selectMonth( int month, bool preserveYear )
 {
+  int yearOffset = 0;
+  if ( !preserveYear ) {
+    yearOffset = ( month == 1 ) ? 1 : -1;
+  }
+
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
 
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   int day = calSys->day( firstSelected );
-  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, 1 );
+  calSys->setYMD( firstSelected, calSys->year( firstSelected ) + yearOffset, month, 1 );
   int days = calSys->daysInMonth( firstSelected );
   // As day we use either the selected date, or if the month has less days
   // than that, we use the max day of that month
@@ -264,7 +270,7 @@ void DateNavigator::selectMonth( int month )
   }
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
 
-  selectWeekByDay( weekDay, firstSelected );
+  selectWeekByDay( weekDay, firstSelected, month );
 }
 
 void DateNavigator::selectYear( int year )
@@ -277,9 +283,9 @@ void DateNavigator::selectYear( int year )
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::emitSelected()
+void DateNavigator::emitSelected( int preferredMonth )
 {
-  emit datesSelected( mSelectedDates );
+  emit datesSelected( mSelectedDates, preferredMonth );
 }
 
 #include "datenavigator.moc"

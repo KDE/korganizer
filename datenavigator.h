@@ -49,15 +49,15 @@ class DateNavigator : public QObject
     void selectDate( const QDate & );
 
     void selectDates( int count );
-    void selectDates( const QDate &, int count );
+    void selectDates( const QDate &, int count, int preferredMonth = -1 );
 
     void selectWeek();
-    void selectWeek( const QDate & );
+    void selectWeek( const QDate &, int preferredMonth = -1 );
 
     void selectWorkWeek();
     void selectWorkWeek( const QDate & );
 
-    void selectWeekByDay( int weekDay, const QDate & );
+    void selectWeekByDay( int weekDay, const QDate &, int preferredMonth = -1 );
 
     void selectToday();
 
@@ -71,14 +71,17 @@ class DateNavigator : public QObject
     void selectPrevious();
     void selectNext();
 
-    void selectMonth(int month);
-    void selectYear(int year);
+    void selectMonth( int month, bool preserveYear = true );
+    void selectYear( int year );
 
   signals:
-    void datesSelected( const KCal::DateList & );
+    /* preferredMonth is useful when the datelist crosses months, if different
+       from -1, any month-like component should honour this
+    */
+    void datesSelected( const KCal::DateList &, int preferredMonth );
 
   protected:
-    void emitSelected();
+    void emitSelected( int preferredMonth = -1 );
 
   private:
     KCal::DateList mSelectedDates;

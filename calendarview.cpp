@@ -199,11 +199,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   }
 #endif
 
-  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           SLOT( showDates( const KCal::DateList & ) ) );
-  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mDateNavigatorContainer, SLOT( selectDates( const KCal::DateList & ) ) );
-
+  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList &, int ) ),
+           SLOT( showDates( const KCal::DateList &, int ) ) );
   connect( mNavigatorBar, SIGNAL( goPrevYear() ),
            mDateNavigator, SLOT( selectPreviousYear() ) );
   connect( mNavigatorBar, SIGNAL( goNextYear() ),
@@ -212,13 +209,13 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            mDateNavigator, SLOT( selectPreviousMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextMonth() ),
            mDateNavigator, SLOT( selectNextMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth(int) ),
-           mDateNavigator, SLOT( selectMonth(int) ) );
+  connect( mNavigatorBar, SIGNAL( goMonth(int, bool) ),
+           mDateNavigator, SLOT( selectMonth(int, bool) ) );
   connect( mNavigatorBar, SIGNAL(goYear(int)),
            mDateNavigator, SLOT(selectYear(int)) );
 
-  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
+  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList &, int ) ),
+           mNavigatorBar, SLOT( selectDates( const KCal::DateList &, int ) ) );
 
   connect( mDateNavigatorContainer, SIGNAL( weekClicked( const QDate & ) ),
            this, SLOT( selectWeek( const QDate & ) ) );
@@ -227,12 +224,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            mDateNavigator, SLOT( selectPreviousYear() ) );
   connect( mDateNavigatorContainer, SIGNAL( goNextYear() ),
            mDateNavigator, SLOT( selectNextYear() ) );
-  connect( mDateNavigatorContainer, SIGNAL( goPrevMonth() ),
-           mDateNavigator, SLOT( selectPreviousMonth() ) );
-  connect( mDateNavigatorContainer, SIGNAL( goNextMonth() ),
-           mDateNavigator, SLOT( selectNextMonth() ) );
-  connect( mDateNavigatorContainer, SIGNAL( goMonth(int) ),
-           mDateNavigator, SLOT( selectMonth(int) ) );
+  connect( mDateNavigatorContainer, SIGNAL( goMonth(int,bool) ),
+           mDateNavigator, SLOT( selectMonth(int,bool) ) );
   connect( mDateNavigatorContainer, SIGNAL(goYear(int)),
            mDateNavigator, SLOT(selectYear(int)) );
 
@@ -1837,9 +1830,9 @@ void CalendarView::checkClipboard()
 #endif
 }
 
-void CalendarView::showDates( const DateList &selectedDates )
+void CalendarView::showDates( const DateList &selectedDates, int preferredMonth )
 {
-//  kdDebug(5850) << "CalendarView::selectDates()" << endl;
+  mDateNavigatorContainer->selectDates( selectedDates, preferredMonth );
 
   if ( mViewManager->currentView() ) {
     updateView( selectedDates.first(), selectedDates.last() );

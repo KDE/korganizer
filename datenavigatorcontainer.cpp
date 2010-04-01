@@ -79,12 +79,10 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL( goPrevious() ), SIGNAL( goPrevious() ) );
   connect( v, SIGNAL( goNext() ), SIGNAL( goNext() ) );
 
-  connect( v, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
-  connect( v, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
   connect( v, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
   connect( v, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
 
-  connect( v, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
+  connect( v, SIGNAL( goMonth( int, bool ) ), SIGNAL( goMonth( int, bool ) ) );
   connect( v, SIGNAL( goYear( int ) ), SIGNAL( goYear( int ) ) );
 }
 
@@ -146,7 +144,7 @@ void DateNavigatorContainer::updateConfig()
   }
 }
 
-void DateNavigatorContainer::selectDates( const DateList &dateList )
+void DateNavigatorContainer::selectDates( const DateList &dateList, int preferredMonth )
 {
   if ( !dateList.isEmpty() ) {
     QDate start( dateList.first() );
@@ -161,9 +159,25 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
       navlast = mNavigatorView->endDate();
       navsecond = navfirst;
     }
+
+    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
+    // If the datelist crosses months we won't know which month to show
+    // so we read what's in preferredMonth
+    const bool changingMonth = ( preferredMonth != -1  &&
+                                 calSys->month( mNavigatorView->month() ) != preferredMonth );
+
     if ( start < navfirst // <- start should always be visible
          // end is not visible and we have a spare month at the beginning:
-         || ( end > navlast && start >= navsecond ) ) {
+         || ( end > navlast && start >= navsecond )
+         || changingMonth ) {
+
+      if ( calSys->month( start ) != preferredMonth ) {
+        // the start of the selection is at the previous month, adjust start
+        start = calSys->addMonths( start, 1 );
+        calSys->setYMD( start, calSys->year( start ), calSys->month( start ), 1 );
+      }
+
       // Change the shown months so that the beginning of the date list is visible
       setBaseDates( start );
     }
