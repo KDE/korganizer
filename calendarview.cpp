@@ -2314,6 +2314,8 @@ void CalendarView::pasteIncidence()
 void CalendarView::showIncidence( const Item &item )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
+  if( !incidence )
+     return;
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
   eventViewer->setIncidence( item, QDate() );
   // Disable the Edit button for read-only Incidences.
