@@ -1039,9 +1039,15 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
     mFile = url.toLocalFile();
     if ( !KStandardDirs::exists( mFile ) ) {
       mMainWindow->showStatusMessage( i18n( "New calendar '%1'.", url.prettyUrl() ) );
+      if ( mRecent ) {
+        mRecent->addUrl( url );
+      }
     } else {
       bool success = mCalendarView->openCalendar( mFile, merge );
       if ( success ) {
+        if ( mRecent ) {
+          mRecent->addUrl( url );
+        }
         showStatusMessageOpen( url, merge );
       }
     }
@@ -1054,6 +1060,10 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
       if ( merge ) {
         KIO::NetAccess::removeTempFile( tmpFile );
         if ( success ) {
+          if ( mRecent ) {
+            mRecent->addUrl( url );
+          }
+
           showStatusMessageOpen( url, merge );
         }
       } else {
