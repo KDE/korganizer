@@ -90,8 +90,6 @@ class KOEventPopupMenu : public QMenu
     QList<QAction *> mRecurrenceItems;
     QAction *mDissociateOccurrences;
     QAction *mToggleReminder;
-    QMenu *mCopyToCalendarMenu;
-    QMenu *mMoveToCalendarMenu;
 };
 
 #endif

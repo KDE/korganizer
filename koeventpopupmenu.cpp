@@ -42,8 +42,7 @@ using namespace Akonadi;
 using namespace KCal;
 
 KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
-  : QMenu( eventview ), mEventview( eventview ),
-    mCopyToCalendarMenu( 0 ), mMoveToCalendarMenu( 0 )
+  : QMenu( eventview ), mEventview( eventview )
 {
   mHasAdditionalItems = false;
 
@@ -103,16 +102,6 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
     return;
   }
 
-  if ( mCopyToCalendarMenu ) {
-    removeAction( mCopyToCalendarMenu->menuAction() );
-    delete mCopyToCalendarMenu;
-    mCopyToCalendarMenu = 0;
-  }
-  if ( mMoveToCalendarMenu ) {
-    removeAction( mMoveToCalendarMenu->menuAction() );
-    delete mMoveToCalendarMenu;
-    mMoveToCalendarMenu = 0;
-  }
 
   Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
