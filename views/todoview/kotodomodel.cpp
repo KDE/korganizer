@@ -901,7 +901,6 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
                                 int row, int column,
                                 const QModelIndex &parent )
 {
-#ifdef AKONADI_PORT_DISABLED
   Q_UNUSED( row );
   Q_UNUSED( column );
 
@@ -909,7 +908,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
     kDebug() << "No action other than MoveAction currently supported!"; //TODO
     return false;
   }
-
+#ifdef AKONADI_PORT_DISABLED
   if ( mCalendar && mChanger &&
        ( ICalDrag::canDecode( data ) || VCalDrag::canDecode( data ) ) ) {
     Todo *todo = mDndFactory->createDropTodo( data );
