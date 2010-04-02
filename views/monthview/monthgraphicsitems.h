@@ -56,7 +56,7 @@ class ScrollIndicator : public QGraphicsItem
     QRectF boundingRect() const;
     void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget );
 
-    ArrowDirection direction() { return mDirection; }
+    ArrowDirection direction() const { return mDirection; }
 
   private:
     ArrowDirection mDirection;
