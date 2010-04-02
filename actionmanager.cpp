@@ -28,6 +28,7 @@
 */
 
 #include "actionmanager.h"
+#include <kmimetypetrader.h>
 #include "calendaradaptor.h"
 #include "calendarview.h"
 #include "eventarchiver.h"
@@ -318,6 +319,7 @@ void ActionManager::initActions()
     mACollection->addAction( "korganizer_print", a );
     a = mACollection->addAction( KStandardAction::PrintPreview, mCalendarView, SLOT(print()) );
     mACollection->addAction( "korganizer_print_preview", a );
+    a->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
   } else {
     KStandardAction::openNew( this, SLOT(file_new()), mACollection );
     KStandardAction::open( this, SLOT(file_open()), mACollection );
@@ -328,7 +330,8 @@ void ActionManager::initActions()
       KStandardAction::save( this, SLOT(file_save()), mACollection );
     }
     KStandardAction::print( mCalendarView, SLOT(print()), mACollection );
-    KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );
+    QAction * preview = KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );
+    preview->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

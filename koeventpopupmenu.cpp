@@ -24,6 +24,7 @@
 */
 
 #include "koeventpopupmenu.h"
+#include <kmimetypetrader.h>
 #include "actionmanager.h"
 #include "calprinter.h"
 #include "kocorehelper.h"
@@ -54,8 +55,9 @@ KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
   mEditOnlyItems.append( addSeparator() );
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT( print() ) );
-  addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
+  QAction *preview = addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
              this, SLOT( printPreview() ) );
+  preview->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-cut" ),
