@@ -88,8 +88,8 @@ POTDElement::POTDElement( const QString &id, const QDate &date,
     mFirstStepJob( 0 ), mFirstStepBisJob( 0 ), mSecondStepJob( 0 ),
     mThirdStepJob( 0 )
 {
-  setShortText( i18n( "Loading…" ) );
-  setLongText( i18n( "<qt>Loading <i>Picture of the Day</i>…</qt>" ) );
+  setShortText( i18n( "Loading..." ) );
+  setLongText( i18n( "<qt>Loading <i>Picture of the Day</i>...</qt>" ) );
 
   mTimer = new QTimer( this );
   mTimer->setSingleShot( true );
