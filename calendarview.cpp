@@ -392,7 +392,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     return false;
   }
 
-  Akonadi::CalendarAdaptor adaptor( mCalendar, this );
+  Akonadi::CalendarAdaptor adaptor( mCalendar, this, true /*use default collection*/ );
   // merge in a file
   FileStorage storage( &adaptor );
   storage.setFileName( filename );
