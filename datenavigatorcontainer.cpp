@@ -226,7 +226,9 @@ void DateNavigatorContainer::resizeAllContents()
   if ( horizontalCount != mHorizontalCount ||
        verticalCount != mVerticalCount ) {
     uint count = horizontalCount * verticalCount;
-    if ( count == 0 ) return;
+    if ( count == 0 ) {
+      return;
+    }
 
     while ( count > ( mExtraViews.count() + 1 ) ) {
       KDateNavigator *n = new KDateNavigator( this );
@@ -252,22 +254,30 @@ void DateNavigatorContainer::resizeAllContents()
   int width = (size().width() - margin*2) / horizontalCount;
 
   NavigatorBar *bar = mNavigatorView->navigatorBar();
-  if ( horizontalCount > 1 ) bar->showButtons( true, false );
-  else bar->showButtons( true, true );
+  if ( horizontalCount > 1 ) {
+    bar->showButtons( true, false );
+  } else {
+    bar->showButtons( true, true );
+  }
 
   mNavigatorView->setGeometry(
       ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width ) + margin,
         margin, width, height );
+
   for( uint i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
 
     KDateNavigator *view = mExtraViews.at( i );
     bar = view->navigatorBar();
-    if ( y > 0 ) bar->showButtons( false, false );
-    else {
-        if ( x + 1 == horizontalCount ) bar->showButtons( false, true );
-        else bar->showButtons( false, false );
+    if ( y > 0 ) {
+      bar->showButtons( false, false );
+    } else {
+      if ( x + 1 == horizontalCount ) {
+        bar->showButtons( false, true );
+      } else {
+        bar->showButtons( false, false );
+      }
     }
     view->setGeometry(
         ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width ) + margin,
