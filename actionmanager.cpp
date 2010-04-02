@@ -1601,7 +1601,7 @@ void ActionManager::downloadNewStuff()
 
     IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
 
-    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView );
+    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView, true /*use default collection*/ );
     FileStorage storage( &cal );
     storage.setFileName( file );
     storage.setSaveFormat( new ICalFormat );
