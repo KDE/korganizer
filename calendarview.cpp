@@ -1296,7 +1296,6 @@ void CalendarView::toggleAlarm( const Item &item )
     Alarm *alm = incidence->newAlarm();
     alm->setType( Alarm::Display );
     alm->setEnabled( true );
-    alm->setStartOffset( Duration( 60 ) ); //Set to 1 minute
   }
   mChanger->changeIncidence( oldincidence, item, KOGlobals::ALARM_MODIFIED, this );
   mChanger->endChange( item );

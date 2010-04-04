@@ -58,7 +58,7 @@
            <string>This spinbox allows you to set the reminder trigger time. The time unit is set in the combobox immediately adjacent.</string>
           </property>
           <property name="minimum">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="maximum">
            <number>99999</number>
