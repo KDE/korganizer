@@ -148,7 +148,7 @@ void NavigatorBar::showButtons( bool left, bool right )
 
 }
 
-void NavigatorBar::selectDates( const KCal::DateList &dateList, int preserveMonth )
+void NavigatorBar::selectDates( const KCal::DateList &dateList )
 {
   if ( dateList.count() > 0 ) {
     mDate = dateList.first();
@@ -198,7 +198,7 @@ void NavigatorBar::selectMonthFromMenu()
     return;  // canceled
   }
 
-  emit goMonth( month, true );
+  emit goMonth( month );
 
   delete popup;
 }

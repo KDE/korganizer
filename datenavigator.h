@@ -49,41 +49,56 @@ class DateNavigator : public QObject
     void selectDate( const QDate & );
 
     void selectDates( int count );
-    void selectDates( const QDate &, int count, int preferredMonth = -1 );
+    void selectDates( const QDate &, int count, const QDate &preferredMonth = QDate() );
 
     void selectWeek();
-    void selectWeek( const QDate &, int preferredMonth = -1 );
+    void selectWeek( const QDate &, const QDate &preferredMonth = QDate() );
 
     void selectWorkWeek();
     void selectWorkWeek( const QDate & );
 
-    void selectWeekByDay( int weekDay, const QDate &, int preferredMonth = -1 );
+    void selectWeekByDay( int weekDay, const QDate &, const QDate &preferredMonth = QDate() );
 
     void selectToday();
 
     void selectPreviousYear();
-    void selectPreviousMonth();
+    void selectPreviousMonth( const QDate &currentMonth = QDate(),
+                              const QDate &selectionLowerLimit = QDate(),
+                              const QDate &selectionUpperLimit = QDate() );
     void selectPreviousWeek();
     void selectNextWeek();
-    void selectNextMonth();
+    void selectNextMonth( const QDate &currentMonth = QDate(),
+                          const QDate &selectionLowerLimit = QDate(),
+                          const QDate &selectionUpperLimit = QDate() );
     void selectNextYear();
 
     void selectPrevious();
     void selectNext();
 
-    void selectMonth( int month, bool preserveYear = true );
+    void selectMonth( int month );
     void selectYear( int year );
 
   signals:
-    /* preferredMonth is useful when the datelist crosses months, if different
-       from -1, any month-like component should honour this
+    /* preferredMonth is useful when the datelist crosses months,
+       if valid, any month-like component should honour it
     */
-    void datesSelected( const KCal::DateList &, int preferredMonth );
+    void datesSelected( const KCal::DateList &, const QDate &preferredMonth );
 
   protected:
-    void emitSelected( int preferredMonth = -1 );
+    void emitSelected( const QDate &preferredMonth = QDate() );
 
   private:
+
+    /*
+      Selects next month if offset equals 1, or previous month
+      if offset equals -1.
+      Bigger offsets are accepted.
+    */
+    void shiftMonth( const QDate &date,
+                     const QDate &selectionLowerLimit,
+                     const QDate &selectionUpperLimit,
+                     int offset );
+
     KCal::DateList mSelectedDates;
 };
 

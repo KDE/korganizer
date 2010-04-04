@@ -29,6 +29,7 @@
 #include "koglobals.h"
 #include "navigatorbar.h"
 #include "kdatenavigator.h"
+#include "kodaymatrix.h"
 
 #include <kcalendarsystem.h>
 #include <kdialog.h>
@@ -82,7 +83,10 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
   connect( v, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
 
-  connect( v, SIGNAL( goMonth( int, bool ) ), SIGNAL( goMonth( int, bool ) ) );
+  connect( v, SIGNAL( prevMonthClicked() ), this, SLOT( goPrevMonth() ) );
+  connect( v, SIGNAL( nextMonthClicked() ), this, SLOT( goNextMonth() ) );
+
+  connect( v, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
   connect( v, SIGNAL( goYear( int ) ), SIGNAL( goYear( int ) ) );
 }
 
@@ -144,7 +148,7 @@ void DateNavigatorContainer::updateConfig()
   }
 }
 
-void DateNavigatorContainer::selectDates( const DateList &dateList, int preferredMonth )
+void DateNavigatorContainer::selectDates( const DateList &dateList, const QDate &preferredMonth )
 {
   if ( !dateList.isEmpty() ) {
     QDate start( dateList.first() );
@@ -164,22 +168,19 @@ void DateNavigatorContainer::selectDates( const DateList &dateList, int preferre
 
     // If the datelist crosses months we won't know which month to show
     // so we read what's in preferredMonth
-    const bool changingMonth = ( preferredMonth != -1  &&
-                                 calSys->month( mNavigatorView->month() ) != preferredMonth );
+    const bool changingMonth = ( preferredMonth.isValid()  &&
+                                 calSys->month( mNavigatorView->month() ) != calSys->month( preferredMonth ) );
 
     if ( start < navfirst // <- start should always be visible
          // end is not visible and we have a spare month at the beginning:
          || ( end > navlast && start >= navsecond )
          || changingMonth ) {
 
-      if ( calSys->month( start ) != preferredMonth ) {
-        // the start of the selection is at the previous month, adjust start
-        start = calSys->addMonths( start, 1 );
-        calSys->setYMD( start, calSys->year( start ), calSys->month( start ), 1 );
+      if ( preferredMonth.isValid() ) {
+        setBaseDates( preferredMonth );
+      } else {
+        setBaseDates( start );
       }
-
-      // Change the shown months so that the beginning of the date list is visible
-      setBaseDates( start );
     }
 
     mNavigatorView->selectDates( dateList );
@@ -295,6 +296,43 @@ QSize DateNavigatorContainer::sizeHint() const
 {
   int margin = KDialog::spacingHint() * 2;
   return mNavigatorView->sizeHint() + QSize( margin, margin );
+}
+
+void DateNavigatorContainer::goNextMonth()
+{
+  const QPair<QDate,QDate> p = dateLimits( 1 );
+
+  emit nextMonthClicked( mNavigatorView->month(),
+                         p.first,
+                         p.second);
+}
+
+void DateNavigatorContainer::goPrevMonth()
+{
+  const QPair<QDate,QDate> p = dateLimits( -1 );
+
+  emit prevMonthClicked( mNavigatorView->month(),
+                         p.first,
+                         p.second );
+}
+
+QPair<QDate,QDate> DateNavigatorContainer::dateLimits( int offset )
+{
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  QDate firstMonth, lastMonth;
+  if ( mExtraViews.isEmpty() ) {
+    lastMonth = mNavigatorView->month();
+  } else {
+    lastMonth = mExtraViews.last()->month();
+  }
+
+  firstMonth = calSys->addMonths( mNavigatorView->month(), offset );
+  lastMonth = calSys->addMonths( lastMonth, offset );
+
+  QPair<QDate,QDate> firstMonthBoundary = KODayMatrix::matrixLimits( firstMonth );
+  QPair<QDate,QDate> lastMonthBoundary = KODayMatrix::matrixLimits( lastMonth );
+
+  return qMakePair( firstMonthBoundary.first, lastMonthBoundary.second );
 }
 
 #include "datenavigatorcontainer.moc"

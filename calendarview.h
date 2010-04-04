@@ -552,10 +552,10 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
   protected slots:
     /** Select a view or adapt the current view to display the specified dates.
-        preferredMonth is useful when the datelist crosses months, if different
-        from -1, any month-like component should honour this
+        preferredMonth is useful when the datelist crosses months, if valid,
+        any month-like component should honour this
     */
-    void showDates( const KCal::DateList &, int preferredMonth = -1 );
+    void showDates( const KCal::DateList &, const QDate &preferredMonth = QDate() );
 
   public:
     // show a standard warning

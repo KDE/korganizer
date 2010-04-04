@@ -54,10 +54,10 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   topLayout->addMultiCellWidget( mNavigatorBar, 0, 0, 0, 7 );
 
   connect( mNavigatorBar, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
-  connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SLOT( goPrevMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goNextMonth() ), SLOT( goNextMonth() ) );
+  connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( prevMonthClicked() ) );
+  connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( nextMonthClicked() ) );
   connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth( int,bool ) ), SIGNAL( goMonth( int,bool ) ) );
+  connect( mNavigatorBar, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
   connect( mNavigatorBar, SIGNAL( goYear( int ) ), SIGNAL( goYear( int ) ) );
 
   int i;
@@ -297,36 +297,6 @@ bool KDateNavigator::eventFilter( QObject *o, QEvent *e )
     return true;
   } else {
     return false;
-  }
-}
-
-void KDateNavigator::goPrevMonth()
-{
-  const QDate curMonth = month();
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
-  const int m = calSys->month( curMonth );
-
-  if ( m == 1 ) {
-    // The previous month belongs to the previous year
-    emit goMonth( calSys->monthsInYear( curMonth ), false );
-  } else {
-    emit goMonth( m - 1, true );
-  }
-}
-
-void KDateNavigator::goNextMonth()
-{
-  const QDate curMonth = month();
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
-  const int m = calSys->month( curMonth );
-
-  if ( m == calSys->monthsInYear( curMonth ) ) {
-    // The next month belongs to the next year
-    emit goMonth( 1, false );
-  } else {
-    emit goMonth( m + 1, true );
   }
 }
 

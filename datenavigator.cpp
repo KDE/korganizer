@@ -83,7 +83,7 @@ void DateNavigator::selectDates( int count )
   selectDates( mSelectedDates.first(), count );
 }
 
-void DateNavigator::selectDates( const QDate &d, int count, int preferredMonth )
+void DateNavigator::selectDates( const QDate &d, int count, const QDate &preferredMonth )
 {
   DateList dates;
 
@@ -97,7 +97,7 @@ void DateNavigator::selectDates( const QDate &d, int count, int preferredMonth )
   emitSelected( preferredMonth );
 }
 
-void DateNavigator::selectWeekByDay( int weekDay, const QDate &d, int preferredMonth )
+void DateNavigator::selectWeekByDay( int weekDay, const QDate &d, const QDate &preferredMonth )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
@@ -113,7 +113,7 @@ void DateNavigator::selectWeek()
   selectWeek( mSelectedDates.first() );
 }
 
-void DateNavigator::selectWeek( const QDate &d, int preferredMonth )
+void DateNavigator::selectWeek( const QDate &d, const QDate &preferredMonth )
 {
   int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
 
@@ -181,13 +181,14 @@ void DateNavigator::selectPreviousYear()
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::selectPreviousMonth()
+void DateNavigator::selectPreviousMonth( const QDate &currentMonth,
+                                         const QDate &selectionLowerLimit,
+                                         const QDate &selectionUpperLimit )
 {
-  QDate firstSelected = mSelectedDates.first();
-  int weekDay = firstSelected.dayOfWeek();
-  firstSelected = KOGlobals::self()->calendarSystem()->addMonths( firstSelected, -1 );
-
-  selectWeekByDay( weekDay, firstSelected );
+  shiftMonth( currentMonth,
+              selectionLowerLimit,
+              selectionUpperLimit,
+              -1 );
 }
 
 void DateNavigator::selectPreviousWeek()
@@ -209,14 +210,46 @@ void DateNavigator::selectNextWeek()
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::selectNextMonth()
+void DateNavigator::shiftMonth( const QDate &currentMonth,
+                                const QDate &selectionLowerLimit,
+                                const QDate &selectionUpperLimit,
+                                int offset )
 {
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
+  firstSelected = calSys->addMonths( firstSelected, offset );
 
-  firstSelected = KOGlobals::self()->calendarSystem()->addMonths( firstSelected, 1 );
+  /* Don't trust firstSelected to calculate the nextMonth. firstSelected
+     can belong to a month other than currentMonth because KDateNavigator
+     displays 7*6 days. firstSelected should only be used for selection
+     purposes */
+  const QDate nextMonth = currentMonth.isValid() ?
+                          calSys->addMonths( currentMonth, offset ) : firstSelected;
 
-  selectWeekByDay( weekDay, firstSelected );
+  /* When firstSelected doesn't belong to currentMonth it can happen
+     that the new selection won't be visible on our KDateNavigators
+     so we must adjust it */
+  if ( selectionLowerLimit.isValid() &&
+       firstSelected < selectionLowerLimit ) {
+    firstSelected = selectionLowerLimit;
+  } else if ( selectionUpperLimit.isValid() &&
+              firstSelected > selectionUpperLimit ) {
+    firstSelected = selectionUpperLimit.addDays( -6 );
+  }
+
+  selectWeekByDay( weekDay, firstSelected, nextMonth );
+}
+
+void DateNavigator::selectNextMonth( const QDate &currentMonth,
+                                     const QDate &selectionLowerLimit,
+                                     const QDate &selectionUpperLimit )
+{
+  shiftMonth( currentMonth,
+              selectionLowerLimit,
+              selectionUpperLimit,
+              1 );
 }
 
 void DateNavigator::selectNextYear()
@@ -248,29 +281,26 @@ void DateNavigator::selectNext()
   selectDates( mSelectedDates.first().addDays( offset ), datesCount() );
 }
 
-void DateNavigator::selectMonth( int month, bool preserveYear )
+void DateNavigator::selectMonth( int month )
 {
-  int yearOffset = 0;
-  if ( !preserveYear ) {
-    yearOffset = ( month == 1 ) ? 1 : -1;
-  }
-
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
 
   int day = calSys->day( firstSelected );
-  calSys->setYMD( firstSelected, calSys->year( firstSelected ) + yearOffset, month, 1 );
+  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, 1 );
   int days = calSys->daysInMonth( firstSelected );
   // As day we use either the selected date, or if the month has less days
   // than that, we use the max day of that month
   if ( day > days ) {
     day = days;
   }
+  QDate requestedMonth;
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
+  calSys->setYMD( requestedMonth, calSys->year( firstSelected ), month, 1 );
 
-  selectWeekByDay( weekDay, firstSelected, month );
+  selectWeekByDay( weekDay, firstSelected, requestedMonth );
 }
 
 void DateNavigator::selectYear( int year )
@@ -283,7 +313,7 @@ void DateNavigator::selectYear( int year )
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::emitSelected( int preferredMonth )
+void DateNavigator::emitSelected( const QDate &preferredMonth )
 {
   emit datesSelected( mSelectedDates, preferredMonth );
 }

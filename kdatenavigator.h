@@ -79,9 +79,6 @@ class KDateNavigator: public QFrame
     void updateDayMatrix();
     void updateToday();
 
-    void goNextMonth();
-    void goPrevMonth();
-
   signals:
     void datesSelected( const KCal::DateList & );
     void incidenceDropped( Incidence *, const QDate & );
@@ -90,20 +87,12 @@ class KDateNavigator: public QFrame
 
     void goPrevious();
     void goNext();
-
+    void nextMonthClicked();
+    void prevMonthClicked();
     void goNextYear();
     void goPrevYear();
 
-    /**
-       Tell the DateNavigator we want to change month.
-       @param month month to go to.
-       @param preserveYear Usually goMonth() never changes the year.
-                           Set this to true when @p month is the first
-                           or last one of the year to indicate we crossed
-                           beetween years and the year should be changed
-                           too.
-    */
-    void goMonth( int month, bool preserveYear );
+    void goMonth( int month );
     void goYear( int year );
 
   protected:

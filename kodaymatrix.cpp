@@ -708,3 +708,22 @@ void KODayMatrix::resizeEvent( QResizeEvent * )
   mDaySize.setHeight( sz.height() * 7 / NUMDAYS );
   mDaySize.setWidth( sz.width() / 7 );
 }
+
+/* static */
+QPair<QDate,QDate> KODayMatrix::matrixLimits( const QDate &month )
+{
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  QDate d = month;
+  calSys->setYMD( d, calSys->year( month ), calSys->month( month ), 1 );
+
+  const int dayOfWeek = calSys->dayOfWeek( d );
+  const int weekstart = KGlobal::locale()->weekStartDay();
+
+  d = d.addDays( weekstart - dayOfWeek );
+
+  if ( dayOfWeek == weekstart ) {
+    d = d.addDays( -7 ); // Start on the second line
+  }
+
+  return qMakePair( d, d.addDays( NUMDAYS-1 ) );
+}
