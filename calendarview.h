@@ -672,6 +672,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QWidget *mLeftFrame;
     QStackedWidget *mRightFrame;
 
+    // This navigator bar is used when in full window month view
+    // It has nothing to do with the date navigator
     NavigatorBar *mNavigatorBar;
 
     DateNavigatorContainer *mDateNavigatorContainer;
