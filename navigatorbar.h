@@ -58,12 +58,12 @@ class NavigatorBar: public QWidget
     void selectDates( const KCal::DateList & );
 
   signals:
-    void goNextMonth();
-    void goPrevMonth();
-    void goNextYear();
-    void goPrevYear();
-    void goMonth( int month );
-    void goYear( int year );
+    void nextMonthClicked();
+    void prevMonthClicked();
+    void nextYearClicked();
+    void prevYearClicked();
+    void monthSelected( int month );
+    void yearSelected( int year );
 
   private slots:
     void selectMonthFromMenu();

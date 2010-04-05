@@ -53,12 +53,12 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   mNavigatorBar = new NavigatorBar( this );
   topLayout->addMultiCellWidget( mNavigatorBar, 0, 0, 0, 7 );
 
-  connect( mNavigatorBar, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
-  connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( prevMonthClicked() ) );
-  connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( nextMonthClicked() ) );
-  connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
-  connect( mNavigatorBar, SIGNAL( goYear( int ) ), SIGNAL( goYear( int ) ) );
+  connect( mNavigatorBar, SIGNAL( prevYearClicked() ), SIGNAL( prevYearClicked() ) );
+  connect( mNavigatorBar, SIGNAL( prevMonthClicked() ), SIGNAL( prevMonthClicked() ) );
+  connect( mNavigatorBar, SIGNAL( nextMonthClicked() ), SIGNAL( nextMonthClicked() ) );
+  connect( mNavigatorBar, SIGNAL( nextYearClicked() ), SIGNAL( nextYearClicked() ) );
+  connect( mNavigatorBar, SIGNAL( monthSelected( int ) ), SIGNAL( monthSelected( int ) ) );
+  connect( mNavigatorBar, SIGNAL( yearSelected( int ) ), SIGNAL( yearSelected( int ) ) );
 
   int i;
   QString generalFont = KGlobalSettings::generalFont().family();

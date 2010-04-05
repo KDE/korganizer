@@ -204,17 +204,17 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            SLOT( showDates( const KCal::DateList &, const QDate & ) ) );
 
   // Signals emited by mNavigatorBar
-  connect( mNavigatorBar, SIGNAL( goPrevYear() ),
+  connect( mNavigatorBar, SIGNAL( prevYearClicked() ),
            mDateNavigator, SLOT( selectPreviousYear() ) );
-  connect( mNavigatorBar, SIGNAL( goNextYear() ),
+  connect( mNavigatorBar, SIGNAL( nextYearClicked() ),
            mDateNavigator, SLOT( selectNextYear() ) );
-  connect( mNavigatorBar, SIGNAL( goPrevMonth() ),
+  connect( mNavigatorBar, SIGNAL( prevMonthClicked() ),
            mDateNavigator, SLOT( selectPreviousMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goNextMonth() ),
+  connect( mNavigatorBar, SIGNAL( nextMonthClicked() ),
            mDateNavigator, SLOT( selectNextMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth(int) ),
+  connect( mNavigatorBar, SIGNAL( monthSelected(int) ),
            mDateNavigator, SLOT( selectMonth(int) ) );
-  connect( mNavigatorBar, SIGNAL(goYear(int)),
+  connect( mNavigatorBar, SIGNAL( yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
 
 
@@ -225,13 +225,13 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            mDateNavigator, SLOT( selectPreviousMonth(const QDate &, const QDate &, const QDate &) ) );
   connect( mDateNavigatorContainer, SIGNAL( nextMonthClicked(const QDate &, const QDate &, const QDate &) ),
            mDateNavigator, SLOT( selectNextMonth(const QDate &, const QDate &, const QDate &) ) );
-  connect( mDateNavigatorContainer, SIGNAL( goPrevYear() ),
+  connect( mDateNavigatorContainer, SIGNAL( prevYearClicked() ),
            mDateNavigator, SLOT( selectPreviousYear() ) );
-  connect( mDateNavigatorContainer, SIGNAL( goNextYear() ),
+  connect( mDateNavigatorContainer, SIGNAL( nextYearClicked() ),
            mDateNavigator, SLOT( selectNextYear() ) );
-  connect( mDateNavigatorContainer, SIGNAL( goMonth(int) ),
+  connect( mDateNavigatorContainer, SIGNAL( monthSelected(int) ),
            mDateNavigator, SLOT( selectMonth(int) ) );
-  connect( mDateNavigatorContainer, SIGNAL(goYear(int)),
+  connect( mDateNavigatorContainer, SIGNAL(yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
   connect( mDateNavigatorContainer, SIGNAL( goPrevious() ),
            mDateNavigator, SLOT( selectPrevious() ) );

@@ -68,8 +68,8 @@ class DateNavigatorContainer: public QFrame
     void goPrevious();
     void goNext();
 
-    void goNextYear();
-    void goPrevYear();
+    void nextYearClicked();
+    void prevYearClicked();
 
     /** Signals that the previous month button has been clicked.
 
@@ -87,9 +87,9 @@ class DateNavigatorContainer: public QFrame
                            const QDate &selectionLowerLimit,
                            const QDate &selectionUpperLimit );
 
-    void goMonth( int month );
+    void monthSelected( int month );
 
-    void goYear( int year );
+    void yearSelected( int year );
 
   protected:
     void resizeEvent( QResizeEvent * );

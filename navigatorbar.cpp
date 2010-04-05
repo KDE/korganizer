@@ -116,10 +116,10 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   ctrlLayout->addWidget( mNextMonth );
   ctrlLayout->addWidget( mNextYear );
 
-  connect( mPrevYear, SIGNAL( clicked() ), SIGNAL( goPrevYear() ) );
-  connect( mPrevMonth, SIGNAL( clicked() ), SIGNAL( goPrevMonth() ) );
-  connect( mNextMonth, SIGNAL( clicked() ), SIGNAL( goNextMonth() ) );
-  connect( mNextYear, SIGNAL( clicked() ), SIGNAL( goNextYear() ) );
+  connect( mPrevYear, SIGNAL( clicked() ), SIGNAL( prevYearClicked() ) );
+  connect( mPrevMonth, SIGNAL( clicked() ), SIGNAL( prevMonthClicked() ) );
+  connect( mNextMonth, SIGNAL( clicked() ), SIGNAL( nextMonthClicked() ) );
+  connect( mNextYear, SIGNAL( clicked() ), SIGNAL( nextYearClicked() ) );
   connect( mMonth, SIGNAL( clicked() ), SLOT( selectMonthFromMenu() ) );
   connect( mYear, SIGNAL( clicked() ), SLOT( selectYearFromMenu() ) );
 }
@@ -198,7 +198,7 @@ void NavigatorBar::selectMonthFromMenu()
     return;  // canceled
   }
 
-  emit goMonth( month );
+  emit monthSelected( month );
 
   delete popup;
 }
@@ -227,7 +227,7 @@ void NavigatorBar::selectYearFromMenu()
     return;  // canceled
   }
 
-  emit goYear( year + minYear );
+  emit yearSelected( year + minYear );
 
   delete popup;
 }

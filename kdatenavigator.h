@@ -89,11 +89,11 @@ class KDateNavigator: public QFrame
     void goNext();
     void nextMonthClicked();
     void prevMonthClicked();
-    void goNextYear();
-    void goPrevYear();
+    void nextYearClicked();
+    void prevYearClicked();
 
-    void goMonth( int month );
-    void goYear( int year );
+    void monthSelected( int month );
+    void yearSelected( int year );
 
   protected:
     void updateDates();
