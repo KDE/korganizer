@@ -1243,13 +1243,20 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     }
     case KOGlobals::INCIDENCEDELETED:
     {
-      mAgenda->removeIncidence( incidence );
-      mAllDayAgenda->removeIncidence( incidence );
+      removeIncidence( incidence );
       updateEventIndicators();
       break;
     }
     default:
-      updateView();
+      return;
+  }
+
+  // HACK: Update the view if the all-day agenda has been modified.
+  // Do this because there are some layout problems in the
+  // all-day agenda that are not easily solved, but clearing
+  // and redrawing works ok.
+  if ( incidence->doesFloat() ) {
+    updateView();
   }
 }
 
