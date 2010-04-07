@@ -453,14 +453,21 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
      */
     void appointment_delete();
 
-    /* frees a subtodo from it's relation, update the view */
+    /* frees the selected to-do's children from it's relation, update the view */
     void todo_unsub();
-    /* Free a subtodo from it's relation, without update the view */
-    bool todo_unsub( Todo *todo );
-    /** Make all sub-to-dos of todo independents, update the view*/
-    bool makeSubTodosIndependents ( );
-    /** Make all sub-to-dos of todo independents, not update the view*/
-    bool makeSubTodosIndependents ( Todo *todo );
+
+    /* frees an incidence's children from it's relation, without update the view
+       Works with any incidence type, although currently we only pass to-dos
+    */
+    bool incidence_unsub( Incidence *inc );
+
+    /** Make all sub-to-dos of todo independent, update the view */
+    bool makeSubTodosIndependent ( );
+
+    /** Make all children of incidence independent, not update the view
+        Works with any incidence type, although currently we only pass to-dos
+    */
+    bool makeChildrenIndependent( Incidence *inc );
 
     /** Take ownership of selected event. */
     void takeOverEvent();

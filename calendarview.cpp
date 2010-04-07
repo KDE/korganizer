@@ -1282,22 +1282,24 @@ void CalendarView::appointment_delete()
 void CalendarView::todo_unsub()
 {
   Todo *anTodo = selectedTodo();
-  if( todo_unsub (anTodo ) ) {
+  if( incidence_unsub ( anTodo ) ) {
     updateView();
   }
 }
 
-bool CalendarView::todo_unsub( Todo *todo )
+bool CalendarView::incidence_unsub( Incidence *inc )
 {
   bool status= false;
-  if ( !todo || !todo->relatedTo() ) return false;
+  if ( !inc || !inc->relatedTo() ) {
+    return false;
+  }
 
-  if ( mChanger->beginChange( todo, 0, QString() ) ) {
-      Todo *oldTodo = todo->clone();
-      todo->setRelatedTo(0);
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED, this );
-      mChanger->endChange( todo, 0, QString() );
-      delete oldTodo;
+  if ( mChanger->beginChange( inc, 0, QString() ) ) {
+      Incidence *oldInc = inc->clone();
+      inc->setRelatedTo( 0 );
+      mChanger->changeIncidence( oldInc, inc, KOGlobals::RELATION_MODIFIED, this );
+      mChanger->endChange( inc, 0, QString() );
+      delete oldInc;
       setModified(true);
       status = true;
   }
@@ -1309,34 +1311,30 @@ bool CalendarView::todo_unsub( Todo *todo )
   return status;
 }
 
-bool CalendarView::makeSubTodosIndependents ( )
+bool CalendarView::makeSubTodosIndependent ( )
 {
   bool  status = false;
-  Todo *anTodo = selectedTodo();
+  Todo *aTodo = selectedTodo();
 
-  if( makeSubTodosIndependents( anTodo ) ) {
+  if ( makeChildrenIndependent( aTodo ) ) {
     updateView();
     status = true;
   }
   return status;
 }
 
-bool CalendarView::makeSubTodosIndependents ( Todo *todo )
+bool CalendarView::makeChildrenIndependent ( Incidence *inc )
 {
-  if( !todo || todo->relations().isEmpty() ) return false;
+  if ( !inc || inc->relations().isEmpty() ) {
+    return false;
+  }
 
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
-  Incidence::List subTodos( todo->relations() );
+  Incidence::List subIncs( inc->relations() );
   Incidence::List::Iterator it;
-  Incidence *aIncidence;
-  Todo *aTodo;
 
-  for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
-    aIncidence = *it;
-    if( aIncidence && aIncidence->type() == "Todo" ) {
-      aTodo = static_cast<Todo*>( aIncidence );
-      todo_unsub ( aTodo );
-    }
+  for ( it= subIncs.begin(); it != subIncs.end(); ++it ) {
+    incidence_unsub ( *it );
   }
   endMultiModify();
   return true;
@@ -2234,7 +2232,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
   if( km == KMessageBox::Yes ) {
     // Instead of making a subto-do independent, why not relate
     // it to it's dead father's parent?
-    makeSubTodosIndependents ( todo );
+    makeChildrenIndependent ( todo );
     mChanger->deleteIncidence( todo, this );
   } else if ( km == KMessageBox::No ) {
     // Delete all
