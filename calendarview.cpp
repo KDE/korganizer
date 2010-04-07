@@ -2636,7 +2636,6 @@ Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
       if ( incToReturn ) {
         dissociationOccurred = true;
       } else {
-        // por aqui controlo de erros
         KMessageBox::sorry( this, i18n("Unable to add the future items to the "
             "calendar. No change will be done."), i18n("Error Occurred") );
 
