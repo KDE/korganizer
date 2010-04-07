@@ -2232,7 +2232,8 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
   startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
   if( km == KMessageBox::Yes ) {
-
+    // Instead of making a subto-do independent, why not relate
+    // it to it's dead father's parent?
     makeSubTodosIndependents ( todo );
     mChanger->deleteIncidence( todo, this );
   } else if ( km == KMessageBox::No ) {
