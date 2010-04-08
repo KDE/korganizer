@@ -41,6 +41,8 @@
 #include <QGraphicsSceneWheelEvent>
 #include <QPaintEvent>
 
+#define AUTO_REPEAT_DELAY  600
+
 using namespace Akonadi;
 using namespace KOrg;
 
@@ -55,7 +57,8 @@ MonthScene::MonthScene( MonthView *parent )
     mStartCell( 0 ),
     mPreviousCell( 0 ),
     mActionType( None ),
-    mStartHeight( 0 )
+    mStartHeight( 0 ),
+    mCurrentIndicator( 0 )
 {
   mEventPixmap     = KOGlobals::self()->smallIcon( "view-calendar-day" );
   mBirthdayPixmap  = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
@@ -476,7 +479,7 @@ void MonthScene::clickOnScrollIndicator( ScrollIndicator *scrollItem )
 void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 {
   QPointF pos = mouseEvent->scenePos();
-
+  repeatTimer.stop();
   MonthGraphicsItem *iItem;
   if ( ( iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) ) ) ) {
     if ( iItem->monthItem() ) {
@@ -561,6 +564,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
   QPointF pos = mouseEvent->scenePos();
 
   mClickedItem = 0;
+  mCurrentIndicator = 0;
 
   MonthGraphicsItem *iItem;
   if ( ( iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) ) ) ) {
@@ -598,6 +602,8 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
     mouseEvent->accept();
   } else if ( ScrollIndicator *scrollItem = dynamic_cast<ScrollIndicator*>( itemAt( pos ) ) ) {
     clickOnScrollIndicator( scrollItem );
+    mCurrentIndicator = scrollItem;
+    repeatTimer.start( AUTO_REPEAT_DELAY, this );
   } else {
     // unselect items when clicking somewhere else
     selectItem( 0 );
@@ -614,11 +620,27 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
   }
 }
 
+void MonthScene::timerEvent(QTimerEvent *e)
+{
+  if (e->timerId() == repeatTimer.timerId()) {
+    if ( mCurrentIndicator->isVisible() ) {
+      clickOnScrollIndicator( mCurrentIndicator );
+      repeatTimer.start(AUTO_REPEAT_DELAY, this);
+    } else {
+      mCurrentIndicator = 0;
+      repeatTimer.stop();
+    }
+  }
+}
+
 void MonthScene::mouseReleaseEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 {
   QPointF pos = mouseEvent->scenePos();
 
   static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( None );
+
+  repeatTimer.stop();
+  mCurrentIndicator = 0;
 
   if ( mActionItem ) {
     MonthCell *currentCell = getCellFromPos( pos );

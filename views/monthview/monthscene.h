@@ -30,6 +30,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QPixmap>
+#include <QBasicTimer>
+
 #include <akonadi/collection.h>
 class QResizeEvent;
 class QGraphicsSceneMouseEvent;
@@ -184,7 +186,7 @@ class MonthScene : public QGraphicsScene
     virtual void mousePressEvent( QGraphicsSceneMouseEvent *mouseEvent );
     virtual void mouseReleaseEvent( QGraphicsSceneMouseEvent *mouseEvent );
     virtual void wheelEvent( QGraphicsSceneWheelEvent *wheelEvent );
-
+    virtual void timerEvent( QTimerEvent *e );
     /**
        Scrolls all incidences in cells up
      */
@@ -278,7 +280,8 @@ class MonthScene : public QGraphicsScene
     QPixmap mReadonlyPixmap;
     QPixmap mReplyPixmap;
     QPixmap mHolidayPixmap;
-
+    QBasicTimer repeatTimer;
+    ScrollIndicator *mCurrentIndicator;
     friend class MonthGraphicsView;
 };
 
