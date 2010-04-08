@@ -1331,7 +1331,7 @@ void CalPrintTodos::setSettingsWidget()
 
     if ( mTodoSortField != TodoFieldUnset ) {
       // do not insert if already done so.
-      cfg->mSortField->addItem( i18n( "Summary" ) );
+      cfg->mSortField->addItem( i18n( "Title" ) );
       cfg->mSortField->addItem( i18n( "Start Date" ) );
       cfg->mSortField->addItem( i18n( "Due Date" ) );
       cfg->mSortField->addItem( i18n( "Priority" ) );
@@ -1420,7 +1420,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   }
 
   outStr.truncate( 0 );
-  outStr += i18n( "Summary" );
+  outStr += i18n( "Title" );
   p.drawText( possummary, mCurrentLinePos - 2, outStr );
 
   if ( mIncludePercentComplete ) {
