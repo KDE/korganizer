@@ -657,6 +657,11 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     // uncompleted subitems), notAllPurged is set to true.
     bool purgeCompletedSubTodos( Todo* todo, bool &notAllPurged );
 
+    /** Returns all incidences having inc has their parent (or grand parent, etc.)
+        inc is included in the list too.
+     */
+    void getIncidenceHierarchy( Incidence *inc, Incidence::List &incidences );
+
     KOrg::History *mHistory;
 
     QSplitter    *mPanner;

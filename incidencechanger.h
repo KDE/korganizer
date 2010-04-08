@@ -58,6 +58,7 @@ class IncidenceChanger : public KOrg::IncidenceChangerBase
 
     bool deleteIncidence( Incidence *incidence, QWidget *parent );
 
+    bool cutIncidences( const Incidence::List &incidences, QWidget *parent );
     bool cutIncidence( Incidence *incidence, QWidget *parent );
 
     static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );

@@ -23,6 +23,7 @@
 
 #include "korganizer/koglobals.h"
 #include <libkcal/scheduler.h>
+#include <libkcal/incidence.h>
 #include <qobject.h>
 
 class QWidget;
@@ -60,6 +61,8 @@ public:
   virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
                                 KOGlobals::WhatChanged, QWidget *parent ) = 0;
   virtual bool deleteIncidence( Incidence *incidence, QWidget *parent ) = 0;
+
+  virtual bool cutIncidences( const Incidence::List &incidences, QWidget *parent ) = 0;
   virtual bool cutIncidence( Incidence *incidence, QWidget *parent ) = 0;
 
 signals:

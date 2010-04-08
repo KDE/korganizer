@@ -893,20 +893,72 @@ void CalendarView::edit_cut()
     KNotifyClient::beep();
     return;
   }
-  mChanger->cutIncidence( incidence, this );
+
+  Incidence::List incidences;
+  int km = KMessageBox::Yes;
+
+  if ( !incidence->relations().isEmpty() &&
+       incidence->type() == "Todo" ) { // Only todos (yet?)
+    km = KMessageBox::questionYesNoCancel( this,
+                                           i18n("The item \"%1\" has sub-to-dos. "
+                                                "Do you want to cut just this item and "
+                                                "make all its sub-to-dos independent, or "
+                                                "cut the to-do with all its sub-to-dos?"
+                                             ).arg( incidence->summary() ),
+                                           i18n("KOrganizer Confirmation"),
+                                           i18n("Cut Only This"),
+                                           i18n("Cut All"));
+  }
+
+  if ( km == KMessageBox::Yes ) { // only one
+    incidences.append( incidence );
+    makeChildrenIndependent( incidence );
+  } else if ( km == KMessageBox::No ) { // all
+    // load incidence + children + grandchildren...
+    getIncidenceHierarchy( incidence, incidences );
+  }
+
+  if ( km != KMessageBox::Cancel ) {
+    mChanger->cutIncidences( incidences, this );
+  }
 }
 
 void CalendarView::edit_copy()
 {
   Incidence *incidence = incToSendToClipboard( false );
 
-  if (!incidence) {
+  if ( !incidence ) {
     KNotifyClient::beep();
     return;
   }
-  DndFactory factory( mCalendar );
-  if ( !factory.copyIncidence( incidence ) ) {
-    KNotifyClient::beep();
+
+  Incidence::List incidences;
+  int km = KMessageBox::Yes;
+
+  if ( !incidence->relations().isEmpty() &&
+       incidence->type() == "Todo" ) { // only todos.
+    km = KMessageBox::questionYesNoCancel( this,
+                                           i18n("The item \"%1\" has sub-to-dos. "
+                                                "Do you want to copy just this item or "
+                                                "copy the to-do with all its sub-to-dos?"
+                                             ).arg( incidence->summary() ),
+                                           i18n("KOrganizer Confirmation"),
+                                           i18n("Copy Only This"),
+                                           i18n("Copy All"));
+  }
+
+  if ( km == KMessageBox::Yes ) { // only one
+    incidences.append( incidence );
+  } else if ( km == KMessageBox::No ) { // all
+    // load incidence + children + grandchildren...
+    getIncidenceHierarchy( incidence, incidences );
+  }
+
+  if ( km != KMessageBox::Cancel ) {
+    DndFactory factory( mCalendar );
+    if ( !factory.copyIncidences( incidences ) ) {
+      KNotifyClient::beep();
+    }
   }
 }
 
@@ -992,42 +1044,47 @@ void CalendarView::edit_paste()
   }
 
   DndFactory factory( mCalendar );
-  Incidence *pastedIncidence;
+  Incidence::List pastedIncidences;
   if ( timeSet && time.isValid() ) {
-    pastedIncidence = factory.pasteIncidence( date, &time );
+    pastedIncidences = factory.pasteIncidences( date, &time );
   } else {
-    pastedIncidence = factory.pasteIncidence( date );
-  }
-  if ( !pastedIncidence ) {
-    return;
+    pastedIncidences = factory.pasteIncidences( date );
   }
 
-  QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
+  Incidence::List::Iterator it;
+  for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
+    QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
 
-  // FIXME: use a visitor here
-  if ( pastedIncidence->type() == "Event" ) {
-    Event *pastedEvent = static_cast<Event*>( pastedIncidence );
-    // only use selected area if event is of the same type
-    // (all-day or non-all-day) as the current selection is
-    if ( aView && endDT.isValid() && useEndTime ) {
-      if ( ( pastedEvent->doesFloat() && aView->selectedIsAllDay() ) ||
-           ( !pastedEvent->doesFloat() && !aView->selectedIsAllDay() ) ) {
-        pastedEvent->setDtEnd( endDT );
+    // FIXME: use a visitor here
+    if ( ( *it )->type() == "Event" ) {
+      Event *pastedEvent = static_cast<Event*>( *it );
+      // only use selected area if event is of the same type
+      // (all-day or non-all-day) as the current selection is
+      if ( aView && endDT.isValid() && useEndTime ) {
+        if ( ( pastedEvent->doesFloat() && aView->selectedIsAllDay() ) ||
+             ( !pastedEvent->doesFloat() && !aView->selectedIsAllDay() ) ) {
+          pastedEvent->setDtEnd( endDT );
+        }
       }
-    }
-    mChanger->addIncidence( pastedEvent, p.first, p.second, this );
 
-  } else if ( pastedIncidence->type() == "Todo" ) {
-    Todo *pastedTodo = static_cast<Todo*>( pastedIncidence );
-    Todo *_selectedTodo = selectedTodo();
-    if ( _selectedTodo ) {
-      pastedTodo->setRelatedTo( _selectedTodo );
-    } else {
-      //ensure pasted todo has no relations if there is not a current selection
-      pastedTodo->setRelatedTo( 0 );
-      pastedTodo->setRelatedToUid( QString() );
+      // KCal supports events with relations, but korganizer doesn't
+      // so unset it. It can even come from other application.
+      pastedEvent->setRelatedTo( 0 );
+      pastedEvent->setRelatedToUid( QString() );
+
+      mChanger->addIncidence( pastedEvent, p.first, p.second, this );
+
+    } else if ( ( *it )->type() == "Todo" ) {
+      Todo *pastedTodo = static_cast<Todo*>( *it );
+      Todo *_selectedTodo = selectedTodo();
+
+      // if we are cutting a hierarchy only the root
+      // should be son of _selectedTodo
+      if ( _selectedTodo && !pastedTodo->relatedTo() ) {
+        pastedTodo->setRelatedTo( _selectedTodo );
+      }
+      mChanger->addIncidence( pastedTodo, p.first, p.second, this );
     }
-    mChanger->addIncidence( pastedTodo, p.first, p.second, this );
   }
 }
 
@@ -1289,7 +1346,7 @@ void CalendarView::todo_unsub()
 
 bool CalendarView::incidence_unsub( Incidence *inc )
 {
-  bool status= false;
+  bool status = false;
   if ( !inc || !inc->relatedTo() ) {
     return false;
   }
@@ -2663,6 +2720,20 @@ void CalendarView::selectWeek( const QDate &date )
     mDateNavigator->selectWorkWeek( date );
   } else {
     mDateNavigator->selectWeek( date );
+  }
+}
+
+void CalendarView::getIncidenceHierarchy( Incidence *inc,
+                                          Incidence::List &children )
+{
+  // protecion against looping hierarchies
+  if ( inc && !children.contains( inc ) ) {
+    Incidence::List::ConstIterator it;
+    Incidence::List immediateChildren = inc->relations();
+    for ( it = immediateChildren.constBegin(); it != immediateChildren.constEnd(); ++it ) {
+      getIncidenceHierarchy( *it, children );
+    }
+    children.append( inc );
   }
 }
 

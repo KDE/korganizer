@@ -151,20 +151,40 @@ kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->
   return doDelete;
 }
 
+bool IncidenceChanger::cutIncidences( const Incidence::List &incidences,
+                                      QWidget *parent )
+{
+  Incidence::List::ConstIterator it;
+  bool doDelete = true;
+  Incidence::List incsToCut;
+  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
+    if ( *it ) {
+      doDelete = sendGroupwareMessage( *it, KCal::Scheduler::Cancel,
+                                       KOGlobals::INCIDENCEDELETED, parent );
+      if ( doDelete ) {
+        emit incidenceToBeDeleted( *it );
+        incsToCut.append( *it );
+      }
+    }
+  }
+
+  DndFactory factory( mCalendar );
+
+  if ( factory.cutIncidences( incsToCut ) ) {
+    for ( it = incsToCut.constBegin(); it != incsToCut.constEnd(); ++it ) {
+      emit incidenceDeleted( *it );
+    }
+    return !incsToCut.isEmpty();
+  } else {
+    return false;
+  }
+}
+
 bool IncidenceChanger::cutIncidence( Incidence *incidence, QWidget *parent )
 {
-  if ( !incidence ) return true;
-kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
-  bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel,
-                                        KOGlobals::INCIDENCEDELETED, parent );
-  if( doDelete ) {
-    // @TODO: the factory needs to do the locking!
-    DndFactory factory( mCalendar );
-    emit incidenceToBeDeleted( incidence );
-    factory.cutIncidence( incidence );
-    emit incidenceDeleted( incidence );
-  }
-  return doDelete;
+  Incidence::List incidences;
+  incidences.append( incidence );
+  return cutIncidences( incidences, parent );
 }
 
 class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
