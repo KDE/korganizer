@@ -71,7 +71,7 @@ class ScrollIndicator : public QGraphicsItem
 class MonthCell
 {
   public:
-    MonthCell( int id, QDate date, QGraphicsScene *scene );
+    MonthCell( int id, const QDate &date, QGraphicsScene *scene );
     ~MonthCell();
 
     /**
