@@ -503,14 +503,18 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Frees a subtodo from it's relation, update the view */
     void todo_unsub();
 
-    /** Free a subtodo from it's relation, without update the view */
-    bool todo_unsub( const Akonadi::Item &todo );
+    /* Frees an incidence's children from it's relation, without the view update
+       Works with any incidence type, although currently we only pass to-dos
+    */
+    bool incidence_unsub( const Akonadi::Item &item );
 
-    /** Make all sub-to-dos of todo independents, update the view*/
-    bool makeSubTodosIndependents ( );
+    /** Make all sub-to-dos of the selected todo independent, update the view */
+    bool makeSubTodosIndependent( );
 
-    /** Make all sub-to-dos of todo independents, not update the view*/
-    bool makeSubTodosIndependents ( const Akonadi::Item &todo );
+    /** Make all children of incidence independent, not update the view
+        Works with any incidence type, although currently we only pass to-dos
+    */
+    bool makeChildrenIndependent( const Akonadi::Item &item );
 
     /** Take ownership of selected event. */
     void takeOverEvent();

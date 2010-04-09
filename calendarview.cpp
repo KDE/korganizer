@@ -844,7 +844,7 @@ void CalendarView::edit_cut()
 
   // Unparent child to-dos.
   // (Doesn't do nothing if the item isn't a to-do, with children)
-  makeSubTodosIndependents( item );
+  makeChildrenIndependent( item );
 
   mChanger->cutIncidence( item, this );
 
@@ -1199,25 +1199,25 @@ void CalendarView::appointment_delete()
 
 void CalendarView::todo_unsub()
 {
-  const Item anTodo = selectedTodo();
-  if ( todo_unsub( anTodo ) ) {
+  const Item aTodo = selectedTodo();
+  if ( incidence_unsub( aTodo ) ) {
     updateView();
   }
 }
 
-bool CalendarView::todo_unsub( const Item &todoItem )
+bool CalendarView::incidence_unsub( const Item &item )
 {
-  const Todo::Ptr todo = Akonadi::todo( todoItem );
+  const Incidence::Ptr inc = Akonadi::incidence( item );
   bool status= false;
-  if ( !todo || !todo->relatedTo() ) {
+  if ( !inc || !inc->relatedTo() ) {
     return false;
   }
 
-  if ( mChanger->beginChange( todoItem ) ) {
-    Todo::Ptr oldTodo( todo->clone() );
-    todo->setRelatedTo( 0 );
-    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::RELATION_MODIFIED, this );
-    mChanger->endChange( todoItem );
+  if ( mChanger->beginChange( item ) ) {
+    Incidence::Ptr oldInc( inc->clone() );
+    inc->setRelatedTo( 0 );
+    mChanger->changeIncidence( oldInc, item, KOGlobals::RELATION_MODIFIED, this );
+    mChanger->endChange( item );
     status = true;
   }
   if ( !status ) {
@@ -1230,35 +1230,33 @@ bool CalendarView::todo_unsub( const Item &todoItem )
   return status;
 }
 
-bool CalendarView::makeSubTodosIndependents ( )
+bool CalendarView::makeSubTodosIndependent( )
 {
   bool  status = false;
-  const Item anTodo = selectedTodo();
+  const Item aTodo = selectedTodo();
 
-  if( makeSubTodosIndependents( anTodo ) ) {
+  if( makeChildrenIndependent( aTodo ) ) {
     updateView();
     status = true;
   }
   return status;
 }
 
-bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
+bool CalendarView::makeChildrenIndependent( const Item &item )
 {
-  const Todo::Ptr todo = Akonadi::todo( todoItem );
+  const Incidence::Ptr inc = Akonadi::incidence( item );
 
-  if ( !todo || todo->relations().isEmpty() ) {
+  if ( !inc || inc->relations().isEmpty() ) {
     return false;
   }
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
 
-  Item::List subTodos = mCalendar->findChildren( todoItem );
+  Item::List subIncs = mCalendar->findChildren( item );
 
   Incidence::List::Iterator it;
 
-  foreach( const Item &item,  subTodos ) {
-    if ( Akonadi::hasTodo( item ) ) {
-      todo_unsub( item );
-    }
+  foreach( const Item &item, subIncs ) {
+    incidence_unsub( item );
   }
 
   endMultiModify();
@@ -2440,9 +2438,7 @@ void CalendarView::deleteTodoIncidence ( const Item& todoItem, bool force )
   startMultiModify( i18n( "Deleting sub-to-dos" ) );
   // Delete only the father
   if ( km == KMessageBox::Yes ) {
-    // Instead of making a subto-do independent, why not relate
-    // it to it's dead father's parent?
-    makeSubTodosIndependents ( todoItem );
+    makeChildrenIndependent( todoItem );
     mChanger->deleteIncidence( todoItem, this );
   } else if ( km == KMessageBox::No ) {
     // Delete all
