@@ -461,7 +461,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     */
     bool incidence_unsub( Incidence *inc );
 
-    /** Make all sub-to-dos of todo independent, update the view */
+    /** Make all sub-to-dos of the selected todo independent, update the view */
     bool makeSubTodosIndependent ( );
 
     /** Make all children of incidence independent, not update the view
