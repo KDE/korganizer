@@ -58,6 +58,11 @@ class KOEventView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
+    enum {
+      // This value is passed to QColor's lighter(int factor) for selected events
+      BRIGHTNESS_FACTOR = 125
+    };
+
     /**
      * Constructs a view.
      * @param cal is a pointer to the calendar object from which events

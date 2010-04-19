@@ -23,6 +23,7 @@
   without including the source code for Qt in the source distribution.
 */
 
+#include "koeventview.h"
 #include "monthgraphicsitems.h"
 #include "monthitem.h"
 #include "monthscene.h"
@@ -235,10 +236,10 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
 
   QColor bgColor = mMonthItem->bgColor();
   bgColor = mMonthItem->selected() ?
-            bgColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : bgColor;
+            bgColor.lighter( KOEventView::BRIGHTNESS_FACTOR ) : bgColor;
   QColor frameColor = mMonthItem->frameColor();
   frameColor = mMonthItem->selected() ?
-               frameColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : frameColor;
+               frameColor.lighter( KOEventView::BRIGHTNESS_FACTOR ) : frameColor;
   QColor textColor = KOHelper::getTextColor( bgColor );
 
   // make moving or resizing items translucent

@@ -43,11 +43,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
   public:
     static KOGlobals *self();
 
-    enum {
-      // This value is passed to QColor's lighter(int factor) for selected events
-      BRIGHTNESS_FACTOR = 125
-    };
-
     KConfig *config() const;
 
     static bool reverseLayout();
