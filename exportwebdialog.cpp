@@ -70,8 +70,8 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
 {
   setFaceType( Tabbed );
   setCaption( i18n( "Export Calendar as Web Page" ) );
-  setButtons( Help|Default|User1|Cancel );
-  enableButton( KDialog::Help, false );
+  setButtons( /*Help|*/Default|User1|Cancel );
+  /*enableButton( KDialog::Help, false );*/
   setDefaultButton( User1 );
   setModal( false );
   showButtonSeparator( false );
