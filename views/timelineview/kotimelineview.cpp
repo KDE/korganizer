@@ -169,14 +169,14 @@ void KOTimelineView::updateView()
 void KOTimelineView::changeIncidenceDisplay( const Item &incidence, int mode )
 {
   switch ( mode ) {
-  case KOGlobals::INCIDENCEADDED:
+  case IncidenceChangerBase::INCIDENCEADDED:
     insertIncidence( incidence );
     break;
-  case KOGlobals::INCIDENCEEDITED:
+  case IncidenceChangerBase::INCIDENCEEDITED:
     removeIncidence( incidence );
     insertIncidence( incidence );
     break;
-  case KOGlobals::INCIDENCEDELETED:
+  case IncidenceChangerBase::INCIDENCEDELETED:
     removeIncidence( incidence );
     break;
   default:

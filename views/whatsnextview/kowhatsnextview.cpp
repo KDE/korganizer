@@ -247,9 +247,9 @@ void KOWhatsNextView::changeIncidenceDisplay( const Item &incidence, int action 
   Q_UNUSED( incidence );
 
   switch( action ) {
-  case KOGlobals::INCIDENCEADDED:
-  case KOGlobals::INCIDENCEEDITED:
-  case KOGlobals::INCIDENCEDELETED:
+  case IncidenceChangerBase::INCIDENCEADDED:
+  case IncidenceChangerBase::INCIDENCEEDITED:
+  case IncidenceChangerBase::INCIDENCEDELETED:
     updateView();
     break;
   default:

@@ -256,7 +256,7 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
                               job->errorString( )) );
   } else {
     //PENDING(AKONADI_PORT) emit a real action here, not just UNKNOWN_MODIFIED
-    emit incidenceChanged( oldItem, newItem, KOGlobals::UNKNOWN_MODIFIED );
+    emit incidenceChanged( oldItem, newItem, IncidenceChangerBase::UNKNOWN_MODIFIED );
   }
 
   d->m_latestVersionByItemId[newItem.id()] = newItem.revision();
@@ -420,7 +420,7 @@ bool IncidenceChanger::myAttendeeStatusChanged( const Incidence* newInc, const I
 
 bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc,
                                         const Item &newItem,
-                                        KOGlobals::WhatChanged action,
+                                        IncidenceChangerBase::WhatChanged action,
                                         QWidget *parent )
 {
   const Incidence::Ptr newinc = Akonadi::incidence( newItem );

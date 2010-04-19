@@ -175,13 +175,13 @@ void KOJournalView::changeIncidenceDisplay( const Item &incidence, int action )
 {
   if ( Journal::Ptr journal = Akonadi::journal( incidence ) ) {
     switch(action) {
-    case KOGlobals::INCIDENCEADDED:
+    case IncidenceChangerBase::INCIDENCEADDED:
       appendJournal( incidence, journal->dtStart().date() );
       break;
-    case KOGlobals::INCIDENCEEDITED:
+    case IncidenceChangerBase::INCIDENCEEDITED:
       emit journalEdited( incidence );
       break;
-    case KOGlobals::INCIDENCEDELETED:
+    case IncidenceChangerBase::INCIDENCEDELETED:
       emit journalDeleted( incidence );
       break;
     default:

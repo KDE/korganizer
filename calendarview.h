@@ -446,7 +446,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void incidenceAdded( const Akonadi::Item &incidence );
     void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
-                           KOGlobals::WhatChanged modification );
+                           IncidenceChangerBase::WhatChanged modification );
     void incidenceToBeDeleted( const Akonadi::Item &incidence );
     void incidenceDeleted( const Akonadi::Item &incidence );
     void startMultiModify( const QString &text );

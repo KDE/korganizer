@@ -128,7 +128,10 @@ bool KOJournalEditor::processInput()
       if ( mChanger->beginChange( mIncidence ) ) {
         journal->startUpdates(); //merge multiple mIncidence->updated() calls into one
         fillJournal( journal.get() );
-        rc = mChanger->changeIncidence( oldJournal, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
+        rc = mChanger->changeIncidence( oldJournal,
+                                        mIncidence,
+                                        IncidenceChangerBase::NOTHING_MODIFIED,
+                                        this );
         journal->endUpdates();
         mChanger->endChange( mIncidence );
       } else {

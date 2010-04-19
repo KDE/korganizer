@@ -46,6 +46,30 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 {
   Q_OBJECT
   public:
+
+    enum HowChanged {
+      INCIDENCEADDED,
+      INCIDENCEEDITED,
+      INCIDENCEDELETED,
+      NOCHANGE
+    };
+
+    enum WhatChanged {
+      PRIORITY_MODIFIED,
+      COMPLETION_MODIFIED,
+      CATEGORY_MODIFIED,
+      DATE_MODIFIED,
+      RELATION_MODIFIED,
+      ALARM_MODIFIED,
+      DESCRIPTION_MODIFIED,
+      SUMMARY_MODIFIED,
+      COMPLETION_MODIFIED_WITH_RECURRENCE,
+      RECURRENCE_MODIFIED_ONE_ONLY,
+      RECURRENCE_MODIFIED_ALL_FUTURE,
+      UNKNOWN_MODIFIED,
+      NOTHING_MODIFIED
+    };
+
     explicit IncidenceChangerBase( Akonadi::Calendar *cal, QObject *parent = 0 );
 
     virtual ~IncidenceChangerBase();
@@ -61,13 +85,13 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 
     virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent ) = 0;
     virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection, QWidget* parent ) = 0;
-    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, KOGlobals::WhatChanged, QWidget *parent ) = 0;
+    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, WhatChanged, QWidget *parent ) = 0;
     virtual bool deleteIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
     virtual bool cutIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
 
   Q_SIGNALS:
     void incidenceAdded( const Akonadi::Item & );
-    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc, KOGlobals::WhatChanged  );
+    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc, WhatChanged  );
     void incidenceToBeDeleted( const Akonadi::Item & );
     void incidenceDeleted( const Akonadi::Item & );
 

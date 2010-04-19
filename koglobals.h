@@ -43,27 +43,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
   public:
     static KOGlobals *self();
 
-    enum HowChanged {
-      INCIDENCEADDED,
-      INCIDENCEEDITED,
-      INCIDENCEDELETED,
-      NOCHANGE
-    };
-    enum WhatChanged {
-      PRIORITY_MODIFIED,
-      COMPLETION_MODIFIED,
-      CATEGORY_MODIFIED,
-      DATE_MODIFIED,
-      RELATION_MODIFIED,
-      ALARM_MODIFIED,
-      DESCRIPTION_MODIFIED,
-      SUMMARY_MODIFIED,
-      COMPLETION_MODIFIED_WITH_RECURRENCE,
-      RECURRENCE_MODIFIED_ONE_ONLY,
-      RECURRENCE_MODIFIED_ALL_FUTURE,
-      UNKNOWN_MODIFIED,
-      NOTHING_MODIFIED
-    };
     enum {
       // This value is passed to QColor's lighter(int factor) for selected events
       BRIGHTNESS_FACTOR = 125

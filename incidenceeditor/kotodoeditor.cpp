@@ -196,7 +196,11 @@ bool KOTodoEditor::processInput()
         //merge multiple mIncidence->updated() calls into one
         Akonadi::todo( mIncidence )->startUpdates();
         fillTodo(mIncidence);
-        rc = mChanger->changeIncidence( oldTodo, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
+        rc = mChanger->changeIncidence( oldTodo,
+                                        mIncidence,
+                                        IncidenceChangerBase::NOTHING_MODIFIED,
+                                        this );
+
         Akonadi::todo( mIncidence )->endUpdates();
         mChanger->endChange( mIncidence );
       } else {

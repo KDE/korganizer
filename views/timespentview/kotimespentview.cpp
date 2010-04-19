@@ -22,6 +22,7 @@
   without including the source code for Qt in the source distribution.
 */
 
+#include "korganizer/incidencechangerbase.h"
 #include "kotimespentview.h"
 #include "koglobals.h"
 #include "koprefs.h"
@@ -224,9 +225,9 @@ void KOTimeSpentView::changeIncidenceDisplay( const Item &incidence, int action 
   Q_UNUSED( incidence );
 
   switch( action ) {
-    case KOGlobals::INCIDENCEADDED:
-    case KOGlobals::INCIDENCEEDITED:
-    case KOGlobals::INCIDENCEDELETED:
+    case KOrg::IncidenceChangerBase::INCIDENCEADDED:
+    case KOrg::IncidenceChangerBase::INCIDENCEEDITED:
+    case KOrg::IncidenceChangerBase::INCIDENCEDELETED:
       updateView();
       break;
     default:

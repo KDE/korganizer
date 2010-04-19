@@ -267,7 +267,10 @@ bool KOEventEditor::processInput()
         if ( mChanger->beginChange( mIncidence ) ) {
           ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
           fillEvent(mIncidence);
-          rc = mChanger->changeIncidence( oldEvent, mIncidence, KOGlobals::NOTHING_MODIFIED, this );
+          rc = mChanger->changeIncidence( oldEvent,
+                                          mIncidence,
+                                          IncidenceChangerBase::NOTHING_MODIFIED,
+                                          this );
           ev->endUpdates();
           mChanger->endChange( mIncidence );
         } else {

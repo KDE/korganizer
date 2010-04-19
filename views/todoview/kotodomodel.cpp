@@ -258,7 +258,7 @@ void KOTodoModel::processChange( const Item & aitem, int action )
     return;
   }
 
-  if ( action == KOGlobals::INCIDENCEEDITED ) {
+  if ( action == IncidenceChangerBase::INCIDENCEEDITED ) {
     TodoTreeNode *ttTodo = findTodo( Akonadi::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
@@ -270,12 +270,12 @@ void KOTodoModel::processChange( const Item & aitem, int action )
     // changed, because we can't be sure that only the relationship changed
     emit dataChanged( miChanged,
                       miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
-  } else if ( action == KOGlobals::INCIDENCEADDED ) {
+  } else if ( action == IncidenceChangerBase::INCIDENCEADDED ) {
     // the todo should not be in our tree...
     Q_ASSERT( !findTodo( Akonadi::incidence ( aitem )->uid() ) );
 
     insertTodo( aitem );
-  } else if ( action == KOGlobals::INCIDENCEDELETED ) {
+  } else if ( action == IncidenceChangerBase::INCIDENCEDELETED ) {
     TodoTreeNode *ttTodo = findTodo( Akonadi::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
@@ -805,14 +805,14 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
   if ( !todo->isReadOnly() && mChanger->beginChange( node->mTodo ) ) {
     Todo::Ptr oldTodo( todo->clone() );
-    KOGlobals::WhatChanged modified = KOGlobals::UNKNOWN_MODIFIED;
+    IncidenceChangerBase::WhatChanged modified = IncidenceChangerBase::UNKNOWN_MODIFIED;
 
     if ( role == Qt::CheckStateRole && index.column() == 0 ) {
       todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked );
       if ( todo->recurs() ) {
-        modified = KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE;
+        modified = IncidenceChangerBase::COMPLETION_MODIFIED_WITH_RECURRENCE;
       } else {
-        modified = KOGlobals::COMPLETION_MODIFIED;
+        modified = IncidenceChangerBase::COMPLETION_MODIFIED;
       }
     }
 
@@ -821,16 +821,16 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
         case SummaryColumn:
           if ( !value.toString().isEmpty() ) {
             todo->setSummary( value.toString() );
-            modified = KOGlobals::SUMMARY_MODIFIED;
+            modified = IncidenceChangerBase::SUMMARY_MODIFIED;
           }
           break;
         case PriorityColumn:
           todo->setPriority( value.toInt() );
-          modified = KOGlobals::PRIORITY_MODIFIED;
+          modified = IncidenceChangerBase::PRIORITY_MODIFIED;
           break;
         case PercentColumn:
           todo->setPercentComplete( value.toInt() );
-          modified = KOGlobals::COMPLETION_MODIFIED;
+          modified = IncidenceChangerBase::COMPLETION_MODIFIED;
           break;
         case DueDateColumn:
           {
@@ -838,21 +838,21 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
             tmp.setDate( value.toDate() );
             todo->setDtDue( tmp );
             todo->setHasDueDate( value.toDate().isValid() );
-            modified = KOGlobals::DATE_MODIFIED;
+            modified = IncidenceChangerBase::DATE_MODIFIED;
           }
           break;
         case CategoriesColumn:
           todo->setCategories( value.toStringList() );
-          modified = KOGlobals::CATEGORY_MODIFIED;
+          modified = IncidenceChangerBase::CATEGORY_MODIFIED;
           break;
         case DescriptionColumn:
           todo->setDescription( value.toString() );
-          modified = KOGlobals::DESCRIPTION_MODIFIED;
+          modified = IncidenceChangerBase::DESCRIPTION_MODIFIED;
           break;
       }
     }
 
-    if ( modified != KOGlobals::UNKNOWN_MODIFIED ) {
+    if ( modified != IncidenceChangerBase::UNKNOWN_MODIFIED ) {
       mChanger->changeIncidence( oldTodo, node->mTodo, modified, 0 );
       // changeIncidence will eventually call the view's
       // changeIncidenceDisplay method, which in turn
@@ -945,7 +945,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       if ( mChanger->beginChange( todo ) ) {
         Todo *oldTodo = todo->clone();
         todo->setRelatedTo( destTodo );
-        mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED, 0 );
+        mChanger->changeIncidence( oldTodo, todo, IncidenceChangerBase::RELATION_MODIFIED, 0 );
         mChanger->endChange( todo );
         // again, no need to emit dataChanged, that's done by processChange
 
@@ -986,7 +986,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
               }
             }
           }
-          mChanger->changeIncidence( oldTodo, destTodo, KOGlobals::RELATION_MODIFIED, 0 );
+          mChanger->changeIncidence( oldTodo, destTodo, IncidenceChangerBase::RELATION_MODIFIED, 0 );
           mChanger->endChange( destTodo );
 
           delete oldTodo;

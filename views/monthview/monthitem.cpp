@@ -458,7 +458,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence,
-                                    KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
+                                    IncidenceChangerBase::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, mIncidence.parentCollection(), parentWidget() );
         } else {
@@ -480,7 +480,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence,
-                                    KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
+                                    IncidenceChangerBase::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, mIncidence.parentCollection(), parentWidget() );
         } else {
@@ -513,7 +513,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       todo->setDtDue( todo->dtDue().addDays( startOffset ) );
     }
 
-    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED, 0 );
+    changer->changeIncidence( oldInc, mIncidence, IncidenceChangerBase::DATE_MODIFIED, 0 );
   }
 
   changer->endChange( mIncidence );
