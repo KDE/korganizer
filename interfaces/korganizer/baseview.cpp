@@ -179,7 +179,7 @@ void BaseView::dayPassed( const QDate & )
   updateView();
 }
 
-void BaseView::setIncidenceChanger( IncidenceChangerBase *changer )
+void BaseView::setIncidenceChanger( IncidenceChanger *changer )
 {
   mChanger = changer;
 }

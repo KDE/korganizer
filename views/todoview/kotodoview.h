@@ -88,7 +88,7 @@ class KOTodoView : public BaseView
     bool supportsDateRangeSelection() { return false; }
 
   public Q_SLOTS:
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer );
+    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();

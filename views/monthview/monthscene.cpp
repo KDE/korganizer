@@ -30,6 +30,7 @@
 #include "koglobals.h"
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/incidencechanger.h>
 
 #include <Akonadi/Item>
 
@@ -365,7 +366,7 @@ void MonthScene::resetAll()
   mClickedItem = 0;
 }
 
-IncidenceChangerBase *MonthScene::incidenceChanger() const
+Akonadi::IncidenceChanger *MonthScene::incidenceChanger() const
 {
   return mMonthView->mChanger;
 }

@@ -425,14 +425,14 @@ void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
   }
 
   switch( action ) {
-  case IncidenceChangerBase::INCIDENCEADDED:
+  case Akonadi::IncidenceChanger::INCIDENCEADDED:
   {
     if ( date >= f && date <= l ) {
       addIncidence( aitem, date );
     }
     break;
   }
-  case IncidenceChangerBase::INCIDENCEEDITED:
+  case Akonadi::IncidenceChanger::INCIDENCEEDITED:
   {
     item = getItemForIncidence( aitem );
     if ( item ) {
@@ -445,7 +445,7 @@ void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
     }
     break;
   }
-  case IncidenceChangerBase::INCIDENCEDELETED:
+  case Akonadi::IncidenceChanger::INCIDENCEDELETED:
   {
     item = getItemForIncidence( aitem );
     if ( item ) {

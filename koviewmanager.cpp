@@ -341,8 +341,8 @@ void KOViewManager::connectView( KOrg::BaseView *view )
   connect( view, SIGNAL(endMultiModify()),
            mMainView, SLOT(endMultiModify()) );
 
-  connect( mMainView, SIGNAL(newIncidenceChanger(IncidenceChangerBase *)),
-           view, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
+  connect( mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger *)),
+           view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)) );
   view->setIncidenceChanger( mMainView->incidenceChanger() );
 }
 
@@ -358,7 +358,7 @@ void KOViewManager::connectTodoView( KOTodoView *todoView )
   connect( todoView, SIGNAL(unSubTodoSignal()),
            mMainView, SLOT(todo_unsub()) );
   connect( todoView, SIGNAL(unAllSubTodoSignal()),
-           mMainView, SLOT(makeSubTodosIndependents()) );
+           mMainView, SLOT(makeSubTodosIndependent()) );
   connect( mMainView, SIGNAL(categoryConfigChanged()),
            todoView, SLOT(updateCategories()) );
 }

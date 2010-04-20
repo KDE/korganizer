@@ -47,12 +47,12 @@
 #include "incidenceeditor/koeditorconfig.h"
 #include "incidenceeditor/koincidenceeditor.h"
 #include "incidenceeditor/kogroupwareintegration.h"
-#include "incidencechanger.h"
 
 #include <KCal/FileStorage>
 
 #include <KMime/KMimeMessage>
 
+#include <akonadi/kcal/incidencechanger.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/calendarmodel.h>
@@ -1599,7 +1599,8 @@ void ActionManager::downloadNewStuff()
       continue;
     }
 
-    IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
+    //AKONADI_PORT avoid this local incidence changer copy...
+    IncidenceChanger changer( mCalendar, 0, Collection() );
 
     Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView, true /*use default collection*/ );
     FileStorage storage( &cal );
@@ -2069,7 +2070,8 @@ void ActionManager::slotAutoArchive()
   mAutoArchiveTimer->stop();
   EventArchiver archiver;
   connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
-  IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
+  //AKONADI_PORT avoid this local incidence changer copy...
+  IncidenceChanger changer( mCalendar, 0, Collection() );
   archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )

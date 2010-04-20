@@ -138,7 +138,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateNavigator *dateNavigator() const { return mDateNavigator; }
 
     KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    virtual KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
+    virtual Akonadi::IncidenceChanger *incidenceChanger() const { return mChanger; }
 
     /*
      * Informs the date navigator which incidence types should be used
@@ -241,7 +241,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( IncidenceChangerBase * );
+    void newIncidenceChanger( Akonadi::IncidenceChanger * );
     void exportHTML( KOrg::HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );
@@ -446,7 +446,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void incidenceAdded( const Akonadi::Item &incidence );
     void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
-                           IncidenceChangerBase::WhatChanged modification );
+                           Akonadi::IncidenceChanger::WhatChanged modification );
     void incidenceToBeDeleted( const Akonadi::Item &incidence );
     void incidenceDeleted( const Akonadi::Item &incidence );
     void startMultiModify( const QString &text );
@@ -634,7 +634,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate activeDate( bool fallbackToToday = false );
 
   protected:
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     int msgItemDelete( const Akonadi::Item &incidence );
 
@@ -707,7 +707,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
   KOTodoView *mTodoList;
     QMap<Akonadi::Item::Id,KOIncidenceEditor*> mDialogList;
 
-    KOrg::IncidenceChangerBase *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
 };

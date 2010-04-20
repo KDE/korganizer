@@ -25,6 +25,8 @@
 #ifndef MONTHSCENE_H
 #define MONTHSCENE_H
 
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <QMap>
 #include <QDate>
 #include <QGraphicsScene>
@@ -48,8 +50,6 @@ namespace KCal {
 using namespace KCal;
 
 namespace KOrg {
-
-class IncidenceChangerBase;
 
 class MonthItem;
 class ScrollIndicator;
@@ -92,7 +92,7 @@ class MonthScene : public QGraphicsScene
     bool initialized() { return mInitialized; }
     void setInitialized( bool i ) { mInitialized = i; }
     void resetAll();
-    IncidenceChangerBase *incidenceChanger() const;
+    Akonadi::IncidenceChanger *incidenceChanger() const;
 
     int totalHeight();
 

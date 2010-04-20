@@ -28,6 +28,8 @@
 //
 // Widget showing one Journal entry
 
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <kcal/journal.h>
 #include <kcal/listbase.h>
 #include <kvbox.h>
@@ -47,10 +49,7 @@ class QPushButton;
 namespace Akonadi {
   class Calendar;
 }
-namespace KOrg {
-  class IncidenceChangerBase;
-}
-using namespace KOrg;
+
 using namespace KCal;
 
 class JournalView : public QWidget
@@ -81,7 +80,7 @@ class JournalView : public QWidget
     void printItem();
 
   public slots:
-    void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer ) { mChanger = changer; }
     void setDate( const QDate &date );
 
   signals:
@@ -108,7 +107,7 @@ class JournalView : public QWidget
 
     bool mDirty;
     bool mWriteInProgress;
-    IncidenceChangerBase *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
 };
 
 class JournalDateView : public KVBox
@@ -129,7 +128,7 @@ class JournalDateView : public KVBox
     void clear();
 
   signals:
-    void setIncidenceChangerSignal( IncidenceChangerBase *changer );
+    void setIncidenceChangerSignal( Akonadi::IncidenceChanger *changer );
     void setDateSignal( const QDate & );
     void flushEntries();
     void editIncidence( const Akonadi::Item &journal );
@@ -138,7 +137,7 @@ class JournalDateView : public KVBox
 
   public slots:
     void emitNewJournal();
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
     void journalEdited( const Akonadi::Item & );
     void journalDeleted( const Akonadi::Item & );
 
@@ -147,7 +146,7 @@ class JournalDateView : public KVBox
     QDate mDate;
     QMap<Akonadi::Item::Id,JournalView *> mEntries;
 
-    IncidenceChangerBase *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
 };
 
 #endif // KORGANIZER_JOURNALVIEW_H

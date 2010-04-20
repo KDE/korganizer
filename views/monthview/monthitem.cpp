@@ -436,7 +436,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
   }
   Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
 
-  IncidenceChangerBase *changer = monthScene()->incidenceChanger();
+  Akonadi::IncidenceChanger *changer = monthScene()->incidenceChanger();
   if ( !changer || !changer->beginChange( mIncidence ) ) {
     KODialogManager::errorSaveIncidence( parentWidget(), incidence );
     return;
@@ -458,7 +458,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence,
-                                    IncidenceChangerBase::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
+                                    Akonadi::IncidenceChanger::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, mIncidence.parentCollection(), parentWidget() );
         } else {
@@ -480,7 +480,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence,
-                                    IncidenceChangerBase::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
+                                    Akonadi::IncidenceChanger::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, mIncidence.parentCollection(), parentWidget() );
         } else {
@@ -513,7 +513,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       todo->setDtDue( todo->dtDue().addDays( startOffset ) );
     }
 
-    changer->changeIncidence( oldInc, mIncidence, IncidenceChangerBase::DATE_MODIFIED, 0 );
+    changer->changeIncidence( oldInc, mIncidence, Akonadi::IncidenceChanger::DATE_MODIFIED, 0 );
   }
 
   changer->endChange( mIncidence );

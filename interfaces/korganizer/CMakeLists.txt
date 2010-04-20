@@ -5,7 +5,6 @@
 
 set(korganizer_interfaces_LIB_SRCS
   baseview.cpp
-  incidencechangerbase.cpp
   mainwindow.cpp
 )
 

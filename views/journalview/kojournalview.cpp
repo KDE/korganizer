@@ -74,8 +74,8 @@ void KOJournalView::appendJournal( const Item &journal, const QDate &dt )
     entry->setIncidenceChanger( mChanger );
     entry->show();
     connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
-    connect( this, SIGNAL(setIncidenceChangerSignal(IncidenceChangerBase *)),
-             entry, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
+    connect( this, SIGNAL(setIncidenceChangerSignal(Akonadi::IncidenceChanger *)),
+             entry, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)) );
     connect( this, SIGNAL(journalEdited(Akonadi::Item)),
              entry, SLOT(journalEdited(Akonadi::Item)) );
     connect( this, SIGNAL(journalDeleted(Akonadi::Item)),
@@ -175,13 +175,13 @@ void KOJournalView::changeIncidenceDisplay( const Item &incidence, int action )
 {
   if ( Journal::Ptr journal = Akonadi::journal( incidence ) ) {
     switch(action) {
-    case IncidenceChangerBase::INCIDENCEADDED:
+    case Akonadi::IncidenceChanger::INCIDENCEADDED:
       appendJournal( incidence, journal->dtStart().date() );
       break;
-    case IncidenceChangerBase::INCIDENCEEDITED:
+    case Akonadi::IncidenceChanger::INCIDENCEEDITED:
       emit journalEdited( incidence );
       break;
-    case IncidenceChangerBase::INCIDENCEDELETED:
+    case Akonadi::IncidenceChanger::INCIDENCEDELETED:
       emit journalDeleted( incidence );
       break;
     default:
@@ -190,7 +190,7 @@ void KOJournalView::changeIncidenceDisplay( const Item &incidence, int action )
   }
 }
 
-void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer )
+void KOJournalView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );

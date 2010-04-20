@@ -27,6 +27,8 @@
 
 #include "incidenceeditor_export.h"
 
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <Akonadi/Item>
 
 #include <KCal/Incidence>
@@ -37,11 +39,6 @@
 
 class KOAttendeeEditor;
 class KOEditorDetails;
-
-namespace KOrg {
-  class IncidenceChangerBase;
-}
-using namespace KOrg;
 
 class DesignerFields;
 class EmbeddedURLPage;
@@ -88,7 +85,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
 
   public slots:
     /** Edit an existing todo. */
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer )
+    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer )
     { mChanger = changer; }
 
     /** Initialize editor. This function creates the tab widgets. */
@@ -173,7 +170,7 @@ class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     Akonadi::CollectionComboBox *mCalSelector;
     KOEditorDetails *mDetails;
     KOAttendeeEditor *mAttendeeEditor;
-    IncidenceChangerBase *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
 
     QList<DesignerFields*> mDesignerFields;
     QMap<QWidget*, DesignerFields*> mDesignerFieldForWidget;

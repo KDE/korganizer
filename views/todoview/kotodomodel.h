@@ -25,6 +25,8 @@
 #ifndef KOTODOMODEL_H
 #define KOTODOMODEL_H
 
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <QAbstractItemModel>
 #include <QString>
 #include <QHash>
@@ -40,10 +42,6 @@ using namespace KCal;
 namespace Akonadi {
   class Calendar;
 }
-namespace KOrg {
-  class IncidenceChangerBase;
-}
-using namespace KOrg;
 
 /**
 	@author Thomas Thrainer
@@ -89,7 +87,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param changer Pointer to the changer to use.
      */
-    void setIncidenceChanger( IncidenceChangerBase *changer )
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer )
     { mChanger = changer; }
 
     virtual Qt::ItemFlags flags( const QModelIndex &index ) const;
@@ -194,8 +192,8 @@ class KOTodoModel : public QAbstractItemModel
 
     QHash<QString, TodoTreeNode*> mTodoUidHash;
 
-    /** This IncidenceChanger is used to change todos */
-    IncidenceChangerBase *mChanger;
+    /** This Akonadi::IncidenceChanger is used to change todos */
+    Akonadi::IncidenceChanger *mChanger;
 
     /** Display the todos without hierarchy? */
     bool mFlatView;

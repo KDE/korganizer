@@ -113,7 +113,7 @@ class MultiAgendaView : public AgendaView
     void changeIncidenceDisplay( const Akonadi::Item &, int mode );
     void updateConfig();
 
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     void setUpdateNeeded();
 

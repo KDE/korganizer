@@ -29,9 +29,9 @@
 #include "koeditorfreebusy.h"
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
-#include "korganizer/incidencechangerbase.h"
 
 #include <akonadi/kcal/utils.h> //krazy:exclude=camelcase since kdepim/akonadi
+#include <akonadi/kcal/incidencechanger.h>
 
 #include <Akonadi/CollectionComboBox>
 #include <Akonadi/KCal/IncidenceMimeTypeVisitor>
@@ -269,7 +269,7 @@ bool KOEventEditor::processInput()
           fillEvent(mIncidence);
           rc = mChanger->changeIncidence( oldEvent,
                                           mIncidence,
-                                          IncidenceChangerBase::NOTHING_MODIFIED,
+                                          Akonadi::IncidenceChanger::NOTHING_MODIFIED,
                                           this );
           ev->endUpdates();
           mChanger->endChange( mIncidence );

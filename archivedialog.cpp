@@ -55,7 +55,7 @@
 
 #include "archivedialog.moc"
 
-ArchiveDialog::ArchiveDialog( Akonadi::Calendar *cal, KOrg::IncidenceChangerBase* changer, QWidget *parent )
+ArchiveDialog::ArchiveDialog( Akonadi::Calendar *cal, Akonadi::IncidenceChanger* changer, QWidget *parent )
   : KDialog (parent)
 {
   setCaption( i18nc( "@title:window", "Archive/Delete Past Events and To-dos" ) );

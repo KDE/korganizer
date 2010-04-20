@@ -232,7 +232,6 @@ set(korganizerprivate_LIB_SRCS
   eventarchiver.cpp
   exportwebdialog.cpp
   kocorehelper.cpp
-  incidencechanger.cpp
   kohelper.cpp
   cellitem.cpp
   akonadicollectionview.cpp

@@ -22,13 +22,13 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "korganizer/incidencechangerbase.h"
 #include "kotimespentview.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/incidencechanger.h>
 
 #include <kcal/event.h>
 
@@ -225,9 +225,9 @@ void KOTimeSpentView::changeIncidenceDisplay( const Item &incidence, int action 
   Q_UNUSED( incidence );
 
   switch( action ) {
-    case KOrg::IncidenceChangerBase::INCIDENCEADDED:
-    case KOrg::IncidenceChangerBase::INCIDENCEEDITED:
-    case KOrg::IncidenceChangerBase::INCIDENCEDELETED:
+    case Akonadi::IncidenceChanger::INCIDENCEADDED:
+    case Akonadi::IncidenceChanger::INCIDENCEEDITED:
+    case Akonadi::IncidenceChanger::INCIDENCEDELETED:
       updateView();
       break;
     default:

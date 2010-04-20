@@ -24,9 +24,9 @@
 
 #include "printplugin.h"
 #include "korganizer/korganizer_export.h"
-#include "korganizer/incidencechangerbase.h"
 
 #include <kcal/event.h>
+#include <akonadi/kcal/incidencechanger.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -243,7 +243,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       Assign a new incidence change helper object.
      */
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer );
+    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     /**
       Write all unsaved data back to calendar store.
@@ -412,7 +412,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end );
 
   protected:
-    IncidenceChangerBase *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
 
   private:
     class Private;

@@ -28,12 +28,13 @@
 
 #include "journalview.h"
 #include "kodialogmanager.h"
-#include "incidencechanger.h"
 #include "koglobals.h"
 #include "kocorehelper.h"
 #include "calprinter.h"
 
 #include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <kcal/incidenceformatter.h>
 #include <kcal/journal.h>
 
@@ -99,8 +100,8 @@ void JournalDateView::addJournal( const Item &j )
   entry->setIncidenceChanger( mChanger );
 
   mEntries.insert( j.id(), entry );
-  connect( this, SIGNAL(setIncidenceChangerSignal(IncidenceChangerBase *)),
-           entry, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
+  connect( this, SIGNAL(setIncidenceChangerSignal(Akonadi::IncidenceChanger *)),
+           entry, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)) );
   connect( this, SIGNAL(setDateSignal(const QDate &)),
            entry, SLOT(setDate(const QDate &)) );
   connect( entry, SIGNAL(deleteIncidence(Akonadi::Item)),
@@ -118,7 +119,7 @@ Item::List JournalDateView::journals() const
   return l;
 }
 
-void JournalDateView::setIncidenceChanger( IncidenceChangerBase *changer )
+void JournalDateView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );

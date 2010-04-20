@@ -362,7 +362,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
   mFlatView->setChecked( cfgGroup.readEntry( "FlatView", false ) );
 }
 
-void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )
+void KOTodoView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   BaseView::setIncidenceChanger( changer );
   mModel->setIncidenceChanger( changer );
@@ -722,7 +722,7 @@ void KOTodoView::setNewDate( const QDate &date )
     }
     todo->setDtDue( dt );
 
-    mChanger->changeIncidence( oldTodo, todoItem, IncidenceChangerBase::COMPLETION_MODIFIED, this );
+    mChanger->changeIncidence( oldTodo, todoItem, Akonadi::IncidenceChanger::COMPLETION_MODIFIED, this );
     mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
@@ -753,10 +753,10 @@ void KOTodoView::setNewPercentage( QAction *action )
     }
     if ( todo->recurs() && percentage == 100 ) {
       mChanger->changeIncidence( oldTodo, todoItem,
-                                 IncidenceChangerBase::COMPLETION_MODIFIED_WITH_RECURRENCE, this );
+                                 Akonadi::IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE, this );
     } else {
       mChanger->changeIncidence( oldTodo, todoItem,
-                                 IncidenceChangerBase::COMPLETION_MODIFIED, this );
+                                 Akonadi::IncidenceChanger::COMPLETION_MODIFIED, this );
     }
     mChanger->endChange( todoItem );
   } else {
@@ -777,7 +777,7 @@ void KOTodoView::setNewPriority( QAction *action )
     Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
-    mChanger->changeIncidence( oldTodo, todoItem, IncidenceChangerBase::PRIORITY_MODIFIED, this );
+    mChanger->changeIncidence( oldTodo, todoItem, Akonadi::IncidenceChanger::PRIORITY_MODIFIED, this );
     mChanger->endChange( todoItem );
   }
 }
@@ -804,7 +804,7 @@ void KOTodoView::changedCategories( QAction *action )
     }
     categories.sort();
     todo->setCategories( categories );
-    mChanger->changeIncidence( oldTodo, todoItem, IncidenceChangerBase::CATEGORY_MODIFIED, this );
+    mChanger->changeIncidence( oldTodo, todoItem, Akonadi::IncidenceChanger::CATEGORY_MODIFIED, this );
     mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";

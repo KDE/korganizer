@@ -25,6 +25,8 @@
 #ifndef ARCHIVEDIALOG_H
 #define ARCHIVEDIALOG_H
 
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <kdialog.h>
 
 class QRadioButton;
@@ -40,14 +42,14 @@ namespace Akonadi {
 class Calendar;
 }
 namespace KOrg {
-class IncidenceChangerBase;
+class IncidenceChanger;
 }
 
 class ArchiveDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit ArchiveDialog( Akonadi::Calendar *calendar, KOrg::IncidenceChangerBase* changer, QWidget *parent=0 );
+    explicit ArchiveDialog( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, QWidget *parent=0 );
     virtual ~ArchiveDialog();
 
   signals:
@@ -71,7 +73,7 @@ class ArchiveDialog : public KDialog
     KComboBox *mExpiryUnitsComboBox;
     QCheckBox *mEvents;
     QCheckBox *mTodos;
-    KOrg::IncidenceChangerBase *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
     Akonadi::Calendar *mCalendar;
 };
 
