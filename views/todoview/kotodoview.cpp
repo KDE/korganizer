@@ -430,7 +430,7 @@ void KOTodoView::addTodo( const QString &summary,
   }
 
   if ( !mChanger->addIncidence( todo, this ) ) {
-    KODialogManager::errorSaveIncidence( this, todo );
+    Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
   }
 }
 
@@ -646,7 +646,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   todo->setDtDue( due );
 
   if ( !mChanger->addIncidence( todo, this ) ) {
-    KODialogManager::errorSaveIncidence( this, todo );
+    Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
   }
 }
 

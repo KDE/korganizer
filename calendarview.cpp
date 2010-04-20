@@ -704,7 +704,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setDescription( description );
 
         if ( !mChanger->addIncidence( journal, this ) ) {
-          KODialogManager::errorSaveIncidence( this, journal );
+          Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
           return;
         }
 
@@ -717,7 +717,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         if ( !mChanger->changeIncidence( oldJournal, journalItem,
                                          IncidenceChanger::DESCRIPTION_MODIFIED,
                                          this ) ) {
-          KODialogManager::errorSaveIncidence( this, journal );
+          Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
           return;
         }
       }
@@ -2740,7 +2740,7 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
   }
 
   if ( !mChanger->addIncidence( incidence, this ) ) {
-    KODialogManager::errorSaveIncidence( this, incidence );
+    Akonadi::IncidenceChanger::errorSaveIncidence( this, incidence );
   }
 }
 

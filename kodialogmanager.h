@@ -78,8 +78,6 @@ class KODialogManager : public QObject
 
     void connectTypeAhead( KOEventEditor *editor, KOEventView *view );
 
-    static void errorSaveIncidence( QWidget *parent, const KCal::Incidence::Ptr &incidence );
-
   public slots:
     void showOptionsDialog();
     void showCategoryEditDialog();

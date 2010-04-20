@@ -438,7 +438,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
 
   Akonadi::IncidenceChanger *changer = monthScene()->incidenceChanger();
   if ( !changer || !changer->beginChange( mIncidence ) ) {
-    KODialogManager::errorSaveIncidence( parentWidget(), incidence );
+    Akonadi::IncidenceChanger::errorSaveIncidence( parentWidget(), incidence );
     return;
   }
 

@@ -864,7 +864,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
     return true;
   } else {
-    KODialogManager::errorSaveIncidence( 0, todo ); //TODO pass parent
+    Akonadi::IncidenceChanger::errorSaveIncidence( 0, todo ); //TODO pass parent
     return false;
   }
 }
@@ -952,7 +952,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         delete oldTodo;
         return true;
       } else {
-        KODialogManager::errorSaveIncidence( 0, todo );
+        Akonadi::IncidenceChanger::errorSaveIncidence( 0, todo );
         return false;
       }
     } else if ( event ) {
@@ -992,7 +992,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
           delete oldTodo;
           return true;
         } else {
-          KODialogManager::errorSaveIncidence( 0, destTodo );
+          Akonadi::IncidenceChanger::errorSaveIncidence( 0, destTodo );
           return false;
         }
       }

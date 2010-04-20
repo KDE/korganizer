@@ -120,14 +120,6 @@ KODialogManager::~KODialogManager()
   delete mCategoryEditDialog;
 }
 
-void KODialogManager::errorSaveIncidence( QWidget *parent, const Incidence::Ptr &incidence )
-{
-  KMessageBox::sorry(
-    parent,
-    i18n( "Unable to save %1 \"%2\".",
-          i18n( incidence->type() ), incidence->summary() ) );
-}
-
 void KODialogManager::showOptionsDialog()
 {
   if ( !mOptionsDialog ) {
