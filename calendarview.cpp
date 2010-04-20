@@ -46,7 +46,6 @@
 #include "incidenceeditor/koincidenceeditor.h"
 #include "incidenceeditor/kojournaleditor.h"
 #include "incidenceeditor/kotodoeditor.h"
-#include "komessagebox.h"
 #include "koviewmanager.h"
 #include "navigatorbar.h"
 #include "publishdialog.h"
@@ -56,6 +55,8 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 #include "collectiongeneralpage.h"
+
+#include <libkdepim/pimmessagebox.h>
 
 #include <akonadi/control.h>
 #include <akonadi/collectionpropertiesdialog.h>
@@ -2533,7 +2534,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
         }
 
         if ( !( isFirst && isLast ) ) {
-          km = KOMessageBox::fourBtnMsgBox(
+          km = PIMMessageBox::fourBtnMsgBox(
             this,
             QMessageBox::Warning,
             message,

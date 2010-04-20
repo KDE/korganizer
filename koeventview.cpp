@@ -28,7 +28,8 @@
 #include "views/agendaview/koagendaview.h" // TODO AKONADI_PORT
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
-#include "komessagebox.h"
+
+#include <libkdepim/pimmessagebox.h>
 
 #include <Akonadi/Item>
 
@@ -206,7 +207,7 @@ int KOEventView::showMoveRecurDialog( const Item &aitem, const QDate &date )
   }
 
   if ( !( isFirst && isLast ) ) {
-    answer = KOMessageBox::fourBtnMsgBox(
+    answer = PIMMessageBox::fourBtnMsgBox(
       this,
       QMessageBox::Question,
       message,

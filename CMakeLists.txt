@@ -175,7 +175,6 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 set(korganizerprivate_LIB_SRCS
   ${libkdgantt1_SRCS}
   collectiongeneralpage.cpp
-  komessagebox.cpp
   koalternatelabel.cpp
   kodecorationlabel.cpp
   timelabelszone.cpp

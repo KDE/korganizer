@@ -26,11 +26,12 @@
 #include "kodialogmanager.h"
 #include "koglobals.h"
 #include "kohelper.h"
-#include "komessagebox.h"
 #include "koprefs.h"
 #include "monthgraphicsitems.h"
 #include "monthscene.h"
 #include "monthview.h"
+
+#include <libkdepim/pimmessagebox.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
