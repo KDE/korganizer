@@ -416,6 +416,12 @@ void AkonadiCollectionView::deleteCalendar()
     mWasDefaultCalendar = KOHelper::isStandardCalendar( collection );
     Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
     connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
+#if 0 //TODO bug 235127
+    //Delete calendar.
+    const AgentInstance instance = Akonadi::AgentManager::self()->instance( collection.resource() );
+    if ( instance.isValid() )
+      Akonadi::AgentManager::self()->removeInstance( instance );
+#endif
   }
 }
 
