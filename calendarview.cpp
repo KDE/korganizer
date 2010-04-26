@@ -287,6 +287,7 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
 {
   delete mChanger;
   mChanger = changer;
+  mChanger->setGroupware( Groupware::instance() );
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAdded(Akonadi::Item)),
            this, SLOT(incidenceAdded(Akonadi::Item)) );
