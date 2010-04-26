@@ -345,8 +345,13 @@ class KOEditorRecurrenceDialog : public KDialogBase
     KOEditorRecurrenceDialog( QWidget *parent );
     KOEditorRecurrence* editor() const { return mRecurrence; }
 
+  protected slots:
+    void slotOk();
+    void slotCancel();
+
   private:
     KOEditorRecurrence *mRecurrence;
+    bool mRecurEnabled;
 };
 
 #endif

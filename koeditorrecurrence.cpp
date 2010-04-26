@@ -1083,6 +1083,7 @@ void KOEditorRecurrence::setRecurrenceEnabled( bool enabled )
 {
 //  kdDebug(5850) << "KOEditorRecurrence::setRecurrenceEnabled(): " << (enabled ? "on" : "off") << endl;
 
+  mEnabledCheck->setChecked( enabled );
   mTimeGroupBox->setEnabled( enabled );
   mRuleBox->setEnabled( enabled );
   if ( mRecurrenceRangeWidget ) mRecurrenceRangeWidget->setEnabled( enabled );
@@ -1147,9 +1148,7 @@ void KOEditorRecurrence::setDefaults( const QDateTime &from, const QDateTime &to
 {
   setDateTimes( from, to );
 
-  bool enabled = false;
-  mEnabledCheck->setChecked( enabled );
-  setRecurrenceEnabled( enabled );
+  setRecurrenceEnabled( false );
 
   mRecurrenceRange->setDefaults( from );
 
@@ -1200,8 +1199,6 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
     f = r->frequency();
   }
 
-
-  mEnabledCheck->setChecked( recurs );
   setRecurrenceEnabled( recurs );
 
   int recurrenceType = RecurrenceChooser::Weekly;
@@ -1438,10 +1435,22 @@ bool KOEditorRecurrence::doesRecur()
   return mEnabledCheck->isChecked();
 }
 
-
-KOEditorRecurrenceDialog::KOEditorRecurrenceDialog(QWidget * parent) :
-    KDialogBase( parent, 0, false, i18n("Recurrence"), Ok|Cancel )
+KOEditorRecurrenceDialog::KOEditorRecurrenceDialog(QWidget * parent)
+  : KDialogBase( parent, 0, false, i18n("Recurrence"), Ok|Cancel ), mRecurEnabled( false )
 {
   mRecurrence = new KOEditorRecurrence( this );
   setMainWidget( mRecurrence );
+}
+
+void KOEditorRecurrenceDialog::slotOk()
+{
+  mRecurEnabled = mRecurrence->doesRecur();
+  emit okClicked();
+  accept();
+}
+
+void KOEditorRecurrenceDialog::slotCancel()
+{
+  mRecurrence->setRecurrenceEnabled( mRecurEnabled );
+  reject();
 }
