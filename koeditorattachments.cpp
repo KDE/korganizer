@@ -78,7 +78,8 @@ class AttachmentListItem : public KIconViewItem
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
       } else {
-        mAttachment = new KCal::Attachment( QString::null );
+        mAttachment = new KCal::Attachment( '\0' ); //use the non-uri constructor
+                                                    //as we want inline by default
       }
       readAttachment();
       setDragEnabled( true );
@@ -212,7 +213,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentListItem *item,
           "attachments that change often or may be moved (or removed) from "
           "their current location." ) );
 
-  if ( item->attachment()->isUri() ) {
+  if ( item->attachment()->isUri() || !item->attachment()->data() ) {
     label = new QLabel( i18n( "Location:" ), topFrame );
     grid->addWidget( label, 4, 0 );
     mURLRequester = new KURLRequester( item->uri(), topFrame );
