@@ -28,7 +28,7 @@
 
 #include "publishdialog.h"
 
-#include <kabc/addresseedialog.h>
+#include <akonadi/contact/emailaddressselectiondialog.h>
 #include <kcal/attendee.h>
 #include <kcal/person.h>
 #include <kpimutils/email.h>
@@ -155,24 +155,22 @@ void PublishDialog::removeItem()
 
 void PublishDialog::openAddressbook()
 {
-  KABC::Addressee::List addressList = KABC::AddresseeDialog::getAddressees( this );
-  if( addressList.isEmpty() ) {
-     return;
-  }
+  Akonadi::EmailAddressSelectionDialog dlg( this );
+  if ( !dlg.exec() )
+    return;
 
-  KABC::Addressee a = addressList.first();
-  if ( !a.isEmpty() ) {
-    int i;
-    for ( i=0; i<addressList.size(); i++ ) {
-      a = addressList[i];
+  const Akonadi::EmailAddressSelectionView::Selection::List selections = dlg.selectedAddresses();
+  if ( !selections.isEmpty() ) {
+    foreach ( const Akonadi::EmailAddressSelectionView::Selection &selection, selections ) {
       mUI.mNameLineEdit->setEnabled( true );
       mUI.mEmailLineEdit->setEnabled( true );
       QListWidgetItem *item = new QListWidgetItem( mUI.mListWidget );
       mUI.mListWidget->setItemSelected( item, true );
-      mUI.mNameLineEdit->setText( a.realName() );
-      mUI.mEmailLineEdit->setText( a.preferredEmail() );
+      mUI.mNameLineEdit->setText( selection.name() );
+      mUI.mEmailLineEdit->setText( selection.email() );
       mUI.mListWidget->addItem( item );
     }
+
     mUI.mRemove->setEnabled( true );
   }
 }
