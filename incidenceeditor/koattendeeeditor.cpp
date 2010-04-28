@@ -21,7 +21,7 @@
 #include "koattendeeeditor.h"
 #include "koeditorconfig.h"
 
-#include <libkdepim/addressesdialog.h>
+#include <akonadi/contact/emailaddressselectiondialog.h>
 #include <libkdepim/addresseelineedit.h>
 
 #include <KCal/Incidence>
@@ -39,6 +39,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QTimer>
+#include <QTreeView>
 #include <Q3ListViewItem>
 
 KOAttendeeEditor::KOAttendeeEditor( QWidget *parent )
@@ -212,18 +213,22 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
 
 void KOAttendeeEditor::openAddressBook()
 {
-  QPointer<KPIM::AddressesDialog> dia = new KPIM::AddressesDialog( this );
-  dia->setShowCC( false );
-  dia->setShowBCC( false );
+  QPointer<Akonadi::EmailAddressSelectionDialog> dia = new Akonadi::EmailAddressSelectionDialog( this );
+  dia->view()->view()->setSelectionMode( QAbstractItemView::MultiSelection );
   if ( dia->exec() == QDialog::Accepted ) {
-    KABC::Addressee::List aList = dia->allToAddressesNoDuplicates();
-    for ( KABC::Addressee::List::iterator itr = aList.begin();
-          itr != aList.end(); ++itr ) {
-      insertAttendeeFromAddressee( (*itr) );
+    foreach ( const Akonadi::EmailAddressSelectionView::Selection &selection, dia->selectedAddresses() ) {
+      KABC::Addressee contact;
+      contact.setName( selection.name() );
+      contact.insertEmail( selection.email() );
+
+      if ( selection.item().hasPayload<KABC::Addressee>() )
+        contact.setUid( selection.item().payload<KABC::Addressee>().uid() );
+
+      insertAttendeeFromAddressee( contact );
     }
   }
+
   delete dia;
-  return;
 }
 
 void KOAttendeeEditor::insertAttendeeFromAddressee( const KABC::Addressee &a, const Attendee *at )
