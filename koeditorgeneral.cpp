@@ -271,10 +271,13 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
   QStringList::ConstIterator it;
   uint i = 0;
   for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
-    QString mimeType;
-    if ( mimeTypes.count() > i )
-      mimeType = mimeTypes[ i ];
-    mAttachments->addUriAttachment( *it, mimeType, QString(), inlineAttachments );
+    if ( !(*it).isEmpty() ) {
+      QString mimeType;
+      if ( mimeTypes.count() > i ) {
+        mimeType = mimeTypes[ i ];
+      }
+      mAttachments->addUriAttachment( *it, mimeType, QString(), inlineAttachments );
+    }
   }
 }
 
