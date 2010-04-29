@@ -1423,12 +1423,32 @@ void CalendarView::toggleAlarm( Incidence *incidence )
 
   Alarm::List alarms = incidence->alarms();
   Alarm::List::ConstIterator it;
-  for( it = alarms.begin(); it != alarms.end(); ++it )
+  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
     (*it)->toggleAlarm();
-  if (alarms.isEmpty()) {
+  }
+  if ( alarms.isEmpty() ) {
     // Add an alarm if it didn't have one
-    Alarm*alm = incidence->newAlarm();
-    alm->setEnabled(true);
+    Alarm *alm = incidence->newAlarm();
+    alm->setType( Alarm::Display );
+    alm->setEnabled( true );
+    int duration; // in secs
+    switch( KOPrefs::instance()->mReminderTimeUnits ) {
+    default:
+    case 0: // mins
+      duration = KOPrefs::instance()->mReminderTime * 60;
+      break;
+    case 1: // hours
+      duration = KOPrefs::instance()->mReminderTime * 60 * 60;
+      break;
+    case 2: // days
+      duration = KOPrefs::instance()->mReminderTime * 60 * 60 * 24;
+      break;
+    }
+    if ( incidence->type() == "Event" ) {
+      alm->setStartOffset( KCal::Duration( -duration ) );
+    } else {
+      alm->setEndOffset( KCal::Duration( -duration ) );
+    }
   }
   mChanger->changeIncidence( oldincidence, incidence, KOGlobals::ALARM_MODIFIED, this );
   mChanger->endChange( incidence, 0, QString() );
