@@ -492,6 +492,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   mDeleteAction = new KAction( i18n( "&Remove" ), 0, this, SLOT(slotRemove()),  ac );
   mDeleteAction->plug( mContextMenu );
+  mDeleteAction->setShortcut( Key_Delete );
   mContextMenu->insertSeparator();
 
   mEditAction = new KAction( i18n( "&Properties..." ), 0, this, SLOT(slotEdit()), ac );
