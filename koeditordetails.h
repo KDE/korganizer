@@ -95,7 +95,8 @@ class KOEditorDetails : public KOAttendeeEditor
     /** Returns whether at least one attendee was added */
     bool hasAttendees();
 
-    void insertAttendee( Attendee*, bool goodEmailAddress = true );
+    void insertAttendee( Attendee *a, bool goodEmailAddress = true );
+    void removeAttendee( Attendee *a );
 
   protected slots:
     void removeAttendee();

@@ -18,6 +18,8 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+#include <config.h> // for KDEPIM_NEW_DISTRLISTS
+
 #include "koattendeeeditor.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -31,6 +33,13 @@
 #include <libkcal/incidence.h>
 
 #include <libemailfunctions/email.h>
+
+#ifdef KDEPIM_NEW_DISTRLISTS
+#include "distributionlist.h"
+#else
+#include <kabc/distributionlist.h>
+#endif
+#include <kabc/stdaddressbook.h>
 
 #include <kiconloader.h>
 #include <klocale.h>
@@ -102,6 +111,7 @@ void KOAttendeeEditor::initEditWidgets(QWidget * parent, QBoxLayout * layout)
   mNameEdit->installEventFilter( this );
   connect( mNameEdit, SIGNAL( textChanged( const QString & ) ),
            SLOT( updateAttendee() ) );
+  connect( mNameEdit, SIGNAL(returnPressed()), SLOT(expandAttendee()) );
   topLayout->addMultiCellWidget( mNameEdit, 0, 0, 1, 2 );
 
   whatsThis = i18n("Edits the role of the attendee selected "
@@ -207,20 +217,6 @@ void KOAttendeeEditor::openAddressBook()
   }
   delete dia;
   return;
-#if 0
-    // old code
-    KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
-    if (!a.isEmpty()) {
-        // If this is myself, I don't want to get a response but instead
-        // assume I will be available
-        bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-        KCal::Attendee::PartStat partStat =
-            myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
-        insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
-                                      !myself, partStat,
-                                      KCal::Attendee::ReqParticipant, a.uid() ) );
-    }
-#endif
 #endif
 }
 
@@ -368,6 +364,17 @@ void KOAttendeeEditor::clearAttendeeInput()
   mRsvpButton->setChecked(true);
   setEnableAttendeeInput( false );
   mDelegateLabel->setText( QString() );
+}
+
+void KOAttendeeEditor::expandAttendee()
+{
+  KABC::Addressee::List aList = expandDistList( mNameEdit->text() );
+  if ( !aList.isEmpty() ) {
+    for ( KABC::Addressee::List::iterator itr = aList.begin(); itr != aList.end(); ++itr ) {
+      insertAttendeeFromAddressee( (*itr) );
+    }
+    removeAttendee( currentAttendee() );
+  }
 }
 
 void KOAttendeeEditor::updateAttendee()
@@ -529,5 +536,42 @@ bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee* attendee ) const
     }
     return false;
 }
+
+KABC::Addressee::List KOAttendeeEditor::expandDistList( const QString &text )  const
+{
+  KABC::Addressee::List aList;
+  KABC::AddressBook *abook = KABC::StdAddressBook::self( true );
+
+#ifdef KDEPIM_NEW_DISTRLISTS
+  const QValueList<KPIM::DistributionList::Entry> eList =
+    KPIM::DistributionList::findByName( abook, text ).entries( abook );
+  QValueList<KPIM::DistributionList::Entry>::ConstIterator eit;
+  for ( eit = eList.begin(); eit != eList.end(); ++eit ) {
+    KABC::Addressee a = (*eit).addressee;
+    if ( !a.preferredEmail().isEmpty() && aList.find( a ) == aList.end() ) {
+      aList.append( a ) ;
+    }
+  }
+
+#else
+  KABC::DistributionListManager manager( abook );
+  manager.load();
+  const QStringList dList = manager.listNames();
+  for ( QStringList::ConstIterator it = dList.begin(); it != dList.end(); ++it ) {
+    if ( (*it) == text ) {
+      const QValueList<KABC::DistributionList::Entry> eList = manager.list( *it )->entries();
+      QValueList<KABC::DistributionList::Entry>::ConstIterator eit;
+      for ( eit = eList.begin(); eit != eList.end(); ++eit ) {
+        KABC::Addressee a = (*eit).addressee;
+        if ( !a.preferredEmail().isEmpty() && aList.find( a ) == aList.end() ) {
+          aList.append( a ) ;
+        }
+      }
+    }
+  }
+#endif
+  return aList;
+}
+
 
 #include "koattendeeeditor.moc"

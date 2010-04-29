@@ -271,6 +271,11 @@ void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
   emit updateAttendeeSummary( mListView->childCount() );
 }
 
+void KOEditorDetails::removeAttendee( Attendee *a )
+{
+  Q_UNUSED( a );
+}
+
 void KOEditorDetails::setDefaults()
 {
   mRsvpButton->setChecked( true );

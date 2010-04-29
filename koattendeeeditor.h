@@ -23,6 +23,7 @@
 
 #include <qwidget.h>
 #include <libkcal/attendee.h>
+#include <kabc/addressee.h>
 
 class QBoxLayout;
 class QComboBox;
@@ -34,10 +35,6 @@ class QListViewItem;
 
 namespace KPIM {
   class AddresseeLineEdit;
-}
-
-namespace KABC {
-  class Addressee;
 }
 
 namespace KCal {
@@ -53,7 +50,8 @@ class KOAttendeeEditor : public QWidget
   public:
     KOAttendeeEditor( QWidget *parent, const char *name = 0 );
 
-    virtual void insertAttendee( KCal::Attendee* attendee, bool fetchFB = true ) = 0;
+    virtual void insertAttendee( KCal::Attendee *attendee, bool fetchFB = true ) = 0;
+    virtual void removeAttendee( KCal::Attendee *attendee ) = 0;
 
     virtual void readEvent( KCal::Incidence *incidence );
     virtual void writeEvent( KCal::Incidence *incidence );
@@ -97,6 +95,7 @@ class KOAttendeeEditor : public QWidget
     void updateAttendeeInput();
     void clearAttendeeInput();
     void fillAttendeeInput( KCal::Attendee *a );
+    void expandAttendee();
     void updateAttendee();
 
   protected:
@@ -120,6 +119,7 @@ class KOAttendeeEditor : public QWidget
     QPtrList<KCal::Attendee> mnewAttendees;
 
   private:
+    KABC::Addressee::List expandDistList( const QString &text ) const;
     bool mDisableItemUpdate;
 };
 
