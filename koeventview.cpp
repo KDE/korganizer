@@ -196,13 +196,13 @@ int KOEventView::showMoveRecurDialog( const Item &aitem, const QDate &date )
 
   if ( !isFirst && !isLast ) {
     itemFuture.setEnabled( true );
-    message = i18n( "The item you try to change is a recurring item. "
-                    "Shall the changes be applied only to this single occurrence, "
+    message = i18n( "The item you are trying to change is a recurring item. "
+                    "Should the changes be applied only to this single occurrence, "
                     "also to future items, or to all items in the recurrence?" );
   } else {
     itemFuture.setEnabled( false );
-    message = i18n( "The item you try to change is a recurring item. "
-                    "Shall the changes be applied only to this single occurrence "
+    message = i18n( "The item you ar trying to change is a recurring item. "
+                    "Should the changes be applied only to this single occurrence "
                     "or to all items in the recurrence?" );
   }
 
