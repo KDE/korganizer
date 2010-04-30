@@ -64,7 +64,7 @@
 #include <akonadi/changerecorder.h>
 #include <akonadi/agentmanager.h>
 #include <akonadi/agentinstance.h>
-#include <akonadi/krecursivefilterproxymodel.h>
+#include <akonadi/akonadi_next/krecursivefilterproxymodel.h>
 
 #include <QHash>
 
@@ -174,7 +174,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
   mCollectionview->setRootIsDecorated( true );
 
   //Filter tree view.
-  KRecursiveFilterProxyModel* filterTreeViewModel = new KRecursiveFilterProxyModel( this );
+  Future::KRecursiveFilterProxyModel* filterTreeViewModel = new Future::KRecursiveFilterProxyModel( this );
   filterTreeViewModel->setDynamicSortFilter( true );
   filterTreeViewModel->setSourceModel( colorProxy );
   filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
