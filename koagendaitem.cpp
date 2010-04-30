@@ -676,10 +676,9 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int ft )
       } else {
         eventPxmp = KOGlobals::self()->smallIcon( "calendarbirthday" );
       }
-    } else {
-      eventPxmp = KOGlobals::self()->smallIcon( "appointment" );
+      conditionalPaint( p, true, x, ft, eventPxmp );
     }
-    conditionalPaint( p, true, x, ft, eventPxmp );
+    // per kolab/issue4349 we don't draw a regular appointment icon (to save space)
   }
 
 }
