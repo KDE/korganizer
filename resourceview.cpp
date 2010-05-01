@@ -484,24 +484,37 @@ void ResourceView::removeResource()
   ResourceItem *item = currentItem();
   if ( !item ) return;
 
-  const QString warningMsg = item->isSubresource() ?
-        i18n("<qt>Do you really want to remove the subresource <b>%1</b>? "
-              "Note that its contents will be completely deleted. This "
-              "operation cannot be undone. </qt>").arg( item->text( 0 ) ) :
-        i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>").arg( item->text( 0 ) );
+  // Do not allow a non-subresource folder to be removed if it is the standard resource.
+  if ( !item->isSubresource() ) {
+    if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
+      KMessageBox::sorry( this,
+                          i18n( "<qt>You may not delete your standard calendar resource.<p>"
+                                "You can change the standard calendar resource in the "
+                                "KDE Control Center using the KDE Resource settings under the "
+                                "KDE Components area.</qt>" ) );
+      return;
+    }
+  }
 
-  int km = KMessageBox::warningContinueCancel( this, warningMsg, "",
-        KGuiItem( i18n("&Remove" ), "editdelete") );
-  if ( km == KMessageBox::Cancel ) return;
+  QString moreInfo;
+  if ( item->resource()->type() == "imap" || item->resource()->type() == "scalix" ) {
+    moreInfo = i18n( "This is a groupware folder so you can always re-subscribe to the folder "
+                     "later as you desire." );
+  } else {
+    moreInfo = i18n( "The contents will not be removed so you can always re-add this calendar "
+                     "later as you desire." );
+  }
 
-// Don't be so restricitve
-#if 1
-  if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
-    KMessageBox::sorry( this,
-                        i18n( "You cannot delete your standard resource." ) );
+  int km =
+    KMessageBox::warningContinueCancel(
+      this,
+      i18n( "<qt>Do you really want to remove the calendar <b>%1</b>?<p><b>Note:</b> %2</qt>" ).
+      arg( item->text( 0 ), moreInfo ),
+      "", KGuiItem( i18n( "&Remove" ) ) );
+  if ( km == KMessageBox::Cancel ) {
     return;
   }
-#endif
+
   if ( item->isSubresource() ) {
     if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) )
       KMessageBox::sorry( this,
