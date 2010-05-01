@@ -711,20 +711,34 @@ void KOEditorAttachments::slotEdit()
 
 void KOEditorAttachments::slotRemove()
 {
-    QValueList<QIconViewItem*> selected;
-    for ( QIconViewItem *it = mAttachments->firstItem( ); it; it = it->nextItem( ) ) {
-        if ( !it->isSelected() ) continue;
-        selected << it;
-    }
-    if ( selected.isEmpty() || KMessageBox::warningContinueCancel(this,
-                    selected.count() == 1?i18n("This item will be permanently deleted."):
-                    i18n("The selected items will be permanently deleted."),
-                    i18n("KOrganizer Confirmation"),KStdGuiItem::del()) != KMessageBox::Continue )
-        return;
+  QValueList<QIconViewItem*> selected;
+  QStringList labels;
+  for ( QIconViewItem *it = mAttachments->firstItem( ); it; it = it->nextItem( ) ) {
+    if ( !it->isSelected() ) continue;
+    selected << it;
 
-    for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() ); it != end ; ++it ) {
-        delete *it;
-    }
+    AttachmentListItem *attitem = static_cast<AttachmentListItem*>(it);
+    KCal::Attachment *att = attitem->attachment();
+    labels << att->label();
+  }
+
+  if ( selected.isEmpty() ) {
+    return;
+  }
+
+  QString labelsStr = labels.join( "<br>" );
+
+  if ( KMessageBox::questionYesNo(
+         this,
+         i18n( "<qt>Do you really want to remove these attachments?<p>%1</qt>" ).arg( labelsStr ),
+         i18n( "Remove Attachment?" ) ) != KMessageBox::Yes ) {
+    return;
+  }
+
+  for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() );
+        it != end ; ++it ) {
+    delete *it;
+  }
 }
 
 void KOEditorAttachments::slotShow()
