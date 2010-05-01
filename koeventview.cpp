@@ -201,7 +201,7 @@ int KOEventView::showMoveRecurDialog( const Item &aitem, const QDate &date )
                     "also to future items, or to all items in the recurrence?" );
   } else {
     itemFuture.setEnabled( false );
-    message = i18n( "The item you ar trying to change is a recurring item. "
+    message = i18n( "The item you are trying to change is a recurring item. "
                     "Should the changes be applied only to this single occurrence "
                     "or to all items in the recurrence?" );
   }
