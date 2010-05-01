@@ -429,8 +429,11 @@ void KOTodoView::addTodo( const QString &summary,
     todo->setRelatedTo( parent.get() );
   }
 
-  if ( !mChanger->addIncidence( todo, this ) ) {
-    Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+  bool userCanceled;
+  if ( !mChanger->addIncidence( todo, this, userCanceled ) ) {
+    if ( !userCanceled ) {
+      Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+    }
   }
 }
 
@@ -645,8 +648,11 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   due.setDate( date );
   todo->setDtDue( due );
 
-  if ( !mChanger->addIncidence( todo, this ) ) {
-    Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+  bool userCanceled;
+  if ( !mChanger->addIncidence( todo, this, userCanceled ) ) {
+    if ( !userCanceled ) {
+      Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+    }
   }
 }
 

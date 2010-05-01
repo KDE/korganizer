@@ -705,8 +705,11 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setSummary( i18n( "Journal of %1", dateStr ) );
         journal->setDescription( description );
 
-        if ( !mChanger->addIncidence( journal, this ) ) {
-          Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
+        bool userCanceled;
+        if ( !mChanger->addIncidence( journal, this, userCanceled ) ) {
+          if ( !userCanceled ) {
+            Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
+          }
           return;
         }
 
@@ -928,6 +931,7 @@ void CalendarView::edit_paste()
   }
 
   // FIXME: use a visitor here
+  bool userCanceled;
   if ( pastedIncidence->type() == "Event" ) {
     Event *pastedEvent = static_cast<Event*>( pastedIncidence );
     // only use selected area if event is of the same type (all-day or non-all-day
@@ -939,21 +943,21 @@ void CalendarView::edit_paste()
         pastedEvent->setDtEnd( kdt.toTimeSpec( pastedIncidence->dtEnd().timeSpec() ) );
       }
     }
-    mChanger->addIncidence( Event::Ptr(pastedEvent->clone()), this );
+    mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, userCanceled );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
-    Todo *pastedTodo = static_cast<Todo*>(pastedIncidence);
+    Todo *pastedTodo = static_cast<Todo*>( pastedIncidence );
     Akonadi::Item _selectedTodoItem = selectedTodo();
-    if ( Todo::Ptr _selectedTodo = Akonadi::todo(_selectedTodoItem) ) {
+    if ( Todo::Ptr _selectedTodo = Akonadi::todo( _selectedTodoItem ) ) {
       pastedTodo->setRelatedTo( _selectedTodo.get() );
     } else {
       //ensure pasted todo has no relations if there is not a current selection
       pastedTodo->setRelatedTo( 0 );
       pastedTodo->setRelatedToUid( QString() );
     }
-    mChanger->addIncidence( Todo::Ptr(pastedTodo->clone()), this );
+    mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, userCanceled );
   } else if ( pastedIncidence->type() == "Journal" ) {
-    mChanger->addIncidence( Incidence::Ptr(pastedIncidence->clone()), this );
+    mChanger->addIncidence( Incidence::Ptr( pastedIncidence->clone() ), this, userCanceled );
   }
 }
 
@@ -1163,12 +1167,13 @@ bool CalendarView::addIncidence( const QString &ical )
   ICalFormat format;
   format.setTimeSpec( mCalendar->timeSpec() );
   Incidence::Ptr incidence( format.fromString( ical ) );
-  return addIncidence(incidence);
+  return addIncidence( incidence );
 }
 
 bool CalendarView::addIncidence( const Incidence::Ptr &incidence )
 {
-  return incidence ? mChanger->addIncidence( incidence, this ) : false;
+  bool userCanceled;
+  return incidence ? mChanger->addIncidence( incidence, this, userCanceled ) : false;
 }
 
 void CalendarView::appointment_show()
@@ -2741,8 +2746,11 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
     todo->setHasDueDate( true );
   }
 
-  if ( !mChanger->addIncidence( incidence, this ) ) {
-    Akonadi::IncidenceChanger::errorSaveIncidence( this, incidence );
+  bool userCanceled;
+  if ( !mChanger->addIncidence( incidence, this, userCanceled ) ) {
+    if ( !userCanceled ) {
+      Akonadi::IncidenceChanger::errorSaveIncidence( this, incidence );
+    }
   }
 }
 
