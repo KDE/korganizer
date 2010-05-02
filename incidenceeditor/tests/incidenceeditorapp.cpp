@@ -54,6 +54,7 @@
 #include "kotodoeditor.h"
 #include "koeventeditor.h"
 #include "kojournaleditor.h"
+#include "kogroupwareintegration.h"
 
 class CalItemModel : public Akonadi::ItemModel
 {
@@ -146,6 +147,10 @@ class MainWidget : public QWidget
         m_collectionproxymodel( new Akonadi::CollectionFilterProxyModel( this ) ),
         m_itemmodel( new CalItemModel( this ) )
     {
+      if ( !KOGroupwareIntegration::isActive() ) {
+        KOGroupwareIntegration::activate();
+      }
+
       m_collectionproxymodel->setSourceModel(m_collectionmodel);
       m_collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
