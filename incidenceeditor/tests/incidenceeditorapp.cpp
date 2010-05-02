@@ -236,12 +236,10 @@ class MainWidget : public QWidget
 
       if ( incidence->type() == "Event" ) {
         KOEventEditor *editor = new KOEventEditor( this );
-        editor->init();
         editor->editIncidence( item, QDate() );
         editor->show();
       } else if( incidence->type() == "Todo" ) {
         KOTodoEditor *editor = new KOTodoEditor( this );
-        editor->init();
         /*
         createCategoryEditor();
         connect( editor, SIGNAL(deleteIncidenceSignal(Incidence *)),
@@ -261,7 +259,6 @@ class MainWidget : public QWidget
 
       } else if( incidence->type() == "Journal" ) {
         KOJournalEditor *editor = new KOJournalEditor( this );
-        editor->init();
         editor->editIncidence( item, QDate() );
         editor->show();
       } else {
