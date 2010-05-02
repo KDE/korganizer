@@ -72,7 +72,7 @@ Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as th
             <string>Minimum time between uploads (in minutes):</string>
            </property>
            <property name="buddy">
-            <cstring>publishDelaySB</cstring>
+            <cstring>publishDelay</cstring>
            </property>
           </widget>
          </item>
@@ -105,7 +105,7 @@ Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as th
             <string>Publish</string>
            </property>
            <property name="buddy">
-            <cstring>publishDaysSB</cstring>
+            <cstring>publishDays</cstring>
            </property>
           </widget>
          </item>
@@ -198,7 +198,7 @@ Ask the server administrator for this information.</string>
              <string>Password:</string>
             </property>
             <property name="buddy">
-             <cstring>publishPasswordED</cstring>
+             <cstring>publishPassword</cstring>
             </property>
            </widget>
           </item>
@@ -213,7 +213,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
              <string comment="login name on the Kolab server">Username:</string>
             </property>
             <property name="buddy">
-             <cstring>publishUserNameED</cstring>
+             <cstring>publishUser</cstring>
             </property>
            </widget>
           </item>
@@ -253,7 +253,7 @@ Ask the server administrator for this information.</string>
              <string>Server URL:</string>
             </property>
             <property name="buddy">
-             <cstring>anyServerURLED</cstring>
+             <cstring>publishUrl</cstring>
             </property>
            </widget>
           </item>
@@ -379,7 +379,7 @@ Here is a Kolab2 Server URL example: &quot;https://kolab2.example.com/freebusy/&
              <string>Server URL:</string>
             </property>
             <property name="buddy">
-             <cstring>anyServerURLED</cstring>
+             <cstring>retrieveUrl</cstring>
             </property>
            </widget>
           </item>
