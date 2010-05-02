@@ -372,7 +372,7 @@ void KOListView::addIncidences( const Item::List &incidenceList, const QDate &da
 
 void KOListView::addIncidence( const Item &aitem, const QDate &date )
 {
-  if ( !Akonadi::hasIncidence( aitem ) && mItems.contains( aitem.id() ) ) {
+  if ( !Akonadi::hasIncidence( aitem ) || mItems.contains( aitem.id() ) ) {
     return;
   }
 
