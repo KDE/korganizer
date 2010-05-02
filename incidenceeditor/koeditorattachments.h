@@ -29,8 +29,6 @@
 #include <KDialog>
 #include <KMimeType>
 
-#include <Q3ValueList>
-
 class AttachmentIconItem;
 class AttachmentIconView;
 
@@ -46,8 +44,7 @@ class KLineEdit;
 class KMenu;
 class KUrlRequester;
 
-class Q3IconDragItem;
-class Q3IconViewItem;
+class QListWidgetItem;
 class QCheckBox;
 class QDragEnterEvent;
 class QDropEvent;
@@ -107,21 +104,20 @@ class KOEditorAttachments : public QWidget
     void applyChanges();
 
   protected slots:
-    void showAttachment( Q3IconViewItem *item );
+    void showAttachment( QListWidgetItem *item );
     void slotAdd();
     void slotEdit();
     void slotRemove();
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
-    void slotItemRenamed ( Q3IconViewItem * item, const QString & text );
-    void dropped ( QDropEvent * e, const Q3ValueList<Q3IconDragItem> & lst );
+    void slotItemRenamed ( QListWidgetItem * item );
     void downloadComplete( KJob *job );
     void slotCopy();
     void slotCut();
     void slotPaste();
     void selectionChanged();
-    void contextMenu( Q3IconViewItem *item, const QPoint &pos );
+    void contextMenu( const QPoint &pos );
 
   signals:
     void openURL( const KUrl &url );
