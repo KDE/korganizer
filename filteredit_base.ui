@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>504</width>
+    <width>549</width>
     <height>443</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
          <item>
           <widget class="KListWidgetSearchLine" name="searchline">
            <property name="clickMessage">
-             <string>Search</string>
+            <string>Search</string>
            </property>
           </widget>
          </item>
@@ -73,6 +73,9 @@
            <widget class="QLabel" name="textLabel1">
             <property name="text">
              <string comment="filter name">Name:</string>
+            </property>
+            <property name="buddy">
+             <cstring>mNameLineEdit</cstring>
             </property>
            </widget>
           </item>
@@ -276,12 +279,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
     </layout>
    </item>
   </layout>
-  <zorder>mRulesList</zorder>
-  <zorder>mNewButton</zorder>
-  <zorder>mDeleteButton</zorder>
-  <zorder>mDetailsFrame</zorder>
-  <zorder>klistwidgetsearchline</zorder>
-  <zorder>mRulesList</zorder>
  </widget>
  <customwidgets>
   <customwidget>
@@ -300,6 +297,22 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
    <header>klistwidgetsearchline.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>searchline</tabstop>
+  <tabstop>mRulesList</tabstop>
+  <tabstop>mNewButton</tabstop>
+  <tabstop>mDeleteButton</tabstop>
+  <tabstop>mNameLineEdit</tabstop>
+  <tabstop>mRecurringCheck</tabstop>
+  <tabstop>mCompletedCheck</tabstop>
+  <tabstop>mCompletedTimeSpan</tabstop>
+  <tabstop>mHideInactiveTodosCheck</tabstop>
+  <tabstop>mHideTodosNotAssignedToMeCheck</tabstop>
+  <tabstop>mCatShowCheck</tabstop>
+  <tabstop>mCatHideCheck</tabstop>
+  <tabstop>mCatList</tabstop>
+  <tabstop>mCatEditButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

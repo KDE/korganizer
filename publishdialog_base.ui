@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
+    <width>410</width>
     <height>326</height>
    </rect>
   </property>
@@ -97,18 +97,21 @@
        <property name="text">
         <string comment="recipient name">Name:</string>
        </property>
+       <property name="buddy">
+        <cstring>mNameLineEdit</cstring>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="KLineEdit" name="mNameLineEdit">
-       <property name="ClearButtonShown">
-         <bool>true</bool>
-       </property>
        <property name="toolTip">
         <string>The recipient's name</string>
        </property>
        <property name="whatsThis">
         <string>This field contains the name of the recipient</string>
+       </property>
+       <property name="ClearButtonShown" stdset="0">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -121,13 +124,13 @@
        <property name="text">
         <string comment="recipient email">Email:</string>
        </property>
+       <property name="buddy">
+        <cstring>mEmailLineEdit</cstring>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="KLineEdit" name="mEmailLineEdit">
-       <property name="ClearButtonShown">
-        <bool>true</bool>
-       </property>
        <property name="toolTip">
         <string>The recipient's email address</string>
        </property>
@@ -136,6 +139,9 @@
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="ClearButtonShown" stdset="0">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -151,11 +157,12 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mNameLineEdit</tabstop>
-  <tabstop>mEmailLineEdit</tabstop>
+  <tabstop>mListWidget</tabstop>
   <tabstop>mNew</tabstop>
   <tabstop>mRemove</tabstop>
   <tabstop>mSelectAddressee</tabstop>
+  <tabstop>mNameLineEdit</tabstop>
+  <tabstop>mEmailLineEdit</tabstop>
  </tabstops>
  <resources/>
  <connections/>
