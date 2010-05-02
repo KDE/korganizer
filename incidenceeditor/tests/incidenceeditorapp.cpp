@@ -195,6 +195,8 @@ class MainWidget : public QWidget
                this, SLOT(selectionChanged()) );
       connect( m_itemview, SIGNAL(activated(QModelIndex)),
                this, SLOT(itemActivated()) );
+
+      m_changer = new IncidenceChanger( 0, this, Collection() );
     }
     virtual ~MainWidget() {}
 
@@ -236,6 +238,7 @@ class MainWidget : public QWidget
 
       if ( incidence->type() == "Event" ) {
         KOEventEditor *editor = new KOEventEditor( this );
+        editor->setIncidenceChanger( m_changer );
         editor->editIncidence( item, QDate() );
         editor->show();
       } else if( incidence->type() == "Todo" ) {
@@ -254,11 +257,13 @@ class MainWidget : public QWidget
         connect( editor, SIGNAL(deleteAttendee(Incidence *)),
                  mMainView, SIGNAL(cancelAttendees(Incidence *)) );
         */
+        editor->setIncidenceChanger( m_changer );
         editor->editIncidence( item, QDate() );
         editor->show();
 
       } else if( incidence->type() == "Journal" ) {
         KOJournalEditor *editor = new KOJournalEditor( this );
+        editor->setIncidenceChanger( m_changer );
         editor->editIncidence( item, QDate() );
         editor->show();
       } else {
@@ -273,6 +278,7 @@ class MainWidget : public QWidget
     CalItemModel *m_itemmodel;
     QSortFilterProxyModel *m_itemproxymodel;
     Akonadi::ItemView *m_itemview;
+    IncidenceChanger *m_changer;
 };
 
 int main( int argc, char **argv )
