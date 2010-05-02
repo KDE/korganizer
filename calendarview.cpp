@@ -291,8 +291,11 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAdded(Akonadi::Item)),
            this, SLOT(incidenceAdded(Akonadi::Item)) );
+
+  qRegisterMetaType<Akonadi::Item>("Akonadi::Item");
+  qRegisterMetaType<Akonadi::IncidenceChanger::WhatChanged>("Akonadi::IncidenceChanger::WhatChanged");
   connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged)),
-           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged)) );
+           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged)), Qt::QueuedConnection );
   connect( mChanger, SIGNAL(incidenceToBeDeleted(Akonadi::Item)),
            this, SLOT(incidenceToBeDeleted(Akonadi::Item)) );
   connect( mChanger, SIGNAL(incidenceDeleted(Akonadi::Item)),
