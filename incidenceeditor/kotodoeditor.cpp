@@ -186,7 +186,7 @@ bool KOTodoEditor::processInput()
     Todo::Ptr todo( Akonadi::todo( mIncidence )->clone() );
 
     Akonadi::Item todoItem;
-    todoItem.setPayload(todo);
+    todoItem.setPayload( todo );
     fillTodo( todoItem );
 
     if( *oldTodo == *todo ) {
@@ -195,10 +195,19 @@ bool KOTodoEditor::processInput()
       if ( mChanger->beginChange( mIncidence ) ) {
         //merge multiple mIncidence->updated() calls into one
         Akonadi::todo( mIncidence )->startUpdates();
-        fillTodo(mIncidence);
+        fillTodo( mIncidence );
+
+        Akonadi::IncidenceChanger::WhatChanged whatChanged;
+
+        if ( !oldTodo->isCompleted() && todo->isCompleted() ) {
+          whatChanged = Akonadi::IncidenceChanger::COMPLETION_MODIFIED;
+        } else {
+          whatChanged = Akonadi::IncidenceChanger::UNKNOWN_MODIFIED;
+        }
+
         rc = mChanger->changeIncidence( oldTodo,
                                         mIncidence,
-                                        Akonadi::IncidenceChanger::NOTHING_MODIFIED,
+                                        whatChanged,
                                         this );
 
         Akonadi::todo( mIncidence )->endUpdates();
