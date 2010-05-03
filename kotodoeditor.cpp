@@ -146,14 +146,12 @@ void KOTodoEditor::setupRecurrence()
   mRecurrence = mRecurrenceDialog->editor();
 }
 
-void KOTodoEditor::editIncidence(Incidence *incidence, const QDate &date, Calendar *calendar)
+void KOTodoEditor::editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar )
 {
   kdDebug(5850) << k_funcinfo << endl;
-  Todo *todo=dynamic_cast<Todo*>(incidence);
-  if (todo)
-  {
+  Todo *todo = dynamic_cast<Todo*>( incidence );
+  if ( todo )  {
     init();
-
     mTodo = todo;
     mCalendar = calendar;
     readTodo( mTodo, mCalendar, date );
@@ -187,13 +185,15 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description 
 void KOTodoEditor::loadDefaults()
 {
   kdDebug(5850) << k_funcinfo << endl;
-  setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
+  setDates( QDateTime::currentDateTime().addDays( 7 ), true, 0 );
   mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
 }
 
 bool KOTodoEditor::processInput()
 {
-  if ( !validateInput() ) return false;
+  if ( !validateInput() ) {
+    return false;
+  }
 
   if ( mTodo ) {
     bool rc = true;
@@ -204,10 +204,10 @@ bool KOTodoEditor::processInput()
     writeTodo( todo );
     kdDebug(5850) << "KOTodoEditor::processInput() event written." << endl;
 
-    if( *mTodo == *todo )
+    if ( *mTodo == *todo ) {
       // Don't do anything
       kdDebug(5850) << "Todo not changed\n";
-    else {
+    } else {
       kdDebug(5850) << "Todo changed\n";
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
@@ -237,9 +237,10 @@ bool KOTodoEditor::processInput()
 
 void KOTodoEditor::deleteTodo()
 {
-  if (mTodo)
+  if ( mTodo ) {
     emit deleteIncidenceSignal( mTodo );
-  emit dialogClose(mTodo);
+  }
+  emit dialogClose( mTodo );
   reject();
 }
 
@@ -258,17 +259,20 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
   }
 
   mDetails->setDefaults();
-  if ( mTodo )
+  if ( mTodo ) {
     mRecurrence->setDefaults( mTodo->dtStart(), due, false );
-  else
+  } else {
     mRecurrence->setDefaults( QDateTime::currentDateTime(), due, false );
+  }
 }
 
 void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar, const QDate &date )
 {
-  if ( !todo ) return;
+  if ( !todo ) {
+    return;
+  }
 //   mRelatedTodo = todo->relatedTo();
-  kdDebug(5850)<<"read todo"<<endl;
+
   mGeneral->readTodo( todo, calendar, date );
   mDetails->readEvent( todo );
   mRecurrence->readIncidence( todo );
@@ -287,8 +291,9 @@ void KOTodoEditor::writeTodo( Todo *todo )
 
   if ( *(oldIncidence->recurrence()) != *(todo->recurrence() ) ) {
     todo->setDtDue( todo->dtDue(), true );
-    if ( todo->hasStartDate() )
+    if ( todo->hasStartDate() ) {
       todo->setDtStart( todo->dtStart() );
+    }
   }
   writeDesignerFields( todo );
 
