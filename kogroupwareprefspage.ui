@@ -165,10 +165,10 @@ Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as th
           <property name="spacing">
            <number>6</number>
           </property>
-          <item row="1" column="0" colspan="2">
+          <item row="2" column="0" colspan="2">
            <widget class="Line" name="frame5"/>
           </item>
-          <item row="0" column="1">
+          <item row="1" column="1">
            <widget class="KLineEdit" name="publishUrl">
             <property name="enabled">
              <bool>true</bool>
@@ -179,7 +179,7 @@ Ask the server administrator for this information.</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
+          <item row="4" column="1">
            <widget class="KLineEdit" name="publishPassword">
             <property name="whatsThis">
              <string>Enter your groupware server login password here.</string>
@@ -189,7 +189,7 @@ Ask the server administrator for this information.</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QLabel" name="textLabel2">
             <property name="whatsThis">
              <string>Enter your groupware server login password here.</string>
@@ -202,7 +202,7 @@ Ask the server administrator for this information.</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="TextLabel6">
             <property name="whatsThis">
              <string>Enter the login information relative to your account on the server here.
@@ -217,7 +217,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <widget class="KLineEdit" name="publishUser">
             <property name="minimumSize">
              <size>
@@ -232,7 +232,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
+          <item row="5" column="0" colspan="2">
            <widget class="QCheckBox" name="publishSavePassword">
             <property name="whatsThis">
              <string>Check this box to make KOrganizer remember your password and skip asking you each time it uploads your Free/Busy information, by storing it in the configuration file.
@@ -243,7 +243,7 @@ For security reasons, it is not recommended to store your password in the config
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
+          <item row="1" column="0">
            <widget class="QLabel" name="TextLabel7">
             <property name="whatsThis">
              <string>Enter the URL for the server on which your Free/Busy information shall be published here.
@@ -254,6 +254,13 @@ Ask the server administrator for this information.</string>
             </property>
             <property name="buddy">
              <cstring>publishUrl</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>(No need if using Kolab server version 2)</string>
             </property>
            </widget>
           </item>
