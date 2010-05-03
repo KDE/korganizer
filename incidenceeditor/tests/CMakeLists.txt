@@ -9,5 +9,6 @@ target_link_libraries(incidenceeditorapp
   ${KDEPIMLIBS_KCAL_LIBS}
   ${KDEPIMLIBS_AKONADI_KCAL_LIBRARY}
   korg_incidenceeditor
+  akonadi-kcal_next
 )
 #install(TARGETS incidenceeditorapp ${INSTALL_TARGETS_DEFAULT_ARGS})
