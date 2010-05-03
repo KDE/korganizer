@@ -25,6 +25,7 @@
 */
 
 #include "timelabels.h"
+#include <kcalprefs.h>
 #include "timelabelszone.h"
 #include "timescaleconfigdialog.h"
 #include "koprefs.h"
@@ -122,7 +123,7 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
     beginning = 0;
   } else {
     beginning = ( mSpec.timeZone().currentOffset() -
-                  KOPrefs::instance()->timeSpec().timeZone().currentOffset() ) / ( 60 * 60 );
+                  KCalPrefs::instance()->timeSpec().timeZone().currentOffset() ) / ( 60 * 60 );
   }
 
   p->setBrush( palette().window() ); // TODO: theming, see if we want sth here...
@@ -322,7 +323,7 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
                      i18n( "&Remove Timezone %1", mSpec.timeZone().name() ) );
   if ( !mSpec.isValid() ||
        !KOPrefs::instance()->timeScaleTimezones().count() ||
-       mSpec == KOPrefs::instance()->timeSpec() ) {
+       mSpec == KCalPrefs::instance()->timeSpec() ) {
     removeTimeZone->setEnabled( false );
   }
 

@@ -23,6 +23,7 @@
 */
 
 #include "koagendaview.h"
+#include <kcalprefs.h>
 #include "koagenda.h"
 #include "koagendaitem.h"
 #include "koalternatelabel.h"
@@ -805,7 +806,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     startDt = incidence->dtStart();
     // convert to calendar timespec because we then manipulate it
     // with time coming from the calendar
-    startDt = startDt.toTimeSpec( KOPrefs::instance()->timeSpec() );
+    startDt = startDt.toTimeSpec( KCalPrefs::instance()->timeSpec() );
     startDt = startDt.addDays( daysOffset );
     if ( !startDt.isDateOnly() ) {
       startDt.setTime( startTime );
@@ -814,8 +815,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     if ( !endDt.isDateOnly() ) {
       endDt.setTime( endTime );
     }
-    if ( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) == startDt &&
-         ev->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) == endDt ) {
+    if ( incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ) == startDt &&
+         ev->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ) == endDt ) {
       // No change
       mChanger->endChange( aitem );
       QTimer::singleShot( 0, this, SLOT(updateView()) );
@@ -825,7 +826,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
     // convert to calendar timespec because we then manipulate it with time coming from
     // the calendar
-    startDt = startDt.toTimeSpec( KOPrefs::instance()->timeSpec() );
+    startDt = startDt.toTimeSpec( KCalPrefs::instance()->timeSpec() );
     startDt.setDate( thisDate.addDays( td->dtDue().daysTo( startDt ) ) );
     if ( !startDt.isDateOnly() ) {
       startDt.setTime( startTime );
@@ -837,7 +838,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
       endDt.setTime( endTime );
     }
 
-    if ( td->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() )  == endDt ) {
+    if ( td->dtDue().toTimeSpec( KCalPrefs::instance()->timeSpec() )  == endDt ) {
       // No change
       mChanger->endChange( aitem );
       QTimer::singleShot( 0, this, SLOT(updateView()) );
@@ -1029,7 +1030,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     td->setDtDue( endDt.toTimeSpec( td->dtDue().timeSpec() ) );
   }
-  item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
+  item->setItemDate( startDt.toTimeSpec( KCalPrefs::instance()->timeSpec() ).date() );
 
   const bool result = mChanger->changeIncidence( oldIncidence, aitem,
                                                  Akonadi::IncidenceChanger::DATE_MODIFIED, this );
@@ -1107,17 +1108,17 @@ void KOAgendaView::showIncidences( const Item::List &incidences, const QDate &da
     calendar()->setFilter( 0 );
   }
 
-  KDateTime start = Akonadi::incidence( incidences.first() )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
-  KDateTime end = Akonadi::incidence( incidences.first() )->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
+  KDateTime start = Akonadi::incidence( incidences.first() )->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() );
+  KDateTime end = Akonadi::incidence( incidences.first() )->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() );
   Item first = incidences.first();
   Q_FOREACH( const Item &aitem, incidences ) {
-    if ( Akonadi::incidence( aitem )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) < start ) {
+    if ( Akonadi::incidence( aitem )->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ) < start ) {
       first = aitem;
     }
     start = qMin( start,
-                  Akonadi::incidence( aitem )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
+                  Akonadi::incidence( aitem )->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ) );
     end = qMax( start,
-                Akonadi::incidence( aitem )->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
+                Akonadi::incidence( aitem )->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ) );
   }
 
   end.toTimeSpec( start );    // allow direct comparison of dates
@@ -1186,10 +1187,10 @@ void KOAgendaView::insertIncidence( const Item &aitem, const QDate &curDate )
     mAllDayAgenda->insertAllDayItem( aitem, columnDate, curCol, curCol );
   } else if ( incidence->allDay() ) {
       mAllDayAgenda->insertAllDayItem( aitem, columnDate, beginX, endX );
-  } else if ( event && event->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
+  } else if ( event && event->isMultiDay( KCalPrefs::instance()->timeSpec() ) ) {
     int startY = mAgenda->timeToY(
-      event->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
-    QTime endtime( event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      event->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
+    QTime endtime( event->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
     if ( endtime == QTime( 0, 0, 0 ) ) {
       endtime = QTime( 23, 59, 59 );
     }
@@ -1216,15 +1217,15 @@ void KOAgendaView::insertIncidence( const Item &aitem, const QDate &curDate )
     int startY = 0, endY = 0;
     if ( event ) {
       startY = mAgenda->timeToY(
-        incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
-      QTime endtime( event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+        incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
+      QTime endtime( event->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
       if ( endtime == QTime( 0, 0, 0 ) ) {
         endtime = QTime( 23, 59, 59 );
       }
       endY = mAgenda->timeToY( endtime ) - 1;
     }
     if ( todo ) {
-      QTime t = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
+      QTime t = todo->dtDue().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time();
 
       if ( t == QTime( 0, 0 ) ) {
         t = QTime( 23, 59 );
@@ -1370,15 +1371,15 @@ void KOAgendaView::displayIncidence( const Item &aitem )
   Todo::Ptr todo = Akonadi::todo( aitem );
   Event::Ptr event = Akonadi::event( aitem );
 
-  KDateTime firstVisibleDateTime( mSelectedDates.first(), KOPrefs::instance()->timeSpec() );
-  KDateTime lastVisibleDateTime( mSelectedDates.last(), KOPrefs::instance()->timeSpec() );
+  KDateTime firstVisibleDateTime( mSelectedDates.first(), KCalPrefs::instance()->timeSpec() );
+  KDateTime lastVisibleDateTime( mSelectedDates.last(), KCalPrefs::instance()->timeSpec() );
 
   lastVisibleDateTime.setTime( QTime( 23, 59, 59, 59 ) );
   firstVisibleDateTime.setTime( QTime( 0, 0 ) );
   DateTimeList dateTimeList;
 
-  KDateTime incDtStart = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
-  KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
+  KDateTime incDtStart = incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() );
+  KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() );
 
   if ( todo &&
        ( !KOPrefs::instance()->showTodosAgendaView() || !todo->hasDueDate() ) ) {
@@ -1402,7 +1403,7 @@ void KOAgendaView::displayIncidence( const Item &aitem )
 
     if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
       // If it's not overdue it will be shown at the original date (not today)
-      dateToAdd = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() );
+      dateToAdd = todo->dtDue().toTimeSpec( KCalPrefs::instance()->timeSpec() );
 
       // To-dos are drawn with the bottom of the rectangle at dtDue
       // if dtDue is at 00:00, then it should be displayed in the previous day, at 23:59
@@ -1428,7 +1429,7 @@ void KOAgendaView::displayIncidence( const Item &aitem )
   }
 
   // ToDo items shall be displayed today if they are already overdude
-  KDateTime dateTimeToday = KDateTime( today, KOPrefs::instance()->timeSpec() );
+  KDateTime dateTimeToday = KDateTime( today, KCalPrefs::instance()->timeSpec() );
   if ( todo &&
        todo->isOverdue() &&
        dateTimeToday >= firstVisibleDateTime &&
@@ -1440,7 +1441,7 @@ void KOAgendaView::displayIncidence( const Item &aitem )
       /* If there's a recurring instance showing up today don't add "today" again
        * we don't want the event to appear duplicated */
       for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
-        if ( t->toTimeSpec( KOPrefs::instance()->timeSpec() ).date() == today ) {
+        if ( t->toTimeSpec( KCalPrefs::instance()->timeSpec() ).date() == today ) {
           doAdd = false;
           break;
         }
@@ -1453,7 +1454,7 @@ void KOAgendaView::displayIncidence( const Item &aitem )
   }
 
   for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
-    insertIncidence( aitem, t->toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
+    insertIncidence( aitem, t->toTimeSpec( KCalPrefs::instance()->timeSpec() ).date() );
   }
 }
 
@@ -1496,7 +1497,7 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
 
   QDate day = mSelectedDates[gpos.x()];
   QTime time = mAgenda->gyToTime( gpos.y() );
-  KDateTime newTime( day, time, KOPrefs::instance()->timeSpec() );
+  KDateTime newTime( day, time, KCalPrefs::instance()->timeSpec() );
   newTime.setDateOnly( allDay );
 
   Todo::Ptr todo = Akonadi::todo( todoItem );
@@ -1539,7 +1540,7 @@ void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint
 
   QDate day = mSelectedDates[gpos.x()];
   QTime time = mAgenda->gyToTime( gpos.y() );
-  KDateTime newTime( day, time, KOPrefs::instance()->timeSpec() );
+  KDateTime newTime( day, time, KCalPrefs::instance()->timeSpec() );
   newTime.setDateOnly( allDay );
 
   Q_FOREACH( const Todo::Ptr &todo, items ) {

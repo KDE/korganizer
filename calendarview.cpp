@@ -30,6 +30,7 @@
 */
 
 #include "calendarview.h"
+#include <kcalprefs.h>
 #include "calprinter.h"
 #include "categoryconfig.h"
 #include "datechecker.h"
@@ -541,7 +542,7 @@ void CalendarView::readFilterSettings( KConfig *config )
     filter->setCriteria( filterConfig.readEntry( "Criteria", 0 ) );
     filter->setCategoryList( filterConfig.readEntry( "CategoryList", QStringList() ) );
     if ( filter->criteria() & KCal::CalFilter::HideNoMatchingAttendeeTodos ) {
-      filter->setEmailList( KOPrefs::instance()->allEmails() );
+      filter->setEmailList( KCalPrefs::instance()->allEmails() );
     }
     filter->setCompletedTimeSpan( filterConfig.readEntry( "HideTodoDays", 0 ) );
     mFilters.append( filter );
@@ -625,7 +626,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
 
   // Only set a new time zone if it changed. This prevents the window
   // from being modified on start
-  KDateTime::Spec newTimeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec newTimeSpec = KCalPrefs::instance()->timeSpec();
   if ( mCalendar->viewTimeSpec() != newTimeSpec ) {
 
     const QString question( i18n( "The time zone setting was changed. "
@@ -702,7 +703,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
 
       if ( journals.isEmpty() ) {
         Journal::Ptr journal( new Journal );
-        journal->setDtStart( KDateTime::currentDateTime( KOPrefs::instance()->timeSpec() ) );
+        journal->setDtStart( KDateTime::currentDateTime( KCalPrefs::instance()->timeSpec() ) );
 
         QString dateStr = KGlobal::locale()->formatDate( QDate::currentDate() );
         journal->setSummary( i18n( "Journal of %1", dateStr ) );
@@ -942,7 +943,7 @@ void CalendarView::edit_paste()
     if ( aView && endDT.isValid() && useEndTime ) {
       if ( ( pastedEvent->allDay() && aView->selectedIsAllDay() ) ||
            ( !pastedEvent->allDay() && !aView->selectedIsAllDay() ) ) {
-        KDateTime kdt( endDT, KOPrefs::instance()->timeSpec() );
+        KDateTime kdt( endDT, KCalPrefs::instance()->timeSpec() );
         pastedEvent->setDtEnd( kdt.toTimeSpec( pastedIncidence->dtEnd().timeSpec() ) );
       }
     }
@@ -1335,7 +1336,7 @@ void CalendarView::toggleTodoCompleted( const Item &todoItem )
   if ( todo->isCompleted() ) {
     todo->setPercentComplete( 0 );
   } else {
-    todo->setCompleted( KDateTime::currentDateTime( KOPrefs::instance()->timeSpec() ) );
+    todo->setCompleted( KDateTime::currentDateTime( KCalPrefs::instance()->timeSpec() ) );
   }
 
   mChanger->changeIncidence( oldtodo,
@@ -1507,7 +1508,7 @@ void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
     return;
   }
 
-  KDateTime thisDateTime( date, KOPrefs::instance()->timeSpec() );
+  KDateTime thisDateTime( date, KCalPrefs::instance()->timeSpec() );
   bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
 
   int answer;
@@ -1558,7 +1559,7 @@ void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
   startMultiModify( i18n( "Dissociate occurrence" ) );
   Incidence::Ptr oldincidence( incidence->clone() );
   Incidence::Ptr newInc(
-    mCalendar->dissociateOccurrence( item, date, KOPrefs::instance()->timeSpec(), true ) );
+    mCalendar->dissociateOccurrence( item, date, KCalPrefs::instance()->timeSpec(), true ) );
   if ( newInc ) {
     mChanger->changeIncidence( oldincidence, item, IncidenceChanger::NOTHING_MODIFIED, this );
     mChanger->addIncidence( newInc, item.parentCollection(), this );
@@ -1585,7 +1586,7 @@ void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &da
 
   Incidence::Ptr newInc(
     mCalendar->dissociateOccurrence( item, date,
-                                     KOPrefs::instance()->timeSpec(), false ) );
+                                     KCalPrefs::instance()->timeSpec(), false ) );
   if ( newInc ) {
     mChanger->changeIncidence( oldincidence,
                                item,
@@ -1706,13 +1707,13 @@ void CalendarView::schedule_forward( const Item &item )
   if ( publishdlg->exec() == QDialog::Accepted ) {
     const QString recipients = publishdlg->addresses();
     if ( incidence->organizer().isEmpty() ) {
-      incidence->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                       KOPrefs::instance()->email() ) );
+      incidence->setOrganizer( Person( KCalPrefs::instance()->fullName(),
+                                       KCalPrefs::instance()->email() ) );
     }
 
     ICalFormat format;
-    const QString from = KOPrefs::instance()->email();
-    const bool bccMe = KOPrefs::instance()->mBcc;
+    const QString from = KCalPrefs::instance()->email();
+    const bool bccMe = KCalPrefs::instance()->mBcc;
     const QString messageText = format.createScheduleMessage( incidence.get(), iTIPRequest );
     Akonadi::MailClient mailer;
     if ( mailer.mailTo(
@@ -1746,8 +1747,8 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   }
 
   FreeBusy *freebusy = new FreeBusy( events, start, end );
-  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                  KOPrefs::instance()->email() ) );
+  freebusy->setOrganizer( Person( KCalPrefs::instance()->fullName(),
+                                  KCalPrefs::instance()->email() ) );
 
   QPointer<PublishDialog> publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
@@ -2037,8 +2038,8 @@ void CalendarView::processIncidenceSelection( const Item &item, const QDate &dat
   bool todo = false;
   bool subtodo = false;
 
-  organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
-  groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
+  organizerEvents = KCalPrefs::instance()->thatIsMe( incidence->organizer().email() );
+  groupEvents = incidence->attendeeByMails( KCalPrefs::instance()->allEmails() );
 
   if ( incidence->type() == "Todo" ) {
     todo = true;
@@ -2137,8 +2138,8 @@ void CalendarView::takeOverEvent()
     return;
   }
 
-  incidence->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                   KOPrefs::instance()->email() ) );
+  incidence->setOrganizer( Person( KCalPrefs::instance()->fullName(),
+                                   KCalPrefs::instance()->email() ) );
   incidence->recreate();
   incidence->setReadOnly( false );
 
@@ -2153,8 +2154,8 @@ void CalendarView::takeOverCalendar()
 
   Q_FOREACH( const Item& item, items ) {
     Incidence::Ptr i = Akonadi::incidence( item );
-    i->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                 KOPrefs::instance()->email() ) );
+    i->setOrganizer( Person( KCalPrefs::instance()->fullName(),
+                             KCalPrefs::instance()->email() ) );
     i->recreate();
     i->setReadOnly( false );
   }
@@ -2352,7 +2353,7 @@ void CalendarView::showIncidenceContext( const Item &item )
     }
     // just select the appropriate date
     mDateNavigator->selectWeek(
-      incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
+      incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ).date() );
     return;
   } else if ( Akonadi::hasJournal( item ) ) {
     if ( !viewManager()->currentView()->inherits( "KOJournalView" ) ) {
@@ -2519,7 +2520,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
           i18n( "KOrganizer Confirmation" ),
           KGuiItem( i18n( "Delete All" ) ) );
       } else {
-        KDateTime itemDateTime( itemDate, KOPrefs::instance()->timeSpec() );
+        KDateTime itemDateTime( itemDate, KCalPrefs::instance()->timeSpec() );
         bool isFirst = !incidence->recurrence()->getPreviousDateTime( itemDateTime ).isValid();
         bool isLast  = !incidence->recurrence()->getNextDateTime( itemDateTime ).isValid();
 

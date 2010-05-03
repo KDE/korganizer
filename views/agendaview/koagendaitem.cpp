@@ -24,6 +24,7 @@
 */
 
 #include "koagendaitem.h"
+#include <kcalprefs.h>
 #include "koeventview.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -136,13 +137,13 @@ void KOAgendaItem::updateIcons()
   mIconRecur = incidence->recurs();
   mIconAlarm = incidence->isAlarmEnabled();
   if ( incidence->attendeeCount() > 1 ) {
-    if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
+    if ( KCalPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
       mIconReply = false;
       mIconGroup = false;
       mIconGroupTent = false;
       mIconOrganizer = true;
     } else {
-      Attendee *me = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
+      Attendee *me = incidence->attendeeByMails( KCalPrefs::instance()->allEmails() );
       if ( me ) {
         if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
           mIconReply = true;
@@ -932,22 +933,22 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   QString longH;
   if ( !isMultiItem() ) {
     shortH = KGlobal::locale()->formatTime(
-      incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
     if ( !Akonadi::hasTodo( mIncidence ) ) {
       longH = i18n( "%1 - %2",
                     shortH,
                     KGlobal::locale()->formatTime(
-                      incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
+                      incidence->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() ) );
     } else {
       longH = shortH;
     }
   } else if ( !mMultiItemInfo->mFirstMultiItem ) {
     shortH = KGlobal::locale()->formatTime(
-      incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
     longH = shortH;
   } else {
     shortH = KGlobal::locale()->formatTime(
-      incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      incidence->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() );
     longH = i18n( "- %1", shortH );
   }
 
@@ -1034,14 +1035,14 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     shortH = longH = "";
 
     if ( const Event::Ptr event = Akonadi::event( mIncidence ) ) {
-      if ( event->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
+      if ( event->isMultiDay( KCalPrefs::instance()->timeSpec() ) ) {
         // multi-day, all-day event
         shortH =
           i18n( "%1 - %2",
                 KGlobal::locale()->formatDate(
-                  incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ),
+                  incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ).date() ),
                 KGlobal::locale()->formatDate(
-                  incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) );
+                  incidence->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ).date() ) );
         longH = shortH;
 
         // paint headline
@@ -1362,7 +1363,7 @@ bool KOAgendaItem::event( QEvent *event )
         IncidenceFormatter::toolTipStr(
           Akonadi::displayName( mIncidence.parentCollection() ),
           Akonadi::incidence( mIncidence ).get(),
-          mDate, true, KOPrefs::instance()->timeSpec() ),
+          mDate, true, KCalPrefs::instance()->timeSpec() ),
         this );
     }
   }

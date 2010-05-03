@@ -23,6 +23,7 @@
 */
 
 #include "monthitem.h"
+#include <kcalprefs.h>
 #include "kodialogmanager.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -362,7 +363,7 @@ QDate IncidenceMonthItem::realStartDate() const
   if ( dt.isDateOnly() ) {
     start = dt.date();
   } else {
-    start = dt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+    start = dt.toTimeSpec( KCalPrefs::instance()->timeSpec() ).date();
   }
 
   return start.addDays( mRecurDayOffset );
@@ -387,7 +388,7 @@ QDate IncidenceMonthItem::realEndDate() const
   if ( dt.isDateOnly() ) {
     end = dt.date();
   } else {
-    end = dt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+    end = dt.toTimeSpec( KCalPrefs::instance()->timeSpec() ).date();
   }
 
   return end.addDays( mRecurDayOffset );
@@ -455,7 +456,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       {
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( monthScene()->mMonthView->calendar()->dissociateOccurrence( mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
+        Incidence::Ptr newInc( monthScene()->mMonthView->calendar()->dissociateOccurrence( mIncidence, startDate(), KCalPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence,
@@ -477,7 +478,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
         Incidence::Ptr newInc( monthScene()->mMonthView->calendar()->dissociateOccurrence(
-            mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false ) );
+            mIncidence, startDate(), KCalPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence,
@@ -535,15 +536,15 @@ QString IncidenceMonthItem::text( bool end ) const
     if ( mIsTodo ) {
       Todo::Ptr todo = Akonadi::todo( mIncidence );
       timeStr = IncidenceFormatter::timeToString(
-        todo->dtDue(), true, KOPrefs::instance()->timeSpec() );
+        todo->dtDue(), true, KCalPrefs::instance()->timeSpec() );
     } else {
       if ( !end ) {
         timeStr = IncidenceFormatter::timeToString(
-          incidence->dtStart(), true, KOPrefs::instance()->timeSpec() );
+          incidence->dtStart(), true, KCalPrefs::instance()->timeSpec() );
       } else {
         Event::Ptr event = Akonadi::event( mIncidence );
         timeStr = IncidenceFormatter::timeToString(
-          event->dtEnd(), true, KOPrefs::instance()->timeSpec() );
+          event->dtEnd(), true, KCalPrefs::instance()->timeSpec() );
       }
     }
     if ( !timeStr.isEmpty() ) {
@@ -563,7 +564,7 @@ QString IncidenceMonthItem::toolTipText( const QDate &date ) const
   return IncidenceFormatter::toolTipStr(
     Akonadi::displayName( mIncidence.parentCollection() ),
     Akonadi::incidence( mIncidence ).get(),
-    date, true, KOPrefs::instance()->timeSpec() );
+    date, true, KCalPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

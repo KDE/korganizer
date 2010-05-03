@@ -24,6 +24,7 @@
 */
 
 #include "koprefsdialog.h"
+#include <kcalprefs.h>
 #include "kocore.h"
 #include "koglobals.h"
 #include "koprefs.h"
@@ -99,7 +100,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
                      i18nc( "@title:tab personal settings", "Personal" ) );
 
   KPrefsWidBool *emailControlCenter =
-    addWidBool( KOPrefs::instance()->emailControlCenterItem(), personalFrame );
+    addWidBool( KCalPrefs::instance()->emailControlCenterItem(), personalFrame );
   connect( emailControlCenter->checkBox(), SIGNAL(toggled(bool)), SLOT(toggleEmailSettings(bool)) );
   personalLayout->addWidget( emailControlCenter->checkBox() );
 
@@ -108,10 +109,10 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   personalLayout->addWidget( mUserEmailSettings );
   QFormLayout *emailSettingsLayout = new QFormLayout( mUserEmailSettings );
-  KPrefsWidString *s = addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
+  KPrefsWidString *s = addWidString( KCalPrefs::instance()->userNameItem(), mUserEmailSettings );
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
-  s=addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
+  s=addWidString( KCalPrefs::instance()->userEmailItem(), mUserEmailSettings );
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   KPrefsWidRadios *defaultEmailAttachMethod =
@@ -276,8 +277,8 @@ void KOPrefsDialogMain::toggleEmailSettings( bool on )
     mNameEdit->setText( settings.getSetting(KEMailSettings::RealName) );
     mEmailEdit->setText( settings.getSetting(KEMailSettings::EmailAddress) );
   } else {
-    mNameEdit->setText( KOPrefs::instance()->mName );
-    mEmailEdit->setText( KOPrefs::instance()->mEmail );
+    mNameEdit->setText( KCalPrefs::instance()->mName );
+    mEmailEdit->setText( KCalPrefs::instance()->mEmail );
   }*/
 }
 
@@ -998,11 +999,11 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   topLayout->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidBool *useGroupwareBool =
-    addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
+    addWidBool( KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
   topLayout->addWidget( useGroupwareBool->checkBox(), 0, 0, 1, 2 );
 
   KPrefsWidBool *bcc =
-    addWidBool( KOPrefs::instance()->bccItem(), topFrame );
+    addWidBool( KCalPrefs::instance()->bccItem(), topFrame );
   topLayout->addWidget( bcc->checkBox(), 1, 0, 1, 2 );
 
   QLabel *aTransportLabel = new QLabel(
@@ -1072,8 +1073,8 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
 void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
   mAMails->clear();
-  QStringList::const_iterator begin( KOPrefs::instance()->mAdditionalMails.constBegin() );
-  QStringList::const_iterator end( KOPrefs::instance()->mAdditionalMails.constEnd() );
+  QStringList::const_iterator begin( KCalPrefs::instance()->mAdditionalMails.constBegin() );
+  QStringList::const_iterator end( KCalPrefs::instance()->mAdditionalMails.constEnd() );
   for ( QStringList::const_iterator it = begin; it != end; ++it ) {
     new QListWidgetItem(( *it ), mAMails);
   }
@@ -1081,10 +1082,10 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
 
 void KOPrefsDialogGroupScheduling::usrWriteConfig()
 {
-  KOPrefs::instance()->mAdditionalMails.clear();
+  KCalPrefs::instance()->mAdditionalMails.clear();
 
   for ( int i = 0; i<mAMails->count(); ++i ) {
-    KOPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
+    KCalPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
   }
 }
 
@@ -1161,7 +1162,7 @@ extern "C"
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KComponentData &inst,
                                                                     QWidget *parent )
-  : KPrefsModule( KOPrefs::instance(), inst, parent )
+  : KPrefsModule( KCalPrefs::instance(), inst, parent )
 {
   mGroupwarePage = new Ui::KOGroupwarePrefsPage();
   QWidget *widget = new QWidget( this );
@@ -1214,62 +1215,62 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
 void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
   mGroupwarePage->publishEnable->setChecked(
-    KOPrefs::instance()->mFreeBusyPublishAuto );
+    KCalPrefs::instance()->mFreeBusyPublishAuto );
   mGroupwarePage->publishDelay->setValue(
-    KOPrefs::instance()->mFreeBusyPublishDelay );
+    KCalPrefs::instance()->mFreeBusyPublishDelay );
   mGroupwarePage->publishDays->setValue(
-    KOPrefs::instance()->mFreeBusyPublishDays );
+    KCalPrefs::instance()->mFreeBusyPublishDays );
   mGroupwarePage->publishUrl->setText(
-    KOPrefs::instance()->mFreeBusyPublishUrl );
+    KCalPrefs::instance()->mFreeBusyPublishUrl );
   mGroupwarePage->publishUser->setText(
-    KOPrefs::instance()->mFreeBusyPublishUser );
+    KCalPrefs::instance()->mFreeBusyPublishUser );
   mGroupwarePage->publishPassword->setText(
-    KOPrefs::instance()->mFreeBusyPublishPassword );
+    KCalPrefs::instance()->mFreeBusyPublishPassword );
   mGroupwarePage->publishSavePassword->setChecked(
-    KOPrefs::instance()->mFreeBusyPublishSavePassword );
+    KCalPrefs::instance()->mFreeBusyPublishSavePassword );
 
   mGroupwarePage->retrieveEnable->setChecked(
-    KOPrefs::instance()->mFreeBusyRetrieveAuto );
+    KCalPrefs::instance()->mFreeBusyRetrieveAuto );
   mGroupwarePage->fullDomainRetrieval->setChecked(
-    KOPrefs::instance()->mFreeBusyFullDomainRetrieval );
+    KCalPrefs::instance()->mFreeBusyFullDomainRetrieval );
   mGroupwarePage->retrieveUrl->setText(
-    KOPrefs::instance()->mFreeBusyRetrieveUrl );
+    KCalPrefs::instance()->mFreeBusyRetrieveUrl );
   mGroupwarePage->retrieveUser->setText(
-    KOPrefs::instance()->mFreeBusyRetrieveUser );
+    KCalPrefs::instance()->mFreeBusyRetrieveUser );
     mGroupwarePage->retrievePassword->setText(
-    KOPrefs::instance()->mFreeBusyRetrievePassword );
+    KCalPrefs::instance()->mFreeBusyRetrievePassword );
   mGroupwarePage->retrieveSavePassword->setChecked(
-    KOPrefs::instance()->mFreeBusyRetrieveSavePassword );
+    KCalPrefs::instance()->mFreeBusyRetrieveSavePassword );
 }
 
 void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
-  KOPrefs::instance()->mFreeBusyPublishAuto =
+  KCalPrefs::instance()->mFreeBusyPublishAuto =
     mGroupwarePage->publishEnable->isChecked();
-  KOPrefs::instance()->mFreeBusyPublishDelay =
+  KCalPrefs::instance()->mFreeBusyPublishDelay =
     mGroupwarePage->publishDelay->value();
-  KOPrefs::instance()->mFreeBusyPublishDays =
+  KCalPrefs::instance()->mFreeBusyPublishDays =
     mGroupwarePage->publishDays->value();
-  KOPrefs::instance()->mFreeBusyPublishUrl =
+  KCalPrefs::instance()->mFreeBusyPublishUrl =
     mGroupwarePage->publishUrl->text();
-  KOPrefs::instance()->mFreeBusyPublishUser =
+  KCalPrefs::instance()->mFreeBusyPublishUser =
     mGroupwarePage->publishUser->text();
-  KOPrefs::instance()->mFreeBusyPublishPassword =
+  KCalPrefs::instance()->mFreeBusyPublishPassword =
     mGroupwarePage->publishPassword->text();
-  KOPrefs::instance()->mFreeBusyPublishSavePassword =
+  KCalPrefs::instance()->mFreeBusyPublishSavePassword =
     mGroupwarePage->publishSavePassword->isChecked();
 
-  KOPrefs::instance()->mFreeBusyRetrieveAuto =
+  KCalPrefs::instance()->mFreeBusyRetrieveAuto =
     mGroupwarePage->retrieveEnable->isChecked();
-  KOPrefs::instance()->mFreeBusyFullDomainRetrieval =
+  KCalPrefs::instance()->mFreeBusyFullDomainRetrieval =
     mGroupwarePage->fullDomainRetrieval->isChecked();
-  KOPrefs::instance()->mFreeBusyRetrieveUrl =
+  KCalPrefs::instance()->mFreeBusyRetrieveUrl =
     mGroupwarePage->retrieveUrl->text();
-  KOPrefs::instance()->mFreeBusyRetrieveUser =
+  KCalPrefs::instance()->mFreeBusyRetrieveUser =
     mGroupwarePage->retrieveUser->text();
-  KOPrefs::instance()->mFreeBusyRetrievePassword =
+  KCalPrefs::instance()->mFreeBusyRetrievePassword =
     mGroupwarePage->retrievePassword->text();
-  KOPrefs::instance()->mFreeBusyRetrieveSavePassword =
+  KCalPrefs::instance()->mFreeBusyRetrieveSavePassword =
     mGroupwarePage->retrieveSavePassword->isChecked();
 }
 

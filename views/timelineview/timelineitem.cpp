@@ -17,7 +17,7 @@
 */
 
 #include "timelineitem.h"
-#include "koprefs.h"
+#include <kcalprefs.h>
 using namespace KOrg;
 
 #include <KCal/Incidence>
@@ -43,8 +43,8 @@ void TimelineItem::insertIncidence( const Item &aitem,
                                     const KDateTime & _start, const KDateTime & _end )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
-  KDateTime start = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
-  KDateTime end = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
+  KDateTime start = incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() );
+  KDateTime end = incidence->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() );
 
   if ( _start.isValid() ) {
     start = _start;
@@ -104,7 +104,7 @@ TimelineSubItem::TimelineSubItem( Akonadi::Calendar *calendar,
   setTooltipText( IncidenceFormatter::toolTipStr(
                   Akonadi::displayName( incidence.parentCollection() ),
                   Akonadi::incidence( incidence ).get(), originalStart().date(),
-                  true, KOPrefs::instance()->timeSpec() ) );
+                  true, KCalPrefs::instance()->timeSpec() ) );
   if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );

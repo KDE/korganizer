@@ -27,11 +27,11 @@
 */
 
 #include "calprintdefaultplugins.h"
-#include "koprefs.h"
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
+#include <kcalprefs.h>
 #include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
 
@@ -496,7 +496,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           }
           // format the dates if provided
           datesString.clear();
-          KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
+          KDateTime::Spec spec = KCalPrefs::instance()->timeSpec();
           if ( (*rit)->dtStart().isValid() ) {
             datesString += i18nc(
               "subitem start date", "Start Date: %1\n",

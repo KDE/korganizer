@@ -25,7 +25,7 @@
 #include "kotimelineview.h"
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
-#include "koprefs.h"
+#include <kcalprefs.h>
 #include "timelineitem.h"
 #include "kohelper.h"
 
@@ -139,7 +139,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
 
   // add incidences
   Item::List events;
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
     events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
     Q_FOREACH ( const Item &i, events ) {
@@ -283,7 +283,7 @@ void KOTimelineView::insertIncidence( const Item &incidence )
     insertIncidence( incidence, QDate() );
   }
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
   for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
     Item::List events = calendar()->events(
       day, timeSpec, EventSortStartDate, SortDirectionAscending );

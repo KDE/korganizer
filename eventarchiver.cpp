@@ -24,6 +24,7 @@
 */
 
 #include "eventarchiver.h"
+#include <kcalprefs.h>
 #include "koprefs.h"
 
 #include <kio/netaccess.h>
@@ -93,7 +94,7 @@ void EventArchiver::run( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger*
       QDate( 1769, 12, 1 ),
       // #29555, also advertised by the "limitDate not included" in the class docu
       limitDate.addDays( -1 ),
-      KOPrefs::instance()->timeSpec(),
+      KCalPrefs::instance()->timeSpec(),
       true );
   }
   if ( KOPrefs::instance()->mArchiveTodos ) {
@@ -178,7 +179,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   }
 
   // Duplicate current calendar by loading in new calendar object
-  CalendarLocal archiveCalendar( KOPrefs::instance()->timeSpec() );
+  CalendarLocal archiveCalendar( KCalPrefs::instance()->timeSpec() );
 
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.fileName() );

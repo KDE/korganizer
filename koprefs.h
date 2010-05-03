@@ -53,12 +53,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     /** Write preferences to config file */
     void usrWriteConfig();
 
-  protected:
-    void setTimeZoneDefault();
-
-    /** Fill empty mail fields with default values. */
-    void fillMailDefaults();
-
   private:
     /** Constructor disabled for public. Use instance() to create a KOPrefs
     object. */
@@ -67,27 +61,12 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     static KOPrefs *mInstance;
 
   public:
-    // preferences data
-    void setFullName( const QString & );
-    QString fullName();
-    void setEmail( const QString & );
-    QString email();
-    /// Returns all email addresses for the user.
-    QStringList allEmails();
-    /// Returns all email addresses together with the full username for the user.
-    QStringList fullEmails();
-    /// Return true if the given email belongs to the user
-    bool thatIsMe( const QString &email );
-
     void setCategoryColor( const QString &cat, const QColor &color );
     QColor categoryColor( const QString &cat ) const;
     bool hasCategoryColor( const QString &cat ) const;
 
     void setResourceColor ( const QString &, const QColor & );
     QColor resourceColor( const QString & );
-
-    void setTimeSpec( const KDateTime::Spec &spec );
-    KDateTime::Spec timeSpec();
 
     QString mHtmlExportFile;
 
@@ -112,7 +91,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     QFont mDefaultMonthViewFont;
     QFont mDefaultAgendaTimeLabelsFont;
 
-    KDateTime::Spec mTimeSpec;
     QStringList mTimeScaleTimeZones;
 
     QString mDefaultCalendar;

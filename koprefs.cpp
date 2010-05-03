@@ -31,14 +31,12 @@
 #include <kmime/kmime_header_parsing.h>
 #include <kpimidentities/identitymanager.h>
 #include <kpimidentities/identity.h>
-#include <kpimutils/email.h>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>
 #include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>
-#include <kemailsettings.h>
 #include <k3staticdeleter.h>
 #include <kstringhandler.h>
 #include <ksystemtimezone.h>
@@ -100,64 +98,10 @@ KOPrefs *KOPrefs::instance()
 
 void KOPrefs::usrSetDefaults()
 {
-  // Default should be set a bit smarter, respecting username and locale
-  // settings for example.
-
-  KEMailSettings settings;
-  QString tmp = settings.getSetting( KEMailSettings::RealName );
-  if ( !tmp.isEmpty() ) {
-    setUserName( tmp );
-  }
-  tmp = settings.getSetting( KEMailSettings::EmailAddress );
-  if ( !tmp.isEmpty() ) {
-    setUserEmail( tmp );
-  }
-  fillMailDefaults();
-
   setAgendaTimeLabelsFont( mDefaultAgendaTimeLabelsFont );
   setMonthViewFont( mDefaultMonthViewFont );
 
-  setTimeZoneDefault();
-
   KConfigSkeleton::usrSetDefaults();
-}
-
-void KOPrefs::fillMailDefaults()
-{
-  userEmailItem()->swapDefault();
-  QString defEmail = userEmailItem()->value();
-  userEmailItem()->swapDefault();
-
-  if ( userEmail() == defEmail ) {
-    // No korg settings - but maybe there's a kcontrol[/kmail] setting available
-    KEMailSettings settings;
-    if ( !settings.getSetting( KEMailSettings::EmailAddress ).isEmpty() ) {
-      mEmailControlCenter = true;
-    }
-  }
-}
-
-void KOPrefs::setTimeZoneDefault()
-{
-  KTimeZone zone = KSystemTimeZones::local();
-  if ( !zone.isValid() ) {
-    kError() << "KSystemTimeZones::local() return 0";
-    return;
-  }
-
-  kDebug () << "----- time zone:" << zone.name();
-
-  mTimeSpec = zone;
-}
-
-KDateTime::Spec KOPrefs::timeSpec()
-{
-  return KSystemTimeZones::local();
-}
-
-void KOPrefs::setTimeSpec( const KDateTime::Spec &spec )
-{
-  mTimeSpec = spec;
 }
 
 void KOPrefs::usrReadConfig()
@@ -189,17 +133,6 @@ void KOPrefs::usrReadConfig()
     setResourceColor( *it3, color );
   }
 
-  if ( !mTimeSpec.isValid() ) {
-    setTimeZoneDefault();
-  }
-
-#if 0
-  config()->setGroup( "FreeBusy" );
-  if ( mRememberRetrievePw ) {
-    mRetrievePassword =
-      KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
-  }
-#endif
   KConfigGroup defaultCalendarConfig( config(), "Calendar" );
   mDefaultCalendar = defaultCalendarConfig.readEntry( "Default Calendar", QString() );
 
@@ -207,7 +140,6 @@ void KOPrefs::usrReadConfig()
   setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
 
   KConfigSkeleton::usrReadConfig();
-  fillMailDefaults();
 }
 
 void KOPrefs::usrWriteConfig()
@@ -226,17 +158,6 @@ void KOPrefs::usrWriteConfig()
   while ( i != mResourceColors.constEnd() ) {
     rColorsConfig.writeEntry( i.key(), i.value() );
     ++i;
-  }
-
-  if ( !mFreeBusyPublishSavePassword ) {
-    KConfigSkeleton::ItemPassword *i = freeBusyPublishPasswordItem();
-    i->setValue( "" );
-    i->writeConfig( config() );
-  }
-  if ( !mFreeBusyRetrieveSavePassword ) {
-    KConfigSkeleton::ItemPassword *i = freeBusyRetrievePasswordItem();
-    i->setValue( "" );
-    i->writeConfig( config() );
   }
 
 #if 0
@@ -342,115 +263,6 @@ QColor KOPrefs::resourceColor( const QString &cal )
   } else {
     return mDefaultResourceColor;
   }
-}
-
-QString KOPrefs::fullName()
-{
-  QString tusername;
-  if ( mEmailControlCenter ) {
-    KEMailSettings settings;
-    tusername = settings.getSetting( KEMailSettings::RealName );
-  } else {
-    tusername = userName();
-  }
-
-  // Quote the username as it might contain commas and other quotable chars.
-  tusername = KPIMUtils::quoteNameIfNecessary( tusername );
-
-  QString tname, temail;
-  // ignore the return value from extractEmailAddressAndName() because
-  // it will always be false since tusername does not contain "@domain".
-  KPIMUtils::extractEmailAddressAndName( tusername, temail, tname );
-  return tname;
-}
-
-QString KOPrefs::email()
-{
-  if ( mEmailControlCenter ) {
-    KEMailSettings settings;
-    return settings.getSetting( KEMailSettings::EmailAddress );
-  } else {
-    return userEmail();
-  }
-}
-
-QStringList KOPrefs::allEmails()
-{
-  // Grab emails from the email identities
-  QStringList lst = KOCore::self()->identityManager()->allEmails();
-  // Add emails configured in korganizer
-  lst += mAdditionalMails;
-  // Add the email entered as the userEmail here
-  lst += email();
-
-  // Warning, this list could contain duplicates.
-  return lst;
-}
-
-QStringList KOPrefs::fullEmails()
-{
-  QStringList fullEmails;
-  // The user name and email from the config dialog:
-  fullEmails << QString( "%1 <%2>" ).arg( fullName() ).arg( email() );
-
-  QStringList::Iterator it;
-  // Grab emails from the email identities
-  IdentityManager *idmanager = KOCore::self()->identityManager();
-  QStringList lst = idmanager->identities();
-  IdentityManager::ConstIterator it1;
-  for ( it1 = idmanager->begin(); it1 != idmanager->end(); ++it1 ) {
-    fullEmails << (*it1).fullEmailAddr();
-  }
-  // Add emails configured in korganizer
-  lst = mAdditionalMails;
-  for ( it = lst.begin(); it != lst.end(); ++it ) {
-    fullEmails << QString( "%1 <%2>" ).arg( fullName() ).arg( *it );
-  }
-
-  // Warning, this list could contain duplicates.
-  return fullEmails;
-}
-
-bool KOPrefs::thatIsMe( const QString &_email )
-{
-  // NOTE: this method is called for every created agenda view item,
-  // so we need to keep performance in mind
-
-  /* identityManager()->thatIsMe() is quite expensive since it does parsing of
-     _email in a way which is unnecessarily complex for what we can have here,
-     so we do that ourselves. This makes sense since this
-
-  if ( KOCore::self()->identityManager()->thatIsMe( _email ) ) {
-    return true;
-  }
-  */
-
-  // in case email contains a full name, strip it out.
-  // the below is the simpler but slower version of the following code:
-  // const QString email = KPIM::getEmailAddress( _email );
-  const QByteArray tmp = _email.toUtf8();
-  const char *cursor = tmp.constData();
-  const char *end = tmp.data() + tmp.length();
-  KMime::Types::Mailbox mbox;
-  KMime::HeaderParsing::parseMailbox( cursor, end, mbox );
-  const QString email = mbox.addrSpec().asString();
-
-  if ( this->email() == email ) {
-    return true;
-  }
-
-  for ( IdentityManager::ConstIterator it = KOCore::self()->identityManager()->begin();
-        it != KOCore::self()->identityManager()->end(); ++it ) {
-    if ( email == (*it).emailAddr() ) {
-      return true;
-    }
-  }
-
-  if ( mAdditionalMails.contains( email ) ) {
-    return true;
-  }
-
-  return false;
 }
 
 QStringList KOPrefs::timeScaleTimezones()

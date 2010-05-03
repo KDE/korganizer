@@ -24,7 +24,7 @@
 
 #include "kowhatsnextview.h"
 #include "koglobals.h"
-#include "koprefs.h"
+#include <kcalprefs.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
@@ -96,7 +96,7 @@ void KOWhatsNextView::updateView()
   mText+="</h2>\n";
 
   Item::List events;
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
 
   events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
   events = calendar()->sortEvents( events, EventSortStartDate, SortDirectionAscending );
@@ -175,7 +175,7 @@ void KOWhatsNextView::updateView()
     mText += "</ul>\n";
   }
 
-  QStringList myEmails( KOPrefs::instance()->allEmails() );
+  QStringList myEmails( KCalPrefs::instance()->allEmails() );
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
   Q_FOREACH ( const Item &evItem, events ) {
@@ -263,7 +263,7 @@ void KOWhatsNextView::appendEvent( const Item &aitem, const QDateTime &start,
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   mText += "<tr><td><b>";
   if ( const Event::Ptr event = Akonadi::event( aitem ) ) {
-    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+    KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
     KDateTime starttime( start, timeSpec );
     if ( !starttime.isValid() ) {
       starttime = event->dtStart();
@@ -277,18 +277,18 @@ void KOWhatsNextView::appendEvent( const Item &aitem, const QDateTime &start,
       mText += i18nc(
         "date from - to", "%1 - %2",
         KGlobal::locale()->formatDateTime(
-          starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ),
+          starttime.toTimeSpec( KCalPrefs::instance()->timeSpec() ) ),
         KGlobal::locale()->formatDateTime(
-          endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ) );
+          endtime.toTimeSpec( KCalPrefs::instance()->timeSpec() ) ) );
     } else {
       mText += i18nc(
         "date, from - to", "%1, %2 - %3",
         KGlobal::locale()->formatDate(
-          starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).date(), KLocale::ShortDate ),
+          starttime.toTimeSpec( KCalPrefs::instance()->timeSpec() ).date(), KLocale::ShortDate ),
         KGlobal::locale()->formatTime(
-          starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ),
+          starttime.toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() ),
         KGlobal::locale()->formatTime(
-          endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
+          endtime.toTimeSpec( KCalPrefs::instance()->timeSpec() ).time() ) );
     }
   }
   mText += "</b></td><td><a ";

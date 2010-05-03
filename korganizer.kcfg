@@ -12,12 +12,6 @@
 
 <!-- General Page: Personal Tab -->
   <group name="Personal Settings">
-    <entry type="Bool" key="Use Control Center Email" name="EmailControlCenter">
-      <label>Use email settings from System Settings</label>
-      <whatsthis>Check this box to use the KDE-wide e-mail settings, which are defined using the System Settings &quot;About Me&quot; Module. Uncheck this box to be able to specify your full name and e-mail.</whatsthis>
-      <default>true</default>
-    </entry>
-
     <entry type="Enum" name="DefaultEmailAttachMethod">
       <label>Default Email Attachment Method</label>
       <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
@@ -472,89 +466,6 @@
     </entry>
   </group>
 
-<!-- Group Scheduling Page -->
-  <group name="Group Scheduling">
-    <entry type="Bool" key="Use Groupware Communication">
-      <label>Use Groupware communication</label>
-      <whatsthis>Check this box to enable automatic generation of mails when creating, updating or deleting events (or to-dos) involving other attendees. You should check this box if you want to use the groupware functionality (e.g. Configuring Kontact as a KDE Kolab client).</whatsthis>
-      <default>true</default>
-    </entry>
-
-    <entry type="Bool" key="Bcc">
-      <label>Send copy to owner when mailing events</label>
-      <whatsthis>Check this box to get a copy of all e-mail messages that KOrganizer sends at your request to event attendees.</whatsthis>
-      <default>false</default>
-    </entry>
-
-    <entry type="StringList" name="AdditionalMails">
-    </entry>
-  </group>
-
-<!-- Free/Busy Page: Publish Tab -->
-  <group name="FreeBusy Publish">
-    <entry type="Bool" name="FreeBusyPublishAuto">
-      <default>false</default>
-    </entry>
-
-    <entry type="Int" name="FreeBusyPublishDelay">
-      <default>5</default>
-    </entry>
-
-    <entry type="Int" key="FreeBusyPublishDays">
-      <default>60</default>
-    </entry>
-
-    <entry type="String" name="FreeBusyPublishUrl">
-      <label>Free/Busy Publish URL</label>
-      <whatsthis>URL for publishing free/busy information</whatsthis>
-    </entry>
-
-    <entry type="String" name="FreeBusyPublishUser">
-      <label>Free/Busy Publish Username</label>
-      <whatsthis>Username for publishing free/busy information</whatsthis>
-    </entry>
-
-    <entry type="Password" name="FreeBusyPublishPassword">
-      <label>Free/Busy Publish Password</label>
-      <whatsthis>Password for publishing free/busy information</whatsthis>
-    </entry>
-
-    <entry type="Bool" name="FreeBusyPublishSavePassword">
-      <default>false</default>
-    </entry>
-  </group>
-
-<!-- Free/Busy Page: Retrieve Tab -->
-  <group name="FreeBusy Retrieve">
-    <entry type="Bool" name="FreeBusyRetrieveAuto">
-      <label>Enable Automatic Free/Busy Retrieval</label>
-      <default>false</default>
-    </entry>
-
-    <entry type="Bool" name="FreeBusyFullDomainRetrieval">
-      <label>Use full email address for retrieval</label>
-      <whatsthis>With this setting, you can change the filename that will be fetched from the server. With this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</whatsthis>
-      <default>false</default>
-    </entry>
-
-    <entry type="String" name="FreeBusyRetrieveUrl">
-      <label>Free/Busy Retrieval URL</label>
-    </entry>
-
-    <entry type="String" name="FreeBusyRetrieveUser">
-      <label>Free/Busy Retrieval Username</label>
-    </entry>
-
-    <entry type="Password" name="FreeBusyRetrievePassword">
-      <label>Free/Busy Retrieval Password</label>
-      <whatsthis>Password for retrieving free/busy information</whatsthis>
-    </entry>
-
-    <entry type="Bool" name="FreeBusyRetrieveSavePassword">
-      <default>false</default>
-    </entry>
-  </group>
-
 <!-- Plugins Page -->
   <group name="KOrganizer Plugins">
     <entry type="StringList" name="SelectedPlugins">
@@ -658,17 +569,6 @@
       <default>false</default>
     </entry>
 
-    <entry name="OutlookCompatCounterProposals" type="Bool">
-      <label>Send Outlook-like pseudo counter proposals</label>
-      <default>false</default>
-    </entry>
-
-    <entry type="Bool" name="FreeBusyCheckHostname">
-      <label>Check whether hostname and retrieval email address match</label>
-      <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com will fail.</whatsthis>
-      <default>false</default>
-    </entry>
-
     <entry key="ShowMenuBar" type="Bool">     
       <default>true</default>
        <!-- label and whatsthis are already provided by KStandardAction::showMenubar -->
@@ -679,18 +579,6 @@
 
 <!-- INTERNAL SETTINGS: Not for users to change -->
   <group name="Internal Settings">
-    <entry type="String" key="user_name" name="UserName">
-      <label>Full &amp;name</label>
-      <whatsthis>Enter your full name here. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
-      <default code="true">i18n(&quot;Anonymous&quot;)</default>
-    </entry>
-
-    <entry type="String" key="user_email" name="UserEmail">
-      <label>E&amp;mail address</label>
-      <whatsthis>Enter here your e-mail address. This e-mail address will be used to identify the owner of the calendar, and displayed in events and to-dos you create.</whatsthis>
-      <default code="true">i18n(&quot;nobody@nowhere&quot;)</default>
-    </entry>
-
     <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
       <default>31</default>
     </entry>

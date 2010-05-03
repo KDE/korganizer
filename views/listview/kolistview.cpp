@@ -25,6 +25,7 @@
 */
 
 #include "kolistview.h"
+#include <kcalprefs.h>
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -124,28 +125,28 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   mItem->setPixmap( 0, eventPxmp );
 
   mItem->setText( 3, IncidenceFormatter::dateToString(
-                    e->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+                    e->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 3, e->dtStart().toTimeSpec(
-                       KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                       KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
   if ( e->allDay() ) {
     mItem->setText( 4, "---" );
   } else {
     mItem->setText( 4, IncidenceFormatter::timeToString(
-                      e->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+                      e->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 4, e->dtStart().toTimeSpec(
-                         KOPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
+                         KCalPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
   }
   mItem->setText( 5, IncidenceFormatter::dateToString(
-                    e->dtEnd(), true, KOPrefs::instance()->timeSpec() ) );
+                    e->dtEnd(), true, KCalPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 5, e->dtEnd().toTimeSpec(
-                       KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                       KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
   if ( e->allDay() ) {
     mItem->setText( 6, "---" );
   } else {
     mItem->setText( 6, IncidenceFormatter::timeToString(
-                      e->dtEnd(), true, KOPrefs::instance()->timeSpec() ) );
+                      e->dtEnd(), true, KCalPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 6, e->dtEnd().toTimeSpec(
-                         KOPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
+                         KCalPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
   }
   mItem->setText( 7, e->categoriesStr() );
 
@@ -176,16 +177,16 @@ bool KOListView::ListItemVisitor::visit( Todo *t )
 
   if ( t->hasStartDate() ) {
     mItem->setText( 3, IncidenceFormatter::dateToString(
-                      t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+                      t->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 3, t->dtStart().toTimeSpec(
-                         KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                         KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
     if ( t->allDay() ) {
       mItem->setText( 4, "---" );
     } else {
       mItem->setText( 4, IncidenceFormatter::timeToString(
-                        t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+                        t->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
       mItem->setSortKey( 4, t->dtStart().toTimeSpec(
-                           KOPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
+                           KCalPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
     }
   } else {
     mItem->setText( 3, "---" );
@@ -194,14 +195,14 @@ bool KOListView::ListItemVisitor::visit( Todo *t )
 
   if ( t->hasDueDate() ) {
     mItem->setText( 5, IncidenceFormatter::dateToString(
-                      t->dtDue(), true, KOPrefs::instance()->timeSpec() ) );
+                      t->dtDue(), true, KCalPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 5, t->dtDue().toTimeSpec(
-                         KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                         KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
     if ( t->allDay() ) {
       mItem->setText( 6, "---" );
     } else {
       mItem->setText( 6, IncidenceFormatter::timeToString(
-                        t->dtDue(), true, KOPrefs::instance()->timeSpec() ) );
+                        t->dtDue(), true, KCalPrefs::instance()->timeSpec() ) );
       mItem->setSortKey( 6, t->dtDue().time().toString( Qt::ISODate ) );
     }
   } else {
@@ -223,7 +224,7 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
     mItem->setText( 0, t->summary() );
   }
   mItem->setText( 3, IncidenceFormatter::dateToString(
-                    t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+                    t->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 3, t->dtStart().toString( KDateTime::ISODate ) );
 
   return true;
@@ -418,10 +419,10 @@ void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
   QDate date;
   if ( Akonadi::hasTodo( aitem ) ) {
     date = Akonadi::todo( aitem )->dtDue().
-           toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+           toTimeSpec( KCalPrefs::instance()->timeSpec() ).date();
   } else {
     date = incidence->dtStart().
-           toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+           toTimeSpec( KCalPrefs::instance()->timeSpec() ).date();
   }
 
   switch( action ) {

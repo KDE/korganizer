@@ -22,6 +22,7 @@
 #include "kojournaleditor.h"
 #include "kotodoeditor.h"
 #include "koprefs.h"
+#include <kcalprefs.h>
 
 #include <akonadi/kcal/calendar.h>  //krazy:exclude=camelcase since kdepim/akonadi
 #include <akonadi/kcal/calendarmodel.h> //krazy:exclude=camelcase since kdepim/akonadi
@@ -43,32 +44,33 @@ class KOrganizerEditorConfig : public KOEditorConfig
 
     virtual KConfigSkeleton *config() const
     {
-      return KOPrefs::instance();
+      // TODO: should we have a way to return both KCalPrefs::instance() and KOPrefs::instance()? I guess so.
+      return KCalPrefs::instance();
     }
 
     virtual QString fullName() const
     {
-      return KOPrefs::instance()->fullName();
+      return KCalPrefs::instance()->fullName();
     }
 
     virtual QString email() const
     {
-      return KOPrefs::instance()->email();
+      return KCalPrefs::instance()->email();
     }
 
     virtual bool thatIsMe( const QString &email ) const
     {
-      return KOPrefs::instance()->thatIsMe(email);
+      return KCalPrefs::instance()->thatIsMe(email);
     }
 
     virtual QStringList allEmails() const
     {
-      return KOPrefs::instance()->allEmails();
+      return KCalPrefs::instance()->allEmails();
     }
 
     virtual QStringList fullEmails() const
     {
-      return KOPrefs::instance()->fullEmails();
+      return KCalPrefs::instance()->fullEmails();
     }
 
     virtual bool showTimeZoneSelectorInIncidenceEditor() const
@@ -180,8 +182,8 @@ class KOGroupwareUiDelegate : public QObject, public Akonadi::GroupwareUiDelegat
 
       mCalendar = new Akonadi::Calendar( calendarModel, calendarModel,
                                          KSystemTimeZones::local() );
-      mCalendar->setOwner( Person( KOPrefs::instance()->fullName(),
-                                   KOPrefs::instance()->email() ) );
+      mCalendar->setOwner( Person( KCalPrefs::instance()->fullName(),
+                                   KCalPrefs::instance()->email() ) );
     }
 
     void requestIncidenceEditor( const Akonadi::Item &item )

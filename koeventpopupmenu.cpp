@@ -24,6 +24,7 @@
 */
 
 #include "koeventpopupmenu.h"
+#include <kcalprefs.h>
 #include <kmimetypetrader.h>
 #include "actionmanager.h"
 #include "calprinter.h"
@@ -106,7 +107,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
   if ( incidence->recurs() ) {
-    KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
+    KDateTime thisDateTime( qd, KCalPrefs::instance()->timeSpec() );
     bool isLastOccurrence =
       !incidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
     bool isFirstOccurrence =

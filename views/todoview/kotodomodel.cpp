@@ -23,6 +23,7 @@
 */
 
 #include "kotodomodel.h"
+#include <kcalprefs.h>
 #include "koglobals.h"
 #include "koprefs.h"
 #include "kodialogmanager.h"
@@ -690,7 +691,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     if ( KOPrefs::instance()->enableToolTips() ) {
       return QVariant( IncidenceFormatter::toolTipStr(
                          Akonadi::displayName( node->mTodo.parentCollection() ),
-                         todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
+                         todo.get(), QDate(), true, KCalPrefs::instance()->timeSpec() ) );
   } else {
       return QVariant();
     }

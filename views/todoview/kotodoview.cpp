@@ -26,6 +26,7 @@
 */
 
 #include "kotodoview.h"
+#include <kcalprefs.h>
 #include "calprinter.h"
 #include "categoryconfig.h"
 #include "kocorehelper.h"
@@ -420,8 +421,8 @@ void KOTodoView::addTodo( const QString &summary,
 
   Todo::Ptr todo( new Todo );
   todo->setSummary( summary.trimmed() );
-  todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                              KOPrefs::instance()->email() ) );
+  todo->setOrganizer( Person( KCalPrefs::instance()->fullName(),
+                              KCalPrefs::instance()->email() ) );
 
   todo->setCategories( categories );
 

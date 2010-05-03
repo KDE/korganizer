@@ -28,6 +28,7 @@
 */
 
 #include "actionmanager.h"
+#include <kcalprefs.h>
 #include <kmimetypetrader.h>
 #include "calendaradaptor.h"
 #include "calendarview.h"
@@ -281,8 +282,8 @@ void ActionManager::createCalendarAkonadi()
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  mCalendar->setOwner( Person( KOPrefs::instance()->fullName(),
-                               KOPrefs::instance()->email() ) );
+  mCalendar->setOwner( Person( KCalPrefs::instance()->fullName(),
+                               KCalPrefs::instance()->email() ) );
 
 }
 
@@ -1230,8 +1231,8 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
     }
   }
 
-  settings->setEMail( KOPrefs::instance()->email() );
-  settings->setName( KOPrefs::instance()->fullName() );
+  settings->setEMail( KCalPrefs::instance()->email() );
+  settings->setName( KCalPrefs::instance()->fullName() );
 
   settings->setCreditName( "KOrganizer" );
   settings->setCreditURL( "http://korganizer.kde.org" );

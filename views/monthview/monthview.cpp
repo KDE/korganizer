@@ -24,6 +24,7 @@
 */
 
 #include "monthview.h"
+#include <kcalprefs.h>
 #include "monthscene.h"
 #include "monthitem.h"
 #include "monthgraphicsitems.h"
@@ -353,7 +354,7 @@ void MonthView::reloadIncidences()
   }
 
   // build global event list
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
   const Item::List incidences = Akonadi::itemsFromModel( calendarSearch()->model() );
 
   foreach ( const Item &aitem, incidences ) {
@@ -449,7 +450,7 @@ void MonthView::calendarReset()
 
 void MonthView::incidencesAdded( const Item::List &incidences )
 {
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
   Q_FOREACH ( const Item &i, incidences ) {
     kDebug() << "item added: " << Akonadi::incidence( i )->summary();
   }

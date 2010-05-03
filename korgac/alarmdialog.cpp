@@ -27,9 +27,9 @@
 #include "alarmdialog.h"
 #include "kocore.h"
 #include "koeventviewer.h"
-#include "koprefs.h"
 #include "korganizer_interface.h"
 
+#include <kcalprefs.h>
 #include <KCal/Event>
 #include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
@@ -653,7 +653,7 @@ void AlarmDialog::eventNotification()
         connect( player, SIGNAL(finished()), player, SLOT(deleteLater()) );
         player->play();
       } else if ( alarm->type() == Alarm::Email ) {
-        QString from = KOPrefs::instance()->email();
+        QString from = KCalPrefs::instance()->email();
         Identity id = KOCore::self()->identityManager()->identityForAddress( from );
         QString to;
         if ( alarm->mailAddresses().isEmpty() ) {

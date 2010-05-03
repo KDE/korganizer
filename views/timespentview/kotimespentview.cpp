@@ -25,6 +25,7 @@
 #include "kotimespentview.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include <kcalprefs.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
@@ -260,7 +261,7 @@ void KOTimeSpentView::updateView()
   text+="</h2>\n";
   */
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
   mView->mEventList = calendar()->events( mStartDate, mEndDate, timeSpec );
   mView->repaint();
 }

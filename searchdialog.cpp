@@ -27,7 +27,7 @@
 #include "searchdialog.h"
 #include "koglobals.h"
 #include "calendarview.h"
-#include "koprefs.h"
+#include <kcalprefs.h>
 #include "views/listview/kolistview.h"
 #include <libkdepim/kdateedit.h>
 
@@ -131,21 +131,21 @@ void SearchDialog::updateView()
   }
   listView->showIncidences( mMatchedEvents, QDate() );
 }
-  
+
 void SearchDialog::search( const QRegExp &re )
 {
   QDate startDt = mStartDate->date();
   QDate endDt = mEndDate->date();
 
   Item::List events;
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
   if ( mEventsCheck->isChecked() ) {
     events = m_calendarview->calendar()->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
   }
   Item::List todos;
   if ( mTodosCheck->isChecked() ) {
     if ( mIncludeUndatedTodos->isChecked() ) {
-      KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
+      KDateTime::Spec spec = KCalPrefs::instance()->timeSpec();
       Item::List alltodos = m_calendarview->calendar()->todos();
       Q_FOREACH ( const Item &item, alltodos ) {
         const Todo::ConstPtr todo = Akonadi::todo( item );
