@@ -622,6 +622,11 @@ void CalendarView::updateConfig( const QByteArray &receiver )
     return;
   }
 
+  if ( mCalPrinter ) {
+    mCalPrinter->deleteLater();
+    mCalPrinter = 0;
+  }
+
   KOGlobals::self()->setHolidays( new HolidayRegion( KOPrefs::instance()->mHolidays ) );
 
   // Only set a new time zone if it changed. This prevents the window
