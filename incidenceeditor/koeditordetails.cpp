@@ -26,11 +26,10 @@
 #include "koeditordetails.h"
 #include "koeditorconfig.h"
 
-#include <libkdepim/kvcarddrag.h>
-
 #include <Akonadi/Contact/ContactGroupExpandJob>
 #include <Akonadi/Contact/ContactGroupSearchJob>
 
+#include <KABC/VCardDrag>
 #include <KCal/Incidence>
 
 #include <KPIMUtils/Email>
@@ -98,7 +97,7 @@ void KOAttendeeListView::contentsDragEnterEvent( QDragEnterEvent *e )
 void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 {
   const QMimeData *md = e->mimeData();
-  if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
+  if ( KABC::VCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -110,7 +109,7 @@ void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 {
   const QMimeData *md = e->mimeData();
-  if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
+  if ( KABC::VCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -141,9 +140,9 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 {
   const QMimeData *md = e->mimeData();
 
-  if ( KPIM::KVCardDrag::canDecode( md ) ) {
+  if ( KABC::VCardDrag::canDecode( md ) ) {
     KABC::Addressee::List list;
-    KPIM::KVCardDrag::fromMimeData( md, list );
+    KABC::VCardDrag::fromMimeData( md, list );
 
     KABC::Addressee::List::ConstIterator it;
     for ( it = list.constBegin(); it != list.constEnd(); ++it ) {

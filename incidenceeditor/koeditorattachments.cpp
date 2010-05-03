@@ -26,8 +26,7 @@
 
 #include "koeditorattachments.h"
 
-#include <libkdepim/kvcarddrag.h>
-
+#include <KABC/VCardDrag>
 #include <KCal/Attachment>
 #include <KCal/Incidence>
 #include <KMime/Message>
@@ -527,9 +526,9 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
   bool weCanCopy = true;
   QStringList labels;
 
-  if ( KPIM::KVCardDrag::canDecode( mimeData ) ) {
+  if ( KABC::VCardDrag::canDecode( mimeData ) ) {
     KABC::Addressee::List addressees;
-    KPIM::KVCardDrag::fromMimeData( mimeData, addressees );
+    KABC::VCardDrag::fromMimeData( mimeData, addressees );
     for ( KABC::Addressee::List::ConstIterator it = addressees.constBegin();
           it != addressees.constEnd(); ++it ) {
       urls.append( QLatin1String( "uid:" ) + ( *it ).uid() );

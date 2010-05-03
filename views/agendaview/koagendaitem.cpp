@@ -29,8 +29,7 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <libkdepim/kvcarddrag.h>
-
+#include <KABC/VCardDrag>
 #include <KCal/Event>
 #include <KCal/ICalDrag>
 #include <KCal/Incidence>
@@ -621,7 +620,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
     e->ignore();
     return;
   }
-  if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
+  if ( KABC::VCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -671,7 +670,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 
   KABC::Addressee::List list;
 
-  if ( KPIM::KVCardDrag::fromMimeData( md, list ) ) {
+  if ( KABC::VCardDrag::fromMimeData( md, list ) ) {
     KABC::Addressee::List::Iterator it;
     for ( it = list.begin(); it != list.end(); ++it ) {
       QString em( (*it).fullEmail() );
@@ -737,8 +736,9 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int y,
 void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 {
   const Event::Ptr event = Akonadi::event( mIncidence );
-  if ( !event )
+  if ( !event ) {
     return;
+  }
 
   QPixmap tPxmp;
   if ( event->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
@@ -763,8 +763,9 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !Akonadi::hasTodo( mIncidence ) )
+  if ( !Akonadi::hasTodo( mIncidence ) ) {
     return;
+  }
 
   const bool isCompleted = KOEventView::usesCompletedTodoPixmap( mIncidence, mDate );
 
@@ -835,7 +836,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
 
   QColor bgColor;
 
-  if ( Akonadi::hasTodo( mIncidence) && !KOPrefs::instance()->todosUseCategoryColors() ) {
+  if ( Akonadi::hasTodo( mIncidence ) && !KOPrefs::instance()->todosUseCategoryColors() ) {
     if ( Akonadi::todo( mIncidence )->isOverdue() ) {
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
     } else if ( Akonadi::todo( mIncidence )->dtDue().date() ==
@@ -907,7 +908,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   }
 
   if ( mSelected ) {
-    bgColor = bgColor.light( KOGlobals::BRIGHTNESS_FACTOR );
+    bgColor = bgColor.light( KOEventView::BRIGHTNESS_FACTOR );
   }
 
   QColor textColor = KOHelper::getTextColor( bgColor );
@@ -1359,7 +1360,9 @@ bool KOAgendaItem::event( QEvent *event )
       QToolTip::showText(
         helpEvent->globalPos(),
         IncidenceFormatter::toolTipStr(
-        Akonadi::displayName( mIncidence.parentCollection() ), Akonadi::incidence( mIncidence ).get(), mDate, true, KOPrefs::instance()->timeSpec() ),
+          Akonadi::displayName( mIncidence.parentCollection() ),
+          Akonadi::incidence( mIncidence ).get(),
+          mDate, true, KOPrefs::instance()->timeSpec() ),
         this );
     }
   }
