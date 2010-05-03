@@ -36,9 +36,10 @@ add_subdirectory( tests )
 
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
+                    ${CMAKE_CURRENT_BINARY_DIR}
                     ${CMAKE_SOURCE_DIR}/akonadi/kcal
                     ${CMAKE_BINARY_DIR}/akonadi/kcal
-		    ${CMAKE_SOURCE_DIR}/akonadi/
+                    ${CMAKE_SOURCE_DIR}/akonadi/
                     ${CMAKE_SOURCE_DIR}/korganizer/printing
                     ${CMAKE_SOURCE_DIR}/kdgantt1
                     ${CMAKE_BINARY_DIR}/libkdepim
