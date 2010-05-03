@@ -1772,7 +1772,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
 
 void CalendarView::uploadFreeBusy()
 {
-  Akonadi::Groupware::instance()->freeBusyManager()->publishFreeBusy();
+  Akonadi::Groupware::instance()->freeBusyManager()->publishFreeBusy( this );
 }
 
 void CalendarView::schedule( iTIPMethod method, const Item &item )
