@@ -160,7 +160,7 @@ void KCMDesignerFields::delayedInit()
 
   connect( mPageView, SIGNAL(itemSelectionChanged()),
            this, SLOT(updatePreview()) );
-  connect( mPageView, SIGNAL(itemClicked(QTreeWidgetItem*)),
+  connect( mPageView, SIGNAL(itemClicked(QTreeWidgetItem*, int)),
            this, SLOT(itemClicked(QTreeWidgetItem*)) );
 
   connect( mDeleteButton, SIGNAL( clicked() ),
@@ -308,7 +308,6 @@ void KCMDesignerFields::initGUI()
   mPageView->setAllColumnsShowFocus( true );
   mPageView->header()->setResizeMode( QHeaderView::Stretch );
   hbox->addWidget( mPageView );
-  QTimer::singleShot( 0, mPageView, SLOT(triggerUpdate()) );
 
   QGroupBox *box = new QGroupBox( i18n("Preview of Selected Page"), this );
   QVBoxLayout *boxLayout = new QVBoxLayout( box );
