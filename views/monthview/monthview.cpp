@@ -135,6 +135,8 @@ void MonthView::updateConfig() {
 
   types |= CalendarSearch::Events;
   calendarSearch()->setIncidenceTypes( types );
+
+  mScene->update();
 }
 
 MonthView::~MonthView()
