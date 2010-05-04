@@ -32,7 +32,9 @@ endif(KORG_NODECOS)
 # enable exception handling
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
 
+if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( tests )
+endif (QT_QT3SUPPORT_FOUND)
 
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
@@ -52,6 +54,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
 
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
+if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( korgac )
 add_subdirectory( pixmaps )
 add_subdirectory( sounds )
@@ -59,6 +62,7 @@ add_subdirectory( plugins )
 add_subdirectory( interfaces )
 add_subdirectory( kcmconfigs )
 add_subdirectory( incidenceeditor )
+endif (QT_QT3SUPPORT_FOUND)
 
 set( PERL ${PERL_EXECUTABLE} )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
@@ -66,6 +70,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINAR
 
 ########### next target ###############
 
+if (QT_QT3SUPPORT_FOUND)
 set(korganizer_SRCS
   main.cpp
   korganizer.cpp
@@ -125,7 +130,7 @@ kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} korganizer_interfaces akonadi-kcal_next korganizer_core korganizerprivate)
 
 install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
-
+endif (QT_QT3SUPPORT_FOUND)
 
 ########### next target ###############
 
@@ -145,6 +150,7 @@ install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### next target ###############
 
+if (QT_QT3SUPPORT_FOUND)
 set(korganizer_core_LIB_SRCS
     koprefs.cpp
     kocore.cpp
@@ -295,3 +301,4 @@ install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
 install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
+endif (QT_QT3SUPPORT_FOUND)
