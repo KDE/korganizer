@@ -415,8 +415,11 @@ bool KOPrefs::thatIsMe( const QString& _email )
 
   for ( KPIM::IdentityManager::ConstIterator it = KOCore::self()->identityManager()->begin();
         it != KOCore::self()->identityManager()->end(); ++it ) {
-    if ( email == (*it).emailAddr() )
+    if ( email == (*it).primaryEmailAddress() )
       return true;
+    const QStringList & aliases = (*it).emailAliases();
+    if ( aliases.find( email ) != aliases.end() )
+        return true;
   }
 
   if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
