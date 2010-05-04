@@ -55,10 +55,10 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
 add_subdirectory( interfaces )
-if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( korgac )
 add_subdirectory( pixmaps )
 add_subdirectory( sounds )
+if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( plugins )
 add_subdirectory( kcmconfigs )
 add_subdirectory( incidenceeditor )
@@ -284,7 +284,7 @@ target_link_libraries(korganizerprivate
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
 install(TARGETS korganizerprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
-
+endif (QT_QT3SUPPORT_FOUND)
 
 ########### install files ###############
 
@@ -301,4 +301,3 @@ install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
 install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
-endif (QT_QT3SUPPORT_FOUND)

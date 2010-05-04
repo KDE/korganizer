@@ -37,10 +37,10 @@ target_link_libraries(korgac
 	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
 	${KDEPIMLIBS_MAILTRANSPORT_LIBRARY}
 	akonadi-kcal_next
-       	korganizerprivate 
 	korganizer_eventviewer
 	korganizer_core
   kdepim
+  kdepimdbusinterfaces
 	)
 
 install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
