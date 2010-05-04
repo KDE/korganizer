@@ -54,12 +54,12 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
 
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
+add_subdirectory( interfaces )
 if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( korgac )
 add_subdirectory( pixmaps )
 add_subdirectory( sounds )
 add_subdirectory( plugins )
-add_subdirectory( interfaces )
 add_subdirectory( kcmconfigs )
 add_subdirectory( incidenceeditor )
 endif (QT_QT3SUPPORT_FOUND)
@@ -150,7 +150,6 @@ install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### next target ###############
 
-if (QT_QT3SUPPORT_FOUND)
 set(korganizer_core_LIB_SRCS
     koprefs.cpp
     kocore.cpp
@@ -171,7 +170,7 @@ kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
 
-target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim akonadi-kcal_next korganizer_eventviewer korganizer_interfaces)
+target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim akonadi-kcal_next korganizer_eventviewer korganizer_interfaces)
 
 set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
@@ -180,6 +179,7 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### next target ###############
 
+if (QT_QT3SUPPORT_FOUND)
 set(korganizerprivate_LIB_SRCS
   ${libkdgantt1_SRCS}
   collectiongeneralpage.cpp
