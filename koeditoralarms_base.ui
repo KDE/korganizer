@@ -387,7 +387,7 @@
                                     <cstring>mSoundFile</cstring>
                                 </property>
                                 <property name="filter">
-					<string>audio/x-wav audio/x-mp3 application/ogg</string>
+                                    <string>audio/x-wav audio/x-mp3 application/ogg</string>
                                 </property>
                             </widget>
                             <spacer>
@@ -549,7 +549,7 @@
                         <cstring>mAddButton</cstring>
                     </property>
                     <property name="text">
-                        <string>&amp;Add</string>
+                        <string></string>
                     </property>
                 </widget>
                 <widget class="QPushButton" row="1" column="1">

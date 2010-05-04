@@ -593,7 +593,8 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
   mExceptionDateEdit->setDate( QDate::currentDate() );
   boxLayout->addWidget( mExceptionDateEdit, 0, 0 );
 
-  QPushButton *addExceptionButton = new QPushButton( i18n("&Add"), box );
+  QPushButton *addExceptionButton = new QPushButton(
+      i18n( "Add a new recurrence to the recurrence list", "&Add" ), box );
   QWhatsThis::add( addExceptionButton,
        i18n("Add this date as an exception "
       "to the recurrence rules for this event or to-do.") );

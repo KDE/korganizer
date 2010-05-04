@@ -198,6 +198,11 @@ KOEditorAlarms::KOEditorAlarms( const QCString &type,
     mType = "Event";
   }
   setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
+
+  // The text is set here, and not in the UI file, because the i18n context is not
+  // properly extracted from the UI file.
+  mWidget->mAddButton->setText( i18n( "Add a new alarm to the alarm list.", "&Add" ) );
+
   mWidget->mAlarmList->setResizeMode( QListView::LastColumn );
   mWidget->mAlarmList->setColumnWidthMode( 0, QListView::Maximum );
   mWidget->mAlarmList->setColumnWidthMode( 1, QListView::Maximum );
