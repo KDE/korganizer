@@ -252,7 +252,7 @@ void ActionManager::initActions()
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("Import &Calendar/Event (ICS-/VCS-File)..."), 0, this, SLOT( file_merge() ),
+  new KAction( i18n("Import &Event/Calendar (ICS-/VCS-File)..."), 0, this, SLOT( file_merge() ),
                mACollection, "import_icalendar" );
   new KAction( i18n("&Import From UNIX Ical tool (.calendar-File)"), 0, this, SLOT( file_icalimport() ),
                mACollection, "import_ical" );
