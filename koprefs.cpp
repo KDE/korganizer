@@ -37,7 +37,6 @@
 #include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>
-#include <k3staticdeleter.h>
 #include <kstringhandler.h>
 #include <ksystemtimezone.h>
 
@@ -53,8 +52,14 @@
 
 using namespace KPIMIdentities;
 
-KOPrefs *KOPrefs::mInstance = 0;
-static K3StaticDeleter<KOPrefs> insd;
+class KOPrefsPrivate {
+  public:
+    KOPrefsPrivate() : prefs( new KOPrefs ) {}
+    ~KOPrefsPrivate() { delete prefs; }
+    KOPrefs* prefs;
+};
+
+K_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
 
 KOPrefs::KOPrefs() : KOPrefsBase()
 {
@@ -87,13 +92,11 @@ KOPrefs::~KOPrefs()
 
 KOPrefs *KOPrefs::instance()
 {
-  if ( !mInstance ) {
-    insd.setObject( mInstance, new KOPrefs() );
-
-    mInstance->readConfig();
+  if ( !sInstance.exists() ) {
+    sInstance->prefs->readConfig();
   }
 
-  return mInstance;
+  return sInstance->prefs;
 }
 
 void KOPrefs::usrSetDefaults()

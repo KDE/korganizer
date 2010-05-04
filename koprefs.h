@@ -57,8 +57,7 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     /** Constructor disabled for public. Use instance() to create a KOPrefs
     object. */
     KOPrefs();
-
-    static KOPrefs *mInstance;
+    friend class KOPrefsPrivate;
 
   public:
     void setCategoryColor( const QString &cat, const QColor &color );
