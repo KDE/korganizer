@@ -874,8 +874,7 @@ void ActionManager::file_open()
 {
   KUrl url;
   const QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
-  url = KFileDialog::getOpenUrl( defaultPath, i18n( "text/calendar" ),
-                                 dialogParent() );
+  url = KFileDialog::getOpenUrl( defaultPath, "text/calendar", dialogParent() );
 
   file_open( url );
 }
@@ -960,7 +959,7 @@ void ActionManager::file_icalimport()
 void ActionManager::file_merge()
 {
   const KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
-                                      i18n( "text/calendar" ),
+                                      "text/calendar",
                                       dialogParent() );
   if ( !url.isEmpty() ) { // isEmpty if user canceled the dialog
     importCalendar( url );
