@@ -4,6 +4,9 @@
   Copyright (c) 2001,2002,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
+  Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Author: Sergio Martins <sergio@kdab.com>
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -27,6 +30,7 @@
 #include "koglobals.h"
 #include "navigatorbar.h"
 #include "kdatenavigator.h"
+#include "kodaymatrix.h"
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -85,12 +89,15 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(goPrevious()), SIGNAL(goPrevious()) );
   connect( v, SIGNAL(goNext()), SIGNAL(goNext()) );
 
-  connect( v, SIGNAL(goNextMonth()), SLOT(selectNextMonth()) );
-  connect( v, SIGNAL(goPrevMonth()), SLOT(selectPreviousMonth()) );
-  connect( v, SIGNAL(goNextYear()), SIGNAL(goNextYear()) );
-  connect( v, SIGNAL(goPrevYear()), SIGNAL(goPrevYear()) );
-  connect( v, SIGNAL(goMonth(int)), SIGNAL(goMonth(int)) );
-  connect( v, SIGNAL(goYear(int)), SIGNAL(goYear(int)) );
+  connect( v, SIGNAL(nextYearClicked()), SIGNAL(nextYearClicked()) );
+  connect( v, SIGNAL(prevYearClicked()), SIGNAL(prevYearClicked()) );
+
+  connect( v, SIGNAL(prevMonthClicked()), this, SLOT(goPrevMonth()) );
+  connect( v, SIGNAL(nextMonthClicked()), this, SLOT(goNextMonth()) );
+
+  connect( v, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int) ) );
+  connect( v, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)) );
+
 }
 
 void DateNavigatorContainer::setCalendar( Akonadi::Calendar *cal )
@@ -157,35 +164,7 @@ void DateNavigatorContainer::updateConfig()
   }
 }
 
-void DateNavigatorContainer::selectNextMonth()
-{
-  mNavigatorView->selectNextMonth();
-  foreach ( KDateNavigator *n, mExtraViews ) {
-    if ( n ) {
-      n->selectNextMonth();
-    }
-  }
-
-  mIgnoreNavigatorUpdates = true;
-  emit goNextMonth();
-  mIgnoreNavigatorUpdates = false;
-}
-
-void DateNavigatorContainer::selectPreviousMonth()
-{
-  mNavigatorView->selectPreviousMonth();
-  foreach ( KDateNavigator *n, mExtraViews ) {
-    if ( n ) {
-      n->selectPreviousMonth();
-    }
-  }
-
-  mIgnoreNavigatorUpdates = true;
-  emit goPrevMonth();
-  mIgnoreNavigatorUpdates = false;
-}
-
-void DateNavigatorContainer::selectDates( const DateList &dateList )
+void DateNavigatorContainer::selectDates( const DateList &dateList, const QDate &preferredMonth )
 {
   if ( !dateList.isEmpty() ) {
     QDate start( dateList.first() );
@@ -200,11 +179,24 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
       navlast = mNavigatorView->endDate();
       navsecond = navfirst;
     }
-    if ( start < navfirst || // <- start should always be visible
+
+    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
+    // If the datelist crosses months we won't know which month to show
+    // so we read what's in preferredMonth
+    const bool changingMonth = ( preferredMonth.isValid()  &&
+                                 calSys->month( mNavigatorView->month() ) != calSys->month( preferredMonth ) );
+
+    if ( start < navfirst  // <- start should always be visible
          // end is not visible and we have a spare month at the beginning:
-         ( end > navlast && start >= navsecond ) ) {
-      // Change the shown months so that the beginning of the date list is visible
-      setBaseDates( start );
+         || ( end > navlast && start >= navsecond )
+         || changingMonth ) {
+
+      if ( preferredMonth.isValid() ) {
+        setBaseDates( preferredMonth );
+      } else {
+        setBaseDates( start );
+      }
     }
 
     if ( !mIgnoreNavigatorUpdates ) {
@@ -315,6 +307,7 @@ void DateNavigatorContainer::resizeAllContents()
     view->setGeometry( ( ( ( KOGlobals::self()->reverseLayout() ) ?
                            ( horizontalCount - 1 - x ) : x ) * width ) + margin,
                        ( y * height ) + margin, width, height );
+
   }
 }
 
@@ -342,6 +335,43 @@ void DateNavigatorContainer::setHighlightMode( bool highlightEvents,
     }
   }
 
+}
+
+void DateNavigatorContainer::goNextMonth()
+{
+  const QPair<QDate,QDate> p = dateLimits( 1 );
+
+  emit nextMonthClicked( mNavigatorView->month(),
+                         p.first,
+                         p.second);
+}
+
+void DateNavigatorContainer::goPrevMonth()
+{
+  const QPair<QDate,QDate> p = dateLimits( -1 );
+
+  emit prevMonthClicked( mNavigatorView->month(),
+                         p.first,
+                         p.second );
+}
+
+QPair<QDate,QDate> DateNavigatorContainer::dateLimits( int offset )
+{
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  QDate firstMonth, lastMonth;
+  if ( mExtraViews.isEmpty() ) {
+    lastMonth = mNavigatorView->month();
+  } else {
+    lastMonth = mExtraViews.last()->month();
+  }
+
+  firstMonth = calSys->addMonths( mNavigatorView->month(), offset );
+  lastMonth = calSys->addMonths( lastMonth, offset );
+
+  QPair<QDate,QDate> firstMonthBoundary = KODayMatrix::matrixLimits( firstMonth );
+  QPair<QDate,QDate> lastMonthBoundary = KODayMatrix::matrixLimits( lastMonth );
+
+  return qMakePair( firstMonthBoundary.first, lastMonthBoundary.second );
 }
 
 #include "datenavigatorcontainer.moc"

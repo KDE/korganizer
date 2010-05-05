@@ -4,6 +4,9 @@
   Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
+  Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Author: Sergio Martins <sergio@kdab.com>
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -50,23 +53,27 @@ class DateNavigator : public QObject
     void selectDate( const QDate & );
 
     void selectDates( int count );
-    void selectDates( const QDate &, int count );
+    void selectDates( const QDate &, int count, const QDate &preferredMonth = QDate() );
 
     void selectWeek();
-    void selectWeek( const QDate & );
+    void selectWeek( const QDate &, const QDate &preferredMonth = QDate() );
 
     void selectWorkWeek();
     void selectWorkWeek( const QDate & );
 
-    void selectWeekByDay( int weekDay, const QDate & );
+    void selectWeekByDay( int weekDay, const QDate &, const QDate &preferredMonth = QDate() );
 
     void selectToday();
 
     void selectPreviousYear();
-    void selectPreviousMonth();
+    void selectPreviousMonth( const QDate &currentMonth = QDate(),
+                              const QDate &selectionLowerLimit = QDate(),
+                              const QDate &selectionUpperLimit = QDate() );
     void selectPreviousWeek();
     void selectNextWeek();
-    void selectNextMonth();
+    void selectNextMonth( const QDate &currentMonth = QDate(),
+                          const QDate &selectionLowerLimit = QDate(),
+                          const QDate &selectionUpperLimit = QDate() );
     void selectNextYear();
 
     void selectPrevious();
@@ -76,12 +83,26 @@ class DateNavigator : public QObject
     void selectYear( int year );
 
   signals:
-    void datesSelected( const KCal::DateList & );
+    /* preferredMonth is useful when the datelist crosses months,
+       if valid, any month-like component should honour it
+    */
+    void datesSelected( const KCal::DateList &, const QDate &preferredMonth );
 
   protected:
-    void emitSelected();
+    void emitSelected( const QDate &preferredMonth = QDate() );
 
   private:
+
+    /*
+      Selects next month if offset equals 1, or previous month
+      if offset equals -1.
+      Bigger offsets are accepted.
+    */
+    void shiftMonth( const QDate &date,
+                     const QDate &selectionLowerLimit,
+                     const QDate &selectionUpperLimit,
+                     int offset );
+
     KCal::DateList mSelectedDates;
 };
 

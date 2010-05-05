@@ -75,6 +75,14 @@ class KDateNavigator: public QFrame
                            bool highlightTodos,
                            bool highlightJournals ) const;
     void setUpdateNeeded();
+
+    /**
+       Returns the current displayed month.
+       It's a QDate instead of uint so it can be easily feed to KCalendarSystem's
+       functions.
+    */
+    QDate month() const;
+
   public slots:
     void selectDates( const KCal::DateList & );
     void selectPreviousMonth();
@@ -91,18 +99,17 @@ class KDateNavigator: public QFrame
     void newEventSignal( const QDate & );
     void newTodoSignal( const QDate & );
     void newJournalSignal( const QDate & );
-    void weekClicked( const QDate &);
+    void weekClicked( const QDate & );
 
     void goPrevious();
     void goNext();
+    void nextMonthClicked();
+    void prevMonthClicked();
+    void nextYearClicked();
+    void prevYearClicked();
 
-    void goNextMonth();
-    void goPrevMonth();
-    void goNextYear();
-    void goPrevYear();
-
-    void goMonth( int month );
-    void goYear( int year );
+    void monthSelected( int month );
+    void yearSelected( int year );
 
   protected:
     void updateDates();

@@ -55,17 +55,17 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   mNavigatorBar = new NavigatorBar( this );
   topLayout->addWidget( mNavigatorBar, 0, 0, 1, 8 );
 
-  connect( mNavigatorBar, SIGNAL(goPrevYear()), SIGNAL(goPrevYear()) );
-  connect( mNavigatorBar, SIGNAL(goPrevMonth()), SIGNAL(goPrevMonth()) );
-  connect( mNavigatorBar, SIGNAL(goNextMonth()), SIGNAL(goNextMonth()) );
-  connect( mNavigatorBar, SIGNAL(goNextYear()), SIGNAL(goNextYear()) );
-  connect( mNavigatorBar, SIGNAL(goMonth(int)), SIGNAL(goMonth(int)) );
-  connect( mNavigatorBar, SIGNAL(goYear(int)), SIGNAL(goYear(int)) );
+  connect( mNavigatorBar, SIGNAL(prevYearClicked()), SIGNAL(prevYearClicked()) );
+  connect( mNavigatorBar, SIGNAL(prevMonthClicked()), SIGNAL(prevMonthClicked()) );
+  connect( mNavigatorBar, SIGNAL(nextMonthClicked()), SIGNAL(nextMonthClicked()) );
+  connect( mNavigatorBar, SIGNAL(nextYearClicked()), SIGNAL(nextYearClicked()) );
+  connect( mNavigatorBar, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int)) );
+  connect( mNavigatorBar, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)));
 
   QString generalFont = KGlobalSettings::generalFont().family();
 
   // Set up the heading fields.
-  for ( int i=0; i < 7; i++ ) {
+  for ( int i = 0; i < 7; i++ ) {
     mHeadings[i] = new QLabel( this );
     mHeadings[i]->setFont( QFont( generalFont, 10, QFont::Bold ) );
     mHeadings[i]->setAlignment( Qt::AlignCenter );
@@ -74,7 +74,7 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   }
 
   // Create the weeknumber labels
-  for ( int i=0; i < 6; i++ ) {
+  for ( int i = 0; i < 6; i++ ) {
     mWeeknos[i] = new QLabel( this );
     mWeeknos[i]->setAlignment( Qt::AlignCenter );
     mWeeknos[i]->setFont( QFont( generalFont, 10 ) );
@@ -224,6 +224,20 @@ void KDateNavigator::updateDayMatrix()
 void KDateNavigator::setUpdateNeeded()
 {
   mDayMatrix->setUpdateNeeded();
+}
+
+QDate KDateNavigator::month() const
+{
+  QDate firstCell = startDate();
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
+  if ( calSys->day( firstCell ) == 1 ) {
+    return firstCell;
+  } else {
+    calSys->setYMD( firstCell, calSys->year( firstCell ),
+                    calSys->month( firstCell ), 1 );
+    return calSys->addMonths( firstCell, 1 );
+  }
 }
 
 void KDateNavigator::updateView()

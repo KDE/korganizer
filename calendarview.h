@@ -602,8 +602,11 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void selectWeek( const QDate & );
 
   protected slots:
-    /** Select a view or adapt the current view to display the specified dates. */
-    void showDates( const KCal::DateList & );
+    /** Select a view or adapt the current view to display the specified dates.
+        preferredMonth is useful when the datelist crosses months, if valid,
+        any month-like component should honour this
+    */
+    void showDates( const KCal::DateList &, const QDate &preferredMonth = QDate() );
 
   public:
     int msgCalModified();

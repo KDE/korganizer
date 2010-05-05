@@ -3,6 +3,9 @@
   Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
+  Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Author: Sergio Martins <sergio@kdab.com>
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -79,7 +82,8 @@ void DateNavigator::selectDates( int count )
   selectDates( mSelectedDates.first(), count );
 }
 
-void DateNavigator::selectDates( const QDate &d, int count )
+void DateNavigator::selectDates( const QDate &d, int count,
+                                 const QDate &preferredMonth )
 {
   DateList dates;
 
@@ -89,17 +93,17 @@ void DateNavigator::selectDates( const QDate &d, int count )
   }
 
   mSelectedDates = dates;
-  emitSelected();
+  emitSelected( preferredMonth );
 }
 
-void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
+void DateNavigator::selectWeekByDay( int weekDay, const QDate &d, const QDate &preferredMonth )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
   if ( weekStart && dateCount == 7 ) {
-    selectWeek( d );
+    selectWeek( d, preferredMonth );
   } else {
-    selectDates( d, dateCount );
+    selectDates( d, dateCount, preferredMonth );
   }
 }
 
@@ -108,7 +112,7 @@ void DateNavigator::selectWeek()
   selectWeek( mSelectedDates.first() );
 }
 
-void DateNavigator::selectWeek( const QDate &d )
+void DateNavigator::selectWeek( const QDate &d, const QDate &preferredMonth )
 {
   int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
 
@@ -120,7 +124,7 @@ void DateNavigator::selectWeek( const QDate &d )
     firstDate = firstDate.addDays( -7 );
   }
 
-  selectDates( firstDate, 7 );
+  selectDates( firstDate, 7, preferredMonth );
 }
 
 void DateNavigator::selectWorkWeek()
@@ -174,13 +178,14 @@ void DateNavigator::selectPreviousYear()
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::selectPreviousMonth()
+void DateNavigator::selectPreviousMonth( const QDate &currentMonth,
+                                         const QDate &selectionLowerLimit,
+                                         const QDate &selectionUpperLimit )
 {
-  QDate firstSelected = mSelectedDates.first();
-  int weekDay = firstSelected.dayOfWeek();
-  firstSelected = KOGlobals::self()->calendarSystem()->addMonths( firstSelected, -1 );
-
-  selectWeekByDay( weekDay, firstSelected );
+  shiftMonth( currentMonth,
+              selectionLowerLimit,
+              selectionUpperLimit,
+              -1 );
 }
 
 void DateNavigator::selectPreviousWeek()
@@ -202,14 +207,46 @@ void DateNavigator::selectNextWeek()
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::selectNextMonth()
+void DateNavigator::shiftMonth( const QDate &currentMonth,
+                                const QDate &selectionLowerLimit,
+                                const QDate &selectionUpperLimit,
+                                int offset )
 {
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
+  firstSelected = calSys->addMonths( firstSelected, offset );
 
-  firstSelected = KOGlobals::self()->calendarSystem()->addMonths( firstSelected, 1 );
+  /* Don't trust firstSelected to calculate the nextMonth. firstSelected
+     can belong to a month other than currentMonth because KDateNavigator
+     displays 7*6 days. firstSelected should only be used for selection
+     purposes */
+  const QDate nextMonth = currentMonth.isValid() ?
+                          calSys->addMonths( currentMonth, offset ) : firstSelected;
 
-  selectWeekByDay( weekDay, firstSelected );
+  /* When firstSelected doesn't belong to currentMonth it can happen
+     that the new selection won't be visible on our KDateNavigators
+     so we must adjust it */
+  if ( selectionLowerLimit.isValid() &&
+       firstSelected < selectionLowerLimit ) {
+    firstSelected = selectionLowerLimit;
+  } else if ( selectionUpperLimit.isValid() &&
+              firstSelected > selectionUpperLimit ) {
+    firstSelected = selectionUpperLimit.addDays( -6 );
+  }
+
+  selectWeekByDay( weekDay, firstSelected, nextMonth );
+}
+
+void DateNavigator::selectNextMonth( const QDate &currentMonth,
+                                     const QDate &selectionLowerLimit,
+                                     const QDate &selectionUpperLimit )
+{
+  shiftMonth( currentMonth,
+              selectionLowerLimit,
+              selectionUpperLimit,
+              1 );
 }
 
 void DateNavigator::selectNextYear()
@@ -243,11 +280,11 @@ void DateNavigator::selectNext()
 
 void DateNavigator::selectMonth( int month )
 {
-  // always display starting at the first week of the specified month
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
+  // always display starting at the first week of the specified month
   QDate firstSelected = QDate( mSelectedDates.first().year(), month, 1 );
 
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   int day = calSys->day( firstSelected );
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, 1 );
   int days = calSys->daysInMonth( firstSelected );
@@ -256,9 +293,11 @@ void DateNavigator::selectMonth( int month )
   if ( day > days ) {
     day = days;
   }
+  QDate requestedMonth;
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
+  calSys->setYMD( requestedMonth, calSys->year( firstSelected ), month, 1 );
 
-  selectWeekByDay( 1, firstSelected );
+  selectWeekByDay( 1, firstSelected, requestedMonth );
 }
 
 void DateNavigator::selectYear( int year )
@@ -271,9 +310,9 @@ void DateNavigator::selectYear( int year )
   selectWeekByDay( weekDay, firstSelected );
 }
 
-void DateNavigator::emitSelected()
+void DateNavigator::emitSelected( const QDate &preferredMonth )
 {
-  emit datesSelected( mSelectedDates );
+  emit datesSelected( mSelectedDates, preferredMonth );
 }
 
 #include "datenavigator.moc"

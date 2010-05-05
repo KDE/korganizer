@@ -4,6 +4,9 @@
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
+  Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Author: Sergio Martins <sergio@kdab.com>
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -55,13 +58,21 @@ class DateNavigatorContainer: public QFrame
                            bool highlightJournals ) const;
     void setUpdateNeeded();
   public slots:
-    void selectDates( const KCal::DateList & );
-    void selectNextMonth();
-    void selectPreviousMonth();
+
+    /**
+       preferredMonth is useful when the datelist crosses months, if different
+       from -1, it has the month that the kdatenavigator should show in case
+       of ambiguity
+    */
+    void selectDates( const KCal::DateList &, const QDate &preferredMonth = QDate() );
+
     void updateView();
     void updateConfig();
     void updateDayMatrix();
     void updateToday();
+
+    void goPrevMonth();
+    void goNextMonth();
 
   signals:
     void datesSelected( const KCal::DateList & );
@@ -70,18 +81,33 @@ class DateNavigatorContainer: public QFrame
     void newEventSignal( const QDate & );
     void newTodoSignal( const QDate & );
     void newJournalSignal( const QDate & );
-    void weekClicked( const QDate &);
+    void weekClicked( const QDate & );
 
     void goPrevious();
     void goNext();
 
-    void goNextMonth();
-    void goPrevMonth();
-    void goNextYear();
-    void goPrevYear();
+    void nextYearClicked();
+    void prevYearClicked();
 
-    void goMonth( int month );
-    void goYear( int year );
+    /** Signals that the previous month button has been clicked.
+
+        @param currentMonth The month displayed on the first KDateNavigator.
+               DateNavigator doesn't know anything abouts months, it just has
+               a list of selected dates, so we must send this.
+        @param selectionLowerLimit The first date of the first KDateNavigator.
+        @param selectionUpperLimit The last date of the last KDateNavigator.
+    */
+    void prevMonthClicked( const QDate &currentMonth,
+                           const QDate &selectionLowerLimit,
+                           const QDate &selectionUpperLimit );
+
+    void nextMonthClicked( const QDate &currentMonth,
+                           const QDate &selectionLowerLimit,
+                           const QDate &selectionUpperLimit );
+
+    void monthSelected( int month );
+
+    void yearSelected( int year );
 
   protected:
     void resizeEvent( QResizeEvent * );
@@ -95,6 +121,14 @@ class DateNavigatorContainer: public QFrame
     void resizeAllContents();
 
   private:
+    /* Returns the first day of the first KDateNavigator, and the last day
+       of the last KDateNavigator.
+
+       @param monthOffset If you have two KDateNavigators displaying
+       January and February and want to know the boundaries of,
+       for e.g. displaying February and March, use monthOffset = 1.
+    */
+    QPair<QDate,QDate> dateLimits( int monthOffset = 0 );
 
     KDateNavigator *mNavigatorView;
 
