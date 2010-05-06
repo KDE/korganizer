@@ -119,7 +119,10 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
     if ( akonadiItemId >= 0 ) {
       const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
-      createReminder( mCalendar, mCalendar->incidence( Item::fromUrl( url ).id() ), dt, QString() );
+      Item i = mCalendar->incidence( Item::fromUrl( url ).id() );
+      if ( Akonadi::hasIncidence( i ) && !Akonadi::incidence( i )->alarms().isEmpty() ) {
+        createReminder( mCalendar, i, dt, QString() );
+      }
     }
   }
   if ( numReminders ) {
