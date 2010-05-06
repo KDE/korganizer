@@ -336,7 +336,7 @@ KOAgendaView::KOAgendaView( Calendar *cal,
   // Update widgets to reflect user preferences
 //  updateConfig();
 
-  createDayLabels();
+  createDayLabels( true );
 
   if ( !isSideBySide ) {
     // these blank widgets make the All Day Event box line up with the agenda
@@ -570,13 +570,17 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
   }
 }
 
-void KOAgendaView::createDayLabels()
+void KOAgendaView::createDayLabels( bool force )
 {
 //  kdDebug(5850) << "KOAgendaView::createDayLabels()" << endl;
 
-  // ### Before deleting and recreating we could check if mSelectedDates changed...
-  // It would remove some flickering and gain speed (since this is called by
-  // each updateView() call)
+  // Check if mSelectedDates has changed, if not just return
+  // Removes some flickering and gains speed (since this is called by each updateView())
+  if ( !force && mSaveSelectedDates == mSelectedDates ) {
+    return;
+  }
+  mSaveSelectedDates = mSelectedDates;
+
   delete mDayLabels;
 
   mDayLabels = new QFrame (mDayLabelsFrame);
@@ -601,7 +605,7 @@ void KOAgendaView::createDayLabels()
     QString shortstr = QString::number(calsys->day(date));
 
     KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,
-      longstr, veryLongStr, mDayLabels);
+                                                      longstr, veryLongStr, mDayLabels);
     dayLabel->setMinimumWidth(1);
     dayLabel->setAlignment(QLabel::AlignHCenter);
     if (date == QDate::currentDate()) {
@@ -769,7 +773,7 @@ void KOAgendaView::updateConfig()
 
   setHolidayMasks();
 
-  createDayLabels();
+  createDayLabels( true );
 
   updateView();
 }
@@ -1282,7 +1286,7 @@ void KOAgendaView::fillAgenda()
   mEventIndicatorTop->changeColumns( mSelectedDates.count() );
   mEventIndicatorBottom->changeColumns( mSelectedDates.count() );
 
-  createDayLabels();
+  createDayLabels( false );
   setHolidayMasks();
 
   mMinY.resize( mSelectedDates.count() );

@@ -212,7 +212,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     void connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* otherAgenda );
 
     /** Create labels for the selected dates. */
-    void createDayLabels();
+    void createDayLabels( bool force );
 
     /**
       Set the masks on the agenda widgets indicating, which days are holidays.
@@ -260,6 +260,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     QPushButton *mExpandButton;
 
     DateList mSelectedDates;  // List of dates to be displayed
+    DateList mSaveSelectedDates; // Save the list of dates between updateViews
     int mViewType;
 
     KOEventPopupMenu *mAgendaPopup;
