@@ -70,14 +70,17 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   // load reminders that were active when quitting
   config->setGroup( "General" );
   int numReminders = config->readNumEntry( "Reminders", 0 );
-  for ( int i=1; i<=numReminders; ++i )
-  {
+  for ( int i = 1; i <= numReminders; ++i ) {
     QString group( QString( "Incidence-%1" ).arg( i ) );
     config->setGroup( group );
     QString uid = config->readEntry( "UID" );
     QDateTime dt = config->readDateTimeEntry( "RemindAt" );
-    if ( !uid.isEmpty() )
-      createReminder( mCalendar, mCalendar->incidence( uid ), dt, QString() );
+    if ( !uid.isEmpty() ) {
+      Incidence *i = mCalendar->incidence( uid );
+      if ( i && !i->alarms().isEmpty() ) {
+        createReminder( mCalendar, i, dt, QString() );
+      }
+    }
     config->deleteGroup( group );
   }
   config->setGroup( "General" );
