@@ -402,6 +402,7 @@ void AlarmDialog::suspend()
       break;
   }
 
+  AlarmListItem *selitem = 0;
   for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
     AlarmListItem * item = static_cast<AlarmListItem*>( it.current() );
     if ( item->isSelected() && item->isVisible() ) {
@@ -409,6 +410,14 @@ void AlarmDialog::suspend()
       item->setSelected( false );
       item->mRemindAt = QDateTime::currentDateTime().addSecs( unit * mSuspendSpin->value() );
       item->mNotified = false;
+      selitem = item;
+    }
+  }
+  if ( selitem ) {
+    if ( selitem->itemBelow() ) {
+      selitem->itemBelow()->setSelected( true );
+    } else if ( selitem->itemAbove() ) {
+      selitem->itemAbove()->setSelected( true );
     }
   }
 
