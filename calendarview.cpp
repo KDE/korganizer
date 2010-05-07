@@ -178,7 +178,7 @@ CalendarView::CalendarView( QWidget *parent )
            mDateNavigator, SLOT(selectNextMonth()) );
   connect( mNavigatorBar, SIGNAL(monthSelected(int)),
            mDateNavigator, SLOT(selectMonth(int)) );
-  connect( mNavigatorBar, SIGNAL(yearClicked(int)),
+  connect( mNavigatorBar, SIGNAL(yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
 
   // Signals emited by mDateNavigatorContainer
