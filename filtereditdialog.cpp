@@ -33,6 +33,8 @@
 
 #include <KMessageBox>
 
+using namespace IncidenceEditors;
+
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )
 {

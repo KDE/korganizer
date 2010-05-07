@@ -63,6 +63,7 @@
 
 using namespace KCal;
 using namespace KPIM;
+using namespace IncidenceEditors;
 
 // ---------------- COMPLETION DELEGATE --------------------------
 // ---------------------------------------------------------------

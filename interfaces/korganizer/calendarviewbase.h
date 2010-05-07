@@ -32,7 +32,9 @@ namespace Akonadi {
   class Calendar;
 }
 
-class KOIncidenceEditor;
+namespace IncidenceEditors {
+  class IncidenceEditor;
+}
 
 namespace KOrg {
 
@@ -61,7 +63,7 @@ class CalendarViewBase : public QWidget
 
     virtual bool editIncidence( const Akonadi::Item &item, bool isCounter = false ) = 0;
 
-    virtual KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const = 0;
+    virtual IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const = 0;
 
   public Q_SLOTS:
     virtual void updateView() = 0;

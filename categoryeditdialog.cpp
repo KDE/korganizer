@@ -32,6 +32,8 @@
 #include <QList>
 #include <QStringList>
 
+using namespace IncidenceEditors;
+
 CategoryEditDialog::CategoryEditDialog( CategoryConfig *categoryConfig, QWidget *parent )
   : KDialog( parent ), mCategoryConfig( categoryConfig )
 {

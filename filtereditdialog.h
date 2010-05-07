@@ -29,8 +29,11 @@
 #include "ui_filteredit_base.h"
 #include <KDialog>
 
-class CategorySelectDialog;
 class FilterEdit;
+
+namespace IncidenceEditors {
+  class CategorySelectDialog;
+}
 
 namespace KCal {
   class CalFilter;
@@ -96,7 +99,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 
     QList<CalFilter*> *mFilters;
     CalFilter *mCurrent;
-    CategorySelectDialog *mCategorySelectDialog;
+    IncidenceEditors::CategorySelectDialog *mCategorySelectDialog;
 };
 
 #endif

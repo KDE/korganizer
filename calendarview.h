@@ -45,12 +45,15 @@ class DateChecker;
 class DateNavigator;
 class DateNavigatorContainer;
 class KODialogManager;
-class KOEventEditor;
 class KOEventViewer;
-class KOIncidenceEditor;
 class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
+
+namespace IncidenceEditors {
+  class EventEditor;
+  class IncidenceEditor;
+}
 
 namespace KOrg {
   class HTMLExportSettings;
@@ -138,7 +141,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mDateNavigator; }
 
-    KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
+    IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
     virtual Akonadi::IncidenceChanger *incidenceChanger() const { return mChanger; }
 
     /*
@@ -285,7 +288,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Archive old events of calendar */
     void archiveCalendar();
 
-    void connectIncidenceEditor( KOIncidenceEditor * );
+    void connectIncidenceEditor( IncidenceEditors::IncidenceEditor * );
 
     /** create new event without having a hint for the calendar. */
     void newEvent();
@@ -652,9 +655,9 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       defaults, if invalid values are given) and allow the view to adjust the type.
     */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    KOEventEditor *newEventEditor( const QDateTime &startDtParam=QDateTime(),
-                                   const QDateTime &endDtParam=QDateTime(),
-                                   bool allDayParam=false );
+    IncidenceEditors::EventEditor *newEventEditor( const QDateTime &startDtParam=QDateTime(),
+                                                   const QDateTime &endDtParam=QDateTime(),
+                                                   bool allDayParam=false );
 
     bool eventFilter( QObject *watched, QEvent *event );
 
@@ -714,7 +717,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate mSaveDate;
 
   KOTodoView *mTodoList;
-    QMap<Akonadi::Item::Id,KOIncidenceEditor*> mDialogList;
+    QMap<Akonadi::Item::Id,IncidenceEditors::IncidenceEditor*> mDialogList;
 
     Akonadi::IncidenceChanger *mChanger;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden

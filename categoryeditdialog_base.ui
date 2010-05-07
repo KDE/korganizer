@@ -104,7 +104,7 @@
     </layout>
    </item>
    <item row="0" column="0" >
-    <widget class="AutoCheckTreeWidget" name="mCategories" >
+    <widget class="IncidenceEditors::AutoCheckTreeWidget" name="mCategories" >
      <property name="toolTip" >
       <string>Category list</string>
      </property>
@@ -147,7 +147,7 @@
    <header>kpushbutton.h</header>
   </customwidget>
   <customwidget>
-   <class>AutoCheckTreeWidget</class>
+   <class>IncidenceEditors::AutoCheckTreeWidget</class>
    <extends>QTreeWidget</extends>
    <header>autochecktreewidget.h</header>
   </customwidget>

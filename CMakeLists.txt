@@ -47,6 +47,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${CMAKE_BINARY_DIR}/libkdepim
                     ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
                     ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
+                    ${CMAKE_SOURCE_DIR}/incidenceeditors
                     ${CMAKE_CURRENT_BINARY_DIR}
                     ${AKONADI_INCLUDE_DIR}
                     ${Boost_INCLUDE_DIRS}
@@ -61,7 +62,6 @@ add_subdirectory( sounds )
 if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( plugins )
 add_subdirectory( kcmconfigs )
-add_subdirectory( incidenceeditor )
 endif (QT_QT3SUPPORT_FOUND)
 
 set( PERL ${PERL_EXECUTABLE} )
@@ -81,22 +81,23 @@ kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-
 
 kde4_add_executable(korganizer ${korganizer_SRCS})
 
-target_link_libraries(korganizer 
-	${KDE4_KDEUI_LIBS}
-	${KDE4_KDE3SUPPORT_LIBRARY}
-	${KDE4_KPARTS_LIBRARY} 
-	${KDEPIMLIBS_KCAL_LIBS}
- 	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
-	${KDEPIMLIBS_KHOLIDAYS_LIBS} 
-	${KDEPIMLIBS_KONTACTINTERFACE_LIBS} 
-	${KDEPIMLIBS_AKONADI_LIBS} 
-	kdepim 
-	kdepimdbusinterfaces 
-	korganizerprivate 
-	korganizer_interfaces
-	korganizer_core
-	akonadi_next
-	akonadi-kcal_next
+target_link_libraries(korganizer
+    ${KDE4_KDEUI_LIBS}
+    ${KDE4_KDE3SUPPORT_LIBRARY}
+    ${KDE4_KPARTS_LIBRARY}
+    ${KDEPIMLIBS_KCAL_LIBS}
+    ${KDEPIMLIBS_AKONADI_KCAL_LIBS}
+    ${KDEPIMLIBS_KHOLIDAYS_LIBS}
+    ${KDEPIMLIBS_KONTACTINTERFACE_LIBS}
+    ${KDEPIMLIBS_AKONADI_LIBS}
+    kdepim
+    kdepimdbusinterfaces
+    korganizerprivate
+    korganizer_interfaces
+    korganizer_core
+    akonadi_next
+    akonadi-kcal_next
+    incidenceeditors
 )
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -105,7 +106,6 @@ install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 ########### next target ###############
 
 set(kcm_korganizer_PART_SRCS
-    designerfields.cpp
     kcmdesignerfields.cpp
     koprefsdialog.cpp
    )
@@ -116,7 +116,7 @@ target_link_libraries(kcm_korganizer
   ${QT_QTUITOOLS_LIBRARY}
   ${KDE4_KDEUI_LIBS}
   ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS}
-  mailtransport korganizerprivate korganizer_core kdepim akonadi-kcal_next)
+  mailtransport korganizerprivate korganizer_core kdepim incidenceeditors akonadi-kcal_next)
 
 install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -154,23 +154,18 @@ set(korganizer_core_LIB_SRCS
     koprefs.cpp
     kocore.cpp
     koidentitymanager.cpp
-    autochecktreewidget.cpp
-    categoryconfig.cpp
     categoryeditdialog.cpp
-    categoryhierarchyreader.cpp
-    categoryselectdialog.cpp
 )
 
 kde4_add_ui_files(korganizer_core_LIB_SRCS
   categoryeditdialog_base.ui
-  categoryselectdialog_base.ui
 )
 
 kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
 
-target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim akonadi-kcal_next korganizer_eventviewer korganizer_interfaces)
+target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim incidenceeditors akonadi-kcal_next korganizer_eventviewer korganizer_interfaces)
 
 set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
@@ -278,7 +273,7 @@ target_link_libraries(korganizerprivate
   korganizer_core
   akonadi-kcal_next
   akonadi_next
-  korg_incidenceeditor
+  incidenceeditors
 )
 
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )

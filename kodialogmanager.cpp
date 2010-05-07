@@ -30,9 +30,6 @@
 #include "calendarview.h"
 #include "categoryconfig.h"
 #include "categoryeditdialog.h"
-#include "incidenceeditor/koeventeditor.h"
-#include "incidenceeditor/kojournaleditor.h"
-#include "incidenceeditor/kotodoeditor.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "filtereditdialog.h"
@@ -41,6 +38,10 @@
 #include <Akonadi/Item>
 
 #include <KCal/IncidenceBase>
+
+#include <incidenceeditors/eventeditor.h>
+#include <incidenceeditors/journaleditor.h>
+#include <incidenceeditors/todoeditor.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -52,6 +53,7 @@ using namespace Akonadi;
 using namespace KOrg;
 using namespace KPIM;
 using namespace KCal;
+using namespace IncidenceEditors;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 
@@ -75,7 +77,7 @@ class KODialogManager::EditorDialogVisitor :
 {
   public:
     EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
-    KOIncidenceEditor *editor() const { return mEditor; }
+    IncidenceEditor *editor() const { return mEditor; }
 
   protected:
     bool visit( Event * )
@@ -98,7 +100,7 @@ class KODialogManager::EditorDialogVisitor :
       return 0;
     }
 
-    KOIncidenceEditor *mEditor;
+    IncidenceEditor *mEditor;
 };
 
 KODialogManager::KODialogManager( CalendarView *mainView )
@@ -206,7 +208,7 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
   mFilterEditDialog->raise();
 }
 
-KOIncidenceEditor *KODialogManager::getEditor( const Item &item )
+IncidenceEditor *KODialogManager::getEditor( const Item &item )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
@@ -221,21 +223,21 @@ KOIncidenceEditor *KODialogManager::getEditor( const Item &item )
   }
 }
 
-KOEventEditor *KODialogManager::getEventEditor()
+EventEditor *KODialogManager::getEventEditor()
 {
-  KOEventEditor *eventEditor = new KOEventEditor( mMainView );
+  EventEditor *eventEditor = new EventEditor( mMainView );
   connectEditor( eventEditor );
   return eventEditor;
 }
 
-void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOEventView *view )
+void KODialogManager::connectTypeAhead( EventEditor *editor, KOEventView *view )
 {
   if ( editor && view ) {
     view->setTypeAheadReceiver( editor->typeAheadReceiver() );
   }
 }
 
-void KODialogManager::connectEditor( KOIncidenceEditor *editor )
+void KODialogManager::connectEditor( IncidenceEditor *editor )
 {
   createCategoryEditor();
   connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
@@ -252,17 +254,17 @@ void KODialogManager::connectEditor( KOIncidenceEditor *editor )
            mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
 }
 
-KOTodoEditor *KODialogManager::getTodoEditor()
+TodoEditor *KODialogManager::getTodoEditor()
 {
   kDebug();
-  KOTodoEditor *todoEditor = new KOTodoEditor( mMainView );
+  TodoEditor *todoEditor = new TodoEditor( mMainView );
   connectEditor( todoEditor );
   return todoEditor;
 }
 
-KOJournalEditor *KODialogManager::getJournalEditor()
+JournalEditor *KODialogManager::getJournalEditor()
 {
-  KOJournalEditor *journalEditor = new KOJournalEditor( mMainView );
+  JournalEditor *journalEditor = new JournalEditor( mMainView );
   connectEditor( journalEditor );
   return journalEditor;
 }
@@ -278,7 +280,7 @@ void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
 
-    CategoryConfig* cc = new CategoryConfig( KOPrefs::instance(), this );
+    IncidenceEditors::CategoryConfig* cc = new IncidenceEditors::CategoryConfig( KOPrefs::instance(), this );
     mCategoryEditDialog =
       new CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );

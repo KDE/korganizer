@@ -45,9 +45,6 @@
 #include "akonadicollectionview.h"
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
-#include "incidenceeditor/koeditorconfig.h"
-#include "incidenceeditor/koincidenceeditor.h"
-#include "incidenceeditor/kogroupwareintegration.h"
 
 #include <KCal/FileStorage>
 
@@ -64,6 +61,8 @@
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/groupware.h>
 #include <akonadi/kcal/utils.h>
+
+#include <incidenceeditors/groupwareintegration.h>
 
 #include <akonadi/entitytreemodel.h>
 #include <Akonadi/ChangeRecorder>
@@ -121,9 +120,9 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   new KOrgCalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
 
-  // Construct the groupware object, it'll take care of the KOEditorConfig as well
-  if ( !KOGroupwareIntegration::isActive() ) {
-    KOGroupwareIntegration::activate();
+  // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
+  if ( !IncidenceEditors::GroupwareIntegration::isActive() ) {
+    IncidenceEditors::GroupwareIntegration::activate();
   }
 
   mGUIClient = client;

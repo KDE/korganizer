@@ -56,6 +56,7 @@
 
 using namespace KPIM;
 using namespace Akonadi;
+using namespace IncidenceEditors;
 
 KOTodoView::KOTodoView( QWidget *parent )
   : BaseView( parent )

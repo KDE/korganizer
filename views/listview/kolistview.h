@@ -27,7 +27,8 @@
 #define KOLISTVIEW_H
 
 #include "koeventview.h"
-#include "incidenceeditor/customlistviewitem.h"
+
+#include <incidenceeditors/customlistviewitem.h>
 
 #include <KCal/Incidence>
 
@@ -36,7 +37,7 @@
 
 using namespace KCal;
 
-typedef CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
+typedef IncidenceEditors::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;
 

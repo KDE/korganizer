@@ -35,14 +35,17 @@ class CalendarView;
 class CategoryEditDialog;
 class FilterEditDialog;
 class KCMultiDialog;
-class KOEventEditor;
-class KOIncidenceEditor;
-class KOJournalEditor;
-class KOTodoEditor;
 class SearchDialog;
 
 namespace Akonadi {
   class Item;
+}
+
+namespace IncidenceEditors {
+  class EventEditor;
+  class IncidenceEditor;
+  class JournalEditor;
+  class TodoEditor;
 }
 
 namespace KCal {
@@ -61,22 +64,22 @@ class KODialogManager : public QObject
     virtual ~KODialogManager();
 
     /** Get the appropriate editor for the given incidence */
-    KOIncidenceEditor *getEditor( const Akonadi::Item& item );
+    IncidenceEditors::IncidenceEditor *getEditor( const Akonadi::Item& item );
 
     /** Get an editor dialog for an Event. */
-    KOEventEditor *getEventEditor();
+    IncidenceEditors::EventEditor *getEventEditor();
 
     /** Get an editor dialog for a Todo. */
-    KOTodoEditor *getTodoEditor();
+    IncidenceEditors::TodoEditor *getTodoEditor();
 
     /** Get an editor dialog for a Journal. */
-    KOJournalEditor *getJournalEditor();
+    IncidenceEditors::JournalEditor *getJournalEditor();
 
-    void connectEditor( KOIncidenceEditor *editor );
+    void connectEditor( IncidenceEditors::IncidenceEditor *editor );
 
     void updateSearchDialog();
 
-    void connectTypeAhead( KOEventEditor *editor, KOEventView *view );
+    void connectTypeAhead( IncidenceEditors::EventEditor *editor, KOEventView *view );
 
   public slots:
     void showOptionsDialog();

@@ -43,10 +43,6 @@
 #include "koeventviewer.h"
 #include "koeventviewerdialog.h"
 #include "koglobals.h"
-#include "incidenceeditor/koeventeditor.h"
-#include "incidenceeditor/koincidenceeditor.h"
-#include "incidenceeditor/kojournaleditor.h"
-#include "incidenceeditor/kotodoeditor.h"
 #include "koviewmanager.h"
 #include "navigatorbar.h"
 #include "publishdialog.h"
@@ -58,6 +54,11 @@
 #include "collectiongeneralpage.h"
 
 #include <libkdepim/pimmessagebox.h>
+
+#include <incidenceeditors/eventeditor.h>
+#include <incidenceeditors/incidenceeditor.h>
+#include <incidenceeditors/journaleditor.h>
+#include <incidenceeditors/todoeditor.h>
 
 #include <akonadi/control.h>
 #include <akonadi/collectionpropertiesdialog.h>
@@ -101,6 +102,7 @@
 using namespace boost;
 using namespace Akonadi;
 using namespace KHolidays;
+using namespace IncidenceEditors;
 
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage )
 
@@ -313,7 +315,7 @@ Akonadi::Calendar *CalendarView::calendar()
   return mCalendar;
 }
 
-KOIncidenceEditor *CalendarView::editorDialog( const Item &item ) const
+IncidenceEditor *CalendarView::editorDialog( const Item &item ) const
 {
   return mDialogList.value( item.id() );
 }
@@ -683,7 +685,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
   Incidence* const newIncidence = Akonadi::incidence( newIncidence_ ).get();
 
   // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
-  KOIncidenceEditor *tmp = editorDialog( newIncidence_ );
+  IncidenceEditor *tmp = editorDialog( newIncidence_ );
   if ( tmp ) {
     kDebug() << "Incidence modified and open";
     tmp->modified();
@@ -745,7 +747,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
 void CalendarView::incidenceToBeDeleted( const Item &item )
 {
   Incidence* const incidence = Akonadi::incidence( item ).get();
-  KOIncidenceEditor *tmp = editorDialog( item );
+  IncidenceEditor *tmp = editorDialog( item );
   kDebug()<<"incidenceToBeDeleted item.id() :"<<item.id();
   if (tmp) {
     kDebug() << "Incidence to be deleted and open in editor";
@@ -1059,9 +1061,9 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
   }
 }
 
-KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
-                                             const QDateTime &endDtParam,
-                                             bool allDayParam )
+EventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
+                                           const QDateTime &endDtParam,
+                                           bool allDayParam )
 {
   // Let the current view change the default start/end datetime
   bool allDay = allDayParam;
@@ -1071,7 +1073,7 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
   // and let the view adjust the type.
   dateTimesForNewEvent( startDt, endDt, allDay );
 
-  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  EventEditor *eventEditor = mDialogManager->getEventEditor();
   eventEditor->newEvent();
   connectIncidenceEditor( eventEditor );
   eventEditor->setDates( startDt, endDt, allDay );
@@ -1116,7 +1118,7 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
                               const QDateTime &startDt, const QDateTime &endDt, bool allDay )
 {
-  KOEventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
+  EventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
   if ( !selectedCollections.isEmpty() )
     eventEditor->selectCollection( selectedCollections.first() );
   eventEditor->show();
@@ -1126,7 +1128,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
                              const QStringList &attachments, const QStringList &attendees,
                              const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
-  KOEventEditor *eventEditor = newEventEditor();
+  EventEditor *eventEditor = newEventEditor();
   eventEditor->setTexts( summary, description );
 
   // if attach or attendee list is empty, these methods don't do anything, so
@@ -1141,7 +1143,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             const QStringList &attachmentMimetypes,
                             bool inlineAttachment, bool isTask )
 {
-  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
   todoEditor->setTexts( summary, description );
@@ -1155,7 +1157,7 @@ void CalendarView::newTodo()
 {
   QDateTime dtDue;
   bool allday = true;
-  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
   if ( mViewManager->currentView()->isEventView() ) {
@@ -1169,7 +1171,7 @@ void CalendarView::newTodo()
 
 void CalendarView::newTodo( const QDate &date )
 {
-  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
   todoEditor->setDates( QDateTime( date, QTime::currentTime() ), true );
@@ -1188,7 +1190,7 @@ void CalendarView::newJournal( const QDate &date )
 
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
-  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  JournalEditor *journalEditor = mDialogManager->getJournalEditor();
   QDate journalDate = date;
   connectIncidenceEditor( journalEditor );
   journalEditor->newJournal();
@@ -1223,7 +1225,7 @@ void CalendarView::newSubTodo()
 
 void CalendarView::newSubTodo( const Item &parentEvent )
 {
-  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
   todoEditor->setDates( QDateTime(), false, parentEvent );
@@ -2460,7 +2462,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return false;
   }
 
-  KOIncidenceEditor *tmp = editorDialog( item );
+  IncidenceEditor *tmp = editorDialog( item );
   if ( tmp ) {
     tmp->reload();
     tmp->raise();
@@ -2473,7 +2475,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return true;
   }
 
-  KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( item );
+  IncidenceEditor *incidenceEditor = mDialogManager->getEditor( item );
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( item.id(), incidenceEditor );
@@ -2673,7 +2675,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
   return true;
 }
 
-void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
+void CalendarView::connectIncidenceEditor( IncidenceEditor *editor )
 {
   // TODO_BERTJAN: Remove, should be set already at this point.
   if ( currentView()->collectionSelection()->hasSelection() )
@@ -2774,7 +2776,7 @@ void CalendarView::updateCategories()
   QStringList allCats( Akonadi::Calendar::categories( calendar() ) );
   allCats.sort();
 
-  CategoryConfig cc( KOPrefs::instance() );
+  IncidenceEditors::CategoryConfig cc( KOPrefs::instance() );
 
   QStringList categories( cc.customCategories() );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
