@@ -24,7 +24,6 @@
 
 #include "monthitem.h"
 #include <kcalprefs.h>
-#include "kodialogmanager.h"
 #include "koglobals.h"
 #include "kohelper.h"
 #include "koprefs.h"
