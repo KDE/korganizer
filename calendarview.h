@@ -27,9 +27,10 @@
 #define CALENDARVIEW_H
 
 #include "korganizer_export.h"
-#include <akonadi/kcal/calendar.h>
 #include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
+
+#include <akonadi/kcal/calendar.h>
 
 #include <Akonadi/Item>
 
@@ -669,6 +670,11 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     // its subitems. If it cannot delete a completed todo (because it has
     // uncompleted subitems), notAllPurged is set to true.
     bool purgeCompletedSubTodos( const Akonadi::Item &todo, bool &notAllPurged );
+
+    // Returns all incidences having item has their parent (or grand parent, etc.)
+    // item is included in the list too.
+    //
+    void getIncidenceHierarchy( const Akonadi::Item &item, Akonadi::Item::List &items );
 
     KOrg::History *mHistory;
 

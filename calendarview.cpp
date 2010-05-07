@@ -857,11 +857,34 @@ void CalendarView::edit_cut()
     return;
   }
 
-  // Unparent child to-dos.
-  // (Doesn't do nothing if the item isn't a to-do, with children)
-  makeChildrenIndependent( item );
+  Item::List items;
+  int km = KMessageBox::Yes;
 
-  mChanger->cutIncidence( item, this );
+  if ( !incidence->relations().isEmpty() &&
+       incidence->type() == "Todo" ) { // Only todos (yet?)
+    km = KMessageBox::questionYesNoCancel( this,
+                                           i18n("The item \"%1\" has sub-to-dos. "
+                                                "Do you want to cut just this item and "
+                                                "make all its sub-to-dos independent, or "
+                                                "cut the to-do with all its sub-to-dos?"
+                                             , incidence->summary() ) ,
+                                           i18n("KOrganizer Confirmation"),
+                                           KGuiItem( i18n("Cut Only This") ),
+                                           KGuiItem( i18n("Cut All") ) );
+  }
+
+  if ( km == KMessageBox::Yes ) { // only one
+    items.append( item );
+    makeChildrenIndependent( item );
+  } else if ( km == KMessageBox::No ) { // all
+    // load incidence + children + grandchildren...
+    getIncidenceHierarchy( item, items );
+  }
+
+  if ( km != KMessageBox::Cancel ) {
+    mChanger->cutIncidences( items, this );
+  }
+
 
   checkClipboard();
 }
@@ -875,10 +898,35 @@ void CalendarView::edit_copy()
     return;
   }
 
-  Akonadi::CalendarAdaptor cal( mCalendar, this );
-  Akonadi::DndFactory factory( &cal );
-  if ( !factory.copyIncidence( item ) ) {
-    KNotification::beep();
+  Incidence::Ptr incidence = Akonadi::incidence( item );
+  Item::List items;
+  int km = KMessageBox::Yes;
+
+  if ( !incidence->relations().isEmpty() &&
+       incidence->type() == "Todo" ) { // only todos.
+    km = KMessageBox::questionYesNoCancel( this,
+                                           i18n("The item \"%1\" has sub-to-dos. "
+                                                "Do you want to copy just this item or "
+                                                "copy the to-do with all its sub-to-dos?"
+                                           , incidence->summary() ),
+                                           i18n("KOrganizer Confirmation"),
+                                           KGuiItem( i18n("Copy Only This") ),
+                                           KGuiItem( i18n("Copy All") ) );
+   }
+
+  if ( km == KMessageBox::Yes ) { // only one
+    items.append( item );
+  } else if ( km == KMessageBox::No ) { // all
+    // load incidence + children + grandchildren...
+    getIncidenceHierarchy( item, items );
+  }
+
+  if ( km != KMessageBox::Cancel ) {
+    Akonadi::CalendarAdaptor cal( mCalendar, this );
+    Akonadi::DndFactory factory( &cal );
+    if ( !factory.copyIncidences( items ) ) {
+      KNotification::beep();
+    }
   }
 
   checkClipboard();
@@ -928,44 +976,51 @@ void CalendarView::edit_paste()
 
   Akonadi::CalendarAdaptor cal( mCalendar, this );
   Akonadi::DndFactory factory( &cal );
-  Incidence *pastedIncidence;
+  Incidence::List pastedIncidences;
   if ( timeSet && time.isValid() ) {
-    pastedIncidence = factory.pasteIncidence( date, &time );
+    pastedIncidences = factory.pasteIncidences( date, &time );
   } else {
-    pastedIncidence = factory.pasteIncidence( date );
+    pastedIncidences = factory.pasteIncidences( date );
   }
-  if ( !pastedIncidence ) {
-    return;
-  }
-
-  // FIXME: use a visitor here
-  bool userCanceled;
-  if ( pastedIncidence->type() == "Event" ) {
-    Event *pastedEvent = static_cast<Event*>( pastedIncidence );
-    // only use selected area if event is of the same type (all-day or non-all-day
-    // as the current selection is
-    if ( aView && endDT.isValid() && useEndTime ) {
-      if ( ( pastedEvent->allDay() && aView->selectedIsAllDay() ) ||
-           ( !pastedEvent->allDay() && !aView->selectedIsAllDay() ) ) {
-        KDateTime kdt( endDT, KCalPrefs::instance()->timeSpec() );
-        pastedEvent->setDtEnd( kdt.toTimeSpec( pastedIncidence->dtEnd().timeSpec() ) );
+  Akonadi::Collection col;
+  Incidence::List::Iterator it;
+  for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
+    // FIXME: use a visitor here
+    bool userCanceled;
+    if ( ( *it )->type() == "Event" ) {
+      Event *pastedEvent = static_cast<Event*>( *it );
+      // only use selected area if event is of the same type (all-day or non-all-day
+      // as the current selection is
+      if ( aView && endDT.isValid() && useEndTime ) {
+        if ( ( pastedEvent->allDay() && aView->selectedIsAllDay() ) ||
+             ( !pastedEvent->allDay() && !aView->selectedIsAllDay() ) ) {
+          KDateTime kdt( endDT, KCalPrefs::instance()->timeSpec() );
+          pastedEvent->setDtEnd( kdt.toTimeSpec( ( *it )->dtEnd().timeSpec() ) );
+        }
       }
-    }
-    mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, userCanceled );
 
-  } else if ( pastedIncidence->type() == "Todo" ) {
-    Todo *pastedTodo = static_cast<Todo*>( pastedIncidence );
-    Akonadi::Item _selectedTodoItem = selectedTodo();
-    if ( Todo::Ptr _selectedTodo = Akonadi::todo( _selectedTodoItem ) ) {
-      pastedTodo->setRelatedTo( _selectedTodo.get() );
-    } else {
-      //ensure pasted todo has no relations if there is not a current selection
-      pastedTodo->setRelatedTo( 0 );
-      pastedTodo->setRelatedToUid( QString() );
+      // KCal supports events with relations, but korganizer doesn't
+      // so unset it. It can even come from other application.
+      pastedEvent->setRelatedTo( 0 );
+      pastedEvent->setRelatedToUid( QString() );
+
+      mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, userCanceled );
+    } else if ( ( *it )->type() == "Todo" ) {
+      Todo *pastedTodo = static_cast<Todo*>( *it );
+      Akonadi::Item _selectedTodoItem = selectedTodo();
+
+      // if we are cutting a hierarchy only the root
+      // should be son of _selectedTodo
+      Todo::Ptr _selectedTodo = Akonadi::todo( _selectedTodoItem );
+      if ( _selectedTodo && !pastedTodo->relatedTo() ) {
+        pastedTodo->setRelatedTo( _selectedTodo.get() );
+      }
+
+      mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, userCanceled );
+
+    } else if ( ( *it )->type() == "Journal" ) {
+      mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), this, userCanceled );
     }
-    mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, userCanceled );
-  } else if ( pastedIncidence->type() == "Journal" ) {
-    mChanger->addIncidence( Incidence::Ptr( pastedIncidence->clone() ), this, userCanceled );
   }
 }
 
@@ -1225,7 +1280,7 @@ void CalendarView::todo_unsub()
 bool CalendarView::incidence_unsub( const Item &item )
 {
   const Incidence::Ptr inc = Akonadi::incidence( item );
-  bool status= false;
+  bool status = false;
   if ( !inc || !inc->relatedTo() ) {
     return false;
   }
@@ -2846,6 +2901,22 @@ void CalendarView::selectWeek( const QDate &date )
     mDateNavigator->selectWorkWeek( date );
   } else {
     mDateNavigator->selectWeek( date );
+  }
+}
+
+void CalendarView::getIncidenceHierarchy( const Item &item,
+                                          Item::List &children )
+{
+  // protecion against looping hierarchies
+  if ( item.isValid() && !children.contains( item ) ) {
+    Item::List::ConstIterator it;
+    Item::List immediateChildren = mCalendar->findChildren( item );
+
+    for ( it = immediateChildren.constBegin();
+          it != immediateChildren.constEnd(); ++it ) {
+      getIncidenceHierarchy( *it, children );
+    }
+    children.append( item );
   }
 }
 
