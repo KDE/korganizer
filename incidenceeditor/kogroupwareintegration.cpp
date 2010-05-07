@@ -21,7 +21,6 @@
 #include "koeventeditor.h"
 #include "kojournaleditor.h"
 #include "kotodoeditor.h"
-#include "koprefs.h"
 #include <kcalprefs.h>
 
 #include <akonadi/kcal/calendar.h>  //krazy:exclude=camelcase since kdepim/akonadi
@@ -44,7 +43,6 @@ class KOrganizerEditorConfig : public KOEditorConfig
 
     virtual KConfigSkeleton *config() const
     {
-      // TODO: should we have a way to return both KCalPrefs::instance() and KOPrefs::instance()? I guess so.
       return KCalPrefs::instance();
     }
 
@@ -75,55 +73,55 @@ class KOrganizerEditorConfig : public KOEditorConfig
 
     virtual bool showTimeZoneSelectorInIncidenceEditor() const
     {
-      return KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
+      return KCalPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
     }
 
     virtual QDateTime defaultDuration() const
     {
-      return KOPrefs::instance()->defaultDuration();
+      return KCalPrefs::instance()->defaultDuration();
     }
 
     virtual QDateTime startTime() const
     {
-      return KOPrefs::instance()->startTime();
+      return KCalPrefs::instance()->startTime();
     }
 
     virtual int reminderTime() const
     {
-      return KOPrefs::instance()->reminderTime();
+      return KCalPrefs::instance()->reminderTime();
     }
 
     virtual int reminderTimeUnits() const
     {
-      return KOPrefs::instance()->reminderTimeUnits();
+      return KCalPrefs::instance()->reminderTimeUnits();
     }
 
     virtual bool defaultTodoReminders() const
     {
-      return KOPrefs::instance()->defaultTodoReminders();
+      return KCalPrefs::instance()->defaultTodoReminders();
     }
 
     virtual bool defaultEventReminders() const
     {
-      return KOPrefs::instance()->defaultEventReminders();
+      return KCalPrefs::instance()->defaultEventReminders();
     }
 
     virtual QStringList activeDesignerFields() const
     {
-      return KOPrefs::instance()->activeDesignerFields();
+      return KCalPrefs::instance()->activeDesignerFields();
     }
 
     virtual QStringList &templates( const QString &type )
     {
       if ( type == "Event" ) {
-        //TODO remove mEventTemplates+etc from KOPrefs::instance()
-        return KOPrefs::instance()->mEventTemplates;
+        //TODO remove mEventTemplates+etc from KCalPrefs::instance()
+        return KCalPrefs::instance()->mEventTemplates;
       }
       if ( type == "Todo" ) {
-        return KOPrefs::instance()->mTodoTemplates;
+        return KCalPrefs::instance()->mTodoTemplates;
       }
       if ( type == "Journal" ) {
-        return KOPrefs::instance()->mJournalTemplates;
+        return KCalPrefs::instance()->mJournalTemplates;
       }
       return KOEditorConfig::templates(type);
     }

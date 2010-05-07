@@ -274,7 +274,7 @@ void CalendarView::setCalendar( Akonadi::Calendar *cal )
   connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
   setIncidenceChanger( new IncidenceChanger( mCalendar, this,
-                                             KOPrefs::instance()->defaultCollection() ) );
+                                             KCalPrefs::instance()->defaultCollection() ) );
 
   mCalendar->registerObserver( this );
 
@@ -981,11 +981,11 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
 
   if ( !startDt.isValid() || !endDt.isValid() ) {
     startDt.setDate( activeDate( true ) );
-    startDt.setTime( KOPrefs::instance()->mStartTime.time() );
+    startDt.setTime( KCalPrefs::instance()->mStartTime.time() );
 
     int addSecs =
-      ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
-      ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
+      ( KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
+      ( KCalPrefs::instance()->mDefaultDuration.time().minute() * 60 );
     endDt = startDt.addSecs( addSecs );
   }
 }
@@ -1018,8 +1018,8 @@ void CalendarView::newEvent()
 
 void CalendarView::newEvent( const QDate &dt )
 {
-  QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
-  QTime duration = KOPrefs::instance()->defaultDuration().time();
+  QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
+  QTime duration = KCalPrefs::instance()->defaultDuration().time();
   QTime time = startDt.time();
 
   time = time.addSecs( duration.hour()*3600 + duration.minute() * 60 +  duration.second() );
@@ -1035,7 +1035,7 @@ void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollection
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDate &dt )
 {
-  QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
+  QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
   newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
 }
 

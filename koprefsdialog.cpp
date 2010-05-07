@@ -446,12 +446,12 @@ class KOPrefsDialogTime : public KPrefsModule
       QGridLayout *timesLayout = new QGridLayout( timesGroupBox );
 
       KPrefsWidTime *defaultTime =
-        addWidTime( KOPrefs::instance()->startTimeItem(), defaultPage );
+        addWidTime( KCalPrefs::instance()->startTimeItem(), defaultPage );
       timesLayout->addWidget( defaultTime->label(), 0, 0 );
       timesLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
 
       KPrefsWidDuration *defaultDuration =
-        addWidDuration( KOPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
+        addWidDuration( KCalPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
 
       timesLayout->addWidget( defaultDuration->label(), 1, 0 );
       timesLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
@@ -465,18 +465,18 @@ class KOPrefsDialogTime : public KPrefsModule
       QLabel *reminderLabel =
         new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
       remindersLayout->addWidget( reminderLabel, 0, 0 );
-      reminderLabel->setWhatsThis( KOPrefs::instance()->reminderTimeItem()->whatsThis() );
+      reminderLabel->setWhatsThis( KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin  = new KIntSpinBox( defaultPage );
-      mReminderTimeSpin->setWhatsThis( KOPrefs::instance()->reminderTimeItem()->whatsThis() );
-      mReminderTimeSpin->setToolTip( KOPrefs::instance()->reminderTimeItem()->toolTip() );
+      mReminderTimeSpin->setWhatsThis( KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
+      mReminderTimeSpin->setToolTip( KCalPrefs::instance()->reminderTimeItem()->toolTip() );
       connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
       remindersLayout->addWidget( mReminderTimeSpin, 0, 1 );
 
       mReminderUnitsCombo = new KComboBox( defaultPage );
       mReminderUnitsCombo->setToolTip(
-        KOPrefs::instance()->reminderTimeUnitsItem()->toolTip() );
+        KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip() );
       mReminderUnitsCombo->setWhatsThis(
-        KOPrefs::instance()->reminderTimeUnitsItem()->whatsThis() );
+        KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis() );
       connect( mReminderUnitsCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
       mReminderUnitsCombo->addItem(
         i18nc( "@item:inlistbox reminder units in minutes", "minute(s)" ) );
@@ -487,9 +487,9 @@ class KOPrefsDialogTime : public KPrefsModule
       remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
       remindersLayout->addWidget(
-        addWidBool( KOPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 1, 0 );
+        addWidBool( KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 1, 0 );
       remindersLayout->addWidget(
-        addWidBool( KOPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 2, 0 );
+        addWidBool( KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 2, 0 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
@@ -498,8 +498,8 @@ class KOPrefsDialogTime : public KPrefsModule
   protected:
     void usrReadConfig()
     {
-      mReminderTimeSpin->setValue( KOPrefs::instance()->mReminderTime );
-      mReminderUnitsCombo->setCurrentIndex( KOPrefs::instance()->mReminderTimeUnits );
+      mReminderTimeSpin->setValue( KCalPrefs::instance()->mReminderTime );
+      mReminderUnitsCombo->setCurrentIndex( KCalPrefs::instance()->mReminderTimeUnits );
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( ( 1 << i ) & ( KOPrefs::instance()->mWorkWeekMask ) );
       }
@@ -511,8 +511,8 @@ class KOPrefsDialogTime : public KPrefsModule
                                        QString() :
                                        mRegionMap[mHolidayCombo->currentText()];
 
-      KOPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
-      KOPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
+      KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
+      KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
         if ( mWorkDays[i]->isChecked() ) {
@@ -521,6 +521,7 @@ class KOPrefsDialogTime : public KPrefsModule
       }
       KOPrefs::instance()->mWorkWeekMask = mask;
       KOPrefs::instance()->writeConfig();
+      KCalPrefs::instance()->writeConfig();
     }
 
     void setCombo( KComboBox *combo, const QString &text, const QStringList *tags = 0 )
@@ -1604,13 +1605,13 @@ QString KOPrefsDesignerFields::uiPath()
 
 void KOPrefsDesignerFields::writeActivePages( const QStringList &activePages )
 {
-  KOPrefs::instance()->setActiveDesignerFields( activePages );
-  KOPrefs::instance()->writeConfig();
+  KCalPrefs::instance()->setActiveDesignerFields( activePages );
+  KCalPrefs::instance()->writeConfig();
 }
 
 QStringList KOPrefsDesignerFields::readActivePages()
 {
-  return KOPrefs::instance()->activeDesignerFields();
+  return KCalPrefs::instance()->activeDesignerFields();
 }
 
 QString KOPrefsDesignerFields::applicationName()

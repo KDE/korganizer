@@ -28,6 +28,8 @@
 #include <Akonadi/Collection>
 #include <akonadi/item.h>
 
+#include <kcalprefs.h>
+
 #include <QDate>
 
 using namespace Akonadi;
@@ -63,5 +65,5 @@ bool KOHelper::isStandardCalendar( const Akonadi::Collection &coll ) {
   if ( !coll.isValid() )
     return false;
   const QString id = QString::number( coll.id() );
-  return ( id == KOPrefs::instance()->defaultCalendar() );
+  return ( id == KCalPrefs::instance()->defaultCalendar() );
 }

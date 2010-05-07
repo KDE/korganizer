@@ -45,6 +45,7 @@
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/akonadi_next/entitymodelstatesaver.h>
 #include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/kcalprefs.h>
 #include <akonadi/kcal/utils.h>
 
 #include <akonadi/collection.h>
@@ -105,7 +106,7 @@ namespace {
             font.setBold( true );
             if ( !mInitDefaultCalendar ) {
               mInitDefaultCalendar = true;
-              KOPrefs::instance()->setDefaultCollection( collection );
+              KCalPrefs::instance()->setDefaultCollection( collection );
             }
             return font;
           }
@@ -254,7 +255,7 @@ void AkonadiCollectionView::setDefaultCalendar()
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = collectionFromIndex( index );
-  KOPrefs::instance()->setDefaultCollection( collection );
+  KCalPrefs::instance()->setDefaultCollection( collection );
   updateMenu();
   updateView();
 }
@@ -435,7 +436,7 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
     return;
   }
   if ( mWasDefaultCalendar )
-    KOPrefs::instance()->setDefaultCollection( Akonadi::Collection() );
+    KCalPrefs::instance()->setDefaultCollection( Akonadi::Collection() );
   mNotSendAddRemoveSignal = false;
   //TODO
 }
