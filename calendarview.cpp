@@ -713,9 +713,9 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setSummary( i18n( "Journal of %1", dateStr ) );
         journal->setDescription( description );
 
-        bool userCanceled;
-        if ( !mChanger->addIncidence( journal, this, userCanceled ) ) {
-          if ( !userCanceled ) {
+        Akonadi::Collection selectedCollection;
+        if ( !mChanger->addIncidence( journal, this, selectedCollection ) ) {
+          if ( !selectedCollection.isValid() ) {
             Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
           }
           return;
@@ -984,9 +984,9 @@ void CalendarView::edit_paste()
   }
   Akonadi::Collection col;
   Incidence::List::Iterator it;
+  Akonadi::Collection selectedCollection;
   for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
     // FIXME: use a visitor here
-    bool userCanceled;
     if ( ( *it )->type() == "Event" ) {
       Event *pastedEvent = static_cast<Event*>( *it );
       // only use selected area if event is of the same type (all-day or non-all-day
@@ -1003,8 +1003,11 @@ void CalendarView::edit_paste()
       // so unset it. It can even come from other application.
       pastedEvent->setRelatedTo( 0 );
       pastedEvent->setRelatedToUid( QString() );
-
-      mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, userCanceled );
+      if ( selectedCollection.isValid() ) {
+        mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), selectedCollection, this );
+      } else {
+        mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, selectedCollection );
+      }
     } else if ( ( *it )->type() == "Todo" ) {
       Todo *pastedTodo = static_cast<Todo*>( *it );
       Akonadi::Item _selectedTodoItem = selectedTodo();
@@ -1016,10 +1019,21 @@ void CalendarView::edit_paste()
         pastedTodo->setRelatedTo( _selectedTodo.get() );
       }
 
-      mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, userCanceled );
+      if ( selectedCollection.isValid() ) {
+        // When pasting multiple incidences, don't ask which collection to use, for each one
+        mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), selectedCollection, this );
+      } else {
+        mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, selectedCollection );
+      }
 
     } else if ( ( *it )->type() == "Journal" ) {
-      mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), this, userCanceled );
+
+      if ( selectedCollection.isValid() ) {
+        // When pasting multiple incidences, don't ask which collection to use, for each one
+        mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), selectedCollection, this );
+      } else {
+        mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), this, selectedCollection );
+      }
     }
   }
 }
@@ -1235,8 +1249,8 @@ bool CalendarView::addIncidence( const QString &ical )
 
 bool CalendarView::addIncidence( const Incidence::Ptr &incidence )
 {
-  bool userCanceled;
-  return incidence ? mChanger->addIncidence( incidence, this, userCanceled ) : false;
+  Akonadi::Collection col;
+  return incidence ? mChanger->addIncidence( incidence, this, col ) : false;
 }
 
 void CalendarView::appointment_show()
@@ -2812,9 +2826,9 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
     todo->setHasDueDate( true );
   }
 
-  bool userCanceled;
-  if ( !mChanger->addIncidence( incidence, this, userCanceled ) ) {
-    if ( !userCanceled ) {
+  Akonadi::Collection selectedCollection;
+  if ( !mChanger->addIncidence( incidence, this, selectedCollection ) ) {
+    if ( !selectedCollection.isValid() ) {
       Akonadi::IncidenceChanger::errorSaveIncidence( this, incidence );
     }
   }
