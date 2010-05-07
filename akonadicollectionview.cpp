@@ -399,30 +399,36 @@ void AkonadiCollectionView::deleteCalendar()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
-  //Q_ASSERT( mCollectionview->selectionModel()->isSelected(index) );
+
 
   const QString displayname = index.model()->data( index, Qt::DisplayRole ).toString();
-  Q_ASSERT( ! displayname.isEmpty() );
+  Q_ASSERT( !displayname.isEmpty() );
 
-  if( KMessageBox::questionYesNo( this,
-                                  i18n( "Do you really want to delete calendar %1?", displayname ),
-                                  i18n( "Delete Calendar" ),
-                                  KStandardGuiItem::del(),
-                                  KStandardGuiItem::cancel(),
-                                  QString(),
-                                  KMessageBox::Dangerous )
-    == KMessageBox::Yes )
-  {
+  if ( KMessageBox::questionYesNo( this,
+                                   i18n( "Do you really want to delete calendar %1?", displayname ),
+                                   i18n( "Delete Calendar" ),
+                                   KStandardGuiItem::del(),
+                                   KStandardGuiItem::cancel(),
+                                   QString(),
+                                   KMessageBox::Dangerous )
+       == KMessageBox::Yes ) {
+
+    bool isTopLevel = collection.parentCollection() == Collection::root();
+
     mNotSendAddRemoveSignal = true;
     mWasDefaultCalendar = KOHelper::isStandardCalendar( collection );
-    Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
-    connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
-#if 0 //TODO bug 235127
-    //Delete calendar.
-    const AgentInstance instance = Akonadi::AgentManager::self()->instance( collection.resource() );
-    if ( instance.isValid() )
-      Akonadi::AgentManager::self()->removeInstance( instance );
-#endif
+
+    if ( !isTopLevel ) {
+      // deletes contents
+      Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
+      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
+    } else {
+      // deletes the agent, not the contents
+      const AgentInstance instance = Akonadi::AgentManager::self()->instance( collection.resource() );
+      if ( instance.isValid() ) {
+        Akonadi::AgentManager::self()->removeInstance( instance );
+      }
+    }
   }
 }
 
