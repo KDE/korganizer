@@ -167,17 +167,34 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
     QValueList<KCal::Period> busyPeriods = fb->busyPeriods();
     for( QValueList<KCal::Period>::Iterator it = busyPeriods.begin();
 	 it != busyPeriods.end(); ++it ) {
-      KDGanttViewTaskItem* newSubItem = new KDGanttViewTaskItem( this );
-      newSubItem->setStartTime( (*it).start() );
-      newSubItem->setEndTime( (*it).end() );
+      Period per = *it;
+
+      KDGanttViewTaskItem *newSubItem = new KDGanttViewTaskItem( this );
+      newSubItem->setStartTime( per.start() );
+      newSubItem->setEndTime( per.end() );
       newSubItem->setColors( Qt::red, Qt::red, Qt::red );
-      QString toolTip;
-      if ( !(*it).summary().isEmpty() )
-        toolTip += "<b>" + (*it).summary() + "</b><br/>";
-      if ( !(*it).location().isEmpty() )
-        toolTip += i18n( "Location: %1" ).arg( (*it).location() );
-      if ( !toolTip.isEmpty() )
-        newSubItem->setTooltipText( toolTip );
+
+      QString toolTip = "<qt>";
+      toolTip += "<b>" + i18n( "Freebusy Period" ) + "</b>";
+      toolTip += "<br>----------------------<br>";
+      if ( !per.summary().isEmpty() ) {
+        toolTip += "<i>" + i18n( "Summary:" ) + "</i>" + "&nbsp;";
+        toolTip += per.summary();
+        toolTip += "<br>";
+      }
+      if ( !per.location().isEmpty() ) {
+        toolTip += "<i>" + i18n( "Location:" ) + "</i>" + "&nbsp;";
+        toolTip += per.location();
+        toolTip += "<br>";
+      }
+      toolTip += "<i>" + i18n( "Start:" ) + "</i>" + "&nbsp;";
+      toolTip += KGlobal::locale()->formatDateTime( per.start() );
+      toolTip += "<br>";
+      toolTip += "<i>" + i18n( "End:" ) + "</i>" + "&nbsp;";
+      toolTip += KGlobal::locale()->formatDateTime( per.end() );
+      toolTip += "<br>";
+      toolTip += "</qt>";
+      newSubItem->setTooltipText( toolTip );
     }
     setFreeBusy( fb );
     setShowNoInformation( false );
