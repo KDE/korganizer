@@ -27,8 +27,9 @@
 
 #include <Akonadi/EntityTreeView>
 #include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi/akonadi_next/collectionselectionproxymodel.h>
 #include <akonadi/akonadi_next/entitymodelstatesaver.h>
 #include <akonadi/kcal/utils.h>
 
@@ -591,6 +592,7 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
                                                         "_subView_" +
                                                         QByteArray::number( i ) );
     CollectionSelectionProxyModel *selection = new CollectionSelectionProxyModel;
+    selection->setCheckableColumn( CalendarModel::CollectionTitle );
     selection->setDynamicSortFilter( true );
     if ( calendar() ) {
       selection->setSourceModel( calendar()->treeModel() );

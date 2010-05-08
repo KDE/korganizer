@@ -23,9 +23,10 @@
 #include "baseview.h"
 
 #include <akonadi/kcal/calendar.h>
+#include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/calendarsearch.h>
 #include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi_next/collectionselectionproxymodel.h>
 #include <akonadi_next/entitymodelstatesaver.h>
 #include <akonadi/kcal/utils.h>
 
@@ -262,6 +263,7 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
 
     if ( !d->collectionSelectionModel ) {
       d->collectionSelectionModel = new CollectionSelectionProxyModel( this );
+      d->collectionSelectionModel->setCheckableColumn( CalendarModel::CollectionTitle );
       d->collectionSelectionModel->setDynamicSortFilter( true );
       d->collectionSelectionModel->setSortCaseSensitivity( Qt::CaseInsensitive );
       if ( d->calendar )

@@ -50,16 +50,16 @@
 
 #include <KMime/KMimeMessage>
 
-#include <akonadi/kcal/incidencechanger.h>
+#include <akonadi/akonadi_next/collectionselectionproxymodel.h>
+#include <akonadi/akonadi_next/entitymodelstatesaver.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/freebusymanager.h>
-#include <akonadi/akonadi_next/entitymodelstatesaver.h>
-#include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/groupware.h>
+#include <akonadi/kcal/incidencechanger.h>
+#include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
 #include <incidenceeditors/groupwareintegration.h>
@@ -241,6 +241,7 @@ void ActionManager::createCalendarAkonadi()
 
 
   CollectionSelectionProxyModel* selectionProxyModel = new CollectionSelectionProxyModel( this );
+  selectionProxyModel->setCheckableColumn( CalendarModel::CollectionTitle );
   selectionProxyModel->setDynamicSortFilter( true );
   selectionProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
   mCollectionSelectionModelStateSaver = new EntityModelStateSaver( selectionProxyModel, this );
