@@ -101,7 +101,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       probably only select a single event at a time, but some may be able
       to select more than one.
     */
-    virtual DateList selectedIncidenceDates() = 0;
+    virtual KCal::DateList selectedIncidenceDates() = 0;
 
     /**
        Returns the start of the selection, or an invalid QDateTime if there is no selection

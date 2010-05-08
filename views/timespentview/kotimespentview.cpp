@@ -39,6 +39,7 @@
 #include <QPainter>
 #include <QPainterPath>
 
+using namespace KCal;
 using namespace Akonadi;
 
 class TimeSpentWidget : public QWidget

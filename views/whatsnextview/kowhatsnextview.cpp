@@ -34,6 +34,7 @@
 
 #include <QBoxLayout>
 
+using namespace KCal;
 using namespace Akonadi;
 
 void WhatsNextTextBrowser::setSource( const QUrl &name )
