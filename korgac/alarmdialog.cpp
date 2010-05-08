@@ -61,6 +61,7 @@
 #include <QVBoxLayout>
 #include <phonon/mediaobject.h>
 
+using namespace KPIMIdentities;
 using namespace KCal;
 
 static int defSuspendVal = 5;
