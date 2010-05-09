@@ -141,10 +141,10 @@ void KOEventViewer::changeIncidenceDisplay( const Item &item, const QDate &date,
 {
   if ( item.id() == mIncidence.id() ) {
     switch ( action ) {
-    case Groupware::INCIDENCEEDITED:
+    case IncidenceChanger::INCIDENCEEDITED:
       setIncidence( item, date );
       break;
-    case Groupware::INCIDENCEDELETED:
+    case IncidenceChanger::INCIDENCEDELETED:
       setIncidence( Item(), date );
       break;
     }
