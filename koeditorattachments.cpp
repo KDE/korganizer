@@ -731,14 +731,22 @@ void KOEditorAttachments::slotRemove()
   if ( KMessageBox::questionYesNo(
          this,
          i18n( "<qt>Do you really want to remove these attachments?<p>%1</qt>" ).arg( labelsStr ),
-         i18n( "Remove Attachment?" ) ) != KMessageBox::Yes ) {
+         i18n( "Remove Attachment?" ),
+         KStdGuiItem::yes(), KStdGuiItem::no(),
+         "calendarRemoveAttachments" ) != KMessageBox::Yes ) {
     return;
   }
 
   for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() );
         it != end ; ++it ) {
+    if ( (*it)->nextItem() ) {
+      (*it)->nextItem()->setSelected( true );
+    } else if ( (*it)->prevItem() ) {
+      (*it)->prevItem()->setSelected( true );
+    }
     delete *it;
   }
+  mAttachments->slotUpdate();
 }
 
 void KOEditorAttachments::slotShow()
