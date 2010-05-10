@@ -256,6 +256,7 @@ void AkonadiCollectionView::setDefaultCalendar()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = collectionFromIndex( index );
   KCalPrefs::instance()->setDefaultCollection( collection );
+  KCalPrefs::instance()->usrWriteConfig();
   updateMenu();
   updateView();
 }
