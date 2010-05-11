@@ -58,7 +58,7 @@ class KOJournalView : public KOrg::BaseView
                            bool &highlightJournals );
 
     bool eventFilter ( QObject *, QEvent * );
-    virtual CalPrinterBase::PrintType printType();
+    virtual KOrg::CalPrinterBase::PrintType printType();
 
   public slots:
     // Don't update the view when midnight passed, otherwise we'll have data loss (bug 79145)
