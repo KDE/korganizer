@@ -83,6 +83,7 @@ class KOListView : public KOEventView
     void writeSettings( KConfig *config );
 
     void clear();
+    virtual KOrg::CalPrinterBase::PrintType printType();
 
   public slots:
     virtual void updateView();

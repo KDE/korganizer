@@ -222,4 +222,9 @@ bool KOJournalView::eventFilter ( QObject *object, QEvent *event )
   }
 }
 
+CalPrinterBase::PrintType KOJournalView::printType()
+{
+  return CalPrinterBase::Journallist;
+}
+
 #include "kojournalview.moc"

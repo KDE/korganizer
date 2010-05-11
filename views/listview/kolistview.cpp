@@ -531,4 +531,9 @@ void KOListView::clear()
   mItems.clear();
 }
 
+KOrg::CalPrinterBase::PrintType KOListView::printType()
+{
+  return KOrg::CalPrinterBase::Incidence;
+}
+
 #include "kolistview.moc"

@@ -99,11 +99,10 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td,
   for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
     (*it)->setSelectedIncidences( selectedIncidences );
   }
-  QPointer<CalPrintDialog> printDialog = new CalPrintDialog( mPrintPlugins, mParent, mUniqItem );
+  QPointer<CalPrintDialog> printDialog = new CalPrintDialog( type, mPrintPlugins, mParent, mUniqItem );
   KConfigGroup grp( mConfig, "" ); //orientation setting isn't in a group
   printDialog->setOrientation( CalPrinter::ePrintOrientation( grp.readEntry( "Orientation", 1 ) ) );
   printDialog->setPreview( preview );
-  printDialog->setPrintType( type );
   setDateRange( fd, td );
 
   if ( printDialog->exec() == QDialog::Accepted ) {
@@ -166,7 +165,7 @@ void CalPrinter::updateConfig()
 {
 }
 
-CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent, bool uniqItem )
+CalPrintDialog::CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List plugins, QWidget *parent, bool uniqItem )
   : KDialog( parent )
 {
   setCaption( i18n( "Print" ) );
@@ -220,7 +219,9 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
     KOrg::PrintPlugin *p = mapit.value();
     QRadioButton *radioButton = new QRadioButton( p->description() );
     radioButton->setEnabled( p->enabled() );
-    if ( firstButton && p->enabled() ) {
+    // Check the first available button (to ensure one is selected initially) and then
+    // the button matching the desired print type -- if such is available!
+    if ( (firstButton || p->sortID() == initialPrintType) && p->enabled() ) {
       firstButton = false;
       radioButton->setChecked( true );
       setPrintType( id );
@@ -254,6 +255,10 @@ void CalPrintDialog::setPrintType( int i )
 {
   mConfigArea->setCurrentIndex( i );
   mConfigArea->currentWidget()->raise();
+  QAbstractButton *btn = mTypeGroup->button( i );
+  if (btn) {
+    btn->setChecked( true );
+  }
 }
 
 void CalPrintDialog::setOrientation( CalPrinter::ePrintOrientation orientation )

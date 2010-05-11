@@ -65,7 +65,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
       \param cal calendar to be printed
       \param helper is a pointer to the KOrg::CoreHelper object
     */
-    CalPrinter( QWidget *par, Akonadi::Calendar *cal, KOrg::CoreHelper *helper , bool uniqItem = false );
+    CalPrinter( QWidget *par, Akonadi::Calendar *cal, KOrg::CoreHelper *helper, bool uniqItem = false );
     virtual ~CalPrinter();
 
     void init( Akonadi::Calendar *calendar );
@@ -107,7 +107,7 @@ class CalPrintDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent = 0, bool mUniqItem = false );
+    explicit CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List plugins, QWidget *parent = 0, bool mUniqItem = false );
     virtual ~CalPrintDialog();
     KOrg::PrintPlugin *selectedPlugin();
     void setOrientation( CalPrinter::ePrintOrientation orientation );

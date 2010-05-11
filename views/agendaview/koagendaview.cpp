@@ -1466,7 +1466,8 @@ void KOAgendaView::clearView()
 
 CalPrinter::PrintType KOAgendaView::printType()
 {
-  if ( currentDateCount() == 1 ) {
+  // If up to three days are selected, use day style, otherwise week
+  if ( currentDateCount() <= 3 ) {
     return CalPrinter::Day;
   } else {
     return CalPrinter::Week;

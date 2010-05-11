@@ -367,4 +367,15 @@ void KOTimelineView::overscale( KDGanttView::Scale scale )
   */
 }
 
+KOrg::CalPrinterBase::PrintType KOTimelineView::printType()
+{
+  // If up to three days are selected, use day style, otherwise week
+  if ( currentDateCount() <= 3 ) {
+    return KOrg::CalPrinterBase::Day;
+  } else {
+    return KOrg::CalPrinterBase::Week;
+  }
+}
+
+
 #include "kotimelineview.moc"
