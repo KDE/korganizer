@@ -1341,8 +1341,6 @@ bool CalendarView::makeChildrenIndependent( const Item &item )
 
   Item::List subIncs = mCalendar->findChildren( item );
 
-  Incidence::List::Iterator it;
-
   foreach( const Item &item, subIncs ) {
     incidence_unsub( item );
   }
@@ -1926,12 +1924,19 @@ void CalendarView::print()
 
   CalPrinter::PrintType printType = CalPrinter::Month;
 
+  Incidence::List selectedIncidences;
   if ( currentView ) {
     printType = currentView->printType();
+    Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
+    foreach (const Akonadi::Item &item, selectedViewIncidences ) {
+      if (item.hasPayload<KCal::Incidence::Ptr>() ) {
+        selectedIncidences.append( item.payload<KCal::Incidence::Ptr>().get() );
+      }
+    }
   }
 
   DateList tmpDateList = mDateNavigator->selectedDates();
-  mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last() );
+  mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last(), selectedIncidences );
 }
 
 void CalendarView::printPreview()
@@ -1942,13 +1947,20 @@ void CalendarView::printPreview()
 
   CalPrinter::PrintType printType = CalPrinter::Month;
 
+  Incidence::List selectedIncidences;
   if ( currentView ) {
     printType = currentView->printType();
+    Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
+    foreach (const Akonadi::Item &item, selectedViewIncidences ) {
+      if (item.hasPayload<KCal::Incidence::Ptr>() ) {
+        selectedIncidences.append( item.payload<KCal::Incidence::Ptr>().get() );
+      }
+    }
   }
 
   DateList tmpDateList = mDateNavigator->selectedDates();
   mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last(),
-                      Incidence::List(), true );
+                      selectedIncidences, true );
 }
 
 void CalendarView::exportWeb()
