@@ -518,6 +518,7 @@ void AlarmDialog::suspend()
       break;
   }
 
+  ReminderListItem *selitem = 0;
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
     if ( (*it)->isSelected() && !(*it)->isDisabled() ) { //suspend selected, non-suspended reminders
@@ -528,8 +529,17 @@ void AlarmDialog::suspend()
       item->mHappening = KDateTime( item->mRemindAt, KDateTime::Spec::LocalZone() );
       item->mNotified = false;
       (*it)->setText( 1, KGlobal::locale()->formatDateTime( item->mHappening ) );
+      selitem = item;
     }
     ++it;
+  }
+
+  if ( selitem ) {
+    if ( mIncidenceTree->itemBelow( selitem ) ) {
+      mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( selitem ) );
+    } else if ( mIncidenceTree->itemAbove( selitem ) ) {
+      mIncidenceTree->setCurrentItem( mIncidenceTree->itemAbove( selitem ) );
+    }
   }
 
   // save suspended alarms too so they can be restored on restart
