@@ -432,8 +432,9 @@ void KOTodoView::addTodo( const QString &summary,
   }
 
   Akonadi::Collection selectedCollection;
-  if ( !mChanger->addIncidence( todo, this, selectedCollection ) ) {
-    if ( !selectedCollection.isValid() ) {
+  int dialogCode = 0;
+  if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
+    if ( dialogCode != QDialog::Rejected ) {
       Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
     }
   }
@@ -651,8 +652,9 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   todo->setDtDue( due );
 
   Akonadi::Collection selectedCollection;
-  if ( !mChanger->addIncidence( todo, this, selectedCollection ) ) {
-    if ( !selectedCollection.isValid() ) {
+  int dialogCode = 0;
+  if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
+    if ( dialogCode != QDialog::Rejected ) {
       Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
     }
   }

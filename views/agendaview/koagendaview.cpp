@@ -1549,8 +1549,9 @@ void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint
     todo->setAllDay( allDay );
     todo->setHasDueDate( true );
     Akonadi::Collection selectedCollection;
-    if ( !mChanger->addIncidence( todo, this, selectedCollection ) ) {
-      if ( !selectedCollection.isValid() ) {
+    int dialogCode = 0;
+    if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
+      if ( dialogCode != QDialog::Rejected ) {
         Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
       }
     }

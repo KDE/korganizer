@@ -714,8 +714,9 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setDescription( description );
 
         Akonadi::Collection selectedCollection;
-        if ( !mChanger->addIncidence( journal, this, selectedCollection ) ) {
-          if ( !selectedCollection.isValid() ) {
+        int dialogCode = 0;
+        if ( !mChanger->addIncidence( journal, this, selectedCollection, dialogCode ) ) {
+          if ( dialogCode != QDialog::Rejected ) {
             Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
           }
           return;
@@ -984,6 +985,7 @@ void CalendarView::edit_paste()
   Akonadi::Collection col;
   Incidence::List::Iterator it;
   Akonadi::Collection selectedCollection;
+  int dialogCode = 0;
   for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
     // FIXME: use a visitor here
     if ( ( *it )->type() == "Event" ) {
@@ -1005,7 +1007,8 @@ void CalendarView::edit_paste()
       if ( selectedCollection.isValid() ) {
         mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), selectedCollection, this );
       } else {
-        mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, selectedCollection );
+        mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, selectedCollection,
+                                dialogCode );
       }
     } else if ( ( *it )->type() == "Todo" ) {
       Todo *pastedTodo = static_cast<Todo*>( *it );
@@ -1022,7 +1025,8 @@ void CalendarView::edit_paste()
         // When pasting multiple incidences, don't ask which collection to use, for each one
         mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), selectedCollection, this );
       } else {
-        mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, selectedCollection );
+        mChanger->addIncidence( Todo::Ptr( pastedTodo->clone() ), this, selectedCollection,
+                                dialogCode );
       }
 
     } else if ( ( *it )->type() == "Journal" ) {
@@ -1031,7 +1035,8 @@ void CalendarView::edit_paste()
         // When pasting multiple incidences, don't ask which collection to use, for each one
         mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), selectedCollection, this );
       } else {
-        mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), this, selectedCollection );
+        mChanger->addIncidence( Incidence::Ptr( ( *it )->clone() ), this, selectedCollection,
+                                dialogCode );
       }
     }
   }
@@ -1293,7 +1298,8 @@ bool CalendarView::addIncidence( const QString &ical )
 bool CalendarView::addIncidence( const Incidence::Ptr &incidence )
 {
   Akonadi::Collection col;
-  return incidence ? mChanger->addIncidence( incidence, this, col ) : false;
+  int dialogCode = 0;
+  return incidence ? mChanger->addIncidence( incidence, this, col, dialogCode ) : false;
 }
 
 void CalendarView::appointment_show()
@@ -2882,8 +2888,9 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
   }
 
   Akonadi::Collection selectedCollection;
-  if ( !mChanger->addIncidence( incidence, this, selectedCollection ) ) {
-    if ( !selectedCollection.isValid() ) {
+  int dialogCode = 0;
+  if ( !mChanger->addIncidence( incidence, this, selectedCollection, dialogCode ) ) {
+    if ( dialogCode != QDialog::Rejected ) {
       Akonadi::IncidenceChanger::errorSaveIncidence( this, incidence );
     }
   }
