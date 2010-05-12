@@ -50,6 +50,9 @@ void KOTodoViewQuickAddLine::keyPressEvent( QKeyEvent *event )
 
 void KOTodoViewQuickAddLine::returnPressed()
 {
+  // Workaround bug #217592 (disappearing cursor)
+  unsetCursor();
+
   emit returnPressed( mModifiers );
 }
 
