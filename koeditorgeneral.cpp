@@ -382,11 +382,9 @@ bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm ) const
          alarm->hasStartOffset() && alarm->startOffset().asSeconds() <= 0 ) {
       simple = true;
     }
-    if ( mType == "Todo" ) {
-      if ( ( alarm->hasStartOffset() && alarm->startOffset().asSeconds() <= 0 ) ||
-           ( alarm->hasEndOffset() && alarm->endOffset().asSeconds() <= 0 ) ) {
-        simple = true;
-      }
+    if ( mType == "Todo" &&
+         alarm->hasEndOffset() && alarm->endOffset().asSeconds() <= 0 ) {
+      simple = true;
     }
   }
   return simple;
@@ -395,7 +393,7 @@ bool KOEditorGeneral::isSimpleAlarm( Alarm *alarm ) const
 static QString etc = i18n( "elipsis", "..." );
 void KOEditorGeneral::updateAlarmWidgets( Incidence *incidence )
 {
-  int maxLen = 75; //TODO: compute from the font and dialog width
+  uint maxLen = 75; //TODO: compute from the font and dialog width
 
   if ( incidence ) {
     mAlarmButton->setChecked( incidence->isAlarmEnabled() );
@@ -531,8 +529,6 @@ Alarm *KOEditorGeneral::alarmFromSimplePage( Incidence *incidence ) const
 }
 void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
-//  kdDebug(5850) << "KOEditorGeneral::writeIncidence()" << endl;
-
   incidence->setSummary(mSummaryEdit->text());
   incidence->setLocation(mLocationEdit->text());
   incidence->setDescription(mDescriptionEdit->text());
