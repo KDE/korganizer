@@ -123,7 +123,7 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
 
   mIncidenceListView = new KListView( topBox );
   mIncidenceListView->addColumn( i18n( "Summary" ) );
-  mIncidenceListView->addColumn( i18n( "Due" ) );
+  mIncidenceListView->addColumn( i18n( "Date, Time" ) );
   mIncidenceListView->setSorting( 0, true );
   mIncidenceListView->setSorting( 1, true );
   mIncidenceListView->setSortColumn( 1 );
