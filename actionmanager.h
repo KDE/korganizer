@@ -357,6 +357,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void slotResourcesChanged(bool);
     void slotChangeComboActionItem(int);
     void slotResourcesAddedRemoved();
+
+    void slotNewEvent();
+    void slotNewTodo();
+    void slotNewSubTodo();
+    void slotNewJournal();
   private:
     class ActionStringsVisitor;
 
@@ -364,6 +369,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions( bool enable );
+
+    Akonadi::Collection selectedCollection() const;
 
     KOrg::Part::List mParts; // List of parts loaded
     KUrl mURL;               // URL of calendar file

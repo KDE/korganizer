@@ -397,11 +397,17 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** create new todo, due on date */
     void newTodo( const QDate &date );
 
+    /** create new todo **/
+    void newTodo( const Akonadi::Collection &collection );
+
     /** create new todo with a parent todo */
     void newSubTodo();
 
     /** create new todo with a parent todo */
     void newSubTodo( const Akonadi::Item &todo );
+
+    /** create new todo with parent todo */
+    void newSubTodo( const Akonadi::Collection &collection );
 
     void newTodo( const QString &summary, const QString &description=QString(),
                   const QStringList &attachments=QStringList(),
@@ -412,6 +418,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newJournal();
     void newJournal( const QDate &date );
     void newJournal( const QString &text, const QDate &date=QDate() );
+    void newJournal( const Akonadi::Collection &collection );
 
     void configureCurrentView();
 

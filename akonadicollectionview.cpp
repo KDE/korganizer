@@ -314,6 +314,11 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel( CollectionSelectio
   connect( mSelectionProxyModel->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
 }
 
+CollectionSelectionProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
+{
+  return mSelectionProxyModel;
+}
+
 Akonadi::EntityTreeView* AkonadiCollectionView::view() const
 {
   return mCollectionview;

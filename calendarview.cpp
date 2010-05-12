@@ -1155,6 +1155,11 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
 
 void CalendarView::newTodo()
 {
+  newTodo( Akonadi::Collection() );
+}
+
+void CalendarView::newTodo( const Akonadi::Collection &collection )
+{
   QDateTime dtDue;
   bool allday = true;
   TodoEditor *todoEditor = mDialogManager->getTodoEditor();
@@ -1166,6 +1171,10 @@ void CalendarView::newTodo()
     mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
     todoEditor->setDates( dtDue, allday );
   }
+
+  if ( collection.isValid() )
+    todoEditor->selectCollection( collection );
+
   todoEditor->show();
 }
 
@@ -1188,15 +1197,33 @@ void CalendarView::newJournal( const QDate &date )
   newJournal( QString(), date );
 }
 
+void CalendarView::newJournal( const Akonadi::Collection &collection )
+{
+  JournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  QDate journalDate = activeDate( true );
+  connectIncidenceEditor( journalEditor );
+  journalEditor->newJournal();
+  if ( !journalDate.isValid() ) {
+    journalDate = activeDate();
+  }
+  journalEditor->setDate( journalDate );
+
+  if ( collection.isValid() )
+    journalEditor->selectCollection( collection );
+
+  journalEditor->show();
+}
+
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   JournalEditor *journalEditor = mDialogManager->getJournalEditor();
   QDate journalDate = date;
   connectIncidenceEditor( journalEditor );
   journalEditor->newJournal();
-  if ( !journalDate.isValid() ) {
+
+  if ( !journalDate.isValid() )
     journalDate = activeDate();
-  }
+
   journalEditor->setDate( journalDate );
   journalEditor->setTexts( text );
   journalEditor->show();
@@ -1221,6 +1248,23 @@ void CalendarView::newSubTodo()
   if ( Akonadi::hasTodo( item ) ) {
     newSubTodo( item );
   }
+}
+
+void CalendarView::newSubTodo( const Akonadi::Collection &collection )
+{
+  const Item item = selectedTodo();
+  if ( !Akonadi::hasTodo( item ) )
+    return;
+
+  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
+  todoEditor->newTodo();
+  todoEditor->setDates( QDateTime(), false, item );
+
+  if ( collection.isValid() )
+    todoEditor->selectCollection( collection );
+
+  todoEditor->show();
 }
 
 void CalendarView::newSubTodo( const Item &parentEvent )

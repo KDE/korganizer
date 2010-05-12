@@ -582,20 +582,20 @@ void ActionManager::initActions()
   mNewEventAction->setHelpText( i18n( "Create a new Event" ) );
 
   mACollection->addAction( "new_event", mNewEventAction );
-  connect( mNewEventAction, SIGNAL(triggered(bool)), mCalendarView,
-           SLOT(newEvent()) );
+  connect( mNewEventAction, SIGNAL(triggered(bool)), this,
+           SLOT(slotNewEvent()) );
 
   mNewTodoAction = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
   //mNewTodoAction->setIconText( i18n( "To-do" ) );
   mNewTodoAction->setHelpText( i18n( "Create a new To-do" ) );
   mACollection->addAction( "new_todo", mNewTodoAction );
-  connect( mNewTodoAction, SIGNAL(triggered(bool)), mCalendarView,
-           SLOT(newTodo()) );
+  connect( mNewTodoAction, SIGNAL(triggered(bool)), this,
+           SLOT(slotNewTodo()) );
 
   mNewSubtodoAction = new KAction( i18n( "New Su&b-to-do..." ), this );
   mACollection->addAction( "new_subtodo", mNewSubtodoAction );
-  connect( mNewSubtodoAction, SIGNAL(triggered(bool)), mCalendarView,
-           SLOT(newSubTodo() ));
+  connect( mNewSubtodoAction, SIGNAL(triggered(bool)), this,
+           SLOT(slotNewSubTodo() ));
   mNewSubtodoAction->setEnabled( false );
   connect( mCalendarView,SIGNAL(todoSelected(bool)), mNewSubtodoAction,
            SLOT(setEnabled(bool)) );
@@ -604,8 +604,8 @@ void ActionManager::initActions()
   //mNewJournalAction->setIconText( i18n( "Journal" ) );
   mNewJournalAction->setHelpText( i18n( "Create a new Journal" ) );
   mACollection->addAction( "new_journal", mNewJournalAction );
-  connect( mNewJournalAction, SIGNAL(triggered(bool)), mCalendarView,
-           SLOT(newJournal()) );
+  connect( mNewJournalAction, SIGNAL(triggered(bool)), this,
+           SLOT(slotNewJournal()) );
 
   mConfigureViewAction = new KAction( KIcon( "configure" ), i18n( "Configure View..." ), this );
   mConfigureViewAction->setIconText( i18n( "Configure" ) );
@@ -807,6 +807,26 @@ void ActionManager::setItems( const QStringList &lst )
 void ActionManager::slotResourcesAddedRemoved()
 {
   restoreCollectionViewSetting();
+}
+
+void ActionManager::slotNewEvent()
+{
+  mCalendarView->newEvent( Akonadi::Collection::List() << selectedCollection() );
+}
+
+void ActionManager::slotNewTodo()
+{
+  mCalendarView->newTodo( selectedCollection() );
+}
+
+void ActionManager::slotNewSubTodo()
+{
+  mCalendarView->newSubTodo( selectedCollection() );
+}
+
+void ActionManager::slotNewJournal()
+{
+  mCalendarView->newJournal( selectedCollection() );
 }
 
 void ActionManager::readSettings()
@@ -1744,6 +1764,15 @@ void ActionManager::enableIncidenceActions( bool enabled )
   mSendStatusUpdate->setEnabled( enabled );
   mRequestChange->setEnabled( enabled );
   mRequestUpdate->setEnabled( enabled );
+}
+
+Akonadi::Collection ActionManager::selectedCollection() const
+{
+  const QModelIndex index = mCollectionView->view()->currentIndex();
+  if ( !index.isValid() )
+    return Akonadi::Collection();
+
+  return index.data( EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
 }
 
 void ActionManager::keyBindings()
