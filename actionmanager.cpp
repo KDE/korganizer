@@ -315,11 +315,6 @@ void ActionManager::initActions()
       mRecent = KStandardAction::openRecent( this, SLOT(file_open(const KUrl&)), mACollection );
       mACollection->addAction( "korganizer_openRecent", mRecent );
 
-      mACollection->addAction( KStandardAction::Revert, "korganizer_revert",
-                               this, SLOT(file_revert()) );
-
-      mACollection->addAction( KStandardAction::SaveAs, this, SLOT(file_saveas()) );
-      mACollection->addAction( "korganizer_saveAs", a );
     }
 
     QAction *a = mACollection->addAction( KStandardAction::Print, mCalendarView, SLOT(print()) );
@@ -331,11 +326,6 @@ void ActionManager::initActions()
     KStandardAction::openNew( this, SLOT(file_new()), mACollection );
     KStandardAction::open( this, SLOT(file_open()), mACollection );
     mRecent = KStandardAction::openRecent( this, SLOT(file_open(const KUrl&)), mACollection );
-    if ( mMainWindow->hasDocument() ) {
-      KStandardAction::revert( this, SLOT(file_revert()), mACollection );
-      KStandardAction::saveAs( this, SLOT(file_saveas()), mACollection );
-      KStandardAction::save( this, SLOT(file_save()), mACollection );
-    }
     KStandardAction::print( mCalendarView, SLOT(print()), mACollection );
     QAction * preview = KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );
     preview->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
@@ -996,23 +986,6 @@ void ActionManager::file_archive()
 {
   mCalendarView->archiveCalendar();
 }
-
-void ActionManager::file_revert()
-{
-  openURL( mURL );
-}
-
-void ActionManager::file_saveas()
-{
-  KUrl url = getSaveURL();
-
-  if ( url.isEmpty() ) {
-    return;
-  }
-
-  saveAsURL( url );
-}
-
 
 void ActionManager::file_close()
 {
@@ -1906,7 +1879,6 @@ void ActionManager::openTodoEditor( const QString &summary,
 {
   mCalendarView->newTodo( summary, description, attachments );
 }
-
 void ActionManager::openTodoEditor( const QString &summary,
                                     const QString &description,
                                     const QStringList &attachments,

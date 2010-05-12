@@ -295,14 +295,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** open a calendar and add the contents to the current calendar. */
     void file_merge();
 
-    /** revert to saved */
-    void file_revert();
-
     /** delete or archive old entries in your calendar for speed/space. */
     void file_archive();
-
-    /** save a file under a (possibly) different filename. */
-    void file_saveas();
 
     /** close a file, prompt for save if changes made. */
     void file_close();
