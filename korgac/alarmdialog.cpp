@@ -825,7 +825,7 @@ void AlarmDialog::showDetails()
       QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
       mDetailView->addText( txt );
     }
-    mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
+    mDetailView->setIncidence( item->mIncidence, item->mRemindAt.date() );
   }
 }
 

@@ -47,10 +47,6 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
     {
       mEventViewer->setIncidence( incidence, date );
     }
-    void appendIncidence( const Akonadi::Item &incidence, const QDate &date )
-    {
-      mEventViewer->appendIncidence( incidence, date );
-    }
 
     void addText( const QString &text );
 

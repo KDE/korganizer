@@ -96,20 +96,12 @@ void KOEventViewer::setSource( const QUrl &name )
   UriHandler::process( uri );
 }
 
-bool KOEventViewer::appendIncidence( const Item &item, const QDate &date )
-{
-  if ( !Akonadi::hasIncidence( item ) )
-    return false;
-  addText( IncidenceFormatter::extensiveDisplayStr(
-           Akonadi::displayName(item.parentCollection()), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
-  return true;
-}
-
 void KOEventViewer::setIncidence( const Item &item, const QDate &date )
 {
   clearEvents();
   if ( Akonadi::hasIncidence( item ) ) {
-    appendIncidence( item, date );
+    addText( IncidenceFormatter::extensiveDisplayStr(
+             Akonadi::displayName( item.parentCollection() ), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
     mIncidence = item;
   } else {
     clearEvents( true );

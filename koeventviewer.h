@@ -46,12 +46,10 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     /** Reimplemented from QTextBrowser to handle links. */
     void setSource( const QUrl &name );
 
-    virtual bool appendIncidence( const Akonadi::Item &, const QDate &date );
-
     /**
       Clear viewer.
       @param now Delete view immediately if set; else delete it with the
-      next call to appendIncidence().
+      next call to setIncidence().
     */
     void clearEvents( bool now = false );
 
