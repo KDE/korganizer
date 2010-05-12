@@ -24,8 +24,15 @@
 */
 
 #include "koeventviewerdialog.h"
-#include "koeventviewer.h"
-#include <KLocale>
+
+#include "korganizerinterface.h"
+
+#include <akonadi/item.h>
+#include <akonadi/kcal/incidenceviewer.h>
+#include <akonadi/kcal/utils.h>
+
+#include <KDE/KLocale>
+#include <ktoolinvocation.h>
 
 KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   : KDialog( parent )
@@ -35,16 +42,14 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   setModal( false );
   setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( "document-edit" ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
-  mEventViewer = new KOEventViewer( this );
+  mEventViewer = new Akonadi::IncidenceViewer( this );
   setMainWidget( mEventViewer );
 
   resize( QSize(500, 520).expandedTo(minimumSizeHint()) );
 
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
-  connect( this, SIGNAL(user1Clicked()), mEventViewer,
-           SLOT(editIncidence()) );
-  connect( this, SIGNAL(user2Clicked()), mEventViewer,
-           SLOT(showIncidenceContext()) );
+  connect( this, SIGNAL(user1Clicked()), this, SLOT(editIncidence()) );
+  connect( this, SIGNAL(user2Clicked()), this, SLOT(showIncidenceContext()) );
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()
@@ -52,9 +57,42 @@ KOEventViewerDialog::~KOEventViewerDialog()
   delete mEventViewer;
 }
 
+void KOEventViewerDialog::setIncidence( const Akonadi::Item &incidence, const QDate &date )
+{
+  mEventViewer->setIncidence( incidence, date );
+}
+
 void KOEventViewerDialog::addText( const QString &text )
 {
-  mEventViewer->addText( text );
+  mEventViewer->setHeaderText( text );
+}
+
+void KOEventViewerDialog::editIncidence()
+{
+  const Akonadi::Item item = mEventViewer->item();
+
+  if ( Akonadi::hasIncidence( item ) ) {
+    // make sure korganizer is running or the part is shown
+    KToolInvocation::startServiceByDesktopPath( "korganizer" );
+
+    OrgKdeKorganizerKorganizerInterface korganizerIface(
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+    korganizerIface.editIncidence( QString::number( item.id() ) );
+  }
+}
+
+void KOEventViewerDialog::showIncidenceContext()
+{
+  const Akonadi::Item item = mEventViewer->item();
+
+  if ( Akonadi::hasIncidence( item ) ) {
+    // make sure korganizer is running or the part is shown
+    KToolInvocation::startServiceByDesktopPath( "korganizer" );
+
+    OrgKdeKorganizerKorganizerInterface korganizerIface(
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+    korganizerIface.showIncidenceContext( QString::number( item.id() ) );
+  }
 }
 
 #include "koeventviewerdialog.moc"

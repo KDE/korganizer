@@ -134,22 +134,6 @@ endif (QT_QT3SUPPORT_FOUND)
 
 ########### next target ###############
 
-set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp koeventviewerdialog.cpp)
-
-qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
-qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
-
-kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
-
-target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim kdepimdbusinterfaces akonadi-kcal_next ${KDEPIMLIBS_AKONADI_KMIME_LIBS} ${KDEPIMLIBS_KMIME_LIBS} ${KDEPIMLIBS_MAILTRANSPORT_LIBS})
-
-
-set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-
-########### next target ###############
-
 set(korganizer_core_LIB_SRCS
     koprefs.cpp
     kocore.cpp
@@ -165,7 +149,7 @@ kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
 
-target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim incidenceeditors akonadi-kcal_next korganizer_eventviewer korganizer_interfaces)
+target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} kdepim incidenceeditors akonadi-kcal_next korganizer_interfaces)
 
 set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
@@ -180,6 +164,7 @@ set(korganizerprivate_LIB_SRCS
   collectiongeneralpage.cpp
   koalternatelabel.cpp
   kodecorationlabel.cpp
+  koeventviewerdialog.cpp
   timelabelszone.cpp
   timelabels.cpp
   timescaleconfigdialog.cpp
@@ -256,6 +241,8 @@ qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.
 qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
 qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager calendaradaptor KOrgCalendarAdaptor )
 qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml )
+qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
+qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
 
 kde4_add_library(korganizerprivate SHARED ${korganizerprivate_LIB_SRCS})
 
@@ -266,7 +253,6 @@ target_link_libraries(korganizerprivate
   ${KDEPIMLIBS_AKONADI_LIBS}
   ${KDEPIMLIBS_AKONADI_KCAL_LIBS}
   ${KDEPIMLIBS_MAILTRANSPORT_LIBRARY}
-  korganizer_eventviewer
   kdepim
   korganizer_interfaces
   kdepimdbusinterfaces

@@ -39,13 +39,13 @@
 
 namespace Akonadi {
   class Calendar;
+  class IncidenceViewer;
 }
 class CalPrinter;
 class DateChecker;
 class DateNavigator;
 class DateNavigatorContainer;
 class KODialogManager;
-class KOEventViewer;
 class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
@@ -709,7 +709,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateChecker *mDateChecker;
 
     KVBox *mEventViewerBox;
-    KOEventViewer *mEventViewer;
+    Akonadi::IncidenceViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;
 

@@ -36,11 +36,11 @@ namespace KCal {
 
 namespace Akonadi {
   class Calendar;
+  class IncidenceViewer;
   class Item;
 }
 
 class ReminderListItem;
-class KOEventViewer;
 
 class KComboBox;
 
@@ -99,7 +99,7 @@ class AlarmDialog : public KDialog
     Akonadi::Calendar *mCalendar;
     QVBoxLayout *mTopLayout;
     QTreeWidget *mIncidenceTree;
-    KOEventViewer *mDetailView;
+    Akonadi::IncidenceViewer *mDetailView;
 
     QPoint mPos;
     QSpinBox *mSuspendSpin;

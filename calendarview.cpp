@@ -40,7 +40,6 @@
 #include "history.h"
 #include "kocorehelper.h"
 #include "kodialogmanager.h"
-#include "koeventviewer.h"
 #include "koeventviewerdialog.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
@@ -71,6 +70,7 @@
 #include <akonadi/kcal/mailscheduler.h>
 #include <akonadi/kcal/dndfactory.h>
 #include <akonadi/kcal/incidencechanger.h>
+#include <akonadi/kcal/incidenceviewer.h>
 
 #include <KCal/Calendar>
 #include <KCal/CalFilter>
@@ -144,7 +144,7 @@ CalendarView::CalendarView( QWidget *parent )
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( KDialog::marginHint() );
-  mEventViewer = new KOEventViewer( mEventViewerBox );
+  mEventViewer = new IncidenceViewer( mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
@@ -233,7 +233,7 @@ CalendarView::CalendarView( QWidget *parent )
             "<p>Select an event, to-do or journal entry to view its details "
             "here.</p>" );
 
-  mEventViewer->setDefaultText( s );
+  mEventViewer->setDefaultMessage( s );
   mEventViewer->setWhatsThis(
                    i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
@@ -478,7 +478,6 @@ void CalendarView::readSettings()
      mLeftSplitter->setSizes( sizes );
   }
 
-  mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
   mTodoList->restoreLayout( config, QString( "Sidebar Todo View" ), true );
 
@@ -510,7 +509,6 @@ void CalendarView::writeSettings()
     geometryConfig.writeEntry( "Separator2", list );
   }
 
-  mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
   mTodoList->saveLayout( config, QString( "Sidebar Todo View" ) );
 
@@ -802,7 +800,6 @@ void CalendarView::changeIncidenceDisplay( const Item &item, int action )
     if ( mTodoList ) {
       mTodoList->changeIncidenceDisplay( item, action );
     }
-    mEventViewer->changeIncidenceDisplay( item, activeDate( true ), action );
   } else {
     mViewManager->currentView()->updateView();
     if ( mTodoList ) {

@@ -25,13 +25,13 @@
 #define KOEVENTVIEWERDIALOG_H
 
 #include "korganizer_export.h"
-#include "koeventviewer.h"
-#include <KDialog>
+
+#include <KDE/KDialog>
 
 namespace Akonadi {
-  class Item;
+class IncidenceViewer;
+class Item;
 }
-class KOEventViewer;
 
 /**
   Viewer dialog for events.
@@ -43,15 +43,16 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
     explicit KOEventViewerDialog( QWidget *parent = 0);
     virtual ~KOEventViewerDialog();
 
-    void setIncidence( const Akonadi::Item &incidence, const QDate &date )
-    {
-      mEventViewer->setIncidence( incidence, date );
-    }
+    void setIncidence( const Akonadi::Item &incidence, const QDate &date );
 
     void addText( const QString &text );
 
+  private Q_SLOTS:
+    void editIncidence();
+    void showIncidenceContext();
+
   private:
-    KOEventViewer *mEventViewer;
+    Akonadi::IncidenceViewer *mEventViewer;
 };
 
 #endif
