@@ -187,6 +187,15 @@ void ActionManager::init()
   // initialize the KAction instances
   initActions();
 
+  // set up autoExporting stuff
+  mAutoExportTimer = new QTimer( this );
+  connect( mAutoExportTimer, SIGNAL(timeout()), SLOT(checkAutoExport()) );
+  if ( KOPrefs::instance()->mAutoExport &&
+       KOPrefs::instance()->mAutoExportInterval > 0 ) {
+    mAutoExportTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoExportInterval );
+  }
+
+
   // per default (no calendars activated) disable actions
   slotResourcesChanged( false );
 
@@ -311,9 +320,6 @@ void ActionManager::initActions()
 
       mACollection->addAction( KStandardAction::SaveAs, this, SLOT(file_saveas()) );
       mACollection->addAction( "korganizer_saveAs", a );
-
-      mACollection->addAction( KStandardAction::Save, this, SLOT(file_save()) );
-      mACollection->addAction( "korganizer_save", a );
     }
 
     QAction *a = mACollection->addAction( KStandardAction::Print, mCalendarView, SLOT(print()) );
@@ -1007,24 +1013,6 @@ void ActionManager::file_saveas()
   saveAsURL( url );
 }
 
-void ActionManager::file_save()
-{
-  if ( mMainWindow->hasDocument() ) {
-    if ( mURL.isEmpty() ) {
-      file_saveas();
-      return;
-    } else {
-      saveURL();
-    }
-  } else {
-    //mCalendarView->calendar()->save();
-  }
-
-  // export to HTML
-  if ( KOPrefs::instance()->mHtmlWithSave ) {
-    exportHTML();
-  }
-}
 
 void ActionManager::file_close()
 {
@@ -2111,5 +2099,19 @@ QWidget *ActionManager::dialogParent()
 {
   return mCalendarView->topLevelWidget();
 }
+
+void ActionManager::checkAutoExport()
+{
+  // Don't save if auto save interval is zero
+  if ( KOPrefs::instance()->mAutoExportInterval == 0 ) {
+    return;
+  }
+
+  // has this calendar been saved before? If yes automatically save it.
+  if ( KOPrefs::instance()->mAutoExport ) {
+    exportHTML();
+  }
+}
+
 
 #include "actionmanager.moc"

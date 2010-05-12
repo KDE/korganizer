@@ -127,30 +127,26 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   QVBoxLayout *saveLayout = new QVBoxLayout( saveFrame );
 
   QGroupBox *saveGroupBox =
-    new QGroupBox( i18nc( "@title:group", "Saving Calendar" ), saveFrame );
+    new QGroupBox( i18nc( "@title:group", "Exporting Calendar" ), saveFrame );
   saveLayout->addWidget( saveGroupBox );
   QVBoxLayout *saveGroupLayout = new QVBoxLayout;
   saveGroupBox->setLayout( saveGroupLayout );
 
-  KPrefsWidBool *htmlWithSave =
-    addWidBool( KOPrefs::instance()->htmlWithSaveItem(), saveGroupBox );
-  saveGroupLayout->addWidget( htmlWithSave->checkBox() );
-
-  KPrefsWidBool *autoSave =
-    addWidBool( KOPrefs::instance()->autoSaveItem(), saveGroupBox );
-  saveGroupLayout->addWidget( autoSave->checkBox() );
+  KPrefsWidBool *autoExportHTML =
+    addWidBool( KOPrefs::instance()->autoExportItem(), saveGroupBox );
+  saveGroupLayout->addWidget( autoExportHTML->checkBox() );
 
   QBoxLayout *intervalLayout = new QHBoxLayout;
   saveGroupLayout->addLayout( intervalLayout );
 
-  KPrefsWidInt *autoSaveInterval =
-    addWidInt( KOPrefs::instance()->autoSaveIntervalItem(), saveGroupBox );
-  connect( autoSave->checkBox(), SIGNAL(toggled(bool)),
-           autoSaveInterval->label(), SLOT(setEnabled(bool)) );
-  connect( autoSave->checkBox(), SIGNAL(toggled(bool)),
-           autoSaveInterval->spinBox(), SLOT(setEnabled(bool)) );
-  intervalLayout->addWidget( autoSaveInterval->label() );
-  intervalLayout->addWidget( autoSaveInterval->spinBox() );
+  KPrefsWidInt *autoExportInterval =
+    addWidInt( KOPrefs::instance()->autoExportIntervalItem(), saveGroupBox );
+  connect( autoExportHTML->checkBox(), SIGNAL(toggled(bool)),
+           autoExportInterval->label(), SLOT(setEnabled(bool)) );
+  connect( autoExportHTML->checkBox(), SIGNAL(toggled(bool)),
+           autoExportInterval->spinBox(), SLOT(setEnabled(bool)) );
+  intervalLayout->addWidget( autoExportInterval->label() );
+  intervalLayout->addWidget( autoExportInterval->spinBox() );
 
   KPrefsWidBool *confirmItem =
     addWidBool( KOPrefs::instance()->confirmItem(), saveFrame );

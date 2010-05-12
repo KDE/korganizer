@@ -272,7 +272,10 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void importCalendar( const KUrl &url );
 
   protected slots:
-     void setItems( const QStringList & );
+    void setItems( const QStringList & );
+
+    /** called by the autoExportTimer to automatically export the calendar */
+    void checkAutoExport();
 
     /** open new window */
     void file_new();
@@ -297,9 +300,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     /** delete or archive old entries in your calendar for speed/space. */
     void file_archive();
-
-    /** save a file with the current fileName. */
-    void file_save();
 
     /** save a file under a (possibly) different filename. */
     void file_saveas();
@@ -378,6 +378,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     QString mLastUrl;        // URL of last loaded calendar.
 
     KTemporaryFile *mTempFile;
+    QTimer *mAutoExportTimer;    // used if calendar is to be autoexported
     QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
