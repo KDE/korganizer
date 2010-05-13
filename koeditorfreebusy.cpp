@@ -944,6 +944,7 @@ void KOEditorFreeBusy::slotOrganizerChanged(const QString & newOrganizer)
     if (!newOrganizerAttendee) {
       Attendee *a = new Attendee( name, email, true );
       insertAttendee( a, false );
+      mnewAttendees.append( a );
       updateAttendee();
     }
   }

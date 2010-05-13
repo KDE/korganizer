@@ -366,6 +366,7 @@ void KOEditorDetails::updateCurrentItem()
 void KOEditorDetails::slotInsertAttendee(Attendee * a)
 {
   insertAttendee( a );
+  mnewAttendees.append(a);
 }
 
 void KOEditorDetails::changeStatusForMe(Attendee::PartStat status)

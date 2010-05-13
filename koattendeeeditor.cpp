@@ -239,6 +239,7 @@ void KOAttendeeEditor::insertAttendeeFromAddressee(const KABC::Addressee &a, con
                                a.uid() );
   newAt->setRSVP( rsvp );
   insertAttendee( newAt, true );
+  mnewAttendees.append( newAt );
 }
 
 void KOAttendeeEditor::fillOrganizerCombo()
