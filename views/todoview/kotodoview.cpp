@@ -38,6 +38,7 @@
 #include "kotodomodel.h"
 #include "kotodoviewquickaddline.h"
 #include "kotodoviewquicksearch.h"
+#include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
 #include <libkdepim/kdatepickerpopup.h>

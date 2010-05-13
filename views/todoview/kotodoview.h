@@ -28,11 +28,8 @@
 #define KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
-#include "kotodoviewsortfilterproxymodel.h"
 
 #include <Akonadi/Item>
-
-#include <KCal/Todo>
 
 namespace KCal {
   class Incidence;
@@ -55,6 +52,7 @@ class QModelIndex;
 class KOTodoModel;
 class KOTodoViewView;
 class KOTodoCategoriesDelegate;
+class KOTodoViewSortFilterProxyModel;
 class KOTodoViewQuickSearch;
 class KOTodoViewQuickAddLine;
 

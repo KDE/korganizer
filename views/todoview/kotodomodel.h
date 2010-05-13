@@ -25,8 +25,6 @@
 #ifndef KOTODOMODEL_H
 #define KOTODOMODEL_H
 
-#include <akonadi/kcal/incidencechanger.h>
-
 #include <QAbstractItemModel>
 #include <QString>
 #include <QHash>
@@ -41,6 +39,7 @@ using namespace KCal;
 
 namespace Akonadi {
   class Calendar;
+  class IncidenceChanger;
 }
 
 /**

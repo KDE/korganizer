@@ -23,10 +23,8 @@
 */
 
 #include "kotodomodel.h"
-#include <kcalprefs.h>
 #include "koglobals.h"
 #include "koprefs.h"
-#include "kodialogmanager.h"
 
 #include <KCal/CalFormat>
 #include <KCal/Incidence>
@@ -38,6 +36,7 @@
 #include <KCal/VCalDrag>
 #endif
 
+#include <kcalprefs.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/incidencechanger.h>
