@@ -2023,7 +2023,7 @@ void ActionManager::importCalendar( const KUrl &url )
   }
 
   ImportDialog *dialog;
-  dialog = new ImportDialog( url, mMainWindow->topLevelWidget(), mIsPart );
+  dialog = new ImportDialog( url, mMainWindow->topLevelWidget() );
   connect( dialog, SIGNAL(dialogFinished(ImportDialog *)),
            SLOT(slotImportDialogFinished(ImportDialog *)) );
   connect( dialog, SIGNAL(openURL(const KUrl &, bool)),

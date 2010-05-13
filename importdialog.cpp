@@ -38,7 +38,7 @@
 #include <QFrame>
 
 
-ImportDialog::ImportDialog( const KUrl &url, QWidget *parent, bool isPart )
+ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   : KDialog( parent ), mUrl( url )
 {
   setCaption( i18n( "Import Calendar" ) );
