@@ -185,8 +185,8 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   //Calendar Account
   QFrame *calendarFrame = new QFrame( this );
-  tabWidget->addTab( calendarFrame, KIcon( "preferences-other" ),
-                     i18nc( "@title:tab calendar account settings", "Calendar Account" ) );
+  tabWidget->addTab( calendarFrame, KIcon( "office-calendar" ),
+                     i18nc( "@title:tab calendar account settings", "Calendars" ) );
 
   mAccountsCalendar.setupUi( calendarFrame );
 
