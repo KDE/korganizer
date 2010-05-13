@@ -783,7 +783,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   if ( !incidence ) {
     return;
   }
-  if ( !mChanger || !mChanger->beginChange( aitem ) ) {
+
+  if ( !mChanger ) {
     return;
   }
   Incidence::Ptr oldIncidence( incidence->clone() );
