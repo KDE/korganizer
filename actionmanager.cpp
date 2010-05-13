@@ -89,6 +89,7 @@
 #include <KSystemTimeZone>
 #include <KTemporaryFile>
 #include <KTipDialog>
+#include <KMenuBar>
 #include <KToggleAction>
 #include <KWindowSystem>
 #include <KIO/NetAccess>

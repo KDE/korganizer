@@ -30,11 +30,9 @@
 
 #include "korganizer_export.h"
 #include "korganizer/part.h"
-#include <KMenuBar>
 
 #include <KUrl>
 
-#include <QDateTime>
 #include <QObject>
 
 #include <akonadi/item.h>
@@ -66,6 +64,7 @@ class KRecentFilesAction;
 class KSelectAction;
 class KTemporaryFile;
 class KToggleAction;
+class KMenuBar;
 
 /**
   The ActionManager creates all the actions in KOrganizer. This class

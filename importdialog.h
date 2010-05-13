@@ -43,7 +43,6 @@ class ImportDialog : public KDialog
   signals:
     void dialogFinished( ImportDialog * );
     void openURL( const KUrl &, bool );
-    void newWindow( const KUrl & );
     void addResource( const KUrl & );
 
   private:
@@ -51,7 +50,6 @@ class ImportDialog : public KDialog
 
     QRadioButton *mAddButton;
     QRadioButton *mMergeButton;
-    QRadioButton *mOpenButton;
 };
 
 #endif
