@@ -312,7 +312,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
         break;
       }
 
-      rc = KMessageBox::questionYesNoCancel(
+      rc = KMessageBox::questionYesNo(
              parent, txt, i18n( "Group Scheduling Email" ),
              KGuiItem( i18n( "Send Email" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
     } else {
