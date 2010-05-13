@@ -377,9 +377,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     // list of all existing KOrganizer instances
     static KOWindowList *mWindowList;
 
-    // Actions
-    KRecentFilesAction *mRecent;
-
     KToggleAction *mDateNavigatorShowAction;
     KToggleAction *mTodoViewShowAction;
     KToggleAction *mCollectionViewShowAction;

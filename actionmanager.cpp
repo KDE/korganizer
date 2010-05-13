@@ -114,7 +114,7 @@ KOWindowList *ActionManager::mWindowList = 0;
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart, KMenuBar *menuBar )
-  : QObject( parent ), mRecent( 0 ),
+  : QObject( parent ),
     mCollectionViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
     mCollectionView( 0 ), mCollectionViewStateSaver( 0 ), mIsClosing( false )
 {
@@ -312,10 +312,6 @@ void ActionManager::initActions()
 
       a = mACollection->addAction( KStandardAction::Open, this, SLOT(file_open()) );
       mACollection->addAction( "korganizer_open", a );
-
-      mRecent = KStandardAction::openRecent( this, SLOT(file_open(const KUrl&)), mACollection );
-      mACollection->addAction( "korganizer_openRecent", mRecent );
-
     }
 
     QAction *a = mACollection->addAction( KStandardAction::Print, mCalendarView, SLOT(print()) );
@@ -326,7 +322,6 @@ void ActionManager::initActions()
   } else {
     KStandardAction::openNew( this, SLOT(file_new()), mACollection );
     KStandardAction::open( this, SLOT(file_open()), mACollection );
-    mRecent = KStandardAction::openRecent( this, SLOT(file_open(const KUrl&)), mACollection );
     KStandardAction::print( mCalendarView, SLOT(print()), mACollection );
     QAction * preview = KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );
     preview->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
@@ -832,9 +827,6 @@ void ActionManager::readSettings()
   // defaults where none are to be found
 
   KConfig *config = KOGlobals::self()->config();
-  if ( mRecent ) {
-    mRecent->loadEntries( config->group( "RecentFiles" ) );
-  }
   mCalendarView->readSettings();
   restoreCollectionViewSetting();
 }
@@ -867,10 +859,6 @@ void ActionManager::writeSettings()
 
   if ( mEventViewerShowAction ) {
     config.writeEntry( "EventViewerVisible", mEventViewerShowAction->isChecked() );
-  }
-
-  if ( mRecent ) {
-    mRecent->saveEntries( KOGlobals::self()->config()->group( "RecentFiles" ) );
   }
 
   KConfigGroup selectionViewGroup = KOGlobals::self()->config()->group( "GlobalCollectionView" );
@@ -1021,15 +1009,9 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
     mFile = url.toLocalFile();
     if ( !KStandardDirs::exists( mFile ) ) {
       mMainWindow->showStatusMessage( i18n( "New calendar '%1'.", url.prettyUrl() ) );
-      if ( mRecent ) {
-        mRecent->addUrl( url );
-      }
     } else {
       bool success = mCalendarView->openCalendar( mFile, merge );
       if ( success ) {
-        if ( mRecent ) {
-          mRecent->addUrl( url );
-        }
         showStatusMessageOpen( url, merge );
       }
     }
@@ -1042,10 +1024,6 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
       if ( merge ) {
         KIO::NetAccess::removeTempFile( tmpFile );
         if ( success ) {
-          if ( mRecent ) {
-            mRecent->addUrl( url );
-          }
-
           showStatusMessageOpen( url, merge );
         }
       } else {
@@ -1055,9 +1033,6 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
           mFile = tmpFile;
           setTitle();
           kDebug() << "-- Add recent URL:" << url.prettyUrl();
-          if ( mRecent ) {
-            mRecent->addUrl( url );
-          }
           showStatusMessageOpen( url, merge );
         }
       }
@@ -1152,9 +1127,6 @@ bool ActionManager::saveURL()
       mFile = mURL.toLocalFile();
     }
     setTitle();
-    if ( mRecent ) {
-      mRecent->addUrl( mURL );
-    }
   }
 
   if ( !mCalendarView->saveCalendar( mFile ) ) {
@@ -1269,9 +1241,6 @@ bool ActionManager::saveAsURL( const KUrl &url )
     mTempFile = tempFile;
     KIO::NetAccess::removeTempFile( fileOrig );
     setTitle();
-    if ( mRecent ) {
-      mRecent->addUrl( mURL );
-    }
   } else {
     KMessageBox::sorry( dialogParent(),
                         i18n( "Unable to save calendar to the file %1.", mFile ),
