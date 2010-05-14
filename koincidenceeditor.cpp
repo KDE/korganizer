@@ -367,7 +367,7 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   for ( it = attendees.begin(); it != attendees.end(); ++it ) {
     QString name, email;
     KABC::Addressee::parseEmailAddress( *it, name, email );
-    mAttendeeEditor->insertAttendee( new Attendee( name, email ) );
+    mAttendeeEditor->insertAttendee( new Attendee( name, email, true, Attendee::NeedsAction ) );
   }
 }
 
