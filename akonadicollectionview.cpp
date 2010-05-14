@@ -259,6 +259,8 @@ void AkonadiCollectionView::setDefaultCalendar()
   KCalPrefs::instance()->usrWriteConfig();
   updateMenu();
   updateView();
+
+  emit defaultResourceChanged( collection );
 }
 
 void AkonadiCollectionView::editCalendar()

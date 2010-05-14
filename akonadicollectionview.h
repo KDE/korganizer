@@ -85,6 +85,7 @@ class AkonadiCollectionView : public CalendarViewExtension
   signals:
     void resourcesChanged( bool enabled );
     void resourcesAddedRemoved();
+    void defaultResourceChanged( const Akonadi::Collection & );
   private:
     void updateView();
     void updateMenu();

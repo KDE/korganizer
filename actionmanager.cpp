@@ -263,8 +263,10 @@ void ActionManager::createCalendarAkonadi()
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
-  connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
-  connect( mCollectionView, SIGNAL( resourcesAddedRemoved() ), SLOT( slotResourcesAddedRemoved() ) );
+  connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)));
+  connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
+  connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)), SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
+
   mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
   mCollectionView->setCollectionSelectionProxyModel( selectionProxyModel );
 
@@ -799,6 +801,11 @@ void ActionManager::setItems( const QStringList &lst )
 void ActionManager::slotResourcesAddedRemoved()
 {
   restoreCollectionViewSetting();
+}
+
+void ActionManager::slotDefaultResourceChanged( const Akonadi::Collection & collection )
+{
+  mCalendarView->incidenceChanger()->setDefaultCollection( collection );
 }
 
 void ActionManager::slotNewEvent()

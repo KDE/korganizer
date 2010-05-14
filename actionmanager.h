@@ -348,6 +348,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void dumpText( const QString & );  // only for debugging purposes
 
     void slotResourcesChanged(bool);
+    void slotDefaultResourceChanged( const Akonadi::Collection & );
     void slotChangeComboActionItem(int);
     void slotResourcesAddedRemoved();
 
