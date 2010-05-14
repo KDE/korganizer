@@ -714,11 +714,9 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setDescription( description );
 
         Akonadi::Collection selectedCollection;
-        int dialogCode = 0;
-        if ( !mChanger->addIncidence( journal, this, selectedCollection, dialogCode ) ) {
-          if ( dialogCode != QDialog::Rejected ) {
-            Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
-          }
+
+        if ( !mChanger->addIncidence( journal, newIncidence_.parentCollection(), this ) ) {
+          kError() << "Unable to add Journal";
           return;
         }
 
