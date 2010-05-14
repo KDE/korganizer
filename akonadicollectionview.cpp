@@ -183,7 +183,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
 
   connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
 
-  connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+  connect( mCollectionview->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),
            this, SLOT(selectionChanged()) );
 
   connect( mBaseModel, SIGNAL( rowsInserted( const QModelIndex&, int, int ) ),
