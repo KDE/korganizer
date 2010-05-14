@@ -597,7 +597,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
     void showErrorMessage( const QString & );
-    void schedule( iTIPMethod, const Akonadi::Item &incidence );
+    void schedule( KCal::iTIPMethod, const Akonadi::Item &incidence );
     void addIncidenceOn( const Akonadi::Item &incidence, const QDate & );
     void moveIncidenceTo( const Akonadi::Item &incidence, const QDate & );
     void filterActivated( int filterNum );

@@ -303,8 +303,8 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
   connect( mChanger, SIGNAL(incidenceDeleted(Akonadi::Item)),
            this, SLOT(incidenceDeleted(Akonadi::Item)) );
 
-  connect( mChanger, SIGNAL(schedule(iTIPMethod,Akonadi::Item)),
-           this, SLOT(schedule(iTIPMethod,Akonadi::Item)) );
+  connect( mChanger, SIGNAL(schedule(KCal::iTIPMethod,Akonadi::Item)),
+           this, SLOT(schedule(KCal::iTIPMethod,Akonadi::Item)) );
 
   connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
            mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
@@ -1892,7 +1892,7 @@ void CalendarView::uploadFreeBusy()
   Akonadi::Groupware::instance()->freeBusyManager()->publishFreeBusy( this );
 }
 
-void CalendarView::schedule( iTIPMethod method, const Item &item )
+void CalendarView::schedule( KCal::iTIPMethod method, const Item &item )
 {
   Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
