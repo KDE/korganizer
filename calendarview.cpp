@@ -724,14 +724,13 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
 
       } else { // journal list is not empty
         Item journalItem = journals.first();
-        Journal::Ptr journal = Akonadi::journal( journalItem );
-        Journal::Ptr oldJournal( journal->clone() );
-        journal->setDescription( journal->description().append( '\n' + description ) );
-
-        if ( !mChanger->changeIncidence( oldJournal, journalItem,
-                                         IncidenceChanger::DESCRIPTION_MODIFIED,
-                                         this ) ) {
-          Akonadi::IncidenceChanger::errorSaveIncidence( this, journal );
+        if ( mChanger->beginChange( journalItem ) ) {
+          Journal::Ptr journal = Akonadi::journal( journalItem );
+          Journal::Ptr oldJournal( journal->clone() );
+          journal->setDescription( journal->description().append( '\n' + description ) );
+          mChanger->endChange( journalItem );
+        } else {
+          kError()<< "Unable to lock incidence";
           return;
         }
       }
