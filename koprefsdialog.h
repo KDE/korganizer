@@ -67,7 +67,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 
   protected slots:
     void toggleEmailSettings( bool on );
-    void slotAccountSelected(const Akonadi::AgentInstance&);
+    void slotAccountSelected();
     void slotAddAccount();
     void slotModifySelectedAccount();
     void slotRemoveSelectedAccount();

@@ -196,8 +196,8 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addMimeTypeFilter( "text/calendar" );
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
   mAccountsCalendar.mFilterAccount->setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
-  connect( mAccountsCalendar.mAccountList, SIGNAL( currentChanged( const Akonadi::AgentInstance&, const Akonadi::AgentInstance& ) ),
-           SLOT( slotAccountSelected( const Akonadi::AgentInstance& ) ) );
+  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
+           SLOT(slotAccountSelected()));
   connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
            this, SLOT(slotModifySelectedAccount()) );
 
@@ -216,13 +216,14 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 }
 
 
-void KOPrefsDialogMain::slotAccountSelected(const Akonadi::AgentInstance& current)
+void KOPrefsDialogMain::slotAccountSelected()
 {
-  if ( !current.isValid() ) {
+  if ( mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty() ) {
     mAccountsCalendar.mModifyAccountButton->setEnabled( false );
     mAccountsCalendar.mRemoveAccountButton->setEnabled( false );
   } else {
-    mAccountsCalendar.mModifyAccountButton->setEnabled( !current.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
+    Akonadi::AgentInstance selectedAgent = mAccountsCalendar.mAccountList->selectedAgentInstances().first();
+    mAccountsCalendar.mModifyAccountButton->setEnabled( !selectedAgent.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
     mAccountsCalendar.mRemoveAccountButton->setEnabled( true );
   }
 }
@@ -258,10 +259,11 @@ void KOPrefsDialogMain::slotModifySelectedAccount()
 void KOPrefsDialogMain::slotRemoveSelectedAccount()
 {
   const Akonadi::AgentInstance instance =  mAccountsCalendar.mAccountList->currentAgentInstance();
-  if ( instance.isValid() )
+  if ( instance.isValid() ) {
     Akonadi::AgentManager::self()->removeInstance( instance );
+  }
 
-  slotAccountSelected( mAccountsCalendar.mAccountList->currentAgentInstance() );
+  slotAccountSelected();
 }
 
 
