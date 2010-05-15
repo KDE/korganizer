@@ -28,8 +28,6 @@
 //
 // Widget showing one Journal entry
 
-#include <akonadi/kcal/incidencechanger.h>
-
 #include <kcal/journal.h>
 #include <kcal/listbase.h>
 #include <kvbox.h>
@@ -48,6 +46,7 @@ class QPushButton;
 
 namespace Akonadi {
   class Calendar;
+  class IncidenceChanger;
 }
 
 using namespace KCal;
