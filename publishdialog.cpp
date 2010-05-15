@@ -159,9 +159,9 @@ void PublishDialog::openAddressbook()
   if ( !dlg.exec() )
     return;
 
-  const Akonadi::EmailAddressSelectionView::Selection::List selections = dlg.selectedAddresses();
+  const Akonadi::EmailAddressSelection::List selections = dlg.selectedAddresses();
   if ( !selections.isEmpty() ) {
-    foreach ( const Akonadi::EmailAddressSelectionView::Selection &selection, selections ) {
+    foreach ( const Akonadi::EmailAddressSelection &selection, selections ) {
       mUI.mNameLineEdit->setEnabled( true );
       mUI.mEmailLineEdit->setEnabled( true );
       QListWidgetItem *item = new QListWidgetItem( mUI.mListWidget );
