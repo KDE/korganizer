@@ -278,6 +278,8 @@ void CalendarView::setCalendar( Akonadi::Calendar *cal )
   setIncidenceChanger( new IncidenceChanger( mCalendar, this,
                                              KCalPrefs::instance()->defaultCollection() ) );
 
+  mChanger->setDestinationPolicy( static_cast<IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
+
   mCalendar->registerObserver( this );
 
   mDateNavigatorContainer->setCalendar( mCalendar );
@@ -665,6 +667,8 @@ void CalendarView::updateConfig( const QByteArray &receiver )
 
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
+
+  mChanger->setDestinationPolicy( static_cast<IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
 }
 
 void CalendarView::incidenceAdded( const Item &incidence )
