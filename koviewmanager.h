@@ -51,7 +51,6 @@ namespace KOrg {
 }
 using namespace KOrg;
 
-
 /**
   This class manages the views of the calendar. It owns the objects and handles
   creation and selection.
@@ -112,13 +111,13 @@ class KOViewManager : public QObject
 
     void updateMultiCalendarDisplay();
 
-    /*
-    * Returns true if agenda is the current view.
-    *
-    * Never use the pointer returned by agendaView()
-    * to know if agenda is selected, because agenda has other modes
-    * (tabbed, side by side). Use this function instead.
-    */
+    /**
+     * Returns true if agenda is the current view.
+     *
+     * Never use the pointer returned by agendaView()
+     * to know if agenda is selected, because agenda has other modes
+     * (tabbed, side by side). Use this function instead.
+     */
     bool agendaIsSelected() const;
 
     /**
@@ -176,6 +175,7 @@ class KOViewManager : public QObject
 
     KOrg::BaseView *mLastEventView;
     KTabWidget *mAgendaViewTabs;
+    int mAgendaViewTabIndex;
 
     RangeMode mRangeMode;
 };

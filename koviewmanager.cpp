@@ -66,6 +66,7 @@ KOViewManager::KOViewManager( CalendarView *mainView )
   mJournalView = 0;
   mTimelineView = 0;
   mAgendaViewTabs = 0;
+  mAgendaViewTabIndex = 0;
   mTimeSpentView = 0;
   mMonthView = 0;
   mRangeMode = NO_RANGE;
@@ -163,7 +164,7 @@ void KOViewManager::writeSettings( KConfig *config )
   }
 
   // write out custom view configuration
-  Q_FOREACH( KOrg::BaseView* const view, mViews ) {
+  Q_FOREACH ( KOrg::BaseView *const view, mViews ) {
     KConfigGroup group = KGlobal::config()->group( view->identifier() );
     view->saveConfig( group );
   }
@@ -197,24 +198,30 @@ void KOViewManager::showView( KOrg::BaseView *view )
   if ( w ) {
     KActionCollection *ac = w->getActionCollection();
     if ( ac ) {
-      if ( QAction* action = ac->action( "configure_view" ) ) {
+      if ( QAction *action = ac->action( "configure_view" ) ) {
         action->setEnabled( view->hasConfigurationDialog() );
       }
 
       QStringList zoomActions;
       QStringList rangeActions;
 
-      zoomActions << "zoom_in_horizontally" << "zoom_out_horizontally" << "zoom_in_vertically" << "zoom_out_vertically";
-      rangeActions << "select_workweek" << "select_week" << "select_day" << "select_nextx";
+      zoomActions << "zoom_in_horizontally"
+                  << "zoom_out_horizontally"
+                  << "zoom_in_vertically"
+                  << "zoom_out_vertically";
+      rangeActions << "select_workweek"
+                   << "select_week"
+                   << "select_day"
+                   << "select_nextx";
 
       for ( int i = 0; i < zoomActions.size(); ++i ) {
-        if ( QAction* action = ac->action( zoomActions[i] ) ) {
+        if ( QAction *action = ac->action( zoomActions[i] ) ) {
           action->setEnabled( view->supportsZoom() );
         }
       }
 
       for ( int i = 0; i < rangeActions.size(); ++i ) {
-        if ( QAction* action = ac->action( rangeActions[i] ) ) {
+        if ( QAction *action = ac->action( rangeActions[i] ) ) {
           action->setEnabled( view->supportsDateRangeSelection() );
         }
       }
@@ -466,6 +473,10 @@ void KOViewManager::showAgendaView()
       connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget *)),
               this, SLOT(currentAgendaViewTabChanged(QWidget *)) );
       mMainView->viewStack()->addWidget( mAgendaViewTabs );
+
+      KConfig *config = KOGlobals::self()->config();
+      KConfigGroup viewConfig( config, "Views" );
+      mAgendaViewTabIndex = viewConfig.readEntry( "Agenda View Tab Index", 0 );
     }
     parent = mAgendaViewTabs;
   }
@@ -503,6 +514,7 @@ void KOViewManager::showAgendaView()
     }
     if ( showBoth && mAgendaViewTabs->indexOf( mAgendaSideBySideView ) < 0 ) {
       mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n( "Calendars Side by Side" ) );
+      mAgendaViewTabs->setCurrentIndex( mAgendaViewTabIndex );
     } else if ( !showBoth && mMainView->viewStack()->indexOf( mAgendaSideBySideView ) < 0 ) {
       mAgendaSideBySideView->setParent( parent );
       mMainView->viewStack()->addWidget( mAgendaSideBySideView );
@@ -648,6 +660,10 @@ QWidget *KOViewManager::widgetForView( KOrg::BaseView *view ) const
 
 void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
 {
+  KConfig *config = KOGlobals::self()->config();
+  KConfigGroup viewConfig( config, "Views" );
+  viewConfig.writeEntry( "Agenda View Tab Index", mAgendaViewTabs->currentIndex() );
+
   if ( widget ) {
     goMenu( true );
     showView( static_cast<KOrg::BaseView*>( widget ) );
