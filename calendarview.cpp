@@ -1427,6 +1427,24 @@ void CalendarView::toggleAlarm( const Item &item )
     Alarm *alm = incidence->newAlarm();
     alm->setType( Alarm::Display );
     alm->setEnabled( true );
+    int duration; // in secs
+    switch( KOPrefs::instance()->mReminderTimeUnits ) {
+    default:
+    case 0: // mins
+      duration = KOPrefs::instance()->mReminderTime * 60;
+      break;
+    case 1: // hours
+      duration = KOPrefs::instance()->mReminderTime * 60 * 60;
+      break;
+    case 2: // days
+      duration = KOPrefs::instance()->mReminderTime * 60 * 60 * 24;
+      break;
+    }
+    if ( incidence->type() == "Event" ) {
+      alm->setStartOffset( KCal::Duration( -duration ) );
+    } else {
+      alm->setEndOffset( KCal::Duration( -duration ) );
+    }
   }
   mChanger->changeIncidence( oldincidence, item, IncidenceChanger::ALARM_MODIFIED, this );
   mChanger->endChange( item );
