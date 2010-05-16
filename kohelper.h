@@ -28,6 +28,8 @@
 
 #include <KCal/Incidence>
 
+#include <Akonadi/Entity>
+
 #include <QColor>
 
 namespace KOrg {
@@ -70,7 +72,7 @@ namespace KOHelper
   /**
     Return true if it's the standard calendar
   */
-  KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Collection &collection );
+  KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Entity::Id &id );
 }
 
 #endif

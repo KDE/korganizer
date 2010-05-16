@@ -275,8 +275,7 @@ void CalendarView::setCalendar( Akonadi::Calendar *cal )
   connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
   connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
-  setIncidenceChanger( new IncidenceChanger( mCalendar, this,
-                                             KCalPrefs::instance()->defaultCollection() ) );
+  setIncidenceChanger( new IncidenceChanger( mCalendar, this, KCalPrefs::instance()->defaultCalendarId() ) );
 
   mChanger->setDestinationPolicy( static_cast<IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
 

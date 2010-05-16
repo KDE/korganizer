@@ -803,9 +803,9 @@ void ActionManager::slotResourcesAddedRemoved()
   restoreCollectionViewSetting();
 }
 
-void ActionManager::slotDefaultResourceChanged( const Akonadi::Collection & collection )
+void ActionManager::slotDefaultResourceChanged( const Akonadi::Collection &collection )
 {
-  mCalendarView->incidenceChanger()->setDefaultCollection( collection );
+  mCalendarView->incidenceChanger()->setDefaultCollectionId( collection.id() );
 }
 
 void ActionManager::slotNewEvent()
@@ -1558,7 +1558,7 @@ void ActionManager::downloadNewStuff()
     }
 
     //AKONADI_PORT avoid this local incidence changer copy...
-    IncidenceChanger changer( mCalendar, 0, Collection() );
+    IncidenceChanger changer( mCalendar, 0, Collection().id() );
 
     Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView, true /*use default collection*/ );
     FileStorage storage( &cal );
@@ -2037,7 +2037,7 @@ void ActionManager::slotAutoArchive()
   EventArchiver archiver;
   connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
   //AKONADI_PORT avoid this local incidence changer copy...
-  IncidenceChanger changer( mCalendar, 0, Collection() );
+  IncidenceChanger changer( mCalendar, 0, Collection().id() );
   archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )

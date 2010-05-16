@@ -101,12 +101,12 @@ namespace {
           }
         } else if ( role == Qt::FontRole ) {
           const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-          if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection )) {
+          if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection.id() ) ) {
             QFont font = qvariant_cast<QFont>( QSortFilterProxyModel::data( index, Qt::FontRole ) );
             font.setBold( true );
             if ( !mInitDefaultCalendar ) {
               mInitDefaultCalendar = true;
-              KCalPrefs::instance()->setDefaultCollection( collection );
+              KCalPrefs::instance()->setDefaultCalendarId( collection.id() );
             }
             return font;
           }
@@ -255,7 +255,7 @@ void AkonadiCollectionView::setDefaultCalendar()
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = collectionFromIndex( index );
-  KCalPrefs::instance()->setDefaultCollection( collection );
+  KCalPrefs::instance()->setDefaultCalendarId( collection.id() );
   KCalPrefs::instance()->usrWriteConfig();
   updateMenu();
   updateView();
@@ -350,7 +350,7 @@ void AkonadiCollectionView::updateMenu()
       const QString resource = collection.resource();
       Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
       mEditAction->setEnabled( !instance.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
-      mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection ) );
+      mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection.id() ) );
     } else {
       mDisableColor->setEnabled( false );
       mEditAction->setEnabled( false );
@@ -424,7 +424,7 @@ void AkonadiCollectionView::deleteCalendar()
     bool isTopLevel = collection.parentCollection() == Collection::root();
 
     mNotSendAddRemoveSignal = true;
-    mWasDefaultCalendar = KOHelper::isStandardCalendar( collection );
+    mWasDefaultCalendar = KOHelper::isStandardCalendar( collection.id() );
 
     if ( !isTopLevel ) {
       // deletes contents
@@ -449,8 +449,9 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
     mNotSendAddRemoveSignal = false;
     return;
   }
-  if ( mWasDefaultCalendar )
-    KCalPrefs::instance()->setDefaultCollection( Akonadi::Collection() );
+  if ( mWasDefaultCalendar ) {
+    KCalPrefs::instance()->setDefaultCalendarId( Akonadi::Collection().id() );
+  }
   mNotSendAddRemoveSignal = false;
   //TODO
 }

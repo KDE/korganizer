@@ -25,8 +25,7 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <Akonadi/Collection>
-#include <akonadi/item.h>
+#include <Akonadi/Item>
 
 #include <kcalprefs.h>
 
@@ -61,9 +60,6 @@ qint64 KOHelper::yearDiff( const QDate &start, const QDate &end )
   return static_cast<qint64>( start.daysTo( end ) / 365.25 );
 }
 
-bool KOHelper::isStandardCalendar( const Akonadi::Collection &coll ) {
-  if ( !coll.isValid() )
-    return false;
-  const QString id = QString::number( coll.id() );
-  return ( id == KCalPrefs::instance()->defaultCalendar() );
+bool KOHelper::isStandardCalendar( const Akonadi::Entity::Id &id ) {
+  return id == KCalPrefs::instance()->defaultCalendarId();
 }
