@@ -209,6 +209,10 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   connect( mAccountsCalendar.mModifyAccountButton, SIGNAL(clicked()),
            this, SLOT(slotModifySelectedAccount()) );
 
+  const bool hasSelection = !mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty();
+  mAccountsCalendar.mModifyAccountButton->setEnabled( hasSelection );
+  mAccountsCalendar.mRemoveAccountButton->setEnabled( hasSelection );
+
   connect( mAccountsCalendar.mRemoveAccountButton, SIGNAL(clicked()),
            this, SLOT(slotRemoveSelectedAccount()) );
 
