@@ -35,6 +35,7 @@
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kohelper.h"
 #include "timelabelszone.h"
 #include "akonadicollectionview.h"
 
@@ -1525,7 +1526,7 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
       todo->setAllDay( allDay );
       todo->setHasDueDate( true );
       if ( !mChanger->addIncidence( todo, this ) ) {
-        Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+        KOHelper::showSaveIncidenceErrorMsg( this, todo );
       }
     }
   }
@@ -1553,7 +1554,7 @@ void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint
     int dialogCode = 0;
     if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
       if ( dialogCode != QDialog::Rejected ) {
-        Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+        KOHelper::showSaveIncidenceErrorMsg( this, todo );
       }
     }
   }

@@ -30,7 +30,6 @@
 */
 
 #include "calendarview.h"
-#include <kcalprefs.h>
 #include "calprinter.h"
 #include "categoryconfig.h"
 #include "datechecker.h"
@@ -51,6 +50,7 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 #include "collectiongeneralpage.h"
+#include "kohelper.h"
 
 #include <libkdepim/pimmessagebox.h>
 
@@ -71,6 +71,7 @@
 #include <akonadi/kcal/dndfactory.h>
 #include <akonadi/kcal/incidencechanger.h>
 #include <akonadi/kcal/incidenceviewer.h>
+#include <akonadi/kcal/kcalprefs.h>
 
 #include <KCal/Calendar>
 #include <KCal/CalFilter>
@@ -2909,7 +2910,7 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
   int dialogCode = 0;
   if ( !mChanger->addIncidence( incidence, this, selectedCollection, dialogCode ) ) {
     if ( dialogCode != QDialog::Rejected ) {
-      Akonadi::IncidenceChanger::errorSaveIncidence( this, incidence );
+      KOHelper::showSaveIncidenceErrorMsg( this, incidence );
     }
   }
 }

@@ -25,6 +25,7 @@
 #include "kotodomodel.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kohelper.h"
 
 #include <KCal/CalFormat>
 #include <KCal/Incidence>
@@ -864,7 +865,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
     return true;
   } else {
-    Akonadi::IncidenceChanger::errorSaveIncidence( 0, todo ); //TODO pass parent
+    KOHelper::showSaveIncidenceErrorMsg( 0, todo ); //TODO pass parent
     return false;
   }
 }
@@ -952,7 +953,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         delete oldTodo;
         return true;
       } else {
-        Akonadi::IncidenceChanger::errorSaveIncidence( 0, todo );
+        KOHelper::showSaveIncidenceErrorMsg( 0, todo );
         return false;
       }
     } else if ( event ) {
@@ -992,7 +993,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
           delete oldTodo;
           return true;
         } else {
-          Akonadi::IncidenceChanger::errorSaveIncidence( 0, destTodo );
+          KOHelper::showSaveIncidenceErrorMsg( 0, destTodo );
           return false;
         }
       }

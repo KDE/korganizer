@@ -30,8 +30,6 @@
 
 #include <Akonadi/Entity>
 
-#include <QColor>
-
 namespace KOrg {
 }
 
@@ -40,6 +38,7 @@ namespace Akonadi {
   class Item;
 }
 
+class QColor;
 class QDate;
 
 // Provides static methods that are useful to all views.
@@ -59,7 +58,7 @@ namespace KOHelper
     @param incidence the incidence for which the color is needed (to
                      determine which  subresource needs to be used)
   */
-  KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Item & incidence );
+  KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Item &incidence );
 
   KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Collection &collection );
 
@@ -73,6 +72,8 @@ namespace KOHelper
     Return true if it's the standard calendar
   */
   KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Entity::Id &id );
+
+  KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg( QWidget *parent, const KCal::Incidence::Ptr &incidence );
 }
 
 #endif

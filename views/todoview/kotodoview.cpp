@@ -32,6 +32,7 @@
 #include "kocorehelper.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kohelper.h"
 #include "kodialogmanager.h"
 
 #include "kotododelegates.h"
@@ -436,7 +437,7 @@ void KOTodoView::addTodo( const QString &summary,
   int dialogCode = 0;
   if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
     if ( dialogCode != QDialog::Rejected ) {
-      Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+      KOHelper::showSaveIncidenceErrorMsg( this, todo );
     }
   }
 }
@@ -656,7 +657,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   int dialogCode = 0;
   if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
     if ( dialogCode != QDialog::Rejected ) {
-      Akonadi::IncidenceChanger::errorSaveIncidence( this, todo );
+      KOHelper::showSaveIncidenceErrorMsg( this, todo );
     }
   }
 }
