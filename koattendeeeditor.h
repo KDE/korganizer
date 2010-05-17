@@ -83,6 +83,8 @@ class KOAttendeeEditor : public QWidget
     virtual KCal::Attendee* currentAttendee() const = 0;
     virtual void updateCurrentItem() = 0;
 
+    virtual void setSelected ( int index ) = 0;
+    virtual int selectedIndex() = 0;
     virtual void changeStatusForMe( KCal::Attendee::PartStat status ) = 0;
 
     virtual bool eventFilter( QObject *, QEvent *);

@@ -103,6 +103,8 @@ class KOEditorDetails : public KOAttendeeEditor
     void slotInsertAttendee( Attendee *a );
 
   protected:
+    void setSelected ( int index );
+    int selectedIndex();
     void changeStatusForMe( Attendee::PartStat status );
 
     KCal::Attendee* currentAttendee() const;

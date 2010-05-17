@@ -250,11 +250,11 @@ void KOEditorDetails::removeAttendee()
                                  aItem->data()->RSVP(), aItem->data()->status(),
                                  aItem->data()->role(), aItem->data()->uid() );
   mdelAttendees.append( delA );
-
   delete aItem;
 
-  if( nextSelectedItem )
+  if( nextSelectedItem ) {
       mListView->setSelected( nextSelectedItem, true );
+  }
   updateAttendeeInput();
   emit updateAttendeeSummary( mListView->childCount() );
 }
@@ -265,15 +265,25 @@ void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
   Q_UNUSED( goodEmailAddress );
 
   // lastItem() is O(n), but for n very small that should be fine
-  AttendeeListItem *item = new AttendeeListItem( a, mListView,
-      static_cast<KListViewItem*>( mListView->lastItem() ) );
+  AttendeeListItem *item = new AttendeeListItem(
+    a, mListView, static_cast<KListViewItem*>( mListView->lastItem() ) );
   mListView->setSelected( item, true );
   emit updateAttendeeSummary( mListView->childCount() );
 }
 
-void KOEditorDetails::removeAttendee( Attendee *a )
+void KOEditorDetails::removeAttendee( Attendee *attendee )
 {
-  Q_UNUSED( a );
+  QListViewItem *item;
+  AttendeeListItem *a;
+  for ( item = mListView->firstChild(); item;  item = item->nextSibling() ) {
+    a = (AttendeeListItem *)item;
+    Attendee *att = a->data();
+    if ( att == attendee ) {
+      mdelAttendees.append( att );
+      delete item;
+      break;
+    }
+  }
 }
 
 void KOEditorDetails::setDefaults()
@@ -363,10 +373,34 @@ void KOEditorDetails::updateCurrentItem()
     item->updateItem();
 }
 
-void KOEditorDetails::slotInsertAttendee(Attendee * a)
+void KOEditorDetails::slotInsertAttendee( Attendee *a )
 {
   insertAttendee( a );
-  mnewAttendees.append(a);
+  mnewAttendees.append( a );
+}
+
+void KOEditorDetails::setSelected( int index )
+{
+  int count = 0;
+  for ( QListViewItemIterator it( mListView ); it.current(); ++it ) {
+    if ( count == index ) {
+      mListView->setSelected( *it, true );
+      return;
+    }
+    count++;
+  }
+}
+
+int KOEditorDetails::selectedIndex()
+{
+  int index = 0;
+  for ( QListViewItemIterator it( mListView ); it.current(); ++it ) {
+    if ( mListView->isSelected( *it ) ) {
+      break;
+    }
+    index++;
+  }
+  return index;
 }
 
 void KOEditorDetails::changeStatusForMe(Attendee::PartStat status)

@@ -233,10 +233,10 @@ void KOAttendeeEditor::insertAttendeeFromAddressee(const KABC::Addressee &a, con
     rsvp = false;
   }
   Attendee *newAt = new Attendee( a.realName(),
-                               a.preferredEmail(),
-                               !myself, partStat,
-                               at ? at->role() : Attendee::ReqParticipant,
-                               a.uid() );
+                                  a.preferredEmail(),
+                                  !myself, partStat,
+                                  at ? at->role() : Attendee::ReqParticipant,
+                                  a.uid() );
   newAt->setRSVP( rsvp );
   insertAttendee( newAt, true );
   mnewAttendees.append( newAt );
@@ -272,7 +272,7 @@ void KOAttendeeEditor::addNewAttendee()
   Attendee *a = new Attendee( i18n("Firstname Lastname"),
                               i18n("name") + "@example.net", true );
   insertAttendee( a, false );
-  mnewAttendees.append(a);
+  mnewAttendees.append( a );
   updateAttendeeInput();
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
@@ -325,6 +325,7 @@ void KOAttendeeEditor::readEvent(KCal::Incidence * incidence)
 
   // Set the initial editing values to the first attendee in the list.
   if ( first ) {
+    setSelected( 0 );
     mNameEdit->setText( first->fullName() );
     mUid = first->uid();
     mRoleCombo->setCurrentItem( first->role() );
@@ -371,9 +372,11 @@ void KOAttendeeEditor::expandAttendee()
 {
   KABC::Addressee::List aList = expandDistList( mNameEdit->text() );
   if ( !aList.isEmpty() ) {
+    int index = selectedIndex();
     for ( KABC::Addressee::List::iterator itr = aList.begin(); itr != aList.end(); ++itr ) {
       insertAttendeeFromAddressee( (*itr) );
     }
+    setSelected( index );
     removeAttendee( currentAttendee() );
   }
 }
@@ -492,17 +495,24 @@ void KOAttendeeEditor::updateAttendeeInput()
 void KOAttendeeEditor::cancelAttendeeEvent( KCal::Incidence *incidence )
 {
   incidence->clearAttendees();
-  Attendee * att;
-  for (att=mdelAttendees.first();att;att=mdelAttendees.next()) {
+
+  if ( mdelAttendees.isEmpty() ) {
+    return;
+  }
+
+  Attendee *att;
+  for ( att = mdelAttendees.first(); att; att = mdelAttendees.next() ) {
     bool isNewAttendee = false;
-    for (Attendee *newAtt=mnewAttendees.first();newAtt;newAtt=mnewAttendees.next()) {
-      if (*att==*newAtt) {
-        isNewAttendee = true;
-        break;
+    if ( !mnewAttendees.isEmpty() ) {
+      for ( Attendee *newAtt = mnewAttendees.first(); newAtt; newAtt = mnewAttendees.next() ) {
+        if ( *att == *newAtt ) {
+          isNewAttendee = true;
+          break;
+        }
       }
     }
-    if (!isNewAttendee) {
-      incidence->addAttendee(new Attendee(*att));
+    if ( !isNewAttendee ) {
+      incidence->addAttendee( new Attendee( *att ) );
     }
   }
   mdelAttendees.clear();

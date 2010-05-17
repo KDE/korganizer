@@ -856,6 +856,32 @@ void KOEditorFreeBusy::clearSelection() const
   item->repaint();
 }
 
+void KOEditorFreeBusy::setSelected( int index )
+{
+  int count = 0;
+  for( KDGanttViewItem *it = mGanttView->firstChild(); it; it = it->nextSibling() ) {
+    FreeBusyItem *item = static_cast<FreeBusyItem*>( it );
+    if ( count == index ) {
+      mGanttView->setSelected( item, true );
+      return;
+    }
+    count++;
+  }
+}
+
+int KOEditorFreeBusy::selectedIndex()
+{
+  int index = 0;
+  for ( KDGanttViewItem *it = mGanttView->firstChild(); it; it = it->nextSibling() ) {
+    FreeBusyItem *item = static_cast<FreeBusyItem*>( it );
+    if ( item->isSelected() ) {
+      break;
+    }
+    index++;
+  }
+  return index;
+}
+
 void KOEditorFreeBusy::changeStatusForMe(KCal::Attendee::PartStat status)
 {
   const QStringList myEmails = KOPrefs::instance()->allEmails();
