@@ -72,7 +72,8 @@
 template <>
 CustomListViewItem<KCal::Attendee *>::~CustomListViewItem()
 {
-  delete mData;
+  // do not delete mData here
+//  delete mData;
 }
 
 template <>
@@ -246,9 +247,10 @@ void KOEditorDetails::removeAttendee()
   if( mListView->childCount() > 1 && aItem == mListView->lastItem() )
       nextSelectedItem = static_cast<AttendeeListItem*>(  mListView->firstChild() );
 
-  Attendee *delA = new Attendee( aItem->data()->name(), aItem->data()->email(),
-                                 aItem->data()->RSVP(), aItem->data()->status(),
-                                 aItem->data()->role(), aItem->data()->uid() );
+  Attendee *attendee = aItem->data();
+  Attendee *delA = new Attendee( attendee->name(), attendee->email(),
+                                 attendee->RSVP(), attendee->status(),
+                                 attendee->role(), attendee->uid() );
   mdelAttendees.append( delA );
   delete aItem;
 
@@ -274,13 +276,11 @@ void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
 void KOEditorDetails::removeAttendee( Attendee *attendee )
 {
   QListViewItem *item;
-  AttendeeListItem *a;
   for ( item = mListView->firstChild(); item;  item = item->nextSibling() ) {
-    a = (AttendeeListItem *)item;
-    Attendee *att = a->data();
+    AttendeeListItem *anItem = static_cast<AttendeeListItem *>( item );
+    Attendee *att = anItem->data();
     if ( att == attendee ) {
-      mdelAttendees.append( att );
-      delete item;
+      delete anItem;
       break;
     }
   }
