@@ -342,42 +342,32 @@ class KOPrefsDialogTime : public KPrefsModule
 
       mHolidayCombo->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
 
-      QString currentHolidayName;
-      QStringList holidayList;
-      QStringList countryList = HolidayRegion::locations();
+      QStringList regions = HolidayRegion::regions();
+      QMap<QString, QString> regionsMap;
 
-      foreach ( const QString &country, countryList ) {
-        QString countryFile = KStandardDirs::locate( "locale",
-                                      "l10n/" + country + "/entry.desktop" );
-        QString regionName;
-        if ( !countryFile.isEmpty() ) {
-          KConfig _cfg( countryFile, KConfig::SimpleConfig );
-          KConfigGroup cfg(&_cfg, "KCM Locale" );
-          regionName = cfg.readEntry( "Name" );
+      foreach ( const QString & regionCode, regions ) {
+        QString name = HolidayRegion::name( regionCode );
+        QString languageName = KGlobal::locale()->languageCodeToName( HolidayRegion::languageCode( regionCode ) );
+        QString label;
+        if ( languageName.isEmpty() ) {
+          label = name;
+        } else {
+          label = i18nc( "Holday region, region language", "%1 (%2)", name, languageName );
         }
-        if ( regionName.isEmpty() ) {
-          regionName = country;
-        }
-
-        holidayList << regionName;
-        mRegionMap[regionName] = country; //store region for saving to config file
-
-        if ( KOGlobals::self()->holidays() &&
-             ( country == KOGlobals::self()->holidays()->location() ) ) {
-          currentHolidayName = regionName;
-        }
+        regionsMap.insert( label, regionCode );
       }
-      holidayList.sort();
-      holidayList.push_front(
-        i18nc( "@item:inlistbox do not use holidays", "(None)" ) );
 
-      mHolidayCombo->addItems( holidayList );
+      mHolidayCombo->addItem( i18nc( "No holiday region", "None"), QString() );
+      QMapIterator<QString, QString> i( regionsMap );
+      while ( i.hasNext() ) {
+        i.next();
+        mHolidayCombo->addItem( i.key(), i.value() );
+      }
 
-      for ( int i=0; i < mHolidayCombo->count(); ++i ) {
-        if ( mHolidayCombo->itemText(i) == currentHolidayName ) {
-          mHolidayCombo->setCurrentIndex( i );
-          break;
-        }
+      if ( KOGlobals::self()->holidays() && KOGlobals::self()->holidays()->isValid() ) {
+        mHolidayCombo->setCurrentIndex( mHolidayCombo->findData( KOGlobals::self()->holidays()->regionCode() ) );
+      } else {
+        mHolidayCombo->setCurrentIndex( 0 );
       }
 
       QGroupBox *workingHoursGroupBox =
@@ -509,9 +499,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
     void usrWriteConfig()
     {
-      KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentIndex() == 0 ) ?  // (None)
-                                       QString() :
-                                       mRegionMap[mHolidayCombo->currentText()];
+      KOPrefs::instance()->mHolidays = mHolidayCombo->itemData( mHolidayCombo->currentIndex() ).toString();
 
       KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
       KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
@@ -546,7 +534,6 @@ class KOPrefsDialogTime : public KPrefsModule
   private:
     QStringList   tzonenames;
     KComboBox    *mHolidayCombo;
-    QMap<QString,QString> mRegionMap;
     KIntSpinBox  *mReminderTimeSpin;
     KComboBox    *mReminderUnitsCombo;
     QCheckBox    *mWorkDays[7];
