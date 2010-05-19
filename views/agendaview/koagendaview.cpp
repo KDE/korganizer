@@ -1293,13 +1293,21 @@ void KOAgendaView::changeIncidenceDisplay( const Item &aitem, int mode )
     }
     case Akonadi::IncidenceChanger::INCIDENCEDELETED:
     {
-      mAgenda->removeIncidence( aitem );
-      mAllDayAgenda->removeIncidence( aitem );
+      removeIncidence( aitem );
       updateEventIndicators();
       break;
     }
     default:
-      updateView();
+      return;
+  }
+
+  // HACK: Update the view if the all-day agenda has been modified.
+  // Do this because there are some layout problems in the
+  // all-day agenda that are not easily solved, but clearing
+  // and redrawing works ok.
+  Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  if ( incidence && incidence->allDay() ) {
+    updateView();
   }
 }
 
