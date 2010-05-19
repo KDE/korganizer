@@ -692,6 +692,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
     kDebug() << "Incidence modified and open";
     tmp->modified();
   }
+
   history()->recordEdit( oldIncidence, newIncidence );
 
   // Record completed todos in journals, if enabled. we should to this here in
@@ -726,15 +727,12 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
 
       } else { // journal list is not empty
         Item journalItem = journals.first();
-        if ( mChanger->beginChange( journalItem ) ) {
-          Journal::Ptr journal = Akonadi::journal( journalItem );
-          Journal::Ptr oldJournal( journal->clone() );
-          journal->setDescription( journal->description().append( '\n' + description ) );
-          mChanger->endChange( journalItem );
-        } else {
-          kError()<< "Unable to lock incidence";
-          return;
-        }
+        Journal::Ptr journal = Akonadi::journal( journalItem );
+        Journal::Ptr oldJournal( journal->clone() );
+        journal->setDescription( journal->description().append( '\n' + description ) );
+        mChanger->changeIncidence( oldJournal, journalItem,
+                                   IncidenceChanger::DESCRIPTION_MODIFIED, this );
+
       }
     }
   }
@@ -1344,26 +1342,16 @@ void CalendarView::todo_unsub()
 bool CalendarView::incidence_unsub( const Item &item )
 {
   const Incidence::Ptr inc = Akonadi::incidence( item );
-  bool status = false;
+
   if ( !inc || !inc->relatedTo() ) {
     return false;
   }
 
-  if ( mChanger->beginChange( item ) ) {
-    Incidence::Ptr oldInc( inc->clone() );
-    inc->setRelatedTo( 0 );
-    mChanger->changeIncidence( oldInc, item, IncidenceChanger::RELATION_MODIFIED, this );
-    mChanger->endChange( item );
-    status = true;
-  }
-  if ( !status ) {
-    KMessageBox::sorry(
-      this,
-      i18n( "Unable to turn sub-to-do into a top-level "
-            "to-do, because it cannot be locked." ) );
-  }
+  Incidence::Ptr oldInc( inc->clone() );
+  inc->setRelatedTo( 0 );
+  mChanger->changeIncidence( oldInc, item, IncidenceChanger::RELATION_MODIFIED, this );
 
-  return status;
+  return true;
 }
 
 bool CalendarView::makeSubTodosIndependent( )
@@ -1413,10 +1401,6 @@ void CalendarView::toggleAlarm( const Item &item )
     return;
   }
   Incidence::Ptr oldincidence( incidence->clone() );
-  if ( !mChanger->beginChange( item ) ) {
-    kDebug() << "Unable to lock incidence";
-    return;
-  }
 
   Alarm::List alarms = incidence->alarms();
   Alarm::List::ConstIterator it;
@@ -1448,7 +1432,6 @@ void CalendarView::toggleAlarm( const Item &item )
     }
   }
   mChanger->changeIncidence( oldincidence, item, IncidenceChanger::ALARM_MODIFIED, this );
-  mChanger->endChange( item );
 }
 
 void CalendarView::toggleTodoCompleted( const Item &todoItem )
@@ -1467,10 +1450,6 @@ void CalendarView::toggleTodoCompleted( const Item &todoItem )
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
   Todo::Ptr oldtodo( todo->clone() );
-  if ( !mChanger->beginChange( todoItem ) ) {
-    kDebug() << "Unable to lock todo";
-    return;
-  }
 
   if ( todo->isCompleted() ) {
     todo->setPercentComplete( 0 );
@@ -1482,8 +1461,6 @@ void CalendarView::toggleTodoCompleted( const Item &todoItem )
                              todoItem,
                              IncidenceChanger::COMPLETION_MODIFIED,
                              this );
-
-  mChanger->endChange( todoItem );
 }
 
 void CalendarView::copyIncidenceToResource( const Item &item, const QString &resourceId )
@@ -1691,10 +1668,7 @@ void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
 void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
-  if ( !mChanger->beginChange( item ) ) {
-    kDebug() << "Unable to lock incidence";
-    return;
-  }
+
   startMultiModify( i18n( "Dissociate occurrence" ) );
   Incidence::Ptr oldincidence( incidence->clone() );
   Incidence::Ptr newInc(
@@ -1708,7 +1682,7 @@ void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
       i18n( "Dissociating the occurrence failed." ),
       i18n( "Dissociating Failed" ) );
   }
-  mChanger->endChange( item );
+
   endMultiModify();
 }
 
@@ -1716,10 +1690,6 @@ void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &da
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
 
-  if ( !mChanger->beginChange( item ) ) {
-    kDebug() << "Unable to lock incidence";
-    return;
-  }
   startMultiModify( i18n( "Dissociate future occurrences" ) );
   Incidence::Ptr oldincidence( incidence->clone() );
 
@@ -1740,7 +1710,6 @@ void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &da
       i18n( "Dissociating Failed" ) );
   }
   endMultiModify();
-  mChanger->endChange( item );
 }
 
 void CalendarView::schedule_publish( const Item &item )
@@ -2714,6 +2683,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
         }
       }
     }
+    Incidence::Ptr oldIncidence( incidence->clone() );
     switch( km ) {
     case KMessageBox::Ok: // Continue // all
     case KMessageBox::Continue:
@@ -2721,23 +2691,16 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
       break;
 
     case KMessageBox::Yes: // just this one
-      if ( mChanger->beginChange( item ) ) {
-        Incidence::Ptr oldIncidence( incidence->clone() );
-        incidence->recurrence()->addExDate( itemDate );
-        mChanger->changeIncidence( oldIncidence, item,
-                                   IncidenceChanger::RECURRENCE_MODIFIED_ONE_ONLY, this );
-        mChanger->endChange( item );
-      }
+      incidence->recurrence()->addExDate( itemDate );
+      mChanger->changeIncidence( oldIncidence, item,
+                                 IncidenceChanger::RECURRENCE_MODIFIED_ONE_ONLY, this );
+
       break;
     case KMessageBox::No: // all future items
-      if ( mChanger->beginChange( item ) ) {
-        Incidence::Ptr oldIncidence( incidence->clone() );
-        Recurrence *recur = incidence->recurrence();
-        recur->setEndDate( itemDate.addDays(-1) );
-        mChanger->changeIncidence( oldIncidence, item,
-                                   IncidenceChanger::RECURRENCE_MODIFIED_ALL_FUTURE, this );
-        mChanger->endChange( item );
-      }
+      Recurrence *recur = incidence->recurrence();
+      recur->setEndDate( itemDate.addDays( -1 ) );
+      mChanger->changeIncidence( oldIncidence, item,
+                                 IncidenceChanger::RECURRENCE_MODIFIED_ALL_FUTURE, this );
       break;
     }
   } else {
@@ -2932,9 +2895,6 @@ void CalendarView::moveIncidenceTo( const Item &itemmove, const QDate &dt )
   Incidence::Ptr incidence = Akonadi::incidence( itemmove );
 
   Incidence::Ptr oldIncidence( incidence->clone() );
-  if ( !mChanger->beginChange( itemmove ) ) {
-    return;
-  }
 
   if ( const Event::Ptr event = dynamic_pointer_cast<Event>( incidence ) ) {
     // Adjust date
@@ -2956,7 +2916,6 @@ void CalendarView::moveIncidenceTo( const Item &itemmove, const QDate &dt )
     todo->setHasDueDate( true );
   }
   mChanger->changeIncidence( oldIncidence, itemmove, IncidenceChanger::DATE_MODIFIED, this );
-  mChanger->endChange( itemmove );
 }
 
 void CalendarView::resourcesChanged()

@@ -804,7 +804,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   }
   const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( node->mTodo ) ) {
+  if ( !todo->isReadOnly() ) {
     Todo::Ptr oldTodo( todo->clone() );
     Akonadi::IncidenceChanger::WhatChanged modified = Akonadi::IncidenceChanger::UNKNOWN_MODIFIED;
 
@@ -861,7 +861,6 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
       // dataChanged to the view, so we don't have to
       // do it here
     }
-    mChanger->endChange( node->mTodo );
 
     return true;
   } else {
@@ -943,19 +942,16 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         tmp = tmp->relatedTo();
       }
 
-      if ( mChanger->beginChange( todo ) ) {
-        Todo *oldTodo = todo->clone();
-        todo->setRelatedTo( destTodo );
-        mChanger->changeIncidence( oldTodo, todo, Akonadi::IncidenceChanger::RELATION_MODIFIED, 0 );
-        mChanger->endChange( todo );
-        // again, no need to emit dataChanged, that's done by processChange
 
-        delete oldTodo;
-        return true;
-      } else {
-        KOHelper::showSaveIncidenceErrorMsg( 0, todo );
-        return false;
-      }
+      Todo *oldTodo = todo->clone();
+      todo->setRelatedTo( destTodo );
+      mChanger->changeIncidence( oldTodo, todo, Akonadi::IncidenceChanger::RELATION_MODIFIED, 0 );
+      mChanger->endChange( todo );
+
+      // again, no need to emit dataChanged, that's done by processChange
+      delete oldTodo;
+      return true;
+
     } else if ( event ) {
       // TODO: Implement dropping an event onto a to-do: Generate a relationship to the event!
     } else {
@@ -971,30 +967,26 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       if ( data->hasText() ) {
         QString text = data->text();
 
-        if( mChanger->beginChange( destTodo ) ) {
-          Todo *oldTodo = destTodo->clone();
 
-          if( text.startsWith( QLatin1String( "file:" ) ) ) {
-            destTodo->addAttachment( new Attachment( text ) );
-          } else {
-            QStringList emails = KPIMUtils::splitAddressList( text );
-            for ( QStringList::ConstIterator it = emails.constBegin();
-                  it != emails.constEnd(); ++it ) {
-              QString name, email, comment;
-              if ( KPIMUtils::splitAddress( *it, name, email, comment ) ==
-                   KPIMUtils::AddressOk ) {
-                destTodo->addAttendee( new Attendee( name, email ) );
-              }
+        Todo *oldTodo = destTodo->clone();
+
+        if( text.startsWith( QLatin1String( "file:" ) ) ) {
+          destTodo->addAttachment( new Attachment( text ) );
+        } else {
+          QStringList emails = KPIMUtils::splitAddressList( text );
+          for ( QStringList::ConstIterator it = emails.constBegin();
+                it != emails.constEnd(); ++it ) {
+            QString name, email, comment;
+            if ( KPIMUtils::splitAddress( *it, name, email, comment ) ==
+                 KPIMUtils::AddressOk ) {
+              destTodo->addAttendee( new Attendee( name, email ) );
             }
           }
-          mChanger->changeIncidence( oldTodo, destTodo, Akonadi::IncidenceChanger::RELATION_MODIFIED, 0 );
-          mChanger->endChange( destTodo );
+        }
+        mChanger->changeIncidence( oldTodo, destTodo, Akonadi::IncidenceChanger::RELATION_MODIFIED, 0 );
 
-          delete oldTodo;
-          return true;
-        } else {
-          KOHelper::showSaveIncidenceErrorMsg( 0, destTodo );
-          return false;
+        delete oldTodo;
+        return true;
         }
       }
     }

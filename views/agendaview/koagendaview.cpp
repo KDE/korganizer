@@ -819,8 +819,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     if ( incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ) == startDt &&
          ev->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ) == endDt ) {
-      // No change
-      mChanger->endChange( aitem );
       QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
@@ -841,8 +839,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
 
     if ( td->dtDue().toTimeSpec( KCalPrefs::instance()->timeSpec() )  == endDt ) {
-      // No change
-      mChanger->endChange( aitem );
       QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
@@ -1036,7 +1032,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   const bool result = mChanger->changeIncidence( oldIncidence, aitem,
                                                  Akonadi::IncidenceChanger::DATE_MODIFIED, this );
-  mChanger->endChange( aitem );
 
   // Update the view correctly if an agenda item move was aborted by
   // cancelling one of the subsequent dialogs.
@@ -1517,13 +1512,13 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
       dynamic_cast<Akonadi::Calendar*>( calendar() )->itemForIncidence( calendar()->todo( todo->uid() ) );
     if ( Todo::Ptr existingTodo = Akonadi::todo( existingTodoItem ) ) {
       kDebug() << "Drop existing Todo";
-      Todo::Ptr oldTodo( existingTodo->clone() );
-      if ( mChanger && mChanger->beginChange( existingTodoItem ) ) {
+
+      if ( mChanger ) {
+        Todo::Ptr oldTodo( existingTodo->clone() );
         existingTodo->setDtDue( newTime );
         existingTodo->setAllDay( allDay );
         existingTodo->setHasDueDate( true );
         mChanger->changeIncidence( oldTodo, existingTodoItem, Akonadi::IncidenceChanger::DATE_MODIFIED, this );
-        mChanger->endChange( existingTodoItem );
       } else {
         KMessageBox::sorry( this, i18n( "Unable to modify this to-do, "
                                         "because it cannot be locked." ) );

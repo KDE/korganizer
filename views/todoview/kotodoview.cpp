@@ -718,7 +718,7 @@ void KOTodoView::setNewDate( const QDate &date )
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todoItem ) ) {
+  if ( !todo->isReadOnly() ) {
     Todo::Ptr oldTodo( todo->clone() );
 
     KDateTime dt( date );
@@ -735,9 +735,8 @@ void KOTodoView::setNewDate( const QDate &date )
     todo->setDtDue( dt );
 
     mChanger->changeIncidence( oldTodo, todoItem, Akonadi::IncidenceChanger::COMPLETION_MODIFIED, this );
-    mChanger->endChange( todoItem );
   } else {
-    kDebug() << "No active item, active item is read-only, or locking failed";
+    kDebug() << "Item is readOnly";
   }
 }
 
@@ -752,7 +751,7 @@ void KOTodoView::setNewPercentage( QAction *action )
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todoItem ) ) {
+  if ( !todo->isReadOnly() ) {
     Todo::Ptr oldTodo( todo->clone() );
 
     int percentage = mPercentage.value( action );
@@ -770,9 +769,8 @@ void KOTodoView::setNewPercentage( QAction *action )
       mChanger->changeIncidence( oldTodo, todoItem,
                                  Akonadi::IncidenceChanger::COMPLETION_MODIFIED, this );
     }
-    mChanger->endChange( todoItem );
   } else {
-    kDebug() << "No active item, active item is read-only, or locking failed";
+    kDebug() << "Item is read only";
   }
 }
 
@@ -784,13 +782,11 @@ void KOTodoView::setNewPriority( QAction *action )
   }
   const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
   Todo::Ptr todo = Akonadi::todo( todoItem );
-  if ( !todo->isReadOnly() &&
-       mChanger->beginChange( todoItem ) ) {
+  if ( !todo->isReadOnly() ) {
     Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
     mChanger->changeIncidence( oldTodo, todoItem, Akonadi::IncidenceChanger::PRIORITY_MODIFIED, this );
-    mChanger->endChange( todoItem );
   }
 }
 
@@ -805,7 +801,7 @@ void KOTodoView::changedCategories( QAction *action )
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todoItem ) ) {
+  if ( !todo->isReadOnly() ) {
     Todo::Ptr oldTodo( todo->clone() );
 
     QStringList categories = todo->categories();
@@ -817,7 +813,6 @@ void KOTodoView::changedCategories( QAction *action )
     categories.sort();
     todo->setCategories( categories );
     mChanger->changeIncidence( oldTodo, todoItem, Akonadi::IncidenceChanger::CATEGORY_MODIFIED, this );
-    mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
   }

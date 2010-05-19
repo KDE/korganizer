@@ -846,9 +846,6 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
       placeSubCells( mActionItem );
       emit startDragSignal( mActionItem->incidence() );
       setCursor( Qt::ArrowCursor );
-      if ( mChanger ) {
-        mChanger->cancelChange( mActionItem->incidence() );
-      }
       mActionItem = 0;
       mActionType = NOP;
       mItemMoved = false;
@@ -870,24 +867,8 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
 
   // Move or resize item if necessary
   if ( mEndCell != gpos ) {
-    if ( !mItemMoved ) {
-      if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
-        KMessageBox::information( this,
-                                  i18n( "Unable to lock item for modification. "
-                                        "You cannot make any changes." ),
-                                  i18n( "Locking Failed" ), "AgendaLockingFailed" );
-        mScrollUpTimer.stop();
-        mScrollDownTimer.stop();
-        mActionItem->resetMove();
-        placeSubCells( mActionItem );
-        setCursor( Qt::ArrowCursor );
-        mActionItem = 0;
-        mActionType = NOP;
-        mItemMoved = false;
-        return;
-      }
-      mItemMoved = true;
-    }
+    mItemMoved = true;
+
     mActionItem->raise();
     if ( mActionType == MOVE ) {
       // Move all items belonging to a multi item
@@ -1151,11 +1132,8 @@ void KOAgenda::endItemAction()
     } else {
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
-      mChanger->endChange( inc );
       emit itemModified( mActionItem );
     }
-  } else {
-    mChanger->endChange( inc );
   }
 
   mActionItem = 0;
