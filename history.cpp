@@ -114,17 +114,17 @@ void History::addEntry( Entry *entry )
   }
 }
 
-void History::recordDelete( Incidence *incidence )
+void History::recordDelete( Incidence::Ptr incidence )
 {
   addEntry( new EntryDelete( mCalendar, incidence ) );
 }
 
-void History::recordAdd( Incidence *incidence )
+void History::recordAdd( Incidence::Ptr incidence )
 {
   addEntry( new EntryAdd( mCalendar, incidence ) );
 }
 
-void History::recordEdit( Incidence *oldIncidence, Incidence *newIncidence )
+void History::recordEdit( Incidence::Ptr oldIncidence, Incidence::Ptr newIncidence )
 {
   addEntry( new EntryEdit( mCalendar, oldIncidence, newIncidence ) );
 }
@@ -152,14 +152,13 @@ History::Entry::~Entry()
 {
 }
 
-History::EntryDelete::EntryDelete( Akonadi::Calendar *calendar, Incidence *incidence )
+History::EntryDelete::EntryDelete( Akonadi::Calendar *calendar, Incidence::Ptr incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
 
 History::EntryDelete::~EntryDelete()
 {
-  delete mIncidence;
 }
 
 void History::EntryDelete::undo()
@@ -175,7 +174,7 @@ void History::EntryDelete::undo()
 void History::EntryDelete::redo()
 {
 #ifdef AKONADI_PORT_DISABLED
-  Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
+  Incidence::Ptr incidence = mCalendar->incidence( mIncidence->uid() );
   mCalendar->deleteIncidence( incidence );
 #else
   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
@@ -187,20 +186,19 @@ QString History::EntryDelete::text()
   return i18n( "Delete %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryAdd::EntryAdd( Akonadi::Calendar *calendar, Incidence *incidence )
+History::EntryAdd::EntryAdd( Akonadi::Calendar *calendar, Incidence::Ptr incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
 
 History::EntryAdd::~EntryAdd()
 {
-  delete mIncidence;
 }
 
 void History::EntryAdd::undo()
 {
 #ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
-  Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
+  Incidence::Ptr incidence = mCalendar->incidence( mIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
@@ -224,8 +222,8 @@ QString History::EntryAdd::text()
   return i18n( "Add %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryEdit::EntryEdit( Akonadi::Calendar *calendar, Incidence *oldIncidence,
-                               Incidence *newIncidence )
+History::EntryEdit::EntryEdit( Akonadi::Calendar *calendar, Incidence::Ptr oldIncidence,
+                               Incidence::Ptr newIncidence )
   : Entry( calendar ), mOldIncidence( oldIncidence->clone() ),
     mNewIncidence( newIncidence->clone() )
 {
@@ -233,14 +231,12 @@ History::EntryEdit::EntryEdit( Akonadi::Calendar *calendar, Incidence *oldIncide
 
 History::EntryEdit::~EntryEdit()
 {
-  delete mOldIncidence;
-  delete mNewIncidence;
 }
 
 void History::EntryEdit::undo()
 {
 #ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
-  Incidence *incidence = mCalendar->incidence( mNewIncidence->uid() );
+  Incidence::Ptr incidence = mCalendar->incidence( mNewIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
@@ -254,7 +250,7 @@ void History::EntryEdit::undo()
 void History::EntryEdit::redo()
 {
 #ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
-  Incidence *incidence = mCalendar->incidence( mOldIncidence->uid() );
+  Incidence::Ptr incidence = mCalendar->incidence( mOldIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }

@@ -24,15 +24,15 @@
 #ifndef KORG_HISTORY_H
 #define KORG_HISTORY_H
 
+#include <KCal/Incidence>
 #include <QObject>
 #include <QStack>
 #include <QList>
 
+#include <boost/shared_ptr.hpp>
+
 namespace Akonadi {
   class Calendar;
-}
-namespace KCal {
-  class Incidence;
 }
 
 namespace KOrg {
@@ -43,10 +43,10 @@ class History : public QObject
   public:
     explicit History( Akonadi::Calendar * );
 
-    void recordDelete( KCal::Incidence * );
-    void recordAdd( KCal::Incidence * );
-    void recordEdit( KCal::Incidence *oldIncidence,
-                     KCal::Incidence *newIncidence );
+    void recordDelete( KCal::Incidence::Ptr  );
+    void recordAdd( KCal::Incidence::Ptr );
+    void recordEdit( KCal::Incidence::Ptr oldIncidence,
+                     KCal::Incidence::Ptr newIncidence );
     void startMultiModify( const QString &description );
     void endMultiModify();
 
@@ -88,7 +88,7 @@ class History : public QObject
     class EntryDelete : public Entry
     {
       public:
-        EntryDelete( Akonadi::Calendar *, KCal::Incidence * );
+        EntryDelete( Akonadi::Calendar *, KCal::Incidence::Ptr );
         ~EntryDelete();
 
         void undo();
@@ -97,13 +97,14 @@ class History : public QObject
         QString text();
 
       private:
-        KCal::Incidence *mIncidence;
+        //KCal::Incidence::Ptr mIncidence;
+        KCal::Incidence::Ptr mIncidence;
     };
 
     class EntryAdd : public Entry
     {
       public:
-        EntryAdd( Akonadi::Calendar *, KCal::Incidence * );
+        EntryAdd( Akonadi::Calendar *, KCal::Incidence::Ptr );
         ~EntryAdd();
 
         void undo();
@@ -112,14 +113,14 @@ class History : public QObject
         QString text();
 
       private:
-        KCal::Incidence *mIncidence;
+        KCal::Incidence::Ptr mIncidence;
     };
 
     class EntryEdit : public Entry
     {
       public:
-        EntryEdit( Akonadi::Calendar *calendar, KCal::Incidence *oldIncidence,
-                   KCal::Incidence *newIncidence );
+        EntryEdit( Akonadi::Calendar *calendar, KCal::Incidence::Ptr oldIncidence,
+                   KCal::Incidence::Ptr newIncidence );
         ~EntryEdit();
 
         void undo();
@@ -128,8 +129,8 @@ class History : public QObject
         QString text();
 
       private:
-        KCal::Incidence *mOldIncidence;
-        KCal::Incidence *mNewIncidence;
+        KCal::Incidence::Ptr mOldIncidence;
+        KCal::Incidence::Ptr mNewIncidence;
     };
 
     class MultiEntry : public Entry

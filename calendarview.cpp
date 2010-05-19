@@ -673,7 +673,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
 
 void CalendarView::incidenceAdded( const Item &incidence )
 {
-  history()->recordAdd( Akonadi::incidence( incidence ).get() );
+  history()->recordAdd( Akonadi::incidence( incidence ) );
   changeIncidenceDisplay( incidence, IncidenceChanger::INCIDENCEADDED );
   updateUnmanagedViews();
   checkForFilteredChange( incidence );
@@ -683,8 +683,8 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
                                      const Item &newIncidence_,
                                      Akonadi::IncidenceChanger::WhatChanged modification )
 {
-  Incidence* const oldIncidence = Akonadi::incidence( oldIncidence_ ).get();
-  Incidence* const newIncidence = Akonadi::incidence( newIncidence_ ).get();
+  Incidence::Ptr oldIncidence = Akonadi::incidence( oldIncidence_ );
+  Incidence::Ptr newIncidence = Akonadi::incidence( newIncidence_ );
 
   // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
   IncidenceEditor *tmp = editorDialog( newIncidence_ );
@@ -702,7 +702,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
        KOPrefs::instance()->recordTodosInJournals() &&
        ( modification == IncidenceChanger::COMPLETION_MODIFIED ||
          modification == IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
-    Todo *todo = static_cast<Todo *>(newIncidence);
+    Todo::Ptr todo = Akonadi::todo( newIncidence_ );
     if ( todo->isCompleted() ||
          modification == IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
       QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
@@ -744,10 +744,10 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
 
 void CalendarView::incidenceToBeDeleted( const Item &item )
 {
-  Incidence* const incidence = Akonadi::incidence( item ).get();
+  Incidence::Ptr incidence = Akonadi::incidence( item );
   IncidenceEditor *tmp = editorDialog( item );
   kDebug()<<"incidenceToBeDeleted item.id() :"<<item.id();
-  if (tmp) {
+  if ( tmp ) {
     kDebug() << "Incidence to be deleted and open in editor";
     tmp->delayedDestruct();
   }
