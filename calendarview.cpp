@@ -278,8 +278,6 @@ void CalendarView::setCalendar( Akonadi::Calendar *cal )
 
   setIncidenceChanger( new IncidenceChanger( mCalendar, this, KCalPrefs::instance()->defaultCalendarId() ) );
 
-  mHistory->setIncidenceChanger( mChanger );
-
   mChanger->setDestinationPolicy( static_cast<IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
 
   mCalendar->registerObserver( this );
@@ -294,7 +292,7 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
   delete mChanger;
   mChanger = changer;
   mChanger->setGroupware( Groupware::instance() );
-  mHistory->setIncidenceChanger( mChanger );
+
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAddFinished(Akonadi::Item,bool)),
            this, SLOT(incidenceAddFinished(Akonadi::Item,bool)) );

@@ -24,6 +24,8 @@
 #ifndef KORG_HISTORY_H
 #define KORG_HISTORY_H
 
+#include <akonadi/kcal/incidencechanger.h>
+
 #include <Akonadi/Item>
 #include <Akonadi/Collection>
 
@@ -37,7 +39,6 @@
 
 namespace Akonadi {
   class Calendar;
-  class IncidenceChanger;
 }
 
 namespace KOrg {
@@ -46,7 +47,7 @@ class History : public QObject
 {
   Q_OBJECT
   public:
-    explicit History( Akonadi::Calendar *, QWidget *parent );
+    History( Akonadi::Calendar *, QWidget *parent );
 
     void recordDelete( const Akonadi::Item & );
     void recordAdd( const Akonadi::Item & );
@@ -54,11 +55,19 @@ class History : public QObject
                      const Akonadi::Item &newItem );
     void startMultiModify( const QString &description );
     void endMultiModify();
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
   public slots:
     void undo();
     void redo();
+  private slots:
+    void incidenceChangeFinished( const Akonadi::Item &,
+                                  const Akonadi::Item &,
+                                  Akonadi::IncidenceChanger::WhatChanged,
+                                  bool);
+
+    void incidenceAddFinished( const Akonadi::Item &, bool );
+
+    void incidenceDeleteFinished( const Akonadi::Item &, bool );
 
   signals:
     void undone();
@@ -69,6 +78,11 @@ class History : public QObject
 
   private:
    class Entry;
+   void disableHistory();
+
+   // Called as soon as the modify jobs finish
+   void finishUndo( bool success );
+   void finishRedo( bool success );
 
   protected:
     void truncate();
@@ -82,14 +96,18 @@ class History : public QObject
         Entry( Akonadi::Calendar *, Akonadi::IncidenceChanger * );
         virtual ~Entry();
 
-        virtual void undo() = 0;
-        virtual void redo() = 0;
+        virtual bool undo() = 0;
+        virtual bool redo() = 0;
 
         virtual QString text() = 0;
+
+        void setItemId( Akonadi::Item::Id );
+        Akonadi::Item::Id itemId();
 
       protected:
         Akonadi::Calendar *mCalendar;
         Akonadi::IncidenceChanger *mChanger;
+        Akonadi::Item::Id mItemId;
     };
 
     class EntryDelete : public Entry
@@ -98,13 +116,12 @@ class History : public QObject
         EntryDelete( Akonadi::Calendar *, Akonadi::IncidenceChanger *, const Akonadi::Item & );
         ~EntryDelete();
 
-        void undo();
-        void redo();
+        bool undo();
+        bool redo();
 
         QString text();
 
       private:
-        Akonadi::Item::Id mItemId;
         KCal::Incidence::Ptr mIncidence;
         Akonadi::Collection mCollection;
     };
@@ -115,13 +132,11 @@ class History : public QObject
         EntryAdd( Akonadi::Calendar *, Akonadi::IncidenceChanger *, const Akonadi::Item & );
         ~EntryAdd();
 
-        void undo();
-        void redo();
+        bool undo();
+        bool redo();
 
         QString text();
-
       private:
-        Akonadi::Item::Id mItemId;
         KCal::Incidence::Ptr mIncidence;
         Akonadi::Collection mCollection;
     };
@@ -135,15 +150,14 @@ class History : public QObject
                    const Akonadi::Item &newItem );
         ~EntryEdit();
 
-        void undo();
-        void redo();
+        bool undo();
+        bool redo();
 
         QString text();
 
       private:
         KCal::Incidence::Ptr mOldIncidence;
         KCal::Incidence::Ptr mNewIncidence;
-        Akonadi::Item::Id mItemId;
     };
 
     class MultiEntry : public Entry
@@ -153,10 +167,11 @@ class History : public QObject
         ~MultiEntry();
 
         void appendEntry( Entry *entry );
-        void undo();
-        void redo();
+        bool undo();
+        bool redo();
 
         QString text();
+        void itemCreated( Akonadi::Item::Id );
 
       private:
         QList<Entry*> mEntries;
@@ -165,11 +180,22 @@ class History : public QObject
 
     Akonadi::Calendar *mCalendar;
     MultiEntry *mCurrentMultiEntry;
-    Akonadi::IncidenceChanger *mChanger;
     QWidget *mParent;
+    Akonadi::IncidenceChanger *mChanger;
 
     QStack<Entry*> mUndoEntries;
     QStack<Entry*> mRedoEntries;
+
+    // If this is not 0 there's a modify job running that didn't end yet
+    Entry *mCurrentRunningEntry;
+
+    enum Operation {
+      UNDO,
+      REDO
+    };
+
+    // When the job ends we must know if we were doing a undo or redo
+    Operation mCurrentRunningOperation;
 };
 
 }
