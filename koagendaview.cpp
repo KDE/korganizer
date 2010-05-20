@@ -176,26 +176,53 @@ void KOAlternateLabel::useDefaultText()
   squeezeTextToLabel();
 }
 
+KOAlternateLabel::TextType KOAlternateLabel::largestFittingTextType() const
+{
+  QFontMetrics fm( fontMetrics() );
+  const int labelWidth = size().width();
+  const int longTextWidth = fm.width( mLongText );
+  const int extensiveTextWidth = fm.width( mExtensiveText );
+  if ( extensiveTextWidth <= labelWidth )
+    return Extensive;
+  else if ( longTextWidth <= labelWidth )
+    return Long;
+  else
+    return Short;
+}
+
+void KOAlternateLabel::setFixedType( TextType type )
+{
+  switch ( type )
+  {
+    case Extensive: useExtensiveText(); break;
+    case Long: useLongText(); break;
+    case Short: useShortText(); break;
+  }
+}
+
 void KOAlternateLabel::squeezeTextToLabel()
 {
-  if (mTextTypeFixed) return;
+  if ( mTextTypeFixed )
+    return;
 
-  QFontMetrics fm(fontMetrics());
-  int labelWidth = size().width();
-  int textWidth = fm.width(mLongText);
-  int longTextWidth = fm.width(mExtensiveText);
-  if (longTextWidth <= labelWidth) {
-    QLabel::setText( mExtensiveText );
-    QToolTip::remove( this );
-    QToolTip::add( this, "" );
-  } else if (textWidth <= labelWidth) {
-    QLabel::setText( mLongText );
-    QToolTip::remove( this );
-    QToolTip::add( this, mExtensiveText );
-  } else {
-    QLabel::setText( mShortText );
-    QToolTip::remove( this );
-    QToolTip::add( this, mExtensiveText );
+  const TextType type = largestFittingTextType();
+  switch ( type )
+  {
+    case Extensive:
+      QLabel::setText( mExtensiveText );
+      QToolTip::remove( this );
+      QToolTip::add( this, "" );
+      break;
+    case Long:
+      QLabel::setText( mLongText );
+      QToolTip::remove( this );
+      QToolTip::add( this, mExtensiveText );
+      break;
+    case Short:
+      QLabel::setText( mShortText );
+      QToolTip::remove( this );
+      QToolTip::add( this, mExtensiveText );
+      break;
   }
 }
 
@@ -210,12 +237,6 @@ QSize KOAlternateLabel::minimumSizeHint() const
   sh.setWidth(-1);
   return sh;
 }
-
-void KOAlternateLabel::setText( const QString &text ) {
-  mLongText = text;
-  squeezeTextToLabel();
-}
-
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -582,6 +603,7 @@ void KOAgendaView::createDayLabels( bool force )
   mSaveSelectedDates = mSelectedDates;
 
   delete mDayLabels;
+  mDateDayLabels.clear();
 
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
@@ -606,6 +628,7 @@ void KOAgendaView::createDayLabels( bool force )
 
     KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,
                                                       longstr, veryLongStr, mDayLabels);
+    dayLabel->useShortText(); // will be recalculated in updateDayLabelSizes() anyway
     dayLabel->setMinimumWidth(1);
     dayLabel->setAlignment(QLabel::AlignHCenter);
     if (date == QDate::currentDate()) {
@@ -614,6 +637,7 @@ void KOAgendaView::createDayLabels( bool force )
       dayLabel->setFont(font);
     }
     dayLayout->addWidget(dayLabel);
+    mDateDayLabels.append( dayLabel );
 
     // if a holiday region is selected, show the holiday name
     QStringList texts = KOGlobals::self()->holiday( date );
@@ -653,6 +677,7 @@ void KOAgendaView::createDayLabels( bool force )
   if ( !mIsSideBySide )
     mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mDayLabels->show();
+  QTimer::singleShot( 0, this, SLOT( updateDayLabelSizes() ) );
 }
 
 void KOAgendaView::enableAgendaUpdate( bool enable )
@@ -789,6 +814,29 @@ void KOAgendaView::updateTimeBarWidth()
   mTimeLabels->setFixedWidth( width );
 }
 
+void KOAgendaView::updateDayLabelSizes()
+{
+  // First, calculate the maximum text type that fits for all labels
+  KOAlternateLabel::TextType overallType = KOAlternateLabel::Extensive;
+  QPtrList<KOAlternateLabel>::const_iterator it = mDateDayLabels.constBegin();
+  for( ; it != mDateDayLabels.constEnd(); it++ ) {
+    KOAlternateLabel::TextType type = (*it)->largestFittingTextType();
+    if ( type < overallType )
+      overallType = type;
+  }
+
+  // Then, set that maximum text type to all the labels
+  it = mDateDayLabels.constBegin();
+  for( ; it != mDateDayLabels.constEnd(); it++ ) {
+    (*it)->setFixedType( overallType );
+  }
+}
+
+void KOAgendaView::resizeEvent( QResizeEvent *resizeEvent )
+{
+  Q_UNUSED( resizeEvent );
+  updateDayLabelSizes();
+}
 
 void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {

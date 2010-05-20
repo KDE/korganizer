@@ -82,8 +82,11 @@ class KOAlternateLabel : public QLabel
 
     virtual QSize minimumSizeHint() const;
 
+    enum TextType { Short = 0, Long = 1, Extensive = 2 };
+    TextType largestFittingTextType() const;
+    void setFixedType( TextType type );
+
   public slots:
-    void setText( const QString & );
     void useShortText();
     void useLongText();
     void useExtensiveText();
@@ -228,6 +231,8 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
 
     void updateTimeBarWidth();
 
+    virtual void resizeEvent( QResizeEvent *resizeEvent );
+
   protected slots:
     /** Update event belonging to agenda item */
     void updateEventDates( KOAgendaItem *item );
@@ -242,6 +247,8 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     /** Updates data for selected timespan for all day event*/
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
+    void updateDayLabelSizes();
+
   private:
     bool filterByResource( Incidence *incidence );
     void displayIncidence( Incidence *incidence );
@@ -251,6 +258,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     QFrame *mDayLabels;
     QHBox *mDayLabelsFrame;
     QBoxLayout *mLayoutDayLabels;
+    QPtrList<KOAlternateLabel> mDateDayLabels;
     QFrame *mAllDayFrame;
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;
