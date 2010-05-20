@@ -64,8 +64,9 @@ namespace KOHelper
 
   /**
     Returns the number of years between the @p start QDate and the @p end QDate
+    (i.e. the difference in the year number of both dates)
   */
-  KORGANIZERPRIVATE_EXPORT qint64 yearDiff( const QDate &start, const QDate &end );
+  KORGANIZERPRIVATE_EXPORT int yearDiff( const QDate &start, const QDate &end );
 
 
   /**

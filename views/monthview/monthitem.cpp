@@ -295,7 +295,7 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
   Incidence::Ptr inc = Akonadi::incidence( mIncidence );
   if ( inc->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
        inc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-    qint64 years = KOHelper::yearDiff( inc->dtStart().date(), recurStartDate );
+    int years = KOHelper::yearDiff( inc->dtStart().date(), recurStartDate );
     if ( years > 0 ) {
       inc.reset( inc->clone() );
       inc->setReadOnly( false );
