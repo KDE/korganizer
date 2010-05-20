@@ -541,7 +541,7 @@
                         <cstring>mRemoveButton</cstring>
                     </property>
                     <property name="text">
-                        <string>&amp;Remove...</string>
+                        <string>&amp;Remove</string>
                     </property>
                 </widget>
                 <widget class="QPushButton" row="0" column="1">
