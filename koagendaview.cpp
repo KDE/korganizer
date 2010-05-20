@@ -834,8 +834,8 @@ void KOAgendaView::updateDayLabelSizes()
 
 void KOAgendaView::resizeEvent( QResizeEvent *resizeEvent )
 {
-  Q_UNUSED( resizeEvent );
   updateDayLabelSizes();
+  KOrg::AgendaView::resizeEvent( resizeEvent );
 }
 
 void KOAgendaView::updateEventDates( KOAgendaItem *item )
