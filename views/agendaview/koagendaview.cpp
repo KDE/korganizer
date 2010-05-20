@@ -500,6 +500,7 @@ void KOAgendaView::createDayLabels()
   // each updateView() call)
   delete mTopDayLabels;
   delete mBottomDayLabels;
+  mDateDayLabels.clear();
 
   QFontMetrics fm = fontMetrics();
 
@@ -553,6 +554,7 @@ void KOAgendaView::createDayLabels()
 
     KOAlternateLabel *dayLabel =
       new KOAlternateLabel( shortstr, longstr, veryLongStr, topDayLabelBox );
+    dayLabel->useShortText(); // will be recalculated in updateDayLabelSizes() anyway
     dayLabel->setMinimumWidth( 1 );
     dayLabel->setAlignment( Qt::AlignHCenter );
     if ( date == QDate::currentDate() ) {
@@ -560,6 +562,7 @@ void KOAgendaView::createDayLabels()
       font.setBold( true );
       dayLabel->setFont( font );
     }
+    mDateDayLabels.append( dayLabel );
 
     // if a holiday region is selected, show the holiday name
     QStringList texts = KOGlobals::self()->holiday( date );
@@ -593,6 +596,11 @@ void KOAgendaView::createDayLabels()
   }
   mTopDayLabels->show();
   mBottomDayLabels->show();
+
+  // Update the labels now and after a single event loop run. Now to avoid flicker, and
+  // delayed so that the delayed layouting size is taken into account.
+  updateDayLabelSizes();
+  QTimer::singleShot( 0, this, SLOT( updateDayLabelSizes() ) );
 }
 
 void KOAgendaView::enableAgendaUpdate( bool enable )
@@ -1684,6 +1692,29 @@ void KOAgendaView::updateEventIndicators()
   mAgenda->checkScrollBoundaries();
   updateEventIndicatorTop( mAgenda->visibleContentsYMin() );
   updateEventIndicatorBottom( mAgenda->visibleContentsYMax() );
+}
+
+void KOAgendaView::updateDayLabelSizes()
+{
+  // First, calculate the maximum text type that fits for all labels
+  KOAlternateLabel::TextType overallType = KOAlternateLabel::Extensive;
+  foreach ( KOAlternateLabel *label, mDateDayLabels ) {
+    KOAlternateLabel::TextType type = label->largestFittingTextType();
+    if ( type < overallType ) {
+      overallType = type;
+    }
+  }
+
+  // Then, set that maximum text type to all the labels
+  foreach ( KOAlternateLabel *label, mDateDayLabels ) {
+    label->setFixedType( overallType );
+  }
+}
+
+void KOAgendaView::resizeEvent( QResizeEvent *resizeEvent )
+{
+  updateDayLabelSizes();
+  KOrg::AgendaView::resizeEvent( resizeEvent );
 }
 
 void KOAgendaView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )

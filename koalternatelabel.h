@@ -41,8 +41,11 @@ class KOAlternateLabel : public QLabel
 
     virtual QSize minimumSizeHint() const;
 
+    enum TextType { Short = 0, Long = 1, Extensive = 2 };
+    TextType largestFittingTextType() const;
+    void setFixedType( TextType type );
+
   public slots:
-    void setText( const QString & );
     void useShortText();
     void useLongText();
     void useExtensiveText();

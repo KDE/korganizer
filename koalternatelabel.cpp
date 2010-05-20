@@ -77,19 +77,21 @@ void KOAlternateLabel::squeezeTextToLabel()
     return;
   }
 
-  QFontMetrics fm( fontMetrics() );
-  int labelWidth = size().width();
-  int textWidth = fm.width( mLongText );
-  int longTextWidth = fm.width( mExtensiveText );
-  if ( longTextWidth <= labelWidth ) {
-    QLabel::setText( mExtensiveText );
-    this->setToolTip( "" );
-  } else if ( textWidth <= labelWidth ) {
-    QLabel::setText( mLongText );
-    this->setToolTip( mExtensiveText );
-  } else {
-    QLabel::setText( mShortText );
-    this->setToolTip( mExtensiveText );
+  const TextType type = largestFittingTextType();
+  switch ( type )
+  {
+    case Extensive:
+      QLabel::setText( mExtensiveText );
+      this->setToolTip( QString() );
+      break;
+    case Long:
+      QLabel::setText( mLongText );
+      this->setToolTip( mExtensiveText );
+    break;
+    case Short:
+      QLabel::setText( mShortText );
+      this->setToolTip( mExtensiveText );
+      break;
   }
 }
 
@@ -105,9 +107,26 @@ QSize KOAlternateLabel::minimumSizeHint() const
   return sh;
 }
 
-void KOAlternateLabel::setText( const QString &text )
+KOAlternateLabel::TextType KOAlternateLabel::largestFittingTextType() const
 {
-  mLongText = text;
-  squeezeTextToLabel();
+  QFontMetrics fm( fontMetrics() );
+  const int labelWidth = size().width();
+  const int longTextWidth = fm.width( mLongText );
+  const int extensiveTextWidth = fm.width( mExtensiveText );
+  if ( extensiveTextWidth <= labelWidth )
+    return Extensive;
+  else if ( longTextWidth <= labelWidth )
+    return Long;
+  else
+    return Short;
 }
 
+void KOAlternateLabel::setFixedType( TextType type )
+{
+  switch ( type )
+  {
+    case Extensive: useExtensiveText(); break;
+    case Long: useLongText(); break;
+    case Short: useShortText(); break;
+  }
+}
