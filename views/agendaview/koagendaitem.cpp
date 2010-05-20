@@ -83,7 +83,7 @@ KOAgendaItem::KOAgendaItem( Akonadi::Calendar *calendar, const Item &item,
   Q_ASSERT( incidence );
   if ( incidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
        incidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-    int years = KOHelper::yearDiff( mIncidence->dtStart().date(), qd );
+    int years = KOHelper::yearDiff( incidence->dtStart().date(), qd );
     if ( years > 0 ) {
       incidence = Incidence::Ptr( incidence->clone() );
       incidence->setReadOnly( false );
