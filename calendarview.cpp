@@ -272,11 +272,13 @@ void CalendarView::setCalendar( Akonadi::Calendar *cal )
   mCalendar = cal;
 
   delete mHistory;
-  mHistory = new History( mCalendar );
+  mHistory = new History( mCalendar, this );
   connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
   connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
   setIncidenceChanger( new IncidenceChanger( mCalendar, this, KCalPrefs::instance()->defaultCalendarId() ) );
+
+  mHistory->setIncidenceChanger( mChanger );
 
   mChanger->setDestinationPolicy( static_cast<IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
 
@@ -292,6 +294,7 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
   delete mChanger;
   mChanger = changer;
   mChanger->setGroupware( Groupware::instance() );
+  mHistory->setIncidenceChanger( mChanger );
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAdded(Akonadi::Item)),
            this, SLOT(incidenceAdded(Akonadi::Item)) );
@@ -673,7 +676,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
 
 void CalendarView::incidenceAdded( const Item &incidence )
 {
-  history()->recordAdd( Akonadi::incidence( incidence ) );
+  history()->recordAdd( incidence );
   changeIncidenceDisplay( incidence, IncidenceChanger::INCIDENCEADDED );
   updateUnmanagedViews();
   checkForFilteredChange( incidence );
@@ -693,7 +696,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
     tmp->modified();
   }
 
-  history()->recordEdit( oldIncidence, newIncidence );
+  history()->recordEdit( oldIncidence_, newIncidence_ );
 
   // Record completed todos in journals, if enabled. we should to this here in
   // favor of the todolist. users can mark a task as completed in an editor
@@ -744,14 +747,13 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
 
 void CalendarView::incidenceToBeDeleted( const Item &item )
 {
-  Incidence::Ptr incidence = Akonadi::incidence( item );
   IncidenceEditor *tmp = editorDialog( item );
   kDebug()<<"incidenceToBeDeleted item.id() :"<<item.id();
   if ( tmp ) {
     kDebug() << "Incidence to be deleted and open in editor";
     tmp->delayedDestruct();
   }
-  history()->recordDelete( incidence );
+  history()->recordDelete( item );
 //  changeIncidenceDisplay( incidence, IncidenceChanger::INCIDENCEDELETED );
   updateUnmanagedViews();
 }
