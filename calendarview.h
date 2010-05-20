@@ -455,11 +455,11 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
      * activated view so that it can make appropriate display changes. */
     void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
 
-    void incidenceAdded( const Akonadi::Item &incidence );
-    void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
-                           Akonadi::IncidenceChanger::WhatChanged modification );
+    void incidenceAddFinished( const Akonadi::Item &incidence, bool success );
+    void incidenceChangeFinished( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
+                                  Akonadi::IncidenceChanger::WhatChanged modification, bool success );
     void incidenceToBeDeleted( const Akonadi::Item &incidence );
-    void incidenceDeleted( const Akonadi::Item &incidence );
+    void incidenceDeleteFinished( const Akonadi::Item &incidence, bool success );
     void startMultiModify( const QString &text );
     void endMultiModify();
 

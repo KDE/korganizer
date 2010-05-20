@@ -296,17 +296,17 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
   mChanger->setGroupware( Groupware::instance() );
   mHistory->setIncidenceChanger( mChanger );
   emit newIncidenceChanger( mChanger );
-  connect( mChanger, SIGNAL(incidenceAdded(Akonadi::Item)),
-           this, SLOT(incidenceAdded(Akonadi::Item)) );
+  connect( mChanger, SIGNAL(incidenceAddFinished(Akonadi::Item,bool)),
+           this, SLOT(incidenceAddFinished(Akonadi::Item,bool)) );
 
   qRegisterMetaType<Akonadi::Item>("Akonadi::Item");
   qRegisterMetaType<Akonadi::IncidenceChanger::WhatChanged>("Akonadi::IncidenceChanger::WhatChanged");
-  connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged)),
-           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged)), Qt::QueuedConnection );
+  connect( mChanger, SIGNAL(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged,bool)),
+           this, SLOT(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged,bool)), Qt::QueuedConnection );
   connect( mChanger, SIGNAL(incidenceToBeDeleted(Akonadi::Item)),
            this, SLOT(incidenceToBeDeleted(Akonadi::Item)) );
-  connect( mChanger, SIGNAL(incidenceDeleted(Akonadi::Item)),
-           this, SLOT(incidenceDeleted(Akonadi::Item)) );
+  connect( mChanger, SIGNAL(incidenceDeleteFinished(Akonadi::Item,bool)),
+           this, SLOT(incidenceDeleteFinished(Akonadi::Item,bool)) );
 
   connect( mChanger, SIGNAL(schedule(KCal::iTIPMethod,Akonadi::Item)),
            this, SLOT(schedule(KCal::iTIPMethod,Akonadi::Item)) );
@@ -674,18 +674,28 @@ void CalendarView::updateConfig( const QByteArray &receiver )
   mChanger->setDestinationPolicy( static_cast<IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
 }
 
-void CalendarView::incidenceAdded( const Item &incidence )
+void CalendarView::incidenceAddFinished( const Item &incidence, bool success )
 {
-  history()->recordAdd( incidence );
-  changeIncidenceDisplay( incidence, IncidenceChanger::INCIDENCEADDED );
-  updateUnmanagedViews();
-  checkForFilteredChange( incidence );
+  if ( success ) {
+    history()->recordAdd( incidence );
+    changeIncidenceDisplay( incidence, IncidenceChanger::INCIDENCEADDED );
+    updateUnmanagedViews();
+    checkForFilteredChange( incidence );
+  } else {
+    kError() << "Incidence not added, job reported error";
+  }
 }
 
-void CalendarView::incidenceChanged( const Item &oldIncidence_,
-                                     const Item &newIncidence_,
-                                     Akonadi::IncidenceChanger::WhatChanged modification )
+void CalendarView::incidenceChangeFinished( const Item &oldIncidence_,
+                                            const Item &newIncidence_,
+                                            Akonadi::IncidenceChanger::WhatChanged modification,
+                                            bool success )
 {
+  if ( !success ) {
+    kError() << "Incidence not chanded, job reported error";
+    return;
+  }
+
   Incidence::Ptr oldIncidence = Akonadi::incidence( oldIncidence_ );
   Incidence::Ptr newIncidence = Akonadi::incidence( newIncidence_ );
 
@@ -758,10 +768,14 @@ void CalendarView::incidenceToBeDeleted( const Item &item )
   updateUnmanagedViews();
 }
 
-void CalendarView::incidenceDeleted( const Item &item )
+void CalendarView::incidenceDeleteFinished( const Item &item, bool success )
 {
-  changeIncidenceDisplay( item, IncidenceChanger::INCIDENCEDELETED );
-  updateUnmanagedViews();
+  if ( success ) {
+    changeIncidenceDisplay( item, IncidenceChanger::INCIDENCEDELETED );
+    updateUnmanagedViews();
+  } else {
+    kError() << "Incidence not deleted, job reported error";
+  }
 }
 
 void CalendarView::checkForFilteredChange( const Item &item )
@@ -1510,7 +1524,7 @@ void CalendarView::copyIncidenceToResource( const Item &item, const QString &res
   }
 
   if ( resources->addIncidence( newInc, newCal ) ) {
-    incidenceAdded( newInc );
+    incidenceAddFinished( newInc, true );
     KMessageBox::information(
       this,
       i18nc( "@info",
@@ -1578,7 +1592,7 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
   }
 
   if ( resources->addIncidence( newInc, newCal ) ) {
-    incidenceAdded( newInc );
+    incidenceAddFinished( newInc, true );
     ResourceCalendar *const oldCal = resources->resource( incidence );
     if ( !oldCal || resources->deleteIncidence( incidence ) ) {
       KMessageBox::error(
@@ -1591,7 +1605,7 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
                newCal->resourceName() ),
         i18nc( "@title:window", "Moving Failed" ) );
     } else {
-      incidenceDeleted( incidence );
+      incidenceDeleteFinished( incidence, true );
       KMessageBox::information(
         this,
         i18nc( "@info",
