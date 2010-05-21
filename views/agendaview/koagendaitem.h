@@ -92,7 +92,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence, const QDate &qd, QWidget *parent );
+    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence,
+                  const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
