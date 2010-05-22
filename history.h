@@ -104,6 +104,8 @@ class History : public QObject
         void setItemId( Akonadi::Item::Id );
         Akonadi::Item::Id itemId();
 
+        void removeRelations( const KCal::Incidence::Ptr &incidence );
+
       protected:
         Akonadi::Calendar *mCalendar;
         Akonadi::IncidenceChanger *mChanger;
@@ -124,6 +126,7 @@ class History : public QObject
       private:
         KCal::Incidence::Ptr mIncidence;
         Akonadi::Collection mCollection;
+        QString mParentUid;
     };
 
     class EntryAdd : public Entry
@@ -139,6 +142,7 @@ class History : public QObject
       private:
         KCal::Incidence::Ptr mIncidence;
         Akonadi::Collection mCollection;
+        QString mParentUid;
     };
 
     class EntryEdit : public Entry
