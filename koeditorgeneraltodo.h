@@ -75,7 +75,8 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void editRecurrence();
 
   protected slots:
-    void completedChanged(int);
+    void completedChanged( int );
+    void completedChanged();
     void dateChanged();
     void startDateModified();
 
@@ -96,6 +97,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
+    QCheckBox               *mCompletedToggle;
     QComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;
@@ -106,7 +108,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
     QCheckBox               *mStartCheck;
 
-    QDateTime mCompleted;
+    QDateTime               mCompletedDateTime;
 };
 
 

@@ -56,9 +56,8 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditorgeneraltodo.moc"
 
-KOEditorGeneralTodo::KOEditorGeneralTodo(QObject* parent,
-                                         const char* name)
-  : KOEditorGeneral( parent, name)
+KOEditorGeneralTodo::KOEditorGeneralTodo( QObject *parent, const char *name )
+  : KOEditorGeneral( parent, name )
 {
   setType( "Todo" );
 }
@@ -78,7 +77,8 @@ void KOEditorGeneralTodo::finishSetup()
   QWidget::setTabOrder( mDueDateEdit, mDueTimeEdit );
   QWidget::setTabOrder( mDueTimeEdit, mTimeButton );
   QWidget::setTabOrder( mTimeButton, mRecEditButton );
-  QWidget::setTabOrder( mRecEditButton, mCompletedCombo );
+  QWidget::setTabOrder( mRecEditButton, mCompletedToggle );
+  QWidget::setTabOrder( mCompletedToggle, mCompletedCombo );
   QWidget::setTabOrder( mCompletedCombo, mPriorityCombo );
   QWidget::setTabOrder( mPriorityCombo, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
@@ -182,54 +182,73 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 }
 
 
-void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
+void KOEditorGeneralTodo::initCompletion( QWidget *parent, QBoxLayout *topLayout )
 {
-  QString whatsThis = i18n("Sets the current completion status of this to-do "
-                           "as a percentage.");
-  mCompletedCombo = new QComboBox(parent);
-  QWhatsThis::add( mCompletedCombo, whatsThis );
-  for (int i = 0; i <= 100; i+=10) {
-    // xgettext:no-c-format
-    QString label = i18n("Percent complete", "%1 %").arg (i);
-    mCompletedCombo->insertItem(label);
-  }
-  connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
-  topLayout->addWidget(mCompletedCombo);
+  QHBoxLayout *completionLayout = new QHBoxLayout( topLayout );
 
-  mCompletedLabel = new QLabel(i18n("co&mpleted"),parent);
-  topLayout->addWidget(mCompletedLabel);
-  mCompletedLabel->setBuddy( mCompletedCombo );
+  QLabel *label = new QLabel( i18n( "&Completed:" ), parent );
+  completionLayout->addWidget( label );
+
+  mCompletedToggle = new QCheckBox( parent );
+  QToolTip::add( mCompletedToggle,
+                 i18n( "Toggle between 0% and 100% complete" ) );
+  QWhatsThis::add( mCompletedToggle,
+                   i18n( "Click this checkbox to toggle the completed percentage of the to-do "
+                         "between 0% or 100%" ) );
+  connect( mCompletedToggle, SIGNAL(clicked()), SLOT(completedChanged()) );
+  completionLayout->addWidget( mCompletedToggle );
+  label->setBuddy( mCompletedToggle );
+
+  mCompletedCombo = new QComboBox( parent );
+  QToolTip::add( mCompletedCombo,
+                 i18n( "Select the completed percentage" ) );
+  QWhatsThis::add( mCompletedCombo,
+                   i18n( "Use this combobox to set the completion percentage of the to-do." ) );
+  for ( int i = 0; i <= 100; i+=10 ) {
+    // xgettext:no-c-format
+    QString label = i18n( "Percent complete", "%1 %" ).arg( i );
+    mCompletedCombo->insertItem( label );
+  }
+  connect( mCompletedCombo, SIGNAL(activated(int)), SLOT(completedChanged(int)) );
+  completionLayout->addWidget( mCompletedCombo );
+
+  mCompletedLabel = new QLabel( i18n( "completed on", "on" ), parent );
+  mCompletedLabel->hide();
+  completionLayout->addWidget( mCompletedLabel );
+
   mCompletionDateEdit = new KDateEdit( parent );
   mCompletionDateEdit->hide();
-  topLayout->addWidget( mCompletionDateEdit );
+  completionLayout->addWidget( mCompletionDateEdit );
+
   mCompletionTimeEdit = new KTimeEdit( parent, QTime() );
   mCompletionTimeEdit->hide();
-  topLayout->addWidget( mCompletionTimeEdit );
+  completionLayout->addWidget( mCompletionTimeEdit );
 }
 
 void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
 {
-  QString whatsThis = i18n("Sets the priority of this to-do on a scale "
-                           "from one to nine, with one being the highest "
-                           "priority, five being a medium priority, and "
-                           "nine being the lowest. In programs that have a "
-                           "different scale, the numbers will be adjusted "
-                           "to match the appropriate scale.");
-  QLabel *priorityLabel = new QLabel(i18n("&Priority:"),parent);
-  topLayout->addWidget(priorityLabel);
+  QLabel *priorityLabel = new QLabel( i18n( "&Priority:" ), parent );
+  topLayout->addWidget( priorityLabel );
 
-  mPriorityCombo = new QComboBox(parent);
-  mPriorityCombo->insertItem(i18n("unspecified"));
-  mPriorityCombo->insertItem(i18n("1 (highest)"));
-  mPriorityCombo->insertItem(i18n("2"));
-  mPriorityCombo->insertItem(i18n("3"));
-  mPriorityCombo->insertItem(i18n("4"));
-  mPriorityCombo->insertItem(i18n("5 (medium)"));
-  mPriorityCombo->insertItem(i18n("6"));
-  mPriorityCombo->insertItem(i18n("7"));
-  mPriorityCombo->insertItem(i18n("8"));
-  mPriorityCombo->insertItem(i18n("9 (lowest)"));
-  topLayout->addWidget(mPriorityCombo);
+  mPriorityCombo = new QComboBox( parent );
+  QToolTip::add( mPriorityCombo,
+                 i18n( "Set the priority of the to-do" ) );
+  QWhatsThis::add( mPriorityCombo,
+                   i18n( "Sets the priority of this to-do on a scale from one to nine, "
+                         "with one being the highest priority, five being a medium priority, "
+                         "and nine being the lowest. In programs that have a different scale, "
+                         "the numbers will be adjusted to match the appropriate scale." ) );
+  mPriorityCombo->insertItem( i18n( "unspecified" ) );
+  mPriorityCombo->insertItem( i18n( "1 (highest)" ) );
+  mPriorityCombo->insertItem( i18n( "2" ) );
+  mPriorityCombo->insertItem( i18n( "3" ) );
+  mPriorityCombo->insertItem( i18n( "4" ) );
+  mPriorityCombo->insertItem( i18n( "5 (medium)" ) );
+  mPriorityCombo->insertItem( i18n( "6" ) );
+  mPriorityCombo->insertItem( i18n( "7" ) );
+  mPriorityCombo->insertItem( i18n( "8" ) );
+  mPriorityCombo->insertItem( i18n( "9 (lowest)" ) );
+  topLayout->addWidget( mPriorityCombo );
   priorityLabel->setBuddy( mPriorityCombo );
 }
 
@@ -278,9 +297,10 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   }
   mStartDateModified = false;
 
-  mPriorityCombo->setCurrentItem(5);
+  mPriorityCombo->setCurrentItem( 5 );
 
-  mCompletedCombo->setCurrentItem(0);
+  mCompletedToggle->setChecked( false );
+  mCompletedCombo->setCurrentItem( 0 );
 }
 
 void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &date )
@@ -329,9 +349,10 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &
   updateRecurrenceSummary( todo );
 
   mAlreadyComplete = false;
-  mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
-  if (todo->isCompleted() && todo->hasCompletedDate()) {
-    mCompleted = todo->completed();
+  mCompletedCombo->setCurrentItem( todo->percentComplete() / 10 );
+  if ( todo->isCompleted() && todo->hasCompletedDate() ) {
+    mCompletedDateTime = todo->completed();
+    mCompletedToggle->setChecked( true );
     mAlreadyComplete = true;
   }
   setCompletedDate();
@@ -402,17 +423,17 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPriority( mPriorityCombo->currentItem() );
 
   // set completion state
-  todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
+  todo->setPercentComplete( mCompletedCombo->currentItem() * 10 );
 
-  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
+  if (mCompletedCombo->currentItem() == 10 && mCompletedDateTime.isValid()) {
     QDateTime completed( mCompletionDateEdit->date(),
                          mCompletionTimeEdit->getTime() );
-    int difference = mCompleted.secsTo( completed );
+    int difference = mCompletedDateTime.secsTo( completed );
     if ( (difference < 60) && (difference > -60) &&
-         (completed.time().minute() == mCompleted.time().minute() ) ) {
+         (completed.time().minute() == mCompletedDateTime.time().minute() ) ) {
       // completion time wasn't changed substantially (only the seconds
       // truncated, but that's an effect done by KTimeEdit automatically).
-      completed = mCompleted;
+      completed = mCompletedDateTime;
     }
     todo->setCompleted( completed );
   }
@@ -520,10 +541,24 @@ void KOEditorGeneralTodo::updateRecurrenceSummary( Todo *todo )
   }
 }
 
-void KOEditorGeneralTodo::completedChanged(int index)
+void KOEditorGeneralTodo::completedChanged( int index )
 {
-  if (index == 10) {
-    mCompleted = QDateTime::currentDateTime();
+  if ( index == 10 ) {
+    mCompletedToggle->setChecked( true );
+    mCompletedDateTime = QDateTime::currentDateTime();
+  } else {
+    mCompletedToggle->setChecked( false );
+  }
+  setCompletedDate();
+}
+
+void KOEditorGeneralTodo::completedChanged()
+{
+  if ( mCompletedToggle->isChecked() ) {
+    mCompletedCombo->setCurrentItem( 10 );
+    mCompletedDateTime = QDateTime::currentDateTime();
+  } else {
+    mCompletedCombo->setCurrentItem( 0 );
   }
   setCompletedDate();
 }
@@ -562,15 +597,14 @@ void KOEditorGeneralTodo::startDateModified()
 
 void KOEditorGeneralTodo::setCompletedDate()
 {
-  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
-    mCompletedLabel->setText(i18n("co&mpleted on"));
-//        .arg(KGlobal::locale()->formatDateTime(mCompleted)));
+  if ( mCompletedCombo->currentItem() == 10 && mCompletedDateTime.isValid() ) {
+    mCompletedLabel->show();
     mCompletionDateEdit->show();
     mCompletionTimeEdit->show();
-    mCompletionDateEdit->setDate( mCompleted.date() );
-    mCompletionTimeEdit->setTime( mCompleted.time() );
+    mCompletionDateEdit->setDate( mCompletedDateTime.date() );
+    mCompletionTimeEdit->setTime( mCompletedDateTime.time() );
   } else {
-    mCompletedLabel->setText(i18n("co&mpleted"));
+    mCompletedLabel->hide();
     mCompletionDateEdit->hide();
     mCompletionTimeEdit->hide();
   }
@@ -585,7 +619,8 @@ void KOEditorGeneralTodo::modified (Todo* todo, KOGlobals::HowChanged modificati
   case KOGlobals::COMPLETION_MODIFIED:
     mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
     if (todo->isCompleted() && todo->hasCompletedDate()) {
-      mCompleted = todo->completed();
+      mCompletedDateTime = todo->completed();
+      mCompletedToggle->setChecked( true );
     }
     setCompletedDate();
     break;
