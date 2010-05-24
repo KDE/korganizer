@@ -426,9 +426,15 @@ void FreeBusyManager::cancelRetrieval()
   mRetrieveQueue.clear();
 }
 
-KURL replaceVariablesURL( const KURL &url,
-                          const QString &email, const QString &emailName, const QString &emailHost )
+KURL replaceVariablesURL( const KURL &url, const QString &email )
 {
+  QString emailName, emailHost;
+  int emailpos = email.find( '@' );
+  if( emailpos >= 0 ) {
+    emailName = email.left( emailpos );
+    emailHost = email.mid( emailpos + 1 );
+  }
+
   QString saveStr = url.path();
   saveStr.replace( QRegExp( "%[Ee][Mm][Aa][Ii][Ll]%" ), email );
   saveStr.replace( QRegExp( "%[Nn][Aa][Mm][Ee]%" ), emailName );
@@ -474,7 +480,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
       cachedURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
       cachedURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
     }
-    return cachedURL;
+    return replaceVariablesURL( cachedURL, email );
   }
 
   // Try with the url configurated by preferred email in kaddressbook
@@ -491,7 +497,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
       if ( !url.isEmpty() ) {
         kdDebug(5850) << "FreeBusyManager::freeBusyUrl():"
                       << "Taken url from preferred email:" << url << endl;
-        return KURL( url );
+        return replaceVariablesURL( KURL( url ), email );
       }
     }
   }
@@ -532,7 +538,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
 
   if ( sourceURL.url().contains( QRegExp( "\\.[xiv]fb$" ) ) ) { // user specified a fullpath
     // do variable string replacements to the URL (MS Outlook style)
-    KURL fullpathURL = replaceVariablesURL( sourceURL, email, emailName, emailHost );
+    KURL fullpathURL = replaceVariablesURL( sourceURL, email );
 
     // set the User and Password part of the URL
     fullpathURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
@@ -552,7 +558,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   for ( ext = extensions.constBegin(); ext != extensions.constEnd(); ++ext ) {
     // build a url for this extension
     sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
-    KURL dirURL = replaceVariablesURL( sourceURL, email, emailName, emailHost );
+    KURL dirURL = replaceVariablesURL( sourceURL, email );
     if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval ) {
       dirURL.addPath( email + '.' + (*ext) );
     } else {
