@@ -228,7 +228,7 @@ void FreeBusyManager::publishFreeBusy()
   // Already uploading? Skip this one then.
   if ( mUploadingFreeBusy )
     return;
-  KURL targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
+  KURL targetURL( KOPrefs::instance()->freeBusyPublishUrl() );
   if ( targetURL.isEmpty() )  {
     KMessageBox::sorry( 0,
       i18n( "<qt>No URL configured for uploading your free/busy list. Please "
@@ -384,8 +384,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KURL sourceURL = freeBusyUrl( email );
 
-  kdDebug(5850) << "FreeBusyManager::processRetrieveQueue(): url: " << sourceURL
-            << endl;
+  kdDebug(5850) << "FreeBusyManager::processRetrieveQueue(): url: " << sourceURL << endl;
 
   if ( !sourceURL.isValid() ) {
     kdDebug(5850) << "Invalid FB URL\n";
@@ -427,6 +426,37 @@ void FreeBusyManager::cancelRetrieval()
   mRetrieveQueue.clear();
 }
 
+KURL replaceVariablesURL( const KURL &url,
+                          const QString &email, const QString &emailName, const QString &emailHost )
+{
+  QString saveStr = url.path();
+  saveStr.replace( QRegExp( "%[Ee][Mm][Aa][Ii][Ll]%" ), email );
+  saveStr.replace( QRegExp( "%[Nn][Aa][Mm][Ee]%" ), emailName );
+  saveStr.replace( QRegExp( "%[Ss][Ee][Rr][Vv][Ee][Rr]%" ), emailHost );
+
+  KURL retUrl( url );
+  retUrl.setPath( saveStr );
+  return retUrl;
+}
+
+bool fbExists( const KURL &url )
+{
+  // We need this function because using KIO::NetAccess::exists()
+  // is useless for the http and https protocols. And getting back
+  // arbitrary data is also useless because a server can respond back
+  // with a "no such document" page.  So we need smart checking.
+
+  KIO::Job *job = KIO::get( url, false, false );
+  QByteArray data;
+  if ( KIO::NetAccess::synchronousRun( job, 0, &data ) ) {
+    QString dataStr ( data );
+    if ( dataStr.contains( "BEGIN:VCALENDAR" ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
   kdDebug(5850) << "FreeBusyManager::freeBusyUrl(): " << email << endl;
@@ -439,8 +469,14 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   QString url = cfg.readEntry( "url" );
   if ( !url.isEmpty() ) {
     kdDebug(5850) << "found cached url: " << url << endl;
-    return KURL( url );
+    KURL cachedURL( url );
+    if ( KOPrefs::instance()->thatIsMe( email ) ) {
+      cachedURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
+      cachedURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
+    }
+    return cachedURL;
   }
+
   // Try with the url configurated by preferred email in kaddressbook
   KABC::Addressee::List list= KABC::StdAddressBook::self( true )->findByEmail( email );
   KABC::Addressee::List::Iterator it;
@@ -448,13 +484,13 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   for ( it = list.begin(); it != list.end(); ++it ) {
     pref = (*it).preferredEmail();
     if ( !pref.isEmpty() && pref != email ) {
-      kdDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
-        "Preferred email of " << email << " is " << pref << endl;
+      kdDebug(5850) << "FreeBusyManager::freeBusyUrl():"
+                    << "Preferred email of " << email << " is " << pref << endl;
       cfg.setGroup( pref );
       url = cfg.readEntry ( "url" );
       if ( !url.isEmpty() ) {
-        kdDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
-          "Taken url from preferred email:" << url << endl;
+        kdDebug(5850) << "FreeBusyManager::freeBusyUrl():"
+                      << "Taken url from preferred email:" << url << endl;
         return KURL( url );
       }
     }
@@ -469,8 +505,9 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
   int emailpos = email.find( '@' );
-  if( emailpos == -1 )
+  if( emailpos == -1 ) {
     return KURL();
+  }
 
   // Cut off everything left of the @ sign to get the user name.
   const QString emailName = email.left( emailpos );
@@ -484,25 +521,54 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     // Don't try to fetch free/busy data for users not on the specified servers
     // This tests if the hostnames match, or one is a subset of the other
     const QString hostDomain = sourceURL.host();
-    if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
-         && !emailHost.endsWith( '.' + hostDomain ) ) {
+    if ( hostDomain != emailHost &&
+         !hostDomain.endsWith( '.' + emailHost ) &&
+         !emailHost.endsWith( '.' + hostDomain ) ) {
       // Host names do not match
-      kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
-        << email << '\'' << endl;
+      kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '" << email << endl;
       return KURL();
     }
   }
 
-  kdDebug(5850) << "Server FreeBusy url: " << sourceURL << endl;
-  if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
-    sourceURL.setFileName( email + ".ifb" );
-  else
-    sourceURL.setFileName( emailName + ".ifb" );
-  sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
-  sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
+  if ( sourceURL.url().contains( QRegExp( "\\.[xiv]fb$" ) ) ) { // user specified a fullpath
+    // do variable string replacements to the URL (MS Outlook style)
+    KURL fullpathURL = replaceVariablesURL( sourceURL, email, emailName, emailHost );
 
-  kdDebug(5850) << "Results in generated: " << sourceURL << endl;
-  return sourceURL;
+    // set the User and Password part of the URL
+    fullpathURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
+    fullpathURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
+
+    // no need to cache this URL as this is pretty fast to get from the config value.
+
+    // return the fullpath URL
+    return fullpathURL;
+  }
+
+  // else we search for a fb file in the specified URL with known possible extensions
+
+  QStringList extensions;
+  extensions << "xfb" << "ifb" << "vfb";
+  QStringList::ConstIterator ext;
+  for ( ext = extensions.constBegin(); ext != extensions.constEnd(); ++ext ) {
+    // build a url for this extension
+    sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
+    KURL dirURL = replaceVariablesURL( sourceURL, email, emailName, emailHost );
+    if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval ) {
+      dirURL.addPath( email + '.' + (*ext) );
+    } else {
+      dirURL.addPath( emailName + '.' + (*ext ) );
+    }
+    dirURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
+    dirURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
+    if ( fbExists( dirURL ) ) {
+      // write the URL to the cache
+      cfg.setGroup( email );
+      cfg.writeEntry( "url", dirURL.prettyURL() ); // prettyURL() does not write user nor password
+      return dirURL;
+    }
+  }
+
+  return KURL();
 }
 
 KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
@@ -534,7 +600,7 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
   QFile f( fbd + "/" + email + ".ifb" );
   if ( !f.exists() ) {
     kdDebug(5850) << "FreeBusyManager::loadFreeBusy() " << f.name()
-              << " doesn't exist." << endl;
+                  << " doesn't exist." << endl;
     return 0;
   }
 

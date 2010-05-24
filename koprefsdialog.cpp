@@ -56,10 +56,11 @@
 #include <ktrader.h>
 #include <kpushbutton.h>
 #include <kocore.h>
-#include <libkcal/calendarresources.h>
 #include <kstandarddirs.h>
 #include <ksimpleconfig.h>
 #include <kholidays.h>
+
+#include <libkcal/calendarresources.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -1034,6 +1035,11 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
   KOPrefs::instance()->mFreeBusyRetrieveUser = mGroupwarePage->retrieveUser->text();
   KOPrefs::instance()->mFreeBusyRetrievePassword = mGroupwarePage->retrievePassword->text();
   KOPrefs::instance()->mFreeBusyRetrieveSavePassword = mGroupwarePage->retrieveSavePassword->isChecked();
+
+  // clear the url cache for our user
+  QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
+  KConfig cfg( configFile );
+  cfg.deleteGroup( KOPrefs::instance()->email() );
 }
 
 extern "C"

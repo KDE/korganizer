@@ -383,7 +383,9 @@ Ask the server administrator for this information.</string>
                                         <property name="whatsThis" stdset="0">
                                             <string>Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</string>
+Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"
+Alternatively, you can specify a full path to the Free/Busy file,
+For example: "https://kolab2.example.com/freebusy/user.xfb"</string>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
@@ -396,7 +398,9 @@ Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</str
                                         <property name="whatsThis" stdset="0">
                                             <string>Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</string>
+Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"
+Alternatively, you can specify a full path to the Free/Busy file,
+For example: "https://kolab2.example.com/freebusy/user.xfb"</string>
                                         </property>
                                     </widget>
                                 </hbox>
