@@ -33,6 +33,7 @@ class QEvent;
 class QModelIndex;
 class KMenu;
 class QAction;
+class QMouseEvent;
 
 class KOTodoViewView : public QTreeView
 {
@@ -52,6 +53,7 @@ class KOTodoViewView : public QTreeView
 
   protected:
     virtual QModelIndex moveCursor( CursorAction cursorAction, Qt::KeyboardModifiers modifiers );
+    virtual void mouseReleaseEvent ( QMouseEvent * );
 
   private:
     QModelIndex getNextEditableIndex( const QModelIndex &cur, int inc );

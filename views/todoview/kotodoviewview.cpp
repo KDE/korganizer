@@ -32,6 +32,7 @@
 #include <QContextMenuEvent>
 #include <QAction>
 #include <QVariant>
+#include <QMouseEvent>
 
 #include <KMenu>
 #include <KLocalizedString>
@@ -197,6 +198,16 @@ QModelIndex KOTodoViewView::getNextEditableIndex( const QModelIndex &cur, int in
     }
   }
   return QModelIndex();
+}
+
+void KOTodoViewView::mouseReleaseEvent ( QMouseEvent *event )
+{
+  if ( !indexAt( event->pos() ).isValid() ) {
+    clearSelection();
+    event->accept();
+  } else {
+    event->ignore();
+  }
 }
 
 #include "kotodoviewview.moc"
