@@ -259,6 +259,17 @@ History::Entry::~Entry()
 {
 }
 
+// could go to KCal, but probably the best is to remove raw pointer usage from KCal
+void History::Entry::removeRelations( const Incidence::Ptr &incidence )
+{
+  const Incidence::List childs = incidence->relations();
+  foreach ( Incidence *child, childs ) {
+    incidence->removeRelation( child );
+  }
+
+  incidence->setRelatedTo( 0 );
+}
+
 void History::Entry::setItemId( Akonadi::Item::Id id )
 {
   mItemId = id;
@@ -275,7 +286,14 @@ History::EntryDelete::EntryDelete( Akonadi::Calendar *calendar,
   : Entry( calendar, changer ), mIncidence( Akonadi::incidence( item )->clone() ),
   mCollection( item.parentCollection() )
 {
-  mItemId =item.id();
+  // Save the parent uid here, because we are going to clear the relations
+  // KCal uses raw pointers and we can't have pointers to parents that might be dead already
+  //
+  // Other problem is that when you clone() a parent incidence it will have pointers to it's
+  // children, but all children point to the original father. Should KCal do recursive cloning?
+  mParentUid = mIncidence->relatedToUid();
+  removeRelations( mIncidence );
+  mItemId = item.id();
 }
 
 History::EntryDelete::~EntryDelete()
@@ -285,6 +303,7 @@ History::EntryDelete::~EntryDelete()
 bool History::EntryDelete::undo()
 {
   Incidence::Ptr incidence( mIncidence->clone() );
+  incidence->setRelatedToUid( mParentUid );
   return mChanger->addIncidence( incidence, mCollection, 0 );
 }
 
@@ -305,6 +324,9 @@ History::EntryAdd::EntryAdd( Akonadi::Calendar *calendar,
   : Entry( calendar, changer ), mIncidence( Akonadi::incidence( item )->clone() ),
   mCollection( item.parentCollection() )
 {
+  // See comments in EntryDelete's constructor
+  mParentUid = mIncidence->relatedToUid();
+  removeRelations( mIncidence );
   mItemId = item.id();
 }
 
@@ -321,6 +343,7 @@ bool History::EntryAdd::undo()
 bool History::EntryAdd::redo()
 {
   Incidence::Ptr incidence( mIncidence->clone() );
+  incidence->setRelatedToUid( mParentUid );
   return mChanger->addIncidence( incidence, mCollection, 0 );
 }
 
@@ -338,6 +361,8 @@ History::EntryEdit::EntryEdit( Akonadi::Calendar *calendar,
   mNewIncidence( Akonadi::incidence( newItem )->clone() )
 {
   mItemId = oldItem.id();
+  removeRelations( mOldIncidence );
+  removeRelations( mNewIncidence );
 }
 
 History::EntryEdit::~EntryEdit()
