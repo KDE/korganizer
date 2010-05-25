@@ -2617,6 +2617,12 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
     }
     return false;
   }
+
+  if ( !mChanger->wasntDeleted( item.id() ) ) {
+    // it was deleted already but the etm wasn't notified yet
+    return true;
+  }
+
   if ( incidence->isReadOnly() ) {
     if ( !force ) {
       KMessageBox::information(
