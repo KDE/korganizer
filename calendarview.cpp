@@ -2618,7 +2618,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
     return false;
   }
 
-  if ( !mChanger->wasntDeleted( item.id() ) ) {
+  if ( !mChanger->isNotDeleted( item.id() ) ) {
     // it was deleted already but the etm wasn't notified yet
     return true;
   }
