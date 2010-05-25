@@ -599,13 +599,12 @@ void KOTodoView::printTodo( bool preview )
 void KOTodoView::deleteTodo()
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) {
-    return;
+  if ( selection.size() == 1 ) {
+    const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+    if ( mChanger->wasntDeleted( todoItem.id() ) ) {
+      emit deleteIncidenceSignal( todoItem );
+    }
   }
-
-  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
-
-  emit deleteIncidenceSignal( todoItem );
 }
 
 void KOTodoView::newTodo()
