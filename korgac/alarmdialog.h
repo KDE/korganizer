@@ -72,6 +72,9 @@ class AlarmDialog : public KDialogBase {
     void updateButtons();
     void showDetails();
 
+  protected:
+    void closeEvent( QCloseEvent * );
+
   private:
     AlarmListItem *searchByUid( const QString &uid );
     bool ensureKorganizerRunning() const;
