@@ -282,15 +282,20 @@ void KOTodoModel::processChange( const Item & aitem, int action )
       return;
     }
 
-    // somebody should assure that all todo's which relate to this one
-    // are un-linked before deleting this one
-    Q_ASSERT( !ttTodo->hasChildren() );
+    // Don't assert, korganizer and akonadi/kcal/calendar know what they are doing
+    // just unparent the nodes if their parent die
+    //Q_ASSERT( !ttTodo->hasChildren() );
 
     // find the model index of the deleted incidence
     QModelIndex miDeleted = getModelIndex( ttTodo );
 
     beginRemoveRows( miDeleted.parent(), miDeleted.row(), miDeleted.row() );
     ttTodo->mParent->removeChild( miDeleted.row() );
+
+    if ( ttTodo->hasChildren() ) {
+      moveIfParentChanged( ttTodo, aitem, true );
+    }
+    
     delete ttTodo;
     endRemoveRows();
   } else {
