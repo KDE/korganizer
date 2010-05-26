@@ -236,7 +236,6 @@ void KOTodoModel::reloadTodos()
       // update pointer to the todo
       // apparently this is necessary because undo's and redo's don't modify
       // the modified todos but replace pointers to them with others
-      // TODO check if that's true, and if this is OK
       tmp->mTodo = *it;
 
       // the todo is still in the calendar, we don't delete it
