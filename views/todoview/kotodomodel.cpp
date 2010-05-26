@@ -330,7 +330,7 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
 QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item &aitem,
                                               bool addParentIfMissing )
 {
-  kDebug(); //pending(AKONADI_PORT); review the newParent stuff down there
+  kDebug();
 
   const Todo::Ptr todo = Akonadi::todo( aitem );
   // find the model index of the changed incidence
@@ -354,9 +354,9 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
   }
 
   // check if the relation to the parent has changed
-  if ( ( newParent == 0 && Akonadi::hasTodo( ttOldParent->mTodo ) ) ||
-       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) ) ||
-       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) &&
+  if ( ( newParent == 0 && Akonadi::hasTodo( ttOldParent->mTodo ) )  ||  // became parentless  OR
+       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) ) ||  // gained a parent    OR 
+       ( newParent != 0 && Akonadi::hasTodo( ttOldParent->mTodo ) &&     // changed parent
          newParent->uid() != Akonadi::todo( ttOldParent->mTodo )->uid() ) ) {
     // find the node and model index of the new parent
     TodoTreeNode *ttNewParent = 0;
