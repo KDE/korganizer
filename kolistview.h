@@ -69,8 +69,10 @@ class KOListView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOListView(Calendar *calendar, QWidget *parent = 0,
-               const char *name = 0);
+   explicit KOListView( Calendar *calendar,
+                        QWidget *parent = 0,
+                        const char *name = 0,
+                        bool nonInteractive = false );
     ~KOListView();
 
     virtual int maxDatesHint();
@@ -116,6 +118,9 @@ class KOListView : public KOEventView
     QDict<Incidence> mUidDict;
     QMap<QString, QDate>mDateList;
     DateList mSelectedDates;
+
+    // if it's non interactive we disable context menu, and incidence editing
+    bool mIsNonInteractive;
 };
 
 #endif

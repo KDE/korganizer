@@ -208,11 +208,14 @@ bool KOListView::ListItemVisitor::visit(Journal *t)
   return true;
 }
 
-KOListView::KOListView( Calendar *calendar, QWidget *parent,
-                        const char *name)
+KOListView::KOListView( Calendar *calendar,
+			QWidget *parent,
+                        const char *name,
+			bool nonInteractive )
   : KOEventView(calendar, parent, name)
 {
   mActiveItem = 0;
+  mIsNonInteractive = nonInteractive;
 
   mListView = new KListView(this);
   mListView->addColumn(i18n("Summary"));
@@ -421,21 +424,26 @@ KOListViewItem *KOListView::getItemForIncidence(Incidence *incidence)
 
 void KOListView::defaultItemAction(QListViewItem *i)
 {
-  KOListViewItem *item = static_cast<KOListViewItem *>( i );
-  if ( item ) defaultAction( item->data() );
+  if ( !mIsNonInteractive ) {
+    KOListViewItem *item = static_cast<KOListViewItem *>( i );
+    if ( item ) {
+      defaultAction( item->data() );
+    }
+  }
 }
 
-void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
+void KOListView::popupMenu( QListViewItem *item,const QPoint &, int )
 {
-  mActiveItem = (KOListViewItem *)item;
-  if (mActiveItem) {
-    Incidence *incidence = mActiveItem->data();
-    // FIXME: For recurring incidences we don't know the date of this
-    // occurrence, there's no reference to it at all!
-    mPopupMenu->showIncidencePopup( calendar(), incidence, QDate() );
-  }
-  else {
-    showNewEventPopup();
+  if ( !mIsNonInteractive ) {
+    mActiveItem = static_cast<KOListViewItem *>( item );
+    if ( mActiveItem ) {
+      Incidence *incidence = mActiveItem->data();
+      // FIXME: For recurring incidences we don't know the date of this
+      // occurrence, there's no reference to it at all!
+      mPopupMenu->showIncidencePopup( calendar(), incidence, QDate() );
+    } else {
+      showNewEventPopup();
+    }
   }
 }
 
