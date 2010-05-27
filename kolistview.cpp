@@ -45,6 +45,17 @@
 #include "kolistview.h"
 #include "kolistview.moc"
 
+enum {
+  Summary_Column = 0,
+  Reminder_Column,
+  Recurs_Column,
+  StartDate_Column,
+  StartTime_Column,
+  EndDate_Column,
+  EndTime_Column,
+  Categories_Column
+};
+
 
 KOListViewToolTip::KOListViewToolTip( QWidget* parent,
                                       Calendar *calendar,
@@ -92,22 +103,22 @@ class KOListView::ListItemVisitor : public IncidenceBase::Visitor
 
 bool KOListView::ListItemVisitor::visit( Event *e )
 {
-  mItem->setText(0,e->summary());
+  mItem->setText(Summary_Column,e->summary());
   if ( e->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "bell" );
-    mItem->setPixmap(1,alarmPxmp);
-    mItem->setSortKey(1,"1");
+    mItem->setPixmap(Reminder_Column,alarmPxmp);
+    mItem->setSortKey(Reminder_Column,"1");
   }
   else
-    mItem->setSortKey(1,"0");
+    mItem->setSortKey(Reminder_Column,"0");
 
   if ( e->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon( "recur" );
-    mItem->setPixmap(2,recurPxmp);
-    mItem->setSortKey(2,"1");
+    mItem->setPixmap(Recurs_Column,recurPxmp);
+    mItem->setSortKey(Recurs_Column,"1");
   }
   else
-    mItem->setSortKey(2,"0");
+    mItem->setSortKey(Recurs_Column,"0");
 
   QPixmap eventPxmp;
   if ( e->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
@@ -120,23 +131,23 @@ bool KOListView::ListItemVisitor::visit( Event *e )
     eventPxmp = KOGlobals::self()->smallIcon( "appointment" );
   }
 
-  mItem->setPixmap(0, eventPxmp);
+  mItem->setPixmap(Summary_Column, eventPxmp);
 
-  mItem->setText( 3,e->dtStartDateStr());
-  mItem->setSortKey( 3, e->dtStart().toString(Qt::ISODate));
-  if (e->doesFloat()) mItem->setText(4, "---"); else {
-    mItem->setText( 4, e->dtStartTimeStr() );
-    mItem->setSortKey( 4,e->dtStart().time().toString(Qt::ISODate));
+  mItem->setText( StartDate_Column,e->dtStartDateStr());
+  mItem->setSortKey( StartDate_Column, e->dtStart().toString(Qt::ISODate));
+  if (e->doesFloat()) mItem->setText(StartTime_Column, "---"); else {
+    mItem->setText( StartTime_Column, e->dtStartTimeStr() );
+    mItem->setSortKey( StartTime_Column,e->dtStart().time().toString(Qt::ISODate));
   }
-  mItem->setText( 5, IncidenceFormatter::dateToString( e->dtEnd(), true ) );
-  mItem->setSortKey( 5, e->dtEnd().toString(Qt::ISODate));
+  mItem->setText( EndDate_Column, IncidenceFormatter::dateToString( e->dtEnd(), true ) );
+  mItem->setSortKey( EndDate_Column, e->dtEnd().toString(Qt::ISODate));
   if ( e->doesFloat() ) {
-    mItem->setText(6, "---");
+    mItem->setText(EndTime_Column, "---");
   } else {
-    mItem->setText( 6, IncidenceFormatter::timeToString(e->dtEnd(), true ) );
-    mItem->setSortKey( 6, e->dtEnd().time().toString(Qt::ISODate));
+    mItem->setText( EndTime_Column, IncidenceFormatter::timeToString(e->dtEnd(), true ) );
+    mItem->setSortKey( EndTime_Column, e->dtEnd().time().toString(Qt::ISODate));
   }
-  mItem->setText( 7,e->categoriesStr());
+  mItem->setText( Categories_Column,e->categoriesStr());
 
   return true;
 }
@@ -145,52 +156,52 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 {
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon( "todo" );
   static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon( "checkedbox" );
-  mItem->setPixmap(0, t->isCompleted() ? todoDonePxmp : todoPxmp );
-  mItem->setText(0,t->summary());
+  mItem->setPixmap(Summary_Column, t->isCompleted() ? todoDonePxmp : todoPxmp );
+  mItem->setText(Summary_Column,t->summary());
   if ( t->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "bell" );
-    mItem->setPixmap(1,alarmPxmp);
-    mItem->setSortKey(1, "1");
+    mItem->setPixmap(Reminder_Column,alarmPxmp);
+    mItem->setSortKey(Reminder_Column, "1");
   }
   else
-    mItem->setSortKey(1, "0");
+    mItem->setSortKey(Reminder_Column, "0");
 
   if ( t->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon( "recur" );
-    mItem->setPixmap(2,recurPxmp);
-    mItem->setSortKey(2, "1");
+    mItem->setPixmap(Recurs_Column,recurPxmp);
+    mItem->setSortKey(Recurs_Column, "1");
   }
   else
-    mItem->setSortKey(2, "0");
+    mItem->setSortKey(Recurs_Column, "0");
 
   if (t->hasStartDate()) {
-    mItem->setText(3,t->dtStartDateStr());
-    mItem->setSortKey(3,t->dtStart().toString(Qt::ISODate));
+    mItem->setText(StartDate_Column,t->dtStartDateStr());
+    mItem->setSortKey(StartDate_Column,t->dtStart().toString(Qt::ISODate));
     if (t->doesFloat()) {
-      mItem->setText(4,"---");
+      mItem->setText(StartTime_Column,"---");
     } else {
-      mItem->setText(4,t->dtStartTimeStr());
-      mItem->setSortKey( 4, t->dtStart().time().toString(Qt::ISODate) );
+      mItem->setText(StartTime_Column,t->dtStartTimeStr());
+      mItem->setSortKey( StartTime_Column, t->dtStart().time().toString(Qt::ISODate) );
     }
   } else {
-    mItem->setText(3,"---");
-    mItem->setText(4,"---");
+    mItem->setText(StartDate_Column,"---");
+    mItem->setText(StartTime_Column,"---");
   }
 
   if (t->hasDueDate()) {
-    mItem->setText(5, IncidenceFormatter::dateToString( t->dtDue(), true ) );
-    mItem->setSortKey( 5, t->dtDue().toString(Qt::ISODate) );
+    mItem->setText(EndDate_Column, IncidenceFormatter::dateToString( t->dtDue(), true ) );
+    mItem->setSortKey( EndDate_Column, t->dtDue().toString(Qt::ISODate) );
     if (t->doesFloat()) {
-      mItem->setText(6,"---");
+      mItem->setText(EndTime_Column,"---");
     } else {
-      mItem->setText(6, IncidenceFormatter::timeToString( t->dtDue(), true ) );
-      mItem->setSortKey( 6, t->dtDue().time().toString(Qt::ISODate) );
+      mItem->setText(EndTime_Column, IncidenceFormatter::timeToString( t->dtDue(), true ) );
+      mItem->setSortKey( EndTime_Column, t->dtDue().time().toString(Qt::ISODate) );
     }
   } else {
-    mItem->setText(5,"---");
-    mItem->setText(6,"---");
+    mItem->setText(EndDate_Column,"---");
+    mItem->setText(EndTime_Column,"---");
   }
-  mItem->setText(7,t->categoriesStr());
+  mItem->setText(Categories_Column,t->categoriesStr());
 
 
   return true;
@@ -199,19 +210,19 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 bool KOListView::ListItemVisitor::visit(Journal *t)
 {
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "journal" );
-  mItem->setPixmap(0,jrnalPxmp);
+  mItem->setPixmap(Summary_Column,jrnalPxmp);
   // Just use the first line
-  mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
-  mItem->setText( 3, t->dtStartDateStr() );
-  mItem->setSortKey( 3, t->dtStart().toString(Qt::ISODate) );
+  mItem->setText( Summary_Column, t->description().section( "\n", 0, 0 ) );
+  mItem->setText( StartDate_Column, t->dtStartDateStr() );
+  mItem->setSortKey( StartDate_Column, t->dtStart().toString(Qt::ISODate) );
 
   return true;
 }
 
 KOListView::KOListView( Calendar *calendar,
-			QWidget *parent,
+                        QWidget *parent,
                         const char *name,
-			bool nonInteractive )
+                        bool nonInteractive )
   : KOEventView(calendar, parent, name)
 {
   mActiveItem = 0;
