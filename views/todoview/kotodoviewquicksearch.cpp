@@ -47,6 +47,7 @@
 #include <QHBoxLayout>
 
 using namespace KCal;
+using namespace KPIM;
 using namespace IncidenceEditors;
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( Akonadi::Calendar *calendar, QWidget *parent )
