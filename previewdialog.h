@@ -57,6 +57,8 @@ class PreviewDialog : public KDialogBase
     void addResource( const KURL & );
 
   private:
+    bool isTempFile() const;
+  private:
     KURL mUrl;
     KOListView *mListView;
     KCal::CalendarLocal *mCalendar;

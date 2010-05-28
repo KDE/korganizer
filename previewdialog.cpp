@@ -36,6 +36,9 @@
 
 #include <libkcal/calendarlocal.h>
 
+#include <kstandarddirs.h>
+#include <kfiledialog.h>
+
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qradiobutton.h>
@@ -46,7 +49,7 @@ using namespace KCal;
 
 PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
   : KDialogBase( Plain, i18n("Import Calendar/Event"), User1 | User2 | Cancel, User1, parent,
-                 0, true, true, KGuiItem( i18n("&Merge into to existing calendar"), "merge" ), KGuiItem( i18n("&Add as new calendar"), "add" ) ),
+                 0, true, true, KGuiItem( i18n("&Merge into to existing calendar"), "merge" ) ),
     mUrl( url )
 {
   QFrame *topFrame = plainPage();
@@ -63,7 +66,15 @@ PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
   topLayout->setMargin( marginHint() );
 
   connect( this, SIGNAL(user1Clicked()), SLOT(slotMerge()) );
-  connect( this, SIGNAL(user2Clicked()), SLOT(slotAdd()) );  
+  connect( this, SIGNAL(user2Clicked()), SLOT(slotAdd()) );
+
+  // when someone edits a kmail attachment he's editing a tmp file, check for that
+  // and if it's a tmp file then open a save dialog
+  if ( isTempFile() ) {
+    setButtonGuiItem( User2, KGuiItem( i18n("&Add as new calendar..."), "add" ) );
+  } else {
+    setButtonGuiItem( User2, KGuiItem( i18n("&Add as new calendar"), "add" ) );
+  }
 }
 
 PreviewDialog::~PreviewDialog()
@@ -80,9 +91,23 @@ void PreviewDialog::slotMerge()
 
 void PreviewDialog::slotAdd()
 {
-  emit addResource( mUrl );
-  emit dialogFinished( this );
-  accept();
+  KURL finalUrl = mUrl;
+  if ( isTempFile() ) {
+    const QString fileName = KFileDialog::getSaveFileName( mUrl.fileName(), QString::null,
+                                                           0, i18n( "Select path for new calendar" ) );
+    finalUrl = KURL( fileName );
+  }
+
+  if ( finalUrl.isValid() ) {
+    emit addResource( finalUrl );
+    emit dialogFinished( this );
+    accept();
+  }
+}
+
+bool PreviewDialog::isTempFile() const
+{
+  return mUrl.path().startsWith( locateLocal( "tmp", "" ) );
 }
 
 #include "previewdialog.moc"
