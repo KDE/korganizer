@@ -49,10 +49,8 @@ enum {
   Summary_Column = 0,
   Reminder_Column,
   Recurs_Column,
-  StartDate_Column,
-  StartTime_Column,
-  EndDate_Column,
-  EndTime_Column,
+  StartDateTime_Column,
+  EndDateTime_Column,
   Categories_Column
 };
 
@@ -71,7 +69,7 @@ void KOListViewToolTip::maybeTip( const QPoint &pos )
   QListViewItem *it = eventlist->itemAt( pos );
   KOListViewItem *i = static_cast<KOListViewItem*>( it );
 
-  if( i && KOPrefs::instance()->mEnableToolTips ) {
+  if ( i && KOPrefs::instance()->mEnableToolTips ) {
     /* Calculate the rectangle. */
     r = eventlist->itemRect( it );
     /* Show the tip */
@@ -132,22 +130,13 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 
   mItem->setPixmap( Summary_Column, eventPxmp );
 
-  mItem->setText( StartDate_Column,e->dtStartDateStr() );
-  mItem->setSortKey( StartDate_Column, e->dtStart().toString( Qt::ISODate ) );
-  if ( e->doesFloat() ) {
-    mItem->setText( StartTime_Column, "---" );
-  } else {
-    mItem->setText( StartTime_Column, e->dtStartTimeStr() );
-    mItem->setSortKey( StartTime_Column, e->dtStart().time().toString( Qt::ISODate ) );
-  }
-  mItem->setText( EndDate_Column, IncidenceFormatter::dateToString( e->dtEnd(), true ) );
-  mItem->setSortKey( EndDate_Column, e->dtEnd().toString( Qt::ISODate ) );
-  if ( e->doesFloat() ) {
-    mItem->setText( EndTime_Column, "---" );
-  } else {
-    mItem->setText( EndTime_Column, IncidenceFormatter::timeToString( e->dtEnd(), true ) );
-    mItem->setSortKey( EndTime_Column, e->dtEnd().time().toString( Qt::ISODate ) );
-  }
+  QString startDateTime;
+  QString endDateTime;
+
+  mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString( e->dtStart(), e->doesFloat() ) );
+  mItem->setSortKey( StartDateTime_Column, e->dtStart().toString( Qt::ISODate ) );
+  mItem->setText( EndDateTime_Column, IncidenceFormatter::dateTimeToString( e->dtEnd(), e->doesFloat() ) );
+  mItem->setSortKey( EndDateTime_Column, e->dtEnd().toString( Qt::ISODate ) );
   mItem->setText( Categories_Column, e->categoriesStr() );
 
   return true;
@@ -176,46 +165,31 @@ bool KOListView::ListItemVisitor::visit( Todo *t )
   }
 
   if ( t->hasStartDate() ) {
-    mItem->setText( StartDate_Column, t->dtStartDateStr() );
-    mItem->setSortKey( StartDate_Column, t->dtStart().toString( Qt::ISODate ) );
-    if ( t->doesFloat() ) {
-      mItem->setText( StartTime_Column, "---");
-    } else {
-      mItem->setText( StartTime_Column, t->dtStartTimeStr() );
-      mItem->setSortKey( StartTime_Column, t->dtStart().time().toString( Qt::ISODate ) );
-    }
+    mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString( t->dtStart(), t->doesFloat() ) );
+    mItem->setSortKey( StartDateTime_Column, t->dtStart().toString( Qt::ISODate ) );
   } else {
-    mItem->setText( StartDate_Column, "---" );
-    mItem->setText( StartTime_Column, "---" );
+    mItem->setText( StartDateTime_Column, "---" );
   }
 
   if ( t->hasDueDate() ) {
-    mItem->setText( EndDate_Column, IncidenceFormatter::dateToString( t->dtDue(), true ) );
-    mItem->setSortKey( EndDate_Column, t->dtDue().toString( Qt::ISODate ) );
-    if ( t->doesFloat() ) {
-      mItem->setText( EndTime_Column, "---" );
-    } else {
-      mItem->setText( EndTime_Column, IncidenceFormatter::timeToString( t->dtDue(), true ) );
-      mItem->setSortKey( EndTime_Column, t->dtDue().time().toString( Qt::ISODate ) );
-    }
+    mItem->setText( EndDateTime_Column, IncidenceFormatter::dateTimeToString( t->dtDue(), t->doesFloat() ) );
+    mItem->setSortKey( EndDateTime_Column, t->dtDue().toString( Qt::ISODate ) );
   } else {
-    mItem->setText( EndDate_Column, "---" );
-    mItem->setText( EndTime_Column, "---" );
+    mItem->setText( EndDateTime_Column, "---" );
   }
   mItem->setText( Categories_Column, t->categoriesStr() );
-
 
   return true;
 }
 
-bool KOListView::ListItemVisitor::visit( Journal *t )
+bool KOListView::ListItemVisitor::visit( Journal *j )
 {
-  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "journal" );
-  mItem->setPixmap( Summary_Column, jrnalPxmp );
+  static const QPixmap jornalPxmp = KOGlobals::self()->smallIcon( "journal" );
+  mItem->setPixmap( Summary_Column, jornalPxmp );
   // Just use the first line
-  mItem->setText( Summary_Column, t->description().section( "\n", 0, 0 ) );
-  mItem->setText( StartDate_Column, t->dtStartDateStr() );
-  mItem->setSortKey( StartDate_Column, t->dtStart().toString( Qt::ISODate ) );
+  mItem->setText( Summary_Column, j->description().section( "\n", 0, 0 ) );
+  mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString( j->dtStart(), j->doesFloat() ) );
+  mItem->setSortKey( StartDateTime_Column, j->dtStart().toString( Qt::ISODate ) );
 
   return true;
 }
@@ -224,23 +198,25 @@ KOListView::KOListView( Calendar *calendar,
                         QWidget *parent,
                         const char *name,
                         bool nonInteractive )
-  : KOEventView(calendar, parent, name)
+  : KOEventView( calendar, parent, name )
 {
   mActiveItem = 0;
   mIsNonInteractive = nonInteractive;
 
-  mListView = new KListView(this);
+  mListView = new KListView( this );
   mListView->addColumn( i18n("Summary") );
   mListView->addColumn( i18n("Reminder") ); // alarm set?
+  mListView->setColumnAlignment( Reminder_Column, AlignHCenter );
+
   mListView->addColumn( i18n("Recurs") ); // recurs?
-  mListView->addColumn( i18n("Start Date") );
-  mListView->setColumnAlignment( 3, AlignHCenter );
-  mListView->addColumn( i18n("Start Time") );
-  mListView->setColumnAlignment( 4,AlignHCenter );
-  mListView->addColumn( i18n("End Date") );
-  mListView->setColumnAlignment( 5,AlignHCenter );
-  mListView->addColumn( i18n("End Time") );
-  mListView->setColumnAlignment( 6, AlignHCenter );
+  mListView->setColumnAlignment( Recurs_Column, AlignHCenter );
+
+  mListView->addColumn( i18n("Start Date/Time") );
+  mListView->setColumnAlignment( StartDateTime_Column, AlignHCenter );
+
+  mListView->addColumn( i18n("End Date/Time") );
+  mListView->setColumnAlignment( EndDateTime_Column, AlignHCenter );
+
   mListView->addColumn( i18n("Categories") );
 
   QBoxLayout *layoutTop = new QVBoxLayout( this );
