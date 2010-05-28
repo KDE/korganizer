@@ -330,6 +330,17 @@ void KOListView::showDates( const QDate &start, const QDate &end )
   emit incidenceSelected( 0, QDate() );
 }
 
+void KOListView::showAll()
+{
+  Incidence::List incidenceList = calendar()->incidences();
+
+  Incidence::List::ConstIterator it;
+  for( it = incidenceList.begin(); it != incidenceList.end(); ++it ) {
+    // we don't need the date, using showAll in non interactive mode for now
+    addIncidence( *it, QDate() );
+  }
+}
+
 void KOListView::addIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
   Incidence::List::ConstIterator it;
@@ -459,16 +470,18 @@ void KOListView::writeSettings( KConfig *config )
 
 void KOListView::processSelectionChange()
 {
-  kdDebug(5850) << "KOListView::processSelectionChange()" << endl;
+  if ( !mIsNonInteractive ) {
+    kdDebug(5850) << "KOListView::processSelectionChange()" << endl;
 
-  KOListViewItem *item =
-    static_cast<KOListViewItem *>( mListView->selectedItem() );
+    KOListViewItem *item =
+      static_cast<KOListViewItem *>( mListView->selectedItem() );
 
-  if ( !item ) {
-    emit incidenceSelected( 0, QDate() );
-  } else {
-    Incidence *incidence = static_cast<Incidence *>( item->data() );
-    emit incidenceSelected( incidence, mDateList[incidence->uid()] );
+    if ( !item ) {
+      emit incidenceSelected( 0, QDate() );
+    } else {
+      Incidence *incidence = static_cast<Incidence *>( item->data() );
+      emit incidenceSelected( incidence, mDateList[incidence->uid()] );
+    }
   }
 }
 

@@ -44,10 +44,10 @@ class KOListView;
 class KOListViewToolTip : public QToolTip
 {
   public:
-    KOListViewToolTip (QWidget* parent, Calendar *calendar, KListView* lv );
+    KOListViewToolTip ( QWidget* parent, Calendar *calendar, KListView* lv );
 
   protected:
-    void maybeTip( const QPoint & pos);
+    void maybeTip( const QPoint &pos );
 
   private:
     Calendar *mCalendar;
@@ -80,7 +80,10 @@ class KOListView : public KOEventView
     virtual Incidence::List selectedIncidences();
     virtual DateList selectedIncidenceDates();
 
-    void showDates(bool show);
+    void showDates( bool show );
+
+    // Shows all incidences of the calendar
+    void showAll();
 
     void readSettings(KConfig *config);
     void writeSettings(KConfig *config);
