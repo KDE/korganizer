@@ -101,6 +101,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	koprefs_base.kcfgc \
 	koincidencetooltip.cpp aboutdata.cpp \
 	importdialog.cpp \
+	previewdialog.cpp \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
 	eventarchiver.cpp koidentitymanager.cpp \
