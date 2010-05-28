@@ -49,7 +49,7 @@ using namespace KCal;
 
 PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
   : KDialogBase( Plain, i18n("Import Calendar/Event"), User1 | User2 | Cancel, User1, parent,
-                 0, true, true, KGuiItem( i18n("&Merge into to existing calendar"), "merge" ) ),
+                 0, true, true, KGuiItem( i18n("&Merge into existing calendar"), "merge" ) ),
     mUrl( url )
 {
   QFrame *topFrame = plainPage();
