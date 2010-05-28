@@ -39,6 +39,10 @@ namespace Akonadi {
   class Calendar;
 }
 
+namespace KPIM {
+  class KDatePickerPopup;
+}
+
 using namespace KCal;
 using namespace KOrg;
 
@@ -149,8 +153,8 @@ class KOTodoView : public BaseView
     QCheckBox *mFlatView;
 
     QMenu *mItemPopupMenu;
-    QMenu *mCopyPopupMenu;
-    QMenu *mMovePopupMenu;
+    KPIM::KDatePickerPopup *mCopyPopupMenu;
+    KPIM::KDatePickerPopup *mMovePopupMenu;
     QMenu *mPriorityPopupMenu;
     QMenu *mPercentageCompletedPopupMenu;
     QList<QAction*> mItemPopupMenuItemOnlyEntries;
