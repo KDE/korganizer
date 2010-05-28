@@ -59,28 +59,27 @@ enum {
 
 KOListViewToolTip::KOListViewToolTip( QWidget* parent,
                                       Calendar *calendar,
-                                      KListView* lv )
-  :QToolTip(parent), mCalendar( calendar )
+                                      KListView *lv )
+  :QToolTip( parent ), mCalendar( calendar )
 {
-  eventlist=lv;
+  eventlist = lv;
 }
 
-void KOListViewToolTip::maybeTip( const QPoint & pos)
+void KOListViewToolTip::maybeTip( const QPoint &pos )
 {
   QRect r;
-  QListViewItem *it = eventlist->itemAt(pos);
-  KOListViewItem *i = static_cast<KOListViewItem*>(it);
+  QListViewItem *it = eventlist->itemAt( pos );
+  KOListViewItem *i = static_cast<KOListViewItem*>( it );
 
   if( i && KOPrefs::instance()->mEnableToolTips ) {
     /* Calculate the rectangle. */
-    r=eventlist->itemRect( it );
+    r = eventlist->itemRect( it );
     /* Show the tip */
     QString tipText( IncidenceFormatter::toolTipStr( mCalendar, i->data() ) );
     if ( !tipText.isEmpty() ) {
-      tip(r, tipText);
+      tip( r, tipText );
     }
   }
-
 }
 
 /**
@@ -103,22 +102,22 @@ class KOListView::ListItemVisitor : public IncidenceBase::Visitor
 
 bool KOListView::ListItemVisitor::visit( Event *e )
 {
-  mItem->setText(Summary_Column,e->summary());
+  mItem->setText( Summary_Column, e->summary() );
   if ( e->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "bell" );
-    mItem->setPixmap(Reminder_Column,alarmPxmp);
-    mItem->setSortKey(Reminder_Column,"1");
+    mItem->setPixmap( Reminder_Column, alarmPxmp );
+    mItem->setSortKey( Reminder_Column, "1" );
+  } else {
+    mItem->setSortKey( Reminder_Column, "0" );
   }
-  else
-    mItem->setSortKey(Reminder_Column,"0");
 
   if ( e->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon( "recur" );
-    mItem->setPixmap(Recurs_Column,recurPxmp);
-    mItem->setSortKey(Recurs_Column,"1");
+    mItem->setPixmap( Recurs_Column, recurPxmp );
+    mItem->setSortKey( Recurs_Column, "1" );
+  } else {
+    mItem->setSortKey( Recurs_Column, "0" );
   }
-  else
-    mItem->setSortKey(Recurs_Column,"0");
 
   QPixmap eventPxmp;
   if ( e->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
@@ -131,90 +130,92 @@ bool KOListView::ListItemVisitor::visit( Event *e )
     eventPxmp = KOGlobals::self()->smallIcon( "appointment" );
   }
 
-  mItem->setPixmap(Summary_Column, eventPxmp);
+  mItem->setPixmap( Summary_Column, eventPxmp );
 
-  mItem->setText( StartDate_Column,e->dtStartDateStr());
-  mItem->setSortKey( StartDate_Column, e->dtStart().toString(Qt::ISODate));
-  if (e->doesFloat()) mItem->setText(StartTime_Column, "---"); else {
+  mItem->setText( StartDate_Column,e->dtStartDateStr() );
+  mItem->setSortKey( StartDate_Column, e->dtStart().toString( Qt::ISODate ) );
+  if ( e->doesFloat() ) {
+    mItem->setText( StartTime_Column, "---" );
+  } else {
     mItem->setText( StartTime_Column, e->dtStartTimeStr() );
-    mItem->setSortKey( StartTime_Column,e->dtStart().time().toString(Qt::ISODate));
+    mItem->setSortKey( StartTime_Column, e->dtStart().time().toString( Qt::ISODate ) );
   }
   mItem->setText( EndDate_Column, IncidenceFormatter::dateToString( e->dtEnd(), true ) );
-  mItem->setSortKey( EndDate_Column, e->dtEnd().toString(Qt::ISODate));
+  mItem->setSortKey( EndDate_Column, e->dtEnd().toString( Qt::ISODate ) );
   if ( e->doesFloat() ) {
-    mItem->setText(EndTime_Column, "---");
+    mItem->setText( EndTime_Column, "---" );
   } else {
-    mItem->setText( EndTime_Column, IncidenceFormatter::timeToString(e->dtEnd(), true ) );
-    mItem->setSortKey( EndTime_Column, e->dtEnd().time().toString(Qt::ISODate));
+    mItem->setText( EndTime_Column, IncidenceFormatter::timeToString( e->dtEnd(), true ) );
+    mItem->setSortKey( EndTime_Column, e->dtEnd().time().toString( Qt::ISODate ) );
   }
-  mItem->setText( Categories_Column,e->categoriesStr());
+  mItem->setText( Categories_Column, e->categoriesStr() );
 
   return true;
 }
 
-bool KOListView::ListItemVisitor::visit(Todo *t)
+bool KOListView::ListItemVisitor::visit( Todo *t )
 {
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon( "todo" );
   static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon( "checkedbox" );
   mItem->setPixmap(Summary_Column, t->isCompleted() ? todoDonePxmp : todoPxmp );
-  mItem->setText(Summary_Column,t->summary());
+  mItem->setText(Summary_Column, t->summary());
   if ( t->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "bell" );
-    mItem->setPixmap(Reminder_Column,alarmPxmp);
-    mItem->setSortKey(Reminder_Column, "1");
+    mItem->setPixmap( Reminder_Column, alarmPxmp );
+    mItem->setSortKey( Reminder_Column, "1" );
+  } else {
+    mItem->setSortKey( Reminder_Column, "0" );
   }
-  else
-    mItem->setSortKey(Reminder_Column, "0");
 
   if ( t->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon( "recur" );
-    mItem->setPixmap(Recurs_Column,recurPxmp);
-    mItem->setSortKey(Recurs_Column, "1");
-  }
-  else
-    mItem->setSortKey(Recurs_Column, "0");
-
-  if (t->hasStartDate()) {
-    mItem->setText(StartDate_Column,t->dtStartDateStr());
-    mItem->setSortKey(StartDate_Column,t->dtStart().toString(Qt::ISODate));
-    if (t->doesFloat()) {
-      mItem->setText(StartTime_Column,"---");
-    } else {
-      mItem->setText(StartTime_Column,t->dtStartTimeStr());
-      mItem->setSortKey( StartTime_Column, t->dtStart().time().toString(Qt::ISODate) );
-    }
+    mItem->setPixmap( Recurs_Column, recurPxmp );
+    mItem->setSortKey( Recurs_Column, "1" );
   } else {
-    mItem->setText(StartDate_Column,"---");
-    mItem->setText(StartTime_Column,"---");
+    mItem->setSortKey( Recurs_Column, "0" );
   }
 
-  if (t->hasDueDate()) {
-    mItem->setText(EndDate_Column, IncidenceFormatter::dateToString( t->dtDue(), true ) );
-    mItem->setSortKey( EndDate_Column, t->dtDue().toString(Qt::ISODate) );
-    if (t->doesFloat()) {
-      mItem->setText(EndTime_Column,"---");
+  if ( t->hasStartDate() ) {
+    mItem->setText( StartDate_Column, t->dtStartDateStr() );
+    mItem->setSortKey( StartDate_Column, t->dtStart().toString( Qt::ISODate ) );
+    if ( t->doesFloat() ) {
+      mItem->setText( StartTime_Column, "---");
     } else {
-      mItem->setText(EndTime_Column, IncidenceFormatter::timeToString( t->dtDue(), true ) );
-      mItem->setSortKey( EndTime_Column, t->dtDue().time().toString(Qt::ISODate) );
+      mItem->setText( StartTime_Column, t->dtStartTimeStr() );
+      mItem->setSortKey( StartTime_Column, t->dtStart().time().toString( Qt::ISODate ) );
     }
   } else {
-    mItem->setText(EndDate_Column,"---");
-    mItem->setText(EndTime_Column,"---");
+    mItem->setText( StartDate_Column, "---" );
+    mItem->setText( StartTime_Column, "---" );
   }
-  mItem->setText(Categories_Column,t->categoriesStr());
+
+  if ( t->hasDueDate() ) {
+    mItem->setText( EndDate_Column, IncidenceFormatter::dateToString( t->dtDue(), true ) );
+    mItem->setSortKey( EndDate_Column, t->dtDue().toString( Qt::ISODate ) );
+    if ( t->doesFloat() ) {
+      mItem->setText( EndTime_Column, "---" );
+    } else {
+      mItem->setText( EndTime_Column, IncidenceFormatter::timeToString( t->dtDue(), true ) );
+      mItem->setSortKey( EndTime_Column, t->dtDue().time().toString( Qt::ISODate ) );
+    }
+  } else {
+    mItem->setText( EndDate_Column, "---" );
+    mItem->setText( EndTime_Column, "---" );
+  }
+  mItem->setText( Categories_Column, t->categoriesStr() );
 
 
   return true;
 }
 
-bool KOListView::ListItemVisitor::visit(Journal *t)
+bool KOListView::ListItemVisitor::visit( Journal *t )
 {
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "journal" );
-  mItem->setPixmap(Summary_Column,jrnalPxmp);
+  mItem->setPixmap( Summary_Column, jrnalPxmp );
   // Just use the first line
   mItem->setText( Summary_Column, t->description().section( "\n", 0, 0 ) );
   mItem->setText( StartDate_Column, t->dtStartDateStr() );
-  mItem->setSortKey( StartDate_Column, t->dtStart().toString(Qt::ISODate) );
+  mItem->setSortKey( StartDate_Column, t->dtStart().toString( Qt::ISODate ) );
 
   return true;
 }
@@ -229,21 +230,21 @@ KOListView::KOListView( Calendar *calendar,
   mIsNonInteractive = nonInteractive;
 
   mListView = new KListView(this);
-  mListView->addColumn(i18n("Summary"));
-  mListView->addColumn(i18n("Reminder")); // alarm set?
-  mListView->addColumn(i18n("Recurs")); // recurs?
-  mListView->addColumn(i18n("Start Date"));
-  mListView->setColumnAlignment(3,AlignHCenter);
-  mListView->addColumn(i18n("Start Time"));
-  mListView->setColumnAlignment(4,AlignHCenter);
-  mListView->addColumn(i18n("End Date"));
-  mListView->setColumnAlignment(5,AlignHCenter);
-  mListView->addColumn(i18n("End Time"));
-  mListView->setColumnAlignment(6,AlignHCenter);
-  mListView->addColumn(i18n("Categories"));
+  mListView->addColumn( i18n("Summary") );
+  mListView->addColumn( i18n("Reminder") ); // alarm set?
+  mListView->addColumn( i18n("Recurs") ); // recurs?
+  mListView->addColumn( i18n("Start Date") );
+  mListView->setColumnAlignment( 3, AlignHCenter );
+  mListView->addColumn( i18n("Start Time") );
+  mListView->setColumnAlignment( 4,AlignHCenter );
+  mListView->addColumn( i18n("End Date") );
+  mListView->setColumnAlignment( 5,AlignHCenter );
+  mListView->addColumn( i18n("End Time") );
+  mListView->setColumnAlignment( 6, AlignHCenter );
+  mListView->addColumn( i18n("Categories") );
 
-  QBoxLayout *layoutTop = new QVBoxLayout(this);
-  layoutTop->addWidget(mListView);
+  QBoxLayout *layoutTop = new QVBoxLayout( this );
+  layoutTop->addWidget( mListView );
 
   mPopupMenu = eventPopup();
 /*
@@ -266,7 +267,7 @@ KOListView::KOListView( Calendar *calendar,
                     SLOT( processSelectionChange() ) );
 
 //  setMinimumSize(100,100);
-  mListView->restoreLayout(KOGlobals::self()->config(),"KOListView Layout");
+  mListView->restoreLayout( KOGlobals::self()->config(), "KOListView Layout" );
 
   new KOListViewToolTip( mListView->viewport(), calendar, mListView );
 
@@ -293,7 +294,9 @@ Incidence::List KOListView::selectedIncidences()
   Incidence::List eventList;
 
   QListViewItem *item = mListView->selectedItem();
-  if (item) eventList.append(((KOListViewItem *)item)->data());
+  if ( item ) {
+    eventList.append( static_cast<KOListViewItem *>( item )->data() );
+  }
 
   return eventList;
 }
@@ -303,33 +306,33 @@ DateList KOListView::selectedIncidenceDates()
   return mSelectedDates;
 }
 
-void KOListView::showDates(bool show)
+void KOListView::showDates( bool show )
 {
   // Shouldn't we set it to a value greater 0? When showDates is called with
   // show == true at first, then the columnwidths are set to zero.
   static int oldColWidth1 = 0;
   static int oldColWidth3 = 0;
 
-  if (!show) {
-    oldColWidth1 = mListView->columnWidth(1);
-    oldColWidth3 = mListView->columnWidth(3);
-    mListView->setColumnWidth(1, 0);
-    mListView->setColumnWidth(3, 0);
+  if ( !show ) {
+    oldColWidth1 = mListView->columnWidth( 1 );
+    oldColWidth3 = mListView->columnWidth( 3 );
+    mListView->setColumnWidth( 1, 0 );
+    mListView->setColumnWidth( 3, 0 );
   } else {
-    mListView->setColumnWidth(1, oldColWidth1);
-    mListView->setColumnWidth(3, oldColWidth3);
+    mListView->setColumnWidth( 1, oldColWidth1 );
+    mListView->setColumnWidth( 3, oldColWidth3 );
   }
   mListView->repaint();
 }
 
 void KOListView::showDates()
 {
-  showDates(true);
+  showDates( true );
 }
 
 void KOListView::hideDates()
 {
-  showDates(false);
+  showDates( false );
 }
 
 void KOListView::updateView()
@@ -337,13 +340,13 @@ void KOListView::updateView()
   kdDebug(5850) << "KOListView::updateView() does nothing" << endl;
 }
 
-void KOListView::showDates(const QDate &start, const QDate &end)
+void KOListView::showDates( const QDate &start, const QDate &end )
 {
   clear();
 
   QDate date = start;
   while( date <= end ) {
-    addIncidences( calendar()->incidences(date), date );
+    addIncidences( calendar()->incidences( date ), date );
     mSelectedDates.append( date );
     date = date.addDays( 1 );
   }
@@ -359,17 +362,22 @@ void KOListView::addIncidences( const Incidence::List &incidenceList, const QDat
   }
 }
 
-void KOListView::addIncidence(Incidence *incidence, const QDate &date)
+void KOListView::addIncidence( Incidence *incidence, const QDate &date )
 {
-  if ( mUidDict.find( incidence->uid() ) ) return;
+  if ( mUidDict.find( incidence->uid() ) ) {
+    return;
+  }
 
   mDateList[incidence->uid()] = date;
   mUidDict.insert( incidence->uid(), incidence );
 
   KOListViewItem *item = new KOListViewItem( incidence, mListView );
-  ListItemVisitor v(item);
-  if (incidence->accept(v)) return;
-  else delete item;
+  ListItemVisitor v( item );
+  if (incidence->accept( v ) ) {
+    return;
+  } else {
+    delete item;
+  }
 }
 
 void KOListView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
@@ -382,39 +390,42 @@ void KOListView::showIncidences( const Incidence::List &incidenceList, const QDa
   emit incidenceSelected( 0, date );
 }
 
-void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
+void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
   KOListViewItem *item;
   QDate f = mSelectedDates.first();
   QDate l = mSelectedDates.last();
 
   QDate date;
-  if ( incidence->type() == "Todo" )
-    date = static_cast<Todo *>(incidence)->dtDue().date();
-  else
+  if ( incidence->type() == "Todo" ) {
+    date = static_cast<Todo *>( incidence )->dtDue().date();
+  } else {
     date = incidence->dtStart().date();
+  }
 
-  switch(action) {
+  switch( action ) {
     case KOGlobals::INCIDENCEADDED: {
       if ( date >= f && date <= l )
         addIncidence( incidence, date );
       break;
     }
     case KOGlobals::INCIDENCEEDITED: {
-      item = getItemForIncidence(incidence);
-      if (item) {
+      item = getItemForIncidence( incidence );
+      if ( item ) {
         delete item;
         mUidDict.remove( incidence->uid() );
         mDateList.remove( incidence->uid() );
       }
-      if ( date >= f && date <= l )
+      if ( date >= f && date <= l ) {
         addIncidence( incidence, date );
+      }
     }
     break;
     case KOGlobals::INCIDENCEDELETED: {
-      item = getItemForIncidence(incidence);
-      if (item)
+      item = getItemForIncidence( incidence );
+      if ( item ) {
         delete item;
+      }
       break;
     }
     default:
@@ -422,18 +433,20 @@ void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
   }
 }
 
-KOListViewItem *KOListView::getItemForIncidence(Incidence *incidence)
+KOListViewItem *KOListView::getItemForIncidence( Incidence *incidence )
 {
-  KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
-  while (item) {
+  KOListViewItem *item = static_cast<KOListViewItem *>( mListView->firstChild() );
+  while ( item ) {
 //    kdDebug(5850) << "Item " << item->text(0) << " found" << endl;
-    if (item->data() == incidence) return item;
-    item = (KOListViewItem *)item->nextSibling();
+    if ( item->data() == incidence ) {
+      return item;
+    }
+    item = static_cast<KOListViewItem *>( item->nextSibling() );
   }
   return 0;
 }
 
-void KOListView::defaultItemAction(QListViewItem *i)
+void KOListView::defaultItemAction( QListViewItem *i )
 {
   if ( !mIsNonInteractive ) {
     KOListViewItem *item = static_cast<KOListViewItem *>( i );
@@ -458,14 +471,14 @@ void KOListView::popupMenu( QListViewItem *item,const QPoint &, int )
   }
 }
 
-void KOListView::readSettings(KConfig *config)
+void KOListView::readSettings( KConfig *config )
 {
-  mListView->restoreLayout(config,"KOListView Layout");
+  mListView->restoreLayout( config,"KOListView Layout" );
 }
 
-void KOListView::writeSettings(KConfig *config)
+void KOListView::writeSettings( KConfig *config )
 {
-  mListView->saveLayout(config,"KOListView Layout");
+  mListView->saveLayout( config, "KOListView Layout" );
 }
 
 void KOListView::processSelectionChange()
