@@ -86,6 +86,9 @@ class AlarmDialog : public KDialog
     void update();
     void toggleDetails( QTreeWidgetItem *item, int column );
 
+  protected:
+    void closeEvent( QCloseEvent * );
+
   private:
     bool startKOrganizer();
     ReminderListItem *searchByItem( const Akonadi::Item &incidence );

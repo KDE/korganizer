@@ -206,7 +206,7 @@ void KOTodoViewView::mouseReleaseEvent ( QMouseEvent *event )
     clearSelection();
     event->accept();
   } else {
-    event->ignore();
+    QTreeView::mouseReleaseEvent( event );
   }
 }
 

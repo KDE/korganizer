@@ -821,6 +821,13 @@ void KOTodoView::setFlatView( bool flatView )
 {
   mView->setRootIsDecorated( !flatView );
   mModel->setFlatView( flatView );
+
+  if ( flatView ) {
+    // In flatview dropping confuses users and it's very easy to drop into a child item
+    mView->setDragDropMode( QAbstractItemView::DragOnly );
+  } else {
+    mView->setDragDropMode( QAbstractItemView::DragDrop );
+  }
 }
 
 void KOTodoView::getHighlightMode( bool &highlightEvents,

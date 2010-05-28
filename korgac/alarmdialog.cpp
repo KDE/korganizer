@@ -3,7 +3,7 @@
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
-  Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Copyright (c) 2009-2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -114,8 +114,6 @@ AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
   //    Ok => Suspend
 
   KIconLoader::global()->addAppDir( "korgac" );
-
-  setEscapeButton( User2 ); // escape acts like Dismiss All
 
   KSharedConfig::Ptr config = KGlobal::config();
   KConfigGroup generalConfig( config, "General" );
@@ -786,6 +784,12 @@ int AlarmDialog::activeCount()
   }
   kDebug() << "computed " << count << " active reminders";
   return count;
+}
+
+void AlarmDialog::closeEvent( QCloseEvent * )
+{
+  slotSave();
+  accept();
 }
 
 void AlarmDialog::updateButtons()
