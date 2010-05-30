@@ -11,11 +11,11 @@
   <group name="$(application)-General">
     <entry type="String" key="Name">
       <label>Full name of the calendar owner</label>
-      <whatsthis>WhatsThis text for FullName setting</whatsthis>
+      <whatsthis>Full name of the calendar owner</whatsthis>
     </entry>
     <entry type="String" key="EMail">
       <label>Email of the calendar owner</label>
-      <whatsthis>WhatsThis text for Email setting</whatsthis>
+      <whatsthis>Email of the calendar owner</whatsthis>
     </entry>
     <entry type="String" key="Credit Name">
       <label>Creator application</label>
