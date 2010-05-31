@@ -138,16 +138,18 @@ void KOJournalView::flushView()
   emit flushEntries();
 }
 
-void KOJournalView::showDates(const QDate &start, const QDate &end)
+void KOJournalView::showDates( const QDate &start, const QDate &end )
 {
 //  kdDebug(5850) << "KOJournalView::showDates(): "<<start.toString().latin1()<<" - "<<end.toString().latin1() << endl;
   clearEntries();
-  if ( end<start ) return;
+  if ( end < start ) {
+    return;
+  }
 
   Journal::List::ConstIterator it;
   Journal::List jnls;
-  QDate d=start;
-  for ( QDate d=start; d<=end; d=d.addDays(1) ) {
+  QDate d = start;
+  for ( QDate d = start; d <= end; d = d.addDays( 1 ) ) {
     jnls = calendar()->journals( d );
     for ( it = jnls.begin(); it != jnls.end(); ++it ) {
       appendJournal( *it, d );
@@ -164,10 +166,12 @@ void KOJournalView::showIncidences( const Incidence::List &incidences, const QDa
 //  kdDebug(5850) << "KOJournalView::showIncidences(): "<< endl;
   clearEntries();
   Incidence::List::const_iterator it;
-  for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
-    if ((*it) && ( (*it)->type()=="Journal" ) ) {
-      Journal*j = static_cast<Journal*>(*it);
-      if ( j ) appendJournal( j, j->dtStart().date() );
+  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
+    if ( (*it) && ( (*it)->type() == "Journal" ) ) {
+      Journal *j = static_cast<Journal*>(*it);
+      if ( j ) {
+	appendJournal( j, j->dtStart().date() );
+      }
     }
   }
 }
