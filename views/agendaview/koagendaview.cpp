@@ -259,7 +259,7 @@ void KOAgendaView::setCalendar( Akonadi::Calendar *cal )
   mAllDayAgenda->setCalendar( calendar() );
 }
 
-void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
+void KOAgendaView::connectAgenda( KOAgenda *agenda, KOEventPopupMenu *popup,
                                   KOAgenda *otherAgenda )
 {
   connect( agenda, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),

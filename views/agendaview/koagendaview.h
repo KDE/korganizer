@@ -214,7 +214,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
 
-    void connectAgenda( KOAgenda *agenda, QMenu *popup, KOAgenda *otherAgenda );
+    void connectAgenda( KOAgenda *agenda, KOEventPopupMenu *popup, KOAgenda *otherAgenda );
 
     /**
       Set the masks on the agenda widgets indicating, which days are holidays.
