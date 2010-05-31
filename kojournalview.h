@@ -25,8 +25,8 @@
 #define KOJOURNALVIEW_H
 
 #include <korganizer/baseview.h>
-#include "journalentry.h"
 
+class JournalDateEntry;
 class JournalEntry;
 class QScrollView;
 class QVBox;
