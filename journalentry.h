@@ -79,7 +79,7 @@ class JournalEntry : public QWidget {
 
   signals:
     void deleteIncidence( Incidence * );
-    void editIncidence( Incidence * );
+    void editIncidence( Incidence *, const QDate& );
 
   protected:
     void clearFields();
@@ -132,7 +132,7 @@ class JournalDateEntry : public QVBox {
     void setIncidenceChangerSignal( IncidenceChangerBase *changer );
     void setDateSignal( const QDate & );
     void flushEntries();
-    void editIncidence( Incidence * );
+    void editIncidence( Incidence *, const QDate& );
     void deleteIncidence( Incidence * );
     void newJournal( ResourceCalendar *, const QString &, const QDate & );
 

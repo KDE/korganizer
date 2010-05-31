@@ -128,8 +128,8 @@ void JournalDateEntry::addJournal( Journal *j )
            entry, SLOT( flushEntry() ) );
   connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
            this, SIGNAL( deleteIncidence( Incidence* ) ) );
-  connect( entry, SIGNAL( editIncidence( Incidence* ) ),
-           this, SIGNAL( editIncidence( Incidence* ) ) );
+  connect( entry, SIGNAL( editIncidence( Incidence*, const QDate& ) ),
+           this, SIGNAL( editIncidence( Incidence*, const QDate& ) ) );
 }
 
 Journal::List JournalDateEntry::journals() const
@@ -271,8 +271,9 @@ void JournalEntry::deleteItem()
 void JournalEntry::editItem()
 {
   writeJournal();
-  if ( mJournal )
-    emit editIncidence( mJournal );
+  if ( mJournal ) {
+    emit editIncidence( mJournal, mJournal->dtStart().date() );
+  }
 }
 
 void JournalEntry::printItem()
