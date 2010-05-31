@@ -32,9 +32,7 @@
 #include <kdialogbase.h>
 #include <kurl.h>
 
-class QRadioButton;
 class KOListView;
-class QDateTime;
 
 namespace KCal {
   class CalendarLocal;
