@@ -56,7 +56,7 @@ int DateNavigator::datesCount() const
 
 void DateNavigator::selectDates( const DateList &dateList )
 {
-  if (dateList.count() > 0) {
+  if ( dateList.count() > 0 ) {
     mSelectedDates = dateList;
 
     emitSelected();
@@ -85,6 +85,10 @@ void DateNavigator::selectDates( int count )
 
 void DateNavigator::selectDates( const QDate &d, int count, const QDate &preferredMonth )
 {
+  if ( count > MAX_SELECTABLE_DAYS ) {
+    count = MAX_SELECTABLE_DAYS;
+  }
+
   DateList dates;
 
   int i;

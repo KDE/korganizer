@@ -547,9 +547,12 @@ void CalendarView::readSettings()
   readFilterSettings( config );
 
   config->setGroup( "Views" );
-  int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
-  if ( dateCount == 7 ) mDateNavigator->selectWeek();
-  else mDateNavigator->selectDates( mDateNavigator->selectedDates().first(), dateCount );
+  const int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
+  if ( dateCount == 7 ) {
+    mDateNavigator->selectWeek();
+  } else {
+    mDateNavigator->selectDates( mDateNavigator->selectedDates().first(), dateCount );
+  }
 }
 
 
