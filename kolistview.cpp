@@ -28,6 +28,7 @@
 #include <qlayout.h>
 #include <qpopupmenu.h>
 #include <qcursor.h>
+#include <qstyle.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -496,4 +497,10 @@ void KOListView::clear()
   mListView->clear();
   mUidDict.clear();
   mDateList.clear();
+}
+
+QSize KOListView::sizeHint() const
+{
+  const QSize s = KOEventView::sizeHint();
+  return QSize( s.width() + style().pixelMetric( QStyle::PM_ScrollBarExtent ) + 1, s.height() );
 }

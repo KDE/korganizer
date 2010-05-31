@@ -46,6 +46,7 @@ class PreviewDialog : public KDialogBase
   public:
     PreviewDialog( const KURL &url, QWidget *parent );
     ~PreviewDialog();
+    bool loadCalendar();
 
   public slots:
     void slotAdd();
@@ -57,9 +58,12 @@ class PreviewDialog : public KDialogBase
     void addResource( const KURL & );
 
   private:
+    // Checks if mOriginalUrl is a temp file, if it is we ask the user a place to 
+    // keep the calendar file
     bool isTempFile() const;
   private:
-    KURL mUrl;
+    KURL mOriginalUrl;
+    KURL *mLocalUrl;
     KOListView *mListView;
     KCal::CalendarLocal *mCalendar;
 };

@@ -89,6 +89,7 @@ class KOListView : public KOEventView
     void writeSettings(KConfig *config);
 
     void clear();
+    QSize sizeHint() const;
 
   public slots:
     virtual void updateView();

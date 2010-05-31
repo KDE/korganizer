@@ -26,7 +26,7 @@
 */
 
 #include "actionmanager.h"
-
+#include "previewdialog.h"
 #include "alarmclient.h"
 #include "calendarview.h"
 #include "kocore.h"
@@ -42,7 +42,7 @@
 #include "history.h"
 #include "kogroupware.h"
 #include "resourceview.h"
-#include "importdialog.h"
+#include "previewdialog.h"
 #include "eventarchiver.h"
 #include "stdcalendar.h"
 #include "freebusymanager.h"
@@ -1918,21 +1918,23 @@ void ActionManager::importCalendar( const KURL &url )
     return;
   }
 
-  ImportDialog *dialog;
-  dialog = new ImportDialog( url, mMainWindow->topLevelWidget(), mIsPart );
-  connect( dialog, SIGNAL( dialogFinished( ImportDialog * ) ),
-           SLOT( slotImportDialogFinished( ImportDialog * ) ) );
+  PreviewDialog *dialog;
+  dialog = new PreviewDialog( url, mMainWindow->topLevelWidget() );
+  connect( dialog, SIGNAL( dialogFinished( PreviewDialog * ) ),
+           SLOT( slotPreviewDialogFinished( PreviewDialog * ) ) );
   connect( dialog, SIGNAL( openURL( const KURL &, bool ) ),
            SLOT( openURL( const KURL &, bool ) ) );
-  connect( dialog, SIGNAL( newWindow( const KURL & ) ),
-           SIGNAL( actionNew( const KURL & ) ) );
   connect( dialog, SIGNAL( addResource( const KURL & ) ),
            SLOT( addResource( const KURL & ) ) );
 
-  dialog->show();
+  if ( dialog->loadCalendar() ) {
+    dialog->show();
+  } else {
+    KMessageBox::error( dialogParent(), i18n("Unable to open the calendar") );
+  }
 }
 
-void ActionManager::slotImportDialogFinished( ImportDialog *dlg )
+void ActionManager::slotPreviewDialogFinished( PreviewDialog *dlg )
 {
   dlg->deleteLater();
   mCalendarView->updateView();

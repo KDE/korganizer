@@ -58,7 +58,7 @@ class CalendarView;
 class KOrganizer;
 class KONewStuff;
 class KOWindowList;
-class ImportDialog;
+class PreviewDialog;
 class ResourceView;
 class HTMLExportSettings;
 
@@ -340,7 +340,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     void updateRedoAction( const QString & );
 
-    void slotImportDialogFinished( ImportDialog * );
+    void slotPreviewDialogFinished( PreviewDialog * );
 
   protected:
     /** Get URL for saving. Opens FileDialog. */

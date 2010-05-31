@@ -27,6 +27,7 @@
 */
 
 #include "previewdialog.h"
+#include <kio/netaccess.h>
 
 #include "kolistview.h"
 #include "koprefs.h"
@@ -38,6 +39,7 @@
 
 #include <kstandarddirs.h>
 #include <kfiledialog.h>
+#include <kmessagebox.h>
 
 #include <qlabel.h>
 #include <qlayout.h>
@@ -50,17 +52,14 @@ using namespace KCal;
 PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
   : KDialogBase( Plain, i18n("Import Calendar/Event"), User1 | User2 | Cancel, User1, parent,
                  0, true, true, KGuiItem( i18n("&Merge into existing calendar"), "merge" ) ),
-    mUrl( url )
+    mOriginalUrl( url )
 {
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId );
-  mCalendar->load( url.path() );
+  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId ); 
   mListView = new KOListView( mCalendar, topFrame, "PreviewDialog::ListView", true );
   topLayout->addWidget( mListView );
-
-  mListView->showAll();
 
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( marginHint() );
@@ -75,25 +74,68 @@ PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
   } else {
     setButtonGuiItem( User2, KGuiItem( i18n("&Add as new calendar"), "add" ) );
   }
+
+  mLocalUrl = 0;
 }
 
 PreviewDialog::~PreviewDialog()
 {
+  if ( mLocalUrl && !mOriginalUrl.isLocalFile() ) {
+    KIO::NetAccess::removeTempFile( mLocalUrl->path() );
+    delete mLocalUrl;
+  }
+
   delete mCalendar;
+}
+
+bool PreviewDialog::loadCalendar()
+{
+  // If it's a remote file, download it so we can give it to CalendarLocal
+  if ( !mOriginalUrl.isLocalFile() ) {
+    if ( mLocalUrl ) {
+      // loadCalendar already called.. remove old one.
+      KIO::NetAccess::removeTempFile( mLocalUrl->path() );
+      delete mLocalUrl;
+    }
+
+    QString tmpFile;
+    if ( KIO::NetAccess::download( mOriginalUrl, tmpFile, 0 ) ) {
+      mLocalUrl = new KURL( tmpFile );
+    } else {
+      mLocalUrl = 0;
+    }
+  } else {
+    mLocalUrl = &mOriginalUrl;
+  }
+
+  if ( mLocalUrl ) {
+    const bool success = mCalendar->load( mLocalUrl->path() );
+
+    if ( !success && !mOriginalUrl.isLocalFile() ) {
+      KIO::NetAccess::removeTempFile( mLocalUrl->path() );
+    } else {
+      mListView->showAll();
+    }
+    return success;
+  } else {
+    return false;
+  }
 }
 
 void PreviewDialog::slotMerge()
 {
-  emit openURL( mUrl, true );
-  emit dialogFinished( this );
-  accept();
+  if ( mLocalUrl ) {
+    emit openURL( *mLocalUrl, true );
+    emit dialogFinished( this );
+    accept();
+  }
 }
 
 void PreviewDialog::slotAdd()
 {
-  KURL finalUrl = mUrl;
+  KURL finalUrl = mOriginalUrl;
   if ( isTempFile() ) {
-    const QString fileName = KFileDialog::getSaveFileName( mUrl.fileName(), QString::null,
+    const QString fileName = KFileDialog::getSaveFileName( mOriginalUrl.fileName(), QString::null,
                                                            0, i18n( "Select path for new calendar" ) );
     finalUrl = KURL( fileName );
   }
@@ -107,7 +149,7 @@ void PreviewDialog::slotAdd()
 
 bool PreviewDialog::isTempFile() const
 {
-  return mUrl.path().startsWith( locateLocal( "tmp", "" ) );
+  return mOriginalUrl.path().startsWith( locateLocal( "tmp", "" ) );
 }
 
 #include "previewdialog.moc"
