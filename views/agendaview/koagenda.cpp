@@ -1043,12 +1043,12 @@ void KOAgenda::endItemAction()
           emit enableAgendaUpdate( false );
           mChanger->changeIncidence( oldIncSaved, inc,
                                    Akonadi::IncidenceChanger::RECURRENCE_MODIFIED_ONE_ONLY, this );
-#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
+
           Akonadi::Item item;
           item.setPayload( newInc );
           mActionItem->setIncidence( item );
           mActionItem->dissociateFromMultiItem();
-#endif
+
           mChanger->addIncidence( newInc, inc.parentCollection(), this );
           emit enableAgendaUpdate( true );
         } else {
@@ -1076,12 +1076,12 @@ void KOAgenda::endItemAction()
           inc, mActionItem->itemDate(), KCalPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
           emit enableAgendaUpdate( false );
-#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
+
           mActionItem->dissociateFromMultiItem();
           Item item;
           item.setPayload( newInc );
           mActionItem->setIncidence( item );
-#endif
+
           mChanger->addIncidence( newInc, inc.parentCollection(), this );
           emit enableAgendaUpdate( true );
           mChanger->changeIncidence( oldIncSaved, inc,
