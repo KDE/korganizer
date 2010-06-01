@@ -310,7 +310,11 @@ bool History::EntryDelete::undo()
 bool History::EntryDelete::redo()
 {
   const Akonadi::Item item = mCalendar->incidence( mItemId );
-  return mChanger->deleteIncidence( item, 0 );
+  if ( mChanger->isNotDeleted( item.id() ) ) {
+    return mChanger->deleteIncidence( item, 0 );
+  } else {
+    return true;
+  }
 }
 
 QString History::EntryDelete::text()
@@ -337,7 +341,11 @@ History::EntryAdd::~EntryAdd()
 bool History::EntryAdd::undo()
 {
   const Akonadi::Item item = mCalendar->incidence( mItemId );
-  return mChanger->deleteIncidence( item, 0 );
+  if ( mChanger->isNotDeleted( item.id() ) ) {
+    return mChanger->deleteIncidence( item, 0 );
+  } else {
+    return true;
+  }
 }
 
 bool History::EntryAdd::redo()

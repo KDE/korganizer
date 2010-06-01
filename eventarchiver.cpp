@@ -155,7 +155,9 @@ void EventArchiver::deleteIncidences( Akonadi::IncidenceChanger* changer, const 
     }
   }
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    changer->deleteIncidence( *it, widget );
+    if ( changer->isNotDeleted( ( *it ).id() ) ) {
+      changer->deleteIncidence( *it, widget );
+    }
   }
   emit eventsDeleted();
 }

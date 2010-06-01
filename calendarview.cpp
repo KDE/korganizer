@@ -2560,7 +2560,10 @@ void CalendarView::deleteSubTodosIncidence ( const Item &todoItem )
       deleteSubTodosIncidence ( item );
     }
   }
-  mChanger->deleteIncidence ( todoItem, this );
+
+  if ( mChanger->isNotDeleted( todoItem.id() ) ) {
+    mChanger->deleteIncidence ( todoItem, this );
+  }
 }
 
 void CalendarView::deleteTodoIncidence ( const Item& todoItem, bool force )
@@ -2570,14 +2573,13 @@ void CalendarView::deleteTodoIncidence ( const Item& todoItem, bool force )
     return ;
   }
 
-
   // it a simple todo, ask and delete it.
   if ( todo->relations().isEmpty() ) {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Yes );
     }
-    if ( doDelete ) {
+    if ( doDelete && mChanger->isNotDeleted( todoItem.id() ) ) {
       mChanger->deleteIncidence( todoItem, this );
     }
     return;
@@ -2601,7 +2603,9 @@ void CalendarView::deleteTodoIncidence ( const Item& todoItem, bool force )
   // Delete only the father
   if ( km == KMessageBox::Yes ) {
     makeChildrenIndependent( todoItem );
-    mChanger->deleteIncidence( todoItem, this );
+    if ( mChanger->isNotDeleted( todoItem.id() ) ) {
+      mChanger->deleteIncidence( todoItem, this );
+    }
   } else if ( km == KMessageBox::No ) {
     // Delete all
     // we have to hide the delete confirmation for each itemDate
