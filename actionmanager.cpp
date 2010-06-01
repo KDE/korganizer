@@ -477,6 +477,8 @@ void ActionManager::initActions()
            mCalendarView, SLOT(filterActivated(int)) );
   connect( mCalendarView, SIGNAL(filtersUpdated(const QStringList &, int)),
            this, SLOT(setItems(const QStringList &, int)) );
+  connect( mCalendarView, SIGNAL(filterChanged()),
+           this, SLOT(setTitle()) );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions

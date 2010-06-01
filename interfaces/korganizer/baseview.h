@@ -49,6 +49,11 @@ namespace Akonadi {
   class CollectionSelectionProxyModel;
   class Calendar;
 }
+
+namespace KCal {
+  class CalFilter;
+}
+
 namespace KOrg {
 
 
@@ -371,6 +376,12 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * returns the selection of collection to be used by this view (custom if set, or global otherwise)
      */
     Akonadi::CollectionSelection* collectionSelection() const;
+
+    /**
+     * sets the kcal filter on the calendarSearch object, this method can be removed from here when
+     * calendarsearch stuff is removed from baseview, do we need a calendarsearch object per view?
+     */
+    void setFilter( KCal::CalFilter *filter );
 
   protected:
     /**

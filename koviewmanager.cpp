@@ -350,6 +350,7 @@ void KOViewManager::connectView( KOrg::BaseView *view )
 
   connect( mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger *)),
            view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)) );
+
   view->setIncidenceChanger( mMainView->incidenceChanger() );
 }
 
@@ -694,4 +695,12 @@ bool KOViewManager::agendaIsSelected() const
   return mCurrentView == mAgendaView            ||
          mCurrentView == mAgendaSideBySideView  ||
         ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() );
+}
+
+void KOViewManager::setFilter( KCal::CalFilter *filter )
+{
+  if ( mMonthView ) {
+    // our only calendarsearch based view for now is month view
+    mMonthView->setFilter( filter );
+  }
 }
