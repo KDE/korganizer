@@ -475,12 +475,8 @@ void ActionManager::initActions()
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL(triggered(int)),
            mCalendarView, SLOT(filterActivated(int)) );
-  connect( mCalendarView, SIGNAL(newFilterListSignal(const QStringList &)),
-           this, SLOT(setItems( const QStringList &)) );
-  connect( mCalendarView, SIGNAL(selectFilterSignal(int)),
-           this, SLOT(slotChangeComboActionItem(int)) );
-  connect( mCalendarView, SIGNAL(filterChanged()),
-           this, SLOT(setTitle()) );
+  connect( mCalendarView, SIGNAL(filtersUpdated(const QStringList &, int)),
+           this, SLOT(setItems(const QStringList &, int)) );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions
@@ -788,14 +784,10 @@ void ActionManager::slotResourcesChanged( bool enabled )
   mNewJournalAction->setEnabled( enabled );
 }
 
-void ActionManager::slotChangeComboActionItem( int index )
-{
-  mFilterAction->setCurrentItem( index );
-}
-
-void ActionManager::setItems( const QStringList &lst )
+void ActionManager::setItems( const QStringList &lst, int idx )
 {
   mFilterAction->setItems( lst );
+  mFilterAction->setCurrentItem( idx );
 }
 
 void ActionManager::slotResourcesAddedRemoved()

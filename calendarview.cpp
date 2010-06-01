@@ -2231,10 +2231,10 @@ void CalendarView::updateFilter()
     }
   }
 
-  emit newFilterListSignal( filters );
   // account for the additional "No filter" at the beginning! if the
   // filter is not in the list, pos == -1...
-  emit selectFilterSignal( pos + 1 );
+  emit filtersUpdated( filters, pos + 1 );
+
   mCalendar->setFilter( mCurrentFilter );
   updateView();
 }
