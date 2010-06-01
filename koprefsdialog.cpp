@@ -342,7 +342,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       mHolidayCombo->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
 
-      QStringList regions = HolidayRegion::regions();
+      QStringList regions = HolidayRegion::regionCodes();
       QMap<QString, QString> regionsMap;
 
       foreach ( const QString & regionCode, regions ) {
