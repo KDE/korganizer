@@ -128,12 +128,15 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     const Collection::List collections = colSel->selectedCollections();
 
     Q_FOREACH ( const Collection &collection, collections ) {
-      item = new TimelineItem( Akonadi::displayName( collection ), calendar(), mGantt );
-      const QColor resourceColor = KOHelper::resourceColor( collection );
-      if ( resourceColor.isValid() ) {
-        item->setColors( resourceColor, resourceColor, resourceColor );
+      if ( collection.contentMimeTypes().contains(
+             QLatin1String( "application/x-vnd.akonadi.calendar.event" ) ) ) {
+        item = new TimelineItem( Akonadi::displayName( collection ), calendar(), mGantt );
+        const QColor resourceColor = KOHelper::resourceColor( collection );
+        if ( resourceColor.isValid() ) {
+          item->setColors( resourceColor, resourceColor, resourceColor );
+        }
+        mCalendarItemMap.insert( collection.id(), item );
       }
-      mCalendarItemMap.insert( collection.id(), item );
     }
   }
 
