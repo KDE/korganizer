@@ -248,8 +248,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newIncidenceChanger( Akonadi::IncidenceChanger * );
     void exportHTML( KOrg::HTMLExportSettings * );
 
-    void newFilterListSignal( const QStringList & );
-    void selectFilterSignal( int );
+    void filtersUpdated( const QStringList &, int );
     void filterChanged();
 
   public slots:

@@ -420,4 +420,9 @@ void BaseView::rowsAboutToBeRemoved( const QModelIndex& parent, int start, int e
   incidencesAboutToBeRemoved( Akonadi::itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
 }
 
+void BaseView::setFilter( KCal::CalFilter *filter )
+{
+  calendarSearch()->setFilter( filter );
+}
+
 #include "baseview.moc"

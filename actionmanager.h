@@ -271,7 +271,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void importCalendar( const KUrl &url );
 
   protected slots:
-    void setItems( const QStringList & );
+    void setItems( const QStringList &, int );
 
     /** called by the autoExportTimer to automatically export the calendar */
     void checkAutoExport();
@@ -349,7 +349,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void slotResourcesChanged(bool);
     void slotDefaultResourceChanged( const Akonadi::Collection & );
-    void slotChangeComboActionItem(int);
     void slotResourcesAddedRemoved();
 
     void slotNewEvent();

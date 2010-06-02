@@ -49,6 +49,11 @@ namespace KOrg {
   class MultiAgendaView;
   class MonthView;
 }
+
+namespace KCal {
+  class CalFilter;
+}
+
 using namespace KOrg;
 
 /**
@@ -125,6 +130,10 @@ class KOViewManager : public QObject
       week, work week, day or nextX days, etc.
     */
     RangeMode rangeMode() const { return mRangeMode; }
+
+    // sets filter on calendarsearch based views, this method can be removed from here when
+    // calendarsearch stuff is removed from baseview, do we need a calendarsearch object per view?
+    void setFilter( KCal::CalFilter *filter );
 
   signals:
     void configChanged();
