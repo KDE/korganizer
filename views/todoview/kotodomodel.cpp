@@ -228,9 +228,9 @@ void KOTodoModel::reloadTodos()
   Item::List::ConstIterator it;
   QList<TodoTreeNode*> changedNodes;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    kDebug()<<"Inserting " << Akonadi::todo(*it)->summary() << Akonadi::todo(*it)->relatedToUid() << Akonadi::todo(*it)->relatedTo();
     TodoTreeNode *tmp = findTodo( Akonadi::incidence( *it )->uid() );
     if ( !tmp ) {
+      kDebug()<<"Inserting " << Akonadi::todo(*it)->summary() << Akonadi::todo(*it)->relatedToUid() << Akonadi::todo(*it)->relatedTo();
       insertTodo( *it );
     } else {
       // update pointer to the todo
