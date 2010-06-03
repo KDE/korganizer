@@ -319,7 +319,8 @@ void MultiAgendaView::showDates( const QDate &start, const QDate &end )
 {
   mStartDate = start;
   mEndDate = end;
-  recreateViews();
+  slotResizeScrollView();
+  mTimeLabelsZone->updateAll();
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     agendaView->showDates( start, end );
   }
