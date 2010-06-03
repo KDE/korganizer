@@ -251,7 +251,8 @@ KOAgendaView::KOAgendaView( Calendar *cal,
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
   mIsSideBySide( isSideBySide ),
-  mPendingChanges( true )
+  mPendingChanges( true ),
+  mAreDatesInitialized( false )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -1127,6 +1128,8 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
     d = d.addDays( 1 );
   }
 
+  mAreDatesInitialized = true;
+
   // and update the view
   fillAgenda();
 }
@@ -1319,6 +1322,10 @@ void KOAgendaView::fillAgenda( const QDate & )
 
 void KOAgendaView::fillAgenda()
 {
+  if ( !mAreDatesInitialized ) {
+    return;
+  }
+
   mPendingChanges = false;
 
   /* Remember the uids of the selected items. In case one of the
