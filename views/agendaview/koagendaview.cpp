@@ -122,7 +122,8 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   mUpdateItem( 0 ),
   mCollectionId( -1 ),
   mIsSideBySide( isSideBySide ),
-  mPendingChanges( true )
+  mPendingChanges( true ),
+  mAreDatesInitialized( false )
 {
   mSelectedDates.append( QDate::currentDate() );
 
@@ -1091,6 +1092,8 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
     d = d.addDays( 1 );
   }
 
+  mAreDatesInitialized = true;
+
   // and update the view
   fillAgenda();
 }
@@ -1322,6 +1325,10 @@ void KOAgendaView::fillAgenda( const QDate & )
 
 void KOAgendaView::fillAgenda()
 {
+  if ( !mAreDatesInitialized ) {
+    return;
+  }
+
   mPendingChanges = false;
 
   /* Remember the item Ids of the selected items. In case one of the
