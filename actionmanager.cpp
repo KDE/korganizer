@@ -241,7 +241,6 @@ void ActionManager::createCalendarAkonadi()
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
-  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
   monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::eventMimeType(), true );
   monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::todoMimeType(), true );
   monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::journalMimeType(), true );
@@ -309,10 +308,7 @@ void ActionManager::initActions()
   //~~~~~~~~~~~~~~~~~~~~~~~ LOADING / SAVING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if ( mIsPart ) {
     if ( mMainWindow->hasDocument() ) {
-      KAction *a = mACollection->addAction( KStandardAction::New, this, SLOT(file_new()) );
-      mACollection->addAction( "korganizer_openNew", a );
-
-      a = mACollection->addAction( KStandardAction::Open, this, SLOT(file_open()) );
+      KAction *a = mACollection->addAction( KStandardAction::Open, this, SLOT(file_open()) );
       mACollection->addAction( "korganizer_open", a );
     }
 
@@ -322,7 +318,6 @@ void ActionManager::initActions()
     mACollection->addAction( "korganizer_print_preview", a );
     a->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
   } else {
-    KStandardAction::openNew( this, SLOT(file_new()), mACollection );
     KStandardAction::open( this, SLOT(file_open()), mACollection );
     KStandardAction::print( mCalendarView, SLOT(print()), mACollection );
     QAction * preview = KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );

@@ -228,9 +228,9 @@ void KOTodoModel::reloadTodos()
   Item::List::ConstIterator it;
   QList<TodoTreeNode*> changedNodes;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    kDebug()<<"Inserting " << Akonadi::todo(*it)->summary() << Akonadi::todo(*it)->relatedToUid() << Akonadi::todo(*it)->relatedTo();
     TodoTreeNode *tmp = findTodo( Akonadi::incidence( *it )->uid() );
     if ( !tmp ) {
+      kDebug()<<"Inserting " << Akonadi::todo(*it)->summary() << Akonadi::todo(*it)->relatedToUid() << Akonadi::todo(*it)->relatedTo();
       insertTodo( *it );
     } else {
       // update pointer to the todo
@@ -330,8 +330,6 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
 QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item &aitem,
                                               bool addParentIfMissing )
 {
-  kDebug();
-
   const Todo::Ptr todo = Akonadi::todo( aitem );
   // find the model index of the changed incidence
   QModelIndex miChanged = getModelIndex( curNode );
@@ -358,6 +356,9 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
        ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) ) ||  // gained a parent    OR 
        ( newParent != 0 && Akonadi::hasTodo( ttOldParent->mTodo ) &&     // changed parent
          newParent->uid() != Akonadi::todo( ttOldParent->mTodo )->uid() ) ) {
+
+    kDebug() << "parent changed";
+
     // find the node and model index of the new parent
     TodoTreeNode *ttNewParent = 0;
     if ( newParent ) {
