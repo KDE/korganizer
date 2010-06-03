@@ -152,6 +152,7 @@ void KOAlternateLabel::useShortText()
   QLabel::setText( mShortText );
   QToolTip::remove( this );
   QToolTip::add( this, mExtensiveText );
+  update(); // for kolab/issue4350
 }
 
 void KOAlternateLabel::useLongText()
@@ -160,6 +161,7 @@ void KOAlternateLabel::useLongText()
   QLabel::setText( mLongText );
   QToolTip::remove( this );
   QToolTip::add( this, mExtensiveText );
+  update(); // for kolab/issue4350
 }
 
 void KOAlternateLabel::useExtensiveText()
@@ -168,6 +170,7 @@ void KOAlternateLabel::useExtensiveText()
   QLabel::setText( mExtensiveText );
   QToolTip::remove( this );
   QToolTip::add( this, "" );
+  update(); // for kolab/issue4350
 }
 
 void KOAlternateLabel::useDefaultText()
@@ -224,6 +227,7 @@ void KOAlternateLabel::squeezeTextToLabel()
       QToolTip::add( this, mExtensiveText );
       break;
   }
+  update(); // for kolab/issue4350
 }
 
 void KOAlternateLabel::resizeEvent( QResizeEvent * )
