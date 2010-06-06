@@ -153,18 +153,15 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
   QString text;
-  QString vcards;
 
 #ifndef KORG_NOKABC
-  if ( KVCardDrag::decode( e, vcards ) ) {
-    KABC::VCardConverter converter;
-
-    KABC::Addressee::List list = converter.parseVCards( vcards );
+  KABC::Addressee::List list;
+  if ( KVCardDrag::decode( e, list ) ) {
     KABC::Addressee::List::Iterator it;
     for ( it = list.begin(); it != list.end(); ++it ) {
       QString em( (*it).fullEmail() );
-      if (em.isEmpty()) {
-        em=(*it).realName();
+      if ( em.isEmpty() ) {
+        em = (*it).realName();
       }
       addAttendee( em );
     }

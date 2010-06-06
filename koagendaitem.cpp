@@ -576,18 +576,16 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 
 #ifndef KORG_NOKABC
-  QString vcards;
-  KABC::VCardConverter converter;
-
-  KVCardDrag::decode( e, vcards );
-  KABC::Addressee::List list = converter.parseVCards( vcards );
-  KABC::Addressee::List::Iterator it;
-  for ( it = list.begin(); it != list.end(); ++it ) {
-    QString em( (*it).fullEmail() );
-    if (em.isEmpty()) {
-      em=(*it).realName();
+  KABC::Addressee::List list;
+  if ( KVCardDrag::decode( e, list ) ) {
+    KABC::Addressee::List::Iterator it;
+    for ( it = list.begin(); it != list.end(); ++it ) {
+      QString em( (*it).fullEmail() );
+      if ( em.isEmpty() ) {
+        em = (*it).realName();
+      }
+      addAttendee( em );
     }
-    addAttendee( em );
   }
 #else
   if( decoded ) {
