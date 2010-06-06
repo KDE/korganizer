@@ -1807,7 +1807,7 @@ void KOAgendaView::calendarIncidenceChanged( const Item &incidence )
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceRemoved( const Item &incidence )
+void KOAgendaView::calendarIncidenceDeleted( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
