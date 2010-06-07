@@ -779,6 +779,8 @@ void ActionManager::slotResourcesChanged( bool enabled )
   mNewSubtodoAction->setEnabled( enabled && Akonadi::hasTodo( item ) );
 
   mNewJournalAction->setEnabled( enabled );
+
+  mCalendarView->setCreatingEnabled( enabled );
 }
 
 void ActionManager::setItems( const QStringList &lst, int idx )
