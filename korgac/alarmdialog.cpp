@@ -98,7 +98,7 @@ typedef QValueList<AlarmListItem*> ItemList;
 
 AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, const char *name )
   : KDialogBase( Plain,
-                 WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop | WStyle_DialogBorder,
+                 WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"),
                  Ok | User1 | User2 | User3, NoDefault,
                  false, i18n("Edit..."), i18n("Dismiss All"), i18n("Dismiss Reminder") ),
@@ -494,8 +494,9 @@ void AlarmDialog::show()
 
   KDialogBase::show();
   KWin::deIconifyWindow( winId(), false );
-  KWin::setState( winId(), NET::KeepAbove );
+  KWin::setState( winId(), NET::KeepAbove | NET::DemandsAttention );
   KWin::setOnAllDesktops( winId(), true );
+  KWin::activateWindow( winId() );
   eventNotification();
 }
 
