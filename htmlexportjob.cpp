@@ -473,12 +473,9 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   while ( index < rawTodoList.count() ) {
     const Akonadi::Item rawTodo = rawTodoList.value( index );
     Q_ASSERT( rawTodo.hasPayload<Todo::Ptr>() );
-    Todo::Ptr ev = rawTodo.payload<Todo::Ptr>();
+    Todo::Ptr ev = Akonadi::todo( rawTodo );
     const Akonadi::Item parentItem = d->mCalendar->findParent( rawTodo );
-    if ( Akonadi::hasTodo( parentItem ) )
-        rawTodoList.append( parentItem );
 
-    index = rawTodoList.indexOf( rawTodo );
     ++index;
   }
 
