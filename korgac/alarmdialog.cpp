@@ -32,6 +32,7 @@
 #include <qpushbutton.h>
 #include <qcstring.h>
 #include <qdatastream.h>
+#include <qsplitter.h>
 
 #include <dcopclient.h>
 #include <dcopref.h>
@@ -115,11 +116,14 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
-  QLabel *label = new QLabel( i18n("The following items triggered reminders:"),
-                              topBox );
+  QLabel *label = new QLabel( i18n("The following items triggered reminders:"), topBox );
   topLayout->addWidget( label );
 
-  mIncidenceListView = new KListView( topBox );
+  mSplitter = new QSplitter( Qt::Vertical, topBox );
+  mSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
+  topLayout->addWidget( mSplitter );
+
+  mIncidenceListView = new KListView( mSplitter );
   mIncidenceListView->addColumn( i18n( "Summary" ) );
   mIncidenceListView->addColumn( i18n( "Date, Time" ) );
   mIncidenceListView->setSorting( 0, true );
@@ -128,16 +132,14 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
   mIncidenceListView->setShowSortIndicator( true );
   mIncidenceListView->setAllColumnsShowFocus( true );
   mIncidenceListView->setSelectionMode( QListView::Extended );
-  topLayout->addWidget( mIncidenceListView );
   connect( mIncidenceListView, SIGNAL(selectionChanged()), SLOT(updateButtons()) );
   connect( mIncidenceListView, SIGNAL(doubleClicked(QListViewItem*)), SLOT(edit()) );
   connect( mIncidenceListView, SIGNAL(currentChanged(QListViewItem*)), SLOT(showDetails()) );
   connect( mIncidenceListView, SIGNAL(selectionChanged()), SLOT(showDetails()) );
 
-  mDetailView = new KOEventViewer( mCalendar, topBox );
+  mDetailView = new KOEventViewer( mCalendar, mSplitter );
   mDetailView->setFocus(); // set focus here to start with to make it harder
                            // to hit return by mistake and dismiss a reminder.
-  topLayout->addWidget( mDetailView );
 
   QHBox *suspendBox = new QHBox( topBox );
   suspendBox->setSpacing( spacingHint() );
@@ -158,7 +160,9 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
   setMainWidget( mIncidenceListView );
-  mIncidenceListView->setMinimumSize( 500, 200 );
+  mIncidenceListView->setMinimumSize( 500, 50 );
+
+  readLayout();
 }
 
 AlarmDialog::~AlarmDialog()
@@ -192,6 +196,26 @@ static QString cleanSummary( const QString &summary )
     retStr += etc;
   }
   return retStr;
+}
+
+void AlarmDialog::readLayout()
+{
+  KConfig *config = kapp->config();
+  config->setGroup( "Layout" );
+  QValueList<int> sizes = config->readIntListEntry( "SplitterSizes" );
+  if ( sizes.count() == 2 ) {
+    mSplitter->setSizes( sizes );
+  }
+  mSplitter->setCollapsible( mIncidenceListView, false );
+  mSplitter->setCollapsible( mDetailView, false );
+}
+
+void AlarmDialog::writeLayout()
+{
+  KConfig *config = kapp->config();
+  config->setGroup( "Layout" );
+  QValueList<int> list = mSplitter->sizes();
+  config->writeEntry( "SplitterSizes", list );
 }
 
 void AlarmDialog::addIncidence( Incidence *incidence,
@@ -292,6 +316,7 @@ void AlarmDialog::dismissCurrent()
     delete *it;
   }
   if ( activeCount() == 0 ) {
+    writeLayout();
     accept();
   } else {
     updateButtons();
@@ -312,6 +337,7 @@ void AlarmDialog::dismissAll()
     delete item;
   }
   setTimer();
+  writeLayout();
   accept();
   emit reminderCount( activeCount() );
 }
@@ -425,6 +451,7 @@ void AlarmDialog::suspend()
 
   setTimer();
   if ( activeCount() == 0 ) {
+    writeLayout();
     accept();
   } else {
     updateButtons();
@@ -572,6 +599,7 @@ void AlarmDialog::slotSave()
 void AlarmDialog::closeEvent( QCloseEvent * )
 {
   slotSave();
+  writeLayout();
   accept();
 }
 

@@ -35,14 +35,15 @@
 
 using namespace KCal;
 
+class AlarmListItem;
 class KOEventViewer;
-class QSpinBox;
 class KComboBox;
 class KListView;
-class AlarmListItem;
+class QSpinBox;
+class QSplitter;
 
 class AlarmDialog : public KDialogBase {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit AlarmDialog( CalendarResources *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~AlarmDialog();
@@ -76,6 +77,8 @@ class AlarmDialog : public KDialogBase {
     void closeEvent( QCloseEvent * );
 
   private:
+    void readLayout();
+    void writeLayout();
     AlarmListItem *searchByUid( const QString &uid );
     bool ensureKorganizerRunning() const;
     void setTimer();
@@ -87,6 +90,7 @@ class AlarmDialog : public KDialogBase {
     KOEventViewer *mDetailView;
 
     QSpinBox *mSuspendSpin;
+    QSplitter *mSplitter;
     KComboBox *mSuspendUnit;
     QTimer mSuspendTimer;
 };
