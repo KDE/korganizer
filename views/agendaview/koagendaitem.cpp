@@ -133,7 +133,10 @@ void KOAgendaItem::updateIcons()
   }
   Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
   Q_ASSERT( incidence );
-  mIconReadonly = incidence->isReadOnly();
+
+  // enough to have the lock icon, IMHO, even if he has delete rights
+  mIconReadonly = !Akonadi::hasChangeRights( mIncidence );
+
   mIconRecur = incidence->recurs();
   mIconAlarm = incidence->isAlarmEnabled();
   if ( incidence->attendeeCount() > 1 ) {

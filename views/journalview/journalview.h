@@ -69,9 +69,6 @@ class JournalView : public QWidget
     void clear();
     void readJournal( const Akonadi::Item &journal );
 
-    bool isReadOnly() const { return mReadOnly; }
-    void setReadOnly( bool readonly );
-
   protected slots:
     void setDirty();
     void deleteItem();

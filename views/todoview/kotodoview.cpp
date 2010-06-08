@@ -717,7 +717,7 @@ void KOTodoView::setNewDate( const QDate &date )
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( !todo->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( todoItem ) ) {
     Todo::Ptr oldTodo( todo->clone() );
 
     KDateTime dt( date );
@@ -750,7 +750,7 @@ void KOTodoView::setNewPercentage( QAction *action )
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( !todo->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( todoItem ) ) {
     Todo::Ptr oldTodo( todo->clone() );
 
     int percentage = mPercentage.value( action );
@@ -781,7 +781,7 @@ void KOTodoView::setNewPriority( QAction *action )
   }
   const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
   Todo::Ptr todo = Akonadi::todo( todoItem );
-  if ( !todo->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( todoItem ) ) {
     Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
@@ -799,8 +799,7 @@ void KOTodoView::changedCategories( QAction *action )
   const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
   Todo::Ptr todo = Akonadi::todo( todoItem );
   Q_ASSERT( todo );
-
-  if ( !todo->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( todoItem ) ) {
     Todo::Ptr oldTodo( todo->clone() );
 
     QStringList categories = todo->categories();

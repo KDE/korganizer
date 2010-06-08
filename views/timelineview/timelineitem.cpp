@@ -105,7 +105,7 @@ TimelineSubItem::TimelineSubItem( Akonadi::Calendar *calendar,
                   Akonadi::displayName( incidence.parentCollection() ),
                   Akonadi::incidence( incidence ).get(), originalStart().date(),
                   true, KCalPrefs::instance()->timeSpec() ) );
-  if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( incidence ) ) {
     setMoveable( true );
     setResizeable( true );
   }

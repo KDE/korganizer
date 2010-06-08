@@ -287,7 +287,7 @@ void KOTodoModel::processChange( const Item & aitem, int action )
     // somebody should assure that all todo's which relate to this one
     // are un-linked before deleting this one
     Q_ASSERT( !ttTodo->hasChildren() );
-    
+
     // find the model index of the deleted incidence
     QModelIndex miDeleted = getModelIndex( ttTodo );
 
@@ -353,7 +353,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
 
   // check if the relation to the parent has changed
   if ( ( newParent == 0 && Akonadi::hasTodo( ttOldParent->mTodo ) )  ||  // became parentless  OR
-       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) ) ||  // gained a parent    OR 
+       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) ) ||  // gained a parent    OR
        ( newParent != 0 && Akonadi::hasTodo( ttOldParent->mTodo ) &&     // changed parent
          newParent->uid() != Akonadi::todo( ttOldParent->mTodo )->uid() ) ) {
 
@@ -541,7 +541,7 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 
   const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( !todo->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( node->mTodo ) ) {
     // the following columns are editable:
     switch ( index.column() ) {
     case SummaryColumn:
@@ -812,7 +812,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   }
   const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( !todo->isReadOnly() ) {
+  if ( Akonadi::hasChangeRights( node->mTodo ) ) {
     Todo::Ptr oldTodo( todo->clone() );
     Akonadi::IncidenceChanger::WhatChanged modified = Akonadi::IncidenceChanger::UNKNOWN_MODIFIED;
 

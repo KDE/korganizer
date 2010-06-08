@@ -2515,13 +2515,10 @@ void CalendarView::pasteIncidence()
 
 void CalendarView::showIncidence( const Item &item )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( item );
-  if( !incidence )
-     return;
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
   eventViewer->setIncidence( item, QDate() );
   // Disable the Edit button for read-only Incidences.
-  if ( incidence->isReadOnly() ) {
+  if ( !Akonadi::hasChangeRights( item ) ) {
     eventViewer->enableButton( KDialog::User1, false );
   }
 
@@ -2576,7 +2573,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return true;
   }
 
-  if ( incidence->isReadOnly() ) {
+  if ( !Akonadi::hasChangeRights( item ) ) {
     showIncidence( item );
     return true;
   }
@@ -2672,7 +2669,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
     return true;
   }
 
-  if ( incidence->isReadOnly() ) {
+  if ( !Akonadi::hasDeleteRights( item ) ) {
     if ( !force ) {
       KMessageBox::information(
         this,
