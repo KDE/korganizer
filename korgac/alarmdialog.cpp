@@ -42,7 +42,7 @@
 #include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/utils.h>
 
-#include <mailtransport/transportmanager.h>
+#include <Mailtransport/TransportManager>
 
 #include <KComboBox>
 #include <KDebug>
@@ -105,7 +105,7 @@ bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
 typedef QList<ReminderListItem *> ReminderList;
 
 AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
-  : KDialog( parent, Qt::WindowStaysOnTopHint ),
+  : KDialog( parent ),
     mCalendar( calendar ), mSuspendTimer( this )
 {
   // User1 => Edit...
@@ -593,8 +593,9 @@ void AlarmDialog::show()
     KDialog::move( mPos );
   }
   KWindowSystem::unminimizeWindow( winId(), false );
-  KWindowSystem::setState( winId(), NET::KeepAbove );
+  KWindowSystem::setState( winId(), NET::KeepAbove | NET::DemandsAttention );
   KWindowSystem::setOnAllDesktops( winId(), true );
+  KWindowSystem::activateWindow( winId() );
 
   // Audio, Procedure, and EMail alarms
   eventNotification();

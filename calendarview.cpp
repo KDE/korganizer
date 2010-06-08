@@ -122,6 +122,7 @@ CalendarView::CalendarView( QWidget *parent )
   mReadOnly = false;
 
   mCalPrinter = 0;
+  mCreatingEnabled = false;
 
   mDateNavigator = new DateNavigator( this );
   mDateChecker = new DateChecker( this );
@@ -1099,58 +1100,73 @@ EventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
 
 void CalendarView::newEvent()
 {
-  newEvent( Akonadi::Collection::List(), QDateTime(), QDateTime() );
+  if ( mCreatingEnabled ) {
+    newEvent( Akonadi::Collection::List(), QDateTime(), QDateTime() );
+  }
 }
 
 void CalendarView::newEvent( const QDate &dt )
 {
-  QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
-  QTime duration = KCalPrefs::instance()->defaultDuration().time();
-  QTime time = startDt.time();
+  if ( mCreatingEnabled ) {
+    QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
+    QTime duration = KCalPrefs::instance()->defaultDuration().time();
+    QTime time = startDt.time();
 
-  time = time.addSecs( duration.hour()*3600 + duration.minute() * 60 +  duration.second() );
-  QDateTime endDt( startDt );
-  endDt.setTime( time );
-  newEvent( Akonadi::Collection::List(), startDt, endDt );
+    time = time.addSecs( duration.hour()*3600 + duration.minute() * 60 +  duration.second() );
+    QDateTime endDt( startDt );
+    endDt.setTime( time );
+    newEvent( Akonadi::Collection::List(), startDt, endDt );
+  }
 }
 
 void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections )
 {
-  newEvent( selectedCollections, QDateTime(), QDateTime() );
+  if ( mCreatingEnabled ) {
+    newEvent( selectedCollections, QDateTime(), QDateTime() );
+  }
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDate &dt )
 {
-  QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
-  newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
+  if ( mCreatingEnabled ) {
+    QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
+    newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
+  }
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
 {
-  newEvent( selectedCollections, startDt, QDateTime( startDt ) );
+  if ( mCreatingEnabled ) {
+    newEvent( selectedCollections, startDt, QDateTime( startDt ) );
+  }
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
                               const QDateTime &startDt, const QDateTime &endDt, bool allDay )
 {
-  EventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
-  if ( !selectedCollections.isEmpty() )
-    eventEditor->selectCollection( selectedCollections.first() );
-  eventEditor->show();
+  if ( mCreatingEnabled ) {
+    EventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
+    if ( !selectedCollections.isEmpty() ) {
+      eventEditor->selectCollection( selectedCollections.first() );
+    }
+    eventEditor->show();
+  }
 }
 
 void CalendarView::newEvent( const QString &summary, const QString &description,
                              const QStringList &attachments, const QStringList &attendees,
                              const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
-  EventEditor *eventEditor = newEventEditor();
-  eventEditor->setTexts( summary, description );
+  if ( mCreatingEnabled ) {
+    EventEditor *eventEditor = newEventEditor();
+    eventEditor->setTexts( summary, description );
 
-  // if attach or attendee list is empty, these methods don't do anything, so
-  // it's safe to call them in every case
-  eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
-  eventEditor->addAttendees( attendees );
-  eventEditor->show();
+    // if attach or attendee list is empty, these methods don't do anything, so
+    // it's safe to call them in every case
+    eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
+    eventEditor->addAttendees( attendees );
+    eventEditor->show();
+  }
 }
 
 void CalendarView::newTodo( const QString &summary, const QString &description,
@@ -1158,14 +1174,16 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             const QStringList &attachmentMimetypes,
                             bool inlineAttachment, bool isTask )
 {
-  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo();
-  todoEditor->setTexts( summary, description );
-  todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
-  todoEditor->addAttendees( attendees );
-  todoEditor->selectCreateTask( isTask );
-  todoEditor->show();
+  if ( mCreatingEnabled ) {
+    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
+    connectIncidenceEditor( todoEditor );
+    todoEditor->newTodo();
+    todoEditor->setTexts( summary, description );
+    todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
+    todoEditor->addAttendees( attendees );
+    todoEditor->selectCreateTask( isTask );
+    todoEditor->show();
+  }
 }
 
 void CalendarView::newTodo()
@@ -1175,73 +1193,88 @@ void CalendarView::newTodo()
 
 void CalendarView::newTodo( const Akonadi::Collection &collection )
 {
-  QDateTime dtDue;
-  bool allday = true;
-  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo();
-  if ( mViewManager->currentView()->isEventView() ) {
-    dtDue.setDate( activeDate() );
-    QDateTime dtDummy = QDateTime::currentDateTime();
-    mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
-    todoEditor->setDates( dtDue, allday );
+  if ( mCreatingEnabled ) {
+    QDateTime dtDue;
+    bool allday = true;
+    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
+    connectIncidenceEditor( todoEditor );
+    todoEditor->newTodo();
+    if ( mViewManager->currentView()->isEventView() ) {
+      dtDue.setDate( activeDate() );
+      QDateTime dtDummy = QDateTime::currentDateTime();
+      mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
+      todoEditor->setDates( dtDue, allday );
+    }
+
+    if ( collection.isValid() ) {
+      todoEditor->selectCollection( collection );
+    }
+
+    todoEditor->show();
   }
-
-  if ( collection.isValid() )
-    todoEditor->selectCollection( collection );
-
-  todoEditor->show();
 }
 
 void CalendarView::newTodo( const QDate &date )
 {
-  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo();
-  todoEditor->setDates( QDateTime( date, QTime::currentTime() ), true );
-  todoEditor->show();
+  if ( mCreatingEnabled ) {
+    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
+    connectIncidenceEditor( todoEditor );
+    todoEditor->newTodo();
+    todoEditor->setDates( QDateTime( date, QTime::currentTime() ), true );
+    todoEditor->show();
+  }
 }
 
 void CalendarView::newJournal()
 {
-  newJournal( QString(), activeDate( true ) );
+  if ( mCreatingEnabled ) {
+    newJournal( QString(), activeDate( true ) );
+  }
 }
 
 void CalendarView::newJournal( const QDate &date )
 {
-  newJournal( QString(), date );
+  if ( mCreatingEnabled ) {
+    newJournal( QString(), date );
+  }
 }
 
 void CalendarView::newJournal( const Akonadi::Collection &collection )
 {
-  JournalEditor *journalEditor = mDialogManager->getJournalEditor();
-  QDate journalDate = activeDate( true );
-  connectIncidenceEditor( journalEditor );
-  journalEditor->newJournal();
-  if ( !journalDate.isValid() ) {
-    journalDate = activeDate();
+  if ( mCreatingEnabled ) {
+    JournalEditor *journalEditor = mDialogManager->getJournalEditor();
+    QDate journalDate = activeDate( true );
+    connectIncidenceEditor( journalEditor );
+    journalEditor->newJournal();
+    if ( !journalDate.isValid() ) {
+      journalDate = activeDate();
+    }
+    journalEditor->setDate( journalDate );
+
+    if ( collection.isValid() ) {
+      journalEditor->selectCollection( collection );
+    }
+
+    journalEditor->show();
   }
-  journalEditor->setDate( journalDate );
-
-  if ( collection.isValid() )
-    journalEditor->selectCollection( collection );
-
-  journalEditor->show();
 }
 
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
-  JournalEditor *journalEditor = mDialogManager->getJournalEditor();
-  QDate journalDate = date;
-  connectIncidenceEditor( journalEditor );
-  journalEditor->newJournal();
+  if ( mCreatingEnabled ) {
+    JournalEditor *journalEditor = mDialogManager->getJournalEditor();
+    QDate journalDate = date;
+    connectIncidenceEditor( journalEditor );
+    journalEditor->newJournal();
 
-  if ( !journalDate.isValid() )
-    journalDate = activeDate();
+    if ( !journalDate.isValid() ) {
+      journalDate = activeDate();
+    }
 
-  journalEditor->setDate( journalDate );
-  journalEditor->setTexts( text );
-  journalEditor->show();
+    journalEditor->setDate( journalDate );
+    journalEditor->setTexts( text );
+    journalEditor->show();
+  }
 }
 
 KOrg::BaseView *CalendarView::currentView() const
@@ -1259,45 +1292,55 @@ void CalendarView::configureCurrentView()
 
 void CalendarView::newSubTodo()
 {
-  const Item item = selectedTodo();
-  if ( Akonadi::hasTodo( item ) ) {
-    newSubTodo( item );
+  if ( mCreatingEnabled ) {
+    const Item item = selectedTodo();
+    if ( Akonadi::hasTodo( item ) ) {
+      newSubTodo( item );
+    }
   }
 }
 
 void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 {
-  const Item item = selectedTodo();
-  if ( !Akonadi::hasTodo( item ) )
-    return;
+  if ( mCreatingEnabled ) {
+    const Item item = selectedTodo();
+    if ( !Akonadi::hasTodo( item ) ) {
+      return;
+    }
 
-  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo();
-  todoEditor->setDates( QDateTime(), false, item );
+    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
+    connectIncidenceEditor( todoEditor );
+    todoEditor->newTodo();
+    todoEditor->setDates( QDateTime(), false, item );
 
-  if ( collection.isValid() )
-    todoEditor->selectCollection( collection );
+    if ( collection.isValid() ) {
+      todoEditor->selectCollection( collection );
+    }
 
-  todoEditor->show();
+    todoEditor->show();
+  }
 }
 
 void CalendarView::newSubTodo( const Item &parentEvent )
 {
-  TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo();
-  todoEditor->setDates( QDateTime(), false, parentEvent );
-  todoEditor->show();
+  if ( mCreatingEnabled ) {
+    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
+    connectIncidenceEditor( todoEditor );
+    todoEditor->newTodo();
+    todoEditor->setDates( QDateTime(), false, parentEvent );
+    todoEditor->show();
+  }
 }
 
 void CalendarView::newFloatingEvent()
 {
-  QDate date = activeDate();
-  // TODO_BERTJAN: Find out from where this is called and see if we can get a reasonable default collection
-  newEvent( Akonadi::Collection::List(),
-            QDateTime( date, QTime( 12, 0, 0 ) ),
-            QDateTime( date, QTime( 12, 0, 0 ) ), true );
+  if ( mCreatingEnabled ) {
+    QDate date = activeDate();
+    // TODO_BERTJAN: Find out from where this is called and see if we can get a reasonable default collection
+    newEvent( Akonadi::Collection::List(),
+              QDateTime( date, QTime( 12, 0, 0 ) ),
+              QDateTime( date, QTime( 12, 0, 0 ) ), true );
+  }
 }
 
 bool CalendarView::addIncidence( const QString &ical )
@@ -2998,6 +3041,11 @@ void CalendarView::getIncidenceHierarchy( const Item &item,
     }
     children.append( item );
   }
+}
+
+void CalendarView::setCreatingEnabled( bool enabled )
+{
+  mCreatingEnabled = enabled;
 }
 
 #include "calendarview.moc"
