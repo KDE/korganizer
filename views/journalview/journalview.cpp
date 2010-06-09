@@ -158,7 +158,6 @@ JournalView::JournalView( const Item &j, QWidget *parent )
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
-  mReadOnly = false;
 
   mLayout = new QGridLayout( this );
   mLayout->setSpacing( KDialog::spacingHint() );
@@ -236,13 +235,6 @@ void JournalView::printItem()
   }
 }
 
-void JournalView::setReadOnly( bool readonly )
-{
-  mReadOnly = readonly;
-  mEditButton->setEnabled( !mReadOnly );
-  mDeleteButton->setEnabled( !mReadOnly );
-}
-
 void JournalView::setCalendar( Akonadi::Calendar *cal )
 {
   mCalendar = cal;
@@ -310,5 +302,8 @@ void JournalView::readJournal( const Item &j )
   } else {
     mBrowser->insertPlainText( description );
   }
-  setReadOnly( journal->isReadOnly() );
+
+  mEditButton->setEnabled( Akonadi::hasChangeRights( j ) );
+  mDeleteButton->setEnabled( Akonadi::hasDeleteRights( j ) );
+
 }

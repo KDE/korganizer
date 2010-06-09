@@ -114,13 +114,13 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
       !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
     mDissociateOccurrences->setEnabled(
       !( isFirstOccurrence && isLastOccurrence ) &&
-      !incidence->isReadOnly() );
+      Akonadi::hasChangeRights( mCurrentIncidence ) );
   }
 
   // Enable/Disabled menu items only valid for editable events.
   QList<QAction *>::Iterator it;
   for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-    (*it)->setEnabled( !incidence->isReadOnly() );
+    (*it)->setEnabled( Akonadi::hasChangeRights( mCurrentIncidence ) );
   }
   mToggleReminder->setVisible( ( incidence->type() != "Journal" ) );
   for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
@@ -128,7 +128,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   }
   for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
     (*it)->setVisible( incidence->type() == "Todo" );
-    (*it)->setEnabled( !incidence->isReadOnly() );
+    (*it)->setEnabled( Akonadi::hasChangeRights( mCurrentIncidence ) );
   }
   popup( QCursor::pos() );
 }

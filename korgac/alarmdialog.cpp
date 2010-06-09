@@ -434,7 +434,7 @@ void AlarmDialog::edit()
     return;
   }
   Incidence::Ptr incidence = Akonadi::incidence( selection.first()->mIncidence );
-  if ( incidence->isReadOnly() ) {
+  if ( !Akonadi::hasChangeRights( selection.first()->mIncidence ) ) {
     KMessageBox::sorry(
       this,
       i18nc( "@info",

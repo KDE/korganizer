@@ -399,13 +399,11 @@ bool IncidenceMonthItem::allDay() const
 
 bool IncidenceMonthItem::isMoveable() const
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
-  return !incidence->isReadOnly();
+  return Akonadi::hasChangeRights( mIncidence );
 }
 bool IncidenceMonthItem::isResizable() const
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
-  return mIsEvent && !incidence->isReadOnly();
+  return mIsEvent && Akonadi::hasChangeRights( mIncidence );
 }
 
 void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
@@ -604,7 +602,8 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   } else if ( mIsJournal ) {
     ret << monthScene()->journalPixmap();
   }
-  if ( incidence->isReadOnly() && !specialEvent ) {
+
+  if ( !Akonadi::hasChangeRights( mIncidence ) && !specialEvent ) {
     ret << monthScene()->readonlyPixmap();
   }
 #if 0

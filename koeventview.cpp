@@ -174,10 +174,10 @@ void KOEventView::defaultAction( const Item &aitem )
 
   kDebug() << "  type:" << incidence->type();
 
-  if ( incidence->isReadOnly() ) {
-    emit showIncidenceSignal(aitem);
+  if ( !Akonadi::hasChangeRights( aitem ) ) {
+    emit showIncidenceSignal( aitem );
   } else {
-    emit editIncidenceSignal(aitem);
+    emit editIncidenceSignal( aitem );
   }
 }
 

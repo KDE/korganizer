@@ -1664,7 +1664,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
 
   enableIncidenceActions( true );
 
-  if ( incidence->isReadOnly() ) {
+  if ( !Akonadi::hasDeleteRights( item ) ) {
     mCutAction->setEnabled( false );
     mDeleteAction->setEnabled( false );
   }
