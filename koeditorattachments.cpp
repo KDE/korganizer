@@ -259,9 +259,25 @@ void AttachmentEditDialog::slotApply()
   mItem->setMimeType( mMimeType->name() );
   if ( mURLRequester ) {
     KURL url( mURLRequester->url() );
+
+    QString correctedUrl = mURLRequester->url();
+    if ( !url.isValid() ) {
+      // If the user used KURLRequester's KURLCompletion
+      // (used the line edit instead of the file dialog)
+      // the returned url is not absolute and is always relative
+      // to the home directory (not pwd), so we must prepend home
+
+      correctedUrl = QDir::home().filePath( mURLRequester->url() );
+      url = KURL( correctedUrl );
+      if ( url.isValid() ) {
+        urlSelected( correctedUrl );
+        mItem->setMimeType( mMimeType->name() );
+      }
+    }
+
     if ( mInline->isChecked() ) {
       QString tmpFile;
-      if ( KIO::NetAccess::download( mURLRequester->url(), tmpFile, this ) ) {
+      if ( KIO::NetAccess::download( correctedUrl, tmpFile, this ) ) {
         QFile f( tmpFile );
         if ( !f.open( IO_ReadOnly ) ) {
           return;
