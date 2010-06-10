@@ -405,7 +405,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence,
   }
 
   bool success = false;
-  if ( stdcal && pRes ) {
+  if ( stdcal && pRes && !pRes->readOnly() && pRes->subresourceWritable( pSubRes ) ) {
     success = stdcal->addIncidence( incidence, pRes, pSubRes );
   } else {
     success = mCalendar->addIncidence( incidence );
