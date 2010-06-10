@@ -752,11 +752,7 @@ void KOTodoView::showIncidences( const Incidence::List &, const QDate & )
 
 CalPrinterBase::PrintType KOTodoView::printType()
 {
-  if ( mTodoListView->selectedItem() ) {
-    return CalPrinterBase::Incidence;
-  } else {
-    return CalPrinterBase::Todolist;
-  }
+  return CalPrinterBase::Todolist;
 }
 
 void KOTodoView::editItem( QListViewItem *item )
@@ -866,8 +862,15 @@ void KOTodoView::printTodo()
   Incidence::List selectedIncidences;
   selectedIncidences.append( mActiveItem->todo() );
 
+  QDateTime todoDate;
+  if ( mActiveItem->todo() && mActiveItem->todo()->hasStartDate() ) {
+    todoDate = mActiveItem->todo()->dtStart();
+  } else {
+    todoDate = mActiveItem->todo()->dtDue();
+  }
+
   printer.print( KOrg::CalPrinterBase::Incidence,
-                 QDate(), QDate(), selectedIncidences );
+                 todoDate.date(), todoDate.date(), selectedIncidences );
 #endif
 }
 
