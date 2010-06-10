@@ -386,14 +386,20 @@ QDragObject * AttachmentIconView::dragObject()
     if ( att->isUri() ) {
       url.setPath( att->uri() );
     } else {
-      KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
+      KTempDir *tempDir = new KTempDir(); // will be deleted on editor close
       tempDir->setAutoDelete( true );
       mTempDirs.insert( tempDir );
       QByteArray encoded;
-      encoded.duplicate( att->data(), strlen(att->data()) );
+      encoded.duplicate( att->data(), strlen( att->data() ) );
       QByteArray decoded;
       KCodecs::base64Decode( encoded, decoded );
-      const QString fileName = tempDir->name( ) + "/" + att->label();
+      // base64Decode() sometimes appends a null byte when called so
+      // if the last byte is 0 remove it (this can happen sometimes)
+      unsigned int len = decoded.size();
+      if ( len > 0 && decoded[len - 1] == 0 ) {
+        decoded.truncate( len - 1 );
+      }
+      const QString fileName = tempDir->name( ) + '/' + att->label();
       KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
       url.setPath( fileName );
     }
