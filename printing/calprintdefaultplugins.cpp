@@ -1202,8 +1202,8 @@ void CalPrintTodos::saveConfig()
 void CalPrintTodos::print( QPainter &p, int width, int height )
 {
   // TODO: Find a good way to guarantee a nicely designed output
-  int pospriority = 10;
-  int possummary = 60;
+  int pospriority = 0;
+  int possummary = 100;
   int posdue = width - 65;
   int poscomplete = posdue - 70; //Complete column is to right of the Due column
   int lineSpacing = 15;
@@ -1221,14 +1221,13 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   QString outStr;
   QFont oldFont( p.font() );
 
-  p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
+  p.setFont( QFont( "sans-serif", 9, QFont::Bold ) );
   lineSpacing = p.fontMetrics().lineSpacing();
   mCurrentLinePos += lineSpacing;
   if ( mIncludePriority ) {
     outStr += i18n( "Priority" );
     p.drawText( pospriority, mCurrentLinePos - 2, outStr );
   } else {
-    possummary = 10;
     pospriority = -1;
   }
 
