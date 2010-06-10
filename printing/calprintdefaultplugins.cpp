@@ -1390,7 +1390,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 {
   // TODO: Find a good way to guarantee a nicely designed output
   int pospriority = 0;
-  int possummary = 60;
+  int possummary = 100;
   int posdue = width - 65;
   int poscomplete = posdue - 70; //Complete column is to right of the Due column
   int lineSpacing = 15;
@@ -1415,7 +1415,6 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     outStr += i18n( "Priority" );
     p.drawText( pospriority, mCurrentLinePos - 2, outStr );
   } else {
-    possummary = 10;
     pospriority = -1;
   }
 
