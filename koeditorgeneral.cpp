@@ -503,14 +503,15 @@ Alarm *KOEditorGeneral::alarmFromSimplePage( Incidence *incidence ) const
 {
   if ( mAlarmButton->isChecked() ) {
     Alarm *alarm = new Alarm( 0 );
-    alarm->setDisplayAlarm("");
+    alarm->setDisplayAlarm( "" );
     alarm->setEnabled(true);
     QString tmpStr = mAlarmTimeEdit->text();
     int j = mAlarmTimeEdit->value() * -60;
-    if (mAlarmIncrCombo->currentItem() == 1)
+    if ( mAlarmIncrCombo->currentItem() == 1 ) {
       j = j * 60;
-    else if (mAlarmIncrCombo->currentItem() == 2)
+    } else if ( mAlarmIncrCombo->currentItem() == 2 ) {
       j = j * (60 * 24);
+    }
     if ( mType == "Event" ) {
       alarm->setStartOffset( j );
     }
