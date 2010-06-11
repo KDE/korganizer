@@ -517,7 +517,7 @@ Alarm *KOEditorGeneral::alarmFromSimplePage( Incidence *incidence ) const
     }
     if ( mType == "Todo" ) {
       Todo *todo = static_cast<Todo *>( incidence );
-      if ( todo && todo->hasStartDate() ) {
+      if ( todo && todo->hasStartDate() && !todo->hasDueDate() ) {
         alarm->setStartOffset( j );
       } else {
         alarm->setEndOffset( j );
