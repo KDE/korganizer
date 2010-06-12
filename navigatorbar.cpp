@@ -60,6 +60,10 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   tfont.setPointSize( 10 );
   tfont.setBold( false );
 
+  // Create a horizontal spacers
+  QSpacerItem *frontSpacer = new QSpacerItem( 50, 1, QSizePolicy::Expanding );
+  QSpacerItem *endSpacer = new QSpacerItem( 50, 1, QSizePolicy::Expanding );
+
   bool isRTL = KOGlobals::self()->reverseLayout();
 
   QPixmap pix;
@@ -104,15 +108,13 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   QToolTip::add( mYear, i18n( "Select a year" ) );
 
   // set up control frame layout
-  QBoxLayout *ctrlLayout = new QHBoxLayout( this, 0, 4 );
+  QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
   ctrlLayout->addWidget( mPrevYear );
   ctrlLayout->addWidget( mPrevMonth );
-  QBoxLayout *dLayout = new QHBoxLayout( this );
-  dLayout->insertStretch( 0, 50 );
-  dLayout->addWidget( mMonth );
-  dLayout->addWidget( mYear );
-  dLayout->addStretch( 50 );
-  ctrlLayout->addLayout( dLayout );
+  ctrlLayout->addItem( frontSpacer );
+  ctrlLayout->addWidget( mMonth );
+  ctrlLayout->addWidget( mYear );
+  ctrlLayout->addItem( endSpacer );
   ctrlLayout->addWidget( mNextMonth );
   ctrlLayout->addWidget( mNextYear );
 
