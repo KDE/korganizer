@@ -32,6 +32,8 @@
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
+
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
@@ -128,8 +130,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     const Collection::List collections = colSel->selectedCollections();
 
     Q_FOREACH ( const Collection &collection, collections ) {
-      if ( collection.contentMimeTypes().contains(
-             QLatin1String( "application/x-vnd.akonadi.calendar.event" ) ) ) {
+      if ( collection.contentMimeTypes().contains( IncidenceMimeTypeVisitor::eventMimeType() ) ) {
         item = new TimelineItem( Akonadi::displayName( collection ), calendar(), mGantt );
         const QColor resourceColor = KOHelper::resourceColor( collection );
         if ( resourceColor.isValid() ) {
