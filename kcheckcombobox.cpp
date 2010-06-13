@@ -80,7 +80,7 @@ QStringList KCheckComboBox::checkedItems() const
     QModelIndexList indexes = model()->match( index, Qt::CheckStateRole,
                                               Qt::Checked, -1, Qt::MatchExactly );
     foreach ( const QModelIndex &index, indexes ) {
-      items += index.data().toString();
+      items += index.data( Qt::UserRole ).toString();
     }
   }
   return items;
