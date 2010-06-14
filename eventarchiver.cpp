@@ -103,7 +103,7 @@ void EventArchiver::run( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger*
     for ( it = t.constBegin(); it != t.constEnd(); ++it ) {
       const Todo::Ptr todo = Akonadi::todo( *it );
       Q_ASSERT( todo );
-      if ( todo->isCompleted() &&  todo->completed().date() < limitDate ) {
+      if ( isSubTreeComplete( todo.get(), limitDate ) ) {
         todos.append( *it );
       }
     }
@@ -255,6 +255,34 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
     changer->deleteIncidence( item, widget );
   }
   emit eventsDeleted();
+}
+
+bool EventArchiver::isSubTreeComplete( const Todo *todo, const QDate &limitDate, QStringList checkedUids ) const
+{
+  if ( !todo->isCompleted() || todo->completed().date() >= limitDate ) {
+    return false;
+  }
+
+  // This QList is only to prevent infinit recursion
+  if ( checkedUids.contains( todo->uid() ) ) {
+    // Probably will never happen, calendar.cpp checks for this
+    kWarning() << "To-do hierarchy loop detected!";
+    return false;
+  }
+
+  checkedUids.append( todo->uid() );
+
+  foreach( const Incidence *i, todo->relations() ) {
+
+    if ( i->type() == "Todo" ) {
+      const Todo *t = static_cast<const Todo*>( i );
+      if ( !isSubTreeComplete( t, limitDate, checkedUids ) ) {
+        return false;
+      }      
+    }
+  }
+
+  return true;
 }
 
 #include "eventarchiver.moc"
