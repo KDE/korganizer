@@ -2,6 +2,8 @@
   This file is part of KOrganizer.
 
   Copyright (c) 2007 Till Adam <adam@kde.org>
+  Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Copyright (c) 2010 Andras Mantia <andras@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,14 +28,17 @@
 
 #include <koeventview.h>
 
-#include <kdgantt1/KDGanttView.h>
-
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
 
 #include <QMap>
 
-class KDGanttViewItem;
+class QStandardItem;
+class QTreeWidget;
+
+namespace KDGantt {
+class GraphicsView;
+}
 
 namespace Akonadi {
   class Calendar;
@@ -41,6 +46,7 @@ namespace Akonadi {
 
 namespace KOrg {
   class TimelineItem;
+  class RowController;
 }
 
 /**
@@ -71,17 +77,22 @@ class KOTimelineView : public KOEventView
     void insertIncidence( const Akonadi::Item &incidence, const QDate &day );
     void removeIncidence( const Akonadi::Item &incidence );
 
+  protected:  
+    virtual void resizeEvent(QResizeEvent* );
+    
   private slots:
-    void itemSelected( KDGanttViewItem *item );
-    void itemDoubleClicked( KDGanttViewItem *item );
-    void itemRightClicked( KDGanttViewItem *item );
-    void itemMoved( KDGanttViewItem *item );
-    void overscale( KDGanttView::Scale scale );
+//     void overscale( KDGantt::View::Scale scale );
+    void itemSelected( const QModelIndex &index );
+    void itemDoubleClicked( const QModelIndex& index );
+    void itemChanged( QStandardItem* item );
+    void contextMenuRequested( const QPoint& point);
     void newEventWithHint( const QDateTime & );
 
   private:
     Akonadi::Item::List mSelectedItemList;
-    KDGanttView *mGantt;
+    KDGantt::GraphicsView *mGantt;
+    QTreeWidget *mLeftView;
+    KOrg::RowController *mRowController;
     QMap<Akonadi::Collection::Id, KOrg::TimelineItem*> mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;
     QDate mStartDate, mEndDate;
