@@ -695,6 +695,14 @@ void CalendarView::incidenceChangeFinished( const Item &oldIncidence_,
     return;
   }
 
+  if ( !oldIncidence_.isValid() ||
+       !newIncidence_.isValid() ) {
+    // If the item was deleted while a modify job was active, incidenceChanger
+    // wont have a valid item to send here, but also wont return success == false
+    // so users don't see an error message
+    return;
+  }
+
   Incidence::Ptr oldIncidence = Akonadi::incidence( oldIncidence_ );
   Incidence::Ptr newIncidence = Akonadi::incidence( newIncidence_ );
 
