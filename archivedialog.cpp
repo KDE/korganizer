@@ -130,11 +130,11 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   l->setBuddy(mArchiveFile->lineEdit());
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
-  
-  QHGroupBox *typeBox = new QHGroupBox( i18n("Type of Items to Archive"), 
+
+  QHGroupBox *typeBox = new QHGroupBox( i18n("Type of Items to Archive"),
                                         topFrame);
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
-  mTodos = new QCheckBox( i18n("&To-dos"), typeBox );
+  mTodos = new QCheckBox( i18n("Completed &To-dos"), typeBox );
   topLayout->addWidget( typeBox );
   QWhatsThis::add( typeBox, i18n("Here you can select which items "
                    "should be archived. Events are archived if they "
