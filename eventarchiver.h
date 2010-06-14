@@ -77,8 +77,20 @@ class EventArchiver : public QObject
   private:
     void run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI, bool errorIfNone );
 
-    void deleteIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool withGUI );
-    void archiveIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool withGUI );
+    void deleteIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget,
+                           const Incidence::List& incidences, bool withGUI );
+    void archiveIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget,
+                           const Incidence::List& incidences, bool withGUI );
+
+    /**
+     * Checks if all to-dos under @p todo and including @p todo were completed before @p limitDate.
+     * If not, we can't archive this to-do.
+     * @param todo root of the sub-tree we are checking
+     * @param limitDate
+     * @param checkedUids used internaly to prevent infinit recursion due to invalid calendar files
+     */
+    bool isSubTreeComplete( const Todo *todo, const QDate &limitDate,
+                            QStringList checkedUids = QStringList() ) const;
 };
 
 #endif /* EVENTARCHIVER_H */

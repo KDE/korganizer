@@ -89,7 +89,14 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
     Todo::List t = calendar->rawTodos();
     Todo::List::ConstIterator it;
     for( it = t.begin(); it != t.end(); ++it ) {
-      if ( (*it) && ( (*it)->isCompleted() ) &&  ( (*it)->completed().date() < limitDate ) ) {
+      const bool todoComplete = (*it) && ( (*it)->isCompleted() ) &&  ( (*it)->completed().date() < limitDate );
+
+      if ( todoComplete && !isSubTreeComplete( *it, limitDate ) ) {
+        // The to-do is complete but some sub-todos are not.
+        KMessageBox::information( widget, i18n("Unable to archive to-dos with "
+                                               "children that don't meet archival requirments."), i18n("Archive To-do"),
+                                               "UncompletedChildrenArchiveTodos" );
+      } else if ( todoComplete ) {
         todos.append( *it );
       }
     }
@@ -220,6 +227,36 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
+}
+
+bool EventArchiver::isSubTreeComplete( const Todo *todo, const QDate &limitDate, QStringList checkedUids ) const
+{
+  if ( !todo || !todo->isCompleted() || todo->completed().date() >= limitDate ) {
+    return false;
+  }
+
+  // This QList is only to prevent infinit recursion
+  if ( checkedUids.contains( todo->uid() ) ) {
+    // Probably will never happen, calendar.cpp checks for this
+    kdWarning() << "To-do hierarchy loop detected!";
+    return false;
+  }
+
+  checkedUids.append( todo->uid() );
+
+  Incidence::List::ConstIterator it;
+  const Incidence::List relations = todo->relations();
+
+  for( it = relations.begin(); it != relations.end(); ++it ) {
+    if ( (*it)->type() == "Todo" ) {
+      const Todo *t = static_cast<const Todo*>( *it );
+      if ( !isSubTreeComplete( t, limitDate, checkedUids ) ) {
+        return false;
+      }
+    }
+  }
+
+  return true;
 }
 
 #include "eventarchiver.moc"
