@@ -130,14 +130,6 @@ void KOTodoViewQuickSearch::fillCategories()
   }
 
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
-
-  QStandardItemModel *model =
-      qobject_cast<QStandardItemModel *>( mCategoryCombo->model() );
-  Q_ASSERT( model );
-  for ( int r = 0; r < model->rowCount(); ++r ) {
-    QStandardItem *item = model->item( r );
-    item->setCheckable( true );
-  }
   mCategoryCombo->setCheckedItems( currentCategories );
 }
 
