@@ -33,8 +33,11 @@ namespace Akonadi {
   class Calendar;
 }
 
-class KCheckComboBox;
 class KLineEdit;
+
+namespace KPIM {
+class KCheckComboBox;
+}
 
 class QString;
 class QStringList;
@@ -64,7 +67,7 @@ class KOTodoViewQuickSearch : public QWidget
     Akonadi::Calendar *mCalendar;
 
     KLineEdit *mSearchLine;
-    KCheckComboBox *mCategoryCombo;
+    KPIM::KCheckComboBox *mCategoryCombo;
 };
 
 #endif
