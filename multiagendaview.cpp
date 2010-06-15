@@ -476,7 +476,7 @@ bool MultiAgendaView::eventFilter(QObject * obj, QEvent * event)
   }
 
   if ( obj->className() == QCString( "KOAgendaView" ) ) {
-    if ( event->type() == QEvent::Enter ) {
+    if ( event->type() == QEvent::MouseButtonRelease ) {
       mSelectedAgendaView = (KOAgendaView *)obj;
     }
   }

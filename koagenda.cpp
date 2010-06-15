@@ -635,8 +635,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           }
         }
       } else {
-        if (me->button() == RightButton)
-        {
+        if ( me->button() == RightButton ) {
           // if mouse pointer is not in selection, select the cell below the cursor
           QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
           if ( !ptInSelection( gpos ) ) {
@@ -648,9 +647,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             updateContents();
           }
           showNewEventPopupSignal();
-        }
-        else
-        {
+        } else {
           // if mouse pointer is in selection, don't change selection
           QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
           if ( !ptInSelection( gpos ) ) {
@@ -660,6 +657,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             setCursor(arrowCursor);
             startSelectAction(viewportPos);
           }
+          return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
         }
       }
       break;
@@ -674,6 +672,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       // avoid an offset of a few pixels. Don't ask me why...
       emit mousePosSignal( gridToContents(contentsToGrid(
                            viewportToContents( viewportPos ) ) ));
+      return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
       break;
 
     case QEvent::MouseMove: {
