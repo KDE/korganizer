@@ -92,6 +92,15 @@ class EventArchiver : public QObject
                            const Akonadi::Item::List &incidences, bool withGUI );
     void archiveIncidences( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
                             const Akonadi::Item::List &incidences, bool withGUI );
+
+    /**
+     * Checks if all to-dos under @p todo and including @p todo were completed before @p limitDate.
+     * If not, we can't archive this to-do.
+     * @param todo root of the sub-tree we are checking
+     * @param limitDate
+     * @param checkedUids used internaly to prevent infinit recursion due to invalid calendar files
+     */
+    bool isSubTreeComplete( const Todo *todo, const QDate &limitDate, QStringList checkedUids = QStringList() ) const;
 };
 
 #endif /* EVENTARCHIVER_H */
