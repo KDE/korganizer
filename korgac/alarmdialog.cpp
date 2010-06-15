@@ -98,7 +98,7 @@ typedef QValueList<AlarmListItem*> ItemList;
 
 AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, const char *name )
   : KDialogBase( Plain,
-                 WStyle_DialogBorder,
+                 WStyle_DialogBorder | WStyle_StaysOnTop,
                  parent, name, false, i18n("Reminder"),
                  Ok | User1 | User2 | User3, NoDefault,
                  false, i18n("Edit..."), i18n("Dismiss All"), i18n("Dismiss Reminder") ),
