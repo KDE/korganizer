@@ -180,10 +180,12 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   mLeftView->setHeader( new GanttHeaderView );
   mLeftView->setHeaderLabel( i18n("Calendar") );
   mLeftView->setRootIsDecorated( false );
+  mLeftView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );  
   
   mGantt = new KDGantt::GraphicsView();
   splitter->addWidget( mLeftView );
   splitter->addWidget( mGantt );
+  connect( splitter, SIGNAL( splitterMoved(int,int) ), SLOT( splitterMoved() ) );
   QStandardItemModel *model = new QStandardItemModel( this );
 
   mRowController = new RowController; //TODO: delete
@@ -250,6 +252,12 @@ void KOTimelineView::resizeEvent(QResizeEvent* event)
   static_cast<KDGantt::DateTimeGrid*>(mGantt->grid())->setDayWidth( event->size().width() );
   KOEventView::resizeEvent( event );
 }
+
+void KOTimelineView::splitterMoved()
+{
+  mLeftView->setColumnWidth( 0, mLeftView->width() );
+}
+
 
 /*virtual*/
 Akonadi::Item::List KOTimelineView::selectedIncidences()
@@ -332,6 +340,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
       insertIncidence( i, day );
     }
   }
+  splitterMoved();
 }
 
 /*virtual*/

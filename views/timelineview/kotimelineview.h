@@ -87,6 +87,7 @@ class KOTimelineView : public KOEventView
     void itemChanged( QStandardItem* item );
     void contextMenuRequested( const QPoint& point);
     void newEventWithHint( const QDateTime & );
+    void splitterMoved();
 
   private:
     Akonadi::Item::List mSelectedItemList;
