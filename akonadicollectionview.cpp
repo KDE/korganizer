@@ -95,7 +95,8 @@ namespace {
           const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
 
           if ( !collection.contentMimeTypes().isEmpty() ) {
-            if ( !collection.attribute<EntityDisplayAttribute>()->iconName().isEmpty() ) {
+            if ( collection.hasAttribute<EntityDisplayAttribute>() &&
+                 !collection.attribute<EntityDisplayAttribute>()->iconName().isEmpty() ) {
               return collection.attribute<EntityDisplayAttribute>()->icon();
             } else {
               QColor col = KOHelper::resourceColor( collection );
