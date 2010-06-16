@@ -744,14 +744,14 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
     return;
   }
 
-  QPixmap tPxmp;
-  if ( event->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+  QPixmap tPxmp;    
+  if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     mSpecialEvent = true;
-    if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-      tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
-    } else {
-      tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
-    }
+    tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
+    conditionalPaint( p, true, x, y, ft, tPxmp );
+  } else if ( event->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+    mSpecialEvent = true;
+    tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
     conditionalPaint( p, true, x, y, ft, tPxmp );
   } else {
     // Disabling the event Pixmap because:
