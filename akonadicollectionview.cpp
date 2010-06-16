@@ -358,7 +358,8 @@ void AkonadiCollectionView::updateMenu()
         const QString resource = collection.resource();
         Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
         mEditAction->setEnabled( !instance.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
-        mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection.id() ) );
+        mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection.id() ) &&
+                                      collection.rights() & Collection::CanCreateItem );
       } else {
         disableStuff = true;
       }
