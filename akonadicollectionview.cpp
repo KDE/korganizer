@@ -105,7 +105,8 @@ namespace {
           }
         } else if ( role == Qt::FontRole ) {
           const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-          if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection.id() ) ) {
+          if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection.id() ) &&
+               collection.rights() & Collection::CanCreateItem) {
             QFont font = qvariant_cast<QFont>( QSortFilterProxyModel::data( index, Qt::FontRole ) );
             font.setBold( true );
             if ( !mInitDefaultCalendar ) {
