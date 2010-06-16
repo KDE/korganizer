@@ -572,14 +572,13 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
 
   bool specialEvent = false;
-  if ( mIsEvent ) {
-    if ( incidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+  if ( mIsEvent ) {      
+    if ( incidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
       specialEvent = true;
-      if ( incidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-        ret << monthScene()->anniversaryPixmap();
-      } else {
-        ret << monthScene()->birthdayPixmap();
-      }
+      ret << monthScene()->anniversaryPixmap();
+    } else if ( incidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+      specialEvent = true;
+      ret << monthScene()->birthdayPixmap();
     }
     // smartins: Disabling the event Pixmap because:
     // 1. Save precious space so we can read the event's title better.

@@ -287,8 +287,6 @@ void ActionManager::createCalendarAkonadi()
 
   connect( mCalendar, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendar, SIGNAL(calendarLoaded()),
-           mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendar, SIGNAL(signalErrorMessage(const QString &)),
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );

@@ -112,12 +112,11 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   }
 
   QPixmap eventPxmp;
-  if ( e->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
-    if ( e->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-      eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
-    } else {
-      eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
-    }
+
+  if ( e->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
+  } else if ( e->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+    eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );    
   } else {
     eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-day" );
   }

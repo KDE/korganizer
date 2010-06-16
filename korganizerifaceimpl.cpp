@@ -92,12 +92,12 @@ bool KOrganizerIfaceImpl::deleteIncidence( const QString &uid, bool force )
   return mActionManager->deleteIncidence( id, force );
 }
 
-bool KOrganizerIfaceImpl::editIncidence( const QString &uid )
+bool KOrganizerIfaceImpl::editIncidence( const QString &itemId )
 {
   bool ok;
-  qint64 id = QVariant(uid).toLongLong(&ok);
-  if(! ok) {
-    kWarning() << "Invalid uid"<<uid;
+  qint64 id = QVariant( itemId ).toLongLong( &ok );
+  if ( !ok ) {
+    kWarning() << "Invalid item id = " << itemId;
     return false;
   }
   return mActionManager->editIncidence( id );
