@@ -847,7 +847,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {
   kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
-  QDateTime startDt,endDt;
+  QDateTime startDt, endDt;
 
   // Start date of this incidence, calculate the offset from it (so recurring and
   // non-recurring items can be treated exactly the same, we never need to check
@@ -866,14 +866,16 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 //  startDt.setDate( startDate );
 
   Incidence *incidence = item->incidence();
-  if ( !incidence ) return;
+  if ( !incidence ) {
+    return;
+  }
   if ( !mChanger ||
        !mChanger->beginChange( incidence, resourceCalendar(), subResourceCalendar() ) ) {
     return;
   }
   Incidence *oldIncidence = incidence->clone();
 
-  QTime startTime(0,0,0), endTime(0,0,0);
+  QTime startTime( 0, 0, 0), endTime( 0, 0, 0 );
   if ( incidence->doesFloat() ) {
     daysLength = item->cellWidth() - 1;
   } else {
@@ -1065,11 +1067,12 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     incidence->setDtStart( startDt );
-    (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
+    static_cast<Event*>( incidence )->setDtEnd( endDt );
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>( incidence );
-    if ( td->hasStartDate() )
+    if ( td->hasStartDate() ) {
       td->setDtStart( startDt );
+    }
     td->setDtDue( endDt );
   }
 
@@ -1127,8 +1130,8 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
   mSelectedDates.clear();
 
   QDate d = start;
-  while (d <= end) {
-    mSelectedDates.append(d);
+  while ( d <= end ) {
+    mSelectedDates.append( d );
     d = d.addDays( 1 );
   }
 
