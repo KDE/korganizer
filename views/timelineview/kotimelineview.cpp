@@ -190,7 +190,7 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   connect( splitter, SIGNAL( splitterMoved(int,int) ), SLOT( splitterMoved() ) );
   QStandardItemModel *model = new QStandardItemModel( this );
 
-  mRowController = new RowController; //TODO: delete
+  mRowController = new RowController; 
   mRowController->setRowHeight( fontMetrics().height() ); //TODO: detect
   
   mRowController->setModel( model );
@@ -198,10 +198,11 @@ KOTimelineView::KOTimelineView( QWidget *parent )
 
   KDGantt::DateTimeGrid *grid = new KDGantt::DateTimeGrid;
   grid->setScale( KDGantt::DateTimeGrid::ScaleHour );
-  grid->setDayWidth( width() );
+  grid->setDayWidth( 800 );
   grid->setRowSeparators( true );  
   mGantt->setGrid( grid );
   mGantt->setModel( model );
+  mGantt->viewport()->setFixedWidth( 8000 );
 
 
 #if 0
@@ -247,12 +248,6 @@ KOTimelineView::~KOTimelineView()
 {
   delete mRowController;
   delete mEventPopup;
-}
-
-void KOTimelineView::resizeEvent(QResizeEvent* event)
-{
-  static_cast<KDGantt::DateTimeGrid*>(mGantt->grid())->setDayWidth( event->size().width() );
-  KOEventView::resizeEvent( event );
 }
 
 void KOTimelineView::splitterMoved()

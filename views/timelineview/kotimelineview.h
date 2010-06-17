@@ -77,9 +77,6 @@ class KOTimelineView : public KOEventView
     void insertIncidence( const Akonadi::Item &incidence, const QDate &day );
     void removeIncidence( const Akonadi::Item &incidence );
 
-  protected:  
-    virtual void resizeEvent(QResizeEvent* );
-    
   private slots:
 //     void overscale( KDGantt::View::Scale scale );
     void itemSelected( const QModelIndex &index );
