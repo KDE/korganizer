@@ -845,7 +845,11 @@ void KOAgendaView::resizeEvent( QResizeEvent *resizeEvent )
 
 void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {
-  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
+  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text()
+                << "; item->cellXLeft(): " << item->cellXLeft()
+                << "; item->cellYTop(): " << item->cellYTop()
+                << "; item->lastMultiItem(): " << item->lastMultiItem()
+                << endl;
 
   QDateTime startDt, endDt;
 
@@ -863,7 +867,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   int daysOffset = oldThisDate.daysTo( thisDate );
   int daysLength = 0;
 
-//  startDt.setDate( startDate );
+  // startDt.setDate( startDate );
 
   Incidence *incidence = item->incidence();
   if ( !incidence ) {
@@ -875,7 +879,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   Incidence *oldIncidence = incidence->clone();
 
-  QTime startTime( 0, 0, 0), endTime( 0, 0, 0 );
+  QTime startTime( 0, 0, 0 ), endTime( 0, 0, 0 );
   if ( incidence->doesFloat() ) {
     daysLength = item->cellWidth() - 1;
   } else {
@@ -883,12 +887,17 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     if ( item->lastMultiItem() ) {
       endTime = mAgenda->gyToTime( item->lastMultiItem()->cellYBottom() + 1 );
       daysLength = item->lastMultiItem()->cellXLeft() - item->cellXLeft();
+      kdDebug(5850) << "item->lastMultiItem()->cellXLeft(): " << item->lastMultiItem()->cellXLeft()
+                    << endl;
     } else {
       endTime = mAgenda->gyToTime( item->cellYBottom() + 1 );
     }
   }
 
-//  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
+  kdDebug(5850) << "daysLength: " << daysLength << "; startTime: " << startTime
+                << "; endTime: " << endTime << "; thisDate: " << thisDate
+                << "; incidence->dtStart(): " << incidence->dtStart() << endl;
+
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     startDt = incidence->dtStart();
@@ -896,8 +905,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     startDt.setTime( startTime );
     endDt = startDt.addDays( daysLength );
     endDt.setTime( endTime );
-    Event*ev = static_cast<Event*>(incidence);
-    if( incidence->dtStart() == startDt && ev->dtEnd() == endDt ) {
+    Event* ev = static_cast<Event*>( incidence );
+    if ( incidence->dtStart() == startDt && ev->dtEnd() == endDt ) {
       // No change
       delete oldIncidence;
       return;
@@ -905,7 +914,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     incidence->setDtStart( startDt );
     ev->setDtEnd( endDt );
   } else if ( incidence->type() == "Todo" ) {
-    Todo *td = static_cast<Todo*>(incidence);
+    Todo *td = static_cast<Todo*>( incidence );
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
     startDt = thisDate.addDays( td->dtDue().daysTo( startDt ) );
     startDt.setTime( startTime );
