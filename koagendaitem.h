@@ -174,8 +174,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
   private:
     int mCellXLeft, mCellXRight;
     int mCellYTop, mCellYBottom;
-    int mSubCell;  // subcell number of this item
-    int mSubCells;  // Total number of subcells in cell of this item
 
     Calendar *mCalendar;
     Incidence *mIncidence; // corresponding event or todo
