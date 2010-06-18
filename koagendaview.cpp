@@ -1267,7 +1267,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     if ( endY < startY ) {
       endY = startY;
     }
-    mAgenda->insertItem( incidence, columnDate, curCol, startY, endY );
+    mAgenda->insertItem( incidence, columnDate, curCol, startY, endY, 1, 1 );
     if ( startY < mMinY[curCol] ) {
       mMinY[curCol] = startY;
     }

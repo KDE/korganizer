@@ -77,7 +77,9 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     Q_OBJECT
   public:
     KOAgendaItem( Calendar *calendar, Incidence *incidence, const QDate &qd,
-                  QWidget *parent, const char *name=0, WFlags f=0 );
+                  QWidget *parent,
+                  int itemPos, int itemCount,
+                  const char *name = 0, WFlags f = 0 );
 
     int cellXLeft() const { return mCellXLeft; }
     int cellXRight() const { return mCellXRight; }
@@ -85,6 +87,9 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int cellYBottom() const { return mCellYBottom; }
     int cellHeight() const;
     int cellWidth() const;
+
+    int itemPos() const { return mItemPos; }
+    int itemCount() const { return mItemCount; }
 
     void setCellXY(int X, int YTop, int YBottom);
     void setCellY(int YTop, int YBottom);
@@ -182,6 +187,11 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     bool mIconAlarm, mIconRecur, mIconReadonly;
     bool mIconReply, mIconGroup, mIconGroupTentative;
     bool mIconOrganizer, mSpecialEvent;
+
+    // For incidences that expand through more than 1 day
+    // Will be 1 for single day incidences
+    int mItemPos;
+    int mItemCount;
 
     // Multi item pointers
     MultiItemInfo* mMultiItemInfo;

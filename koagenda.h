@@ -107,7 +107,7 @@ class KOAgenda : public QScrollView
     void setStartTime( const QTime &startHour );
 
     KOAgendaItem *insertItem ( Incidence *incidence, const QDate &qd, int X, int YTop,
-                               int YBottom );
+                               int YBottom, int itemPos, int itemCount );
     KOAgendaItem *insertAllDayItem ( Incidence *event, const QDate &qd, int XBegin,
                                      int XEnd );
     void insertMultiItem ( Event *event, const QDate &qd, int XBegin, int XEnd,

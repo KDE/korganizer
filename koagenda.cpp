@@ -989,7 +989,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
               addChild( newFirst, cpos.x(), cpos.y() );
             } else {
               newFirst = insertItem( moveItem->incidence(), moveItem->itemDate(),
-                moveItem->cellXLeft()-1, rows()+newY, rows()-1 ) ;
+                moveItem->cellXLeft()-1, rows()+newY, rows()-1, moveItem->itemPos(), moveItem->itemCount() ) ;
             }
             if (newFirst) newFirst->show();
             moveItem->prependMoveItem(newFirst);
@@ -1034,7 +1034,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
               addChild( newLast, cpos.x(), cpos.y() );
             } else {
               newLast = insertItem( moveItem->incidence(), moveItem->itemDate(),
-                moveItem->cellXLeft()+1, 0, newY-rows()-1 ) ;
+                moveItem->cellXLeft()+1, 0, newY-rows()-1, moveItem->itemPos(), moveItem->itemCount() ) ;
             }
             moveItem->appendMoveItem( newLast );
             newLast->show();
@@ -1561,23 +1561,16 @@ void KOAgenda::setStartTime( const QTime &startHour )
   Insert KOAgendaItem into agenda.
 */
 KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X,
-                                    int YTop, int YBottom )
+                                    int YTop, int YBottom, int itemPos, int itemCount )
 {
-#if 0
-  kdDebug(5850) << "KOAgenda::insertItem:" << incidence->summary() << "-"
-                << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom
-                << endl;
-#endif
-
   if ( mAllDayMode ) {
     kdDebug(5850) << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;
     return 0;
   }
 
-
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, incidence, qd, viewport() );
+  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, incidence, qd, viewport(), itemPos, itemCount );
   connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem * ) ),
            SLOT( removeAgendaItem( KOAgendaItem * ) ) );
   connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem * ) ),
@@ -1622,7 +1615,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
 
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, event, qd, viewport() );
+  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, event, qd, viewport(), 1, 1 );
   connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
            SLOT( removeAgendaItem( KOAgendaItem* ) ) );
   connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
@@ -1650,8 +1643,8 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
 }
 
 
-void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd,
-                                int YTop,int YBottom)
+void KOAgenda::insertMultiItem( Event *event, const QDate &qd, int XBegin, int XEnd,
+                                int YTop, int YBottom )
 {
   if ( mAllDayMode ) {
     kdDebug(5850) << "KOAgenda: calling insertMultiItem in all-day mode is illegal." << endl;
@@ -1685,7 +1678,7 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
       newtext = QString("(%1/%2): ").arg( count ).arg( width );
       newtext.append( event->summary() );
 
-      current = insertItem( event, qd, cellX, cellYTop, cellYBottom );
+      current = insertItem( event, qd, cellX, cellYTop, cellYBottom, count, width );
       current->setText( newtext );
       multiItems.append( current );
     }

@@ -65,12 +65,15 @@ QPixmap *KOAgendaItem::organizerPxmp = 0;
 
 KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
                             const QDate &qd, QWidget *parent,
+                            int itemPos, int itemCount,
                             const char *name, WFlags f ) :
   QWidget( parent, name, f ), mCalendar( calendar ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
   mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
-  mSpecialEvent( false ), mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
+  mSpecialEvent( false ),
+  mItemPos( itemPos ), mItemCount( itemCount ),
+  mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
 {
   setBackgroundMode( Qt::NoBackground );
 
@@ -172,7 +175,6 @@ bool KOAgendaItem::setIncidence( Incidence *i )
   return true;
 }
 
-
 /*
   Return height of item in units of agenda cells
 */
@@ -218,10 +220,12 @@ void KOAgendaItem::setCellY( int YTop, int YBottom )
   mCellYBottom = YBottom;
 }
 
-void KOAgendaItem::setMultiItem(KOAgendaItem *first, KOAgendaItem *prev,
-                                KOAgendaItem *next, KOAgendaItem *last)
+void KOAgendaItem::setMultiItem( KOAgendaItem *first, KOAgendaItem *prev,
+                                 KOAgendaItem *next, KOAgendaItem *last )
 {
-  if (!mMultiItemInfo) mMultiItemInfo=new MultiItemInfo;
+  if ( !mMultiItemInfo ) {
+    mMultiItemInfo = new MultiItemInfo;
+  }
   mMultiItemInfo->mFirstMultiItem = first;
   mMultiItemInfo->mPrevMultiItem = prev;
   mMultiItemInfo->mNextMultiItem = next;
