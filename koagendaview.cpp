@@ -849,6 +849,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
                 << "; item->cellXLeft(): " << item->cellXLeft()
                 << "; item->cellYTop(): " << item->cellYTop()
                 << "; item->lastMultiItem(): " << item->lastMultiItem()
+                << "; item->itemPos(): " << item->itemPos()
+                << "; item->itemCount(): " << item->itemCount()
                 << endl;
 
   QDateTime startDt, endDt;
