@@ -605,7 +605,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
 
   switch (me->type())  {
     case QEvent::MouseButtonPress:
-//        kdDebug(5850) << "koagenda: filtered button press" << endl;
+//      kdDebug(5850) << "koagenda: filtered button press" << endl;
       if (object != viewport()) {
         if (me->button() == RightButton) {
           mClickedItem = dynamic_cast<KOAgendaItem *>(object);
@@ -614,6 +614,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             emit showIncidencePopupSignal( mCalendar,
                                            mClickedItem->incidence(),
                                            mClickedItem->itemDate() );
+          } else {
+            return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
           }
         } else {
           KOAgendaItem* item = dynamic_cast<KOAgendaItem *>(object);
@@ -632,6 +634,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             // this filter being run again and mActionItem being set to
             // null.
             selectItem( item );
+          } else {
+            return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
           }
         }
       } else {
@@ -657,8 +661,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             setCursor(arrowCursor);
             startSelectAction(viewportPos);
           }
-          return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
         }
+        return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
       }
       break;
 
@@ -672,7 +676,6 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       // avoid an offset of a few pixels. Don't ask me why...
       emit mousePosSignal( gridToContents(contentsToGrid(
                            viewportToContents( viewportPos ) ) ));
-      return QScrollView::eventFilter( object, me ); // pass through for use by multiagenda
       break;
 
     case QEvent::MouseMove: {
@@ -1671,7 +1674,7 @@ void KOAgenda::insertMultiItem( Event *event, const QDate &qd, int XBegin, int X
 
       if ( cellX == XEnd ) {
         cellYBottom = YBottom;
-      } else { 
+      } else {
         cellYBottom = rows() - 1;
       }
 
