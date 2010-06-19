@@ -229,10 +229,11 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
   return true;
 }
 
-KOListView::KOListView( QWidget *parent )
+KOListView::KOListView( QWidget *parent,  bool nonInteractive )
   : KOEventView( parent )
 {
   mActiveItem = 0;
+  mIsNonInteractive = nonInteractive;
 
   mListView = new K3ListView( this );
   mListView->addColumn( i18n( "Summary" ) );
@@ -478,7 +479,7 @@ Incidence::Ptr KOListView::incidenceForId( const Item::Id &id ) const
 void KOListView::defaultItemAction( Q3ListViewItem *i )
 {
   KOListViewItem *item = static_cast<KOListViewItem *>( i );
-  if ( item ) {
+  if ( item && !mIsNonInteractive ) {
     defaultAction( mItems.value( item->data() ) );
   }
 }
@@ -486,7 +487,7 @@ void KOListView::defaultItemAction( Q3ListViewItem *i )
 void KOListView::popupMenu( Q3ListViewItem *item, const QPoint &, int )
 {
   mActiveItem = static_cast<KOListViewItem *>( item );
-  if ( mActiveItem ) {
+  if ( mActiveItem && !mIsNonInteractive ) {
     const Item aitem = mItems.value( mActiveItem->data() );
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
