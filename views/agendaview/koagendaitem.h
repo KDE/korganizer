@@ -92,7 +92,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence, const QDate &qd, QWidget *parent );
+    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence,
+                  const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
@@ -227,8 +228,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     int mCellXLeft, mCellXRight;
     int mCellYTop, mCellYBottom;
-    int mSubCell;   // subcell number of this item
-    int mSubCells;  // Total number of subcells in cell of this item
 
     Akonadi::Calendar *mCalendar;
     Akonadi::Item mIncidence;
