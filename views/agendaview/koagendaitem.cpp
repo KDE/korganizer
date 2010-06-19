@@ -70,6 +70,7 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 //-----------------------------------------------------------------------------
 
 KOAgendaItem::KOAgendaItem( Akonadi::Calendar *calendar, const Item &item,
+                            int itemPos, int itemCount,
                             const QDate &qd, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar ), mIncidence( item ),
     mDate( qd ), mValid( true ), mCloned( false ), mSpecialEvent( false )
@@ -104,6 +105,9 @@ KOAgendaItem::KOAgendaItem( Akonadi::Calendar *calendar, const Item &item,
   mIconOrganizer = false;
   mMultiItemInfo = 0;
   mStartMoveInfo = 0;
+
+  mItemPos = itemPos;
+  mItemCount = itemCount;
 
   QPalette pal = palette();
   pal.setColor( QPalette::Window, Qt::transparent );
