@@ -409,12 +409,6 @@ QDragObject * AttachmentIconView::dragObject()
       encoded.duplicate( att->data(), strlen( att->data() ) );
       QByteArray decoded;
       KCodecs::base64Decode( encoded, decoded );
-      // base64Decode() sometimes appends a null byte when called so
-      // if the last byte is 0 remove it (this can happen sometimes)
-      unsigned int len = decoded.size();
-      if ( len > 0 && decoded[len - 1] == 0 ) {
-        decoded.truncate( len - 1 );
-      }
       const QString fileName = tempDir->name( ) + '/' + att->label();
       KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
       url.setPath( fileName );
