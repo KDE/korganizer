@@ -118,7 +118,7 @@ class KOAgenda : public Q3ScrollView
     void setStartTime( const QTime &startHour );
 
     KOAgendaItem *insertItem ( const Akonadi::Item &incidence, const QDate &qd, int X, int YTop,
-                               int YBottom );
+                               int YBottom, int itemPos, int itemCount );
     KOAgendaItem *insertAllDayItem ( const Akonadi::Item &event, const QDate &qd, int XBegin,
                                      int XEnd );
     void insertMultiItem ( const Akonadi::Item &event, const QDate &qd, int XBegin, int XEnd,
