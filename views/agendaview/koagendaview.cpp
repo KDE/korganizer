@@ -610,13 +610,13 @@ void KOAgendaView::enableAgendaUpdate( bool enable )
   mAllowAgendaUpdate = enable;
 }
 
-int KOAgendaView::maxDatesHint()
+int KOAgendaView::maxDatesHint() const
 {
   // Not sure about the max number of events, so return 0 for now.
   return 0;
 }
 
-int KOAgendaView::currentDateCount()
+int KOAgendaView::currentDateCount() const
 {
   return mSelectedDates.count();
 }

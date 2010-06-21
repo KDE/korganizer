@@ -64,7 +64,7 @@ KOWhatsNextView::~KOWhatsNextView()
 {
 }
 
-int KOWhatsNextView::currentDateCount()
+int KOWhatsNextView::currentDateCount() const
 {
   return mStartDate.daysTo( mEndDate );
 }

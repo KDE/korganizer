@@ -127,7 +127,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   if ( e->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
   } else if ( e->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
-    eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );    
+    eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
   } else {
     eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-day" );
   }
@@ -298,12 +298,12 @@ KOListView::~KOListView()
   delete mPopupMenu;
 }
 
-int KOListView::maxDatesHint()
+int KOListView::maxDatesHint() const
 {
   return 0;
 }
 
-int KOListView::currentDateCount()
+int KOListView::currentDateCount() const
 {
   return mSelectedDates.count();
 }

@@ -47,7 +47,7 @@ class KOJournalView : public KOrg::BaseView
     explicit KOJournalView( QWidget *parent = 0 );
     ~KOJournalView();
 
-    virtual int currentDateCount();
+    virtual int currentDateCount() const;
     virtual Akonadi::Item::List selectedIncidences();
     DateList selectedIncidenceDates() { return DateList(); }
     void appendJournal( const Akonadi::Item &journal, const QDate &dt );

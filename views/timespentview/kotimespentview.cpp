@@ -204,7 +204,7 @@ KOTimeSpentView::~KOTimeSpentView()
 {
 }
 
-int KOTimeSpentView::currentDateCount()
+int KOTimeSpentView::currentDateCount() const
 {
   return mStartDate.daysTo( mEndDate );
 }

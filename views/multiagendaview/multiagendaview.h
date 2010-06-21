@@ -90,8 +90,8 @@ class MultiAgendaView : public AgendaView
 
     Akonadi::Item::List selectedIncidences();
     DateList selectedIncidenceDates();
-    int currentDateCount();
-    int maxDatesHint();
+    int currentDateCount() const;
+    int maxDatesHint() const;
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     /* reimp */void setCalendar( Akonadi::Calendar *cal );

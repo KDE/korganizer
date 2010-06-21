@@ -143,12 +143,12 @@ MonthView::~MonthView()
 {
 }
 
-int MonthView::currentDateCount()
+int MonthView::currentDateCount() const
 {
   return actualStartDateTime().date().daysTo( actualEndDateTime().date() );
 }
 
-int MonthView::maxDatesHint()
+int MonthView::maxDatesHint() const
 {
   return 6 * 7;
 }

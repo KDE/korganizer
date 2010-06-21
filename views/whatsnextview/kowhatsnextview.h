@@ -53,7 +53,7 @@ class KOWhatsNextView : public KOrg::BaseView
     explicit KOWhatsNextView( QWidget *parent = 0 );
     ~KOWhatsNextView();
 
-    virtual int currentDateCount();
+    virtual int currentDateCount() const;
     virtual Akonadi::Item::List selectedIncidences() { return Akonadi::Item::List(); }
     KCal::DateList selectedIncidenceDates() { return KCal::DateList(); }
 

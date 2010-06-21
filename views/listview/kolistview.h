@@ -72,8 +72,8 @@ class KOListView : public KOEventView
     explicit KOListView( QWidget *parent = 0,  bool nonInteractive = false );
     ~KOListView();
 
-    virtual int maxDatesHint();
-    virtual int currentDateCount();
+    virtual int maxDatesHint() const;
+    virtual int currentDateCount() const;
     virtual Akonadi::Item::List selectedIncidences();
     virtual DateList selectedIncidenceDates();
 

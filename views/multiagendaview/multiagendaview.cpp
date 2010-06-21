@@ -307,7 +307,7 @@ DateList MultiAgendaView::selectedIncidenceDates()
   return list;
 }
 
-int MultiAgendaView::currentDateCount()
+int MultiAgendaView::currentDateCount() const
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     return agendaView->currentDateCount();
@@ -348,7 +348,7 @@ void MultiAgendaView::changeIncidenceDisplay( const Item &incidence, int mode )
   }
 }
 
-int MultiAgendaView::maxDatesHint()
+int MultiAgendaView::maxDatesHint() const
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     return agendaView->maxDatesHint();

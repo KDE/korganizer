@@ -95,7 +95,7 @@ KCal::DateList KOTimelineView::selectedIncidenceDates()
 }
 
 /*virtual*/
-int KOTimelineView::currentDateCount()
+int KOTimelineView::currentDateCount() const
 {
   return 0;
 }

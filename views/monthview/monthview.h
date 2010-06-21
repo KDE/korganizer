@@ -51,7 +51,7 @@ class MonthView : public KOEventView
     explicit MonthView( QWidget *parent = 0 );
     ~MonthView();
 
-    virtual int currentDateCount();
+    virtual int currentDateCount() const;
     int currentMonth() const;
 
     Akonadi::Item::List selectedIncidences();
@@ -93,7 +93,7 @@ class MonthView : public KOEventView
     /* reimp */void calendarReset();
 
   protected:
-    int maxDatesHint();
+    int maxDatesHint() const;
 
     virtual void wheelEvent( QWheelEvent *event );
     virtual void keyPressEvent( QKeyEvent *event );
