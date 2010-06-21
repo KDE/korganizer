@@ -95,7 +95,7 @@ void KOJournalView::appendJournal( const Item &journal, const QDate &dt )
   }
 }
 
-int KOJournalView::currentDateCount()
+int KOJournalView::currentDateCount() const
 {
   return mEntries.size();
 }

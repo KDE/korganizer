@@ -126,7 +126,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       Returns the number of currently shown dates.
       A return value of 0 means no idea.
     */
-    virtual int currentDateCount() = 0;
+    virtual int currentDateCount() const = 0;
 
     /**
       Returns if this view is a view for displaying events.

@@ -105,7 +105,7 @@ bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
 typedef QList<ReminderListItem *> ReminderList;
 
 AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
-  : KDialog( parent ),
+  : KDialog( parent, Qt::WindowStaysOnTopHint ),
     mCalendar( calendar ), mSuspendTimer( this )
 {
   // User1 => Edit...

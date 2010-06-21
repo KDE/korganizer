@@ -105,10 +105,10 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
-    virtual int maxDatesHint();
+    virtual int maxDatesHint() const;
 
     /** Returns number of currently shown dates. */
-    virtual int currentDateCount();
+    virtual int currentDateCount() const;
 
     /** returns the currently selected events */
     virtual Akonadi::Item::List selectedIncidences();

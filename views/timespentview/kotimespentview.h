@@ -44,7 +44,7 @@ class KOTimeSpentView : public KOrg::BaseView
     explicit KOTimeSpentView( QWidget *parent = 0 );
     ~KOTimeSpentView();
 
-    virtual int currentDateCount();
+    virtual int currentDateCount() const;
     virtual Akonadi::Item::List selectedIncidences()
     {
       return Akonadi::Item::List();

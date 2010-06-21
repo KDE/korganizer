@@ -61,12 +61,12 @@ class KOTimelineView : public KOEventView
 
     virtual Akonadi::Item::List selectedIncidences();
     virtual KCal::DateList selectedIncidenceDates();
-    virtual int currentDateCount();
+    virtual int currentDateCount() const;
     virtual void showDates( const QDate &, const QDate & );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
     virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
-    virtual int maxDatesHint() { return 0; }
+    virtual int maxDatesHint() const { return 0; }
 
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     virtual KOrg::CalPrinterBase::PrintType printType();

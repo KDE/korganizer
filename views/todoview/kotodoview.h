@@ -72,7 +72,7 @@ class KOTodoView : public BaseView
 
     virtual Akonadi::Item::List selectedIncidences();
     virtual DateList selectedIncidenceDates();
-    virtual int currentDateCount() { return 0; }
+    virtual int currentDateCount() const { return 0; }
 
     void setDocumentId( const QString & ) {}
 

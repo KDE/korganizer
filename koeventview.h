@@ -80,7 +80,7 @@ class KOEventView : public KOrg::BaseView
      * provides a hint back to the caller on the maximum number of dates
      * that the view supports.  A return value of 0 means no maximum.
      */
-    virtual int maxDatesHint() = 0;
+    virtual int maxDatesHint() const = 0;
 
     /**
      * Construct a standard context menu for an event.
