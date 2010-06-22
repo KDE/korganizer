@@ -5,7 +5,7 @@
     Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
-    Author: Sergio Martins, <sergio.martins@kdab.com>    
+    Author: Sergio Martins, <sergio.martins@kdab.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,6 @@
 */
 
 #include "previewdialog.h"
-#include <kio/netaccess.h>
 
 #include "kolistview.h"
 #include "koprefs.h"
@@ -40,6 +39,7 @@
 #include <kstandarddirs.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
+#include <kio/netaccess.h>
 
 #include <qlabel.h>
 #include <qlayout.h>
@@ -138,6 +138,8 @@ void PreviewDialog::slotAdd()
     const QString fileName = KFileDialog::getSaveFileName( mOriginalUrl.fileName(), QString::null,
                                                            0, i18n( "Select path for new calendar" ) );
     finalUrl = KURL( fileName );
+
+    KIO::NetAccess::copy( mOriginalUrl, finalUrl, this );
   }
 
   if ( finalUrl.isValid() ) {
