@@ -135,7 +135,8 @@ void PreviewDialog::slotAdd()
 {
   KURL finalUrl = mOriginalUrl;
   if ( isTempFile() ) {
-    const QString fileName = KFileDialog::getSaveFileName( mOriginalUrl.fileName(), QString::null,
+    const QString fileName = KFileDialog::getSaveFileName( locateLocal( "data","korganizer/" ),
+                                                           i18n( "*.vcs *.ics|Calendar Files" ),
                                                            0, i18n( "Select path for new calendar" ) );
     finalUrl = KURL( fileName );
 
