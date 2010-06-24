@@ -54,7 +54,7 @@
 #endif
 
 #ifndef KORGANIZER_EVENTVIEWER_EXPORT
-# if defined(MAKE_KORGANIZER_EVENTVIEWER_LIB)
+# if defined(MAKE_KORGANIZERPRIVATE_LIB)
    /* We are building this library */
 #  define KORGANIZER_EVENTVIEWER_EXPORT KDE_EXPORT
 # else
