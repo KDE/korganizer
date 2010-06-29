@@ -449,6 +449,23 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
     }
   } else {
     // merge in a file
+    CalendarResources *cl = dynamic_cast<CalendarResources *>( mCalendar );
+    if ( cl && !cl->hasCalendarResources() ) {
+      KMessageBox::sorry(
+        this,
+        i18n( "No calendars found, unable to merge the file into your calendar." ) );
+      return false;
+    }
+    // FIXME: This is a nasty hack, since we need to set a parent for the
+    //        resource selection dialog. However, we don't have any UI methods
+    //        in the calendar, only in the CalendarResources::DestinationPolicy
+    //        So we need to type-cast it and extract it from the CalendarResources
+    QWidget *tmpparent = 0;
+    if ( cl ) {
+      tmpparent = cl->dialogParentWidget();
+      cl->setDialogParentWidget( this );
+    }
+
     FileStorage storage( mCalendar );
     storage.setFileName( filename );
     loadedSuccesfully = storage.load();
