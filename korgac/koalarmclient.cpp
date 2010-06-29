@@ -50,6 +50,10 @@
 #include <KSystemTimeZones>
 #include "kdescendantsproxymodel_p.h" // fix when forwarding header is there
 
+#ifdef Q_WS_MAEMO_5
+#include <QtMaemo5/QMaemo5InformationBox>
+#endif
+
 using namespace Akonadi;
 using namespace KCal;
 
@@ -174,6 +178,7 @@ void KOAlarmClient::createReminder( Akonadi::Calendar *calendar,
     return;
   }
 
+#ifndef Q_WS_MAEMO_5
   if ( !mDialog ) {
     mDialog = new AlarmDialog( calendar );
     connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
@@ -189,6 +194,10 @@ void KOAlarmClient::createReminder( Akonadi::Calendar *calendar,
 
   mDialog->addIncidence( aitem, dt, displayText );
   mDialog->wakeUp();
+#else
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  QMaemo5InformationBox::information( 0, incidence->summary(), QMaemo5InformationBox::NoTimeout );
+#endif
   saveLastCheckTime();
 }
 
