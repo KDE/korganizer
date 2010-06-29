@@ -57,7 +57,7 @@ PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId ); 
+  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId );
   mListView = new KOListView( mCalendar, topFrame, "PreviewDialog::ListView", true );
   topLayout->addWidget( mListView );
 
@@ -135,12 +135,17 @@ void PreviewDialog::slotAdd()
 {
   KURL finalUrl = mOriginalUrl;
   if ( isTempFile() ) {
-    const QString fileName = KFileDialog::getSaveFileName( locateLocal( "data","korganizer/" ),
-                                                           i18n( "*.vcs *.ics|Calendar Files" ),
-                                                           0, i18n( "Select path for new calendar" ) );
+    const QString fileName =
+      KFileDialog::getSaveFileName( locateLocal( "data","korganizer/" ),
+                                    i18n( "*.vcs *.ics|Calendar Files" ),
+                                    this, i18n( "Select path for new calendar" ) );
+
     finalUrl = KURL( fileName );
 
-    KIO::NetAccess::copy( mOriginalUrl, finalUrl, this );
+    if ( !KIO::NetAccess::copy( mOriginalUrl, finalUrl, this ) && KIO::NetAccess::lastError() ) {
+      KMessageBox::error( this, KIO::NetAccess::lastErrorString() );
+      return;
+    }
   }
 
   if ( finalUrl.isValid() ) {
