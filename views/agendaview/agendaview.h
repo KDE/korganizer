@@ -32,6 +32,9 @@ class AgendaView : public KOEventView
 
   public slots:
     virtual void setUpdateNeeded() = 0;
+
+  public:
+    virtual bool supportsZoom() { return true; }
 };
 
 }
