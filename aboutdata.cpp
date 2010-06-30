@@ -54,7 +54,7 @@ AboutData::AboutData()
   addAuthor( ki18n( "Preston Brown"),ki18n( "Original Author" ),
              "pbrown@kde.org" );
   addCredit( ki18n( "Richard Apodaca" ) );
-  addCredit( ki18n( "Mike Arthur" ) );
+  addCredit( ki18n( "Mike McQuaid" ) );
   addCredit( ki18n( "Jan-Pascal van Best" ) );
   addCredit( ki18n( "Laszlo Boloni" ) );
   addCredit( ki18n( "Barry Benowitz" ) );
