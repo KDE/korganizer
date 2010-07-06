@@ -43,7 +43,6 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${CMAKE_BINARY_DIR}/akonadi/kcal
                     ${CMAKE_SOURCE_DIR}/akonadi/
                     ${CMAKE_SOURCE_DIR}/korganizer/printing
-                    ${CMAKE_SOURCE_DIR}/kdgantt1
                     ${CMAKE_BINARY_DIR}/libkdepim
                     ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
                     ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
@@ -159,7 +158,6 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 if (QT_QT3SUPPORT_FOUND)
 set(korganizerprivate_LIB_SRCS
-  ${libkdgantt1_SRCS}
   collectiongeneralpage.cpp
   koalternatelabel.cpp
   kodecorationlabel.cpp
@@ -258,6 +256,7 @@ target_link_libraries(korganizerprivate
   akonadi-kcal_next
   akonadi_next
   incidenceeditors
+  kdgantt2
 )
 
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )

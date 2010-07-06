@@ -47,6 +47,7 @@
 #include <KGlobal>
 #include <KTabWidget>
 
+#include <QAction>
 #include <QStackedWidget>
 
 #include "koviewmanager.moc"

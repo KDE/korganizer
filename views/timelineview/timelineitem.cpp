@@ -1,5 +1,8 @@
 /*
   Copyright (c) 2007 Volker Krause <vkrause@kde.org>
+  Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Copyright (c) 2010 Andras Mantia <andras@kdab.com>
+
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,20 +26,20 @@ using namespace KOrg;
 #include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
 
-#include <kdgantt1/KDGanttViewSubwidgets.h>
+#include "kdgantt2/kdganttglobal.h"
 
 #include <akonadi/kcal/utils.h>
 
 using namespace Akonadi;
 
-TimelineItem::TimelineItem( const QString &label, Akonadi::Calendar *calendar, KDGanttView *parent )
-  : KDGanttViewTaskItem( parent ), mCalendar( calendar )
+TimelineItem::TimelineItem( Akonadi::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent )
+  : QObject( parent ), mCalendar( calendar ), mModel( model ), mIndex( index )
 {
-  setListViewText( 0, label );
-  setDisplaySubitemsAsGroup( true );
-  if ( listView() ) {
-    listView()->setRootIsDecorated( false );
-  }
+ mModel->removeRow( mIndex );
+ QStandardItem * dummyItem = new QStandardItem;
+ dummyItem->setData( KDGantt::TypeTask, KDGantt::ItemTypeRole );
+
+ mModel->insertRow( mIndex, dummyItem );
 }
 
 void TimelineItem::insertIncidence( const Item &aitem,
@@ -56,25 +59,29 @@ void TimelineItem::insertIncidence( const Item &aitem,
     end = end.addDays( 1 );
   }
 
-  typedef QList<TimelineSubItem*> ItemList;
+  typedef QList<QStandardItem*> ItemList;
   ItemList list = mItemMap.value( aitem.id() );
   for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
-    if ( KDateTime( (*it)->startTime() ) == start &&
-         KDateTime( (*it)->endTime() ) == end ) {
+    if ( KDateTime( static_cast<TimelineSubItem* >(*it)->startTime() ) == start &&
+         KDateTime( static_cast<TimelineSubItem* >(*it)->endTime() ) == end ) {
       return;
     }
   }
 
-  TimelineSubItem * item = new TimelineSubItem( mCalendar, aitem, this );
-  QColor c1, c2, c3;
-  colors( c1, c2, c3 );
-  item->setColors( c1, c2, c3 );
+  TimelineSubItem * item = new TimelineSubItem( aitem, this );
 
   item->setStartTime( start.dateTime() );
   item->setOriginalStart( start );
   item->setEndTime( end.dateTime() );
+  item->setData( mColor, Qt::DecorationRole );
+
+  list = mModel->takeRow( mIndex );
 
   mItemMap[aitem.id()].append( item );
+
+  list.append( mItemMap[aitem.id()] );
+  
+  mModel->insertRow( mIndex, list );
 }
 
 void TimelineItem::removeIncidence( const Item &incidence )
@@ -85,82 +92,60 @@ void TimelineItem::removeIncidence( const Item &incidence )
 
 void TimelineItem::moveItems( const Item &incidence, int delta, int duration )
 {
-  typedef QList<TimelineSubItem*> ItemList;
+  typedef QList<QStandardItem*> ItemList;
   ItemList list = mItemMap.value( incidence.id() );
   for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
-    QDateTime start = (*it)->originalStart().dateTime();
+    QDateTime start = static_cast<TimelineSubItem* >(*it)->originalStart().dateTime();
     start = start.addSecs( delta );
-    (*it)->setStartTime( start );
-    (*it)->setOriginalStart( KDateTime(start) );
-    (*it)->setEndTime( start.addSecs( duration ) );
+    static_cast<TimelineSubItem* >(*it)->setStartTime( start );
+    static_cast<TimelineSubItem* >(*it)->setOriginalStart( KDateTime(start) );
+    static_cast<TimelineSubItem* >(*it)->setEndTime( start.addSecs( duration ) );
   }
 }
 
-TimelineSubItem::TimelineSubItem( Akonadi::Calendar *calendar,
-                                  const Item &incidence, TimelineItem *parent )
-  : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
-    mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
+void TimelineItem::setColor(const QColor& color)
 {
-  setTooltipText( IncidenceFormatter::toolTipStr(
+  mColor = color;
+}
+
+
+TimelineSubItem::TimelineSubItem( const Item &incidence,
+                                  TimelineItem *parent
+                                )
+  : QStandardItem(), mIncidence( incidence ),
+    mParent( parent )
+{
+  setData( KDGantt::TypeTask, KDGantt::ItemTypeRole );
+  setData( IncidenceFormatter::toolTipStr(
                   Akonadi::displayName( incidence.parentCollection() ),
                   Akonadi::incidence( incidence ).get(), originalStart().date(),
-                  true, KCalPrefs::instance()->timeSpec() ) );
-  if ( Akonadi::hasChangeRights( incidence ) ) {
-    setMoveable( true );
-    setResizeable( true );
+                  true, KCalPrefs::instance()->timeSpec() ), Qt::ToolTipRole );
+  if ( Akonadi::incidence( incidence )->isReadOnly() ) {
+    setFlags( Qt::ItemIsSelectable );
   }
 }
 
 TimelineSubItem::~TimelineSubItem()
 {
-  delete mLeft;
-  delete mRight;
 }
 
-void TimelineSubItem::showItem( bool show, int coordY )
+void TimelineSubItem::setStartTime(const QDateTime& dt)
 {
-  KDGanttViewTaskItem::showItem( show, coordY );
-  int y;
-  if ( coordY != 0 ) {
-    y = coordY;
-  } else {
-    y = getCoordY();
-  }
-  int startX = myGanttView->timeHeaderWidget()->getCoordX( myStartTime );
-  int endX = myGanttView->timeHeaderWidget()->getCoordX( myEndTime );
-
-  const int mw = qMax( 1, qMin( 4, endX - startX ) );
-  if ( !mLeft || mw != mMarkerWidth ) {
-    if ( !mLeft ) {
-      mLeft = new KDCanvasPolygon( myGanttView->timeTableWidget(), this, Type_is_KDGanttViewItem );
-      mLeft->setBrush( Qt::black );
-    }
-    QPointArray a = QPointArray( 4 );
-    a.setPoint( 0, 0, -mw -myItemSize / 2 - 2 );
-    a.setPoint( 1, mw, -myItemSize / 2 - 2 );
-    a.setPoint( 2, mw, myItemSize / 2 + 2 );
-    a.setPoint( 3, 0, myItemSize / 2 + mw + 2 );
-    mLeft->setPoints( a );
-  }
-  if ( !mRight || mw != mMarkerWidth ) {
-    if ( !mRight ) {
-      mRight = new KDCanvasPolygon( myGanttView->timeTableWidget(), this, Type_is_KDGanttViewItem );
-      mRight->setBrush( Qt::black );
-    }
-    QPointArray a = QPointArray( 4 );
-    a.setPoint( 0, -mw, -myItemSize / 2 - 2 );
-    a.setPoint( 1, 0, -myItemSize / 2 - mw - 2 );
-    a.setPoint( 2, 0, myItemSize / 2 + mw + 2 );
-    a.setPoint( 3, -mw, myItemSize / 2 + 2 );
-    mRight->setPoints( a );
-  }
-  mMarkerWidth = mw;
-  mLeft->setX( startX );
-  mLeft->setY( y );
-  mLeft->setZ( startShape->z() - 1 );
-  mLeft->show();
-  mRight->setX( endX );
-  mRight->setY( y );
-  mRight->setZ( startShape->z() - 1 );
-  mRight->show();
+  setData( dt, KDGantt::StartTimeRole );
 }
+
+QDateTime TimelineSubItem::startTime() const
+{
+  return data( KDGantt::StartTimeRole ).toDateTime();
+}
+
+void TimelineSubItem::setEndTime(const QDateTime& dt)
+{
+  setData( dt, KDGantt::EndTimeRole );
+}
+
+QDateTime TimelineSubItem::endTime() const
+{
+  return data( KDGantt::EndTimeRole ).toDateTime();
+}
+

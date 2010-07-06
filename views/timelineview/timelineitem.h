@@ -1,5 +1,7 @@
 /*
   Copyright (c) 2007 Volker Krause <vkrause@kde.org>
+  Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Copyright (c) 2010 Andras Mantia <andras@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,14 +21,13 @@
 #ifndef KORG_TIMELINEITEM_H
 #define KORG_TIMELINEITEM_H
 
-#include <kdgantt1/KDGanttViewTaskItem.h>
-
 #include <Akonadi/Item>
 
 #include <KDateTime>
 
 #include <QMap>
 #include <QList>
+#include <QStandardItemModel>
 
 class KDGanttView;
 class KDCanvasPolygon;
@@ -43,10 +44,11 @@ namespace Akonadi {
 namespace KOrg {
 class TimelineSubItem;
 
-class TimelineItem : public KDGanttViewTaskItem
+class TimelineItem : public QObject
 {
+  Q_OBJECT
   public:
-    TimelineItem( const QString &label, Akonadi::Calendar *calendar, KDGanttView *parent );
+    TimelineItem( Akonadi::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent );
 
     void insertIncidence( const Akonadi::Item &incidence,
                           const KDateTime &start = KDateTime(),
@@ -55,16 +57,20 @@ class TimelineItem : public KDGanttViewTaskItem
 
     void moveItems( const Akonadi::Item &incidence, int delta, int duration );
 
+    void setColor( const QColor& color );
+
   private:
     Akonadi::Calendar *mCalendar;
-    QMap<Akonadi::Item::Id, QList<TimelineSubItem*> > mItemMap;
+    QMap<Akonadi::Item::Id, QList<QStandardItem*> > mItemMap;
+    QStandardItemModel *mModel;
+    QColor mColor;
+    uint mIndex;
 };
 
-class TimelineSubItem : public KDGanttViewTaskItem
+class TimelineSubItem : public QStandardItem
 {
   public:
-    TimelineSubItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence,
-                     TimelineItem *parent );
+    TimelineSubItem( const Akonadi::Item &incidence, TimelineItem* parent);
     ~TimelineSubItem();
 
     Akonadi::Item  incidence() const { return mIncidence; }
@@ -72,14 +78,18 @@ class TimelineSubItem : public KDGanttViewTaskItem
     KDateTime originalStart() const { return mStart; }
     void setOriginalStart( const KDateTime &dt ) { mStart = dt; }
 
-  private:
-    void showItem( bool show = true, int coordY = 0 );
+    void setStartTime( const QDateTime& dt );
+    QDateTime startTime() const;
+
+    void setEndTime( const QDateTime& dt );
+    QDateTime endTime() const;
+
+    TimelineItem *parent() { return mParent; }
 
   private:
     Akonadi::Item mIncidence;
     KDateTime mStart;
-    KDCanvasPolygon *mLeft, *mRight;
-    int mMarkerWidth;
+    TimelineItem *mParent;
 };
 
 }
