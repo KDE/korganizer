@@ -42,6 +42,12 @@ target_link_libraries(korgac
   kdepimdbusinterfaces
 	)
 
+# TODO: move this to FindQt4.cmake
+find_library( QT_QMAEMO5_LIBRARY QtMaemo5 HINTS ${QT_LIBRARY_DIR} )
+if ( QT_QMAEMO5_LIBRARY )
+  target_link_libraries( korgac ${QT_QMAEMO5_LIBRARY} )
+endif ()
+
 install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
