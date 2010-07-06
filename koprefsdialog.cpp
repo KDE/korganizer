@@ -325,7 +325,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QHBox *remindersBox = new QHBox( remindersGroupBox );
 
-      QLabel reminderLabel( i18n( "Default reminder time:" ), remindersBox );
+      QLabel *reminderLabel = new QLabel( i18n( "Default reminder time:" ), remindersBox );
 
       mReminderTimeSpin  = new KIntSpinBox( remindersBox );
       connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
@@ -338,10 +338,11 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QGridLayout *remindersLayout = new QGridLayout( remindersGroupBox );
 
+      remindersLayout->addWidget( reminderLabel, 1, 0 );
       remindersLayout->addWidget(
-        addWidBool( KOPrefs::instance()->defaultEventRemindersItem(), remindersGroupBox )->checkBox(), 1, 0 );
+        addWidBool( KOPrefs::instance()->defaultEventRemindersItem(), remindersGroupBox )->checkBox(), 2, 0 );
       remindersLayout->addWidget(
-        addWidBool( KOPrefs::instance()->defaultTodoRemindersItem(), remindersGroupBox )->checkBox(), 2, 0 );
+        addWidBool( KOPrefs::instance()->defaultTodoRemindersItem(), remindersGroupBox )->checkBox(), 3, 0 );
 
       QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                    i18n("Working Hours"),
