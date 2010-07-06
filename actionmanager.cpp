@@ -1557,10 +1557,30 @@ QPair<ResourceCalendar *, QString> ActionManager::viewSubResourceCalendar()
   return p;
 }
 
+bool ActionManager::readOnly( ResourceCalendar *res, const QString &subRes )
+{
+  if ( res && ( res->readOnly() || !res->subresourceWritable( subRes ) ) ) {
+    QString resName = res->resourceName();
+    if ( res->canHaveSubresources() ) {
+      resName = res->labelForSubresource( subRes );
+    }
+    KMessageBox::sorry(
+      dialogParent(),
+      i18n( "\"%1\" is read-only. "
+            "Please select a writable calendar before attempting to create a new item." ).
+      arg( resName ),
+      i18n( "Read-only calendar" ) );
+    return true;
+  }
+  return false;
+}
+
 void ActionManager::openEventEditor( const QString& text )
 {
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-  mCalendarView->newEvent( p.first, p.second, text );
+  if ( !readOnly( p.first, p.second ) ) {
+    mCalendarView->newEvent( p.first, p.second, text );
+  }
 }
 
 void ActionManager::openEventEditor( const QString& summary,
@@ -1679,7 +1699,9 @@ void ActionManager::openEventEditor( const QString & summary,
 void ActionManager::openTodoEditor( const QString& text )
 {
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-  mCalendarView->newTodo( p.first, p.second, text );
+  if ( !readOnly( p.first, p.second ) ) {
+    mCalendarView->newTodo( p.first, p.second, text );
+  }
 }
 
 void ActionManager::openTodoEditor( const QString& summary,
@@ -1759,7 +1781,9 @@ void ActionManager::openJournalEditor( const QString& text, const QDate& date )
 void ActionManager::openJournalEditor( const QString& text )
 {
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-  mCalendarView->newJournal( p.first, p.second, text );
+  if ( !readOnly( p.first, p.second ) ) {
+    mCalendarView->newJournal( p.first, p.second, text );
+  }
 }
 
 //TODO:
