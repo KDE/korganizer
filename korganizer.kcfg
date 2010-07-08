@@ -148,20 +148,6 @@
       <whatsthis>Enter default duration for events here. The default is used if you do not supply an end time.</whatsthis>
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
-    <entry type="Bool" key="Enable Event Reminders" name="defaultEventReminders">
-      <label>Enable reminders for new Events</label>
-      <whatsthis>Check this box if you want to enable reminders for all newly created Events. You can always turn-off the reminders in the Event editor dialog.</whatsthis>
-      <tooltip>By default, enable reminders for new events</tooltip>
-      <default>false</default>
-    </entry>
-
-    <entry type="Bool" key="Enable To-do Reminders" name="defaultTodoReminders">
-      <label>Enable reminders for new To-dos</label>
-      <whatsthis>Check this box if you want to enable reminders for all newly created To-dos. You can always turn-off the reminders in the To-do editor dialog.</whatsthis>
-      <tooltip>By default, enable reminders for new to-dos</tooltip>
-      <default>false</default>
-    </entry>
-
 
     <entry type="Int" key="Default Reminder Time" name="ReminderTime">
       <label>Default reminder time</label>
@@ -169,11 +155,31 @@
       <tooltip>Default time for reminders</tooltip>
       <default>15</default>
     </entry>
-
     <entry type="Int" key="Default Reminder Time Units" name="ReminderTimeUnits">
       <whatsthis>Enter the default reminder time units for all newly created items. The time is specified in the adjacent spinbox.</whatsthis>
       <tooltip>Default time unit for reminders</tooltip>
       <default>0</default>
+    </entry>
+    <entry type="Bool" key="Enable Default Audio File" name="defaultAudioFileReminders">
+      <label>Enable a default sound file for audio reminders</label>
+      <whatsthis>Check this box if you want to enable the specified file to be used as the default sound file for new reminders. You can always specify another file in the Advanced Reminder accessible from the Event or To-do editors.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry type="Path" key="Reminder Audio File"  name="audioFilePath">
+      <label>Default audio file</label>
+      <whatsthis>Set a file to be used as the default sound file for new reminders. You can always specify another file in the Advanced Reminder accessible from the Event or To-do editors.</whatsthis>
+    </entry>
+    <entry type="Bool" key="Enable Event Reminders" name="defaultEventReminders">
+      <label>Enable reminders for new Events</label>
+      <whatsthis>Check this box if you want to enable reminders for all newly created Events. You can always turn-off the reminders in the Event editor dialog.</whatsthis>
+      <tooltip>By default, enable reminders for new events</tooltip>
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="Enable To-do Reminders" name="defaultTodoReminders">
+      <label>Enable reminders for new To-dos</label>
+      <whatsthis>Check this box if you want to enable reminders for all newly created To-dos. You can always turn-off the reminders in the To-do editor dialog.</whatsthis>
+      <tooltip>By default, enable reminders for new to-dos</tooltip>
+      <default>false</default>
     </entry>
   </group>
 

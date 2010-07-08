@@ -59,6 +59,7 @@
 #include <kstandarddirs.h>
 #include <ksimpleconfig.h>
 #include <kholidays.h>
+#include <kurlrequester.h>
 
 #include <libkcal/calendarresources.h>
 
@@ -324,8 +325,7 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addMultiCellWidget( remindersGroupBox, 5, 5, 0, 1 );
 
       QHBox *remindersBox = new QHBox( remindersGroupBox );
-
-      QLabel *reminderLabel = new QLabel( i18n( "Default reminder time:" ), remindersBox );
+      new QLabel( i18n( "Default reminder time:" ), remindersBox );
 
       mReminderTimeSpin  = new KIntSpinBox( remindersBox );
       connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
@@ -336,13 +336,29 @@ class KOPrefsDialogTime : public KPrefsModule
       mReminderUnitsCombo->insertItem( i18n( "hour(s)" ) );
       mReminderUnitsCombo->insertItem( i18n( "day(s)" ) );
 
-      QGridLayout *remindersLayout = new QGridLayout( remindersGroupBox );
+      QHBox *audioFileRemindersBox = new QHBox( remindersGroupBox );
 
-      remindersLayout->addWidget( reminderLabel, 1, 0 );
-      remindersLayout->addWidget(
-        addWidBool( KOPrefs::instance()->defaultEventRemindersItem(), remindersGroupBox )->checkBox(), 2, 0 );
-      remindersLayout->addWidget(
-        addWidBool( KOPrefs::instance()->defaultTodoRemindersItem(), remindersGroupBox )->checkBox(), 3, 0 );
+      QCheckBox *cb = addWidBool( KOPrefs::instance()->defaultAudioFileRemindersItem(),
+                                  audioFileRemindersBox )->checkBox();
+      cb->setText( QString::null );
+
+      if ( KOPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
+        QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", "KDE-Sys-Warning.ogg");
+        KOPrefs::instance()->audioFilePathItem()->setValue( defAudioFile + "KDE-Sys-Warning.ogg"  );
+      }
+      QString filter = i18n( "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
+                             "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)" );
+      KURLRequester *rq = addWidPath( KOPrefs::instance()->audioFilePathItem(),
+                                      audioFileRemindersBox, filter )->urlRequester();
+      rq->setEnabled( cb->isChecked() );
+      connect( cb, SIGNAL(toggled(bool)),
+               rq, SLOT(setEnabled( bool)) );
+
+      QHBox *eventRemindersBox = new QHBox( remindersGroupBox );
+      addWidBool( KOPrefs::instance()->defaultEventRemindersItem(), eventRemindersBox )->checkBox();
+
+      QHBox *todoRemindersBox = new QHBox( remindersGroupBox );
+      addWidBool( KOPrefs::instance()->defaultTodoRemindersItem(), todoRemindersBox )->checkBox();
 
       QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                    i18n("Working Hours"),

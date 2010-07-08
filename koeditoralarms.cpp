@@ -241,7 +241,16 @@ KOEditorAlarms::~KOEditorAlarms()
 void KOEditorAlarms::changed()
 {
   if ( !mInitializing && mCurrentItem ) {
-    writeAlarm( mCurrentItem->alarm() );
+    KCal::Alarm *alarm = mCurrentItem->alarm();
+
+    // Based on settings, provide default sound file for audio alarms
+    if ( alarm->audioFile().isEmpty() &&
+         KOPrefs::instance()->defaultAudioFileReminders() ) {
+      alarm->setAudioFile( KOPrefs::instance()->audioFilePath() );
+      mWidget->mSoundFile->setURL( KOPrefs::instance()->audioFilePath() );
+    }
+
+    writeAlarm( alarm );
     mCurrentItem->construct();
   }
 }
