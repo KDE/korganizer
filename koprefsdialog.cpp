@@ -63,6 +63,7 @@ using MailTransport::TransportManagementWidget;
 #include <KStandardDirs>
 #include <KSystemTimeZones>
 #include <KTabWidget>
+#include <KUrlRequester>
 #include <KWindowSystem>
 
 #include <QListWidget>
@@ -70,6 +71,7 @@ using MailTransport::TransportManagementWidget;
 #include <QFormLayout>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QRadioButton>
@@ -478,10 +480,30 @@ class KOPrefsDialogTime : public KPrefsModule
         i18nc( "@item:inlistbox reminder time units in days", "day(s)" ) );
       remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
+      QCheckBox *cb = addWidBool( KCalPrefs::instance()->defaultAudioFileRemindersItem() )->checkBox();
+      cb->setText( QString::null );
+
+      if ( KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
+        QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", "KDE-Sys-Warning.ogg");
+        KCalPrefs::instance()->audioFilePathItem()->setValue( defAudioFile + "KDE-Sys-Warning.ogg"  );
+      }
+      QString filter = i18n( "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
+                             "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)" );
+      KUrlRequester *rq = addWidPath( KCalPrefs::instance()->audioFilePathItem(),
+                                      0, filter )->urlRequester();
+      rq->setEnabled( cb->isChecked() );
+
+      connect( cb, SIGNAL(toggled(bool)), rq, SLOT(setEnabled( bool)) );
+
+      QHBoxLayout *audioFileRemindersBox = new QHBoxLayout( remindersGroupBox );
+      audioFileRemindersBox->addWidget( cb );
+      audioFileRemindersBox->addWidget( rq );
+
+      remindersLayout->addLayout( audioFileRemindersBox, 1, 0 );
       remindersLayout->addWidget(
-        addWidBool( KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 1, 0 );
+          addWidBool( KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 2, 0 );
       remindersLayout->addWidget(
-        addWidBool( KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 2, 0 );
+          addWidBool( KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 3, 0 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
