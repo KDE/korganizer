@@ -129,7 +129,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     };
 
     void setCalendar( Akonadi::Calendar * );
-    Akonadi::Calendar *calendar();
+    Akonadi::Calendar *calendar() const;
 
     History *history() const { return mHistory; }
 

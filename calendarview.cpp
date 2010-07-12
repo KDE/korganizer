@@ -314,7 +314,7 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
            mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
 }
 
-Akonadi::Calendar *CalendarView::calendar()
+Akonadi::Calendar *CalendarView::calendar() const
 {
   return mCalendar;
 }
