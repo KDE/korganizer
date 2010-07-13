@@ -24,6 +24,8 @@
 #ifndef KORG_HISTORY_H
 #define KORG_HISTORY_H
 
+#include <kcalcore/incidence.h>
+
 #include <akonadi/kcal/incidencechanger.h>
 
 #include <Akonadi/Item>
@@ -104,7 +106,7 @@ class History : public QObject
         void setItemId( Akonadi::Item::Id );
         Akonadi::Item::Id itemId();
 
-        void removeRelations( const KCalCore::Incidence::Ptr ::Ptr &incidence );
+        void removeRelations( const KCalCore::Incidence::Ptr &incidence );
 
       protected:
         Akonadi::Calendar *mCalendar;
@@ -124,7 +126,7 @@ class History : public QObject
         QString text();
 
       private:
-        KCalCore::Incidence::Ptr ::Ptr mIncidence;
+        KCalCore::Incidence::Ptr mIncidence;
         Akonadi::Collection mCollection;
         QString mParentUid;
     };
@@ -140,7 +142,7 @@ class History : public QObject
 
         QString text();
       private:
-        KCalCore::Incidence::Ptr ::Ptr mIncidence;
+        KCalCore::Incidence::Ptr mIncidence;
         Akonadi::Collection mCollection;
         QString mParentUid;
     };
@@ -160,8 +162,8 @@ class History : public QObject
         QString text();
 
       private:
-        KCalCore::Incidence::Ptr ::Ptr mOldIncidence;
-        KCalCore::Incidence::Ptr ::Ptr mNewIncidence;
+        KCalCore::Incidence::Ptr mOldIncidence;
+        KCalCore::Incidence::Ptr mNewIncidence;
     };
 
     class MultiEntry : public Entry
