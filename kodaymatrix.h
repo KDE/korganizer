@@ -38,7 +38,7 @@ namespace KCal {
 namespace Akonadi {
   class Item;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 class QEvent;
 class QMouseEvent;
@@ -212,7 +212,7 @@ class KODayMatrix: public QFrame, public Akonadi::Calendar::CalendarObserver
      *
      * @param daylist list of days that have been selected by the user
      */
-    void selected( const KCal::DateList &daylist );
+    void selected( const KCalCore::DateList &daylist );
 
     void newEventSignal( const QDate &date );
     void newTodoSignal( const QDate &date );

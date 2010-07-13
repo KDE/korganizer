@@ -27,14 +27,14 @@
 #define SEARCHDIALOG_H
 
 #include "ui_searchdialog_base.h"
-#include <kcal/incidence.h>
+#include <kcalcore/incidence.h>
 #include <KDialog>
 
 namespace Akonadi {
   class Item;
 }
 
-using namespace KCal;
+using namespace KCalCore;
 
 class CalendarView;
 class KOListView;

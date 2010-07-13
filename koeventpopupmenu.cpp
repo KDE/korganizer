@@ -34,13 +34,13 @@
 
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/Incidence>
+#include <KCal/incidence.h>
 
 #include <KActionCollection>
 #include <KLocale>
 
 using namespace Akonadi;
-using namespace KCal;
+using namespace KCalCore;
 
 KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
   : QMenu( eventview ), mEventview( eventview )
@@ -160,9 +160,9 @@ void KOEventPopupMenu::print(bool preview)
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   //Item::List selectedIncidences;
-  KCal::ListBase<KCal::Incidence> selectedIncidences;
-  Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
-  selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
+  KCalCore::ListBase<KCalCore::Incidence::Ptr > selectedIncidences;
+  Q_ASSERT( mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr ::Ptr>() );
+  selectedIncidences.append( mCurrentIncidence.payload<KCalCore::Incidence::Ptr ::Ptr>().get() );
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, preview );

@@ -37,7 +37,7 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/calfilter.h>
+#include <kcalcore/calfilter.h>
 
 #include <kcolorscheme.h>
 #include <kcombobox.h>
@@ -61,7 +61,7 @@
 #include <QFontMetrics>
 #include <QToolTip>
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace KPIM;
 using namespace IncidenceEditors;
 

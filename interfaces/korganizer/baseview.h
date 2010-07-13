@@ -25,7 +25,7 @@
 #include "printplugin.h"
 #include "korganizer/korganizer_export.h"
 
-#include <kcal/event.h>
+#include <kcalcore/event.h>
 #include <akonadi/kcal/incidencechanger.h>
 
 #include <klocale.h>
@@ -106,7 +106,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       probably only select a single event at a time, but some may be able
       to select more than one.
     */
-    virtual KCal::DateList selectedIncidenceDates() = 0;
+    virtual KCalCore::DateList selectedIncidenceDates() = 0;
 
     /**
        Returns the start of the selection, or an invalid QDateTime if there is no selection
@@ -381,7 +381,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * sets the kcal filter on the calendarSearch object, this method can be removed from here when
      * calendarsearch stuff is removed from baseview, do we need a calendarsearch object per view?
      */
-    void setFilter( KCal::CalFilter *filter );
+    void setFilter( KCalCore::CalFilter *filter );
 
   protected:
     /**

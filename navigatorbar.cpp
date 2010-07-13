@@ -126,7 +126,7 @@ void NavigatorBar::showButtons( bool left, bool right )
   }
 }
 
-void NavigatorBar::selectDates( const KCal::DateList &dateList )
+void NavigatorBar::selectDates( const KCalCore::DateList &dateList )
 {
   if ( dateList.count() > 0 ) {
     mDate = dateList.first();

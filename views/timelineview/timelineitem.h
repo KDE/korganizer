@@ -35,7 +35,7 @@ class KDCanvasPolygon;
 namespace KCal {
   class Incidence;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 namespace Akonadi {
   class Calendar;

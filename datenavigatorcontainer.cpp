@@ -68,8 +68,8 @@ DateNavigatorContainer::~DateNavigatorContainer()
 
 void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
 {
-  connect( v, SIGNAL(datesSelected(const KCal::DateList &)),
-           SIGNAL(datesSelected(const KCal::DateList &)) );
+  connect( v, SIGNAL(datesSelected(const KCalCore::DateList &)),
+           SIGNAL(datesSelected(const KCalCore::DateList &)) );
 
   connect( v, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
            SIGNAL(incidenceDropped(Akonadi::Item,QDate)) );

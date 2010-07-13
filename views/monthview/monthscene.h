@@ -47,7 +47,7 @@ namespace Akonadi {
 namespace KCal {
   class Incidence;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 namespace KOrg {
 

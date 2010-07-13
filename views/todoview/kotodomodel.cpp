@@ -28,12 +28,12 @@
 #include "kohelper.h"
 
 #include <KCal/CalFormat>
-#include <KCal/Incidence>
+#include <KCal/incidence.h>
 #include <KCal/IncidenceFormatter>
-#include <KCal/Todo>
+#include <KCal/todo.h>
 #ifndef KORG_NODND
-#include <KCal/DndFactory>
-#include <KCal/ICalDrag>
+#include <KCal/dndfactory.h>
+#include <KCal/icaldrag.h>
 #include <KCal/VCalDrag>
 #endif
 

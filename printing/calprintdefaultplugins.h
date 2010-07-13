@@ -36,7 +36,7 @@
 
 #include <KLocale>
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace KOrg;
 
 class CalPrintIncidence : public CalPrintPluginBase

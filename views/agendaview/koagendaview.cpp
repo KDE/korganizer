@@ -43,7 +43,7 @@
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/CalFilter>
+#include <KCal/calfilter.h>
 #include <KCal/CalFormat>
 
 #include <KCalendarSystem>
@@ -308,8 +308,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, KOEventPopupMenu *popup,
            SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)) );
 
   // rescheduling of todos by d'n'd
-  connect( agenda, SIGNAL(droppedToDos(QList<KCal::Todo::Ptr>,const QPoint &,bool)),
-           SLOT(slotTodosDropped(QList<KCal::Todo::Ptr>,const QPoint &,bool)) );
+  connect( agenda, SIGNAL(droppedToDos(QList<KCalCore::Todo::Ptr>,const QPoint &,bool)),
+           SLOT(slotTodosDropped(QList<KCalCore::Todo::Ptr>,const QPoint &,bool)) );
   connect( agenda, SIGNAL(droppedToDos(QList<KUrl>,const QPoint &,bool)),
            SLOT(slotTodosDropped(QList<KUrl>,const QPoint &,bool)) );
 
@@ -1606,7 +1606,7 @@ void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint
       todo->setDtDue( newTime );
       todo->setAllDay( allDay );
       todo->setHasDueDate( true );
-      todo->setUid( KCal::CalFormat::createUniqueId() );
+      todo->setUid( KCalCore::CalFormat::createUniqueId() );
       Akonadi::Collection selectedCollection;
       int dialogCode = 0;
       if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {

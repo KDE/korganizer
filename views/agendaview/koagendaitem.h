@@ -43,7 +43,7 @@ namespace Akonadi {
   class Calendar;
 }
 
-using namespace KCal;
+using namespace KCalCore;
 
 class QDragEnterEvent;
 class QDropEvent;

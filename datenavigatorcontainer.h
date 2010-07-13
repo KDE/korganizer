@@ -33,7 +33,7 @@
 #include <QFrame>
 #include <QList>
 
-using namespace KCal;
+using namespace KCalCore;
 
 class KDateNavigator;
 class QDate;
@@ -64,7 +64,7 @@ class DateNavigatorContainer: public QFrame
        from -1, it has the month that the kdatenavigator should show in case
        of ambiguity
     */
-    void selectDates( const KCal::DateList &, const QDate &preferredMonth = QDate() );
+    void selectDates( const KCalCore::DateList &, const QDate &preferredMonth = QDate() );
 
     void updateView();
     void updateConfig();
@@ -75,7 +75,7 @@ class DateNavigatorContainer: public QFrame
     void goNextMonth();
 
   signals:
-    void datesSelected( const KCal::DateList & );
+    void datesSelected( const KCalCore::DateList & );
     void incidenceDropped( const Akonadi::Item &, const QDate & );
     void incidenceDroppedMove( const Akonadi::Item &, const QDate & );
     void newEventSignal( const QDate & );

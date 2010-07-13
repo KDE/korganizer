@@ -28,7 +28,7 @@
 
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <kcal/event.h>
+#include <kcalcore/event.h>
 
 #include <Akonadi/Item>
 
@@ -43,7 +43,7 @@ namespace Akonadi {
 namespace KCal {
   class Event;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 /**
  * This class handles expiring and archiving of events.

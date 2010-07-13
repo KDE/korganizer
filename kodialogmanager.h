@@ -86,7 +86,7 @@ class KODialogManager : public QObject
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog( QList<KCal::CalFilter*> *filters );
+    void showFilterEditDialog( QList<KCalCore::CalFilter*> *filters );
 
   private:
     void createCategoryEditor();

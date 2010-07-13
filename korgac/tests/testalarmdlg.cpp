@@ -24,8 +24,8 @@
 
 #include "alarmdialog.h"
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
+#include <kcalcore/event.h>
+#include <kcalcore/todo.h>
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kdebug.h>
@@ -35,7 +35,7 @@
 #include <akonadi/item.h>
 #include <QWidget>
 
-using namespace KCal;
+using namespace KCalCore;
 
 template<class T> Akonadi::Item incidenceToItem(T* incidence)
 {

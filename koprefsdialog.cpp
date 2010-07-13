@@ -34,7 +34,7 @@
 
 #include <libkdepim/ktimeedit.h>
 
-#include <KCal/Calendar>
+#include <KCal/calendar.h>
 
 #include <KHolidays/Holidays>
 using namespace KHolidays;

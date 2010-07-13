@@ -30,11 +30,11 @@
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/IncidenceFormatter>
-#include <KCal/Todo>
+#include <KCal/todo.h>
 
 #include <QBoxLayout>
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace Akonadi;
 
 void WhatsNextTextBrowser::setSource( const QUrl &name )

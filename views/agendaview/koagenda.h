@@ -25,7 +25,7 @@
 #define KOAGENDA_H
 
 #include "koeventview.h"
-#include <kcal/incidence.h>
+#include <kcalcore/incidence.h>
 
 #include <Akonadi/Item>
 
@@ -59,7 +59,7 @@ namespace KCal {
   class Event;
   class Todo;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 class MarcusBains : public QFrame
 {
@@ -211,7 +211,7 @@ class KOAgenda : public Q3ScrollView
     void upperYChanged( int );
 
     void startDragSignal( const Akonadi::Item & );
-    void droppedToDos( const QList<KCal::Todo::Ptr> &todo, const QPoint &gpos, bool allDay );
+    void droppedToDos( const QList<KCalCore::Todo::Ptr> &todo, const QPoint &gpos, bool allDay );
     void droppedToDos( const QList<KUrl> &todo, const QPoint &gpos, bool allDay );
 
     void enableAgendaUpdate( bool enable );

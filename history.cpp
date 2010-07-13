@@ -30,14 +30,14 @@
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <KCal/Incidence>
+#include <KCal/incidence.h>
 #include <Akonadi/Item>
 
 #include <klocale.h>
 
 #include <QWidget>
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace KOrg;
 using namespace Akonadi;
 
@@ -380,14 +380,14 @@ History::EntryEdit::~EntryEdit()
 bool History::EntryEdit::undo()
 {
   Akonadi::Item item = mCalendar->incidence( mItemId );
-  item.setPayload<KCal::Incidence::Ptr>( mOldIncidence );
+  item.setPayload<KCalCore::Incidence::Ptr ::Ptr>( mOldIncidence );
   return mChanger->changeIncidence( mNewIncidence, item, Akonadi::IncidenceChanger::UNKNOWN_MODIFIED, 0 );
 }
 
 bool History::EntryEdit::redo()
 {
   Akonadi::Item item = mCalendar->incidence( mItemId );
-  item.setPayload<KCal::Incidence::Ptr>( mNewIncidence );
+  item.setPayload<KCalCore::Incidence::Ptr ::Ptr>( mNewIncidence );
   return mChanger->changeIncidence( mOldIncidence, item, Akonadi::IncidenceChanger::UNKNOWN_MODIFIED, 0 );
 }
 

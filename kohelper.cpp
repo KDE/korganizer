@@ -69,7 +69,7 @@ bool KOHelper::isStandardCalendar( const Akonadi::Entity::Id &id )
 
 
 void KOHelper::showSaveIncidenceErrorMsg( QWidget *parent,
-                                          const KCal::Incidence::Ptr &incidence )
+                                          const KCalCore::Incidence::Ptr ::Ptr &incidence )
 {
   KMessageBox::sorry(
     parent,

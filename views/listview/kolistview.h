@@ -30,12 +30,12 @@
 
 #include <incidenceeditors/customlistviewitem.h>
 
-#include <KCal/Incidence>
+#include <KCal/incidence.h>
 
 #include <QHash>
 #include <QList>
 
-using namespace KCal;
+using namespace KCalCore;
 
 typedef IncidenceEditors::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
@@ -109,7 +109,7 @@ class KOListView : public KOEventView
 
   private:
     KOListViewItem *getItemForIncidence( const Akonadi::Item & );
-    KCal::Incidence::Ptr incidenceForId( const Akonadi::Item::Id &id ) const;
+    KCalCore::Incidence::Ptr ::Ptr incidenceForId( const Akonadi::Item::Id &id ) const;
 
   private:
     class ListItemVisitor;

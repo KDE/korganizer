@@ -35,7 +35,7 @@ namespace KCal {
   class Incidence;
   class Todo;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 namespace Akonadi {
   class Calendar;
@@ -167,7 +167,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param todo the todo that will be checked
      */
-    bool isInHierarchyLoop( const KCal::Todo *todo ) const;
+    bool isInHierarchyLoop( const KCalCore::Todo::Ptr todo ) const;
 
     /** Insert a todo at the right place in the todo tree.
      *

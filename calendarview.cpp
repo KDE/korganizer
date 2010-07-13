@@ -73,13 +73,13 @@
 #include <akonadi/kcal/incidenceviewer.h>
 #include <akonadi/kcal/kcalprefs.h>
 
-#include <KCal/Calendar>
-#include <KCal/CalFilter>
-#include <KCal/FileStorage>
-#include <KCal/FreeBusy>
-#include <KCal/ICalDrag>
-#include <KCal/ICalFormat>
-#include <KCal/VCalFormat>
+#include <KCal/calendar.h>
+#include <KCal/calfilter.h>
+#include <KCal/filestorage.h>
+#include <KCal/freebusy.h>
+#include <KCal/icaldrag.h>
+#include <KCal/icalformat.h>
+#include <KCal/vcalformat.h>
 
 #include <KHolidays/Holidays>
 
@@ -161,8 +161,8 @@ CalendarView::CalendarView( QWidget *parent )
   CollectionPropertiesDialog::registerPage( new CollectionGeneralPageFactory() );
 
   // Signals emited by mDateNavigator
-  connect( mDateNavigator, SIGNAL(datesSelected(const KCal::DateList&,const QDate&)),
-           SLOT(showDates(const KCal::DateList&,const QDate&)) );
+  connect( mDateNavigator, SIGNAL(datesSelected(const KCalCore::DateList&,const QDate&)),
+           SLOT(showDates(const KCalCore::DateList&,const QDate&)) );
 
   connect( mDateNavigatorContainer, SIGNAL(newEventSignal(const QDate &)),
            SLOT(newEvent(const QDate &)) );
@@ -208,8 +208,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(goNext()),
            mDateNavigator, SLOT(selectNext()) );
 
-  connect( mDateNavigatorContainer, SIGNAL(datesSelected(const KCal::DateList &)),
-           mDateNavigator, SLOT(selectDates(const KCal::DateList &)) );
+  connect( mDateNavigatorContainer, SIGNAL(datesSelected(const KCalCore::DateList &)),
+           mDateNavigator, SLOT(selectDates(const KCalCore::DateList &)) );
 
   connect( mDateNavigatorContainer, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
            SLOT(addIncidenceOn(Akonadi::Item,QDate)) );
@@ -307,8 +307,8 @@ void CalendarView::setIncidenceChanger( IncidenceChanger *changer )
   connect( mChanger, SIGNAL(incidenceDeleteFinished(Akonadi::Item,bool)),
            this, SLOT(incidenceDeleteFinished(Akonadi::Item,bool)) );
 
-  connect( mChanger, SIGNAL(schedule(KCal::iTIPMethod,Akonadi::Item)),
-           this, SLOT(schedule(KCal::iTIPMethod,Akonadi::Item)) );
+  connect( mChanger, SIGNAL(schedule(KCalCore::iTIPMethod,Akonadi::Item)),
+           this, SLOT(schedule(KCalCore::iTIPMethod,Akonadi::Item)) );
 
   connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
            mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
@@ -544,7 +544,7 @@ void CalendarView::readFilterSettings( KConfig *config )
     KConfigGroup filterConfig( config, "Filter_" + (*it) );
     filter->setCriteria( filterConfig.readEntry( "Criteria", 0 ) );
     filter->setCategoryList( filterConfig.readEntry( "CategoryList", QStringList() ) );
-    if ( filter->criteria() & KCal::CalFilter::HideNoMatchingAttendeeTodos ) {
+    if ( filter->criteria() & KCalCore::CalFilter::HideNoMatchingAttendeeTodos ) {
       filter->setEmailList( KCalPrefs::instance()->allEmails() );
     }
     filter->setCompletedTimeSpan( filterConfig.readEntry( "HideTodoDays", 0 ) );
@@ -1491,9 +1491,9 @@ void CalendarView::toggleAlarm( const Item &item )
       break;
     }
     if ( incidence->type() == "Event" ) {
-      alm->setStartOffset( KCal::Duration( -duration ) );
+      alm->setStartOffset( KCalCore::Duration( -duration ) );
     } else {
-      alm->setEndOffset( KCal::Duration( -duration ) );
+      alm->setEndOffset( KCalCore::Duration( -duration ) );
     }
   }
   mChanger->changeIncidence( oldincidence, item, IncidenceChanger::ALARM_MODIFIED, this );
@@ -1536,12 +1536,12 @@ void CalendarView::copyIncidenceToResource( const Item &item, const QString &res
     return;
   }
 
-  KCal::CalendarResources *const resources = KOrg::StdCalendar::self();
-  KCal::CalendarResourceManager *const manager = resources->resourceManager();
+  KCalCore::CalendarResources *const resources = KOrg::StdCalendar::self();
+  KCalCore::CalendarResourceManager *const manager = resources->resourceManager();
 
   // Find the resource the incidence should be copied to
   ResourceCalendar *newCal = 0;
-  KCal::CalendarResourceManager::iterator it;
+  KCalCore::CalendarResourceManager::iterator it;
   for ( it = manager->begin(); it != manager->end(); ++it ) {
     ResourceCalendar *const resource = *it;
     if ( resource->identifier() == resourceId ) {
@@ -1556,16 +1556,16 @@ void CalendarView::copyIncidenceToResource( const Item &item, const QString &res
   // Clone a new Incidence from the selected Incidence and give it a new Uid.
   Incidence *newInc;
   if ( incidence->type() == "Event" ) {
-    KCal::Event *nEvent = static_cast<KCal::Event *>( incidence )->clone();
-    nEvent->setUid( KCal::CalFormat::createUniqueId() );
+    KCalCore::Event::Ptr nEvent = static_cast<KCalCore::Event::Ptr >( incidence )->clone();
+    nEvent->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nEvent;
   } else if ( incidence->type() == "Todo" ) {
-    KCal::Todo *nTodo = static_cast<KCal::Todo *>( incidence )->clone();
-    nTodo->setUid( KCal::CalFormat::createUniqueId() );
+    KCalCore::Todo::Ptr nTodo = static_cast<KCalCore::Todo::Ptr >( incidence )->clone();
+    nTodo->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nTodo;
   } else if ( incidence->type() == "Journal" ) {
-    KCal::Journal *nJournal = static_cast<KCal::Journal *>( incidence )->clone();
-    nJournal->setUid( KCal::CalFormat::createUniqueId() );
+    KCalCore::Journal::Ptr nJournal = static_cast<KCalCore::Journal::Ptr >( incidence )->clone();
+    nJournal->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nJournal;
   } else {
     kWarning() << "Trying to copy an incidence type that cannot be copied";
@@ -1604,12 +1604,12 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
     return;
   }
 
-  KCal::CalendarResources *const resources = KOrg::StdCalendar::self();
-  KCal::CalendarResourceManager *const manager = resources->resourceManager();
+  KCalCore::CalendarResources *const resources = KOrg::StdCalendar::self();
+  KCalCore::CalendarResourceManager *const manager = resources->resourceManager();
 
   // Find the resource the incidence should be moved to
   ResourceCalendar *newCal = 0;
-  KCal::CalendarResourceManager::iterator it;
+  KCalCore::CalendarResourceManager::iterator it;
   for ( it = manager->begin(); it != manager->end(); ++it ) {
     ResourceCalendar *const resource = *it;
     if ( resource->identifier() == resourceId ) {
@@ -1624,16 +1624,16 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
   // Clone a new Incidence from the selected Incidence and give it a new Uid.
   Incidence *newInc;
   if ( incidence->type() == "Event" ) {
-    KCal::Event *nEvent = static_cast<KCal::Event *>( incidence )->clone();
-    nEvent->setUid( KCal::CalFormat::createUniqueId() );
+    KCalCore::Event::Ptr nEvent = static_cast<KCalCore::Event::Ptr >( incidence )->clone();
+    nEvent->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nEvent;
   } else if ( incidence->type() == "Todo" ) {
-    KCal::Todo *nTodo = static_cast<KCal::Todo *>( incidence )->clone();
-    nTodo->setUid( KCal::CalFormat::createUniqueId() );
+    KCalCore::Todo::Ptr nTodo = static_cast<KCalCore::Todo::Ptr >( incidence )->clone();
+    nTodo->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nTodo;
   } else if ( incidence->type() == "Journal" ) {
-    KCal::Journal *nJournal = static_cast<KCal::Journal *>( incidence )->clone();
-    nJournal->setUid( KCal::CalFormat::createUniqueId() );
+    KCalCore::Journal::Ptr nJournal = static_cast<KCalCore::Journal::Ptr >( incidence )->clone();
+    nJournal->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nJournal;
   } else {
     kWarning() << "Trying to move an incidence type that cannot be moved";
@@ -1948,7 +1948,7 @@ void CalendarView::uploadFreeBusy()
   Akonadi::Groupware::instance()->freeBusyManager()->publishFreeBusy( this );
 }
 
-void CalendarView::schedule( KCal::iTIPMethod method, const Item &item )
+void CalendarView::schedule( KCalCore::iTIPMethod method, const Item &item )
 {
   Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
@@ -2029,8 +2029,8 @@ void CalendarView::print()
     printType = currentView->printType();
     Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
     foreach (const Akonadi::Item &item, selectedViewIncidences ) {
-      if (item.hasPayload<KCal::Incidence::Ptr>() ) {
-        selectedIncidences.append( item.payload<KCal::Incidence::Ptr>().get() );
+      if (item.hasPayload<KCalCore::Incidence::Ptr ::Ptr>() ) {
+        selectedIncidences.append( item.payload<KCalCore::Incidence::Ptr ::Ptr>().get() );
       }
     }
   }
@@ -2052,8 +2052,8 @@ void CalendarView::printPreview()
     printType = currentView->printType();
     Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
     foreach (const Akonadi::Item &item, selectedViewIncidences ) {
-      if (item.hasPayload<KCal::Incidence::Ptr>() ) {
-        selectedIncidences.append( item.payload<KCal::Incidence::Ptr>().get() );
+      if (item.hasPayload<KCalCore::Incidence::Ptr ::Ptr>() ) {
+        selectedIncidences.append( item.payload<KCalCore::Incidence::Ptr ::Ptr>().get() );
       }
     }
   }

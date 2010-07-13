@@ -30,7 +30,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCal/ICalDrag>
+#include <KCal/icaldrag.h>
 #include <KCal/VCalDrag>
 
 #include <akonadi/kcal/calendar.h>
@@ -53,7 +53,7 @@
 // ============================================================================
 
 using namespace Akonadi;
-using namespace KCal;
+using namespace KCalCore;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;

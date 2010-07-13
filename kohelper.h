@@ -26,7 +26,7 @@
 
 #include "korganizer_export.h"
 
-#include <KCal/Incidence>
+#include <KCal/incidence.h>
 
 #include <Akonadi/Entity>
 
@@ -74,7 +74,7 @@ namespace KOHelper
   */
   KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Entity::Id &id );
 
-  KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg( QWidget *parent, const KCal::Incidence::Ptr &incidence );
+  KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg( QWidget *parent, const KCalCore::Incidence::Ptr ::Ptr &incidence );
 }
 
 #endif

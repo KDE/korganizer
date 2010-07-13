@@ -29,7 +29,7 @@
 namespace KCal {
   class Attendee;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 class PublishDialog_base;
 

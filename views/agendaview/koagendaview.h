@@ -53,7 +53,7 @@ class QMenu;
 class QPaintEvent;
 class QSplitter;
 
-using namespace KCal;
+using namespace KCalCore;
 
 namespace Akonadi {
   class CollectionSelection;
@@ -148,7 +148,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     KOAgenda *agenda() const { return mAgenda; }
     QSplitter *splitter() const { return mSplitterAgenda; }
 
-    /* reimplemented from KCal::Calendar::CalendarObserver */
+    /* reimplemented from KCalCore::Calendar::CalendarObserver */
     void calendarIncidenceAdded( const Akonadi::Item &incidence );
     void calendarIncidenceChanged( const Akonadi::Item &incidence );
     void calendarIncidenceDeleted( const Akonadi::Item &incidence );
@@ -175,7 +175,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
 
     /** reschedule the todo  to the given x- and y- coordinates.
         Third parameter determines all-day (no time specified) */
-    void slotTodosDropped( const QList<KCal::Todo::Ptr> & todos, const QPoint &, bool );
+    void slotTodosDropped( const QList<KCalCore::Todo::Ptr> & todos, const QPoint &, bool );
     void slotTodosDropped( const QList<KUrl>& todos, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );

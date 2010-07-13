@@ -86,8 +86,8 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   mDayMatrix = new KODayMatrix( this );
   mDayMatrix->setObjectName( "KDateNavigator::dayMatrix" );
 
-  connect( mDayMatrix, SIGNAL(selected(const KCal::DateList &)),
-           SIGNAL(datesSelected(const KCal::DateList &)) );
+  connect( mDayMatrix, SIGNAL(selected(const KCalCore::DateList &)),
+           SIGNAL(datesSelected(const KCalCore::DateList &)) );
 
   connect( mDayMatrix, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
            SIGNAL(incidenceDropped(Akonadi::Item,QDate)) );
@@ -125,7 +125,7 @@ void KDateNavigator::setBaseDate( const QDate &date )
     updateView();
 
     // Use the base date to show the monthname and year in the header
-    KCal::DateList dates;
+    KCalCore::DateList dates;
     dates.append( date );
     mNavigatorBar->selectDates( dates );
 

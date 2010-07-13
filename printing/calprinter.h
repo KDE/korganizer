@@ -39,7 +39,7 @@ namespace Akonadi {
   class Calendar;
 }
 
-using namespace KCal;
+using namespace KCalCore;
 
 class QButtonGroup;
 class QStackedWidget;

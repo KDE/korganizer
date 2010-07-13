@@ -133,7 +133,7 @@ class KOViewManager : public QObject
 
     // sets filter on calendarsearch based views, this method can be removed from here when
     // calendarsearch stuff is removed from baseview, do we need a calendarsearch object per view?
-    void setFilter( KCal::CalFilter *filter );
+    void setFilter( KCalCore::CalFilter *filter );
 
   signals:
     void configChanged();

@@ -32,8 +32,8 @@
 
 #include <akonadi/kcal/calendar.h>
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
+#include <kcalcore/event.h>
+#include <kcalcore/todo.h>
 
 #include <kdatetime.h>
 
@@ -44,7 +44,7 @@
 class PrintCellItem;
 class QWidget;
 
-using namespace KCal;
+using namespace KCalCore;
 
 #define PORTRAIT_HEADER_HEIGHT 72   // header height, for portrait orientation
 #define LANDSCAPE_HEADER_HEIGHT 54  // header height, for landscape orientation

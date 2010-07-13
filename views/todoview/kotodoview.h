@@ -43,7 +43,7 @@ namespace KPIM {
   class KDatePickerPopup;
 }
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace KOrg;
 
 class QMenu;
@@ -140,7 +140,7 @@ class KOTodoView : public BaseView
 
     /** Creates a new todo with the given text as summary under the given parent */
     void addTodo( const QString &summary,
-                  const KCal::Todo::Ptr &parent = KCal::Todo::Ptr(),
+                  const KCalCore::Todo::Ptr &parent = KCalCore::Todo::Ptr(),
                   const QStringList &categories = QStringList() );
 
     KOTodoViewView *mView;

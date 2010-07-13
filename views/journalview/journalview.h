@@ -28,8 +28,8 @@
 //
 // Widget showing one Journal entry
 
-#include <kcal/journal.h>
-#include <kcal/listbase.h>
+#include <kcalcore/journal.h>
+#include <kcalcore/listbase.h>
 #include <kvbox.h>
 
 #include <QDate>
@@ -49,7 +49,7 @@ namespace Akonadi {
   class IncidenceChanger;
 }
 
-using namespace KCal;
+using namespace KCalCore;
 
 class JournalView : public QWidget
 {

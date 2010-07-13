@@ -46,7 +46,7 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
-#include <KCal/FileStorage>
+#include <KCal/filestorage.h>
 
 #include <KMime/KMimeMessage>
 
@@ -1654,7 +1654,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
   //kDebug(5850) << "ActionManager::processIncidenceSelection()";
   Q_UNUSED( date );
 
-  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
+  const KCalCore::Incidence::Ptr ::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     enableIncidenceActions( false );
     return;

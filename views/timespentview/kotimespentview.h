@@ -49,9 +49,9 @@ class KOTimeSpentView : public KOrg::BaseView
     {
       return Akonadi::Item::List();
     }
-    KCal::DateList selectedIncidenceDates()
+    KCalCore::DateList selectedIncidenceDates()
     {
-      return KCal::DateList();
+      return KCalCore::DateList();
     }
 
   public slots:

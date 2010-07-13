@@ -28,8 +28,8 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
+#include <kcalcore/event.h>
+#include <kcalcore/todo.h>
 #include <akonadi/kcal/calendar.h>
 
 #include <kconfig.h>

@@ -60,7 +60,7 @@ namespace KOrg {
   class History;
 }
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace KOrg;
 
 class KVBox;
@@ -596,7 +596,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
     void showErrorMessage( const QString & );
-    void schedule( KCal::iTIPMethod, const Akonadi::Item &incidence );
+    void schedule( KCalCore::iTIPMethod, const Akonadi::Item &incidence );
     void addIncidenceOn( const Akonadi::Item &incidence, const QDate & );
     void moveIncidenceTo( const Akonadi::Item &incidence, const QDate & );
     void filterActivated( int filterNum );
@@ -616,7 +616,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         preferredMonth is useful when the datelist crosses months, if valid,
         any month-like component should honour this
     */
-    void showDates( const KCal::DateList &, const QDate &preferredMonth = QDate() );
+    void showDates( const KCalCore::DateList &, const QDate &preferredMonth = QDate() );
 
   public:
     int msgCalModified();

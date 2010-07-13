@@ -29,10 +29,10 @@
 #include "korganizer_interface.h"
 
 #include <kcalprefs.h>
-#include <KCal/Event>
-#include <KCal/Incidence>
+#include <KCal/event.h>
+#include <KCal/incidence.h>
 #include <KCal/IncidenceFormatter>
-#include <KCal/Todo>
+#include <KCal/todo.h>
 
 #include <KPIMIdentities/Identity>
 #include <KPIMIdentities/IdentityManager>
@@ -62,7 +62,7 @@
 #include <phonon/mediaobject.h>
 
 using namespace KPIMIdentities;
-using namespace KCal;
+using namespace KCalCore;
 
 static int defSuspendVal = 5;
 static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks

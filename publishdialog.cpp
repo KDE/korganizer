@@ -29,8 +29,8 @@
 #include "publishdialog.h"
 
 #include <akonadi/contact/emailaddressselectiondialog.h>
-#include <kcal/attendee.h>
-#include <kcal/person.h>
+#include <kcalcore/attendee.h>
+#include <kcalcore/person.h>
 #include <kpimutils/email.h>
 
 #include <klineedit.h>

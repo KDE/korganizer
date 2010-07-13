@@ -52,7 +52,7 @@
 using namespace Akonadi;
 using namespace KOrg;
 using namespace KPIM;
-using namespace KCal;
+using namespace KCalCore;
 using namespace IncidenceEditors;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.

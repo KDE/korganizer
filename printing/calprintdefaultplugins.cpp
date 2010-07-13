@@ -32,7 +32,7 @@
 #include <akonadi/kcal/utils.h>
 
 #include <kcalprefs.h>
-#include <KCal/Todo>
+#include <KCal/todo.h>
 #include <KCal/IncidenceFormatter>
 
 #include <KCalendarSystem>
@@ -299,7 +299,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     if ( (*it)->recurs() ) {
       QRect recurBox( timesBox.left() + padding(), h + padding(),
                       timesBox.right() - padding(), lineHeight );
-      KCal::Recurrence *recurs = (*it)->recurrence();
+      KCalCore::Recurrence *recurs = (*it)->recurrence();
       QString displayString = IncidenceFormatter::recurrenceString((*it));
       // exception dates
       QString exceptString;
@@ -328,7 +328,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       cap = i18np( "Reminder: ", "%1 reminders: ", alarms.count() );
 
       QStringList alarmStrings;
-      KCal::Alarm::List::ConstIterator it;
+      KCalCore::Alarm::List::ConstIterator it;
       for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
         Alarm *alarm = *it;
 

@@ -47,8 +47,8 @@
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/CalFormat>
-#include <KCal/Incidence>
-#include <KCal/Todo>
+#include <KCal/incidence.h>
+#include <KCal/todo.h>
 
 #include <QCheckBox>
 #include <QGridLayout>
@@ -445,7 +445,7 @@ void KOTodoView::addTodo( const QString &summary,
 void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 {
   if ( modifiers == Qt::NoModifier ) {
-    /*const QModelIndex index = */ addTodo( mQuickAdd->text(), KCal::Todo::Ptr(), mProxyModel->categories() );
+    /*const QModelIndex index = */ addTodo( mQuickAdd->text(), KCalCore::Todo::Ptr(), mProxyModel->categories() );
 
 #ifdef AKONADI_PORT_DISABLED // the todo is added asynchronously now, so we have to wait until the new item is actually added before selecting the item
 

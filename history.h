@@ -29,7 +29,7 @@
 #include <Akonadi/Item>
 #include <Akonadi/Collection>
 
-#include <KCal/Incidence>
+#include <KCal/incidence.h>
 
 #include <QObject>
 #include <QStack>
@@ -104,7 +104,7 @@ class History : public QObject
         void setItemId( Akonadi::Item::Id );
         Akonadi::Item::Id itemId();
 
-        void removeRelations( const KCal::Incidence::Ptr &incidence );
+        void removeRelations( const KCalCore::Incidence::Ptr ::Ptr &incidence );
 
       protected:
         Akonadi::Calendar *mCalendar;
@@ -124,7 +124,7 @@ class History : public QObject
         QString text();
 
       private:
-        KCal::Incidence::Ptr mIncidence;
+        KCalCore::Incidence::Ptr ::Ptr mIncidence;
         Akonadi::Collection mCollection;
         QString mParentUid;
     };
@@ -140,7 +140,7 @@ class History : public QObject
 
         QString text();
       private:
-        KCal::Incidence::Ptr mIncidence;
+        KCalCore::Incidence::Ptr ::Ptr mIncidence;
         Akonadi::Collection mCollection;
         QString mParentUid;
     };
@@ -160,8 +160,8 @@ class History : public QObject
         QString text();
 
       private:
-        KCal::Incidence::Ptr mOldIncidence;
-        KCal::Incidence::Ptr mNewIncidence;
+        KCalCore::Incidence::Ptr ::Ptr mOldIncidence;
+        KCalCore::Incidence::Ptr ::Ptr mNewIncidence;
     };
 
     class MultiEntry : public Entry

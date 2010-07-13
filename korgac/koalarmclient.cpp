@@ -40,7 +40,7 @@
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/Calendar>
+#include <KCal/calendar.h>
 
 #include <KApplication>
 #include <KConfig>
@@ -55,7 +55,7 @@
 #endif
 
 using namespace Akonadi;
-using namespace KCal;
+using namespace KCalCore;
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ), mDocker( 0 ), mDialog( 0 )

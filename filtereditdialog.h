@@ -38,7 +38,7 @@ namespace IncidenceEditors {
 namespace KCal {
   class CalFilter;
 }
-using namespace KCal;
+using namespace KCalCore;
 
 /**
   This is the class to add/edit a calendar filter.

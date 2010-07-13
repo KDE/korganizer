@@ -34,7 +34,7 @@
 
 #include <akonadi/kcal/calendar.h>
 
-#include <KCal/CalFilter>
+#include <KCal/calfilter.h>
 
 #include <KLineEdit>
 
@@ -46,7 +46,7 @@
 #include <QAbstractItemView>
 #include <QHBoxLayout>
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace KPIM;
 using namespace IncidenceEditors;
 

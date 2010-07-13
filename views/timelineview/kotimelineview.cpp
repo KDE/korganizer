@@ -54,7 +54,7 @@
 
 using namespace Akonadi;
 using namespace KOrg;
-using namespace KCal;
+using namespace KCalCore;
 
 namespace KOrg {
 class RowController : public KDGantt::AbstractRowController {
@@ -260,9 +260,9 @@ Akonadi::Item::List KOTimelineView::selectedIncidences()
 }
 
 /*virtual*/
-KCal::DateList KOTimelineView::selectedIncidenceDates()
+KCalCore::DateList KOTimelineView::selectedIncidenceDates()
 {
-  return KCal::DateList();
+  return KCalCore::DateList();
 }
 
 /*virtual*/
@@ -491,7 +491,7 @@ void KOTimelineView::removeIncidence( const Item &incidence )
 #if 0 //AKONADI_PORT_DISABLED
     // try harder, the incidence might already be removed from the resource
     typedef QMap<QString, KOrg::TimelineItem *> M2_t;
-    typedef QMap<KCal::ResourceCalendar *, M2_t> M1_t;
+    typedef QMap<KCalCore::ResourceCalendar *, M2_t> M1_t;
     for ( M1_t::ConstIterator it1 = mCalendarItemMap.constBegin();
           it1 != mCalendarItemMap.constEnd(); ++it1 ) {
       for ( M2_t::ConstIterator it2 = it1.value().constBegin();

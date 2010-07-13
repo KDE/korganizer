@@ -33,7 +33,7 @@
 #include <kglobal.h>
 #include <klocale.h>
 
-using namespace KCal;
+using namespace KCalCore;
 
 DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {

@@ -34,9 +34,9 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <KCal/DndFactory>
-#include <KCal/ICalDrag>
-#include <KCal/Todo>
+#include <KCal/dndfactory.h>
+#include <KCal/icaldrag.h>
+#include <KCal/todo.h>
 #include <KCal/VCalDrag>
 
 #include <akonadi/kcal/calendar.h>

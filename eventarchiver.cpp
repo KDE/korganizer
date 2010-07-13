@@ -28,12 +28,12 @@
 #include "koprefs.h"
 
 #include <kio/netaccess.h>
-#include <kcal/icalformat.h>
-#include <kcal/filestorage.h>
+#include <kcalcore/icalformat.h>
+#include <kcalcore/filestorage.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <kcal/calendarlocal.h>
+#include <kcalcore/calendarlocal.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendaradaptor.h>

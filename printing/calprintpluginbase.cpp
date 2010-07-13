@@ -50,7 +50,7 @@
 #include <QAbstractTextDocumentLayout>
 #include <qmath.h> // qCeil
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace Akonadi;
 
 static QString cleanStr( const QString &instr )
