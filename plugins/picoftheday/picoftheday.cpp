@@ -24,7 +24,7 @@
 
 #include <KConfig>
 #include <KDebug>
-#include <KIO/scheduler.h>
+#include <KIO/Scheduler>
 #include <KLocale>
 #include <KStandardDirs>
 #include <kpluginfactory.h>
