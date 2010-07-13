@@ -3,7 +3,7 @@
 
   Copyright (c) 2007 Till Adam <adam@kde.org>
   Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
-  Copyright (c) 2010 Andras Mantia <andras@kdab.com>
+ Copyright (c) 2010 Andras Mantia <andras@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -179,24 +179,24 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   mLeftView->setHeader( new GanttHeaderView );
   mLeftView->setHeaderLabel( i18n("Calendar") );
   mLeftView->setRootIsDecorated( false );
-  mLeftView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );  
-  
+  mLeftView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+
   mGantt = new KDGantt::GraphicsView();
   splitter->addWidget( mLeftView );
   splitter->addWidget( mGantt );
   connect( splitter, SIGNAL( splitterMoved(int,int) ), SLOT( splitterMoved() ) );
   QStandardItemModel *model = new QStandardItemModel( this );
 
-  mRowController = new RowController; 
+  mRowController = new RowController;
   mRowController->setRowHeight( fontMetrics().height() ); //TODO: detect
-  
+
   mRowController->setModel( model );
   mGantt->setRowController( mRowController );
 
   KDGantt::DateTimeGrid *grid = new KDGantt::DateTimeGrid;
   grid->setScale( KDGantt::DateTimeGrid::ScaleHour );
   grid->setDayWidth( 800 );
-  grid->setRowSeparators( true );  
+  grid->setRowSeparators( true );
   mGantt->setGrid( grid );
   mGantt->setModel( model );
   mGantt->viewport()->setFixedWidth( 8000 );
@@ -305,7 +305,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
     mLeftView->addTopLevelItem( new QTreeWidgetItem( QStringList() << i18n( "Calendar" ) ) );
     mCalendarItemMap.insert( -1, item );
-    
+
   } else {
     const CollectionSelection *colSel = collectionSelection();
     const Collection::List collections = colSel->selectedCollections();
@@ -323,7 +323,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
       }
     }
   }
-  
+
   // add incidences
   Item::List events;
   KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
@@ -446,7 +446,7 @@ void KOTimelineView::insertIncidence( const Item &aitem, const QDate &day )
     if ( l.isEmpty() ) {
       // strange, but seems to happen for some recurring events...
       item->insertIncidence( aitem, KDateTime( day, incidence->dtStart().time() ),
-                              KDateTime( day, incidence->dtEnd().time() ) );
+                             KDateTime( day, incidence->dateTime( Incidence::RoleEnd ).time() ) );
     } else {
       for ( QList<KDateTime>::ConstIterator it = l.constBegin(); it != l.constEnd(); ++it ) {
         item->insertIncidence( aitem, *it, incidence->endDateForStart( *it ) );

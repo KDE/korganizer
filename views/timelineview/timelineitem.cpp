@@ -48,7 +48,7 @@ void TimelineItem::insertIncidence( const Item &aitem,
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   KDateTime start = incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() );
-  KDateTime end = incidence->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() );
+  KDateTime end = incidence->dateTime( Incidence::RoleEnd ).toTimeSpec( KCalPrefs::instance()->timeSpec() );
 
   if ( _start.isValid() ) {
     start = _start;
@@ -119,7 +119,7 @@ TimelineSubItem::TimelineSubItem( const Item &incidence,
   setData( KDGantt::TypeTask, KDGantt::ItemTypeRole );
   setData( IncidenceFormatter::toolTipStr(
                   Akonadi::displayName( incidence.parentCollection() ),
-                  Akonadi::incidence( incidence ).get(), originalStart().date(),
+                  Akonadi::incidence( incidence ), originalStart().date(),
                   true, KCalPrefs::instance()->timeSpec() ), Qt::ToolTipRole );
   if ( Akonadi::incidence( incidence )->isReadOnly() ) {
     setFlags( Qt::ItemIsSelectable );
