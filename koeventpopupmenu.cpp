@@ -127,7 +127,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
     (*it)->setVisible( incidence->recurs() );
   }
   for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
-    (*it)->setVisible( incidence->type() == "Todo" );
+    (*it)->setVisible( incidence->type() == Incidence::TypeTodo );
     (*it)->setEnabled( Akonadi::hasChangeRights( mCurrentIncidence ) );
   }
   popup( QCursor::pos() );

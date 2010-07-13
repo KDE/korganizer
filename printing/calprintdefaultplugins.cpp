@@ -236,7 +236,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       mPrinter->newPage();
     }
 
-    const bool isJournal = ( (*it)->type() == "Journal" );
+    const bool isJournal = ( (*it)->type() == Incidence::TypeJournal );
 
     //  PAGE Layout (same for landscape and portrait! astonishingly, it looks good with both!):
     //  +-----------------------------------+
@@ -609,7 +609,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         optionsString += i18n( "Secrecy: %1", (*it)->secrecyStr() );
         optionsString += '\n';
       }
-      if ( (*it)->type() == "Event" ) {
+      if ( (*it)->type() == Incidence::TypeEvent ) {
         Event *e = static_cast<Event*>(*it);
         if ( e->transparency() == Event::Opaque ) {
           optionsString += i18n( "Show as: Busy" );
@@ -617,13 +617,13 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           optionsString += i18n( "Show as: Free" );
         }
         optionsString += '\n';
-      } else if ( (*it)->type() == "Todo" ) {
+      } else if ( (*it)->type() == Incidence::TypeTodo ) {
         Todo *t = static_cast<Todo*>(*it);
         if ( t->isOverdue() ) {
           optionsString += i18n( "This task is overdue!" );
           optionsString += '\n';
         }
-      } else if ( (*it)->type() == "Journal" ) {
+      } else if ( (*it)->type() == Incidence::TypeJournal ) {
         //TODO: Anything Journal-specific?
       }
       drawBoxWithCaption( p, optionsBox, i18n( "Settings: " ),

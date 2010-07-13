@@ -346,7 +346,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
 
     if ( !isInHierarchyLoop( todo.get() ) ) {
       Incidence *inc = todo->relatedTo();
-      if ( inc && inc->type() == "Todo" ) {
+      if ( inc && inc->type() == Incidence::TypeTodo ) {
         newParent = Todo::Ptr( static_cast<Todo *>( inc )->clone() );
       }
     }

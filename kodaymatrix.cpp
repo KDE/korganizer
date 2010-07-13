@@ -284,7 +284,7 @@ void KODayMatrix::updateJournals()
     Incidence::Ptr inc = Akonadi::incidence( item );
     Q_ASSERT( inc );
     QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
-    if ( inc->type() == "Journal" &&
+    if ( inc->type() == Incidence::TypeJournal &&
          d >= mDays[0] &&
          d <= mDays[NUMDAYS-1] &&
          !mEvents.contains( d ) ) {

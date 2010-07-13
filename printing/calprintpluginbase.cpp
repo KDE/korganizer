@@ -257,7 +257,7 @@ QColor CalPrintPluginBase::categoryBgColor( Incidence *incidence )
 {
   if ( mCoreHelper && incidence ) {
     QColor backColor = mCoreHelper->categoryColor( incidence->categories() );
-    if ( incidence->type() == "Todo" ) {
+    if ( incidence->type() == Incidence::TypeTodo ) {
       if ( static_cast<Todo*>( incidence )->isOverdue() ) {
         backColor = KOPrefs::instance()->todoOverdueColor();
       }

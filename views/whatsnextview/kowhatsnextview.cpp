@@ -294,10 +294,10 @@ void KOWhatsNextView::appendEvent( const Item &aitem, const QDateTime &start,
     }
   }
   mText += "</b></td><td><a ";
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == Incidence::TypeEvent ) {
     mText += "href=\"event:";
   }
-  if ( incidence->type() == "Todo" ) {
+  if ( incidence->type() == Incidence::TypeTodo ) {
     mText += "href=\"todo:";
   }
   mText += incidence->uid() + "\">";

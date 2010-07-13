@@ -718,7 +718,7 @@ void CalendarView::incidenceChangeFinished( const Item &oldIncidence_,
   // Record completed todos in journals, if enabled. we should to this here in
   // favor of the todolist. users can mark a task as completed in an editor
   // as well.
-  if ( newIncidence->type() == "Todo" &&
+  if ( newIncidence->type() == Incidence::TypeTodo &&
        KOPrefs::instance()->recordTodosInJournals() &&
        ( modification == IncidenceChanger::COMPLETION_MODIFIED ||
          modification == IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
@@ -883,7 +883,7 @@ void CalendarView::edit_cut()
   int km = KMessageBox::Yes;
 
   if ( !incidence->relations().isEmpty() &&
-       incidence->type() == "Todo" ) { // Only todos (yet?)
+       incidence->type() == Incidence::TypeTodo ) { // Only todos (yet?)
     km = KMessageBox::questionYesNoCancel( this,
                                            i18n("The item \"%1\" has sub-to-dos. "
                                                 "Do you want to cut just this item and "
@@ -925,7 +925,7 @@ void CalendarView::edit_copy()
   int km = KMessageBox::Yes;
 
   if ( !incidence->relations().isEmpty() &&
-       incidence->type() == "Todo" ) { // only todos.
+       incidence->type() == Incidence::TypeTodo ) { // only todos.
     km = KMessageBox::questionYesNoCancel( this,
                                            i18n("The item \"%1\" has sub-to-dos. "
                                                 "Do you want to copy just this item or "
@@ -1010,7 +1010,7 @@ void CalendarView::edit_paste()
   int dialogCode = 0;
   for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
     // FIXME: use a visitor here
-    if ( ( *it )->type() == "Event" ) {
+    if ( ( *it )->type() == Incidence::TypeEvent ) {
       Event *pastedEvent = static_cast<Event*>( *it );
       // only use selected area if event is of the same type (all-day or non-all-day
       // as the current selection is
@@ -1032,7 +1032,7 @@ void CalendarView::edit_paste()
         mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), this, selectedCollection,
                                 dialogCode );
       }
-    } else if ( ( *it )->type() == "Todo" ) {
+    } else if ( ( *it )->type() == Incidence::TypeTodo ) {
       Todo *pastedTodo = static_cast<Todo*>( *it );
       Akonadi::Item _selectedTodoItem = selectedTodo();
 
@@ -1051,7 +1051,7 @@ void CalendarView::edit_paste()
                                 dialogCode );
       }
 
-    } else if ( ( *it )->type() == "Journal" ) {
+    } else if ( ( *it )->type() == Incidence::TypeJournal ) {
 
       if ( selectedCollection.isValid() ) {
         // When pasting multiple incidences, don't ask which collection to use, for each one
@@ -1490,7 +1490,7 @@ void CalendarView::toggleAlarm( const Item &item )
       duration = KCalPrefs::instance()->mReminderTime * 60 * 60 * 24;
       break;
     }
-    if ( incidence->type() == "Event" ) {
+    if ( incidence->type() == Incidence::TypeEvent ) {
       alm->setStartOffset( KCalCore::Duration( -duration ) );
     } else {
       alm->setEndOffset( KCalCore::Duration( -duration ) );
@@ -1555,15 +1555,15 @@ void CalendarView::copyIncidenceToResource( const Item &item, const QString &res
 
   // Clone a new Incidence from the selected Incidence and give it a new Uid.
   Incidence *newInc;
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == Incidence::TypeEvent ) {
     KCalCore::Event::Ptr nEvent = static_cast<KCalCore::Event::Ptr >( incidence )->clone();
     nEvent->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nEvent;
-  } else if ( incidence->type() == "Todo" ) {
+  } else if ( incidence->type() == Incidence::TypeTodo ) {
     KCalCore::Todo::Ptr nTodo = static_cast<KCalCore::Todo::Ptr >( incidence )->clone();
     nTodo->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nTodo;
-  } else if ( incidence->type() == "Journal" ) {
+  } else if ( incidence->type() == Incidence::TypeJournal ) {
     KCalCore::Journal::Ptr nJournal = static_cast<KCalCore::Journal::Ptr >( incidence )->clone();
     nJournal->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nJournal;
@@ -1623,15 +1623,15 @@ void CalendarView::moveIncidenceToResource( const Item &item, const QString &res
 
   // Clone a new Incidence from the selected Incidence and give it a new Uid.
   Incidence *newInc;
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == Incidence::TypeEvent ) {
     KCalCore::Event::Ptr nEvent = static_cast<KCalCore::Event::Ptr >( incidence )->clone();
     nEvent->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nEvent;
-  } else if ( incidence->type() == "Todo" ) {
+  } else if ( incidence->type() == Incidence::TypeTodo ) {
     KCalCore::Todo::Ptr nTodo = static_cast<KCalCore::Todo::Ptr >( incidence )->clone();
     nTodo->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nTodo;
-  } else if ( incidence->type() == "Journal" ) {
+  } else if ( incidence->type() == Incidence::TypeJournal ) {
     KCalCore::Journal::Ptr nJournal = static_cast<KCalCore::Journal::Ptr >( incidence )->clone();
     nJournal->setUid( KCalCore::CalFormat::createUniqueId() );
     newInc = nJournal;
@@ -2228,7 +2228,7 @@ void CalendarView::processIncidenceSelection( const Item &item, const QDate &dat
   organizerEvents = KCalPrefs::instance()->thatIsMe( incidence->organizer()->email() );
   groupEvents = incidence->attendeeByMails( KCalPrefs::instance()->allEmails() );
 
-  if ( incidence->type() == "Todo" ) {
+  if ( incidence->type() == Incidence::TypeTodo ) {
     todo = true;
     subtodo = ( incidence->relatedTo() != 0 );
   }
@@ -2700,7 +2700,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
   }
   //If it is a todo, there are specific delete function
 
-  if ( incidence && incidence->type() == "Todo" ) {
+  if ( incidence && incidence->type() == Incidence::TypeTodo ) {
     deleteTodoIncidence( item, force );
     return true;
   }

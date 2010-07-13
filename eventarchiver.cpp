@@ -274,7 +274,7 @@ bool EventArchiver::isSubTreeComplete( const Todo *todo, const QDate &limitDate,
 
   foreach( const Incidence *i, todo->relations() ) {
 
-    if ( i->type() == "Todo" ) {
+    if ( i->type() == Incidence::TypeTodo ) {
       const Todo *t = static_cast<const Todo*>( i );
       if ( !isSubTreeComplete( t, limitDate, checkedUids ) ) {
         return false;
