@@ -52,7 +52,7 @@
 #include <ktempfile.h>
 #include <kstatusbar.h>
 #include <kparts/genericfactory.h>
-
+#include <kparts/partmanager.h>
 #include <kparts/statusbarextension.h>
 
 #include <sidebarextension.h>
@@ -232,6 +232,15 @@ void KOrganizerPart::setTitle()
   title += " - <" + mView->currentFilterName() + "> ";
 
   emit setWindowCaption( title );*/
+}
+
+bool KOrganizerPart::isCurrentlyActivePart()
+{
+  if ( manager() ) {
+    return  ( manager()->activePart() == this );
+  } else {
+    return false;
+  }
 }
 
 #include "korganizer_part.moc"

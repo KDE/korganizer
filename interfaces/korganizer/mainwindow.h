@@ -87,8 +87,10 @@ class MainWindow
     */
     virtual void setTitle() = 0;
 
-    void setHasDocument( bool d ) { mDocument = d; } 
+    void setHasDocument( bool d ) { mDocument = d; }
     bool hasDocument() const { return mDocument; }
+
+    virtual bool isCurrentlyActivePart() = 0;
 
   private:
     bool mDocument;

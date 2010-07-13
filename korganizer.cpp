@@ -308,3 +308,9 @@ void KOrganizer::setTitle()
   setCaption( title, !mCalendarView->isReadOnly() &&
                       mCalendarView->isModified() );
 }
+
+bool KOrganizer::isCurrentlyActivePart()
+{
+  return false;
+}
+

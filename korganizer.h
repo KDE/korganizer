@@ -95,6 +95,8 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     virtual KXMLGUIClient *mainGuiClient() { return this; }
     virtual QWidget *topLevelWidget() { return this; }
 
+    virtual bool isCurrentlyActivePart();
+
   public slots:
     /** show status message */
     void showStatusMessage( const QString & );

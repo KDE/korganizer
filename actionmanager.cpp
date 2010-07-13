@@ -314,10 +314,10 @@ void ActionManager::initActions()
                                mACollection, "edit_delete" );
   if ( mIsPart ) {
     KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
-                     mACollection, "korganizer_find" );
+                      mACollection, "korganizer_find" );
   } else {
     KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
-                     mACollection );
+                      mACollection );
   }
   pasteAction->setEnabled( false );
   mUndoAction->setEnabled( false );
@@ -1547,6 +1547,12 @@ KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValu
 QPair<ResourceCalendar *, QString> ActionManager::viewSubResourceCalendar()
 {
   QPair<ResourceCalendar *, QString> p( 0, QString() );
+
+  // return now if we are running as a part and we aren't the currently active part
+  if ( mIsPart && !mMainWindow->isCurrentlyActivePart() ) {
+    return p;
+  }
+
   KOrg::BaseView *cV = mCalendarView->viewManager()->currentView();
   if ( cV && cV == mCalendarView->viewManager()->multiAgendaView() ) {
     cV = mCalendarView->viewManager()->multiAgendaView()->selectedAgendaView();

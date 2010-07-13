@@ -399,7 +399,6 @@ void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * re
 
   // Now, the sub agenda view
   KOAgendaView* av = new KOAgendaView( calendar(), mCalendarView, box, 0, true );
-  mSelectedAgendaView = av;
   av->setReadOnly( readOnlyView );
   av->setResource( res, subRes );
   av->setIncidenceChanger( mChanger );
