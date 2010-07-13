@@ -23,12 +23,11 @@
 #ifndef PUBLISHDIALOG_H
 #define PUBLISHDIALOG_H
 
+#include <kcalcore/attendee.h>
+
 #include <kdialog.h>
 #include "ui_publishdialog_base.h"
 
-namespace KCal {
-  class Attendee;
-}
 using namespace KCalCore;
 
 class PublishDialog_base;

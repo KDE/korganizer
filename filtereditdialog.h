@@ -35,7 +35,7 @@ namespace IncidenceEditors {
   class CategorySelectDialog;
 }
 
-namespace KCal {
+namespace KCalCore {
   class CalFilter;
 }
 using namespace KCalCore;

@@ -31,7 +31,7 @@
 #include "koprefs.h"
 
 #include <kcalutils/icaldrag.h>
-#include <kcalcore/VCalDrag>
+#include <kcalutils/vcaldrag.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
@@ -54,6 +54,7 @@
 
 using namespace Akonadi;
 using namespace KCalCore;
+using namespace KCalUtils;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;

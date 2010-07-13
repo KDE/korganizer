@@ -37,6 +37,7 @@
 
 #include <Akonadi/Item>
 
+#include <kcalcore/visitor.h>
 #include <kcalcore/incidencebase.h>
 
 #include <incidenceeditors/eventeditor.h>
@@ -62,10 +63,10 @@ class KODialogManager::DialogManagerVisitor : public Visitor
   public:
     DialogManagerVisitor() : mDialogManager( 0 ) {}
 
-    bool act( IncidenceBase *incidence, KODialogManager *manager )
+    bool act( IncidenceBase::Ptr incidence, KODialogManager *manager )
     {
       mDialogManager = manager;
-      return incidence->accept( *this );
+      return incidence->accept( *this, incidence );
     }
 
   protected:
@@ -80,24 +81,24 @@ class KODialogManager::EditorDialogVisitor :
     IncidenceEditor *editor() const { return mEditor; }
 
   protected:
-    bool visit( Event * )
+    bool visit( Event::Ptr )
     {
       mEditor = mDialogManager->getEventEditor();
       return mEditor;
     }
-    bool visit( Todo * )
+    bool visit( Todo::Ptr )
     {
       mEditor = mDialogManager->getTodoEditor();
       return mEditor;
     }
-    bool visit( Journal * )
+    bool visit( Journal::Ptr )
     {
       mEditor = mDialogManager->getJournalEditor();
       return mEditor;
     }
-    bool visit( FreeBusy * ) // to inhibit hidden virtual compile warning
+    bool visit( FreeBusy::Ptr ) // to inhibit hidden virtual compile warning
     {
-      return 0;
+      return false;
     }
 
     IncidenceEditor *mEditor;
@@ -216,7 +217,7 @@ IncidenceEditor *KODialogManager::getEditor( const Item &item )
   }
 
   EditorDialogVisitor v;
-  if ( v.act( incidence.get(), this ) ) {
+  if ( v.act( incidence, this ) ) {
     return v.editor();
   } else {
     return 0;

@@ -122,7 +122,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
     (*it)->setEnabled( Akonadi::hasChangeRights( mCurrentIncidence ) );
   }
-  mToggleReminder->setVisible( ( incidence->type() != "Journal" ) );
+  mToggleReminder->setVisible( ( incidence->type() != Incidence::TypeJournal ) );
   for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
     (*it)->setVisible( incidence->recurs() );
   }
@@ -160,9 +160,9 @@ void KOEventPopupMenu::print(bool preview)
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   //Item::List selectedIncidences;
-  KCalCore::ListBase<KCalCore::Incidence::Ptr > selectedIncidences;
-  Q_ASSERT( mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr ::Ptr>() );
-  selectedIncidences.append( mCurrentIncidence.payload<KCalCore::Incidence::Ptr ::Ptr>().get() );
+  Incidence::List selectedIncidences;
+  Q_ASSERT( mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr>() );
+  selectedIncidences.append( mCurrentIncidence.payload<KCalCore::Incidence::Ptr>() );
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, preview );
