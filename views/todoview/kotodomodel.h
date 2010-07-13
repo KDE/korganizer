@@ -165,7 +165,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param todo the todo that will be checked
      */
-    bool isInHierarchyLoop( const KCalCore::Todo::Ptr todo ) const;
+    bool isInHierarchyLoop( const KCalCore::Todo::Ptr &todo ) const;
 
     /** Insert a todo at the right place in the todo tree.
      *

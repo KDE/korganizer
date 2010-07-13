@@ -46,7 +46,7 @@
 
 #include <akonadi/kcal/utils.h>
 
-#include <kcalcore/CalFormat>
+#include <kcalcore/calformat.h>
 #include <kcalcore/incidence.h>
 #include <kcalcore/todo.h>
 
@@ -424,14 +424,16 @@ void KOTodoView::addTodo( const QString &summary,
 
   Todo::Ptr todo( new Todo );
   todo->setSummary( summary.trimmed() );
-  todo->setOrganizer( Person( KCalPrefs::instance()->fullName(),
-                              KCalPrefs::instance()->email() ) );
+  todo->setOrganizer( Person::Ptr( new Person( KCalPrefs::instance()->fullName(),
+                                               KCalPrefs::instance()->email() ) ) );
 
   todo->setCategories( categories );
 
-  if ( parent ) {
-    todo->setRelatedTo( parent.get() );
+/*  if ( parent ) {
+    todo->setRelatedTo( parent );
   }
+KDAB_TODO: review
+*/
 
   Akonadi::Collection selectedCollection;
   int dialogCode = 0;
@@ -488,8 +490,9 @@ void KOTodoView::contextMenu( const QPoint &pos )
     Akonadi::Item::List incidences = selectedIncidences();
     if ( !incidences.isEmpty() ) {
       Incidence::Ptr incidencePtr = incidences[0].payload<Incidence::Ptr>();
-      mMakeSubtodosIndependent->setEnabled( !incidencePtr->relations().isEmpty() );
-      mMakeTodoIndependent->setEnabled( incidencePtr->relatedTo() );
+      //KDAB_TODO REVIEW
+      //    mMakeSubtodosIndependent->setEnabled( !mCalendar->relations(incidencePtr->uid() ).isEmpty() );
+//      mMakeTodoIndependent->setEnabled( incidencePtr->relatedTo() );
     }
 
     switch ( mView->indexAt( pos ).column() ) {
@@ -582,7 +585,7 @@ void KOTodoView::printTodo( bool preview )
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
-  selectedIncidences.append( todo.get() );
+  selectedIncidences.append( todo );
 
   KDateTime todoDate;
   if ( todo->hasStartDate() ) {
