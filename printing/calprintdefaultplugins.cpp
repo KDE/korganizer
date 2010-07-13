@@ -45,6 +45,7 @@
 #include <QPrinter>
 
 using namespace Akonadi;
+using namespace KCalUtils;
 
 /**************************************************************
  *           Print Incidence

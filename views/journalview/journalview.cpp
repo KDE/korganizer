@@ -62,6 +62,7 @@
 #include "journalview.moc"
 
 using namespace Akonadi;
+using namespace KCalUtils;
 
 JournalDateView::JournalDateView( Akonadi::Calendar *calendar, QWidget *parent )
   : KVBox( parent ), mCalendar( calendar )
@@ -228,7 +229,7 @@ void JournalView::printItem()
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;
-    selectedIncidences.append( j.get() );
+    selectedIncidences.append( j );
 
     printer.print( KOrg::CalPrinterBase::Incidence,
                    mDate, mDate, selectedIncidences );

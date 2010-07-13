@@ -57,6 +57,7 @@
 #endif
 
 using namespace Akonadi;
+using namespace KCalUtils;
 
 /** This class represents a node in the todo-tree. */
 struct KOTodoModel::TodoTreeNode : QObject

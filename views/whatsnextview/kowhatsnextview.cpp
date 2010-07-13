@@ -36,6 +36,7 @@
 
 using namespace KCalCore;
 using namespace Akonadi;
+using namespace KCalUtils;
 
 void WhatsNextTextBrowser::setSource( const QUrl &name )
 {

@@ -30,6 +30,7 @@ using namespace KOrg;
 
 #include <akonadi/kcal/utils.h>
 
+using namespace KCalUtils;
 using namespace Akonadi;
 
 TimelineItem::TimelineItem( Akonadi::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent )
@@ -80,7 +81,7 @@ void TimelineItem::insertIncidence( const Item &aitem,
   mItemMap[aitem.id()].append( item );
 
   list.append( mItemMap[aitem.id()] );
-  
+
   mModel->insertRow( mIndex, list );
 }
 
