@@ -100,7 +100,9 @@ class EventArchiver : public QObject
      * @param limitDate
      * @param checkedUids used internaly to prevent infinit recursion due to invalid calendar files
      */
-    bool isSubTreeComplete( const Todo *todo, const QDate &limitDate, QStringList checkedUids = QStringList() ) const;
+    bool isSubTreeComplete( Akonadi::Calendar *calendar,
+                            const Todo::Ptr &todo,
+                            const QDate &limitDate, QStringList checkedUids = QStringList() ) const;
 };
 
 #endif /* EVENTARCHIVER_H */

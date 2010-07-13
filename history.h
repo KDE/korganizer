@@ -106,8 +106,6 @@ class History : public QObject
         void setItemId( Akonadi::Item::Id );
         Akonadi::Item::Id itemId();
 
-        void removeRelations( const KCalCore::Incidence::Ptr &incidence );
-
       protected:
         Akonadi::Calendar *mCalendar;
         Akonadi::IncidenceChanger *mChanger;

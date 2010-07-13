@@ -32,8 +32,11 @@
 #include <akonadi/kcal/utils.h>
 
 #include <kcalprefs.h>
+#include <kcalcore/visitor.h>
 #include <kcalcore/todo.h>
+
 #include <kcalutils/incidenceformatter.h>
+#include <kcalutils/stringify.h>
 
 #include <KCalendarSystem>
 #include <KDateTime>
@@ -123,16 +126,16 @@ class TimePrintStringsVisitor : public Visitor
   public:
     TimePrintStringsVisitor() {}
 
-    bool act( IncidenceBase *incidence )
+  bool act( IncidenceBase::Ptr incidence )
     {
-      return incidence->accept( *this );
+      return incidence->accept( *this, incidence );
     }
     QString mStartCaption, mStartString;
     QString mEndCaption, mEndString;
     QString mDurationCaption, mDurationString;
 
   protected:
-    bool visit( Event *event ) {
+    bool visit( Event::Ptr event ) {
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n( "Start date: " );
         mStartString = IncidenceFormatter::dateTimeToString(
@@ -161,7 +164,7 @@ class TimePrintStringsVisitor : public Visitor
       }
       return true;
     }
-    bool visit( Todo *todo ) {
+  bool visit( Todo::Ptr todo ) {
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n( "Start date: " );
         mStartString = IncidenceFormatter::dateTimeToString(
@@ -181,7 +184,7 @@ class TimePrintStringsVisitor : public Visitor
       }
       return true;
     }
-    bool visit( Journal *journal ) {
+    bool visit( Journal::Ptr journal ) {
       mStartCaption = i18n( "Start date: " );
       mStartString = IncidenceFormatter::dateTimeToString(
         journal->dtStart(), journal->allDay(), false );
@@ -189,7 +192,7 @@ class TimePrintStringsVisitor : public Visitor
       mEndString.clear();
       return true;
     }
-    bool visit( FreeBusy *fb ) {
+    bool visit( FreeBusy::Ptr fb ) {
       Q_UNUSED( fb );
       return true;
     }
@@ -283,7 +286,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     TimePrintStringsVisitor stringVis;
     int h = timesBox.top();
-    if ( stringVis.act(*it) ) {
+    if ( stringVis.act( *it ) ) {
       QRect textRect( timesBox.left() + padding(),
                       timesBox.top() + padding(), 0, lineHeight );
       textRect.setRight( timesBox.center().x() );
@@ -331,7 +334,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       QStringList alarmStrings;
       KCalCore::Alarm::List::ConstIterator it;
       for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
-        Alarm *alarm = *it;
+        Alarm::Ptr alarm = *it;
 
         // Alarm offset, copied from koeditoralarms.cpp:
         KLocalizedString offsetstr;
@@ -459,14 +462,18 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     if ( mShowNoteLines ) {
       drawNoteLines( p, descriptionBox, newBottom );
     }
+
+    Akonadi::Item item = mCalendar->itemForIncidenceUid( (*it)->uid() );
+    Akonadi::Item::List relations = mCalendar->findChildren( item );
+
     if ( mShowSubitemsNotes && !isJournal ) {
-      if ( (*it)->relations().isEmpty() || (*it)->type() != "Todo" ) {
+      if ( relations.isEmpty() || (*it)->type() != Incidence::TypeTodo ) {
         int notesPosition = drawBoxWithCaption( p, notesBox, i18n( "Notes:" ),
                                                 QString(), /*sameLine=*/false,
                                                 /*expand=*/false, captionFont, textFont );
         drawNoteLines( p, notesBox, notesPosition );
       } else {
-        Incidence::List relations = (*it)->relations();
+
         QString subitemCaption;
         if ( relations.count() == 0 ) {
           subitemCaption = i18n( "No Subitems" );
@@ -476,20 +483,21 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                                   "%1 Subitems:",
                                   relations.count() );
         }
-        Incidence::List::ConstIterator rit;
+
         QString subitemString;
         QString statusString;
         QString datesString;
         int count = 0;
-        for ( rit = relations.constBegin(); rit != relations.constEnd(); ++rit ) {
+        foreach( const Akonadi::Item &item, relations ) {
+          Todo::Ptr todo = Akonadi::todo( item );
           ++count;
-          if ( !(*rit) ) { // defensive, skip any zero pointers
+          if ( !todo ) { // defensive, skip any zero pointers
             continue;
           }
           // format the status
-          statusString = (*rit)->statusStr();
+          statusString = Stringify::incidenceStatus( todo->status() );
           if ( statusString.isEmpty() ) {
-            if ( (*rit)->status() == Incidence::StatusNone ) {
+            if ( todo->status() == Incidence::StatusNone ) {
               statusString = i18nc( "no status", "none" );
             } else {
               statusString = i18nc( "unknown status", "unknown" );
@@ -498,32 +506,32 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           // format the dates if provided
           datesString.clear();
           KDateTime::Spec spec = KCalPrefs::instance()->timeSpec();
-          if ( (*rit)->dtStart().isValid() ) {
+          if ( todo->dtStart().isValid() ) {
             datesString += i18nc(
               "subitem start date", "Start Date: %1\n",
-              KGlobal::locale()->formatDate( (*rit)->dtStart().toTimeSpec( spec ).date(),
+              KGlobal::locale()->formatDate( todo->dtStart().toTimeSpec( spec ).date(),
                                              KLocale::ShortDate ) );
-            if ( !(*rit)->allDay() ) {
+            if ( !todo->allDay() ) {
               datesString += i18nc(
                 "subitem start time", "Start Time: %1\n",
-                KGlobal::locale()->formatTime( (*rit)->dtStart().toTimeSpec( spec ).time(),
+                KGlobal::locale()->formatTime( todo->dtStart().toTimeSpec( spec ).time(),
                                                false, false ) );
             }
           }
-          if ( (*rit)->dtEnd().isValid() ) {
+          if ( todo->dateTime( Incidence::RoleEnd ).isValid() ) {
             subitemString += i18nc(
               "subitem due date", "Due Date: %1\n",
-              KGlobal::locale()->formatDate( (*rit)->dtEnd().toTimeSpec( spec ).date(),
+              KGlobal::locale()->formatDate( todo->dateTime( Incidence::RoleEnd ).toTimeSpec( spec ).date(),
                                              KLocale::ShortDate ) );
-            if ( !(*rit)->allDay() ) {
+            if ( !todo->allDay() ) {
               subitemString += i18nc(
                 "subitem due time", "Due Time: %1\n",
-                KGlobal::locale()->formatTime( (*rit)->dtEnd().toTimeSpec( spec ).time(),
+                KGlobal::locale()->formatTime( todo->dateTime( Incidence::RoleEnd ).toTimeSpec( spec ).time(),
                                                false, false ) );
             }
           }
           subitemString += i18nc( "subitem counter", "%1: ", count );
-          subitemString += (*rit)->summary();
+          subitemString += todo->summary();
           subitemString += '\n';
           if ( !datesString.isEmpty() ) {
             subitemString += datesString;
@@ -532,13 +540,13 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           subitemString += i18nc( "subitem Status: statusString",
                                   "Status: %1\n",
                                    statusString );
-          subitemString += IncidenceFormatter::recurrenceString((*rit)) + '\n';
+          subitemString += IncidenceFormatter::recurrenceString( todo ) + '\n';
           subitemString += i18nc( "subitem Priority: N",
                                   "Priority: <numid>%1</numid>\n",
-                                  (*rit)->priority() );
+                                  todo->priority() );
           subitemString += i18nc( "subitem Secrecy: secrecyString",
                                   "Secrecy: %1\n",
-                                  (*rit)->secrecyStr() );
+                                  Stringify::incidenceSecrecy( todo->secrecy() ) );
           subitemString += '\n';
         }
         drawBoxWithCaption( p, notesBox, subitemCaption,
@@ -592,7 +600,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                 "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
                 "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
                 "%1 (%2): %3",
-                (*ait)->fullName(), (*ait)->roleStr(), (*ait)->statusStr() );
+                (*ait)->fullName(), Stringify::attendeeRole( (*ait)->role() ), Stringify::attendeeStatus( ( *ait )->status() ) );
       }
       drawBoxWithCaption( p, attendeesBox, attendeeCaption, attendeeString,
                           /*sameLine=*/false, /*expand=*/false,
@@ -601,16 +609,16 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     if ( mShowOptions ) {
       QString optionsString;
-      if ( !(*it)->statusStr().isEmpty() ) {
-        optionsString += i18n( "Status: %1", (*it)->statusStr() );
+      if ( !Stringify::incidenceStatus( (*it)->status() ).isEmpty() ) {
+        optionsString += i18n( "Status: %1", Stringify::incidenceStatus( (*it)->status() ) );
         optionsString += '\n';
       }
-      if ( !(*it)->secrecyStr().isEmpty() ) {
-        optionsString += i18n( "Secrecy: %1", (*it)->secrecyStr() );
+      if ( !Stringify::incidenceSecrecy( (*it)->secrecy() ).isEmpty() ) {
+        optionsString += i18n( "Secrecy: %1", Stringify::incidenceSecrecy( (*it)->secrecy() ) );
         optionsString += '\n';
       }
       if ( (*it)->type() == Incidence::TypeEvent ) {
-        Event *e = static_cast<Event*>(*it);
+        Event::Ptr e = (*it).staticCast<Event>();
         if ( e->transparency() == Event::Opaque ) {
           optionsString += i18n( "Show as: Busy" );
         } else {
@@ -618,7 +626,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         }
         optionsString += '\n';
       } else if ( (*it)->type() == Incidence::TypeTodo ) {
-        Todo *t = static_cast<Todo*>(*it);
+        Todo::Ptr t = (*it).staticCast<Todo>();
         if ( t->isOverdue() ) {
           optionsString += i18n( "This task is overdue!" );
           optionsString += '\n';
@@ -1523,7 +1531,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       continue;
     }
     // Skip sub-to-dos. They will be printed recursively in drawTodo()
-    if ( !todo->relatedTo() ) { //review(AKONADI_PORT)
+    if ( todo->relatedTo().isEmpty() ) { //review(AKONADI_PORT)
       count++;
       drawTodo( count, *it, p,
                 sortField, sortDirection,

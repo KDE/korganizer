@@ -120,7 +120,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     void setUseColors( bool useColors );
 
     /** Helper functions to hide the KOrg::CoreHelper */
-    QColor categoryBgColor( Incidence *incidence );
+    QColor categoryBgColor( const Incidence::Ptr &incidence );
     QTime dayStart();
     bool isWorkingDay( const QDate &dt );
     QString holidayString( const QDate &dt );
@@ -132,7 +132,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param weekday Index of the weekday
     */
     static int weekdayColumn( int weekday );
-    void setCategoryColors( QPainter &p, Incidence *incidence );
+    void setCategoryColors( QPainter &p, const Incidence::Ptr &incidence );
 
     QPrinter::Orientation orientation() const;
 

@@ -39,10 +39,6 @@
 class ActionManager;
 class CalendarView;
 
-namespace KCal { class CalendarResources; }
-
-using namespace KCalCore;
-
 // Workaround for moc workaround for visual c++ 6.0 sucking
 typedef KOrg::MainWindow KOrgMainWindow;
 typedef KParts::MainWindow KPartsMainWindow;

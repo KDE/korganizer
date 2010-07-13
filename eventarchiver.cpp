@@ -1,3 +1,4 @@
+
 /*
   This file is part of KOrganizer.
   Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
@@ -33,7 +34,9 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <kcalcore/calendarlocal.h>
+#include <kcalcore/memorycalendar.h>
+
+#include <kcalutils/stringify.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendaradaptor.h>
@@ -46,6 +49,7 @@
 #include <kmessagebox.h>
 
 using namespace Akonadi;
+using namespace KCalUtils;
 
 EventArchiver::EventArchiver( QObject *parent )
  : QObject( parent )
@@ -103,7 +107,7 @@ void EventArchiver::run( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger*
     for ( it = t.constBegin(); it != t.constEnd(); ++it ) {
       const Todo::Ptr todo = Akonadi::todo( *it );
       Q_ASSERT( todo );
-      if ( isSubTreeComplete( todo.get(), limitDate ) ) {
+      if ( isSubTreeComplete( calendar, todo, limitDate ) ) {
         todos.append( *it );
       }
     }
@@ -181,7 +185,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   }
 
   // Duplicate current calendar by loading in new calendar object
-  CalendarLocal archiveCalendar( KCalPrefs::instance()->timeSpec() );
+  MemoryCalendar archiveCalendar( KCalPrefs::instance()->timeSpec() );
 
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.fileName() );
@@ -199,7 +203,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   foreach(const Akonadi::Item &item, incidences) {
     uids.append( Akonadi::incidence(item)->uid() );
   }
-  foreach(Incidence *inc, allIncidences) {
+  foreach( const Incidence::Ptr inc, allIncidences) {
     if ( !uids.contains( inc->uid() ) ) {
       archiveCalendar.deleteIncidence( inc );
     }
@@ -228,7 +232,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   if ( !archiveStore.save() ) {
     QString errmess;
     if ( format->exception() ) {
-      errmess = format->exception()->message();
+      errmess = Stringify::errorMessage( *format->exception() );
     } else {
       errmess = i18nc( "save failure cause unknown", "Reason unknown" );
     }
@@ -257,7 +261,10 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   emit eventsDeleted();
 }
 
-bool EventArchiver::isSubTreeComplete( const Todo *todo, const QDate &limitDate, QStringList checkedUids ) const
+bool EventArchiver::isSubTreeComplete( Akonadi::Calendar *calendar,
+                                       const Todo::Ptr &todo,
+                                       const QDate &limitDate,
+                                       QStringList checkedUids ) const
 {
   if ( !todo->isCompleted() || todo->completed().date() >= limitDate ) {
     return false;
@@ -271,14 +278,15 @@ bool EventArchiver::isSubTreeComplete( const Todo *todo, const QDate &limitDate,
   }
 
   checkedUids.append( todo->uid() );
+  const Akonadi::Item item = calendar->itemForIncidenceUid( todo->uid() );
+  Item::List relations = calendar->findChildren( item );
+  foreach( const Akonadi::Item &item, relations ) {
 
-  foreach( const Incidence *i, todo->relations() ) {
-
-    if ( i->type() == Incidence::TypeTodo ) {
-      const Todo *t = static_cast<const Todo*>( i );
-      if ( !isSubTreeComplete( t, limitDate, checkedUids ) ) {
+    if ( Akonadi::hasTodo( item ) ) {
+      const Todo::Ptr t = Akonadi::todo( item );
+      if ( !isSubTreeComplete( calendar, t, limitDate, checkedUids ) ) {
         return false;
-      }      
+      }
     }
   }
 
