@@ -23,9 +23,9 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
-#include <KCal/calendar.h>
-#include <KCal/event.h>
-#include <KCal/todo.h>
+#include <KCal/Calendar>
+#include <KCal/Event>
+#include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
 
 #include <akonadi/contact/contactsearchjob.h>
@@ -47,7 +47,7 @@
 #include <QtCore/QMap>
 #include <QtGui/QApplication>
 
-using namespace KCalCore;
+using namespace KCal;
 using namespace KOrg;
 
 static QString cleanChars( const QString &txt );

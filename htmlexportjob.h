@@ -37,7 +37,7 @@ namespace KCal {
   class Todo;
 }
 
-using namespace KCalCore;
+using namespace KCal;
 
 namespace Akonadi {
   class Calendar;
