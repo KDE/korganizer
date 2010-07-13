@@ -50,7 +50,7 @@ namespace Akonadi {
   class Calendar;
 }
 
-namespace KCal {
+namespace KCalCore {
   class CalFilter;
 }
 

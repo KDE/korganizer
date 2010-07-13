@@ -80,10 +80,10 @@ class PrintPlugin : public KOrg::Plugin
 
     virtual void setCalendar( Akonadi::Calendar *cal ) { mCalendar = cal; }
 
-    virtual void setSelectedIncidences( KCalCore::Incidence::Ptr ::List inc )
+    virtual void setSelectedIncidences( KCalCore::Incidence::List inc )
     { mSelectedIncidences = inc; }
 
-    virtual KCalCore::Incidence::Ptr ::List selectedIncidences() const
+    virtual KCalCore::Incidence::List selectedIncidences() const
     { return mSelectedIncidences; }
 
     /**
@@ -176,7 +176,7 @@ class PrintPlugin : public KOrg::Plugin
         of the selected plugin */
     QPrinter *mPrinter;
     Akonadi::Calendar *mCalendar;
-    KCalCore::Incidence::Ptr ::List mSelectedIncidences;
+    KCalCore::Incidence::List mSelectedIncidences;
     KConfig *mConfig;
 };
 
