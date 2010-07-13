@@ -56,7 +56,7 @@ int main( int argc, char **argv )
   KDateTime now = KDateTime::currentLocalDateTime();
   e1->setDtStart( now );
   e1->setDtEnd( now.addDays( 1 ) );
-  Alarm *a = e1->newAlarm();
+  Alarm::Ptr a = e1->newAlarm();
 //  a->setProcedureAlarm( "/usr/X11R6/bin/xeyes" );
   a->setAudioAlarm( "/data/kde/share/apps/korganizer/sounds/spinout.wav" );
 

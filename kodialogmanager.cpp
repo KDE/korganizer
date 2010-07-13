@@ -37,7 +37,7 @@
 
 #include <Akonadi/Item>
 
-#include <KCal/IncidenceBase>
+#include <KCalCore/IncidenceBase>
 
 #include <incidenceeditors/eventeditor.h>
 #include <incidenceeditors/journaleditor.h>

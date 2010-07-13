@@ -38,7 +38,7 @@
 
 #include <QApplication>
 #include <QKeyEvent>
-#include <KCal/incidence.h>
+#include <KCalCore/incidence.h>
 #include <KXMLGUIClient>
 #include <KXMLGUIFactory>
 

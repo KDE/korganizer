@@ -36,7 +36,7 @@
 #include <akonadi/kcal/calendarsearch.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/incidence.h>
+#include <KCalCore/incidence.h>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>

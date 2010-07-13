@@ -30,7 +30,7 @@
 
 #include <incidenceeditors/customlistviewitem.h>
 
-#include <KCal/incidence.h>
+#include <KCalCore/incidence.h>
 
 #include <QHash>
 #include <QList>

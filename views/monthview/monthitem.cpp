@@ -35,9 +35,9 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/incidence.h>
-#include <KCal/IncidenceFormatter>
-#include <KCal/todo.h>
+#include <KCalCore/incidence.h>
+#include <KCalCore/IncidenceFormatter>
+#include <KCalCore/todo.h>
 
 using namespace Akonadi;
 using namespace KOrg;

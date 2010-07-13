@@ -31,12 +31,12 @@
 #include "koprefs.h"
 
 #include <KABC/VCardDrag>
-#include <KCal/event.h>
-#include <KCal/icaldrag.h>
-#include <KCal/incidence.h>
-#include <KCal/IncidenceFormatter>
-#include <KCal/todo.h>
-#include <KCal/VCalDrag>
+#include <KCalCore/event.h>
+#include <KCalCore/icaldrag.h>
+#include <KCalCore/incidence.h>
+#include <KCalCore/IncidenceFormatter>
+#include <KCalCore/todo.h>
+#include <KCalCore/VCalDrag>
 
 #include <akonadi/kcal/utils.h>
 

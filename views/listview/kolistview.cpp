@@ -34,9 +34,9 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCal/IncidenceFormatter>
-#include <KCal/todo.h>
-#include <KCal/Journal>
+#include <KCalCore/IncidenceFormatter>
+#include <KCalCore/todo.h>
+#include <KCalCore/Journal>
 
 #include <QBoxLayout>
 
