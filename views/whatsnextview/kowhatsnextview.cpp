@@ -29,7 +29,7 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
-#include <kcalcore/IncidenceFormatter>
+#include <kcalutils/incidenceformatter.h>
 #include <kcalcore/todo.h>
 
 #include <QBoxLayout>

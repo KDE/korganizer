@@ -24,7 +24,7 @@
 using namespace KOrg;
 
 #include <kcalcore/incidence.h>
-#include <kcalcore/IncidenceFormatter>
+#include <kcalutils/incidenceformatter.h>
 
 #include "kdgantt2/kdganttglobal.h"
 

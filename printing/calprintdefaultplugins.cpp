@@ -33,7 +33,7 @@
 
 #include <kcalprefs.h>
 #include <kcalcore/todo.h>
-#include <kcalcore/IncidenceFormatter>
+#include <kcalutils/incidenceformatter.h>
 
 #include <KCalendarSystem>
 #include <KDateTime>

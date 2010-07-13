@@ -26,7 +26,7 @@
 #include <kcalcore/calendar.h>
 #include <kcalcore/event.h>
 #include <kcalcore/todo.h>
-#include <kcalcore/IncidenceFormatter>
+#include <kcalutils/incidenceformatter.h>
 
 #include <akonadi/contact/contactsearchjob.h>
 #include <akonadi/kcal/calendar.h>

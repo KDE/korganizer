@@ -36,7 +36,7 @@
 #include <akonadi/kcal/utils.h>
 
 #include <kcalcore/incidence.h>
-#include <kcalcore/IncidenceFormatter>
+#include <kcalutils/incidenceformatter.h>
 #include <kcalcore/todo.h>
 
 using namespace Akonadi;

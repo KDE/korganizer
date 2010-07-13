@@ -109,7 +109,7 @@ class KOListView : public KOEventView
 
   private:
     KOListViewItem *getItemForIncidence( const Akonadi::Item & );
-    KCalCore::Incidence::Ptr ::Ptr incidenceForId( const Akonadi::Item::Id &id ) const;
+    KCalCore::Incidence::Ptr incidenceForId( const Akonadi::Item::Id &id ) const;
 
   private:
     class ListItemVisitor;
