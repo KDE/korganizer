@@ -48,7 +48,7 @@ class CalendarViewBase : public QWidget
     explicit CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
     virtual ~CalendarViewBase() {}
 
-    virtual Akonadi::Calendar *calendar() = 0;
+    virtual Akonadi::Calendar *calendar() const = 0;
     virtual Akonadi::IncidenceChanger *incidenceChanger() const = 0;
 
     virtual QDate startDate() = 0;

@@ -87,7 +87,7 @@ void KOListViewToolTip::maybeTip( const QPoint &pos )
   This class provides the initialization of a KOListViewItem for calendar
   components using the Incidence::Visitor.
 */
-class KOListView::ListItemVisitor : public IncidenceBase::Visitor
+class KOListView::ListItemVisitor : public Visitor
 {
   public:
     ListItemVisitor( KOListViewItem *item ) : mItem( item ) {}

@@ -94,7 +94,7 @@ void HtmlExportJob::start()
     const Attendee::List attendees = eventPtr->attendees();
     if ( !attendees.isEmpty() ) {
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
-      job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer().email() );
+      job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer()->email() );
       job->setProperty( "incidenceUid", eventPtr->uid() );
       connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
       job->start();
@@ -111,7 +111,7 @@ void HtmlExportJob::start()
     const Attendee::List attendees = todoPtr->attendees();
     if ( !attendees.isEmpty() ) {
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
-      job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer().email() );
+      job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer()->email() );
       job->setProperty( "incidenceUid", todoPtr->uid() );
       connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
       job->start();
@@ -725,10 +725,10 @@ void HtmlExportJob::formatAttendees( QTextStream *ts, Incidence *incidence )
     *ts << "<em>";
     const KABC::Addressee organizer = d->mOrganizersMap.value( incidence->uid() );
     if ( !organizer.isEmpty() ) {
-      *ts << "<a href=\"mailto:" << incidence->organizer().email() << "\">";
+      *ts << "<a href=\"mailto:" << incidence->organizer()->email() << "\">";
       *ts << cleanChars( organizer.formattedName() ) << "</a>" << endl;
     } else {
-      *ts << incidence->organizer().fullName();
+      *ts << incidence->organizer()->fullName();
     }
     *ts << "</em><br />";
     Attendee::List::ConstIterator it;

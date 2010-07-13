@@ -241,9 +241,9 @@ void ActionManager::createCalendarAkonadi()
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
-  monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::eventMimeType(), true );
-  monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::todoMimeType(), true );
-  monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::journalMimeType(), true );
+  monitor->setMimeTypeMonitored( IncidenceBase::sEventMimeType, true );
+  monitor->setMimeTypeMonitored( IncidenceBase::todoMimeType, true );
+  monitor->setMimeTypeMonitored( IncidenceBase::journalMimeType, true );
   mCalendarModel = new CalendarModel( monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
@@ -1581,7 +1581,7 @@ QString ActionManager::localFileName()
   return mFile;
 }
 
-class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
+class ActionManager::ActionStringsVisitor : public Visitor
 {
   public:
     ActionStringsVisitor() : mShow( 0 ), mEdit( 0 ), mDelete( 0 ) {}

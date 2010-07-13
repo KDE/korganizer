@@ -30,6 +30,8 @@
 #include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
+#include <kcalcore/visitor.h>
+
 #include <akonadi/kcal/calendar.h>
 
 #include <Akonadi/Item>
@@ -102,14 +104,14 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     CalendarView( QWidget *parent=0 );
     virtual ~CalendarView();
 
-    class CalendarViewVisitor : public IncidenceBase::Visitor
+    class CalendarViewVisitor : public Visitor
     {
       public:
         CalendarViewVisitor() : mView( 0 ) {}
-        bool act( IncidenceBase *incidence, CalendarView *view )
+        bool act( IncidenceBase::Ptr &incidence, CalendarView *view )
         {
           mView = view;
-          return incidence->accept( *this );
+          return incidence->accept( *this, incidence );
         }
       protected:
         CalendarView *mView;
@@ -121,10 +123,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       public:
         explicit CanDeleteIncidenceVisitor( const Akonadi::Item& i ) : item( i ) {}
       protected:
-        bool visit( Event * ) { return mView->deleteEvent( item ); }
-        bool visit( Todo * ) { return mView->deleteTodo( item ); }
-        bool visit( Journal * ) { return mView->deleteJournal( item ); }
-        bool visit( FreeBusy * ) { return false; }
+        bool visit( Event::Ptr  ) { return mView->deleteEvent( item ); }
+        bool visit( Todo::Ptr  ) { return mView->deleteTodo( item ); }
+        bool visit( Journal::Ptr ) { return mView->deleteJournal( item ); }
+        bool visit( FreeBusy::Ptr  ) { return false; }
 
     };
 

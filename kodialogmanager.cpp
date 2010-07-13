@@ -57,7 +57,7 @@ using namespace IncidenceEditors;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 
-class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
+class KODialogManager::DialogManagerVisitor : public Visitor
 {
   public:
     DialogManagerVisitor() : mDialogManager( 0 ) {}

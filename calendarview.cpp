@@ -2225,7 +2225,7 @@ void CalendarView::processIncidenceSelection( const Item &item, const QDate &dat
   bool todo = false;
   bool subtodo = false;
 
-  organizerEvents = KCalPrefs::instance()->thatIsMe( incidence->organizer().email() );
+  organizerEvents = KCalPrefs::instance()->thatIsMe( incidence->organizer()->email() );
   groupEvents = incidence->attendeeByMails( KCalPrefs::instance()->allEmails() );
 
   if ( incidence->type() == "Todo" ) {

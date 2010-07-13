@@ -117,7 +117,7 @@ void CalPrintIncidence::saveConfig()
   }
 }
 
-class TimePrintStringsVisitor : public IncidenceBase::Visitor
+class TimePrintStringsVisitor : public Visitor
 {
   public:
     TimePrintStringsVisitor() {}
@@ -380,7 +380,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect organizerBox( timesBox.left() + padding(), h + padding(),
                         timesBox.right() - padding(), lineHeight );
     h = qMax( printCaptionAndText( p, organizerBox, i18n( "Organizer: " ),
-                                   (*it)->organizer().fullName(), captionFont, textFont ), h );
+                                   (*it)->organizer()->fullName(), captionFont, textFont ), h );
 
     // Finally, draw the frame around the time information...
     timesBox.setBottom( qMax( timesBox.bottom(), h + padding() ) );
