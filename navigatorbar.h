@@ -24,7 +24,7 @@
 #ifndef NAVIGATORBAR_H
 #define NAVIGATORBAR_H
 
-#include <KCalCore/IncidenceBase>
+#include <kcalcore/incidencebase.h>
 using namespace KCalCore;
 
 #include <QDate>

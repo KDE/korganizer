@@ -34,7 +34,7 @@
 
 #include <akonadi/kcal/calendar.h>
 
-#include <KCalCore/calfilter.h>
+#include <kcalcore/calfilter.h>
 
 #include <KLineEdit>
 

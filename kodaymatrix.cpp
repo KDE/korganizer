@@ -30,8 +30,8 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCalCore/icaldrag.h>
-#include <KCalCore/VCalDrag>
+#include <kcalutils/icaldrag.h>
+#include <kcalcore/VCalDrag>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>

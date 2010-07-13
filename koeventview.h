@@ -26,7 +26,7 @@
 #ifndef KOEVENTVIEW_H
 #define KOEVENTVIEW_H
 
-#include <KCalCore/todo.h>
+#include <kcalcore/todo.h>
 #include "korganizer/baseview.h"
 
 namespace KCal {

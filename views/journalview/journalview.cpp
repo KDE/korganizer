@@ -35,7 +35,7 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <kcalcore/incidenceformatter.h>
+#include <kcalutils/incidenceformatter.h>
 #include <kcalcore/journal.h>
 
 #include <akonadi/kcal/utils.h>

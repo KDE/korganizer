@@ -43,8 +43,8 @@
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
-#include <KCalCore/calfilter.h>
-#include <KCalCore/CalFormat>
+#include <kcalcore/calfilter.h>
+#include <kcalcore/CalFormat>
 
 #include <KCalendarSystem>
 #include <KGlobalSettings>

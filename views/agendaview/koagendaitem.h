@@ -27,6 +27,8 @@
 
 #include "cellitem.h"
 
+#include <kcalcore/incidence.h>
+
 #include <Akonadi/Item>
 
 #include <QDate>

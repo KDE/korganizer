@@ -46,7 +46,7 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
-#include <KCalCore/filestorage.h>
+#include <kcalcore/filestorage.h>
 
 #include <KMime/KMimeMessage>
 

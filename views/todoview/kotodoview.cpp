@@ -46,9 +46,9 @@
 
 #include <akonadi/kcal/utils.h>
 
-#include <KCalCore/CalFormat>
-#include <KCalCore/incidence.h>
-#include <KCalCore/todo.h>
+#include <kcalcore/CalFormat>
+#include <kcalcore/incidence.h>
+#include <kcalcore/todo.h>
 
 #include <QCheckBox>
 #include <QGridLayout>

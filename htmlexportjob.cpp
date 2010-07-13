@@ -23,10 +23,10 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
-#include <KCalCore/calendar.h>
-#include <KCalCore/event.h>
-#include <KCalCore/todo.h>
-#include <KCalCore/IncidenceFormatter>
+#include <kcalcore/calendar.h>
+#include <kcalcore/event.h>
+#include <kcalcore/todo.h>
+#include <kcalcore/IncidenceFormatter>
 
 #include <akonadi/contact/contactsearchjob.h>
 #include <akonadi/kcal/calendar.h>

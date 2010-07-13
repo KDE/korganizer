@@ -23,8 +23,8 @@
 #include <kcalprefs.h>
 using namespace KOrg;
 
-#include <KCalCore/incidence.h>
-#include <KCalCore/IncidenceFormatter>
+#include <kcalcore/incidence.h>
+#include <kcalcore/IncidenceFormatter>
 
 #include "kdgantt2/kdganttglobal.h"
 

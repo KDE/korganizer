@@ -30,7 +30,7 @@
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
 
-#include <KCalCore/IncidenceFormatter>
+#include <kcalcore/IncidenceFormatter>
 
 #include <akonadi/kcal/utils.h>
 

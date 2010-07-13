@@ -27,14 +27,14 @@
 #include "koprefs.h"
 #include "kohelper.h"
 
-#include <KCalCore/CalFormat>
-#include <KCalCore/incidence.h>
-#include <KCalCore/IncidenceFormatter>
-#include <KCalCore/todo.h>
+#include <kcalcore/calformat.h>
+#include <kcalcore/incidence.h>
+#include <kcalcore/todo.h>
+#include <kcalutils/incidenceformatter.h>
 #ifndef KORG_NODND
-#include <KCalCore/dndfactory.h>
-#include <KCalCore/icaldrag.h>
-#include <KCalCore/VCalDrag>
+#include <kcalutils/dndfactory.h>
+#include <kcalutils/icaldrag.h>
+#include <kcalutils/vcaldrag.h>
 #endif
 
 #include <kcalprefs.h>

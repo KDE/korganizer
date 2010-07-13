@@ -34,7 +34,7 @@
 
 #include <akonadi/kcal/utils.h>
 
-#include <KCalCore/incidence.h>
+#include <kcalcore/incidence.h>
 
 #include <KActionCollection>
 #include <KLocale>

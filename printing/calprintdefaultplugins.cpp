@@ -32,8 +32,8 @@
 #include <akonadi/kcal/utils.h>
 
 #include <kcalprefs.h>
-#include <KCalCore/todo.h>
-#include <KCalCore/IncidenceFormatter>
+#include <kcalcore/todo.h>
+#include <kcalcore/IncidenceFormatter>
 
 #include <KCalendarSystem>
 #include <KDateTime>

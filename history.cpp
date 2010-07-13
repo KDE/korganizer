@@ -30,7 +30,7 @@
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <KCalCore/incidence.h>
+#include <kcalcore/incidence.h>
 #include <Akonadi/Item>
 
 #include <klocale.h>

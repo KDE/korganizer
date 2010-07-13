@@ -31,12 +31,14 @@
 #include "koprefs.h"
 
 #include <KABC/VCardDrag>
-#include <KCalCore/event.h>
-#include <KCalCore/icaldrag.h>
-#include <KCalCore/incidence.h>
-#include <KCalCore/IncidenceFormatter>
-#include <KCalCore/todo.h>
-#include <KCalCore/VCalDrag>
+#include <kcalcore/event.h>
+#include <kcalutils/icaldrag.h>
+#include <kcalcore/incidence.h>
+
+#include <kcalcore/todo.h>
+
+#include <kcalutils/vcaldrag.h>
+#include <kcalutils/incidenceformatter.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -53,6 +55,7 @@
 
 using namespace Akonadi;
 using namespace KOrg;
+using namespace KCalUtils;
 
 //-----------------------------------------------------------------------------
 
@@ -748,7 +751,7 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
     return;
   }
 
-  QPixmap tPxmp;    
+  QPixmap tPxmp;
   if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     mSpecialEvent = true;
     tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );

@@ -73,13 +73,13 @@
 #include <akonadi/kcal/incidenceviewer.h>
 #include <akonadi/kcal/kcalprefs.h>
 
-#include <KCalCore/calendar.h>
-#include <KCalCore/calfilter.h>
-#include <KCalCore/filestorage.h>
-#include <KCalCore/freebusy.h>
-#include <KCalCore/icaldrag.h>
-#include <KCalCore/icalformat.h>
-#include <KCalCore/vcalformat.h>
+#include <kcalcore/calendar.h>
+#include <kcalcore/calfilter.h>
+#include <kcalcore/filestorage.h>
+#include <kcalcore/freebusy.h>
+#include <kcalutils/icaldrag.h>
+#include <kcalcore/icalformat.h>
+#include <kcalcore/vcalformat.h>
 
 #include <KHolidays/Holidays>
 

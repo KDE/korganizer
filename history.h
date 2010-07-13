@@ -29,7 +29,7 @@
 #include <Akonadi/Item>
 #include <Akonadi/Collection>
 
-#include <KCalCore/incidence.h>
+#include <kcalcore/incidence.h>
 
 #include <QObject>
 #include <QStack>
