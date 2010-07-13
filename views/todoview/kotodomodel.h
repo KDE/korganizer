@@ -25,16 +25,14 @@
 #ifndef KOTODOMODEL_H
 #define KOTODOMODEL_H
 
+#include <kcalcore/todo.h>
+
 #include <QAbstractItemModel>
 #include <QString>
 #include <QHash>
 
 #include <Akonadi/Item>
 
-namespace KCal {
-  class Incidence;
-  class Todo;
-}
 using namespace KCalCore;
 
 namespace Akonadi {

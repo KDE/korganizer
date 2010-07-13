@@ -113,7 +113,7 @@ struct KOTodoModel::TodoTreeNode : QObject
       toCheck << mChildren;
       while ( !toCheck.isEmpty() ) {
         TodoTreeNode *node = toCheck.takeFirst();
-        Q_ASSERT ( node->mToDelete || ! Akonadi::todo( node->mTodo )->relatedTo() );
+        Q_ASSERT ( node->mToDelete || Akonadi::todo( node->mTodo )->relatedTo().isEmpty() );
         toCheck << node->mChildren;
       }
 #endif
@@ -231,7 +231,7 @@ void KOTodoModel::reloadTodos()
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
     TodoTreeNode *tmp = findTodo( Akonadi::incidence( *it )->uid() );
     if ( !tmp ) {
-      kDebug()<<"Inserting " << Akonadi::todo(*it)->summary() << Akonadi::todo(*it)->relatedToUid() << Akonadi::todo(*it)->relatedTo();
+      kDebug()<<"Inserting " << Akonadi::todo(*it)->summary() << Akonadi::todo(*it)->relatedTo();
       insertTodo( *it );
     } else {
       // update pointer to the todo
