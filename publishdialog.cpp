@@ -84,7 +84,7 @@ PublishDialog::~PublishDialog()
 {
 }
 
-void PublishDialog::addAttendee( Attendee *attendee )
+void PublishDialog::addAttendee( const Attendee::Ptr &attendee )
 {
   mUI.mNameLineEdit->setEnabled( true );
   mUI.mEmailLineEdit->setEnabled( true );

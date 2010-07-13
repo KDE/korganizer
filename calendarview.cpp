@@ -73,12 +73,14 @@
 #include <akonadi/kcal/incidenceviewer.h>
 #include <akonadi/kcal/kcalprefs.h>
 
+#include <kcalcore/filestorage.h>
 #include <kcalcore/calendar.h>
 #include <kcalcore/calfilter.h>
 #include <kcalcore/freebusy.h>
 #include <kcalcore/icalformat.h>
 #include <kcalcore/vcalformat.h>
 
+#include <kcalutils/stringify.h>
 #include <kcalutils/icaldrag.h>
 #include <kcalutils/scheduler.h>
 
@@ -884,7 +886,7 @@ void CalendarView::edit_cut()
   Item::List items;
   int km = KMessageBox::Yes;
 
-  if ( !incidence->relations().isEmpty() &&
+  if ( !mCalendar->findChildren( item ).isEmpty() &&
        incidence->type() == Incidence::TypeTodo ) { // Only todos (yet?)
     km = KMessageBox::questionYesNoCancel( this,
                                            i18n("The item \"%1\" has sub-to-dos. "
@@ -926,7 +928,7 @@ void CalendarView::edit_copy()
   Item::List items;
   int km = KMessageBox::Yes;
 
-  if ( !incidence->relations().isEmpty() &&
+  if ( !mCalendar->findChildren( item ).isEmpty()  &&
        incidence->type() == Incidence::TypeTodo ) { // only todos.
     km = KMessageBox::questionYesNoCancel( this,
                                            i18n("The item \"%1\" has sub-to-dos. "
@@ -1013,7 +1015,7 @@ void CalendarView::edit_paste()
   for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
     // FIXME: use a visitor here
     if ( ( *it )->type() == Incidence::TypeEvent ) {
-      Event::Ptr pastedEvent = *it.staticCast<Event>() ;
+      Event::Ptr pastedEvent = ( *it ).staticCast<Event>();
       // only use selected area if event is of the same type (all-day or non-all-day
       // as the current selection is
       if ( aView && endDT.isValid() && useEndTime ) {
@@ -1042,7 +1044,7 @@ void CalendarView::edit_paste()
       // should be son of _selectedTodo
       Todo::Ptr _selectedTodo = Akonadi::todo( _selectedTodoItem );
       if ( _selectedTodo && pastedTodo->relatedTo().isEmpty() ) {
-        pastedTodo->setRelatedTo( _selectedTodo );
+        pastedTodo->setRelatedTo( _selectedTodo->uid() );
       }
 
       if ( selectedCollection.isValid() ) {
@@ -1410,7 +1412,7 @@ bool CalendarView::incidence_unsub( const Item &item )
 {
   const Incidence::Ptr inc = Akonadi::incidence( item );
 
-  if ( !inc || !inc->relatedTo() ) {
+  if ( !inc || inc->relatedTo().isEmpty() ) {
     return false;
   }
 
@@ -1437,12 +1439,12 @@ bool CalendarView::makeChildrenIndependent( const Item &item )
 {
   const Incidence::Ptr inc = Akonadi::incidence( item );
 
-  if ( !inc || inc->relations().isEmpty() ) {
+  Item::List subIncs = mCalendar->findChildren( item );
+
+  if ( !inc || subIncs.isEmpty() ) {
     return false;
   }
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
-
-  Item::List subIncs = mCalendar->findChildren( item );
 
   foreach( const Item &item, subIncs ) {
     incidence_unsub( item );
@@ -1881,7 +1883,7 @@ void CalendarView::schedule_forward( const Item &item )
   QPointer<PublishDialog> publishdlg = new PublishDialog;
   if ( publishdlg->exec() == QDialog::Accepted ) {
     const QString recipients = publishdlg->addresses();
-    if ( incidence->organizer().isEmpty() ) {
+    if ( incidence->organizer()->isEmpty() ) {
       incidence->setOrganizer( Person::Ptr( new Person( KCalPrefs::instance()->fullName(),
                                                         KCalPrefs::instance()->email() ) ) );
     }
@@ -2101,7 +2103,7 @@ void CalendarView::exportICalendar()
     if ( !storage.save() ) {
       QString errmess;
       if ( format->exception() ) {
-        errmess = format->exception()->message();
+        errmess = Stringify::errorMessage( *format->exception() );
       } else {
         errmess = i18nc( "save failure cause unknown", "Reason unknown" );
       }
@@ -2150,7 +2152,7 @@ void CalendarView::exportVCalendar()
     if ( !storage.save() ) {
       QString errmess;
       if ( format->exception() ) {
-        errmess = format->exception()->message();
+        errmess = Stringify::errorMessage( *format->exception() );
       } else {
         errmess = i18nc( "save failure cause unknown", "Reason unknown" );
       }

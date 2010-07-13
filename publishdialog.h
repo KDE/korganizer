@@ -40,7 +40,7 @@ class PublishDialog : public KDialog
     explicit PublishDialog( QWidget *parent=0 );
     ~PublishDialog();
 
-    void addAttendee( Attendee *attendee );
+    void addAttendee( const Attendee::Ptr &attendee );
     QString addresses();
 
   signals:
