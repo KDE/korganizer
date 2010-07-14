@@ -1563,28 +1563,79 @@ QPair<ResourceCalendar *, QString> ActionManager::viewSubResourceCalendar()
   return p;
 }
 
-bool ActionManager::readOnly( ResourceCalendar *res, const QString &subRes )
+bool ActionManager::isWritable( ResourceCalendar *res, const QString &subRes,
+                                const QString &contentsType )
 {
-  if ( res && ( res->readOnly() || !res->subresourceWritable( subRes ) ) ) {
-    QString resName = res->resourceName();
-    if ( res->canHaveSubresources() ) {
-      resName = res->labelForSubresource( subRes );
+
+  if ( res && res->isActive() ) {
+    // Check specified resource for writability.
+    if ( res->readOnly() || !res->subresourceWritable( subRes ) ) {
+      QString resName = res->resourceName();
+      if ( res->canHaveSubresources() ) {
+        resName = res->labelForSubresource( subRes );
+      }
+      KMessageBox::sorry(
+        dialogParent(),
+        i18n( "\"%1\" is read-only. "
+              "Please select a writable calendar before attempting to create a new item." ).
+        arg( resName ),
+        i18n( "Read-only calendar" ) );
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    // No specific resource so let's check all possible calendars for writability.
+    CalendarResourceManager *m = mCalendarResources->resourceManager();
+    CalendarResourceManager::ActiveIterator it;
+    for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
+      ResourceCalendar *res = (*it);
+      if ( res->canHaveSubresources() ) {
+        QStringList subResources = res->subresources();
+        for ( QStringList::ConstIterator subit = subResources.constBegin();
+              subit != subResources.constEnd(); ++subit ) {
+          if ( res->subresourceWritable( (*subit) ) && res->subresourceActive( (*subit) ) ) {
+            if ( res->subresourceType( *subit ).isEmpty() ||
+                 res->subresourceType( *subit ) == contentsType ) {
+              return true;
+            }
+          }
+        }
+      } else if ( !res->readOnly() ) {
+        return true;
+      }
+    }
+    //  we don't have any writable calendars
+    QString errorText;
+    if ( contentsType == "event" ) {
+      errorText =
+        i18n( "You have no active, writable event folder so saving will not be possible.\n"
+              "Please create or activate at least one writable event folder and try again." );
+    } else if ( contentsType == "todo" ) {
+      errorText =
+        i18n( "You have no active, writable to-do (task) folders so saving will not be possible.\n"
+              "Please create or activate at least one writable to-do folder and try again." );
+    } else if ( contentsType == "journal" ) {
+      errorText =
+        i18n( "You have no active, writable journal folder so saving will not be possible.\n"
+              "Please create or activate at least one writable calendar folder and try again." );
+    } else {
+      errorText =
+        i18n( "You have no active, writable calendar folder so saving will not be possible.\n"
+              "Please create or activate at least one writable calendar folder and try again." );
     }
     KMessageBox::sorry(
       dialogParent(),
-      i18n( "\"%1\" is read-only. "
-            "Please select a writable calendar before attempting to create a new item." ).
-      arg( resName ),
-      i18n( "Read-only calendar" ) );
-    return true;
+      errorText,
+      i18n( "No writable calendar" ) );
+    return false;
   }
-  return false;
 }
 
 void ActionManager::openEventEditor( const QString& text )
 {
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-  if ( !readOnly( p.first, p.second ) ) {
+  if ( isWritable( p.first, p.second, "event" ) ) {
     mCalendarView->newEvent( p.first, p.second, text );
   }
 }
@@ -1705,7 +1756,7 @@ void ActionManager::openEventEditor( const QString & summary,
 void ActionManager::openTodoEditor( const QString& text )
 {
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-  if ( !readOnly( p.first, p.second ) ) {
+  if ( isWritable( p.first, p.second, "todo" ) ) {
     mCalendarView->newTodo( p.first, p.second, text );
   }
 }
@@ -1787,7 +1838,7 @@ void ActionManager::openJournalEditor( const QString& text, const QDate& date )
 void ActionManager::openJournalEditor( const QString& text )
 {
   QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-  if ( !readOnly( p.first, p.second ) ) {
+  if ( isWritable( p.first, p.second, "journal" ) ) {
     mCalendarView->newJournal( p.first, p.second, text );
   }
 }

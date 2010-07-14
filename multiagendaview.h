@@ -46,7 +46,7 @@ class MultiAgendaView : public AgendaView
                               QWidget *parent = 0, const char *name = 0 );
     ~MultiAgendaView();
 
-    KOAgendaView *selectedAgendaView() { return mSelectedAgendaView; }
+    KOAgendaView *selectedAgendaView();
     Incidence::List selectedIncidences();
     DateList selectedIncidenceDates();
     int currentDateCount();

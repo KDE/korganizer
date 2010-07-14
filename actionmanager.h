@@ -366,7 +366,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void enableIncidenceActions( bool enable );
 
     QPair<ResourceCalendar *, QString> viewSubResourceCalendar();
-    bool readOnly( ResourceCalendar *res, const QString &subRes );
+    bool isWritable( ResourceCalendar *res, const QString &subRes, const QString &contentsType );
 
     KOrg::Part::List mParts; // List of parts loaded
     KURL mURL;      // URL of calendar file
