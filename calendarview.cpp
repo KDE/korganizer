@@ -1026,9 +1026,6 @@ void CalendarView::edit_paste()
         }
       }
 
-      // KCal supports events with relations, but korganizer doesn't
-      // so unset it. It can even come from other application.
-//      pastedEvent->setRelatedTo( 0 ); // KDAB_TODO: review
       pastedEvent->setRelatedTo( QString() );
       if ( selectedCollection.isValid() ) {
         mChanger->addIncidence( Event::Ptr( pastedEvent->clone() ), selectedCollection, this );

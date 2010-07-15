@@ -44,6 +44,7 @@
 
 #include <libkdepim/kdatepickerpopup.h>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <kcalcore/calformat.h>
@@ -490,9 +491,11 @@ void KOTodoView::contextMenu( const QPoint &pos )
     Akonadi::Item::List incidences = selectedIncidences();
     if ( !incidences.isEmpty() ) {
       Incidence::Ptr incidencePtr = incidences[0].payload<Incidence::Ptr>();
-      //KDAB_TODO REVIEW
-      //    mMakeSubtodosIndependent->setEnabled( !mCalendar->relations(incidencePtr->uid() ).isEmpty() );
-//      mMakeTodoIndependent->setEnabled( incidencePtr->relatedTo() );
+
+      if ( calendar() ) {
+        mMakeSubtodosIndependent->setEnabled( !calendar()->findChildren( incidencePtr ).isEmpty() );
+        mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
+      }
     }
 
     switch ( mView->indexAt( pos ).column() ) {
