@@ -374,15 +374,7 @@ QDate IncidenceMonthItem::realEndDate() const
     return QDate();
   }
 
-  KDateTime dt;
-  //KDAB_TODO: use a role here, so we don't have to if.
-  if ( mIsEvent ) {
-    dt = incidence->dateTime( Incidence::RoleEnd );
-  } else if ( mIsTodo ) {
-    dt = Akonadi::todo( mIncidence )->dtDue();
-  } else if ( mIsJournal ) {
-    dt = incidence->dtStart();
-  }
+  const KDateTime dt = incidence->dateTime( Incidence::RoleDisplayEnd );
 
   QDate end;
   if ( dt.isDateOnly() ) {
