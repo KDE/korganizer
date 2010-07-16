@@ -1618,7 +1618,7 @@ bool ActionManager::isWritable( ResourceCalendar *res, const QString &subRes,
     } else if ( contentsType == "journal" ) {
       errorText =
         i18n( "You have no active, writable journal folder so saving will not be possible.\n"
-              "Please create or activate at least one writable calendar folder and try again." );
+              "Please create or activate at least one writable journal folder and try again." );
     } else {
       errorText =
         i18n( "You have no active, writable calendar folder so saving will not be possible.\n"
