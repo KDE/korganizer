@@ -24,21 +24,20 @@
 
 #include <kjob.h>
 
-#include <kcalcore/incidence.h>
-#include <kcalcore/event.h>
-#include <kcalcore/todo.h>
-
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
 
 class QTextStream;
 
-namespace KCalCore {
+namespace KCal {
   class Calendar;
+  class Event;
+  class Incidence;
+  class Todo;
 }
 
-using namespace KCalCore;
+using namespace KCal;
 
 namespace Akonadi {
   class Calendar;
@@ -74,16 +73,16 @@ class HtmlExportJob : public KJob
     void createJournalView( QTextStream *ts );
     void createFreeBusyView( QTextStream *ts );
 
-    void createTodo( QTextStream *ts, const Todo::Ptr &todo );
-    void createEvent( QTextStream *ts, const Event::Ptr &event, QDate date,
+    void createTodo( QTextStream *ts, Todo *todo );
+    void createEvent( QTextStream *ts, Event *event, QDate date,
                       bool withDescription = true );
     void createFooter( QTextStream *ts );
 
-    bool checkSecrecy( const Incidence::Ptr &incidence );
+    bool checkSecrecy( Incidence *incidence );
 
-    void formatLocation( QTextStream *ts, const Incidence::Ptr &incidence );
-    void formatCategories( QTextStream *ts, const Incidence::Ptr &incidence );
-    void formatAttendees( QTextStream *ts, const Incidence::Ptr &incidence );
+    void formatLocation( QTextStream *ts, Incidence *incidence );
+    void formatCategories( QTextStream *ts, Incidence *incidence );
+    void formatAttendees( QTextStream *ts, Incidence *incidence );
 
     QString breakString( const QString &text );
 
