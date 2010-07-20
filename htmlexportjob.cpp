@@ -23,10 +23,10 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
-#include <kcalcore/calendar.h>
-#include <kcalcore/event.h>
-#include <kcalcore/todo.h>
-#include <kcalutils/incidenceformatter.h>
+#include <KCal/Calendar>
+#include <KCal/Event>
+#include <KCal/Todo>
+#include <KCal/IncidenceFormatter>
 
 #include <akonadi/contact/contactsearchjob.h>
 #include <akonadi/kcal/calendar.h>
@@ -47,8 +47,7 @@
 #include <QtCore/QMap>
 #include <QtGui/QApplication>
 
-using namespace KCalCore;
-using namespace KCalUtils;
+using namespace KCal;
 using namespace KOrg;
 
 static QString cleanChars( const QString &txt );
@@ -95,7 +94,7 @@ void HtmlExportJob::start()
     const Attendee::List attendees = eventPtr->attendees();
     if ( !attendees.isEmpty() ) {
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
-      job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer()->email() );
+      job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer().email() );
       job->setProperty( "incidenceUid", eventPtr->uid() );
       connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
       job->start();
@@ -112,7 +111,7 @@ void HtmlExportJob::start()
     const Attendee::List attendees = todoPtr->attendees();
     if ( !attendees.isEmpty() ) {
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
-      job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer()->email() );
+      job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer().email() );
       job->setProperty( "incidenceUid", todoPtr->uid() );
       connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
       job->start();
@@ -334,8 +333,8 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
             foreach(const Akonadi::Item &event, events) {
               Q_ASSERT( event.hasPayload<Event::Ptr>() );
               Event::Ptr e = event.payload<Event::Ptr>();
-              if ( checkSecrecy( e ) ) {
-                createEvent( ts, e, start, false );
+              if ( checkSecrecy( e.get() ) ) {
+                createEvent( ts, e.get(), start, false );
               }
             }
             *ts << "</table>";
@@ -403,8 +402,8 @@ void HtmlExportJob::createEventList( QTextStream *ts )
       foreach(const Akonadi::Item &event, events) {
         Q_ASSERT( event.hasPayload<Event::Ptr>() );
         Event::Ptr e = event.payload<Event::Ptr>();
-        if ( checkSecrecy( e ) ) {
-          createEvent( ts, e, dt );
+        if ( checkSecrecy( e.get() ) ) {
+          createEvent( ts, e.get(), dt );
         }
       }
     }
@@ -413,8 +412,8 @@ void HtmlExportJob::createEventList( QTextStream *ts )
   *ts << "</table>" << endl;
 }
 
-void HtmlExportJob::createEvent ( QTextStream *ts, const Event::Ptr &event,
-                                  QDate date, bool withDescription )
+void HtmlExportJob::createEvent ( QTextStream *ts, Event *event,
+                               QDate date, bool withDescription )
 {
   kDebug() << event->summary();
   *ts << "  <tr>" << endl;
@@ -487,15 +486,15 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   for ( int i = 1; i <= 9; ++i ) {
     foreach(const Akonadi::Item &rawTodo, rawTodoList) {
       Todo::Ptr t = rawTodo.payload<Todo::Ptr>();
-      if ( t->priority() == i && checkSecrecy( t ) ) {
-        todoList.append( t );
+      if ( t->priority() == i && checkSecrecy( t.get() ) ) {
+        todoList.append( t.get() );
       }
     }
   }
   foreach(const Akonadi::Item &rawTodo, rawTodoList) {
     Todo::Ptr t = rawTodo.payload<Todo::Ptr>();
-    if ( t->priority() == 0 && checkSecrecy( t ) ) {
-      todoList.append( t );
+    if ( t->priority() == 0 && checkSecrecy( t.get() ) ) {
+      todoList.append( t.get() );
     }
   }
 
@@ -526,8 +525,8 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
 
   // Create top-level list.
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    const QString parentUid = (*it)->relatedTo();
-    if ( parentUid.isEmpty() ) {
+    Incidence *related = (*it)->relatedTo();
+    if ( ! related ) {
       createTodo( ts, *it );
     }
   }
@@ -535,10 +534,7 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   //REVIEW(AKONADI_PORT) relations/relatedTo usage: ok right now, as relations should yield the same result as mCalendar->findChildren and items are not needed here
   // Create sub-level lists
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-
-    Akonadi::Item item = d->mCalendar->itemForIncidenceUid( ( *it )->uid() );
-    const Akonadi::Item::List relations = d->mCalendar->findChildren( item );
-
+    Incidence::List relations = (*it)->relations(); //REVIEW(AKONADI_PORT)
     if ( !relations.isEmpty() ) {
       // Generate sub-to-do list
       *ts << "  <tr>" << endl;
@@ -555,16 +551,17 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
       // FIXME: Sort list by priorities. This is brute force and should be
       // replaced by a real sorting algorithm.
       for ( int i = 1; i <= 9; ++i ) {
-        foreach( const Akonadi::Item &item, relations ) {
-          Todo::Ptr ev3 = Akonadi::todo( item );
+        Incidence::List::ConstIterator it2;
+        for ( it2 = relations.constBegin(); it2 != relations.constEnd(); ++it2 ) {
+          Todo *ev3 = dynamic_cast<Todo *>( *it2 );
           if ( ev3 && ev3->priority() == i ) {
             sortedList.append( ev3 );
           }
         }
       }
-
-      foreach( const Akonadi::Item &item, relations ) {
-        Todo::Ptr ev3 = Akonadi::todo( item );
+      Incidence::List::ConstIterator it2;
+      for ( it2 = relations.constBegin(); it2 != relations.constEnd(); ++it2 ) {
+        Todo *ev3 = dynamic_cast<Todo *>( *it2 );
         if ( ev3 && ev3->priority() == 0 ) {
           sortedList.append( ev3 );
         }
@@ -580,14 +577,12 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   *ts << "</table>" << endl;
 }
 
-void HtmlExportJob::createTodo( QTextStream *ts, const Todo::Ptr &todo )
+void HtmlExportJob::createTodo( QTextStream *ts, Todo *todo )
 {
   kDebug();
 
-  const bool completed = todo->isCompleted();
-
-  Akonadi::Item it = d->mCalendar->itemForIncidenceUid( todo->uid() );
-  Akonadi::Item::List relations = d->mCalendar->findChildren( it );
+  bool completed = todo->isCompleted();
+  Incidence::List relations = todo->relations();
 
   *ts << "<tr>" << endl;
 
@@ -689,7 +684,7 @@ void HtmlExportJob::createFreeBusyView( QTextStream *ts )
   // FIXME: Implement this!
 }
 
-bool HtmlExportJob::checkSecrecy( const Incidence::Ptr &incidence )
+bool HtmlExportJob::checkSecrecy( Incidence *incidence )
 {
   int secrecy = incidence->secrecy();
   if ( secrecy == Incidence::SecrecyPublic ) {
@@ -705,7 +700,7 @@ bool HtmlExportJob::checkSecrecy( const Incidence::Ptr &incidence )
   return false;
 }
 
-void HtmlExportJob::formatLocation( QTextStream *ts, const Incidence::Ptr &incidence )
+void HtmlExportJob::formatLocation( QTextStream *ts, Incidence *incidence )
 {
   if ( !incidence->location().isEmpty() ) {
     *ts << "    " << cleanChars( incidence->location() ) << endl;
@@ -714,7 +709,7 @@ void HtmlExportJob::formatLocation( QTextStream *ts, const Incidence::Ptr &incid
   }
 }
 
-void HtmlExportJob::formatCategories( QTextStream *ts, const Incidence::Ptr &incidence )
+void HtmlExportJob::formatCategories( QTextStream *ts, Incidence *incidence )
 {
   if ( !incidence->categoriesStr().isEmpty() ) {
     *ts << "    " << cleanChars( incidence->categoriesStr() ) << endl;
@@ -723,22 +718,22 @@ void HtmlExportJob::formatCategories( QTextStream *ts, const Incidence::Ptr &inc
   }
 }
 
-void HtmlExportJob::formatAttendees( QTextStream *ts, const Incidence::Ptr &incidence )
+void HtmlExportJob::formatAttendees( QTextStream *ts, Incidence *incidence )
 {
   Attendee::List attendees = incidence->attendees();
   if ( attendees.count() ) {
     *ts << "<em>";
     const KABC::Addressee organizer = d->mOrganizersMap.value( incidence->uid() );
     if ( !organizer.isEmpty() ) {
-      *ts << "<a href=\"mailto:" << incidence->organizer()->email() << "\">";
+      *ts << "<a href=\"mailto:" << incidence->organizer().email() << "\">";
       *ts << cleanChars( organizer.formattedName() ) << "</a>" << endl;
     } else {
-      *ts << incidence->organizer()->fullName();
+      *ts << incidence->organizer().fullName();
     }
     *ts << "</em><br />";
     Attendee::List::ConstIterator it;
     for ( it = attendees.constBegin(); it != attendees.constEnd(); ++it ) {
-      Attendee::Ptr a = *it;
+      Attendee *a = *it;
       if ( !a->email().isEmpty() ) {
         *ts << "<a href=\"mailto:" << a->email();
         *ts << "\">" << cleanChars( a->name() ) << "</a>";
