@@ -252,7 +252,7 @@ void KOEventEditor::loadDefaults()
 
 bool KOEventEditor::processInput()
 {
-  kdDebug(5850) << "KOEventEditor::processInput()" << endl;
+  kdDebug(5850) << "KOEventEditor::processInput(); event is " << mEvent << endl;
 
   if ( !validateInput() || !mChanger ) {
     kdDebug(5850) << " mChanger is " << mChanger << endl;
@@ -272,11 +272,12 @@ bool KOEventEditor::processInput()
 
     if( *event == *mEvent ) {
       // Don't do anything
-      kdDebug(5850) << "Event not changed\n";
-      if ( mIsCounter )
+      kdDebug(5850) << "Event not changed" << endl;
+      if ( mIsCounter ) {
         KMessageBox::information( this, i18n("You didn't change the event, thus no counter proposal has been sent to the organizer."), i18n("No changes") );
+      }
     } else {
-      kdDebug(5850) << "Event changed\n";
+      kdDebug(5850) << "Event changed" << endl;
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
       if ( mIsCounter ) {
@@ -314,7 +315,9 @@ bool KOEventEditor::processInput()
     }
   }
   // if "this" was deleted, freeBusy is 0 (being a guardedptr)
-  if ( freeBusy ) freeBusy->cancelReload();
+  if ( freeBusy ) {
+    freeBusy->cancelReload();
+  }
 
   return true;
 }
