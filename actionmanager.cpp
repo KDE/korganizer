@@ -242,9 +242,9 @@ void ActionManager::createCalendarAkonadi()
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
-  monitor->setMimeTypeMonitored( KCalCore::sEventMimeType, true );
-  monitor->setMimeTypeMonitored( KCalCore::sTodoMimeType, true );
-  monitor->setMimeTypeMonitored( KCalCore::sJournalMimeType, true );
+  monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
+  monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
+  monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
   mCalendarModel = new CalendarModel( monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
