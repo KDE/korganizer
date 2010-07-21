@@ -574,8 +574,6 @@ void MultiAgendaView::show()
 void MultiAgendaView::resourcesChanged()
 {
   mPendingChanges = true;
-  FOREACH_VIEW( agenda )
-    agenda->resourcesChanged();
 
   if ( mSelectedAgendaView ) {
     ResourceCalendar *res = mSelectedAgendaView->resourceCalendar();
@@ -593,6 +591,9 @@ void MultiAgendaView::resourcesChanged()
       }
     }
   }
+
+  FOREACH_VIEW( agenda )
+    agenda->resourcesChanged();
 }
 
 void MultiAgendaView::setupScrollBar()
