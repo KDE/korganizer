@@ -254,7 +254,10 @@ bool KOEventEditor::processInput()
 {
   kdDebug(5850) << "KOEventEditor::processInput()" << endl;
 
-  if ( !validateInput() || !mChanger ) return false;
+  if ( !validateInput() || !mChanger ) {
+    kdDebug(5850) << " mChanger is " << mChanger << endl;
+    return false;
+  }
 
   QGuardedPtr<KOEditorFreeBusy> freeBusy( mFreeBusy );
 
@@ -370,11 +373,14 @@ void KOEventEditor::writeEvent( Event *event )
 
 bool KOEventEditor::validateInput()
 {
-  if ( !mGeneral->validateInput() ) return false;
-  if ( !mDetails->validateInput() ) return false;
-  if ( !mRecurrence->validateInput() ) return false;
-
-  return true;
+  if ( !mGeneral->validateInput() ||
+       !mDetails->validateInput() ||
+       !mRecurrence->validateInput() ) {
+    kdDebug(5850) << "ValidateInput returns false" << endl;
+    return false;
+  } else {
+    return true;
+  }
 }
 
 int KOEventEditor::msgItemDelete()
