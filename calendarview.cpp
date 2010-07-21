@@ -1029,15 +1029,16 @@ void CalendarView::edit_paste()
   bool useEndTime = false;
 
   KOrg::BaseView *curView = mViewManager->currentView();
-  if ( !curView ) {
-    return;
-  }
 
   KOAgendaView *aView = mViewManager->agendaView();
   KOMonthView *mView = mViewManager->monthView();
   if ( curView == mViewManager->multiAgendaView() ) {
     aView = mViewManager->multiAgendaView()->selectedAgendaView();
     curView = aView;
+  }
+
+  if ( !curView ) {
+    return;
   }
 
   if ( curView == aView && aView->selectionStart().isValid() ) {
