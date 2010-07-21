@@ -1151,11 +1151,12 @@ KOEventEditor *CalendarView::newEventEditor( ResourceCalendar *res, const QStrin
 void CalendarView::newEvent()
 {
   KOrg::BaseView *currentView = mViewManager->currentView();
-  if ( currentView ) {
-    if ( currentView == mViewManager->multiAgendaView() ) {
-      currentView = mViewManager->multiAgendaView()->selectedAgendaView();
-    }
 
+  if ( currentView == mViewManager->multiAgendaView() ) {
+    currentView = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+
+  if ( currentView ) {
     newEvent( currentView->resourceCalendar(),
               currentView->subResourceCalendar() );
   }
@@ -1224,11 +1225,11 @@ void CalendarView::newTodo( ResourceCalendar *res, const QString &subRes,
 void CalendarView::newTodo()
 {
   KOrg::BaseView *currentView = mViewManager->currentView();
-  if ( currentView ) {
-    if ( currentView == mViewManager->multiAgendaView() ) {
-      currentView = mViewManager->multiAgendaView()->selectedAgendaView();
-    }
 
+  if ( currentView == mViewManager->multiAgendaView() ) {
+    currentView = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+  if ( currentView ) {
     newTodo( currentView->resourceCalendar(),
              currentView->subResourceCalendar() );
   }
@@ -1266,11 +1267,12 @@ void CalendarView::newTodo( ResourceCalendar *res, const QString &subRes,
 void CalendarView::newJournal()
 {
   KOrg::BaseView *currentView = mViewManager->currentView();
-  if ( currentView ) {
-    if ( currentView == mViewManager->multiAgendaView() ) {
-      currentView = mViewManager->multiAgendaView()->selectedAgendaView();
-    }
 
+  if ( currentView == mViewManager->multiAgendaView() ) {
+    currentView = mViewManager->multiAgendaView()->selectedAgendaView();
+  }
+
+  if ( currentView ) {
     newJournal( currentView->resourceCalendar(),
                 currentView->subResourceCalendar() );
   }
