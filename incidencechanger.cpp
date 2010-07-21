@@ -373,6 +373,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence,
       i18n( "No calendars found, unable to save %1 \"%2\"." ).
       arg( i18n( incidence->type() ) ).
       arg( incidence->summary() ) );
+    kdDebug(5850) << "IncidenceChanger: No calendars found" << endl;
     return false;
   }
 
@@ -431,6 +432,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence,
       }
       KMessageBox::sorry( parent, errMessage );
     }
+    kdDebug(5850) << "IncidenceChanger: Can't add incidence" << endl;
     return false;
   }
 
