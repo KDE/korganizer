@@ -486,25 +486,6 @@ bool MultiAgendaView::eventFilter(QObject * obj, QEvent * event)
 
 KOAgendaView *MultiAgendaView::selectedAgendaView()
 {
-#if 0
-  // zero-out the selected agenda view if it's calendar is read-only or not active
-  if ( mSelectedAgendaView ) {
-    ResourceCalendar *res = mSelectedAgendaView->resourceCalendar();
-    if ( res ) {
-      if ( res->readOnly() || !res->isActive() ) {
-        mSelectedAgendaView = 0;
-      } else {
-        if ( res->canHaveSubresources() ) {
-          QString subRes = mSelectedAgendaView->subResourceCalendar();
-          if ( !res->subresourceWritable( subRes ) ||
-               !res->subresourceActive( subRes ) ) {
-            mSelectedAgendaView = 0;
-          }
-        }
-      }
-    }
-  }
-#endif
   return mSelectedAgendaView;
 }
 
@@ -595,6 +576,23 @@ void MultiAgendaView::resourcesChanged()
   mPendingChanges = true;
   FOREACH_VIEW( agenda )
     agenda->resourcesChanged();
+
+  if ( mSelectedAgendaView ) {
+    ResourceCalendar *res = mSelectedAgendaView->resourceCalendar();
+    if ( res ) {
+      if ( res->readOnly() || !res->isActive() ) {
+        mSelectedAgendaView = 0;
+      } else {
+        if ( res->canHaveSubresources() ) {
+          QString subRes = mSelectedAgendaView->subResourceCalendar();
+          if ( !res->subresourceWritable( subRes ) ||
+               !res->subresourceActive( subRes ) ) {
+            mSelectedAgendaView = 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 void MultiAgendaView::setupScrollBar()
