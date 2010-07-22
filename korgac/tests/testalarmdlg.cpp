@@ -31,7 +31,6 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
-#include <boost/shared_ptr.hpp>
 #include <akonadi/item.h>
 #include <QWidget>
 
@@ -40,7 +39,7 @@ using namespace KCalCore;
 template<class T> Akonadi::Item incidenceToItem(T* incidence)
 {
   Akonadi::Item item;
-  item.setPayload< boost::shared_ptr<T> >( boost::shared_ptr<T>(incidence) );
+  item.setPayload< QSharedPointer<T> >( QSharedPointer<T>(incidence) );
   return item;
 }
 

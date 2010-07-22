@@ -103,7 +103,6 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
-using namespace boost;
 using namespace Akonadi;
 using namespace KHolidays;
 using namespace IncidenceEditors;

@@ -37,8 +37,6 @@
 #include <QStack>
 #include <QList>
 
-#include <boost/shared_ptr.hpp>
-
 namespace Akonadi {
   class Calendar;
 }
