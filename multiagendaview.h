@@ -47,6 +47,7 @@ class MultiAgendaView : public AgendaView
     ~MultiAgendaView();
 
     KOAgendaView *selectedAgendaView();
+    void deSelectAgendaView() { mSelectedAgendaView = 0; }
     Incidence::List selectedIncidences();
     DateList selectedIncidenceDates();
     int currentDateCount();

@@ -24,6 +24,8 @@
 */
 
 #include "resourceview.h"
+#include "koviewmanager.h"
+#include "multiagendaview.h"
 
 #include <dcopref.h>
 #include <kcolordialog.h>
@@ -56,18 +58,18 @@ using namespace KCal;
 
 ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
                                           CalendarView *view )
-  : mCalendar( calendar ), mView( view ), mResourceView( 0 )
+  : mCalendar( calendar ), mCalendarView( view ), mResourceView( 0 )
 {
 }
 
 CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 {
-  mResourceView = new ResourceView( mCalendar, parent );
+  mResourceView = new ResourceView( mCalendar, mCalendarView, parent );
 
   QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
-                    mView, SLOT( resourcesChanged() ) );
+                    mCalendarView, SLOT( resourcesChanged() ) );
   QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
-                    mView, SLOT( updateCategories() ) );
+                    mCalendarView, SLOT( updateCategories() ) );
 
   QObject::connect( mCalendar,
                     SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
@@ -78,9 +80,9 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
                     mResourceView,
                     SLOT( updateResourceItem( ResourceCalendar * ) ) );
   QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
-                    mView, SLOT( updateCategories() ) );
+                    mCalendarView, SLOT( updateCategories() ) );
   QObject::connect( mCalendar, SIGNAL( signalResourceModified( ResourceCalendar * ) ),
-                    mView, SLOT( updateCategories() ) );
+                    mCalendarView, SLOT( updateCategories() ) );
 
   return mResourceView;
 }
@@ -93,7 +95,7 @@ ResourceView *ResourceViewFactory::resourceView() const
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
-    mResource( resource ), mView( view ), mBlockStateChange( false ),
+    mResource( resource ), mResourceView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString::null ),
     mSubItemsCreated( false ), mIsStandardResource( false )
 {
@@ -115,7 +117,7 @@ void ResourceItem::createSubresourceItems()
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
       ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                                             mView, this );
+                                             mResourceView, this );
       QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
       item->setResourceColor( resourceColor );
       item->update();
@@ -129,7 +131,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             ResourceView *view, ResourceItem* parent )
 
   : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
-    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
+    mResourceView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false ), mIsStandardResource( false )
 {
   mResourceColor = QColor();
@@ -161,9 +163,9 @@ void ResourceItem::stateChange( bool active )
           createSubresourceItems();
       }
     } else {
-      // mView->requestClose must be called before mResource->save() because
+      // mResourceView->requestClose must be called before mResource->save() because
       // save causes closeResource do be called.
-      mView->requestClose( mResource );
+      mResourceView->requestClose( mResource );
       if ( mResource->save() ) {
         mResource->setActive( false );
       }
@@ -174,7 +176,7 @@ void ResourceItem::stateChange( bool active )
     setGuiState();
   }
 
-  mView->emitResourcesChanged();
+  mResourceView->emitResourcesChanged();
 }
 
 void ResourceItem::update()
@@ -221,8 +223,8 @@ void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
 
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar,
-                            QWidget *parent, const char *name )
-  : CalendarViewExtension( parent, name ), mCalendar( calendar )
+                            CalendarView *view, QWidget *parent, const char *name )
+  : CalendarViewExtension( parent, name ), mCalendar( calendar ), mCalendarView( view )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
@@ -540,36 +542,40 @@ void ResourceView::editResource()
   if (!item) return;
   ResourceCalendar *resource = item->resource();
 
-   if ( item->isSubresource() ) {
-     if ( resource->type() == "imap" || resource->type() == "scalix" ) {
-        QString identifier = item->resourceIdentifier();
-        const QString newResourceName = KInputDialog::getText( i18n( "Rename Subresource" ),
-               i18n( "Please enter a new name for the subresource" ), item->text(),
-                    &ok, this );
-        if ( !ok )
-          return;
+  if ( item->isSubresource() ) {
+    if ( resource->type() == "imap" || resource->type() == "scalix" ) {
+      QString identifier = item->resourceIdentifier();
+      const QString newResourceName =
+        KInputDialog::getText( i18n( "Rename Subresource" ),
+                               i18n( "Please enter a new name for the subresource" ),
+                               item->text(), &ok, this );
+      if ( !ok ) {
+        return;
+      }
 
-        DCOPRef ref( "kmail", "KMailICalIface" );
-        DCOPReply reply = ref.call( "changeResourceUIName", identifier, newResourceName );
-        if ( !reply.isValid() ) {
-           kdDebug() << "DCOP Call changeResourceUIName() failed " << endl;
-        }
-     } else {
-           KMessageBox::sorry( this,
-                               i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>").arg( item->resource()->name() ) );
-       }
-   } else {
-     KRES::ConfigDialog dlg( this, QString("calendar"), resource,
-                          "KRES::ConfigDialog" );
+      DCOPRef ref( "kmail", "KMailICalIface" );
+      DCOPReply reply = ref.call( "changeResourceUIName", identifier, newResourceName );
+      if ( !reply.isValid() ) {
+        kdDebug() << "DCOP Call changeResourceUIName() failed " << endl;
+      }
+      KOrg::BaseView *cV = mCalendarView->viewManager()->currentView();
+      if ( cV && cV == mCalendarView->viewManager()->multiAgendaView() ) {
+        mCalendarView->viewManager()->multiAgendaView()->deSelectAgendaView();
+      }
+    } else {
+      KMessageBox::sorry(
+        this,
+        i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>").arg( item->resource()->name() ) );
+    }
+  } else {
+    KRES::ConfigDialog dlg( this, QString("calendar"), resource, "KRES::ConfigDialog" );
 
-     if ( dlg.exec() ) {
-       item->setText( 0, resource->resourceName() );
-
+    if ( dlg.exec() ) {
+      item->setText( 0, resource->resourceName() );
       mCalendar->resourceManager()->change( resource );
-     }
-   }
-   emitResourcesChanged();
-
+    }
+  }
+  emitResourcesChanged();
 }
 
 void ResourceView::currentChanged( QListViewItem *item )

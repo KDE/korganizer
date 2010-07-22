@@ -50,7 +50,7 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
 
   private:
     KCal::CalendarResources *mCalendar;
-    CalendarView *mView;
+    CalendarView *mCalendarView;
     ResourceView *mResourceView;
 };
 
@@ -85,7 +85,7 @@ class ResourceItem : public QCheckListItem
 
   private:
     KCal::ResourceCalendar *mResource;
-    ResourceView *mView;
+    ResourceView *mResourceView;
     bool mBlockStateChange;
     bool mIsSubresource;
     QString mResourceIdentifier;
@@ -100,8 +100,8 @@ class ResourceView : public CalendarViewExtension
 {
     Q_OBJECT
   public:
-    ResourceView( KCal::CalendarResources *calendar, QWidget *parent = 0,
-                  const char *name = 0 );
+    ResourceView( KCal::CalendarResources *calendar, CalendarView *view,
+                  QWidget *parent = 0, const char *name = 0 );
     ~ResourceView();
 
     KCal::CalendarResources *calendar() const { return mCalendar; }
@@ -153,6 +153,7 @@ class ResourceView : public CalendarViewExtension
   private:
     KListView *mListView;
     KCal::CalendarResources *mCalendar;
+    CalendarView *mCalendarView;
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;
     QPushButton *mEditButton;
