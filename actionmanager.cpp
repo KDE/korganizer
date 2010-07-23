@@ -227,11 +227,22 @@ void ActionManager::init()
   mCalendarView->checkClipboard();
 }
 
+void ActionManager::slotCollectionChanged( const Akonadi::Collection &collection,
+                                           const QSet<QByteArray> &changedAttributes )
+{
+  Q_UNUSED( collection );
+
+  if ( changedAttributes.contains( "AccessRights" ) ) {
+    mCalendarView->updateView();
+  }
+}
 
 void ActionManager::createCalendarAkonadi()
 {
   Session *session = new Session( "KOrganizerETM", this );
   ChangeRecorder *monitor = new ChangeRecorder( this );
+  connect( monitor, SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>) ),
+           this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>) ) );
 
   ItemFetchScope scope;
   scope.fetchFullPayload( true );
