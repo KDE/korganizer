@@ -541,7 +541,7 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 
   const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( Akonadi::hasChangeRights( node->mTodo ) ) {
+  if ( mCalendar->hasChangeRights( node->mTodo ) ) {
     // the following columns are editable:
     switch ( index.column() ) {
     case SummaryColumn:
@@ -812,7 +812,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   }
   const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( Akonadi::hasChangeRights( node->mTodo ) ) {
+  if ( mCalendar->hasChangeRights( node->mTodo ) ) {
     Todo::Ptr oldTodo( todo->clone() );
     Akonadi::IncidenceChanger::WhatChanged modified = Akonadi::IncidenceChanger::UNKNOWN_MODIFIED;
 

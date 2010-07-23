@@ -552,7 +552,7 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
         KOAgendaItem *item = dynamic_cast<KOAgendaItem *>(object);
         if ( item ) {
           const Item aitem = item->incidence();
-          if ( !Akonadi::hasChangeRights( aitem ) ) {
+          if ( !mCalendar->hasChangeRights( aitem ) ) {
             mActionItem = 0;
           } else {
             mActionItem = item;
@@ -607,7 +607,7 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
       KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>( object );
       const Item aitem = moveItem ? moveItem->incidence() : Item();
       Incidence::Ptr incidence = Akonadi::incidence( aitem );
-      if ( Akonadi::hasChangeRights( aitem ) ) {
+      if ( mCalendar->hasChangeRights( aitem ) ) {
         if ( !mActionItem ) {
           setNoActionCursor( moveItem, viewportPos );
         } else {

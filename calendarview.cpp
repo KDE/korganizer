@@ -2527,7 +2527,7 @@ void CalendarView::showIncidence( const Item &item )
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
   eventViewer->setIncidence( item, QDate() );
   // Disable the Edit button for read-only Incidences.
-  if ( !Akonadi::hasChangeRights( item ) ) {
+  if ( !mCalendar->hasChangeRights( item ) ) {
     eventViewer->enableButton( KDialog::User1, false );
   }
 
@@ -2582,7 +2582,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return true;
   }
 
-  if ( !Akonadi::hasChangeRights( item ) ) {
+  if ( !mCalendar->hasChangeRights( item ) ) {
     showIncidence( item );
     return true;
   }
@@ -2678,7 +2678,7 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
     return true;
   }
 
-  if ( !Akonadi::hasDeleteRights( item ) ) {
+  if ( !mCalendar->hasDeleteRights( item ) ) {
     if ( !force ) {
       KMessageBox::information(
         this,

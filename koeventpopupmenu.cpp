@@ -24,18 +24,18 @@
 */
 
 #include "koeventpopupmenu.h"
-#include <kcalprefs.h>
-#include <kmimetypetrader.h>
 #include "actionmanager.h"
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
 #include "koeventview.h"
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/Incidence>
-
+#include <kcalprefs.h>
+#include <kmimetypetrader.h>
 #include <KActionCollection>
 #include <KLocale>
 
@@ -104,6 +104,8 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   }
 
 
+  const bool hasChangeRights = mEventview->calendar()->hasChangeRights( mCurrentIncidence );
+
   Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
   if ( incidence->recurs() ) {
@@ -113,14 +115,13 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
     bool isFirstOccurrence =
       !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
     mDissociateOccurrences->setEnabled(
-      !( isFirstOccurrence && isLastOccurrence ) &&
-      Akonadi::hasChangeRights( mCurrentIncidence ) );
+      !( isFirstOccurrence && isLastOccurrence ) && hasChangeRights );
   }
 
   // Enable/Disabled menu items only valid for editable events.
   QList<QAction *>::Iterator it;
   for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-    (*it)->setEnabled( Akonadi::hasChangeRights( mCurrentIncidence ) );
+    (*it)->setEnabled( hasChangeRights );
   }
   mToggleReminder->setVisible( ( incidence->type() != "Journal" ) );
   for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
@@ -128,7 +129,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   }
   for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
     (*it)->setVisible( incidence->type() == "Todo" );
-    (*it)->setEnabled( Akonadi::hasChangeRights( mCurrentIncidence ) );
+    (*it)->setEnabled( hasChangeRights );
   }
   popup( QCursor::pos() );
 }

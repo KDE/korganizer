@@ -399,11 +399,11 @@ bool IncidenceMonthItem::allDay() const
 
 bool IncidenceMonthItem::isMoveable() const
 {
-  return Akonadi::hasChangeRights( mIncidence );
+  return monthScene()->mMonthView->calendar()->hasChangeRights( mIncidence );
 }
 bool IncidenceMonthItem::isResizable() const
 {
-  return mIsEvent && Akonadi::hasChangeRights( mIncidence );
+  return mIsEvent && monthScene()->mMonthView->calendar()->hasChangeRights( mIncidence );
 }
 
 void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
@@ -572,7 +572,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
 
   bool specialEvent = false;
-  if ( mIsEvent ) {      
+  if ( mIsEvent ) {
     if ( incidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
       specialEvent = true;
       ret << monthScene()->anniversaryPixmap();
@@ -602,7 +602,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
     ret << monthScene()->journalPixmap();
   }
 
-  if ( !Akonadi::hasChangeRights( mIncidence ) && !specialEvent ) {
+  if ( !monthScene()->mMonthView->calendar()->hasChangeRights( mIncidence ) && !specialEvent ) {
     ret << monthScene()->readonlyPixmap();
   }
 #if 0

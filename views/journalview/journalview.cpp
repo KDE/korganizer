@@ -303,7 +303,7 @@ void JournalView::readJournal( const Item &j )
     mBrowser->insertPlainText( description );
   }
 
-  mEditButton->setEnabled( Akonadi::hasChangeRights( j ) );
-  mDeleteButton->setEnabled( Akonadi::hasDeleteRights( j ) );
+  mEditButton->setEnabled( mCalendar->hasChangeRights( j ) );
+  mDeleteButton->setEnabled( mCalendar->hasDeleteRights( j ) );
 
 }

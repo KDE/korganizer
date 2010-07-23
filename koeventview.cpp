@@ -174,7 +174,7 @@ void KOEventView::defaultAction( const Item &aitem )
 
   kDebug() << "  type:" << incidence->type();
 
-  if ( !Akonadi::hasChangeRights( aitem ) ) {
+  if ( !calendar()->hasChangeRights( aitem ) ) {
     emit showIncidenceSignal( aitem );
   } else {
     emit editIncidenceSignal( aitem );

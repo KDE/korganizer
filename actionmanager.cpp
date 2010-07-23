@@ -1674,7 +1674,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
 
   enableIncidenceActions( true );
 
-  if ( !Akonadi::hasDeleteRights( item ) ) {
+  if ( !mCalendarView->calendar()->hasDeleteRights( item ) ) {
     mCutAction->setEnabled( false );
     mDeleteAction->setEnabled( false );
   }

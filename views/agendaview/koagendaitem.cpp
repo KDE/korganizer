@@ -39,6 +39,7 @@
 #include <KCal/VCalDrag>
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/calendar.h>
 
 #include <KPIMUtils/Email>
 
@@ -139,7 +140,7 @@ void KOAgendaItem::updateIcons()
   Q_ASSERT( incidence );
 
   // enough to have the lock icon, IMHO, even if he has delete rights
-  mIconReadonly = !Akonadi::hasChangeRights( mIncidence );
+  mIconReadonly = !mCalendar->hasChangeRights( mIncidence );
 
   mIconRecur = incidence->recurs();
   mIconAlarm = incidence->isAlarmEnabled();
@@ -748,7 +749,7 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
     return;
   }
 
-  QPixmap tPxmp;    
+  QPixmap tPxmp;
   if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     mSpecialEvent = true;
     tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );

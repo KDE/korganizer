@@ -25,6 +25,7 @@ using namespace KOrg;
 
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
 using namespace Akonadi;
@@ -105,7 +106,7 @@ TimelineSubItem::TimelineSubItem( Akonadi::Calendar *calendar,
                   Akonadi::displayName( incidence.parentCollection() ),
                   Akonadi::incidence( incidence ).get(), originalStart().date(),
                   true, KCalPrefs::instance()->timeSpec() ) );
-  if ( Akonadi::hasChangeRights( incidence ) ) {
+  if ( calendar->hasChangeRights( incidence ) ) {
     setMoveable( true );
     setResizeable( true );
   }

@@ -37,10 +37,12 @@
 #include <KPIMIdentities/Identity>
 #include <KPIMIdentities/IdentityManager>
 
-#include <Akonadi/Item>
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/incidenceviewer.h>
 #include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/utils.h>
+
+#include <Akonadi/Item>
 
 #include <Mailtransport/TransportManager>
 
@@ -434,7 +436,7 @@ void AlarmDialog::edit()
     return;
   }
   Incidence::Ptr incidence = Akonadi::incidence( selection.first()->mIncidence );
-  if ( !Akonadi::hasChangeRights( selection.first()->mIncidence ) ) {
+  if ( !mCalendar->hasChangeRights( selection.first()->mIncidence ) ) {
     KMessageBox::sorry(
       this,
       i18nc( "@info",
