@@ -161,6 +161,12 @@ class KOViewManager : public QObject
     void zoomInVertically();
     void zoomOutVertically();
 
+
+    /**
+       Notifies all views that an update is needed. This means that the
+       next time CalendarView::updateView() is called, views won't try to be smart
+       and ignore the update for performance reasons.
+    */
     void setUpdateNeeded();
 
   private slots:

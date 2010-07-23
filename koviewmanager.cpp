@@ -673,11 +673,10 @@ void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
 
 void KOViewManager::setUpdateNeeded()
 {
-  if ( mAgendaView ) {
-    mAgendaView->setUpdateNeeded( true );
-  }
-  if ( mAgendaSideBySideView ) {
-    mAgendaSideBySideView->setUpdateNeeded( true );
+  foreach( BaseView *view, mViews ) {
+    if ( view ) {
+      view->setUpdateNeeded( true );
+    }
   }
 }
 
