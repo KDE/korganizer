@@ -517,11 +517,11 @@ void MultiAgendaView::showEvent( QShowEvent *event )
   }
 }
 
-void MultiAgendaView::setUpdateNeeded()
+void MultiAgendaView::setUpdateNeeded( bool needed )
 {
-  mPendingChanges = true;
+  BaseView::setUpdateNeeded( needed );
   foreach ( KOAgendaView *agenda, mAgendaViews ) {
-    agenda->setUpdateNeeded();
+    agenda->setUpdateNeeded( needed );
   }
 }
 

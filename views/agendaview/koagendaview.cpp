@@ -122,7 +122,6 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   mUpdateItem( 0 ),
   mCollectionId( -1 ),
   mIsSideBySide( isSideBySide ),
-  mPendingChanges( true ),
   mAreDatesInitialized( false )
 {
   mSelectedDates.append( QDate::currentDate() );
@@ -1070,7 +1069,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // Update the view correctly if an agenda item move was aborted by
   // cancelling one of the subsequent dialogs.
   if ( !result ) {
-    mPendingChanges = true;
+    setUpdateNeeded( true );
     QTimer::singleShot( 0, this, SLOT(updateView()) );
     return;
   }
@@ -1104,7 +1103,7 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
   if ( !mSelectedDates.isEmpty() &&
        mSelectedDates.first() == start &&
        mSelectedDates.last() == end &&
-       !mPendingChanges ) {
+       !updateNeeded() ) {
     return;
   }
 
@@ -1353,7 +1352,7 @@ void KOAgendaView::fillAgenda()
     return;
   }
 
-  mPendingChanges = false;
+  setUpdateNeeded( false );
 
   /* Remember the item Ids of the selected items. In case one of the
    * items was deleted and re-added, we want to reselect it. */
@@ -1814,27 +1813,22 @@ bool KOAgendaView::filterByCollectionSelection( const Item &incidence )
   }
 }
 
-void KOAgendaView::setUpdateNeeded()
-{
-  mPendingChanges = true;
-}
-
 void KOAgendaView::calendarIncidenceAdded( const Item &incidence )
 {
   Q_UNUSED( incidence );
-  mPendingChanges = true;
+  setUpdateNeeded( true );
 }
 
 void KOAgendaView::calendarIncidenceChanged( const Item &incidence )
 {
   Q_UNUSED( incidence );
-  mPendingChanges = true;
+  setUpdateNeeded( true );
 }
 
 void KOAgendaView::calendarIncidenceDeleted( const Item &incidence )
 {
   Q_UNUSED( incidence );
-  mPendingChanges = true;
+  setUpdateNeeded( true );
 }
 
 #include "koagendaview.moc"

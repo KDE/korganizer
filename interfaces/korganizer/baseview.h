@@ -26,14 +26,14 @@
 #include "korganizer/korganizer_export.h"
 
 #include <kcal/event.h>
+
 #include <akonadi/kcal/incidencechanger.h>
+#include <Akonadi/Collection>
+#include <Akonadi/Item>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
-
-#include <Akonadi/Collection>
-#include <Akonadi/Item>
 
 #include <QtCore/QPair>
 #include <QtGui/QWidget>
@@ -383,6 +383,13 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     void setFilter( KCal::CalFilter *filter );
 
+    /**
+       Notifies the view that there are pending changes so a redraw is needed.
+
+       @param needed if the update is needed or not.
+    */
+    virtual void setUpdateNeeded( bool needed );
+
   protected:
     /**
      * reimplement to read view-specific settings
@@ -390,7 +397,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void doRestoreConfig( const KConfigGroup &configGroup );
 
     /**
-     * reimplement to write vie- specific settings
+     * reimplement to write view specific settings
      */
     virtual void doSaveConfig( KConfigGroup &configGroup );
 
@@ -411,6 +418,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void incidencesChanged( const Akonadi::Item::List& incidences );
 
     virtual void handleBackendError( const QString &error );
+
+    /**
+       Returns if there are pending changes and a redraw is needed.
+    */
+    bool updateNeeded() const;
 
   protected Q_SLOTS:
     virtual void collectionSelectionChanged();

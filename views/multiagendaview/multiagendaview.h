@@ -106,6 +106,8 @@ class MultiAgendaView : public AgendaView
      */
     void showConfigurationDialog( QWidget *parent );
 
+    void setUpdateNeeded( bool needed );
+
   public slots:
     void showDates( const QDate &start, const QDate &end );
     void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
@@ -114,8 +116,6 @@ class MultiAgendaView : public AgendaView
     void updateConfig();
 
     void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
-
-    void setUpdateNeeded();
 
   protected:
     void resizeEvent( QResizeEvent *event );

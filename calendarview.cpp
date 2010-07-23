@@ -831,7 +831,8 @@ void CalendarView::changeIncidenceDisplay( const Item &item, int action )
   }
 }
 
-void CalendarView::updateView( const QDate &start, const QDate &end, const bool updateTodos )
+void CalendarView::updateView( const QDate &start, const QDate &end,
+                               const bool updateTodos )
 {
   if ( updateTodos ) {
     mTodoList->updateView();

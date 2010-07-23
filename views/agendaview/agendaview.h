@@ -30,9 +30,6 @@ class AgendaView : public KOEventView
   public:
     explicit AgendaView( QWidget *parent = 0 );
 
-  public slots:
-    virtual void setUpdateNeeded() = 0;
-
   public:
     virtual bool supportsZoom() { return true; }
 };

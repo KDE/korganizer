@@ -192,11 +192,9 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
 
     void clearTimeSpanSelection();
 
-    /** Notifies agenda that there are pending changes */
-    void setUpdateNeeded();
-
     // Used by the timelabelszone
     void updateTimeBarWidth();
+
     /** Create labels for the selected dates. */
     void createDayLabels();
 
@@ -308,7 +306,6 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     Akonadi::Collection::Id mCollectionId;
 
     bool mIsSideBySide;
-    bool mPendingChanges;
 
     // the current date is inserted into mSelectedDates in the constructor
     // however whe should only show events when setDates is called, otherwise
