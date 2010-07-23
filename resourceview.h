@@ -27,11 +27,11 @@
 
 #include "calendarview.h"
 
-#include <libkcal/resourcecalendar.h>
 #include <qlistview.h>
 
 namespace KCal {
-class CalendarResources;
+  class CalendarResources;
+  class ResourceCalendar;
 }
 using namespace KCal;
 class KListView;
@@ -41,15 +41,14 @@ class QPushButton;
 class ResourceViewFactory : public CalendarViewExtension::Factory
 {
   public:
-    ResourceViewFactory( KCal::CalendarResources *calendar,
-                         CalendarView *view );
+    ResourceViewFactory( CalendarResources *calendar, CalendarView *view );
 
     CalendarViewExtension *create( QWidget * );
 
     ResourceView *resourceView() const;
 
   private:
-    KCal::CalendarResources *mCalendar;
+    CalendarResources *mCalendar;
     CalendarView *mCalendarView;
     ResourceView *mResourceView;
 };
@@ -58,18 +57,15 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
 class ResourceItem : public QCheckListItem
 {
   public:
-    ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
-                  KListView *parent );
-    ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
-                  const QString& label, ResourceView *view,
-                  ResourceItem* parent );
+    ResourceItem( ResourceCalendar *resource, ResourceView *view, KListView *parent );
+    ResourceItem( ResourceCalendar *resource, const QString &identifier,
+                  const QString &label, ResourceView *view, ResourceItem *parent );
 
-    KCal::ResourceCalendar *resource() { return mResource; }
+    ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
     bool isSubresource() const { return mIsSubresource; }
     void createSubresourceItems();
     void setStandardResource( bool std );
-
     void update();
 
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
@@ -77,14 +73,14 @@ class ResourceItem : public QCheckListItem
 
     void setResourceColor(QColor& color);
     QColor &resourceColor() {return mResourceColor;}
+
   protected:
     void stateChange( bool active );
-
     void setGuiState();
     QColor mResourceColor;
 
   private:
-    KCal::ResourceCalendar *mResource;
+    ResourceCalendar *mResource;
     ResourceView *mResourceView;
     bool mBlockStateChange;
     bool mIsSubresource;
@@ -100,45 +96,45 @@ class ResourceView : public CalendarViewExtension
 {
     Q_OBJECT
   public:
-    ResourceView( KCal::CalendarResources *calendar, CalendarView *view,
+    ResourceView( CalendarResources *calendar, CalendarView *view,
                   QWidget *parent = 0, const char *name = 0 );
     ~ResourceView();
 
-    KCal::CalendarResources *calendar() const { return mCalendar; }
+    CalendarResources *calendar() const { return mCalendar; }
 
     void updateView();
 
     void emitResourcesChanged();
 
-    void requestClose( ResourceCalendar * );
+    void requestClose( ResourceCalendar *resource );
 
     void showButtons( bool visible );
 
   public slots:
-    void addResourceItem( ResourceCalendar * );
-    void updateResourceItem( ResourceCalendar * );
+    void addResourceItem( ResourceCalendar *resource );
+    void updateResourceItem( ResourceCalendar *resource );
 
   signals:
     void resourcesChanged();
 
   protected:
-    ResourceItem *findItem( ResourceCalendar * );
-    ResourceItem *findItemByIdentifier( const QString& id );
+    ResourceItem *findItem( ResourceCalendar *resource );
+    ResourceItem *findItemByIdentifier( const QString &identifier );
     ResourceItem *currentItem();
 
   protected slots:
     void addResource();
     void removeResource();
     void editResource();
-    void currentChanged( QListViewItem* );
-    void slotSubresourceAdded( ResourceCalendar *, const QString &,
-                               const QString &resource,const QString& label );
+    void currentChanged( QListViewItem *lvitem );
+    void slotSubresourceAdded( ResourceCalendar *resource, const QString &type,
+                               const QString &identifier, const QString &label );
 
-    void slotSubresourceRemoved( ResourceCalendar *, const QString &,
-                                 const QString & );
-    void closeResource( ResourceCalendar * );
+    void slotSubresourceRemoved( ResourceCalendar *resource, const QString &type,
+                                 const QString &identifier );
+    void closeResource( ResourceCalendar *resource );
 
-    void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
+    void contextMenuRequested ( QListViewItem *lvitem, const QPoint &pos, int );
 
     void assignColor();
     void disableColor();
@@ -152,7 +148,7 @@ class ResourceView : public CalendarViewExtension
 
   private:
     KListView *mListView;
-    KCal::CalendarResources *mCalendar;
+    CalendarResources *mCalendar;
     CalendarView *mCalendarView;
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;
