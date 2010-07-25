@@ -57,6 +57,40 @@
 
 using namespace KCal;
 
+static QString labelFromSubResName( ResourceCalendar *resource, const QString &subRes )
+{
+
+  DCOPRef ref( "kmail", "KMailICalIface" );
+  DCOPReply reply = ref.call( "dimapAccounts" );
+  if ( !reply.isValid() ) {
+    kdDebug() << "DCOP Call dimapAccounts() failed " << endl;
+    return QString();
+  }
+
+  QString label;
+  if ( (int)reply > 1 ) {
+    if( resource && !resource->resourceName().isEmpty() ) {
+      label = i18n( "My %1 (%2)" ).arg( subRes, resource->resourceName() );
+    } else {
+      label = i18n( "My %1" ).arg( subRes );
+    }
+  } else {
+    label = i18n( "My %1" ).arg( subRes );
+  }
+  return label;
+}
+
+static QString labelFromIdentifier( ResourceCalendar *resource, const QString &identifier )
+{
+  QString subResLabel;
+  if ( identifier.contains( "/.INBOX.directory/" ) ) { // my subresource
+    QString subResName = identifier;
+    subResName.remove( QRegExp( "^.*/\\.INBOX\\.directory/" ) );
+    subResLabel = labelFromSubResName( resource, subResName );
+  }
+  return subResLabel;
+}
+
 ResourceViewFactory::ResourceViewFactory( CalendarResources *calendar, CalendarView *view )
   : mCalendar( calendar ), mCalendarView( view ), mResourceView( 0 )
 {
@@ -116,8 +150,11 @@ void ResourceItem::createSubresourceItems()
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
-      ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                                             mResourceView, this );
+      QString text = labelFromIdentifier( mResource, *it );
+      if ( text.isEmpty() ) {
+        text = mResource->labelForSubresource( *it );
+      }
+      ResourceItem *item = new ResourceItem( mResource, *it, text, mResourceView, this );
       QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
       item->setResourceColor( resourceColor );
       item->update();
@@ -402,7 +439,7 @@ void ResourceView::addResource()
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
 
-  ResourceItem *item=new ResourceItem( resource, this, mListView );
+  ResourceItem *item = new ResourceItem( resource, this, mListView );
 
   // assign a color, but only if this is a resource that actually
   // hold items at top level
@@ -432,29 +469,6 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   emit resourcesChanged();
 }
 
-static QString labelFromSubRes( ResourceCalendar *resource, const QString &subRes )
-{
-
-  DCOPRef ref( "kmail", "KMailICalIface" );
-  DCOPReply reply = ref.call( "dimapAccounts" );
-  if ( !reply.isValid() ) {
-    kdDebug() << "DCOP Call dimapAccounts() failed " << endl;
-    return QString();
-  }
-
-  QString label;
-  if ( (int)reply > 1 ) {
-    if( resource && !resource->resourceName().isEmpty() ) {
-      label = i18n( "My %1 (%2)" ).arg( subRes, resource->resourceName() );
-    } else {
-      label = i18n( "My %1" ).arg( subRes );
-    }
-  } else {
-    label = i18n( "My %1" ).arg( subRes );
-  }
-  return label;
-}
-
 // Add a new entry
 void ResourceView::slotSubresourceAdded( ResourceCalendar *resource,
                                          const QString &type,
@@ -470,11 +484,9 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *resource,
 
   if ( findItemByIdentifier( identifier ) ) return;
 
-  QString text = label;
-  if ( identifier.contains( "/.INBOX.directory/" ) ) { // my subresource
-    text = identifier;
-    text.remove( QRegExp( "^.*/\\.INBOX\\.directory/" ) );
-    text = labelFromSubRes( resource, text );
+  QString text = labelFromIdentifier( resource, identifier );
+  if ( text.isEmpty() ) {
+    text = label;
   }
   ResourceItem *item = static_cast<ResourceItem *>( lvitem );
   ResourceItem *newItem = new ResourceItem( resource, identifier, text, this, item );
@@ -593,9 +605,11 @@ void ResourceView::editResource()
       QString oldSubResourceName = identifier;
       oldSubResourceName.remove( QRegExp( "^.*/\\.INBOX\\.directory/" ) );
       QString newSubResourceName =
-        KInputDialog::getText( i18n( "Rename Subresource" ),
-                               i18n( "Please enter a new name for the subresource" ),
-                               oldSubResourceName, &ok, this );
+        KInputDialog::getText(
+          i18n( "Rename Subresource" ),
+          i18n( "<qt>Enter a new name for the subresource<p>"
+                "<b>Note:</b> the new name will take affect after the next sync.</qt>" ),
+          oldSubResourceName, &ok, this );
       if ( !ok ) {
         return;
       }
@@ -609,7 +623,7 @@ void ResourceView::editResource()
         return;
       }
 
-      item->setText( 0, labelFromSubRes( resource, newSubResourceName ) );
+      item->setText( 0, labelFromSubResName( resource, newSubResourceName ) );
 
       KOrg::BaseView *cV = mCalendarView->viewManager()->currentView();
       if ( cV && cV == mCalendarView->viewManager()->multiAgendaView() ) {
@@ -762,7 +776,12 @@ void ResourceView::showInfo()
   ResourceItem *item = currentItem();
   if ( !item ) return;
 
-  QString txt = "<qt>" + item->resource()->infoText() + "</qt>";
+  QString identifier;
+  if ( item->isSubresource() ) {
+    identifier = "<p>" + item->resourceIdentifier();
+  }
+
+  QString txt = "<qt>" + item->resource()->infoText() + identifier + "</qt>";
   KMessageBox::information( this, txt );
 }
 
