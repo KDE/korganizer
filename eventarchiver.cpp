@@ -172,8 +172,8 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
 
-  Akonadi::CalendarAdaptor cal( calendar, widget );
-  FileStorage storage( &cal );
+  Akonadi::CalendarAdaptor::Ptr cal( new Akonadi::CalendarAdaptor( calendar, widget ) );
+  FileStorage storage( cal );
 
   // Save current calendar to disk
   KTemporaryFile tmpFile;
@@ -185,9 +185,9 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   }
 
   // Duplicate current calendar by loading in new calendar object
-  MemoryCalendar archiveCalendar( KCalPrefs::instance()->timeSpec() );
+  MemoryCalendar::Ptr archiveCalendar( new MemoryCalendar( KCalPrefs::instance()->timeSpec() ) );
 
-  FileStorage archiveStore( &archiveCalendar );
+  FileStorage archiveStore( archiveCalendar );
   archiveStore.setFileName( tmpFile.fileName() );
   ICalFormat *format = new ICalFormat();
   archiveStore.setSaveFormat( format );
@@ -199,13 +199,13 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   // Strip active events from calendar so that only events to be archived
   // remain. This is not really efficient, but there is no other easy way.
   QStringList uids;
-  Incidence::List allIncidences = archiveCalendar.rawIncidences();
+  Incidence::List allIncidences = archiveCalendar->rawIncidences();
   foreach(const Akonadi::Item &item, incidences) {
     uids.append( Akonadi::incidence(item)->uid() );
   }
   foreach( const Incidence::Ptr inc, allIncidences) {
     if ( !uids.contains( inc->uid() ) ) {
-      archiveCalendar.deleteIncidence( inc );
+      archiveCalendar->deleteIncidence( inc );
     }
   }
 

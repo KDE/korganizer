@@ -407,9 +407,9 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     return false;
   }
 
-  Akonadi::CalendarAdaptor adaptor( mCalendar, this, true /*use default collection*/ );
+  CalendarAdaptor::Ptr adaptor( new CalendarAdaptor( mCalendar, this, true /*use default collection*/ ) );
   // merge in a file
-  FileStorage storage( &adaptor );
+  FileStorage storage( adaptor );
   storage.setFileName( filename );
   loadedSuccesfully = storage.load();
 
@@ -441,8 +441,8 @@ bool CalendarView::saveCalendar( const QString &filename )
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  Akonadi::CalendarAdaptor adaptor( mCalendar, this );
-  FileStorage storage( &adaptor );
+  CalendarAdaptor::Ptr adaptor( new CalendarAdaptor( mCalendar, this ) );
+  FileStorage storage( adaptor );
   storage.setFileName( filename );
   storage.setSaveFormat( new ICalFormat );
 
@@ -947,8 +947,8 @@ void CalendarView::edit_copy()
   }
 
   if ( km != KMessageBox::Cancel ) {
-    Akonadi::CalendarAdaptor cal( mCalendar, this );
-    Akonadi::DndFactory factory( &cal );
+    CalendarAdaptor::Ptr cal( new CalendarAdaptor( mCalendar, this ) );
+    Akonadi::DndFactory factory( cal );
     if ( !factory.copyIncidences( items ) ) {
       KNotification::beep();
     }
@@ -1000,8 +1000,8 @@ void CalendarView::edit_paste()
     return;
   }
 
-  Akonadi::CalendarAdaptor cal( mCalendar, this );
-  Akonadi::DndFactory factory( &cal );
+  Akonadi::CalendarAdaptor::Ptr cal( new CalendarAdaptor( mCalendar, this ) );
+  Akonadi::DndFactory factory( cal );
   Incidence::List pastedIncidences;
   if ( timeSet && time.isValid() ) {
     pastedIncidences = factory.pasteIncidences( date, &time );
@@ -2095,8 +2095,8 @@ void CalendarView::exportICalendar()
       }
     }
     ICalFormat *format = new ICalFormat;
-    Akonadi::CalendarAdaptor calendar( mCalendar, this );
-    FileStorage storage( &calendar, filename, format );
+    CalendarAdaptor::Ptr calendar( new CalendarAdaptor( mCalendar, this ) );
+    FileStorage storage( calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
       if ( format->exception() ) {
@@ -2144,8 +2144,8 @@ void CalendarView::exportVCalendar()
       }
     }
     VCalFormat *format = new VCalFormat;
-    Akonadi::CalendarAdaptor calendar( mCalendar, this );
-    FileStorage storage( &calendar, filename, format );
+    CalendarAdaptor::Ptr calendar( new CalendarAdaptor( mCalendar, this ) );
+    FileStorage storage( calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
       if ( format->exception() ) {

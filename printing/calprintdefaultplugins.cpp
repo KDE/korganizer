@@ -1458,22 +1458,22 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   Item::List::ConstIterator it;
 
   // Convert sort options to the corresponding enums
-  TodoSortField sortField = TodoSortSummary;
+  Akonadi::TodoSortField sortField = Akonadi::TodoSortSummary;
   switch( mTodoSortField ) {
   case TodoFieldSummary:
-    sortField = TodoSortSummary;
+    sortField = Akonadi::TodoSortSummary;
     break;
   case TodoFieldStartDate:
-    sortField = TodoSortStartDate;
+    sortField = Akonadi::TodoSortStartDate;
     break;
   case TodoFieldDueDate:
-    sortField = TodoSortDueDate;
+    sortField = Akonadi::TodoSortDueDate;
     break;
   case TodoFieldPriority:
-    sortField = TodoSortPriority;
+    sortField = Akonadi::TodoSortPriority;
     break;
   case TodoFieldPercentComplete:
-    sortField = TodoSortPercentComplete;
+    sortField = Akonadi::TodoSortPercentComplete;
     break;
   case TodoFieldUnset:
     break;

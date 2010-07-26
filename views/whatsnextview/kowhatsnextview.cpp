@@ -101,7 +101,7 @@ void KOWhatsNextView::updateView()
   KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
 
   events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
-  events = calendar()->sortEvents( events, EventSortStartDate, SortDirectionAscending );
+  events = calendar()->sortEvents( events, Akonadi::EventSortStartDate, Akonadi::SortDirectionAscending );
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
@@ -146,7 +146,8 @@ void KOWhatsNextView::updateView()
   }
 
   mTodos.clear();
-  Item::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
+  Item::List todos = calendar()->todos( Akonadi::TodoSortDueDate,
+                                        Akonadi::SortDirectionAscending );
   if ( todos.count() > 0 ) {
     kil.loadIcon( "view-calendar-tasks", KIconLoader::NoGroup, 22,
                   KIconLoader::DefaultState, QStringList(), &ipath );

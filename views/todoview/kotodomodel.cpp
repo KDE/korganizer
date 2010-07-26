@@ -926,7 +926,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
   if ( mCalendar && mChanger &&
        ( ICalDrag::canDecode( data ) || VCalDrag::canDecode( data ) ) ) {
-    Akonadi::DndFactory dndFactory ( new CalendarAdaptor( mCalendar, 0 ), true );
+    Akonadi::DndFactory dndFactory ( CalendarAdaptor::Ptr( new CalendarAdaptor( mCalendar, 0 ) ), true );
     Todo::Ptr t = dndFactory.createDropTodo( data );
     Event::Ptr e = dndFactory.createDropEvent( data );
 

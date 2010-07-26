@@ -1537,8 +1537,9 @@ void ActionManager::downloadNewStuff()
   foreach (const KNS3::Entry& e, dialog.installedEntries()) {
     kDebug()<<" downloadNewStuff :";
     const QStringList lstFile = e.installedFiles();
-    if ( lstFile.count() != 1 )
+    if ( lstFile.count() != 1 ) {
       continue;
+    }
     const QString file = lstFile.at( 0 );
     const KUrl filename( file );
     kDebug()<< "filename :"<<filename;
@@ -1549,15 +1550,15 @@ void ActionManager::downloadNewStuff()
     //AKONADI_PORT avoid this local incidence changer copy...
     IncidenceChanger changer( mCalendar, 0, Collection().id() );
 
-    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView, true /*use default collection*/ );
-    FileStorage storage( &cal );
+    CalendarAdaptor::Ptr cal( new CalendarAdaptor( mCalendar, mCalendarView, true /*use default collection*/ ) );
+    FileStorage storage( cal );
     storage.setFileName( file );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {
       KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", file ) );
     } else {
       QStringList eventList;
-      foreach( Event::Ptr e, cal.events() ) {
+      foreach( Event::Ptr e, cal->events() ) {
         eventList.append( e->summary() );
       }
 
