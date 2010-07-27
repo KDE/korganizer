@@ -275,7 +275,14 @@ void KOTodoModel::processChange( const Item & aitem, int action )
                       miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
   } else if ( action == Akonadi::IncidenceChanger::INCIDENCEADDED ) {
     // the todo should not be in our tree...
-    Q_ASSERT( !findTodo( Akonadi::incidence ( aitem )->uid() ) );
+    const bool found = findTodo( Akonadi::incidence ( aitem )->uid() );
+
+    if ( found ) {
+      kDebug() << "uid = " << Akonadi::incidence( aitem )->uid()
+               << "; id = " << aitem.id();
+
+      Q_ASSERT_X( false, "processChange", "item to add already existed" );
+    }
 
     insertTodo( aitem );
   } else if ( action == Akonadi::IncidenceChanger::INCIDENCEDELETED ) {
