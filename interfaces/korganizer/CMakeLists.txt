@@ -9,7 +9,7 @@ set(korganizer_interfaces_LIB_SRCS
 )
 
 
-kde4_add_library(korganizer_interfaces SHARED ${korganizer_interfaces_LIB_SRCS})
+kde4_add_library(korganizer_interfaces ${LIBRARY_TYPE} ${korganizer_interfaces_LIB_SRCS})
 
 target_link_libraries(korganizer_interfaces ${KDE4_KIO_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS} akonadi_next akonadi-kcal_next)
 

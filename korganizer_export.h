@@ -24,7 +24,10 @@
 #include <kdemacros.h>
 
 #ifndef KORGANIZERPRIVATE_EXPORT
-# if defined(MAKE_KORGANIZERPRIVATE_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KORGANIZERPRIVATE_EXPORT
+# elif defined(MAKE_KORGANIZERPRIVATE_LIB)
    /* We are building this library */
 #  define KORGANIZERPRIVATE_EXPORT KDE_EXPORT
 # else
@@ -34,7 +37,10 @@
 #endif
 
 #ifndef KORG_STDPRINTING_EXPORT
-# if defined(MAKE_KORG_STDPRINTING_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KORG_STDPRINTING_EXPORT
+# elif defined(MAKE_KORG_STDPRINTING_LIB)
    /* We are building this library */
 #  define KORG_STDPRINTING_EXPORT KDE_EXPORT
 # else
@@ -44,7 +50,10 @@
 #endif
 
 #ifndef KORGANIZER_CORE_EXPORT
-# if defined(MAKE_KORGANIZER_CORE_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KORGANIZER_CORE_EXPORT
+# elif defined(MAKE_KORGANIZER_CORE_LIB)
    /* We are building this library */
 #  define KORGANIZER_CORE_EXPORT KDE_EXPORT
 # else
@@ -54,7 +63,10 @@
 #endif
 
 #ifndef KORGANIZER_EVENTVIEWER_EXPORT
-# if defined(MAKE_KORGANIZERPRIVATE_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KORGANIZER_EVENTVIEWER_EXPORT
+# elif defined(MAKE_KORGANIZERPRIVATE_LIB)
    /* We are building this library */
 #  define KORGANIZER_EVENTVIEWER_EXPORT KDE_EXPORT
 # else
@@ -64,7 +76,10 @@
 #endif
 
 #ifndef KORGANIZER_INTERFACES_EXPORT
-# if defined(MAKE_KORGANIZER_INTERFACES_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KORGANIZER_INTERFACES_EXPORT
+# elif defined(MAKE_KORGANIZER_INTERFACES_LIB)
    /* We are building this library */
 #  define KORGANIZER_INTERFACES_EXPORT KDE_EXPORT
 # else
@@ -74,7 +89,10 @@
 #endif
 
 #ifndef KORGANIZER_CALENDAR_EXPORT
-# if defined(MAKE_KORGANIZER_CALENDAR_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KORGANIZER_CALENDAR_EXPORT
+# elif defined(MAKE_KORGANIZER_CALENDAR_LIB)
    /* We are building this library */
 #  define KORGANIZER_CALENDAR_EXPORT KDE_EXPORT
 # else
@@ -84,7 +102,10 @@
 #endif
 
 #ifndef KCM_KORGANIZER_EXPORT
-# if defined(MAKE_KCM_KORGANIZER_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define KCM_KORGANIZER_EXPORT
+# elif defined(MAKE_KCM_KORGANIZER_LIB)
    /* We are building this library */
 #  define KCM_KORGANIZER_EXPORT KDE_EXPORT
 # else
