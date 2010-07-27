@@ -31,16 +31,15 @@
 #include "korganizer_export.h"
 #include "korganizer/part.h"
 
-#include <kcalcore/incidence.h>
-
 #include <KUrl>
 
 #include <QObject>
 
 #include <akonadi/item.h>
 
-namespace KCalCore {
+namespace KCal {
   class Calendar;
+  class Incidence;
 }
 
 namespace KOrg {
@@ -59,7 +58,7 @@ class CalendarView;
 class ImportDialog;
 class KOWindowList;
 
-using namespace KCalCore;
+using namespace KCal;
 
 class KRecentFilesAction;
 class KSelectAction;
@@ -94,6 +93,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
 
   public slots:
+
+    /*
+      Called when a collection's properties or attributes change.
+      We will update the view if collection rights changed.
+    */
+    void slotCollectionChanged(const Akonadi::Collection &, const QSet<QByteArray> &);
+
     /** Add a new resource
         @param mUrl The url for the new resource. Either a local or a remote
                     resource will be added, depending on the type of the url.
