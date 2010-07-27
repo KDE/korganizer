@@ -1163,10 +1163,9 @@ void ActionManager::exportHTML()
   // seem to load the config theirselves
   settings.readConfig();
 
-  QDate qd1;
-  qd1 = QDate::currentDate();
-  QDate qd2;
-  qd2 = QDate::currentDate();
+  const QDate qd1 = QDate::currentDate();
+  QDate qd2 = qd1;
+
   if ( settings.monthView() ) {
     qd2.addMonths( 1 );
   } else {
