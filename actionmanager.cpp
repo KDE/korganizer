@@ -44,7 +44,7 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
-#include <kcalcore/filestorage.h>
+#include <KCal/FileStorage>
 
 #include <KMime/KMimeMessage>
 
@@ -108,7 +108,6 @@
 #include <QVBoxLayout>
 
 using namespace Akonadi;
-using namespace KCalCore;
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -254,9 +253,9 @@ void ActionManager::createCalendarAkonadi()
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
-  monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
+  monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::eventMimeType(), true );
+  monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::todoMimeType(), true );
+  monitor->setMimeTypeMonitored( Akonadi::IncidenceMimeTypeVisitor::journalMimeType(), true );
   mCalendarModel = new CalendarModel( monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
@@ -1164,10 +1163,9 @@ void ActionManager::exportHTML()
   // seem to load the config theirselves
   settings.readConfig();
 
-  QDate qd1;
-  qd1 = QDate::currentDate();
-  QDate qd2;
-  qd2 = QDate::currentDate();
+  const QDate qd1 = QDate::currentDate();
+  QDate qd2 = qd1;
+
   if ( settings.monthView() ) {
     qd2.addMonths( 1 );
   } else {
@@ -1549,9 +1547,8 @@ void ActionManager::downloadNewStuff()
   foreach (const KNS3::Entry& e, dialog.installedEntries()) {
     kDebug()<<" downloadNewStuff :";
     const QStringList lstFile = e.installedFiles();
-    if ( lstFile.count() != 1 ) {
+    if ( lstFile.count() != 1 )
       continue;
-    }
     const QString file = lstFile.at( 0 );
     const KUrl filename( file );
     kDebug()<< "filename :"<<filename;
@@ -1562,15 +1559,15 @@ void ActionManager::downloadNewStuff()
     //AKONADI_PORT avoid this local incidence changer copy...
     IncidenceChanger changer( mCalendar, 0, Collection().id() );
 
-    CalendarAdaptor::Ptr cal( new CalendarAdaptor( mCalendar, mCalendarView, true /*use default collection*/ ) );
-    FileStorage storage( cal );
+    Akonadi::CalendarAdaptor cal( mCalendar, mCalendarView, true /*use default collection*/ );
+    FileStorage storage( &cal );
     storage.setFileName( file );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {
       KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", file ) );
     } else {
       QStringList eventList;
-      foreach( Event::Ptr e, cal->events() ) {
+      foreach(Event* e, cal.events()) {
         eventList.append( e->summary() );
       }
 
@@ -1594,21 +1591,21 @@ QString ActionManager::localFileName()
   return mFile;
 }
 
-class ActionManager::ActionStringsVisitor : public Visitor
+class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
 {
   public:
     ActionStringsVisitor() : mShow( 0 ), mEdit( 0 ), mDelete( 0 ) {}
 
-  bool act( IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del )
+    bool act( IncidenceBase *incidence, QAction *show, QAction *edit, QAction *del )
     {
       mShow = show;
       mEdit = edit;
       mDelete = del;
-      return incidence->accept( *this, incidence );
+      return incidence->accept( *this );
     }
 
   protected:
-    bool visit( Event::Ptr )
+    bool visit( Event * )
     {
       if ( mShow ) {
         mShow->setText( i18n( "&Show Event" ) );
@@ -1621,7 +1618,7 @@ class ActionManager::ActionStringsVisitor : public Visitor
       }
       return true;
     }
-    bool visit( Todo::Ptr )
+    bool visit( Todo * )
     {
       if ( mShow ) {
         mShow->setText( i18n( "&Show To-do" ) );
@@ -1634,11 +1631,11 @@ class ActionManager::ActionStringsVisitor : public Visitor
       }
       return true;
     }
-    bool visit( Journal::Ptr )
+    bool visit( Journal * )
     {
       return assignDefaultStrings();
     }
-    bool visit( FreeBusy::Ptr  ) // to inhibit hidden virtual compile warning
+    bool visit( FreeBusy * ) // to inhibit hidden virtual compile warning
     {
       return false;
     }
@@ -1667,7 +1664,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
   //kDebug(5850) << "ActionManager::processIncidenceSelection()";
   Q_UNUSED( date );
 
-  const KCalCore::Incidence::Ptr incidence = Akonadi::incidence( item );
+  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     enableIncidenceActions( false );
     return;
@@ -1681,7 +1678,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
   }
 
   ActionStringsVisitor v;
-  if ( !v.act( incidence, mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction ) ) {
+  if ( !v.act( incidence.get(), mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction ) ) {
     mShowIncidenceAction->setText( i18n( "&Show" ) );
     mEditIncidenceAction->setText( i18n( "&Edit..." ) );
     mDeleteIncidenceAction->setText( i18n( "&Delete" ) );
