@@ -284,10 +284,6 @@ void KOTodoModel::processChange( const Item & aitem, int action )
       return;
     }
 
-    // somebody should assure that all todo's which relate to this one
-    // are un-linked before deleting this one
-    Q_ASSERT( !ttTodo->hasChildren() );
-
     // find the model index of the deleted incidence
     QModelIndex miDeleted = getModelIndex( ttTodo );
 
