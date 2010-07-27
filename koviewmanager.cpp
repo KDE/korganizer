@@ -674,11 +674,10 @@ void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
 
 void KOViewManager::setUpdateNeeded()
 {
-  if ( mAgendaView ) {
-    mAgendaView->setUpdateNeeded();
-  }
-  if ( mAgendaSideBySideView ) {
-    mAgendaSideBySideView->setUpdateNeeded();
+  foreach( BaseView *view, mViews ) {
+    if ( view ) {
+      view->setUpdateNeeded( true );
+    }
   }
 }
 
@@ -698,7 +697,7 @@ bool KOViewManager::agendaIsSelected() const
         ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() );
 }
 
-void KOViewManager::setFilter( KCalCore::CalFilter *filter )
+void KOViewManager::setFilter( KCal::CalFilter *filter )
 {
   if ( mMonthView ) {
     // our only calendarsearch based view for now is month view

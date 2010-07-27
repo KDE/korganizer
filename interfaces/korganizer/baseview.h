@@ -25,15 +25,15 @@
 #include "printplugin.h"
 #include "korganizer/korganizer_export.h"
 
-#include <kcalcore/event.h>
+#include <kcal/event.h>
+
 #include <akonadi/kcal/incidencechanger.h>
+#include <Akonadi/Collection>
+#include <Akonadi/Item>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
-
-#include <Akonadi/Collection>
-#include <Akonadi/Item>
 
 #include <QtCore/QPair>
 #include <QtGui/QWidget>
@@ -50,7 +50,7 @@ namespace Akonadi {
   class Calendar;
 }
 
-namespace KCalCore {
+namespace KCal {
   class CalFilter;
 }
 
@@ -106,7 +106,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       probably only select a single event at a time, but some may be able
       to select more than one.
     */
-    virtual KCalCore::DateList selectedIncidenceDates() = 0;
+    virtual KCal::DateList selectedIncidenceDates() = 0;
 
     /**
        Returns the start of the selection, or an invalid QDateTime if there is no selection
@@ -381,7 +381,14 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * sets the kcal filter on the calendarSearch object, this method can be removed from here when
      * calendarsearch stuff is removed from baseview, do we need a calendarsearch object per view?
      */
-    void setFilter( KCalCore::CalFilter *filter );
+    void setFilter( KCal::CalFilter *filter );
+
+    /**
+       Notifies the view that there are pending changes so a redraw is needed.
+
+       @param needed if the update is needed or not.
+    */
+    virtual void setUpdateNeeded( bool needed );
 
   protected:
     /**
@@ -390,7 +397,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void doRestoreConfig( const KConfigGroup &configGroup );
 
     /**
-     * reimplement to write vie- specific settings
+     * reimplement to write view specific settings
      */
     virtual void doSaveConfig( KConfigGroup &configGroup );
 
@@ -411,6 +418,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void incidencesChanged( const Akonadi::Item::List& incidences );
 
     virtual void handleBackendError( const QString &error );
+
+    /**
+       Returns if there are pending changes and a redraw is needed.
+    */
+    bool updateNeeded() const;
 
   protected Q_SLOTS:
     virtual void collectionSelectionChanged();

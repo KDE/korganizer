@@ -35,13 +35,12 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 
-#include <kcalcore/incidence.h>
-#include <kcalutils/incidenceformatter.h>
-#include <kcalcore/todo.h>
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
 
 using namespace Akonadi;
 using namespace KOrg;
-using namespace KCalUtils;
 
 //-------------------------------------------------------------
 MonthItem::MonthItem( MonthScene *monthScene )
@@ -298,7 +297,7 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
        inc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     int years = KOHelper::yearDiff( inc->dtStart().date(), recurStartDate );
     if ( years > 0 ) {
-      inc = Incidence::Ptr( inc->clone() );
+      inc.reset( inc->clone() );
       inc->setReadOnly( false );
       inc->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, inc->summary() ) );
       inc->setReadOnly( true );
@@ -374,7 +373,14 @@ QDate IncidenceMonthItem::realEndDate() const
     return QDate();
   }
 
-  const KDateTime dt = incidence->dateTime( Incidence::RoleDisplayEnd );
+  KDateTime dt;
+  if ( mIsEvent ) {
+    dt = incidence->dtEnd();
+  } else if ( mIsTodo ) {
+    dt = Akonadi::todo( mIncidence )->dtDue();
+  } else if ( mIsJournal ) {
+    dt = incidence->dtStart();
+  }
 
   QDate end;
   if ( dt.isDateOnly() ) {
@@ -393,11 +399,11 @@ bool IncidenceMonthItem::allDay() const
 
 bool IncidenceMonthItem::isMoveable() const
 {
-  return Akonadi::hasChangeRights( mIncidence );
+  return monthScene()->mMonthView->calendar()->hasChangeRights( mIncidence );
 }
 bool IncidenceMonthItem::isResizable() const
 {
-  return mIsEvent && Akonadi::hasChangeRights( mIncidence );
+  return mIsEvent && monthScene()->mMonthView->calendar()->hasChangeRights( mIncidence );
 }
 
 void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
@@ -552,7 +558,7 @@ QString IncidenceMonthItem::toolTipText( const QDate &date ) const
 {
   return IncidenceFormatter::toolTipStr(
     Akonadi::displayName( mIncidence.parentCollection() ),
-    Akonadi::incidence( mIncidence ),
+    Akonadi::incidence( mIncidence ).get(),
     date, true, KCalPrefs::instance()->timeSpec() );
 }
 
@@ -596,7 +602,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
     ret << monthScene()->journalPixmap();
   }
 
-  if ( !Akonadi::hasChangeRights( mIncidence ) && !specialEvent ) {
+  if ( !monthScene()->mMonthView->calendar()->hasChangeRights( mIncidence ) && !specialEvent ) {
     ret << monthScene()->readonlyPixmap();
   }
 #if 0

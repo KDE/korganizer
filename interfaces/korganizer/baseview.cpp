@@ -60,6 +60,7 @@ class BaseView::Private
   public:
     explicit Private( BaseView* qq )
       : q( qq ),
+        mPendingChanges( true ),
         calendar( 0 ),
         customCollectionSelection( 0 ),
         collectionSelectionModel( 0 ),
@@ -83,6 +84,7 @@ class BaseView::Private
       delete collectionSelectionModel;
     }
 
+    bool mPendingChanges;
     Akonadi::Calendar *calendar;
     CalendarSearch *calendarSearch;
     CollectionSelection *customCollectionSelection;
@@ -420,9 +422,19 @@ void BaseView::rowsAboutToBeRemoved( const QModelIndex& parent, int start, int e
   incidencesAboutToBeRemoved( Akonadi::itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
 }
 
-void BaseView::setFilter( KCalCore::CalFilter *filter )
+void BaseView::setFilter( KCal::CalFilter *filter )
 {
   calendarSearch()->setFilter( filter );
+}
+
+void BaseView::setUpdateNeeded( bool needed )
+{
+  d->mPendingChanges = needed;
+}
+
+bool BaseView::updateNeeded() const
+{
+  return d->mPendingChanges;
 }
 
 #include "baseview.moc"

@@ -28,8 +28,6 @@
 */
 
 #include "actionmanager.h"
-#include <kcalprefs.h>
-#include <kmimetypetrader.h>
 #include "calendaradaptor.h"
 #include "calendarview.h"
 #include "eventarchiver.h"
@@ -50,6 +48,7 @@
 
 #include <KMime/KMimeMessage>
 
+#include <kcalprefs.h>
 #include <akonadi/akonadi_next/collectionselectionproxymodel.h>
 #include <akonadi/akonadi_next/entitymodelstatesaver.h>
 #include <akonadi/kcal/calendar.h>
@@ -74,6 +73,7 @@
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstanceCreateJob>
 
+#include <kmimetypetrader.h>
 #include <kio/job.h>
 #include <KAction>
 #include <KActionCollection>
@@ -233,6 +233,7 @@ void ActionManager::slotCollectionChanged( const Akonadi::Collection &collection
   Q_UNUSED( collection );
 
   if ( changedAttributes.contains( "AccessRights" ) ) {
+    mCalendarView->viewManager()->setUpdateNeeded();
     mCalendarView->updateView();
   }
 }
@@ -1672,7 +1673,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
 
   enableIncidenceActions( true );
 
-  if ( !Akonadi::hasDeleteRights( item ) ) {
+  if ( !mCalendarView->calendar()->hasDeleteRights( item ) ) {
     mCutAction->setEnabled( false );
     mDeleteAction->setEnabled( false );
   }
