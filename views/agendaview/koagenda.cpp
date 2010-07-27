@@ -25,7 +25,7 @@
   without including the source code for Qt in the source distribution.
 */
 #include "koagenda.h"
-#include <kcalprefs.h>
+
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -34,10 +34,13 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <KCal/DndFactory>
-#include <KCal/ICalDrag>
-#include <KCal/Todo>
-#include <KCal/VCalDrag>
+#include <kcalcore/todo.h>
+
+#include <kcalutils/dndfactory.h>
+#include <kcalutils/icaldrag.h>
+#include <kcalutils/vcaldrag.h>
+
+#include <kcalprefs.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>

@@ -31,15 +31,16 @@
 #include "korganizer_export.h"
 #include "korganizer/part.h"
 
+#include <kcalcore/incidence.h>
+
 #include <KUrl>
 
 #include <QObject>
 
 #include <akonadi/item.h>
 
-namespace KCal {
+namespace KCalCore {
   class Calendar;
-  class Incidence;
 }
 
 namespace KOrg {
@@ -58,7 +59,7 @@ class CalendarView;
 class ImportDialog;
 class KOWindowList;
 
-using namespace KCal;
+using namespace KCalCore;
 
 class KRecentFilesAction;
 class KSelectAction;

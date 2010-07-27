@@ -35,8 +35,8 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/incidencechanger.h>
 
-#include <kcal/incidenceformatter.h>
-#include <kcal/journal.h>
+#include <kcalutils/incidenceformatter.h>
+#include <kcalcore/journal.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -62,6 +62,7 @@
 #include "journalview.moc"
 
 using namespace Akonadi;
+using namespace KCalUtils;
 
 JournalDateView::JournalDateView( Akonadi::Calendar *calendar, QWidget *parent )
   : KVBox( parent ), mCalendar( calendar )
@@ -228,7 +229,7 @@ void JournalView::printItem()
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;
-    selectedIncidences.append( j.get() );
+    selectedIncidences.append( j );
 
     printer.print( KOrg::CalPrinterBase::Incidence,
                    mDate, mDate, selectedIncidences );

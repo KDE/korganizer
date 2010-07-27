@@ -697,7 +697,7 @@ bool KOViewManager::agendaIsSelected() const
         ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() );
 }
 
-void KOViewManager::setFilter( KCal::CalFilter *filter )
+void KOViewManager::setFilter( KCalCore::CalFilter *filter )
 {
   if ( mMonthView ) {
     // our only calendarsearch based view for now is month view
