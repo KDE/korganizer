@@ -40,7 +40,7 @@
 #include <akonadi/kcal/incidencemimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
-#include <kcalcore/calendar.h>
+#include <KCal/Calendar>
 
 #include <KApplication>
 #include <KConfig>
@@ -48,14 +48,14 @@
 #include <KDebug>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
-#include "kdescendantsproxymodel_p.h" // fix when forwarding header is there
+#include <kdescendantsproxymodel.h> // fix when forwarding header is there
 
 #ifdef Q_WS_MAEMO_5
 #include <QtMaemo5/QMaemo5InformationBox>
 #endif
 
 using namespace Akonadi;
-using namespace KCalCore;
+using namespace KCal;
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ), mDocker( 0 ), mDialog( 0 )
@@ -161,11 +161,10 @@ void KOAlarmClient::checkAlarms()
   Alarm::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                             KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
-  foreach( Alarm::Ptr a, alarms ) {
-    const QString uid = a->parentUid();
+  foreach( Alarm* a, alarms ) {
+    const QString uid = a->parent()->uid();
     const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( uid );
     const Akonadi::Item incidence = mCalendar->incidence( itemId );
-
     createReminder( mCalendar, incidence, from, a->text() );
   }
 }
@@ -256,10 +255,8 @@ QStringList KOAlarmClient::dumpAlarms()
          end.toString();
 
   Alarm::List alarms = mCalendar->alarms( start, end );
-  foreach( Alarm::Ptr a, alarms ) {
-    const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( a->parentUid() );
-    const Incidence::Ptr parentIncidence = Akonadi::incidence( mCalendar->incidence( itemId ) );
-    lst << QString( "  " ) + parentIncidence->summary() + " (" + a->time().toString() + ')';
+  foreach( Alarm* a, alarms ) {
+    lst << QString( "  " ) + a->parent()->summary() + " (" + a->time().toString() + ')';
   }
 
   return lst;
