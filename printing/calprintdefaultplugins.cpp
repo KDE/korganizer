@@ -4,7 +4,7 @@
     Copyright (c) 1998 Preston Brown <pbrown@kde.org>
     Copyright (c) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (c) 2008 Ron Goodheart <ron.goodheart@gmail.com>
+    Copyright (c) 2008 Ron Goodheart <ron.goodheart@gmail.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -49,6 +49,11 @@
 #include "calprintmonthconfig_base.h"
 #include "calprinttodoconfig_base.h"
 
+static QString cleanStr( const QString &instr )
+{
+  QString ret = instr;
+  return ret.replace( '\n', ' ' );
+}
 
 /**************************************************************
  *           Print Incidence
@@ -718,15 +723,65 @@ void CalPrintDay::print( QPainter &p, int width, int height )
                                                EventSortStartDate,
                                                SortDirectionAscending );
 
-    p.setFont( QFont( "sans-serif", 12 ) );
+    // split out the all day events as they will be printed in a separate box
+    Event::List alldayEvents, timedEvents;
+    Event::List::ConstIterator it;
+    for ( it = eventList.begin(); it != eventList.end(); ++it ) {
+      if ( (*it)->doesFloat() ) {
+        alldayEvents.append( *it );
+      } else {
+        timedEvents.append( *it );
+      }
+    }
 
-    // TODO: Find a good way to determine the height of the all-day box
+    int fontSize = 11;
+    QFont textFont( "sans-serif", fontSize, QFont::Normal );
+    p.setFont( textFont );
+    uint lineSpacing = p.fontMetrics().lineSpacing();
+
+    uint maxAllDayEvents = 8; // the max we allow to be printed, sorry.
+    uint allDayHeight = QMIN( alldayEvents.count(), maxAllDayEvents ) * lineSpacing;
+    allDayHeight = QMAX( allDayHeight, ( 5 * lineSpacing ) ) + ( 2 * padding() );
     QRect allDayBox( TIMELINE_WIDTH + padding(), headerBox.bottom() + padding(),
-                     0, height - headerBox.bottom() - padding() );
-    allDayBox.setRight( width );
+                     width - TIMELINE_WIDTH - padding(), allDayHeight );
+    if ( alldayEvents.count() > 0 ) {
+      drawVerticalBox( p,
+                       QRect( 0, headerBox.bottom() + padding(), TIMELINE_WIDTH, allDayHeight ),
+                       i18n( "Today's Events" ),
+                       Qt::AlignHCenter | Qt::AlignVCenter | Qt::SingleLine );
+
+      drawBox( p, BOX_BORDER_WIDTH, allDayBox );
+
+      Event::List::ConstIterator it;
+      QRect eventBox( allDayBox );
+      eventBox.setLeft( TIMELINE_WIDTH + ( 2 * padding() ) );
+      eventBox.setTop( eventBox.top() + padding() );
+      eventBox.setBottom( eventBox.top() + lineSpacing );
+      uint count = 0;
+      for ( it = alldayEvents.begin(); it != alldayEvents.end(); ++it ) {
+        if ( count == maxAllDayEvents ) {
+          break;
+        }
+        count++;
+        QString str;
+        if ( (*it)->location().isEmpty() ) {
+          str = cleanStr( (*it)->summary() );
+        } else {
+          str = i18n( "summary, location", "%1, %2" ).
+                arg( cleanStr( (*it)->summary() ), cleanStr( (*it)->location() ) );
+        }
+        printEventString( p, eventBox, str );
+        eventBox.setTop( eventBox.bottom() );
+        eventBox.setBottom( eventBox.top() + lineSpacing );
+      }
+    } else {
+      allDayBox.setBottom( headerBox.bottom() );
+    }
 
     QRect dayBox( allDayBox );
-    drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
+    dayBox.setTop( allDayBox.bottom() + padding() );
+    dayBox.setBottom( height );
+    drawAgendaDayBox( p, timedEvents, curDay, mIncludeAllEvents,
                       curStartTime, curEndTime, dayBox );
 
     QRect tlBox( dayBox );

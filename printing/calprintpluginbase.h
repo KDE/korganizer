@@ -221,7 +221,7 @@ class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       \param box Coordinates of the box
       \param str ext to be printed inside the box
     */
-    void drawVerticalBox( QPainter &p, const QRect &box, const QString &str );
+    void drawVerticalBox( QPainter &p, const QRect &box, const QString &str, int flags=-1 );
 
     /**
       Draw a component box with a heading (printed in bold).

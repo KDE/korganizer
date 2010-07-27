@@ -412,8 +412,7 @@ void CalPrintPluginBase::showEventBox( QPainter &p, const QRect &box, Incidence 
 }
 
 
-void CalPrintPluginBase::drawSubHeaderBox(QPainter &p, const QString &str,
-    const QRect &box )
+void CalPrintPluginBase::drawSubHeaderBox(QPainter &p, const QString &str, const QRect &box )
 {
   drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), box );
   QFont oldfont( p.font() );
@@ -422,12 +421,14 @@ void CalPrintPluginBase::drawSubHeaderBox(QPainter &p, const QString &str,
   p.setFont( oldfont );
 }
 
-void CalPrintPluginBase::drawVerticalBox( QPainter &p, const QRect &box, const QString &str )
+void CalPrintPluginBase::drawVerticalBox( QPainter &p, const QRect &box, const QString &str,
+                                          int flags )
 {
   p.save();
   p.rotate( -90 );
   QRect rotatedBox( -box.top()-box.height(), box.left(), box.height(), box.width() );
-  showEventBox( p, rotatedBox, 0, str, Qt::AlignLeft | Qt::AlignVCenter | Qt::SingleLine );
+  showEventBox( p, rotatedBox, 0, str,
+                ( flags == -1 ) ? Qt::AlignLeft | Qt::AlignVCenter | Qt::SingleLine : flags );
 
   p.restore();
 }
