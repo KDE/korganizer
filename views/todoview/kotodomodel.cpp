@@ -274,17 +274,15 @@ void KOTodoModel::processChange( const Item & aitem, int action )
     emit dataChanged( miChanged,
                       miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
   } else if ( action == Akonadi::IncidenceChanger::INCIDENCEADDED ) {
-    // the todo should not be in our tree...
     const bool found = findTodo( Akonadi::incidence ( aitem )->uid() );
 
-    if ( found ) {
-      kDebug() << "uid = " << Akonadi::incidence( aitem )->uid()
-               << "; id = " << aitem.id();
-
-      Q_ASSERT_X( false, "processChange", "item to add already existed" );
+    // "found" can be true, with akonadi calendarview listens to ETM model signals
+    // and calls updateview, which calls reloadTodos().  I think we have lots of room
+    // for optimization and refactoring in this area. Calling reloadTodos() for one incidence
+    // doesn't justify it.
+    if ( !found ) {
+      insertTodo( aitem );
     }
-
-    insertTodo( aitem );
   } else if ( action == Akonadi::IncidenceChanger::INCIDENCEDELETED ) {
     TodoTreeNode *ttTodo = findTodo( Akonadi::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
