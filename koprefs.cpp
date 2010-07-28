@@ -199,8 +199,8 @@ void KOPrefs::usrReadConfig()
 
   QMapIterator<QString, QString> it3;
   for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
-    kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
-      << it3.data()<<endl;
+    // kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
+    //  << it3.data()<<endl;
     setResourceColor( it3.key(), config()->readColorEntry( it3.key(),
       &mDefaultResourceColor ) );
   }
@@ -283,8 +283,8 @@ bool KOPrefs::hasCategoryColor( const QString& cat ) const
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
-  kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<<
-    color.name()<<endl;
+  // kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<<
+  // color.name()<<endl;
   mResourceColors.replace( cal, new QColor( color ) );
 }
 
