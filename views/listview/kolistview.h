@@ -79,6 +79,9 @@ class KOListView : public KOEventView
 
     void showDates( bool show );
 
+    // Shows all incidences of the calendar
+    void showAll();
+
     void readSettings( KConfig *config );
     void writeSettings( KConfig *config );
 

@@ -378,6 +378,12 @@ void KOListView::showDates( const QDate &start, const QDate &end )
   emit incidenceSelected( Item(), QDate() );
 }
 
+void KOListView::showAll()
+{
+  const Item::List incidenceList = calendar()->incidences();
+  addIncidences( incidenceList, QDate() );
+}
+
 void KOListView::addIncidences( const Item::List &incidenceList, const QDate &date )
 {
   Q_FOREACH ( const Item & i, incidenceList ) {
@@ -523,12 +529,14 @@ void KOListView::writeSettings( KConfig *config )
 
 void KOListView::processSelectionChange()
 {
-  KOListViewItem *item = static_cast<KOListViewItem *>( mListView->selectedItem() );
+  if ( !mIsNonInteractive ) {
+    KOListViewItem *item = static_cast<KOListViewItem *>( mListView->selectedItem() );
 
-  if ( !item ) {
-    emit incidenceSelected( Item(), QDate() );
-  } else {
-    emit incidenceSelected( mItems.value( item->data() ), mDateList.value( item->data() ) );
+    if ( !item ) {
+      emit incidenceSelected( Item(), QDate() );
+    } else {
+      emit incidenceSelected( mItems.value( item->data() ), mDateList.value( item->data() ) );
+    }
   }
 }
 
