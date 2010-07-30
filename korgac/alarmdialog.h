@@ -46,13 +46,15 @@ class AlarmDialog : public KDialogBase {
   Q_OBJECT
   public:
     explicit AlarmDialog( CalendarResources *calendar, QWidget *parent = 0, const char *name = 0 );
-    virtual ~AlarmDialog();
+
+    ~AlarmDialog();
 
     void addIncidence( Incidence *incidence, const QDateTime &reminderAt,
                        const QString &displayText );
     void eventNotification();
 
   public slots:
+
     void slotOk();    // suspend
     void slotUser1(); // edit
     void slotUser2(); // dismiss all
@@ -77,6 +79,11 @@ class AlarmDialog : public KDialogBase {
     void closeEvent( QCloseEvent * );
 
   private:
+
+    static QDateTime triggerDateForIncidence( Incidence *inc,
+                                              const QDateTime &reminderAt,
+                                              QString &displayStr );
+
     void readLayout();
     void writeLayout();
     AlarmListItem *searchByUid( const QString &uid );

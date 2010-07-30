@@ -233,52 +233,19 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   item->setText( 0, cleanSummary( incidence->summary() ) );
   item->setText( 1, QString() );
 
-  Event *event;
-  Todo *todo;
-  Alarm *alarm = incidence->alarms().first();
+  QString displayStr;
+  const QDateTime dateTime = triggerDateForIncidence( incidence, reminderAt, displayStr );
+
+  item->mHappening = dateTime;
+  item->setText( 1, displayStr );
+
   if ( incidence->type() == "Event" ) {
     item->setPixmap( 0, SmallIcon( "appointment" ) );
-    event = static_cast<Event *>( incidence );
-    if ( event->doesRecur() ) {
-      QDateTime nextStart = event->recurrence()->getNextDateTime( reminderAt );
-      if ( nextStart.isValid() ) {
-        item->mHappening = nextStart;
-        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
-      }
-    }
-    if ( item->text( 1 ).isEmpty() ) {
-      QDateTime qdt;
-      if ( alarm->hasStartOffset() ) {
-        qdt = event->dtStart();
-      } else {
-        qdt = event->dtEnd();
-      }
-      item->mHappening = qdt;
-      item->setText( 1, IncidenceFormatter::dateTimeToString( qdt, false, true ) );
-    }
-  } else if ( incidence->type() == "Todo" ) {
+  } else {
     item->setPixmap( 0, SmallIcon( "todo" ) );
-    todo = static_cast<Todo *>( incidence );
-    if ( todo->doesRecur() ) {
-      QDateTime nextStart = todo->recurrence()->getNextDateTime( reminderAt );
-      if ( nextStart.isValid() ) {
-        item->mHappening = nextStart;
-        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
-      }
-    }
-    if ( item->text( 1 ).isEmpty() ) {
-      QDateTime qdt;
-      if ( alarm->hasStartOffset() && todo->dtStart().isValid() ) {
-        qdt = todo->dtStart();
-      } else {
-        qdt = todo->dtDue();
-      }
-      item->mHappening = qdt;
-      item->setText( 1, IncidenceFormatter::dateTimeToString( qdt, false, true ) );
-    }
   }
 
-  if ( activeCount() == 1 ) {// previously empty
+  if ( activeCount() == 1 ) { // previously empty
     mIncidenceListView->clearSelection();
     item->setSelected( true );
   }
@@ -699,3 +666,38 @@ bool AlarmDialog::ensureKorganizerRunning() const
   }
   return false;
 }
+
+/** static */
+QDateTime AlarmDialog::triggerDateForIncidence( Incidence *incidence,
+                                                const QDateTime &reminderAt,
+                                                QString &displayStr )
+{
+  // Will be simplified in trunk, with roles.
+  QDateTime result;
+
+  Alarm *alarm = incidence->alarms().first();
+
+  if ( incidence->doesRecur() ) {
+    result = incidence->recurrence()->getNextDateTime( reminderAt );
+    displayStr = KGlobal::locale()->formatDateTime( result );
+  }
+
+  if ( incidence->type() == "Event" ) {
+    if ( !result.isValid() ) {
+      Event *event = static_cast<Event *>( incidence );
+      result = alarm->hasStartOffset() ? event->dtStart() :
+                                         event->dtEnd();
+      displayStr = IncidenceFormatter::dateTimeToString( result, false, true );
+    }
+  } else if ( incidence->type() == "Todo" ) {
+    if ( !result.isValid() ) {
+      Todo *todo = static_cast<Todo *>( incidence );
+      result = alarm->hasStartOffset() && todo->dtStart().isValid() ? todo->dtStart():
+                                                                      todo->dtDue();
+     displayStr = IncidenceFormatter::dateTimeToString( result, false, true );
+    }
+  }
+
+  return result;
+}
+
