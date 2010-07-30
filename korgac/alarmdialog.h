@@ -68,6 +68,12 @@ class AlarmDialog : public KDialogBase {
     void dismissAll();
     void dismissCurrent();
 
+    /**
+       If an incidence changed, for example in korg, we must update
+       the date and summary shown in the list view.
+    */
+    void slotCalendarChanged();
+
   signals:
     void reminderCount( int count );
 

@@ -109,6 +109,9 @@ AlarmDialog::AlarmDialog( KCal::CalendarResources *calendar, QWidget *parent, co
   // User3 => Dismiss Selected
   //    Ok => Suspend
 
+  connect( calendar, SIGNAL(calendarChanged()),
+           this, SLOT(slotCalendarChanged()) );
+
   KGlobal::iconLoader()->addAppDir( "kdepim" );
   setButtonOK( i18n( "Suspend" ) );
 
@@ -701,3 +704,27 @@ QDateTime AlarmDialog::triggerDateForIncidence( Incidence *incidence,
   return result;
 }
 
+void AlarmDialog::slotCalendarChanged()
+{
+  Incidence::List incidences = mCalendar->incidences();
+  for ( Incidence::List::ConstIterator it = incidences.begin();
+        it != incidences.constEnd(); ++it ) {
+    Incidence *incidence = *it;
+    AlarmListItem *item = searchByUid( incidence->uid() );
+
+    if ( item ) {
+      QString displayStr;
+      const QDateTime dateTime = triggerDateForIncidence( incidence,
+                                                          item->mRemindAt,
+                                                          displayStr );
+
+      const QString summary = cleanSummary( incidence->summary() );
+
+      if ( displayStr != item->text( 1 ) ||
+           summary != item->text( 0 ) ) {
+        item->setText( 1, displayStr );
+        item->setText( 0, summary );
+      }
+    }
+  }
+}
