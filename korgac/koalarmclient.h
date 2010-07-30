@@ -70,7 +70,7 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface, public KS
 
   private:
     void createReminder( KCal::CalendarResources *calendar, KCal::Incidence *incidence,
-                         QDateTime dt, const QString &displayText );
+                         const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon

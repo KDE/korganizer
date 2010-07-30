@@ -124,7 +124,7 @@ void KOAlarmClient::checkAlarms()
 
 void KOAlarmClient::createReminder( KCal::CalendarResources *calendar,
                                     KCal::Incidence *incidence,
-                                    QDateTime dt,
+                                    const QDateTime &dt,
                                     const QString &displayText )
 {
   if ( !incidence )
