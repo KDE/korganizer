@@ -38,6 +38,8 @@ target_link_libraries(korgac
 	${KDEPIMLIBS_MAILTRANSPORT_LIBRARY}
 	akonadi-kcal_next
 	korganizer_core
+	${KDEPIMLIBS_KCALCORE_LIBS} 
+	${KDEPIMLIBS_KCALUTILS_LIBS} 
   kdepim
   kdepimdbusinterfaces
 	)
