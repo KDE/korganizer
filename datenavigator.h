@@ -104,6 +104,10 @@ class DateNavigator : public QObject
                      int offset );
 
     KCalCore::DateList mSelectedDates;
+
+    enum {
+      MAX_SELECTABLE_DAYS = 50
+    };
 };
 
 #endif

@@ -79,6 +79,7 @@ void DateNavigator::selectDate( const QDate &date )
 
 void DateNavigator::selectDates( int count )
 {
+  count = qMin( count, static_cast<int>( MAX_SELECTABLE_DAYS ) );
   selectDates( mSelectedDates.first(), count );
 }
 
