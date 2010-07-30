@@ -158,6 +158,7 @@ class KOTodoView : public BaseView
     QMenu *mPriorityPopupMenu;
     QMenu *mPercentageCompletedPopupMenu;
     QList<QAction*> mItemPopupMenuItemOnlyEntries;
+    QList<QAction*> mItemPopupMenuReadWriteEntries;
 
     QAction *mMakeTodoIndependent;
     QAction *mMakeSubtodosIndependent;

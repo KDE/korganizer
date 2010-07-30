@@ -154,8 +154,11 @@ KOTodoView::KOTodoView( QWidget *parent )
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     i18n( "&Show" ), this, SLOT(showTodo()) );
 
-  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+
+  QAction *a = mItemPopupMenu->addAction(
     i18n( "&Edit..." ), this, SLOT(editTodo()) );
+  mItemPopupMenuReadWriteEntries << a;
+  mItemPopupMenuItemOnlyEntries << a;
 
   mItemPopupMenu->addSeparator();
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
@@ -167,9 +170,11 @@ KOTodoView::KOTodoView( QWidget *parent )
     i18n( "Print Previe&w..." ), this, SLOT(printPreviewTodo()) );
 
   mItemPopupMenu->addSeparator();
-  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+  a = mItemPopupMenu->addAction(
     KIconLoader::global()->loadIcon( "edit-delete", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
     i18n( "&Delete" ), this, SLOT(deleteTodo()) );
+  mItemPopupMenuReadWriteEntries << a;
+  mItemPopupMenuItemOnlyEntries << a;
 
   mItemPopupMenu->addSeparator();
 
@@ -178,8 +183,10 @@ KOTodoView::KOTodoView( QWidget *parent )
       "view-calendar-tasks", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
     i18n( "New &To-do..." ), this, SLOT(newTodo()) );
 
-  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+  a = mItemPopupMenu->addAction(
     i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
+  mItemPopupMenuReadWriteEntries << a;
+  mItemPopupMenuItemOnlyEntries << a;
 
   mMakeTodoIndependent = mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ),
                                                     this, SIGNAL(unSubTodoSignal()) );
@@ -188,8 +195,10 @@ KOTodoView::KOTodoView( QWidget *parent )
                                                         this, SIGNAL(unAllSubTodoSignal()) );
 
   mItemPopupMenuItemOnlyEntries << mMakeTodoIndependent;
-
   mItemPopupMenuItemOnlyEntries << mMakeSubtodosIndependent;
+
+  mItemPopupMenuReadWriteEntries << mMakeTodoIndependent;
+  mItemPopupMenuReadWriteEntries << mMakeSubtodosIndependent;
 
   mItemPopupMenu->addSeparator();
 
@@ -477,18 +486,42 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 
 void KOTodoView::contextMenu( const QPoint &pos )
 {
-  bool enable = mView->indexAt( pos ).isValid();
+  const bool hasItem = mView->indexAt( pos ).isValid();
+  Incidence::Ptr incidencePtr;
 
   Q_FOREACH( QAction *entry, mItemPopupMenuItemOnlyEntries ) {
+    bool enable;
+
+    if ( hasItem ) {
+      const Akonadi::Item::List incidences = selectedIncidences();
+
+      if ( incidences.isEmpty() ) {
+        enable = false;
+      } else {
+        Akonadi::Item item = incidences.first();
+        incidencePtr = Akonadi::incidence( item );
+
+        // Action isn't RO, it can change the incidence, "Edit" for example.
+        const bool actionIsRw = mItemPopupMenuReadWriteEntries.contains( entry );
+
+        const bool incidenceIsRO = !calendar()->hasChangeRights( item );
+
+        enable = hasItem && ( !actionIsRw ||
+                              ( actionIsRw && !incidenceIsRO ) );
+
+      }
+    } else {
+      enable = false;
+    }
+
     entry->setEnabled( enable );
   }
-  mCopyPopupMenu->setEnabled( enable );
-  mMovePopupMenu->setEnabled( enable );
+  mCopyPopupMenu->setEnabled( hasItem );
+  mMovePopupMenu->setEnabled( hasItem );
 
-  if ( enable ) {
-    Akonadi::Item::List incidences = selectedIncidences();
-    if ( !incidences.isEmpty() ) {
-      Incidence::Ptr incidencePtr = incidences[0].payload<Incidence::Ptr>();
+  if ( hasItem ) {
+
+    if ( !incidencePtr ) {
       mMakeSubtodosIndependent->setEnabled( !incidencePtr->relations().isEmpty() );
       mMakeTodoIndependent->setEnabled( incidencePtr->relatedTo() );
     }
