@@ -3,7 +3,7 @@
 
   Copyright (c) 2007 Till Adam <adam@kde.org>
   Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
- Copyright (c) 2010 Andras Mantia <andras@kdab.com>
+  Copyright (c) 2010 Andras Mantia <andras@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,7 +27,6 @@
 #include "kotimelineview.h"
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
-#include <kcalprefs.h>
 #include "timelineitem.h"
 #include "kohelper.h"
 
@@ -42,6 +41,8 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
+
+#include <kcalprefs.h>
 
 #include <QApplication>
 #include <QPainter>
