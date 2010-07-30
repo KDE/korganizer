@@ -50,10 +50,8 @@ enum {
   Summary_Column = 0,
   Reminder_Column,
   Recurs_Column,
-  StartDate_Column,
-  StartTime_Column,
-  EndDate_Column,
-  EndTime_Column,
+  StartDateTime_Column,
+  EndDateTime_Column,
   Categories_Column
 };
 
@@ -137,30 +135,18 @@ bool KOListView::ListItemVisitor::visit( Event::Ptr e )
 
   mItem->setPixmap( Summary_Column, eventPxmp );
 
-  mItem->setText( StartDate_Column, IncidenceFormatter::dateToString(
-                    e->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
-  mItem->setSortKey( StartDate_Column, e->dtStart().toTimeSpec(
+  mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString(
+                    e->dtStart(), e->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+
+  mItem->setSortKey( StartDateTime_Column, e->dtStart().toTimeSpec(
                        KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
-  if ( e->allDay() ) {
-    mItem->setText( StartTime_Column, "---" );
-  } else {
-    mItem->setText( StartTime_Column, IncidenceFormatter::timeToString(
-                      e->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
-    mItem->setSortKey( StartTime_Column, e->dtStart().toTimeSpec(
-                         KCalPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
-  }
-  mItem->setText( EndDate_Column, IncidenceFormatter::dateToString(
-                    e->dtEnd(), true, KCalPrefs::instance()->timeSpec() ) );
-  mItem->setSortKey( EndDate_Column, e->dtEnd().toTimeSpec(
+
+  mItem->setText( EndDateTime_Column, IncidenceFormatter::dateTimeToString(
+                    e->dtEnd(), e->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+
+  mItem->setSortKey( EndDateTime_Column, e->dtEnd().toTimeSpec(
                        KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
-  if ( e->allDay() ) {
-    mItem->setText( EndTime_Column, "---" );
-  } else {
-    mItem->setText( EndTime_Column, IncidenceFormatter::timeToString(
-                      e->dtEnd(), true, KCalPrefs::instance()->timeSpec() ) );
-    mItem->setSortKey( EndTime_Column, e->dtEnd().toTimeSpec(
-                         KCalPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
-  }
+
   mItem->setText( Categories_Column, e->categoriesStr() );
 
   return true;
@@ -189,56 +175,41 @@ bool KOListView::ListItemVisitor::visit( Todo::Ptr t )
   }
 
   if ( t->hasStartDate() ) {
-    mItem->setText( StartDate_Column, IncidenceFormatter::dateToString(
-                      t->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
-    mItem->setSortKey( StartDate_Column, t->dtStart().toTimeSpec(
+    mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString(
+                      t->dtStart(), t->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+    mItem->setSortKey( StartDateTime_Column, t->dtStart().toTimeSpec(
                        KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
-    if ( t->allDay() ) {
-      mItem->setText( StartTime_Column, "---" );
-    } else {
-      mItem->setText( StartTime_Column, IncidenceFormatter::timeToString(
-                        t->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
-      mItem->setSortKey( StartTime_Column, t->dtStart().toTimeSpec(
-                           KCalPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
-    }
   } else {
-    mItem->setText( StartDate_Column, "---" );
-    mItem->setText( StartTime_Column, "---" );
+    mItem->setText( StartDateTime_Column, "---" );
   }
 
   if ( t->hasDueDate() ) {
-    mItem->setText( EndDate_Column, IncidenceFormatter::dateToString(
-                      t->dtDue(), true, KCalPrefs::instance()->timeSpec() ) );
-    mItem->setSortKey( EndDate_Column, t->dtDue().toTimeSpec(
+    mItem->setText( EndDateTime_Column, IncidenceFormatter::dateTimeToString(
+                      t->dtDue(), t->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+
+    mItem->setSortKey( EndDateTime_Column, t->dtDue().toTimeSpec(
                          KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
-    if ( t->allDay() ) {
-      mItem->setText( EndTime_Column, "---" );
-    } else {
-      mItem->setText( EndTime_Column, IncidenceFormatter::timeToString(
-                        t->dtDue(), true, KCalPrefs::instance()->timeSpec() ) );
-      mItem->setSortKey( EndTime_Column, t->dtDue().time().toString( Qt::ISODate ) );
-    }
   } else {
-    mItem->setText( EndDate_Column, "---" );
-    mItem->setText( EndTime_Column, "---" );
+    mItem->setText( EndDateTime_Column, "---" );
   }
   mItem->setText( Categories_Column, t->categoriesStr() );
 
   return true;
 }
 
-bool KOListView::ListItemVisitor::visit( Journal::Ptr t )
+bool KOListView::ListItemVisitor::visit( Journal::Ptr j )
 {
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "view-pim-journal" );
   mItem->setPixmap( Summary_Column, jrnalPxmp );
-  if ( t->summary().isEmpty() ) {
-    mItem->setText( Summary_Column, t->description().section( '\n', 0, 0 ) );
+  if ( j->summary().isEmpty() ) {
+    mItem->setText( Summary_Column, j->description().section( '\n', 0, 0 ) );
   } else {
-    mItem->setText( Summary_Column, t->summary() );
+    mItem->setText( Summary_Column, j->summary() );
   }
-  mItem->setText( StartDate_Column, IncidenceFormatter::dateToString(
-                  t->dtStart(), true, KCalPrefs::instance()->timeSpec() ) );
-  mItem->setSortKey( StartDate_Column, t->dtStart().toString( KDateTime::ISODate ) );
+  mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString(
+                  j->dtStart(), j->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+
+  mItem->setSortKey( StartDateTime_Column, j->dtStart().toString( KDateTime::ISODate ) );
 
   return true;
 }
@@ -253,14 +224,10 @@ KOListView::KOListView( QWidget *parent,  bool nonInteractive )
   mListView->addColumn( i18n( "Summary" ) );
   mListView->addColumn( i18n( "Reminder" ) ); // alarm set?
   mListView->addColumn( i18n( "Recurs" ) ); // recurs?
-  mListView->addColumn( i18n( "Start Date" ) );
-  mListView->setColumnAlignment( StartDate_Column, Qt::AlignHCenter );
-  mListView->addColumn( i18n( "Start Time" ) );
-  mListView->setColumnAlignment( StartTime_Column, Qt::AlignHCenter );
-  mListView->addColumn( i18n( "End Date" ) );
-  mListView->setColumnAlignment( EndDate_Column, Qt::AlignHCenter );
-  mListView->addColumn( i18n( "End Time" ) );
-  mListView->setColumnAlignment( EndTime_Column, Qt::AlignHCenter );
+  mListView->addColumn( i18n( "Start Date/Time" ) );
+  mListView->setColumnAlignment( StartDateTime_Column, Qt::AlignHCenter );
+  mListView->addColumn( i18n( "End Date/Time" ) );
+  mListView->setColumnAlignment( EndDateTime_Column, Qt::AlignHCenter );
   mListView->addColumn( i18n( "Categories" ) );
 
   QBoxLayout *layoutTop = new QVBoxLayout( this );
