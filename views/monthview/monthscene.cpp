@@ -239,11 +239,17 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
   int columnWidth = mScene->columnWidth();
   int rowHeight = mScene->rowHeight();
 
-  for ( QDate d = mMonthView->actualStartDateTime().date(); d <= mMonthView->actualEndDateTime().date(); d = d.addDays( 1 ) ) {
+
+  const QList<QDate> workDays = KOGlobals::self()->workDays( mMonthView->actualStartDateTime().date(),
+                                                             mMonthView->actualEndDateTime().date() );
+
+  for ( QDate d = mMonthView->actualStartDateTime().date();
+        d <= mMonthView->actualEndDateTime().date();
+        d = d.addDays( 1 ) ) {
     MonthCell *cell = mScene->mMonthCellMap[ d ];
 
     QColor color;
-    if ( KOGlobals::self()->isWorkDay( d ) ) {
+    if ( workDays.contains( d ) ) {
       color = KOPrefs::instance()->monthGridWorkHoursBackgroundColor();
     } else {
       color = KOPrefs::instance()->monthGridBackgroundColor();

@@ -29,7 +29,6 @@
 #include "reminderclient.h"
 
 #include <kholidays/holidays.h>
-using namespace KHolidays;
 
 #include <k3staticdeleter.h>
 #include <kdebug.h>
@@ -45,6 +44,8 @@ using namespace KHolidays;
 #include <QApplication>
 #include <QPixmap>
 #include <QIcon>
+
+using namespace KHolidays;
 
 KOGlobals *KOGlobals::mSelf = 0;
 
@@ -115,14 +116,13 @@ QStringList KOGlobals::holiday( const QDate &date ) const
 
 bool KOGlobals::isWorkDay( const QDate &date ) const
 {
-  QHash<QString, bool> days = areWorkDays( date, date );
-  return days[date.toString()];
+  return workDays( date, date ).contains( date );
 }
 
-QHash<QString,bool> KOGlobals::areWorkDays( const QDate &startDate,
-                                            const QDate &endDate ) const
+QList<QDate> KOGlobals::workDays( const QDate &startDate,
+                           const QDate &endDate ) const
 {
-  QHash<QString,bool> result;
+  QList<QDate> result;
 
   const int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
 
@@ -130,7 +130,9 @@ QHash<QString,bool> KOGlobals::areWorkDays( const QDate &startDate,
 
   for ( int i = 0; i < numDays; ++i ) {
     const QDate date = startDate.addDays( i );
-    result.insert( date.toString(), !( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) ) );
+    if ( !( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) ) ) {
+      result.append( date );
+    }
   }
 
   if ( mHolidays && KOPrefs::instance()->mExcludeHolidays ) {
@@ -138,7 +140,9 @@ QHash<QString,bool> KOGlobals::areWorkDays( const QDate &startDate,
     for ( int i = 0; i < list.count(); ++i ) {
       const Holiday &h = list.at( i );
       const QString dateString = h.date().toString();
-      result[dateString] = result[dateString] && h.dayType() != Holiday::NonWorkday;
+      if ( h.dayType() == Holiday::NonWorkday ) {
+        result.removeAll( h.date() );
+      }
     }
   }
 

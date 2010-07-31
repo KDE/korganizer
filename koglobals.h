@@ -61,11 +61,9 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
 
     /**
-       Returns which days between @p start and @end are work days.
-       The returned hash will have start.daysTo( end ) + 1 elements.
-       They key is QDate::toString()
+       Returns a list containing work days between @p start and @end.
     */
-    QHash<QString,bool> areWorkDays( const QDate &start, const QDate &end ) const;
+    QList<QDate> workDays( const QDate &start, const QDate &end ) const;
 
     int getWorkWeekMask();
 
