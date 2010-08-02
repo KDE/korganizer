@@ -502,5 +502,6 @@ void KOListView::clear()
 QSize KOListView::sizeHint() const
 {
   const QSize s = KOEventView::sizeHint();
-  return QSize( s.width() + style().pixelMetric( QStyle::PM_ScrollBarExtent ) + 1, s.height() );
+  return QSize( s.width() + style().pixelMetric( QStyle::PM_ScrollBarExtent ) + 1,
+                s.height() );
 }
