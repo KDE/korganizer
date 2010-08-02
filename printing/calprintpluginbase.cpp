@@ -49,7 +49,7 @@
 #include <QAbstractTextDocumentLayout>
 #include <qmath.h> // qCeil
 
-using namespace KCal;
+using namespace KCalCore;
 using namespace Akonadi;
 
 static QString cleanStr( const QString &instr )
@@ -240,7 +240,7 @@ QTime CalPrintPluginBase::dayStart()
   return start;
 }
 
-void CalPrintPluginBase::setCategoryColors( QPainter &p, Incidence *incidence )
+void CalPrintPluginBase::setCategoryColors( QPainter &p, const Incidence::Ptr &incidence )
 {
   QColor bgColor = categoryBgColor( incidence );
   if ( bgColor.isValid() ) {
@@ -252,12 +252,12 @@ void CalPrintPluginBase::setCategoryColors( QPainter &p, Incidence *incidence )
   }
 }
 
-QColor CalPrintPluginBase::categoryBgColor( Incidence *incidence )
+QColor CalPrintPluginBase::categoryBgColor( const Incidence::Ptr &incidence )
 {
   if ( mCoreHelper && incidence ) {
     QColor backColor = mCoreHelper->categoryColor( incidence->categories() );
-    if ( incidence->type() == "Todo" ) {
-      if ( static_cast<Todo*>( incidence )->isOverdue() ) {
+    if ( incidence->type() == Incidence::TypeTodo ) {
+      if ( ( incidence.staticCast<Todo>() )->isOverdue() ) {
         backColor = KOPrefs::instance()->todoOverdueColor();
       }
     }
@@ -416,7 +416,7 @@ void CalPrintPluginBase::showEventBox( QPainter &p, int linewidth, const QRect &
 {
   QPen oldpen( p.pen() );
   QBrush oldbrush( p.brush() );
-  QColor bgColor( categoryBgColor( incidence.get() ) );
+  QColor bgColor( categoryBgColor( incidence ) );
   if ( mUseColors & bgColor.isValid() ) {
     p.setBrush( bgColor );
   } else {
@@ -1076,7 +1076,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       timeText = local->formatTime( currEvent->dtStart().toLocalZone().time() ) + ' ';
     }
     p.save();
-    setCategoryColors( p, currEvent.get() );
+    setCategoryColors( p, currEvent );
     QString str;
     if ( !currEvent->location().isEmpty() ) {
       str = i18nc( "summary, location", "%1, %2",
@@ -1110,7 +1110,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
         timeText.clear();
       }
       p.save();
-      setCategoryColors( p, todo.get() );
+      setCategoryColors( p, todo );
       QString summaryStr;
       if ( !todo->location().isEmpty() ) {
         summaryStr = i18nc( "summary, location", "%1, %2",
@@ -1866,21 +1866,23 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
 
   // Make a list of all the sub-to-dos related to this to-do.
   Todo::List t;
-  Incidence::List l = todo->relations();
-  Incidence::List::ConstIterator it;
-  for ( it = l.constBegin(); it != l.constEnd(); ++it ) {
+
+  Akonadi::Item item = mCalendar->itemForIncidenceUid( todo->uid() );
+  Akonadi::Item::List relations = mCalendar->findChildren( item );
+
+  foreach( const Akonadi::Item &childItem, relations ) {
     // In the future, to-dos might also be related to events
     // Manually check if the sub-to-do is in the list of to-dos to print
     // The problem is that relations() does not apply filters, so
     // we need to compare manually with the complete filtered list!
-    Todo* subtodo = dynamic_cast<Todo *>( *it );
+    Todo::Ptr subtodo = Akonadi::todo( childItem );
 #ifdef AKONADI_PORT_DISABLED
     if ( subtodo && todoList.contains( subtodo ) ) {
 #else
     bool subtodoOk = false;
     if ( subtodo ) {
       foreach ( const Akonadi::Item &item, todoList ) {
-        if ( item.payload<Todo::Ptr>().get() == subtodo ) {
+        if ( item.payload<Todo::Ptr>() == subtodo ) {
           subtodoOk = true;
           break;
         }
@@ -1899,7 +1901,7 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
   }
 
   // has sub-todos?
-  startpt.mHasLine = ( l.size() > 0 );
+  startpt.mHasLine = ( relations.size() > 0 );
   startPoints.append( &startpt );
 
   // description
@@ -1918,7 +1920,7 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
   Item::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
 #else
   Akonadi::Item::List tl;
-  foreach ( Todo *todo, t ) {
+  foreach ( const Todo::Ptr &todo, t ) {
     Akonadi::Item todoitem;
     todoitem.setPayload( Todo::Ptr( todo->clone() ) );
     tl.append( todoitem );
@@ -2006,8 +2008,8 @@ void CalPrintPluginBase::drawJournal( const Journal::Ptr &journal, QPainter &p, 
 
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
-  if ( !( journal->organizer().fullName().isEmpty() ) ) {
-    drawTextLines( p, i18n( "Person: %1", journal->organizer().fullName() ),
+  if ( !( journal->organizer()->fullName().isEmpty() ) ) {
+    drawTextLines( p, i18n( "Person: %1", journal->organizer()->fullName() ),
                       x, y, width, pageHeight, false );
     y += 7;
   }
