@@ -192,14 +192,16 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     void printEventString( QPainter &p, const QRect &box, const QString &str, int flags = -1 );
     /**
       Print the box for the given event with the given string.
-      @param p QPainer of the printout
+      @param p QPainter of the printout
+      @param linewidth is the width of the line used to draw the box, ignored if less than 1.
       @param box Coordinates of the event's box
       @param incidence The incidence (if available), from which the category
                        color will be deduced, if applicable.
       @param str The string to print inside the box
+      @param flags is a bitwise OR of Qt::AlignmentFlags and Qt::TextFlags values.
     */
-    void showEventBox( QPainter &p, const QRect &box, const Incidence::Ptr &incidence,
-                       const QString &str, int flags = -1 );
+    void showEventBox( QPainter &p, int linewidth, const QRect &box,
+                       const Incidence::Ptr &incidence, const QString &str, int flags = -1 );
 
     /**
       Draw a subheader box with a shaded background and the given string
@@ -212,10 +214,13 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     /**
       Draw an event box with vertical text.
       @param p QPainter of the printout
+      @param linewidth is the width of the line used to draw the box, ignored if less than 1.
       @param box Coordinates of the box
       @param str ext to be printed inside the box
+      @param flags is a bitwise OR of Qt::AlignmentFlags and Qt::TextFlags values.
     */
-    void drawVerticalBox( QPainter &p, const QRect &box, const QString &str, int flags=-1 );
+    void drawVerticalBox( QPainter &p, int linewidth, const QRect &box, const QString &str,
+                          int flags=-1 );
 
     /**
       Draw a component box with a heading (printed in bold).

@@ -410,7 +410,7 @@ void CalPrintPluginBase::printEventString( QPainter &p, const QRect &box,
               ( Qt::AlignTop | Qt::AlignJustify | Qt::BreakAnywhere ) : flags, str );
 }
 
-void CalPrintPluginBase::showEventBox( QPainter &p, const QRect &box,
+void CalPrintPluginBase::showEventBox( QPainter &p, int linewidth, const QRect &box,
                                        const Incidence::Ptr &incidence, const QString &str,
                                        int flags )
 {
@@ -422,8 +422,7 @@ void CalPrintPluginBase::showEventBox( QPainter &p, const QRect &box,
   } else {
     p.setBrush( QColor( 232, 232, 232 ) );
   }
-  drawBox( p, EVENT_BORDER_WIDTH, box );
-
+  drawBox( p, ( linewidth > 0 ) ? linewidth : EVENT_BORDER_WIDTH, box );
   if ( mUseColors && bgColor.isValid() ) {
     p.setPen( KOHelper::getTextColor( bgColor ) );
   }
@@ -441,13 +440,13 @@ void CalPrintPluginBase::drawSubHeaderBox( QPainter &p, const QString &str, cons
   p.setFont( oldfont );
 }
 
-void CalPrintPluginBase::drawVerticalBox( QPainter &p, const QRect &box, const QString &str,
-                                          int flags )
+void CalPrintPluginBase::drawVerticalBox( QPainter &p, int linewidth, const QRect &box,
+                                          const QString &str, int flags )
 {
   p.save();
   p.rotate( -90 );
   QRect rotatedBox( -box.top() - box.height(), box.left(), box.height(), box.width() );
-  showEventBox( p, rotatedBox, Incidence::Ptr(), str,
+  showEventBox( p, linewidth, rotatedBox, Incidence::Ptr(), str,
                 ( flags == -1 ) ? Qt::AlignLeft | Qt::AlignVCenter | Qt::SingleLine : flags );
 
   p.restore();
@@ -817,7 +816,7 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Item::List &eventList_
       if ( expandable ) {
         QRect eventBox( box );
         eventBox.setTop( offset );
-        showEventBox( p, eventBox, currEvent, currEvent->summary() );
+        showEventBox( p, EVENT_BORDER_WIDTH, eventBox, currEvent, currEvent->summary() );
         offset += box.height();
       } else {
         if ( !multiDayStr.isEmpty() ) {
@@ -1008,7 +1007,7 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
         str += event->description();
       }
     }
-    showEventBox( p, eventBox, event, str );
+    showEventBox( p, EVENT_BORDER_WIDTH, eventBox, event, str );
   }
 }
 
@@ -1593,7 +1592,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
     eventBox.setBottom(
       daysBox.top() + qRound(
         double( minsToEnd * daysBox.height() ) / double( maxdays * 24 * 60 ) ) );
-    drawVerticalBox( p, eventBox, placeItem->event()->summary() );
+    drawVerticalBox( p, 0, eventBox, placeItem->event()->summary() );
     newxstartcont = qMax( newxstartcont, eventBox.right() );
   }
   xstartcont = newxstartcont;
