@@ -37,7 +37,6 @@
 #include <KDateTime>
 
 #include <QtGui/QPainter>
-#include <QtGui/QPrinter>
 
 class PrintCellItem;
 class QWidget;
