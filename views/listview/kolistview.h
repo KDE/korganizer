@@ -86,6 +86,7 @@ class KOListView : public KOEventView
     void writeSettings( KConfig *config );
 
     void clear();
+    QSize sizeHint() const;
     virtual KOrg::CalPrinterBase::PrintType printType();
 
   public slots:

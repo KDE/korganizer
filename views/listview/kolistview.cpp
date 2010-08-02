@@ -41,6 +41,7 @@
 #include <kcalprefs.h>
 
 #include <QBoxLayout>
+#include <QStyle>
 
 using namespace Akonadi;
 using namespace KOrg;
@@ -523,6 +524,13 @@ void KOListView::clear()
 KOrg::CalPrinterBase::PrintType KOListView::printType()
 {
   return KOrg::CalPrinterBase::Incidence;
+}
+
+QSize KOListView::sizeHint() const
+{
+  const QSize s = KOEventView::sizeHint();
+  return QSize( s.width() + style()->pixelMetric( QStyle::PM_ScrollBarExtent ) + 1,
+                s.height() );
 }
 
 #include "kolistview.moc"
