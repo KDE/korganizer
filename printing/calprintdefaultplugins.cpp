@@ -745,11 +745,17 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     QRect allDayBox( TIMELINE_WIDTH + padding(), headerBox.bottom() + padding(),
                      width - TIMELINE_WIDTH - padding(), allDayHeight );
     if ( alldayEvents.count() > 0 ) {
+      // draw the side bar for all-day events
+      QFont oldFont( p.font() );
+      p.setFont( QFont( "sans-serif", 9, QFont::Normal ) );
       drawVerticalBox( p,
+                       BOX_BORDER_WIDTH,
                        QRect( 0, headerBox.bottom() + padding(), TIMELINE_WIDTH, allDayHeight ),
                        i18n( "Today's Events" ),
-                       Qt::AlignHCenter | Qt::AlignVCenter | Qt::SingleLine );
+                       Qt::AlignHCenter | Qt::AlignVCenter | Qt::WordBreak );
+      p.setFont( oldFont );
 
+      // now draw at most maxAllDayEvents in the all-day box
       drawBox( p, BOX_BORDER_WIDTH, allDayBox );
 
       Event::List::ConstIterator it;
