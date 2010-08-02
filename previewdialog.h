@@ -29,20 +29,23 @@
 #ifndef PREVIEWDIALOG_H
 #define PREVIEWDIALOG_H
 
-#include <kdialogbase.h>
-#include <kurl.h>
+#include <KDialog>
+#include <KUrl>
+
+#include <KCalCore/MemoryCalendar>
 
 class KOListView;
 
-namespace KCal {
-  class CalendarLocal;
+namespace KCalCore {
+  class MemoryCalendar;
+  class FileStorage;
 }
 
-class PreviewDialog : public KDialogBase
+class PreviewDialog : public KDialog
 {
     Q_OBJECT
   public:
-    PreviewDialog( const KURL &url, QWidget *parent );
+    PreviewDialog( const KUrl &url, QWidget *parent );
     ~PreviewDialog();
     bool loadCalendar();
 
@@ -52,18 +55,19 @@ class PreviewDialog : public KDialogBase
 
   signals:
     void dialogFinished( PreviewDialog * );
-    void openURL( const KURL &, bool );
-    void addResource( const KURL & );
+    void openURL( const KUrl &, bool );
+    void addResource( const KUrl & );
 
   private:
-    // Checks if mOriginalUrl is a temp file, if it is we ask the user a place to 
+    // Checks if mOriginalUrl is a temp file, if it is we ask the user a place to
     // keep the calendar file
     bool isTempFile() const;
-  private:
-    KURL mOriginalUrl;
-    KURL *mLocalUrl;
+
+    KUrl mOriginalUrl;
+    KUrl *mLocalUrl;
     KOListView *mListView;
-    KCal::CalendarLocal *mCalendar;
+    KCalCore::MemoryCalendar::Ptr mCalendar;
+    KCalCore::FileStorage *mFileStorage;
 };
 
 #endif

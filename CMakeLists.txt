@@ -223,6 +223,7 @@ set(korganizerprivate_LIB_SRCS
   printing/calprinter.cpp
   printing/calprintpluginbase.cpp
   printing/calprintdefaultplugins.cpp
+  previewdialog.cpp
 )
 
 kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc )

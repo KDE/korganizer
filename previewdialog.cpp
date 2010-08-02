@@ -27,38 +27,42 @@
 */
 
 #include "previewdialog.h"
-
-#include "kolistview.h"
 #include "koprefs.h"
-#include "stdcalendar.h"
+#include "views/listview/kolistview.h"
 
-#include <klocale.h>
+#include <KCalCore/FileStorage>
+#include <KCalCore/ICalFormat>
 
-#include <libkcal/calendarlocal.h>
-
-#include <kstandarddirs.h>
-#include <kfiledialog.h>
-#include <kmessagebox.h>
+#include <KLocale>
+#include <KStandardDirs>
+#include <KFileDialog>
+#include <KMessageBox>
 #include <kio/netaccess.h>
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qradiobutton.h>
-#include <qpushbutton.h>
-#include <qdialog.h>
+#include <QLabel>
+#include <QLayout>
+#include <QRadioButton>
+#include <QPushButton>
+#include <QDialog>
 
-using namespace KCal;
+using namespace KCalCore;
 
-PreviewDialog::PreviewDialog( const KURL &url, QWidget *parent )
-  : KDialogBase( Plain, i18n("Import Calendar/Event"), User1 | User2 | Cancel, User1, parent,
-                 0, true, true, KGuiItem( i18n("&Merge into existing calendar"), "merge" ) ),
-    mOriginalUrl( url )
+PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
+  : KDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
 {
-  QFrame *topFrame = plainPage();
-  QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
+  setCaption( i18n("Import Calendar/Event") );
+  // KGuiItem( i18n("&Merge into existing calendar"), "merge" )
+  setButtons( User1 | User2 | Cancel );
+  setDefaultButton( User1 );
+  QFrame *topFrame = new QFrame( this );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setSpacing( spacingHint() );
+  topLayout->setMargin( 0 );
 
-  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId );
-  mListView = new KOListView( mCalendar, topFrame, "PreviewDialog::ListView", true );
+  mCalendar = MemoryCalendar::Ptr( new MemoryCalendar(
+                                     KOPrefs::instance()->mTimeZoneId ) );
+
+  mListView = new KOListView( this, true );
   topLayout->addWidget( mListView );
 
   topLayout->setSpacing( spacingHint() );
@@ -85,7 +89,7 @@ PreviewDialog::~PreviewDialog()
     delete mLocalUrl;
   }
 
-  delete mCalendar;
+  delete mFileStorage;
 }
 
 bool PreviewDialog::loadCalendar()
@@ -100,7 +104,7 @@ bool PreviewDialog::loadCalendar()
 
     QString tmpFile;
     if ( KIO::NetAccess::download( mOriginalUrl, tmpFile, 0 ) ) {
-      mLocalUrl = new KURL( tmpFile );
+      mLocalUrl = new KUrl( tmpFile );
     } else {
       mLocalUrl = 0;
     }
@@ -109,7 +113,11 @@ bool PreviewDialog::loadCalendar()
   }
 
   if ( mLocalUrl ) {
-    const bool success = mCalendar->load( mLocalUrl->path() );
+    mFileStorage = new KCalCore::FileStorage( mCalendar,
+                                              mLocalUrl->path(),
+                                              new KCalCore::ICalFormat() );
+
+    const bool success = mFileStorage->load();
 
     if ( !success && !mOriginalUrl.isLocalFile() ) {
       KIO::NetAccess::removeTempFile( mLocalUrl->path() );
@@ -133,16 +141,17 @@ void PreviewDialog::slotMerge()
 
 void PreviewDialog::slotAdd()
 {
-  KURL finalUrl = mOriginalUrl;
+  KUrl finalUrl = mOriginalUrl;
   if ( isTempFile() ) {
     const QString fileName =
-      KFileDialog::getSaveFileName( locateLocal( "data","korganizer/" ),
+      KFileDialog::getSaveFileName( KStandardDirs::locateLocal( "data","korganizer/" ),
                                     i18n( "*.vcs *.ics|Calendar Files" ),
                                     this, i18n( "Select path for new calendar" ) );
 
-    finalUrl = KURL( fileName );
+    finalUrl = KUrl( fileName );
 
-    if ( !KIO::NetAccess::copy( mOriginalUrl, finalUrl, this ) && KIO::NetAccess::lastError() ) {
+    if ( !KIO::NetAccess::file_copy( mOriginalUrl, finalUrl, this )
+         && KIO::NetAccess::lastError() ) {
       KMessageBox::error( this, KIO::NetAccess::lastErrorString() );
       return;
     }
@@ -157,7 +166,7 @@ void PreviewDialog::slotAdd()
 
 bool PreviewDialog::isTempFile() const
 {
-  return mOriginalUrl.path().startsWith( locateLocal( "tmp", "" ) );
+  return mOriginalUrl.path().startsWith( KStandardDirs::locateLocal( "tmp", "" ) );
 }
 
 #include "previewdialog.moc"
