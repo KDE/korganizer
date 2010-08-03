@@ -920,8 +920,11 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       todo->setCompleted( QDateTime::currentDateTime() );
       // If the todo does recur, it doesn't get set as completed. However, the
       // item is still checked. Uncheck it again.
-      if ( !todo->isCompleted() ) item->setState( QCheckListItem::Off );
-      else todo->setPercentComplete( percentage );
+      if ( !todo->isCompleted() ) {
+        item->setState( QCheckListItem::Off );
+      } else {
+        todo->setPercentComplete( percentage );
+      }
     } else {
       todo->setCompleted( false );
       todo->setPercentComplete( percentage );
