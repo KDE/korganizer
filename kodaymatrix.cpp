@@ -772,7 +772,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   p.setPen( actcol );
   QPen tmppen;
 
-  const QHash<QString, bool> workDaysHash = KOGlobals::self()->areWorkDays( mDays[0], mDays[NUMDAYS-1] );
+  const QList<QDate> workDays = KOGlobals::self()->workDays( mDays[0], mDays[NUMDAYS-1] );
   for ( int i = 0; i < NUMDAYS; ++i ) {
     row = i / 7;
     col = isRTL ? 6 - ( i - row * 7 ) : i - row * 7;
@@ -792,7 +792,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       p.setPen( actcol );
     }
 
-    const bool holiday = !workDaysHash[mDays[i].toString()];
+    const bool holiday = !workDays.contains( mDays[i] );
 
     QColor holidayColorShaded =
       getShadedColor( KOPrefs::instance()->agendaHolidaysBackgroundColor() );
