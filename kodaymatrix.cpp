@@ -30,8 +30,8 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <kcalutils/icaldrag.h>
-#include <kcalutils/vcaldrag.h>
+#include <KCal/ICalDrag>
+#include <KCal/VCalDrag>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
@@ -53,8 +53,7 @@
 // ============================================================================
 
 using namespace Akonadi;
-using namespace KCalCore;
-using namespace KCalUtils;
+using namespace KCal;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
@@ -285,7 +284,7 @@ void KODayMatrix::updateJournals()
     Incidence::Ptr inc = Akonadi::incidence( item );
     Q_ASSERT( inc );
     QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
-    if ( inc->type() == Incidence::TypeJournal &&
+    if ( inc->type() == "Journal" &&
          d >= mDays[0] &&
          d <= mDays[NUMDAYS-1] &&
          !mEvents.contains( d ) ) {
@@ -772,7 +771,9 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   QColor actcol = textColorShaded;
   p.setPen( actcol );
   QPen tmppen;
-  for ( int i=0; i<NUMDAYS; ++i ) {
+
+  const QHash<QString, bool> workDaysHash = KOGlobals::self()->areWorkDays( mDays[0], mDays[NUMDAYS-1] );
+  for ( int i = 0; i < NUMDAYS; ++i ) {
     row = i / 7;
     col = isRTL ? 6 - ( i - row * 7 ) : i - row * 7;
 
@@ -791,7 +792,8 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       p.setPen( actcol );
     }
 
-    bool holiday = ! KOGlobals::self()->isWorkDay( mDays[i] );
+    const bool holiday = !workDaysHash[mDays[i].toString()];
+
     QColor holidayColorShaded =
       getShadedColor( KOPrefs::instance()->agendaHolidaysBackgroundColor() );
 

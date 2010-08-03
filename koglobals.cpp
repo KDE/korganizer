@@ -115,16 +115,34 @@ QStringList KOGlobals::holiday( const QDate &date ) const
 
 bool KOGlobals::isWorkDay( const QDate &date ) const
 {
-  int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
+  QHash<QString, bool> days = areWorkDays( date, date );
+  return days[date.toString()];
+}
 
-  bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
-  if ( KOPrefs::instance()->mExcludeHolidays && mHolidays ) {
-    const Holiday::List list = mHolidays->holidays( date );
+QHash<QString,bool> KOGlobals::areWorkDays( const QDate &startDate,
+                                            const QDate &endDate ) const
+{
+  QHash<QString,bool> result;
+
+  const int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
+
+  const int numDays = startDate.daysTo( endDate ) + 1;
+
+  for ( int i = 0; i < numDays; ++i ) {
+    const QDate date = startDate.addDays( i );
+    result.insert( date.toString(), !( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) ) );
+  }
+
+  if ( mHolidays && KOPrefs::instance()->mExcludeHolidays ) {
+    const Holiday::List list = mHolidays->holidays( startDate, endDate );
     for ( int i = 0; i < list.count(); ++i ) {
-      nonWorkDay = nonWorkDay || ( list.at( i ).dayType() == Holiday::NonWorkday );
+      const Holiday &h = list.at( i );
+      const QString dateString = h.date().toString();
+      result[dateString] = result[dateString] && h.dayType() != Holiday::NonWorkday;
     }
   }
-  return !nonWorkDay;
+
+  return result;
 }
 
 int KOGlobals::getWorkWeekMask()
