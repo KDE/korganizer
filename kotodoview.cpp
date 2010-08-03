@@ -923,7 +923,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       if ( !todo->isCompleted() ) {
         item->setState( QCheckListItem::Off );
       } else {
-        todo->setPercentComplete( percentage );
+        todo->setPercentComplete( 100 );
       }
     } else {
       todo->setCompleted( false );
