@@ -922,8 +922,6 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       // item is still checked. Uncheck it again.
       if ( !todo->isCompleted() ) {
         item->setState( QCheckListItem::Off );
-      } else {
-        todo->setPercentComplete( 100 );
       }
     } else {
       todo->setCompleted( false );
