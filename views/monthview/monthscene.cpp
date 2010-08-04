@@ -34,7 +34,7 @@
 
 #include <Akonadi/Item>
 
-#include <KCal/Incidence>
+#include <kcalcore/incidence.h>
 
 #include <KCalendarSystem>
 

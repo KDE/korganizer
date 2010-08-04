@@ -44,12 +44,13 @@
 
 #include <libkdepim/kdatepickerpopup.h>
 
+#include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
 #include <akonadi/kcal/calendar.h>
 
-#include <KCal/CalFormat>
-#include <KCal/Incidence>
-#include <KCal/Todo>
+#include <kcalcore/calformat.h>
+#include <kcalcore/incidence.h>
+#include <kcalcore/todo.h>
 
 #include <QCheckBox>
 #include <QGridLayout>
@@ -434,14 +435,16 @@ void KOTodoView::addTodo( const QString &summary,
 
   Todo::Ptr todo( new Todo );
   todo->setSummary( summary.trimmed() );
-  todo->setOrganizer( Person( KCalPrefs::instance()->fullName(),
-                              KCalPrefs::instance()->email() ) );
+  todo->setOrganizer( Person::Ptr( new Person( KCalPrefs::instance()->fullName(),
+                                               KCalPrefs::instance()->email() ) ) );
 
   todo->setCategories( categories );
 
-  if ( parent ) {
-    todo->setRelatedTo( parent.get() );
+/*  if ( parent ) {
+    todo->setRelatedTo( parent );
   }
+KDAB_TODO: review
+*/
 
   Akonadi::Collection selectedCollection;
   int dialogCode = 0;
@@ -455,7 +458,7 @@ void KOTodoView::addTodo( const QString &summary,
 void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 {
   if ( modifiers == Qt::NoModifier ) {
-    /*const QModelIndex index = */ addTodo( mQuickAdd->text(), KCal::Todo::Ptr(), mProxyModel->categories() );
+    /*const QModelIndex index = */ addTodo( mQuickAdd->text(), KCalCore::Todo::Ptr(), mProxyModel->categories() );
 
 #ifdef AKONADI_PORT_DISABLED // the todo is added asynchronously now, so we have to wait until the new item is actually added before selecting the item
 
@@ -522,8 +525,11 @@ void KOTodoView::contextMenu( const QPoint &pos )
   if ( hasItem ) {
 
     if ( !incidencePtr ) {
-      mMakeSubtodosIndependent->setEnabled( !incidencePtr->relations().isEmpty() );
-      mMakeTodoIndependent->setEnabled( incidencePtr->relatedTo() );
+
+      if ( calendar() ) {
+        mMakeSubtodosIndependent->setEnabled( !calendar()->findChildren( incidencePtr ).isEmpty() );
+        mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
+      }
     }
 
     switch ( mView->indexAt( pos ).column() ) {
@@ -616,7 +622,7 @@ void KOTodoView::printTodo( bool preview )
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
-  selectedIncidences.append( todo.get() );
+  selectedIncidences.append( todo );
 
   KDateTime todoDate;
   if ( todo->hasStartDate() ) {

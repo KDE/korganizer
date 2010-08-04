@@ -30,8 +30,8 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCal/ICalDrag>
-#include <KCal/VCalDrag>
+#include <kcalutils/icaldrag.h>
+#include <kcalutils/vcaldrag.h>
 
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/utils.h>
@@ -53,7 +53,8 @@
 // ============================================================================
 
 using namespace Akonadi;
-using namespace KCal;
+using namespace KCalCore;
+using namespace KCalUtils;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
@@ -284,7 +285,7 @@ void KODayMatrix::updateJournals()
     Incidence::Ptr inc = Akonadi::incidence( item );
     Q_ASSERT( inc );
     QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
-    if ( inc->type() == "Journal" &&
+    if ( inc->type() == Incidence::TypeJournal &&
          d >= mDays[0] &&
          d <= mDays[NUMDAYS-1] &&
          !mEvents.contains( d ) ) {
