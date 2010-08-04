@@ -24,6 +24,11 @@
 
 #include "urihandler.h"
 
+#include <libkcal/attachment.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/incidence.h>
+using namespace KCal;
+
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
 #include "kmailIface_stub.h"
@@ -32,8 +37,94 @@
 #include <kiconloader.h>
 #include <krun.h>
 #include <kapplication.h>
+#include <klocale.h>
+#include <kmessagebox.h>
+#include <kmimetype.h>
 #include <kprocess.h>
+#include <ktempfile.h>
 #include <kdebug.h>
+#include <kio/netaccess.h>
+
+#include <qfile.h>
+#include <qregexp.h>
+
+
+static Attachment *findAttachment( const QString &name, const QString &uid )
+{
+  CalendarResources *cal = new CalendarResources( "UTC" );
+  cal->readConfig();
+  cal->load();
+  Incidence *incidence = cal->incidence( uid );
+  if ( !incidence ) {
+    KMessageBox::sorry(
+      0,
+      i18n( "The incidence that owns the attachment named \"%1\" could not be found. "
+            "Perhaps it was removed from your calendar?" ).arg( name ) );
+    return 0;
+  }
+
+  // get the attachment by name from the incidence
+  Attachment::List as = incidence->attachments();
+  Attachment *a = 0;
+  if ( as.count() > 0 ) {
+    Attachment::List::ConstIterator it;
+    for ( it = as.begin(); it != as.end(); ++it ) {
+      if ( (*it)->label() == name ) {
+        a = *it;
+        break;
+      }
+    }
+  }
+
+  if ( !a ) {
+    KMessageBox::error(
+      0,
+      i18n( "No attachment named \"%1\" found in the incidence." ).arg( name ) );
+    return 0;
+  }
+
+  if ( a->isUri() ) {
+    if ( !KIO::NetAccess::exists( a->uri(), true, 0 ) ) {
+      KMessageBox::sorry(
+        0,
+        i18n( "The attachment \"%1\" is a web link that is inaccessible from this computer. " ).
+        arg( KURL::decode_string( a->uri() ) ) );
+      return 0;
+    }
+  }
+  return a;
+}
+
+static bool openAttachment( const QString &name, const QString &uid )
+{
+  Attachment *a = findAttachment( name, uid );
+  if ( !a ) {
+    return false;
+  }
+
+  if ( a->isUri() ) {
+    kapp->invokeBrowser( a->uri() );
+  } else {
+    // put the attachment in a temporary file and launch it
+    KTempFile *file;
+    QStringList patterns = KMimeType::mimeType( a->mimeType() )->patterns();
+    if ( !patterns.empty() ) {
+      file = new KTempFile( QString::null,
+                            QString( patterns.first() ).remove( '*' ),0600 );
+    } else {
+      file = new KTempFile( QString::null, QString::null, 0600 );
+    }
+    file->file()->open( IO_WriteOnly );
+    QTextStream stream( file->file() );
+    stream.writeRawBytes( a->decodedData().data(), a->size() );
+    file->close();
+
+    bool stat = KRun::runURL( KURL( file->name() ), a->mimeType(), 0, true );
+    delete file;
+    return stat;
+  }
+  return true;
+}
 
 bool UriHandler::process( const QString &uri )
 {
@@ -41,6 +132,7 @@ bool UriHandler::process( const QString &uri )
 
 #ifndef KORG_NODCOP
   if ( uri.startsWith( "kmail:" ) ) {
+
     // make sure kmail is running or the part is shown
     kapp->startServiceByDesktopPath("kmail");
 
@@ -53,10 +145,14 @@ bool UriHandler::process( const QString &uri )
     KMailIface_stub kmailIface( "kmail", "KMailIface" );
     kmailIface.showMail( serialNumberStr.toUInt(), QString() );
     return true;
+
   } else if ( uri.startsWith( "mailto:" ) ) {
+
     KApplication::kApplication()->invokeMailer( uri.mid(7), QString::null );
     return true;
+
   } else if ( uri.startsWith( "uid:" ) ) {
+
     DCOPClient *client = KApplication::kApplication()->dcopClient();
     const QByteArray noParamData;
     const QByteArray paramData;
@@ -66,7 +162,7 @@ bool UriHandler::process( const QString &uri )
                                         "interfaces()",  noParamData,
                                         replyTypeStr, replyData );
     if ( foundAbbrowser ) {
-      //KAddressbook is already running, so just DCOP to it to bring up the contact editor
+      // KAddressbook is already running, so just DCOP to it to bring up the contact editor
 #if KDE_IS_VERSION( 3, 2, 90 )
       kapp->updateRemoteUserTimestamp("kaddressbook");
 #endif
@@ -74,19 +170,27 @@ bool UriHandler::process( const QString &uri )
       kaddressbook.send( "showContactEditor", uri.mid( 6 ) );
       return true;
     } else {
-      /*
-        KaddressBook is not already running.  Pass it the UID of the contact via the command line while starting it - its neater.
-        We start it without its main interface
-      */
+      // KaddressBook is not already running.
+      // Pass it the UID of the contact via the command line while starting it - its neater.
+      // We start it without its main interface
       QString iconPath = KGlobal::iconLoader()->iconPath( "go", KIcon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote( uri.mid( 6 ) );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath );
       return true;
     }
-  }
-  else {  // no special URI, let KDE handle it
-    new KRun(KURL( uri ));
+
+  } else if ( uri.startsWith( "ATTACH:" ) ) {
+
+    // a calendar incidence attachment
+    QString tmp = uri;
+    tmp.remove( QRegExp( "^ATTACH://" ) );
+    QString uid = tmp.section( ':', 0, 0 );
+    QString name = tmp.section( ':', -1, -1 );
+    return openAttachment( name, uid );
+
+  } else {  // no special URI, let KDE handle it
+    new KRun( KURL( uri ) );
   }
 #endif
 
