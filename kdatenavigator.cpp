@@ -218,7 +218,7 @@ void KDateNavigator::updateDates()
 void KDateNavigator::updateDayMatrix()
 {
   mDayMatrix->updateView();
-  mDayMatrix->repaint();
+  mDayMatrix->update();
 }
 
 void KDateNavigator::setUpdateNeeded()
