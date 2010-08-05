@@ -369,18 +369,30 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
              <bool>true</bool>
             </property>
             <property name="whatsThis">
-             <string>Enter the URL for the server on which the Free/Busy information is published here.
+             <string comment="@info:whatsthis">Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 Server URL example: &quot;https://kolab2.example.com/freebusy/&quot;</string>
+Here is a Kolab2 Server URL example:
+
+https://kolab2.example.com/freebusy/
+
+Alternatively, you can specify a full path to the Free/Busy. For example: 
+
+https://kolab2.example.com/freebusy/user.xfb</string>
             </property>
            </widget>
           </item>
           <item row="0" column="0">
            <widget class="QLabel" name="TextLabel7_2">
             <property name="whatsThis">
-             <string>Enter the URL for the server on which the Free/Busy information is published here.
+             <string comment="@info:whatsthis">Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 Server URL example: &quot;https://kolab2.example.com/freebusy/&quot;</string>
+Here is a Kolab2 Server URL example:
+
+https://kolab2.example.com/freebusy/
+
+Alternatively, you can specify a full path to the Free/Busy. For example: 
+
+https://kolab2.example.com/freebusy/user.xfb</string>
             </property>
             <property name="text">
              <string>Server URL:</string>

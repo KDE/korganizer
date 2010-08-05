@@ -1284,6 +1284,11 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
     mGroupwarePage->retrievePassword->text();
   KCalPrefs::instance()->mFreeBusyRetrieveSavePassword =
     mGroupwarePage->retrieveSavePassword->isChecked();
+
+  // clear the url cache for our user
+  const QString configFile = KStandardDirs::locateLocal( "data", "korganizer/freebusyurls" );
+  KConfig cfg( configFile );
+  cfg.deleteGroup( KCalPrefs::instance()->email() );
 }
 
 extern "C"
