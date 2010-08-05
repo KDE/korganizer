@@ -345,7 +345,7 @@ void KODayMatrix::updateEvents()
                                                       mCalendar->timeSpec() );
 
   Q_FOREACH ( const Item & item, eventlist ) {
-    const Event::ConstPtr event = Akonadi::event( item );
+    const Event::Ptr event = Akonadi::event( item );
     Q_ASSERT( event );
     ushort recurType = event->recurrenceType();
 

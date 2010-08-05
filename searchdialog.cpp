@@ -148,7 +148,7 @@ void SearchDialog::search( const QRegExp &re )
       KDateTime::Spec spec = KCalPrefs::instance()->timeSpec();
       Item::List alltodos = m_calendarview->calendar()->todos();
       Q_FOREACH ( const Item &item, alltodos ) {
-        const Todo::ConstPtr todo = Akonadi::todo( item );
+        const Todo::Ptr todo = Akonadi::todo( item );
         Q_ASSERT( todo );
         if ( ( !todo->hasStartDate() && !todo->hasDueDate() ) || // undated
              ( todo->hasStartDate() &&

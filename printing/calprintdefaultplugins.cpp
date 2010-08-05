@@ -1565,7 +1565,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   case TodosUnfinished:
     for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-      const Todo::ConstPtr todo = Akonadi::todo( *it );
+      const Todo::Ptr todo = Akonadi::todo( *it );
       Q_ASSERT( todo );
       if ( !todo->isCompleted() ) {
         tempList.append( *it );
@@ -1575,7 +1575,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   case TodosDueRange:
     for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-      const Todo::ConstPtr todo = Akonadi::todo( *it );
+      const Todo::Ptr todo = Akonadi::todo( *it );
       Q_ASSERT( todo );
       if ( todo->hasDueDate() ) {
         if ( todo->dtDue().date() >= mFromDate && todo->dtDue().date() <= mToDate ) {

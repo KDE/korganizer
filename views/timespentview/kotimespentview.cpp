@@ -88,7 +88,7 @@ class TimeSpentWidget : public QWidget
       int total = 0;
 
       foreach ( const Item &item, mEventList ) {
-        const Event::ConstPtr e = Akonadi::event( item );
+        const Event::Ptr e = Akonadi::event( item );
         Q_ASSERT( e );
         KDateTime selectedStart( mTimeSpentView->mStartDate,
                                  QTime( 0, 0 ),
