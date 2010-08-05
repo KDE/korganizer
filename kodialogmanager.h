@@ -41,8 +41,11 @@ namespace Akonadi {
   class Item;
 }
 
+namespace IncidenceEditorsNG {
+  class EventOrTodoDialog;
+}
+
 namespace IncidenceEditors {
-  class EventEditor;
   class IncidenceEditor;
   class JournalEditor;
   class TodoEditor;
@@ -67,7 +70,7 @@ class KODialogManager : public QObject
     IncidenceEditors::IncidenceEditor *getEditor( const Akonadi::Item& item );
 
     /** Get an editor dialog for an Event. */
-    IncidenceEditors::EventEditor *getEventEditor();
+    IncidenceEditorsNG::EventOrTodoDialog *getEventEditor();
 
     /** Get an editor dialog for a Todo. */
     IncidenceEditors::TodoEditor *getTodoEditor();
@@ -79,7 +82,7 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
 
-    void connectTypeAhead( IncidenceEditors::EventEditor *editor, KOEventView *view );
+    void connectTypeAhead( IncidenceEditorsNG::EventOrTodoDialog *editor, KOEventView *view );
 
   public slots:
     void showOptionsDialog();

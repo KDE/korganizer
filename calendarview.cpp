@@ -54,10 +54,11 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <incidenceeditors/eventeditor.h>
 #include <incidenceeditors/incidenceeditor.h>
 #include <incidenceeditors/journaleditor.h>
 #include <incidenceeditors/todoeditor.h>
+#include <incidenceeditors/incidenceeditor-ng/eventortododialog.h>
+#include <incidenceeditors/incidenceeditor-ng/incidencedefaults.h>
 
 #include <akonadi/control.h>
 #include <akonadi/collectionpropertiesdialog.h>
@@ -1088,24 +1089,18 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
   }
 }
 
-EventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
-                                           const QDateTime &endDtParam,
-                                           bool allDayParam )
+IncidenceEditorsNG::EventOrTodoDialog *CalendarView::newEventEditor( const Event::Ptr &event )
 {
-  // Let the current view change the default start/end datetime
-  bool allDay = allDayParam;
-  QDateTime startDt( startDtParam ), endDt( endDtParam );
+  Akonadi::Item item;
+  item.setPayload( event );
 
-  // Adjust the start/end date times (i.e. replace invalid values by defaults,
-  // and let the view adjust the type.
-  dateTimesForNewEvent( startDt, endDt, allDay );
+  IncidenceEditorsNG::EventOrTodoDialog *eventEditor = mDialogManager->getEventEditor();
+  eventEditor->load( item );
 
-  EventEditor *eventEditor = mDialogManager->getEventEditor();
-  eventEditor->newEvent();
-  connectIncidenceEditor( eventEditor );
-  eventEditor->setDates( startDt, endDt, allDay );
+//  connectIncidenceEditor( eventEditor );
   mDialogManager->connectTypeAhead(
     eventEditor, dynamic_cast<KOEventView*>( viewManager()->currentView() ) );
+
   return eventEditor;
 }
 
@@ -1137,7 +1132,7 @@ void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollection
   }
 }
 
-void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDate &dt )
+void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections, const QDate &dt )
 {
   if ( mCreatingEnabled ) {
     QDateTime startDt( dt, KCalPrefs::instance()->mStartTime.time() );
@@ -1145,7 +1140,7 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
   }
 }
 
-void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
+void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
 {
   if ( mCreatingEnabled ) {
     newEvent( selectedCollections, startDt, QDateTime( startDt ) );
@@ -1153,13 +1148,28 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
 }
 
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
-                              const QDateTime &startDt, const QDateTime &endDt, bool allDay )
+                              const QDateTime &startDtParam, const QDateTime &endDtParam, bool allDay )
 {
   if ( mCreatingEnabled ) {
-    EventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
-    if ( !selectedCollections.isEmpty() ) {
+    // Let the current view change the default start/end datetime
+    QDateTime startDt( startDtParam );
+    QDateTime endDt( endDtParam );
+
+    // Adjust the start/end date times (i.e. replace invalid values by defaults,
+    // and let the view adjust the type.
+    dateTimesForNewEvent( startDt, endDt, allDay );
+
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+    defaults.setStartDateTime( KDateTime( startDt ) );
+    defaults.setEndDateTime( KDateTime( endDt ) );
+
+    Event::Ptr event( new Event );
+    defaults.setDefaults( event );
+
+    IncidenceEditorsNG::EventOrTodoDialog *eventEditor = newEventEditor( event );
+    if ( !selectedCollections.isEmpty() )
       eventEditor->selectCollection( selectedCollections.first() );
-    }
+
     eventEditor->show();
   }
 }
@@ -1169,13 +1179,28 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
                              const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
   if ( mCreatingEnabled ) {
-    EventEditor *eventEditor = newEventEditor();
-    eventEditor->setTexts( summary, description );
+    // Adjust the start/end date times (i.e. replace invalid values by defaults,
+    // and let the view adjust the type.
+    QDateTime startDt;
+    QDateTime endDt;
+    bool allDay = false;
+    dateTimesForNewEvent( startDt, endDt, allDay );
 
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+    defaults.setStartDateTime( KDateTime( startDt ) );
+    defaults.setEndDateTime( KDateTime( endDt ) );
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
-    eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
-    eventEditor->addAttendees( attendees );
+    defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
+    defaults.setAttendees( attendees );
+
+    Event::Ptr event( new Event );
+    defaults.setDefaults( event );
+
+    event->setSummary( summary );
+    event->setDescription( description );
+
+    IncidenceEditorsNG::EventOrTodoDialog *eventEditor = newEventEditor( event );
     eventEditor->show();
   }
 }

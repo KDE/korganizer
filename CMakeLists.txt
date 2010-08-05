@@ -260,6 +260,7 @@ target_link_libraries(korganizerprivate
   akonadi-kcal_next
   akonadi_next
   incidenceeditors
+  incidenceeditorsng
   kdgantt2
 )
 

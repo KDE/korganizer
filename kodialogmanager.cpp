@@ -40,9 +40,9 @@
 #include <kcalcore/visitor.h>
 #include <kcalcore/incidencebase.h>
 
-#include <incidenceeditors/eventeditor.h>
 #include <incidenceeditors/journaleditor.h>
 #include <incidenceeditors/todoeditor.h>
+#include <incidenceeditors/incidenceeditor-ng/eventortododialog.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -83,8 +83,7 @@ class KODialogManager::EditorDialogVisitor :
   protected:
     bool visit( Event::Ptr )
     {
-      mEditor = mDialogManager->getEventEditor();
-      return mEditor;
+      return false;
     }
     bool visit( Todo::Ptr )
     {
@@ -224,14 +223,14 @@ IncidenceEditor *KODialogManager::getEditor( const Item &item )
   }
 }
 
-EventEditor *KODialogManager::getEventEditor()
+IncidenceEditorsNG::EventOrTodoDialog *KODialogManager::getEventEditor()
 {
-  EventEditor *eventEditor = new EventEditor( mMainView );
-  connectEditor( eventEditor );
+  IncidenceEditorsNG::EventOrTodoDialog *eventEditor = new IncidenceEditorsNG::EventOrTodoDialog( mMainView );
+  // connectEditor( eventEditor );
   return eventEditor;
 }
 
-void KODialogManager::connectTypeAhead( EventEditor *editor, KOEventView *view )
+void KODialogManager::connectTypeAhead( IncidenceEditorsNG::EventOrTodoDialog *editor, KOEventView *view )
 {
   if ( editor && view ) {
     view->setTypeAheadReceiver( editor->typeAheadReceiver() );
