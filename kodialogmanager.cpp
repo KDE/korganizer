@@ -42,7 +42,9 @@
 
 #include <incidenceeditors/journaleditor.h>
 #include <incidenceeditors/todoeditor.h>
-#include <incidenceeditors/incidenceeditor-ng/eventortododialog.h>
+
+#include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
+#include <incidenceeditors/incidenceeditor-ng/incidencedialogfactory.h>
 
 #include <akonadi/kcal/utils.h>
 
@@ -208,6 +210,19 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
   mFilterEditDialog->raise();
 }
 
+IncidenceEditorsNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi::Item& item )
+{
+  const Incidence::Ptr incidence = Akonadi::incidence( item );
+  if ( !incidence ) {
+    return 0;
+  }
+
+  IncidenceEditorsNG::IncidenceDialog *dialog = IncidenceEditorsNG::IncidenceDialogFactory::create( incidence->type() );
+//   connectEditor( dialog );
+  return dialog;
+}
+
+// TODO: Get rid of this when there is an IncidenceDialog based JournalDialog.
 IncidenceEditor *KODialogManager::getEditor( const Item &item )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
@@ -223,17 +238,10 @@ IncidenceEditor *KODialogManager::getEditor( const Item &item )
   }
 }
 
-IncidenceEditorsNG::EventOrTodoDialog *KODialogManager::getEventEditor()
+void KODialogManager::connectTypeAhead( IncidenceEditorsNG::IncidenceDialog *dialog, KOEventView *view )
 {
-  IncidenceEditorsNG::EventOrTodoDialog *eventEditor = new IncidenceEditorsNG::EventOrTodoDialog( mMainView );
-  // connectEditor( eventEditor );
-  return eventEditor;
-}
-
-void KODialogManager::connectTypeAhead( IncidenceEditorsNG::EventOrTodoDialog *editor, KOEventView *view )
-{
-  if ( editor && view ) {
-    view->setTypeAheadReceiver( editor->typeAheadReceiver() );
+  if ( dialog && view ) {
+    view->setTypeAheadReceiver( dialog->typeAheadReceiver() );
   }
 }
 

@@ -1089,19 +1089,19 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
   }
 }
 
-IncidenceEditorsNG::EventOrTodoDialog *CalendarView::newEventEditor( const Event::Ptr &event )
+IncidenceEditorsNG::IncidenceDialog *CalendarView::newEventEditor( const Event::Ptr &event )
 {
   Akonadi::Item item;
   item.setPayload( event );
 
-  IncidenceEditorsNG::EventOrTodoDialog *eventEditor = mDialogManager->getEventEditor();
-  eventEditor->load( item );
+  IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+  dialog->load( item );
 
-//  connectIncidenceEditor( eventEditor );
+//  connectIncidenceEditor( dialog );
   mDialogManager->connectTypeAhead(
-    eventEditor, dynamic_cast<KOEventView*>( viewManager()->currentView() ) );
+    dialog, dynamic_cast<KOEventView*>( viewManager()->currentView() ) );
 
-  return eventEditor;
+  return dialog;
 }
 
 void CalendarView::newEvent()
@@ -1166,7 +1166,8 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
     Event::Ptr event( new Event );
     defaults.setDefaults( event );
 
-    IncidenceEditorsNG::EventOrTodoDialog *eventEditor = newEventEditor( event );
+    IncidenceEditorsNG::IncidenceDialog *eventEditor = newEventEditor( event );
+    Q_ASSERT( eventEditor );
     if ( !selectedCollections.isEmpty() )
       eventEditor->selectCollection( selectedCollections.first() );
 
@@ -1200,7 +1201,8 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
     event->setSummary( summary );
     event->setDescription( description );
 
-    IncidenceEditorsNG::EventOrTodoDialog *eventEditor = newEventEditor( event );
+    IncidenceEditorsNG::IncidenceDialog *eventEditor = newEventEditor( event );
+    Q_ASSERT( eventEditor );
     eventEditor->show();
   }
 }

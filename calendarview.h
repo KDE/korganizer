@@ -53,7 +53,7 @@ class KOViewManager;
 class NavigatorBar;
 
 namespace IncidenceEditorsNG {
-  class EventOrTodoDialog;
+  class IncidenceDialog;
 }
 
 namespace IncidenceEditors {
@@ -675,7 +675,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       defaults, if invalid values are given) and allow the view to adjust the type.
     */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    IncidenceEditorsNG::EventOrTodoDialog *newEventEditor( const Event::Ptr &event );
+    IncidenceEditorsNG::IncidenceDialog *newEventEditor( const Event::Ptr &event );
 
     bool eventFilter( QObject *watched, QEvent *event );
 

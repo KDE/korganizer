@@ -42,7 +42,7 @@ namespace Akonadi {
 }
 
 namespace IncidenceEditorsNG {
-  class EventOrTodoDialog;
+  class IncidenceDialog;
 }
 
 namespace IncidenceEditors {
@@ -66,11 +66,11 @@ class KODialogManager : public QObject
     explicit KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
+    /** */
+    IncidenceEditorsNG::IncidenceDialog *createDialog( const Akonadi::Item& item );
+
     /** Get the appropriate editor for the given incidence */
     IncidenceEditors::IncidenceEditor *getEditor( const Akonadi::Item& item );
-
-    /** Get an editor dialog for an Event. */
-    IncidenceEditorsNG::EventOrTodoDialog *getEventEditor();
 
     /** Get an editor dialog for a Todo. */
     IncidenceEditors::TodoEditor *getTodoEditor();
@@ -82,7 +82,7 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
 
-    void connectTypeAhead( IncidenceEditorsNG::EventOrTodoDialog *editor, KOEventView *view );
+    void connectTypeAhead( IncidenceEditorsNG::IncidenceDialog *editor, KOEventView *view );
 
   public slots:
     void showOptionsDialog();
