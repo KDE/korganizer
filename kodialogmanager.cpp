@@ -217,7 +217,7 @@ IncidenceEditorsNG::IncidenceDialog *KODialogManager::createDialog( const Akonad
     return 0;
   }
 
-  IncidenceEditorsNG::IncidenceDialog *dialog = IncidenceEditorsNG::IncidenceDialogFactory::create( incidence->type() );
+  IncidenceEditorsNG::IncidenceDialog *dialog = IncidenceEditorsNG::IncidenceDialogFactory::create( incidence->type(), mMainView );
 //   connectEditor( dialog );
   return dialog;
 }

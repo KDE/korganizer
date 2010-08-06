@@ -2615,12 +2615,19 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return true;
   }
 
-  IncidenceEditor *incidenceEditor = mDialogManager->getEditor( item );
-  connectIncidenceEditor( incidenceEditor );
+  if ( IncidenceEditor *incidenceEditor = mDialogManager->getEditor( item ) ) {
+    connectIncidenceEditor( incidenceEditor );
 
-  mDialogList.insert( item.id(), incidenceEditor );
-  incidenceEditor->editIncidence( item, activeIncidenceDate() );
-  incidenceEditor->show();
+    mDialogList.insert( item.id(), incidenceEditor );
+    incidenceEditor->editIncidence( item, activeIncidenceDate() );
+    incidenceEditor->show();
+  } else {
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+
+    // mDialogList.insert( item.id(), incidenceEditor ); // TODO: Need to investigate this.
+    // connectIncidenceEditor( dialog );                 // TODO: This as well
+    dialog->load( item, activeIncidenceDate() ); // Will show the dialog as soon as it has loaded the item.
+  }
 
   return true;
 }
