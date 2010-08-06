@@ -210,8 +210,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
                          const QString &uri,
                          const QString &file,
                          const QStringList &attendees,
-                         const QString &attachmentMimetype,
-                         bool isTask );
+                         const QString &attachmentMimetype );
 
     void openJournalEditor( const QDate &date );
     void openJournalEditor( const QString &text, const QDate &date );

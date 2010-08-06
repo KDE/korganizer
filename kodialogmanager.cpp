@@ -89,8 +89,7 @@ class KODialogManager::EditorDialogVisitor :
     }
     bool visit( Todo::Ptr )
     {
-      mEditor = mDialogManager->getTodoEditor();
-      return mEditor;
+      return false;
     }
     bool visit( Journal::Ptr )
     {
@@ -260,14 +259,6 @@ void KODialogManager::connectEditor( IncidenceEditor *editor )
   connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
   connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
            mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
-}
-
-TodoEditor *KODialogManager::getTodoEditor()
-{
-  kDebug();
-  TodoEditor *todoEditor = new TodoEditor( mMainView );
-  connectEditor( todoEditor );
-  return todoEditor;
 }
 
 JournalEditor *KODialogManager::getJournalEditor()

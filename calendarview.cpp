@@ -54,10 +54,8 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <incidenceeditors/incidenceeditor.h>
-#include <incidenceeditors/journaleditor.h>
-#include <incidenceeditors/todoeditor.h>
-#include <incidenceeditors/incidenceeditor-ng/eventortododialog.h>
+#include <incidenceeditors/journaleditor.h> // TODO: Remove when we have a IncidenceDialog based JournalDialog.
+#include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditors/incidenceeditor-ng/incidencedefaults.h>
 
 #include <akonadi/control.h>
@@ -1170,8 +1168,6 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
     Q_ASSERT( eventEditor );
     if ( !selectedCollections.isEmpty() )
       eventEditor->selectCollection( selectedCollections.first() );
-
-    eventEditor->show();
   }
 }
 
@@ -1200,27 +1196,33 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
 
     event->setSummary( summary );
     event->setDescription( description );
-
-    IncidenceEditorsNG::IncidenceDialog *eventEditor = newEventEditor( event );
-    Q_ASSERT( eventEditor );
-    eventEditor->show();
+    newEventEditor( event );
   }
 }
 
 void CalendarView::newTodo( const QString &summary, const QString &description,
                             const QStringList &attachments, const QStringList &attendees,
                             const QStringList &attachmentMimetypes,
-                            bool inlineAttachment, bool isTask )
+                            bool inlineAttachment )
 {
   if ( mCreatingEnabled ) {
-    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-    connectIncidenceEditor( todoEditor );
-    todoEditor->newTodo();
-    todoEditor->setTexts( summary, description );
-    todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
-    todoEditor->addAttendees( attendees );
-    todoEditor->selectCreateTask( isTask );
-    todoEditor->show();
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+    // if attach or attendee list is empty, these methods don't do anything, so
+    // it's safe to call them in every case
+    defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
+    defaults.setAttendees( attendees );
+
+    Todo::Ptr todo( new Todo );
+    defaults.setDefaults( todo );
+
+    todo->setSummary( summary );
+    todo->setDescription( description );
+
+    Item item;
+    item.setPayload( todo );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    dialog->load( item );
   }
 }
 
@@ -1232,34 +1234,48 @@ void CalendarView::newTodo()
 void CalendarView::newTodo( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    QDateTime dtDue;
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+
     bool allday = true;
-    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-    connectIncidenceEditor( todoEditor );
-    todoEditor->newTodo();
     if ( mViewManager->currentView()->isEventView() ) {
-      dtDue.setDate( activeDate() );
-      QDateTime dtDummy = QDateTime::currentDateTime();
-      mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
-      todoEditor->setDates( dtDue, allday );
+      defaults.setStartDateTime( KDateTime( activeDate() ) );
+      defaults.setEndDateTime( KDateTime::currentLocalDateTime() );
     }
+
+    Todo::Ptr todo( new Todo );
+    defaults.setDefaults( todo );
+    todo->setAllDay( allday );
+
+    Item item;
+    item.setPayload( todo );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+//    connectIncidenceEditor( dialog );
 
     if ( collection.isValid() ) {
-      todoEditor->selectCollection( collection );
+      dialog->selectCollection( collection );
     }
 
-    todoEditor->show();
+    dialog->load( item );
   }
 }
 
 void CalendarView::newTodo( const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-    connectIncidenceEditor( todoEditor );
-    todoEditor->newTodo();
-    todoEditor->setDates( QDateTime( date, QTime::currentTime() ), true );
-    todoEditor->show();
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+    defaults.setEndDateTime( KDateTime( date, QTime::currentTime() ) );
+
+    Todo::Ptr todo( new Todo );
+    defaults.setDefaults( todo );
+    todo->setAllDay( true );
+
+    Item item;
+    item.setPayload( todo );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+//    connectIncidenceEditor( dialog );
+    dialog->load( item );
   }
 }
 
@@ -1341,32 +1357,43 @@ void CalendarView::newSubTodo()
 void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    const Item item = selectedTodo();
-    if ( !Akonadi::hasTodo( item ) ) {
+    if ( !Akonadi::hasTodo( selectedTodo() ) ) {
       return;
     }
 
-    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-    connectIncidenceEditor( todoEditor );
-    todoEditor->newTodo();
-    todoEditor->setDates( QDateTime(), false, item );
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+    defaults.setRelatedIncidence( Akonadi::incidence( selectedTodo() ) );
 
-    if ( collection.isValid() ) {
-      todoEditor->selectCollection( collection );
-    }
+    Todo::Ptr todo( new Todo );
+    defaults.setDefaults( todo );
+    todo->setAllDay( false );
 
-    todoEditor->show();
+    Item item;
+    item.setPayload( todo );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+//    connectIncidenceEditor( dialog );
+    dialog->selectCollection( collection );
+    dialog->load( item );
   }
 }
 
 void CalendarView::newSubTodo( const Item &parentEvent )
 {
   if ( mCreatingEnabled ) {
-    TodoEditor *todoEditor = mDialogManager->getTodoEditor();
-    connectIncidenceEditor( todoEditor );
-    todoEditor->newTodo();
-    todoEditor->setDates( QDateTime(), false, parentEvent );
-    todoEditor->show();
+    IncidenceEditorsNG::IncidenceDefaults defaults;
+    defaults.setRelatedIncidence( Akonadi::incidence( parentEvent ) );
+
+    Todo::Ptr todo( new Todo );
+    defaults.setDefaults( todo );
+    todo->setAllDay( false );
+
+    Item item;
+    item.setPayload( todo );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+//    connectIncidenceEditor( dialog );
+    dialog->load( item );
   }
 }
 

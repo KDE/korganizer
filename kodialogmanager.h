@@ -72,9 +72,6 @@ class KODialogManager : public QObject
     /** Get the appropriate editor for the given incidence */
     IncidenceEditors::IncidenceEditor *getEditor( const Akonadi::Item& item );
 
-    /** Get an editor dialog for a Todo. */
-    IncidenceEditors::TodoEditor *getTodoEditor();
-
     /** Get an editor dialog for a Journal. */
     IncidenceEditors::JournalEditor *getJournalEditor();
 

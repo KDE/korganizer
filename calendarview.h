@@ -417,7 +417,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
                   const QStringList &attachments=QStringList(),
                   const QStringList &attendees=QStringList(),
                   const QStringList &attachmentMimetypes=QStringList(),
-                  bool inlineAttachment=false, bool createTask=false );
+                  bool inlineAttachment=false );
 
     void newJournal();
     void newJournal( const QDate &date );

@@ -1870,8 +1870,7 @@ void ActionManager::openTodoEditor( const QString &summary,
                                     const QString &uri,
                                     const QString &file,
                                     const QStringList &attendees,
-                                    const QString &attachmentMimetype,
-                                    bool isTask )
+                                    const QString &attachmentMimetype )
 {
   int action = KOPrefs::instance()->defaultTodoAttachMethod();
   if ( attachmentMimetype != "message/rfc822" ) {
@@ -1909,7 +1908,7 @@ void ActionManager::openTodoEditor( const QString &summary,
 
   mCalendarView->newTodo( summary, description, QStringList( attData ),
                           attendees, QStringList( attachmentMimetype ),
-                          action != KOPrefs::TodoAttachLink, isTask );
+                          action != KOPrefs::TodoAttachLink );
 }
 
 void ActionManager::openJournalEditor( const QDate &date )
