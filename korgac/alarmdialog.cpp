@@ -451,9 +451,15 @@ void AlarmDialog::show()
 {
   mIncidenceListView->sort();
 
+  // select the first item that hasn't already been notified
   mIncidenceListView->clearSelection();
-  if ( mIncidenceListView->firstChild() )
-    mIncidenceListView->firstChild()->setSelected( true );
+  for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
+    AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
+    if ( !item->mNotified ) {
+      (*it)->setSelected( true );
+      break;
+    }
+  }
 
   updateButtons();
   showDetails();
@@ -617,7 +623,7 @@ void AlarmDialog::showDetails()
 {
   mDetailView->clearEvents( true );
   mDetailView->clear();
-  AlarmListItem *item = static_cast<AlarmListItem*>( mIncidenceListView->currentItem() );
+  AlarmListItem *item = static_cast<AlarmListItem*>( mIncidenceListView->selectedItems().first() );
   if ( !item || !item->isVisible() )
     return;
 
@@ -720,8 +726,7 @@ void AlarmDialog::slotCalendarChanged()
 
       const QString summary = cleanSummary( incidence->summary() );
 
-      if ( displayStr != item->text( 1 ) ||
-           summary != item->text( 0 ) ) {
+      if ( displayStr != item->text( 1 ) || summary != item->text( 0 ) ) {
         item->setText( 1, displayStr );
         item->setText( 0, summary );
       }
