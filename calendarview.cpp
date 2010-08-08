@@ -1005,9 +1005,9 @@ void CalendarView::edit_paste()
   Akonadi::DndFactory factory( cal );
   Incidence::List pastedIncidences;
   if ( timeSet && time.isValid() ) {
-    pastedIncidences = factory.pasteIncidences( date, &time );
+    pastedIncidences = factory.pasteIncidences( KDateTime( date, time ) );
   } else {
-    pastedIncidences = factory.pasteIncidences( date );
+    pastedIncidences = factory.pasteIncidences( KDateTime( date ) );
   }
   Akonadi::Collection col;
   Incidence::List::Iterator it;
