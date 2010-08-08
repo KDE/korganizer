@@ -162,7 +162,7 @@ CalendarView::CalendarView( QWidget *parent )
   CollectionPropertiesDialog::useDefaultPage( false );
   CollectionPropertiesDialog::registerPage( new CollectionGeneralPageFactory() );
 
-  // Signals emited by mDateNavigator
+  // Signals emitted by mDateNavigator
   connect( mDateNavigator, SIGNAL(datesSelected(const KCalCore::DateList&,const QDate&)),
            SLOT(showDates(const KCalCore::DateList&,const QDate&)) );
 
@@ -173,7 +173,7 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(newJournalSignal(const QDate &)),
            SLOT(newJournal(const QDate &)) );
 
-  // Signals emited by mNavigatorBar
+  // Signals emitted by mNavigatorBar
   connect( mNavigatorBar, SIGNAL(prevYearClicked()),
            mDateNavigator, SLOT(selectPreviousYear()) );
   connect( mNavigatorBar, SIGNAL(nextYearClicked()),
@@ -187,7 +187,7 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mNavigatorBar, SIGNAL(yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
 
-  // Signals emited by mDateNavigatorContainer
+  // Signals emitted by mDateNavigatorContainer
   connect( mDateNavigatorContainer, SIGNAL(weekClicked(const QDate &)),
            SLOT(selectWeek(const QDate &)) );
 

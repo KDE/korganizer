@@ -1503,7 +1503,7 @@ bool ActionManager::handleCommandLine()
   bool ret = true;
 
   if ( !mainWindow ) {
-    kError() << "Unable to find default calendar resources view." << endl;
+    kError() << "Unable to find default calendar resources view.";
     ret = false;
   } else if ( args->count() <= 0 ) {
     // No filenames given => all other args are meaningless, show main Window
