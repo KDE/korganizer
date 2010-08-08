@@ -28,20 +28,19 @@
 #include "kocore.h"
 #include "korganizer_interface.h"
 
-#include <kcalprefs.h>
-#include <kcalcore/event.h>
-#include <kcalcore/incidence.h>
-#include <kcalutils/incidenceformatter.h>
-#include <kcalcore/todo.h>
-
-#include <KPIMIdentities/Identity>
-#include <KPIMIdentities/IdentityManager>
-
+#include <akonadi/kcal/kcalprefs.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/incidenceviewer.h>
 #include <akonadi/kcal/mailclient.h>
 #include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/calendar.h>
+
+#include <KCal/Event>
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
+
+#include <KPIMIdentities/Identity>
+#include <KPIMIdentities/IdentityManager>
 
 #include <Akonadi/Item>
 
@@ -58,15 +57,14 @@
 #include <KToolInvocation>
 #include <KWindowSystem>
 
+#include <phonon/mediaobject.h>
 #include <QLabel>
 #include <QSpinBox>
 #include <QTreeWidget>
 #include <QVBoxLayout>
-#include <phonon/mediaobject.h>
 
 using namespace KPIMIdentities;
-using namespace KCalCore;
-using namespace KCalUtils;
+using namespace KCal;
 
 static int defSuspendVal = 5;
 static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
@@ -302,10 +300,10 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->setText( 0, cleanSummary( incidence->summary() ) );
   item->setText( 1, QString() );
 
-  Event::Ptr event;
-  Todo::Ptr todo;
-  Alarm::Ptr alarm = incidence->alarms().first();
-  if ( ( event = incidence.dynamicCast<Event>() ) ) {
+  Event *event;
+  Todo *todo;
+  Alarm *alarm = incidence->alarms().first();
+  if ( ( event = dynamic_cast<Event *>( incidence.get() ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
     if ( event->recurs() ) {
       KDateTime nextStart = event->recurrence()->getNextDateTime(
@@ -326,7 +324,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
       item->setText( 1, IncidenceFormatter::dateTimeToString(
                        kdt, false, true, KDateTime::Spec::LocalZone() ) );
     }
-  } else if ( ( todo = incidence.dynamicCast<Todo>() ) ) {
+  } else if ( ( todo = dynamic_cast<Todo *>( incidence.get() ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
     if ( todo->recurs() ) {
       KDateTime nextStart = todo->recurrence()->getNextDateTime(
@@ -352,7 +350,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
   QString tip =
     IncidenceFormatter::toolTipStr( Akonadi::displayName( incidenceitem.parentCollection() ),
-                                    incidence,
+                                    incidence.get(),
                                     item->mRemindAt.date(), true,
                                     KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
@@ -583,10 +581,16 @@ void AlarmDialog::show()
   mIncidenceTree->resizeColumnToContents( 1 );
   mIncidenceTree->resizeColumnToContents( 2 );
   mIncidenceTree->sortItems( 1, Qt::AscendingOrder );
-  mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
 
-  // make sure no items are selected so pressing <enter> cannot do anything.
-  mIncidenceTree->setItemSelected( mIncidenceTree->topLevelItem( 0 ), false );
+  // select the first item that hasn't already been notified
+  QTreeWidgetItemIterator it( mIncidenceTree );
+  while ( *it ) {
+    ReminderListItem *item = static_cast<ReminderListItem *>( *it );
+    if ( !item->mNotified ) {
+      (*it)->setSelected( true );
+      break;
+    }
+  }
 
   // reset the default suspend time
   mSuspendSpin->setValue( defSuspendVal );
@@ -643,7 +647,7 @@ void AlarmDialog::eventNotification()
     Alarm::List alarms = incidence->alarms();
     Alarm::List::ConstIterator ait;
     for ( ait = alarms.constBegin(); ait != alarms.constEnd(); ++ait ) {
-      Alarm::Ptr alarm = *ait;
+      Alarm *alarm = *ait;
       // FIXME: Check whether this should be done for all multiple alarms
       if ( alarm->type() == Alarm::Procedure ) {
         // FIXME: Add a message box asking whether the procedure should really be executed
@@ -672,32 +676,28 @@ void AlarmDialog::eventNotification()
         if ( alarm->mailAddresses().isEmpty() ) {
           to = from;
         } else {
-          const QList<Person::Ptr> addresses = alarm->mailAddresses();
+          const QList<Person> addresses = alarm->mailAddresses();
           QStringList add;
-          for ( QList<Person::Ptr>::ConstIterator it = addresses.constBegin();
+          for ( QList<Person>::ConstIterator it = addresses.constBegin();
                 it != addresses.constEnd(); ++it ) {
-            add << (*it)->fullName();
+            add << (*it).fullName();
           }
           to = add.join( ", " );
         }
 
         QString subject;
-
-        Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( alarm->parentUid() );
-        Incidence::Ptr parent = Akonadi::incidence( parentItem );
-
         if ( alarm->mailSubject().isEmpty() ) {
-          if ( parent->summary().isEmpty() ) {
+          if ( alarm->parent()->summary().isEmpty() ) {
             subject = i18nc( "@title", "Reminder" );
           } else {
-            subject = i18nc( "@title", "Reminder: %1", cleanSummary( parent->summary() ) );
+            subject = i18nc( "@title", "Reminder: %1", cleanSummary( alarm->parent()->summary() ) );
           }
         } else {
           subject = i18nc( "@title", "Reminder: %1", alarm->mailSubject() );
         }
 
         QString body =
-          IncidenceFormatter::mailBodyStr( parent.staticCast<IncidenceBase>(), KSystemTimeZones::local() );
+          IncidenceFormatter::mailBodyStr( alarm->parent(), KSystemTimeZones::local() );
         if ( !alarm->mailText().isEmpty() ) {
           body += '\n' + alarm->mailText();
         }
@@ -827,7 +827,9 @@ void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )
 
 void AlarmDialog::showDetails()
 {
-  ReminderListItem *item = dynamic_cast<ReminderListItem *>( mIncidenceTree->currentItem() );
+  ReminderListItem *item =
+    dynamic_cast<ReminderListItem *>( mIncidenceTree->selectedItems().first() );
+
   if ( !item ) {
     mDetailView->setIncidence( Akonadi::Item() );
   } else {
