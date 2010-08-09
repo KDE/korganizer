@@ -1254,15 +1254,19 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
   if ( mCreatingEnabled ) {
     IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
 
-    bool allday = true;
+    bool allDay = true;
     if ( mViewManager->currentView()->isEventView() ) {
-      defaults.setStartDateTime( KDateTime( activeDate() ) );
-      defaults.setEndDateTime( KDateTime::currentLocalDateTime() );
+      QDateTime startDt;
+      QDateTime endDt;
+      dateTimesForNewEvent( startDt, endDt, allDay );
+
+      defaults.setStartDateTime( KDateTime( startDt ) );
+      defaults.setEndDateTime( KDateTime( endDt ) );
     }
 
     Todo::Ptr todo( new Todo );
     defaults.setDefaults( todo );
-    todo->setAllDay( allday );
+    todo->setAllDay( allDay );
 
     Item item;
     item.setPayload( todo );
