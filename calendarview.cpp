@@ -1179,6 +1179,7 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
 
     Event::Ptr event( new Event );
     defaults.setDefaults( event );
+    event->setAllDay( allDay );
 
     IncidenceEditorsNG::IncidenceDialog *eventEditor = newEventEditor( event );
     Q_ASSERT( eventEditor );
@@ -1212,6 +1213,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
 
     event->setSummary( summary );
     event->setDescription( description );
+    event->setAllDay( allDay );
     newEventEditor( event );
   }
 }
