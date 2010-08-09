@@ -27,6 +27,7 @@
 #include "kotimelineview.h"
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
+#include <kcalprefs.h>
 #include "timelineitem.h"
 #include "kohelper.h"
 
@@ -42,8 +43,6 @@
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
-#include <kcalprefs.h>
-
 #include <QApplication>
 #include <QPainter>
 #include <QLayout>
@@ -55,7 +54,7 @@
 
 using namespace Akonadi;
 using namespace KOrg;
-using namespace KCalCore;
+using namespace KCal;
 
 namespace KOrg {
 class RowController : public KDGantt::AbstractRowController {
@@ -180,24 +179,24 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   mLeftView->setHeader( new GanttHeaderView );
   mLeftView->setHeaderLabel( i18n("Calendar") );
   mLeftView->setRootIsDecorated( false );
-  mLeftView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-
+  mLeftView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );  
+  
   mGantt = new KDGantt::GraphicsView();
   splitter->addWidget( mLeftView );
   splitter->addWidget( mGantt );
   connect( splitter, SIGNAL( splitterMoved(int,int) ), SLOT( splitterMoved() ) );
   QStandardItemModel *model = new QStandardItemModel( this );
 
-  mRowController = new RowController;
+  mRowController = new RowController; 
   mRowController->setRowHeight( fontMetrics().height() ); //TODO: detect
-
+  
   mRowController->setModel( model );
   mGantt->setRowController( mRowController );
 
   KDGantt::DateTimeGrid *grid = new KDGantt::DateTimeGrid;
   grid->setScale( KDGantt::DateTimeGrid::ScaleHour );
   grid->setDayWidth( 800 );
-  grid->setRowSeparators( true );
+  grid->setRowSeparators( true );  
   mGantt->setGrid( grid );
   mGantt->setModel( model );
   mGantt->viewport()->setFixedWidth( 8000 );
@@ -238,8 +237,12 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   mGantt->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mGantt, SIGNAL(customContextMenuRequested(QPoint)), SLOT(contextMenuRequested(QPoint)) );
 
+#if 0  
   connect( mGantt, SIGNAL(dateTimeDoubleClicked(const QDateTime &)),
            SLOT(newEventWithHint(const QDateTime &)) );
+#else
+  kDebug() << "Disabled code, port to KDGantt2";
+#endif  
 }
 
 KOTimelineView::~KOTimelineView()
@@ -261,9 +264,9 @@ Akonadi::Item::List KOTimelineView::selectedIncidences()
 }
 
 /*virtual*/
-KCalCore::DateList KOTimelineView::selectedIncidenceDates()
+KCal::DateList KOTimelineView::selectedIncidenceDates()
 {
-  return KCalCore::DateList();
+  return KCal::DateList();
 }
 
 /*virtual*/
@@ -306,7 +309,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
     mLeftView->addTopLevelItem( new QTreeWidgetItem( QStringList() << i18n( "Calendar" ) ) );
     mCalendarItemMap.insert( -1, item );
-
+    
   } else {
     const CollectionSelection *colSel = collectionSelection();
     const Collection::List collections = colSel->selectedCollections();
@@ -324,7 +327,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
       }
     }
   }
-
+  
   // add incidences
   Item::List events;
   KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
@@ -447,7 +450,7 @@ void KOTimelineView::insertIncidence( const Item &aitem, const QDate &day )
     if ( l.isEmpty() ) {
       // strange, but seems to happen for some recurring events...
       item->insertIncidence( aitem, KDateTime( day, incidence->dtStart().time() ),
-                             KDateTime( day, incidence->dateTime( Incidence::RoleEnd ).time() ) );
+                              KDateTime( day, incidence->dtEnd().time() ) );
     } else {
       for ( QList<KDateTime>::ConstIterator it = l.constBegin(); it != l.constEnd(); ++it ) {
         item->insertIncidence( aitem, *it, incidence->endDateForStart( *it ) );
@@ -492,7 +495,7 @@ void KOTimelineView::removeIncidence( const Item &incidence )
 #if 0 //AKONADI_PORT_DISABLED
     // try harder, the incidence might already be removed from the resource
     typedef QMap<QString, KOrg::TimelineItem *> M2_t;
-    typedef QMap<KCalCore::ResourceCalendar *, M2_t> M1_t;
+    typedef QMap<KCal::ResourceCalendar *, M2_t> M1_t;
     for ( M1_t::ConstIterator it1 = mCalendarItemMap.constBegin();
           it1 != mCalendarItemMap.constEnd(); ++it1 ) {
       for ( M2_t::ConstIterator it2 = it1.value().constBegin();
