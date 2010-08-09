@@ -1164,6 +1164,14 @@ void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollection
 void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
                               const QDateTime &startDtParam, const QDateTime &endDtParam, bool allDay )
 {
+  /**
+     imho, this parameter should be removed:
+     - To-dos and journals don't use this which is inconsistent.
+     - Currently an empty List() is being passed.
+     - Collections selected in resource view should only influence what the views show.
+  */
+  Q_UNUSED( selectedCollections );
+
   if ( mCreatingEnabled ) {
     // Let the current view change the default start/end datetime
     QDateTime startDt( startDtParam );
@@ -1183,8 +1191,8 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
 
     IncidenceEditorsNG::IncidenceDialog *eventEditor = newEventEditor( event );
     Q_ASSERT( eventEditor );
-    if ( !selectedCollections.isEmpty() )
-      eventEditor->selectCollection( selectedCollections.first() );
+
+    eventEditor->selectCollection( defaultCollection() );
   }
 }
 
@@ -1276,6 +1284,8 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
 
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
+    } else {
+      dialog->selectCollection( defaultCollection() );
     }
 
     dialog->load( item );
@@ -1329,6 +1339,8 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
 
     if ( collection.isValid() ) {
       journalEditor->selectCollection( collection );
+    } else {
+      journalEditor->selectCollection( defaultCollection() );
     }
 
     journalEditor->show();
@@ -1395,7 +1407,11 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 
     IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
 //    connectIncidenceEditor( dialog );
-    dialog->selectCollection( collection );
+    if ( collection.isValid() ) {
+      dialog->selectCollection( collection );
+    } else {
+      dialog->selectCollection( defaultCollection() );
+    }
     dialog->load( item );
   }
 }
@@ -3138,5 +3154,12 @@ void CalendarView::setCreatingEnabled( bool enabled )
 {
   mCreatingEnabled = enabled;
 }
+
+Collection CalendarView::defaultCollection() const
+{
+  const Collection::Id id = KCalPrefs::instance()->defaultCalendarId();
+  return mCalendar->collection( id );
+}
+
 
 #include "calendarview.moc"

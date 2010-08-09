@@ -367,7 +367,7 @@ void AkonadiCollectionView::updateMenu()
     } else {
       disableStuff = true;
     }
-    
+
     if ( disableStuff ) {
       mDisableColor->setEnabled( false );
       mEditAction->setEnabled( false );

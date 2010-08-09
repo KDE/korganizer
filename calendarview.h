@@ -657,7 +657,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
      * @param enabled if false the user won't be able to create new incidences.
      * A use case is when there aren't any resources checked and the user double clicks
      * agenda view.
-     */ 
+     */
     void setCreatingEnabled( bool enabled );
 
   protected:
@@ -696,6 +696,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     // item is included in the list too.
     //
     void getIncidenceHierarchy( const Akonadi::Item &item, Akonadi::Item::List &items );
+
+    Akonadi::Collection defaultCollection() const;
 
     KOrg::History *mHistory;
 
