@@ -109,6 +109,22 @@ using namespace KCalUtils;
 
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage )
 
+IncidenceEditorsNG::IncidenceDefaults minimalIncidenceDefaults()
+{
+  IncidenceEditorsNG::IncidenceDefaults defaults;
+  // Set the full emails manually here, to avoid that we get dependencies on
+  // KCalPrefs all over the place.
+  defaults.setFullEmails( KCalPrefs::instance()->fullEmails() );
+  // NOTE: At some point this should be generalized. That is, we now use the
+  //       freebusy url as a hack, but this assumes that the user has only one
+  //       groupware account. Which doesn't have to be the case necessarily.
+  //       This method should somehow depend on the calendar selected to which
+  //       the incidence is added.
+  if ( KCalPrefs::instance()->useGroupwareCommunication() )
+    defaults.setGroupWareDomain( KUrl( KCalPrefs::instance()->freeBusyRetrieveUrl() ).host() );
+  return defaults;
+}
+
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
@@ -1157,7 +1173,7 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
     // and let the view adjust the type.
     dateTimesForNewEvent( startDt, endDt, allDay );
 
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setStartDateTime( KDateTime( startDt ) );
     defaults.setEndDateTime( KDateTime( endDt ) );
 
@@ -1183,7 +1199,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
     bool allDay = false;
     dateTimesForNewEvent( startDt, endDt, allDay );
 
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setStartDateTime( KDateTime( startDt ) );
     defaults.setEndDateTime( KDateTime( endDt ) );
     // if attach or attendee list is empty, these methods don't do anything, so
@@ -1206,7 +1222,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             bool inlineAttachment )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
     defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
@@ -1234,7 +1250,7 @@ void CalendarView::newTodo()
 void CalendarView::newTodo( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
 
     bool allday = true;
     if ( mViewManager->currentView()->isEventView() ) {
@@ -1263,7 +1279,7 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
 void CalendarView::newTodo( const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setEndDateTime( KDateTime( date, QTime::currentTime() ) );
 
     Todo::Ptr todo( new Todo );
@@ -1361,7 +1377,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
       return;
     }
 
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setRelatedIncidence( Akonadi::incidence( selectedTodo() ) );
 
     Todo::Ptr todo( new Todo );
@@ -1381,7 +1397,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 void CalendarView::newSubTodo( const Item &parentEvent )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults;
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setRelatedIncidence( Akonadi::incidence( parentEvent ) );
 
     Todo::Ptr todo( new Todo );
