@@ -473,6 +473,11 @@ void AlarmDialog::show()
   KWin::setState( winId(), NET::KeepAbove | NET::DemandsAttention );
   KWin::setOnAllDesktops( winId(), true );
   KWin::activateWindow( winId() );
+  raise();
+  setActiveWindow();
+  if ( isMinimized() ) {
+    showNormal();
+  }
   eventNotification();
 }
 
