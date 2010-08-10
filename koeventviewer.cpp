@@ -23,23 +23,54 @@
 */
 
 #include "koeventviewer.h"
-
+#include "koglobals.h"
 #include "urihandler.h"
 
 #include <libkcal/calendar.h>
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
+
 #include <kdebug.h>
-#include <koglobals.h>
+#include <klocale.h>
+#include <qregexp.h>
+
+#include <qtooltip.h>
 
 KOEventViewer::KOEventViewer( Calendar *calendar, QWidget *parent, const char *name )
   : QTextBrowser( parent, name ), mCalendar( calendar ), mDefaultText("")
 {
   mIncidence = 0;
+  connect( this, SIGNAL(highlighted(const QString &)), SLOT(message(const QString &)) );
 }
 
 KOEventViewer::~KOEventViewer()
 {
+}
+
+void KOEventViewer::message( const QString &link )
+{
+  if ( link.isEmpty() ) {
+    return;
+  }
+
+  QString ttStr;
+  if ( link.startsWith( "kmail:" ) ) {
+    ttStr = i18n( "Open the message in KMail" );
+  } else if ( link.startsWith( "mailto:" ) ) {
+    ttStr = i18n( "Send an email message to %1" ).arg( link.mid( 7 ) );
+  } else if ( link.startsWith( "uid:" ) ) {
+    ttStr = i18n( "Lookup the contact in KAddressbook" );
+  } else if ( link.startsWith( "ATTACH:" ) ) {
+    QString tmp = link;
+    tmp.remove( QRegExp( "^ATTACH://" ) );
+    QString uid = tmp.section( ':', 0, 0 );
+    QString name = tmp.section( ':', -1, -1 );
+    ttStr = i18n( "View attachment \"%1\"" ).arg( name );
+  } else {  // no special URI, let KDE handle it
+    ttStr = i18n( "Launch a viewer on the link" );
+  }
+
+  QToolTip::add( this, ttStr );
 }
 
 void KOEventViewer::readSettings( KConfig * config )

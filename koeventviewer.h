@@ -83,6 +83,7 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     */
     void setIncidence( Incidence *incidence, const QDate &date );
     void changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action );
+    void message( const QString &link );
 
   private:
     Calendar *mCalendar;
