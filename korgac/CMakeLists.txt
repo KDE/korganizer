@@ -31,7 +31,6 @@ kde4_add_executable(korgac ${korgac_SRCS})
 target_link_libraries(korgac 
 	${KDE4_KDEUI_LIBS} 
 	${KDE4_PHONON_LIBS} 
-	${KDEPIMLIBS_KCAL_LIBS} 
 	${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
 	${KDEPIMLIBS_AKONADI_LIBS}
 	${KDEPIMLIBS_AKONADI_KCAL_LIBS}
