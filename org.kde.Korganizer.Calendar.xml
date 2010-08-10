@@ -1,0 +1,75 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.kde.Korganizer.Calendar">
+    <method name="showJournalView"/>
+    <method name="showTodoView"/>
+    <method name="showEventView"/>
+    <method name="goDate">
+      <arg name="date" type="(iii)" direction="in"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QDate"/>
+    </method>
+    <method name="goDate">
+      <arg name="date" type="s" direction="in"/>
+    </method>
+    <method name="showDate">
+      <arg name="date" type="(iii)" direction="in"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QDate"/>
+    </method>
+    <method name="openEventEditor">
+      <arg name="text" type="s" direction="in"/>
+    </method>
+    <method name="openEventEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="attachments" type="as" direction="in"/>
+    </method>
+    <method name="openEventEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="uri" type="s" direction="in"/>
+      <arg name="file" type="s" direction="in"/>
+      <arg name="attendees" type="as" direction="in"/>
+      <arg name="attachmentMimetype" type="s" direction="in"/>
+    </method>
+    <method name="openEventEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="attachments" type="as" direction="in"/>
+      <arg name="attendees" type="as" direction="in"/>
+    </method>
+    <method name="openTodoEditor">
+      <arg name="text" type="s" direction="in"/>
+    </method>
+    <method name="openTodoEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="attachments" type="as" direction="in"/>
+    </method>
+    <method name="openTodoEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="attachments" type="as" direction="in"/>
+      <arg name="attendees" type="as" direction="in"/>
+    </method>
+    <method name="openTodoEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="uri" type="s" direction="in"/>
+      <arg name="file" type="s" direction="in"/>
+      <arg name="attendees" type="as" direction="in"/>
+      <arg name="attachmentMimetype" type="s" direction="in"/>
+    </method>
+    <method name="openJournalEditor">
+      <arg name="date" type="(iii)" direction="in"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QDate"/>
+    </method>
+    <method name="openJournalEditor">
+      <arg name="text" type="s" direction="in"/>
+      <arg name="date" type="(iii)" direction="in"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QDate"/>
+    </method>
+    <method name="openJournalEditor">
+      <arg name="text" type="s" direction="in"/>
+    </method>
+  </interface>
+</node>

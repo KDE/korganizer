@@ -1,0 +1,3 @@
+[KNewStuff3]
+ProvidersUrl=http://download.kde.org/khotnewstuff/korganizercalenders-providers.xml
+TargetDir=korganizer
