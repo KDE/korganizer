@@ -798,7 +798,6 @@ void KOTodoView::setNewPercentage( QAction *action )
       todo->setCompleted( KDateTime::currentLocalDateTime() );
       todo->setPercentComplete( 100 );
     } else {
-      todo->setCompleted( false );
       todo->setPercentComplete( percentage );
     }
     if ( todo->recurs() && percentage == 100 ) {
