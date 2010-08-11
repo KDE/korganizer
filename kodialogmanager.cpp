@@ -41,7 +41,6 @@
 #include <kcalcore/incidencebase.h>
 
 #include <incidenceeditors/journaleditor.h>
-#include <incidenceeditors/todoeditor.h>
 
 #include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditors/incidenceeditor-ng/incidencedialogfactory.h>
