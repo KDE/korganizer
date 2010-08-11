@@ -25,6 +25,7 @@
 #include "urihandler.h"
 
 #include <libkcal/attachment.h>
+#include <libkcal/attachmenthandler.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/incidence.h>
 using namespace KCal;
@@ -47,130 +48,6 @@ using namespace KCal;
 #include <kio/netaccess.h>
 
 #include <qfile.h>
-
-static Attachment *findAttachment( const QString &name, const QString &uid )
-{
-  CalendarResources *cal = new CalendarResources( "UTC" );
-  cal->readConfig();
-  cal->load();
-  Incidence *incidence = cal->incidence( uid );
-  if ( !incidence ) {
-    KMessageBox::sorry(
-      0,
-      i18n( "The incidence that owns the attachment named \"%1\" could not be found. "
-            "Perhaps it was removed from your calendar?" ).arg( name ) );
-    return 0;
-  }
-
-  // get the attachment by name from the incidence
-  Attachment::List as = incidence->attachments();
-  Attachment *a = 0;
-  if ( as.count() > 0 ) {
-    Attachment::List::ConstIterator it;
-    for ( it = as.begin(); it != as.end(); ++it ) {
-      if ( (*it)->label() == name ) {
-        a = *it;
-        break;
-      }
-    }
-  }
-
-  if ( !a ) {
-    KMessageBox::error(
-      0,
-      i18n( "No attachment named \"%1\" found in the incidence." ).arg( name ) );
-    return 0;
-  }
-
-  if ( a->isUri() ) {
-    if ( !KIO::NetAccess::exists( a->uri(), true, 0 ) ) {
-      KMessageBox::sorry(
-        0,
-        i18n( "The attachment \"%1\" is a web link that is inaccessible from this computer. " ).
-        arg( KURL::decode_string( a->uri() ) ) );
-      return 0;
-    }
-  }
-  return a;
-}
-
-bool UriHandler::openAttachment( const QString &name, const QString &uid )
-{
-  Attachment *a = findAttachment( name, uid );
-  if ( !a ) {
-    return false;
-  }
-
-  if ( a->isUri() ) {
-    kapp->invokeBrowser( a->uri() );
-  } else {
-    // put the attachment in a temporary file and launch it
-    KTempFile *file;
-    QStringList patterns = KMimeType::mimeType( a->mimeType() )->patterns();
-    if ( !patterns.empty() ) {
-      file = new KTempFile( QString::null,
-                            QString( patterns.first() ).remove( '*' ),0600 );
-    } else {
-      file = new KTempFile( QString::null, QString::null, 0600 );
-    }
-    file->file()->open( IO_WriteOnly );
-    QTextStream stream( file->file() );
-    stream.writeRawBytes( a->decodedData().data(), a->size() );
-    file->close();
-
-    bool stat = KRun::runURL( KURL( file->name() ), a->mimeType(), 0, true );
-    delete file;
-    return stat;
-  }
-  return true;
-}
-
-bool UriHandler::saveAsAttachment( const QString &name, const QString &uid )
-{
-  Attachment *a = findAttachment( name, uid );
-  if ( !a ) {
-    return false;
-  }
-
-  // get the saveas file name
-  QString saveAsFile =
-    KFileDialog::getSaveFileName( name,
-                                  QString::null, 0,
-                                  i18n( "Save Attachment" ));
-  if ( saveAsFile.isEmpty() ||
-       ( QFile( saveAsFile ).exists() &&
-         ( KMessageBox::warningYesNo(
-             0,
-             i18n( "%1 already exists. Do you want to overwrite it?").
-             arg( saveAsFile ) ) == KMessageBox::No ) ) ) {
-    return false;
-  }
-
-  bool stat = false;
-  if ( a->isUri() ) {
-    // save the attachment url
-    stat = KIO::NetAccess::file_copy( a->uri(), KURL( saveAsFile ), -1, true );
-  } else {
-    // put the attachment in a temporary file and save it
-    KTempFile *file;
-    QStringList patterns = KMimeType::mimeType( a->mimeType() )->patterns();
-    if ( !patterns.empty() ) {
-      file = new KTempFile( QString::null,
-                            QString( patterns.first() ).remove( '*' ),0600 );
-    } else {
-      file = new KTempFile( QString::null, QString::null, 0600 );
-    }
-    file->file()->open( IO_WriteOnly );
-    QTextStream stream( file->file() );
-    stream.writeRawBytes( a->decodedData().data(), a->size() );
-    file->close();
-
-    stat = KIO::NetAccess::file_copy( KURL( file->name() ), KURL( saveAsFile ), -1, true );
-
-    delete file;
-  }
-  return stat;
-}
 
 QString UriHandler::attachmentNameFromUri( const QString &uri )
 {
@@ -250,7 +127,7 @@ bool UriHandler::process( const QString &uri )
   } else if ( uri.startsWith( "ATTACH:" ) ) {
 
     // a calendar incidence attachment
-    return openAttachment( attachmentNameFromUri( uri ), uidFromUri( uri ) );
+    return AttachmentHandler::view( 0, attachmentNameFromUri( uri ), uidFromUri( uri ) );
 
   } else {  // no special URI, let KDE handle it
     new KRun( KURL( uri ) );

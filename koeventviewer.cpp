@@ -26,6 +26,7 @@
 #include "koglobals.h"
 #include "urihandler.h"
 
+#include <libkcal/attachmenthandler.h>
 #include <libkcal/calendar.h>
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
@@ -174,10 +175,10 @@ void KOEventViewer::contentsContextMenuEvent( QContextMenuEvent * )
 
   switch( menu->exec( QCursor::pos(), 0 ) ) {
   case 0: // open
-    UriHandler::openAttachment( name, uid );
+    AttachmentHandler::view( 0, name, uid );
     break;
   case 1: // save as
-    UriHandler::saveAsAttachment( name, uid );
+    AttachmentHandler::saveAs( 0, name, uid );
     break;
   default:
     break;
