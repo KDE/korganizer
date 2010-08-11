@@ -34,20 +34,19 @@ using namespace KCal;
 #include "kmailIface_stub.h"
 #endif
 
-#include <kiconloader.h>
-#include <krun.h>
 #include <kapplication.h>
+#include <kiconloader.h>
 #include <klocale.h>
+#include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
 #include <kprocess.h>
+#include <krun.h>
 #include <ktempfile.h>
 #include <kdebug.h>
 #include <kio/netaccess.h>
 
 #include <qfile.h>
-#include <qregexp.h>
-
 
 static Attachment *findAttachment( const QString &name, const QString &uid )
 {
@@ -95,7 +94,7 @@ static Attachment *findAttachment( const QString &name, const QString &uid )
   return a;
 }
 
-static bool openAttachment( const QString &name, const QString &uid )
+bool UriHandler::openAttachment( const QString &name, const QString &uid )
 {
   Attachment *a = findAttachment( name, uid );
   if ( !a ) {
@@ -126,6 +125,73 @@ static bool openAttachment( const QString &name, const QString &uid )
   return true;
 }
 
+bool UriHandler::saveAsAttachment( const QString &name, const QString &uid )
+{
+  Attachment *a = findAttachment( name, uid );
+  if ( !a ) {
+    return false;
+  }
+
+  // get the saveas file name
+  QString saveAsFile =
+    KFileDialog::getSaveFileName( name,
+                                  QString::null, 0,
+                                  i18n( "Save Attachment" ));
+  if ( saveAsFile.isEmpty() ||
+       ( QFile( saveAsFile ).exists() &&
+         ( KMessageBox::warningYesNo(
+             0,
+             i18n( "%1 already exists. Do you want to overwrite it?").
+             arg( saveAsFile ) ) == KMessageBox::No ) ) ) {
+    return false;
+  }
+
+  bool stat = false;
+  if ( a->isUri() ) {
+    // save the attachment url
+    stat = KIO::NetAccess::file_copy( a->uri(), KURL( saveAsFile ), -1, true );
+  } else {
+    // put the attachment in a temporary file and save it
+    KTempFile *file;
+    QStringList patterns = KMimeType::mimeType( a->mimeType() )->patterns();
+    if ( !patterns.empty() ) {
+      file = new KTempFile( QString::null,
+                            QString( patterns.first() ).remove( '*' ),0600 );
+    } else {
+      file = new KTempFile( QString::null, QString::null, 0600 );
+    }
+    file->file()->open( IO_WriteOnly );
+    QTextStream stream( file->file() );
+    stream.writeRawBytes( a->decodedData().data(), a->size() );
+    file->close();
+
+    stat = KIO::NetAccess::file_copy( KURL( file->name() ), KURL( saveAsFile ), -1, true );
+
+    delete file;
+  }
+  return stat;
+}
+
+QString UriHandler::attachmentNameFromUri( const QString &uri )
+{
+  QString tmp;
+  if ( uri.startsWith( "ATTACH:" ) ) {
+    tmp = uri.mid( 9 ).section( ':', -1, -1 );
+  }
+  return tmp;
+}
+
+QString UriHandler::uidFromUri( const QString &uri )
+{
+  QString tmp;
+  if ( uri.startsWith( "ATTACH:" ) ) {
+    tmp = uri.mid( 9 ).section( ':', 0, 0 );
+  } else if ( uri.startsWith( "uid:" ) ) {
+    tmp = uri.mid( 6 );
+  }
+  return tmp;
+}
+
 bool UriHandler::process( const QString &uri )
 {
   kdDebug(5850) << "UriHandler::process(): " << uri << endl;
@@ -153,6 +219,7 @@ bool UriHandler::process( const QString &uri )
 
   } else if ( uri.startsWith( "uid:" ) ) {
 
+    QString uid = uidFromUri( uri );
     DCOPClient *client = KApplication::kApplication()->dcopClient();
     const QByteArray noParamData;
     const QByteArray paramData;
@@ -167,7 +234,7 @@ bool UriHandler::process( const QString &uri )
       kapp->updateRemoteUserTimestamp("kaddressbook");
 #endif
       DCOPRef kaddressbook( "kaddressbook", "KAddressBookIface" );
-      kaddressbook.send( "showContactEditor", uri.mid( 6 ) );
+      kaddressbook.send( "showContactEditor", uid );
       return true;
     } else {
       // KaddressBook is not already running.
@@ -175,7 +242,7 @@ bool UriHandler::process( const QString &uri )
       // We start it without its main interface
       QString iconPath = KGlobal::iconLoader()->iconPath( "go", KIcon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
-      tmpStr += KProcess::quote( uri.mid( 6 ) );
+      tmpStr += KProcess::quote( uid );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath );
       return true;
     }
@@ -183,11 +250,7 @@ bool UriHandler::process( const QString &uri )
   } else if ( uri.startsWith( "ATTACH:" ) ) {
 
     // a calendar incidence attachment
-    QString tmp = uri;
-    tmp.remove( QRegExp( "^ATTACH://" ) );
-    QString uid = tmp.section( ':', 0, 0 );
-    QString name = tmp.section( ':', -1, -1 );
-    return openAttachment( name, uid );
+    return openAttachment( attachmentNameFromUri( uri ), uidFromUri( uri ) );
 
   } else {  // no special URI, let KDE handle it
     new KRun( KURL( uri ) );

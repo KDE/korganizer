@@ -24,8 +24,8 @@
 #ifndef URIHANDLER_H
 #define URIHANDLER_H
 
-#include <qstring.h>
 #include <kdepimmacros.h>
+#include <qstring.h>
 
 class KDE_EXPORT UriHandler
 {
@@ -34,6 +34,12 @@ class KDE_EXPORT UriHandler
       Process URI. Return true if handler handled the URI, otherwise false.
     */
     static bool process( const QString &uri );
+
+    static QString attachmentNameFromUri( const QString &uri );
+    static QString uidFromUri( const QString &uri );
+
+    static bool openAttachment( const QString &name, const QString &uid );
+    static bool saveAsAttachment( const QString &name, const QString &uid );
 };
 
 #endif

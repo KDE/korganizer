@@ -32,8 +32,10 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-#include <qregexp.h>
+#include <kpopupmenu.h>
 
+#include <qcursor.h>
+#include <qregexp.h>
 #include <qtooltip.h>
 
 KOEventViewer::KOEventViewer( Calendar *calendar, QWidget *parent, const char *name )
@@ -49,6 +51,7 @@ KOEventViewer::~KOEventViewer()
 
 void KOEventViewer::message( const QString &link )
 {
+  mAttachLink = QString();
   if ( link.isEmpty() ) {
     return;
   }
@@ -66,6 +69,7 @@ void KOEventViewer::message( const QString &link )
     QString uid = tmp.section( ':', 0, 0 );
     QString name = tmp.section( ':', -1, -1 );
     ttStr = i18n( "View attachment \"%1\"" ).arg( name );
+    mAttachLink = link;
   } else {  // no special URI, let KDE handle it
     ttStr = i18n( "Launch a viewer on the link" );
   }
@@ -145,16 +149,38 @@ void KOEventViewer::setDefaultText( const QString &text )
 void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action )
 {
   if ( mIncidence && ( incidence->uid() == mIncidence->uid() ) ) {
-    switch (action ) {
-      case KOGlobals::INCIDENCEEDITED:{
-        setIncidence( incidence, date );
-        break;
-      }
-      case KOGlobals::INCIDENCEDELETED: {
-        setIncidence( 0, date );
-        break;
-      }
+    switch ( action ) {
+    case KOGlobals::INCIDENCEEDITED:
+      setIncidence( incidence, date );
+      break;
+    case KOGlobals::INCIDENCEDELETED:
+      setIncidence( 0, date );
+      break;
     }
+  }
+}
+
+void KOEventViewer::contentsContextMenuEvent( QContextMenuEvent * )
+{
+  QString name = UriHandler::attachmentNameFromUri( mAttachLink );
+  QString uid = UriHandler::uidFromUri( mAttachLink );
+  if ( name.isEmpty() || uid.isEmpty() ) {
+    return;
+  }
+
+  KPopupMenu *menu = new KPopupMenu();
+  menu->insertItem( i18n( "Open Attachment" ), 0 );
+  menu->insertItem( i18n( "Save Attachment As..." ), 1 );
+
+  switch( menu->exec( QCursor::pos(), 0 ) ) {
+  case 0: // open
+    UriHandler::openAttachment( name, uid );
+    break;
+  case 1: // save as
+    UriHandler::saveAsAttachment( name, uid );
+    break;
+  default:
+    break;
   }
 }
 

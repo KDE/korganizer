@@ -24,13 +24,13 @@
 #ifndef KOEVENTVIEWER_H
 #define KOEVENTVIEWER_H
 
-#include <qtextbrowser.h>
 #include <kdepimmacros.h>
-
 #include <kconfig.h>
+#include <qtextbrowser.h>
+
 namespace KCal {
-class Calendar;
-class Incidence;
+  class Calendar;
+  class Incidence;
 }
 using namespace KCal;
 
@@ -39,7 +39,7 @@ using namespace KCal;
 */
 class KDE_EXPORT KOEventViewer : public QTextBrowser
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit KOEventViewer( Calendar *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~KOEventViewer();
@@ -74,8 +74,8 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     */
     void setDefaultText( const QString &text );
 
-    void readSettings( KConfig *config);
-    void writeSettings ( KConfig *config);
+    void readSettings( KConfig *config );
+    void writeSettings ( KConfig *config );
 
   public slots:
     /**
@@ -84,6 +84,7 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     void setIncidence( Incidence *incidence, const QDate &date );
     void changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action );
     void message( const QString &link );
+    void contentsContextMenuEvent( QContextMenuEvent * );
 
   private:
     Calendar *mCalendar;
@@ -91,6 +92,7 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     QTextBrowser *mEventTextView;
     QString mDefaultText;
     QString mText;
+    QString mAttachLink;
 };
 
 #endif
