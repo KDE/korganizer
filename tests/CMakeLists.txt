@@ -8,7 +8,7 @@ set(korgplugins_SRCS korgplugins.cpp )
 
 kde4_add_executable(korgplugins TEST ${korgplugins_SRCS})
 
-target_link_libraries(korgplugins korganizerprivate korganizer_core ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_KCAL_LIBS})
+target_link_libraries(korgplugins korganizerprivate korganizer_core ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} )
 
 kde4_add_executable(testkcmdesignerfields TEST testkcmdesignerfields.cpp ../kcmdesignerfields.cpp )
 target_link_libraries(testkcmdesignerfields
