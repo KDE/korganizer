@@ -351,7 +351,7 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
 void KOIncidenceEditor::openURL( const KURL &url )
 {
   QString uri = url.url();
-  UriHandler::process( uri );
+  UriHandler::process( this, uri );
 }
 
 void KOIncidenceEditor::addAttachments( const QStringList &attachments,

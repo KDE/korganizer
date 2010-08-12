@@ -25,7 +25,9 @@
 #define URIHANDLER_H
 
 #include <kdepimmacros.h>
-#include <qstring.h>
+
+class QString;
+class QWidget;
 
 class KDE_EXPORT UriHandler
 {
@@ -33,7 +35,7 @@ class KDE_EXPORT UriHandler
     /**
       Process URI. Return true if handler handled the URI, otherwise false.
     */
-    static bool process( const QString &uri );
+    static bool process( QWidget *parent, const QString &uri );
 
     static QString attachmentNameFromUri( const QString &uri );
     static QString uidFromUri( const QString &uri );

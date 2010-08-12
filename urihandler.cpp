@@ -69,7 +69,7 @@ QString UriHandler::uidFromUri( const QString &uri )
   return tmp;
 }
 
-bool UriHandler::process( const QString &uri )
+bool UriHandler::process( QWidget *parent, const QString &uri )
 {
   kdDebug(5850) << "UriHandler::process(): " << uri << endl;
 
@@ -127,7 +127,7 @@ bool UriHandler::process( const QString &uri )
   } else if ( uri.startsWith( "ATTACH:" ) ) {
 
     // a calendar incidence attachment
-    return AttachmentHandler::view( 0, attachmentNameFromUri( uri ), uidFromUri( uri ) );
+    return AttachmentHandler::view( parent, attachmentNameFromUri( uri ), uidFromUri( uri ) );
 
   } else {  // no special URI, let KDE handle it
     new KRun( KURL( uri ) );

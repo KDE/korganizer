@@ -105,7 +105,7 @@ void KOEventViewer::writeSettings( KConfig * config )
 
 void KOEventViewer::setSource( const QString &n )
 {
-  UriHandler::process( n );
+  UriHandler::process( parentWidget(), n );
 }
 
 bool KOEventViewer::appendIncidence( Incidence *incidence, const QDate &date )
@@ -177,10 +177,10 @@ void KOEventViewer::contentsContextMenuEvent( QContextMenuEvent *e )
 
   switch( menu->exec( QCursor::pos(), 0 ) ) {
   case 0: // open
-    AttachmentHandler::view( 0, name, uid );
+    AttachmentHandler::view( parentWidget(), name, uid );
     break;
   case 1: // save as
-    AttachmentHandler::saveAs( 0, name, uid );
+    AttachmentHandler::saveAs( parentWidget(), name, uid );
     break;
   default:
     break;
