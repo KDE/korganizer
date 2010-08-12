@@ -25,6 +25,7 @@
 
 #include "koeditorattachments.h"
 
+#include <libkcal/attachmenthandler.h>
 #include <libkcal/incidence.h>
 #include <libkdepim/kpimurlrequesterdlg.h>
 #include <libkdepim/kfileio.h>
@@ -642,11 +643,7 @@ void KOEditorAttachments::showAttachment( QIconViewItem *item )
   if ( !attitem || !attitem->attachment() ) return;
 
   KCal::Attachment *att = attitem->attachment();
-  if ( att->isUri() ) {
-    emit openURL( att->uri() );
-  } else {
-    KRun::runURL( mAttachments->tempFileForAttachment( att ), att->mimeType(), 0, true );
-  }
+  KCal::AttachmentHandler::view( this, att );
 }
 
 void KOEditorAttachments::saveAttachment( QIconViewItem *item )
@@ -655,32 +652,7 @@ void KOEditorAttachments::saveAttachment( QIconViewItem *item )
   if ( !attitem || !attitem->attachment() ) return;
 
   KCal::Attachment *att = attitem->attachment();
-
-  // get the saveas file name
-  QString saveAsFile =
-    KFileDialog::getSaveFileName( att->label(),
-                                  QString::null, 0,
-                                  i18n( "Save  Attachment" ) );
-  if ( saveAsFile.isEmpty() ||
-       ( QFile( saveAsFile ).exists() &&
-         ( KMessageBox::warningYesNo(
-           0,
-           i18n( "%1 already exists. Do you want to overwrite it?").
-           arg( saveAsFile ) ) == KMessageBox::No ) ) ) {
-    return;
-  }
-
-  KURL sourceUrl;
-  if ( att->isUri() ) {
-    sourceUrl = att->uri();
-  } else {
-    sourceUrl = mAttachments->tempFileForAttachment( att );
-  }
-  // save the attachment url
-  if ( !KIO::NetAccess::file_copy( sourceUrl, KURL( saveAsFile ), -1, true ) &&
-       KIO::NetAccess::lastError() ) {
-    KMessageBox::error( this, KIO::NetAccess::lastErrorString() );
-  }
+  KCal::AttachmentHandler::saveAs( this, att );
 }
 
 void KOEditorAttachments::slotAdd()
