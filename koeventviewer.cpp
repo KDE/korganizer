@@ -54,6 +54,7 @@ void KOEventViewer::message( const QString &link )
 {
   mAttachLink = QString();
   if ( link.isEmpty() ) {
+    QToolTip::remove( this );
     return;
   }
 
@@ -161,11 +162,12 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, const QDate &d
   }
 }
 
-void KOEventViewer::contentsContextMenuEvent( QContextMenuEvent * )
+void KOEventViewer::contentsContextMenuEvent( QContextMenuEvent *e )
 {
   QString name = UriHandler::attachmentNameFromUri( mAttachLink );
   QString uid = UriHandler::uidFromUri( mAttachLink );
   if ( name.isEmpty() || uid.isEmpty() ) {
+    QTextBrowser::contentsContextMenuEvent( e );
     return;
   }
 
