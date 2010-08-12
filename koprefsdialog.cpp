@@ -43,7 +43,6 @@ using namespace KHolidays;
 using MailTransport::TransportManagementWidget;
 
 #include <Akonadi/CollectionComboBox>
-#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
 #include <akonadi/agentfilterproxymodel.h>
 #include <akonadi/agentinstancemodel.h>
 #include <akonadi/agenttype.h>
@@ -849,9 +848,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   mResourceCombo = new Akonadi::CollectionComboBox( resourceGroup );
   //mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
   QStringList mimetypes;
-  mimetypes << Akonadi::IncidenceMimeTypeVisitor::todoMimeType();
-  mimetypes << Akonadi::IncidenceMimeTypeVisitor::journalMimeType();
-  mimetypes << Akonadi::IncidenceMimeTypeVisitor::eventMimeType();
+  mimetypes << KCalCore::Todo::todoMimeType();
+  mimetypes << KCalCore::Journal::journalMimeType();
+  mimetypes << KCalCore::Event::eventMimeType();
 
   mResourceCombo->setMimeTypeFilter( mimetypes );
   mResourceCombo->setWhatsThis(

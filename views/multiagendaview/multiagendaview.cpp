@@ -26,7 +26,6 @@
 #include "ui_multiagendaviewconfigwidget.h"
 
 #include <Akonadi/EntityTreeView>
-#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
@@ -164,7 +163,7 @@ void MultiAgendaView::recreateViews()
     }
   } else {
     Q_FOREACH( const Collection &i, collectionSelection()->selectedCollections() ) {
-      if ( i.contentMimeTypes().contains( IncidenceMimeTypeVisitor::eventMimeType() ) ) {
+      if ( i.contentMimeTypes().contains( Event::eventMimeType() ) ) {
         addView( i );
       }
     }

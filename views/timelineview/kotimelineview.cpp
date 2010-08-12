@@ -36,8 +36,6 @@
 #include "kdgantt2/kdganttitemdelegate.h"
 #include "kdgantt2/kdganttstyleoptionganttitem.h"
 
-#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
-
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
@@ -238,12 +236,12 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   mGantt->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mGantt, SIGNAL(customContextMenuRequested(QPoint)), SLOT(contextMenuRequested(QPoint)) );
 
-#if 0  
+#if 0
   connect( mGantt, SIGNAL(dateTimeDoubleClicked(const QDateTime &)),
            SLOT(newEventWithHint(const QDateTime &)) );
 #else
   kDebug() << "Disabled code, port to KDGantt2";
-#endif  
+#endif
 }
 
 KOTimelineView::~KOTimelineView()
@@ -316,7 +314,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     const Collection::List collections = colSel->selectedCollections();
 
     Q_FOREACH ( const Collection &collection, collections ) {
-      if ( collection.contentMimeTypes().contains( IncidenceMimeTypeVisitor::eventMimeType() ) ) {
+      if ( collection.contentMimeTypes().contains( Event::eventMimeType() ) ) {
         item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
         mLeftView->addTopLevelItem(new QTreeWidgetItem( QStringList() << Akonadi::displayName( collection ) ) );
         const QColor resourceColor = KOHelper::resourceColor( collection );
