@@ -42,13 +42,14 @@
 #include <QHeaderView>
 #include <QItemSelectionModel>
 
-#include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/akonadi_next/collectionselectionproxymodel.h>
 #include <akonadi/akonadi_next/entitymodelstatesaver.h>
+#include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/kcalprefs.h>
 #include <akonadi/kcal/utils.h>
 
+#include <akonadi/calendar/standardcalendaractionmanager.h>
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
 #include <akonadi/collectionfilterproxymodel.h>
@@ -56,7 +57,6 @@
 #include <akonadi/entitytreemodel.h>
 #include <akonadi/entitytreeview.h>
 #include <akonadi/entitydisplayattribute.h>
-#include <akonadi/standardactionmanager.h>
 #include <akonadi/agenttypedialog.h>
 #include <akonadi/agentinstancewidget.h>
 #include <akonadi/agentmanager.h>
@@ -149,7 +149,6 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     mCollectionview(0),
     mBaseModel( 0 ),
     mSelectionProxyModel( 0 ),
-    mDeleteAction( 0 ),
     mNotSendAddRemoveSignal( false ),
     mWasDefaultCalendar( false ),
     mInitDefaultCalendar( false )
@@ -196,33 +195,23 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
 
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
-  if( xmlclient ) {
+  if ( xmlclient ) {
     mCollectionview->setXmlGuiClient( xmlclient );
 
-    mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), mCollectionview );
-    //Laurent: don't create all actions not necessary for korganizer and create action with shortcut which conflicts bug #229332
-    //mActionManager->createAllActions();
-    mActionManager->createAction( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
-    //mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
-    mActionManager->createAction( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
-    mActionManager->createAction( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
-    mActionManager->createAction( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
+    mActionManager = new Akonadi::StandardCalendarActionManager( xmlclient->actionCollection(), mCollectionview );
+    mActionManager->createAllActions();
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
-    mCreateAction = new KAction( mCollectionview );
-    mCreateAction->setIcon( KIcon( "appointment-new" ) );
-    mCreateAction->setText( i18n( "New Calendar..." ) );
-    //mCreateAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), mCreateAction );
-    connect( mCreateAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
+    mActionManager->interceptAction( Akonadi::StandardActionManager::CreateResource );
+    mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteResource );
+    mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteCollections );
 
-    mDeleteAction = new KAction( mCollectionview );
-    mDeleteAction->setIcon( KIcon( "edit-delete" ) );
-    mDeleteAction->setText( i18n( "Delete Calendar" ) );
-    mDeleteAction->setEnabled( false );
-    //mDeleteAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), mDeleteAction );
-    connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
+    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ), SIGNAL( triggered( bool ) ),
+             this, SLOT( newCalendar() ) );
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResource ), SIGNAL( triggered( bool ) ),
+             this, SLOT( deleteCalendar() ) );
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL( triggered( bool ) ),
+             this, SLOT( deleteCalendar() ) );
 
     mDisableColor = new KAction( mCollectionview );
     mDisableColor->setText( "&Disable Color");
@@ -236,18 +225,11 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "assign_color" ), mAssignColor );
     connect( mAssignColor, SIGNAL( triggered( bool ) ), this, SLOT(assignColor()) );
 
-    mEditAction = new KAction( mCollectionview );
-    mEditAction->setText( i18n( "&Edit..." ) );
-    mEditAction->setEnabled( false );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "edit_calendar" ),mEditAction );
-    connect( mEditAction, SIGNAL( triggered( bool ) ), this, SLOT( editCalendar()) );
-
     mDefaultCalendar = new KAction( mCollectionview );
     mDefaultCalendar->setText( i18n( "Use as &Default Calendar" ) );
     mDefaultCalendar->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),mDefaultCalendar );
     connect( mDefaultCalendar, SIGNAL( triggered( bool ) ), this, SLOT( setDefaultCalendar()) );
-
   }
 }
 
@@ -266,18 +248,6 @@ void AkonadiCollectionView::setDefaultCalendar()
   updateView();
 
   emit defaultResourceChanged( collection );
-}
-
-void AkonadiCollectionView::editCalendar()
-{
-  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
-  Q_ASSERT( index.isValid() );
-  const Akonadi::Collection collection = collectionFromIndex( index );
-  Q_ASSERT( collection.isValid() );
-  const QString resource = collection.resource();
-  Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
-  if ( instance.isValid() )
-    instance.configure( this );
 }
 
 void AkonadiCollectionView::assignColor()
@@ -338,55 +308,46 @@ void AkonadiCollectionView::updateView()
 
 void AkonadiCollectionView::updateMenu()
 {
-  if ( mDeleteAction ) {
-    bool enableAction = mCollectionview->selectionModel()->hasSelection();
-    mDeleteAction->setEnabled( enableAction );
-    enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
-    mAssignColor->setEnabled( enableAction );
-    QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  bool enableAction = mCollectionview->selectionModel()->hasSelection();
+  enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
+  mAssignColor->setEnabled( enableAction );
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
 
-    bool disableStuff = false;
+  bool disableStuff = false;
 
-    if ( index.isValid() ) {
-      const Akonadi::Collection collection = collectionFromIndex( index );
-      Q_ASSERT( collection.isValid() );
+  if ( index.isValid() ) {
+    const Akonadi::Collection collection = collectionFromIndex( index );
+    Q_ASSERT( collection.isValid() );
 
-      if ( !collection.contentMimeTypes().isEmpty() ) {
-        const QString identifier = QString::number( collection.id() );
-        const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
-        enableAction = enableAction && defaultColor.isValid();
-        mDisableColor->setEnabled( enableAction );
-        const QString resource = collection.resource();
-        Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( resource );
-        mEditAction->setEnabled( !instance.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
-        mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection.id() ) &&
-                                      collection.rights() & Collection::CanCreateItem );
-      } else {
-        disableStuff = true;
-      }
+    if ( !collection.contentMimeTypes().isEmpty() ) {
+      const QString identifier = QString::number( collection.id() );
+      const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
+      enableAction = enableAction && defaultColor.isValid();
+      mDisableColor->setEnabled( enableAction );
+      mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection.id() ) &&
+                                    collection.rights() & Collection::CanCreateItem );
     } else {
       disableStuff = true;
     }
+  } else {
+    disableStuff = true;
+  }
 
-    if ( disableStuff ) {
-      mDisableColor->setEnabled( false );
-      mEditAction->setEnabled( false );
-      mDefaultCalendar->setEnabled( false );
-      mAssignColor->setEnabled( false );
-    }
+  if ( disableStuff ) {
+    mDisableColor->setEnabled( false );
+    mDefaultCalendar->setEnabled( false );
+    mAssignColor->setEnabled( false );
   }
 }
 
 void AkonadiCollectionView::selectionChanged()
 {
-  kDebug();
   updateMenu();
   updateView();
 }
 
 void AkonadiCollectionView::newCalendar()
 {
-  kDebug();
   Akonadi::AgentTypeDialog dlg( this );
   dlg.setWindowTitle( i18n( "Add Calendar" ) );
   dlg.agentFilterProxyModel()->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
@@ -405,7 +366,6 @@ void AkonadiCollectionView::newCalendar()
 
 void AkonadiCollectionView::newCalendarDone( KJob *job )
 {
-  kDebug();
   Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
   if ( createjob->error() ) {
     //TODO(AKONADI_PORT) this should show an error dialog and should be merged with the identical code in ActionManager
@@ -419,7 +379,6 @@ void AkonadiCollectionView::newCalendarDone( KJob *job )
 
 void AkonadiCollectionView::deleteCalendar()
 {
-  kDebug();
 
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
@@ -460,7 +419,6 @@ void AkonadiCollectionView::deleteCalendar()
 
 void AkonadiCollectionView::deleteCalendarDone( KJob *job )
 {
-  kDebug();
   Akonadi::CollectionDeleteJob *deletejob = static_cast<Akonadi::CollectionDeleteJob*>( job );
   if ( deletejob->error() ) {
     kWarning() << "Delete calendar failed:" << deletejob->errorString();

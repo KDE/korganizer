@@ -41,7 +41,7 @@ namespace Akonadi {
   class Collection;
   class CollectionSelectionProxyModel;
   class EntityTreeView;
-  class StandardActionManager;
+  class StandardCalendarActionManager;
 }
 
 class KAction;
@@ -86,9 +86,11 @@ class AkonadiCollectionView : public CalendarViewExtension
     void resourcesChanged( bool enabled );
     void resourcesAddedRemoved();
     void defaultResourceChanged( const Akonadi::Collection & );
+
   private:
     void updateView();
     void updateMenu();
+
   private Q_SLOTS:
     void selectionChanged();
 
@@ -100,10 +102,10 @@ class AkonadiCollectionView : public CalendarViewExtension
     void rowsInserted( const QModelIndex&, int, int );
     void assignColor();
     void disableColor();
-    void editCalendar();
     void setDefaultCalendar();
+
   private:
-    Akonadi::StandardActionManager* mActionManager;
+    Akonadi::StandardCalendarActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     QAbstractProxyModel* mBaseModel;
     Akonadi::CollectionSelectionProxyModel *mSelectionProxyModel;
