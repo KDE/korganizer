@@ -108,7 +108,7 @@ class KOListView::ListItemVisitor : public Visitor
 bool KOListView::ListItemVisitor::visit( Event::Ptr e )
 {
   mItem->setText( Summary_Column, e->summary() );
-  if ( e->isAlarmEnabled() ) {
+  if ( e->hasEnabledAlarms() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "appointment-reminder" );
     mItem->setPixmap( Reminder_Column, alarmPxmp );
     mItem->setSortKey( Reminder_Column, "1" );
@@ -159,7 +159,7 @@ bool KOListView::ListItemVisitor::visit( Todo::Ptr t )
   static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon( "task-complete" );
   mItem->setPixmap( Summary_Column, t->isCompleted() ? todoDonePxmp : todoPxmp );
   mItem->setText( Summary_Column, t->summary() );
-  if ( t->isAlarmEnabled() ) {
+  if ( t->hasEnabledAlarms() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "appointment-reminder" );
     mItem->setPixmap( Reminder_Column, alarmPxmp );
     mItem->setSortKey( Reminder_Column, "1" );

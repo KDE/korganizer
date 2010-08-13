@@ -602,7 +602,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
 #if 0
   /* sorry, this looks too cluttered. disable until we can
      make something prettier; no idea at this time -- allen */
-  if ( mIncidence->isAlarmEnabled() && !specialEvent ) {
+  if ( mIncidence->hasEnabledAlarms() && !specialEvent ) {
     ret << monthScene()->alarmPixmap();
   }
   if ( mIncidence->recurs() && !specialEvent ) {

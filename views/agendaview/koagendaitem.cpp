@@ -146,7 +146,7 @@ void KOAgendaItem::updateIcons()
   mIconReadonly = !mCalendar->hasChangeRights( mIncidence );
 
   mIconRecur = incidence->recurs();
-  mIconAlarm = incidence->isAlarmEnabled();
+  mIconAlarm = incidence->hasEnabledAlarms();
   if ( incidence->attendeeCount() > 1 ) {
     if ( KCalPrefs::instance()->thatIsMe( incidence->organizer()->email() ) ) {
       mIconReply = false;
