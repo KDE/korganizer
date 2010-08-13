@@ -15,5 +15,5 @@ QT4_ADD_DBUS_INTERFACE(testalarmdlg_SRCS ${korganizer_xml} korganizer_interface)
 
 kde4_add_executable(testalarmdlg TEST ${testalarmdlg_SRCS})
 
-target_link_libraries(testalarmdlg ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}  ${KDEPIMLIBS_MAILTRANSPORT_LIBRARY} korganizer_core akonadi-kcal_next kdepimdbusinterfaces ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
+target_link_libraries(testalarmdlg ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}  ${KDEPIMLIBS_MAILTRANSPORT_LIBS} korganizer_core akonadi-kcal_next kdepimdbusinterfaces ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
 
