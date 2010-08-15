@@ -1248,6 +1248,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
     item.setPayload( todo );
 
     IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    dialog->selectCollection( defaultCollection() );
     dialog->load( item );
   }
 }
