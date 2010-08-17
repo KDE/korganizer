@@ -48,7 +48,7 @@ CollectionGeneralPage::~CollectionGeneralPage()
 {
 }
 
-void CollectionGeneralPage::init(const Akonadi::Collection &col)
+void CollectionGeneralPage::init()
 {
   QLabel *label;
 
@@ -57,6 +57,9 @@ void CollectionGeneralPage::init(const Akonadi::Collection &col)
   topLayout->setMargin( 0 );
 
   QHBoxLayout *hl = new QHBoxLayout();
+  hl->setSpacing( KDialog::spacingHint() );
+  hl->setMargin( KDialog::marginHint() );
+
   topLayout->addItem( hl );
   hl->setSpacing( KDialog::spacingHint() );
 
@@ -81,6 +84,9 @@ void CollectionGeneralPage::init(const Akonadi::Collection &col)
   mNormalIconButton->setEnabled( false );
 
   QHBoxLayout * iconHLayout = new QHBoxLayout();
+  iconHLayout->setSpacing( KDialog::spacingHint() );
+  iconHLayout->setMargin( KDialog::marginHint() );
+
   iconHLayout->addWidget( mIconsCheckBox );
   iconHLayout->addStretch( 2 );
   iconHLayout->addWidget( mNormalIconButton );
@@ -97,7 +103,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &col)
 
 void CollectionGeneralPage::load(const Akonadi::Collection & col)
 {
-  init( col );
+  init();
   QString displayName;
   QString iconName;
   if ( col.hasAttribute<Akonadi::EntityDisplayAttribute>() ) {

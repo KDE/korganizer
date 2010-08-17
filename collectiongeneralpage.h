@@ -37,7 +37,7 @@ public:
 
 
 protected:
-  void init(const Akonadi::Collection&);
+  void init();
 
 private:
   KLineEdit   *mNameEdit;
