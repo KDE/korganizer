@@ -158,6 +158,7 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 if (QT_QT3SUPPORT_FOUND)
 set(korganizerprivate_LIB_SRCS
+  kocollectionpropertiesdialog.cpp
   collectiongeneralpage.cpp
   koalternatelabel.cpp
   kodecorationlabel.cpp

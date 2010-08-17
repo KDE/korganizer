@@ -30,6 +30,8 @@
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"
+#include "kocollectionpropertiesdialog.h"
+
 #include <KLineEdit>
 
 #include <KDebug>
@@ -212,6 +214,9 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
              this, SLOT( deleteCalendar() ) );
     connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL( triggered( bool ) ),
              this, SLOT( deleteCalendar() ) );
+
+    mActionManager->interceptAction( Akonadi::StandardActionManager::CollectionProperties );
+    connect( mActionManager->action( Akonadi::StandardActionManager::CollectionProperties ), SIGNAL( triggered( bool ) ), this, SLOT( slotCollectionProperties() ) );
 
     mDisableColor = new KAction( mCollectionview );
     mDisableColor->setText( "&Disable Color");
@@ -436,6 +441,20 @@ void AkonadiCollectionView::rowsInserted( const QModelIndex&, int, int )
 {
   if ( !mNotSendAddRemoveSignal )
     emit resourcesAddedRemoved();
+}
+
+
+void AkonadiCollectionView::slotCollectionProperties()
+{
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  Q_ASSERT( index.isValid() );
+  const Akonadi::Collection collection = collectionFromIndex( index );
+  Q_ASSERT( collection.isValid() );
+
+  KOCollectionPropertiesDialog* dlg = new KOCollectionPropertiesDialog( collection, this );
+
+  //dlg->setCaption( contextText( Akonadi::StandardActionManager::CollectionProperties, Akonadi::StandardActionManager::DialogTitle ).arg( mCurrentFolder->collection().name() ) );
+  dlg->show();
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

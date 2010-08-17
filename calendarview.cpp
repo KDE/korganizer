@@ -49,7 +49,6 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
-#include "collectiongeneralpage.h"
 #include "kohelper.h"
 
 #include <libkdepim/pimmessagebox.h>
@@ -107,7 +106,6 @@ using namespace KHolidays;
 using namespace IncidenceEditors;
 using namespace KCalUtils;
 
-AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage )
 
 IncidenceEditorsNG::IncidenceDefaults minimalIncidenceDefaults()
 {
@@ -174,9 +172,6 @@ CalendarView::CalendarView( QWidget *parent )
 
   mLeftFrame = mLeftSplitter;
   mLeftFrame->installEventFilter( this );
-
-  CollectionPropertiesDialog::useDefaultPage( false );
-  CollectionPropertiesDialog::registerPage( new CollectionGeneralPageFactory() );
 
   // Signals emitted by mDateNavigator
   connect( mDateNavigator, SIGNAL(datesSelected(const KCalCore::DateList&,const QDate&)),
