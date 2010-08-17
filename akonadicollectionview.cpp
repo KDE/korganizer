@@ -453,7 +453,8 @@ void AkonadiCollectionView::slotCollectionProperties()
 
   KOCollectionPropertiesDialog* dlg = new KOCollectionPropertiesDialog( collection, this );
 
-  //dlg->setCaption( contextText( Akonadi::StandardActionManager::CollectionProperties, Akonadi::StandardActionManager::DialogTitle ).arg( mCurrentFolder->collection().name() ) );
+  dlg->setCaption(  i18nc( "@title:window", "Properties of Calendar Folder %1" , collection.name() ) );
+  dlg->resize( 400, 500 );
   dlg->show();
 }
 
