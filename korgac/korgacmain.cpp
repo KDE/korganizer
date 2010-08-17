@@ -33,7 +33,7 @@ class ReminderDaemonApp : public KUniqueApplication
   public:
     ReminderDaemonApp() : mClient( 0 )
     {
-      // ensure the Quit dialog's Cancel reponse does not close the app
+      // ensure the Quit dialog's Cancel response does not close the app
       setQuitOnLastWindowClosed( false );
     }
 
