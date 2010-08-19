@@ -29,8 +29,8 @@
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
-#include <akonadi/akonadi_next/collectionselectionproxymodel.h>
-#include <akonadi/akonadi_next/entitymodelstatesaver.h>
+#include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi/kcal/entitymodelstatesaver.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KGlobalSettings>

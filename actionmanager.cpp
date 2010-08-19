@@ -49,8 +49,8 @@
 #include <KMime/KMimeMessage>
 
 #include <kcalprefs.h>
-#include <akonadi/akonadi_next/collectionselectionproxymodel.h>
-#include <akonadi/akonadi_next/entitymodelstatesaver.h>
+#include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi/kcal/entitymodelstatesaver.h>
 #include <akonadi/kcal/calendar.h>
 #include <akonadi/kcal/calendaradaptor.h>
 #include <akonadi/kcal/calendarmodel.h>
