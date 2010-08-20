@@ -25,22 +25,21 @@
 */
 
 #include "eventarchiver.h"
-#include <kcalprefs.h>
 #include "koprefs.h"
+
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/calendaradaptor.h>
+#include <calendarsupport/incidencechanger.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 #include <kio/netaccess.h>
 #include <kcalcore/icalformat.h>
 #include <kcalcore/filestorage.h>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/incidencechanger.h>
 
 #include <kcalcore/memorycalendar.h>
 
 #include <kcalutils/stringify.h>
-
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/calendaradaptor.h>
-#include <akonadi/kcal/utils.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -48,7 +47,7 @@
 #include <ktemporaryfile.h>
 #include <kmessagebox.h>
 
-using namespace Akonadi;
+using namespace KCalCore;
 using namespace KCalUtils;
 
 EventArchiver::EventArchiver( QObject *parent )
@@ -60,12 +59,12 @@ EventArchiver::~EventArchiver()
 {
 }
 
-void EventArchiver::runOnce( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget )
+void EventArchiver::runOnce( CalendarSupport::Calendar *calendar, CalendarSupport::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget )
 {
   run( calendar, changer, limitDate, widget, true, true );
 }
 
-void EventArchiver::runAuto( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, QWidget *widget, bool withGUI )
+void EventArchiver::runAuto( CalendarSupport::Calendar *calendar, CalendarSupport::IncidenceChanger* changer, QWidget *widget, bool withGUI )
 {
   QDate limitDate( QDate::currentDate() );
   int expiryTime = KOPrefs::instance()->mExpiryTime;
@@ -85,27 +84,27 @@ void EventArchiver::runAuto( Akonadi::Calendar *calendar, Akonadi::IncidenceChan
   run( calendar, changer, limitDate, widget, withGUI, false );
 }
 
-void EventArchiver::run( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
+void EventArchiver::run( CalendarSupport::Calendar *calendar, CalendarSupport::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
                          bool withGUI, bool errorIfNone )
 {
   // We need to use rawEvents, otherwise events hidden by filters will not be archived.
-  Item::List events;
-  Item::List todos;
-  Item::List journals;
+  Akonadi::Item::List events;
+  Akonadi::Item::List todos;
+  Akonadi::Item::List journals;
 
   if ( KOPrefs::instance()->mArchiveEvents ) {
     events = calendar->rawEvents(
       QDate( 1769, 12, 1 ),
       // #29555, also advertised by the "limitDate not included" in the class docu
       limitDate.addDays( -1 ),
-      KCalPrefs::instance()->timeSpec(),
+      CalendarSupport::KCalPrefs::instance()->timeSpec(),
       true );
   }
   if ( KOPrefs::instance()->mArchiveTodos ) {
-    Item::List t = calendar->rawTodos();
-    Item::List::ConstIterator it;
+    Akonadi::Item::List t = calendar->rawTodos();
+    Akonadi::Item::List::ConstIterator it;
     for ( it = t.constBegin(); it != t.constEnd(); ++it ) {
-      const Todo::Ptr todo = Akonadi::todo( *it );
+      const Todo::Ptr todo = CalendarSupport::todo( *it );
       Q_ASSERT( todo );
       if ( isSubTreeComplete( calendar, todo, limitDate ) ) {
         todos.append( *it );
@@ -113,7 +112,7 @@ void EventArchiver::run( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger*
     }
   }
 
-  const Item::List incidences = Akonadi::Calendar::mergeIncidenceList( events, todos, journals );
+  const Akonadi::Item::List incidences = CalendarSupport::Calendar::mergeIncidenceList( events, todos, journals );
 
   kDebug() << "archiving incidences before" << limitDate
            << " ->" << incidences.count() <<" incidences found.";
@@ -137,13 +136,13 @@ void EventArchiver::run( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger*
   }
 }
 
-void EventArchiver::deleteIncidences( Akonadi::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
-                                      const Item::List &incidences, bool withGUI )
+void EventArchiver::deleteIncidences( CalendarSupport::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
+                                      const Akonadi::Item::List &incidences, bool withGUI )
 {
   QStringList incidenceStrs;
-  Item::List::ConstIterator it;
+  Akonadi::Item::List::ConstIterator it;
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    incidenceStrs.append( Akonadi::incidence( *it )->summary() );
+    incidenceStrs.append( CalendarSupport::incidence( *it )->summary() );
   }
 
   if ( withGUI ) {
@@ -166,13 +165,13 @@ void EventArchiver::deleteIncidences( Akonadi::IncidenceChanger* changer, const 
   emit eventsDeleted();
 }
 
-void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
-                                       const Item::List &incidences, bool withGUI )
+void EventArchiver::archiveIncidences( CalendarSupport::Calendar *calendar, CalendarSupport::IncidenceChanger* changer, const QDate &limitDate, QWidget *widget,
+                                       const Akonadi::Item::List &incidences, bool withGUI )
 {
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
 
-  Akonadi::CalendarAdaptor::Ptr cal( new Akonadi::CalendarAdaptor( calendar, widget ) );
+  CalendarSupport::CalendarAdaptor::Ptr cal( new CalendarSupport::CalendarAdaptor( calendar, widget ) );
   FileStorage storage( cal );
 
   // Save current calendar to disk
@@ -185,7 +184,8 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   }
 
   // Duplicate current calendar by loading in new calendar object
-  MemoryCalendar::Ptr archiveCalendar( new MemoryCalendar( KCalPrefs::instance()->timeSpec() ) );
+  MemoryCalendar::Ptr archiveCalendar(
+    new MemoryCalendar( CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
 
   FileStorage archiveStore( archiveCalendar );
   archiveStore.setFileName( tmpFile.fileName() );
@@ -201,7 +201,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   QStringList uids;
   Incidence::List allIncidences = archiveCalendar->rawIncidences();
   foreach(const Akonadi::Item &item, incidences) {
-    uids.append( Akonadi::incidence(item)->uid() );
+    uids.append( CalendarSupport::incidence(item)->uid() );
   }
   foreach( const Incidence::Ptr inc, allIncidences) {
     if ( !uids.contains( inc->uid() ) ) {
@@ -261,7 +261,7 @@ void EventArchiver::archiveIncidences( Akonadi::Calendar *calendar, Akonadi::Inc
   emit eventsDeleted();
 }
 
-bool EventArchiver::isSubTreeComplete( Akonadi::Calendar *calendar,
+bool EventArchiver::isSubTreeComplete( CalendarSupport::Calendar *calendar,
                                        const Todo::Ptr &todo,
                                        const QDate &limitDate,
                                        QStringList checkedUids ) const
@@ -279,11 +279,11 @@ bool EventArchiver::isSubTreeComplete( Akonadi::Calendar *calendar,
 
   checkedUids.append( todo->uid() );
   const Akonadi::Item item = calendar->itemForIncidenceUid( todo->uid() );
-  Item::List relations = calendar->findChildren( item );
+  Akonadi::Item::List relations = calendar->findChildren( item );
   foreach( const Akonadi::Item &item, relations ) {
 
-    if ( Akonadi::hasTodo( item ) ) {
-      const Todo::Ptr t = Akonadi::todo( item );
+    if ( CalendarSupport::hasTodo( item ) ) {
+      const Todo::Ptr t = CalendarSupport::todo( item );
       if ( !isSubTreeComplete( calendar, t, limitDate, checkedUids ) ) {
         return false;
       }

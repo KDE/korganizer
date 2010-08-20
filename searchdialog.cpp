@@ -27,15 +27,14 @@
 #include "searchdialog.h"
 #include "koglobals.h"
 #include "calendarview.h"
-#include <kcalprefs.h>
 #include "views/listview/kolistview.h"
 #include <libkdepim/kdateedit.h>
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 using namespace KOrg;
-using namespace Akonadi;
 
 SearchDialog::SearchDialog( CalendarView *calendarview )
   : KDialog( calendarview )
@@ -137,18 +136,18 @@ void SearchDialog::search( const QRegExp &re )
   QDate startDt = mStartDate->date();
   QDate endDt = mEndDate->date();
 
-  Item::List events;
-  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
+  Akonadi::Item::List events;
+  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
   if ( mEventsCheck->isChecked() ) {
     events = m_calendarview->calendar()->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
   }
-  Item::List todos;
+  Akonadi::Item::List todos;
   if ( mTodosCheck->isChecked() ) {
     if ( mIncludeUndatedTodos->isChecked() ) {
-      KDateTime::Spec spec = KCalPrefs::instance()->timeSpec();
-      Item::List alltodos = m_calendarview->calendar()->todos();
-      Q_FOREACH ( const Item &item, alltodos ) {
-        const Todo::Ptr todo = Akonadi::todo( item );
+      KDateTime::Spec spec = CalendarSupport::KCalPrefs::instance()->timeSpec();
+      Akonadi::Item::List alltodos = m_calendarview->calendar()->todos();
+      Q_FOREACH ( const Akonadi::Item &item, alltodos ) {
+        const Todo::Ptr todo = CalendarSupport::todo( item );
         Q_ASSERT( todo );
         if ( ( !todo->hasStartDate() && !todo->hasDueDate() ) || // undated
              ( todo->hasStartDate() &&
@@ -172,7 +171,7 @@ void SearchDialog::search( const QRegExp &re )
     }
   }
 
-  Item::List journals;
+  Akonadi::Item::List journals;
   if ( mJournalsCheck->isChecked() ) {
     QDate dt = startDt;
     while ( dt <= endDt ) {
@@ -182,8 +181,8 @@ void SearchDialog::search( const QRegExp &re )
   }
 
   mMatchedEvents.clear();
-  Q_FOREACH( const Item &item, Akonadi::Calendar::mergeIncidenceList(events, todos, journals) ) {
-    const Incidence::Ptr ev = Akonadi::incidence( item );
+  Q_FOREACH( const Akonadi::Item &item, CalendarSupport::Calendar::mergeIncidenceList(events, todos, journals) ) {
+    const Incidence::Ptr ev = CalendarSupport::incidence( item );
     Q_ASSERT( ev );
     if ( mSummaryCheck->isChecked() ) {
       if ( re.indexIn( ev->summary() ) != -1 ) {

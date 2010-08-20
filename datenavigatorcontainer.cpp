@@ -100,7 +100,7 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
 
 }
 
-void DateNavigatorContainer::setCalendar( Akonadi::Calendar *cal )
+void DateNavigatorContainer::setCalendar( CalendarSupport::Calendar *cal )
 {
   mCalendar = cal;
   mNavigatorView->setCalendar( cal );

@@ -32,7 +32,7 @@
 
 #include <kcalutils/incidenceformatter.h>
 
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/utils.h>
 
 #include <akonadi/item.h>
 
@@ -112,7 +112,7 @@ KOrganizerPart::~KOrganizerPart()
 void KOrganizerPart::slotChangeInfo( const Akonadi::Item &item, const QDate &date )
 {
   Q_UNUSED( date );
-  const KCalCore::Incidence::Ptr incidence = Akonadi::incidence( item );
+  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
                       IncidenceFormatter::timeToString( incidence->dtStart() ) );

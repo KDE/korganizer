@@ -27,15 +27,13 @@
 
 #include "kdgantt2/kdganttglobal.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
-
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/utils.h>
 
 using namespace KOrg;
 using namespace KCalUtils;
-using namespace Akonadi;
 
-TimelineItem::TimelineItem( Akonadi::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent )
+TimelineItem::TimelineItem( CalendarSupport::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent )
   : QObject( parent ), mCalendar( calendar ), mModel( model ), mIndex( index )
 {
  mModel->removeRow( mIndex );
@@ -45,12 +43,12 @@ TimelineItem::TimelineItem( Akonadi::Calendar *calendar, uint index, QStandardIt
  mModel->insertRow( mIndex, dummyItem );
 }
 
-void TimelineItem::insertIncidence( const Item &aitem,
+void TimelineItem::insertIncidence( const Akonadi::Item &aitem,
                                     const KDateTime & _start, const KDateTime & _end )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
-  KDateTime start = incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() );
-  KDateTime end = incidence->dateTime( Incidence::RoleEnd ).toTimeSpec( KCalPrefs::instance()->timeSpec() );
+  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
+  KDateTime start = incidence->dtStart().toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() );
+  KDateTime end = incidence->dateTime( Incidence::RoleEnd ).toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() );
 
   if ( _start.isValid() ) {
     start = _start;
@@ -87,13 +85,13 @@ void TimelineItem::insertIncidence( const Item &aitem,
   mModel->insertRow( mIndex, list );
 }
 
-void TimelineItem::removeIncidence( const Item &incidence )
+void TimelineItem::removeIncidence( const Akonadi::Item &incidence )
 {
   qDeleteAll( mItemMap.value( incidence.id() ) );
   mItemMap.remove( incidence.id() );
 }
 
-void TimelineItem::moveItems( const Item &incidence, int delta, int duration )
+void TimelineItem::moveItems( const Akonadi::Item &incidence, int delta, int duration )
 {
   typedef QList<QStandardItem*> ItemList;
   ItemList list = mItemMap.value( incidence.id() );
@@ -112,7 +110,7 @@ void TimelineItem::setColor(const QColor& color)
 }
 
 
-TimelineSubItem::TimelineSubItem( const Item &incidence,
+TimelineSubItem::TimelineSubItem( const Akonadi::Item &incidence,
                                   TimelineItem *parent
                                 )
   : QStandardItem(), mIncidence( incidence ),
@@ -120,10 +118,10 @@ TimelineSubItem::TimelineSubItem( const Item &incidence,
 {
   setData( KDGantt::TypeTask, KDGantt::ItemTypeRole );
   setData( IncidenceFormatter::toolTipStr(
-                  Akonadi::displayName( incidence.parentCollection() ),
-                  Akonadi::incidence( incidence ), originalStart().date(),
-                  true, KCalPrefs::instance()->timeSpec() ), Qt::ToolTipRole );
-  if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
+                  CalendarSupport::displayName( incidence.parentCollection() ),
+                  CalendarSupport::incidence( incidence ), originalStart().date(),
+                  true, CalendarSupport::KCalPrefs::instance()->timeSpec() ), Qt::ToolTipRole );
+  if ( !CalendarSupport::incidence( incidence )->isReadOnly() ) {
     setFlags( Qt::ItemIsSelectable );
   }
 }

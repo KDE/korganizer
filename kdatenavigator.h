@@ -29,15 +29,18 @@
 #include <QDateTime>
 
 #include <kcalcore/incidencebase.h> //for DateList typedef
+using namespace KCalCore;
 
 class KODayMatrix;
 class NavigatorBar;
 
-namespace Akonadi {
-  class Item;
+namespace CalendarSupport {
   class Calendar;
 }
-using namespace KCalCore;
+
+namespace Akonadi {
+  class Item;
+}
 
 class QEvent;
 class QLabel;
@@ -53,7 +56,7 @@ class KDateNavigator: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( Akonadi::Calendar * );
+    void setCalendar( CalendarSupport::Calendar * );
 
     void setBaseDate( const QDate & );
 

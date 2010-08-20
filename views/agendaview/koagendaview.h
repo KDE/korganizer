@@ -27,10 +27,13 @@
 
 #include "agendaview.h"
 #include "calprinter.h"
-#include <akonadi/kcal/calendar.h>
+
+#include <calendarsupport/calendar.h>
 
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
+
+#include <KCalCore/Todo>
 
 #include <QFrame>
 #include <QPixmap>
@@ -52,12 +55,6 @@ class QGridLayout;
 class QMenu;
 class QPaintEvent;
 class QSplitter;
-
-using namespace KCalCore;
-
-namespace Akonadi {
-  class CollectionSelection;
-}
 
 namespace KOrg {
 #ifndef KORG_NODECOS
@@ -97,7 +94,7 @@ class EventIndicator : public QFrame
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::CalendarObserver
+class KOAgendaView : public KOrg::AgendaView, public CalendarSupport::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -114,7 +111,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     virtual Akonadi::Item::List selectedIncidences();
 
     /** returns the currently selected incidence's dates */
-    virtual DateList selectedIncidenceDates();
+    virtual KCalCore::DateList selectedIncidenceDates();
 
     /** return the default start/end date/time for new events   */
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
@@ -138,7 +135,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    virtual void setCalendar( Akonadi::Calendar *cal );
+    virtual void setCalendar( CalendarSupport::Calendar *cal );
 
     /** Show only incidences from the given collection selection. */
 //    void setCollectionSelection( CollectionSelection* selection );
@@ -179,7 +176,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
     void slotTodosDropped( const QList<KUrl>& todos, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
     void zoomInHorizontally( const QDate &date=QDate() );
     void zoomOutHorizontally( const QDate &date=QDate() );
@@ -281,7 +278,7 @@ class KOAgendaView : public KOrg::AgendaView, public Akonadi::Calendar::Calendar
 
     TimeLabelsZone *mTimeLabelsZone;
 
-    DateList mSelectedDates;  // List of dates to be displayed
+    KCalCore::DateList mSelectedDates;  // List of dates to be displayed
     int mViewType;
 
     KOEventPopupMenu *mAgendaPopup;

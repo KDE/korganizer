@@ -31,35 +31,36 @@
 #include "korganizer_export.h"
 #include "korganizer/part.h"
 
-#include <kcalcore/incidence.h>
+#include <KCalCore/Incidence>
 
 #include <KUrl>
 
 #include <QObject>
 
-#include <akonadi/item.h>
-
-namespace KCalCore {
-  class Calendar;
-}
+#include <Akonadi/Item>
 
 namespace KOrg {
   class HTMLExportSettings;
 }
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
   class CalendarModel;
   class EntityModelStateSaver;
+}
+
+namespace Akonadi {
   class EntityTreeViewStateSaver;
+}
+
+namespace KCalCore {
+  class Calendar;
 }
 
 class AkonadiCollectionView;
 class CalendarView;
 class ImportDialog;
 class KOWindowList;
-
-using namespace KCalCore;
 
 class KRecentFilesAction;
 class KSelectAction;
@@ -429,11 +430,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
-    Akonadi::CalendarModel *mCalendarModel;
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::CalendarModel *mCalendarModel;
+    CalendarSupport::Calendar *mCalendar;
     AkonadiCollectionView *mCollectionView;
     Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
-    Akonadi::EntityModelStateSaver *mCollectionSelectionModelStateSaver;
+    CalendarSupport::EntityModelStateSaver *mCollectionSelectionModelStateSaver;
     bool mIsClosing;
 };
 

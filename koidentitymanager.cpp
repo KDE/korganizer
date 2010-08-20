@@ -23,13 +23,13 @@
 */
 
 #include "koidentitymanager.h"
-#include "kcalprefs.h"
+#include <calendarsupport/kcalprefs.h>
 
 // This is called to create a default identity in case emailidentities has none
 // (i.e. the user never used KMail before)
 // We provide the values from KOPrefs, since those are configurable in korganizer.
 void KOrg::IdentityManager::createDefaultIdentity( QString &fullName, QString &emailAddress )
 {
-  fullName = KCalPrefs::instance()->fullName();
-  emailAddress = KCalPrefs::instance()->email();
+  fullName = CalendarSupport::KCalPrefs::instance()->fullName();
+  emailAddress = CalendarSupport::KCalPrefs::instance()->email();
 }

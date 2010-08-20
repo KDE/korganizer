@@ -35,7 +35,7 @@
 
 using namespace KCalCore;
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
   class IncidenceChanger;
 }
@@ -70,7 +70,7 @@ class KOTodoModel : public QAbstractItemModel
     virtual ~KOTodoModel();
 
     /** Set the calendar */
-    void setCalendar( Akonadi::Calendar *cal );
+    void setCalendar( CalendarSupport::Calendar *cal );
     /** Resets the model and deletes the whole todo tree */
     void clearTodos();
     /** Reloads all todos from the Calendar provided during construction */
@@ -84,7 +84,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param changer Pointer to the changer to use.
      */
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
     { mChanger = changer; }
 
     virtual Qt::ItemFlags flags( const QModelIndex &index ) const;
@@ -181,7 +181,7 @@ class KOTodoModel : public QAbstractItemModel
     const int mColumnCount;
 
     /** Calendar to get data from */
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */
@@ -189,8 +189,8 @@ class KOTodoModel : public QAbstractItemModel
 
     QHash<QString, TodoTreeNode*> mTodoUidHash;
 
-    /** This Akonadi::IncidenceChanger is used to change todos */
-    Akonadi::IncidenceChanger *mChanger;
+    /** This CalendarSupport::IncidenceChanger is used to change todos */
+    CalendarSupport::IncidenceChanger *mChanger;
 
     /** Display the todos without hierarchy? */
     bool mFlatView;

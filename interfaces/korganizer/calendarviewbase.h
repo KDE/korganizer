@@ -25,11 +25,15 @@
 #include <QtGui/QWidget>
 
 #include <korganizer/baseview.h>
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/incidencechanger.h>
+
+namespace CalendarSupport {
+  class Calendar;
+  class IncidenceChanger;
+}
 
 namespace Akonadi {
   class Item;
-  class Calendar;
 }
 
 namespace IncidenceEditors {
@@ -48,8 +52,8 @@ class CalendarViewBase : public QWidget
     explicit CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
     virtual ~CalendarViewBase() {}
 
-    virtual Akonadi::Calendar *calendar() const = 0;
-    virtual Akonadi::IncidenceChanger *incidenceChanger() const = 0;
+    virtual CalendarSupport::Calendar *calendar() const = 0;
+    virtual CalendarSupport::IncidenceChanger *incidenceChanger() const = 0;
 
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;
@@ -70,7 +74,7 @@ class CalendarViewBase : public QWidget
     virtual void updateCategories() = 0;
 
   signals:
-    virtual void newIncidenceChanger( Akonadi::IncidenceChanger * ) = 0;
+    virtual void newIncidenceChanger( CalendarSupport::IncidenceChanger * ) = 0;
 
 };
 

@@ -37,7 +37,7 @@ class QResizeEvent;
 class QScrollBar;
 class QSplitter;
 
-namespace Akonadi {
+namespace CalendarSupport {
   class CollectionSelectionProxyModel;
 }
 
@@ -58,8 +58,8 @@ class MultiAgendaViewConfigDialog : public KDialog
 
     QString columnTitle( int column ) const;
     void setColumnTitle( int column, const QString &title );
-    Akonadi::CollectionSelectionProxyModel *takeSelectionModel( int column );
-    void setSelectionModel( int column, Akonadi::CollectionSelectionProxyModel *model );
+    CalendarSupport::CollectionSelectionProxyModel *takeSelectionModel( int column );
+    void setSelectionModel( int column, CalendarSupport::CollectionSelectionProxyModel *model );
 
   public Q_SLOTS:
     /**
@@ -89,12 +89,12 @@ class MultiAgendaView : public AgendaView
     ~MultiAgendaView();
 
     Akonadi::Item::List selectedIncidences();
-    DateList selectedIncidenceDates();
+    KCalCore::DateList selectedIncidenceDates();
     int currentDateCount() const;
     int maxDatesHint() const;
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    /* reimp */void setCalendar( Akonadi::Calendar *cal );
+    /* reimp */void setCalendar( CalendarSupport::Calendar *cal );
 
     /**
      * reimplemented from KOrg::BaseView
@@ -115,7 +115,7 @@ class MultiAgendaView : public AgendaView
     void changeIncidenceDisplay( const Akonadi::Item &, int mode );
     void updateConfig();
 
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
   protected:
     void resizeEvent( QResizeEvent *event );
@@ -132,7 +132,7 @@ class MultiAgendaView : public AgendaView
 
   private:
     void addView( const Akonadi::Collection &collection );
-    void addView( Akonadi::CollectionSelectionProxyModel *selectionProxy, const QString &title );
+    void addView( CalendarSupport::CollectionSelectionProxyModel *selectionProxy, const QString &title );
     KOAgendaView *createView( const QString &title );
 
     void deleteViews();
@@ -161,7 +161,7 @@ class MultiAgendaView : public AgendaView
     bool mUpdateOnShow;
     bool mPendingChanges;
     bool mCustomColumnSetupUsed;
-    QVector<Akonadi::CollectionSelectionProxyModel*> mCollectionSelectionModels;
+    QVector<CalendarSupport::CollectionSelectionProxyModel*> mCollectionSelectionModels;
     QVector<QString> mCustomColumnTitles;
     int mCustomNumberOfColumns;
 };

@@ -33,7 +33,7 @@
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
 
-#include <akonadi/kcal/calendar.h>
+#include <calendarsupport/calendar.h>
 
 #include <libkdepim/kdateedit.h>
 
@@ -395,7 +395,7 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-void KOTodoCategoriesDelegate::setCalendar( Akonadi::Calendar *cal )
+void KOTodoCategoriesDelegate::setCalendar( CalendarSupport::Calendar *cal )
 {
   mCalendar = cal;
 }

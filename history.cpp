@@ -25,10 +25,10 @@
 
 #include "history.h"
 
-#include <akonadi/kcal/groupware.h>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/groupware.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/utils.h>
+#include <calendarsupport/incidencechanger.h>
 
 #include <kcalcore/incidence.h>
 #include <Akonadi/Item>
@@ -39,11 +39,10 @@
 
 using namespace KCalCore;
 using namespace KOrg;
-using namespace Akonadi;
 
-History::History( Akonadi::Calendar *calendar, QWidget *parent )
+History::History( CalendarSupport::Calendar *calendar, QWidget *parent )
   : mCalendar( calendar ), mCurrentMultiEntry( 0 ), mParent( parent ),
-  mChanger( new Akonadi::IncidenceChanger( calendar, parent, -1 ) ),
+  mChanger( new CalendarSupport::IncidenceChanger( calendar, parent, -1 ) ),
   mCurrentRunningEntry( 0 )
 {
   // We create a new incidencechanger because we don't want CalendarView receiving it's signals
@@ -51,17 +50,17 @@ History::History( Akonadi::Calendar *calendar, QWidget *parent )
   // undo
 
   qRegisterMetaType<Akonadi::Item>( "Akonadi::Item" );
-  qRegisterMetaType<Akonadi::IncidenceChanger::WhatChanged>("Akonadi::IncidenceChanger::WhatChanged");
+  qRegisterMetaType<CalendarSupport::IncidenceChanger::WhatChanged>("CalendarSupport::IncidenceChanger::WhatChanged");
   connect( mChanger, SIGNAL(incidenceAddFinished(Akonadi::Item,bool)),
            this, SLOT(incidenceAddFinished(Akonadi::Item,bool)) );
 
-  connect( mChanger, SIGNAL(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged,bool)),
-           this, SLOT(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,Akonadi::IncidenceChanger::WhatChanged,bool)), Qt::QueuedConnection );
+  connect( mChanger, SIGNAL(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,CalendarSupport::IncidenceChanger::WhatChanged,bool)),
+           this, SLOT(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,CalendarSupport::IncidenceChanger::WhatChanged,bool)), Qt::QueuedConnection );
 
   connect( mChanger, SIGNAL(incidenceDeleteFinished(Akonadi::Item,bool)),
            this, SLOT(incidenceDeleteFinished(Akonadi::Item,bool)) );
 
-  mChanger->setGroupware( Groupware::instance() );
+  mChanger->setGroupware( CalendarSupport::Groupware::instance() );
 }
 
 void History::undo()
@@ -205,7 +204,7 @@ void History::endMultiModify()
 
 void History::incidenceChangeFinished( const Akonadi::Item &,
                                        const Akonadi::Item &,
-                                       const Akonadi::IncidenceChanger::WhatChanged,
+                                       const CalendarSupport::IncidenceChanger::WhatChanged,
                                        bool success )
 {
   if ( mCurrentRunningOperation == UNDO ){
@@ -250,7 +249,7 @@ void History::incidenceDeleteFinished( const Akonadi::Item &, bool success )
     finishRedo( success );
   }
 }
-History::Entry::Entry( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger *changer )
+History::Entry::Entry( CalendarSupport::Calendar *calendar, CalendarSupport::IncidenceChanger *changer )
   : mCalendar( calendar ), mChanger( changer )
 {
 }
@@ -269,10 +268,10 @@ Akonadi::Item::Id History::Entry::itemId()
   return mItemId;
 }
 
-History::EntryDelete::EntryDelete( Akonadi::Calendar *calendar,
-                                   Akonadi::IncidenceChanger *changer,
+History::EntryDelete::EntryDelete( CalendarSupport::Calendar *calendar,
+                                   CalendarSupport::IncidenceChanger *changer,
                                    const Akonadi::Item &item )
-  : Entry( calendar, changer ), mIncidence( Akonadi::incidence( item )->clone() ),
+  : Entry( calendar, changer ), mIncidence( CalendarSupport::incidence( item )->clone() ),
   mCollection( item.parentCollection() )
 {
   // Save the parent uid here, because we are going to clear the relations
@@ -311,10 +310,10 @@ QString History::EntryDelete::text()
   return i18n( "Delete %1", QString::fromLatin1( mIncidence->typeStr() ) );
 }
 
-History::EntryAdd::EntryAdd( Akonadi::Calendar *calendar,
-                             Akonadi::IncidenceChanger *changer,
+History::EntryAdd::EntryAdd( CalendarSupport::Calendar *calendar,
+                             CalendarSupport::IncidenceChanger *changer,
                              const Akonadi::Item &item )
-  : Entry( calendar, changer ), mIncidence( Akonadi::incidence( item )->clone() ),
+  : Entry( calendar, changer ), mIncidence( CalendarSupport::incidence( item )->clone() ),
   mCollection( item.parentCollection() )
 {
   // See comments in EntryDelete's constructor
@@ -349,13 +348,13 @@ QString History::EntryAdd::text()
   return i18n( "Add %1", QString::fromLatin1( mIncidence->typeStr() ) );
 }
 
-History::EntryEdit::EntryEdit( Akonadi::Calendar *calendar,
-                               Akonadi::IncidenceChanger *changer,
+History::EntryEdit::EntryEdit( CalendarSupport::Calendar *calendar,
+                               CalendarSupport::IncidenceChanger *changer,
                                const Akonadi::Item &oldItem,
                                const Akonadi::Item &newItem )
   : Entry( calendar, changer ),
-  mOldIncidence( Akonadi::incidence( oldItem )->clone() ),
-  mNewIncidence( Akonadi::incidence( newItem )->clone() )
+  mOldIncidence( CalendarSupport::incidence( oldItem )->clone() ),
+  mNewIncidence( CalendarSupport::incidence( newItem )->clone() )
 {
   mItemId = oldItem.id();
 }
@@ -368,14 +367,14 @@ bool History::EntryEdit::undo()
 {
   Akonadi::Item item = mCalendar->incidence( mItemId );
   item.setPayload<KCalCore::Incidence::Ptr>( mOldIncidence );
-  return mChanger->changeIncidence( mNewIncidence, item, Akonadi::IncidenceChanger::UNKNOWN_MODIFIED, 0 );
+  return mChanger->changeIncidence( mNewIncidence, item, CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED, 0 );
 }
 
 bool History::EntryEdit::redo()
 {
   Akonadi::Item item = mCalendar->incidence( mItemId );
   item.setPayload<KCalCore::Incidence::Ptr>( mNewIncidence );
-  return mChanger->changeIncidence( mOldIncidence, item, Akonadi::IncidenceChanger::UNKNOWN_MODIFIED, 0 );
+  return mChanger->changeIncidence( mOldIncidence, item, CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED, 0 );
 }
 
 QString History::EntryEdit::text()
@@ -383,7 +382,7 @@ QString History::EntryEdit::text()
   return i18n( "Edit %1", QString::fromLatin1( mNewIncidence->typeStr() ) );
 }
 
-History::MultiEntry::MultiEntry( Akonadi::Calendar *calendar, const QString &text )
+History::MultiEntry::MultiEntry( CalendarSupport::Calendar *calendar, const QString &text )
   : Entry( calendar, 0 ), mText( text )
 {
 }

@@ -26,16 +26,11 @@
 #ifndef KOEVENTVIEW_H
 #define KOEVENTVIEW_H
 
-#include <kcalcore/todo.h>
 #include "korganizer/baseview.h"
 
-namespace KCal {
-  class Incidence;
-}
 namespace Akonadi {
   class Item;
 }
-using namespace KCalCore;
 
 class KOEventPopupMenu;
 class QMenu;
@@ -141,7 +136,7 @@ class KOEventView : public KOrg::BaseView
      * selected dates has changed.
      *   @param datelist the new list of selected dates
      */
-    void datesSelected( const DateList datelist );
+    void datesSelected( const KCalCore::DateList datelist );
 
     /**
      * Emitted when an event is moved using the mouse in an agenda

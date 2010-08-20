@@ -40,7 +40,7 @@ namespace KDGantt {
 class GraphicsView;
 }
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
 }
 

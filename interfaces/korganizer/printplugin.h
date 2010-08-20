@@ -31,7 +31,7 @@
 #include <QtGui/QPrinter>
 #include <QtGui/QWidget>
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
 }
 
@@ -78,7 +78,7 @@ class PrintPlugin : public KOrg::Plugin
 
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
 
-    virtual void setCalendar( Akonadi::Calendar *cal ) { mCalendar = cal; }
+    virtual void setCalendar( CalendarSupport::Calendar *cal ) { mCalendar = cal; }
 
     virtual void setSelectedIncidences( KCalCore::Incidence::List inc )
     { mSelectedIncidences = inc; }
@@ -175,7 +175,7 @@ class PrintPlugin : public KOrg::Plugin
     /** The printer object. This will only be available in the doPrint method
         of the selected plugin */
     QPrinter *mPrinter;
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
     KCalCore::Incidence::List mSelectedIncidences;
     KConfig *mConfig;
 };

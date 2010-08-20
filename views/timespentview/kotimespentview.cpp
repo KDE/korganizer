@@ -25,11 +25,11 @@
 #include "kotimespentview.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include <kcalprefs.h>
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/incidencechanger.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 #include <kcalcore/event.h>
 
@@ -40,7 +40,6 @@
 #include <QPainterPath>
 
 using namespace KCalCore;
-using namespace Akonadi;
 
 class TimeSpentWidget : public QWidget
 {
@@ -87,8 +86,8 @@ class TimeSpentWidget : public QWidget
 
       int total = 0;
 
-      foreach ( const Item &item, mEventList ) {
-        const Event::Ptr e = Akonadi::event( item );
+      foreach ( const Akonadi::Item &item, mEventList ) {
+        const Event::Ptr e = CalendarSupport::event( item );
         Q_ASSERT( e );
         KDateTime selectedStart( mTimeSpentView->mStartDate,
                                  QTime( 0, 0 ),
@@ -187,7 +186,7 @@ class TimeSpentWidget : public QWidget
       }
     }
 
-    Item::List mEventList;
+    Akonadi::Item::List mEventList;
     KOTimeSpentView *mTimeSpentView;
 };
 
@@ -216,20 +215,20 @@ void KOTimeSpentView::showDates( const QDate &start, const QDate &end )
   updateView();
 }
 
-void KOTimeSpentView::showIncidences( const Item::List &incidenceList, const QDate &date )
+void KOTimeSpentView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
 }
 
-void KOTimeSpentView::changeIncidenceDisplay( const Item &incidence, int action )
+void KOTimeSpentView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
 {
   Q_UNUSED( incidence );
 
   switch( action ) {
-    case Akonadi::IncidenceChanger::INCIDENCEADDED:
-    case Akonadi::IncidenceChanger::INCIDENCEEDITED:
-    case Akonadi::IncidenceChanger::INCIDENCEDELETED:
+    case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
+    case CalendarSupport::IncidenceChanger::INCIDENCEEDITED:
+    case CalendarSupport::IncidenceChanger::INCIDENCEDELETED:
       updateView();
       break;
     default:
@@ -262,7 +261,7 @@ void KOTimeSpentView::updateView()
   text+="</h2>\n";
   */
 
-  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
   mView->mEventList = calendar()->events( mStartDate, mEndDate, timeSpec );
   mView->repaint();
 }

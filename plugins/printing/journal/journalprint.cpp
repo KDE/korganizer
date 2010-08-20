@@ -25,12 +25,11 @@
 #include "journalprint.h"
 #include "calprintpluginbase.h"
 
+#include <calendarsupport/utils.h>
+
 #include <libkdepim/kdateedit.h>
 
 #include <kcalcore/journal.h>
-#include <akonadi/kcal/calendar.h>
-
-#include <akonadi/kcal/utils.h>
 
 #include <Akonadi/Item>
 
@@ -40,8 +39,6 @@
 #include <kpluginloader.h>
 
 #include <QButtonGroup>
-
-using namespace Akonadi;
 
 class JournalPrintFactory : public KOrg::PrintPluginFactory
 {
@@ -121,13 +118,13 @@ void CalPrintJournal::setDateRange( const QDate &from, const QDate &to )
 void CalPrintJournal::print( QPainter &p, int width, int height )
 {
   int x=0, y=0;
-  Item::List journals( mCalendar->journals() );
+  Akonadi::Item::List journals( mCalendar->journals() );
   if ( mUseDateRange ) {
-    Item::List allJournals = journals;
+    Akonadi::Item::List allJournals = journals;
     journals.clear();
-    Item::List::Iterator it = allJournals.begin();
+    Akonadi::Item::List::Iterator it = allJournals.begin();
     for ( ; it != allJournals.end(); ++it ) {
-      Journal::Ptr j = Akonadi::journal( *it );
+      KCalCore::Journal::Ptr j = CalendarSupport::journal( *it );
       const QDate dt = j->dtStart().date();
       if ( mFromDate <= dt && dt <= mToDate ) {
         journals.append( *it );
@@ -142,9 +139,9 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
   drawHeader( p, i18n( "Journal entries" ), QDate(), QDate(), headerBox );
   y = headerHeight() + 15;
 
-  Item::List::Iterator it = journals.begin();
+  Akonadi::Item::List::Iterator it = journals.begin();
   for ( ; it != journals.end(); ++it ) {
-    drawJournal( Akonadi::journal( *it ), p, x, y, width, height );
+    drawJournal( CalendarSupport::journal( *it ), p, x, y, width, height );
   }
 
   drawFooter( p, footerBox );

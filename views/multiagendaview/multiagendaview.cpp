@@ -25,13 +25,14 @@
 
 #include "ui_multiagendaviewconfigwidget.h"
 
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/calendarmodel.h>
+#include <calendarsupport/collectionselection.h>
+#include <calendarsupport/collectionselectionproxymodel.h>
+#include <calendarsupport/entitymodelstatesaver.h>
+#include <calendarsupport/utils.h>
+
 #include <Akonadi/EntityTreeView>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/calendarmodel.h>
-#include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/collectionselectionproxymodel.h>
-#include <akonadi/kcal/entitymodelstatesaver.h>
-#include <akonadi/kcal/utils.h>
 
 #include <KGlobalSettings>
 #include <KHBox>
@@ -47,7 +48,6 @@
 
 #include <algorithm>
 
-using namespace Akonadi;
 using namespace KOrg;
 
 static QString generateColumnLabel( int c )
@@ -137,10 +137,10 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   topLevelLayout->addWidget( topSideBox );
 }
 
-void MultiAgendaView::setCalendar( Akonadi::Calendar *cal )
+void MultiAgendaView::setCalendar( CalendarSupport::Calendar *cal )
 {
   AgendaView::setCalendar( cal );
-  Q_FOREACH ( CollectionSelectionProxyModel *const i, mCollectionSelectionModels ) {
+  Q_FOREACH ( CalendarSupport::CollectionSelectionProxyModel *const i, mCollectionSelectionModels ) {
     i->setSourceModel( cal->treeModel() );
   }
   recreateViews();
@@ -162,7 +162,7 @@ void MultiAgendaView::recreateViews()
       addView( mCollectionSelectionModels[i], mCustomColumnTitles[i] );
     }
   } else {
-    Q_FOREACH( const Collection &i, collectionSelection()->selectedCollections() ) {
+    Q_FOREACH( const Akonadi::Collection &i, collectionSelection()->selectedCollections() ) {
       if ( i.contentMimeTypes().contains( Event::eventMimeType() ) ) {
         addView( i );
       }
@@ -196,7 +196,7 @@ void MultiAgendaView::recreateViews()
 void MultiAgendaView::deleteViews()
 {
   Q_FOREACH ( KOAgendaView *const i, mAgendaViews ) {
-    CollectionSelectionProxyModel *proxy = i->takeCustomCollectionSelectionProxyModel();
+    CalendarSupport::CollectionSelectionProxyModel *proxy = i->takeCustomCollectionSelectionProxyModel();
     if ( proxy && !mCollectionSelectionModels.contains( proxy ) ) {
       delete proxy;
     }
@@ -325,7 +325,7 @@ void MultiAgendaView::showDates( const QDate &start, const QDate &end )
   }
 }
 
-void MultiAgendaView::showIncidences( const Item::List &incidenceList, const QDate &date )
+void MultiAgendaView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     agendaView->showIncidences( incidenceList, date );
@@ -340,7 +340,7 @@ void MultiAgendaView::updateView()
   }
 }
 
-void MultiAgendaView::changeIncidenceDisplay( const Item &incidence, int mode )
+void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &incidence, int mode )
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     agendaView->changeIncidenceDisplay( incidence, mode );
@@ -405,13 +405,13 @@ KOAgendaView *MultiAgendaView::createView( const QString &title )
   return av;
 }
 
-void MultiAgendaView::addView( const Collection &collection )
+void MultiAgendaView::addView( const Akonadi::Collection &collection )
 {
-  KOAgendaView *av = createView( Akonadi::displayName( collection ) );
+  KOAgendaView *av = createView( CalendarSupport::displayName( collection ) );
   av->setCollection( collection.id() );
 }
 
-void MultiAgendaView::addView( CollectionSelectionProxyModel *sm, const QString &title )
+void MultiAgendaView::addView( CalendarSupport::CollectionSelectionProxyModel *sm, const QString &title )
 {
   KOAgendaView *av = createView( title );
   av->setCustomCollectionSelectionProxyModel( sm );
@@ -441,7 +441,7 @@ void MultiAgendaView::resizeScrollView( const QSize &size )
   mTopBox->resize( width, height );
 }
 
-void MultiAgendaView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+void MultiAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   AgendaView::setIncidenceChanger( changer );
   foreach ( KOAgendaView *agenda, mAgendaViews ) {
@@ -561,7 +561,7 @@ void MultiAgendaView::showConfigurationDialog( QWidget *parent )
   if ( dlg->exec() == QDialog::Accepted ) {
     mCustomColumnSetupUsed = dlg->useCustomColumns();
     mCustomNumberOfColumns = dlg->numberOfColumns();
-    QVector<CollectionSelectionProxyModel*> newModels;
+    QVector<CalendarSupport::CollectionSelectionProxyModel*> newModels;
     newModels.resize( mCustomNumberOfColumns );
     mCustomColumnTitles.resize( mCustomNumberOfColumns );
     for ( int i = 0; i < mCustomNumberOfColumns; ++i ) {
@@ -587,15 +587,15 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
       mCustomColumnTitles[i] = generateColumnLabel( i );
     }
   }
-  QVector<CollectionSelectionProxyModel*> oldModels = mCollectionSelectionModels;
+  QVector<CalendarSupport::CollectionSelectionProxyModel*> oldModels = mCollectionSelectionModels;
   mCollectionSelectionModels.clear();
   mCollectionSelectionModels.resize( mCustomNumberOfColumns );
   for ( int i = 0; i < mCustomNumberOfColumns; ++i ) {
     const KConfigGroup g = configGroup.config()->group( configGroup.name() +
                                                         "_subView_" +
                                                         QByteArray::number( i ) );
-    CollectionSelectionProxyModel *selection = new CollectionSelectionProxyModel;
-    selection->setCheckableColumn( CalendarModel::CollectionTitle );
+    CalendarSupport::CollectionSelectionProxyModel *selection = new CalendarSupport::CollectionSelectionProxyModel;
+    selection->setCheckableColumn( CalendarSupport::CalendarModel::CollectionTitle );
     selection->setDynamicSortFilter( true );
     if ( calendar() ) {
       selection->setSourceModel( calendar()->treeModel() );
@@ -603,7 +603,7 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
 
     QItemSelectionModel *qsm = new QItemSelectionModel( selection, selection );
     selection->setSelectionModel( qsm );
-    EntityModelStateSaver *saver = new EntityModelStateSaver( selection, selection );
+    CalendarSupport::EntityModelStateSaver *saver = new CalendarSupport::EntityModelStateSaver( selection, selection );
     saver->addRole( Qt::CheckStateRole, "CheckState" );
     saver->restoreConfig( g );
     mCollectionSelectionModels[i] = selection;
@@ -620,12 +620,12 @@ void MultiAgendaView::doSaveConfig( KConfigGroup &configGroup )
   const QStringList titleList = mCustomColumnTitles.toList();
   configGroup.writeEntry( "ColumnTitles", titleList );
   int idx = 0;
-  Q_FOREACH ( CollectionSelectionProxyModel *i, mCollectionSelectionModels ) {
+  Q_FOREACH ( CalendarSupport::CollectionSelectionProxyModel *i, mCollectionSelectionModels ) {
     KConfigGroup g = configGroup.config()->group( configGroup.name() +
                                                   "_subView_" +
                                                   QByteArray::number( idx ) );
     ++idx;
-    EntityModelStateSaver saver( i );
+    CalendarSupport::EntityModelStateSaver saver( i );
     saver.addRole( Qt::CheckStateRole, "CheckState" );
     saver.saveConfig( g );
   }
@@ -642,10 +642,10 @@ class MultiAgendaViewConfigDialog::Private
     ~Private() { qDeleteAll( newlyCreated ); }
 
     void setUpColumns( int n );
-    AkonadiCollectionView *createView( CollectionSelectionProxyModel *model );
+    AkonadiCollectionView *createView( CalendarSupport::CollectionSelectionProxyModel *model );
     AkonadiCollectionView *view( int index ) const;
-    QVector<CollectionSelectionProxyModel*> newlyCreated;
-    QVector<CollectionSelectionProxyModel*> selections;
+    QVector<CalendarSupport::CollectionSelectionProxyModel*> newlyCreated;
+    QVector<CalendarSupport::CollectionSelectionProxyModel*> selections;
     QVector<QString> titles;
     Ui::MultiAgendaViewConfigWidget ui;
     QStandardItemModel listModel;
@@ -706,7 +706,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on )
 }
 
 AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
-  CollectionSelectionProxyModel *model )
+  CalendarSupport::CollectionSelectionProxyModel *model )
 {
   AkonadiCollectionView *cview = new AkonadiCollectionView( 0, q );
   cview->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
@@ -728,7 +728,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       ui.selectionStack->removeWidget( w );
       delete w;
       qDeleteAll( listModel.takeRow( i ) );
-      CollectionSelectionProxyModel *const m = selections[i];
+      CalendarSupport::CollectionSelectionProxyModel *const m = selections[i];
       selections.remove( i );
       const int pos = newlyCreated.indexOf( m );
       if ( pos != -1 ) {
@@ -748,7 +748,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       item->setText( titles[i] );
       item->setData( i, Qt::UserRole );
       listModel.appendRow( item );
-      CollectionSelectionProxyModel *selection = new CollectionSelectionProxyModel;
+      CalendarSupport::CollectionSelectionProxyModel *selection = new CalendarSupport::CollectionSelectionProxyModel;
       selection->setDynamicSortFilter( true );
       selection->setSourceModel( baseModel );
       QItemSelectionModel *qsm = new QItemSelectionModel( selection, selection );
@@ -787,13 +787,13 @@ void MultiAgendaViewConfigDialog::setNumberOfColumns( int n )
   d->setUpColumns( n );
 }
 
-CollectionSelectionProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel( int column )
+CalendarSupport::CollectionSelectionProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel( int column )
 {
   if ( column < 0 || column >= d->selections.size() ) {
     return 0;
   }
 
-  CollectionSelectionProxyModel *const m = d->selections[column];
+  CalendarSupport::CollectionSelectionProxyModel *const m = d->selections[column];
   d->newlyCreated.erase( std::remove( d->newlyCreated.begin(),
                                       d->newlyCreated.end(), m ),
                          d->newlyCreated.end() );
@@ -806,11 +806,11 @@ AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::view( int index ) c
 }
 
 void MultiAgendaViewConfigDialog::setSelectionModel( int column,
-                                                     CollectionSelectionProxyModel *model )
+                                                     CalendarSupport::CollectionSelectionProxyModel *model )
 {
   Q_ASSERT( column >= 0 && column < d->selections.size() );
 
-  CollectionSelectionProxyModel *const m = d->selections[column];
+  CalendarSupport::CollectionSelectionProxyModel *const m = d->selections[column];
   if ( m == model ) {
     return;
   }

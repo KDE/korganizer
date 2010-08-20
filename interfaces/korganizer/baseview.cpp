@@ -22,13 +22,13 @@
 
 #include "baseview.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/calendarmodel.h>
-#include <akonadi/kcal/calendarsearch.h>
-#include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/collectionselectionproxymodel.h>
-#include <akonadi/kcal/entitymodelstatesaver.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/calendarmodel.h>
+#include <calendarsupport/calendarsearch.h>
+#include <calendarsupport/collectionselection.h>
+#include <calendarsupport/collectionselectionproxymodel.h>
+#include <calendarsupport/entitymodelstatesaver.h>
+#include <calendarsupport/utils.h>
 
 #include <QItemSelectionModel>
 
@@ -38,7 +38,7 @@
 #include <QVBoxLayout>
 #include <Akonadi/EntityTreeView>
 
-using namespace Akonadi;
+using namespace CalendarSupport;
 using namespace KOrg;
 
 CollectionSelection* BaseView::sGlobalCollectionSelection = 0;
@@ -85,7 +85,7 @@ class BaseView::Private
     }
 
     bool mPendingChanges;
-    Akonadi::Calendar *calendar;
+    Calendar *calendar;
     CalendarSearch *calendarSearch;
     CollectionSelection *customCollectionSelection;
     CollectionSelectionProxyModel* collectionSelectionModel;
@@ -148,7 +148,7 @@ BaseView::~BaseView()
   delete d;
 }
 
-void BaseView::setCalendar( Akonadi::Calendar *cal )
+void BaseView::setCalendar( Calendar *cal )
 {
   if ( d->calendar == cal )
     return;
@@ -162,12 +162,12 @@ CalPrinterBase::PrintType BaseView::printType()
   return CalPrinterBase::Month;
 }
 
-Akonadi::Calendar *BaseView::calendar()
+Calendar *BaseView::calendar()
 {
   return d->calendar;
 }
 
-Akonadi::CalendarSearch* BaseView::calendarSearch() const
+CalendarSearch* BaseView::calendarSearch() const
 {
   return d->calendarSearch;
 }
@@ -304,7 +304,7 @@ CollectionSelection* BaseView::collectionSelection() const
   return d->customCollectionSelection ? d->customCollectionSelection : globalCollectionSelection();
 }
 
-void BaseView::setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelectionProxyModel* model )
+void BaseView::setCustomCollectionSelectionProxyModel( CollectionSelectionProxyModel* model )
 {
   if ( d->collectionSelectionModel == model )
     return;
@@ -408,18 +408,18 @@ void BaseView::dataChanged( const QModelIndex& topLeft, const QModelIndex& botto
 {
   Q_ASSERT( topLeft.parent() == bottomRight.parent() );
 
-  incidencesChanged( Akonadi::itemsFromModel( d->calendarSearch->model(), topLeft.parent(),
+  incidencesChanged( itemsFromModel( d->calendarSearch->model(), topLeft.parent(),
                      topLeft.row(), bottomRight.row() ) );
 }
 
 void BaseView::rowsInserted( const QModelIndex& parent, int start, int end )
 {
-  incidencesAdded( Akonadi::itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
+  incidencesAdded( itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
 }
 
 void BaseView::rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end )
 {
-  incidencesAboutToBeRemoved( Akonadi::itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
+  incidencesAboutToBeRemoved( itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
 }
 
 void BaseView::setFilter( KCalCore::CalFilter *filter )

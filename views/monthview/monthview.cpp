@@ -32,9 +32,9 @@
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/calendarsearch.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/calendarsearch.h>
+#include <calendarsupport/utils.h>
 
 #include <kcalcore/incidence.h>
 
@@ -46,7 +46,6 @@
 #include <QDate>
 #include <QTimer>
 
-using namespace Akonadi;
 using namespace KOrg;
 
 MonthView::MonthView( QWidget *parent )
@@ -123,17 +122,18 @@ MonthView::MonthView( QWidget *parent )
   mSelectedItemId = -1;
 }
 
-void MonthView::updateConfig() {
-  CalendarSearch::IncidenceTypes types;
+void MonthView::updateConfig()
+{
+  CalendarSupport::CalendarSearch::IncidenceTypes types;
   if ( KOPrefs::instance()->showTodosMonthView() ) {
-    types |= CalendarSearch::Todos;
+    types |= CalendarSupport::CalendarSearch::Todos;
   }
 
   if ( KOPrefs::instance()->showJournalsMonthView() ) {
-    types |= CalendarSearch::Journals;
+    types |= CalendarSupport::CalendarSearch::Journals;
   }
 
-  types |= CalendarSearch::Events;
+  types |= CalendarSupport::CalendarSearch::Events;
   calendarSearch()->setIncidenceTypes( types );
 
   mScene->update();
@@ -198,13 +198,13 @@ bool MonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &a
   return false;
 }
 
-void MonthView::showIncidences( const Item::List &incidenceList, const QDate &date )
+void MonthView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
 }
 
-void MonthView::changeIncidenceDisplay( const Item &incidence, int action )
+void MonthView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
 {
   Q_UNUSED( incidence );
   Q_UNUSED( action );
@@ -218,7 +218,7 @@ void MonthView::changeIncidenceDisplay( const Item &incidence, int action )
   QTimer::singleShot( 0, this, SLOT(reloadIncidences()) );
 }
 
-void MonthView::addIncidence( const Item &incidence )
+void MonthView::addIncidence( const Akonadi::Item &incidence )
 {
   Q_UNUSED( incidence );
   //TODO: add some more intelligence here...
@@ -356,11 +356,11 @@ void MonthView::reloadIncidences()
   }
 
   // build global event list
-  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
-  const Item::List incidences = Akonadi::itemsFromModel( calendarSearch()->model() );
+  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
+  const Akonadi::Item::List incidences = CalendarSupport::itemsFromModel( calendarSearch()->model() );
 
-  foreach ( const Item &aitem, incidences ) {
-    const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  foreach ( const Akonadi::Item &aitem, incidences ) {
+    const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
 
     DateTimeList dateTimeList;
 
@@ -371,7 +371,7 @@ void MonthView::reloadIncidences()
     } else {
       KDateTime dateToAdd;
 
-      if ( Todo::Ptr todo = Akonadi::todo( aitem ) ) {
+      if ( Todo::Ptr todo = CalendarSupport::todo( aitem ) ) {
         if ( todo->hasDueDate() ) {
           dateToAdd = todo->dtDue();
         }
@@ -450,27 +450,27 @@ void MonthView::calendarReset()
   triggerDelayedReload();
 }
 
-void MonthView::incidencesAdded( const Item::List &incidences )
+void MonthView::incidencesAdded( const Akonadi::Item::List &incidences )
 {
-  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
-  Q_FOREACH ( const Item &i, incidences ) {
-    kDebug() << "item added: " << Akonadi::incidence( i )->summary();
+  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
+  Q_FOREACH ( const Akonadi::Item &i, incidences ) {
+    kDebug() << "item added: " << CalendarSupport::incidence( i )->summary();
   }
   triggerDelayedReload();
 }
 
-void MonthView::incidencesAboutToBeRemoved( const Item::List &incidences )
+void MonthView::incidencesAboutToBeRemoved( const Akonadi::Item::List &incidences )
 {
-  Q_FOREACH ( const Item &i, incidences ) {
-    kDebug() << "item removed: " << Akonadi::incidence( i )->summary();
+  Q_FOREACH ( const Akonadi::Item &i, incidences ) {
+    kDebug() << "item removed: " << CalendarSupport::incidence( i )->summary();
   }
   triggerDelayedReload();
 }
 
-void MonthView::incidencesChanged( const Item::List &incidences )
+void MonthView::incidencesChanged( const Akonadi::Item::List &incidences )
 {
-  Q_FOREACH ( const Item &i, incidences ) {
-    kDebug() << "item changed: " << Akonadi::incidence( i )->summary();
+  Q_FOREACH ( const Akonadi::Item &i, incidences ) {
+    kDebug() << "item changed: " << CalendarSupport::incidence( i )->summary();
   }
   triggerDelayedReload();
 }

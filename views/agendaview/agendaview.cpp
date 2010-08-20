@@ -17,14 +17,14 @@
 */
 
 #include "agendaview.h"
-#include <akonadi/kcal/calendar.h>
+#include <calendarsupport/calendar.h>
 
 using namespace KOrg;
 
 AgendaView::AgendaView( QWidget *parent )
   : KOEventView( parent )
 {
-  //Akonadi::Calendar *calres = dynamic_cast<Akonadi::Calendar *>( cal );
+  //CalendarSupport::Calendar *calres = dynamic_cast<CalendarSupport::Calendar *>( cal );
 }
 
 #include "agendaview.moc"

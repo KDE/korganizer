@@ -30,16 +30,15 @@
 #include "koglobals.h"
 #include "koeventview.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 #include <kcalcore/incidence.h>
-#include <kcalprefs.h>
 #include <kmimetypetrader.h>
 #include <KActionCollection>
 #include <KLocale>
 
-using namespace Akonadi;
 using namespace KCalCore;
 
 KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
@@ -98,7 +97,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   mCurrentIncidence = item;
   mCurrentDate = qd;
 
-  if ( !Akonadi::hasIncidence( mCurrentIncidence ) /*&& qd.isValid()*/ ) {
+  if ( !CalendarSupport::hasIncidence( mCurrentIncidence ) /*&& qd.isValid()*/ ) {
     kDebug() << "No event selected";
     return;
   }
@@ -107,10 +106,10 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
       return;
   const bool hasChangeRights = mEventview->calendar()->hasChangeRights( mCurrentIncidence );
 
-  Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
+  Incidence::Ptr incidence = CalendarSupport::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
   if ( incidence->recurs() ) {
-    KDateTime thisDateTime( qd, KCalPrefs::instance()->timeSpec() );
+    KDateTime thisDateTime( qd, CalendarSupport::KCalPrefs::instance()->timeSpec() );
     bool isLastOccurrence =
       !incidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
     bool isFirstOccurrence =
@@ -137,14 +136,14 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
 
 void KOEventPopupMenu::popupShow()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit showIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupEdit()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit editIncidenceSignal( mCurrentIncidence );
   }
 }
@@ -177,21 +176,21 @@ void KOEventPopupMenu::printPreview()
 
 void KOEventPopupMenu::popupDelete()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit deleteIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupCut()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit cutIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupCopy()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit copyIncidenceSignal( mCurrentIncidence );
   }
 }
@@ -203,14 +202,14 @@ void KOEventPopupMenu::popupPaste()
 
 void KOEventPopupMenu::toggleAlarm()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit toggleAlarmSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::dissociateOccurrences()
 {
-  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     emit dissociateOccurrencesSignal( mCurrentIncidence, mCurrentDate );
   }
 }
@@ -218,7 +217,7 @@ void KOEventPopupMenu::dissociateOccurrences()
 void KOEventPopupMenu::forward()
 {
   KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
-  if ( !w || !Akonadi::hasIncidence( mCurrentIncidence ) ) {
+  if ( !w || !CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
     return;
   }
 
@@ -233,7 +232,7 @@ void KOEventPopupMenu::forward()
 
 void KOEventPopupMenu::toggleTodoCompleted()
 {
-  if ( Akonadi::hasTodo( mCurrentIncidence ) ) {
+  if ( CalendarSupport::hasTodo( mCurrentIncidence ) ) {
     emit toggleTodoCompletedSignal( mCurrentIncidence );
   }
 }

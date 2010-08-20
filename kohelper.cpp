@@ -25,15 +25,14 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <kcalprefs.h>
+#include <calendarsupport/kcalprefs.h>
 
+#include <Akonadi/Collection>
 #include <Akonadi/Item>
 
 #include <KMessageBox>
 
 #include <QDate>
-
-using namespace Akonadi;
 
 QColor KOHelper::getTextColor( const QColor &c )
 {
@@ -41,21 +40,25 @@ QColor KOHelper::getTextColor( const QColor &c )
   return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
 }
 
-QColor KOHelper::resourceColor( const Collection &coll ) {
-  if ( !coll.isValid() )
+QColor KOHelper::resourceColor( const Akonadi::Collection &coll )
+{
+  if ( !coll.isValid() ) {
     return QColor();
+  }
+
   const QString id = QString::number( coll.id() );
   return KOPrefs::instance()->resourceColor( id );
 }
 
-QColor KOHelper::resourceColor( const Item &item ) {
-  if ( !item.isValid() )
+QColor KOHelper::resourceColor( const Akonadi::Item &item )
+{
+  if ( !item.isValid() ) {
     return QColor();
+  }
+
   const QString id = QString::number( item.storageCollectionId() );
   return KOPrefs::instance()->resourceColor( id );
 }
-
-
 
 int KOHelper::yearDiff( const QDate &start, const QDate &end )
 {
@@ -64,7 +67,7 @@ int KOHelper::yearDiff( const QDate &start, const QDate &end )
 
 bool KOHelper::isStandardCalendar( const Akonadi::Entity::Id &id )
 {
-  return id == KCalPrefs::instance()->defaultCalendarId();
+  return id == CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
 }
 
 

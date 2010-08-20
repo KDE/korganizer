@@ -24,13 +24,14 @@
 */
 
 #include "koprefsdialog.h"
-#include <kcalprefs.h>
 #include "kocore.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
 #include "ui_accountscalendarwidget.h"
 #include "categoryconfig.h"
+
+#include <calendarsupport/kcalprefs.h>
 
 #include <libkdepim/ktimeedit.h>
 
@@ -101,7 +102,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
                      i18nc( "@title:tab personal settings", "Personal" ) );
 
   KPrefsWidBool *emailControlCenter =
-    addWidBool( KCalPrefs::instance()->emailControlCenterItem(), personalFrame );
+    addWidBool( CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(), personalFrame );
   connect( emailControlCenter->checkBox(), SIGNAL(toggled(bool)), SLOT(toggleEmailSettings(bool)) );
   personalLayout->addWidget( emailControlCenter->checkBox() );
 
@@ -110,10 +111,10 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   personalLayout->addWidget( mUserEmailSettings );
   QFormLayout *emailSettingsLayout = new QFormLayout( mUserEmailSettings );
-  KPrefsWidString *s = addWidString( KCalPrefs::instance()->userNameItem(), mUserEmailSettings );
+  KPrefsWidString *s = addWidString( CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings );
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
-  s=addWidString( KCalPrefs::instance()->userEmailItem(), mUserEmailSettings );
+  s=addWidString( CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings );
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   KPrefsWidRadios *defaultEmailAttachMethod =
@@ -280,8 +281,8 @@ void KOPrefsDialogMain::toggleEmailSettings( bool on )
     mNameEdit->setText( settings.getSetting(KEMailSettings::RealName) );
     mEmailEdit->setText( settings.getSetting(KEMailSettings::EmailAddress) );
   } else {
-    mNameEdit->setText( KCalPrefs::instance()->mName );
-    mEmailEdit->setText( KCalPrefs::instance()->mEmail );
+    mNameEdit->setText( CalendarSupport::KCalPrefs::instance()->mName );
+    mEmailEdit->setText( CalendarSupport::KCalPrefs::instance()->mEmail );
   }*/
 }
 
@@ -439,12 +440,12 @@ class KOPrefsDialogTime : public KPrefsModule
       QGridLayout *timesLayout = new QGridLayout( timesGroupBox );
 
       KPrefsWidTime *defaultTime =
-        addWidTime( KCalPrefs::instance()->startTimeItem(), defaultPage );
+        addWidTime( CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage );
       timesLayout->addWidget( defaultTime->label(), 0, 0 );
       timesLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
 
       KPrefsWidDuration *defaultDuration =
-        addWidDuration( KCalPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
+        addWidDuration( CalendarSupport::KCalPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
 
       timesLayout->addWidget( defaultDuration->label(), 1, 0 );
       timesLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
@@ -458,18 +459,18 @@ class KOPrefsDialogTime : public KPrefsModule
       QLabel *reminderLabel =
         new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
       remindersLayout->addWidget( reminderLabel, 0, 0 );
-      reminderLabel->setWhatsThis( KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
+      reminderLabel->setWhatsThis( CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin  = new KIntSpinBox( defaultPage );
-      mReminderTimeSpin->setWhatsThis( KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
-      mReminderTimeSpin->setToolTip( KCalPrefs::instance()->reminderTimeItem()->toolTip() );
+      mReminderTimeSpin->setWhatsThis( CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
+      mReminderTimeSpin->setToolTip( CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip() );
       connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
       remindersLayout->addWidget( mReminderTimeSpin, 0, 1 );
 
       mReminderUnitsCombo = new KComboBox( defaultPage );
       mReminderUnitsCombo->setToolTip(
-        KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip() );
+        CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip() );
       mReminderUnitsCombo->setWhatsThis(
-        KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis() );
+        CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis() );
       connect( mReminderUnitsCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
       mReminderUnitsCombo->addItem(
         i18nc( "@item:inlistbox reminder units in minutes", "minute(s)" ) );
@@ -479,16 +480,16 @@ class KOPrefsDialogTime : public KPrefsModule
         i18nc( "@item:inlistbox reminder time units in days", "day(s)" ) );
       remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
-      QCheckBox *cb = addWidBool( KCalPrefs::instance()->defaultAudioFileRemindersItem() )->checkBox();
+      QCheckBox *cb = addWidBool( CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem() )->checkBox();
       cb->setText( QString::null );
 
-      if ( KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
+      if ( CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
         QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", "KDE-Sys-Warning.ogg");
-        KCalPrefs::instance()->audioFilePathItem()->setValue( defAudioFile + "KDE-Sys-Warning.ogg"  );
+        CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue( defAudioFile + "KDE-Sys-Warning.ogg"  );
       }
       QString filter = i18n( "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
                              "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)" );
-      KUrlRequester *rq = addWidPath( KCalPrefs::instance()->audioFilePathItem(),
+      KUrlRequester *rq = addWidPath( CalendarSupport::KCalPrefs::instance()->audioFilePathItem(),
                                       0, filter )->urlRequester();
       rq->setEnabled( cb->isChecked() );
 
@@ -500,9 +501,9 @@ class KOPrefsDialogTime : public KPrefsModule
 
       remindersLayout->addLayout( audioFileRemindersBox, 1, 0 );
       remindersLayout->addWidget(
-          addWidBool( KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 2, 0 );
+          addWidBool( CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 2, 0 );
       remindersLayout->addWidget(
-          addWidBool( KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 3, 0 );
+          addWidBool( CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 3, 0 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
@@ -511,8 +512,8 @@ class KOPrefsDialogTime : public KPrefsModule
   protected:
     void usrReadConfig()
     {
-      mReminderTimeSpin->setValue( KCalPrefs::instance()->mReminderTime );
-      mReminderUnitsCombo->setCurrentIndex( KCalPrefs::instance()->mReminderTimeUnits );
+      mReminderTimeSpin->setValue( CalendarSupport::KCalPrefs::instance()->mReminderTime );
+      mReminderUnitsCombo->setCurrentIndex( CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits );
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( ( 1 << i ) & ( KOPrefs::instance()->mWorkWeekMask ) );
       }
@@ -522,8 +523,8 @@ class KOPrefsDialogTime : public KPrefsModule
     {
       KOPrefs::instance()->mHolidays = mHolidayCombo->itemData( mHolidayCombo->currentIndex() ).toString();
 
-      KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
-      KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
+      CalendarSupport::KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
+      CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
         if ( mWorkDays[i]->isChecked() ) {
@@ -532,7 +533,7 @@ class KOPrefsDialogTime : public KPrefsModule
       }
       KOPrefs::instance()->mWorkWeekMask = mask;
       KOPrefs::instance()->writeConfig();
-      KCalPrefs::instance()->writeConfig();
+      CalendarSupport::KCalPrefs::instance()->writeConfig();
     }
 
     void setCombo( KComboBox *combo, const QString &text, const QStringList *tags = 0 )
@@ -1010,11 +1011,11 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   topLayout->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidBool *useGroupwareBool =
-    addWidBool( KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
+    addWidBool( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
   topLayout->addWidget( useGroupwareBool->checkBox(), 0, 0, 1, 2 );
 
   KPrefsWidBool *bcc =
-    addWidBool( KCalPrefs::instance()->bccItem(), topFrame );
+    addWidBool( CalendarSupport::KCalPrefs::instance()->bccItem(), topFrame );
   topLayout->addWidget( bcc->checkBox(), 1, 0, 1, 2 );
 
   QLabel *aTransportLabel = new QLabel(
@@ -1084,8 +1085,8 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
 void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
   mAMails->clear();
-  QStringList::const_iterator begin( KCalPrefs::instance()->mAdditionalMails.constBegin() );
-  QStringList::const_iterator end( KCalPrefs::instance()->mAdditionalMails.constEnd() );
+  QStringList::const_iterator begin( CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constBegin() );
+  QStringList::const_iterator end( CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constEnd() );
   for ( QStringList::const_iterator it = begin; it != end; ++it ) {
     new QListWidgetItem(( *it ), mAMails);
   }
@@ -1093,10 +1094,10 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
 
 void KOPrefsDialogGroupScheduling::usrWriteConfig()
 {
-  KCalPrefs::instance()->mAdditionalMails.clear();
+  CalendarSupport::KCalPrefs::instance()->mAdditionalMails.clear();
 
   for ( int i = 0; i<mAMails->count(); ++i ) {
-    KCalPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
+    CalendarSupport::KCalPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
   }
 }
 
@@ -1173,7 +1174,7 @@ extern "C"
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KComponentData &inst,
                                                                     QWidget *parent )
-  : KPrefsModule( KCalPrefs::instance(), inst, parent )
+  : KPrefsModule( CalendarSupport::KCalPrefs::instance(), inst, parent )
 {
   mGroupwarePage = new Ui::KOGroupwarePrefsPage();
   QWidget *widget = new QWidget( this );
@@ -1226,68 +1227,68 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
 void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
   mGroupwarePage->publishEnable->setChecked(
-    KCalPrefs::instance()->mFreeBusyPublishAuto );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishAuto );
   mGroupwarePage->publishDelay->setValue(
-    KCalPrefs::instance()->mFreeBusyPublishDelay );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDelay );
   mGroupwarePage->publishDays->setValue(
-    KCalPrefs::instance()->mFreeBusyPublishDays );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDays );
   mGroupwarePage->publishUrl->setText(
-    KCalPrefs::instance()->mFreeBusyPublishUrl );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUrl );
   mGroupwarePage->publishUser->setText(
-    KCalPrefs::instance()->mFreeBusyPublishUser );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUser );
   mGroupwarePage->publishPassword->setText(
-    KCalPrefs::instance()->mFreeBusyPublishPassword );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishPassword );
   mGroupwarePage->publishSavePassword->setChecked(
-    KCalPrefs::instance()->mFreeBusyPublishSavePassword );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishSavePassword );
 
   mGroupwarePage->retrieveEnable->setChecked(
-    KCalPrefs::instance()->mFreeBusyRetrieveAuto );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveAuto );
   mGroupwarePage->fullDomainRetrieval->setChecked(
-    KCalPrefs::instance()->mFreeBusyFullDomainRetrieval );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyFullDomainRetrieval );
   mGroupwarePage->retrieveUrl->setText(
-    KCalPrefs::instance()->mFreeBusyRetrieveUrl );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUrl );
   mGroupwarePage->retrieveUser->setText(
-    KCalPrefs::instance()->mFreeBusyRetrieveUser );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUser );
     mGroupwarePage->retrievePassword->setText(
-    KCalPrefs::instance()->mFreeBusyRetrievePassword );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrievePassword );
   mGroupwarePage->retrieveSavePassword->setChecked(
-    KCalPrefs::instance()->mFreeBusyRetrieveSavePassword );
+    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveSavePassword );
 }
 
 void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
-  KCalPrefs::instance()->mFreeBusyPublishAuto =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishAuto =
     mGroupwarePage->publishEnable->isChecked();
-  KCalPrefs::instance()->mFreeBusyPublishDelay =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDelay =
     mGroupwarePage->publishDelay->value();
-  KCalPrefs::instance()->mFreeBusyPublishDays =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDays =
     mGroupwarePage->publishDays->value();
-  KCalPrefs::instance()->mFreeBusyPublishUrl =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUrl =
     mGroupwarePage->publishUrl->text();
-  KCalPrefs::instance()->mFreeBusyPublishUser =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUser =
     mGroupwarePage->publishUser->text();
-  KCalPrefs::instance()->mFreeBusyPublishPassword =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishPassword =
     mGroupwarePage->publishPassword->text();
-  KCalPrefs::instance()->mFreeBusyPublishSavePassword =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishSavePassword =
     mGroupwarePage->publishSavePassword->isChecked();
 
-  KCalPrefs::instance()->mFreeBusyRetrieveAuto =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveAuto =
     mGroupwarePage->retrieveEnable->isChecked();
-  KCalPrefs::instance()->mFreeBusyFullDomainRetrieval =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyFullDomainRetrieval =
     mGroupwarePage->fullDomainRetrieval->isChecked();
-  KCalPrefs::instance()->mFreeBusyRetrieveUrl =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUrl =
     mGroupwarePage->retrieveUrl->text();
-  KCalPrefs::instance()->mFreeBusyRetrieveUser =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUser =
     mGroupwarePage->retrieveUser->text();
-  KCalPrefs::instance()->mFreeBusyRetrievePassword =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrievePassword =
     mGroupwarePage->retrievePassword->text();
-  KCalPrefs::instance()->mFreeBusyRetrieveSavePassword =
+  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveSavePassword =
     mGroupwarePage->retrieveSavePassword->isChecked();
 
   // clear the url cache for our user
   const QString configFile = KStandardDirs::locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
-  cfg.deleteGroup( KCalPrefs::instance()->email() );
+  cfg.deleteGroup( CalendarSupport::KCalPrefs::instance()->email() );
 }
 
 extern "C"
@@ -1620,13 +1621,13 @@ QString KOPrefsDesignerFields::uiPath()
 
 void KOPrefsDesignerFields::writeActivePages( const QStringList &activePages )
 {
-  KCalPrefs::instance()->setActiveDesignerFields( activePages );
-  KCalPrefs::instance()->writeConfig();
+  CalendarSupport::KCalPrefs::instance()->setActiveDesignerFields( activePages );
+  CalendarSupport::KCalPrefs::instance()->writeConfig();
 }
 
 QStringList KOPrefsDesignerFields::readActivePages()
 {
-  return KCalPrefs::instance()->activeDesignerFields();
+  return CalendarSupport::KCalPrefs::instance()->activeDesignerFields();
 }
 
 QString KOPrefsDesignerFields::applicationName()

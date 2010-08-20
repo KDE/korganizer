@@ -30,7 +30,7 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <akonadi/kcal/calendar.h>
+#include <calendarsupport/calendar.h>
 
 #include <klocale.h>
 #include <kdebug.h>

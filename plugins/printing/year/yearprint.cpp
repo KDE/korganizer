@@ -24,8 +24,6 @@
 
 #include "yearprint.h"
 
-#include <akonadi/kcal/calendar.h>
-
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kcalendarsystem.h>

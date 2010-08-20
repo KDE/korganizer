@@ -28,8 +28,8 @@
 #include "korganizerinterface.h"
 
 #include <akonadi/item.h>
-#include <akonadi/kcal/incidenceviewer.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/incidenceviewer.h>
+#include <calendarsupport/utils.h>
 
 #include <KDE/KLocale>
 #include <ktoolinvocation.h>
@@ -42,7 +42,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   setModal( false );
   setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( "document-edit" ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
-  mEventViewer = new Akonadi::IncidenceViewer( this );
+  mEventViewer = new CalendarSupport::IncidenceViewer( this );
   setMainWidget( mEventViewer );
 
   resize( QSize(500, 520).expandedTo(minimumSizeHint()) );
@@ -71,7 +71,7 @@ void KOEventViewerDialog::editIncidence()
 {
   const Akonadi::Item item = mEventViewer->item();
 
-  if ( Akonadi::hasIncidence( item ) ) {
+  if ( CalendarSupport::hasIncidence( item ) ) {
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
@@ -85,7 +85,7 @@ void KOEventViewerDialog::showIncidenceContext()
 {
   const Akonadi::Item item = mEventViewer->item();
 
-  if ( Akonadi::hasIncidence( item ) ) {
+  if ( CalendarSupport::hasIncidence( item ) ) {
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 

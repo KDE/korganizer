@@ -29,8 +29,8 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
-#include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/utils.h>
+#include <calendarsupport/incidencechanger.h>
 
 #include <Akonadi/Item>
 
@@ -44,7 +44,6 @@
 
 #define AUTO_REPEAT_DELAY  600
 
-using namespace Akonadi;
 using namespace KOrg;
 
 MonthScene::MonthScene( MonthView *parent )
@@ -372,7 +371,7 @@ void MonthScene::resetAll()
   mClickedItem = 0;
 }
 
-Akonadi::IncidenceChanger *MonthScene::incidenceChanger() const
+CalendarSupport::IncidenceChanger *MonthScene::incidenceChanger() const
 {
   return mMonthView->mChanger;
 }
@@ -701,12 +700,12 @@ void MonthScene::selectItem( MonthItem *item )
 
   if ( !tmp ) {
     mSelectedItem = 0;
-    emit incidenceSelected( Item(), QDate() );
+    emit incidenceSelected( Akonadi::Item(), QDate() );
     return;
   }
 
   mSelectedItem = item;
-  Q_ASSERT( Akonadi::hasIncidence( tmp->incidence() ) );
+  Q_ASSERT( CalendarSupport::hasIncidence( tmp->incidence() ) );
 
   if ( mMonthView && mMonthView->selectedIncidenceDates().isEmpty() ) {
     emit incidenceSelected( tmp->incidence(), QDate() );

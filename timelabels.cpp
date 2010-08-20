@@ -25,11 +25,12 @@
 */
 
 #include "timelabels.h"
-#include <kcalprefs.h>
 #include "timelabelszone.h"
 #include "timescaleconfigdialog.h"
 #include "koprefs.h"
 #include "views/agendaview/koagenda.h"
+
+#include <calendarsupport/kcalprefs.h>
 
 #include <KIcon>
 
@@ -123,7 +124,7 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
     beginning = 0;
   } else {
     beginning = ( mSpec.timeZone().currentOffset() -
-                  KCalPrefs::instance()->timeSpec().timeZone().currentOffset() ) / ( 60 * 60 );
+                  CalendarSupport::KCalPrefs::instance()->timeSpec().timeZone().currentOffset() ) / ( 60 * 60 );
   }
 
   p->setBrush( palette().window() ); // TODO: theming, see if we want sth here...
@@ -323,7 +324,7 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
                      i18n( "&Remove Timezone %1", mSpec.timeZone().name() ) );
   if ( !mSpec.isValid() ||
        !KOPrefs::instance()->timeScaleTimezones().count() ||
-       mSpec == KCalPrefs::instance()->timeSpec() ) {
+       mSpec == CalendarSupport::KCalPrefs::instance()->timeSpec() ) {
     removeTimeZone->setEnabled( false );
   }
 

@@ -13,7 +13,7 @@ kde4_add_plugin(korg_journalprint ${korg_journalprint_PART_SRCS})
 
 
 
-target_link_libraries(korg_journalprint  ${KDE4_KDEUI_LIBS} korganizerprivate kdepim akonadi-kcal_next)
+target_link_libraries(korg_journalprint  ${KDE4_KDEUI_LIBS} korganizerprivate kdepim calendarsupport)
 
 install(TARGETS korg_journalprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 

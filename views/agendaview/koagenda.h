@@ -25,9 +25,10 @@
 #define KOAGENDA_H
 
 #include "koeventview.h"
-#include <kcalcore/incidence.h>
 
 #include <Akonadi/Item>
+
+#include <KCalCore/Todo>
 
 #include <q3scrollview.h>
 #include <QFrame>
@@ -48,18 +49,11 @@ class QResizeEvent;
 class QTime;
 class QWheelEvent;
 
-namespace Akonadi
-{
+namespace CalendarSupport {
   class Calendar;
 }
 
 using namespace KOrg;
-
-namespace KCal {
-  class Event;
-  class Todo;
-}
-using namespace KCalCore;
 
 class MarcusBains : public QFrame
 {
@@ -151,12 +145,12 @@ class KOAgenda : public Q3ScrollView
 
     void setHolidayMask( QVector<bool> * );
 
-    void setDateList( const DateList &selectedDates );
-    DateList dateList() const;
+    void setDateList( const KCalCore::DateList &selectedDates );
+    KCalCore::DateList dateList() const;
 
-    void setCalendar( Akonadi::Calendar *cal )
+    void setCalendar( CalendarSupport::Calendar *cal )
     { mCalendar = cal; }
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
     { mChanger = changer; }
 
     QList<KOAgendaItem*> agendaItems( const Akonadi::Item &item ) const;
@@ -337,7 +331,7 @@ class KOAgenda : public Q3ScrollView
     bool mAllDayMode;
 
     // We need the calendar for drag'n'drop and for paint the ResourceColor
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
 
     // Width and height of agenda cells. mDesiredGridSpacingY is the height
     // set in the config. The actual height might be larger since otherwise
@@ -378,7 +372,7 @@ class KOAgenda : public Q3ScrollView
     QPoint mSelectionEndCell;
 
     // List of dates to be displayed
-    DateList mSelectedDates;
+    KCalCore::DateList mSelectedDates;
 
     // The KOAgendaItem, which has been right-clicked last
     QPointer<KOAgendaItem> mClickedItem;
@@ -408,7 +402,7 @@ class KOAgenda : public Q3ScrollView
     int mOldUpperScrollValue;
 
     bool mReturnPressed;
-    Akonadi::IncidenceChanger *mChanger;
+    CalendarSupport::IncidenceChanger *mChanger;
 
     KOEventView *mEventView;
 };

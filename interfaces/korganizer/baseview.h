@@ -27,7 +27,7 @@
 
 #include <kcalcore/event.h>
 
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/incidencechanger.h>
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
 
@@ -43,7 +43,7 @@ class QPoint;
 
 class KConfigGroup;
 
-namespace Akonadi {
+namespace CalendarSupport {
   class CalendarSearch;
   class CollectionSelection;
   class CollectionSelectionProxyModel;
@@ -86,13 +86,13 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual ~BaseView();
 
-    virtual void setCalendar( Akonadi::Calendar *cal );
+    virtual void setCalendar( CalendarSupport::Calendar *cal );
     /**
       Return calendar object of this view.
     */
-    virtual Akonadi::Calendar *calendar();
+    virtual CalendarSupport::Calendar *calendar();
 
-    Akonadi::CalendarSearch* calendarSearch() const;
+    CalendarSupport::CalendarSearch* calendarSearch() const;
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -192,14 +192,14 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     void saveConfig( KConfigGroup &configGroup );
 
-    Akonadi::CollectionSelectionProxyModel *takeCustomCollectionSelectionProxyModel();
-    Akonadi::CollectionSelectionProxyModel *customCollectionSelectionProxyModel() const;
-    void setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelectionProxyModel* model );
+    CalendarSupport::CollectionSelectionProxyModel *takeCustomCollectionSelectionProxyModel();
+    CalendarSupport::CollectionSelectionProxyModel *customCollectionSelectionProxyModel() const;
+    void setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model );
 
-    Akonadi::CollectionSelection *customCollectionSelection() const;
+    CalendarSupport::CollectionSelection *customCollectionSelection() const;
 
-    static Akonadi::CollectionSelection* globalCollectionSelection();
-    static void setGlobalCollectionSelection( Akonadi::CollectionSelection* selection );
+    static CalendarSupport::CollectionSelection* globalCollectionSelection();
+    static void setGlobalCollectionSelection( CalendarSupport::CollectionSelection* selection );
 
     /**
      * returns the view at the given widget coordinate. This is usually the view itself,
@@ -248,7 +248,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       Assign a new incidence change helper object.
      */
-    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
     /**
       Write all unsaved data back to calendar store.
@@ -375,7 +375,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
      * returns the selection of collection to be used by this view (custom if set, or global otherwise)
      */
-    Akonadi::CollectionSelection* collectionSelection() const;
+    CalendarSupport::CollectionSelection* collectionSelection() const;
 
     /**
      * sets the kcal filter on the calendarSearch object, this method can be removed from here when
@@ -435,13 +435,13 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end );
 
   protected:
-    Akonadi::IncidenceChanger *mChanger;
+    CalendarSupport::IncidenceChanger *mChanger;
 
   private:
     class Private;
     Private *const d;
     friend class KOrg::BaseView::Private;
-    static Akonadi::CollectionSelection* sGlobalCollectionSelection;
+    static CalendarSupport::CollectionSelection* sGlobalCollectionSelection;
 };
 
 }

@@ -35,23 +35,22 @@
 #include "filtereditdialog.h"
 #include "searchdialog.h"
 
-#include <Akonadi/Item>
-
-#include <kcalcore/visitor.h>
-#include <kcalcore/incidencebase.h>
+#include <calendarsupport/utils.h>
 
 #include <incidenceeditors/journaleditor.h>
 
 #include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditors/incidenceeditor-ng/incidencedialogfactory.h>
 
-#include <akonadi/kcal/utils.h>
+#include <Akonadi/Item>
+
+#include <kcalcore/visitor.h>
+#include <kcalcore/incidencebase.h>
 
 #include <KCMultiDialog>
 #include <KLocale>
 #include <KMessageBox>
 
-using namespace Akonadi;
 using namespace KOrg;
 using namespace KPIM;
 using namespace KCalCore;
@@ -210,7 +209,7 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
 
 IncidenceEditorsNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi::Item& item )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( item );
+  const Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     return 0;
   }
@@ -221,9 +220,9 @@ IncidenceEditorsNG::IncidenceDialog *KODialogManager::createDialog( const Akonad
 }
 
 // TODO: Get rid of this when there is an IncidenceDialog based JournalDialog.
-IncidenceEditor *KODialogManager::getEditor( const Item &item )
+IncidenceEditor *KODialogManager::getEditor( const Akonadi::Item &item )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( item );
+  const Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     return 0;
   }

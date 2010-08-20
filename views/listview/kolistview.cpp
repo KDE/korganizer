@@ -30,8 +30,8 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/utils.h>
 
 #include <kcalutils/incidenceformatter.h>
 #include <kcalcore/todo.h>
@@ -43,7 +43,6 @@
 #include <QBoxLayout>
 #include <QStyle>
 
-using namespace Akonadi;
 using namespace KOrg;
 using namespace KCalUtils;
 
@@ -137,16 +136,16 @@ bool KOListView::ListItemVisitor::visit( Event::Ptr e )
   mItem->setPixmap( Summary_Column, eventPxmp );
 
   mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString(
-                    e->dtStart(), e->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+                    e->dtStart(), e->allDay(), true, CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
 
   mItem->setSortKey( StartDateTime_Column, e->dtStart().toTimeSpec(
-                       KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                       CalendarSupport::KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
 
   mItem->setText( EndDateTime_Column, IncidenceFormatter::dateTimeToString(
-                    e->dtEnd(), e->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+                    e->dtEnd(), e->allDay(), true, CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
 
   mItem->setSortKey( EndDateTime_Column, e->dtEnd().toTimeSpec(
-                       KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                       CalendarSupport::KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
 
   mItem->setText( Categories_Column, e->categoriesStr() );
 
@@ -177,19 +176,19 @@ bool KOListView::ListItemVisitor::visit( Todo::Ptr t )
 
   if ( t->hasStartDate() ) {
     mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString(
-                      t->dtStart(), t->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+                      t->dtStart(), t->allDay(), true, CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( StartDateTime_Column, t->dtStart().toTimeSpec(
-                       KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                       CalendarSupport::KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
   } else {
     mItem->setText( StartDateTime_Column, "---" );
   }
 
   if ( t->hasDueDate() ) {
     mItem->setText( EndDateTime_Column, IncidenceFormatter::dateTimeToString(
-                      t->dtDue(), t->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+                      t->dtDue(), t->allDay(), true, CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
 
     mItem->setSortKey( EndDateTime_Column, t->dtDue().toTimeSpec(
-                         KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
+                         CalendarSupport::KCalPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
   } else {
     mItem->setText( EndDateTime_Column, "---" );
   }
@@ -208,7 +207,7 @@ bool KOListView::ListItemVisitor::visit( Journal::Ptr j )
     mItem->setText( Summary_Column, j->summary() );
   }
   mItem->setText( StartDateTime_Column, IncidenceFormatter::dateTimeToString(
-                  j->dtStart(), j->allDay(), true, KCalPrefs::instance()->timeSpec() ) );
+                  j->dtStart(), j->allDay(), true, CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
 
   mItem->setSortKey( StartDateTime_Column, j->dtStart().toString( KDateTime::ISODate ) );
 
@@ -343,32 +342,32 @@ void KOListView::showDates( const QDate &start, const QDate &end )
     date = date.addDays( 1 );
   }
 
-  emit incidenceSelected( Item(), QDate() );
+  emit incidenceSelected( Akonadi::Item(), QDate() );
 }
 
 void KOListView::showAll()
 {
-  const Item::List incidenceList = calendar()->incidences();
+  const Akonadi::Item::List incidenceList = calendar()->incidences();
   addIncidences( incidenceList, QDate() );
 }
 
-void KOListView::addIncidences( const Item::List &incidenceList, const QDate &date )
+void KOListView::addIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
-  Q_FOREACH ( const Item & i, incidenceList ) {
+  Q_FOREACH ( const Akonadi::Item & i, incidenceList ) {
     addIncidence( i, date );
   }
 }
 
-void KOListView::addIncidence( const Item &aitem, const QDate &date )
+void KOListView::addIncidence( const Akonadi::Item &aitem, const QDate &date )
 {
-  if ( !Akonadi::hasIncidence( aitem ) || mItems.contains( aitem.id() ) ) {
+  if ( !CalendarSupport::hasIncidence( aitem ) || mItems.contains( aitem.id() ) ) {
     return;
   }
 
   mDateList.insert( aitem.id(), date );
   mItems.insert( aitem.id(), aitem );
 
-  Incidence::Ptr tinc = Akonadi::incidence( aitem );
+  Incidence::Ptr tinc = CalendarSupport::incidence( aitem );
 
   if ( tinc->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
        tinc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
@@ -387,41 +386,41 @@ void KOListView::addIncidence( const Item &aitem, const QDate &date )
   }
 }
 
-void KOListView::showIncidences( const Item::List &incidenceList, const QDate &date )
+void KOListView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
   clear();
 
   addIncidences( incidenceList, date );
 
   // After new creation of list view no events are selected.
-  emit incidenceSelected( Item(), date );
+  emit incidenceSelected( Akonadi::Item(), date );
 }
 
-void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
+void KOListView::changeIncidenceDisplay( const Akonadi::Item & aitem, int action )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   KOListViewItem *item;
   QDate f = mSelectedDates.first();
   QDate l = mSelectedDates.last();
 
   QDate date;
-  if ( Akonadi::hasTodo( aitem ) ) {
-    date = Akonadi::todo( aitem )->dtDue().
-           toTimeSpec( KCalPrefs::instance()->timeSpec() ).date();
+  if ( CalendarSupport::hasTodo( aitem ) ) {
+    date = CalendarSupport::todo( aitem )->dtDue().
+           toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).date();
   } else {
     date = incidence->dtStart().
-           toTimeSpec( KCalPrefs::instance()->timeSpec() ).date();
+           toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).date();
   }
 
   switch( action ) {
-  case Akonadi::IncidenceChanger::INCIDENCEADDED:
+  case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
   {
     if ( date >= f && date <= l ) {
       addIncidence( aitem, date );
     }
     break;
   }
-  case Akonadi::IncidenceChanger::INCIDENCEEDITED:
+  case CalendarSupport::IncidenceChanger::INCIDENCEEDITED:
   {
     item = getItemForIncidence( aitem );
     if ( item ) {
@@ -434,7 +433,7 @@ void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
     }
     break;
   }
-  case Akonadi::IncidenceChanger::INCIDENCEDELETED:
+  case CalendarSupport::IncidenceChanger::INCIDENCEDELETED:
   {
     item = getItemForIncidence( aitem );
     if ( item ) {
@@ -447,7 +446,7 @@ void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
   }
 }
 
-KOListViewItem *KOListView::getItemForIncidence( const Item &aitem )
+KOListViewItem *KOListView::getItemForIncidence( const Akonadi::Item &aitem )
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while ( item ) {
@@ -459,9 +458,9 @@ KOListViewItem *KOListView::getItemForIncidence( const Item &aitem )
   return 0;
 }
 
-Incidence::Ptr KOListView::incidenceForId( const Item::Id &id ) const
+Incidence::Ptr KOListView::incidenceForId( const Akonadi::Item::Id &id ) const
 {
-  return Akonadi::incidence( mItems.value( id ) );
+  return CalendarSupport::incidence( mItems.value( id ) );
 }
 
 void KOListView::defaultItemAction( Q3ListViewItem *i )
@@ -476,10 +475,10 @@ void KOListView::popupMenu( Q3ListViewItem *item, const QPoint &, int )
 {
   mActiveItem = static_cast<KOListViewItem *>( item );
   if ( mActiveItem && !mIsNonInteractive ) {
-    const Item aitem = mItems.value( mActiveItem->data() );
+    const Akonadi::Item aitem = mItems.value( mActiveItem->data() );
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
-    mPopupMenu->showIncidencePopup( aitem, Akonadi::incidence( aitem )->dtStart().date() );
+    mPopupMenu->showIncidencePopup( aitem, CalendarSupport::incidence( aitem )->dtStart().date() );
   } else {
     showNewEventPopup();
   }
@@ -501,7 +500,7 @@ void KOListView::processSelectionChange()
     KOListViewItem *item = static_cast<KOListViewItem *>( mListView->selectedItem() );
 
     if ( !item ) {
-      emit incidenceSelected( Item(), QDate() );
+      emit incidenceSelected( Akonadi::Item(), QDate() );
     } else {
       emit incidenceSelected( mItems.value( item->data() ), mDateList.value( item->data() ) );
     }

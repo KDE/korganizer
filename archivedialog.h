@@ -25,7 +25,7 @@
 #ifndef ARCHIVEDIALOG_H
 #define ARCHIVEDIALOG_H
 
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/incidencechanger.h>
 
 #include <kdialog.h>
 
@@ -38,7 +38,7 @@ class QCheckBox;
 namespace KPIM {
 class KDateEdit;
 }
-namespace Akonadi {
+namespace CalendarSupport {
 class Calendar;
 }
 namespace KOrg {
@@ -49,7 +49,7 @@ class ArchiveDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit ArchiveDialog( Akonadi::Calendar *calendar, Akonadi::IncidenceChanger* changer, QWidget *parent=0 );
+    explicit ArchiveDialog( CalendarSupport::Calendar *calendar, CalendarSupport::IncidenceChanger* changer, QWidget *parent=0 );
     virtual ~ArchiveDialog();
 
   signals:
@@ -73,8 +73,8 @@ class ArchiveDialog : public KDialog
     KComboBox *mExpiryUnitsComboBox;
     QCheckBox *mEvents;
     QCheckBox *mTodos;
-    Akonadi::IncidenceChanger *mChanger;
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::IncidenceChanger *mChanger;
+    CalendarSupport::Calendar *mCalendar;
 };
 
 #endif

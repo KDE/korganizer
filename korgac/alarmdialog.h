@@ -29,14 +29,12 @@
 #include <QPoint>
 #include <QTimer>
 
-namespace KCal {
+namespace CalendarSupport {
   class Calendar;
-  class Incidence;
+  class IncidenceViewer;
 }
 
 namespace Akonadi {
-  class Calendar;
-  class IncidenceViewer;
   class Item;
 }
 
@@ -55,7 +53,7 @@ class AlarmDialog : public KDialog
 
   Q_OBJECT
   public:
-    explicit AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent = 0 );
+    explicit AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
     void addIncidence( const Akonadi::Item &incidence, const QDateTime &reminderAt,
@@ -99,10 +97,10 @@ class AlarmDialog : public KDialog
     void updateButtons();
     void showDetails();
 
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
     QVBoxLayout *mTopLayout;
     QTreeWidget *mIncidenceTree;
-    Akonadi::IncidenceViewer *mDetailView;
+    CalendarSupport::IncidenceViewer *mDetailView;
 
     QPoint mPos;
     QSpinBox *mSuspendSpin;

@@ -36,7 +36,7 @@ class KDCanvasPolygon;
 
 using namespace KCalCore;
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
 }
 
@@ -47,7 +47,7 @@ class TimelineItem : public QObject
 {
   Q_OBJECT
   public:
-    TimelineItem( Akonadi::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent );
+    TimelineItem( CalendarSupport::Calendar *calendar, uint index, QStandardItemModel* model, QObject *parent );
 
     void insertIncidence( const Akonadi::Item &incidence,
                           const KDateTime &start = KDateTime(),
@@ -59,7 +59,7 @@ class TimelineItem : public QObject
     void setColor( const QColor& color );
 
   private:
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
     QMap<Akonadi::Item::Id, QList<QStandardItem*> > mItemMap;
     QStandardItemModel *mModel;
     QColor mColor;

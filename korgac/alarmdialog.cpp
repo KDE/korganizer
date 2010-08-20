@@ -28,11 +28,11 @@
 #include "kocore.h"
 #include "korganizer_interface.h"
 
-#include <akonadi/kcal/kcalprefs.h>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/incidenceviewer.h>
-#include <akonadi/kcal/mailclient.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/incidenceviewer.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/mailclient.h>
+#include <calendarsupport/utils.h>
 
 #include <kcalcore/event.h>
 #include <kcalcore/incidence.h>
@@ -42,11 +42,6 @@
 #include <KPIMIdentities/Identity>
 #include <KPIMIdentities/IdentityManager>
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/incidenceviewer.h>
-#include <akonadi/kcal/mailclient.h>
-#include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/calendar.h>
 
 #include <Akonadi/Item>
 
@@ -113,7 +108,7 @@ bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
 
 typedef QList<ReminderListItem *> ReminderList;
 
-AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
+AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   : KDialog( parent, Qt::WindowStaysOnTopHint ),
     mCalendar( calendar ), mSuspendTimer( this )
 {
@@ -202,7 +197,7 @@ AlarmDialog::AlarmDialog( Akonadi::Calendar *calendar, QWidget *parent )
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
 
-  mDetailView = new Akonadi::IncidenceViewer( topBox );
+  mDetailView = new CalendarSupport::IncidenceViewer( topBox );
   QString s;
   s = i18nc( "@info default incidence details string",
              "<emphasis>Select an event or to-do from the list above "
@@ -294,7 +289,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
                                 const QDateTime &reminderAt,
                                 const QString &displayText )
 {
-  Incidence::Ptr incidence = Akonadi::incidence( incidenceitem );
+  Incidence::Ptr incidence = CalendarSupport::incidence( incidenceitem );
   ReminderListItem *item = searchByItem( incidenceitem );
   if ( !item ) {
     item = new ReminderListItem( incidenceitem, mIncidenceTree );
@@ -356,7 +351,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->setText( 2, IncidenceFormatter::dateTimeToString(
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
   QString tip =
-    IncidenceFormatter::toolTipStr( Akonadi::displayName( incidenceitem.parentCollection() ),
+    IncidenceFormatter::toolTipStr( CalendarSupport::displayName( incidenceitem.parentCollection() ),
                                     incidence,
                                     item->mRemindAt.date(), true,
                                     KDateTime::Spec::LocalZone() );
@@ -425,7 +420,7 @@ void AlarmDialog::dismissAll()
 void AlarmDialog::dismiss( ReminderList selections )
 {
   for ( ReminderList::Iterator it = selections.begin(); it != selections.end(); ++it ) {
-    kDebug() << "removing " << Akonadi::incidence( (*it)->mIncidence )->summary();
+    kDebug() << "removing " << CalendarSupport::incidence( (*it)->mIncidence )->summary();
     if ( mIncidenceTree->itemBelow( *it ) ) {
       mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
     } else if ( mIncidenceTree->itemAbove( *it ) ) {
@@ -442,7 +437,7 @@ void AlarmDialog::edit()
   if ( selection.count() != 1 ) {
     return;
   }
-  Incidence::Ptr incidence = Akonadi::incidence( selection.first()->mIncidence );
+  Incidence::Ptr incidence = CalendarSupport::incidence( selection.first()->mIncidence );
   if ( !mCalendar->hasChangeRights( selection.first()->mIncidence ) ) {
     KMessageBox::sorry(
       this,
@@ -650,7 +645,7 @@ void AlarmDialog::eventNotification()
     }
     found = true;
     item->mNotified = true;
-    Incidence::Ptr incidence = Akonadi::incidence( item->mIncidence );
+    Incidence::Ptr incidence = CalendarSupport::incidence( item->mIncidence );
     Alarm::List alarms = incidence->alarms();
     Alarm::List::ConstIterator ait;
     for ( ait = alarms.constBegin(); ait != alarms.constEnd(); ++ait ) {
@@ -677,7 +672,7 @@ void AlarmDialog::eventNotification()
         connect( player, SIGNAL(finished()), player, SLOT(deleteLater()) );
         player->play();
       } else if ( alarm->type() == Alarm::Email ) {
-        QString from = KCalPrefs::instance()->email();
+        QString from = CalendarSupport::KCalPrefs::instance()->email();
         Identity id = KOCore::self()->identityManager()->identityForAddress( from );
         QString to;
         if ( alarm->mailAddresses().isEmpty() ) {
@@ -695,7 +690,7 @@ void AlarmDialog::eventNotification()
         QString subject;
 
         Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( alarm->parentUid() );
-        Incidence::Ptr parent = Akonadi::incidence( parentItem );
+        Incidence::Ptr parent = CalendarSupport::incidence( parentItem );
 
         if ( alarm->mailSubject().isEmpty() ) {
           if ( parent->summary().isEmpty() ) {
@@ -713,7 +708,7 @@ void AlarmDialog::eventNotification()
           body += '\n' + alarm->mailText();
         }
         //TODO: support attachments
-        Akonadi::MailClient mailer;
+        CalendarSupport::MailClient mailer;
         mailer.send( id, from, to, QString(), subject, body, true, false, QString(),
                      MailTransport::TransportManager::self()->defaultTransportName() );
       }
@@ -731,7 +726,7 @@ void AlarmDialog::wakeUp()
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
-    Incidence::Ptr incidence = Akonadi::incidence( item->mIncidence );
+    Incidence::Ptr incidence = CalendarSupport::incidence( item->mIncidence );
 
     if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
       if ( item->isDisabled() ) { //do not wakeup non-suspended reminders
@@ -766,7 +761,7 @@ void AlarmDialog::slotSave()
     KConfigGroup incidenceConfig( config,
                                   QString( "Incidence-%1" ).arg( numReminders + 1 ) );
 
-    Incidence::Ptr incidence = Akonadi::incidence( item->mIncidence );
+    Incidence::Ptr incidence = CalendarSupport::incidence( item->mIncidence );
     incidenceConfig.writeEntry( "AkonadiUrl", item->mIncidence.url() );
     incidenceConfig.writeEntry( "RemindAt", item->mRemindAt );
     ++numReminders;

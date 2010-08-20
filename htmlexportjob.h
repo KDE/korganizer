@@ -38,9 +38,7 @@ namespace KCalCore {
   class Calendar;
 }
 
-using namespace KCalCore;
-
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
 }
 
@@ -59,7 +57,7 @@ class HtmlExportJob : public KJob
     /**
       Create new HTML exporter for calendar.
     */
-    HtmlExportJob( Akonadi::Calendar *calendar, HTMLExportSettings *settings, QWidget *parent = 0 );
+    HtmlExportJob( CalendarSupport::Calendar *calendar, HTMLExportSettings *settings, QWidget *parent = 0 );
     virtual ~HtmlExportJob();
 
     void addHoliday( const QDate &date, const QString &name );
@@ -74,16 +72,16 @@ class HtmlExportJob : public KJob
     void createJournalView( QTextStream *ts );
     void createFreeBusyView( QTextStream *ts );
 
-    void createTodo( QTextStream *ts, const Todo::Ptr &todo );
-    void createEvent( QTextStream *ts, const Event::Ptr &event, QDate date,
+    void createTodo( QTextStream *ts, const KCalCore::Todo::Ptr &todo );
+    void createEvent( QTextStream *ts, const KCalCore::Event::Ptr &event, QDate date,
                       bool withDescription = true );
     void createFooter( QTextStream *ts );
 
-    bool checkSecrecy( const Incidence::Ptr &incidence );
+    bool checkSecrecy( const KCalCore::Incidence::Ptr &incidence );
 
-    void formatLocation( QTextStream *ts, const Incidence::Ptr &incidence );
-    void formatCategories( QTextStream *ts, const Incidence::Ptr &incidence );
-    void formatAttendees( QTextStream *ts, const Incidence::Ptr &incidence );
+    void formatLocation( QTextStream *ts, const KCalCore::Incidence::Ptr &incidence );
+    void formatCategories( QTextStream *ts, const KCalCore::Incidence::Ptr &incidence );
+    void formatAttendees( QTextStream *ts, const KCalCore::Incidence::Ptr &incidence );
 
     QString breakString( const QString &text );
 

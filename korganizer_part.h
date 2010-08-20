@@ -41,10 +41,6 @@ namespace KOrg {
   class CalendarViewBase;
 }
 
-namespace KCal {
-  class Calendar;
-}
-
 namespace KParts {
   class StatusBarExtension;
 }

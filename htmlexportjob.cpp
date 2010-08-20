@@ -23,14 +23,15 @@
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/utils.h>
+
 #include <kcalcore/calendar.h>
 #include <kcalcore/event.h>
 #include <kcalcore/todo.h>
 #include <kcalutils/incidenceformatter.h>
 
 #include <akonadi/contact/contactsearchjob.h>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/utils.h>
 
 #include <kcalendarsystem.h>
 #include <kdebug.h>
@@ -57,14 +58,14 @@ static QString cleanChars( const QString &txt );
 class KOrg::HtmlExportJob::Private
 {
   public:
-    Private( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+    Private( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
       : mCalendar( calendar ),
         mSettings( settings ),
         mParentWidget( parent ),
         mSubJobCount( 0 )
     {}
 
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
     KOrg::HTMLExportSettings *mSettings;
     QWidget *mParentWidget;
     QMap<QDate,QString> mHolidayMap;
@@ -73,7 +74,7 @@ class KOrg::HtmlExportJob::Private
 };
 //@endcond
 
-HtmlExportJob::HtmlExportJob( Akonadi::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
   : KJob( parent ), d( new Private( calendar, settings, parent ) )
 {
 }
@@ -327,8 +328,8 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
         // Only print events within the from-to range
         if ( start >= fromDate() && start <= toDate() ) {
           Akonadi::Item::List events = d->mCalendar->events( start, d->mCalendar->timeSpec(),
-                                                     Akonadi::EventSortStartDate,
-                                                     Akonadi::SortDirectionAscending );
+                                                     CalendarSupport::EventSortStartDate,
+                                                     CalendarSupport::SortDirectionAscending );
           if ( events.count() ) {
             *ts << "<table>";
             foreach(const Akonadi::Item &event, events) {
@@ -392,8 +393,8 @@ void HtmlExportJob::createEventList( QTextStream *ts )
   for ( QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1) ) {
     kDebug() << "Getting events for" << dt.toString();
     Akonadi::Item::List events = d->mCalendar->events( dt, d->mCalendar->timeSpec(),
-                                               Akonadi::EventSortStartDate,
-                                               Akonadi::SortDirectionAscending );
+                                               CalendarSupport::EventSortStartDate,
+                                               CalendarSupport::SortDirectionAscending );
     if ( events.count() ) {
       *ts << "  <tr><td colspan=\"" << QString::number( columns )
           << "\" class=\"datehead\"><i>"
@@ -474,7 +475,7 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   while ( index < rawTodoList.count() ) {
     const Akonadi::Item rawTodo = rawTodoList.value( index );
     Q_ASSERT( rawTodo.hasPayload<Todo::Ptr>() );
-    Todo::Ptr ev = Akonadi::todo( rawTodo );
+    Todo::Ptr ev = CalendarSupport::todo( rawTodo );
     const Akonadi::Item parentItem = d->mCalendar->findParent( rawTodo );
 
     ++index;
@@ -556,7 +557,7 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
       // replaced by a real sorting algorithm.
       for ( int i = 1; i <= 9; ++i ) {
         foreach( const Akonadi::Item &item, relations ) {
-          Todo::Ptr ev3 = Akonadi::todo( item );
+          Todo::Ptr ev3 = CalendarSupport::todo( item );
           if ( ev3 && ev3->priority() == i ) {
             sortedList.append( ev3 );
           }
@@ -564,7 +565,7 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
       }
 
       foreach( const Akonadi::Item &item, relations ) {
-        Todo::Ptr ev3 = Akonadi::todo( item );
+        Todo::Ptr ev3 = CalendarSupport::todo( item );
         if ( ev3 && ev3->priority() == 0 ) {
           sortedList.append( ev3 );
         }

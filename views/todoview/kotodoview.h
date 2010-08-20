@@ -31,11 +31,9 @@
 
 #include <Akonadi/Item>
 
-namespace KCal {
-  class Incidence;
-}
+#include <KCalCore/Todo>
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
 }
 
@@ -43,7 +41,6 @@ namespace KPIM {
   class KDatePickerPopup;
 }
 
-using namespace KCalCore;
 using namespace KOrg;
 
 class QMenu;
@@ -68,10 +65,10 @@ class KOTodoView : public BaseView
     KOTodoView( QWidget *parent );
     ~KOTodoView();
 
-    virtual void setCalendar( Akonadi::Calendar *cal );
+    virtual void setCalendar( CalendarSupport::Calendar *cal );
 
     virtual Akonadi::Item::List selectedIncidences();
-    virtual DateList selectedIncidenceDates();
+    virtual KCalCore::DateList selectedIncidenceDates();
     virtual int currentDateCount() const { return 0; }
 
     void setDocumentId( const QString & ) {}
@@ -91,7 +88,7 @@ class KOTodoView : public BaseView
     virtual KOrg::CalPrinterBase::PrintType printType();
 
   public Q_SLOTS:
-    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();

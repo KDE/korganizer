@@ -28,9 +28,12 @@
 
 #include <KDE/KDialog>
 
+namespace CalendarSupport {
+  class IncidenceViewer;
+}
+
 namespace Akonadi {
-class IncidenceViewer;
-class Item;
+  class Item;
 }
 
 /**
@@ -52,7 +55,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
     void showIncidenceContext();
 
   private:
-    Akonadi::IncidenceViewer *mEventViewer;
+    CalendarSupport::IncidenceViewer *mEventViewer;
 };
 
 #endif

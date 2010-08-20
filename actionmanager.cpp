@@ -48,22 +48,21 @@
 
 #include <KMime/KMimeMessage>
 
-#include <kcalprefs.h>
-#include <akonadi/kcal/collectionselectionproxymodel.h>
-#include <akonadi/kcal/entitymodelstatesaver.h>
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/calendaradaptor.h>
-#include <akonadi/kcal/calendarmodel.h>
-#include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/freebusymanager.h>
-#include <akonadi/kcal/groupware.h>
-#include <akonadi/kcal/incidencechanger.h>
-#include <akonadi/kcal/incidencemimetypevisitor.h>
-#include <akonadi/kcal/utils.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/calendaradaptor.h>
+#include <calendarsupport/calendarmodel.h>
+#include <calendarsupport/collectionselection.h>
+#include <calendarsupport/collectionselectionproxymodel.h>
+#include <calendarsupport/entitymodelstatesaver.h>
+#include <calendarsupport/freebusymanager.h>
+#include <calendarsupport/groupware.h>
+#include <calendarsupport/incidencechanger.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 #include <incidenceeditors/groupwareintegration.h>
 
-#include <akonadi/entitytreemodel.h>
+#include <Akonadi/EntityTreeModel>
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/Session>
 #include <akonadi/entitymimetypefiltermodel.h>
@@ -72,6 +71,7 @@
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstanceCreateJob>
+#include <Akonadi/KCal/IncidenceMimeTypeVisitor>
 
 #include <kmimetypetrader.h>
 #include <kio/job.h>
@@ -96,7 +96,6 @@
 #include <kcmdlineargs.h>
 #include <knewstuff3/downloaddialog.h>
 
-
 #include <kselectionproxymodel.h>
 
 #include <QApplication>
@@ -107,7 +106,6 @@
 #include <akonadi/entitytreeview.h>
 #include <QVBoxLayout>
 
-using namespace Akonadi;
 using namespace KCalCore;
 
 KOWindowList *ActionManager::mWindowList = 0;
@@ -241,32 +239,34 @@ void ActionManager::slotCollectionChanged( const Akonadi::Collection &collection
 
 void ActionManager::createCalendarAkonadi()
 {
-  Session *session = new Session( "KOrganizerETM", this );
-  ChangeRecorder *monitor = new ChangeRecorder( this );
+  Akonadi::Session *session = new Akonadi::Session( "KOrganizerETM", this );
+  Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder( this );
   connect( monitor, SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>) ),
            this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>) ) );
 
-  ItemFetchScope scope;
+  Akonadi::ItemFetchScope scope;
   scope.fetchFullPayload( true );
-  scope.fetchAttribute<EntityDisplayAttribute>();
+  scope.fetchAttribute<Akonadi::EntityDisplayAttribute>();
 
   monitor->setSession( session );
-  monitor->setCollectionMonitored( Collection::root() );
+  monitor->setCollectionMonitored( Akonadi::Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
   monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
-  mCalendarModel = new CalendarModel( monitor, this );
-  //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
+  mCalendarModel = new CalendarSupport::CalendarModel( monitor, this );
+  //mCalendarModel->setItemPopulationStrategy( Akonadi::EntityTreeModel::LazyPopulation );
 
 
 
-  CollectionSelectionProxyModel* selectionProxyModel = new CollectionSelectionProxyModel( this );
-  selectionProxyModel->setCheckableColumn( CalendarModel::CollectionTitle );
+  CalendarSupport::CollectionSelectionProxyModel *selectionProxyModel =
+    new CalendarSupport::CollectionSelectionProxyModel( this );
+
+  selectionProxyModel->setCheckableColumn( CalendarSupport::CalendarModel::CollectionTitle );
   selectionProxyModel->setDynamicSortFilter( true );
   selectionProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
-  mCollectionSelectionModelStateSaver = new EntityModelStateSaver( selectionProxyModel, this );
+  mCollectionSelectionModelStateSaver = new CalendarSupport::EntityModelStateSaver( selectionProxyModel, this );
   mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState" );
   QItemSelectionModel* selectionModel = new QItemSelectionModel( selectionProxyModel );
   selectionProxyModel->setSelectionModel( selectionModel );
@@ -279,21 +279,21 @@ void ActionManager::createCalendarAkonadi()
   connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
   connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)), SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
 
-  mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
+  mCollectionViewStateSaver = new Akonadi::EntityTreeViewStateSaver( mCollectionView->view() );
   mCollectionView->setCollectionSelectionProxyModel( selectionProxyModel );
 
-  BaseView::setGlobalCollectionSelection( new CollectionSelection( selectionModel ) );
+  BaseView::setGlobalCollectionSelection( new CalendarSupport::CollectionSelection( selectionModel ) );
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( selectionModel );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
   selectionProxy->setSourceModel( mCalendarModel );
 
-  EntityMimeTypeFilterModel* filterProxy2 = new EntityMimeTypeFilterModel( this );
+  Akonadi::EntityMimeTypeFilterModel* filterProxy2 = new Akonadi::EntityMimeTypeFilterModel( this );
 
-  filterProxy2->setHeaderGroup( EntityTreeModel::ItemListHeaders );
+  filterProxy2->setHeaderGroup( Akonadi::EntityTreeModel::ItemListHeaders );
   filterProxy2->setSourceModel( selectionProxy );
-  filterProxy2->setSortRole( CalendarModel::SortRole );
+  filterProxy2->setSortRole( CalendarSupport::CalendarModel::SortRole );
 
-  mCalendar = new Akonadi::Calendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
+  mCalendar = new CalendarSupport::Calendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
@@ -304,8 +304,8 @@ void ActionManager::createCalendarAkonadi()
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  mCalendar->setOwner( Person( KCalPrefs::instance()->fullName(),
-                               KCalPrefs::instance()->email() ) );
+  mCalendar->setOwner( Person( CalendarSupport::KCalPrefs::instance()->fullName(),
+                               CalendarSupport::KCalPrefs::instance()->email() ) );
 
 }
 
@@ -787,7 +787,7 @@ void ActionManager::slotResourcesChanged( bool enabled )
   mNewTodoAction->setEnabled( enabled );
 
   Akonadi::Item item = mCalendarView->currentSelection();
-  mNewSubtodoAction->setEnabled( enabled && Akonadi::hasTodo( item ) );
+  mNewSubtodoAction->setEnabled( enabled && CalendarSupport::hasTodo( item ) );
 
   mNewJournalAction->setEnabled( enabled );
 
@@ -1059,8 +1059,8 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 bool ActionManager::addResource( const KUrl &url )
 {
   kDebug()<< url;
-  AgentType type = AgentManager::self()->type( QLatin1String("akonadi_ical_resource") );
-  AgentInstanceCreateJob *job = new AgentInstanceCreateJob( type, this );
+  Akonadi::AgentType type = Akonadi::AgentManager::self()->type( QLatin1String("akonadi_ical_resource") );
+  Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type, this );
   job->setProperty("path", url.path());
   connect( job, SIGNAL( result( KJob * ) ), this, SLOT( agentCreated( KJob * ) ) );
   job->start();
@@ -1070,13 +1070,13 @@ bool ActionManager::addResource( const KUrl &url )
 void ActionManager::agentCreated( KJob *job )
 {
     kDebug();
-    AgentInstanceCreateJob *createjob = qobject_cast<AgentInstanceCreateJob*>( job );
+    Akonadi::AgentInstanceCreateJob *createjob = qobject_cast<Akonadi::AgentInstanceCreateJob*>( job );
     Q_ASSERT( createjob );
     if ( createjob->error() ) {
         mCalendarView->showErrorMessage( createjob->errorString() );
         return;
     }
-    AgentInstance instance = createjob->instance();
+    Akonadi::AgentInstance instance = createjob->instance();
     //instance.setName( CalendarName );
     QDBusInterface iface( QString::fromLatin1("org.freedesktop.Akonadi.Resource.%1").arg( instance.identifier() ), QLatin1String("/Settings") );
     if( ! iface.isValid() ) {
@@ -1192,8 +1192,8 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
     }
   }
 
-  settings->setEMail( KCalPrefs::instance()->email() );
-  settings->setName( KCalPrefs::instance()->fullName() );
+  settings->setEMail( CalendarSupport::KCalPrefs::instance()->email() );
+  settings->setName( CalendarSupport::KCalPrefs::instance()->fullName() );
 
   settings->setCreditName( "KOrganizer" );
   settings->setCreditURL( "http://korganizer.kde.org" );
@@ -1559,9 +1559,12 @@ void ActionManager::downloadNewStuff()
     }
 
     //AKONADI_PORT avoid this local incidence changer copy...
-    IncidenceChanger changer( mCalendar, 0, Collection().id() );
+    CalendarSupport::IncidenceChanger changer( mCalendar, 0, Akonadi::Collection().id() );
 
-    CalendarAdaptor::Ptr cal( new CalendarAdaptor( mCalendar, mCalendarView, true /*use default collection*/ ) );
+    CalendarSupport::CalendarAdaptor::Ptr cal(
+      new CalendarSupport::CalendarAdaptor(
+        mCalendar, mCalendarView, true /*use default collection*/ ) );
+
     FileStorage storage( cal );
     storage.setFileName( file );
     storage.setSaveFormat( new ICalFormat );
@@ -1666,7 +1669,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
   //kDebug(5850) << "ActionManager::processIncidenceSelection()";
   Q_UNUSED( date );
 
-  const KCalCore::Incidence::Ptr incidence = Akonadi::incidence( item );
+  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     enableIncidenceActions( false );
     return;
@@ -1711,7 +1714,7 @@ Akonadi::Collection ActionManager::selectedCollection() const
   if ( !index.isValid() )
     return Akonadi::Collection();
 
-  return index.data( EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
+  return index.data( Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
 }
 
 void ActionManager::keyBindings()
@@ -2037,7 +2040,7 @@ void ActionManager::slotAutoArchive()
   EventArchiver archiver;
   connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
   //AKONADI_PORT avoid this local incidence changer copy...
-  IncidenceChanger changer( mCalendar, 0, Collection().id() );
+  CalendarSupport::IncidenceChanger changer( mCalendar, 0, Akonadi::Collection().id() );
   archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )

@@ -32,15 +32,14 @@
 
 #include "kdgantt2/kdganttgraphicsview.h"
 #include "kdgantt2/kdganttabstractrowcontroller.h"
-#include <kdgantt2/kdganttdatetimegrid.h>
+#include "kdgantt2/kdganttdatetimegrid.h"
 #include "kdgantt2/kdganttitemdelegate.h"
 #include "kdgantt2/kdganttstyleoptionganttitem.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/utils.h>
-
-#include <kcalprefs.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/collectionselection.h>
+#include <calendarsupport/utils.h>
+#include <calendarsupport/kcalprefs.h>
 
 #include <QApplication>
 #include <QPainter>
@@ -51,7 +50,6 @@
 #include <QTreeWidget>
 #include <QHeaderView>
 
-using namespace Akonadi;
 using namespace KOrg;
 using namespace KCalCore;
 
@@ -303,36 +301,38 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
   uint index = 0;
   // item for every calendar
   TimelineItem *item = 0;
-  Akonadi::Calendar *calres = calendar();
+  CalendarSupport::Calendar *calres = calendar();
   if ( !calres ) {
     item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
     mLeftView->addTopLevelItem( new QTreeWidgetItem( QStringList() << i18n( "Calendar" ) ) );
     mCalendarItemMap.insert( -1, item );
 
   } else {
-    const CollectionSelection *colSel = collectionSelection();
-    const Collection::List collections = colSel->selectedCollections();
+    const CalendarSupport::CollectionSelection *colSel = collectionSelection();
+    const Akonadi::Collection::List collections = colSel->selectedCollections();
 
-    Q_FOREACH ( const Collection &collection, collections ) {
+    Q_FOREACH ( const Akonadi::Collection &collection, collections ) {
       if ( collection.contentMimeTypes().contains( Event::eventMimeType() ) ) {
         item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
-        mLeftView->addTopLevelItem(new QTreeWidgetItem( QStringList() << Akonadi::displayName( collection ) ) );
+        mLeftView->addTopLevelItem(new QTreeWidgetItem( QStringList() << CalendarSupport::displayName( collection ) ) );
         const QColor resourceColor = KOHelper::resourceColor( collection );
         if ( resourceColor.isValid() ) {
           item->setColor( resourceColor );
         }
-        kDebug() << "Created item " << item << " ( " <<  Akonadi::displayName( collection ) << " ) with index" <<  index - 1 << " from collection " << collection.id();
+        kDebug() << "Created item " << item << " ( " <<  CalendarSupport::displayName( collection ) << " ) with index" <<  index - 1 << " from collection " << collection.id();
         mCalendarItemMap.insert( collection.id(), item );
       }
     }
   }
 
   // add incidences
-  Item::List events;
-  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
+  Akonadi::Item::List events;
+  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
-    events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
-    Q_FOREACH ( const Item &i, events ) {
+    events = calendar()->events( day, timeSpec,
+                                 CalendarSupport::EventSortStartDate,
+                                 CalendarSupport::SortDirectionAscending );
+    Q_FOREACH ( const Akonadi::Item &i, events ) {
       insertIncidence( i, day );
     }
   }
@@ -340,7 +340,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
 }
 
 /*virtual*/
-void KOTimelineView::showIncidences( const Item::List &incidenceList, const QDate &date )
+void KOTimelineView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
@@ -355,17 +355,17 @@ void KOTimelineView::updateView()
 }
 
 /*virtual*/
-void KOTimelineView::changeIncidenceDisplay( const Item &incidence, int mode )
+void KOTimelineView::changeIncidenceDisplay( const Akonadi::Item &incidence, int mode )
 {
   switch ( mode ) {
-  case Akonadi::IncidenceChanger::INCIDENCEADDED:
+  case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
     insertIncidence( incidence );
     break;
-  case Akonadi::IncidenceChanger::INCIDENCEEDITED:
+  case CalendarSupport::IncidenceChanger::INCIDENCEEDITED:
     removeIncidence( incidence );
     insertIncidence( incidence );
     break;
-  case Akonadi::IncidenceChanger::INCIDENCEDELETED:
+  case CalendarSupport::IncidenceChanger::INCIDENCEDELETED:
     removeIncidence( incidence );
     break;
   default:
@@ -403,7 +403,7 @@ void KOTimelineView::contextMenuRequested(const QPoint& point)
     mEventPopup = eventPopup();
   }
   mEventPopup->showIncidencePopup( tlitem->incidence(),
-                                   Akonadi::incidence( tlitem->incidence() )->dtStart().date() );
+                                   CalendarSupport::incidence( tlitem->incidence() )->dtStart().date() );
   mSelectedItemList << tlitem->incidence();
 }
 
@@ -422,9 +422,9 @@ void KOTimelineView::newEventWithHint( const QDateTime &dt )
   emit newEventSignal( collectionSelection()->selectedCollections(), dt );
 }
 
-TimelineItem *KOTimelineView::calendarItemForIncidence( const Item &incidence )
+TimelineItem *KOTimelineView::calendarItemForIncidence( const Akonadi::Item &incidence )
 {
-  Akonadi::Calendar *calres = calendar();
+  CalendarSupport::Calendar *calres = calendar();
   TimelineItem *item = 0;
   if ( !calres ) {
     item = mCalendarItemMap.value( -1 );
@@ -434,9 +434,9 @@ TimelineItem *KOTimelineView::calendarItemForIncidence( const Item &incidence )
   return item;
 }
 
-void KOTimelineView::insertIncidence( const Item &aitem, const QDate &day )
+void KOTimelineView::insertIncidence( const Akonadi::Item &aitem, const QDate &day )
 {
-  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   kDebug() << "Item " << aitem.id() << " parentcollection: " << aitem.parentCollection().id();
   TimelineItem *item = calendarItemForIncidence( aitem );
   if ( !item ) {
@@ -463,9 +463,9 @@ void KOTimelineView::insertIncidence( const Item &aitem, const QDate &day )
   }
 }
 
-void KOTimelineView::insertIncidence( const Item &incidence )
+void KOTimelineView::insertIncidence( const Akonadi::Item &incidence )
 {
-  const Event::Ptr event = Akonadi::event( incidence );
+  const Event::Ptr event = CalendarSupport::event( incidence );
   if ( !event ) {
     return;
   }
@@ -474,18 +474,19 @@ void KOTimelineView::insertIncidence( const Item &incidence )
     insertIncidence( incidence, QDate() );
   }
 
-  KDateTime::Spec timeSpec = KCalPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
   for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
-    Item::List events = calendar()->events(
-      day, timeSpec, EventSortStartDate, SortDirectionAscending );
+    Akonadi::Item::List events = calendar()->events( day, timeSpec,
+                                                     CalendarSupport::EventSortStartDate,
+                                                     CalendarSupport::SortDirectionAscending );
     if ( events.contains( incidence ) ) //PENDING(AKONADI_PORT) check if correct. also check the original if, was inside the for loop (unnecessarily)
-      for ( Item::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
+      for ( Akonadi::Item::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
         insertIncidence( *it, day );
       }
   }
 }
 
-void KOTimelineView::removeIncidence( const Item &incidence )
+void KOTimelineView::removeIncidence( const Akonadi::Item &incidence )
 {
   TimelineItem *item = calendarItemForIncidence( incidence );
   if ( item ) {
@@ -515,8 +516,8 @@ void KOTimelineView::removeIncidence( const Item &incidence )
     return;
   }
 
-  const Item i = tlit->incidence();
-  const Incidence::Ptr inc = Akonadi::incidence( i );
+  const Akonadi::Item i = tlit->incidence();
+  const Incidence::Ptr inc = CalendarSupport::incidence( i );
 
   KDateTime newStart( tlit->startTime() );
   if ( inc->allDay() ) {

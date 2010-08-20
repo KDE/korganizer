@@ -41,7 +41,7 @@ namespace KCal {
   class Incidence;
 }
 
-namespace Akonadi {
+namespace CalendarSupport {
   class Calendar;
 }
 
@@ -94,7 +94,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( Akonadi::Calendar *calendar, const Akonadi::Item &incidence,
+    KOAgendaItem( CalendarSupport::Calendar *calendar, const Akonadi::Item &incidence,
                   int itemPos, int itemCount,
                   const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
@@ -235,7 +235,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int mCellXLeft, mCellXRight;
     int mCellYTop, mCellYBottom;
 
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
     Akonadi::Item mIncidence;
     QDate mDate;
     bool mValid;
@@ -250,7 +250,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     // Will be 1 for single day incidences
     int mItemPos;
     int mItemCount;
- 
+
     // Multi item pointers
     MultiItemInfo *mMultiItemInfo;
 

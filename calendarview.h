@@ -32,17 +32,17 @@
 
 #include <kcalcore/visitor.h>
 
-#include <akonadi/kcal/calendar.h>
+#include <calendarsupport/calendar.h>
 
 #include <Akonadi/Item>
 
 #include <QObject>
 #include <QWidget>
 
-namespace Akonadi {
-  class Calendar;
+namespace CalendarSupport {
   class IncidenceViewer;
 }
+
 class CalPrinter;
 class DateChecker;
 class DateNavigator;
@@ -96,7 +96,7 @@ class CalendarViewExtension : public QWidget
   @author Cornelius Schumacher
 */
 class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
-                                              public Akonadi::Calendar::CalendarObserver
+                                              public CalendarSupport::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -133,8 +133,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     };
 
-    void setCalendar( Akonadi::Calendar * );
-    Akonadi::Calendar *calendar() const;
+    void setCalendar( CalendarSupport::Calendar * );
+    CalendarSupport::Calendar *calendar() const;
 
     History *history() const { return mHistory; }
 
@@ -147,7 +147,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateNavigator *dateNavigator() const { return mDateNavigator; }
 
     IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    virtual Akonadi::IncidenceChanger *incidenceChanger() const { return mChanger; }
+    virtual CalendarSupport::IncidenceChanger *incidenceChanger() const { return mChanger; }
 
     /*
      * Informs the date navigator which incidence types should be used
@@ -250,7 +250,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( Akonadi::IncidenceChanger * );
+    void newIncidenceChanger( CalendarSupport::IncidenceChanger * );
     void exportHTML( KOrg::HTMLExportSettings * );
 
     void filtersUpdated( const QStringList &, int );
@@ -461,7 +461,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void incidenceAddFinished( const Akonadi::Item &incidence, bool success );
     void incidenceChangeFinished( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
-                                  Akonadi::IncidenceChanger::WhatChanged modification, bool success );
+                                  CalendarSupport::IncidenceChanger::WhatChanged modification, bool success );
     void incidenceToBeDeleted( const Akonadi::Item &incidence );
     void incidenceDeleteFinished( const Akonadi::Item &incidence, bool success );
     void startMultiModify( const QString &text );
@@ -661,7 +661,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void setCreatingEnabled( bool enabled );
 
   protected:
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
     int msgItemDelete( const Akonadi::Item &incidence );
 
@@ -716,13 +716,13 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     QList<CalendarViewExtension*> mExtensions;
 
-    Akonadi::Calendar *mCalendar;
+    CalendarSupport::Calendar *mCalendar;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;
 
     KVBox *mEventViewerBox;
-    Akonadi::IncidenceViewer *mEventViewer;
+    CalendarSupport::IncidenceViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;
 
@@ -736,10 +736,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     Akonadi::Item mSelectedIncidence;
     QDate mSaveDate;
 
-  KOTodoView *mTodoList;
+    KOTodoView *mTodoList;
     QMap<Akonadi::Item::Id,IncidenceEditors::IncidenceEditor*> mDialogList;
 
-    Akonadi::IncidenceChanger *mChanger;
+    CalendarSupport::IncidenceChanger *mChanger;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;

@@ -25,16 +25,16 @@
 
 #include "koeventview.h"
 #include "kocore.h"
-#include "views/agendaview/koagendaview.h" // TODO AKONADI_PORT
-#include <kcalprefs.h>
 #include "koeventpopupmenu.h"
+#include "views/agendaview/koagendaview.h" // TODO AKONADI_PORT
+
+#include <calendarsupport/collectionselection.h>
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 #include <libkdepim/pimmessagebox.h>
 
 #include <Akonadi/Item>
-
-#include <akonadi/kcal/collectionselection.h>
-#include <akonadi/kcal/utils.h>
 
 #include <QApplication>
 #include <QKeyEvent>
@@ -43,8 +43,6 @@
 #include <KXMLGUIFactory>
 
 #include <QMenu>
-
-using namespace Akonadi;
 
 //---------------------------------------------------------------------------
 
@@ -164,15 +162,15 @@ void KOEventView::showNewEventPopup()
 
 //---------------------------------------------------------------------------
 
-void KOEventView::defaultAction( const Item &aitem )
+void KOEventView::defaultAction( const Akonadi::Item &aitem )
 {
   kDebug();
-  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   if ( !incidence ) {
     return;
   }
 
-  kDebug() << "  type:" << incidence->type();
+  kDebug() << "  type:" << int( incidence->type() );
 
   if ( !calendar()->hasChangeRights( aitem ) ) {
     emit showIncidenceSignal( aitem );
@@ -182,13 +180,13 @@ void KOEventView::defaultAction( const Item &aitem )
 }
 
 //---------------------------------------------------------------------------
-int KOEventView::showMoveRecurDialog( const Item &aitem, const QDate &date )
+int KOEventView::showMoveRecurDialog( const Akonadi::Item &aitem, const QDate &date )
 {
-  const Incidence::Ptr inc = Akonadi::incidence( aitem );
+  const Incidence::Ptr inc = CalendarSupport::incidence( aitem );
   int answer = KMessageBox::Ok;
   KGuiItem itemFuture( i18n( "Also &Future Items" ) );
 
-  KDateTime dateTime( date, KCalPrefs::instance()->timeSpec() );
+  KDateTime dateTime( date, CalendarSupport::KCalPrefs::instance()->timeSpec() );
   bool isFirst = !inc->recurrence()->getPreviousDateTime( dateTime ).isValid();
   bool isLast  = !inc->recurrence()->getNextDateTime( dateTime ).isValid();
 
@@ -231,7 +229,7 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
         // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
         if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
           if ( view->collection() >= 0 ) {
-            emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
+            emit newEventSignal( Akonadi::Collection::List() << Akonadi::Collection( view->collection() ) );
           } else {
             emit newEventSignal( collectionSelection()->selectedCollections() );
           }
@@ -285,7 +283,7 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
         // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
         if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
           if ( view->collection() >= 0 ) {
-            emit newEventSignal( Akonadi::Collection::List() << Collection( view->collection() ) );
+            emit newEventSignal( Akonadi::Collection::List() << Akonadi::Collection( view->collection() ) );
           } else {
             emit newEventSignal( collectionSelection()->selectedCollections() );
           }
@@ -322,9 +320,9 @@ void KOEventView::finishTypeAhead()
   mTypeAhead = false;
 }
 
-bool KOEventView::usesCompletedTodoPixmap( const Item& aitem, const QDate &date )
+bool KOEventView::usesCompletedTodoPixmap( const Akonadi::Item& aitem, const QDate &date )
 {
-  const Todo::Ptr todo = Akonadi::todo( aitem );
+  const Todo::Ptr todo = CalendarSupport::todo( aitem );
   if ( !todo )
     return false;
 
@@ -335,10 +333,10 @@ bool KOEventView::usesCompletedTodoPixmap( const Item& aitem, const QDate &date 
     if ( todo->allDay() ) {
       time = QTime( 0, 0 );
     } else {
-      time = todo->dtDue().toTimeSpec( KCalPrefs::instance()->timeSpec() ).time();
+      time = todo->dtDue().toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).time();
     }
 
-    KDateTime itemDateTime( date, time, KCalPrefs::instance()->timeSpec() );
+    KDateTime itemDateTime( date, time, CalendarSupport::KCalPrefs::instance()->timeSpec() );
 
     return itemDateTime < todo->dtDue( false );
 

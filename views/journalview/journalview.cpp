@@ -32,13 +32,12 @@
 #include "kocorehelper.h"
 #include "calprinter.h"
 
-#include <akonadi/kcal/calendar.h>
-#include <akonadi/kcal/incidencechanger.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/incidencechanger.h>
+#include <calendarsupport/utils.h>
 
 #include <kcalutils/incidenceformatter.h>
 #include <kcalcore/journal.h>
-
-#include <akonadi/kcal/utils.h>
 
 #include <kdebug.h>
 #include <kdialog.h>
@@ -61,10 +60,9 @@
 
 #include "journalview.moc"
 
-using namespace Akonadi;
 using namespace KCalUtils;
 
-JournalDateView::JournalDateView( Akonadi::Calendar *calendar, QWidget *parent )
+JournalDateView::JournalDateView( CalendarSupport::Calendar *calendar, QWidget *parent )
   : KVBox( parent ), mCalendar( calendar )
 {
   mChanger = 0;
@@ -87,9 +85,9 @@ void JournalDateView::clear()
 }
 
 // should only be called by the KOJournalView now.
-void JournalDateView::addJournal( const Item &j )
+void JournalDateView::addJournal( const Akonadi::Item &j )
 {
-  QMap<Item::Id,JournalView *>::Iterator pos = mEntries.find( j.id() );
+  QMap<Akonadi::Item::Id,JournalView *>::Iterator pos = mEntries.find( j.id() );
   if ( pos != mEntries.end() ) {
     return;
   }
@@ -101,8 +99,8 @@ void JournalDateView::addJournal( const Item &j )
   entry->setIncidenceChanger( mChanger );
 
   mEntries.insert( j.id(), entry );
-  connect( this, SIGNAL(setIncidenceChangerSignal(Akonadi::IncidenceChanger *)),
-           entry, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)) );
+  connect( this, SIGNAL(setIncidenceChangerSignal(CalendarSupport::IncidenceChanger *)),
+           entry, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger *)) );
   connect( this, SIGNAL(setDateSignal(const QDate &)),
            entry, SLOT(setDate(const QDate &)) );
   connect( entry, SIGNAL(deleteIncidence(Akonadi::Item)),
@@ -111,16 +109,16 @@ void JournalDateView::addJournal( const Item &j )
            this, SIGNAL(editIncidence(Akonadi::Item)) );
 }
 
-Item::List JournalDateView::journals() const
+Akonadi::Item::List JournalDateView::journals() const
 {
-  Item::List l;
+  Akonadi::Item::List l;
   Q_FOREACH ( const JournalView *const i, mEntries ) {
     l.push_back( i->journal() );
   }
   return l;
 }
 
-void JournalDateView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+void JournalDateView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );
@@ -131,9 +129,9 @@ void JournalDateView::emitNewJournal()
   emit newJournal( mDate );
 }
 
-void JournalDateView::journalEdited( const Item &journal )
+void JournalDateView::journalEdited( const Akonadi::Item &journal )
 {
-  QMap<Item::Id,JournalView *>::Iterator pos = mEntries.find( journal.id() );
+  QMap<Akonadi::Item::Id,JournalView *>::Iterator pos = mEntries.find( journal.id() );
   if ( pos == mEntries.end() ) {
     return;
   }
@@ -142,9 +140,9 @@ void JournalDateView::journalEdited( const Item &journal )
 
 }
 
-void JournalDateView::journalDeleted( const Item &journal )
+void JournalDateView::journalDeleted( const Akonadi::Item &journal )
 {
-  QMap<Item::Id,JournalView *>::Iterator pos = mEntries.find( journal.id() );
+  QMap<Akonadi::Item::Id,JournalView *>::Iterator pos = mEntries.find( journal.id() );
   if ( pos == mEntries.end() ) {
     return;
   }
@@ -153,7 +151,7 @@ void JournalDateView::journalDeleted( const Item &journal )
   mEntries.remove( journal.id() );
 }
 
-JournalView::JournalView( const Item &j, QWidget *parent )
+JournalView::JournalView( const Akonadi::Item &j, QWidget *parent )
   : QWidget( parent ), mJournal( j )
 {
   mDirty = false;
@@ -209,21 +207,21 @@ JournalView::~JournalView()
 
 void JournalView::deleteItem()
 {
-  if ( Akonadi::hasJournal( mJournal ) ) {
+  if ( CalendarSupport::hasJournal( mJournal ) ) {
     emit deleteIncidence( mJournal );
   }
 }
 
 void JournalView::editItem()
 {
-  if ( Akonadi::hasJournal( mJournal ) ) {
+  if ( CalendarSupport::hasJournal( mJournal ) ) {
     emit editIncidence( mJournal );
   }
 }
 
 void JournalView::printItem()
 {
-  if ( const Journal::Ptr j = Akonadi::journal( mJournal ) ) {
+  if ( const Journal::Ptr j = CalendarSupport::journal( mJournal ) ) {
     KOCoreHelper helper;
     CalPrinter printer( this, mCalendar, &helper, true );
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
@@ -236,7 +234,7 @@ void JournalView::printItem()
   }
 }
 
-void JournalView::setCalendar( Akonadi::Calendar *cal )
+void JournalView::setCalendar( CalendarSupport::Calendar *cal )
 {
   mCalendar = cal;
 }
@@ -246,9 +244,9 @@ void JournalView::setDate( const QDate &date )
   mDate = date;
 }
 
-void JournalView::setJournal( const Item &journal )
+void JournalView::setJournal( const Akonadi::Item &journal )
 {
-  if ( !Akonadi::hasJournal( journal ) ) {
+  if ( !CalendarSupport::hasJournal( journal ) ) {
     return;
   }
 
@@ -269,11 +267,11 @@ bool JournalView::eventFilter( QObject *o, QEvent *e )
   return QWidget::eventFilter( o, e );    // standard event processing
 }
 
-void JournalView::readJournal( const Item &j )
+void JournalView::readJournal( const Akonadi::Item &j )
 {
   int baseFontSize = KGlobalSettings::generalFont().pointSize();
   mJournal = j;
-  const Journal::Ptr journal = Akonadi::journal( j );
+  const Journal::Ptr journal = CalendarSupport::journal( j );
   mBrowser->clear();
   QTextCursor cursor = QTextCursor( mBrowser->textCursor() );
   cursor.movePosition( QTextCursor::Start );
