@@ -28,7 +28,7 @@
 #include "kotodoview.h"
 #include <kcalprefs.h>
 #include "calprinter.h"
-#include "categoryconfig.h"
+#include "incidenceeditor-ng/categoryconfig.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
 #include "koprefs.h"

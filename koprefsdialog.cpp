@@ -29,7 +29,7 @@
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
 #include "ui_accountscalendarwidget.h"
-#include "categoryconfig.h"
+#include "incidenceeditor-ng/categoryconfig.h"
 
 #include <calendarsupport/kcalprefs.h>
 

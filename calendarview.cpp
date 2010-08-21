@@ -31,7 +31,7 @@
 
 #include "calendarview.h"
 #include "calprinter.h"
-#include "categoryconfig.h"
+#include "incidenceeditor-ng/categoryconfig.h"
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"

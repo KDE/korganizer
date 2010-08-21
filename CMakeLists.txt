@@ -112,7 +112,7 @@ target_link_libraries(kcm_korganizer
   ${QT_QTUITOOLS_LIBRARY}
   ${KDE4_KDEUI_LIBS}
   ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}
-  mailtransport korganizerprivate korganizer_core kdepim incidenceeditors calendarsupport ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
+  mailtransport korganizerprivate korganizer_core kdepim incidenceeditorsng calendarsupport ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
 
 install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -145,7 +145,7 @@ kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_library(korganizer_core ${LIBRARY_TYPE} ${korganizer_core_LIB_SRCS})
 
-target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} kdepim incidenceeditors calendarsupport korganizer_interfaces ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
+target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} kdepim incidenceeditorsng calendarsupport korganizer_interfaces ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
 
 set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 

@@ -25,7 +25,7 @@
 */
 
 #include "filtereditdialog.h"
-#include "categoryconfig.h"
+#include "incidenceeditor-ng/categoryconfig.h"
 #include "categoryselectdialog.h"
 #include "koprefs.h"
 

@@ -24,8 +24,8 @@
 
 #include "kotododelegates.h"
 
-#include "categoryconfig.h"
-#include "categoryhierarchyreader.h"
+#include "incidenceeditor-ng/categoryconfig.h"
+#include "incidenceeditor-ng/categoryhierarchyreader.h"
 
 #include "koprefs.h"
 

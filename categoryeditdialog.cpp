@@ -23,8 +23,8 @@
 
 #include "categoryeditdialog.h"
 #include "ui_categoryeditdialog_base.h"
-#include "categoryconfig.h"
-#include "categoryhierarchyreader.h"
+#include "incidenceeditor-ng/categoryconfig.h"
+#include "incidenceeditor-ng/categoryhierarchyreader.h"
 
 #include <KLocale>
 

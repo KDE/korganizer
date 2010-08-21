@@ -26,7 +26,7 @@
 #include "koprefs.h"
 #include "kocore.h"
 
-#include "categoryconfig.h"
+#include "incidenceeditor-ng/categoryconfig.h"
 
 #include <kmime/kmime_header_parsing.h>
 #include <kpimidentities/identitymanager.h>

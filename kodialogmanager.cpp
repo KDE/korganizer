@@ -28,7 +28,7 @@
 #include "archivedialog.h"
 #endif
 #include "calendarview.h"
-#include "categoryconfig.h"
+#include "incidenceeditor-ng/categoryconfig.h"
 #include "categoryeditdialog.h"
 #include "koglobals.h"
 #include "koprefs.h"
