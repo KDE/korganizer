@@ -161,15 +161,6 @@ void KOPrefs::usrWriteConfig()
     ++i;
   }
 
-#if 0
-  if ( mRememberRetrievePw ) {
-    config()->writeEntry( "Retrieve Server Password",
-                          KStringHandler::obscure( mRetrievePassword ) );
-  } else {
-    config()->deleteEntry( "Retrieve Server Password" );
-  }
-#endif
-
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
