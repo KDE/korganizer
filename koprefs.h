@@ -68,10 +68,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 
     QString mHtmlExportFile;
 
-    // Groupware passwords
-    QString mPublishPassword;
-    QString mRetrievePassword;
-
     QStringList timeScaleTimezones() const;
     void setTimeScaleTimezones( const QStringList &list );
 
