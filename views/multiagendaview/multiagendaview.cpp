@@ -18,12 +18,14 @@
 
 #include "multiagendaview.h"
 #include "koprefs.h"
-#include "timelabelszone.h"
-#include "views/agendaview/koagenda.h"
-#include "views/agendaview/koagendaview.h"
 #include "akonadicollectionview.h"
 
 #include "ui_multiagendaviewconfigwidget.h"
+
+#include <calendarviews/agenda/prefs.h>
+#include <calendarviews/agenda/agenda.h>
+#include <calendarviews/agenda/agendaview.h>
+#include <calendarviews/agenda/timelabelszone.h>
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/calendarmodel.h>
@@ -43,6 +45,7 @@
 #include <QLabel>
 #include <QResizeEvent>
 #include <QSplitter>
+#include <QTimer>
 #include <QStandardItem>
 #include <QStandardItemModel>
 
@@ -83,17 +86,18 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 
   KVBox *sideBox = new KVBox( mLeftSplitter );
 
-  EventIndicator *eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
+  EventViews::EventIndicator *eiSpacer = new EventViews::EventIndicator( EventViews::EventIndicator::Top, sideBox );
   eiSpacer->changeColumns( 0 );
 
   // compensate for the frame the agenda views but not the timelabels have
   QWidget *timeLabelTopAlignmentSpacer = new QWidget( sideBox );
 
-  mTimeLabelsZone = new TimeLabelsZone( sideBox );
+  //TODO_EVENTVIEWS: use a singleton for prefs
+  mTimeLabelsZone = new EventViews::TimeLabelsZone( sideBox, EventViews::PrefsPtr( new EventViews::Prefs() ) );
 
   QWidget *timeLabelBotAlignmentSpacer = new QWidget( sideBox );
 
-  eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
+  eiSpacer = new EventViews::EventIndicator( EventViews::EventIndicator::Bottom, sideBox );
   eiSpacer->changeColumns( 0 );
 
   mLeftBottomSpacer = new QWidget( topSideBox );
@@ -125,11 +129,11 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   new QWidget( mRightSplitter );
   sideBox = new KVBox( mRightSplitter );
 
-  eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
+  eiSpacer = new EventViews::EventIndicator( EventViews::EventIndicator::Top, sideBox );
   eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
   eiSpacer->changeColumns( 0 );
   mScrollBar = new QScrollBar( Qt::Vertical, sideBox );
-  eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
+  eiSpacer = new EventViews::EventIndicator( EventViews::EventIndicator::Bottom, sideBox );
   eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
   eiSpacer->changeColumns( 0 );
 
@@ -178,7 +182,7 @@ void MultiAgendaView::recreateViews()
   QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
   mTimeLabelsZone->updateAll();
 
-  TimeLabels *timeLabel = mTimeLabelsZone->timeLabels().first();
+  QScrollArea *timeLabel = mTimeLabelsZone->timeLabels().first();
   connect( timeLabel->verticalScrollBar(), SIGNAL(valueChanged(int)),
            mScrollBar, SLOT(setValue(int)) );
   connect( mScrollBar, SIGNAL(valueChanged(int)),
@@ -188,14 +192,15 @@ void MultiAgendaView::recreateViews()
   connect( mRightSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   QTimer::singleShot( 0, this, SLOT(resizeSplitters()) );
   QTimer::singleShot( 0, this, SLOT(setupScrollBar()) );
-  foreach ( TimeLabels *label, mTimeLabelsZone->timeLabels() ) {
+  foreach ( QScrollArea *area, mTimeLabelsZone->timeLabels() ) {
+    EventViews::TimeLabels *label = static_cast<EventViews::TimeLabels*>( area->widget() );
     label->positionChanged();
   }
 }
 
 void MultiAgendaView::deleteViews()
 {
-  Q_FOREACH ( KOAgendaView *const i, mAgendaViews ) {
+  Q_FOREACH ( EventViews::AgendaView *const i, mAgendaViews ) {
     CalendarSupport::CollectionSelectionProxyModel *proxy = i->takeCustomCollectionSelectionProxyModel();
     if ( proxy && !mCollectionSelectionModels.contains( proxy ) ) {
       delete proxy;
@@ -210,7 +215,7 @@ void MultiAgendaView::deleteViews()
 
 void MultiAgendaView::setupViews()
 {
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     connect( agenda, SIGNAL(newEventSignal(Akonadi::Collection::List)),
              SIGNAL(newEventSignal(Akonadi::Collection::List)) );
     connect( agenda, SIGNAL(editIncidenceSignal(Akonadi::Item)),
@@ -263,15 +268,15 @@ void MultiAgendaView::setupViews()
              SLOT(zoomView(const int,const QPoint&,const Qt::Orientation)) );
   }
 
-  KOAgendaView *lastView = mAgendaViews.last();
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  EventViews::AgendaView *lastView = mAgendaViews.last();
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     if ( agenda != lastView ) {
       connect( agenda->agenda()->verticalScrollBar(), SIGNAL(valueChanged(int)),
                lastView->agenda()->verticalScrollBar(), SLOT(setValue(int)) );
     }
   }
 
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     agenda->readSettings();
   }
 
@@ -291,7 +296,7 @@ MultiAgendaView::~MultiAgendaView()
 Akonadi::Item::List MultiAgendaView::selectedIncidences()
 {
   Akonadi::Item::List list;
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     list += agendaView->selectedIncidences();
   }
   return list;
@@ -300,7 +305,7 @@ Akonadi::Item::List MultiAgendaView::selectedIncidences()
 DateList MultiAgendaView::selectedIncidenceDates()
 {
   DateList list;
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     list += agendaView->selectedIncidenceDates();
   }
   return list;
@@ -308,7 +313,7 @@ DateList MultiAgendaView::selectedIncidenceDates()
 
 int MultiAgendaView::currentDateCount() const
 {
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     return agendaView->currentDateCount();
   }
   return 0;
@@ -320,14 +325,14 @@ void MultiAgendaView::showDates( const QDate &start, const QDate &end )
   mEndDate = end;
   slotResizeScrollView();
   mTimeLabelsZone->updateAll();
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     agendaView->showDates( start, end );
   }
 }
 
 void MultiAgendaView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
 {
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     agendaView->showIncidences( incidenceList, date );
   }
 }
@@ -335,21 +340,21 @@ void MultiAgendaView::showIncidences( const Akonadi::Item::List &incidenceList, 
 void MultiAgendaView::updateView()
 {
   recreateViews();
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     agendaView->updateView();
   }
 }
 
 void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &incidence, int mode )
 {
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     agendaView->changeIncidenceDisplay( incidence, mode );
   }
 }
 
 int MultiAgendaView::maxDatesHint() const
 {
-  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
     return agendaView->maxDatesHint();
   }
   return 0;
@@ -357,7 +362,7 @@ int MultiAgendaView::maxDatesHint() const
 
 void MultiAgendaView::slotSelectionChanged()
 {
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     if ( agenda != sender() ) {
       agenda->clearSelection();
     }
@@ -366,7 +371,7 @@ void MultiAgendaView::slotSelectionChanged()
 
 bool MultiAgendaView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     bool valid = agenda->eventDurationHint( startDt, endDt, allDay );
     if ( valid ) {
       return true;
@@ -377,14 +382,14 @@ bool MultiAgendaView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, b
 
 void MultiAgendaView::slotClearTimeSpanSelection()
 {
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     if ( agenda != sender() ) {
       agenda->clearTimeSpanSelection();
     }
   }
 }
 
-KOAgendaView *MultiAgendaView::createView( const QString &title )
+EventViews::AgendaView *MultiAgendaView::createView( const QString &title )
 {
   QWidget *box = new QWidget( mTopBox );
   QVBoxLayout *layout = new QVBoxLayout( box );
@@ -392,7 +397,7 @@ KOAgendaView *MultiAgendaView::createView( const QString &title )
   QLabel *l = new QLabel( title );
   layout->addWidget( l );
   l->setAlignment( Qt::AlignVCenter | Qt::AlignHCenter );
-  KOAgendaView *av = new KOAgendaView( 0, true );
+  EventViews::AgendaView *av = new EventViews::AgendaView( 0, true );
   layout->addWidget( av );
   av->setCalendar( calendar() );
   av->setIncidenceChanger( mChanger );
@@ -407,13 +412,13 @@ KOAgendaView *MultiAgendaView::createView( const QString &title )
 
 void MultiAgendaView::addView( const Akonadi::Collection &collection )
 {
-  KOAgendaView *av = createView( CalendarSupport::displayName( collection ) );
+  EventViews::AgendaView *av = createView( CalendarSupport::displayName( collection ) );
   av->setCollection( collection.id() );
 }
 
 void MultiAgendaView::addView( CalendarSupport::CollectionSelectionProxyModel *sm, const QString &title )
 {
-  KOAgendaView *av = createView( title );
+  EventViews::AgendaView *av = createView( title );
   av->setCustomCollectionSelectionProxyModel( sm );
 }
 
@@ -444,7 +449,7 @@ void MultiAgendaView::resizeScrollView( const QSize &size )
 void MultiAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   AgendaView::setIncidenceChanger( changer );
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     agenda->setIncidenceChanger( changer );
   }
 }
@@ -453,7 +458,7 @@ void MultiAgendaView::updateConfig()
 {
   AgendaView::updateConfig();
   mTimeLabelsZone->updateAll();
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     agenda->updateConfig();
   }
 }
@@ -468,7 +473,7 @@ void MultiAgendaView::resizeSplitters()
   if ( !lastMovedSplitter ) {
     lastMovedSplitter = mAgendaViews.first()->splitter();
   }
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     if ( agenda->splitter() == lastMovedSplitter ) {
       continue;
     }
@@ -494,7 +499,7 @@ void MultiAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Or
     }
   }
 
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     agenda->zoomView( delta, pos, ori );
   }
 
@@ -519,7 +524,7 @@ void MultiAgendaView::showEvent( QShowEvent *event )
 void MultiAgendaView::setUpdateNeeded( bool needed )
 {
   BaseView::setUpdateNeeded( needed );
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+  foreach ( EventViews::AgendaView *agenda, mAgendaViews ) {
     agenda->setUpdateNeeded( needed );
   }
 }

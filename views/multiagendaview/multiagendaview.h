@@ -25,9 +25,6 @@
 
 #include <KDialog>
 
-class KOAgendaView;
-class TimeLabelsZone;
-
 class KHBox;
 
 class Q3ScrollView;
@@ -36,6 +33,11 @@ class QModelIndex;
 class QResizeEvent;
 class QScrollBar;
 class QSplitter;
+
+namespace EventViews {
+  class AgendaView;
+  class TimeLabelsZone;
+}
 
 namespace CalendarSupport {
   class CollectionSelectionProxyModel;
@@ -133,7 +135,7 @@ class MultiAgendaView : public AgendaView
   private:
     void addView( const Akonadi::Collection &collection );
     void addView( CalendarSupport::CollectionSelectionProxyModel *selectionProxy, const QString &title );
-    KOAgendaView *createView( const QString &title );
+    EventViews::AgendaView *createView( const QString &title );
 
     void deleteViews();
     void setupViews();
@@ -149,11 +151,11 @@ class MultiAgendaView : public AgendaView
     void recreateViews();
 
   private:
-    QList<KOAgendaView*> mAgendaViews;
+    QList<EventViews::AgendaView*> mAgendaViews;
     QList<QWidget*> mAgendaWidgets;
     KHBox *mTopBox;
     Q3ScrollView *mScrollView;
-    TimeLabelsZone *mTimeLabelsZone;
+    EventViews::TimeLabelsZone *mTimeLabelsZone;
     QSplitter *mLeftSplitter, *mRightSplitter;
     QScrollBar *mScrollBar;
     QWidget *mLeftBottomSpacer, *mRightBottomSpacer;
