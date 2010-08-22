@@ -66,7 +66,8 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     void setResourceColor ( const QString &, const QColor & );
     QColor resourceColor( const QString & );
 
-    QString mHtmlExportFile;
+    void setHtmlExportFile( const QString &fileName );
+    QString htmlExportFile() const;
 
     QStringList timeScaleTimezones() const;
     void setTimeScaleTimezones( const QStringList &list );
@@ -82,6 +83,8 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     QFont mDefaultAgendaTimeLabelsFont;
 
     QStringList mTimeScaleTimeZones;
+
+    QString mHtmlExportFile;
 
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;

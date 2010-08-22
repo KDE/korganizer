@@ -79,6 +79,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
   KConfigSkeleton::setCurrentGroup( "General" );
 
+  // writes into mHtmlExportFile
   addItemPath( "Html Export File", mHtmlExportFile,
       QDir::homePath() + '/' + i18nc( "Default export file", "calendar.html" ) );
 
@@ -246,3 +247,12 @@ void KOPrefs::setTimeScaleTimezones( const QStringList &list )
   mTimeScaleTimeZones = list;
 }
 
+void KOPrefs::setHtmlExportFile( const QString &fileName )
+{
+  mHtmlExportFile = fileName;
+}
+
+QString KOPrefs::htmlExportFile() const
+{
+  return mHtmlExportFile;
+}
