@@ -256,6 +256,7 @@ target_link_libraries(korganizerprivate
   kdepimdbusinterfaces
   korganizer_core
   calendarsupport
+  eventviews
   incidenceeditors
   incidenceeditorsng
   kdgantt2
