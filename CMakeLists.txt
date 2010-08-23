@@ -1,4 +1,4 @@
-Sproject(korganizer)
+project(korganizer)
 
 #
 # The following macros can be defined to alter KOrganizer behavior.

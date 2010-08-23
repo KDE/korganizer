@@ -40,12 +40,13 @@
 #include <KHBox>
 #include <KVBox>
 
-#include <Q3ScrollView>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QResizeEvent>
 #include <QSplitter>
 #include <QTimer>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QStandardItem>
 #include <QStandardItemModel>
 
@@ -104,19 +105,22 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 
   topLevelLayout->addWidget( topSideBox );
 
-  mScrollView = new Q3ScrollView( this );
-  mScrollView->setResizePolicy( Q3ScrollView::Manual );
-  mScrollView->setVScrollBarMode( Q3ScrollView::AlwaysOff );
+  mScrollArea = new QScrollArea( this );
+
+// TODO_EVENTVIEWS
+  //mScrollArea->setResizePolicy( Q3ScrollView::Manual );
+  mScrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
 
   // asymetric since the timelabels
-  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 1 );
+  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollArea->frameWidth() - 1 );
   // have 25 horizontal lines
-  timeLabelBotAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 2 );
+  timeLabelBotAlignmentSpacer->setFixedHeight( mScrollArea->frameWidth() - 2 );
 
-  mScrollView->setFrameShape( QFrame::NoFrame );
-  topLevelLayout->addWidget( mScrollView, 100 );
-  mTopBox = new KHBox( mScrollView->viewport() );
-  mScrollView->addChild( mTopBox );
+  mScrollArea->setFrameShape( QFrame::NoFrame );
+  topLevelLayout->addWidget( mScrollArea, 100 );
+  mTopBox = new KHBox( mScrollArea->viewport() );
+  //TODO_EVENTVIEWS: review
+  mScrollArea->setWidget( mTopBox );
 
   topSideBox = new KVBox( this );
 
@@ -436,7 +440,7 @@ void MultiAgendaView::resizeScrollView( const QSize &size )
   const int width = qMax( mTopBox->sizeHint().width(), widgetWidth );
   int height = size.height();
   if ( width > widgetWidth ) {
-    const int sbHeight = mScrollView->horizontalScrollBar()->height();
+    const int sbHeight = mScrollArea->horizontalScrollBar()->height();
     height -= sbHeight;
     mLeftBottomSpacer->setFixedHeight( sbHeight );
     mRightBottomSpacer->setFixedHeight( sbHeight );
@@ -444,7 +448,8 @@ void MultiAgendaView::resizeScrollView( const QSize &size )
     mLeftBottomSpacer->setFixedHeight( 0 );
     mRightBottomSpacer->setFixedHeight( 0 );
   }
-  mScrollView->resizeContents( width, height );
+  // TODO_EVENTVIEWS: review
+  //mScrollArea->resizeContents( width, height );
   mTopBox->resize( width, height );
 }
 
