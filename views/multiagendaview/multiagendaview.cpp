@@ -186,16 +186,20 @@ void MultiAgendaView::recreateViews()
   connect( timeLabel->verticalScrollBar(), SIGNAL(valueChanged(int)),
            mScrollBar, SLOT(setValue(int)) );
   connect( mScrollBar, SIGNAL(valueChanged(int)),
-           timeLabel, SLOT(positionChanged(int)) );
+           timeLabel->verticalScrollBar(), SLOT(setValue(int)) );
 
   connect( mLeftSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   connect( mRightSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   QTimer::singleShot( 0, this, SLOT(resizeSplitters()) );
   QTimer::singleShot( 0, this, SLOT(setupScrollBar()) );
+
+  /*
+    TODO_EVENTVIEWS
   foreach ( QScrollArea *area, mTimeLabelsZone->timeLabels() ) {
     EventViews::TimeLabels *label = static_cast<EventViews::TimeLabels*>( area->widget() );
     label->positionChanged();
   }
+  */
 }
 
 void MultiAgendaView::deleteViews()
@@ -354,9 +358,7 @@ void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &incidence, in
 
 int MultiAgendaView::maxDatesHint() const
 {
-  foreach ( EventViews::AgendaView *agendaView, mAgendaViews ) {
-    return agendaView->maxDatesHint();
-  }
+  // TODO: remove these maxDatesHint functions, they aren't used
   return 0;
 }
 
@@ -401,7 +403,7 @@ EventViews::AgendaView *MultiAgendaView::createView( const QString &title )
   layout->addWidget( av );
   av->setCalendar( calendar() );
   av->setIncidenceChanger( mChanger );
-  av->agenda()->setVScrollBarMode( Q3ScrollView::AlwaysOff );
+  av->agenda()->scrollArea()->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
   mAgendaViews.append( av );
   mAgendaWidgets.append( box );
   box->show();
