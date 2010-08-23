@@ -42,7 +42,6 @@
 #include <KPIMIdentities/Identity>
 #include <KPIMIdentities/IdentityManager>
 
-
 #include <Akonadi/Item>
 
 #include <Mailtransport/TransportManager>
@@ -678,9 +677,9 @@ void AlarmDialog::eventNotification()
         if ( alarm->mailAddresses().isEmpty() ) {
           to = from;
         } else {
-          const QList<Person::Ptr> addresses = alarm->mailAddresses();
+          const Person::List addresses = alarm->mailAddresses();
           QStringList add;
-          for ( QList<Person::Ptr>::ConstIterator it = addresses.constBegin();
+          for ( Person::List::ConstIterator it = addresses.constBegin();
                 it != addresses.constEnd(); ++it ) {
             add << (*it)->fullName();
           }

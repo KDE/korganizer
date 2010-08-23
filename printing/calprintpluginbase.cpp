@@ -790,11 +790,11 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Akonadi::Item::List &e
                                        bool excludeConfidential,
                                        bool excludePrivate )
 {
-  QList<Event::Ptr>::Iterator it, itold;
+  Event::List::Iterator it, itold;
   int offset = box.top();
   QString multiDayStr;
 
-  QList<Event::Ptr> eventList = CalendarSupport::eventsFromItems( eventList_ );
+  Event::List eventList = CalendarSupport::eventsFromItems( eventList_ );
 
   Event::Ptr hd = holiday( qd );
   if ( hd ) {
