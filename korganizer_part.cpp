@@ -57,7 +57,8 @@ K_EXPORT_PLUGIN( KOrganizerFactory( createAboutData() ) )
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
   : KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
-  KGlobal::locale()->insertCatalog( "libkcal" );
+  KGlobal::locale()->insertCatalog( "libkcalutils" );
+  KGlobal::locale()->insertCatalog( "calendarsupport" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
   KGlobal::locale()->insertCatalog( "kdgantt1" );
   KGlobal::locale()->insertCatalog( "libakonadi" );
