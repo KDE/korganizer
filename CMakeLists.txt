@@ -168,9 +168,6 @@ set(korganizerprivate_LIB_SRCS
   kdatenavigator.cpp
   datenavigatorcontainer.cpp
   datechecker.cpp
-  views/agendaview/agendaview.cpp
-  views/agendaview/koagenda.cpp
-  views/agendaview/koagendaitem.cpp
   views/agendaview/koagendaview.cpp
   views/listview/kolistview.cpp
   views/journalview/kojournalview.cpp
