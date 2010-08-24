@@ -245,7 +245,7 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
   d->mAgendaView->slotTodosDropped( items, gpos, allDay );
 }
 
-void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint &gpos, bool allDay )
+void KOAgendaView::slotTodosDropped( const Todo::List &items, const QPoint &gpos, bool allDay )
 {
   d->mAgendaView->slotTodosDropped( items, gpos, allDay );
 }
@@ -278,11 +278,6 @@ void KOAgendaView::deleteSelectedDateTime()
 void KOAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   d->mAgendaView->setIncidenceChanger( changer );
-}
-
-void KOAgendaView::clearTimeSpanSelection()
-{
-  d->mAgendaView->clearTimeSpanSelection();
 }
 
 void KOAgendaView::setCollection( Akonadi::Collection::Id coll )
