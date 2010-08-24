@@ -23,28 +23,37 @@
 */
 
 #include "koagendaview.h"
+#include "koeventpopupmenu.h"
+
 #include <calendarviews/agenda/agendaview.h>
 #include <QHBoxLayout>
 
 class KOAgendaView::Private
 {
   public:
-    Private( bool isSideBySide, QWidget *parent )
+    Private( bool isSideBySide, KOAgendaView *parent ) : q( parent )
     {
       mAgendaView = new EventViews::AgendaView( parent, isSideBySide );
+      mPopup = q->eventPopup();
     }
 
-  EventViews::AgendaView *mAgendaView;
+    ~Private()
+    {
+      delete mAgendaView;
+      delete mPopup;
+    }
+
+    EventViews::AgendaView *mAgendaView;
+    KOEventPopupMenu *mPopup;
+
+    private:
+      KOAgendaView * const q;
 
 };
 
 KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   KOEventView( parent ), d( new Private( isSideBySide, this ) )
 {
-
-  // TODO_EVENTVIEWS:: the popup
-  //connect( d->mAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-  //connect( d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
   QHBoxLayout *layout = new QHBoxLayout( this );
   layout->addWidget( d->mAgendaView );
 
@@ -53,38 +62,24 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   connect( d->mAgendaView, SIGNAL(timeSpanSelectionChanged()),
            SIGNAL(timeSpanSelectionChanged()) );
 
+  connect( d->mAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+           d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
+
+  connect( d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
+           SLOT(showNewEventPopup()) );
 
   d->mAgendaView->show();
-// TODO_EVENTVIEWS: the popup
-//  connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
-//  connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda );
 }
 
 KOAgendaView::~KOAgendaView()
 {
-//TODO_EVENTVIEWS: popups
-//  delete mAgendaPopup;
-//  delete mAllDayAgendaPopup;
+  delete d;
 }
 
 void KOAgendaView::setCalendar( CalendarSupport::Calendar *cal )
 {
   d->mAgendaView->setCalendar( cal );
 }
-
-//TODO_EVENTVIEW: POPUPS
-/*
-void KOAgendaView::connectAgenda( KOAgenda *agenda, KOEventPopupMenu *popup,
-                                  KOAgenda *otherAgenda )
-{
-  connect( agenda, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-           popup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
-
-  connect( agenda, SIGNAL(showNewEventPopupSignal()),
-           SLOT(showNewEventPopup()) );
-
-}
-*/
 
 void KOAgendaView::zoomInVertically()
 {
@@ -344,13 +339,6 @@ bool KOAgendaView::selectedIsAllDay()
 {
   return d->mAgendaView->selectedIsAllDay();
 }
-
-/*
-KOAgenda * KOAgendaView::agenda() const
-{
-//TODO_EVENTVIEW, why do we need this here?
-  return 0; // review what this function is fore
-  }*/
 
 QSplitter * KOAgendaView::splitter() const
 {

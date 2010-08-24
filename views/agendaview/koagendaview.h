@@ -99,7 +99,6 @@ class KOAgendaView : public KOEventView
     void setCollection( Akonadi::Collection::Id id );
     Akonadi::Collection::Id collection() const;
 
-//    KOAgenda *agenda() const;
     QSplitter *splitter() const;
 
   public slots:
