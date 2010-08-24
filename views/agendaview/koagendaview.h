@@ -105,19 +105,14 @@ class KOAgendaView : public KOEventView
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void insertIncidence( const Akonadi::Item &incidence, const QDate &curDate );
     void changeIncidenceDisplayAdded( const Akonadi::Item &incidence );
     void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
 
     void clearSelection();
 
-    void startDrag( const Akonadi::Item & );
-
     void readSettings();
     void readSettings( KConfig * );
     void writeSettings( KConfig * );
-
-    void setContentsPos( int y );
 
     /** reschedule the todo  to the given x- and y- coordinates.
         Third parameter determines all-day (no time specified) */
@@ -133,18 +128,7 @@ class KOAgendaView : public KOEventView
     void zoomInVertically( );
     void zoomOutVertically( );
 
-    void zoomView( const int delta, const QPoint &pos,
-      const Qt::Orientation orient=Qt::Horizontal );
-
-    void clearTimeSpanSelection();
-
-    // Used by the timelabelszone
-    void updateTimeBarWidth();
-
-    /** Create labels for the selected dates. */
-    void createDayLabels();
-
-    void createTimeBarHeaders();
+    void zoomView( const int delta, const QPoint &pos, const Qt::Orientation orient=Qt::Horizontal );
 
   signals:
     void zoomViewHorizontally( const QDate &, int count );

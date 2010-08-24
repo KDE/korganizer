@@ -158,12 +158,6 @@ void KOAgendaView::placeDecorations( DecorationList &decoList, const QDate &date
 */
 #endif // KORG_NODECOS
 
-void KOAgendaView::createDayLabels()
-{
-  //TODO_EVENTVIEW: this function had decoration code
-  d->mAgendaView->createDayLabels( false );
-}
-
 void KOAgendaView::enableAgendaUpdate( bool enable )
 {
   d->mAgendaView->enableAgendaUpdate( enable );
@@ -211,16 +205,6 @@ void KOAgendaView::updateConfig()
   d->mAgendaView->updateConfig();
 }
 
-void KOAgendaView::createTimeBarHeaders()
-{
-  d->mAgendaView->createTimeBarHeaders();
-}
-
-void KOAgendaView::updateTimeBarWidth()
-{
-  d->mAgendaView->updateTimeBarWidth();
-}
-
 void KOAgendaView::showDates( const QDate &start, const QDate &end )
 {
   d->mAgendaView->showDates( start, end );
@@ -229,11 +213,6 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 void KOAgendaView::showIncidences( const Akonadi::Item::List &incidences, const QDate &date )
 {
   d->mAgendaView->showIncidences( incidences, date );
-}
-
-void KOAgendaView::insertIncidence( const Akonadi::Item &aitem, const QDate &curDate )
-{
-  d->mAgendaView->insertIncidence( aitem, curDate );
 }
 
 void KOAgendaView::changeIncidenceDisplayAdded( const Akonadi::Item &aitem )
@@ -270,10 +249,6 @@ void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint
 {
   d->mAgendaView->slotTodosDropped( items, gpos, allDay );
 }
-void KOAgendaView::startDrag( const Akonadi::Item &incidence )
-{
-  d->mAgendaView->startDrag( incidence );
-}
 
 void KOAgendaView::readSettings()
 {
@@ -288,11 +263,6 @@ void KOAgendaView::readSettings( KConfig *config )
 void KOAgendaView::writeSettings( KConfig *config )
 {
   d->mAgendaView->writeSettings( config );
-}
-
-void KOAgendaView::setContentsPos( int y )
-{
-  d->mAgendaView->setContentsPos( y );
 }
 
 void KOAgendaView::clearSelection()
