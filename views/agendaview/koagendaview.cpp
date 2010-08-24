@@ -340,10 +340,4 @@ bool KOAgendaView::selectedIsAllDay()
   return d->mAgendaView->selectedIsAllDay();
 }
 
-QSplitter * KOAgendaView::splitter() const
-{
-  // TODO_EVENTVIEW, why do we need this here?
-  return 0; // review what this function is fore
-}
-
 #include "koagendaview.moc"
