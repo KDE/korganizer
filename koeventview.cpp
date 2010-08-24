@@ -30,6 +30,7 @@
 
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
 #include <libkdepim/pimmessagebox.h>
@@ -169,8 +170,6 @@ void KOEventView::defaultAction( const Akonadi::Item &aitem )
   if ( !incidence ) {
     return;
   }
-
-  kDebug() << "  type:" << int( incidence->type() );
 
   if ( !calendar()->hasChangeRights( aitem ) ) {
     emit showIncidenceSignal( aitem );

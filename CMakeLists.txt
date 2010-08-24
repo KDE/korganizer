@@ -173,7 +173,7 @@ set(korganizerprivate_LIB_SRCS
   views/monthview/monthitem.cpp
   views/monthview/monthgraphicsitems.cpp
   views/monthview/monthscene.cpp
-#  views/multiagendaview/multiagendaview.cpp
+  views/multiagendaview/multiagendaview.cpp
   views/todoview/kotodomodel.cpp
   views/todoview/kotododelegates.cpp
   views/todoview/kotodoviewsortfilterproxymodel.cpp
@@ -222,7 +222,6 @@ kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc )
 
 kde4_add_ui_files(korganizerprivate_LIB_SRCS
   accountscalendarwidget.ui
-#  multiagendaviewconfigwidget.ui
   filteredit_base.ui publishdialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
   printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui
 )

@@ -19,7 +19,7 @@
 #ifndef KORG_MULTIAGENDAVIEW_H_H
 #define KORG_MULTIAGENDAVIEW_H_H
 
-#include <calendarviews/agenda/multiagenda/multiagendaview.h>
+#include "../../koeventview.h"
 
 #include <Akonadi/Item>
 
@@ -40,7 +40,7 @@ namespace KOrg {
 /**
   Shows one agenda for every resource side-by-side.
 */
-class MultiAgendaView : public AgendaView
+class MultiAgendaView : public KOEventView
 {
   Q_OBJECT
   public:
@@ -75,6 +75,10 @@ class MultiAgendaView : public AgendaView
     void updateConfig();
 
     void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+
+  private:
+    class Private;
+    Private * const d;
 
 };
 

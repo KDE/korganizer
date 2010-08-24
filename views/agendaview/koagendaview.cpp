@@ -123,20 +123,24 @@ void KOAgendaView::zoomInVertically()
   d->mAgendaView->zoomInVertically();
 }
 
-void KOAgendaView::zoomOutVertically( )
+void KOAgendaView::zoomOutVertically()
 {
+  return d->mAgendaView->zoomOutVertically();
 }
 
 void KOAgendaView::zoomInHorizontally( const QDate &date )
 {
+  return d->mAgendaView->zoomInHorizontally( date );
 }
 
 void KOAgendaView::zoomOutHorizontally( const QDate &date )
 {
+  return d->mAgendaView->zoomOutHorizontally( date );
 }
 
 void KOAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Orientation orient )
 {
+  return d->mAgendaView->zoomView( delta, pos, orient );
 }
 
 #ifndef KORG_NODECOS
@@ -194,7 +198,7 @@ void KOAgendaView::placeDecorations( DecorationList &decoList, const QDate &date
 void KOAgendaView::createDayLabels()
 {
   //TODO_EVENTVIEW: this function had decoration code
-  d->mAgendaView->createDayLabels();
+  d->mAgendaView->createDayLabels( false );
 }
 
 void KOAgendaView::enableAgendaUpdate( bool enable )
@@ -296,7 +300,7 @@ CalPrinter::PrintType KOAgendaView::printType()
 
 void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpos, bool allDay )
 {
-  return d->mAgendaView->slotTodosDropped( items, gpos, allday );
+  return d->mAgendaView->slotTodosDropped( items, gpos, allDay );
 }
 
 void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint &gpos, bool allDay )
@@ -333,36 +337,10 @@ void KOAgendaView::clearSelection()
   return d->mAgendaView->clearSelection();
 }
 
-void KOAgendaView::newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end )
-{
-  return d->mAgendaView->newTimeSpanSelectedAllDay( start, end );
-}
-
-void KOAgendaView::handleNewEventRequest()
-{
-  return d->mAgendaView->handleNewEventRequest();
-}
-
-void KOAgendaView::newTimeSpanSelected( const QPoint &start, const QPoint &end )
-{
-  return d->mAgendaView->newTimeSpanSelected( start, end );
-}
-
 void KOAgendaView::deleteSelectedDateTime()
 {
   return d->mAgendaView->deleteSelectedDateTime();
 }
-
-void KOAgendaView::removeIncidence( const Akonadi::Item &incidence )
-{
-  return d->mAgendaView->removeIncidence( incidence );
-}
-
-void KOAgendaView::updateEventIndicators()
-{
-  return d->mAgendaView->updateEventIndicators();
-}
-
 
 void KOAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
@@ -382,11 +360,6 @@ void KOAgendaView::setCollection( Akonadi::Collection::Id coll )
 Akonadi::Collection::Id KOAgendaView::collection() const
 {
   return d->mAgendaView->collection();
-}
-
-bool KOAgendaView::filterByCollectionSelection( const Akonadi::Item &incidence )
-{
-  return d->mAgendaView->filterByCollectionSelection( incidence );
 }
 
 QDateTime KOAgendaView::selectionStart()
