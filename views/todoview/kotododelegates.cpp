@@ -89,7 +89,7 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   style = opt.widget ? opt.widget->style() : QApplication::style();
   style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
-#if QT_VERSION >= 0x040700
+#if QT_VERSION >= 0x040800
 #ifdef __GNUC__
 #warning QTreeView should now set State_Editing correctly, remove the workaround
 #endif
