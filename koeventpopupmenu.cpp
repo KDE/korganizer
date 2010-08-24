@@ -242,4 +242,9 @@ void KOEventPopupMenu::toggleTodoCompleted()
   }
 }
 
+void KOEventPopupMenu::setCalendar( CalendarSupport::Calendar *calendar )
+{
+  mCalendar = calendar;
+}
+
 #include "koeventpopupmenu.moc"

@@ -148,6 +148,8 @@ KOAgendaView::~KOAgendaView()
 
 void KOAgendaView::setCalendar( CalendarSupport::Calendar *cal )
 {
+  KOEventView::setCalendar( cal );
+  d->mPopup->setCalendar( cal );
   d->mAgendaView->setCalendar( cal );
 }
 

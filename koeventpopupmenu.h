@@ -43,6 +43,7 @@ class KOEventPopupMenu : public QMenu
   Q_OBJECT
   public:
     explicit KOEventPopupMenu( CalendarSupport::Calendar *, QWidget *parent = 0 );
+    void setCalendar( CalendarSupport::Calendar * );
 
   public slots:
     void showIncidencePopup( const Akonadi::Item &, const QDate & );
