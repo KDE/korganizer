@@ -59,6 +59,7 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
 
   connect( d->mAgendaView, SIGNAL(zoomViewHorizontally(QDate,int)),
            SIGNAL(zoomViewHorizontally(QDate,int)) );
+
   connect( d->mAgendaView, SIGNAL(timeSpanSelectionChanged()),
            SIGNAL(timeSpanSelectionChanged()) );
 
@@ -67,6 +68,76 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
 
   connect( d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
+
+  connect( d->mAgendaView, SIGNAL(datesSelected(KCalCore::DateList)),
+           SIGNAL(datesSelected(KCalCore::DateList)) );
+
+  connect( d->mAgendaView, SIGNAL(shiftedEvent(QDate,QDate)),
+           SIGNAL(shiftedEvent(QDate,QDate)) );
+
+
+  connect( d->mAgendaView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+
+  connect( d->mAgendaView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()) );
+
+  connect( d->mAgendaView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( d->mAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( d->mAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+
+  connect( d->mAgendaView, SIGNAL(startMultiModify(QString)),
+           SIGNAL(startMultiModify(QString)) );
+
+  connect( d->mAgendaView, SIGNAL(endMultiModify()),
+           SIGNAL(endMultiModify()) );
+
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List)) );
+
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)) );
+
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)) );
+
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)) );
+
+  connect( d->mAgendaView, SIGNAL(newTodoSignal(QDate)),
+           SIGNAL(newTodoSignal(QDate)) );
+
+  connect( d->mAgendaView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+
+  connect( d->mAgendaView, SIGNAL(newJournalSignal(QDate)),
+           SIGNAL(newJournalSignal(QDate)) );
 
   d->mAgendaView->show();
 }
