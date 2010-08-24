@@ -156,7 +156,6 @@ class KOAgendaView : public KOEventView
 
   signals:
     void zoomViewHorizontally( const QDate &, int count );
-
     void timeSpanSelectionChanged();
 
   private:

@@ -38,6 +38,10 @@ class MultiAgendaView::Private {
 MultiAgendaView::MultiAgendaView( QWidget *parent )
   : KOEventView( parent ), d( new Private( parent ) )
 {
+
+
+
+
 }
 
 void MultiAgendaView::setCalendar( CalendarSupport::Calendar *cal )
@@ -47,6 +51,7 @@ void MultiAgendaView::setCalendar( CalendarSupport::Calendar *cal )
 
 MultiAgendaView::~MultiAgendaView()
 {
+  delete d;
 }
 
 Akonadi::Item::List MultiAgendaView::selectedIncidences()

@@ -41,8 +41,17 @@ class KOAgendaView::Private
 KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   KOEventView( parent ), d( new Private( isSideBySide, parent ) )
 {
-  d->mAgendaView->show();
 
+  connect( d->mAgendaView, SIGNAL(zoomViewHorizontally(QDate,int)),
+           SIGNAL(zoomViewHorizontally(QDate,int)) );
+  connect( d->mAgendaView, SIGNAL(timeSpanSelectionChanged()),
+           SIGNAL(timeSpanSelectionChanged()) );
+
+  // TODO_EVENTVIEWS:: the popup
+  //connect( d->mAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+  //connect( d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
+
+  d->mAgendaView->show();
 // TODO_EVENTVIEWS: the popup
 //  connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
 //  connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda );
@@ -70,50 +79,6 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, KOEventPopupMenu *popup,
 
   connect( agenda, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
-  agenda->setCalendar( calendar() );
-
-  // Create/Show/Edit/Delete Event
-  // Is the newEventSignal even emitted? It doesn't seem to reach handleNewEventRequest()
-  // at least.
-  connect( agenda, SIGNAL(newEventSignal()), SLOT(handleNewEventRequest()) );
-
-  connect( agenda, SIGNAL(newStartSelectSignal()),
-           otherAgenda, SLOT(clearSelection()) );
-  connect( agenda, SIGNAL(newStartSelectSignal()),
-           SIGNAL(timeSpanSelectionChanged()) );
-
-  connect( agenda, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-                   SIGNAL(editIncidenceSignal(Akonadi::Item)) );
-  connect( agenda, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-                   SIGNAL(showIncidenceSignal(Akonadi::Item)) );
-  connect( agenda, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-                   SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
-
-  connect( agenda, SIGNAL(startMultiModify(const QString &)),
-                   SIGNAL(startMultiModify(const QString &)) );
-  connect( agenda, SIGNAL(endMultiModify()),
-                   SIGNAL(endMultiModify()) );
-
-  connect( agenda, SIGNAL(itemModified(KOAgendaItem *)),
-                   SLOT(updateEventDates(KOAgendaItem *)) );
-  connect( agenda, SIGNAL(enableAgendaUpdate(bool)),
-                   SLOT(enableAgendaUpdate(bool)) );
-
-  // drag signals
-  connect( agenda, SIGNAL(startDragSignal(Akonadi::Item)),
-           SLOT(startDrag(Akonadi::Item)) );
-
-  // synchronize selections
-  connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
-           otherAgenda, SLOT(deselectItem()) );
-  connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
-           SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)) );
-
-  // rescheduling of todos by d'n'd
-  connect( agenda, SIGNAL(droppedToDos(QList<KCalCore::Todo::Ptr>,const QPoint &,bool)),
-           SLOT(slotTodosDropped(QList<KCalCore::Todo::Ptr>,const QPoint &,bool)) );
-  connect( agenda, SIGNAL(droppedToDos(QList<KUrl>,const QPoint &,bool)),
-           SLOT(slotTodosDropped(QList<KUrl>,const QPoint &,bool)) );
 
 }
 */
@@ -125,22 +90,22 @@ void KOAgendaView::zoomInVertically()
 
 void KOAgendaView::zoomOutVertically()
 {
-  return d->mAgendaView->zoomOutVertically();
+  d->mAgendaView->zoomOutVertically();
 }
 
 void KOAgendaView::zoomInHorizontally( const QDate &date )
 {
-  return d->mAgendaView->zoomInHorizontally( date );
+  d->mAgendaView->zoomInHorizontally( date );
 }
 
 void KOAgendaView::zoomOutHorizontally( const QDate &date )
 {
-  return d->mAgendaView->zoomOutHorizontally( date );
+  d->mAgendaView->zoomOutHorizontally( date );
 }
 
 void KOAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Orientation orient )
 {
-  return d->mAgendaView->zoomView( delta, pos, orient );
+  d->mAgendaView->zoomView( delta, pos, orient );
 }
 
 #ifndef KORG_NODECOS
@@ -240,52 +205,52 @@ bool KOAgendaView::selectedIsSingleCell()
 
 void KOAgendaView::updateView()
 {
-  return d->mAgendaView->updateView();
+  d->mAgendaView->updateView();
 }
 
 void KOAgendaView::updateConfig()
 {
-  return d->mAgendaView->updateConfig();
+  d->mAgendaView->updateConfig();
 }
 
 void KOAgendaView::createTimeBarHeaders()
 {
-  return d->mAgendaView->createTimeBarHeaders();
+  d->mAgendaView->createTimeBarHeaders();
 }
 
 void KOAgendaView::updateTimeBarWidth()
 {
-  return d->mAgendaView->updateTimeBarWidth();
+  d->mAgendaView->updateTimeBarWidth();
 }
 
 void KOAgendaView::showDates( const QDate &start, const QDate &end )
 {
-  return d->mAgendaView->showDates( start, end );
+  d->mAgendaView->showDates( start, end );
 }
 
 void KOAgendaView::showIncidences( const Akonadi::Item::List &incidences, const QDate &date )
 {
-  return d->mAgendaView->showIncidences( incidences, date );
+  d->mAgendaView->showIncidences( incidences, date );
 }
 
 void KOAgendaView::insertIncidence( const Akonadi::Item &aitem, const QDate &curDate )
 {
-  return d->mAgendaView->insertIncidence( aitem, curDate );
+  d->mAgendaView->insertIncidence( aitem, curDate );
 }
 
 void KOAgendaView::changeIncidenceDisplayAdded( const Akonadi::Item &aitem )
 {
-  return d->mAgendaView->changeIncidenceDisplayAdded( aitem );
+  d->mAgendaView->changeIncidenceDisplayAdded( aitem );
 }
 
 void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &aitem, int mode )
 {
-  return d->mAgendaView->changeIncidenceDisplay( aitem, mode );
+  d->mAgendaView->changeIncidenceDisplay( aitem, mode );
 }
 
 void KOAgendaView::clearView()
 {
-  return d->mAgendaView->clearView();
+  d->mAgendaView->clearView();
 }
 
 CalPrinter::PrintType KOAgendaView::printType()
@@ -300,61 +265,61 @@ CalPrinter::PrintType KOAgendaView::printType()
 
 void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpos, bool allDay )
 {
-  return d->mAgendaView->slotTodosDropped( items, gpos, allDay );
+  d->mAgendaView->slotTodosDropped( items, gpos, allDay );
 }
 
 void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint &gpos, bool allDay )
 {
-  return d->mAgendaView->slotTodosDropped( items, gpos, allDay );
+  d->mAgendaView->slotTodosDropped( items, gpos, allDay );
 }
 void KOAgendaView::startDrag( const Akonadi::Item &incidence )
 {
-  return d->mAgendaView->startDrag( incidence );
+  d->mAgendaView->startDrag( incidence );
 }
 
 void KOAgendaView::readSettings()
 {
-  return d->mAgendaView->readSettings();
+  d->mAgendaView->readSettings();
 }
 
 void KOAgendaView::readSettings( KConfig *config )
 {
-  return d->mAgendaView->readSettings( config );
+  d->mAgendaView->readSettings( config );
 }
 
 void KOAgendaView::writeSettings( KConfig *config )
 {
-  return d->mAgendaView->writeSettings( config );
+  d->mAgendaView->writeSettings( config );
 }
 
 void KOAgendaView::setContentsPos( int y )
 {
-  return d->mAgendaView->setContentsPos( y );
+  d->mAgendaView->setContentsPos( y );
 }
 
 void KOAgendaView::clearSelection()
 {
-  return d->mAgendaView->clearSelection();
+  d->mAgendaView->clearSelection();
 }
 
 void KOAgendaView::deleteSelectedDateTime()
 {
-  return d->mAgendaView->deleteSelectedDateTime();
+  d->mAgendaView->deleteSelectedDateTime();
 }
 
 void KOAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
-  return d->mAgendaView->setIncidenceChanger( changer );
+  d->mAgendaView->setIncidenceChanger( changer );
 }
 
 void KOAgendaView::clearTimeSpanSelection()
 {
-  return d->mAgendaView->clearTimeSpanSelection();
+  d->mAgendaView->clearTimeSpanSelection();
 }
 
 void KOAgendaView::setCollection( Akonadi::Collection::Id coll )
 {
-  return d->mAgendaView->setCollection( coll );
+  d->mAgendaView->setCollection( coll );
 }
 
 Akonadi::Collection::Id KOAgendaView::collection() const
