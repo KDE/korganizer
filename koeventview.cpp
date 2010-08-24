@@ -70,7 +70,7 @@ KOEventView::~KOEventView()
 
 KOEventPopupMenu *KOEventView::eventPopup()
 {
-  KOEventPopupMenu *eventPopup = new KOEventPopupMenu(this);
+  KOEventPopupMenu *eventPopup = new KOEventPopupMenu( calendar(), this );
 
   connect( eventPopup, SIGNAL(editIncidenceSignal(Akonadi::Item)),
            SIGNAL(editIncidenceSignal(Akonadi::Item)));
@@ -88,10 +88,10 @@ KOEventPopupMenu *KOEventView::eventPopup()
            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
   connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,const QString &)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,const QString &)));
-  connect( eventPopup, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,const QString &)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,const QString &)));
+  connect( eventPopup, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
+  connect( eventPopup, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
   connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 

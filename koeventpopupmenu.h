@@ -31,11 +31,9 @@
 
 #include <Akonadi/Item>
 
-namespace KCal {
-  class Incidence;
+namespace CalendarSupport {
+  class Calendar;
 }
-
-class KOEventView;
 
 /**
  * Context menu for event views with standard event actions.
@@ -44,7 +42,7 @@ class KOEventPopupMenu : public QMenu
 {
   Q_OBJECT
   public:
-    explicit KOEventPopupMenu(KOEventView *);
+    explicit KOEventPopupMenu( CalendarSupport::Calendar *, QWidget *parent = 0 );
 
   public slots:
     void showIncidencePopup( const Akonadi::Item &, const QDate & );
@@ -80,7 +78,7 @@ class KOEventPopupMenu : public QMenu
   private:
     void print( bool previous );
 
-    KOEventView *mEventview;
+    CalendarSupport::Calendar *mCalendar;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 

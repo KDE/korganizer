@@ -46,9 +46,8 @@ class KOAgendaView::Private
     EventViews::AgendaView *mAgendaView;
     KOEventPopupMenu *mPopup;
 
-    private:
-      KOAgendaView * const q;
-
+  private:
+    KOAgendaView * const q;
 };
 
 KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :

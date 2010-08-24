@@ -28,7 +28,6 @@
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
-#include "koeventview.h"
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/kcalprefs.h>
@@ -41,8 +40,8 @@
 
 using namespace KCalCore;
 
-KOEventPopupMenu::KOEventPopupMenu( KOEventView *eventview )
-  : QMenu( eventview ), mEventview( eventview )
+KOEventPopupMenu::KOEventPopupMenu( CalendarSupport::Calendar *calendar, QWidget *parent )
+  : QMenu( parent ), mCalendar( calendar )
 {
   mHasAdditionalItems = false;
 
@@ -97,22 +96,28 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   mCurrentIncidence = item;
   mCurrentDate = qd;
 
+  qDebug() << "DEBUG YEP IT CAME";
+
   if ( !CalendarSupport::hasIncidence( mCurrentIncidence ) /*&& qd.isValid()*/ ) {
     kDebug() << "No event selected";
     return;
   }
 
-  if( !mEventview->calendar() )  //TODO fix it
-      return;
-  const bool hasChangeRights = mEventview->calendar()->hasChangeRights( mCurrentIncidence );
+  if ( !mCalendar ) {
+    //TODO fix it
+    kDebug() << "Calendar is 0";
+    return;
+  }
+
+  const bool hasChangeRights = mCalendar->hasChangeRights( mCurrentIncidence );
 
   Incidence::Ptr incidence = CalendarSupport::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
   if ( incidence->recurs() ) {
-    KDateTime thisDateTime( qd, CalendarSupport::KCalPrefs::instance()->timeSpec() );
-    bool isLastOccurrence =
+    const KDateTime thisDateTime( qd, CalendarSupport::KCalPrefs::instance()->timeSpec() );
+    const bool isLastOccurrence =
       !incidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
-    bool isFirstOccurrence =
+    const bool isFirstOccurrence =
       !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
     mDissociateOccurrences->setEnabled(
       !( isFirstOccurrence && isLastOccurrence ) && hasChangeRights );
@@ -154,10 +159,10 @@ void KOEventPopupMenu::print()
   print( false );
 }
 
-void KOEventPopupMenu::print(bool preview)
+void KOEventPopupMenu::print( bool preview )
 {
   KOCoreHelper helper;
-  CalPrinter printer( this, mEventview->calendar(), &helper, true );
+  CalPrinter printer( this, mCalendar, &helper, true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   //Item::List selectedIncidences;
