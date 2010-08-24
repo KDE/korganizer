@@ -76,7 +76,7 @@ class KOAgendaView : public KOEventView
     /** Remove all events from view */
     void clearView();
 
-    CalPrinter::PrintType printType();
+    CalPrinter::PrintType printType() const;
 
     /** start-datetime of selection */
     virtual QDateTime selectionStart();

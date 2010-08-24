@@ -58,7 +58,7 @@ class KOWhatsNextView : public KOrg::BaseView
     KCalCore::DateList selectedIncidenceDates() { return KCalCore::DateList(); }
 
     bool supportsDateNavigation() const { return true; }
-    virtual KOrg::CalPrinterBase::PrintType printType();
+    virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   public slots:
     virtual void updateView();

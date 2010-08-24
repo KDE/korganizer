@@ -520,7 +520,7 @@ void KOListView::clear()
   mItems.clear();
 }
 
-KOrg::CalPrinterBase::PrintType KOListView::printType()
+KOrg::CalPrinterBase::PrintType KOListView::printType() const
 {
   return KOrg::CalPrinterBase::Incidence;
 }

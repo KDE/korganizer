@@ -120,7 +120,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual QDateTime selectionEnd() { return QDateTime(); }
 
-    virtual CalPrinterBase::PrintType printType();
+    virtual CalPrinterBase::PrintType printType() const;
 
     /**
       Returns the number of currently shown dates.

@@ -157,7 +157,7 @@ void BaseView::setCalendar( Calendar *cal )
     d->collectionSelectionModel->setSourceModel( cal->model() );
 }
 
-CalPrinterBase::PrintType BaseView::printType()
+CalPrinterBase::PrintType BaseView::printType() const
 {
   return CalPrinterBase::Month;
 }

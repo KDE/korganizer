@@ -557,7 +557,7 @@ void KOTimelineView::removeIncidence( const Akonadi::Item &incidence )
 //   */
 // }
 
-KOrg::CalPrinterBase::PrintType KOTimelineView::printType()
+KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {

@@ -221,7 +221,7 @@ bool KOJournalView::eventFilter ( QObject *object, QEvent *event )
   }
 }
 
-CalPrinterBase::PrintType KOJournalView::printType()
+CalPrinterBase::PrintType KOJournalView::printType() const
 {
   return CalPrinterBase::Journallist;
 }

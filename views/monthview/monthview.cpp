@@ -490,7 +490,7 @@ bool MonthView::usesFullWindow()
   return KOPrefs::instance()->mFullViewMonth;
 }
 
-CalPrinterBase::PrintType MonthView::printType()
+CalPrinterBase::PrintType MonthView::printType() const
 {
   return CalPrinterBase::Month;
 }

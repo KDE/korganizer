@@ -347,7 +347,7 @@ void KOWhatsNextView::showIncidence( const QString &uid )
   }
 }
 
-KOrg::CalPrinterBase::PrintType KOWhatsNextView::printType()
+KOrg::CalPrinterBase::PrintType KOWhatsNextView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {

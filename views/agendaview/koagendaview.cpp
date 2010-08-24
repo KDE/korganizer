@@ -230,7 +230,7 @@ void KOAgendaView::clearView()
   d->mAgendaView->clearView();
 }
 
-CalPrinter::PrintType KOAgendaView::printType()
+CalPrinter::PrintType KOAgendaView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {

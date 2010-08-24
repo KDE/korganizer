@@ -69,7 +69,7 @@ class KOTimelineView : public KOEventView
     virtual int maxDatesHint() const { return 0; }
 
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    virtual KOrg::CalPrinterBase::PrintType printType();
+    virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   private:
     KOrg::TimelineItem *calendarItemForIncidence( const Akonadi::Item &incidence );

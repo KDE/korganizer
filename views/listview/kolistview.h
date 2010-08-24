@@ -87,7 +87,7 @@ class KOListView : public KOEventView
 
     void clear();
     QSize sizeHint() const;
-    virtual KOrg::CalPrinterBase::PrintType printType();
+    virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   public slots:
     virtual void updateView();
