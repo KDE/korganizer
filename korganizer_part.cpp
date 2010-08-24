@@ -60,7 +60,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   KGlobal::locale()->insertCatalog( "libkcalutils" );
   KGlobal::locale()->insertCatalog( "calendarsupport" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
-  KGlobal::locale()->insertCatalog( "kdgantt1" );
+  KGlobal::locale()->insertCatalog( "kdgantt2" );
   KGlobal::locale()->insertCatalog( "libakonadi" );
   KGlobal::locale()->insertCatalog( "libincidenceeditors" );
 
