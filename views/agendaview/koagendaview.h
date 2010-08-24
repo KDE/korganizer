@@ -102,11 +102,6 @@ class KOAgendaView : public KOEventView
 //    KOAgenda *agenda() const;
     QSplitter *splitter() const;
 
-    /* reimplemented from KCalCore::Calendar::CalendarObserver */
-    void calendarIncidenceAdded( const Akonadi::Item &incidence );
-    void calendarIncidenceChanged( const Akonadi::Item &incidence );
-    void calendarIncidenceDeleted( const Akonadi::Item &incidence );
-
   public slots:
     virtual void updateView();
     virtual void updateConfig();

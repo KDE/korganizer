@@ -24,7 +24,7 @@
 
 #include "koagendaview.h"
 #include <calendarviews/agenda/agendaview.h>
-
+#include <QHBoxLayout>
 
 class KOAgendaView::Private
 {
@@ -39,17 +39,20 @@ class KOAgendaView::Private
 };
 
 KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
-  KOEventView( parent ), d( new Private( isSideBySide, parent ) )
+  KOEventView( parent ), d( new Private( isSideBySide, this ) )
 {
+
+  // TODO_EVENTVIEWS:: the popup
+  //connect( d->mAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+  //connect( d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
+  QHBoxLayout *layout = new QHBoxLayout( this );
+  layout->addWidget( d->mAgendaView );
 
   connect( d->mAgendaView, SIGNAL(zoomViewHorizontally(QDate,int)),
            SIGNAL(zoomViewHorizontally(QDate,int)) );
   connect( d->mAgendaView, SIGNAL(timeSpanSelectionChanged()),
            SIGNAL(timeSpanSelectionChanged()) );
 
-  // TODO_EVENTVIEWS:: the popup
-  //connect( d->mAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-  //connect( d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
 
   d->mAgendaView->show();
 // TODO_EVENTVIEWS: the popup
@@ -351,7 +354,7 @@ KOAgenda * KOAgendaView::agenda() const
 
 QSplitter * KOAgendaView::splitter() const
 {
-//TODO_EVENTVIEW, why do we need this here?
+  // TODO_EVENTVIEW, why do we need this here?
   return 0; // review what this function is fore
 }
 
