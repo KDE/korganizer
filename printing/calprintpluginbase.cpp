@@ -25,10 +25,10 @@
 */
 
 #include "calprintpluginbase.h"
-#include "cellitem.h"
 #include "koprefs.h"
 #include "kohelper.h"
 
+#include <calendarviews/agenda/cellitem.h>
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
@@ -75,7 +75,7 @@ class CalPrintPluginBase::TodoParentStart
  **                     The Print item                           **
  ******************************************************************/
 
-class PrintCellItem : public KOrg::CellItem
+class PrintCellItem : public EventViews::CellItem
 {
   public:
   PrintCellItem( const Event::Ptr &event, const KDateTime &start, const KDateTime &end )
@@ -92,7 +92,7 @@ class PrintCellItem : public KOrg::CellItem
 
     /** Calculate the start and end date/time of the recurrence that
         happens on the given day */
-    bool overlaps( KOrg::CellItem *o ) const
+    bool overlaps( EventViews::CellItem *o ) const
     {
       PrintCellItem *other = static_cast<PrintCellItem *>( o );
       return !( other->start() >= end() || other->end() <= start() );
@@ -920,7 +920,7 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
   // Calculate horizontal positions and widths of events taking into account
   // overlapping events
 
-  QList<KOrg::CellItem *> cells;
+  QList<EventViews::CellItem *> cells;
 
   Akonadi::Item::List::ConstIterator itEvents;
   for ( itEvents = events.constBegin(); itEvents != events.constEnd(); ++itEvents ) {
@@ -932,13 +932,13 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
     }
   }
 
-  QListIterator<KOrg::CellItem *> it1( cells );
+  QListIterator<EventViews::CellItem *> it1( cells );
   while ( it1.hasNext() ) {
-    KOrg::CellItem *placeItem = it1.next();
-    KOrg::CellItem::placeItem( cells, placeItem );
+    EventViews::CellItem *placeItem = it1.next();
+    EventViews::CellItem::placeItem( cells, placeItem );
   }
 
-  QListIterator<KOrg::CellItem *> it2( cells );
+  QListIterator<EventViews::CellItem *> it2( cells );
   while ( it2.hasNext() ) {
     PrintCellItem *placeItem = static_cast<PrintCellItem *>( it2.next() );
     drawAgendaItem( placeItem, p, startPrintDate, endPrintDate, minlen, box,
@@ -1471,7 +1471,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 
   const Akonadi::Item::List events = mCalendar->events( start, end );
   QMap<int, QStringList> textEvents;
-  QList<KOrg::CellItem *> timeboxItems;
+  QList<EventViews::CellItem *> timeboxItems;
 
   // 1) For multi-day events, show boxes spanning several cells, use CellItem
   //    print the summary vertically
@@ -1569,10 +1569,10 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   }
 
   // For Multi-day events, line them up nicely so that the boxes don't overlap
-  QListIterator<KOrg::CellItem *> it1( timeboxItems );
+  QListIterator<EventViews::CellItem *> it1( timeboxItems );
   while ( it1.hasNext() ) {
-    KOrg::CellItem *placeItem = it1.next();
-    KOrg::CellItem::placeItem( timeboxItems, placeItem );
+    EventViews::CellItem *placeItem = it1.next();
+    EventViews::CellItem::placeItem( timeboxItems, placeItem );
   }
   KDateTime starttime( start, QTime( 0, 0, 0 ) );
   int newxstartcont = xstartcont;

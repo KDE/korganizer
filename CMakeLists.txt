@@ -209,7 +209,6 @@ set(korganizerprivate_LIB_SRCS
   exportwebdialog.cpp
   kocorehelper.cpp
   kohelper.cpp
-  cellitem.cpp
   akonadicollectionview.cpp
   htmlexportjob.cpp
   printing/calprinter.cpp
