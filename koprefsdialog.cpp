@@ -755,7 +755,7 @@ extern "C"
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &inst,
                                                           QWidget *parent )
-  : KPrefsModule( KOPrefs::instance(), inst, parent ), mCalendarViewsPrefs( EventViews::PrefsPtr( new EventViews::Prefs() ) )
+  : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
   KTabWidget *tabWidget = new KTabWidget( this );
@@ -881,7 +881,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   fontLayout->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidFont *timeBarFont =
-    addWidFont( mCalendarViewsPrefs->fontItem( "AgendaTimeLabelsFont" ), fontFrame,
+    addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
                 KGlobal::locale()->formatTime( QTime( 12, 34 ) ) );
   fontLayout->addWidget( timeBarFont->label(), 0, 0 );
   fontLayout->addWidget( timeBarFont->preview(), 0, 1 );
@@ -929,12 +929,15 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
     KOPrefs::instance()->setResourceColor( i.key(), i.value() );
     ++i;
   }
+
+  mCalendarViewsPrefs->writeConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::usrReadConfig()
 {
   updateCategories();
   updateResources();
+  mCalendarViewsPrefs->readConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::updateCategories()
