@@ -881,7 +881,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   fontLayout->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidFont *timeBarFont =
-    addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
+     addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
                 KGlobal::locale()->formatTime( QTime( 12, 34 ) ) );
   fontLayout->addWidget( timeBarFont->label(), 0, 0 );
   fontLayout->addWidget( timeBarFont->preview(), 0, 1 );
@@ -930,14 +930,14 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
     ++i;
   }
 
-  mCalendarViewsPrefs->writeConfig();
+  //mCalendarViewsPrefs->writeConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::usrReadConfig()
 {
   updateCategories();
   updateResources();
-  mCalendarViewsPrefs->readConfig();
+  //mCalendarViewsPrefs->readConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::updateCategories()

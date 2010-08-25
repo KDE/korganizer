@@ -145,7 +145,7 @@ kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_library(korganizer_core ${LIBRARY_TYPE} ${korganizer_core_LIB_SRCS})
 
-target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} kdepim incidenceeditorsng calendarsupport korganizer_interfaces ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
+target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} kdepim incidenceeditorsng calendarsupport korganizer_interfaces ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} eventviews)
 
 set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 

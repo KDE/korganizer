@@ -1,3 +1,4 @@
+
 /*
   This file is part of KOrganizer.
 
@@ -106,7 +107,6 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
     Akonadi::CollectionComboBox *mResourceCombo;
     KColorButton  *mResourceButton;
     QHash<QString, QColor> mResourceDict;
-    EventViews::PrefsPtr mCalendarViewsPrefs;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule

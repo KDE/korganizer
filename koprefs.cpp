@@ -64,6 +64,8 @@ K_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
 
 KOPrefs::KOPrefs() : KOPrefsBase()
 {
+  mEventViewsPrefs = EventViews::PrefsPtr( new EventViews::Prefs( this ) );
+
   mDefaultCategoryColor = QColor( 151, 235, 121 );
   mDefaultResourceColor = QColor(); //Default is a color invalid
 
@@ -248,4 +250,9 @@ void KOPrefs::setHtmlExportFile( const QString &fileName )
 QString KOPrefs::htmlExportFile() const
 {
   return mHtmlExportFile;
+}
+
+EventViews::PrefsPtr KOPrefs::eventViewsPreferences() const
+{
+  return mEventViewsPrefs;
 }

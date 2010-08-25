@@ -26,9 +26,14 @@
 
 #include "korganizer_export.h"
 #include "koprefs_base.h"
-#include <kdatetime.h>
+
+#include <calendarviews/agenda/prefs.h>
+
+#include <KDateTime>
 
 #include <QHash>
+
+#include <boost/shared_ptr.hpp>
 
 class QFont;
 class QColor;
@@ -42,6 +47,8 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     /** Get instance of KOPrefs. It is made sure that there is only one
     instance. */
     static KOPrefs *instance();
+
+    EventViews::PrefsPtr eventViewsPreferences() const;
 
     /** Set preferences to default values */
     void usrSetDefaults();
@@ -84,6 +91,8 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     QStringList mTimeScaleTimeZones;
 
     QString mHtmlExportFile;
+
+    EventViews::PrefsPtr mEventViewsPrefs;
 
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;

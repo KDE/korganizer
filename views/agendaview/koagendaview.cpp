@@ -22,10 +22,13 @@
   without including the source code for Qt in the source distribution.
 */
 
+#include "koprefs.h"
 #include "koagendaview.h"
 #include "koeventpopupmenu.h"
 
+#include <calendarviews/agenda/prefs.h>
 #include <calendarviews/agenda/agendaview.h>
+
 #include <QHBoxLayout>
 
 class KOAgendaView::Private
@@ -34,6 +37,7 @@ class KOAgendaView::Private
     Private( bool isSideBySide, KOAgendaView *parent ) : q( parent )
     {
       mAgendaView = new EventViews::AgendaView( parent, isSideBySide );
+      mAgendaView->setPreferences( KOPrefs::instance()->eventViewsPreferences() );
       mPopup = q->eventPopup();
     }
 
