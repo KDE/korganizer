@@ -36,8 +36,9 @@ class KOAgendaView::Private
   public:
     Private( bool isSideBySide, KOAgendaView *parent ) : q( parent )
     {
-      mAgendaView = new EventViews::AgendaView( parent, isSideBySide );
-      mAgendaView->setPreferences( KOPrefs::instance()->eventViewsPreferences() );
+      mAgendaView = new EventViews::AgendaView( isSideBySide,
+                                                KOPrefs::instance()->eventViewsPreferences(),
+                                                parent );
       mPopup = q->eventPopup();
     }
 
