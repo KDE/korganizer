@@ -111,7 +111,6 @@ void KOWhatsNextView::updateView()
     mText += "\">";
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
-    Event::List::ConstIterator it;
     Q_FOREACH ( const Akonadi::Item &evItem, events ) {
       Event::Ptr ev = CalendarSupport::event( evItem );
       if ( !ev->recurs() ) {
@@ -155,7 +154,6 @@ void KOWhatsNextView::updateView()
     mText += "\">";
     mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
-    Todo::List::ConstIterator it;
     Q_FOREACH( const Akonadi::Item & todoItem, todos ) {
       Todo::Ptr todo = CalendarSupport::todo( todoItem );
       if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate ) {
@@ -201,7 +199,6 @@ void KOWhatsNextView::updateView()
     }
   }
   todos = calendar()->todos();
-  Todo::List::ConstIterator it3;
   Q_FOREACH( const Akonadi::Item & todoItem, todos ) {
     Todo::Ptr to = CalendarSupport::todo( todoItem );
     Attendee::Ptr me = to->attendeeByMails( myEmails );
