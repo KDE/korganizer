@@ -66,9 +66,6 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 {
   mEventViewsPrefs = EventViews::PrefsPtr( new EventViews::Prefs( this ) );
 
-  mDefaultCategoryColor = QColor( 151, 235, 121 );
-  mDefaultResourceColor = QColor(); //Default is a color invalid
-
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
   mDefaultMonthViewFont.setPointSize(
@@ -86,12 +83,14 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 KOPrefs::~KOPrefs()
 {
   kDebug();
+  mEventViewsPrefs->writeConfig();
 }
 
 KOPrefs *KOPrefs::instance()
 {
   if ( !sInstance.exists() ) {
     sInstance->prefs->readConfig();
+    sInstance->prefs->mEventViewsPrefs->readConfig();
   }
 
   return sInstance->prefs;
@@ -108,31 +107,6 @@ void KOPrefs::usrReadConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
 
-  // Note that the [Category Colors] group was removed after 3.2 due to
-  // an algorithm change. That's why we now use [Category Colors2]
-
-  // Category colors
-  KConfigGroup colorsConfig( config(), "Category Colors2" );
-  CategoryConfig cc( this );
-  const QStringList cats = cc.customCategories();
-  Q_FOREACH( const QString& i, cats ) {
-    QColor c = colorsConfig.readEntry( i, mDefaultCategoryColor );
-    if ( c != mDefaultCategoryColor ) {
-      setCategoryColor( i, c );
-    }
-  }
-
-  // Resource colors
-  KConfigGroup rColorsConfig( config(), "Resources Colors" );
-  const QStringList colorKeyList = rColorsConfig.keyList();
-
-  QStringList::ConstIterator it3;
-  for ( it3 = colorKeyList.begin(); it3 != colorKeyList.end(); ++it3 ) {
-    QColor color = rColorsConfig.readEntry( *it3, mDefaultResourceColor );
-    //kDebug() << "key:" << (*it3) << "value:" << color;
-    setResourceColor( *it3, color );
-  }
-
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
 
@@ -143,20 +117,6 @@ void KOPrefs::usrWriteConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
 
-  KConfigGroup colorsConfig( config(), "Category Colors2" );
-  QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
-  while ( i != mCategoryColors.constEnd() ) {
-    colorsConfig.writeEntry( i.key(), i.value() );
-    ++i;
-  }
-
-  KConfigGroup rColorsConfig( config(), "Resources Colors" );
-  i = mResourceColors.constBegin();
-  while ( i != mResourceColors.constEnd() ) {
-    rColorsConfig.writeEntry( i.key(), i.value() );
-    ++i;
-  }
-
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
@@ -165,71 +125,29 @@ void KOPrefs::usrWriteConfig()
 
 void KOPrefs::setCategoryColor( const QString &cat, const QColor &color )
 {
-  mCategoryColors.insert( cat, color );
+  // We can remove these color convinence methods from KOPrefs
+  // and call directly on the EventViews::Prefs
+  mEventViewsPrefs->setCategoryColor( cat, color );
 }
 
 QColor KOPrefs::categoryColor( const QString &cat ) const
 {
-  QColor color;
-
-  if ( !cat.isEmpty() ) {
-    color = mCategoryColors.value( cat );
-  }
-
-  if ( color.isValid() ) {
-    return color;
-  } else {
-    return mDefaultCategoryColor;
-  }
+  return mEventViewsPrefs->categoryColor( cat );
 }
 
 bool KOPrefs::hasCategoryColor( const QString &cat ) const
 {
-    return mCategoryColors[ cat ].isValid();
+  return mEventViewsPrefs->hasCategoryColor( cat );
 }
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
-  // kDebug() << cal << "color:" << color.name();
-  mResourceColors.insert( cal, color );
+  return mEventViewsPrefs->setResourceColor( cal, color );
 }
 
 QColor KOPrefs::resourceColor( const QString &cal )
 {
-  QColor color;
-  if ( !cal.isEmpty() ) {
-    if ( mResourceColors.contains( cal ) ) {
-      color = mResourceColors.value( cal );
-      if ( !color.isValid() )
-        return color;
-    }
-  } else {
-    return mDefaultResourceColor;
-  }
-
-  // assign default color if enabled
-  if ( !cal.isEmpty() && !color.isValid() && assignDefaultResourceColors() ) {
-    QColor defColor( 0x37, 0x7A, 0xBC );
-    if ( defaultResourceColorSeed() > 0 &&
-         defaultResourceColorSeed() - 1 < (int)defaultResourceColors().size() ) {
-        defColor = QColor( defaultResourceColors()[defaultResourceColorSeed()-1] );
-    } else {
-        int h, s, v;
-        defColor.getHsv( &h, &s, &v );
-        h = ( defaultResourceColorSeed() % 12 ) * 30;
-        s -= s * static_cast<int>( ( ( defaultResourceColorSeed() / 12 ) % 2 ) * 0.5 );
-        defColor.setHsv( h, s, v );
-    }
-    setDefaultResourceColorSeed( defaultResourceColorSeed() + 1 );
-    setResourceColor( cal, defColor );
-    color = mResourceColors[cal];
-  }
-
-  if ( color.isValid() ) {
-    return color;
-  } else {
-    return mDefaultResourceColor;
-  }
+  return mEventViewsPrefs->resourceColor( cal );
 }
 
 QStringList KOPrefs::timeScaleTimezones() const
