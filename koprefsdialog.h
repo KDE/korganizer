@@ -29,7 +29,9 @@
 #include "kcmdesignerfields.h"
 #include "ui_accountscalendarwidget.h"
 
+#include <calendarviews/agenda/prefs.h>
 #include <libkdepim/kprefsdialog.h>
+#include <boost/shared_ptr.hpp>
 
 #include <QHash>
 #include <QSet>
@@ -99,11 +101,12 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
   private:
     KComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
-    QHash<QString, QColor> mCategoryDict;
+    QHash<QString,QColor> mCategoryDict;
 
-  Akonadi::CollectionComboBox    *mResourceCombo;
+    Akonadi::CollectionComboBox *mResourceCombo;
     KColorButton  *mResourceButton;
     QHash<QString, QColor> mResourceDict;
+    EventViews::PrefsPtr mCalendarViewsPrefs;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule

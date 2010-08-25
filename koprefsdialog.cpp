@@ -35,10 +35,9 @@
 
 #include <libkdepim/ktimeedit.h>
 
-#include <kcalcore/calendar.h>
+#include <KCalCore/Calendar>
 
 #include <KHolidays/Holidays>
-using namespace KHolidays;
 
 #include <mailtransport/transportmanagementwidget.h>
 using MailTransport::TransportManagementWidget;
@@ -87,6 +86,8 @@ using MailTransport::TransportManagementWidget;
 #include <mailtransport/transport.h>
 #include <mailtransport/transporttype.h>
 #include <mailtransport/transportmanager.h>
+
+using namespace KHolidays;
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -754,7 +755,7 @@ extern "C"
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &inst,
                                                           QWidget *parent )
-  : KPrefsModule( KOPrefs::instance(), inst, parent )
+  : KPrefsModule( KOPrefs::instance(), inst, parent ), mCalendarViewsPrefs( EventViews::PrefsPtr( new EventViews::Prefs() ) )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
   KTabWidget *tabWidget = new KTabWidget( this );
@@ -880,7 +881,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   fontLayout->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidFont *timeBarFont =
-    addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
+    addWidFont( mCalendarViewsPrefs->fontItem( "AgendaTimeLabelsFont" ), fontFrame,
                 KGlobal::locale()->formatTime( QTime( 12, 34 ) ) );
   fontLayout->addWidget( timeBarFont->label(), 0, 0 );
   fontLayout->addWidget( timeBarFont->preview(), 0, 1 );
