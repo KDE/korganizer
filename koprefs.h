@@ -80,7 +80,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     QColor mDefaultResourceColor;
 
     QFont mDefaultMonthViewFont;
-    QFont mDefaultAgendaTimeLabelsFont;
 
     QStringList mTimeScaleTimeZones;
 

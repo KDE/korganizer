@@ -67,11 +67,6 @@ KOPrefs::KOPrefs() : KOPrefsBase()
   mDefaultCategoryColor = QColor( 151, 235, 121 );
   mDefaultResourceColor = QColor(); //Default is a color invalid
 
-  mDefaultAgendaTimeLabelsFont = KGlobalSettings::generalFont();
-  // make a large default time bar font, at least 16 points.
-  mDefaultAgendaTimeLabelsFont.setPointSize(
-    qMax( mDefaultAgendaTimeLabelsFont.pointSize() + 4, 16 ) );
-
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
   mDefaultMonthViewFont.setPointSize(
@@ -83,7 +78,6 @@ KOPrefs::KOPrefs() : KOPrefsBase()
   addItemPath( "Html Export File", mHtmlExportFile,
       QDir::homePath() + '/' + i18nc( "Default export file", "calendar.html" ) );
 
-  agendaTimeLabelsFontItem()->setDefaultValue( mDefaultAgendaTimeLabelsFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
 }
 
@@ -103,7 +97,6 @@ KOPrefs *KOPrefs::instance()
 
 void KOPrefs::usrSetDefaults()
 {
-  setAgendaTimeLabelsFont( mDefaultAgendaTimeLabelsFont );
   setMonthViewFont( mDefaultMonthViewFont );
 
   KConfigSkeleton::usrSetDefaults();
