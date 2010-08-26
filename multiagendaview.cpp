@@ -177,6 +177,7 @@ void MultiAgendaView::deleteViews()
   mAgendaViews.clear();
   mAgendaWidgets.clear();
   mLastMovedSplitter = 0;
+  mSelectedAgendaView = 0;
 }
 
 void MultiAgendaView::setupViews()
