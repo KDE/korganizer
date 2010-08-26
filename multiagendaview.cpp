@@ -578,17 +578,19 @@ void MultiAgendaView::resourcesChanged()
   if ( mSelectedAgendaView ) {
     ResourceCalendar *res = mSelectedAgendaView->resourceCalendar();
     if ( res ) {
-      if ( res->readOnly() || !res->isActive() ) {
-        mSelectedAgendaView = 0;
+      if ( res->canHaveSubresources() ) {
+        QString subRes = mSelectedAgendaView->subResourceCalendar();
+        if ( !res->subresourceWritable( subRes ) ||
+             !res->subresourceActive( subRes ) ) {
+          mSelectedAgendaView = 0;
+        }
       } else {
-        if ( res->canHaveSubresources() ) {
-          QString subRes = mSelectedAgendaView->subResourceCalendar();
-          if ( !res->subresourceWritable( subRes ) ||
-               !res->subresourceActive( subRes ) ) {
-            mSelectedAgendaView = 0;
-          }
+        if ( res->readOnly() || !res->isActive() ) {
+          mSelectedAgendaView = 0;
         }
       }
+    } else {
+      mSelectedAgendaView = 0;
     }
   }
 
