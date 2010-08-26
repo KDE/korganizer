@@ -159,7 +159,6 @@ set(korganizerprivate_LIB_SRCS
   kocollectionpropertiesdialog.cpp
   collectiongeneralpage.cpp
   koalternatelabel.cpp
-  kodecorationlabel.cpp
   koeventviewerdialog.cpp
   datenavigator.cpp
   kdatenavigator.cpp
