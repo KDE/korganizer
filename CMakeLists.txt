@@ -158,7 +158,6 @@ if (QT_QT3SUPPORT_FOUND)
 set(korganizerprivate_LIB_SRCS
   kocollectionpropertiesdialog.cpp
   collectiongeneralpage.cpp
-  koalternatelabel.cpp
   koeventviewerdialog.cpp
   datenavigator.cpp
   kdatenavigator.cpp
