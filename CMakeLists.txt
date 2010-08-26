@@ -12,11 +12,6 @@ option(KORG_NOARCHIVE "Turn-off the Archive dialog which allows incidences to be
 #                  views or between a view and the navigator. Probably necessary
 #                  if KOrganizer is being used on small form factor devices.
 option(KORG_NODND "Turn-off the ability to drag-and-drop incidences in the views or between a view and the date navigator." FALSE)
-#
-# KORG_NODECOS - turns-off decoration plugins in views.
-#                No idea why you would want to define this, perhaps to save
-#                screen real estate? But there are a config options for that.
-option(KORG_NODECOS "Turn-off decoration plugins in views." FALSE)
 
 # add C++ macro definitions for options passed to CMake
 if(KORG_NOARCHIVE)
@@ -25,9 +20,6 @@ endif(KORG_NOARCHIVE)
 if(KORG_NODND)
   add_definitions(-DKORG_NODND)
 endif(KORG_NODND)
-if(KORG_NODECOS)
-  add_definitions(-DKORG_NODECOS)
-endif(KORG_NODECOS)
 
 # enable exception handling
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
