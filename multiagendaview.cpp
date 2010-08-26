@@ -576,6 +576,11 @@ void MultiAgendaView::resourcesChanged()
 {
   mPendingChanges = true;
 
+  kdDebug() << "mAgendaViews.size is " << mAgendaViews.size()
+            << "; mAgendaWidgets.size is " << mAgendaWidgets.size()
+            << "; mSelectedAgendaView is " << mSelectedAgendaView
+            << endl;
+
   if ( mSelectedAgendaView ) {
     ResourceCalendar *res = mSelectedAgendaView->resourceCalendar();
     if ( res ) {
