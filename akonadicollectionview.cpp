@@ -266,6 +266,7 @@ void AkonadiCollectionView::assignColor()
   const int result = KColorDialog::getColor( myColor, defaultColor );
   if ( result == KColorDialog::Accepted && myColor != defaultColor ) {
     KOPrefs::instance()->setResourceColor( identifier, myColor );
+    emit colorsChanged();
     updateMenu();
     updateView();
   }
@@ -281,6 +282,7 @@ void AkonadiCollectionView::disableColor()
   KOPrefs::instance()->setResourceColor( identifier, QColor() );
   updateMenu();
   updateView();
+  emit colorsChanged();
 }
 
 void AkonadiCollectionView::setCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* m )

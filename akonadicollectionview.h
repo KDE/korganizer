@@ -88,6 +88,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void resourcesChanged( bool enabled );
     void resourcesAddedRemoved();
     void defaultResourceChanged( const Akonadi::Collection & );
+    void colorsChanged();
 
   private:
     void updateView();

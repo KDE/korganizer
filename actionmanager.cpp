@@ -277,7 +277,10 @@ void ActionManager::createCalendarAkonadi()
   mCollectionView = factory.collectionView();
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)));
   connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
-  connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)), SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
+  connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)),
+           SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
+  connect( mCollectionView, SIGNAL(colorsChanged()),
+           mCalendarView, SLOT(updateConfig()) );
 
   mCollectionViewStateSaver = new Akonadi::EntityTreeViewStateSaver( mCollectionView->view() );
   mCollectionView->setCollectionSelectionProxyModel( selectionProxyModel );
