@@ -1402,7 +1402,9 @@ void KOPrefsDialogPlugins::usrReadConfig()
   KService::List plugins = KOCore::self()->availablePlugins();
   plugins += KOCore::self()->availableParts();
 
-  QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+  EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
+
+  QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
   QTreeWidgetItem *decorations =
     new QTreeWidgetItem( mTreeWidget, QStringList(
@@ -1436,8 +1438,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
   others->setExpanded( true );
 
   mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();
-  mDecorationsAtAgendaViewTop = KOPrefs::instance()->decorationsAtAgendaViewTop().toSet();
-  mDecorationsAtAgendaViewBottom = KOPrefs::instance()->decorationsAtAgendaViewBottom().toSet();
+  mDecorationsAtAgendaViewTop = viewPrefs->decorationsAtAgendaViewTop().toSet();
+  mDecorationsAtAgendaViewBottom = viewPrefs->decorationsAtAgendaViewBottom().toSet();
 }
 
 void KOPrefsDialogPlugins::usrWriteConfig()
@@ -1453,11 +1455,12 @@ void KOPrefsDialogPlugins::usrWriteConfig()
       }
     }
   }
-  KOPrefs::instance()->mSelectedPlugins = selectedPlugins;
+  EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
+  viewPrefs->setSelectedPlugins( selectedPlugins );
 
   KOPrefs::instance()->setDecorationsAtMonthViewTop( mDecorationsAtMonthViewTop.toList() );
-  KOPrefs::instance()->setDecorationsAtAgendaViewTop( mDecorationsAtAgendaViewTop.toList() );
-  KOPrefs::instance()->setDecorationsAtAgendaViewBottom( mDecorationsAtAgendaViewBottom.toList() );
+  viewPrefs->setDecorationsAtAgendaViewTop( mDecorationsAtAgendaViewTop.toList() );
+  viewPrefs->setDecorationsAtAgendaViewBottom( mDecorationsAtAgendaViewBottom.toList() );
 }
 
 void KOPrefsDialogPlugins::configure()
