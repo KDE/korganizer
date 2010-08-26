@@ -183,58 +183,6 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Orien
   d->mAgendaView->zoomView( delta, pos, orient );
 }
 
-#ifndef KORG_NODECOS
-/*
-  TODO_EVENTVIEW: decorations
-bool KOAgendaView::loadDecorations( const QStringList &decorations, DecorationList &decoList )
-{
-  foreach ( const QString &decoName, decorations ) {
-    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-      decoList << KOCore::self()->loadCalendarDecoration( decoName );
-    }
-  }
-  return ( decorations.count() > 0 );
-}
-
-void KOAgendaView::placeDecorationsFrame( KHBox *frame, bool decorationsFound, bool isTop )
-{
-  if ( decorationsFound ) {
-
-    if ( isTop ) {
-      // inserts in the first position
-      mSplitterAgenda->insertWidget( 0, frame );
-    } else {
-      // inserts in the last position
-      frame->setParent( mSplitterAgenda );
-    }
-  } else {
-    frame->setParent( this );
-    mGridLayout->addWidget( frame, 0, 0 );
-  }
-}
-
-void KOAgendaView::placeDecorations( DecorationList &decoList, const QDate &date,
-                                     KHBox *labelBox, bool forWeek )
-{
-  foreach ( CalendarDecoration::Decoration *deco, decoList ) {
-    CalendarDecoration::Element::List elements;
-    elements = forWeek ? deco->weekElements( date ) : deco->dayElements( date );
-    if ( elements.count() > 0 ) {
-      KHBox *decoHBox = new KHBox( labelBox );
-      decoHBox->setFrameShape( QFrame::StyledPanel );
-      decoHBox->setMinimumWidth( 1 );
-
-      foreach ( CalendarDecoration::Element *it, elements ) {
-        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-        label->setAlignment( Qt::AlignBottom );
-        label->setMinimumWidth( 1 );
-      }
-    }
-  }
-}
-*/
-#endif // KORG_NODECOS
-
 void KOAgendaView::enableAgendaUpdate( bool enable )
 {
   d->mAgendaView->enableAgendaUpdate( enable );

@@ -36,17 +36,6 @@ namespace EventViews {
   class AgendaView;
 }
 
-
-//TODO_EVENTVIEWS: decorations
-namespace KOrg {
-#ifndef KORG_NODECOS
-  namespace CalendarDecoration {
-    class Decoration;
-  }
-#endif
-}
-
-
 /**
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
