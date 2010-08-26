@@ -30,7 +30,7 @@
 #include <kpluginfactory.h>
 #include <kpluginloader.h>
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class DatenumsFactory : public DecorationFactory
 {
@@ -55,7 +55,7 @@ void Datenums::configure( QWidget *parent )
   dlg.exec();
 }
 
-QString Datenums::info()
+QString Datenums::info() const
 {
   return i18n( "This plugin shows information on a day's position in the year." );
 }

@@ -20,10 +20,10 @@
 #ifndef KORG_PICOFTHEDAY_H
 #define KORG_PICOFTHEDAY_H
 
-#include "calendar/calendardecoration.h"
+#include "calendarviews/agenda/calendardecoration.h"
 #include <KIO/Job>
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class Picoftheday : public Decoration
 {
@@ -35,7 +35,7 @@ class Picoftheday : public Decoration
 
     void configure( QWidget *parent );
 
-    QString info();
+    QString info() const;
 
   private:
     QSize mThumbSize;

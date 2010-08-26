@@ -38,7 +38,7 @@ class CalPrintYear : public CalPrintPluginBase
     CalPrintYear():CalPrintPluginBase() {}
     virtual ~CalPrintYear() {}
     virtual QString description() { return i18n( "Print &year" ); }
-    virtual QString info() { return i18n( "Prints a calendar for an entire year" ); }
+    virtual QString info() const { return i18n( "Prints a calendar for an entire year" ); }
     virtual int sortID() { return CalPrinterBase::Year; }
     virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget( QWidget * );

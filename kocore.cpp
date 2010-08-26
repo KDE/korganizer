@@ -29,7 +29,7 @@
 #include "koglobals.h"
 #include "koidentitymanager.h"
 
-#include <calendar/plugin.h>
+#include <calendarsupport/plugin.h>
 #include <korganizer/part.h>
 
 #include <kdebug.h>
@@ -75,13 +75,14 @@ KService::List KOCore::availablePlugins( const QString &type, int version )
 
 KService::List KOCore::availablePlugins()
 {
-  return availablePlugins( KOrg::Plugin::serviceType(), KOrg::Plugin::interfaceVersion() );
+  return availablePlugins( CalendarSupport::Plugin::serviceType(),
+                           CalendarSupport::Plugin::interfaceVersion() );
 }
 
 KService::List KOCore::availableCalendarDecorations()
 {
-  return availablePlugins( KOrg::CalendarDecoration::Decoration::serviceType(),
-                           KOrg::CalendarDecoration::Decoration::interfaceVersion() );
+  return availablePlugins( EventViews::CalendarDecoration::Decoration::serviceType(),
+                           EventViews::CalendarDecoration::Decoration::interfaceVersion() );
 }
 
 KService::List KOCore::availableParts()
@@ -95,11 +96,11 @@ KService::List KOCore::availablePrintPlugins()
     availablePlugins( KOrg::PrintPlugin::serviceType(), KOrg::PrintPlugin::interfaceVersion() );
 }
 
-KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
+CalendarSupport::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
   kDebug() << service->library();
 
-  if ( !service->hasServiceType( KOrg::Plugin::serviceType() ) ) {
+  if ( !service->hasServiceType( CalendarSupport::Plugin::serviceType() ) ) {
     return 0;
   }
 
@@ -111,7 +112,7 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
     return 0;
   }
 
-  KOrg::PluginFactory *pluginFactory = static_cast<KOrg::PluginFactory *>( factory );
+  CalendarSupport::PluginFactory *pluginFactory = static_cast<CalendarSupport::PluginFactory *>( factory );
 
   if ( !pluginFactory ) {
     kDebug() << "Cast failed";
@@ -121,7 +122,7 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
   return pluginFactory->createPluginFactory();
 }
 
-KOrg::Plugin *KOCore::loadPlugin( const QString &name )
+CalendarSupport::Plugin *KOCore::loadPlugin( const QString &name )
 {
   KService::List list = availablePlugins();
   KService::List::ConstIterator it;
@@ -133,7 +134,7 @@ KOrg::Plugin *KOCore::loadPlugin( const QString &name )
   return 0;
 }
 
-KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::Ptr service )
+EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::Ptr service )
 {
   KPluginLoader loader( *service );
   KPluginFactory *factory = loader.factory();
@@ -143,8 +144,8 @@ KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::
     return 0;
   }
 
-  KOrg::CalendarDecoration::DecorationFactory *pluginFactory =
-      static_cast<KOrg::CalendarDecoration::DecorationFactory *>( factory );
+  EventViews::CalendarDecoration::DecorationFactory *pluginFactory =
+      static_cast<EventViews::CalendarDecoration::DecorationFactory *>( factory );
 
   if ( !pluginFactory ) {
     kDebug() << "Cast failed";
@@ -154,7 +155,7 @@ KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::
   return pluginFactory->createPluginFactory();
 }
 
-KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( const QString &name )
+EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( const QString &name )
 {
   KService::List list = availableCalendarDecorations();
   KService::List::ConstIterator it;
@@ -267,7 +268,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
   return 0;
 }
 
-KOrg::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
+EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
 {
   if ( !mCalendarDecorationsLoaded ) {
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
@@ -276,10 +277,10 @@ KOrg::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
     KService::List plugins = availableCalendarDecorations();
     KService::List::ConstIterator it;
     for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
-      if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
+      if ( (*it)->hasServiceType( EventViews::CalendarDecoration::Decoration::serviceType() ) ) {
         QString name = (*it)->desktopEntryName();
         if ( selectedPlugins.contains( name ) ) {
-          KOrg::CalendarDecoration::Decoration *d = loadCalendarDecoration(*it);
+          EventViews::CalendarDecoration::Decoration *d = loadCalendarDecoration(*it);
           mCalendarDecorations.append( d );
         }
       }

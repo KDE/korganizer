@@ -37,7 +37,7 @@ class CalPrintJournal : public CalPrintPluginBase
     CalPrintJournal():CalPrintPluginBase() {}
     virtual ~CalPrintJournal() {}
     virtual QString description() { return i18n( "Print &journal" ); }
-    virtual QString info() { return i18n( "Prints all journals for a given date range" ); }
+    virtual QString info() const { return i18n( "Prints all journals for a given date range" ); }
     virtual QWidget *createConfigWidget( QWidget * );
     virtual int sortID() { return CalPrinterBase::Journallist; }
     virtual bool enabled() { return true; }

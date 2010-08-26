@@ -1419,7 +1419,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
   KService::List::ConstIterator it;
   for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
     QTreeWidgetItem *item;
-    if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
+    if ( (*it)->hasServiceType( EventViews::CalendarDecoration::Decoration::serviceType() ) ) {
       item = new PluginItem( decorations, *it );
     } else if ( (*it)->hasServiceType( KOrg::PrintPlugin::serviceType() ) ){
       item = new PluginItem( printPlugins, *it );
@@ -1474,7 +1474,7 @@ void KOPrefsDialogPlugins::configure()
     return;
   }
 
-  KOrg::Plugin *plugin = KOCore::self()->loadPlugin( item->service() );
+  CalendarSupport::Plugin *plugin = KOCore::self()->loadPlugin( item->service() );
 
   if ( plugin ) {
     plugin->configure( this );
@@ -1564,7 +1564,7 @@ void KOPrefsDialogPlugins::selectionChanged()
   }
 
   bool hasPosition = false;
-  if ( item->service()->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
+  if ( item->service()->hasServiceType( EventViews::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
     /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mPositionMonthTop->setChecked( true );

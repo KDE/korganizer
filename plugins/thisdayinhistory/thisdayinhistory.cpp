@@ -32,7 +32,7 @@
 #include <kpluginfactory.h>
 #include <kpluginloader.h>
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class ThisDayInHistoryFactory : public DecorationFactory
 {
@@ -48,7 +48,7 @@ ThisDayInHistory::ThisDayInHistory()
   KConfigGroup config( &_config, "This Day in History Plugin" );
 }
 
-QString ThisDayInHistory::info()
+QString ThisDayInHistory::info() const
 {
   return i18n( "This plugin provides links to Wikipedia's "
                "'This Day in History' pages." );

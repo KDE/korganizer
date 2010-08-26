@@ -28,7 +28,7 @@
 #include <klocale.h>
 #include <kcmdlineargs.h>
 
-#include <calendar/plugin.h>
+#include <calendarsupport/plugin.h>
 
 #include "kocore.h"
 
@@ -44,7 +44,7 @@ int main(int argc,char **argv)
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
-    KOrg::Plugin *p = KOCore::self()->loadPlugin(*it);
+    CalendarSupport::Plugin *p = KOCore::self()->loadPlugin(*it);
     if (!p) {
       kDebug() << "Plugin loading failed.";
     } else {
@@ -80,7 +80,7 @@ int main(int argc,char **argv)
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
-    KOrg::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
+    EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
     if (!p) {
       kDebug() << "Calendar decoration loading failed.";
     } else {

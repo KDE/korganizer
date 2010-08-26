@@ -35,7 +35,7 @@
 
 #include "picoftheday.moc"
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class PicofthedayFactory : public DecorationFactory
 {
@@ -62,7 +62,7 @@ void Picoftheday::configure( QWidget *parent )
   dlg.exec();
 }
 
-QString Picoftheday::info()
+QString Picoftheday::info() const
 {
   return i18n( "<qt>This plugin provides the Wikipedia "
                "<i>Picture of the Day</i>.</qt>" );

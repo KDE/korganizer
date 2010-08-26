@@ -32,7 +32,7 @@
 #include <kpluginfactory.h>
 #include <kpluginloader.h>
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class HebrewFactory : public DecorationFactory
 {
@@ -88,7 +88,7 @@ Element::List Hebrew::createDayElements( const QDate &date )
   return el;
 }
 
-QString Hebrew::info()
+QString Hebrew::info() const
 {
   return i18n( "This plugin provides the date in the Jewish calendar." );
 }

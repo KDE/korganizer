@@ -48,7 +48,7 @@ class CalPrintIncidence : public CalPrintPluginBase
     {
       return i18n( "Print &incidence" );
     }
-    virtual QString info()
+    virtual QString info() const
     {
       return i18n( "Prints an incidence on one page" );
     }
@@ -99,7 +99,7 @@ class CalPrintDay : public CalPrintPluginBase
     {
       return i18n( "Print da&y" );
     }
-    virtual QString info()
+    virtual QString info() const
     {
       return i18n( "Prints all events of a single day on one page" );
     }
@@ -144,7 +144,7 @@ class CalPrintWeek : public CalPrintPluginBase
     {
       return i18n( "Print &week" );
     }
-    virtual QString info()
+    virtual QString info() const
     {
       return i18n( "Prints all events of one week on one page" );
     }
@@ -193,7 +193,7 @@ class CalPrintMonth : public CalPrintPluginBase
     {
       return i18n( "Print mont&h" );
     }
-    virtual QString info()
+    virtual QString info() const
     {
       return i18n( "Prints all events of one month on one page" );
     }
@@ -237,7 +237,7 @@ class CalPrintTodos : public CalPrintPluginBase
     {
       return i18n( "Print to-&dos" );
     }
-    virtual QString info()
+    virtual QString info() const
     {
       return i18n( "Prints all to-dos in a (tree-like) list" );
     }

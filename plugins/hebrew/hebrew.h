@@ -21,9 +21,9 @@
 #ifndef KORG_HEBREW_H
 #define KORG_HEBREW_H
 
-#include <calendar/calendardecoration.h>
+#include <calendarviews/agenda/calendardecoration.h>
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class Hebrew : public Decoration
 {
@@ -35,7 +35,7 @@ class Hebrew : public Decoration
 
     Element::List createDayElements( const QDate & );
 
-    QString info();
+    QString info() const;
 
   private:
     bool showParsha, showChol, showOmer;

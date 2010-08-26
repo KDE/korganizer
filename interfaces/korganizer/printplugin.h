@@ -21,7 +21,7 @@
 #ifndef PRINTPLUGINBASE_H
 #define PRINTPLUGINBASE_H
 
-#include "calendar/plugin.h"
+#include <calendarsupport/plugin.h>
 
 #include <kcalcore/incidence.h>
 
@@ -60,10 +60,10 @@ class CalPrinterBase
   Base class for KOrganizer printing classes. Each sub class represents one
   calendar print format.
 */
-class PrintPlugin : public KOrg::Plugin
+class PrintPlugin : public CalendarSupport::Plugin
 {
   public:
-    PrintPlugin() : KOrg::Plugin(), mConfigWidget(0), mCoreHelper(0), mPrinter(0),
+    PrintPlugin() : CalendarSupport::Plugin(), mConfigWidget(0), mCoreHelper(0), mPrinter(0),
          mCalendar(0), mConfig(0) {}
     virtual ~PrintPlugin() {}
 
@@ -93,7 +93,7 @@ class PrintPlugin : public KOrg::Plugin
     /**
       Returns long description of print format.
     */
-    virtual QString info() = 0;
+    virtual QString info() const = 0;
 
     /**
       Returns the sort ID of the plugin. This value will be used to identify
@@ -180,7 +180,7 @@ class PrintPlugin : public KOrg::Plugin
     KConfig *mConfig;
 };
 
-class PrintPluginFactory : public PluginFactory
+class PrintPluginFactory : public CalendarSupport::PluginFactory
 {
   public:
     virtual PrintPlugin *createPluginFactory() = 0;

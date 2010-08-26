@@ -20,9 +20,9 @@
 #ifndef KORG_THISDAYINHISTORY_H
 #define KORG_THISDAYINHISTORY_H
 
-#include <calendar/calendardecoration.h>
+#include <calendarviews/agenda/calendardecoration.h>
 
-using namespace KOrg::CalendarDecoration;
+using namespace EventViews::CalendarDecoration;
 
 class ThisDayInHistory : public Decoration
 {
@@ -35,7 +35,7 @@ class ThisDayInHistory : public Decoration
 
 //    void configure( QWidget *parent );
 
-    QString info();
+    QString info() const;
 };
 
 #endif
