@@ -48,6 +48,7 @@
 
 #include <KMime/KMimeMessage>
 
+#include <calendarviews/agenda/eventview.h>
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/calendarmodel.h>
@@ -285,7 +286,9 @@ void ActionManager::createCalendarAkonadi()
   mCollectionViewStateSaver = new Akonadi::EntityTreeViewStateSaver( mCollectionView->view() );
   mCollectionView->setCollectionSelectionProxyModel( selectionProxyModel );
 
-  BaseView::setGlobalCollectionSelection( new CalendarSupport::CollectionSelection( selectionModel ) );
+  CalendarSupport::CollectionSelection *colSel = new CalendarSupport::CollectionSelection( selectionModel );
+  BaseView::setGlobalCollectionSelection( colSel );
+  EventViews::EventView::setGlobalCollectionSelection( colSel );
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( selectionModel );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
   selectionProxy->setSourceModel( mCalendarModel );
