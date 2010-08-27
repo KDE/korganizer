@@ -88,6 +88,9 @@ class KOAgendaView : public KOEventView
     void setCollection( Akonadi::Collection::Id id );
     Akonadi::Collection::Id collection() const;
 
+    /** reimpl */
+    virtual void setTypeAheadReceiver( QObject *o );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();

@@ -330,4 +330,9 @@ bool KOAgendaView::selectedIsAllDay()
   return d->mAgendaView->selectedIsAllDay();
 }
 
+void KOAgendaView::setTypeAheadReceiver( QObject *o )
+{
+  d->mAgendaView->setTypeAheadReceiver( o );
+}
+
 #include "koagendaview.moc"

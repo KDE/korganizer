@@ -101,8 +101,12 @@ class KOEventView : public KOrg::BaseView
     /*
      * Sets the QObject that will receive key events that were made
      * while the new event dialog was still being created.
+     *
+     * This is virtual so KOAgendaView can call EventViews::AgendaView::setTypeAheadReceiver().
+     * because not all views are in kdepim/calendarviews yet
+     *
      */
-    void setTypeAheadReceiver( QObject *o );
+    virtual void setTypeAheadReceiver( QObject *o );
 
     /*
      * Returns true if the view item, that represents a to-do, should use the "completed"
