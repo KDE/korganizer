@@ -240,14 +240,14 @@ void KOAgendaView::showIncidences( const Akonadi::Item::List &incidences, const 
   d->mAgendaView->showIncidences( incidences, date );
 }
 
-void KOAgendaView::changeIncidenceDisplayAdded( const Akonadi::Item &aitem )
+void KOAgendaView::changeIncidenceDisplayAdded( const Akonadi::Item & )
 {
-  d->mAgendaView->changeIncidenceDisplayAdded( aitem );
+  // Do nothing, EventViews::AgendaView knows when items change
 }
 
-void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &aitem, int mode )
+void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &, int )
 {
-  d->mAgendaView->changeIncidenceDisplay( aitem, mode );
+  // Do nothing, EventViews::AgendaView knows when items change
 }
 
 void KOAgendaView::clearView()
