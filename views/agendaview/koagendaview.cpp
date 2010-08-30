@@ -250,11 +250,6 @@ void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &, int )
   // Do nothing, EventViews::AgendaView knows when items change
 }
 
-void KOAgendaView::clearView()
-{
-  d->mAgendaView->clearView();
-}
-
 CalPrinter::PrintType KOAgendaView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
@@ -333,6 +328,11 @@ bool KOAgendaView::selectedIsAllDay()
 void KOAgendaView::setTypeAheadReceiver( QObject *o )
 {
   d->mAgendaView->setTypeAheadReceiver( o );
+}
+
+void KOAgendaView::setChanges( EventViews::EventView::Changes changes )
+{
+  d->mAgendaView->setChanges( changes );
 }
 
 #include "koagendaview.moc"

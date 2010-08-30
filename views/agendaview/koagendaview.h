@@ -62,9 +62,6 @@ class KOAgendaView : public KOEventView
     /** return the default start/end date/time for new events   */
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
-    /** Remove all events from view */
-    void clearView();
-
     CalPrinter::PrintType printType() const;
 
     /** start-datetime of selection */
@@ -90,6 +87,8 @@ class KOAgendaView : public KOEventView
 
     /** reimpl */
     virtual void setTypeAheadReceiver( QObject *o );
+
+    void setChanges( EventViews::EventView::Changes changes );
 
   public slots:
     virtual void updateView();
