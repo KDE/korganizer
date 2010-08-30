@@ -25,8 +25,9 @@
 #include "printplugin.h"
 #include "korganizer/korganizer_export.h"
 
-#include <kcalcore/event.h>
+#include <KCalCore/Event>
 
+#include <calendarviews/agenda/eventview.h>
 #include <calendarsupport/incidencechanger.h>
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
@@ -55,7 +56,6 @@ namespace KCalCore {
 }
 
 namespace KOrg {
-
 
 /**
   This class provides an interface for all views being displayed within the
@@ -386,9 +386,14 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
        Notifies the view that there are pending changes so a redraw is needed.
 
-       @param needed if the update is needed or not.
+       @param changes Types of changes that were made
     */
-    virtual void setUpdateNeeded( bool needed );
+    virtual void setChanges( EventViews::EventView::Changes changes );
+
+    /**
+       Returns if there are pending changes and a redraw is needed.
+    */
+    EventViews::EventView::Changes changes() const;
 
   protected:
     /**
@@ -418,11 +423,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void incidencesChanged( const Akonadi::Item::List& incidences );
 
     virtual void handleBackendError( const QString &error );
-
-    /**
-       Returns if there are pending changes and a redraw is needed.
-    */
-    bool updateNeeded() const;
 
   protected Q_SLOTS:
     virtual void collectionSelectionChanged();

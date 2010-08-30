@@ -672,11 +672,11 @@ void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
   }
 }
 
-void KOViewManager::setUpdateNeeded()
+void KOViewManager::addChange( EventViews::EventView::Change change )
 {
   foreach( BaseView *view, mViews ) {
     if ( view ) {
-      view->setUpdateNeeded( true );
+      view->setChanges( view->changes() | change );
     }
   }
 }

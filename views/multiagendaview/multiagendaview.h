@@ -65,7 +65,7 @@ class MultiAgendaView : public KOEventView
      */
     void showConfigurationDialog( QWidget *parent );
 
-    void setUpdateNeeded( bool needed );
+    void setChanges( EventViews::EventView::Changes changes );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );

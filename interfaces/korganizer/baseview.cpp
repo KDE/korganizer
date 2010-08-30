@@ -60,7 +60,8 @@ class BaseView::Private
   public:
     explicit Private( BaseView* qq )
       : q( qq ),
-        mPendingChanges( true ),
+        mChanges( EventViews::EventView::IncidencesAdded |
+                  EventViews::EventView::DatesChanged ),
         calendar( 0 ),
         customCollectionSelection( 0 ),
         collectionSelectionModel( 0 ),
@@ -84,7 +85,7 @@ class BaseView::Private
       delete collectionSelectionModel;
     }
 
-    bool mPendingChanges;
+    EventViews::EventView::Changes mChanges;
     Calendar *calendar;
     CalendarSearch *calendarSearch;
     CollectionSelection *customCollectionSelection;
@@ -427,14 +428,14 @@ void BaseView::setFilter( KCalCore::CalFilter *filter )
   calendarSearch()->setFilter( filter );
 }
 
-void BaseView::setUpdateNeeded( bool needed )
+void BaseView::setChanges( EventViews::EventView::Changes changes )
 {
-  d->mPendingChanges = needed;
+  d->mChanges = changes;
 }
 
-bool BaseView::updateNeeded() const
+EventViews::EventView::Changes BaseView::changes() const
 {
-  return d->mPendingChanges;
+  return d->mChanges;
 }
 
 #include "baseview.moc"

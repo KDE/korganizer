@@ -39,9 +39,6 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   : KOEventView( parent ), d( new Private( parent ) )
 {
 
-
-
-
 }
 
 void MultiAgendaView::setCalendar( CalendarSupport::Calendar *cal )
@@ -110,9 +107,9 @@ void MultiAgendaView::updateConfig()
   d->mMultiAgendaView->updateConfig();
 }
 
-void MultiAgendaView::setUpdateNeeded( bool needed )
+void MultiAgendaView::setChanges( EventViews::EventView::Changes changes )
 {
-  d->mMultiAgendaView->setUpdateNeeded( needed );
+  d->mMultiAgendaView->setChanges( changes );
 }
 
 bool MultiAgendaView::hasConfigurationDialog() const
