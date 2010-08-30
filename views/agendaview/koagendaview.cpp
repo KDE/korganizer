@@ -332,7 +332,20 @@ void KOAgendaView::setTypeAheadReceiver( QObject *o )
 
 void KOAgendaView::setChanges( EventViews::EventView::Changes changes )
 {
-  d->mAgendaView->setChanges( changes );
+  // Only ConfigChanged and FilterChanged should go from korg->AgendaView
+  // All other values are already detected inside AgendaView.
+  // We could just pass "changes", but korganizer does a very bad job at
+  // determining what changed, for example if you move an incidence
+  // the BaseView::setDateRange(...) is called causing DatesChanged
+  // flag to be on, when no dates changed.
+  EventViews::EventView::Changes c;
+  if ( changes.testFlag( EventViews::EventView::ConfigChanged ) )
+    c = EventViews::EventView::ConfigChanged;
+
+  if ( changes.testFlag( EventViews::EventView::FilterChanged ) )
+    c |= EventViews::EventView::FilterChanged;
+
+  d->mAgendaView->setChanges( c | d->mAgendaView->changes() );
 }
 
 #include "koagendaview.moc"
