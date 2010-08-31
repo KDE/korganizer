@@ -1103,12 +1103,14 @@ void KOAgenda::endItemAction()
       }
     }
 
+    KOAgendaItem *placeItem = mActionItem->firstMultiItem();
+
+    if ( !placeItem ) {
+      placeItem = mActionItem;
+    }
+
     if ( modify ) {
       mActionItem->endMove();
-      KOAgendaItem *placeItem = mActionItem->firstMultiItem();
-      if  ( !placeItem ) {
-        placeItem = mActionItem;
-      }
 
       KOAgendaItem *modif = placeItem;
 
@@ -1133,7 +1135,8 @@ void KOAgenda::endItemAction()
     } else {
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
-      emit itemModified( mActionItem );
+
+      emit itemModified( placeItem );
     }
   }
 
