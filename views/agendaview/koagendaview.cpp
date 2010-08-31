@@ -324,6 +324,7 @@ void KOAgendaView::zoomInVertically( )
 
   mTimeLabelsZone->updateAll();
 
+  setUpdateNeeded( true );
   updateView();
 
 }
@@ -339,6 +340,8 @@ void KOAgendaView::zoomOutVertically( )
     mAgenda->checkScrollBoundaries();
 
     mTimeLabelsZone->updateAll();
+
+    setUpdateNeeded( true );
     updateView();
   }
 }
@@ -715,6 +718,7 @@ void KOAgendaView::updateConfig()
 
   createDayLabels();
 
+  setUpdateNeeded( true );
   updateView();
 }
 
@@ -852,6 +856,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     if ( incidence->dtStart().toTimeSpec( KCalPrefs::instance()->timeSpec() ) == startDt &&
          ev->dtEnd().toTimeSpec( KCalPrefs::instance()->timeSpec() ) == endDt ) {
+      setUpdateNeeded( true );
       QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
@@ -873,6 +878,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
     if ( td->dtDue().toTimeSpec( KCalPrefs::instance()->timeSpec() )  == endDt ) {
       QTimer::singleShot( 0, this, SLOT(updateView()) );
+      setUpdateNeeded( true );
       return;
     }
   }
@@ -1084,6 +1090,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // recreated. All others have to!!!
   if ( incidence->recurs() ) {
     mUpdateItem = aitem;
+    setUpdateNeeded( true );
     QTimer::singleShot( 0, this, SLOT(doUpdateItem()) );
   }
 
@@ -1102,8 +1109,7 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 {
   if ( !mSelectedDates.isEmpty() &&
        mSelectedDates.first() == start &&
-       mSelectedDates.last() == end &&
-       !updateNeeded() ) {
+       mSelectedDates.last() == end ) {
     return;
   }
 
@@ -1118,6 +1124,7 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
   mAreDatesInitialized = true;
 
   // and update the view
+  setUpdateNeeded( true );
   fillAgenda();
 }
 
@@ -1337,6 +1344,7 @@ void KOAgendaView::changeIncidenceDisplay( const Item &aitem, int mode )
   // and redrawing works ok.
   Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( incidence && incidence->allDay() ) {
+    setUpdateNeeded( true );
     updateView();
   }
 }
@@ -1348,7 +1356,7 @@ void KOAgendaView::fillAgenda( const QDate & )
 
 void KOAgendaView::fillAgenda()
 {
-  if ( !mAreDatesInitialized ) {
+  if ( !mAreDatesInitialized || !updateNeeded() ) {
     return;
   }
 
@@ -1815,20 +1823,29 @@ bool KOAgendaView::filterByCollectionSelection( const Item &incidence )
 
 void KOAgendaView::calendarIncidenceAdded( const Item &incidence )
 {
-  Q_UNUSED( incidence );
-  setUpdateNeeded( true );
+  displayIncidence( incidence );
+  mAgenda->checkScrollBoundaries();
+  updateEventIndicators();
 }
 
 void KOAgendaView::calendarIncidenceChanged( const Item &incidence )
 {
-  Q_UNUSED( incidence );
-  setUpdateNeeded( true );
+  mAgenda->removeIncidence( incidence );
+  mAllDayAgenda->removeIncidence( incidence );
+
+  displayIncidence( incidence );
+
+  mAgenda->checkScrollBoundaries();
+  updateEventIndicators();
 }
 
 void KOAgendaView::calendarIncidenceDeleted( const Item &incidence )
 {
-  Q_UNUSED( incidence );
-  setUpdateNeeded( true );
+  mAgenda->removeIncidence( incidence );
+  mAllDayAgenda->removeIncidence( incidence );
+
+  mAgenda->checkScrollBoundaries();
+  updateEventIndicators();
 }
 
 #include "koagendaview.moc"
