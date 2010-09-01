@@ -38,6 +38,75 @@ class MultiAgendaView::Private {
 MultiAgendaView::MultiAgendaView( QWidget *parent )
   : KOEventView( parent ), d( new Private( parent ) )
 {
+  connect( d->mMultiAgendaView, SIGNAL(datesSelected(KCalCore::DateList)),
+           SIGNAL(datesSelected(KCalCore::DateList)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(shiftedEvent(QDate,QDate)),
+           SIGNAL(shiftedEvent(QDate,QDate)) );
+
+
+  connect( d->mMultiAgendaView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()) );
+
+  connect( d->mMultiAgendaView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(startMultiModify(QString)),
+           SIGNAL(startMultiModify(QString)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(endMultiModify()),
+           SIGNAL(endMultiModify()) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newTodoSignal(QDate)),
+           SIGNAL(newTodoSignal(QDate)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(newJournalSignal(QDate)),
+           SIGNAL(newJournalSignal(QDate)) );
 
 }
 
