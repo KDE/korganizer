@@ -17,6 +17,7 @@
 */
 
 #include "multiagendaview.h"
+#include "koeventpopupmenu.h"
 
 #include <calendarviews/agenda/multiagenda/multiagendaview.h>
 
@@ -28,14 +29,19 @@ using namespace KOrg;
 
 class MultiAgendaView::Private {
   public:
-    Private( QWidget *parent = 0 )
+    Private( MultiAgendaView *qq ) : q( qq )
     {
-      QHBoxLayout *layout = new QHBoxLayout( parent );
-      mMultiAgendaView = new EventViews::MultiAgendaView( parent );
+      QHBoxLayout *layout = new QHBoxLayout( q );
+      mMultiAgendaView = new EventViews::MultiAgendaView( q );
       layout->addWidget( mMultiAgendaView );
+
+      mPopup = q->eventPopup();
     }
 
     EventViews::MultiAgendaView *mMultiAgendaView;
+    KOEventPopupMenu *mPopup;
+  private:
+   MultiAgendaView * const q;
 };
 
 
@@ -48,6 +54,11 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   connect( d->mMultiAgendaView, SIGNAL(shiftedEvent(QDate,QDate)),
            SIGNAL(shiftedEvent(QDate,QDate)) );
 
+  connect( d->mMultiAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+           d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
+
+  connect( d->mMultiAgendaView, SIGNAL(showNewEventPopupSignal()),
+           SLOT(showNewEventPopup()) );
 
   connect( d->mMultiAgendaView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
@@ -117,6 +128,7 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 void MultiAgendaView::setCalendar( CalendarSupport::Calendar *cal )
 {
   d->mMultiAgendaView->setCalendar( cal );
+  d->mPopup->setCalendar( cal );
 }
 
 MultiAgendaView::~MultiAgendaView()
