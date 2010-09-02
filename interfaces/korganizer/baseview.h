@@ -172,7 +172,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void showConfigurationDialog( QWidget* parent );
 
     QByteArray identifier() const;
-    void setIdentifier( const QByteArray& identifier );
+    virtual void setIdentifier( const QByteArray& identifier );
 
     /**
      * reads the view configuration. View-specific configuration can be
@@ -192,9 +192,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     void saveConfig( KConfigGroup &configGroup );
 
-    CalendarSupport::CollectionSelectionProxyModel *takeCustomCollectionSelectionProxyModel();
+    virtual CalendarSupport::CollectionSelectionProxyModel *takeCustomCollectionSelectionProxyModel();
     CalendarSupport::CollectionSelectionProxyModel *customCollectionSelectionProxyModel() const;
-    void setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model );
+    virtual void setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model );
 
     CalendarSupport::CollectionSelection *customCollectionSelection() const;
 
@@ -215,7 +215,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @param start Start of date range.
       @param end   End of date range.
     */
-    void setDateRange( const KDateTime &start, const KDateTime &end );
+    virtual void setDateRange( const KDateTime &start, const KDateTime &end );
 
     KDateTime startDateTime() const;
     KDateTime endDateTime() const;

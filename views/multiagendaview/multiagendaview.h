@@ -67,6 +67,9 @@ class MultiAgendaView : public KOEventView
 
     void setChanges( EventViews::EventView::Changes changes );
 
+    CalendarSupport::CollectionSelectionProxyModel *takeCustomCollectionSelectionProxyModel();
+    void setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model );
+
   public slots:
     void showDates( const QDate &start, const QDate &end );
     void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );

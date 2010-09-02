@@ -22,13 +22,17 @@
 
 #include <KCalCore/IncidenceBase> // DateList typedef
 
+#include <QHBoxLayout>
+
 using namespace KOrg;
 
 class MultiAgendaView::Private {
   public:
     Private( QWidget *parent = 0 )
     {
+      QHBoxLayout *layout = new QHBoxLayout( parent );
       mMultiAgendaView = new EventViews::MultiAgendaView( parent );
+      layout->addWidget( mMultiAgendaView );
     }
 
     EventViews::MultiAgendaView *mMultiAgendaView;
@@ -36,7 +40,7 @@ class MultiAgendaView::Private {
 
 
 MultiAgendaView::MultiAgendaView( QWidget *parent )
-  : KOEventView( parent ), d( new Private( parent ) )
+  : KOEventView( parent ), d( new Private( this ) )
 {
   connect( d->mMultiAgendaView, SIGNAL(datesSelected(KCalCore::DateList)),
            SIGNAL(datesSelected(KCalCore::DateList)) );
@@ -202,6 +206,17 @@ bool MultiAgendaView::hasConfigurationDialog() const
 void MultiAgendaView::showConfigurationDialog( QWidget *parent )
 {
   d->mMultiAgendaView->showConfigurationDialog( parent );
+}
+
+
+CalendarSupport::CollectionSelectionProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
+{
+  return d->mMultiAgendaView->takeCustomCollectionSelectionProxyModel();
+}
+
+void MultiAgendaView::setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model )
+{
+  d->mMultiAgendaView->setCustomCollectionSelectionProxyModel( model );
 }
 
 #include "multiagendaview.moc"
