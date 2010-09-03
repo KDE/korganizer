@@ -203,12 +203,12 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
     mActionManager->interceptAction( Akonadi::StandardActionManager::CreateResource );
-    mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteResource );
+    mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteResources );
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteCollections );
 
     connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ), SIGNAL( triggered( bool ) ),
              this, SLOT( newCalendar() ) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResource ), SIGNAL( triggered( bool ) ),
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ), SIGNAL( triggered( bool ) ),
              this, SLOT( deleteCalendar() ) );
     connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL( triggered( bool ) ),
              this, SLOT( deleteCalendar() ) );
@@ -263,10 +263,9 @@ void AkonadiCollectionView::assignColor()
   const QString identifier = QString::number( collection.id() );
   const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
   QColor myColor;
-  const int result = KColorDialog::getColor( myColor, defaultColor );
-  if ( result == KColorDialog::Accepted && myColor != defaultColor ) {
+  int result = KColorDialog::getColor( myColor, defaultColor );
+  if ( result == KColorDialog::Accepted ) {
     KOPrefs::instance()->setResourceColor( identifier, myColor );
-    emit colorsChanged();
     updateMenu();
     updateView();
   }
@@ -282,7 +281,6 @@ void AkonadiCollectionView::disableColor()
   KOPrefs::instance()->setResourceColor( identifier, QColor() );
   updateMenu();
   updateView();
-  emit colorsChanged();
 }
 
 void AkonadiCollectionView::setCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* m )
