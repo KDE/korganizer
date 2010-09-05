@@ -180,10 +180,10 @@ void MultiAgendaView::recreateViews()
   mTimeLabelsZone->updateAll();
 
   TimeLabels *timeLabel = mTimeLabelsZone->timeLabels().first();
-  connect( timeLabel->verticalScrollBar(), SIGNAL(valueChanged(int)),
-           mScrollBar, SLOT(setValue(int)) );
-  connect( mScrollBar, SIGNAL(valueChanged(int)),
-           timeLabel, SLOT(positionChanged(int)) );
+//  connect( timeLabel->verticalScrollBar(), SIGNAL(valueChanged(int)),
+//           mScrollBar, SLOT(setValue(int)) );
+//  connect( mScrollBar, SIGNAL(valueChanged(int)),
+//           timeLabel, SLOT(positionChanged(int)) );
 
   connect( mLeftSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   connect( mRightSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );

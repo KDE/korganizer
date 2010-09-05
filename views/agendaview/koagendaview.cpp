@@ -1193,6 +1193,14 @@ void KOAgendaView::insertIncidence( const Item &aitem, const QDate &curDate )
     return;
   }
 
+  if ( mMinY.count() <= curCol ) {
+    mMinY.resize( mSelectedDates.count() );
+  }
+
+  if ( mMaxY.count() <= curCol ) {
+    mMaxY.resize( mSelectedDates.count() );
+  }
+
   // Default values, which can never be reached
   mMinY[curCol] = mAgenda->timeToY( QTime( 23, 59 ) ) + 1;
   mMaxY[curCol] = mAgenda->timeToY( QTime( 0, 0 ) ) - 1;
