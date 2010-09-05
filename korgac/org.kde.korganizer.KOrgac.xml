@@ -1,0 +1,25 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.kde.korganizer.KOrgac">
+  <method name="quit">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
+  <method name="hide">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
+  <method name="show">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
+  <method name="forceAlarmCheck">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
+  <method name="dumpDebug">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
+  <method name="dumpAlarms">
+  <arg type="as" direction="out"/>
+  </method>
+  <method name="debugShowDialog"/>
+  </interface>
+</node>
