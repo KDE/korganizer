@@ -26,7 +26,6 @@
 #include "koeventview.h"
 #include "kocore.h"
 #include "koeventpopupmenu.h"
-#include "views/agendaview/koagendaview.h" // TODO AKONADI_PORT
 
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
@@ -35,6 +34,7 @@
 
 #include <libkdepim/pimmessagebox.h>
 
+#include <KCalCore/Incidence>
 #include <Akonadi/Item>
 
 #include <QApplication>
@@ -44,6 +44,8 @@
 #include <KXMLGUIFactory>
 
 #include <QMenu>
+
+using namespace KCalCore;
 
 //---------------------------------------------------------------------------
 
@@ -225,16 +227,7 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
       mReturnPressed = true;
     } else if ( ke->type() == QEvent::KeyRelease ) {
       if ( mReturnPressed ) {
-        // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
-        if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
-          if ( view->collection() >= 0 ) {
-            emit newEventSignal( Akonadi::Collection::List() << Akonadi::Collection( view->collection() ) );
-          } else {
-            emit newEventSignal( collectionSelection()->selectedCollections() );
-          }
-        } else {
-          emit newEventSignal( collectionSelection()->selectedCollections() );
-        }
+        emit newEventSignal( collectionSelection()->selectedCollections() );
         mReturnPressed = false;
         return true;
       } else {
@@ -279,16 +272,7 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
                        static_cast<ushort>( ke->count() ) ) );
       if ( !mTypeAhead ) {
         mTypeAhead = true;
-        // TODO(AKONADI_PORT) Remove this hack when the calendarview is ported to CalendarSearch
-        if ( KOAgendaView *view = dynamic_cast<KOAgendaView*>( this ) ) {
-          if ( view->collection() >= 0 ) {
-            emit newEventSignal( Akonadi::Collection::List() << Akonadi::Collection( view->collection() ) );
-          } else {
-            emit newEventSignal( collectionSelection()->selectedCollections() );
-          }
-        } else {
-          emit newEventSignal( collectionSelection()->selectedCollections() );
-        }
+        emit newEventSignal( collectionSelection()->selectedCollections() );
       }
       return true;
     }
