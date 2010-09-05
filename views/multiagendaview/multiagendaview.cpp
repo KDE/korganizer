@@ -180,15 +180,13 @@ void MultiAgendaView::updateView()
   d->mMultiAgendaView->updateView();
 }
 
-void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &incidence, int mode )
+void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &, int )
 {
-  d->mMultiAgendaView->changeIncidenceDisplay( incidence, mode );
 }
 
 int MultiAgendaView::maxDatesHint() const
 {
-  // TODO: remove these maxDatesHint functions, they aren't used
-  return 0;
+  return EventViews::AgendaView::MAX_DAY_COUNT;
 }
 
 void MultiAgendaView::setDateRange( const KDateTime &start, const KDateTime &end )
