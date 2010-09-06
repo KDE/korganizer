@@ -96,8 +96,6 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   mCurrentIncidence = item;
   mCurrentDate = qd;
 
-  qDebug() << "DEBUG YEP IT CAME";
-
   if ( !CalendarSupport::hasIncidence( mCurrentIncidence ) /*&& qd.isValid()*/ ) {
     kDebug() << "No event selected";
     return;
