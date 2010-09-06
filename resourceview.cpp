@@ -57,6 +57,23 @@
 
 using namespace KCal;
 
+static QString scrubDirectory( const QString &subRes )
+{
+  QString nsubRes = subRes;
+
+  // first, replace leading ".foo.directory" with "foo"
+  if ( subRes.contains( QRegExp( "^\\..*\\.directory" ) ) ) {
+    nsubRes.remove( ".directory" );
+    nsubRes.remove( 0, 1 ); // remove leading '.'
+  }
+
+  // now replace "/." with "/"  (needed for sub-sublevel-directories)
+  nsubRes.replace( QRegExp( "/\\." ),  "/" );
+
+  // cleaning complete
+  return nsubRes;
+}
+
 static QString labelFromSubResName( ResourceCalendar *resource, const QString &subRes )
 {
 
@@ -72,10 +89,10 @@ static QString labelFromSubResName( ResourceCalendar *resource, const QString &s
     if( resource && !resource->resourceName().isEmpty() ) {
       label = i18n( "My %1 (%2)" ).arg( subRes, resource->resourceName() );
     } else {
-      label = i18n( "My %1" ).arg( subRes );
+      label = i18n( "My %1" ).arg( scrubDirectory( subRes ) );
     }
   } else {
-    label = i18n( "My %1" ).arg( subRes );
+    label = i18n( "My %1" ).arg( scrubDirectory( subRes ) );
   }
   return label;
 }
