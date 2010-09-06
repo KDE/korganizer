@@ -304,12 +304,12 @@ void KOAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *chang
 
 void KOAgendaView::setCollection( Akonadi::Collection::Id coll )
 {
-  d->mAgendaView->setCollection( coll );
+  d->mAgendaView->setCollectionId( coll );
 }
 
 Akonadi::Collection::Id KOAgendaView::collection() const
 {
-  return d->mAgendaView->collection();
+  return d->mAgendaView->collectionId();
 }
 
 QDateTime KOAgendaView::selectionStart()
