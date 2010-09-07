@@ -69,7 +69,10 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   mMergeButton = new QRadioButton( i18n( "Merge into existing calendar" ), radioBox );
   boxLayout->addWidget( mMergeButton );
 
-  mAddButton->setChecked( true );
+  // Merge is the default because many .ics you find on the web have only one event in them,
+  // and you probably don't want to have dozens of calendars.
+  mMergeButton->setChecked( true );
+
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
 }
 
