@@ -145,8 +145,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mDateNavigator; }
-
-    IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
+    // TODO_NG
+    //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
     virtual CalendarSupport::IncidenceChanger *incidenceChanger() const { return mChanger; }
 
     /*
@@ -292,8 +292,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** Archive old events of calendar */
     void archiveCalendar();
-
-    void connectIncidenceEditor( IncidenceEditors::IncidenceEditor * );
 
     /** create new event without having a hint for the calendar. */
     void newEvent();

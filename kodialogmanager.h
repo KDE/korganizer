@@ -69,12 +69,6 @@ class KODialogManager : public QObject
     /** */
     IncidenceEditorsNG::IncidenceDialog *createDialog( const Akonadi::Item& item );
 
-    /** Get the appropriate editor for the given incidence */
-    IncidenceEditors::IncidenceEditor *getEditor( const Akonadi::Item& item );
-
-    /** Get an editor dialog for a Journal. */
-    IncidenceEditors::JournalEditor *getJournalEditor();
-
     void connectEditor( IncidenceEditors::IncidenceEditor *editor );
 
     void updateSearchDialog();

@@ -53,7 +53,6 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <incidenceeditors/journaleditor.h> // TODO: Remove when we have a IncidenceDialog based JournalDialog.
 #include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditors/incidenceeditor-ng/incidencedefaults.h>
 
@@ -333,10 +332,12 @@ CalendarSupport::Calendar *CalendarView::calendar() const
   return mCalendar;
 }
 
+/*
 IncidenceEditor *CalendarView::editorDialog( const Akonadi::Item &item ) const
 {
   return mDialogList.value( item.id() );
 }
+*/
 
 QDate CalendarView::activeDate( bool fallbackToToday )
 {
@@ -732,13 +733,6 @@ void CalendarView::incidenceChangeFinished( const Akonadi::Item &oldIncidence_,
   Incidence::Ptr oldIncidence = CalendarSupport::incidence( oldIncidence_ );
   Incidence::Ptr newIncidence = CalendarSupport::incidence( newIncidence_ );
 
-  // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
-  IncidenceEditor *tmp = editorDialog( newIncidence_ );
-  if ( tmp ) {
-    kDebug() << "Incidence modified and open";
-    tmp->modified();
-  }
-
   history()->recordEdit( oldIncidence_, newIncidence_ );
 
   // Record completed todos in journals, if enabled. we should to this here in
@@ -790,14 +784,9 @@ void CalendarView::incidenceChangeFinished( const Akonadi::Item &oldIncidence_,
 
 void CalendarView::incidenceToBeDeleted( const Akonadi::Item &item )
 {
-  IncidenceEditor *tmp = editorDialog( item );
   kDebug()<<"incidenceToBeDeleted item.id() :"<<item.id();
-  if ( tmp ) {
-    kDebug() << "Incidence to be deleted and open in editor";
-    tmp->delayedDestruct();
-  }
   history()->recordDelete( item );
-//  changeIncidenceDisplay( incidence, CalendarSupport::IncidenceChanger::INCIDENCEDELETED );
+  //  changeIncidenceDisplay( incidence, CalendarSupport::IncidenceChanger::INCIDENCEDELETED );
   updateUnmanagedViews();
 }
 
@@ -2687,6 +2676,8 @@ bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
     return false;
   }
 
+  /*
+    //TODO_NG
   IncidenceEditor *tmp = editorDialog( item );
   if ( tmp ) {
     tmp->reload();
@@ -2694,25 +2685,18 @@ bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
     tmp->show();
     return true;
   }
+  */
 
   if ( !mCalendar->hasChangeRights( item ) ) {
     showIncidence( item );
     return true;
   }
 
-  if ( IncidenceEditor *incidenceEditor = mDialogManager->getEditor( item ) ) {
-    connectIncidenceEditor( incidenceEditor );
+  IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
 
-    mDialogList.insert( item.id(), incidenceEditor );
-    incidenceEditor->editIncidence( item, activeIncidenceDate() );
-    incidenceEditor->show();
-  } else {
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-
-    // mDialogList.insert( item.id(), incidenceEditor ); // TODO: Need to investigate this.
-    // connectIncidenceEditor( dialog );                 // TODO: This as well
-    dialog->load( item, activeIncidenceDate() ); // Will show the dialog as soon as it has loaded the item.
-  }
+  // mDialogList.insert( item.id(), incidenceEditor ); // TODO: Need to investigate this.
+  // connectIncidenceEditor( dialog );                 // TODO: This as well
+  dialog->load( item, activeIncidenceDate() ); // Will show the dialog as soon as it has loaded the item.
 
   return true;
 }
@@ -2910,17 +2894,6 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
     }
   }
   return true;
-}
-
-void CalendarView::connectIncidenceEditor( IncidenceEditor *editor )
-{
-  // TODO_BERTJAN: Remove, should be set already at this point.
-  if ( currentView()->collectionSelection()->hasSelection() )
-    editor->selectCollection( currentView()->collectionSelection()->selectedCollections().first() );
-
-  connect( this, SIGNAL(newIncidenceChanger(CalendarSupport::IncidenceChanger *)),
-           editor, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger *)) );
-  editor->setIncidenceChanger( mChanger );
 }
 
 bool CalendarView::purgeCompletedSubTodos( const Akonadi::Item &todoItem, bool &allPurged )

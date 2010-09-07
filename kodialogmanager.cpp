@@ -73,35 +73,6 @@ class KODialogManager::DialogManagerVisitor : public Visitor
     KODialogManager *mDialogManager;
 };
 
-class KODialogManager::EditorDialogVisitor :
-      public KODialogManager::DialogManagerVisitor
-{
-  public:
-    EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
-    IncidenceEditor *editor() const { return mEditor; }
-
-  protected:
-    bool visit( Event::Ptr )
-    {
-      return false;
-    }
-    bool visit( Todo::Ptr )
-    {
-      return false;
-    }
-    bool visit( Journal::Ptr )
-    {
-      mEditor = mDialogManager->getJournalEditor();
-      return mEditor;
-    }
-    bool visit( FreeBusy::Ptr ) // to inhibit hidden virtual compile warning
-    {
-      return false;
-    }
-
-    IncidenceEditor *mEditor;
-};
-
 KODialogManager::KODialogManager( CalendarView *mainView )
   : QObject(), mMainView( mainView )
 {
@@ -215,24 +186,8 @@ IncidenceEditorsNG::IncidenceDialog *KODialogManager::createDialog( const Akonad
   }
 
   IncidenceEditorsNG::IncidenceDialog *dialog = IncidenceEditorsNG::IncidenceDialogFactory::create( incidence->type(), mMainView );
-//   connectEditor( dialog );
+
   return dialog;
-}
-
-// TODO: Get rid of this when there is an IncidenceDialog based JournalDialog.
-IncidenceEditor *KODialogManager::getEditor( const Akonadi::Item &item )
-{
-  const Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( !incidence ) {
-    return 0;
-  }
-
-  EditorDialogVisitor v;
-  if ( v.act( incidence, this ) ) {
-    return v.editor();
-  } else {
-    return 0;
-  }
 }
 
 void KODialogManager::connectTypeAhead( IncidenceEditorsNG::IncidenceDialog *dialog, KOEventView *view )
@@ -257,13 +212,6 @@ void KODialogManager::connectEditor( IncidenceEditor *editor )
   connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
   connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
            mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
-}
-
-JournalEditor *KODialogManager::getJournalEditor()
-{
-  JournalEditor *journalEditor = new JournalEditor( mMainView );
-  connectEditor( journalEditor );
-  return journalEditor;
 }
 
 void KODialogManager::updateSearchDialog()
