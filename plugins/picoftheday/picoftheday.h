@@ -22,6 +22,7 @@
 
 #include <calendarviews/eventviews/agenda/calendardecoration.h>
 #include <KIO/Job>
+#include <QDate>
 
 using namespace EventViews::CalendarDecoration;
 
