@@ -225,10 +225,14 @@ void TimeLabels::setAgenda( KOAgenda* agenda )
 {
   mAgenda = agenda;
 
-  connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)), this, SLOT(mousePosChanged(const QPoint &)));
-  connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
-  connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
-  connect(mAgenda, SIGNAL(gridSpacingYChanged( double ) ), this, SLOT( setCellHeight( double ) ) );
+  if ( mAgenda ) {
+    connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)),
+            this, SLOT(mousePosChanged(const QPoint &)));
+    connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
+    connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
+    connect(mAgenda, SIGNAL(gridSpacingYChanged(double)),
+            this, SLOT(setCellHeight(double)) );
+  }
 }
 
 
