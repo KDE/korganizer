@@ -1294,7 +1294,6 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
     item.setPayload( todo );
 
     IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-//    connectIncidenceEditor( dialog );
 
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
@@ -1320,7 +1319,6 @@ void CalendarView::newTodo( const QDate &date )
     item.setPayload( todo );
 
     IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-//    connectIncidenceEditor( dialog );
     dialog->load( item );
   }
 }
@@ -1358,6 +1356,7 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
     } else {
       dialog->selectCollection( defaultCollection() );
     }
+    dialog->load( item );
   }
 }
 
