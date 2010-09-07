@@ -1342,40 +1342,41 @@ void CalendarView::newJournal( const QDate &date )
 void CalendarView::newJournal( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    JournalEditor *journalEditor = mDialogManager->getJournalEditor();
-    QDate journalDate = activeDate( true );
-    connectIncidenceEditor( journalEditor );
-    journalEditor->newJournal();
-    if ( !journalDate.isValid() ) {
-      journalDate = activeDate();
-    }
-    journalEditor->setDate( journalDate );
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+
+    Journal::Ptr journal( new Journal );
+    defaults.setDefaults( journal );
+
+    Akonadi::Item item;
+    item.setPayload( journal );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    dialog->selectCollection( defaultCollection() );
 
     if ( collection.isValid() ) {
-      journalEditor->selectCollection( collection );
+      dialog->selectCollection( collection );
     } else {
-      journalEditor->selectCollection( defaultCollection() );
+      dialog->selectCollection( defaultCollection() );
     }
-
-    journalEditor->show();
   }
 }
 
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    JournalEditor *journalEditor = mDialogManager->getJournalEditor();
-    QDate journalDate = date;
-    connectIncidenceEditor( journalEditor );
-    journalEditor->newJournal();
+    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
 
-    if ( !journalDate.isValid() ) {
-      journalDate = activeDate();
-    }
+    Journal::Ptr journal( new Journal );
+    defaults.setDefaults( journal );
 
-    journalEditor->setDate( journalDate );
-    journalEditor->setTexts( text );
-    journalEditor->show();
+    journal->setSummary( text );
+
+    Akonadi::Item item;
+    item.setPayload( journal );
+
+    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    dialog->selectCollection( defaultCollection() );
+    dialog->load( item );
   }
 }
 
