@@ -24,6 +24,7 @@
 #include <calendarsupport/collectionselectionproxymodel.h>
 #include <calendarsupport/entitymodelstatesaver.h>
 
+#include <calendarviews/eventviews/agenda/agendaview.h>
 #include <calendarviews/eventviews/multiagenda/multiagendaview.h>
 
 #include <KCalCore/IncidenceBase> // DateList typedef
