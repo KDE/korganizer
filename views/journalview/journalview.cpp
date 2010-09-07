@@ -157,6 +157,7 @@ JournalView::JournalView( const Akonadi::Item &j, QWidget *parent )
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
+  mCalendar = 0;
 
   mLayout = new QGridLayout( this );
   mLayout->setSpacing( KDialog::spacingHint() );
@@ -302,7 +303,7 @@ void JournalView::readJournal( const Akonadi::Item &j )
     mBrowser->insertPlainText( description );
   }
 
-  if( mCalendar ) {
+  if ( mCalendar ) {
     mEditButton->setEnabled( mCalendar->hasChangeRights( j ) );
     mDeleteButton->setEnabled( mCalendar->hasDeleteRights( j ) );
   }
