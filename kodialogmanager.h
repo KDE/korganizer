@@ -45,12 +45,6 @@ namespace IncidenceEditorsNG {
   class IncidenceDialog;
 }
 
-namespace IncidenceEditors {
-  class IncidenceEditor;
-  class JournalEditor;
-  class TodoEditor;
-}
-
 namespace KCal {
   class CalFilter;
 }
@@ -69,7 +63,8 @@ class KODialogManager : public QObject
     /** */
     IncidenceEditorsNG::IncidenceDialog *createDialog( const Akonadi::Item& item );
 
-    void connectEditor( IncidenceEditors::IncidenceEditor *editor );
+    // TODO_NG: see if editors-NG have the needed slots.
+    void connectEditor( IncidenceEditorsNG::IncidenceDialog *editor );
 
     void updateSearchDialog();
 

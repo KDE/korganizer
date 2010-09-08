@@ -37,8 +37,6 @@
 
 #include <calendarsupport/utils.h>
 
-#include <incidenceeditors/journaleditor.h>
-
 #include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditors/incidenceeditor-ng/incidencedialogfactory.h>
 
@@ -54,7 +52,7 @@
 using namespace KOrg;
 using namespace KPIM;
 using namespace KCalCore;
-using namespace IncidenceEditors;
+using namespace IncidenceEditorsNG;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 
@@ -197,7 +195,7 @@ void KODialogManager::connectTypeAhead( IncidenceEditorsNG::IncidenceDialog *dia
   }
 }
 
-void KODialogManager::connectEditor( IncidenceEditor *editor )
+void KODialogManager::connectEditor( IncidenceDialog *editor )
 {
   createCategoryEditor();
   connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
