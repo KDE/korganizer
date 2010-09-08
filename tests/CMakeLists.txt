@@ -17,5 +17,4 @@ kde4_add_executable(testkcmdesignerfields TEST testkcmdesignerfields.cpp ../kcmd
 target_link_libraries(testkcmdesignerfields
                       ${QT_QTUITOOLS_LIBRARY}
                       ${KDE4_KIO_LIBS}
-                      incidenceeditors
                      )
