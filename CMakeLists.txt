@@ -86,7 +86,6 @@ target_link_libraries(korganizer
     korganizer_interfaces
     korganizer_core
     calendarsupport
-    incidenceeditors
 )
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -241,7 +240,6 @@ target_link_libraries(korganizerprivate
   korganizer_core
   calendarsupport
   eventviews
-  incidenceeditors
   incidenceeditorsng
   kdgantt2
 )

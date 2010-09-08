@@ -61,7 +61,7 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <incidenceeditors/groupwareintegration.h>
+#include <incidenceeditors/incidenceeditor-ng/groupwareintegration.h>
 
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/ChangeRecorder>
@@ -121,8 +121,8 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
 
   // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
-  if ( !IncidenceEditors::GroupwareIntegration::isActive() ) {
-    IncidenceEditors::GroupwareIntegration::activate();
+  if ( !IncidenceEditorsNG::GroupwareIntegration::isActive() ) {
+    IncidenceEditorsNG::GroupwareIntegration::activate();
   }
 
   mGUIClient = client;
