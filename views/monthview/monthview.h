@@ -1,7 +1,8 @@
 /*
   This file is part of KOrganizer.
 
-  Copyright (c) 2008 Bruno Virlet <bruno.virlet@gmail.com>
+  Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.net
+  Author: Sergio Martins <sergio.martins@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,28 +23,17 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef VIEW_H
-#define VIEW_H
+#ifndef KORG_MONTHVIEW_H_
+#define KORG_MONTHVIEW_H_
 
 #include "koeventview.h"
+#include "../../printing/calprinter.h"
 
 #include <Akonadi/Item>
-
 #include <QtCore/QTimer>
-
-class KOEventPopupMenu;
-
-class QWheelEvent;
-class QKeyEvent;
 
 namespace KOrg {
 
-class MonthGraphicsView;
-class MonthScene;
-
-/**
-  New month view.
-*/
 class MonthView : public KOEventView
 {
   Q_OBJECT
@@ -51,19 +41,18 @@ class MonthView : public KOEventView
     explicit MonthView( QWidget *parent = 0 );
     ~MonthView();
 
-    virtual int currentDateCount() const;
+    int currentDateCount() const;
     int currentMonth() const;
 
     Akonadi::Item::List selectedIncidences();
 
     /** Returns dates of the currently selected events */
-    virtual KCalCore::DateList selectedIncidenceDates();
+    KCalCore::DateList selectedIncidenceDates();
 
-    virtual QDateTime selectionStart();
+    QDateTime selectionStart();
 
-    virtual QDateTime selectionEnd();
-
-    virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    QDateTime selectionEnd();
+    bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
     /**
      * Returns the average date in the view
@@ -72,70 +61,35 @@ class MonthView : public KOEventView
 
     bool usesFullWindow();
 
-    bool supportsDateRangeSelection() { return false; }
+    bool supportsDateRangeSelection();
 
-    virtual CalPrinterBase::PrintType printType() const;
+    KOrg::CalPrinterBase::PrintType printType() const;
+
+    int maxDatesHint() const;
+
+    void setTypeAheadReceiver( QObject *o );
+
+    void setDateRange( const KDateTime &start, const KDateTime &end );
+
+  Q_SIGNALS:
+
 
   public slots:
-    virtual void updateView();
+    void updateView();
 
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );
 
-    /* reimp */void updateConfig();
-
-  protected slots:
-    void moveBackMonth();
-    void moveBackWeek();
-    void moveFwdWeek();
-    void moveFwdMonth();
-    /* reimp */void calendarReset();
-
-  protected:
-    int maxDatesHint() const;
-
-    virtual void wheelEvent( QWheelEvent *event );
-    virtual void keyPressEvent( QKeyEvent *event );
-    virtual void keyReleaseEvent( QKeyEvent *event );
-
-    /* reimp */void incidencesAdded( const Akonadi::Item::List &incidences );
-    /* reimp */void incidencesAboutToBeRemoved( const Akonadi::Item::List &incidences );
-    /* reimp */void incidencesChanged( const Akonadi::Item::List &incidences );
-    /* reimp */QPair<KDateTime,KDateTime> actualDateRange( const KDateTime &start,
-                                                           const KDateTime &end ) const;
-
-    /**
-     * @deprecated
-     */
-    void showDates( const QDate &start, const QDate &end );
-
-  private slots:
-    // Compute and update the whole view
-    void reloadIncidences();
+    void updateConfig();
 
   private:
-    void addIncidence( const Akonadi::Item &incidence );
-    void moveStartDate( int weeks, int months );
-    void triggerDelayedReload() {
-      if ( !mReloadTimer.isActive() ) {
-        mReloadTimer.start( 50 );
-      }
-    }
+    void showDates( const QDate&, const QDate& ){};
 
-    MonthGraphicsView *mView;
-    MonthScene *mScene;
-    Akonadi::Item::Id mSelectedItemId;
-    QDate mSelectedItemDate;
-
-    QTimer mReloadTimer;
-
+    class Private;
+    Private * const d;
     KOEventPopupMenu *mViewPopup;
-
-    friend class MonthScene;
-    friend class MonthGraphicsView;
 };
 
 }
-
 #endif

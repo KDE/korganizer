@@ -160,9 +160,6 @@ set(korganizerprivate_LIB_SRCS
   views/journalview/kojournalview.cpp
   views/journalview/journalview.cpp
   views/monthview/monthview.cpp
-  views/monthview/monthitem.cpp
-  views/monthview/monthgraphicsitems.cpp
-  views/monthview/monthscene.cpp
   views/multiagendaview/multiagendaview.cpp
   views/todoview/kotodomodel.cpp
   views/todoview/kotododelegates.cpp
