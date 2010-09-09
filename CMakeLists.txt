@@ -37,7 +37,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${CMAKE_BINARY_DIR}/libkdepim
                     ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
                     ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
-                    ${CMAKE_SOURCE_DIR}/incidenceeditors
+                    ${CMAKE_SOURCE_DIR}/incidenceeditor-ng
                     ${CMAKE_SOURCE_DIR}/calendarviews/eventviews
                     ${AKONADI_INCLUDE_DIR}
                     ${Boost_INCLUDE_DIRS}

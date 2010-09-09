@@ -22,7 +22,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "alarmdialog.h"
+#include "../alarmdialog.h" //fullpath since incidenceeditors also has an alarmdialog.h
 
 #include <kcalcore/event.h>
 #include <kcalcore/todo.h>

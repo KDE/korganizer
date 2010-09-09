@@ -31,7 +31,6 @@
 
 #include "calendarview.h"
 #include "calprinter.h"
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
@@ -53,8 +52,9 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
-#include <incidenceeditors/incidenceeditor-ng/incidencedefaults.h>
+#include <incidenceeditor-ng/categoryconfig.h>
+#include <incidenceeditor-ng/incidencedialog.h>
+#include <incidenceeditor-ng/incidencedefaults.h>
 
 #include <calendarviews/eventviews/eventview.h>
 #include <calendarsupport/utils.h>

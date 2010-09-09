@@ -28,7 +28,6 @@
 #include "archivedialog.h"
 #endif
 #include "calendarview.h"
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "categoryeditdialog.h"
 #include "koglobals.h"
 #include "koprefs.h"
@@ -37,8 +36,9 @@
 
 #include <calendarsupport/utils.h>
 
-#include <incidenceeditors/incidenceeditor-ng/incidencedialog.h>
-#include <incidenceeditors/incidenceeditor-ng/incidencedialogfactory.h>
+#include <incidenceeditor-ng/categoryconfig.h>
+#include <incidenceeditor-ng/incidencedialog.h>
+#include <incidenceeditor-ng/incidencedialogfactory.h>
 
 #include <Akonadi/Item>
 

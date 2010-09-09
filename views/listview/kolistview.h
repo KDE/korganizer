@@ -28,7 +28,7 @@
 
 #include "koeventview.h"
 
-#include <incidenceeditors/customlistviewitem.h>
+#include <incidenceeditor-ng/customlistviewitem.h>
 
 #include <kcalcore/incidence.h>
 
@@ -37,7 +37,7 @@
 
 using namespace KCalCore;
 
-typedef IncidenceEditors::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
+typedef IncidenceEditorsNG::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;
 

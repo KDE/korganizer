@@ -61,7 +61,7 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <incidenceeditors/incidenceeditor-ng/groupwareintegration.h>
+#include <incidenceeditor-ng/groupwareintegration.h>
 
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/ChangeRecorder>
