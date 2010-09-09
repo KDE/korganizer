@@ -32,9 +32,8 @@
 #include <QList>
 #include <QStringList>
 
-using namespace IncidenceEditors;
-
-CategoryEditDialog::CategoryEditDialog( CategoryConfig *categoryConfig, QWidget *parent )
+CategoryEditDialog::CategoryEditDialog( IncidenceEditorNG::CategoryConfig *categoryConfig,
+                                        QWidget *parent )
   : KDialog( parent ), mCategoryConfig( categoryConfig )
 {
   setCaption( i18n( "Edit Categories" ) );
@@ -96,7 +95,8 @@ CategoryEditDialog::~CategoryEditDialog()
 
 void CategoryEditDialog::fillList()
 {
-  CategoryHierarchyReaderQTreeWidget( mWidgets->mCategories ).read( mCategoryConfig->customCategories() );
+  IncidenceEditorNG::CategoryHierarchyReaderQTreeWidget(
+    mWidgets->mCategories ).read( mCategoryConfig->customCategories() );
 
   mWidgets->mButtonRemove->setEnabled( mWidgets->mCategories->topLevelItemCount() > 0 );
   mWidgets->mButtonAddSubcategory->setEnabled( mWidgets->mCategories->topLevelItemCount() > 0 );
@@ -193,8 +193,9 @@ void CategoryEditDialog::slotApply()
   while ( *it ) {
     path = mWidgets->mCategories->pathByItem( *it++ );
     path.replaceInStrings(
-      CategoryConfig::categorySeparator, QString( "\\" ) + CategoryConfig::categorySeparator );
-      l.append( path.join( CategoryConfig::categorySeparator ) );
+      IncidenceEditorNG::CategoryConfig::categorySeparator,
+      QString( "\\" ) + IncidenceEditorNG::CategoryConfig::categorySeparator );
+    l.append( path.join( IncidenceEditorNG::CategoryConfig::categorySeparator ) );
   }
   mCategoryConfig->setCustomCategories( l );
   mCategoryConfig->writeConfig();

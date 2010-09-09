@@ -821,7 +821,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   unsetCategoryColor->label()->setToolTip( unsetCategoryColor->button()->toolTip() );
 
   mCategoryCombo = new KComboBox( categoryGroup );
-  mCategoryCombo->addItems( IncidenceEditors::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo->addItems( IncidenceEditorNG::CategoryConfig( KOPrefs::instance() ).customCategories() );
   mCategoryCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select here the event category you want to modify. "
@@ -943,7 +943,7 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
 void KOPrefsDialogColorsAndFonts::updateCategories()
 {
   mCategoryCombo->clear();
-  mCategoryCombo->addItems( IncidenceEditors::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo->addItems( IncidenceEditorNG::CategoryConfig( KOPrefs::instance() ).customCategories() );
   updateCategoryColor();
 }
 

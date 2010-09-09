@@ -48,7 +48,6 @@
 
 using namespace KCalCore;
 using namespace KPIM;
-using namespace IncidenceEditors;
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
@@ -108,7 +107,7 @@ void KOTodoViewQuickSearch::fillCategories()
       categories = filter->categoryList();
       categories.sort();
     } else {
-      CategoryConfig cc( KOPrefs::instance() );
+      IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();
@@ -129,7 +128,7 @@ void KOTodoViewQuickSearch::fillCategories()
     }
   }
 
-  CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
+  IncidenceEditorNG::CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
   mCategoryCombo->setCheckedItems( currentCategories );
 }
 

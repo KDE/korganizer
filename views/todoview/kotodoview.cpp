@@ -59,7 +59,6 @@
 #include <QTimer>
 
 using namespace KPIM;
-using namespace IncidenceEditors;
 
 KOTodoView::KOTodoView( QWidget *parent )
   : BaseView( parent )
@@ -728,7 +727,7 @@ QMenu *KOTodoView::createCategoryPopupMenu()
   QStringList checkedCategories = todo->categories();
 
   QStringList::Iterator it;
-  CategoryConfig cc( KOPrefs::instance() );
+  IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
   Q_FOREACH ( const QString &i, cc.customCategories() ) {
     QAction *action = tempMenu->addAction( i );
     action->setCheckable( true );

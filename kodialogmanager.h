@@ -41,7 +41,7 @@ namespace Akonadi {
   class Item;
 }
 
-namespace IncidenceEditorsNG {
+namespace IncidenceEditorNG {
   class IncidenceDialog;
 }
 
@@ -61,14 +61,14 @@ class KODialogManager : public QObject
     virtual ~KODialogManager();
 
     /** */
-    IncidenceEditorsNG::IncidenceDialog *createDialog( const Akonadi::Item& item );
+    IncidenceEditorNG::IncidenceDialog *createDialog( const Akonadi::Item& item );
 
     // TODO_NG: see if editors-NG have the needed slots.
-    void connectEditor( IncidenceEditorsNG::IncidenceDialog *editor );
+    void connectEditor( IncidenceEditorNG::IncidenceDialog *editor );
 
     void updateSearchDialog();
 
-    void connectTypeAhead( IncidenceEditorsNG::IncidenceDialog *editor, KOEventView *view );
+    void connectTypeAhead( IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view );
 
   public slots:
     void showOptionsDialog();

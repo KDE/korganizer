@@ -37,7 +37,7 @@
 
 using namespace KCalCore;
 
-typedef IncidenceEditorsNG::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
+typedef IncidenceEditorNG::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;
 

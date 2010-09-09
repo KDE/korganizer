@@ -33,8 +33,6 @@
 
 #include <KMessageBox>
 
-using namespace IncidenceEditors;
-
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )
 {
@@ -289,8 +287,9 @@ void FilterEdit::editCategorySelection()
   }
 
   if ( !mCategorySelectDialog ) {
-    CategoryConfig* cc = new CategoryConfig( KOPrefs::instance(), this );
-    mCategorySelectDialog = new CategorySelectDialog( cc, this );
+    IncidenceEditorNG::CategoryConfig *cc =
+      new IncidenceEditorNG::CategoryConfig( KOPrefs::instance(), this );
+    mCategorySelectDialog = new IncidenceEditorNG::CategorySelectDialog( cc, this );
     mCategorySelectDialog->setHelp( "categories-view", "korganizer" );
     mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
     connect( mCategorySelectDialog, SIGNAL(categoriesSelected(const QStringList&)),

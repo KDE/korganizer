@@ -52,7 +52,6 @@
 using namespace KOrg;
 using namespace KPIM;
 using namespace KCalCore;
-using namespace IncidenceEditorsNG;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 
@@ -176,26 +175,26 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
   mFilterEditDialog->raise();
 }
 
-IncidenceEditorsNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi::Item& item )
+IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi::Item& item )
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     return 0;
   }
 
-  IncidenceEditorsNG::IncidenceDialog *dialog = IncidenceEditorsNG::IncidenceDialogFactory::create( incidence->type(), mMainView );
+  IncidenceEditorNG::IncidenceDialog *dialog = IncidenceEditorNG::IncidenceDialogFactory::create( incidence->type(), mMainView );
 
   return dialog;
 }
 
-void KODialogManager::connectTypeAhead( IncidenceEditorsNG::IncidenceDialog *dialog, KOEventView *view )
+void KODialogManager::connectTypeAhead( IncidenceEditorNG::IncidenceDialog *dialog, KOEventView *view )
 {
   if ( dialog && view ) {
     view->setTypeAheadReceiver( dialog->typeAheadReceiver() );
   }
 }
 
-void KODialogManager::connectEditor( IncidenceDialog *editor )
+void KODialogManager::connectEditor( IncidenceEditorNG::IncidenceDialog *editor )
 {
   createCategoryEditor();
   connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
@@ -223,7 +222,7 @@ void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
 
-    IncidenceEditors::CategoryConfig* cc = new IncidenceEditors::CategoryConfig( KOPrefs::instance(), this );
+    IncidenceEditorNG::CategoryConfig* cc = new IncidenceEditorNG::CategoryConfig( KOPrefs::instance(), this );
     mCategoryEditDialog =
       new CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );

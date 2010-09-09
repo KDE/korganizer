@@ -103,13 +103,11 @@
 #include <QVBoxLayout>
 
 using namespace KHolidays;
-using namespace IncidenceEditors;
 using namespace KCalUtils;
 
-
-IncidenceEditorsNG::IncidenceDefaults minimalIncidenceDefaults()
+IncidenceEditorNG::IncidenceDefaults minimalIncidenceDefaults()
 {
-  IncidenceEditorsNG::IncidenceDefaults defaults;
+  IncidenceEditorNG::IncidenceDefaults defaults;
   // Set the full emails manually here, to avoid that we get dependencies on
   // KCalPrefs all over the place.
   defaults.setFullEmails( CalendarSupport::KCalPrefs::instance()->fullEmails() );
@@ -331,13 +329,6 @@ CalendarSupport::Calendar *CalendarView::calendar() const
 {
   return mCalendar;
 }
-
-/*
-IncidenceEditor *CalendarView::editorDialog( const Akonadi::Item &item ) const
-{
-  return mDialogList.value( item.id() );
-}
-*/
 
 QDate CalendarView::activeDate( bool fallbackToToday )
 {
@@ -1105,12 +1096,12 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
   }
 }
 
-IncidenceEditorsNG::IncidenceDialog *CalendarView::newEventEditor( const Event::Ptr &event )
+IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor( const Event::Ptr &event )
 {
   Akonadi::Item item;
   item.setPayload( event );
 
-  IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+  IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
   dialog->load( item );
 
 //  connectIncidenceEditor( dialog );
@@ -1183,7 +1174,7 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
     // and let the view adjust the type.
     dateTimesForNewEvent( startDt, endDt, allDay );
 
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setStartDateTime( KDateTime( startDt ) );
     defaults.setEndDateTime( KDateTime( endDt ) );
 
@@ -1191,7 +1182,7 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
     defaults.setDefaults( event );
     event->setAllDay( allDay );
 
-    IncidenceEditorsNG::IncidenceDialog *eventEditor = newEventEditor( event );
+    IncidenceEditorNG::IncidenceDialog *eventEditor = newEventEditor( event );
     Q_ASSERT( eventEditor );
 
     eventEditor->selectCollection( defaultCollection() );
@@ -1210,7 +1201,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
     bool allDay = false;
     dateTimesForNewEvent( startDt, endDt, allDay );
 
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setStartDateTime( KDateTime( startDt ) );
     defaults.setEndDateTime( KDateTime( endDt ) );
     // if attach or attendee list is empty, these methods don't do anything, so
@@ -1234,7 +1225,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             bool inlineAttachment )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
     defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
@@ -1249,7 +1240,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
     dialog->selectCollection( defaultCollection() );
     dialog->load( item );
   }
@@ -1263,7 +1254,7 @@ void CalendarView::newTodo()
 void CalendarView::newTodo( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
 
     bool allDay = true;
     if ( mViewManager->currentView()->isEventView() ) {
@@ -1282,7 +1273,7 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
 
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
@@ -1297,7 +1288,7 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
 void CalendarView::newTodo( const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setEndDateTime( KDateTime( date, QTime::currentTime() ) );
 
     Todo::Ptr todo( new Todo );
@@ -1307,7 +1298,7 @@ void CalendarView::newTodo( const QDate &date )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
     dialog->load( item );
   }
 }
@@ -1329,7 +1320,7 @@ void CalendarView::newJournal( const QDate &date )
 void CalendarView::newJournal( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
 
     Journal::Ptr journal( new Journal );
     defaults.setDefaults( journal );
@@ -1337,7 +1328,7 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
     Akonadi::Item item;
     item.setPayload( journal );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
     dialog->selectCollection( defaultCollection() );
 
     if ( collection.isValid() ) {
@@ -1352,7 +1343,7 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
 
     Journal::Ptr journal( new Journal );
     defaults.setDefaults( journal );
@@ -1362,7 +1353,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
     Akonadi::Item item;
     item.setPayload( journal );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
     dialog->selectCollection( defaultCollection() );
     dialog->load( item );
   }
@@ -1398,7 +1389,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
       return;
     }
 
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setRelatedIncidence( CalendarSupport::incidence( selectedTodo() ) );
 
     Todo::Ptr todo( new Todo );
@@ -1408,7 +1399,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
 //    connectIncidenceEditor( dialog );
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
@@ -1422,7 +1413,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 void CalendarView::newSubTodo( const Akonadi::Item &parentEvent )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorsNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
     defaults.setRelatedIncidence( CalendarSupport::incidence( parentEvent ) );
 
     Todo::Ptr todo( new Todo );
@@ -1432,7 +1423,7 @@ void CalendarView::newSubTodo( const Akonadi::Item &parentEvent )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
 //    connectIncidenceEditor( dialog );
     dialog->load( item );
   }
@@ -2546,7 +2537,6 @@ Akonadi::Item CalendarView::selectedTodo()
 
 void CalendarView::dialogClosing( const Akonadi::Item &item )
 {
-  mDialogList.remove( item.id() );
 }
 
 Akonadi::Item CalendarView::currentSelection()
@@ -2692,9 +2682,8 @@ bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
     return true;
   }
 
-  IncidenceEditorsNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+  IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
 
-  // mDialogList.insert( item.id(), incidenceEditor ); // TODO: Need to investigate this.
   // connectIncidenceEditor( dialog );                 // TODO: This as well
   dialog->load( item, activeIncidenceDate() ); // Will show the dialog as soon as it has loaded the item.
 
@@ -2986,7 +2975,7 @@ void CalendarView::updateCategories()
   QStringList allCats( CalendarSupport::Calendar::categories( calendar() ) );
   allCats.sort();
 
-  IncidenceEditors::CategoryConfig cc( KOPrefs::instance() );
+  IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
 
   QStringList categories( cc.customCategories() );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {

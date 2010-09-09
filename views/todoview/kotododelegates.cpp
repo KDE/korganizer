@@ -63,7 +63,6 @@
 
 using namespace KCalCore;
 using namespace KPIM;
-using namespace IncidenceEditors;
 
 // ---------------- COMPLETION DELEGATE --------------------------
 // ---------------------------------------------------------------
@@ -341,7 +340,7 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
       categories = filter->categoryList();
       categories.sort();
     } else {
-      CategoryConfig cc( KOPrefs::instance() );
+      IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();
@@ -362,7 +361,7 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
     }
   }
 
-  CategoryHierarchyReaderQComboBox( combo ).read( categories );
+  IncidenceEditorNG::CategoryHierarchyReaderQComboBox( combo ).read( categories );
   // TODO test again with newer version of Qt, if it manages then to move
   // the popup together with the combobox.
   //combo->showPopup();

@@ -33,7 +33,7 @@ namespace Ui {
   class CategoryEditDialog_base;
 }
 
-namespace IncidenceEditors {
+namespace IncidenceEditorNG {
   class CategoryConfig;
 }
 
@@ -41,7 +41,7 @@ class KORGANIZER_CORE_EXPORT CategoryEditDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit CategoryEditDialog( IncidenceEditors::CategoryConfig *categoryConfig, QWidget *parent = 0 );
+    explicit CategoryEditDialog( IncidenceEditorNG::CategoryConfig *categoryConfig, QWidget *parent = 0 );
     ~CategoryEditDialog();
 
   public Q_SLOTS:
@@ -68,7 +68,7 @@ class KORGANIZER_CORE_EXPORT CategoryEditDialog : public KDialog
 
   private:
     void deleteItem( QTreeWidgetItem *item, QList<QTreeWidgetItem *> &to_remove );
-    IncidenceEditors::CategoryConfig *mCategoryConfig;
+    IncidenceEditorNG::CategoryConfig *mCategoryConfig;
     Ui::CategoryEditDialog_base *mWidgets;
 };
 

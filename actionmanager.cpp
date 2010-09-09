@@ -121,8 +121,8 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
 
   // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
-  if ( !IncidenceEditorsNG::GroupwareIntegration::isActive() ) {
-    IncidenceEditorsNG::GroupwareIntegration::activate();
+  if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
+    IncidenceEditorNG::GroupwareIntegration::activate();
   }
 
   mGUIClient = client;

@@ -52,12 +52,8 @@ class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
 
-namespace IncidenceEditorsNG {
+namespace IncidenceEditorNG {
   class IncidenceDialog;
-}
-
-namespace IncidenceEditors {
-  class IncidenceEditor;
 }
 
 namespace KOrg {
@@ -674,7 +670,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       defaults, if invalid values are given) and allow the view to adjust the type.
     */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    IncidenceEditorsNG::IncidenceDialog *newEventEditor( const Event::Ptr &event );
+    IncidenceEditorNG::IncidenceDialog *newEventEditor( const Event::Ptr &event );
 
     bool eventFilter( QObject *watched, QEvent *event );
 
@@ -736,8 +732,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate mSaveDate;
 
     KOTodoView *mTodoList;
-    QMap<Akonadi::Item::Id,IncidenceEditors::IncidenceEditor*> mDialogList;
-
     CalendarSupport::IncidenceChanger *mChanger;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;

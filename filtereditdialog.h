@@ -31,7 +31,7 @@
 
 class FilterEdit;
 
-namespace IncidenceEditors {
+namespace IncidenceEditorNG {
   class CategorySelectDialog;
 }
 
@@ -99,7 +99,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 
     QList<CalFilter*> *mFilters;
     CalFilter *mCurrent;
-    IncidenceEditors::CategorySelectDialog *mCategorySelectDialog;
+    IncidenceEditorNG::CategorySelectDialog *mCategorySelectDialog;
 };
 
 #endif

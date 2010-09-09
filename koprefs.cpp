@@ -50,7 +50,6 @@
 #include <time.h>
 #include <unistd.h>
 
-using namespace IncidenceEditors;
 using namespace KPIMIdentities;
 
 class KOPrefsPrivate {
