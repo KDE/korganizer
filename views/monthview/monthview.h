@@ -73,6 +73,8 @@ class MonthView : public KOEventView
 
     void setCalendar( CalendarSupport::Calendar *cal );
 
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+
   public slots:
     void updateView();
 

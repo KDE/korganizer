@@ -231,3 +231,8 @@ void MonthView::setCalendar( CalendarSupport::Calendar *cal )
   d->mPopup->setCalendar( cal );
   d->mMonthView->setCalendar( cal );
 }
+
+void MonthView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+{
+  d->mMonthView->setIncidenceChanger( changer );
+}
