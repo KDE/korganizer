@@ -71,8 +71,7 @@ class MonthView : public KOEventView
 
     void setDateRange( const KDateTime &start, const KDateTime &end );
 
-  Q_SIGNALS:
-
+    void setCalendar( CalendarSupport::Calendar *cal );
 
   public slots:
     void updateView();

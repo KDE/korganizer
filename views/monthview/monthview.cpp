@@ -224,3 +224,10 @@ void MonthView::setDateRange( const KDateTime &start, const KDateTime &end )
 {
   d->mMonthView->setDateRange( start, end );
 }
+
+void MonthView::setCalendar( CalendarSupport::Calendar *cal )
+{
+  KOEventView::setCalendar( cal );
+  d->mPopup->setCalendar( cal );
+  d->mMonthView->setCalendar( cal );
+}
