@@ -840,7 +840,6 @@ void ActionManager::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config = KOGlobals::self()->config();
   mCalendarView->readSettings();
   restoreCollectionViewSetting();
 }
