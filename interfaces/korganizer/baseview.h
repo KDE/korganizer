@@ -192,9 +192,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual void saveConfig( KConfigGroup &configGroup );
 
-    virtual CalendarSupport::CollectionSelectionProxyModel *takeCustomCollectionSelectionProxyModel();
-    CalendarSupport::CollectionSelectionProxyModel *customCollectionSelectionProxyModel() const;
-    virtual void setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model );
+    virtual Future::KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
+    Future::KCheckableProxyModel *customCollectionSelectionProxyModel() const;
+    virtual void setCustomCollectionSelectionProxyModel( Future::KCheckableProxyModel* model );
 
     CalendarSupport::CollectionSelection *customCollectionSelection() const;
 

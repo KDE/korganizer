@@ -34,7 +34,6 @@
 
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/collectionselection.h>
-#include <calendarsupport/collectionselectionproxymodel.h>
 #include <calendarsupport/entitymodelstatesaver.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
@@ -50,6 +49,7 @@
 #include <QHeaderView>
 #include <QItemSelectionModel>
 
+#include <akonadi_next/kcheckableproxymodel.h>
 
 #include <akonadi/calendar/standardcalendaractionmanager.h>
 #include <akonadi/collection.h>
@@ -71,6 +71,8 @@
 #include <akonadi/agentinstance.h>
 
 #include <QHash>
+
+using namespace Future;
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
   : mView( view ), mAkonadiCollectionView( 0 )
@@ -290,7 +292,7 @@ void AkonadiCollectionView::disableColor()
   emit colorsChanged();
 }
 
-void AkonadiCollectionView::setCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* m )
+void AkonadiCollectionView::setCollectionSelectionProxyModel( KCheckableProxyModel* m )
 {
   if ( mSelectionProxyModel == m )
     return;
@@ -301,7 +303,7 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel( CalendarSupport::C
   connect( mSelectionProxyModel->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
 }
 
-CalendarSupport::CollectionSelectionProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
+KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
 {
   return mSelectionProxyModel;
 }

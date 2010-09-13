@@ -43,7 +43,6 @@ namespace Akonadi {
 
 namespace CalendarSupport {
   class CalendarModel;
-  class CollectionSelectionProxyModel;
 }
 
 class KAction;
@@ -81,8 +80,8 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     Akonadi::EntityTreeView* view() const;
 
-    CalendarSupport::CollectionSelectionProxyModel* collectionSelectionProxyModel() const;
-    void setCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* );
+    Future::KCheckableProxyModel *collectionSelectionProxyModel() const;
+    void setCollectionSelectionProxyModel( Future::KCheckableProxyModel* );
 
   signals:
     void resourcesChanged( bool enabled );
@@ -112,7 +111,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     Akonadi::StandardCalendarActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     QAbstractProxyModel* mBaseModel;
-    CalendarSupport::CollectionSelectionProxyModel *mSelectionProxyModel;
+    Future::KCheckableProxyModel *mSelectionProxyModel;
     KAction *mCreateAction;
     KAction *mDeleteAction;
     KAction *mAssignColor;

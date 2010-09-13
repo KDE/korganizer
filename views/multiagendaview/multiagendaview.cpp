@@ -21,21 +21,26 @@
 #include "akonadicollectionview.h"
 #include "ui_multiagendaviewconfigwidget.h"
 
-#include <calendarsupport/collectionselectionproxymodel.h>
+#include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/entitymodelstatesaver.h>
 
 #include <calendarviews/eventviews/agenda/agendaview.h>
 #include <calendarviews/eventviews/multiagenda/multiagendaview.h>
 
+#include <akonadi_next/kcheckableproxymodel.h>
+#include <akonadi_next/kcolumnfilterproxymodel.h>
+
+#include <Akonadi/EntityTreeView>
+
 #include <KCalCore/IncidenceBase> // DateList typedef
 
 #include <QHBoxLayout>
 #include <QStandardItemModel>
-
-#include <Akonadi/EntityTreeView>
+#include <QSortFilterProxyModel>
 
 using namespace KOrg;
 using namespace CalendarSupport;
+using namespace Future;
 
 static QString generateColumnLabel( int c )
 {
@@ -244,8 +249,7 @@ void MultiAgendaView::showConfigurationDialog( QWidget *parent )
   dlg->setUseCustomColumns( d->mMultiAgendaView->customColumnSetupUsed() );
   dlg->setNumberOfColumns( d->mMultiAgendaView->customNumberOfColumns() );
 
-  QVector<CalendarSupport::CollectionSelectionProxyModel*> models =
-    d->mMultiAgendaView->collectionSelectionModels();
+  QVector<KCheckableProxyModel*> models = d->mMultiAgendaView->collectionSelectionModels();
   for ( int i = 0; i < models.size(); ++i ) {
     dlg->setSelectionModel( i, models[i] );
   }
@@ -262,12 +266,12 @@ void MultiAgendaView::showConfigurationDialog( QWidget *parent )
   delete dlg;
 }
 
-CalendarSupport::CollectionSelectionProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
+KCheckableProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
 {
   return d->mMultiAgendaView->takeCustomCollectionSelectionProxyModel();
 }
 
-void MultiAgendaView::setCustomCollectionSelectionProxyModel( CalendarSupport::CollectionSelectionProxyModel* model )
+void MultiAgendaView::setCustomCollectionSelectionProxyModel( KCheckableProxyModel* model )
 {
   d->mMultiAgendaView->setCustomCollectionSelectionProxyModel( model );
 }
@@ -283,10 +287,10 @@ class MultiAgendaViewConfigDialog::Private
     ~Private() { qDeleteAll( newlyCreated ); }
 
     void setUpColumns( int n );
-    AkonadiCollectionView *createView( CollectionSelectionProxyModel *model );
+    AkonadiCollectionView *createView( KCheckableProxyModel *model );
     AkonadiCollectionView *view( int index ) const;
-    QVector<CollectionSelectionProxyModel*> newlyCreated;
-    QVector<CollectionSelectionProxyModel*> selections;
+    QVector<KCheckableProxyModel*> newlyCreated;
+    QVector<KCheckableProxyModel*> selections;
     QVector<QString> titles;
     Ui::MultiAgendaViewConfigWidget ui;
     QStandardItemModel listModel;
@@ -356,8 +360,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on )
   }
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
-  CollectionSelectionProxyModel *model )
+AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView( KCheckableProxyModel *model )
 {
   AkonadiCollectionView *cview = new AkonadiCollectionView( 0, false, q );
   cview->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
@@ -379,7 +382,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       ui.selectionStack->removeWidget( w );
       delete w;
       qDeleteAll( listModel.takeRow( i ) );
-      CollectionSelectionProxyModel *const m = selections[i];
+      KCheckableProxyModel *const m = selections[i];
       selections.remove( i );
       const int pos = newlyCreated.indexOf( m );
       if ( pos != -1 ) {
@@ -399,11 +402,21 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       item->setText( titles[i] );
       item->setData( i, Qt::UserRole );
       listModel.appendRow( item );
-      CollectionSelectionProxyModel *selection = new CollectionSelectionProxyModel;
-      selection->setDynamicSortFilter( true );
-      selection->setSourceModel( baseModel );
-      QItemSelectionModel *qsm = new QItemSelectionModel( selection, selection );
+
+      QSortFilterProxyModel *sortProxy = new QSortFilterProxyModel;
+      sortProxy->setDynamicSortFilter( true );
+      sortProxy->setSourceModel( baseModel );
+
+      KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( sortProxy );
+      columnFilterProxy->setVisibleColumn( CalendarSupport::CalendarModel::CollectionTitle );
+      columnFilterProxy->setSourceModel( sortProxy );
+
+      QItemSelectionModel *qsm = new QItemSelectionModel( columnFilterProxy, columnFilterProxy );
+      
+      KCheckableProxyModel *selection = new KCheckableProxyModel;
+      selection->setSourceModel( columnFilterProxy );
       selection->setSelectionModel( qsm );
+      
       AkonadiCollectionView *cview = createView( selection );
       const int idx = ui.selectionStack->addWidget( cview );
       Q_ASSERT( i == idx );
@@ -438,13 +451,13 @@ void MultiAgendaViewConfigDialog::setNumberOfColumns( int n )
   d->setUpColumns( n );
 }
 
-CollectionSelectionProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel( int column )
+KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel( int column )
 {
   if ( column < 0 || column >= d->selections.size() ) {
     return 0;
   }
 
-  CollectionSelectionProxyModel *const m = d->selections[column];
+  KCheckableProxyModel *const m = d->selections[column];
   d->newlyCreated.erase( std::remove( d->newlyCreated.begin(),
                                       d->newlyCreated.end(), m ),
                          d->newlyCreated.end() );
@@ -456,12 +469,11 @@ AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::view( int index ) c
   return qobject_cast<AkonadiCollectionView*>( ui.selectionStack->widget( index ) );
 }
 
-void MultiAgendaViewConfigDialog::setSelectionModel( int column,
-                                                     CollectionSelectionProxyModel *model )
+void MultiAgendaViewConfigDialog::setSelectionModel( int column, KCheckableProxyModel *model )
 {
   Q_ASSERT( column >= 0 && column < d->selections.size() );
 
-  CollectionSelectionProxyModel *const m = d->selections[column];
+  KCheckableProxyModel *const m = d->selections[column];
   if ( m == model ) {
     return;
   }

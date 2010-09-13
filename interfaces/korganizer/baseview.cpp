@@ -26,19 +26,24 @@
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/calendarsearch.h>
 #include <calendarsupport/collectionselection.h>
-#include <calendarsupport/collectionselectionproxymodel.h>
 #include <calendarsupport/entitymodelstatesaver.h>
 #include <calendarsupport/utils.h>
 
-#include <QItemSelectionModel>
+#include <akonadi_next/kcheckableproxymodel.h>
+#include <akonadi_next/kcolumnfilterproxymodel.h>
+
+#include <Akonadi/EntityTreeView>
 
 #include <KConfigGroup>
 #include <KRandom>
 
+#include <QItemSelectionModel>
+#include <QSortFilterProxyModel>
 #include <QVBoxLayout>
-#include <Akonadi/EntityTreeView>
+
 
 using namespace CalendarSupport;
+using namespace Future;
 using namespace KOrg;
 
 CollectionSelection* BaseView::sGlobalCollectionSelection = 0;
@@ -89,7 +94,7 @@ class BaseView::Private
     Calendar *calendar;
     CalendarSearch *calendarSearch;
     CollectionSelection *customCollectionSelection;
-    CollectionSelectionProxyModel* collectionSelectionModel;
+    KCheckableProxyModel* collectionSelectionModel;
     EntityModelStateSaver* stateSaver;
     QByteArray identifier;
     KDateTime startDateTime;
@@ -265,12 +270,24 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
   } else if ( useCustom ) {
 
     if ( !d->collectionSelectionModel ) {
-      d->collectionSelectionModel = new CollectionSelectionProxyModel( this );
-      d->collectionSelectionModel->setCheckableColumn( CalendarModel::CollectionTitle );
-      d->collectionSelectionModel->setDynamicSortFilter( true );
-      d->collectionSelectionModel->setSortCaseSensitivity( Qt::CaseInsensitive );
-      if ( d->calendar )
-        d->collectionSelectionModel->setSourceModel( d->calendar->treeModel() );
+      // Sort the calendar model on calendar name
+      QSortFilterProxyModel *sortProxy = new QSortFilterProxyModel( this );
+      sortProxy->setDynamicSortFilter( true );
+      sortProxy->setSortCaseSensitivity( Qt::CaseInsensitive );
+
+      if ( d->calendar ) {
+        sortProxy->setSourceModel( d->calendar->treeModel() );
+      }
+
+      // Only show the first column.
+      KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( this );
+      columnFilterProxy->setVisibleColumn( CalendarSupport::CalendarModel::CollectionTitle );
+      columnFilterProxy->setSourceModel( sortProxy );
+
+      // Make the calendar model checkable.
+      d->collectionSelectionModel = new KCheckableProxyModel( this );
+      d->collectionSelectionModel->setSourceModel( columnFilterProxy );
+
       d->setUpModels();
     }
 
@@ -305,7 +322,7 @@ CollectionSelection* BaseView::collectionSelection() const
   return d->customCollectionSelection ? d->customCollectionSelection : globalCollectionSelection();
 }
 
-void BaseView::setCustomCollectionSelectionProxyModel( CollectionSelectionProxyModel* model )
+void BaseView::setCustomCollectionSelectionProxyModel( KCheckableProxyModel* model )
 {
   if ( d->collectionSelectionModel == model )
     return;
@@ -320,14 +337,14 @@ void BaseView::collectionSelectionChanged()
 
 }
 
-CollectionSelectionProxyModel *BaseView::customCollectionSelectionProxyModel() const
+KCheckableProxyModel *BaseView::customCollectionSelectionProxyModel() const
 {
   return d->collectionSelectionModel;
 }
 
-CollectionSelectionProxyModel *BaseView::takeCustomCollectionSelectionProxyModel()
+KCheckableProxyModel *BaseView::takeCustomCollectionSelectionProxyModel()
 {
-  CollectionSelectionProxyModel* m = d->collectionSelectionModel;
+  KCheckableProxyModel* m = d->collectionSelectionModel;
   d->collectionSelectionModel = 0;
   d->setUpModels();
   return m;

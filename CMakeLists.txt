@@ -231,6 +231,7 @@ target_link_libraries(korganizerprivate
   ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
   ${KDEPIMLIBS_KCALCORE_LIBS}
   ${KDEPIMLIBS_KCALUTILS_LIBS}
+  akonadi_next
   kdepim
   korganizer_interfaces
   kdepimdbusinterfaces
