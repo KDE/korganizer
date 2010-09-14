@@ -533,7 +533,7 @@ void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
     mSelEnd = mSelInit;
     if ( tmp != mSelStart ) {
       mSelStart = tmp;
-      repaint();
+      update();
     }
   } else {
     mSelStart = mSelInit;
@@ -541,7 +541,7 @@ void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
     //repaint only if selection has changed
     if ( tmp != mSelEnd ) {
       mSelEnd = tmp;
-      repaint();
+      update();
     }
   }
 
@@ -566,7 +566,7 @@ void KODayMatrix::mouseMoveEvent( QMouseEvent *e )
     mSelEnd = mSelInit;
     if ( tmp != mSelStart ) {
       mSelStart = tmp;
-      repaint();
+      update();
     }
   } else {
     mSelStart = mSelInit;
@@ -574,7 +574,7 @@ void KODayMatrix::mouseMoveEvent( QMouseEvent *e )
     //repaint only if selection has changed
     if ( tmp != mSelEnd ) {
       mSelEnd = tmp;
-      repaint();
+      update();
     }
   }
 }

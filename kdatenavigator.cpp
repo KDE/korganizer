@@ -129,8 +129,8 @@ void KDateNavigator::setBaseDate( const QDate &date )
     dates.append( date );
     mNavigatorBar->selectDates( dates );
 
-    repaint();
-    mDayMatrix->repaint();
+    update();
+    mDayMatrix->update();
   }
 }
 
@@ -143,7 +143,7 @@ QSizePolicy KDateNavigator::sizePolicy () const
 void KDateNavigator::updateToday()
 {
   mDayMatrix->recalculateToday();
-  mDayMatrix->repaint();
+  mDayMatrix->update();
 }
 
 QDate KDateNavigator::startDate() const
@@ -243,7 +243,7 @@ QDate KDateNavigator::month() const
 void KDateNavigator::updateView()
 {
   updateDayMatrix();
-  repaint();
+  update();
 }
 
 void KDateNavigator::updateConfig()
