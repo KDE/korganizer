@@ -27,6 +27,7 @@
 */
 
 #include "calprintdefaultplugins.h"
+#include "koglobals.h"
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/kcalprefs.h>
@@ -907,10 +908,12 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     QRect dayBox( allDayBox );
     dayBox.setTop( allDayBox.bottom() + padding() );
     dayBox.setBottom( height );
+    QList<QDate> workDays = KOGlobals::self()->workDays( curDay, curDay );
     drawAgendaDayBox( p, timedEvents, curDay, mIncludeAllEvents,
                       curStartTime, curEndTime, dayBox,
                       mIncludeDescription, mExcludeTime,
-                      mExcludeConfidential, mExcludePrivate );
+                      mExcludeConfidential, mExcludePrivate,
+                      workDays );
 
     QRect tlBox( dayBox );
     tlBox.setLeft( 0 );

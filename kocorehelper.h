@@ -54,11 +54,6 @@ class KOCoreHelper : public KOrg::CoreHelper
       return KOGlobals::self()->calendarSystem();
     }
 
-    virtual bool isWorkingDay( const QDate &dt )
-    {
-      return KOGlobals::self()->isWorkDay( dt );
-    }
-
     virtual KOrg::PrintPlugin::List loadPrintPlugins()
     {
       return KOCore::self()->loadPrintPlugins();

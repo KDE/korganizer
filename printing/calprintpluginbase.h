@@ -120,7 +120,6 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     /** Helper functions to hide the KOrg::CoreHelper */
     QColor categoryBgColor( const Incidence::Ptr &incidence );
     QTime dayStart();
-    bool isWorkingDay( const QDate &dt );
     QString holidayString( const QDate &dt );
     Event::Ptr holiday( const QDate &dt );
 
@@ -382,13 +381,15 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param excludeTime Whether the time is printed in the detail area.
       @param excludeConfidential Whether to exclude Incidence marked confidential.
       @param excludePrivate Whether to exclude Incidence marked private.
+      @param workDays List of workDays
     */
     void drawAgendaDayBox( QPainter &p, const Akonadi::Item::List &eventList,
                            const QDate &qd, bool expandable,
                            QTime &fromTime, QTime &toTime,
                            const QRect &box,
                            bool includeDescription, bool excludeTime,
-                           bool mExcludeConfidential, bool mExcludePrivate );
+                           bool mExcludeConfidential, bool mExcludePrivate,
+                           const QList<QDate> &workDays );
 
     void drawAgendaItem( PrintCellItem *item, QPainter &p,
                          const KDateTime &startPrintDate,

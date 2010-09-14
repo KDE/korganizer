@@ -27,6 +27,7 @@
 #include "calprintpluginbase.h"
 #include "koprefs.h"
 #include "kohelper.h"
+#include "koglobals.h"
 
 #include <calendarviews/eventviews/agenda/cellitem.h>
 #include <calendarsupport/calendar.h>
@@ -264,11 +265,6 @@ QColor CalPrintPluginBase::categoryBgColor( const Incidence::Ptr &incidence )
   } else {
     return QColor();
   }
-}
-
-bool CalPrintPluginBase::isWorkingDay( const QDate &dt )
-{
-  return mCoreHelper ? mCoreHelper->isWorkingDay( dt ) : true;
 }
 
 QString CalPrintPluginBase::holidayString( const QDate &dt )
@@ -851,9 +847,10 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
                                            bool includeDescription,
                                            bool excludeTime,
                                            bool excludeConfidential,
-                                           bool excludePrivate )
+                                           bool excludePrivate,
+                                           const QList<QDate> &workDays )
 {
-  if ( !isWorkingDay( qd ) ) {
+  if ( !workDays.contains( qd ) ) {
     drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), oldbox );
   } else {
     drawBox( p, BOX_BORDER_WIDTH, oldbox );
@@ -1367,6 +1364,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
   KDateTime::Spec timeSpec = KSystemTimeZones::local();
   int i=0;
   double cellWidth = double( dowBox.width() ) / double( fromDate.daysTo( toDate ) + 1 );
+  const QList<QDate> workDays = KOGlobals::self()->workDays( fromDate, toDate );
   while ( curDate <= toDate ) {
     QRect allDayBox( dowBox.left()+int( i * cellWidth ), dowBox.bottom() + BOX_BORDER_WIDTH,
                      int( ( i + 1 ) * cellWidth ) - int( i * cellWidth ), alldayHeight );
@@ -1381,7 +1379,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
                                   excludeConfidential, excludePrivate );
     drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime,
                       dayBox, includeDescription, excludeTime,
-                      excludeConfidential, excludePrivate );
+                      excludeConfidential, excludePrivate, workDays );
 
     i++;
     curDate=curDate.addDays(1);
@@ -1443,6 +1441,18 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   }
   // Backgrounded boxes for each day, plus day numbers
   QBrush oldbrush( p.brush() );
+
+  QList<QDate> workDays;
+
+  {
+    QDate startDate;
+    QDate endDate;
+    calsys->setYMD( startDate, dt.year(), dt.month(), 1 );
+    calsys->setYMD( endDate, dt.year(), dt.month(), daysinmonth );
+
+    workDays = KOGlobals::self()->workDays( startDate, endDate );
+  }
+
   for ( d = 0; d < daysinmonth; ++d ) {
     QDate day;
     calsys->setYMD( day, dt.year(), dt.month(), d+1 );
@@ -1453,7 +1463,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
     // don't let the rectangles overlap, i.e. subtract 1 from the top or bottom!
     dayBox.setBottom( daysBox.top() + qRound( dayheight * ( d + 1 ) ) - 1 );
 
-    p.setBrush( isWorkingDay( day ) ? workdayColor : holidayColor );
+    p.setBrush( workDays.contains( day ) ? workdayColor : holidayColor );
     p.drawRect( dayBox );
     QRect dateBox( dayBox );
     dateBox.setWidth( dayNrWidth + 3 );

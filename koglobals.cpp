@@ -114,13 +114,8 @@ QStringList KOGlobals::holiday( const QDate &date ) const
   return hdays;
 }
 
-bool KOGlobals::isWorkDay( const QDate &date ) const
-{
-  return workDays( date, date ).contains( date );
-}
-
 QList<QDate> KOGlobals::workDays( const QDate &startDate,
-                           const QDate &endDate ) const
+                                  const QDate &endDate ) const
 {
   QList<QDate> result;
 
