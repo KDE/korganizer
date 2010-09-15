@@ -56,10 +56,13 @@ public:
 
   virtual bool addIncidence( Incidence *incidence,
                              ResourceCalendar *res, const QString &subRes,
-                             QWidget *parent ) = 0;
+                             QWidget *parent,
+                             bool useLastDialogAnswer = false ) = 0;
 
   virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                KOGlobals::WhatChanged, QWidget *parent ) = 0;
+                                KOGlobals::WhatChanged, QWidget *parent,
+                                bool useLastDialogAnswer = false ) = 0;
+
   virtual bool deleteIncidence( Incidence *incidence, QWidget *parent ) = 0;
 
   virtual bool cutIncidences( const Incidence::List &incidences, QWidget *parent ) = 0;

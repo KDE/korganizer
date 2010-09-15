@@ -51,10 +51,13 @@ class IncidenceChanger : public KOrg::IncidenceChangerBase
 
     bool addIncidence( Incidence *incidence,
                        ResourceCalendar *res, const QString &subRes,
-                       QWidget *parent );
+                       QWidget *parent,
+                       bool useLastDialogAnswer = false ); // for the "Send email?" dialog
+
 
     bool changeIncidence( Incidence *oldinc, Incidence *newinc,
-                          KOGlobals::WhatChanged, QWidget *parent );
+                          KOGlobals::WhatChanged, QWidget *parent,
+                          bool useLastDialogAnswer = false ); // for the "Send email?" dialog );
 
     bool deleteIncidence( Incidence *incidence, QWidget *parent );
 

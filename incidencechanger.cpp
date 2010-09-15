@@ -328,7 +328,8 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
                                         KOGlobals::WhatChanged action,
-                                        QWidget *parent )
+                                        QWidget *parent,
+                                        bool useLastDialogAnswer )
 {
 kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")"<<endl;
   if ( incidencesEqual( newinc, oldinc ) ) {
@@ -348,7 +349,8 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
       success = KOGroupware::instance()->sendICalMessage(
         parent,
         KCal::Scheduler::Request,
-        newinc, KOGlobals::INCIDENCEEDITED, attendeeStatusChanged );
+        newinc, KOGlobals::INCIDENCEEDITED, attendeeStatusChanged,
+        useLastDialogAnswer );
     }
 
     if ( success ) {
@@ -365,10 +367,10 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
 
 bool IncidenceChanger::addIncidence( Incidence *incidence,
                                      ResourceCalendar *res, const QString &subRes,
-                                     QWidget *parent )
+                                     QWidget *parent, bool useLastDialogAnswer )
 {
   CalendarResources *stdcal = dynamic_cast<CalendarResources *>( mCalendar );
-  if( stdcal && !stdcal->hasCalendarResources() ) {
+  if ( stdcal && !stdcal->hasCalendarResources() ) {
     KMessageBox::sorry(
       parent,
       i18n( "No calendars found, unable to save %1 \"%2\"." ).
@@ -441,7 +443,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence,
     if ( !KOGroupware::instance()->sendICalMessage(
            parent,
            KCal::Scheduler::Request,
-           incidence, KOGlobals::INCIDENCEADDED, false ) ) {
+           incidence, KOGlobals::INCIDENCEADDED, false, useLastDialogAnswer ) ) {
       KMessageBox::sorry(
         parent,
         i18n( "Attempt to send the scheduling message failed. "
