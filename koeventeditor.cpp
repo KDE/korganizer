@@ -289,10 +289,10 @@ bool KOEventEditor::processInput()
         mChanger->addIncidence( event, mResource, mSubResource, this );
       } else {
         if ( mRecurIncidence && mRecurIncidenceAfterDissoc ) {
-          mChanger->addIncidence( mEvent, mResource, mSubResource, this );
+          mChanger->addIncidence( mEvent, mResource, mSubResource, this, false );
 
           mChanger->changeIncidence( mRecurIncidence, mRecurIncidenceAfterDissoc,
-                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
+                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this, true );
 
         } else {
           mChanger->changeIncidence( oldEvent, mEvent, KOGlobals::NOTHING_MODIFIED, this );

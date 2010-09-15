@@ -2756,8 +2756,8 @@ Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
 
   if ( dissociationOccurred && commitToCalendar ) {
     QPair<ResourceCalendar *, QString>p = viewSubResourceCalendar();
-    mChanger->addIncidence( incToReturn, p.first, p.second, this );
-    mChanger->changeIncidence( incSaved, inc, whatChanged, this );
+    mChanger->addIncidence( incToReturn, p.first, p.second, this, false );
+    mChanger->changeIncidence( incSaved, inc, whatChanged, this, true );
   }
 
   return incToReturn;
