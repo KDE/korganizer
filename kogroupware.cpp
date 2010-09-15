@@ -88,6 +88,9 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
            this, SLOT( incomingDirChanged( const QString& ) ) );
   // Now set the ball rolling
   QTimer::singleShot( 0, this, SLOT(initialCheckForChanges()) );
+
+  // Initialize
+  lastUsedDialogAnswer = KMessageBox::Yes;
 }
 
 void KOGroupware::initialCheckForChanges()
@@ -242,10 +245,11 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
                                    KCal::Scheduler::Method method,
                                    Incidence* incidence,
                                    KOGlobals::HowChanged action,
-                                   bool attendeeStatusChanged )
+                                   bool attendeeStatusChanged,
+                                   bool useLastDialogAnswer )
 {
   // If there are no attendees, don't bother
-  if( incidence->attendees().isEmpty() )
+  if ( incidence->attendees().isEmpty() )
     return true;
 
   bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
@@ -309,9 +313,13 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
         break;
       }
 
-      rc = KMessageBox::questionYesNo(
-             parent, txt, i18n( "Group Scheduling Email" ),
-             KGuiItem( i18n( "Send Email" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+      if ( useLastDialogAnswer ) {
+        rc = lastUsedDialogAnswer;
+      } else {
+        lastUsedDialogAnswer = rc = KMessageBox::questionYesNo(
+          parent, txt, i18n( "Group Scheduling Email" ),
+          KGuiItem( i18n( "Send Email" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+      }
     } else {
       return true;
     }
@@ -320,17 +328,25 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
       // This is an update to be sent to the organizer
       method = Scheduler::Reply;
 
-    // Ask if the user wants to tell the organizer about the current status
-    QString txt = i18n( "Do you want to send a status update to the "
-                        "organizer of this task?");
-    rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
-  } else if( incidence->type() == "Event" ) {
+    if ( useLastDialogAnswer ) {
+      rc = lastUsedDialogAnswer;
+    } else {
+      // Ask if the user wants to tell the organizer about the current status
+      const QString txt = i18n( "Do you want to send a status update to the "
+                          "organizer of this task?");
+      lastUsedDialogAnswer = rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
+    }
+  } else if ( incidence->type() == "Event" ) {
     QString txt;
     if ( attendeeStatusChanged && method == Scheduler::Request ) {
       txt = i18n( "Your status as an attendee of this event changed. "
                   "Do you want to send a status update to the event organizer?" );
       method = Scheduler::Reply;
-      rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
+      if ( useLastDialogAnswer ) {
+        rc = lastUsedDialogAnswer;
+      } else {
+        lastUsedDialogAnswer = rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
+      }
     } else {
       if( action == KOGlobals::INCIDENCEDELETED ) {
         const QStringList myEmails = KOPrefs::instance()->allEmails();
@@ -351,15 +367,23 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
         txt = i18n( "You had previously accepted an invitation to this event. "
                     "Do you want to send an updated response to the organizer "
                     "declining the invitation?" );
-        rc = KMessageBox::questionYesNo(
-          parent, txt, i18n( "Group Scheduling Email" ),
-          KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
-        setDoNotNotify( rc == KMessageBox::No );
+        if ( useLastDialogAnswer ) {
+          rc = lastUsedDialogAnswer;
+        } else {
+          lastUsedDialogAnswer = rc = KMessageBox::questionYesNo(
+            parent, txt, i18n( "Group Scheduling Email" ),
+            KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+          setDoNotNotify( rc == KMessageBox::No );
+        }
       } else {
-        txt = i18n( "You are not the organizer of this event. Editing it will "
+        if ( useLastDialogAnswer ) {
+          rc = lastUsedDialogAnswer;
+        } else {
+          txt = i18n( "You are not the organizer of this event. Editing it will "
                     "bring your calendar out of sync with the organizer's calendar. "
                     "Do you really want to edit it?" );
-        rc = KMessageBox::warningYesNo( parent, txt );
+          lastUsedDialogAnswer = rc = KMessageBox::warningYesNo( parent, txt );
+        }
         return ( rc == KMessageBox::Yes );
       }
     }

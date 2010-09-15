@@ -74,11 +74,16 @@ class KOGroupware : public QObject
     /** Send iCal messages after asking the user
          Returns false if the user cancels the dialog, and true if the
          user presses Yes og or No.
+
+         @param useLastDialogAnswer if true, it won't ask to send emails.
+         Defaults to KMessageBox::Yes if there's no previous answer,
+         but callers will always call this with useLastDialogAnswer = false first.
     */
     bool sendICalMessage( QWidget *parent, KCal::Scheduler::Method method,
                           Incidence* incidence,
                           KOGlobals::HowChanged action,
-                          bool attendeeStatusChanged );
+                          bool attendeeStatusChanged,
+                          bool useLastDialogAnswer = false );
 
     /**
       Send counter proposal message.
@@ -113,6 +118,11 @@ class KOGroupware : public QObject
     KCal::CalendarResources *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
     bool mDoNotNotify;
+
+    /** Some operations, require more than one change, like dissociating an incidence
+        so we don't ask more than once if the user wants to send e-mails
+    */
+    int lastUsedDialogAnswer;
 };
 
 #endif

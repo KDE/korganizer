@@ -34,6 +34,7 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 
+
 bool IncidenceChanger::beginChange( Incidence *incidence,
                                     ResourceCalendar *res, const QString &subRes )
 {
