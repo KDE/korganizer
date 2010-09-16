@@ -24,6 +24,8 @@
 #ifndef KOAGENDA_H
 #define KOAGENDA_H
 
+#include "koagendaitem.h"
+
 #include <qscrollview.h>
 #include <qtimer.h>
 #include <qguardedptr.h>
@@ -166,13 +168,13 @@ class KOAgenda : public QScrollView
       deselected. This function emits the itemSelected(bool) signal to inform
       about selection/deselection of events.
     */
-    void selectItem( KOAgendaItem * );
+    void selectItem( KOAgendaItem::GPtr );
     /**
       Select the item associated with a given uid. Linear search, use carefully.
     */
     void selectItemByUID( const QString& uid );
-    bool removeAgendaItem( KOAgendaItem *item );
-    void showAgendaItem( KOAgendaItem *item );
+    bool removeAgendaItem( KOAgendaItem::GPtr item );
+    void showAgendaItem( KOAgendaItem::GPtr item );
 
   signals:
     void newEventSignal( ResourceCalendar *res, const QString &subResource );
@@ -232,7 +234,7 @@ class KOAgenda : public QScrollView
       the event, although that means moving to the right!
       horizontal is the same as mAllDayAgenda.
     */
-    MouseActionType isInResizeArea( bool horizontal, const QPoint &pos, KOAgendaItem *item );
+    MouseActionType isInResizeArea( bool horizontal, const QPoint &pos, KOAgendaItem::GPtr item );
     /** Return whether the cell specified by the grid point belongs to the current select
     */
     bool ptInSelection( QPoint gpos ) const;
@@ -257,7 +259,7 @@ class KOAgenda : public QScrollView
     void endItemAction();
 
     /** Set cursor, when no item action is in progress */
-    void setNoActionCursor( KOAgendaItem *moveItem, const QPoint &viewportPos );
+    void setNoActionCursor( KOAgendaItem::GPtr moveItem, const QPoint &viewportPos );
     /** Sets the cursor according to the given action type. If acting==true,
       the corresponding action is running (i.e. the item is really moved). If
       acting==false the cursor should just indicate that the corresponding action
@@ -265,13 +267,13 @@ class KOAgenda : public QScrollView
     void setActionCursor( int actionType, bool acting=false );
 
     /** calculate the width of the column subcells of the given item */
-    double calcSubCellWidth( KOAgendaItem *item );
+    double calcSubCellWidth( KOAgendaItem::GPtr item );
     /** Move and resize the given item to the correct position */
-    void placeAgendaItem( KOAgendaItem *item, double subCellWidth );
+    void placeAgendaItem( KOAgendaItem::GPtr item, double subCellWidth );
     /** Place agenda item in agenda and adjust other cells if necessary */
-    void placeSubCells( KOAgendaItem *placeItem );
+    void placeSubCells( KOAgendaItem::GPtr placeItem );
     /** Place the agenda item at the correct position (ignoring conflicting items) */
-    void adjustItemPosition( KOAgendaItem *item );
+    void adjustItemPosition( KOAgendaItem::GPtr item );
 
     /** Process the keyevent, including the ignored keyevents of eventwidgets.
      * Implements pgup/pgdn and cursor key navigation in the view.
@@ -343,14 +345,14 @@ class KOAgenda : public QScrollView
     DateList mSelectedDates;
 
     // The KOAgendaItem, which has been right-clicked last
-    QGuardedPtr<KOAgendaItem> mClickedItem;
+    KOAgendaItem::GPtr mClickedItem;
 
     // The KOAgendaItem, which is being moved/resized
-    QGuardedPtr<KOAgendaItem> mActionItem;
+    KOAgendaItem::GPtr mActionItem;
     QPair<ResourceCalendar *, QString> mResPair;
 
     // Currently selected item
-    QGuardedPtr<KOAgendaItem> mSelectedItem;
+    KOAgendaItem::GPtr mSelectedItem;
     // Uid of the last selected item. Used for reselecting in situations
     // where the selected item points to a no longer valid incidence, for
     // example during resource reload.
@@ -364,8 +366,8 @@ class KOAgenda : public QScrollView
     bool mItemMoved;
 
     // List of all Items contained in agenda
-    QPtrList<KOAgendaItem> mItems;
-    QPtrList<KOAgendaItem> mItemsToDelete;
+    QValueList<KOAgendaItem::GPtr > mItems;
+    QValueList<KOAgendaItem::GPtr > mItemsToDelete;
 
     QPopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
 

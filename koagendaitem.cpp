@@ -220,8 +220,8 @@ void KOAgendaItem::setCellY( int YTop, int YBottom )
   mCellYBottom = YBottom;
 }
 
-void KOAgendaItem::setMultiItem( KOAgendaItem *first, KOAgendaItem *prev,
-                                 KOAgendaItem *next, KOAgendaItem *last )
+void KOAgendaItem::setMultiItem( KOAgendaItem::GPtr first, KOAgendaItem::GPtr prev,
+                                 KOAgendaItem::GPtr next, KOAgendaItem::GPtr last )
 {
   if ( !mMultiItemInfo ) {
     mMultiItemInfo = new MultiItemInfo;
@@ -235,7 +235,7 @@ bool KOAgendaItem::isMultiItem()
 {
   return mMultiItemInfo;
 }
-KOAgendaItem* KOAgendaItem::prependMoveItem(KOAgendaItem* e)
+KOAgendaItem::GPtr KOAgendaItem::prependMoveItem( KOAgendaItem::GPtr e )
 {
   if (!e) return e;
 
@@ -270,7 +270,7 @@ KOAgendaItem* KOAgendaItem::prependMoveItem(KOAgendaItem* e)
   return e;
 }
 
-KOAgendaItem* KOAgendaItem::appendMoveItem(KOAgendaItem* e)
+KOAgendaItem::GPtr KOAgendaItem::appendMoveItem( KOAgendaItem::GPtr e )
 {
   if (!e) return e;
 
@@ -304,12 +304,12 @@ KOAgendaItem* KOAgendaItem::appendMoveItem(KOAgendaItem* e)
   return e;
 }
 
-KOAgendaItem* KOAgendaItem::removeMoveItem(KOAgendaItem* e)
+KOAgendaItem::GPtr KOAgendaItem::removeMoveItem( KOAgendaItem::GPtr e)
 {
   if (isMultiItem()) {
-    KOAgendaItem *first = mMultiItemInfo->mFirstMultiItem;
-    KOAgendaItem *next, *prev;
-    KOAgendaItem *last = mMultiItemInfo->mLastMultiItem;
+    KOAgendaItem::GPtr first = mMultiItemInfo->mFirstMultiItem;
+    KOAgendaItem::GPtr next, prev;
+    KOAgendaItem::GPtr last = mMultiItemInfo->mLastMultiItem;
     if (!first) first = this;
     if (!last) last = this;
     if ( first==e ) {
@@ -321,7 +321,7 @@ KOAgendaItem* KOAgendaItem::removeMoveItem(KOAgendaItem* e)
       last->setMultiItem( last->firstMultiItem(), last->prevMultiItem(), 0, 0 );
     }
 
-    KOAgendaItem *tmp =  first;
+    KOAgendaItem::GPtr tmp =  first;
     if ( first==last ) {
       delete mMultiItemInfo;
       tmp = 0;
@@ -409,8 +409,8 @@ void KOAgendaItem::resetMovePrivate()
 
       if ( !mStartMoveInfo->mFirstMultiItem ) {
         // This was the first multi-item when the move started, delete all previous
-        KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
-        KOAgendaItem*nowDel=0L;
+        KOAgendaItem::GPtr  toDel = mStartMoveInfo->mPrevMultiItem;
+        KOAgendaItem::GPtr nowDel=0L;
         while (toDel) {
           nowDel=toDel;
           if (nowDel->moveInfo()) {
@@ -423,8 +423,8 @@ void KOAgendaItem::resetMovePrivate()
       }
       if ( !mStartMoveInfo->mLastMultiItem ) {
         // This was the last multi-item when the move started, delete all next
-        KOAgendaItem*toDel=mStartMoveInfo->mNextMultiItem;
-        KOAgendaItem*nowDel=0L;
+        KOAgendaItem::GPtr toDel = mStartMoveInfo->mNextMultiItem;
+        KOAgendaItem::GPtr nowDel = 0;
         while (toDel) {
           nowDel=toDel;
           if (nowDel->moveInfo()) {
@@ -436,7 +436,7 @@ void KOAgendaItem::resetMovePrivate()
         mMultiItemInfo->mNextMultiItem = 0L;
       }
 
-      if ( mStartMoveInfo->mFirstMultiItem==0 && mStartMoveInfo->mLastMultiItem==0 ) {
+      if ( !mStartMoveInfo->mFirstMultiItem && !mStartMoveInfo->mLastMultiItem ) {
         // it was a single-day event before we started the move.
         delete mMultiItemInfo;
         mMultiItemInfo = 0;
@@ -462,7 +462,7 @@ void KOAgendaItem::endMovePrivate()
 {
   if ( mStartMoveInfo ) {
     // if first, delete all previous
-    if ( !firstMultiItem() || firstMultiItem()==this ) {
+    if ( !firstMultiItem() || firstMultiItem() == KOAgendaItem::GPtr( this ) ) {
       KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
       KOAgendaItem*nowDel = 0;
       while (toDel) {
@@ -474,7 +474,7 @@ void KOAgendaItem::endMovePrivate()
       }
     }
     // if last, delete all next
-    if ( !lastMultiItem() || lastMultiItem()==this ) {
+    if ( !lastMultiItem() || lastMultiItem() == KOAgendaItem::GPtr( this ) ) {
       KOAgendaItem*toDel=mStartMoveInfo->mNextMultiItem;
       KOAgendaItem*nowDel = 0;
       while (toDel) {
@@ -607,24 +607,27 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 }
 
 
-QPtrList<KOAgendaItem> KOAgendaItem::conflictItems()
+AgendaItemList KOAgendaItem::conflictItems()
 {
   return mConflictItems;
 }
 
-void KOAgendaItem::setConflictItems( QPtrList<KOAgendaItem> ci )
+void KOAgendaItem::setConflictItems( AgendaItemList ci )
 {
   mConflictItems = ci;
-  KOAgendaItem *item;
-  for ( item = mConflictItems.first(); item != 0;
-        item = mConflictItems.next() ) {
-    item->addConflictItem( this );
+  AgendaItemList::Iterator it;
+  for ( it = mConflictItems.begin(); it != mConflictItems.end(); ++it ) {
+    if ( *it ) {
+      (*it)->addConflictItem( KOAgendaItem::GPtr( this ) );
+    }
   }
 }
 
-void KOAgendaItem::addConflictItem( KOAgendaItem *ci )
+void KOAgendaItem::addConflictItem( KOAgendaItem::GPtr ci )
 {
-  if ( mConflictItems.find( ci ) < 0 ) mConflictItems.append( ci );
+  if ( !mConflictItems.contains( ci ) ) {
+    mConflictItems.append( ci );
+  }
 }
 
 QString KOAgendaItem::label() const

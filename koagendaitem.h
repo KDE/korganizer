@@ -28,6 +28,7 @@
 #include "cellitem.h"
 
 #include <qdatetime.h>
+#include <qguardedptr.h>
 
 class QToolTipGroup;
 class QDragEnterEvent;
@@ -40,14 +41,16 @@ class Incidence;
 using namespace KCal;
 class KOAgendaItem;
 
+typedef QValueList<QGuardedPtr<KOAgendaItem> > AgendaItemList;
+
 struct MultiItemInfo
 {
   int mStartCellXLeft, mStartCellXRight;
   int mStartCellYTop, mStartCellYBottom;
-  KOAgendaItem *mFirstMultiItem;
-  KOAgendaItem *mPrevMultiItem;
-  KOAgendaItem *mNextMultiItem;
-  KOAgendaItem *mLastMultiItem;
+  QGuardedPtr<KOAgendaItem> mFirstMultiItem;
+  QGuardedPtr<KOAgendaItem> mPrevMultiItem;
+  QGuardedPtr<KOAgendaItem> mNextMultiItem;
+  QGuardedPtr<KOAgendaItem> mLastMultiItem;
 };
 
 /*
@@ -76,6 +79,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
     Q_OBJECT
   public:
+    typedef QGuardedPtr<KOAgendaItem> GPtr;
+
     KOAgendaItem( Calendar *calendar, Incidence *incidence, const QDate &qd,
                   QWidget *parent,
                   int itemPos, int itemCount,
@@ -110,18 +115,18 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void expandRight(int dx);
 
     bool isMultiItem();
-    KOAgendaItem *prevMoveItem() const { return (mStartMoveInfo)?(mStartMoveInfo->mPrevMultiItem):0; }
-    KOAgendaItem *nextMoveItem() const { return (mStartMoveInfo)?(mStartMoveInfo->mNextMultiItem):0; }
+    KOAgendaItem::GPtr prevMoveItem() const { return (mStartMoveInfo)?(mStartMoveInfo->mPrevMultiItem):0; }
+    KOAgendaItem::GPtr nextMoveItem() const { return (mStartMoveInfo)?(mStartMoveInfo->mNextMultiItem):0; }
     MultiItemInfo *moveInfo() const { return mStartMoveInfo; }
-    void setMultiItem(KOAgendaItem *first,KOAgendaItem *prev,
-                      KOAgendaItem *next, KOAgendaItem *last);
-    KOAgendaItem *prependMoveItem(KOAgendaItem*);
-    KOAgendaItem *appendMoveItem(KOAgendaItem*);
-    KOAgendaItem *removeMoveItem(KOAgendaItem*);
-    KOAgendaItem *firstMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mFirstMultiItem):0; }
-    KOAgendaItem *prevMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mPrevMultiItem):0; }
-    KOAgendaItem *nextMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mNextMultiItem):0; }
-    KOAgendaItem *lastMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mLastMultiItem):0; }
+    void setMultiItem( KOAgendaItem::GPtr first, KOAgendaItem::GPtr prev,
+                       KOAgendaItem::GPtr next, KOAgendaItem::GPtr last);
+    KOAgendaItem::GPtr prependMoveItem(KOAgendaItem::GPtr);
+    KOAgendaItem::GPtr appendMoveItem(KOAgendaItem::GPtr);
+    KOAgendaItem::GPtr removeMoveItem(KOAgendaItem::GPtr);
+    KOAgendaItem::GPtr firstMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mFirstMultiItem):0; }
+    KOAgendaItem::GPtr prevMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mPrevMultiItem):0; }
+    KOAgendaItem::GPtr nextMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mNextMultiItem):0; }
+    KOAgendaItem::GPtr lastMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mLastMultiItem):0; }
 
     bool dissociateFromMultiItem();
 
@@ -137,9 +142,9 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     static QToolTipGroup *toolTipGroup();
 
-    QPtrList<KOAgendaItem> conflictItems();
-    void setConflictItems(QPtrList<KOAgendaItem>);
-    void addConflictItem(KOAgendaItem *ci);
+    AgendaItemList conflictItems();
+    void setConflictItems( AgendaItemList );
+    void addConflictItem(KOAgendaItem::GPtr ci);
 
     QString label() const;
 
@@ -204,7 +209,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     static QToolTipGroup *mToolTipGroup;
 
     bool mSelected;
-    QPtrList<KOAgendaItem> mConflictItems;
+    AgendaItemList mConflictItems;
 
     static QPixmap *alarmPxmp;
     static QPixmap *recurPxmp;

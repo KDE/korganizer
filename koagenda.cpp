@@ -61,6 +61,14 @@
 #include <libkcal/calhelper.h>
 #include <math.h>
 
+static void freeItemList( const AgendaItemList &list )
+{
+  AgendaItemList::ConstIterator it;
+  for ( it = list.begin(); it != list.end(); ++it ) {
+    delete static_cast<KOAgendaItem*>( *it );
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name )
     : QFrame(_agenda->viewport(), name), agenda(_agenda)
@@ -283,8 +291,6 @@ void KOAgenda::init()
 
   setAcceptDrops( true );
   installEventFilter( this );
-  mItems.setAutoDelete( true );
-  mItemsToDelete.setAutoDelete( true );
 
   resizeContents( int( mGridSpacingX * mColumns ),
                   int( mGridSpacingY * mRows ) );
@@ -327,10 +333,15 @@ void KOAgenda::clear()
 {
 //  kdDebug(5850) << "KOAgenda::clear()" << endl;
 
-  KOAgendaItem *item;
-  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
-    removeChild( item );
+  AgendaItemList::Iterator it;
+  for ( it = mItems.begin(); it != mItems.end(); ++it  ) {
+    if ( *it ) {
+      removeChild( *it );
+    }
   }
+  freeItemList( mItems );
+  freeItemList( mItemsToDelete );
+
   mItems.clear();
   mItemsToDelete.clear();
 
@@ -829,9 +840,13 @@ void KOAgenda::endSelectAction( const QPoint &currentPos )
 }
 
 KOAgenda::MouseActionType KOAgenda::isInResizeArea( bool horizontal,
-    const QPoint &pos, KOAgendaItem*item )
+                                                    const QPoint &pos,
+                                                    KOAgendaItem::GPtr item )
 {
-  if (!item) return NOP;
+  if ( !item ) {
+    return NOP;
+  }
+
   QPoint gridpos = contentsToGrid( pos );
   QPoint contpos = gridToContents( gridpos +
       QPoint( (KOGlobals::self()->reverseLayout())?1:0, 0 ) );
@@ -1002,7 +1017,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             // erase current item (i.e. remove it from the multiItem list)
             firstItem = moveItem->nextMultiItem();
             moveItem->hide();
-            mItems.take( mItems.find( moveItem ) );
+            mItems.remove( mItems.find( moveItem ) ); // Don't free memory, QPtrList::take() was used here.
             removeChild( moveItem );
             mActionItem->removeMoveItem(moveItem);
             moveItem=firstItem;
@@ -1019,7 +1034,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             // erase current item
             lastItem = moveItem->prevMultiItem();
             moveItem->hide();
-            mItems.take( mItems.find(moveItem) );
+            mItems.remove( mItems.find(moveItem) ); // Don't free memory, QPtrList::take() was used here.
             removeChild( moveItem );
             moveItem->removeMoveItem( moveItem );
             moveItem = lastItem;
@@ -1134,12 +1149,15 @@ void KOAgenda::endItemAction()
 
       KOAgendaItem *modif = placeItem;
 
-      QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
-      KOAgendaItem *item;
-      for ( item = oldconflictItems.first(); item != 0;
-            item = oldconflictItems.next() ) {
-        placeSubCells( item );
+      AgendaItemList oldconflictItems = placeItem->conflictItems();
+
+      AgendaItemList::Iterator it;
+      for ( it = oldconflictItems.begin(); it != oldconflictItems.end(); ++it ) {
+        if ( *it ) {
+          placeSubCells( *it );
+        }
       }
+
       while ( placeItem ) {
         placeSubCells( placeItem );
         placeItem = placeItem->nextMultiItem();
@@ -1192,13 +1210,17 @@ void KOAgenda::setActionCursor( int actionType, bool acting )
   }
 }
 
-void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewportPos )
+void KOAgenda::setNoActionCursor( KOAgendaItem::GPtr moveItem, const QPoint& viewportPos )
 {
 //  kdDebug(5850) << "viewportPos: " << viewportPos.x() << "," << viewportPos.y() << endl;
 //  QPoint point = viewport()->mapToGlobal(viewportPos);
 //  kdDebug(5850) << "Global: " << point.x() << "," << point.y() << endl;
 //  point = clipper()->mapFromGlobal(point);
 //  kdDebug(5850) << "clipper: " << point.x() << "," << point.y() << endl;
+
+  if ( !moveItem ) {
+    return;
+  }
 
   QPoint pos = viewportToContents( viewportPos );
   bool noResize = (moveItem && moveItem->incidence() &&
@@ -1212,8 +1234,12 @@ void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewport
 
 /** calculate the width of the column subcells of the given item
 */
-double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
+double KOAgenda::calcSubCellWidth( KOAgendaItem::GPtr item )
 {
+  if ( !item ) {
+    return 0;
+  }
+
   QPoint pt, pt1;
   pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
   pt1 = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) +
@@ -1229,7 +1255,7 @@ double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
   return newSubCellWidth;
 }
 
-void KOAgenda::adjustItemPosition( KOAgendaItem *item )
+void KOAgenda::adjustItemPosition( KOAgendaItem::GPtr item )
 {
   if (!item) return;
   item->resize( int( mGridSpacingX * item->cellWidth() ),
@@ -1241,10 +1267,14 @@ void KOAgenda::adjustItemPosition( KOAgendaItem *item )
   moveChild( item, cpos.x(), cpos.y() );
 }
 
-void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
+void KOAgenda::placeAgendaItem( KOAgendaItem::GPtr item, double subCellWidth )
 {
 //  kdDebug(5850) << "KOAgenda::placeAgendaItem(): " << item->incidence()->summary()
 //            << " subCellWidth: " << subCellWidth << endl;
+
+  if ( !item ) {
+    return;
+  }
 
   // "left" upper corner, no subcells yet, RTL layouts have right/left switched, widths are negative then
   QPoint pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
@@ -1292,7 +1322,7 @@ void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
   cell, where other items are, which do not overlap in Y with the item to place,
   the display gets corrupted, although the corruption looks quite nice.
 */
-void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
+void KOAgenda::placeSubCells( KOAgendaItem::GPtr placeItem )
 {
 #if 0
   kdDebug(5850) << "KOAgenda::placeSubCells()" << endl;
@@ -1309,20 +1339,26 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   kdDebug(5850) << "KOAgenda::placeSubCells()..." << endl;
 #endif
 
+  if ( !placeItem ) {
+    return;
+  }
+
   QPtrList<KOrg::CellItem> cells;
-  KOAgendaItem *item;
-  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
-    cells.append( item );
+  AgendaItemList::Iterator it;
+  for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+    if ( *it ) {
+      cells.append( *it );
+    }
   }
 
   QPtrList<KOrg::CellItem> items = KOrg::CellItem::placeItem( cells,
                                                               placeItem );
 
-  placeItem->setConflictItems( QPtrList<KOAgendaItem>() );
+  placeItem->setConflictItems( AgendaItemList() );
   double newSubCellWidth = calcSubCellWidth( placeItem );
   KOrg::CellItem *i;
   for ( i = items.first(); i; i = items.next() ) {
-    item = static_cast<KOAgendaItem *>( i );
+    KOAgendaItem *item = static_cast<KOAgendaItem *>( i );
     placeAgendaItem( item, newSubCellWidth );
     item->addConflictItem( placeItem );
     placeItem->addConflictItem( item );
@@ -1522,12 +1558,13 @@ QMemArray<int> KOAgenda::minContentsY()
 {
   QMemArray<int> minArray;
   minArray.fill( timeToY( QTime(23, 59) ), mSelectedDates.count() );
-  for ( KOAgendaItem *item = mItems.first();
-        item != 0; item = mItems.next() ) {
-    int ymin = item->cellYTop();
-    int index = item->cellXLeft();
-    if ( index>=0 && index<(int)(mSelectedDates.count()) ) {
-      if ( ymin < minArray[index] && mItemsToDelete.findRef( item ) == -1 )
+
+  AgendaItemList::Iterator it;
+  for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+    int ymin = (*it)->cellYTop();
+    int index = (*it)->cellXLeft();
+    if ( index >= 0 && index < static_cast<int>( mSelectedDates.count() ) ) {
+      if ( ymin < minArray[index] && !mItemsToDelete.contains( *it ) )
         minArray[index] = ymin;
     }
   }
@@ -1539,12 +1576,12 @@ QMemArray<int> KOAgenda::maxContentsY()
 {
   QMemArray<int> maxArray;
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );
-  for ( KOAgendaItem *item = mItems.first();
-        item != 0; item = mItems.next() ) {
-    int ymax = item->cellYBottom();
-    int index = item->cellXLeft();
-    if ( index>=0 && index<(int)(mSelectedDates.count()) ) {
-      if ( ymax > maxArray[index] && mItemsToDelete.findRef( item ) == -1 )
+  AgendaItemList::Iterator it;
+  for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+    int ymax = (*it)->cellYBottom();
+    int index = (*it)->cellXLeft();
+    if ( index >= 0 && index < static_cast<int>( mSelectedDates.count() ) ) {
+      if ( ymax > maxArray[index] && !mItemsToDelete.contains( *it ) )
         maxArray[index] = ymax;
     }
   }
@@ -1554,9 +1591,9 @@ QMemArray<int> KOAgenda::maxContentsY()
 
 void KOAgenda::setStartTime( const QTime &startHour )
 {
-  double startPos = ( startHour.hour()/24. + startHour.minute()/1440. +
-                      startHour.second()/86400. ) * mRows * gridSpacingY();
-  setContentsPos( 0, int( startPos ) );
+  const double startPos = ( startHour.hour()/24. + startHour.minute()/1440. +
+                            startHour.second()/86400. ) * mRows * gridSpacingY();
+  setContentsPos( 0, static_cast<int>( startPos ) );
 }
 
 
@@ -1715,23 +1752,23 @@ void KOAgenda::removeIncidence( Incidence *incidence )
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position and mess this up.
-  QPtrList<KOAgendaItem> itemsToRemove;
+  QValueList<KOAgendaItem::GPtr > itemsToRemove;
 
-  KOAgendaItem *item = mItems.first();
-  while ( item ) {
-    if ( item->incidence() == incidence ) {
-      itemsToRemove.append( item );
+  AgendaItemList::Iterator it;
+  for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+    if ( *it ) {
+      if ( (*it)->incidence() == incidence ) {
+        itemsToRemove.append( *it );
+      }
     }
-    item = mItems.next();
   }
-  item = itemsToRemove.first();
-  while ( item ) {
-    removeAgendaItem( item );
-    item = itemsToRemove.next();
+
+  for ( it = itemsToRemove.begin(); it != itemsToRemove.end(); ++it ) {
+    removeAgendaItem( *it );
   }
 }
 
-void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
+void KOAgenda::showAgendaItem( KOAgendaItem::GPtr agendaItem )
 {
   if ( !agendaItem ) {
     return;
@@ -1739,7 +1776,7 @@ void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
 
   agendaItem->hide();
   addChild( agendaItem );
-  if ( !mItems.containsRef( agendaItem ) ) {
+  if ( !mItems.contains( agendaItem ) ) {
     mItems.append( agendaItem );
   }
   placeSubCells( agendaItem );
@@ -1747,26 +1784,25 @@ void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
   agendaItem->show();
 }
 
-bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
+bool KOAgenda::removeAgendaItem( KOAgendaItem::GPtr item )
 {
   // we found the item. Let's remove it and update the conflicts
   bool taken = false;
-  KOAgendaItem *thisItem = item;
-  QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
+  KOAgendaItem::GPtr thisItem = item;
+  AgendaItemList conflictItems = thisItem->conflictItems();
   removeChild( thisItem );
 
-  int pos = mItems.find( thisItem );
-  if ( pos >= 0 ) {
-    mItems.take( pos );
+  AgendaItemList::Iterator it = mItems.find( thisItem );
+  if ( it != mItems.end() ) {
+    mItems.remove( it ); // Don't free memory, QPtrList::take() was used here.
     taken = true;
   }
 
-  KOAgendaItem *confitem;
-  for ( confitem = conflictItems.first(); confitem != 0;
-        confitem = conflictItems.next() ) {
+  for ( it = conflictItems.begin(); it != conflictItems.end(); ++it ) {
     // the item itself is also in its own conflictItems list!
-    if ( confitem != thisItem ) placeSubCells(confitem);
-
+    if ( *it != thisItem ) {
+      placeSubCells( *it );
+    }
   }
   mItemsToDelete.append( thisItem );
   QTimer::singleShot( 0, this, SLOT( deleteItemsToDelete() ) );
@@ -1775,6 +1811,7 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
 
 void KOAgenda::deleteItemsToDelete()
 {
+  freeItemList( mItemsToDelete );
   mItemsToDelete.clear();
 }
 
@@ -1822,16 +1859,22 @@ void KOAgenda::resizeAllContents()
 {
   double subCellWidth;
   if ( mItems.count() > 0 ) {
-    KOAgendaItem *item;
-    if (mAllDayMode) {
-      for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-        subCellWidth = calcSubCellWidth( item );
-        placeAgendaItem( item, subCellWidth );
+    KOAgendaItem::GPtr item;
+    if ( mAllDayMode ) {
+      AgendaItemList::Iterator it;
+      for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+        if ( *it ) {
+          subCellWidth = calcSubCellWidth( *it );
+          placeAgendaItem( *it, subCellWidth );
+        }
       }
     } else {
-      for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-        subCellWidth = calcSubCellWidth( item );
-        placeAgendaItem( item, subCellWidth );
+      AgendaItemList::Iterator it;
+      for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+        if ( *it ) {
+          subCellWidth = calcSubCellWidth( *it );
+          placeAgendaItem( *it, subCellWidth );
+        }
       }
     }
   }
@@ -1935,11 +1978,11 @@ void KOAgenda::deselectItem()
   mSelectedItem = 0;
 }
 
-void KOAgenda::selectItem(KOAgendaItem *item)
+void KOAgenda::selectItem( KOAgendaItem::GPtr item )
 {
   if ((KOAgendaItem *)mSelectedItem == item) return;
   deselectItem();
-  if (item == 0) {
+  if ( !item ) {
     emit incidenceSelected( 0, QDate() );
     return;
   }
@@ -1952,10 +1995,11 @@ void KOAgenda::selectItem(KOAgendaItem *item)
 
 void KOAgenda::selectItemByUID( const QString& uid )
 {
-  KOAgendaItem *item;
-  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
-    if( item->incidence() && item->incidence()->uid() == uid ) {
-      selectItem( item );
+  KOAgendaItem::GPtr item;
+  AgendaItemList::Iterator it;
+  for ( it = mItems.begin(); it != mItems.end(); ++it ) {
+    if ( *it && (*it)->incidence() && (*it)->incidence()->uid() == uid ) {
+      selectItem( *it );
       break;
     }
   }
