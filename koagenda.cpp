@@ -1561,11 +1561,13 @@ QMemArray<int> KOAgenda::minContentsY()
 
   AgendaItemList::Iterator it;
   for ( it = mItems.begin(); it != mItems.end(); ++it ) {
-    int ymin = (*it)->cellYTop();
-    int index = (*it)->cellXLeft();
-    if ( index >= 0 && index < static_cast<int>( mSelectedDates.count() ) ) {
-      if ( ymin < minArray[index] && !mItemsToDelete.contains( *it ) )
-        minArray[index] = ymin;
+    if ( *it ) {
+      const int ymin = (*it)->cellYTop();
+      const int index = (*it)->cellXLeft();
+      if ( index >= 0 && index < static_cast<int>( mSelectedDates.count() ) ) {
+        if ( ymin < minArray[index] && !mItemsToDelete.contains( *it ) )
+          minArray[index] = ymin;
+      }
     }
   }
 
@@ -1578,11 +1580,13 @@ QMemArray<int> KOAgenda::maxContentsY()
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );
   AgendaItemList::Iterator it;
   for ( it = mItems.begin(); it != mItems.end(); ++it ) {
-    int ymax = (*it)->cellYBottom();
-    int index = (*it)->cellXLeft();
-    if ( index >= 0 && index < static_cast<int>( mSelectedDates.count() ) ) {
-      if ( ymax > maxArray[index] && !mItemsToDelete.contains( *it ) )
-        maxArray[index] = ymax;
+    if ( *it ) {
+      const int ymax = (*it)->cellYBottom();
+      const int index = (*it)->cellXLeft();
+      if ( index >= 0 && index < static_cast<int>( mSelectedDates.count() ) ) {
+        if ( ymax > maxArray[index] && !mItemsToDelete.contains( *it ) )
+          maxArray[index] = ymax;
+      }
     }
   }
 
