@@ -273,10 +273,10 @@ void ActionManager::createCalendarAkonadi()
   KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( this );
   columnFilterProxy->setSourceModel( sortFilterProxy );
   columnFilterProxy->setVisibleColumn( CalendarSupport::CalendarModel::CollectionTitle );
-  
+
   // Keep track of selected items.
   QItemSelectionModel* selectionModel = new QItemSelectionModel( columnFilterProxy );
-  
+
   // Make item selection work by means of checkboxes.
   KCheckableProxyModel *checkableProxy = new KCheckableProxyModel( this );
   checkableProxy->setSelectionModel( selectionModel );
@@ -284,7 +284,7 @@ void ActionManager::createCalendarAkonadi()
 
   mCollectionSelectionModelStateSaver = new CalendarSupport::EntityModelStateSaver( checkableProxy, this );
   mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState" );
-  
+
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
@@ -2019,8 +2019,6 @@ void ActionManager::importCalendar( const KUrl &url )
            SLOT(slotImportDialogFinished(ImportDialog *)) );
   connect( dialog, SIGNAL(openURL(const KUrl &, bool)),
            SLOT(openURL(const KUrl &, bool)) );
-  connect( dialog, SIGNAL(newWindow(const KUrl &)),
-           SIGNAL(actionNew(const KUrl &)) );
   connect( dialog, SIGNAL(addResource(const KUrl &)),
            SLOT(addResource(const KUrl &)) );
 
