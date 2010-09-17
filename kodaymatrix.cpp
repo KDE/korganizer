@@ -241,7 +241,7 @@ void KODayMatrix::updateView( const QDate &actdate )
     QString holiStr;
 
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[i] ) ==
-           KOGlobals::self()->calendarSystem()->weekDayOfPray() ) ||
+           KGlobal::locale()->weekDayOfPray() ) ||
          !holidays.isEmpty() ) {
       if ( !holidays.isEmpty() ) {
         holiStr = holidays.join( i18nc( "delimiter for joining holiday names", "," ) );
