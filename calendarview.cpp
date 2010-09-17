@@ -414,9 +414,11 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     new CalendarSupport::CalendarAdaptor( mCalendar, this, true /*use default collection*/ ) );
 
   // merge in a file
+  adaptor->startBatchAdding();
   FileStorage storage( adaptor );
   storage.setFileName( filename );
   loadedSuccesfully = storage.load();
+  adaptor->endBatchAdding();
 
   if ( loadedSuccesfully ) {
     if ( !merge ) {
