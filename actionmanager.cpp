@@ -75,6 +75,8 @@
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstanceCreateJob>
 
+#include <KHolidays/Holidays>
+
 #include <kmimetypetrader.h>
 #include <kio/job.h>
 #include <KAction>
@@ -1215,17 +1217,12 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
 
   KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob( mCalendarView->calendar(), settings, view() );
 
-  QDate cdate = settings->dateStart().date();
-  QDate qd2 = settings->dateEnd().date();
-  while ( cdate <= qd2 ) {
-    QStringList holidays = KOGlobals::self()->holiday( cdate );
-    if ( !holidays.isEmpty() ) {
-      QStringList::ConstIterator it = holidays.constBegin();
-      for ( ; it != holidays.constEnd(); ++it ) {
-        exportJob->addHoliday( cdate, *it );
-      }
+  if( KOGlobals::self()->holidays() ) {
+    KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
+                                        settings->dateStart().date(), settings->dateEnd().date() );
+    foreach( KHolidays::Holiday holiday, holidays ) {
+      exportJob->addHoliday( holiday.date(), holiday.text() );
     }
-    cdate = cdate.addDays( 1 );
   }
 
   exportJob->start();
