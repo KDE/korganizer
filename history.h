@@ -24,14 +24,12 @@
 #ifndef KORG_HISTORY_H
 #define KORG_HISTORY_H
 
-#include <kcalcore/incidence.h>
-
 #include <calendarsupport/incidencechanger.h>
 
 #include <Akonadi/Item>
 #include <Akonadi/Collection>
 
-#include <kcalcore/incidence.h>
+#include <KCalCore/Incidence>
 
 #include <QObject>
 #include <QStack>

@@ -65,7 +65,6 @@ using MailTransport::TransportManagementWidget;
 #include <KUrlRequester>
 #include <KWindowSystem>
 
-#include <QListWidget>
 #include <QBoxLayout>
 #include <QFormLayout>
 #include <QGridLayout>
@@ -482,7 +481,7 @@ class KOPrefsDialogTime : public KPrefsModule
       remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
       QCheckBox *cb = addWidBool( CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem() )->checkBox();
-      cb->setText( QString::null );
+      cb->setText( QString() );
 
       if ( CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
         QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", "KDE-Sys-Warning.ogg");

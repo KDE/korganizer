@@ -300,54 +300,23 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->mTrigger = KDateTime::currentLocalDateTime();
   item->mDisplayText = displayText;
   item->setText( 0, cleanSummary( incidence->summary() ) );
-  item->setText( 1, QString() );
 
   Event::Ptr event;
   Todo::Ptr todo;
-  Alarm::Ptr alarm = incidence->alarms().first();
-  if ( ( event = incidence.dynamicCast<Event>() ) ) {
+
+  QString displayStr;
+  const KDateTime dateTime = triggerDateForIncidence( incidence, reminderAt,
+                                                      displayStr );
+
+  if ( incidence->type() == Incidence::TypeEvent ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
-    if ( event->recurs() ) {
-      KDateTime nextStart = event->recurrence()->getNextDateTime(
-        KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
-      if ( nextStart.isValid() ) {
-        item->mHappening = nextStart.toLocalZone();
-        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
-      }
-    }
-    if ( item->text( 1 ).isEmpty() ) {
-      KDateTime kdt;
-      if ( alarm->hasStartOffset() ) {
-        kdt = event->dtStart();
-      } else {
-        kdt = event->dtEnd();
-      }
-      item->mHappening = kdt;
-      item->setText( 1, IncidenceFormatter::dateTimeToString(
-                       kdt, false, true, KDateTime::Spec::LocalZone() ) );
-    }
-  } else if ( ( todo = incidence.dynamicCast<Todo>() ) ) {
+  } else if ( incidence->type() == Incidence::TypeTodo ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
-    if ( todo->recurs() ) {
-      KDateTime nextStart = todo->recurrence()->getNextDateTime(
-        KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
-      if ( nextStart.isValid() ) {
-        item->mHappening = nextStart.toLocalZone();
-        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
-      }
-    }
-    if ( item->text( 1 ).isEmpty() ) {
-      KDateTime kdt;
-      if ( alarm->hasStartOffset() && todo->dtStart().isValid() ) {
-        kdt = todo->dtStart();
-      } else {
-        kdt = todo->dtDue();
-      }
-      item->mHappening = kdt;
-      item->setText( 1, IncidenceFormatter::dateTimeToString(
-                       kdt, false, true, KDateTime::Spec::LocalZone() ) );
-    }
   }
+
+  item->mHappening = dateTime;
+  item->setText( 1, displayStr );
+
   item->setText( 2, IncidenceFormatter::dateTimeToString(
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
   QString tip =
@@ -860,5 +829,45 @@ void AlarmDialog::accept()
     hide();
   }
 }
+
+/** static */
+KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
+                                                const QDateTime &reminderAt,
+                                                QString &displayStr )
+{
+  // Will be simplified in trunk, with roles.
+  KDateTime result;
+
+  Alarm::Ptr alarm = incidence->alarms().first();
+
+  if ( incidence->recurs() ) {
+    result = incidence->recurrence()->getNextDateTime(
+      KDateTime( reminderAt, KDateTime::Spec::LocalZone( ) ) );
+
+      displayStr = KGlobal::locale()->formatDateTime( result.toLocalZone() );
+  }
+
+  if ( incidence->type() == Incidence::TypeEvent ) {
+    if ( !result.isValid() ) {
+      Event::Ptr event = incidence.staticCast<Event>();
+      result = alarm->hasStartOffset() ? event->dtStart() :
+                                         event->dtEnd();
+      displayStr = IncidenceFormatter::dateTimeToString( result, false,
+                                                         true,
+                                                         KDateTime::Spec::LocalZone() );
+    }
+ } else if ( incidence->type() == Incidence::TypeTodo ) {
+    if ( !result.isValid() ) {
+      Todo::Ptr todo = incidence.staticCast<Todo>() ;
+      result = alarm->hasStartOffset() && todo->dtStart().isValid() ? todo->dtStart():
+                                                                      todo->dtDue();
+     displayStr = IncidenceFormatter::dateTimeToString( result, false, true,
+                                                        KDateTime::Spec::LocalZone() );
+    }
+  }
+
+  return result;
+}
+
 
 #include "alarmdialog.moc"

@@ -61,7 +61,6 @@
 #include <akonadi/entitydisplayattribute.h>
 #include <akonadi/agenttypedialog.h>
 #include <akonadi/agentinstancewidget.h>
-#include <akonadi/agentmanager.h>
 #include <akonadi/agentinstancecreatejob.h>
 #include <akonadi/agentfilterproxymodel.h>
 #include <akonadi/control.h>

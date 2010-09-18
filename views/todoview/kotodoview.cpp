@@ -42,7 +42,6 @@
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/calendar.h>
 

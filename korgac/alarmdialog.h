@@ -26,6 +26,9 @@
 
 #include <KDialog>
 
+#include <KCalCore/Incidence>
+#include <KDateTime>
+
 #include <QPoint>
 #include <QTimer>
 
@@ -54,7 +57,7 @@ class AlarmDialog : public KDialog
   Q_OBJECT
   public:
     explicit AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent = 0 );
-    virtual ~AlarmDialog();
+    ~AlarmDialog();
 
     void addIncidence( const Akonadi::Item &incidence, const QDateTime &reminderAt,
                        const QString &displayText );
@@ -88,6 +91,12 @@ class AlarmDialog : public KDialog
     void closeEvent( QCloseEvent * );
 
   private:
+
+
+    static KDateTime triggerDateForIncidence( const KCalCore::Incidence::Ptr &inc,
+                                              const QDateTime &reminderAt,
+                                              QString &displayStr );
+
     bool startKOrganizer();
     ReminderListItem *searchByItem( const Akonadi::Item &incidence );
     void setTimer();
