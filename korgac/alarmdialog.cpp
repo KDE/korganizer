@@ -34,14 +34,12 @@
 #include <calendarsupport/mailclient.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/event.h>
-#include <kcalcore/incidence.h>
-#include <kcalutils/incidenceformatter.h>
-#include <kcalcore/todo.h>
+#include <KCalCore/Event>
+#include <KCalCore/Todo>
+#include <KCalUtils/IncidenceFormatter>
 
 #include <KPIMIdentities/Identity>
 #include <KPIMIdentities/IdentityManager>
-
 
 #include <Akonadi/Item>
 
@@ -77,7 +75,7 @@ class ReminderListItem : public QTreeWidgetItem
     ReminderListItem( const Akonadi::Item &incidence, QTreeWidget *parent )
       : QTreeWidgetItem( parent ), mIncidence( incidence ), mNotified( false )
     {}
-    bool operator < ( const QTreeWidgetItem & other ) const;
+    bool operator<( const QTreeWidgetItem & other ) const;
 
     QString mDisplayText;
 
@@ -88,7 +86,7 @@ class ReminderListItem : public QTreeWidgetItem
     bool mNotified;
 };
 
-bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
+bool ReminderListItem::operator<( const QTreeWidgetItem &other ) const
 {
   switch( treeWidget()->sortColumn() ) {
   case 1: // happening datetime
@@ -116,6 +114,8 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   // User2 => Dismiss All
   // User3 => Dismiss Selected
   //    Ok => Suspend
+
+  connect( calendar, SIGNAL(calendarChanged()), SLOT(slotCalendarChanged()) );
 
   KIconLoader::global()->addAppDir( "korgac" );
 
@@ -196,6 +196,8 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
            SLOT(edit()) );
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
+  connect( mCalendar, SIGNAL(),
+           SLOT() );
 
   mDetailView = new CalendarSupport::IncidenceViewer( topBox );
   QString s;
@@ -802,7 +804,7 @@ void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )
 
 void AlarmDialog::showDetails()
 {
-  ReminderListItem *item = mIncidenceTree->selectedItems().isEmpty() ? 0 :
+  ReminderListItem *item =
     dynamic_cast<ReminderListItem *>( mIncidenceTree->selectedItems().first() );
 
   if ( !item ) {
@@ -857,5 +859,28 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
   return result;
 }
 
+void AlarmDialog::slotCalendarChanged()
+{
+  Akonadi::Item::List incidences = mCalendar->incidences();
+  for ( Akonadi::Item::List::ConstIterator it = incidences.begin();
+        it != incidences.constEnd(); ++it ) {
+    ReminderListItem *item = searchByItem( *it );
+
+    if ( item ) {
+      Incidence::Ptr incidence = CalendarSupport::incidence( *it );
+      QString displayStr;
+      const KDateTime dateTime = triggerDateForIncidence( incidence,
+                                                          item->mRemindAt,
+                                                          displayStr );
+
+      const QString summary = cleanSummary( incidence->summary() );
+
+      if ( displayStr != item->text( 1 ) || summary != item->text( 0 ) ) {
+        item->setText( 1, displayStr );
+        item->setText( 0, summary );
+      }
+    }
+  }
+}
 
 #include "alarmdialog.moc"
