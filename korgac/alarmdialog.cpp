@@ -847,23 +847,11 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
       displayStr = KGlobal::locale()->formatDateTime( result.toLocalZone() );
   }
 
-  if ( incidence->type() == Incidence::TypeEvent ) {
-    if ( !result.isValid() ) {
-      Event::Ptr event = incidence.staticCast<Event>();
-      result = alarm->hasStartOffset() ? event->dtStart() :
-                                         event->dtEnd();
-      displayStr = IncidenceFormatter::dateTimeToString( result, false,
-                                                         true,
-                                                         KDateTime::Spec::LocalZone() );
-    }
- } else if ( incidence->type() == Incidence::TypeTodo ) {
-    if ( !result.isValid() ) {
-      Todo::Ptr todo = incidence.staticCast<Todo>() ;
-      result = alarm->hasStartOffset() && todo->dtStart().isValid() ? todo->dtStart():
-                                                                      todo->dtDue();
-     displayStr = IncidenceFormatter::dateTimeToString( result, false, true,
-                                                        KDateTime::Spec::LocalZone() );
-    }
+  if ( !result.isValid() ) {
+    result = incidence->dateTime( Incidence::RoleAlarm );
+    displayStr = IncidenceFormatter::dateTimeToString( result, false,
+                                                       true,
+                                                       KDateTime::Spec::LocalZone() );
   }
 
   return result;
