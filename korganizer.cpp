@@ -105,8 +105,6 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kDebug() << ( document ? "hasDocument" : "akonadi" );
-
   setHasDocument( document );
 
   // Create calendar object, which manages all calendar information associated
@@ -143,8 +141,6 @@ void KOrganizer::init( bool document )
 
   setStandardToolBarMenuEnabled( true );
   setTitle();
-
-  kDebug() << "done";
 }
 
 void KOrganizer::newMainWindow( const KUrl &url )

@@ -1460,9 +1460,7 @@ void ActionManager::toggleEventViewer()
 
 void ActionManager::toggleResourceView()
 {
-  kDebug();
-
-  bool visible = mCollectionViewShowAction->isChecked();
+  const bool visible = mCollectionViewShowAction->isChecked();
   if ( mCollectionView ) {
     if ( visible ) {
       mCollectionView->show();
