@@ -802,7 +802,7 @@ void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )
 
 void AlarmDialog::showDetails()
 {
-  ReminderListItem *item =
+  ReminderListItem *item = mIncidenceTree->selectedItems().isEmpty() ? 0 :
     dynamic_cast<ReminderListItem *>( mIncidenceTree->selectedItems().first() );
 
   if ( !item ) {
