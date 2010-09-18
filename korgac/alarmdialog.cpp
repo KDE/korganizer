@@ -862,7 +862,7 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
 void AlarmDialog::slotCalendarChanged()
 {
   Akonadi::Item::List incidences = mCalendar->incidences();
-  for ( Akonadi::Item::List::ConstIterator it = incidences.begin();
+  for ( Akonadi::Item::List::ConstIterator it = incidences.constBegin();
         it != incidences.constEnd(); ++it ) {
     ReminderListItem *item = searchByItem( *it );
 
