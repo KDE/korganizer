@@ -1126,7 +1126,7 @@ void KOAgenda::endItemAction()
            chosenOption == KOGlobals::ONLY_FUTURE ) {
         multiModify = true;
         enableAgendaUpdate( false );
-
+        kdDebug() << "Adding incidence at " << incToChange->dtStart() << endl;
         mChanger->addIncidence( incToChange, mResPair.first, mResPair.second, this );
         enableAgendaUpdate( true );
         KOGlobals::WhatChanged wc = chosenOption == KOGlobals::ONLY_THIS_ONE ?
