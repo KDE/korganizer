@@ -32,13 +32,12 @@
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
-
-#include <kcalutils/incidenceformatter.h>
-#include <kcalcore/todo.h>
-#include <kcalcore/visitor.h>
-#include <kcalcore/journal.h>
-
 #include <kcalprefs.h>
+
+#include <KCalUtils/IncidenceFormatter>
+#include <KCalCore/Todo>
+#include <KCalCore/Visitor>
+#include <KCalCore/Journal>
 
 #include <QBoxLayout>
 #include <QStyle>
