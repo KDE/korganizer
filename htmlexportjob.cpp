@@ -785,11 +785,11 @@ void HtmlExportJob::createFooter( QTextStream *ts )
   if ( !d->mSettings->eMail().isEmpty() ) {
     if ( !d->mSettings->name().isEmpty() ) {
       trailer += i18nc( "@info/plain page creator email link with name",
-                        "by <link url='mailto:%1'>%2</link>",
+                        "by <link url='mailto:%1'>%2</link> ",
                         d->mSettings->eMail(), d->mSettings->name() );
     } else {
       trailer += i18nc( "@info/plain page creator email link",
-                        "by <link url='mailto:%1'>%2</link>",
+                        "by <link url='mailto:%1'>%2</link> ",
                         d->mSettings->eMail(), d->mSettings->eMail() );
     }
   } else {
