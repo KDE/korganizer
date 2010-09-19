@@ -25,7 +25,8 @@
 #define KOGLOBALS_H
 
 #include "korganizer_export.h"
-#include <kcomponentdata.h>
+#include <KComponentData>
+
 #include <QPixmap>
 
 class KCalendarSystem;
@@ -40,6 +41,7 @@ namespace KHolidays {
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
 {
+  friend class KOGlobalsSingletonPrivate;
   public:
     static KOGlobals *self();
 
@@ -84,8 +86,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
     KOGlobals();
 
   private:
-    static KOGlobals *mSelf;
-
     KComponentData mOwnInstance;
 
     KPIM::ReminderClient *mReminderClient;

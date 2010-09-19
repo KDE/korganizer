@@ -30,16 +30,14 @@
 
 #include <kholidays/holidays.h>
 
-#include <k3staticdeleter.h>
-#include <kdebug.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kcomponentdata.h>
-#include <kcalendarsystem.h>
+#include <KDebug>
+#include <KGlobal>
+#include <KConfig>
+#include <KStandardDirs>
+#include <KGlobalSettings>
+#include <KLocale>
+#include <KIconLoader>
+#include <KCalendarSystem>
 
 #include <QApplication>
 #include <QPixmap>
@@ -47,17 +45,17 @@
 
 using namespace KHolidays;
 
-KOGlobals *KOGlobals::mSelf = 0;
+class KOGlobalsSingletonPrivate
+{
+  public:
+    KOGlobals instance;
+};
 
-static K3StaticDeleter<KOGlobals> koGlobalsDeleter;
+K_GLOBAL_STATIC( KOGlobalsSingletonPrivate, sKOGlobalsSingletonPrivate )
 
 KOGlobals *KOGlobals::self()
 {
-  if ( !mSelf ) {
-    koGlobalsDeleter.setObject( mSelf, new KOGlobals );
-  }
-
-  return mSelf;
+  return &sKOGlobalsSingletonPrivate->instance;
 }
 
 KOGlobals::KOGlobals()
