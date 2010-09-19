@@ -36,18 +36,17 @@
 #include <calendarsupport/incidencechanger.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalutils/incidenceformatter.h>
-#include <kcalcore/journal.h>
+#include <KCalUtils/IncidenceFormatter>
 
-#include <kdebug.h>
-#include <kdialog.h>
-#include <kglobal.h>
-#include <klocale.h>
+#include <KDebug>
+#include <KDialog>
+#include <KGlobal>
+#include <KLocale>
 #include <ktimeedit.h>
-#include <klineedit.h>
-#include <kstandardguiitem.h>
-#include <kmessagebox.h>
-#include <kvbox.h>
+#include <KLineEdit>
+#include <KStandardGuiItem>
+#include <KMessageBox>
+#include <KVBox>
 #include <KTextBrowser>
 
 #include <QLabel>
@@ -92,9 +91,8 @@ void JournalDateView::addJournal( const Akonadi::Item &j )
     return;
   }
 
-  JournalView *entry = new JournalView( j, this );
+  JournalView *entry = new JournalView( j, mCalendar, this );
   entry->show();
-  entry->setCalendar( mCalendar );
   entry->setDate( mDate );
   entry->setIncidenceChanger( mChanger );
 
@@ -151,8 +149,10 @@ void JournalDateView::journalDeleted( const Akonadi::Item &journal )
   mEntries.remove( journal.id() );
 }
 
-JournalView::JournalView( const Akonadi::Item &j, QWidget *parent )
-  : QWidget( parent ), mJournal( j )
+JournalView::JournalView( const Akonadi::Item &j,
+                          CalendarSupport::Calendar *calendar,
+                          QWidget *parent )
+  : QWidget( parent ), mJournal( j ), mCalendar( calendar )
 {
   mDirty = false;
   mWriteInProgress = false;
