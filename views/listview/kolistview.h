@@ -27,8 +27,7 @@
 #define KOLISTVIEW_H
 
 #include "koeventview.h"
-
-#include <incidenceeditor-ng/customlistviewitem.h>
+#include "customlistviewitem.h"
 
 #include <KCalCore/Incidence>
 
