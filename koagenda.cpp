@@ -1115,6 +1115,8 @@ void KOAgenda::endItemAction()
     Incidence *incToChange = inc;
     if ( mActionItem->incidence()->doesRecur() ) {
 
+      kdDebug() << "mActionItem->incidence()->dtStart() is " << inc->dtStart() << endl;
+
       Incidence* oldIncSaved = inc->clone();
       KOGlobals::WhichOccurrences chosenOption;
       incToChange = mCalendarView->singleOccurrenceOrAll( inc,
@@ -1166,6 +1168,7 @@ void KOAgenda::endItemAction()
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
       mChanger->endChange( inc, mResPair.first, mResPair.second );
+      kdDebug() << "Modified." << endl;
       emit itemModified( modif );
     } else {
 
@@ -1175,6 +1178,7 @@ void KOAgenda::endItemAction()
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
       mChanger->endChange( inc, mResPair.first, mResPair.second );
+      kdDebug() << "Not modified." << endl;
       emit itemModified( mActionItem );
     }
   }
@@ -1615,10 +1619,10 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
   mActionType = NOP;
 
   KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, incidence, qd, viewport(), itemPos, itemCount );
-  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem * ) ),
-           SLOT( removeAgendaItem( KOAgendaItem * ) ) );
-  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem * ) ),
-           SLOT( showAgendaItem( KOAgendaItem * ) ) );
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem::GPtr  ) ),
+           SLOT( removeAgendaItem( KOAgendaItem::GPtr  ) ) );
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem::GPtr  ) ),
+           SLOT( showAgendaItem( KOAgendaItem::GPtr  ) ) );
 
   if ( YBottom <= YTop ) {
     kdDebug(5850) << "KOAgenda::insertItem(): Text: " << agendaItem->text() << " YSize<0" << endl;
@@ -1660,10 +1664,10 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
   mActionType = NOP;
 
   KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, event, qd, viewport(), 1, 1 );
-  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
-           SLOT( removeAgendaItem( KOAgendaItem* ) ) );
-  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
-           SLOT( showAgendaItem( KOAgendaItem* ) ) );
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem::GPtr ) ),
+           SLOT( removeAgendaItem( KOAgendaItem::GPtr ) ) );
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem::GPtr ) ),
+           SLOT( showAgendaItem( KOAgendaItem::GPtr ) ) );
 
   agendaItem->setCellXY( XBegin, 0, 0 );
   agendaItem->setCellXRight( XEnd );

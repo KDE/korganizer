@@ -102,10 +102,11 @@ bool IncidenceChanger::endChange( Incidence *incidence,
   }
 
   kdDebug(5850) << "IncidenceChanger::endChange for incidence \""
-                << incidence->summary() << "\"" << endl;
+                << incidence->summary() << "\"" << incidence->dtStart() << endl;
 
   CalendarResources *calRes = dynamic_cast<CalendarResources*>( mCalendar );
   if ( !calRes ) {
+    kdDebug() << "CalRes is null!" << endl;
     return false;
   }
 

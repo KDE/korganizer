@@ -872,11 +872,10 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // startDt.setDate( startDate );
 
   Incidence *incidence = item->incidence();
-  if ( !incidence ) {
-    return;
-  }
-  if ( !mChanger ||
+
+  if ( !incidence || !mChanger ||
        !mChanger->beginChange( incidence, resourceCalendar(), subResourceCalendar() ) ) {
+    kdDebug() << "Weird, application has a bug?" << endl;
     return;
   }
   Incidence *oldIncidence = incidence->clone();
@@ -1110,6 +1109,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   KOIncidenceToolTip::remove( item );
   KOIncidenceToolTip::add( item, calendar(), incidence, thisDate, KOAgendaItem::toolTipGroup() );
 
+  kdDebug() << "New date is " << incidence->dtStart() << endl;
   const bool result = mChanger->changeIncidence( oldIncidence, incidence,
                                                  KOGlobals::DATE_MODIFIED, this );
   mChanger->endChange( incidence, resourceCalendar(), subResourceCalendar() );

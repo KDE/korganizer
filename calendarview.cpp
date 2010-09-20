@@ -2719,7 +2719,8 @@ Incidence* CalendarView::singleOccurrenceOrAll( Incidence *inc,
       startMultiModify( i18n("Dissociate event from recurrence") );
       incSaved = inc->clone();
       incToReturn = mCalendar->dissociateOccurrence( inc, dt );
-      kdDebug() << "Incidence to return has startDate = " << incToReturn->dtStart() << endl;
+      kdDebug() << "Incidence to return has startDate = " << incToReturn->dtStart()
+                << "; dt is " << dt << endl;
       if ( incToReturn ) {
         dissociationOccurred = true;
       } else {

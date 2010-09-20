@@ -153,8 +153,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void setResourceColor( const QColor& color ) { mResourceColor = color; }
     QColor resourceColor() {return mResourceColor;}
   signals:
-    void removeAgendaItem( KOAgendaItem* );
-    void showAgendaItem( KOAgendaItem* );
+    void removeAgendaItem( KOAgendaItem::GPtr );
+    void showAgendaItem( KOAgendaItem::GPtr );
 
   public slots:
     void updateIcons();

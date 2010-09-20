@@ -416,7 +416,7 @@ void KOAgendaItem::resetMovePrivate()
           if (nowDel->moveInfo()) {
             toDel=nowDel->moveInfo()->mPrevMultiItem;
           }
-          emit removeAgendaItem( nowDel );
+          emit removeAgendaItem( KOAgendaItem::GPtr( nowDel ) );
         }
         mMultiItemInfo->mFirstMultiItem = 0L;
         mMultiItemInfo->mPrevMultiItem = 0L;
@@ -430,7 +430,7 @@ void KOAgendaItem::resetMovePrivate()
           if (nowDel->moveInfo()) {
             toDel=nowDel->moveInfo()->mNextMultiItem;
           }
-          emit removeAgendaItem( nowDel );
+          emit removeAgendaItem( KOAgendaItem::GPtr( nowDel ) );
         }
         mMultiItemInfo->mLastMultiItem = 0L;
         mMultiItemInfo->mNextMultiItem = 0L;
@@ -445,7 +445,7 @@ void KOAgendaItem::resetMovePrivate()
     delete mStartMoveInfo;
     mStartMoveInfo = 0;
   }
-  emit showAgendaItem( this );
+  emit showAgendaItem( KOAgendaItem::GPtr( this ) );
   if ( nextMultiItem() ) {
     nextMultiItem()->resetMovePrivate();
   }
@@ -470,7 +470,7 @@ void KOAgendaItem::endMovePrivate()
         if (nowDel->moveInfo()) {
           toDel=nowDel->moveInfo()->mPrevMultiItem;
         }
-        emit removeAgendaItem( nowDel );
+        emit removeAgendaItem( KOAgendaItem::GPtr( nowDel ) );
       }
     }
     // if last, delete all next
@@ -482,7 +482,7 @@ void KOAgendaItem::endMovePrivate()
         if (nowDel->moveInfo()) {
           toDel=nowDel->moveInfo()->mNextMultiItem;
         }
-        emit removeAgendaItem( nowDel );
+        emit removeAgendaItem( KOAgendaItem::GPtr( nowDel ) );
       }
     }
     // also delete the moving info
