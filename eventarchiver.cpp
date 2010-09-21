@@ -159,7 +159,7 @@ void EventArchiver::deleteIncidences( CalendarSupport::IncidenceChanger* changer
   }
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
     if ( changer->isNotDeleted( ( *it ).id() ) ) {
-      changer->deleteIncidence( *it, widget );
+      changer->deleteIncidence( *it, 0, widget );
     }
   }
   emit eventsDeleted();
@@ -256,7 +256,7 @@ void EventArchiver::archiveIncidences( CalendarSupport::Calendar *calendar, Cale
 
   // Delete archived events from calendar
   foreach(const Akonadi::Item &item, incidences) {
-    changer->deleteIncidence( item, widget );
+    changer->deleteIncidence( item, 0, widget );
   }
   emit eventsDeleted();
 }

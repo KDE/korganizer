@@ -2706,7 +2706,7 @@ void CalendarView::deleteSubTodosIncidence ( const Akonadi::Item &todoItem )
   }
 
   if ( mChanger->isNotDeleted( todoItem.id() ) ) {
-    mChanger->deleteIncidence ( todoItem, this );
+    mChanger->deleteIncidence ( todoItem, 0, this );
   }
 }
 
@@ -2724,7 +2724,7 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item& todoItem, bool for
       doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Yes );
     }
     if ( doDelete && mChanger->isNotDeleted( todoItem.id() ) ) {
-      mChanger->deleteIncidence( todoItem, this );
+      mChanger->deleteIncidence( todoItem, 0, this );
     }
     return;
   }
@@ -2748,7 +2748,7 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item& todoItem, bool for
   if ( km == KMessageBox::Yes ) {
     makeChildrenIndependent( todoItem );
     if ( mChanger->isNotDeleted( todoItem.id() ) ) {
-      mChanger->deleteIncidence( todoItem, this );
+      mChanger->deleteIncidence( todoItem, 0, this );
     }
   } else if ( km == KMessageBox::No ) {
     // Delete all
@@ -2858,7 +2858,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
     switch( km ) {
     case KMessageBox::Ok: // Continue // all
     case KMessageBox::Continue:
-      mChanger->deleteIncidence( item, this );
+      mChanger->deleteIncidence( item, 0, this );
       break;
 
     case KMessageBox::Yes: // just this one
@@ -2880,7 +2880,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
       doDelete = ( msgItemDelete( item ) == KMessageBox::Yes );
     }
     if ( doDelete ) {
-      mChanger->deleteIncidence( item, this );
+      mChanger->deleteIncidence( item, 0, this );
       processIncidenceSelection( Akonadi::Item(), QDate() );
     }
   }
@@ -2904,7 +2904,7 @@ bool CalendarView::purgeCompletedSubTodos( const Akonadi::Item &todoItem, bool &
 
   if ( deleteThisTodo ) {
     if ( todo->isCompleted() ) {
-      if ( !mChanger->deleteIncidence( todoItem, this ) ) {
+      if ( !mChanger->deleteIncidence( todoItem, 0, this ) ) {
         allPurged = false;
       }
     } else {
