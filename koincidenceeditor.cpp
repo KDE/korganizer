@@ -55,10 +55,13 @@
 #include "koincidenceeditor.h"
 #include "templatemanagementdialog.h"
 
+
+// null parent wrt to https://issues.kolab.org/issue4103
+
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
-                                      Calendar *calendar, QWidget *parent )
+                                      Calendar *calendar, QWidget * )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
-                 parent, 0, false, false ),
+                 0, 0, false, false ),
     mAttendeeEditor( 0 ), mResource( 0 ), mIsCounter( false ), mIsCreateTask( false ),
     mRecurIncidence( 0 ), mRecurIncidenceAfterDissoc( 0 )
 {
