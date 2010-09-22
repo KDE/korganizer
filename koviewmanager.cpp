@@ -322,14 +322,14 @@ void KOViewManager::connectView( KOrg::BaseView *view )
            mMainView, SLOT(dissociateOccurrences(Akonadi::Item,QDate)) );
 
   // signals to create new incidences
-  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::Id)),
-           mMainView, SLOT(newEvent(Akonadi::Collection::Id)) );
-  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
-           mMainView, SLOT(newEvent(Akonadi::Collection::Id,QDateTime)) );
-  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime, QDateTime)),
-           mMainView, SLOT(newEvent(Akonadi::Collection::Id,QDateTime,QDateTime)) );
-  connect( view, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
-           mMainView, SLOT(newEvent(Akonadi::Collection::Id,QDate)) );
+  connect( view, SIGNAL(newEventSignal()),
+           mMainView, SLOT(newEvent()) );
+  connect( view, SIGNAL(newEventSignal(QDateTime)),
+           mMainView, SLOT(newEvent(QDateTime)) );
+  connect( view, SIGNAL(newEventSignal(QDateTime, QDateTime)),
+           mMainView, SLOT(newEvent(QDateTime,QDateTime)) );
+  connect( view, SIGNAL(newEventSignal(QDate)),
+           mMainView, SLOT(newEvent(QDate)) );
 
   connect( view, SIGNAL(newTodoSignal(QDate)),
            mMainView, SLOT(newTodo(QDate)) );

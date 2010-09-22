@@ -830,7 +830,7 @@ void ActionManager::slotDefaultResourceChanged( const Akonadi::Collection &colle
 
 void ActionManager::slotNewEvent()
 {
-  mCalendarView->newEvent( -1 );
+  mCalendarView->newEvent();
 }
 
 void ActionManager::slotNewTodo()

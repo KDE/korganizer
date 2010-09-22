@@ -74,6 +74,8 @@ class MultiAgendaView : public KOEventView
 
     void setDateRange( const KDateTime &start, const KDateTime &end );
 
+    Akonadi::Collection::Id collectionId() const;
+
   public slots:
     void showDates( const QDate &start, const QDate &end );
     void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );

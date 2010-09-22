@@ -80,11 +80,6 @@ class KOAgendaView : public KOEventView
     /* reimp from BaseView */
     virtual void setCalendar( CalendarSupport::Calendar *cal );
 
-    /** Show only incidences from the given collection selection. */
-//    void setCollectionSelection( CollectionSelection* selection );
-    void setCollection( Akonadi::Collection::Id id );
-    Akonadi::Collection::Id collection() const;
-
     /** reimpl */
     virtual void setTypeAheadReceiver( QObject *o );
 

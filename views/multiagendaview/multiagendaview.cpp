@@ -122,17 +122,17 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   connect( d->mMultiAgendaView, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal()),
+           SIGNAL(newEventSignal()) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime)),
+           SIGNAL(newEventSignal(QDateTime)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
 
   connect( d->mMultiAgendaView, SIGNAL(newTodoSignal(QDate)),
            SIGNAL(newTodoSignal(QDate)) );
@@ -184,6 +184,11 @@ void MultiAgendaView::showIncidences( const Akonadi::Item::List &incidenceList, 
 void MultiAgendaView::updateView()
 {
   d->mMultiAgendaView->updateView();
+}
+
+Akonadi::Collection::Id MultiAgendaView::collectionId() const
+{
+  return d->mMultiAgendaView->collectionId();
 }
 
 void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &, int )

@@ -228,6 +228,8 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual bool supportsDateNavigation() const { return false; }
 
+    virtual Akonadi::Collection::Id collectionId() const { return -1; }
+
   public Q_SLOTS:
     /**
       Shows given incidences. Depending on the actual view it might not
@@ -348,23 +350,23 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * instructs the receiver to create a new event in given collection. Doesn't make
      * sense to connect to more than one receiver.
      */
-    void newEventSignal( Akonadi::Collection::Id = -1 );
+    void newEventSignal();
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( Akonadi::Collection::Id, const QDate & );
+    void newEventSignal( const QDate & );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( Akonadi::Collection::Id, const QDateTime & );
+    void newEventSignal( const QDateTime & );
     /**
      * instructs the receiver to create a new event, with the specified
      * beginning end ending times.  Doesn't make sense to connect to more
      * than one receiver.
      */
-    void newEventSignal( Akonadi::Collection::Id, const QDateTime &, const QDateTime & );
+    void newEventSignal( const QDateTime &, const QDateTime & );
 
     void newTodoSignal( const QDate & );
     void newSubTodoSignal( const Akonadi::Item & );

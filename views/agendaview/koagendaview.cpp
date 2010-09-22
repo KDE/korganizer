@@ -127,14 +127,14 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   connect( d->mAgendaView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal(QDateTime)),
+           SIGNAL(newEventSignal(QDateTime)) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
 
   connect( d->mAgendaView, SIGNAL(newTodoSignal(QDate)),
            SIGNAL(newTodoSignal(QDate)) );
@@ -300,16 +300,6 @@ void KOAgendaView::deleteSelectedDateTime()
 void KOAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   d->mAgendaView->setIncidenceChanger( changer );
-}
-
-void KOAgendaView::setCollection( Akonadi::Collection::Id coll )
-{
-  d->mAgendaView->setCollectionId( coll );
-}
-
-Akonadi::Collection::Id KOAgendaView::collection() const
-{
-  return d->mAgendaView->collectionId();
 }
 
 QDateTime KOAgendaView::selectionStart()

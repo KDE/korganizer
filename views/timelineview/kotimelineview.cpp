@@ -421,14 +421,7 @@ void KOTimelineView::newEventWithHint( const QDateTime &dt )
 {
   mHintDate = dt;
 
-  Akonadi::Collection::Id defaultCollectionId;
-  if ( collectionSelection()->selectedCollections().isEmpty() ) {
-    defaultCollectionId = -1;
-  } else {
-    defaultCollectionId = collectionSelection()->selectedCollections().first().id();
-  }
-
-  emit newEventSignal( defaultCollectionId, dt );
+  emit newEventSignal( dt );
 }
 
 TimelineItem *KOTimelineView::calendarItemForIncidence( const Akonadi::Item &incidence )

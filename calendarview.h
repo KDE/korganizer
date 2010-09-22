@@ -289,40 +289,21 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Archive old events of calendar */
     void archiveCalendar();
 
-    /** create new event without having a hint for the calendar. */
-    void newEvent();
     void newEvent( const QDate & );
 
     /**
        create new event without having a date hint. Takes current date as
        default hint.
-
-       @param defaultCollectionID is the ID of the collection that will be selected
-       in the editor's combo-box.
     */
-    void newEvent( Akonadi::Collection::Id defaultCollectionId );
+    void newEvent();
 
     /**
        create an editeventwin with supplied date/time, and if bool is true,
        make the event take all day.
-
-       @param defaultCollectionId is the ID of the collection that will be selected
-       in the editor's combo-box.
     */
-    void newEvent( Akonadi::Collection::Id defaultCollectionId, const QDate &startDt );
+    void newEvent( const QDateTime &startDt );
 
-     /**
-       @param defaultCollectionId is the ID of the collection that will be selected
-       in the editor's combo-box.
-     */
-    void newEvent( Akonadi::Collection::Id defaultCollectionId, const QDateTime &startDt );
-
-    /**
-       @param defaultCollectionId is the ID of the collection that will be selected
-       in the editor's combo-box.
-    */
-    void newEvent( Akonadi::Collection::Id defaultCollectionId,
-                   const QDateTime &startDt, const QDateTime &EndDt, bool allDay=false );
+    void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay=false );
 
     /**
       Create new Event from given summary, description, attachment list and

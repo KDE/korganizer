@@ -1116,7 +1116,7 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor( const Event::P
 void CalendarView::newEvent()
 {
   if ( mCreatingEnabled ) {
-    newEvent( -1, QDateTime(), QDateTime() );
+    newEvent( QDateTime(), QDateTime() );
   }
 }
 
@@ -1130,34 +1130,18 @@ void CalendarView::newEvent( const QDate &dt )
     time = time.addSecs( duration.hour()*3600 + duration.minute() * 60 +  duration.second() );
     QDateTime endDt( startDt );
     endDt.setTime( time );
-    newEvent( -1, startDt, endDt );
+    newEvent( startDt, endDt );
   }
 }
 
-void CalendarView::newEvent( Akonadi::Collection::Id defaultCollectionId )
+void CalendarView::newEvent( const QDateTime &startDt )
 {
   if ( mCreatingEnabled ) {
-    newEvent( defaultCollectionId, QDateTime(), QDateTime() );
+    newEvent( startDt, startDt );
   }
 }
 
-void CalendarView::newEvent( Akonadi::Collection::Id defaultCollectionId, const QDate &dt )
-{
-  if ( mCreatingEnabled ) {
-    QDateTime startDt( dt, CalendarSupport::KCalPrefs::instance()->mStartTime.time() );
-    newEvent( defaultCollectionId, QDateTime( dt ), QDateTime( dt ) );
-  }
-}
-
-void CalendarView::newEvent( Akonadi::Collection::Id defaultCollectionId, const QDateTime &startDt )
-{
-  if ( mCreatingEnabled ) {
-    newEvent( defaultCollectionId, startDt, QDateTime( startDt ) );
-  }
-}
-
-void CalendarView::newEvent(  Akonadi::Collection::Id defaultCollectionId,
-                              const QDateTime &startDtParam, const QDateTime &endDtParam, bool allDay )
+void CalendarView::newEvent( const QDateTime &startDtParam, const QDateTime &endDtParam, bool allDay )
 {
   if ( mCreatingEnabled ) {
     // Let the current view change the default start/end datetime
@@ -1179,10 +1163,12 @@ void CalendarView::newEvent(  Akonadi::Collection::Id defaultCollectionId,
     IncidenceEditorNG::IncidenceDialog *eventEditor = newEventEditor( event );
     Q_ASSERT( eventEditor );
 
-    // If the collection passed to this function is invalid, fallback to the default collection
-    // defined in config */
+
+    Akonadi::Collection::Id defaultCollectionId = mViewManager->currentView()->collectionId();
+
     Akonadi::Collection requestedCol = mCalendar->collection( defaultCollectionId );
 
+    // Fallsback to the default collection defined in config
     eventEditor->selectCollection( requestedCol.isValid() ? requestedCol : defaultCollection() );
   }
 }
@@ -1430,10 +1416,9 @@ void CalendarView::newSubTodo( const Akonadi::Item &parentEvent )
 void CalendarView::newFloatingEvent()
 {
   if ( mCreatingEnabled ) {
-    QDate date = activeDate();
-    // TODO_BERTJAN: Find out from where this is called and see if we can get a reasonable default collection
-    newEvent( -1,
-              QDateTime( date, QTime( 12, 0, 0 ) ),
+    const QDate date = activeDate();
+
+    newEvent( QDateTime( date, QTime( 12, 0, 0 ) ),
               QDateTime( date, QTime( 12, 0, 0 ) ), true );
   }
 }

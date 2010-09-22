@@ -109,14 +109,14 @@ MonthView::MonthView( QWidget *parent )
   connect( d->mMonthView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal(QDateTime)),
+           SIGNAL(newEventSignal(QDateTime)) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
 
   connect( d->mMonthView, SIGNAL(newTodoSignal(QDate)),
            SIGNAL(newTodoSignal(QDate)) );
