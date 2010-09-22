@@ -124,17 +124,17 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   connect( d->mAgendaView, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal()),
+           SIGNAL(newEventSignal()) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)) );
 
-  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)) );
+  connect( d->mAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)) );
 
   connect( d->mAgendaView, SIGNAL(newTodoSignal(QDate)),
            SIGNAL(newTodoSignal(QDate)) );

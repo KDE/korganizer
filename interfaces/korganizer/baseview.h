@@ -348,23 +348,23 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * instructs the receiver to create a new event in given collection. Doesn't make
      * sense to connect to more than one receiver.
      */
-    void newEventSignal( const Akonadi::Collection::List & );
+    void newEventSignal( Akonadi::Collection::Id = -1 );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( const Akonadi::Collection::List &, const QDate & );
+    void newEventSignal( Akonadi::Collection::Id, const QDate & );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal( const Akonadi::Collection::List &, const QDateTime & );
+    void newEventSignal( Akonadi::Collection::Id, const QDateTime & );
     /**
      * instructs the receiver to create a new event, with the specified
      * beginning end ending times.  Doesn't make sense to connect to more
      * than one receiver.
      */
-    void newEventSignal( const Akonadi::Collection::List &, const QDateTime &, const QDateTime & );
+    void newEventSignal( Akonadi::Collection::Id, const QDateTime &, const QDateTime & );
 
     void newTodoSignal( const QDate & );
     void newSubTodoSignal( const Akonadi::Item & );

@@ -106,17 +106,17 @@ MonthView::MonthView( QWidget *parent )
   connect( d->mMonthView, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::List)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal()),
+           SIGNAL(newEventSignal()) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)) );
 
-  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)) );
+  connect( d->mMonthView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)) );
 
   connect( d->mMonthView, SIGNAL(newTodoSignal(QDate)),
            SIGNAL(newTodoSignal(QDate)) );

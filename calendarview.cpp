@@ -172,15 +172,15 @@ CalendarView::CalendarView( QWidget *parent )
   mLeftFrame->installEventFilter( this );
 
   // Signals emitted by mDateNavigator
-  connect( mDateNavigator, SIGNAL(datesSelected(const KCalCore::DateList&,const QDate&)),
-           SLOT(showDates(const KCalCore::DateList&,const QDate&)) );
+  connect( mDateNavigator, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
+           SLOT(showDates(KCalCore::DateList,QDate)) );
 
-  connect( mDateNavigatorContainer, SIGNAL(newEventSignal(const QDate &)),
-           SLOT(newEvent(const QDate &)) );
-  connect( mDateNavigatorContainer, SIGNAL(newTodoSignal(const QDate &)),
-           SLOT(newTodo(const QDate &)) );
-  connect( mDateNavigatorContainer, SIGNAL(newJournalSignal(const QDate &)),
-           SLOT(newJournal(const QDate &)) );
+  connect( mDateNavigatorContainer, SIGNAL(newEventSignal(QDate)),
+           SLOT(newEvent(QDate)) );
+  connect( mDateNavigatorContainer, SIGNAL(newTodoSignal(QDate)),
+           SLOT(newTodo(QDate)) );
+  connect( mDateNavigatorContainer, SIGNAL(newJournalSignal(QDate)),
+           SLOT(newJournal(QDate)) );
 
   // Signals emitted by mNavigatorBar
   connect( mNavigatorBar, SIGNAL(prevYearClicked()),
@@ -1116,7 +1116,7 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor( const Event::P
 void CalendarView::newEvent()
 {
   if ( mCreatingEnabled ) {
-    newEvent( Akonadi::Collection::List(), QDateTime(), QDateTime() );
+    newEvent( -1, QDateTime(), QDateTime() );
   }
 }
 
@@ -1130,43 +1130,35 @@ void CalendarView::newEvent( const QDate &dt )
     time = time.addSecs( duration.hour()*3600 + duration.minute() * 60 +  duration.second() );
     QDateTime endDt( startDt );
     endDt.setTime( time );
-    newEvent( Akonadi::Collection::List(), startDt, endDt );
+    newEvent( -1, startDt, endDt );
   }
 }
 
-void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections )
+void CalendarView::newEvent( Akonadi::Collection::Id defaultCollectionId )
 {
   if ( mCreatingEnabled ) {
-    newEvent( selectedCollections, QDateTime(), QDateTime() );
+    newEvent( defaultCollectionId, QDateTime(), QDateTime() );
   }
 }
 
-void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections, const QDate &dt )
+void CalendarView::newEvent( Akonadi::Collection::Id defaultCollectionId, const QDate &dt )
 {
   if ( mCreatingEnabled ) {
     QDateTime startDt( dt, CalendarSupport::KCalPrefs::instance()->mStartTime.time() );
-    newEvent( selectedCollections, QDateTime( dt ), QDateTime( dt ) );
+    newEvent( defaultCollectionId, QDateTime( dt ), QDateTime( dt ) );
   }
 }
 
-void CalendarView::newEvent( const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt )
+void CalendarView::newEvent( Akonadi::Collection::Id defaultCollectionId, const QDateTime &startDt )
 {
   if ( mCreatingEnabled ) {
-    newEvent( selectedCollections, startDt, QDateTime( startDt ) );
+    newEvent( defaultCollectionId, startDt, QDateTime( startDt ) );
   }
 }
 
-void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollections,
+void CalendarView::newEvent(  Akonadi::Collection::Id defaultCollectionId,
                               const QDateTime &startDtParam, const QDateTime &endDtParam, bool allDay )
 {
-  /**
-     imho, this parameter should be removed:
-     - To-dos and journals don't use this which is inconsistent.
-     - Currently an empty List() is being passed.
-     - Collections selected in resource view should only influence what the views show.
-  */
-  Q_UNUSED( selectedCollections );
-
   if ( mCreatingEnabled ) {
     // Let the current view change the default start/end datetime
     QDateTime startDt( startDtParam );
@@ -1187,7 +1179,11 @@ void CalendarView::newEvent(  const Akonadi::Collection::List &selectedCollectio
     IncidenceEditorNG::IncidenceDialog *eventEditor = newEventEditor( event );
     Q_ASSERT( eventEditor );
 
-    eventEditor->selectCollection( defaultCollection() );
+    // If the collection passed to this function is invalid, fallback to the default collection
+    // defined in config */
+    Akonadi::Collection requestedCol = mCalendar->collection( defaultCollectionId );
+
+    eventEditor->selectCollection( requestedCol.isValid() ? requestedCol : defaultCollection() );
   }
 }
 
@@ -1436,7 +1432,7 @@ void CalendarView::newFloatingEvent()
   if ( mCreatingEnabled ) {
     QDate date = activeDate();
     // TODO_BERTJAN: Find out from where this is called and see if we can get a reasonable default collection
-    newEvent( Akonadi::Collection::List(),
+    newEvent( -1,
               QDateTime( date, QTime( 12, 0, 0 ) ),
               QDateTime( date, QTime( 12, 0, 0 ) ), true );
   }

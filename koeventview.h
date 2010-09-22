@@ -92,12 +92,6 @@ class KOEventView : public KOrg::BaseView
 
     int showMoveRecurDialog( const Akonadi::Item &inc, const QDate &date );
 
-    /**
-     * Handles key events, opens the new event dialog when enter is pressed, activates
-     * type ahead.
-     */
-    bool processKeyEvent( QKeyEvent * );
-
     /*
      * Sets the QObject that will receive key events that were made
      * while the new event dialog was still being created.

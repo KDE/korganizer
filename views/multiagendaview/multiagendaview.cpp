@@ -122,17 +122,17 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   connect( d->mMultiAgendaView, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDate)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDate)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(Akonadi::Collection::List,QDateTime,QDateTime)) );
+  connect( d->mMultiAgendaView, SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(Akonadi::Collection::Id,QDateTime,QDateTime)) );
 
   connect( d->mMultiAgendaView, SIGNAL(newTodoSignal(QDate)),
            SIGNAL(newTodoSignal(QDate)) );
@@ -412,11 +412,11 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       columnFilterProxy->setSourceModel( sortProxy );
 
       QItemSelectionModel *qsm = new QItemSelectionModel( columnFilterProxy, columnFilterProxy );
-      
+
       KCheckableProxyModel *selection = new KCheckableProxyModel;
       selection->setSourceModel( columnFilterProxy );
       selection->setSelectionModel( qsm );
-      
+
       AkonadiCollectionView *cview = createView( selection );
       const int idx = ui.selectionStack->addWidget( cview );
       Q_ASSERT( i == idx );

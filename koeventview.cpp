@@ -219,67 +219,6 @@ int KOEventView::showMoveRecurDialog( const Akonadi::Item &aitem, const QDate &d
   return answer;
 }
 
-bool KOEventView::processKeyEvent( QKeyEvent *ke )
-{
-  // If Return is pressed bring up an editor for the current selected time span.
-  if ( ke->key() == Qt::Key_Return ) {
-    if ( ke->type() == QEvent::KeyPress ) {
-      mReturnPressed = true;
-    } else if ( ke->type() == QEvent::KeyRelease ) {
-      if ( mReturnPressed ) {
-        emit newEventSignal( collectionSelection()->selectedCollections() );
-        mReturnPressed = false;
-        return true;
-      } else {
-        mReturnPressed = false;
-      }
-    }
-  }
-
-  // Ignore all input that does not produce any output
-  if ( ke->text().isEmpty() || ( ke->modifiers() & Qt::ControlModifier ) ) {
-    return false;
-  }
-
-  if ( ke->type() == QEvent::KeyPress ) {
-    switch ( ke->key() ) {
-    case Qt::Key_Escape:
-    case Qt::Key_Return:
-    case Qt::Key_Enter:
-    case Qt::Key_Tab:
-    case Qt::Key_Backtab:
-    case Qt::Key_Left:
-    case Qt::Key_Right:
-    case Qt::Key_Up:
-    case Qt::Key_Down:
-    case Qt::Key_Backspace:
-    case Qt::Key_Delete:
-    case Qt::Key_PageUp:
-    case Qt::Key_PageDown:
-    case Qt::Key_Home:
-    case Qt::Key_End:
-    case Qt::Key_Control:
-    case Qt::Key_Meta:
-    case Qt::Key_Alt:
-      break;
-    default:
-      mTypeAheadEvents.append(
-        new QKeyEvent( ke->type(),
-                       ke->key(),
-                       ke->modifiers(),
-                       ke->text(),
-                       ke->isAutoRepeat(),
-                       static_cast<ushort>( ke->count() ) ) );
-      if ( !mTypeAhead ) {
-        mTypeAhead = true;
-        emit newEventSignal( collectionSelection()->selectedCollections() );
-      }
-      return true;
-    }
-  }
-  return false;
-}
-
 void KOEventView::setTypeAheadReceiver( QObject *o )
 {
   mTypeAheadReceiver = o;

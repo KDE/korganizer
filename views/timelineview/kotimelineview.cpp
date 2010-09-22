@@ -407,7 +407,8 @@ void KOTimelineView::contextMenuRequested(const QPoint& point)
   mSelectedItemList << tlitem->incidence();
 }
 
-bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
+bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
+                                        bool &allDay )
 {
   startDt = QDateTime( mHintDate );
   endDt = QDateTime( mHintDate.addSecs( 2 * 60 * 60 ) );
@@ -419,7 +420,15 @@ bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bo
 void KOTimelineView::newEventWithHint( const QDateTime &dt )
 {
   mHintDate = dt;
-  emit newEventSignal( collectionSelection()->selectedCollections(), dt );
+
+  Akonadi::Collection::Id defaultCollectionId;
+  if ( collectionSelection()->selectedCollections().isEmpty() ) {
+    defaultCollectionId = -1;
+  } else {
+    defaultCollectionId = collectionSelection()->selectedCollections().first().id();
+  }
+
+  emit newEventSignal( defaultCollectionId, dt );
 }
 
 TimelineItem *KOTimelineView::calendarItemForIncidence( const Akonadi::Item &incidence )

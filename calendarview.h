@@ -30,7 +30,7 @@
 #include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
-#include <kcalcore/visitor.h>
+#include <KCalCore/Visitor>
 
 #include <calendarsupport/calendar.h>
 
@@ -293,22 +293,43 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newEvent();
     void newEvent( const QDate & );
 
-    /** create new event without having a date hint. Takes current date as
-     default hint. */
-    void newEvent( const Akonadi::Collection::List &selectedCollections );
+    /**
+       create new event without having a date hint. Takes current date as
+       default hint.
 
-    /** create an editeventwin with supplied date/time, and if bool is true,
-     * make the event take all day. */
-    void newEvent( const Akonadi::Collection::List &selectedCollections, const QDate &startDt );
-    void newEvent( const Akonadi::Collection::List &selectedCollections, const QDateTime &startDt );
-    void newEvent( const Akonadi::Collection::List &selectedCollections,
+       @param defaultCollectionID is the ID of the collection that will be selected
+       in the editor's combo-box.
+    */
+    void newEvent( Akonadi::Collection::Id defaultCollectionId );
+
+    /**
+       create an editeventwin with supplied date/time, and if bool is true,
+       make the event take all day.
+
+       @param defaultCollectionId is the ID of the collection that will be selected
+       in the editor's combo-box.
+    */
+    void newEvent( Akonadi::Collection::Id defaultCollectionId, const QDate &startDt );
+
+     /**
+       @param defaultCollectionId is the ID of the collection that will be selected
+       in the editor's combo-box.
+     */
+    void newEvent( Akonadi::Collection::Id defaultCollectionId, const QDateTime &startDt );
+
+    /**
+       @param defaultCollectionId is the ID of the collection that will be selected
+       in the editor's combo-box.
+    */
+    void newEvent( Akonadi::Collection::Id defaultCollectionId,
                    const QDateTime &startDt, const QDateTime &EndDt, bool allDay=false );
 
     /**
       Create new Event from given summary, description, attachment list and
       attendees list
     */
-    void newEvent( const QString &summary, const QString &description=QString(),
+    void newEvent( const QString &summary,
+                   const QString &description=QString(),
                    const QStringList &attachment=QStringList(),
                    const QStringList &attendees=QStringList(),
                    const QStringList &attachmentMimetypes=QStringList(),
