@@ -1163,13 +1163,8 @@ void CalendarView::newEvent( const QDateTime &startDtParam, const QDateTime &end
     IncidenceEditorNG::IncidenceDialog *eventEditor = newEventEditor( event );
     Q_ASSERT( eventEditor );
 
-
-    Akonadi::Collection::Id defaultCollectionId = mViewManager->currentView()->collectionId();
-
-    Akonadi::Collection requestedCol = mCalendar->collection( defaultCollectionId );
-
     // Fallsback to the default collection defined in config
-    eventEditor->selectCollection( requestedCol.isValid() ? requestedCol : defaultCollection() );
+    eventEditor->selectCollection( defaultCollection( KCalCore::Event::eventMimeType() ) );
   }
 }
 
@@ -1225,7 +1220,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
     item.setPayload( todo );
 
     IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    dialog->selectCollection( defaultCollection() );
+    dialog->selectCollection( defaultCollection( KCalCore::Todo::todoMimeType()) );
     dialog->load( item );
   }
 }
@@ -1262,7 +1257,7 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
     } else {
-      dialog->selectCollection( defaultCollection() );
+      dialog->selectCollection( defaultCollection( KCalCore::Todo::todoMimeType() ) );
     }
 
     dialog->load( item );
@@ -1313,12 +1308,12 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
     item.setPayload( journal );
 
     IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    dialog->selectCollection( defaultCollection() );
+    dialog->selectCollection( defaultCollection( KCalCore::Journal::journalMimeType() ) );
 
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
     } else {
-      dialog->selectCollection( defaultCollection() );
+      dialog->selectCollection( defaultCollection( KCalCore::Journal::journalMimeType() ) );
     }
     dialog->load( item );
   }
@@ -1338,7 +1333,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
     item.setPayload( journal );
 
     IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    dialog->selectCollection( defaultCollection() );
+    dialog->selectCollection( defaultCollection( KCalCore::Journal::journalMimeType() ) );
     dialog->load( item );
   }
 }
@@ -1388,7 +1383,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
     if ( collection.isValid() ) {
       dialog->selectCollection( collection );
     } else {
-      dialog->selectCollection( defaultCollection() );
+      dialog->selectCollection( defaultCollection( KCalCore::Todo::todoMimeType() ) );
     }
     dialog->load( item );
   }
@@ -3120,10 +3115,29 @@ void CalendarView::setCreatingEnabled( bool enabled )
   mCreatingEnabled = enabled;
 }
 
-Akonadi::Collection CalendarView::defaultCollection() const
+Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeType ) const
 {
-  const Akonadi::Collection::Id id = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
-  return mCalendar->collection( id );
+  bool supportsMimeType;
+
+  /**
+     If the view's collection is valid and it supports mimeType, return it, otherwise
+     if the config's collection is valid and it supports mimeType, return it, otherwise
+     return an invalid collection.
+  */
+
+  Akonadi::Collection viewCollection = mCalendar->collection( mViewManager->currentView()->collectionId() );
+
+  supportsMimeType = viewCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+
+
+  if ( viewCollection.isValid() && supportsMimeType ) {
+    return viewCollection;
+  } else {
+    Akonadi::Collection configCollection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
+    supportsMimeType = configCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+
+    return ( configCollection.isValid() && supportsMimeType ) ? configCollection : Akonadi::Collection();
+  }
 }
 
 

@@ -30,6 +30,7 @@
 #include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
+#include <KCalCore/Incidence>
 #include <KCalCore/Visitor>
 
 #include <calendarsupport/calendar.h>
@@ -694,7 +695,13 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     //
     void getIncidenceHierarchy( const Akonadi::Item &item, Akonadi::Item::List &items );
 
-    Akonadi::Collection defaultCollection() const;
+    /**
+       Returns the default collection.
+       The view's collection takes precedence, only then the config one is used.
+       If mimeType is set, the collection to return will have to support that mime type.
+       IF no valid collection is found, an invalid one is returned.
+    */
+    Akonadi::Collection defaultCollection( const QLatin1String &mimeType = QLatin1String( "" ) ) const;
 
     KOrg::History *mHistory;
 
