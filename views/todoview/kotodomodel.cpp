@@ -478,10 +478,9 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Akonadi::Item &todoIte
     Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( parentUid );
     Incidence::Ptr incidence = CalendarSupport::incidence( parentItem );
     Todo::Ptr relatedTodo = incidence.dynamicCast<Todo>();
-    Q_ASSERT( relatedTodo );
 
-    // check if there are recursively linked todos
-    if ( isInHierarchyLoop( todo ) ) {
+    // check if there are recursively linked todos, or if we got broken input data
+    if ( isInHierarchyLoop( todo ) || !relatedTodo ) {
       // recursion detected, break recursion
       return insertTodo( todoItem, false );
     }
