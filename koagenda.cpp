@@ -1099,6 +1099,7 @@ void KOAgenda::endItemAction()
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
   setCursor( arrowCursor );
+  bool useLastGroupwareDialogAnswer = false;
   bool multiModify = false;
   // FIXME: do the cloning here...
   Incidence *inc = mActionItem->incidence();
@@ -1130,12 +1131,13 @@ void KOAgenda::endItemAction()
         enableAgendaUpdate( false );
         kdDebug() << "Adding incidence at " << incToChange->dtStart() << endl;
         mChanger->addIncidence( incToChange, mResPair.first, mResPair.second, this );
+        useLastGroupwareDialogAnswer = true;
         enableAgendaUpdate( true );
         KOGlobals::WhatChanged wc = chosenOption == KOGlobals::ONLY_THIS_ONE ?
                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY :
                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE;
 
-        mChanger->changeIncidence( oldIncSaved, inc, wc, this );
+        mChanger->changeIncidence( oldIncSaved, inc, wc, this, true );
 
         mActionItem->dissociateFromMultiItem();
         mActionItem->setIncidence( incToChange );
@@ -1169,7 +1171,7 @@ void KOAgenda::endItemAction()
       // the agenda view will apply the changes to the actual Incidence*!
       mChanger->endChange( inc, mResPair.first, mResPair.second );
       kdDebug() << "Modified." << endl;
-      emit itemModified( modif );
+      emit itemModified( modif, useLastGroupwareDialogAnswer );
     } else {
 
       mActionItem->resetMove();
@@ -1179,7 +1181,7 @@ void KOAgenda::endItemAction()
       // make sure the view updates anyhow, with the right item
       mChanger->endChange( inc, mResPair.first, mResPair.second );
       kdDebug() << "Not modified." << endl;
-      emit itemModified( mActionItem );
+      emit itemModified( mActionItem, useLastGroupwareDialogAnswer );
     }
   }
 

@@ -445,8 +445,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   connect( agenda, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
 
-  connect( agenda, SIGNAL(itemModified(KOAgendaItem *)),
-           SLOT(updateEventDates(KOAgendaItem *)) );
+  connect( agenda, SIGNAL(itemModified(KOAgendaItem *,bool)),
+           SLOT(updateEventDates(KOAgendaItem *,bool)) );
 
   connect( agenda, SIGNAL(enableAgendaUpdate(bool)),
            SLOT(enableAgendaUpdate(bool)) );
@@ -843,7 +843,7 @@ void KOAgendaView::resizeEvent( QResizeEvent *resizeEvent )
   KOrg::AgendaView::resizeEvent( resizeEvent );
 }
 
-void KOAgendaView::updateEventDates( KOAgendaItem *item )
+void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDialogAnswer )
 {
   kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text()
                 << "; item->cellXLeft(): " << item->cellXLeft()
@@ -1111,7 +1111,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   kdDebug() << "New date is " << incidence->dtStart() << endl;
   const bool result = mChanger->changeIncidence( oldIncidence, incidence,
-                                                 KOGlobals::DATE_MODIFIED, this );
+                                                 KOGlobals::DATE_MODIFIED, this, useLastGroupwareDialogAnswer );
   mChanger->endChange( incidence, resourceCalendar(), subResourceCalendar() );
   delete oldIncidence;
 

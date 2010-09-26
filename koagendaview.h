@@ -235,7 +235,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
 
   protected slots:
     /** Update event belonging to agenda item */
-    void updateEventDates( KOAgendaItem *item );
+    void updateEventDates( KOAgendaItem *item, bool useLastGroupwareDialogAnswer );
     /** update just the display of the given incidence, called by a single-shot timer */
     void doUpdateItem();
 
