@@ -445,9 +445,6 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   connect( agenda, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
 
-  connect( agenda, SIGNAL(enableAgendaUpdate(bool)),
-           SLOT(enableAgendaUpdate(bool)) );
-
   // drag signals
   connect( agenda, SIGNAL(startDragSignal(Incidence *)),
            SLOT(startDrag(Incidence *)) );

@@ -200,7 +200,6 @@ class KOAgenda : public QScrollView
     void startDragSignal(Incidence *);
     void droppedToDo( Todo*todo, const QPoint &gpos, bool allDay );
 
-    void enableAgendaUpdate( bool enable );
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation );
 
     void mousePosSignal(const QPoint &pos);

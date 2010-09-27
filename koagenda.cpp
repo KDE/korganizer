@@ -1131,11 +1131,11 @@ void KOAgenda::endItemAction()
       if ( chosenOption == KOGlobals::ONLY_THIS_ONE ||
            chosenOption == KOGlobals::ONLY_FUTURE ) {
         multiModify = true;
-        enableAgendaUpdate( false );
+        mAgendaView->enableAgendaUpdate( false );
         kdDebug() << "Adding incidence at " << incToChange->dtStart() << endl;
         mChanger->addIncidence( incToChange, mResPair.first, mResPair.second, this );
         useLastGroupwareDialogAnswer = true;
-        enableAgendaUpdate( true );
+        mAgendaView->enableAgendaUpdate( true );
         KOGlobals::WhatChanged wc = chosenOption == KOGlobals::ONLY_THIS_ONE ?
                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY :
                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE;
