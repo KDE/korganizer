@@ -930,6 +930,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
     incidence->setDtStart( startDt );
     ev->setDtEnd( endDt );
   } else if ( incidence->type() == "Todo" ) {
+
+    // To-do logic must be reviewed.
+
     Todo *td = static_cast<Todo*>( incidence );
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
     startDt = thisDate.addDays( td->dtDue().daysTo( startDt ) );
@@ -937,18 +940,12 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
     endDt.setDate( thisDate );
     endDt.setTime( endTime );
 
-    if( td->dtDue() == endDt ) {
+    if ( td->dtDue() == endDt ) {
       // No change
       delete oldIncidence;
       return;
     }
-  }
 
-  if ( incidence->type() == "Event" ) {
-    incidence->setDtStart( startDt );
-    static_cast<Event*>( incidence )->setDtEnd( endDt );
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *td = static_cast<Todo*>( incidence );
     if ( td->hasStartDate() ) {
       td->setDtStart( startDt );
     }
