@@ -865,11 +865,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
   } else {
     thisDate = mSelectedDates[ item->cellXLeft() ];
   }
-  QDate oldThisDate( item->itemDate() );
+  const QDate oldThisDate( item->itemDate() );
   const int daysOffset = oldThisDate.daysTo( thisDate );
   int daysLength = 0;
-
-  // startDt.setDate( startDate );
 
   Incidence *incidence = item->incidence();
 
@@ -917,7 +915,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
                 << "; endTime: " << endTime << "; thisDate: " << thisDate
                 << "; incidence->dtStart(): " << incidence->dtStart() << endl;
 
-  // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     startDt = incidence->dtStart();
     startDt = startDt.addDays( daysOffset );
@@ -947,7 +944,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
     }
   }
 
-  // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     incidence->setDtStart( startDt );
     static_cast<Event*>( incidence )->setDtEnd( endDt );
@@ -980,6 +976,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
   // an update would delete the current item and recreate it, but we are still
   // using a pointer to that item! => CRASH
   enableAgendaUpdate( false );
+
   // We need to do this in a timer to make sure we are not deleting the item
   // we are currently working on, which would lead to crashes
   // Only the actually moved agenda item is already at the correct position and mustn't be
@@ -989,9 +986,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
     QTimer::singleShot( 0, this, SLOT( doUpdateItem() ) );
   }
 
-    enableAgendaUpdate( true );
-
-//  kdDebug(5850) << "KOAgendaView::updateEventDates() done " << endl;
+  enableAgendaUpdate( true );
 }
 
 void KOAgendaView::doUpdateItem()
