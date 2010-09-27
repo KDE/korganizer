@@ -837,7 +837,11 @@ void KOAgendaView::resizeEvent( QResizeEvent *resizeEvent )
   KOrg::AgendaView::resizeEvent( resizeEvent );
 }
 
-void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDialogAnswer )
+void KOAgendaView::updateEventDates( KOAgendaItem *item,
+                                     bool useLastGroupwareDialogAnswer,
+                                     ResourceCalendar *res,
+                                     const QString &subRes,
+                                     bool addIncidence )
 {
   kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text()
                 << "; item->cellXLeft(): " << item->cellXLeft()
@@ -866,7 +870,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
   Incidence *incidence = item->incidence();
 
   if ( !incidence || !mChanger ||
-       !mChanger->beginChange( incidence, resourceCalendar(), subResourceCalendar() ) ) {
+       ( !addIncidence && !mChanger->beginChange( incidence,
+                                                  resourceCalendar(),
+                                                  subResourceCalendar() ) ) ) {
     kdDebug() << "Weird, application has a bug?" << endl;
     return;
   }
@@ -951,10 +957,17 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item, bool useLastGroupwareDi
   KOIncidenceToolTip::remove( item );
   KOIncidenceToolTip::add( item, calendar(), incidence, thisDate, KOAgendaItem::toolTipGroup() );
 
+
+  bool result;
   kdDebug() << "New date is " << incidence->dtStart() << endl;
-  const bool result = mChanger->changeIncidence( oldIncidence, incidence,
-                                                 KOGlobals::DATE_MODIFIED, this, useLastGroupwareDialogAnswer );
-  mChanger->endChange( incidence, resourceCalendar(), subResourceCalendar() );
+  if ( addIncidence ) {
+    result = mChanger->addIncidence( incidence, res, subRes, this, useLastGroupwareDialogAnswer );
+  } else {
+    result = mChanger->changeIncidence( oldIncidence, incidence,
+                                                   KOGlobals::DATE_MODIFIED, this, useLastGroupwareDialogAnswer );
+    mChanger->endChange( incidence, resourceCalendar(), subResourceCalendar() );
+  }
+
   delete oldIncidence;
 
   if ( !result ) {

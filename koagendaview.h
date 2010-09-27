@@ -157,7 +157,11 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     void calendarIncidenceDeleted( Incidence *incidence );
 
     /** Update event belonging to agenda item */
-    void updateEventDates( KOAgendaItem *item, bool useLastGroupwareDialogAnswer );
+    void updateEventDates( KOAgendaItem *item,
+                           bool useLastGroupwareDialogAnswer,
+                           ResourceCalendar *res,
+                           const QString &subRes,
+                           bool addIncidence );
 
   public slots:
     virtual void updateView();

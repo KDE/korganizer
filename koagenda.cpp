@@ -1103,6 +1103,7 @@ void KOAgenda::endItemAction()
   mScrollDownTimer.stop();
   setCursor( arrowCursor );
   bool useLastGroupwareDialogAnswer = false;
+  bool addIncidence = false;
   bool multiModify = false;
   // FIXME: do the cloning here...
   Incidence *inc = mActionItem->incidence();
@@ -1132,15 +1133,14 @@ void KOAgenda::endItemAction()
            chosenOption == KOGlobals::ONLY_FUTURE ) {
         multiModify = true;
         mAgendaView->enableAgendaUpdate( false );
-        kdDebug() << "Adding incidence at " << incToChange->dtStart() << endl;
-        mChanger->addIncidence( incToChange, mResPair.first, mResPair.second, this );
         useLastGroupwareDialogAnswer = true;
+        addIncidence = true;
         mAgendaView->enableAgendaUpdate( true );
         KOGlobals::WhatChanged wc = chosenOption == KOGlobals::ONLY_THIS_ONE ?
                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY :
                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE;
 
-        mChanger->changeIncidence( oldIncSaved, inc, wc, this, true );
+        mChanger->changeIncidence( oldIncSaved, inc, wc, this );
 
         mActionItem->dissociateFromMultiItem();
         mActionItem->setIncidence( incToChange );
@@ -1174,7 +1174,7 @@ void KOAgenda::endItemAction()
       // the agenda view will apply the changes to the actual Incidence*!
       mChanger->endChange( inc, mResPair.first, mResPair.second );
       kdDebug() << "Modified." << endl;
-      mAgendaView->updateEventDates( modif, useLastGroupwareDialogAnswer );
+      mAgendaView->updateEventDates( modif, useLastGroupwareDialogAnswer, mResPair.first, mResPair.second, addIncidence );
     } else {
 
       mActionItem->resetMove();
@@ -1184,7 +1184,11 @@ void KOAgenda::endItemAction()
       // make sure the view updates anyhow, with the right item
       mChanger->endChange( inc, mResPair.first, mResPair.second );
       kdDebug() << "Not modified." << endl;
-      mAgendaView->updateEventDates( mActionItem, useLastGroupwareDialogAnswer );
+      mAgendaView->updateEventDates( mActionItem,
+                                     useLastGroupwareDialogAnswer,
+                                     mResPair.first,
+                                     mResPair.second,
+                                     addIncidence );
     }
   }
 
