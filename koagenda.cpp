@@ -47,6 +47,7 @@
 #include "incidencechanger.h"
 #include "kohelper.h"
 
+#include "koagendaview.h"
 #include "koagenda.h"
 #include "koagenda.moc"
 #include <korganizer/baseview.h>
@@ -180,8 +181,9 @@ void MarcusBains::updateLocationRecalc( bool recalculate )
   Create an agenda widget with rows rows and columns columns.
 */
 KOAgenda::KOAgenda( int columns, int rows, int rowSize, CalendarView *calendarView,
-                    QWidget *parent, const char *name, WFlags f )
-  : QScrollView( parent, name, f ), mChanger( 0 )
+                    KOAgendaView *agendaView, QWidget *parent, const char *name,
+                    WFlags f )
+  : QScrollView( parent, name, f ), mChanger( 0 ), mAgendaView( agendaView )
 {
   mColumns = columns;
   mRows = rows;
@@ -203,8 +205,9 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, CalendarView *calendarVi
   Create an agenda widget with columns columns and one row. This is used for
   all-day events.
 */
-KOAgenda::KOAgenda( int columns, CalendarView *calendarView, QWidget *parent,
-                    const char *name, WFlags f ) : QScrollView( parent, name, f )
+KOAgenda::KOAgenda( int columns, CalendarView *calendarView, KOAgendaView *agendaView,
+                    QWidget *parent, const char *name,
+                    WFlags f ) : QScrollView( parent, name, f ), mAgendaView( agendaView )
 {
   mColumns = columns;
   mRows = 1;
@@ -1171,7 +1174,7 @@ void KOAgenda::endItemAction()
       // the agenda view will apply the changes to the actual Incidence*!
       mChanger->endChange( inc, mResPair.first, mResPair.second );
       kdDebug() << "Modified." << endl;
-      emit itemModified( modif, useLastGroupwareDialogAnswer );
+      mAgendaView->updateEventDates( modif, useLastGroupwareDialogAnswer );
     } else {
 
       mActionItem->resetMove();
@@ -1181,7 +1184,7 @@ void KOAgenda::endItemAction()
       // make sure the view updates anyhow, with the right item
       mChanger->endChange( inc, mResPair.first, mResPair.second );
       kdDebug() << "Not modified." << endl;
-      emit itemModified( mActionItem, useLastGroupwareDialogAnswer );
+      mAgendaView->updateEventDates( mActionItem, useLastGroupwareDialogAnswer );
     }
   }
 

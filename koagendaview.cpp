@@ -321,7 +321,7 @@ KOAgendaView::KOAgendaView( Calendar *cal,
     label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::WordBreak );
   }
 
-  mAllDayAgenda = new KOAgenda( 1, calendarView, mAllDayFrame );
+  mAllDayAgenda = new KOAgenda( 1, calendarView, this, mAllDayFrame );
   mAllDayAgenda->setCalendar( calendar() );
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
@@ -343,7 +343,7 @@ KOAgendaView::KOAgendaView( Calendar *cal,
   agendaLayout->addWidget(mTimeLabels,1,0);
 
   // Create agenda
-  mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, calendarView, agendaFrame );
+  mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, calendarView, this, agendaFrame );
   mAgenda->setCalendar( calendar() );
   agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
   agendaLayout->setColStretch(1,1);
@@ -444,9 +444,6 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
            SIGNAL(startMultiModify(const QString &)) );
   connect( agenda, SIGNAL(endMultiModify()),
            SIGNAL(endMultiModify()) );
-
-  connect( agenda, SIGNAL(itemModified(KOAgendaItem *,bool)),
-           SLOT(updateEventDates(KOAgendaItem *,bool)) );
 
   connect( agenda, SIGNAL(enableAgendaUpdate(bool)),
            SLOT(enableAgendaUpdate(bool)) );

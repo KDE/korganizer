@@ -39,6 +39,7 @@ class QLabel;
 class KConfig;
 class KOAgenda;
 class KOAgendaItem;
+class KOAgendaView;
 
 namespace KOrg {
   class IncidenceChangerBase;
@@ -78,11 +79,13 @@ class KOAgenda : public QScrollView
   Q_OBJECT
   public:
     KOAgenda ( int columns, int rows, int columnSize, CalendarView *calendarView,
-               QWidget *parent=0, const char *name = 0, WFlags f = 0 );
+               KOAgendaView *agendaView, QWidget *parent = 0, const char *name = 0,
+               WFlags f = 0 );
 
-    KOAgenda ( int columns, CalendarView *calendarView, QWidget *parent = 0,
-               const char *name = 0, WFlags f = 0 );
-    virtual ~KOAgenda();
+    KOAgenda ( int columns, CalendarView *calendarView, KOAgendaView *agendaView,
+               QWidget *parent = 0, const char *name = 0, WFlags f = 0 );
+
+    ~KOAgenda();
 
     Incidence *selectedIncidence() const;
     QDate selectedIncidenceDate() const;
@@ -187,7 +190,6 @@ class KOAgenda : public QScrollView
     void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
 
-    void itemModified( KOAgendaItem *item, bool useLastGroupwareDialogAnswer );
     void incidenceSelected( Incidence *, const QDate & );
     void startMultiModify( const QString & );
     void endMultiModify();
@@ -382,6 +384,7 @@ class KOAgenda : public QScrollView
     KOrg::IncidenceChangerBase *mChanger;
 
     CalendarView *mCalendarView;
+    KOAgendaView *mAgendaView;
 };
 
 #endif // KOAGENDA_H

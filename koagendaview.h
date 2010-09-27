@@ -156,6 +156,9 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     void calendarIncidenceChanged( Incidence *incidence );
     void calendarIncidenceDeleted( Incidence *incidence );
 
+    /** Update event belonging to agenda item */
+    void updateEventDates( KOAgendaItem *item, bool useLastGroupwareDialogAnswer );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -234,8 +237,6 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
     virtual void resizeEvent( QResizeEvent *resizeEvent );
 
   protected slots:
-    /** Update event belonging to agenda item */
-    void updateEventDates( KOAgendaItem *item, bool useLastGroupwareDialogAnswer );
     /** update just the display of the given incidence, called by a single-shot timer */
     void doUpdateItem();
 
