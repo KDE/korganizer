@@ -3,7 +3,8 @@
 
   Copyright (c) 1999 Preston Brown <pbrown@kde.org>
   Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2010 Sérgio Martins <iamsergio@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -52,37 +53,9 @@ enum {
   Recurs_Column,
   StartDateTime_Column,
   EndDateTime_Column,
-  Categories_Column
+  Categories_Column,
+  Dummy_EOF_Column // Dummy enum value for iteration purposes only. Always keep at the end.
 };
-
-#ifdef __GNUC__
-#warning Port me!
-#endif
-#if 0
-KOListViewToolTip::KOListViewToolTip( QWidget *parent, K3ListView *lv )
-  :QToolTip( parent )
-{
-  eventlist = lv;
-}
-
-void KOListViewToolTip::maybeTip( const QPoint &pos )
-{
-  QRect r;
-  QTreeWidgetItem *it = eventlist->itemAt( pos );
-  KOListViewItem *i = static_cast<KOListViewItem*>( it );
-
-  if ( i && KOPrefs::instance()->mEnableToolTips ) {
-    /* Calculate the rectangle. */
-    r = eventlist->itemRect( it );
-
-    /* Show the tip */
-    QString tipText( IncidenceFormatter::toolTipString( i->data() ) );
-    if ( !tipText.isEmpty() ) {
-      tip( r, tipText );
-    }
-  }
-}
-#endif
 
 /**
   This class provides the initialization of a KOListViewItem for calendar
@@ -263,11 +236,6 @@ KOListView::KOListView( CalendarSupport::Calendar *calendar,
   // TODO
   //mTreeWidget->restoreLayout( KOGlobals::self()->config(), "KOListView Layout" );
 
-#ifdef __GNUC__
-#warning Port me!
-#endif
-//  new KOListViewToolTip( mTreeWidget->viewport(), mTreeWidget );
-
   mSelectedDates.append( QDate::currentDate() );
 }
 
@@ -389,6 +357,13 @@ void KOListView::addIncidence( const Akonadi::Item &aitem, const QDate &date )
     }
   }
   KOListViewItem *item = new KOListViewItem( aitem.id(), mTreeWidget, this );
+
+  // set tooltips
+  for ( int col = 0; col < Dummy_EOF_Column; ++col ) {
+    item->setToolTip( col, IncidenceFormatter::toolTipStr( CalendarSupport::displayName( aitem.parentCollection() ),
+                                                           CalendarSupport::incidence( aitem ) ) );
+  }
+
   ListItemVisitor v( item );
   if ( !tinc->accept( v, tinc ) ) {
     delete item;

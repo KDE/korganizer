@@ -34,7 +34,6 @@
 #include <QHash>
 #include <QList>
 
-
 using namespace KCalCore;
 
 namespace CalendarSupport {
@@ -46,20 +45,6 @@ typedef CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;
 class QTreeWidget;
-
-#if 0
-class KOListViewToolTip : public QToolTip
-{
-  public:
-    KOListViewToolTip ( QWidget *parent, K3ListView *lv );
-
-  protected:
-    void maybeTip( const QPoint &pos );
-
-  private:
-    K3ListView *eventlist;
-};
-#endif
 
 /**
   This class provides a multi-column list view of events.  It can
