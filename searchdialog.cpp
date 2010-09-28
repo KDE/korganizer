@@ -63,7 +63,7 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   // Results list view
   QVBoxLayout *layout = new QVBoxLayout;
   layout->setMargin( 0 );
-  listView = new KOListView( this );
+  listView = new KOListView( m_calendarview->calendar(), this );
   listView->showDates();
   layout->addWidget( listView );
   mListViewFrame->setLayout( layout );

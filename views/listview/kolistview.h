@@ -34,11 +34,18 @@
 #include <QHash>
 #include <QList>
 
+
 using namespace KCalCore;
 
-typedef IncidenceEditorNG::CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
+namespace CalendarSupport {
+  class Calendar;
+}
+
+
+typedef CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
 
 class KOListView;
+class QTreeWidget;
 
 #if 0
 class KOListViewToolTip : public QToolTip
@@ -68,7 +75,8 @@ class KOListView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit KOListView( QWidget *parent = 0,  bool nonInteractive = false );
+  explicit KOListView( CalendarSupport::Calendar *calendar,
+                       QWidget *parent = 0,  bool nonInteractive = false );
     ~KOListView();
 
     virtual int maxDatesHint() const;
@@ -100,8 +108,10 @@ class KOListView : public KOEventView
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );
 
-    void defaultItemAction( Q3ListViewItem *item );
-    void popupMenu( Q3ListViewItem *item, const QPoint &, int );
+    void defaultItemAction( const QModelIndex & );
+    void defaultItemAction( const Akonadi::Item::Id id );
+
+    void popupMenu( const QPoint & );
 
   protected slots:
     void processSelectionChange();
@@ -112,11 +122,11 @@ class KOListView : public KOEventView
 
   private:
     KOListViewItem *getItemForIncidence( const Akonadi::Item & );
-    KCalCore::Incidence::Ptr incidenceForId( const Akonadi::Item::Id &id ) const;
+    KCalCore::Incidence::Ptr incidenceForId( Akonadi::Item::Id id ) const;
 
   private:
     class ListItemVisitor;
-    K3ListView *mListView;
+    QTreeWidget *mListWidget;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     QHash<Akonadi::Item::Id,Akonadi::Item> mItems;

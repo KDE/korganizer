@@ -170,6 +170,7 @@ void KOEventView::defaultAction( const Akonadi::Item &aitem )
   kDebug();
   const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   if ( !incidence ) {
+    kDebug() << "Ouch, null incidence";
     return;
   }
 

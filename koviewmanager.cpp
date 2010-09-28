@@ -450,8 +450,7 @@ void KOViewManager::showWhatsNextView()
 void KOViewManager::showListView()
 {
   if ( !mListView ) {
-    mListView = new KOListView( mMainView->viewStack() );
-    mListView->setCalendar( mMainView->calendar() );
+    mListView = new KOListView( mMainView->calendar(), mMainView->viewStack() );
     mListView->setIdentifier( "DefaultListView" );
     addView( mListView );
   }

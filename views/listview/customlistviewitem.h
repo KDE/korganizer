@@ -19,32 +19,44 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef INCIDENCEEDITOR_CUSTOMLISTVIEWITEM_H
-#define INCIDENCEEDITOR_CUSTOMLISTVIEWITEM_H
+#ifndef CUSTOMLISTVIEWITEM_H
+#define CUSTOMLISTVIEWITEM_H
 
 #include <QMap>
 #include <QString>
-#include <K3ListView>
+#include <QTreeWidget>
+#include <QKeyEvent>
 
-namespace IncidenceEditorNG {
+
+class KOListView;
 
 template<class T>
-class CustomListViewItem : public K3ListViewItem
+// TODO, rename to CustomTreeWidgetItem
+class CustomListViewItem : public QTreeWidgetItem
 {
   public:
-    CustomListViewItem( T data, K3ListView *parent ) :
-      K3ListViewItem( parent ), mData( data ) { updateItem(); }
-    CustomListViewItem( T data, K3ListView *parent, K3ListViewItem *after ) :
-      K3ListViewItem( parent, after ), mData( data ) { updateItem(); }
+      CustomListViewItem( T data, QTreeWidget *parent, KOListView *listView ) :
+                                    QTreeWidgetItem( parent ),
+                                    mData( data ),
+                                    mListView( listView )
+      {
+        updateItem();
+      }
+
     ~CustomListViewItem() {}
 
     void updateItem() {}
 
     T data() const { return mData; }
 
+    QVariant data( int column, int role ) const
+    {
+      return QTreeWidgetItem::data( column, role );
+    }
+
     QString key( int column, bool ) const
     {
-      QMap<int,QString>::ConstIterator it = mKeyMap.find(column);
+      QMap<int,QString>::ConstIterator it = mKeyMap.find( column );
       if ( it == mKeyMap.end() ) {
         return text( column );
       } else {
@@ -59,10 +71,9 @@ class CustomListViewItem : public K3ListViewItem
 
   private:
     T mData;
+    KOListView *mListView;
 
     QMap<int,QString> mKeyMap;
 };
-
-}
 
 #endif

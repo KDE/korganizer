@@ -62,7 +62,7 @@ PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   mCalendar = MemoryCalendar::Ptr( new MemoryCalendar(
                                      KOPrefs::instance()->mTimeZoneId ) );
 
-  mListView = new KOListView( this, true );
+  mListView = new KOListView( 0, this, true );
   topLayout->addWidget( mListView );
 
   topLayout->setSpacing( spacingHint() );
