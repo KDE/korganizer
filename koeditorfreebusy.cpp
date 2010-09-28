@@ -92,6 +92,10 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     QString key( int column, bool ) const
     {
+      if ( mKeyMap.isEmpty() ) {
+        return QString();
+      }
+
       QMap<int,QString>::ConstIterator it = mKeyMap.find( column );
       if ( it == mKeyMap.end() ) return listViewText( column );
       else return *it;
@@ -222,8 +226,7 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
 
 ////
 
-KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
-                                    const char *name )
+KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent, const char *name )
   : KOAttendeeEditor( parent, name )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
@@ -233,13 +236,15 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
 
   // Label for status summary information
   // Uses the tooltip palette to highlight it
+  QHBoxLayout *barLayout = new QHBoxLayout( topLayout );
   mIsOrganizer = false; // Will be set later. This is just valgrind silencing
   mStatusSummaryLabel = new QLabel( this );
   mStatusSummaryLabel->setPalette( QToolTip::palette() );
   mStatusSummaryLabel->setFrameStyle( QFrame::Plain | QFrame::Box );
   mStatusSummaryLabel->setLineWidth( 1 );
   mStatusSummaryLabel->hide(); // Will be unhidden later if you are organizer
-  topLayout->addWidget( mStatusSummaryLabel );
+  barLayout->addWidget( mStatusSummaryLabel );
+  barLayout->addItem( new QSpacerItem( 50, 1, QSizePolicy::Expanding ) );
 
   // The control panel for the gantt widget
   QBoxLayout *controlLayout = new QHBoxLayout( topLayout );
@@ -666,44 +671,44 @@ bool KOEditorFreeBusy::tryDate( FreeBusyItem *attendee,
 
 void KOEditorFreeBusy::updateStatusSummary()
 {
-  FreeBusyItem *aItem =
-    static_cast<FreeBusyItem *>( mGanttView->firstChild() );
+  FreeBusyItem *aItem = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   int total = 0;
   int accepted = 0;
   int tentative = 0;
   int declined = 0;
   while( aItem ) {
-    ++total;
-    switch( aItem->attendee()->status() ) {
-    case Attendee::Accepted:
-      ++accepted;
-      break;
-    case Attendee::Tentative:
-      ++tentative;
-      break;
-    case Attendee::Declined:
-      ++declined;
-      break;
-    case Attendee::NeedsAction:
-    case Attendee::Delegated:
-    case Attendee::Completed:
-    case Attendee::InProcess:
-    case Attendee::None:
-      /* just to shut up the compiler */
-      break;
+    if ( mCurrentOrganizer != aItem->attendee()->fullName() ) { //skip the organizer
+      ++total;
+      switch( aItem->attendee()->status() ) {
+      case Attendee::Accepted:
+        ++accepted;
+        break;
+      case Attendee::Tentative:
+        ++tentative;
+        break;
+      case Attendee::Declined:
+        ++declined;
+        break;
+      case Attendee::NeedsAction:
+      case Attendee::Delegated:
+      case Attendee::Completed:
+      case Attendee::InProcess:
+      case Attendee::None:
+        /* just to shut up the compiler */
+        break;
+      }
     }
     aItem = static_cast<FreeBusyItem *>( aItem->nextSibling() );
   }
   if( total > 1 && mIsOrganizer ) {
-    mStatusSummaryLabel->show();
     mStatusSummaryLabel->setText(
-        i18n( "Of the %1 participants, %2 have accepted, %3"
-              " have tentatively accepted, and %4 have declined.")
-        .arg( total ).arg( accepted ).arg( tentative ).arg( declined ) );
+      i18n( "Of the %1 participants, %2 have accepted, "
+            "%3 have tentatively accepted, and %4 have declined." ).
+      arg( total ).arg( accepted ).arg( tentative ).arg( declined ) );
+    mStatusSummaryLabel->show();
   } else {
     mStatusSummaryLabel->hide();
   }
-  mStatusSummaryLabel->adjustSize();
 }
 
 void KOEditorFreeBusy::triggerReload()
