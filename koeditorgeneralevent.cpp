@@ -197,22 +197,37 @@ void KOEditorGeneralEvent::initInvitationBar(QWidget * parent, QBoxLayout * layo
 {
   QBoxLayout *topLayout = new QHBoxLayout( layout );
   mInvitationBar = new QFrame( parent );
-  mInvitationBar->setPaletteBackgroundColor( KGlobalSettings::alternateBackgroundColor() );
+  mInvitationBar->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( mInvitationBar );
 
   QBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
   barLayout->setSpacing( layout->spacing() );
   QLabel *label = new QLabel( i18n("You have not yet definitely responded to this invitation." ), mInvitationBar );
+  label->setPalette( QToolTip::palette() );
+  label->setFrameStyle( QFrame::Plain | QFrame::Box );
+  label->setLineWidth( 1 );
   barLayout->addWidget( label );
-  barLayout->addStretch( 1 );
   QPushButton *button = new QPushButton( i18n("Accept"), mInvitationBar );
+  button->setPalette( QToolTip::palette() );
+  QToolTip::add( button,
+                 i18n( "Set your attendance status to Accept" ) );
+  QWhatsThis::add( button,
+                   i18n( "Click this button if you want to set your attendance status "
+                         "for the invitation to Accept." ) );
   connect( button, SIGNAL(clicked()), SIGNAL(acceptInvitation()) );
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
   button = new QPushButton( i18n("Decline"), mInvitationBar );
+  button->setPalette( QToolTip::palette() );
+  QToolTip::add( button,
+                 i18n( "Set your attendance status to Decline" ) );
+  QWhatsThis::add( button,
+                   i18n( "Click this button if you want to set your attendance status "
+                         "for the invitation to Decline." ) );
   connect( button, SIGNAL(clicked()), SIGNAL(declineInvitation()) );
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
+  barLayout->addItem( new QSpacerItem( 50, 1, QSizePolicy::Expanding ) );
 
   mInvitationBar->hide();
 }
@@ -357,10 +372,12 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, const QD
   updateRecurrenceSummary( event );
 
   Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
-  if ( event->attendeeCount() > 1 &&
-       me && ( me->status() == Attendee::NeedsAction ||
-       me->status() == Attendee::Tentative ||
-       me->status() == Attendee::InProcess ) ) {
+  if ( //!KOPrefs::instance()->thatIsMe( event->organizer().email() ) &&
+       event->attendeeCount() > 1 &&
+       me &&
+       ( me->status() == Attendee::NeedsAction ||
+         me->status() == Attendee::Tentative ||
+         me->status() == Attendee::InProcess ) ) {
     mInvitationBar->show();
   } else {
     mInvitationBar->hide();
