@@ -223,24 +223,24 @@ KOListView::KOListView( CalendarSupport::Calendar *calendar,
   mActiveItem = 0;
   mIsNonInteractive = nonInteractive;
 
-  mListWidget = new QTreeWidget( this );
-  mListWidget->setColumnCount( 6 );
-  mListWidget->headerItem()->setText( 0, i18n( "Summary" ) );
-  mListWidget->headerItem()->setText( 1, i18n( "Reminder" ) );
-  mListWidget->headerItem()->setText( 2, i18n( "Recurs" ) );
-  mListWidget->headerItem()->setText( 3, i18n( "Start Date/Time" ) );
-  mListWidget->headerItem()->setText( 4, i18n( "End Date/Time" ) );
-  mListWidget->headerItem()->setText( 5, i18n( "Categories" ) );
+  mTreeWidget = new QTreeWidget( this );
+  mTreeWidget->setColumnCount( 6 );
+  mTreeWidget->headerItem()->setText( 0, i18n( "Summary" ) );
+  mTreeWidget->headerItem()->setText( 1, i18n( "Reminder" ) );
+  mTreeWidget->headerItem()->setText( 2, i18n( "Recurs" ) );
+  mTreeWidget->headerItem()->setText( 3, i18n( "Start Date/Time" ) );
+  mTreeWidget->headerItem()->setText( 4, i18n( "End Date/Time" ) );
+  mTreeWidget->headerItem()->setText( 5, i18n( "Categories" ) );
 
-  mListWidget->setContextMenuPolicy( Qt::CustomContextMenu );
+  mTreeWidget->setContextMenuPolicy( Qt::CustomContextMenu );
 
-  // mListWidget->setColumnAlignment( StartDateTime_Column, Qt::AlignHCenter );
+  // mTreeWidget->setColumnAlignment( StartDateTime_Column, Qt::AlignHCenter );
 
-  //mListWidget->setColumnAlignment( EndDateTime_Column, Qt::AlignHCenter );
+  //mTreeWidget->setColumnAlignment( EndDateTime_Column, Qt::AlignHCenter );
 
   QBoxLayout *layoutTop = new QVBoxLayout( this );
   layoutTop->setMargin( 0 );
-  layoutTop->addWidget( mListWidget );
+  layoutTop->addWidget( mTreeWidget );
 
   mPopupMenu = eventPopup();
   mPopupMenu->setCalendar( this->calendar() );
@@ -253,20 +253,20 @@ KOListView::KOListView( CalendarSupport::Calendar *calendar,
                       SLOT(hideDates()));
 
 */
-  QObject::connect( mListWidget, SIGNAL(doubleClicked(QModelIndex)),
+  QObject::connect( mTreeWidget, SIGNAL(doubleClicked(QModelIndex)),
                     SLOT(defaultItemAction(QModelIndex)) );
-  QObject::connect( mListWidget,
+  QObject::connect( mTreeWidget,
                     SIGNAL(customContextMenuRequested(QPoint)),
                     SLOT(popupMenu(QPoint)) );
-  QObject::connect( mListWidget, SIGNAL(itemSelectionChanged()),
+  QObject::connect( mTreeWidget, SIGNAL(itemSelectionChanged()),
                     SLOT(processSelectionChange()) );
   // TODO
-  //mListWidget->restoreLayout( KOGlobals::self()->config(), "KOListView Layout" );
+  //mTreeWidget->restoreLayout( KOGlobals::self()->config(), "KOListView Layout" );
 
 #ifdef __GNUC__
 #warning Port me!
 #endif
-//  new KOListViewToolTip( mListWidget->viewport(), mListWidget );
+//  new KOListViewToolTip( mTreeWidget->viewport(), mTreeWidget );
 
   mSelectedDates.append( QDate::currentDate() );
 }
@@ -289,8 +289,8 @@ int KOListView::currentDateCount() const
 Akonadi::Item::List KOListView::selectedIncidences()
 {
   Akonadi::Item::List eventList;
-  QTreeWidgetItem *item = mListWidget->selectedItems().isEmpty() ? 0 :
-                          mListWidget->selectedItems().first() ;
+  QTreeWidgetItem *item = mTreeWidget->selectedItems().isEmpty() ? 0 :
+                          mTreeWidget->selectedItems().first() ;
   if ( item ) {
     KOListViewItem *i = static_cast<KOListViewItem *>( item );
     eventList.append( mItems.value( i->data() ) );
@@ -311,15 +311,15 @@ void KOListView::showDates( bool show )
   static int oldColWidth3 = 0;
 
   if ( !show ) {
-    oldColWidth1 = mListWidget->columnWidth( 1 );
-    oldColWidth3 = mListWidget->columnWidth( 3 );
-    mListWidget->setColumnWidth( 1, 0 );
-    mListWidget->setColumnWidth( 3, 0 );
+    oldColWidth1 = mTreeWidget->columnWidth( 1 );
+    oldColWidth3 = mTreeWidget->columnWidth( 3 );
+    mTreeWidget->setColumnWidth( 1, 0 );
+    mTreeWidget->setColumnWidth( 3, 0 );
   } else {
-    mListWidget->setColumnWidth( 1, oldColWidth1 );
-    mListWidget->setColumnWidth( 3, oldColWidth3 );
+    mTreeWidget->setColumnWidth( 1, oldColWidth1 );
+    mTreeWidget->setColumnWidth( 3, oldColWidth3 );
   }
-  mListWidget->repaint();
+  mTreeWidget->repaint();
 }
 
 void KOListView::showDates()
@@ -388,7 +388,7 @@ void KOListView::addIncidence( const Akonadi::Item &aitem, const QDate &date )
       tinc->setReadOnly( true );
     }
   }
-  KOListViewItem *item = new KOListViewItem( aitem.id(), mListWidget, this );
+  KOListViewItem *item = new KOListViewItem( aitem.id(), mTreeWidget, this );
   ListItemVisitor v( item );
   if ( !tinc->accept( v, tinc ) ) {
     delete item;
@@ -460,7 +460,7 @@ void KOListView::changeIncidenceDisplay( const Akonadi::Item & aitem, int action
 KOListViewItem *KOListView::getItemForIncidence( const Akonadi::Item &aitem )
 {
   int index = 0;
-  while ( QTreeWidgetItem *it = mListWidget->topLevelItem( index ) ) {
+  while ( QTreeWidgetItem *it = mTreeWidget->topLevelItem( index ) ) {
     KOListViewItem *item = static_cast<KOListViewItem *>( it );
     if ( item->data() == aitem.id() ) {
       return item;
@@ -480,8 +480,8 @@ void KOListView::defaultItemAction( const QModelIndex &index )
 {
   if ( !mIsNonInteractive ) {
     // Get the first column, it has our Akonadi::Id
-    const QModelIndex col0Idx = mListWidget->model()->index( index.row(), 0 );
-    Akonadi::Item::Id id = mListWidget->model()->data( col0Idx, Qt::UserRole ).toLongLong();
+    const QModelIndex col0Idx = mTreeWidget->model()->index( index.row(), 0 );
+    Akonadi::Item::Id id = mTreeWidget->model()->data( col0Idx, Qt::UserRole ).toLongLong();
     defaultAction( mItems.value( id ) );
   }
 }
@@ -495,7 +495,7 @@ void KOListView::defaultItemAction( const Akonadi::Item::Id id )
 
 void KOListView::popupMenu( const QPoint &point )
 {
-  mActiveItem = static_cast<KOListViewItem *>( mListWidget->itemAt( point ) );
+  mActiveItem = static_cast<KOListViewItem *>( mTreeWidget->itemAt( point ) );
   kDebug() << "DEBUG mActiveItem " << mActiveItem << mIsNonInteractive;
 
   if ( mActiveItem && !mIsNonInteractive ) {
@@ -512,24 +512,24 @@ void KOListView::readSettings( KConfig *config )
 {
   Q_UNUSED( config );
   // TODO
-  // mListWidget->restoreLayout( config, "KOListView Layout" );
+  // mTreeWidget->restoreLayout( config, "KOListView Layout" );
 }
 
 void KOListView::writeSettings( KConfig *config )
 {
   Q_UNUSED( config );
   // TODO
-  // mListWidget->saveLayout( config, "KOListView Layout" );
+  // mTreeWidget->saveLayout( config, "KOListView Layout" );
 }
 
 void KOListView::processSelectionChange()
 {
   if ( !mIsNonInteractive ) {
     KOListViewItem *item;
-    if ( mListWidget->selectedItems().isEmpty() ) {
+    if ( mTreeWidget->selectedItems().isEmpty() ) {
       item = 0;
     } else {
-      item = static_cast<KOListViewItem *>( mListWidget->selectedItems().first() );
+      item = static_cast<KOListViewItem *>( mTreeWidget->selectedItems().first() );
     }
 
     if ( !item ) {
@@ -542,13 +542,13 @@ void KOListView::processSelectionChange()
 
 void KOListView::clearSelection()
 {
-  mListWidget->clearSelection();
+  mTreeWidget->clearSelection();
 }
 
 void KOListView::clear()
 {
   mSelectedDates.clear();
-  mListWidget->clear();
+  mTreeWidget->clear();
   mDateList.clear();
   mItems.clear();
 }

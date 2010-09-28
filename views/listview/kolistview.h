@@ -126,7 +126,7 @@ class KOListView : public KOEventView
 
   private:
     class ListItemVisitor;
-    QTreeWidget *mListWidget;
+    QTreeWidget *mTreeWidget;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     QHash<Akonadi::Item::Id,Akonadi::Item> mItems;
