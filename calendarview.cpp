@@ -55,6 +55,7 @@
 #include <incidenceeditor-ng/categoryconfig.h>
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedefaults.h>
+#include <incidenceeditor-ng/incidencedialogfactory.h>
 
 #include <calendarviews/eventviews/eventview.h>
 #include <calendarsupport/utils.h>
@@ -104,6 +105,7 @@
 
 using namespace KHolidays;
 using namespace KCalUtils;
+using namespace IncidenceEditorNG;
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
@@ -1188,24 +1190,12 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             bool inlineAttachment )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    // if attach or attendee list is empty, these methods don't do anything, so
-    // it's safe to call them in every case
-    defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
-    defaults.setAttendees( attendees );
+    Akonadi::Collection defaultCol = defaultCollection( Todo::todoMimeType() );
 
-    Todo::Ptr todo( new Todo );
-    defaults.setDefaults( todo );
-
-    todo->setSummary( summary );
-    todo->setDescription( description );
-
-    Akonadi::Item item;
-    item.setPayload( todo );
-
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    dialog->selectCollection( defaultCollection( KCalCore::Todo::todoMimeType()) );
-    dialog->load( item );
+    IncidenceDialogFactory::createTodoEditor( summary, description, attachments,
+                                              attendees, attachmentMimetypes,
+                                              inlineAttachment, defaultCol,
+                                              this /* parent */ );
   }
 }
 
