@@ -28,6 +28,8 @@
 #include <KCmdLineArgs>
 #include <KUniqueApplication>
 
+#include <stdlib.h>
+
 class ReminderDaemonApp : public KUniqueApplication
 {
   public:

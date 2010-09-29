@@ -38,6 +38,7 @@
 #include <QBoxLayout>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPaintEvent>
 
 using namespace KCalCore;
 

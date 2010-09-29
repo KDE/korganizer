@@ -1818,7 +1818,7 @@ void ActionManager::openEventEditor( const QString &summary,
     case KOPrefs::InlineBody:
     {
       QFile f( file );
-      if ( !f.open( IO_ReadOnly ) ) {
+      if ( !f.open( QFile::ReadOnly ) ) {
         return;
       }
       KMime::Message *msg = new KMime::Message();

@@ -215,12 +215,12 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
 
   QFont oldFont( p.font() );
   p.setFont( captionFont );
-  p.drawText( box, Qt::AlignLeft|Qt::AlignTop|Qt::SingleLine, caption );
+  p.drawText( box, Qt::AlignLeft|Qt::AlignTop|Qt::TextSingleLine, caption );
 
   if ( !text.isEmpty() ) {
     textRect.setLeft( textRect.left() + textWd );
     p.setFont( textFont );
-    p.drawText( textRect, Qt::AlignLeft|Qt::AlignTop|Qt::SingleLine, text );
+    p.drawText( textRect, Qt::AlignLeft|Qt::AlignTop|Qt::TextSingleLine, text );
   }
   p.setFont( oldFont );
   return textRect.bottom();
@@ -872,7 +872,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
                        BOX_BORDER_WIDTH,
                        QRect( 0, headerBox.bottom() + padding(), TIMELINE_WIDTH, allDayHeight ),
                        i18n( "Today's Events" ),
-                       Qt::AlignHCenter | Qt::AlignVCenter | Qt::WordBreak );
+                       Qt::AlignHCenter | Qt::AlignVCenter | Qt::TextWordWrap );
       p.setFont( oldFont );
 
       // now draw at most maxAllDayEvents in the all-day box

@@ -402,7 +402,7 @@ void CalPrintPluginBase::printEventString( QPainter &p, const QRect &box,
   QRect newbox( box );
   newbox.adjust( 3, 1, -1, -1 );
   p.drawText( newbox, ( flags == -1 ) ?
-              ( Qt::AlignTop | Qt::AlignJustify | Qt::BreakAnywhere ) : flags, str );
+              ( Qt::AlignTop | Qt::AlignJustify | Qt::TextWrapAnywhere ) : flags, str );
 }
 
 void CalPrintPluginBase::showEventBox( QPainter &p, int linewidth, const QRect &box,
@@ -442,7 +442,7 @@ void CalPrintPluginBase::drawVerticalBox( QPainter &p, int linewidth, const QRec
   p.rotate( -90 );
   QRect rotatedBox( -box.top() - box.height(), box.left(), box.height(), box.width() );
   showEventBox( p, linewidth, rotatedBox, Incidence::Ptr(), str,
-                ( flags == -1 ) ? Qt::AlignLeft | Qt::AlignVCenter | Qt::SingleLine : flags );
+                ( flags == -1 ) ? Qt::AlignLeft | Qt::AlignVCenter | Qt::TextSingleLine : flags );
 
   p.restore();
 }
@@ -471,7 +471,7 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
   QRect captionBox( box.left() + padding(), box.top() + padding(), 0, 0 );
   p.setFont( captionFont );
   captionBox = p.boundingRect( captionBox,
-                               Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine,
+                               Qt::AlignLeft | Qt::AlignTop | Qt::TextSingleLine,
                                caption );
   p.setFont( oldFont );
   if ( captionBox.right() > box.right() ) {
@@ -493,14 +493,14 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
   }
   drawBox( p, BOX_BORDER_WIDTH, box );
   p.setFont( captionFont );
-  p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine,
+  p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::TextSingleLine,
               caption );
 
   if ( !contents.isEmpty() ) {
     if ( sameLine ) {
       QString contentText = toPlainText( contents );
       p.setFont( textFont );
-      p.drawText( textBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine,
+      p.drawText( textBox, Qt::AlignLeft | Qt::AlignTop | Qt::TextSingleLine,
                   contents );
     } else {
       QTextDocument rtb;
@@ -552,7 +552,7 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
   if ( expand ) {
     p.setFont( newFont );
     QRect boundingR =
-      p.boundingRect( textRect, Qt::AlignLeft | Qt::AlignVCenter | Qt::WordBreak, title );
+      p.boundingRect( textRect, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextWordWrap, title );
     p.setFont( oldFont );
     int h = boundingR.height();
     if ( h > allbox.height() ) {
@@ -585,7 +585,7 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
   // Set the margins
   p.setFont( newFont );
   textRect.adjust( 5, 0, 0, 0 );
-  p.drawText( textRect, Qt::AlignLeft | Qt::AlignVCenter | Qt::WordBreak, title );
+  p.drawText( textRect, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextWordWrap, title );
   p.setFont( oldFont );
 #endif
   // prev month left, current month centered, next month right
@@ -603,7 +603,7 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
 
   // Set the margins
   p.setFont( newFont );
-  p.drawText( textRect, Qt::AlignCenter | Qt::AlignVCenter | Qt::WordBreak, title );
+  p.drawText( textRect, Qt::AlignCenter | Qt::AlignVCenter | Qt::TextWordWrap, title );
   p.setFont( oldFont );
 
   return textRect.bottom();
@@ -616,7 +616,7 @@ int CalPrintPluginBase::drawFooter( QPainter &p, const QRect &footbox )
   QFontMetrics fm( p.font() );
   QString dateStr =
     KGlobal::locale()->formatDateTime( QDateTime::currentDateTime(), KLocale::LongDate );
-  p.drawText( footbox, Qt::AlignCenter | Qt::AlignVCenter | Qt::SingleLine,
+  p.drawText( footbox, Qt::AlignCenter | Qt::AlignVCenter | Qt::TextSingleLine,
               i18nc( "print date: formatted-datetime", "printed: %1", dateStr ) );
   p.setFont( oldfont );
 
@@ -1468,7 +1468,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
     QRect dateBox( dayBox );
     dateBox.setWidth( dayNrWidth + 3 );
     p.drawText( dateBox,
-                Qt::AlignRight | Qt::AlignVCenter | Qt::SingleLine,
+                Qt::AlignRight | Qt::AlignVCenter | Qt::TextSingleLine,
                 QString::number( d + 1 ) );
   }
   p.setBrush( oldbrush );
@@ -1614,7 +1614,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
     QRect dayBox( xstartcont, daysBox.top() + qRound( dayheight * d ), 0, 0 );
     dayBox.setRight( box.right() );
     dayBox.setBottom( daysBox.top() + qRound( dayheight * ( d + 1 ) ) );
-    printEventString( p, dayBox, txt, Qt::AlignTop | Qt::AlignLeft | Qt::BreakAnywhere );
+    printEventString( p, dayBox, txt, Qt::AlignTop | Qt::AlignLeft | Qt::TextWrapAnywhere );
   }
   p.setFont( oldfont );
   drawBox( p, BOX_BORDER_WIDTH, borderBox );
@@ -1830,7 +1830,7 @@ void CalPrintPluginBase::drawTodo( int &count, const Akonadi::Item &todoItem, QP
   // summary
   outStr = todo->summary();
   rect = p.boundingRect( lhs, rect.top(), ( rhs - ( left + rect.width() + 5 ) ),
-                         -1, Qt::WordBreak, outStr );
+                         -1, Qt::TextWordWrap, outStr );
 
   QRect newrect;
   QFont newFont( p.font() );
@@ -1839,7 +1839,7 @@ void CalPrintPluginBase::drawTodo( int &count, const Akonadi::Item &todoItem, QP
     newFont.setStrikeOut( true );
     p.setFont( newFont );
   }
-  p.drawText( rect, Qt::WordBreak, outStr, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, outStr, &newrect );
   p.setFont( oldFont );
   // due date
   if ( todo->hasDueDate() && posDueDt >= 0 ) {
@@ -2002,15 +2002,15 @@ void CalPrintPluginBase::drawJournal( const Journal::Ptr &journal, QPainter &p, 
     headerText = i18nc( "Description - date", "%1 - %2", journal->summary(), dateText );
   }
 
-  QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText ) );
+  QRect rect( p.boundingRect( x, y, width, -1, Qt::TextWordWrap, headerText ) );
   if ( rect.bottom() > pageHeight ) {
     // Start new page...
     y = 0;
     mPrinter->newPage();
-    rect = p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText );
+    rect = p.boundingRect( x, y, width, -1, Qt::TextWordWrap, headerText );
   }
   QRect newrect;
-  p.drawText( rect, Qt::WordBreak, headerText, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, headerText, &newrect );
   p.setFont( oldFont );
 
   y = newrect.bottom() + 4;

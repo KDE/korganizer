@@ -24,9 +24,7 @@ endif(KORG_NODND)
 # enable exception handling
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
 
-if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( tests )
-endif (QT_QT3SUPPORT_FOUND)
 
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
@@ -43,16 +41,12 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${Boost_INCLUDE_DIRS}
                     ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
-add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
-
 add_subdirectory( interfaces )
 add_subdirectory( korgac )
 add_subdirectory( pixmaps )
 add_subdirectory( sounds )
-if (QT_QT3SUPPORT_FOUND)
 add_subdirectory( plugins )
 add_subdirectory( kcmconfigs )
-endif (QT_QT3SUPPORT_FOUND)
 
 set( PERL ${PERL_EXECUTABLE} )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
@@ -60,7 +54,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINAR
 
 ########### next target ###############
 
-if (QT_QT3SUPPORT_FOUND)
 set(korganizer_SRCS
   main.cpp
   korganizer.cpp
@@ -73,7 +66,6 @@ kde4_add_executable(korganizer ${korganizer_SRCS})
 
 target_link_libraries(korganizer
     ${KDE4_KDEUI_LIBS}
-    ${KDE4_KDE3SUPPORT_LIBRARY}
     ${KDE4_KPARTS_LIBRARY}
     ${KDEPIMLIBS_KHOLIDAYS_LIBS}
     ${KDEPIMLIBS_KONTACTINTERFACE_LIBS}
@@ -118,7 +110,6 @@ kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizer_interfaces calendarsupport korganizer_core korganizerprivate ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
 
 install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
-endif (QT_QT3SUPPORT_FOUND)
 
 ########### next target ###############
 
@@ -146,7 +137,6 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### next target ###############
 
-if (QT_QT3SUPPORT_FOUND)
 set(korganizerprivate_LIB_SRCS
   kocollectionpropertiesdialog.cpp
   collectiongeneralpage.cpp
@@ -223,7 +213,7 @@ qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganize
 kde4_add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
 
 target_link_libraries(korganizerprivate
-  ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KCMUTILS_LIBS} ${KDE4_KPRINTUTILS_LIBS}  ${KDE4_KDE3SUPPORT_LIBS} ${ZLIB_LIBRARY}
+  ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KCMUTILS_LIBS} ${KDE4_KPRINTUTILS_LIBS} ${ZLIB_LIBRARY}
   ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS}
   ${KDEPIMLIBS_KHOLIDAYS_LIBS}
   ${KDEPIMLIBS_AKONADI_LIBS}
@@ -245,7 +235,6 @@ target_link_libraries(korganizerprivate
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
 install(TARGETS korganizerprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
-endif (QT_QT3SUPPORT_FOUND)
 
 ########### install files ###############
 
