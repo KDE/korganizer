@@ -196,8 +196,6 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
            SLOT(edit()) );
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
-  connect( mCalendar, SIGNAL(),
-           SLOT() );
 
   mDetailView = new CalendarSupport::IncidenceViewer( topBox );
   QString s;
