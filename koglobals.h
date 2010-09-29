@@ -32,9 +32,6 @@
 class KCalendarSystem;
 class KConfig;
 class QPixmap;
-namespace KPIM {
-  class ReminderClient;
-}
 namespace KHolidays {
   class HolidayRegion;
 }
@@ -50,8 +47,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
     static bool reverseLayout();
 
     const KCalendarSystem *calendarSystem() const;
-
-    KPIM::ReminderClient *reminderClient() const;
 
     ~KOGlobals();
 
@@ -87,9 +82,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
   private:
     KComponentData mOwnInstance;
-
-    KPIM::ReminderClient *mReminderClient;
-
     KHolidays::HolidayRegion *mHolidays;
 };
 

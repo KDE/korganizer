@@ -84,7 +84,7 @@ int KOrganizerApp::newInstance()
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
-  KOGlobals::self()->reminderClient()->startDaemon();
+  KPIM::ReminderClient::startDaemon();
 
   // No filenames given => all other args are meaningless, show main Window
   if ( args->count() <= 0 ) {

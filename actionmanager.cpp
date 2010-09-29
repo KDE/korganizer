@@ -1379,9 +1379,9 @@ void ActionManager::updateConfig()
 
   /* Hide/Show the Reminder Daemon */
   if ( !KOPrefs::instance()->mShowReminderDaemon ) {
-    KOGlobals::self()->reminderClient()->hideDaemon();
+    KPIM::ReminderClient::hideDaemon();
   } else {
-    KOGlobals::self()->reminderClient()->showDaemon();
+    KPIM::ReminderClient::showDaemon();
   }
 
 // Commented out because it crashes KOrganizer.

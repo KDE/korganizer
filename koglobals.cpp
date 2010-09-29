@@ -62,8 +62,6 @@ KOGlobals::KOGlobals()
   : mOwnInstance( "korganizer" ), mHolidays( 0 )
 {
   KIconLoader::global()->addAppDir( "kdepim" );
-
-  mReminderClient = new KPIM::ReminderClient;
 }
 
 KConfig *KOGlobals::config() const
@@ -74,18 +72,12 @@ KConfig *KOGlobals::config() const
 
 KOGlobals::~KOGlobals()
 {
-  delete mReminderClient;
   delete mHolidays;
 }
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
 {
   return KGlobal::locale()->calendar();
-}
-
-KPIM::ReminderClient *KOGlobals::reminderClient() const
-{
-  return mReminderClient;
 }
 
 bool KOGlobals::reverseLayout()
