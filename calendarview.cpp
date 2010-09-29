@@ -105,22 +105,6 @@
 using namespace KHolidays;
 using namespace KCalUtils;
 
-IncidenceEditorNG::IncidenceDefaults minimalIncidenceDefaults()
-{
-  IncidenceEditorNG::IncidenceDefaults defaults;
-  // Set the full emails manually here, to avoid that we get dependencies on
-  // KCalPrefs all over the place.
-  defaults.setFullEmails( CalendarSupport::KCalPrefs::instance()->fullEmails() );
-  // NOTE: At some point this should be generalized. That is, we now use the
-  //       freebusy url as a hack, but this assumes that the user has only one
-  //       groupware account. Which doesn't have to be the case necessarily.
-  //       This method should somehow depend on the calendar selected to which
-  //       the incidence is added.
-  if ( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() )
-    defaults.setGroupWareDomain( KUrl( CalendarSupport::KCalPrefs::instance()->freeBusyRetrieveUrl() ).host() );
-  return defaults;
-}
-
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
@@ -1152,7 +1136,7 @@ void CalendarView::newEvent( const QDateTime &startDtParam, const QDateTime &end
     // and let the view adjust the type.
     dateTimesForNewEvent( startDt, endDt, allDay );
 
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
     defaults.setStartDateTime( KDateTime( startDt ) );
     defaults.setEndDateTime( KDateTime( endDt ) );
 
@@ -1180,7 +1164,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
     bool allDay = false;
     dateTimesForNewEvent( startDt, endDt, allDay );
 
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
     defaults.setStartDateTime( KDateTime( startDt ) );
     defaults.setEndDateTime( KDateTime( endDt ) );
     // if attach or attendee list is empty, these methods don't do anything, so
@@ -1204,7 +1188,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             bool inlineAttachment )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
     defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
@@ -1233,7 +1217,7 @@ void CalendarView::newTodo()
 void CalendarView::newTodo( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
     bool allDay = true;
     if ( mViewManager->currentView()->isEventView() ) {
@@ -1267,7 +1251,7 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
 void CalendarView::newTodo( const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
     defaults.setEndDateTime( KDateTime( date, QTime::currentTime() ) );
 
     Todo::Ptr todo( new Todo );
@@ -1299,7 +1283,7 @@ void CalendarView::newJournal( const QDate &date )
 void CalendarView::newJournal( const Akonadi::Collection &collection )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
     Journal::Ptr journal( new Journal );
     defaults.setDefaults( journal );
@@ -1322,7 +1306,7 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
     Journal::Ptr journal( new Journal );
     defaults.setDefaults( journal );
@@ -1368,7 +1352,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
       return;
     }
 
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
     defaults.setRelatedIncidence( CalendarSupport::incidence( selectedTodo() ) );
 
     Todo::Ptr todo( new Todo );
@@ -1392,7 +1376,7 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 void CalendarView::newSubTodo( const Akonadi::Item &parentEvent )
 {
   if ( mCreatingEnabled ) {
-    IncidenceEditorNG::IncidenceDefaults defaults = minimalIncidenceDefaults();
+    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
     defaults.setRelatedIncidence( CalendarSupport::incidence( parentEvent ) );
 
     Todo::Ptr todo( new Todo );
