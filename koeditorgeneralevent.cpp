@@ -372,7 +372,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, const QD
   updateRecurrenceSummary( event );
 
   Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
-  if ( //!KOPrefs::instance()->thatIsMe( event->organizer().email() ) &&
+  if ( !KOPrefs::instance()->thatIsMe( event->organizer().email() ) &&
        event->attendeeCount() > 1 &&
        me &&
        ( me->status() == Attendee::NeedsAction ||
