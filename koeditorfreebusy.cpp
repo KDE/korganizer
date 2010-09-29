@@ -375,6 +375,19 @@ KOEditorFreeBusy::~KOEditorFreeBusy()
 {
 }
 
+int KOEditorFreeBusy::participantCount()
+{
+  FreeBusyItem *aItem = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
+  int total = 0;
+  while( aItem ) {
+    if ( mCurrentOrganizer != aItem->attendee()->fullName() ) { //skip the organizer
+      ++total;
+    }
+    aItem = static_cast<FreeBusyItem *>( aItem->nextSibling() );
+  }
+  return total;
+}
+
 void KOEditorFreeBusy::removeAttendee( Attendee *attendee )
 {
   FreeBusyItem *anItem =
@@ -401,7 +414,7 @@ void KOEditorFreeBusy::insertAttendee( Attendee *attendee, bool readFBList )
     mGanttView->setSelected( item, true );
   }
   updateStatusSummary();
-  emit updateAttendeeSummary( mGanttView->childCount() );
+  emit updateAttendeeSummary( participantCount() );
 }
 
 void KOEditorFreeBusy::clearAttendees()
@@ -434,7 +447,7 @@ void KOEditorFreeBusy::readEvent( Event *event )
   KOAttendeeEditor::readEvent( event );
 
   setUpdateEnabled( block );
-  emit updateAttendeeSummary( mGanttView->childCount() );
+  emit updateAttendeeSummary( participantCount() );
 }
 
 void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end )
@@ -849,7 +862,7 @@ void KOEditorFreeBusy::removeAttendee()
   if( nextSelectedItem )
       mGanttView->setSelected( nextSelectedItem, true );
   updateAttendeeInput();
-  emit updateAttendeeSummary( mGanttView->childCount() );
+  emit updateAttendeeSummary( participantCount() );
 }
 
 void KOEditorFreeBusy::clearSelection() const

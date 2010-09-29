@@ -113,6 +113,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
                   QDateTime &tryFrom, QDateTime &tryTo );
     void updateStatusSummary();
     void reload();
+    int participantCount();
     KDGanttView *mGanttView;
     KDIntervalColorRectangle* mEventRectangle;
     QLabel *mStatusSummaryLabel;
