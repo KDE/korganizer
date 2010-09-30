@@ -181,7 +181,7 @@ struct KOTodoModel::TodoTreeNode : QObject
 };
 
 KOTodoModel::KOTodoModel( QObject *parent )
-  : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 ), mCalendar( 0 ),
+  : QAbstractItemModel( parent ), mColumnCount( ColumnCount ), mCalendar( 0 ),
     mChanger( 0 )
 {
   mRootNode = new TodoTreeNode( Akonadi::Item(), 0, this );
@@ -677,6 +677,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     }
     case DescriptionColumn:
       return QVariant( todo->description() );
+    case CalendarColumn:
+      return QVariant( CalendarSupport::displayName( node->mTodo.parentCollection() ) );
     }
     return QVariant();
   }
@@ -792,6 +794,8 @@ QVariant KOTodoModel::headerData( int column,
       return QVariant( i18n( "Categories" ) );
     case DescriptionColumn:
       return QVariant( i18n( "Description" ) );
+    case CalendarColumn:
+      return QVariant( i18n( "Calendar" ) );
     }
   }
 

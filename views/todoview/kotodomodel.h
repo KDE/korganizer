@@ -51,12 +51,14 @@ class KOTodoModel : public QAbstractItemModel
     /** This enum defines all columns this model provides */
     enum {
       SummaryColumn = 0,
-      RecurColumn = 1,
-      PriorityColumn = 2,
-      PercentColumn = 3,
-      DueDateColumn = 4,
-      CategoriesColumn = 5,
-      DescriptionColumn = 6
+      RecurColumn,
+      PriorityColumn,
+      PercentColumn,
+      DueDateColumn,
+      CategoriesColumn,
+      DescriptionColumn,
+      CalendarColumn,
+      ColumnCount // Just for iteration/column count purposes. Always keep at the end of enum.
     };
 
     /** This enum defines the user defined roles of the items in this model */
