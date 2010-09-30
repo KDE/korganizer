@@ -29,18 +29,18 @@ kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 kde4_add_executable(korgac ${korgac_SRCS})
 
 target_link_libraries(korgac
-        calendarsupport
-	${KDE4_KDEUI_LIBS} 
-	${KDE4_PHONON_LIBS} 
-	${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
-	${KDEPIMLIBS_AKONADI_LIBS}
-	${KDEPIMLIBS_MAILTRANSPORT_LIBS}
-	korganizer_core
-	${KDEPIMLIBS_KCALCORE_LIBS} 
-	${KDEPIMLIBS_KCALUTILS_LIBS} 
+  calendarsupport
+  ${KDE4_KDEUI_LIBS} 
+  ${KDE4_PHONON_LIBS} 
+  ${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
+  ${KDEPIMLIBS_AKONADI_LIBS}
+  ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
+  korganizer_core
+  ${KDEPIMLIBS_KCALCORE_LIBS} 
+  ${KDEPIMLIBS_KCALUTILS_LIBS} 
   kdepim
   kdepimdbusinterfaces
-	)
+)
 
 # TODO: move this to FindQt4.cmake
 find_library( QT_QMAEMO5_LIBRARY QtMaemo5 HINTS ${QT_LIBRARY_DIR} )

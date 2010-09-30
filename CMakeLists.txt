@@ -42,29 +42,31 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
 add_subdirectory( interfaces )
+if (KDEPIM_BUILD_DESKTOP)
+  add_subdirectory( pixmaps )
+  add_subdirectory( sounds )
+  add_subdirectory( plugins )
+  add_subdirectory( kcmconfigs )
+endif (KDEPIM_BUILD_DESKTOP)
 add_subdirectory( korgac )
-add_subdirectory( pixmaps )
-add_subdirectory( sounds )
-add_subdirectory( plugins )
-add_subdirectory( kcmconfigs )
 
 set( PERL ${PERL_EXECUTABLE} )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
 
 
 ########### next target ###############
+if (KDEPIM_BUILD_DESKTOP)
+  set(korganizer_SRCS
+    main.cpp
+    korganizer.cpp
+    koapp.cpp
+  )
 
-set(korganizer_SRCS
-  main.cpp
-  korganizer.cpp
-  koapp.cpp
-)
+  kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-korganizer.png")
 
-kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-korganizer.png")
+  kde4_add_executable(korganizer ${korganizer_SRCS})
 
-kde4_add_executable(korganizer ${korganizer_SRCS})
-
-target_link_libraries(korganizer
+  target_link_libraries(korganizer
     ${KDE4_KDEUI_LIBS}
     ${KDE4_KPARTS_LIBRARY}
     ${KDEPIMLIBS_KHOLIDAYS_LIBS}
@@ -78,39 +80,40 @@ target_link_libraries(korganizer
     korganizer_interfaces
     korganizer_core
     calendarsupport
-)
+  )
 
-install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-
-########### next target ###############
-
-set(kcm_korganizer_PART_SRCS
-    kcmdesignerfields.cpp
-    koprefsdialog.cpp
-   )
-
-kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS} )
-
-target_link_libraries(kcm_korganizer
-  ${QT_QTUITOOLS_LIBRARY}
-  ${KDE4_KDEUI_LIBS}
-  ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}
-  mailtransport korganizerprivate korganizer_core kdepim incidenceeditorsng calendarsupport ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} eventviews )
-
-install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
+  install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
 
-set(korganizerpart_PART_SRCS korganizer_part.cpp )
+  set(kcm_korganizer_PART_SRCS
+      kcmdesignerfields.cpp
+      koprefsdialog.cpp
+     )
 
-kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
+  kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS} )
 
-target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizer_interfaces calendarsupport korganizer_core korganizerprivate ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
+  target_link_libraries(kcm_korganizer
+    ${QT_QTUITOOLS_LIBRARY}
+    ${KDE4_KDEUI_LIBS}
+    ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}
+    mailtransport korganizerprivate korganizer_core kdepim incidenceeditorsng calendarsupport ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} eventviews )
 
-install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
+  install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
+
+########### next target ###############
+
+  set(korganizerpart_PART_SRCS korganizer_part.cpp )
+
+  kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
+
+  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizer_interfaces calendarsupport korganizer_core korganizerprivate ${KDEPIMLIBS_KCALCORE_LIBS} ${KDEPIMLIBS_KCALUTILS_LIBS} )
+
+  install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
+
+endif (KDEPIM_BUILD_DESKTOP)
 ########### next target ###############
 
 set(korganizer_core_LIB_SRCS
@@ -136,118 +139,121 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
+if (KDEPIM_BUILD_DESKTOP)
 
-set(korganizerprivate_LIB_SRCS
-  kocollectionpropertiesdialog.cpp
-  collectiongeneralpage.cpp
-  koeventviewerdialog.cpp
-  datenavigator.cpp
-  kdatenavigator.cpp
-  datenavigatorcontainer.cpp
-  datechecker.cpp
-  views/agendaview/koagendaview.cpp
-  views/listview/kolistview.cpp
-  views/journalview/kojournalview.cpp
-  views/journalview/journalview.cpp
-  views/monthview/monthview.cpp
-  views/multiagendaview/multiagendaview.cpp
-  views/todoview/kotodomodel.cpp
-  views/todoview/kotododelegates.cpp
-  views/todoview/kotodoviewsortfilterproxymodel.cpp
-  views/todoview/kotodoviewview.cpp
-  views/todoview/kotodoview.cpp
-  views/todoview/kotodoviewquicksearch.cpp
-  views/todoview/kotodoviewquickaddline.cpp
-  views/timelineview/kotimelineview.cpp
-  views/timelineview/timelineitem.cpp
-  views/timespentview/kotimespentview.cpp
-  views/whatsnextview/kowhatsnextview.cpp
-  searchdialog.cpp
-  calendarview.cpp
-  koviewmanager.cpp
-  kodialogmanager.cpp
-  archivedialog.cpp
-  kowindowlist.cpp
-  koeventpopupmenu.cpp
-  publishdialog.cpp
-  koeventview.cpp
-  filtereditdialog.cpp
-  kodaymatrix.cpp
-  docprefs.cpp
-  statusdialog.cpp
-  koglobals.cpp
-  actionmanager.cpp
-  navigatorbar.cpp
-  history.cpp
-  aboutdata.cpp
-  importdialog.cpp
-  korganizerifaceimpl.cpp
-  eventarchiver.cpp
-  exportwebdialog.cpp
-  kocorehelper.cpp
-  kohelper.cpp
-  akonadicollectionview.cpp
-  htmlexportjob.cpp
-  printing/calprinter.cpp
-  printing/calprintpluginbase.cpp
-  printing/calprintdefaultplugins.cpp
-  previewdialog.cpp
-)
+  set(korganizerprivate_LIB_SRCS
+    kocollectionpropertiesdialog.cpp
+    collectiongeneralpage.cpp
+    koeventviewerdialog.cpp
+    datenavigator.cpp
+    kdatenavigator.cpp
+    datenavigatorcontainer.cpp
+    datechecker.cpp
+    views/agendaview/koagendaview.cpp
+    views/listview/kolistview.cpp
+    views/journalview/kojournalview.cpp
+    views/journalview/journalview.cpp
+    views/monthview/monthview.cpp
+    views/multiagendaview/multiagendaview.cpp
+    views/todoview/kotodomodel.cpp
+    views/todoview/kotododelegates.cpp
+    views/todoview/kotodoviewsortfilterproxymodel.cpp
+    views/todoview/kotodoviewview.cpp
+    views/todoview/kotodoview.cpp
+    views/todoview/kotodoviewquicksearch.cpp
+    views/todoview/kotodoviewquickaddline.cpp
+    views/timelineview/kotimelineview.cpp
+    views/timelineview/timelineitem.cpp
+    views/timespentview/kotimespentview.cpp
+    views/whatsnextview/kowhatsnextview.cpp
+    searchdialog.cpp
+    calendarview.cpp
+    koviewmanager.cpp
+    kodialogmanager.cpp
+    archivedialog.cpp
+    kowindowlist.cpp
+    koeventpopupmenu.cpp
+    publishdialog.cpp
+    koeventview.cpp
+    filtereditdialog.cpp
+    kodaymatrix.cpp
+    docprefs.cpp
+    statusdialog.cpp
+    koglobals.cpp
+    actionmanager.cpp
+    navigatorbar.cpp
+    history.cpp
+    aboutdata.cpp
+    importdialog.cpp
+    korganizerifaceimpl.cpp
+    eventarchiver.cpp
+    exportwebdialog.cpp
+    kocorehelper.cpp
+    kohelper.cpp
+    akonadicollectionview.cpp
+    htmlexportjob.cpp
+    printing/calprinter.cpp
+    printing/calprintpluginbase.cpp
+    printing/calprintdefaultplugins.cpp
+    previewdialog.cpp
+  )
 
-kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc )
+  kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc )
 
-kde4_add_ui_files(korganizerprivate_LIB_SRCS
-  accountscalendarwidget.ui
-  filteredit_base.ui publishdialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
-  printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui
-  multiagendaviewconfigwidget.ui
-)
+  kde4_add_ui_files(korganizerprivate_LIB_SRCS
+    accountscalendarwidget.ui
+    filteredit_base.ui publishdialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
+    printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui
+    multiagendaviewconfigwidget.ui
+  )
 
-qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
-qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
-qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager calendaradaptor KOrgCalendarAdaptor )
-qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml )
-qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
-qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
+  qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
+  qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
+  qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager calendaradaptor KOrgCalendarAdaptor )
+  qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml )
+  qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
+  qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
 
-kde4_add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
+  kde4_add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
 
-target_link_libraries(korganizerprivate
-  ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KCMUTILS_LIBS} ${KDE4_KPRINTUTILS_LIBS} ${ZLIB_LIBRARY}
-  ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS}
-  ${KDEPIMLIBS_KHOLIDAYS_LIBS}
-  ${KDEPIMLIBS_AKONADI_LIBS}
-  ${KDEPIMLIBS_AKONADI_CALENDAR_LIBS}
-  ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
-  ${KDEPIMLIBS_KCALCORE_LIBS}
-  ${KDEPIMLIBS_KCALUTILS_LIBS}
-  akonadi_next
-  kdepim
-  korganizer_interfaces
-  kdepimdbusinterfaces
-  korganizer_core
-  calendarsupport
-  eventviews
-  incidenceeditorsng
-  kdgantt2
-)
+  target_link_libraries(korganizerprivate
+    ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KCMUTILS_LIBS} ${KDE4_KPRINTUTILS_LIBS} ${ZLIB_LIBRARY}
+    ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_KMIME_LIBS}
+    ${KDEPIMLIBS_KHOLIDAYS_LIBS}
+    ${KDEPIMLIBS_AKONADI_LIBS}
+    ${KDEPIMLIBS_AKONADI_CALENDAR_LIBS}
+    ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
+    ${KDEPIMLIBS_KCALCORE_LIBS}
+    ${KDEPIMLIBS_KCALUTILS_LIBS}
+    akonadi_next
+    kdepim
+    korganizer_interfaces
+    kdepimdbusinterfaces
+    korganizer_core
+    calendarsupport
+    eventviews
+    incidenceeditorsng
+    kdgantt2
+  )
 
-set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+  set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
-install(TARGETS korganizerprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
+  install(TARGETS korganizerprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
 
 ########### install files ###############
 
-install( FILES korganizer.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR})
-install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
-install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
-install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
-install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
-install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
-install( FILES tips  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
-install( FILES korganizer_part.desktop webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
-install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
-install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
+  install( FILES korganizer.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR})
+  install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+  install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+  install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
+  install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
+  install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
+  install( FILES tips  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
+  install( FILES korganizer_part.desktop webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
+  install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
+  install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
+  install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
-install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
+  install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
+
+endif (KDEPIM_BUILD_DESKTOP)
