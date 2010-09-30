@@ -85,7 +85,7 @@ KOrg::BaseView *KOViewManager::currentView()
 void KOViewManager::readSettings( KConfig *config )
 {
   KConfigGroup generalConfig( config, "General" );
-  QString view = generalConfig.readEntry( "Current View" );
+  const QString view = generalConfig.readEntry( "Current View" );
 
   if ( view == QLatin1String( "WhatsNext" ) ) {
     showWhatsNextView();
@@ -94,6 +94,7 @@ void KOViewManager::readSettings( KConfig *config )
     showMonthView();
   } else if ( view == QLatin1String( "List" ) ) {
     showListView();
+    mListView->readSettings( config );
   } else if ( view == QLatin1String( "Journal" ) ) {
     showJournalView();
   } else if ( view == QLatin1String( "Todo" ) ) {

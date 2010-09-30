@@ -43,6 +43,7 @@
 #include <QTreeWidget>
 #include <QBoxLayout>
 #include <QStyle>
+#include <QHeaderView>
 
 using namespace KOrg;
 using namespace KCalUtils;
@@ -477,7 +478,8 @@ void KOListView::popupMenu( const QPoint &point )
     const Akonadi::Item aitem = mItems.value( mActiveItem->data() );
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
-    mPopupMenu->showIncidencePopup( aitem, CalendarSupport::incidence( aitem )->dtStart().date() );
+    mPopupMenu->showIncidencePopup( aitem,
+                                    CalendarSupport::incidence( aitem )->dtStart().date() );
   } else {
     showNewEventPopup();
   }
@@ -485,16 +487,17 @@ void KOListView::popupMenu( const QPoint &point )
 
 void KOListView::readSettings( KConfig *config )
 {
-  Q_UNUSED( config );
-  // TODO
-  // mTreeWidget->restoreLayout( config, "KOListView Layout" );
+  KConfigGroup cfgGroup = config->group( "KOListView Layout" );
+  const QByteArray state = cfgGroup.readEntry( "ViewState", QByteArray() );
+  mTreeWidget->header()->restoreState( state );
 }
 
 void KOListView::writeSettings( KConfig *config )
 {
-  Q_UNUSED( config );
-  // TODO
-  // mTreeWidget->saveLayout( config, "KOListView Layout" );
+  const QByteArray state = mTreeWidget->header()->saveState();
+  KConfigGroup cfgGroup = config->group( "KOListView Layout" );
+
+  cfgGroup.writeEntry( "ViewState", state );
 }
 
 void KOListView::processSelectionChange()
