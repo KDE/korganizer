@@ -94,11 +94,10 @@ class AlarmDialog : public KDialog
     void toggleDetails( QTreeWidgetItem *item, int column );
 
   protected:
+    void keyPressEvent( QKeyEvent *e );
     void closeEvent( QCloseEvent * );
-
+ 
   private:
-
-
     static KDateTime triggerDateForIncidence( const KCalCore::Incidence::Ptr &inc,
                                               const QDateTime &reminderAt,
                                               QString &displayStr );

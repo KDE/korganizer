@@ -58,6 +58,7 @@
 
 #include <phonon/mediaobject.h>
 #include <QLabel>
+#include <QKeyEvent>
 #include <QSpinBox>
 #include <QTreeWidget>
 #include <QVBoxLayout>
@@ -320,10 +321,11 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
   item->setText( 2, IncidenceFormatter::dateTimeToString(
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
   QString tip =
-    IncidenceFormatter::toolTipStr( CalendarSupport::displayName( incidenceitem.parentCollection() ),
-                                    incidence,
-                                    item->mRemindAt.date(), true,
-                                    KDateTime::Spec::LocalZone() );
+    IncidenceFormatter::toolTipStr(
+      CalendarSupport::displayName( incidenceitem.parentCollection() ),
+      incidence,
+      item->mRemindAt.date(), true,
+      KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
     tip += "<br>" + item->mDisplayText;
   }
@@ -672,7 +674,8 @@ void AlarmDialog::eventNotification()
         }
 
         QString body =
-          IncidenceFormatter::mailBodyStr( parent.staticCast<IncidenceBase>(), KSystemTimeZones::local() );
+          IncidenceFormatter::mailBodyStr(
+            parent.staticCast<IncidenceBase>(), KSystemTimeZones::local() );
         if ( !alarm->mailText().isEmpty() ) {
           body += '\n' + alarm->mailText();
         }
@@ -879,6 +882,18 @@ void AlarmDialog::slotCalendarChanged()
       }
     }
   }
+}
+
+void AlarmDialog::keyPressEvent( QKeyEvent *e )
+{
+  const int key = e->key() | e->modifiers();
+
+  if ( key == Qt::Key_Enter || key == Qt::Key_Return ) {
+    e->ignore();
+    return;
+  }
+
+  KDialog::keyPressEvent( e );
 }
 
 #include "alarmdialog.moc"
