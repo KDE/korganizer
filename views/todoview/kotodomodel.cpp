@@ -34,14 +34,14 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/calformat.h>
-#include <kcalcore/incidence.h>
-#include <kcalcore/todo.h>
-#include <kcalutils/incidenceformatter.h>
+#include <KCalCore/CalFormat>
+#include <KCalCore/Todo>
+#include <KCalUtils/IncidenceFormatter>
+
 #ifndef KORG_NODND
-#include <kcalutils/dndfactory.h>
-#include <kcalutils/icaldrag.h>
-#include <kcalutils/vcaldrag.h>
+  #include <KCalUtils/DndFactory>
+  #include <KCalUtils/ICalDrag>
+  #include <KCalUtils/VCalDrag>
 #endif
 
 
@@ -53,8 +53,9 @@
 
 #include <QBrush>
 #include <QIcon>
+
 #ifndef KORG_NODND
-#include <QMimeData>
+  #include <QMimeData>
 #endif
 
 using namespace KCalUtils;
