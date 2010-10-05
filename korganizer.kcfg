@@ -240,6 +240,12 @@
       <default>CategoryInsideResourceOutside</default>
     </entry>
 
+    <entry type="Bool" key="ColorBusyDaysEnabled" name="ColorBusyDaysEnabled">
+      <label>Color busy days with a different background color</label>
+      <whatsthis>Check this box if you want agenda's background to be filled with a different color on days which have at least one all day event marked as busy. Also, you can change the background color used for this option on the Colors configuration page. Look for the "Agenda view background busy color" setting.</whatsthis>
+      <default>false</default>
+    </entry>
+
     <entry type="Enum" name="AgendaViewCalendarDisplay">
       <label>Multiple Calendar Display</label>
       <choices>
@@ -359,6 +365,12 @@
       <label>Agenda view background color</label>
       <whatsthis>Select the agenda view background color here.</whatsthis>
       <default>255, 255, 255</default>
+    </entry>
+
+    <entry type="Color" key="AgendaBackgroundBusyColor" name="AgendaBgBusyColor">
+      <label>Agenda view background busy color</label>
+      <whatsthis>When you have an all day event marked as busy, you can have a different agenda view background color for that day. Select the color here.</whatsthis>
+      <default>136, 255, 219</default>
     </entry>
 
     <entry type="Color" key="Agenda MarcusBainsLine Line Color">

@@ -155,6 +155,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   saveLayout->addWidget( confirmItem->checkBox() );
   KPrefsWidRadios *destinationItem =
     addWidRadios( KOPrefs::instance()->destinationItem(), saveFrame );
+
   saveLayout->addWidget( destinationItem->groupBox() );
   saveLayout->addStretch( 1 );
 
@@ -677,6 +678,9 @@ class KOPrefsDialogViews : public KPrefsModule
       agendaLayout->addWidget(
         addWidRadios( KOPrefs::instance()->agendaViewColorsItem() )->groupBox() );
 
+      agendaLayout->addWidget(
+        addWidBool( KOPrefs::instance()->colorBusyDaysEnabledItem() )->checkBox() );
+
       // GroupBox: Views->Agenda View->Multiple Calendars
       agendaLayout->addWidget(
         addWidRadios( KOPrefs::instance()->agendaViewCalendarDisplayItem() )->groupBox() );
@@ -779,35 +783,40 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   colorLayout->addWidget( agendaBgColor->label(), 3, 0 );
   colorLayout->addWidget( agendaBgColor->button(), 3, 1 );
 
+  KPrefsWidColor *agendaBgBusyColor =
+      addWidColor( KOPrefs::instance()->agendaBgBusyColorItem(), colorFrame );
+  colorLayout->addWidget(agendaBgBusyColor->label(), 4, 0);
+  colorLayout->addWidget(agendaBgBusyColor->button(), 4, 1);
+
   // agenda view Marcus Bains line color
   KPrefsWidColor *mblColor =
     addWidColor( KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame );
-  colorLayout->addWidget( mblColor->label(), 4, 0 );
-  colorLayout->addWidget( mblColor->button(), 4, 1 );
+  colorLayout->addWidget( mblColor->label(), 5, 0 );
+  colorLayout->addWidget( mblColor->button(), 5, 1 );
 
   // working hours color
   KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
     addWidColor( KOPrefs::instance()->agendaGridWorkHoursBackgroundColorItem(), colorFrame );
-  colorLayout->addWidget( agendaGridWorkHoursBackgroundColor->label(), 5, 0 );
-  colorLayout->addWidget( agendaGridWorkHoursBackgroundColor->button(), 5, 1 );
+  colorLayout->addWidget( agendaGridWorkHoursBackgroundColor->label(), 6, 0 );
+  colorLayout->addWidget( agendaGridWorkHoursBackgroundColor->button(), 6, 1 );
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
     addWidColor(
       KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColorItem(), colorFrame );
-  colorLayout->addWidget( todoDueTodayColor->label(), 6, 0 );
-  colorLayout->addWidget( todoDueTodayColor->button(), 6, 1 );
+  colorLayout->addWidget( todoDueTodayColor->label(), 7, 0 );
+  colorLayout->addWidget( todoDueTodayColor->button(), 7, 1 );
 
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
     addWidColor(
       KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColorItem(), colorFrame );
-  colorLayout->addWidget( todoOverdueColor->label(), 7, 0 );
-  colorLayout->addWidget( todoOverdueColor->button(), 7, 1 );
+  colorLayout->addWidget( todoOverdueColor->label(), 8, 0 );
+  colorLayout->addWidget( todoOverdueColor->button(), 8, 1 );
 
   // categories colors
   QGroupBox *categoryGroup = new QGroupBox( i18nc( "@title:group", "Categories" ), colorFrame );
-  colorLayout->addWidget( categoryGroup, 8, 0, 1, 2 );
+  colorLayout->addWidget( categoryGroup, 9, 0, 1, 2 );
 
   QGridLayout *categoryLayout = new QGridLayout;
   categoryGroup->setLayout( categoryLayout );
@@ -841,7 +850,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   // resources colors
   QGroupBox *resourceGroup = new QGroupBox( i18nc( "@title:group", "Resources" ), colorFrame );
-  colorLayout->addWidget( resourceGroup, 9, 0, 1, 2 );
+  colorLayout->addWidget( resourceGroup, 10, 0, 1, 2 );
 
   QBoxLayout *resourceLayout = new QHBoxLayout;
   resourceGroup->setLayout( resourceLayout );
@@ -870,7 +879,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );
 
-  colorLayout->setRowStretch( 10, 1 );
+  colorLayout->setRowStretch( 11, 1 );
 
   QWidget *fontFrame = new QWidget( this );
   tabWidget->addTab( fontFrame, KIcon( "preferences-desktop-font" ),
