@@ -27,9 +27,9 @@
 
 #include "koprefs.h"
 #include "koglobals.h"
-#include "koidentitymanager.h"
 
 #include <calendarsupport/plugin.h>
+#include <calendarsupport/identitymanager.h>
 #include <korganizer/part.h>
 
 #include <kdebug.h>
@@ -374,7 +374,7 @@ void KOCore::reloadPlugins()
 KPIMIdentities::IdentityManager *KOCore::identityManager()
 {
   if ( !mIdentityManager ) {
-    mIdentityManager = new KOrg::IdentityManager;
+    mIdentityManager = new CalendarSupport::IdentityManager;
   }
   return mIdentityManager;
 }

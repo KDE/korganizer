@@ -119,7 +119,6 @@ endif (KDEPIM_BUILD_DESKTOP)
 set(korganizer_core_LIB_SRCS
     koprefs.cpp
     kocore.cpp
-    koidentitymanager.cpp
     categoryeditdialog.cpp
 )
 
