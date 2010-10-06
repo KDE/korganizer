@@ -268,6 +268,7 @@ CalendarView::~CalendarView()
 void CalendarView::setCalendar( CalendarSupport::Calendar *cal )
 {
   mCalendar = cal;
+  CalendarSupport::FreeBusyManager::self()->setCalendar( cal );
 
   delete mHistory;
   mHistory = new History( mCalendar, this );
@@ -1951,36 +1952,7 @@ void CalendarView::schedule_forward( const Akonadi::Item &item )
 
 void CalendarView::mailFreeBusy( int daysToPublish )
 {
-  KDateTime start = KDateTime::currentUtcDateTime().toTimeSpec( mCalendar->timeSpec() );
-  KDateTime end = start.addDays( daysToPublish );
-
-  Event::List events;
-  Akonadi::Item::List items = mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Akonadi::Item::List();
-  foreach(const Akonadi::Item &item, items) { //FIXME
-    events << item.payload<Event::Ptr>();
-  }
-
-  FreeBusy::Ptr freebusy( new FreeBusy( events, start, end ) );
-  freebusy->setOrganizer( Person::Ptr( new Person( CalendarSupport::KCalPrefs::instance()->fullName(),
-                                                   CalendarSupport::KCalPrefs::instance()->email() ) ) );
-
-  QPointer<PublishDialog> publishdlg = new PublishDialog();
-  if ( publishdlg->exec() == QDialog::Accepted ) {
-    // Send the mail
-    CalendarSupport::MailScheduler scheduler( mCalendar );
-    if ( scheduler.publish( freebusy, publishdlg->addresses() ) ) {
-      KMessageBox::information(
-        this,
-        i18n( "The free/busy information was successfully sent." ),
-        i18n( "Sending Free/Busy" ),
-        "FreeBusyPublishSuccess" );
-    } else {
-      KMessageBox::error(
-        this,
-        i18n( "Unable to publish the free/busy data." ) );
-    }
-  }
-  delete publishdlg;
+  CalendarSupport::FreeBusyManager::self()->mailFreeBusy( daysToPublish, this );
 }
 
 void CalendarView::uploadFreeBusy()
