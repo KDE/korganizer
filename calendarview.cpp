@@ -1903,51 +1903,12 @@ void CalendarView::schedule_declinecounter( const Akonadi::Item &incidence )
 
 void CalendarView::schedule_forward( const Akonadi::Item &item )
 {
-  Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( !incidence ) {
-    const Akonadi::Item item = selectedIncidence();
-    incidence = CalendarSupport::incidence( item );
+  Akonadi::Item selectedItem = item;
+  if ( !item.hasPayload<KCalCore::Incidence::Ptr>() ) {
+    selectedItem = selectedIncidence();
   }
 
-  if ( !incidence ) {
-    KMessageBox::information(
-      this,
-      i18n( "No item selected." ),
-      i18n( "Forwarding" ),
-      "ForwardNoEventSelected" );
-    return;
-  }
-
-  QPointer<PublishDialog> publishdlg = new PublishDialog;
-  if ( publishdlg->exec() == QDialog::Accepted ) {
-    const QString recipients = publishdlg->addresses();
-    if ( incidence->organizer()->isEmpty() ) {
-      incidence->setOrganizer( Person::Ptr( new Person( CalendarSupport::KCalPrefs::instance()->fullName(),
-                                                        CalendarSupport::KCalPrefs::instance()->email() ) ) );
-    }
-
-    ICalFormat format;
-    const QString from = CalendarSupport::KCalPrefs::instance()->email();
-    const bool bccMe = CalendarSupport::KCalPrefs::instance()->mBcc;
-    const QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
-    CalendarSupport::MailClient mailer;
-    if ( mailer.mailTo(
-           incidence,
-           KOCore::self()->identityManager()->identityForAddress( from ),
-           from, bccMe, recipients, messageText, MailTransport::TransportManager::self()->defaultTransportName() ) ) {
-      KMessageBox::information(
-        this,
-        i18n( "The item information was successfully sent." ),
-        i18n( "Forwarding" ),
-        "IncidenceForwardSuccess" );
-    } else {
-      KMessageBox::error(
-        this,
-        i18n( "Unable to forward the item '%1'", incidence->summary() ),
-        i18n( "Forwarding Error" ) );
-    }
-  }
-  delete publishdlg;
+  CalendarSupport::sendAsICalendar( selectedItem, KOCore::self()->identityManager(), this );
 }
 
 void CalendarView::mailFreeBusy( int daysToPublish )
