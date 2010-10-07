@@ -1821,49 +1821,12 @@ void CalendarView::dissociateFutureOccurrence( const Akonadi::Item &item, const 
 
 void CalendarView::schedule_publish( const Akonadi::Item &item )
 {
-  Incidence::Ptr incidence = CalendarSupport::incidence( item );
-
-  if ( !incidence ) {
-    const Akonadi::Item item = selectedIncidence();
-    incidence = CalendarSupport::incidence( item );
+  Akonadi::Item selectedItem = item;
+  if ( !item.hasPayload<KCalCore::Incidence::Ptr>() ) {
+    selectedItem = selectedIncidence();
   }
 
-  if ( !incidence ) {
-    KMessageBox::information(
-      this,
-      i18n( "No item selected." ),
-      "PublishNoEventSelected" );
-    return;
-  }
-
-  QPointer<PublishDialog> publishdlg = new PublishDialog();
-  if ( incidence->attendeeCount() > 0 ) {
-    Attendee::List attendees = incidence->attendees();
-    Attendee::List::ConstIterator it;
-    for ( it = attendees.constBegin(); it != attendees.constEnd(); ++it ) {
-      publishdlg->addAttendee( *it );
-    }
-  }
-  if ( publishdlg->exec() == QDialog::Accepted ) {
-    Incidence::Ptr inc( incidence->clone() );
-    inc->registerObserver( 0 );
-    inc->clearAttendees();
-
-    // Send the mail
-    CalendarSupport::MailScheduler scheduler( mCalendar );
-    if ( scheduler.publish( incidence, publishdlg->addresses() ) ) {
-      KMessageBox::information(
-        this,
-        i18n( "The item information was successfully sent." ),
-        i18n( "Publishing" ),
-        "IncidencePublishSuccess" );
-    } else {
-      KMessageBox::error(
-        this,
-        i18n( "Unable to publish the item '%1'", incidence->summary() ) );
-    }
-  }
-  delete publishdlg;
+  CalendarSupport::publishItemInformation( selectedItem, mCalendar, this);
 }
 
 void CalendarView::schedule_request( const Akonadi::Item &incidence )
