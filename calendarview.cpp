@@ -1826,7 +1826,7 @@ void CalendarView::schedule_publish( const Akonadi::Item &item )
     selectedItem = selectedIncidence();
   }
 
-  CalendarSupport::publishItemInformation( selectedItem, mCalendar, this);
+  CalendarSupport::publishItemInformation( selectedItem, mCalendar, this );
 }
 
 void CalendarView::schedule_request( const Akonadi::Item &incidence )
@@ -1886,52 +1886,12 @@ void CalendarView::uploadFreeBusy()
 
 void CalendarView::schedule( KCalCore::iTIPMethod method, const Akonadi::Item &item )
 {
-  Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( !incidence ) {
-    const Akonadi::Item item = selectedIncidence();
-    incidence = CalendarSupport::incidence( item );
+  Akonadi::Item selectedItem = item;
+  if ( !item.hasPayload<KCalCore::Incidence::Ptr>() ) {
+    selectedItem = selectedIncidence();
   }
 
-  if ( !incidence ) {
-    KMessageBox::sorry(
-      this,
-      i18n( "No item selected." ),
-      "ScheduleNoEventSelected" );
-    return;
-  }
-
-  if ( incidence->attendeeCount() == 0 && method != iTIPPublish ) {
-    KMessageBox::information(
-      this,
-      i18n( "The item has no attendees." ),
-      "ScheduleNoIncidences" );
-    return;
-  }
-
-  Incidence *inc = incidence->clone();
-  inc->registerObserver( 0 );
-  inc->clearAttendees();
-
-  // Send the mail
-  CalendarSupport::MailScheduler scheduler( mCalendar );
-  if ( scheduler.performTransaction( incidence, method ) ) {
-    KMessageBox::information(
-      this,
-      i18n( "The groupware message for item '%1' "
-            "was successfully sent.\nMethod: %2",
-            incidence->summary(),
-            ScheduleMessage::methodName( method ) ),
-      i18n( "Sending Free/Busy" ),
-      "FreeBusyPublishSuccess" );
-  } else {
-    KMessageBox::error(
-      this,
-      i18nc( "Groupware message sending failed. "
-             "%2 is request/reply/add/cancel/counter/etc.",
-             "Unable to send the item '%1'.\nMethod: %2",
-             incidence->summary(),
-             ScheduleMessage::methodName( method ) ) );
-  }
+  CalendarSupport::scheduleiTIPMethods( method, selectedItem, mCalendar, this );
 }
 
 void CalendarView::openAddressbook()
