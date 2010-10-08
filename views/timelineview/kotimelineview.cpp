@@ -40,6 +40,7 @@ class KOTimelineView::Private
       QVBoxLayout *vbox = new QVBoxLayout( mParent );
       mTimeLineView = new EventViews::TimelineView( mParent );
       vbox->addWidget( mTimeLineView );
+      mEventPopup = q->eventPopup();
     }
     ~Private()
     {
@@ -198,6 +199,8 @@ KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
 
 void KOTimelineView::setCalendar( CalendarSupport::Calendar *cal )
 {
+  KOEventView::setCalendar( cal );
+  d->mEventPopup->setCalendar( cal );
   d->mTimeLineView->setCalendar( cal );
 }
 
