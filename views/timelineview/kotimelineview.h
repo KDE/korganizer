@@ -62,13 +62,12 @@ class KOTimelineView : public KOEventView
     virtual void updateView();
     virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
     virtual int maxDatesHint() const { return 0; }
-
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    virtual void setCalendar( CalendarSupport::Calendar *cal );
+    virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+
+    // Specific for korg, not in eventviews
     virtual KOrg::CalPrinterBase::PrintType printType() const;
-
-    void setCalendar( CalendarSupport::Calendar *cal );
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
-
 
   private:
     class Private;
