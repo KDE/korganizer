@@ -162,7 +162,6 @@ if (KDEPIM_BUILD_DESKTOP)
     views/todoview/kotodoviewquicksearch.cpp
     views/todoview/kotodoviewquickaddline.cpp
     views/timelineview/kotimelineview.cpp
-    views/timelineview/timelineitem.cpp
     views/timespentview/kotimespentview.cpp
     views/whatsnextview/kowhatsnextview.cpp
     searchdialog.cpp

@@ -1,9 +1,10 @@
 /*
   This file is part of KOrganizer.
-
   Copyright (c) 2007 Till Adam <adam@kde.org>
+
   Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
   Copyright (c) 2010 Andras Mantia <andras@kdab.com>
+  Copyright (c) 2010 Sérgio Martins <sergio.martins@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,538 +27,164 @@
 
 #include "kotimelineview.h"
 #include "koeventpopupmenu.h"
-#include "koglobals.h"
-#include "timelineitem.h"
-#include "kohelper.h"
 
-#include "kdgantt2/kdganttgraphicsview.h"
-#include "kdgantt2/kdganttabstractrowcontroller.h"
-#include "kdgantt2/kdganttdatetimegrid.h"
-#include "kdgantt2/kdganttitemdelegate.h"
-#include "kdgantt2/kdganttstyleoptionganttitem.h"
+#include <calendarviews/eventviews/timeline/timelineview.h>
 
-#include <calendarsupport/calendar.h>
-#include <calendarsupport/collectionselection.h>
-#include <calendarsupport/utils.h>
-#include <calendarsupport/kcalprefs.h>
+#include <QVBoxLayout>
 
-#include <QApplication>
-#include <QPainter>
-#include <QLayout>
-#include <QStandardItemModel>
-#include <QResizeEvent>
-#include <QSplitter>
-#include <QTreeWidget>
-#include <QHeaderView>
-
-using namespace KOrg;
-using namespace KCalCore;
-
-namespace KOrg {
-class RowController : public KDGantt::AbstractRowController {
-private:
-    static const int ROW_HEIGHT ;
-    QPointer<QAbstractItemModel> m_model;
-
-public:
-    RowController()
+class KOTimelineView::Private
+{
+  public:
+    Private( KOTimelineView *q ) : mEventPopup( 0 ), mParent( q )
     {
-      mRowHeight = 20;
+      QVBoxLayout *vbox = new QVBoxLayout( mParent );
+      mTimeLineView = new EventViews::TimelineView( mParent );
+      vbox->addWidget( mTimeLineView );
     }
-
-    void setModel( QAbstractItemModel* model )
+    ~Private()
     {
-        m_model = model;
+      delete mEventPopup;
     }
+    KOEventPopupMenu *mEventPopup;
+    EventViews::TimelineView *mTimeLineView;
 
-    /*reimp*/int headerHeight() const { return 2*mRowHeight + 10; }
-
-    /*reimp*/ bool isRowVisible( const QModelIndex& ) const { return true;}
-    /*reimp*/ bool isRowExpanded( const QModelIndex& ) const { return false; }
-    /*reimp*/ KDGantt::Span rowGeometry( const QModelIndex& idx ) const
-    {
-        return KDGantt::Span( idx.row()*mRowHeight, mRowHeight );
-    }
-    /*reimp*/ int maximumItemHeight() const {
-        return mRowHeight/2;
-    }
-    /*reimp*/int totalHeight() const {
-        return m_model->rowCount()* mRowHeight;
-    }
-
-    /*reimp*/ QModelIndex indexAt( int height ) const {
-        return m_model->index( height/mRowHeight, 0 );
-    }
-
-    /*reimp*/ QModelIndex indexBelow( const QModelIndex& idx ) const {
-        if ( !idx.isValid() )return QModelIndex();
-        return idx.model()->index( idx.row()+1, idx.column(), idx.parent() );
-    }
-    /*reimp*/ QModelIndex indexAbove( const QModelIndex& idx ) const {
-        if ( !idx.isValid() )return QModelIndex();
-        return idx.model()->index( idx.row()-1, idx.column(), idx.parent() );
-    }
-
-    void setRowHeight( int height ) { mRowHeight = height; }
-
-private:
-    int mRowHeight;
-
+  private:
+    KOTimelineView *mParent;
 };
-
-class GanttHeaderView : public QHeaderView {
-public:
-    explicit GanttHeaderView( QWidget* parent=0 ) : QHeaderView( Qt::Horizontal, parent ) {
-    }
-
-    QSize sizeHint() const { QSize s = QHeaderView::sizeHint(); s.rheight() *= 2; return s; }
-};
-
-class GanttItemDelegate : public KDGantt::ItemDelegate {
-    void paintGanttItem( QPainter* painter,
-                         const KDGantt::StyleOptionGanttItem& opt,
-                         const QModelIndex& idx )
-    {
-        painter->setRenderHints( QPainter::Antialiasing );
-        if ( !idx.isValid() ) return;
-        KDGantt::ItemType type = static_cast<KDGantt::ItemType>(
-                            idx.model()->data( idx, KDGantt::ItemTypeRole ).toInt() );
-        QString txt = idx.model()->data( idx, Qt::DisplayRole ).toString();
-        QRectF itemRect = opt.itemRect;
-        QRectF boundingRect = opt.boundingRect;
-        boundingRect.setY( itemRect.y() );
-        boundingRect.setHeight( itemRect.height() );
-
-        QBrush brush = defaultBrush( type );
-        if ( opt.state & QStyle::State_Selected ) {
-            QLinearGradient selectedGrad( 0., 0., 0.,
-                                          QApplication::fontMetrics().height() );
-            selectedGrad.setColorAt( 0., Qt::red );
-            selectedGrad.setColorAt( 1., Qt::darkRed );
-
-            brush = QBrush( selectedGrad );
-            painter->setBrush( brush );
-        } else
-          painter->setBrush( idx.model()->data( idx, Qt::DecorationRole ).value<QColor>() );
-
-        painter->setPen( defaultPen( type ) );
-        painter->setBrushOrigin( itemRect.topLeft() );
-
-        switch( type ) {
-        case KDGantt::TypeTask:
-            if ( itemRect.isValid() ) {
-                QRectF r = itemRect;
-                painter->drawRect( r );
-
-                Qt::Alignment ta;
-                switch( opt.displayPosition ) {
-                case KDGantt::StyleOptionGanttItem::Left: ta = Qt::AlignLeft; break;
-                case KDGantt::StyleOptionGanttItem::Right: ta = Qt::AlignRight; break;
-                case KDGantt::StyleOptionGanttItem::Center: ta = Qt::AlignCenter; break;
-                }
-                painter->drawText( boundingRect, ta, txt );
-            }
-            break;
-        default:
-            KDGantt::ItemDelegate::paintGanttItem( painter, opt, idx );
-            break;
-        }
-    }
-};
-
-}
 
 KOTimelineView::KOTimelineView( QWidget *parent )
-  : KOEventView( parent ), mEventPopup( 0 )
+  : KOEventView( parent ), d( new Private( this ) )
 {
-  QVBoxLayout *vbox = new QVBoxLayout( this );
-  QSplitter *splitter = new QSplitter( Qt::Horizontal, this );
-  mLeftView = new QTreeWidget;
-  mLeftView->setHeader( new GanttHeaderView );
-  mLeftView->setHeaderLabel( i18n("Calendar") );
-  mLeftView->setRootIsDecorated( false );
-  mLeftView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+  connect( d->mTimeLineView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+           d->mEventPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
 
-  mGantt = new KDGantt::GraphicsView();
-  splitter->addWidget( mLeftView );
-  splitter->addWidget( mGantt );
-  connect( splitter, SIGNAL( splitterMoved(int,int) ), SLOT( splitterMoved() ) );
-  QStandardItemModel *model = new QStandardItemModel( this );
+  connect( d->mTimeLineView, SIGNAL(showNewEventPopupSignal()),
+           SLOT(showNewEventPopup()) );
 
-  mRowController = new RowController;
-  mRowController->setRowHeight( fontMetrics().height() ); //TODO: detect
+  connect( d->mTimeLineView, SIGNAL(datesSelected(KCalCore::DateList)),
+           SIGNAL(datesSelected(KCalCore::DateList)) );
 
-  mRowController->setModel( model );
-  mGantt->setRowController( mRowController );
-
-  KDGantt::DateTimeGrid *grid = new KDGantt::DateTimeGrid;
-  grid->setScale( KDGantt::DateTimeGrid::ScaleHour );
-  grid->setDayWidth( 800 );
-  grid->setRowSeparators( true );
-  mGantt->setGrid( grid );
-  mGantt->setModel( model );
-  mGantt->viewport()->setFixedWidth( 8000 );
+  connect( d->mTimeLineView, SIGNAL(shiftedEvent(QDate,QDate)),
+           SIGNAL(shiftedEvent(QDate,QDate)) );
 
 
-#if 0
-  mGantt->setCalendarMode( true );
-  mGantt->setShowLegendButton( false );
-  mGantt->setFixedHorizon( true );
-  mGantt->removeColumn( 0 );
-  mGantt->addColumn( i18n( "Calendar" ) );
-  mGantt->setHeaderVisible( true );
-  if ( KGlobal::locale()->use12Clock() ) {
-    mGantt->setHourFormat( KDGanttView::Hour_12 );
-  } else {
-    mGantt->setHourFormat( KDGanttView::Hour_24_FourDigit );
-  }
-#else
- kDebug() << "Disabled code, port to KDGantt2";
-#endif
- mGantt->setItemDelegate( new GanttItemDelegate);
+  connect( d->mTimeLineView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
 
+  connect( d->mTimeLineView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
 
-  vbox->addWidget( splitter );
+  connect( d->mTimeLineView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
 
-#if 0
-  connect( mGantt, SIGNAL(rescaling(KDGanttView::Scale)),
-           SLOT(overscale(KDGanttView::Scale)) );
-#else
- kDebug() << "Disabled code, port to KDGantt2";
-#endif
-  connect( model, SIGNAL(itemChanged(QStandardItem*)),
-           SLOT(itemChanged(QStandardItem*)) );
-  connect( mGantt, SIGNAL(doubleClicked(QModelIndex)),
-           SLOT(itemDoubleClicked(QModelIndex)) );
-  connect( mGantt, SIGNAL(activated(QModelIndex)),
-           SLOT(itemSelected(QModelIndex)) );
-  mGantt->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( mGantt, SIGNAL(customContextMenuRequested(QPoint)), SLOT(contextMenuRequested(QPoint)) );
+  connect( d->mTimeLineView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
 
-#if 0
-  connect( mGantt, SIGNAL(dateTimeDoubleClicked(const QDateTime &)),
-           SLOT(newEventWithHint(const QDateTime &)) );
-#else
-  kDebug() << "Disabled code, port to KDGantt2";
-#endif
+  connect( d->mTimeLineView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mTimeLineView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+
+  connect( d->mTimeLineView, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()) );
+
+  connect( d->mTimeLineView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+
+  connect( d->mTimeLineView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+
+  connect( d->mTimeLineView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( d->mTimeLineView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( d->mTimeLineView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+
+  connect( d->mTimeLineView, SIGNAL(startMultiModify(QString)),
+           SIGNAL(startMultiModify(QString)) );
+
+  connect( d->mTimeLineView, SIGNAL(endMultiModify()),
+           SIGNAL(endMultiModify()) );
+
+  connect( d->mTimeLineView, SIGNAL(newEventSignal()),
+           SIGNAL(newEventSignal()) );
+
+  connect( d->mTimeLineView, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
+
+  connect( d->mTimeLineView, SIGNAL(newEventSignal(QDateTime)),
+           SIGNAL(newEventSignal(QDateTime)) );
+
+  connect( d->mTimeLineView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+
+  connect( d->mTimeLineView, SIGNAL(newTodoSignal(QDate)),
+           SIGNAL(newTodoSignal(QDate)) );
+
+  connect( d->mTimeLineView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+
+  connect( d->mTimeLineView, SIGNAL(newJournalSignal(QDate)),
+           SIGNAL(newJournalSignal(QDate)) );
 }
 
 KOTimelineView::~KOTimelineView()
 {
-  delete mRowController;
-  delete mEventPopup;
+  delete d;
 }
-
-void KOTimelineView::splitterMoved()
-{
-  mLeftView->setColumnWidth( 0, mLeftView->width() );
-}
-
 
 /*virtual*/
 Akonadi::Item::List KOTimelineView::selectedIncidences()
 {
-  return mSelectedItemList;
+  return d->mTimeLineView->selectedIncidences();
 }
 
 /*virtual*/
 KCalCore::DateList KOTimelineView::selectedIncidenceDates()
 {
-  return KCalCore::DateList();
+  return d->mTimeLineView->selectedIncidenceDates();
 }
 
 /*virtual*/
 int KOTimelineView::currentDateCount() const
 {
-  return 0;
+  return d->mTimeLineView->currentDateCount();
 }
 
 /*virtual*/
 void KOTimelineView::showDates( const QDate &start, const QDate &end )
 {
-  kDebug() << "start=" << start << "end=" << end;
-
-  mStartDate = start;
-  mEndDate = end;
-  mHintDate = QDateTime();
-  KDGantt::DateTimeGrid *grid = static_cast<KDGantt::DateTimeGrid*>(mGantt->grid());
-  grid->setStartDateTime( QDateTime( start ) );
-#if 0
-  mGantt->setHorizonStart( QDateTime( start ) );
-  mGantt->setHorizonEnd( QDateTime( end.addDays( 1 ) ) );
-  mGantt->setMinorScaleCount( 1 );
-  mGantt->setScale( KDGanttView::Hour );
-  mGantt->setMinimumScale( KDGanttView::Hour );
-  mGantt->setMaximumScale( KDGanttView::Hour );
-  mGantt->zoomToFit();
-
-  mGantt->setUpdateEnabled( false );
-  mGantt->clear();
-#else
- kDebug() << "Disabled code, port to KDGantt2";
-#endif
-
-  mLeftView->clear();
-  uint index = 0;
-  // item for every calendar
-  TimelineItem *item = 0;
-  CalendarSupport::Calendar *calres = calendar();
-  if ( !calres ) {
-    item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
-    mLeftView->addTopLevelItem( new QTreeWidgetItem( QStringList() << i18n( "Calendar" ) ) );
-    mCalendarItemMap.insert( -1, item );
-
-  } else {
-    const CalendarSupport::CollectionSelection *colSel = collectionSelection();
-    const Akonadi::Collection::List collections = colSel->selectedCollections();
-
-    Q_FOREACH ( const Akonadi::Collection &collection, collections ) {
-      if ( collection.contentMimeTypes().contains( Event::eventMimeType() ) ) {
-        item = new TimelineItem( calendar(), index++, static_cast<QStandardItemModel*>( mGantt->model() ), mGantt );
-        mLeftView->addTopLevelItem(new QTreeWidgetItem( QStringList() << CalendarSupport::displayName( collection ) ) );
-        const QColor resourceColor = KOHelper::resourceColor( collection );
-        if ( resourceColor.isValid() ) {
-          item->setColor( resourceColor );
-        }
-        kDebug() << "Created item " << item << " ( " <<  CalendarSupport::displayName( collection ) << " ) with index" <<  index - 1 << " from collection " << collection.id();
-        mCalendarItemMap.insert( collection.id(), item );
-      }
-    }
-  }
-
-  // add incidences
-  Akonadi::Item::List events;
-  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
-  for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
-    events = calendar()->events( day, timeSpec,
-                                 CalendarSupport::EventSortStartDate,
-                                 CalendarSupport::SortDirectionAscending );
-    Q_FOREACH ( const Akonadi::Item &i, events ) {
-      insertIncidence( i, day );
-    }
-  }
-  splitterMoved();
+  d->mTimeLineView->showDates( start, end );
 }
 
 /*virtual*/
-void KOTimelineView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
+void KOTimelineView::showIncidences( const Akonadi::Item::List &incidenceList,
+                                     const QDate &date )
 {
-  Q_UNUSED( incidenceList );
-  Q_UNUSED( date );
+  d->mTimeLineView->showIncidences( incidenceList, date );
 }
 
 /*virtual*/
 void KOTimelineView::updateView()
 {
-  if ( mStartDate.isValid() && mEndDate.isValid() ) {
-    showDates( mStartDate, mEndDate );
-  }
+  d->mTimeLineView->updateView();
 }
 
 /*virtual*/
 void KOTimelineView::changeIncidenceDisplay( const Akonadi::Item &incidence, int mode )
 {
-  switch ( mode ) {
-  case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
-    insertIncidence( incidence );
-    break;
-  case CalendarSupport::IncidenceChanger::INCIDENCEEDITED:
-    removeIncidence( incidence );
-    insertIncidence( incidence );
-    break;
-  case CalendarSupport::IncidenceChanger::INCIDENCEDELETED:
-    removeIncidence( incidence );
-    break;
-  default:
-    updateView();
-  }
-}
-
-void KOTimelineView::itemSelected( const QModelIndex &index )
-{
-  TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem *>( static_cast<QStandardItemModel*>( mGantt->model() )->item( index.row(), index.column() ) );
-  if ( tlitem ) {
-    emit incidenceSelected( tlitem->incidence(), tlitem->originalStart().date() );
-  }
-}
-
-void KOTimelineView::itemDoubleClicked( const QModelIndex &index )
-{
-  TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem *>( static_cast<QStandardItemModel*>( mGantt->model() )->item( index.row(), index.column() ) );
-  if ( tlitem ) {
-    emit editIncidenceSignal( tlitem->incidence() );
-  }
-}
-
-void KOTimelineView::contextMenuRequested(const QPoint& point)
-{
-   QPersistentModelIndex index = mGantt->indexAt( point );
-//   mHintDate = QDateTime( mGantt->getDateTimeForCoordX( QCursor::pos().x(), true ) );
-  TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem *>( static_cast<QStandardItemModel*>( mGantt->model() )->item( index.row(), index.column() ) );
-  if ( !tlitem ) {
-    showNewEventPopup();
-    mSelectedItemList = Akonadi::Item::List();
-    return;
-  }
-  if ( !mEventPopup ) {
-    mEventPopup = eventPopup();
-  }
-  mEventPopup->showIncidencePopup( tlitem->incidence(),
-                                   CalendarSupport::incidence( tlitem->incidence() )->dtStart().date() );
-  mSelectedItemList << tlitem->incidence();
+  d->mTimeLineView->changeIncidenceDisplay( incidence, mode );
 }
 
 bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
                                         bool &allDay )
 {
-  startDt = QDateTime( mHintDate );
-  endDt = QDateTime( mHintDate.addSecs( 2 * 60 * 60 ) );
-  allDay = false;
-  return mHintDate.isValid();
+  return d->mTimeLineView->eventDurationHint( startDt, endDt, allDay );
 }
-
-//slot
-void KOTimelineView::newEventWithHint( const QDateTime &dt )
-{
-  mHintDate = dt;
-
-  emit newEventSignal( dt );
-}
-
-TimelineItem *KOTimelineView::calendarItemForIncidence( const Akonadi::Item &incidence )
-{
-  CalendarSupport::Calendar *calres = calendar();
-  TimelineItem *item = 0;
-  if ( !calres ) {
-    item = mCalendarItemMap.value( -1 );
-  } else {
-    item = mCalendarItemMap.value( incidence.parentCollection().id() );
-  }
-  return item;
-}
-
-void KOTimelineView::insertIncidence( const Akonadi::Item &aitem, const QDate &day )
-{
-  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
-  kDebug() << "Item " << aitem.id() << " parentcollection: " << aitem.parentCollection().id();
-  TimelineItem *item = calendarItemForIncidence( aitem );
-  if ( !item ) {
-    kWarning() << "Help! Something is really wrong here!";
-    return;
-  }
-
-  if ( incidence->recurs() ) {
-    QList<KDateTime> l = incidence->startDateTimesForDate( day );
-    if ( l.isEmpty() ) {
-      // strange, but seems to happen for some recurring events...
-      item->insertIncidence( aitem, KDateTime( day, incidence->dtStart().time() ),
-                             KDateTime( day, incidence->dateTime( Incidence::RoleEnd ).time() ) );
-    } else {
-      for ( QList<KDateTime>::ConstIterator it = l.constBegin(); it != l.constEnd(); ++it ) {
-        item->insertIncidence( aitem, *it, incidence->endDateForStart( *it ) );
-      }
-    }
-  } else {
-    if ( incidence->dtStart().date() == day ||
-         incidence->dtStart().date() < mStartDate ) {
-      item->insertIncidence( aitem );
-    }
-  }
-}
-
-void KOTimelineView::insertIncidence( const Akonadi::Item &incidence )
-{
-  const Event::Ptr event = CalendarSupport::event( incidence );
-  if ( !event ) {
-    return;
-  }
-
-  if ( event->recurs() ) {
-    insertIncidence( incidence, QDate() );
-  }
-
-  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
-  for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
-    Akonadi::Item::List events = calendar()->events( day, timeSpec,
-                                                     CalendarSupport::EventSortStartDate,
-                                                     CalendarSupport::SortDirectionAscending );
-    if ( events.contains( incidence ) ) //PENDING(AKONADI_PORT) check if correct. also check the original if, was inside the for loop (unnecessarily)
-      for ( Akonadi::Item::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
-        insertIncidence( *it, day );
-      }
-  }
-}
-
-void KOTimelineView::removeIncidence( const Akonadi::Item &incidence )
-{
-  TimelineItem *item = calendarItemForIncidence( incidence );
-  if ( item ) {
-    item->removeIncidence( incidence );
-  } else {
-#if 0 //AKONADI_PORT_DISABLED
-    // try harder, the incidence might already be removed from the resource
-    typedef QMap<QString, KOrg::TimelineItem *> M2_t;
-    typedef QMap<KCalCore::ResourceCalendar *, M2_t> M1_t;
-    for ( M1_t::ConstIterator it1 = mCalendarItemMap.constBegin();
-          it1 != mCalendarItemMap.constEnd(); ++it1 ) {
-      for ( M2_t::ConstIterator it2 = it1.value().constBegin();
-            it2 != it1.value().constEnd(); ++it2 ) {
-        if ( it2.value() ) {
-          it2.value()->removeIncidence( incidence );
-        }
-      }
-    }
-#endif
-  }
-}
-
- void KOTimelineView::itemChanged(QStandardItem* item)
-{
-  TimelineSubItem *tlit = dynamic_cast<TimelineSubItem *>( item );
-  if ( !tlit ) {
-    return;
-  }
-
-  const Akonadi::Item i = tlit->incidence();
-  const Incidence::Ptr inc = CalendarSupport::incidence( i );
-
-  KDateTime newStart( tlit->startTime() );
-  if ( inc->allDay() ) {
-    newStart = KDateTime( newStart.date() );
-  }
-
-  int delta = tlit->originalStart().secsTo( newStart );
-  inc->setDtStart( inc->dtStart().addSecs( delta ) );
-  int duration = tlit->startTime().secsTo( tlit->endTime() );
-  int allDayOffset = 0;
-  if ( inc->allDay() ) {
-    int secsPerDay = 60 * 60 * 24;
-    duration /= secsPerDay;
-    duration *= secsPerDay;
-    allDayOffset = secsPerDay;
-    duration -= allDayOffset;
-    if ( duration < 0 ) {
-      duration = 0;
-    }
-  }
-  inc->setDuration( duration );
-  TimelineItem *parent = tlit->parent();
-  parent->moveItems( i, tlit->originalStart().secsTo( newStart ), duration + allDayOffset );
-}
-
-// void KOTimelineView::overscale( KDGanttView::Scale scale )
-// {
-//   Q_UNUSED( scale );
-//   /* Disabled, looks *really* bogus:
-//      this triggers and endless rescaling loop; we want to set
-//      a fixed scale, the Gantt view doesn't like it and rescales
-//      (emitting a rescaling signal that leads here) and so on...
-//   //set a relative zoom factor of 1 (?!)
-//   mGantt->setZoomFactor( 1, false );
-//   mGantt->setScale( KDGanttView::Hour );
-//   mGantt->setMinorScaleCount( 12 );
-//   */
-// }
 
 KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
 {
@@ -569,5 +196,14 @@ KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
   }
 }
 
+void KOTimelineView::setCalendar( CalendarSupport::Calendar *cal )
+{
+  d->mTimeLineView->setCalendar( cal );
+}
+
+void KOTimelineView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+{
+  d->mTimeLineView->setIncidenceChanger( changer );
+}
 
 #include "kotimelineview.moc"

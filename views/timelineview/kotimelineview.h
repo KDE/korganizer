@@ -2,8 +2,10 @@
   This file is part of KOrganizer.
 
   Copyright (c) 2007 Till Adam <adam@kde.org>
+
   Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
   Copyright (c) 2010 Andras Mantia <andras@kdab.com>
+  Copyright (c) 2010 Sérgio Martins <sergio.martins@kdab.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,18 +38,11 @@
 class QStandardItem;
 class QTreeWidget;
 
-namespace KDGantt {
-class GraphicsView;
-}
 
 namespace CalendarSupport {
   class Calendar;
 }
 
-namespace KOrg {
-  class TimelineItem;
-  class RowController;
-}
 
 /**
   This class provides a view ....
@@ -71,30 +66,13 @@ class KOTimelineView : public KOEventView
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
-  private:
-    KOrg::TimelineItem *calendarItemForIncidence( const Akonadi::Item &incidence );
-    void insertIncidence( const Akonadi::Item &incidence );
-    void insertIncidence( const Akonadi::Item &incidence, const QDate &day );
-    void removeIncidence( const Akonadi::Item &incidence );
+    void setCalendar( CalendarSupport::Calendar *cal );
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
-  private slots:
-//     void overscale( KDGantt::View::Scale scale );
-    void itemSelected( const QModelIndex &index );
-    void itemDoubleClicked( const QModelIndex& index );
-    void itemChanged( QStandardItem* item );
-    void contextMenuRequested( const QPoint& point);
-    void newEventWithHint( const QDateTime & );
-    void splitterMoved();
 
   private:
-    Akonadi::Item::List mSelectedItemList;
-    KDGantt::GraphicsView *mGantt;
-    QTreeWidget *mLeftView;
-    KOrg::RowController *mRowController;
-    QMap<Akonadi::Collection::Id, KOrg::TimelineItem*> mCalendarItemMap;
-    KOEventPopupMenu *mEventPopup;
-    QDate mStartDate, mEndDate;
-    QDateTime mHintDate;
+    class Private;
+    Private * const d;
 };
 
 #endif
