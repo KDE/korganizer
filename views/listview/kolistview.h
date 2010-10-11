@@ -27,9 +27,10 @@
 #define KOLISTVIEW_H
 
 #include "koeventview.h"
-#include "customlistviewitem.h"
 
 #include <KCalCore/Incidence>
+
+#include <calendarviews/eventviews/list/listview.h>
 
 #include <QHash>
 #include <QList>
@@ -41,21 +42,13 @@ namespace CalendarSupport {
 }
 
 
-typedef CustomListViewItem<Akonadi::Item::Id> KOListViewItem;
-
 class KOListView;
-class QTreeWidget;
+class KOEventPopupMenu;
 
-/**
-  This class provides a multi-column list view of events.  It can
-  display events from one particular day or several days, it doesn't
-  matter.  To use a view that only handles one day at a time, use
-  KODayListView.
+namespace EventViews {
+  class ListView;
+}
 
-  @short multi-column list view of various events.
-  @author Preston Brown <pbrown@kde.org>
-  @see KOBaseView, KODayListView
-*/
 class KOListView : public KOEventView
 {
   Q_OBJECT
@@ -79,6 +72,10 @@ class KOListView : public KOEventView
 
     void clear();
     QSize sizeHint() const;
+
+    void setCalendar( CalendarSupport::Calendar *cal );
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   public slots:
@@ -98,30 +95,10 @@ class KOListView : public KOEventView
 
     void popupMenu( const QPoint & );
 
-  protected slots:
-    void processSelectionChange();
-
-  protected:
-    void addIncidences( const Akonadi::Item::List &incidenceList, const QDate & );
-    void addIncidence( const Akonadi::Item &, const QDate &date );
-
   private:
-    KOListViewItem *getItemForIncidence( const Akonadi::Item & );
-    KCalCore::Incidence::Ptr incidenceForId( Akonadi::Item::Id id ) const;
-
-  private:
-    class ListItemVisitor;
-    QTreeWidget *mTreeWidget;
     KOEventPopupMenu *mPopupMenu;
-    KOListViewItem *mActiveItem;
-    QHash<Akonadi::Item::Id,Akonadi::Item> mItems;
-    QHash<Akonadi::Item::Id, QDate> mDateList;
-    QDate mStartDate;
-    QDate mEndDate;
-    DateList mSelectedDates;
+    EventViews::ListView *mListView;
 
-    // if it's non interactive we disable context menu, and incidence editing
-    bool mIsNonInteractive;
 };
 
 #endif
