@@ -39,6 +39,7 @@ class KOAgendaView::Private
       mAgendaView = new EventViews::AgendaView( KOPrefs::instance()->eventViewsPreferences(),
                                                 QDate::currentDate(),
                                                 QDate::currentDate(),
+                                                true,
                                                 isSideBySide,
                                                 parent );
       mPopup = q->eventPopup();
