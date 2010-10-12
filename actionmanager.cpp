@@ -30,7 +30,6 @@
 #include "actionmanager.h"
 #include "calendaradaptor.h"
 #include "calendarview.h"
-#include "eventarchiver.h"
 #include "history.h"
 #include "importdialog.h"
 #include "kocore.h"
@@ -54,6 +53,7 @@
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/entitymodelstatesaver.h>
+#include <calendarsupport/eventarchiver.h>
 #include <calendarsupport/freebusymanager.h>
 #include <calendarsupport/groupware.h>
 #include <calendarsupport/incidencechanger.h>
@@ -211,7 +211,7 @@ void ActionManager::init()
   connect( mAutoArchiveTimer, SIGNAL(timeout()), SLOT(slotAutoArchive()) );
 
   // First auto-archive should be in 5 minutes (like in kmail).
-  if ( KOPrefs::instance()->mAutoArchive ) {
+  if ( CalendarSupport::KCalPrefs::instance()->mAutoArchive ) {
     mAutoArchiveTimer->start( 5 * 60 * 1000 ); // singleshot
   }
 
@@ -2031,7 +2031,7 @@ void ActionManager::slotImportDialogFinished( ImportDialog *dlg )
 
 void ActionManager::slotAutoArchivingSettingsModified()
 {
-  if ( KOPrefs::instance()->mAutoArchive ) {
+  if ( CalendarSupport::KCalPrefs::instance()->mAutoArchive ) {
     mAutoArchiveTimer->start( 4 * 60 * 60 * 1000 ); // check again in 4 hours
   } else {
     mAutoArchiveTimer->stop();
@@ -2045,7 +2045,7 @@ void ActionManager::slotAutoArchive()
   }
 
   mAutoArchiveTimer->stop();
-  EventArchiver archiver;
+  CalendarSupport::EventArchiver archiver;
   connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
   //AKONADI_PORT avoid this local incidence changer copy...
   CalendarSupport::IncidenceChanger changer( mCalendar, 0, Akonadi::Collection().id() );

@@ -168,7 +168,6 @@ if (KDEPIM_BUILD_DESKTOP)
     calendarview.cpp
     koviewmanager.cpp
     kodialogmanager.cpp
-    archivedialog.cpp
     kowindowlist.cpp
     koeventpopupmenu.cpp
     publishdialog.cpp
@@ -184,7 +183,6 @@ if (KDEPIM_BUILD_DESKTOP)
     aboutdata.cpp
     importdialog.cpp
     korganizerifaceimpl.cpp
-    eventarchiver.cpp
     exportwebdialog.cpp
     kocorehelper.cpp
     kohelper.cpp

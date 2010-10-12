@@ -438,64 +438,6 @@
 
 <!-- Custom Pages Page -->
 
-
-
-<!-- ARCHIVE DIALOG -->
-  <group name="Archive Dialog">
-    <entry type="Bool" key="Auto Archive">
-      <label>Regularly archive events</label>
-      <default>false</default>
-    </entry>
-
-    <entry type="Int" key="Expiry Time">
-      <label>If auto-archiving is enabled, events older than this amount will be archived. The unit of this value is specified in another field.</label>
-      <default>1</default>
-    </entry>
-
-    <entry type="Enum" key="Expiry Unit" name="ExpiryUnit">
-      <label>The unit in which the expiry time is expressed.</label>
-      <choices>
-        <choice name="UnitDays">
-          <label>In days</label>
-        </choice>
-        <choice name="UnitWeeks">
-          <label>In weeks</label>
-        </choice>
-        <choice name="UnitMonths">
-          <label>In months</label>
-        </choice>
-      </choices>
-      <default>UnitMonths</default>
-    </entry>
-
-    <entry type="String" key="Archive File">
-      <label>URL of the file where old events should be archived</label>
-    </entry>
-
-    <entry type="Bool" key="Archive Events">
-      <label>Archive events</label>
-      <default>true</default>
-    </entry>
-
-    <entry type="Bool" key="Archive Todos">
-      <label>Archive to-dos</label>
-      <default>true</default>
-    </entry>
-
-    <entry type="Enum" key="Archive Action">
-      <label>What to do when archiving</label>
-      <choices>
-        <choice name="actionDelete">
-          <label>Delete old events</label>
-        </choice>
-        <choice name="actionArchive">
-          <label>Archive old events to a separate file</label>
-        </choice>
-      </choices>
-      <default>actionArchive</default>
-    </entry>
-  </group>
-
 <!-- Options currently not visible in the GUI -->
   <group name="Hidden Options">
    <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
