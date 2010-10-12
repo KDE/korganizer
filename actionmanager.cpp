@@ -257,6 +257,7 @@ void ActionManager::createCalendarAkonadi()
   monitor->setCollectionMonitored( Akonadi::Collection::root() );
   monitor->fetchCollection( true );
   monitor->setItemFetchScope( scope );
+  monitor->setMimeTypeMonitored( "text/calendar", true );
   monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
