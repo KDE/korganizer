@@ -710,6 +710,9 @@ class KOPrefsDialogViews : public KPrefsModule
       mdisplayBox->setLayout( mdisplayLayout );
       monthLayout->addWidget( mdisplayBox );
 
+      monthLayout->addWidget(
+        addWidBool( KOPrefs::instance()->colorMonthBusyDaysEnabledItem() )->checkBox() );
+
       // GroupBox: Views->Month View->Color Usage
       monthLayout->addWidget(
         addWidRadios( KOPrefs::instance()->monthViewColorsItem() )->groupBox() );
@@ -783,16 +786,16 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   colorLayout->addWidget( agendaBgColor->label(), 3, 0 );
   colorLayout->addWidget( agendaBgColor->button(), 3, 1 );
 
-  KPrefsWidColor *agendaBgBusyColor =
-      addWidColor( KOPrefs::instance()->agendaBgBusyColorItem(), colorFrame );
-  colorLayout->addWidget(agendaBgBusyColor->label(), 4, 0);
-  colorLayout->addWidget(agendaBgBusyColor->button(), 4, 1);
-
   // agenda view Marcus Bains line color
   KPrefsWidColor *mblColor =
     addWidColor( KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame );
   colorLayout->addWidget( mblColor->label(), 5, 0 );
   colorLayout->addWidget( mblColor->button(), 5, 1 );
+
+  KPrefsWidColor *viewBgBusyColor =
+      addWidColor( KOPrefs::instance()->viewBgBusyColorItem(), colorFrame );
+  colorLayout->addWidget(viewBgBusyColor->label(), 4, 0);
+  colorLayout->addWidget(viewBgBusyColor->button(), 4, 1);
 
   // working hours color
   KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
