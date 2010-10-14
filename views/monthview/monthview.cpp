@@ -23,6 +23,7 @@
   without including the source code for Qt in the source distribution.
 */
 
+#include "koprefs.h"
 #include "monthview.h"
 #include "koeventpopupmenu.h"
 #include <calendarviews/eventviews/month/monthview.h>
@@ -38,6 +39,7 @@ class MonthView::Private
     {
       QVBoxLayout *layout = new QVBoxLayout( q );
       mMonthView = new EventViews::MonthView( EventViews::MonthView::Visible, q );
+      mMonthView->setPreferences( KOPrefs::instance()->eventViewsPreferences() );
       layout->addWidget( mMonthView );
       mPopup = q->eventPopup();
     }
@@ -62,7 +64,6 @@ MonthView::MonthView( QWidget *parent )
 
   connect( d->mMonthView, SIGNAL(shiftedEvent(QDate,QDate)),
            SIGNAL(shiftedEvent(QDate,QDate)) );
-
 
   connect( d->mMonthView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
