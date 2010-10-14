@@ -380,7 +380,7 @@
     </entry>
 
     <entry type="Color" key="ViewBackgroundBusyColor" name="ViewBgBusyColor">
-      <label>Busy days background busy color</label>
+      <label>Busy days background color</label>
       <whatsthis>When you have an all day event marked as busy, you can have a different agenda or month view background color for that day. Select the color here.</whatsthis>
       <default>136, 255, 219</default>
     </entry>
