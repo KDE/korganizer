@@ -22,14 +22,12 @@
 #include "ui_multiagendaviewconfigwidget.h"
 
 #include <calendarsupport/calendarmodel.h>
-#include <calendarsupport/entitymodelstatesaver.h>
 
 #include <calendarviews/eventviews/agenda/agendaview.h>
 #include <calendarviews/eventviews/multiagenda/multiagendaview.h>
 
 #include <akonadi_next/kcheckableproxymodel.h>
 #include <akonadi_next/kcolumnfilterproxymodel.h>
-
 #include <Akonadi/EntityTreeView>
 
 #include <KCalCore/IncidenceBase> // DateList typedef

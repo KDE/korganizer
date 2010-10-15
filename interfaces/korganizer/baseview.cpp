@@ -26,7 +26,6 @@
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/calendarsearch.h>
 #include <calendarsupport/collectionselection.h>
-#include <calendarsupport/entitymodelstatesaver.h>
 #include <calendarsupport/utils.h>
 
 #include <akonadi_next/kcheckableproxymodel.h>
@@ -69,8 +68,7 @@ class BaseView::Private
                   EventViews::EventView::DatesChanged ),
         calendar( 0 ),
         customCollectionSelection( 0 ),
-        collectionSelectionModel( 0 ),
-        stateSaver( 0 )
+        collectionSelectionModel( 0 )
     {
       QByteArray cname = q->metaObject()->className();
       cname.replace( ":", "_" );
@@ -95,7 +93,6 @@ class BaseView::Private
     CalendarSearch *calendarSearch;
     CollectionSelection *customCollectionSelection;
     KCheckableProxyModel* collectionSelectionModel;
-    EntityModelStateSaver* stateSaver;
     QByteArray identifier;
     KDateTime startDateTime;
     KDateTime endDateTime;
@@ -107,14 +104,10 @@ class BaseView::Private
 
 void BaseView::Private::setUpModels()
 {
-  delete stateSaver;
-  stateSaver = 0;
   delete customCollectionSelection;
   customCollectionSelection = 0;
   if ( collectionSelectionModel ) {
     customCollectionSelection = new CollectionSelection( collectionSelectionModel->selectionModel() );
-    stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
-    stateSaver->addRole( Qt::CheckStateRole, "CheckState" );
     calendarSearch->setSelectionModel( collectionSelectionModel->selectionModel() );
 
   } else {
@@ -290,9 +283,6 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
 
       d->setUpModels();
     }
-
-    const KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String( "_selectionSetup" ) );
-    d->stateSaver->restoreConfig( selectionGroup );
   }
 
   doRestoreConfig( configGroup );
@@ -301,11 +291,6 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
 void BaseView::saveConfig( KConfigGroup &configGroup )
 {
   configGroup.writeEntry( "UseCustomCollectionSelection", d->collectionSelectionModel != 0 );
-  if ( d->stateSaver ) {
-    KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String( "_selectionSetup" ) );
-    d->stateSaver->saveConfig( selectionGroup );
-  }
-
   doSaveConfig( configGroup );
 }
 
