@@ -33,11 +33,13 @@
 
 #include <KCalCore/Incidence>
 
+#include <Akonadi/Item>
+
+#include <kviewstatemaintainer.h>
 #include <KUrl>
 
 #include <QObject>
 
-#include <Akonadi/Item>
 
 namespace KOrg {
   class HTMLExportSettings;
@@ -46,11 +48,11 @@ namespace KOrg {
 namespace CalendarSupport {
   class Calendar;
   class CalendarModel;
-  class EntityModelStateSaver;
 }
 
 namespace Akonadi {
   class EntityTreeViewStateSaver;
+  class ETMViewStateSaver;
 }
 
 namespace KCalCore {
@@ -433,8 +435,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     CalendarSupport::CalendarModel *mCalendarModel;
     CalendarSupport::Calendar *mCalendar;
     AkonadiCollectionView *mCollectionView;
-    Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
-    CalendarSupport::EntityModelStateSaver *mCollectionSelectionModelStateSaver;
+    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
+    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver;
     bool mIsClosing;
 };
 

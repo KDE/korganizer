@@ -52,7 +52,6 @@
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/collectionselection.h>
-#include <calendarsupport/entitymodelstatesaver.h>
 #include <calendarsupport/eventarchiver.h>
 #include <calendarsupport/freebusymanager.h>
 #include <calendarsupport/groupware.h>
@@ -70,13 +69,12 @@
 #include <Akonadi/Session>
 #include <akonadi/entitymimetypefiltermodel.h>
 #include <akonadi/entitydisplayattribute.h>
-#include <akonadi/entitytreeviewstatesaver.h>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstanceCreateJob>
+#include <akonadi/etmviewstatesaver.h>
 
 #include <KHolidays/Holidays>
-
 #include <kmimetypetrader.h>
 #include <kio/job.h>
 #include <KAction>
@@ -120,7 +118,8 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               bool isPart, KMenuBar *menuBar )
   : QObject( parent ),
     mCollectionViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
-    mCollectionView( 0 ), mCollectionViewStateSaver( 0 ), mIsClosing( false )
+    mCollectionView( 0 ), mCollectionViewStateSaver( 0 ),
+    mCollectionSelectionModelStateSaver( 0 ), mIsClosing( false )
 {
   new KOrgCalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
@@ -149,6 +148,9 @@ ActionManager::~ActionManager()
 
   // Take this window out of the window list.
   mWindowList->removeWindow( mMainWindow );
+
+  delete mCollectionSelectionModelStateSaver;
+  delete mCollectionViewStateSaver;
 
   delete mCalendarView;
   delete mCalendar;
@@ -283,8 +285,9 @@ void ActionManager::createCalendarAkonadi()
   checkableProxy->setSelectionModel( selectionModel );
   checkableProxy->setSourceModel( columnFilterProxy );
 
-  mCollectionSelectionModelStateSaver = new CalendarSupport::EntityModelStateSaver( checkableProxy, this );
-  mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState" );
+  KConfig *config = KOGlobals::self()->config();
+  mCollectionSelectionModelStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>( config->group( "GlobalCollectionSelection" ) );
+  mCollectionSelectionModelStateSaver->setSelectionModel( checkableProxy->selectionModel() );
 
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
@@ -296,7 +299,9 @@ void ActionManager::createCalendarAkonadi()
   connect( mCollectionView, SIGNAL(colorsChanged()),
            mCalendarView, SLOT(updateConfig()) );
 
-  mCollectionViewStateSaver = new Akonadi::EntityTreeViewStateSaver( mCollectionView->view() );
+  mCollectionViewStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>( config->group( "GlobalCollectionView" ) );
+  mCollectionViewStateSaver->setView( mCollectionView->view() );
+
   mCollectionView->setCollectionSelectionProxyModel( checkableProxy );
 
   CalendarSupport::CollectionSelection *colSel = new CalendarSupport::CollectionSelection( selectionModel );
@@ -860,15 +865,12 @@ void ActionManager::readSettings()
 
 void ActionManager::restoreCollectionViewSetting()
 {
-  KConfig *config = KOGlobals::self()->config();
-  mCollectionViewStateSaver->restoreState( config->group( "GlobalCollectionView" ) );
-  mCollectionSelectionModelStateSaver->restoreConfig( config->group( "GlobalCollectionSelection") );
+  mCollectionSelectionModelStateSaver->restoreState();
+  mCollectionViewStateSaver->restoreState();
 }
 
 void ActionManager::writeSettings()
 {
-  kDebug();
-
   KConfigGroup config = KOGlobals::self()->config()->group( "Settings" );
   mCalendarView->writeSettings();
 
@@ -888,12 +890,13 @@ void ActionManager::writeSettings()
     config.writeEntry( "EventViewerVisible", mEventViewerShowAction->isChecked() );
   }
 
+  mCollectionViewStateSaver->saveState();
+  mCollectionSelectionModelStateSaver->saveState();
+
   KConfigGroup selectionViewGroup = KOGlobals::self()->config()->group( "GlobalCollectionView" );
-  mCollectionViewStateSaver->saveState( selectionViewGroup );
-  selectionViewGroup.sync();
   KConfigGroup selectionGroup = KOGlobals::self()->config()->group( "GlobalCollectionSelection" );
-  mCollectionSelectionModelStateSaver->saveConfig( selectionGroup );
   selectionGroup.sync();
+  selectionViewGroup.sync();
   config.sync();
 }
 
