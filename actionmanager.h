@@ -35,7 +35,8 @@
 
 #include <Akonadi/Item>
 
-#include <kviewstatemaintainer.h>
+#include <akonadi_next/kviewstatemaintainer.h>
+using Future::KViewStateMaintainer;
 #include <KUrl>
 
 #include <QObject>
