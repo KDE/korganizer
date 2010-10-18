@@ -290,7 +290,6 @@ void CalendarView::setIncidenceChanger( CalendarSupport::IncidenceChanger *chang
 {
   delete mChanger;
   mChanger = changer;
-  mChanger->setGroupware( CalendarSupport::Groupware::instance() );
 
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAddFinished(Akonadi::Item,bool)),

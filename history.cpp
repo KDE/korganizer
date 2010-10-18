@@ -59,8 +59,6 @@ History::History( CalendarSupport::Calendar *calendar, QWidget *parent )
 
   connect( mChanger, SIGNAL(incidenceDeleteFinished(Akonadi::Item,bool)),
            this, SLOT(incidenceDeleteFinished(Akonadi::Item,bool)) );
-
-  mChanger->setGroupware( CalendarSupport::Groupware::instance() );
 }
 
 void History::undo()
