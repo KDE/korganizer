@@ -239,8 +239,8 @@ if (KDEPIM_BUILD_DESKTOP)
 ########### install files ###############
 
   install( FILES korganizer.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR})
-  install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
-  install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+  install( PROGRAMS korganizer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+  install( PROGRAMS korganizer-import.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
   install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
   install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
   install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})

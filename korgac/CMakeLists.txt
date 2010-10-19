@@ -53,5 +53,5 @@ install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(FILES korgac.desktop DESTINATION ${AUTOSTART_INSTALL_DIR})
+install(PROGRAMS korgac.desktop DESTINATION ${AUTOSTART_INSTALL_DIR})
 install(FILES org.kde.korganizer.KOrgac.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
