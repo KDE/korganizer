@@ -18,6 +18,7 @@
 
 #include "multiagendaview.h"
 #include "koeventpopupmenu.h"
+#include "koprefs.h"
 #include "akonadicollectionview.h"
 #include "ui_multiagendaviewconfigwidget.h"
 
@@ -51,6 +52,7 @@ class MultiAgendaView::Private {
     {
       QHBoxLayout *layout = new QHBoxLayout( q );
       mMultiAgendaView = new EventViews::MultiAgendaView( q );
+      mMultiAgendaView->setPreferences( KOPrefs::instance()->eventViewsPreferences() );
       layout->addWidget( mMultiAgendaView );
 
       mPopup = q->eventPopup();
