@@ -27,18 +27,20 @@
 #include "koglobals.h"
 #include <calendarsupport/kcalprefs.h>
 
+using namespace CalendarSupport;
+
 QColor KOCoreHelper::categoryColor( const QStringList &categories )
 {
   if ( categories.isEmpty() ) {
-    return CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
+    return KCalPrefs::instance()->unsetCategoryColor();
   }
   // FIXME: Correctly treat events with multiple categories
   const QString cat = categories.first();
   QColor bgColor;
   if ( cat.isEmpty() ) {
-    bgColor = CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
+    bgColor = KCalPrefs::instance()->unsetCategoryColor();
   } else {
-    bgColor = KOPrefs::instance()->categoryColor( cat );
+    bgColor = CalendarSupport::KCalPrefs::instance()->categoryColor( cat );
   }
   return bgColor;
 }

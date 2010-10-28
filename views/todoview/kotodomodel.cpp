@@ -746,7 +746,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   if ( role == Qt::DecorationRole && index.column() == SummaryColumn ) {
     QStringList categories = todo->categories();
     if ( !categories.isEmpty() ) {
-      return QVariant( KOPrefs::instance()->categoryColor( categories.first() ) );
+      return QVariant( CalendarSupport::KCalPrefs::instance()->categoryColor( categories.first() ) );
     }
   }
 

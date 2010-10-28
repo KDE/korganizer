@@ -931,7 +931,7 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
 {
   QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
   while ( i != mCategoryDict.constEnd() ) {
-    KOPrefs::instance()->setCategoryColor( i.key(), i.value() );
+    CalendarSupport::KCalPrefs::instance()->setCategoryColor( i.key(), i.value() );
     ++i;
   }
 
@@ -969,7 +969,7 @@ void KOPrefsDialogColorsAndFonts::updateCategoryColor()
   const QString cat = mCategoryCombo->currentText();
   QColor color = mCategoryDict.value( cat );
   if ( !color.isValid() ) {
-    color = KOPrefs::instance()->categoryColor( cat );
+    color = CalendarSupport::KCalPrefs::instance()->categoryColor( cat );
   }
   if ( color.isValid() ) {
     mCategoryButton->setColor( color );

@@ -66,10 +66,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     friend class KOPrefsPrivate;
 
   public:
-    void setCategoryColor( const QString &cat, const QColor &color );
-    QColor categoryColor( const QString &cat ) const;
-    bool hasCategoryColor( const QString &cat ) const;
-
     void setResourceColor ( const QString &, const QColor & );
     QColor resourceColor( const QString & );
 

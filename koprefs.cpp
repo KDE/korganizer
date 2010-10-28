@@ -122,23 +122,6 @@ void KOPrefs::usrWriteConfig()
   KConfigSkeleton::usrWriteConfig();
 }
 
-void KOPrefs::setCategoryColor( const QString &cat, const QColor &color )
-{
-  // We can remove these color convinence methods from KOPrefs
-  // and call directly on the EventViews::Prefs
-  mEventViewsPrefs->setCategoryColor( cat, color );
-}
-
-QColor KOPrefs::categoryColor( const QString &cat ) const
-{
-  return mEventViewsPrefs->categoryColor( cat );
-}
-
-bool KOPrefs::hasCategoryColor( const QString &cat ) const
-{
-  return mEventViewsPrefs->hasCategoryColor( cat );
-}
-
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
   return mEventViewsPrefs->setResourceColor( cal, color );
