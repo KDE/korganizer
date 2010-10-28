@@ -29,8 +29,8 @@
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
 #include "ui_accountscalendarwidget.h"
-#include "incidenceeditor-ng/categoryconfig.h"
 
+#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/kcalprefs.h>
 
 #include <libkdepim/ktimeedit.h>
@@ -832,7 +832,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   unsetCategoryColor->label()->setToolTip( unsetCategoryColor->button()->toolTip() );
 
   mCategoryCombo = new KComboBox( categoryGroup );
-  mCategoryCombo->addItems( IncidenceEditorNG::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo->addItems( CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
   mCategoryCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select here the event category you want to modify. "
@@ -954,7 +954,7 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
 void KOPrefsDialogColorsAndFonts::updateCategories()
 {
   mCategoryCombo->clear();
-  mCategoryCombo->addItems( IncidenceEditorNG::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo->addItems( CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
   updateCategoryColor();
 }
 

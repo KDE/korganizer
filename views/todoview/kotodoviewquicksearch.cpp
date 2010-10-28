@@ -29,13 +29,12 @@
 #include "koprefs.h"
 #include "kcheckcombobox.h"
 
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "incidenceeditor-ng/categoryhierarchyreader.h"
 
+#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/calendar.h>
 
 #include <kcalcore/calfilter.h>
-
 #include <KLineEdit>
 
 #include <QString>
@@ -48,6 +47,8 @@
 
 using namespace KCalCore;
 using namespace KPIM;
+
+using namespace CalendarSupport;
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
@@ -107,7 +108,7 @@ void KOTodoViewQuickSearch::fillCategories()
       categories = filter->categoryList();
       categories.sort();
     } else {
-      IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
+      CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();

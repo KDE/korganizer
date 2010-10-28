@@ -28,7 +28,6 @@
 #include "kotodoview.h"
 #include <kcalprefs.h>
 #include "calprinter.h"
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
 #include "koprefs.h"
@@ -42,6 +41,7 @@
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
+#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/calendar.h>
 
@@ -58,6 +58,7 @@
 #include <QTimer>
 
 using namespace KPIM;
+using namespace CalendarSupport;
 
 KOTodoView::KOTodoView( QWidget *parent )
   : BaseView( parent )
@@ -726,7 +727,7 @@ QMenu *KOTodoView::createCategoryPopupMenu()
   QStringList checkedCategories = todo->categories();
 
   QStringList::Iterator it;
-  IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
+  CategoryConfig cc( KOPrefs::instance() );
   Q_FOREACH ( const QString &i, cc.customCategories() ) {
     QAction *action = tempMenu->addAction( i );
     action->setCheckable( true );

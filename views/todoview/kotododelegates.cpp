@@ -24,7 +24,6 @@
 
 #include "kotododelegates.h"
 
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "incidenceeditor-ng/categoryhierarchyreader.h"
 
 #include "koprefs.h"
@@ -33,11 +32,12 @@
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
 
+#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/calendar.h>
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcalcore/calfilter.h>
+#include <KCalCore/CalFilter>
 
 #include <kcolorscheme.h>
 #include <kcombobox.h>
@@ -340,7 +340,7 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
       categories = filter->categoryList();
       categories.sort();
     } else {
-      IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
+      CalendarSupport::CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();

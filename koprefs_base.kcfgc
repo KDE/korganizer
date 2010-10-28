@@ -3,7 +3,6 @@ File=korganizer.kcfg
 ClassName=KOPrefsBase
 Singleton=false
 Mutators=true
-IncludeFiles=incidenceeditor-ng/categoryconfig.h
 MemberVariables=public
 GlobalEnums=true
 ItemAccessors=true

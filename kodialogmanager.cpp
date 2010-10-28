@@ -35,8 +35,8 @@
 #include "searchdialog.h"
 
 #include <calendarsupport/utils.h>
+#include <calendarsupport/categoryconfig.h>
 
-#include <incidenceeditor-ng/categoryconfig.h>
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 
@@ -52,6 +52,7 @@
 using namespace KOrg;
 using namespace KPIM;
 using namespace KCalCore;
+using namespace CalendarSupport;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 
@@ -222,7 +223,7 @@ void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
 
-    IncidenceEditorNG::CategoryConfig* cc = new IncidenceEditorNG::CategoryConfig( KOPrefs::instance(), this );
+    CategoryConfig* cc = new CategoryConfig( KOPrefs::instance(), this );
     mCategoryEditDialog =
       new CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );

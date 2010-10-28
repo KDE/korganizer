@@ -25,11 +25,12 @@
 */
 
 #include "filtereditdialog.h"
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "categoryselectdialog.h"
 #include "koprefs.h"
 
-#include <kcalcore/calfilter.h>
+#include <calendarsupport/categoryconfig.h>
+
+#include <KCalCore/CalFilter>
 
 #include <KMessageBox>
 
@@ -287,8 +288,8 @@ void FilterEdit::editCategorySelection()
   }
 
   if ( !mCategorySelectDialog ) {
-    IncidenceEditorNG::CategoryConfig *cc =
-      new IncidenceEditorNG::CategoryConfig( KOPrefs::instance(), this );
+    CalendarSupport::CategoryConfig *cc =
+      new CalendarSupport::CategoryConfig( KOPrefs::instance(), this );
     mCategorySelectDialog = new IncidenceEditorNG::CategorySelectDialog( cc, this );
     mCategorySelectDialog->setHelp( "categories-view", "korganizer" );
     mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );

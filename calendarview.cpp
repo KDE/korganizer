@@ -52,12 +52,12 @@
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <incidenceeditor-ng/categoryconfig.h>
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedefaults.h>
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 
 #include <calendarviews/eventviews/eventview.h>
+#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/collectionselection.h>
@@ -2782,7 +2782,7 @@ void CalendarView::updateCategories()
   QStringList allCats( CalendarSupport::Calendar::categories( calendar() ) );
   allCats.sort();
 
-  IncidenceEditorNG::CategoryConfig cc( KOPrefs::instance() );
+  CalendarSupport::CategoryConfig cc( KOPrefs::instance() );
 
   QStringList categories( cc.customCategories() );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {

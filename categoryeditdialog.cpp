@@ -23,8 +23,9 @@
 
 #include "categoryeditdialog.h"
 #include "ui_categoryeditdialog_base.h"
-#include "incidenceeditor-ng/categoryconfig.h"
 #include "incidenceeditor-ng/categoryhierarchyreader.h"
+
+#include <calendarsupport/categoryconfig.h>
 
 #include <KLocale>
 
@@ -32,7 +33,9 @@
 #include <QList>
 #include <QStringList>
 
-CategoryEditDialog::CategoryEditDialog( IncidenceEditorNG::CategoryConfig *categoryConfig,
+using namespace CalendarSupport;
+
+CategoryEditDialog::CategoryEditDialog( CategoryConfig *categoryConfig,
                                         QWidget *parent )
   : KDialog( parent ), mCategoryConfig( categoryConfig )
 {
@@ -193,9 +196,9 @@ void CategoryEditDialog::slotApply()
   while ( *it ) {
     path = mWidgets->mCategories->pathByItem( *it++ );
     path.replaceInStrings(
-      IncidenceEditorNG::CategoryConfig::categorySeparator,
-      QString( "\\" ) + IncidenceEditorNG::CategoryConfig::categorySeparator );
-    l.append( path.join( IncidenceEditorNG::CategoryConfig::categorySeparator ) );
+      CategoryConfig::categorySeparator,
+      QString( "\\" ) + CategoryConfig::categorySeparator );
+    l.append( path.join( CategoryConfig::categorySeparator ) );
   }
   mCategoryConfig->setCustomCategories( l );
   mCategoryConfig->writeConfig();
