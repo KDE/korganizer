@@ -825,7 +825,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   categoryGroup->setLayout( categoryLayout );
 
   KPrefsWidColor *unsetCategoryColor =
-    addWidColor( KOPrefs::instance()->unsetCategoryColorItem(), categoryGroup );
+    addWidColor( CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup );
   categoryLayout->addWidget( unsetCategoryColor->label(), 0, 0 );
   categoryLayout->addWidget( unsetCategoryColor->button(), 0, 1 );
   unsetCategoryColor->label()->setWhatsThis( unsetCategoryColor->button()->whatsThis() );

@@ -402,13 +402,6 @@
       <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
-
-    <entry type="Color" key="Unset Category Color">
-      <label>"No category" color (for "Only category" drawing schemes)</label>
-      <whatsthis>Select a color to use for the "no category" or "unset category" situation, when an item does not belong to any category. This color is used when drawing items in the agenda or month views using the "Only category" scheme.</whatsthis>
-      <tooltip>Use this color when drawing items without a category</tooltip>
-      <default>151, 235, 121</default>
-    </entry>
   </group>
 
 <!-- Colors and Fonts Page: Fonts Tab -->
