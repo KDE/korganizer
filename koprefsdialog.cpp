@@ -799,7 +799,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   // working hours color
   KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
-    addWidColor( KOPrefs::instance()->agendaGridWorkHoursBackgroundColorItem(), colorFrame );
+    addWidColor( KOPrefs::instance()->workingHoursColorItem(), colorFrame );
   colorLayout->addWidget( agendaGridWorkHoursBackgroundColor->label(), 6, 0 );
   colorLayout->addWidget( agendaGridWorkHoursBackgroundColor->button(), 6, 1 );
 

@@ -518,11 +518,6 @@
       <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your agenda and in the date navigator.</whatsthis>
       <default>100, 100, 255</default>
     </entry>
-    <entry key="Agenda Grid WorkHours Background Color" type="Color">
-      <label>Working hours color</label>
-      <whatsthis>Select the working hours background color for the agenda view here.</whatsthis>
-      <default>225, 225, 255</default>
-    </entry>
     <entry key="Agenda Grid WorkHours Background Image" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
