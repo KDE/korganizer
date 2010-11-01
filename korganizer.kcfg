@@ -559,12 +559,13 @@
     </entry>
     <entry key="Agenda CalendarItems ToDos Icon" type="String">
     </entry>
-
+<!--
     <entry key="Agenda CalendarItems ToDos DueToday Background Color" type="Color">
       <label>To-do due today color</label>
       <whatsthis>Select the to-do due today color here.</whatsthis>
       <default>255, 200, 50</default>
     </entry>
+-->
     <entry key="Agenda CalendarItems ToDos DueToday Background Image" type="String">
     </entry>
     <entry key="Agenda CalendarItems ToDos DueToday Font" type="Font">
@@ -573,12 +574,13 @@
     </entry>
     <entry key="Agenda CalendarItems ToDos DueToday Icon" type="String">
     </entry>
-
+<!--
     <entry key="Agenda CalendarItems ToDos Overdue Background Color" type="Color">
       <label>To-do overdue color</label>
       <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
+-->
     <entry key="Agenda CalendarItems ToDos Overdue Background Image" type="String">
     </entry>
     <entry key="Agenda CalendarItems ToDos Overdue Font" type="Font">

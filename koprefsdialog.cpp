@@ -806,14 +806,14 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
     addWidColor(
-      KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColorItem(), colorFrame );
+      KOPrefs::instance()->todoDueTodayColorItem(), colorFrame );
   colorLayout->addWidget( todoDueTodayColor->label(), 7, 0 );
   colorLayout->addWidget( todoDueTodayColor->button(), 7, 1 );
 
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
     addWidColor(
-      KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColorItem(), colorFrame );
+      KOPrefs::instance()->todoOverdueColorItem(), colorFrame );
   colorLayout->addWidget( todoOverdueColor->label(), 8, 0 );
   colorLayout->addWidget( todoOverdueColor->button(), 8, 1 );
 

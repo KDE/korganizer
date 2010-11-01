@@ -719,10 +719,10 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   if ( role == Qt::BackgroundRole ) {
     if ( todo->isOverdue() ) {
       return QVariant(
-        QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
+        QBrush( KOPrefs::instance()->todoOverdueColor() ) );
     } else if ( isDueToday( todo ) ) {
       return QVariant(
-        QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
+        QBrush( KOPrefs::instance()->todoDueTodayColor() ) );
     }
   }
 
