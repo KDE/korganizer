@@ -348,10 +348,12 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Akona
 
     if ( !isInHierarchyLoop( todo ) ) {
       const QString parentUid = todo->relatedTo();
-      Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( parentUid );
-      Incidence::Ptr inc = CalendarSupport::incidence( parentItem );
-      if ( inc && inc->type() == Incidence::TypeTodo ) {
-        newParent = Todo::Ptr( static_cast<Todo *>( inc ->clone() ) );
+      if ( !parentUid.isEmpty() ) {
+        Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( parentUid );
+        Incidence::Ptr inc = CalendarSupport::incidence( parentItem );
+        if ( inc && inc->type() == Incidence::TypeTodo ) {
+          newParent = Todo::Ptr( static_cast<Todo *>( inc ->clone() ) );
+        }
       }
     }
   }
@@ -441,28 +443,31 @@ bool KOTodoModel::isInHierarchyLoop( const Todo::Ptr &todo ) const
   }
 
   QString parentUid = todo->relatedTo();
-  Incidence::Ptr i = CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
-  QList<Incidence::Ptr > processedParents;
 
-  // Lets iterate through all parents, if we find one with the same
-  // uid then there's a loop.
-  while ( i ) {
-    if ( i->uid() == todo->uid() ) {
-      // loop detected!
-      return true;
-    } else {
-      if ( !processedParents.contains( i ) ) {
-        processedParents.append( i );
-        // Next parent
-        parentUid = todo->relatedTo();
-        i = CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
+  if ( !parentUid.isEmpty() ) {
+    Incidence::Ptr i = CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
+    QList<Incidence::Ptr > processedParents;
+
+    // Lets iterate through all parents, if we find one with the same
+    // uid then there's a loop.
+    while ( i ) {
+      if ( i->uid() == todo->uid() ) {
+        // loop detected!
+        return true;
       } else {
-        // There's a loop but this to-do isn't in it
-        // the loop is at a higher level, e.g:
-        // t1->t2->t3->t4->t3->t4->t3->t4->t3..
-        // t1 and t2 can be added as sons of t3 without
-        // danger of inifinit looping
-        return false;
+        if ( !processedParents.contains( i ) ) {
+          processedParents.append( i );
+          // Next parent
+          parentUid = todo->relatedTo();
+          i = CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
+        } else {
+          // There's a loop but this to-do isn't in it
+          // the loop is at a higher level, e.g:
+          // t1->t2->t3->t4->t3->t4->t3->t4->t3..
+          // t1 and t2 can be added as sons of t3 without
+          // danger of infinit looping
+          return false;
+        }
       }
     }
   }
