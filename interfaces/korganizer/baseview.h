@@ -45,9 +45,6 @@ class QPoint;
 class KConfigGroup;
 
 namespace CalendarSupport {
-  class CalendarSearch;
-  class CollectionSelection;
-  class CollectionSelectionProxyModel;
   class Calendar;
 }
 
@@ -91,8 +88,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       Return calendar object of this view.
     */
     virtual CalendarSupport::Calendar *calendar();
-
-    CalendarSupport::CalendarSearch* calendarSearch() const;
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -191,15 +186,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * @see doSaveConfig()
      */
     virtual void saveConfig( KConfigGroup &configGroup );
-
-    virtual Future::KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
-    Future::KCheckableProxyModel *customCollectionSelectionProxyModel() const;
-    virtual void setCustomCollectionSelectionProxyModel( Future::KCheckableProxyModel* model );
-
-    CalendarSupport::CollectionSelection *customCollectionSelection() const;
-
-    static CalendarSupport::CollectionSelection* globalCollectionSelection();
-    static void setGlobalCollectionSelection( CalendarSupport::CollectionSelection* selection );
 
     /**
      * returns the view at the given widget coordinate. This is usually the view itself,
@@ -374,16 +360,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void newJournalSignal( const QDate & );
 
   public:
-    /**
-     * returns the selection of collection to be used by this view (custom if set, or global otherwise)
-     */
-    CalendarSupport::CollectionSelection* collectionSelection() const;
-
-    /**
-     * sets the kcal filter on the calendarSearch object, this method can be removed from here when
-     * calendarsearch stuff is removed from baseview, do we need a calendarsearch object per view?
-     */
-    void setFilter( KCalCore::CalFilter *filter );
 
     /**
        Notifies the view that there are pending changes so a redraw is needed.
@@ -420,21 +396,8 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end ) const;
 
-    virtual void incidencesAdded( const Akonadi::Item::List& incidences );
-    virtual void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
-    virtual void incidencesChanged( const Akonadi::Item::List& incidences );
-
-    virtual void handleBackendError( const QString &error );
-
   protected Q_SLOTS:
-    virtual void collectionSelectionChanged();
     virtual void calendarReset();
-
-  private Q_SLOTS:
-    void backendErrorOccurred();
-    void dataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight );
-    void rowsInserted( const QModelIndex& parent, int start, int end );
-    void rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end );
 
   protected:
     CalendarSupport::IncidenceChanger *mChanger;
@@ -443,7 +406,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     class Private;
     Private *const d;
     friend class KOrg::BaseView::Private;
-    static CalendarSupport::CollectionSelection* sGlobalCollectionSelection;
 };
 
 }

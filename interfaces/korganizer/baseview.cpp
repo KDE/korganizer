@@ -24,38 +24,18 @@
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/calendarmodel.h>
-#include <calendarsupport/calendarsearch.h>
-#include <calendarsupport/collectionselection.h>
 #include <calendarsupport/utils.h>
-
-#include <akonadi_next/kcheckableproxymodel.h>
-#include <akonadi_next/kcolumnfilterproxymodel.h>
 
 #include <Akonadi/EntityTreeView>
 
 #include <KConfigGroup>
 #include <KRandom>
 
-#include <QItemSelectionModel>
-#include <QSortFilterProxyModel>
 #include <QVBoxLayout>
-
 
 using namespace CalendarSupport;
 using namespace Future;
 using namespace KOrg;
-
-CollectionSelection* BaseView::sGlobalCollectionSelection = 0;
-
-void BaseView::setGlobalCollectionSelection( CollectionSelection* s )
-{
-  sGlobalCollectionSelection = s;
-}
-
-CollectionSelection* BaseView::globalCollectionSelection()
-{
-  return sGlobalCollectionSelection;
-}
 
 class BaseView::Private
 {
@@ -66,75 +46,26 @@ class BaseView::Private
       : q( qq ),
         mChanges( EventViews::EventView::IncidencesAdded |
                   EventViews::EventView::DatesChanged ),
-        calendar( 0 ),
-        customCollectionSelection( 0 ),
-        collectionSelectionModel( 0 )
+        calendar( 0 )
     {
       QByteArray cname = q->metaObject()->className();
       cname.replace( ":", "_" );
       identifier = cname + "_" + KRandom::randomString( 8 ).toLatin1();
-      calendarSearch = new CalendarSearch( q );
-      connect( calendarSearch->model(), SIGNAL( rowsInserted( const QModelIndex&, int, int ) ),
-               q, SLOT( rowsInserted( const QModelIndex&, int, int ) ) );
-      connect( calendarSearch->model(), SIGNAL( rowsAboutToBeRemoved( const QModelIndex&, int, int ) ),
-               q, SLOT( rowsAboutToBeRemoved( const QModelIndex&, int, int ) ) );
-      connect( calendarSearch->model(), SIGNAL( dataChanged( const QModelIndex&, const QModelIndex& ) ),
-               q, SLOT( dataChanged( const QModelIndex&, const QModelIndex& ) ) );
-      connect( calendarSearch->model(), SIGNAL( modelReset() ), q, SLOT( calendarReset() ) );
     }
 
     ~Private()
     {
-      delete collectionSelectionModel;
     }
 
     EventViews::EventView::Changes mChanges;
     Calendar *calendar;
-    CalendarSearch *calendarSearch;
-    CollectionSelection *customCollectionSelection;
-    KCheckableProxyModel* collectionSelectionModel;
     QByteArray identifier;
     KDateTime startDateTime;
     KDateTime endDateTime;
     KDateTime actualStartDateTime;
     KDateTime actualEndDateTime;
-    void setUpModels();
-    void reconnectCollectionSelection();
 };
 
-void BaseView::Private::setUpModels()
-{
-  delete customCollectionSelection;
-  customCollectionSelection = 0;
-  if ( collectionSelectionModel ) {
-    customCollectionSelection = new CollectionSelection( collectionSelectionModel->selectionModel() );
-    calendarSearch->setSelectionModel( collectionSelectionModel->selectionModel() );
-
-  } else {
-    calendarSearch->setSelectionModel( globalCollectionSelection()->model() );
-  }
-#if 0
-  QDialog* dlg = new QDialog( q );
-  dlg->setModal( false );
-  QVBoxLayout* layout = new QVBoxLayout( dlg );
-  EntityTreeView* testview = new EntityTreeView( dlg );
-  layout->addWidget( testview );
-  testview->setModel( calendarSearch->model() );
-  dlg->show();
-#endif
-  reconnectCollectionSelection();
-}
-
-void BaseView::Private::reconnectCollectionSelection()
-{
-  if ( q->globalCollectionSelection() )
-    q->globalCollectionSelection()->disconnect( q );
-
-  if ( customCollectionSelection )
-    customCollectionSelection->disconnect( q );
-
-  QObject::connect( q->collectionSelection(), SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), q, SLOT(collectionSelectionChanged()) );
-}
 
 
 BaseView::BaseView( QWidget *parent )
@@ -149,11 +80,9 @@ BaseView::~BaseView()
 
 void BaseView::setCalendar( Calendar *cal )
 {
-  if ( d->calendar == cal )
-    return;
-  d->calendar = cal;
-  if ( cal && d->collectionSelectionModel )
-    d->collectionSelectionModel->setSourceModel( cal->model() );
+  if ( d->calendar != cal ) {
+    d->calendar = cal;
+  }
 }
 
 CalPrinterBase::PrintType BaseView::printType() const
@@ -164,11 +93,6 @@ CalPrinterBase::PrintType BaseView::printType() const
 Calendar *BaseView::calendar()
 {
   return d->calendar;
-}
-
-CalendarSearch* BaseView::calendarSearch() const
-{
-  return d->calendarSearch;
 }
 
 bool BaseView::isEventView()
@@ -215,8 +139,6 @@ void BaseView::setDateRange( const KDateTime& start, const KDateTime& end )
   const QPair<KDateTime,KDateTime> adjusted = actualDateRange( start, end );
   d->actualStartDateTime = adjusted.first;
   d->actualEndDateTime = adjusted.second;
-  d->calendarSearch->setStartDate( d->actualStartDateTime );
-  d->calendarSearch->setEndDate( d->actualEndDateTime );
 }
 
 KDateTime BaseView::startDateTime() const
@@ -255,42 +177,11 @@ void BaseView::setIdentifier( const QByteArray& identifier )
 
 void BaseView::restoreConfig( const KConfigGroup &configGroup )
 {
-  const bool useCustom = configGroup.readEntry( "UseCustomCollectionSelection", false );
-  if ( !d->collectionSelectionModel && !useCustom ) {
-    delete d->collectionSelectionModel;
-    d->collectionSelectionModel = 0;
-    d->setUpModels();
-  } else if ( useCustom ) {
-
-    if ( !d->collectionSelectionModel ) {
-      // Sort the calendar model on calendar name
-      QSortFilterProxyModel *sortProxy = new QSortFilterProxyModel( this );
-      sortProxy->setDynamicSortFilter( true );
-      sortProxy->setSortCaseSensitivity( Qt::CaseInsensitive );
-
-      if ( d->calendar ) {
-        sortProxy->setSourceModel( d->calendar->treeModel() );
-      }
-
-      // Only show the first column.
-      KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( this );
-      columnFilterProxy->setVisibleColumn( CalendarSupport::CalendarModel::CollectionTitle );
-      columnFilterProxy->setSourceModel( sortProxy );
-
-      // Make the calendar model checkable.
-      d->collectionSelectionModel = new KCheckableProxyModel( this );
-      d->collectionSelectionModel->setSourceModel( columnFilterProxy );
-
-      d->setUpModels();
-    }
-  }
-
   doRestoreConfig( configGroup );
 }
 
 void BaseView::saveConfig( KConfigGroup &configGroup )
 {
-  configGroup.writeEntry( "UseCustomCollectionSelection", d->collectionSelectionModel != 0 );
   doSaveConfig( configGroup );
 }
 
@@ -300,44 +191,6 @@ void BaseView::doRestoreConfig( const KConfigGroup & )
 
 void BaseView::doSaveConfig( KConfigGroup & )
 {
-}
-
-CollectionSelection* BaseView::collectionSelection() const
-{
-  return d->customCollectionSelection ? d->customCollectionSelection : globalCollectionSelection();
-}
-
-void BaseView::setCustomCollectionSelectionProxyModel( KCheckableProxyModel* model )
-{
-  if ( d->collectionSelectionModel == model )
-    return;
-
-  delete d->collectionSelectionModel;
-  d->collectionSelectionModel = model;
-  d->setUpModels();
-}
-
-void BaseView::collectionSelectionChanged()
-{
-
-}
-
-KCheckableProxyModel *BaseView::customCollectionSelectionProxyModel() const
-{
-  return d->collectionSelectionModel;
-}
-
-KCheckableProxyModel *BaseView::takeCustomCollectionSelectionProxyModel()
-{
-  KCheckableProxyModel* m = d->collectionSelectionModel;
-  d->collectionSelectionModel = 0;
-  d->setUpModels();
-  return m;
-}
-
-CollectionSelection *BaseView::customCollectionSelection() const
-{
-  return d->customCollectionSelection;
 }
 
 void BaseView::clearSelection()
@@ -361,16 +214,6 @@ void BaseView::getHighlightMode( bool &highlightEvents,
   highlightJournals = false;
 }
 
-void BaseView::handleBackendError( const QString &errorString )
-{
-  kError() << errorString;
-}
-
-void BaseView::backendErrorOccurred()
-{
-  handleBackendError( d->calendarSearch->errorString() );
-}
-
 bool BaseView::usesFullWindow()
 {
   return false;
@@ -386,18 +229,6 @@ bool BaseView::supportsDateRangeSelection()
   return true;
 }
 
-void BaseView::incidencesAdded( const Akonadi::Item::List & )
-{
-}
-
-void BaseView::incidencesAboutToBeRemoved( const Akonadi::Item::List & )
-{
-}
-
-void BaseView::incidencesChanged( const Akonadi::Item::List& )
-{
-}
-
 void BaseView::calendarReset()
 {
 }
@@ -405,29 +236,6 @@ void BaseView::calendarReset()
 QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime& start, const KDateTime& end ) const
 {
   return qMakePair( start, end );
-}
-
-void BaseView::dataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight )
-{
-  Q_ASSERT( topLeft.parent() == bottomRight.parent() );
-
-  incidencesChanged( itemsFromModel( d->calendarSearch->model(), topLeft.parent(),
-                     topLeft.row(), bottomRight.row() ) );
-}
-
-void BaseView::rowsInserted( const QModelIndex& parent, int start, int end )
-{
-  incidencesAdded( itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
-}
-
-void BaseView::rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end )
-{
-  incidencesAboutToBeRemoved( itemsFromModel( d->calendarSearch->model(), parent, start, end ) );
-}
-
-void BaseView::setFilter( KCalCore::CalFilter *filter )
-{
-  calendarSearch()->setFilter( filter );
 }
 
 void BaseView::setChanges( EventViews::EventView::Changes changes )

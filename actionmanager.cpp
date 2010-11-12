@@ -305,7 +305,6 @@ void ActionManager::createCalendarAkonadi()
   mCollectionView->setCollectionSelectionProxyModel( checkableProxy );
 
   CalendarSupport::CollectionSelection *colSel = new CalendarSupport::CollectionSelection( selectionModel );
-  BaseView::setGlobalCollectionSelection( colSel );
   EventViews::EventView::setGlobalCollectionSelection( colSel );
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( selectionModel );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
