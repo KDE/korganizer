@@ -2016,7 +2016,7 @@ void CalendarView::exportVCalendar()
   if ( !mCalendar->journals().isEmpty() ) {
     int result = KMessageBox::warningContinueCancel(
       this,
-      i18n( "The journal entries can not be exported to a vCalendar file." ),
+      i18n( "The journal entries cannot be exported to a vCalendar file." ),
       i18n( "Data Loss Warning" ),
       KGuiItem( i18n( "Proceed" ) ),
       KStandardGuiItem::cancel(),
