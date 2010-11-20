@@ -37,8 +37,8 @@
 #include <akonadi/item.h>
 
 #include <KAboutData>
+#include <KPluginFactory>
 #include <KStatusBar>
-#include <KParts/GenericFactory>
 #include <KParts/StatusBarExtension>
 
 #include <QVBoxLayout>
