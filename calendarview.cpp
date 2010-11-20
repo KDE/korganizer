@@ -2521,7 +2521,7 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item& todoItem, bool for
   }
 
   // it a simple todo, ask and delete it.
-  if ( todo->relatedTo().isEmpty() ) {
+  if ( mCalendar->findChildren( todoItem ).isEmpty() ) {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Yes );
