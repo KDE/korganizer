@@ -107,7 +107,11 @@ struct KOTodoModel::TodoTreeNode : QObject
   void deleteMarked()
   {
     if ( mToDelete ) {
+      /*
+        I commented the following check because the item get be deleted outside of korg.
+
 #ifndef NDEBUG
+
       // all sub-todos should be marked for delete too, otherwise there is
       // something wrong
       QList<TodoTreeNode*> toCheck;
@@ -117,7 +121,9 @@ struct KOTodoModel::TodoTreeNode : QObject
         Q_ASSERT ( node->mToDelete || CalendarSupport::todo( node->mTodo )->relatedTo().isEmpty() );
         toCheck << node->mChildren;
       }
+
 #endif
+      */
 
       QModelIndex tmp = mModel->getModelIndex( this );
       mModel->beginRemoveRows( mModel->getModelIndex( mParent ),
