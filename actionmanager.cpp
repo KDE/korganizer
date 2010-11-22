@@ -59,6 +59,7 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
+#include <incidenceeditor-ng/globalsettings.h>
 #include <incidenceeditor-ng/groupwareintegration.h>
 
 #include <akonadi_next/kcheckableproxymodel.h>
@@ -1783,10 +1784,10 @@ void ActionManager::openEventEditor( const QString &summary,
                                      const QStringList &attendees,
                                      const QString &attachmentMimetype )
 {
-  int action = KOPrefs::instance()->defaultEmailAttachMethod();
+  int action = IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod();
   if ( attachmentMimetype != "message/rfc822" ) {
-    action = KOPrefs::Link;
-  } else if ( KOPrefs::instance()->defaultEmailAttachMethod() == KOPrefs::Ask ) {
+    action = IncidenceEditorNG::GlobalSettings::Link;
+  } else if ( IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod() == IncidenceEditorNG::GlobalSettings::Ask ) {
     KMenu *menu = new KMenu( 0 );
     QAction *attachLink = menu->addAction( i18n( "Attach as &link" ) );
     QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
@@ -1798,11 +1799,11 @@ void ActionManager::openEventEditor( const QString &summary,
     delete menu;
 
     if ( ret == attachLink ) {
-      action = KOPrefs::Link;
+      action = IncidenceEditorNG::GlobalSettings::Link;
     } else if ( ret == attachInline ) {
-      action = KOPrefs::InlineFull;
+      action = IncidenceEditorNG::GlobalSettings::InlineFull;
     } else if ( ret == attachBody ) {
-      action = KOPrefs::InlineBody;
+      action = IncidenceEditorNG::GlobalSettings::InlineBody;
     } else {
       return;
     }
@@ -1812,13 +1813,13 @@ void ActionManager::openEventEditor( const QString &summary,
   KTemporaryFile tf;
   tf.setAutoRemove( true );
   switch ( action ) {
-    case KOPrefs::Link:
+    case IncidenceEditorNG::GlobalSettings::Link:
       attData = uri;
       break;
-    case KOPrefs::InlineFull:
+    case IncidenceEditorNG::GlobalSettings::InlineFull:
       attData = file;
       break;
-    case KOPrefs::InlineBody:
+    case IncidenceEditorNG::GlobalSettings::InlineBody:
     {
       QFile f( file );
       if ( !f.open( QFile::ReadOnly ) ) {
@@ -1859,7 +1860,7 @@ void ActionManager::openEventEditor( const QString &summary,
 
   mCalendarView->newEvent( summary, description, QStringList(attData),
                            attendees, QStringList(attachmentMimetype),
-                           action != KOPrefs::Link );
+                           action != IncidenceEditorNG::GlobalSettings::Link );
 }
 
 void ActionManager::openTodoEditor( const QString &text )

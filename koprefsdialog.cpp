@@ -32,6 +32,7 @@
 
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/kcalprefs.h>
+#include <incidenceeditor-ng/globalsettings.h>
 
 #include <libkdepim/ktimeedit.h>
 
@@ -118,7 +119,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   KPrefsWidRadios *defaultEmailAttachMethod =
-    addWidRadios( KOPrefs::instance()->defaultEmailAttachMethodItem(), personalFrame );
+    addWidRadios( IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethodItem(), personalFrame );
   personalLayout->addWidget( defaultEmailAttachMethod->groupBox() );
   personalLayout->addStretch( 1 );
 

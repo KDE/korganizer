@@ -10,29 +10,6 @@
 
 <!-- PREFERENCES DIALOG -->
 
-<!-- General Page: Personal Tab -->
-  <group name="Personal Settings">
-    <entry type="Enum" name="DefaultEmailAttachMethod">
-      <label>Default Email Attachment Method</label>
-      <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
-      <choices>
-        <choice name="Ask">
-          <label>Always ask</label>
-        </choice>
-        <choice name="Link">
-          <label>Only attach link to message</label>
-        </choice>
-        <choice name="InlineFull">
-          <label>Attach complete message</label>
-        </choice>
-        <choice name="InlineBody">
-          <label>Attach message without attachments</label>
-        </choice>
-      </choices>
-      <default>Ask</default>
-    </entry>
-  </group>
-
 <!-- General Page: Save Tab -->
   <group name="Save Settings">
     <entry type="Bool" key="Auto Export">
