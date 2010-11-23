@@ -107,7 +107,7 @@ void POTDElement::step1StartDownload()
                 // The file at that URL contains the file name for the POTD
 
     mFirstStepJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
-    KIO::Scheduler::scheduleJob( mFirstStepJob );
+    KIO::Scheduler::setJobPriority( mFirstStepJob, 1 );
 
     connect( mFirstStepJob, SIGNAL(result(KJob *)),
              this, SLOT(step1Result(KJob *)) );
@@ -123,7 +123,7 @@ void POTDElement::step1StartDownload()
                      ')' + "?action=render" );
 
     mFirstStepBisJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
-    KIO::Scheduler::scheduleJob( mFirstStepBisJob );
+    KIO::Scheduler::setJobPriority( mFirstStepBisJob, 1 );
 
     connect( mFirstStepBisJob, SIGNAL(result(KJob *)),
              this, SLOT(step1BisResult(KJob *)) );
@@ -198,7 +198,7 @@ void POTDElement::step2GetImagePage()
     emit gotNewShortText( mShortText );
 
     mSecondStepJob = KIO::storedGet( mUrl, KIO::NoReload, KIO::HideProgressInfo );
-    KIO::Scheduler::scheduleJob( mSecondStepJob );
+    KIO::Scheduler::setJobPriority( mSecondStepJob, 1 );
 
     connect( mSecondStepJob, SIGNAL(result(KJob *)),
              this, SLOT(step2Result(KJob *)) );
@@ -333,7 +333,7 @@ void POTDElement::step3GetThumbnail()
 
   mThirdStepJob = KIO::storedGet( thumbUrl, KIO::NoReload, KIO::HideProgressInfo );
   kDebug() << "POTD:" << mDate << ": get" << thumbUrl;//FIXME
-  KIO::Scheduler::scheduleJob( mThirdStepJob );
+  KIO::Scheduler::setJobPriority( mThirdStepJob, 1 );
 
   connect( mThirdStepJob, SIGNAL(result(KJob *)),
            this, SLOT(step3Result(KJob *)) );
