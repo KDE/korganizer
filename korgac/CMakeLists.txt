@@ -12,9 +12,15 @@ include_directories(
 
 set(korgac_SRCS 
    korgacmain.cpp 
+   koalarmclient.cpp)
+
+if(NOT WINCE)   
+set(korgac_SRCS
+   ${korgac_SRCS}
    alarmdialog.cpp 
    alarmdockwindow.cpp 
-   koalarmclient.cpp)
+)
+endif(NOT WINCE)
 
 set(korganizer_xml ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
 QT4_ADD_DBUS_INTERFACE(korgac_SRCS ${korganizer_xml} korganizer_interface)
@@ -23,6 +29,9 @@ QT4_ADD_DBUS_INTERFACE(korgac_SRCS ${korganizer_xml} korganizer_interface)
 
 qt4_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h KOAlarmClient)
 
+if (RUNTIME_PLUGINS_STATIC)
+  add_definitions(-DSERIALIZER_PLUGIN_STATIC)
+endif (RUNTIME_PLUGINS_STATIC)
 
 kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
@@ -35,12 +44,19 @@ target_link_libraries(korgac
   ${KDEPIMLIBS_KPIMIDENTITIES_LIBS}
   ${KDEPIMLIBS_AKONADI_LIBS}
   ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
-  korganizer_core
   ${KDEPIMLIBS_KCALCORE_LIBS} 
   ${KDEPIMLIBS_KCALUTILS_LIBS} 
   kdepim
   kdepimdbusinterfaces
 )
+
+if (RUNTIME_PLUGINS_STATIC)
+  target_link_libraries(korgac akonadi_serializer_kcalcore )
+endif (RUNTIME_PLUGINS_STATIC)
+
+if(NOT WINCE)
+target_link_libraries(korgac korganizer_core)
+endif(NOT WINCE)
 
 # TODO: move this to FindQt4.cmake
 find_library( QT_QMAEMO5_LIBRARY QtMaemo5 HINTS ${QT_LIBRARY_DIR} )

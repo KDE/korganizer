@@ -24,7 +24,9 @@ endif(KORG_NODND)
 # enable exception handling
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
 
+if(NOT WINCE)
 add_subdirectory( tests )
+endif(NOT WINCE)
 
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
@@ -41,6 +43,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${Boost_INCLUDE_DIRS}
                     ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
+if(NOT WINCE)
 add_subdirectory( interfaces )
 if (KDEPIM_BUILD_DESKTOP)
   add_subdirectory( pixmaps )
@@ -48,8 +51,10 @@ if (KDEPIM_BUILD_DESKTOP)
   add_subdirectory( plugins )
   add_subdirectory( kcmconfigs )
 endif (KDEPIM_BUILD_DESKTOP)
+endif(NOT WINCE)
 add_subdirectory( korgac )
 
+if(NOT WINCE)
 set( PERL ${PERL_EXECUTABLE} )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
 
@@ -251,3 +256,4 @@ if (KDEPIM_BUILD_DESKTOP)
   install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
 
 endif (KDEPIM_BUILD_DESKTOP)
+endif(NOT WINCE)

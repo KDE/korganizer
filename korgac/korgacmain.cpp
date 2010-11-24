@@ -30,6 +30,12 @@
 
 #include <stdlib.h>
 
+#ifdef SERIALIZER_PLUGIN_STATIC
+#include <QtPlugin>
+
+Q_IMPORT_PLUGIN(akonadi_serializer_kcalcore)
+#endif
+
 class ReminderDaemonApp : public KUniqueApplication
 {
   public:
@@ -82,7 +88,9 @@ int main( int argc, char **argv )
   }
 
   ReminderDaemonApp app;
+#ifndef _WIN32_WCE
   app.disableSessionManagement();
+#endif
 
   return app.exec();
 }

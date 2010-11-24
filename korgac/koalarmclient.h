@@ -26,7 +26,9 @@
 #ifndef KOALARMCLIENT_H
 #define KOALARMCLIENT_H
 
+#ifndef _WIN32_WCE
 #include <KSessionManager>
+#endif
 
 #include <QTimer>
 #include <QDateTime>
@@ -42,14 +44,20 @@ namespace Akonadi {
   class Item;
 }
 
+#ifndef _WIN32_WCE
 class KOAlarmClient : public QObject, public KSessionManager
+#else
+class KOAlarmClient : public QObject
+#endif
 {
   Q_OBJECT
   public:
     KOAlarmClient( QObject *parent = 0 );
     ~KOAlarmClient();
 
+#ifndef _WIN32_WCE
     bool commitData( QSessionManager & );
+#endif
 
     // DBUS interface
     void quit();
