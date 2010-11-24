@@ -105,7 +105,6 @@ class AkonadiCollectionView : public CalendarViewExtension
     void assignColor();
     void disableColor();
     void setDefaultCalendar();
-    void slotCollectionProperties();
 
   private:
     Akonadi::StandardCalendarActionManager* mActionManager;

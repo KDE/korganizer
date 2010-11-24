@@ -30,7 +30,6 @@
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"
-#include "kocollectionpropertiesdialog.h"
 
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/collectionselection.h>
@@ -218,8 +217,13 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL( triggered( bool ) ),
              this, SLOT( deleteCalendar() ) );
 
-    mActionManager->interceptAction( Akonadi::StandardActionManager::CollectionProperties );
-    connect( mActionManager->action( Akonadi::StandardActionManager::CollectionProperties ), SIGNAL( triggered( bool ) ), this, SLOT( slotCollectionProperties() ) );
+    mActionManager->setContextText( Akonadi::StandardActionManager::CollectionProperties, Akonadi::StandardActionManager::DialogTitle,
+                                    i18nc( "@title:window", "Properties of Calendar Folder %1" ) );
+
+    const QStringList pages = QStringList() << QLatin1String( "CalendarSupport::CollectionGeneralPage" )
+                                            << QLatin1String( "Akonadi::CachePolicyPage" );
+
+    mActionManager->setCollectionPropertiesPageNames( pages );
 
     mDisableColor = new KAction( mCollectionview );
     mDisableColor->setText( "&Disable Color");
@@ -449,21 +453,6 @@ void AkonadiCollectionView::rowsInserted( const QModelIndex&, int, int )
 {
   if ( !mNotSendAddRemoveSignal )
     emit resourcesAddedRemoved();
-}
-
-
-void AkonadiCollectionView::slotCollectionProperties()
-{
-  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
-  Q_ASSERT( index.isValid() );
-  const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
-  Q_ASSERT( collection.isValid() );
-
-  KOCollectionPropertiesDialog* dlg = new KOCollectionPropertiesDialog( collection, this );
-
-  dlg->setCaption(  i18nc( "@title:window", "Properties of Calendar Folder %1" , collection.name() ) );
-  dlg->resize( 400, 500 );
-  dlg->show();
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

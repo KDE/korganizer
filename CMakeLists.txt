@@ -141,8 +141,6 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 if (KDEPIM_BUILD_DESKTOP)
 
   set(korganizerprivate_LIB_SRCS
-    kocollectionpropertiesdialog.cpp
-    collectiongeneralpage.cpp
     koeventviewerdialog.cpp
     datenavigator.cpp
     kdatenavigator.cpp

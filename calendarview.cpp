@@ -60,6 +60,7 @@
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/calendaradaptor.h>
+#include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/groupware.h>
 #include <calendarsupport/freebusymanager.h>
@@ -251,6 +252,15 @@ CalendarView::CalendarView( QWidget *parent )
            this, SLOT(processTodoListSelection(const Akonadi::Item &,const QDate &)) );
   disconnect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
               this, SLOT(processMainViewSelection(const Akonadi::Item &,const QDate &)) );
+
+  {
+    static bool pageRegistered = false;
+
+    if ( !pageRegistered ) {
+      Akonadi::CollectionPropertiesDialog::registerPage( new CalendarSupport::CollectionGeneralPageFactory );
+      pageRegistered = true;
+    }
+  }
 }
 
 CalendarView::~CalendarView()
