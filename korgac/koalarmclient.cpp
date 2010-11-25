@@ -164,15 +164,16 @@ void KOAlarmClient::checkAlarms()
 
   kDebug(5891) << "Check:" << from.toString() << " -" << mLastChecked.toString();
 
-  Alarm::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
-                                            KDateTime( mLastChecked, KDateTime::LocalZone ) );
+  const Alarm::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
+                                                KDateTime( mLastChecked, KDateTime::LocalZone ),
+                                                true /* exclude blocked alarms */ );
 
-  foreach( Alarm::Ptr a, alarms ) {
-    const QString uid = a->parentUid();
+  foreach ( const Alarm::Ptr &alarm, alarms ) {
+    const QString uid = alarm->parentUid();
     const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( uid );
     const Akonadi::Item incidence = mCalendar->incidence( itemId );
 
-    createReminder( mCalendar, incidence, from, a->text() );
+    createReminder( mCalendar, incidence, from, alarm->text() );
   }
 }
 
