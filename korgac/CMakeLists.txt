@@ -1,6 +1,11 @@
 remove_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850) #remove korganizer debug area
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5890)
 
+option(KORGAC_AKONADI_AGENT FALSE "Build Korgac as Akonadi agent instead of a stand-alone process")
+if (KORGAC_AKONADI_AGENT)
+  add_definitions( -DKORGAC_AKONADI_AGENT )
+endif ()
+
 add_subdirectory(pixmaps) 
 add_subdirectory(tests) 
 include_directories(
@@ -11,8 +16,13 @@ include_directories(
 ########### next target ###############
 
 set(korgac_SRCS 
-   korgacmain.cpp 
    koalarmclient.cpp)
+
+if(KORGAC_AKONADI_AGENT)
+  set(korgac_SRCS ${korgac_SRCS} korgacagent.cpp)
+else()
+  set(korgac_SRCS ${korgac_SRCS} korgacmain.cpp)
+endif()
 
 if(NOT WINCE)   
 set(korgac_SRCS
@@ -35,7 +45,15 @@ endif (RUNTIME_PLUGINS_STATIC)
 
 kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
-kde4_add_executable(korgac ${korgac_SRCS})
+if(KORGAC_AKONADI_AGENT)
+  if(NOT WINCE)
+    kde4_add_plugin(korgac ${korgac_SRCS})
+  else()
+    kde4_add_plugin(korgac STATIC ${korgac_SRCS})
+  endif()
+else()
+  kde4_add_executable(korgac ${korgac_SRCS})
+endif()
 
 target_link_libraries(korgac
   calendarsupport
@@ -64,7 +82,12 @@ if ( QT_QMAEMO5_LIBRARY )
   target_link_libraries( korgac ${QT_QMAEMO5_LIBRARY} )
 endif ()
 
-install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
+if(KORGAC_AKONADI_AGENT)
+  install(TARGETS korgac DESTINATION ${PLUGIN_INSTALL_DIR})
+  install(FILES korgacagent.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/akonadi/agents)
+else()
+  install(TARGETS korgac ${INSTALL_TARGETS_DEFAULT_ARGS})
+endif()
 
 
 ########### install files ###############

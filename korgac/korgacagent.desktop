@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Reminder Daemon
+Comment=Event and task reminder daemon
+Icon=korgac
+Type=AkonadiAgent
+Exec=korgac
+
+X-Akonadi-MimeTypes=text/calendar
+X-Akonadi-Capabilities=Unique,Autostart,NoConfig
+X-Akonadi-Identifier=akonadi_korgac_agent
+X-Akonadi-LaunchMethod=AgentServer

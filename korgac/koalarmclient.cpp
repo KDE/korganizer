@@ -26,7 +26,7 @@
 //krazy:excludeall=kdebug because we use the korgac(check) debug area in here
 
 #include "koalarmclient.h"
-#ifndef _WIN32_WCE
+#ifndef KORGAC_AKONADI_AGENT
 #include "alarmdialog.h"
 #include "alarmdockwindow.h"
 #else
@@ -38,6 +38,7 @@
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/Session>
 #include <Akonadi/ItemFetchScope>
+#include <akonadi/dbusconnectionpool.h>
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/calendarmodel.h>
@@ -63,14 +64,14 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ), mDocker( 0 ), mDialog( 0 )
 {
   new KOrgacAdaptor( this );
-  QDBusConnection::sessionBus().registerObject( "/ac", this );
+  Akonadi::DBusConnectionPool::threadConnection().registerObject( "/ac", this );
   kDebug();
 
+#ifndef KORGAC_AKONADI_AGENT
   KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
   KConfigGroup generalGroup( &korgConfig, "General" );
   bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
 
-#ifndef _WIN32_WCE
   if ( showDock ) {
     mDocker = new AlarmDockWindow;
 
@@ -145,10 +146,10 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 KOAlarmClient::~KOAlarmClient()
 {
   delete mCalendar;
-#ifndef _WIN32_WCE
+#ifndef KORGAC_AKONADI_AGENT
   delete mDocker;
-#endif
   delete mDialog;
+#endif
 }
 
 void KOAlarmClient::checkAlarms()
@@ -186,7 +187,7 @@ void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
     return;
   }
 
-#if !defined(Q_WS_MAEMO_5) && !defined(_WIN32_WCE)
+#if !defined(Q_WS_MAEMO_5) && !defined(_WIN32_WCE) && !defined(KORGAC_AKONADI_AGENT)
   if ( !mDialog ) {
     mDialog = new AlarmDialog( calendar );
     connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
@@ -202,14 +203,20 @@ void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
 
   mDialog->addIncidence( aitem, dt, displayText );
   mDialog->wakeUp();
-#elif defined(Q_WS_MAEMO_5)
-  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
-  QMaemo5InformationBox::information( 0, incidence->summary(), QMaemo5InformationBox::NoTimeout );
 #else
   const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
+  Q_UNUSED( calendar );
+  Q_UNUSED( dt );
+  Q_UNUSED( displayText );
+
+#if defined(Q_WS_MAEMO_5)
+  QMaemo5InformationBox::information( 0, incidence->summary(), QMaemo5InformationBox::NoTimeout );
+#else
   KNotification *notify = new KNotification( "reminder", 0L, KNotification::Persistent );
   notify->setText( incidence->summary() );
   notify->sendEvent(); 
+#endif
+
 #endif
   saveLastCheckTime();
 }
@@ -231,7 +238,9 @@ void KOAlarmClient::saveLastCheckTime()
 void KOAlarmClient::quit()
 {
   kDebug();
+#ifndef KORGAC_AKONADI_AGENT
   kapp->quit();
+#endif
 }
 
 #ifndef _WIN32_WCE
@@ -286,7 +295,7 @@ void KOAlarmClient::debugShowDialog()
 
 void KOAlarmClient::hide()
 {
-#ifndef _WIN32_WCE
+#ifndef KORGAC_AKONADI_AGENT
   delete mDocker;
   mDocker = 0;
 #endif
@@ -294,7 +303,7 @@ void KOAlarmClient::hide()
 
 void KOAlarmClient::show()
 {
-#ifndef _WIN32_WCE
+#ifndef KORGAC_AKONADI_AGENT
   if ( !mDocker ) {
     mDocker = new AlarmDockWindow;
 
