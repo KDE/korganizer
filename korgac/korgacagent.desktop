@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=Reminder Daemon
+Name[x-test]=xxReminder Daemonxx
 Comment=Event and task reminder daemon
+Comment[x-test]=xxEvent and task reminder daemonxx
 Icon=korgac
 Type=AkonadiAgent
 Exec=korgac
