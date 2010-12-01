@@ -1,8 +1,18 @@
 [Desktop Entry]
 Name=Reminder Daemon
+Name[ia]=Demone de Memento
+Name[nl]=Herinneringsdaemon
+Name[pt]=Servidor de Chamadas de Atenção
+Name[uk]=Фонова служба нагадування
 Name[x-test]=xxReminder Daemonxx
+Name[zh_TW]=提醒守護程式
 Comment=Event and task reminder daemon
+Comment[ia]=Demone de memento pro carga e evento
+Comment[nl]=Herinneringsdaemon voor evenementen en taken
+Comment[pt]=Servidor de chamada de atenção dos eventos e tarefas
+Comment[uk]=Фонова служба нагадування про події і завдання
 Comment[x-test]=xxEvent and task reminder daemonxx
+Comment[zh_TW]=事件與工作提醒守護程式
 Icon=korgac
 Type=AkonadiAgent
 Exec=korgac
