@@ -21,6 +21,7 @@
 #include "koalarmclient.h"
 
 #include <akonadi/agentfactory.h>
+#include <KLocale>
 
 using namespace Akonadi;
 
@@ -28,6 +29,7 @@ KorgacAgent::KorgacAgent(const QString& id) :
   AgentBase(id),
   m_alarmClient( new KOAlarmClient )
 {
+  KGlobal::locale()->insertCatalog( "korganizer" );
 }
 
 KorgacAgent::~KorgacAgent()
@@ -35,6 +37,6 @@ KorgacAgent::~KorgacAgent()
   delete m_alarmClient;
 }
 
-AKONADI_AGENT_FACTORY( KorgacAgent, korganizer )
+AKONADI_AGENT_FACTORY( KorgacAgent, korgac )
 
 #include "korgacagent.moc"
