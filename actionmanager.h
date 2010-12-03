@@ -216,6 +216,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
                          const QStringList &attendees,
                          const QString &attachmentMimetype );
 
+    void openTodoEditor( const QString &summary,
+                         const QString &description,
+                         const QStringList &attachmentUris,
+                         const QStringList &attendees,
+                         const QStringList &attachmentMimetypes,
+                         bool attachmentIsInline );
+
     void openJournalEditor( const QDate &date );
     void openJournalEditor( const QString &text, const QDate &date );
     void openJournalEditor( const QString &text );
