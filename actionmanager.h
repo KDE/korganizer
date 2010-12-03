@@ -200,7 +200,12 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
                           const QString &file,
                           const QStringList &attendees,
                           const QString &attachmentMimetype );
-
+    void openEventEditor( const QString &summary,
+                          const QString &description,
+                          const QStringList &attachmentUris,
+                          const QStringList &attendees,
+                          const QStringList &attachmentMimetypes,
+                          bool attachmentIsInline );
     void openTodoEditor( const QString &);
     void openTodoEditor( const QString &summary,
                          const QString &description,
@@ -215,7 +220,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
                          const QString &file,
                          const QStringList &attendees,
                          const QString &attachmentMimetype );
-
     void openTodoEditor( const QString &summary,
                          const QString &description,
                          const QStringList &attachmentUris,

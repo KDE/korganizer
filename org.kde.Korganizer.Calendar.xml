@@ -37,6 +37,14 @@
       <arg name="attachments" type="as" direction="in"/>
       <arg name="attendees" type="as" direction="in"/>
     </method>
+    <method name="openEventEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="attachmentUris" type="as" direction="in"/>
+      <arg name="attendees" type="as" direction="in"/>
+      <arg name="attachmentMimetypes" type="as" direction="in"/>
+      <arg name="attachmentIsInline" type="b" direction="in"/>
+    </method>
     <method name="openTodoEditor">
       <arg name="text" type="s" direction="in"/>
     </method>

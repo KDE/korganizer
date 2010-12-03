@@ -2094,4 +2094,20 @@ void ActionManager::openTodoEditor( const QString &summary,
   kWarning() << "Not implemented in korg-desktop";
 }
 
+void ActionManager::openEventEditor( const QString &summary,
+                                     const QString &description,
+                                     const QStringList &attachmentUris,
+                                     const QStringList &attendees,
+                                     const QStringList &attachmentMimetypes,
+                                     bool attachmentIsInline )
+{
+  Q_UNUSED( summary );
+  Q_UNUSED( description );
+  Q_UNUSED( attachmentUris );
+  Q_UNUSED( attendees );
+  Q_UNUSED( attachmentMimetypes );
+  Q_UNUSED( attachmentIsInline );
+  kWarning() << "Not implemented in korg-desktop";
+}
+
 #include "actionmanager.moc"
