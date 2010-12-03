@@ -42,10 +42,6 @@ NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
-  // Create a horizontal spacers
-  QSpacerItem *frontSpacer = new QSpacerItem( 50, 1, QSizePolicy::Expanding );
-  QSpacerItem *endSpacer = new QSpacerItem( 50, 1, QSizePolicy::Expanding );
-
   mPrevYear = createNavigationButton(
     isRTL ? "arrow-right-double" : "arrow-left-double",
     i18n( "Scroll backward to the previous year" ),
@@ -86,12 +82,13 @@ NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )
 
   // set up control frame layout
   QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
+  ctrlLayout->setMargin( 0 );
   ctrlLayout->addWidget( mPrevYear );
   ctrlLayout->addWidget( mPrevMonth );
-  ctrlLayout->addSpacerItem( frontSpacer );
+  ctrlLayout->addStretch();
   ctrlLayout->addWidget( mMonth );
   ctrlLayout->addWidget( mYear );
-  ctrlLayout->addSpacerItem( endSpacer );
+  ctrlLayout->addStretch();
   ctrlLayout->addWidget( mNextMonth );
   ctrlLayout->addWidget( mNextYear );
 

@@ -139,6 +139,7 @@ KOTodoView::KOTodoView( QWidget *parent )
            this, SLOT(setFlatView(bool)) );
 
   QGridLayout *layout = new QGridLayout( this );
+  layout->setMargin( 0 );
   layout->addWidget( mQuickSearch, 0, 0, 1, 2 );
   layout->addWidget( mView, 1, 0, 1, 2 );
   layout->setRowStretch( 1, 1 );

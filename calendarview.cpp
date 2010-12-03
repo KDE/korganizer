@@ -146,11 +146,12 @@ CalendarView::CalendarView( QWidget *parent )
   mTodoList->setObjectName( "todolist" );
 
   mEventViewerBox = new KVBox( mLeftSplitter );
-  mEventViewerBox->setMargin( KDialog::marginHint() );
+  mEventViewerBox->setMargin( 0 );
   mEventViewer = new CalendarSupport::IncidenceViewer( mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
+  rightBox->layout()->setMargin( 0 );
   mNavigatorBar = new NavigatorBar( rightBox );
   mRightFrame = new QStackedWidget( rightBox );
   rightBox->setStretchFactor( mRightFrame, 1 );

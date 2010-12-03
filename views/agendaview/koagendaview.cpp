@@ -62,6 +62,7 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   KOEventView( parent ), d( new Private( isSideBySide, this ) )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
+  layout->setMargin( 0 );
   layout->addWidget( d->mAgendaView );
 
   connect( d->mAgendaView, SIGNAL(zoomViewHorizontally(QDate,int)),

@@ -38,6 +38,7 @@ class MonthView::Private
     Private( MonthView *qq ) : q( qq )
     {
       QVBoxLayout *layout = new QVBoxLayout( q );
+      layout->setMargin( 0 );
       mMonthView = new EventViews::MonthView( EventViews::MonthView::Visible, q );
       mMonthView->setPreferences( KOPrefs::instance()->eventViewsPreferences() );
       layout->addWidget( mMonthView );

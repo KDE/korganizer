@@ -48,6 +48,7 @@ KOJournalView::KOJournalView( QWidget *parent )
   : KOrg::BaseView( parent )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setMargin( 0 );
   mSA = new QScrollArea( this );
   mVBox = new KVBox( mSA->viewport() );
   mSA->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );

@@ -158,6 +158,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     mHasContextMenu( hasContextMenu )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setMargin( 0 );
   topLayout->setSpacing( KDialog::spacingHint() );
 
   KLineEdit *searchCol = new KLineEdit( this );

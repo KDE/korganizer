@@ -243,9 +243,8 @@ void DateNavigatorContainer::resizeAllContents()
 
 //  kDebug() << "  NAVIGATORVIEW minimumSizeHint:" << minSize;
 
-  int margin = KDialog::spacingHint();
-  int verticalCount = ( size().height() - margin * 2 ) / minSize.height();
-  int horizontalCount = ( size().width() - margin * 2 ) / minSize.width();
+  int verticalCount = size().height() / minSize.height();
+  int horizontalCount = size().width() / minSize.width();
 
   if ( horizontalCount != mHorizontalCount || verticalCount != mVerticalCount ) {
     int count = horizontalCount * verticalCount;
@@ -276,8 +275,8 @@ void DateNavigatorContainer::resizeAllContents()
     }
   }
 
-  int height = ( size().height() - margin * 2 ) / verticalCount;
-  int width = ( size().width() - margin * 2 ) / horizontalCount;
+  int height = size().height() / verticalCount;
+  int width = size().width() / horizontalCount;
 
   NavigatorBar *bar = mNavigatorView->navigatorBar();
   if ( horizontalCount > 1 ) {
@@ -287,8 +286,8 @@ void DateNavigatorContainer::resizeAllContents()
   }
 
   mNavigatorView->setGeometry( ( ( ( KOGlobals::self()->reverseLayout() ) ?
-                                   ( horizontalCount - 1 ) : 0 ) * width ) + margin,
-                               margin, width, height );
+                                   ( horizontalCount - 1 ) : 0 ) * width ),
+                               0, width, height );
   for ( int i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
@@ -305,22 +304,20 @@ void DateNavigatorContainer::resizeAllContents()
       }
     }
     view->setGeometry( ( ( ( KOGlobals::self()->reverseLayout() ) ?
-                           ( horizontalCount - 1 - x ) : x ) * width ) + margin,
-                       ( y * height ) + margin, width, height );
+                           ( horizontalCount - 1 - x ) : x ) * width ),
+                       y * height, width, height );
 
   }
 }
 
 QSize DateNavigatorContainer::minimumSizeHint() const
 {
-  int margin = KDialog::spacingHint() * 2;
-  return mNavigatorView->minimumSizeHint() + QSize( margin, margin );
+  return mNavigatorView->minimumSizeHint();
 }
 
 QSize DateNavigatorContainer::sizeHint() const
 {
-  int margin = KDialog::spacingHint() * 2;
-  return mNavigatorView->sizeHint() + QSize( margin, margin );
+  return mNavigatorView->sizeHint();
 }
 
 void DateNavigatorContainer::setHighlightMode( bool highlightEvents,

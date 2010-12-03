@@ -38,6 +38,7 @@ class KOTimelineView::Private
     Private( KOTimelineView *q ) : mEventPopup( 0 ), mParent( q )
     {
       QVBoxLayout *vbox = new QVBoxLayout( mParent );
+      vbox->setMargin( 0 );
       mTimeLineView = new EventViews::TimelineView( mParent );
       vbox->addWidget( mTimeLineView );
       mEventPopup = q->eventPopup();
