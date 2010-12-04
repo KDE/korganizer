@@ -1,18 +1,22 @@
 [Desktop Entry]
 Name=Reminder Daemon
+Name[en_GB]=Reminder Dæmon
 Name[et]=Meeldetuletuste deemon
 Name[ia]=Demone de Memento
 Name[nl]=Herinneringsdaemon
 Name[pt]=Servidor de Chamadas de Atenção
+Name[pt_BR]=Servidor de Lembretes
 Name[sv]=Påminnelsedemon
 Name[uk]=Фонова служба нагадування
 Name[x-test]=xxReminder Daemonxx
 Name[zh_TW]=提醒守護程式
 Comment=Event and task reminder daemon
+Comment[en_GB]=Event and task reminder dæmon
 Comment[et]=Sündmuste ja ülesannete meeldetuletuste deemon
 Comment[ia]=Demone de memento pro carga e evento
 Comment[nl]=Herinneringsdaemon voor evenementen en taken
 Comment[pt]=Servidor de chamada de atenção dos eventos e tarefas
+Comment[pt_BR]=Servidor de lembretes dos eventos e tarefas
 Comment[sv]=Påminnelsedemon för händelser och uppgifter
 Comment[uk]=Фонова служба нагадування про події і завдання
 Comment[x-test]=xxEvent and task reminder daemonxx
