@@ -1754,7 +1754,7 @@ void CalendarView::dissociateOccurrences( const Akonadi::Item &item, const QDate
             KGlobal::locale()->formatDate( date ) ),
       i18n( "KOrganizer Confirmation" ),
       KGuiItem( i18n( "&Dissociate" ) ),
-      KGuiItem( i18n( "&Cancel" ) ) );
+      KStandardGuiItem::cancel() );
 
     doOnlyThis = ( answer == KMessageBox::Yes );
   } else {
