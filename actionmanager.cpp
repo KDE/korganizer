@@ -1205,10 +1205,12 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
   }
 
   if ( QFileInfo( settings->outputFile() ).exists() ) {
-    if( KMessageBox::questionYesNo(
+    if( KMessageBox::warningContinueCancel(
           dialogParent(),
           i18n( "Do you want to overwrite file \"%1\"?",
-                settings->outputFile() ) ) == KMessageBox::No ) {
+                settings->outputFile() ),
+          QString(),
+          KStandardGuiItem::overwrite() ) == KMessageBox::Cancel ) {
       return;
     }
   }

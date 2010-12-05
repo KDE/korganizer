@@ -167,14 +167,15 @@ void AlarmDockWindow::activate( const QPoint &pos )
 void AlarmDockWindow::slotQuit()
 {
   if ( mAutostartSet == true ) {
-    int result = KMessageBox::questionYesNo(
+    int result = KMessageBox::warningContinueCancel(
       associatedWidget(),
       i18nc( "@info",
              "Do you want to quit the KOrganizer reminder daemon?<nl/>"
              "<note> you will not get calendar reminders unless the daemon is running.</note>" ),
-      i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ) );
+      i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ),
+      KStandardGuiItem::quit() );
 
-    if ( result == KMessageBox::Yes ) {
+    if ( result == KMessageBox::Continue ) {
       emit quitSignal();
     }
   } else {

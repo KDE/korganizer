@@ -244,11 +244,12 @@ void FilterEdit::bDeletePressed()
     return;
   }
 
-  if ( KMessageBox::questionYesNo(
+  if ( KMessageBox::warningContinueCancel(
          this,
          i18nc( "@info",
                 "Do you really want to permanently remove the filter \"%1\"?", mCurrent->name() ),
-         i18nc( "@title:window", "Delete Filter?" ) ) != KMessageBox::Yes ) {
+         i18nc( "@title:window", "Delete Filter?" ),
+         KStandardGuiItem::del() ) == KMessageBox::Cancel ) {
     return;
   }
 

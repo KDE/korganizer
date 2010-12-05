@@ -865,15 +865,12 @@ void CalendarView::updateUnmanagedViews()
 
 int CalendarView::msgItemDelete( const Akonadi::Item &item )
 {
-  return KMessageBox::questionYesNo(
+  return KMessageBox::warningContinueCancel(
     this,
     i18nc( "@info",
            "Do you really want to permanently remove the item \"%1\"?", CalendarSupport::incidence( item )->summary() ),
     i18nc( "@title:window", "Delete Item?" ),
-    KStandardGuiItem::yes(),
-    KStandardGuiItem::no(),
-    QString(),
-    KMessageBox::Notify );
+    KStandardGuiItem::del());
 }
 
 void CalendarView::edit_cut()
@@ -2535,7 +2532,7 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item& todoItem, bool for
   if ( mCalendar->findChildren( todoItem ).isEmpty() ) {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
-      doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Yes );
+      doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Continue );
     }
     if ( doDelete && mChanger->isNotDeleted( todoItem.id() ) ) {
       mChanger->deleteIncidence( todoItem, 0, this );
@@ -2663,8 +2660,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
             itemFuture,
             KGuiItem( i18n( "Delete &All" ) ) );
         } else {
-          km = ( msgItemDelete( item ) == KMessageBox::Yes ?
-                 KMessageBox::Continue : KMessageBox::Cancel );
+          km = msgItemDelete( item );
         }
       }
     }
@@ -2691,7 +2687,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
   } else {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
-      doDelete = ( msgItemDelete( item ) == KMessageBox::Yes );
+      doDelete = ( msgItemDelete( item ) == KMessageBox::Continue );
     }
     if ( doDelete ) {
       mChanger->deleteIncidence( item, 0, this );
