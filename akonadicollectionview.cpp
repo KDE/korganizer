@@ -407,14 +407,14 @@ void AkonadiCollectionView::deleteCalendar()
   const QString displayname = index.model()->data( index, Qt::DisplayRole ).toString();
   Q_ASSERT( !displayname.isEmpty() );
 
-  if ( KMessageBox::questionYesNo( this,
+  if ( KMessageBox::warningContinueCancel( this,
                                    i18n( "Do you really want to delete calendar %1?", displayname ),
                                    i18n( "Delete Calendar" ),
                                    KStandardGuiItem::del(),
                                    KStandardGuiItem::cancel(),
                                    QString(),
                                    KMessageBox::Dangerous )
-       == KMessageBox::Yes ) {
+       == KMessageBox::Continue ) {
 
     bool isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
 
