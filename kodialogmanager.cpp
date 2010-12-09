@@ -28,7 +28,6 @@
 #include <calendarsupport/archivedialog.h>
 #endif
 #include "calendarview.h"
-#include "categoryeditdialog.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "filtereditdialog.h"
@@ -37,6 +36,7 @@
 #include <calendarsupport/utils.h>
 #include <calendarsupport/categoryconfig.h>
 
+#include <incidenceeditor-ng/categoryeditdialog.h>
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 
@@ -225,7 +225,7 @@ void KODialogManager::createCategoryEditor()
 
     CategoryConfig* cc = new CategoryConfig( KOPrefs::instance(), this );
     mCategoryEditDialog =
-      new CategoryEditDialog( cc, mMainView );
+      new IncidenceEditorNG::CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );
     mCategoryEditDialog->setHelp( "categories-view", "korganizer" );
     connect( mMainView, SIGNAL(categoriesChanged()),

@@ -124,11 +124,6 @@ endif (KDEPIM_BUILD_DESKTOP)
 set(korganizer_core_LIB_SRCS
     koprefs.cpp
     kocore.cpp
-    categoryeditdialog.cpp
-)
-
-kde4_add_ui_files(korganizer_core_LIB_SRCS
-  categoryeditdialog_base.ui
 )
 
 kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
