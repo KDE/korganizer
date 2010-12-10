@@ -61,6 +61,8 @@ K_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
 
 KOPrefs::KOPrefs() : KOPrefsBase()
 {
+  KGlobal::locale()->insertCatalog( "calendarsupport" );
+
   mEventViewsPrefs = EventViews::PrefsPtr( new EventViews::Prefs( this ) );
 
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
