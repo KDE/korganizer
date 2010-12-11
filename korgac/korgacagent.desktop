@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Reminder Daemon
+Name[ca]=Dimoni de recordatoris
 Name[en_GB]=Reminder Dæmon
 Name[et]=Meeldetuletuste deemon
 Name[fr]=Démon d'alarme
@@ -14,6 +15,7 @@ Name[uk]=Фонова служба нагадування
 Name[x-test]=xxReminder Daemonxx
 Name[zh_TW]=提醒守護程式
 Comment=Event and task reminder daemon
+Comment[ca]=Dimoni de recordatoris de tasques i esdeveniments
 Comment[en_GB]=Event and task reminder dæmon
 Comment[et]=Sündmuste ja ülesannete meeldetuletuste deemon
 Comment[fr]=Démon de rappel des tâches et évènements
