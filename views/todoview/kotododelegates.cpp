@@ -373,7 +373,7 @@ void KOTodoCategoriesDelegate::setEditorData( QWidget *editor,
 {
   KCheckComboBox *combo = static_cast<KCheckComboBox *>( editor );
 
-  combo->setCheckedItems( index.data( Qt::EditRole ).toStringList() );
+  combo->setCheckedItems( index.data( Qt::EditRole ).toStringList(), Qt::UserRole );
 }
 
 void KOTodoCategoriesDelegate::setModelData( QWidget *editor,
@@ -382,7 +382,7 @@ void KOTodoCategoriesDelegate::setModelData( QWidget *editor,
 {
   KCheckComboBox *combo = static_cast<KCheckComboBox *>( editor );
 
-  model->setData( index, combo->checkedItems() );
+  model->setData( index, combo->checkedItems( Qt::UserRole ) );
 }
 
 void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,

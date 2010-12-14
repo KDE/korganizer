@@ -97,7 +97,7 @@ void KOTodoViewQuickSearch::reset()
 
 void KOTodoViewQuickSearch::fillCategories()
 {
-  QStringList currentCategories = mCategoryCombo->checkedItems();
+  QStringList currentCategories = mCategoryCombo->checkedItems( Qt::UserRole );
   mCategoryCombo->clear();
 
   QStringList categories;
@@ -130,7 +130,7 @@ void KOTodoViewQuickSearch::fillCategories()
   }
 
   IncidenceEditorNG::CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
-  mCategoryCombo->setCheckedItems( currentCategories );
+  mCategoryCombo->setCheckedItems( currentCategories, Qt::UserRole );
 }
 
 #include "kotodoviewquicksearch.moc"
