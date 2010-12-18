@@ -2,6 +2,7 @@
 Name=Reminder Daemon
 Name[ca]=Dimoni de recordatoris
 Name[en_GB]=Reminder Dæmon
+Name[es]=Demonio de recordatorio
 Name[et]=Meeldetuletuste deemon
 Name[fr]=Démon d'alarme
 Name[gl]=Daemon do servizo de lembranzas
@@ -18,6 +19,7 @@ Name[zh_TW]=提醒守護程式
 Comment=Event and task reminder daemon
 Comment[ca]=Dimoni de recordatoris de tasques i esdeveniments
 Comment[en_GB]=Event and task reminder dæmon
+Comment[es]=Demonio de recordatorio de eventos y tareas
 Comment[et]=Sündmuste ja ülesannete meeldetuletuste deemon
 Comment[fr]=Démon de rappel des tâches et évènements
 Comment[gl]=Daemon que lembra de eventos e tarefas
