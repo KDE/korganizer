@@ -37,11 +37,11 @@ AboutData::AboutData()
                 KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
-#if defined( KDEPIM_SVN_REVISION_STRING ) && defined( KDEPIM_SVN_LAST_CHANGE )
+#if defined( KDEPIM_GIT_REVISION_STRING ) && defined( KDEPIM_GIT_LAST_CHANGE )
   QByteArray versionInfo( korgVersion );
-  versionInfo += '-' + QByteArray( KDEPIM_SVN_REVISION_STRING ) +
+  versionInfo += '-' + QByteArray( KDEPIM_GIT_REVISION_STRING ) +
                  ' ' +
-                 '(' + QByteArray( KDEPIM_SVN_LAST_CHANGE ) + ')';
+                 '(' + QByteArray( KDEPIM_GIT_LAST_CHANGE ) + ')';
   setVersion( versionInfo );
 #endif
 
