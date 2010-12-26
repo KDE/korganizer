@@ -1,15 +1,18 @@
 [Desktop Entry]
 Name=Reminder Daemon
 Name[ca]=Dimoni de recordatoris
+Name[de]=Erinnerungsmodul
 Name[en_GB]=Reminder Dæmon
 Name[es]=Demonio de recordatorio
 Name[et]=Meeldetuletuste deemon
 Name[fr]=Démon d'alarme
 Name[gl]=Daemon do servizo de lembranzas
 Name[ia]=Demone de Memento
+Name[it]=Demone degli avvisi
 Name[kk]=Еске салу қызметі
 Name[km]=ដេមិន​កម្មវិធី​រំលឹក
 Name[nl]=Herinneringsdaemon
+Name[pa]=ਰੀਮਾਈਡਰ ਡੈਮਨ
 Name[pt]=Servidor de Chamadas de Atenção
 Name[pt_BR]=Servidor de Lembretes
 Name[sv]=Påminnelsedemon
