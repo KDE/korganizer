@@ -238,7 +238,7 @@ void KOTodoModel::reloadTodos()
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
     TodoTreeNode *tmp = findTodo( CalendarSupport::incidence( *it )->uid() );
     if ( !tmp ) {
-      kDebug()<<"Inserting " << CalendarSupport::todo(*it)->summary() << CalendarSupport::todo(*it)->relatedTo();
+      // kDebug()<<"Inserting " << CalendarSupport::todo(*it)->summary() << CalendarSupport::todo(*it)->relatedTo();
       insertTodo( *it );
     } else {
       // update pointer to the todo
