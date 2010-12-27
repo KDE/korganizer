@@ -136,6 +136,7 @@ class KOViewManager : public QObject
 
   signals:
     void configChanged();
+    void datesSelected(const KCalCore::DateList & );
 
   public slots:
     void showWhatsNextView();

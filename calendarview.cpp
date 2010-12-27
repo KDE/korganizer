@@ -210,6 +210,9 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(datesSelected(const KCalCore::DateList &)),
            mDateNavigator, SLOT(selectDates(const KCalCore::DateList &)) );
 
+  connect( mViewManager, SIGNAL(datesSelected(KCalCore::DateList)),
+           mDateNavigator, SLOT(selectDates(KCalCore::DateList)) );
+
   connect( mDateNavigatorContainer, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
            SLOT(addIncidenceOn(Akonadi::Item,QDate)) );
   connect( mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),

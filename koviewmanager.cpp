@@ -294,6 +294,11 @@ void KOViewManager::connectView( KOrg::BaseView *view )
     return;
   }
 
+  if ( view->isEventView() ) {
+    connect( view, SIGNAL(datesSelected(KCalCore::DateList)),
+                   SIGNAL(datesSelected(KCalCore::DateList)) );
+  }
+
   // selecting an incidence
   connect( view, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            mMainView, SLOT(processMainViewSelection(Akonadi::Item,QDate)) );
