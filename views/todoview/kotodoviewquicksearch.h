@@ -55,10 +55,21 @@ class KOTodoViewQuickSearch : public QWidget
 
   Q_SIGNALS:
     void searchTextChanged( const QString & );
+
+
+    /**
+     * The string list contains the new categories which are set on the filter.
+     * All values belong to the Qt::UserRole of the combo box, not the Qt::DisplayRole,
+     * so, if someone checks a subcategory, the value will be "ParentCategory:subCategory"
+     * and not " subcategory".
+     * */
     void searchCategoryChanged( const QStringList & );
 
   public Q_SLOTS:
     void reset();
+
+  private Q_SLOTS:
+    void emitSearchCategoryChanged();
 
   private:
     /** Helper method for the filling of the category combo. */

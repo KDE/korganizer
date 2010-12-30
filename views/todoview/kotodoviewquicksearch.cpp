@@ -69,8 +69,8 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
   mCategoryCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Categories" ) );
   mCategoryCombo->setSeparator( i18nc( "@item:intext delimiter for joining category names", "," ) );
 
-  connect( mCategoryCombo, SIGNAL(checkedItemsChanged(const QStringList &)),
-           this, SIGNAL(searchCategoryChanged(const QStringList &)) );
+  connect( mCategoryCombo, SIGNAL(checkedItemsChanged(QStringList)),
+           SLOT(emitSearchCategoryChanged()) );
 
   layout->addWidget( mCategoryCombo, 1 );
   fillCategories();
@@ -131,6 +131,14 @@ void KOTodoViewQuickSearch::fillCategories()
 
   IncidenceEditorNG::CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
   mCategoryCombo->setCheckedItems( currentCategories, Qt::UserRole );
+}
+
+void KOTodoViewQuickSearch::emitSearchCategoryChanged()
+{
+
+  /* The display role doesn't work because it represents subcategories as " subcategory", and we want
+   * "ParentCollection:subCategory" */
+  emit searchCategoryChanged( mCategoryCombo->checkedItems( Qt::UserRole ) );
 }
 
 #include "kotodoviewquicksearch.moc"
