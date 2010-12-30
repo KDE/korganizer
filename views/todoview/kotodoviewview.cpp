@@ -25,6 +25,10 @@
 
 #include "kotodoviewview.h"
 
+#include <KMenu>
+#include <KLocalizedString>
+#include <KDebug>
+
 #include <QWidget>
 #include <QModelIndex>
 #include <QHeaderView>
@@ -33,10 +37,6 @@
 #include <QAction>
 #include <QVariant>
 #include <QMouseEvent>
-
-#include <KMenu>
-#include <KLocalizedString>
-#include <KDebug>
 
 KOTodoViewView::KOTodoViewView( QWidget *parent )
   : QTreeView( parent ), mHeaderPopup( 0 )

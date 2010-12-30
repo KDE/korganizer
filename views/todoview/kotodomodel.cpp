@@ -44,7 +44,6 @@
   #include <KCalUtils/VCalDrag>
 #endif
 
-
 #include <KPIMUtils/Email>
 
 #include <KDebug>

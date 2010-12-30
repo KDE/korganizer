@@ -26,7 +26,6 @@
 */
 
 #include "kotodoview.h"
-#include <kcalprefs.h>
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
@@ -41,15 +40,16 @@
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
+#include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/calendar.h>
 
 #include <libkdepim/kdatepickerpopup.h>
 
-#include <kcalcore/calformat.h>
-#include <kcalcore/incidence.h>
-#include <kcalcore/todo.h>
+#include <KCalCore/CalFormat>
+#include <KCalCore/Incidence>
+#include <KCalCore/Todo>
 
 #include <QCheckBox>
 #include <QGridLayout>
@@ -654,13 +654,13 @@ void KOTodoView::newTodo()
 void KOTodoView::newSubTodo()
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) {
-    return;
+  if ( selection.size() == 1 ) {
+    const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
+    emit newSubTodoSignal( todoItem );
+  } else {
+    // This never happens
+    kWarning() << "Selection size isn't 1";
   }
-
-  const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-
-  emit newSubTodoSignal( todoItem );
 }
 
 void KOTodoView::copyTodoToDate( const QDate &date )
