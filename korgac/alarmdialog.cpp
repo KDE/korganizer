@@ -164,7 +164,7 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   mIncidenceTree = new QTreeWidget( topBox );
   mIncidenceTree->setColumnCount( 3 );
   mIncidenceTree->setSortingEnabled( true );
-  QStringList headerLabels =
+  const QStringList headerLabels =
     ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
       << i18nc( "@title:column happens at date/time", "Date Time" )
       << i18nc( "@title:column trigger date/time", "Trigger Time" ) );
@@ -182,6 +182,7 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   mIncidenceTree->setWordWrap( true );
   mIncidenceTree->setAllColumnsShowFocus( true );
   mIncidenceTree->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  mIncidenceTree->setRootIsDecorated( false );
 
   mTopLayout->addWidget( mIncidenceTree );
 
