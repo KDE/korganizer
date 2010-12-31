@@ -147,6 +147,7 @@ void HtmlExportJob::finishExport()
 
   bool saveStatus;
   QString errorMessage;
+  Q_ASSERT( d->mSettings );
   KUrl dest( d->mSettings->outputFile() );
   if ( dest.isLocalFile() ) {
     saveStatus = save( dest.toLocalFile() );
