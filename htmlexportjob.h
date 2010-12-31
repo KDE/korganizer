@@ -24,13 +24,14 @@
 
 #include <kjob.h>
 
-#include <kcalcore/incidence.h>
-#include <kcalcore/event.h>
-#include <kcalcore/todo.h>
+#include <KCalCore/Incidence>
+#include <KCalCore/Event>
+#include <KCalCore/Todo>
 
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
+#include <QSharedPointer>
 
 class QTextStream;
 
@@ -42,9 +43,10 @@ namespace CalendarSupport {
   class Calendar;
 }
 
-namespace KOrg {
 
+namespace KOrg {
 class HTMLExportSettings;
+typedef QSharedPointer<HTMLExportSettings> HTMLExportSettingsPtr;
 
 /**
   This class provides the functions to export a calendar as a HTML page.
@@ -57,7 +59,8 @@ class HtmlExportJob : public KJob
     /**
       Create new HTML exporter for calendar.
     */
-    HtmlExportJob( CalendarSupport::Calendar *calendar, HTMLExportSettings *settings, QWidget *parent = 0 );
+    HtmlExportJob( CalendarSupport::Calendar *calendar, const HTMLExportSettingsPtr &settings,
+                   QWidget *parent = 0 );
     virtual ~HtmlExportJob();
 
     void addHoliday( const QDate &date, const QString &name );

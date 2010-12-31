@@ -54,11 +54,12 @@ using namespace KOrg;
 
 static QString cleanChars( const QString &txt );
 
+
 //@cond PRIVATE
 class KOrg::HtmlExportJob::Private
 {
   public:
-    Private( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+    Private( CalendarSupport::Calendar *calendar, const HTMLExportSettingsPtr &settings, QWidget *parent )
       : mCalendar( calendar ),
         mSettings( settings ),
         mParentWidget( parent ),
@@ -66,7 +67,7 @@ class KOrg::HtmlExportJob::Private
     {}
 
     CalendarSupport::Calendar *mCalendar;
-    KOrg::HTMLExportSettings *mSettings;
+    HTMLExportSettingsPtr mSettings;
     QWidget *mParentWidget;
     QMap<QDate,QString> mHolidayMap;
     qulonglong mSubJobCount;
@@ -74,7 +75,7 @@ class KOrg::HtmlExportJob::Private
 };
 //@endcond
 
-HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar, const HTMLExportSettingsPtr &settings, QWidget *parent )
   : KJob( parent ), d( new Private( calendar, settings, parent ) )
 {
 }

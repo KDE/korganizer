@@ -30,6 +30,7 @@
 
 #include "korganizer_export.h"
 #include "korganizer/part.h"
+#include "htmlexportjob.h"
 
 #include <KCalCore/Incidence>
 
@@ -127,7 +128,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool saveAsURL( const KUrl &kurl );
 
     void exportHTML();
-    void exportHTML( KOrg::HTMLExportSettings * );
+    void exportHTML( const KOrg::HTMLExportSettingsPtr & );
     void toggleMenubar( bool dontShowWarning = false );
 
   public:

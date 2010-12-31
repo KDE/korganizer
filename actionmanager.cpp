@@ -40,7 +40,6 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 #include "akonadicollectionview.h"
-#include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
 #include <KCalCore/FileStorage>
@@ -1180,27 +1179,28 @@ bool ActionManager::saveURL()
 
 void ActionManager::exportHTML()
 {
-  HTMLExportSettings settings( "KOrganizer" );
+  HTMLExportSettingsPtr settings( new HTMLExportSettings( "KOrganizer" ) );
   // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
-  settings.readConfig();
+  settings->readConfig();
 
   const QDate qd1 = QDate::currentDate();
   QDate qd2 = qd1;
 
-  if ( settings.monthView() ) {
+  if ( settings->monthView() ) {
     qd2.addMonths( 1 );
   } else {
     qd2.addDays( 7 );
   }
-  settings.setDateStart( QDateTime( qd1 ) );
-  settings.setDateEnd( QDateTime( qd2 ) );
-  exportHTML( &settings );
+  settings->setDateStart( QDateTime( qd1 ) );
+  settings->setDateEnd( QDateTime( qd2 ) );
+  exportHTML( settings );
 }
 
-void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
+void ActionManager::exportHTML( const KOrg::HTMLExportSettingsPtr &settings )
 {
   if ( !settings || settings->outputFile().isEmpty() ) {
+    kWarning() << "Settings is null, or the output file is empty " << settings.data();
     return;
   }
 
