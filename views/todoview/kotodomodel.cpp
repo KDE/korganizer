@@ -776,6 +776,18 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     }
   }
 
+  if ( role == Qt::TextAlignmentRole ) {
+    switch ( index.column() ) {
+      // If you change this, change headerData() too.
+      case RecurColumn:
+      case PriorityColumn:
+      case PercentColumn:
+      case DueDateColumn:
+        return QVariant( Qt::AlignHCenter );
+    }
+    return QVariant();
+  }
+
   return QVariant();
 }
 
@@ -812,9 +824,11 @@ QVariant KOTodoModel::headerData( int column,
 
   if ( role == Qt::TextAlignmentRole ) {
     switch ( column ) {
+      // If you change this, change data() too.
       case RecurColumn:
       case PriorityColumn:
       case PercentColumn:
+      case DueDateColumn:
         return QVariant( Qt::AlignHCenter );
     }
     return QVariant();
