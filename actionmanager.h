@@ -30,7 +30,6 @@
 
 #include "korganizer_export.h"
 #include "korganizer/part.h"
-#include "htmlexportjob.h"
 
 #include <KCalCore/Incidence>
 
@@ -128,7 +127,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool saveAsURL( const KUrl &kurl );
 
     void exportHTML();
-    void exportHTML( const KOrg::HTMLExportSettingsPtr & );
+    void exportHTML( KOrg::HTMLExportSettings * );
     void toggleMenubar( bool dontShowWarning = false );
 
   public:
@@ -368,6 +367,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     QWidget *dialogParent();
 
   private slots:
+    void handleExportJobResult( KJob* );
     void dumpText( const QString & );  // only for debugging purposes
 
     void slotResourcesChanged(bool);
@@ -451,6 +451,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver;
     bool mIsClosing;
+    QSet<KOrg::HTMLExportSettings*> mSettingsToFree;
 };
 
 #endif

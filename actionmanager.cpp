@@ -40,6 +40,7 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 #include "akonadicollectionview.h"
+#include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 
 #include <KCalCore/FileStorage>
@@ -1179,7 +1180,8 @@ bool ActionManager::saveURL()
 
 void ActionManager::exportHTML()
 {
-  HTMLExportSettingsPtr settings( new HTMLExportSettings( "KOrganizer" ) );
+  HTMLExportSettings *settings = new HTMLExportSettings( "KOrganizer" );
+  mSettingsToFree.insert( settings );
   // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
   settings->readConfig();
@@ -1197,10 +1199,10 @@ void ActionManager::exportHTML()
   exportHTML( settings );
 }
 
-void ActionManager::exportHTML( const KOrg::HTMLExportSettingsPtr &settings )
+void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
 {
   if ( !settings || settings->outputFile().isEmpty() ) {
-    kWarning() << "Settings is null, or the output file is empty " << settings.data();
+    kWarning() << "Settings is null, or the output file is empty " << settings;
     return;
   }
 
@@ -1231,6 +1233,7 @@ void ActionManager::exportHTML( const KOrg::HTMLExportSettingsPtr &settings )
     }
   }
 
+  connect( exportJob, SIGNAL(result(KJob*)), SLOT(handleExportJobResult(KJob*)) );
   exportJob->start();
 }
 
@@ -2111,5 +2114,17 @@ void ActionManager::openEventEditor( const QString &summary,
   Q_UNUSED( attachmentIsInline );
   kWarning() << "Not implemented in korg-desktop";
 }
+
+void ActionManager::handleExportJobResult( KJob *job )
+{
+  HtmlExportJob *htmlExportJob = qobject_cast<HtmlExportJob*>( job );
+  Q_ASSERT( htmlExportJob );
+
+  if ( mSettingsToFree.contains( htmlExportJob->settings() ) ) {
+    mSettingsToFree.remove( htmlExportJob->settings() );
+    delete htmlExportJob->settings();
+  }
+}
+
 
 #include "actionmanager.moc"

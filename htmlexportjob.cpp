@@ -26,10 +26,10 @@
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/calendar.h>
-#include <kcalcore/event.h>
-#include <kcalcore/todo.h>
-#include <kcalutils/incidenceformatter.h>
+#include <KCalCore/Calendar>
+#include <KCalCore/Event>
+#include <KCalCore/Todo>
+#include <KCalUtils/IncidenceFormatter>
 
 #include <akonadi/contact/contactsearchjob.h>
 
@@ -54,12 +54,11 @@ using namespace KOrg;
 
 static QString cleanChars( const QString &txt );
 
-
 //@cond PRIVATE
 class KOrg::HtmlExportJob::Private
 {
   public:
-    Private( CalendarSupport::Calendar *calendar, const HTMLExportSettingsPtr &settings, QWidget *parent )
+    Private( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
       : mCalendar( calendar ),
         mSettings( settings ),
         mParentWidget( parent ),
@@ -67,7 +66,7 @@ class KOrg::HtmlExportJob::Private
     {}
 
     CalendarSupport::Calendar *mCalendar;
-    HTMLExportSettingsPtr mSettings;
+    KOrg::HTMLExportSettings *mSettings;
     QWidget *mParentWidget;
     QMap<QDate,QString> mHolidayMap;
     qulonglong mSubJobCount;
@@ -75,7 +74,7 @@ class KOrg::HtmlExportJob::Private
 };
 //@endcond
 
-HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar, const HTMLExportSettingsPtr &settings, QWidget *parent )
+HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
   : KJob( parent ), d( new Private( calendar, settings, parent ) )
 {
 }
@@ -176,7 +175,7 @@ void HtmlExportJob::finishExport()
 
   KMessageBox::information( d->mParentWidget, saveMessage,
                i18nc( "@title:window", "Export Status" ) );
-  deleteLater();
+  emitResult();
 }
 
 bool HtmlExportJob::save( const QString &fileName )
@@ -886,6 +885,11 @@ QDate HtmlExportJob::fromDate() const
 QDate HtmlExportJob::toDate() const
 {
   return d->mSettings->dateEnd().date();
+}
+
+HTMLExportSettings* HtmlExportJob::settings() const
+{
+  return d->mSettings;
 }
 
 #include "htmlexportjob.moc"
