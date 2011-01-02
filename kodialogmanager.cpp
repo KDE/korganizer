@@ -183,7 +183,8 @@ IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi
     return 0;
   }
 
-  IncidenceEditorNG::IncidenceDialog *dialog = IncidenceEditorNG::IncidenceDialogFactory::create( incidence->type(), mMainView );
+  IncidenceEditorNG::IncidenceDialog *dialog = IncidenceEditorNG::IncidenceDialogFactory::create( false/*needs initial saving?*/,
+                                                                                                  incidence->type(), mMainView );
 
   return dialog;
 }
