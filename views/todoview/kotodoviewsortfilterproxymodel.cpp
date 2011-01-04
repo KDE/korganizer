@@ -104,6 +104,8 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
     // we return true ("left is less, i.e. higher prio") if right is a string ("--").
     if ( leftIsString != rightIsString ) {
       return leftIsString;
+    } else if ( !leftIsString ) {
+      return sourceModel()->data( left ).toInt() > sourceModel()->data( right ).toInt();
     }
   }
 
