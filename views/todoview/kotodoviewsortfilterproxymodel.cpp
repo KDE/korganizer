@@ -90,15 +90,15 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
   // To-dos without due date should appear last when sorting ascending,
   // so you can see the most urgent tasks first. (bug #174763)
   if ( right.column() == KOTodoModel::DueDateColumn ) {
-    bool leftIsEmpty  = sourceModel()->data( left ).toString().isEmpty();
-    bool rightIsEmpty = sourceModel()->data( right ).toString().isEmpty();
+    const bool leftIsEmpty  = sourceModel()->data( left ).toString().isEmpty();
+    const bool rightIsEmpty = sourceModel()->data( right ).toString().isEmpty();
 
     if ( leftIsEmpty || rightIsEmpty ) {
       return rightIsEmpty;
     }
   } else if ( right.column() == KOTodoModel::PriorityColumn ) {
-    bool leftIsString   = sourceModel()->data( left ).type() == QVariant::String;
-    bool rightIsString  = sourceModel()->data( right ).type() == QVariant::String;
+    const bool leftIsString  = sourceModel()->data( left ).type() == QVariant::String;
+    const bool rightIsString = sourceModel()->data( right ).type() == QVariant::String;
 
     // unspecified priority is a low priority, so, if we don't have two QVariant:Ints
     // we return true ("left is less, i.e. higher prio") if right is a string ("--").
