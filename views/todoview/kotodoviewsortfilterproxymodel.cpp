@@ -93,7 +93,7 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
     const bool leftIsEmpty  = sourceModel()->data( left ).toString().isEmpty();
     const bool rightIsEmpty = sourceModel()->data( right ).toString().isEmpty();
 
-    if ( leftIsEmpty || rightIsEmpty ) {
+    if ( leftIsEmpty != rightIsEmpty ) {
       return rightIsEmpty;
     }
   } else if ( right.column() == KOTodoModel::PriorityColumn ) {
@@ -102,12 +102,29 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
 
     // unspecified priority is a low priority, so, if we don't have two QVariant:Ints
     // we return true ("left is less, i.e. higher prio") if right is a string ("--").
-    if ( leftIsString || rightIsString ) {
+    if ( leftIsString != rightIsString ) {
       return leftIsString;
     }
   }
 
-  return QSortFilterProxyModel::lessThan( left, right );
+  if ( left.data() == right.data() ) {
+    // If both are equal, lets choose an order, otherwise Qt will display them randomly.
+    // Fixes to-dos jumping around when you have calendar A selected, and then check/uncheck
+    // a calendar B with no to-dos. No to-do is added/removed because calendar B is empty,
+    // but you see the existing to-dos switching places.
+    QModelIndex leftSummaryIndex = left.sibling( left.row(), KOTodoModel::SummaryColumn );
+    QModelIndex rightSummaryIndex = right.sibling( right.row(), KOTodoModel::SummaryColumn );
+
+    // This patch is not about fallingback to the SummaryColumn for sorting. It's about avoiding jumping due to random reasons.
+    // That's why we ignore the sort direction...
+    return mSortOrder == Qt::AscendingOrder ? QSortFilterProxyModel::lessThan( leftSummaryIndex, rightSummaryIndex ) :
+                                              QSortFilterProxyModel::lessThan( rightSummaryIndex, leftSummaryIndex );
+
+    // ...so, if you have 4 to-dos, all with CompletionColumn = "55%", and click the header multiple times, nothing will happen
+    // because it's already sorted by Completion.
+  } else {
+    return QSortFilterProxyModel::lessThan( left, right );
+  }
 }
 
 void KOTodoViewSortFilterProxyModel::setCategoryFilter( const QStringList &categories )
