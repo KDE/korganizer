@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Reminder Daemon
 Name[ca]=Dimoni de recordatoris
+Name[ca@valencia]=Dimoni de recordatoris
 Name[de]=Erinnerungsmodul
 Name[en_GB]=Reminder Dæmon
 Name[es]=Demonio de recordatorio
@@ -21,6 +22,7 @@ Name[x-test]=xxReminder Daemonxx
 Name[zh_TW]=提醒守護程式
 Comment=Event and task reminder daemon
 Comment[ca]=Dimoni de recordatoris de tasques i esdeveniments
+Comment[ca@valencia]=Dimoni de recordatoris de tasques i esdeveniments
 Comment[en_GB]=Event and task reminder dæmon
 Comment[es]=Demonio de recordatorio de eventos y tareas
 Comment[et]=Sündmuste ja ülesannete meeldetuletuste deemon
