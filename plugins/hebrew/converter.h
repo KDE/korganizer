@@ -54,17 +54,17 @@ class HebrewDate
     static HebrewDate fromSecular( int year, int month, int day );
     static HebrewDate fromHebrew( int year, int month, int day );
 
-    int year();
-    int month();
-    int day();
-    int dayOfWeek();
+    int year() const;
+    int month() const;
+    int day() const;
+    int dayOfWeek() const;
 
-    int hebrewMonthLength();
-    int secularMonthLength();
-    bool isOnHebrewLeapYear();
-    bool isOnSecularLeapYear();
-    int kvia();
-    int hebrewDayNumber();
+    int hebrewMonthLength() const;
+    int secularMonthLength() const;
+    bool isOnHebrewLeapYear() const;
+    bool isOnSecularLeapYear() const;
+    int kvia() const;
+    int hebrewDayNumber() const;
 
   private:
     int mYear, mMonth, mDay, mDayOfWeek;

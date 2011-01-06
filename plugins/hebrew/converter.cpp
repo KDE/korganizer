@@ -53,52 +53,52 @@ HebrewDate HebrewDate::fromHebrew( int year, int month, int day )
   return HebrewDate( result );
 }
 
-int HebrewDate::year()
+int HebrewDate::year() const
 {
   return mYear;
 }
 
-int HebrewDate::month()
+int HebrewDate::month() const
 {
   return mMonth;
 }
 
-int HebrewDate::day()
+int HebrewDate::day() const
 {
   return mDay;
 }
 
-int HebrewDate::dayOfWeek()
+int HebrewDate::dayOfWeek() const
 {
   return mDayOfWeek;
 }
 
-int HebrewDate::hebrewMonthLength()
+int HebrewDate::hebrewMonthLength() const
 {
   return mHebrewMonthLength;
 }
 
-int HebrewDate::secularMonthLength()
+int HebrewDate::secularMonthLength() const
 {
   return mSecularMonthLength;
 }
 
-bool HebrewDate::isOnHebrewLeapYear()
+bool HebrewDate::isOnHebrewLeapYear() const
 {
   return mOnHebrewLeapYear;
 }
 
-bool HebrewDate::isOnSecularLeapYear()
+bool HebrewDate::isOnSecularLeapYear() const
 {
   return mOnSecularLeapYear;
 }
 
-int HebrewDate::kvia()
+int HebrewDate::kvia() const
 {
   return mKvia;
 }
 
-int HebrewDate::hebrewDayNumber()
+int HebrewDate::hebrewDayNumber() const
 {
   return mHebrewDayNumber;
 }
