@@ -68,6 +68,8 @@
 #include <akonadi/agentinstance.h>
 
 #include <QHash>
+#include <QStyledItemDelegate>
+#include <QPainter>
 
 using namespace Future;
 
@@ -77,6 +79,41 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
 }
 
 namespace {
+
+  class ColorDelegate : public QStyledItemDelegate
+  {
+  public:
+    explicit ColorDelegate( QObject * parent = 0 )
+      : QStyledItemDelegate( parent )
+    {}
+    void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
+    {
+      QStyledItemDelegate::paint( painter, option, index );
+      QStyleOptionViewItemV4 v4 = option;
+      initStyleOption( &v4, index );
+      if ( v4.checkState == Qt::Checked ) {
+        const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+        QColor color = KOHelper::resourceColor( collection );
+        const bool collectionHasIcon = index.data( Qt::DecorationRole ).canConvert<QIcon>();
+        if ( color.isValid() && collectionHasIcon ) {
+          QRect r = v4.rect;
+          const int h = r.height() - 4;
+          r.adjust( r.width() - h - 2, 2, - 2, -2 );
+          painter->save();
+          painter->setRenderHint( QPainter::Antialiasing );
+          QPen pen = painter->pen();
+          pen.setColor( color );
+          QPainterPath path;
+          path.addRoundedRect( r, 5, 5 );
+          color.setAlpha( 200 );
+          painter->fillPath( path, color );
+          painter->strokePath( path, pen);
+          painter->restore();
+        }
+      }
+    }
+  };
+
   class ColorProxyModel : public QSortFilterProxyModel
   {
   public:
@@ -184,6 +221,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setRootIsDecorated( true );
+  mCollectionview->setItemDelegate( new ColorDelegate( this ) );
 
   //Filter tree view.
   KRecursiveFilterProxyModel* filterTreeViewModel = new KRecursiveFilterProxyModel( this );
