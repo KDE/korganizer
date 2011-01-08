@@ -247,6 +247,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),mDefaultCalendar );
     connect( mDefaultCalendar, SIGNAL( triggered( bool ) ), this, SLOT( setDefaultCalendar()) );
   }
+  mCollectionview->expandAll();
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
@@ -457,6 +458,7 @@ void AkonadiCollectionView::rowsInserted( const QModelIndex&, int, int )
 {
   if ( !mNotSendAddRemoveSignal )
     emit resourcesAddedRemoved();
+  mCollectionview->expandAll();
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT
