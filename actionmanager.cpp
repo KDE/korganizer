@@ -265,10 +265,12 @@ void ActionManager::createCalendarAkonadi()
   monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
   mCalendarModel = new CalendarSupport::CalendarModel( monitor, this );
+  mCalendarModel->setObjectName( "KOrg CalendarModel" );
   //mCalendarModel->setItemPopulationStrategy( Akonadi::EntityTreeModel::LazyPopulation );
 
   // Our calendar tree must be sorted.
   QSortFilterProxyModel *sortFilterProxy = new QSortFilterProxyModel( this );
+  sortFilterProxy->setObjectName( "Sort" );
   sortFilterProxy->setDynamicSortFilter( true );
   sortFilterProxy->setSortCaseSensitivity( Qt::CaseInsensitive );
   sortFilterProxy->setSourceModel( mCalendarModel );
@@ -277,14 +279,17 @@ void ActionManager::createCalendarAkonadi()
   KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( this );
   columnFilterProxy->setSourceModel( sortFilterProxy );
   columnFilterProxy->setVisibleColumn( CalendarSupport::CalendarModel::CollectionTitle );
+  columnFilterProxy->setObjectName( "Remove columns" );
 
   // Keep track of selected items.
   QItemSelectionModel* selectionModel = new QItemSelectionModel( columnFilterProxy );
+  selectionModel->setObjectName( "Calendar Selection Model" );
 
   // Make item selection work by means of checkboxes.
   KCheckableProxyModel *checkableProxy = new KCheckableProxyModel( this );
   checkableProxy->setSelectionModel( selectionModel );
   checkableProxy->setSourceModel( columnFilterProxy );
+  checkableProxy->setObjectName( "Add checkboxes" );
 
   KConfig *config = KOGlobals::self()->config();
   mCollectionSelectionModelStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>( config->group( "GlobalCollectionSelection" ) );
@@ -293,6 +298,7 @@ void ActionManager::createCalendarAkonadi()
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
+  mCollectionView->setObjectName( "Resource View" );
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)));
   connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
   connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)),
@@ -308,6 +314,7 @@ void ActionManager::createCalendarAkonadi()
   CalendarSupport::CollectionSelection *colSel = new CalendarSupport::CollectionSelection( selectionModel );
   EventViews::EventView::setGlobalCollectionSelection( colSel );
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( selectionModel );
+  selectionProxy->setObjectName( "Only show items of selected collection" );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
   selectionProxy->setSourceModel( mCalendarModel );
 
@@ -316,8 +323,10 @@ void ActionManager::createCalendarAkonadi()
   filterProxy2->setHeaderGroup( Akonadi::EntityTreeModel::ItemListHeaders );
   filterProxy2->setSourceModel( selectionProxy );
   filterProxy2->setSortRole( CalendarSupport::CalendarModel::SortRole );
+  filterProxy2->setObjectName( "Show headers" );
 
   mCalendar = new CalendarSupport::Calendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
+  mCalendar->setObjectName( "KOrg Calendar" );
 
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();

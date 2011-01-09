@@ -169,11 +169,13 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
 
 
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
+  collectionproxymodel->setObjectName( "Only show collections" );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
   //collectionproxymodel->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
+  colorProxy->setObjectName( "Show calendar colors" );
   colorProxy->setDynamicSortFilter( true );
   colorProxy->setSourceModel( collectionproxymodel );
   mBaseModel = collectionproxymodel;
@@ -188,6 +190,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   filterTreeViewModel->setDynamicSortFilter( true );
   filterTreeViewModel->setSourceModel( colorProxy );
   filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
+  filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   mCollectionview->setModel( filterTreeViewModel );
 
   connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
