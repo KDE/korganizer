@@ -2966,8 +2966,17 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
     Akonadi::Collection configCollection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
     supportsMimeType = configCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
 
-    return ( configCollection.isValid() && supportsMimeType ) ? configCollection : Akonadi::Collection();
+    if ( configCollection.isValid() && supportsMimeType ) {
+      return configCollection;
+    } else {
+      if ( EventViews::EventView::globalCollectionSelection() &&
+           !EventViews::EventView::globalCollectionSelection()->selectedCollections().isEmpty() ) {
+        return EventViews::EventView::globalCollectionSelection()->selectedCollections().first();
+      }
+    }
   }
+
+  return Akonadi::Collection();
 }
 
 IncidenceEditorNG::IncidenceDialog*
