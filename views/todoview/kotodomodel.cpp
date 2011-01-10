@@ -990,7 +990,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       }
 
       Todo::Ptr oldTodo = Todo::Ptr( todo->clone() );
-      todo->setRelatedTo( destTodo->uid() );
+      // destTodo is empty when we drag a to-do out of a relationship
+      todo->setRelatedTo( destTodo ? destTodo->uid() : QString() );
       mChanger->changeIncidence( oldTodo, ttTodo->mTodo, CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
 
       // again, no need to emit dataChanged, that's done by processChange
