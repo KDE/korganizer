@@ -703,6 +703,13 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     */
     Akonadi::Collection defaultCollection( const QLatin1String &mimeType = QLatin1String( "" ) ) const;
 
+
+    /**
+     * Creates a new incidence editor and chooses a decent default for the collection in the collection combo.
+     * */
+    IncidenceEditorNG::IncidenceDialog* createIncidenceEditor( const Akonadi::Item &item,
+                                                               const Akonadi::Collection &collection = Akonadi::Collection() );
+
     KOrg::History *mHistory;
 
     CalPrinter *mCalPrinter;

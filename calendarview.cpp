@@ -1237,13 +1237,7 @@ void CalendarView::newTodo( const Akonadi::Collection &collection )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-
-    if ( collection.isValid() ) {
-      dialog->selectCollection( collection );
-    } else {
-      dialog->selectCollection( defaultCollection( KCalCore::Todo::todoMimeType() ) );
-    }
+    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor( item, collection );
 
     dialog->load( item );
   }
@@ -1262,7 +1256,7 @@ void CalendarView::newTodo( const QDate &date )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor( item );
     dialog->load( item );
   }
 }
@@ -1291,15 +1285,7 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
 
     Akonadi::Item item;
     item.setPayload( journal );
-
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    dialog->selectCollection( defaultCollection( KCalCore::Journal::journalMimeType() ) );
-
-    if ( collection.isValid() ) {
-      dialog->selectCollection( collection );
-    } else {
-      dialog->selectCollection( defaultCollection( KCalCore::Journal::journalMimeType() ) );
-    }
+    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor( item, collection );
     dialog->load( item );
   }
 }
@@ -1317,8 +1303,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
     Akonadi::Item item;
     item.setPayload( journal );
 
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    dialog->selectCollection( defaultCollection( KCalCore::Journal::journalMimeType() ) );
+    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor( item );
     dialog->load( item );
   }
 }
@@ -2984,6 +2969,23 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
     return ( configCollection.isValid() && supportsMimeType ) ? configCollection : Akonadi::Collection();
   }
 }
+
+IncidenceEditorNG::IncidenceDialog*
+CalendarView::createIncidenceEditor( const Akonadi::Item &item, const Akonadi::Collection &collection )
+{
+  IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+  Incidence::Ptr incidence = CalendarSupport::incidence( item );
+  Q_ASSERT( incidence );
+
+  if ( collection.isValid() ) {
+    dialog->selectCollection( collection );
+  } else {
+    dialog->selectCollection( defaultCollection( incidence->mimeType() ) );
+  }
+
+  return dialog;
+}
+
 
 
 #include "calendarview.moc"
