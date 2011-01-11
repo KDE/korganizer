@@ -1351,24 +1351,18 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-    //    connectIncidenceEditor( dialog );
-    if ( collection.isValid() ) {
-      dialog->selectCollection( collection );
-    } else {
-      dialog->selectCollection( defaultCollection( KCalCore::Todo::todoMimeType() ) );
-    }
+    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor( item, collection );
     dialog->load( item );
   } else {
     kWarning() << "newSubTodo(Collection) called, but creating is disabled";
   }
 }
 
-void CalendarView::newSubTodo( const Akonadi::Item &parentEvent )
+void CalendarView::newSubTodo( const Akonadi::Item &parentTodo )
 {
   if ( mCreatingEnabled ) {
     IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setRelatedIncidence( CalendarSupport::incidence( parentEvent ) );
+    defaults.setRelatedIncidence( CalendarSupport::incidence( parentTodo ) );
 
     Todo::Ptr todo( new Todo );
     defaults.setDefaults( todo );
@@ -1379,8 +1373,9 @@ void CalendarView::newSubTodo( const Akonadi::Item &parentEvent )
     Akonadi::Item item;
     item.setPayload( todo );
 
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
-     //    connectIncidenceEditor( dialog );
+    // Don't use parentTodo.parentCollection() because that can be a search folder.
+    Akonadi::Collection collection = mCalendar->collection( parentTodo.storageCollectionId() );
+    IncidenceEditorNG::IncidenceDialog *dialog = createIncidenceEditor( item, collection );
     dialog->load( item );
   } else {
     kWarning() << "newSubTodo(Item) called, but creating is disabled";
