@@ -26,7 +26,7 @@
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodomodel.h"
 #include "koprefs.h"
-
+#include <calendarsupport/utils.h>
 #include <KDebug>
 #include <QModelIndex>
 
@@ -90,22 +90,37 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
   // To-dos without due date should appear last when sorting ascending,
   // so you can see the most urgent tasks first. (bug #174763)
   if ( right.column() == KOTodoModel::DueDateColumn ) {
-    const bool leftIsEmpty  = sourceModel()->data( left ).toString().isEmpty();
-    const bool rightIsEmpty = sourceModel()->data( right ).toString().isEmpty();
+    const int comparison = compareDueDates( left, right );
 
-    if ( leftIsEmpty != rightIsEmpty ) {
-      return rightIsEmpty;
+    if ( comparison != 0 ) {
+      return comparison == -1;
+    }  else {
+      // Due dates are equal, but the user still expects sorting by importance
+      // Fallback to the PriorityColumn
+      QModelIndex leftPriorityIndex = left.sibling( left.row(), KOTodoModel::PriorityColumn );
+      QModelIndex rightPriorityIndex = right.sibling( right.row(), KOTodoModel::PriorityColumn );
+      const int fallbackComparison = comparePriorities( leftPriorityIndex, rightPriorityIndex );
+
+      if ( fallbackComparison != 0 ) {
+        return fallbackComparison == -1;
+      }
     }
-  } else if ( right.column() == KOTodoModel::PriorityColumn ) {
-    const bool leftIsString  = sourceModel()->data( left ).type() == QVariant::String;
-    const bool rightIsString = sourceModel()->data( right ).type() == QVariant::String;
 
-    // unspecified priority is a low priority, so, if we don't have two QVariant:Ints
-    // we return true ("left is less, i.e. higher prio") if right is a string ("--").
-    if ( leftIsString != rightIsString ) {
-      return leftIsString;
-    } else if ( !leftIsString ) {
-      return sourceModel()->data( left ).toInt() > sourceModel()->data( right ).toInt();
+  } else if ( right.column() == KOTodoModel::PriorityColumn ) {
+    const int comparison = comparePriorities( left, right );
+
+    if ( comparison != 0 ) {
+      return comparison == -1;
+    } else {
+      // Priorities are equal, but the user still expects sorting by importance
+      // Fallback to the DueDateColumn
+      QModelIndex leftDueDateIndex = left.sibling( left.row(), KOTodoModel::DueDateColumn );
+      QModelIndex rightDueDateIndex = right.sibling( right.row(), KOTodoModel::DueDateColumn );
+      const int fallbackComparison = compareDueDates( leftDueDateIndex, rightDueDateIndex );
+
+      if ( fallbackComparison != 0 ) {
+        return fallbackComparison == 1;
+      }
     }
   }
 
@@ -135,4 +150,73 @@ void KOTodoViewSortFilterProxyModel::setCategoryFilter( const QStringList &categ
   invalidateFilter();
 }
 
+/* -1 - less than
+ *  0 - equal
+ *  1 - bigger than
+ */
+int KOTodoViewSortFilterProxyModel::compareDueDates( const QModelIndex &left, const QModelIndex &right ) const
+{
+  Q_ASSERT( left.column() == KOTodoModel::DueDateColumn );
+  Q_ASSERT( right.column() == KOTodoModel::DueDateColumn );
+
+  // The due date column is a QString so fetch the akonadi item
+  // We can't compare QStrings because it won't work if the format is MM/DD/YYYY
+  const Todo::Ptr leftTodo = CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
+  const Todo::Ptr rightTodo = CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
+
+  if ( !leftTodo || !rightTodo ) {
+    return false;
+  }
+
+  const bool leftIsEmpty  = !leftTodo->hasDueDate();
+  const bool rightIsEmpty = !rightTodo->hasDueDate();
+
+  if ( leftIsEmpty != rightIsEmpty ) { // One of them doesn't have a due date
+    // For sorting, no date is considered a very big date
+    return rightIsEmpty ? -1 : 1;
+  } else if ( !leftIsEmpty ) { // Both have due dates
+    const KDateTime leftDateTime = leftTodo->dtDue();
+    const KDateTime rightDateTime = rightTodo->dtDue();
+
+    if ( leftDateTime == rightDateTime ) {
+      return 0;
+    } else {
+      return leftDateTime < rightDateTime ? -1 : 1;
+    }
+  } else { // Neither has a due date
+    return 0;
+  }
+}
+
+/* -1 - less than
+ *  0 - equal
+ *  1 - bigger than
+ */
+int KOTodoViewSortFilterProxyModel::comparePriorities( const QModelIndex &left, const QModelIndex &right ) const
+{
+  Q_ASSERT( left.column() == KOTodoModel::PriorityColumn );
+  Q_ASSERT( right.column() == KOTodoModel::PriorityColumn );
+
+  const QVariant leftValue = sourceModel()->data( left );
+  const QVariant rightValue = sourceModel()->data( right );
+
+  const bool leftIsString  = sourceModel()->data( left ).type() == QVariant::String;
+  const bool rightIsString = sourceModel()->data( right ).type() == QVariant::String;
+
+  // unspecified priority is a low priority, so, if we don't have two QVariant:Ints
+  // we return true ("left is less, i.e. higher prio") if right is a string ("--").
+  if ( leftIsString != rightIsString ) {
+    return leftIsString ? -1 : 1;
+  } else {
+    const int leftPriority = leftValue.toInt();
+    const int rightPriority = rightValue.toInt();
+
+    if ( leftPriority != rightPriority ) {
+      // priority '5' is bigger then priroity '6'
+      return leftPriority < rightPriority ? 1 : -1;
+    } else {
+      return 0;
+    }
+  }
+}
 #include "kotodoviewsortfilterproxymodel.moc"
