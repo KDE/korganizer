@@ -308,8 +308,8 @@ void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
                                                   const QModelIndex &index ) const
 {
   Q_UNUSED( index );
-
-  editor->setGeometry( option.rect );
+  editor->setGeometry( QStyle::alignedRect( QApplication::layoutDirection(), Qt::AlignCenter,
+                                            editor->size(), option.rect ) );
 }
 
 // ---------------- CATEGORIES DELEGATE --------------------------
