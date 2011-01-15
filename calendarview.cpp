@@ -1346,7 +1346,6 @@ void CalendarView::newSubTodo( const Akonadi::Collection &collection )
 
     Todo::Ptr todo( new Todo );
     defaults.setDefaults( todo );
-    todo->setAllDay( false );
 
     Akonadi::Item item;
     item.setPayload( todo );
@@ -1366,7 +1365,6 @@ void CalendarView::newSubTodo( const Akonadi::Item &parentTodo )
 
     Todo::Ptr todo( new Todo );
     defaults.setDefaults( todo );
-    todo->setAllDay( false );
 
     Q_ASSERT( !todo->relatedTo().isEmpty() );
 
