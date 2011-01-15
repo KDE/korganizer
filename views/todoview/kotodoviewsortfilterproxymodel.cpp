@@ -74,7 +74,7 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
 bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
                                                const QModelIndex &right ) const
 {
-  if ( KOPrefs::instance()->sortCompletedTodosSeparately() ) {
+  if ( KOPrefs::instance()->sortCompletedTodosSeparately() && left.column() != KOTodoModel::PercentColumn ) {
     QModelIndex cLeft = left.sibling( left.row(), KOTodoModel::PercentColumn );
     QModelIndex cRight = right.sibling( right.row(), KOTodoModel::PercentColumn );
 
@@ -121,6 +121,11 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
       if ( fallbackComparison != 0 ) {
         return fallbackComparison == 1;
       }
+    }
+  } else if ( right.column() == KOTodoModel::PercentColumn ) {
+    const int comparison = compareCompletion( left, right );
+    if ( comparison != 0 ) {
+      return comparison == -1;
     }
   }
 
@@ -185,6 +190,33 @@ int KOTodoViewSortFilterProxyModel::compareDueDates( const QModelIndex &left, co
     }
   } else { // Neither has a due date
     return 0;
+  }
+}
+
+/* -1 - less than
+ *  0 - equal
+ *  1 - bigger than
+ */
+int KOTodoViewSortFilterProxyModel::compareCompletion( const QModelIndex &left, const QModelIndex &right ) const
+{
+  Q_ASSERT( left.column() == KOTodoModel::PercentColumn );
+  Q_ASSERT( right.column() == KOTodoModel::PercentColumn );
+
+  const int leftValue = sourceModel()->data( left ).toInt();
+  const int rightValue = sourceModel()->data( right ).toInt();
+
+  if ( leftValue == 100 && rightValue == 100 ) {
+    // Untie with the completion date
+    const Todo::Ptr leftTodo = CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
+    const Todo::Ptr rightTodo = CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
+
+    if ( !leftTodo || !rightTodo ) {
+      return 0;
+    } else {
+      return ( leftTodo->completed() > rightTodo->completed() ) ? -1 : 1;
+    }
+  } else {
+    return ( leftValue < rightValue ) ? -1 : 1;
   }
 }
 
