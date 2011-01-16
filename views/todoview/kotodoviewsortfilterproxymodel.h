@@ -49,6 +49,9 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
     void setCategoryFilter( const QStringList &categories );
 
   private:
+    int compareDueDates( const QModelIndex &left, const QModelIndex &right ) const;
+    int comparePriorities( const QModelIndex &left, const QModelIndex &right ) const;
+    int compareCompletion( const QModelIndex &left, const QModelIndex &right ) const;
     QStringList mCategories;
     Qt::SortOrder mSortOrder;
 };

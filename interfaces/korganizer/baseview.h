@@ -401,7 +401,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 
   protected:
     CalendarSupport::IncidenceChanger *mChanger;
-
   private:
     class Private;
     Private *const d;

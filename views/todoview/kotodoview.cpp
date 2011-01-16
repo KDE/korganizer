@@ -40,6 +40,8 @@
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
+#include <calendarviews/eventviews/eventview.h>
+#include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/utils.h>
@@ -439,18 +441,33 @@ void KOTodoView::addTodo( const QString &summary,
 
   todo->setCategories( categories );
 
-/*  if ( parent ) {
+  /*  if ( parent ) {
     todo->setRelatedTo( parent );
   }
-KDAB_TODO: review
-*/
+  TODO: review
+  */
 
-  Akonadi::Collection selectedCollection;
-  int dialogCode = 0;
-  if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
-    if ( dialogCode != QDialog::Rejected ) {
-      KOHelper::showSaveIncidenceErrorMsg( this, todo );
+  bool result = false;
+  CalendarSupport::CollectionSelection *selection = EventViews::EventView::globalCollectionSelection();
+
+  // If we only have one collection, don't ask in which collection to save the to-do.
+  if ( selection && selection->model()->model()->rowCount() == 1 ) {
+    QModelIndex index = selection->model()->model()->index( 0, 0 );
+    if ( index.isValid() ) {
+      Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+      if ( collection.isValid() ) {
+        result = mChanger->addIncidence( todo, collection, this );
+      }
     }
+  } else {
+    Akonadi::Collection selectedCollection;
+    int dialogCode = 0;
+    result = mChanger->addIncidence( todo, this, selectedCollection, dialogCode );
+    result = result || dialogCode == QDialog::Rejected;
+  }
+
+  if ( !result ) {
+    KOHelper::showSaveIncidenceErrorMsg( this, todo );
   }
 }
 

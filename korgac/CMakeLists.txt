@@ -53,6 +53,11 @@ if(KORGAC_AKONADI_AGENT)
   endif()
 else()
   kde4_add_executable(korgac ${korgac_SRCS})
+  if (Q_WS_MAC)
+    set_target_properties(korgac PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/Info.plist.template)
+    set_target_properties(korgac PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.pim.korgac")
+    set_target_properties(korgac PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "KOrganizer Reminder Client")
+  endif (Q_WS_MAC)
 endif()
 
 target_link_libraries(korgac

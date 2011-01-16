@@ -846,6 +846,15 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   if ( !node->isValid() ) {
     return false;
   }
+
+  const QVariant oldValue = data( index, role );
+
+  if ( oldValue == value ) {
+    // Nothing changed, the user used one of the QStyledDelegate's editors but seted the old value
+    // Lets just skip this then and avoid a roundtrip to akonadi, and avoid sending invitations
+    return true;
+  }
+
   const Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
 
   if ( mCalendar->hasChangeRights( node->mTodo ) ) {
@@ -990,7 +999,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       }
 
       Todo::Ptr oldTodo = Todo::Ptr( todo->clone() );
-      todo->setRelatedTo( destTodo->uid() );
+      // destTodo is empty when we drag a to-do out of a relationship
+      todo->setRelatedTo( destTodo ? destTodo->uid() : QString() );
       mChanger->changeIncidence( oldTodo, ttTodo->mTodo, CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
 
       // again, no need to emit dataChanged, that's done by processChange
