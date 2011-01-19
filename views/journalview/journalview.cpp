@@ -164,7 +164,7 @@ JournalView::JournalView( const Akonadi::Item &j,
   mLayout->setMargin( KDialog::marginHint() );
 
   mBrowser = new KTextBrowser( this );
-  mBrowser->setFrameStyle( QFrame::StyledPanel );
+  mBrowser->setFrameStyle( QFrame::Box );
   mLayout->addWidget( mBrowser, 0, 0, 1, 3 );
 
   mEditButton = new QPushButton( this );
