@@ -105,6 +105,8 @@ void JournalDateView::addJournal( const Akonadi::Item &j )
            this, SIGNAL(deleteIncidence(Akonadi::Item)) );
   connect( entry, SIGNAL(editIncidence(Akonadi::Item)),
            this, SIGNAL(editIncidence(Akonadi::Item)) );
+  connect( entry, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+                  SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
 }
 
 Akonadi::Item::List JournalDateView::journals() const
@@ -164,6 +166,7 @@ JournalView::JournalView( const Akonadi::Item &j,
   mLayout->setMargin( KDialog::marginHint() );
 
   mBrowser = new KTextBrowser( this );
+  mBrowser->viewport()->installEventFilter( this );
   mBrowser->setFrameStyle( QFrame::Box );
   mLayout->addWidget( mBrowser, 0, 0, 1, 3 );
 
@@ -205,6 +208,30 @@ JournalView::JournalView( const Akonadi::Item &j,
 JournalView::~JournalView()
 {
 }
+
+bool JournalView::eventFilter ( QObject *object, QEvent *event )
+{
+  Q_UNUSED( object );
+
+  // object is our KTextBrowser
+  if ( !mJournal.isValid() ) {
+    return false;
+  }
+
+  switch( event->type() ) {
+    case QEvent::MouseButtonPress:
+      emit incidenceSelected( mJournal, mDate );
+      break;
+    case QEvent::MouseButtonDblClick:
+      emit editIncidence( mJournal );
+      break;
+    default:
+      break;
+  }
+
+  return false;
+}
+
 
 void JournalView::deleteItem()
 {
@@ -261,11 +288,6 @@ void JournalView::setDirty()
 {
   mDirty = true;
   kDebug();
-}
-
-bool JournalView::eventFilter( QObject *o, QEvent *e )
-{
-  return QWidget::eventFilter( o, e );    // standard event processing
 }
 
 void JournalView::readJournal( const Akonadi::Item &j )

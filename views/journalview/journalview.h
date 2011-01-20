@@ -61,6 +61,7 @@ class JournalView : public QWidget
                  QWidget *parent );
 
     virtual ~JournalView();
+    bool eventFilter ( QObject *, QEvent * );
 
     void setJournal( const Akonadi::Item &journal );
     Akonadi::Item journal() const { return mJournal; }
@@ -85,10 +86,10 @@ class JournalView : public QWidget
     void configChanged();
     void deleteIncidence( const Akonadi::Item & );
     void editIncidence( const Akonadi::Item & );
+    void incidenceSelected( const Akonadi::Item &, const QDate & );
 
   protected:
     void clearFields();
-    bool eventFilter( QObject *o, QEvent *e );
 
   private:
     Akonadi::Item mJournal;
@@ -132,6 +133,7 @@ class JournalDateView : public KVBox
     void editIncidence( const Akonadi::Item &journal );
     void deleteIncidence( const Akonadi::Item &journal );
     void newJournal( const QDate & );
+    void incidenceSelected( const Akonadi::Item &, const QDate & );
 
   public slots:
     void emitNewJournal();

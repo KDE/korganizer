@@ -87,6 +87,8 @@ void KOJournalView::appendJournal( const Akonadi::Item &journal, const QDate &dt
              this, SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
     connect( entry, SIGNAL(newJournal(const QDate &)),
              this, SIGNAL(newJournalSignal(const QDate &)) );
+    connect( entry, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+                    SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
     mEntries.insert( dt, entry );
   }
 
