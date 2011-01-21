@@ -100,6 +100,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   mCalendar = new CalendarSupport::Calendar( calendarModel, flattener,
                                      zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
 
+  mCalendar->setObjectName( "KOrgac's calendar" );
+
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
