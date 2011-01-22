@@ -190,7 +190,7 @@ void KODayMatrix::setUpdateNeeded()
 
 void KODayMatrix::updateView( const QDate &actdate )
 {
-  if ( !actdate.isValid() ) {
+  if ( !actdate.isValid() || NUMDAYS < 1 ) {
     return;
   }
   //flag to indicate if the starting day of the matrix has changed by this call
@@ -235,9 +235,10 @@ void KODayMatrix::updateView( const QDate &actdate )
   // there's no need to update the whole list of incidences... This is just a
   // waste of computational power
   updateIncidences();
+  QMap<QDate,QStringList> holidaysByDate = KOGlobals::self()->holiday( mDays[0], mDays[NUMDAYS-1] );
   for ( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
-    QStringList holidays = KOGlobals::self()->holiday( mDays[i] );
+    QStringList holidays = holidaysByDate[mDays[i]];
     QString holiStr;
 
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[i] ) ==

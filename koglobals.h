@@ -52,7 +52,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     QPixmap smallIcon( const QString &name ) const;
 
-    QStringList holiday( const QDate &qd ) const;
+    QMap<QDate,QStringList> holiday( const QDate &start, const QDate &end ) const;
 
     bool isWorkDay( const QDate &qd ) const;
 

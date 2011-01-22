@@ -90,18 +90,20 @@ QPixmap KOGlobals::smallIcon( const QString &name ) const
   return SmallIcon( name );
 }
 
-QStringList KOGlobals::holiday( const QDate &date ) const
+QMap<QDate,QStringList> KOGlobals::holiday( const QDate &start, const QDate &end ) const
 {
-  QStringList hdays;
+  QMap<QDate,QStringList> holidaysByDate;
 
   if ( !mHolidays ) {
-    return hdays;
+    return holidaysByDate;
   }
-  const Holiday::List list = mHolidays->holidays( date );
+
+  const Holiday::List list = mHolidays->holidays( start, end );
   for ( int i = 0; i < list.count(); ++i ) {
-    hdays.append( list.at( i ).text() );
+    const Holiday &h = list.at( i );
+    holidaysByDate[h.date()].append( h.text() );
   }
-  return hdays;
+  return holidaysByDate;
 }
 
 QList<QDate> KOGlobals::workDays( const QDate &startDate,
@@ -110,7 +112,6 @@ QList<QDate> KOGlobals::workDays( const QDate &startDate,
   QList<QDate> result;
 
   const int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
-
   const int numDays = startDate.daysTo( endDate ) + 1;
 
   for ( int i = 0; i < numDays; ++i ) {
