@@ -62,14 +62,16 @@
 using namespace KPIM;
 using namespace CalendarSupport;
 
+// Share the model with the sidepanel KOTodoView
+K_GLOBAL_STATIC( KOTodoModel, sModel );
+
 KOTodoView::KOTodoView( QWidget *parent )
   : BaseView( parent )
 {
-  mModel = new KOTodoModel( this );
-  connect( mModel, SIGNAL( expandIndex( const QModelIndex& ) ),
+  connect( sModel, SIGNAL( expandIndex( const QModelIndex& ) ),
            this, SLOT( expandIndex( const QModelIndex& ) ) );
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
-  mProxyModel->setSourceModel( mModel );
+  mProxyModel->setSourceModel( sModel );
   mProxyModel->setDynamicSortFilter( true );
   mProxyModel->setFilterKeyColumn( KOTodoModel::SummaryColumn );
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
@@ -138,7 +140,9 @@ KOTodoView::KOTodoView( QWidget *parent )
            "flat list instead of a hierarchical tree; the parental "
            "relationships are removed in the display." ) );
   connect( mFlatView, SIGNAL(toggled(bool)),
-           this, SLOT(setFlatView(bool)) );
+           sModel, SLOT(setFlatView(bool)) );
+  connect( sModel,SIGNAL(flatViewChanged(bool)),
+           SLOT(setFlatView(bool)) );
 
   QGridLayout *layout = new QGridLayout( this );
   layout->setMargin( 0 );
@@ -279,7 +283,7 @@ void KOTodoView::setCalendar( CalendarSupport::Calendar *cal )
   BaseView::setCalendar( cal );
   mQuickSearch->setCalendar( cal );
   mCategoriesDelegate->setCalendar( cal );
-  mModel->setCalendar( cal );
+  sModel->setCalendar( cal );
 }
 
 Akonadi::Item::List KOTodoView::selectedIncidences()
@@ -381,7 +385,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
 void KOTodoView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   BaseView::setIncidenceChanger( changer );
-  mModel->setIncidenceChanger( changer );
+  sModel->setIncidenceChanger( changer );
 }
 
 void KOTodoView::showDates( const QDate &start, const QDate &end )
@@ -399,7 +403,7 @@ void KOTodoView::showIncidences( const Akonadi::Item::List &incidenceList, const
 
 void KOTodoView::updateView()
 {
-  mModel->reloadTodos();
+  sModel->reloadTodos();
 }
 
 void KOTodoView::updateCategories()
@@ -410,7 +414,7 @@ void KOTodoView::updateCategories()
 
 void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
 {
-  mModel->processChange( incidence, action );
+  sModel->processChange( incidence, action );
 }
 
 void KOTodoView::updateConfig()
@@ -495,7 +499,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
       return;
     }
     const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
-    const Akonadi::Item parent = mModel->todoForIndex( idx );
+    const Akonadi::Item parent = sModel->todoForIndex( idx );
     addTodo( mQuickAdd->text(), CalendarSupport::todo( parent ), mProxyModel->categories() );
   } else {
     return;
@@ -694,7 +698,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   const QModelIndex origIndex = mProxyModel->mapToSource( selection[0] );
   Q_ASSERT( origIndex.isValid() );
 
-  const Akonadi::Item origItem = mModel->todoForIndex( origIndex );
+  const Akonadi::Item origItem = sModel->todoForIndex( origIndex );
   const Todo::Ptr orig = CalendarSupport::todo( origItem );
   if ( !orig ) {
     return;
@@ -873,8 +877,12 @@ void KOTodoView::changedCategories( QAction *action )
 
 void KOTodoView::setFlatView( bool flatView )
 {
+  mFlatView->blockSignals( true );
+  // We block signals to avoid recursion, we have two KOTodoViews and mFlatView is synchronized
+  mFlatView->setChecked( flatView );
+  mFlatView->blockSignals( false );
+
   mView->setRootIsDecorated( !flatView );
-  mModel->setFlatView( flatView );
 
   if ( flatView ) {
     // In flatview dropping confuses users and it's very easy to drop into a child item

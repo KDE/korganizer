@@ -131,7 +131,7 @@ class KOTodoModel : public QAbstractItemModel
      * or due today.
      */
     void expandIndex( const QModelIndex &index );
-
+    void flatViewChanged( bool enabled );
   private:
     struct TodoTreeNode;
 

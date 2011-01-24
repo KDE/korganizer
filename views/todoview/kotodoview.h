@@ -141,7 +141,6 @@ class KOTodoView : public BaseView
                   const QStringList &categories = QStringList() );
 
     KOTodoViewView *mView;
-    KOTodoModel *mModel;
     KOTodoViewSortFilterProxyModel *mProxyModel;
     KOTodoCategoriesDelegate *mCategoriesDelegate;
 
