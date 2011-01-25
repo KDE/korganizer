@@ -141,7 +141,7 @@ void KOrganizerApp::processCalendar( const KUrl &url )
       korg->openURL( url );
     } else {
       korg->view()->updateCategories();
-      korg->view()->updateView();
+      //      korg->view()->updateView();
     }
   } else {
     korg->topLevelWidget()->show();
