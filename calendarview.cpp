@@ -2188,7 +2188,6 @@ void CalendarView::updateFilter()
   emit filtersUpdated( filters, pos + 1 );
 
   mCalendar->setFilter( mCurrentFilter );
-  updateView();
 }
 
 void CalendarView::filterActivated( int filterNo )
