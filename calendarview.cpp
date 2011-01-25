@@ -833,7 +833,7 @@ void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action
     }
   } else {
     mViewManager->currentView()->updateView();
-    if ( mTodoList ) {
+    if ( mTodoList && mViewManager->currentView()->identifier() != "DefaultTodoView" ) {
       mTodoList->updateView();
     }
   }
