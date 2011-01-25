@@ -93,8 +93,10 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
 
 void KOTodoViewQuickSearch::setCalendar( CalendarSupport::Calendar *calendar )
 {
-  mCalendar = calendar;
-  fillCategories();
+  if ( calendar != mCalendar ) {
+    mCalendar = calendar;
+    fillCategories();
+  }
 }
 
 void KOTodoViewQuickSearch::updateCategories()

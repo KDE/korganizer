@@ -206,10 +206,12 @@ KOTodoModel::~KOTodoModel()
 
 void KOTodoModel::setCalendar( CalendarSupport::Calendar *cal )
 {
-  mCalendar = cal;
-  // old todos might no longer be valid, so clear them
-  clearTodos();
-  reloadTodos();
+  if ( cal != mCalendar ) {
+    mCalendar = cal;
+    // old todos might no longer be valid, so clear them
+    clearTodos();
+    reloadTodos();
+  }
 }
 
 void KOTodoModel::clearTodos()
