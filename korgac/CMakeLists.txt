@@ -43,7 +43,7 @@ if (RUNTIME_PLUGINS_STATIC)
   add_definitions(-DSERIALIZER_PLUGIN_STATIC)
 endif (RUNTIME_PLUGINS_STATIC)
 
-kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
+kde4_add_app_icon(korgac_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmap/hi*-apps-korgac.png")
 
 if(KORGAC_AKONADI_AGENT)
   if(NOT WINCE)
