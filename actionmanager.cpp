@@ -326,6 +326,11 @@ void ActionManager::createCalendarAkonadi()
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
 
+  // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
+  if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
+    IncidenceEditorNG::GroupwareIntegration::activate( mCalendar );
+  }
+
   connect( mCalendar, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendar, SIGNAL(signalErrorMessage(const QString &)),
