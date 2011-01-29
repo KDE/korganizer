@@ -118,17 +118,12 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart, KMenuBar *menuBar )
   : QObject( parent ),
-    mCollectionViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
+    mCollectionViewShowAction( 0 ), mCalendar( 0 ),
     mCollectionView( 0 ), mCollectionViewStateSaver( 0 ),
     mCollectionSelectionModelStateSaver( 0 ), mIsClosing( false )
 {
   new KOrgCalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
-
-  // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
-  if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
-    IncidenceEditorNG::GroupwareIntegration::activate();
-  }
 
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -264,16 +259,16 @@ void ActionManager::createCalendarAkonadi()
   monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
-  mCalendarModel = new CalendarSupport::CalendarModel( monitor, this );
-  mCalendarModel->setObjectName( "KOrg CalendarModel" );
-  //mCalendarModel->setItemPopulationStrategy( Akonadi::EntityTreeModel::LazyPopulation );
+  CalendarSupport::CalendarModel *calendarModel = new CalendarSupport::CalendarModel( monitor, this );
+  calendarModel->setObjectName( "KOrg CalendarModel" );
+  //calendarModel->setItemPopulationStrategy( Akonadi::EntityTreeModel::LazyPopulation );
 
   // Our calendar tree must be sorted.
   QSortFilterProxyModel *sortFilterProxy = new QSortFilterProxyModel( this );
   sortFilterProxy->setObjectName( "Sort" );
   sortFilterProxy->setDynamicSortFilter( true );
   sortFilterProxy->setSortCaseSensitivity( Qt::CaseInsensitive );
-  sortFilterProxy->setSourceModel( mCalendarModel );
+  sortFilterProxy->setSourceModel( calendarModel );
 
   // We're only interested in the CollectionTitle column
   KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( this );
@@ -316,7 +311,7 @@ void ActionManager::createCalendarAkonadi()
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( selectionModel );
   selectionProxy->setObjectName( "Only show items of selected collection" );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
-  selectionProxy->setSourceModel( mCalendarModel );
+  selectionProxy->setSourceModel( calendarModel );
 
   Akonadi::EntityMimeTypeFilterModel* filterProxy2 = new Akonadi::EntityMimeTypeFilterModel( this );
 
@@ -325,7 +320,7 @@ void ActionManager::createCalendarAkonadi()
   filterProxy2->setSortRole( CalendarSupport::CalendarModel::SortRole );
   filterProxy2->setObjectName( "Show headers" );
 
-  mCalendar = new CalendarSupport::Calendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
+  mCalendar = new CalendarSupport::Calendar( calendarModel, filterProxy2, KSystemTimeZones::local() );
   mCalendar->setObjectName( "KOrg Calendar" );
 
   mCalendarView->setCalendar( mCalendar );

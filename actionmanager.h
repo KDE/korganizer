@@ -445,7 +445,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
-    CalendarSupport::CalendarModel *mCalendarModel;
     CalendarSupport::Calendar *mCalendar;
     AkonadiCollectionView *mCollectionView;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
