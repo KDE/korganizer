@@ -1024,6 +1024,18 @@ void CalendarView::edit_paste()
   Incidence::List::Iterator it;
   Akonadi::Collection selectedCollection;
   int dialogCode = 0;
+
+  {
+    // If only one collection exists, don't bother the user with a prompt
+    CalendarSupport::CollectionSelection *selection = EventViews::EventView::globalCollectionSelection();
+    if ( selection && selection->model()->model()->rowCount() == 1 ) {
+      const QModelIndex index = selection->model()->model()->index( 0, 0 );
+      if ( index.isValid() ) {
+        selectedCollection = CalendarSupport::collectionFromIndex( index );
+      }
+    }
+  }
+
   for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
     // FIXME: use a visitor here
     if ( ( *it )->type() == Incidence::TypeEvent ) {
