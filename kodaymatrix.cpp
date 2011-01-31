@@ -292,6 +292,10 @@ void KODayMatrix::updateJournals()
          !mEvents.contains( d ) ) {
       mEvents.append( d );
     }
+    if ( mEvents.count() == NUMDAYS ) {
+      // No point in wasting cpu, all days are bold already
+      break;
+    }
   }
 }
 
@@ -309,6 +313,10 @@ void KODayMatrix::updateTodos()
   const Akonadi::Item::List items = mCalendar->todos();
   QDate d;
   foreach ( const Akonadi::Item &item, items ) {
+    if ( mEvents.count() == NUMDAYS ) {
+      // No point in wasting cpu, all days are bold already
+      break;
+    }
     const Todo::Ptr t = CalendarSupport::todo( item );
     Q_ASSERT( t );
     if ( t->hasDueDate() ) {
@@ -342,10 +350,19 @@ void KODayMatrix::updateTodos()
 
 void KODayMatrix::updateEvents()
 {
+  if ( mEvents.count() == NUMDAYS ) {
+    mPendingChanges = false;
+    // No point in wasting cpu, all days are bold already
+    return;
+  }
   Akonadi::Item::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
-                                                      mCalendar->timeSpec() );
+                                                     mCalendar->timeSpec() );
 
   Q_FOREACH ( const Akonadi::Item & item, eventlist ) {
+    if ( mEvents.count() == NUMDAYS ) {
+      // No point in wasting cpu, all days are bold already
+      break;
+    }
     const Event::Ptr event = CalendarSupport::event( item );
     Q_ASSERT( event );
     ushort recurType = event->recurrenceType();
