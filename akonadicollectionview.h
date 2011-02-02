@@ -82,6 +82,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     Future::KCheckableProxyModel *collectionSelectionProxyModel() const;
     void setCollectionSelectionProxyModel( Future::KCheckableProxyModel* );
+    static bool isStructuralCollection( const Akonadi::Collection & );
 
   signals:
     void resourcesChanged( bool enabled );

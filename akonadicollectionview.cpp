@@ -151,6 +151,12 @@ namespace {
             }
             return font;
           }
+        } else if ( role == Qt::CheckStateRole ) {
+          // Don't show the checkbox if the collection can't contain incidences
+          const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+          if ( AkonadiCollectionView::isStructuralCollection( collection ) ) {
+            return QVariant();
+          }
         }
        return QSortFilterProxyModel::data( index, role );
      }
@@ -498,5 +504,21 @@ void AkonadiCollectionView::rowsInserted( const QModelIndex&, int, int )
     emit resourcesAddedRemoved();
   mCollectionview->expandAll();
 }
+
+/** static */
+bool AkonadiCollectionView::isStructuralCollection( const Akonadi::Collection &collection )
+{
+  QStringList mimeTypes;
+  mimeTypes << QLatin1String( "text/calendar" ) << KCalCore::Event::eventMimeType()
+            << Todo::todoMimeType() << Journal::journalMimeType();
+  const QStringList collectionMimeTypes = collection.contentMimeTypes();
+  foreach ( const QString &mimeType, mimeTypes ) {
+    if ( collectionMimeTypes.contains( mimeType ) )
+      return false;
+  }
+  return true;
+}
+
+
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT
