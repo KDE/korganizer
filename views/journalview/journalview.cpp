@@ -91,7 +91,13 @@ void JournalDateView::addJournal( const Akonadi::Item &j )
     return;
   }
 
+  QWidget *container = new QWidget( this );
+  QHBoxLayout *layout = new QHBoxLayout( container );
+  layout->addStretch( 1 );
   JournalView *entry = new JournalView( j, mCalendar, this );
+  layout->addWidget( entry, 3 /*stretch*/ );
+  layout->addStretch( 1 );
+
   entry->show();
   entry->setDate( mDate );
   entry->setIncidenceChanger( mChanger );
@@ -154,21 +160,26 @@ void JournalDateView::journalDeleted( const Akonadi::Item &journal )
 JournalView::JournalView( const Akonadi::Item &j,
                           CalendarSupport::Calendar *calendar,
                           QWidget *parent )
-  : QWidget( parent ), mJournal( j ), mCalendar( calendar )
+  : QFrame( parent ), mJournal( j ), mCalendar( calendar )
 {
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
   mCalendar = 0;
 
-  mLayout = new QGridLayout( this );
-  mLayout->setSpacing( KDialog::spacingHint() );
-  mLayout->setMargin( KDialog::marginHint() );
+  QVBoxLayout *verticalLayout = new QVBoxLayout( this );
+  verticalLayout->setSpacing( KDialog::spacingHint() );
+  verticalLayout->setMargin( KDialog::marginHint() );
+
 
   mBrowser = new KTextBrowser( this );
   mBrowser->viewport()->installEventFilter( this );
-  mBrowser->setFrameStyle( QFrame::Box );
-  mLayout->addWidget( mBrowser, 0, 0, 1, 3 );
+  mBrowser->setFrameStyle( QFrame::NoFrame );
+  verticalLayout->addWidget( mBrowser );
+
+  QHBoxLayout *buttonsLayout = new QHBoxLayout();
+  verticalLayout->addLayout( buttonsLayout );
+  buttonsLayout->addStretch();
 
   mEditButton = new QPushButton( this );
   mEditButton->setObjectName( "editButton" );
@@ -177,7 +188,7 @@ JournalView::JournalView( const Akonadi::Item &j,
   mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mEditButton->setToolTip( i18n( "Edit this journal entry" ) );
   mEditButton->setWhatsThis( i18n( "Opens an editor dialog for this journal entry" ) );
-  mLayout->addWidget( mEditButton, 1, 0 );
+  buttonsLayout->addWidget( mEditButton );
   connect( mEditButton, SIGNAL(clicked()), this, SLOT(editItem()) );
 
   mDeleteButton = new QPushButton( this );
@@ -188,7 +199,7 @@ JournalView::JournalView( const Akonadi::Item &j,
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mDeleteButton->setToolTip( i18n( "Delete this journal entry" ) );
   mDeleteButton->setWhatsThis( i18n( "Delete this journal entry" ) );
-  mLayout->addWidget( mDeleteButton, 1, 1 );
+  buttonsLayout->addWidget( mDeleteButton );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
   mPrintButton = new QPushButton( this );
@@ -198,11 +209,15 @@ JournalView::JournalView( const Akonadi::Item &j,
   mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mPrintButton->setToolTip( i18n( "Print this journal entry" ) );
   mPrintButton->setWhatsThis( i18n( "Opens a print dialog for this journal entry" ) );
-  mLayout->addWidget( mPrintButton, 1, 2 );
+  buttonsLayout->addWidget( mPrintButton );
   connect( mPrintButton, SIGNAL(clicked()), this, SLOT(printItem()) );
 
   readJournal( mJournal );
   mDirty = false;
+  setFrameStyle( QFrame::Box );
+  // These probably shouldt be hardcoded
+  setStyleSheet( "QFrame { border: 1px solid; border-radius: 7px; } " );
+  mBrowser->setStyleSheet( "QFrame { border: 0px solid white } " );
 }
 
 JournalView::~JournalView()

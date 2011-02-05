@@ -50,7 +50,7 @@ namespace CalendarSupport {
 
 using namespace KCalCore;
 
-class JournalView : public QWidget
+class JournalView : public QFrame
 {
   Q_OBJECT
   public:
@@ -101,8 +101,6 @@ class JournalView : public QWidget
     QPushButton *mEditButton;
     QPushButton *mDeleteButton;
     QPushButton *mPrintButton;
-
-    QGridLayout *mLayout;
 
     bool mDirty;
     bool mWriteInProgress;
