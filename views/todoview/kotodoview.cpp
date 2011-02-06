@@ -150,7 +150,14 @@ KOTodoView::KOTodoView( QWidget *parent )
   layout->addWidget( mView, 1, 0, 1, 2 );
   layout->setRowStretch( 1, 1 );
   layout->addWidget( mQuickAdd, 2, 0 );
-  layout->addWidget( mFlatView, 2, 1 );
+
+  // Dummy layout just to add a few px of right margin so the checkbox is aligned
+  // with the QAbstractItemView's viewport.
+  QHBoxLayout *dummyLayout = new QHBoxLayout();
+  dummyLayout->setContentsMargins( 0, 0, mView->frameWidth()/*right*/, 0 );
+  dummyLayout->addWidget( mFlatView );
+
+  layout->addLayout( dummyLayout, 2, 1 );
 
   setLayout( layout );
 
