@@ -115,9 +115,8 @@ void DateNavigator::selectWeek()
 
 void DateNavigator::selectWeek( const QDate &d, const QDate &preferredMonth )
 {
-  int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
-
-  int weekStart = KGlobal::locale()->weekStartDay();
+  const int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
+  const int weekStart = KGlobal::locale()->weekStartDay();
 
   QDate firstDate = d.addDays( weekStart - dayOfWeek );
 
@@ -135,8 +134,8 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek( const QDate &d )
 {
-  int weekStart = KGlobal::locale()->weekStartDay();
-  int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
+  const int weekStart = KGlobal::locale()->weekStartDay();
+  const int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
   QDate currentDate = d.addDays( weekStart - dayOfWeek );
 
   if ( weekStart != 1 && dayOfWeek < weekStart ) {
@@ -144,7 +143,7 @@ void DateNavigator::selectWorkWeek( const QDate &d )
   }
 
   mSelectedDates.clear();
-  int mask = KOGlobals::self()->getWorkWeekMask();
+  const int mask = KOGlobals::self()->getWorkWeekMask();
 
   for ( int i = 0; i < 7; ++i ) {
     if ( ( 1 << ( ( i + weekStart + 6 ) % 7 ) ) & (mask) ) {
@@ -192,7 +191,7 @@ void DateNavigator::selectPreviousMonth( const QDate &currentMonth,
 void DateNavigator::selectPreviousWeek()
 {
   QDate firstSelected = mSelectedDates.first();
-  int weekDay = firstSelected.dayOfWeek();
+  const int weekDay = firstSelected.dayOfWeek();
   firstSelected = KOGlobals::self()->calendarSystem()->addDays( firstSelected, -7 );
 
   selectWeekByDay( weekDay, firstSelected );
@@ -201,7 +200,7 @@ void DateNavigator::selectPreviousWeek()
 void DateNavigator::selectNextWeek()
 {
   QDate firstSelected = mSelectedDates.first();
-  int weekDay = firstSelected.dayOfWeek();
+  const int weekDay = firstSelected.dayOfWeek();
 
   firstSelected = KOGlobals::self()->calendarSystem()->addDays( firstSelected, 7 );
 
@@ -216,7 +215,7 @@ void DateNavigator::shiftMonth( const QDate &currentMonth,
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
   QDate firstSelected = mSelectedDates.first();
-  int weekDay = firstSelected.dayOfWeek();
+  const int weekDay = firstSelected.dayOfWeek();
   firstSelected = calSys->addMonths( firstSelected, offset );
 
   /* Don't trust firstSelected to calculate the nextMonth. firstSelected
@@ -304,10 +303,10 @@ void DateNavigator::selectMonth( int month )
 void DateNavigator::selectYear( int year )
 {
   QDate firstSelected = mSelectedDates.first();
-  int deltaYear = year - KOGlobals::self()->calendarSystem()->year( firstSelected );
+  const int deltaYear = year - KOGlobals::self()->calendarSystem()->year( firstSelected );
   firstSelected = KOGlobals::self()->calendarSystem()->addYears( firstSelected, deltaYear );
 
-  int weekDay = firstSelected.dayOfWeek();
+  const int weekDay = firstSelected.dayOfWeek();
   selectWeekByDay( weekDay, firstSelected );
 }
 

@@ -337,7 +337,7 @@ bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
     int i;
     for ( i=0; i < 6; ++i ) {
       if ( o == mWeeknos[ i ] ) {
-        QDate weekstart = mDayMatrix->getDate( i * 7 );
+        const QDate weekstart = mDayMatrix->getDate( i * 7 );
         emit weekClicked( weekstart );
         break;
       }
