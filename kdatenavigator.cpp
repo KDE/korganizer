@@ -336,9 +336,10 @@ bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
   if ( e->type() == QEvent::MouseButtonPress ) {
     int i;
     for ( i=0; i < 6; ++i ) {
-      if ( o == mWeeknos[ i ] ) {
+      if ( o == mWeeknos[i] ) {
         const QDate weekstart = mDayMatrix->getDate( i * 7 );
-        emit weekClicked( weekstart );
+        const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+        emit weekClicked( weekstart, calSys->month( month() ) );
         break;
       }
     }

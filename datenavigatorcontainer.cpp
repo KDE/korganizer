@@ -83,8 +83,8 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(newJournalSignal(QDate)),
            SIGNAL(newJournalSignal(QDate)) );
 
-  connect( v, SIGNAL(weekClicked(QDate)),
-           SIGNAL(weekClicked(QDate)) );
+  connect( v, SIGNAL(weekClicked(QDate,int)),
+           SIGNAL(weekClicked(QDate,int)) );
 
   connect( v, SIGNAL(goPrevious()), SIGNAL(goPrevious()) );
   connect( v, SIGNAL(goNext()), SIGNAL(goNext()) );
@@ -92,12 +92,11 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(nextYearClicked()), SIGNAL(nextYearClicked()) );
   connect( v, SIGNAL(prevYearClicked()), SIGNAL(prevYearClicked()) );
 
-  connect( v, SIGNAL(prevMonthClicked()), this, SLOT(goPrevMonth()) );
-  connect( v, SIGNAL(nextMonthClicked()), this, SLOT(goNextMonth()) );
+  connect( v, SIGNAL(prevMonthClicked()), SLOT(goPrevMonth()) );
+  connect( v, SIGNAL(nextMonthClicked()), SLOT(goNextMonth()) );
 
   connect( v, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int) ) );
   connect( v, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)) );
-
 }
 
 void DateNavigatorContainer::setCalendar( CalendarSupport::Calendar *cal )

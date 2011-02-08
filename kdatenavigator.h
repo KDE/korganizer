@@ -102,7 +102,9 @@ class KDateNavigator: public QFrame
     void newEventSignal( const QDate & );
     void newTodoSignal( const QDate & );
     void newJournalSignal( const QDate & );
-    void weekClicked( const QDate & );
+
+    // Two months can contain the same week. @p month is the month of this kdatenavigator
+    void weekClicked( const QDate &week, int month );
 
     void goPrevious();
     void goNext();

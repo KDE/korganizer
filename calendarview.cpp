@@ -188,16 +188,16 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(weekClicked(QDate)),
            SLOT(selectWeek(QDate)) );
 
-  connect( mDateNavigatorContainer, SIGNAL(prevMonthClicked(const QDate &, const QDate &, const QDate &) ),
-           mDateNavigator, SLOT( selectPreviousMonth(const QDate &, const QDate &, const QDate &)) );
-  connect( mDateNavigatorContainer, SIGNAL(nextMonthClicked(const QDate &, const QDate &, const QDate &) ),
-           mDateNavigator, SLOT(selectNextMonth(const QDate &, const QDate &, const QDate &)) );
-  connect( mDateNavigatorContainer, SIGNAL( prevYearClicked() ),
-           mDateNavigator, SLOT( selectPreviousYear() ) );
-  connect( mDateNavigatorContainer, SIGNAL( nextYearClicked() ),
-           mDateNavigator, SLOT( selectNextYear() ) );
-  connect( mDateNavigatorContainer, SIGNAL( monthSelected(int) ),
-           mDateNavigator, SLOT( selectMonth(int) ) );
+  connect( mDateNavigatorContainer, SIGNAL(prevMonthClicked(QDate,QDate,QDate)),
+           mDateNavigator, SLOT(selectPreviousMonth(QDate,QDate,QDate)) );
+  connect( mDateNavigatorContainer, SIGNAL(nextMonthClicked(QDate,QDate,QDate)),
+           mDateNavigator, SLOT(selectNextMonth(QDate,QDate,QDate)) );
+  connect( mDateNavigatorContainer, SIGNAL(prevYearClicked()),
+           mDateNavigator, SLOT(selectPreviousYear()) );
+  connect( mDateNavigatorContainer, SIGNAL(nextYearClicked()),
+           mDateNavigator, SLOT(selectNextYear()) );
+  connect( mDateNavigatorContainer, SIGNAL(monthSelected(int)),
+           mDateNavigator, SLOT(selectMonth(int) ) );
   connect( mDateNavigatorContainer, SIGNAL(yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
   connect( mDateNavigatorContainer, SIGNAL(goPrevious()),
@@ -205,8 +205,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(goNext()),
            mDateNavigator, SLOT(selectNext()) );
 
-  connect( mDateNavigatorContainer, SIGNAL(datesSelected(const KCalCore::DateList &)),
-           mDateNavigator, SLOT(selectDates(const KCalCore::DateList &)) );
+  connect( mDateNavigatorContainer, SIGNAL(datesSelected(KCalCore::DateList)),
+           mDateNavigator, SLOT(selectDates(KCalCore::DateList)) );
 
   connect( mViewManager, SIGNAL(datesSelected(KCalCore::DateList)),
            mDateNavigator, SLOT(selectDates(KCalCore::DateList)) );
@@ -216,18 +216,18 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
            SLOT(moveIncidenceTo(Akonadi::Item,QDate)) );
 
-  connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
-           mTodoList, SLOT(dayPassed(const QDate &)) );
-  connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
-           SIGNAL(dayPassed(const QDate &)) );
-  connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
+  connect( mDateChecker, SIGNAL(dayPassed(QDate)),
+           mTodoList, SLOT(dayPassed(QDate)) );
+  connect( mDateChecker, SIGNAL(dayPassed(QDate)),
+           SIGNAL(dayPassed(QDate)) );
+  connect( mDateChecker, SIGNAL(dayPassed(QDate)),
            mDateNavigatorContainer, SLOT(updateToday()) );
 
   connect( this, SIGNAL(configChanged()),
            mDateNavigatorContainer, SLOT(updateConfig()) );
 
-  connect( this, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
-           mEventViewer, SLOT(setIncidence(const Akonadi::Item &, const QDate &)) );
+  connect( this, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           mEventViewer, SLOT(setIncidence(Akonadi::Item, QDate)) );
 
   //TODO: do a pretty Summary,
   QString s;

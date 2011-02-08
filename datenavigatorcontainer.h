@@ -81,7 +81,12 @@ class DateNavigatorContainer: public QFrame
     void newEventSignal( const QDate & );
     void newTodoSignal( const QDate & );
     void newJournalSignal( const QDate & );
-    void weekClicked( const QDate & );
+
+    /**
+     * @param preferredMonth Holds the month that should be selected when the week crosses months.
+     *                       -1 means no preference
+     * */
+    void weekClicked( const QDate &week, int preferredMonth );
 
     void goPrevious();
     void goNext();
