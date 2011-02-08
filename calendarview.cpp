@@ -185,11 +185,9 @@ CalendarView::CalendarView( QWidget *parent )
            mDateNavigator, SLOT(selectYear(int)) );
 
   // Signals emitted by mDateNavigatorContainer
-  connect( mDateNavigatorContainer, SIGNAL(weekClicked(const QDate &)),
-           SLOT(selectWeek(const QDate &)) );
+  connect( mDateNavigatorContainer, SIGNAL(weekClicked(QDate)),
+           SLOT(selectWeek(QDate)) );
 
-  connect( mDateNavigatorContainer, SIGNAL(weekClicked(const QDate &) ),
-           this, SLOT(selectWeek(const QDate &)) );
   connect( mDateNavigatorContainer, SIGNAL(prevMonthClicked(const QDate &, const QDate &, const QDate &) ),
            mDateNavigator, SLOT( selectPreviousMonth(const QDate &, const QDate &, const QDate &)) );
   connect( mDateNavigatorContainer, SIGNAL(nextMonthClicked(const QDate &, const QDate &, const QDate &) ),
