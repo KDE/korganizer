@@ -83,8 +83,8 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(newJournalSignal(QDate)),
            SIGNAL(newJournalSignal(QDate)) );
 
-  connect( v, SIGNAL(weekClicked(QDate,int)),
-           SIGNAL(weekClicked(QDate,int)) );
+  connect( v, SIGNAL(weekClicked(QDate,QDate)),
+           SIGNAL(weekClicked(QDate,QDate)) );
 
   connect( v, SIGNAL(goPrevious()), SIGNAL(goPrevious()) );
   connect( v, SIGNAL(goNext()), SIGNAL(goNext()) );

@@ -185,8 +185,8 @@ CalendarView::CalendarView( QWidget *parent )
            mDateNavigator, SLOT(selectYear(int)) );
 
   // Signals emitted by mDateNavigatorContainer
-  connect( mDateNavigatorContainer, SIGNAL(weekClicked(QDate)),
-           SLOT(selectWeek(QDate)) );
+  connect( mDateNavigatorContainer, SIGNAL(weekClicked(QDate,QDate)),
+           SLOT(selectWeek(QDate,QDate)) );
 
   connect( mDateNavigatorContainer, SIGNAL(prevMonthClicked(QDate,QDate,QDate)),
            mDateNavigator, SLOT(selectPreviousMonth(QDate,QDate,QDate)) );
@@ -2919,13 +2919,13 @@ void CalendarView::updateHighlightModes() {
   }
 }
 
-void CalendarView::selectWeek( const QDate &date )
+void CalendarView::selectWeek( const QDate &date, const QDate &preferredMonth )
 {
   if ( KOPrefs::instance()->mWeekNumbersShowWork  &&
        mViewManager->rangeMode() == KOViewManager::WORK_WEEK_RANGE ) {
     mDateNavigator->selectWorkWeek( date );
   } else {
-    mDateNavigator->selectWeek( date );
+    mDateNavigator->selectWeek( date, preferredMonth );
   }
 }
 

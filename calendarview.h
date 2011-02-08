@@ -611,8 +611,12 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
       Lets select a week or a work week depending on the user's
       config option.
+
+      @param prefferedMonth Holds the month that should be selected when the week crosses months.
+                            It's a QDate instead of uint so it can be easily feed to KCalendarSystem's
+                            functions.
     */
-    void selectWeek( const QDate & );
+    void selectWeek( const QDate &week, const QDate &preferredMonth );
 
   protected slots:
     /** Select a view or adapt the current view to display the specified dates.
