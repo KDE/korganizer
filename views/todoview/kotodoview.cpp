@@ -395,7 +395,7 @@ void KOTodoView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer
   sModel->setIncidenceChanger( changer );
 }
 
-void KOTodoView::showDates( const QDate &start, const QDate &end )
+void KOTodoView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   // There is nothing to do here for the Todo View
   Q_UNUSED( start );

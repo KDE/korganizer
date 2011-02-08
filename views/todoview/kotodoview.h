@@ -89,7 +89,7 @@ class KOTodoView : public BaseView
 
   public Q_SLOTS:
     virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
-    virtual void showDates( const QDate &start, const QDate &end );
+    virtual void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
     void updateCategories();

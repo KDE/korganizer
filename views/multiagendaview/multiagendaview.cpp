@@ -171,7 +171,7 @@ int MultiAgendaView::currentDateCount() const
   return d->mMultiAgendaView->currentDateCount();
 }
 
-void MultiAgendaView::showDates( const QDate &start, const QDate &end )
+void MultiAgendaView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   d->mMultiAgendaView->showDates( start, end );
 }
@@ -200,7 +200,7 @@ int MultiAgendaView::maxDatesHint() const
   return EventViews::AgendaView::MAX_DAY_COUNT;
 }
 
-void MultiAgendaView::setDateRange( const KDateTime &start, const KDateTime &end )
+void MultiAgendaView::setDateRange( const KDateTime &start, const KDateTime &end, const QDate & )
 {
   d->mMultiAgendaView->setDateRange( start, end );
 }

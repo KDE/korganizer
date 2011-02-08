@@ -209,7 +209,7 @@ int KOTimeSpentView::currentDateCount() const
   return mStartDate.daysTo( mEndDate );
 }
 
-void KOTimeSpentView::showDates( const QDate &start, const QDate &end )
+void KOTimeSpentView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   mStartDate = start;
   mEndDate = end;

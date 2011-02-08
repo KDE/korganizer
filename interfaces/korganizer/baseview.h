@@ -201,7 +201,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @param start Start of date range.
       @param end   End of date range.
     */
-    virtual void setDateRange( const KDateTime &start, const KDateTime &end );
+    virtual void setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth = QDate() );
 
     KDateTime startDateTime() const;
     KDateTime endDateTime() const;
@@ -387,14 +387,14 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       @deprecated
      */
-    virtual void showDates( const QDate& start, const QDate& end ) = 0;
+    virtual void showDates( const QDate& start, const QDate& end, const QDate &preferredMonth = QDate() ) = 0;
 
     /**
      * from the requested date range (passed via setDateRange()), calculates the adjusted date range actually displayed by the view, depending
      * on the view's supported range (e.g., a month view always displays one month)
      * The default implementation returns the range unmodified
      */
-    virtual QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end ) const;
+    virtual QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end, const QDate &preferredMonth = QDate() ) const;
 
   protected Q_SLOTS:
     virtual void calendarReset();

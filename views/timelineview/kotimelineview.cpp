@@ -158,7 +158,7 @@ int KOTimelineView::currentDateCount() const
 }
 
 /*virtual*/
-void KOTimelineView::showDates( const QDate &start, const QDate &end )
+void KOTimelineView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   d->mTimeLineView->showDates( start, end );
 }

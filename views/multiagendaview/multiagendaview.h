@@ -72,12 +72,12 @@ class MultiAgendaView : public KOEventView
     void restoreConfig( const KConfigGroup &configGroup );
     void saveConfig( KConfigGroup &configGroup );
 
-    void setDateRange( const KDateTime &start, const KDateTime &end );
+    void setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth = QDate() );
 
     Akonadi::Collection::Id collectionId() const;
 
   public slots:
-    void showDates( const QDate &start, const QDate &end );
+    void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
     void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     void updateView();
     void changeIncidenceDisplay( const Akonadi::Item &, int mode );

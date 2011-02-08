@@ -222,9 +222,9 @@ void MonthView::setTypeAheadReceiver( QObject *o )
   d->mMonthView->setTypeAheadReceiver( o );
 }
 
-void MonthView::setDateRange( const KDateTime &start, const KDateTime &end )
+void MonthView::setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth )
 {
-  d->mMonthView->setDateRange( start, end );
+  d->mMonthView->setDateRange( start, end, preferredMonth );
 }
 
 void MonthView::setCalendar( CalendarSupport::Calendar *cal )

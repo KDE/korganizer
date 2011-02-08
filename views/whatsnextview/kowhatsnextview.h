@@ -62,7 +62,7 @@ class KOWhatsNextView : public KOrg::BaseView
 
   public slots:
     virtual void updateView();
-    virtual void showDates( const QDate &start, const QDate &end );
+    virtual void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );

@@ -127,16 +127,12 @@ bool BaseView::hasConfigurationDialog() const
   return false;
 }
 
-void BaseView::setDateRange( const KDateTime& start, const KDateTime& end )
+void BaseView::setDateRange( const KDateTime& start, const KDateTime& end, const QDate &preferredMonth )
 {
-#if 0 //AKONADI_PORT the old code called showDates() (below), which triggers a repaint, which the old code relies on
-  if ( d->startDateTime == start && d->endDateTime == end )
-    return;
-#endif
   d->startDateTime = start;
   d->endDateTime = end;
-  showDates( start.date(), end.date() );
-  const QPair<KDateTime,KDateTime> adjusted = actualDateRange( start, end );
+  showDates( start.date(), end.date(), preferredMonth );
+  const QPair<KDateTime,KDateTime> adjusted = actualDateRange( start, end, preferredMonth );
   d->actualStartDateTime = adjusted.first;
   d->actualEndDateTime = adjusted.second;
 }
@@ -233,8 +229,10 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime& start, const KDateTime& end ) const
+QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime& start, const KDateTime& end,
+                                                      const QDate &preferredMonth ) const
 {
+  Q_UNUSED( preferredMonth );
   return qMakePair( start, end );
 }
 

@@ -228,7 +228,7 @@ void KOWhatsNextView::updateView()
   mView->setText(mText);
 }
 
-void KOWhatsNextView::showDates( const QDate &start, const QDate &end )
+void KOWhatsNextView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   mStartDate = start;
   mEndDate = end;

@@ -66,7 +66,7 @@ class KOJournalView : public KOrg::BaseView
     void updateView();
     void flushView();
 
-    void showDates( const QDate &start, const QDate &end );
+    void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
     void showIncidences( const Akonadi::Item::List &incidences, const QDate &date );
 
     void changeIncidenceDisplay( const Akonadi::Item &incidence, int );

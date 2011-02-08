@@ -69,7 +69,7 @@ class MonthView : public KOEventView
 
     void setTypeAheadReceiver( QObject *o );
 
-    void setDateRange( const KDateTime &start, const KDateTime &end );
+    void setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth = QDate() );
 
     void setCalendar( CalendarSupport::Calendar *cal );
 
@@ -85,7 +85,7 @@ class MonthView : public KOEventView
     void updateConfig();
 
   private:
-    void showDates( const QDate&, const QDate& ){};
+    void showDates( const QDate&, const QDate&, const QDate& = QDate() ){};
 
     class Private;
     Private * const d;

@@ -137,7 +137,7 @@ void KOJournalView::flushView()
   emit flushEntries();
 }
 
-void KOJournalView::showDates( const QDate &start, const QDate &end )
+void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   clearEntries();
   if ( end<start ) {

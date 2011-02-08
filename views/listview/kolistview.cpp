@@ -168,7 +168,7 @@ void KOListView::updateView()
   mListView->updateView();
 }
 
-void KOListView::showDates( const QDate &start, const QDate &end )
+void KOListView::showDates( const QDate &start, const QDate &end, const QDate & )
 {
   mListView->showDates( start, end );
 }
