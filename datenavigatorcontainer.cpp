@@ -370,4 +370,17 @@ QPair<QDate,QDate> DateNavigatorContainer::dateLimits( int offset )
   return qMakePair( firstMonthBoundary.first, lastMonthBoundary.second );
 }
 
+QDate DateNavigatorContainer::monthOfNavigator( int navigatorIndex ) const
+{
+  if ( navigatorIndex == 0 ) {
+    return mNavigatorView->month();
+  }
+
+  if ( navigatorIndex <= mExtraViews.count() && navigatorIndex >= 0 ) {
+    return mExtraViews[navigatorIndex-1]->month();
+  } else {
+    return QDate();
+  }
+}
+
 #include "datenavigatorcontainer.moc"

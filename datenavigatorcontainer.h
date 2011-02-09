@@ -57,6 +57,15 @@ class DateNavigatorContainer: public QFrame
                            bool highlightTodos,
                            bool highlightJournals ) const;
     void setUpdateNeeded();
+
+    /**
+       Returns the month of the specified KDateNavigator.
+       The first navigatorIndex is 0.
+       Returns a QDate instead of uint so it can be easily feed to KCalendarSystem's
+       functions.
+       An invalid QDate() is returned if the index is too big or too small.
+    */
+    QDate monthOfNavigator( int navigatorIndex = 0 ) const;
   public slots:
 
     /**
