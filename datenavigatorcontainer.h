@@ -137,6 +137,7 @@ class DateNavigatorContainer: public QFrame
 
   private slots:
     void handleDatesSelectedSignal( const KCalCore::DateList & );
+    void handleWeekClickedSignal( const QDate &, const QDate & );
 
   private:
     /* Returns the first day of the first KDateNavigator, and the last day

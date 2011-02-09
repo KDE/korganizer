@@ -84,7 +84,7 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
            SIGNAL(newJournalSignal(QDate)) );
 
   connect( v, SIGNAL(weekClicked(QDate,QDate)),
-           SIGNAL(weekClicked(QDate,QDate)) );
+           SLOT(handleWeekClickedSignal(QDate,QDate)) );
 
   connect( v, SIGNAL(goPrevious()), SIGNAL(goPrevious()) );
   connect( v, SIGNAL(goNext()), SIGNAL(goNext()) );
@@ -396,6 +396,14 @@ void DateNavigatorContainer::handleDatesSelectedSignal( const KCalCore::DateList
   emit datesSelected( dateList, navigator->month() );
 }
 
+void DateNavigatorContainer::handleWeekClickedSignal( const QDate &week, const QDate & )
+{
+  Q_ASSERT( sender() );
+  KDateNavigator *navigator = firstNavigatorForDate( week );
+  navigator = navigator ? navigator : qobject_cast<KDateNavigator*>( sender() );
+
+  emit weekClicked( week, navigator->month() );
+}
 
 KDateNavigator* DateNavigatorContainer::firstNavigatorForDate( const QDate &date ) const
 {
