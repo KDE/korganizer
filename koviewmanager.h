@@ -96,7 +96,7 @@ class KOViewManager : public QObject
     void setDocumentId( const QString & );
 
     void updateView();
-    void updateView( const QDate &start, const QDate &end );
+    void updateView( const QDate &start, const QDate &end, const QDate &preferredMonth );
 
     void goMenu( bool enable );
     void raiseCurrentView();

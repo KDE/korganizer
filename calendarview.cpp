@@ -838,6 +838,7 @@ void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action
 }
 
 void CalendarView::updateView( const QDate &start, const QDate &end,
+                               const QDate &preferredMonth,
                                const bool updateTodos )
 {
   const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
@@ -848,7 +849,7 @@ void CalendarView::updateView( const QDate &start, const QDate &end,
   }
 
   if ( start.isValid() && end.isValid() && !( currentViewIsTodoView && !updateTodos ) ) {
-    mViewManager->updateView( start, end );
+    mViewManager->updateView( start, end, preferredMonth );
   }
 
   mDateNavigatorContainer->updateView();
@@ -859,7 +860,7 @@ void CalendarView::updateView()
   DateList tmpList = mDateNavigator->selectedDates();
 
   // We assume that the navigator only selects consecutive days.
-  updateView( tmpList.first(), tmpList.last() );
+  updateView( tmpList.first(), tmpList.last(), QDate() /**preferredMonth*/ );
 }
 
 void CalendarView::updateUnmanagedViews()
@@ -2166,7 +2167,7 @@ void CalendarView::showDates( const DateList &selectedDates, const QDate &prefer
   mNavigatorBar->selectDates( selectedDates );
 
   if ( mViewManager->currentView() ) {
-    updateView( selectedDates.first(), selectedDates.last(), false );
+    updateView( selectedDates.first(), selectedDates.last(), preferredMonth, false );
   } else {
     mViewManager->showAgendaView();
   }
