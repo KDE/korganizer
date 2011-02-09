@@ -28,7 +28,7 @@
 #ifndef DATENAVIGATOR_H
 #define DATENAVIGATOR_H
 
-#include <kcalcore/incidencebase.h>
+#include <KCalCore/IncidenceBase>
 
 #include <QObject>
 

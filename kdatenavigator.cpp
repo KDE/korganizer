@@ -86,20 +86,20 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   mDayMatrix = new KODayMatrix( this );
   mDayMatrix->setObjectName( "KDateNavigator::dayMatrix" );
 
-  connect( mDayMatrix, SIGNAL(selected(const KCalCore::DateList &)),
-           SIGNAL(datesSelected(const KCalCore::DateList &)) );
+  connect( mDayMatrix, SIGNAL(selected(KCalCore::DateList)),
+           SIGNAL(datesSelected(KCalCore::DateList)) );
 
   connect( mDayMatrix, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
            SIGNAL(incidenceDropped(Akonadi::Item,QDate)) );
   connect( mDayMatrix, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
            SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)) );
 
-  connect( mDayMatrix, SIGNAL(newEventSignal(const QDate &)),
-           SIGNAL(newEventSignal(const QDate &)) );
-  connect( mDayMatrix, SIGNAL(newTodoSignal(const QDate &)),
-           SIGNAL(newTodoSignal(const QDate &)) );
-  connect( mDayMatrix, SIGNAL(newJournalSignal(const QDate &)),
-           SIGNAL(newJournalSignal(const QDate &)) );
+  connect( mDayMatrix, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
+  connect( mDayMatrix, SIGNAL(newTodoSignal(QDate)),
+           SIGNAL(newTodoSignal(QDate)) );
+  connect( mDayMatrix, SIGNAL(newJournalSignal(QDate)),
+           SIGNAL(newJournalSignal(QDate)) );
 
   topLayout->addWidget( mDayMatrix, 2, 1, 6, 7 );
 

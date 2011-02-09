@@ -570,7 +570,7 @@ void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
   for ( int i = mSelStart; i <= mSelEnd; ++i ) {
     daylist.append( mDays[i] );
   }
-  emit selected( ( const DateList )daylist );
+  emit selected( static_cast<const DateList>(daylist) );
 }
 
 void KODayMatrix::mouseMoveEvent( QMouseEvent *e )
