@@ -43,6 +43,7 @@
 #include "koviewmanager.h"
 #include "navigatorbar.h"
 #include "publishdialog.h"
+#include "kodaymatrix.h"
 #include "htmlexportsettings.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
@@ -615,7 +616,9 @@ void CalendarView::goToday()
 void CalendarView::goNext()
 {
   if ( dynamic_cast<MonthView*>( mViewManager->currentView() ) ) {
-    mDateNavigator->selectNextMonth();
+    const QDate month = mDateNavigatorContainer->monthOfNavigator( 0 );
+    QPair<QDate,QDate> limits = KODayMatrix::matrixLimits( month );
+    mDateNavigator->selectNextMonth( month, limits.first, limits.second );
   } else {
     mDateNavigator->selectNext();
   }
@@ -624,7 +627,9 @@ void CalendarView::goNext()
 void CalendarView::goPrevious()
 {
   if ( dynamic_cast<MonthView*>( mViewManager->currentView() ) ) {
-    mDateNavigator->selectPreviousMonth();
+    const QDate month = mDateNavigatorContainer->monthOfNavigator( 0 );
+    QPair<QDate,QDate> limits = KODayMatrix::matrixLimits( month );
+    mDateNavigator->selectPreviousMonth( month, limits.first, limits.second  );
   } else {
     mDateNavigator->selectPrevious();
   }
