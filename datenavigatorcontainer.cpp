@@ -69,7 +69,7 @@ DateNavigatorContainer::~DateNavigatorContainer()
 void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
 {
   connect( v, SIGNAL(datesSelected(KCalCore::DateList)),
-           SIGNAL(datesSelected(KCalCore::DateList)) );
+           SLOT(handleDatesSelectedSignal(KCalCore::DateList)) );
 
   connect( v, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
            SIGNAL(incidenceDropped(Akonadi::Item,QDate)) );
@@ -381,6 +381,15 @@ QDate DateNavigatorContainer::monthOfNavigator( int navigatorIndex ) const
   } else {
     return QDate();
   }
+}
+
+void DateNavigatorContainer::handleDatesSelectedSignal( const KCalCore::DateList &dateList )
+{
+  Q_ASSERT( sender() );
+  KDateNavigator *navigator = qobject_cast<KDateNavigator*>( sender() );
+  Q_ASSERT( navigator );
+
+  emit datesSelected( dateList, navigator->month() );
 }
 
 #include "datenavigatorcontainer.moc"

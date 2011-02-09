@@ -54,11 +54,11 @@ int DateNavigator::datesCount() const
   return mSelectedDates.count();
 }
 
-void DateNavigator::selectDates( const DateList &dateList )
+void DateNavigator::selectDates( const DateList &dateList, const QDate &preferredMonth )
 {
   if ( dateList.count() > 0 ) {
     mSelectedDates = dateList;
-    emitSelected();
+    emitSelected( preferredMonth );
   }
 }
 

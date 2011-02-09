@@ -205,8 +205,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(goNext()),
            mDateNavigator, SLOT(selectNext()) );
 
-  connect( mDateNavigatorContainer, SIGNAL(datesSelected(KCalCore::DateList)),
-           mDateNavigator, SLOT(selectDates(KCalCore::DateList)) );
+  connect( mDateNavigatorContainer, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
+           mDateNavigator, SLOT(selectDates(KCalCore::DateList,QDate)) );
 
   connect( mViewManager, SIGNAL(datesSelected(KCalCore::DateList)),
            mDateNavigator, SLOT(selectDates(KCalCore::DateList)) );

@@ -84,7 +84,7 @@ class DateNavigatorContainer: public QFrame
     void goNextMonth();
 
   signals:
-    void datesSelected( const KCalCore::DateList & );
+    void datesSelected( const KCalCore::DateList &, const QDate &preferredMonth );
     void incidenceDropped( const Akonadi::Item &, const QDate & );
     void incidenceDroppedMove( const Akonadi::Item &, const QDate & );
     void newEventSignal( const QDate & );
@@ -134,6 +134,9 @@ class DateNavigatorContainer: public QFrame
         resizeEvent. This makes the UI seem more responsive, since
         the other parts of the splitter are resized earlier now */
     void resizeAllContents();
+
+  private slots:
+    void handleDatesSelectedSignal( const KCalCore::DateList & );
 
   private:
     /* Returns the first day of the first KDateNavigator, and the last day
