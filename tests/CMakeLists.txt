@@ -13,7 +13,7 @@ kde4_add_executable(korgplugins TEST ${korgplugins_SRCS})
 kde4_add_executable(testkodaymatrix TEST testkodaymatrix.cpp ../kodaymatrix.cpp)
 
 target_link_libraries(korgplugins korganizerprivate korganizer_core ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} )
-target_link_libraries(testkodaymatrix korganizerprivate korganizer_core ${QT_QTTEST_LIBRARY})
+target_link_libraries(testkodaymatrix korganizerprivate korganizer_core ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 kde4_add_executable(testkcmdesignerfields TEST testkcmdesignerfields.cpp ../kcmdesignerfields.cpp )
 target_link_libraries(testkcmdesignerfields
