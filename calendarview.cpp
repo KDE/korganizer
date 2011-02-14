@@ -1290,7 +1290,7 @@ void CalendarView::newJournal()
 void CalendarView::newJournal( const QDate &date )
 {
   if ( mCreatingEnabled ) {
-    newJournal( QString(), date );
+    newJournal( QString(), date.isValid() ? date : activeDate( true ) );
   }
 }
 
@@ -1315,6 +1315,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
     IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
     Journal::Ptr journal( new Journal );
+    defaults.setStartDateTime( KDateTime( date ) );
     defaults.setDefaults( journal );
 
     journal->setSummary( text );

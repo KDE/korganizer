@@ -217,7 +217,7 @@ bool KOJournalView::eventFilter ( QObject *object, QEvent *event )
   Q_UNUSED( object );
   switch( event->type() ) {
   case QEvent::MouseButtonDblClick:
-    emit newJournalSignal( QDate::currentDate() );
+    emit newJournalSignal( QDate() );
     return true;
   default:
     return false;
