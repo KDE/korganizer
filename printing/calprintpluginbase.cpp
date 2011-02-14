@@ -1055,6 +1055,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.setFont( QFont( "sans-serif", 8 ) );
 
   int textY = mSubHeaderHeight; // gives the relative y-coord of the next printed entry
+  unsigned int visibleEventsCounter = 0;
   Q_FOREACH ( const Akonadi::Item &item, eventList ) {
     const Event::Ptr currEvent = CalendarSupport::event( item );
     Q_ASSERT( currEvent );
@@ -1085,6 +1086,22 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
                    textY, singleLineLimit, includeDescription,
                    currEvent->descriptionIsRich() );
     p.restore();
+    visibleEventsCounter++;
+
+    if ( textY >= box.height() ) {
+      const QChar downArrow( 0x21e3 );
+      const unsigned int invisibleIncidences = ((eventList.count() - visibleEventsCounter) + mCalendar->todos( qd ).count());
+      const QString warningMsg = QString( "%1 (%2)" ).arg( downArrow ).arg( invisibleIncidences );
+
+      QFontMetrics fm( p.font() );
+      QRect msgRect = fm.boundingRect( warningMsg );
+      msgRect.setRect( box.right() - msgRect.width() - 2, box.bottom() - msgRect.height() - 2, msgRect.width(), msgRect.height() );
+
+      p.save();
+      p.setPen( Qt::red );
+      p.drawText( msgRect, Qt::AlignLeft, warningMsg );
+      p.restore();
+    }
   }
 
   if ( textY < box.height() ) {
