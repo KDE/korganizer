@@ -920,7 +920,8 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
     return true;
   } else {
-    KOHelper::showSaveIncidenceErrorMsg( 0, todo ); //TODO pass parent
+    if ( !( role == Qt::CheckStateRole && index.column() == 0 ) )
+      KOHelper::showSaveIncidenceErrorMsg( 0, todo ); //TODO pass parent
     return false;
   }
 }
