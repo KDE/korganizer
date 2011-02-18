@@ -747,7 +747,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     }
   }
 
-  // item for recurring todos
+  // icon for recurring todos
+  // It's in the summary column so you don't accidentally click the checkbox ( which increments the next occurrence date ).
   if ( role == Qt::DecorationRole && index.column() == SummaryColumn ) {
     if ( todo->recurs() ) {
       return QVariant( QIcon( KOGlobals::self()->smallIcon( "task-recurring" ) ) );
