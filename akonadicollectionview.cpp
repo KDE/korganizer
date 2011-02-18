@@ -204,11 +204,11 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   topLayout->setMargin( 0 );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  KLineEdit *searchCol = new KLineEdit( this );
-  searchCol->setClearButtonShown( true );
-  searchCol->setClickMessage( i18nc( "@info/plain Displayed grayed-out inside the "
-                                                   "textbox, verb to search", "Search" ) );
-  topLayout->addWidget( searchCol );
+  //KLineEdit *searchCol = new KLineEdit( this );
+  //searchCol->setClearButtonShown( true );
+  //searchCol->setClickMessage( i18nc( "@info/plain Displayed grayed-out inside the "
+  //                                                   "textbox, verb to search", "Search" ) );
+  //topLayout->addWidget( searchCol );
 
 
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
@@ -237,7 +237,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   mCollectionview->setModel( filterTreeViewModel );
 
-  connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
+  //connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
 
   connect( mCollectionview->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),
            this, SLOT(selectionChanged()) );
