@@ -143,7 +143,7 @@ CalendarView::CalendarView( QWidget *parent )
   mDateNavigatorContainer = new DateNavigatorContainer( mLeftSplitter );
   mDateNavigatorContainer->setObjectName( "CalendarView::DateNavigator" );
 
-  mTodoList = new KOTodoView( mLeftSplitter );
+  mTodoList = new KOTodoView( true/*sidebar*/, mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
 
   mEventViewerBox = new KVBox( mLeftSplitter );

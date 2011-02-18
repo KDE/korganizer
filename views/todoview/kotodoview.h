@@ -62,7 +62,7 @@ class KOTodoView : public BaseView
   Q_OBJECT
 
   public:
-    KOTodoView( QWidget *parent );
+    KOTodoView( bool sidebarView, QWidget *parent );
     ~KOTodoView();
 
     virtual void setCalendar( CalendarSupport::Calendar *cal );
@@ -162,6 +162,7 @@ class KOTodoView : public BaseView
     QMap<QAction *,int> mPercentage;
     QMap<QAction *,int> mPriority;
     QMap<QAction *,QString> mCategory;
+    bool mSidebarView;
 
   enum {
       eSummaryColumn = 0,

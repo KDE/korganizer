@@ -574,7 +574,7 @@ void KOViewManager::selectNextX()
 void KOViewManager::showTodoView()
 {
   if ( !mTodoView ) {
-    mTodoView = new KOTodoView( mMainView->viewStack() );
+    mTodoView = new KOTodoView( false /*not sidebar*/, mMainView->viewStack() );
     mTodoView->setCalendar( mMainView->calendar() );
     mTodoView->setIdentifier( "DefaultTodoView" );
     mTodoView->setCalendar( mMainView->calendar() );

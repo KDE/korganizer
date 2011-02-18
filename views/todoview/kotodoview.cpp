@@ -65,7 +65,7 @@ using namespace CalendarSupport;
 // Share the model with the sidepanel KOTodoView
 K_GLOBAL_STATIC( KOTodoModel, sModel );
 
-KOTodoView::KOTodoView( QWidget *parent )
+KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   : BaseView( parent )
 {
   connect( sModel, SIGNAL( expandIndex( const QModelIndex& ) ),
@@ -77,12 +77,15 @@ KOTodoView::KOTodoView( QWidget *parent )
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSortRole( Qt::EditRole );
 
-  mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
-  mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
-  connect( mQuickSearch, SIGNAL(searchTextChanged(const QString &)),
-           mProxyModel, SLOT(setFilterRegExp(const QString &)) );
-  connect( mQuickSearch, SIGNAL(searchCategoryChanged(const QStringList &)),
-           mProxyModel, SLOT(setCategoryFilter(const QStringList &)) );
+  mSidebarView = sidebarView;
+  if ( !mSidebarView ) {
+    mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
+    mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
+    connect( mQuickSearch, SIGNAL(searchTextChanged(const QString &)),
+             mProxyModel, SLOT(setFilterRegExp(const QString &)) );
+    connect( mQuickSearch, SIGNAL(searchCategoryChanged(const QStringList &)),
+             mProxyModel, SLOT(setCategoryFilter(const QStringList &)) );
+  }
 
   mView = new KOTodoViewView( this );
   mView->setModel( mProxyModel );
@@ -146,7 +149,9 @@ KOTodoView::KOTodoView( QWidget *parent )
 
   QGridLayout *layout = new QGridLayout( this );
   layout->setMargin( 0 );
-  layout->addWidget( mQuickSearch, 0, 0, 1, 2 );
+  if ( !mSidebarView ) {
+    layout->addWidget( mQuickSearch, 0, 0, 1, 2 );
+  }
   layout->addWidget( mView, 1, 0, 1, 2 );
   layout->setRowStretch( 1, 1 );
   layout->addWidget( mQuickAdd, 2, 0 );
@@ -288,7 +293,9 @@ void KOTodoView::expandIndex( const QModelIndex &index )
 void KOTodoView::setCalendar( CalendarSupport::Calendar *cal )
 {
   BaseView::setCalendar( cal );
-  mQuickSearch->setCalendar( cal );
+  if ( !mSidebarView ) {
+    mQuickSearch->setCalendar( cal );
+  }
   mCategoriesDelegate->setCalendar( cal );
   sModel->setCalendar( cal );
 }
@@ -415,7 +422,8 @@ void KOTodoView::updateView()
 
 void KOTodoView::updateCategories()
 {
-  mQuickSearch->updateCategories();
+  if ( !mSidebarView )
+    mQuickSearch->updateCategories();
   // TODO check if we have to do something with the category delegate
 }
 
@@ -426,7 +434,8 @@ void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &incidence, int act
 
 void KOTodoView::updateConfig()
 {
-  mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
+  if ( !mSidebarView )
+    mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
   mQuickAdd->setVisible( KOPrefs::instance()->enableQuickTodo() );
 
   updateView();
