@@ -376,7 +376,7 @@ void ActionManager::initActions()
     i18n( "Select this menu entry if you would like to merge the contents "
           "of another iCalendar into your current calendar." ) );
   mACollection->addAction( "import_icalendar", mergeAction );
-  connect( mergeAction, SIGNAL(triggered(bool)), SLOT(file_merge()) );
+  connect( mergeAction, SIGNAL(triggered(bool)), SLOT(file_import()) );
 
   KAction *importAction = new KAction( i18n( "&Import From UNIX Ical Tool" ), this );
   importAction->setHelpText(
@@ -909,10 +909,12 @@ void ActionManager::writeSettings()
   config.sync();
 }
 
+/*
 void ActionManager::file_new()
 {
   emit actionNewMainWindow();
 }
+*/
 
 void ActionManager::file_open()
 {
@@ -939,7 +941,7 @@ void ActionManager::file_open( const KUrl &url )
 
   kDebug() << url.prettyUrl();
 
-  emit actionNewMainWindow( url );
+  importCalendar( url );
 }
 
 void ActionManager::file_icalimport()
@@ -999,7 +1001,7 @@ void ActionManager::file_icalimport()
   }
 }
 
-void ActionManager::file_merge()
+void ActionManager::file_import()
 {
   const KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
                                       "text/calendar",

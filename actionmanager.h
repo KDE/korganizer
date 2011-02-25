@@ -248,7 +248,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /**
       Emitted when the "New" action is activated.
     */
-    void actionNewMainWindow( const KUrl &url = KUrl() );
+    //void actionNewMainWindow( const KUrl &url = KUrl() );
     void toggleMenuBar();
     /**
       When change is made to options dialog, the topwidget will catch this
@@ -299,7 +299,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void checkAutoExport();
 
     /** open new window */
-    void file_new();
+    //void file_new();
 
     /** open a file, load it into the calendar. */
     void file_open();
@@ -310,11 +310,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void file_open( const KUrl &url );
 
-    /** import a calendar from another program like ical. */
+    /** import a non-ics calendar from another program like ical. */
     void file_icalimport();
 
-    /** open a calendar and add the contents to the current calendar. */
-    void file_merge();
+    /** import a generic ics file */
+    void file_import();
 
     /** delete or archive old entries in your calendar for speed/space. */
     void file_archive();
