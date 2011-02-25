@@ -114,8 +114,8 @@ void KOrganizer::init( bool document )
   setComponentData( KGlobal::mainComponent() );
 
   mActionManager->init();
-  connect( mActionManager, SIGNAL(actionNew(const KUrl&)),
-           SLOT(newMainWindow(const KUrl&)) );
+  connect( mActionManager, SIGNAL(actionNewMainWindow(KUrl)),
+           SLOT(newMainWindow(KUrl)) );
 
   mActionManager->loadParts();
 

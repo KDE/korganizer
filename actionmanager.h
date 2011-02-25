@@ -248,7 +248,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /**
       Emitted when the "New" action is activated.
     */
-    void actionNew( const KUrl &url = KUrl() );
+    void actionNewMainWindow( const KUrl &url = KUrl() );
     void toggleMenuBar();
     /**
       When change is made to options dialog, the topwidget will catch this

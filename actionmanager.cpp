@@ -911,14 +911,13 @@ void ActionManager::writeSettings()
 
 void ActionManager::file_new()
 {
-  emit actionNew();
+  emit actionNewMainWindow();
 }
 
 void ActionManager::file_open()
 {
-  KUrl url;
   const QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
-  url = KFileDialog::getOpenUrl( defaultPath, "text/calendar", dialogParent() );
+  const KUrl url = KFileDialog::getOpenUrl( defaultPath, "text/calendar", dialogParent() );
 
   file_open( url );
 }
@@ -940,7 +939,7 @@ void ActionManager::file_open( const KUrl &url )
 
   kDebug() << url.prettyUrl();
 
-  emit actionNew( url );
+  emit actionNewMainWindow( url );
 }
 
 void ActionManager::file_icalimport()
