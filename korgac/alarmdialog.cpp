@@ -801,6 +801,7 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
   // Will be simplified in trunk, with roles.
   KDateTime result;
 
+  Q_ASSERT( !incidence->alarms().isEmpty() );
   Alarm::Ptr alarm = incidence->alarms().first();
 
   if ( incidence->recurs() ) {
@@ -830,15 +831,19 @@ void AlarmDialog::slotCalendarChanged()
     if ( item ) {
       Incidence::Ptr incidence = CalendarSupport::incidence( *it );
       QString displayStr;
-      const KDateTime dateTime = triggerDateForIncidence( incidence,
-                                                          item->mRemindAt,
-                                                          displayStr );
 
-      const QString summary = cleanSummary( incidence->summary() );
+      // Yes, alarms can be empty, if someone edited the incidence and removed all alarms
+      if ( !incidence->alarms().isEmpty() ) {
+        const KDateTime dateTime = triggerDateForIncidence( incidence,
+                                                            item->mRemindAt,
+                                                            displayStr );
 
-      if ( displayStr != item->text( 1 ) || summary != item->text( 0 ) ) {
-        item->setText( 1, displayStr );
-        item->setText( 0, summary );
+        const QString summary = cleanSummary( incidence->summary() );
+
+        if ( displayStr != item->text( 1 ) || summary != item->text( 0 ) ) {
+          item->setText( 1, displayStr );
+          item->setText( 0, summary );
+        }
       }
     }
   }
