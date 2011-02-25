@@ -101,6 +101,7 @@ class AlarmDialog : public KDialog
     static KDateTime triggerDateForIncidence( const KCalCore::Incidence::Ptr &inc,
                                               const QDateTime &reminderAt,
                                               QString &displayStr );
+    bool openEditorThroughKOrganizer( const KCalCore::Incidence::Ptr &incidence );
 
     bool startKOrganizer();
     ReminderListItem *searchByItem( const Akonadi::Item &incidence );

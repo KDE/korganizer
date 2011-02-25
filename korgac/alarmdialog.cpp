@@ -419,56 +419,7 @@ void AlarmDialog::edit()
     return;
   }
 
-  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
-    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
-      KMessageBox::error(
-        this,
-        i18nc( "@info",
-               "Could not start KOrganizer so editing is not possible." ) );
-      return;
-    }
-  }
-  org::kde::korganizer::Korganizer korganizer(
-    "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-
-  kDebug() << "editing incidence " << incidence->summary();
-  if ( !korganizer.editIncidence( incidence->uid() ) ) {
-    KMessageBox::error(
-      this,
-      i18nc( "@info",
-             "An internal KOrganizer error occurred attempting to modify \"%1\"",
-             cleanSummary( incidence->summary() ) ) );
-  }
-
-  // get desktop # where korganizer (or kontact) runs
-  QString object =
-    QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
-    "kontact/MainWindow_1" : "korganizer/MainWindow_1";
-  QDBusInterface korganizerObj( "org.kde.korganizer", '/' + object );
-#ifdef Q_WS_X11
-  QDBusReply<int> reply = korganizerObj.call( "winId" );
-  if ( reply.isValid() ) {
-    int window = reply;
-    int desktop = KWindowSystem::windowInfo( window, NET::WMDesktop ).desktop();
-    if ( KWindowSystem::currentDesktop() == desktop ) {
-      KWindowSystem::minimizeWindow( winId(), false );
-    } else {
-      KWindowSystem::setCurrentDesktop( desktop );
-    }
-    KWindowSystem::activateWindow( KWindowSystem::transientFor( window ) );
-  }
-#elif defined(Q_WS_WIN)
-  // WId is a typedef to a void* on windows
-  QDBusReply<qlonglong> reply = korganizerObj.call( "winId" );
-  if ( reply.isValid() ) {
-    qlonglong window = reply;
-    KWindowSystem::minimizeWindow( winId(), false );
-    KWindowSystem::allowExternalProcessWindowActivation();
-    KWindowSystem::activateWindow( reinterpret_cast<WId>(window) );
-  }
-#else
-  // TODO (mac)
-#endif
+  openEditorThroughKOrganizer( incidence );
 }
 
 void AlarmDialog::suspend()
@@ -895,6 +846,61 @@ void AlarmDialog::keyPressEvent( QKeyEvent *e )
   }
 
   KDialog::keyPressEvent( e );
+}
+
+bool AlarmDialog::openEditorThroughKOrganizer( const Incidence::Ptr &incidence )
+{
+  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
+    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
+      KMessageBox::error(
+        this,
+        i18nc( "@info",
+               "Could not start KOrganizer so editing is not possible." ) );
+      return false;
+    }
+  }
+  org::kde::korganizer::Korganizer korganizer(
+    "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+
+  kDebug() << "editing incidence " << incidence->summary();
+  if ( !korganizer.editIncidence( incidence->uid() ) ) {
+    KMessageBox::error(
+      this,
+      i18nc( "@info",
+             "An internal KOrganizer error occurred attempting to modify \"%1\"",
+             cleanSummary( incidence->summary() ) ) );
+  }
+
+  // get desktop # where korganizer (or kontact) runs
+  QString object =
+    QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
+    "kontact/MainWindow_1" : "korganizer/MainWindow_1";
+  QDBusInterface korganizerObj( "org.kde.korganizer", '/' + object );
+#ifdef Q_WS_X11
+  QDBusReply<int> reply = korganizerObj.call( "winId" );
+  if ( reply.isValid() ) {
+    int window = reply;
+    int desktop = KWindowSystem::windowInfo( window, NET::WMDesktop ).desktop();
+    if ( KWindowSystem::currentDesktop() == desktop ) {
+      KWindowSystem::minimizeWindow( winId(), false );
+    } else {
+      KWindowSystem::setCurrentDesktop( desktop );
+    }
+    KWindowSystem::activateWindow( KWindowSystem::transientFor( window ) );
+  }
+#elif defined(Q_WS_WIN)
+  // WId is a typedef to a void* on windows
+  QDBusReply<qlonglong> reply = korganizerObj.call( "winId" );
+  if ( reply.isValid() ) {
+    qlonglong window = reply;
+    KWindowSystem::minimizeWindow( winId(), false );
+    KWindowSystem::allowExternalProcessWindowActivation();
+    KWindowSystem::activateWindow( reinterpret_cast<WId>(window) );
+  }
+#else
+  // TODO (mac)
+#endif
+return true;
 }
 
 #include "alarmdialog.moc"
