@@ -71,6 +71,7 @@ target_link_libraries(korgac
   ${KDEPIMLIBS_KCALUTILS_LIBS} 
   kdepim
   kdepimdbusinterfaces
+  incidenceeditorsng
 )
 
 if (RUNTIME_PLUGINS_STATIC)

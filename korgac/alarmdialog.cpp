@@ -34,6 +34,10 @@
 #include <calendarsupport/mailclient.h>
 #include <calendarsupport/utils.h>
 
+#include <incidenceeditor-ng/incidencedialog.h>
+#include <incidenceeditor-ng/incidencedialogfactory.h>
+#include <incidenceeditor-ng/groupwareintegration.h>
+
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
 #include <KCalUtils/IncidenceFormatter>
@@ -419,7 +423,11 @@ void AlarmDialog::edit()
     return;
   }
 
-  openEditorThroughKOrganizer( incidence );
+#ifndef KDEPIM_MOBILE_UI
+  openIncidenceEditorNG( selection.first()->mIncidence );
+#else
+  openIncidenceEditorThroughKOrganizer( incidence );
+#endif
 }
 
 void AlarmDialog::suspend()
@@ -848,7 +856,7 @@ void AlarmDialog::keyPressEvent( QKeyEvent *e )
   KDialog::keyPressEvent( e );
 }
 
-bool AlarmDialog::openEditorThroughKOrganizer( const Incidence::Ptr &incidence )
+bool AlarmDialog::openIncidenceEditorThroughKOrganizer( const Incidence::Ptr &incidence )
 {
   if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
@@ -901,6 +909,19 @@ bool AlarmDialog::openEditorThroughKOrganizer( const Incidence::Ptr &incidence )
   // TODO (mac)
 #endif
 return true;
+}
+
+bool AlarmDialog::openIncidenceEditorNG( const Akonadi::Item &item )
+{
+  if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
+    //TODO: Why do we need this to have a simple editor?
+    IncidenceEditorNG::GroupwareIntegration::activate( mCalendar );
+  }
+  Incidence::Ptr incidence = CalendarSupport::incidence( item );
+  IncidenceEditorNG::IncidenceDialog *dialog = IncidenceEditorNG::IncidenceDialogFactory::create( false/*doesn't need initial saving*/,
+                                                                                                  incidence->type(), this );
+  dialog->load( item );
+  return true;
 }
 
 #include "alarmdialog.moc"
