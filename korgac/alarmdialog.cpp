@@ -798,7 +798,6 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
                                                 const QDateTime &reminderAt,
                                                 QString &displayStr )
 {
-  // Will be simplified in trunk, with roles.
   KDateTime result;
 
   Q_ASSERT( !incidence->alarms().isEmpty() );
