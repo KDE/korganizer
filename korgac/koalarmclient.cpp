@@ -70,11 +70,10 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 #ifndef KORGAC_AKONADI_AGENT
   KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
   KConfigGroup generalGroup( &korgConfig, "General" );
-  bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
+  const bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
 
   if ( showDock ) {
     mDocker = new AlarmDockWindow;
-
     connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
     connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
   }
@@ -105,13 +104,13 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
-  int interval = alarmGroup.readEntry( "Interval", 60 );
+  const int interval = alarmGroup.readEntry( "Interval", 60 );
   kDebug() << "KOAlarmClient check interval:" << interval << "seconds.";
   mLastChecked = alarmGroup.readEntry( "CalendarsLastChecked", QDateTime() );
 
   // load reminders that were active when quitting
   KConfigGroup genGroup( KGlobal::config(), "General" );
-  int numReminders = genGroup.readEntry( "Reminders", 0 );
+  const int numReminders = genGroup.readEntry( "Reminders", 0 );
   for ( int i=1; i<=numReminders; ++i ) {
     const QString group( QString( "Incidence-%1" ).arg( i ) );
     const KConfigGroup incGroup( KGlobal::config(), group );
@@ -182,7 +181,7 @@ void KOAlarmClient::checkAlarms()
 
 void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
                                     const Akonadi::Item &aitem,
-                                    const QDateTime &dt,
+                                    const QDateTime &remindAtDate,
                                     const QString &displayText )
 {
   if ( !CalendarSupport::hasIncidence( aitem ) ) {
@@ -203,12 +202,12 @@ void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
     }
   }
 
-  mDialog->addIncidence( aitem, dt, displayText );
+  mDialog->addIncidence( aitem, remindAtDate, displayText );
   mDialog->wakeUp();
 #else
   const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   Q_UNUSED( calendar );
-  Q_UNUSED( dt );
+  Q_UNUSED( remindAtDate );
   Q_UNUSED( displayText );
 
 #if defined(Q_WS_MAEMO_5)
@@ -263,17 +262,15 @@ void KOAlarmClient::forceAlarmCheck()
 void KOAlarmClient::dumpDebug()
 {
   KConfigGroup cfg( KGlobal::config(), "Alarms" );
-
-  QDateTime lastChecked = cfg.readEntry( "CalendarsLastChecked", QDateTime() );
-
+  const QDateTime lastChecked = cfg.readEntry( "CalendarsLastChecked", QDateTime() );
   kDebug() << "Last Check:" << lastChecked;
 }
 
 QStringList KOAlarmClient::dumpAlarms()
 {
-  KDateTime start = KDateTime( QDateTime::currentDateTime().date(),
-                               QTime( 0, 0 ), KDateTime::LocalZone );
-  KDateTime end = start.addDays( 1 ).addSecs( -1 );
+  const KDateTime start = KDateTime( QDateTime::currentDateTime().date(),
+                                     QTime( 0, 0 ), KDateTime::LocalZone );
+  const KDateTime end = start.addDays( 1 ).addSecs( -1 );
 
   QStringList lst;
   // Don't translate, this is for debugging purposes.

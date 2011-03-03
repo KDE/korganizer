@@ -495,7 +495,7 @@ void AlarmDialog::setTimer()
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     if ( item->mRemindAt > QDateTime::currentDateTime() ) {
-      int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
+      const int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
       nextReminderAt = nextReminderAt <= 0 ? secs : qMin( nextReminderAt, secs );
     }
     ++it;
@@ -741,7 +741,7 @@ void AlarmDialog::closeEvent( QCloseEvent * )
 
 void AlarmDialog::updateButtons()
 {
-  int count = selectedItems().count();
+  const int count = selectedItems().count();
   kDebug() << "selected items=" << count;
   enableButton( User3, count > 0 );  // enable Dismiss, if >1 selected
   enableButton( User1, count == 1 ); // enable Edit, if only 1 selected
