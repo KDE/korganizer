@@ -117,11 +117,11 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
     const KUrl url = incGroup.readEntry( "AkonadiUrl" );
     Akonadi::Item::Id akonadiItemId = -1;
-    if( ! url.isValid() ) {
+    if ( !url.isValid() ) {
       // logic to migrate old KOrganizer incidence uid's to a Akonadi item.
       const QString uid = incGroup.readEntry( "UID" );
-      if( ! uid.isEmpty() ) {
-        akonadiItemId = mCalendar->itemIdForIncidenceUid(uid);
+      if ( !uid.isEmpty() ) {
+        akonadiItemId = mCalendar->itemIdForIncidenceUid( uid );
       }
     } else {
       akonadiItemId = Akonadi::Item::fromUrl( url ).id();

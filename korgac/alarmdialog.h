@@ -24,8 +24,9 @@
 #ifndef ALARMDIALOG_H
 #define ALARMDIALOG_H
 
-#include <KDialog>
+#include <Akonadi/Item>
 
+#include <KDialog>
 #include <KCalCore/Incidence>
 #include <KDateTime>
 
@@ -101,6 +102,9 @@ class AlarmDialog : public KDialog
     static KDateTime triggerDateForIncidence( const KCalCore::Incidence::Ptr &inc,
                                               const QDateTime &reminderAt,
                                               QString &displayStr );
+
+    // Removes each Incidence-X group that has one of the specified uids
+    void removeFromConfig( const QList<Akonadi::Item::Id> & );
 
     // Opens through dbus, @deprecated
     bool openIncidenceEditorThroughKOrganizer( const KCalCore::Incidence::Ptr &incidence );

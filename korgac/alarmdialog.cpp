@@ -91,6 +91,12 @@ class ReminderListItem : public QTreeWidgetItem
     bool mNotified;
 };
 
+struct ConfItem {
+  QString uid;
+  KUrl akonadiUrl;
+  QDateTime remindAt;
+};
+
 bool ReminderListItem::operator<( const QTreeWidgetItem &other ) const
 {
   switch( treeWidget()->sortColumn() ) {
@@ -395,6 +401,7 @@ void AlarmDialog::dismissAll()
 
 void AlarmDialog::dismiss( ReminderList selections )
 {
+  QList<Akonadi::Item::Id> ids;
   for ( ReminderList::Iterator it = selections.begin(); it != selections.end(); ++it ) {
     kDebug() << "removing " << CalendarSupport::incidence( (*it)->mIncidence )->summary();
     if ( mIncidenceTree->itemBelow( *it ) ) {
@@ -403,8 +410,11 @@ void AlarmDialog::dismiss( ReminderList selections )
       mIncidenceTree->setCurrentItem( mIncidenceTree->itemAbove( *it ) );
     }
     mIncidenceTree->removeItemWidget( *it, 0 );
+    ids.append( (*it)->mIncidence.id() );
     delete *it;
   }
+
+  removeFromConfig( ids );
 }
 
 void AlarmDialog::edit()
@@ -926,6 +936,46 @@ bool AlarmDialog::openIncidenceEditorNG( const Akonadi::Item &item )
                                                                                                   incidence->type(), this );
   dialog->load( item );
   return true;
+}
+
+void AlarmDialog::removeFromConfig( const QList<Akonadi::Item::Id> &ids )
+{
+  KSharedConfig::Ptr config = KGlobal::config();
+  KConfigGroup genGroup( config, "General" );
+
+  const int oldNumReminders = genGroup.readEntry( "Reminders", 0 );
+
+  QList<ConfItem> newReminders;
+  // Delete everything
+  for ( int i = 1; i <= oldNumReminders; ++i ) {
+    const QString group( QString( "Incidence-%1" ).arg( i ) );
+    KConfigGroup incGroup( config, group );
+    const QString uid = incGroup.readEntry( "UID" );
+    const QDateTime remindAtDate = incGroup.readEntry( "RemindAt", QDateTime() );
+    const KUrl akonadiUrl = incGroup.readEntry( "AkonadiUrl" );
+    const Akonadi::Item::Id id = Akonadi::Item::fromUrl( akonadiUrl ).id();
+    if ( !ids.contains( id ) ) {
+      ConfItem ci;
+      ci.akonadiUrl = akonadiUrl;
+      ci.remindAt = remindAtDate;
+      ci.uid = uid;
+      newReminders.append( ci );
+    }
+    config->deleteGroup( group );
+  }
+
+  genGroup.writeEntry( "Reminders", newReminders.count() );
+
+  //Write everything except those which have an uid we dont want
+  for ( int i = 0; i < newReminders.count(); ++i ) {
+    const QString group( QString( "Incidence-%1" ).arg( i + 1 ) );
+    KConfigGroup incGroup( config, group );
+    incGroup.writeEntry( "UID", newReminders[i].uid );
+    incGroup.writeEntry( "RemindAt", newReminders[i].remindAt );
+    incGroup.writeEntry( "AkonadiUrl", newReminders[i].akonadiUrl );
+    incGroup.sync();
+  }
+  genGroup.sync();
 }
 
 #include "alarmdialog.moc"
