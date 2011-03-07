@@ -862,10 +862,11 @@ void CalendarView::updateView( const QDate &start, const QDate &end,
 
 void CalendarView::updateView()
 {
-  DateList tmpList = mDateNavigator->selectedDates();
+  const DateList tmpList = mDateNavigator->selectedDates();
+  const QDate month = mDateNavigatorContainer->monthOfNavigator();
 
   // We assume that the navigator only selects consecutive days.
-  updateView( tmpList.first(), tmpList.last(), QDate() /**preferredMonth*/ );
+  updateView( tmpList.first(), tmpList.last(), month /**preferredMonth*/ );
 }
 
 void CalendarView::updateUnmanagedViews()
