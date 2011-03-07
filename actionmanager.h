@@ -158,9 +158,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
       @param force If true, all recurrences and sub-todos (if applicable) will
       be deleted without prompting for confirmation.
     */
-    virtual bool deleteIncidence( const Akonadi::Item::Id &uid, bool force = false );
+    virtual bool deleteIncidence( Akonadi::Item::Id id, bool force = false );
 
-    bool editIncidence( const Akonadi::Item::Id &uid );
+    bool editIncidence( Akonadi::Item::Id id );
 
     /**
       Add an incidence to the active calendar.
@@ -169,14 +169,14 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool addIncidence( const QString &ical );
     //bool addIncidence( const Akonadi::Item::Id &ical );
 
-    bool showIncidence( const Akonadi::Item::Id &uid );
+    bool showIncidence( Akonadi::Item::Id id );
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param uid Unique ID of the incidence to show.
     */
-    bool showIncidenceContext( const Akonadi::Item::Id &uid );
+    bool showIncidenceContext( Akonadi::Item::Id id );
 
     /**
      * Called by KOrganizerUniqueAppHandler in the kontact plugin

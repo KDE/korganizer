@@ -1509,19 +1509,19 @@ QString ActionManager::getCurrentURLasString() const
   return mURL.url();
 }
 
-bool ActionManager::editIncidence( const Akonadi::Item::Id &uid )
+bool ActionManager::editIncidence( Akonadi::Item::Id id )
 {
-  return mCalendarView->editIncidence( uid );
+  return mCalendarView->editIncidence( id );
 }
 
-bool ActionManager::showIncidence( const Akonadi::Item::Id &uid )
+bool ActionManager::showIncidence( Akonadi::Item::Id id )
 {
-  return mCalendarView->showIncidence( uid );
+  return mCalendarView->showIncidence( id );
 }
 
-bool ActionManager::showIncidenceContext( const Akonadi::Item::Id &uid )
+bool ActionManager::showIncidenceContext( Akonadi::Item::Id id )
 {
-  return mCalendarView->showIncidenceContext( uid );
+  return mCalendarView->showIncidenceContext( id );
 }
 
 bool ActionManager::handleCommandLine()
@@ -1559,9 +1559,9 @@ bool ActionManager::handleCommandLine()
   return ret;
 }
 
-bool ActionManager::deleteIncidence( const Akonadi::Item::Id &uid, bool force )
+bool ActionManager::deleteIncidence( Akonadi::Item::Id id, bool force )
 {
-  return mCalendarView->deleteIncidence( uid, force );
+  return mCalendarView->deleteIncidence( id, force );
 }
 
 bool ActionManager::addIncidence( const QString &ical )

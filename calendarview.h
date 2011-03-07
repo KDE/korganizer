@@ -321,7 +321,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Create a read-only viewer dialog for the supplied incidence.
         It calls the correct showXXX method */
     void showIncidence( const Akonadi::Item& item );
-    bool showIncidence( const Akonadi::Item::Id &uid );
+    bool showIncidence( Akonadi::Item::Id id );
     void showIncidence();
 
     /**
@@ -330,11 +330,11 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       @param incidence The incidence to show.
     */
     void showIncidenceContext( const Akonadi::Item &incidence );
-    bool showIncidenceContext( const Akonadi::Item::Id &uid );
+    bool showIncidenceContext( Akonadi::Item::Id id );
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence( const Akonadi::Item &item, bool isCounter = false );
-    bool editIncidence( const Akonadi::Item::Id &uid );
+    bool editIncidence( Akonadi::Item::Id id );
     void editIncidence();
 
     /**

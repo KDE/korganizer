@@ -2388,15 +2388,15 @@ void CalendarView::editIncidence()
   editIncidence( selectedIncidence() );
 }
 
-bool CalendarView::editIncidence( const Akonadi::Item::Id &uid )
+bool CalendarView::editIncidence( Akonadi::Item::Id id )
 {
-  Akonadi::Item item = mCalendar->incidence( uid );
+  Akonadi::Item item = mCalendar->incidence( id );
   return editIncidence( item );
 }
 
-bool CalendarView::showIncidence( const Akonadi::Item::Id &uid )
+bool CalendarView::showIncidence( Akonadi::Item::Id id )
 {
-  Akonadi::Item item = mCalendar->incidence( uid );
+  Akonadi::Item item = mCalendar->incidence( id );
   if ( !CalendarSupport::hasIncidence( item ) ) {
     return false;
   }
@@ -2404,9 +2404,9 @@ bool CalendarView::showIncidence( const Akonadi::Item::Id &uid )
   return true;
 }
 
-bool CalendarView::showIncidenceContext( const Akonadi::Item::Id &uid )
+bool CalendarView::showIncidenceContext( Akonadi::Item::Id id )
 {
-  Akonadi::Item item = mCalendar->incidence( uid );
+  Akonadi::Item item = mCalendar->incidence( id );
   if ( !CalendarSupport::hasIncidence( item ) ) {
     return false;
   }
