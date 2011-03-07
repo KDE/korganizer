@@ -414,7 +414,8 @@ void AlarmDialog::dismiss( ReminderList selections )
     delete *it;
   }
 
-  removeFromConfig( ids );
+  // TODO 4.7: enable and test this
+  //removeFromConfig( ids );
 }
 
 void AlarmDialog::edit()
