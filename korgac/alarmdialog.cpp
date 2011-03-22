@@ -534,6 +534,7 @@ void AlarmDialog::show()
       (*it)->setSelected( true );
       break;
     }
+    ++it;
   }
 
   // reset the default suspend time
