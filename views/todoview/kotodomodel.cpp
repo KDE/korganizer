@@ -615,7 +615,7 @@ QModelIndex KOTodoModel::index( int row, int column,
 
 QModelIndex KOTodoModel::parent( const QModelIndex &child ) const
 {
-  if ( !child.isValid() ) {
+  if ( !child.isValid() || !child.internalPointer() ) {
     return QModelIndex();
   }
 
