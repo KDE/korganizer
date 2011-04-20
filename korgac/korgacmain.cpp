@@ -23,6 +23,7 @@
 */
 
 #include "koalarmclient.h"
+#include "kdepim-version.h"
 
 #include <KAboutData>
 #include <KCmdLineArgs>
@@ -61,7 +62,7 @@ class ReminderDaemonApp : public KUniqueApplication
     KOAlarmClient *mClient;
 };
 
-static const char korgacVersion[] = "0.9";
+static const char korgacVersion[] = KDEPIM_VERSION;
 
 int main( int argc, char **argv )
 {
