@@ -848,7 +848,7 @@ void CalendarView::updateView( const QDate &start, const QDate &end,
 {
   const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
 
-  if ( updateTodos && !currentViewIsTodoView ) {
+  if ( updateTodos && !currentViewIsTodoView && mTodoList->isVisible() ) {
     // Update the sidepane todoView
     mTodoList->updateView();
   }
@@ -2291,6 +2291,7 @@ void CalendarView::showTodoView( bool show )
 {
   if ( show ) {
     mTodoList->show();
+    mTodoList->updateView();
   } else {
     mTodoList->hide();
   }
