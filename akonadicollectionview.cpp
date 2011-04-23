@@ -239,9 +239,6 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
 
   //connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
 
-  connect( mCollectionview->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),
-           this, SLOT(selectionChanged()) );
-
   connect( mBaseModel, SIGNAL( rowsInserted( const QModelIndex&, int, int ) ),
            this, SLOT( rowsInserted( const QModelIndex&, int, int ) ) );
 
