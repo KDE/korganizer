@@ -215,7 +215,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   collectionproxymodel->setObjectName( "Only show collections" );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
-  //collectionproxymodel->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
+  collectionproxymodel->setExcludeVirtualCollections( true );
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
   colorProxy->setObjectName( "Show calendar colors" );
