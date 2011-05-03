@@ -786,9 +786,9 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       case PriorityColumn:
       case PercentColumn:
       case DueDateColumn:
-        return QVariant( Qt::AlignHCenter );
+        return QVariant( Qt::AlignHCenter | Qt::AlignVCenter );
     }
-    return QVariant();
+    return QVariant( Qt::AlignLeft | Qt::AlignVCenter );
   }
 
   return QVariant();
