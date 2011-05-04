@@ -701,6 +701,8 @@ class KOPrefsDialogViews : public KPrefsModule
       /*mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
       mdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->showTimeInMonthViewItem() )->checkBox() );
+      mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->showTodosMonthViewItem() )->checkBox() );
