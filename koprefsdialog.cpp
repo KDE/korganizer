@@ -27,6 +27,7 @@
 #include "kocore.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kitemiconcheckcombo.h"
 #include "ui_kogroupwareprefspage.h"
 #include "ui_accountscalendarwidget.h"
 
@@ -580,10 +581,17 @@ class KOPrefsDialogViews : public KPrefsModule
   public:
     KOPrefsDialogViews( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
+      , mMonthIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::MonthType, this ) )
+      , mAgendaIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::AgendaType, this ) )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
       KTabWidget *tabWidget = new KTabWidget( this );
       topTopLayout->addWidget( tabWidget );
+
+      connect( mMonthIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
+               SLOT(slotWidChanged()) );
+      connect( mAgendaIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
+               SLOT(slotWidChanged()) );
 
       // Tab: Views->General
       QFrame *generalFrame = new QFrame( this );
@@ -671,7 +679,8 @@ class KOPrefsDialogViews : public KPrefsModule
       adisplayLayout->addWidget( marcusBainsShowSeconds->checkBox() );
       adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
-
+      mAgendaIconComboBox->setCheckedIcons( KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons() );
+      adisplayLayout->addWidget( mAgendaIconComboBox );
       adisplayBox->setLayout( adisplayLayout );
       agendaLayout->addWidget( adisplayBox );
 
@@ -711,6 +720,10 @@ class KOPrefsDialogViews : public KPrefsModule
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
       mdisplayBox->setLayout( mdisplayLayout );
+
+      mMonthIconComboBox->setCheckedIcons( KOPrefs::instance()->eventViewsPreferences()->monthViewIcons() );
+      mdisplayLayout->addWidget( mMonthIconComboBox );
+
       monthLayout->addWidget( mdisplayBox );
 
       monthLayout->addWidget(
@@ -749,6 +762,15 @@ class KOPrefsDialogViews : public KPrefsModule
 
       load();
     }
+  protected:
+    void usrWriteConfig()
+    {
+      KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons( mAgendaIconComboBox->checkedIcons() );
+      KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons( mMonthIconComboBox->checkedIcons() );
+    }
+  private:
+    KItemIconCheckCombo *mMonthIconComboBox;
+    KItemIconCheckCombo *mAgendaIconComboBox;
 };
 
 extern "C"

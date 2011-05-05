@@ -58,7 +58,7 @@ class BaseView::Private
     }
 
     EventViews::EventView::Changes mChanges;
-    Calendar *calendar;
+    CalendarSupport::Calendar *calendar;
     QByteArray identifier;
     KDateTime startDateTime;
     KDateTime endDateTime;
@@ -78,7 +78,7 @@ BaseView::~BaseView()
   delete d;
 }
 
-void BaseView::setCalendar( Calendar *cal )
+void BaseView::setCalendar( CalendarSupport::Calendar *cal )
 {
   if ( d->calendar != cal ) {
     d->calendar = cal;
@@ -90,7 +90,7 @@ CalPrinterBase::PrintType BaseView::printType() const
   return CalPrinterBase::Month;
 }
 
-Calendar *BaseView::calendar()
+CalendarSupport::Calendar *BaseView::calendar()
 {
   return d->calendar;
 }
