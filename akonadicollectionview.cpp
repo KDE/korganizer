@@ -47,7 +47,7 @@
 #include <QHeaderView>
 #include <QItemSelectionModel>
 
-#include <akonadi_next/kcheckableproxymodel.h>
+#include <kcheckableproxymodel.h>
 
 #include <akonadi/calendar/standardcalendaractionmanager.h>
 #include <akonadi/collection.h>
@@ -70,8 +70,6 @@
 #include <QHash>
 #include <QStyledItemDelegate>
 #include <QPainter>
-
-using namespace Future;
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
   : mView( view ), mAkonadiCollectionView( 0 )

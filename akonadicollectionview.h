@@ -80,8 +80,8 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     Akonadi::EntityTreeView* view() const;
 
-    Future::KCheckableProxyModel *collectionSelectionProxyModel() const;
-    void setCollectionSelectionProxyModel( Future::KCheckableProxyModel* );
+    KCheckableProxyModel *collectionSelectionProxyModel() const;
+    void setCollectionSelectionProxyModel( KCheckableProxyModel* );
     static bool isStructuralCollection( const Akonadi::Collection & );
 
   signals:
@@ -111,7 +111,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     Akonadi::StandardCalendarActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     QAbstractProxyModel* mBaseModel;
-    Future::KCheckableProxyModel *mSelectionProxyModel;
+    KCheckableProxyModel *mSelectionProxyModel;
     KAction *mCreateAction;
     KAction *mDeleteAction;
     KAction *mAssignColor;

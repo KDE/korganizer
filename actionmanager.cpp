@@ -62,7 +62,6 @@
 #include <incidenceeditor-ng/globalsettings.h>
 #include <incidenceeditor-ng/groupwareintegration.h>
 
-#include <akonadi_next/kcheckableproxymodel.h>
 #include <akonadi_next/kcolumnfilterproxymodel.h>
 
 #include <Akonadi/EntityTreeModel>
@@ -75,6 +74,7 @@
 #include <Akonadi/AgentInstanceCreateJob>
 #include <akonadi/etmviewstatesaver.h>
 
+#include <kcheckableproxymodel.h>
 #include <KHolidays/Holidays>
 #include <kmimetypetrader.h>
 #include <kio/job.h>

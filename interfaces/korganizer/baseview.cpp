@@ -30,11 +30,11 @@
 
 #include <KConfigGroup>
 #include <KRandom>
+#include <kcheckableproxymodel.h>
 
 #include <QVBoxLayout>
 
 using namespace CalendarSupport;
-using namespace Future;
 using namespace KOrg;
 
 class BaseView::Private
