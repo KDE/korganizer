@@ -158,6 +158,11 @@ namespace {
         }
        return QSortFilterProxyModel::data( index, role );
      }
+
+     /* reimp */ Qt::ItemFlags flags( const QModelIndex& index ) const
+     {
+       return Qt::ItemIsSelectable | QSortFilterProxyModel::flags( index );
+     }
   private:
     mutable bool mInitDefaultCalendar;
   };
