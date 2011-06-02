@@ -146,7 +146,6 @@ void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate
 
   Akonadi::Item::List::ConstIterator it;
   Akonadi::Item::List jnls;
-  QDate d = start;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
     jnls = calendar()->journals( d );
     it = jnls.constEnd();

@@ -461,6 +461,7 @@ void KOTodoView::addTodo( const QString &summary,
 
   todo->setCategories( categories );
 
+  Q_UNUSED( parent );
   /*  if ( parent ) {
     todo->setRelatedTo( parent );
   }

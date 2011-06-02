@@ -84,6 +84,7 @@ void History::undo()
 }
 
 void History::finishUndo( bool success ) {
+  Q_UNUSED( success )
   mRedoEntries.push( mCurrentRunningEntry );
   emit undone();
 
@@ -128,6 +129,7 @@ void History::redo()
 
 void History::finishRedo( bool success )
 {
+  Q_UNUSED( success );
   emit undoAvailable( mCurrentRunningEntry->text() );
 
   mUndoEntries.push( mCurrentRunningEntry );

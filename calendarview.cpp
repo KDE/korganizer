@@ -1658,6 +1658,8 @@ void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const QSt
       i18nc( "@title:window", "Copying Failed" ) );
   }
 #else
+  Q_UNUSED( resourceId );
+  Q_UNUSED( item );
   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
@@ -1742,6 +1744,8 @@ void CalendarView::moveIncidenceToResource( const Akonadi::Item &item, const QSt
       i18nc( "@title:window", "Moving Failed" ) );
   }
 #else
+  Q_UNUSED( resourceId );
+  Q_UNUSED( item );
   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
@@ -2366,7 +2370,7 @@ Akonadi::Item CalendarView::selectedTodo()
   return Akonadi::Item();
 }
 
-void CalendarView::dialogClosing( const Akonadi::Item &item )
+void CalendarView::dialogClosing( const Akonadi::Item & )
 {
 }
 
@@ -2484,6 +2488,7 @@ void CalendarView::showIncidenceContext( const Akonadi::Item &item )
 
 bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
 {
+  Q_UNUSED( isCounter );
   Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     kDebug() << "Empty Incidence";
