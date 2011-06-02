@@ -69,7 +69,7 @@
 #include <calendarsupport/mailscheduler.h>
 #include <calendarsupport/dndfactory.h>
 #include <calendarsupport/incidencechanger.h>
-#include <calendarsupport/incidenceviewer.h>
+#include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/kcalprefs.h>
 
 #include <akonadi/control.h>

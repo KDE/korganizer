@@ -28,7 +28,7 @@
 #include "korganizerinterface.h"
 
 #include <akonadi/item.h>
-#include <calendarsupport/incidenceviewer.h>
+#include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/utils.h>
 
 #include <KDE/KLocale>
