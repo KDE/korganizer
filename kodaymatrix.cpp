@@ -898,7 +898,7 @@ QPair<QDate,QDate> KODayMatrix::matrixLimits( const QDate &month )
 {
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   QDate d = month;
-  calSys->setYMD( d, calSys->year( month ), calSys->month( month ), 1 );
+  calSys->setDate( d, calSys->year( month ), calSys->month( month ), 1 );
 
   const int dayOfWeek = calSys->dayOfWeek( d );
   const int weekstart = KGlobal::locale()->weekStartDay();

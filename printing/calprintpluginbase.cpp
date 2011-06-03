@@ -1464,15 +1464,15 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   {
     QDate startDate;
     QDate endDate;
-    calsys->setYMD( startDate, dt.year(), dt.month(), 1 );
-    calsys->setYMD( endDate, dt.year(), dt.month(), daysinmonth );
+    calsys->setDate( startDate, dt.year(), dt.month(), 1 );
+    calsys->setDate( endDate, dt.year(), dt.month(), daysinmonth );
 
     workDays = KOGlobals::self()->workDays( startDate, endDate );
   }
 
   for ( d = 0; d < daysinmonth; ++d ) {
     QDate day;
-    calsys->setYMD( day, dt.year(), dt.month(), d+1 );
+    calsys->setDate( day, dt.year(), dt.month(), d+1 );
     QRect dayBox(
       daysBox.left()/*+rand()%50*/,
       daysBox.top() + qRound( dayheight * d ), daysBox.width()/*-rand()%50*/, 0 );
@@ -1492,7 +1492,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   int xstartcont = box.left() + dayNrWidth + 5;
 
   QDate start, end;
-  calsys->setYMD( start, dt.year(), dt.month(), 1 );
+  calsys->setDate( start, dt.year(), dt.month(), 1 );
   end = calsys->addMonths( start, 1 );
   end = calsys->addDays( end, -1 );
 

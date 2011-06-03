@@ -234,7 +234,7 @@ QDate KDateNavigator::month() const
   if ( calSys->day( firstCell ) == 1 ) {
     return firstCell;
   } else {
-    calSys->setYMD( firstCell, calSys->year( firstCell ),
+    calSys->setDate( firstCell, calSys->year( firstCell ),
                     calSys->month( firstCell ), 1 );
     return calSys->addMonths( firstCell, 1 );
   }

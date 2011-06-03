@@ -71,7 +71,7 @@ void CalPrintYear::setSettingsWidget()
   if ( cfg ) {
     const KCalendarSystem *calsys = calendarSystem();
     QDate start;
-    calsys->setYMD( start, mYear, 1, 1 );
+    calsys->setDate( start, mYear, 1, 1 );
     int months = calsys->monthsInYear( start );
     int pages = 0;
     int prevPages = 0;
@@ -145,7 +145,7 @@ void CalPrintYear::print( QPainter &p, int width, int height )
   height -= footerHeight();
 
   QDate start;
-  calsys->setYMD( start, mYear, 1, 1 );
+  calsys->setDate( start, mYear, 1, 1 );
 
   // Determine the nr of months and the max nr of days per month (dependent on
   // calendar system!!!!)
