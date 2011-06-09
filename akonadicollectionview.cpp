@@ -276,7 +276,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     mActionManager->setCollectionPropertiesPageNames( pages );
 
     mDisableColor = new KAction( mCollectionview );
-    mDisableColor->setText( "&Disable Color");
+    mDisableColor->setText( i18n( "&Disable Color" ) );
     mDisableColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ), mDisableColor );
     connect( mDisableColor, SIGNAL( triggered( bool ) ), this, SLOT(disableColor() ) );
