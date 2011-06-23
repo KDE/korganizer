@@ -1209,7 +1209,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
     defaults.setEndDateTime( KDateTime( endDt ) );
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
-    defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
+    defaults.setAttachments( attachments, attachmentMimetypes, QStringList(), inlineAttachment );
     defaults.setAttendees( attendees );
 
     Event::Ptr event( new Event );
@@ -1231,7 +1231,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
     Akonadi::Collection defaultCol = defaultCollection( Todo::todoMimeType() );
 
     IncidenceDialogFactory::createTodoEditor( summary, description, attachments,
-                                              attendees, attachmentMimetypes,
+                                              attendees, attachmentMimetypes, QStringList() /* attachment labels */,
                                               inlineAttachment, defaultCol,
                                               this /* parent */ );
   }
