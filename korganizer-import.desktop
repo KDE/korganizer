@@ -66,7 +66,6 @@ Comment[zh_CN]=日历和日程安排程序
 Comment[zh_TW]=行事曆與排程軟體
 Exec=korganizer --import %U
 Icon=korganizer
-X-DocPath=korganizer/index.html
 Type=Application
 Terminal=false
 Name=KOrganizer
