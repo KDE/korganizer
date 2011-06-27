@@ -65,7 +65,6 @@ Comment[x-test]=xxCalendar and Scheduling Programxx
 Comment[zh_CN]=日历和日程安排程序
 Comment[zh_TW]=行事曆與排程軟體
 Icon=korganizer
-X-DocPath=korganizer/index.html
 Type=Service
 Name=KOrganizer
 Name[af]=Korganizer
