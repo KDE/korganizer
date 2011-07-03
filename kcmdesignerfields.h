@@ -22,9 +22,7 @@
 #ifndef KCMDESIGNERFIELDS_H
 #define KCMDESIGNERFIELDS_H
 
-#define KDE3_SUPPORT
 #include <KCModule>
-#undef KDE3_SUPPORT
 
 class KComponentData;
 
@@ -39,7 +37,7 @@ class KCMDesignerFields : public KCModule
   Q_OBJECT
 
   public:
-    explicit KCMDesignerFields( const KComponentData &instance, QWidget *parent=0, const QStringList &args=QStringList() );
+    explicit KCMDesignerFields( const KComponentData &instance, QWidget *parent=0, const QVariantList &args=QVariantList() );
 
     virtual void load();
     virtual void save();

@@ -133,7 +133,7 @@ class PageItem : public QTreeWidgetItem
     bool mIsActive;
 };
 
-KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent, const QStringList &args )
+KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent, const QVariantList &args )
   : KCModule( instance, parent, args )
    ,mPageView(NULL)
    ,mPagePreview(NULL)
