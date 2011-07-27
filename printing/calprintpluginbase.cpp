@@ -2061,14 +2061,14 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
     if ( fd.month() == td.month() ) {
       title = i18nc( "Date range: Month dayStart - dayEnd", "%1 %2 - %3",
                      mCalSys->monthName( fd.month(), KCalendarSystem::LongName ),
-                     mCalSys->dayString( fd, KCalendarSystem::LongFormat ),
-                     mCalSys->dayString( td, KCalendarSystem::LongFormat ) );
+                     mCalSys->formatDate(fd, KLocale::Day, KLocale::LongNumber),
+                     mCalSys->formatDate(td, KLocale::Day, KLocale::LongNumber) );
     } else {
       title = i18nc( "Date range: monthStart dayStart - monthEnd dayEnd", "%1 %2 - %3 %4",
                      mCalSys->monthName( fd.month(), KCalendarSystem::LongName ),
-                     mCalSys->dayString( fd, KCalendarSystem::LongFormat ),
+                     mCalSys->formatDate(fd, KLocale::Day, KLocale::LongNumber),
                      mCalSys->monthName( td.month(), KCalendarSystem::LongName ),
-                     mCalSys->dayString( td, KCalendarSystem::LongFormat ) );
+                     mCalSys->formatDate(td, KLocale::Day, KLocale::LongNumber ) );
     }
   }
 

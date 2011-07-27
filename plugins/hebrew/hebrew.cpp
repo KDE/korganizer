@@ -75,7 +75,7 @@ Element::List Hebrew::createDayElements( const QDate &date )
                                                showChol, showOmer );
 
   KCalendarSystem *cal = KCalendarSystem::create( "hebrew" );
-  text = cal->dayString( date ) + ' ' + cal->monthName( date );
+  text = cal->formatDate( date, KLocale::Day, KLocale::LongNumber ) + ' ' + cal->monthName( date );
 
   foreach ( const QString &holiday, holidays ) {
     text += "<br/>\n" + holiday;
