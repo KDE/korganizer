@@ -1472,7 +1472,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   int posdue = width - 65;
   int poscomplete = posdue - 70; //Complete column is to right of the Due column
   int lineSpacing = 15;
-  int fontHeight = 10;
+  //int fontHeight = 10;
 
   QRect headerBox( 0, 0, width, headerHeight() );
   QRect footerBox( 0, height - footerHeight(), width, footerHeight() );
@@ -1520,7 +1520,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   }
 
   p.setFont( QFont( "sans-serif", 10 ) );
-  fontHeight = p.fontMetrics().height();
+  //fontHeight = p.fontMetrics().height();
 
   Akonadi::Item::List todoList;
   Akonadi::Item::List tempList;
