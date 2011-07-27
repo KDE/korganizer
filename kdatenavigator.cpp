@@ -194,8 +194,8 @@ void KDateNavigator::updateDates()
     // Use QDate's weekNumber method to determine the week number!
     QDate dtStart = mDayMatrix->getDate( i * 7 );
     QDate dtEnd = mDayMatrix->getDate( ( i + 1 ) * 7 - 1 );
-    int weeknumstart = calsys->weekNumber( dtStart );
-    int weeknumend = calsys->weekNumber( dtEnd );
+    const int weeknumstart = calsys->week( dtStart );
+    const int weeknumend = calsys->week( dtEnd );
     QString weeknum;
 
     if ( weeknumstart != weeknumend ) {

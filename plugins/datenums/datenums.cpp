@@ -105,7 +105,7 @@ Element::List Datenums::createWeekElements( const QDate &date )
   int *yearOfTheWeek;
   yearOfTheWeek = 0;
   int remainingWeeks;
-  int weekOfYear = calsys->weekNumber( date, yearOfTheWeek );
+  const int weekOfYear = calsys->week( date, yearOfTheWeek );
 
   QString weekOfYearShort;
   QString weekOfYearLong;
