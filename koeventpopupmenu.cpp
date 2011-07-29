@@ -46,15 +46,15 @@ KOEventPopupMenu::KOEventPopupMenu( CalendarSupport::Calendar *calendar, QWidget
   mHasAdditionalItems = false;
 
   addAction( KOGlobals::self()->smallIcon( "document-preview" ), i18n( "&Show" ),
-             this, SLOT( popupShow() ) );
+             this, SLOT(popupShow()) );
   mEditOnlyItems.append(
     addAction( KOGlobals::self()->smallIcon( "document-edit" ), i18n( "&Edit..." ),
-               this, SLOT( popupEdit() ) ) );
+               this, SLOT(popupEdit()) ) );
   mEditOnlyItems.append( addSeparator() );
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
-             this, SLOT( print() ) );
+             this, SLOT(print()) );
   QAction *preview = addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
-             this, SLOT( printPreview() ) );
+             this, SLOT(printPreview()) );
   preview->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );

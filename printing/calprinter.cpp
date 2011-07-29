@@ -200,7 +200,7 @@ CalPrintDialog::CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List pl
   splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );
 
   // signals and slots connections
-  connect( mTypeGroup, SIGNAL( buttonClicked( int ) ), SLOT( setPrintType( int ) ) );
+  connect( mTypeGroup, SIGNAL(buttonClicked(int)), SLOT(setPrintType(int)) );
   orientationLabel->setBuddy( mOrientationSelection );
 
   // First insert the config widgets into the widget stack. This possibly assigns

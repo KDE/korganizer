@@ -109,8 +109,8 @@ void POTDElement::step1StartDownload()
     mFirstStepJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
     KIO::Scheduler::setJobPriority( mFirstStepJob, 1 );
 
-    connect( mFirstStepJob, SIGNAL(result(KJob *)),
-             this, SLOT(step1Result(KJob *)) );
+    connect( mFirstStepJob, SIGNAL(result(KJob*)),
+             this, SLOT(step1Result(KJob*)) );
     connect( this, SIGNAL(step1Success()),
              this, SLOT(step2GetImagePage()) );
   }
@@ -125,8 +125,8 @@ void POTDElement::step1StartDownload()
     mFirstStepBisJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
     KIO::Scheduler::setJobPriority( mFirstStepBisJob, 1 );
 
-    connect( mFirstStepBisJob, SIGNAL(result(KJob *)),
-             this, SLOT(step1BisResult(KJob *)) );
+    connect( mFirstStepBisJob, SIGNAL(result(KJob*)),
+             this, SLOT(step1BisResult(KJob*)) );
   }
 }
 
@@ -200,8 +200,8 @@ void POTDElement::step2GetImagePage()
     mSecondStepJob = KIO::storedGet( mUrl, KIO::NoReload, KIO::HideProgressInfo );
     KIO::Scheduler::setJobPriority( mSecondStepJob, 1 );
 
-    connect( mSecondStepJob, SIGNAL(result(KJob *)),
-             this, SLOT(step2Result(KJob *)) );
+    connect( mSecondStepJob, SIGNAL(result(KJob*)),
+             this, SLOT(step2Result(KJob*)) );
     connect( this, SIGNAL(step2Success()), SLOT(step3GetThumbnail()) );
   }
 }
@@ -335,8 +335,8 @@ void POTDElement::step3GetThumbnail()
   kDebug() << "POTD:" << mDate << ": get" << thumbUrl;//FIXME
   KIO::Scheduler::setJobPriority( mThirdStepJob, 1 );
 
-  connect( mThirdStepJob, SIGNAL(result(KJob *)),
-           this, SLOT(step3Result(KJob *)) );
+  connect( mThirdStepJob, SIGNAL(result(KJob*)),
+           this, SLOT(step3Result(KJob*)) );
 }
 
 /**

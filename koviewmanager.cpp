@@ -318,10 +318,10 @@ void KOViewManager::connectView( KOrg::BaseView *view )
            mMainView, SLOT(toggleAlarm(Akonadi::Item)) );
   connect( view, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
            mMainView, SLOT(toggleTodoCompleted(Akonadi::Item)) );
-  connect( view, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,const QString &)),
-           mMainView, SLOT(copyIncidenceToResource(Akonadi::Item,const QString &)) );
-  connect( view, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,const QString &)),
-           mMainView, SLOT(moveIncidenceToResource(Akonadi::Item,const QString &)) );
+  connect( view, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           mMainView, SLOT(copyIncidenceToResource(Akonadi::Item,QString)) );
+  connect( view, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           mMainView, SLOT(moveIncidenceToResource(Akonadi::Item,QString)) );
   connect( view, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            mMainView, SLOT(dissociateOccurrences(Akonadi::Item,QDate)) );
 
@@ -330,7 +330,7 @@ void KOViewManager::connectView( KOrg::BaseView *view )
            mMainView, SLOT(newEvent()) );
   connect( view, SIGNAL(newEventSignal(QDateTime)),
            mMainView, SLOT(newEvent(QDateTime)) );
-  connect( view, SIGNAL(newEventSignal(QDateTime, QDateTime)),
+  connect( view, SIGNAL(newEventSignal(QDateTime,QDateTime)),
            mMainView, SLOT(newEvent(QDateTime,QDateTime)) );
   connect( view, SIGNAL(newEventSignal(QDate)),
            mMainView, SLOT(newEvent(QDate)) );
@@ -346,15 +346,15 @@ void KOViewManager::connectView( KOrg::BaseView *view )
   connect( mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()) );
 
   // Notifications about added, changed and deleted incidences
-  connect( mMainView, SIGNAL(dayPassed(const QDate &)),
-           view, SLOT(dayPassed(const QDate &)) );
-  connect( view, SIGNAL(startMultiModify(const QString &)),
-           mMainView, SLOT(startMultiModify(const QString &)) );
+  connect( mMainView, SIGNAL(dayPassed(QDate)),
+           view, SLOT(dayPassed(QDate)) );
+  connect( view, SIGNAL(startMultiModify(QString)),
+           mMainView, SLOT(startMultiModify(QString)) );
   connect( view, SIGNAL(endMultiModify()),
            mMainView, SLOT(endMultiModify()) );
 
-  connect( mMainView, SIGNAL(newIncidenceChanger(CalendarSupport::IncidenceChanger *)),
-           view, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger *)) );
+  connect( mMainView, SIGNAL(newIncidenceChanger(CalendarSupport::IncidenceChanger*)),
+           view, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger*)) );
 
   view->setIncidenceChanger( mMainView->incidenceChanger() );
 }
@@ -475,8 +475,8 @@ void KOViewManager::showAgendaView()
   if ( showBoth ) {
     if ( !mAgendaViewTabs && showBoth ) {
       mAgendaViewTabs = new KTabWidget( mMainView->viewStack() );
-      connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget *)),
-              this, SLOT(currentAgendaViewTabChanged(QWidget *)) );
+      connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget*)),
+              this, SLOT(currentAgendaViewTabChanged(QWidget*)) );
       mMainView->viewStack()->addWidget( mAgendaViewTabs );
 
       KConfig *config = KOGlobals::self()->config();
@@ -494,8 +494,8 @@ void KOViewManager::showAgendaView()
 
       addView( mAgendaView, showBoth );
 
-      connect( mAgendaView,SIGNAL(zoomViewHorizontally(const QDate &,int)),
-               mMainView->dateNavigator(), SLOT(selectDates(const QDate &,int)) );
+      connect( mAgendaView,SIGNAL(zoomViewHorizontally(QDate,int)),
+               mMainView->dateNavigator(), SLOT(selectDates(QDate,int)) );
       mAgendaView->readSettings();
     }
     if ( showBoth && mAgendaViewTabs->indexOf( mAgendaView ) < 0 ) {
@@ -514,8 +514,8 @@ void KOViewManager::showAgendaView()
       addView( mAgendaSideBySideView, showBoth );
 
 /*
-    connect( mAgendaSideBySideView,SIGNAL(zoomViewHorizontally(const QDate &,int)),
-             mMainView->dateNavigator(),SLOT(selectDates(const QDate &,int)) );*/
+    connect( mAgendaSideBySideView,SIGNAL(zoomViewHorizontally(QDate,int)),
+             mMainView->dateNavigator(),SLOT(selectDates(QDate,int)) );*/
     }
     if ( showBoth && mAgendaViewTabs->indexOf( mAgendaSideBySideView ) < 0 ) {
       mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n( "Calendars Side by Side" ) );

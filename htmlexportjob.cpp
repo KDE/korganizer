@@ -98,7 +98,7 @@ void HtmlExportJob::start()
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
       job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer()->email() );
       job->setProperty( "incidenceUid", eventPtr->uid() );
-      connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
+      connect( job, SIGNAL(result(KJob*)), SLOT(receivedOrganizerInfo(KJob*)) );
       job->start();
 
       d->mSubJobCount++;
@@ -115,7 +115,7 @@ void HtmlExportJob::start()
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
       job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer()->email() );
       job->setProperty( "incidenceUid", todoPtr->uid() );
-      connect( job, SIGNAL( result( KJob* ) ), SLOT( receivedOrganizerInfo( KJob* ) ) );
+      connect( job, SIGNAL(result(KJob*)), SLOT(receivedOrganizerInfo(KJob*)) );
       job->start();
 
       d->mSubJobCount++;

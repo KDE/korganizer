@@ -86,7 +86,7 @@ AlarmDockWindow::AlarmDockWindow()
 
   mAutostart =
     contextMenu()->addAction( i18nc( "@action:inmenu", "Start Reminder Daemon at Login" ) );
-  connect( mAutostart, SIGNAL(toggled(bool )), SLOT(toggleAutostart(bool)) );
+  connect( mAutostart, SIGNAL(toggled(bool)), SLOT(toggleAutostart(bool)) );
   mAutostart->setCheckable( true );
 
   mAlarmsEnabled->setChecked( alarmsEnabled );

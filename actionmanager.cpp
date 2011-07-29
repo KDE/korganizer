@@ -218,10 +218,10 @@ void ActionManager::init()
   connect( mCalendarView, SIGNAL(modifiedChanged(bool)), SLOT(setTitle()) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  connect( mCalendarView, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
-           this, SLOT(processIncidenceSelection(const Akonadi::Item &, const QDate &)) );
-  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings *)),
-           this, SLOT(exportHTML(KOrg::HTMLExportSettings *)) );
+  connect( mCalendarView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           this, SLOT(processIncidenceSelection(Akonadi::Item,QDate)) );
+  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
+           this, SLOT(exportHTML(KOrg::HTMLExportSettings*)) );
 
   processIncidenceSelection( Akonadi::Item(), QDate() );
 
@@ -244,8 +244,8 @@ void ActionManager::createCalendarAkonadi()
 {
   Akonadi::Session *session = new Akonadi::Session( "KOrganizerETM", this );
   Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder( this );
-  connect( monitor, SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>) ),
-           this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>) ) );
+  connect( monitor, SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>)),
+           this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>)) );
 
   Akonadi::ItemFetchScope scope;
   scope.fetchFullPayload( true );
@@ -333,8 +333,8 @@ void ActionManager::createCalendarAkonadi()
 
   connect( mCalendar, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendar, SIGNAL(signalErrorMessage(const QString &)),
-           mCalendarView, SLOT(showErrorMessage(const QString &)) );
+  connect( mCalendar, SIGNAL(signalErrorMessage(QString)),
+           mCalendarView, SLOT(showErrorMessage(QString)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
   mCalendar->setOwner( Person( CalendarSupport::KCalPrefs::instance()->fullName(),
@@ -455,8 +455,8 @@ void ActionManager::initActions()
   mUndoAction->setEnabled( false );
   mRedoAction->setEnabled( false );
   connect( mCalendarView, SIGNAL(pasteEnabled(bool)), pasteAction, SLOT(setEnabled(bool)) );
-  connect( h, SIGNAL(undoAvailable(const QString &)), SLOT(updateUndoAction(const QString &)) );
-  connect( h, SIGNAL(redoAvailable(const QString &)), SLOT(updateRedoAction(const QString &)) );
+  connect( h, SIGNAL(undoAvailable(QString)), SLOT(updateUndoAction(QString)) );
+  connect( h, SIGNAL(redoAvailable(QString)), SLOT(updateRedoAction(QString)) );
 
   /************************** VIEW MENU *********************************/
 
@@ -514,8 +514,8 @@ void ActionManager::initActions()
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL(triggered(int)),
            mCalendarView, SLOT(filterActivated(int)) );
-  connect( mCalendarView, SIGNAL(filtersUpdated(const QStringList &, int)),
-           this, SLOT(setItems(const QStringList &, int)) );
+  connect( mCalendarView, SIGNAL(filtersUpdated(QStringList,int)),
+           this, SLOT(setItems(QStringList,int)) );
   connect( mCalendarView, SIGNAL(filterChanged()),
            this, SLOT(setTitle()) );
 
@@ -566,10 +566,10 @@ void ActionManager::initActions()
   // Changing the action text by setText makes the toolbar button disappear.
   // This has to be fixed first, before the connects below can be reenabled.
   /*
-  connect( mCalendarView, SIGNAL(changeNavStringPrev(const QString &)),
-           action, SLOT(setText(const QString &)) );
-  connect( mCalendarView, SIGNAL(changeNavStringPrev(const QString &)),
-           this, SLOT(dumpText(const QString &)) );*/
+  connect( mCalendarView, SIGNAL(changeNavStringPrev(QString)),
+           action, SLOT(setText(QString)) );
+  connect( mCalendarView, SIGNAL(changeNavStringPrev(QString)),
+           this, SLOT(dumpText(QString)) );*/
 
   action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ),
                         i18nc( "scroll forward", "&Forward" ), this );
@@ -578,8 +578,8 @@ void ActionManager::initActions()
   mACollection->addAction( "go_next", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goNext()) );
   /*
-  connect( mCalendarView,SIGNAL(changeNavStringNext(const QString &)),
-           action,SLOT(setText(const QString &)) );
+  connect( mCalendarView,SIGNAL(changeNavStringNext(QString)),
+           action,SLOT(setText(QString)) );
   */
 
   action = new KAction( KIcon( "view-calendar-day" ), i18n( "&Day" ), this );
@@ -626,7 +626,7 @@ void ActionManager::initActions()
   mNewSubtodoAction = new KAction( i18n( "New Su&b-to-do..." ), this );
   mACollection->addAction( "new_subtodo", mNewSubtodoAction );
   connect( mNewSubtodoAction, SIGNAL(triggered(bool)), this,
-           SLOT(slotNewSubTodo() ));
+           SLOT(slotNewSubTodo()));
   mNewSubtodoAction->setEnabled( false );
   connect( mCalendarView,SIGNAL(todoSelected(bool)), mNewSubtodoAction,
            SLOT(setEnabled(bool)) );
@@ -1093,7 +1093,7 @@ bool ActionManager::addResource( const KUrl &url )
   Akonadi::AgentType type = Akonadi::AgentManager::self()->type( QLatin1String("akonadi_ical_resource") );
   Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type, this );
   job->setProperty("path", url.path());
-  connect( job, SIGNAL( result( KJob * ) ), this, SLOT( agentCreated( KJob * ) ) );
+  connect( job, SIGNAL(result(KJob*)), this, SLOT(agentCreated(KJob*)) );
   job->start();
   return true;
 }
@@ -2032,12 +2032,12 @@ void ActionManager::importCalendar( const KUrl &url )
 
   ImportDialog *dialog;
   dialog = new ImportDialog( url, mMainWindow->topLevelWidget() );
-  connect( dialog, SIGNAL(dialogFinished(ImportDialog *)),
-           SLOT(slotImportDialogFinished(ImportDialog *)) );
-  connect( dialog, SIGNAL(openURL(const KUrl &, bool)),
-           SLOT(openURL(const KUrl &, bool)) );
-  connect( dialog, SIGNAL(addResource(const KUrl &)),
-           SLOT(addResource(const KUrl &)) );
+  connect( dialog, SIGNAL(dialogFinished(ImportDialog*)),
+           SLOT(slotImportDialogFinished(ImportDialog*)) );
+  connect( dialog, SIGNAL(openURL(KUrl,bool)),
+           SLOT(openURL(KUrl,bool)) );
+  connect( dialog, SIGNAL(addResource(KUrl)),
+           SLOT(addResource(KUrl)) );
 
   dialog->show();
 }

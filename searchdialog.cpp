@@ -57,8 +57,8 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   mStartDate->setDate( QDate::currentDate() );
   mEndDate->setDate( QDate::currentDate().addYears( 1 ) );
 
-  connect( mSearchEdit, SIGNAL(textChanged(const QString &)),
-           this, SLOT(searchTextChanged(const QString &)) );
+  connect( mSearchEdit, SIGNAL(textChanged(QString)),
+           this, SLOT(searchTextChanged(QString)) );
 
   // Results list view
   QVBoxLayout *layout = new QVBoxLayout;
@@ -71,12 +71,12 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   connect( this, SIGNAL(user1Clicked()), SLOT(doSearch()) );
 
   // Propagate edit and delete event signals from event list view
-  connect( listView, SIGNAL(showIncidenceSignal(const Akonadi::Item &)),
-          SIGNAL(showIncidenceSignal(const Akonadi::Item&)) );
-  connect( listView, SIGNAL(editIncidenceSignal(const Akonadi::Item&)),
-          SIGNAL(editIncidenceSignal(const Akonadi::Item&)) );
-  connect( listView, SIGNAL(deleteIncidenceSignal(const Akonadi::Item&)),
-          SIGNAL(deleteIncidenceSignal(const Akonadi::Item&)) );
+  connect( listView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+          SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+  connect( listView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+          SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+  connect( listView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+          SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
 }
 
 SearchDialog::~SearchDialog()

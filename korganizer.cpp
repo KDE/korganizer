@@ -136,8 +136,8 @@ void KOrganizer::init( bool document )
 
   bar->addPermanentWidget( progressWidget );
 
-  connect( mActionManager->view(), SIGNAL(statusMessage(const QString&)),
-           SLOT(showStatusMessage(const QString&)) );
+  connect( mActionManager->view(), SIGNAL(statusMessage(QString)),
+           SLOT(showStatusMessage(QString)) );
 
   setStandardToolBarMenuEnabled( true );
   setTitle();

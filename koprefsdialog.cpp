@@ -201,7 +201,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addMimeTypeFilter( "text/calendar" );
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
   mAccountsCalendar.mFilterAccount->setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
-  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
+  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(slotAccountSelected()));
   connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
            this, SLOT(slotModifySelectedAccount()) );
@@ -496,7 +496,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                       0, filter )->urlRequester();
       rq->setEnabled( cb->isChecked() );
 
-      connect( cb, SIGNAL(toggled(bool)), rq, SLOT(setEnabled( bool)) );
+      connect( cb, SIGNAL(toggled(bool)), rq, SLOT(setEnabled(bool)) );
 
       QHBoxLayout *audioFileRemindersBox = new QHBoxLayout( remindersGroupBox );
       audioFileRemindersBox->addWidget( cb );
@@ -871,7 +871,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
     i18nc( "@info:whatsthis",
            "Choose here the color of the event category selected "
            "using the combo box above." ) );
-  connect( mCategoryButton, SIGNAL(changed(const QColor &)), SLOT(setCategoryColor()) );
+  connect( mCategoryButton, SIGNAL(changed(QColor)), SLOT(setCategoryColor()) );
   categoryLayout->addWidget( mCategoryButton, 1, 1 );
 
   updateCategoryColor();
@@ -904,7 +904,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
     i18nc( "@info:whatsthis",
            "Choose here the color of the calendar selected "
            "using the combo box above." ) );
-  connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
+  connect( mResourceButton, SIGNAL(changed(QColor)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );
 
   colorLayout->setRowStretch( 11, 1 );
@@ -1115,7 +1115,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   //topLayout->setRowStretch( 2, 1 );
   connect( add, SIGNAL(clicked()), this, SLOT(addItem()) );
   connect( mRemove, SIGNAL(clicked()), this, SLOT(removeItem()) );
-  connect( aEmailsEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateItem()) );
+  connect( aEmailsEdit, SIGNAL(textChanged(QString)), this, SLOT(updateItem()) );
   connect( aEmailsEdit, SIGNAL(lostFocus()), this, SLOT(checkEmptyMail()) );
   connect( mAMails, SIGNAL(itemSelectionChanged()), SLOT(updateInput()) );
 
@@ -1229,23 +1229,23 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KCompo
 
   connect( mGroupwarePage->publishDays, SIGNAL(valueChanged(int)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishUrl, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->publishUrl, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishUser, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->publishUser, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishPassword, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->publishPassword, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
   connect( mGroupwarePage->publishSavePassword, SIGNAL(toggled(bool)),
            SLOT(slotWidChanged()) );
   connect( mGroupwarePage->retrieveEnable, SIGNAL(toggled(bool)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveUser, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->retrieveUser, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrievePassword, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->retrievePassword, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
   connect( mGroupwarePage->retrieveSavePassword, SIGNAL(toggled(bool)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveUrl, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->retrieveUrl, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()));
   connect( mGroupwarePage->publishDelay, SIGNAL(valueChanged(int)),
            SLOT(slotWidChanged()) );

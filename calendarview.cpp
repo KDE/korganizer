@@ -198,7 +198,7 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(nextYearClicked()),
            mDateNavigator, SLOT(selectNextYear()) );
   connect( mDateNavigatorContainer, SIGNAL(monthSelected(int)),
-           mDateNavigator, SLOT(selectMonth(int) ) );
+           mDateNavigator, SLOT(selectMonth(int)) );
   connect( mDateNavigatorContainer, SIGNAL(yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
   connect( mDateNavigatorContainer, SIGNAL(goPrevious()),
@@ -228,7 +228,7 @@ CalendarView::CalendarView( QWidget *parent )
            mDateNavigatorContainer, SLOT(updateConfig()) );
 
   connect( this, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           mEventViewer, SLOT(setIncidence(Akonadi::Item, QDate)) );
+           mEventViewer, SLOT(setIncidence(Akonadi::Item,QDate)) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -251,10 +251,10 @@ CalendarView::CalendarView( QWidget *parent )
   connect( QApplication::clipboard(), SIGNAL(dataChanged()),
            SLOT(checkClipboard()) );
 
-  connect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
-           this, SLOT(processTodoListSelection(const Akonadi::Item &,const QDate &)) );
-  disconnect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
-              this, SLOT(processMainViewSelection(const Akonadi::Item &,const QDate &)) );
+  connect( mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           this, SLOT(processTodoListSelection(Akonadi::Item,QDate)) );
+  disconnect( mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+              this, SLOT(processMainViewSelection(Akonadi::Item,QDate)) );
 
   {
     static bool pageRegistered = false;

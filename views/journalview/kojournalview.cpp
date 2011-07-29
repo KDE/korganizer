@@ -74,8 +74,8 @@ void KOJournalView::appendJournal( const Akonadi::Item &journal, const QDate &dt
     entry->setIncidenceChanger( mChanger );
     entry->show();
     connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
-    connect( this, SIGNAL(setIncidenceChangerSignal(CalendarSupport::IncidenceChanger *)),
-             entry, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger *)) );
+    connect( this, SIGNAL(setIncidenceChangerSignal(CalendarSupport::IncidenceChanger*)),
+             entry, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger*)) );
     connect( this, SIGNAL(journalEdited(Akonadi::Item)),
              entry, SLOT(journalEdited(Akonadi::Item)) );
     connect( this, SIGNAL(journalDeleted(Akonadi::Item)),
@@ -85,8 +85,8 @@ void KOJournalView::appendJournal( const Akonadi::Item &journal, const QDate &dt
              this, SIGNAL(editIncidenceSignal(Akonadi::Item)) );
     connect( entry, SIGNAL(deleteIncidence(Akonadi::Item)),
              this, SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
-    connect( entry, SIGNAL(newJournal(const QDate &)),
-             this, SIGNAL(newJournalSignal(const QDate &)) );
+    connect( entry, SIGNAL(newJournal(QDate)),
+             this, SIGNAL(newJournalSignal(QDate)) );
     connect( entry, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
                     SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
     mEntries.insert( dt, entry );
