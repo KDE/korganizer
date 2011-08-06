@@ -107,11 +107,11 @@ void KOrganizer::init( bool document )
 {
   setHasDocument( document );
 
+  setComponentData( KGlobal::mainComponent() );
+
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mActionManager->createCalendarAkonadi();
-
-  setComponentData( KGlobal::mainComponent() );
 
   mActionManager->init();
   /*connect( mActionManager, SIGNAL(actionNewMainWindow(KUrl)),
