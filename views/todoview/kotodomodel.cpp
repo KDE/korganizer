@@ -712,6 +712,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       return QVariant( todo->categories() );
     case DescriptionColumn:
       return QVariant( todo->description() );
+    case CalendarColumn:
+      return QVariant( CalendarSupport::displayName( node->mTodo.parentCollection() ) );
     }
     return QVariant();
   }
