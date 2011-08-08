@@ -42,6 +42,7 @@ KOTodoViewView::KOTodoViewView( QWidget *parent )
   : QTreeView( parent ), mHeaderPopup( 0 )
 {
   header()->installEventFilter( this );
+  setAlternatingRowColors( true );
 }
 
 bool KOTodoViewView::isEditing( const QModelIndex &index ) const
