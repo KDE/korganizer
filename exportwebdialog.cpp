@@ -188,8 +188,8 @@ void ExportWebDialog::setupGeneralPage()
   KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
                                        destGroup, "text/html", KFile::File );
   pathWid->urlRequester()->fileDialog()->setOperationMode( KFileDialog::Saving );
-  connect( pathWid->urlRequester(), SIGNAL(textChanged(const QString&)),
-           SLOT(slotTextChanged(const QString&)) );
+  connect( pathWid->urlRequester(), SIGNAL(textChanged(QString)),
+           SLOT(slotTextChanged(QString)) );
   destLayout->addWidget( pathWid->label() );
   destLayout->addWidget( pathWid->urlRequester() );
 

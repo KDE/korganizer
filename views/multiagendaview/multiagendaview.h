@@ -66,8 +66,8 @@ class MultiAgendaView : public KOEventView
 
     void setChanges( EventViews::EventView::Changes changes );
 
-    Future::KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
-    void setCustomCollectionSelectionProxyModel( Future::KCheckableProxyModel* model );
+    KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
+    void setCustomCollectionSelectionProxyModel( KCheckableProxyModel* model );
 
     void restoreConfig( const KConfigGroup &configGroup );
     void saveConfig( KConfigGroup &configGroup );
@@ -108,8 +108,8 @@ class MultiAgendaViewConfigDialog : public KDialog,
 
     QString columnTitle( int column ) const;
     void setColumnTitle( int column, const QString &title );
-    Future::KCheckableProxyModel *takeSelectionModel( int column );
-    void setSelectionModel( int column, Future::KCheckableProxyModel *model );
+    KCheckableProxyModel *takeSelectionModel( int column );
+    void setSelectionModel( int column, KCheckableProxyModel *model );
 
   public Q_SLOTS:
     /**

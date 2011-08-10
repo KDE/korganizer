@@ -1,8 +1,8 @@
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can select whether the week starts on Monday or on Sunday in the System Settings? KOrganizer uses this setting. Look at 
-Regional & Language->Country/Region & Languages in the System Settings, or select <b>Settings</b>,
-<b>Configure Date & Time...</b> from the menu bar. Select the Time & Dates tab.
+Locale->Country/Region & Languages in the System Settings, or select <b>Settings</b>,
+<b>Configure Date & Time...</b> from the menu bar. Select the Calendar tab.
 </p>
 </html>
 </tip>
@@ -65,9 +65,9 @@ Regional & Language->Country/Region & Languages in the System Settings, or selec
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can purge completed to-dos in one step? Go to the <b>File</b> menu and choose <b>Purge Completed</b>.
-</html>
+<p>...that you can purge completed to-dos in one step? Go to the <b>File</b> menu and choose <b>Purge Completed To-dos</b>.
 </p>
+</html>
 </tip>
 
 <tip category="KOrganizer|General">

@@ -52,7 +52,7 @@
 #include <KDebug>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
-#include "kdescendantsproxymodel_p.h" // fix when forwarding header is there
+#include <kdescendantsproxymodel.h> // fix when forwarding header is there
 
 #ifdef Q_WS_MAEMO_5
 #include <QtMaemo5/QMaemo5InformationBox>

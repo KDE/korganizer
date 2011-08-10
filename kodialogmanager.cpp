@@ -94,8 +94,8 @@ void KODialogManager::showOptionsDialog()
 {
   if ( !mOptionsDialog ) {
     mOptionsDialog = new KCMultiDialog( mMainView );
-    connect( mOptionsDialog, SIGNAL(configCommitted(const QByteArray&)),
-             mMainView, SLOT(updateConfig(const QByteArray&)) );
+    connect( mOptionsDialog, SIGNAL(configCommitted(QByteArray)),
+             mMainView, SLOT(updateConfig(QByteArray)) );
     QStringList modules;
 
     modules.append( "korganizer_configmain.desktop" );

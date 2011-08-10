@@ -27,7 +27,8 @@
 #include <calendarviews/eventviews/agenda/agendaview.h>
 #include <calendarviews/eventviews/multiagenda/multiagendaview.h>
 
-#include <akonadi_next/kcheckableproxymodel.h>
+#include <kcheckableproxymodel.h>
+
 #include <akonadi_next/kcolumnfilterproxymodel.h>
 #include <Akonadi/EntityTreeView>
 

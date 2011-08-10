@@ -107,11 +107,11 @@ void KOrganizer::init( bool document )
 {
   setHasDocument( document );
 
+  setComponentData( KGlobal::mainComponent() );
+
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mActionManager->createCalendarAkonadi();
-
-  setComponentData( KGlobal::mainComponent() );
 
   mActionManager->init();
   /*connect( mActionManager, SIGNAL(actionNewMainWindow(KUrl)),
@@ -136,8 +136,8 @@ void KOrganizer::init( bool document )
 
   bar->addPermanentWidget( progressWidget );
 
-  connect( mActionManager->view(), SIGNAL(statusMessage(const QString&)),
-           SLOT(showStatusMessage(const QString&)) );
+  connect( mActionManager->view(), SIGNAL(statusMessage(QString)),
+           SLOT(showStatusMessage(QString)) );
 
   setStandardToolBarMenuEnabled( true );
   setTitle();

@@ -95,7 +95,7 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(prevMonthClicked()), SLOT(goPrevMonth()) );
   connect( v, SIGNAL(nextMonthClicked()), SLOT(goNextMonth()) );
 
-  connect( v, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int) ) );
+  connect( v, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int)) );
   connect( v, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)) );
 }
 

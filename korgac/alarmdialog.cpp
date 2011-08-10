@@ -29,7 +29,7 @@
 #include "korganizer_interface.h"
 
 #include <calendarsupport/calendar.h>
-#include <calendarsupport/incidenceviewer.h>
+#include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/mailclient.h>
 #include <calendarsupport/utils.h>
@@ -534,6 +534,7 @@ void AlarmDialog::show()
       (*it)->setSelected( true );
       break;
     }
+    ++it;
   }
 
   // reset the default suspend time

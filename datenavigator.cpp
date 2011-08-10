@@ -285,7 +285,7 @@ void DateNavigator::selectMonth( int month )
   QDate firstSelected = QDate( mSelectedDates.first().year(), month, 1 );
 
   int day = calSys->day( firstSelected );
-  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, 1 );
+  calSys->setDate( firstSelected, calSys->year( firstSelected ), month, 1 );
   int days = calSys->daysInMonth( firstSelected );
   // As day we use either the selected date, or if the month has less days
   // than that, we use the max day of that month
@@ -293,8 +293,8 @@ void DateNavigator::selectMonth( int month )
     day = days;
   }
   QDate requestedMonth;
-  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
-  calSys->setYMD( requestedMonth, calSys->year( firstSelected ), month, 1 );
+  calSys->setDate( firstSelected, calSys->year( firstSelected ), month, day );
+  calSys->setDate( requestedMonth, calSys->year( firstSelected ), month, 1 );
 
   selectWeekByDay( 1, firstSelected, requestedMonth );
 }

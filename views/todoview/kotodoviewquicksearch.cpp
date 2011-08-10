@@ -60,8 +60,8 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
   mSearchLine = new KLineEdit( this );
   mSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search" ) );
   mSearchLine->setClearButtonShown( true );
-  connect( mSearchLine, SIGNAL(textChanged(const QString &)),
-           this, SIGNAL(searchTextChanged(const QString &)) );
+  connect( mSearchLine, SIGNAL(textChanged(QString)),
+           this, SIGNAL(searchTextChanged(QString)) );
 
   layout->addWidget( mSearchLine, 3 );
 

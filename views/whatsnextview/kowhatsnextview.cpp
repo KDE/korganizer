@@ -53,8 +53,8 @@ KOWhatsNextView::KOWhatsNextView( QWidget *parent )
   : KOrg::BaseView( parent )
 {
   mView = new WhatsNextTextBrowser( this );
-  connect( mView, SIGNAL(showIncidence(const QString &)),
-           SLOT(showIncidence(const QString &)) );
+  connect( mView, SIGNAL(showIncidence(QString)),
+           SLOT(showIncidence(QString)) );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->addWidget(mView);

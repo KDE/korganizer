@@ -27,6 +27,7 @@
 #include "kocore.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kitemiconcheckcombo.h"
 #include "ui_kogroupwareprefspage.h"
 #include "ui_accountscalendarwidget.h"
 
@@ -200,7 +201,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addMimeTypeFilter( "text/calendar" );
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
   mAccountsCalendar.mFilterAccount->setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
-  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
+  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(slotAccountSelected()));
   connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
            this, SLOT(slotModifySelectedAccount()) );
@@ -495,7 +496,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                       0, filter )->urlRequester();
       rq->setEnabled( cb->isChecked() );
 
-      connect( cb, SIGNAL(toggled(bool)), rq, SLOT(setEnabled( bool)) );
+      connect( cb, SIGNAL(toggled(bool)), rq, SLOT(setEnabled(bool)) );
 
       QHBoxLayout *audioFileRemindersBox = new QHBoxLayout( remindersGroupBox );
       audioFileRemindersBox->addWidget( cb );
@@ -580,10 +581,17 @@ class KOPrefsDialogViews : public KPrefsModule
   public:
     KOPrefsDialogViews( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
+      , mMonthIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::MonthType, this ) )
+      , mAgendaIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::AgendaType, this ) )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
       KTabWidget *tabWidget = new KTabWidget( this );
       topTopLayout->addWidget( tabWidget );
+
+      connect( mMonthIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
+               SLOT(slotWidChanged()) );
+      connect( mAgendaIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
+               SLOT(slotWidChanged()) );
 
       // Tab: Views->General
       QFrame *generalFrame = new QFrame( this );
@@ -671,7 +679,8 @@ class KOPrefsDialogViews : public KPrefsModule
       adisplayLayout->addWidget( marcusBainsShowSeconds->checkBox() );
       adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
-
+      mAgendaIconComboBox->setCheckedIcons( KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons() );
+      adisplayLayout->addWidget( mAgendaIconComboBox );
       adisplayBox->setLayout( adisplayLayout );
       agendaLayout->addWidget( adisplayBox );
 
@@ -701,6 +710,8 @@ class KOPrefsDialogViews : public KPrefsModule
       /*mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
       mdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->showTimeInMonthViewItem() )->checkBox() );
+      mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->showTodosMonthViewItem() )->checkBox() );
@@ -709,6 +720,10 @@ class KOPrefsDialogViews : public KPrefsModule
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
       mdisplayBox->setLayout( mdisplayLayout );
+
+      mMonthIconComboBox->setCheckedIcons( KOPrefs::instance()->eventViewsPreferences()->monthViewIcons() );
+      mdisplayLayout->addWidget( mMonthIconComboBox );
+
       monthLayout->addWidget( mdisplayBox );
 
       monthLayout->addWidget(
@@ -747,6 +762,15 @@ class KOPrefsDialogViews : public KPrefsModule
 
       load();
     }
+  protected:
+    void usrWriteConfig()
+    {
+      KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons( mAgendaIconComboBox->checkedIcons() );
+      KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons( mMonthIconComboBox->checkedIcons() );
+    }
+  private:
+    KItemIconCheckCombo *mMonthIconComboBox;
+    KItemIconCheckCombo *mAgendaIconComboBox;
 };
 
 extern "C"
@@ -847,7 +871,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
     i18nc( "@info:whatsthis",
            "Choose here the color of the event category selected "
            "using the combo box above." ) );
-  connect( mCategoryButton, SIGNAL(changed(const QColor &)), SLOT(setCategoryColor()) );
+  connect( mCategoryButton, SIGNAL(changed(QColor)), SLOT(setCategoryColor()) );
   categoryLayout->addWidget( mCategoryButton, 1, 1 );
 
   updateCategoryColor();
@@ -880,7 +904,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
     i18nc( "@info:whatsthis",
            "Choose here the color of the calendar selected "
            "using the combo box above." ) );
-  connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
+  connect( mResourceButton, SIGNAL(changed(QColor)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );
 
   colorLayout->setRowStretch( 11, 1 );
@@ -1091,7 +1115,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   //topLayout->setRowStretch( 2, 1 );
   connect( add, SIGNAL(clicked()), this, SLOT(addItem()) );
   connect( mRemove, SIGNAL(clicked()), this, SLOT(removeItem()) );
-  connect( aEmailsEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateItem()) );
+  connect( aEmailsEdit, SIGNAL(textChanged(QString)), this, SLOT(updateItem()) );
   connect( aEmailsEdit, SIGNAL(lostFocus()), this, SLOT(checkEmptyMail()) );
   connect( mAMails, SIGNAL(itemSelectionChanged()), SLOT(updateInput()) );
 
@@ -1205,23 +1229,23 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KCompo
 
   connect( mGroupwarePage->publishDays, SIGNAL(valueChanged(int)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishUrl, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->publishUrl, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishUser, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->publishUser, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishPassword, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->publishPassword, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
   connect( mGroupwarePage->publishSavePassword, SIGNAL(toggled(bool)),
            SLOT(slotWidChanged()) );
   connect( mGroupwarePage->retrieveEnable, SIGNAL(toggled(bool)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveUser, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->retrieveUser, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrievePassword, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->retrievePassword, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()) );
   connect( mGroupwarePage->retrieveSavePassword, SIGNAL(toggled(bool)),
            SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveUrl, SIGNAL(textChanged(const QString&)),
+  connect( mGroupwarePage->retrieveUrl, SIGNAL(textChanged(QString)),
            SLOT(slotWidChanged()));
   connect( mGroupwarePage->publishDelay, SIGNAL(valueChanged(int)),
            SLOT(slotWidChanged()) );

@@ -69,7 +69,7 @@
 #include <calendarsupport/mailscheduler.h>
 #include <calendarsupport/dndfactory.h>
 #include <calendarsupport/incidencechanger.h>
-#include <calendarsupport/incidenceviewer.h>
+#include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/kcalprefs.h>
 
 #include <akonadi/control.h>
@@ -198,7 +198,7 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigatorContainer, SIGNAL(nextYearClicked()),
            mDateNavigator, SLOT(selectNextYear()) );
   connect( mDateNavigatorContainer, SIGNAL(monthSelected(int)),
-           mDateNavigator, SLOT(selectMonth(int) ) );
+           mDateNavigator, SLOT(selectMonth(int)) );
   connect( mDateNavigatorContainer, SIGNAL(yearSelected(int)),
            mDateNavigator, SLOT(selectYear(int)) );
   connect( mDateNavigatorContainer, SIGNAL(goPrevious()),
@@ -228,7 +228,7 @@ CalendarView::CalendarView( QWidget *parent )
            mDateNavigatorContainer, SLOT(updateConfig()) );
 
   connect( this, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           mEventViewer, SLOT(setIncidence(Akonadi::Item, QDate)) );
+           mEventViewer, SLOT(setIncidence(Akonadi::Item,QDate)) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -251,10 +251,10 @@ CalendarView::CalendarView( QWidget *parent )
   connect( QApplication::clipboard(), SIGNAL(dataChanged()),
            SLOT(checkClipboard()) );
 
-  connect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
-           this, SLOT(processTodoListSelection(const Akonadi::Item &,const QDate &)) );
-  disconnect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
-              this, SLOT(processMainViewSelection(const Akonadi::Item &,const QDate &)) );
+  connect( mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           this, SLOT(processTodoListSelection(Akonadi::Item,QDate)) );
+  disconnect( mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+              this, SLOT(processMainViewSelection(Akonadi::Item,QDate)) );
 
   {
     static bool pageRegistered = false;
@@ -825,13 +825,16 @@ void CalendarView::endMultiModify()
 
 void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action )
 {
-  mDateNavigatorContainer->updateView();
+  if ( mDateNavigatorContainer->isVisible() ) {
+    mDateNavigatorContainer->updateView();
+  }
+
   mDialogManager->updateSearchDialog();
 
   if ( CalendarSupport::hasIncidence( item ) ) {
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( item, action );
-    if ( mTodoList ) {
+    if ( mTodoList && mTodoList->isVisible() ) {
       mTodoList->changeIncidenceDisplay( item, action );
     }
   } else {
@@ -848,7 +851,7 @@ void CalendarView::updateView( const QDate &start, const QDate &end,
 {
   const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
 
-  if ( updateTodos && !currentViewIsTodoView ) {
+  if ( updateTodos && !currentViewIsTodoView && mTodoList->isVisible() ) {
     // Update the sidepane todoView
     mTodoList->updateView();
   }
@@ -857,7 +860,9 @@ void CalendarView::updateView( const QDate &start, const QDate &end,
     mViewManager->updateView( start, end, preferredMonth );
   }
 
-  mDateNavigatorContainer->updateView();
+  if ( mDateNavigatorContainer->isVisible() ) {
+    mDateNavigatorContainer->updateView();
+  }
 }
 
 void CalendarView::updateView()
@@ -871,7 +876,9 @@ void CalendarView::updateView()
 
 void CalendarView::updateUnmanagedViews()
 {
-  mDateNavigatorContainer->updateDayMatrix();
+  if ( mDateNavigatorContainer->isVisible() ) {
+    mDateNavigatorContainer->updateDayMatrix();
+  }
 }
 
 int CalendarView::msgItemDelete( const Akonadi::Item &item )
@@ -1202,7 +1209,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
     defaults.setEndDateTime( KDateTime( endDt ) );
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
-    defaults.setAttachments( attachments, attachmentMimetypes, inlineAttachment );
+    defaults.setAttachments( attachments, attachmentMimetypes, QStringList(), inlineAttachment );
     defaults.setAttendees( attendees );
 
     Event::Ptr event( new Event );
@@ -1224,7 +1231,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
     Akonadi::Collection defaultCol = defaultCollection( Todo::todoMimeType() );
 
     IncidenceDialogFactory::createTodoEditor( summary, description, attachments,
-                                              attendees, attachmentMimetypes,
+                                              attendees, attachmentMimetypes, QStringList() /* attachment labels */,
                                               inlineAttachment, defaultCol,
                                               this /* parent */ );
   }
@@ -1651,6 +1658,8 @@ void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const QSt
       i18nc( "@title:window", "Copying Failed" ) );
   }
 #else
+  Q_UNUSED( resourceId );
+  Q_UNUSED( item );
   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
@@ -1735,6 +1744,8 @@ void CalendarView::moveIncidenceToResource( const Akonadi::Item &item, const QSt
       i18nc( "@title:window", "Moving Failed" ) );
   }
 #else
+  Q_UNUSED( resourceId );
+  Q_UNUSED( item );
   kDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
@@ -2282,6 +2293,7 @@ void CalendarView::showDateNavigator( bool show )
 {
   if ( show ) {
     mDateNavigatorContainer->show();
+    mDateNavigatorContainer->updateView();
   } else {
     mDateNavigatorContainer->hide();
   }
@@ -2291,6 +2303,7 @@ void CalendarView::showTodoView( bool show )
 {
   if ( show ) {
     mTodoList->show();
+    mTodoList->updateView();
   } else {
     mTodoList->hide();
   }
@@ -2357,7 +2370,7 @@ Akonadi::Item CalendarView::selectedTodo()
   return Akonadi::Item();
 }
 
-void CalendarView::dialogClosing( const Akonadi::Item &item )
+void CalendarView::dialogClosing( const Akonadi::Item & )
 {
 }
 
@@ -2475,6 +2488,7 @@ void CalendarView::showIncidenceContext( const Akonadi::Item &item )
 
 bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
 {
+  Q_UNUSED( isCounter );
   Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     kDebug() << "Empty Incidence";

@@ -68,8 +68,8 @@ K_GLOBAL_STATIC( KOTodoModel, sModel );
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   : BaseView( parent )
 {
-  connect( sModel, SIGNAL( expandIndex( const QModelIndex& ) ),
-           this, SLOT( expandIndex( const QModelIndex& ) ) );
+  connect( sModel, SIGNAL(expandIndex(QModelIndex)),
+           this, SLOT(expandIndex(QModelIndex)) );
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( sModel );
   mProxyModel->setDynamicSortFilter( true );
@@ -81,10 +81,10 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   if ( !mSidebarView ) {
     mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
     mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
-    connect( mQuickSearch, SIGNAL(searchTextChanged(const QString &)),
-             mProxyModel, SLOT(setFilterRegExp(const QString &)) );
-    connect( mQuickSearch, SIGNAL(searchCategoryChanged(const QStringList &)),
-             mProxyModel, SLOT(setCategoryFilter(const QStringList &)) );
+    connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
+             mProxyModel, SLOT(setFilterRegExp(QString)) );
+    connect( mQuickSearch, SIGNAL(searchCategoryChanged(QStringList)),
+             mProxyModel, SLOT(setCategoryFilter(QStringList)) );
   }
 
   mView = new KOTodoViewView( this );
@@ -117,14 +117,14 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mCategoriesDelegate = new KOTodoCategoriesDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::CategoriesColumn, mCategoriesDelegate );
 
-  connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),
-           this, SLOT(contextMenu(const QPoint &)) );
-  connect( mView, SIGNAL(doubleClicked(const QModelIndex &)),
-           this, SLOT(itemDoubleClicked(const QModelIndex &)) );
+  connect( mView, SIGNAL(customContextMenuRequested(QPoint)),
+           this, SLOT(contextMenu(QPoint)) );
+  connect( mView, SIGNAL(doubleClicked(QModelIndex)),
+           this, SLOT(itemDoubleClicked(QModelIndex)) );
   connect( mView->selectionModel(),
-           SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+           SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            this,
-           SLOT(selectionChanged(const QItemSelection&, const QItemSelection&)) );
+           SLOT(selectionChanged(QItemSelection,QItemSelection)) );
 
   mQuickAdd = new KOTodoViewQuickAddLine( this );
   mQuickAdd->setClearButtonShown( true );
@@ -226,8 +226,8 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
                                          QDate::currentDate(), this );
   mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
 
-  connect( mCopyPopupMenu, SIGNAL(dateChanged(const QDate &)),
-           SLOT(copyTodoToDate(const QDate&)) );
+  connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
+           SLOT(copyTodoToDate(QDate)) );
 
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
            mItemPopupMenu, SLOT(hide()) );
@@ -238,8 +238,8 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
                                          QDate::currentDate(), this );
   mMovePopupMenu->setTitle( i18n( "&Move To" ) );
 
-  connect( mMovePopupMenu, SIGNAL(dateChanged(const QDate &)),
-           SLOT(setNewDate(const QDate&)) );
+  connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
+           SLOT(setNewDate(QDate)) );
 
   connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
            mItemPopupMenu, SLOT(hide()) );
@@ -263,16 +263,16 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mPriority[ mPriorityPopupMenu->addAction( i18n( "7" ) ) ] = 7;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "8" ) ) ] = 8;
   mPriority[ mPriorityPopupMenu->addAction( i18nc( "lowest priority", "9 (lowest)" ) ) ] = 9;
-  connect( mPriorityPopupMenu, SIGNAL(triggered(QAction *)),
-           SLOT(setNewPriority(QAction *)) );
+  connect( mPriorityPopupMenu, SIGNAL(triggered(QAction*)),
+           SLOT(setNewPriority(QAction*)) );
 
   mPercentageCompletedPopupMenu = new QMenu(this);
   for ( int i = 0; i <= 100; i+=10 ) {
     QString label = QString( "%1 %" ).arg( i );
     mPercentage[mPercentageCompletedPopupMenu->addAction( label )] = i;
   }
-  connect( mPercentageCompletedPopupMenu, SIGNAL(triggered(QAction *)),
-           SLOT(setNewPercentage(QAction *)) );
+  connect( mPercentageCompletedPopupMenu, SIGNAL(triggered(QAction*)),
+           SLOT(setNewPercentage(QAction*)) );
 
   setMinimumHeight( 50 );
 }
@@ -461,6 +461,7 @@ void KOTodoView::addTodo( const QString &summary,
 
   todo->setCategories( categories );
 
+  Q_UNUSED( parent );
   /*  if ( parent ) {
     todo->setRelatedTo( parent );
   }
@@ -775,8 +776,8 @@ QMenu *KOTodoView::createCategoryPopupMenu()
     }
   }
 
-  connect( tempMenu, SIGNAL(triggered(QAction *)),
-           SLOT(changedCategories(QAction *)) );
+  connect( tempMenu, SIGNAL(triggered(QAction*)),
+           SLOT(changedCategories(QAction*)) );
   connect( tempMenu, SIGNAL(aboutToHide()),
            tempMenu, SLOT(deleteLater()) );
   return tempMenu;

@@ -615,7 +615,7 @@ QModelIndex KOTodoModel::index( int row, int column,
 
 QModelIndex KOTodoModel::parent( const QModelIndex &child ) const
 {
-  if ( !child.isValid() ) {
+  if ( !child.isValid() || !child.internalPointer() ) {
     return QModelIndex();
   }
 
@@ -712,6 +712,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       return QVariant( todo->categories() );
     case DescriptionColumn:
       return QVariant( todo->description() );
+    case CalendarColumn:
+      return QVariant( CalendarSupport::displayName( node->mTodo.parentCollection() ) );
     }
     return QVariant();
   }
@@ -786,9 +788,9 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       case PriorityColumn:
       case PercentColumn:
       case DueDateColumn:
-        return QVariant( Qt::AlignHCenter );
+        return QVariant( Qt::AlignHCenter | Qt::AlignVCenter );
     }
-    return QVariant();
+    return QVariant( Qt::AlignLeft | Qt::AlignVCenter );
   }
 
   return QVariant();

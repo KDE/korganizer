@@ -74,9 +74,9 @@ PublishDialog::PublishDialog( QWidget *parent )
            SLOT(removeItem()) );
   connect( mUI.mSelectAddressee, SIGNAL(clicked()),
            SLOT(openAddressbook()) );
-  connect( mUI.mNameLineEdit, SIGNAL(textChanged(const QString &)),
+  connect( mUI.mNameLineEdit, SIGNAL(textChanged(QString)),
            SLOT(updateItem()) );
-  connect( mUI.mEmailLineEdit, SIGNAL(textChanged(const QString &)),
+  connect( mUI.mEmailLineEdit, SIGNAL(textChanged(QString)),
            SLOT(updateItem()) );
 }
 

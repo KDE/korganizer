@@ -365,17 +365,21 @@ void KODayMatrix::updateEvents()
     }
     const Event::Ptr event = CalendarSupport::event( item );
     Q_ASSERT( event );
-    ushort recurType = event->recurrenceType();
+    const ushort recurType = event->recurrenceType();
 
-    KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );
-    KDateTime dtEnd   = event->dtEnd().toTimeSpec( mCalendar->timeSpec() );
+    const KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );
+
+    // timed incidences occur in [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
+    // so we subtract 1 second in the timed case
+    const int secsToAdd     = event->allDay() ? 0 : -1;
+    const KDateTime dtEnd   = event->dtEnd().toTimeSpec( mCalendar->timeSpec() ).addSecs( secsToAdd );
 
     if ( !( recurType == Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur ) &&
          !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) ) {
 
       DateTimeList timeDateList;
-      bool isRecurrent = event->recurs();
-      int eventDuration = dtStart.daysTo( dtEnd );
+      const bool isRecurrent = event->recurs();
+      const int eventDuration = dtStart.daysTo( dtEnd );
 
       if ( isRecurrent ) {
         //Its a recurring event, find out in which days it occurs
@@ -894,7 +898,7 @@ QPair<QDate,QDate> KODayMatrix::matrixLimits( const QDate &month )
 {
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   QDate d = month;
-  calSys->setYMD( d, calSys->year( month ), calSys->month( month ), 1 );
+  calSys->setDate( d, calSys->year( month ), calSys->month( month ), 1 );
 
   const int dayOfWeek = calSys->dayOfWeek( d );
   const int weekstart = KGlobal::locale()->weekStartDay();

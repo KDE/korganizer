@@ -133,7 +133,7 @@ class PageItem : public QTreeWidgetItem
     bool mIsActive;
 };
 
-KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent, const QStringList &args )
+KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent, const QVariantList &args )
   : KCModule( instance, parent, args )
    ,mPageView(NULL)
    ,mPagePreview(NULL)
@@ -160,15 +160,15 @@ void KCMDesignerFields::delayedInit()
 
   connect( mPageView, SIGNAL(itemSelectionChanged()),
            this, SLOT(updatePreview()) );
-  connect( mPageView, SIGNAL(itemClicked(QTreeWidgetItem*, int)),
+  connect( mPageView, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
            this, SLOT(itemClicked(QTreeWidgetItem*)) );
 
-  connect( mDeleteButton, SIGNAL( clicked() ),
-           this, SLOT( deleteFile() ) );
-  connect( mImportButton, SIGNAL( clicked() ),
-           this, SLOT( importFile() ) );
-  connect( mDesignerButton, SIGNAL( clicked() ),
-           this, SLOT( startDesigner() ) );
+  connect( mDeleteButton, SIGNAL(clicked()),
+           this, SLOT(deleteFile()) );
+  connect( mImportButton, SIGNAL(clicked()),
+           this, SLOT(importFile()) );
+  connect( mDesignerButton, SIGNAL(clicked()),
+           this, SLOT(startDesigner()) );
 
   load();
 
@@ -176,9 +176,9 @@ void KCMDesignerFields::delayedInit()
   KDirWatch *dw = new KDirWatch( this );
   KStandardDirs::makeDir( localUiDir() );
   dw->addDir( localUiDir(), KDirWatch::WatchFiles );
-  connect( dw, SIGNAL( created(const QString&) ), SLOT( rebuildList() ) );
-  connect( dw, SIGNAL( deleted(const QString&) ), SLOT( rebuildList() ) );
-  connect( dw, SIGNAL( dirty(const QString&) ),   SLOT( rebuildList() ) );
+  connect( dw, SIGNAL(created(QString)), SLOT(rebuildList()) );
+  connect( dw, SIGNAL(deleted(QString)), SLOT(rebuildList()) );
+  connect( dw, SIGNAL(dirty(QString)),   SLOT(rebuildList()) );
 }
 
 void KCMDesignerFields::deleteFile()

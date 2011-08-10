@@ -102,8 +102,8 @@ FilterEdit::FilterEdit( QList<CalFilter*> *filters, QWidget *parent )
            SLOT(bNewPressed()) );
   connect( mDeleteButton, SIGNAL(clicked()),
            SLOT(bDeletePressed()) );
-  connect( mNameLineEdit, SIGNAL(textChanged(const QString &)),
-           SLOT(updateSelectedName(const QString&)) );
+  connect( mNameLineEdit, SIGNAL(textChanged(QString)),
+           SLOT(updateSelectedName(QString)) );
   connect( mCatEditButton, SIGNAL(clicked()), SLOT(editCategorySelection()) );
   connect( mCompletedCheck, SIGNAL(toggled(bool)),
            mCompletedTimeSpanLabel, SLOT(setEnabled(bool)) );
@@ -294,8 +294,8 @@ void FilterEdit::editCategorySelection()
     mCategorySelectDialog = new IncidenceEditorNG::CategorySelectDialog( cc, this );
     mCategorySelectDialog->setHelp( "categories-view", "korganizer" );
     mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
-    connect( mCategorySelectDialog, SIGNAL(categoriesSelected(const QStringList&)),
-             SLOT(updateCategorySelection(const QStringList&)) );
+    connect( mCategorySelectDialog, SIGNAL(categoriesSelected(QStringList)),
+             SLOT(updateCategorySelection(QStringList)) );
     connect( mCategorySelectDialog, SIGNAL(editCategories()),
              SIGNAL(editCategories()) );
 

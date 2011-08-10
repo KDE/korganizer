@@ -42,6 +42,7 @@ KOTodoViewView::KOTodoViewView( QWidget *parent )
   : QTreeView( parent ), mHeaderPopup( 0 )
 {
   header()->installEventFilter( this );
+  setAlternatingRowColors( true );
 }
 
 bool KOTodoViewView::isEditing( const QModelIndex &index ) const
@@ -68,8 +69,8 @@ bool KOTodoViewView::eventFilter( QObject *watched, QEvent *event )
         mColumnActions << tmp;
       }
 
-      connect( mHeaderPopup, SIGNAL(triggered(QAction *)),
-               this, SLOT(toggleColumnHidden(QAction *)) );
+      connect( mHeaderPopup, SIGNAL(triggered(QAction*)),
+               this, SLOT(toggleColumnHidden(QAction*)) );
     }
 
     foreach ( QAction *action, mColumnActions ) {

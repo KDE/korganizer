@@ -47,7 +47,7 @@
 #include <QHeaderView>
 #include <QItemSelectionModel>
 
-#include <akonadi_next/kcheckableproxymodel.h>
+#include <kcheckableproxymodel.h>
 
 #include <akonadi/calendar/standardcalendaractionmanager.h>
 #include <akonadi/collection.h>
@@ -70,8 +70,6 @@
 #include <QHash>
 #include <QStyledItemDelegate>
 #include <QPainter>
-
-using namespace Future;
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
   : mView( view ), mAkonadiCollectionView( 0 )
@@ -160,6 +158,11 @@ namespace {
         }
        return QSortFilterProxyModel::data( index, role );
      }
+
+     /* reimp */ Qt::ItemFlags flags( const QModelIndex& index ) const
+     {
+       return Qt::ItemIsSelectable | QSortFilterProxyModel::flags( index );
+     }
   private:
     mutable bool mInitDefaultCalendar;
   };
@@ -172,10 +175,10 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
                     mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)),
                     mView, SLOT(updateCategories()) );
-  QObject::connect( mAkonadiCollectionView, SIGNAL( resourcesAddedRemoved() ),
-                    mView, SLOT( resourcesChanged() ) );
-  QObject::connect( mAkonadiCollectionView, SIGNAL( resourcesAddedRemoved() ),
-                    mView, SLOT( updateCategories() ) );
+  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesAddedRemoved()),
+                    mView, SLOT(resourcesChanged()) );
+  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesAddedRemoved()),
+                    mView, SLOT(updateCategories()) );
   return mAkonadiCollectionView;
 }
 
@@ -215,7 +218,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   collectionproxymodel->setObjectName( "Only show collections" );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
-  //collectionproxymodel->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
+  collectionproxymodel->setExcludeVirtualCollections( true );
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
   colorProxy->setObjectName( "Show calendar colors" );
@@ -237,13 +240,10 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   mCollectionview->setModel( filterTreeViewModel );
 
-  //connect( searchCol, SIGNAL( textChanged(QString) ), filterTreeViewModel, SLOT( setFilterFixedString(QString) ) );
+  //connect( searchCol, SIGNAL(textChanged(QString)), filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
 
-  connect( mCollectionview->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),
-           this, SLOT(selectionChanged()) );
-
-  connect( mBaseModel, SIGNAL( rowsInserted( const QModelIndex&, int, int ) ),
-           this, SLOT( rowsInserted( const QModelIndex&, int, int ) ) );
+  connect( mBaseModel, SIGNAL(rowsInserted(QModelIndex,int,int)),
+           this, SLOT(rowsInserted(QModelIndex,int,int)) );
 
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
@@ -258,15 +258,17 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteResources );
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteCollections );
 
-    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ), SIGNAL( triggered( bool ) ),
-             this, SLOT( newCalendar() ) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ), SIGNAL( triggered( bool ) ),
-             this, SLOT( deleteCalendar() ) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL( triggered( bool ) ),
-             this, SLOT( deleteCalendar() ) );
+    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ), SIGNAL(triggered(bool)),
+             this, SLOT(newCalendar()) );
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ), SIGNAL(triggered(bool)),
+             this, SLOT(deleteCalendar()) );
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL(triggered(bool)),
+             this, SLOT(deleteCalendar()) );
 
     mActionManager->setContextText( Akonadi::StandardActionManager::CollectionProperties, Akonadi::StandardActionManager::DialogTitle,
                                     i18nc( "@title:window", "Properties of Calendar Folder %1" ) );
+
+    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setProperty( "ContentMimeTypes", QStringList( KCalCore::Event::eventMimeType() ) );
 
     const QStringList pages = QStringList() << QLatin1String( "CalendarSupport::CollectionGeneralPage" )
                                             << QLatin1String( "Akonadi::CachePolicyPage" );
@@ -274,22 +276,22 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     mActionManager->setCollectionPropertiesPageNames( pages );
 
     mDisableColor = new KAction( mCollectionview );
-    mDisableColor->setText( "&Disable Color");
+    mDisableColor->setText( i18n( "&Disable Color" ) );
     mDisableColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ), mDisableColor );
-    connect( mDisableColor, SIGNAL( triggered( bool ) ), this, SLOT(disableColor() ) );
+    connect( mDisableColor, SIGNAL(triggered(bool)), this, SLOT(disableColor()) );
 
     mAssignColor = new KAction( mCollectionview );
     mAssignColor->setText( i18n( "&Assign Color..." ) );
     mAssignColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "assign_color" ), mAssignColor );
-    connect( mAssignColor, SIGNAL( triggered( bool ) ), this, SLOT(assignColor()) );
+    connect( mAssignColor, SIGNAL(triggered(bool)), this, SLOT(assignColor()) );
 
     mDefaultCalendar = new KAction( mCollectionview );
     mDefaultCalendar->setText( i18n( "Use as &Default Calendar" ) );
     mDefaultCalendar->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),mDefaultCalendar );
-    connect( mDefaultCalendar, SIGNAL( triggered( bool ) ), this, SLOT( setDefaultCalendar()) );
+    connect( mDefaultCalendar, SIGNAL(triggered(bool)), this, SLOT(setDefaultCalendar()) );
   }
   mCollectionview->expandAll();
 }
@@ -424,7 +426,7 @@ void AkonadiCollectionView::newCalendar()
     if ( agentType.isValid() ) {
       Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
       job->configure( this );
-      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( newCalendarDone( KJob* ) ) );
+      connect( job, SIGNAL(result(KJob*)), this, SLOT(newCalendarDone(KJob*)) );
       job->start();
     }
   }
@@ -472,7 +474,7 @@ void AkonadiCollectionView::deleteCalendar()
     if ( !isTopLevel ) {
       // deletes contents
       Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
-      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
+      connect( job, SIGNAL(result(KJob*)), this, SLOT(deleteCalendarDone(KJob*)) );
     } else {
       // deletes the agent, not the contents
       const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( collection.resource() );

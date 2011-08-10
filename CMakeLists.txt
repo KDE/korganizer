@@ -95,6 +95,7 @@ if (KDEPIM_BUILD_DESKTOP)
   set(kcm_korganizer_PART_SRCS
       kcmdesignerfields.cpp
       koprefsdialog.cpp
+      kitemiconcheckcombo.cpp
      )
 
   kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS} )
