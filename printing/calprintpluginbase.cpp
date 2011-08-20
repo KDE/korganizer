@@ -1215,7 +1215,7 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
     summaryBound.setHeight(textBoxHeight);
     QRect lineRect( dayBox.x() + borderWidth, dayBox.y() + textY,
                     dayBox.width() - ( borderWidth * 2 ), textBoxHeight );
-    drawBox( p, -1, lineRect );
+    drawBox( p, 1, lineRect );
     if ( !time.isEmpty() ) {
       p.drawText( timeBound, flags, time );
     }
@@ -1253,7 +1253,7 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
     p.save();
     QRect backBox( timeBound.x(), timeBound.y(),
                    dayBox.width() - ( borderWidth * 2 ), clipBox.height() );
-    drawBox( p, -1, backBox );
+    drawBox( p, 1, backBox );
 
     if ( !time.isEmpty() ) {
       if ( timeBound.bottom() > dayBox.bottom() ) {
