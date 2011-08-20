@@ -1003,7 +1003,22 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
         str += event->description();
       }
     }
+    QFont oldFont( p.font() );
+    if ( eventBox.height() < 24 ) {
+      if ( eventBox.height() < 12 ) {
+        if ( eventBox.height() < 8 ) {
+          p.setFont( QFont( "sans-serif", 4 ) );
+        } else {
+          p.setFont( QFont( "sans-serif", 6 ) );
+        }
+      } else {
+        p.setFont( QFont( "sans-serif", 8 ) );
+      }
+    } else {
+       p.setFont( QFont( "sans-serif", 10 ) );
+    }
     showEventBox( p, EVENT_BORDER_WIDTH, eventBox, event, str );
+    p.setFont( oldFont );
   }
 }
 
