@@ -1067,7 +1067,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
                                                   CalendarSupport::SortDirectionAscending );
 
   QString timeText;
-  p.setFont( QFont( "sans-serif", 8 ) );
+  p.setFont( QFont( "sans-serif", 7 ) );
 
   int textY = mSubHeaderHeight; // gives the relative y-coord of the next printed entry
   unsigned int visibleEventsCounter = 0;
