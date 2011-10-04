@@ -23,25 +23,21 @@
 */
 
 #include "kotododelegates.h"
+#include "koprefs.h"
+#include "kotodomodel.h"
+#include "kotodoviewview.h"
 
 #include "incidenceeditor-ng/categoryhierarchyreader.h"
 
-#include "koprefs.h"
-
-#include "kcheckcombobox.h"
-#include "kotodomodel.h"
-#include "kotodoviewview.h"
+#include "libkdepim/kcheckcombobox.h"
 
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/calendar.h>
 
-#include <libkdepim/kdateedit.h>
-
 #include <KCalCore/CalFilter>
 
-#include <kcolorscheme.h>
-#include <kcombobox.h>
-#include <kdebug.h>
+#include <KComboBox>
+#include <KDateComboBox>
 
 #include <QApplication>
 #include <QSlider>
@@ -281,7 +277,7 @@ QWidget *KOTodoDueDateDelegate::createEditor( QWidget *parent,
   Q_UNUSED( option );
   Q_UNUSED( index );
 
-  KDateEdit *dateEdit = new KDateEdit( parent );
+  KDateComboBox *dateEdit = new KDateComboBox( parent );
 
   return dateEdit;
 }
@@ -289,7 +285,7 @@ QWidget *KOTodoDueDateDelegate::createEditor( QWidget *parent,
 void KOTodoDueDateDelegate::setEditorData( QWidget *editor,
                                            const QModelIndex &index ) const
 {
-  KDateEdit *dateEdit = static_cast<KDateEdit *>( editor );
+  KDateComboBox *dateEdit = static_cast<KDateComboBox *>( editor );
 
   dateEdit->setDate( index.data( Qt::EditRole ).toDate() );
 }
@@ -298,7 +294,7 @@ void KOTodoDueDateDelegate::setModelData( QWidget *editor,
                                           QAbstractItemModel *model,
                                           const QModelIndex &index ) const
 {
-  KDateEdit *dateEdit = static_cast<KDateEdit *>( editor );
+  KDateComboBox *dateEdit = static_cast<KDateComboBox *>( editor );
 
   model->setData( index, dateEdit->date() );
 }

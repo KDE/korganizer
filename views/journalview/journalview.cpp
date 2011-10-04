@@ -42,7 +42,6 @@
 #include <KDialog>
 #include <KGlobal>
 #include <KLocale>
-#include <ktimeedit.h>
 #include <KLineEdit>
 #include <KStandardGuiItem>
 #include <KMessageBox>

@@ -50,7 +50,6 @@
 #include <KMessageBox>
 
 using namespace KOrg;
-using namespace KPIM;
 using namespace KCalCore;
 using namespace CalendarSupport;
 

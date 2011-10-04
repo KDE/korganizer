@@ -126,7 +126,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="KPIM::KDateEdit" name="mFromDate" >
+         <widget class="KDateComboBox" name="mFromDate" >
           <property name="enabled" >
            <bool>false</bool>
           </property>
@@ -174,7 +174,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="KPIM::KDateEdit" name="mToDate" >
+         <widget class="KDateComboBox" name="mToDate" >
           <property name="enabled" >
            <bool>false</bool>
           </property>
@@ -421,9 +421,9 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KPIM::KDateEdit</class>
+   <class>KDateComboBox</class>
    <extends>QComboBox</extends>
-   <header>libkdepim/kdateedit.h</header>
+   <header>kdatecombobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

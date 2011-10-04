@@ -28,10 +28,9 @@
 #include "kocore.h"
 #include "htmlexportsettings.h"
 
-#include <libkdepim/kdateedit.h>
-
 #include <calendarsupport/calendar.h>
 
+#include <KDateComboBox>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kfiledialog.h>

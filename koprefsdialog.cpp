@@ -35,8 +35,6 @@
 #include <calendarsupport/kcalprefs.h>
 #include <incidenceeditor-ng/globalsettings.h>
 
-#include <libkdepim/ktimeedit.h>
-
 #include <KCalCore/Calendar>
 
 #include <KHolidays/Holidays>
@@ -63,6 +61,7 @@ using MailTransport::TransportManagementWidget;
 #include <KService>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
+#include <KTimeComboBox>
 #include <KTabWidget>
 #include <KUrlRequester>
 #include <KWindowSystem>

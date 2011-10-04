@@ -186,7 +186,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KPIM::KDateEdit" name="mStartDate">
+         <widget class="KDateComboBox" name="mStartDate">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -224,7 +224,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KPIM::KDateEdit" name="mEndDate">
+         <widget class="KDateComboBox" name="mEndDate">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -305,9 +305,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KPIM::KDateEdit</class>
+   <class>KDateComboBox</class>
    <extends>QComboBox</extends>
-   <header>libkdepim/kdateedit.h</header>
+   <header>kdatecombobox.h</header>
   </customwidget>
   <customwidget>
    <class>KLineEdit</class>
@@ -324,9 +324,6 @@
   <tabstop>mInclusiveCheck</tabstop>
   <tabstop>mIncludeUndatedTodos</tabstop>
  </tabstops>
- <includes>
-  <include location="local">libkdepim/kdateedit.h</include>
- </includes>
  <resources/>
  <connections/>
 </ui>

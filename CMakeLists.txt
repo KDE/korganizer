@@ -34,7 +34,6 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                     ${CMAKE_SOURCE_DIR}/calendarsupport
                     ${CMAKE_BINARY_DIR}/calendarsupport
                     ${CMAKE_SOURCE_DIR}/korganizer/printing
-                    ${CMAKE_BINARY_DIR}/libkdepim
                     ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
                     ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
                     ${CMAKE_SOURCE_DIR}/incidenceeditor-ng

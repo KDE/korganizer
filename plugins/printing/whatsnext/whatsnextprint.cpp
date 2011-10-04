@@ -26,8 +26,6 @@
 #include "calprintpluginbase.h"
 #include "calprinthelper.h"
 
-#include <libkdepim/kdateedit.h>
-
 #include <kcalcore/event.h>
 #include <kcalcore/todo.h>
 #include <akonadi/kcal/calendar.h>

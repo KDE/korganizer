@@ -27,14 +27,19 @@
 
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
-#include "kcheckcombobox.h"
 
 #include "incidenceeditor-ng/categoryhierarchyreader.h"
 
+#include "libkdepim/kcheckcombobox.h"
+using namespace KPIM;
+
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/calendar.h>
+using namespace CalendarSupport;
 
 #include <KCalCore/CalFilter>
+using namespace KCalCore;
+
 #include <KLineEdit>
 
 #include <QString>
@@ -44,11 +49,6 @@
 #include <QStandardItem>
 #include <QAbstractItemView>
 #include <QHBoxLayout>
-
-using namespace KCalCore;
-using namespace KPIM;
-
-using namespace CalendarSupport;
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )

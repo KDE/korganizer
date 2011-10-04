@@ -104,7 +104,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="KPIM::KDateEdit" name="mFromDate" >
+         <widget class="KDateComboBox" name="mFromDate" >
           <property name="focusPolicy" >
            <enum>Qt::StrongFocus</enum>
           </property>
@@ -121,7 +121,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="KPIM::KDateEdit" name="mToDate" >
+         <widget class="KDateComboBox" name="mToDate" >
           <property name="focusPolicy" >
            <enum>Qt::StrongFocus</enum>
           </property>
@@ -168,9 +168,9 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KPIM::KDateEdit</class>
+   <class>KDateComboBox</class>
    <extends>QComboBox</extends>
-   <header>kdateedit.h</header>
+   <header>kdatecombobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

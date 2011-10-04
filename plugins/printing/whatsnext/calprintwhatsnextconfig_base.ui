@@ -57,7 +57,7 @@
        </widget>
       </item>
       <item>
-       <widget class="KDateEdit" name="mFromDate" >
+       <widget class="KDateComboBox" name="mFromDate" >
         <property name="focusPolicy" >
          <enum>Qt::StrongFocus</enum>
         </property>
@@ -74,7 +74,7 @@
        </widget>
       </item>
       <item>
-       <widget class="KDateEdit" name="mToDate" >
+       <widget class="KDateComboBox" name="mToDate" >
         <property name="focusPolicy" >
          <enum>Qt::StrongFocus</enum>
         </property>
@@ -119,9 +119,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KDateEdit</class>
+   <class>KDateComboBox</class>
    <extends>QComboBox</extends>
-   <header>kdateedit.h</header>
+   <header>kdatecombobox.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

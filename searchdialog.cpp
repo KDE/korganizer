@@ -28,7 +28,6 @@
 #include "koglobals.h"
 #include "calendarview.h"
 #include "views/listview/kolistview.h"
-#include <libkdepim/kdateedit.h>
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/kcalprefs.h>
@@ -37,8 +36,7 @@
 using namespace KOrg;
 
 SearchDialog::SearchDialog( CalendarView *calendarview )
-  : KDialog( calendarview )
-  , m_calendarview( calendarview )
+  : KDialog( calendarview ), m_calendarview( calendarview )
 {
   setCaption( i18n( "Search Calendar" ) );
   setButtons( User1 | Cancel );

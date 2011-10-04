@@ -27,8 +27,6 @@
 
 #include <calendarsupport/utils.h>
 
-#include <libkdepim/kdateedit.h>
-
 #include <kcalcore/journal.h>
 
 #include <Akonadi/Item>
