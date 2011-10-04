@@ -63,7 +63,7 @@ using namespace KPIM;
 using namespace CalendarSupport;
 
 // Share the model with the sidepanel KOTodoView
-K_GLOBAL_STATIC( KOTodoModel, sModel );
+K_GLOBAL_STATIC( KOTodoModel, sModel )
 
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   : BaseView( parent )
