@@ -496,7 +496,7 @@ void KOViewManager::showAgendaView()
 
       connect( mAgendaView,SIGNAL(zoomViewHorizontally(QDate,int)),
                mMainView->dateNavigator(), SLOT(selectDates(QDate,int)) );
-      mAgendaView->readSettings();
+      mAgendaView->readSettings( KOGlobals::self()->config() );
     }
     if ( showBoth && mAgendaViewTabs->indexOf( mAgendaView ) < 0 ) {
       mAgendaViewTabs->addTab( mAgendaView, i18n( "Merged calendar" ) );
