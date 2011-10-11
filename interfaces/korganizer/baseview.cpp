@@ -42,7 +42,7 @@ class BaseView::Private
   BaseView *const q;
 
   public:
-    explicit Private( BaseView* qq )
+    explicit Private( BaseView *qq )
       : q( qq ),
         mChanges( EventViews::EventView::IncidencesAdded |
                   EventViews::EventView::DatesChanged ),
@@ -65,8 +65,6 @@ class BaseView::Private
     KDateTime actualStartDateTime;
     KDateTime actualEndDateTime;
 };
-
-
 
 BaseView::BaseView( QWidget *parent )
   : QWidget( parent ), mChanger( 0 ), d( new Private( this ) )
@@ -111,9 +109,10 @@ void BaseView::setIncidenceChanger( IncidenceChanger *changer )
 }
 
 void BaseView::flushView()
-{}
+{
+}
 
-BaseView* BaseView::viewAt( const QPoint & )
+BaseView *BaseView::viewAt( const QPoint & )
 {
   return this;
 }
@@ -127,7 +126,8 @@ bool BaseView::hasConfigurationDialog() const
   return false;
 }
 
-void BaseView::setDateRange( const KDateTime& start, const KDateTime& end, const QDate &preferredMonth )
+void BaseView::setDateRange( const KDateTime &start, const KDateTime &end,
+                             const QDate &preferredMonth )
 {
   d->startDateTime = start;
   d->endDateTime = end;
@@ -157,7 +157,7 @@ KDateTime BaseView::actualEndDateTime() const
   return d->actualEndDateTime;
 }
 
-void BaseView::showConfigurationDialog( QWidget* )
+void BaseView::showConfigurationDialog( QWidget * )
 {
 }
 
@@ -166,7 +166,7 @@ QByteArray BaseView::identifier() const
   return d->identifier;
 }
 
-void BaseView::setIdentifier( const QByteArray& identifier )
+void BaseView::setIdentifier( const QByteArray &identifier )
 {
   d->identifier = identifier;
 }
@@ -229,7 +229,8 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime& start, const KDateTime& end,
+QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime &start,
+                                                      const KDateTime &end,
                                                       const QDate &preferredMonth ) const
 {
   Q_UNUSED( preferredMonth );

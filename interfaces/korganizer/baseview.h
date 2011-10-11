@@ -164,10 +164,10 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 
     virtual bool hasConfigurationDialog() const;
 
-    virtual void showConfigurationDialog( QWidget* parent );
+    virtual void showConfigurationDialog( QWidget *parent );
 
     QByteArray identifier() const;
-    virtual void setIdentifier( const QByteArray& identifier );
+    virtual void setIdentifier( const QByteArray &identifier );
 
     /**
      * reads the view configuration. View-specific configuration can be
@@ -188,10 +188,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void saveConfig( KConfigGroup &configGroup );
 
     /**
-     * returns the view at the given widget coordinate. This is usually the view itself,
-     * except for composite views, where a subview will be returned. The default implementation returns @p this .
+     * returns the view at the given widget coordinate. This is usually the view
+     * itself, except for composite views, where a subview will be returned.
+     * The default implementation returns @p this .
      */
-    virtual BaseView* viewAt( const QPoint &p );
+    virtual BaseView *viewAt( const QPoint &p );
 
     /**
       Show incidences for the given date range. The date range actually shown
@@ -201,7 +202,8 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @param start Start of date range.
       @param end   End of date range.
     */
-    virtual void setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth = QDate() );
+    virtual void setDateRange( const KDateTime &start, const KDateTime &end,
+                               const QDate &preferredMonth = QDate() );
 
     KDateTime startDateTime() const;
     KDateTime endDateTime() const;
@@ -337,16 +339,19 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * sense to connect to more than one receiver.
      */
     void newEventSignal();
+
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
     void newEventSignal( const QDate & );
+
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
     void newEventSignal( const QDateTime & );
+
     /**
      * instructs the receiver to create a new event, with the specified
      * beginning end ending times.  Doesn't make sense to connect to more
@@ -387,20 +392,26 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       @deprecated
      */
-    virtual void showDates( const QDate& start, const QDate& end, const QDate &preferredMonth = QDate() ) = 0;
+    virtual void showDates( const QDate &start, const QDate &end,
+                            const QDate &preferredMonth = QDate() ) = 0;
 
     /**
-     * from the requested date range (passed via setDateRange()), calculates the adjusted date range actually displayed by the view, depending
-     * on the view's supported range (e.g., a month view always displays one month)
+     * From the requested date range (passed via setDateRange()), calculates the
+     * adjusted date range actually displayed by the view, depending on the view's
+     * supported range (e.g., a month view always displays one month).
      * The default implementation returns the range unmodified
      */
-    virtual QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end, const QDate &preferredMonth = QDate() ) const;
+    virtual QPair<KDateTime,KDateTime> actualDateRange(
+      const KDateTime &start,
+      const KDateTime &end,
+      const QDate &preferredMonth = QDate() ) const;
 
   protected Q_SLOTS:
     virtual void calendarReset();
 
   protected:
     CalendarSupport::IncidenceChanger *mChanger;
+
   private:
     class Private;
     Private *const d;

@@ -63,9 +63,6 @@ class CalendarViewBase : public QWidget
 
     virtual bool editIncidence( const Akonadi::Item &item, bool isCounter = false ) = 0;
 
-    // TODO_NG: remove me
-    // virtual IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const = 0;
-
   public Q_SLOTS:
     virtual void updateView() = 0;
     virtual void updateCategories() = 0;
