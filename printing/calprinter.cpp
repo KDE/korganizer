@@ -42,7 +42,8 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
-CalPrinter::CalPrinter( QWidget *parent, CalendarSupport::Calendar *calendar, KOrg::CoreHelper *helper, bool uniqItem )
+CalPrinter::CalPrinter( QWidget *parent, CalendarSupport::Calendar *calendar,
+                        KOrg::CoreHelper *helper, bool uniqItem )
   : QObject( parent ), mUniqItem( uniqItem )
 {
   mParent = parent;
@@ -99,7 +100,9 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td,
   for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
     (*it)->setSelectedIncidences( selectedIncidences );
   }
-  QPointer<CalPrintDialog> printDialog = new CalPrintDialog( type, mPrintPlugins, mParent, mUniqItem );
+  QPointer<CalPrintDialog> printDialog =
+    new CalPrintDialog( type, mPrintPlugins, mParent, mUniqItem );
+
   KConfigGroup grp( mConfig, "" ); //orientation setting isn't in a group
   printDialog->setOrientation( CalPrinter::ePrintOrientation( grp.readEntry( "Orientation", 1 ) ) );
   printDialog->setPreview( preview );
@@ -165,7 +168,8 @@ void CalPrinter::updateConfig()
 {
 }
 
-CalPrintDialog::CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List plugins, QWidget *parent, bool uniqItem )
+CalPrintDialog::CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List plugins,
+                                QWidget *parent, bool uniqItem )
   : KDialog( parent )
 {
   setCaption( i18n( "Print" ) );
@@ -221,7 +225,7 @@ CalPrintDialog::CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List pl
     radioButton->setEnabled( p->enabled() );
     // Check the first available button (to ensure one is selected initially) and then
     // the button matching the desired print type -- if such is available!
-    if ( (firstButton || p->sortID() == initialPrintType) && p->enabled() ) {
+    if ( ( firstButton || p->sortID() == initialPrintType ) && p->enabled() ) {
       firstButton = false;
       radioButton->setChecked( true );
       setPrintType( id );
@@ -230,8 +234,9 @@ CalPrintDialog::CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List pl
     typeLayout->addWidget( radioButton );
     id++;
   }
-  if ( uniqItem )
+  if ( uniqItem ) {
     typeBox->hide();
+  }
   typeLayout->insertStretch( -1, 100 );
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
   setMinimumSize( minimumSizeHint() );

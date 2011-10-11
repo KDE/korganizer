@@ -132,7 +132,7 @@ class TimePrintStringsVisitor : public Visitor
   public:
     TimePrintStringsVisitor() {}
 
-  bool act( IncidenceBase::Ptr incidence )
+    bool act( IncidenceBase::Ptr incidence )
     {
       return incidence->accept( *this, incidence );
     }
@@ -497,7 +497,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         QString statusString;
         QString datesString;
         int count = 0;
-        foreach( const Akonadi::Item &item, relations ) {
+        foreach ( const Akonadi::Item &item, relations ) {
           Todo::Ptr todo = CalendarSupport::todo( item );
           ++count;
           if ( !todo ) { // defensive, skip any zero pointers
@@ -528,15 +528,18 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
             }
           }
           if ( todo->dateTime( Incidence::RoleEnd ).isValid() ) {
-            subitemString += i18nc(
-              "subitem due date", "Due Date: %1\n",
-              KGlobal::locale()->formatDate( todo->dateTime( Incidence::RoleEnd ).toTimeSpec( spec ).date(),
-                                             KLocale::ShortDate ) );
+            subitemString +=
+              i18nc( "subitem due date", "Due Date: %1\n",
+                     KGlobal::locale()->formatDate(
+                       todo->dateTime( Incidence::RoleEnd ).toTimeSpec( spec ).date(),
+                       KLocale::ShortDate ) );
+
             if ( !todo->allDay() ) {
               subitemString += i18nc(
                 "subitem due time", "Due Time: %1\n",
-                KGlobal::locale()->formatTime( todo->dateTime( Incidence::RoleEnd ).toTimeSpec( spec ).time(),
-                                               false, false ) );
+                KGlobal::locale()->formatTime(
+                  todo->dateTime( Incidence::RoleEnd ).toTimeSpec( spec ).time(),
+                  false, false ) );
             }
           }
           subitemString += i18nc( "subitem counter", "%1: ", count );
@@ -609,7 +612,9 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                 "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
                 "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
                 "%1 (%2): %3",
-                (*ait)->fullName(), Stringify::attendeeRole( (*ait)->role() ), Stringify::attendeeStatus( ( *ait )->status() ) );
+                (*ait)->fullName(),
+                Stringify::attendeeRole( (*ait)->role() ),
+                Stringify::attendeeStatus( ( *ait )->status() ) );
       }
       drawBoxWithCaption( p, attendeesBox, attendeeCaption, attendeeString,
                           /*sameLine=*/false, /*expand=*/false,

@@ -59,13 +59,19 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
       eOrientPortrait,
       eOrientLandscape
     };
+
   public:
     /**
       \param par parent widget for dialogs
       \param cal calendar to be printed
       \param helper is a pointer to the KOrg::CoreHelper object
+      \param uniqItem if true, indicates the calendar print dialog will only
+      provide the option to print an single incidence; else, all possible types
+      of print types will be shown
     */
-    CalPrinter( QWidget *par, CalendarSupport::Calendar *cal, KOrg::CoreHelper *helper, bool uniqItem = false );
+    CalPrinter( QWidget *par, CalendarSupport::Calendar *cal,
+                KOrg::CoreHelper *helper, bool uniqItem = false );
+
     virtual ~CalPrinter();
 
     void init( CalendarSupport::Calendar *calendar );
@@ -87,7 +93,8 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
 
   public:
     void print( int type, const QDate &fd, const QDate &td,
-                Incidence::List selectedIncidences = Incidence::List(), bool preview = false );
+                Incidence::List selectedIncidences = Incidence::List(),
+                bool preview = false );
 
     CalendarSupport::Calendar *calendar() const;
     KConfig *config() const;
@@ -107,11 +114,17 @@ class CalPrintDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List plugins, QWidget *parent = 0, bool mUniqItem = false );
+    explicit CalPrintDialog( int initialPrintType, KOrg::PrintPlugin::List plugins,
+                             QWidget *parent = 0, bool mUniqItem = false );
+
     virtual ~CalPrintDialog();
+
     KOrg::PrintPlugin *selectedPlugin();
     void setOrientation( CalPrinter::ePrintOrientation orientation );
-    CalPrinter::ePrintOrientation orientation() { return mOrientation; }
+    CalPrinter::ePrintOrientation orientation()
+    {
+      return mOrientation;
+    }
 
   public Q_SLOTS:
     void setPrintType( int );
