@@ -136,7 +136,7 @@ void PublishDialog::removeItem()
 
 
   int row = mUI.mListWidget->row( item );
-  mUI.mListWidget->takeItem( row );
+  delete mUI.mListWidget->takeItem( row );
 
   if ( !mUI.mListWidget->count() ) {
     mUI.mNameLineEdit->setText( QString() );

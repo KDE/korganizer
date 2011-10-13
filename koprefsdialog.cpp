@@ -1157,7 +1157,7 @@ void KOPrefsDialogGroupScheduling::removeItem()
   if ( !item ) {
     return;
   }
-  mAMails->takeItem( mAMails->row( item ) );
+  delete mAMails->takeItem( mAMails->row( item ) );
   item = mAMails->currentItem();
   if ( !item ) {
     aEmailsEdit->setText( "" );
