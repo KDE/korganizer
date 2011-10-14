@@ -134,7 +134,6 @@ void PublishDialog::removeItem()
   QListWidgetItem *item;
   item = mUI.mListWidget->selectedItems().first();
 
-
   int row = mUI.mListWidget->row( item );
   delete mUI.mListWidget->takeItem( row );
 
@@ -156,8 +155,9 @@ void PublishDialog::removeItem()
 void PublishDialog::openAddressbook()
 {
   Akonadi::EmailAddressSelectionDialog dlg( this );
-  if ( !dlg.exec() )
+  if ( !dlg.exec() ) {
     return;
+  }
 
   const Akonadi::EmailAddressSelection::List selections = dlg.selectedAddresses();
   if ( !selections.isEmpty() ) {

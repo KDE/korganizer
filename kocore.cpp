@@ -112,7 +112,8 @@ CalendarSupport::Plugin *KOCore::loadPlugin( KService::Ptr service )
     return 0;
   }
 
-  CalendarSupport::PluginFactory *pluginFactory = static_cast<CalendarSupport::PluginFactory *>( factory );
+  CalendarSupport::PluginFactory *pluginFactory =
+    static_cast<CalendarSupport::PluginFactory *>( factory );
 
   if ( !pluginFactory ) {
     kDebug() << "Cast failed";
@@ -233,8 +234,10 @@ void KOCore::removeXMLGUIClient( QWidget *wdg )
 
 KXMLGUIClient *KOCore::xmlguiClient( QWidget *wdg ) const
 {
-  if ( !wdg )
+  if ( !wdg ) {
     return 0;
+  }
+
   QWidget *topLevel = wdg->topLevelWidget();
   QMap<QWidget*, KXMLGUIClient*>::ConstIterator it = mXMLGUIClients.find( topLevel );
   if ( it != mXMLGUIClients.constEnd() ) {

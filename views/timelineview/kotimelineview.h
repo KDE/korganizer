@@ -38,11 +38,9 @@
 class QStandardItem;
 class QTreeWidget;
 
-
 namespace CalendarSupport {
   class Calendar;
 }
-
 
 /**
   This class provides a view ....

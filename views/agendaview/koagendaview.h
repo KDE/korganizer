@@ -86,12 +86,14 @@ class KOAgendaView : public KOEventView
     void setChanges( EventViews::EventView::Changes changes );
 
     /** reimpl */
-    void setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth = QDate() );
+    void setDateRange( const KDateTime &start, const KDateTime &end,
+                       const QDate &preferredMonth = QDate() );
 
   public slots:
     virtual void updateView();
     virtual void updateConfig();
-    virtual void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
+    virtual void showDates( const QDate &start, const QDate &end,
+                            const QDate &preferredMonth = QDate() );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplayAdded( const Akonadi::Item &incidence );
@@ -117,7 +119,8 @@ class KOAgendaView : public KOEventView
     void zoomInVertically( );
     void zoomOutVertically( );
 
-    void zoomView( const int delta, const QPoint &pos, const Qt::Orientation orient=Qt::Horizontal );
+    void zoomView( const int delta, const QPoint &pos,
+                   const Qt::Orientation orient = Qt::Horizontal );
 
   signals:
     void zoomViewHorizontally( const QDate &, int count );

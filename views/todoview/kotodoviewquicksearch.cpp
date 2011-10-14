@@ -82,7 +82,9 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
     const int currentPreferedWidth = mCategoryCombo->lineEdit()->sizeHint().width();
 
     // Calculate a nice size for "Select Categories"
-    const int newPreferedWidth = currentPreferedWidth - fm.width( QLatin1Char('x') )*17 + fm.width( mCategoryCombo->defaultText() );
+    const int newPreferedWidth = currentPreferedWidth -
+                                 fm.width( QLatin1Char( 'x' ) ) * 17 +
+                                 fm.width( mCategoryCombo->defaultText() );
 
     const int pixelsToAdd = newPreferedWidth - mCategoryCombo->lineEdit()->width();
     mCategoryCombo->setMinimumWidth( mCategoryCombo->width() + pixelsToAdd );
@@ -150,8 +152,8 @@ void KOTodoViewQuickSearch::fillCategories()
 
 void KOTodoViewQuickSearch::emitSearchCategoryChanged()
 {
-  /* The display role doesn't work because it represents subcategories as " subcategory", and we want
-   * "ParentCollection:subCategory" */
+  // The display role doesn't work because it represents subcategories
+  // as " subcategory", and we want "ParentCollection:subCategory"
   emit searchCategoryChanged( mCategoryCombo->checkedItems( Qt::UserRole ) );
 }
 

@@ -119,9 +119,10 @@ FilterEdit::~FilterEdit()
 void FilterEdit::updateFilterList()
 {
   mRulesList->clear();
-  qDebug()<<"  FilterEdit::updateFilterList() :"<<mFilters;
-  if ( mFilters )
-    qDebug()<<" mFilters->empty() :"<<mFilters->empty();
+  qDebug() << "  FilterEdit::updateFilterList() :" << mFilters;
+  if ( mFilters ) {
+    qDebug() << " mFilters->empty() :" << mFilters->empty();
+  }
   if ( !mFilters || mFilters->empty() ) {
     mDetailsFrame->setEnabled( false );
     emit( dataConsistent( false ) );

@@ -56,7 +56,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     bool isWorkDay( const QDate &qd ) const;
 
-
     /**
        Returns a list containing work days between @p start and @end.
     */

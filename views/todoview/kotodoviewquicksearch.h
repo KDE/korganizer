@@ -45,7 +45,6 @@ class QStringList;
 class KOTodoViewQuickSearch : public QWidget
 {
   Q_OBJECT
-
   public:
     KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent );
     virtual ~KOTodoViewQuickSearch() {}
@@ -55,7 +54,6 @@ class KOTodoViewQuickSearch : public QWidget
 
   Q_SIGNALS:
     void searchTextChanged( const QString & );
-
 
     /**
      * The string list contains the new categories which are set on the filter.

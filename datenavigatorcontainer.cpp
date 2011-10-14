@@ -183,13 +183,14 @@ void DateNavigatorContainer::selectDates( const DateList &dateList, const QDate 
 
     // If the datelist crosses months we won't know which month to show
     // so we read what's in preferredMonth
-    const bool changingMonth = ( preferredMonth.isValid()  &&
-                                 calSys->month( mNavigatorView->month() ) != calSys->month( preferredMonth ) );
+    const bool changingMonth =
+      ( preferredMonth.isValid()  &&
+        calSys->month( mNavigatorView->month() ) != calSys->month( preferredMonth ) );
 
-    if ( start < navfirst  // <- start should always be visible
+    if ( start < navfirst || // <- start should always be visible
          // end is not visible and we have a spare month at the beginning:
-         || ( end > navlast && start >= navsecond )
-         || changingMonth ) {
+         ( end > navlast && start >= navsecond ) ||
+         changingMonth ) {
 
       if ( preferredMonth.isValid() ) {
         setBaseDates( preferredMonth );
@@ -339,7 +340,7 @@ void DateNavigatorContainer::goNextMonth()
 
   emit nextMonthClicked( mNavigatorView->month(),
                          p.first,
-                         p.second);
+                         p.second );
 }
 
 void DateNavigatorContainer::goPrevMonth()
@@ -386,9 +387,10 @@ QDate DateNavigatorContainer::monthOfNavigator( int navigatorIndex ) const
 void DateNavigatorContainer::handleDatesSelectedSignal( const KCalCore::DateList &dateList )
 {
   Q_ASSERT( sender() );
-  // When we have more than one KDateNavigator, both can have the same selection ( because they can share weeks )
-  // The month that we send in the datesSelected() signal should be the one belonging to the KDatenavigator with
-  // the earliest month
+  // When we have more than one KDateNavigator, both can have the
+  // same selection ( because they can share weeks )
+  // The month that we send in the datesSelected() signal should be
+  // the one belonging to the KDatenavigator with the earliest month
   const QDate firstDate = dateList.first();
   KDateNavigator *navigator = firstNavigatorForDate( firstDate );
   navigator = navigator ? navigator : qobject_cast<KDateNavigator*>( sender() );
@@ -405,7 +407,7 @@ void DateNavigatorContainer::handleWeekClickedSignal( const QDate &week, const Q
   emit weekClicked( week, navigator->month() );
 }
 
-KDateNavigator* DateNavigatorContainer::firstNavigatorForDate( const QDate &date ) const
+KDateNavigator *DateNavigatorContainer::firstNavigatorForDate( const QDate &date ) const
 {
   KDateNavigator *navigator = 0;
   if ( date.isValid() ) {

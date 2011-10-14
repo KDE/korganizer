@@ -40,7 +40,6 @@
 
 #include <QObject>
 
-
 namespace KOrg {
   class HTMLExportSettings;
 }
@@ -95,14 +94,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void createCalendarAkonadi();
 
-
   public slots:
 
     /*
       Called when a collection's properties or attributes change.
       We will update the view if collection rights changed.
     */
-    void slotCollectionChanged(const Akonadi::Collection &, const QSet<QByteArray> &);
+    void slotCollectionChanged( const Akonadi::Collection &, const QSet<QByteArray> & );
 
     /** Add a new resource
         @param mUrl The url for the new resource. Either a local or a remote
@@ -337,7 +335,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void toggleEventViewer();
     void toggleResourceView();
 
-
     /** connected to CalendarView's signal which comes from the ArchiveDialog */
     void slotAutoArchivingSettingsModified();
 
@@ -352,7 +349,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void slotImportDialogFinished( ImportDialog * );
 
-    void agentCreated( KJob* );
+    void agentCreated( KJob * );
 
   protected:
     /** Get URL for saving. Opens FileDialog. */
@@ -366,7 +363,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     QWidget *dialogParent();
 
   private slots:
-    void handleExportJobResult( KJob* );
+    void handleExportJobResult( KJob * );
     void dumpText( const QString & );  // only for debugging purposes
 
     void slotResourcesChanged(bool);

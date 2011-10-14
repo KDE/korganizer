@@ -100,7 +100,8 @@ void KOWhatsNextView::updateView()
   KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
 
   events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
-  events = calendar()->sortEvents( events, CalendarSupport::EventSortStartDate, CalendarSupport::SortDirectionAscending );
+  events = calendar()->sortEvents( events, CalendarSupport::EventSortStartDate,
+                                   CalendarSupport::SortDirectionAscending );
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
@@ -283,7 +284,8 @@ void KOWhatsNextView::appendEvent( const Akonadi::Item &aitem, const QDateTime &
       mText += i18nc(
         "date, from - to", "%1, %2 - %3",
         KGlobal::locale()->formatDate(
-          starttime.toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).date(), KLocale::ShortDate ),
+          starttime.toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).date(),
+          KLocale::ShortDate ),
         KGlobal::locale()->formatTime(
           starttime.toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).time() ),
         KGlobal::locale()->formatTime(

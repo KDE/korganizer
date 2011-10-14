@@ -107,26 +107,46 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     class CalendarViewVisitor : public Visitor
     {
       public:
-        CalendarViewVisitor() : mView( 0 ) {}
+        CalendarViewVisitor() : mView( 0 )
+        {
+        }
+
         bool act( IncidenceBase::Ptr &incidence, CalendarView *view )
         {
           mView = view;
           return incidence->accept( *this, incidence );
         }
+
       protected:
         CalendarView *mView;
     };
 
     class CanDeleteIncidenceVisitor : public CalendarViewVisitor
     {
-        const Akonadi::Item item;
+      const Akonadi::Item item;
+
       public:
-        explicit CanDeleteIncidenceVisitor( const Akonadi::Item& i ) : item( i ) {}
+        explicit CanDeleteIncidenceVisitor( const Akonadi::Item &i ) : item( i )
+        {
+        }
+
       protected:
-        bool visit( Event::Ptr  ) { return mView->deleteEvent( item ); }
-        bool visit( Todo::Ptr  ) { return mView->deleteTodo( item ); }
-        bool visit( Journal::Ptr ) { return mView->deleteJournal( item ); }
-        bool visit( FreeBusy::Ptr  ) { return false; }
+        bool visit( Event::Ptr )
+        {
+          return mView->deleteEvent( item );
+        }
+        bool visit( Todo::Ptr )
+        {
+          return mView->deleteTodo( item );
+        }
+        bool visit( Journal::Ptr )
+        {
+          return mView->deleteJournal( item );
+        }
+        bool visit( FreeBusy::Ptr )
+        {
+          return false;
+        }
 
     };
 
@@ -146,7 +166,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
     virtual CalendarSupport::IncidenceChanger *incidenceChanger() const { return mChanger; }
 
-    /*
+    /**
      * Informs the date navigator which incidence types should be used
      * to embolden days, this function is mainly called when the view changes
      * or when the config changes.
@@ -161,22 +181,31 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void showView( KOrg::BaseView * );
 
     /**
-      Add calendar view extension widget. CalendarView takes ownership of the
-      objects created by the factory.
-    */
+     * Adds a calendar view extension widget. CalendarView takes ownership of the
+     * objects created by the factory.
+     */
     void addExtension( CalendarViewExtension::Factory * );
 
-    /** currentSelection() returns the item selected in the current view (or an invalid one if none selected) */
-    /* reimp */ Akonadi::Item currentSelection();
+    /**
+     * Returns the item selected in the current view (or an invalid one if none selected)
+     * @reimp
+     */
+    Akonadi::Item currentSelection();
 
-    /** Return a pointer to the incidence selected in the current view. If there
-        is no selection, return the selected todo from the todo list on the left */
+    /**
+     * Returns a pointer to the incidence selected in the current view. If there
+     * is no selection, return the selected todo from the todo list on the left.
+     */
     Akonadi::Item selectedIncidence();
 
-    /** Returns true if there's a filter applied */
+    /**
+     * Returns true if there's a filter applied.
+     */
     bool isFiltered() const;
 
-    /** Returns the name of the current filter */
+    /**
+     * Returns the name of the current filter.
+     */
     QString currentFilterName() const;
 
   signals:
@@ -320,7 +349,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** Create a read-only viewer dialog for the supplied incidence.
         It calls the correct showXXX method */
-    void showIncidence( const Akonadi::Item& item );
+    void showIncidence( const Akonadi::Item &item );
     bool showIncidence( Akonadi::Item::Id id );
     void showIncidence();
 
@@ -458,14 +487,17 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
 
     void incidenceAddFinished( const Akonadi::Item &incidence, bool success );
-    void incidenceChangeFinished( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent,
-                                  CalendarSupport::IncidenceChanger::WhatChanged modification, bool success );
+    void incidenceChangeFinished( const Akonadi::Item &oldEvent,
+                                  const Akonadi::Item &newEvent,
+                                  CalendarSupport::IncidenceChanger::WhatChanged modification,
+                                  bool success );
     void incidenceToBeDeleted( const Akonadi::Item &incidence );
     void incidenceDeleteFinished( const Akonadi::Item &incidence, bool success );
     void startMultiModify( const QString &text );
     void endMultiModify();
 
-    void updateView( const QDate &start, const QDate &end, const QDate &preferredMonth, const bool updateTodos=true );
+    void updateView( const QDate &start, const QDate &end,
+                     const QDate &preferredMonth, const bool updateTodos=true );
     void updateView();
 
     void updateUnmanagedViews();
@@ -607,38 +639,38 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void resourcesChanged();
 
     /**
-      The user clicked on a week number in the date navigator
-
-      Lets select a week or a work week depending on the user's
-      config option.
-
-      @param prefferedMonth Holds the month that should be selected when the week crosses months.
-                            It's a QDate instead of uint so it can be easily feed to KCalendarSystem's
-                            functions.
+     * The user clicked on a week number in the date navigator
+     *
+     * Select a week or a work week depending on the user's config option.
+     *
+     * @param preferredMonth Holds the month that should be selected when
+     * the week crosses months.  It's a QDate instead of uint so it can be
+     * easily fed to KCalendarSystem's functions.
     */
     void selectWeek( const QDate &week, const QDate &preferredMonth );
 
   protected slots:
-    /** Select a view or adapt the current view to display the specified dates.
-        preferredMonth is useful when the datelist crosses months, if valid,
-        any month-like component should honour this
-    */
+    /**
+     * Select a view or adapt the current view to display the specified dates.
+     * @p preferredMonth is useful when the datelist crosses months, if valid,
+     * any month-like component should honour this
+     */
     void showDates( const KCalCore::DateList &, const QDate &preferredMonth = QDate() );
 
   public:
     int msgCalModified();
 
     /**
-      Adapts navigation units according to the current view's navigation step size.
-    */
+     * Adapts navigation units according to the current view's navigation step size.
+     */
     void adaptNavigationUnits();
 
     /**
-      Returns the date of the selected incidence.
-
-      If the selected incidence is recurring, it will return
-      the date of the selected occurrence
-    **/
+     * Returns the date of the selected incidence.
+     *
+     * If the selected incidence is recurring, it will return the date
+     * of the selected occurrence.
+     */
     QDate activeIncidenceDate();
 
     /**
@@ -700,19 +732,20 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void getIncidenceHierarchy( const Akonadi::Item &item, Akonadi::Item::List &items );
 
     /**
-       Returns the default collection.
-       The view's collection takes precedence, only then the config one is used.
-       If mimeType is set, the collection to return will have to support that mime type.
-       IF no valid collection is found, an invalid one is returned.
-    */
-    Akonadi::Collection defaultCollection( const QLatin1String &mimeType = QLatin1String( "" ) ) const;
-
+     * Returns the default collection.
+     * The view's collection takes precedence, only then the config one is used.
+     * If mimeType is set, the collection to return will have to support that mime type.
+     * If no valid collection is found, an invalid one is returned.
+     */
+    Akonadi::Collection defaultCollection(
+      const QLatin1String &mimeType = QLatin1String( "" ) ) const;
 
     /**
-     * Creates a new incidence editor and chooses a decent default for the collection in the collection combo.
-     * */
-    IncidenceEditorNG::IncidenceDialog* createIncidenceEditor( const Akonadi::Item &item,
-                                                               const Akonadi::Collection &collection = Akonadi::Collection() );
+     * Creates a new incidence editor and chooses a decent default for the collection
+     * in the collection combo.
+     */
+    IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(
+      const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection() );
 
     KOrg::History *mHistory;
 

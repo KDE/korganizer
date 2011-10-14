@@ -369,10 +369,11 @@ void KODayMatrix::updateEvents()
 
     const KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );
 
-    // timed incidences occur in [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
+    // timed incidences occur in
+    //   [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
     // so we subtract 1 second in the timed case
-    const int secsToAdd     = event->allDay() ? 0 : -1;
-    const KDateTime dtEnd   = event->dtEnd().toTimeSpec( mCalendar->timeSpec() ).addSecs( secsToAdd );
+    const int secsToAdd = event->allDay() ? 0 : -1;
+    const KDateTime dtEnd = event->dtEnd().toTimeSpec( mCalendar->timeSpec() ).addSecs( secsToAdd );
 
     if ( !( recurType == Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur ) &&
          !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) ) {
@@ -619,7 +620,7 @@ void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 {
   e->acceptProposedAction();
   const QMimeData *md = e->mimeData();
-  if ( !CalendarSupport::canDecode( md )) {
+  if ( !CalendarSupport::canDecode( md ) ) {
     e->ignore();
     return;
   }
@@ -762,7 +763,9 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     if ( row < 6 && row >= 0 ) {
       if ( row == mSelEnd / 7 ) {
         // Single row selection
-        p.fillRect( isRTL ? ( 7 - ( mSelEnd - mSelStart + 1 ) - column ) * dayWidth : column * dayWidth,
+        p.fillRect( isRTL ?
+                      ( 7 - ( mSelEnd - mSelStart + 1 ) - column ) * dayWidth :
+                       column * dayWidth,
                     row * dayHeight,
                     ( mSelEnd - mSelStart + 1 ) * dayWidth, dayHeight, selectionColor );
       } else {
@@ -781,7 +784,10 @@ void KODayMatrix::paintEvent( QPaintEvent * )
         // draw last block from left to mSelEnd
         if ( mSelEnd / 7 < 6 ) {
           selectionWidth = mSelEnd - 7 * ( mSelEnd / 7 ) + 1;
-          p.fillRect( isRTL ? ( 7 - selectionWidth ) * dayWidth : 0, ( row + selectionHeight ) * dayHeight,
+          p.fillRect( isRTL ?
+                        ( 7 - selectionWidth ) * dayWidth :
+                        0,
+                      ( row + selectionHeight ) * dayHeight,
                       selectionWidth * dayWidth, dayHeight, selectionColor );
         }
       }
@@ -911,6 +917,5 @@ QPair<QDate,QDate> KODayMatrix::matrixLimits( const QDate &month )
 
   return qMakePair( d, d.addDays( NUMDAYS-1 ) );
 }
-
 
 #include "kodaymatrix.moc"

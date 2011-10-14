@@ -47,7 +47,8 @@ static QString generateColumnLabel( int c )
   return i18n( "Agenda %1", c + 1 );
 }
 
-class MultiAgendaView::Private {
+class MultiAgendaView::Private
+{
   public:
     Private( MultiAgendaView *qq ) : q( qq )
     {
@@ -61,10 +62,10 @@ class MultiAgendaView::Private {
 
     EventViews::MultiAgendaView *mMultiAgendaView;
     KOEventPopupMenu *mPopup;
+
   private:
     MultiAgendaView * const q;
 };
-
 
 MultiAgendaView::MultiAgendaView( QWidget *parent )
   : KOEventView( parent ), d( new Private( this ) )
@@ -231,11 +232,13 @@ void MultiAgendaView::setChanges( EventViews::EventView::Changes changes )
   // the BaseView::setDateRange(...) is called causing DatesChanged
   // flag to be on, when no dates changed.
   EventViews::EventView::Changes c;
-  if ( changes.testFlag( EventViews::EventView::ConfigChanged ) )
+  if ( changes.testFlag( EventViews::EventView::ConfigChanged ) ) {
     c = EventViews::EventView::ConfigChanged;
+  }
 
-  if ( changes.testFlag( EventViews::EventView::FilterChanged ) )
+  if ( changes.testFlag( EventViews::EventView::FilterChanged ) ) {
     c |= EventViews::EventView::FilterChanged;
+  }
 
   d->mMultiAgendaView->setChanges( c | d->mMultiAgendaView->changes() );
 }
@@ -277,7 +280,7 @@ KCheckableProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
   return d->mMultiAgendaView->takeCustomCollectionSelectionProxyModel();
 }
 
-void MultiAgendaView::setCustomCollectionSelectionProxyModel( KCheckableProxyModel* model )
+void MultiAgendaView::setCustomCollectionSelectionProxyModel( KCheckableProxyModel *model )
 {
   d->mMultiAgendaView->setCustomCollectionSelectionProxyModel( model );
 }
@@ -366,7 +369,8 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on )
   }
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView( KCheckableProxyModel *model )
+AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
+  KCheckableProxyModel *model )
 {
   AkonadiCollectionView *cview = new AkonadiCollectionView( 0, false, q );
   cview->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );

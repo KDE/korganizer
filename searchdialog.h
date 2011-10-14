@@ -57,9 +57,9 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
     void searchTextChanged( const QString &_text );
 
   signals:
-    void showIncidenceSignal( const Akonadi::Item& );
-    void editIncidenceSignal( const Akonadi::Item& );
-    void deleteIncidenceSignal( const Akonadi::Item& );
+    void showIncidenceSignal( const Akonadi::Item & );
+    void editIncidenceSignal( const Akonadi::Item & );
+    void deleteIncidenceSignal( const Akonadi::Item & );
 
   private:
     void search( const QRegExp & );

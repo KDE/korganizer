@@ -157,7 +157,9 @@ class TimeSpentWidget : public QWidget
 
         // bar
         const QColor color = CalendarSupport::KCalPrefs::instance()->categoryColor( i.key() );
-        const int length =  static_cast<int>( ( (double) i.value() ) / total * ( width() - 3 * margin ) );
+        const int length =
+          static_cast<int>( ( (double) i.value() ) / total * ( width() - 3 * margin ) );
+
         QPainterPath path( QPoint( margin, y ) );
         path.lineTo( margin + length, y );
         if ( length < margin ) {

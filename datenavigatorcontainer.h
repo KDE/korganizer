@@ -92,10 +92,10 @@ class DateNavigatorContainer: public QFrame
     void newJournalSignal( const QDate & );
 
     /**
-     * @param preferredMonth Holds the month that should be selected when the week crosses months.
-                             It's a QDate instead of uint so it can be easily feed to KCalendarSystem's
-                             functions.
-     * */
+     * @param preferredMonth Holds the month that should be selected when the
+     * week crosses months. It's a QDate instead of uint so it can be easily
+     * fed to KCalendarSystem's functions.
+     */
     void weekClicked( const QDate &week, const QDate &preferredMonth );
 
     void goPrevious();
@@ -128,11 +128,14 @@ class DateNavigatorContainer: public QFrame
     void resizeEvent( QResizeEvent * );
     void setBaseDates( const QDate &start );
     void connectNavigatorView( KDateNavigator *v );
+
   protected slots:
-    /** Resizes all the child elements after the size of the widget
-        changed. This slot is called by a QTimer::singleShot from
-        resizeEvent. This makes the UI seem more responsive, since
-        the other parts of the splitter are resized earlier now */
+    /**
+     * Resizes all the child elements after the size of the widget changed.
+     * This slot is called by a QTimer::singleShot from resizeEvent.
+     * This makes the UI seem more responsive, since the other parts
+     * of the splitter are resized earlier now.
+     */
     void resizeAllContents();
 
   private slots:
@@ -149,10 +152,11 @@ class DateNavigatorContainer: public QFrame
     */
     QPair<QDate,QDate> dateLimits( int monthOffset = 0 ) const;
 
-    /* Returns the first KDateNavigator that displays date, or 0 if
+    /**
+     * Returns the first KDateNavigator that displays date, or 0 if
      * no KDateNavigator displays it.
      */
-    KDateNavigator* firstNavigatorForDate( const QDate &date ) const;
+    KDateNavigator *firstNavigatorForDate( const QDate &date ) const;
 
     KDateNavigator *mNavigatorView;
 

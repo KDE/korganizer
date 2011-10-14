@@ -111,7 +111,7 @@ void SearchDialog::doSearch()
       i18n( "No items were found that match your search pattern." ),
       "NoSearchResults" );
   } else {
-    mNumItems->setText( i18np("%1 item","%1 items", mMatchedEvents.count() ) );
+    mNumItems->setText( i18np( "%1 item","%1 items", mMatchedEvents.count() ) );
   }
 }
 
@@ -137,7 +137,8 @@ void SearchDialog::search( const QRegExp &re )
   Akonadi::Item::List events;
   KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
   if ( mEventsCheck->isChecked() ) {
-    events = m_calendarview->calendar()->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
+    events =
+      m_calendarview->calendar()->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
   }
   Akonadi::Item::List todos;
   if ( mTodosCheck->isChecked() ) {
@@ -179,7 +180,8 @@ void SearchDialog::search( const QRegExp &re )
   }
 
   mMatchedEvents.clear();
-  Q_FOREACH( const Akonadi::Item &item, CalendarSupport::Calendar::mergeIncidenceList(events, todos, journals) ) {
+  Q_FOREACH ( const Akonadi::Item &item,
+              CalendarSupport::Calendar::mergeIncidenceList( events, todos, journals ) ) {
     const Incidence::Ptr ev = CalendarSupport::incidence( item );
     Q_ASSERT( ev );
     if ( mSummaryCheck->isChecked() ) {

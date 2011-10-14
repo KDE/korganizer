@@ -83,7 +83,6 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   connect( d->mAgendaView, SIGNAL(shiftedEvent(QDate,QDate)),
            SIGNAL(shiftedEvent(QDate,QDate)) );
 
-
   connect( d->mAgendaView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
 
@@ -333,11 +332,13 @@ void KOAgendaView::setChanges( EventViews::EventView::Changes changes )
   // the BaseView::setDateRange(...) is called causing DatesChanged
   // flag to be on, when no dates changed.
   EventViews::EventView::Changes c;
-  if ( changes.testFlag( EventViews::EventView::ConfigChanged ) )
+  if ( changes.testFlag( EventViews::EventView::ConfigChanged ) ) {
     c = EventViews::EventView::ConfigChanged;
+  }
 
-  if ( changes.testFlag( EventViews::EventView::FilterChanged ) )
+  if ( changes.testFlag( EventViews::EventView::FilterChanged ) ) {
     c |= EventViews::EventView::FilterChanged;
+  }
 
   d->mAgendaView->setChanges( c | d->mAgendaView->changes() );
 }

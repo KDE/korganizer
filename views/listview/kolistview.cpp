@@ -57,7 +57,6 @@ KOListView::KOListView( CalendarSupport::Calendar *calendar,
   connect( mListView, SIGNAL(shiftedEvent(QDate,QDate)),
            SIGNAL(shiftedEvent(QDate,QDate)) );
 
-
   connect( mListView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
 
@@ -244,6 +243,5 @@ void KOListView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer
 {
   mListView->setIncidenceChanger( changer );
 }
-
 
 #include "kolistview.moc"

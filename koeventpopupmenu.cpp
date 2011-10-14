@@ -53,9 +53,11 @@ KOEventPopupMenu::KOEventPopupMenu( CalendarSupport::Calendar *calendar, QWidget
   mEditOnlyItems.append( addSeparator() );
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT(print()) );
-  QAction *preview = addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
-             this, SLOT(printPreview()) );
-  preview->setEnabled( !KMimeTypeTrader::self()->query("application/pdf", "KParts/ReadOnlyPart").isEmpty() );
+  QAction *preview = addAction( KOGlobals::self()->smallIcon( "document-print-preview" ),
+                                i18n( "Print Previe&w..." ),
+                                this, SLOT(printPreview()) );
+  preview->setEnabled( !KMimeTypeTrader::self()->query( "application/pdf",
+                                                        "KParts/ReadOnlyPart" ).isEmpty() );
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-cut" ),
@@ -96,7 +98,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   mCurrentIncidence = item;
   mCurrentDate = qd;
 
-  if ( !CalendarSupport::hasIncidence( mCurrentIncidence ) /*&& qd.isValid()*/ ) {
+  if ( !CalendarSupport::hasIncidence( mCurrentIncidence )/*&& qd.isValid()*/ ) {
     kDebug() << "No event selected";
     return;
   }
@@ -150,7 +152,6 @@ void KOEventPopupMenu::popupEdit()
     emit editIncidenceSignal( mCurrentIncidence );
   }
 }
-
 
 void KOEventPopupMenu::print()
 {

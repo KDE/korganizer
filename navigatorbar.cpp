@@ -132,7 +132,8 @@ void NavigatorBar::selectDates( const KCalCore::DateList &dateList )
 
     // set the label text at the top of the navigator
     mMonth->setText( i18nc( "monthname", "%1", calSys->monthName( mDate ) ) );
-    mYear->setText( i18nc( "4 digit year", "%1", calSys->formatDate( mDate, KLocale::Year, KLocale::LongNumber ) ) );
+    mYear->setText( i18nc( "4 digit year", "%1",
+                           calSys->formatDate( mDate, KLocale::Year, KLocale::LongNumber ) ) );
   }
 }
 

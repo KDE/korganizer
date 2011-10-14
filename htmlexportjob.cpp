@@ -58,7 +58,8 @@ static QString cleanChars( const QString &txt );
 class KOrg::HtmlExportJob::Private
 {
   public:
-    Private( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+    Private( CalendarSupport::Calendar *calendar,
+             KOrg::HTMLExportSettings *settings, QWidget *parent )
       : mCalendar( calendar ),
         mSettings( settings ),
         mParentWidget( parent ),
@@ -74,7 +75,8 @@ class KOrg::HtmlExportJob::Private
 };
 //@endcond
 
-HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar, KOrg::HTMLExportSettings *settings, QWidget *parent )
+HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar,
+                              KOrg::HTMLExportSettings *settings, QWidget *parent )
   : KJob( parent ), d( new Private( calendar, settings, parent ) )
 {
 }
@@ -134,11 +136,14 @@ void HtmlExportJob::receivedOrganizerInfo( KJob *job )
   if ( !job->error() ) {
     Akonadi::ContactSearchJob *searchJob = qobject_cast<Akonadi::ContactSearchJob*>( job );
     const KABC::Addressee::List contacts = searchJob->contacts();
-    if ( !contacts.isEmpty() )
-      d->mOrganizersMap.insert( searchJob->property( "incidenceUid" ).toString(), contacts.first() );
+    if ( !contacts.isEmpty() ) {
+      d->mOrganizersMap.insert(
+        searchJob->property( "incidenceUid" ).toString(), contacts.first() );
+    }
   }
-  if ( d->mSubJobCount == 0 )
+  if ( d->mSubJobCount == 0 ) {
     finishExport();
+  }
 }
 
 void HtmlExportJob::finishExport()
@@ -333,7 +338,7 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
                                                      CalendarSupport::SortDirectionAscending );
           if ( events.count() ) {
             *ts << "<table>";
-            foreach(const Akonadi::Item &event, events) {
+            foreach ( const Akonadi::Item &event, events ) {
               Q_ASSERT( event.hasPayload<Event::Ptr>() );
               Event::Ptr e = event.payload<Event::Ptr>();
               if ( checkSecrecy( e ) ) {
@@ -402,7 +407,7 @@ void HtmlExportJob::createEventList( QTextStream *ts )
           << KGlobal::locale()->formatDate( dt )
           << "</i></td></tr>" << endl;
 
-      foreach(const Akonadi::Item &event, events) {
+      foreach ( const Akonadi::Item &event, events ) {
         Q_ASSERT( event.hasPayload<Event::Ptr>() );
         Event::Ptr e = event.payload<Event::Ptr>();
         if ( checkSecrecy( e ) ) {
@@ -487,14 +492,14 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   Todo::List todoList;
   Todo::List::ConstIterator it;
   for ( int i = 1; i <= 9; ++i ) {
-    foreach(const Akonadi::Item &rawTodo, rawTodoList) {
+    foreach ( const Akonadi::Item &rawTodo, rawTodoList ) {
       Todo::Ptr t = rawTodo.payload<Todo::Ptr>();
       if ( t->priority() == i && checkSecrecy( t ) ) {
         todoList.append( t );
       }
     }
   }
-  foreach(const Akonadi::Item &rawTodo, rawTodoList) {
+  foreach ( const Akonadi::Item &rawTodo, rawTodoList ) {
     Todo::Ptr t = rawTodo.payload<Todo::Ptr>();
     if ( t->priority() == 0 && checkSecrecy( t ) ) {
       todoList.append( t );
@@ -534,7 +539,10 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
     }
   }
 
-  //REVIEW(AKONADI_PORT) relations/relatedTo usage: ok right now, as relations should yield the same result as mCalendar->findChildren and items are not needed here
+  //REVIEW(AKONADI_PORT)
+  // relations/relatedTo usage: ok right now, as relations should yield
+  // the same result as mCalendar->findChildren and items are not needed here
+
   // Create sub-level lists
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
 
@@ -557,7 +565,7 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
       // FIXME: Sort list by priorities. This is brute force and should be
       // replaced by a real sorting algorithm.
       for ( int i = 1; i <= 9; ++i ) {
-        foreach( const Akonadi::Item &item, relations ) {
+        foreach ( const Akonadi::Item &item, relations ) {
           Todo::Ptr ev3 = CalendarSupport::todo( item );
           if ( ev3 && ev3->priority() == i ) {
             sortedList.append( ev3 );
@@ -565,7 +573,7 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
         }
       }
 
-      foreach( const Akonadi::Item &item, relations ) {
+      foreach ( const Akonadi::Item &item, relations ) {
         Todo::Ptr ev3 = CalendarSupport::todo( item );
         if ( ev3 && ev3->priority() == 0 ) {
           sortedList.append( ev3 );
@@ -887,7 +895,7 @@ QDate HtmlExportJob::toDate() const
   return d->mSettings->dateEnd().date();
 }
 
-HTMLExportSettings* HtmlExportJob::settings() const
+HTMLExportSettings *HtmlExportJob::settings() const
 {
   return d->mSettings;
 }

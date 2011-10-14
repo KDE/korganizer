@@ -78,13 +78,15 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
 
 namespace {
 
-  class ColorDelegate : public QStyledItemDelegate
-  {
+class ColorDelegate : public QStyledItemDelegate
+{
   public:
-    explicit ColorDelegate( QObject * parent = 0 )
-      : QStyledItemDelegate( parent )
-    {}
-    void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
+    explicit ColorDelegate( QObject * parent = 0 ) : QStyledItemDelegate( parent )
+    {
+    }
+
+    void paint ( QPainter *painter, const QStyleOptionViewItem &option,
+                 const QModelIndex &index ) const
     {
       QStyledItemDelegate::paint( painter, option, index );
       QStyleOptionViewItemV4 v4 = option;
@@ -105,68 +107,73 @@ namespace {
           path.addRoundedRect( r, 5, 5 );
           color.setAlpha( 200 );
           painter->fillPath( path, color );
-          painter->strokePath( path, pen);
+          painter->strokePath( path, pen );
           painter->restore();
         }
       }
     }
-  };
+};
 
-  class ColorProxyModel : public QSortFilterProxyModel
-  {
+class ColorProxyModel : public QSortFilterProxyModel
+{
   public:
-    explicit ColorProxyModel( QObject* parent=0 )
-      : QSortFilterProxyModel( parent ),
-        mInitDefaultCalendar( false )
-      {
-      }
-
-    /* reimp */ QVariant data( const QModelIndex &index, int role ) const
+    explicit ColorProxyModel( QObject *parent=0 )
+      : QSortFilterProxyModel( parent ), mInitDefaultCalendar( false )
     {
-        if ( !index.isValid() )
-            return QVariant();
-        if ( role == Qt::DecorationRole ) {
-          const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+    }
 
-          if ( !collection.contentMimeTypes().isEmpty() ) {
-            if ( collection.hasAttribute<Akonadi::EntityDisplayAttribute>() &&
-                 !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty() ) {
-              return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
-            } else {
-              QColor col = KOHelper::resourceColor( collection );
-              return col.isValid() ? col : QVariant();
-            }
-          }
-        } else if ( role == Qt::FontRole ) {
-          const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
-          if ( !collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar( collection.id() ) &&
-               collection.rights() & Akonadi::Collection::CanCreateItem) {
-            QFont font = qvariant_cast<QFont>( QSortFilterProxyModel::data( index, Qt::FontRole ) );
-            font.setBold( true );
-            if ( !mInitDefaultCalendar ) {
-              mInitDefaultCalendar = true;
-              CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId( collection.id() );
-            }
-            return font;
-          }
-        } else if ( role == Qt::CheckStateRole ) {
-          // Don't show the checkbox if the collection can't contain incidences
-          const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
-          if ( AkonadiCollectionView::isStructuralCollection( collection ) ) {
-            return QVariant();
+    /* reimp */
+    QVariant data( const QModelIndex &index, int role ) const
+    {
+      if ( !index.isValid() ) {
+        return QVariant();
+      }
+      if ( role == Qt::DecorationRole ) {
+        const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+
+        if ( !collection.contentMimeTypes().isEmpty() ) {
+          if ( collection.hasAttribute<Akonadi::EntityDisplayAttribute>() &&
+               !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty() ) {
+            return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
+          } else {
+            QColor col = KOHelper::resourceColor( collection );
+            return col.isValid() ? col : QVariant();
           }
         }
-       return QSortFilterProxyModel::data( index, role );
-     }
+      } else if ( role == Qt::FontRole ) {
+        const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+        if ( !collection.contentMimeTypes().isEmpty() &&
+             KOHelper::isStandardCalendar( collection.id() ) &&
+             collection.rights() & Akonadi::Collection::CanCreateItem ) {
+          QFont font = qvariant_cast<QFont>( QSortFilterProxyModel::data( index, Qt::FontRole ) );
+          font.setBold( true );
+          if ( !mInitDefaultCalendar ) {
+            mInitDefaultCalendar = true;
+            CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId( collection.id() );
+          }
+          return font;
+        }
+      } else if ( role == Qt::CheckStateRole ) {
+        // Don't show the checkbox if the collection can't contain incidences
+        const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
+        if ( AkonadiCollectionView::isStructuralCollection( collection ) ) {
+          return QVariant();
+        }
+      }
+      return QSortFilterProxyModel::data( index, role );
+    }
 
-     /* reimp */ Qt::ItemFlags flags( const QModelIndex& index ) const
-     {
-       return Qt::ItemIsSelectable | QSortFilterProxyModel::flags( index );
-     }
+    /* reimp */
+    Qt::ItemFlags flags( const QModelIndex &index ) const
+    {
+      return Qt::ItemIsSelectable | QSortFilterProxyModel::flags( index );
+    }
+
   private:
     mutable bool mInitDefaultCalendar;
-  };
-}
+};
+
+} // anonymous namespace
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
@@ -182,17 +189,18 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   return mAkonadiCollectionView;
 }
 
-CalendarView* AkonadiCollectionViewFactory::view() const
+CalendarView *AkonadiCollectionViewFactory::view() const
 {
   return mView;
 }
 
-AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
+AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 {
   return mAkonadiCollectionView;
 }
 
-AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContextMenu, QWidget *parent )
+AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContextMenu,
+                                              QWidget *parent )
   : CalendarViewExtension( parent ),
     mActionManager(0),
     mCollectionview(0),
@@ -213,14 +221,14 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   //                                                   "textbox, verb to search", "Search" ) );
   //topLayout->addWidget( searchCol );
 
-
-  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
+  Akonadi::CollectionFilterProxyModel *collectionproxymodel =
+    new Akonadi::CollectionFilterProxyModel( this );
   collectionproxymodel->setObjectName( "Only show collections" );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
   collectionproxymodel->setExcludeVirtualCollections( true );
 
-  ColorProxyModel* colorProxy = new ColorProxyModel( this );
+  ColorProxyModel *colorProxy = new ColorProxyModel( this );
   colorProxy->setObjectName( "Show calendar colors" );
   colorProxy->setDynamicSortFilter( true );
   colorProxy->setSourceModel( collectionproxymodel );
@@ -233,14 +241,15 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   mCollectionview->setItemDelegate( new ColorDelegate( this ) );
 
   //Filter tree view.
-  KRecursiveFilterProxyModel* filterTreeViewModel = new KRecursiveFilterProxyModel( this );
+  KRecursiveFilterProxyModel *filterTreeViewModel = new KRecursiveFilterProxyModel( this );
   filterTreeViewModel->setDynamicSortFilter( true );
   filterTreeViewModel->setSourceModel( colorProxy );
   filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   mCollectionview->setModel( filterTreeViewModel );
 
-  //connect( searchCol, SIGNAL(textChanged(QString)), filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
+  //connect( searchCol, SIGNAL(textChanged(QString)),
+  //         filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
 
   connect( mBaseModel, SIGNAL(rowsInserted(QModelIndex,int,int)),
            this, SLOT(rowsInserted(QModelIndex,int,int)) );
@@ -250,7 +259,8 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
   if ( xmlclient ) {
     mCollectionview->setXmlGuiClient( xmlclient );
 
-    mActionManager = new Akonadi::StandardCalendarActionManager( xmlclient->actionCollection(), mCollectionview );
+    mActionManager =
+      new Akonadi::StandardCalendarActionManager( xmlclient->actionCollection(), mCollectionview );
     mActionManager->createAllActions();
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
@@ -258,27 +268,34 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteResources );
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteCollections );
 
-    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ), SIGNAL(triggered(bool)),
+    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ),
+             SIGNAL(triggered(bool)),
              this, SLOT(newCalendar()) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ), SIGNAL(triggered(bool)),
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ),
+             SIGNAL(triggered(bool)),
              this, SLOT(deleteCalendar()) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL(triggered(bool)),
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ),
+             SIGNAL(triggered(bool)),
              this, SLOT(deleteCalendar()) );
 
-    mActionManager->setContextText( Akonadi::StandardActionManager::CollectionProperties, Akonadi::StandardActionManager::DialogTitle,
+    mActionManager->setContextText( Akonadi::StandardActionManager::CollectionProperties,
+                                    Akonadi::StandardActionManager::DialogTitle,
                                     i18nc( "@title:window", "Properties of Calendar Folder %1" ) );
 
-    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setProperty( "ContentMimeTypes", QStringList( KCalCore::Event::eventMimeType() ) );
+    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->
+      setProperty( "ContentMimeTypes", QStringList( KCalCore::Event::eventMimeType() ) );
 
-    const QStringList pages = QStringList() << QLatin1String( "CalendarSupport::CollectionGeneralPage" )
-                                            << QLatin1String( "Akonadi::CachePolicyPage" );
+    const QStringList pages =
+      QStringList() << QLatin1String( "CalendarSupport::CollectionGeneralPage" )
+                    << QLatin1String( "Akonadi::CachePolicyPage" );
 
     mActionManager->setCollectionPropertiesPageNames( pages );
 
     mDisableColor = new KAction( mCollectionview );
     mDisableColor->setText( i18n( "&Disable Color" ) );
     mDisableColor->setEnabled( false );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ), mDisableColor );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ),
+                                              mDisableColor );
     connect( mDisableColor, SIGNAL(triggered(bool)), this, SLOT(disableColor()) );
 
     mAssignColor = new KAction( mCollectionview );
@@ -290,7 +307,8 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, bool hasContex
     mDefaultCalendar = new KAction( mCollectionview );
     mDefaultCalendar->setText( i18n( "Use as &Default Calendar" ) );
     mDefaultCalendar->setEnabled( false );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),mDefaultCalendar );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),
+                                              mDefaultCalendar );
     connect( mDefaultCalendar, SIGNAL(triggered(bool)), this, SLOT(setDefaultCalendar()) );
   }
   mCollectionview->expandAll();
@@ -345,15 +363,22 @@ void AkonadiCollectionView::disableColor()
   emit colorsChanged();
 }
 
-void AkonadiCollectionView::setCollectionSelectionProxyModel( KCheckableProxyModel* m )
+void AkonadiCollectionView::setCollectionSelectionProxyModel( KCheckableProxyModel *m )
 {
-  if ( mSelectionProxyModel == m )
+  if ( mSelectionProxyModel == m ) {
     return;
+  }
+
   mSelectionProxyModel = m;
-  if ( !mSelectionProxyModel )
+  if ( !mSelectionProxyModel ) {
     return;
+  }
+
   mBaseModel->setSourceModel( mSelectionProxyModel );
-  connect( mSelectionProxyModel->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
+  connect( mSelectionProxyModel->selectionModel(),
+           SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+           this,
+           SLOT(selectionChanged()) );
 }
 
 KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
@@ -361,14 +386,16 @@ KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() con
   return mSelectionProxyModel;
 }
 
-Akonadi::EntityTreeView* AkonadiCollectionView::view() const
+Akonadi::EntityTreeView *AkonadiCollectionView::view() const
 {
   return mCollectionview;
 }
 
 void AkonadiCollectionView::updateView()
 {
-  emit resourcesChanged( mSelectionProxyModel ? mSelectionProxyModel->selectionModel()->hasSelection() : false );
+  emit resourcesChanged( mSelectionProxyModel ?
+                           mSelectionProxyModel->selectionModel()->hasSelection() :
+                           false );
 }
 
 void AkonadiCollectionView::updateMenu()
@@ -377,7 +404,8 @@ void AkonadiCollectionView::updateMenu()
     return;
   }
   bool enableAction = mCollectionview->selectionModel()->hasSelection();
-  enableAction = enableAction && ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
+  enableAction = enableAction &&
+                 ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly );
   mAssignColor->setEnabled( enableAction );
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
 
@@ -436,7 +464,9 @@ void AkonadiCollectionView::newCalendarDone( KJob *job )
 {
   Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
   if ( createjob->error() ) {
-    //TODO(AKONADI_PORT) this should show an error dialog and should be merged with the identical code in ActionManager
+    //TODO(AKONADI_PORT)
+    // this should show an error dialog and should be merged
+    // with the identical code in ActionManager
     kWarning() << "Create calendar failed:" << createjob->errorString();
     mNotSendAddRemoveSignal = false;
     return;
@@ -447,24 +477,22 @@ void AkonadiCollectionView::newCalendarDone( KJob *job )
 
 void AkonadiCollectionView::deleteCalendar()
 {
-
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
   const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
 
-
   const QString displayname = index.model()->data( index, Qt::DisplayRole ).toString();
   Q_ASSERT( !displayname.isEmpty() );
 
-  if ( KMessageBox::warningContinueCancel( this,
-                                   i18n( "Do you really want to delete calendar %1?", displayname ),
-                                   i18n( "Delete Calendar" ),
-                                   KStandardGuiItem::del(),
-                                   KStandardGuiItem::cancel(),
-                                   QString(),
-                                   KMessageBox::Dangerous )
-       == KMessageBox::Continue ) {
+  if ( KMessageBox::warningContinueCancel(
+         this,
+         i18n( "Do you really want to delete calendar %1?", displayname ),
+         i18n( "Delete Calendar" ),
+         KStandardGuiItem::del(),
+         KStandardGuiItem::cancel(),
+         QString(),
+         KMessageBox::Dangerous )  == KMessageBox::Continue ) {
 
     bool isTopLevel = collection.parentCollection() == Akonadi::Collection::root();
 
@@ -477,7 +505,8 @@ void AkonadiCollectionView::deleteCalendar()
       connect( job, SIGNAL(result(KJob*)), this, SLOT(deleteCalendarDone(KJob*)) );
     } else {
       // deletes the agent, not the contents
-      const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance( collection.resource() );
+      const Akonadi::AgentInstance instance =
+        Akonadi::AgentManager::self()->instance( collection.resource() );
       if ( instance.isValid() ) {
         Akonadi::AgentManager::self()->removeInstance( instance );
       }
@@ -500,10 +529,11 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
   //TODO
 }
 
-void AkonadiCollectionView::rowsInserted( const QModelIndex&, int, int )
+void AkonadiCollectionView::rowsInserted( const QModelIndex &, int, int )
 {
-  if ( !mNotSendAddRemoveSignal )
+  if ( !mNotSendAddRemoveSignal ) {
     emit resourcesAddedRemoved();
+  }
   mCollectionview->expandAll();
 }
 
@@ -515,12 +545,11 @@ bool AkonadiCollectionView::isStructuralCollection( const Akonadi::Collection &c
             << Todo::todoMimeType() << Journal::journalMimeType();
   const QStringList collectionMimeTypes = collection.contentMimeTypes();
   foreach ( const QString &mimeType, mimeTypes ) {
-    if ( collectionMimeTypes.contains( mimeType ) )
+    if ( collectionMimeTypes.contains( mimeType ) ) {
       return false;
+    }
   }
   return true;
 }
-
-
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

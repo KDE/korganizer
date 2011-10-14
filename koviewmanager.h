@@ -136,7 +136,7 @@ class KOViewManager : public QObject
 
   signals:
     void configChanged();
-    void datesSelected(const KCalCore::DateList & );
+    void datesSelected( const KCalCore::DateList & );
 
   public slots:
     void showWhatsNextView();
@@ -160,7 +160,6 @@ class KOViewManager : public QObject
     void zoomOutHorizontally();
     void zoomInVertically();
     void zoomOutVertically();
-
 
     /**
        Notifies all views that an update is needed. This means that the

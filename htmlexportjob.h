@@ -51,18 +51,19 @@ class HTMLExportSettings;
 class HtmlExportJob : public KJob
 {
   Q_OBJECT
-
   public:
     /**
       Create new HTML exporter for calendar.
     */
-    HtmlExportJob( CalendarSupport::Calendar *calendar, HTMLExportSettings *settings, QWidget *parent = 0 );
+    HtmlExportJob( CalendarSupport::Calendar *calendar,
+                   HTMLExportSettings *settings, QWidget *parent = 0 );
+
     virtual ~HtmlExportJob();
 
     void addHoliday( const QDate &date, const QString &name );
 
     virtual void start();
-    HTMLExportSettings* settings() const;
+    HTMLExportSettings *settings() const;
 
   protected:
     void createWeekView( QTextStream *ts );
@@ -90,7 +91,7 @@ class HtmlExportJob : public KJob
     QString styleSheet() const;
 
   private Q_SLOTS:
-    void receivedOrganizerInfo( KJob* );
+    void receivedOrganizerInfo( KJob * );
 
   private:
     /**

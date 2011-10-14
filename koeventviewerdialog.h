@@ -43,7 +43,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEventViewerDialog( QWidget *parent = 0);
+    explicit KOEventViewerDialog( QWidget *parent = 0 );
     virtual ~KOEventViewerDialog();
 
     void setIncidence( const Akonadi::Item &incidence, const QDate &date );

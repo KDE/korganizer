@@ -74,7 +74,8 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
 bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
                                                const QModelIndex &right ) const
 {
-  if ( KOPrefs::instance()->sortCompletedTodosSeparately() && left.column() != KOTodoModel::PercentColumn ) {
+  if ( KOPrefs::instance()->sortCompletedTodosSeparately() &&
+       left.column() != KOTodoModel::PercentColumn ) {
     QModelIndex cLeft = left.sibling( left.row(), KOTodoModel::PercentColumn );
     QModelIndex cRight = right.sibling( right.row(), KOTodoModel::PercentColumn );
 
@@ -94,7 +95,7 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
 
     if ( comparison != 0 ) {
       return comparison == -1;
-    }  else {
+    } else {
       // Due dates are equal, but the user still expects sorting by importance
       // Fallback to the PriorityColumn
       QModelIndex leftPriorityIndex = left.sibling( left.row(), KOTodoModel::PriorityColumn );
@@ -137,13 +138,16 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
     QModelIndex leftSummaryIndex = left.sibling( left.row(), KOTodoModel::SummaryColumn );
     QModelIndex rightSummaryIndex = right.sibling( right.row(), KOTodoModel::SummaryColumn );
 
-    // This patch is not about fallingback to the SummaryColumn for sorting. It's about avoiding jumping due to random reasons.
+    // This patch is not about fallingback to the SummaryColumn for sorting.
+    // It's about avoiding jumping due to random reasons.
     // That's why we ignore the sort direction...
-    return mSortOrder == Qt::AscendingOrder ? QSortFilterProxyModel::lessThan( leftSummaryIndex, rightSummaryIndex ) :
-                                              QSortFilterProxyModel::lessThan( rightSummaryIndex, leftSummaryIndex );
+    return mSortOrder == Qt::AscendingOrder ?
+      QSortFilterProxyModel::lessThan( leftSummaryIndex, rightSummaryIndex ) :
+      QSortFilterProxyModel::lessThan( rightSummaryIndex, leftSummaryIndex );
 
-    // ...so, if you have 4 to-dos, all with CompletionColumn = "55%", and click the header multiple times, nothing will happen
-    // because it's already sorted by Completion.
+    // ...so, if you have 4 to-dos, all with CompletionColumn = "55%",
+    // and click the header multiple times, nothing will happen because
+    // it is already sorted by Completion.
   } else {
     return QSortFilterProxyModel::lessThan( left, right );
   }
@@ -159,15 +163,18 @@ void KOTodoViewSortFilterProxyModel::setCategoryFilter( const QStringList &categ
  *  0 - equal
  *  1 - bigger than
  */
-int KOTodoViewSortFilterProxyModel::compareDueDates( const QModelIndex &left, const QModelIndex &right ) const
+int KOTodoViewSortFilterProxyModel::compareDueDates( const QModelIndex &left,
+                                                     const QModelIndex &right ) const
 {
   Q_ASSERT( left.column() == KOTodoModel::DueDateColumn );
   Q_ASSERT( right.column() == KOTodoModel::DueDateColumn );
 
   // The due date column is a QString so fetch the akonadi item
   // We can't compare QStrings because it won't work if the format is MM/DD/YYYY
-  const Todo::Ptr leftTodo = CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
-  const Todo::Ptr rightTodo = CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
+  const Todo::Ptr leftTodo =
+    CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
+  const Todo::Ptr rightTodo =
+    CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
 
   if ( !leftTodo || !rightTodo ) {
     return false;
@@ -197,7 +204,8 @@ int KOTodoViewSortFilterProxyModel::compareDueDates( const QModelIndex &left, co
  *  0 - equal
  *  1 - bigger than
  */
-int KOTodoViewSortFilterProxyModel::compareCompletion( const QModelIndex &left, const QModelIndex &right ) const
+int KOTodoViewSortFilterProxyModel::compareCompletion( const QModelIndex &left,
+                                                       const QModelIndex &right ) const
 {
   Q_ASSERT( left.column() == KOTodoModel::PercentColumn );
   Q_ASSERT( right.column() == KOTodoModel::PercentColumn );
@@ -207,8 +215,10 @@ int KOTodoViewSortFilterProxyModel::compareCompletion( const QModelIndex &left, 
 
   if ( leftValue == 100 && rightValue == 100 ) {
     // Untie with the completion date
-    const Todo::Ptr leftTodo = CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
-    const Todo::Ptr rightTodo = CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
+    const Todo::Ptr leftTodo =
+      CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
+    const Todo::Ptr rightTodo =
+      CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
 
     if ( !leftTodo || !rightTodo ) {
       return 0;
@@ -224,7 +234,8 @@ int KOTodoViewSortFilterProxyModel::compareCompletion( const QModelIndex &left, 
  *  0 - equal
  *  1 - bigger than
  */
-int KOTodoViewSortFilterProxyModel::comparePriorities( const QModelIndex &left, const QModelIndex &right ) const
+int KOTodoViewSortFilterProxyModel::comparePriorities( const QModelIndex &left,
+                                                       const QModelIndex &right ) const
 {
   Q_ASSERT( left.column() == KOTodoModel::PriorityColumn );
   Q_ASSERT( right.column() == KOTodoModel::PriorityColumn );

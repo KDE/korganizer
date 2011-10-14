@@ -112,14 +112,16 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   personalLayout->addWidget( mUserEmailSettings );
   QFormLayout *emailSettingsLayout = new QFormLayout( mUserEmailSettings );
-  KPrefsWidString *s = addWidString( CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings );
+  KPrefsWidString *s =
+    addWidString( CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings );
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   s=addWidString( CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings );
   emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   KPrefsWidRadios *defaultEmailAttachMethod =
-    addWidRadios( IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethodItem(), personalFrame );
+    addWidRadios(
+      IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethodItem(), personalFrame );
   personalLayout->addWidget( defaultEmailAttachMethod->groupBox() );
   personalLayout->addStretch( 1 );
 
@@ -197,15 +199,20 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   mAccountsCalendar.vlay->setSpacing( KDialog::spacingHint() );
   mAccountsCalendar.vlay->setMargin( KDialog::marginHint() );
 
-  mAccountsCalendar.mAccountList->agentFilterProxyModel()->addMimeTypeFilter( "text/calendar" );
-  mAccountsCalendar.mAccountList->agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
-  mAccountsCalendar.mFilterAccount->setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
-  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+  mAccountsCalendar.mAccountList->agentFilterProxyModel()->
+    addMimeTypeFilter( "text/calendar" );
+  mAccountsCalendar.mAccountList->agentFilterProxyModel()->
+    addCapabilityFilter( "Resource" ); // show only resources, no agents
+  mAccountsCalendar.mFilterAccount->
+    setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
+
+  connect( mAccountsCalendar.mAccountList->view()->selectionModel(),
+           SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(slotAccountSelected()));
   connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
            this, SLOT(slotModifySelectedAccount()) );
 
-  mAccountsCalendar.hlay->insertWidget(0, mAccountsCalendar.mAccountList);
+  mAccountsCalendar.hlay->insertWidget( 0, mAccountsCalendar.mAccountList );
 
   connect( mAccountsCalendar.mAddAccountButton, SIGNAL(clicked()),
            this, SLOT(slotAddAccount()) );
@@ -223,15 +230,18 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   load();
 }
 
-
 void KOPrefsDialogMain::slotAccountSelected()
 {
   if ( mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty() ) {
     mAccountsCalendar.mModifyAccountButton->setEnabled( false );
     mAccountsCalendar.mRemoveAccountButton->setEnabled( false );
   } else {
-    Akonadi::AgentInstance selectedAgent = mAccountsCalendar.mAccountList->selectedAgentInstances().first();
-    mAccountsCalendar.mModifyAccountButton->setEnabled( !selectedAgent.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
+    Akonadi::AgentInstance selectedAgent =
+      mAccountsCalendar.mAccountList->selectedAgentInstances().first();
+
+    mAccountsCalendar.mModifyAccountButton->setEnabled(
+      !selectedAgent.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
+
     mAccountsCalendar.mRemoveAccountButton->setEnabled( true );
   }
 }
@@ -240,7 +250,7 @@ void KOPrefsDialogMain::slotAddAccount()
 {
   //TODO verify this dialog box. We can see note etc...
   Akonadi::AgentTypeDialog dlg( this );
-  Akonadi::AgentFilterProxyModel* filter = dlg.agentFilterProxyModel();
+  Akonadi::AgentFilterProxyModel *filter = dlg.agentFilterProxyModel();
   filter->addMimeTypeFilter( "text/calendar" );
   filter->addCapabilityFilter( "Resource" );
   if ( dlg.exec() ) {
@@ -273,7 +283,6 @@ void KOPrefsDialogMain::slotRemoveSelectedAccount()
 
   slotAccountSelected();
 }
-
 
 void KOPrefsDialogMain::toggleEmailSettings( bool on )
 {
@@ -351,7 +360,8 @@ class KOPrefsDialogTime : public KPrefsModule
 
       foreach ( const QString & regionCode, regions ) {
         QString name = HolidayRegion::name( regionCode );
-        QString languageName = KGlobal::locale()->languageCodeToName( HolidayRegion::languageCode( regionCode ) );
+        QString languageName =
+          KGlobal::locale()->languageCodeToName( HolidayRegion::languageCode( regionCode ) );
         QString label;
         if ( languageName.isEmpty() ) {
           label = name;
@@ -361,7 +371,7 @@ class KOPrefsDialogTime : public KPrefsModule
         regionsMap.insert( label, regionCode );
       }
 
-      mHolidayCombo->addItem( i18nc( "No holiday region", "None"), QString() );
+      mHolidayCombo->addItem( i18nc( "No holiday region", "None" ), QString() );
       QMapIterator<QString, QString> i( regionsMap );
       while ( i.hasNext() ) {
         i.next();
@@ -369,7 +379,8 @@ class KOPrefsDialogTime : public KPrefsModule
       }
 
       if ( KOGlobals::self()->holidays() && KOGlobals::self()->holidays()->isValid() ) {
-        mHolidayCombo->setCurrentIndex( mHolidayCombo->findData( KOGlobals::self()->holidays()->regionCode() ) );
+        mHolidayCombo->setCurrentIndex(
+          mHolidayCombo->findData( KOGlobals::self()->holidays()->regionCode() ) );
       } else {
         mHolidayCombo->setCurrentIndex( 0 );
       }
@@ -447,7 +458,8 @@ class KOPrefsDialogTime : public KPrefsModule
       timesLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
 
       KPrefsWidDuration *defaultDuration =
-        addWidDuration( CalendarSupport::KCalPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
+        addWidDuration( CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
+                        "hh:mm", defaultPage );
 
       timesLayout->addWidget( defaultDuration->label(), 1, 0 );
       timesLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
@@ -461,10 +473,13 @@ class KOPrefsDialogTime : public KPrefsModule
       QLabel *reminderLabel =
         new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
       remindersLayout->addWidget( reminderLabel, 0, 0 );
-      reminderLabel->setWhatsThis( CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
+      reminderLabel->setWhatsThis(
+        CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin  = new KIntSpinBox( defaultPage );
-      mReminderTimeSpin->setWhatsThis( CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
-      mReminderTimeSpin->setToolTip( CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip() );
+      mReminderTimeSpin->setWhatsThis(
+        CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
+      mReminderTimeSpin->setToolTip(
+        CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip() );
       connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
       remindersLayout->addWidget( mReminderTimeSpin, 0, 1 );
 
@@ -482,15 +497,19 @@ class KOPrefsDialogTime : public KPrefsModule
         i18nc( "@item:inlistbox reminder time units in days", "day(s)" ) );
       remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
-      QCheckBox *cb = addWidBool( CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem() )->checkBox();
+      QCheckBox *cb =
+        addWidBool(
+          CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem() )->checkBox();
       cb->setText( QString() );
 
       if ( CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
-        QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", "KDE-Sys-Warning.ogg");
-        CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue( defAudioFile + "KDE-Sys-Warning.ogg"  );
+        QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", "KDE-Sys-Warning.ogg" );
+        CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(
+          defAudioFile + "KDE-Sys-Warning.ogg" );
       }
-      QString filter = i18n( "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
-                             "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)" );
+      QString filter =
+        i18n( "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
+              "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)" );
       KUrlRequester *rq = addWidPath( CalendarSupport::KCalPrefs::instance()->audioFilePathItem(),
                                       0, filter )->urlRequester();
       rq->setEnabled( cb->isChecked() );
@@ -503,9 +522,11 @@ class KOPrefsDialogTime : public KPrefsModule
 
       remindersLayout->addLayout( audioFileRemindersBox, 1, 0 );
       remindersLayout->addWidget(
-          addWidBool( CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 2, 0 );
+        addWidBool(
+          CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 2, 0 );
       remindersLayout->addWidget(
-          addWidBool( CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 3, 0 );
+        addWidBool(
+          CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 3, 0 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
@@ -515,7 +536,8 @@ class KOPrefsDialogTime : public KPrefsModule
     void usrReadConfig()
     {
       mReminderTimeSpin->setValue( CalendarSupport::KCalPrefs::instance()->mReminderTime );
-      mReminderUnitsCombo->setCurrentIndex( CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits );
+      mReminderUnitsCombo->setCurrentIndex(
+        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits );
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( ( 1 << i ) & ( KOPrefs::instance()->mWorkWeekMask ) );
       }
@@ -523,10 +545,14 @@ class KOPrefsDialogTime : public KPrefsModule
 
     void usrWriteConfig()
     {
-      KOPrefs::instance()->mHolidays = mHolidayCombo->itemData( mHolidayCombo->currentIndex() ).toString();
+      KOPrefs::instance()->mHolidays =
+        mHolidayCombo->itemData( mHolidayCombo->currentIndex() ).toString();
 
-      CalendarSupport::KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
-      CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
+      CalendarSupport::KCalPrefs::instance()->mReminderTime =
+        mReminderTimeSpin->value();
+      CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits =
+        mReminderUnitsCombo->currentIndex();
+
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
         if ( mWorkDays[i]->isChecked() ) {
@@ -579,9 +605,9 @@ class KOPrefsDialogViews : public KPrefsModule
 {
   public:
     KOPrefsDialogViews( const KComponentData &inst, QWidget *parent )
-      : KPrefsModule( KOPrefs::instance(), inst, parent )
-      , mMonthIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::MonthType, this ) )
-      , mAgendaIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::AgendaType, this ) )
+      : KPrefsModule( KOPrefs::instance(), inst, parent ),
+        mMonthIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::MonthType, this ) ),
+        mAgendaIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::AgendaType, this ) )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
       KTabWidget *tabWidget = new KTabWidget( this );
@@ -678,7 +704,8 @@ class KOPrefsDialogViews : public KPrefsModule
       adisplayLayout->addWidget( marcusBainsShowSeconds->checkBox() );
       adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
-      mAgendaIconComboBox->setCheckedIcons( KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons() );
+      mAgendaIconComboBox->setCheckedIcons(
+        KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons() );
       adisplayLayout->addWidget( mAgendaIconComboBox );
       adisplayBox->setLayout( adisplayLayout );
       agendaLayout->addWidget( adisplayBox );
@@ -720,7 +747,8 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
       mdisplayBox->setLayout( mdisplayLayout );
 
-      mMonthIconComboBox->setCheckedIcons( KOPrefs::instance()->eventViewsPreferences()->monthViewIcons() );
+      mMonthIconComboBox->setCheckedIcons(
+        KOPrefs::instance()->eventViewsPreferences()->monthViewIcons() );
       mdisplayLayout->addWidget( mMonthIconComboBox );
 
       monthLayout->addWidget( mdisplayBox );
@@ -764,8 +792,10 @@ class KOPrefsDialogViews : public KPrefsModule
   protected:
     void usrWriteConfig()
     {
-      KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons( mAgendaIconComboBox->checkedIcons() );
-      KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons( mMonthIconComboBox->checkedIcons() );
+      KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
+        mAgendaIconComboBox->checkedIcons() );
+      KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(
+        mMonthIconComboBox->checkedIcons() );
     }
   private:
     KItemIconCheckCombo *mMonthIconComboBox;
@@ -818,8 +848,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   KPrefsWidColor *viewBgBusyColor =
       addWidColor( KOPrefs::instance()->viewBgBusyColorItem(), colorFrame );
-  colorLayout->addWidget(viewBgBusyColor->label(), 4, 0);
-  colorLayout->addWidget(viewBgBusyColor->button(), 4, 1);
+  colorLayout->addWidget( viewBgBusyColor->label(), 4, 0 );
+  colorLayout->addWidget( viewBgBusyColor->button(), 4, 1 );
 
   // working hours color
   KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
@@ -856,7 +886,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   unsetCategoryColor->label()->setToolTip( unsetCategoryColor->button()->toolTip() );
 
   mCategoryCombo = new KComboBox( categoryGroup );
-  mCategoryCombo->addItems( CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo->addItems(
+    CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
   mCategoryCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select here the event category you want to modify. "
@@ -978,7 +1009,8 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
 void KOPrefsDialogColorsAndFonts::updateCategories()
 {
   mCategoryCombo->clear();
-  mCategoryCombo->addItems( CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo->addItems(
+    CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
   updateCategoryColor();
 }
 
@@ -1008,8 +1040,13 @@ void KOPrefsDialogColorsAndFonts::updateResources()
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
   bool ok;
-  const QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
-  if( ! ok ) return;
+  const QString id =
+    QString::number( mResourceCombo->itemData(
+                       mResourceCombo->currentIndex(),
+                       Akonadi::CollectionModel::CollectionIdRole ).toLongLong( &ok ) );
+  if( ! ok ) {
+    return;
+  }
   mResourceDict.insert( id, mResourceButton->color() );
   slotWidChanged();
 }
@@ -1017,12 +1054,19 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
   bool ok;
-  const QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
-  if( ! ok ) return;
-  kDebug()<<id<<mResourceCombo->itemText(mResourceCombo->currentIndex());
+  const QString id =
+    QString::number( mResourceCombo->itemData(
+                       mResourceCombo->currentIndex(),
+                       Akonadi::CollectionModel::CollectionIdRole ).toLongLong( &ok ) );
+  if ( !ok ) {
+    return;
+  }
+  kDebug() << id << mResourceCombo->itemText( mResourceCombo->currentIndex() );
+
   QColor color = mResourceDict.value( id );
-  if( ! color.isValid() )
+  if ( ! color.isValid() ) {
     color = KOPrefs::instance()->resourceColor( id );
+  }
   mResourceButton->setColor( color );
 }
 
@@ -1063,8 +1107,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
 
   TransportManagementWidget *tmw = new TransportManagementWidget( topFrame );
   tmw->layout()->setContentsMargins( 0, 0, 0, 0 );
-  topLayout->addWidget(tmw, 3, 0, 1, 2);
-
+  topLayout->addWidget( tmw, 3, 0, 1, 2 );
 
   QLabel *aMailsLabel = new QLabel(
     i18nc( "@label", "Additional email addresses:" ), topFrame );
@@ -1124,10 +1167,14 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
 void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
   mAMails->clear();
-  QStringList::const_iterator begin( CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constBegin() );
-  QStringList::const_iterator end( CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constEnd() );
-  for ( QStringList::const_iterator it = begin; it != end; ++it ) {
-    new QListWidgetItem(( *it ), mAMails);
+
+  QStringList::const_iterator begin(
+    CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constBegin() );
+    QStringList::const_iterator end(
+      CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constEnd() );
+
+    for ( QStringList::const_iterator it = begin; it != end; ++it ) {
+    new QListWidgetItem( ( *it ), mAMails );
   }
 }
 
@@ -1136,7 +1183,7 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
   CalendarSupport::KCalPrefs::instance()->mAdditionalMails.clear();
 
   for ( int i = 0; i<mAMails->count(); ++i ) {
-    CalendarSupport::KCalPrefs::instance()->mAdditionalMails.append(mAMails->item( i )->text() );
+    CalendarSupport::KCalPrefs::instance()->mAdditionalMails.append( mAMails->item( i )->text() );
   }
 }
 
@@ -1157,14 +1204,14 @@ void KOPrefsDialogGroupScheduling::removeItem()
   if ( !item ) {
     return;
   }
+
   delete mAMails->takeItem( mAMails->row( item ) );
   item = mAMails->currentItem();
   if ( !item ) {
     aEmailsEdit->setText( "" );
     aEmailsEdit->setEnabled( false );
     mRemove->setEnabled( false );
-  }
-  else if ( mAMails->count() == 0 ) {
+  } else if ( mAMails->count() == 0 ) {
     aEmailsEdit->setEnabled( false );
     mRemove->setEnabled( false );
   }
@@ -1178,7 +1225,8 @@ void KOPrefsDialogGroupScheduling::updateItem()
   if ( !item ) {
     return;
   }
-  item->setText(aEmailsEdit->text() );
+
+  item->setText( aEmailsEdit->text() );
   slotWidChanged();
 }
 
@@ -1186,7 +1234,7 @@ void KOPrefsDialogGroupScheduling::checkEmptyMail()
 {
   if ( aEmailsEdit->text().isEmpty() ) {
     removeItem();
-  };
+  }
 }
 
 void KOPrefsDialogGroupScheduling::updateInput()
@@ -1599,7 +1647,8 @@ void KOPrefsDialogPlugins::selectionChanged()
   }
 
   bool hasPosition = false;
-  if ( item->service()->hasServiceType( EventViews::CalendarDecoration::Decoration::serviceType() ) ) {
+  if ( item->service()->hasServiceType(
+         EventViews::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
     /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mPositionMonthTop->setChecked( true );

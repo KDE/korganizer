@@ -57,8 +57,8 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
   public:
     explicit AkonadiCollectionViewFactory( CalendarView *view );
 
-    CalendarView* view() const;
-    AkonadiCollectionView* collectionView() const;
+    CalendarView *view() const;
+    AkonadiCollectionView *collectionView() const;
 
     CalendarViewExtension *create( QWidget * );
 
@@ -75,13 +75,14 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    explicit AkonadiCollectionView( CalendarView* view, bool hasContextMenu = true, QWidget *parent = 0 );
+    explicit AkonadiCollectionView( CalendarView *view, bool hasContextMenu = true,
+                                    QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
-    Akonadi::EntityTreeView* view() const;
+    Akonadi::EntityTreeView *view() const;
 
     KCheckableProxyModel *collectionSelectionProxyModel() const;
-    void setCollectionSelectionProxyModel( KCheckableProxyModel* );
+    void setCollectionSelectionProxyModel( KCheckableProxyModel * );
     static bool isStructuralCollection( const Akonadi::Collection & );
 
   signals:
@@ -98,19 +99,19 @@ class AkonadiCollectionView : public CalendarViewExtension
     void selectionChanged();
 
     void newCalendar();
-    void newCalendarDone( KJob* );
+    void newCalendarDone( KJob * );
 
     void deleteCalendar();
-    void deleteCalendarDone( KJob* );
-    void rowsInserted( const QModelIndex&, int, int );
+    void deleteCalendarDone( KJob * );
+    void rowsInserted( const QModelIndex &, int, int );
     void assignColor();
     void disableColor();
     void setDefaultCalendar();
 
   private:
-    Akonadi::StandardCalendarActionManager* mActionManager;
+    Akonadi::StandardCalendarActionManager *mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
-    QAbstractProxyModel* mBaseModel;
+    QAbstractProxyModel *mBaseModel;
     KCheckableProxyModel *mSelectionProxyModel;
     KAction *mCreateAction;
     KAction *mDeleteAction;

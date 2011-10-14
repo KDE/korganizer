@@ -57,11 +57,12 @@ class History : public QObject
   public slots:
     void undo();
     void redo();
+
   private slots:
     void incidenceChangeFinished( const Akonadi::Item &,
                                   const Akonadi::Item &,
                                   CalendarSupport::IncidenceChanger::WhatChanged,
-                                  bool);
+                                  bool );
 
     void incidenceAddFinished( const Akonadi::Item &, bool );
 
@@ -111,7 +112,9 @@ class History : public QObject
     class EntryDelete : public Entry
     {
       public:
-        EntryDelete( CalendarSupport::Calendar *, CalendarSupport::IncidenceChanger *, const Akonadi::Item & );
+        EntryDelete( CalendarSupport::Calendar *, CalendarSupport::IncidenceChanger *,
+                     const Akonadi::Item & );
+
         ~EntryDelete();
 
         bool undo();
@@ -128,7 +131,9 @@ class History : public QObject
     class EntryAdd : public Entry
     {
       public:
-        EntryAdd( CalendarSupport::Calendar *, CalendarSupport::IncidenceChanger *, const Akonadi::Item & );
+        EntryAdd( CalendarSupport::Calendar *, CalendarSupport::IncidenceChanger *,
+                  const Akonadi::Item & );
+
         ~EntryAdd();
 
         bool undo();

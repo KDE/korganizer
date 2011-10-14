@@ -1,29 +1,29 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    Copyright (C) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Copyright (c) 2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.com>
     Author: Sergio Martins, <sergio.martins@kdab.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "previewdialog.h"
@@ -50,7 +50,7 @@ using namespace KCalCore;
 PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   : KDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
 {
-  setCaption( i18n("Import Calendar/Event") );
+  setCaption( i18n( "Import Calendar/Event" ) );
   // KGuiItem( i18n("&Merge into existing calendar"), "merge" )
   setButtons( User1 | User2 | Cancel );
   setDefaultButton( User1 );
@@ -74,9 +74,9 @@ PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   // when someone edits a kmail attachment he's editing a tmp file, check for that
   // and if it's a tmp file then open a save dialog
   if ( isTempFile() ) {
-    setButtonGuiItem( User2, KGuiItem( i18n("&Add as new calendar..."), "add" ) );
+    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar..." ), "add" ) );
   } else {
-    setButtonGuiItem( User2, KGuiItem( i18n("&Add as new calendar"), "add" ) );
+    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar" ), "add" ) );
   }
 
   mLocalUrl = 0;
@@ -150,8 +150,8 @@ void PreviewDialog::slotAdd()
 
     finalUrl = KUrl( fileName );
 
-    if ( !KIO::NetAccess::file_copy( mOriginalUrl, finalUrl, this )
-         && KIO::NetAccess::lastError() ) {
+    if ( !KIO::NetAccess::file_copy( mOriginalUrl, finalUrl, this ) &&
+         KIO::NetAccess::lastError() ) {
       KMessageBox::error( this, KIO::NetAccess::lastErrorString() );
       return;
     }

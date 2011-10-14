@@ -26,8 +26,8 @@
 #include <Akonadi/Item>
 
 #include <QAbstractItemModel>
-#include <KDialog>
 
+#include <KDialog>
 
 namespace EventViews {
   class AgendaView;
@@ -67,12 +67,13 @@ class MultiAgendaView : public KOEventView
     void setChanges( EventViews::EventView::Changes changes );
 
     KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
-    void setCustomCollectionSelectionProxyModel( KCheckableProxyModel* model );
+    void setCustomCollectionSelectionProxyModel( KCheckableProxyModel *model );
 
     void restoreConfig( const KConfigGroup &configGroup );
     void saveConfig( KConfigGroup &configGroup );
 
-    void setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth = QDate() );
+    void setDateRange( const KDateTime &start, const KDateTime &end,
+                       const QDate &preferredMonth = QDate() );
 
     Akonadi::Collection::Id collectionId() const;
 
@@ -87,7 +88,7 @@ class MultiAgendaView : public KOEventView
 
   private:
     class Private;
-    Private * const d;
+    Private *const d;
 
 };
 

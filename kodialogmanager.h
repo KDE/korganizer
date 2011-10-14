@@ -63,8 +63,7 @@ class KODialogManager : public QObject
     explicit KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
-    /** */
-    IncidenceEditorNG::IncidenceDialog *createDialog( const Akonadi::Item& item );
+    IncidenceEditorNG::IncidenceDialog *createDialog( const Akonadi::Item &item );
 
     // TODO_NG: see if editors-NG have the needed slots.
     void connectEditor( IncidenceEditorNG::IncidenceDialog *editor );

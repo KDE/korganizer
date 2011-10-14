@@ -45,7 +45,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   mEventViewer = new CalendarSupport::IncidenceViewer( this );
   setMainWidget( mEventViewer );
 
-  resize( QSize(500, 520).expandedTo(minimumSizeHint()) );
+  resize( QSize( 500, 520 ).expandedTo( minimumSizeHint() ) );
 
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
   connect( this, SIGNAL(user1Clicked()), this, SLOT(editIncidence()) );

@@ -117,17 +117,17 @@ class KOEventView : public KOrg::BaseView
     bool supportsDateNavigation() const { return true; }
 
   public slots:
+    void focusChanged( QWidget *, QWidget * );
 
-    void focusChanged( QWidget*, QWidget* );
     /**
-     Perform the default action for an incidence, e.g. open the event editor,
-     when double-clicking an event in the agenda view.
-    */
+     * Performs the default action for an incidence, e.g. open the event editor,
+     * when double-clicking an event in the agenda view.
+     */
     void defaultAction( const Akonadi::Item &incidence );
 
   signals:
     /**
-     * when the view changes the dates that are selected in one way or
+     * When the view changes the dates that are selected in one way or
      * another, this signal is emitted.  It should be connected back to
      * the KDateNavigator object so that it changes appropriately,
      * and any other objects that need to be aware that the list of

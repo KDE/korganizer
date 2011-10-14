@@ -239,7 +239,8 @@ void KOTodoModel::reloadTodos()
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
     TodoTreeNode *tmp = findTodo( CalendarSupport::incidence( *it )->uid() );
     if ( !tmp ) {
-      // kDebug()<<"Inserting " << CalendarSupport::todo(*it)->summary() << CalendarSupport::todo(*it)->relatedTo();
+      // kDebug() << "Inserting " << CalendarSupport::todo(*it)->summary()
+      //          << CalendarSupport::todo(*it)->relatedTo();
       insertTodo( *it );
     } else {
       // update pointer to the todo
@@ -366,8 +367,8 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Akona
   }
 
   // check if the relation to the parent has changed
-  if ( ( newParent == 0 && CalendarSupport::hasTodo( ttOldParent->mTodo ) )  ||  // became parentless  OR
-       ( newParent != 0 && !CalendarSupport::hasTodo( ttOldParent->mTodo ) ) ||  // gained a parent    OR
+  if ( ( newParent == 0 && CalendarSupport::hasTodo( ttOldParent->mTodo ) ) ||  // became parentless
+       ( newParent != 0 && !CalendarSupport::hasTodo( ttOldParent->mTodo ) ) ||  // gained a parent
        ( newParent != 0 && CalendarSupport::hasTodo( ttOldParent->mTodo ) &&     // changed parent
          newParent->uid() != CalendarSupport::todo( ttOldParent->mTodo )->uid() ) ) {
 
@@ -723,7 +724,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     if ( KOPrefs::instance()->enableToolTips() ) {
       return QVariant( IncidenceFormatter::toolTipStr(
                          CalendarSupport::displayName( node->mTodo.parentCollection() ),
-                         todo, QDate(), true, CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
+                         todo, QDate(), true,
+                         CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
     } else {
       return QVariant();
     }
@@ -750,7 +752,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   }
 
   // icon for recurring todos
-  // It's in the summary column so you don't accidentally click the checkbox ( which increments the next occurrence date ).
+  // It's in the summary column so you don't accidentally click
+  // the checkbox ( which increments the next occurrence date ).
   if ( role == Qt::DecorationRole && index.column() == SummaryColumn ) {
     if ( todo->recurs() ) {
       return QVariant( QIcon( KOGlobals::self()->smallIcon( "task-recurring" ) ) );
@@ -761,7 +764,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   if ( role == Qt::DecorationRole && index.column() == SummaryColumn ) {
     QStringList categories = todo->categories();
     if ( !categories.isEmpty() ) {
-      return QVariant( CalendarSupport::KCalPrefs::instance()->categoryColor( categories.first() ) );
+      return
+        QVariant( CalendarSupport::KCalPrefs::instance()->categoryColor( categories.first() ) );
     }
   }
 
@@ -864,7 +868,8 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
   if ( mCalendar->hasChangeRights( node->mTodo ) ) {
     Todo::Ptr oldTodo( todo->clone() );
-    CalendarSupport::IncidenceChanger::WhatChanged modified = CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED;
+    CalendarSupport::IncidenceChanger::WhatChanged modified =
+      CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED;
 
     if ( role == Qt::CheckStateRole && index.column() == 0 ) {
       todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked );
@@ -922,8 +927,9 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
     return true;
   } else {
-    if ( !( role == Qt::CheckStateRole && index.column() == 0 ) )
+    if ( !( role == Qt::CheckStateRole && index.column() == 0 ) ) {
       KOHelper::showSaveIncidenceErrorMsg( 0, todo ); //TODO pass parent
+    }
     return false;
   }
 }
@@ -1007,7 +1013,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       Todo::Ptr oldTodo = Todo::Ptr( todo->clone() );
       // destTodo is empty when we drag a to-do out of a relationship
       todo->setRelatedTo( destTodo ? destTodo->uid() : QString() );
-      mChanger->changeIncidence( oldTodo, ttTodo->mTodo, CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
+      mChanger->changeIncidence( oldTodo, ttTodo->mTodo,
+                                 CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
 
       // again, no need to emit dataChanged, that's done by processChange
       return true;
@@ -1042,7 +1049,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
             }
           }
         }
-        mChanger->changeIncidence( oldTodo, node->mTodo, CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
+        mChanger->changeIncidence( oldTodo, node->mTodo,
+                                   CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
         return true;
       }
     }

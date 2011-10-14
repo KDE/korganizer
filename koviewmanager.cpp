@@ -574,7 +574,7 @@ void KOViewManager::selectNextX()
 void KOViewManager::showTodoView()
 {
   if ( !mTodoView ) {
-    mTodoView = new KOTodoView( false /*not sidebar*/, mMainView->viewStack() );
+    mTodoView = new KOTodoView( false/*not sidebar*/, mMainView->viewStack() );
     mTodoView->setCalendar( mMainView->calendar() );
     mTodoView->setIdentifier( "DefaultTodoView" );
     mTodoView->setCalendar( mMainView->calendar() );
@@ -677,7 +677,7 @@ void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
 
 void KOViewManager::addChange( EventViews::EventView::Change change )
 {
-  foreach( BaseView *view, mViews ) {
+  foreach ( BaseView *view, mViews ) {
     if ( view ) {
       view->setChanges( view->changes() | change );
     }

@@ -195,7 +195,7 @@ void MonthView::showIncidences( const Akonadi::Item::List &incidenceList, const 
   d->mMonthView->showIncidences( incidenceList, date );
 }
 
-void MonthView::changeIncidenceDisplay( const Akonadi::Item &item , int mode )
+void MonthView::changeIncidenceDisplay( const Akonadi::Item &item, int mode )
 {
   d->mMonthView->changeIncidenceDisplay( item, mode );
 }
@@ -205,11 +205,9 @@ void MonthView::updateConfig()
   d->mMonthView->updateConfig();
 }
 
-
-
 int MonthView::maxDatesHint() const
 {
-  return 6*7;
+  return 6 * 7;
 }
 
 Akonadi::Item::List MonthView::selectedIncidences()
@@ -222,7 +220,8 @@ void MonthView::setTypeAheadReceiver( QObject *o )
   d->mMonthView->setTypeAheadReceiver( o );
 }
 
-void MonthView::setDateRange( const KDateTime &start, const KDateTime &end, const QDate &preferredMonth )
+void MonthView::setDateRange( const KDateTime &start, const KDateTime &end,
+                              const QDate &preferredMonth )
 {
   d->mMonthView->setDateRange( start, end, preferredMonth );
 }
@@ -237,4 +236,11 @@ void MonthView::setCalendar( CalendarSupport::Calendar *cal )
 void MonthView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   d->mMonthView->setIncidenceChanger( changer );
+}
+
+void MonthView::showDates( const QDate &start, const QDate &end, const QDate &preferredMonth )
+{
+  Q_UNUSED( start );
+  Q_UNUSED( end );
+  Q_UNUSED( preferredMonth );
 }

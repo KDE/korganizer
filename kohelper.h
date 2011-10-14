@@ -68,13 +68,13 @@ namespace KOHelper
   */
   KORGANIZERPRIVATE_EXPORT int yearDiff( const QDate &start, const QDate &end );
 
-
   /**
     Return true if it's the standard calendar
   */
   KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Entity::Id &id );
 
-  KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg( QWidget *parent, const KCalCore::Incidence::Ptr &incidence );
+  KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(
+    QWidget *parent, const KCalCore::Incidence::Ptr &incidence );
 }
 
 #endif

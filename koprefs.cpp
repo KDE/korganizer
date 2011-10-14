@@ -50,11 +50,12 @@
 
 using namespace KPIMIdentities;
 
-class KOPrefsPrivate {
+class KOPrefsPrivate
+{
   public:
     KOPrefsPrivate() : prefs( new KOPrefs ) {}
     ~KOPrefsPrivate() { delete prefs; }
-    KOPrefs* prefs;
+    KOPrefs *prefs;
 };
 
 K_GLOBAL_STATIC( KOPrefsPrivate, sInstance )

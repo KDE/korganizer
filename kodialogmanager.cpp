@@ -145,7 +145,8 @@ void KODialogManager::showArchiveDialog()
 {
 #ifndef KORG_NOARCHIVE
   if ( !mArchiveDialog ) {
-    mArchiveDialog = new CalendarSupport::ArchiveDialog( mMainView->calendar(), mMainView->incidenceChanger() );
+    mArchiveDialog =
+      new CalendarSupport::ArchiveDialog( mMainView->calendar(), mMainView->incidenceChanger() );
     connect( mArchiveDialog, SIGNAL(eventsDeleted()),
              mMainView, SLOT(updateView()) );
     connect( mArchiveDialog, SIGNAL(autoArchivingSettingsModified()),
@@ -175,20 +176,22 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
   mFilterEditDialog->raise();
 }
 
-IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi::Item& item )
+IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi::Item &item )
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     return 0;
   }
 
-  IncidenceEditorNG::IncidenceDialog *dialog = IncidenceEditorNG::IncidenceDialogFactory::create( false/*needs initial saving?*/,
-                                                                                                  incidence->type(), mMainView );
+  IncidenceEditorNG::IncidenceDialog *dialog =
+    IncidenceEditorNG::IncidenceDialogFactory::create( false/*needs initial saving?*/,
+                                                       incidence->type(), mMainView );
 
   return dialog;
 }
 
-void KODialogManager::connectTypeAhead( IncidenceEditorNG::IncidenceDialog *dialog, KOEventView *view )
+void KODialogManager::connectTypeAhead( IncidenceEditorNG::IncidenceDialog *dialog,
+                                        KOEventView *view )
 {
   if ( dialog && view ) {
     view->setTypeAheadReceiver( dialog->typeAheadReceiver() );
@@ -222,10 +225,8 @@ void KODialogManager::updateSearchDialog()
 void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
-
-    CategoryConfig* cc = new CategoryConfig( KOPrefs::instance(), this );
-    mCategoryEditDialog =
-      new IncidenceEditorNG::CategoryEditDialog( cc, mMainView );
+    CategoryConfig *cc = new CategoryConfig( KOPrefs::instance(), this );
+    mCategoryEditDialog = new IncidenceEditorNG::CategoryEditDialog( cc, mMainView );
     mCategoryEditDialog->setModal( true );
     mCategoryEditDialog->setHelp( "categories-view", "korganizer" );
     connect( mMainView, SIGNAL(categoriesChanged()),

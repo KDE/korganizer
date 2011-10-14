@@ -1,20 +1,20 @@
 /*
-    Copyright (C) 2011 Sérgio Martins <iamsergio@gmail.com>
+  Copyright (C) 2011 Sérgio Martins <iamsergio@gmail.com>
 
-    This library is free software; you can redistribute it and/or modify it
-    under the terms of the GNU Library General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or (at your
-    option) any later version.
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Library General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or (at your
+  option) any later version.
 
-    This library is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library General Public
-    License for more details.
+  This library is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library General Public
+  License for more details.
 
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to the
-    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-    02110-1301, USA.
+  You should have received a copy of the GNU Library General Public License
+  along with this library; see the file COPYING.LIB.  If not, write to the
+  Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
 */
 
 #include "kitemiconcheckcombo.h"
@@ -28,7 +28,8 @@
 
 using namespace EventViews;
 
-class KItemIconCheckCombo::Private {
+class KItemIconCheckCombo::Private
+{
   public:
     Private( ViewType viewType ) : mViewType( viewType )
     {
@@ -37,9 +38,8 @@ class KItemIconCheckCombo::Private {
     KItemIconCheckCombo::ViewType mViewType;
 };
 
-KItemIconCheckCombo::KItemIconCheckCombo( ViewType viewType,
-                                          QWidget *parent ): KPIM::KCheckComboBox( parent ),
-                                                             d( new Private( viewType ) )
+KItemIconCheckCombo::KItemIconCheckCombo( ViewType viewType, QWidget *parent )
+  : KPIM::KCheckComboBox( parent ), d( new Private( viewType ) )
 {
   addItem( "Calendar's custom icon" );
   addItem( KOGlobals::self()->smallIcon( "view-calendar-tasks" ), i18n( "To-do" ) );
@@ -49,7 +49,8 @@ KItemIconCheckCombo::KItemIconCheckCombo( ViewType viewType,
   addItem( KOGlobals::self()->smallIcon( "object-locked" ), i18n( "Read Only" ) );
   addItem( KOGlobals::self()->smallIcon( "mail-reply-sender" ), i18n( "Needs Reply" ) );
   addItem( KOGlobals::self()->smallIcon( "meeting-attending" ), i18n( "Attending" ) );
-  addItem( KOGlobals::self()->smallIcon( "meeting-attending-tentative" ), i18n( "Maybe Attending" ) );
+  addItem( KOGlobals::self()->smallIcon( "meeting-attending-tentative" ),
+                                         i18n( "Maybe Attending" ) );
   addItem( KOGlobals::self()->smallIcon( "meeting-organizer" ), i18n( "Organizer" ) );
 
   // Agenda view doesn't support journals yet
@@ -71,9 +72,12 @@ KItemIconCheckCombo::~KItemIconCheckCombo()
 void KItemIconCheckCombo::setCheckedIcons( const QSet<EventViews::EventView::ItemIcon> &icons )
 {
   const int itemCount = count();
-  for( int i=0; i<itemCount; ++i ) {
+  for ( int i=0; i<itemCount; ++i ) {
     if ( itemEnabled( i ) ) {
-      setItemCheckState( i, icons.contains( static_cast<EventView::ItemIcon>( i )  ) ? Qt::Checked : Qt::Unchecked );
+      setItemCheckState( i,
+                         icons.contains( static_cast<EventView::ItemIcon>( i ) ) ?
+                           Qt::Checked :
+                           Qt::Unchecked );
     } else {
       setItemCheckState( i, Qt::Unchecked );
     }
@@ -84,10 +88,11 @@ QSet<EventViews::EventView::ItemIcon> KItemIconCheckCombo::checkedIcons() const
 {
   QSet<EventViews::EventView::ItemIcon> icons;
   const int itemCount = count();
-  for( int i=0; i<itemCount; ++i ) {
+  for ( int i=0; i<itemCount; ++i ) {
     const QVariant value = itemCheckState( i );
-    if ( value.toBool() )
+    if ( value.toBool() ) {
       icons.insert( static_cast<EventView::ItemIcon>( i ) );
+    }
   }
   return icons;
 }

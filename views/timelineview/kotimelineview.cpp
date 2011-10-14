@@ -69,7 +69,6 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   connect( d->mTimeLineView, SIGNAL(shiftedEvent(QDate,QDate)),
            SIGNAL(shiftedEvent(QDate,QDate)) );
 
-
   connect( d->mTimeLineView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
 
