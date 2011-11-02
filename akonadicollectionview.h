@@ -91,12 +91,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     void defaultResourceChanged( const Akonadi::Collection & );
     void colorsChanged();
 
-  private:
+  private Q_SLOTS:
     void updateView();
     void updateMenu();
-
-  private Q_SLOTS:
-    void selectionChanged();
 
     void newCalendar();
     void newCalendarDone( KJob * );
