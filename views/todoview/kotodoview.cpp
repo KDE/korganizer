@@ -77,6 +77,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSortRole( Qt::EditRole );
 
+  // This disconnect is a workaround against QTBUG-22667
+  disconnect( sModel, SIGNAL(destroyed()), mProxyModel, 0  );
+
   mSidebarView = sidebarView;
   if ( !mSidebarView ) {
     mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
