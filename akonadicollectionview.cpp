@@ -283,7 +283,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
     mActionManager->setContextText( Akonadi::StandardActionManager::CollectionProperties,
                                     Akonadi::StandardActionManager::DialogTitle,
-                                    i18nc( "@title:window", "Properties of Calendar Folder %1" ) );
+                                    ki18nc( "@title:window", "Properties of Calendar Folder %1" ) );
 
     mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->
       setProperty( "ContentMimeTypes", QStringList( KCalCore::Event::eventMimeType() ) );
