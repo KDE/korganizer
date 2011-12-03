@@ -800,8 +800,6 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Akonadi::Item::List &e
   it = eventList.begin();
   while ( it != eventList.end() ) {
     Event::Ptr currEvent = *it;
-    itold = it;
-    ++it;
     if ( ( excludeConfidential && currEvent->secrecy() == Incidence::SecrecyConfidential ) ||
          ( excludePrivate      && currEvent->secrecy() == Incidence::SecrecyPrivate ) ) {
       continue;
@@ -819,7 +817,9 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Akonadi::Item::List &e
         }
         multiDayStr += currEvent->summary();
       }
-      eventList.erase( itold );
+      it = eventList.erase( it );
+    } else {
+      ++it;
     }
   }
 
