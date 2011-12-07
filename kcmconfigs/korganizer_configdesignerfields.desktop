@@ -142,3 +142,7 @@ Comment[x-test]=xxConfigure the Custom Pagesxx
 Comment[zh_CN]=配置定制页
 Comment[zh_TW]=設定 Custom Pages
 X-KDE-Keywords=korganizer, configure, settings, custom fields
+X-KDE-Keywords[hu]=korganizer, beállítás, beállítások, egyéni mezők
+X-KDE-Keywords[pt_BR]=korganizer,configurar,configurações,campos personalizados
+X-KDE-Keywords[uk]=korganizer,configure,settings,custom fields,налаштування,параметри,параметр,нетиповий,поле,нетипові,поля
+X-KDE-Keywords[x-test]=xxkorganizer, configure, settings, custom fieldsxx

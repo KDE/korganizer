@@ -143,3 +143,7 @@ Comment[x-test]=xxKOrganizer Plugin Configurationxx
 Comment[zh_CN]=KOrganizer 插件配置
 Comment[zh_TW]=KOrganizer外掛程式設定
 X-KDE-Keywords=korganizer,plugin,module
+X-KDE-Keywords[hu]=korganizer,bővítmény,modul
+X-KDE-Keywords[pt_BR]=korganizer,plug-in,módulo
+X-KDE-Keywords[uk]=korganizer,plugin,module,додаток,додатки,модуль,модулі
+X-KDE-Keywords[x-test]=xxkorganizer,plugin,modulexx
