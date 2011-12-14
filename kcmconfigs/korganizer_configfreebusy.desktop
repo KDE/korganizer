@@ -139,6 +139,7 @@ Comment[x-test]=xxKOrganizer Free/Busy Configurationxx
 Comment[zh_CN]=KOrganizer 空闲/忙碌配置
 Comment[zh_TW]=KOrganizer 行程資訊設定
 X-KDE-Keywords=korganizer,freebusy,scheduling
+X-KDE-Keywords[de]=KOrganizer,Frei/Beschäftigt,Frei/Belegt,Ablaufplanung
 X-KDE-Keywords[es]=korganizer, disponibilidad, agenda
 X-KDE-Keywords[hu]=korganizer,szabadelfoglalt,ütemezés
 X-KDE-Keywords[ia]=korganizer,libereoccupate,planification

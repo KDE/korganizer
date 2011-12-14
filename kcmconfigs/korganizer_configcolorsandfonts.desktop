@@ -108,6 +108,7 @@ Comment[x-test]=xxKOrganizer Colors and Fonts Configurationxx
 Comment[zh_CN]=KOrganizer 颜色和字体配置
 Comment[zh_TW]=KOrganizer 顏色與字型設定
 X-KDE-Keywords=korganizer,colors,fonts
+X-KDE-Keywords[de]=KOrganizer,Farben,Schriftarten
 X-KDE-Keywords[es]=korganizer, colores, tipos de letra
 X-KDE-Keywords[hu]=korganizer,színek,betűtípusok
 X-KDE-Keywords[ia]=korganizer,colores,fonts
