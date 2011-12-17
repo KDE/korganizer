@@ -1324,7 +1324,6 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
     drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly,
                     mSingleLineLimit, mShowNoteLines, mIncludeDescription,
                     mExcludeConfidential, mExcludePrivate, monthBox );
-    drawFooter( p, monthBox );
 
     drawFooter( p, footerBox );
 
