@@ -263,16 +263,6 @@ CalPrinter::PrintType KOAgendaView::printType() const
   }
 }
 
-void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpos, bool allDay )
-{
-  d->mAgendaView->slotTodosDropped( items, gpos, allDay );
-}
-
-void KOAgendaView::slotTodosDropped( const Todo::List &items, const QPoint &gpos, bool allDay )
-{
-  d->mAgendaView->slotTodosDropped( items, gpos, allDay );
-}
-
 void KOAgendaView::readSettings()
 {
   d->mAgendaView->readSettings();

@@ -105,11 +105,6 @@ class KOAgendaView : public KOEventView
     void readSettings( KConfig * );
     void writeSettings( KConfig * );
 
-    /** reschedule the todo  to the given x- and y- coordinates.
-        Third parameter determines all-day (no time specified) */
-    void slotTodosDropped( const Todo::List  &todos, const QPoint &, bool );
-    void slotTodosDropped( const QList<KUrl> &todos, const QPoint &, bool );
-
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
