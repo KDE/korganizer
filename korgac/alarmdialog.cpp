@@ -968,7 +968,7 @@ void AlarmDialog::removeFromConfig( const QList<Akonadi::Item::Id> &ids )
 
   genGroup.writeEntry( "Reminders", newReminders.count() );
 
-  //Write everything except those which have an uid we dont want
+  //Write everything except those which have an uid we don't want
   for ( int i = 0; i < newReminders.count(); ++i ) {
     const QString group( QString( "Incidence-%1" ).arg( i + 1 ) );
     KConfigGroup incGroup( config, group );
