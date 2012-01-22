@@ -198,11 +198,7 @@ void ActionManager::init()
     mAutoExportTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoExportInterval );
   }
 
-  // per default (no calendars activated) disable actions
-  slotResourcesChanged( false );
-
   // set up autoSaving stuff
-
   mAutoArchiveTimer = new QTimer( this );
   mAutoArchiveTimer->setSingleShot( true );
   connect( mAutoArchiveTimer, SIGNAL(timeout()), SLOT(slotAutoArchive()) );
@@ -296,7 +292,6 @@ void ActionManager::createCalendarAkonadi()
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
   mCollectionView->setObjectName( "Resource View" );
-  connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)));
   connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
   connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)),
            SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
@@ -822,19 +817,6 @@ void ActionManager::initActions()
   QAction *a = mACollection->addAction( KStandardAction::TipofDay, this,
                                         SLOT(showTip()) );
   mACollection->addAction( "help_tipofday", a );
-}
-
-void ActionManager::slotResourcesChanged( bool enabled )
-{
-  mNewEventAction->setEnabled( enabled );
-  mNewTodoAction->setEnabled( enabled );
-
-  Akonadi::Item item = mCalendarView->currentSelection();
-  mNewSubtodoAction->setEnabled( enabled && CalendarSupport::hasTodo( item ) );
-
-  mNewJournalAction->setEnabled( enabled );
-
-  mCalendarView->setCreatingEnabled( enabled );
 }
 
 void ActionManager::setItems( const QStringList &lst, int idx )

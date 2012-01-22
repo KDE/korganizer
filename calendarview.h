@@ -685,15 +685,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     */
     QDate activeDate( bool fallbackToToday = false );
 
-    /**
-     * Inhibits or allows the creation of new incidences.
-     *
-     * @param enabled if false the user won't be able to create new incidences.
-     * A use case is when there aren't any resources checked and the user double clicks
-     * agenda view.
-     */
-    void setCreatingEnabled( bool enabled );
-
   protected:
     void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
