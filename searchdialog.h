@@ -27,17 +27,23 @@
 #define SEARCHDIALOG_H
 
 #include "ui_searchdialog_base.h"
-#include <kcalcore/incidence.h>
+
 #include <KDialog>
+
+class CalendarView;
 
 namespace Akonadi {
   class Item;
 }
 
-using namespace KCalCore;
+namespace KCalCore {
+  class Incidence;
+}
 
-class CalendarView;
-class KOListView;
+namespace EventViews {
+  class ListView;
+}
+
 class QRegExp;
 
 class SearchDialog : public KDialog, private Ui::SearchDialog
@@ -50,7 +56,10 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
     void updateView();
 
   public slots:
-    void changeIncidenceDisplay( Incidence *, int ) { updateView(); }
+    void changeIncidenceDisplay( KCalCore::Incidence *, int )
+    {
+      updateView();
+    }
 
   protected slots:
     void doSearch();
@@ -66,7 +75,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
 
     CalendarView *m_calendarview;
     QList<Akonadi::Item> mMatchedEvents;
-    KOListView *listView;
+    EventViews::ListView *listView;
 };
 
 #endif

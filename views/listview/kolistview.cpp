@@ -147,21 +147,6 @@ DateList KOListView::selectedIncidenceDates()
   return mListView->selectedIncidenceDates();
 }
 
-void KOListView::showDates( bool show )
-{
-  mListView->showDates( show );
-}
-
-void KOListView::showDates()
-{
-  mListView->showDates();
-}
-
-void KOListView::hideDates()
-{
-  mListView->hideDates();
-}
-
 void KOListView::updateView()
 {
   mListView->updateView();

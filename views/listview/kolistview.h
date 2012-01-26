@@ -61,8 +61,6 @@ class KOListView : public KOEventView
     virtual Akonadi::Item::List selectedIncidences();
     virtual DateList selectedIncidenceDates();
 
-    void showDates( bool show );
-
     // Shows all incidences of the calendar
     void showAll();
 
@@ -84,9 +82,6 @@ class KOListView : public KOEventView
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void clearSelection();
-
-    void showDates();
-    void hideDates();
 
     void changeIncidenceDisplay( const Akonadi::Item &, int );
 

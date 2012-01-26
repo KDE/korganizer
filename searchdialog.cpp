@@ -27,7 +27,8 @@
 #include "searchdialog.h"
 #include "koglobals.h"
 #include "calendarview.h"
-#include "views/listview/kolistview.h"
+
+#include <calendarviews/eventviews/list/listview.h>
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/kcalprefs.h>
@@ -51,9 +52,12 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   setupUi( mainwidget );
   setMainWidget( mainwidget );
 
+  resize( QSize( 775, 600 ).expandedTo( minimumSizeHint() ) );
+
   // Set nice initial start and end dates for the search
-  mStartDate->setDate( QDate::currentDate() );
-  mEndDate->setDate( QDate::currentDate().addYears( 1 ) );
+  const QDate currDate = QDate::currentDate();
+  mStartDate->setDate( currDate );
+  mEndDate->setDate( currDate.addYears( 1 ) );
 
   connect( mSearchEdit, SIGNAL(textChanged(QString)),
            this, SLOT(searchTextChanged(QString)) );
@@ -61,8 +65,7 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   // Results list view
   QVBoxLayout *layout = new QVBoxLayout;
   layout->setMargin( 0 );
-  listView = new KOListView( m_calendarview->calendar(), this );
-  listView->showDates();
+  listView = new EventViews::ListView( m_calendarview->calendar(), this );
   layout->addWidget( listView );
   mListViewFrame->setLayout( layout );
 
