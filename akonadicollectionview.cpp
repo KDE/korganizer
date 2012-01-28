@@ -136,8 +136,8 @@ class ColorProxyModel : public QSortFilterProxyModel
                !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty() ) {
             return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
           } else {
-            QColor col = KOHelper::resourceColor( collection );
-            return col.isValid() ? col : QVariant();
+            const QColor color = KOHelper::resourceColor( collection );
+            return color.isValid() ? color : QVariant();
           }
         }
       } else if ( role == Qt::FontRole ) {
