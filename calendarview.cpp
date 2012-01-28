@@ -72,8 +72,8 @@
 #include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/kcalprefs.h>
 
-#include <akonadi/control.h>
-#include <akonadi/collectionpropertiesdialog.h>
+#include <Akonadi/Control>
+#include <Akonadi/CollectionPropertiesDialog>
 
 #include <KCalCore/FileStorage>
 #include <KCalCore/Calendar>
@@ -90,7 +90,7 @@
 
 #include <KPIMIdentities/IdentityManager>
 
-#include <mailtransport/transportmanager.h>
+#include <Mailtransport/TransportManager>
 
 #include <KDialog>
 #include <KFileDialog>
@@ -147,7 +147,7 @@ CalendarView::CalendarView( QWidget *parent )
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( 0 );
-  mEventViewer = new CalendarSupport::IncidenceViewer( mEventViewerBox );
+  mEventViewer = new CalendarSupport::IncidenceViewer( mCalendar, mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
@@ -302,6 +302,8 @@ void CalendarView::setCalendar( CalendarSupport::Calendar *cal )
   mDateNavigatorContainer->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
+
+  mEventViewer->setCalendar( mCalendar );
 }
 
 void CalendarView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
@@ -2266,7 +2268,7 @@ void CalendarView::takeOverCalendar()
 {
   const Akonadi::Item::List items = mCalendar->rawIncidences();
 
-  Q_FOREACH( const Akonadi::Item &item, items ) {
+  Q_FOREACH ( const Akonadi::Item &item, items ) {
     Incidence::Ptr i = CalendarSupport::incidence( item );
     i->setOrganizer( Person::Ptr( new Person( CalendarSupport::KCalPrefs::instance()->fullName(),
                                               CalendarSupport::KCalPrefs::instance()->email() ) ) );
@@ -2447,7 +2449,7 @@ void CalendarView::pasteIncidence()
 
 void CalendarView::showIncidence( const Akonadi::Item &item )
 {
-  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( mCalendar, this );
   eventViewer->setIncidence( item, QDate() );
   // Disable the Edit button for read-only Incidences.
   if ( !mCalendar->hasChangeRights( item ) ) {

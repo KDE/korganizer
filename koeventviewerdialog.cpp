@@ -24,17 +24,18 @@
 */
 
 #include "koeventviewerdialog.h"
-
 #include "korganizerinterface.h"
 
-#include <akonadi/item.h>
-#include <calendarsupport/next/incidenceviewer.h>
+#include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
+#include <calendarsupport/next/incidenceviewer.h>
 
-#include <KDE/KLocale>
-#include <ktoolinvocation.h>
+#include <Akonadi/Item>
 
-KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
+#include <KLocale>
+#include <KToolInvocation>
+
+KOEventViewerDialog::KOEventViewerDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18n( "Event Viewer" ) );
@@ -42,7 +43,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent )
   setModal( false );
   setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( "document-edit" ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
-  mEventViewer = new CalendarSupport::IncidenceViewer( this );
+  mEventViewer = new CalendarSupport::IncidenceViewer( calendar, this );
   setMainWidget( mEventViewer );
 
   resize( QSize( 500, 520 ).expandedTo( minimumSizeHint() ) );
