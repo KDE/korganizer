@@ -78,6 +78,23 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
 
 namespace {
 
+static bool hasCompatibleMimeTypes( const Akonadi::Collection &collection )
+{
+  static QStringList goodMimeTypes;
+
+  if ( goodMimeTypes.isEmpty() ) {
+    goodMimeTypes << QLatin1String( "text/calendar" ) << KCalCore::Event::eventMimeType()
+                  << KCalCore::Todo::todoMimeType() << KCalCore::Journal::journalMimeType();
+  }
+
+  for( int i=0; i<goodMimeTypes.count(); ++i ) {
+    if ( collection.contentMimeTypes().contains( goodMimeTypes.at( i ) ) )
+      return true;
+  }
+
+  return false;
+}
+
 class ColorDelegate : public QStyledItemDelegate
 {
   public:
@@ -131,7 +148,7 @@ class ColorProxyModel : public QSortFilterProxyModel
       if ( role == Qt::DecorationRole ) {
         const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
 
-        if ( !collection.contentMimeTypes().isEmpty() ) {
+        if ( hasCompatibleMimeTypes( collection ) ) {
           if ( collection.hasAttribute<Akonadi::EntityDisplayAttribute>() &&
                !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty() ) {
             return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
