@@ -692,7 +692,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case DescriptionColumn:
       return QVariant( todo->description() );
     case CalendarColumn:
-      return QVariant( CalendarSupport::displayName( node->mTodo.parentCollection() ) );
+      return QVariant( CalendarSupport::displayName( mCalendar, node->mTodo.parentCollection() ) );
     }
     return QVariant();
   }
@@ -714,7 +714,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case DescriptionColumn:
       return QVariant( todo->description() );
     case CalendarColumn:
-      return QVariant( CalendarSupport::displayName( node->mTodo.parentCollection() ) );
+      return QVariant( CalendarSupport::displayName( mCalendar, node->mTodo.parentCollection() ) );
     }
     return QVariant();
   }
@@ -723,7 +723,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
       return QVariant( IncidenceFormatter::toolTipStr(
-                         CalendarSupport::displayName( node->mTodo.parentCollection() ),
+                         CalendarSupport::displayName( mCalendar, node->mTodo.parentCollection() ),
                          todo, QDate(), true,
                          CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
     } else {
