@@ -33,11 +33,11 @@
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
-#include <akonadi/itemfetchscope.h>
-#include <akonadi/itemfetchjob.h>
+#include <Akonadi/ItemFetchScope>
+#include <Akonadi/ItemFetchJob>
 
-#include <kcalutils/icaldrag.h>
-#include <kcalutils/vcaldrag.h>
+#include <KCalUtils/ICalDrag>
+#include <KCalUtils/VCalDrag>
 
 #include <KCalendarSystem>
 #include <KIcon>
@@ -688,7 +688,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     } else if ( keyboardModifiers & Qt::ShiftModifier ) {
       action = DRAG_MOVE;
     } else {
-      QAction *copy = 0, *move = 0, *cancel = 0;
+      QAction *copy = 0, *move = 0;
       KMenu *menu = new KMenu( this );
       if ( exist ) {
         move = menu->addAction( KOGlobals::self()->smallIcon( "edit-paste" ), i18n( "&Move" ) );
@@ -699,7 +699,8 @@ void KODayMatrix::dropEvent( QDropEvent *e )
         move = menu->addAction( KOGlobals::self()->smallIcon( "list-add" ), i18n( "&Add" ) );
       }
       menu->addSeparator();
-      cancel = menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
+      /*QAction *cancel =*/
+      menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
       QAction *a = menu->exec( QCursor::pos() );
       if ( a == copy ) {
         action = DRAG_COPY;

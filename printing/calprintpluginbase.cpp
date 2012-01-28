@@ -29,26 +29,25 @@
 #include "kohelper.h"
 #include "koglobals.h"
 
-#include <calendarviews/eventviews/agenda/cellitem.h>
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
+#include <calendarviews/eventviews/agenda/cellitem.h>
 
-#include <KDebug>
 #include <KCalendarSystem>
 #include <KConfigGroup>
+#include <KDebug>
 #include <KSystemTimeZones>
 #include <KWordWrap>
 
-#include <QPainter>
-#include <QLayout>
+#include <QAbstractTextDocumentLayout>
 #include <QFrame>
 #include <QLabel>
-#include <QtAlgorithms>
-#include <QTextDocumentFragment>
-#include <QTextDocument>
+#include <QLayout>
+#include <QPainter>
 #include <QTextCursor>
-#include <QAbstractTextDocumentLayout>
-#include <qmath.h> // qCeil
+#include <QTextDocument>
+#include <QTextDocumentFragment>
+#include <qmath.h> // qCeil krazy:exclude=camelcase since no QMath
 
 using namespace KCalCore;
 
@@ -786,7 +785,7 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Akonadi::Item::List &e
                                        bool excludeConfidential,
                                        bool excludePrivate )
 {
-  Event::List::Iterator it, itold;
+  Event::List::Iterator it;
   int offset = box.top();
   QString multiDayStr;
 
@@ -1545,7 +1544,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   QList<MonthEventStruct> monthentries;
 
   KDateTime::Spec timeSpec = KSystemTimeZones::local();
-  Q_FOREACH( const Akonadi::Item &item, events ) {
+  Q_FOREACH ( const Akonadi::Item &item, events ) {
     const Event::Ptr e = CalendarSupport::event( item );
     if ( !e ) {
       continue;
