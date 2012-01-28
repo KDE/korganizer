@@ -23,14 +23,8 @@
 #include "configdialog.h"
 #include "converter.h"
 #include "holiday.h"
-#include "parsha.h"
 
-#include <kcalendarsystem.h>
-#include <kconfig.h>
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <kpluginfactory.h>
-#include <kpluginloader.h>
+#include <KCalendarSystem>
 
 using namespace EventViews::CalendarDecoration;
 
@@ -74,7 +68,8 @@ Element::List Hebrew::createDayElements( const QDate &date )
   QStringList holidays = Holiday::findHoliday( hd, areWeInIsrael, showParsha,
                                                showChol, showOmer );
 
-  KCalendarSystem *cal = KCalendarSystem::create( "hebrew" );
+  KCalendarSystem *cal = KCalendarSystem::create( KLocale::HebrewCalendar );
+
   text = cal->formatDate( date, KLocale::Day, KLocale::LongNumber ) + ' ' + cal->monthName( date );
 
   foreach ( const QString &holiday, holidays ) {
