@@ -469,7 +469,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWhatsNextView()) );
 
-  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month View" ), this );
+  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
   mACollection->addAction( "view_month", action );
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showMonthView()) );
@@ -1235,7 +1235,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
   if ( KOGlobals::self()->holidays() ) {
     KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
                                         settings->dateStart().date(), settings->dateEnd().date() );
-    foreach ( KHolidays::Holiday holiday, holidays ) {
+    foreach ( const KHolidays::Holiday &holiday, holidays ) {
       exportJob->addHoliday( holiday.date(), holiday.text() );
     }
   }
