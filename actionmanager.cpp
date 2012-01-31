@@ -28,9 +28,12 @@
 */
 
 #include "actionmanager.h"
+#include "akonadicollectionview.h"
 #include "calendaradaptor.h"
 #include "calendarview.h"
 #include "history.h"
+#include "htmlexportjob.h"
+#include "htmlexportsettings.h"
 #include "importdialog.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
@@ -39,15 +42,9 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "reminderclient.h"
-#include "akonadicollectionview.h"
-#include "htmlexportjob.h"
-#include "htmlexportsettings.h"
-
-#include <KCalCore/FileStorage>
-
-#include <KMime/KMimeMessage>
 
 #include <calendarviews/eventviews/eventview.h>
+
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/calendarmodel.h>
@@ -63,54 +60,56 @@
 #include <incidenceeditor-ng/groupwareintegration.h>
 
 #include <akonadi_next/kcolumnfilterproxymodel.h>
+using namespace Future;
 
-#include <Akonadi/EntityTreeModel>
-#include <Akonadi/ChangeRecorder>
-#include <Akonadi/Session>
-#include <akonadi/entitymimetypefiltermodel.h>
-#include <akonadi/entitydisplayattribute.h>
-#include <Akonadi/ItemFetchScope>
-#include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstanceCreateJob>
-#include <akonadi/etmviewstatesaver.h>
+#include <Akonadi/AgentManager>
+#include <Akonadi/ChangeRecorder>
+#include <Akonadi/ETMViewStateSaver>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/EntityMimeTypeFilterModel>
+#include <Akonadi/EntityTreeModel>
+#include <Akonadi/EntityTreeView>
+#include <Akonadi/ItemFetchScope>
+#include <Akonadi/Session>
 
-#include <kcheckableproxymodel.h>
+#include <KCalCore/FileStorage>
+using namespace KCalCore;
+
 #include <KHolidays/Holidays>
-#include <kmimetypetrader.h>
-#include <kio/job.h>
+
+#include <KMime/KMimeMessage>
+
+#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
+
 #include <KAction>
 #include <KActionCollection>
+#include <KCmdLineArgs>
 #include <KFileDialog>
 #include <KMenu>
+#include <KMenuBar>
+#include <KMimeTypeTrader>
 #include <KNotification>
 #include <KProcess>
 #include <KRecentFilesAction>
 #include <KSelectAction>
+#include <KSelectionProxyModel>
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStandardDirs>
 #include <KSystemTimeZone>
 #include <KTemporaryFile>
 #include <KTipDialog>
-#include <KMenuBar>
 #include <KToggleAction>
 #include <KWindowSystem>
+#include <KIO/Job>
 #include <KIO/NetAccess>
-#include <kcmdlineargs.h>
-#include <knewstuff3/downloaddialog.h>
-
-#include <kselectionproxymodel.h>
+#include <KNS3/DownloadDialog>
 
 #include <QApplication>
-#include <QTimer>
-#include <QDebug>
 #include <QTemporaryFile>
-
-#include <akonadi/entitytreeview.h>
+#include <QTimer>
 #include <QVBoxLayout>
-
-using namespace Future;
-using namespace KCalCore;
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -2067,7 +2066,8 @@ void ActionManager::slotAutoArchive()
 
   mAutoArchiveTimer->stop();
   CalendarSupport::EventArchiver archiver;
-  connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
+  connect( &archiver, SIGNAL(eventsDeleted()),  //AKONADI_PORT: this signal
+           mCalendarView, SLOT(updateView()) ); //shouldn't be needed anymore?
   //AKONADI_PORT avoid this local incidence changer copy...
   CalendarSupport::IncidenceChanger changer( mCalendar, 0, Akonadi::Collection().id() );
   archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
