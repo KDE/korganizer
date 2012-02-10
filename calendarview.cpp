@@ -1003,23 +1003,23 @@ void CalendarView::edit_paste()
 
   KOrg::BaseView *curView = mViewManager->currentView();
 
-  KOAgendaView *aView = mViewManager->agendaView();
-  MonthView *mView = mViewManager->monthView();
+  KOAgendaView *agendaView = mViewManager->agendaView();
+  MonthView *monthView = mViewManager->monthView();
 
   if ( !curView ) {
     return;
   }
 
-  if ( curView == aView && aView->selectionStart().isValid() ) {
-    date = aView->selectionStart().date();
-    endDT = aView->selectionEnd();
-    useEndTime = !aView->selectedIsSingleCell();
-    if ( !aView->selectedIsAllDay() ) {
-      time = aView->selectionStart().time();
+  if ( curView == agendaView && agendaView->selectionStart().isValid() ) {
+    date = agendaView->selectionStart().date();
+    endDT = agendaView->selectionEnd();
+    useEndTime = !agendaView->selectedIsSingleCell();
+    if ( !agendaView->selectedIsAllDay() ) {
+      time = agendaView->selectionStart().time();
       timeSet = true;
     }
-  } else if ( curView == mView && mView->selectionStart().isValid() ) {
-    date = mView->selectionStart().date();
+  } else if ( curView == monthView && monthView->selectionStart().isValid() ) {
+    date = monthView->selectionStart().date();
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
@@ -1068,9 +1068,9 @@ void CalendarView::edit_paste()
       Event::Ptr pastedEvent = ( *it ).staticCast<Event>();
       // only use selected area if event is of the same type (all-day or non-all-day
       // as the current selection is
-      if ( aView && endDT.isValid() && useEndTime ) {
-        if ( ( pastedEvent->allDay() && aView->selectedIsAllDay() ) ||
-             ( !pastedEvent->allDay() && !aView->selectedIsAllDay() ) ) {
+      if ( agendaView && endDT.isValid() && useEndTime ) {
+        if ( ( pastedEvent->allDay() && agendaView->selectedIsAllDay() ) ||
+             ( !pastedEvent->allDay() && !agendaView->selectedIsAllDay() ) ) {
           KDateTime kdt( endDT, CalendarSupport::KCalPrefs::instance()->timeSpec() );
           pastedEvent->setDtEnd( kdt.toTimeSpec( pastedEvent->dtEnd().timeSpec() ) );
         }
