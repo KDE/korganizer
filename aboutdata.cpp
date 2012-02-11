@@ -54,8 +54,9 @@ AboutData::AboutData()
   addAuthor( ki18n( "Preston Brown"),ki18n( "Original Author" ),
              "pbrown@kde.org" );
   addCredit( ki18n( "Richard Apodaca" ) );
-  addCredit( ki18n( "Mike McQuaid" ) );
+  addCredit( ki18n( "Björn Balazs" ) );
   addCredit( ki18n( "Jan-Pascal van Best" ) );
+  addCredit( ki18n( "Bertjan Broeksema" ) );
   addCredit( ki18n( "Laszlo Boloni" ) );
   addCredit( ki18n( "Barry Benowitz" ) );
   addCredit( ki18n( "Christopher Beard" ) );
@@ -71,6 +72,7 @@ AboutData::AboutData()
   addCredit( ki18n( "Martin Koller" ) );
   addCredit( ki18n( "Uwe Koloska" ) );
   addCredit( ki18n( "Sergio Luis Martins" ) );
+  addCredit( ki18n( "Mike McQuaid" ) );
   addCredit( ki18n( "Glen Parker" ) );
   addCredit( ki18n( "Dan Pilone" ) );
   addCredit( ki18n( "Roman Rohr" ) );
