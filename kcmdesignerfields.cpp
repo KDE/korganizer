@@ -138,12 +138,6 @@ class PageItem : public QTreeWidgetItem
       return checkState( 0 ) == Qt::Checked;
     }
 
-/*  protected:
-    void paintBranches( QPainter *p, const QColorGroup & cg, int w, int y, int h )
-    {
-      Q3ListViewItem::paintBranches( p, cg, w, y, h );
-    }*/
-
   private:
     QString mName;
     QString mPath;
