@@ -6,6 +6,7 @@
   Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008 Ron Goodheart <rong.dev@gmail.com>
   Copyright (c) 2010 Laurent Montel <montel@kde.org>
+  Copyright (c) 2012 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -33,11 +34,10 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/visitor.h>
-#include <kcalcore/todo.h>
+#include <KCalCore/Visitor>
 
-#include <kcalutils/incidenceformatter.h>
-#include <kcalutils/stringify.h>
+#include <KCalUtils/IncidenceFormatter>
+#include <KCalUtils/Stringify>
 
 #include <KCalendarSystem>
 #include <KDateTime>
@@ -79,6 +79,7 @@ void CalPrintIncidence::readSettingsWidget()
       dynamic_cast<CalPrintIncidenceConfig *>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     mUseColors = cfg->mColors->isChecked();
+    mPrintFooter = cfg->mPrintFooter->isChecked();
     mShowOptions = cfg->mShowDetails->isChecked();
     mShowSubitemsNotes = cfg->mShowSubitemsNotes->isChecked();
     mShowAttendees = cfg->mShowAttendees->isChecked();
@@ -93,11 +94,12 @@ void CalPrintIncidence::setSettingsWidget()
       dynamic_cast<CalPrintIncidenceConfig *>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mColors->setChecked( mUseColors );
-    cfg->mShowDetails->setChecked(mShowOptions);
-    cfg->mShowSubitemsNotes->setChecked(mShowSubitemsNotes);
-    cfg->mShowAttendees->setChecked(mShowAttendees);
-    cfg->mShowAttachments->setChecked(mShowAttachments);
-    cfg->mShowNoteLines->setChecked(mShowNoteLines);
+    cfg->mPrintFooter->setChecked( mPrintFooter );
+    cfg->mShowDetails->setChecked( mShowOptions );
+    cfg->mShowSubitemsNotes->setChecked( mShowSubitemsNotes );
+    cfg->mShowAttendees->setChecked( mShowAttendees );
+    cfg->mShowAttachments->setChecked( mShowAttachments );
+    cfg->mShowNoteLines->setChecked( mShowNoteLines );
   }
 }
 
@@ -657,7 +659,9 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
            (*it)->categories().join( i18nc( "Spacer for the joined list of categories", ", " ) ),
            /*sameLine=*/true, /*expand=*/false, captionFont, textFont );
 
-    drawFooter( p, footerBox );
+    if ( mPrintFooter ) {
+      drawFooter( p, footerBox );
+    }
   }
   p.setFont( oldFont );
 }
@@ -703,6 +707,7 @@ void CalPrintDay::readSettingsWidget()
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
+    mPrintFooter = cfg->mPrintFooter->isChecked();
     mShowNoteLines = cfg->mShowNoteLines->isChecked();
     mExcludeTime = cfg->mExcludeTime->isChecked();
     mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
@@ -729,6 +734,7 @@ void CalPrintDay::setSettingsWidget()
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mColors->setChecked( mUseColors );
+    cfg->mPrintFooter->setChecked( mPrintFooter );
     cfg->mShowNoteLines->setChecked( mShowNoteLines );
     cfg->mExcludeTime->setChecked( mExcludeTime );
     cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
@@ -825,7 +831,9 @@ void CalPrintDay::print( QPainter &p, int width, int height )
                        mIncludeDescription, mExcludeTime, mExcludeConfidential,
                        mExcludePrivate );
       }
-      drawFooter( p, daysBox );
+      if ( mPrintFooter ) {
+        drawFooter( p, daysBox );
+      }
     }
     break;
 
@@ -925,7 +933,9 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     tlBox.setWidth( TIMELINE_WIDTH );
     drawTimeLine( p, curStartTime, curEndTime, tlBox );
 
-    drawFooter( p, footerBox );
+    if ( mPrintFooter ) {
+      drawFooter( p, footerBox );
+    }
 
     curDay = curDay.addDays( 1 );
     if ( curDay <= mToDate ) {
@@ -976,6 +986,7 @@ void CalPrintWeek::readSettingsWidget()
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
+    mPrintFooter = cfg->mPrintFooter->isChecked();
     mIncludeDescription = cfg->mIncludeDescription->isChecked();
     mExcludeTime = cfg->mExcludeTime->isChecked();
     mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
@@ -1001,6 +1012,7 @@ void CalPrintWeek::setSettingsWidget()
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mColors->setChecked( mUseColors );
+    cfg->mPrintFooter->setChecked( mPrintFooter );
     cfg->mIncludeDescription->setChecked( mIncludeDescription );
     cfg->mExcludeTime->setChecked( mExcludeTime );
     cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
@@ -1107,7 +1119,9 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
                 mShowNoteLines, mIncludeDescription,
                 mExcludeConfidential, mExcludePrivate );
 
-      drawFooter( p, footerBox );
+      if ( mPrintFooter ) {
+        drawFooter( p, footerBox );
+      }
 
       curWeek = curWeek.addDays( 7 );
       if ( curWeek <= toWeek ) {
@@ -1134,7 +1148,9 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
                      mIncludeDescription, mExcludeTime, mExcludeConfidential,
                      mExcludePrivate );
 
-      drawFooter( p, footerBox );
+      if ( mPrintFooter ) {
+        drawFooter( p, footerBox );
+      }
 
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
@@ -1159,14 +1175,18 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       drawTimeTable( p, fromWeek, endLeft, mStartTime, mEndTime, weekBox,
                      mIncludeDescription, mExcludeTime,
                      mExcludeConfidential, mExcludePrivate );
-      drawFooter( p, weekBox1 );
+      if ( mPrintFooter ) {
+        drawFooter( p, weekBox1 );
+      }
       mPrinter->newPage();
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
       drawTimeTable( p, endLeft.addDays( 1 ), curWeek, mStartTime, mEndTime,
                      weekBox1, mIncludeDescription, mExcludeTime,
                      mExcludeConfidential, mExcludePrivate );
-      drawFooter( p, weekBox1 );
-      drawFooter( p, footerBox );
+
+      if ( mPrintFooter ) {
+        drawFooter( p, footerBox );
+      }
 
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
@@ -1211,6 +1231,7 @@ void CalPrintMonth::readSettingsWidget()
     mShowNoteLines = cfg->mShowNoteLines->isChecked();
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mUseColors = cfg->mColors->isChecked();
+    mPrintFooter = cfg->mPrintFooter->isChecked();
     mIncludeDescription = cfg->mIncludeDescription->isChecked();
     mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
     mExcludePrivate = cfg->mExcludePrivate->isChecked();
@@ -1231,6 +1252,7 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mShowNoteLines->setChecked( mShowNoteLines );
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mColors->setChecked( mUseColors );
+    cfg->mPrintFooter->setChecked( mPrintFooter );
     cfg->mIncludeDescription->setChecked( mIncludeDescription );
     cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
     cfg->mExcludePrivate->setChecked( mExcludePrivate );
@@ -1325,7 +1347,9 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
                     mSingleLineLimit, mShowNoteLines, mIncludeDescription,
                     mExcludeConfidential, mExcludePrivate, monthBox );
 
-    drawFooter( p, footerBox );
+    if ( mPrintFooter ) {
+      drawFooter( p, footerBox );
+    }
 
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) {
@@ -1385,6 +1409,8 @@ void CalPrintTodos::readSettingsWidget()
 
     mTodoSortField = (eTodoSortField)cfg->mSortField->currentIndex();
     mTodoSortDirection = (eTodoSortDirection)cfg->mSortDirection->currentIndex();
+
+    mPrintFooter = cfg->mPrintFooter->isChecked();
   }
 }
 
@@ -1427,6 +1453,8 @@ void CalPrintTodos::setSettingsWidget()
       cfg->mSortDirection->addItem( i18nc( "@option sort in descreasing order", "Descending" ) );
       cfg->mSortDirection->setCurrentIndex( mTodoSortDirection );
     }
+
+    cfg->mPrintFooter->setChecked( mPrintFooter );
   }
 }
 
@@ -1616,6 +1644,8 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     }
   }
 
-  drawFooter( p, footerBox );
+  if ( mPrintFooter ) {
+    drawFooter( p, footerBox );
+  }
   p.setFont( oldFont );
 }

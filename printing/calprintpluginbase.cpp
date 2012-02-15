@@ -4,6 +4,7 @@
   Copyright (c) 1998 Preston Brown <pbrown@kde.org>
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (C) 2008 Ron Goodheart <rong.dev@gmail.com>
+  Copyright (c) 2012 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -108,7 +109,7 @@ class PrintCellItem : public EventViews::CellItem
  ******************************************************************/
 
 CalPrintPluginBase::CalPrintPluginBase()
-  : PrintPlugin(), mUseColors( true ),
+  : PrintPlugin(), mUseColors( true ), mPrintFooter( true ),
     mHeaderHeight( -1 ), mSubHeaderHeight( SUBHEADER_HEIGHT ), mFooterHeight( -1 ),
     mMargin( MARGIN_SIZE ), mPadding( PADDING_SIZE ), mCalSys( 0 )
 {
@@ -180,6 +181,7 @@ void CalPrintPluginBase::doLoadConfig()
     mFromDate = group.readEntry( "FromDate", dt ).date();
     mToDate = group.readEntry( "ToDate", dt ).date();
     mUseColors = group.readEntry( "UseColors", true );
+    mPrintFooter = group.readEntry( "PrintFooter", true );
     mExcludeConfidential = group.readEntry( "Exclude confidential", true );
     mExcludePrivate = group.readEntry( "Exclude private", true );
     loadConfig();
@@ -199,6 +201,7 @@ void CalPrintPluginBase::doSaveConfig()
     dt.setDate( mToDate );
     group.writeEntry( "ToDate", dt );
     group.writeEntry( "UseColors", mUseColors );
+    group.writeEntry( "PrintFooter", mPrintFooter );
     group.writeEntry( "Exclude confidential", mExcludeConfidential );
     group.writeEntry( "Exclude private", mExcludePrivate );
     mConfig->sync();
@@ -223,6 +226,16 @@ bool CalPrintPluginBase::useColors() const
 void CalPrintPluginBase::setUseColors( bool useColors )
 {
   mUseColors = useColors;
+}
+
+bool CalPrintPluginBase::printFooter() const
+{
+  return mPrintFooter;
+}
+
+void CalPrintPluginBase::setPrintFooter( bool printFooter )
+{
+  mPrintFooter = printFooter;
 }
 
 QPrinter::Orientation CalPrintPluginBase::orientation() const
@@ -327,6 +340,10 @@ void CalPrintPluginBase::setSubHeaderHeight( const int height )
 
 int CalPrintPluginBase::footerHeight() const
 {
+  if ( !mPrintFooter ) {
+    return 0;
+  }
+
   if ( mFooterHeight >= 0 ) {
     return mFooterHeight;
   } else if ( orientation() == QPrinter::Portrait ) {
@@ -1117,7 +1134,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
                        msgRect.width(), msgRect.height() );
 
       p.save();
-      p.setPen( Qt::red );
+      p.setPen( Qt::red ); //krazy:exclude=qenums we don't allow custom print colors
       p.drawText( msgRect, Qt::AlignLeft, warningMsg );
       p.restore();
     }

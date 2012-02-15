@@ -4,6 +4,7 @@
   Copyright (c) 1998 Preston Brown <pbrown@kde.org>
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (C) 2008 Ron Goodheart <rong.dev@gmail.com>
+  Copyright (c) 2012 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -114,8 +115,12 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
   /** HELPER FUNCTIONS */
   public:
     void setKOrgCoreHelper( KOrg::CoreHelper *helper );
+
     bool useColors() const;
     void setUseColors( bool useColors );
+
+    bool printFooter() const;
+    void setPrintFooter( bool printFooter );
 
     /** Helper functions to hide the KOrg::CoreHelper */
     QColor categoryBgColor( const Incidence::Ptr &incidence );
@@ -624,6 +629,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
   protected:
     bool mUseColors;
+    bool mPrintFooter;
     bool mShowNoteLines;
     bool mExcludeConfidential;
     bool mExcludePrivate;
