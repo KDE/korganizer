@@ -40,6 +40,12 @@ p, li { white-space: pre-wrap; }
        <property name="text">
         <string>To-do List</string>
        </property>
+        <property name="toolTip">
+         <string>Name for this to-do list</string>
+        </property>
+        <property name="whatsThis">
+         <string>Enter a name for this to-do list that will be put at the top of the print-out</string>
+       </property>
       </widget>
      </item>
     </layout>

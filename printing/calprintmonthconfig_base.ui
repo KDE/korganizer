@@ -59,6 +59,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="KComboBox" name="mFromMonth">
+        <property name="toolTip">
+         <string>Starting month for printing</string>
+        </property>
         <property name="whatsThis">
          <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
         </property>
@@ -66,8 +69,11 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="KIntSpinBox" name="mFromYear">
+        <property name="toolTip">
+         <string>Starting year for printing</string>
+        </property>
         <property name="whatsThis">
-         <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
+         <string>When you want to print more months at once, you can define a year range. This option defines the first year to be printed. Use the option &lt;i&gt;End year&lt;/i&gt; to define the last year in this range.</string>
         </property>
         <property name="maximum">
          <number>3000</number>
@@ -92,15 +98,21 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="KComboBox" name="mToMonth">
+        <property name="toolTip">
+         <string>Ending month for the print</string>
+        </property>
         <property name="whatsThis">
-         <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
+         <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="KIntSpinBox" name="mToYear">
+        <property name="toolTip">
+         <string>Ending year for the print</string>
+        </property>
         <property name="whatsThis">
-         <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
+         <string>When you want to print more months at once, you can define a year range. This option defines the last year to be printed. Use the option &lt;i&gt;Start year&lt;/i&gt; to define the first year in this range.</string>
         </property>
         <property name="maximum">
          <number>3000</number>
@@ -137,6 +149,9 @@ p, li { white-space: pre-wrap; }
       </property>
       <item>
        <widget class="QCheckBox" name="mExcludeConfidential">
+        <property name="toolTip">
+         <string>Exclude confidential items</string>
+        </property>
         <property name="whatsThis">
          <string>Check this option to exclude confidential events.</string>
         </property>
@@ -147,6 +162,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="QCheckBox" name="mExcludePrivate">
+        <property name="toolTip">
+         <string>Exclude private items</string>
+        </property>
         <property name="whatsThis">
          <string>Check this option to exclude private events</string>
         </property>
@@ -182,6 +200,9 @@ p, li { white-space: pre-wrap; }
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="toolTip">
+         <string>Print to-dos due within the specified date range</string>
+        </property>
         <property name="whatsThis">
          <string>Check this option if you want to have to-dos on the print, placed by their due date.</string>
         </property>
@@ -192,6 +213,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="QCheckBox" name="mRecurDaily">
+        <property name="toolTip">
+         <string>Print daily recurring items</string>
+        </property>
         <property name="whatsThis">
          <string>With this option it is possible to leave out the daily recurring to-dos and events in the print. They take a lot of space and make the month view needlessly complicated.</string>
         </property>
@@ -202,6 +226,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="QCheckBox" name="mRecurWeekly">
+        <property name="toolTip">
+         <string>Print weekly recurring items</string>
+        </property>
         <property name="whatsThis">
          <string>Similar to &quot;Print daily recurring to-dos and events&quot;. Weekly to-dos and events will be omitted when making a print of the selected month.</string>
         </property>
@@ -221,6 +248,9 @@ p, li { white-space: pre-wrap; }
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QCheckBox" name="mWeekNumbers">
+        <property name="toolTip">
+         <string>Print week numbers</string>
+        </property>
         <property name="whatsThis">
          <string>Enable this to print week numbers at the left of each row.</string>
         </property>
@@ -244,6 +274,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="QCheckBox" name="mShowNoteLines">
+        <property name="toolTip">
+         <string>Draw note lines in empty area</string>
+        </property>
         <property name="whatsThis">
          <string>Check this option to show note lines.</string>
         </property>

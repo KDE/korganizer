@@ -443,7 +443,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         optionsBox.setTop( attendeesBox.top() );
         optionsBox.setBottom( attendeesBox.bottom() );
         notesBox.setBottom( attachmentsBox.bottom() );
-        if (mShowOptions) {
+        if ( mShowOptions ) {
           attendeesBox.setRight( attachmentsBox.right() );
         }
       if ( !mShowAttachments && !mShowAttendees ) {

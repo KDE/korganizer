@@ -37,12 +37,24 @@ p, li { white-space: pre-wrap; }
         <property name="text">
          <string>Detai&amp;ls (visiblility, secrecy, etc.)</string>
         </property>
+        <property name="toolTip">
+         <string>Print incidence details</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to print more details for the incidence, including the visibility and secrecy properties.</string>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="mShowAttendees">
         <property name="text">
          <string>&amp;Attendees</string>
+        </property>
+        <property name="toolTip">
+         <string>Print the attendees</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want the attendees list included on the print-out.</string>
         </property>
        </widget>
       </item>
@@ -51,12 +63,24 @@ p, li { white-space: pre-wrap; }
         <property name="text">
          <string>&amp;Notes, subitems</string>
         </property>
+        <property name="toolTip">
+         <string>Print the notes</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want the incidence notes included on the print-out.</string>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="mShowAttachments">
         <property name="text">
          <string>Attach&amp;ments</string>
+        </property>
+        <property name="toolTip">
+         <string>Print the attachments</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want the attachment information included on the print-out. The attachments themselves are not printed.</string>
         </property>
        </widget>
       </item>
@@ -76,8 +100,11 @@ p, li { white-space: pre-wrap; }
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QCheckBox" name="mShowNoteLines">
-        <property name="whatsThis">
+        <property name="toolTip">
          <string>Draw note lines in empty area</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to draw note lines in the empty area of the print. This is useful if you want to hand-write notes on this print-out.</string>
         </property>
         <property name="text">
          <string>Show note &amp;lines</string>
