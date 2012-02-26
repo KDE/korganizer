@@ -73,7 +73,7 @@ p, li { white-space: pre-wrap; }
          <string>Starting year for printing</string>
         </property>
         <property name="whatsThis">
-         <string>When you want to print more months at once, you can define a year range. This option defines the first year to be printed. Use the option &lt;i&gt;End year&lt;/i&gt; to define the last year in this range.</string>
+         <string>When you want to print more years at once, you can define a year range. This option defines the first year to be printed. Use the option &lt;i&gt;End year&lt;/i&gt; to define the last year in this range.</string>
         </property>
         <property name="maximum">
          <number>3000</number>
@@ -112,7 +112,7 @@ p, li { white-space: pre-wrap; }
          <string>Ending year for the print</string>
         </property>
         <property name="whatsThis">
-         <string>When you want to print more months at once, you can define a year range. This option defines the last year to be printed. Use the option &lt;i&gt;Start year&lt;/i&gt; to define the first year in this range.</string>
+         <string>When you want to print more years at once, you can define a year range. This option defines the last year to be printed. Use the option &lt;i&gt;Start year&lt;/i&gt; to define the first year in this range.</string>
         </property>
         <property name="maximum">
          <number>3000</number>
