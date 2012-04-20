@@ -1,3 +1,2 @@
-
-add_subdirectory( journal ) 
-add_subdirectory( year )
+add_subdirectory(journal)
+add_subdirectory(year)
