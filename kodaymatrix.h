@@ -45,12 +45,10 @@ class QMouseEvent;
 class QResizeEvent;
 class QPaintEvent;
 
-#ifndef KORG_NODND
 class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
-#endif
 
 /**
  *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day
@@ -249,7 +247,6 @@ class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObse
 
     void resizeEvent( QResizeEvent * );
 
-#ifndef KORG_NODND
     void dragEnterEvent( QDragEnterEvent *e );
 
     void dragMoveEvent( QDragMoveEvent *e );
@@ -257,7 +254,6 @@ class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObse
     void dragLeaveEvent( QDragLeaveEvent *e );
 
     void dropEvent( QDropEvent *e );
-#endif
 
   private:
     /**

@@ -36,13 +36,11 @@
 
 #include <KCalCore/CalFormat>
 #include <KCalCore/Todo>
-#include <KCalUtils/IncidenceFormatter>
 
-#ifndef KORG_NODND
-  #include <KCalUtils/DndFactory>
-  #include <KCalUtils/ICalDrag>
-  #include <KCalUtils/VCalDrag>
-#endif
+#include <KCalUtils/DndFactory>
+#include <KCalUtils/ICalDrag>
+#include <KCalUtils/IncidenceFormatter>
+#include <KCalUtils/VCalDrag>
 
 #include <KPIMUtils/Email>
 
@@ -53,9 +51,7 @@
 #include <QBrush>
 #include <QIcon>
 
-#ifndef KORG_NODND
-  #include <QMimeData>
-#endif
+#include <QMimeData>
 
 using namespace KCalUtils;
 
@@ -934,7 +930,6 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   }
 }
 
-#ifndef KORG_NODND
 Qt::DropActions KOTodoModel::supportedDropActions() const
 {
   // Qt::CopyAction not supported yet
@@ -1058,6 +1053,5 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
   return false;
 }
-#endif /*KORG_NODND*/
 
 #include "kotodomodel.moc"

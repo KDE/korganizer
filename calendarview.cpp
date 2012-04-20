@@ -2166,13 +2166,11 @@ void CalendarView::processIncidenceSelection( const Akonadi::Item &item, const Q
 
 void CalendarView::checkClipboard()
 {
-#ifndef KORG_NODND
   if ( ICalDrag::canDecode( QApplication::clipboard()->mimeData() ) ) {
     emit pasteEnabled( true );
   } else {
     emit pasteEnabled( false );
   }
-#endif
 }
 
 void CalendarView::showDates( const DateList &selectedDates, const QDate &preferredMonth )

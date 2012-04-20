@@ -615,7 +615,6 @@ enum {
   DRAG_CANCEL = 2
 };
 
-#ifndef KORG_NODND
 void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 {
   e->acceptProposedAction();
@@ -630,9 +629,7 @@ void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 //  setPalette(my_HilitePalette);
 //  update();
 }
-#endif
 
-#ifndef KORG_NODND
 void KODayMatrix::dragMoveEvent( QDragMoveEvent *e )
 {
   const QMimeData *md = e->mimeData();
@@ -642,18 +639,14 @@ void KODayMatrix::dragMoveEvent( QDragMoveEvent *e )
   }
   e->accept();
 }
-#endif
 
-#ifndef KORG_NODND
 void KODayMatrix::dragLeaveEvent( QDragLeaveEvent *dl )
 {
   Q_UNUSED( dl );
 //  setPalette(oldPalette);
 //  update();
 }
-#endif
 
-#ifndef KORG_NODND
 void KODayMatrix::dropEvent( QDropEvent *e )
 {
   if ( !mCalendar ) {
@@ -721,7 +714,6 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     }
   }
 }
-#endif
 
 // ----------------------------------------------------------------------------
 //  P A I N T   E V E N T   H A N D L I N G

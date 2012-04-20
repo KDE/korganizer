@@ -24,15 +24,13 @@
 */
 
 #include "kodialogmanager.h"
-#ifndef KORG_NOARCHIVE
-#include <calendarsupport/archivedialog.h>
-#endif
 #include "calendarview.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "filtereditdialog.h"
 #include "searchdialog.h"
 
+#include <calendarsupport/archivedialog.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/categoryconfig.h>
 
@@ -143,7 +141,6 @@ void KODialogManager::showSearchDialog()
 
 void KODialogManager::showArchiveDialog()
 {
-#ifndef KORG_NOARCHIVE
   if ( !mArchiveDialog ) {
     mArchiveDialog =
       new CalendarSupport::ArchiveDialog( mMainView->calendar(), mMainView->incidenceChanger() );
@@ -157,7 +154,6 @@ void KODialogManager::showArchiveDialog()
 
   // Workaround.
   QApplication::restoreOverrideCursor();
-#endif
 }
 
 void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )

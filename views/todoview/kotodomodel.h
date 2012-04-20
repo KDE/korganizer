@@ -104,13 +104,11 @@ class KOTodoModel : public QAbstractItemModel
     virtual bool setData( const QModelIndex &index, const QVariant &value,
                           int role );
 
-#ifndef KORG_NODND
     virtual Qt::DropActions supportedDropActions() const;
     virtual QStringList mimeTypes() const;
     virtual QMimeData *mimeData( const QModelIndexList &indexes ) const;
     virtual bool dropMimeData( const QMimeData *data, Qt::DropAction action,
                                int row, int column, const QModelIndex &parent );
-#endif
 
   public Q_SLOTS:
     /** Sets if the model should provide a hirarchical view on todos or not.
