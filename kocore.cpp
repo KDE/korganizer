@@ -24,22 +24,13 @@
 */
 
 #include "kocore.h"
-
 #include "koprefs.h"
-#include "koglobals.h"
 
-#include <calendarsupport/plugin.h>
 #include <calendarsupport/identitymanager.h>
-#include <korganizer/part.h>
 
-#include <kdebug.h>
-#include <kconfig.h>
-#include <kxmlguifactory.h>
-#include <kstandarddirs.h>
-#include <klocale.h>
-#include <kservicetypetrader.h>
-
-#include <QWidget>
+#include <KDebug>
+#include <KServiceTypeTrader>
+#include <KXMLGUIFactory>
 
 KOCore *KOCore::mSelf = 0;
 

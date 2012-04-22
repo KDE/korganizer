@@ -27,11 +27,9 @@
 
 #include <KCalendarSystem>
 #include <KIconLoader>
-#include <KLocale>
 
 #include <QHBoxLayout>
 #include <QMenu>
-#include <QSpacerItem>
 #include <QToolButton>
 
 NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )

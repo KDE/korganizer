@@ -22,23 +22,18 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORGANIZER_PART_H
-#define KORGANIZER_PART_H
+
+#ifndef KORG_KORGANIZER_PART_H
+#define KORG_KORGANIZER_PART_H
 
 #include "korganizer/mainwindow.h"
 
-#include <KUrl>
 #include <KParts/Part>
 
 class CalendarView;
-class ActionManager;
 
-namespace Akonadi{
+namespace Akonadi {
   class Item;
-}
-
-namespace KOrg {
-  class CalendarViewBase;
 }
 
 namespace KParts {

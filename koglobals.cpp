@@ -24,26 +24,13 @@
 
 #include "koglobals.h"
 #include "koprefs.h"
-#include "korganizer_part.h"
 
-#include "reminderclient.h"
+#include <KHolidays/HolidayRegion>
 
-#include <kholidays/holidays.h>
-
-#include <KDebug>
 #include <KGlobal>
-#include <KConfig>
-#include <KStandardDirs>
-#include <KGlobalSettings>
-#include <KLocale>
 #include <KIconLoader>
-#include <KCalendarSystem>
 
 #include <QApplication>
-#include <QPixmap>
-#include <QIcon>
-
-using namespace KHolidays;
 
 class KOGlobalsSingletonPrivate
 {
@@ -98,9 +85,9 @@ QMap<QDate,QStringList> KOGlobals::holiday( const QDate &start, const QDate &end
     return holidaysByDate;
   }
 
-  const Holiday::List list = mHolidays->holidays( start, end );
+  const KHolidays::Holiday::List list = mHolidays->holidays( start, end );
   for ( int i = 0; i < list.count(); ++i ) {
-    const Holiday &h = list.at( i );
+    const KHolidays::Holiday &h = list.at( i );
     holidaysByDate[h.date()].append( h.text() );
   }
   return holidaysByDate;
@@ -122,11 +109,11 @@ QList<QDate> KOGlobals::workDays( const QDate &startDate,
   }
 
   if ( mHolidays && KOPrefs::instance()->mExcludeHolidays ) {
-    const Holiday::List list = mHolidays->holidays( startDate, endDate );
+    const KHolidays::Holiday::List list = mHolidays->holidays( startDate, endDate );
     for ( int i = 0; i < list.count(); ++i ) {
-      const Holiday &h = list.at( i );
+      const KHolidays::Holiday &h = list.at( i );
       const QString dateString = h.date().toString();
-      if ( h.dayType() == Holiday::NonWorkday ) {
+      if ( h.dayType() == KHolidays::Holiday::NonWorkday ) {
         result.removeAll( h.date() );
       }
     }
@@ -140,13 +127,13 @@ int KOGlobals::getWorkWeekMask()
   return KOPrefs::instance()->mWorkWeekMask;
 }
 
-void KOGlobals::setHolidays( HolidayRegion *h )
+void KOGlobals::setHolidays( KHolidays::HolidayRegion *h )
 {
   delete mHolidays;
   mHolidays = h;
 }
 
-HolidayRegion *KOGlobals::holidays() const
+KHolidays::HolidayRegion *KOGlobals::holidays() const
 {
   return mHolidays;
 }

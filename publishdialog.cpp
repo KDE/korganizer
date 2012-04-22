@@ -28,13 +28,12 @@
 
 #include "publishdialog.h"
 
-#include <akonadi/contact/emailaddressselectiondialog.h>
-#include <kcalcore/attendee.h>
-#include <kcalcore/person.h>
-#include <kpimutils/email.h>
+#include <Akonadi/Contact/EmailAddressSelectionDialog>
 
-#include <klineedit.h>
-#include <klocale.h>
+#include <KCalCore/Attendee>
+#include <KCalCore/Person>
+
+#include <KPIMUtils/Email>
 
 PublishDialog::PublishDialog( QWidget *parent )
   : KDialog( parent )
@@ -84,12 +83,12 @@ PublishDialog::~PublishDialog()
 {
 }
 
-void PublishDialog::addAttendee( const Attendee::Ptr &attendee )
+void PublishDialog::addAttendee( const KCalCore::Attendee::Ptr &attendee )
 {
   mUI.mNameLineEdit->setEnabled( true );
   mUI.mEmailLineEdit->setEnabled( true );
   QListWidgetItem *item = new QListWidgetItem( mUI.mListWidget );
-  Person person( attendee->name(), attendee->email() );
+  KCalCore::Person person( attendee->name(), attendee->email() );
   item->setText( person.fullName() );
   mUI.mListWidget->addItem( item );
   mUI.mRemove->setEnabled( !mUI.mListWidget->selectedItems().isEmpty() );
@@ -181,7 +180,7 @@ void PublishDialog::updateItem()
     return;
   }
 
-  Person person( mUI.mNameLineEdit->text(), mUI.mEmailLineEdit->text() );
+  KCalCore::Person person( mUI.mNameLineEdit->text(), mUI.mEmailLineEdit->text() );
   QListWidgetItem *item = mUI.mListWidget->selectedItems().first();
   item->setText( person.fullName() );
 }

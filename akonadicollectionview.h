@@ -23,31 +23,27 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+
 #ifndef KORG_AKONADICOLLECTIONVIEW_H
 #define KORG_AKONADICOLLECTIONVIEW_H
 
 #include "calendarview.h"
 
-#include <Akonadi/Collection>
-
-#include <QTreeWidget>
-#include <QList>
-
-class QAbstractProxyModel;
-
-namespace Akonadi {
-  class Collection;
-  class EntityTreeView;
-  class StandardCalendarActionManager;
-}
+class AkonadiCollectionView;
 
 namespace CalendarSupport {
   class CalendarModel;
 }
 
+namespace Akonadi {
+  class EntityTreeView;
+  class StandardCalendarActionManager;
+}
+
 class KAction;
-class KJob;
-class AkonadiCollectionView;
+
+class QAbstractProxyModel;
+class QModelIndex;
 
 /**
  * The factory for AkonadiCollectionView instances.

@@ -24,36 +24,28 @@
 
 #include "kotodomodel.h"
 #include "koglobals.h"
-#include "koprefs.h"
 #include "kohelper.h"
+#include "koprefs.h"
 
 #include <calendarsupport/calendar.h>
-#include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/dndfactory.h>
 #include <calendarsupport/incidencechanger.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <KCalCore/CalFormat>
-#include <KCalCore/Todo>
+#include <KCalCore/Attachment>
+#include <KCalCore/Attendee>
 
-#include <KCalUtils/DndFactory>
 #include <KCalUtils/ICalDrag>
 #include <KCalUtils/IncidenceFormatter>
 #include <KCalUtils/VCalDrag>
 
 #include <KPIMUtils/Email>
 
-#include <KDebug>
-#include <KLocale>
 #include <KMessageBox>
 
-#include <QBrush>
 #include <QIcon>
-
 #include <QMimeData>
-
-using namespace KCalUtils;
 
 /** This class represents a node in the todo-tree. */
 struct KOTodoModel::TodoTreeNode : QObject
@@ -190,7 +182,7 @@ KOTodoModel::KOTodoModel( QObject *parent )
   mFlatView = false;
 }
 
-static bool isDueToday( const Todo::Ptr &todo )
+static bool isDueToday( const KCalCore::Todo::Ptr &todo )
 {
   return !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate();
 }
@@ -337,7 +329,7 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
 QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Akonadi::Item &aitem,
                                               bool addParentIfMissing )
 {
-  const Todo::Ptr todo = CalendarSupport::todo( aitem );
+  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( aitem );
   // find the model index of the changed incidence
   QModelIndex miChanged = getModelIndex( curNode );
 
@@ -345,7 +337,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Akona
   TodoTreeNode *ttOldParent = curNode->mParent;
 
   // get the new parent
-  Todo::Ptr newParent;
+  KCalCore::Todo::Ptr newParent;
 
   if ( !mFlatView ) {
     // in flat view, no todo has a parent
@@ -354,9 +346,9 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Akona
       const QString parentUid = todo->relatedTo();
       if ( !parentUid.isEmpty() ) {
         Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( parentUid );
-        Incidence::Ptr inc = CalendarSupport::incidence( parentItem );
-        if ( inc && inc->type() == Incidence::TypeTodo ) {
-          newParent = Todo::Ptr( static_cast<Todo *>( inc ->clone() ) );
+        KCalCore::Incidence::Ptr inc = CalendarSupport::incidence( parentItem );
+        if ( inc && inc->type() == KCalCore::Incidence::TypeTodo ) {
+          newParent = KCalCore::Todo::Ptr( static_cast<KCalCore::Todo *>( inc ->clone() ) );
         }
       }
     }
@@ -374,7 +366,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Akona
     TodoTreeNode *ttNewParent = 0;
     if ( newParent ) {
       Akonadi::Item newParentItem;
-      newParentItem.setPayload<Todo::Ptr>(newParent);
+      newParentItem.setPayload<KCalCore::Todo::Ptr>(newParent);
       ttNewParent = findTodo( CalendarSupport::incidence ( newParentItem )->uid() );
       if ( !ttNewParent && addParentIfMissing ) {
         ttNewParent = insertTodo( newParentItem );
@@ -429,7 +421,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const QString &uid ) const
 
 void KOTodoModel::expandTodoIfNeeded( const Akonadi::Item &todoItem )
 {
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   if ( !todo ) {
     return;
   }
@@ -440,7 +432,7 @@ void KOTodoModel::expandTodoIfNeeded( const Akonadi::Item &todoItem )
   }
 }
 
-bool KOTodoModel::isInHierarchyLoop( const Todo::Ptr &todo ) const
+bool KOTodoModel::isInHierarchyLoop( const KCalCore::Todo::Ptr &todo ) const
 {
   if ( !todo ) {
     return false;
@@ -449,8 +441,9 @@ bool KOTodoModel::isInHierarchyLoop( const Todo::Ptr &todo ) const
   QString parentUid = todo->relatedTo();
 
   if ( !parentUid.isEmpty() ) {
-    Incidence::Ptr i = CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
-    QList<Incidence::Ptr > processedParents;
+    KCalCore::Incidence::Ptr i =
+      CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
+    QList<KCalCore::Incidence::Ptr > processedParents;
 
     // Lets iterate through all parents, if we find one with the same
     // uid then there's a loop.
@@ -482,12 +475,12 @@ bool KOTodoModel::isInHierarchyLoop( const Todo::Ptr &todo ) const
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Akonadi::Item &todoItem,
                                                     bool checkRelated )
 {
-  const Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   if ( !mFlatView && checkRelated && todo && !todo->relatedTo().isEmpty() ) {
     const QString parentUid = todo->relatedTo();
     Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( parentUid );
-    Incidence::Ptr incidence = CalendarSupport::incidence( parentItem );
-    Todo::Ptr relatedTodo = incidence.dynamicCast<Todo>();
+    KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( parentItem );
+    KCalCore::Todo::Ptr relatedTodo = incidence.dynamicCast<KCalCore::Todo>();
 
     // check if there are recursively linked todos, or if we got broken input data
     if ( isInHierarchyLoop( todo ) || !relatedTodo ) {
@@ -497,7 +490,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Akonadi::Item &todoIte
 
     // FIXME(AKONADI_PORT) how to handle the related incidences where we don't know the item?
     Akonadi::Item relatedTodoItem;
-    relatedTodoItem.setPayload( Todo::Ptr( relatedTodo->clone() ) );
+    relatedTodoItem.setPayload( KCalCore::Todo::Ptr( relatedTodo->clone() ) );
 
     // if the parent is not already in the tree, we have to insert it first.
     // necessary because we can't rely on todos coming in a defined order.
@@ -556,7 +549,7 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 
   ret |= Qt::ItemIsDragEnabled;
 
-  const Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
+  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
 
   if ( mCalendar->hasChangeRights( node->mTodo ) ) {
     // the following columns are editable:
@@ -656,7 +649,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return QVariant();
   }
 
-  const Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
+  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
 
   if ( role == Qt::DisplayRole ) {
     switch ( index.column() ) {
@@ -675,7 +668,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       return QVariant( todo->percentComplete() );
     case DueDateColumn:
       if ( todo->hasDueDate() && todo->dtDue().date().isValid() ) {
-        return QVariant( IncidenceFormatter::dateToString( todo->dtDue() ) );
+        return QVariant(
+          KCalUtils::IncidenceFormatter::dateToString( todo->dtDue() ) );
       } else {
         return QVariant( QString() );
       }
@@ -718,10 +712,11 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // set the tooltip for every item
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
-      return QVariant( IncidenceFormatter::toolTipStr(
-                         CalendarSupport::displayName( mCalendar, node->mTodo.parentCollection() ),
-                         todo, QDate(), true,
-                         CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
+      return QVariant(
+        KCalUtils::IncidenceFormatter::toolTipStr(
+          CalendarSupport::displayName( mCalendar, node->mTodo.parentCollection() ),
+          todo, QDate(), true,
+          CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
     } else {
       return QVariant();
     }
@@ -860,10 +855,10 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     return true;
   }
 
-  const Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
+  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
 
   if ( mCalendar->hasChangeRights( node->mTodo ) ) {
-    Todo::Ptr oldTodo( todo->clone() );
+    KCalCore::Todo::Ptr oldTodo( todo->clone() );
     CalendarSupport::IncidenceChanger::WhatChanged modified =
       CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED;
 
@@ -940,7 +935,7 @@ QStringList KOTodoModel::mimeTypes() const
 {
   QStringList ret;
 
-  ret << ICalDrag::mimeType() << VCalDrag::mimeType();
+  ret << KCalUtils::ICalDrag::mimeType() << KCalUtils::VCalDrag::mimeType();
 
   return ret;
 }
@@ -970,21 +965,21 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
   }
 
   if ( mCalendar && mChanger &&
-       ( ICalDrag::canDecode( data ) || VCalDrag::canDecode( data ) ) ) {
+       ( KCalUtils::ICalDrag::canDecode( data ) || KCalUtils::VCalDrag::canDecode( data ) ) ) {
     CalendarSupport::DndFactory dndFactory (
       CalendarSupport::CalendarAdaptor::Ptr(
         new CalendarSupport::CalendarAdaptor( mCalendar, 0 ) ), true );
-    Todo::Ptr t = dndFactory.createDropTodo( data );
-    Event::Ptr e = dndFactory.createDropEvent( data );
+    KCalCore::Todo::Ptr t = dndFactory.createDropTodo( data );
+    KCalCore::Event::Ptr e = dndFactory.createDropEvent( data );
 
     if ( t ) {
       // we don't want to change the created todo, but the one which is already
       // stored in our calendar / tree
       TodoTreeNode *ttTodo = findTodo( t->uid() );
       Q_ASSERT( ttTodo ); //TODO if the todo is not found, just insert a new one
-      Todo::Ptr todo = CalendarSupport::todo( ttTodo->mTodo );
+      KCalCore::Todo::Ptr todo = CalendarSupport::todo( ttTodo->mTodo );
 
-      Todo::Ptr destTodo;
+      KCalCore::Todo::Ptr destTodo;
       if ( parent.isValid() ) {
         TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
         if ( node->isValid() ) {
@@ -992,7 +987,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         }
       }
 
-      Incidence::Ptr tmp = destTodo;
+      KCalCore::Incidence::Ptr tmp = destTodo;
       while ( tmp ) {
         if ( tmp->uid() == todo->uid() ) {
           KMessageBox::information(
@@ -1005,7 +1000,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         tmp = CalendarSupport::incidence( mCalendar->itemForIncidenceUid( parentUid ) );
       }
 
-      Todo::Ptr oldTodo = Todo::Ptr( todo->clone() );
+      KCalCore::Todo::Ptr oldTodo = KCalCore::Todo::Ptr( todo->clone() );
       // destTodo is empty when we drag a to-do out of a relationship
       todo->setRelatedTo( destTodo ? destTodo->uid() : QString() );
       mChanger->changeIncidence( oldTodo, ttTodo->mTodo,
@@ -1024,15 +1019,16 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       }
 
       TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
-      Todo::Ptr destTodo = CalendarSupport::todo( node->mTodo );
+      KCalCore::Todo::Ptr destTodo = CalendarSupport::todo( node->mTodo );
 
       if ( data->hasText() ) {
         QString text = data->text();
 
-        Todo::Ptr oldTodo = Todo::Ptr( destTodo->clone() );
+        KCalCore::Todo::Ptr oldTodo = KCalCore::Todo::Ptr( destTodo->clone() );
 
         if( text.startsWith( QLatin1String( "file:" ) ) ) {
-          destTodo->addAttachment( Attachment::Ptr( new Attachment( text ) ) );
+          destTodo->addAttachment(
+            KCalCore::Attachment::Ptr( new KCalCore::Attachment( text ) ) );
         } else {
           QStringList emails = KPIMUtils::splitAddressList( text );
           for ( QStringList::ConstIterator it = emails.constBegin();
@@ -1040,7 +1036,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
             QString name, email, comment;
             if ( KPIMUtils::splitAddress( *it, name, email, comment ) ==
                  KPIMUtils::AddressOk ) {
-              destTodo->addAttendee( Attendee::Ptr( new Attendee( name, email ) ) );
+              destTodo->addAttendee(
+                KCalCore::Attendee::Ptr( new KCalCore::Attendee( name, email ) ) );
             }
           }
         }

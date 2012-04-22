@@ -26,50 +26,34 @@
 */
 
 #include "akonadicollectionview.h"
-#include <kcolordialog.h>
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <calendarsupport/calendarmodel.h>
-#include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <KLineEdit>
-#include <KDebug>
-#include <KDialog>
+#include <Akonadi/AgentFilterProxyModel>
+#include <Akonadi/AgentInstanceCreateJob>
+#include <Akonadi/AgentManager>
+#include <Akonadi/AgentTypeDialog>
+#include <Akonadi/CollectionDeleteJob>
+#include <Akonadi/CollectionFilterProxyModel>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/EntityTreeView>
+#include <Akonadi/Calendar/StandardCalendarActionManager>
+
 #include <KAction>
 #include <KActionCollection>
-#include <krecursivefilterproxymodel.h>
-#include <kjob.h>
-#include <QVBoxLayout>
+#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
+#include <KColorDialog>
+#include <KMessageBox>
+#include <krecursivefilterproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.9
+
 #include <QHeaderView>
-#include <QItemSelectionModel>
-
-#include <kcheckableproxymodel.h>
-
-#include <akonadi/calendar/standardcalendaractionmanager.h>
-#include <akonadi/collection.h>
-#include <akonadi/collectionview.h>
-#include <akonadi/collectionfilterproxymodel.h>
-#include <akonadi/collectiondeletejob.h>
-#include <akonadi/entitytreemodel.h>
-#include <akonadi/entitytreeview.h>
-#include <akonadi/entitydisplayattribute.h>
-#include <akonadi/agenttypedialog.h>
-#include <akonadi/agentinstancewidget.h>
-#include <akonadi/agentinstancecreatejob.h>
-#include <akonadi/agentfilterproxymodel.h>
-#include <akonadi/control.h>
-#include <akonadi/session.h>
-#include <akonadi/changerecorder.h>
-#include <akonadi/agentmanager.h>
-#include <akonadi/agentinstance.h>
-
-#include <QHash>
-#include <QStyledItemDelegate>
 #include <QPainter>
+#include <QStyledItemDelegate>
+#include <QVBoxLayout>
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
   : mView( view ), mAkonadiCollectionView( 0 )
@@ -83,13 +67,16 @@ static bool hasCompatibleMimeTypes( const Akonadi::Collection &collection )
   static QStringList goodMimeTypes;
 
   if ( goodMimeTypes.isEmpty() ) {
-    goodMimeTypes << QLatin1String( "text/calendar" ) << KCalCore::Event::eventMimeType()
-                  << KCalCore::Todo::todoMimeType() << KCalCore::Journal::journalMimeType();
+    goodMimeTypes << QLatin1String( "text/calendar" )
+                  << KCalCore::Event::eventMimeType()
+                  << KCalCore::Todo::todoMimeType()
+                  << KCalCore::Journal::journalMimeType();
   }
 
-  for( int i=0; i<goodMimeTypes.count(); ++i ) {
-    if ( collection.contentMimeTypes().contains( goodMimeTypes.at( i ) ) )
+  for ( int i=0; i<goodMimeTypes.count(); ++i ) {
+    if ( collection.contentMimeTypes().contains( goodMimeTypes.at( i ) ) ) {
       return true;
+    }
   }
 
   return false;
@@ -554,8 +541,10 @@ void AkonadiCollectionView::rowsInserted( const QModelIndex &, int, int )
 bool AkonadiCollectionView::isStructuralCollection( const Akonadi::Collection &collection )
 {
   QStringList mimeTypes;
-  mimeTypes << QLatin1String( "text/calendar" ) << KCalCore::Event::eventMimeType()
-            << Todo::todoMimeType() << Journal::journalMimeType();
+  mimeTypes << QLatin1String( "text/calendar" )
+            << KCalCore::Event::eventMimeType()
+            << KCalCore::Todo::todoMimeType()
+            << KCalCore::Journal::journalMimeType();
   const QStringList collectionMimeTypes = collection.contentMimeTypes();
   foreach ( const QString &mimeType, mimeTypes ) {
     if ( collectionMimeTypes.contains( mimeType ) ) {

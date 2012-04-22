@@ -18,8 +18,8 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_DATENUMS_H
-#define KORG_DATENUMS_H
+#ifndef KORG_PLUGINS_DATENUMS_DATENUMS_H
+#define KORG_PLUGINS_DATENUMS_DATENUMS_H
 
 #include <calendarviews/eventviews/agenda/calendardecoration.h>
 

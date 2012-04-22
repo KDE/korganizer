@@ -21,23 +21,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOPREFS_H
-#define KOPREFS_H
+
+#ifndef KORG_KOPREFS_H
+#define KORG_KOPREFS_H
 
 #include "korganizer_export.h"
 #include "koprefs_base.h"
 
 #include <calendarviews/eventviews/prefs.h>
-
-#include <KDateTime>
-
-#include <QHash>
-
-#include <boost/shared_ptr.hpp>
-
-class QFont;
-class QColor;
-class QStringList;
 
 class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 {

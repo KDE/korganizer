@@ -22,11 +22,12 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef DATECHECKER_H
-#define DATECHECKER_H
 
-#include <QObject>
+#ifndef KORG_DATECHECKER_H
+#define KORG_DATECHECKER_H
+
 #include <QDate>
+#include <QObject>
 
 class QTimer;
 

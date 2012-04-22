@@ -32,20 +32,15 @@
 
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
+#include <KCalCore/MemoryCalendar>
 
-#include <KLocale>
-#include <KStandardDirs>
 #include <KFileDialog>
 #include <KMessageBox>
-#include <kio/netaccess.h>
+#include <KStandardDirs>
+#include <KIO/NetAccess>
 
-#include <QLabel>
-#include <QLayout>
-#include <QRadioButton>
-#include <QPushButton>
-#include <QDialog>
-
-using namespace KCalCore;
+#include <QFrame>
+#include <QVBoxLayout>
 
 PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   : KDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
@@ -59,8 +54,9 @@ PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
-  mCalendar = MemoryCalendar::Ptr( new MemoryCalendar(
-                                     KOPrefs::instance()->mTimeZoneId ) );
+  mCalendar =
+    KCalCore::MemoryCalendar::Ptr(
+      new KCalCore::MemoryCalendar( KOPrefs::instance()->mTimeZoneId ) );
 
   mListView = new KOListView( 0, this, true );
   topLayout->addWidget( mListView );

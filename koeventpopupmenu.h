@@ -23,8 +23,8 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOEVENTPOPUPMENU_H
-#define KOEVENTPOPUPMENU_H
+#ifndef KORG_KOEVENTPOPUPMENU_H
+#define KORG_KOEVENTPOPUPMENU_H
 
 #include <QDate>
 #include <QMenu>

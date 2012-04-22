@@ -29,38 +29,30 @@
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
-#include "koprefs.h"
 #include "kohelper.h"
-#include "kodialogmanager.h"
-
+#include "koprefs.h"
 #include "kotododelegates.h"
 #include "kotodomodel.h"
+#include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewquickaddline.h"
 #include "kotodoviewquicksearch.h"
-#include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
 
-#include <calendarviews/eventviews/eventview.h>
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/utils.h>
-#include <calendarsupport/calendar.h>
 
 #include <libkdepim/kdatepickerpopup.h>
 
 #include <KCalCore/CalFormat>
-#include <KCalCore/Incidence>
-#include <KCalCore/Todo>
 
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QHeaderView>
 #include <QMenu>
 #include <QTimer>
-
-using namespace KPIM;
-using namespace CalendarSupport;
 
 // Share the model with the sidepanel KOTodoView
 K_GLOBAL_STATIC( KOTodoModel, sModel )
@@ -78,7 +70,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mProxyModel->setSortRole( Qt::EditRole );
 
   // This disconnect is a workaround against QTBUG-22667
-  disconnect( sModel, SIGNAL(destroyed()), mProxyModel, 0  );
+  disconnect( sModel, SIGNAL(destroyed()), mProxyModel, 0 );
 
   mSidebarView = sidebarView;
   if ( !mSidebarView ) {
@@ -222,10 +214,11 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   mItemPopupMenu->addSeparator();
 
-  mCopyPopupMenu = new KDatePickerPopup( KDatePickerPopup::NoDate |
-                                         KDatePickerPopup::DatePicker |
-                                         KDatePickerPopup::Words,
-                                         QDate::currentDate(), this );
+  mCopyPopupMenu =
+    new KPIM::KDatePickerPopup( KPIM::KDatePickerPopup::NoDate |
+                                KPIM::KDatePickerPopup::DatePicker |
+                                KPIM::KDatePickerPopup::Words,
+                                QDate::currentDate(), this );
   mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
 
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
@@ -234,10 +227,11 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
            mItemPopupMenu, SLOT(hide()) );
 
-  mMovePopupMenu = new KDatePickerPopup( KDatePickerPopup::NoDate |
-                                         KDatePickerPopup::DatePicker |
-                                         KDatePickerPopup::Words,
-                                         QDate::currentDate(), this );
+  mMovePopupMenu =
+    new KPIM:: KDatePickerPopup( KPIM::KDatePickerPopup::NoDate |
+                                 KPIM::KDatePickerPopup::DatePicker |
+                                 KPIM::KDatePickerPopup::Words,
+                                 QDate::currentDate(), this );
   mMovePopupMenu->setTitle( i18n( "&Move To" ) );
 
   connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
@@ -306,7 +300,7 @@ Akonadi::Item::List KOTodoView::selectedIncidences()
 {
   Akonadi::Item::List ret;
   const QModelIndexList selection = mView->selectionModel()->selectedRows();
-  Q_FOREACH( const QModelIndex &mi, selection ) {
+  Q_FOREACH ( const QModelIndex &mi, selection ) {
     ret << mi.data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
   }
   return ret;
@@ -451,14 +445,14 @@ void KOTodoView::clearSelection()
 }
 
 void KOTodoView::addTodo( const QString &summary,
-                          const Todo::Ptr &parent,
+                          const KCalCore::Todo::Ptr &parent,
                           const QStringList &categories )
 {
   if ( !mChanger || summary.trimmed().isEmpty() ) {
     return;
   }
 
-  Todo::Ptr todo( new Todo );
+  KCalCore::Todo::Ptr todo( new KCalCore::Todo );
   todo->setSummary( summary.trimmed() );
   todo->setOrganizer(
     Person::Ptr( new Person( CalendarSupport::KCalPrefs::instance()->fullName(),
@@ -538,7 +532,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
   const bool hasItem = mView->indexAt( pos ).isValid();
   Incidence::Ptr incidencePtr;
 
-  Q_FOREACH( QAction *entry, mItemPopupMenuItemOnlyEntries ) {
+  Q_FOREACH ( QAction *entry, mItemPopupMenuItemOnlyEntries ) {
     bool enable;
 
     if ( hasItem ) {
@@ -660,7 +654,7 @@ void KOTodoView::printTodo( bool preview )
   }
 
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
   KOCoreHelper helper;
@@ -729,14 +723,14 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   Q_ASSERT( origIndex.isValid() );
 
   const Akonadi::Item origItem = sModel->todoForIndex( origIndex );
-  const Todo::Ptr orig = CalendarSupport::todo( origItem );
+  const KCalCore::Todo::Ptr orig = CalendarSupport::todo( origItem );
   if ( !orig ) {
     return;
   }
 
-  Todo::Ptr todo( orig->clone() );
+  KCalCore::Todo::Ptr todo( orig->clone() );
 
-  todo->setUid( CalFormat::createUniqueId() );
+  todo->setUid( KCalCore::CalFormat::createUniqueId() );
 
   KDateTime due = todo->dtDue();
   due.setDate( date );
@@ -773,13 +767,13 @@ QMenu *KOTodoView::createCategoryPopupMenu()
   }
 
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
   QStringList checkedCategories = todo->categories();
 
   QStringList::Iterator it;
-  CategoryConfig cc( KOPrefs::instance() );
+  CalendarSupport::CategoryConfig cc( KOPrefs::instance() );
   Q_FOREACH ( const QString &i, cc.customCategories() ) {
     QAction *action = tempMenu->addAction( i );
     action->setCheckable( true );
@@ -804,11 +798,11 @@ void KOTodoView::setNewDate( const QDate &date )
   }
 
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
   if ( calendar()->hasChangeRights( todoItem ) ) {
-    Todo::Ptr oldTodo( todo->clone() );
+    KCalCore::Todo::Ptr oldTodo( todo->clone() );
 
     KDateTime dt( date );
 
@@ -838,11 +832,11 @@ void KOTodoView::setNewPercentage( QAction *action )
   }
 
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
   if ( calendar()->hasChangeRights( todoItem ) ) {
-    Todo::Ptr oldTodo( todo->clone() );
+    KCalCore::Todo::Ptr oldTodo( todo->clone() );
 
     int percentage = mPercentage.value( action );
     if ( percentage == 100 ) {
@@ -872,9 +866,9 @@ void KOTodoView::setNewPriority( QAction *action )
     return;
   }
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   if ( calendar()->hasChangeRights( todoItem ) ) {
-    Todo::Ptr oldTodo( todo->clone() );
+    KCalCore::Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
     mChanger->changeIncidence( oldTodo, todoItem,
@@ -890,10 +884,10 @@ void KOTodoView::changedCategories( QAction *action )
   }
 
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
-  Todo::Ptr todo = CalendarSupport::todo( todoItem );
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
   if ( calendar()->hasChangeRights( todoItem ) ) {
-    Todo::Ptr oldTodo( todo->clone() );
+    KCalCore::Todo::Ptr oldTodo( todo->clone() );
 
     QStringList categories = todo->categories();
     if ( categories.contains( mCategory[action] ) ) {

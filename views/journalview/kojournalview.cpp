@@ -27,19 +27,15 @@
 
 #include "kojournalview.h"
 #include "journalview.h"
-#include "koglobals.h"
 #include "koprefs.h"
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
-#include <KDebug>
-#include <KLocale>
 #include <KVBox>
 
+#include <QEvent>
 #include <QScrollArea>
-#include <QLayout>
-#include <QLabel>
 #include <QVBoxLayout>
 
 using namespace KOrg;
@@ -166,7 +162,7 @@ void KOJournalView::showIncidences( const Akonadi::Item::List &incidences, const
   Q_UNUSED( date );
   clearEntries();
   Q_FOREACH ( const Akonadi::Item &i, incidences ) {
-    if ( const Journal::Ptr j = CalendarSupport::journal( i ) ) {
+    if ( const KCalCore::Journal::Ptr j = CalendarSupport::journal( i ) ) {
       appendJournal( i, j->dtStart().date() );
     }
   }
@@ -174,8 +170,8 @@ void KOJournalView::showIncidences( const Akonadi::Item::List &incidences, const
 
 void KOJournalView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
 {
-  if ( Journal::Ptr journal = CalendarSupport::journal( incidence ) ) {
-    switch(action) {
+  if ( KCalCore::Journal::Ptr journal = CalendarSupport::journal( incidence ) ) {
+    switch ( action ) {
     case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
       appendJournal( incidence, journal->dtStart().date() );
       break;
@@ -214,7 +210,7 @@ void KOJournalView::getHighlightMode( bool &highlightEvents,
 bool KOJournalView::eventFilter ( QObject *object, QEvent *event )
 {
   Q_UNUSED( object );
-  switch( event->type() ) {
+  switch ( event->type() ) {
   case QEvent::MouseButtonDblClick:
     emit newJournalSignal( QDate() );
     return true;

@@ -22,8 +22,6 @@
 
 #include "converter.h"
 
-#include <KLocale>
-
 HebrewDate::HebrewDate( struct DateResult d )
   : mYear ( d.year ), mMonth ( d.month ), mDay ( d.day ),
     mDayOfWeek ( d.day_of_week ),

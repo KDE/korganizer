@@ -23,19 +23,16 @@
 */
 
 #include "kowhatsnextview.h"
-#include "koglobals.h"
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalutils/incidenceformatter.h>
-#include <kcalcore/todo.h>
+#include <KCalUtils/IncidenceFormatter>
+
+#include <KIconLoader>
 
 #include <QBoxLayout>
-
-using namespace KCalCore;
-using namespace KCalUtils;
 
 void WhatsNextTextBrowser::setSource( const QUrl &name )
 {
@@ -113,11 +110,11 @@ void KOWhatsNextView::updateView()
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
     Q_FOREACH ( const Akonadi::Item &evItem, events ) {
-      Event::Ptr ev = CalendarSupport::event( evItem );
+      KCalCore::Event::Ptr ev = CalendarSupport::event( evItem );
       if ( !ev->recurs() ) {
         appendEvent( evItem );
       } else {
-        Recurrence *recur = ev->recurrence();
+        KCalCore::Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
         KDateTime start = recur->getPreviousDateTime( KDateTime( mStartDate, QTime(), timeSpec ) );
         KDateTime end = start.addSecs( duration );
@@ -125,7 +122,7 @@ void KOWhatsNextView::updateView()
         if ( end.date() >= mStartDate ) {
           appendEvent( evItem, start.dateTime(), end.dateTime() );
         }
-        DateTimeList times = recur->timesInInterval( start, endDate );
+        KCalCore::DateTimeList times = recur->timesInInterval( start, endDate );
         int count = times.count();
         if ( count > 0 ) {
           int i = 0;
@@ -155,8 +152,8 @@ void KOWhatsNextView::updateView()
     mText += "\">";
     mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
-    Q_FOREACH( const Akonadi::Item & todoItem, todos ) {
-      Todo::Ptr todo = CalendarSupport::todo( todoItem );
+    Q_FOREACH ( const Akonadi::Item & todoItem, todos ) {
+      KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
       if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate ) {
         appendTodo( todoItem );
       }
@@ -164,8 +161,8 @@ void KOWhatsNextView::updateView()
     bool gotone = false;
     int priority = 1;
     while ( !gotone && priority <= 9 ) {
-      Q_FOREACH( const Akonadi::Item & todoItem, todos ) {
-        Todo::Ptr todo = CalendarSupport::todo( todoItem );
+      Q_FOREACH ( const Akonadi::Item & todoItem, todos ) {
+        KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
         if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
           appendTodo( todoItem );
           gotone = true;
@@ -180,10 +177,10 @@ void KOWhatsNextView::updateView()
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
   Q_FOREACH ( const Akonadi::Item &evItem, events ) {
-    Event::Ptr ev = CalendarSupport::event( evItem );
-    Attendee::Ptr me = ev->attendeeByMails( myEmails );
+    KCalCore::Event::Ptr ev = CalendarSupport::event( evItem );
+    KCalCore::Attendee::Ptr me = ev->attendeeByMails( myEmails );
     if ( me != 0 ) {
-      if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
+      if ( me->status() == KCalCore::Attendee::NeedsAction && me->RSVP() ) {
         if ( replies == 0 ) {
           mText += "<p></p>";
           kil.loadIcon( "mail-reply-sender", KIconLoader::NoGroup, 22,
@@ -200,11 +197,11 @@ void KOWhatsNextView::updateView()
     }
   }
   todos = calendar()->todos();
-  Q_FOREACH( const Akonadi::Item & todoItem, todos ) {
-    Todo::Ptr to = CalendarSupport::todo( todoItem );
-    Attendee::Ptr me = to->attendeeByMails( myEmails );
+  Q_FOREACH ( const Akonadi::Item & todoItem, todos ) {
+    KCalCore::Todo::Ptr to = CalendarSupport::todo( todoItem );
+    KCalCore::Attendee::Ptr me = to->attendeeByMails( myEmails );
     if ( me != 0 ) {
-      if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
+      if ( me->status() == KCalCore::Attendee::NeedsAction && me->RSVP() ) {
         if ( replies == 0 ) {
           mText += "<p></p>";
           kil.loadIcon( "mail-reply-sender", KIconLoader::NoGroup, 22,
@@ -260,9 +257,9 @@ void KOWhatsNextView::changeIncidenceDisplay( const Akonadi::Item &incidence, in
 void KOWhatsNextView::appendEvent( const Akonadi::Item &aitem, const QDateTime &start,
                                    const QDateTime &end )
 {
-  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
+  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   mText += "<tr><td><b>";
-  if ( const Event::Ptr event = CalendarSupport::event( aitem ) ) {
+  if ( const KCalCore::Event::Ptr event = CalendarSupport::event( aitem ) ) {
     KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
     KDateTime starttime( start, timeSpec );
     if ( !starttime.isValid() ) {
@@ -293,10 +290,10 @@ void KOWhatsNextView::appendEvent( const Akonadi::Item &aitem, const QDateTime &
     }
   }
   mText += "</b></td><td><a ";
-  if ( incidence->type() == Incidence::TypeEvent ) {
+  if ( incidence->type() == KCalCore::Incidence::TypeEvent ) {
     mText += "href=\"event:";
   }
-  if ( incidence->type() == Incidence::TypeTodo ) {
+  if ( incidence->type() == KCalCore::Incidence::TypeTodo ) {
     mText += "href=\"todo:";
   }
   mText += incidence->uid() + "\">";
@@ -312,15 +309,16 @@ void KOWhatsNextView::appendTodo( const Akonadi::Item &aitem )
 
   mTodos.append( aitem );
 
-  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
+  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   mText += "<li><a href=\"todo:" + incidence->uid() + "\">";
   mText += incidence->summary();
   mText += "</a>";
 
-  if ( const Todo::Ptr todo = CalendarSupport::todo( aitem ) ) {
+  if ( const KCalCore::Todo::Ptr todo = CalendarSupport::todo( aitem ) ) {
     if ( todo->hasDueDate() ) {
       mText += i18nc( "to-do due date", "  (Due: %1)",
-                      IncidenceFormatter::dateTimeToString( todo->dtDue(), todo->allDay() ) );
+                      KCalUtils::IncidenceFormatter::dateTimeToString(
+                        todo->dtDue(), todo->allDay() ) );
     }
   }
   mText += "</li>\n";

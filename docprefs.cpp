@@ -1,5 +1,6 @@
 /*
   This file is part of KOrganizer.
+
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
@@ -24,9 +25,9 @@
 
 #include "docprefs.h"
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kstandarddirs.h>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KStandardDirs>
 
 KConfig *DocPrefs::mConfig = 0;
 

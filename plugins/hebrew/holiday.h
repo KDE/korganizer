@@ -24,14 +24,13 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef HEBREW_HOLIDAY_H
-#define HEBREW_HOLIDAY_H
 
-#include <QString>
-#include <QStringList>
+#ifndef KORG_PLUGINS_HEBREW_HOLIDAY_H
+#define KORG_PLUGINS_HEBREW_HOLIDAY_H
 
 #include "converter.h"
-#include "parsha.h"
+
+#include <QStringList>
 
 /**
   @author Jonathan Singer

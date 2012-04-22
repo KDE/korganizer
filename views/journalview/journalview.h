@@ -23,32 +23,27 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORGANIZER_JOURNALVIEW_H
-#define KORGANIZER_JOURNALVIEW_H
-//
+
+#ifndef KORG_VIEWS_JOURNALVIEW_H
+#define KORG_VIEWS_JOURNALVIEW_H
+
 // Widget showing one Journal entry
 
-#include <KCalCore/Journal>
-#include <kvbox.h>
-
 #include <QDate>
-#include <QEvent>
-#include <QGridLayout>
-#include <QLabel>
+#include <QFrame>
 
 #include <Akonadi/Item>
 
-class QLabel;
-class QGridLayout;
-class KTextBrowser;
-class QPushButton;
+#include <KVBox>
 
 namespace CalendarSupport {
   class Calendar;
   class IncidenceChanger;
 }
 
-using namespace KCalCore;
+class KTextBrowser;
+
+class QPushButton;
 
 class JournalView : public QFrame
 {

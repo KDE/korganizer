@@ -22,16 +22,18 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOJOURNALVIEW_H
-#define KOJOURNALVIEW_H
+#ifndef KORG_VIEWS_KOJOURNALVIEW_H
+#define KORG_VIEWS_KOJOURNALVIEW_H
 
-#include <korganizer/baseview.h>
-#include "journalview.h"
+#include "korganizer/baseview.h"
 
-#include <Akonadi/Item>
+#include <KCalCore/Incidence> // for KCalCore::DateList typedef
+
+class JournalDateView;
+
+class KVBox;
 
 class QScrollArea;
-class KVBox;
 
 /**
  * This class provides a journal view.
@@ -49,7 +51,12 @@ class KOJournalView : public KOrg::BaseView
 
     virtual int currentDateCount() const;
     virtual Akonadi::Item::List selectedIncidences();
-    DateList selectedIncidenceDates() { return DateList(); }
+
+    KCalCore::DateList selectedIncidenceDates()
+    {
+      return KCalCore::DateList();
+    }
+
     void appendJournal( const Akonadi::Item &journal, const QDate &dt );
 
     /** documentation in baseview.h */

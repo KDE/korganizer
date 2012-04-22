@@ -27,12 +27,7 @@
 
 #include <calendarsupport/kcalprefs.h>
 
-#include <Akonadi/Collection>
-#include <Akonadi/Item>
-
 #include <KMessageBox>
-
-#include <QDate>
 
 QColor KOHelper::getTextColor( const QColor &c )
 {

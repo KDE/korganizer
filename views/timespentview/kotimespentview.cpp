@@ -23,24 +23,16 @@
 */
 
 #include "kotimespentview.h"
-#include "koglobals.h"
-#include "koprefs.h"
 
 #include <calendarsupport/calendar.h>
-#include <calendarsupport/incidencechanger.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/event.h>
+#include <KCalCore/Event>
 
-#include <QDate>
-#include <QMap>
 #include <QBoxLayout>
 #include <QPainter>
-#include <QPainterPath>
 #include <QPaintEvent>
-
-using namespace KCalCore;
 
 class TimeSpentWidget : public QWidget
 {
@@ -88,7 +80,7 @@ class TimeSpentWidget : public QWidget
       int total = 0;
 
       foreach ( const Akonadi::Item &item, mEventList ) {
-        const Event::Ptr e = CalendarSupport::event( item );
+        const KCalCore::Event::Ptr e = CalendarSupport::event( item );
         Q_ASSERT( e );
         KDateTime selectedStart( mTimeSpentView->mStartDate,
                                  QTime( 0, 0 ),
@@ -109,7 +101,7 @@ class TimeSpentWidget : public QWidget
 
           // timesInInterval only return events that have their start inside the interval
           // so we resize the interval by -eventDuration
-          DateTimeList times = e->recurrence()->timesInInterval(
+          KCalCore::DateTimeList times = e->recurrence()->timesInInterval(
             selectedStart.addSecs( -eventDuration ), selectedEnd );
 
           foreach ( const KDateTime &kdt, times ) {

@@ -23,8 +23,9 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOEVENTVIEW_H
-#define KOEVENTVIEW_H
+
+#ifndef KORG_KOEVENTVIEW_H
+#define KORG_KOEVENTVIEW_H
 
 #include "korganizer/baseview.h"
 
@@ -33,6 +34,7 @@ namespace Akonadi {
 }
 
 class KOEventPopupMenu;
+
 class QMenu;
 
 /**

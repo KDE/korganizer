@@ -24,15 +24,13 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOCOREHELPER_H
-#define KOCOREHELPER_H
+#ifndef KORG_KOCOREHELPER_H
+#define KORG_KOCOREHELPER_H
 
-#include "korganizer/corehelper.h"
-#include "koprefs.h"
-#include "koglobals.h"
 #include "kocore.h"
-
-class KCalendarSystem;
+#include "koglobals.h"
+#include "koprefs.h"
+#include "korganizer/corehelper.h"
 
 class KOCoreHelper : public KOrg::CoreHelper
 {

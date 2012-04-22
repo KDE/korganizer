@@ -25,14 +25,14 @@
 */
 
 #include "searchdialog.h"
-#include "koglobals.h"
 #include "calendarview.h"
+
+#include <calendarsupport/kcalprefs.h>
+#include <calendarsupport/utils.h>
 
 #include <calendarviews/eventviews/list/listview.h>
 
-#include <calendarsupport/calendar.h>
-#include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/utils.h>
+#include <KMessageBox>
 
 using namespace KOrg;
 
@@ -149,7 +149,7 @@ void SearchDialog::search( const QRegExp &re )
       KDateTime::Spec spec = CalendarSupport::KCalPrefs::instance()->timeSpec();
       Akonadi::Item::List alltodos = m_calendarview->calendar()->todos();
       Q_FOREACH ( const Akonadi::Item &item, alltodos ) {
-        const Todo::Ptr todo = CalendarSupport::todo( item );
+        const KCalCore::Todo::Ptr todo = CalendarSupport::todo( item );
         Q_ASSERT( todo );
         if ( ( !todo->hasStartDate() && !todo->hasDueDate() ) || // undated
              ( todo->hasStartDate() &&
@@ -185,7 +185,7 @@ void SearchDialog::search( const QRegExp &re )
   mMatchedEvents.clear();
   Q_FOREACH ( const Akonadi::Item &item,
               CalendarSupport::Calendar::mergeIncidenceList( events, todos, journals ) ) {
-    const Incidence::Ptr ev = CalendarSupport::incidence( item );
+    const KCalCore::Incidence::Ptr ev = CalendarSupport::incidence( item );
     Q_ASSERT( ev );
     if ( mSummaryCheck->isChecked() ) {
       if ( re.indexIn( ev->summary() ) != -1 ) {

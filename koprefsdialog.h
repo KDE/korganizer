@@ -22,34 +22,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOPREFSDIALOG_H
-#define KOPREFSDIALOG_H
+#ifndef KORG_KOPREFSDIALOG_H
+#define KORG_KOPREFSDIALOG_H
 
 #include "korganizer_export.h"
 #include "kcmdesignerfields.h"
 #include "ui_accountscalendarwidget.h"
 
-#include <calendarviews/eventviews/prefs.h>
 #include <libkdepim/kprefsdialog.h>
-#include <boost/shared_ptr.hpp>
-
-#include <QHash>
-#include <QSet>
-
-class KColorButton;
-class KComboBox;
-class KComponentData;
-class KLineEdit;
-class KPushButton;
-
-class QListWidget;
-class QCheckBox;
-class QColor;
-class QGroupBox;
-class QLabel;
-class QRadioButton;
-class QTreeWidget;
-class QListWidget;
 
 namespace Ui {
   class KOGroupwarePrefsPage;
@@ -59,9 +39,10 @@ namespace Akonadi {
   class CollectionComboBox;
 }
 
-using namespace KPIM;
+class QListWidget;
+class QRadioButton;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:
@@ -79,7 +60,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
     Ui_AccountsCalendarWidget mAccountsCalendar;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:
@@ -108,7 +89,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
     QHash<QString, QColor> mResourceDict;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:
@@ -133,7 +114,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 
 class KOGroupwarePrefsPage;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:
@@ -148,7 +129,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModu
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:

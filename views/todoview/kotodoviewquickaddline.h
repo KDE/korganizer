@@ -22,15 +22,10 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODOVIEWQUICKADDLINE_H
-#define KOTODOVIEWQUICKADDLINE_H
+#ifndef KORG_VIEWS_KOTODOVIEWQUICKADDLINE_H
+#define KORG_VIEWS_KOTODOVIEWQUICKADDLINE_H
 
 #include <KLineEdit>
-
-#include <Qt>
-
-class QWidget;
-class QKeyEvent;
 
 class KOTodoViewQuickAddLine : public KLineEdit
 {

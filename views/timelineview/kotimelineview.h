@@ -25,29 +25,18 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOTIMELINEVIEW_H
-#define KOTIMELINEVIEW_H
 
-#include <koeventview.h>
+#ifndef KORG_VIEWS_KOTIMELINEVIEW_H
+#define KORG_VIEWS_KOTIMELINEVIEW_H
 
-#include <Akonadi/Collection>
-#include <Akonadi/Item>
-
-#include <QMap>
-
-class QStandardItem;
-class QTreeWidget;
-
-namespace CalendarSupport {
-  class Calendar;
-}
+#include "koeventview.h"
 
 /**
   This class provides a view ....
 */
 class KOTimelineView : public KOEventView
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit KOTimelineView( QWidget *parent = 0 );
     ~KOTimelineView();

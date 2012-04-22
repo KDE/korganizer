@@ -22,18 +22,12 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODOVIEWVIEW_H
-#define KOTODOVIEWVIEW_H
+#ifndef KORG_VIEWS_KOTODOVIEWVIEW_H
+#define KORG_VIEWS_KOTODOVIEWVIEW_H
 
 #include <QTreeView>
-#include <QList>
 
-class QWidget;
-class QEvent;
-class QModelIndex;
 class KMenu;
-class QAction;
-class QMouseEvent;
 
 class KOTodoViewView : public QTreeView
 {

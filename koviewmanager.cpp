@@ -24,35 +24,29 @@
 */
 
 #include "koviewmanager.h"
-#include "koglobals.h"
-#include "koprefs.h"
 #include "actionmanager.h"
 #include "calendarview.h"
 #include "datenavigator.h"
+#include "koglobals.h"
+#include "koprefs.h"
 #include "navigatorbar.h"
-#include "datenavigatorcontainer.h"
 #include "korganizer/mainwindow.h"
 #include "views/agendaview/koagendaview.h"
-#include "views/listview/kolistview.h"
 #include "views/journalview/kojournalview.h"
+#include "views/listview/kolistview.h"
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
-#include "views/todoview/kotodoview.h"
-#include "views/whatsnextview/kowhatsnextview.h"
 #include "views/timelineview/kotimelineview.h"
 #include "views/timespentview/kotimespentview.h"
+#include "views/todoview/kotodoview.h"
+#include "views/whatsnextview/kowhatsnextview.h"
 
 #include <KActionCollection>
-#include <KConfig>
-#include <KGlobal>
+#include <KMessageBox>
 #include <KTabWidget>
 
 #include <QAction>
 #include <QStackedWidget>
-
-#include "koviewmanager.moc"
-
-using namespace Akonadi;
 
 KOViewManager::KOViewManager( CalendarView *mainView )
   : QObject(), mMainView( mainView )
@@ -192,7 +186,7 @@ void KOViewManager::showView( KOrg::BaseView *view )
   }
 
   raiseCurrentView();
-  mMainView->processIncidenceSelection( Item(), QDate() );
+  mMainView->processIncidenceSelection( Akonadi::Item(), QDate() );
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
   KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
@@ -623,15 +617,15 @@ void KOViewManager::showEventView()
   }
 }
 
-Item KOViewManager::currentSelection()
+Akonadi::Item KOViewManager::currentSelection()
 {
   if ( !mCurrentView ) {
-    return Item();
+    return Akonadi::Item();
   }
 
-  Item::List incidenceList = mCurrentView->selectedIncidences();
+  Akonadi::Item::List incidenceList = mCurrentView->selectedIncidences();
   if ( incidenceList.isEmpty() ) {
-    return Item();
+    return Akonadi::Item();
   }
   return incidenceList.first();
 }
@@ -699,3 +693,6 @@ bool KOViewManager::agendaIsSelected() const
          mCurrentView == mAgendaSideBySideView  ||
         ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() );
 }
+
+#include "koviewmanager.moc"
+

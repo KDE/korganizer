@@ -28,26 +28,17 @@
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
 
-#include "incidenceeditor-ng/categoryhierarchyreader.h"
-
-#include "libkdepim/kcheckcombobox.h"
-using namespace KPIM;
-
-#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/calendar.h>
-using namespace CalendarSupport;
+#include <calendarsupport/categoryconfig.h>
+
+#include <libkdepim/kcheckcombobox.h>
+
+#include <incidenceeditor-ng/categoryhierarchyreader.h>
 
 #include <KCalCore/CalFilter>
-using namespace KCalCore;
 
 #include <KLineEdit>
 
-#include <QString>
-#include <QStringList>
-#include <QModelIndex>
-#include <QStandardItemModel>
-#include <QStandardItem>
-#include <QAbstractItemView>
 #include <QHBoxLayout>
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent )
@@ -65,7 +56,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
 
   layout->addWidget( mSearchLine, 3 );
 
-  mCategoryCombo = new KCheckComboBox( this );
+  mCategoryCombo = new KPIM::KCheckComboBox( this );
   mCategoryCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Categories" ) );
   mCategoryCombo->setSeparator( i18nc( "@item:intext delimiter for joining category names", "," ) );
 
@@ -120,12 +111,12 @@ void KOTodoViewQuickSearch::fillCategories()
   QStringList categories;
 
   if ( mCalendar ) {
-    CalFilter *filter = mCalendar->filter();
-    if ( filter->criteria() & CalFilter::ShowCategories ) {
+    KCalCore::CalFilter *filter = mCalendar->filter();
+    if ( filter->criteria() & KCalCore::CalFilter::ShowCategories ) {
       categories = filter->categoryList();
       categories.sort();
     } else {
-      CategoryConfig cc( KOPrefs::instance() );
+      CalendarSupport::CategoryConfig cc( KOPrefs::instance() );
       categories = cc.customCategories();
       QStringList filterCategories = filter->categoryList();
       categories.sort();

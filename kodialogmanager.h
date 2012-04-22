@@ -22,21 +22,18 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KODIALOGMANAGER_H
-#define KODIALOGMANAGER_H
+
+#ifndef KORG_KODIALOGMANAGER_H
+#define KORG_KODIALOGMANAGER_H
 
 #include "koeventview.h"
 
-#include <QList>
-#include <QPointer>
-
 class CalendarView;
 class FilterEditDialog;
-class KCMultiDialog;
 class SearchDialog;
 
-namespace Akonadi {
-  class Item;
+namespace CalendarSupport {
+  class ArchiveDialog;
 }
 
 namespace IncidenceEditorNG {
@@ -44,13 +41,11 @@ namespace IncidenceEditorNG {
   class IncidenceDialog;
 }
 
-namespace KCal {
+namespace KCalCore {
   class CalFilter;
 }
 
-namespace CalendarSupport {
-  class ArchiveDialog;
-}
+class KCMultiDialog;
 
 /**
   This class manages the dialogs used by the calendar view. It owns the objects

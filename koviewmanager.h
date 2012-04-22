@@ -22,41 +22,37 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOVIEWMANAGER_H
-#define KOVIEWMANAGER_H
+
+#ifndef KORG_KOVIEWMANAGER_H
+#define KORG_KOVIEWMANAGER_H
 
 #include <calendarviews/eventviews/eventview.h>
 
-#include <QObject>
-#include <QDate>
+#include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
 
-class KConfig;
-class KTabWidget;
+#include <QDate>
+#include <QObject>
 
 class CalendarView;
-class KOListView;
 class KOAgendaView;
-class KOTodoView;
-class KOWhatsNextView;
 class KOJournalView;
+class KOListView;
 class KOTimelineView;
 class KOTimeSpentView;
-
-namespace Akonadi {
-  class Item;
-}
-
+class KOTodoView;
+class KOWhatsNextView;
 namespace KOrg {
   class BaseView;
   class MultiAgendaView;
   class MonthView;
 }
 
-using namespace KOrg;
-
-namespace KCalCore {
-  class CalFilter;
+namespace Akonadi {
+  class Item;
 }
+
+class KConfig;
+class KTabWidget;
 
 /**
   This class manages the views of the calendar. It owns the objects and handles

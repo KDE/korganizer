@@ -17,8 +17,9 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
+
+#ifndef KORG_PLUGINS_DATENUMS_CONFIGDIALOG_H
+#define KORG_PLUGINS_DATENUMS_CONFIGDIALOG_H
 
 #include <KDialog>
 
@@ -26,7 +27,7 @@ class QButtonGroup;
 
 class ConfigDialog : public KDialog
 {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
     ConfigDialog( QWidget *parent = 0 );

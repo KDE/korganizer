@@ -24,17 +24,7 @@
 
 #include "yearprint.h"
 
-#include <kconfig.h>
-#include <kdebug.h>
-#include <kcalendarsystem.h>
-#include <klocale.h>
-#include <kpluginfactory.h>
-#include <kpluginloader.h>
-
-#include <qcheckbox.h>
-#include <qspinbox.h>
-#include <qcombobox.h>
-#include <qpainter.h>
+#include <KCalendarSystem>
 
 class YearPrintFactory : public KOrg::PrintPluginFactory
 {

@@ -21,15 +21,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOWHATSNEXTVIEW_H
-#define KOWHATSNEXTVIEW_H
+#ifndef KORG_VIEWS_KOWHATSNEXTVIEW_H
+#define KORG_VIEWS_KOWHATSNEXTVIEW_H
 
 #include "korganizer/baseview.h"
-using namespace KOrg;
 
 #include <KTextBrowser>
 
-class QUrl;
+using namespace KOrg;
 
 class WhatsNextTextBrowser : public KTextBrowser
 {

@@ -2,7 +2,7 @@
   This file is part of the KOrganizer interfaces.
 
   Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Library General Public
@@ -22,19 +22,8 @@
 
 #include "baseview.h"
 
-#include <calendarsupport/calendar.h>
-#include <calendarsupport/calendarmodel.h>
-#include <calendarsupport/utils.h>
-
-#include <Akonadi/EntityTreeView>
-
-#include <KConfigGroup>
 #include <KRandom>
-#include <kcheckableproxymodel.h>
 
-#include <QVBoxLayout>
-
-using namespace CalendarSupport;
 using namespace KOrg;
 
 class BaseView::Private
@@ -49,8 +38,8 @@ class BaseView::Private
         calendar( 0 )
     {
       QByteArray cname = q->metaObject()->className();
-      cname.replace( ":", "_" );
-      identifier = cname + "_" + KRandom::randomString( 8 ).toLatin1();
+      cname.replace( ':', '_' );
+      identifier = cname + '_' + KRandom::randomString( 8 ).toLatin1();
     }
 
     ~Private()
@@ -103,7 +92,7 @@ void BaseView::dayPassed( const QDate & )
   updateView();
 }
 
-void BaseView::setIncidenceChanger( IncidenceChanger *changer )
+void BaseView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
 {
   mChanger = changer;
 }

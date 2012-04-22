@@ -26,6 +26,7 @@
 */
 
 #include "holiday.h"
+#include "parsha.h"
 
 #include <KLocale>
 

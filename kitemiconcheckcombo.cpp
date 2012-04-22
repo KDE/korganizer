@@ -1,4 +1,6 @@
 /*
+  This file is part of KOrganizer.
+
   Copyright (C) 2011 Sérgio Martins <iamsergio@gmail.com>
 
   This library is free software; you can redistribute it and/or modify it
@@ -18,15 +20,9 @@
 */
 
 #include "kitemiconcheckcombo.h"
-
-#include "koprefs.h"
 #include "koglobals.h"
 
-#include <KDebug>
 #include <KLocale>
-#include <QBitArray>
-
-using namespace EventViews;
 
 class KItemIconCheckCombo::Private
 {
@@ -54,11 +50,11 @@ KItemIconCheckCombo::KItemIconCheckCombo( ViewType viewType, QWidget *parent )
   addItem( KOGlobals::self()->smallIcon( "meeting-organizer" ), i18n( "Organizer" ) );
 
   // Agenda view doesn't support journals yet
-  setItemEnabled( EventView::JournalIcon, viewType != AgendaType );
-  setItemEnabled( EventView::ReplyIcon, viewType == AgendaType );
-  setItemEnabled( EventView::AttendingIcon, viewType == AgendaType );
-  setItemEnabled( EventView::TentativeIcon, viewType == AgendaType );
-  setItemEnabled( EventView::OrganizerIcon, viewType == AgendaType );
+  setItemEnabled( EventViews::EventView::JournalIcon, viewType != AgendaType );
+  setItemEnabled( EventViews::EventView::ReplyIcon, viewType == AgendaType );
+  setItemEnabled( EventViews::EventView::AttendingIcon, viewType == AgendaType );
+  setItemEnabled( EventViews::EventView::TentativeIcon, viewType == AgendaType );
+  setItemEnabled( EventViews::EventView::OrganizerIcon, viewType == AgendaType );
 
   setDefaultText( i18nc( "@item:inlistbox", "Icons to use" ) );
   setAlwaysShowDefaultText( true );
@@ -74,10 +70,11 @@ void KItemIconCheckCombo::setCheckedIcons( const QSet<EventViews::EventView::Ite
   const int itemCount = count();
   for ( int i=0; i<itemCount; ++i ) {
     if ( itemEnabled( i ) ) {
-      setItemCheckState( i,
-                         icons.contains( static_cast<EventView::ItemIcon>( i ) ) ?
-                           Qt::Checked :
-                           Qt::Unchecked );
+      setItemCheckState(
+        i,
+        icons.contains( static_cast<EventViews::EventView::ItemIcon>( i ) ) ?
+        Qt::Checked :
+        Qt::Unchecked );
     } else {
       setItemCheckState( i, Qt::Unchecked );
     }
@@ -91,7 +88,7 @@ QSet<EventViews::EventView::ItemIcon> KItemIconCheckCombo::checkedIcons() const
   for ( int i=0; i<itemCount; ++i ) {
     const QVariant value = itemCheckState( i );
     if ( value.toBool() ) {
-      icons.insert( static_cast<EventView::ItemIcon>( i ) );
+      icons.insert( static_cast<EventViews::EventView::ItemIcon>( i ) );
     }
   }
   return icons;

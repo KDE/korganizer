@@ -21,17 +21,15 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOHELPER_H
-#define KOHELPER_H
+
+#ifndef KORG_KOHELPER_H
+#define KORG_KOHELPER_H
 
 #include "korganizer_export.h"
 
-#include <kcalcore/incidence.h>
-
 #include <Akonadi/Entity>
 
-namespace KOrg {
-}
+#include <KCalCore/Incidence>
 
 namespace Akonadi {
   class Collection;

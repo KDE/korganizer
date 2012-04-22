@@ -27,19 +27,14 @@
 */
 
 #include "datenavigatorcontainer.h"
-#include "koglobals.h"
-#include "navigatorbar.h"
 #include "kdatenavigator.h"
 #include "kodaymatrix.h"
+#include "koglobals.h"
+#include "navigatorbar.h"
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kcalendarsystem.h>
-#include <kdialog.h>
+#include <KCalendarSystem>
 
 #include <QTimer>
-#include <QFrame>
-#include <QResizeEvent>
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent )
   : QFrame( parent ), mCalendar( 0 ),
@@ -163,7 +158,8 @@ void DateNavigatorContainer::updateConfig()
   }
 }
 
-void DateNavigatorContainer::selectDates( const DateList &dateList, const QDate &preferredMonth )
+void DateNavigatorContainer::selectDates( const KCalCore::DateList &dateList,
+                                          const QDate &preferredMonth )
 {
   if ( !dateList.isEmpty() ) {
     QDate start( dateList.first() );

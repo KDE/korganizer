@@ -22,14 +22,11 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODOVIEWSORTFILTERPROXYMODEL_H
-#define KOTODOVIEWSORTFILTERPROXYMODEL_H
+#ifndef KORG_VIEWS_KOTODOVIEWSORTFILTERPROXYMODEL_H
+#define KORG_VIEWS_KOTODOVIEWSORTFILTERPROXYMODEL_H
 
 #include <QSortFilterProxyModel>
 #include <QStringList>
-#include <Qt>
-
-class QModelIndex;
 
 class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
 {
@@ -39,7 +36,11 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
     KOTodoViewSortFilterProxyModel( QObject *parent = 0 );
 
     void sort( int column, Qt::SortOrder order = Qt::AscendingOrder );
-    const QStringList &categories() const { return mCategories; }
+
+    const QStringList &categories() const
+    {
+      return mCategories;
+    }
 
   protected:
     bool filterAcceptsRow( int source_row, const QModelIndex &source_parent ) const;

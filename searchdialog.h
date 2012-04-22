@@ -23,14 +23,19 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef SEARCHDIALOG_H
-#define SEARCHDIALOG_H
+
+#ifndef KORG_SEARCHDIALOG_H
+#define KORG_SEARCHDIALOG_H
 
 #include "ui_searchdialog_base.h"
 
 #include <KDialog>
 
 class CalendarView;
+
+namespace EventViews {
+  class ListView;
+}
 
 namespace Akonadi {
   class Item;
@@ -39,12 +44,6 @@ namespace Akonadi {
 namespace KCalCore {
   class Incidence;
 }
-
-namespace EventViews {
-  class ListView;
-}
-
-class QRegExp;
 
 class SearchDialog : public KDialog, private Ui::SearchDialog
 {

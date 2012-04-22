@@ -1,5 +1,5 @@
 /*
-  This file is part of KOrganizer.
+  This file is part of the KOrganizer interfaces.
 
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
@@ -21,16 +21,9 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_COREHELPER_H
-#define KORG_COREHELPER_H
 
-#include "printplugin.h"
-
-#include <KCalendarSystem>
-
-#include <QtCore/QString>
-#include <QtCore/QDateTime>
-#include <QtGui/QColor>
+#ifndef KORG_INTERFACES_COREHELPER_H
+#define KORG_INTERFACES_COREHELPER_H
 
 namespace KOrg {
 

@@ -17,14 +17,14 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_PICOFTHEDAY_H
-#define KORG_PICOFTHEDAY_H
+
+#ifndef KORG_PLUGINS_PICOFTHEDAY_PICOFTHEDAY_H
+#define KORG_PLUGINS_PICOFTHEDAY_PICOFTHEDAY_H
 
 #include <calendarviews/eventviews/agenda/calendardecoration.h>
-#include <KIO/Job>
-#include <QDate>
-
 using namespace EventViews::CalendarDecoration;
+
+#include <KIO/Job>
 
 class Picoftheday : public Decoration
 {

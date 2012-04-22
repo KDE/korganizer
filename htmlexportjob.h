@@ -19,27 +19,20 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
+
 #ifndef KORG_HTMLEXPORTJOB_H
 #define KORG_HTMLEXPORTJOB_H
 
-#include <kjob.h>
+#include <KJob>
 
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
 
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
-#include <QtCore/QTextStream>
-
-class QTextStream;
-
-namespace KCalCore {
-  class Calendar;
-}
-
 namespace CalendarSupport {
   class Calendar;
 }
+
+class QTextStream;
 
 namespace KOrg {
 

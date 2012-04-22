@@ -21,20 +21,20 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOGLOBALS_H
-#define KOGLOBALS_H
+
+#ifndef KORG_KOGLOBALS_H
+#define KORG_KOGLOBALS_H
 
 #include "korganizer_export.h"
+
 #include <KComponentData>
 
-#include <QPixmap>
-
-class KCalendarSystem;
-class KConfig;
-class QPixmap;
 namespace KHolidays {
   class HolidayRegion;
 }
+
+class KCalendarSystem;
+class KConfig;
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
 {

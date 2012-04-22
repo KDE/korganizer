@@ -22,14 +22,13 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KDATENAVIGATOR_H
-#define KDATENAVIGATOR_H
+
+#ifndef KORG_KDATENAVIGATOR_H
+#define KORG_KDATENAVIGATOR_H
 
 #include <QFrame>
-#include <QDateTime>
 
-#include <kcalcore/incidencebase.h> //for DateList typedef
-using namespace KCalCore;
+#include <KCalCore/IncidenceBase> //for DateList typedef
 
 class KODayMatrix;
 class NavigatorBar;
@@ -42,9 +41,7 @@ namespace Akonadi {
   class Item;
 }
 
-class QEvent;
 class QLabel;
-class QWheelEvent;
 
 class KDateNavigator: public QFrame
 {

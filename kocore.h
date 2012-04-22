@@ -22,18 +22,21 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOCORE_H
-#define KOCORE_H
+
+#ifndef KORG_KOCORE_H
+#define KORG_KOCORE_H
 
 #include "korganizer_export.h"
+#include "korganizer/part.h"
+#include "korganizer/printplugin.h"
 
 #include <calendarviews/eventviews/agenda/calendardecoration.h>
 
-#include <korganizer/part.h>
-#include <korganizer/printplugin.h>
-#include <kservice.h>
+#include <KService>
 
-namespace KPIMIdentities { class IdentityManager; }
+namespace KPIMIdentities {
+  class IdentityManager;
+}
 
 class KORGANIZER_CORE_EXPORT KOCore
 {

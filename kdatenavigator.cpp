@@ -24,26 +24,17 @@
 */
 
 #include "kdatenavigator.h"
-#include "navigatorbar.h"
-#include "koglobals.h"
-#include "koprefs.h"
 #include "kodaymatrix.h"
+#include "koglobals.h"
+#include "navigatorbar.h"
 
-#include <kdebug.h>
-#include <kcalendarsystem.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kglobalsettings.h>
+#include <KCalendarSystem>
+#include <KGlobalSettings>
 
-#include <QString>
-#include <qnamespace.h>
-#include <QLayout>
-#include <QTimer>
-#include <QFrame>
+#include <QEvent>
+#include <QGridLayout>
 #include <QLabel>
 #include <QWheelEvent>
-#include <QGridLayout>
-#include <QEvent>
 
 KDateNavigator::KDateNavigator( QWidget *parent )
   : QFrame( parent ), mBaseDate( 1970, 1, 1 )
@@ -284,7 +275,7 @@ void KDateNavigator::selectMonthHelper( int monthDifference )
   QDate baseDateNextMonth = KOGlobals::self()->calendarSystem()->addMonths(
                                             mBaseDate, monthDifference );
 
-  DateList newSelection = mSelectedDates;
+  KCalCore::DateList newSelection = mSelectedDates;
   for ( int i=0; i < mSelectedDates.count(); i++ ) {
     newSelection[i] =
       KOGlobals::self()->calendarSystem()->addMonths( newSelection[i], monthDifference );
@@ -307,7 +298,7 @@ void KDateNavigator::selectPreviousMonth()
   selectMonthHelper( -1 );
 }
 
-void KDateNavigator::selectDates( const DateList &dateList )
+void KDateNavigator::selectDates( const KCalCore::DateList &dateList )
 {
   if ( dateList.count() > 0 ) {
     mSelectedDates = dateList;

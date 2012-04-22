@@ -22,22 +22,13 @@
 
 #include "configdialog.h"
 
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <kapplication.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
+#include <KConfig>
+#include <KLocale>
 
-#include <QLayout>
-#include <QLabel>
+#include <QButtonGroup>
+#include <QGroupBox>
 #include <QRadioButton>
 #include <QVBoxLayout>
-#include <QFrame>
-#include <QGroupBox>
-#include <QButtonGroup>
-
-#include "configdialog.moc"
 
 ConfigDialog::ConfigDialog( QWidget *parent )
   : KDialog( parent )
@@ -111,3 +102,5 @@ void ConfigDialog::slotOk()
   save();
   accept();
 }
+
+#include "configdialog.moc"

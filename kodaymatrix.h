@@ -23,32 +23,15 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KODAYMATRIX_H
-#define KODAYMATRIX_H
+
+#ifndef KORG_KODAYMATRIX_H
+#define KORG_KODAYMATRIX_H
 
 #include <calendarsupport/calendar.h>
 
-#include <QColor>
+#include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
+
 #include <QFrame>
-#include <QMap>
-
-namespace KCal {
-  class Incidence;
-}
-namespace Akonadi {
-  class Item;
-}
-using namespace KCalCore;
-
-class QEvent;
-class QMouseEvent;
-class QResizeEvent;
-class QPaintEvent;
-
-class QDragEnterEvent;
-class QDragMoveEvent;
-class QDragLeaveEvent;
-class QDropEvent;
 
 /**
  *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day
@@ -141,7 +124,7 @@ class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObse
      * Adds all actual selected days from mSelStart to mSelEnd to the supplied
      * DateList.
      */
-    void addSelectedDaysTo( DateList & );
+    void addSelectedDaysTo( KCalCore::DateList & );
 
     /**
      * Sets the actual to be displayed selection in the day matrix starting

@@ -27,12 +27,12 @@
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
 
-#include "incidenceeditor-ng/categoryhierarchyreader.h"
-
-#include "libkdepim/kcheckcombobox.h"
-
-#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/calendar.h>
+#include <calendarsupport/categoryconfig.h>
+
+#include <incidenceeditor-ng/categoryhierarchyreader.h>
+
+#include <libkdepim/kcheckcombobox.h>
 
 #include <KCalCore/CalFilter>
 
@@ -40,25 +40,9 @@
 #include <KDateComboBox>
 
 #include <QApplication>
-#include <QSlider>
 #include <QPainter>
-#include <QPen>
-#include <QBrush>
-#include <QColor>
-#include <QStyle>
-#include <QStyleOptionViewItem>
-#include <QStyleOptionProgressBar>
-#include <QSize>
-#include <QPoint>
-#include <QEvent>
-#include <QPaintEvent>
 #include <QTextDocument>
-#include <QFont>
-#include <QFontMetrics>
 #include <QToolTip>
-
-using namespace KCalCore;
-using namespace KPIM;
 
 // ---------------- COMPLETION DELEGATE --------------------------
 // ---------------------------------------------------------------
@@ -327,12 +311,12 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
   Q_UNUSED( option );
   Q_UNUSED( index );
 
-  KCheckComboBox *combo = new KCheckComboBox( parent );
+  KPIM::KCheckComboBox *combo = new KPIM::KCheckComboBox( parent );
   QStringList categories;
 
   if ( mCalendar ) {
-    CalFilter *filter = mCalendar->filter();
-    if ( filter->criteria() & CalFilter::ShowCategories ) {
+    KCalCore::CalFilter *filter = mCalendar->filter();
+    if ( filter->criteria() & KCalCore::CalFilter::ShowCategories ) {
       categories = filter->categoryList();
       categories.sort();
     } else {
@@ -367,7 +351,7 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
 void KOTodoCategoriesDelegate::setEditorData( QWidget *editor,
                                               const QModelIndex &index ) const
 {
-  KCheckComboBox *combo = static_cast<KCheckComboBox *>( editor );
+  KPIM::KCheckComboBox *combo = static_cast<KPIM::KCheckComboBox *>( editor );
 
   combo->setCheckedItems( index.data( Qt::EditRole ).toStringList(), Qt::UserRole );
 }
@@ -376,7 +360,7 @@ void KOTodoCategoriesDelegate::setModelData( QWidget *editor,
                                              QAbstractItemModel *model,
                                              const QModelIndex &index ) const
 {
-  KCheckComboBox *combo = static_cast<KCheckComboBox *>( editor );
+  KPIM::KCheckComboBox *combo = static_cast<KPIM::KCheckComboBox *>( editor );
 
   model->setData( index, combo->checkedItems( Qt::UserRole ) );
 }

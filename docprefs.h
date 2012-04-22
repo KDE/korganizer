@@ -22,8 +22,9 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef DOCPREFS_H
-#define DOCPREFS_H
+
+#ifndef KORG_DOCPREFS_H
+#define KORG_DOCPREFS_H
 
 #include <QString>
 

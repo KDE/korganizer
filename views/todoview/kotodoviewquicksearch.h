@@ -24,8 +24,8 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODOVIEWQUICKSEARCH_H
-#define KOTODOVIEWQUICKSEARCH_H
+#ifndef KORG_VIEWS_KOTODOVIEWQUICKSEARCH_H
+#define KORG_VIEWS_KOTODOVIEWQUICKSEARCH_H
 
 #include <QWidget>
 
@@ -33,14 +33,11 @@ namespace CalendarSupport {
   class Calendar;
 }
 
-class KLineEdit;
-
 namespace KPIM {
-class KCheckComboBox;
+  class KCheckComboBox;
 }
 
-class QString;
-class QStringList;
+class KLineEdit;
 
 class KOTodoViewQuickSearch : public QWidget
 {

@@ -26,7 +26,7 @@
 #include "kotodoviewquickaddline.h"
 
 #include <KLocale>
-#include <QWidget>
+
 #include <QKeyEvent>
 
 KOTodoViewQuickAddLine::KOTodoViewQuickAddLine( QWidget *parent )

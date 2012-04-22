@@ -21,8 +21,9 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOEVENTVIEWERDIALOG_H
-#define KOEVENTVIEWERDIALOG_H
+
+#ifndef KORG_KOEVENTVIEWERDIALOG_H
+#define KORG_KOEVENTVIEWERDIALOG_H
 
 #include "korganizer_export.h"
 

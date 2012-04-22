@@ -18,18 +18,20 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_MAINWINDOW_H
-#define KORG_MAINWINDOW_H
+
+#ifndef KORG_INTERFACES_MAINWINDOW_H
+#define KORG_INTERFACES_MAINWINDOW_H
 
 #include "korganizer/korganizer_export.h"
-#include <kxmlguiclient.h>
-#include <QtGui/QWidget>
-
-class KActionCollection;
-class KAction;
-class KUrl;
 
 class ActionManager;
+
+class KActionCollection;
+class KUrl;
+class KXMLGUIClient;
+class KXMLGUIFactory;
+
+class QWidget;
 
 namespace KOrg {
 

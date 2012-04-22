@@ -33,12 +33,10 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/incidence.h>
-#include <kmimetypetrader.h>
-#include <KActionCollection>
-#include <KLocale>
+#include <KCalCore/Incidence>
 
-using namespace KCalCore;
+#include <KActionCollection>
+#include <KMimeTypeTrader>
 
 KOEventPopupMenu::KOEventPopupMenu( CalendarSupport::Calendar *calendar, QWidget *parent )
   : QMenu( parent ), mCalendar( calendar )
@@ -111,7 +109,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
 
   const bool hasChangeRights = mCalendar->hasChangeRights( mCurrentIncidence );
 
-  Incidence::Ptr incidence = CalendarSupport::incidence( mCurrentIncidence );
+  KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
   if ( incidence->recurs() ) {
     const KDateTime thisDateTime( qd, CalendarSupport::KCalPrefs::instance()->timeSpec() );
@@ -128,12 +126,12 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
     (*it)->setEnabled( hasChangeRights );
   }
-  mToggleReminder->setVisible( ( incidence->type() != Incidence::TypeJournal ) );
+  mToggleReminder->setVisible( ( incidence->type() != KCalCore::Incidence::TypeJournal ) );
   for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
     (*it)->setVisible( incidence->recurs() );
   }
   for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
-    (*it)->setVisible( incidence->type() == Incidence::TypeTodo );
+    (*it)->setVisible( incidence->type() == KCalCore::Incidence::TypeTodo );
     (*it)->setEnabled( hasChangeRights );
   }
   popup( QCursor::pos() );
@@ -165,7 +163,7 @@ void KOEventPopupMenu::print( bool preview )
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   //Item::List selectedIncidences;
-  Incidence::List selectedIncidences;
+  KCalCore::Incidence::List selectedIncidences;
   Q_ASSERT( mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr>() );
   selectedIncidences.append( mCurrentIncidence.payload<KCalCore::Incidence::Ptr>() );
 

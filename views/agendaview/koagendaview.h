@@ -22,19 +22,12 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOAGENDAVIEW_H
-#define KOAGENDAVIEW_H
 
-#include "../../koeventview.h"
-#include "../../printing/calprinter.h"
+#ifndef KORG_VIEWS_KOAGENDAVIEW_H
+#define KORG_VIEWS_KOAGENDAVIEW_H
 
-#include <KCalCore/Todo>
-
-class QSplitter;
-
-namespace EventViews {
-  class AgendaView;
-}
+#include "koeventview.h"
+#include "calprinter.h"
 
 /**
   KOAgendaView is the agenda-like view that displays events in a single

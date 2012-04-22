@@ -22,18 +22,14 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODOMODEL_H
-#define KOTODOMODEL_H
-
-#include <kcalcore/todo.h>
+#ifndef KORG_VIEWS_KOTODOMODEL_H
+#define KORG_VIEWS_KOTODOMODEL_H
 
 #include <QAbstractItemModel>
-#include <QString>
-#include <QHash>
 
 #include <Akonadi/Item>
 
-using namespace KCalCore;
+#include <KCalCore/Todo>
 
 namespace CalendarSupport {
   class Calendar;

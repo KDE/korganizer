@@ -17,13 +17,13 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef STATUSDIALOG_H
-#define STATUSDIALOG_H
 
-#include <kdialog.h>
+#ifndef KORG_STATUSDIALOG_H
+#define KORG_STATUSDIALOG_H
 
-#include <kcalcore/attendee.h>
-using namespace KCalCore;
+#include <KDialog>
+
+#include <KCalCore/Attendee>
 
 class KComboBox;
 
@@ -34,7 +34,7 @@ class StatusDialog : public KDialog
     StatusDialog( QWidget *parent=0 );
     ~StatusDialog();
 
-    Attendee::PartStat status();
+    KCalCore::Attendee::PartStat status();
 
   private:
     KComboBox *mStatus;

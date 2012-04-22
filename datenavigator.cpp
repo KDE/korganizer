@@ -28,12 +28,10 @@
 #include "datenavigator.h"
 #include "koglobals.h"
 
-#include <kcalendarsystem.h>
-#include <kdebug.h>
-#include <kglobal.h>
-#include <klocale.h>
-
-using namespace KCalCore;
+#include <KDebug>
+#include <KCalendarSystem>
+#include <KGlobal>
+#include <KLocale>
 
 DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {
@@ -44,7 +42,7 @@ DateNavigator::~DateNavigator()
 {
 }
 
-DateList DateNavigator::selectedDates()
+KCalCore::DateList DateNavigator::selectedDates()
 {
   return mSelectedDates;
 }
@@ -54,7 +52,7 @@ int DateNavigator::datesCount() const
   return mSelectedDates.count();
 }
 
-void DateNavigator::selectDates( const DateList &dateList, const QDate &preferredMonth )
+void DateNavigator::selectDates( const KCalCore::DateList &dateList, const QDate &preferredMonth )
 {
   if ( dateList.count() > 0 ) {
     mSelectedDates = dateList;
@@ -85,7 +83,7 @@ void DateNavigator::selectDates( int count )
 void DateNavigator::selectDates( const QDate &d, int count,
                                  const QDate &preferredMonth )
 {
-  DateList dates;
+  KCalCore::DateList dates;
 
   int i;
   for ( i = 0; i < count; ++i ) {

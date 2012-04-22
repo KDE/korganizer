@@ -21,13 +21,11 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef NAVIGATORBAR_H
-#define NAVIGATORBAR_H
+#ifndef KORG_NAVIGATORBAR_H
+#define KORG_NAVIGATORBAR_H
 
-#include <kcalcore/incidencebase.h>
-using namespace KCalCore;
+#include <KCalCore/IncidenceBase> // for KCalCore::DateList typedef
 
-#include <QDate>
 #include <QWidget>
 
 class QToolButton;

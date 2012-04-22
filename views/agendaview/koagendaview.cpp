@@ -22,11 +22,10 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "koprefs.h"
 #include "koagendaview.h"
 #include "koeventpopupmenu.h"
+#include "koprefs.h"
 
-#include <calendarviews/eventviews/prefs.h>
 #include <calendarviews/eventviews/agenda/agendaview.h>
 
 #include <QHBoxLayout>

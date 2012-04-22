@@ -25,17 +25,14 @@
 
 #include "importdialog.h"
 
+#include <KDebug>
 #include <KLocale>
 #include <KSqueezedTextLabel>
-#include <KDebug>
 
-#include <QLabel>
-#include <QLayout>
-#include <QRadioButton>
-#include <QGroupBox>
-
-#include <QVBoxLayout>
 #include <QFrame>
+#include <QGroupBox>
+#include <QRadioButton>
+#include <QVBoxLayout>
 
 ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   : KDialog( parent ), mUrl( url )

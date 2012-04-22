@@ -24,11 +24,10 @@
 */
 
 #include "kotodoviewsortfilterproxymodel.h"
-#include "kotodomodel.h"
 #include "koprefs.h"
+#include "kotodomodel.h"
+
 #include <calendarsupport/utils.h>
-#include <KDebug>
-#include <QModelIndex>
 
 KOTodoViewSortFilterProxyModel::KOTodoViewSortFilterProxyModel( QObject *parent )
   : QSortFilterProxyModel( parent )
@@ -171,9 +170,9 @@ int KOTodoViewSortFilterProxyModel::compareDueDates( const QModelIndex &left,
 
   // The due date column is a QString so fetch the akonadi item
   // We can't compare QStrings because it won't work if the format is MM/DD/YYYY
-  const Todo::Ptr leftTodo =
+  const KCalCore::Todo::Ptr leftTodo =
     CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
-  const Todo::Ptr rightTodo =
+  const KCalCore::Todo::Ptr rightTodo =
     CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
 
   if ( !leftTodo || !rightTodo ) {
@@ -215,9 +214,9 @@ int KOTodoViewSortFilterProxyModel::compareCompletion( const QModelIndex &left,
 
   if ( leftValue == 100 && rightValue == 100 ) {
     // Untie with the completion date
-    const Todo::Ptr leftTodo =
+    const KCalCore::Todo::Ptr leftTodo =
       CalendarSupport::todo( left.data( KOTodoModel::TodoRole ).value<Akonadi::Item>() );
-    const Todo::Ptr rightTodo =
+    const KCalCore::Todo::Ptr rightTodo =
       CalendarSupport::todo( right.data( KOTodoModel::TodoRole ). value<Akonadi::Item>() );
 
     if ( !leftTodo || !rightTodo ) {

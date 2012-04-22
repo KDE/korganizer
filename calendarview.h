@@ -23,26 +23,17 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef CALENDARVIEW_H
-#define CALENDARVIEW_H
+
+#ifndef KORG_CALENDARVIEW_H
+#define KORG_CALENDARVIEW_H
 
 #include "korganizer_export.h"
-#include "koglobals.h"
 #include "interfaces/korganizer/calendarviewbase.h"
-
-#include <KCalCore/Incidence>
-#include <KCalCore/Visitor>
 
 #include <calendarsupport/calendar.h>
 
-#include <Akonadi/Item>
-
-#include <QObject>
-#include <QWidget>
-
-namespace CalendarSupport {
-  class IncidenceViewer;
-}
+#include <KCalCore/Incidence>
+#include <KCalCore/Visitor>
 
 class CalPrinter;
 class DateChecker;
@@ -52,23 +43,25 @@ class KODialogManager;
 class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
+namespace KOrg {
+  class History;
+  class HTMLExportSettings;
+}
+
+namespace CalendarSupport {
+  class IncidenceViewer;
+}
 
 namespace IncidenceEditorNG {
   class IncidenceDialog;
 }
 
-namespace KOrg {
-  class HTMLExportSettings;
-  class History;
-}
-
-using namespace KCalCore;
-using namespace KOrg;
-
 class KVBox;
 
 class QSplitter;
 class QStackedWidget;
+
+using namespace KOrg;
 
 class CalendarViewExtension : public QWidget
 {
@@ -104,14 +97,14 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     CalendarView( QWidget *parent=0 );
     virtual ~CalendarView();
 
-    class CalendarViewVisitor : public Visitor
+    class CalendarViewVisitor : public KCalCore::Visitor
     {
       public:
         CalendarViewVisitor() : mView( 0 )
         {
         }
 
-        bool act( IncidenceBase::Ptr &incidence, CalendarView *view )
+        bool act( KCalCore::IncidenceBase::Ptr &incidence, CalendarView *view )
         {
           mView = view;
           return incidence->accept( *this, incidence );
@@ -131,19 +124,19 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         }
 
       protected:
-        bool visit( Event::Ptr )
+        bool visit( KCalCore::Event::Ptr )
         {
           return mView->deleteEvent( item );
         }
-        bool visit( Todo::Ptr )
+        bool visit( KCalCore::Todo::Ptr )
         {
           return mView->deleteTodo( item );
         }
-        bool visit( Journal::Ptr )
+        bool visit( KCalCore::Journal::Ptr )
         {
           return mView->deleteJournal( item );
         }
-        bool visit( FreeBusy::Ptr )
+        bool visit( KCalCore::FreeBusy::Ptr )
         {
           return false;
         }
@@ -386,7 +379,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
                   incidence, only the first is added to KOrganizer's calendar.
     */
     bool addIncidence( const QString &ical );
-    bool addIncidence( const Incidence::Ptr &incidence );
+    bool addIncidence( const KCalCore::Incidence::Ptr &incidence );
 
     /**
       Cuts the selected incidence using the edit_cut() method
@@ -700,7 +693,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       defaults, if invalid values are given) and allow the view to adjust the type.
     */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    IncidenceEditorNG::IncidenceDialog *newEventEditor( const Event::Ptr &event );
+    IncidenceEditorNG::IncidenceDialog *newEventEditor( const KCalCore::Event::Ptr &event );
 
     bool eventFilter( QObject *watched, QEvent *event );
 
@@ -766,8 +759,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     KODialogManager *mDialogManager;
 
     // Calendar filters
-    QList<CalFilter*> mFilters;
-    CalFilter *mCurrentFilter;
+    QList<KCalCore::CalFilter*> mFilters;
+    KCalCore::CalFilter *mCurrentFilter;
 
     // various housekeeping variables.
     bool  mReadOnly; // flag indicating if calendar is read-only

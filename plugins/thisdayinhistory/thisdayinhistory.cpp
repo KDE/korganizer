@@ -21,19 +21,8 @@
 
 #include "thisdayinhistory.h"
 
-#include "koglobals.h"
-#include "korganizer.h"
-#include "koapp.h"
-
-#include <kcalendarsystem.h>
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kstandarddirs.h>
-#include <kurl.h>
-#include <kpluginfactory.h>
-#include <kpluginloader.h>
-
-using namespace EventViews::CalendarDecoration;
+#include <KConfig>
+#include <KConfigGroup>
 
 class ThisDayInHistoryFactory : public DecorationFactory
 {

@@ -24,48 +24,28 @@
 */
 
 #include "exportwebdialog.h"
-#include "koprefs.h"
-#include "kocore.h"
 #include "htmlexportsettings.h"
 
-#include <calendarsupport/calendar.h>
-
 #include <KDateComboBox>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kfiledialog.h>
-#include <klineedit.h>
-#include <kurl.h>
-#include <kio/job.h>
-#include <kstandarddirs.h>
-#include <kconfig.h>
-#include "koglobals.h"
-#include <kurlrequester.h>
-#include <kio/netaccess.h>
-#include <ktemporaryfile.h>
-#include <kmessagebox.h>
-#include <kvbox.h>
+#include <KFileDialog>
+#include <KHBox>
+#include <KMessageBox>
+#include <KUrlRequester>
+#include <KVBox>
 
-#include <QLayout>
-#include <QRadioButton>
+#include <QBoxLayout>
 #include <QCheckBox>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QTextStream>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QGroupBox>
-
-#include "exportwebdialog.moc"
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 // FIXME: The basic structure of this dialog has been copied from KPrefsDialog,
 //        because we want custom buttons, a Tabbed dialog, and a different
 //        headline... Maybe we should try to achieve the same without code
 //        duplication.
 ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *parent )
-  : KPageDialog( parent ),
-    KPrefsWidManager( settings ), mSettings( settings )
+  : KPageDialog( parent ), KPIM::KPrefsWidManager( settings ), mSettings( settings )
 {
   setFaceType( Tabbed );
   setCaption( i18n( "Export Calendar as Web Page" ) );
@@ -153,10 +133,10 @@ void ExportWebDialog::setupGeneralPage()
 
   QHBoxLayout *rangeLayout = new QHBoxLayout( mDateRangeGroup );
 
-  KPrefsWidDate *dateStart = addWidDate( mSettings->dateStartItem() );
+  KPIM::KPrefsWidDate *dateStart = addWidDate( mSettings->dateStartItem() );
   rangeLayout->addWidget( dateStart->label() );
   rangeLayout->addWidget( dateStart->dateEdit() );
-  KPrefsWidDate *dateEnd = addWidDate( mSettings->dateEndItem() );
+  KPIM::KPrefsWidDate *dateEnd = addWidDate( mSettings->dateEndItem() );
   rangeLayout->addWidget( dateEnd->label() );
   rangeLayout->addWidget( dateEnd->dateEdit() );
 
@@ -184,8 +164,8 @@ void ExportWebDialog::setupGeneralPage()
 
   QBoxLayout *destLayout = new QHBoxLayout( destGroup );
 
-  KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
-                                       destGroup, "text/html", KFile::File );
+  KPIM::KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
+                                             destGroup, "text/html", KFile::File );
   pathWid->urlRequester()->fileDialog()->setOperationMode( KFileDialog::Saving );
   connect( pathWid->urlRequester(), SIGNAL(textChanged(QString)),
            SLOT(slotTextChanged(QString)) );
@@ -301,3 +281,4 @@ void ExportWebDialog::updateState()
   mEventPage->setEnabled( exportEvents );
 }
 
+#include "exportwebdialog.moc"

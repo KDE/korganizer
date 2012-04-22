@@ -21,23 +21,17 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+
 #ifndef KORG_HISTORY_H
 #define KORG_HISTORY_H
 
 #include <calendarsupport/incidencechanger.h>
 
-#include <Akonadi/Item>
 #include <Akonadi/Collection>
-
-#include <KCalCore/Incidence>
+#include <Akonadi/Item>
 
 #include <QObject>
 #include <QStack>
-#include <QList>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 namespace KOrg {
 

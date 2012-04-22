@@ -21,14 +21,12 @@
 
 #include "configdialog.h"
 
-#include <QtGui/QFrame>
-#include <QtGui/QLayout>
+#include <KConfig>
+#include <KLocale>
 
-#include <klocale.h>
-#include <kapplication.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
+#include <QCheckBox>
+#include <QFrame>
+#include <QVBoxLayout>
 
 ConfigDialog::ConfigDialog( QWidget *parent )
   :KDialog( parent )

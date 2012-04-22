@@ -22,16 +22,11 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef TIMESPENTVIEW_H
-#define TIMESPENTVIEW_H
+#ifndef KORG_VIEWS_KOTIMESPENTVIEW_H
+#define KORG_VIEWS_KOTIMESPENTVIEW_H
 
-#include <QTextBrowser>
+#include "korganizer/baseview.h"
 
-#include <korganizer/baseview.h>
-
-#include <Akonadi/Item>
-
-class QDate;
 class TimeSpentWidget;
 
 /**
@@ -45,10 +40,12 @@ class KOTimeSpentView : public KOrg::BaseView
     ~KOTimeSpentView();
 
     virtual int currentDateCount() const;
+
     virtual Akonadi::Item::List selectedIncidences()
     {
       return Akonadi::Item::List();
     }
+
     KCalCore::DateList selectedIncidenceDates()
     {
       return KCalCore::DateList();

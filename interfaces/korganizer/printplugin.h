@@ -1,5 +1,5 @@
 /*
-  This file is part of KOrganizer.
+  This file is part of the KOrganizer interfaces.
 
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
 
@@ -18,23 +18,19 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef PRINTPLUGINBASE_H
-#define PRINTPLUGINBASE_H
+
+#ifndef KORG_INTERFACES_PRINTPLUGIN_H
+#define KORG_INTERFACES_PRINTPLUGIN_H
 
 #include <calendarsupport/plugin.h>
 
-#include <kcalcore/incidence.h>
+#include <KCalCore/Incidence>
 
-#include <QtCore/QPointer>
-#include <QtCore/QDateTime>
-#include <QtCore/QList>
-#include <QtGui/QPrinter>
-#include <QtGui/QWidget>
+#include <QPrinter>
 
 namespace CalendarSupport {
   class Calendar;
 }
-
 namespace KOrg {
 
 class CoreHelper;
@@ -52,7 +48,9 @@ class CalPrinterBase
       Month=400,
       Year=900,
       Todolist=1000,
-      Journallist=2000
+      Journallist=2000,
+      WhatsNext=2100,
+      ItemList=2200
     };
 };
 

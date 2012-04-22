@@ -23,22 +23,19 @@
 */
 
 #include "kocorehelper.h"
-#include "kocore.h"
-#include "koglobals.h"
-#include <calendarsupport/kcalprefs.h>
 
-using namespace CalendarSupport;
+#include <calendarsupport/kcalprefs.h>
 
 QColor KOCoreHelper::categoryColor( const QStringList &categories )
 {
   if ( categories.isEmpty() ) {
-    return KCalPrefs::instance()->unsetCategoryColor();
+    return CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
   }
   // FIXME: Correctly treat events with multiple categories
   const QString cat = categories.first();
   QColor bgColor;
   if ( cat.isEmpty() ) {
-    bgColor = KCalPrefs::instance()->unsetCategoryColor();
+    bgColor = CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
   } else {
     bgColor = CalendarSupport::KCalPrefs::instance()->categoryColor( cat );
   }

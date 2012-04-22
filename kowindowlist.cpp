@@ -23,7 +23,9 @@
 */
 
 #include "kowindowlist.h"
-#include "actionmanager.h"
+#include "korganizer/mainwindow.h"
+
+#include <KUrl>
 
 KOWindowList::KOWindowList()
   : QObject( 0 ), mDefaultWindow( 0 )

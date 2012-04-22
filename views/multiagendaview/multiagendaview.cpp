@@ -1,4 +1,6 @@
 /*
+  This file is part of KOrganizer.
+
   Copyright (c) 2007 Volker Krause <vkrause@kde.org>
 
   This program is free software; you can redistribute it and/or modify
@@ -17,30 +19,28 @@
 */
 
 #include "multiagendaview.h"
+#include "akonadicollectionview.h"
 #include "koeventpopupmenu.h"
 #include "koprefs.h"
-#include "akonadicollectionview.h"
 #include "ui_multiagendaviewconfigwidget.h"
+
+#include <akonadi_next/kcolumnfilterproxymodel.h>
+using namespace Future;
 
 #include <calendarsupport/calendarmodel.h>
 
 #include <calendarviews/eventviews/agenda/agendaview.h>
 #include <calendarviews/eventviews/multiagenda/multiagendaview.h>
 
-#include <kcheckableproxymodel.h>
-
-#include <akonadi_next/kcolumnfilterproxymodel.h>
 #include <Akonadi/EntityTreeView>
 
-#include <KCalCore/IncidenceBase> // DateList typedef
+#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
 
 #include <QHBoxLayout>
-#include <QStandardItemModel>
 #include <QSortFilterProxyModel>
+#include <QStandardItem>
 
 using namespace KOrg;
-using namespace CalendarSupport;
-using namespace Future;
 
 static QString generateColumnLabel( int c )
 {

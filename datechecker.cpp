@@ -25,10 +25,6 @@
 
 #include "datechecker.h"
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kglobal.h>
-
 #include <QTimer>
 
 DateChecker::DateChecker( QObject *parent ) : QObject( parent ), mUpdateTimer( 0 )

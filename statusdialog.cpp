@@ -23,24 +23,16 @@
 */
 #include "statusdialog.h"
 
-#include <kcalutils/stringify.h>
+#include <KCalUtils/Stringify>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kpushbutton.h>
-#include <kstandardguiitem.h>
 #include <KComboBox>
+#include <KLocale>
+#include <KPushButton>
+#include <KStandardGuiItem>
 
-#include <QLabel>
-#include <QStringList>
-#include <QLayout>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QBoxLayout>
-
-#include "statusdialog.moc"
-
-using namespace KCalUtils;
+#include <QHBoxLayout>
+#include <QLabel>
 
 StatusDialog::StatusDialog( QWidget *parent )
   : KDialog( parent )
@@ -60,7 +52,7 @@ StatusDialog::StatusDialog( QWidget *parent )
 
   mStatus = new KComboBox( this );
   mStatus->setEditable( false );
-  mStatus->addItems( Stringify::attendeeStatusList() );
+  mStatus->addItems( KCalUtils::Stringify::attendeeStatusList() );
   statusLayout->addWidget( mStatus );
 
   QBoxLayout *buttonLayout = new QHBoxLayout();
@@ -79,7 +71,9 @@ StatusDialog::~StatusDialog()
 {
 }
 
-Attendee::PartStat StatusDialog::status()
+KCalCore::Attendee::PartStat StatusDialog::status()
 {
-  return Attendee::PartStat( mStatus->currentIndex() ) ;
+  return KCalCore::Attendee::PartStat( mStatus->currentIndex() ) ;
 }
+
+#include "statusdialog.moc"

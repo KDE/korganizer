@@ -25,49 +25,41 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+
 #ifndef KORG_ACTIONMANAGER_H
 #define KORG_ACTIONMANAGER_H
 
 #include "korganizer_export.h"
 #include "korganizer/part.h"
 
-#include <KCalCore/Incidence>
-
 #include <Akonadi/Item>
 
-#include <kviewstatemaintainer.h>
 #include <KUrl>
+#include <KViewStateMaintainer>
 
 #include <QObject>
-
-namespace KOrg {
-  class HTMLExportSettings;
-}
-
-namespace CalendarSupport {
-  class Calendar;
-  class CalendarModel;
-}
-
-namespace Akonadi {
-  class EntityTreeViewStateSaver;
-  class ETMViewStateSaver;
-}
-
-namespace KCalCore {
-  class Calendar;
-}
 
 class AkonadiCollectionView;
 class CalendarView;
 class ImportDialog;
 class KOWindowList;
+namespace KOrg {
+  class HTMLExportSettings;
+}
 
-class KRecentFilesAction;
+namespace Akonadi {
+  class ETMViewStateSaver;
+}
+
+namespace CalendarSupport {
+  class Calendar;
+}
+
+class KAction;
+class KMenuBar;
 class KSelectAction;
 class KTemporaryFile;
 class KToggleAction;
-class KMenuBar;
 
 /**
   The ActionManager creates all the actions in KOrganizer. This class
@@ -282,8 +274,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void writeSettings();
 
     /* Session management */
-    void saveProperties( KConfigGroup &);
-    void readProperties( const KConfigGroup &);
+    void saveProperties( KConfigGroup & );
+    void readProperties( const KConfigGroup & );
 
     void loadParts();
 

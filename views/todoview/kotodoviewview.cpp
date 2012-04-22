@@ -25,17 +25,13 @@
 
 #include "kotodoviewview.h"
 
+#include <KLocale>
 #include <KMenu>
-#include <KLocalizedString>
-#include <KDebug>
 
-#include <QWidget>
-#include <QModelIndex>
-#include <QHeaderView>
-#include <QEvent>
-#include <QContextMenuEvent>
 #include <QAction>
-#include <QVariant>
+#include <QContextMenuEvent>
+#include <QEvent>
+#include <QHeaderView>
 #include <QMouseEvent>
 
 KOTodoViewView::KOTodoViewView( QWidget *parent )

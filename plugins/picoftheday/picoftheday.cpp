@@ -19,23 +19,13 @@
 */
 
 #include "picoftheday.h"
-#include "koglobals.h"
 #include "configdialog.h"
 
 #include <KConfig>
 #include <KDebug>
 #include <KIO/Scheduler>
-#include <KLocale>
-#include <KStandardDirs>
-#include <kpluginfactory.h>
-#include <kpluginloader.h>
 
-#include <QtCore/QSize>
-#include <QtXml/QDomDocument>
-
-#include "picoftheday.moc"
-
-using namespace EventViews::CalendarDecoration;
+#include <QDomDocument>
 
 class PicofthedayFactory : public DecorationFactory
 {
@@ -415,3 +405,5 @@ void POTDElement::setThumbnailSize( const QSize &size )
 {
   mThumbSize = size;
 }
+
+#include "picoftheday.moc"

@@ -1,5 +1,6 @@
 /*
   This file is part of KOrganizer
+
   Copyright (c) 2004  Bo Thorsen <bo@sonofthor.dk>
   Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
@@ -29,10 +30,11 @@
   your version.
  */
 
-#ifndef KORGANIZERIFACEIMPL_H
-#define KORGANIZERIFACEIMPL_H
+#ifndef KORG_KORGANIZERIFACEIMPL_H
+#define KORG_KORGANIZERIFACEIMPL_H
 
 #include "korganizer_export.h"
+
 #include <QObject>
 
 class ActionManager;

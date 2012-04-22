@@ -22,11 +22,11 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef IMPORTDIALOG_H
-#define IMPORTDIALOG_H
 
-#include <kdialog.h>
-#include <kurl.h>
+#ifndef KORG_IMPORTDIALOG_H
+#define KORG_IMPORTDIALOG_H
+
+#include <KDialog>
 
 class QRadioButton;
 

@@ -24,38 +24,28 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOTODOVIEW_H
-#define KOTODOVIEW_H
+#ifndef KORG_VIEWS_KOTODOVIEW_H
+#define KORG_VIEWS_KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
 
-#include <Akonadi/Item>
-
-#include <KCalCore/Todo>
-
-namespace CalendarSupport {
-  class Calendar;
-}
+class KOTodoCategoriesDelegate;
+class KOTodoModel;
+class KOTodoViewQuickAddLine;
+class KOTodoViewQuickSearch;
+class KOTodoViewSortFilterProxyModel;
+class KOTodoViewView;
 
 namespace KPIM {
   class KDatePickerPopup;
 }
 
-using namespace KOrg;
-
-class QMenu;
-class QAction;
 class QCheckBox;
-class QDate;
 class QItemSelection;
+class QMenu;
 class QModelIndex;
 
-class KOTodoModel;
-class KOTodoViewView;
-class KOTodoCategoriesDelegate;
-class KOTodoViewSortFilterProxyModel;
-class KOTodoViewQuickSearch;
-class KOTodoViewQuickAddLine;
+using namespace KOrg;
 
 class KOTodoView : public BaseView
 {

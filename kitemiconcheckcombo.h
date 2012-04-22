@@ -1,4 +1,6 @@
 /*
+  This file is part of KOrganizer.
+
   Copyright (C) 2011 Sérgio Martins <iamsergio@gmail.com>
 
   This library is free software; you can redistribute it and/or modify it
@@ -17,13 +19,12 @@
   02110-1301, USA.
 */
 
-#ifndef KITEMICONCHECKCOMBO_H
-#define KITEMICONCHECKCOMBO_H
+#ifndef KORG_KITEMICONCHECKCOMBO_H
+#define KORG_KITEMICONCHECKCOMBO_H
 
 #include <libkdepim/kcheckcombobox.h>
-#include <calendarviews/eventviews/eventview.h>
 
-class KOPrefs;
+#include <calendarviews/eventviews/eventview.h>
 
 class KItemIconCheckCombo : public KPIM::KCheckComboBox
 {
@@ -34,7 +35,7 @@ class KItemIconCheckCombo : public KPIM::KCheckComboBox
       MonthType
     };
 
-    KItemIconCheckCombo( ViewType viewType, QWidget *parent = 0 );
+    explicit KItemIconCheckCombo( ViewType viewType, QWidget *parent = 0 );
     ~KItemIconCheckCombo();
 
     void setCheckedIcons( const QSet<EventViews::EventView::ItemIcon> &icons );

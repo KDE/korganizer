@@ -23,9 +23,10 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "koprefs.h"
 #include "monthview.h"
 #include "koeventpopupmenu.h"
+#include "koprefs.h"
+
 #include <calendarviews/eventviews/month/monthview.h>
 
 #include <QVBoxLayout>

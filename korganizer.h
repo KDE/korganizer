@@ -27,16 +27,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORGANIZER_H
-#define KORGANIZER_H
+#ifndef KORG_KORGANIZER_H
+#define KORG_KORGANIZER_H
 
-#include <kurl.h>
+#include "korganizer/mainwindow.h"
+#include "korganizer/part.h"
 
-#include <korganizer/mainwindow.h>
-#include <korganizer/part.h>
-#include <kparts/mainwindow.h>
+#include <KParts/MainWindow>
 
-class ActionManager;
 class CalendarView;
 
 // Workaround for moc workaround for visual c++ 6.0 sucking
@@ -74,10 +72,13 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
         @return true on success, false if an error occurred
     */
     bool openURL( const KUrl &url, bool merge = false );
+
     /** Save calendar file to URL of current calendar */
     bool saveURL();
+
     /** Save calendar file to URL */
-    bool saveAsURL( const KUrl & kurl );
+    bool saveAsURL( const KUrl &kurl );
+
     /** Get current URL */
     KUrl getCurrentURL() const;
 

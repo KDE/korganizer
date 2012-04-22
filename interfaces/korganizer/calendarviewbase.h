@@ -19,22 +19,11 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_CALENDARVIEWBASE_H
-#define KORG_CALENDARVIEWBASE_H
 
-#include <QtGui/QWidget>
+#ifndef KORG_INTERFACES_CALENDARVIEWBASE_H
+#define KORG_INTERFACES_CALENDARVIEWBASE_H
 
-#include <korganizer/baseview.h>
-#include <calendarsupport/incidencechanger.h>
-
-namespace CalendarSupport {
-  class Calendar;
-  class IncidenceChanger;
-}
-
-namespace Akonadi {
-  class Item;
-}
+#include "korganizer/baseview.h"
 
 namespace KOrg {
 

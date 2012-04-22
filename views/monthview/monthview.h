@@ -23,14 +23,10 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_MONTHVIEW_H_
-#define KORG_MONTHVIEW_H_
+#ifndef KORG_VIEWS_MONTHVIEW_H
+#define KORG_VIEWS_MONTHVIEW_H
 
 #include "koeventview.h"
-#include "../../printing/calprinter.h"
-
-#include <Akonadi/Item>
-#include <QtCore/QTimer>
 
 namespace KOrg {
 

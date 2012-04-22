@@ -26,7 +26,6 @@
 #include "koeventviewerdialog.h"
 #include "korganizerinterface.h"
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 #include <calendarsupport/next/incidenceviewer.h>
 

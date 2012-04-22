@@ -24,31 +24,10 @@
 */
 
 #include "koprefs.h"
-#include "kocore.h"
 
-#include <kmime/kmime_header_parsing.h>
-#include <kpimidentities/identitymanager.h>
-#include <kpimidentities/identity.h>
-
-#include <kglobalsettings.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kstringhandler.h>
-#include <ksystemtimezone.h>
+#include <KGlobalSettings>
 
 #include <QDir>
-#include <QString>
-#include <QFont>
-#include <QColor>
-#include <QMap>
-#include <QStringList>
-
-#include <time.h>
-#include <unistd.h>
-
-using namespace KPIMIdentities;
 
 class KOPrefsPrivate
 {
@@ -75,7 +54,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
   // writes into mHtmlExportFile
   addItemPath( "Html Export File", mHtmlExportFile,
-      QDir::homePath() + '/' + i18nc( "Default export file", "calendar.html" ) );
+               QDir::homePath() + '/' + i18nc( "Default export file", "calendar.html" ) );
 
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
 }

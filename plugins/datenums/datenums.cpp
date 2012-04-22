@@ -21,16 +21,9 @@
 
 #include "datenums.h"
 #include "configdialog.h"
-
 #include "koglobals.h"
 
-#include <kcalendarsystem.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
-#include <kpluginfactory.h>
-#include <kpluginloader.h>
-
-using namespace EventViews::CalendarDecoration;
+#include <KCalendarSystem>
 
 class DatenumsFactory : public DecorationFactory
 {

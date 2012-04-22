@@ -20,15 +20,15 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef PUBLISHDIALOG_H
-#define PUBLISHDIALOG_H
 
-#include <kcalcore/attendee.h>
+#ifndef KORG_PUBLISHDIALOG_H
+#define KORG_PUBLISHDIALOG_H
 
-#include <kdialog.h>
 #include "ui_publishdialog_base.h"
 
-using namespace KCalCore;
+#include <KCalCore/Attendee>
+
+#include <KDialog>
 
 class PublishDialog_base;
 
@@ -39,7 +39,7 @@ class PublishDialog : public KDialog
     explicit PublishDialog( QWidget *parent=0 );
     ~PublishDialog();
 
-    void addAttendee( const Attendee::Ptr &attendee );
+    void addAttendee( const KCalCore::Attendee::Ptr &attendee );
     QString addresses();
 
   signals:

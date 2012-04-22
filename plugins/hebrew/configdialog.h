@@ -18,12 +18,13 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
 
-#include <QtGui/QCheckBox>
+#ifndef KORG_PLUGINS_HEBREW_CONFIGDIALOG_H
+#define KORG_PLUGINS_HEBREW_CONFIGDIALOG_H
 
 #include <KDialog>
+
+class QCheckBox;
 
 /**
   @author Jonathan Singer

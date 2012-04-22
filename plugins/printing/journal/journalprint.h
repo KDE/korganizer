@@ -21,13 +21,12 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef JOURNALPRINT_H
-#define JOURNALPRINT_H
+
+#ifndef KORG_PLUGINS_PRINTING_JOURNALPRINT_H
+#define KORG_PLUGINS_PRINTING_JOURNALPRINT_H
 
 #include "calprintpluginbase.h"
 #include "ui_calprintjournalconfig_base.h"
-
-#include <klocale.h>
 
 using namespace KOrg;
 

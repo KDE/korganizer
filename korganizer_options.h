@@ -23,8 +23,8 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORGANIZER_OPTIONS_H
-#define KORGANIZER_OPTIONS_H
+#ifndef KORG_KORGANIZER_OPTIONS_H
+#define KORG_KORGANIZER_OPTIONS_H
 
 #include <KCmdLineOptions>
 
@@ -48,5 +48,5 @@ static KCmdLineOptions korganizer_options ()
   return options;
 }
 
-#endif /* KORGANIZER_OPTIONS_H */
+#endif
 

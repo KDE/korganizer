@@ -43,73 +43,60 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 
-#include <calendarviews/eventviews/eventview.h>
+#include <akonadi_next/kcolumnfilterproxymodel.h>
+using namespace Future;
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/eventarchiver.h>
-#include <calendarsupport/freebusymanager.h>
-#include <calendarsupport/groupware.h>
-#include <calendarsupport/incidencechanger.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
 #include <incidenceeditor-ng/globalsettings.h>
 #include <incidenceeditor-ng/groupwareintegration.h>
 
-#include <akonadi_next/kcolumnfilterproxymodel.h>
-using namespace Future;
-
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
 #include <Akonadi/ChangeRecorder>
-#include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityMimeTypeFilterModel>
-#include <Akonadi/EntityTreeModel>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/Session>
 
 #include <KCalCore/FileStorage>
-using namespace KCalCore;
+#include <KCalCore/ICalFormat>
 
 #include <KHolidays/Holidays>
 
 #include <KMime/KMimeMessage>
 
-#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
-
 #include <KAction>
 #include <KActionCollection>
+#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
 #include <KCmdLineArgs>
 #include <KFileDialog>
 #include <KMenu>
 #include <KMenuBar>
+#include <KMessageBox>
 #include <KMimeTypeTrader>
-#include <KNotification>
 #include <KProcess>
-#include <KRecentFilesAction>
 #include <KSelectAction>
 #include <KSelectionProxyModel>
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStandardDirs>
-#include <KSystemTimeZone>
+#include <KSystemTimeZones>
 #include <KTemporaryFile>
 #include <KTipDialog>
 #include <KToggleAction>
 #include <KWindowSystem>
-#include <KIO/Job>
 #include <KIO/NetAccess>
 #include <KNS3/DownloadDialog>
 
 #include <QApplication>
-#include <QTemporaryFile>
-#include <QTimer>
-#include <QVBoxLayout>
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -337,8 +324,9 @@ void ActionManager::createCalendarAkonadi()
            mCalendarView, SLOT(showErrorMessage(QString)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  mCalendar->setOwner( Person( CalendarSupport::KCalPrefs::instance()->fullName(),
-                               CalendarSupport::KCalPrefs::instance()->email() ) );
+  mCalendar->setOwner(
+    KCalCore::Person( CalendarSupport::KCalPrefs::instance()->fullName(),
+                      CalendarSupport::KCalPrefs::instance()->email() ) );
 
 }
 
@@ -1590,14 +1578,14 @@ void ActionManager::downloadNewStuff()
       new CalendarSupport::CalendarAdaptor(
         mCalendar, mCalendarView, true/*use default collection*/ ) );
 
-    FileStorage storage( cal );
+    KCalCore::FileStorage storage( cal );
     storage.setFileName( file );
-    storage.setSaveFormat( new ICalFormat );
+    storage.setSaveFormat( new KCalCore::ICalFormat );
     if ( !storage.load() ) {
       KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", file ) );
     } else {
       QStringList eventList;
-      foreach ( Event::Ptr e, cal->events() ) {
+      foreach ( KCalCore::Event::Ptr e, cal->events() ) {
         eventList.append( e->summary() );
       }
 
@@ -1621,12 +1609,12 @@ QString ActionManager::localFileName()
   return mFile;
 }
 
-class ActionManager::ActionStringsVisitor : public Visitor
+class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
 {
   public:
     ActionStringsVisitor() : mShow( 0 ), mEdit( 0 ), mDelete( 0 ) {}
 
-    bool act( IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del )
+    bool act( KCalCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del )
     {
       mShow = show;
       mEdit = edit;
@@ -1635,7 +1623,7 @@ class ActionManager::ActionStringsVisitor : public Visitor
     }
 
   protected:
-    bool visit( Event::Ptr )
+    bool visit( KCalCore::Event::Ptr )
     {
       if ( mShow ) {
         mShow->setText( i18n( "&Show Event" ) );
@@ -1649,7 +1637,7 @@ class ActionManager::ActionStringsVisitor : public Visitor
       return true;
     }
 
-    bool visit( Todo::Ptr )
+    bool visit( KCalCore::Todo::Ptr )
     {
       if ( mShow ) {
         mShow->setText( i18n( "&Show To-do" ) );
@@ -1663,12 +1651,12 @@ class ActionManager::ActionStringsVisitor : public Visitor
       return true;
     }
 
-    bool visit( Journal::Ptr )
+    bool visit( KCalCore::Journal::Ptr )
     {
       return assignDefaultStrings();
     }
 
-    bool visit( FreeBusy::Ptr ) // to inhibit hidden virtual compile warning
+    bool visit( KCalCore::FreeBusy::Ptr ) // to inhibit hidden virtual compile warning
     {
       return false;
     }

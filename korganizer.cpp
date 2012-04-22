@@ -29,54 +29,21 @@
 */
 
 #include "korganizer.h"
-#include "calendarview.h"
-#include "koviewmanager.h"
-#include "kodialogmanager.h"
-#include "kowindowlist.h"
-#include "koprefs.h"
-#include "kocore.h"
 #include "actionmanager.h"
+#include "calendarview.h"
+#include "kocore.h"
 #include "koglobals.h"
 #include "korganizerifaceimpl.h"
 
-#include <korganizer/part.h>
-
-#include <libkdepim/statusbarprogresswidget.h>
 #include <libkdepim/progressdialog.h>
+#include <libkdepim/statusbarprogresswidget.h>
 
-#include <kio/netaccess.h>
-
-#include <kglobal.h>
-#include <kdebug.h>
-#include <kiconloader.h>
-#include <kstandarddirs.h>
-#include <kstandardshortcut.h>
-#include <kfiledialog.h>
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <kstandardaction.h>
-#include <kedittoolbar.h>
-#include <ktemporaryfile.h>
-#include <kmenubar.h>
-#include <kmessagebox.h>
-#include <kwindowsystem.h>
-#include <ktip.h>
-#include <KStandardGuiItem>
-#include <kstatusbar.h>
-#include <kshortcutsdialog.h>
-#include <krecentfilesaction.h>
-
-#include <QCursor>
-#include <QTimer>
-#include <QFile>
-#include <QLabel>
-#include <QLayout>
-
-#include <stdlib.h>
-
-using namespace KParts;
-#include "korganizer.moc"
-using namespace KOrg;
+#include <KAction>
+#include <KActionCollection>
+#include <KDebug>
+#include <KShortcutsDialog>
+#include <KStandardAction>
+#include <KStatusBar>
 
 KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
 {
@@ -219,8 +186,8 @@ bool KOrganizer::queryClose()
 
 bool KOrganizer::queryExit()
 {
-  // Don't call writeSettings here, because filename isn't valid anymore. It is
-  // now called in queryClose.
+  // Don't call writeSettings here, because filename isn't valid anymore.
+  // It is now called in queryClose.
 //  writeSettings();
   return true;
 }
@@ -298,3 +265,5 @@ void KOrganizer::setTitle()
 
   setCaption( title, false );
 }
+
+#include "korganizer.moc"

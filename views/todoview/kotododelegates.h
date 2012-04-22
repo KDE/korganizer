@@ -22,22 +22,18 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODODELEGATES_H
-#define KOTODODELEGATES_H
+#ifndef KORG_VIEWS_KOTODODELEGATES_H
+#define KORG_VIEWS_KOTODODELEGATES_H
 
 #include <QStyledItemDelegate>
-#include <QModelIndex>
-#include <QSlider>
 
 namespace CalendarSupport {
   class Calendar;
 }
 
-class QWidget;
 class QPainter;
-class QStyleOptionViewItem;
-class QStyleOptionProgressBar;
 class QSize;
+class QStyleOptionViewItem;
 class QTextDocument;
 
 /**

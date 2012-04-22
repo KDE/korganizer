@@ -25,25 +25,21 @@
 
 #include "history.h"
 
-#include <calendarsupport/groupware.h>
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
-#include <calendarsupport/incidencechanger.h>
 
-#include <kcalcore/incidence.h>
-#include <Akonadi/Item>
+#include <KCalCore/Incidence>
 
-#include <klocale.h>
+#include <KLocale>
 
 #include <QWidget>
 
-using namespace KCalCore;
 using namespace KOrg;
 
 History::History( CalendarSupport::Calendar *calendar, QWidget *parent )
   : mCalendar( calendar ), mCurrentMultiEntry( 0 ), mParent( parent ),
-  mChanger( new CalendarSupport::IncidenceChanger( calendar, parent, -1 ) ),
-  mCurrentRunningEntry( 0 )
+    mChanger( new CalendarSupport::IncidenceChanger( calendar, parent, -1 ) ),
+    mCurrentRunningEntry( 0 )
 {
   // We create a new incidencechanger because we don't want CalendarView receiving it's signals
   // because of stuff we do here. It would cause CalendarView to create a undo entry for an
@@ -295,7 +291,7 @@ History::EntryDelete::~EntryDelete()
 
 bool History::EntryDelete::undo()
 {
-  Incidence::Ptr incidence( mIncidence->clone() );
+  KCalCore::Incidence::Ptr incidence( mIncidence->clone() );
   incidence->setRelatedTo( mParentUid );
   return mChanger->addIncidence( incidence, mCollection, 0 );
 }
@@ -343,7 +339,7 @@ bool History::EntryAdd::undo()
 
 bool History::EntryAdd::redo()
 {
-  Incidence::Ptr incidence( mIncidence->clone() );
+  KCalCore::Incidence::Ptr incidence( mIncidence->clone() );
   incidence->setRelatedTo( mParentUid );
   return mChanger->addIncidence( incidence, mCollection, 0 );
 }

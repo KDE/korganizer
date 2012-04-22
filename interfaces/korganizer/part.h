@@ -18,37 +18,52 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_PART_H
-#define KORG_PART_H
+
+#ifndef KORG_INTERFACES_PART_H
+#define KORG_INTERFACES_PART_H
 
 #include "korganizer/mainwindow.h"
 
-#include <kparts/part.h>
-#include <kpluginfactory.h>
+#include <KPluginFactory>
+#include <KParts/Part>
 
-#include <QtCore/QString>
-#include <QtCore/QList>
+#include <QWidget>
 
 namespace KOrg {
 
 class Part : public KParts::Part
 {
   public:
-    static int interfaceVersion() { return 2; }
-    static QString serviceType() { return QLatin1String( "KOrganizer/Part" ); }
+    static int interfaceVersion()
+    {
+      return 2;
+    }
+
+    static QString serviceType()
+    {
+      return QLatin1String( "KOrganizer/Part" );
+    }
 
     typedef QList<Part*> List;
 
     explicit Part( MainWindow *parent )
-      : KParts::Part( parent ? ( parent->topLevelWidget() ) : 0 ), mMainWindow( parent ) {}
+      : KParts::Part( parent ? ( parent->topLevelWidget() ) : 0 ), mMainWindow( parent )
+    {
+    }
 
-    virtual ~Part() {}
+    virtual ~Part()
+    {
+    }
 
     virtual QString info() = 0;
+
     /** short name of the part, used as category in the keybindings dialog */
     virtual QString shortInfo() = 0;
 
-    MainWindow *mainWindow() { return mMainWindow; }
+    MainWindow *mainWindow()
+    {
+      return mMainWindow;
+    }
 
   private:
     MainWindow *mMainWindow;

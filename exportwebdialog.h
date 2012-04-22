@@ -22,27 +22,20 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef EXPORTWEBDIALOG_H
-#define EXPORTWEBDIALOG_H
+#ifndef KORG_EXPORTWEBDIALOG_H
+#define KORG_EXPORTWEBDIALOG_H
 
 #include <libkdepim/kprefsdialog.h>
-#include <kpagedialog.h>
-
-class QCheckBox;
-class QGroupBox;
-class QFrame;
 
 namespace KOrg {
   class HTMLExportSettings;
 }
 
-using namespace KPIM;
-
 /**
   ExportWebDialog is a class that provides the dialog and functions to export a
   calendar as web page.
 */
-class ExportWebDialog : public KPageDialog, public KPrefsWidManager
+class ExportWebDialog : public KPageDialog, public KPIM::KPrefsWidManager
 {
   Q_OBJECT
   public:

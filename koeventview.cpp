@@ -27,25 +27,16 @@
 #include "kocore.h"
 #include "koeventpopupmenu.h"
 
-#include <calendarsupport/collectionselection.h>
-#include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/calendar.h>
+#include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
 #include <libkdepim/pimmessagebox.h>
 
-#include <KCalCore/Incidence>
-#include <Akonadi/Item>
-
-#include <QApplication>
-#include <QKeyEvent>
-#include <kcalcore/incidence.h>
-#include <KXMLGUIClient>
 #include <KXMLGUIFactory>
 
+#include <QApplication>
 #include <QMenu>
-
-using namespace KCalCore;
 
 //---------------------------------------------------------------------------
 
@@ -173,7 +164,7 @@ void KOEventView::showNewEventPopup()
 void KOEventView::defaultAction( const Akonadi::Item &aitem )
 {
   kDebug();
-  const Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
+  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   if ( !incidence ) {
     kDebug() << "Ouch, null incidence";
     return;
@@ -189,7 +180,7 @@ void KOEventView::defaultAction( const Akonadi::Item &aitem )
 //---------------------------------------------------------------------------
 int KOEventView::showMoveRecurDialog( const Akonadi::Item &aitem, const QDate &date )
 {
-  const Incidence::Ptr inc = CalendarSupport::incidence( aitem );
+  const KCalCore::Incidence::Ptr inc = CalendarSupport::incidence( aitem );
   int answer = KMessageBox::Ok;
   KGuiItem itemFuture( i18n( "Also &Future Items" ) );
 
@@ -251,7 +242,7 @@ void KOEventView::finishTypeAhead()
 
 bool KOEventView::usesCompletedTodoPixmap( const Akonadi::Item &aitem, const QDate &date )
 {
-  const Todo::Ptr todo = CalendarSupport::todo( aitem );
+  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( aitem );
   if ( !todo ) {
     return false;
   }

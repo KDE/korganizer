@@ -1,5 +1,5 @@
 /*
-  This file is part of libkdepim.
+  This file is part of KOrganizer.
 
   Copyright (c) 2004 Tobias Koenig <tokoe@kde.org>
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
@@ -24,36 +24,23 @@
 
 #include <KAboutData>
 #include <KDebug>
-#include <KDialog>
 #include <KDirWatch>
 #include <KFileDialog>
-#include <KGlobal>
-#include <KLocale>
 #include <KMessageBox>
 #include <KRun>
 #include <KShell>
 #include <KStandardDirs>
-#include <kio/job.h>
-#include <kio/netaccess.h>
+#include <KIO/Job>
+#include <KIO/NetAccess>
 
-#include <QImage>
-#include <QLabel>
-#include <QLayout>
-#include <QObject>
-#include <QPixmap>
-#include <QPushButton>
-#include <QRegExp>
-#include <QTimer>
-#include <QUiLoader>
-#include <QHBoxLayout>
-#include <QFrame>
-#include <QVBoxLayout>
-#include <QWhatsThis>
 #include <QGroupBox>
-#include <QTreeWidget>
+#include <QHBoxLayout>
 #include <QHeaderView>
-
-#include <unistd.h>
+#include <QLabel>
+#include <QPushButton>
+#include <QTreeWidget>
+#include <QUiLoader>
+#include <QWhatsThis>
 
 class PageItem : public QTreeWidgetItem
 {
@@ -92,7 +79,7 @@ class PageItem : public QTreeWidgetItem
 
         QList<QWidget*> list = wdg->findChildren<QWidget*>();
         QWidget *it;
-        Q_FOREACH( it, list ) {
+        Q_FOREACH ( it, list ) {
           if ( allowedTypes.contains( it->metaObject()->className() ) ) {
             QString name = it->objectName();
             if ( name.startsWith( QLatin1String( "X_" ) ) ) {
@@ -148,12 +135,12 @@ class PageItem : public QTreeWidgetItem
 KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent,
                                       const QVariantList &args )
   : KCModule( instance, parent, args ),
-    mPageView( NULL ),
-    mPagePreview( NULL ),
-    mPageDetails( NULL ),
-    mDeleteButton( NULL ),
-    mImportButton( NULL ),
-    mDesignerButton( NULL )
+    mPageView( 0 ),
+    mPagePreview( 0 ),
+    mPageDetails( 0 ),
+    mDeleteButton( 0 ),
+    mImportButton( 0 ),
+    mDesignerButton( 0 )
 {
   KAboutData *about = new KAboutData( I18N_NOOP( "KCMDesignerfields" ), 0,
                                       ki18n( "Qt Designer Fields Dialog" ),
@@ -235,7 +222,7 @@ void KCMDesignerFields::loadUiFiles()
 void KCMDesignerFields::rebuildList()
 {
   // If nothing is initialized there is no need to do something
-  if (mPageView) {
+  if ( mPageView ) {
     QStringList ai = saveActivePages();
     updatePreview();
     mPageView->clear();
@@ -463,7 +450,7 @@ void KCMDesignerFields::startDesigner()
   }
 
   // finally jump there
-  chdir( cepPath.toLocal8Bit() );
+  QDir::setCurrent( cepPath.toLocal8Bit() );
 
   QTreeWidgetItem *item = 0;
   if ( mPageView->selectedItems().size() == 1 ) {

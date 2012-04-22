@@ -21,14 +21,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOWINDOWLIST_H
-#define KOWINDOWLIST_H
+
+#ifndef KORG_KOWINDOWLIST_H
+#define KORG_KOWINDOWLIST_H
 
 #include <QObject>
-#include <QList>
 
 namespace KOrg {
-class MainWindow;
+  class MainWindow;
 }
 
 class KUrl;

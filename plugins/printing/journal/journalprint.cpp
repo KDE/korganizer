@@ -23,20 +23,8 @@
 */
 
 #include "journalprint.h"
-#include "calprintpluginbase.h"
 
 #include <calendarsupport/utils.h>
-
-#include <kcalcore/journal.h>
-
-#include <Akonadi/Item>
-
-#include <kconfig.h>
-#include <kdebug.h>
-#include <kpluginfactory.h>
-#include <kpluginloader.h>
-
-#include <QButtonGroup>
 
 class JournalPrintFactory : public KOrg::PrintPluginFactory
 {

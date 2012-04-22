@@ -25,16 +25,17 @@
 */
 
 #include "filtereditdialog.h"
-#include "categoryselectdialog.h"
 #include "koprefs.h"
 
 #include <calendarsupport/categoryconfig.h>
+
+#include <incidenceeditor-ng/categoryselectdialog.h>
 
 #include <KCalCore/CalFilter>
 
 #include <KMessageBox>
 
-FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
+FilterEditDialog::FilterEditDialog( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18nc( "@title::window", "Edit Calendar Filters" ) );
@@ -82,7 +83,7 @@ void FilterEditDialog::setDialogConsistent( bool consistent )
     enableButtonApply( consistent );
 }
 
-FilterEdit::FilterEdit( QList<CalFilter*> *filters, QWidget *parent )
+FilterEdit::FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
   : QWidget( parent ), mCurrent( 0 ), mCategorySelectDialog( 0 )
 {
   setupUi( this );
@@ -127,14 +128,14 @@ void FilterEdit::updateFilterList()
     mDetailsFrame->setEnabled( false );
     emit( dataConsistent( false ) );
   } else {
-    QList<CalFilter*>::iterator i;
+    QList<KCalCore::CalFilter*>::iterator i;
     for ( i = mFilters->begin(); i != mFilters->end(); ++i ) {
       if ( *i ) {
         mRulesList->addItem( (*i)->name() );
       }
     }
     if ( mRulesList->currentRow() != -1 ) {
-      CalFilter *f = mFilters->at( mRulesList->currentRow() );
+      KCalCore::CalFilter *f = mFilters->at( mRulesList->currentRow() );
       if ( f ) {
         filterSelected( f );
       }
@@ -158,19 +159,19 @@ void FilterEdit::saveChanges()
   mCurrent->setName( mNameLineEdit->text() );
   int criteria = 0;
   if ( mCompletedCheck->isChecked() ) {
-    criteria |= CalFilter::HideCompletedTodos;
+    criteria |= KCalCore::CalFilter::HideCompletedTodos;
   }
   if ( mRecurringCheck->isChecked() ) {
-    criteria |= CalFilter::HideRecurring;
+    criteria |= KCalCore::CalFilter::HideRecurring;
   }
   if ( mCatShowCheck->isChecked() ) {
-    criteria |= CalFilter::ShowCategories;
+    criteria |= KCalCore::CalFilter::ShowCategories;
   }
   if ( mHideInactiveTodosCheck->isChecked() ) {
-    criteria |= CalFilter::HideInactiveTodos;
+    criteria |= KCalCore::CalFilter::HideInactiveTodos;
   }
   if ( mHideTodosNotAssignedToMeCheck->isChecked() ) {
-    criteria |= CalFilter::HideNoMatchingAttendeeTodos;
+    criteria |= KCalCore::CalFilter::HideNoMatchingAttendeeTodos;
   }
   mCurrent->setCriteria( criteria );
   mCurrent->setCompletedTimeSpan( mCompletedTimeSpan->value() );
@@ -194,7 +195,7 @@ void FilterEdit::filterSelected()
   }
 }
 
-void FilterEdit::filterSelected( CalFilter *filter )
+void FilterEdit::filterSelected( KCalCore::CalFilter *filter )
 {
   if( !filter || filter == mCurrent ) {
     return;
@@ -207,15 +208,15 @@ void FilterEdit::filterSelected( CalFilter *filter )
   mNameLineEdit->setText( mCurrent->name() );
   mNameLineEdit->blockSignals( false );
   mDetailsFrame->setEnabled( true );
-  mCompletedCheck->setChecked( mCurrent->criteria() & CalFilter::HideCompletedTodos );
+  mCompletedCheck->setChecked( mCurrent->criteria() & KCalCore::CalFilter::HideCompletedTodos );
   mCompletedTimeSpan->setValue( mCurrent->completedTimeSpan() );
-  mRecurringCheck->setChecked( mCurrent->criteria() & CalFilter::HideRecurring );
+  mRecurringCheck->setChecked( mCurrent->criteria() & KCalCore::CalFilter::HideRecurring );
   mHideInactiveTodosCheck->setChecked(
-    mCurrent->criteria() & CalFilter::HideInactiveTodos );
+    mCurrent->criteria() & KCalCore::CalFilter::HideInactiveTodos );
   mHideTodosNotAssignedToMeCheck->setChecked(
-    mCurrent->criteria() & CalFilter::HideNoMatchingAttendeeTodos );
+    mCurrent->criteria() & KCalCore::CalFilter::HideNoMatchingAttendeeTodos );
 
-  if ( mCurrent->criteria() & CalFilter::ShowCategories ) {
+  if ( mCurrent->criteria() & KCalCore::CalFilter::ShowCategories ) {
     mCatShowCheck->setChecked( true );
   } else {
     mCatHideCheck->setChecked( true );
@@ -228,8 +229,9 @@ void FilterEdit::bNewPressed()
 {
   mDetailsFrame->setEnabled( true );
   saveChanges();
-  CalFilter *newFilter = new CalFilter( i18nc( "@label default filter name",
-                                               "New Filter %1", mFilters->count() ) );
+  KCalCore::CalFilter *newFilter =
+    new KCalCore::CalFilter( i18nc( "@label default filter name",
+                                    "New Filter %1", mFilters->count() ) );
   mFilters->append( newFilter );
   updateFilterList();
   mRulesList->setCurrentRow( mRulesList->count() - 1 );
@@ -255,7 +257,7 @@ void FilterEdit::bDeletePressed()
   }
 
   int selected = mRulesList->currentRow();
-  CalFilter *filter = mFilters->at( selected );
+  KCalCore::CalFilter *filter = mFilters->at( selected );
   mFilters->removeAll( filter );
   delete filter;
   mCurrent = 0;
@@ -274,7 +276,7 @@ void FilterEdit::updateSelectedName( const QString &newText )
   mRulesList->blockSignals( false );
   bool allOk = true;
 
-  foreach ( CalFilter *i, *mFilters ) {
+  foreach ( KCalCore::CalFilter *i, *mFilters ) {
     if ( i && i->name().isEmpty() ) {
       allOk = false;
     }

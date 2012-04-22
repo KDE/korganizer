@@ -22,11 +22,13 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOAPP_H
-#define KOAPP_H
 
-#include <kontactinterface/pimuniqueapplication.h>
-#include <kurl.h>
+#ifndef KORG_KOAPP_H
+#define KORG_KOAPP_H
+
+#include <KontactInterface/PimUniqueApplication>
+
+class KUrl;
 
 class KOrganizerApp : public KontactInterface::PimUniqueApplication
 {

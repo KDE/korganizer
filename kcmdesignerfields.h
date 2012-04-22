@@ -1,5 +1,5 @@
 /*
-  This file is part of libkdepim.
+  This file is part of KOrganizer.
 
   Copyright (c) 2004 Tobias Koenig <tokoe@kde.org>
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
@@ -19,18 +19,18 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef KCMDESIGNERFIELDS_H
-#define KCMDESIGNERFIELDS_H
+
+#ifndef KORG_KCMDESIGNERFIELDS_H
+#define KORG_KCMDESIGNERFIELDS_H
 
 #include <KCModule>
 
 class KComponentData;
 
 class QLabel;
+class QPushButton;
 class QTreeWidget;
 class QTreeWidgetItem;
-class QPushButton;
-class QStringList;
 
 class KCMDesignerFields : public KCModule
 {

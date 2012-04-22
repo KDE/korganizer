@@ -21,15 +21,13 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef YEARPRINT_H
-#define YEARPRINT_H
+
+#ifndef KORG_PLUGINS_PRINTING_YEARPRINT_H
+#define KORG_PLUGINS_PRINTING_YEARPRINT_H
 
 #include "calprintpluginbase.h"
 #include "ui_calprintyearconfig_base.h"
 
-#include <klocale.h>
-
-using namespace KCalCore;
 using namespace KOrg;
 
 class CalPrintYear : public CalPrintPluginBase

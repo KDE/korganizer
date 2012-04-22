@@ -2,7 +2,7 @@
   This file is part of the KOrganizer interfaces.
 
   Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
+  Copyright (C) 2004 Reinhold Kainhofer   <reinhold@kainhofer.com>
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Library General Public
@@ -19,37 +19,24 @@
   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
   Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_BASEVIEW_H
-#define KORG_BASEVIEW_H
 
-#include "printplugin.h"
+#ifndef KORG_INTERFACES_BASEVIEW_H
+#define KORG_INTERFACES_BASEVIEW_H
+
 #include "korganizer/korganizer_export.h"
+#include "printplugin.h"
 
-#include <KCalCore/Event>
+#include <calendarsupport/incidencechanger.h>
 
 #include <calendarviews/eventviews/eventview.h>
-#include <calendarsupport/incidencechanger.h>
+
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
 
-#include <klocale.h>
-#include <kdebug.h>
-#include <kmessagebox.h>
-
-#include <QtCore/QPair>
-#include <QtGui/QWidget>
-
-class QModelIndex;
-class QPoint;
-
-class KConfigGroup;
+#include <QWidget>
 
 namespace CalendarSupport {
   class Calendar;
-}
-
-namespace KCalCore {
-  class CalFilter;
 }
 
 namespace KOrg {

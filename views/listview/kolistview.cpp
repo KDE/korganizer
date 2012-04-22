@@ -28,7 +28,7 @@
 #include "kolistview.h"
 #include "koeventpopupmenu.h"
 
-#include <calendarsupport/calendar.h>
+#include <calendarviews/eventviews/list/listview.h>
 
 #include <QVBoxLayout>
 
@@ -142,7 +142,7 @@ Akonadi::Item::List KOListView::selectedIncidences()
   return mListView->selectedIncidences();
 }
 
-DateList KOListView::selectedIncidenceDates()
+KCalCore::DateList KOListView::selectedIncidenceDates()
 {
   return mListView->selectedIncidenceDates();
 }

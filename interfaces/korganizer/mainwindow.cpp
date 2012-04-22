@@ -24,10 +24,12 @@
 namespace KOrg {
 
 MainWindow::MainWindow() : mDocument( true )
-{}
+{
+}
 
 MainWindow::~MainWindow()
-{}
+{
+}
 
 void MainWindow::init( bool hasDocument )
 {

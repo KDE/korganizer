@@ -24,11 +24,11 @@
   with this program; if not, write to the Free Software Foundation, Inc.,
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef PARSHA_H
-#define PARSHA_H
+
+#ifndef KORG_PLUGINS_HEBREW_PARSHA_H
+#define KORG_PLUGINS_HEBREW_PARSHA_H
 
 #include <QString>
-#include <QStringList>
 
 /**
   @author Jonathan Singer

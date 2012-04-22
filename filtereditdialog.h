@@ -23,10 +23,12 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef FILTEREDITDIALOG_H
-#define FILTEREDITDIALOG_H
+
+#ifndef KORG_FILTEREDITDIALOG_H
+#define KORG_FILTEREDITDIALOG_H
 
 #include "ui_filteredit_base.h"
+
 #include <KDialog>
 
 class FilterEdit;
@@ -38,7 +40,6 @@ namespace IncidenceEditorNG {
 namespace KCalCore {
   class CalFilter;
 }
-using namespace KCalCore;
 
 /**
   This is the class to add/edit a calendar filter.
@@ -50,7 +51,7 @@ class FilterEditDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit FilterEditDialog( QList<CalFilter*> *, QWidget *parent=0 );
+    explicit FilterEditDialog( QList<KCalCore::CalFilter*> *, QWidget *parent=0 );
     virtual ~FilterEditDialog();
 
   signals:
@@ -74,7 +75,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
   Q_OBJECT
   public:
-    explicit FilterEdit( QList<CalFilter*> *filters, QWidget *parent );
+    explicit FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent );
     ~FilterEdit();
 
     void updateFilterList();
@@ -95,10 +96,10 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
     void editCategorySelection();
 
   private:
-    void filterSelected( CalFilter *f );
+    void filterSelected( KCalCore::CalFilter *f );
 
-    QList<CalFilter*> *mFilters;
-    CalFilter *mCurrent;
+    QList<KCalCore::CalFilter*> *mFilters;
+    KCalCore::CalFilter *mCurrent;
     IncidenceEditorNG::CategorySelectDialog *mCategorySelectDialog;
 };
 

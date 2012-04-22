@@ -25,19 +25,15 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef DATENAVIGATORCONTAINER_H
-#define DATENAVIGATORCONTAINER_H
+
+#ifndef KORG_DATENAVIGATORCONTAINER_H
+#define KORG_DATENAVIGATORCONTAINER_H
 
 #include <calendarsupport/calendar.h>
 
 #include <QFrame>
-#include <QList>
-
-using namespace KCalCore;
 
 class KDateNavigator;
-class QDate;
-class QResizeEvent;
 
 class DateNavigatorContainer: public QFrame
 {

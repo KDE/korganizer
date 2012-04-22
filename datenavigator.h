@@ -25,10 +25,11 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef DATENAVIGATOR_H
-#define DATENAVIGATOR_H
 
-#include <KCalCore/IncidenceBase>
+#ifndef KORG_DATENAVIGATOR_H
+#define KORG_DATENAVIGATOR_H
+
+#include <KCalCore/IncidenceBase> // for KCalCore::DateList typedef
 
 #include <QObject>
 

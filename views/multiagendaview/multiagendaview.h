@@ -1,4 +1,6 @@
 /*
+  This file is part of KOrganizer.
+
   Copyright (c) 2007 Volker Krause <vkrause@kde.org>
 
   This program is free software; you can redistribute it and/or modify
@@ -16,23 +18,16 @@
   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-#ifndef KORG_MULTIAGENDAVIEW_H_H
-#define KORG_MULTIAGENDAVIEW_H_H
+#ifndef KORG_VIEWS_MULTIAGENDAVIEW_H
+#define KORG_VIEWS_MULTIAGENDAVIEW_H
 
-#include "../../koeventview.h"
+#include "koeventview.h"
 
 #include <calendarviews/eventviews/multiagenda/configdialoginterface.h>
 
-#include <Akonadi/Item>
-
-#include <QAbstractItemModel>
-
 #include <KDialog>
 
-namespace EventViews {
-  class AgendaView;
-  class TimeLabelsZone;
-}
+#include <QAbstractItemModel>
 
 namespace KOrg {
 
