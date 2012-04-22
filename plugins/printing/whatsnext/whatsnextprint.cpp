@@ -23,20 +23,14 @@
 */
 
 #include "whatsnextprint.h"
-#include "calprintpluginbase.h"
-#include "calprinthelper.h"
 
-#include <kcalcore/event.h>
-#include <kcalcore/todo.h>
-#include <akonadi/kcal/calendar.h>
+class WhatsNextPrintFactory : public KOrg::PrintPluginFactory
+{
+  public:
+    KOrg::PrintPlugin *createPluginFactory() { return new CalPrintWhatsNext; }
+};
 
-#include <kconfig.h>
-#include <kdebug.h>
-
-#include <QButtonGroup>
-
-K_PLUGIN_FACTORY( WhatsNextPrintFactory, registerPlugin<CalPrintWhatsNext>(); )
-K_EXPORT_PLUGIN( WhatsNextPrintFactory( "korg_whatsnextprint" ) )
+K_EXPORT_PLUGIN( WhatsNextPrintFactory )
 
 /**************************************************************
  *           Print What's Next
@@ -50,30 +44,28 @@ QWidget *CalPrintWhatsNext::createConfigWidget( QWidget *w )
 void CalPrintWhatsNext::readSettingsWidget()
 {
   CalPrintWhatsNextConfig *cfg =
-      dynamic_cast<CalPrintWhatsNextConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintWhatsNextConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
-    mUseDateRange = ( cfg->mDateRangeGroup->selectedId() == 1 );
   }
 }
 
 void CalPrintWhatsNext::setSettingsWidget()
 {
   CalPrintWhatsNextConfig *cfg =
-      dynamic_cast<CalPrintWhatsNextConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintWhatsNextConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
-
-    cfg->mDateRangeGroup->setButton( (mUseDateRange)?1:0 );
   }
 }
 
 void CalPrintWhatsNext::loadConfig()
 {
   if ( mConfig ) {
-    mUseDateRange = mConfig->readEntry( "WhatsNextsInRange", false );
+    KConfigGroup config( mConfig, "Whatsnextprint" );
+    //TODO: Read in settings
   }
   setSettingsWidget();
 }
@@ -84,7 +76,8 @@ void CalPrintWhatsNext::saveConfig()
 
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "WhatsNextsInRange", mUseDateRange );
+    KConfigGroup config( mConfig, "Whatsnextprint" );
+    //TODO: Write out settings
   }
 }
 
@@ -92,7 +85,7 @@ void CalPrintWhatsNext::setDateRange( const QDate &from, const QDate &to )
 {
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintWhatsNextConfig *cfg =
-      dynamic_cast<CalPrintWhatsNextConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintWhatsNextConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( from );
     cfg->mToDate->setDate( to );
@@ -101,4 +94,8 @@ void CalPrintWhatsNext::setDateRange( const QDate &from, const QDate &to )
 
 void CalPrintWhatsNext::print( QPainter &p, int width, int height )
 {
+  Q_UNUSED( p );
+  Q_UNUSED( width );
+  Q_UNUSED( height );
+  //TODO: Print something!
 }

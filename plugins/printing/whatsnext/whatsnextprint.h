@@ -21,24 +21,47 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef WHATSNEXTPRINT_H
-#define WHATSNEXTPRINT_H
+
+#ifndef KORG_PLUGINS_PRINTING_WHATSNEXTPRINT_H
+#define KORG_PLUGINS_PRINTING_WHATSNEXTPRINT_H
 
 #include "calprintpluginbase.h"
 #include "ui_calprintwhatsnextconfig_base.h"
 
-#include <klocale.h>
-
-using namespace KCalCore;
+using namespace KOrg;
 
 class CalPrintWhatsNext : public CalPrintPluginBase
 {
   public:
-    CalPrintWhatsNext():CalPrintPluginBase() {}
-    virtual ~CalPrintWhatsNext() {}
-    virtual QString description() { return i18n( "Print What's Next" ); }
-    virtual QString info() { return i18n( "Prints a list of all upcoming events and todos." ); }
+    CalPrintWhatsNext():CalPrintPluginBase()
+    {
+    }
+
+    virtual ~CalPrintWhatsNext()
+    {
+    }
+
+    virtual QString description()
+    {
+      return i18n( "Print What's Next" );
+    }
+
+    virtual QString info() const
+    {
+      return i18n( "Prints a list of all upcoming events and todos." );
+    }
+
     virtual QWidget *createConfigWidget( QWidget * );
+
+    virtual int sortID()
+    {
+      return CalPrinterBase::WhatsNext;
+    }
+
+    virtual bool enabled()
+    {
+      return true;
+    }
 
   public:
     virtual void print( QPainter &p, int width, int height );

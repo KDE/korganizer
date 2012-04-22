@@ -1,8 +1,8 @@
 <ui version="4.0" >
  <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
- <comment>Configuration page for the print list mode.</comment>
- <class>CalPrintListConfig_Base</class>
- <widget class="QWidget" name="CalPrintListConfig_Base" >
+ <comment>Configuration page for the print item list mode.</comment>
+ <class>CalPrintItemListConfig_Base</class>
+ <widget class="QWidget" name="CalPrintItemListConfig_Base" >
   <property name="geometry" >
    <rect>
     <x>0</x>

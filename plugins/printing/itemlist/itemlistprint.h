@@ -21,24 +21,46 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef LISTPRINT_H
-#define LISTPRINT_H
+
+#ifndef KORG_PLUGINS_PRINTING_ITEMLISTPRINT_H
+#define KORG_PLUGINS_PRINTING_ITEMLISTPRINT_H
 
 #include "calprintpluginbase.h"
-#include "ui_calprintlistconfig_base.h"
+#include "ui_calprintitemlistconfig_base.h"
 
-#include <klocale.h>
+using namespace KOrg;
 
-using namespace KCalCore;
-
-class CalPrintList : public CalPrintPluginBase
+class CalPrintItemList : public CalPrintPluginBase
 {
   public:
-    CalPrintList():CalPrintPluginBase() {}
-    virtual ~CalPrintList() {}
-    virtual QString description() { return i18n( "Print list" ); }
-    virtual QString info() { return i18n( "Prints a list of events and to-dos" ); }
+    CalPrintItemList():CalPrintPluginBase()
+    {
+    }
+
+    virtual ~CalPrintItemList()
+    {
+    }
+
+    virtual QString description()
+    {
+      return i18n( "Print Item list" );
+    }
+
+    virtual QString info() const {
+      return i18n( "Prints a list of events and to-dos" );
+    }
+
     virtual QWidget *createConfigWidget( QWidget * );
+
+    virtual int sortID()
+    {
+      return CalPrinterBase::ItemList;
+    }
+
+    virtual bool enabled()
+    {
+      return true;
+    }
 
   public:
     virtual void print( QPainter &p, int width, int height );
@@ -52,10 +74,10 @@ class CalPrintList : public CalPrintPluginBase
     bool mUseDateRange;
 };
 
-class CalPrintListConfig : public QWidget, public Ui::CalPrintListConfig_Base
+class CalPrintItemListConfig : public QWidget, public Ui::CalPrintItemListConfig_Base
 {
   public:
-    CalPrintListConfig( QWidget *parent ) : QWidget( parent ) {
+    CalPrintItemListConfig( QWidget *parent ) : QWidget( parent ) {
       setupUi( this );
     }
 };

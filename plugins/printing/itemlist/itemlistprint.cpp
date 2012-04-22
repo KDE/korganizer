@@ -22,83 +22,81 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "listprint.h"
-#include "calprintpluginbase.h"
-#include "calprinthelper.h"
+#include "itemlistprint.h"
 
-#include <kcalcore/event.h>
-#include <kcalcore/todo.h>
-#include <akonadi/kcal/calendar.h>
+class ItemListPrintFactory : public KOrg::PrintPluginFactory
+{
+  public:
+    KOrg::PrintPlugin *createPluginFactory() { return new CalPrintItemList; }
+};
 
-#include <kconfig.h>
-#include <kdebug.h>
-
-#include <QButtonGroup>
-
-K_PLUGIN_FACTORY( ListPrintFactory, registerPlugin<CalPrintList>(); )
-K_EXPORT_PLUGIN( ListPrintFactory( "korg_listprint" ) )
+K_EXPORT_PLUGIN( ItemListPrintFactory )
 
 /**************************************************************
- *           Print Day
+ *           Print Item List
  **************************************************************/
 
-QWidget *CalPrintList::createConfigWidget( QWidget *w )
+QWidget *CalPrintItemList::createConfigWidget( QWidget *w )
 {
-  return new CalPrintListConfig( w );
+  return new CalPrintItemListConfig( w );
 }
 
-void CalPrintList::readSettingsWidget()
+void CalPrintItemList::readSettingsWidget()
 {
-  CalPrintListConfig *cfg =
-      dynamic_cast<CalPrintListConfig*>( ( QWidget* )mConfigWidget );
+  CalPrintItemListConfig *cfg =
+      dynamic_cast<CalPrintItemListConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
-    mUseDateRange = ( cfg->mDateRangeGroup->selectedId() == 1 );
   }
 }
 
-void CalPrintList::setSettingsWidget()
+void CalPrintItemList::setSettingsWidget()
 {
-  CalPrintListConfig *cfg =
-      dynamic_cast<CalPrintListConfig*>( ( QWidget* )mConfigWidget );
+  CalPrintItemListConfig *cfg =
+      dynamic_cast<CalPrintItemListConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
-
-    cfg->mDateRangeGroup->setButton( (mUseDateRange)?1:0 );
   }
 }
 
-void CalPrintList::loadConfig()
+void CalPrintItemList::loadConfig()
 {
   if ( mConfig ) {
-    mUseDateRange = mConfig->readEntry( "ListsInRange", false );
+    KConfigGroup config( mConfig, "Itemlistprint" );
+    //TODO: Read in settings
   }
   setSettingsWidget();
 }
 
-void CalPrintList::saveConfig()
+void CalPrintItemList::saveConfig()
 {
   kDebug();
 
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "ListsInRange", mUseDateRange );
+    KConfigGroup config( mConfig, "Itemlistprint" );
+    //TODO: Write out settings
   }
 }
 
-void CalPrintList::setDateRange( const QDate &from, const QDate &to )
+void CalPrintItemList::setDateRange( const QDate &from, const QDate &to )
 {
   CalPrintPluginBase::setDateRange( from, to );
-  CalPrintListConfig *cfg =
-      dynamic_cast<CalPrintListConfig*>( ( QWidget* )mConfigWidget );
+  CalPrintItemListConfig *cfg =
+      dynamic_cast<CalPrintItemListConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( from );
     cfg->mToDate->setDate( to );
   }
 }
 
-void CalPrintList::print( QPainter &p, int width, int height )
+void CalPrintItemList::print( QPainter &p, int width, int height )
 {
+  Q_UNUSED( p );
+  Q_UNUSED( width );
+  Q_UNUSED( height );
+  //TODO: Print something!
 }
+
