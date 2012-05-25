@@ -1,3 +1,7 @@
 EXTRA camelcase,defines,kdebug,null,qenums,style,tipsandthis
 
 SKIP ical2vcal\.cmake\|/tests/\|/themes/
+
+PRIORITY all
+
+STRICT all
