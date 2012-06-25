@@ -812,7 +812,10 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
 {
   KDateTime result;
 
-  Q_ASSERT( !incidence->alarms().isEmpty() );
+  if ( incidence->alarms().isEmpty() ) {
+    return result;
+  }
+
   Alarm::Ptr alarm = incidence->alarms().first();
 
   if ( incidence->recurs() ) {
