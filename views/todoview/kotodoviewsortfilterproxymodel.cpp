@@ -102,7 +102,7 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
       const int fallbackComparison = comparePriorities( leftPriorityIndex, rightPriorityIndex );
 
       if ( fallbackComparison != 0 ) {
-        return fallbackComparison == -1;
+        return fallbackComparison == 1;
       }
     }
 
