@@ -115,8 +115,19 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Save calendar file to URL */
     bool saveAsURL( const KUrl &kurl );
 
+    /**
+      Export the calendar to an HTML file. Reads up the user settings as needed.
+      Intended to be used as part of the auto HTML export feature.
+    */
     void exportHTML();
-    void exportHTML( KOrg::HTMLExportSettings * );
+
+    /**
+      Export the calendar to an HTML file, per the user settings.
+      @param settings is a pointer to an KOrg::HTMLExportSettings instance.
+      @param autoMode if true, indicates that this export is for an autosave;
+                      if false, then the export is explicitly user invoked.
+    */
+    void exportHTML( KOrg::HTMLExportSettings *settings, bool autoMode = false );
     void toggleMenubar( bool dontShowWarning = false );
 
   public:
