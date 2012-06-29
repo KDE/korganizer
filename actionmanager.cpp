@@ -7,6 +7,7 @@
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
   Copyright (c) 2010 Laurent Montel <montel@kde.org>
+  Copyright (c) 2012 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -78,6 +79,7 @@ using namespace Future;
 #include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
 #include <KCmdLineArgs>
 #include <KFileDialog>
+#include <KGlobalSettings>
 #include <KMenu>
 #include <KMenuBar>
 #include <KMessageBox>
@@ -201,8 +203,8 @@ void ActionManager::init()
 
   connect( mCalendarView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            this, SLOT(processIncidenceSelection(Akonadi::Item,QDate)) );
-  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
-           this, SLOT(exportHTML(KOrg::HTMLExportSettings*)) );
+  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings*,bool)),
+           this, SLOT(exportHTML(KOrg::HTMLExportSettings*,bool)) );
 
   processIncidenceSelection( Akonadi::Item(), QDate() );
 
@@ -1189,23 +1191,54 @@ void ActionManager::exportHTML()
   }
   settings->setDateStart( QDateTime( qd1 ) );
   settings->setDateEnd( QDateTime( qd2 ) );
-  exportHTML( settings );
+
+  exportHTML( settings, true/*autoMode*/ );
 }
 
-void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
+void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMode )
 {
-  if ( !settings || settings->outputFile().isEmpty() ) {
-    kWarning() << "Settings is null, or the output file is empty " << settings;
+  if ( !settings ) {
+    kWarning() << "Settings is null" << settings;
     return;
   }
 
-  if ( QFileInfo( settings->outputFile() ).exists() ) {
-    if( KMessageBox::warningContinueCancel(
+  if ( settings->outputFile().isEmpty() ) {
+    return;
+    //uncomment when new strings permitted
+//     int result = KMessageBox::questionYesNo(
+//       dialogParent(),
+//       i18n( "The HTML calendar export file has not been specified yet.\n"
+//             "Do you want to set it now?\n\n"
+//             "If you answer \"no\" then this export operation will be canceled" ),
+//       QString() );
+//     if ( result == KMessageBox::No ) {
+//       mMainWindow->showStatusMessage(
+//         i18nc( "@info:status",
+//                "Calendar HTML operation canceled due to unspecified output file name" ) );
+//       return;
+//     }
+
+//     const QString fileName =
+//       KFileDialog::getSaveFileName(
+//         KGlobalSettings::documentPath(),
+//         i18n( "*.html|HTML Files" ),
+//         dialogParent(),
+//         i18n( "Select path for HTML calendar export" ) );
+//     settings->setOutputFile( fileName );
+//     settings->writeConfig();
+  }
+
+  if ( !autoMode && QFileInfo( settings->outputFile() ).exists() ) {
+    if ( KMessageBox::warningContinueCancel(
           dialogParent(),
           i18n( "Do you want to overwrite file \"%1\"?",
                 settings->outputFile() ),
           QString(),
           KStandardGuiItem::overwrite() ) == KMessageBox::Cancel ) {
+      //uncomment when new strings allowed
+//       mMainWindow->showStatusMessage(
+//         i18nc( "@info:status",
+//                "Calendar HTML operation canceled due to output file overwrite" ) );
       return;
     }
   }
@@ -1217,7 +1250,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
   settings->setCreditURL( "http://korganizer.kde.org" );
 
   KOrg::HtmlExportJob *exportJob =
-    new KOrg::HtmlExportJob( mCalendarView->calendar(), settings, view() );
+    new KOrg::HtmlExportJob( mCalendarView->calendar(), settings, autoMode, mMainWindow, view() );
 
   if ( KOGlobals::self()->holidays() ) {
     KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
