@@ -11,52 +11,66 @@
   <group name="$(application)-General">
     <entry type="String" key="Name">
       <label>Full name of the calendar owner</label>
-      <whatsthis>Full name of the calendar owner</whatsthis>
+      <tooltip>The full name of the calendar owner for the export</tooltip>
+      <whatsthis>Enter the full name to print for the owner of the calendar.</whatsthis>
     </entry>
     <entry type="String" key="EMail">
       <label>Email of the calendar owner</label>
-      <whatsthis>Email of the calendar owner</whatsthis>
+      <tooltip>The email address of the calendar owner for the export</tooltip>
+      <whatsthis>Enter the email address to print for the owner of the calendar.</whatsthis>
     </entry>
     <entry type="String" key="Credit Name">
       <label>Creator application</label>
-      <whatsthis>Creator application of the calendar</whatsthis>
+      <tooltip>Creator application of the calendar</tooltip>
+      <whatsthis>Enter a creator application of the calendar, for example KOrganizer.</whatsthis>
     </entry>
     <entry type="String" key="Credit URL">
       <label>Creator URL</label>
-      <whatsthis>URL of the creator application of the calendar.</whatsthis>
+      <tooltip>URL of the creator application of the calendar.</tooltip>
+      <whatsthis>Enter the URL of the creator application of the calendar, for example http://userbase.kde.org/KOrganizer</whatsthis>
       <default></default>
     </entry>
     <entry type="String" key="Page Title">
       <label>Page Title</label>
       <default code="true">i18n("Calendar")</default>
+      <tooltip>The title of the exported page</tooltip>
+      <whatsthis>Enter a title for the HTML page.</whatsthis>
     </entry>
 
     <entry type="DateTime" key="Date Start">
       <label>Date start</label>
+      <tooltip>First day of the range to export</tooltip>
       <whatsthis>First day of the range that shall be exported to HTML.</whatsthis>
     </entry>
     <entry type="DateTime" key="Date End">
       <label>Date end</label>
+      <tooltip>Last day of the range to export</tooltip>
       <whatsthis>Last day of the range that shall be exported to HTML.</whatsthis>
     </entry>
 
     <entry type="Path" key="Output File">
       <label>Output filename</label>
+      <tooltip>The file name for the export</tooltip>
       <whatsthis>The output file name for the HTML export.</whatsthis>
       <default>$HOME/calendar.html</default>
     </entry>
     <entry type="String" key="Style Sheet">
       <label>Style sheet</label>
+      <tooltip>CSS style sheet to use by the final HTML page</tooltip>
       <whatsthis>CSS style sheet to be used by the final HTML page. This string contains the actual contents of the CSS, not a path to the style sheet.</whatsthis>
     </entry>
 
     <entry type="Bool" key="Exclude Private">
       <label>Exclude private incidences from the export</label>
       <default>true</default>
+      <tooltip>Exclude private items from the export</tooltip>
+      <whatsthis>Check this box if you do NOT want to export your private items.</whatsthis>
     </entry>
     <entry type="Bool" key="Exclude Confidential">
       <label>Exclude confidential incidences from the export</label>
       <default>true</default>
+      <tooltip>Exclude confidential items from the export</tooltip>
+      <whatsthis>Check this box if you do NOT want to export your confidential items.</whatsthis>
     </entry>
 
   </group>
@@ -65,31 +79,45 @@
     <entry type="Bool" key="Event View">
       <label>Export events as list</label>
       <default>false</default>
+      <tooltip>Export events as a list</tooltip>
+      <whatsthis>Check this box if you want your events shown as a list.</whatsthis>
     </entry>
     <entry type="Bool" key="Month View">
       <label>Export in month view</label>
       <default>true</default>
+      <tooltip>Export events in a month view</tooltip>
+      <whatsthis>Check this box if you want your events shown in a month view.</whatsthis>
     </entry>
     <entry type="Bool" key="Week View">
       <label>Export in week view</label>
       <default>false</default>
+      <tooltip>Export events in a week view</tooltip>
+      <whatsthis>Check this box if you want your events shown in a week view.</whatsthis>
     </entry>
     <entry type="String" name="EventTitle" key="Title">
       <label>Title of the calendar</label>
       <default code="true">i18n("Calendar")</default>
+      <tooltip>Title for the event calendar</tooltip>
+      <whatsthis>Enter a string to use for the title of the event calendar.</whatsthis>
     </entry>
 
     <entry type="Bool" name="EventLocation" key="Export Location">
       <label>Export location of the events</label>
       <default>true</default>
+      <tooltip>Include the event locations</tooltip>
+      <whatsthis>Check this box if you want the event locations to be exported, only if the event has a location.</whatsthis>
     </entry>
     <entry type="Bool" name="EventCategories" key="Export Categories">
       <label>Export categories of the events</label>
       <default>true</default>
+      <tooltip>Include the event categories</tooltip>
+      <whatsthis>Check this box if you want the event categories to be exported.</whatsthis>
     </entry>
     <entry type="Bool" name="EventAttendees" key="Export Attendees">
       <label>Export attendees of the events</label>
       <default>false</default>
+      <tooltip>Include the event attendees</tooltip>
+      <whatsthis>Check this box if you want the event attendees to be exported.</whatsthis>
     </entry>
 
   </group>
@@ -98,27 +126,39 @@
     <entry type="Bool" key="Todo View">
       <label>Export to-do list</label>
       <default>true</default>
+      <tooltip>Export the to-do list</tooltip>
+      <whatsthis>Check this box if you want your to-do list to also be exported to the HTML.</whatsthis>
     </entry>
     <entry type="String" key="TodoList Title">
       <label>Title of the to-do list</label>
       <default code="true">i18n("To-do List")</default>
+      <tooltip>Title for the to-do list</tooltip>
+      <whatsthis>Enter a string to use for the title of the to-do list.</whatsthis>
     </entry>
 
     <entry type="Bool" name="TaskDueDate" key="Export Due Date">
       <label>Export due dates of the to-dos</label>
       <default>true</default>
+      <tooltip>Include to-do due dates</tooltip>
+      <whatsthis>Check this box if you want the to-do list due dates to be exported, if the to-do does have a due date.</whatsthis>
     </entry>
     <entry type="Bool" name="TaskLocation" key="Export Location">
       <label>Export location of the to-dos</label>
       <default>true</default>
+      <tooltip>Include the to-do locations</tooltip>
+      <whatsthis>Check this box if you want the to-do locations to be exported, only if the to-do has a location.</whatsthis>
     </entry>
     <entry type="Bool" name="TaskCategories" key="Export Categories">
       <label>Export categories of the to-dos</label>
       <default>true</default>
+      <tooltip>Include the to-do categories</tooltip>
+      <whatsthis>Check this box if you want the to-do categories to be exported.</whatsthis>
     </entry>
     <entry type="Bool" name="TaskAttendees" key="Export Attendees">
       <label>Export attendees of the to-dos</label>
       <default>false</default>
+      <tooltip>Include the to-do attendees</tooltip>
+      <whatsthis>Check this box if you want the to-do attendees to be exported.</whatsthis>
     </entry>
 
   </group>
@@ -127,21 +167,29 @@
     <entry type="Bool" key="Journal View">
       <label>Export journals</label>
       <default>false</default>
+      <tooltip>Export journals</tooltip>
+      <whatsthis>Check this box if you want to export journals as well.</whatsthis>
     </entry>
     <entry type="String" key="Journal Title">
       <label>Title of the journal list</label>
       <default code="true">i18n("Journals")</default>
+      <tooltip>Title for the journal list</tooltip>
+      <whatsthis>Enter a title for the Journal list, if Journals are exported.</whatsthis>
     </entry>
   </group>
 
   <group name="$(application)-FreeBusy">
     <entry type="Bool" key="FreeBusy View">
-      <label>Export journals</label>
+      <label>Export free/busy list</label>
       <default>false</default>
+      <tooltip>Export free/busy list</tooltip>
+      <whatsthis>Check this box if you want to export free/busy information as well.</whatsthis>
     </entry>
     <entry type="String" name="FreeBusyTitle" key="Free/Busy Title">
       <label>Title of the free/busy list</label>
       <default code="true">i18n("Busy times")</default>
+      <tooltip>Title for the free/busy list</tooltip>
+      <whatsthis>Enter a title for the free/busy list, if free/busy times are exported.</whatsthis>
     </entry>
   </group>
 
