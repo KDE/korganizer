@@ -187,7 +187,6 @@ void HtmlExportJob::finishExport()
     d->mMainWindow->showStatusMessage(
       i18nc( "@info:status",
              "Automatic Export: %1", saveMessage ) );
-
   }
   emitResult();
 }
