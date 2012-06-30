@@ -1203,29 +1203,27 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
   }
 
   if ( settings->outputFile().isEmpty() ) {
-    return;
-    //uncomment when new strings permitted
-//     int result = KMessageBox::questionYesNo(
-//       dialogParent(),
-//       i18n( "The HTML calendar export file has not been specified yet.\n"
-//             "Do you want to set it now?\n\n"
-//             "If you answer \"no\" then this export operation will be canceled" ),
-//       QString() );
-//     if ( result == KMessageBox::No ) {
-//       mMainWindow->showStatusMessage(
-//         i18nc( "@info:status",
-//                "Calendar HTML operation canceled due to unspecified output file name" ) );
-//       return;
-//     }
+    int result = KMessageBox::questionYesNo(
+      dialogParent(),
+      i18n( "The HTML calendar export file has not been specified yet.\n"
+            "Do you want to set it now?\n\n"
+            "If you answer \"no\" then this export operation will be canceled" ),
+      QString() );
+    if ( result == KMessageBox::No ) {
+      mMainWindow->showStatusMessage(
+        i18nc( "@info:status",
+               "Calendar HTML operation canceled due to unspecified output file name" ) );
+      return;
+    }
 
-//     const QString fileName =
-//       KFileDialog::getSaveFileName(
-//         KGlobalSettings::documentPath(),
-//         i18n( "*.html|HTML Files" ),
-//         dialogParent(),
-//         i18n( "Select path for HTML calendar export" ) );
-//     settings->setOutputFile( fileName );
-//     settings->writeConfig();
+    const QString fileName =
+      KFileDialog::getSaveFileName(
+        KGlobalSettings::documentPath(),
+        i18n( "*.html|HTML Files" ),
+        dialogParent(),
+        i18n( "Select path for HTML calendar export" ) );
+    settings->setOutputFile( fileName );
+    settings->writeConfig();
   }
 
   if ( !autoMode && QFileInfo( settings->outputFile() ).exists() ) {
@@ -1235,10 +1233,9 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
                 settings->outputFile() ),
           QString(),
           KStandardGuiItem::overwrite() ) == KMessageBox::Cancel ) {
-      //uncomment when new strings allowed
-//       mMainWindow->showStatusMessage(
-//         i18nc( "@info:status",
-//                "Calendar HTML operation canceled due to output file overwrite" ) );
+      mMainWindow->showStatusMessage(
+        i18nc( "@info:status",
+               "Calendar HTML operation canceled due to output file overwrite" ) );
       return;
     }
   }

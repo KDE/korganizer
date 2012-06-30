@@ -184,10 +184,9 @@ void HtmlExportJob::finishExport()
       saveMessage,
       i18nc( "@title:window", "Export Status" ) );
   } else {
-    d->mMainWindow->showStatusMessage( saveMessage );
-      //uncomment when new strings permitted
-//      i18nc( "@info:status",
-//             "Automatic Export: %1", saveMessage ) );
+    d->mMainWindow->showStatusMessage(
+      i18nc( "@info:status",
+             "Automatic Export: %1", saveMessage ) );
 
   }
   emitResult();
