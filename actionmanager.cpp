@@ -203,8 +203,8 @@ void ActionManager::init()
 
   connect( mCalendarView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            this, SLOT(processIncidenceSelection(Akonadi::Item,QDate)) );
-  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings*,bool)),
-           this, SLOT(exportHTML(KOrg::HTMLExportSettings*,bool)) );
+  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
+           this, SLOT(exportHTML(KOrg::HTMLExportSettings*)) );
 
   processIncidenceSelection( Akonadi::Item(), QDate() );
 
