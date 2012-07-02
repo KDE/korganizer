@@ -382,9 +382,6 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel( KCheckableProxyMod
   }
 
   mBaseModel->setSourceModel( mSelectionProxyModel );
-  connect( mSelectionProxyModel->selectionModel(),
-           SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-           SLOT(updateView()) );
 }
 
 KCheckableProxyModel *AkonadiCollectionView::collectionSelectionProxyModel() const
