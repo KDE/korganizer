@@ -33,16 +33,18 @@ AboutData::AboutData()
                 ki18n( "Copyright © 1997–1999 Preston Brown\n"
                        "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
                        "Copyright © 2004–2005 Reinhold Kainhofer\n"
-                       "Copyright © 2006–2010 Allen Winter" ),
+                       "Copyright © 2006–2012 Allen Winter" ),
                 KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
 #if defined( KDEPIM_GIT_REVISION_STRING ) && defined( KDEPIM_GIT_LAST_CHANGE )
-  QByteArray versionInfo( korgVersion );
-  versionInfo += '-' + QByteArray( KDEPIM_GIT_REVISION_STRING ) +
-                 ' ' +
-                 '(' + QByteArray( KDEPIM_GIT_LAST_CHANGE ) + ')';
-  setVersion( versionInfo );
+  const QByteArray rev( KDEPIM_GIT_REVISION_STRING );
+  const QByteArray last( KDEPIM_GIT_LAST_CHANGE );
+  if ( !rev.isEmpty() && !last.isEmpty() ) {
+    QByteArray versionInfo( korgVersion );
+    versionInfo += '-' + rev + ' ' + '(' + last + ')';
+    setVersion( versionInfo );
+  }
 #endif
 
   addAuthor( ki18n( "Allen Winter"),ki18n( "Maintainer" ),
