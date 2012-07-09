@@ -149,7 +149,6 @@ JournalView::JournalView( const Akonadi::Item &j,
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
-  mCalendar = 0;
 
   QVBoxLayout *verticalLayout = new QVBoxLayout( this );
   verticalLayout->setSpacing( KDialog::spacingHint() );
