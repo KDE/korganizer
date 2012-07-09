@@ -19,7 +19,7 @@
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLabel" name="mSearchLabel">
+      <widget class="QLabel" name="searchLabel">
        <property name="text">
         <string>&amp;Search for:</string>
        </property>
@@ -27,12 +27,12 @@
         <bool>false</bool>
        </property>
        <property name="buddy">
-        <cstring>mSearchEdit</cstring>
+        <cstring>searchEdit</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="KLineEdit" name="mSearchEdit">
+      <widget class="KLineEdit" name="searchEdit">
        <property name="toolTip">
         <string>Search pattern, use wildcards '*' and '?' as desired.</string>
        </property>
@@ -47,13 +47,13 @@
     </layout>
    </item>
    <item row="1" column="0">
-    <widget class="QGroupBox" name="mSearchTypeGroup">
+    <widget class="QGroupBox" name="searchTypeGroup">
      <property name="title">
       <string>Search For</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QCheckBox" name="mEventsCheck">
+       <widget class="QCheckBox" name="eventsCheck">
         <property name="toolTip">
          <string>Search for Events with matching criteria</string>
         </property>
@@ -69,7 +69,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="mJournalsCheck">
+       <widget class="QCheckBox" name="journalsCheck">
         <property name="toolTip">
          <string>Search for Journals with matching criteria</string>
         </property>
@@ -82,7 +82,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="mTodosCheck">
+       <widget class="QCheckBox" name="todosCheck">
         <property name="toolTip">
          <string>Search for To-dos with matching criteria</string>
         </property>
@@ -101,13 +101,13 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QGroupBox" name="mSearchGroup">
+    <widget class="QGroupBox" name="searchGroup">
      <property name="title">
       <string>Search In</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <widget class="QCheckBox" name="mCategoryCheck">
+       <widget class="QCheckBox" name="categoryCheck">
         <property name="toolTip">
          <string>Include item categories in your search</string>
         </property>
@@ -120,7 +120,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QCheckBox" name="mLocationCheck">
+       <widget class="QCheckBox" name="locationCheck">
         <property name="toolTip">
          <string>Include item locations in your search</string>
         </property>
@@ -133,7 +133,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QCheckBox" name="mDescriptionCheck">
+       <widget class="QCheckBox" name="descriptionCheck">
         <property name="toolTip">
          <string>Include item descriptions in your search</string>
         </property>
@@ -146,7 +146,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="mSummaryCheck">
+       <widget class="QCheckBox" name="summaryCheck">
         <property name="toolTip">
          <string>Include item summaries in your search</string>
         </property>
@@ -165,7 +165,7 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="QGroupBox" name="mDateRangeGroup">
+    <widget class="QGroupBox" name="dateRangeGroup">
      <property name="title">
       <string>Date Range</string>
      </property>
@@ -173,7 +173,7 @@
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QLabel" name="mStartDateLabel">
+         <widget class="QLabel" name="startDateLabel">
           <property name="text">
            <string>Fr&amp;om:</string>
           </property>
@@ -181,12 +181,12 @@
            <bool>false</bool>
           </property>
           <property name="buddy">
-           <cstring>mStartDate</cstring>
+           <cstring>startDate</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="KDateComboBox" name="mStartDate">
+         <widget class="KDateComboBox" name="startDate">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -211,7 +211,7 @@
       <item row="0" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QLabel" name="mEndDateLabel">
+         <widget class="QLabel" name="endDateLabel">
           <property name="text">
            <string>&amp;To:</string>
           </property>
@@ -219,12 +219,12 @@
            <bool>false</bool>
           </property>
           <property name="buddy">
-           <cstring>mEndDate</cstring>
+           <cstring>endDate</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="KDateComboBox" name="mEndDate">
+         <widget class="KDateComboBox" name="endDate">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -247,7 +247,7 @@
        </layout>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QCheckBox" name="mInclusiveCheck">
+       <widget class="QCheckBox" name="inclusiveCheck">
         <property name="toolTip">
          <string>Include Events only if their date range falls into the range specified above</string>
         </property>
@@ -260,7 +260,7 @@
        </widget>
       </item>
       <item row="2" column="0" colspan="2">
-       <widget class="QCheckBox" name="mIncludeUndatedTodos">
+       <widget class="QCheckBox" name="includeUndatedTodos">
         <property name="toolTip">
          <string>Include To-dos in the search that do not have a due date</string>
         </property>
@@ -279,7 +279,7 @@
     </widget>
    </item>
    <item row="3" column="0" colspan="2">
-    <widget class="QFrame" name="mListViewFrame">
+    <widget class="QFrame" name="listViewFrame">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
        <horstretch>0</horstretch>
@@ -295,7 +295,7 @@
     </widget>
    </item>
    <item row="4" column="0">
-    <widget class="QLabel" name="mNumItems">
+    <widget class="QLabel" name="numItems">
      <property name="text">
       <string/>
      </property>
@@ -306,8 +306,13 @@
  <customwidgets>
   <customwidget>
    <class>KDateComboBox</class>
-   <extends>QComboBox</extends>
+   <extends>KComboBox</extends>
    <header>kdatecombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KComboBox</class>
+   <extends>QComboBox</extends>
+   <header>kcombobox.h</header>
   </customwidget>
   <customwidget>
    <class>KLineEdit</class>
@@ -316,13 +321,13 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mEventsCheck</tabstop>
-  <tabstop>mTodosCheck</tabstop>
-  <tabstop>mJournalsCheck</tabstop>
-  <tabstop>mStartDate</tabstop>
-  <tabstop>mEndDate</tabstop>
-  <tabstop>mInclusiveCheck</tabstop>
-  <tabstop>mIncludeUndatedTodos</tabstop>
+  <tabstop>eventsCheck</tabstop>
+  <tabstop>todosCheck</tabstop>
+  <tabstop>journalsCheck</tabstop>
+  <tabstop>startDate</tabstop>
+  <tabstop>endDate</tabstop>
+  <tabstop>inclusiveCheck</tabstop>
+  <tabstop>includeUndatedTodos</tabstop>
  </tabstops>
  <resources/>
  <connections/>

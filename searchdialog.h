@@ -27,11 +27,13 @@
 #ifndef KORG_SEARCHDIALOG_H
 #define KORG_SEARCHDIALOG_H
 
-#include "ui_searchdialog_base.h"
-
 #include <KDialog>
 
 class CalendarView;
+
+namespace Ui {
+  class SearchDialog;
+}
 
 namespace EventViews {
   class ListView;
@@ -45,9 +47,10 @@ namespace KCalCore {
   class Incidence;
 }
 
-class SearchDialog : public KDialog, private Ui::SearchDialog
+class SearchDialog : public KDialog
 {
   Q_OBJECT
+
   public:
     explicit SearchDialog( CalendarView *calendarview );
     virtual ~SearchDialog();
@@ -72,7 +75,8 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
   private:
     void search( const QRegExp & );
 
-    CalendarView *m_calendarview;
+    Ui::SearchDialog *m_ui;
+    CalendarView *m_calendarview; // parent
     QList<Akonadi::Item> mMatchedEvents;
     EventViews::ListView *listView;
 };
