@@ -321,13 +321,18 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>searchEdit</tabstop>
   <tabstop>eventsCheck</tabstop>
-  <tabstop>todosCheck</tabstop>
   <tabstop>journalsCheck</tabstop>
+  <tabstop>todosCheck</tabstop>
   <tabstop>startDate</tabstop>
   <tabstop>endDate</tabstop>
   <tabstop>inclusiveCheck</tabstop>
   <tabstop>includeUndatedTodos</tabstop>
+  <tabstop>categoryCheck</tabstop>
+  <tabstop>locationCheck</tabstop>
+  <tabstop>descriptionCheck</tabstop>
+  <tabstop>summaryCheck</tabstop>
  </tabstops>
  <resources/>
  <connections/>

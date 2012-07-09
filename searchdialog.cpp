@@ -36,6 +36,8 @@
 
 #include <KMessageBox>
 
+#include <QTimer>
+
 using namespace KOrg;
 
 SearchDialog::SearchDialog( CalendarView *calendarview )
@@ -44,13 +46,7 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   , m_calendarview( calendarview )
 {
   setCaption( i18n( "Search Calendar" ) );
-  setButtons( User1 | Cancel );
-  setDefaultButton( User1 );
   setModal( false );
-  showButtonSeparator( false );
-  setButtonGuiItem( User1,
-                    KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
-  setButtonToolTip( User1, i18n( "Start searching" ) );
 
   QWidget *mainWidget = new QWidget( this );
   m_ui->setupUi( mainWidget );
@@ -82,6 +78,15 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
   connect( listView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+
+  setButtons( User1 | Cancel );
+  setDefaultButton( User1 );
+  setButtonGuiItem( User1,
+                    KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
+  setButtonToolTip( User1, i18n( "Start searching" ) );
+  showButtonSeparator( false );
+
+  QTimer::singleShot(0, m_ui->searchEdit, SLOT(setFocus()));
 }
 
 SearchDialog::~SearchDialog()
@@ -96,7 +101,6 @@ void SearchDialog::searchTextChanged( const QString &_text )
 void SearchDialog::doSearch()
 {
   QRegExp re;
-
   re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
   re.setCaseSensitivity( Qt::CaseInsensitive );
   re.setPattern( m_ui->searchEdit->text() );
