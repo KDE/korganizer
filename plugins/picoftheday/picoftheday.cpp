@@ -73,10 +73,9 @@ Element::List Picoftheday::createDayElements( const QDate &date )
 POTDElement::POTDElement( const QString &id, const QDate &date,
                           const QSize &initialThumbSize )
   : StoredElement( id ), mDate( date ), mThumbSize( initialThumbSize ),
-    mFirstStepCompleted( false ), mFirstStepBisCompleted( false ),
+    mFirstStepCompleted( false ),
     mSecondStepCompleted( false ),
-    mFirstStepJob( 0 ), mFirstStepBisJob( 0 ), mSecondStepJob( 0 ),
-    mThirdStepJob( 0 )
+    mFirstStepJob( 0 ), mSecondStepJob( 0 ), mThirdStepJob( 0 )
 {
   setShortText( i18n( "Loading..." ) );
   setLongText( i18n( "<qt>Loading <i>Picture of the Day</i>...</qt>" ) );
@@ -92,7 +91,7 @@ void POTDElement::step1StartDownload()
 {
   // Start downloading the picture
   if ( !mFirstStepCompleted && !mFirstStepJob ) {
-    KUrl url = KUrl( "http://commons.wikimedia.org/w/index.php?title=Template:Potd/" +
+    KUrl url = KUrl( "http://en.wikipedia.org/w/index.php?title=Template:POTD/" +
                      mDate.toString( Qt::ISODate ) + "&action=raw" );
                 // The file at that URL contains the file name for the POTD
 
@@ -103,20 +102,6 @@ void POTDElement::step1StartDownload()
              this, SLOT(step1Result(KJob*)) );
     connect( this, SIGNAL(step1Success()),
              this, SLOT(step2GetImagePage()) );
-  }
-  // Download its description
-  if ( !mFirstStepBisCompleted && !mFirstStepBisJob ) {
-    QString wikipediaLanguage = KGlobal::locale()->language();
-    wikipediaLanguage.replace( QRegExp( "^([^_][^_]*)_.*$"), "\\1" );
-    KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/" +
-                     mDate.toString( Qt::ISODate ) + "_(" + wikipediaLanguage +
-                     ')' + "?action=render" );
-
-    mFirstStepBisJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
-    KIO::Scheduler::setJobPriority( mFirstStepBisJob, 1 );
-
-    connect( mFirstStepBisJob, SIGNAL(result(KJob*)),
-             this, SLOT(step1BisResult(KJob*)) );
   }
 }
 
@@ -137,50 +122,46 @@ void POTDElement::step1Result( KJob *job )
 
   // First step completed: we now know the POTD's file name
   KIO::StoredTransferJob *const transferJob = static_cast<KIO::StoredTransferJob*>( job );
-  mFileName = QString::fromUtf8( transferJob->data().data(), transferJob->data().size() );
-  mFileName = mFileName.left( mFileName.indexOf( "<noinclude>" ) );
-  mFileName = mFileName.section( '|', 1, 1 );
-  kDebug() << "POTD:" << mDate << ": got POTD file name:" << mFileName;
+  const QStringList lines =
+    QString::fromUtf8( transferJob->data().data(), transferJob->data().size() ).split( '\n' );
 
-  if ( !mFileName.isEmpty() ) {
-    mFirstStepCompleted = true;
-    mFirstStepJob = 0;
-    emit step1Success();
+  Q_FOREACH( const QString &line, lines ) {
+    if ( line.startsWith( "|image=" ) ) {
+      mFileName = line;
+      break;
+    }
   }
-}
+  mFileName = mFileName.remove( "|image=" ).replace( ' ', '_' );
 
-/**
-  Give it a job which fetched the raw page,
-  and it'll give you the description hiding in it.
- */
-void POTDElement::step1BisResult( KJob *job )
-{
-  if ( job->error() ) {
-    kWarning() << "POTD:" << mDate << ": could not get POTD description:" << job->errorString();
-    kDebug() << "POTD:" << mDate << ": file name:" << mFileName;
-    kDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
-    kDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
-    mFirstStepBisCompleted = false;
-    return;
+  Q_FOREACH( const QString &line, lines ) {
+    if ( line.startsWith( "|texttitle=" ) ) {
+      mDescription = line;
+      break;
+    }
   }
-
-  // First step completed: we now know the POTD's description
-  KIO::StoredTransferJob* const transferJob = static_cast<KIO::StoredTransferJob*>( job );
-  QString description = QString::fromUtf8( transferJob->data().data(), transferJob->data().size() );
-  kDebug() << "POTD:" << mDate << ": got POTD description:" << description;
-
-  if ( !description.isEmpty() ) {
-    mDescription = description;
-    mFirstStepBisCompleted = true;
-    mFirstStepBisJob = 0;
+  mDescription = mDescription.remove( "|texttitle=" );
+  if ( !mDescription.isEmpty() ) {
+    mLongText = mDescription;
+  } else {
+    mLongText = mFileName;
   }
+  //TODO: uncomment the next line when string freeze is over
+  //mLongText = i18n( "Wikipedia POTD: %1", mLongText );
+  emit gotNewLongText( mLongText );
+
+  kDebug() << "FILENAME=" << mFileName;
+  kDebug() << "DESCRIPTION=" << mDescription;
+
+  mFirstStepCompleted = true;
+  mFirstStepJob = 0;
+  emit step1Success();
 }
 
 /** Second step of three in the download process */
 void POTDElement::step2GetImagePage()
 {
   if ( !mSecondStepCompleted && !mSecondStepJob ) {
-    mUrl = KUrl( "http://commons.wikimedia.org/wiki/Image:" + mFileName );
+    mUrl = KUrl( "http://en.wikipedia.org/wiki/File:" + mFileName );
     // We'll find the info to get the thumbnail we want on the POTD's image page
 
     emit gotNewUrl( mUrl );
@@ -223,30 +204,12 @@ void POTDElement::step2Result( KJob *job )
     return;
   }
 
-  QDomNodeList divs = imgPage.elementsByTagName( "div" );
-  QString wikipediaLanguage = KGlobal::locale()->language();
-  wikipediaLanguage.replace( QRegExp( "^([^_][^_]*)_.*$"), "\\1" );
-  for ( uint i=0; i<divs.length(); i++ ) {
-    if ( QString( divs.item( i ).attributes().namedItem( "class" ).nodeValue() ) ==
-         QString( "description " + wikipediaLanguage ) ) {
-      QDomNode descrNode = divs.item( i );
-      descrNode.removeChild( descrNode.firstChild() );
-      if ( !mFirstStepBisCompleted ) {
-        mDescription = QString( descrNode.toElement().text().trimmed() );
-      }
-      mLongText = mDescription;
-      emit gotNewLongText( mLongText );
-//      break; // TODO: make this more reliable (for now we use the last desc.,
-//             // but it may not be the POTD desc...)
-    }
-  }
-
   // We go through all links and stop at the first right-looking candidate
   QDomNodeList links = imgPage.elementsByTagName( "a" );
   for ( uint i=0; i<links.length(); i++ ) {
     QString href = links.item(i).attributes().namedItem( "href" ).nodeValue();
     if ( href.startsWith(
-           QLatin1String( "http://upload.wikimedia.org/wikipedia/commons/" ) ) ) {
+           QLatin1String( "//upload.wikimedia.org/wikipedia/commons/" ) ) ) {
       mFullSizeImageUrl = href;
       break;
     }
@@ -279,20 +242,19 @@ void POTDElement::step2Result( KJob *job )
   }
 }
 
-/** Returns the thumbnail URL for a given width corresponding to a full-size
-    image URL */
 KUrl POTDElement::thumbnailUrl( const KUrl &fullSizeUrl, const int width ) const
 {
   QString thumbUrl = fullSizeUrl.url();
   if ( width != 0 ) {
-    thumbUrl.replace( QRegExp( "http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)" ),
-                      "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" +
+    thumbUrl.replace( QRegExp( "//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)" ),
+                      "//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" +
                       QString::number( width ) + "px-\\2" );
   } else {  // This will not return a valid thumbnail URL, but will at least
             // give some info (the beginning of the URL)
-    thumbUrl.replace( QRegExp( "http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)" ),
-                      "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2" );
+    thumbUrl.replace( QRegExp( "//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)" ),
+                      "//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2" );
   }
+  thumbUrl.replace( QRegExp( "^file:////" ), "http://" );
   return KUrl( thumbUrl );
 }
 
@@ -316,7 +278,9 @@ void POTDElement::step3GetThumbnail()
   }
   mDlThumbSize = QSize( thumbWidth, thumbHeight );
   kDebug() << "POTD:" << mDate << ": will download thumbnail of size" << mDlThumbSize;
-  QString thumbUrl = thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url();
+  QString thumbUrl =
+    QUrl::fromPercentEncoding(
+      thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url().toAscii() );
 
   kDebug() << "POTD:" << mDate << ": got POTD thumbnail URL:" << thumbUrl;
   mThumbUrl = thumbUrl;

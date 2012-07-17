@@ -44,7 +44,7 @@ class Picoftheday : public Decoration
 
 class POTDElement : public StoredElement
 {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
     POTDElement( const QString &id, const QDate &date,
@@ -53,7 +53,11 @@ class POTDElement : public StoredElement
 
     void setDate( const QDate &date );
     void setThumbnailSize( const QSize &size );
-    /** @reimp from Element */QPixmap newPixmap( const QSize &size );
+    /** @reimp from Element */
+    QPixmap newPixmap( const QSize &size );
+
+    /**
+      Returns the thumbnail URL for a given width corresponding to a full-size image URL. */
     KUrl thumbnailUrl( const KUrl &fullSizeUrl, const int width = 0 ) const;
 
   signals:
@@ -82,17 +86,14 @@ class POTDElement : public StoredElement
     QSize mThumbSize;
     KUrl mThumbUrl;
     bool mFirstStepCompleted;
-    bool mFirstStepBisCompleted;
     bool mSecondStepCompleted;
     KIO::SimpleJob *mFirstStepJob;
-    KIO::SimpleJob *mFirstStepBisJob;
     KIO::SimpleJob *mSecondStepJob;
     KIO::SimpleJob *mThirdStepJob;
     QTimer *mTimer;
 
   private slots:
     void step1Result( KJob *job );
-    void step1BisResult( KJob *job );
     void step2Result( KJob *job );
     void step3Result( KJob *job );
 };
