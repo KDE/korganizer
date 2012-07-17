@@ -145,8 +145,7 @@ void POTDElement::step1Result( KJob *job )
   } else {
     mLongText = mFileName;
   }
-  //TODO: uncomment the next line when string freeze is over
-  //mLongText = i18n( "Wikipedia POTD: %1", mLongText );
+  mLongText = i18n( "Wikipedia POTD: %1", mLongText );
   emit gotNewLongText( mLongText );
 
   kDebug() << "FILENAME=" << mFileName;
