@@ -760,6 +760,8 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
         addWidBool( KOPrefs::instance()->sortCompletedTodosSeparatelyItem() )->checkBox() );
       tdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
+      tdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->flatListTodoItem() )->checkBox() );
       tdisplayBox->setLayout( tdisplayLayout );
       todoLayout->addWidget( tdisplayBox );
 

@@ -534,6 +534,14 @@ void KOTodoModel::setFlatView( bool flatView )
   }
 }
 
+void KOTodoModel::setFullView( bool fullView )
+{
+  if ( mFullView != fullView ) {
+    mFullView = fullView;
+    emit fullViewChanged( fullView );
+  }
+}
+
 Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 {
   Qt::ItemFlags ret = QAbstractItemModel::flags( index );

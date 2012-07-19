@@ -328,14 +328,23 @@
   <group name="Todo View">
     <entry type="Bool" key="Sort Completed Todos Separately">
       <label>Always display completed to-dos at the bottom of the list</label>
+      <tooltip>Completed to-dos are displayed at the bottom of the list, regardless of priority</tooltip>
       <whatsthis>Check this box if you want all completed to-dos to be always grouped at the bottom of the to-do list.</whatsthis>
       <default>true</default>
     </entry>
 
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
+      <tooltip>Display to-do list in a full KOrganizer window</tooltip>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the calendars list, will not be displayed.</whatsthis>
-      <default>true</default>
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" key="Flat List Todo">
+      <label>Display to-dos in a flat list</label>
+      <tooltip>Display to-dos as a flat list instead of a hierarchical tree</tooltip>
+      <whatsthis>Check this box if you want to see all your to-dos in a flat list instead of being arranged in a hierarchical tree.</whatsthis>
+      <default>false</default>
     </entry>
 
     <entry type="Bool" key="Record Todos In Journals">

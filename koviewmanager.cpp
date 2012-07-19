@@ -368,6 +368,9 @@ void KOViewManager::connectTodoView( KOTodoView *todoView )
            mMainView, SLOT(makeSubTodosIndependent()) );
   connect( mMainView, SIGNAL(categoryConfigChanged()),
            todoView, SLOT(updateCategories()) );
+
+  connect( todoView, SIGNAL(fullViewChanged(bool)),
+           mMainView, SLOT(changeFullView(bool)) );
 }
 
 void KOViewManager::zoomInHorizontally()
@@ -428,6 +431,8 @@ void KOViewManager::showMonthView()
     mMonthView->setCalendar( mMainView->calendar() );
     mMonthView->setIdentifier( "DefaultMonthView" );
     addView( mMonthView );
+    connect( mMonthView, SIGNAL(fullViewChanged(bool)),
+             mMainView, SLOT(changeFullView(bool)) );
   }
   goMenu( true );
   showView( mMonthView );

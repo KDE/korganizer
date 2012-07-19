@@ -81,6 +81,9 @@ class MonthView : public KOEventView
 
     void updateConfig();
 
+  signals:
+    void fullViewChanged( bool enabled );
+
   private:
     void showDates( const QDate &start, const QDate &end,
                     const QDate &preferredMonth = QDate() );

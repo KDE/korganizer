@@ -107,7 +107,7 @@ class KOTodoModel : public QAbstractItemModel
                                int row, int column, const QModelIndex &parent );
 
   public Q_SLOTS:
-    /** Sets if the model should provide a hirarchical view on todos or not.
+    /** Sets if the model should provide a hierarchical view on todos or not.
      *
      * If this is set to true, no parental relationship will be generated. All
      * todos will be in a single list. If this is false, todos are grouped
@@ -116,6 +116,12 @@ class KOTodoModel : public QAbstractItemModel
      * @param flatView Whether to display todos as list or as tree.
      */
     void setFlatView( bool flatView );
+
+    /** Sets if the model should provide a full window view or not.
+     *
+     * @param fullView Whether to display the todo list in a full window.
+     */
+    void setFullView( bool fullView );
 
   Q_SIGNALS:
 
@@ -126,6 +132,8 @@ class KOTodoModel : public QAbstractItemModel
      */
     void expandIndex( const QModelIndex &index );
     void flatViewChanged( bool enabled );
+    void fullViewChanged( bool enabled );
+
   private:
     struct TodoTreeNode;
 
@@ -190,6 +198,9 @@ class KOTodoModel : public QAbstractItemModel
 
     /** Display the todos without hierarchy? */
     bool mFlatView;
+
+    /** Display the todos in a full window? */
+    bool mFullView;
 };
 
 #endif

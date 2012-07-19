@@ -2938,6 +2938,18 @@ void CalendarView::selectWeek( const QDate &date, const QDate &preferredMonth )
   }
 }
 
+void CalendarView::changeFullView( bool fullView )
+{
+  if ( mViewManager->currentView() ) {
+    if ( mViewManager->currentView()->identifier() == "DefaultTodoView" ) {
+      showLeftFrame( !fullView );
+    } else if ( mViewManager->currentView()->identifier() == "DefaultMonthView" ) {
+      showLeftFrame( !fullView );
+      fullView ? mNavigatorBar->show() : mNavigatorBar->hide();
+    }
+  }
+}
+
 void CalendarView::getIncidenceHierarchy( const Akonadi::Item &item,
                                           Akonadi::Item::List &children )
 {

@@ -48,6 +48,7 @@ class MonthView::Private
 
     EventViews::MonthView *mMonthView;
     KOEventPopupMenu *mPopup;
+
   private:
     MonthView *q;
 };
@@ -129,6 +130,9 @@ MonthView::MonthView( QWidget *parent )
 
   connect( d->mMonthView, SIGNAL(newJournalSignal(QDate)),
            SIGNAL(newJournalSignal(QDate)) );
+
+  connect( d->mMonthView, SIGNAL(fullViewChanged(bool)),
+           SIGNAL(fullViewChanged(bool)) );
 }
 
 MonthView::~MonthView()

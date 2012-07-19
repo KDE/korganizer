@@ -642,6 +642,14 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     */
     void selectWeek( const QDate &week, const QDate &preferredMonth );
 
+    /**
+     * Use as much of the full window as possible for the view.
+     *
+     * @param fullView if true, expand the view as much as possible within the
+     * main view (hiding the sidebar for example); else put back the normal view.
+     */
+    void changeFullView( bool fullView );
+
   protected slots:
     /**
      * Select a view or adapt the current view to display the specified dates.
