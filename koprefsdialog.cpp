@@ -728,8 +728,6 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
         addWidBool( KOPrefs::instance()->showTodosMonthViewItem() )->checkBox() );
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->showJournalsMonthViewItem() )->checkBox() );
-      mdisplayLayout->addWidget(
-        addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
       mdisplayBox->setLayout( mdisplayLayout );
 
       mMonthIconComboBox->setCheckedIcons(
@@ -758,10 +756,6 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
       QGroupBox *tdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
       tdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->sortCompletedTodosSeparatelyItem() )->checkBox() );
-      tdisplayLayout->addWidget(
-        addWidBool( KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
-      tdisplayLayout->addWidget(
-        addWidBool( KOPrefs::instance()->flatListTodoItem() )->checkBox() );
       tdisplayBox->setLayout( tdisplayLayout );
       todoLayout->addWidget( tdisplayBox );
 
