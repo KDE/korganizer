@@ -390,6 +390,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
   }
 
   mFlatView->setChecked( cfgGroup.readEntry( "FlatView", false ) );
+  mView->expandAll();
 }
 
 void KOTodoView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
@@ -414,6 +415,7 @@ void KOTodoView::showIncidences( const Akonadi::Item::List &incidenceList, const
 void KOTodoView::updateView()
 {
   sModel->reloadTodos();
+  mView->expandAll();
 }
 
 void KOTodoView::updateCategories()
