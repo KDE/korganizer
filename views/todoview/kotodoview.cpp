@@ -263,7 +263,6 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
 
   mItemPopupMenu->addSeparator();
-
   mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
                              this, SIGNAL(purgeCompletedSignal()) );
 
@@ -415,6 +414,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
     mFullView->setChecked( KOPrefs::instance()->fullViewTodo() );
   }
   mFlatView->setChecked( KOPrefs::instance()->flatListTodo() );
+  mView->expandAll();
 }
 
 void KOTodoView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
@@ -439,6 +439,7 @@ void KOTodoView::showIncidences( const Akonadi::Item::List &incidenceList, const
 void KOTodoView::updateView()
 {
   sModel->reloadTodos();
+  mView->expandAll();
 }
 
 void KOTodoView::updateCategories()
