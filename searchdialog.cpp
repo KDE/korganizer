@@ -120,7 +120,7 @@ void SearchDialog::doSearch()
     KMessageBox::information(
       this,
       i18n( "No items were found that match your search pattern." ),
-      QString(), //TODO: add a caption when string freeze is off
+      i18n( "Search Results" ),
       QLatin1String( "NoSearchResults" ) );
   } else {
     m_ui->numItems->setText( i18np( "%1 item","%1 items", mMatchedEvents.count() ) );
