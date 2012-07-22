@@ -52,6 +52,8 @@
 
 using namespace KCalCore;
 
+static int maxDayBoxStrLen = 24;  //max length of strings in dayboxes
+
 static QString cleanStr( const QString &instr )
 {
   QString ret = instr;
@@ -1011,7 +1013,7 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
                      cleanStr( event->location() ) );
       }
     }
-    if ( includeDescription ) {
+    if ( includeDescription && !event->description().isEmpty() ) {
       str += '\n';
       if ( event->descriptionIsRich() ) {
         str += toPlainText( event->description() );
@@ -1068,19 +1070,19 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   const QFont oldFont( p.font() );
 
   QRect headerTextBox( subHeaderBox );
-  headerTextBox.setLeft( subHeaderBox.left()+5 );
-  headerTextBox.setRight( subHeaderBox.right()-5 );
+  headerTextBox.setLeft( subHeaderBox.left() + 5 );
+  headerTextBox.setRight( subHeaderBox.right() - 5 );
   if ( !hstring.isEmpty() ) {
     p.setFont( QFont( "sans-serif", 8, QFont::Bold, true ) );
-
     p.drawText( headerTextBox, Qt::AlignLeft | Qt::AlignVCenter, hstring );
   }
   p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr );
 
-  const Akonadi::Item::List eventList = mCalendar->events( qd, KSystemTimeZones::local(),
-                                                  CalendarSupport::EventSortStartDate,
-                                                  CalendarSupport::SortDirectionAscending );
+  const Akonadi::Item::List eventList =
+    mCalendar->events( qd, KSystemTimeZones::local(),
+                       CalendarSupport::EventSortStartDate,
+                       CalendarSupport::SortDirectionAscending );
 
   QString timeText;
   p.setFont( QFont( "sans-serif", 7 ) );
@@ -1105,15 +1107,16 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     }
     p.save();
     setCategoryColors( p, currEvent );
-    QString str;
+    QString summaryStr = currEvent->summary();
+    summaryStr.truncate( maxDayBoxStrLen );
     if ( !currEvent->location().isEmpty() ) {
-      str = i18nc( "summary, location", "%1, %2",
-                   currEvent->summary(), currEvent->location() );
-    } else {
-      str = currEvent->summary();
+      QString locationStr = currEvent->location();
+      locationStr.truncate( maxDayBoxStrLen );
+      summaryStr = i18nc( "summary, location",
+                          "%1, %2", summaryStr, locationStr );
     }
     drawIncidence( p, box, timeText,
-                   str, currEvent->description(),
+                   summaryStr, currEvent->description(),
                    textY, singleLineLimit, includeDescription,
                    currEvent->descriptionIsRich() );
     p.restore();
@@ -1124,19 +1127,21 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
 
       const unsigned int invisibleIncidences =
         ( eventList.count() - visibleEventsCounter ) + mCalendar->todos( qd ).count();
+      if ( invisibleIncidences > 0 ) {
+        const QString warningMsg = QString( "%1 (%2)" ).arg( downArrow ).arg( invisibleIncidences );
 
-      const QString warningMsg = QString( "%1 (%2)" ).arg( downArrow ).arg( invisibleIncidences );
+        QFontMetrics fm( p.font() );
+        QRect msgRect = fm.boundingRect( warningMsg );
+        msgRect.setRect( box.right() - msgRect.width() - 2,
+                         box.bottom() - msgRect.height() - 2,
+                         msgRect.width(), msgRect.height() );
 
-      QFontMetrics fm( p.font() );
-      QRect msgRect = fm.boundingRect( warningMsg );
-      msgRect.setRect( box.right() - msgRect.width() - 2,
-                       box.bottom() - msgRect.height() - 2,
-                       msgRect.width(), msgRect.height() );
-
-      p.save();
-      p.setPen( Qt::red ); //krazy:exclude=qenums we don't allow custom print colors
-      p.drawText( msgRect, Qt::AlignLeft, warningMsg );
-      p.restore();
+        p.save();
+        p.setPen( Qt::red ); //krazy:exclude=qenums we don't allow custom print colors
+        p.drawText( msgRect, Qt::AlignLeft, warningMsg );
+        p.restore();
+      }
+      break;
     }
   }
 
@@ -1160,12 +1165,13 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       }
       p.save();
       setCategoryColors( p, todo );
-      QString summaryStr;
+      QString summaryStr = todo->summary();
+      summaryStr.truncate( maxDayBoxStrLen );
       if ( !todo->location().isEmpty() ) {
-        summaryStr = i18nc( "summary, location", "%1, %2",
-                            todo->summary(), todo->location() );
-      } else {
-        summaryStr = todo->summary();
+        QString locationStr = todo->location();
+        locationStr.truncate( maxDayBoxStrLen );
+        summaryStr = i18nc( "summary, location",
+                            "%1, %2", summaryStr, locationStr );
       }
 
       QString str;
@@ -1222,49 +1228,50 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
                               dayBox.height() - textY );
 
   QString summaryText = summary;
+  summaryText.truncate( maxDayBoxStrLen );
+  QString descText = toPlainText( description );
+  descText.truncate( maxDayBoxStrLen );
   bool boxOverflow = false;
 
   if ( singleLineLimit ) {
-    QString lineText;
-    lineText = summaryText;
-    if ( includeDescription ) {
-      lineText += ", " + toPlainText( description );
+    if ( includeDescription && !descText.isEmpty() ) {
+      summaryText += ", " + descText;
     }
     int totalHeight = fm.lineSpacing() + borderWidth;
     int textBoxHeight = ( totalHeight > ( dayBox.height() - textY ) ) ?
-                        dayBox.height() - textY : totalHeight;
-    summaryBound.setHeight(textBoxHeight);
+                          dayBox.height() - textY :
+                          totalHeight;
+    summaryBound.setHeight( textBoxHeight );
     QRect lineRect( dayBox.x() + borderWidth, dayBox.y() + textY,
                     dayBox.width() - ( borderWidth * 2 ), textBoxHeight );
     drawBox( p, 1, lineRect );
     if ( !time.isEmpty() ) {
       p.drawText( timeBound, flags, time );
     }
-    p.drawText( summaryBound, flags, lineText );
+    p.drawText( summaryBound, flags, summaryText );
   } else {
     QTextDocument textDoc;
     QTextCursor textCursor( &textDoc );
     if ( richDescription ) {
       QTextCursor textCursor( &textDoc );
       textCursor.insertText( summaryText );
-      if ( includeDescription ) {
+      if ( includeDescription && !description.isEmpty() ) {
         textCursor.insertText( "\n" );
         textCursor.insertHtml( description );
       }
     } else {
       textCursor.insertText( summaryText );
-      if ( includeDescription ) {
+      if ( includeDescription && !descText.isEmpty() ) {
         textCursor.insertText( "\n" );
-        textCursor.insertText( description );
+        textCursor.insertText( descText );
       }
     }
     textDoc.setPageSize( QSize( summaryBound.width(), summaryBound.height() ) );
     p.save();
     QRect clipBox( 0, 0, summaryBound.width(), summaryBound.height() );
     p.setFont( p.font() );
-    p.translate( summaryBound.x(), summaryBound.y() - 6 );
-    textDoc.drawContents( &p, clipBox );
-    summaryBound.setHeight( textDoc.documentLayout()->documentSize().height()- 9 );
+    p.translate( summaryBound.x(), summaryBound.y() );
+    summaryBound.setHeight( textDoc.documentLayout()->documentSize().height() );
     if ( summaryBound.bottom() > dayBox.bottom() ) {
       summaryBound.setBottom( dayBox.bottom() );
     }
@@ -1280,9 +1287,10 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
       if ( timeBound.bottom() > dayBox.bottom() ) {
         timeBound.setBottom( dayBox.bottom() );
       }
+      timeBound.moveTop ( timeBound.y() + ( summaryBound.height() - timeBound.height() ) / 2 );
       p.drawText( timeBound, flags, time );
     }
-    p.translate( summaryBound.x(), summaryBound.y() - 6 );
+    p.translate( summaryBound.x(), summaryBound.y() );
     textDoc.drawContents( &p, clipBox );
     p.restore();
     boxOverflow = textDoc.pageCount() > 1;
