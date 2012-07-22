@@ -197,7 +197,7 @@ JournalView::JournalView( const Akonadi::Item &j,
   readJournal( mJournal );
   mDirty = false;
   setFrameStyle( QFrame::Box );
-  // These probably shouldt be hardcoded
+  // These probably shouldn't be hardcoded
   setStyleSheet( "QFrame { border: 1px solid; border-radius: 7px; } " );
   mBrowser->setStyleSheet( "QFrame { border: 0px solid white } " );
 }
@@ -253,8 +253,13 @@ void JournalView::printItem()
     Incidence::List selectedIncidences;
     selectedIncidences.append( j );
 
+    //make sure to clear and then restore the view stylesheet, else the view
+    //stylesheet is propagated to the child print dialog. see bug 303902
+    const QString ss = styleSheet();
+    setStyleSheet( QString() );
     printer.print( KOrg::CalPrinterBase::Incidence,
                    mDate, mDate, selectedIncidences );
+    setStyleSheet( ss );
   }
 }
 
