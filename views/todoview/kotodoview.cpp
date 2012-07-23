@@ -410,10 +410,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
     mView->sortByColumn( sortColumn, (Qt::SortOrder)sortOrder );
   }
 
-  if ( !mSidebarView ) {
-    mFullView->setChecked( KOPrefs::instance()->fullViewTodo() );
-  }
-  mFlatView->setChecked( KOPrefs::instance()->flatListTodo() );
+  mFlatView->setChecked( cfgGroup.readEntry( "FlatView", false ) );
   mView->expandAll();
 }
 
