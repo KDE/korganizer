@@ -860,7 +860,8 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Akonadi::Item::List &e
 
 void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::List &events,
                                            const QDate &qd, bool expandable,
-                                           QTime &fromTime, QTime &toTime,
+                                           const QTime &fromTime,
+                                           const QTime &toTime,
                                            const QRect &oldbox,
                                            bool includeDescription,
                                            bool excludeTime,
@@ -868,6 +869,18 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
                                            bool excludePrivate,
                                            const QList<QDate> &workDays )
 {
+  QTime myFromTime, myToTime;
+  if ( fromTime.isValid() ) {
+    myFromTime = fromTime;
+  } else {
+    myFromTime = QTime( 0, 0, 0 );
+  }
+  if ( toTime.isValid() ) {
+    myToTime = toTime;
+  } else {
+    myToTime = QTime( 23, 59, 59 );
+  }
+
   if ( !workDays.contains( qd ) ) {
     drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), oldbox );
   } else {
@@ -890,26 +903,26 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
       if ( event->allDay() ) {
         continue;
       }
-      if ( event->dtStart().time() < fromTime ) {
-        fromTime = event->dtStart().time();
+      if ( event->dtStart().time() < myFromTime ) {
+        myFromTime = event->dtStart().time();
       }
-      if ( event->dtEnd().time() > toTime ) {
-        toTime = event->dtEnd().time();
+      if ( event->dtEnd().time() > myToTime ) {
+        myToTime = event->dtEnd().time();
       }
     }
   }
 
   // calculate the height of a cell and of a minute
-  int totalsecs = fromTime.secsTo( toTime );
+  int totalsecs = myFromTime.secsTo( myToTime );
   float minlen = box.height() * 60. / totalsecs;
   float cellHeight = 60. * minlen;
   float currY = box.top();
 
   // print grid:
-  QTime curTime( QTime( fromTime.hour(), 0, 0 ) );
-  currY += fromTime.secsTo( curTime ) * minlen / 60;
+  QTime curTime( QTime( myFromTime.hour(), 0, 0 ) );
+  currY += myFromTime.secsTo( curTime ) * minlen / 60;
 
-  while ( curTime < toTime && curTime.isValid() ) {
+  while ( curTime < myToTime && curTime.isValid() ) {
     if ( currY > box.top() ) {
       p.drawLine( box.left(), int( currY ), box.right(), int( currY ) );
     }
@@ -921,16 +934,16 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
       p.drawLine( box.left(), int( currY ), box.right(), int( currY ) );
       p.setPen( oldPen );
     }
-    if ( curTime.secsTo( toTime ) > 3600 ) {
+    if ( curTime.secsTo( myToTime ) > 3600 ) {
       curTime = curTime.addSecs( 3600 );
     } else {
-      curTime = toTime;
+      curTime = myToTime;
     }
     currY += cellHeight / 2;
   }
 
-  KDateTime startPrintDate = KDateTime( qd, fromTime );
-  KDateTime endPrintDate = KDateTime( qd, toTime );
+  KDateTime startPrintDate = KDateTime( qd, myFromTime );
+  KDateTime endPrintDate = KDateTime( qd, myToTime );
 
   // Calculate horizontal positions and widths of events taking into account
   // overlapping events
@@ -962,11 +975,11 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
 }
 
 void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
-                                   const KDateTime &startPrintDate,
-                                   const KDateTime &endPrintDate,
-                                   float minlen, const QRect &box,
-                                   bool includeDescription,
-                                   bool excludeTime )
+                                         const KDateTime &startPrintDate,
+                                         const KDateTime &endPrintDate,
+                                         float minlen, const QRect &box,
+                                         bool includeDescription,
+                                         bool excludeTime )
 {
   Event::Ptr event = item->event();
 
@@ -1041,6 +1054,7 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
 }
 
 void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
+                                     const QTime &fromTime, const QTime &toTime,
                                      const QRect &box, bool fullDate,
                                      bool printRecurDaily, bool printRecurWeekly,
                                      bool singleLineLimit, bool showNoteLines,
@@ -1050,6 +1064,18 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
 {
   QString dayNumStr;
   const KLocale *local = KGlobal::locale();
+
+  QTime myFromTime, myToTime;
+  if ( fromTime.isValid() ) {
+    myFromTime = fromTime;
+  } else {
+    myFromTime = QTime( 0, 0, 0 );
+  }
+  if ( toTime.isValid() ) {
+    myToTime = toTime;
+  } else {
+    myToTime = QTime( 23, 59, 59 );
+  }
 
   if ( fullDate && mCalSys ) {
     dayNumStr = i18nc( "weekday, shortmonthname daynumber",
@@ -1092,6 +1118,12 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   Q_FOREACH ( const Akonadi::Item &item, eventList ) {
     const Event::Ptr currEvent = CalendarSupport::event( item );
     Q_ASSERT( currEvent );
+    if ( !currEvent->allDay() ) {
+      if ( currEvent->dtEnd().toLocalZone().time() <= myFromTime ||
+           currEvent->dtStart().toLocalZone().time() > myToTime ) {
+        continue;
+      }
+    }
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
       continue;
@@ -1150,6 +1182,12 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     Akonadi::Item::List::ConstIterator it2;
     for ( it2=todos.constBegin(); it2 != todos.constEnd() && textY < box.height(); ++it2 ) {
       Todo::Ptr todo = CalendarSupport::todo( *it2 );
+      if ( !todo->allDay() ) {
+        if ( ( todo->hasDueDate() && todo->dtDue().toLocalZone().time() <= myFromTime ) ||
+             ( todo->hasStartDate() && todo->dtStart().toLocalZone().time() > myToTime ) ) {
+          continue;
+        }
+      }
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
         continue;
@@ -1321,6 +1359,7 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
 }
 
 void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd,
+                                   const QTime &fromTime, const QTime &toTime,
                                    const QRect &box,
                                    bool singleLineLimit, bool showNoteLines,
                                    bool includeDescription,
@@ -1352,14 +1391,16 @@ void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd,
       box.left() + cellWidth * hpos,
       box.top() + cellHeight * vpos + ( ( i == 6 ) ? ( cellHeight / 2 ) : 0 ),
       cellWidth, ( i < 5 ) ? ( cellHeight ) : ( cellHeight / 2 ) );
-    drawDayBox( p, weekDate, dayBox, true, true, true,
+    drawDayBox( p, weekDate, fromTime, toTime, dayBox, true, true, true,
                 singleLineLimit, showNoteLines, includeDescription,
                 excludeConfidential, excludePrivate );
   } // for i through all weekdays
 }
 
-void CalPrintPluginBase::drawDays( QPainter &p, const QDate &start,
-                                   const QDate &end, const QRect &box,
+void CalPrintPluginBase::drawDays( QPainter &p,
+                                   const QDate &start, const QDate &end,
+                                   const QTime &fromTime, const QTime &toTime,
+                                   const QRect &box,
                                    bool singleLineLimit, bool showNoteLines,
                                    bool includeDescription,
                                    bool excludeConfidential, bool excludePrivate )
@@ -1390,7 +1431,8 @@ void CalPrintPluginBase::drawDays( QPainter &p, const QDate &start,
       box.left() + cellWidth * hpos,
       box.top() + cellHeight * vpos,
       cellWidth, cellHeight );
-    drawDayBox( p, weekDate, dayBox, true, true, true, singleLineLimit,
+    drawDayBox( p, weekDate, fromTime, toTime, dayBox,
+                true, true, true, singleLineLimit,
                 showNoteLines, includeDescription, excludeConfidential,
                 excludePrivate );
   } // for i through all selected days
@@ -1399,7 +1441,8 @@ void CalPrintPluginBase::drawDays( QPainter &p, const QDate &start,
 void CalPrintPluginBase::drawTimeTable( QPainter &p,
                                         const QDate &fromDate,
                                         const QDate &toDate,
-                                        QTime &fromTime, QTime &toTime,
+                                        const QTime &fromTime,
+                                        const QTime &toTime,
                                         const QRect &box,
                                         bool includeDescription,
                                         bool excludeTime,
@@ -1683,6 +1726,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 }
 
 void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
+                                         const QTime &fromTime, const QTime &toTime,
                                          bool weeknumbers, bool recurDaily,
                                          bool recurWeekly, bool singleLineLimit,
                                          bool showNoteLines,
@@ -1748,7 +1792,7 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
       }
       QRect dayBox( coledges[col], rowedges[row],
           coledges[col + 1] - coledges[col], rowedges[row + 1] - rowedges[row] );
-      drawDayBox( p, monthDate, dayBox, false,
+      drawDayBox( p, monthDate, fromTime, toTime, dayBox, false,
                   recurDaily, recurWeekly, singleLineLimit, showNoteLines,
                   includeDescription, excludeConfidential, excludePrivate );
       if ( darkbg ) {
