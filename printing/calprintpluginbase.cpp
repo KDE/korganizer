@@ -843,7 +843,7 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, const Akonadi::Item::List &e
   QRect eventBox( box );
   if ( !expandable ) {
     if ( !multiDayStr.isEmpty() ) {
-      drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 128, 128, 128 ), eventBox );
+      drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 180, 180, 180 ), eventBox );
       printEventString( p, eventBox, multiDayStr );
     } else {
       drawBox( p, BOX_BORDER_WIDTH, eventBox );
@@ -951,6 +951,9 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, const Akonadi::Item::Lis
   Akonadi::Item::List::ConstIterator itEvents;
   for ( itEvents = events.constBegin(); itEvents != events.constEnd(); ++itEvents ) {
     const Event::Ptr event = CalendarSupport::event( *itEvents );
+    if ( event->allDay() ) {
+      continue;
+    }
     QList<KDateTime> times = event->startDateTimesForDate( qd );
     for ( QList<KDateTime>::ConstIterator it = times.constBegin();
           it != times.constEnd(); ++it ) {
@@ -1041,10 +1044,10 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
           p.setFont( QFont( "sans-serif", 6 ) );
         }
       } else {
-        p.setFont( QFont( "sans-serif", 8 ) );
+        p.setFont( QFont( "sans-serif", 7 ) );
       }
     } else {
-       p.setFont( QFont( "sans-serif", 10 ) );
+       p.setFont( QFont( "sans-serif", 9 ) );
     }
     showEventBox( p, EVENT_BORDER_WIDTH, eventBox, event, str );
     p.setFont( oldFont );
