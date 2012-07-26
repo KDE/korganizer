@@ -367,6 +367,8 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     /**
       Draw the agenda box for the day print style (the box showing all events of that day).
       Also draws a grid with half-hour spacing of the grid lines.
+      Does NOT draw allday events.  Use drawAllDayBox for allday events.
+
       @param p QPainter of the printout
       @param eventList The list of the events that are supposed to be printed
              inside this box
