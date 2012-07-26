@@ -32,15 +32,15 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="mNew">
+        <widget class="QPushButton" name="mAdd">
          <property name="toolTip">
-          <string>Create a new recipient</string>
+          <string>Add a new recipient</string>
          </property>
          <property name="whatsThis">
           <string>Click this button and you will be able to enter a name and email for a new addressee to add to the recipients list</string>
          </property>
          <property name="text">
-          <string>&amp;New</string>
+          <string>&amp;Add</string>
          </property>
         </widget>
        </item>
