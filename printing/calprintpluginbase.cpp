@@ -1041,13 +1041,13 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
         if ( eventBox.height() < 8 ) {
           p.setFont( QFont( "sans-serif", 4 ) );
         } else {
-          p.setFont( QFont( "sans-serif", 6 ) );
+          p.setFont( QFont( "sans-serif", 5 ) );
         }
       } else {
-        p.setFont( QFont( "sans-serif", 7 ) );
+        p.setFont( QFont( "sans-serif", 6 ) );
       }
     } else {
-       p.setFont( QFont( "sans-serif", 9 ) );
+       p.setFont( QFont( "sans-serif", 8 ) );
     }
     showEventBox( p, EVENT_BORDER_WIDTH, eventBox, event, str );
     p.setFont( oldFont );
@@ -1434,6 +1434,7 @@ void CalPrintPluginBase::drawDays( QPainter &p,
 void CalPrintPluginBase::drawTimeTable( QPainter &p,
                                         const QDate &fromDate,
                                         const QDate &toDate,
+                                        bool expandable,
                                         const QTime &fromTime,
                                         const QTime &toTime,
                                         const QRect &box,
@@ -1442,8 +1443,32 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
                                         bool excludeConfidential,
                                         bool excludePrivate )
 {
+  QTime myFromTime = fromTime;
+  QTime myToTime = toTime;
+  if ( expandable ) {
+    QDate curDate( fromDate );
+    KDateTime::Spec timeSpec = KSystemTimeZones::local();
+    while ( curDate <= toDate ) {
+      Akonadi::Item::List eventList = mCalendar->events( curDate, timeSpec );
+      Q_FOREACH ( const Akonadi::Item &item, eventList ) {
+        const Event::Ptr event = CalendarSupport::event( item );
+        Q_ASSERT( event );
+        if ( event->allDay() ) {
+          continue;
+        }
+        if ( event->dtStart().time() < myFromTime ) {
+          myFromTime = event->dtStart().time();
+        }
+        if ( event->dtEnd().time() > myToTime ) {
+          myToTime = event->dtEnd().time();
+        }
+      }
+      curDate = curDate.addDays(1);
+    }
+  }
+
   // timeline is 1 hour:
-  int alldayHeight = (int)( 3600. * box.height() / ( fromTime.secsTo( toTime ) + 3600. ) );
+  int alldayHeight = (int)( 3600. * box.height() / ( myFromTime.secsTo( myToTime ) + 3600. ) );
   int timelineWidth = TIMELINE_WIDTH;
 
   QRect dowBox( box );
@@ -1454,10 +1479,10 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
   QRect tlBox( box );
   tlBox.setWidth( timelineWidth );
   tlBox.setTop( dowBox.bottom() + BOX_BORDER_WIDTH + alldayHeight );
-  drawTimeLine( p, fromTime, toTime, tlBox );
+  drawTimeLine( p, myFromTime, myToTime, tlBox );
 
   // draw each day
-  QDate curDate(fromDate);
+  QDate curDate( fromDate );
   KDateTime::Spec timeSpec = KSystemTimeZones::local();
   int i=0;
   double cellWidth = double( dowBox.width() ) / double( fromDate.daysTo( toDate ) + 1 );
@@ -1474,12 +1499,12 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
 
     alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox,
                                   excludeConfidential, excludePrivate );
-    drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime,
+    drawAgendaDayBox( p, eventList, curDate, false, myFromTime, myToTime,
                       dayBox, includeDescription, excludeTime,
                       excludeConfidential, excludePrivate, workDays );
 
     i++;
-    curDate=curDate.addDays(1);
+    curDate = curDate.addDays(1);
   }
 }
 

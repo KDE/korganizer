@@ -480,20 +480,21 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       and the events are displayed as boxes (like in korganizer's day/week view).
       The first cell of each column contains the all-day events (using
       drawAllDayBox with expandable=false).
-      The given time range cannot be expanded to include all events.
       @param p QPainter of the printout
       @param fromDate First day to be included in the page
       @param toDate Last day to be included in the page
+      @param expandable If true, the start and end times are adjusted to include
+      the whole range of all events of that day, not just of the given time range.
       @param fromTime Start time of the displayed time range
       @param toTime End time of the displayed time range
-s      @param box coordinates of the time table.
+      @param box coordinates of the time table.
       @param includeDescription Whether to print the event description as well.
       @param excludeTime Whether the time is printed in the detail area.
       @param excludeConfidential Whether to exclude Incidence marked confidential.
       @param excludePrivate Whether to exclude Incidence marked private.
     */
     void drawTimeTable( QPainter &p, const QDate &fromDate, const QDate &toDate,
-                        const QTime &fromTime, const QTime &toTime,
+                        bool expandable, const QTime &fromTime, const QTime &toTime,
                         const QRect &box, bool includeDescription,
                         bool excludeTime, bool excludeConfidential,
                         bool excludePrivate );
