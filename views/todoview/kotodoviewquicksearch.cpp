@@ -49,7 +49,12 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
   layout->setContentsMargins( 0, 0, 0, 0 );
 
   mSearchLine = new KLineEdit( this );
-  mSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search" ) );
+  mSearchLine->setToolTip(
+    i18nc( "@info:tooltip", "Filter on matching summaries" ) );
+  mSearchLine->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Enter text here to filter the to-dos that are shown by matching summaries." ) );
+  mSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search Summaries" ) );
   mSearchLine->setClearButtonShown( true );
   connect( mSearchLine, SIGNAL(textChanged(QString)),
            this, SIGNAL(searchTextChanged(QString)) );
@@ -57,11 +62,17 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
   layout->addWidget( mSearchLine, 3 );
 
   mCategoryCombo = new KPIM::KCheckComboBox( this );
+  mCategoryCombo->setToolTip(
+    i18nc( "@info:tooltip", "Filter on these categories" ) );
+  mCategoryCombo->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Use this combobox to filter the to-dos that are shown by "
+           "a list of selected categories." ) );
   mCategoryCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Categories" ) );
   mCategoryCombo->setSeparator( i18nc( "@item:intext delimiter for joining category names", "," ) );
 
   connect( mCategoryCombo, SIGNAL(checkedItemsChanged(QStringList)),
-           SLOT(emitSearchCategoryChanged()) );
+           SLOT(emitFilterCategoryChanged()) );
 
   layout->addWidget( mCategoryCombo, 1 );
   fillCategories();
@@ -80,6 +91,20 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
     const int pixelsToAdd = newPreferedWidth - mCategoryCombo->lineEdit()->width();
     mCategoryCombo->setMinimumWidth( mCategoryCombo->width() + pixelsToAdd );
   }
+
+  mPriorityCombo = new KPIM::KCheckComboBox( this );
+  mPriorityCombo->setToolTip(
+    i18nc( "@info:tooltip", "Filter on these priorities" ) );
+  mPriorityCombo->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Use this combobox to filter the to-dos that are shown by "
+           "a list of selected priorities." ) );
+  mPriorityCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Priority" ) );
+  connect( mPriorityCombo,SIGNAL(checkedItemsChanged(QStringList)),
+           SLOT(emitFilterPriorityChanged()) );
+
+  layout->addWidget( mPriorityCombo, 1 );
+  fillPriorities();
 
   setLayout( layout );
 }
@@ -101,6 +126,7 @@ void KOTodoViewQuickSearch::reset()
 {
   mSearchLine->clear();
   mCategoryCombo->setCurrentIndex( 0 );
+  mPriorityCombo->setCurrentIndex( 0 );
 }
 
 void KOTodoViewQuickSearch::fillCategories()
@@ -141,11 +167,34 @@ void KOTodoViewQuickSearch::fillCategories()
   mCategoryCombo->setCheckedItems( currentCategories, Qt::UserRole );
 }
 
-void KOTodoViewQuickSearch::emitSearchCategoryChanged()
+void KOTodoViewQuickSearch::fillPriorities()
+{
+  QStringList priorityValues;
+  priorityValues.append( i18nc( "@action:inmenu priority is unspecified", "unspecified" ) );
+  priorityValues.append( i18nc( "@action:inmenu highest priority", "%1 (highest)", 1 ) );
+  for ( int p = 2; p < 10; ++p ) {
+    if ( p == 5 ) {
+      priorityValues.append( i18nc( "@action:inmenu medium priority", "%1 (medium)", p ) );
+    } else if ( p == 9 ) {
+      priorityValues.append( i18nc( "@action:inmenu lowest priority", "%1 (lowest)", p ) );
+    } else {
+      priorityValues.append( i18nc( "@action:inmenu", "%1", p ) );
+    }
+  }
+  // TODO: Using the same method as for categories to fill mPriorityCombo
+  IncidenceEditorNG::CategoryHierarchyReaderQComboBox( mPriorityCombo ).read( priorityValues );
+}
+
+void KOTodoViewQuickSearch::emitFilterCategoryChanged()
 {
   // The display role doesn't work because it represents subcategories
   // as " subcategory", and we want "ParentCollection:subCategory"
-  emit searchCategoryChanged( mCategoryCombo->checkedItems( Qt::UserRole ) );
+  emit filterCategoryChanged( mCategoryCombo->checkedItems( Qt::UserRole ) );
+}
+
+void KOTodoViewQuickSearch::emitFilterPriorityChanged()
+{
+  emit filterPriorityChanged( mPriorityCombo->checkedItems( Qt::UserRole ) );
 }
 
 #include "kotodoviewquicksearch.moc"

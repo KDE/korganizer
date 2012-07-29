@@ -58,22 +58,27 @@ class KOTodoViewQuickSearch : public QWidget
      * so, if someone checks a subcategory, the value will be "ParentCategory:subCategory"
      * and not " subcategory".
      * */
-    void searchCategoryChanged( const QStringList & );
+    void filterCategoryChanged( const QStringList & );
+    void filterPriorityChanged( const QStringList & );
 
   public Q_SLOTS:
     void reset();
 
   private Q_SLOTS:
-    void emitSearchCategoryChanged();
+    void emitFilterCategoryChanged();
+    void emitFilterPriorityChanged();
 
   private:
     /** Helper method for the filling of the category combo. */
     void fillCategories();
+    /** Helper method for the filling of the priority combo. */
+    void fillPriorities();
 
     CalendarSupport::Calendar *mCalendar;
 
     KLineEdit *mSearchLine;
     KPIM::KCheckComboBox *mCategoryCombo;
+    KPIM::KCheckComboBox *mPriorityCombo;
 };
 
 #endif

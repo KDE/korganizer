@@ -40,18 +40,26 @@ void KOTodoViewSortFilterProxyModel::sort( int column, Qt::SortOrder order )
   QSortFilterProxyModel::sort( column, order );
 }
 
-bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
-                  int source_row, const QModelIndex &source_parent ) const
+bool KOTodoViewSortFilterProxyModel::filterAcceptsRow( int source_row,
+                                                       const QModelIndex &source_parent ) const
 {
   bool ret = QSortFilterProxyModel::filterAcceptsRow( source_row, source_parent );
 
+  bool returnValue = true;
+  if ( ret && !mPriorities.isEmpty() ) {
+    QString priorityValue =
+      sourceModel()->index( source_row, KOTodoModel::PriorityColumn, source_parent ).
+      data( Qt::EditRole ).toString();
+    returnValue = mPriorities.contains( priorityValue );
+  }
   if ( ret && !mCategories.isEmpty() ) {
     QStringList categories =
       sourceModel()->index( source_row, KOTodoModel::CategoriesColumn, source_parent ).
       data( Qt::EditRole ).toStringList();
+
     foreach ( const QString &category, categories ) {
       if ( mCategories.contains( category ) ) {
-        return true;
+        return returnValue && true;
       }
     }
     ret = false;
@@ -67,7 +75,7 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
     }
   }
 
-  return ret;
+  return ret && returnValue;
 }
 
 bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
@@ -150,6 +158,26 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
   } else {
     return QSortFilterProxyModel::lessThan( left, right );
   }
+}
+
+void KOTodoViewSortFilterProxyModel::setPriorityFilter( const QStringList &priorities )
+{
+  // preparing priority list for comparison
+  mPriorities.clear();
+  foreach ( const QString &eachPriority, priorities ){
+    if ( eachPriority == i18nc( "priority is unspecified", "unspecified" ) ){
+      mPriorities.append( i18n( "%1", 0 ) );
+    } else if ( eachPriority == i18nc( "highest priority", "%1 (highest)", 1 ) ) {
+      mPriorities.append( i18n( "%1", 1 ) );
+    } else if ( eachPriority == i18nc( "medium priority", "%1 (medium)", 5 ) ) {
+      mPriorities.append( i18n( "%1", 5 ) );
+    } else if ( eachPriority == i18nc( "lowest priority", "%1 (lowest)", 9 ) ) {
+      mPriorities.append( i18n( "%1", 9 ) );
+    } else {
+      mPriorities.append( eachPriority );
+    }
+  }
+  invalidateFilter();
 }
 
 void KOTodoViewSortFilterProxyModel::setCategoryFilter( const QStringList &categories )

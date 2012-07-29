@@ -78,8 +78,16 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
     mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
     connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
              mProxyModel, SLOT(setFilterRegExp(QString)) );
-    connect( mQuickSearch, SIGNAL(searchCategoryChanged(QStringList)),
+    connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
+             this, SLOT(expandTree()) );
+    connect( mQuickSearch, SIGNAL(filterCategoryChanged(QStringList)),
              mProxyModel, SLOT(setCategoryFilter(QStringList)) );
+    connect( mQuickSearch, SIGNAL(filterCategoryChanged(QStringList)),
+             this, SLOT(expandTree()) );
+    connect( mQuickSearch, SIGNAL(filterPriorityChanged(QStringList)),
+             mProxyModel, SLOT(setPriorityFilter(QStringList)) );
+    connect( mQuickSearch, SIGNAL(filterPriorityChanged(QStringList)),
+             this, SLOT(expandTree()) );
   }
 
   mView = new KOTodoViewView( this );
@@ -302,6 +310,11 @@ void KOTodoView::expandIndex( const QModelIndex &index )
     mView->expand( realIndex );
     realIndex = mProxyModel->parent( realIndex );
   }
+}
+
+void KOTodoView::expandTree()
+{
+  mView->expandAll();
 }
 
 void KOTodoView::setCalendar( CalendarSupport::Calendar *cal )

@@ -42,18 +42,25 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
       return mCategories;
     }
 
+    const QStringList &priorities() const
+    {
+      return mPriorities;
+    }
+
   protected:
     bool filterAcceptsRow( int source_row, const QModelIndex &source_parent ) const;
     bool lessThan( const QModelIndex &left, const QModelIndex &right ) const;
 
   public Q_SLOTS:
     void setCategoryFilter( const QStringList &categories );
+    void setPriorityFilter( const QStringList &priorities );
 
   private:
     int compareDueDates( const QModelIndex &left, const QModelIndex &right ) const;
     int comparePriorities( const QModelIndex &left, const QModelIndex &right ) const;
     int compareCompletion( const QModelIndex &left, const QModelIndex &right ) const;
     QStringList mCategories;
+    QStringList mPriorities;
     Qt::SortOrder mSortOrder;
 };
 
