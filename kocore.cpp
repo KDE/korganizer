@@ -313,7 +313,8 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 {
   KOrg::PrintPlugin::List loadedPlugins;
 
-  QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+  EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
+  QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
   KService::List plugins = availablePrintPlugins();
   KService::List::ConstIterator it;
