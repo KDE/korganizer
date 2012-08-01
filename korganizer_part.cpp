@@ -57,6 +57,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   KGlobal::locale()->insertCatalog( "kdgantt2" );
   KGlobal::locale()->insertCatalog( "libakonadi" );
   KGlobal::locale()->insertCatalog( "libincidenceeditors" );
+  KGlobal::locale()->insertCatalog( "libkpimutils" );
+
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
