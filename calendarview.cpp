@@ -43,13 +43,15 @@
 #include "kohelper.h"
 #include "koprefs.h"
 #include "koviewmanager.h"
-#include "history.h"
 #include "htmlexportsettings.h"
 #include "navigatorbar.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
+
+#include <akonadi/calendar/history.h>
+#include <akonadi/calendar/incidencechanger.h>
 
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/categoryconfig.h>
@@ -94,7 +96,6 @@
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
-    mHistory( 0 ),
     mCalendar( 0 ),
     mChanger( 0 ),
     mSplitterSizesValid( false )
@@ -258,18 +259,12 @@ CalendarView::~CalendarView()
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
-  delete mHistory;
 }
 
 void CalendarView::setCalendar( CalendarSupport::Calendar *cal )
 {
   mCalendar = cal;
   CalendarSupport::FreeBusyManager::self()->setCalendar( cal );
-
-  delete mHistory;
-  mHistory = new History( mCalendar, this );
-  connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
-  connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
   setIncidenceChanger(
     new CalendarSupport::IncidenceChanger(
@@ -691,7 +686,6 @@ void CalendarView::updateConfig( const QByteArray &receiver )
 void CalendarView::incidenceAddFinished( const Akonadi::Item &incidence, bool success )
 {
   if ( success ) {
-    history()->recordAdd( incidence );
     changeIncidenceDisplay( incidence, CalendarSupport::IncidenceChanger::INCIDENCEADDED );
     updateUnmanagedViews();
     checkForFilteredChange( incidence );
@@ -719,8 +713,6 @@ void CalendarView::incidenceChangeFinished(
 
   KCalCore::Incidence::Ptr oldIncidence = CalendarSupport::incidence( oldIncidence_ );
   KCalCore::Incidence::Ptr newIncidence = CalendarSupport::incidence( newIncidence_ );
-
-  history()->recordEdit( oldIncidence_, newIncidence_ );
 
   // Record completed todos in journals, if enabled. we should to this here in
   // favor of the todolist. users can mark a task as completed in an editor
@@ -773,7 +765,6 @@ void CalendarView::incidenceChangeFinished(
 void CalendarView::incidenceToBeDeleted( const Akonadi::Item &item )
 {
   kDebug() << "incidenceToBeDeleted item.id() :" << item.id();
-  history()->recordDelete( item );
   //  changeIncidenceDisplay( incidence, CalendarSupport::IncidenceChanger::INCIDENCEDELETED );
   updateUnmanagedViews();
 }
@@ -807,12 +798,12 @@ void CalendarView::checkForFilteredChange( const Akonadi::Item &item )
 
 void CalendarView::startMultiModify( const QString &text )
 {
-  history()->startMultiModify( text );
+  ///TODO_SERGIO
 }
 
 void CalendarView::endMultiModify()
 {
-  history()->endMultiModify();
+  ///TODO_SERGIO
 }
 
 void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action )
@@ -3015,6 +3006,11 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::createIncidenceEditor(
   }
 
   return dialog;
+}
+
+Akonadi::History *CalendarView::history() const
+{
+  return mChanger2->history();
 }
 
 #include "calendarview.moc"

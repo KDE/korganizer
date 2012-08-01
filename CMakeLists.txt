@@ -177,7 +177,6 @@ if(NOT WINCE)
       docprefs.cpp
       exportwebdialog.cpp
       filtereditdialog.cpp
-      history.cpp
       htmlexportjob.cpp
       importdialog.cpp
       kdatenavigator.cpp

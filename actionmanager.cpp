@@ -32,7 +32,6 @@
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
 #include "calendarview.h"
-#include "history.h"
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
 #include "importdialog.h"
@@ -66,6 +65,7 @@ using namespace Future;
 #include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/Session>
+#include <akonadi/calendar/history.h>
 
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
@@ -411,7 +411,7 @@ void ActionManager::initActions()
   /************************** EDIT MENU *********************************/
 
   QAction *pasteAction;
-  KOrg::History *h = mCalendarView->history();
+  Akonadi::History *h = mCalendarView->history();
   if ( mIsPart ) {
     // edit menu
     mCutAction = mACollection->addAction( KStandardAction::Cut, "korganizer_cut",

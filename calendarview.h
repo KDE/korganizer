@@ -44,7 +44,6 @@ class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
 namespace KOrg {
-  class History;
   class HTMLExportSettings;
 }
 
@@ -54,6 +53,11 @@ namespace CalendarSupport {
 
 namespace IncidenceEditorNG {
   class IncidenceDialog;
+}
+
+namespace Akonadi {
+  class History;
+  class IncidenceChanger;
 }
 
 class KVBox;
@@ -146,7 +150,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void setCalendar( CalendarSupport::Calendar * );
     CalendarSupport::Calendar *calendar() const;
 
-    History *history() const { return mHistory; }
+    Akonadi::History *history() const;
 
     KOViewManager *viewManager() const { return mViewManager; }
     KODialogManager *dialogManager() const { return mDialogManager; }
@@ -739,8 +743,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(
       const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection() );
 
-    KOrg::History *mHistory;
-
     CalPrinter *mCalPrinter;
 
     QSplitter *mPanner;
@@ -778,6 +780,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     KOTodoView *mTodoList;
     CalendarSupport::IncidenceChanger *mChanger;
+    Akonadi::IncidenceChanger *mChanger2;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;
