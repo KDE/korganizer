@@ -347,8 +347,8 @@ void KOViewManager::connectView( KOrg::BaseView *view )
   connect( view, SIGNAL(endMultiModify()),
            mMainView, SLOT(endMultiModify()) );
 
-  connect( mMainView, SIGNAL(newIncidenceChanger(CalendarSupport::IncidenceChanger*)),
-           view, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger*)) );
+  connect( mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger*)),
+           view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger*)) );
 
   view->setIncidenceChanger( mMainView->incidenceChanger() );
 }

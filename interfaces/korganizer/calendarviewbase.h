@@ -38,7 +38,7 @@ class CalendarViewBase : public QWidget
     virtual ~CalendarViewBase() {}
 
     virtual CalendarSupport::Calendar *calendar() const = 0;
-    virtual CalendarSupport::IncidenceChanger *incidenceChanger() const = 0;
+    virtual Akonadi::IncidenceChanger *incidenceChanger() const = 0;
 
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;
@@ -57,7 +57,7 @@ class CalendarViewBase : public QWidget
     virtual void updateCategories() = 0;
 
   signals:
-    virtual void newIncidenceChanger( CalendarSupport::IncidenceChanger * ) = 0;
+    virtual void newIncidenceChanger( Akonadi::IncidenceChanger * ) = 0;
 
 };
 

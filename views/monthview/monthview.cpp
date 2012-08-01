@@ -200,9 +200,10 @@ void MonthView::showIncidences( const Akonadi::Item::List &incidenceList, const 
   d->mMonthView->showIncidences( incidenceList, date );
 }
 
-void MonthView::changeIncidenceDisplay( const Akonadi::Item &item, int mode )
+void MonthView::changeIncidenceDisplay( const Akonadi::Item &item,
+                                        Akonadi::IncidenceChanger::ChangeType changeType )
 {
-  d->mMonthView->changeIncidenceDisplay( item, mode );
+  d->mMonthView->changeIncidenceDisplay( item, changeType );
 }
 
 void MonthView::updateConfig()
@@ -238,7 +239,7 @@ void MonthView::setCalendar( CalendarSupport::Calendar *cal )
   d->mMonthView->setCalendar( cal );
 }
 
-void MonthView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void MonthView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   d->mMonthView->setIncidenceChanger( changer );
 }

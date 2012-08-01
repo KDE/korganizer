@@ -64,7 +64,7 @@ class KOWhatsNextView : public KOrg::BaseView
     virtual void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( const Akonadi::Item &, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
 
   protected:
     void appendEvent( const Akonadi::Item &, const QDateTime &start = QDateTime(),

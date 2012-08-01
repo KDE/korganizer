@@ -167,9 +167,10 @@ void KOListView::showIncidences( const Akonadi::Item::List &incidenceList, const
   mListView->showIncidences( incidenceList, date );
 }
 
-void KOListView::changeIncidenceDisplay( const Akonadi::Item & aitem, int action )
+void KOListView::changeIncidenceDisplay( const Akonadi::Item & aitem,
+                                         Akonadi::IncidenceChanger::ChangeType changeType )
 {
-  mListView->changeIncidenceDisplay( aitem, action );
+  mListView->changeIncidenceDisplay( aitem, changeType );
 }
 
 void KOListView::defaultItemAction( const QModelIndex &index )
@@ -224,7 +225,7 @@ void KOListView::setCalendar( CalendarSupport::Calendar *cal )
   mListView->setCalendar( cal );
 }
 
-void KOListView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void KOListView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   mListView->setIncidenceChanger( changer );
 }

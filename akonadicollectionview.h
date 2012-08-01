@@ -41,7 +41,7 @@ namespace Akonadi {
 }
 
 class KAction;
-
+class KJob;
 class QAbstractProxyModel;
 class QModelIndex;
 

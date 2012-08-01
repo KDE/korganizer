@@ -87,8 +87,8 @@ void JournalDateView::addJournal( const Akonadi::Item &j )
   entry->setIncidenceChanger( mChanger );
 
   mEntries.insert( j.id(), entry );
-  connect( this, SIGNAL(setIncidenceChangerSignal(CalendarSupport::IncidenceChanger*)),
-           entry, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger*)) );
+  connect( this, SIGNAL(setIncidenceChangerSignal(Akonadi::IncidenceChanger*)),
+           entry, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger*)) );
   connect( this, SIGNAL(setDateSignal(QDate)),
            entry, SLOT(setDate(QDate)) );
   connect( entry, SIGNAL(deleteIncidence(Akonadi::Item)),
@@ -108,7 +108,7 @@ Akonadi::Item::List JournalDateView::journals() const
   return l;
 }
 
-void JournalDateView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void JournalDateView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );

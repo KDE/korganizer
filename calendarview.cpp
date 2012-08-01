@@ -143,6 +143,31 @@ CalendarView::CalendarView( QWidget *parent )
   mLeftFrame = mLeftSplitter;
   mLeftFrame->installEventFilter( this );
 
+
+  mChanger = new Akonadi::IncidenceChanger( this );
+  connect( mChanger,
+           SIGNAL(createFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
+           SLOT(slotCreateFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
+
+  connect( mChanger,
+           SIGNAL(deleteFinished(int,QVector<Akonadi::Item::Id>,Akonadi::IncidenceChanger::ResultCode,QString)),
+           SLOT(slotDeleteFinished(int,QVector<Akonadi::Item::Id>,Akonadi::IncidenceChanger::ResultCode,QString)) );
+
+  connect( mChanger,
+           SIGNAL(modifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
+           SLOT(slotModifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
+
+
+  /* TODO: sergio
+  connect( mChanger, SIGNAL(schedule(KCalCore::iTIPMethod,Akonadi::Item)),
+           this, SLOT(schedule(KCalCore::iTIPMethod,Akonadi::Item)) );
+
+  connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
+           mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
+
+    */
+
+
   // Signals emitted by mDateNavigator
   connect( mDateNavigator, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
            SLOT(showDates(KCalCore::DateList,QDate)) );
@@ -266,13 +291,8 @@ void CalendarView::setCalendar( CalendarSupport::Calendar *cal )
   mCalendar = cal;
   CalendarSupport::FreeBusyManager::self()->setCalendar( cal );
 
-  setIncidenceChanger(
-    new CalendarSupport::IncidenceChanger(
-      mCalendar, this,
-      CalendarSupport::KCalPrefs::instance()->defaultCalendarId() ) );
-
   mChanger->setDestinationPolicy(
-    static_cast<CalendarSupport::IncidenceChanger::DestinationPolicy>(
+    static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(
       KOPrefs::instance()->destination() ) );
 
   mCalendar->registerObserver( this );
@@ -282,34 +302,6 @@ void CalendarView::setCalendar( CalendarSupport::Calendar *cal )
   mTodoList->setCalendar( mCalendar );
 
   mEventViewer->setCalendar( mCalendar );
-}
-
-void CalendarView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
-{
-  delete mChanger;
-  mChanger = changer;
-
-  emit newIncidenceChanger( mChanger );
-  connect( mChanger, SIGNAL(incidenceAddFinished(Akonadi::Item,bool)),
-           this, SLOT(incidenceAddFinished(Akonadi::Item,bool)) );
-
-  qRegisterMetaType<Akonadi::Item>( "Akonadi::Item" );
-  qRegisterMetaType<CalendarSupport::IncidenceChanger::WhatChanged>(
-    "CalendarSupport::IncidenceChanger::WhatChanged" );
-  connect( mChanger,
-           SIGNAL(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,CalendarSupport::IncidenceChanger::WhatChanged,bool)),
-           this,
-           SLOT(incidenceChangeFinished(Akonadi::Item,Akonadi::Item,CalendarSupport::IncidenceChanger::WhatChanged,bool)), Qt::QueuedConnection );
-  connect( mChanger, SIGNAL(incidenceToBeDeleted(Akonadi::Item)),
-           this, SLOT(incidenceToBeDeleted(Akonadi::Item)) );
-  connect( mChanger, SIGNAL(incidenceDeleteFinished(Akonadi::Item,bool)),
-           this, SLOT(incidenceDeleteFinished(Akonadi::Item,bool)) );
-
-  connect( mChanger, SIGNAL(schedule(KCalCore::iTIPMethod,Akonadi::Item)),
-           this, SLOT(schedule(KCalCore::iTIPMethod,Akonadi::Item)) );
-
-  connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
-           mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
 }
 
 CalendarSupport::Calendar *CalendarView::calendar() const
@@ -679,53 +671,51 @@ void CalendarView::updateConfig( const QByteArray &receiver )
   mViewManager->raiseCurrentView();
 
   mChanger->setDestinationPolicy(
-    static_cast<CalendarSupport::IncidenceChanger::DestinationPolicy>(
+    static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(
       KOPrefs::instance()->destination() ) );
 }
 
-void CalendarView::incidenceAddFinished( const Akonadi::Item &incidence, bool success )
+void CalendarView::slotCreateFinished( int changeId,
+                                       const Akonadi::Item &item,
+                                       Akonadi::IncidenceChanger::ResultCode resultCode,
+                                       const QString &errorString )
 {
-  if ( success ) {
-    changeIncidenceDisplay( incidence, CalendarSupport::IncidenceChanger::INCIDENCEADDED );
+  Q_UNUSED( changeId );
+  if ( resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess ) {
+    changeIncidenceDisplay( item, Akonadi::IncidenceChanger::ChangeTypeCreate );
     updateUnmanagedViews();
-    checkForFilteredChange( incidence );
+    checkForFilteredChange( item );
   } else {
-    kError() << "Incidence not added, job reported error";
+    kError() << "Incidence not added, job reported error: " << errorString;
   }
 }
 
-void CalendarView::incidenceChangeFinished(
-  const Akonadi::Item &oldIncidence_, const Akonadi::Item &newIncidence_,
-  CalendarSupport::IncidenceChanger::WhatChanged modified, bool success )
+void CalendarView::slotModifyFinished( int changeId,
+                                       const Akonadi::Item &item,
+                                       Akonadi::IncidenceChanger::ResultCode resultCode,
+                                       const QString &errorString )
 {
-  if ( !success ) {
-    kError() << "Incidence not chanded, job reported error";
+  Q_UNUSED( changeId );
+  if ( resultCode != Akonadi::IncidenceChanger::ResultCodeSuccess ) {
+    kError() << "Incidence not modified, job reported error: " << errorString;
     return;
   }
 
-  if ( !oldIncidence_.isValid() ||
-       !newIncidence_.isValid() ) {
-    // If the item was deleted while a modify job was active, incidenceChanger
-    // wont have a valid item to send here, but also wont return success == false
-    // so users don't see an error message
-    return;
-  }
-
-  KCalCore::Incidence::Ptr oldIncidence = CalendarSupport::incidence( oldIncidence_ );
-  KCalCore::Incidence::Ptr newIncidence = CalendarSupport::incidence( newIncidence_ );
-
+  Q_ASSERT( item.isValid() );
+  KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
+  Q_ASSERT( incidence );
+  QSet<KCalCore::IncidenceBase::Field> dirtyFields = incidence->dirtyFields();
+  incidence->resetDirtyFields();
   // Record completed todos in journals, if enabled. we should to this here in
   // favor of the todolist. users can mark a task as completed in an editor
   // as well.
-  if ( newIncidence->type() == Incidence::TypeTodo &&
+  if ( incidence->type() == Incidence::TypeTodo &&
        KOPrefs::instance()->recordTodosInJournals() &&
-       ( modified == CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED ||
-         modified == CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
-    KCalCore::Todo::Ptr todo = CalendarSupport::todo( newIncidence_ );
-    if ( todo->isCompleted() ||
-         modified == CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
+       ( dirtyFields.contains( KCalCore::Incidence::FieldCompleted ) ) ) {
+    KCalCore::Todo::Ptr todo = incidence.dynamicCast<KCalCore::Todo>();
+    if ( todo->isCompleted() || todo->recurs() ) {
       QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
-      QString description = i18n( "Todo completed: %1 (%2)", newIncidence->summary(), timeStr );
+      QString description = i18n( "Todo completed: %1 (%2)", incidence->summary(), timeStr );
 
       Akonadi::Item::List journals = calendar()->journals( QDate::currentDate() );
 
@@ -738,9 +728,7 @@ void CalendarView::incidenceChangeFinished(
         journal->setSummary( i18n( "Journal of %1", dateStr ) );
         journal->setDescription( description );
 
-        Akonadi::Collection selectedCollection;
-
-        if ( !mChanger->addIncidence( journal, newIncidence_.parentCollection(), this ) ) {
+        if ( !mChanger->createIncidence( journal, item.parentCollection(), this ) ) {
           kError() << "Unable to add Journal";
           return;
         }
@@ -750,32 +738,32 @@ void CalendarView::incidenceChangeFinished(
         Journal::Ptr journal = CalendarSupport::journal( journalItem );
         Journal::Ptr oldJournal( journal->clone() );
         journal->setDescription( journal->description().append( '\n' + description ) );
-        mChanger->changeIncidence( oldJournal, journalItem,
-                                   CalendarSupport::IncidenceChanger::DESCRIPTION_MODIFIED, this );
+        mChanger->modifyIncidence( journalItem, oldJournal, this );
 
       }
     }
   }
 
-  changeIncidenceDisplay( newIncidence_, CalendarSupport::IncidenceChanger::INCIDENCEEDITED );
+  changeIncidenceDisplay( item, Akonadi::IncidenceChanger::ChangeTypeCreate );
   updateUnmanagedViews();
-  checkForFilteredChange( newIncidence_ );
+  checkForFilteredChange( item );
 }
 
-void CalendarView::incidenceToBeDeleted( const Akonadi::Item &item )
+void CalendarView::slotDeleteFinished( int changeId,
+                                       const QVector<Akonadi::Item::Id> &itemIdList,
+                                       Akonadi::IncidenceChanger::ResultCode resultCode,
+                                       const QString &errorString )
 {
-  kDebug() << "incidenceToBeDeleted item.id() :" << item.id();
-  //  changeIncidenceDisplay( incidence, CalendarSupport::IncidenceChanger::INCIDENCEDELETED );
-  updateUnmanagedViews();
-}
-
-void CalendarView::incidenceDeleteFinished( const Akonadi::Item &item, bool success )
-{
-  if ( success ) {
-    changeIncidenceDisplay( item, CalendarSupport::IncidenceChanger::INCIDENCEDELETED );
+  Q_UNUSED( changeId );
+  if ( resultCode != Akonadi::IncidenceChanger::ResultCodeSuccess ) {
+    foreach( Akonadi::Item::Id id, itemIdList ) {
+      Akonadi::Item item = mCalendar->incidence( id );
+      if ( item.isValid() )
+        changeIncidenceDisplay( item, Akonadi::IncidenceChanger::ChangeTypeDelete );
+    }
     updateUnmanagedViews();
   } else {
-    kError() << "Incidence not deleted, job reported error";
+    kError() << "Incidence not deleted, job reported error: " << errorString;
   }
 }
 
@@ -798,15 +786,16 @@ void CalendarView::checkForFilteredChange( const Akonadi::Item &item )
 
 void CalendarView::startMultiModify( const QString &text )
 {
-  ///TODO_SERGIO
+  mChanger->startAtomicOperation( text );
 }
 
 void CalendarView::endMultiModify()
 {
-  ///TODO_SERGIO
+  mChanger->endAtomicOperation();
 }
 
-void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action )
+void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item,
+                                           Akonadi::IncidenceChanger::ChangeType changeType )
 {
   if ( mDateNavigatorContainer->isVisible() ) {
     mDateNavigatorContainer->updateView();
@@ -816,9 +805,9 @@ void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action
 
   if ( CalendarSupport::hasIncidence( item ) ) {
     // If there is an event view visible update the display
-    mViewManager->currentView()->changeIncidenceDisplay( item, action );
+    mViewManager->currentView()->changeIncidenceDisplay( item, changeType );
     if ( mTodoList && mTodoList->isVisible() ) {
-      mTodoList->changeIncidenceDisplay( item, action );
+      mTodoList->changeIncidenceDisplay( item, changeType );
     }
   } else {
     mViewManager->currentView()->updateView();
@@ -910,7 +899,8 @@ void CalendarView::edit_cut()
   }
 
   if ( km != KMessageBox::Cancel ) {
-    mChanger->cutIncidences( items, this );
+    //TODO_SERGIO: cutincidences
+    //mChanger->cutIncidences( items, this );
   }
 
   checkClipboard();
@@ -1017,11 +1007,9 @@ void CalendarView::edit_paste()
   } else {
     pastedIncidences = factory.pasteIncidences( KDateTime( date ) );
   }
-  Akonadi::Collection col;
+
   Incidence::List::Iterator it;
   Akonadi::Collection selectedCollection;
-  int dialogCode = 0;
-
   {
     // If only one collection exists, don't bother the user with a prompt
     CalendarSupport::CollectionSelection *selection =
@@ -1051,11 +1039,11 @@ void CalendarView::edit_paste()
 
       pastedEvent->setRelatedTo( QString() );
       if ( selectedCollection.isValid() ) {
-        mChanger->addIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
+        mChanger->createIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
                                 selectedCollection, this );
       } else {
-        mChanger->addIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
-                                this, selectedCollection, dialogCode );
+        mChanger->createIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
+                                   selectedCollection, this );
       }
     } else if ( ( *it )->type() == Incidence::TypeTodo ) {
       KCalCore::Todo::Ptr pastedTodo = ( *it ).staticCast<Todo>();
@@ -1070,22 +1058,19 @@ void CalendarView::edit_paste()
 
       if ( selectedCollection.isValid() ) {
         // When pasting multiple incidences, don't ask which collection to use, for each one
-        mChanger->addIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
-                                selectedCollection, this );
+        mChanger->createIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
+                                   selectedCollection, this );
       } else {
-        mChanger->addIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
-                                this, selectedCollection, dialogCode );
+        mChanger->createIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
+                                   selectedCollection, this );
       }
 
     } else if ( ( *it )->type() == Incidence::TypeJournal ) {
 
       if ( selectedCollection.isValid() ) {
         // When pasting multiple incidences, don't ask which collection to use, for each one
-        mChanger->addIncidence( KCalCore::Incidence::Ptr( ( *it )->clone() ),
-                                selectedCollection, this );
-      } else {
-        mChanger->addIncidence( KCalCore::Incidence::Ptr( ( *it )->clone() ),
-                                this, selectedCollection, dialogCode );
+        mChanger->createIncidence( KCalCore::Incidence::Ptr( ( *it )->clone() ),
+                                   selectedCollection, this );
       }
     }
   }
@@ -1393,9 +1378,7 @@ bool CalendarView::addIncidence( const QString &ical )
 
 bool CalendarView::addIncidence( const Incidence::Ptr &incidence )
 {
-  Akonadi::Collection col;
-  int dialogCode = 0;
-  return incidence ? mChanger->addIncidence( incidence, this, col, dialogCode ) : false;
+  return incidence ? mChanger->createIncidence( incidence, Akonadi::Collection(), this ) : false;
 }
 
 void CalendarView::appointment_show()
@@ -1446,8 +1429,7 @@ bool CalendarView::incidence_unsub( const Akonadi::Item &item )
 
   Incidence::Ptr oldInc( inc->clone() );
   inc->setRelatedTo( 0 );
-  mChanger->changeIncidence( oldInc, item,
-                             CalendarSupport::IncidenceChanger::RELATION_MODIFIED, this );
+  mChanger->modifyIncidence( item, oldInc, this );
 
   return true;
 }
@@ -1530,8 +1512,7 @@ void CalendarView::toggleAlarm( const Akonadi::Item &item )
       alm->setEndOffset( KCalCore::Duration( -duration ) );
     }
   }
-  mChanger->changeIncidence( oldincidence, item,
-                             CalendarSupport::IncidenceChanger::ALARM_MODIFIED, this );
+  mChanger->modifyIncidence( item, oldincidence, this );
 }
 
 void CalendarView::toggleTodoCompleted( const Akonadi::Item &todoItem )
@@ -1558,10 +1539,7 @@ void CalendarView::toggleTodoCompleted( const Akonadi::Item &todoItem )
                           CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
   }
 
-  mChanger->changeIncidence( oldtodo,
-                             todoItem,
-                             CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED,
-                             this );
+  mChanger->modifyIncidence( todoItem, oldtodo, this );
 }
 
 void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const QString &resourceId )
@@ -1780,9 +1758,8 @@ void CalendarView::dissociateOccurrence( const Akonadi::Item &item, const QDate 
     mCalendar->dissociateOccurrence(
       item, date, CalendarSupport::KCalPrefs::instance()->timeSpec(), true ) );
   if ( newInc ) {
-    mChanger->changeIncidence(
-      oldincidence, item, CalendarSupport::IncidenceChanger::NOTHING_MODIFIED, this );
-    mChanger->addIncidence( newInc, item.parentCollection(), this );
+    mChanger->modifyIncidence( item, oldincidence, this );
+    mChanger->createIncidence( newInc, item.parentCollection(), this );
   } else {
     KMessageBox::sorry(
       this,
@@ -1804,12 +1781,8 @@ void CalendarView::dissociateFutureOccurrence( const Akonadi::Item &item, const 
     mCalendar->dissociateOccurrence( item, date,
                                      CalendarSupport::KCalPrefs::instance()->timeSpec(), false ) );
   if ( newInc ) {
-    mChanger->changeIncidence( oldincidence,
-                               item,
-                               CalendarSupport::IncidenceChanger::NOTHING_MODIFIED,
-                               this );
-
-    mChanger->addIncidence( newInc, item.parentCollection(), this );
+    mChanger->modifyIncidence( item, oldincidence, this );
+    mChanger->createIncidence( newInc, item.parentCollection(), this );
   } else {
     KMessageBox::sorry(
       this,
@@ -2514,8 +2487,8 @@ void CalendarView::deleteSubTodosIncidence ( const Akonadi::Item &todoItem )
     }
   }
 
-  if ( mChanger->isNotDeleted( todoItem.id() ) ) {
-    mChanger->deleteIncidence ( todoItem, 0, this );
+  if ( mChanger->deletedRecently( todoItem.id() ) ) {
+    mChanger->deleteIncidence( todoItem, this );
   }
 }
 
@@ -2532,8 +2505,8 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item &todoItem, bool for
     if ( !force && KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Continue );
     }
-    if ( doDelete && mChanger->isNotDeleted( todoItem.id() ) ) {
-      mChanger->deleteIncidence( todoItem, 0, this );
+    if ( doDelete && mChanger->deletedRecently( todoItem.id() ) ) {
+      mChanger->deleteIncidence( todoItem, this );
     }
     return;
   }
@@ -2556,8 +2529,8 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item &todoItem, bool for
   // Delete only the father
   if ( km == KMessageBox::Yes ) {
     makeChildrenIndependent( todoItem );
-    if ( mChanger->isNotDeleted( todoItem.id() ) ) {
-      mChanger->deleteIncidence( todoItem, 0, this );
+    if ( mChanger->deletedRecently( todoItem.id() ) ) {
+      mChanger->deleteIncidence( todoItem, this );
     }
   } else if ( km == KMessageBox::No ) {
     // Delete all
@@ -2577,7 +2550,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
     return false;
   }
 
-  if ( !mChanger->isNotDeleted( item.id() ) ) {
+  if ( !mChanger->deletedRecently( item.id() ) ) {
     // it was deleted already but the etm wasn't notified yet
     return true;
   }
@@ -2666,22 +2639,18 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
     switch( km ) {
     case KMessageBox::Ok: // Continue // all
     case KMessageBox::Continue:
-      mChanger->deleteIncidence( item, 0, this );
+      mChanger->deleteIncidence( item, this );
       break;
 
     case KMessageBox::Yes: // just this one
       incidence->recurrence()->addExDate( itemDate );
-      mChanger->changeIncidence(
-        oldIncidence, item,
-        CalendarSupport::IncidenceChanger::RECURRENCE_MODIFIED_ONE_ONLY, this );
+      mChanger->modifyIncidence( item, oldIncidence, this );
 
       break;
     case KMessageBox::No: // all future items
       Recurrence *recur = incidence->recurrence();
       recur->setEndDate( itemDate.addDays( -1 ) );
-      mChanger->changeIncidence(
-        oldIncidence, item,
-        CalendarSupport::IncidenceChanger::RECURRENCE_MODIFIED_ALL_FUTURE, this );
+      mChanger->modifyIncidence( item, oldIncidence, this );
       break;
     }
   } else {
@@ -2690,7 +2659,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
       doDelete = ( msgItemDelete( item ) == KMessageBox::Continue );
     }
     if ( doDelete ) {
-      mChanger->deleteIncidence( item, 0, this );
+      mChanger->deleteIncidence( item, this );
       processIncidenceSelection( Akonadi::Item(), QDate() );
     }
   }
@@ -2714,7 +2683,7 @@ bool CalendarView::purgeCompletedSubTodos( const Akonadi::Item &todoItem, bool &
 
   if ( deleteThisTodo ) {
     if ( todo->isCompleted() ) {
-      if ( !mChanger->deleteIncidence( todoItem, 0, this ) ) {
+      if ( !mChanger->deleteIncidence( todoItem, this ) ) {
         allPurged = false;
       }
     } else {
@@ -2839,13 +2808,7 @@ void CalendarView::addIncidenceOn( const Akonadi::Item &itemadd, const QDate &dt
     todo->setHasDueDate( true );
   }
 
-  Akonadi::Collection selectedCollection;
-  int dialogCode = 0;
-  if ( !mChanger->addIncidence( incidence, this, selectedCollection, dialogCode ) ) {
-    if ( dialogCode != QDialog::Rejected ) {
-      KOHelper::showSaveIncidenceErrorMsg( this, incidence );
-    }
-  }
+  mChanger->createIncidence( incidence, Akonadi::Collection(), this );
 }
 
 void CalendarView::moveIncidenceTo( const Akonadi::Item &itemmove, const QDate &dt )
@@ -2885,8 +2848,7 @@ void CalendarView::moveIncidenceTo( const Akonadi::Item &itemmove, const QDate &
     todo->setDtDue( due );
     todo->setHasDueDate( true );
   }
-  mChanger->changeIncidence( oldIncidence, itemmove,
-                             CalendarSupport::IncidenceChanger::DATE_MODIFIED, this );
+  mChanger->modifyIncidence( itemmove, oldIncidence, this );
 }
 
 void CalendarView::resourcesChanged()
@@ -3010,7 +2972,7 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::createIncidenceEditor(
 
 Akonadi::History *CalendarView::history() const
 {
-  return mChanger2->history();
+  return mChanger->history();
 }
 
 #include "calendarview.moc"

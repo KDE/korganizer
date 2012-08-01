@@ -25,14 +25,17 @@
 #ifndef KORG_VIEWS_KOTODOMODEL_H
 #define KORG_VIEWS_KOTODOMODEL_H
 
-#include <QAbstractItemModel>
-
+#include <akonadi/calendar/incidencechanger.h>
 #include <Akonadi/Item>
 
 #include <KCalCore/Todo>
+#include <QAbstractItemModel>
 
 namespace CalendarSupport {
   class Calendar;
+}
+
+namespace Akonadi {
   class IncidenceChanger;
 }
 
@@ -74,7 +77,7 @@ class KOTodoModel : public QAbstractItemModel
     /** Reloads all todos from the Calendar provided during construction */
     void reloadTodos();
     /** Reloads only the specified todo (if the incidence is a todo) */
-    void processChange( const Akonadi::Item &incidence, int action );
+    void processChange( const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType );
 
     Akonadi::Item todoForIndex( const QModelIndex &idx ) const;
 
@@ -82,7 +85,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param changer Pointer to the changer to use.
      */
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer )
     { mChanger = changer; }
 
     virtual Qt::ItemFlags flags( const QModelIndex &index ) const;
@@ -193,8 +196,8 @@ class KOTodoModel : public QAbstractItemModel
 
     QHash<QString, TodoTreeNode*> mTodoUidHash;
 
-    /** This CalendarSupport::IncidenceChanger is used to change todos */
-    CalendarSupport::IncidenceChanger *mChanger;
+    /** This Akonadi::IncidenceChanger is used to change todos */
+    Akonadi::IncidenceChanger *mChanger;
 
     /** Display the todos without hierarchy? */
     bool mFlatView;

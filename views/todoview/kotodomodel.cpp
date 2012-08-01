@@ -29,7 +29,6 @@
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/dndfactory.h>
-#include <calendarsupport/incidencechanger.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
@@ -253,13 +252,14 @@ void KOTodoModel::reloadTodos()
   }
 }
 
-void KOTodoModel::processChange( const Akonadi::Item & aitem, int action )
+void KOTodoModel::processChange( const Akonadi::Item &aitem,
+                                 Akonadi::IncidenceChanger::ChangeType changeType )
 {
   if ( !CalendarSupport::hasTodo( aitem ) ) {
     return;
   }
 
-  if ( action == CalendarSupport::IncidenceChanger::INCIDENCEEDITED ) {
+  if ( changeType == Akonadi::IncidenceChanger::ChangeTypeModify ) {
     TodoTreeNode *ttTodo = findTodo( CalendarSupport::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
@@ -271,7 +271,7 @@ void KOTodoModel::processChange( const Akonadi::Item & aitem, int action )
     // changed, because we can't be sure that only the relationship changed
     emit dataChanged( miChanged,
                       miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
-  } else if ( action == CalendarSupport::IncidenceChanger::INCIDENCEADDED ) {
+  } else if ( changeType == Akonadi::IncidenceChanger::ChangeTypeCreate ) {
     const bool found = findTodo( CalendarSupport::incidence ( aitem )->uid() );
 
     // "found" can be true, with akonadi calendarview listens to ETM model signals
@@ -281,7 +281,7 @@ void KOTodoModel::processChange( const Akonadi::Item & aitem, int action )
     if ( !found ) {
       insertTodo( aitem );
     }
-  } else if ( action == CalendarSupport::IncidenceChanger::INCIDENCEDELETED ) {
+  } else if ( changeType == Akonadi::IncidenceChanger::ChangeTypeDelete ) {
     TodoTreeNode *ttTodo = findTodo( CalendarSupport::incidence ( aitem )->uid() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
@@ -863,20 +863,12 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     return true;
   }
 
-  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
-
+  KCalCore::Todo::Ptr todo = CalendarSupport::todo( node->mTodo );
+  todo->resetDirtyFields();
   if ( mCalendar->hasChangeRights( node->mTodo ) ) {
     KCalCore::Todo::Ptr oldTodo( todo->clone() );
-    CalendarSupport::IncidenceChanger::WhatChanged modified =
-      CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED;
-
     if ( role == Qt::CheckStateRole && index.column() == 0 ) {
       todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked );
-      if ( todo->recurs() ) {
-        modified = CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE;
-      } else {
-        modified = CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED;
-      }
     }
 
     if ( role == Qt::EditRole ) {
@@ -884,16 +876,13 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
         case SummaryColumn:
           if ( !value.toString().isEmpty() ) {
             todo->setSummary( value.toString() );
-            modified = CalendarSupport::IncidenceChanger::SUMMARY_MODIFIED;
           }
           break;
         case PriorityColumn:
           todo->setPriority( value.toInt() );
-          modified = CalendarSupport::IncidenceChanger::PRIORITY_MODIFIED;
           break;
         case PercentColumn:
           todo->setPercentComplete( value.toInt() );
-          modified = CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED;
           break;
         case DueDateColumn:
           {
@@ -901,23 +890,20 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
             tmp.setDate( value.toDate() );
             todo->setDtDue( tmp );
             todo->setHasDueDate( value.toDate().isValid() );
-            modified = CalendarSupport::IncidenceChanger::DATE_MODIFIED;
           }
           break;
         case CategoriesColumn:
           todo->setCategories( value.toStringList() );
-          modified = CalendarSupport::IncidenceChanger::CATEGORY_MODIFIED;
           break;
         case DescriptionColumn:
           todo->setDescription( value.toString() );
-          modified = CalendarSupport::IncidenceChanger::DESCRIPTION_MODIFIED;
           break;
       }
     }
 
-    if ( modified != CalendarSupport::IncidenceChanger::UNKNOWN_MODIFIED ) {
-      mChanger->changeIncidence( oldTodo, node->mTodo, modified, 0 );
-      // changeIncidence will eventually call the view's
+    if ( !todo->dirtyFields().isEmpty() ) {
+      mChanger->modifyIncidence( node->mTodo, oldTodo );
+      // modifyIncidence will eventually call the view's
       // changeIncidenceDisplay method, which in turn
       // will call processChange. processChange will then emit
       // dataChanged to the view, so we don't have to
@@ -1011,8 +997,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       KCalCore::Todo::Ptr oldTodo = KCalCore::Todo::Ptr( todo->clone() );
       // destTodo is empty when we drag a to-do out of a relationship
       todo->setRelatedTo( destTodo ? destTodo->uid() : QString() );
-      mChanger->changeIncidence( oldTodo, ttTodo->mTodo,
-                                 CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
+      mChanger->modifyIncidence( ttTodo->mTodo, oldTodo );
 
       // again, no need to emit dataChanged, that's done by processChange
       return true;
@@ -1049,8 +1034,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
             }
           }
         }
-        mChanger->changeIncidence( oldTodo, node->mTodo,
-                                   CalendarSupport::IncidenceChanger::RELATION_MODIFIED, 0 );
+        mChanger->modifyIncidence( node->mTodo, oldTodo );
         return true;
       }
     }

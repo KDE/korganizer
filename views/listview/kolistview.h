@@ -35,6 +35,10 @@ namespace EventViews {
   class ListView;
 }
 
+namespace Akonadi {
+  class IncidenceChanger;
+}
+
 class QModelIndex;
 
 class KOListView : public KOEventView
@@ -60,7 +64,7 @@ class KOListView : public KOEventView
     QSize sizeHint() const;
 
     void setCalendar( CalendarSupport::Calendar *cal );
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
@@ -72,7 +76,7 @@ class KOListView : public KOEventView
 
     void clearSelection();
 
-    void changeIncidenceDisplay( const Akonadi::Item &, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
 
     void defaultItemAction( const QModelIndex & );
     void defaultItemAction( const Akonadi::Item::Id id );

@@ -26,8 +26,7 @@
 #include "korganizer/korganizer_export.h"
 #include "printplugin.h"
 
-#include <calendarsupport/incidencechanger.h>
-
+#include <akonadi/calendar/incidencechanger.h>
 #include <calendarviews/eventviews/eventview.h>
 
 #include <Akonadi/Collection>
@@ -225,7 +224,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       Assign a new incidence change helper object.
      */
-    virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     /**
       Write all unsaved data back to calendar store.
@@ -235,7 +234,8 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       Updates the current display to reflect the changes to one particular incidence.
     */
-    virtual void changeIncidenceDisplay( const Akonadi::Item &, int ) = 0;
+    virtual void changeIncidenceDisplay( const Akonadi::Item &,
+                                         Akonadi::IncidenceChanger::ChangeType ) = 0;
 
     /**
       Re-reads the KOrganizer configuration and picks up relevant
@@ -397,7 +397,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual void calendarReset();
 
   protected:
-    CalendarSupport::IncidenceChanger *mChanger;
+    Akonadi::IncidenceChanger *mChanger;
 
   private:
     class Private;

@@ -57,7 +57,7 @@ class KOTimeSpentView : public KOrg::BaseView
                             const QDate &preferredMonth = QDate() );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( const Akonadi::Item &, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   private:

@@ -76,12 +76,13 @@ class KOJournalView : public KOrg::BaseView
     void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
     void showIncidences( const Akonadi::Item::List &incidences, const QDate &date );
 
-    void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence,
+                                 Akonadi::IncidenceChanger::ChangeType );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
     void newJournal();
   signals:
     void flushEntries();
-    void setIncidenceChangerSignal( CalendarSupport::IncidenceChanger * );
+    void setIncidenceChangerSignal( Akonadi::IncidenceChanger * );
     void journalEdited( const Akonadi::Item &journal );
     void journalDeleted( const Akonadi::Item &journal );
 

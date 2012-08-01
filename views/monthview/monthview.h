@@ -70,14 +70,14 @@ class MonthView : public KOEventView
 
     void setCalendar( CalendarSupport::Calendar *cal );
 
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
   public slots:
     void updateView();
 
     void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( const Akonadi::Item &, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
 
     void updateConfig();
 

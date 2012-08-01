@@ -216,19 +216,10 @@ void KOTimeSpentView::showIncidences( const Akonadi::Item::List &incidenceList, 
   Q_UNUSED( date );
 }
 
-void KOTimeSpentView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
+void KOTimeSpentView::changeIncidenceDisplay( const Akonadi::Item &,
+                                              Akonadi::IncidenceChanger::ChangeType )
 {
-  Q_UNUSED( incidence );
-
-  switch( action ) {
-    case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
-    case CalendarSupport::IncidenceChanger::INCIDENCEEDITED:
-    case CalendarSupport::IncidenceChanger::INCIDENCEDELETED:
-      updateView();
-      break;
-    default:
-      break;
-  }
+  updateView();
 }
 
 void KOTimeSpentView::updateView()

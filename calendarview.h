@@ -34,6 +34,7 @@
 
 #include <KCalCore/Incidence>
 #include <KCalCore/Visitor>
+#include <KCalCore/ScheduleMessage>
 
 class CalPrinter;
 class DateChecker;
@@ -161,7 +162,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateNavigator *dateNavigator() const { return mDateNavigator; }
     // TODO_NG
     //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    virtual CalendarSupport::IncidenceChanger *incidenceChanger() const { return mChanger; }
+    virtual Akonadi::IncidenceChanger *incidenceChanger() const { return mChanger; }
 
     /**
      * Informs the date navigator which incidence types should be used
@@ -273,7 +274,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( CalendarSupport::IncidenceChanger * );
+    void newIncidenceChanger( Akonadi::IncidenceChanger * );
     void exportHTML( KOrg::HTMLExportSettings * );
 
     void filtersUpdated( const QStringList &, int );
@@ -481,15 +482,24 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence,
+                                 Akonadi::IncidenceChanger::ChangeType );
 
-    void incidenceAddFinished( const Akonadi::Item &incidence, bool success );
-    void incidenceChangeFinished( const Akonadi::Item &oldEvent,
-                                  const Akonadi::Item &newEvent,
-                                  CalendarSupport::IncidenceChanger::WhatChanged modification,
-                                  bool success );
-    void incidenceToBeDeleted( const Akonadi::Item &incidence );
-    void incidenceDeleteFinished( const Akonadi::Item &incidence, bool success );
+    void slotCreateFinished( int changeId,
+                             const Akonadi::Item &item,
+                             Akonadi::IncidenceChanger::ResultCode resultCode,
+                             const QString &errorString );
+
+    void slotModifyFinished( int changeId,
+                             const Akonadi::Item &item,
+                             Akonadi::IncidenceChanger::ResultCode resultCode,
+                             const QString &errorString );
+
+    void slotDeleteFinished( int changeId,
+                             const QVector<Akonadi::Item::Id> &itemIdList,
+                             Akonadi::IncidenceChanger::ResultCode resultCode,
+                             const QString &errorString );
+
     void startMultiModify( const QString &text );
     void endMultiModify();
 
@@ -691,8 +701,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate activeDate( bool fallbackToToday = false );
 
   protected:
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
-
     int msgItemDelete( const Akonadi::Item &incidence );
 
     Akonadi::Item selectedTodo();
@@ -779,8 +787,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate mSaveDate;
 
     KOTodoView *mTodoList;
-    CalendarSupport::IncidenceChanger *mChanger;
-    Akonadi::IncidenceChanger *mChanger2;
+    Akonadi::IncidenceChanger *mChanger;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;

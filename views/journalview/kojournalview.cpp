@@ -70,8 +70,8 @@ void KOJournalView::appendJournal( const Akonadi::Item &journal, const QDate &dt
     entry->setIncidenceChanger( mChanger );
     entry->show();
     connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
-    connect( this, SIGNAL(setIncidenceChangerSignal(CalendarSupport::IncidenceChanger*)),
-             entry, SLOT(setIncidenceChanger(CalendarSupport::IncidenceChanger*)) );
+    connect( this, SIGNAL(setIncidenceChangerSignal(Akonadi::IncidenceChanger*)),
+             entry, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger*)) );
     connect( this, SIGNAL(journalEdited(Akonadi::Item)),
              entry, SLOT(journalEdited(Akonadi::Item)) );
     connect( this, SIGNAL(journalDeleted(Akonadi::Item)),
@@ -168,26 +168,27 @@ void KOJournalView::showIncidences( const Akonadi::Item::List &incidences, const
   }
 }
 
-void KOJournalView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
+void KOJournalView::changeIncidenceDisplay( const Akonadi::Item &incidence,
+                                            Akonadi::IncidenceChanger::ChangeType changeType )
 {
   if ( KCalCore::Journal::Ptr journal = CalendarSupport::journal( incidence ) ) {
-    switch ( action ) {
-    case CalendarSupport::IncidenceChanger::INCIDENCEADDED:
+    switch ( changeType ) {
+    case Akonadi::IncidenceChanger::ChangeTypeCreate:
       appendJournal( incidence, journal->dtStart().date() );
       break;
-    case CalendarSupport::IncidenceChanger::INCIDENCEEDITED:
+    case Akonadi::IncidenceChanger::ChangeTypeModify:
       emit journalEdited( incidence );
       break;
-    case CalendarSupport::IncidenceChanger::INCIDENCEDELETED:
+    case Akonadi::IncidenceChanger::ChangeTypeDelete:
       emit journalDeleted( incidence );
       break;
     default:
-      kWarning() << "Illegal action" << action;
+      kWarning() << "Illegal change type" << changeType;
     }
   }
 }
 
-void KOJournalView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void KOJournalView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );

@@ -193,7 +193,7 @@ Akonadi::Collection::Id MultiAgendaView::collectionId() const
   return d->mMultiAgendaView->collectionId();
 }
 
-void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &, int )
+void MultiAgendaView::changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType )
 {
 }
 
@@ -213,7 +213,7 @@ bool MultiAgendaView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
   return d->mMultiAgendaView->eventDurationHint( startDt, endDt, allDay );
 }
 
-void MultiAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void MultiAgendaView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   d->mMultiAgendaView->setIncidenceChanger( changer );
 }

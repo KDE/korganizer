@@ -427,7 +427,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
   mView->expandAll();
 }
 
-void KOTodoView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void KOTodoView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   BaseView::setIncidenceChanger( changer );
   sModel->setIncidenceChanger( changer );
@@ -460,9 +460,10 @@ void KOTodoView::updateCategories()
   // TODO check if we have to do something with the category delegate
 }
 
-void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &incidence, int action )
+void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &incidence,
+                                         Akonadi::IncidenceChanger::ChangeType changeType )
 {
-  sModel->processChange( incidence, action );
+  sModel->processChange( incidence, changeType );
 }
 
 void KOTodoView::updateConfig()
@@ -507,21 +508,16 @@ void KOTodoView::addTodo( const QString &summary,
   CalendarSupport::CollectionSelection *selection =
     EventViews::EventView::globalCollectionSelection();
 
+  Akonadi::Collection collection;
   // If we only have one collection, don't ask in which collection to save the to-do.
   if ( selection && selection->model()->model()->rowCount() == 1 ) {
     QModelIndex index = selection->model()->model()->index( 0, 0 );
     if ( index.isValid() ) {
-      Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
-      if ( collection.isValid() ) {
-        result = mChanger->addIncidence( todo, collection, this );
-      }
+      collection = CalendarSupport::collectionFromIndex( index );
     }
-  } else {
-    Akonadi::Collection selectedCollection;
-    int dialogCode = 0;
-    result = mChanger->addIncidence( todo, this, selectedCollection, dialogCode );
-    result = result || dialogCode == QDialog::Rejected;
   }
+
+  result = -1 != mChanger->createIncidence( todo, collection, this );
 
   if ( !result ) {
     KOHelper::showSaveIncidenceErrorMsg( this, todo );
@@ -719,7 +715,7 @@ void KOTodoView::deleteTodo()
     const Akonadi::Item todoItem =
       selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
 
-    if ( mChanger->isNotDeleted( todoItem.id() ) ) {
+    if ( mChanger->deletedRecently( todoItem.id() ) ) {
       emit deleteIncidenceSignal( todoItem );
     }
   }
@@ -772,13 +768,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   due.setDate( date );
   todo->setDtDue( due );
 
-  Akonadi::Collection selectedCollection;
-  int dialogCode = 0;
-  if ( !mChanger->addIncidence( todo, this, selectedCollection, dialogCode ) ) {
-    if ( dialogCode != QDialog::Rejected ) {
-      KOHelper::showSaveIncidenceErrorMsg( this, todo );
-    }
-  }
+  mChanger->createIncidence( todo, Akonadi::Collection(), this );
 }
 
 void KOTodoView::itemDoubleClicked( const QModelIndex &index )
@@ -853,8 +843,7 @@ void KOTodoView::setNewDate( const QDate &date )
     }
     todo->setDtDue( dt );
 
-    mChanger->changeIncidence( oldTodo, todoItem,
-                               CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED, this );
+    mChanger->modifyIncidence( todoItem, oldTodo, this );
   } else {
     kDebug() << "Item is readOnly";
   }
@@ -882,13 +871,9 @@ void KOTodoView::setNewPercentage( QAction *action )
       todo->setPercentComplete( percentage );
     }
     if ( todo->recurs() && percentage == 100 ) {
-      mChanger->changeIncidence(
-        oldTodo, todoItem,
-        CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED_WITH_RECURRENCE, this );
+      mChanger->modifyIncidence( todoItem, oldTodo, this );
     } else {
-      mChanger->changeIncidence(
-        oldTodo, todoItem,
-        CalendarSupport::IncidenceChanger::COMPLETION_MODIFIED, this );
+      mChanger->modifyIncidence( todoItem, oldTodo, this );
     }
   } else {
     kDebug() << "Item is read only";
@@ -907,8 +892,7 @@ void KOTodoView::setNewPriority( QAction *action )
     KCalCore::Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
-    mChanger->changeIncidence( oldTodo, todoItem,
-                               CalendarSupport::IncidenceChanger::PRIORITY_MODIFIED, this );
+    mChanger->modifyIncidence( todoItem, oldTodo, this );
   }
 }
 
@@ -933,8 +917,7 @@ void KOTodoView::changedCategories( QAction *action )
     }
     categories.sort();
     todo->setCategories( categories );
-    mChanger->changeIncidence( oldTodo, todoItem,
-                               CalendarSupport::IncidenceChanger::CATEGORY_MODIFIED, this );
+    mChanger->modifyIncidence( todoItem, oldTodo, this );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
   }

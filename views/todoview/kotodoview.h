@@ -78,13 +78,13 @@ class KOTodoView : public BaseView
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   public Q_SLOTS:
-    virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
     virtual void showDates( const QDate &start, const QDate &end,
                             const QDate &preferredMonth = QDate() );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
     void updateCategories();
-    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int action );
+    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType );
     virtual void updateConfig();
     virtual void clearSelection();
     void expandIndex( const QModelIndex &index );

@@ -76,10 +76,10 @@ class MultiAgendaView : public KOEventView
     void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
     void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     void updateView();
-    void changeIncidenceDisplay( const Akonadi::Item &, int mode );
+    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
     void updateConfig();
 
-    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
   private:
     class Private;

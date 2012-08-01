@@ -92,7 +92,7 @@ void BaseView::dayPassed( const QDate & )
   updateView();
 }
 
-void BaseView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void BaseView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   mChanger = changer;
 }

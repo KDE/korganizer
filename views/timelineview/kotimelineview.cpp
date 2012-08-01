@@ -176,9 +176,10 @@ void KOTimelineView::updateView()
 }
 
 /*virtual*/
-void KOTimelineView::changeIncidenceDisplay( const Akonadi::Item &incidence, int mode )
+void KOTimelineView::changeIncidenceDisplay( const Akonadi::Item &incidence,
+                                             Akonadi::IncidenceChanger::ChangeType changeType )
 {
-  d->mTimeLineView->changeIncidenceDisplay( incidence, mode );
+  d->mTimeLineView->changeIncidenceDisplay( incidence, changeType );
 }
 
 bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
@@ -204,7 +205,7 @@ void KOTimelineView::setCalendar( CalendarSupport::Calendar *cal )
   d->mTimeLineView->setCalendar( cal );
 }
 
-void KOTimelineView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void KOTimelineView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   d->mTimeLineView->setIncidenceChanger( changer );
 }

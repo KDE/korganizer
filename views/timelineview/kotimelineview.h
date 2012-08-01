@@ -31,6 +31,10 @@
 
 #include "koeventview.h"
 
+namespace Akonadi {
+  class IncidenceChanger;
+}
+
 /**
   This class provides a view ....
 */
@@ -47,11 +51,12 @@ class KOTimelineView : public KOEventView
     virtual void showDates( const QDate &, const QDate &, const QDate &preferredMonth = QDate() );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
-    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
+    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence,
+                                         Akonadi::IncidenceChanger::ChangeType );
     virtual int maxDatesHint() const { return 0; }
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     virtual void setCalendar( CalendarSupport::Calendar *cal );
-    virtual void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     // Specific for korg, not in eventviews
     virtual KOrg::CalPrinterBase::PrintType printType() const;

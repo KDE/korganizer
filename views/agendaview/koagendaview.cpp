@@ -247,7 +247,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( const Akonadi::Item & )
   // Do nothing, EventViews::AgendaView knows when items change
 }
 
-void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &, int )
+void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType )
 {
   // Do nothing, EventViews::AgendaView knows when items change
 }
@@ -287,7 +287,7 @@ void KOAgendaView::deleteSelectedDateTime()
   d->mAgendaView->deleteSelectedDateTime();
 }
 
-void KOAgendaView::setIncidenceChanger( CalendarSupport::IncidenceChanger *changer )
+void KOAgendaView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   d->mAgendaView->setIncidenceChanger( changer );
 }
