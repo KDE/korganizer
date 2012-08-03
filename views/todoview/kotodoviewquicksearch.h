@@ -27,11 +27,8 @@
 #ifndef KORG_VIEWS_KOTODOVIEWQUICKSEARCH_H
 #define KORG_VIEWS_KOTODOVIEWQUICKSEARCH_H
 
+#include <akonadi/calendar/etmcalendar.h>
 #include <QWidget>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 namespace KPIM {
   class KCheckComboBox;
@@ -43,10 +40,10 @@ class KOTodoViewQuickSearch : public QWidget
 {
   Q_OBJECT
   public:
-    KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent );
+    KOTodoViewQuickSearch( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent );
     virtual ~KOTodoViewQuickSearch() {}
 
-    void setCalendar( CalendarSupport::Calendar *calendar );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &calendar );
     void updateCategories();
 
   Q_SIGNALS:
@@ -74,7 +71,7 @@ class KOTodoViewQuickSearch : public QWidget
     /** Helper method for the filling of the priority combo. */
     void fillPriorities();
 
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 
     KLineEdit *mSearchLine;
     KPIM::KCheckComboBox *mCategoryCombo;

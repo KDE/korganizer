@@ -40,8 +40,6 @@
 #include <Akonadi/ItemFetchScope>
 #include <akonadi/dbusconnectionpool.h>
 
-#include <calendarsupport/calendar.h>
-#include <calendarsupport/calendarmodel.h>
 #include <calendarsupport/utils.h>
 
 #include <kcalcore/calendar.h>
@@ -52,7 +50,6 @@
 #include <KDebug>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
-#include <kdescendantsproxymodel.h> // fix when forwarding header is there
 
 #ifdef Q_WS_MAEMO_5
 #include <QtMaemo5/QMaemo5InformationBox>
@@ -78,26 +75,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
   }
 #endif
-
-  const KTimeZone zone = KSystemTimeZones::local();
-  Akonadi::Session *session = new Akonadi::Session( "KOAlarmClient", this );
-  Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder( this );
-  monitor->setSession( session );
-  monitor->itemFetchScope().fetchFullPayload( true );
-  monitor->setCollectionMonitored( Akonadi::Collection::root() );
-  monitor->fetchCollection( true );
-  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
-  monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
-  monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
-  CalendarSupport::CalendarModel *calendarModel = new CalendarSupport::CalendarModel( monitor, this );
-  //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
-
-  KDescendantsProxyModel *flattener = new KDescendantsProxyModel(this);
-  flattener->setSourceModel( calendarModel );
-
-  mCalendar = new CalendarSupport::Calendar( calendarModel, flattener,
-                                     zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
 
   mCalendar->setObjectName( "KOrgac's calendar" );
 
@@ -121,7 +99,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
       // logic to migrate old KOrganizer incidence uid's to a Akonadi item.
       const QString uid = incGroup.readEntry( "UID" );
       if ( !uid.isEmpty() ) {
-        akonadiItemId = mCalendar->itemIdForIncidenceUid( uid );
+        akonadiItemId = mCalendar->item( uid ).id();
       }
     } else {
       akonadiItemId = Akonadi::Item::fromUrl( url ).id();
@@ -129,7 +107,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
     if ( akonadiItemId >= 0 ) {
       const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
-      Akonadi::Item i = mCalendar->incidence( Akonadi::Item::fromUrl( url ).id() );
+      Akonadi::Item i = mCalendar->item( Akonadi::Item::fromUrl( url ).id() );
       if ( CalendarSupport::hasIncidence( i ) && !CalendarSupport::incidence( i )->alarms().isEmpty() ) {
         createReminder( mCalendar, i, dt, QString() );
       }
@@ -146,7 +124,6 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
 KOAlarmClient::~KOAlarmClient()
 {
-  delete mCalendar;
 #ifndef KORGAC_AKONADI_AGENT
   delete mDocker;
   delete mDialog;
@@ -172,14 +149,14 @@ void KOAlarmClient::checkAlarms()
 
   foreach ( const Alarm::Ptr &alarm, alarms ) {
     const QString uid = alarm->parentUid();
-    const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( uid );
-    const Akonadi::Item incidence = mCalendar->incidence( itemId );
+    const Akonadi::Item::Id id = mCalendar->item( uid ).id();
+    const Akonadi::Item item = mCalendar->item( id );
 
-    createReminder( mCalendar, incidence, from, alarm->text() );
+    createReminder( mCalendar, item, from, alarm->text() );
   }
 }
 
-void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
+void KOAlarmClient::createReminder( const Akonadi::ETMCalendar::Ptr &calendar,
                                     const Akonadi::Item &aitem,
                                     const QDateTime &remindAtDate,
                                     const QString &displayText )
@@ -279,8 +256,7 @@ QStringList KOAlarmClient::dumpAlarms()
 
   Alarm::List alarms = mCalendar->alarms( start, end );
   foreach( Alarm::Ptr a, alarms ) {
-    const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( a->parentUid() );
-    const Incidence::Ptr parentIncidence = CalendarSupport::incidence( mCalendar->incidence( itemId ) );
+    const Incidence::Ptr parentIncidence = mCalendar->incidence( a->parentUid() );
     lst << QString( "  " ) + parentIncidence->summary() + " (" + a->time().toString() + ')';
   }
 

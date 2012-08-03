@@ -30,12 +30,12 @@
 #include <KDialog>
 
 namespace CalendarSupport {
-  class Calendar;
   class IncidenceViewer;
 }
 
 namespace Akonadi {
   class Item;
+  class ETMCalendar;
 }
 
 /**
@@ -45,7 +45,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEventViewerDialog( CalendarSupport::Calendar *calendar, QWidget *parent = 0 );
+    explicit KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent = 0 );
     virtual ~KOEventViewerDialog();
 
     void setIncidence( const Akonadi::Item &incidence, const QDate &date );

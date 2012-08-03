@@ -24,7 +24,7 @@
 
 #include "kotimespentview.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
@@ -79,8 +79,7 @@ class TimeSpentWidget : public QWidget
 
       int total = 0;
 
-      foreach ( const Akonadi::Item &item, mEventList ) {
-        const KCalCore::Event::Ptr e = CalendarSupport::event( item );
+      foreach ( const KCalCore::Event::Ptr &e, mEventList ) {
         Q_ASSERT( e );
         KDateTime selectedStart( mTimeSpentView->mStartDate,
                                  QTime( 0, 0 ),
@@ -181,7 +180,7 @@ class TimeSpentWidget : public QWidget
       }
     }
 
-    Akonadi::Item::List mEventList;
+    KCalCore::Event::List mEventList;
     KOTimeSpentView *mTimeSpentView;
 };
 

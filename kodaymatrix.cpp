@@ -51,7 +51,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent )
-  : QFrame( parent ), mCalendar( 0 ), mStartDate(), mPendingChanges( false )
+  : QFrame( parent ), mStartDate(), mPendingChanges( false )
 {
   // initialize dynamic arrays
   mDays = new QDate[NUMDAYS];
@@ -67,14 +67,14 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mHighlightJournals = false;
 }
 
-void KODayMatrix::setCalendar( CalendarSupport::Calendar *cal )
+void KODayMatrix::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
   if ( mCalendar ) {
     mCalendar->unregisterObserver( this );
     mCalendar->disconnect( this );
   }
 
-  mCalendar = cal;
+  mCalendar = calendar;
   mCalendar->registerObserver( this );
 
   setAcceptDrops( mCalendar != 0 );
@@ -271,10 +271,9 @@ void KODayMatrix::updateIncidences()
 
 void KODayMatrix::updateJournals()
 {
-  const Akonadi::Item::List items = mCalendar->incidences();
+  const KCalCore::Incidence::List incidences = mCalendar->incidences();
 
-  foreach ( const Akonadi::Item & item, items ) {
-    KCalCore::Incidence::Ptr inc = CalendarSupport::incidence( item );
+  foreach ( const KCalCore::Incidence::Ptr &inc, incidences ) {
     Q_ASSERT( inc );
     QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
     if ( inc->type() == KCalCore::Incidence::TypeJournal &&
@@ -301,14 +300,13 @@ void KODayMatrix::updateJournals()
   */
 void KODayMatrix::updateTodos()
 {
-  const Akonadi::Item::List items = mCalendar->todos();
+  const KCalCore::Todo::List incidences = mCalendar->todos();
   QDate d;
-  foreach ( const Akonadi::Item &item, items ) {
+  foreach ( const KCalCore::Todo::Ptr &t, incidences ) {
     if ( mEvents.count() == NUMDAYS ) {
       // No point in wasting cpu, all days are bold already
       break;
     }
-    const KCalCore::Todo::Ptr t = CalendarSupport::todo( item );
     Q_ASSERT( t );
     if ( t->hasDueDate() ) {
       ushort recurType = t->recurrenceType();
@@ -347,18 +345,17 @@ void KODayMatrix::updateEvents()
     // No point in wasting cpu, all days are bold already
     return;
   }
-  Akonadi::Item::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
-                                                     mCalendar->timeSpec() );
+  KCalCore::Event::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
+                                                       mCalendar->timeSpec() );
 
-  Q_FOREACH ( const Akonadi::Item & item, eventlist ) {
+  Q_FOREACH ( const KCalCore::Event::Ptr &event, eventlist ) {
     if ( mEvents.count() == NUMDAYS ) {
       // No point in wasting cpu, all days are bold already
       break;
     }
-    const KCalCore::Event::Ptr event = CalendarSupport::event( item );
+
     Q_ASSERT( event );
     const ushort recurType = event->recurrenceType();
-
     const KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );
 
     // timed incidences occur in
@@ -435,19 +432,19 @@ int KODayMatrix::getDayIndexFrom( int x, int y ) const
            6 - x / mDaySize.width() : x / mDaySize.width() );
 }
 
-void KODayMatrix::calendarIncidenceAdded( const Akonadi::Item &incidence )
+void KODayMatrix::calendarIncidenceAdded( const KCalCore::Incidence::Ptr &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceChanged( const Akonadi::Item &incidence )
+void KODayMatrix::calendarIncidenceChanged( const KCalCore::Incidence::Ptr &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceDeleted( const Akonadi::Item &incidence )
+void KODayMatrix::calendarIncidenceDeleted( const KCalCore::Incidence::Ptr &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;

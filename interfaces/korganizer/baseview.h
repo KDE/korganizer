@@ -27,16 +27,13 @@
 #include "printplugin.h"
 
 #include <akonadi/calendar/incidencechanger.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarviews/eventviews/eventview.h>
 
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
 
 #include <QWidget>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 namespace KOrg {
 
@@ -69,11 +66,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual ~BaseView();
 
-    virtual void setCalendar( CalendarSupport::Calendar *cal );
+    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
     /**
       Return calendar object of this view.
     */
-    virtual CalendarSupport::Calendar *calendar();
+    virtual Akonadi::ETMCalendar::Ptr calendar();
 
     /**
       @return a list of selected events.  Most views can probably only

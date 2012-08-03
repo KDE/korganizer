@@ -29,7 +29,7 @@
 #include "journalview.h"
 #include "koprefs.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/utils.h>
 
 #include <KVBox>
@@ -121,9 +121,10 @@ void KOJournalView::updateView()
   while ( it != mEntries.begin() ) {
     --it;
     it.value()->clear();
-    const Akonadi::Item::List journals = calendar()->journals( it.key() );
-    Q_FOREACH ( const Akonadi::Item &i, journals ) {
-      it.value()->addJournal( i );
+    const KCalCore::Journal::List journals = calendar()->journals( it.key() );
+    Q_FOREACH ( const KCalCore::Journal::Ptr &journal, journals ) {
+      Akonadi::Item item = calendar()->item( journal->uid() );
+      it.value()->addJournal( item );
     }
   }
 }
@@ -140,14 +141,12 @@ void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate
     return;
   }
 
-  Akonadi::Item::List::ConstIterator it;
-  Akonadi::Item::List jnls;
+  KCalCore::Journal::List jnls;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
     jnls = calendar()->journals( d );
-    it = jnls.constEnd();
-    while ( it != jnls.constBegin() ) {
-      --it;
-      appendJournal( *it, d );
+    foreach( const KCalCore::Journal::Ptr &journal, jnls ) {
+      Akonadi::Item item = calendar()->item( journal->uid() );
+      appendJournal( item, d );
     }
     if ( jnls.count() < 1 ) {
       // create an empty dateentry widget

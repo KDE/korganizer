@@ -31,10 +31,6 @@
 
 class AkonadiCollectionView;
 
-namespace CalendarSupport {
-  class CalendarModel;
-}
-
 namespace Akonadi {
   class EntityTreeView;
   class StandardCalendarActionManager;
@@ -59,7 +55,6 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     CalendarViewExtension *create( QWidget * );
 
   private:
-    CalendarSupport::CalendarModel *mModel;
     CalendarView *mView;
     AkonadiCollectionView *mAkonadiCollectionView;
 };

@@ -29,13 +29,10 @@
 #include <QFrame>
 
 #include <KCalCore/IncidenceBase> //for DateList typedef
+#include <akonadi/calendar/etmcalendar.h>
 
 class KODayMatrix;
 class NavigatorBar;
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 namespace Akonadi {
   class Item;
@@ -53,7 +50,7 @@ class KDateNavigator: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( CalendarSupport::Calendar * );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
 
     void setBaseDate( const QDate & );
 

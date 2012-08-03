@@ -24,7 +24,7 @@
 
 #include "kowhatsnextview.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
@@ -93,12 +93,12 @@ void KOWhatsNextView::updateView()
   }
   mText+="</h2>\n";
 
-  Akonadi::Item::List events;
+  KCalCore::Event::List events;
   KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
 
   events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
-  events = calendar()->sortEvents( events, CalendarSupport::EventSortStartDate,
-                                   CalendarSupport::SortDirectionAscending );
+  events = calendar()->sortEvents( events, KCalCore::EventSortStartDate,
+                                   KCalCore::SortDirectionAscending );
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
@@ -109,10 +109,9 @@ void KOWhatsNextView::updateView()
     mText += "\">";
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
-    Q_FOREACH ( const Akonadi::Item &evItem, events ) {
-      KCalCore::Event::Ptr ev = CalendarSupport::event( evItem );
+    Q_FOREACH( const KCalCore::Event::Ptr &ev, events ) {
       if ( !ev->recurs() ) {
-        appendEvent( evItem );
+        appendEvent( ev );
       } else {
         KCalCore::Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
@@ -120,7 +119,7 @@ void KOWhatsNextView::updateView()
         KDateTime end = start.addSecs( duration );
         KDateTime endDate( mEndDate, QTime( 23, 59, 59 ), timeSpec );
         if ( end.date() >= mStartDate ) {
-          appendEvent( evItem, start.dateTime(), end.dateTime() );
+          appendEvent( ev, start.dateTime(), end.dateTime() );
         }
         KCalCore::DateTimeList times = recur->timesInInterval( start, endDate );
         int count = times.count();
@@ -133,7 +132,7 @@ void KOWhatsNextView::updateView()
             --count;  // list overflow
           }
           for ( ;  i < count && times[i].date() <= mEndDate;  ++i ) {
-            appendEvent( evItem, times[i].dateTime() );
+            appendEvent( ev, times[i].dateTime() );
           }
         }
       }
@@ -142,8 +141,8 @@ void KOWhatsNextView::updateView()
   }
 
   mTodos.clear();
-  Akonadi::Item::List todos = calendar()->todos( CalendarSupport::TodoSortDueDate,
-                                        CalendarSupport::SortDirectionAscending );
+  KCalCore::Todo::List todos = calendar()->todos( KCalCore::TodoSortDueDate,
+                                                  KCalCore::SortDirectionAscending );
   if ( todos.count() > 0 ) {
     kil.loadIcon( "view-calendar-tasks", KIconLoader::NoGroup, 22,
                   KIconLoader::DefaultState, QStringList(), &ipath );
@@ -152,19 +151,17 @@ void KOWhatsNextView::updateView()
     mText += "\">";
     mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
-    Q_FOREACH ( const Akonadi::Item & todoItem, todos ) {
-      KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
+    Q_FOREACH( const KCalCore::Todo::Ptr &todo, todos ) {
       if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate ) {
-        appendTodo( todoItem );
+        appendTodo( todo );
       }
     }
     bool gotone = false;
     int priority = 1;
     while ( !gotone && priority <= 9 ) {
-      Q_FOREACH ( const Akonadi::Item & todoItem, todos ) {
-        KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
+      Q_FOREACH( const KCalCore::Todo::Ptr &todo, todos ) {
         if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
-          appendTodo( todoItem );
+          appendTodo( todo );
           gotone = true;
         }
       }
@@ -176,8 +173,7 @@ void KOWhatsNextView::updateView()
   QStringList myEmails( CalendarSupport::KCalPrefs::instance()->allEmails() );
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
-  Q_FOREACH ( const Akonadi::Item &evItem, events ) {
-    KCalCore::Event::Ptr ev = CalendarSupport::event( evItem );
+  Q_FOREACH( const KCalCore::Event::Ptr &ev, events ) {
     KCalCore::Attendee::Ptr me = ev->attendeeByMails( myEmails );
     if ( me != 0 ) {
       if ( me->status() == KCalCore::Attendee::NeedsAction && me->RSVP() ) {
@@ -192,13 +188,12 @@ void KOWhatsNextView::updateView()
           mText += "<table>\n";
         }
         replies++;
-        appendEvent( evItem );
+        appendEvent( ev );
       }
     }
   }
   todos = calendar()->todos();
-  Q_FOREACH ( const Akonadi::Item & todoItem, todos ) {
-    KCalCore::Todo::Ptr to = CalendarSupport::todo( todoItem );
+  Q_FOREACH( const KCalCore::Todo::Ptr &to, todos ) {
     KCalCore::Attendee::Ptr me = to->attendeeByMails( myEmails );
     if ( me != 0 ) {
       if ( me->status() == KCalCore::Attendee::NeedsAction && me->RSVP() ) {
@@ -213,7 +208,7 @@ void KOWhatsNextView::updateView()
           mText += "<table>\n";
         }
         replies++;
-        appendEvent( todoItem );
+        appendEvent( to );
       }
     }
   }
@@ -245,12 +240,11 @@ void KOWhatsNextView::changeIncidenceDisplay( const Akonadi::Item &,
   updateView();
 }
 
-void KOWhatsNextView::appendEvent( const Akonadi::Item &aitem, const QDateTime &start,
+void KOWhatsNextView::appendEvent( const KCalCore::Incidence::Ptr &incidence, const QDateTime &start,
                                    const QDateTime &end )
 {
-  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   mText += "<tr><td><b>";
-  if ( const KCalCore::Event::Ptr event = CalendarSupport::event( aitem ) ) {
+  if ( const KCalCore::Event::Ptr event = incidence.dynamicCast<KCalCore::Event>() ) {
     KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
     KDateTime starttime( start, timeSpec );
     if ( !starttime.isValid() ) {
@@ -292,15 +286,14 @@ void KOWhatsNextView::appendEvent( const Akonadi::Item &aitem, const QDateTime &
   mText += "</a></td></tr>\n";
 }
 
-void KOWhatsNextView::appendTodo( const Akonadi::Item &aitem )
+void KOWhatsNextView::appendTodo( const KCalCore::Incidence::Ptr &incidence )
 {
+  Akonadi::Item aitem = calendar()->item( incidence->uid() );
   if ( mTodos.contains( aitem ) ) {
     return;
   }
 
   mTodos.append( aitem );
-
-  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   mText += "<li><a href=\"todo:" + incidence->uid() + "\">";
   mText += incidence->summary();
   mText += "</a>";
@@ -317,21 +310,21 @@ void KOWhatsNextView::appendTodo( const Akonadi::Item &aitem )
 
 void KOWhatsNextView::showIncidence( const QString &uid )
 {
-  Akonadi::Item incidence;
+  Akonadi::Item item;
 
-  CalendarSupport::Calendar* cal = dynamic_cast<CalendarSupport::Calendar*>( calendar() );
+  Akonadi::ETMCalendar::Ptr cal = calendar();
   if ( !cal ) {
     return;
   }
 
   if ( uid.startsWith( QLatin1String( "event:" ) ) ) {
-    incidence = cal->incidence( cal->itemIdForIncidenceUid( uid.mid( 6 ) ) );
+    item = cal->item( uid.mid( 6 ) );
   } else if ( uid.startsWith( QLatin1String( "todo:" ) ) ) {
-    incidence = cal->incidence( cal->itemIdForIncidenceUid( uid.mid( 5 ) ) );
+    item = cal->item( uid.mid( 5 ) );
   }
 
-  if ( incidence.isValid() ) {
-    emit showIncidenceSignal( incidence );
+  if ( item.isValid() ) {
+    emit showIncidenceSignal( item );
   }
 }
 

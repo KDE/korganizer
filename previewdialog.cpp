@@ -58,7 +58,7 @@ PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
     KCalCore::MemoryCalendar::Ptr(
       new KCalCore::MemoryCalendar( KOPrefs::instance()->mTimeZoneId ) );
 
-  mListView = new KOListView( 0, this, true );
+  mListView = new KOListView( Akonadi::ETMCalendar::Ptr(), this, true );
   topLayout->addWidget( mListView );
 
   topLayout->setSpacing( spacingHint() );

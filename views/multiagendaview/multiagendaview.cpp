@@ -147,10 +147,10 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 
 }
 
-void MultiAgendaView::setCalendar( CalendarSupport::Calendar *cal )
+void MultiAgendaView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
-  d->mMultiAgendaView->setCalendar( cal );
-  d->mPopup->setCalendar( cal );
+  d->mMultiAgendaView->setCalendar( cal.data() );
+  d->mPopup->setCalendar( cal.data() );
 }
 
 MultiAgendaView::~MultiAgendaView()
@@ -252,7 +252,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 void MultiAgendaView::showConfigurationDialog( QWidget *parent )
 {
   QPointer<MultiAgendaViewConfigDialog> dlg(
-    new MultiAgendaViewConfigDialog( d->mMultiAgendaView->calendar()->treeModel(),
+    new MultiAgendaViewConfigDialog( d->mMultiAgendaView->calendar()->unfilteredModel(),
                                      parent ) );
 
   dlg->setUseCustomColumns( d->mMultiAgendaView->customColumnSetupUsed() );
@@ -418,7 +418,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       sortProxy->setSourceModel( baseModel );
 
       KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( sortProxy );
-      columnFilterProxy->setVisibleColumn( CalendarSupport::CalendarModel::CollectionTitle );
+      columnFilterProxy->setVisibleColumn( Akonadi::ETMCalendar::CollectionTitle );
       columnFilterProxy->setSourceModel( sortProxy );
 
       QItemSelectionModel *qsm = new QItemSelectionModel( columnFilterProxy, columnFilterProxy );

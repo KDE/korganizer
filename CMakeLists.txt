@@ -65,6 +65,7 @@ if(NOT WINCE)
       korganizer_interfaces
       korganizer_core
       calendarsupport
+      akonadi-calendar
     )
 
     install(TARGETS
@@ -82,6 +83,7 @@ if(NOT WINCE)
     kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
     target_link_libraries(kcm_korganizer
+      akonadi-calendar
       calendarsupport
       eventviews
       incidenceeditorsng
@@ -263,6 +265,7 @@ if(NOT WINCE)
 
     target_link_libraries(korganizerprivate
       akonadi_next
+      akonadi-calendar
       calendarsupport
       eventviews
       incidenceeditorsng

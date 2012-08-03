@@ -198,11 +198,11 @@ KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
   }
 }
 
-void KOTimelineView::setCalendar( CalendarSupport::Calendar *cal )
+void KOTimelineView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  d->mEventPopup->setCalendar( cal );
-  d->mTimeLineView->setCalendar( cal );
+  d->mEventPopup->setCalendar( cal.data() );
+  d->mTimeLineView->setCalendar( cal.data() );
 }
 
 void KOTimelineView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )

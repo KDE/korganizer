@@ -28,7 +28,6 @@
 #include "kocore.h"
 #include "korganizer_interface.h"
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/mailclient.h>
@@ -117,7 +116,7 @@ bool ReminderListItem::operator<( const QTreeWidgetItem &other ) const
 
 typedef QList<ReminderListItem *> ReminderList;
 
-AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
+AlarmDialog::AlarmDialog( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent )
   : KDialog( parent, Qt::WindowStaysOnTopHint ),
     mCalendar( calendar ), mSuspendTimer( this )
 {
@@ -126,7 +125,7 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   // User3 => Dismiss Selected
   //    Ok => Suspend
 
-  connect( calendar, SIGNAL(calendarChanged()), SLOT(slotCalendarChanged()) );
+  connect( calendar.data(), SIGNAL(calendarChanged()), SLOT(slotCalendarChanged()) );
 
   KIconLoader::global()->addAppDir( "korgac" );
 
@@ -209,7 +208,7 @@ AlarmDialog::AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
 
-  mDetailView = new CalendarSupport::IncidenceViewer( mCalendar, topBox );
+  mDetailView = new CalendarSupport::IncidenceViewer( mCalendar.data(), topBox );
   QString s;
   s = i18nc( "@info default incidence details string",
              "<emphasis>Select an event or to-do from the list above "
@@ -333,7 +332,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
                    item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
   QString tip =
     IncidenceFormatter::toolTipStr(
-      CalendarSupport::displayName( mCalendar, incidenceitem.parentCollection() ),
+      CalendarSupport::displayName( mCalendar.data(), incidenceitem.parentCollection() ),
       incidence,
       item->mRemindAt.date(), true,
       KDateTime::Spec::LocalZone() );
@@ -425,7 +424,7 @@ void AlarmDialog::edit()
     return;
   }
   Incidence::Ptr incidence = CalendarSupport::incidence( selection.first()->mIncidence );
-  if ( !mCalendar->hasChangeRights( selection.first()->mIncidence ) ) {
+  if ( !mCalendar->hasRight( selection.first()->mIncidence, Akonadi::Collection::CanChangeItem ) ) {
     KMessageBox::sorry(
       this,
       i18nc( "@info",
@@ -632,7 +631,7 @@ void AlarmDialog::eventNotification()
 
         QString subject;
 
-        Akonadi::Item parentItem = mCalendar->itemForIncidenceUid( alarm->parentUid() );
+        Akonadi::Item parentItem = mCalendar->item( alarm->parentUid() );
         Incidence::Ptr parent = CalendarSupport::incidence( parentItem );
 
         if ( alarm->mailSubject().isEmpty() ) {
@@ -837,9 +836,10 @@ KDateTime AlarmDialog::triggerDateForIncidence( const Incidence::Ptr &incidence,
 
 void AlarmDialog::slotCalendarChanged()
 {
-  Akonadi::Item::List incidences = mCalendar->incidences();
-  for ( Akonadi::Item::List::ConstIterator it = incidences.constBegin();
-        it != incidences.constEnd(); ++it ) {
+  KCalCore::Incidence::List incidences = mCalendar->incidences();
+  Akonadi::Item::List items = mCalendar->itemList( incidences );
+  for ( Akonadi::Item::List::ConstIterator it = items.constBegin();
+        it != items.constEnd(); ++it ) {
     ReminderListItem *item = searchByItem( *it );
 
     if ( item ) {

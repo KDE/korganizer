@@ -24,8 +24,8 @@
 #ifndef ALARMDIALOG_H
 #define ALARMDIALOG_H
 
+#include <akonadi/calendar/etmcalendar.h>
 #include <Akonadi/Item>
-
 #include <KDialog>
 #include <KCalCore/Incidence>
 #include <KDateTime>
@@ -34,7 +34,6 @@
 #include <QTimer>
 
 namespace CalendarSupport {
-  class Calendar;
   class IncidenceViewer;
 }
 
@@ -57,7 +56,7 @@ class AlarmDialog : public KDialog
 
   Q_OBJECT
   public:
-    explicit AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent = 0 );
+    explicit AlarmDialog( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = 0 );
     ~AlarmDialog();
 
     void addIncidence( const Akonadi::Item &incidence, const QDateTime &reminderAt,
@@ -121,7 +120,7 @@ class AlarmDialog : public KDialog
     void updateButtons();
     void showDetails();
 
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
     QVBoxLayout *mTopLayout;
     QTreeWidget *mIncidenceTree;
     CalendarSupport::IncidenceViewer *mDetailView;

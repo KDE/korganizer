@@ -153,11 +153,11 @@ KOAgendaView::~KOAgendaView()
   delete d;
 }
 
-void KOAgendaView::setCalendar( CalendarSupport::Calendar *cal )
+void KOAgendaView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  d->mPopup->setCalendar( cal );
-  d->mAgendaView->setCalendar( cal );
+  d->mPopup->setCalendar( cal.data() );
+  d->mAgendaView->setCalendar( cal.data() );
 }
 
 void KOAgendaView::zoomInVertically()

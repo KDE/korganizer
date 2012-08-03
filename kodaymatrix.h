@@ -27,7 +27,7 @@
 #ifndef KORG_KODAYMATRIX_H
 #define KORG_KODAYMATRIX_H
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
 
@@ -66,7 +66,7 @@
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObserver
+class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -90,7 +90,7 @@ class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObse
       Associate a calendar with this day matrix. If there is a calendar, the
       day matrix will accept drops and days with events will be highlighted.
     */
-    void setCalendar( CalendarSupport::Calendar * );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &  );
 
     /** updates the day matrix to start with the given date. Does all the
      *  necessary checks for holidays or events on a day and stores them
@@ -156,12 +156,12 @@ class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObse
     bool isEndOfMonth() const { return mToday >= 27; }
 
     /**
-     *  Reimplemented from CalendarSupport::Calendar
+     *  Reimplemented from Akonadi::ETMCalendar
      *  They set mPendingChanges to true
      */
-    void calendarIncidenceAdded( const Akonadi::Item &incidence );
-    void calendarIncidenceChanged( const Akonadi::Item &incidence );
-    void calendarIncidenceDeleted( const Akonadi::Item &incidence );
+    void calendarIncidenceAdded( const KCalCore::Incidence::Ptr &incidence );
+    void calendarIncidenceChanged( const KCalCore::Incidence::Ptr &incidence );
+    void calendarIncidenceDeleted( const KCalCore::Incidence::Ptr &incidence );
 
     /** Sets which incidences should be highlighted */
     void setHighlightMode( bool highlightEvents,
@@ -272,7 +272,7 @@ class KODayMatrix: public QFrame, public CalendarSupport::Calendar::CalendarObse
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 
     /** starting date of the matrix */
     QDate mStartDate;

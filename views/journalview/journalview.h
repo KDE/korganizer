@@ -29,6 +29,7 @@
 
 // Widget showing one Journal entry
 #include <akonadi/calendar/incidencechanger.h>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <QDate>
 #include <QFrame>
@@ -36,10 +37,6 @@
 #include <Akonadi/Item>
 
 #include <KVBox>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 class KTextBrowser;
 
@@ -52,7 +49,7 @@ class JournalView : public QFrame
     typedef QList<JournalView*> List;
 
     JournalView( const Akonadi::Item &journal,
-                 CalendarSupport::Calendar *calendar,
+                 const Akonadi::ETMCalendar::Ptr &calendar,
                  QWidget *parent );
 
     virtual ~JournalView();
@@ -61,7 +58,7 @@ class JournalView : public QFrame
     void setJournal( const Akonadi::Item &journal );
     Akonadi::Item journal() const { return mJournal; }
 
-    void setCalendar( CalendarSupport::Calendar *cal );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
     QDate date() const { return mDate; }
 
     void clear();
@@ -88,7 +85,7 @@ class JournalView : public QFrame
 
   private:
     Akonadi::Item mJournal;
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
     QDate mDate;
     bool mReadOnly;
 
@@ -108,7 +105,7 @@ class JournalDateView : public KVBox
   public:
     typedef QList<JournalDateView*> List;
 
-    JournalDateView( CalendarSupport::Calendar *, QWidget *parent );
+    JournalDateView( const Akonadi::ETMCalendar::Ptr &, QWidget *parent );
     virtual ~JournalDateView();
 
     void addJournal( const Akonadi::Item &journal );
@@ -135,7 +132,7 @@ class JournalDateView : public KVBox
     void journalDeleted( const Akonadi::Item & );
 
   private:
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
     QDate mDate;
     QMap<Akonadi::Item::Id,JournalView *> mEntries;
 

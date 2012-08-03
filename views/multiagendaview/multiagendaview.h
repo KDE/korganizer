@@ -47,7 +47,7 @@ class MultiAgendaView : public KOEventView
     int maxDatesHint() const;
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    /* reimp */void setCalendar( CalendarSupport::Calendar *cal );
+    /* reimp */void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
 
     /**
      * reimplemented from KOrg::BaseView

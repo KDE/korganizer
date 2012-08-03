@@ -104,16 +104,14 @@ void CalPrintJournal::setDateRange( const QDate &from, const QDate &to )
 void CalPrintJournal::print( QPainter &p, int width, int height )
 {
   int x=0, y=0;
-  Akonadi::Item::List journals( mCalendar->journals() );
+  KCalCore::Journal::List journals( mCalendar->journals() );
   if ( mUseDateRange ) {
-    Akonadi::Item::List allJournals = journals;
+    KCalCore::Journal::List allJournals = journals;
     journals.clear();
-    Akonadi::Item::List::Iterator it = allJournals.begin();
-    for ( ; it != allJournals.end(); ++it ) {
-      KCalCore::Journal::Ptr j = CalendarSupport::journal( *it );
+    foreach( const KCalCore::Journal::Ptr &j, allJournals ) {
       const QDate dt = j->dtStart().date();
       if ( mFromDate <= dt && dt <= mToDate ) {
-        journals.append( *it );
+        journals.append( j );
       }
     }
   }
@@ -125,9 +123,8 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
   drawHeader( p, i18n( "Journal entries" ), QDate(), QDate(), headerBox );
   y = headerHeight() + 15;
 
-  Akonadi::Item::List::Iterator it = journals.begin();
-  for ( ; it != journals.end(); ++it ) {
-    drawJournal( CalendarSupport::journal( *it ), p, x, y, width, height );
+  foreach( const KCalCore::Journal::Ptr &j, journals ) {
+    drawJournal( j, p, x, y, width, height );
   }
 
   drawFooter( p, footerBox );

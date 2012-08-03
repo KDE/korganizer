@@ -69,12 +69,12 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
       provide the option to print an single incidence; else, all possible types
       of print types will be shown
     */
-    CalPrinter( QWidget *par, CalendarSupport::Calendar *cal,
+    CalPrinter( QWidget *par, Akonadi::ETMCalendar *cal,
                 KOrg::CoreHelper *helper, bool uniqItem = false );
 
     virtual ~CalPrinter();
 
-    void init( CalendarSupport::Calendar *calendar );
+    void init( Akonadi::ETMCalendar *calendar );
 
     /**
       Set date range to be printed.
@@ -96,14 +96,14 @@ class KORGANIZERPRIVATE_EXPORT CalPrinter : public QObject, public KOrg::CalPrin
                 Incidence::List selectedIncidences = Incidence::List(),
                 bool preview = false );
 
-    CalendarSupport::Calendar *calendar() const;
+    Akonadi::ETMCalendar *calendar() const;
     KConfig *config() const;
 
   protected:
     KOrg::PrintPlugin::List mPrintPlugins;
 
   private:
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar *mCalendar;
     QWidget *mParent;
     KConfig *mConfig;
     KOrg::CoreHelper *mCoreHelper;

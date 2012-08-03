@@ -28,7 +28,7 @@
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/categoryconfig.h>
 
 #include <libkdepim/kcheckcombobox.h>
@@ -41,7 +41,7 @@
 
 #include <QHBoxLayout>
 
-KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calendar, QWidget *parent )
+KOTodoViewQuickSearch::KOTodoViewQuickSearch( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
@@ -109,7 +109,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( CalendarSupport::Calendar *calenda
   setLayout( layout );
 }
 
-void KOTodoViewQuickSearch::setCalendar( CalendarSupport::Calendar *calendar )
+void KOTodoViewQuickSearch::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
   if ( calendar != mCalendar ) {
     mCalendar = calendar;

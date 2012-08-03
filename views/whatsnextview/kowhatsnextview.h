@@ -67,9 +67,9 @@ class KOWhatsNextView : public KOrg::BaseView
     void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
 
   protected:
-    void appendEvent( const Akonadi::Item &, const QDateTime &start = QDateTime(),
+    void appendEvent( const KCalCore::Incidence::Ptr &, const QDateTime &start = QDateTime(),
                       const QDateTime &end = QDateTime() );
-    void appendTodo( const Akonadi::Item & );
+    void appendTodo( const KCalCore::Incidence::Ptr & );
 
   private slots:
     void showIncidence( const QString & );

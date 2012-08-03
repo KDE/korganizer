@@ -55,7 +55,7 @@ class KOTimelineView : public KOEventView
                                          Akonadi::IncidenceChanger::ChangeType );
     virtual int maxDatesHint() const { return 0; }
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    virtual void setCalendar( CalendarSupport::Calendar *cal );
+    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
     virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     // Specific for korg, not in eventviews

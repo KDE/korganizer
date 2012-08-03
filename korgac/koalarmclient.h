@@ -26,6 +26,8 @@
 #ifndef KOALARMCLIENT_H
 #define KOALARMCLIENT_H
 
+#include <akonadi/calendar/etmcalendar.h>
+
 #ifndef _WIN32_WCE
 #include <KSessionManager>
 #endif
@@ -35,10 +37,6 @@
 
 class AlarmDialog;
 class AlarmDockWindow;
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 namespace Akonadi {
   class Item;
@@ -80,12 +78,12 @@ class KOAlarmClient : public QObject
     void saveAllSignal();
 
   private:
-    void createReminder( CalendarSupport::Calendar *calendar, const Akonadi::Item &incidence,
+    void createReminder( const Akonadi::ETMCalendar::Ptr &calendar, const Akonadi::Item &incidence,
                          const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 
     QDateTime mLastChecked;
     QTimer mCheckTimer;

@@ -27,7 +27,7 @@
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/categoryconfig.h>
 
 #include <incidenceeditor-ng/categoryhierarchyreader.h>
@@ -374,7 +374,7 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-void KOTodoCategoriesDelegate::setCalendar( CalendarSupport::Calendar *cal )
+void KOTodoCategoriesDelegate::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   mCalendar = cal;
 }

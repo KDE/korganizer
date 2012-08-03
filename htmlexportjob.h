@@ -25,12 +25,9 @@
 
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <KJob>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 class QTextStream;
 
@@ -48,14 +45,14 @@ class HtmlExportJob : public KJob
   public:
     /**
       Create new HTML exporter for calendar.
-      @param calendar is a pointer to a CalendarSupport::Calendar instance.
+      @param calendar is a pointer to a Akonadi::ETMCalendar instance.
       @param settings is a pointer to an HTMLExportSettings instance.
       @param autoMode if true, indicates that this export is for an autosave;
                       if false, then the export is explicitly user invoked.
       @param mainWindow is a pointer to KOrganizer MainWindow.
       @param parent is a pointer to the parent CalendarView.
     */
-    HtmlExportJob( CalendarSupport::Calendar *calendar,
+    HtmlExportJob( const Akonadi::ETMCalendar::Ptr &calendar,
                    HTMLExportSettings *settings, bool autoMode,
                    KOrg::MainWindow *mainWindow,
                    QWidget *parent = 0 );

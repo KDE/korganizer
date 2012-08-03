@@ -30,10 +30,7 @@
 #include <QMenu>
 
 #include <Akonadi/Item>
-
-namespace CalendarSupport {
-  class Calendar;
-}
+#include <akonadi/calendar/etmcalendar.h>
 
 /**
  * Context menu for event views with standard event actions.
@@ -42,8 +39,8 @@ class KOEventPopupMenu : public QMenu
 {
   Q_OBJECT
   public:
-    explicit KOEventPopupMenu( CalendarSupport::Calendar *, QWidget *parent = 0 );
-    void setCalendar( CalendarSupport::Calendar * );
+    explicit KOEventPopupMenu( Akonadi::ETMCalendar * , QWidget *parent = 0 );
+    void setCalendar( Akonadi::ETMCalendar *   );
 
   public slots:
     void showIncidencePopup( const Akonadi::Item &, const QDate & );
@@ -79,7 +76,7 @@ class KOEventPopupMenu : public QMenu
   private:
     void print( bool previous );
 
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar* mCalendar;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 

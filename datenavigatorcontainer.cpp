@@ -37,7 +37,7 @@
 #include <QTimer>
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent )
-  : QFrame( parent ), mCalendar( 0 ),
+  : QFrame( parent ),
     mHorizontalCount( 1 ), mVerticalCount( 1 ),
     mIgnoreNavigatorUpdates( false )
 {
@@ -94,13 +94,13 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)) );
 }
 
-void DateNavigatorContainer::setCalendar( CalendarSupport::Calendar *cal )
+void DateNavigatorContainer::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
-  mCalendar = cal;
-  mNavigatorView->setCalendar( cal );
+  mCalendar = calendar;
+  mNavigatorView->setCalendar( calendar );
   foreach ( KDateNavigator *n, mExtraViews ) {
     if ( n ) {
-      n->setCalendar( cal );
+      n->setCalendar( calendar );
     }
   }
 }

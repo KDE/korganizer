@@ -28,13 +28,14 @@
 
 #include <calendarsupport/utils.h>
 #include <calendarsupport/next/incidenceviewer.h>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <Akonadi/Item>
 
 #include <KLocale>
 #include <KToolInvocation>
 
-KOEventViewerDialog::KOEventViewerDialog( CalendarSupport::Calendar *calendar, QWidget *parent )
+KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18n( "Event Viewer" ) );

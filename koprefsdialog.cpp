@@ -41,6 +41,7 @@
 #include <Akonadi/AgentTypeDialog>
 #include <Akonadi/CollectionComboBox>
 #include <Akonadi/CollectionModel>
+#include <akonadi/calendar/calendarsettings.h>
 
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
@@ -1296,63 +1297,62 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
 void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
   mGroupwarePage->publishEnable->setChecked(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishAuto );
+    Akonadi::CalendarSettings::self()->freeBusyPublishAuto() );
   mGroupwarePage->publishDelay->setValue(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDelay );
+    Akonadi::CalendarSettings::self()->freeBusyPublishDelay() );
   mGroupwarePage->publishDays->setValue(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDays );
+    Akonadi::CalendarSettings::self()->freeBusyPublishDays() );
   mGroupwarePage->publishUrl->setText(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUrl );
+    Akonadi::CalendarSettings::self()->freeBusyPublishUrl() );
   mGroupwarePage->publishUser->setText(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUser );
+    Akonadi::CalendarSettings::self()->freeBusyPublishUser() );
   mGroupwarePage->publishPassword->setText(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishPassword );
+    Akonadi::CalendarSettings::self()->freeBusyPublishPassword() );
   mGroupwarePage->publishSavePassword->setChecked(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishSavePassword );
+    Akonadi::CalendarSettings::self()->freeBusyPublishSavePassword() );
 
   mGroupwarePage->retrieveEnable->setChecked(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveAuto );
+    Akonadi::CalendarSettings::self()->freeBusyRetrieveAuto() );
   mGroupwarePage->fullDomainRetrieval->setChecked(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyFullDomainRetrieval );
+    Akonadi::CalendarSettings::self()->freeBusyFullDomainRetrieval() );
   mGroupwarePage->retrieveUrl->setText(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUrl );
+    Akonadi::CalendarSettings::self()->freeBusyRetrieveUrl() );
   mGroupwarePage->retrieveUser->setText(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUser );
+    Akonadi::CalendarSettings::self()->freeBusyRetrieveUser() );
     mGroupwarePage->retrievePassword->setText(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrievePassword );
+    Akonadi::CalendarSettings::self()->freeBusyRetrievePassword() );
   mGroupwarePage->retrieveSavePassword->setChecked(
-    CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveSavePassword );
+    Akonadi::CalendarSettings::self()->freeBusyRetrieveSavePassword() );
 }
 
 void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishAuto =
-    mGroupwarePage->publishEnable->isChecked();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDelay =
-    mGroupwarePage->publishDelay->value();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishDays =
-    mGroupwarePage->publishDays->value();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUrl =
-    mGroupwarePage->publishUrl->text();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishUser =
-    mGroupwarePage->publishUser->text();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishPassword =
-    mGroupwarePage->publishPassword->text();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyPublishSavePassword =
-    mGroupwarePage->publishSavePassword->isChecked();
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishAuto(
+    mGroupwarePage->publishEnable->isChecked());
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishDelay(mGroupwarePage->publishDelay->value());
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishDays(
+    mGroupwarePage->publishDays->value());
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishUrl(
+    mGroupwarePage->publishUrl->text());
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishUser(
+    mGroupwarePage->publishUser->text());
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishPassword(
+    mGroupwarePage->publishPassword->text());
+  Akonadi::CalendarSettings::self()->setFreeBusyPublishSavePassword(
+    mGroupwarePage->publishSavePassword->isChecked());
 
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveAuto =
-    mGroupwarePage->retrieveEnable->isChecked();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyFullDomainRetrieval =
-    mGroupwarePage->fullDomainRetrieval->isChecked();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUrl =
-    mGroupwarePage->retrieveUrl->text();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveUser =
-    mGroupwarePage->retrieveUser->text();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrievePassword =
-    mGroupwarePage->retrievePassword->text();
-  CalendarSupport::KCalPrefs::instance()->mFreeBusyRetrieveSavePassword =
-    mGroupwarePage->retrieveSavePassword->isChecked();
+  Akonadi::CalendarSettings::self()->setFreeBusyRetrieveAuto(
+    mGroupwarePage->retrieveEnable->isChecked());
+  Akonadi::CalendarSettings::self()->setFreeBusyFullDomainRetrieval(
+    mGroupwarePage->fullDomainRetrieval->isChecked());
+  Akonadi::CalendarSettings::self()->setFreeBusyRetrieveUrl(
+    mGroupwarePage->retrieveUrl->text());
+  Akonadi::CalendarSettings::self()->setFreeBusyRetrieveUser(
+    mGroupwarePage->retrieveUser->text());
+  Akonadi::CalendarSettings::self()->setFreeBusyRetrievePassword(
+    mGroupwarePage->retrievePassword->text());
+  Akonadi::CalendarSettings::self()->setFreeBusyRetrieveSavePassword(
+    mGroupwarePage->retrieveSavePassword->isChecked());
 
   // clear the url cache for our user
   const QString configFile = KStandardDirs::locateLocal( "data", "korganizer/freebusyurls" );

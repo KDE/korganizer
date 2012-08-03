@@ -28,8 +28,8 @@
 
 #include <QPrinter>
 
-namespace CalendarSupport {
-  class Calendar;
+namespace Akonadi {
+  class ETMCalendar;
 }
 namespace KOrg {
 
@@ -76,7 +76,7 @@ class PrintPlugin : public CalendarSupport::Plugin
 
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
 
-    virtual void setCalendar( CalendarSupport::Calendar *cal ) { mCalendar = cal; }
+    virtual void setCalendar( Akonadi::ETMCalendar *cal ) { mCalendar = cal; }
 
     virtual void setSelectedIncidences( KCalCore::Incidence::List inc )
     { mSelectedIncidences = inc; }
@@ -173,7 +173,7 @@ class PrintPlugin : public CalendarSupport::Plugin
     /** The printer object. This will only be available in the doPrint method
         of the selected plugin */
     QPrinter *mPrinter;
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar *mCalendar;
     KCalCore::Incidence::List mSelectedIncidences;
     KConfig *mConfig;
 };

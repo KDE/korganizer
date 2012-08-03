@@ -24,7 +24,6 @@
 #include "htmlexportsettings.h"
 #include "korganizer/mainwindow.h"
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
 #include <Akonadi/Contact/ContactSearchJob>
@@ -52,7 +51,7 @@ static QString cleanChars( const QString &txt );
 class KOrg::HtmlExportJob::Private
 {
   public:
-    Private( CalendarSupport::Calendar *calendar,
+    Private( const Akonadi::ETMCalendar::Ptr &calendar,
              KOrg::HTMLExportSettings *settings, bool autoMode,
              KOrg::MainWindow *mainWindow, QWidget *parent )
       : mCalendar( calendar ),
@@ -63,7 +62,7 @@ class KOrg::HtmlExportJob::Private
         mSubJobCount( 0 )
     {}
 
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
     KOrg::HTMLExportSettings *mSettings;
     bool mAutoMode;
     KOrg::MainWindow *mMainWindow;
@@ -74,7 +73,7 @@ class KOrg::HtmlExportJob::Private
 };
 //@endcond
 
-HtmlExportJob::HtmlExportJob( CalendarSupport::Calendar *calendar,
+HtmlExportJob::HtmlExportJob( const Akonadi::ETMCalendar::Ptr &calendar,
                               KOrg::HTMLExportSettings *settings, bool autoMode,
                               KOrg::MainWindow *mainWindow, QWidget *parent )
   : KJob( parent ), d( new Private( calendar, settings, autoMode, mainWindow, parent ) )
@@ -91,15 +90,14 @@ void HtmlExportJob::start()
 {
   bool canExportItem = false;
   // first collect the email addresses of all organisators
-  const Akonadi::Item::List events = d->mCalendar->events();
-  foreach ( const Akonadi::Item &event, events ) {
-    Q_ASSERT( event.hasPayload<KCalCore::Event::Ptr>() );
-    const KCalCore::Event::Ptr eventPtr = event.payload<KCalCore::Event::Ptr>();
-    const KCalCore::Attendee::List attendees = eventPtr->attendees();
+  const KCalCore::Event::List events = d->mCalendar->events();
+  foreach ( const KCalCore::Event::Ptr &event, events ) {
+    Q_ASSERT( event );
+    const KCalCore::Attendee::List attendees = event->attendees();
     if ( !attendees.isEmpty() ) {
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
-      job->setQuery( Akonadi::ContactSearchJob::Email, eventPtr->organizer()->email() );
-      job->setProperty( "incidenceUid", eventPtr->uid() );
+      job->setQuery( Akonadi::ContactSearchJob::Email, event->organizer()->email() );
+      job->setProperty( "incidenceUid", event->uid() );
       connect( job, SIGNAL(result(KJob*)), SLOT(receivedOrganizerInfo(KJob*)) );
       job->start();
 
@@ -108,15 +106,14 @@ void HtmlExportJob::start()
     }
   }
 
-  const Akonadi::Item::List todos = d->mCalendar->todos();
-  foreach ( const Akonadi::Item &todo, todos ) {
-    Q_ASSERT( todo.hasPayload<KCalCore::Todo::Ptr>() );
-    const KCalCore::Todo::Ptr todoPtr = todo.payload<KCalCore::Todo::Ptr>();
-    const KCalCore::Attendee::List attendees = todoPtr->attendees();
+  const KCalCore::Todo::List todos = d->mCalendar->todos();
+  foreach ( const KCalCore::Todo::Ptr &todo, todos ) {
+    Q_ASSERT( todo );
+    const KCalCore::Attendee::List attendees = todo->attendees();
     if ( !attendees.isEmpty() ) {
       Akonadi::ContactSearchJob *job = new Akonadi::ContactSearchJob( this );
-      job->setQuery( Akonadi::ContactSearchJob::Email, todoPtr->organizer()->email() );
-      job->setProperty( "incidenceUid", todoPtr->uid() );
+      job->setQuery( Akonadi::ContactSearchJob::Email, todo->organizer()->email() );
+      job->setProperty( "incidenceUid", todo->uid() );
       connect( job, SIGNAL(result(KJob*)), SLOT(receivedOrganizerInfo(KJob*)) );
       job->start();
 
@@ -341,16 +338,15 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
 
         // Only print events within the from-to range
         if ( start >= fromDate() && start <= toDate() ) {
-          Akonadi::Item::List events = d->mCalendar->events( start, d->mCalendar->timeSpec(),
-                                                     CalendarSupport::EventSortStartDate,
-                                                     CalendarSupport::SortDirectionAscending );
+          KCalCore::Event::List events = d->mCalendar->events( start, d->mCalendar->timeSpec(),
+                                                               KCalCore::EventSortStartDate,
+                                                               KCalCore::SortDirectionAscending );
           if ( events.count() ) {
             *ts << "<table>";
-            foreach ( const Akonadi::Item &event, events ) {
-              Q_ASSERT( event.hasPayload<KCalCore::Event::Ptr>() );
-              KCalCore::Event::Ptr e = event.payload<KCalCore::Event::Ptr>();
-              if ( checkSecrecy( e ) ) {
-                createEvent( ts, e, start, false );
+            foreach ( const KCalCore::Event::Ptr &event, events ) {
+              Q_ASSERT( event );
+              if ( checkSecrecy( event ) ) {
+                createEvent( ts, event, start, false );
               }
             }
             *ts << "</table>";
@@ -406,20 +402,19 @@ void HtmlExportJob::createEventList( QTextStream *ts )
 
   for ( QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1) ) {
     kDebug() << "Getting events for" << dt.toString();
-    Akonadi::Item::List events = d->mCalendar->events( dt, d->mCalendar->timeSpec(),
-                                               CalendarSupport::EventSortStartDate,
-                                               CalendarSupport::SortDirectionAscending );
-    if ( events.count() ) {
+    KCalCore::Event::List events = d->mCalendar->events( dt, d->mCalendar->timeSpec(),
+                                                         KCalCore::EventSortStartDate,
+                                                         KCalCore::SortDirectionAscending );
+    if ( !events.isEmpty() ) {
       *ts << "  <tr><td colspan=\"" << QString::number( columns )
           << "\" class=\"datehead\"><i>"
           << KGlobal::locale()->formatDate( dt )
           << "</i></td></tr>" << endl;
 
-      foreach ( const Akonadi::Item &event, events ) {
-        Q_ASSERT( event.hasPayload<KCalCore::Event::Ptr>() );
-        KCalCore::Event::Ptr e = event.payload<KCalCore::Event::Ptr>();
-        if ( checkSecrecy( e ) ) {
-          createEvent( ts, e, dt );
+      foreach ( const KCalCore::Event::Ptr &event, events ) {
+        Q_ASSERT( event );
+        if ( checkSecrecy( event ) ) {
+          createEvent( ts, event, dt );
         }
       }
     }
@@ -485,14 +480,13 @@ void HtmlExportJob::createEvent ( QTextStream *ts, const KCalCore::Event::Ptr &e
 
 void HtmlExportJob::createTodoList ( QTextStream *ts )
 {
-  Akonadi::Item::List rawTodoList = d->mCalendar->todos();
+  KCalCore::Todo::List rawTodoList = d->mCalendar->todos();
 
   int index = 0;
   while ( index < rawTodoList.count() ) {
-    const Akonadi::Item rawTodo = rawTodoList.value( index );
-    Q_ASSERT( rawTodo.hasPayload<KCalCore::Todo::Ptr>() );
-    KCalCore::Todo::Ptr ev = CalendarSupport::todo( rawTodo );
-    const Akonadi::Item parentItem = d->mCalendar->findParent( rawTodo );
+    const KCalCore::Todo::Ptr todo = rawTodoList.value( index );
+    Q_ASSERT( todo );
+    const Akonadi::Item parentItem = d->mCalendar->item( todo->relatedTo() );
 
     ++index;
   }
@@ -502,17 +496,15 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   KCalCore::Todo::List todoList;
   KCalCore::Todo::List::ConstIterator it;
   for ( int i = 1; i <= 9; ++i ) {
-    foreach ( const Akonadi::Item &rawTodo, rawTodoList ) {
-      KCalCore::Todo::Ptr t = rawTodo.payload<KCalCore::Todo::Ptr>();
-      if ( t->priority() == i && checkSecrecy( t ) ) {
-        todoList.append( t );
+    foreach ( const KCalCore::Todo::Ptr &todo, rawTodoList ) {
+      if ( todo->priority() == i && checkSecrecy( todo ) ) {
+        todoList.append( todo );
       }
     }
   }
-  foreach ( const Akonadi::Item &rawTodo, rawTodoList ) {
-    KCalCore::Todo::Ptr t = rawTodo.payload<KCalCore::Todo::Ptr>();
-    if ( t->priority() == 0 && checkSecrecy( t ) ) {
-      todoList.append( t );
+  foreach ( const KCalCore::Todo::Ptr &todo, rawTodoList ) {
+    if ( todo->priority() == 0 && checkSecrecy( todo ) ) {
+      todoList.append( todo );
     }
   }
 
@@ -556,8 +548,8 @@ void HtmlExportJob::createTodoList ( QTextStream *ts )
   // Create sub-level lists
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
 
-    Akonadi::Item item = d->mCalendar->itemForIncidenceUid( ( *it )->uid() );
-    const Akonadi::Item::List relations = d->mCalendar->findChildren( item );
+    Akonadi::Item item = d->mCalendar->item( ( *it )->uid() );
+    const Akonadi::Item::List relations = d->mCalendar->childItems( item.id() );
 
     if ( !relations.isEmpty() ) {
       // Generate sub-to-do list
@@ -606,8 +598,8 @@ void HtmlExportJob::createTodo( QTextStream *ts, const KCalCore::Todo::Ptr &todo
 
   const bool completed = todo->isCompleted();
 
-  Akonadi::Item it = d->mCalendar->itemForIncidenceUid( todo->uid() );
-  Akonadi::Item::List relations = d->mCalendar->findChildren( it );
+  Akonadi::Item it = d->mCalendar->item( todo->uid() );
+  Akonadi::Item::List relations = d->mCalendar->childItems( it.id() );
 
   *ts << "<tr>" << endl;
 

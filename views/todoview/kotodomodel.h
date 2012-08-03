@@ -26,14 +26,11 @@
 #define KORG_VIEWS_KOTODOMODEL_H
 
 #include <akonadi/calendar/incidencechanger.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <Akonadi/Item>
 
 #include <KCalCore/Todo>
 #include <QAbstractItemModel>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 namespace Akonadi {
   class IncidenceChanger;
@@ -71,7 +68,7 @@ class KOTodoModel : public QAbstractItemModel
     virtual ~KOTodoModel();
 
     /** Set the calendar */
-    void setCalendar( CalendarSupport::Calendar *cal );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &calendar );
     /** Resets the model and deletes the whole todo tree */
     void clearTodos();
     /** Reloads all todos from the Calendar provided during construction */
@@ -188,7 +185,7 @@ class KOTodoModel : public QAbstractItemModel
     const int mColumnCount;
 
     /** Calendar to get data from */
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */

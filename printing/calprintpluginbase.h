@@ -31,7 +31,7 @@
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
@@ -360,7 +360,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param excludePrivate Whether to exclude Incidence marked private.
       @return The height used for the all-day box.
     */
-    int drawAllDayBox( QPainter &p, const Akonadi::Item::List &eventList,
+    int drawAllDayBox( QPainter &p, const KCalCore::Event::List &eventList,
                         const QDate &qd, bool expandable,
                         const QRect &box,
                         bool mExcludeConfidential, bool mExcludePrivate );
@@ -390,7 +390,7 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param excludePrivate Whether to exclude Incidence marked private.
       @param workDays List of workDays
     */
-    void drawAgendaDayBox( QPainter &p, const Akonadi::Item::List &eventList,
+    void drawAgendaDayBox( QPainter &p, const KCalCore::Event::List &eventList,
                            const QDate &qd, bool expandable,
                            const QTime &fromTime, const QTime &toTime,
                            const QRect &box,
@@ -586,14 +586,14 @@ class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param r Internal (used when printing sub-to-dos to give information
       about its parent)
     */
-    void drawTodo( int &count, const Akonadi::Item &todo, QPainter &p,
-                   CalendarSupport::TodoSortField sortField,
-                   CalendarSupport::SortDirection sortDir,
+    void drawTodo( int &count, const KCalCore::Todo::Ptr &todo, QPainter &p,
+                   KCalCore::TodoSortField sortField,
+                   KCalCore::SortDirection sortDir,
                    bool connectSubTodos, bool strikeoutCompleted, bool desc,
                    int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,
                    int width, int pageHeight,
-                   const Akonadi::Item::List &todoList, TodoParentStart *r,
+                   const KCalCore::Todo::List &todoList, TodoParentStart *r,
                    bool excludeConfidential, bool excludePrivate );
 
     /**

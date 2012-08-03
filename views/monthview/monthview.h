@@ -68,7 +68,7 @@ class MonthView : public KOEventView
     void setDateRange( const KDateTime &start, const KDateTime &end,
                        const QDate &preferredMonth = QDate() );
 
-    void setCalendar( CalendarSupport::Calendar *cal );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
 
     void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 

@@ -29,7 +29,6 @@
 #include "kocorehelper.h"
 #include "koglobals.h"
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
@@ -38,7 +37,7 @@
 #include <KActionCollection>
 #include <KMimeTypeTrader>
 
-KOEventPopupMenu::KOEventPopupMenu( CalendarSupport::Calendar *calendar, QWidget *parent )
+KOEventPopupMenu::KOEventPopupMenu( Akonadi::ETMCalendar * calendar, QWidget *parent )
   : QMenu( parent ), mCalendar( calendar )
 {
   mHasAdditionalItems = false;
@@ -107,7 +106,7 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
     return;
   }
 
-  const bool hasChangeRights = mCalendar->hasChangeRights( mCurrentIncidence );
+  const bool hasChangeRights = mCalendar->hasRight( mCurrentIncidence, Akonadi::Collection::CanChangeItem );
 
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( mCurrentIncidence );
   Q_ASSERT( incidence );
@@ -239,7 +238,7 @@ void KOEventPopupMenu::toggleTodoCompleted()
   }
 }
 
-void KOEventPopupMenu::setCalendar( CalendarSupport::Calendar *calendar )
+void KOEventPopupMenu::setCalendar( Akonadi::ETMCalendar * calendar )
 {
   mCalendar = calendar;
 }

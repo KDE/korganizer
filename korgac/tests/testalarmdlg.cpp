@@ -93,7 +93,8 @@ int main( int argc, char **argv )
   e4->setDtEnd( now.addSecs( 180 ) );
   e4->newAlarm();
 
-  AlarmDialog dlg( 0 );
+  Akonadi::ETMCalendar::Ptr invalidPtr;
+  AlarmDialog dlg( invalidPtr );
   dlg.addIncidence( incidenceToItem(e2), QDateTime::currentDateTime().addSecs( 60 ),
                     QString() );
   dlg.addIncidence( incidenceToItem(t1), QDateTime::currentDateTime().addSecs( 300 ),

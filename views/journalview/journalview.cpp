@@ -31,12 +31,12 @@
 #include "kocorehelper.h"
 #include "koglobals.h"
 
-#include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
 
 #include <KCalCore/Journal>
 
 #include <KCalUtils/IncidenceFormatter>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <KDialog>
 #include <KTextBrowser>
@@ -45,7 +45,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 
-JournalDateView::JournalDateView( CalendarSupport::Calendar *calendar, QWidget *parent )
+JournalDateView::JournalDateView( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent )
   : KVBox( parent ), mCalendar( calendar )
 {
   mChanger = 0;
@@ -142,7 +142,7 @@ void JournalDateView::journalDeleted( const Akonadi::Item &journal )
 }
 
 JournalView::JournalView( const Akonadi::Item &j,
-                          CalendarSupport::Calendar *calendar,
+                          const Akonadi::ETMCalendar::Ptr &calendar,
                           QWidget *parent )
   : QFrame( parent ), mJournal( j ), mCalendar( calendar )
 {
@@ -247,7 +247,7 @@ void JournalView::printItem()
 {
   if ( const KCalCore::Journal::Ptr j = CalendarSupport::journal( mJournal ) ) {
     KOCoreHelper helper;
-    CalPrinter printer( this, mCalendar, &helper, true );
+    CalPrinter printer( this, mCalendar.data(), &helper, true );
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;
@@ -263,7 +263,7 @@ void JournalView::printItem()
   }
 }
 
-void JournalView::setCalendar( CalendarSupport::Calendar *cal )
+void JournalView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   mCalendar = cal;
 }
@@ -327,8 +327,8 @@ void JournalView::readJournal( const Akonadi::Item &j )
   }
 
   if ( mCalendar ) {
-    mEditButton->setEnabled( mCalendar->hasChangeRights( j ) );
-    mDeleteButton->setEnabled( mCalendar->hasDeleteRights( j ) );
+    mEditButton->setEnabled( mCalendar->hasRight( j, Akonadi::Collection::CanChangeItem ) );
+    mDeleteButton->setEnabled( mCalendar->hasRight( j, Akonadi::Collection::CanDeleteItem ) );
   }
 
 }

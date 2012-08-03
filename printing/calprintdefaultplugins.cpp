@@ -30,7 +30,7 @@
 #include "calprintdefaultplugins.h"
 #include "koglobals.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
@@ -474,8 +474,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       drawNoteLines( p, descriptionBox, newBottom );
     }
 
-    Akonadi::Item item = mCalendar->itemForIncidenceUid( (*it)->uid() );
-    Akonadi::Item::List relations = mCalendar->findChildren( item );
+    Akonadi::Item item = mCalendar->item( (*it)->uid() );
+    Akonadi::Item::List relations = mCalendar->childItems( item.id() );
 
     if ( mShowSubitemsNotes && !isJournal ) {
       if ( relations.isEmpty() || (*it)->type() != Incidence::TypeTodo ) {
@@ -852,19 +852,17 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     }
 
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
-    Akonadi::Item::List eventList = mCalendar->events( curDay, timeSpec,
-                                               CalendarSupport::EventSortStartDate,
-                                               CalendarSupport::SortDirectionAscending );
+    KCalCore::Event::List eventList = mCalendar->events( curDay, timeSpec,
+                                                         KCalCore::EventSortStartDate,
+                                                         KCalCore::SortDirectionAscending );
 
     // split out the all day events as they will be printed in a separate box
-    Akonadi::Item::List alldayEvents, timedEvents;
-    Akonadi::Item::List::ConstIterator it;
-    for ( it = eventList.constBegin(); it != eventList.constEnd(); ++it ) {
-      Event::Ptr event = CalendarSupport::event( *it );
+    KCalCore::Event::List alldayEvents, timedEvents;
+    foreach( const KCalCore::Event::Ptr &event, eventList ) {
       if ( event->allDay() ) {
-        alldayEvents.append( *it );
+        alldayEvents.append( event );
       } else {
-        timedEvents.append( *it );
+        timedEvents.append( event );
       }
     }
 
@@ -892,14 +890,12 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       // now draw at most maxAllDayEvents in the all-day box
       drawBox( p, BOX_BORDER_WIDTH, allDayBox );
 
-      Akonadi::Item::List::ConstIterator it;
       QRect eventBox( allDayBox );
       eventBox.setLeft( TIMELINE_WIDTH + ( 2 * padding() ) );
       eventBox.setTop( eventBox.top() + padding() );
       eventBox.setBottom( eventBox.top() + lineSpacing );
       int count = 0;
-      for ( it = alldayEvents.constBegin(); it != alldayEvents.constEnd(); ++it ) {
-        Event::Ptr event = CalendarSupport::event( *it );
+      foreach ( const KCalCore::Event::Ptr &event, alldayEvents ) {
         if ( count == maxAllDayEvents ) {
           break;
         }
@@ -1561,41 +1557,39 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   p.setFont( QFont( "sans-serif", 10 ) );
   //fontHeight = p.fontMetrics().height();
 
-  Akonadi::Item::List todoList;
-  Akonadi::Item::List tempList;
-  Akonadi::Item::List::ConstIterator it;
+  KCalCore::Todo::List todoList;
+  KCalCore::Todo::List tempList;
 
-  // Convert sort options to the corresponding enums
-  CalendarSupport::TodoSortField sortField = CalendarSupport::TodoSortSummary;
-  switch( mTodoSortField ) {
-  case TodoFieldSummary:
-    sortField = CalendarSupport::TodoSortSummary;
+  KCalCore::SortDirection sortDirection = KCalCore::SortDirectionAscending;
+  switch( mTodoSortDirection ) {
+  case TodoDirectionAscending:
+    sortDirection = KCalCore::SortDirectionAscending;
     break;
-  case TodoFieldStartDate:
-    sortField = CalendarSupport::TodoSortStartDate;
+  case TodoDirectionDescending:
+    sortDirection = KCalCore::SortDirectionDescending;
     break;
-  case TodoFieldDueDate:
-    sortField = CalendarSupport::TodoSortDueDate;
-    break;
-  case TodoFieldPriority:
-    sortField = CalendarSupport::TodoSortPriority;
-    break;
-  case TodoFieldPercentComplete:
-    sortField = CalendarSupport::TodoSortPercentComplete;
-    break;
-  case TodoFieldUnset:
+  case TodoDirectionUnset:
     break;
   }
 
-  CalendarSupport::SortDirection sortDirection = CalendarSupport::SortDirectionAscending;
-  switch( mTodoSortDirection ) {
-  case TodoDirectionAscending:
-    sortDirection = CalendarSupport::SortDirectionAscending;
+  KCalCore::TodoSortField sortField = KCalCore::TodoSortSummary;
+  switch( mTodoSortField ) {
+  case TodoFieldSummary:
+    sortField = KCalCore::TodoSortSummary;
     break;
-  case TodoDirectionDescending:
-    sortDirection = CalendarSupport::SortDirectionDescending;
+  case TodoFieldStartDate:
+    sortField = KCalCore::TodoSortStartDate;
     break;
-  case TodoDirectionUnset:
+  case TodoFieldDueDate:
+    sortField = KCalCore::TodoSortDueDate;
+    break;
+  case TodoFieldPriority:
+    sortField = KCalCore::TodoSortPriority;
+    break;
+  case TodoFieldPercentComplete:
+    sortField = KCalCore::TodoSortPercentComplete;
+    break;
+  case TodoFieldUnset:
     break;
   }
 
@@ -1605,25 +1599,23 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   case TodosAll:
     break;
   case TodosUnfinished:
-    for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-      const Todo::Ptr todo = CalendarSupport::todo( *it );
+    foreach( const KCalCore::Todo::Ptr& todo, todoList ) {
       Q_ASSERT( todo );
       if ( !todo->isCompleted() ) {
-        tempList.append( *it );
+        tempList.append( todo );
       }
     }
     todoList = tempList;
     break;
   case TodosDueRange:
-    for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-      const Todo::Ptr todo = CalendarSupport::todo( *it );
+    foreach( const KCalCore::Todo::Ptr& todo, todoList ) {
       Q_ASSERT( todo );
       if ( todo->hasDueDate() ) {
         if ( todo->dtDue().date() >= mFromDate && todo->dtDue().date() <= mToDate ) {
-          tempList.append( *it );
+          tempList.append( todo );
         }
       } else {
-        tempList.append( *it );
+        tempList.append( todo );
       }
     }
     todoList = tempList;
@@ -1632,8 +1624,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   // Print to-dos
   int count = 0;
-  for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    const Todo::Ptr todo = CalendarSupport::todo( *it );
+  foreach( const KCalCore::Todo::Ptr& todo, todoList ) {
     if ( ( mExcludeConfidential && todo->secrecy() == Incidence::SecrecyConfidential ) ||
          ( mExcludePrivate      && todo->secrecy() == Incidence::SecrecyPrivate ) ) {
       continue;
@@ -1641,7 +1632,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     // Skip sub-to-dos. They will be printed recursively in drawTodo()
     if ( todo->relatedTo().isEmpty() ) { //review(AKONADI_PORT)
       count++;
-      drawTodo( count, *it, p,
+      drawTodo( count, todo, p,
                 sortField, sortDirection,
                 mConnectSubTodos,
                 mStrikeOutCompleted, mIncludeDescription,

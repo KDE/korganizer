@@ -25,11 +25,8 @@
 #ifndef KORG_VIEWS_KOTODODELEGATES_H
 #define KORG_VIEWS_KOTODODELEGATES_H
 
+#include <akonadi/calendar/etmcalendar.h>
 #include <QStyledItemDelegate>
-
-namespace CalendarSupport {
-  class Calendar;
-}
 
 class QPainter;
 class QSize;
@@ -155,9 +152,9 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
                                const QStyleOptionViewItem &option,
                                const QModelIndex &index ) const;
 
-    void setCalendar( CalendarSupport::Calendar *cal );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
   private:
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 };
 
 /**

@@ -71,7 +71,7 @@ class KOAgendaView : public KOEventView
     bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    virtual void setCalendar( CalendarSupport::Calendar *cal );
+    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
 
     /** reimpl */
     virtual void setTypeAheadReceiver( QObject *o );

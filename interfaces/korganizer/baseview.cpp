@@ -47,7 +47,7 @@ class BaseView::Private
     }
 
     EventViews::EventView::Changes mChanges;
-    CalendarSupport::Calendar *calendar;
+    Akonadi::ETMCalendar::Ptr calendar;
     QByteArray identifier;
     KDateTime startDateTime;
     KDateTime endDateTime;
@@ -65,10 +65,10 @@ BaseView::~BaseView()
   delete d;
 }
 
-void BaseView::setCalendar( CalendarSupport::Calendar *cal )
+void BaseView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
-  if ( d->calendar != cal ) {
-    d->calendar = cal;
+  if ( d->calendar != calendar ) {
+    d->calendar = calendar;
   }
 }
 
@@ -77,7 +77,7 @@ CalPrinterBase::PrintType BaseView::printType() const
   return CalPrinterBase::Month;
 }
 
-CalendarSupport::Calendar *BaseView::calendar()
+Akonadi::ETMCalendar::Ptr BaseView::calendar()
 {
   return d->calendar;
 }

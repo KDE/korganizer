@@ -55,7 +55,7 @@ class KOTodoView : public BaseView
     KOTodoView( bool sidebarView, QWidget *parent );
     ~KOTodoView();
 
-    virtual void setCalendar( CalendarSupport::Calendar *cal );
+    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
 
     virtual Akonadi::Item::List selectedIncidences();
     virtual KCalCore::DateList selectedIncidenceDates();

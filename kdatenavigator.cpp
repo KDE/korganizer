@@ -102,9 +102,9 @@ KDateNavigator::~KDateNavigator()
 {
 }
 
-void KDateNavigator::setCalendar( CalendarSupport::Calendar *cal )
+void KDateNavigator::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
-  mDayMatrix->setCalendar( cal );
+  mDayMatrix->setCalendar( calendar );
 }
 
 void KDateNavigator::setBaseDate( const QDate &date )

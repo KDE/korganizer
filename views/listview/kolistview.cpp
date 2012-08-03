@@ -34,12 +34,12 @@
 
 using namespace KOrg;
 
-KOListView::KOListView( CalendarSupport::Calendar *calendar,
+KOListView::KOListView( const Akonadi::ETMCalendar::Ptr &calendar,
                         QWidget *parent, bool nonInteractive )
   : KOEventView( parent )
 {
   QVBoxLayout *layout = new QVBoxLayout( this );
-  mListView = new EventViews::ListView( calendar, this, nonInteractive );
+  mListView = new EventViews::ListView( calendar.data(), this, nonInteractive );
   mPopupMenu = eventPopup();
   setCalendar( calendar );
 
@@ -218,11 +218,11 @@ QSize KOListView::sizeHint() const
   return mListView->sizeHint();
 }
 
-void KOListView::setCalendar( CalendarSupport::Calendar *cal )
+void KOListView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  mPopupMenu->setCalendar( cal );
-  mListView->setCalendar( cal );
+  mPopupMenu->setCalendar( cal.data() );
+  mListView->setCalendar( cal.data() );
 }
 
 void KOListView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )

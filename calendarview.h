@@ -30,8 +30,6 @@
 #include "korganizer_export.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
-#include <calendarsupport/calendar.h>
-
 #include <KCalCore/Incidence>
 #include <KCalCore/Visitor>
 #include <KCalCore/ScheduleMessage>
@@ -91,7 +89,7 @@ class CalendarViewExtension : public QWidget
   @author Cornelius Schumacher
 */
 class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
-                                              public CalendarSupport::Calendar::CalendarObserver
+                                              public Akonadi::ETMCalendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -148,8 +146,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     };
 
-    void setCalendar( CalendarSupport::Calendar * );
-    CalendarSupport::Calendar *calendar() const;
+    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
+    Akonadi::ETMCalendar::Ptr calendar() const;
 
     Akonadi::History *history() const;
 
@@ -571,9 +569,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Take ownership of selected event. */
     void takeOverEvent();
 
-    /** Take ownership of all events in calendar. */
-    void takeOverCalendar();
-
     /** query if the calendar is read-only. */
     bool isReadOnly() const;
 
@@ -733,7 +728,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     // Returns all incidences having item has their parent (or grand parent, etc.)
     // item is included in the list too.
     //
-    void getIncidenceHierarchy( const Akonadi::Item &item, Akonadi::Item::List &items );
+    void getIncidenceHierarchy( const KCalCore::Incidence::Ptr &incidence,
+                                KCalCore::Incidence::List &children );
 
     /**
      * Returns the default collection.
@@ -766,7 +762,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     QList<CalendarViewExtension*> mExtensions;
 
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;

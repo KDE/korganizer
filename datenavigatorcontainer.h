@@ -29,7 +29,7 @@
 #ifndef KORG_DATENAVIGATORCONTAINER_H
 #define KORG_DATENAVIGATORCONTAINER_H
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 
 #include <QFrame>
 
@@ -45,7 +45,7 @@ class DateNavigatorContainer: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( CalendarSupport::Calendar * );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
@@ -156,7 +156,7 @@ class DateNavigatorContainer: public QFrame
 
     KDateNavigator *mNavigatorView;
 
-    CalendarSupport::Calendar *mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 
     QList<KDateNavigator*> mExtraViews;
 

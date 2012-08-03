@@ -38,7 +38,7 @@
 #include "kotodoviewquicksearch.h"
 #include "kotodoviewview.h"
 
-#include <calendarsupport/calendar.h>
+#include <akonadi/calendar/etmcalendar.h>
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
@@ -317,7 +317,7 @@ void KOTodoView::expandTree()
   mView->expandAll();
 }
 
-void KOTodoView::setCalendar( CalendarSupport::Calendar *cal )
+void KOTodoView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   BaseView::setCalendar( cal );
   if ( !mSidebarView ) {
@@ -579,7 +579,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
         // Action isn't RO, it can change the incidence, "Edit" for example.
         const bool actionIsRw = mItemPopupMenuReadWriteEntries.contains( entry );
 
-        const bool incidenceIsRO = !calendar()->hasChangeRights( item );
+        const bool incidenceIsRO = !calendar()->hasRight( item, Akonadi::Collection::CanChangeItem );
 
         enable = hasItem && ( !actionIsRw ||
                               ( actionIsRw && !incidenceIsRO ) );
@@ -599,7 +599,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
     if ( !incidencePtr ) {
 
       if ( calendar() ) {
-        mMakeSubtodosIndependent->setEnabled( !calendar()->findChildren( incidencePtr ).isEmpty() );
+        mMakeSubtodosIndependent->setEnabled( !calendar()->childItems( incidencePtr->uid() ).isEmpty() );
         mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
       }
     }
@@ -690,7 +690,7 @@ void KOTodoView::printTodo( bool preview )
   Q_ASSERT( todo );
 
   KOCoreHelper helper;
-  CalPrinter printer( this, BaseView::calendar(), &helper, true );
+  CalPrinter printer( this, calendar().data(), &helper, true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
@@ -827,7 +827,7 @@ void KOTodoView::setNewDate( const QDate &date )
   KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( calendar()->hasChangeRights( todoItem ) ) {
+  if ( calendar()->hasRight( todoItem, Akonadi::Collection::CanChangeItem ) ) {
     KCalCore::Todo::Ptr oldTodo( todo->clone() );
 
     KDateTime dt( date );
@@ -860,7 +860,7 @@ void KOTodoView::setNewPercentage( QAction *action )
   KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
-  if ( calendar()->hasChangeRights( todoItem ) ) {
+  if ( calendar()->hasRight( todoItem, Akonadi::Collection::CanChangeItem ) ) {
     KCalCore::Todo::Ptr oldTodo( todo->clone() );
 
     int percentage = mPercentage.value( action );
@@ -888,7 +888,7 @@ void KOTodoView::setNewPriority( QAction *action )
   }
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
   KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
-  if ( calendar()->hasChangeRights( todoItem ) ) {
+  if ( calendar()->hasRight( todoItem, Akonadi::Collection::CanChangeItem ) ) {
     KCalCore::Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
@@ -906,7 +906,7 @@ void KOTodoView::changedCategories( QAction *action )
   const Akonadi::Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
   KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
-  if ( calendar()->hasChangeRights( todoItem ) ) {
+  if ( calendar()->hasRight( todoItem, Akonadi::Collection::CanChangeItem ) ) {
     KCalCore::Todo::Ptr oldTodo( todo->clone() );
 
     QStringList categories = todo->categories();

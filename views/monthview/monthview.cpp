@@ -232,11 +232,11 @@ void MonthView::setDateRange( const KDateTime &start, const KDateTime &end,
   d->mMonthView->setDateRange( start, end, preferredMonth );
 }
 
-void MonthView::setCalendar( CalendarSupport::Calendar *cal )
+void MonthView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  d->mPopup->setCalendar( cal );
-  d->mMonthView->setCalendar( cal );
+  d->mPopup->setCalendar( cal.data() );
+  d->mMonthView->setCalendar( cal.data() );
 }
 
 void MonthView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )

@@ -45,7 +45,7 @@ class KOListView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit KOListView( CalendarSupport::Calendar *calendar,
+    explicit KOListView( const Akonadi::ETMCalendar::Ptr &calendar,
                          QWidget *parent = 0, bool nonInteractive = false );
     ~KOListView();
 
@@ -63,7 +63,7 @@ class KOListView : public KOEventView
     void clear();
     QSize sizeHint() const;
 
-    void setCalendar( CalendarSupport::Calendar *cal );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
     void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
     virtual KOrg::CalPrinterBase::PrintType printType() const;

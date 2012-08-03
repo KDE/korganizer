@@ -72,6 +72,7 @@ else()
 endif()
 
 target_link_libraries(korgac
+  akonadi-calendar
   calendarsupport
   incidenceeditorsng
   kdepim
