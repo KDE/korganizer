@@ -31,14 +31,6 @@
 #include <KComboBox>
 #include <KDialog>
 
-namespace KCal {
-  class Incidence;
-}
-
-namespace CalendarSupport {
-  class Calendar;
-}
-
 using namespace KCalCore;
 
 class QButtonGroup;
