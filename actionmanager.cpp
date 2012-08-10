@@ -95,8 +95,6 @@
 #include <QApplication>
 #include <QTimer>
 
-//using namespace Future;
-
 KOWindowList *ActionManager::mWindowList = 0;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
