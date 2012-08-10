@@ -291,8 +291,6 @@ void ActionManager::createCalendarAkonadi()
 
   connect( mCalendar.data(), SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendar.data(), SIGNAL(signalErrorMessage(QString)),
-           mCalendarView, SLOT(showErrorMessage(QString)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
   mCalendar->setOwner( KCalCore::Person::Ptr( new KCalCore::Person( CalendarSupport::KCalPrefs::instance()->fullName(),
