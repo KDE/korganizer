@@ -1080,7 +1080,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   topLayout->addWidget( useGroupwareBool->checkBox(), 0, 0, 1, 2 );
 
   KPIM::KPrefsWidBool *bcc =
-    addWidBool( CalendarSupport::KCalPrefs::instance()->bccItem(), topFrame );
+    addWidBool( Akonadi::CalendarSettings::self()->bccItem(), topFrame );
   topLayout->addWidget( bcc->checkBox(), 1, 0, 1, 2 );
 
   QLabel *aTransportLabel = new QLabel(
