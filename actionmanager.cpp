@@ -44,8 +44,6 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 
-#include <akonadi_next/kcolumnfilterproxymodel.h>
-
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/eventarchiver.h>
 #include <calendarsupport/kcalprefs.h>
@@ -56,13 +54,10 @@
 
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
-#include <Akonadi/ChangeRecorder>
 #include <Akonadi/EntityDisplayAttribute>
-#include <Akonadi/EntityMimeTypeFilterModel>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/EntityTreeModel>
 #include <Akonadi/ETMViewStateSaver>
-#include <Akonadi/ItemFetchScope>
-#include <Akonadi/Session>
 #include <akonadi/calendar/history.h>
 
 #include <KCalCore/FileStorage>
@@ -100,7 +95,7 @@
 #include <QApplication>
 #include <QTimer>
 
-using namespace Future;
+//using namespace Future;
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -231,34 +226,11 @@ void ActionManager::createCalendarAkonadi()
   connect( mCalendar.data(), SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>)),
            this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>)) );
 
-  // Our calendar tree must be sorted.
-  QSortFilterProxyModel *sortFilterProxy = new QSortFilterProxyModel( this );
-  sortFilterProxy->setObjectName( "Sort" );
-  sortFilterProxy->setDynamicSortFilter( true );
-  sortFilterProxy->setSortCaseSensitivity( Qt::CaseInsensitive );
-  sortFilterProxy->setSourceModel( mCalendar->unfilteredModel() );
-
-  // We're only interested in the CollectionTitle column
-  KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel( this );
-  columnFilterProxy->setSourceModel( sortFilterProxy );
-  columnFilterProxy->setVisibleColumn( Akonadi::ETMCalendar::CollectionTitle );
-  columnFilterProxy->setObjectName( "Remove columns" );
-
-  // Keep track of selected items.
-  QItemSelectionModel *selectionModel = new QItemSelectionModel( columnFilterProxy );
-  selectionModel->setObjectName( "Calendar Selection Model" );
-
-  // Make item selection work by means of checkboxes.
-  KCheckableProxyModel *checkableProxy = new KCheckableProxyModel( this );
-  checkableProxy->setSelectionModel( selectionModel );
-  checkableProxy->setSourceModel( columnFilterProxy );
-  checkableProxy->setObjectName( "Add checkboxes" );
-
   KConfig *config = KOGlobals::self()->config();
   mCollectionSelectionModelStateSaver =
     new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(
       config->group( "GlobalCollectionSelection" ) );
-  mCollectionSelectionModelStateSaver->setSelectionModel( checkableProxy->selectionModel() );
+  mCollectionSelectionModelStateSaver->setSelectionModel( mCalendar->checkableProxyModel()->selectionModel() );
 
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
@@ -270,16 +242,16 @@ void ActionManager::createCalendarAkonadi()
   connect( mCollectionView, SIGNAL(colorsChanged()),
            mCalendarView, SLOT(updateConfig()) );
 
-  mCollectionViewStateSaver =
-    new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(
-      config->group( "GlobalCollectionView" ) );
+  mCollectionViewStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>( config->group( "GlobalCollectionView" ) );
   mCollectionViewStateSaver->setView( mCollectionView->view() );
+
+  KCheckableProxyModel *checkableProxy = mCalendar->checkableProxyModel();
+  QItemSelectionModel  *selectionModel = checkableProxy->selectionModel();
 
   mCollectionView->setCollectionSelectionProxyModel( checkableProxy );
 
-  CalendarSupport::CollectionSelection *colSel =
-    new CalendarSupport::CollectionSelection( selectionModel );
-  EventViews::EventView::setGlobalCollectionSelection( colSel );
+  CalendarSupport::CollectionSelection *collectionSelection = new CalendarSupport::CollectionSelection( selectionModel );
+  EventViews::EventView::setGlobalCollectionSelection( collectionSelection );
 
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
