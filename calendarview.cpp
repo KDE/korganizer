@@ -734,7 +734,7 @@ void CalendarView::slotDeleteFinished( int changeId,
                                        const QString &errorString )
 {
   Q_UNUSED( changeId );
-  if ( resultCode != Akonadi::IncidenceChanger::ResultCodeSuccess ) {
+  if ( resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess ) {
     foreach( Akonadi::Item::Id id, itemIdList ) {
       Akonadi::Item item = mCalendar->item( id );
       if ( item.isValid() )
