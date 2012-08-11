@@ -117,36 +117,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         CalendarView *mView;
     };
 
-    class CanDeleteIncidenceVisitor : public CalendarViewVisitor
-    {
-      const Akonadi::Item item;
-
-      public:
-        explicit CanDeleteIncidenceVisitor( const Akonadi::Item &i ) : item( i )
-        {
-        }
-
-      protected:
-        bool visit( KCalCore::Event::Ptr )
-        {
-          return mView->deleteEvent( item );
-        }
-        bool visit( KCalCore::Todo::Ptr )
-        {
-          return mView->deleteTodo( item );
-        }
-        bool visit( KCalCore::Journal::Ptr )
-        {
-          return mView->deleteJournal( item );
-        }
-        bool visit( KCalCore::FreeBusy::Ptr )
-        {
-          kError() << "CanDeleteIncidenceVisitor::visit(): Item is a freebusy object";
-          return false;
-        }
-
-    };
-
     void setCalendar( const Akonadi::ETMCalendar::Ptr & );
     Akonadi::ETMCalendar::Ptr calendar() const;
 
@@ -409,15 +379,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       @param force If true, all sub-todos will be deleted without prompting for confirmation.
     */
     void deleteTodoIncidence ( const Akonadi::Item &todo, bool force=false );
-
-    /** Check if deleting the supplied event is allowed. */
-    bool deleteEvent( const Akonadi::Item & ) { return true; }
-
-    /** Check if deleting the todo is allowed */
-    bool deleteTodo( const Akonadi::Item & ) {return true; }
-
-    /** Check if deleting the supplied journal is allowed. */
-    bool deleteJournal( const Akonadi::Item & ) { return true; }
 
     /** create new todo */
     void newTodo();

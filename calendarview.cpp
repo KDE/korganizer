@@ -2524,15 +2524,6 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
     return false;
   }
 
-  CanDeleteIncidenceVisitor v( item );
-
-  // Let the visitor do special things for special incidence types.
-  // e.g. todos with children cannot be deleted, so act(..) returns false
-  IncidenceBase::Ptr ib = incidence.staticCast<IncidenceBase>();
-  if ( !v.act( ib, this ) ) {
-    kWarning() << "CalendarView::deleteIncidence(): No rights to delete item";
-    return false;
-  }
   //If it is a todo, there are specific delete function
 
   if ( incidence && incidence->type() == Incidence::TypeTodo ) {
