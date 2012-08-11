@@ -29,7 +29,7 @@
 #include "journalview.h"
 #include "koprefs.h"
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/utils.h>
 
 #include <KVBox>

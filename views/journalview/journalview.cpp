@@ -36,7 +36,7 @@
 #include <KCalCore/Journal>
 
 #include <KCalUtils/IncidenceFormatter>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <KDialog>
 #include <KTextBrowser>

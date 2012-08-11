@@ -28,7 +28,7 @@
 
 #include <calendarsupport/utils.h>
 #include <calendarsupport/next/incidenceviewer.h>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <Akonadi/Item>
 

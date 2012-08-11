@@ -27,7 +27,7 @@
 #include "kotodomodel.h"
 #include "kotodoviewview.h"
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/categoryconfig.h>
 
 #include <incidenceeditor-ng/categoryhierarchyreader.h>

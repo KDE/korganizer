@@ -25,7 +25,7 @@
 #ifndef KORG_VIEWS_KOTODODELEGATES_H
 #define KORG_VIEWS_KOTODODELEGATES_H
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <QStyledItemDelegate>
 
 class QPainter;

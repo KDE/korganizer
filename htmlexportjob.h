@@ -25,7 +25,7 @@
 
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <KJob>
 

@@ -64,7 +64,7 @@
 #include <libkdepim/pimmessagebox.h>
 #include <akonadi/calendar/freebusymanager.h>
 #include <akonadi/calendar/history.h>
-#include <akonadi/calendar/incidencechanger.h>
+#include <Akonadi/Calendar/IncidenceChanger>
 
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>

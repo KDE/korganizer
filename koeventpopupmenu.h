@@ -30,7 +30,7 @@
 #include <QMenu>
 
 #include <Akonadi/Item>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 /**
  * Context menu for event views with standard event actions.

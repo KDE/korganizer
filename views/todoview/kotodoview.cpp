@@ -38,7 +38,7 @@
 #include "kotodoviewquicksearch.h"
 #include "kotodoviewview.h"
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>

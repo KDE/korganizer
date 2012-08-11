@@ -29,7 +29,7 @@
 #ifndef KORG_DATENAVIGATORCONTAINER_H
 #define KORG_DATENAVIGATORCONTAINER_H
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <QFrame>
 

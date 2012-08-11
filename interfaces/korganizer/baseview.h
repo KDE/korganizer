@@ -26,8 +26,8 @@
 #include "korganizer/korganizer_export.h"
 #include "printplugin.h"
 
-#include <akonadi/calendar/incidencechanger.h>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarviews/eventviews/eventview.h>
 
 #include <Akonadi/Collection>

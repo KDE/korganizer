@@ -25,8 +25,8 @@
 #ifndef KORG_VIEWS_KOTODOMODEL_H
 #define KORG_VIEWS_KOTODOMODEL_H
 
-#include <akonadi/calendar/incidencechanger.h>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <Akonadi/Item>
 
 #include <KCalCore/Todo>

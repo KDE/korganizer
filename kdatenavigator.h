@@ -29,7 +29,7 @@
 #include <QFrame>
 
 #include <KCalCore/IncidenceBase> //for DateList typedef
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 class KODayMatrix;
 class NavigatorBar;

@@ -26,7 +26,7 @@
 #ifndef KOALARMCLIENT_H
 #define KOALARMCLIENT_H
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #ifndef _WIN32_WCE
 #include <KSessionManager>

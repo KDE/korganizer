@@ -33,7 +33,7 @@
 #include "korganizer/part.h"
 
 #include <Akonadi/Item>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <KUrl>
 #include <KViewStateMaintainer>

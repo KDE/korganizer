@@ -27,7 +27,7 @@
 #ifndef KORG_VIEWS_KOTODOVIEWQUICKSEARCH_H
 #define KORG_VIEWS_KOTODOVIEWQUICKSEARCH_H
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <QWidget>
 
 namespace KPIM {

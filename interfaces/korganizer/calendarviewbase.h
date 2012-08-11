@@ -24,7 +24,7 @@
 #define KORG_INTERFACES_CALENDARVIEWBASE_H
 
 #include "korganizer/baseview.h"
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 namespace KOrg {
 

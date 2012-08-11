@@ -30,7 +30,7 @@
 #include "kohelper.h"
 #include "koglobals.h"
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/utils.h>
 #include <calendarviews/eventviews/agenda/cellitem.h>
 

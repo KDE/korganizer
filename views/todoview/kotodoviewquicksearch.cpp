@@ -28,7 +28,7 @@
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/categoryconfig.h>
 
 #include <libkdepim/kcheckcombobox.h>

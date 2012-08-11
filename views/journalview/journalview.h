@@ -28,8 +28,8 @@
 #define KORG_VIEWS_JOURNALVIEW_H
 
 // Widget showing one Journal entry
-#include <akonadi/calendar/incidencechanger.h>
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <QDate>
 #include <QFrame>

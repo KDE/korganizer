@@ -24,7 +24,7 @@
 #ifndef ALARMDIALOG_H
 #define ALARMDIALOG_H
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 #include <Akonadi/Item>
 #include <KDialog>
 #include <KCalCore/Incidence>

@@ -27,7 +27,7 @@
 #ifndef KORG_KODAYMATRIX_H
 #define KORG_KODAYMATRIX_H
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
 

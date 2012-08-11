@@ -31,7 +31,7 @@
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
 
-#include <akonadi/calendar/etmcalendar.h>
+#include <Akonadi/Calendar/ETMCalendar>
 
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
