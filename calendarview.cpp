@@ -2438,7 +2438,7 @@ void CalendarView::deleteSubTodosIncidence ( const Akonadi::Item &todoItem )
     }
   }
 
-  if ( mChanger->deletedRecently( todoItem.id() ) ) {
+  if ( !mChanger->deletedRecently( todoItem.id() ) ) {
     mChanger->deleteIncidence( todoItem, this );
   }
 }
@@ -2456,7 +2456,7 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item &todoItem, bool for
     if ( !force && KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( todoItem ) == KMessageBox::Continue );
     }
-    if ( doDelete && mChanger->deletedRecently( todoItem.id() ) ) {
+    if ( doDelete && !mChanger->deletedRecently( todoItem.id() ) ) {
       mChanger->deleteIncidence( todoItem, this );
     }
     return;
@@ -2480,7 +2480,7 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item &todoItem, bool for
   // Delete only the father
   if ( km == KMessageBox::Yes ) {
     makeChildrenIndependent( todoItem );
-    if ( mChanger->deletedRecently( todoItem.id() ) ) {
+    if ( !mChanger->deletedRecently( todoItem.id() ) ) {
       mChanger->deleteIncidence( todoItem, this );
     }
   } else if ( km == KMessageBox::No ) {
@@ -2502,7 +2502,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
     return false;
   }
 
-  if ( !mChanger->deletedRecently( item.id() ) ) {
+  if ( mChanger->deletedRecently( item.id() ) ) {
     // it was deleted already but the etm wasn't notified yet
     return true;
   }
