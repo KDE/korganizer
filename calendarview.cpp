@@ -1443,6 +1443,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item::Id &uid, bool force )
 {
   Akonadi::Item item = mCalendar->item( uid );
   if ( !CalendarSupport::hasIncidence( item ) ) {
+    kError() << "CalendarView::deleteIncidence(): Item does not contain incidence.";
     return false;
   }
   return deleteIncidence( item, force );
@@ -2493,10 +2494,11 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item &todoItem, bool for
 bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
 {
   Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
     if ( !force ) {
       KNotification::beep();
     }
+    kError() << "CalendarView::deleteIncidence(): Unable do delete, incidence is null.";
     return false;
   }
 
