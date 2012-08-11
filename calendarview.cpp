@@ -143,6 +143,7 @@ CalendarView::CalendarView( QWidget *parent )
 
 
   mChanger = new Akonadi::IncidenceChanger( this );
+  mChanger->setGroupwareCommuniation( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
   connect( mChanger,
            SIGNAL(createFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
            SLOT(slotCreateFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
@@ -649,6 +650,8 @@ void CalendarView::updateConfig( const QByteArray &receiver )
   mChanger->setDestinationPolicy(
     static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(
       KOPrefs::instance()->destination() ) );
+
+  mChanger->setGroupwareCommuniation( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
 }
 
 void CalendarView::slotCreateFinished( int changeId,
