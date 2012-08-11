@@ -58,7 +58,7 @@
 #include <Akonadi/EntityTreeView>
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/ETMViewStateSaver>
-#include <akonadi/calendar/history.h>
+#include <Akonadi/Calendar/History>
 
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
@@ -383,8 +383,7 @@ void ActionManager::initActions()
   mUndoAction->setEnabled( false );
   mRedoAction->setEnabled( false );
   connect( mCalendarView, SIGNAL(pasteEnabled(bool)), pasteAction, SLOT(setEnabled(bool)) );
-  connect( h, SIGNAL(undoAvailable(QString)), SLOT(updateUndoAction(QString)) );
-  connect( h, SIGNAL(redoAvailable(QString)), SLOT(updateRedoAction(QString)) );
+  connect( h, SIGNAL(changed()), SLOT(updateUndoRedoActions()) );
 
   /************************** VIEW MENU *********************************/
 
@@ -1936,33 +1935,27 @@ void ActionManager::showDate( const QDate &date )
   mCalendarView->showDate( date );
 }
 
-void ActionManager::updateUndoAction( const QString &text )
+void ActionManager::updateUndoRedoActions()
 {
-  mUndoAction->setText( i18n( "Undo" ) );
-  if ( text.isEmpty() ) {
-    mUndoAction->setEnabled( false );
-  } else {
-    mUndoAction->setEnabled( true );
-    if ( !text.isEmpty() ) {
-      mUndoAction->setText( i18n( "Undo: %1", text ) );
-    }
-  }
-  mUndoAction->setIconText( i18n( "Undo" ) );
-}
+  Akonadi::History *history = mCalendarView->incidenceChanger()->history();
 
-void ActionManager::updateRedoAction( const QString &text )
-{
-  if ( text.isEmpty() ) {
+  if ( history->undoAvailable() ) {
+    mUndoAction->setEnabled( true );
+    mUndoAction->setText( i18n( "Undo: %1", history->nextUndoDescription() ) );
+  } else {
+    mUndoAction->setEnabled( false );
+    mUndoAction->setText( i18n( "Undo" ) );
+  }
+
+  if ( history->redoAvailable() ) {
+    mRedoAction->setEnabled( true );
+    mUndoAction->setText( i18n( "Undo: %1", history->nextRedoDescription() ) );
+  } else {
     mRedoAction->setEnabled( false );
     mRedoAction->setText( i18n( "Redo" ) );
-  } else {
-    mRedoAction->setEnabled( true );
-    if ( text.isEmpty() ) {
-      mRedoAction->setText( i18n( "Redo" ) );
-    } else {
-      mRedoAction->setText( i18n( "Redo (%1)", text ) );
-    }
   }
+
+  mUndoAction->setIconText( i18n( "Undo" ) );
 }
 
 bool ActionManager::queryClose()

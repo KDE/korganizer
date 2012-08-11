@@ -343,9 +343,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void setTitle();
 
-    void updateUndoAction( const QString & );
-
-    void updateRedoAction( const QString & );
+    void updateUndoRedoActions();
 
     void slotImportDialogFinished( ImportDialog * );
 
