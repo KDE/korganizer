@@ -70,7 +70,7 @@
 
 #include <KAction>
 #include <KActionCollection>
-#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
+#include <KCheckableProxyModel>
 #include <KCmdLineArgs>
 #include <KFileDialog>
 #include <KGlobalSettings>
