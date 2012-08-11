@@ -141,6 +141,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         }
         bool visit( KCalCore::FreeBusy::Ptr )
         {
+          kError() << "CanDeleteIncidenceVisitor::visit(): Item is a freebusy object";
           return false;
         }
 

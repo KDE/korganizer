@@ -2504,6 +2504,8 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
 
   if ( mChanger->deletedRecently( item.id() ) ) {
     // it was deleted already but the etm wasn't notified yet
+    kWarning() << "CalendarView::deleteIncidence(): item with id" << item.id()
+               << "was deleted recently, skipping";
     return true;
   }
 
@@ -2518,6 +2520,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
         i18n( "Removing not possible" ),
         "deleteReadOnlyIncidence" );
     }
+    kWarning() << "CalendarView::deleteIncidence(): No rights to delete item";
     return false;
   }
 
@@ -2527,6 +2530,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
   // e.g. todos with children cannot be deleted, so act(..) returns false
   IncidenceBase::Ptr ib = incidence.staticCast<IncidenceBase>();
   if ( !v.act( ib, this ) ) {
+    kWarning() << "CalendarView::deleteIncidence(): No rights to delete item";
     return false;
   }
   //If it is a todo, there are specific delete function
