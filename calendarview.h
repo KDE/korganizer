@@ -370,7 +370,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
                    deleted without prompting for confirmation.
     */
     bool deleteIncidence( const Akonadi::Item &item, bool force=false );
-    bool deleteIncidence( const Akonadi::Item::Id &uid, bool force=false );
+    bool deleteIncidence( Akonadi::Item::Id id, bool force=false );
     void deleteIncidence();
 
      /**

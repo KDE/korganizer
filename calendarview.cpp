@@ -1439,9 +1439,9 @@ bool CalendarView::makeChildrenIndependent( const Akonadi::Item &item )
   return true;
 }
 
-bool CalendarView::deleteIncidence( const Akonadi::Item::Id &uid, bool force )
+bool CalendarView::deleteIncidence( Akonadi::Item::Id id, bool force )
 {
-  Akonadi::Item item = mCalendar->item( uid );
+  Akonadi::Item item = mCalendar->item( id );
   if ( !CalendarSupport::hasIncidence( item ) ) {
     kError() << "CalendarView::deleteIncidence(): Item does not contain incidence.";
     return false;
