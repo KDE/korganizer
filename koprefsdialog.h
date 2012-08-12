@@ -98,18 +98,6 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsMo
   protected:
     void usrReadConfig();
     void usrWriteConfig();
-
-  protected slots:
-    void addItem();
-    void removeItem();
-    void updateItem();
-    void checkEmptyMail();
-    void updateInput();
-
-  private:
-    QListWidget *mAMails;
-    KLineEdit *aEmailsEdit;
-    QPushButton *mRemove;
 };
 
 class KOGroupwarePrefsPage;

@@ -1092,143 +1092,18 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   tmw->layout()->setContentsMargins( 0, 0, 0, 0 );
   topLayout->addWidget( tmw, 3, 0, 1, 2 );
 
-  QLabel *aMailsLabel = new QLabel(
-    i18nc( "@label", "Additional email addresses:" ), topFrame );
-  QString whatsThis = i18nc( "@info:whatsthis",
-                             "Add, edit or remove additional e-mails addresses "
-                             "here. These email addresses are the ones you "
-                             "have in addition to the one set in personal "
-                             "preferences. If you are an attendee of one event, "
-                             "but use another email address there, you need to "
-                             "list this address here so KOrganizer can "
-                             "recognize it as yours." );
-  aMailsLabel->setWhatsThis( whatsThis );
-  topLayout->addWidget( aMailsLabel, 4, 0, 1, 2 );
-  mAMails = new QListWidget( topFrame );
-  mAMails->setWhatsThis( whatsThis );
-
-  topLayout->addWidget( mAMails, 5, 0, 1, 2 );
-
-  QLabel *aEmailsEditLabel = new QLabel( i18nc( "@label", "Additional email address:" ), topFrame );
-  whatsThis = i18nc( "@info:whatsthis",
-                     "Edit additional e-mails addresses here. To edit an "
-                     "address select it from the list above "
-                     "or press the \"New\" button below. These email "
-                     "addresses are the ones you have in addition to the "
-                     "one set in personal preferences." );
-  aEmailsEditLabel->setWhatsThis( whatsThis );
-  topLayout->addWidget( aEmailsEditLabel, 6, 0 );
-  aEmailsEdit = new KLineEdit( topFrame );
-  aEmailsEdit->setClearButtonShown( true );
-  aEmailsEdit->setWhatsThis( whatsThis );
-  aEmailsEdit->setEnabled( false );
-  topLayout->addWidget( aEmailsEdit, 6, 1 );
-
-  QPushButton *add = new QPushButton(
-    i18nc( "@action:button add a new email address", "New" ), topFrame );
-  add->setObjectName( "new" );
-  whatsThis = i18nc( "@info:whatsthis",
-                     "Press this button to add a new entry to the "
-                     "additional e-mail addresses list. Use the edit "
-                     "box above to edit the new entry." );
-  add->setWhatsThis( whatsThis );
-  topLayout->addWidget( add, 7, 0 );
-  mRemove = new QPushButton( i18nc( "@action:button", "Remove" ), topFrame );
-  mRemove->setWhatsThis( whatsThis );
-  topLayout->addWidget( mRemove, 7, 1 );
-
   //topLayout->setRowStretch( 2, 1 );
-  connect( add, SIGNAL(clicked()), this, SLOT(addItem()) );
-  connect( mRemove, SIGNAL(clicked()), this, SLOT(removeItem()) );
-  connect( aEmailsEdit, SIGNAL(textChanged(QString)), this, SLOT(updateItem()) );
-  connect( aEmailsEdit, SIGNAL(lostFocus()), this, SLOT(checkEmptyMail()) );
-  connect( mAMails, SIGNAL(itemSelectionChanged()), SLOT(updateInput()) );
+
 
   load();
 }
 
 void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
-  mAMails->clear();
-
-  QStringList::const_iterator begin(
-    CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constBegin() );
-    QStringList::const_iterator end(
-      CalendarSupport::KCalPrefs::instance()->mAdditionalMails.constEnd() );
-
-    for ( QStringList::const_iterator it = begin; it != end; ++it ) {
-    new QListWidgetItem( ( *it ), mAMails );
-  }
 }
 
 void KOPrefsDialogGroupScheduling::usrWriteConfig()
 {
-  CalendarSupport::KCalPrefs::instance()->mAdditionalMails.clear();
-
-  for ( int i = 0; i<mAMails->count(); ++i ) {
-    CalendarSupport::KCalPrefs::instance()->mAdditionalMails.append( mAMails->item( i )->text() );
-  }
-}
-
-void KOPrefsDialogGroupScheduling::addItem()
-{
-  aEmailsEdit->setEnabled( true );
-  mRemove->setEnabled( true );
-  QListWidgetItem *item = new QListWidgetItem( mAMails );
-  mAMails->setCurrentItem( item );
-  aEmailsEdit->setText( i18nc( "@label", "(EmptyEmail)" ) );
-  slotWidChanged();
-}
-
-void KOPrefsDialogGroupScheduling::removeItem()
-{
-  QListWidgetItem *item;
-  item = mAMails->currentItem();
-  if ( !item ) {
-    return;
-  }
-
-  delete mAMails->takeItem( mAMails->row( item ) );
-  item = mAMails->currentItem();
-  if ( !item ) {
-    aEmailsEdit->setText( "" );
-    aEmailsEdit->setEnabled( false );
-    mRemove->setEnabled( false );
-  } else if ( mAMails->count() == 0 ) {
-    aEmailsEdit->setEnabled( false );
-    mRemove->setEnabled( false );
-  }
-  slotWidChanged();
-}
-
-void KOPrefsDialogGroupScheduling::updateItem()
-{
-  QListWidgetItem *item;
-  item = mAMails->currentItem();
-  if ( !item ) {
-    return;
-  }
-
-  item->setText( aEmailsEdit->text() );
-  slotWidChanged();
-}
-
-void KOPrefsDialogGroupScheduling::checkEmptyMail()
-{
-  if ( aEmailsEdit->text().isEmpty() ) {
-    removeItem();
-  }
-}
-
-void KOPrefsDialogGroupScheduling::updateInput()
-{
-  QListWidgetItem *item;
-  item = mAMails->currentItem();
-  if ( !item ) {
-    return;
-  }
-  aEmailsEdit->setEnabled( true );
-  aEmailsEdit->setText( item->text() );
 }
 
 extern "C"
