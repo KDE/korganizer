@@ -848,6 +848,7 @@ void CalendarView::edit_cut()
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     KNotification::beep();
+    kError() << "Null incidence";
     return;
   }
 
@@ -1450,7 +1451,7 @@ void CalendarView::toggleAlarm( const Akonadi::Item &item )
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
-    kDebug() << "called without having a clicked item";
+    kError() << "Null incidence";
     return;
   }
   Incidence::Ptr oldincidence( incidence->clone() );
@@ -1492,7 +1493,7 @@ void CalendarView::toggleTodoCompleted( const Akonadi::Item &todoItem )
   const Incidence::Ptr incidence = CalendarSupport::incidence( todoItem );
 
   if ( !incidence ) {
-    kDebug() << "called without having a clicked item";
+    kError() << "Null incidence";
     return;
   }
   if ( incidence->type() != Incidence::TypeTodo ) {
@@ -1518,7 +1519,7 @@ void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const QSt
 {
 #ifdef AKONADI_PORT_DISABLED
   if ( !incidence ) {
-    kDebug() << "called without having a clicked item";
+    kError() << "Null incidence";
     return;
   }
 
@@ -1588,7 +1589,7 @@ void CalendarView::moveIncidenceToResource( const Akonadi::Item &item, const QSt
 {
 #ifdef AKONADI_PORT_DISABLED
   if ( !incidence ) {
-    kDebug() << "called without having a clicked item";
+    kError() << "Null incidence";
     return;
   }
 
@@ -1675,7 +1676,7 @@ void CalendarView::dissociateOccurrences( const Akonadi::Item &item, const QDate
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
 
   if ( !incidence ) {
-    kError() << "Called without having a clicked item";
+    kError() << "Null incidence";
     return;
   }
 
@@ -2387,7 +2388,7 @@ bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
   Q_UNUSED( isCounter );
   Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
-    kDebug() << "Empty Incidence";
+    kError() << "Null incidence";
     KNotification::beep();
     return false;
   }
@@ -2487,6 +2488,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
   Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
     if ( !force ) {
+      kError() << "Null incidence";
       KNotification::beep();
     }
     kError() << "CalendarView::deleteIncidence(): Unable do delete, incidence is null.";
