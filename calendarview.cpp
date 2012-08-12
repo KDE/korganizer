@@ -99,6 +99,7 @@ CalendarView::CalendarView( QWidget *parent )
     mSplitterSizesValid( false )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
+  mChanger = new Akonadi::IncidenceChanger( this );
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -141,8 +142,6 @@ CalendarView::CalendarView( QWidget *parent )
   mLeftFrame = mLeftSplitter;
   mLeftFrame->installEventFilter( this );
 
-
-  mChanger = new Akonadi::IncidenceChanger( this );
   mChanger->setGroupwareCommuniation( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
   connect( mChanger,
            SIGNAL(createFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
@@ -847,7 +846,7 @@ void CalendarView::edit_cut()
 {
   const Akonadi::Item item = selectedIncidence();
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
     KNotification::beep();
     return;
   }
@@ -1450,7 +1449,7 @@ bool CalendarView::deleteIncidence( Akonadi::Item::Id id, bool force )
 void CalendarView::toggleAlarm( const Akonadi::Item &item )
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
     kDebug() << "called without having a clicked item";
     return;
   }
@@ -1492,7 +1491,7 @@ void CalendarView::toggleTodoCompleted( const Akonadi::Item &todoItem )
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( todoItem );
 
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
     kDebug() << "called without having a clicked item";
     return;
   }
@@ -1675,7 +1674,7 @@ void CalendarView::dissociateOccurrences( const Akonadi::Item &item, const QDate
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
 
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
     kError() << "Called without having a clicked item";
     return;
   }
@@ -2393,12 +2392,6 @@ bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
     return false;
   }
 
-  if ( !mChanger ) {
-    kDebug() << "Empty Changer";
-    KNotification::beep();
-    return false;
-  }
-
   /*
     //TODO_NG
   IncidenceEditor *tmp = editorDialog( item );
@@ -2715,7 +2708,7 @@ void CalendarView::updateCategories()
 
 void CalendarView::addIncidenceOn( const Akonadi::Item &itemadd, const QDate &dt )
 {
-  if ( !CalendarSupport::hasIncidence( itemadd ) || !mChanger ) {
+  if ( !CalendarSupport::hasIncidence( itemadd ) ) {
     KMessageBox::sorry(
       this,
       i18n( "Unable to copy the item to %1.", dt.toString() ),
@@ -2756,7 +2749,7 @@ void CalendarView::addIncidenceOn( const Akonadi::Item &itemadd, const QDate &dt
 
 void CalendarView::moveIncidenceTo( const Akonadi::Item &itemmove, const QDate &dt )
 {
-  if ( !CalendarSupport::hasIncidence( itemmove ) || !mChanger ) {
+  if ( !CalendarSupport::hasIncidence( itemmove ) ) {
     KMessageBox::sorry(
       this,
       i18n( "Unable to move the item to  %1.", dt.toString() ),
