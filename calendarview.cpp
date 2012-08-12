@@ -1071,8 +1071,7 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
   }
 }
 
-IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor(
-  const KCalCore::Event::Ptr &event )
+IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor( const KCalCore::Event::Ptr &event )
 {
   Akonadi::Item item;
   item.setPayload( event );
@@ -1080,9 +1079,8 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor(
   IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
   dialog->load( item );
 
-//  connectIncidenceEditor( dialog );
   mDialogManager->connectTypeAhead(
-    dialog, dynamic_cast<KOEventView*>( viewManager()->currentView() ) );
+    dialog, qobject_cast<KOEventView*>( viewManager()->currentView() ) );
 
   return dialog;
 }

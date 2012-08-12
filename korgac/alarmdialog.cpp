@@ -940,7 +940,7 @@ bool AlarmDialog::openIncidenceEditorNG( const Akonadi::Item &item )
   IncidenceEditorNG::IncidenceDialog *dialog =
     IncidenceEditorNG::IncidenceDialogFactory::create(
       false, /*doesn't need initial saving*/
-      incidence->type(), this );
+      incidence->type(), 0, this );
   dialog->load( item );
   return true;
 }

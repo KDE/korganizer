@@ -175,8 +175,8 @@ IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog( const Akonadi
 
   IncidenceEditorNG::IncidenceDialog *dialog =
     IncidenceEditorNG::IncidenceDialogFactory::create(
-      false/*needs initial saving?*/,
-      incidence->type(), mMainView );
+      /*needs initial saving=*/false,
+      incidence->type(), mMainView->incidenceChanger(), mMainView );
 
   return dialog;
 }
