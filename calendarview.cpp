@@ -142,7 +142,7 @@ CalendarView::CalendarView( QWidget *parent )
   mLeftFrame = mLeftSplitter;
   mLeftFrame->installEventFilter( this );
 
-  mChanger->setGroupwareCommuniation( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
+  mChanger->setGroupwareCommunication( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
   connect( mChanger,
            SIGNAL(createFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
            SLOT(slotCreateFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
@@ -156,7 +156,7 @@ CalendarView::CalendarView( QWidget *parent )
            SLOT(slotModifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
 
 
-  /* TODO: sergio
+  /* TODO_SERGIO
   connect( mChanger, SIGNAL(schedule(KCalCore::iTIPMethod,Akonadi::Item)),
            this, SLOT(schedule(KCalCore::iTIPMethod,Akonadi::Item)) );
 
