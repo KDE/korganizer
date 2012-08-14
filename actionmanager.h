@@ -378,6 +378,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions( bool enable );
+    Akonadi::ETMCalendar::Ptr calendar() const;
 
     Akonadi::Collection selectedCollection() const;
 
@@ -435,10 +436,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     CalendarView *mCalendarView;
     KOrg::MainWindow *mMainWindow;
     bool mIsPart;
-
     bool mHtmlExportSync;
 
-    Akonadi::ETMCalendar::Ptr mCalendar;
     AkonadiCollectionView *mCollectionView;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver;

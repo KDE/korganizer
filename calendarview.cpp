@@ -65,6 +65,7 @@
 #include <akonadi/calendar/freebusymanager.h>
 #include <akonadi/calendar/history.h>
 #include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/Calendar/CalendarClipboard>
 
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>
@@ -93,18 +94,20 @@
 #include <QVBoxLayout>
 
 CalendarView::CalendarView( QWidget *parent )
-  : CalendarViewBase( parent ),
-    mCalendar( 0 ),
-    mChanger( 0 ),
-    mSplitterSizesValid( false )
+  : CalendarViewBase( parent )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
   mChanger = new Akonadi::IncidenceChanger( this );
-
+  mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) ); //TODO_SERGIO
+  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
+  mCalendar->setObjectName( "KOrg Calendar" );
+  mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
+  connect( mCalendarClipboard, SIGNAL(cutFinished(bool,QString)), SLOT(onCutFinished()) );
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 
   mReadOnly = false;
+  mSplitterSizesValid = false;
 
   mCalPrinter = 0;
 
@@ -155,16 +158,13 @@ CalendarView::CalendarView( QWidget *parent )
            SIGNAL(modifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
            SLOT(slotModifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
 
-
   /* TODO_SERGIO
   connect( mChanger, SIGNAL(schedule(KCalCore::iTIPMethod,Akonadi::Item)),
            this, SLOT(schedule(KCalCore::iTIPMethod,Akonadi::Item)) );
 
   connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
            mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
-
     */
-
 
   // Signals emitted by mDateNavigator
   connect( mDateNavigator, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
@@ -251,11 +251,9 @@ CalendarView::CalendarView( QWidget *parent )
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 
-  KOGlobals::self()->
-    setHolidays( new KHolidays::HolidayRegion( KOPrefs::instance()->mHolidays ) );
+  KOGlobals::self()->setHolidays( new KHolidays::HolidayRegion( KOPrefs::instance()->mHolidays ) );
 
-  connect( QApplication::clipboard(), SIGNAL(dataChanged()),
-           SLOT(checkClipboard()) );
+  connect( QApplication::clipboard(), SIGNAL(dataChanged()), SLOT(checkClipboard()) );
 
   connect( mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            this, SLOT(processTodoListSelection(Akonadi::Item,QDate)) );
@@ -271,6 +269,13 @@ CalendarView::CalendarView( QWidget *parent )
       pageRegistered = true;
     }
   }
+
+  Akonadi::FreeBusyManager::self()->setCalendar( mCalendar );
+
+  mCalendar->registerObserver( this );
+  mDateNavigatorContainer->setCalendar( mCalendar );
+  mTodoList->setCalendar( mCalendar );
+  mEventViewer->setCalendar( mCalendar.data() );
 }
 
 CalendarView::~CalendarView()
@@ -282,21 +287,6 @@ CalendarView::~CalendarView()
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
-}
-
-void CalendarView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
-{
-  mCalendar = cal;
-  Akonadi::FreeBusyManager::self()->setCalendar( cal );
-
-  mChanger->setDestinationPolicy(
-    static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(
-      KOPrefs::instance()->destination() ) );
-
-  mCalendar->registerObserver( this );
-  mDateNavigatorContainer->setCalendar( mCalendar );
-  mTodoList->setCalendar( mCalendar );
-  mEventViewer->setCalendar( mCalendar.data() );
 }
 
 Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
@@ -650,7 +640,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
     static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(
       KOPrefs::instance()->destination() ) );
 
-  mChanger->setGroupwareCommuniation( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
+  mChanger->setGroupwareCommunication( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication() );
 }
 
 void CalendarView::slotCreateFinished( int changeId,
@@ -847,44 +837,11 @@ void CalendarView::edit_cut()
   const Akonadi::Item item = selectedIncidence();
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( !incidence ) {
-    KNotification::beep();
     kError() << "Null incidence";
     return;
   }
 
-  Akonadi::Item::List items;
-  KCalCore::Incidence::List incidences;
-  int km = KMessageBox::Yes;
-
-  if ( !mCalendar->childItems( item.id() ).isEmpty() &&
-       incidence->type() == Incidence::TypeTodo ) { // Only todos (yet?)
-    km = KMessageBox::questionYesNoCancel(
-      this,
-      i18n( "The item \"%1\" has sub-to-dos. "
-            "Do you want to cut just this item and "
-            "make all its sub-to-dos independent, or "
-            "cut the to-do with all its sub-to-dos?",
-            incidence->summary() ),
-      i18n( "KOrganizer Confirmation" ),
-      KGuiItem( i18n( "Cut Only This" ) ),
-      KGuiItem( i18n( "Cut All" ) ) );
-  }
-
-  if ( km == KMessageBox::Yes ) { // only one
-    incidences.append( incidence );
-    makeChildrenIndependent( item );
-  } else if ( km == KMessageBox::No ) { // all
-    // load incidence + children + grandchildren...
-    getIncidenceHierarchy( incidence, incidences );
-  }
-
-  items = mCalendar->itemList( incidences );
-  if ( km != KMessageBox::Cancel ) {
-    //TODO_SERGIO: cutincidences
-    //mChanger->cutIncidences( items, this );
-  }
-
-  checkClipboard();
+  mCalendarClipboard->cutIncidence( incidence );
 }
 
 void CalendarView::edit_copy()
@@ -893,39 +850,14 @@ void CalendarView::edit_copy()
 
   if ( !item.isValid() ) {
     KNotification::beep();
+    kError() << "Invalid item";
     return;
   }
 
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  KCalCore::Incidence::List incidences;
-  int km = KMessageBox::Yes;
-
-  if ( !mCalendar->childItems( item.id() ).isEmpty()  &&
-       incidence->type() == Incidence::TypeTodo ) { // only todos.
-    km = KMessageBox::questionYesNoCancel(
-      this,
-      i18n( "The item \"%1\" has sub-to-dos. "
-            "Do you want to copy just this item or "
-            "copy the to-do with all its sub-to-dos?",
-            incidence->summary() ),
-      i18n( "KOrganizer Confirmation" ),
-      KGuiItem( i18n( "Copy Only This" ) ),
-      KGuiItem( i18n( "Copy All" ) ) );
-   }
-
-  if ( km == KMessageBox::Yes ) { // only one
-    incidences.append( incidence );
-  } else if ( km == KMessageBox::No ) { // all
-    // load incidence + children + grandchildren...
-    getIncidenceHierarchy( incidence, incidences );
-  }
-
-  if ( km != KMessageBox::Cancel ) {
-    KCalUtils::DndFactory factory( mCalendar );
-    if ( !factory.copyIncidences( incidences ) ) {
-      KNotification::beep();
-    }
-  }
+  Q_ASSERT( incidence );
+  if ( !mCalendarClipboard->copyIncidence( incidence ) )
+    kError() << "Error copying incidence";
 
   checkClipboard();
 }
@@ -2083,11 +2015,7 @@ void CalendarView::processIncidenceSelection( const Akonadi::Item &item, const Q
 
 void CalendarView::checkClipboard()
 {
-  if ( KCalUtils::ICalDrag::canDecode( QApplication::clipboard()->mimeData() ) ) {
-    emit pasteEnabled( true );
-  } else {
-    emit pasteEnabled( false );
-  }
+  emit pasteEnabled( mCalendarClipboard->pasteAvailable() );
 }
 
 void CalendarView::showDates( const DateList &selectedDates, const QDate &preferredMonth )
@@ -2841,20 +2769,6 @@ void CalendarView::changeFullView( bool fullView )
   }
 }
 
-void CalendarView::getIncidenceHierarchy( const KCalCore::Incidence::Ptr &incidence,
-                                          KCalCore::Incidence::List &children )
-{
-  // protecion against looping hierarchies
-  if ( incidence && !children.contains( incidence ) ) {
-    KCalCore::Incidence::List immediateChildren = mCalendar->childIncidences( incidence->uid() );
-
-    foreach( const KCalCore::Incidence::Ptr &incidence, immediateChildren ) {
-      getIncidenceHierarchy( incidence, children );
-    }
-    children.append( incidence );
-  }
-}
-
 Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeType ) const
 {
   bool supportsMimeType;
@@ -2909,6 +2823,11 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::createIncidenceEditor(
 Akonadi::History *CalendarView::history() const
 {
   return mChanger->history();
+}
+
+void CalendarView::onCutFinished()
+{
+  checkClipboard();
 }
 
 #include "calendarview.moc"

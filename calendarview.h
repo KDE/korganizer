@@ -57,6 +57,7 @@ namespace IncidenceEditorNG {
 namespace Akonadi {
   class History;
   class IncidenceChanger;
+  class CalendarClipboard;
 }
 
 class KVBox;
@@ -478,6 +479,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** paste the current vobject(s) in the clipboard buffer into calendar */
     void edit_paste();
 
+    void onCutFinished();
+
     /** edit viewing and configuration options. */
     void edit_options();
 
@@ -687,12 +690,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     // uncompleted subitems), notAllPurged is set to true.
     bool purgeCompletedSubTodos( const Akonadi::Item &todo, bool &notAllPurged );
 
-    // Returns all incidences having item has their parent (or grand parent, etc.)
-    // item is included in the list too.
-    //
-    void getIncidenceHierarchy( const KCalCore::Incidence::Ptr &incidence,
-                                KCalCore::Incidence::List &children );
-
     /**
      * Returns the default collection.
      * The view's collection takes precedence, only then the config one is used.
@@ -749,7 +746,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;
+    Akonadi::CalendarClipboard *mCalendarClipboard;
 };
 
 #endif
-

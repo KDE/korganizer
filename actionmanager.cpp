@@ -116,8 +116,6 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   mHtmlExportSync = false;
   mMainWindow = mainWindow;
   mMenuBar = menuBar;
-  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
-  mCalendar->setObjectName( "KOrg Calendar" );
 }
 
 ActionManager::~ActionManager()
@@ -219,16 +217,21 @@ void ActionManager::slotCollectionChanged( const Akonadi::Collection &collection
   }
 }
 
+Akonadi::ETMCalendar::Ptr ActionManager::calendar() const
+{
+  return mCalendarView->calendar();
+}
+
 void ActionManager::createCalendarAkonadi()
 {
-  connect( mCalendar.data(), SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>)),
+  connect( calendar().data(), SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>)),
            this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>)) );
 
   KConfig *config = KOGlobals::self()->config();
   mCollectionSelectionModelStateSaver =
     new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(
       config->group( "GlobalCollectionSelection" ) );
-  mCollectionSelectionModelStateSaver->setSelectionModel( mCalendar->checkableProxyModel()->selectionModel() );
+  mCollectionSelectionModelStateSaver->setSelectionModel( calendar()->checkableProxyModel()->selectionModel() );
 
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
@@ -243,7 +246,7 @@ void ActionManager::createCalendarAkonadi()
   mCollectionViewStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>( config->group( "GlobalCollectionView" ) );
   mCollectionViewStateSaver->setView( mCollectionView->view() );
 
-  KCheckableProxyModel *checkableProxy = mCalendar->checkableProxyModel();
+  KCheckableProxyModel *checkableProxy = calendar()->checkableProxyModel();
   QItemSelectionModel  *selectionModel = checkableProxy->selectionModel();
 
   mCollectionView->setCollectionSelectionProxyModel( checkableProxy );
@@ -251,19 +254,18 @@ void ActionManager::createCalendarAkonadi()
   CalendarSupport::CollectionSelection *collectionSelection = new CalendarSupport::CollectionSelection( selectionModel );
   EventViews::EventView::setGlobalCollectionSelection( collectionSelection );
 
-  mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
 
   // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
   if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
-    IncidenceEditorNG::GroupwareIntegration::activate( mCalendar );
+    IncidenceEditorNG::GroupwareIntegration::activate( calendar() );
   }
 
-  connect( mCalendar.data(), SIGNAL(calendarChanged()),
+  connect( calendar().data(), SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  mCalendar->setOwner( KCalCore::Person::Ptr( new KCalCore::Person( CalendarSupport::KCalPrefs::instance()->fullName(),
+  calendar()->setOwner( KCalCore::Person::Ptr( new KCalCore::Person( CalendarSupport::KCalPrefs::instance()->fullName(),
                                                                     CalendarSupport::KCalPrefs::instance()->email() ) ) );
 
 }
@@ -1181,7 +1183,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
   settings->setCreditName( "KOrganizer" );
   settings->setCreditURL( "http://korganizer.kde.org" );
 
-  KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob( mCalendar, settings, autoMode, mMainWindow, view() );
+  KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob( calendar(), settings, autoMode, mMainWindow, view() );
 
   if ( KOGlobals::self()->holidays() ) {
     KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
@@ -1535,14 +1537,14 @@ void ActionManager::downloadNewStuff()
       continue;
     }
 
-    KCalCore::FileStorage storage( mCalendar );
+    KCalCore::FileStorage storage( calendar() );
     storage.setFileName( file );
     storage.setSaveFormat( new KCalCore::ICalFormat );
     if ( !storage.load() ) {
       KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", file ) );
     } else {
       QStringList eventSummaries;
-      KCalCore::Event::List events = mCalendar->events();
+      KCalCore::Event::List events = calendar()->events();
       foreach ( KCalCore::Event::Ptr event, events ) {
         eventSummaries.append( event->summary() );
       }
@@ -2007,7 +2009,7 @@ void ActionManager::slotAutoArchive()
   mAutoArchiveTimer->stop();
   CalendarSupport::EventArchiver archiver;
 
-  archiver.runAuto( mCalendar, mCalendarView->incidenceChanger(), mCalendarView, false /*no gui*/);
+  archiver.runAuto( calendar(), mCalendarView->incidenceChanger(), mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )
   slotAutoArchivingSettingsModified();
