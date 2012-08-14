@@ -841,7 +841,7 @@ void CalendarView::edit_cut()
     return;
   }
 
-  mCalendarClipboard->cutIncidence( incidence );
+  mCalendarClipboard->cutIncidence( incidence, Akonadi::CalendarClipboard::AskMode );
 }
 
 void CalendarView::edit_copy()
@@ -856,7 +856,7 @@ void CalendarView::edit_copy()
 
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   Q_ASSERT( incidence );
-  if ( !mCalendarClipboard->copyIncidence( incidence ) )
+  if ( !mCalendarClipboard->copyIncidence( incidence, Akonadi::CalendarClipboard::AskMode ) )
     kError() << "Error copying incidence";
 
   checkClipboard();
