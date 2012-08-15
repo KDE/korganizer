@@ -98,7 +98,7 @@ CalendarView::CalendarView( QWidget *parent )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
   mChanger = new Akonadi::IncidenceChanger( this );
-  mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) ); //TODO_SERGIO
+  mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
   mCalendar->setObjectName( "KOrg Calendar" );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
