@@ -370,7 +370,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
   }
 
   // merge in a file
-  mCalendar->startBatchAdding(); // TODO_SERGIO: check if etmcalendar honours this
+  mCalendar->startBatchAdding();
   KCalCore::FileStorage storage( mCalendar );
   storage.setFileName( filename );
   loadedSuccesfully = storage.load();
