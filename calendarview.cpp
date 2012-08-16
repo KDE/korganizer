@@ -696,7 +696,7 @@ void CalendarView::slotModifyFinished( int changeId,
         journal->setSummary( i18n( "Journal of %1", dateStr ) );
         journal->setDescription( description );
 
-        if ( !mChanger->createIncidence( journal, item.parentCollection(), this ) ) {
+        if ( mChanger->createIncidence( journal, item.parentCollection(), this ) == -1 ) {
           kError() << "Unable to add Journal";
           return;
         }
@@ -1282,7 +1282,7 @@ bool CalendarView::addIncidence( const QString &ical )
 
 bool CalendarView::addIncidence( const Incidence::Ptr &incidence )
 {
-  return incidence ? mChanger->createIncidence( incidence, Akonadi::Collection(), this ) : false;
+  return incidence ? mChanger->createIncidence( incidence, Akonadi::Collection(), this ) != -1 : false;
 }
 
 void CalendarView::appointment_show()
@@ -1662,8 +1662,8 @@ void CalendarView::dissociateOccurrence( const Akonadi::Item &item, const QDate 
   Incidence::Ptr newInc(
     CalendarSupport::dissociateOccurrence( item, date, CalendarSupport::KCalPrefs::instance()->timeSpec(), true ) );
   if ( newInc ) {
-    mChanger->modifyIncidence( item, oldincidence, this );
-    mChanger->createIncidence( newInc, item.parentCollection(), this );
+    if ( mChanger->modifyIncidence( item, oldincidence, this ) != -1 )
+      mChanger->createIncidence( newInc, item.parentCollection(), this );
   } else {
     KMessageBox::sorry(
       this,
@@ -1685,8 +1685,8 @@ void CalendarView::dissociateFutureOccurrence( const Akonadi::Item &item, const 
     CalendarSupport::dissociateOccurrence( item, date,
                                      CalendarSupport::KCalPrefs::instance()->timeSpec(), false ) );
   if ( newInc ) {
-    mChanger->modifyIncidence( item, oldincidence, this );
-    mChanger->createIncidence( newInc, item.parentCollection(), this );
+    if ( mChanger->modifyIncidence( item, oldincidence, this ) != -1 )
+      mChanger->createIncidence( newInc, item.parentCollection(), this );
   } else {
     KMessageBox::sorry(
       this,
@@ -2551,7 +2551,7 @@ bool CalendarView::purgeCompletedSubTodos( const Akonadi::Item &todoItem, bool &
 
   if ( deleteThisTodo ) {
     if ( todo->isCompleted() ) {
-      if ( !mChanger->deleteIncidence( todoItem, this ) ) {
+      if ( mChanger->deleteIncidence( todoItem, this ) == -1 ) {
         allPurged = false;
       }
     } else {
