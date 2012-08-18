@@ -49,7 +49,7 @@ K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
 K_EXPORT_PLUGIN( KOrganizerFactory( createAboutData() ) )
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
-  : KParts::ReadOnlyPart( parent )
+  : KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
   KGlobal::locale()->insertCatalog( "libkcalutils" );
   KGlobal::locale()->insertCatalog( "calendarsupport" );
@@ -58,12 +58,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   KGlobal::locale()->insertCatalog( "libakonadi" );
   KGlobal::locale()->insertCatalog( "libincidenceeditors" );
   KGlobal::locale()->insertCatalog( "libkpimutils" );
-
-  if ( parentWidget ) {
-    mTopLevelWidget = parentWidget->topLevelWidget();
-  } else {
-    mTopLevelWidget = (QWidget *)parent;
-  }
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
