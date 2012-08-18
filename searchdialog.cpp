@@ -41,9 +41,9 @@
 using namespace KOrg;
 
 SearchDialog::SearchDialog( CalendarView *calendarview )
-  : KDialog( calendarview )
-  , m_ui(new Ui::SearchDialog)
-  , m_calendarview( calendarview )
+  : KDialog( calendarview ),
+    m_ui( new Ui::SearchDialog ),
+    m_calendarview( calendarview )
 {
   setCaption( i18n( "Search Calendar" ) );
   setModal( false );
@@ -85,12 +85,16 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
                     KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
   setButtonToolTip( User1, i18n( "Start searching" ) );
   showButtonSeparator( false );
-
-  QTimer::singleShot(0, m_ui->searchEdit, SLOT(setFocus()));
 }
 
 SearchDialog::~SearchDialog()
 {
+}
+
+void SearchDialog::showEvent( QShowEvent *event )
+{
+  Q_UNUSED( event );
+  m_ui->searchEdit->setFocus();
 }
 
 void SearchDialog::searchTextChanged( const QString &_text )
@@ -150,8 +154,10 @@ void SearchDialog::search( const QRegExp &re )
   KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
   if ( m_ui->eventsCheck->isChecked() ) {
     events =
-      m_calendarview->calendar()->events( startDt, endDt, timeSpec, m_ui->inclusiveCheck->isChecked() );
+      m_calendarview->calendar()->events(
+        startDt, endDt, timeSpec, m_ui->inclusiveCheck->isChecked() );
   }
+
   Akonadi::Item::List todos;
   if ( m_ui->todosCheck->isChecked() ) {
     if ( m_ui->includeUndatedTodos->isChecked() ) {
