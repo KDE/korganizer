@@ -102,6 +102,7 @@ CalendarView::CalendarView( QWidget *parent )
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
   mCalendar->setObjectName( "KOrg Calendar" );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
+  mInvitationHandler = new Akonadi::InvitationHandler( this );
   connect( mCalendarClipboard, SIGNAL(cutFinished(bool,QString)), SLOT(onCutFinished()) );
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -1760,7 +1761,10 @@ void CalendarView::schedule( KCalCore::iTIPMethod method, const Akonadi::Item &i
     selectedItem = selectedIncidence();
   }
 
-  CalendarSupport::scheduleiTIPMethods( method, selectedItem, mCalendar, this );
+  KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( selectedItem );
+
+  if ( incidence )
+    mInvitationHandler->sendiTIPMessage( method, incidence, this );
 }
 
 void CalendarView::openAddressbook()

@@ -34,6 +34,8 @@
 #include <KCalCore/Visitor>
 #include <KCalCore/ScheduleMessage>
 
+#include <akonadi/calendar/invitationhandler.h>
+
 class CalPrinter;
 class DateChecker;
 class DateNavigator;
@@ -737,6 +739,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     KOTodoView *mTodoList;
     Akonadi::IncidenceChanger *mChanger;
+    Akonadi::InvitationHandler *mInvitationHandler;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;
