@@ -158,14 +158,6 @@ CalendarView::CalendarView( QWidget *parent )
            SIGNAL(modifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
            SLOT(slotModifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)) );
 
-  /* TODO_SERGIO
-  connect( mChanger, SIGNAL(schedule(KCalCore::iTIPMethod,Akonadi::Item)),
-           this, SLOT(schedule(KCalCore::iTIPMethod,Akonadi::Item)) );
-
-  connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
-           mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
-    */
-
   // Signals emitted by mDateNavigator
   connect( mDateNavigator, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
            SLOT(showDates(KCalCore::DateList,QDate)) );
