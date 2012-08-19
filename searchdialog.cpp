@@ -84,6 +84,12 @@ SearchDialog::~SearchDialog()
 {
 }
 
+void SearchDialog::showEvent( QShowEvent *event )
+{
+  Q_UNUSED( event );
+  mSearchEdit->setFocus();
+}
+
 void SearchDialog::searchTextChanged( const QString &_text )
 {
   enableButton( KDialog::User1, !_text.isEmpty() );
