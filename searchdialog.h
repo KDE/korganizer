@@ -72,6 +72,10 @@ class SearchDialog : public KDialog
     void editIncidenceSignal( const Akonadi::Item & );
     void deleteIncidenceSignal( const Akonadi::Item & );
 
+  protected:
+    /*reimp*/
+   virtual void showEvent( QShowEvent *event );
+
   private:
     void search( const QRegExp & );
 

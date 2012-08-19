@@ -59,7 +59,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   KGlobal::locale()->insertCatalog( "libincidenceeditors" );
   KGlobal::locale()->insertCatalog( "libkpimutils" );
 
-
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
   // create a canvas to insert our widget
