@@ -1696,7 +1696,9 @@ void CalendarView::schedule_publish( const Akonadi::Item &item )
     selectedItem = selectedIncidence();
   }
 
-  CalendarSupport::publishItemInformation( selectedItem, mCalendar, this );
+  KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( selectedItem );
+  if ( incidence )
+    mInvitationHandler->publishInformation( incidence, this );
 }
 
 void CalendarView::schedule_request( const Akonadi::Item &incidence )
