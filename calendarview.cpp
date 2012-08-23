@@ -1743,7 +1743,10 @@ void CalendarView::schedule_forward( const Akonadi::Item &item )
     selectedItem = selectedIncidence();
   }
 
-  CalendarSupport::sendAsICalendar( selectedItem, KOCore::self()->identityManager(), this );
+  KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( selectedItem );
+
+  if ( incidence )
+    mInvitationHandler->sendAsICalendar( incidence, this );
 }
 
 void CalendarView::mailFreeBusy( int daysToPublish )
