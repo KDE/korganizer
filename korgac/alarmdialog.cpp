@@ -27,10 +27,10 @@
 #include "alarmdialog.h"
 #include "kocore.h"
 #include "korganizer_interface.h"
+#include "mailclient.h"
 
 #include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/mailclient.h>
 #include <calendarsupport/utils.h>
 
 #include <incidenceeditor-ng/incidencedialog.h>
@@ -651,7 +651,7 @@ void AlarmDialog::eventNotification()
           body += '\n' + alarm->mailText();
         }
         //TODO: support attachments
-        CalendarSupport::MailClient mailer;
+        KOrg::MailClient mailer;
         mailer.send( id, from, to, QString(), subject, body, true, false, QString(),
                      MailTransport::TransportManager::self()->defaultTransportName() );
       }

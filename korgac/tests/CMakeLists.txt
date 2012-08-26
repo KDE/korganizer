@@ -10,7 +10,7 @@ set(korganizer_xml ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.
 
 ########### next target ###############
 
-set(testalarmdlg_SRCS testalarmdlg.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../alarmdialog.cpp)
+set(testalarmdlg_SRCS testalarmdlg.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../alarmdialog.cpp ../mailclient.cpp)
 
 qt4_add_dbus_interface(testalarmdlg_SRCS ${korganizer_xml}
   korganizer_interface
@@ -20,9 +20,13 @@ kde4_add_executable(testalarmdlg TEST ${testalarmdlg_SRCS})
 
 target_link_libraries(testalarmdlg
   akonadi-calendar
+  akonadi-kmime
   calendarsupport
   incidenceeditorsng
   kdepimdbusinterfaces
+  kio
+  kmime
+  kpimutils
   korganizer_core
   ${KDEPIMLIBS_AKONADI_LIBS}
   ${KDEPIMLIBS_KCALCORE_LIBS}
