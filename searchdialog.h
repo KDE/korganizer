@@ -75,7 +75,6 @@ class SearchDialog : public KDialog
   protected:
     /*reimp*/
    virtual void showEvent( QShowEvent *event );
-
   private:
     void search( const QRegExp & );
 
