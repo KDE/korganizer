@@ -266,7 +266,7 @@ void CalendarView::setCalendar( CalendarSupport::Calendar *cal )
   mCalendar = cal;
   CalendarSupport::FreeBusyManager::self()->setCalendar( cal );
 
-  delete mHistory;
+  mHistory->deleteLater();
   mHistory = new History( mCalendar, this );
   connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
   connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
