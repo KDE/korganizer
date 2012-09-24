@@ -38,7 +38,7 @@
 #include <KCalCore/Todo>
 #include <KDateTime>
 
-#include <QtGui/QPainter>
+#include <QPainter>
 
 class PrintCellItem;
 class QWidget;
