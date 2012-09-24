@@ -80,6 +80,7 @@ class KOAlarmClient : public QObject
     void saveAllSignal();
 
   private:
+    bool dockerEnabled();
     void createReminder( CalendarSupport::Calendar *calendar, const Akonadi::Item &incidence,
                          const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();
