@@ -268,7 +268,39 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
     mActionManager =
       new Akonadi::StandardCalendarActionManager( xmlclient->actionCollection(), mCollectionview );
-    mActionManager->createAllActions();
+
+    QList<Akonadi::StandardActionManager::Type> standardActions;
+    standardActions << Akonadi::StandardActionManager::CreateCollection
+                    << Akonadi::StandardActionManager::CopyCollections
+                    << Akonadi::StandardActionManager::DeleteCollections
+                    << Akonadi::StandardActionManager::SynchronizeCollections
+                    << Akonadi::StandardActionManager::CollectionProperties
+                    << Akonadi::StandardActionManager::CopyItems
+                    << Akonadi::StandardActionManager::Paste
+                    << Akonadi::StandardActionManager::DeleteItems
+                    << Akonadi::StandardActionManager::CutItems
+                    << Akonadi::StandardActionManager::CutCollections
+                    << Akonadi::StandardActionManager::CreateResource
+                    << Akonadi::StandardActionManager::DeleteResources
+                    << Akonadi::StandardActionManager::ResourceProperties
+                    << Akonadi::StandardActionManager::SynchronizeResources
+                    << Akonadi::StandardActionManager::SynchronizeCollectionsRecursive;
+
+    Q_FOREACH( Akonadi::StandardActionManager::Type standardAction, standardActions ) {
+      mActionManager->createAction( standardAction );
+    }
+
+    QList<Akonadi::StandardCalendarActionManager::Type> calendarActions;
+    calendarActions <<Akonadi::StandardCalendarActionManager::CreateEvent
+                   <<Akonadi::StandardCalendarActionManager::CreateTodo
+                   <<Akonadi::StandardCalendarActionManager::CreateSubTodo
+                   <<Akonadi::StandardCalendarActionManager::CreateJournal
+                   <<Akonadi::StandardCalendarActionManager::EditIncidence;
+
+    Q_FOREACH( Akonadi::StandardCalendarActionManager::Type calendarAction, calendarActions ) {
+      mActionManager->createAction( calendarAction );
+    }
+
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
     mActionManager->interceptAction( Akonadi::StandardActionManager::CreateResource );
