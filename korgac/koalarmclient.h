@@ -80,6 +80,8 @@ class KOAlarmClient : public QObject
   private:
     void createReminder( const Akonadi::ETMCalendar::Ptr &calendar, const Akonadi::Item &incidence,
                          const QDateTime &dt, const QString &displayText );
+
+    bool dockerEnabled();
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon

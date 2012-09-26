@@ -309,10 +309,10 @@ Ask the server administrator for this information.</string>
        <item>
         <widget class="QCheckBox" name="retrieveEnable">
          <property name="whatsThis">
-          <string>Check this box to retrieve other peoples' Free/Busy information automatically. Note that you have to fill the correct server information to make this possible.</string>
+          <string>Check this box to retrieve other people's Free/Busy information automatically. Note that you have to fill the correct server information to make this possible.</string>
          </property>
          <property name="text">
-          <string>Retrieve other peoples' free/&amp;busy information automatically</string>
+          <string>Retrieve other people's free/&amp;busy information automatically</string>
          </property>
         </widget>
        </item>

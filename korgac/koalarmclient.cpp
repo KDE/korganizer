@@ -65,11 +65,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   kDebug();
 
 #ifndef KORGAC_AKONADI_AGENT
-  KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
-  KConfigGroup generalGroup( &korgConfig, "General" );
-  const bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
-
-  if ( showDock ) {
+  if ( dockerEnabled() ) {
     mDocker = new AlarmDockWindow;
     connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
     connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
@@ -128,6 +124,13 @@ KOAlarmClient::~KOAlarmClient()
   delete mDocker;
   delete mDialog;
 #endif
+}
+
+bool KOAlarmClient::dockerEnabled()
+{
+  KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
+  KConfigGroup generalGroup( &korgConfig, "General" );
+  return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
 
 void KOAlarmClient::checkAlarms()
@@ -192,7 +195,7 @@ void KOAlarmClient::createReminder( const Akonadi::ETMCalendar::Ptr &calendar,
 #else
   KNotification *notify = new KNotification( "reminder", 0L, KNotification::Persistent );
   notify->setText( incidence->summary() );
-  notify->sendEvent(); 
+  notify->sendEvent();
 #endif
 
 #endif
@@ -280,10 +283,11 @@ void KOAlarmClient::show()
 {
 #ifndef KORGAC_AKONADI_AGENT
   if ( !mDocker ) {
-    mDocker = new AlarmDockWindow;
-
-    connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
-    connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
+    if ( dockerEnabled() ) {
+      mDocker = new AlarmDockWindow;
+      connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
+      connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
+    }
 
     if ( mDialog ) {
       connect( mDialog, SIGNAL(reminderCount(int)),

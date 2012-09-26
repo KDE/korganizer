@@ -108,7 +108,7 @@ Akonadi::Item::List KOJournalView::selectedIncidences()
 
 void KOJournalView::clearEntries()
 {
-//  kDebug(5850)<<"KOJournalView::clearEntries()";
+  kDebug(5850)<<"KOJournalView::clearEntries()";
   QMap<QDate, JournalDateView*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
     delete it.value();
@@ -122,6 +122,7 @@ void KOJournalView::updateView()
     --it;
     it.value()->clear();
     const KCalCore::Journal::List journals = calendar()->journals( it.key() );
+    kDebug() << "updateview found" << journals.count();
     Q_FOREACH ( const KCalCore::Journal::Ptr &journal, journals ) {
       Akonadi::Item item = calendar()->item( journal->uid() );
       it.value()->addJournal( item );
@@ -138,19 +139,22 @@ void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate
 {
   clearEntries();
   if ( end<start ) {
+    kWarning() << "End is smaller than start. end=" << end << "; start=" << start;
     return;
   }
 
   KCalCore::Journal::List jnls;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
     jnls = calendar()->journals( d );
+    kDebug() << "Found" << jnls.count() << "journals on date" << d;
     foreach( const KCalCore::Journal::Ptr &journal, jnls ) {
       Akonadi::Item item = calendar()->item( journal->uid() );
       appendJournal( item, d );
     }
-    if ( jnls.count() < 1 ) {
+    if ( jnls.isEmpty() ) {
       // create an empty dateentry widget
       //updateView();
+      kDebug() << "Appended null journal";
       appendJournal( Akonadi::Item(), d );
     }
   }
