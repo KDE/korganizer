@@ -136,11 +136,6 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
            this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
 
-//  arrow-left-double
-//  arrow-right-double
-//  arrow-left
-//  arrow-right
-
   mExpandView = new QToolButton( this );
   mExpandView->setIcon(
     KIconLoader::global()->loadIcon( "arrow-right-double",
@@ -203,8 +198,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   mFullView = 0;
   if ( !mSidebarView ) {
-    mFullView = new QCheckBox( i18nc( "Checkbox to display this view into the full window",
-                                      "Full Window" ), this );
+    mFullView = new QCheckBox(
+      i18nc( "@option:check Checkbox to display this view into the full window",
+             "Full Window" ), this );
     mFullView->setToolTip(
       i18nc( "@info:tooltip",
              "Display to-do list in a full window" ) );
@@ -217,8 +213,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
              SLOT(setFullView(bool)) );
   }
 
-  mFlatView = new QCheckBox( i18nc( "Checkbox to display todos not hierarchical",
-                                    "Flat View" ), this );
+  mFlatView = new QCheckBox(
+    i18nc( "@option:check Checkbox to display todos not hierarchical",
+           "Flat View" ), this );
   mFlatView->setToolTip(
     i18nc( "@info:tooltip",
            "Display to-dos in flat list instead of a tree" ) );
@@ -266,26 +263,31 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mItemPopupMenu = new QMenu( this );
 
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
-    i18n( "&Show" ), this, SLOT(showTodo()) );
+    i18nc( "@action:inmenu show the to-do", "&Show" ),
+    this, SLOT(showTodo()) );
 
   QAction *a = mItemPopupMenu->addAction(
-    i18n( "&Edit..." ), this, SLOT(editTodo()) );
+    i18nc( "@action:inmenu edit the to-do", "&Edit..." ),
+    this, SLOT(editTodo()) );
   mItemPopupMenuReadWriteEntries << a;
   mItemPopupMenuItemOnlyEntries << a;
 
   mItemPopupMenu->addSeparator();
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     KOGlobals::self()->smallIcon( "document-print" ),
-    i18n( "&Print..." ), this, SLOT(printTodo()) );
+    i18nc( "@action:inmenu print the to-do", "&Print..." ),
+    this, SLOT(printTodo()) );
 
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     KOGlobals::self()->smallIcon( "document-print-preview" ),
-    i18n( "Print Previe&w..." ), this, SLOT(printPreviewTodo()) );
+    i18nc( "@action:inmenu print preview the to-do", "Print Previe&w..." ),
+    this, SLOT(printPreviewTodo()) );
 
   mItemPopupMenu->addSeparator();
   a = mItemPopupMenu->addAction(
     KIconLoader::global()->loadIcon( "edit-delete", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
-    i18n( "&Delete" ), this, SLOT(deleteTodo()) );
+    i18nc( "@action:inmenu delete the to-do", "&Delete" ),
+    this, SLOT(deleteTodo()) );
   mItemPopupMenuReadWriteEntries << a;
   mItemPopupMenuItemOnlyEntries << a;
 
@@ -294,18 +296,23 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mItemPopupMenu->addAction(
     KIconLoader::global()->loadIcon(
       "view-calendar-tasks", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
-    i18n( "New &To-do..." ), this, SLOT(newTodo()) );
+    i18nc( "@action:inmenu create a new to-do", "New &To-do..." ),
+    this, SLOT(newTodo()) );
 
   a = mItemPopupMenu->addAction(
-    i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
+    i18nc( "@action:inmenu create a new sub-to-do", "New Su&b-to-do..." ),
+    this, SLOT(newSubTodo()) );
   mItemPopupMenuReadWriteEntries << a;
   mItemPopupMenuItemOnlyEntries << a;
 
-  mMakeTodoIndependent = mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ),
-                                                    this, SIGNAL(unSubTodoSignal()) );
+  mMakeTodoIndependent = mItemPopupMenu->addAction(
+    i18nc( "@action:inmenu", "&Make this To-do Independent" ),
+    this, SIGNAL(unSubTodoSignal()) );
 
-  mMakeSubtodosIndependent = mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ),
-                                                        this, SIGNAL(unAllSubTodoSignal()) );
+  mMakeSubtodosIndependent =
+    mItemPopupMenu->addAction(
+      i18nc( "@action:inmenu", "Make all Sub-to-dos &Independent" ),
+      this, SIGNAL(unAllSubTodoSignal()) );
 
   mItemPopupMenuItemOnlyEntries << mMakeTodoIndependent;
   mItemPopupMenuItemOnlyEntries << mMakeSubtodosIndependent;
@@ -320,7 +327,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
                                 KPIM::KDatePickerPopup::DatePicker |
                                 KPIM::KDatePickerPopup::Words,
                                 QDate::currentDate(), this );
-  mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
+  mCopyPopupMenu->setTitle( i18nc( "@title:menu", "&Copy To" ) );
 
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
            SLOT(copyTodoToDate(QDate)) );
@@ -333,7 +340,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
                                  KPIM::KDatePickerPopup::DatePicker |
                                  KPIM::KDatePickerPopup::Words,
                                  QDate::currentDate(), this );
-  mMovePopupMenu->setTitle( i18n( "&Move To" ) );
+  mMovePopupMenu->setTitle( i18nc( "@title:menu", "&Move To" ) );
 
   connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
            SLOT(setNewDate(QDate)) );
@@ -345,20 +352,31 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
 
   mItemPopupMenu->addSeparator();
-  mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                             this, SIGNAL(purgeCompletedSignal()) );
+  mItemPopupMenu->addAction(
+    i18nc( "@action:inmenu delete completed to-dos", "Pur&ge Completed" ),
+    this, SIGNAL(purgeCompletedSignal()) );
 
   mPriorityPopupMenu = new QMenu( this );
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "unspecified priority", "unspecified" ) ) ] = 0;
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "highest priority", "1 (highest)" ) ) ] = 1;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "2" ) ) ] = 2;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "3" ) ) ] = 3;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "4" ) ) ] = 4;
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "medium priority", "5 (medium)" ) ) ] = 5;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "6" ) ) ] = 6;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "7" ) ) ] = 7;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "8" ) ) ] = 8;
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "lowest priority", "9 (lowest)" ) ) ] = 9;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu unspecified priority", "unspecified" ) ) ] = 0;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu highest priority", "1 (highest)" ) ) ] = 1;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=2", "2" ) ) ] = 2;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=3", "3" ) ) ] = 3;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=4", "4" ) ) ] = 4;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu medium priority", "5 (medium)" ) ) ] = 5;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=6", "6" ) ) ] = 6;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=7", "7" ) ) ] = 7;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=8", "8" ) ) ] = 8;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu lowest priority", "9 (lowest)" ) ) ] = 9;
   connect( mPriorityPopupMenu, SIGNAL(triggered(QAction*)),
            SLOT(setNewPriority(QAction*)) );
 
