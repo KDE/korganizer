@@ -44,6 +44,8 @@ class QCheckBox;
 class QItemSelection;
 class QMenu;
 class QModelIndex;
+class QPushButton;
+class QToolButton;
 
 using namespace KOrg;
 
@@ -89,6 +91,9 @@ class KOTodoView : public BaseView
     virtual void clearSelection();
     void expandIndex( const QModelIndex &index );
     void expandTree();
+    void expandAt();
+    void collapseTree();
+    void collapseAt();
 
   protected Q_SLOTS:
     void addQuickTodo( Qt::KeyboardModifiers modifier );
@@ -140,6 +145,10 @@ class KOTodoView : public BaseView
 
     KOTodoViewQuickSearch *mQuickSearch;
     KOTodoViewQuickAddLine *mQuickAdd;
+    QToolButton *mExpandView;
+    QToolButton *mExpandAtView;
+    QToolButton *mCollapseView;
+    QToolButton *mCollapseAtView;
     QCheckBox *mFullView;
     QCheckBox *mFlatView;
 
