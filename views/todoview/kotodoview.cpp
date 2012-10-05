@@ -161,7 +161,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
            "Expand the to-do tree at the current node" ) );
   mExpandAtView->setWhatsThis(
     i18nc( "@info:whatsthis",
-           "Clicking this button will expand the to-do list at the currrently "
+           "Clicking this button will expand the to-do list at the currently "
            "selected node only.  If the current node is already expanded, then "
            "the grandchild node will be expanded." ) );
   connect( mExpandAtView, SIGNAL(clicked()), SLOT(expandAt()) );
