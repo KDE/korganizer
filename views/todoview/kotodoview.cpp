@@ -136,68 +136,72 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
            this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
 
-  mExpandView = new QToolButton( this );
-  mExpandView->setIcon(
-    KIconLoader::global()->loadIcon( "arrow-right-double",
-                                     KIconLoader::Desktop, KIconLoader::SizeSmall ) );
-  mExpandView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
-  mExpandView->setToolButtonStyle( Qt::ToolButtonIconOnly );
-  mExpandView->setToolTip(
-    i18nc( "@info:tooltip",
-           "Fully expand the to-do tree" ) );
-  mExpandView->setWhatsThis(
-    i18nc( "@info:whatsthis",
-           "Clicking this button will fully expand the to-do list tree." ) );
-  connect( mExpandView, SIGNAL(clicked()), SLOT(expandTree()) );
-
-  mExpandAtView = new QToolButton( this );
-  mExpandAtView->setIcon(
-    KIconLoader::global()->loadIcon( "arrow-right",
-                                     KIconLoader::Desktop, KIconLoader::SizeSmall ) );
-  mExpandAtView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
-  mExpandAtView->setToolButtonStyle( Qt::ToolButtonIconOnly );
-  mExpandAtView->setToolTip(
-    i18nc( "@info:tooltip",
-           "Expand the to-do tree at the current node" ) );
-  mExpandAtView->setWhatsThis(
-    i18nc( "@info:whatsthis",
-           "Clicking this button will expand the to-do list at the currently "
-           "selected node only.  If the current node is already expanded, then "
-           "the grandchild node will be expanded." ) );
-  connect( mExpandAtView, SIGNAL(clicked()), SLOT(expandAt()) );
-
-  mCollapseView = new QToolButton( this );
-  mCollapseView->setIcon(
-    KIconLoader::global()->loadIcon( "arrow-left-double",
-                                     KIconLoader::Desktop, KIconLoader::SizeSmall ) );
-  mCollapseView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
-  mCollapseView->setToolButtonStyle( Qt::ToolButtonIconOnly );
-  mCollapseView->setToolTip(
-    i18nc( "@info:tooltip",
-           "Fully collapse the to-do tree" ) );
-  mCollapseView->setWhatsThis(
-    i18nc( "@info:whatsthis",
-           "Clicking this button will fully collapse the to-do list tree." ) );
-  connect( mCollapseView, SIGNAL(clicked()), SLOT(collapseTree()) );
-
-  mCollapseAtView = new QToolButton( this );
-  mCollapseAtView->setIcon(
-    KIconLoader::global()->loadIcon( "arrow-left",
-                                     KIconLoader::Desktop, KIconLoader::SizeSmall ) );
-  mCollapseAtView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
-  mCollapseAtView->setToolButtonStyle( Qt::ToolButtonIconOnly );
-  mCollapseAtView->setToolTip(
-    i18nc( "@info:tooltip",
-           "Collapse the to-do tree at the current node" ) );
-  mCollapseAtView->setWhatsThis(
-    i18nc( "@info:whatsthis",
-           "Clicking this button will collapse the to-do list at the currently "
-           "selected node only.  If the current node is already collapsed, then "
-           "the parent node will be collapsed." ) );
-  connect( mCollapseAtView, SIGNAL(clicked()), SLOT(collapseAt()) );
-
   mFullView = 0;
+  mExpandView = 0;
+  mExpandAtView = 0;
+  mCollapseView = 0;
+  mCollapseAtView = 0;
   if ( !mSidebarView ) {
+    mExpandView = new QToolButton( this );
+    mExpandView->setIcon(
+      KIconLoader::global()->loadIcon( "arrow-right-double",
+                                       KIconLoader::Desktop, KIconLoader::SizeSmall ) );
+    mExpandView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
+    mExpandView->setToolButtonStyle( Qt::ToolButtonIconOnly );
+    mExpandView->setToolTip(
+      i18nc( "@info:tooltip",
+             "Fully expand the to-do tree" ) );
+    mExpandView->setWhatsThis(
+      i18nc( "@info:whatsthis",
+             "Clicking this button will fully expand the to-do list tree." ) );
+    connect( mExpandView, SIGNAL(clicked()), SLOT(expandTree()) );
+
+    mExpandAtView = new QToolButton( this );
+    mExpandAtView->setIcon(
+      KIconLoader::global()->loadIcon( "arrow-right",
+                                       KIconLoader::Desktop, KIconLoader::SizeSmall ) );
+    mExpandAtView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
+    mExpandAtView->setToolButtonStyle( Qt::ToolButtonIconOnly );
+    mExpandAtView->setToolTip(
+      i18nc( "@info:tooltip",
+             "Expand the to-do tree at the current node" ) );
+    mExpandAtView->setWhatsThis(
+      i18nc( "@info:whatsthis",
+             "Clicking this button will expand the to-do list at the currently "
+             "selected node only.  If the current node is already expanded, then "
+             "the grandchild node will be expanded." ) );
+    connect( mExpandAtView, SIGNAL(clicked()), SLOT(expandAt()) );
+
+    mCollapseView = new QToolButton( this );
+    mCollapseView->setIcon(
+      KIconLoader::global()->loadIcon( "arrow-left-double",
+                                       KIconLoader::Desktop, KIconLoader::SizeSmall ) );
+    mCollapseView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
+    mCollapseView->setToolButtonStyle( Qt::ToolButtonIconOnly );
+    mCollapseView->setToolTip(
+      i18nc( "@info:tooltip",
+             "Fully collapse the to-do tree" ) );
+    mCollapseView->setWhatsThis(
+      i18nc( "@info:whatsthis",
+             "Clicking this button will fully collapse the to-do list tree." ) );
+    connect( mCollapseView, SIGNAL(clicked()), SLOT(collapseTree()) );
+
+    mCollapseAtView = new QToolButton( this );
+    mCollapseAtView->setIcon(
+      KIconLoader::global()->loadIcon( "arrow-left",
+                                       KIconLoader::Desktop, KIconLoader::SizeSmall ) );
+    mCollapseAtView->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
+    mCollapseAtView->setToolButtonStyle( Qt::ToolButtonIconOnly );
+    mCollapseAtView->setToolTip(
+      i18nc( "@info:tooltip",
+             "Collapse the to-do tree at the current node" ) );
+    mCollapseAtView->setWhatsThis(
+      i18nc( "@info:whatsthis",
+             "Clicking this button will collapse the to-do list at the currently "
+             "selected node only.  If the current node is already collapsed, then "
+             "the parent node will be collapsed." ) );
+    connect( mCollapseAtView, SIGNAL(clicked()), SLOT(collapseAt()) );
+
     mFullView = new QCheckBox(
       i18nc( "@option:check Checkbox to display this view into the full window",
              "Full Window" ), this );
@@ -242,21 +246,20 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   // with the QAbstractItemView's viewport.
   QHBoxLayout *dummyLayout = new QHBoxLayout();
   dummyLayout->setContentsMargins( 0, 0, mView->frameWidth()/*right*/, 0 );
-  dummyLayout->addWidget( mCollapseView );
-  dummyLayout->addWidget( mExpandView );
-  dummyLayout->addWidget( mCollapseAtView );
-  dummyLayout->addWidget( mExpandAtView );
-  QFrame *f = new QFrame( this );
-  f->setFrameShape( QFrame::VLine );
-  f->setFrameShadow( QFrame::Sunken );
-  dummyLayout->addWidget( f );
   if ( !mSidebarView ) {
+    dummyLayout->addWidget( mCollapseView );
+    dummyLayout->addWidget( mExpandView );
+    dummyLayout->addWidget( mCollapseAtView );
+    dummyLayout->addWidget( mExpandAtView );
+    QFrame *f = new QFrame( this );
+    f->setFrameShape( QFrame::VLine );
+    f->setFrameShadow( QFrame::Sunken );
+    dummyLayout->addWidget( f );
     dummyLayout->addWidget( mFullView );
   }
   dummyLayout->addWidget( mFlatView );
 
   layout->addLayout( dummyLayout, 2, 1 );
-
   setLayout( layout );
 
   // ---------------- POPUP-MENUS -----------------------
