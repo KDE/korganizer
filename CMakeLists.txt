@@ -263,6 +263,7 @@ if(NOT WINCE)
     kde4_add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
 
     target_link_libraries(korganizerprivate
+      pimcommon
       akonadi_next
       calendarsupport
       eventviews

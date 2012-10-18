@@ -67,8 +67,13 @@
 
 #include <libkdepim/pimmessagebox.h>
 
+#include <pimcommon/collectionaclpage.h>
+#include <pimcommon/imapaclattribute.h>
+
+
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>
+#include <Akonadi/AttributeFactory>
 
 #include <KCalCore/CalFilter>
 #include <KCalCore/FileStorage>
@@ -100,6 +105,7 @@ CalendarView::CalendarView( QWidget *parent )
     mSplitterSizesValid( false )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
+  Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -244,6 +250,7 @@ CalendarView::CalendarView( QWidget *parent )
     if ( !pageRegistered ) {
       Akonadi::CollectionPropertiesDialog::registerPage(
         new CalendarSupport::CollectionGeneralPageFactory );
+      Akonadi::CollectionPropertiesDialog::registerPage( new PimCommon::CollectionAclPageFactory );
       pageRegistered = true;
     }
   }

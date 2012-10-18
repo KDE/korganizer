@@ -326,7 +326,8 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
     const QStringList pages =
       QStringList() << QLatin1String( "CalendarSupport::CollectionGeneralPage" )
-                    << QLatin1String( "Akonadi::CachePolicyPage" );
+                    << QLatin1String( "Akonadi::CachePolicyPage" )
+                    << QLatin1String( "PimCommon::CollectionAclPage" );
 
     mActionManager->setCollectionPropertiesPageNames( pages );
 
