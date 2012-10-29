@@ -37,6 +37,7 @@
 #include <Akonadi/Item>
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/Session>
+#include <Akonadi/Collection>
 #include <Akonadi/ItemFetchScope>
 #include <akonadi/dbusconnectionpool.h>
 
@@ -86,18 +87,20 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
-  CalendarSupport::CalendarModel *calendarModel = new CalendarSupport::CalendarModel( monitor, this );
+  mCalendarModel = new CalendarSupport::CalendarModel( monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
   KDescendantsProxyModel *flattener = new KDescendantsProxyModel(this);
-  flattener->setSourceModel( calendarModel );
+  flattener->setSourceModel( mCalendarModel );
 
-  mCalendar = new CalendarSupport::Calendar( calendarModel, flattener,
+  mCalendar = new CalendarSupport::Calendar( mCalendarModel, flattener,
                                      zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
 
   mCalendar->setObjectName( "KOrgac's calendar" );
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
+  connect( mCalendarModel, SIGNAL(collectionPopulated(Akonadi::Collection::Id)), SLOT(checkAlarms()) );
+  connect( mCalendarModel, SIGNAL(collectionTreeFetched(Akonadi::Collection::List)), SLOT(checkAlarms()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
   const int interval = alarmGroup.readEntry( "Interval", 60 );
@@ -163,6 +166,25 @@ void KOAlarmClient::checkAlarms()
   if ( !cfg.readEntry( "Enabled", true ) ) {
     return;
   }
+
+
+  // We do not want to miss any reminders, so don't perform check unless the list of collections is available.
+  if ( !mCalendarModel->isCollectionTreeFetched() ) {
+    kDebug(5891) << "CollectionTree has not been fetched yet; aborting check.";
+    return;
+  }
+
+  // Collections also need to be populated if we want to be sure not to miss any reminders.
+  const int rowCount = mCalendarModel->rowCount();
+  for ( int row = 0; row < rowCount; ++row ) {
+    static const int column = 0;
+    const QModelIndex index = mCalendarModel->index( row, column );
+    if ( !mCalendarModel->data( index, CalendarSupport::CalendarModel::IsPopulatedRole ).toBool() ) {
+      kDebug(5891) << "Collections have not been populated yet; aborting check.";
+      return;
+    }
+  }
+
 
   QDateTime from = mLastChecked.addSecs( 1 );
   mLastChecked = QDateTime::currentDateTime();

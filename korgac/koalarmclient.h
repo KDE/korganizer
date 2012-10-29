@@ -38,6 +38,7 @@ class AlarmDockWindow;
 
 namespace CalendarSupport {
   class Calendar;
+  class CalendarModel;
 }
 
 namespace Akonadi {
@@ -87,6 +88,7 @@ class KOAlarmClient : public QObject
 
     AlarmDockWindow *mDocker;  // the panel icon
     CalendarSupport::Calendar *mCalendar;
+    CalendarSupport::CalendarModel *mCalendarModel;
 
     QDateTime mLastChecked;
     QTimer mCheckTimer;
