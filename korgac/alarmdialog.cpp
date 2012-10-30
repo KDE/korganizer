@@ -1,5 +1,5 @@
 /*
-  This file is part of the KOrganizer reminder daemon.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>

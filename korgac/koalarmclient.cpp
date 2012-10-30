@@ -1,7 +1,5 @@
 /*
-  KOrganizer Alarm Daemon Client.
-
-  This file is part of KOrganizer.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -34,18 +32,18 @@
 #endif
 #include "korgacadaptor.h"
 
+#include <calendarsupport/calendar.h>
+#include <calendarsupport/calendarmodel.h>
+#include <calendarsupport/utils.h>
+
 #include <Akonadi/Item>
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/Session>
 #include <Akonadi/Collection>
 #include <Akonadi/ItemFetchScope>
-#include <akonadi/dbusconnectionpool.h>
+#include <akonadi/dbusconnectionpool.h> // fix when forwarding header is there
 
-#include <calendarsupport/calendar.h>
-#include <calendarsupport/calendarmodel.h>
-#include <calendarsupport/utils.h>
-
-#include <kcalcore/calendar.h>
+#include <KCalCore/Calendar>
 
 #include <KApplication>
 #include <KConfig>
@@ -83,7 +81,9 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   monitor->itemFetchScope().fetchFullPayload( true );
   monitor->setCollectionMonitored( Akonadi::Collection::root() );
   monitor->fetchCollection( true );
-  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
+  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed,
+                                                          // in fact it might cause the inclusion of
+                                                          // free/busy, notes or other unwanted junk
   monitor->setMimeTypeMonitored( KCalCore::Event::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Todo::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalCore::Journal::journalMimeType(), true );
@@ -93,14 +93,19 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   KDescendantsProxyModel *flattener = new KDescendantsProxyModel(this);
   flattener->setSourceModel( mCalendarModel );
 
-  mCalendar = new CalendarSupport::Calendar( mCalendarModel, flattener,
-                                     zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  mCalendar =
+    new CalendarSupport::Calendar( mCalendarModel, flattener,
+                                   zone.isValid() ?
+                                     KDateTime::Spec( zone ) :
+                                     KDateTime::ClockTime );
 
   mCalendar->setObjectName( "KOrgac's calendar" );
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
-  connect( mCalendarModel, SIGNAL(collectionPopulated(Akonadi::Collection::Id)), SLOT(checkAlarms()) );
-  connect( mCalendarModel, SIGNAL(collectionTreeFetched(Akonadi::Collection::List)), SLOT(checkAlarms()) );
+  connect( mCalendarModel, SIGNAL(collectionPopulated(Akonadi::Collection::Id)),
+           SLOT(checkAlarms()) );
+  connect( mCalendarModel, SIGNAL(collectionTreeFetched(Akonadi::Collection::List)),
+           SLOT(checkAlarms()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
   const int interval = alarmGroup.readEntry( "Interval", 60 );
@@ -129,7 +134,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     if ( akonadiItemId >= 0 ) {
       const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
       Akonadi::Item i = mCalendar->incidence( Akonadi::Item::fromUrl( url ).id() );
-      if ( CalendarSupport::hasIncidence( i ) && !CalendarSupport::incidence( i )->alarms().isEmpty() ) {
+      if ( CalendarSupport::hasIncidence( i ) &&
+           !CalendarSupport::incidence( i )->alarms().isEmpty() ) {
         createReminder( mCalendar, i, dt, QString() );
       }
     }
@@ -167,8 +173,8 @@ void KOAlarmClient::checkAlarms()
     return;
   }
 
-
-  // We do not want to miss any reminders, so don't perform check unless the list of collections is available.
+  // We do not want to miss any reminders, so don't perform check unless
+  // the list of collections is available.
   if ( !mCalendarModel->isCollectionTreeFetched() ) {
     kDebug(5891) << "CollectionTree has not been fetched yet; aborting check.";
     return;
@@ -179,12 +185,13 @@ void KOAlarmClient::checkAlarms()
   for ( int row = 0; row < rowCount; ++row ) {
     static const int column = 0;
     const QModelIndex index = mCalendarModel->index( row, column );
-    if ( !mCalendarModel->data( index, CalendarSupport::CalendarModel::IsPopulatedRole ).toBool() ) {
+    bool haveData =
+      mCalendarModel->data( index, CalendarSupport::CalendarModel::IsPopulatedRole ).toBool();
+    if ( !haveData ) {
       kDebug(5891) << "Collections have not been populated yet; aborting check.";
       return;
     }
   }
-
 
   QDateTime from = mLastChecked.addSecs( 1 );
   mLastChecked = QDateTime::currentDateTime();
@@ -193,7 +200,7 @@ void KOAlarmClient::checkAlarms()
 
   const Alarm::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                                 KDateTime( mLastChecked, KDateTime::LocalZone ),
-                                                true /* exclude blocked alarms */ );
+                                                true /* exclude blocked alarms */);
 
   foreach ( const Alarm::Ptr &alarm, alarms ) {
     const QString uid = alarm->parentUid();
@@ -238,7 +245,7 @@ void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
 #if defined(Q_WS_MAEMO_5)
   QMaemo5InformationBox::information( 0, incidence->summary(), QMaemo5InformationBox::NoTimeout );
 #else
-  KNotification *notify = new KNotification( "reminder", 0L, KNotification::Persistent );
+  KNotification *notify = new KNotification( "reminder", 0, KNotification::Persistent );
   notify->setText( incidence->summary() );
   notify->sendEvent();
 #endif
@@ -303,9 +310,10 @@ QStringList KOAlarmClient::dumpAlarms()
          end.toString();
 
   Alarm::List alarms = mCalendar->alarms( start, end );
-  foreach( Alarm::Ptr a, alarms ) {
+  foreach ( Alarm::Ptr a, alarms ) {
     const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( a->parentUid() );
-    const Incidence::Ptr parentIncidence = CalendarSupport::incidence( mCalendar->incidence( itemId ) );
+    const Incidence::Ptr parentIncidence =
+      CalendarSupport::incidence( mCalendar->incidence( itemId ) );
     lst << QString( "  " ) + parentIncidence->summary() + " (" + a->time().toString() + ')';
   }
 

@@ -1,5 +1,5 @@
 /*
-  This file is part of the KDE reminder daemon.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
 
@@ -21,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef ALARMDIALOG_H
-#define ALARMDIALOG_H
+#ifndef KORGAC_ALARMDIALOG_H
+#define KORGAC_ALARMDIALOG_H
 
 #include <Akonadi/Item>
 
@@ -54,7 +54,6 @@ class QVBoxLayout;
 
 class AlarmDialog : public KDialog
 {
-
   Q_OBJECT
   public:
     explicit AlarmDialog( CalendarSupport::Calendar *calendar, QWidget *parent = 0 );
@@ -97,7 +96,7 @@ class AlarmDialog : public KDialog
   protected:
     void keyPressEvent( QKeyEvent *e );
     void closeEvent( QCloseEvent * );
- 
+
   private:
     static KDateTime triggerDateForIncidence( const KCalCore::Incidence::Ptr &inc,
                                               const QDateTime &reminderAt,

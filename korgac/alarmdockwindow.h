@@ -1,5 +1,5 @@
 /*
-  This file is part of KOrganizer.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
@@ -22,8 +22,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef ALARMDOCKWINDOW_H
-#define ALARMDOCKWINDOW_H
+#ifndef KORGAC_ALARMDOCKWINDOW_H
+#define KORGAC_ALARMDOCKWINDOW_H
 
 #include <KStatusNotifierItem>
 

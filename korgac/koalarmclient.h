@@ -1,7 +1,5 @@
 /*
-  KOrganizer Alarm Daemon Client.
-
-  This file is part of KOrganizer.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -23,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOALARMCLIENT_H
-#define KOALARMCLIENT_H
+#ifndef KORGAC_KOALARMCLIENT_H
+#define KORGAC_KOALARMCLIENT_H
 
 #ifndef _WIN32_WCE
 #include <KSessionManager>

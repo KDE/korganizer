@@ -1,5 +1,5 @@
 /*
-  This file is part of the KOrganizer alarm client.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
