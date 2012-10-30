@@ -35,7 +35,6 @@
 #include "history.h"
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
-#include "importdialog.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
@@ -1033,7 +1032,7 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
     } else {
       bool success = mCalendarView->openCalendar( mFile, merge );
       if ( success ) {
-        showStatusMessageOpen( url, merge );
+        showStatusMessageOpen( merge );
       }
     }
     setTitle();
@@ -1045,7 +1044,7 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
       if ( merge ) {
         KIO::NetAccess::removeTempFile( tmpFile );
         if ( success ) {
-          showStatusMessageOpen( url, merge );
+          showStatusMessageOpen( merge );
         }
       } else {
         if ( success ) {
@@ -1054,14 +1053,12 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
           mFile = tmpFile;
           setTitle();
           kDebug() << "-- Add recent URL:" << url.prettyUrl();
-          showStatusMessageOpen( url, merge );
+          showStatusMessageOpen( merge );
         }
       }
       return success;
-    } else {
-      QString msg;
-      msg = i18n( "Cannot download calendar from '%1'.", url.prettyUrl() );
-      KMessageBox::error( dialogParent(), msg );
+    } else { // download failed
+      KMessageBox::error( dialogParent(), KIO::NetAccess::lastErrorString() );
       return false;
     }
   }
@@ -1108,12 +1105,12 @@ void ActionManager::agentCreated( KJob *job )
   instance.reconfigure();
 }
 
-void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
+void ActionManager::showStatusMessageOpen( bool merge )
 {
   if ( merge ) {
-    mMainWindow->showStatusMessage( i18n( "Merged calendar '%1'.", url.prettyUrl() ) );
+    mMainWindow->showStatusMessage( i18n( "Calendar Item successfully merged" ) );
   } else {
-    mMainWindow->showStatusMessage( i18n( "Opened calendar '%1'.", url.prettyUrl() ) );
+    mMainWindow->showStatusMessage( i18n( "Calendar Item successfully created" ) );
   }
 }
 
@@ -2049,22 +2046,52 @@ void ActionManager::importCalendar( const KUrl &url )
     return;
   }
 
-  ImportDialog *dialog;
-  dialog = new ImportDialog( url, mMainWindow->topLevelWidget() );
-  connect( dialog, SIGNAL(dialogFinished(ImportDialog*)),
-           SLOT(slotImportDialogFinished(ImportDialog*)) );
-  connect( dialog, SIGNAL(openURL(KUrl,bool)),
-           SLOT(openURL(KUrl,bool)) );
-  connect( dialog, SIGNAL(addResource(KUrl)),
-           SLOT(addResource(KUrl)) );
+  const QString questionText =
+    i18nc( "@info",
+           "<p>Would you like to merge this calendar item into an existing calendar "
+           "or use it to create a brand new calendar?</p>"
+           "<p>If you select merge, then you will be given the opportunity to select "
+           "the destination calendar.</p>"
+           "<p>If you select add, then a new calendar will be created for you automatically.</p>" );
 
-  dialog->show();
-}
+reTry:
+  const int answer =
+    KMessageBox::questionYesNoCancel(
+      dialogParent(),
+      questionText,
+      i18nc( "@title:window", "Import Calendar" ),
+      KGuiItem( i18n( "Merge into existing calendar" ) ),
+      KGuiItem( i18n( "Add as new calendar" ) ) );
 
-void ActionManager::slotImportDialogFinished( ImportDialog *dlg )
-{
-  dlg->deleteLater();
-  mCalendarView->updateView();
+  bool status;
+  switch( answer )  {
+  case KMessageBox::Yes: //merge
+    status = openURL( url, true );
+    break;
+  case KMessageBox::No:  //import
+    status = addResource( url );
+    break;
+  default:
+    return;
+  }
+
+  if ( !status ) {
+    int answer =
+      KMessageBox::questionYesNo(
+        dialogParent(),
+        i18nc( "@info",
+               "<p>An error occurred importing calendar item from %1.</p>"
+               "<p>Would you like to try again?</p>", url.prettyUrl() ) );
+    if ( answer == KMessageBox::Yes ) {
+      goto reTry;
+    }
+  } else {
+    KMessageBox::information(
+      dialogParent(),
+      i18nc( "@info",
+             "The calendar item from %1 was successfully imported.",
+             url.prettyUrl() ) );
+  }
 }
 
 void ActionManager::slotAutoArchivingSettingsModified()

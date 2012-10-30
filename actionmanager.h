@@ -41,7 +41,6 @@
 
 class AkonadiCollectionView;
 class CalendarView;
-class ImportDialog;
 class KOWindowList;
 namespace KOrg {
   class HTMLExportSettings;
@@ -350,15 +349,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void updateRedoAction( const QString & );
 
-    void slotImportDialogFinished( ImportDialog * );
-
     void agentCreated( KJob * );
 
   protected:
     /** Get URL for saving. Opens FileDialog. */
     KUrl getSaveURL();
 
-    void showStatusMessageOpen( const KUrl &url, bool merge );
+    void showStatusMessageOpen( bool merge );
 
     /**
       Return widget used as parent for dialogs and message boxes.

@@ -179,7 +179,6 @@ if(NOT WINCE)
       filtereditdialog.cpp
       history.cpp
       htmlexportjob.cpp
-      importdialog.cpp
       kdatenavigator.cpp
       kocorehelper.cpp
       kodaymatrix.cpp
