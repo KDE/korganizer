@@ -434,7 +434,7 @@ void AlarmDialog::edit()
     return;
   }
 
-#ifndef KDEPIM_MOBILE_UI
+#if !defined(KDEPIM_MOBILE_UI)
   openIncidenceEditorNG( selection.first()->mIncidence );
 #else
   openIncidenceEditorThroughKOrganizer( incidence );

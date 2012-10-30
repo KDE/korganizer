@@ -24,7 +24,7 @@
 #ifndef KORGAC_KOALARMCLIENT_H
 #define KORGAC_KOALARMCLIENT_H
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
 #include <KSessionManager>
 #endif
 
@@ -43,7 +43,7 @@ namespace Akonadi {
   class Item;
 }
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
 class KOAlarmClient : public QObject, public KSessionManager
 #else
 class KOAlarmClient : public QObject
@@ -54,7 +54,7 @@ class KOAlarmClient : public QObject
     KOAlarmClient( QObject *parent = 0 );
     ~KOAlarmClient();
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
     bool commitData( QSessionManager & );
 #endif
 

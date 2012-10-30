@@ -209,6 +209,7 @@ if(NOT WINCE)
       views/timespentview/kotimespentview.cpp
       views/todoview/kotododelegates.cpp
       views/todoview/kotodomodel.cpp
+      views/todoview/kotodotreestatesaver.cpp
       views/todoview/kotodoview.cpp
       views/todoview/kotodoviewquickaddline.cpp
       views/todoview/kotodoviewquicksearch.cpp

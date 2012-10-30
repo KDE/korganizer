@@ -24,7 +24,7 @@
 //krazy:excludeall=kdebug because we use the korgac(check) debug area in here
 
 #include "koalarmclient.h"
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
 #include "alarmdialog.h"
 #include "alarmdockwindow.h"
 #else
@@ -66,7 +66,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   Akonadi::DBusConnectionPool::threadConnection().registerObject( "/ac", this );
   kDebug();
 
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   if ( dockerEnabled() ) {
     mDocker = new AlarmDockWindow;
     connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
@@ -152,7 +152,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 KOAlarmClient::~KOAlarmClient()
 {
   delete mCalendar;
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   delete mDocker;
   delete mDialog;
 #endif
@@ -220,7 +220,7 @@ void KOAlarmClient::createReminder( CalendarSupport::Calendar *calendar,
     return;
   }
 
-#if !defined(Q_WS_MAEMO_5) && !defined(_WIN32_WCE) && !defined(KORGAC_AKONADI_AGENT)
+#if !defined(Q_WS_MAEMO_5) && !defined(Q_WS_WINCE) && !defined(KORGAC_AKONADI_AGENT)
   if ( !mDialog ) {
     mDialog = new AlarmDialog( calendar );
     connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
@@ -271,12 +271,12 @@ void KOAlarmClient::saveLastCheckTime()
 void KOAlarmClient::quit()
 {
   kDebug();
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   kapp->quit();
 #endif
 }
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
 bool KOAlarmClient::commitData( QSessionManager & )
 {
   emit saveAllSignal();
@@ -327,7 +327,7 @@ void KOAlarmClient::debugShowDialog()
 
 void KOAlarmClient::hide()
 {
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   delete mDocker;
   mDocker = 0;
 #endif
@@ -335,7 +335,7 @@ void KOAlarmClient::hide()
 
 void KOAlarmClient::show()
 {
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   if ( !mDocker ) {
     if ( dockerEnabled() ) {
       mDocker = new AlarmDockWindow;

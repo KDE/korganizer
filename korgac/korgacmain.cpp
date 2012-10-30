@@ -89,7 +89,7 @@ int main( int argc, char **argv )
   }
 
   ReminderDaemonApp app;
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
   app.disableSessionManagement();
 #endif
 
