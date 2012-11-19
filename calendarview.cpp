@@ -989,11 +989,11 @@ void CalendarView::edit_paste()
   bool useEndTime = false;
 
   KOrg::BaseView *curView = mViewManager->currentView();
-
   KOAgendaView *agendaView = mViewManager->agendaView();
   MonthView *monthView = mViewManager->monthView();
 
   if ( !curView ) {
+    kWarning() << "No view is selected, can't paste";
     return;
   }
 
