@@ -985,7 +985,6 @@ void CalendarView::edit_paste()
 // In all other cases, use the navigator's selected date.
 
   QDate date;          // null dates are invalid, that's what we want
-  bool timeSet = false;// flag denoting if the time has been set.
   QTime time;          // null dates are valid, so rely on the timeSet flag
   QDateTime endDT;     // null datetimes are invalid, that's what we want
   bool useEndTime = false;
@@ -1005,7 +1004,6 @@ void CalendarView::edit_paste()
     useEndTime = !agendaView->selectedIsSingleCell();
     if ( !agendaView->selectedIsAllDay() ) {
       time = agendaView->selectionStart().time();
-      timeSet = true;
     }
   } else if ( curView == monthView && monthView->selectionStart().isValid() ) {
     date = monthView->selectionStart().date();
@@ -1028,7 +1026,7 @@ void CalendarView::edit_paste()
   CalendarSupport::DndFactory factory( cal );
 
   Incidence::List pastedIncidences;
-  if ( timeSet && time.isValid() ) {
+  if ( time.isValid() ) {
     pastedIncidences = factory.pasteIncidences( KDateTime( date, time ) );
   } else {
     pastedIncidences = factory.pasteIncidences( KDateTime( date ) );
