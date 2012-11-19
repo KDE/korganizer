@@ -987,6 +987,7 @@ void CalendarView::edit_paste()
   QDateTime endDT;
   KDateTime finalDateTime;
   bool useEndTime = false;
+  KCalUtils::DndFactory::PasteFlags pasteFlags = 0;
 
   KOrg::BaseView *curView = mViewManager->currentView();
   KOAgendaView *agendaView = mViewManager->agendaView();
@@ -1008,10 +1009,12 @@ void CalendarView::edit_paste()
     }
   } else if ( curView == monthView && monthView->selectionStart().isValid() ) {
     finalDateTime = KDateTime( monthView->selectionStart().date() );
+    pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
     finalDateTime = KDateTime( mDateNavigator->selectedDates().first() );
+    pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
   }
 
   if ( !finalDateTime.isValid() && curView->supportsDateNavigation() ) {
@@ -1026,7 +1029,7 @@ void CalendarView::edit_paste()
 
   CalendarSupport::DndFactory factory( cal );
 
-  Incidence::List pastedIncidences = factory.pasteIncidences( finalDateTime );
+  Incidence::List pastedIncidences = factory.pasteIncidences( finalDateTime, pasteFlags );
   Akonadi::Collection col;
   Incidence::List::Iterator it;
   Akonadi::Collection selectedCollection;
