@@ -984,9 +984,8 @@ void CalendarView::edit_paste()
 // If in agenda and month view, use the selected time and date from there.
 // In all other cases, use the navigator's selected date.
 
-  QDate date;          // null dates are invalid, that's what we want
-  QTime time;          // null dates are valid, so rely on the timeSet flag
-  QDateTime endDT;     // null datetimes are invalid, that's what we want
+  QDateTime endDT;
+  KDateTime finalDateTime;
   bool useEndTime = false;
 
   KOrg::BaseView *curView = mViewManager->currentView();
@@ -999,21 +998,23 @@ void CalendarView::edit_paste()
   }
 
   if ( curView == agendaView && agendaView->selectionStart().isValid() ) {
-    date = agendaView->selectionStart().date();
+    const QDate date = agendaView->selectionStart().date();
     endDT = agendaView->selectionEnd();
     useEndTime = !agendaView->selectedIsSingleCell();
-    if ( !agendaView->selectedIsAllDay() ) {
-      time = agendaView->selectionStart().time();
+    if ( agendaView->selectedIsAllDay() ) {
+      finalDateTime = KDateTime( date );
+    } else {
+      finalDateTime = KDateTime( date, agendaView->selectionStart().time() );
     }
   } else if ( curView == monthView && monthView->selectionStart().isValid() ) {
-    date = monthView->selectionStart().date();
+    finalDateTime = KDateTime( monthView->selectionStart().date() );
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
-    date = mDateNavigator->selectedDates().first();
+    finalDateTime = KDateTime( mDateNavigator->selectedDates().first() );
   }
 
-  if ( !date.isValid() && curView->supportsDateNavigation() ) {
+  if ( !finalDateTime.isValid() && curView->supportsDateNavigation() ) {
     KMessageBox::sorry(
       this,
       i18n( "Paste failed: unable to determine a valid target date." ) );
@@ -1025,12 +1026,7 @@ void CalendarView::edit_paste()
 
   CalendarSupport::DndFactory factory( cal );
 
-  Incidence::List pastedIncidences;
-  if ( time.isValid() ) {
-    pastedIncidences = factory.pasteIncidences( KDateTime( date, time ) );
-  } else {
-    pastedIncidences = factory.pasteIncidences( KDateTime( date ) );
-  }
+  Incidence::List pastedIncidences = factory.pasteIncidences( finalDateTime );
   Akonadi::Collection col;
   Incidence::List::Iterator it;
   Akonadi::Collection selectedCollection;
