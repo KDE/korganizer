@@ -35,9 +35,14 @@ class KOTodoViewQuickAddLine;
 class KOTodoViewQuickSearch;
 class KOTodoViewSortFilterProxyModel;
 class KOTodoViewView;
+class IncidenceTreeModel;
 
 namespace KPIM {
   class KDatePickerPopup;
+}
+
+namespace Akonadi {
+  class EntityMimeTypeFilterModel;
 }
 
 class QCheckBox;
@@ -167,6 +172,10 @@ class KOTodoView : public BaseView
     QMap<QAction *,int> mPriority;
     QMap<QAction *,QString> mCategory;
     bool mSidebarView;
+
+    KOTodoModel *mTodoModel;
+    IncidenceTreeModel *mTodoTreeModel;
+    Akonadi::EntityMimeTypeFilterModel *mTodoFlatModel;
 
   enum {
       eSummaryColumn = 0,
