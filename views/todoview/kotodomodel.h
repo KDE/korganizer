@@ -65,8 +65,8 @@ public:
   /**reimp*/ bool setData( const QModelIndex &index, const QVariant &value, int role );
   /**reimp*/ QVariant headerData( int section, Qt::Orientation, int role ) const;
 
-  void setCalendar( CalendarSupport::Calendar *calendar );
-  void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+  /**reimp*/ void setCalendar( CalendarSupport::Calendar *calendar );
+  /**reimp*/ void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
 
   /**reimp*/ QMimeData* mimeData( const QModelIndexList &indexes ) const;
   /**reimp*/ bool dropMimeData( const QMimeData *data, Qt::DropAction action,
