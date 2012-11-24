@@ -187,19 +187,21 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
       const QModelIndex toParent = indexForNode( node );
       Q_ASSERT( toParent.isValid() );
       Q_ASSERT( toParent.model() == q );
+      const int toRow = node->directChilds.count();
 
       if ( !silent ) {
-        //const bool res = q->beginMoveRows( fromParent, fromRow, fromRow, toParent, toRow );
-        emit q->layoutAboutToBeChanged();
-        //Q_ASSERT( res );
+        const bool res = q->beginMoveRows( /**fromParent*/QModelIndex(), fromRow,
+                                           fromRow, toParent, toRow );
+        //emit q->layoutAboutToBeChanged();
+        Q_ASSERT( res );
       }
       child->parentNode = node;
       node->directChilds.append( child );
       m_toplevelNodeList.remove( fromRow );
 
       if ( !silent ) {
-        //q->endMoveRows();
-        emit q->layoutChanged();
+        q->endMoveRows();
+        //emit q->layoutChanged();
       }
     }
   }
