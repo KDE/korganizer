@@ -43,6 +43,7 @@ struct Node {
   typedef QMap<Akonadi::Item::Id,Ptr> Map;
   typedef QVector<Ptr> List;
 
+  QPersistentModelIndex sourceIndex; // because ETM::modelIndexesForItem is so slow
   Akonadi::Item::Id id;
   Node::Ptr parentNode;
   QString parentUid;

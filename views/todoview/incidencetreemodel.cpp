@@ -123,6 +123,7 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
     return;
 
   Node::Ptr node( new Node() );
+  node->sourceIndex = sourceIndex;
   node->id = item.id();
   node->uid = incidence->uid();
   //kDebug() << "New node " << node.data() << node->uid << node->id;
@@ -495,8 +496,8 @@ QModelIndex IncidenceTreeModel::mapToSource( const QModelIndex &proxyIndex ) con
   Q_ASSERT( proxyIndex.internalPointer() );
   Q_ASSERT( proxyIndex.model() == this );
   Node *node = reinterpret_cast<Node*>( proxyIndex.internalPointer() );
-  QModelIndexList indexes = EntityTreeModel::modelIndexesForItem( sourceModel(), Akonadi::Item( node->id ) );
-  if ( indexes.isEmpty() ) {
+  //QModelIndexList indexes = EntityTreeModel::modelIndexesForItem( sourceModel(), Akonadi::Item( node->id ) );
+  /*if ( indexes.isEmpty() ) {
     Q_ASSERT( sourceModel() );
     kError() << "IncidenceTreeModel::mapToSource() no indexes."
              << proxyIndex << node->id << "; source.rowCount() = "
@@ -505,7 +506,8 @@ QModelIndex IncidenceTreeModel::mapToSource( const QModelIndex &proxyIndex ) con
     Q_ASSERT( false );
     return QModelIndex();
   }
-  QModelIndex index = indexes.first();
+  QModelIndex index = indexes.first();*/
+  QModelIndex index = node->sourceIndex;
   if ( !index.isValid() ) {
     kWarning() << "IncidenceTreeModel::mapToSource(): sourceModelIndex is invalid";
     Q_ASSERT( false );
