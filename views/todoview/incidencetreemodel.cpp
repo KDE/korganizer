@@ -507,8 +507,11 @@ QModelIndex IncidenceTreeModel::mapToSource( const QModelIndex &proxyIndex ) con
   Q_ASSERT( proxyIndex.internalPointer() );
   Q_ASSERT( proxyIndex.model() == this );
   Node *node = reinterpret_cast<Node*>( proxyIndex.internalPointer() );
-  //QModelIndexList indexes = EntityTreeModel::modelIndexesForItem( sourceModel(), Akonadi::Item( node->id ) );
-  /*if ( indexes.isEmpty() ) {
+
+  /*
+   This code is slow, using a persistent model index instead.
+  QModelIndexList indexes = EntityTreeModel::modelIndexesForItem( sourceModel(), Akonadi::Item( node->id ) );
+  if ( indexes.isEmpty() ) {
     Q_ASSERT( sourceModel() );
     kError() << "IncidenceTreeModel::mapToSource() no indexes."
              << proxyIndex << node->id << "; source.rowCount() = "
