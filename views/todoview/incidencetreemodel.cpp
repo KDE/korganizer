@@ -24,6 +24,7 @@
 
 #include <Akonadi/EntityTreeModel>
 #include <KCalCore/Incidence>
+#include <QElapsedTimer>
 
 using namespace Akonadi;
 
@@ -101,12 +102,17 @@ void IncidenceTreeModel::Private::onRowsAboutToBeInserted( const QModelIndex &pa
 
 void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int begin, int end )
 {
+  //QElapsedTimer timer;
+  //timer.start();
   Q_ASSERT( !parent.isValid() );
   Q_ASSERT( begin <= end );
+  // TODO: Performance optimization: Order them by increasing depth, i.e: insert
+  // the parents first.
   for ( int i=begin; i<=end; ++i ) {
     const QModelIndex sourceIndex = q->sourceModel()->index( i, 0, QModelIndex() );
     insertNode( sourceIndex );
   }
+  //kDebug() << "Took " << timer.elapsed() << " to insert " << end-begin+1;
 }
 
 void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bool silent )
@@ -209,6 +215,8 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
 
 void IncidenceTreeModel::Private::onRowsAboutToBeRemoved( const QModelIndex &parent, int begin, int end )
 {
+  //QElapsedTimer timer;
+  //timer.start();
   Q_ASSERT( !parent.isValid() );
   Q_ASSERT( begin <= end );
   for ( int i=begin; i<=end; ++i ) {
@@ -224,6 +232,7 @@ void IncidenceTreeModel::Private::onRowsAboutToBeRemoved( const QModelIndex &par
   }
 
   m_removedNodes.clear();
+  //kDebug() << "Took " << timer.elapsed() << " to remove " << end-begin+1;
 }
 
 void IncidenceTreeModel::Private::removeNode( Akonadi::Item::Id id )
