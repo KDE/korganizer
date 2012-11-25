@@ -87,8 +87,8 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
     QModelIndex sourceIndex = q->sourceModel()->index( i, 0 );
     Q_ASSERT( sourceIndex.isValid() );
     QModelIndex index = q->mapFromSource( sourceIndex );
-    Q_ASSERT( index.isValid() );
-    emit q->dataChanged( index, index );
+    if ( index.isValid() )
+      emit q->dataChanged( index, index );
   }
 }
 
