@@ -21,8 +21,8 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KOTODOMODEL_H_
-#define KOTODOMODEL_H_
+#ifndef KORG_VIEWS_KOTODOMODEL_H
+#define KORG_VIEWS_KOTODOMODEL_H
 
 #include <Akonadi/EntityTreeModel>
 #include <QAbstractProxyModel>
