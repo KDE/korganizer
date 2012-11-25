@@ -581,8 +581,6 @@ void KOTodoModel::setIncidenceChanger( CalendarSupport::IncidenceChanger *change
 
 QVariant KOTodoModel::headerData( int column, Qt::Orientation orientation, int role ) const
 {
-//  Q_ASSERT( column >= 0 && column < ColumnCount ); //TODO
-
   if ( orientation != Qt::Horizontal ) {
     return QVariant();
   }
