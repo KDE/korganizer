@@ -60,6 +60,7 @@ public:
   void insertNode( const QModelIndex &sourceIndex, bool silent = false );
   void removeNode( Akonadi::Item::Id id );
   QModelIndex indexForNode( const Node::Ptr &node ) const;
+  int rowForNode( const Node::Ptr &node ) const;
   bool indexBeingRemoved( const QModelIndex & ) const; // Is it being removed?
 
 public:

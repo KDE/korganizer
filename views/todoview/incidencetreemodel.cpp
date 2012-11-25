@@ -36,6 +36,15 @@ IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq,
 {
 }
 
+int IncidenceTreeModel::Private::rowForNode( const Node::Ptr &node ) const
+{
+  // Returns it's row number
+  const int row = node->parentNode ? node->parentNode->directChilds.indexOf( node )
+                                   : m_toplevelNodeList.indexOf( node );
+  Q_ASSERT ( row != -1 );
+  return row;
+}
+
 QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) const
 {
   if ( !node )
@@ -87,8 +96,81 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
     QModelIndex sourceIndex = q->sourceModel()->index( i, 0 );
     Q_ASSERT( sourceIndex.isValid() );
     QModelIndex index = q->mapFromSource( sourceIndex );
-    if ( index.isValid() )
-      emit q->dataChanged( index, index );
+    // Index might be invalid if we filter by incidence type.
+    if ( index.isValid() ) {
+      Q_ASSERT( index.internalPointer() );
+
+      // Did we this node change parent? If no, just emit dataChanged(), if
+      // yes, we must emit rowsMoved(), so we see a visual effect in the view.
+      Node *rawNode = reinterpret_cast<Node*>( index.internalPointer() );
+      Node::Ptr node = m_uidMap.value( rawNode->uid ); // Looks hackish but it's safe
+      Q_ASSERT( node );
+      Node::Ptr oldParentNode = node->parentNode;
+      Akonadi::Item item = q->data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+      Q_ASSERT( item.isValid() );
+      KCalCore::Incidence::Ptr incidence = !item.hasPayload<KCalCore::Incidence::Ptr>() ? KCalCore::Incidence::Ptr() :
+                                                                                         item.payload<KCalCore::Incidence::Ptr>();
+      if ( !incidence ) {
+        kError() << "Incidence shouldn't be invalid." << item.hasPayload() << item.id();
+        Q_ASSERT( false );
+        return;
+      }
+
+      Node::Ptr newParentNode;
+      const QString newParentUid = incidence->relatedTo();
+      if ( !newParentUid.isEmpty() ) {
+        Q_ASSERT( m_uidMap.contains( newParentUid ) );
+        newParentNode = m_uidMap.value( newParentUid );
+        Q_ASSERT( newParentNode );
+      }
+      
+      const bool parentChanged = newParentNode.data() != oldParentNode.data();
+
+      if ( parentChanged ) {
+        const int fromRow = rowForNode( node );
+        int toRow = -1;
+        QModelIndex newParentIndex;
+
+        // Calculate parameters for beginMoveRows()
+        if ( newParentNode ) {
+          newParentIndex = q->mapFromSource( newParentNode->sourceIndex );
+          Q_ASSERT( newParentIndex.isValid() );
+          toRow = newParentNode->directChilds.count();
+        } else {
+          // New parent is 0, it's son of root now
+          newParentIndex = QModelIndex();
+          toRow = m_toplevelNodeList.count();
+        }
+
+        const bool res = q->beginMoveRows( /**fromParent*/index.parent(), fromRow,
+                                           fromRow, newParentIndex, toRow );
+        Q_ASSERT( res );
+
+        // Now that beginmoveRows() was called, we can do the actual moving:
+        if ( newParentNode ) {
+          newParentNode->directChilds.append( node ); // Add to new parent
+          node->parentNode = newParentNode;
+
+          if ( oldParentNode ) {
+            oldParentNode->directChilds.remove( fromRow ); // Remove from parent
+            Q_ASSERT( oldParentNode->directChilds.indexOf( node ) == -1 );
+          } else {
+            m_toplevelNodeList.remove( fromRow ); // Remove from root
+            Q_ASSERT( m_toplevelNodeList.indexOf( node ) == -1 );
+          }
+        } else {
+          // New parent is 0, it's son of root now
+          m_toplevelNodeList.append( node );
+          node->parentNode = Node::Ptr();
+          oldParentNode->directChilds.remove( fromRow );
+          Q_ASSERT( oldParentNode->directChilds.indexOf( node ) == -1 );
+        }
+
+        q->endMoveRows();
+      } else {
+        emit q->dataChanged( index, index );
+      }
+    }
   }
 }
 
@@ -274,10 +356,8 @@ void IncidenceTreeModel::Private::removeNode( Akonadi::Item::Id id )
 
   const QModelIndex parent = indexForNode( node->parentNode );
 
-  const int rowToRemove =  node->parentNode ? node->parentNode->directChilds.indexOf( node )
-                                            : m_toplevelNodeList.indexOf( node );
+  const int rowToRemove = rowForNode( node );
 
-  Q_ASSERT ( rowToRemove != -1 );
   // Now remove the row
   q->beginRemoveRows( parent, rowToRemove, rowToRemove );
 
