@@ -748,7 +748,9 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
 Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 {
-  Q_ASSERT( index.isValid() );
+  if ( !index.isValid() )
+    return 0;
+
   Qt::ItemFlags ret = QAbstractItemModel::flags( index );
 
   const Akonadi::Item item = data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
