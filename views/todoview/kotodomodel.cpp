@@ -38,13 +38,11 @@
 #include <KCalUtils/IncidenceFormatter>
 #include <KPIMUtils/Email>
 
-#ifndef KORG_NODND
-  #include <calendarsupport/dndfactory.h>
-  #include <KCalUtils/DndFactory>
-  #include <KCalUtils/ICalDrag>
-  #include <KCalUtils/VCalDrag>
-  #include <QMimeData>
-#endif
+#include <calendarsupport/dndfactory.h>
+#include <KCalUtils/DndFactory>
+#include <KCalUtils/ICalDrag>
+#include <KCalUtils/VCalDrag>
+#include <QMimeData>
 
 #include <KMessageBox>
 
@@ -629,7 +627,6 @@ void KOTodoModel::setCalendar( CalendarSupport::Calendar *calendar )
   d->m_calendar = calendar;
 }
 
-#ifndef KORG_NODND
 Qt::DropActions KOTodoModel::supportedDropActions() const
 {
   // Qt::CopyAction not supported yet
@@ -750,7 +747,6 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
   return false;
 }
-#endif /*KORG_NODND*/
 
 Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 {
