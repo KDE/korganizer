@@ -49,7 +49,7 @@ public:
   };
 
   /** This enum defines the user defined roles of the items in this model */
-  enum { //TODO: Check if this number should heigher
+  enum {
     TodoRole = Akonadi::EntityTreeModel::UserRole + 1,
     IsRichTextRole
   };
