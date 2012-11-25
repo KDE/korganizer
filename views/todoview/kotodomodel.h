@@ -81,8 +81,6 @@ public:
   /**reimp*/ QModelIndex index( int row, int column,
                                 const QModelIndex &parent = QModelIndex() ) const;
   /**reimp*/ QModelIndex buddy( const QModelIndex &index ) const;
-Q_SIGNALS:
-  void expandIndex( const QModelIndex &index );
 private:
   class Private;
   Private *const d;

@@ -167,6 +167,9 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
         }
 
         q->endMoveRows();
+
+        // So the view can expand the parent node.
+        emit q->indexChangedParent( index );
       } else {
         emit q->dataChanged( index, index );
       }

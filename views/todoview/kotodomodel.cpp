@@ -73,19 +73,6 @@ KOTodoModel::Private::Private( KOTodoModel *qq ) : QObject()
 {
 }
 
-// TODO: Call this.
-void KOTodoModel::Private::expandTodoIfNeeded( const Akonadi::Item &item )
-{
-  Q_ASSERT( item.isValid() );
-  KCalCore::Todo::Ptr todo = item.payload<KCalCore::Todo::Ptr>();
-  Q_ASSERT( todo );
-  if ( todo->isOverdue() || isDueToday( todo ) ) {
-    const QModelIndexList indexes = Akonadi::EntityTreeModel::modelIndexesForItem( q, item );
-    Q_ASSERT( !indexes.isEmpty() );
-    emit q->expandIndex( indexes.first() );
-  }
-}
-
 Akonadi::Item KOTodoModel::Private::findItemByUid( const QString &uid,
                                                  const QModelIndex &parent ) const
 {

@@ -64,6 +64,15 @@ public:
 
   /**reimp*/ void setSourceModel( QAbstractItemModel *sourceModel );
   /**reimp*/ bool hasChildren( const QModelIndex &parent = QModelIndex() ) const;
+Q_SIGNALS:
+
+  /**
+   * This signal is emitted whenever an index changes parent.
+   * The view can then expand the parent if desired.
+   * This is better than the view waiting for "rows moved" signals because those
+   * signals are also sent when the model is initially populated.
+   */
+  void indexChangedParent( const QModelIndex &index );
 private:
   class Private;
   Private *const d;

@@ -89,8 +89,6 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
     sModels = new ModelStack();
   sModels->ref++;
 
-  connect( sModels->todoModel, SIGNAL(expandIndex(QModelIndex)),
-           this, SLOT(expandIndex(QModelIndex)) );
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( sModels->todoModel );
   mProxyModel->setDynamicSortFilter( true );
@@ -470,7 +468,7 @@ void KOTodoView::collapseAt()
 
 void KOTodoView::expandIndex( const QModelIndex &index )
 {
-  QModelIndex realIndex = mProxyModel->mapFromSource( index );
+  QModelIndex realIndex = mProxyModel->mapFromSource( sModels->todoModel->mapFromSource( index ) );
   while ( realIndex.isValid() ) {
     mView->expand( realIndex );
     realIndex = mProxyModel->parent( realIndex );
@@ -1148,6 +1146,8 @@ void KOTodoView::setFlatView( bool flatView )
   } else {
     mView->setDragDropMode( QAbstractItemView::DragDrop );
     sModels->todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, this );
+    connect( sModels->todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)),
+             SLOT(expandIndex(QModelIndex)) );
     sModels->todoTreeModel->setSourceModel( calendar() ? calendar()->model() : 0 );
     sModels->todoModel->setSourceModel( sModels->todoTreeModel );
     delete sModels->todoFlatModel;

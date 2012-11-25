@@ -40,7 +40,6 @@ class KOTodoModel::Private : public QObject
   Q_OBJECT
 public:
   Private( KOTodoModel *qq );
-  void expandTodoIfNeeded( const Akonadi::Item &item );
 
   //TODO: O(N) complexity, see if the profiler complains about this
   Akonadi::Item findItemByUid( const QString &uid, const QModelIndex &parent ) const;
