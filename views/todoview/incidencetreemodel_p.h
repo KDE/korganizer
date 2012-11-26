@@ -67,6 +67,7 @@ public:
   Node::Map m_nodeMap;
   Node::List m_toplevelNodeList;
   QHash<Uid,Node::Ptr> m_uidMap;
+  QHash<Uid,Akonadi::Item> m_itemByUid;
   QMultiHash<ParentUid,Node::Ptr> m_waitingForParent;
   QList<Node*> m_removedNodes;
   const QStringList m_mimeTypes;

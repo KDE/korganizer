@@ -23,8 +23,8 @@
 #ifndef INCIDENCE_TREEMODEL_H_
 #define INCIDENCE_TREEMODEL_H_
 
+#include <Akonadi/Item>
 #include <QAbstractProxyModel>
-
 
 class IncidenceTreeModel : public QAbstractProxyModel {
   Q_OBJECT
@@ -64,6 +64,12 @@ public:
 
   /**reimp*/ void setSourceModel( QAbstractItemModel *sourceModel );
   /**reimp*/ bool hasChildren( const QModelIndex &parent = QModelIndex() ) const;
+
+  /**
+   * Returns the akonadi item containing the incidence with @p incidenceUid.
+   */
+  Akonadi::Item item( const QString &incidenceUid ) const;
+
 Q_SIGNALS:
 
   /**

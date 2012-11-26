@@ -63,6 +63,7 @@ void IncidenceTreeModel::Private::reset( bool silent )
     q->beginResetModel();
   m_toplevelNodeList.clear();
   m_nodeMap.clear();
+  m_itemByUid.clear();
   m_waitingForParent.clear();
   m_uidMap.clear();
   if ( q->sourceModel() ) {
@@ -115,6 +116,7 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
         Q_ASSERT( false );
         return;
       }
+      m_itemByUid.insert( incidence->uid(), item );
 
       Node::Ptr newParentNode;
       const QString newParentUid = incidence->relatedTo();
@@ -221,6 +223,7 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
   node->sourceIndex = sourceIndex;
   node->id = item.id();
   node->uid = incidence->uid();
+  m_itemByUid.insert( node->uid, item );
   //kDebug() << "New node " << node.data() << node->uid << node->id;
   node->parentUid = incidence->relatedTo();
   Q_ASSERT( node->uid != node->parentUid );
@@ -367,6 +370,7 @@ void IncidenceTreeModel::Private::removeNode( Akonadi::Item::Id id )
 
   // Now remove the row
   q->beginRemoveRows( parent, rowToRemove, rowToRemove );
+  m_itemByUid.remove( node->uid );
 
   if ( parent.isValid() ) {
     node->parentNode->directChilds.remove( rowToRemove );
@@ -703,4 +707,20 @@ bool IncidenceTreeModel::hasChildren( const QModelIndex &parent ) const
   } else {
     return !d->m_toplevelNodeList.isEmpty();
   }
+}
+
+Akonadi::Item IncidenceTreeModel::item( const QString &uid ) const
+{
+  Akonadi::Item item;
+  if ( uid.isEmpty() ) {
+    kWarning() << "Called with an empty uid";
+  } else {
+    if ( d->m_itemByUid.contains( uid ) ) {
+      item = d->m_itemByUid.value( uid );
+    } else {
+      kWarning() << "There's no incidence with uid " << uid;
+    }
+  }
+
+  return item;
 }
