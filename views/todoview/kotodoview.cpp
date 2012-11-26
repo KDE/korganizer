@@ -1138,6 +1138,7 @@ void KOTodoView::setFlatView( bool flatView )
 {
   const QString todoMimeType = QLatin1String( "application/x-vnd.akonadi.calendar.todo" );
   if ( flatView ) {
+    delete sModels->todoFlatModel;
     sModels->todoFlatModel = new Akonadi::EntityMimeTypeFilterModel( this );
     sModels->todoFlatModel->addMimeTypeInclusionFilter( todoMimeType );
     sModels->todoFlatModel->setSourceModel( calendar() ? calendar()->model() : 0 );
@@ -1148,6 +1149,7 @@ void KOTodoView::setFlatView( bool flatView )
     mView->setDragDropMode( QAbstractItemView::DragOnly );
   } else {
     mView->setDragDropMode( QAbstractItemView::DragDrop );
+    delete sModels->todoTreeModel;
     sModels->todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, this );
     connect( sModels->todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)),
              SLOT(expandIndex(QModelIndex)) );
