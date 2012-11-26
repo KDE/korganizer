@@ -1454,6 +1454,7 @@ bool CalendarView::incidence_unsub( const Akonadi::Item &item )
   const Incidence::Ptr inc = CalendarSupport::incidence( item );
 
   if ( !inc || inc->relatedTo().isEmpty() ) {
+    kDebug() << "Refusing to unparent this to-do" << inc;
     return false;
   }
 
@@ -1484,6 +1485,7 @@ bool CalendarView::makeChildrenIndependent( const Akonadi::Item &item )
   Akonadi::Item::List subIncs = mCalendar->findChildren( item );
 
   if ( !inc || subIncs.isEmpty() ) {
+    kDebug() << "Refusing to  make children independent" << inc;
     return false;
   }
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
