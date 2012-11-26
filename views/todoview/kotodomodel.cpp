@@ -25,6 +25,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "kohelper.h"
+#include "incidencetreemodel.h"
 
 #include <calendarsupport/calendar.h>
 #include <calendarsupport/utils.h>
@@ -74,8 +75,13 @@ KOTodoModel::Private::Private( KOTodoModel *qq ) : QObject()
 }
 
 Akonadi::Item KOTodoModel::Private::findItemByUid( const QString &uid,
-                                                 const QModelIndex &parent ) const
+                                                   const QModelIndex &parent ) const
 {
+  Q_ASSERT( !uid.isEmpty() );
+  IncidenceTreeModel *treeModel = qobject_cast<IncidenceTreeModel*>( q->sourceModel() );
+  if ( treeModel ) // O(1) Shortcut
+    return treeModel->item( uid );
+
   Akonadi::Item item;
   const int count = q->rowCount( parent );
   for ( int i=0; i<count; ++i ) {
