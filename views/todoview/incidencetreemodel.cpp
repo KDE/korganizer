@@ -168,8 +168,12 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
 
         q->endMoveRows();
 
-        // So the view can expand the parent node.
-        emit q->indexChangedParent( index );
+        // index is rotten after the move, retrieve it again
+        index = indexForNode( node );
+        Q_ASSERT( index.isValid() );
+
+        if ( newParentNode )
+          emit q->indexChangedParent( index.parent() );
       } else {
         emit q->dataChanged( index, index );
       }

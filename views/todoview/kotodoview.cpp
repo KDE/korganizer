@@ -468,7 +468,10 @@ void KOTodoView::collapseAt()
 
 void KOTodoView::expandIndex( const QModelIndex &index )
 {
-  QModelIndex realIndex = mProxyModel->mapFromSource( sModels->todoModel->mapFromSource( index ) );
+  QModelIndex todoModelIndex = sModels->todoModel->mapFromSource( index );
+  Q_ASSERT( todoModelIndex.isValid() );
+  QModelIndex realIndex = mProxyModel->mapFromSource( todoModelIndex );
+  Q_ASSERT( realIndex.isValid() );
   while ( realIndex.isValid() ) {
     mView->expand( realIndex );
     realIndex = mProxyModel->parent( realIndex );
