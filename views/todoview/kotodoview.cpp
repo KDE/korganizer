@@ -59,10 +59,11 @@
 // We share this struct between all views, for performance and memory purposes
 struct ModelStack {
 
-  ModelStack() : todoModel( new KOTodoModel() )
-               , todoTreeModel( 0 )
-               , todoFlatModel( 0 )
-               , ref(0)
+  ModelStack( QObject *parent_ ) : todoModel( new KOTodoModel() )
+                                 , parent( parent_ )
+                                 , calendar( 0 )
+                                 , todoTreeModel( 0 )
+                                 , todoFlatModel( 0 )
   {
   }
 
@@ -73,10 +74,62 @@ struct ModelStack {
     delete todoFlatModel;
   }
 
+  void registerView( KOTodoView *view )
+  {
+    views << view;
+  }
+
+  void unregisterView( KOTodoView *view )
+  {
+    views.removeAll( view );
+  }
+
+  void setFlatView( bool flat )
+  {
+    const QString todoMimeType = QLatin1String( "application/x-vnd.akonadi.calendar.todo" );
+    if ( flat ) {
+      delete todoFlatModel;
+      todoFlatModel = new Akonadi::EntityMimeTypeFilterModel( parent );
+      todoFlatModel->addMimeTypeInclusionFilter( todoMimeType );
+      todoFlatModel->setSourceModel( calendar ? calendar->model() : 0 );
+      todoModel->setSourceModel( todoFlatModel );
+      delete todoTreeModel;
+      todoTreeModel = 0;
+      foreach( KOTodoView *view, views ) {
+        // In flatview dropping confuses users and it's very easy to drop into a child item
+        view->mView->setDragDropMode( QAbstractItemView::DragOnly );
+      }
+    } else {
+      delete todoTreeModel;
+      todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, parent );
+      foreach( KOTodoView *view, views ) {
+        QObject::connect( todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)), view, SLOT(expandIndex(QModelIndex)) );
+        view->mView->setDragDropMode( QAbstractItemView::DragDrop );
+      }
+      todoTreeModel->setSourceModel( calendar ? calendar->model() : 0  );
+      todoModel->setSourceModel( todoTreeModel );
+      delete todoFlatModel;
+      todoFlatModel = 0;
+    }
+    
+  }
+
+  void setCalendar( CalendarSupport::Calendar *newCalendar )
+  {
+    calendar = newCalendar;
+    todoModel->setCalendar( calendar );
+    if (todoTreeModel )
+      todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
+  }
+
   KOTodoModel *todoModel;
+  QList<KOTodoView*> views;
+  QObject *parent;
+
+private:
+  CalendarSupport::Calendar *calendar;
   IncidenceTreeModel *todoTreeModel;
   Akonadi::EntityMimeTypeFilterModel *todoFlatModel;
-  int ref;
 };
 
 // Don't use K_GLOBAL_STATIC, see QTBUG-22667
@@ -86,8 +139,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   : BaseView( parent )
 {
   if ( !sModels )
-    sModels = new ModelStack();
-  sModels->ref++;
+    sModels = new ModelStack( parent );
+
+  sModels->registerView( this );
 
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( sModels->todoModel );
@@ -415,8 +469,8 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
 KOTodoView::~KOTodoView()
 {
-  sModels->ref--;
-  if ( sModels->ref == 0 ) {
+  sModels->unregisterView( this );
+  if ( sModels->views.isEmpty() ) {
     delete sModels;
     sModels = 0;
   }
@@ -500,9 +554,7 @@ void KOTodoView::setCalendar( CalendarSupport::Calendar *calendar )
     mQuickSearch->setCalendar( calendar );
   }
   mCategoriesDelegate->setCalendar( calendar );
-  sModels->todoModel->setCalendar( calendar );
-  if ( sModels->todoTreeModel )
-    sModels->todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
+  sModels->setCalendar( calendar );
 }
 
 Akonadi::Item::List KOTodoView::selectedIncidences()
@@ -1136,28 +1188,7 @@ void KOTodoView::setFullView( bool fullView )
 
 void KOTodoView::setFlatView( bool flatView )
 {
-  const QString todoMimeType = QLatin1String( "application/x-vnd.akonadi.calendar.todo" );
-  if ( flatView ) {
-    delete sModels->todoFlatModel;
-    sModels->todoFlatModel = new Akonadi::EntityMimeTypeFilterModel( this );
-    sModels->todoFlatModel->addMimeTypeInclusionFilter( todoMimeType );
-    sModels->todoFlatModel->setSourceModel( calendar() ? calendar()->model() : 0 );
-    sModels->todoModel->setSourceModel( sModels->todoFlatModel );
-    delete sModels->todoTreeModel;
-    sModels->todoTreeModel = 0;
-    // In flatview dropping confuses users and it's very easy to drop into a child item
-    mView->setDragDropMode( QAbstractItemView::DragOnly );
-  } else {
-    mView->setDragDropMode( QAbstractItemView::DragDrop );
-    delete sModels->todoTreeModel;
-    sModels->todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, this );
-    connect( sModels->todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)),
-             SLOT(expandIndex(QModelIndex)) );
-    sModels->todoTreeModel->setSourceModel( calendar() ? calendar()->model() : 0 );
-    sModels->todoModel->setSourceModel( sModels->todoTreeModel );
-    delete sModels->todoFlatModel;
-    sModels->todoFlatModel = 0;
-  }
+  sModels->setFlatView( flatView );
 
   mFlatView->blockSignals( true );
   // We block signals to avoid recursion, we have two KOTodoViews and mFlatView is synchronized

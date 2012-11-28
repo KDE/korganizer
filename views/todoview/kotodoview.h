@@ -52,6 +52,7 @@ using namespace KOrg;
 class KOTodoView : public BaseView
 {
   Q_OBJECT
+  friend class ModelStack;
 
   public:
     KOTodoView( bool sidebarView, QWidget *parent );
