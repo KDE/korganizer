@@ -312,6 +312,8 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
            "flat list instead of a hierarchical tree; the parental "
            "relationships are removed in the display." ) );
   connect( mFlatView, SIGNAL(toggled(bool)), SLOT(setFlatView(bool)) );
+  if ( mFullView )
+    connect( mFullView, SIGNAL(toggled(bool)), SLOT(setFullView(bool)) );
 
   QGridLayout *layout = new QGridLayout( this );
   layout->setMargin( 0 );
