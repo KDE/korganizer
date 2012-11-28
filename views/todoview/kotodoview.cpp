@@ -840,13 +840,11 @@ void KOTodoView::contextMenu( const QPoint &pos )
   mMovePopupMenu->setEnabled( hasItem );
 
   if ( hasItem ) {
-
     if ( !incidencePtr ) {
-
       if ( calendar() ) {
         mMakeSubtodosIndependent->setEnabled( !calendar()->findChildren( incidencePtr ).isEmpty() );
-        mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
       }
+      mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
     }
 
     switch ( mView->indexAt( pos ).column() ) {
