@@ -111,7 +111,17 @@ struct ModelStack {
       delete todoFlatModel;
       todoFlatModel = 0;
     }
-    
+
+    foreach( KOTodoView *view, views ) {
+      view->mFlatView->blockSignals( true );
+      // We block signals to avoid recursion, we have two KOTodoViews and mFlatView is synchronized
+      view->mFlatView->setChecked( flat );
+      view->mFlatView->blockSignals( false );
+      view->mView->setRootIsDecorated( !flat );
+    }
+
+    KOPrefs::instance()->setFlatListTodo( flat );
+    KOPrefs::instance()->writeConfig();
   }
 
   void setCalendar( CalendarSupport::Calendar *newCalendar )
@@ -1189,16 +1199,6 @@ void KOTodoView::setFullView( bool fullView )
 void KOTodoView::setFlatView( bool flatView )
 {
   sModels->setFlatView( flatView );
-
-  mFlatView->blockSignals( true );
-  // We block signals to avoid recursion, we have two KOTodoViews and mFlatView is synchronized
-  mFlatView->setChecked( flatView );
-  mFlatView->blockSignals( false );
-
-  mView->setRootIsDecorated( !flatView );
-
-  KOPrefs::instance()->setFlatListTodo( flatView );
-  KOPrefs::instance()->writeConfig();
 }
 
 void KOTodoView::getHighlightMode( bool &highlightEvents,
