@@ -32,7 +32,6 @@ ThemeImporter::ThemeImporter() : QXmlStreamReader()
 
 ThemeImporter::ThemeImporter( QIODevice *device ) : QXmlStreamReader( device )
 {
-  ThemeImporter();
   read( device );
 }
 
