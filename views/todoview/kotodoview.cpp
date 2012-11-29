@@ -747,7 +747,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
 
   if ( hasItem ) {
 
-    if ( !incidencePtr ) {
+    if ( incidencePtr ) {
 
       if ( calendar() ) {
         mMakeSubtodosIndependent->setEnabled( !calendar()->findChildren( incidencePtr ).isEmpty() );
