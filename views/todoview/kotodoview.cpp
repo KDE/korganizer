@@ -178,15 +178,15 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
     connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
              mProxyModel, SLOT(setFilterRegExp(QString)) );
     connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
-             this, SLOT(expandTree()) );
+             SLOT(restoreViewState()) );
     connect( mQuickSearch, SIGNAL(filterCategoryChanged(QStringList)),
              mProxyModel, SLOT(setCategoryFilter(QStringList)) );
     connect( mQuickSearch, SIGNAL(filterCategoryChanged(QStringList)),
-             this, SLOT(expandTree()) );
+             SLOT(restoreViewState()) );
     connect( mQuickSearch, SIGNAL(filterPriorityChanged(QStringList)),
              mProxyModel, SLOT(setPriorityFilter(QStringList)) );
     connect( mQuickSearch, SIGNAL(filterPriorityChanged(QStringList)),
-             this, SLOT(expandTree()) );
+             SLOT(restoreViewState()) );
   }
 
   mView = new KOTodoViewView( this );
@@ -435,50 +435,6 @@ KOTodoView::~KOTodoView()
   }
 }
 
-void KOTodoView::expandAt()
-{
-  QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() > 0 ) {
-    QModelIndex realIndex = selection.first();
-    if ( realIndex.isValid() ) {
-      if ( mView->isExpanded( realIndex ) && mProxyModel->hasChildren( realIndex ) ) {
-        realIndex = realIndex.child( 0, 0 );
-        if ( realIndex.isValid() && !mView->isExpanded( realIndex ) ) {
-          mView->expand( realIndex );
-          mView->setCurrentIndex( realIndex );
-        }
-      } else {
-        mView->expand( realIndex );
-        if ( mProxyModel->hasChildren( realIndex ) ) {
-          realIndex = realIndex.child( 0, 0 );
-          if ( realIndex.isValid() ) {
-            mView->setCurrentIndex( realIndex );
-          }
-        }
-      }
-    }
-  }
-}
-
-void KOTodoView::collapseAt()
-{
-  QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() > 0 ) {
-    QModelIndex realIndex = selection.first();
-    if ( realIndex.isValid() ) {
-      if ( !mView->isExpanded( realIndex ) ) {
-        realIndex = mProxyModel->parent( realIndex );
-        if ( realIndex.isValid() ) {
-          mView->collapse( realIndex );
-          mView->setCurrentIndex( realIndex );
-        }
-      } else {
-        mView->collapse( realIndex );
-      }
-    }
-  }
-}
-
 void KOTodoView::expandIndex( const QModelIndex &index )
 {
   QModelIndex todoModelIndex = sModels->todoModel->mapFromSource( index );
@@ -489,21 +445,6 @@ void KOTodoView::expandIndex( const QModelIndex &index )
     mView->expand( realIndex );
     realIndex = mProxyModel->parent( realIndex );
   }
-}
-
-void KOTodoView::expandTree()
-{
-  mView->expandAll();
-  QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() == 0 ) {
-    mView->setCurrentIndex( mProxyModel->index( 0, 0 ) );
-  }
-}
-
-void KOTodoView::collapseTree()
-{
-  mView->collapseAll();
-  mView->setCurrentIndex( mProxyModel->index( 0, 0 ) );
 }
 
 void KOTodoView::setCalendar( CalendarSupport::Calendar *calendar )
