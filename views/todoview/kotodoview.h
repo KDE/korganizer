@@ -129,6 +129,7 @@ class KOTodoView : public BaseView
     void setFullView( bool fullView );
     void setFlatView( bool flatView );
     void restoreViewState();
+    void saveViewState();
 
   Q_SIGNALS:
     void purgeCompletedSignal();

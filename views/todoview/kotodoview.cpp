@@ -88,17 +88,22 @@ struct ModelStack {
   {
     const QString todoMimeType = QLatin1String( "application/x-vnd.akonadi.calendar.todo" );
     if ( flat ) {
+      foreach( KOTodoView *view, views ) {
+        // In flatview dropping confuses users and it's very easy to drop into a child item
+        view->mView->setDragDropMode( QAbstractItemView::DragOnly );
+
+        if ( todoTreeModel )
+          view->saveViewState(); // Save the tree state before it's gone
+      }
+
       delete todoFlatModel;
       todoFlatModel = new Akonadi::EntityMimeTypeFilterModel( parent );
       todoFlatModel->addMimeTypeInclusionFilter( todoMimeType );
       todoFlatModel->setSourceModel( calendar ? calendar->model() : 0 );
       todoModel->setSourceModel( todoFlatModel );
+
       delete todoTreeModel;
       todoTreeModel = 0;
-      foreach( KOTodoView *view, views ) {
-        // In flatview dropping confuses users and it's very easy to drop into a child item
-        view->mView->setDragDropMode( QAbstractItemView::DragOnly );
-      }
     } else {
       delete todoTreeModel;
       todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, parent );
@@ -419,10 +424,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
 KOTodoView::~KOTodoView()
 {
-  Akonadi::ETMViewStateSaver treeStateSaver;
-  KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
-  treeStateSaver.setView( mView );
-  treeStateSaver.saveState( group );
+  saveViewState();
 
   sModels->unregisterView( this );
   if ( sModels->views.isEmpty() ) {
@@ -1192,6 +1194,14 @@ QString KOTodoView::stateSaverGroup() const
     str += QChar('S');
 
   return str;
+}
+
+void KOTodoView::saveViewState()
+{
+  Akonadi::ETMViewStateSaver treeStateSaver;
+  KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
+  treeStateSaver.setView( mView );
+  treeStateSaver.saveState( group );
 }
 
 #include "kotodoview.moc"
