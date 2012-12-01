@@ -51,6 +51,7 @@ class QItemSelection;
 class QMenu;
 class QModelIndex;
 class QPushButton;
+class QToolButton;
 
 using namespace KOrg;
 
@@ -154,7 +155,7 @@ class KOTodoView : public BaseView
 
     KOTodoViewQuickSearch *mQuickSearch;
     KOTodoViewQuickAddLine *mQuickAdd;
-    QCheckBox *mFullView;
+    QToolButton *mFullViewButton;
     QCheckBox *mFlatView;
 
     QMenu *mItemPopupMenu;

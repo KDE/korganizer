@@ -54,7 +54,7 @@
 #include <QGridLayout>
 #include <QHeaderView>
 #include <QMenu>
-#include <QTimer>
+#include <QToolButton>
 
 // We share this struct between all views, for performance and memory purposes
 struct ModelStack {
@@ -234,15 +234,16 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
            this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
 
-  mFullView = 0;
+  mFullViewButton = 0;
   if ( !mSidebarView ) {
-    mFullView = new QCheckBox(
-      i18nc( "@option:check Checkbox to display this view into the full window",
-             "Full Window" ), this );
-    mFullView->setToolTip(
+    mFullViewButton = new QToolButton( this );
+    mFullViewButton->setAutoRaise( true );
+    mFullViewButton->setCheckable( true );
+
+    mFullViewButton->setToolTip(
       i18nc( "@info:tooltip",
              "Display to-do list in a full window" ) );
-    mFullView->setWhatsThis(
+    mFullViewButton->setWhatsThis(
       i18nc( "@info:whatsthis",
              "Checking this option will cause the to-do view to use the full window." ) );
   }
@@ -259,8 +260,8 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
            "flat list instead of a hierarchical tree; the parental "
            "relationships are removed in the display." ) );
   connect( mFlatView, SIGNAL(toggled(bool)), SLOT(setFlatView(bool)) );
-  if ( mFullView )
-    connect( mFullView, SIGNAL(toggled(bool)), SLOT(setFullView(bool)) );
+  if ( mFullViewButton )
+    connect( mFullViewButton, SIGNAL(toggled(bool)), SLOT(setFullView(bool)) );
 
   QGridLayout *layout = new QGridLayout( this );
   layout->setMargin( 0 );
@@ -280,7 +281,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
     f->setFrameShape( QFrame::VLine );
     f->setFrameShadow( QFrame::Sunken );
     dummyLayout->addWidget( f );
-    dummyLayout->addWidget( mFullView );
+    dummyLayout->addWidget( mFullViewButton );
   }
   dummyLayout->addWidget( mFlatView );
 
@@ -420,6 +421,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   // Initialize our proxy models
   setFlatView( KOPrefs::instance()->flatListTodo() );
+  setFullView( KOPrefs::instance()->fullViewTodo() );
 }
 
 KOTodoView::~KOTodoView()
@@ -559,7 +561,7 @@ void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
   }
 
   if ( !mSidebarView ) {
-    KOPrefs::instance()->setFullViewTodo( mFullView->isChecked() );
+    KOPrefs::instance()->setFullViewTodo( mFullViewButton->isChecked() );
   }
   KOPrefs::instance()->setFlatListTodo( mFlatView->isChecked() );
 }
@@ -1127,14 +1129,21 @@ void KOTodoView::changedCategories( QAction *action )
 
 void KOTodoView::setFullView( bool fullView )
 {
-  if ( !mFullView ) {
+  if ( !mFullViewButton ) {
     return;
   }
 
-  mFullView->blockSignals( true );
-  // We block signals to avoid recursion, we have two KOTodoViews and mFullView is synchronized
-  mFullView->setChecked( fullView );
-  mFullView->blockSignals( false );
+  mFullViewButton->setChecked( fullView );
+  if ( fullView ) {
+    mFullViewButton->setIcon( KIcon( "view-restore" ) );
+  } else {
+    mFullViewButton->setIcon( KIcon( "view-fullscreen" ) );
+  }
+
+  mFullViewButton->blockSignals( true );
+  // We block signals to avoid recursion, we have two KOTodoViews and mFullViewButton is synchronized
+  mFullViewButton->setChecked( fullView );
+  mFullViewButton->blockSignals( false );
 
   KOPrefs::instance()->setFullViewTodo( fullView );
   KOPrefs::instance()->writeConfig();
