@@ -32,7 +32,7 @@ IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq,
                                       const QStringList &mimeTypes ) : QObject()
                                                                      , m_mimeTypes( mimeTypes )
                                                                      , q( qq )
-                                                                     
+
 {
 }
 
@@ -125,7 +125,7 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
         newParentNode = m_uidMap.value( newParentUid );
         Q_ASSERT( newParentNode );
       }
-      
+
       const bool parentChanged = newParentNode.data() != oldParentNode.data();
 
       if ( parentChanged ) {

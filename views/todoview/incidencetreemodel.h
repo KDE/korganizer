@@ -41,7 +41,7 @@ public:
    *
    * This constructor is offered for performance reasons. The filtering has
    * zero overhead, and we avoid stacking mime type filter proxy models.
-   * 
+   *
    * If you're more concerned about clean design than performance, use the default
    * constructor and stack a Akonadi::EntityMimeTypeFilterModel on top of this one.
    */
@@ -71,7 +71,6 @@ public:
   Akonadi::Item item( const QString &incidenceUid ) const;
 
 Q_SIGNALS:
-
   /**
    * This signal is emitted whenever an index changes parent.
    * The view can then expand the parent if desired.
