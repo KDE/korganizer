@@ -154,13 +154,12 @@ private:
 static ModelStack *sModels = 0;
 
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
-  : BaseView( parent )
+  : BaseView( parent ), mTreeStateRestorer( 0 )
 {
   if ( !sModels )
     sModels = new ModelStack( parent );
   sModels->registerView( this );
 
-  mTreeStateRestorer = 0;
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( sModels->todoModel );
   mProxyModel->setDynamicSortFilter( true );

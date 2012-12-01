@@ -29,6 +29,8 @@
 
 #include "korganizer/baseview.h"
 
+#include <QPointer>
+
 class KOTodoCategoriesDelegate;
 class KOTodoModel;
 class KOTodoViewQuickAddLine;
@@ -170,7 +172,7 @@ class KOTodoView : public BaseView
     QAction *mMakeTodoIndependent;
     QAction *mMakeSubtodosIndependent;
 
-    Akonadi::ETMViewStateSaver *mTreeStateRestorer;
+    QPointer<Akonadi::ETMViewStateSaver> mTreeStateRestorer;
 
     QMap<QAction *,int> mPercentage;
     QMap<QAction *,int> mPriority;
