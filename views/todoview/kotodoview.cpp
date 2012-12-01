@@ -118,6 +118,7 @@ struct ModelStack {
       view->mFlatView->setChecked( flat );
       view->mFlatView->blockSignals( false );
       view->mView->setRootIsDecorated( !flat );
+      view->restoreViewState();
     }
 
     KOPrefs::instance()->setFlatListTodo( flat );
@@ -477,10 +478,17 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   // Initialize our proxy models
   setFlatView( KOPrefs::instance()->flatListTodo() );
+
+  QTimer::singleShot( 3000, this, SLOT(restoreViewState()) );
 }
 
 KOTodoView::~KOTodoView()
 {
+  Akonadi::ETMViewStateSaver treeStateSaver;
+  KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
+  treeStateSaver.setView( mView );
+  treeStateSaver.saveState( group );
+
   sModels->unregisterView( this );
   if ( sModels->views.isEmpty() ) {
     delete sModels;
@@ -567,6 +575,7 @@ void KOTodoView::setCalendar( CalendarSupport::Calendar *calendar )
   }
   mCategoriesDelegate->setCalendar( calendar );
   sModels->setCalendar( calendar );
+  restoreViewState();
 }
 
 Akonadi::Item::List KOTodoView::selectedIncidences()
@@ -1224,6 +1233,24 @@ void KOTodoView::resizeColumnsToContent()
 KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
 {
   return KOrg::CalPrinterBase::Todolist;
+}
+
+void KOTodoView::restoreViewState()
+{
+  // Created on the heap. Do not delete it. It deletes itself.
+  Akonadi::ETMViewStateSaver *treeStateSaver = new Akonadi::ETMViewStateSaver();
+  KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
+  treeStateSaver->setView( mView );
+  treeStateSaver->restoreState( group );
+}
+
+QString KOTodoView::stateSaverGroup() const
+{
+  QString str = QLatin1String( "TodoTreeViewState" );
+  if ( mSidebarView )
+    str += QChar('S');
+
+  return str;
 }
 
 #include "kotodoview.moc"

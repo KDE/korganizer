@@ -28,6 +28,7 @@
 #define KORG_VIEWS_KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
+#include <Akonadi/ETMViewStateSaver>
 
 class KOTodoCategoriesDelegate;
 class KOTodoModel;
@@ -123,6 +124,7 @@ class KOTodoView : public BaseView
     void changedCategories( QAction *action );
     void setFullView( bool fullView );
     void setFlatView( bool flatView );
+    void restoreViewState();
 
   Q_SIGNALS:
     void purgeCompletedSignal();
@@ -133,6 +135,7 @@ class KOTodoView : public BaseView
 
   private:
     QMenu *createCategoryPopupMenu();
+    QString stateSaverGroup() const;
     void printTodo( bool preview );
 
     /** Creates a new todo with the given text as summary under the given parent */
