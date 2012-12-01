@@ -26,6 +26,7 @@
 #define KORG_VIEWS_KOTODOVIEWVIEW_H
 
 #include <QTreeView>
+#include <QTimer>
 
 class KMenu;
 
@@ -45,16 +46,21 @@ class KOTodoViewView : public QTreeView
 
   protected:
     virtual QModelIndex moveCursor( CursorAction cursorAction, Qt::KeyboardModifiers modifiers );
-    virtual void mouseReleaseEvent ( QMouseEvent * );
+    virtual void mousePressEvent( QMouseEvent * );
+    virtual void mouseReleaseEvent( QMouseEvent * );
+    virtual void mouseMoveEvent( QMouseEvent * );
 
   private:
     QModelIndex getNextEditableIndex( const QModelIndex &cur, int inc );
 
     KMenu *mHeaderPopup;
     QList<QAction *> mColumnActions;
+    QTimer mExpandTimer;
+    bool mIgnoreNextMouseRelease;
 
   private slots:
     void toggleColumnHidden( QAction *action );
+    void expandParent();
 };
 
 #endif
