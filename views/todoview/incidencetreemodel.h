@@ -78,6 +78,19 @@ Q_SIGNALS:
    * signals are also sent when the model is initially populated.
    */
   void indexChangedParent( const QModelIndex &index );
+
+  /**
+   * Signals that we finished doing a batch of insertions.
+   *
+   * One rowsInserted() signal from the ETM, will make IncidenceTreeModel generate
+   * several rowsInserted(), layoutChanged() or rowsMoved() signals.
+   *
+   * A tree view can use this signal to know when to call KViewStateSaver::restore()
+   * to restore expansion states. Listening to rowsInserted() signals would be a
+   * performance problem.
+   */
+  void batchInsertionFinished();
+
 private:
   class Private;
   Private *const d;
