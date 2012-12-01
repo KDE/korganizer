@@ -28,7 +28,6 @@
 #define KORG_VIEWS_KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
-#include <Akonadi/ETMViewStateSaver>
 
 class KOTodoCategoriesDelegate;
 class KOTodoModel;
@@ -39,6 +38,10 @@ class KOTodoViewView;
 
 namespace KPIM {
   class KDatePickerPopup;
+}
+
+namespace Akonadi {
+  class ETMViewStateSaver;
 }
 
 class QCheckBox;
@@ -166,6 +169,8 @@ class KOTodoView : public BaseView
 
     QAction *mMakeTodoIndependent;
     QAction *mMakeSubtodosIndependent;
+
+    Akonadi::ETMViewStateSaver *mTreeStateRestorer;
 
     QMap<QAction *,int> mPercentage;
     QMap<QAction *,int> mPriority;

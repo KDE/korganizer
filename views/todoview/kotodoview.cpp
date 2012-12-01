@@ -47,6 +47,7 @@
 
 #include <libkdepim/kdatepickerpopup.h>
 #include <Akonadi/EntityMimeTypeFilterModel>
+#include <Akonadi/ETMViewStateSaver>
 #include <KCalCore/CalFormat>
 
 #include <QCheckBox>
@@ -104,6 +105,7 @@ struct ModelStack {
       todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, parent );
       foreach( KOTodoView *view, views ) {
         QObject::connect( todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)), view, SLOT(expandIndex(QModelIndex)) );
+        QObject::connect( todoTreeModel, SIGNAL(batchInsertionFinished()), view, SLOT(restoreViewState()) );
         view->mView->setDragDropMode( QAbstractItemView::DragDrop );
       }
       todoTreeModel->setSourceModel( calendar ? calendar->model() : 0  );
@@ -133,6 +135,11 @@ struct ModelStack {
       todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
   }
 
+  bool isFlatView() const
+  {
+    return todoFlatModel != 0;
+  }
+
   KOTodoModel *todoModel;
   QList<KOTodoView*> views;
   QObject *parent;
@@ -151,9 +158,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 {
   if ( !sModels )
     sModels = new ModelStack( parent );
-
   sModels->registerView( this );
 
+  mTreeStateRestorer = 0;
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( sModels->todoModel );
   mProxyModel->setDynamicSortFilter( true );
@@ -478,8 +485,6 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   // Initialize our proxy models
   setFlatView( KOPrefs::instance()->flatListTodo() );
-
-  QTimer::singleShot( 3000, this, SLOT(restoreViewState()) );
 }
 
 KOTodoView::~KOTodoView()
@@ -1237,11 +1242,17 @@ KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
 
 void KOTodoView::restoreViewState()
 {
-  // Created on the heap. Do not delete it. It deletes itself.
-  Akonadi::ETMViewStateSaver *treeStateSaver = new Akonadi::ETMViewStateSaver();
+  if ( sModels->isFlatView() )
+    return;
+
+  //QElapsedTimer timer;
+  //timer.start();
+  delete mTreeStateRestorer;
+  mTreeStateRestorer = new Akonadi::ETMViewStateSaver();
   KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
-  treeStateSaver->setView( mView );
-  treeStateSaver->restoreState( group );
+  mTreeStateRestorer->setView( mView );
+  mTreeStateRestorer->restoreState( group );
+  //kDebug() << "Took " << timer.elapsed();
 }
 
 QString KOTodoView::stateSaverGroup() const
