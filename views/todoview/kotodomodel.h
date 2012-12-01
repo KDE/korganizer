@@ -32,58 +32,93 @@ namespace CalendarSupport {
   class Calendar;
 }
 class QMimeData;
-class KOTodoModel : public QAbstractProxyModel {
+
+class KOTodoModel : public QAbstractProxyModel
+{
   Q_OBJECT
-public:
-  /** This enum defines all columns this model provides */
-  enum {
-    SummaryColumn = 0,
-    RecurColumn,
-    PriorityColumn,
-    PercentColumn,
-    DueDateColumn,
-    CategoriesColumn,
-    DescriptionColumn,
-    CalendarColumn,
-    ColumnCount // Just for iteration/column count purposes. Always keep at the end of enum.
-  };
 
-  /** This enum defines the user defined roles of the items in this model */
-  enum {
-    TodoRole = Akonadi::EntityTreeModel::UserRole + 1,
-    IsRichTextRole
-  };
-  explicit KOTodoModel( QObject *parent = 0 );
-  ~KOTodoModel();
+  public:
+    /** This enum defines all columns this model provides */
+    enum {
+      SummaryColumn = 0,
+      RecurColumn,
+      PriorityColumn,
+      PercentColumn,
+      DueDateColumn,
+      CategoriesColumn,
+      DescriptionColumn,
+      CalendarColumn,
+      ColumnCount // Just for iteration/column count purposes. Always keep at the end of enum.
+    };
 
-  /**reimp*/ int rowCount( const QModelIndex &parent = QModelIndex() ) const;
-  /**reimp*/ int columnCount( const QModelIndex &parent = QModelIndex() ) const;
+    /** This enum defines the user defined roles of the items in this model */
+    enum {
+      TodoRole = Akonadi::EntityTreeModel::UserRole + 1,
+      IsRichTextRole
+    };
 
-  /**reimp*/ void setSourceModel( QAbstractItemModel *sourceModel );
+    explicit KOTodoModel( QObject *parent = 0 );
+    ~KOTodoModel();
 
-  /**reimp*/ QVariant data( const QModelIndex &index, int role ) const;
-  /**reimp*/ bool setData( const QModelIndex &index, const QVariant &value, int role );
-  /**reimp*/ QVariant headerData( int section, Qt::Orientation, int role ) const;
+    /**reimp*/
+    int rowCount( const QModelIndex &parent = QModelIndex() ) const;
 
-  /**reimp*/ void setCalendar( CalendarSupport::Calendar *calendar );
-  /**reimp*/ void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+    /**reimp*/
+    int columnCount( const QModelIndex &parent = QModelIndex() ) const;
 
-  /**reimp*/ QMimeData* mimeData( const QModelIndexList &indexes ) const;
-  /**reimp*/ bool dropMimeData( const QMimeData *data, Qt::DropAction action,
-                                int row, int column, const QModelIndex &parent );
-  /**reimp*/ QStringList mimeTypes() const;
-  /**reimp*/ Qt::DropActions supportedDropActions() const;
-  /**reimp*/ Qt::ItemFlags flags( const QModelIndex &index ) const;
-  /**reimp*/ QModelIndex parent( const QModelIndex &child ) const;
+    /**reimp*/
+    void setSourceModel( QAbstractItemModel *sourceModel );
 
-  /**reimp*/ QModelIndex mapFromSource( const QModelIndex &sourceIndex ) const;
-  /**reimp*/ QModelIndex mapToSource( const QModelIndex &proxyIndex ) const;
-  /**reimp*/ QModelIndex index( int row, int column,
-                                const QModelIndex &parent = QModelIndex() ) const;
-  /**reimp*/ QModelIndex buddy( const QModelIndex &index ) const;
-private:
-  class Private;
-  Private *const d;
+    /**reimp*/
+    QVariant data( const QModelIndex &index, int role ) const;
+
+    /**reimp*/
+    bool setData( const QModelIndex &index, const QVariant &value, int role );
+
+    /**reimp*/
+    QVariant headerData( int section, Qt::Orientation, int role ) const;
+
+    /**reimp*/
+    void setCalendar( CalendarSupport::Calendar *calendar );
+
+    /**reimp*/
+    void setIncidenceChanger( CalendarSupport::IncidenceChanger *changer );
+
+    /**reimp*/
+    QMimeData *mimeData( const QModelIndexList &indexes ) const;
+
+    /**reimp*/
+    bool dropMimeData( const QMimeData *data, Qt::DropAction action,
+                       int row, int column, const QModelIndex &parent );
+
+    /**reimp*/
+    QStringList mimeTypes() const;
+
+    /**reimp*/
+    Qt::DropActions supportedDropActions() const;
+
+    /**reimp*/
+    Qt::ItemFlags flags( const QModelIndex &index ) const;
+
+    /**reimp*/
+    QModelIndex parent( const QModelIndex &child ) const;
+
+    /**reimp*/
+    QModelIndex mapFromSource( const QModelIndex &sourceIndex ) const;
+
+    /**reimp*/
+    QModelIndex mapToSource( const QModelIndex &proxyIndex ) const;
+
+    /**reimp*/
+    QModelIndex index( int row, int column,
+                       const QModelIndex &parent = QModelIndex() ) const;
+
+    /**reimp*/
+    QModelIndex buddy( const QModelIndex &index ) const;
+
+  private:
+    class Private;
+    Private *const d;
 };
 
 #endif

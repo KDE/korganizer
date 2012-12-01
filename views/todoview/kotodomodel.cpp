@@ -51,16 +51,19 @@
 
 struct SourceModelIndex
 {
-    SourceModelIndex(int _r, int _c, void *_p, QAbstractItemModel *_m)
-      : r(_r), c(_c), p(_p), m(_m)
-    {
-    }
+  SourceModelIndex( int _r, int _c, void *_p, QAbstractItemModel *_m )
+    : r(_r), c(_c), p(_p), m(_m)
+  {
+  }
 
-    operator QModelIndex() { return reinterpret_cast<QModelIndex&>(*this); }
+  operator QModelIndex()
+  {
+    return reinterpret_cast<QModelIndex &>( *this );
+  }
 
-    int r, c;
-    void *p;
-    const QAbstractItemModel *m;
+  int r, c;
+  void *p;
+  const QAbstractItemModel *m;
 };
 
 static bool isDueToday( const KCalCore::Todo::Ptr &todo )
@@ -68,9 +71,10 @@ static bool isDueToday( const KCalCore::Todo::Ptr &todo )
   return !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate();
 }
 
-KOTodoModel::Private::Private( KOTodoModel *qq ) : QObject()
-                                                 , m_calendar( 0 )
-                                                 , q( qq )
+KOTodoModel::Private::Private( KOTodoModel *qq )
+  : QObject(),
+    m_calendar( 0 ),
+    q( qq )
 {
 }
 
@@ -79,8 +83,9 @@ Akonadi::Item KOTodoModel::Private::findItemByUid( const QString &uid,
 {
   Q_ASSERT( !uid.isEmpty() );
   IncidenceTreeModel *treeModel = qobject_cast<IncidenceTreeModel*>( q->sourceModel() );
-  if ( treeModel ) // O(1) Shortcut
+  if ( treeModel ) { // O(1) Shortcut
     return treeModel->item( uid );
+  }
 
   Akonadi::Item item;
   const int count = q->rowCount( parent );
@@ -92,8 +97,9 @@ Akonadi::Item KOTodoModel::Private::findItemByUid( const QString &uid,
       return item;
     } else {
       item = findItemByUid( uid, currentIndex );
-      if ( item.isValid() )
+      if ( item.isValid() ) {
         return item;
+      }
     }
   }
 
@@ -135,8 +141,10 @@ void KOTodoModel::Private::onRowsRemoved( const QModelIndex &, int, int )
   q->endRemoveRows();
 }
 
-void KOTodoModel::Private::onRowsAboutToBeMoved( const QModelIndex &sourceParent, int sourceStart,
-                                                 int sourceEnd, const QModelIndex &destinationParent,
+void KOTodoModel::Private::onRowsAboutToBeMoved( const QModelIndex &sourceParent,
+                                                 int sourceStart,
+                                                 int sourceEnd,
+                                                 const QModelIndex &destinationParent,
                                                  int destinationRow )
 {
   Q_UNUSED( sourceParent );
@@ -171,10 +179,11 @@ void KOTodoModel::Private::onLayoutAboutToBeChanged()
   Q_ASSERT( m_layoutChangePersistentIndexes.isEmpty() );
   Q_ASSERT( m_columns.isEmpty() );
   QModelIndexList persistentIndexes = q->persistentIndexList();
-  foreach( const QPersistentModelIndex &persistentIndex, persistentIndexes ) {
+  foreach ( const QPersistentModelIndex &persistentIndex, persistentIndexes ) {
     m_persistentIndexes << persistentIndex; // Stuff we have to update onLayoutChanged
     Q_ASSERT( persistentIndex.isValid() );
-    QModelIndex index_col0 = q->createIndex( persistentIndex.row(), 0, persistentIndex.internalPointer() );
+    QModelIndex index_col0 = q->createIndex( persistentIndex.row(), 0,
+                                             persistentIndex.internalPointer() );
     const QPersistentModelIndex srcPersistentIndex = q->mapToSource( index_col0 );
     Q_ASSERT( srcPersistentIndex.isValid() );
     m_layoutChangePersistentIndexes << srcPersistentIndex;
@@ -189,8 +198,10 @@ void KOTodoModel::Private::onLayoutChanged()
     QModelIndex newIndex_col0 = q->mapFromSource( m_layoutChangePersistentIndexes.at( i ) );
     Q_ASSERT( newIndex_col0.isValid() );
     const int column = m_columns.at( i );
-    QModelIndex newIndex = column == 0 ? newIndex_col0 :
-                                         q->createIndex( newIndex_col0.row(), column, newIndex_col0.internalPointer() );
+    QModelIndex newIndex =
+      column == 0 ?
+        newIndex_col0 :
+        q->createIndex( newIndex_col0.row(), column, newIndex_col0.internalPointer() );
     q->changePersistentIndex( m_persistentIndexes.at( i ), newIndex );
   }
 
@@ -200,9 +211,8 @@ void KOTodoModel::Private::onLayoutChanged()
   emit q->layoutChanged();
 }
 
-
-KOTodoModel::KOTodoModel( QObject *parent ) : QAbstractProxyModel( parent )
-                                            , d( new Private( this ) )
+KOTodoModel::KOTodoModel( QObject *parent )
+  : QAbstractProxyModel( parent ), d( new Private( this ) )
 {
   setObjectName( "KOTodoModel" );
 }
@@ -224,7 +234,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return QVariant();
   }
   Q_ASSERT( sourceIndex.isValid() );
-  const Akonadi::Item item = sourceIndex.data( Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+  const Akonadi::Item item =
+    sourceIndex.data( Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
   if ( !item.isValid() ) {
     kWarning() << "Invalid index: " << sourceIndex;
     //Q_ASSERT( false );
@@ -334,7 +345,9 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // category colour
   if ( role == Qt::DecorationRole && index.column() == SummaryColumn ) {
     QStringList categories = todo->categories();
-    return categories.isEmpty() ? QVariant() : QVariant( CalendarSupport::KCalPrefs::instance()->categoryColor( categories.first() ) );
+    return categories.isEmpty() ?
+      QVariant() :
+      QVariant( CalendarSupport::KCalPrefs::instance()->categoryColor( categories.first() ) );
   } else if ( role == Qt::DecorationRole ) {
     return QVariant();
   }
@@ -388,7 +401,8 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     return true;
   }
 
-  const Akonadi::Item item = data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+  const Akonadi::Item item =
+    data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
   const KCalCore::Todo::Ptr todo = CalendarSupport::todo( item );
 
   if ( !item.isValid() || !todo ) {
@@ -485,8 +499,9 @@ int KOTodoModel::columnCount( const QModelIndex & ) const
 
 void KOTodoModel::setSourceModel( QAbstractItemModel *model )
 {
-  if ( model == sourceModel() )
+  if ( model == sourceModel() ) {
     return;
+  }
 
   beginResetModel();
 
@@ -637,7 +652,8 @@ QMimeData *KOTodoModel::mimeData( const QModelIndexList &indexes ) const
 {
   Akonadi::Item::List items;
   Q_FOREACH ( const QModelIndex &index, indexes ) {
-    const Akonadi::Item item = this->data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+    const Akonadi::Item item =
+      this->data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
     if ( item.isValid() && !items.contains( item ) ) {
       items.push_back( item );
     }
@@ -671,7 +687,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       KCalCore::Todo::Ptr todo = CalendarSupport::todo( item );
       KCalCore::Todo::Ptr destTodo;
       if ( parent.isValid() ) {
-        const Akonadi::Item parentItem = this->data( parent, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+        const Akonadi::Item parentItem =
+          this->data( parent, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
         if ( parentItem.isValid() ) {
           destTodo = CalendarSupport::todo( parentItem );
         }
@@ -708,7 +725,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         return false;
       }
 
-      const Akonadi::Item parentItem = this->data( parent, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+      const Akonadi::Item parentItem =
+        this->data( parent, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
       KCalCore::Todo::Ptr destTodo = CalendarSupport::todo( parentItem );
 
       if ( data->hasText() ) {
@@ -725,7 +743,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
             QString name, email, comment;
             if ( KPIMUtils::splitAddress( *it, name, email, comment ) ==
                  KPIMUtils::AddressOk ) {
-              destTodo->addAttendee( KCalCore::Attendee::Ptr( new KCalCore::Attendee( name, email ) ) );
+              destTodo->addAttendee(
+                KCalCore::Attendee::Ptr( new KCalCore::Attendee( name, email ) ) );
             }
           }
         }
@@ -741,12 +760,15 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
 Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 {
-  if ( !index.isValid() )
+  if ( !index.isValid() ) {
     return 0;
+  }
 
   Qt::ItemFlags ret = QAbstractItemModel::flags( index );
 
-  const Akonadi::Item item = data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+  const Akonadi::Item item =
+    data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+
   if ( !item.isValid() ) {
     Q_ASSERT( mapToSource( index ).isValid() );
     kWarning() << "Item is invalid " << index;
@@ -788,8 +810,9 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 
 QModelIndex KOTodoModel::mapFromSource( const QModelIndex &sourceIndex ) const
 {
-  if ( !sourceModel() || !sourceIndex.isValid() )
+  if ( !sourceModel() || !sourceIndex.isValid() ) {
     return QModelIndex();
+  }
 
   Q_ASSERT( sourceIndex.internalPointer() );
 
@@ -798,8 +821,9 @@ QModelIndex KOTodoModel::mapFromSource( const QModelIndex &sourceIndex ) const
 
 QModelIndex KOTodoModel::mapToSource( const QModelIndex &proxyIndex ) const
 {
-  if ( !sourceModel() || !proxyIndex.isValid() )
+  if ( !sourceModel() || !proxyIndex.isValid() ) {
     return QModelIndex();
+  }
 
   if ( proxyIndex.column() != 0 ) {
     kError() << "Map to source called with column>0, but source model only has 1 column";
@@ -817,15 +841,20 @@ QModelIndex KOTodoModel::mapToSource( const QModelIndex &proxyIndex ) const
 
 QModelIndex KOTodoModel::index( int row, int column, const QModelIndex &parent ) const
 {
-  if ( !sourceModel() )
+  if ( !sourceModel() ) {
     return QModelIndex();
+  }
 
   Q_ASSERT( !parent.isValid() || parent.internalPointer() );
-  QModelIndex parent_col0 = parent.isValid() ? createIndex( parent.row(), 0, parent.internalPointer() )
-                                             : QModelIndex();
+  QModelIndex parent_col0 =
+    parent.isValid() ?
+      createIndex( parent.row(), 0, parent.internalPointer() ) :
+      QModelIndex();
 
   // Lets preserve the original internalPointer
-  const QModelIndex index = mapFromSource( sourceModel()->index( row, 0, mapToSource( parent_col0 ) ) );
+  const QModelIndex index =
+    mapFromSource( sourceModel()->index( row, 0, mapToSource( parent_col0 ) ) );
+
   Q_ASSERT( !index.isValid() || index.internalPointer() );
 
   if ( index.isValid() ) {
@@ -837,16 +866,19 @@ QModelIndex KOTodoModel::index( int row, int column, const QModelIndex &parent )
 
 QModelIndex KOTodoModel::parent( const QModelIndex &child ) const
 {
-  if ( !sourceModel() || !child.isValid() )
+  if ( !sourceModel() || !child.isValid() ) {
     return QModelIndex();
+  }
 
   Q_ASSERT( child.internalPointer() );
   const QModelIndex child_col0 = createIndex( child.row(), 0, child.internalPointer() );
   QModelIndex parentIndex = mapFromSource( sourceModel()->parent( mapToSource( child_col0 ) ) );
 
   Q_ASSERT( !parentIndex.isValid() || parentIndex.internalPointer() );
-  if ( parentIndex.isValid() ) // preserve original column
+  if ( parentIndex.isValid() ) { // preserve original column
     return createIndex( parentIndex.row(), child.column(), parentIndex.internalPointer() );
+  }
+
   return QModelIndex();
 }
 

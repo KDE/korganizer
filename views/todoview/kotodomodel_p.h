@@ -21,14 +21,15 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef TODOMODEL_P_H_
-#define TODOMODEL_P_H_
+#ifndef KORG_VIEWS_KOTODOMODEL_P_H
+#define KORG_VIEWS_KOTODOMODEL_P_H
 
 #include "kotodomodel.h"
+
 #include <Akonadi/Item>
 
-#include <QString>
 #include <QModelIndex>
+#include <QString>
 
 namespace CalendarSupport {
   class Calendar;
@@ -38,38 +39,40 @@ namespace CalendarSupport {
 class KOTodoModel::Private : public QObject
 {
   Q_OBJECT
-public:
-  Private( KOTodoModel *qq );
+  public:
+    Private( KOTodoModel *qq );
 
-  //TODO: O(N) complexity, see if the profiler complains about this
-  Akonadi::Item findItemByUid( const QString &uid, const QModelIndex &parent ) const;
+    //TODO: O(N) complexity, see if the profiler complains about this
+    Akonadi::Item findItemByUid( const QString &uid, const QModelIndex &parent ) const;
 
-public:
-  CalendarSupport::Calendar *m_calendar;
-  CalendarSupport::IncidenceChanger *m_changer;
+  public:
+    CalendarSupport::Calendar *m_calendar;
+    CalendarSupport::IncidenceChanger *m_changer;
 
-  //For adjusting persistent indexes
-  QList<QPersistentModelIndex> m_layoutChangePersistentIndexes;
-  QModelIndexList m_persistentIndexes;
-  QList<int> m_columns;
-private Q_SLOTS:
-  void onDataChanged( const QModelIndex &begin, const QModelIndex &end );
-  void onHeaderDataChanged( Qt::Orientation orientation, int first, int last );
+    //For adjusting persistent indexes
+    QList<QPersistentModelIndex> m_layoutChangePersistentIndexes;
+    QModelIndexList m_persistentIndexes;
+    QList<int> m_columns;
 
-  void onRowsAboutToBeInserted( const QModelIndex &parent, int begin, int end );
-  void onRowsInserted( const QModelIndex &parent, int begin, int end );
-  void onRowsAboutToBeRemoved( const QModelIndex &parent, int begin, int end );
-  void onRowsRemoved( const QModelIndex &parent, int begin, int end );
-  void onRowsAboutToBeMoved( const QModelIndex &sourceParent, int sourceStart, int sourceEnd,
-                             const QModelIndex &destinationParent, int destinationRow );
-  void onRowsMoved( const QModelIndex &, int, int, const QModelIndex &, int );
+  private Q_SLOTS:
+    void onDataChanged( const QModelIndex &begin, const QModelIndex &end );
+    void onHeaderDataChanged( Qt::Orientation orientation, int first, int last );
 
-  void onModelAboutToBeReset();
-  void onModelReset();
-  void onLayoutAboutToBeChanged();
-  void onLayoutChanged();
-private:
-  KOTodoModel *q;
+    void onRowsAboutToBeInserted( const QModelIndex &parent, int begin, int end );
+    void onRowsInserted( const QModelIndex &parent, int begin, int end );
+    void onRowsAboutToBeRemoved( const QModelIndex &parent, int begin, int end );
+    void onRowsRemoved( const QModelIndex &parent, int begin, int end );
+    void onRowsAboutToBeMoved( const QModelIndex &sourceParent, int sourceStart, int sourceEnd,
+                               const QModelIndex &destinationParent, int destinationRow );
+    void onRowsMoved( const QModelIndex &, int, int, const QModelIndex &, int );
+
+    void onModelAboutToBeReset();
+    void onModelReset();
+    void onLayoutAboutToBeChanged();
+    void onLayoutChanged();
+
+  private:
+    KOTodoModel *q;
 };
 
 #endif

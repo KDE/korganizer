@@ -25,8 +25,9 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "incidencetreemodel.h"
 #include "kotodoview.h"
+
+#include "incidencetreemodel.h"
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
@@ -46,8 +47,10 @@
 #include <calendarsupport/utils.h>
 
 #include <libkdepim/kdatepickerpopup.h>
+
 #include <Akonadi/EntityMimeTypeFilterModel>
 #include <Akonadi/ETMViewStateSaver>
+
 #include <KCalCore/CalFormat>
 
 #include <QCheckBox>
@@ -57,13 +60,14 @@
 #include <QToolButton>
 
 // We share this struct between all views, for performance and memory purposes
-struct ModelStack {
-
-  ModelStack( QObject *parent_ ) : todoModel( new KOTodoModel() )
-                                 , parent( parent_ )
-                                 , calendar( 0 )
-                                 , todoTreeModel( 0 )
-                                 , todoFlatModel( 0 )
+struct ModelStack
+{
+  ModelStack( QObject *parent_ )
+    : todoModel( new KOTodoModel() ),
+      parent( parent_ ),
+      calendar( 0 ),
+      todoTreeModel( 0 ),
+      todoFlatModel( 0 )
   {
   }
 
@@ -88,12 +92,13 @@ struct ModelStack {
   {
     const QString todoMimeType = QLatin1String( "application/x-vnd.akonadi.calendar.todo" );
     if ( flat ) {
-      foreach( KOTodoView *view, views ) {
+      foreach ( KOTodoView *view, views ) {
         // In flatview dropping confuses users and it's very easy to drop into a child item
         view->mView->setDragDropMode( QAbstractItemView::DragOnly );
 
-        if ( todoTreeModel )
+        if ( todoTreeModel ) {
           view->saveViewState(); // Save the tree state before it's gone
+        }
       }
 
       delete todoFlatModel;
@@ -107,18 +112,20 @@ struct ModelStack {
     } else {
       delete todoTreeModel;
       todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, parent );
-      foreach( KOTodoView *view, views ) {
-        QObject::connect( todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)), view, SLOT(expandIndex(QModelIndex)) );
-        QObject::connect( todoTreeModel, SIGNAL(batchInsertionFinished()), view, SLOT(restoreViewState()) );
+      foreach ( KOTodoView *view, views ) {
+        QObject::connect( todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)),
+                          view, SLOT(expandIndex(QModelIndex)) );
+        QObject::connect( todoTreeModel, SIGNAL(batchInsertionFinished()),
+                          view, SLOT(restoreViewState()) );
         view->mView->setDragDropMode( QAbstractItemView::DragDrop );
       }
-      todoTreeModel->setSourceModel( calendar ? calendar->model() : 0  );
+      todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
       todoModel->setSourceModel( todoTreeModel );
       delete todoFlatModel;
       todoFlatModel = 0;
     }
 
-    foreach( KOTodoView *view, views ) {
+    foreach ( KOTodoView *view, views ) {
       view->mFlatView->blockSignals( true );
       // We block signals to avoid recursion, we have two KOTodoViews and mFlatView is synchronized
       view->mFlatView->setChecked( flat );
@@ -135,8 +142,9 @@ struct ModelStack {
   {
     calendar = newCalendar;
     todoModel->setCalendar( calendar );
-    if (todoTreeModel )
+    if ( todoTreeModel ) {
       todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
+    }
   }
 
   bool isFlatView() const
@@ -148,10 +156,10 @@ struct ModelStack {
   QList<KOTodoView*> views;
   QObject *parent;
 
-private:
-  CalendarSupport::Calendar *calendar;
-  IncidenceTreeModel *todoTreeModel;
-  Akonadi::EntityMimeTypeFilterModel *todoFlatModel;
+  private:
+    CalendarSupport::Calendar *calendar;
+    IncidenceTreeModel *todoTreeModel;
+    Akonadi::EntityMimeTypeFilterModel *todoFlatModel;
 };
 
 // Don't use K_GLOBAL_STATIC, see QTBUG-22667
@@ -160,8 +168,9 @@ static ModelStack *sModels = 0;
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   : BaseView( parent ), mTreeStateRestorer( 0 )
 {
-  if ( !sModels )
+  if ( !sModels ) {
     sModels = new ModelStack( parent );
+  }
   sModels->registerView( this );
 
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
@@ -260,8 +269,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
            "flat list instead of a hierarchical tree; the parental "
            "relationships are removed in the display." ) );
   connect( mFlatView, SIGNAL(toggled(bool)), SLOT(setFlatView(bool)) );
-  if ( mFullViewButton )
+  if ( mFullViewButton ) {
     connect( mFullViewButton, SIGNAL(toggled(bool)), SLOT(setFullView(bool)) );
+  }
 
   QGridLayout *layout = new QGridLayout( this );
   layout->setMargin( 0 );
@@ -886,7 +896,10 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   const QModelIndex origIndex = mProxyModel->mapToSource( selection[0] );
   Q_ASSERT( origIndex.isValid() );
 
-  const Akonadi::Item origItem = sModels->todoModel->data( origIndex, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+  const Akonadi::Item origItem =
+    sModels->todoModel->data( origIndex,
+                              Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+
   const KCalCore::Todo::Ptr orig = CalendarSupport::todo( origItem );
   if ( !orig ) {
     return;
@@ -1082,7 +1095,8 @@ void KOTodoView::setFullView( bool fullView )
   }
 
   mFullViewButton->blockSignals( true );
-  // We block signals to avoid recursion, we have two KOTodoViews and mFullViewButton is synchronized
+  // We block signals to avoid recursion; there are two KOTodoViews and
+  // also mFullViewButton is synchronized.
   mFullViewButton->setChecked( fullView );
   mFullViewButton->blockSignals( false );
 
@@ -1124,8 +1138,9 @@ KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
 
 void KOTodoView::restoreViewState()
 {
-  if ( sModels->isFlatView() )
+  if ( sModels->isFlatView() ) {
     return;
+  }
 
   //QElapsedTimer timer;
   //timer.start();
@@ -1140,8 +1155,9 @@ void KOTodoView::restoreViewState()
 QString KOTodoView::stateSaverGroup() const
 {
   QString str = QLatin1String( "TodoTreeViewState" );
-  if ( mSidebarView )
-    str += QChar('S');
+  if ( mSidebarView ) {
+    str += QChar( 'S' );
+  }
 
   return str;
 }

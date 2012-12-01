@@ -23,35 +23,42 @@
 #include "incidencetreemodel_p.h"
 
 #include <Akonadi/EntityTreeModel>
+
 #include <KCalCore/Incidence>
+
 #include <QElapsedTimer>
 
 using namespace Akonadi;
 
-IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq,
-                                      const QStringList &mimeTypes ) : QObject()
-                                                                     , m_mimeTypes( mimeTypes )
-                                                                     , q( qq )
-
+IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq, const QStringList &mimeTypes )
+  : QObject(),
+    m_mimeTypes( mimeTypes ),
+    q( qq )
 {
 }
 
 int IncidenceTreeModel::Private::rowForNode( const Node::Ptr &node ) const
 {
   // Returns it's row number
-  const int row = node->parentNode ? node->parentNode->directChilds.indexOf( node )
-                                   : m_toplevelNodeList.indexOf( node );
+  const int row =
+    node->parentNode ?
+      node->parentNode->directChilds.indexOf( node ) :
+      m_toplevelNodeList.indexOf( node );
+
   Q_ASSERT ( row != -1 );
   return row;
 }
 
 QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) const
 {
-  if ( !node )
+  if ( !node ) {
     return QModelIndex();
+  }
 
-  const int row = node->parentNode ? node->parentNode->directChilds.indexOf( node )
-                                   : m_toplevelNodeList.indexOf( node );
+  const int row =
+    node->parentNode ?
+      node->parentNode->directChilds.indexOf( node ) :
+      m_toplevelNodeList.indexOf( node );
 
   Q_ASSERT( row != -1 );
   return q->createIndex( row, 0, node.data() );
@@ -59,8 +66,10 @@ QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) c
 
 void IncidenceTreeModel::Private::reset( bool silent )
 {
-  if ( !silent )
+  if ( !silent ) {
     q->beginResetModel();
+  }
+
   m_toplevelNodeList.clear();
   m_nodeMap.clear();
   m_itemByUid.clear();
@@ -73,11 +82,13 @@ void IncidenceTreeModel::Private::reset( bool silent )
       insertNode( sourceIndex, /**silent=*/true );
     }
   }
-  if ( !silent )
+  if ( !silent ) {
     q->endResetModel();
+  }
 }
 
-void IncidenceTreeModel::Private::onHeaderDataChanged( Qt::Orientation orientation, int first, int last )
+void IncidenceTreeModel::Private::onHeaderDataChanged( Qt::Orientation orientation,
+                                                       int first, int last )
 {
   emit q->headerDataChanged( orientation, first, last );
 }
@@ -93,7 +104,7 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
   const int first_row = begin.row();
   const int last_row = end.row();
 
-  for( int i=first_row; i<=last_row; ++i ) {
+  for ( int i=first_row; i<=last_row; ++i ) {
     QModelIndex sourceIndex = q->sourceModel()->index( i, 0 );
     Q_ASSERT( sourceIndex.isValid() );
     QModelIndex index = q->mapFromSource( sourceIndex );
@@ -107,10 +118,13 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
       Node::Ptr node = m_uidMap.value( rawNode->uid ); // Looks hackish but it's safe
       Q_ASSERT( node );
       Node::Ptr oldParentNode = node->parentNode;
-      Akonadi::Item item = q->data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+      Akonadi::Item item =
+        q->data( index, Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
       Q_ASSERT( item.isValid() );
-      KCalCore::Incidence::Ptr incidence = !item.hasPayload<KCalCore::Incidence::Ptr>() ? KCalCore::Incidence::Ptr() :
-                                                                                         item.payload<KCalCore::Incidence::Ptr>();
+      KCalCore::Incidence::Ptr incidence =
+        !item.hasPayload<KCalCore::Incidence::Ptr>() ?
+          KCalCore::Incidence::Ptr() :
+         item.payload<KCalCore::Incidence::Ptr>();
       if ( !incidence ) {
         kError() << "Incidence shouldn't be invalid." << item.hasPayload() << item.id();
         Q_ASSERT( false );
@@ -174,8 +188,9 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
         index = indexForNode( node );
         Q_ASSERT( index.isValid() );
 
-        if ( newParentNode )
+        if ( newParentNode ) {
           emit q->indexChangedParent( index.parent() );
+        }
       } else {
         emit q->dataChanged( index, index );
       }
@@ -187,8 +202,8 @@ void IncidenceTreeModel::Private::onRowsAboutToBeInserted( const QModelIndex &pa
 {
   // We are a reparenting proxy, the source proxy is flat
   Q_ASSERT( !parent.isValid() );
-  // Nothing to do yet. We don't know if all the new incidences in this range belong to the same
-  // parent yet.
+  // Nothing to do yet. We don't know if all the new incidences in this range
+  // belong to the same parent yet.
 }
 
 void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int begin, int end )
@@ -219,8 +234,9 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
   Q_ASSERT( incidence );
 
   // if m_mimeTypes is empty, we ignore this feature
-  if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( incidence->mimeType() ) )
+  if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( incidence->mimeType() ) ) {
     return;
+  }
 
   Node::Ptr node( new Node() );
   node->sourceIndex = sourceIndex;
@@ -260,8 +276,9 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
 
   // Lets insert the row:
   const QModelIndex &parent = indexForNode( node->parentNode );
-  if ( !silent )
+  if ( !silent ) {
     q->beginInsertRows( parent, rowToUse, rowToUse );
+  }
 
   if ( !node->parentNode ) {
     m_toplevelNodeList.append( node );
@@ -271,8 +288,9 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
     node->parentNode->directChilds.append( node );
   }
 
-  if ( !silent )
+  if ( !silent ) {
     q->endInsertRows();
+  }
 
   // Are we a parent?
   if ( m_waitingForParent.contains( node->uid ) ) {
@@ -282,7 +300,7 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
     Q_ASSERT( !childs.isEmpty() );
     const QModelIndex fromParent = QModelIndex();
 
-    foreach( const Node::Ptr &child, childs ) {
+    foreach ( const Node::Ptr &child, childs ) {
       const int fromRow = m_toplevelNodeList.indexOf( child );
       Q_ASSERT( fromRow != -1 );
       const QModelIndex toParent = indexForNode( node );
@@ -308,7 +326,8 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
   }
 }
 
-void IncidenceTreeModel::Private::onRowsAboutToBeRemoved( const QModelIndex &parent, int begin, int end )
+void IncidenceTreeModel::Private::onRowsAboutToBeRemoved( const QModelIndex &parent,
+                                                          int begin, int end )
 {
   //QElapsedTimer timer;
   //timer.start();
@@ -358,7 +377,7 @@ void IncidenceTreeModel::Private::removeNode( Akonadi::Item::Id id )
     q->beginMoveRows( fromParent, firstSourceRow, lastSourceRow,
                       /**toParent is root*/QModelIndex(), toRow );
     node->directChilds.clear();
-    foreach( const Node::Ptr &child, childs ) {
+    foreach ( const Node::Ptr &child, childs ) {
       //kDebug() << "Dealing with child: " << child.data() << child->uid;
       m_toplevelNodeList.append( child );
       child->parentNode = Node::Ptr();
@@ -425,21 +444,23 @@ void IncidenceTreeModel::Private::onLayoutChanged()
   emit q->layoutChanged();
 }
 
-void IncidenceTreeModel::Private::onRowsMoved( const QModelIndex &, int, int, const QModelIndex &, int )
+void IncidenceTreeModel::Private::onRowsMoved( const QModelIndex &, int, int,
+                                               const QModelIndex &, int )
 {
   // Not implemented yet
   Q_ASSERT( false );
 }
 
-IncidenceTreeModel::IncidenceTreeModel( QObject *parent ) : QAbstractProxyModel( parent )
-                                                          , d( new Private( this, QStringList() ) )
+IncidenceTreeModel::IncidenceTreeModel( QObject *parent )
+  : QAbstractProxyModel( parent ),
+    d( new Private( this, QStringList() ) )
 {
   setObjectName( "IncidenceTreeModel" );
 }
 
-IncidenceTreeModel::IncidenceTreeModel( const QStringList &mimeTypes,
-                                        QObject *parent ) : QAbstractProxyModel( parent )
-                                                          , d( new Private( this, mimeTypes ) )
+IncidenceTreeModel::IncidenceTreeModel( const QStringList &mimeTypes, QObject *parent )
+  : QAbstractProxyModel( parent ),
+    d( new Private( this, mimeTypes ) )
 {
   setObjectName( "IncidenceTreeModel" );
 }
@@ -478,16 +499,18 @@ int IncidenceTreeModel::rowCount( const QModelIndex &parent ) const
 
 int IncidenceTreeModel::columnCount( const QModelIndex &parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     Q_ASSERT( parent.model() == this );
+  }
 
   return sourceModel() ? sourceModel()->columnCount() : 1;
 }
 
 void IncidenceTreeModel::setSourceModel( QAbstractItemModel *model )
 {
-  if ( model == sourceModel() )
+  if ( model == sourceModel() ) {
     return;
+  }
 
   beginResetModel();
 
@@ -575,15 +598,18 @@ QModelIndex IncidenceTreeModel::mapFromSource( const QModelIndex &sourceIndex ) 
     return QModelIndex();
   }
 
-  if ( !sourceModel() )
+  if ( !sourceModel() ) {
     return QModelIndex();
+  }
 
   Q_ASSERT( sourceIndex.column() < sourceModel()->columnCount() );
   Q_ASSERT( sourceModel() == sourceIndex.model() );
-  const Akonadi::Item::Id id = sourceIndex.data( Akonadi::EntityTreeModel::ItemIdRole ).toLongLong();
+  const Akonadi::Item::Id id =
+    sourceIndex.data( Akonadi::EntityTreeModel::ItemIdRole ).toLongLong();
 
-  if ( id == -1 || !d->m_nodeMap.contains( id ) )
+  if ( id == -1 || !d->m_nodeMap.contains( id ) ) {
     return QModelIndex();
+  }
 
   const Node::Ptr node = d->m_nodeMap.value( id );
   Q_ASSERT( node );
@@ -604,17 +630,19 @@ QModelIndex IncidenceTreeModel::mapToSource( const QModelIndex &proxyIndex ) con
 
   /*
    This code is slow, using a persistent model index instead.
-  QModelIndexList indexes = EntityTreeModel::modelIndexesForItem( sourceModel(), Akonadi::Item( node->id ) );
-  if ( indexes.isEmpty() ) {
-    Q_ASSERT( sourceModel() );
-    kError() << "IncidenceTreeModel::mapToSource() no indexes."
-             << proxyIndex << node->id << "; source.rowCount() = "
-             << sourceModel()->rowCount() << "; source=" << sourceModel()
-             << "rowCount()" << rowCount();
-    Q_ASSERT( false );
-    return QModelIndex();
-  }
-  QModelIndex index = indexes.first();*/
+     QModelIndexList indexes =
+       EntityTreeModel::modelIndexesForItem( sourceModel(), Akonadi::Item( node->id ) );
+     if ( indexes.isEmpty() ) {
+       Q_ASSERT( sourceModel() );
+       kError() << "IncidenceTreeModel::mapToSource() no indexes."
+                << proxyIndex << node->id << "; source.rowCount() = "
+                << sourceModel()->rowCount() << "; source=" << sourceModel()
+                << "rowCount()" << rowCount();
+       Q_ASSERT( false );
+       return QModelIndex();
+     }
+     QModelIndex index = indexes.first();
+  */
   QModelIndex index = node->sourceIndex;
   if ( !index.isValid() ) {
     kWarning() << "IncidenceTreeModel::mapToSource(): sourceModelIndex is invalid";

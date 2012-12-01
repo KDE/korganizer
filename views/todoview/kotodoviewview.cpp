@@ -221,8 +221,9 @@ void KOTodoViewView::mousePressEvent( QMouseEvent *event )
 {
   mExpandTimer.stop();
   QModelIndex index = indexAt( event->pos() );
-  if ( index.isValid() )
+  if ( index.isValid() ) {
     mExpandTimer.start();
+  }
 
   QTreeView::mousePressEvent( event );
 }
@@ -233,7 +234,7 @@ void KOTodoViewView::expandParent()
   if ( index.isValid() ) {
     mIgnoreNextMouseRelease = true;
     QKeyEvent keyEvent = QKeyEvent( QEvent::KeyPress, Qt::Key_Asterisk, Qt::NoModifier );
-    QTreeView::keyPressEvent(&keyEvent);
+    QTreeView::keyPressEvent( &keyEvent );
   }
 }
 
