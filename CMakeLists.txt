@@ -88,11 +88,11 @@ if(NOT WINCE)
       kdepim
       korganizer_core
       korganizerprivate
-      mailtransport
       ${KDEPIMLIBS_AKONADI_LIBS}
       ${KDEPIMLIBS_KCALCORE_LIBS}
       ${KDEPIMLIBS_KCALUTILS_LIBS}
       ${KDEPIMLIBS_KHOLIDAYS_LIBS}
+      ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
       ${KDE4_KDEUI_LIBS}
       ${QT_QTUITOOLS_LIBRARY}
     )
