@@ -320,17 +320,19 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
       const int toRow = node->directChilds.count();
 
       if ( !silent ) {
-        const bool res = q->beginMoveRows( /**fromParent*/QModelIndex(), fromRow,
-                                           fromRow, toParent, toRow );
+        //const bool res = q->beginMoveRows( /**fromParent*/QModelIndex(), fromRow,
+          //                                 fromRow, toParent, toRow );
         //emit q->layoutAboutToBeChanged();
-        Q_ASSERT( res );
+        q->beginResetModel();
+        //Q_ASSERT( res );
       }
       child->parentNode = node;
       node->directChilds.append( child );
       m_toplevelNodeList.remove( fromRow );
 
       if ( !silent ) {
-        q->endMoveRows();
+        //q->endMoveRows();
+        q->endResetModel();
         //emit q->layoutChanged();
       }
     }
@@ -410,8 +412,9 @@ void IncidenceTreeModel::Private::removeNode( const Node::Ptr &node )
     const int firstSourceRow = 0;
     const int lastSourceRow  = node->directChilds.count() - 1;
     const int toRow = m_toplevelNodeList.count();
-    q->beginMoveRows( fromParent, firstSourceRow, lastSourceRow,
-                      /**toParent is root*/QModelIndex(), toRow );
+    //q->beginMoveRows( fromParent, firstSourceRow, lastSourceRow,
+    //                  /**toParent is root*/QModelIndex(), toRow );
+    q->beginResetModel();
     node->directChilds.clear();
     foreach( const Node::Ptr &child, childs ) {
       //kDebug() << "Dealing with child: " << child.data() << child->uid;
@@ -419,7 +422,8 @@ void IncidenceTreeModel::Private::removeNode( const Node::Ptr &node )
       child->parentNode = Node::Ptr();
       m_waitingForParent.insert( node->uid, child );
     }
-    q->endMoveRows();
+    //q->endMoveRows();
+    q->endResetModel();
   }
 
   const QModelIndex parent = indexForNode( node->parentNode );
@@ -427,6 +431,7 @@ void IncidenceTreeModel::Private::removeNode( const Node::Ptr &node )
   const int rowToRemove = rowForNode( node );
 
   // Now remove the row
+  Q_ASSERT( !( parent.isValid() && parent.model() != q ) );
   q->beginRemoveRows( parent, rowToRemove, rowToRemove );
   m_itemByUid.remove( node->uid );
 

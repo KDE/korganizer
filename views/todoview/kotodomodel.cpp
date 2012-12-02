@@ -125,6 +125,7 @@ void KOTodoModel::Private::onRowsAboutToBeInserted( const QModelIndex &parent, i
 {
   const QModelIndex index = q->mapFromSource( parent );
   Q_ASSERT( !( parent.isValid() ^ index.isValid() ) ); // Both must be valid, or both invalid
+  Q_ASSERT( !( index.isValid() && index.model() != q ) );
 
   q->beginInsertRows( index, begin, end );
 }
@@ -138,6 +139,7 @@ void KOTodoModel::Private::onRowsAboutToBeRemoved( const QModelIndex &parent, in
 {
   const QModelIndex index = q->mapFromSource( parent );
   Q_ASSERT( !( parent.isValid() ^ index.isValid() ) ); // Both must be valid, or both invalid
+  Q_ASSERT( !( index.isValid() && index.model() != q ) );
 
   q->beginRemoveRows( index, begin, end );
 }
