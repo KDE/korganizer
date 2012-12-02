@@ -34,6 +34,7 @@
 #include <QSharedPointer>
 #include <QStringList>
 #include <QPersistentModelIndex>
+#include <KCalCore/Incidence>
 
 typedef QString Uid;
 typedef QString ParentUid;
@@ -52,12 +53,21 @@ struct Node {
   int depth;
 };
 
+/** Just a struct to contain some data before we create the node */
+struct PreNode {
+  typedef QList<PreNode> List;
+  KCalCore::Incidence::Ptr incidence;
+  QPersistentModelIndex sourceIndex;
+  Akonadi::Item item;
+};
+
 class IncidenceTreeModel::Private : public QObject
 {
   Q_OBJECT
 public:
   Private( IncidenceTreeModel *qq, const QStringList &mimeTypes );
   void reset( bool silent = false );
+  void insertNode( const PreNode &node, bool silent = false );
   void insertNode( const QModelIndex &sourceIndex, bool silent = false );
   void removeNode( const Node::Ptr &node );
   QModelIndex indexForNode( const Node::Ptr &node ) const;
@@ -66,6 +76,7 @@ public:
   void dumpTree();
   void assert_and_dump( bool condition, const QString &message );
   Node::List sorted( const Node::List &nodes ) const;
+  PreNode prenodeFromSourceRow( int sourceRow ) const;
 
 public:
   Node::Map m_nodeMap;

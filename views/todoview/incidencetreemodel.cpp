@@ -23,7 +23,6 @@
 #include "incidencetreemodel_p.h"
 
 #include <Akonadi/EntityTreeModel>
-#include <KCalCore/Incidence>
 #include <QElapsedTimer>
 
 using namespace Akonadi;
@@ -98,8 +97,7 @@ void IncidenceTreeModel::Private::reset( bool silent )
   if ( q->sourceModel() ) {
     const int sourceCount = q->sourceModel()->rowCount();
     for ( int i=0; i<sourceCount; ++i ) {
-      const QModelIndex sourceIndex = q->sourceModel()->index( i, 0, QModelIndex() );
-      insertNode( sourceIndex, /**silent=*/true );
+      insertNode( prenodeFromSourceRow( i ), /**silent=*/true );
     }
   }
   if ( !silent )
@@ -220,6 +218,21 @@ void IncidenceTreeModel::Private::onRowsAboutToBeInserted( const QModelIndex &pa
   // parent yet.
 }
 
+PreNode IncidenceTreeModel::Private::prenodeFromSourceRow( int row ) const
+{
+  PreNode node;
+  node.sourceIndex = q->sourceModel()->index( row, 0, QModelIndex() );
+  Q_ASSERT( node.sourceIndex.isValid() );
+  Q_ASSERT( node.sourceIndex.model() == q->sourceModel() );
+  const Akonadi::Item item = node.sourceIndex.data( EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+  Q_ASSERT( item.isValid() );
+  node.item = item;
+  node.incidence = item.payload<KCalCore::Incidence::Ptr>();
+  Q_ASSERT( node.incidence );
+
+  return node;
+}
+
 void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int begin, int end )
 {
   //QElapsedTimer timer;
@@ -228,9 +241,19 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   Q_ASSERT( begin <= end );
   // TODO: Performance optimization: Order them by increasing depth, i.e: insert
   // the parents first.
+  PreNode::List nodes;
   for ( int i=begin; i<=end; ++i ) {
-    const QModelIndex sourceIndex = q->sourceModel()->index( i, 0, QModelIndex() );
-    insertNode( sourceIndex );
+    PreNode node = prenodeFromSourceRow( i );
+
+    // if m_mimeTypes is empty, we ignore this feature
+    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node.incidence->mimeType() ) )
+      continue;
+
+    nodes << node;
+  }
+
+  foreach( const PreNode &node, nodes ) {
+    insertNode( node );
   }
 
   // view can now call KViewStateSaver::restoreState(), to expand nodes.
@@ -238,21 +261,12 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   //kDebug() << "Took " << timer.elapsed() << " to insert " << end-begin+1;
 }
 
-void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bool silent )
+void IncidenceTreeModel::Private::insertNode( const PreNode &prenode, bool silent )
 {
-  Q_ASSERT( sourceIndex.isValid() );
-  Q_ASSERT( sourceIndex.model() == q->sourceModel() );
-  const Akonadi::Item item = sourceIndex.data( EntityTreeModel::ItemRole ).value<Akonadi::Item>();
-  Q_ASSERT( item.isValid() );
-  KCalCore::Incidence::Ptr incidence = item.payload<KCalCore::Incidence::Ptr>();
-  Q_ASSERT( incidence );
-
-  // if m_mimeTypes is empty, we ignore this feature
-  if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( incidence->mimeType() ) )
-    return;
-
+  KCalCore::Incidence::Ptr incidence = prenode.incidence;
+  Akonadi::Item item = prenode.item;
   Node::Ptr node( new Node() );
-  node->sourceIndex = sourceIndex;
+  node->sourceIndex = prenode.sourceIndex;
   node->id = item.id();
   node->uid = incidence->uid();
   m_itemByUid.insert( node->uid, item );
