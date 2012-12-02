@@ -59,6 +59,15 @@ int IncidenceTreeModel::Private::rowForNode( const Node::Ptr &node ) const
   return row;
 }
 
+void IncidenceTreeModel::Private::assert_and_dump( bool condition, const QString &message )
+{
+  if ( !condition ) {
+    kError() << "This should never happen: " << message;
+    dumpTree();
+    Q_ASSERT( false );
+  }
+}
+
 void IncidenceTreeModel::Private::dumpTree()
 {
   foreach( const Node::Ptr &node, m_toplevelNodeList )
@@ -514,7 +523,9 @@ int IncidenceTreeModel::rowCount( const QModelIndex &parent ) const
     Q_ASSERT( parent.model() == this );
     Node *parentNode = reinterpret_cast<Node*>( parent.internalPointer() );
     Q_ASSERT( parentNode );
-    Q_ASSERT( !d->m_removedNodes.contains( parentNode ) );
+    d->assert_and_dump( !d->m_removedNodes.contains( parentNode ),
+                        QString::number( (long)parentNode, 16 ) + " was already deleted" );
+
     const int count = parentNode->directChilds.count();
     return count;
   }

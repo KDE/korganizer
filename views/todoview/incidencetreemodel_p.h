@@ -64,6 +64,7 @@ public:
   int rowForNode( const Node::Ptr &node ) const;
   bool indexBeingRemoved( const QModelIndex & ) const; // Is it being removed?
   void dumpTree();
+  void assert_and_dump( bool condition, const QString &message );
   Node::List sorted( const Node::List &nodes ) const;
 
 public:
