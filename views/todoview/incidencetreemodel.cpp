@@ -317,7 +317,7 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
       const QModelIndex toParent = indexForNode( node );
       Q_ASSERT( toParent.isValid() );
       Q_ASSERT( toParent.model() == q );
-      const int toRow = node->directChilds.count();
+      //const int toRow = node->directChilds.count();
 
       if ( !silent ) {
         //const bool res = q->beginMoveRows( /**fromParent*/QModelIndex(), fromRow,
@@ -409,9 +409,9 @@ void IncidenceTreeModel::Private::removeNode( const Node::Ptr &node )
     Node::List childs = node->directChilds;
     const QModelIndex fromParent = indexForNode( node );
     Q_ASSERT( fromParent.isValid() );
-    const int firstSourceRow = 0;
-    const int lastSourceRow  = node->directChilds.count() - 1;
-    const int toRow = m_toplevelNodeList.count();
+//    const int firstSourceRow = 0;
+  //  const int lastSourceRow  = node->directChilds.count() - 1;
+    //const int toRow = m_toplevelNodeList.count();
     //q->beginMoveRows( fromParent, firstSourceRow, lastSourceRow,
     //                  /**toParent is root*/QModelIndex(), toRow );
     q->beginResetModel();
