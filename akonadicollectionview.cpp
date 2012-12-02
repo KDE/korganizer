@@ -100,8 +100,7 @@ class ColorDelegate : public QStyledItemDelegate
       if ( v4.checkState == Qt::Checked ) {
         const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
         QColor color = KOHelper::resourceColor( collection );
-        const bool collectionHasIcon = index.data( Qt::DecorationRole ).canConvert<QIcon>();
-        if ( color.isValid() && collectionHasIcon ) {
+        if ( color.isValid() ) {
           QRect r = v4.rect;
           const int h = r.height() - 4;
           r.adjust( r.width() - h - 2, 2, - 2, -2 );
@@ -141,9 +140,6 @@ class ColorProxyModel : public QSortFilterProxyModel
           if ( collection.hasAttribute<Akonadi::EntityDisplayAttribute>() &&
                !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty() ) {
             return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
-          } else {
-            const QColor color = KOHelper::resourceColor( collection );
-            return color.isValid() ? color : QVariant();
           }
         }
       } else if ( role == Qt::FontRole ) {
