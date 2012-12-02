@@ -29,6 +29,19 @@
 using namespace Akonadi;
 QDebug operator<<( QDebug s, const Node::Ptr &node );
 
+static void calculateDepth( const Node::Ptr &node )
+{
+  Q_ASSERT( node );
+  node->depth = node->parentNode ? 1+node->parentNode->depth : 0;
+  foreach( const Node::Ptr &child, node->directChilds )
+    calculateDepth( child );
+}
+
+bool lessThan( const Node::Ptr &node1, const Node::Ptr &node2 )
+{
+    return node1->depth > node2->depth;
+}
+
 IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq,
                                       const QStringList &mimeTypes ) : QObject()
                                                                      , m_mimeTypes( mimeTypes )
@@ -315,42 +328,68 @@ void IncidenceTreeModel::Private::insertNode( const QModelIndex &sourceIndex, bo
   }
 }
 
+
+
+// Sorts childs first parents last
+Node::List IncidenceTreeModel::Private::sorted( const Node::List &nodes ) const
+{
+  if ( nodes.isEmpty() )
+    return nodes;
+
+  // Initialize depths
+  foreach( const Node::Ptr &topLevelNode, m_toplevelNodeList )
+    calculateDepth( topLevelNode );
+
+  Node::List sorted = nodes;
+  qSort( sorted.begin(), sorted.end(), lessThan );
+
+  return sorted;
+}
+
 void IncidenceTreeModel::Private::onRowsAboutToBeRemoved( const QModelIndex &parent, int begin, int end )
 {
   //QElapsedTimer timer;
   //timer.start();
   Q_ASSERT( !parent.isValid() );
   Q_ASSERT( begin <= end );
+
+  // First, gather nodes to remove
+  Node::List nodesToRemove;
   for ( int i=begin; i<=end; ++i ) {
     QModelIndex sourceIndex = q->sourceModel()->index( i, 0, QModelIndex() );
     Q_ASSERT( sourceIndex.isValid() );
     Q_ASSERT( sourceIndex.model() == q->sourceModel() );
     const Akonadi::Item::Id id = sourceIndex.data( EntityTreeModel::ItemIdRole ).toLongLong();
     Q_ASSERT( id != -1 );
+    if ( !m_nodeMap.contains( id ) ) {
+      // We don't know about this one because we're ignoring it's mime type.
+      Q_ASSERT( m_mimeTypes.count() != 3 );
+      continue;
+    }
+    Node::Ptr node = m_nodeMap.value( id );
+    Q_ASSERT( node->id == id );
+    nodesToRemove << node;
+  }
+
+  // We want to remove childs first, to avoid row moving
+  Node::List nodesToRemoveSorted = sorted( nodesToRemove );
+
+  foreach( const Node::Ptr &node, nodesToRemoveSorted ) {
     // Go ahead and remove it now. We don't do it in ::onRowsRemoved(), because
     // while unparenting childs with moveRows() the view might call data() on the
     // item that is already removed from ETM.
-    removeNode( id );
+    removeNode( node );
+    //kDebug() << "Just removed a node, here's the tree";
+    //dumpTree();
   }
 
   m_removedNodes.clear();
   //kDebug() << "Took " << timer.elapsed() << " to remove " << end-begin+1;
 }
 
-void IncidenceTreeModel::Private::removeNode( Akonadi::Item::Id id )
+void IncidenceTreeModel::Private::removeNode( const Node::Ptr &node )
 {
-  Q_ASSERT( id != -1 );
-
-  if ( !m_nodeMap.contains( id ) ) {
-    // We don't know about this one because we're ignoring it's mime type.
-    Q_ASSERT( m_mimeTypes.count() != 3 );
-    return;
-  }
-
-  Node::Ptr node = m_nodeMap.value( id );
   Q_ASSERT( node );
-  Q_ASSERT( node->id == id );
-
   //kDebug() << "Dealing with parent: " << node->id << node.data()
   //         << node->uid << node->directChilds.count() << indexForNode( node );
 

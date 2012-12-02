@@ -49,6 +49,7 @@ struct Node {
   QString parentUid;
   QString uid;
   List directChilds;
+  int depth;
 };
 
 class IncidenceTreeModel::Private : public QObject
@@ -58,11 +59,12 @@ public:
   Private( IncidenceTreeModel *qq, const QStringList &mimeTypes );
   void reset( bool silent = false );
   void insertNode( const QModelIndex &sourceIndex, bool silent = false );
-  void removeNode( Akonadi::Item::Id id );
+  void removeNode( const Node::Ptr &node );
   QModelIndex indexForNode( const Node::Ptr &node ) const;
   int rowForNode( const Node::Ptr &node ) const;
   bool indexBeingRemoved( const QModelIndex & ) const; // Is it being removed?
   void dumpTree();
+  Node::List sorted( const Node::List &nodes ) const;
 
 public:
   Node::Map m_nodeMap;
