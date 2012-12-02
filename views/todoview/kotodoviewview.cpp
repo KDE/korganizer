@@ -221,7 +221,7 @@ void KOTodoViewView::mousePressEvent( QMouseEvent *event )
 {
   mExpandTimer.stop();
   QModelIndex index = indexAt( event->pos() );
-  if ( index.isValid() ) {
+  if ( index.isValid() && event->button() == Qt::LeftButton ) {
     mExpandTimer.start();
   }
 
