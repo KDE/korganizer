@@ -156,10 +156,9 @@ struct ModelStack
   QList<KOTodoView*> views;
   QObject *parent;
 
-  private:
-    CalendarSupport::Calendar *calendar;
-    IncidenceTreeModel *todoTreeModel;
-    Akonadi::EntityMimeTypeFilterModel *todoFlatModel;
+  CalendarSupport::Calendar *calendar;
+  IncidenceTreeModel *todoTreeModel;
+  Akonadi::EntityMimeTypeFilterModel *todoFlatModel;
 };
 
 // Don't use K_GLOBAL_STATIC, see QTBUG-22667
@@ -1141,6 +1140,9 @@ void KOTodoView::restoreViewState()
   if ( sModels->isFlatView() ) {
     return;
   }
+
+  if ( sModels->todoTreeModel && !sModels->todoTreeModel->sourceModel() )
+    return;
 
   //QElapsedTimer timer;
   //timer.start();
