@@ -123,7 +123,10 @@ void KOTodoModel::Private::onHeaderDataChanged( Qt::Orientation orientation, int
 
 void KOTodoModel::Private::onRowsAboutToBeInserted( const QModelIndex &parent, int begin, int end )
 {
-  q->beginInsertRows( q->mapFromSource( parent ), begin, end );
+  const QModelIndex index = q->mapFromSource( parent );
+  Q_ASSERT( !( parent.isValid() ^ index.isValid() ) ); // Both must be valid, or both invalid
+
+  q->beginInsertRows( index, begin, end );
 }
 
 void KOTodoModel::Private::onRowsInserted( const QModelIndex &, int, int )
@@ -133,7 +136,10 @@ void KOTodoModel::Private::onRowsInserted( const QModelIndex &, int, int )
 
 void KOTodoModel::Private::onRowsAboutToBeRemoved( const QModelIndex &parent, int begin, int end )
 {
-  q->beginRemoveRows( q->mapFromSource( parent ), begin, end );
+  const QModelIndex index = q->mapFromSource( parent );
+  Q_ASSERT( !( parent.isValid() ^ index.isValid() ) ); // Both must be valid, or both invalid
+
+  q->beginRemoveRows( index, begin, end );
 }
 
 void KOTodoModel::Private::onRowsRemoved( const QModelIndex &, int, int )
