@@ -29,6 +29,7 @@
 #include "kocore.h"
 #include "kohelper.h"
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
@@ -41,6 +42,7 @@
 #include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 
 #include <KAction>
@@ -351,11 +353,26 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
                                               mDefaultCalendar );
     connect( mDefaultCalendar, SIGNAL(triggered(bool)), this, SLOT(setDefaultCalendar()) );
   }
-  mCollectionview->expandAll();
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
 {
+  Akonadi::ETMViewStateSaver treeStateSaver;
+  KConfigGroup group( KOGlobals::self()->config(), "CollectionTreeView" );
+  treeStateSaver.setView( mCollectionview );
+  treeStateSaver.saveState( group );
+}
+
+void AkonadiCollectionView::restoreTreeState()
+{
+  static QPointer<Akonadi::ETMViewStateSaver> treeStateRestorer;
+  if ( treeStateRestorer ) // We don't need more than one to be running at the same time
+    delete treeStateRestorer;
+
+  treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
+  KConfigGroup group( KOGlobals::self()->config(), "CollectionTreeView" );
+  treeStateRestorer->setView( mCollectionview );
+  treeStateRestorer->restoreState( group );
 }
 
 void AkonadiCollectionView::setDefaultCalendar()
@@ -564,7 +581,7 @@ void AkonadiCollectionView::rowsInserted( const QModelIndex &, int, int )
   if ( !mNotSendAddRemoveSignal ) {
     emit resourcesAddedRemoved();
   }
-  mCollectionview->expandAll();
+  restoreTreeState();
 }
 
 /** static */

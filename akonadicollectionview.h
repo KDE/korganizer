@@ -90,6 +90,7 @@ class AkonadiCollectionView : public CalendarViewExtension
   private Q_SLOTS:
     void updateView();
     void updateMenu();
+    void restoreTreeState();
 
     void newCalendar();
     void newCalendarDone( KJob * );
