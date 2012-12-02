@@ -62,6 +62,7 @@ public:
   QModelIndex indexForNode( const Node::Ptr &node ) const;
   int rowForNode( const Node::Ptr &node ) const;
   bool indexBeingRemoved( const QModelIndex & ) const; // Is it being removed?
+  void dumpTree();
 
 public:
   Node::Map m_nodeMap;

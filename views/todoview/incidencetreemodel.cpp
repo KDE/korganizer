@@ -27,6 +27,7 @@
 #include <QElapsedTimer>
 
 using namespace Akonadi;
+QDebug operator<<( QDebug s, const Node::Ptr &node );
 
 IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq,
                                       const QStringList &mimeTypes ) : QObject()
@@ -43,6 +44,12 @@ int IncidenceTreeModel::Private::rowForNode( const Node::Ptr &node ) const
                                    : m_toplevelNodeList.indexOf( node );
   Q_ASSERT ( row != -1 );
   return row;
+}
+
+void IncidenceTreeModel::Private::dumpTree()
+{
+  foreach( const Node::Ptr &node, m_toplevelNodeList )
+    qDebug() << node;
 }
 
 QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) const
@@ -726,4 +733,20 @@ Akonadi::Item IncidenceTreeModel::item( const QString &uid ) const
   }
 
   return item;
+}
+
+QDebug operator<<( QDebug s, const Node::Ptr &node )
+{
+  Q_ASSERT( node );
+  static int level = 0;
+  ++level;
+  QString padding = QString(level-1, ' ' );
+  s << padding+"node" << node.data() << ";uid=" << node->uid << ";id=" << node->id << ";parentUid=" << node->parentUid << ";parentNode=" << (void*)(node->parentNode.data()) << '\n';
+
+  foreach( const Node::Ptr &child, node->directChilds ) {
+    s << child;
+  }
+
+  --level;
+  return s;
 }
