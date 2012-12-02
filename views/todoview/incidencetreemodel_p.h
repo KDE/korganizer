@@ -55,10 +55,13 @@ struct Node {
 
 /** Just a struct to contain some data before we create the node */
 struct PreNode {
-  typedef QList<PreNode> List;
+  typedef QSharedPointer<PreNode> Ptr;
+  typedef QList<Ptr> List;
   KCalCore::Incidence::Ptr incidence;
   QPersistentModelIndex sourceIndex;
   Akonadi::Item item;
+  int depth;
+  PreNode() : depth( -1 ) {}
 };
 
 class IncidenceTreeModel::Private : public QObject
@@ -67,7 +70,7 @@ class IncidenceTreeModel::Private : public QObject
 public:
   Private( IncidenceTreeModel *qq, const QStringList &mimeTypes );
   void reset( bool silent = false );
-  void insertNode( const PreNode &node, bool silent = false );
+  void insertNode( const PreNode::Ptr &node, bool silent = false );
   void insertNode( const QModelIndex &sourceIndex, bool silent = false );
   void removeNode( const Node::Ptr &node );
   QModelIndex indexForNode( const Node::Ptr &node ) const;
@@ -76,7 +79,7 @@ public:
   void dumpTree();
   void assert_and_dump( bool condition, const QString &message );
   Node::List sorted( const Node::List &nodes ) const;
-  PreNode prenodeFromSourceRow( int sourceRow ) const;
+  PreNode::Ptr prenodeFromSourceRow( int sourceRow ) const;
 
 public:
   Node::Map m_nodeMap;

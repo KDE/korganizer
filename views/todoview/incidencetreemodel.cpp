@@ -41,6 +41,48 @@ bool lessThan( const Node::Ptr &node1, const Node::Ptr &node2 )
     return node1->depth > node2->depth;
 }
 
+bool greaterThan( const PreNode::Ptr &node1, const PreNode::Ptr &node2 )
+{
+    return node1->depth < node2->depth || node2->depth == -1;
+}
+
+static PreNode::List sortedPrenodes( const PreNode::List &nodes )
+{
+  const int count = nodes.count();
+  QHash<QString,PreNode::Ptr> prenodeByUid;
+  PreNode::List remainingNodes = nodes;
+
+  while ( prenodeByUid.count() < count ) {
+    bool foundAtLeastOne = false; // this bool saves us from infinit looping if the parent doesn't exist
+    foreach( const PreNode::Ptr &node, remainingNodes ) {
+      Q_ASSERT( node );
+      const QString uid = node->incidence->uid();
+      const QString parentUid = node->incidence->relatedTo();
+      if ( parentUid.isEmpty() ) { // toplevel todo
+        Q_ASSERT( !prenodeByUid.contains( uid ) );
+        prenodeByUid.insert( uid, node );
+        remainingNodes.removeAll( node );
+        node->depth = 0;
+        foundAtLeastOne = true;
+      } else {
+        if ( prenodeByUid.contains( parentUid ) ) {
+          node->depth = 1 + prenodeByUid.value( parentUid )->depth;
+          remainingNodes.removeAll( node );
+          prenodeByUid.insert( uid, node );
+          foundAtLeastOne = true;
+        }
+      }
+    }
+
+    if ( !foundAtLeastOne )
+      break;
+  }
+
+  PreNode::List sorted = nodes;
+  qSort( sorted.begin(), sorted.end(), greaterThan );
+  return sorted;
+}
+
 IncidenceTreeModel::Private::Private( IncidenceTreeModel *qq,
                                       const QStringList &mimeTypes ) : QObject()
                                                                      , m_mimeTypes( mimeTypes )
@@ -218,17 +260,17 @@ void IncidenceTreeModel::Private::onRowsAboutToBeInserted( const QModelIndex &pa
   // parent yet.
 }
 
-PreNode IncidenceTreeModel::Private::prenodeFromSourceRow( int row ) const
+PreNode::Ptr IncidenceTreeModel::Private::prenodeFromSourceRow( int row ) const
 {
-  PreNode node;
-  node.sourceIndex = q->sourceModel()->index( row, 0, QModelIndex() );
-  Q_ASSERT( node.sourceIndex.isValid() );
-  Q_ASSERT( node.sourceIndex.model() == q->sourceModel() );
-  const Akonadi::Item item = node.sourceIndex.data( EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+  PreNode::Ptr node = PreNode::Ptr( new PreNode() );
+  node->sourceIndex = q->sourceModel()->index( row, 0, QModelIndex() );
+  Q_ASSERT( node->sourceIndex.isValid() );
+  Q_ASSERT( node->sourceIndex.model() == q->sourceModel() );
+  const Akonadi::Item item = node->sourceIndex.data( EntityTreeModel::ItemRole ).value<Akonadi::Item>();
   Q_ASSERT( item.isValid() );
-  node.item = item;
-  node.incidence = item.payload<KCalCore::Incidence::Ptr>();
-  Q_ASSERT( node.incidence );
+  node->item = item;
+  node->incidence = item.payload<KCalCore::Incidence::Ptr>();
+  Q_ASSERT( node->incidence );
 
   return node;
 }
@@ -239,20 +281,18 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   //timer.start();
   Q_ASSERT( !parent.isValid() );
   Q_ASSERT( begin <= end );
-  // TODO: Performance optimization: Order them by increasing depth, i.e: insert
-  // the parents first.
   PreNode::List nodes;
   for ( int i=begin; i<=end; ++i ) {
-    PreNode node = prenodeFromSourceRow( i );
-
+    PreNode::Ptr node = prenodeFromSourceRow( i );
     // if m_mimeTypes is empty, we ignore this feature
-    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node.incidence->mimeType() ) )
+    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) )
       continue;
-
     nodes << node;
   }
 
-  foreach( const PreNode &node, nodes ) {
+  PreNode::List sortedNodes = sortedPrenodes( nodes );
+
+  foreach( const PreNode::Ptr &node, sortedNodes ) {
     insertNode( node );
   }
 
@@ -261,12 +301,12 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   //kDebug() << "Took " << timer.elapsed() << " to insert " << end-begin+1;
 }
 
-void IncidenceTreeModel::Private::insertNode( const PreNode &prenode, bool silent )
+void IncidenceTreeModel::Private::insertNode( const PreNode::Ptr &prenode, bool silent )
 {
-  KCalCore::Incidence::Ptr incidence = prenode.incidence;
-  Akonadi::Item item = prenode.item;
+  KCalCore::Incidence::Ptr incidence = prenode->incidence;
+  Akonadi::Item item = prenode->item;
   Node::Ptr node( new Node() );
-  node->sourceIndex = prenode.sourceIndex;
+  node->sourceIndex = prenode->sourceIndex;
   node->id = item.id();
   node->uid = incidence->uid();
   m_itemByUid.insert( node->uid, item );
