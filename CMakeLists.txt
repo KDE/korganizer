@@ -180,6 +180,7 @@ if(NOT WINCE)
       history.cpp
       htmlexportjob.cpp
       kdatenavigator.cpp
+      kocheckableproxymodel.cpp
       kocorehelper.cpp
       kodaymatrix.cpp
       kodialogmanager.cpp
