@@ -250,7 +250,17 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return QVariant();
   }
   const KCalCore::Todo::Ptr todo = CalendarSupport::todo( item );
-  Q_ASSERT( todo );
+  if ( !todo ) {
+    kError() << "item.hasPayload()" << item.hasPayload();
+    if ( item.hasPayload<KCalCore::Incidence::Ptr>() ) {
+      KCalCore::Incidence::Ptr incidence = item.payload<KCalCore::Incidence::Ptr>();
+      if ( incidence )
+        kError() << "It's actually " << incidence->type();
+    }
+
+    Q_ASSERT(!"There's no to-do.");
+    return QVariant();
+  }
 
   if ( role == Qt::DisplayRole ) {
     switch ( index.column() ) {
