@@ -43,6 +43,7 @@ class KODialogManager;
 class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
+class KOCheckableProxyModel;
 namespace KOrg {
   class History;
   class HTMLExportSettings;
@@ -144,6 +145,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     };
 
     void setCalendar( CalendarSupport::Calendar * );
+    void setCheckableProxyModel( KOCheckableProxyModel * );
     CalendarSupport::Calendar *calendar() const;
 
     History *history() const { return mHistory; }
@@ -705,6 +707,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     bool eventFilter( QObject *watched, QEvent *event );
 
+  private Q_SLOTS:
+    void onCheckableProxyAboutToToggle( bool newState );
+    void onCheckableProxyToggled( bool newState );
+
   private:
     void init();
 
@@ -781,6 +787,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;
+
+    KOCheckableProxyModel *mCheckableProxyModel;
 };
 
 #endif

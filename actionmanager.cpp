@@ -42,6 +42,7 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "reminderclient.h"
+#include "kocheckableproxymodel.h"
 
 #include <akonadi_next/kcolumnfilterproxymodel.h>
 using namespace Future;
@@ -75,7 +76,6 @@ using namespace Future;
 
 #include <KAction>
 #include <KActionCollection>
-#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
 #include <KCmdLineArgs>
 #include <KFileDialog>
 #include <KGlobalSettings>
@@ -264,10 +264,11 @@ void ActionManager::createCalendarAkonadi()
   selectionModel->setObjectName( "Calendar Selection Model" );
 
   // Make item selection work by means of checkboxes.
-  KCheckableProxyModel *checkableProxy = new KCheckableProxyModel( this );
+  KOCheckableProxyModel *checkableProxy = new KOCheckableProxyModel( this );
   checkableProxy->setSelectionModel( selectionModel );
   checkableProxy->setSourceModel( columnFilterProxy );
   checkableProxy->setObjectName( "Add checkboxes" );
+  mCalendarView->setCheckableProxyModel( checkableProxy );
 
   KConfig *config = KOGlobals::self()->config();
   mCollectionSelectionModelStateSaver =

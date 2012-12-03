@@ -97,6 +97,8 @@ class KOTodoView : public BaseView
     virtual void updateConfig();
     virtual void clearSelection();
     void expandIndex( const QModelIndex &index );
+    void restoreViewState();
+    void saveViewState();
 
   protected Q_SLOTS:
     void addQuickTodo( Qt::KeyboardModifiers modifier );
@@ -125,8 +127,6 @@ class KOTodoView : public BaseView
     void changedCategories( QAction *action );
     void setFullView( bool fullView );
     void setFlatView( bool flatView );
-    void restoreViewState();
-    void saveViewState();
 
   Q_SIGNALS:
     void purgeCompletedSignal();
