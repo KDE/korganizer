@@ -356,6 +356,7 @@ AkonadiCollectionView::~AkonadiCollectionView()
   Akonadi::ETMViewStateSaver treeStateSaver;
   KConfigGroup group( KOGlobals::self()->config(), "CollectionTreeView" );
   treeStateSaver.setView( mCollectionview );
+  treeStateSaver.setSelectionModel( 0 ); // we only save expand state
   treeStateSaver.saveState( group );
 }
 
@@ -368,6 +369,7 @@ void AkonadiCollectionView::restoreTreeState()
   treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
   KConfigGroup group( KOGlobals::self()->config(), "CollectionTreeView" );
   treeStateRestorer->setView( mCollectionview );
+  treeStateRestorer->setSelectionModel( 0 ); // we only restore expand state
   treeStateRestorer->restoreState( group );
 }
 
