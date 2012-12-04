@@ -12,9 +12,6 @@
     <height>431</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Find Events - KOrganizer</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
