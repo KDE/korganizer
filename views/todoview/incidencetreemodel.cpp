@@ -139,7 +139,9 @@ void IncidenceTreeModel::Private::reset( bool silent )
   if ( q->sourceModel() ) {
     const int sourceCount = q->sourceModel()->rowCount();
     for ( int i=0; i<sourceCount; ++i ) {
-      insertNode( prenodeFromSourceRow( i ), /**silent=*/true );
+      PreNode::Ptr prenode = prenodeFromSourceRow( i );
+      if ( m_mimeTypes.isEmpty() || m_mimeTypes.contains( prenode->incidence->mimeType() ) )
+        insertNode( prenode, /**silent=*/true );
     }
   }
   if ( !silent )
