@@ -1302,6 +1302,16 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
   IncidenceEditorNG::IncidenceDefaults defaults =
     IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
+  bool allDay = true;
+  if ( mViewManager->currentView()->isEventView() ) {
+    QDateTime startDt;
+    QDateTime endDt;
+    dateTimesForNewEvent( startDt, endDt, allDay );
+
+    defaults.setStartDateTime( KDateTime( startDt ) );
+    defaults.setEndDateTime( KDateTime( endDt ) );
+  }
+
   Journal::Ptr journal( new Journal );
   defaults.setDefaults( journal );
 
