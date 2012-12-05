@@ -414,8 +414,7 @@ void AlarmDialog::dismiss( ReminderList selections )
     delete *it;
   }
 
-  // TODO 4.7: enable and test this
-  //removeFromConfig( ids );
+  removeFromConfig( ids );
 }
 
 void AlarmDialog::edit()
@@ -697,7 +696,7 @@ void AlarmDialog::slotSave()
 {
   KSharedConfig::Ptr config = KGlobal::config();
   KConfigGroup generalConfig( config, "General" );
-  int numReminders = generalConfig.readEntry( "Reminders", 0 );
+  int numReminders = 0;
 
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {

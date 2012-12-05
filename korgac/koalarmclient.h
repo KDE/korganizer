@@ -72,6 +72,7 @@ class KOAlarmClient : public QObject
     void slotQuit();
 
   protected slots:
+    void deferredInit();
     void checkAlarms();
 
   signals:
@@ -80,6 +81,7 @@ class KOAlarmClient : public QObject
 
   private:
     bool dockerEnabled();
+    bool collectionsAvailable();
     void createReminder( CalendarSupport::Calendar *calendar, const Akonadi::Item &incidence,
                          const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();

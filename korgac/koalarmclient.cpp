@@ -103,18 +103,40 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
   connect( mCalendarModel, SIGNAL(collectionPopulated(Akonadi::Collection::Id)),
-           SLOT(checkAlarms()) );
+           SLOT(deferredInit()) );
   connect( mCalendarModel, SIGNAL(collectionTreeFetched(Akonadi::Collection::List)),
-           SLOT(checkAlarms()) );
+           SLOT(deferredInit()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
   const int interval = alarmGroup.readEntry( "Interval", 60 );
   kDebug() << "KOAlarmClient check interval:" << interval << "seconds.";
   mLastChecked = alarmGroup.readEntry( "CalendarsLastChecked", QDateTime() );
 
+  checkAlarms();
+  mCheckTimer.start( 1000 * interval );  // interval in seconds
+}
+
+KOAlarmClient::~KOAlarmClient()
+{
+  delete mCalendar;
+#if !defined(KORGAC_AKONADI_AGENT)
+  delete mDocker;
+  delete mDialog;
+#endif
+}
+
+void KOAlarmClient::deferredInit()
+{
+  if ( !collectionsAvailable() ) {
+    return;
+  }
+
+  kDebug(5891) << "Performing delayed initialization.";
+
   // load reminders that were active when quitting
   KConfigGroup genGroup( KGlobal::config(), "General" );
   const int numReminders = genGroup.readEntry( "Reminders", 0 );
+
   for ( int i=1; i<=numReminders; ++i ) {
     const QString group( QString( "Incidence-%1" ).arg( i ) );
     const KConfigGroup incGroup( KGlobal::config(), group );
@@ -140,23 +162,11 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
       }
     }
   }
-  if ( numReminders ) {
-     genGroup.writeEntry( "Reminders", 0 );
-     genGroup.sync();
-  }
 
+  // Now that everything is set up, a first check for reminders can be performed.
   checkAlarms();
-  mCheckTimer.start( 1000 * interval );  // interval in seconds
 }
 
-KOAlarmClient::~KOAlarmClient()
-{
-  delete mCalendar;
-#if !defined(KORGAC_AKONADI_AGENT)
-  delete mDocker;
-  delete mDialog;
-#endif
-}
 
 bool KOAlarmClient::dockerEnabled()
 {
@@ -164,6 +174,30 @@ bool KOAlarmClient::dockerEnabled()
   KConfigGroup generalGroup( &korgConfig, "General" );
   return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
+
+
+bool KOAlarmClient::collectionsAvailable()
+{
+  // The list of collections must be available.
+  if ( !mCalendarModel->isCollectionTreeFetched() ) {
+    return false;
+  }
+
+  // All collections must be populated.
+  const int rowCount = mCalendarModel->rowCount();
+  for ( int row = 0; row < rowCount; ++row ) {
+    static const int column = 0;
+    const QModelIndex index = mCalendarModel->index( row, column );
+    bool haveData =
+      mCalendarModel->data( index, CalendarSupport::CalendarModel::IsPopulatedRole ).toBool();
+    if ( !haveData ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 
 void KOAlarmClient::checkAlarms()
 {
@@ -174,23 +208,10 @@ void KOAlarmClient::checkAlarms()
   }
 
   // We do not want to miss any reminders, so don't perform check unless
-  // the list of collections is available.
-  if ( !mCalendarModel->isCollectionTreeFetched() ) {
-    kDebug(5891) << "CollectionTree has not been fetched yet; aborting check.";
+  // the collections are available and populated.
+  if ( !collectionsAvailable() ) {
+    kDebug(5891) << "Collections are not available; aborting check.";
     return;
-  }
-
-  // Collections also need to be populated if we want to be sure not to miss any reminders.
-  const int rowCount = mCalendarModel->rowCount();
-  for ( int row = 0; row < rowCount; ++row ) {
-    static const int column = 0;
-    const QModelIndex index = mCalendarModel->index( row, column );
-    bool haveData =
-      mCalendarModel->data( index, CalendarSupport::CalendarModel::IsPopulatedRole ).toBool();
-    if ( !haveData ) {
-      kDebug(5891) << "Collections have not been populated yet; aborting check.";
-      return;
-    }
   }
 
   QDateTime from = mLastChecked.addSecs( 1 );
