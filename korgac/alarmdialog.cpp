@@ -347,6 +347,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
 
   mIncidenceTree->setCurrentItem( item );
   showDetails();
+  slotSave();
 }
 
 void AlarmDialog::slotOk()
