@@ -600,21 +600,17 @@ bool AkonadiCollectionView::isStructuralCollection( const Akonadi::Collection &c
   return true;
 }
 
-Akonadi::Collection::List AkonadiCollectionView::selectedCollections() const
+Akonadi::Collection AkonadiCollectionView::selectedCollection() const
 {
-  Akonadi::Collection::List collections;
+  Akonadi::Collection collection;
   QItemSelectionModel *selectionModel = mCollectionview->selectionModel();
   if ( !selectionModel )
-    return collections;
+    return collection;
   QModelIndexList indexes = selectionModel->selectedIndexes();
-  foreach( const QModelIndex &index, indexes ) {
-    if ( index.isValid() ) {
-      Akonadi::Collection collection = index.data( Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
-      if ( collection.isValid() )
-        collections << collection;
-    }
+  if ( !indexes.isEmpty() ) {
+    collection = indexes.first().data( Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
   }
-  return collections;
+  return collection;
 }
 
 Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
