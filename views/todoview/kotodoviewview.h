@@ -37,9 +37,6 @@ class KOTodoViewView : public QTreeView
   public:
     KOTodoViewView( QWidget *parent = 0 );
 
-#ifdef __GNUC__
-#warning QTreeView should now set State_Editing correctly, remove the workaround
-#endif
     bool isEditing( const QModelIndex &index ) const;
 
     virtual bool eventFilter( QObject *watched, QEvent *event );

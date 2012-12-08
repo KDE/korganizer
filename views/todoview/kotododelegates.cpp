@@ -68,9 +68,6 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   style = opt.widget ? opt.widget->style() : QApplication::style();
   style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
-#ifdef __GNUC__
-#warning QTreeView should now set State_Editing correctly, remove the workaround
-#endif
   if ( index.data( Qt::EditRole ).toInt() > 0 ) {
     bool isEditing = false;
     KOTodoViewView *view = qobject_cast<KOTodoViewView*>( parent() );
