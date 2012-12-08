@@ -46,7 +46,6 @@ namespace Akonadi {
   class ETMViewStateSaver;
 }
 
-class QCheckBox;
 class QItemSelection;
 class QMenu;
 class QModelIndex;
@@ -126,7 +125,8 @@ class KOTodoView : public BaseView
     void setNewPriority( QAction *action );
     void changedCategories( QAction *action );
     void setFullView( bool fullView );
-    void setFlatView( bool flatView );
+
+    void setFlatView( bool flatView, bool notifyOtherViews = true );
 
   Q_SIGNALS:
     void purgeCompletedSignal();
@@ -152,7 +152,7 @@ class KOTodoView : public BaseView
     KOTodoViewQuickSearch *mQuickSearch;
     KOTodoViewQuickAddLine *mQuickAdd;
     QToolButton *mFullViewButton;
-    QCheckBox *mFlatView;
+    QToolButton *mFlatView;
 
     QMenu *mItemPopupMenu;
     KPIM::KDatePickerPopup *mCopyPopupMenu;
