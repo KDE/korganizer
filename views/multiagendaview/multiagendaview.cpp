@@ -34,7 +34,7 @@ using namespace Future;
 
 #include <Akonadi/EntityTreeView>
 
-#include <kcheckableproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.8
+#include <KCheckableProxyModel>
 
 #include <QHBoxLayout>
 #include <QSortFilterProxyModel>
