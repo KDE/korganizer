@@ -42,6 +42,7 @@
 #include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/EntityTreeModel>
 #include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 
@@ -597,6 +598,42 @@ bool AkonadiCollectionView::isStructuralCollection( const Akonadi::Collection &c
     }
   }
   return true;
+}
+
+Akonadi::Collection::List AkonadiCollectionView::selectedCollections() const
+{
+  Akonadi::Collection::List collections;
+  QItemSelectionModel *selectionModel = mCollectionview->selectionModel();
+  if ( !selectionModel )
+    return collections;
+  QModelIndexList indexes = selectionModel->selectedIndexes();
+  foreach( const QModelIndex &index, indexes ) {
+    if ( index.isValid() ) {
+      Akonadi::Collection collection = index.data( Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
+      if ( collection.isValid() )
+        collections << collection;
+    }
+  }
+  return collections;
+}
+
+Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
+{
+  Akonadi::Collection::List collections;
+  if ( !mSelectionProxyModel )
+    return collections;
+  QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
+  if ( !selectionModel )
+    return collections;
+  QModelIndexList indexes = selectionModel->selectedIndexes();
+  foreach( const QModelIndex &index, indexes ) {
+    if ( index.isValid() ) {
+      Akonadi::Collection collection = index.data( Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
+      if ( collection.isValid() )
+        collections << collection;
+    }
+  }
+  return collections;
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

@@ -28,6 +28,7 @@
 #define KORG_AKONADICOLLECTIONVIEW_H
 
 #include "calendarview.h"
+#include <Akonadi/Collection>
 
 class AkonadiCollectionView;
 
@@ -80,6 +81,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     KCheckableProxyModel *collectionSelectionProxyModel() const;
     void setCollectionSelectionProxyModel( KCheckableProxyModel * );
     static bool isStructuralCollection( const Akonadi::Collection & );
+
+    Akonadi::Collection::List selectedCollections() const;
+    Akonadi::Collection::List checkedCollections() const;
 
   signals:
     void resourcesChanged( bool enabled );
