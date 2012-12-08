@@ -152,7 +152,7 @@ class KOTodoView : public BaseView
     KOTodoViewQuickSearch *mQuickSearch;
     KOTodoViewQuickAddLine *mQuickAdd;
     QToolButton *mFullViewButton;
-    QToolButton *mFlatView;
+    QToolButton *mFlatViewButton;
 
     QMenu *mItemPopupMenu;
     KPIM::KDatePickerPopup *mCopyPopupMenu;
