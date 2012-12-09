@@ -835,14 +835,8 @@ void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item, int action
   if ( CalendarSupport::hasIncidence( item ) ) {
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( item, action );
-    if ( mTodoList && mTodoList->isVisible() ) {
-      mTodoList->changeIncidenceDisplay( item, action );
-    }
   } else {
     mViewManager->currentView()->updateView();
-    if ( mTodoList && mViewManager->currentView()->identifier() != "DefaultTodoView" ) {
-      mTodoList->updateView();
-    }
   }
 }
 
