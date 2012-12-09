@@ -51,6 +51,7 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 #include "kocheckableproxymodel.h"
+#include "akonadicollectionview.h"
 
 #include <calendarsupport/calendaradaptor.h>
 #include <calendarsupport/categoryconfig.h>
@@ -104,7 +105,8 @@ CalendarView::CalendarView( QWidget *parent )
     mCalendar( 0 ),
     mChanger( 0 ),
     mSplitterSizesValid( false ),
-    mCheckableProxyModel( 0 )
+    mCheckableProxyModel( 0 ),
+    mETMCollectionView( 0 )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
   Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
@@ -2325,8 +2327,10 @@ void CalendarView::showView( KOrg::BaseView *view )
 void CalendarView::addExtension( CalendarViewExtension::Factory *factory )
 {
   CalendarViewExtension *extension = factory->create( mLeftSplitter );
-
   mExtensions.append( extension );
+  if ( !mETMCollectionView ) {
+    mETMCollectionView = qobject_cast<AkonadiCollectionView*>( extension );
+  }
 }
 
 void CalendarView::showLeftFrame( bool show )
@@ -2980,36 +2984,38 @@ void CalendarView::getIncidenceHierarchy( const Akonadi::Item &item,
 
 Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeType ) const
 {
-  bool supportsMimeType;
+  // 1. Try the view collection ( used in multi-agenda view )
+  Akonadi::Collection collection = mCalendar->collection( mViewManager->currentView()->collectionId() );
+  bool supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  bool hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
 
-  /**
-     If the view's collection is valid and it supports mimeType, return it, otherwise
-     if the config's collection is valid and it supports mimeType, return it, otherwise
-     return an invalid collection.
-  */
+  // 2. Try the selected collection
+  collection = selectedCollection();
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
 
-  Akonadi::Collection viewCollection =
-    mCalendar->collection( mViewManager->currentView()->collectionId() );
-
-  supportsMimeType = viewCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
-
-  if ( viewCollection.isValid() && supportsMimeType ) {
-    return viewCollection;
-  } else {
-    Akonadi::Collection configCollection =
-      mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
-    supportsMimeType = configCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
-
-    if ( configCollection.isValid() && supportsMimeType ) {
-      return configCollection;
-    } else {
-      if ( EventViews::EventView::globalCollectionSelection() &&
-           !EventViews::EventView::globalCollectionSelection()->selectedCollections().isEmpty() ) {
-        return EventViews::EventView::globalCollectionSelection()->selectedCollections().first();
-      }
-    }
+  // 3. Try the checked collections
+  Akonadi::Collection::List collections = checkedCollections();
+  foreach( const Akonadi::Collection &checkedCollection, collections ) {
+    supportsMimeType = checkedCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+    hasRights = checkedCollection.rights() & Akonadi::Collection::CanCreateItem;
+    if ( checkedCollection.isValid() && supportsMimeType && hasRights )
+      return checkedCollection;
   }
 
+  // 4. Try the configured default collection
+  collection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
+
+
+  // 5. Return a invalid collection, the editor will use the first one in the combo
   return Akonadi::Collection();
 }
 
@@ -3060,6 +3066,30 @@ void CalendarView::onCheckableProxyToggled( bool newState )
     if ( todoView )
       todoView->restoreViewState();
   }
+}
+
+Akonadi::Collection CalendarView::selectedCollection() const
+{
+  return mETMCollectionView ? mETMCollectionView->selectedCollection() : Akonadi::Collection();
+}
+
+Akonadi::Collection::List CalendarView::checkedCollections() const
+{
+  Akonadi::Collection::List collections;
+  if ( mETMCollectionView )
+    collections = mETMCollectionView->checkedCollections();
+
+  // If the default calendar is here, it should be first.
+  int count = collections.count();
+  Akonadi::Collection::Id id = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+  for( int i=0; i<count; ++i ) {
+    if ( id == collections[i].id() ) {
+      collections.move( i, 0 );
+      break;
+    }
+  }
+
+  return collections;
 }
 
 #include "calendarview.moc"

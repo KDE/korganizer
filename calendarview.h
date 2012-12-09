@@ -44,6 +44,7 @@ class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
 class KOCheckableProxyModel;
+class AkonadiCollectionView;
 namespace KOrg {
   class History;
   class HTMLExportSettings;
@@ -713,6 +714,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
   private:
     void init();
+    Akonadi::Collection selectedCollection() const;
+    Akonadi::Collection::List checkedCollections() const;
 
     void createPrinter();
 
@@ -789,6 +792,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     bool mCreatingEnabled;
 
     KOCheckableProxyModel *mCheckableProxyModel;
+    AkonadiCollectionView *mETMCollectionView;
 };
 
 #endif
