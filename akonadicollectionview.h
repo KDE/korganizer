@@ -38,6 +38,7 @@ namespace CalendarSupport {
 
 namespace Akonadi {
   class EntityTreeView;
+  class EntityTreeModel;
   class StandardCalendarActionManager;
 }
 
@@ -95,6 +96,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void updateView();
     void updateMenu();
     void restoreTreeState();
+    void checkNewCalendar( const QModelIndex &parent, int begin, int end );
 
     void newCalendar();
     void newCalendarDone( KJob * );
@@ -107,6 +109,8 @@ class AkonadiCollectionView : public CalendarViewExtension
     void setDefaultCalendar();
 
   private:
+    Akonadi::EntityTreeModel *entityTreeModel() const;
+
     Akonadi::StandardCalendarActionManager *mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     QAbstractProxyModel *mBaseModel;

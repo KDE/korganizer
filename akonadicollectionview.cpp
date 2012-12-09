@@ -254,6 +254,9 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(updateMenu()) );
 
+  connect( mCollectionview->model(), SIGNAL(rowsInserted(QModelIndex,int,int)),
+           SLOT(checkNewCalendar(QModelIndex,int,int)) );
+
   //connect( searchCol, SIGNAL(textChanged(QString)),
   //         filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
 
@@ -630,6 +633,34 @@ Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
     }
   }
   return collections;
+}
+
+Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
+{
+  QAbstractProxyModel *proxy = qobject_cast<QAbstractProxyModel*>( mCollectionview->model() );
+  while( proxy ) {
+    Akonadi::EntityTreeModel *etm = qobject_cast<Akonadi::EntityTreeModel*>( proxy->sourceModel() );
+    if ( etm )
+      return etm;
+    proxy = qobject_cast<QAbstractProxyModel*>( proxy->sourceModel() );
+  }
+
+  kWarning() << "Couldn't find EntityTreeModel";
+  return 0;
+}
+
+void AkonadiCollectionView::checkNewCalendar( const QModelIndex &parent, int begin, int end )
+{
+  // HACK: Check newly created calendars
+  Akonadi::EntityTreeModel *etm = entityTreeModel();
+  if ( etm && entityTreeModel()->isCollectionTreeFetched() ) {
+    for( int row=begin; row<=end; ++row ) {
+      QModelIndex index = mCollectionview->model()->index( row, 0, parent );
+      if ( index.isValid() ) {
+        mCollectionview->model()->setData( index, Qt::Checked, Qt::CheckStateRole );
+      }
+    }
+  }
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT
