@@ -661,6 +661,9 @@ void AkonadiCollectionView::checkNewCalendar( const QModelIndex &parent, int beg
       }
     }
   }
+
+  if ( parent.isValid() )
+    mCollectionview->setExpanded( parent, true );
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT
