@@ -530,11 +530,14 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
   if ( columnVisibility.isEmpty() ) {
     // if config is empty then use default settings
     mView->hideColumn( eRecurColumn );
+    mView->hideColumn( eDescriptionColumn );
+    mView->hideColumn( eCalendarColumn );
 
     if ( minimalDefaults ) {
       mView->hideColumn( ePriorityColumn );
       mView->hideColumn( ePercentColumn );
       mView->hideColumn( eDescriptionColumn );
+      mView->hideColumn( eCategoriesColumn );
     }
 
     // We don't have any incidences (content) yet, so we delay resizing

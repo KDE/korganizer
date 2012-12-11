@@ -179,7 +179,8 @@ class KOTodoView : public BaseView
         ePercentColumn = 3,
         eDueDateColumn = 4,
         eCategoriesColumn = 5,
-        eDescriptionColumn = 6
+        eDescriptionColumn = 6,
+        eCalendarColumn = 7
       };
 };
 
