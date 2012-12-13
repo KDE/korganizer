@@ -529,15 +529,15 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
 
   if ( columnVisibility.isEmpty() ) {
     // if config is empty then use default settings
-    mView->hideColumn( eRecurColumn );
-    mView->hideColumn( eDescriptionColumn );
-    mView->hideColumn( eCalendarColumn );
+    mView->hideColumn( KOTodoModel::RecurColumn );
+    mView->hideColumn( KOTodoModel::DescriptionColumn );
+    mView->hideColumn( KOTodoModel::CalendarColumn );
 
     if ( minimalDefaults ) {
-      mView->hideColumn( ePriorityColumn );
-      mView->hideColumn( ePercentColumn );
-      mView->hideColumn( eDescriptionColumn );
-      mView->hideColumn( eCategoriesColumn );
+      mView->hideColumn( KOTodoModel::PriorityColumn );
+      mView->hideColumn( KOTodoModel::PercentColumn );
+      mView->hideColumn( KOTodoModel::DescriptionColumn );
+      mView->hideColumn( KOTodoModel::CategoriesColumn );
     }
 
     // We don't have any incidences (content) yet, so we delay resizing
@@ -751,16 +751,16 @@ void KOTodoView::contextMenu( const QPoint &pos )
     }
 
     switch ( mView->indexAt( pos ).column() ) {
-    case ePriorityColumn:
+    case KOTodoModel::PriorityColumn:
       mPriorityPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
-    case ePercentColumn:
+    case KOTodoModel::PercentColumn:
       mPercentageCompletedPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
-    case eDueDateColumn:
+    case KOTodoModel::DueDateColumn:
       mMovePopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
-    case eCategoriesColumn:
+    case KOTodoModel::CategoriesColumn:
       createCategoryPopupMenu()->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
     default:
@@ -1139,8 +1139,8 @@ bool KOTodoView::usesFullWindow()
 
 void KOTodoView::resizeColumnsToContent()
 {
-  mView->resizeColumnToContents( eDueDateColumn );
-  mView->resizeColumnToContents( eSummaryColumn );
+  mView->resizeColumnToContents( KOTodoModel::DueDateColumn );
+  mView->resizeColumnToContents( KOTodoModel::SummaryColumn );
 }
 
 KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
