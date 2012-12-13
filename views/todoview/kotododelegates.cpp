@@ -112,7 +112,7 @@ void KOTodoCompleteDelegate::initStyleOptionProgressBar(
   option->maximum = 100;
   option->minimum = 0;
   option->progress = index.data().toInt();
-  option->text = index.data().toString() + QChar::fromAscii( '%' );
+  option->text = index.data().toString() + QChar::fromLatin1( '%' );
   option->textAlignment = Qt::AlignCenter;
   option->textVisible = true;
 }
@@ -172,7 +172,7 @@ void KOTodoCompleteSlider::updateTip( int value )
   p.setX( style()->sliderPositionFromValue ( minimum(), maximum(),
                                              value, width() ) );
 
-  QString text = QString::fromAscii( "%1%" ).arg( value );
+  QString text = QString::fromLatin1( "%1%" ).arg( value );
   QToolTip::showText( mapToGlobal( p ), text, this );
 }
 

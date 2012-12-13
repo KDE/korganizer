@@ -272,7 +272,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
                        i18nc( "no, not a recurring to-do", "No" ) );
     case PriorityColumn:
       if ( todo->priority() == 0 ) {
-        return QVariant( QString::fromAscii( "--" ) );
+        return QVariant( QString::fromLatin1( "--" ) );
       }
       return QVariant( todo->priority() );
     case PercentColumn:

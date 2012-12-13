@@ -279,7 +279,7 @@ void POTDElement::step3GetThumbnail()
   kDebug() << "POTD:" << mDate << ": will download thumbnail of size" << mDlThumbSize;
   QString thumbUrl =
     QUrl::fromPercentEncoding(
-      thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url().toAscii() );
+      thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url().toLatin1() );
 
   kDebug() << "POTD:" << mDate << ": got POTD thumbnail URL:" << thumbUrl;
   mThumbUrl = thumbUrl;
