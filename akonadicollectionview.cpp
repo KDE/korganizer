@@ -293,11 +293,11 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     }
 
     QList<Akonadi::StandardCalendarActionManager::Type> calendarActions;
-    calendarActions <<Akonadi::StandardCalendarActionManager::CreateEvent
-                   <<Akonadi::StandardCalendarActionManager::CreateTodo
-                   <<Akonadi::StandardCalendarActionManager::CreateSubTodo
-                   <<Akonadi::StandardCalendarActionManager::CreateJournal
-                   <<Akonadi::StandardCalendarActionManager::EditIncidence;
+    calendarActions << Akonadi::StandardCalendarActionManager::CreateEvent
+                   << Akonadi::StandardCalendarActionManager::CreateTodo
+                   << Akonadi::StandardCalendarActionManager::CreateSubTodo
+                   << Akonadi::StandardCalendarActionManager::CreateJournal
+                   << Akonadi::StandardCalendarActionManager::EditIncidence;
 
     Q_FOREACH( Akonadi::StandardCalendarActionManager::Type calendarAction, calendarActions ) {
       mActionManager->createAction( calendarAction );
