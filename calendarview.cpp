@@ -72,7 +72,6 @@
 #include <pimcommon/collectionaclpage.h>
 #include <pimcommon/imapaclattribute.h>
 
-
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>
 #include <Akonadi/AttributeFactory>
