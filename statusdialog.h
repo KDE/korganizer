@@ -31,7 +31,7 @@ class StatusDialog : public KDialog
 {
   Q_OBJECT
   public:
-    StatusDialog( QWidget *parent=0 );
+    explicit StatusDialog( QWidget *parent=0 );
     ~StatusDialog();
 
     KCalCore::Attendee::PartStat status();

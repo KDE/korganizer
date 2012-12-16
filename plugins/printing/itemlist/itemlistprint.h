@@ -77,7 +77,7 @@ class CalPrintItemList : public CalPrintPluginBase
 class CalPrintItemListConfig : public QWidget, public Ui::CalPrintItemListConfig_Base
 {
   public:
-    CalPrintItemListConfig( QWidget *parent ) : QWidget( parent ) {
+    explicit CalPrintItemListConfig( QWidget *parent ) : QWidget( parent ) {
       setupUi( this );
     }
 };

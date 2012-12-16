@@ -96,7 +96,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       Constructs a new calendar view widget.
       @param parent   parent window
     */
-    CalendarView( QWidget *parent=0 );
+    explicit CalendarView( QWidget *parent=0 );
     virtual ~CalendarView();
 
     class CalendarViewVisitor : public KCalCore::Visitor

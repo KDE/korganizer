@@ -33,7 +33,7 @@ class KConfig;
 class DocPrefs
 {
   public:
-    DocPrefs( const QString &type="general" );
+    explicit DocPrefs( const QString &type="general" );
     ~DocPrefs();
 
     void setDoc( const QString &identifier );

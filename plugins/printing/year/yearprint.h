@@ -59,7 +59,7 @@ class CalPrintYear : public CalPrintPluginBase
 class CalPrintYearConfig : public QWidget, public Ui::CalPrintYearConfig_Base
 {
   public:
-    CalPrintYearConfig( QWidget *parent ) : QWidget( parent )
+    explicit CalPrintYearConfig( QWidget *parent ) : QWidget( parent )
     {
       setupUi( this );
     }
