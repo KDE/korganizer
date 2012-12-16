@@ -32,7 +32,6 @@
 #include <QPointer>
 
 class KOTodoCategoriesDelegate;
-class KOTodoModel;
 class KOTodoViewQuickAddLine;
 class KOTodoViewQuickSearch;
 class KOTodoViewSortFilterProxyModel;
@@ -49,7 +48,6 @@ namespace Akonadi {
 class QItemSelection;
 class QMenu;
 class QModelIndex;
-class QPushButton;
 class QToolButton;
 
 using namespace KOrg;
