@@ -47,7 +47,7 @@ class KOTodoCompleteDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    KOTodoCompleteDelegate( QObject *parent = 0 );
+    explicit KOTodoCompleteDelegate( QObject *parent = 0 );
 
     ~KOTodoCompleteDelegate();
 
@@ -92,7 +92,7 @@ class KOTodoPriorityDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    KOTodoPriorityDelegate( QObject *parent = 0 );
+    explicit KOTodoPriorityDelegate( QObject *parent = 0 );
 
     ~KOTodoPriorityDelegate();
 
@@ -117,7 +117,7 @@ class KOTodoDueDateDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    KOTodoDueDateDelegate( QObject *parent = 0 );
+    explicit KOTodoDueDateDelegate( QObject *parent = 0 );
 
     ~KOTodoDueDateDelegate();
 
@@ -170,7 +170,7 @@ class KOTodoRichTextDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    KOTodoRichTextDelegate( QObject *parent = 0 );
+    explicit KOTodoRichTextDelegate( QObject *parent = 0 );
 
     ~KOTodoRichTextDelegate();
 

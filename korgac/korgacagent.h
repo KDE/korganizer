@@ -33,7 +33,7 @@ class KorgacAgent : public AgentBase, public AgentBase::ObserverV2
   Q_OBJECT
 
   public:
-    KorgacAgent( const QString &id );
+    explicit KorgacAgent( const QString &id );
     ~KorgacAgent();
 
   private:

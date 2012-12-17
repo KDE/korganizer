@@ -51,7 +51,7 @@ class KOAlarmClient : public QObject
 {
   Q_OBJECT
   public:
-    KOAlarmClient( QObject *parent = 0 );
+    explicit KOAlarmClient( QObject *parent = 0 );
     ~KOAlarmClient();
 
 #if !defined(Q_WS_WINCE)

@@ -32,7 +32,7 @@ class KOTodoViewQuickAddLine : public KLineEdit
   Q_OBJECT
 
   public:
-    KOTodoViewQuickAddLine( QWidget *parent );
+    explicit KOTodoViewQuickAddLine( QWidget *parent );
     virtual ~KOTodoViewQuickAddLine() {}
 
   protected:

@@ -45,7 +45,7 @@ struct DateResult
 class HebrewDate
 {
   public:
-    HebrewDate( struct DateResult );
+    explicit HebrewDate( struct DateResult );
     ~HebrewDate();
 
     static HebrewDate fromSecular( int year, int month, int day );

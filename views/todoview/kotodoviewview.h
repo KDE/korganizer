@@ -35,7 +35,7 @@ class KOTodoViewView : public QTreeView
   Q_OBJECT
 
   public:
-    KOTodoViewView( QWidget *parent = 0 );
+    explicit KOTodoViewView( QWidget *parent = 0 );
 
     bool isEditing( const QModelIndex &index ) const;
 
