@@ -430,6 +430,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       AkonadiCollectionView *cview = createView( selection );
       const int idx = ui.selectionStack->addWidget( cview );
       Q_ASSERT( i == idx );
+      Q_UNUSED( idx );
       selections[i] = selection;
       newlyCreated.push_back( selection );
     }
