@@ -35,10 +35,12 @@
 #include <QMouseEvent>
 
 KOTodoViewView::KOTodoViewView( QWidget *parent )
-  : QTreeView( parent ), mHeaderPopup( 0 )
+  : QTreeView( parent ), mHeaderPopup( 0 ), mIgnoreNextMouseRelease( false )
 {
   header()->installEventFilter( this );
   setAlternatingRowColors( true );
+  connect( &mExpandTimer, SIGNAL(timeout()), SLOT(expandParent()) );
+  mExpandTimer.setInterval( 1000 );
 }
 
 bool KOTodoViewView::isEditing( const QModelIndex &index ) const
@@ -194,11 +196,45 @@ QModelIndex KOTodoViewView::getNextEditableIndex( const QModelIndex &cur, int in
 
 void KOTodoViewView::mouseReleaseEvent ( QMouseEvent *event )
 {
+  mExpandTimer.stop();
+
+  if ( mIgnoreNextMouseRelease ) {
+    mIgnoreNextMouseRelease = false;
+    return;
+  }
+
   if ( !indexAt( event->pos() ).isValid() ) {
     clearSelection();
     event->accept();
   } else {
     QTreeView::mouseReleaseEvent( event );
+  }
+}
+
+void KOTodoViewView::mouseMoveEvent( QMouseEvent *event )
+{
+  mExpandTimer.stop();
+  QTreeView::mouseMoveEvent( event );
+}
+
+void KOTodoViewView::mousePressEvent( QMouseEvent *event )
+{
+  mExpandTimer.stop();
+  QModelIndex index = indexAt( event->pos() );
+  if ( index.isValid() && event->button() == Qt::LeftButton ) {
+    mExpandTimer.start();
+  }
+
+  QTreeView::mousePressEvent( event );
+}
+
+void KOTodoViewView::expandParent()
+{
+  QModelIndex index = indexAt( viewport()->mapFromGlobal( QCursor::pos() ) );
+  if ( index.isValid() ) {
+    mIgnoreNextMouseRelease = true;
+    QKeyEvent keyEvent = QKeyEvent( QEvent::KeyPress, Qt::Key_Asterisk, Qt::NoModifier );
+    QTreeView::keyPressEvent( &keyEvent );
   }
 }
 

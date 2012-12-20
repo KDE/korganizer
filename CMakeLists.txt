@@ -90,11 +90,11 @@ if(NOT WINCE)
       kdepim
       korganizer_core
       korganizerprivate
-      mailtransport
       ${KDEPIMLIBS_AKONADI_LIBS}
       ${KDEPIMLIBS_KCALCORE_LIBS}
       ${KDEPIMLIBS_KCALUTILS_LIBS}
       ${KDEPIMLIBS_KHOLIDAYS_LIBS}
+      ${KDEPIMLIBS_MAILTRANSPORT_LIBS}
       ${KDE4_KDEUI_LIBS}
       ${QT_QTUITOOLS_LIBRARY}
     )
@@ -180,8 +180,8 @@ if(NOT WINCE)
       exportwebdialog.cpp
       filtereditdialog.cpp
       htmlexportjob.cpp
-      importdialog.cpp
       kdatenavigator.cpp
+      kocheckableproxymodel.cpp
       kocorehelper.cpp
       kodaymatrix.cpp
       kodialogmanager.cpp
@@ -211,6 +211,8 @@ if(NOT WINCE)
       views/timespentview/kotimespentview.cpp
       views/todoview/kotododelegates.cpp
       views/todoview/kotodomodel.cpp
+      views/todoview/incidencetreemodel.cpp
+      #views/todoview/kotodotreestatesaver.cpp
       views/todoview/kotodoview.cpp
       views/todoview/kotodoviewquickaddline.cpp
       views/todoview/kotodoviewquicksearch.cpp
@@ -264,6 +266,7 @@ if(NOT WINCE)
     kde4_add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
 
     target_link_libraries(korganizerprivate
+      pimcommon
       akonadi_next
       akonadi-calendar
       calendarsupport

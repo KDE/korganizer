@@ -1,8 +1,7 @@
 /*
   This file is part of KOrganizer.
 
-  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  Copyright (C) 2012 Sergio Martins <iamsergio@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,30 +22,31 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_DOCPREFS_H
-#define KORG_DOCPREFS_H
+#ifndef KORG_KOCHECKABLE_PROXYMODEL_H
+#define KORG_KOCHECKABLE_PROXYMODEL_H
 
-#include <QString>
+#include <KCheckableProxyModel>
 
-class KConfig;
-
-class DocPrefs
+// TODO: This functionality could be ported to the KCheckableProxyModel
+/**
+ * A KCheckableProxyModel that emits a signal before and after toggling.
+ *
+ * Listeners, like to-do view, restore tree expand state before unchecking,
+ * and restore after checking.
+ */
+class KOCheckableProxyModel : public KCheckableProxyModel
 {
+  Q_OBJECT
   public:
-    explicit DocPrefs( const QString &type="general" );
-    ~DocPrefs();
+    KOCheckableProxyModel( QObject *parent );
 
-    void setDoc( const QString &identifier );
-    QString doc() const;
+    /**reimp*/
+    bool setData( const QModelIndex &index, const QVariant &value,
+                  int role = Qt::EditRole );
 
-    bool readBoolEntry( const QString &identifier ) const;
-    void writeBoolEntry( const QString &identifier, bool value );
-    int readNumEntry( const QString &identifier ) const;
-    void writeNumEntry( const QString &identifier, int value );
-
-  private:
-    static KConfig *mConfig;
-    QString mDocId;
+  Q_SIGNALS:
+    void aboutToToggle( bool oldState );
+    void toggled( bool newState );
 };
 
 #endif

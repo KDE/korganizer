@@ -1,5 +1,5 @@
 /*
-  This file is part of the KOrganizer reminder daemon.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
@@ -346,6 +346,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
 
   mIncidenceTree->setCurrentItem( item );
   showDetails();
+  slotSave();
 }
 
 void AlarmDialog::slotOk()
@@ -413,8 +414,7 @@ void AlarmDialog::dismiss( ReminderList selections )
     delete *it;
   }
 
-  // TODO 4.7: enable and test this
-  //removeFromConfig( ids );
+  removeFromConfig( ids );
 }
 
 void AlarmDialog::edit()
@@ -433,7 +433,7 @@ void AlarmDialog::edit()
     return;
   }
 
-#ifndef KDEPIM_MOBILE_UI
+#if !defined(KDEPIM_MOBILE_UI)
   openIncidenceEditorNG( selection.first()->mIncidence );
 #else
   openIncidenceEditorThroughKOrganizer( incidence );
@@ -696,7 +696,7 @@ void AlarmDialog::slotSave()
 {
   KSharedConfig::Ptr config = KGlobal::config();
   KConfigGroup generalConfig( config, "General" );
-  int numReminders = generalConfig.readEntry( "Reminders", 0 );
+  int numReminders = 0;
 
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {

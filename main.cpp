@@ -51,6 +51,7 @@ int main( int argc, char **argv )
   KGlobal::locale()->insertCatalog( "libakonadi" );
   KGlobal::locale()->insertCatalog( "libincidenceeditors" );
   KGlobal::locale()->insertCatalog( "libkpimutils" );
+  KGlobal::locale()->insertCatalog( "libpimcommon" );
 
   if ( app.isSessionRestored() ) {
     RESTORE( KOrganizer )

@@ -1,5 +1,5 @@
 /*
-  This file is part of the KOrganizer alarm client.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -89,7 +89,7 @@ int main( int argc, char **argv )
   }
 
   ReminderDaemonApp app;
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
   app.disableSessionManagement();
 #endif
 

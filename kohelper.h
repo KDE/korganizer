@@ -41,8 +41,7 @@ class QDate;
 
 // Provides static methods that are useful to all views.
 
-namespace KOHelper
-{
+namespace KOHelper {
   /**
     Returns a nice QColor for text, give the input color &c.
   */

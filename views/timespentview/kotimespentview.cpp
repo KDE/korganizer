@@ -260,3 +260,5 @@ KOrg::CalPrinterBase::PrintType KOTimeSpentView::printType() const
     return KOrg::CalPrinterBase::Week;
   }
 }
+
+#include "kotimespentview.moc"

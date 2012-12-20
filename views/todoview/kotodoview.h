@@ -29,8 +29,9 @@
 
 #include "korganizer/baseview.h"
 
+#include <QPointer>
+
 class KOTodoCategoriesDelegate;
-class KOTodoModel;
 class KOTodoViewQuickAddLine;
 class KOTodoViewQuickSearch;
 class KOTodoViewSortFilterProxyModel;
@@ -40,22 +41,27 @@ namespace KPIM {
   class KDatePickerPopup;
 }
 
-class QCheckBox;
+namespace Akonadi {
+  class ETMViewStateSaver;
+}
+
 class QItemSelection;
 class QMenu;
 class QModelIndex;
+class QToolButton;
 
 using namespace KOrg;
 
 class KOTodoView : public BaseView
 {
   Q_OBJECT
+  friend class ModelStack;
 
   public:
     KOTodoView( bool sidebarView, QWidget *parent );
     ~KOTodoView();
 
-    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
+    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr & );
 
     virtual Akonadi::Item::List selectedIncidences();
     virtual KCalCore::DateList selectedIncidenceDates();
@@ -88,7 +94,8 @@ class KOTodoView : public BaseView
     virtual void updateConfig();
     virtual void clearSelection();
     void expandIndex( const QModelIndex &index );
-    void expandTree();
+    void restoreViewState();
+    void saveViewState();
 
   protected Q_SLOTS:
     void addQuickTodo( Qt::KeyboardModifiers modifier );
@@ -116,7 +123,8 @@ class KOTodoView : public BaseView
     void setNewPriority( QAction *action );
     void changedCategories( QAction *action );
     void setFullView( bool fullView );
-    void setFlatView( bool flatView );
+
+    void setFlatView( bool flatView, bool notifyOtherViews = true );
 
   Q_SIGNALS:
     void purgeCompletedSignal();
@@ -127,6 +135,7 @@ class KOTodoView : public BaseView
 
   private:
     QMenu *createCategoryPopupMenu();
+    QString stateSaverGroup() const;
     void printTodo( bool preview );
 
     /** Creates a new todo with the given text as summary under the given parent */
@@ -140,8 +149,8 @@ class KOTodoView : public BaseView
 
     KOTodoViewQuickSearch *mQuickSearch;
     KOTodoViewQuickAddLine *mQuickAdd;
-    QCheckBox *mFullView;
-    QCheckBox *mFlatView;
+    QToolButton *mFullViewButton;
+    QToolButton *mFlatViewButton;
 
     QMenu *mItemPopupMenu;
     KPIM::KDatePickerPopup *mCopyPopupMenu;
@@ -154,20 +163,12 @@ class KOTodoView : public BaseView
     QAction *mMakeTodoIndependent;
     QAction *mMakeSubtodosIndependent;
 
+    QPointer<Akonadi::ETMViewStateSaver> mTreeStateRestorer;
+
     QMap<QAction *,int> mPercentage;
     QMap<QAction *,int> mPriority;
     QMap<QAction *,QString> mCategory;
     bool mSidebarView;
-
-  enum {
-      eSummaryColumn = 0,
-      eRecurColumn = 1,
-      ePriorityColumn = 2,
-      ePercentColumn = 3,
-      eDueDateColumn = 4,
-      eCategoriesColumn = 5,
-      eDescriptionColumn = 6
-    };
 };
 
 #endif /*KOTODOVIEW_H*/

@@ -56,7 +56,7 @@ class CalPrintJournal : public CalPrintPluginBase
 class CalPrintJournalConfig : public QWidget, public Ui::CalPrintJournalConfig_Base
 {
   public:
-    CalPrintJournalConfig( QWidget *parent ) : QWidget( parent ) {
+    explicit CalPrintJournalConfig( QWidget *parent ) : QWidget( parent ) {
       setupUi( this );
     }
 };

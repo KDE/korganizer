@@ -207,3 +207,4 @@ GenericName[zh_CN]=个人日程安排
 GenericName[zh_TW]=個人行程組織軟體
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Unique
+InitialPreference=10

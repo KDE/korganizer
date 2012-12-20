@@ -49,6 +49,8 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
+#include "kocheckableproxymodel.h"
+#include "akonadicollectionview.h"
 
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectiongeneralpage.h>
@@ -67,8 +69,12 @@
 #include <Akonadi/Calendar/IncidenceChanger>
 #include <Akonadi/Calendar/CalendarClipboard>
 
+#include <pimcommon/collectionaclpage.h>
+#include <pimcommon/imapaclattribute.h>
+
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>
+#include <Akonadi/AttributeFactory>
 
 #include <KCalCore/CalFilter>
 #include <KCalCore/FileStorage>
@@ -93,8 +99,9 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
-CalendarView::CalendarView( QWidget *parent )
-  : CalendarViewBase( parent )
+CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
+                                                mCheckableProxyModel( 0 ),
+                                                mETMCollectionView( 0 )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
   mChanger = new Akonadi::IncidenceChanger( this );
@@ -104,6 +111,9 @@ CalendarView::CalendarView( QWidget *parent )
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mInvitationHandler = new Akonadi::InvitationHandler( this );
   connect( mCalendarClipboard, SIGNAL(cutFinished(bool,QString)), SLOT(onCutFinished()) );
+
+  Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
+
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 
@@ -259,6 +269,7 @@ CalendarView::CalendarView( QWidget *parent )
     if ( !pageRegistered ) {
       Akonadi::CollectionPropertiesDialog::registerPage(
         new CalendarSupport::CollectionGeneralPageFactory );
+      Akonadi::CollectionPropertiesDialog::registerPage( new PimCommon::CollectionAclPageFactory );
       pageRegistered = true;
     }
   }
@@ -767,14 +778,8 @@ void CalendarView::changeIncidenceDisplay( const Akonadi::Item &item,
   if ( CalendarSupport::hasIncidence( item ) ) {
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( item, changeType );
-    if ( mTodoList && mTodoList->isVisible() ) {
-      mTodoList->changeIncidenceDisplay( item, changeType );
-    }
   } else {
     mViewManager->currentView()->updateView();
-    if ( mTodoList && mViewManager->currentView()->identifier() != "DefaultTodoView" ) {
-      mTodoList->updateView();
-    }
   }
 }
 
@@ -860,38 +865,40 @@ void CalendarView::edit_paste()
 // If in agenda and month view, use the selected time and date from there.
 // In all other cases, use the navigator's selected date.
 
-  QDate date;          // null dates are invalid, that's what we want
-  bool timeSet = false;// flag denoting if the time has been set.
-  QTime time;          // null dates are valid, so rely on the timeSet flag
-  QDateTime endDT;     // null datetimes are invalid, that's what we want
+  QDateTime endDT;
+  KDateTime finalDateTime;
   bool useEndTime = false;
+  KCalUtils::DndFactory::PasteFlags pasteFlags = 0;
 
   KOrg::BaseView *curView = mViewManager->currentView();
-
   KOAgendaView *agendaView = mViewManager->agendaView();
   MonthView *monthView = mViewManager->monthView();
 
   if ( !curView ) {
+    kWarning() << "No view is selected, can't paste";
     return;
   }
 
   if ( curView == agendaView && agendaView->selectionStart().isValid() ) {
-    date = agendaView->selectionStart().date();
+    const QDate date = agendaView->selectionStart().date();
     endDT = agendaView->selectionEnd();
     useEndTime = !agendaView->selectedIsSingleCell();
-    if ( !agendaView->selectedIsAllDay() ) {
-      time = agendaView->selectionStart().time();
-      timeSet = true;
+    if ( agendaView->selectedIsAllDay() ) {
+      finalDateTime = KDateTime( date );
+    } else {
+      finalDateTime = KDateTime( date, agendaView->selectionStart().time() );
     }
   } else if ( curView == monthView && monthView->selectionStart().isValid() ) {
-    date = monthView->selectionStart().date();
+    finalDateTime = KDateTime( monthView->selectionStart().date() );
+    pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
   } else if ( !mDateNavigator->selectedDates().isEmpty() &&
               curView->supportsDateNavigation() ) {
     // default to the selected date from the navigator
-    date = mDateNavigator->selectedDates().first();
+    finalDateTime = KDateTime( mDateNavigator->selectedDates().first() );
+    pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
   }
 
-  if ( !date.isValid() && curView->supportsDateNavigation() ) {
+  if ( !finalDateTime.isValid() && curView->supportsDateNavigation() ) {
     KMessageBox::sorry(
       this,
       i18n( "Paste failed: unable to determine a valid target date." ) );
@@ -900,13 +907,7 @@ void CalendarView::edit_paste()
 
   KCalUtils::DndFactory factory( mCalendar );
 
-  Incidence::List pastedIncidences;
-  if ( timeSet && time.isValid() ) {
-    pastedIncidences = factory.pasteIncidences( KDateTime( date, time ) );
-  } else {
-    pastedIncidences = factory.pasteIncidences( KDateTime( date ) );
-  }
-
+  Incidence::List pastedIncidences = factory.pasteIncidences( finalDateTime, pasteFlags );
   Incidence::List::Iterator it;
   Akonadi::Collection selectedCollection;
   {
@@ -1169,6 +1170,16 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
   IncidenceEditorNG::IncidenceDefaults defaults =
     IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
+  bool allDay = true;
+  if ( mViewManager->currentView()->isEventView() ) {
+    QDateTime startDt;
+    QDateTime endDt;
+    dateTimesForNewEvent( startDt, endDt, allDay );
+
+    defaults.setStartDateTime( KDateTime( startDt ) );
+    defaults.setEndDateTime( KDateTime( endDt ) );
+  }
+
   Journal::Ptr journal( new Journal );
   defaults.setDefaults( journal );
 
@@ -1321,6 +1332,7 @@ bool CalendarView::incidence_unsub( const Akonadi::Item &item )
   const Incidence::Ptr inc = CalendarSupport::incidence( item );
 
   if ( !inc || inc->relatedTo().isEmpty() ) {
+    kDebug() << "Refusing to unparent this to-do" << inc;
     return false;
   }
 
@@ -1350,6 +1362,7 @@ bool CalendarView::makeChildrenIndependent( const Akonadi::Item &item )
   Akonadi::Item::List subIncs = mCalendar->childItems( item.id() );
 
   if ( !inc || subIncs.isEmpty() ) {
+    kDebug() << "Refusing to  make children independent" << inc;
     return false;
   }
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
@@ -2155,8 +2168,10 @@ void CalendarView::showView( KOrg::BaseView *view )
 void CalendarView::addExtension( CalendarViewExtension::Factory *factory )
 {
   CalendarViewExtension *extension = factory->create( mLeftSplitter );
-
   mExtensions.append( extension );
+  if ( !mETMCollectionView ) {
+    mETMCollectionView = qobject_cast<AkonadiCollectionView*>( extension );
+  }
 }
 
 void CalendarView::showLeftFrame( bool show )
@@ -2772,36 +2787,38 @@ void CalendarView::changeFullView( bool fullView )
 
 Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeType ) const
 {
-  bool supportsMimeType;
+  // 1. Try the view collection ( used in multi-agenda view )
+  Akonadi::Collection collection = mCalendar->collection( mViewManager->currentView()->collectionId() );
+  bool supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  bool hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
 
-  /**
-     If the view's collection is valid and it supports mimeType, return it, otherwise
-     if the config's collection is valid and it supports mimeType, return it, otherwise
-     return an invalid collection.
-  */
+  // 2. Try the selected collection
+  collection = selectedCollection();
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
 
-  Akonadi::Collection viewCollection =
-    mCalendar->collection( mViewManager->currentView()->collectionId() );
-
-  supportsMimeType = viewCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
-
-  if ( viewCollection.isValid() && supportsMimeType ) {
-    return viewCollection;
-  } else {
-    Akonadi::Collection configCollection =
-      mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
-    supportsMimeType = configCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
-
-    if ( configCollection.isValid() && supportsMimeType ) {
-      return configCollection;
-    } else {
-      if ( EventViews::EventView::globalCollectionSelection() &&
-           !EventViews::EventView::globalCollectionSelection()->selectedCollections().isEmpty() ) {
-        return EventViews::EventView::globalCollectionSelection()->selectedCollections().first();
-      }
-    }
+  // 3. Try the checked collections
+  Akonadi::Collection::List collections = checkedCollections();
+  foreach( const Akonadi::Collection &checkedCollection, collections ) {
+    supportsMimeType = checkedCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+    hasRights = checkedCollection.rights() & Akonadi::Collection::CanCreateItem;
+    if ( checkedCollection.isValid() && supportsMimeType && hasRights )
+      return checkedCollection;
   }
 
+  // 4. Try the configured default collection
+  collection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
+
+
+  // 5. Return a invalid collection, the editor will use the first one in the combo
   return Akonadi::Collection();
 }
 
@@ -2829,6 +2846,62 @@ Akonadi::History *CalendarView::history() const
 void CalendarView::onCutFinished()
 {
   checkClipboard();
+}
+
+void CalendarView::setCheckableProxyModel( KOCheckableProxyModel *model )
+{
+  if ( mCheckableProxyModel )
+    mCheckableProxyModel->disconnect( this );
+
+  mCheckableProxyModel = model;
+  connect( model, SIGNAL(aboutToToggle(bool)), SLOT(onCheckableProxyAboutToToggle(bool)) );
+  connect( model, SIGNAL(toggled(bool)), SLOT(onCheckableProxyToggled(bool)) );
+}
+
+void CalendarView::onCheckableProxyAboutToToggle( bool newState )
+{
+  // Someone unchecked a collection, save the view state now.
+  if ( !newState ) {
+    mTodoList->saveViewState();
+    KOTodoView *todoView = mViewManager->todoView();
+    if ( todoView )
+      todoView->saveViewState();
+  }
+}
+
+void CalendarView::onCheckableProxyToggled( bool newState )
+{
+  // Someone checked a collection, restore the view state now.
+  if ( newState ) {
+    mTodoList->restoreViewState();
+    KOTodoView *todoView = mViewManager->todoView();
+    if ( todoView )
+      todoView->restoreViewState();
+  }
+}
+
+Akonadi::Collection CalendarView::selectedCollection() const
+{
+  return mETMCollectionView ? mETMCollectionView->selectedCollection() : Akonadi::Collection();
+}
+
+Akonadi::Collection::List CalendarView::checkedCollections() const
+{
+  Akonadi::Collection::List collections;
+  if ( mETMCollectionView )
+    collections = mETMCollectionView->checkedCollections();
+
+  // If the default calendar is here, it should be first.
+  int count = collections.count();
+  Akonadi::Collection::Id id = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+  for( int i=0; i<count; ++i ) {
+    if ( id == collections[i].id() ) {
+      collections.move( i, 0 );
+      break;
+    }
+  }
+
+  return collections;
 }
 
 #include "calendarview.moc"

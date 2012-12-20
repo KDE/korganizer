@@ -68,11 +68,6 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   style = opt.widget ? opt.widget->style() : QApplication::style();
   style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
-#if QT_VERSION >= 0x040800
-#ifdef __GNUC__
-#warning QTreeView should now set State_Editing correctly, remove the workaround
-#endif
-#endif
   if ( index.data( Qt::EditRole ).toInt() > 0 ) {
     bool isEditing = false;
     KOTodoViewView *view = qobject_cast<KOTodoViewView*>( parent() );
@@ -117,7 +112,7 @@ void KOTodoCompleteDelegate::initStyleOptionProgressBar(
   option->maximum = 100;
   option->minimum = 0;
   option->progress = index.data().toInt();
-  option->text = index.data().toString() + QChar::fromAscii( '%' );
+  option->text = index.data().toString() + QChar::fromLatin1( '%' );
   option->textAlignment = Qt::AlignCenter;
   option->textVisible = true;
 }
@@ -177,7 +172,7 @@ void KOTodoCompleteSlider::updateTip( int value )
   p.setX( style()->sliderPositionFromValue ( minimum(), maximum(),
                                              value, width() ) );
 
-  QString text = QString::fromAscii( "%1%" ).arg( value );
+  QString text = QString::fromLatin1( "%1%" ).arg( value );
   QToolTip::showText( mapToGlobal( p ), text, this );
 }
 

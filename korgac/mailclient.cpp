@@ -244,7 +244,7 @@ bool MailClient::send( const KPIMIdentities::Identity &identity,
   const int transportId = transport->id();
 
   // gather config values
-  KConfig config( "mailviewerrc" );
+  KConfig config( "kmail2rc" );
 
   KConfigGroup configGroup( &config, QLatin1String( "Invitations" ) );
   const bool outlookConformInvitation = configGroup.readEntry( "LegacyBodyInvites",
@@ -346,10 +346,12 @@ bool MailClient::send( const KPIMIdentities::Identity &identity,
         KPIMUtils::normalizeAddressesAndEncodeIdn( from ) ) );
   }
 
-  if( !to.isEmpty() )
+  if( !to.isEmpty() ) {
     qjob->addressAttribute().setTo( extractEmailAndNormalize( to ) );
-  if( !cc.isEmpty() )
+  }
+  if( !cc.isEmpty() ) {
     qjob->addressAttribute().setCc( extractEmailAndNormalize( cc ) );
+  }
   if ( bccMe ) {
     qjob->addressAttribute().setBcc( extractEmailAndNormalize( from ) );
   }

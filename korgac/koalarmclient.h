@@ -1,7 +1,5 @@
 /*
-  KOrganizer Alarm Daemon Client.
-
-  This file is part of KOrganizer.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -23,13 +21,13 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KOALARMCLIENT_H
-#define KOALARMCLIENT_H
+#ifndef KORGAC_KOALARMCLIENT_H
+#define KORGAC_KOALARMCLIENT_H
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-#ifndef _WIN32_WCE
-#include <KSessionManager>
+#if !defined(Q_WS_WINCE)
+# include <KSessionManager>
 #endif
 
 #include <QTimer>
@@ -40,9 +38,10 @@ class AlarmDockWindow;
 
 namespace Akonadi {
   class Item;
+  class EntityTreeModel;
 }
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
 class KOAlarmClient : public QObject, public KSessionManager
 #else
 class KOAlarmClient : public QObject
@@ -50,10 +49,10 @@ class KOAlarmClient : public QObject
 {
   Q_OBJECT
   public:
-    KOAlarmClient( QObject *parent = 0 );
+    explicit KOAlarmClient( QObject *parent = 0 );
     ~KOAlarmClient();
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
     bool commitData( QSessionManager & );
 #endif
 
@@ -71,6 +70,7 @@ class KOAlarmClient : public QObject
     void slotQuit();
 
   protected slots:
+    void deferredInit();
     void checkAlarms();
 
   signals:
@@ -78,14 +78,16 @@ class KOAlarmClient : public QObject
     void saveAllSignal();
 
   private:
-    void createReminder( const Akonadi::ETMCalendar::Ptr &calendar, const Akonadi::Item &incidence,
-                         const QDateTime &dt, const QString &displayText );
-
     bool dockerEnabled();
+    bool collectionsAvailable() const;
+    void createReminder( const Akonadi::ETMCalendar::Ptr &calendar,
+                         const Akonadi::Item &incidence,
+                         const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
     Akonadi::ETMCalendar::Ptr mCalendar;
+    Akonadi::EntityTreeModel *mETM;
 
     QDateTime mLastChecked;
     QTimer mCheckTimer;

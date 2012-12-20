@@ -689,6 +689,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       } else if ( a == move ) {
         action = DRAG_MOVE;
       }
+      delete menu;
     }
 
     if ( action == DRAG_COPY  || action == DRAG_MOVE ) {

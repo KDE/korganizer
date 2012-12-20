@@ -1,7 +1,5 @@
 /*
-  KOrganizer Alarm Daemon Client.
-
-  This file is part of KOrganizer.
+  This file is part of the KDE reminder agent.
 
   Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -26,7 +24,7 @@
 //krazy:excludeall=kdebug because we use the korgac(check) debug area in here
 
 #include "koalarmclient.h"
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
 #include "alarmdialog.h"
 #include "alarmdockwindow.h"
 #else
@@ -34,15 +32,17 @@
 #endif
 #include "korgacadaptor.h"
 
-#include <Akonadi/Item>
-#include <Akonadi/ChangeRecorder>
-#include <Akonadi/Session>
-#include <Akonadi/ItemFetchScope>
-#include <akonadi/dbusconnectionpool.h>
-
 #include <calendarsupport/utils.h>
 
-#include <kcalcore/calendar.h>
+#include <Akonadi/Item>
+#include <Akonadi/EntityTreeModel>
+#include <Akonadi/ChangeRecorder>
+#include <Akonadi/Session>
+#include <Akonadi/Collection>
+#include <Akonadi/ItemFetchScope>
+#include <akonadi/dbusconnectionpool.h> // fix when forwarding header is there
+
+#include <KCalCore/Calendar>
 
 #include <KApplication>
 #include <KConfig>
@@ -64,7 +64,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   Akonadi::DBusConnectionPool::threadConnection().registerObject( "/ac", this );
   kDebug();
 
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   if ( dockerEnabled() ) {
     mDocker = new AlarmDockWindow;
     connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
@@ -72,19 +72,44 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   }
 #endif
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
-
   mCalendar->setObjectName( "KOrgac's calendar" );
+  mETM = mCalendar->entityTreeModel();
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
+  connect( mETM, SIGNAL(collectionPopulated(Akonadi::Collection::Id)),
+           SLOT(deferredInit()) );
+  connect( mETM, SIGNAL(collectionTreeFetched(Akonadi::Collection::List)),
+           SLOT(deferredInit()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
   const int interval = alarmGroup.readEntry( "Interval", 60 );
   kDebug() << "KOAlarmClient check interval:" << interval << "seconds.";
   mLastChecked = alarmGroup.readEntry( "CalendarsLastChecked", QDateTime() );
 
+  checkAlarms();
+  mCheckTimer.start( 1000 * interval );  // interval in seconds
+}
+
+KOAlarmClient::~KOAlarmClient()
+{
+#if !defined(KORGAC_AKONADI_AGENT)
+  delete mDocker;
+  delete mDialog;
+#endif
+}
+
+void KOAlarmClient::deferredInit()
+{
+  if ( !collectionsAvailable() ) {
+    return;
+  }
+
+  kDebug(5891) << "Performing delayed initialization.";
+
   // load reminders that were active when quitting
   KConfigGroup genGroup( KGlobal::config(), "General" );
   const int numReminders = genGroup.readEntry( "Reminders", 0 );
+
   for ( int i=1; i<=numReminders; ++i ) {
     const QString group( QString( "Incidence-%1" ).arg( i ) );
     const KConfigGroup incGroup( KGlobal::config(), group );
@@ -109,21 +134,9 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
       }
     }
   }
-  if ( numReminders ) {
-     genGroup.writeEntry( "Reminders", 0 );
-     genGroup.sync();
-  }
 
+  // Now that everything is set up, a first check for reminders can be performed.
   checkAlarms();
-  mCheckTimer.start( 1000 * interval );  // interval in seconds
-}
-
-KOAlarmClient::~KOAlarmClient()
-{
-#ifndef KORGAC_AKONADI_AGENT
-  delete mDocker;
-  delete mDialog;
-#endif
 }
 
 bool KOAlarmClient::dockerEnabled()
@@ -133,11 +146,42 @@ bool KOAlarmClient::dockerEnabled()
   return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
 
+
+bool KOAlarmClient::collectionsAvailable() const
+{
+  // The list of collections must be available.
+  if ( !mETM->isCollectionTreeFetched() ) {
+    return false;
+  }
+
+  // All collections must be populated.
+  const int rowCount = mETM->rowCount();
+  for ( int row = 0; row < rowCount; ++row ) {
+    static const int column = 0;
+    const QModelIndex index = mETM->index( row, column );
+    bool haveData =
+      mETM->data( index, Akonadi::EntityTreeModel::IsPopulatedRole ).toBool();
+    if ( !haveData ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+
 void KOAlarmClient::checkAlarms()
 {
   KConfigGroup cfg( KGlobal::config(), "General" );
 
   if ( !cfg.readEntry( "Enabled", true ) ) {
+    return;
+  }
+
+  // We do not want to miss any reminders, so don't perform check unless
+  // the collections are available and populated.
+  if ( !collectionsAvailable() ) {
+    kDebug(5891) << "Collections are not available; aborting check.";
     return;
   }
 
@@ -148,7 +192,7 @@ void KOAlarmClient::checkAlarms()
 
   const Alarm::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                                 KDateTime( mLastChecked, KDateTime::LocalZone ),
-                                                true /* exclude blocked alarms */ );
+                                                true /* exclude blocked alarms */);
 
   foreach ( const Alarm::Ptr &alarm, alarms ) {
     const QString uid = alarm->parentUid();
@@ -168,7 +212,7 @@ void KOAlarmClient::createReminder( const Akonadi::ETMCalendar::Ptr &calendar,
     return;
   }
 
-#if !defined(Q_WS_MAEMO_5) && !defined(_WIN32_WCE) && !defined(KORGAC_AKONADI_AGENT)
+#if !defined(Q_WS_MAEMO_5) && !defined(Q_WS_WINCE) && !defined(KORGAC_AKONADI_AGENT)
   if ( !mDialog ) {
     mDialog = new AlarmDialog( calendar );
     connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
@@ -193,7 +237,7 @@ void KOAlarmClient::createReminder( const Akonadi::ETMCalendar::Ptr &calendar,
 #if defined(Q_WS_MAEMO_5)
   QMaemo5InformationBox::information( 0, incidence->summary(), QMaemo5InformationBox::NoTimeout );
 #else
-  KNotification *notify = new KNotification( "reminder", 0L, KNotification::Persistent );
+  KNotification *notify = new KNotification( "reminder", 0, KNotification::Persistent );
   notify->setText( incidence->summary() );
   notify->sendEvent();
 #endif
@@ -219,12 +263,12 @@ void KOAlarmClient::saveLastCheckTime()
 void KOAlarmClient::quit()
 {
   kDebug();
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   kapp->quit();
 #endif
 }
 
-#ifndef _WIN32_WCE
+#if !defined(Q_WS_WINCE)
 bool KOAlarmClient::commitData( QSessionManager & )
 {
   emit saveAllSignal();
@@ -273,7 +317,7 @@ void KOAlarmClient::debugShowDialog()
 
 void KOAlarmClient::hide()
 {
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   delete mDocker;
   mDocker = 0;
 #endif
@@ -281,7 +325,7 @@ void KOAlarmClient::hide()
 
 void KOAlarmClient::show()
 {
-#ifndef KORGAC_AKONADI_AGENT
+#if !defined(KORGAC_AKONADI_AGENT)
   if ( !mDocker ) {
     if ( dockerEnabled() ) {
       mDocker = new AlarmDockWindow;

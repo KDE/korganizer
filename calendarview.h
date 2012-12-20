@@ -44,6 +44,8 @@ class KODialogManager;
 class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
+class KOCheckableProxyModel;
+class AkonadiCollectionView;
 namespace KOrg {
   class HTMLExportSettings;
 }
@@ -100,7 +102,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       Constructs a new calendar view widget.
       @param parent   parent window
     */
-    CalendarView( QWidget *parent=0 );
+    explicit CalendarView( QWidget *parent=0 );
     virtual ~CalendarView();
 
     class CalendarViewVisitor : public KCalCore::Visitor
@@ -124,6 +126,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     Akonadi::ETMCalendar::Ptr calendar() const;
 
     Akonadi::History *history() const;
+    void setCheckableProxyModel( KOCheckableProxyModel * );
 
     KOViewManager *viewManager() const { return mViewManager; }
     KODialogManager *dialogManager() const { return mDialogManager; }
@@ -673,8 +676,14 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     bool eventFilter( QObject *watched, QEvent *event );
 
+  private Q_SLOTS:
+    void onCheckableProxyAboutToToggle( bool newState );
+    void onCheckableProxyToggled( bool newState );
+
   private:
     void init();
+    Akonadi::Collection selectedCollection() const;
+    Akonadi::Collection::List checkedCollections() const;
 
     void createPrinter();
 
@@ -743,7 +752,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;
+
     Akonadi::CalendarClipboard *mCalendarClipboard;
+    KOCheckableProxyModel *mCheckableProxyModel;
+    AkonadiCollectionView *mETMCollectionView;
 };
 
 #endif

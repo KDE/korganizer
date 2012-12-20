@@ -33,7 +33,7 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
   Q_OBJECT
 
   public:
-    KOTodoViewSortFilterProxyModel( QObject *parent = 0 );
+    explicit KOTodoViewSortFilterProxyModel( QObject *parent = 0 );
 
     void sort( int column, Qt::SortOrder order = Qt::AscendingOrder );
 

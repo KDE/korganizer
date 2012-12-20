@@ -26,6 +26,7 @@
 #define KORG_VIEWS_KOTODOVIEWVIEW_H
 
 #include <QTreeView>
+#include <QTimer>
 
 class KMenu;
 
@@ -34,29 +35,29 @@ class KOTodoViewView : public QTreeView
   Q_OBJECT
 
   public:
-    KOTodoViewView( QWidget *parent = 0 );
+    explicit KOTodoViewView( QWidget *parent = 0 );
 
-#if QT_VERSION >= 0x040800
-#ifdef __GNUC__
-#warning QTreeView should now set State_Editing correctly, remove the workaround
-#endif
-#endif
     bool isEditing( const QModelIndex &index ) const;
 
     virtual bool eventFilter( QObject *watched, QEvent *event );
 
   protected:
     virtual QModelIndex moveCursor( CursorAction cursorAction, Qt::KeyboardModifiers modifiers );
-    virtual void mouseReleaseEvent ( QMouseEvent * );
+    virtual void mousePressEvent( QMouseEvent * );
+    virtual void mouseReleaseEvent( QMouseEvent * );
+    virtual void mouseMoveEvent( QMouseEvent * );
 
   private:
     QModelIndex getNextEditableIndex( const QModelIndex &cur, int inc );
 
     KMenu *mHeaderPopup;
     QList<QAction *> mColumnActions;
+    QTimer mExpandTimer;
+    bool mIgnoreNextMouseRelease;
 
   private slots:
     void toggleColumnHidden( QAction *action );
+    void expandParent();
 };
 
 #endif

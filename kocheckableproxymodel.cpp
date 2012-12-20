@@ -1,8 +1,7 @@
 /*
   This file is part of KOrganizer.
 
-  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  Copyright (C) 2012 Sergio Martins <iamsergio@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,30 +22,26 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_DOCPREFS_H
-#define KORG_DOCPREFS_H
+#include "kocheckableproxymodel.h"
 
-#include <QString>
-
-class KConfig;
-
-class DocPrefs
+KOCheckableProxyModel::KOCheckableProxyModel( QObject *parent ) : KCheckableProxyModel( parent )
 {
-  public:
-    explicit DocPrefs( const QString &type="general" );
-    ~DocPrefs();
+}
 
-    void setDoc( const QString &identifier );
-    QString doc() const;
+/**reimp*/
+bool KOCheckableProxyModel::setData( const QModelIndex &index,
+                                     const QVariant &value, int role )
+{
+  Qt::CheckState newState = static_cast<Qt::CheckState> (value.toInt() );
+  if ( role == Qt::CheckStateRole && index.column() == 0 )
+    emit aboutToToggle( newState );
 
-    bool readBoolEntry( const QString &identifier ) const;
-    void writeBoolEntry( const QString &identifier, bool value );
-    int readNumEntry( const QString &identifier ) const;
-    void writeNumEntry( const QString &identifier, int value );
+  const bool result = KCheckableProxyModel::setData( index, value, role );
 
-  private:
-    static KConfig *mConfig;
-    QString mDocId;
-};
+  if ( result )
+    emit toggled( newState );
 
-#endif
+  return result;
+}
+
+#include "kocheckableproxymodel.moc"

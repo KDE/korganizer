@@ -32,7 +32,7 @@
 #include <KPrintPreview>
 #include <KStandardGuiItem>
 #include <KVBox>
-#include <kdeprintdialog.h> //krazy:exclude=camelcase not available
+#include <kdeprintdialog.h> //krazy:exclude=camelcase TODO wait for kdelibs4.10
 
 #include <QButtonGroup>
 #include <QGridLayout>

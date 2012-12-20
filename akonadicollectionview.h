@@ -28,11 +28,13 @@
 #define KORG_AKONADICOLLECTIONVIEW_H
 
 #include "calendarview.h"
+#include <Akonadi/Collection>
 
 class AkonadiCollectionView;
 
 namespace Akonadi {
   class EntityTreeView;
+  class EntityTreeModel;
   class StandardCalendarActionManager;
 }
 
@@ -76,6 +78,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     void setCollectionSelectionProxyModel( KCheckableProxyModel * );
     static bool isStructuralCollection( const Akonadi::Collection & );
 
+    Akonadi::Collection selectedCollection() const;
+    Akonadi::Collection::List checkedCollections() const;
+
   signals:
     void resourcesChanged( bool enabled );
     void resourcesAddedRemoved();
@@ -85,6 +90,8 @@ class AkonadiCollectionView : public CalendarViewExtension
   private Q_SLOTS:
     void updateView();
     void updateMenu();
+    void restoreTreeState();
+    void checkNewCalendar( const QModelIndex &parent, int begin, int end );
 
     void newCalendar();
     void newCalendarDone( KJob * );
@@ -97,6 +104,8 @@ class AkonadiCollectionView : public CalendarViewExtension
     void setDefaultCalendar();
 
   private:
+    Akonadi::EntityTreeModel *entityTreeModel() const;
+
     Akonadi::StandardCalendarActionManager *mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     QAbstractProxyModel *mBaseModel;

@@ -93,3 +93,5 @@ QSet<EventViews::EventView::ItemIcon> KItemIconCheckCombo::checkedIcons() const
   }
   return icons;
 }
+
+#include "kitemiconcheckcombo.moc"

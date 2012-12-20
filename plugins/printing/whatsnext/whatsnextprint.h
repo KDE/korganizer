@@ -78,7 +78,7 @@ class CalPrintWhatsNext : public CalPrintPluginBase
 class CalPrintWhatsNextConfig : public QWidget, public Ui::CalPrintWhatsNextConfig_Base
 {
   public:
-    CalPrintWhatsNextConfig( QWidget *parent ) : QWidget( parent ) {
+    explicit CalPrintWhatsNextConfig( QWidget *parent ) : QWidget( parent ) {
       setupUi( this );
     }
 };

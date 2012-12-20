@@ -26,6 +26,8 @@
 */
 
 #include "kotodoview.h"
+
+#include "incidencetreemodel.h"
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
@@ -38,7 +40,6 @@
 #include "kotodoviewquicksearch.h"
 #include "kotodoviewview.h"
 
-#include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
@@ -46,31 +47,139 @@
 
 #include <libkdepim/kdatepickerpopup.h>
 
+#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/EntityMimeTypeFilterModel>
+#include <Akonadi/ETMViewStateSaver>
+
 #include <KCalCore/CalFormat>
 
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QHeaderView>
 #include <QMenu>
-#include <QTimer>
+#include <QToolButton>
 
-// Share the model with the sidepanel KOTodoView
-K_GLOBAL_STATIC( KOTodoModel, sModel )
+// We share this struct between all views, for performance and memory purposes
+struct ModelStack
+{
+  ModelStack( QObject *parent_ )
+    : todoModel( new KOTodoModel() ),
+      parent( parent_ ),
+      calendar( 0 ),
+      todoTreeModel( 0 ),
+      todoFlatModel( 0 )
+  {
+  }
+
+  ~ModelStack()
+  {
+    delete todoModel;
+    delete todoTreeModel;
+    delete todoFlatModel;
+  }
+
+  void registerView( KOTodoView *view )
+  {
+    views << view;
+  }
+
+  void unregisterView( KOTodoView *view )
+  {
+    views.removeAll( view );
+  }
+
+  void setFlatView( bool flat )
+  {
+    const QString todoMimeType = QLatin1String( "application/x-vnd.akonadi.calendar.todo" );
+    if ( flat ) {
+      foreach ( KOTodoView *view, views ) {
+        // In flatview dropping confuses users and it's very easy to drop into a child item
+        view->mView->setDragDropMode( QAbstractItemView::DragOnly );
+        view->setFlatView( flat, /**propagate=*/false ); // So other views update their toggle icon
+
+        if ( todoTreeModel ) {
+          view->saveViewState(); // Save the tree state before it's gone
+        }
+      }
+
+      delete todoFlatModel;
+      todoFlatModel = new Akonadi::EntityMimeTypeFilterModel( parent );
+      todoFlatModel->addMimeTypeInclusionFilter( todoMimeType );
+      todoFlatModel->setSourceModel( calendar ? calendar->filteredModel() : 0 );
+      todoModel->setSourceModel( todoFlatModel );
+
+      delete todoTreeModel;
+      todoTreeModel = 0;
+    } else {
+      delete todoTreeModel;
+      todoTreeModel = new IncidenceTreeModel( QStringList() << todoMimeType, parent );
+      foreach ( KOTodoView *view, views ) {
+        QObject::connect( todoTreeModel, SIGNAL(indexChangedParent(QModelIndex)),
+                          view, SLOT(expandIndex(QModelIndex)) );
+        QObject::connect( todoTreeModel, SIGNAL(batchInsertionFinished()),
+                          view, SLOT(restoreViewState()) );
+        view->mView->setDragDropMode( QAbstractItemView::DragDrop );
+        view->setFlatView( flat, /**propagate=*/false ); // So other views update their toggle icon
+      }
+      todoTreeModel->setSourceModel( calendar ? calendar->filteredModel() : 0 );
+      todoModel->setSourceModel( todoTreeModel );
+      delete todoFlatModel;
+      todoFlatModel = 0;
+    }
+
+    foreach ( KOTodoView *view, views ) {
+      view->mFlatViewButton->blockSignals( true );
+      // We block signals to avoid recursion, we have two KOTodoViews and mFlatViewButton is synchronized
+      view->mFlatViewButton->setChecked( flat );
+      view->mFlatViewButton->blockSignals( false );
+      view->mView->setRootIsDecorated( !flat );
+      view->restoreViewState();
+    }
+
+    KOPrefs::instance()->setFlatListTodo( flat );
+    KOPrefs::instance()->writeConfig();
+  }
+
+  void setCalendar( const Akonadi::ETMCalendar::Ptr &newCalendar )
+  {
+    calendar = newCalendar;
+    todoModel->setCalendar( calendar );
+    if ( todoTreeModel ) {
+      todoTreeModel->setSourceModel( calendar ? calendar->filteredModel() : 0 );
+    }
+  }
+
+  bool isFlatView() const
+  {
+    return todoFlatModel != 0;
+  }
+
+  KOTodoModel *todoModel;
+  QList<KOTodoView*> views;
+  QObject *parent;
+
+  Akonadi::ETMCalendar::Ptr calendar;
+  IncidenceTreeModel *todoTreeModel;
+  Akonadi::EntityMimeTypeFilterModel *todoFlatModel;
+};
+
+// Don't use K_GLOBAL_STATIC, see QTBUG-22667
+static ModelStack *sModels = 0;
 
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
-  : BaseView( parent )
+  : BaseView( parent ), mTreeStateRestorer( 0 )
 {
-  connect( sModel, SIGNAL(expandIndex(QModelIndex)),
-           this, SLOT(expandIndex(QModelIndex)) );
+  if ( !sModels ) {
+    sModels = new ModelStack( parent );
+  }
+  sModels->registerView( this );
+
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
-  mProxyModel->setSourceModel( sModel );
+  mProxyModel->setSourceModel( sModels->todoModel );
   mProxyModel->setDynamicSortFilter( true );
   mProxyModel->setFilterKeyColumn( KOTodoModel::SummaryColumn );
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSortRole( Qt::EditRole );
-
-  // This disconnect is a workaround against QTBUG-22667
-  disconnect( sModel, SIGNAL(destroyed()), mProxyModel, 0 );
 
   mSidebarView = sidebarView;
   if ( !mSidebarView ) {
@@ -79,15 +188,15 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
     connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
              mProxyModel, SLOT(setFilterRegExp(QString)) );
     connect( mQuickSearch, SIGNAL(searchTextChanged(QString)),
-             this, SLOT(expandTree()) );
+             SLOT(restoreViewState()) );
     connect( mQuickSearch, SIGNAL(filterCategoryChanged(QStringList)),
              mProxyModel, SLOT(setCategoryFilter(QStringList)) );
     connect( mQuickSearch, SIGNAL(filterCategoryChanged(QStringList)),
-             this, SLOT(expandTree()) );
+             SLOT(restoreViewState()) );
     connect( mQuickSearch, SIGNAL(filterPriorityChanged(QStringList)),
              mProxyModel, SLOT(setPriorityFilter(QStringList)) );
     connect( mQuickSearch, SIGNAL(filterPriorityChanged(QStringList)),
-             this, SLOT(expandTree()) );
+             SLOT(restoreViewState()) );
   }
 
   mView = new KOTodoViewView( this );
@@ -135,36 +244,35 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
            this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
 
-  mFullView = 0;
+  mFullViewButton = 0;
   if ( !mSidebarView ) {
-    mFullView = new QCheckBox( i18nc( "Checkbox to display this view into the full window",
-                                      "Full Window" ), this );
-    mFullView->setToolTip(
+    mFullViewButton = new QToolButton( this );
+    mFullViewButton->setAutoRaise( true );
+    mFullViewButton->setCheckable( true );
+
+    mFullViewButton->setToolTip(
       i18nc( "@info:tooltip",
              "Display to-do list in a full window" ) );
-    mFullView->setWhatsThis(
+    mFullViewButton->setWhatsThis(
       i18nc( "@info:whatsthis",
              "Checking this option will cause the to-do view to use the full window." ) );
-    connect( mFullView, SIGNAL(toggled(bool)),
-             sModel, SLOT(setFullView(bool)) );
-    connect( sModel,SIGNAL(fullViewChanged(bool)),
-             SLOT(setFullView(bool)) );
   }
-
-  mFlatView = new QCheckBox( i18nc( "Checkbox to display todos not hierarchical",
-                                    "Flat View" ), this );
-  mFlatView->setToolTip(
+  mFlatViewButton = new QToolButton( this );
+  mFlatViewButton->setAutoRaise( true );
+  mFlatViewButton->setCheckable( true );
+  mFlatViewButton->setToolTip(
     i18nc( "@info:tooltip",
            "Display to-dos in flat list instead of a tree" ) );
-  mFlatView->setWhatsThis(
+  mFlatViewButton->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Checking this option will cause the to-dos to be displayed as a "
            "flat list instead of a hierarchical tree; the parental "
            "relationships are removed in the display." ) );
-  connect( mFlatView, SIGNAL(toggled(bool)),
-           sModel, SLOT(setFlatView(bool)) );
-  connect( sModel,SIGNAL(flatViewChanged(bool)),
-           SLOT(setFlatView(bool)) );
+
+  connect( mFlatViewButton, SIGNAL(toggled(bool)), SLOT(setFlatView(bool)) );
+  if ( mFullViewButton ) {
+    connect( mFullViewButton, SIGNAL(toggled(bool)), SLOT(setFullView(bool)) );
+  }
 
   QGridLayout *layout = new QGridLayout( this );
   layout->setMargin( 0 );
@@ -180,38 +288,46 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   QHBoxLayout *dummyLayout = new QHBoxLayout();
   dummyLayout->setContentsMargins( 0, 0, mView->frameWidth()/*right*/, 0 );
   if ( !mSidebarView ) {
-    dummyLayout->addWidget( mFullView );
+    QFrame *f = new QFrame( this );
+    f->setFrameShape( QFrame::VLine );
+    f->setFrameShadow( QFrame::Sunken );
+    dummyLayout->addWidget( f );
+    dummyLayout->addWidget( mFullViewButton );
   }
-  dummyLayout->addWidget( mFlatView );
+  dummyLayout->addWidget( mFlatViewButton );
 
   layout->addLayout( dummyLayout, 2, 1 );
-
   setLayout( layout );
 
   // ---------------- POPUP-MENUS -----------------------
   mItemPopupMenu = new QMenu( this );
 
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
-    i18n( "&Show" ), this, SLOT(showTodo()) );
+    i18nc( "@action:inmenu show the to-do", "&Show" ),
+    this, SLOT(showTodo()) );
 
   QAction *a = mItemPopupMenu->addAction(
-    i18n( "&Edit..." ), this, SLOT(editTodo()) );
+    i18nc( "@action:inmenu edit the to-do", "&Edit..." ),
+    this, SLOT(editTodo()) );
   mItemPopupMenuReadWriteEntries << a;
   mItemPopupMenuItemOnlyEntries << a;
 
   mItemPopupMenu->addSeparator();
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     KOGlobals::self()->smallIcon( "document-print" ),
-    i18n( "&Print..." ), this, SLOT(printTodo()) );
+    i18nc( "@action:inmenu print the to-do", "&Print..." ),
+    this, SLOT(printTodo()) );
 
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     KOGlobals::self()->smallIcon( "document-print-preview" ),
-    i18n( "Print Previe&w..." ), this, SLOT(printPreviewTodo()) );
+    i18nc( "@action:inmenu print preview the to-do", "Print Previe&w..." ),
+    this, SLOT(printPreviewTodo()) );
 
   mItemPopupMenu->addSeparator();
   a = mItemPopupMenu->addAction(
     KIconLoader::global()->loadIcon( "edit-delete", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
-    i18n( "&Delete" ), this, SLOT(deleteTodo()) );
+    i18nc( "@action:inmenu delete the to-do", "&Delete" ),
+    this, SLOT(deleteTodo()) );
   mItemPopupMenuReadWriteEntries << a;
   mItemPopupMenuItemOnlyEntries << a;
 
@@ -220,18 +336,23 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mItemPopupMenu->addAction(
     KIconLoader::global()->loadIcon(
       "view-calendar-tasks", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
-    i18n( "New &To-do..." ), this, SLOT(newTodo()) );
+    i18nc( "@action:inmenu create a new to-do", "New &To-do..." ),
+    this, SLOT(newTodo()) );
 
   a = mItemPopupMenu->addAction(
-    i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
+    i18nc( "@action:inmenu create a new sub-to-do", "New Su&b-to-do..." ),
+    this, SLOT(newSubTodo()) );
   mItemPopupMenuReadWriteEntries << a;
   mItemPopupMenuItemOnlyEntries << a;
 
-  mMakeTodoIndependent = mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ),
-                                                    this, SIGNAL(unSubTodoSignal()) );
+  mMakeTodoIndependent = mItemPopupMenu->addAction(
+    i18nc( "@action:inmenu", "&Make this To-do Independent" ),
+    this, SIGNAL(unSubTodoSignal()) );
 
-  mMakeSubtodosIndependent = mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ),
-                                                        this, SIGNAL(unAllSubTodoSignal()) );
+  mMakeSubtodosIndependent =
+    mItemPopupMenu->addAction(
+      i18nc( "@action:inmenu", "Make all Sub-to-dos &Independent" ),
+      this, SIGNAL(unAllSubTodoSignal()) );
 
   mItemPopupMenuItemOnlyEntries << mMakeTodoIndependent;
   mItemPopupMenuItemOnlyEntries << mMakeSubtodosIndependent;
@@ -246,7 +367,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
                                 KPIM::KDatePickerPopup::DatePicker |
                                 KPIM::KDatePickerPopup::Words,
                                 QDate::currentDate(), this );
-  mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
+  mCopyPopupMenu->setTitle( i18nc( "@title:menu", "&Copy To" ) );
 
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
            SLOT(copyTodoToDate(QDate)) );
@@ -259,7 +380,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
                                  KPIM::KDatePickerPopup::DatePicker |
                                  KPIM::KDatePickerPopup::Words,
                                  QDate::currentDate(), this );
-  mMovePopupMenu->setTitle( i18n( "&Move To" ) );
+  mMovePopupMenu->setTitle( i18nc( "@title:menu", "&Move To" ) );
 
   connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
            SLOT(setNewDate(QDate)) );
@@ -271,20 +392,31 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
 
   mItemPopupMenu->addSeparator();
-  mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                             this, SIGNAL(purgeCompletedSignal()) );
+  mItemPopupMenu->addAction(
+    i18nc( "@action:inmenu delete completed to-dos", "Pur&ge Completed" ),
+    this, SIGNAL(purgeCompletedSignal()) );
 
   mPriorityPopupMenu = new QMenu( this );
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "unspecified priority", "unspecified" ) ) ] = 0;
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "highest priority", "1 (highest)" ) ) ] = 1;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "2" ) ) ] = 2;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "3" ) ) ] = 3;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "4" ) ) ] = 4;
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "medium priority", "5 (medium)" ) ) ] = 5;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "6" ) ) ] = 6;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "7" ) ) ] = 7;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "8" ) ) ] = 8;
-  mPriority[ mPriorityPopupMenu->addAction( i18nc( "lowest priority", "9 (lowest)" ) ) ] = 9;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu unspecified priority", "unspecified" ) ) ] = 0;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu highest priority", "1 (highest)" ) ) ] = 1;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=2", "2" ) ) ] = 2;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=3", "3" ) ) ] = 3;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=4", "4" ) ) ] = 4;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu medium priority", "5 (medium)" ) ) ] = 5;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=6", "6" ) ) ] = 6;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=7", "7" ) ) ] = 7;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu priority value=8", "8" ) ) ] = 8;
+  mPriority[ mPriorityPopupMenu->addAction(
+               i18nc( "@action:inmenu lowest priority", "9 (lowest)" ) ) ] = 9;
   connect( mPriorityPopupMenu, SIGNAL(triggered(QAction*)),
            SLOT(setNewPriority(QAction*)) );
 
@@ -297,34 +429,45 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
            SLOT(setNewPercentage(QAction*)) );
 
   setMinimumHeight( 50 );
+
+  // Initialize our proxy models
+  setFlatView( KOPrefs::instance()->flatListTodo() );
+  setFullView( KOPrefs::instance()->fullViewTodo() );
 }
 
 KOTodoView::~KOTodoView()
 {
+  saveViewState();
+
+  sModels->unregisterView( this );
+  if ( sModels->views.isEmpty() ) {
+    delete sModels;
+    sModels = 0;
+  }
 }
 
 void KOTodoView::expandIndex( const QModelIndex &index )
 {
-  QModelIndex realIndex = mProxyModel->mapFromSource( index );
+  QModelIndex todoModelIndex = sModels->todoModel->mapFromSource( index );
+  Q_ASSERT( todoModelIndex.isValid() );
+  QModelIndex realIndex = mProxyModel->mapFromSource( todoModelIndex );
+  Q_ASSERT( realIndex.isValid() );
   while ( realIndex.isValid() ) {
     mView->expand( realIndex );
     realIndex = mProxyModel->parent( realIndex );
   }
 }
 
-void KOTodoView::expandTree()
+void KOTodoView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
-  mView->expandAll();
-}
+  BaseView::setCalendar( calendar );
 
-void KOTodoView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
-{
-  BaseView::setCalendar( cal );
   if ( !mSidebarView ) {
-    mQuickSearch->setCalendar( cal );
+    mQuickSearch->setCalendar( calendar );
   }
-  mCategoriesDelegate->setCalendar( cal );
-  sModel->setCalendar( cal );
+  mCategoriesDelegate->setCalendar( calendar );
+  sModels->setCalendar( calendar );
+  restoreViewState();
 }
 
 Akonadi::Item::List KOTodoView::selectedIncidences()
@@ -371,9 +514,9 @@ void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
   }
 
   if ( !mSidebarView ) {
-    KOPrefs::instance()->setFullViewTodo( mFullView->isChecked() );
+    KOPrefs::instance()->setFullViewTodo( mFullViewButton->isChecked() );
   }
-  KOPrefs::instance()->setFlatListTodo( mFlatView->isChecked() );
+  KOPrefs::instance()->setFlatListTodo( mFlatViewButton->isChecked() );
 }
 
 void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool minimalDefaults )
@@ -387,12 +530,15 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
 
   if ( columnVisibility.isEmpty() ) {
     // if config is empty then use default settings
-    mView->hideColumn( eRecurColumn );
+    mView->hideColumn( KOTodoModel::RecurColumn );
+    mView->hideColumn( KOTodoModel::DescriptionColumn );
+    mView->hideColumn( KOTodoModel::CalendarColumn );
 
     if ( minimalDefaults ) {
-      mView->hideColumn( ePriorityColumn );
-      mView->hideColumn( ePercentColumn );
-      mView->hideColumn( eDescriptionColumn );
+      mView->hideColumn( KOTodoModel::PriorityColumn );
+      mView->hideColumn( KOTodoModel::PercentColumn );
+      mView->hideColumn( KOTodoModel::DescriptionColumn );
+      mView->hideColumn( KOTodoModel::CategoriesColumn );
     }
 
     // We don't have any incidences (content) yet, so we delay resizing
@@ -423,14 +569,13 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
     mView->sortByColumn( sortColumn, (Qt::SortOrder)sortOrder );
   }
 
-  mFlatView->setChecked( cfgGroup.readEntry( "FlatView", false ) );
-  mView->expandAll();
+  mFlatViewButton->setChecked( cfgGroup.readEntry( "FlatView", false ) );
 }
 
 void KOTodoView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
   BaseView::setIncidenceChanger( changer );
-  sModel->setIncidenceChanger( changer );
+  sModels->todoModel->setIncidenceChanger( changer );
 }
 
 void KOTodoView::showDates( const QDate &start, const QDate &end, const QDate & )
@@ -448,8 +593,7 @@ void KOTodoView::showIncidences( const Akonadi::Item::List &incidenceList, const
 
 void KOTodoView::updateView()
 {
-  sModel->reloadTodos();
-  mView->expandAll();
+  // View is always updated, it's connected to ETM.
 }
 
 void KOTodoView::updateCategories()
@@ -460,10 +604,9 @@ void KOTodoView::updateCategories()
   // TODO check if we have to do something with the category delegate
 }
 
-void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &incidence,
-                                         Akonadi::IncidenceChanger::ChangeType changeType )
+void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType )
 {
-  sModel->processChange( incidence, changeType );
+  // Don't do anything, model is connected to ETM, it's up to date
 }
 
 void KOTodoView::updateConfig()
@@ -551,7 +694,8 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
       return;
     }
     const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
-    const Akonadi::Item parent = sModel->todoForIndex( idx );
+    const Akonadi::Item parent = sModels->todoModel->data( idx,
+                      Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
     addTodo( mQuickAdd->text(), CalendarSupport::todo( parent ), mProxyModel->categories() );
   } else {
     return;
@@ -595,26 +739,24 @@ void KOTodoView::contextMenu( const QPoint &pos )
   mMovePopupMenu->setEnabled( hasItem );
 
   if ( hasItem ) {
-
-    if ( !incidencePtr ) {
-
+    if ( incidencePtr ) {
       if ( calendar() ) {
         mMakeSubtodosIndependent->setEnabled( !calendar()->childItems( incidencePtr->uid() ).isEmpty() );
-        mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
       }
+      mMakeTodoIndependent->setEnabled( !incidencePtr->relatedTo().isEmpty() );
     }
 
     switch ( mView->indexAt( pos ).column() ) {
-    case ePriorityColumn:
+    case KOTodoModel::PriorityColumn:
       mPriorityPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
-    case ePercentColumn:
+    case KOTodoModel::PercentColumn:
       mPercentageCompletedPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
-    case eDueDateColumn:
+    case KOTodoModel::DueDateColumn:
       mMovePopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
-    case eCategoriesColumn:
+    case KOTodoModel::CategoriesColumn:
       createCategoryPopupMenu()->popup( mView->viewport()->mapToGlobal( pos ) );
       break;
     default:
@@ -754,7 +896,10 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   const QModelIndex origIndex = mProxyModel->mapToSource( selection[0] );
   Q_ASSERT( origIndex.isValid() );
 
-  const Akonadi::Item origItem = sModel->todoForIndex( origIndex );
+  const Akonadi::Item origItem =
+    sModels->todoModel->data( origIndex,
+                              Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+
   const KCalCore::Todo::Ptr orig = CalendarSupport::todo( origItem );
   if ( !orig ) {
     return;
@@ -925,14 +1070,22 @@ void KOTodoView::changedCategories( QAction *action )
 
 void KOTodoView::setFullView( bool fullView )
 {
-  if ( !mFullView ) {
+  if ( !mFullViewButton ) {
     return;
   }
 
-  mFullView->blockSignals( true );
-  // We block signals to avoid recursion, we have two KOTodoViews and mFullView is synchronized
-  mFullView->setChecked( fullView );
-  mFullView->blockSignals( false );
+  mFullViewButton->setChecked( fullView );
+  if ( fullView ) {
+    mFullViewButton->setIcon( KIcon( "view-restore" ) );
+  } else {
+    mFullViewButton->setIcon( KIcon( "view-fullscreen" ) );
+  }
+
+  mFullViewButton->blockSignals( true );
+  // We block signals to avoid recursion; there are two KOTodoViews and
+  // also mFullViewButton is synchronized.
+  mFullViewButton->setChecked( fullView );
+  mFullViewButton->blockSignals( false );
 
   KOPrefs::instance()->setFullViewTodo( fullView );
   KOPrefs::instance()->writeConfig();
@@ -940,24 +1093,17 @@ void KOTodoView::setFullView( bool fullView )
   emit fullViewChanged( fullView );
 }
 
-void KOTodoView::setFlatView( bool flatView )
+void KOTodoView::setFlatView( bool flatView, bool notifyOtherViews )
 {
-  mFlatView->blockSignals( true );
-  // We block signals to avoid recursion, we have two KOTodoViews and mFlatView is synchronized
-  mFlatView->setChecked( flatView );
-  mFlatView->blockSignals( false );
-
-  mView->setRootIsDecorated( !flatView );
-
   if ( flatView ) {
-    // In flatview dropping confuses users and it's very easy to drop into a child item
-    mView->setDragDropMode( QAbstractItemView::DragOnly );
+    mFlatViewButton->setIcon( KIcon( "view-list-tree" ) );
   } else {
-    mView->setDragDropMode( QAbstractItemView::DragDrop );
+    mFlatViewButton->setIcon( KIcon( "view-list-details" ) );
   }
 
-  KOPrefs::instance()->setFlatListTodo( flatView );
-  KOPrefs::instance()->writeConfig();
+  if ( notifyOtherViews ) {
+    sModels->setFlatView( flatView );
+  }
 }
 
 void KOTodoView::getHighlightMode( bool &highlightEvents,
@@ -976,13 +1122,50 @@ bool KOTodoView::usesFullWindow()
 
 void KOTodoView::resizeColumnsToContent()
 {
-  mView->resizeColumnToContents( eDueDateColumn );
-  mView->resizeColumnToContents( eSummaryColumn );
+  mView->resizeColumnToContents( KOTodoModel::DueDateColumn );
+  mView->resizeColumnToContents( KOTodoModel::SummaryColumn );
 }
 
 KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
 {
   return KOrg::CalPrinterBase::Todolist;
+}
+
+void KOTodoView::restoreViewState()
+{
+  if ( sModels->isFlatView() ) {
+    return;
+  }
+
+  if ( sModels->todoTreeModel && !sModels->todoTreeModel->sourceModel() )
+    return;
+
+  //QElapsedTimer timer;
+  //timer.start();
+  delete mTreeStateRestorer;
+  mTreeStateRestorer = new Akonadi::ETMViewStateSaver();
+  KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
+  mTreeStateRestorer->setView( mView );
+  mTreeStateRestorer->restoreState( group );
+  //kDebug() << "Took " << timer.elapsed();
+}
+
+QString KOTodoView::stateSaverGroup() const
+{
+  QString str = QLatin1String( "TodoTreeViewState" );
+  if ( mSidebarView ) {
+    str += QChar( 'S' );
+  }
+
+  return str;
+}
+
+void KOTodoView::saveViewState()
+{
+  Akonadi::ETMViewStateSaver treeStateSaver;
+  KConfigGroup group( KOGlobals::self()->config(), stateSaverGroup() );
+  treeStateSaver.setView( mView );
+  treeStateSaver.saveState( group );
 }
 
 #include "kotodoview.moc"
