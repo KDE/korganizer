@@ -140,7 +140,7 @@ void IncidenceTreeModel::Private::reset( bool silent )
     const int sourceCount = q->sourceModel()->rowCount();
     for ( int i=0; i<sourceCount; ++i ) {
       PreNode::Ptr prenode = prenodeFromSourceRow( i );
-      if ( m_mimeTypes.isEmpty() || m_mimeTypes.contains( prenode->incidence->mimeType() ) )
+      if ( prenode && ( m_mimeTypes.isEmpty() || m_mimeTypes.contains( prenode->incidence->mimeType() ) ) )
         insertNode( prenode, /**silent=*/true );
     }
   }
@@ -269,7 +269,12 @@ PreNode::Ptr IncidenceTreeModel::Private::prenodeFromSourceRow( int row ) const
   Q_ASSERT( node->sourceIndex.isValid() );
   Q_ASSERT( node->sourceIndex.model() == q->sourceModel() );
   const Akonadi::Item item = node->sourceIndex.data( EntityTreeModel::ItemRole ).value<Akonadi::Item>();
-  Q_ASSERT( item.isValid() );
+
+  if ( !item.isValid() ) {
+    // It's a Collection, ignore that, we only want items.
+    return PreNode::Ptr();
+  }
+
   node->item = item;
   node->incidence = item.payload<KCalCore::Incidence::Ptr>();
   Q_ASSERT( node->incidence );
@@ -287,7 +292,7 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   for ( int i=begin; i<=end; ++i ) {
     PreNode::Ptr node = prenodeFromSourceRow( i );
     // if m_mimeTypes is empty, we ignore this feature
-    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) )
+    if ( !node || ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) ) )
       continue;
     nodes << node;
   }
