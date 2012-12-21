@@ -857,7 +857,7 @@ void KOTodoView::deleteTodo()
     const Akonadi::Item todoItem =
       selection[0].data ( KOTodoModel::TodoRole ).value<Akonadi::Item>();
 
-    if ( mChanger->deletedRecently( todoItem.id() ) ) {
+    if ( !mChanger->deletedRecently( todoItem.id() ) ) {
       emit deleteIncidenceSignal( todoItem );
     }
   }
