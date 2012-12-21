@@ -687,6 +687,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
       return;
     }
     const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
+    mView->expand( selection[0] );
     const Akonadi::Item parent = sModels->todoModel->data( idx,
                       Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
     addTodo( mQuickAdd->text(), CalendarSupport::todo( parent ), mProxyModel->categories() );
