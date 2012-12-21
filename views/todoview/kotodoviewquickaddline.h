@@ -37,7 +37,7 @@ class KOTodoViewQuickAddLine : public KLineEdit
 
   protected:
     void keyPressEvent( QKeyEvent *event );
-    void resizeEvent ( QResizeEvent * event );
+    void resizeEvent( QResizeEvent *event );
 
   Q_SIGNALS:
     void returnPressed( Qt::KeyboardModifiers modifiers );
