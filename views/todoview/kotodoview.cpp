@@ -682,8 +682,8 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 #endif
   } else if ( modifiers == Qt::ControlModifier ) {
     QModelIndexList selection = mView->selectionModel()->selectedRows();
-    if ( selection.size() != 1 ) {
-      kWarning() << "No to-do selected";
+    if ( selection.count() != 1 ) {
+      kWarning() << "No to-do selected" << selection;
       return;
     }
     const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
