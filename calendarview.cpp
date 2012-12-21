@@ -105,6 +105,8 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
   mChanger = new Akonadi::IncidenceChanger( this );
+  mChanger->setDefaultCollection( Akonadi::Collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() ) );
+
   mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
   mCalendar->setObjectName( "KOrg Calendar" );
