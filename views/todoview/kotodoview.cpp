@@ -661,10 +661,6 @@ void KOTodoView::addTodo( const QString &summary,
   }
 
   result = -1 != mChanger->createIncidence( todo, collection, this );
-
-  if ( !result ) {
-    KOHelper::showSaveIncidenceErrorMsg( this, todo );
-  }
 }
 
 void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
