@@ -640,12 +640,9 @@ void KOTodoView::addTodo( const QString &summary,
 
   todo->setCategories( categories );
 
-  Q_UNUSED( parent );
-  /*  if ( parent ) {
-    todo->setRelatedTo( parent );
+  if ( parent ) {
+    todo->setRelatedTo( parent->uid() );
   }
-  TODO: review
-  */
 
   CalendarSupport::CollectionSelection *selection =
     EventViews::EventView::globalCollectionSelection();
@@ -686,6 +683,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
   } else if ( modifiers == Qt::ControlModifier ) {
     QModelIndexList selection = mView->selectionModel()->selectedRows();
     if ( selection.size() != 1 ) {
+      kWarning() << "No to-do selected";
       return;
     }
     const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
