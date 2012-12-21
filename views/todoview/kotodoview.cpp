@@ -647,7 +647,6 @@ void KOTodoView::addTodo( const QString &summary,
   TODO: review
   */
 
-  bool result = false;
   CalendarSupport::CollectionSelection *selection =
     EventViews::EventView::globalCollectionSelection();
 
@@ -660,7 +659,7 @@ void KOTodoView::addTodo( const QString &summary,
     }
   }
 
-  result = -1 != mChanger->createIncidence( todo, collection, this );
+  mChanger->createIncidence( todo, collection, this );
 }
 
 void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
