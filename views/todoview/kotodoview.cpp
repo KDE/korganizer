@@ -105,7 +105,7 @@ struct ModelStack
       delete todoFlatModel;
       todoFlatModel = new Akonadi::EntityMimeTypeFilterModel( parent );
       todoFlatModel->addMimeTypeInclusionFilter( todoMimeType );
-      todoFlatModel->setSourceModel( calendar ? calendar->filteredModel() : 0 );
+      todoFlatModel->setSourceModel( calendar ? calendar->model() : 0 );
       todoModel->setSourceModel( todoFlatModel );
 
       delete todoTreeModel;
@@ -121,7 +121,7 @@ struct ModelStack
         view->mView->setDragDropMode( QAbstractItemView::DragDrop );
         view->setFlatView( flat, /**propagate=*/false ); // So other views update their toggle icon
       }
-      todoTreeModel->setSourceModel( calendar ? calendar->filteredModel() : 0 );
+      todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
       todoModel->setSourceModel( todoTreeModel );
       delete todoFlatModel;
       todoFlatModel = 0;
@@ -145,7 +145,7 @@ struct ModelStack
     calendar = newCalendar;
     todoModel->setCalendar( calendar );
     if ( todoTreeModel ) {
-      todoTreeModel->setSourceModel( calendar ? calendar->filteredModel() : 0 );
+      todoTreeModel->setSourceModel( calendar ? calendar->model() : 0 );
     }
   }
 

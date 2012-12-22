@@ -25,7 +25,7 @@
 #include "ui_multiagendaviewconfigwidget.h"
 
 #include <akonadi_next/kcolumnfilterproxymodel.h>
-using namespace Future;
+
 
 #include <calendarsupport/calendarmodel.h>
 
@@ -33,6 +33,7 @@ using namespace Future;
 #include <calendarviews/eventviews/multiagenda/multiagendaview.h>
 
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/EntityTreeModel>
 
 #include <KCheckableProxyModel>
 
@@ -40,6 +41,7 @@ using namespace Future;
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
 
+using namespace Future;
 using namespace KOrg;
 
 static QString generateColumnLabel( int c )
@@ -252,7 +254,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 void MultiAgendaView::showConfigurationDialog( QWidget *parent )
 {
   QPointer<MultiAgendaViewConfigDialog> dlg(
-    new MultiAgendaViewConfigDialog( d->mMultiAgendaView->calendar()->unfilteredModel(),
+    new MultiAgendaViewConfigDialog( d->mMultiAgendaView->calendar()->entityTreeModel(),
                                      parent ) );
 
   dlg->setUseCustomColumns( d->mMultiAgendaView->customColumnSetupUsed() );
