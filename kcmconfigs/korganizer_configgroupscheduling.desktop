@@ -136,6 +136,7 @@ Comment[x-test]=xxKOrganizer Group Scheduling Configurationxx
 Comment[zh_CN]=Korganizer 组日程安排配置
 Comment[zh_TW]=KOrganizer 群組排程設定
 X-KDE-Keywords=korganizer,group,scheduling
+X-KDE-Keywords[bs]=KOrganizator, grupa, raspored
 X-KDE-Keywords[ca]=korganizer,grup,planificació
 X-KDE-Keywords[da]=korganizer,gruppe,skemalægning
 X-KDE-Keywords[de]=KOrganizer,Gruppe,Ablaufplanung
