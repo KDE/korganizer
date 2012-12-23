@@ -236,12 +236,12 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   mCollectionview->setItemDelegate( new ColorDelegate( this ) );
 
   //Filter tree view.
-  KRecursiveFilterProxyModel *filterTreeViewModel = new KRecursiveFilterProxyModel( this );
-  filterTreeViewModel->setDynamicSortFilter( true );
-  filterTreeViewModel->setSourceModel( colorProxy );
-  filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
-  filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
-  mCollectionview->setModel( filterTreeViewModel );
+  //KRecursiveFilterProxyModel *filterTreeViewModel = new KRecursiveFilterProxyModel( this );
+  //filterTreeViewModel->setDynamicSortFilter( true );
+  //filterTreeViewModel->setSourceModel( colorProxy );
+  //filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
+  //filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
+  mCollectionview->setModel( colorProxy );
   connect( mCollectionview->selectionModel(),
            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(updateMenu()) );
