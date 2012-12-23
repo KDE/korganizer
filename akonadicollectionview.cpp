@@ -224,18 +224,10 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   //                                                   "textbox, verb to search", "Search" ) );
   //topLayout->addWidget( searchCol );
 
-  Akonadi::CollectionFilterProxyModel *collectionproxymodel =
-    new Akonadi::CollectionFilterProxyModel( this );
-  collectionproxymodel->setObjectName( "Only show collections" );
-  collectionproxymodel->setDynamicSortFilter( true );
-  collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
-  collectionproxymodel->setExcludeVirtualCollections( true );
-
   ColorProxyModel *colorProxy = new ColorProxyModel( this );
   colorProxy->setObjectName( "Show calendar colors" );
   colorProxy->setDynamicSortFilter( true );
-  colorProxy->setSourceModel( collectionproxymodel );
-  mBaseModel = collectionproxymodel;
+  mBaseModel = colorProxy;
 
   mCollectionview = new Akonadi::EntityTreeView( this );
   topLayout->addWidget( mCollectionview );
