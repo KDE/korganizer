@@ -2,7 +2,6 @@
 X-KDE-Library=korg_thisdayinhistory
 Name=Wikipedia 'This Day in History' Plugin
 Name[ar]=ملحق 'هذا اليوم في التاريخ' في الويكيبيديا
-Name[bs]=Wikipedia 'Ovaj Dan u Historiji' Dodatak
 Name[ca]=Connector d'imatge del dia de la Viquipèdia
 Name[ca@valencia]=Connector d'imatge del dia de la Viquipèdia
 Name[cs]=Wikipedia modul 'Tento den v historii'
@@ -49,7 +48,6 @@ Name[zh_CN]=Wikipedia “历史上的今天” 插件
 Name[zh_TW]=維基百科「歷史上的今天」外掛程式
 Comment=This plugin provides links to Wikipedia's 'This Day in History' pages
 Comment[ar]=هذا الملحق يوفر وصلات لصفحات 'هذا اليوم في التاريخ' من الويكيبيديا
-Comment[bs]=Ovaj dodatak omogucuje vezu sa Wikipedijinom 'Ovaj Dan u Historji' stranicom
 Comment[ca]=Aquest connector proporciona els enllaços a les pàgines d'Efemèrides de la Viquipèdia
 Comment[ca@valencia]=Este connector proporciona els enllaços a les pàgines d'Efemèrides de la Viquipèdia
 Comment[da]=Dette plugin viser links til Wikipedias 'denne dag i historien'-sider
