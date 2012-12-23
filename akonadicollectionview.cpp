@@ -5,6 +5,7 @@
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (C) 2009 Sebastian Sauer <sebsauer@kdab.net>
   Copyright (C) 2010 Laurent Montel <montel@kde.org>
+  Copyright (C) 2012 Sérgio Martins <iamsergio@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
