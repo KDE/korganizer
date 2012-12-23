@@ -2,7 +2,6 @@
 Name=DBUSCalendar
 Name[ar]=التقويم DBUS
 Name[bg]=DBUSCalendar
-Name[bs]=DBUSKalendar
 Name[ca]=DBUSCalendar
 Name[ca@valencia]=DBUSCalendar
 Name[cs]=DBUSCalendar
@@ -51,7 +50,6 @@ Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-Bus interface
 Comment[ar]=برنامج المنظم مع واجهة D-Bus
-Comment[bs]=Organizator sa D-Bus Sučeljom
 Comment[ca]=Organitzador amb una interfície D-Bus
 Comment[ca@valencia]=Organitzador amb una interfície D-Bus
 Comment[cs]=Organizátor s D-BUS rozhraním

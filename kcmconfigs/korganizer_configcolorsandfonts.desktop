@@ -15,7 +15,6 @@ X-DocPath=korganizer/index.html#config-main-fonts
 
 Name=Colors and Fonts
 Name[ar]=الألوان و الخطوط
-Name[bs]=Boje i vrsta slova
 Name[ca]=Colors i tipus de lletra
 Name[ca@valencia]=Colors i tipus de lletra
 Name[cs]=Barvy a písma
@@ -63,7 +62,6 @@ Name[zh_CN]=颜色和字体
 Name[zh_TW]=顏色與字型
 Comment=KOrganizer Colors and Fonts Configuration
 Comment[ar]=إعداد الألوان والخطوط لبرنامج المنظم 
-Comment[bs]=KOrganizatorova Konfiguracija boja i vrsta slova
 Comment[ca]=Configuració de colors i tipus de lletra del KOrganizer
 Comment[ca@valencia]=Configuració de colors i tipus de lletra del KOrganizer
 Comment[cs]=Nastavení barev a písem KOrganizeru

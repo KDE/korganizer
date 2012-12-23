@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=KOrganizer Print Plugin Interface
 Name[ar]=واجهة ملحق طباعة برنامج المنظم
-Name[bs]=KOrganizatorovo sučelje dodatka za štampanje
 Name[ca]=Interfície de connector d'impressió del KOrganizer
 Name[ca@valencia]=Interfície de connector d'impressió del KOrganizer
 Name[cs]=Tiskové rozhraní komponenty KOrganizeru
@@ -52,7 +51,6 @@ Comment[af]=Korganizer Deel
 Comment[ar]=جزء برنامج المنظم
 Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
-Comment[bs]=Dio KOrganizatora
 Comment[ca]=Part de KOrganizer
 Comment[ca@valencia]=Part de KOrganizer
 Comment[cs]=KOrganizer Part
