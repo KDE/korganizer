@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KOrganizer Part Interface
 Name[ar]=واجهة جزء برنامج المنظم
+Name[bs]=Dio Sučelja KOrganizatora
 Name[ca]=Interfície de part del KOrganizer
 Name[ca@valencia]=Interfície de part del KOrganizer
 Name[cs]=Rozhraní komponenty KOrganizeru
@@ -52,6 +53,7 @@ Comment[af]=Korganizer Deel
 Comment[ar]=جزء برنامج المنظم
 Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
+Comment[bs]=Dio KOrganizatora
 Comment[ca]=Part de KOrganizer
 Comment[ca@valencia]=Part de KOrganizer
 Comment[cs]=KOrganizer Part
