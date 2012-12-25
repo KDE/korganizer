@@ -348,7 +348,7 @@ void ActionManager::initActions()
   /************************** EDIT MENU *********************************/
 
   QAction *pasteAction;
-  Akonadi::History *h = mCalendarView->history();
+  Akonadi::History *history = mCalendarView->history();
   if ( mIsPart ) {
     // edit menu
     mCutAction = mACollection->addAction( KStandardAction::Cut, "korganizer_cut",
@@ -358,15 +358,15 @@ void ActionManager::initActions()
     pasteAction = mACollection->addAction( KStandardAction::Paste, "korganizer_paste",
                                            mCalendarView, SLOT(edit_paste()) );
     mUndoAction = mACollection->addAction( KStandardAction::Undo, "korganizer_undo",
-                                           h, SLOT(undo()) );
+                                           history, SLOT(undo()) );
     mRedoAction = mACollection->addAction( KStandardAction::Redo, "korganizer_redo",
-                                           h, SLOT(redo()) );
+                                           history, SLOT(redo()) );
   } else {
     mCutAction = KStandardAction::cut( mCalendarView, SLOT(edit_cut()), mACollection );
     mCopyAction = KStandardAction::copy( mCalendarView, SLOT(edit_copy()), mACollection );
     pasteAction = KStandardAction::paste( mCalendarView, SLOT(edit_paste()), mACollection );
-    mUndoAction = KStandardAction::undo( h, SLOT(undo()), mACollection );
-    mRedoAction = KStandardAction::redo( h, SLOT(redo()), mACollection );
+    mUndoAction = KStandardAction::undo( history, SLOT(undo()), mACollection );
+    mRedoAction = KStandardAction::redo( history, SLOT(redo()), mACollection );
   }
   mDeleteAction = new KAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this );
   mACollection->addAction( "edit_delete", mDeleteAction );
@@ -384,7 +384,7 @@ void ActionManager::initActions()
   mUndoAction->setEnabled( false );
   mRedoAction->setEnabled( false );
   connect( mCalendarView, SIGNAL(pasteEnabled(bool)), pasteAction, SLOT(setEnabled(bool)) );
-  connect( h, SIGNAL(changed()), SLOT(updateUndoRedoActions()) );
+  connect( history, SIGNAL(changed()), SLOT(updateUndoRedoActions()) );
 
   /************************** VIEW MENU *********************************/
 
