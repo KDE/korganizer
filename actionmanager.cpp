@@ -1948,7 +1948,7 @@ void ActionManager::updateUndoRedoActions()
 
   if ( history->redoAvailable() ) {
     mRedoAction->setEnabled( true );
-    mUndoAction->setText( i18n( "Undo: %1", history->nextRedoDescription() ) );
+    mRedoAction->setText( i18n( "Redo: %1", history->nextRedoDescription() ) );
   } else {
     mRedoAction->setEnabled( false );
     mRedoAction->setText( i18n( "Redo" ) );
