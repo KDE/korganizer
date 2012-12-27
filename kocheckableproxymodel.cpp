@@ -32,15 +32,16 @@ KOCheckableProxyModel::KOCheckableProxyModel( QObject *parent ) : KCheckableProx
 bool KOCheckableProxyModel::setData( const QModelIndex &index,
                                      const QVariant &value, int role )
 {
-  Qt::CheckState newState = static_cast<Qt::CheckState> (value.toInt() );
-  if ( role == Qt::CheckStateRole && index.column() == 0 )
+  Qt::CheckState newState = static_cast<Qt::CheckState> ( value.toInt() );
+  if ( role == Qt::CheckStateRole && index.column() == 0 ) {
     emit aboutToToggle( newState );
+  }
 
   const bool result = KCheckableProxyModel::setData( index, value, role );
 
-  if ( result )
+  if ( result ) {
     emit toggled( newState );
-
+  }
   return result;
 }
 

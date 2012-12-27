@@ -74,8 +74,9 @@ static PreNode::List sortedPrenodes( const PreNode::List &nodes )
       }
     }
 
-    if ( !foundAtLeastOne )
+    if ( !foundAtLeastOne ) {
       break;
+    }
   }
 
   PreNode::List sorted = nodes;
@@ -117,9 +118,9 @@ void IncidenceTreeModel::Private::dumpTree()
 
 QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) const
 {
-  if ( !node )
+  if ( !node ) {
     return QModelIndex();
-
+  }
   const int row = node->parentNode ? node->parentNode->directChilds.indexOf( node )
                                    : m_toplevelNodeList.indexOf( node );
 
@@ -129,8 +130,9 @@ QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) c
 
 void IncidenceTreeModel::Private::reset( bool silent )
 {
-  if ( !silent )
+  if ( !silent ) {
     q->beginResetModel();
+  }
   m_toplevelNodeList.clear();
   m_nodeMap.clear();
   m_itemByUid.clear();
@@ -140,12 +142,14 @@ void IncidenceTreeModel::Private::reset( bool silent )
     const int sourceCount = q->sourceModel()->rowCount();
     for ( int i=0; i<sourceCount; ++i ) {
       PreNode::Ptr prenode = prenodeFromSourceRow( i );
-      if ( m_mimeTypes.isEmpty() || m_mimeTypes.contains( prenode->incidence->mimeType() ) )
+      if ( m_mimeTypes.isEmpty() || m_mimeTypes.contains( prenode->incidence->mimeType() ) ) {
         insertNode( prenode, /**silent=*/true );
+      }
     }
   }
-  if ( !silent )
+  if ( !silent ) {
     q->endResetModel();
+  }
 }
 
 void IncidenceTreeModel::Private::onHeaderDataChanged( Qt::Orientation orientation, int first, int last )
@@ -290,8 +294,9 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   for ( int i=begin; i<=end; ++i ) {
     PreNode::Ptr node = prenodeFromSourceRow( i );
     // if m_mimeTypes is empty, we ignore this feature
-    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) )
+    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) ) {
       continue;
+    }
     nodes << node;
   }
 
@@ -399,13 +404,12 @@ void IncidenceTreeModel::Private::insertNode( const PreNode::Ptr &prenode, bool 
   }
 }
 
-
-
 // Sorts childs first parents last
 Node::List IncidenceTreeModel::Private::sorted( const Node::List &nodes ) const
 {
-  if ( nodes.isEmpty() )
+  if ( nodes.isEmpty() ) {
     return nodes;
+  }
 
   // Initialize depths
   foreach( const Node::Ptr &topLevelNode, m_toplevelNodeList )
@@ -601,16 +605,17 @@ int IncidenceTreeModel::rowCount( const QModelIndex &parent ) const
 
 int IncidenceTreeModel::columnCount( const QModelIndex &parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     Q_ASSERT( parent.model() == this );
-
+  }
   return sourceModel() ? sourceModel()->columnCount() : 1;
 }
 
 void IncidenceTreeModel::setSourceModel( QAbstractItemModel *model )
 {
-  if ( model == sourceModel() )
+  if ( model == sourceModel() ) {
     return;
+  }
 
   beginResetModel();
 
@@ -698,9 +703,9 @@ QModelIndex IncidenceTreeModel::mapFromSource( const QModelIndex &sourceIndex ) 
     return QModelIndex();
   }
 
-  if ( !sourceModel() )
+  if ( !sourceModel() ) {
     return QModelIndex();
-
+  }
   Q_ASSERT( sourceIndex.column() < sourceModel()->columnCount() );
   Q_ASSERT( sourceModel() == sourceIndex.model() );
   const Akonadi::Item::Id id = sourceIndex.data( Akonadi::EntityTreeModel::ItemIdRole ).toLongLong();

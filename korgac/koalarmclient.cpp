@@ -167,14 +167,12 @@ void KOAlarmClient::deferredInit()
   checkAlarms();
 }
 
-
 bool KOAlarmClient::dockerEnabled()
 {
   KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
   KConfigGroup generalGroup( &korgConfig, "General" );
   return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
-
 
 bool KOAlarmClient::collectionsAvailable()
 {
@@ -197,7 +195,6 @@ bool KOAlarmClient::collectionsAvailable()
 
   return true;
 }
-
 
 void KOAlarmClient::checkAlarms()
 {
