@@ -1425,7 +1425,9 @@ void CalendarView::toggleAlarm( const Akonadi::Item &item )
       alm->setEndOffset( KCalCore::Duration( -duration ) );
     }
   }
+  mChanger->startAtomicOperation( i18n( "Toggle Reminder" ) );
   mChanger->modifyIncidence( item, oldincidence, this );
+  mChanger->endAtomicOperation();
 }
 
 void CalendarView::toggleTodoCompleted( const Akonadi::Item &todoItem )
@@ -1452,7 +1454,9 @@ void CalendarView::toggleTodoCompleted( const Akonadi::Item &todoItem )
                           CalendarSupport::KCalPrefs::instance()->timeSpec() ) );
   }
 
+  mChanger->startAtomicOperation( i18n( "Toggle To-do Completed") );
   mChanger->modifyIncidence( todoItem, oldtodo, this );
+  mChanger->endAtomicOperation();
 }
 
 void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const QString &resourceId )
