@@ -2418,14 +2418,15 @@ void CalendarView::deleteTodoIncidence ( const Akonadi::Item &todoItem, bool for
       KGuiItem( i18n( "Delete Only This" ) ),
       KGuiItem( i18n( "Delete All" ) ) );
   }
-  startMultiModify( i18n( "Deleting sub-to-dos" ) );
   // Delete only the father
   if ( km == KMessageBox::Yes ) {
+    startMultiModify( i18n( "Delete parent to-do" ) );
     makeChildrenIndependent( todoItem );
     if ( !mChanger->deletedRecently( todoItem.id() ) ) {
       mChanger->deleteIncidence( todoItem, this );
     }
   } else if ( km == KMessageBox::No ) {
+    startMultiModify( i18n( "Delete parent to-do and sub-to-dos" ) );
     // Delete all
     // we have to hide the delete confirmation for each itemDate
     deleteSubTodosIncidence ( todoItem );
