@@ -17,7 +17,8 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/calendarviews/eventviews
   ${AKONADI_INCLUDE_DIR}
   ${Boost_INCLUDE_DIRS}
-  ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR}
+  ${QT_INCLUDES}
+  ${ZLIB_INCLUDE_DIRS}
 )
 
 if(NOT WINCE)
@@ -287,7 +288,7 @@ if(NOT WINCE)
       ${KDE4_KCMUTILS_LIBS}
       ${KDE4_KNEWSTUFF3_LIBS}
       ${KDE4_KPRINTUTILS_LIBS}
-      ${ZLIB_LIBRARY}
+      ${ZLIB_LIBRARIES}
     )
 
     set_target_properties(korganizerprivate PROPERTIES
