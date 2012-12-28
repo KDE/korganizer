@@ -118,12 +118,6 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   connect( d->mAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
-  connect( d->mAgendaView, SIGNAL(startMultiModify(QString)),
-           SIGNAL(startMultiModify(QString)) );
-
-  connect( d->mAgendaView, SIGNAL(endMultiModify()),
-           SIGNAL(endMultiModify()) );
-
   connect( d->mAgendaView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 

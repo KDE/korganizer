@@ -120,12 +120,6 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   connect( d->mMultiAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(startMultiModify(QString)),
-           SIGNAL(startMultiModify(QString)) );
-
-  connect( d->mMultiAgendaView, SIGNAL(endMultiModify()),
-           SIGNAL(endMultiModify()) );
-
   connect( d->mMultiAgendaView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 

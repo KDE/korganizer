@@ -105,12 +105,6 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   connect( d->mTimeLineView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
-  connect( d->mTimeLineView, SIGNAL(startMultiModify(QString)),
-           SIGNAL(startMultiModify(QString)) );
-
-  connect( d->mTimeLineView, SIGNAL(endMultiModify()),
-           SIGNAL(endMultiModify()) );
-
   connect( d->mTimeLineView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 

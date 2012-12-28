@@ -104,12 +104,6 @@ MonthView::MonthView( QWidget *parent )
   connect( d->mMonthView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
-  connect( d->mMonthView, SIGNAL(startMultiModify(QString)),
-           SIGNAL(startMultiModify(QString)) );
-
-  connect( d->mMonthView, SIGNAL(endMultiModify()),
-           SIGNAL(endMultiModify()) );
-
   connect( d->mMonthView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 

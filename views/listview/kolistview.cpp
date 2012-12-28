@@ -93,12 +93,6 @@ KOListView::KOListView( const Akonadi::ETMCalendar::Ptr &calendar,
   connect( mListView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
-  connect( mListView, SIGNAL(startMultiModify(QString)),
-           SIGNAL(startMultiModify(QString)) );
-
-  connect( mListView, SIGNAL(endMultiModify()),
-           SIGNAL(endMultiModify()) );
-
   connect( mListView, SIGNAL(newEventSignal()),
            SIGNAL(newEventSignal()) );
 
