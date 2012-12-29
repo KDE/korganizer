@@ -38,7 +38,7 @@ class KOCheckableProxyModel : public KCheckableProxyModel
 {
   Q_OBJECT
   public:
-    KOCheckableProxyModel( QObject *parent );
+    explicit KOCheckableProxyModel( QObject *parent );
 
     /**reimp*/
     bool setData( const QModelIndex &index, const QVariant &value,

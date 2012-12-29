@@ -74,8 +74,9 @@ static PreNode::List sortedPrenodes( const PreNode::List &nodes )
       }
     }
 
-    if ( !foundAtLeastOne )
+    if ( !foundAtLeastOne ) {
       break;
+    }
   }
 
   PreNode::List sorted = nodes;
@@ -117,9 +118,9 @@ void IncidenceTreeModel::Private::dumpTree()
 
 QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) const
 {
-  if ( !node )
+  if ( !node ) {
     return QModelIndex();
-
+  }
   const int row = node->parentNode ? node->parentNode->directChilds.indexOf( node )
                                    : m_toplevelNodeList.indexOf( node );
 
@@ -129,8 +130,9 @@ QModelIndex IncidenceTreeModel::Private::indexForNode( const Node::Ptr &node ) c
 
 void IncidenceTreeModel::Private::reset( bool silent )
 {
-  if ( !silent )
+  if ( !silent ) {
     q->beginResetModel();
+  }
   m_toplevelNodeList.clear();
   m_nodeMap.clear();
   m_itemByUid.clear();
@@ -144,8 +146,9 @@ void IncidenceTreeModel::Private::reset( bool silent )
         insertNode( prenode, /**silent=*/true );
     }
   }
-  if ( !silent )
+  if ( !silent ) {
     q->endResetModel();
+  }
 }
 
 void IncidenceTreeModel::Private::onHeaderDataChanged( Qt::Orientation orientation, int first, int last )
@@ -218,6 +221,7 @@ void IncidenceTreeModel::Private::onDataChanged( const QModelIndex &begin, const
         const bool res = q->beginMoveRows( /**fromParent*/index.parent(), fromRow,
                                            fromRow, newParentIndex, toRow );
         Q_ASSERT( res );
+        Q_UNUSED( res );
 
         // Now that beginmoveRows() was called, we can do the actual moving:
         if ( newParentNode ) {
@@ -258,6 +262,7 @@ void IncidenceTreeModel::Private::onRowsAboutToBeInserted( const QModelIndex &pa
 {
   // We are a reparenting proxy, the source proxy is flat
   Q_ASSERT( !parent.isValid() );
+  Q_UNUSED( parent );
   // Nothing to do yet. We don't know if all the new incidences in this range belong to the same
   // parent yet.
 }
@@ -287,13 +292,19 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   //QElapsedTimer timer;
   //timer.start();
   Q_ASSERT( !parent.isValid() );
+  Q_UNUSED( parent );
   Q_ASSERT( begin <= end );
   PreNode::List nodes;
   for ( int i=begin; i<=end; ++i ) {
     PreNode::Ptr node = prenodeFromSourceRow( i );
     // if m_mimeTypes is empty, we ignore this feature
+<<<<<<< HEAD
     if ( !node || ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) ) )
+=======
+    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) ) {
+>>>>>>> master
       continue;
+    }
     nodes << node;
   }
 
@@ -401,13 +412,12 @@ void IncidenceTreeModel::Private::insertNode( const PreNode::Ptr &prenode, bool 
   }
 }
 
-
-
 // Sorts childs first parents last
 Node::List IncidenceTreeModel::Private::sorted( const Node::List &nodes ) const
 {
-  if ( nodes.isEmpty() )
+  if ( nodes.isEmpty() ) {
     return nodes;
+  }
 
   // Initialize depths
   foreach( const Node::Ptr &topLevelNode, m_toplevelNodeList )
@@ -424,6 +434,7 @@ void IncidenceTreeModel::Private::onRowsAboutToBeRemoved( const QModelIndex &par
   //QElapsedTimer timer;
   //timer.start();
   Q_ASSERT( !parent.isValid() );
+  Q_UNUSED( parent );
   Q_ASSERT( begin <= end );
 
   // First, gather nodes to remove
@@ -602,16 +613,17 @@ int IncidenceTreeModel::rowCount( const QModelIndex &parent ) const
 
 int IncidenceTreeModel::columnCount( const QModelIndex &parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     Q_ASSERT( parent.model() == this );
-
+  }
   return sourceModel() ? sourceModel()->columnCount() : 1;
 }
 
 void IncidenceTreeModel::setSourceModel( QAbstractItemModel *model )
 {
-  if ( model == sourceModel() )
+  if ( model == sourceModel() ) {
     return;
+  }
 
   beginResetModel();
 
@@ -699,9 +711,9 @@ QModelIndex IncidenceTreeModel::mapFromSource( const QModelIndex &sourceIndex ) 
     return QModelIndex();
   }
 
-  if ( !sourceModel() )
+  if ( !sourceModel() ) {
     return QModelIndex();
-
+  }
   Q_ASSERT( sourceIndex.column() < sourceModel()->columnCount() );
   Q_ASSERT( sourceModel() == sourceIndex.model() );
   const Akonadi::Item::Id id = sourceIndex.data( Akonadi::EntityTreeModel::ItemIdRole ).toLongLong();

@@ -1131,8 +1131,9 @@ void KOTodoView::restoreViewState()
     return;
   }
 
-  if ( sModels->todoTreeModel && !sModels->todoTreeModel->sourceModel() )
+  if ( sModels->todoTreeModel && !sModels->todoTreeModel->sourceModel() ) {
     return;
+  }
 
   //QElapsedTimer timer;
   //timer.start();

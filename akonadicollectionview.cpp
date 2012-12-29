@@ -360,9 +360,9 @@ AkonadiCollectionView::~AkonadiCollectionView()
 void AkonadiCollectionView::restoreTreeState()
 {
   static QPointer<Akonadi::ETMViewStateSaver> treeStateRestorer;
-  if ( treeStateRestorer ) // We don't need more than one to be running at the same time
+  if ( treeStateRestorer ) {// We don't need more than one to be running at the same time
     delete treeStateRestorer;
-
+  }
   treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
   KConfigGroup group( KOGlobals::self()->config(), "CollectionTreeView" );
   treeStateRestorer->setView( mCollectionview );
@@ -600,8 +600,9 @@ Akonadi::Collection AkonadiCollectionView::selectedCollection() const
 {
   Akonadi::Collection collection;
   QItemSelectionModel *selectionModel = mCollectionview->selectionModel();
-  if ( !selectionModel )
+  if ( !selectionModel ) {
     return collection;
+  }
   QModelIndexList indexes = selectionModel->selectedIndexes();
   if ( !indexes.isEmpty() ) {
     collection = indexes.first().data( Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
@@ -612,11 +613,13 @@ Akonadi::Collection AkonadiCollectionView::selectedCollection() const
 Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
 {
   Akonadi::Collection::List collections;
-  if ( !mSelectionProxyModel )
+  if ( !mSelectionProxyModel ) {
     return collections;
+  }
   QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
-  if ( !selectionModel )
+  if ( !selectionModel ) {
     return collections;
+  }
   QModelIndexList indexes = selectionModel->selectedIndexes();
   foreach( const QModelIndex &index, indexes ) {
     if ( index.isValid() ) {
@@ -633,8 +636,9 @@ Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
   QAbstractProxyModel *proxy = qobject_cast<QAbstractProxyModel*>( mCollectionview->model() );
   while( proxy ) {
     Akonadi::EntityTreeModel *etm = qobject_cast<Akonadi::EntityTreeModel*>( proxy->sourceModel() );
-    if ( etm )
+    if ( etm ) {
       return etm;
+    }
     proxy = qobject_cast<QAbstractProxyModel*>( proxy->sourceModel() );
   }
 
@@ -655,8 +659,9 @@ void AkonadiCollectionView::checkNewCalendar( const QModelIndex &parent, int beg
     }
   }
 
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     mCollectionview->setExpanded( parent, true );
+  }
 }
 
 #include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

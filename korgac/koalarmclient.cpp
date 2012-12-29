@@ -146,7 +146,6 @@ bool KOAlarmClient::dockerEnabled()
   return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
 
-
 bool KOAlarmClient::collectionsAvailable() const
 {
   // The list of collections must be available.
@@ -168,7 +167,6 @@ bool KOAlarmClient::collectionsAvailable() const
 
   return true;
 }
-
 
 void KOAlarmClient::checkAlarms()
 {

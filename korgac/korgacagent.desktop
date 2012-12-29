@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Reminder Daemon
+Name[bs]=Demon za podsjećanje
 Name[ca]=Dimoni de recordatoris
 Name[ca@valencia]=Dimoni de recordatoris
 Name[cs]=Démon upomínek
@@ -41,6 +42,7 @@ Name[uk]=Фонова служба нагадування
 Name[x-test]=xxReminder Daemonxx
 Name[zh_TW]=提醒守護程式
 Comment=Event and task reminder daemon
+Comment[bs]=Demon za podsjećanje na događaje i zadatke
 Comment[ca]=Dimoni de recordatoris de tasques i esdeveniments
 Comment[ca@valencia]=Dimoni de recordatoris de tasques i esdeveniments
 Comment[cs]=Démon upomínek na události a úkoly
