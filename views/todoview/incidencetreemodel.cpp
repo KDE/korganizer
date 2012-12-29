@@ -298,13 +298,8 @@ void IncidenceTreeModel::Private::onRowsInserted( const QModelIndex &parent, int
   for ( int i=begin; i<=end; ++i ) {
     PreNode::Ptr node = prenodeFromSourceRow( i );
     // if m_mimeTypes is empty, we ignore this feature
-<<<<<<< HEAD
     if ( !node || ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) ) )
-=======
-    if ( !m_mimeTypes.isEmpty() && !m_mimeTypes.contains( node->incidence->mimeType() ) ) {
->>>>>>> master
       continue;
-    }
     nodes << node;
   }
 
