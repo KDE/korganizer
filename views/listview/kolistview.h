@@ -86,7 +86,6 @@ class KOListView : public KOEventView
   private:
     KOEventPopupMenu *mPopupMenu;
     EventViews::ListView *mListView;
-
 };
 
 #endif

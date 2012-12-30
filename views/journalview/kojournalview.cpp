@@ -26,8 +26,11 @@
 // View of Journal entries
 
 #include "kojournalview.h"
-#include "journalview.h"
 #include "koprefs.h"
+#include "kocorehelper.h"
+#include "printing/calprinter.h"
+
+#include <calendarviews/journal/journalview.h>
 
 #include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/utils.h>
@@ -43,163 +46,118 @@ using namespace KOrg;
 KOJournalView::KOJournalView( QWidget *parent )
   : KOrg::BaseView( parent )
 {
-  QVBoxLayout *topLayout = new QVBoxLayout( this );
-  topLayout->setMargin( 0 );
-  mSA = new QScrollArea( this );
-  mVBox = new KVBox( mSA->viewport() );
-  mSA->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-  mSA->setWidgetResizable ( true );
-  mSA->setWidget( mVBox );
-  topLayout->addWidget( mSA );
+  QVBoxLayout *layout = new QVBoxLayout( this );
+  mJournalView = new EventViews::JournalView( this );
 
-  installEventFilter( this );
+  layout->addWidget( mJournalView );
+
+  connect( mJournalView, SIGNAL(showNewEventPopupSignal()),
+           SLOT(showNewEventPopup()) );
+
+  connect( mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr)),
+           SLOT(printJournal(KCalCore::Journal::Ptr)) );
+
+  connect( mJournalView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+
+  connect( mJournalView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()) );
+
+  connect( mJournalView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( mJournalView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( mJournalView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+
+  connect( mJournalView, SIGNAL(newEventSignal()),
+           SIGNAL(newEventSignal()) );
+
+  connect( mJournalView, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
+
+  connect( mJournalView, SIGNAL(newEventSignal(QDateTime)),
+           SIGNAL(newEventSignal(QDateTime)) );
+
+  connect( mJournalView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+
+  connect( mJournalView, SIGNAL(newTodoSignal(QDate)),
+           SIGNAL(newTodoSignal(QDate)) );
+
+  connect( mJournalView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+
+  connect( mJournalView, SIGNAL(newJournalSignal(QDate)),
+           SIGNAL(newJournalSignal(QDate)) );
 }
 
 KOJournalView::~KOJournalView()
 {
 }
 
-void KOJournalView::appendJournal( const Akonadi::Item &journal, const QDate &dt )
-{
-  JournalDateView *entry = 0;
-  if ( mEntries.contains( dt ) ) {
-    entry = mEntries[dt];
-  } else {
-    entry = new JournalDateView( calendar(), mVBox );
-    entry->setDate( dt );
-    entry->setIncidenceChanger( mChanger );
-    entry->show();
-    connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
-    connect( this, SIGNAL(setIncidenceChangerSignal(Akonadi::IncidenceChanger*)),
-             entry, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger*)) );
-    connect( this, SIGNAL(journalEdited(Akonadi::Item)),
-             entry, SLOT(journalEdited(Akonadi::Item)) );
-    connect( this, SIGNAL(journalDeleted(Akonadi::Item)),
-             entry, SLOT(journalDeleted(Akonadi::Item)) );
-
-    connect( entry, SIGNAL(editIncidence(Akonadi::Item)),
-             this, SIGNAL(editIncidenceSignal(Akonadi::Item)) );
-    connect( entry, SIGNAL(deleteIncidence(Akonadi::Item)),
-             this, SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
-    connect( entry, SIGNAL(newJournal(QDate)),
-             this, SIGNAL(newJournalSignal(QDate)) );
-    connect( entry, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-                    SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
-    mEntries.insert( dt, entry );
-  }
-
-  if ( entry && CalendarSupport::hasJournal( journal ) ) {
-    entry->addJournal( journal );
-  }
-}
-
 int KOJournalView::currentDateCount() const
 {
-  return mEntries.size();
+  return mJournalView->currentDateCount();
 }
 
 Akonadi::Item::List KOJournalView::selectedIncidences()
 {
-  // We don't have a selection in the journal view.
-  // FIXME: The currently edited journal is the selected incidence...
-  Akonadi::Item::List eventList;
-  return eventList;
+  return mJournalView->selectedIncidences();
 }
 
-void KOJournalView::clearEntries()
-{
-  kDebug(5850) << "KOJournalView::clearEntries()";
-  QMap<QDate, JournalDateView*>::Iterator it;
-  for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    delete it.value();
-  }
-  mEntries.clear();
-}
 void KOJournalView::updateView()
 {
-  QMap<QDate, JournalDateView*>::Iterator it = mEntries.end();
-  while ( it != mEntries.begin() ) {
-    --it;
-    it.value()->clear();
-    const KCalCore::Journal::List journals = calendar()->journals( it.key() );
-    kDebug() << "updateview found" << journals.count();
-    Q_FOREACH ( const KCalCore::Journal::Ptr &journal, journals ) {
-      Akonadi::Item item = calendar()->item( journal->uid() );
-      it.value()->addJournal( item );
-    }
-  }
+  mJournalView->updateView();
 }
 
 void KOJournalView::flushView()
 {
-  emit flushEntries();
+  mJournalView->flushView();
 }
 
-void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate & )
+void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate &dummy )
 {
-  clearEntries();
-  if ( end<start ) {
-    kWarning() << "End is smaller than start. end=" << end << "; start=" << start;
-    return;
-  }
-
-  KCalCore::Journal::List jnls;
-  for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
-    jnls = calendar()->journals( d );
-    kDebug() << "Found" << jnls.count() << "journals on date" << d;
-    foreach( const KCalCore::Journal::Ptr &journal, jnls ) {
-      Akonadi::Item item = calendar()->item( journal->uid() );
-      appendJournal( item, d );
-    }
-    if ( jnls.isEmpty() ) {
-      // create an empty dateentry widget
-      //updateView();
-      kDebug() << "Appended null journal";
-      appendJournal( Akonadi::Item(), d );
-    }
-  }
+  mJournalView->showDates( start, end, dummy );
 }
 
 void KOJournalView::showIncidences( const Akonadi::Item::List &incidences, const QDate &date )
 {
-  Q_UNUSED( date );
-  clearEntries();
-  Q_FOREACH ( const Akonadi::Item &i, incidences ) {
-    if ( const KCalCore::Journal::Ptr j = CalendarSupport::journal( i ) ) {
-      appendJournal( i, j->dtStart().date() );
-    }
-  }
+  mJournalView->showIncidences( incidences, date );
 }
 
 void KOJournalView::changeIncidenceDisplay( const Akonadi::Item &incidence,
                                             Akonadi::IncidenceChanger::ChangeType changeType )
 {
-  if ( KCalCore::Journal::Ptr journal = CalendarSupport::journal( incidence ) ) {
-    switch ( changeType ) {
-    case Akonadi::IncidenceChanger::ChangeTypeCreate:
-      appendJournal( incidence, journal->dtStart().date() );
-      break;
-    case Akonadi::IncidenceChanger::ChangeTypeModify:
-      emit journalEdited( incidence );
-      break;
-    case Akonadi::IncidenceChanger::ChangeTypeDelete:
-      emit journalDeleted( incidence );
-      break;
-    default:
-      kWarning() << "Illegal change type" << changeType;
-    }
-  }
+  mJournalView->changeIncidenceDisplay( incidence, changeType );
 }
 
 void KOJournalView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
 {
-  mChanger = changer;
-  emit setIncidenceChangerSignal( changer );
-}
-
-void KOJournalView::newJournal()
-{
-  emit newJournalSignal( QDate::currentDate() );
+  mJournalView->setIncidenceChanger( changer );
 }
 
 void KOJournalView::getHighlightMode( bool &highlightEvents,
@@ -211,21 +169,35 @@ void KOJournalView::getHighlightMode( bool &highlightEvents,
   highlightEvents   = !highlightJournals;
 }
 
-bool KOJournalView::eventFilter ( QObject *object, QEvent *event )
-{
-  Q_UNUSED( object );
-  switch ( event->type() ) {
-  case QEvent::MouseButtonDblClick:
-    emit newJournalSignal( QDate() );
-    return true;
-  default:
-    return false;
-  }
-}
-
 CalPrinterBase::PrintType KOJournalView::printType() const
 {
   return CalPrinterBase::Journallist;
+}
+
+void KOJournalView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
+{
+  BaseView::setCalendar( calendar );
+  mJournalView->setCalendar( calendar.data() );
+}
+
+void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal )
+{
+  if ( journal ) {
+    KOCoreHelper helper;
+    CalPrinter printer( this, calendar().data(), &helper, true );
+    KCalCore::Incidence::List selectedIncidences;
+    selectedIncidences.append( journal );
+
+    const QDate dtStart = journal->dtStart().date();
+
+    //make sure to clear and then restore the view stylesheet, else the view
+    //stylesheet is propagated to the child print dialog. see bug 303902
+    const QString ss = styleSheet();
+    setStyleSheet( QString() );
+    printer.print( KOrg::CalPrinterBase::Incidence,
+                   dtStart, dtStart, selectedIncidences );
+    setStyleSheet( ss );
+  }
 }
 
 #include "kojournalview.moc"

@@ -26,14 +26,11 @@
 #define KORG_VIEWS_KOJOURNALVIEW_H
 
 #include "korganizer/baseview.h"
-
 #include <KCalCore/Incidence> // for KCalCore::DateList typedef
 
-class JournalDateView;
-
-class KVBox;
-
-class QScrollArea;
+namespace EventViews {
+  class JournalView;
+}
 
 /**
  * This class provides a journal view.
@@ -57,19 +54,17 @@ class KOJournalView : public KOrg::BaseView
       return KCalCore::DateList();
     }
 
-    void appendJournal( const Akonadi::Item &journal, const QDate &dt );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
 
-    /** documentation in baseview.h */
+    /** reimp */
     void getHighlightMode( bool &highlightEvents,
                            bool &highlightTodos,
                            bool &highlightJournals );
 
-    bool eventFilter ( QObject *, QEvent * );
-    virtual KOrg::CalPrinterBase::PrintType printType() const;
+    /** reimp */
+    KOrg::CalPrinterBase::PrintType printType() const;
 
-  public slots:
-    // Don't update the view when midnight passed, otherwise we'll have data loss (bug 79145)
-    virtual void dayPassed( const QDate & ) {}
+  public Q_SLOTS:
     void updateView();
     void flushView();
 
@@ -79,21 +74,10 @@ class KOJournalView : public KOrg::BaseView
     void changeIncidenceDisplay( const Akonadi::Item &incidence,
                                  Akonadi::IncidenceChanger::ChangeType );
     void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
-    void newJournal();
-  signals:
-    void flushEntries();
-    void setIncidenceChangerSignal( Akonadi::IncidenceChanger * );
-    void journalEdited( const Akonadi::Item &journal );
-    void journalDeleted( const Akonadi::Item &journal );
-
-  protected:
-    void clearEntries();
+    void printJournal( const KCalCore::Journal::Ptr &journal );
 
   private:
-    QScrollArea *mSA;
-    KVBox *mVBox;
-    QMap<QDate, JournalDateView*> mEntries;
-//    DateList mSelectedDates;  // List of dates to be displayed
+    EventViews::JournalView *mJournalView;
 };
 
 #endif

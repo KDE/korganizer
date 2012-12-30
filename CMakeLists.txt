@@ -203,7 +203,6 @@ if(NOT WINCE)
       printing/calprinter.cpp
       printing/calprintpluginbase.cpp
       views/agendaview/koagendaview.cpp
-      views/journalview/journalview.cpp
       views/journalview/kojournalview.cpp
       views/listview/kolistview.cpp
       views/monthview/monthview.cpp
