@@ -26,8 +26,11 @@
 #define KORG_VIEWS_KOTIMESPENTVIEW_H
 
 #include "korganizer/baseview.h"
+#include <Akonadi/Calendar/ETMCalendar>
 
-class TimeSpentWidget;
+namespace EventViews {
+  class TimeSpentView;
+}
 
 /**
   This view show the time spent on each category.
@@ -51,7 +54,9 @@ class KOTimeSpentView : public KOrg::BaseView
       return KCalCore::DateList();
     }
 
-  public slots:
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
+
+  public Q_SLOTS:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end,
                             const QDate &preferredMonth = QDate() );
@@ -61,12 +66,7 @@ class KOTimeSpentView : public KOrg::BaseView
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   private:
-    TimeSpentWidget *mView;
-
-    QDate mStartDate;
-    QDate mEndDate;
-
-    friend class TimeSpentWidget;
+    EventViews::TimeSpentView *mView;
 };
 
 #endif

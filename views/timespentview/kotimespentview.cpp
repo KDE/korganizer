@@ -24,173 +24,78 @@
 
 #include "kotimespentview.h"
 
+#include <calendarviews/timespent/timespentview.h>
 #include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
 #include <KCalCore/Event>
 
-#include <QBoxLayout>
-#include <QPainter>
-#include <QPaintEvent>
-
-class TimeSpentWidget : public QWidget
-{
-  public:
-    TimeSpentWidget( KOTimeSpentView *parent )
-      : QWidget( parent ), mTimeSpentView( parent ) {}
-    ~TimeSpentWidget() {}
-
-    void paintEvent( QPaintEvent *e )
-    {
-      QPainter p( this );
-      p.fillRect( e->rect(), Qt::white );
-      int margin = 10;
-      int y = 90;
-
-      p.fillRect( QRect( 5, 5, width(), 35 ), QColor( 54, 121, 173 ) ); // sync with kowhatsnextview
-      QPen oldPen = p.pen();
-      QFont oldFont = p.font();
-      QFont font = p.font();
-      font.setPixelSize( 25 );
-      font.setBold( true );
-      p.setFont( font );
-      p.setPen( QColor( Qt::white ) );
-      p.drawText( QPoint( 25, 35 ), i18n( "Time Tracker" ) );
-      p.setPen( oldPen );
-      p.setFont( oldFont );
-
-      QString dateText;
-      if ( mTimeSpentView->mStartDate.daysTo( mTimeSpentView->mEndDate ) < 1 ) {
-        dateText = KGlobal::locale()->formatDate( mTimeSpentView->mStartDate );
-      } else {
-        dateText = i18nc( "Date from - to", "%1 - %2",
-                          KGlobal::locale()->formatDate( mTimeSpentView->mStartDate ),
-                          KGlobal::locale()->formatDate( mTimeSpentView->mEndDate ) );
-      }
-      font.setPixelSize( 20 );
-      font.setBold( true );
-      p.setFont( font );
-      p.drawText( QPoint( margin, 60 ), dateText );
-      p.setPen( oldPen );
-      p.setFont( oldFont );
-
-      QMap<QString, int> secondsSpent;
-
-      int total = 0;
-
-      foreach ( const KCalCore::Event::Ptr &e, mEventList ) {
-        Q_ASSERT( e );
-        KDateTime selectedStart( mTimeSpentView->mStartDate,
-                                 QTime( 0, 0 ),
-                                 e->dtStart().timeSpec() );
-
-        KDateTime selectedEnd( mTimeSpentView->mEndDate.addDays( 1 ),
-                               QTime( 0, 0 ),
-                               e->dtEnd().timeSpec() );
-
-        KDateTime start;
-        KDateTime end;
-
-        // duration of all occurrences added
-        int totalDuration = 0;
-
-        if ( e->recurs() ) {
-          int eventDuration = e->dtStart().secsTo( e->dtEnd() );
-
-          // timesInInterval only return events that have their start inside the interval
-          // so we resize the interval by -eventDuration
-          KCalCore::DateTimeList times = e->recurrence()->timesInInterval(
-            selectedStart.addSecs( -eventDuration ), selectedEnd );
-
-          foreach ( const KDateTime &kdt, times ) {
-            // either the event's start or the event's end must be in the view's interval
-            if ( kdt >= selectedStart ||
-                 kdt.addSecs( eventDuration ) >= selectedStart ) {
-
-              start = kdt > selectedStart ? kdt : selectedStart;
-              end   = kdt.addSecs( eventDuration ) < selectedEnd ?
-                      kdt.addSecs( eventDuration ) : selectedEnd;
-              totalDuration += start.secsTo( end );
-            }
-          }
-
-        } else {
-          // The event's start can be before the view's start date or end after the view's end
-          start  = e->dtStart() > selectedStart ? e->dtStart() : selectedStart;
-          end    = e->dtEnd()   < selectedEnd   ? e->dtEnd()   : selectedEnd;
-
-          totalDuration += start.secsTo( end );
-        }
-
-        if ( totalDuration == 0 ) {
-          continue;
-        }
-
-        if ( e->categories().count() ) {
-          foreach ( const QString &s, e->categories() ) {
-            secondsSpent[ s ] += totalDuration;
-          }
-        } else {
-          secondsSpent[ i18n( "No category" ) ] += totalDuration;
-        }
-
-        total += totalDuration;
-      }
-
-      QMapIterator<QString, int> i( secondsSpent );
-      QFontMetrics fm = p.fontMetrics();
-      int lineHeight = fm.boundingRect( "No category" ).height();
-      int totalLineHeight = lineHeight + 2; // vertical margin included
-
-      while ( i.hasNext() ) {
-        i.next();
-
-        // bar
-        const QColor color = CalendarSupport::KCalPrefs::instance()->categoryColor( i.key() );
-        const int length =
-          static_cast<int>( ( (double) i.value() ) / total * ( width() - 3 * margin ) );
-
-        QPainterPath path( QPoint( margin, y ) );
-        path.lineTo( margin + length, y );
-        if ( length < margin ) {
-          path.lineTo( margin + length, y + lineHeight );
-        } else {
-          path.arcTo( QRect( margin + length, y, 2 * margin, lineHeight ), +90, -180 );
-        }
-        path.lineTo( margin, y + lineHeight );
-        path.closeSubpath();
-        p.setBrush( color );
-        p.drawPath( path );
-
-        // text
-        int totHr, perHr;
-        if ( total > 0 ) {
-          totHr = i.value() / ( 60 * 60 );
-          perHr = static_cast<int>( ( (double) i.value() * 100 / total ) );
-        } else {
-          totHr = 0;
-          perHr = 0;
-        }
-        p.drawText( QRect( margin + 2, y + 2, width() - 2 * margin, lineHeight ),
-                    i.key() + ": " +
-                    i18ncp( "number of hours spent", "%1 hour", "%1 hours", totHr ) +
-                    i18nc( "percent of hours spent", " (%1%)", perHr ) );
-        y += totalLineHeight;
-      }
-    }
-
-    KCalCore::Event::List mEventList;
-    KOTimeSpentView *mTimeSpentView;
-};
+#include <QVBoxLayout>
 
 KOTimeSpentView::KOTimeSpentView( QWidget *parent )
   : KOrg::BaseView( parent )
 {
-  mView = new TimeSpentWidget( this );
-
+  mView = new EventViews::TimeSpentView( this );
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->addWidget( mView );
+
+  connect( mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+
+  connect( mView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()) );
+
+  connect( mView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( mView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+
+  connect( mView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+
+  connect( mView, SIGNAL(newEventSignal()),
+           SIGNAL(newEventSignal()) );
+
+  connect( mView, SIGNAL(newEventSignal(QDate)),
+           SIGNAL(newEventSignal(QDate)) );
+
+  connect( mView, SIGNAL(newEventSignal(QDateTime)),
+           SIGNAL(newEventSignal(QDateTime)) );
+
+  connect( mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+
+  connect( mView, SIGNAL(newTodoSignal(QDate)),
+           SIGNAL(newTodoSignal(QDate)) );
+
+  connect( mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(newJournalSignal(QDate)),
+           SIGNAL(newJournalSignal(QDate)) );
 }
 
 KOTimeSpentView::~KOTimeSpentView()
@@ -199,14 +104,13 @@ KOTimeSpentView::~KOTimeSpentView()
 
 int KOTimeSpentView::currentDateCount() const
 {
-  return mStartDate.daysTo( mEndDate );
+  return mView->currentDateCount();
 }
 
-void KOTimeSpentView::showDates( const QDate &start, const QDate &end, const QDate & )
+void KOTimeSpentView::showDates( const QDate &start, const QDate &end,
+                                 const QDate &dummy )
 {
-  mStartDate = start;
-  mEndDate = end;
-  updateView();
+  return mView->showDates( start, end, dummy );
 }
 
 void KOTimeSpentView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
@@ -218,37 +122,12 @@ void KOTimeSpentView::showIncidences( const Akonadi::Item::List &incidenceList, 
 void KOTimeSpentView::changeIncidenceDisplay( const Akonadi::Item &,
                                               Akonadi::IncidenceChanger::ChangeType )
 {
-  updateView();
+  mView->updateView();
 }
 
 void KOTimeSpentView::updateView()
 {
-  /*
- QString text;
-
-  text = "<table width=\"100%\">\n";
-  text += "<tr bgcolor=\"#3679AD\"><td><h1>";
-  text += "<img src=\"";
-  // text +=  todo: put something there.
-  text += "\">";
-  text += "<font color=\"white\"> ";
-  text += i18n("Time tracker") + "</font></h1>";
-  text += "</td></tr>\n<tr><td>";
-
-  text += "<h2>";
-  if ( mStartDate.daysTo( mEndDate ) < 1 ) {
-    text += KGlobal::locale()->formatDate( mStartDate );
-  } else {
-    text += i18nc("Date from - to", "%1 - %2",
-              KGlobal::locale()->formatDate( mStartDate ) ,
-              KGlobal::locale()->formatDate( mEndDate ) );
-  }
-  text+="</h2>\n";
-  */
-
-  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
-  mView->mEventList = calendar()->events( mStartDate, mEndDate, timeSpec );
-  mView->repaint();
+  mView->updateView();
 }
 
 KOrg::CalPrinterBase::PrintType KOTimeSpentView::printType() const
@@ -259,6 +138,12 @@ KOrg::CalPrinterBase::PrintType KOTimeSpentView::printType() const
   } else {
     return KOrg::CalPrinterBase::Week;
   }
+}
+
+void KOTimeSpentView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
+{
+  KOrg::BaseView::setCalendar( cal );
+  mView->setCalendar( cal.data() );
 }
 
 #include "kotimespentview.moc"
