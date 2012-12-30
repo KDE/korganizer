@@ -25,22 +25,7 @@
 #define KORG_VIEWS_KOWHATSNEXTVIEW_H
 
 #include "korganizer/baseview.h"
-
-#include <KTextBrowser>
-
-using namespace KOrg;
-
-class WhatsNextTextBrowser : public KTextBrowser
-{
-  Q_OBJECT
-  public:
-    explicit WhatsNextTextBrowser( QWidget *parent ) : KTextBrowser( parent ) {}
-    /** Reimplemented from KTextBrowser to handle links. */
-    void setSource( const QUrl &name );
-
-  signals:
-    void showIncidence( const QString &uid );
-};
+#include <calendarviews/whatsnext/whatsnextview.h>
 
 /**
   This class provides a view of the next events and todos
@@ -58,29 +43,17 @@ class KOWhatsNextView : public KOrg::BaseView
 
     bool supportsDateNavigation() const { return true; }
     virtual KOrg::CalPrinterBase::PrintType printType() const;
+    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
 
-  public slots:
+  public Q_SLOTS:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
 
-  protected:
-    void appendEvent( const KCalCore::Incidence::Ptr &, const QDateTime &start = QDateTime(),
-                      const QDateTime &end = QDateTime() );
-    void appendTodo( const KCalCore::Incidence::Ptr & );
-
-  private slots:
-    void showIncidence( const QString & );
-
   private:
-    KTextBrowser *mView;
-    QString mText;
-    QDate mStartDate;
-    QDate mEndDate;
-
-    Akonadi::Item::List mTodos;
+    EventViews::WhatsNextView *mView;
 };
 
 #endif
