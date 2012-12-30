@@ -32,7 +32,7 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 #include <calendarsupport/utils.h>
-#include <calendarviews/eventviews/agenda/cellitem.h>
+#include <calendarviews/agenda/cellitem.h>
 
 #include <KCalendarSystem>
 #include <KConfigGroup>

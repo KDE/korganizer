@@ -29,8 +29,8 @@
 
 #include <calendarsupport/calendarmodel.h>
 
-#include <calendarviews/eventviews/agenda/agendaview.h>
-#include <calendarviews/eventviews/multiagenda/multiagendaview.h>
+#include <calendarviews/agenda/agendaview.h>
+#include <calendarviews/multiagenda/multiagendaview.h>
 
 #include <Akonadi/EntityTreeView>
 #include <Akonadi/EntityTreeModel>

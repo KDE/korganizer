@@ -28,7 +28,7 @@
 
 #include <Akonadi/Calendar/IncidenceChanger>
 #include <Akonadi/Calendar/ETMCalendar>
-#include <calendarviews/eventviews/eventview.h>
+#include <calendarviews/eventview.h>
 
 #include <Akonadi/Collection>
 #include <Akonadi/Item>

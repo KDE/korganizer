@@ -27,7 +27,7 @@
 #include "koeventpopupmenu.h"
 #include "koprefs.h"
 
-#include <calendarviews/eventviews/month/monthview.h>
+#include <calendarviews/month/monthview.h>
 
 #include <QVBoxLayout>
 

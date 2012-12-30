@@ -21,7 +21,7 @@
 #ifndef KORG_PLUGINS_THISDAYINHISTORY_THISDAYINHISTORY_H
 #define KORG_PLUGINS_THISDAYINHISTORY_THISDAYINHISTORY_H
 
-#include <calendarviews/eventviews/agenda/calendardecoration.h>
+#include <calendarviews/agenda/calendardecoration.h>
 
 using namespace EventViews::CalendarDecoration;
 

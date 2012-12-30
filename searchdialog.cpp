@@ -32,7 +32,7 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <calendarviews/eventviews/list/listview.h>
+#include <calendarviews/list/listview.h>
 
 #include <KMessageBox>
 

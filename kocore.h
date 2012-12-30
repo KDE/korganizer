@@ -30,7 +30,7 @@
 #include "korganizer/part.h"
 #include "korganizer/printplugin.h"
 
-#include <calendarviews/eventviews/agenda/calendardecoration.h>
+#include <calendarviews/agenda/calendardecoration.h>
 
 #include <KService>
 

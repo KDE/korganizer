@@ -26,7 +26,7 @@
 #ifndef KORG_KOVIEWMANAGER_H
 #define KORG_KOVIEWMANAGER_H
 
-#include <calendarviews/eventviews/eventview.h>
+#include <calendarviews/eventview.h>
 
 #include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
 

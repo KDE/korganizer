@@ -23,7 +23,7 @@
 
 #include "koeventview.h"
 
-#include <calendarviews/eventviews/multiagenda/configdialoginterface.h>
+#include <calendarviews/multiagenda/configdialoginterface.h>
 
 #include <KDialog>
 

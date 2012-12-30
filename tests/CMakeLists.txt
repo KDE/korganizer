@@ -3,7 +3,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(
   ${CMAKE_SOURCE_DIR}/korganizer
   ${CMAKE_BINARY_DIR}/korganizer
-  ${CMAKE_SOURCE_DIR}/calendarviews/eventviews
+  ${CMAKE_SOURCE_DIR}/calendarviews
   ${CMAKE_SOURCE_DIR}/korganizer/interfaces
 )
 
