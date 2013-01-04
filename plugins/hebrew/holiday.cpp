@@ -345,6 +345,7 @@ QStringList Holiday::findHoliday( int month, int day, int weekday, int kvia,
         holidays << i18n( "Sh. Shirah" );
       }
       holidays << i18n( "Tu B'Shvat" );
+      break;
     case 17:
       if ( ( kvia == 0 ) && isAShabbat ) {
         holidays << i18n( "Sh. Shirah" );
