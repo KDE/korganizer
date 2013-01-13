@@ -230,7 +230,7 @@ void MonthView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
   d->mPopup->setCalendar( cal.data() );
-  d->mMonthView->setCalendar( cal.data() );
+  d->mMonthView->setCalendar( cal );
 }
 
 void MonthView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )

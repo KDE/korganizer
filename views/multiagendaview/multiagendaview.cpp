@@ -145,7 +145,7 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 
 void MultiAgendaView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
-  d->mMultiAgendaView->setCalendar( cal.data() );
+  d->mMultiAgendaView->setCalendar( cal );
   d->mPopup->setCalendar( cal.data() );
 }
 

@@ -28,35 +28,17 @@
 #define KORG_VIEWS_KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
+#include "printing/calprinter.h"
 
+#include <calendarsupport/utils.h>
+#include <calendarviews/todo/todoview.h>
 #include <QPointer>
-
-class KOTodoCategoriesDelegate;
-class KOTodoViewQuickAddLine;
-class KOTodoViewQuickSearch;
-class KOTodoViewSortFilterProxyModel;
-class KOTodoViewView;
-
-namespace KPIM {
-  class KDatePickerPopup;
-}
-
-namespace Akonadi {
-  class ETMViewStateSaver;
-}
-
-class QItemSelection;
-class QMenu;
-class QModelIndex;
-class QToolButton;
 
 using namespace KOrg;
 
 class KOTodoView : public BaseView
 {
   Q_OBJECT
-  friend class ModelStack;
-
   public:
     KOTodoView( bool sidebarView, QWidget *parent );
     ~KOTodoView();
@@ -68,9 +50,7 @@ class KOTodoView : public BaseView
     virtual int currentDateCount() const { return 0; }
 
     void setDocumentId( const QString & ) {}
-
     void saveLayout( KConfig *config, const QString &group ) const;
-
     void restoreLayout( KConfig *config, const QString &group, bool minimalDefaults );
 
     /** documentation in baseview.h */
@@ -80,51 +60,27 @@ class KOTodoView : public BaseView
 
     bool usesFullWindow();
 
+    void saveViewState();
+    void restoreViewState();
+
     bool supportsDateRangeSelection() { return false; }
     virtual KOrg::CalPrinterBase::PrintType printType() const;
 
   public Q_SLOTS:
+    void updateCategories();
     virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
     virtual void showDates( const QDate &start, const QDate &end,
                             const QDate &preferredMonth = QDate() );
     virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
-    void updateCategories();
     virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType );
     virtual void updateConfig();
     virtual void clearSelection();
-    void expandIndex( const QModelIndex &index );
-    void restoreViewState();
-    void saveViewState();
-
-  protected Q_SLOTS:
-    void addQuickTodo( Qt::KeyboardModifiers modifier );
-
-    void contextMenu( const QPoint &pos );
-
-    void selectionChanged( const QItemSelection &selected,
-                           const QItemSelection &deselected );
-
-    // slots used by popup-menus
-    void showTodo();
-    void editTodo();
-    void printTodo();
-    void printPreviewTodo();
-    void deleteTodo();
-    void newTodo();
-    void newSubTodo();
-    void copyTodoToDate( const QDate &date );
 
   private Q_SLOTS:
-    void resizeColumnsToContent();
-    void itemDoubleClicked( const QModelIndex &index );
-    void setNewDate( const QDate &date );
-    void setNewPercentage( QAction *action );
-    void setNewPriority( QAction *action );
-    void changedCategories( QAction *action );
-    void setFullView( bool fullView );
-
-    void setFlatView( bool flatView, bool notifyOtherViews = true );
+    void printTodo( bool );
+    void printTodo();
+    void printPreviewTodo();
 
   Q_SIGNALS:
     void purgeCompletedSignal();
@@ -134,41 +90,7 @@ class KOTodoView : public BaseView
     void fullViewChanged( bool enabled );
 
   private:
-    QMenu *createCategoryPopupMenu();
-    QString stateSaverGroup() const;
-    void printTodo( bool preview );
-
-    /** Creates a new todo with the given text as summary under the given parent */
-    void addTodo( const QString &summary,
-                  const KCalCore::Todo::Ptr &parent = KCalCore::Todo::Ptr(),
-                  const QStringList &categories = QStringList() );
-
-    KOTodoViewView *mView;
-    KOTodoViewSortFilterProxyModel *mProxyModel;
-    KOTodoCategoriesDelegate *mCategoriesDelegate;
-
-    KOTodoViewQuickSearch *mQuickSearch;
-    KOTodoViewQuickAddLine *mQuickAdd;
-    QToolButton *mFullViewButton;
-    QToolButton *mFlatViewButton;
-
-    QMenu *mItemPopupMenu;
-    KPIM::KDatePickerPopup *mCopyPopupMenu;
-    KPIM::KDatePickerPopup *mMovePopupMenu;
-    QMenu *mPriorityPopupMenu;
-    QMenu *mPercentageCompletedPopupMenu;
-    QList<QAction*> mItemPopupMenuItemOnlyEntries;
-    QList<QAction*> mItemPopupMenuReadWriteEntries;
-
-    QAction *mMakeTodoIndependent;
-    QAction *mMakeSubtodosIndependent;
-
-    QPointer<Akonadi::ETMViewStateSaver> mTreeStateRestorer;
-
-    QMap<QAction *,int> mPercentage;
-    QMap<QAction *,int> mPriority;
-    QMap<QAction *,QString> mCategory;
-    bool mSidebarView;
+    EventViews::TodoView *mView;
 };
 
 #endif /*KOTODOVIEW_H*/

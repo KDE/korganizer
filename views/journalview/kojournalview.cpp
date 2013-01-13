@@ -51,9 +51,6 @@ KOJournalView::KOJournalView( QWidget *parent )
 
   layout->addWidget( mJournalView );
 
-  connect( mJournalView, SIGNAL(showNewEventPopupSignal()),
-           SLOT(showNewEventPopup()) );
-
   connect( mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr)),
            SLOT(printJournal(KCalCore::Journal::Ptr)) );
 
@@ -177,7 +174,7 @@ CalPrinterBase::PrintType KOJournalView::printType() const
 void KOJournalView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
   BaseView::setCalendar( calendar );
-  mJournalView->setCalendar( calendar.data() );
+  mJournalView->setCalendar( calendar );
 }
 
 void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal )

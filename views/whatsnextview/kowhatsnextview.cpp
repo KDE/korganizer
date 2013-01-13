@@ -133,7 +133,7 @@ KOrg::CalPrinterBase::PrintType KOWhatsNextView::printType() const
 void KOWhatsNextView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOrg::BaseView::setCalendar( cal );
-  mView->setCalendar( cal.data() );
+  mView->setCalendar( cal );
 }
 
 #include "kowhatsnextview.moc"

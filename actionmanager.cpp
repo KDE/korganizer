@@ -223,6 +223,7 @@ Akonadi::ETMCalendar::Ptr ActionManager::calendar() const
 
 void ActionManager::createCalendarAkonadi()
 {
+  Q_ASSERT( calendar() );
   connect( calendar().data(), SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>)),
            this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>)) );
 

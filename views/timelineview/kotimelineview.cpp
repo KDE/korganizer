@@ -196,7 +196,7 @@ void KOTimelineView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
   d->mEventPopup->setCalendar( cal.data() );
-  d->mTimeLineView->setCalendar( cal.data() );
+  d->mTimeLineView->setCalendar( cal );
 }
 
 void KOTimelineView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )

@@ -209,15 +209,7 @@ if(NOT WINCE)
       views/multiagendaview/multiagendaview.cpp
       views/timelineview/kotimelineview.cpp
       views/timespentview/kotimespentview.cpp
-      views/todoview/kotododelegates.cpp
-      views/todoview/kotodomodel.cpp
-      views/todoview/incidencetreemodel.cpp
-      #views/todoview/kotodotreestatesaver.cpp
       views/todoview/kotodoview.cpp
-      views/todoview/kotodoviewquickaddline.cpp
-      views/todoview/kotodoviewquicksearch.cpp
-      views/todoview/kotodoviewsortfilterproxymodel.cpp
-      views/todoview/kotodoviewview.cpp
       views/whatsnextview/kowhatsnextview.cpp
     )
 

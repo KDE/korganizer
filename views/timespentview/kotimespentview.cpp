@@ -143,7 +143,7 @@ KOrg::CalPrinterBase::PrintType KOTimeSpentView::printType() const
 void KOTimeSpentView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOrg::BaseView::setCalendar( cal );
-  mView->setCalendar( cal.data() );
+  mView->setCalendar( cal );
 }
 
 #include "kotimespentview.moc"
