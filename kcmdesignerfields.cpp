@@ -54,7 +54,8 @@ class PageItem : public QTreeWidgetItem
       mName = path.mid( path.lastIndexOf( '/' ) + 1 );
 
       QFile f( mPath );
-      f.open( QFile::ReadOnly );
+      if (!f.open( QFile::ReadOnly ) ) 
+         return;
       QUiLoader builder;
       QWidget *wdg = builder.load( &f, 0 );
       f.close();
