@@ -200,7 +200,6 @@ bool MailClient::send( const KPIMIdentities::Identity &identity,
                        const QString &body, bool hidden, bool bccMe,
                        const QString &attachment, const QString &mailTransport )
 {
-  Q_UNUSED( identity );
   Q_UNUSED( hidden );
 
   if ( !MailTransport::TransportManager::self()->showTransportCreationDialog(
@@ -333,8 +332,19 @@ bool MailClient::send( const KPIMIdentities::Identity &identity,
   // Put the newly created item in the MessageQueueJob.
   MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob( this );
   qjob->transportAttribute().setTransportId( transportId );
-  qjob->sentBehaviourAttribute().setSentBehaviour(
-           MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection );
+
+  if (identity.disabledFcc()) {
+      qjob->sentBehaviourAttribute().setSentBehaviour( MailTransport::SentBehaviourAttribute::Delete );
+  } else {
+      const Akonadi::Collection sentCollection( identity.fcc().toLongLong() );
+      if (sentCollection.isValid()) {
+          qjob->sentBehaviourAttribute().setSentBehaviour( MailTransport::SentBehaviourAttribute::MoveToCollection );
+          qjob->sentBehaviourAttribute().setMoveToCollection( sentCollection );
+      } else {
+          qjob->sentBehaviourAttribute().setSentBehaviour(
+                      MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection );
+      }
+  }
 
   if ( transport && transport->specifySenderOverwriteAddress() ) {
     qjob->addressAttribute().setFrom(
