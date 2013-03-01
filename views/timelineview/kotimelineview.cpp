@@ -195,7 +195,7 @@ KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
 void KOTimelineView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  d->mEventPopup->setCalendar( cal.data() );
+  d->mEventPopup->setCalendar( cal );
   d->mTimeLineView->setCalendar( cal );
 }
 

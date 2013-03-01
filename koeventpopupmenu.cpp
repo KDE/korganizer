@@ -238,7 +238,7 @@ void KOEventPopupMenu::toggleTodoCompleted()
   }
 }
 
-void KOEventPopupMenu::setCalendar( Akonadi::ETMCalendar * calendar )
+void KOEventPopupMenu::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
   mCalendar = calendar;
 }

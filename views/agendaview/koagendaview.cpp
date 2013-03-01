@@ -150,7 +150,7 @@ KOAgendaView::~KOAgendaView()
 void KOAgendaView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  d->mPopup->setCalendar( cal.data() );
+  d->mPopup->setCalendar( cal );
   d->mAgendaView->setCalendar( cal );
 }
 

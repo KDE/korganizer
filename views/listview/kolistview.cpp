@@ -215,7 +215,7 @@ QSize KOListView::sizeHint() const
 void KOListView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  mPopupMenu->setCalendar( cal.data() );
+  mPopupMenu->setCalendar( cal );
   mListView->setCalendar( cal );
 }
 

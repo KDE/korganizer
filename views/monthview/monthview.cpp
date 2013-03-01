@@ -229,7 +229,7 @@ void MonthView::setDateRange( const KDateTime &start, const KDateTime &end,
 void MonthView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
 {
   KOEventView::setCalendar( cal );
-  d->mPopup->setCalendar( cal.data() );
+  d->mPopup->setCalendar( cal );
   d->mMonthView->setCalendar( cal );
 }
 

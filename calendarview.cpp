@@ -352,7 +352,7 @@ QDate CalendarView::endDate()
 void CalendarView::createPrinter()
 {
   if ( !mCalPrinter ) {
-    mCalPrinter = new CalPrinter( this, mCalendar.data(), new KOCoreHelper() );
+    mCalPrinter = new CalPrinter( this, mCalendar, new KOCoreHelper() );
     connect( this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()) );
   }
 }

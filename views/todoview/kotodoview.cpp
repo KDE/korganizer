@@ -130,7 +130,7 @@ void KOTodoView::printTodo( bool preview )
   Q_ASSERT( todo );
 
   KOCoreHelper helper;
-  CalPrinter printer( this, calendar().data(), &helper, true );
+  CalPrinter printer( this, calendar(), &helper, true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   KCalCore::Incidence::List selectedIncidences;

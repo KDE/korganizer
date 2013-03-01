@@ -40,7 +40,7 @@ class KOEventPopupMenu : public QMenu
   Q_OBJECT
   public:
     explicit KOEventPopupMenu( Akonadi::ETMCalendar * , QWidget *parent = 0 );
-    void setCalendar( Akonadi::ETMCalendar *   );
+    void setCalendar( const Akonadi::ETMCalendar::Ptr &calendar );
 
   public slots:
     void showIncidencePopup( const Akonadi::Item &, const QDate & );
@@ -76,7 +76,7 @@ class KOEventPopupMenu : public QMenu
   private:
     void print( bool previous );
 
-    Akonadi::ETMCalendar* mCalendar;
+    Akonadi::ETMCalendar::Ptr mCalendar;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 

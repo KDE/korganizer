@@ -181,7 +181,7 @@ void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal )
 {
   if ( journal ) {
     KOCoreHelper helper;
-    CalPrinter printer( this, calendar().data(), &helper, true );
+    CalPrinter printer( this, calendar(), &helper, true );
     KCalCore::Incidence::List selectedIncidences;
     selectedIncidences.append( journal );
 
