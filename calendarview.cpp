@@ -111,7 +111,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
   mCalendar->setObjectName( "KOrg Calendar" );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
-  mInvitationHandler = new Akonadi::InvitationHandler( this );
+  mITIPHandler = new Akonadi::ITIPHandler( this );
   connect( mCalendarClipboard, SIGNAL(cutFinished(bool,QString)), SLOT(onCutFinished()) );
 
   Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
@@ -1717,7 +1717,7 @@ void CalendarView::schedule_publish( const Akonadi::Item &item )
 
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( selectedItem );
   if ( incidence )
-    mInvitationHandler->publishInformation( incidence, this );
+    mITIPHandler->publishInformation( incidence, this );
 }
 
 void CalendarView::schedule_request( const Akonadi::Item &incidence )
@@ -1765,7 +1765,7 @@ void CalendarView::schedule_forward( const Akonadi::Item &item )
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( selectedItem );
 
   if ( incidence )
-    mInvitationHandler->sendAsICalendar( incidence, this );
+    mITIPHandler->sendAsICalendar( incidence, this );
 }
 
 void CalendarView::mailFreeBusy( int daysToPublish )
@@ -1788,7 +1788,7 @@ void CalendarView::schedule( KCalCore::iTIPMethod method, const Akonadi::Item &i
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( selectedItem );
 
   if ( incidence )
-    mInvitationHandler->sendiTIPMessage( method, incidence, this );
+    mITIPHandler->sendiTIPMessage( method, incidence, this );
 }
 
 void CalendarView::openAddressbook()
