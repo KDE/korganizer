@@ -34,7 +34,7 @@
 #include <KCalCore/Visitor>
 #include <KCalCore/ScheduleMessage>
 
-#include <akonadi/calendar/invitationhandler.h>
+#include <akonadi/calendar/ITIPhandler.h>
 
 class CalPrinter;
 class DateChecker;
