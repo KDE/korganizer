@@ -728,7 +728,7 @@ void ActionManager::initActions()
            SLOT(showCategoryEditDialog()) );
 
   if ( mIsPart ) {
-    action = new KAction( KIcon( "configure" ), i18n( "&Configure Calendar..." ), this );
+    action = new KAction( KIcon( "configure" ), i18n( "&Configure KOrganizer..." ), this );
     mACollection->addAction( "korganizer_configure", action );
     connect( action, SIGNAL(triggered(bool)), mCalendarView,
              SLOT(edit_options()) );
