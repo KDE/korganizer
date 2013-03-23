@@ -26,9 +26,6 @@
 
 #include <akonadi_next/kcolumnfilterproxymodel.h>
 
-
-#include <calendarsupport/calendarmodel.h>
-
 #include <calendarviews/agenda/agendaview.h>
 #include <calendarviews/multiagenda/multiagendaview.h>
 
