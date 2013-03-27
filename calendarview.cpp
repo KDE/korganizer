@@ -69,8 +69,8 @@
 #include <Akonadi/Calendar/IncidenceChanger>
 #include <Akonadi/Calendar/CalendarClipboard>
 
-#include <pimcommon/collectionaclpage.h>
-#include <pimcommon/imapaclattribute.h>
+#include <pimcommon/acl/collectionaclpage.h>
+#include <pimcommon/acl/imapaclattribute.h>
 
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>

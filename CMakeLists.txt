@@ -15,6 +15,7 @@ include_directories(
   ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
   ${CMAKE_SOURCE_DIR}/incidenceeditor-ng
   ${CMAKE_SOURCE_DIR}/calendarviews
+  ${CMAKE_SOURCE_DIR}/pimcommon/
   ${AKONADI_INCLUDE_DIR}
   ${Boost_INCLUDE_DIRS}
   ${QT_INCLUDES}
