@@ -359,30 +359,7 @@ void CalendarView::createPrinter()
 
 bool CalendarView::openCalendar( const QString &filename, bool merge )
 {
-  if ( filename.isEmpty() ) {
-    kDebug() << "Error! Empty filename.";
-    return false;
-  }
-
-  if ( !QFile::exists( filename ) ) {
-    kDebug() << "Error! File '" << filename << "' doesn't exist.";
-  }
-
-  bool loadedSuccesfully = true;
-  if ( !merge ) {
-    // otherwise something is majorly wrong
-    // openCalendar called without merge and a filename, what should we do?
-    return false;
-  }
-
-  // merge in a file
-  mCalendar->startBatchAdding();
-  KCalCore::FileStorage storage( mCalendar );
-  storage.setFileName( filename );
-  loadedSuccesfully = storage.load();
-  mCalendar->endBatchAdding();
-
-  if ( loadedSuccesfully ) {
+  if (CalendarSupport::mergeCalendar(filename, mCalendar)) {
     if ( !merge ) {
       mViewManager->setDocumentId( filename );
       mTodoList->setDocumentId( filename );
