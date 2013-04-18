@@ -687,8 +687,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void createPrinter();
 
-    void dissociateOccurrence( const Akonadi::Item &incidence, const QDate & );
-    void dissociateFutureOccurrence( const Akonadi::Item &incidence, const QDate & );
+    void dissociateOccurrence( const Akonadi::Item &incidence, const QDate & , bool futureOccurrences);
 
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has

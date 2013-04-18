@@ -1637,45 +1637,39 @@ void CalendarView::dissociateOccurrences( const Akonadi::Item &item, const QDate
   }
 
   if ( doOnlyThis ) {
-    dissociateOccurrence( item, date );
+    dissociateOccurrence( item, date, false );
   } else if ( doFuture ) {
-    dissociateFutureOccurrence( item, date );
+    dissociateOccurrence( item, date, true );
   }
 }
-void CalendarView::dissociateOccurrence( const Akonadi::Item &item, const QDate &date )
+void CalendarView::dissociateOccurrence( const Akonadi::Item &item, const QDate &date, bool thisAndFuture )
 {
   const Incidence::Ptr incidence = CalendarSupport::incidence( item );
 
-  startMultiModify( i18n( "Dissociate occurrence" ) );
-  KCalCore::Incidence::Ptr newInc( KCalCore::Calendar::createException(
-      incidence, KDateTime( date, incidence->dtStart().time(), incidence->dtStart().timeSpec() ) ) );
-  if ( newInc ) {
-    mChanger->createIncidence( newInc, item.parentCollection(), this );
+  if ( thisAndFuture ) {
+    startMultiModify( i18n( "Dissociate future occurrences" ) );
   } else {
-    KMessageBox::sorry(
-      this,
-      i18n( "Dissociating the occurrence failed." ),
-      i18n( "Dissociating Failed" ) );
+    startMultiModify( i18n( "Dissociate occurrence" ) );
   }
-
-  endMultiModify();
-}
-
-void CalendarView::dissociateFutureOccurrence( const Akonadi::Item &item, const QDate &date )
-{
-  const Incidence::Ptr incidence = CalendarSupport::incidence( item );
-
-  startMultiModify( i18n( "Dissociate future occurrences" ) );
-
+  KDateTime occurrenceDate( incidence->dtStart() );
+  occurrenceDate.setDate(date);
+  kDebug() << "create exception: " << occurrenceDate;
   KCalCore::Incidence::Ptr newInc( KCalCore::Calendar::createException(
-      incidence, KDateTime( date, incidence->dtStart().time(), incidence->dtStart().timeSpec() ), true ) );
+      incidence, occurrenceDate, thisAndFuture) );
   if ( newInc ) {
     mChanger->createIncidence( newInc, item.parentCollection(), this );
   } else {
-    KMessageBox::sorry(
-      this,
-      i18n( "Dissociating the future occurrences failed." ),
-      i18n( "Dissociating Failed" ) );
+    if ( thisAndFuture ) {
+      KMessageBox::sorry(
+        this,
+        i18n( "Dissociating the future occurrences failed." ),
+        i18n( "Dissociating Failed" ) );
+    } else {
+      KMessageBox::sorry(
+        this,
+        i18n( "Dissociating the occurrence failed." ),
+        i18n( "Dissociating Failed" ) );
+    }
   }
   endMultiModify();
 }
