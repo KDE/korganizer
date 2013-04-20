@@ -1824,16 +1824,15 @@ void CalendarView::printPreview()
 
 void CalendarView::exportWeb()
 {
-  // FIXME: Get rid of the settings object. When can I delete it???
   KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings( "KOrganizer" );
+  Q_ASSERT(settings);
   // Manually read in the config, because parameterized kconfigxt objects don't
   // seem to load the config theirselves
-  if ( settings ) {
-    settings->readConfig();
-  }
+  settings->readConfig();
   ExportWebDialog *dlg = new ExportWebDialog( settings, this );
   connect( dlg, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
            this, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)) );
+  connect(dlg, SIGNAL(destroyed(QObject*)), settings, SLOT(deleteLater()), Qt::QueuedConnection);
   dlg->show();
 }
 
