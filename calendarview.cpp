@@ -2660,7 +2660,6 @@ void CalendarView::addIncidenceOn( const Akonadi::Item &itemadd, const QDate &dt
     due.setDate( dt );
 
     todo->setDtDue( due );
-    todo->setHasDueDate( true );
   }
 
   mChanger->createIncidence( incidence, Akonadi::Collection(), this );
@@ -2701,7 +2700,6 @@ void CalendarView::moveIncidenceTo( const Akonadi::Item &itemmove, const QDate &
     due.setDate( dt );
 
     todo->setDtDue( due );
-    todo->setHasDueDate( true );
   }
   mChanger->modifyIncidence( itemmove, oldIncidence, this );
 }
