@@ -226,6 +226,14 @@ void SearchDialog::search( const QRegExp &re )
         continue;
       }
     }
+    if ( m_ui->attendeeCheck->isChecked() ) {
+      Q_FOREACH( const KCalCore::Attendee::Ptr &attendee, ev->attendees() ) {
+        if ( re.indexIn( attendee->fullName() ) != -1 ) {
+          mMatchedEvents.append( item );
+          break;
+        }
+      }
+    }
   }
 }
 

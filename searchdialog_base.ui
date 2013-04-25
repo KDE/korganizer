@@ -158,6 +158,13 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="attendeeCheck">
+        <property name="text">
+         <string>Attendees</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
