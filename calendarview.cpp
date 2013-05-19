@@ -979,12 +979,19 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
   }
 }
 
+IncidenceEditorNG::IncidenceDialog *CalendarView::incidenceDialog(const Akonadi::Item &item)
+{
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item);
+    connect(dialog, SIGNAL(incidenceCreated(Akonadi::Item)), SLOT(handleIncidenceCreated(Akonadi::Item)));
+    return dialog;
+}
+
 IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor( const KCalCore::Event::Ptr &event )
 {
   Akonadi::Item item;
   item.setPayload( event );
+  IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog( item );
 
-  IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
   dialog->load( item );
 
   mDialogManager->connectTypeAhead(
@@ -2311,23 +2318,13 @@ bool CalendarView::editIncidence( const Akonadi::Item &item, bool isCounter )
     return false;
   }
 
-  /*
-    //TODO_NG
-  IncidenceEditor *tmp = editorDialog( item );
-  if ( tmp ) {
-    tmp->reload();
-    tmp->raise();
-    tmp->show();
-    return true;
-  }
-  */
-
   if ( !mCalendar->hasRight( item, Akonadi::Collection::CanChangeItem ) ) {
     showIncidence( item );
     return true;
   }
 
-  IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+
+  IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog( item );
 
   // connectIncidenceEditor( dialog );         // TODO: This as well
   dialog->load( item, activeIncidenceDate() ); // Show the dialog as soon as it loads the item.
@@ -2798,7 +2795,7 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
 IncidenceEditorNG::IncidenceDialog *CalendarView::createIncidenceEditor(
   const Akonadi::Item &item, const Akonadi::Collection &collection )
 {
-  IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog( item );
+  IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog( item );
   KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   Q_ASSERT( incidence );
 
@@ -2875,6 +2872,32 @@ Akonadi::Collection::List CalendarView::checkedCollections() const
   }
 
   return collections;
+}
+
+void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
+{
+    Akonadi::Collection collection = item.parentCollection();
+    if (!collection.isValid()) {
+        kWarning() << "Item was creating in an invalid collection !? item id=" << item.id();
+        return;
+    }
+
+    const bool collectionIsChecked = mETMCollectionView->isChecked(collection);
+
+    if (!collectionIsChecked) {
+        QString message;
+        if (mETMCollectionView->isVisible()) {
+            message = i18n("You created an incidence in a calendar that is currently filtered out.\n"
+                           "On the left sidebar, enable it in the calendar manager to see the incidence.");
+        } else {
+            message = i18n("You created an incidence in a calendar that is currently filtered out.\n"
+                           "You can enabled it through the calendar manager (Settings->Sidebar->Show Calendar Manager)");
+        }
+
+        mMessageWidget->setText(message);
+        mMessageWidget->setMessageType(KMessageWidget::Information);
+        mMessageWidget->show();
+    }
 }
 
 #include "calendarview.moc"

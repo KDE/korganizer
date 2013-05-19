@@ -259,6 +259,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Calendar configuration was changed, so refresh categories list
     */
     void updateCategories();
+    void handleIncidenceCreated(const Akonadi::Item &item);
 
     /**
       Load calendar from file \a filename. If \a merge is true, load
@@ -664,6 +665,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     int msgItemDelete( const Akonadi::Item &incidence );
 
     Akonadi::Item selectedTodo();
+    IncidenceEditorNG::IncidenceDialog *incidenceDialog(const Akonadi::Item &);
 
     void warningChangeFailed( const Akonadi::Item & );
     void checkForFilteredChange( const Akonadi::Item &incidence );

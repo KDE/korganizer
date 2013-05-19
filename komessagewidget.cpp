@@ -30,6 +30,7 @@ KOMessageWidget::KOMessageWidget(QWidget *parent) : KMessageWidget(parent)
 {
     hide();
     setCloseButtonVisible(false);
+    setWordWrap(true);
 }
 
 KOMessageWidget::~KOMessageWidget()
