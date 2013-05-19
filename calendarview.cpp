@@ -728,13 +728,10 @@ void CalendarView::checkForFilteredChange( const Akonadi::Item &item )
   if ( filter && !filter->filterIncidence( incidence ) ) {
     // Incidence is filtered and thus not shown in the view, tell the
     // user so that he isn't surprised if his new event doesn't show up
-    KMessageBox::information(
-      this,
-      i18n( "The item \"%1\" is filtered by your current filter rules, "
-            "so it will be hidden and not appear in the view.",
-            incidence->summary() ),
-      i18n( "Filter Applied" ),
-      "ChangedIncidenceFiltered" );
+    mMessageWidget->setText( i18n( "The item \"%1\" is filtered by your current filter rules, "
+                                   "so it will be hidden and not appear in the view.",
+                                   incidence->summary() ) );
+    mMessageWidget->show();
   }
 }
 
