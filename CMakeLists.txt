@@ -192,6 +192,7 @@ if(NOT WINCE)
       koeventviewerdialog.cpp
       koglobals.cpp
       kohelper.cpp
+      komessagewidget.cpp
       korganizerifaceimpl.cpp
       koviewmanager.cpp
       kowindowlist.cpp

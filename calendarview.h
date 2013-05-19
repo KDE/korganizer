@@ -65,6 +65,7 @@ namespace Akonadi {
 }
 
 class KVBox;
+class KOMessageWidget;
 
 class QSplitter;
 class QStackedWidget;
@@ -716,6 +717,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QSplitter *mLeftSplitter;
     QWidget *mLeftFrame;
     QStackedWidget *mRightFrame;
+    KOMessageWidget *mMessageWidget;
 
     // This navigator bar is used when in full window month view
     // It has nothing to do with the date navigator
