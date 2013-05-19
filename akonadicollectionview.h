@@ -80,8 +80,9 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
+    bool isChecked(const Akonadi::Collection &) const;
 
-  signals:
+  Q_SIGNALS:
     void resourcesChanged( bool enabled );
     void resourcesAddedRemoved();
     void defaultResourceChanged( const Akonadi::Collection & );

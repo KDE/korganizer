@@ -631,6 +631,25 @@ Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
   return collections;
 }
 
+bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) const
+{
+    if (!mSelectionProxyModel)
+        return false;
+    QItemSelectionModel *selectionModel = mSelectionProxyModel->selectionModel();
+    if (!selectionModel)
+        return false;
+    QModelIndexList indexes = selectionModel->selectedIndexes();
+    foreach(const QModelIndex &index, indexes) {
+        if (index.isValid()) {
+            Akonadi::Collection c = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            if (c.id() == collection.id()) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
 {
   QAbstractProxyModel *proxy = qobject_cast<QAbstractProxyModel*>( mCollectionview->model() );
