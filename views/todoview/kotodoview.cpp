@@ -96,6 +96,9 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   connect( mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
            SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+
+  connect( mView, SIGNAL(fullViewChanged(bool)),
+           SIGNAL(fullViewChanged(bool)) );
 }
 
 KOTodoView::~KOTodoView()
