@@ -650,14 +650,12 @@ void AkonadiCollectionView::checkNewCalendar( const QModelIndex &parent, int beg
   if ( etm && entityTreeModel()->isCollectionTreeFetched() ) {
     for( int row=begin; row<=end; ++row ) {
       QModelIndex index = mCollectionview->model()->index( row, 0, parent );
-      if ( index.isValid() ) {
+      if ( index.isValid() )
         mCollectionview->model()->setData( index, Qt::Checked, Qt::CheckStateRole );
-      }
     }
-  }
-
-  if ( parent.isValid() ) {
-    mCollectionview->setExpanded( parent, true );
+    if ( parent.isValid() ) {
+      mCollectionview->setExpanded( parent, true );
+    }
   }
 }
 
