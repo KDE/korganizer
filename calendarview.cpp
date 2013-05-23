@@ -51,8 +51,8 @@
 #include "views/todoview/kotodoview.h"
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
-#include "komessagewidget.h"
 
+#include <calendarsupport/messagewidget.h>
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
@@ -154,7 +154,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   rightBox->layout()->setMargin( 0 );
   mNavigatorBar = new NavigatorBar( rightBox );
   mRightFrame = new QStackedWidget( rightBox );
-  mMessageWidget = new KOMessageWidget( rightBox );
+  mMessageWidget = new CalendarSupport::MessageWidget( rightBox );
 
   rightBox->setStretchFactor( mRightFrame, 1 );
 
