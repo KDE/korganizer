@@ -84,12 +84,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
   public slots:
 
-    /*
-      Called when a collection's properties or attributes change.
-      We will update the view if collection rights changed.
-    */
-    void slotCollectionChanged( const Akonadi::Collection &, const QSet<QByteArray> & );
-
     /** Add a new resource
         @param mUrl The url for the new resource. Either a local or a remote
                     resource will be added, depending on the type of the url.

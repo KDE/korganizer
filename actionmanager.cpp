@@ -205,17 +205,6 @@ void ActionManager::init()
   mCalendarView->checkClipboard();
 }
 
-void ActionManager::slotCollectionChanged( const Akonadi::Collection &collection,
-                                           const QSet<QByteArray> &changedAttributes )
-{
-  Q_UNUSED( collection );
-
-  if ( changedAttributes.contains( "AccessRights" ) ) {
-    mCalendarView->viewManager()->addChange( EventViews::EventView::ResourcesChanged );
-    mCalendarView->updateView();
-  }
-}
-
 Akonadi::ETMCalendar::Ptr ActionManager::calendar() const
 {
   return mCalendarView->calendar();
@@ -224,8 +213,6 @@ Akonadi::ETMCalendar::Ptr ActionManager::calendar() const
 void ActionManager::createCalendarAkonadi()
 {
   Q_ASSERT( calendar() );
-  connect( calendar().data(), SIGNAL(collectionChanged(Akonadi::Collection,QSet<QByteArray>)),
-           this, SLOT(slotCollectionChanged(Akonadi::Collection,QSet<QByteArray>)) );
 
   KConfig *config = KOGlobals::self()->config();
   mCollectionSelectionModelStateSaver =
