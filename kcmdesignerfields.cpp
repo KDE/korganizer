@@ -416,7 +416,7 @@ void KCMDesignerFields::updatePreview()
       widgetItemSelected = true;
     }
 
-    mPagePreview->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+    mPagePreview->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
   } else {
     mPagePreview->setWindowIcon( QPixmap() );
     mPagePreview->setFrameStyle( 0 );
