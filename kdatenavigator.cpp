@@ -104,7 +104,15 @@ KDateNavigator::~KDateNavigator()
 
 void KDateNavigator::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
 {
-  mDayMatrix->setCalendar( calendar );
+    if (mCalendar)
+        disconnect(mCalendar.data(), 0, this, 0);
+
+    mCalendar = calendar;
+
+    if (mCalendar)
+        connect(mCalendar.data(), SIGNAL(calendarChanged()), SLOT(setUpdateNeeded()));
+
+    mDayMatrix->setCalendar( calendar );
 }
 
 void KDateNavigator::setBaseDate( const QDate &date )

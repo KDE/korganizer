@@ -2703,7 +2703,6 @@ void CalendarView::moveIncidenceTo( const Akonadi::Item &itemmove, const QDate &
 void CalendarView::resourcesChanged()
 {
   mViewManager->addChange( EventViews::EventView::ResourcesChanged );
-  mDateNavigatorContainer->setUpdateNeeded();
   updateView();
 }
 

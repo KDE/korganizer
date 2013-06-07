@@ -71,7 +71,6 @@ class KDateNavigator: public QFrame
     void setHighlightMode( bool highlightEvents,
                            bool highlightTodos,
                            bool highlightJournals ) const;
-    void setUpdateNeeded();
 
     /**
        Returns the current displayed month.
@@ -88,6 +87,7 @@ class KDateNavigator: public QFrame
     void updateConfig();
     void updateDayMatrix();
     void updateToday();
+    void setUpdateNeeded();
 
   signals:
     void datesSelected( const KCalCore::DateList & );
@@ -128,6 +128,7 @@ class KDateNavigator: public QFrame
 
     KCalCore::DateList mSelectedDates;
     QDate mBaseDate;
+    Akonadi::ETMCalendar::Ptr mCalendar;
 
     // Disabling copy constructor and assignment operator
     KDateNavigator( const KDateNavigator & );
