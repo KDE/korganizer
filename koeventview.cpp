@@ -31,7 +31,7 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <libkdepim/pimmessagebox.h>
+#include <libkdepim/widgets/pimmessagebox.h>
 
 #include <KXMLGUIFactory>
 
