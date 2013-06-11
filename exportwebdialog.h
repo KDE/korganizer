@@ -25,7 +25,7 @@
 #ifndef KORG_EXPORTWEBDIALOG_H
 #define KORG_EXPORTWEBDIALOG_H
 
-#include <libkdepim/kprefsdialog.h>
+#include <libkdepim/prefs/kprefsdialog.h>
 
 namespace KOrg {
   class HTMLExportSettings;

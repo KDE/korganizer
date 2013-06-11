@@ -29,7 +29,7 @@
 #include "kcmdesignerfields.h"
 #include "ui_accountscalendarwidget.h"
 
-#include <libkdepim/kprefsdialog.h>
+#include <libkdepim/prefs/kprefsdialog.h>
 
 namespace Ui {
   class KOGroupwarePrefsPage;
