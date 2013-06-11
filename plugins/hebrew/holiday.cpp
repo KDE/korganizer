@@ -113,10 +113,32 @@ QStringList Holiday::findHoliday( int month, int day, int weekday, int kvia,
         holidays << i18n( "Chol Hamoed" );
       }
       break;
+    case 26:
     case 27:
+    case 28:
       // Yom HaShoah only exists since Israel was established.
       if ( year > 1948 + 3760 ) {
-        holidays << i18n( "Yom HaShoah" );
+        switch( weekday ) {
+        case Thursday:
+          if ( day == 26 || day == 27 ) {
+            holidays << i18n( "Yom HaShoah" );
+          }
+          break;
+        case Monday:
+          if ( day == 28 || day == 27 ) {
+            holidays << i18n( "Yom HaShoah" );
+          }
+          break;
+        case Sunday:
+        case Friday:
+          // These are never either of them.
+          break;
+        default:
+          if ( day == 27 ) {
+            holidays << i18n( "Yom HaShoah" );
+          }
+          break;
+        }
       }
       break;
     }
