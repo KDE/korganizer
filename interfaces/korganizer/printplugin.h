@@ -86,6 +86,10 @@ class PrintPlugin : public CalendarSupport::Plugin
     { return mSelectedIncidences; }
 
     /**
+     Returns KConfig group name where store settings
+    */
+    virtual QString groupName() = 0;
+    /**
       Returns short description of print format.
     */
     virtual QString description() = 0;

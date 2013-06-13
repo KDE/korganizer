@@ -175,7 +175,7 @@ void CalPrintPluginBase::doPrint( QPrinter *printer )
 void CalPrintPluginBase::doLoadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup group( mConfig, description() );
+    KConfigGroup group( mConfig, groupName() );
     mConfig->sync();
     QDateTime dt = QDateTime::currentDateTime();
     mFromDate = group.readEntry( "FromDate", dt ).date();
@@ -193,7 +193,7 @@ void CalPrintPluginBase::doLoadConfig()
 void CalPrintPluginBase::doSaveConfig()
 {
   if ( mConfig ) {
-    KConfigGroup group( mConfig, description() );
+    KConfigGroup group( mConfig, groupName() );
     saveConfig();
     QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
     dt.setDate( mFromDate );

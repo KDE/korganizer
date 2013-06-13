@@ -35,6 +35,7 @@ class CalPrintYear : public CalPrintPluginBase
   public:
     CalPrintYear():CalPrintPluginBase() {}
     virtual ~CalPrintYear() {}
+    virtual QString groupName() { return QString::fromLatin1( "Print year" ); }
     virtual QString description() { return i18n( "Print &year" ); }
     virtual QString info() const { return i18n( "Prints a calendar for an entire year" ); }
     virtual int sortID() { return CalPrinterBase::Year; }

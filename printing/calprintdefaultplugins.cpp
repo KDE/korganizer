@@ -106,7 +106,7 @@ void CalPrintIncidence::setSettingsWidget()
 void CalPrintIncidence::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     mShowOptions = grp.readEntry( "Show Options", false );
     mShowSubitemsNotes = grp.readEntry( "Show Subitems and Notes", false );
     mShowAttendees = grp.readEntry( "Use Attendees", false );
@@ -120,7 +120,7 @@ void CalPrintIncidence::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     grp.writeEntry( "Show Options", mShowOptions );
     grp.writeEntry( "Show Subitems and Notes", mShowSubitemsNotes );
     grp.writeEntry( "Use Attendees", mShowAttendees );
@@ -745,7 +745,7 @@ void CalPrintDay::setSettingsWidget()
 void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     QDate dt = QDate::currentDate(); // any valid QDate will do
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
@@ -767,7 +767,7 @@ void CalPrintDay::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
     dt.setTime( mStartTime );
     grp.writeEntry( "Start time", dt );
@@ -1020,7 +1020,7 @@ void CalPrintWeek::setSettingsWidget()
 void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     QDate dt = QDate::currentDate(); // any valid QDate will do
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
@@ -1041,7 +1041,7 @@ void CalPrintWeek::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
     dt.setTime( mStartTime );
     grp.writeEntry( "Start time", dt );
@@ -1262,7 +1262,7 @@ void CalPrintMonth::setSettingsWidget()
 void CalPrintMonth::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     mWeekNumbers = grp.readEntry( "Print week numbers", true );
     mRecurDaily = grp.readEntry( "Print daily incidences", true );
     mRecurWeekly = grp.readEntry( "Print weekly incidences", true );
@@ -1278,7 +1278,7 @@ void CalPrintMonth::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     grp.writeEntry( "Print week numbers", mWeekNumbers );
     grp.writeEntry( "Print daily incidences", mRecurDaily );
     grp.writeEntry( "Print weekly incidences", mRecurWeekly );
@@ -1464,7 +1464,7 @@ void CalPrintTodos::setSettingsWidget()
 void CalPrintTodos::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName() );
     mPageTitle = grp.readEntry( "Page title", i18n( "To-do list" ) );
     mTodoPrintType = (eTodoPrintType)grp.readEntry( "Print type", (int)TodosAll );
     mIncludeDescription = grp.readEntry( "Include description", true );
@@ -1485,7 +1485,7 @@ void CalPrintTodos::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, description() );
+    KConfigGroup grp( mConfig, groupName());
     grp.writeEntry( "Page title", mPageTitle );
     grp.writeEntry( "Print type", int( mTodoPrintType ) );
     grp.writeEntry( "Include description", mIncludeDescription );

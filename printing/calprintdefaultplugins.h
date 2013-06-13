@@ -45,6 +45,10 @@ class CalPrintIncidence : public CalPrintPluginBase
   public:
     CalPrintIncidence();
     virtual ~CalPrintIncidence();
+    virtual QString groupName()
+    {
+        return QString::fromLatin1("Print incidence");
+    }
     virtual QString description()
     {
       return i18n( "Print &incidence" );
@@ -96,6 +100,10 @@ class CalPrintDay : public CalPrintPluginBase
   public:
     CalPrintDay();
     virtual ~CalPrintDay();
+    virtual QString groupName()
+    {
+      return QString::fromLatin1( "Print day" );
+    }
     virtual QString description()
     {
       return i18n( "Print da&y" );
@@ -141,6 +149,11 @@ class CalPrintWeek : public CalPrintPluginBase
   public:
     CalPrintWeek();
     virtual ~CalPrintWeek();
+
+    virtual QString groupName()
+    {
+      return QString::fromLatin1( "Print week" );
+    }
     virtual QString description()
     {
       return i18n( "Print &week" );
@@ -190,6 +203,10 @@ class CalPrintMonth : public CalPrintPluginBase
   public:
     CalPrintMonth();
     virtual ~CalPrintMonth();
+    virtual QString groupName()
+    {
+        return QString::fromLatin1("Print month");
+    }
     virtual QString description()
     {
       return i18n( "Print mont&h" );
@@ -234,6 +251,11 @@ class CalPrintTodos : public CalPrintPluginBase
   public:
     CalPrintTodos();
     virtual ~CalPrintTodos();
+
+    virtual QString groupName()
+    {
+      return QString::fromLatin1( "Print to-dos" );
+    }
     virtual QString description()
     {
       return i18n( "Print to-&dos" );

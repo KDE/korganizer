@@ -35,6 +35,8 @@ class CalPrintJournal : public CalPrintPluginBase
   public:
     CalPrintJournal():CalPrintPluginBase() {}
     virtual ~CalPrintJournal() {}
+
+    virtual QString groupName() { return QString::fromLatin1( "Print journal" ); }
     virtual QString description() { return i18n( "Print &journal" ); }
     virtual QString info() const { return i18n( "Prints all journals for a given date range" ); }
     virtual QWidget *createConfigWidget( QWidget * );
