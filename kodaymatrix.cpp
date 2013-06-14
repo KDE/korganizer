@@ -114,7 +114,7 @@ void KODayMatrix::addSelectedDaysTo( KCalCore::DateList &selDays )
   // cope with selection being out of matrix limits at top (< 0)
   int i0 = mSelStart;
   if ( i0 < 0 ) {
-    for ( int i = i0; i < 0; i++ ) {
+    for ( int i = i0; i < 0; ++i ) {
       selDays.append( mDays[0].addDays( i ) );
     }
     i0 = 0;
@@ -122,15 +122,15 @@ void KODayMatrix::addSelectedDaysTo( KCalCore::DateList &selDays )
 
   // cope with selection being out of matrix limits at bottom (> NUMDAYS-1)
   if ( mSelEnd > NUMDAYS-1 ) {
-    for ( int i = i0; i <= NUMDAYS - 1; i++ ) {
+    for ( int i = i0; i <= NUMDAYS - 1; ++i ) {
       selDays.append( mDays[i] );
     }
-    for ( int i = NUMDAYS; i < mSelEnd; i++ ) {
+    for ( int i = NUMDAYS; i < mSelEnd; ++i ) {
       selDays.append( mDays[0].addDays( i ) );
     }
   } else {
     // apply normal routine to selection being entirely within matrix limits
-    for ( int i = i0; i <= mSelEnd; i++ ) {
+    for ( int i = i0; i <= mSelEnd; ++i ) {
       selDays.append( mDays[i] );
     }
   }
@@ -156,7 +156,7 @@ void KODayMatrix::recalculateToday()
   }
 
   mToday = -1;
-  for ( int i = 0; i < NUMDAYS; i++ ) {
+  for ( int i = 0; i < NUMDAYS; ++i ) {
     mDays[i] = mStartDate.addDays( i );
     mDayLabels[i] = QString::number( KOGlobals::self()->calendarSystem()->day( mDays[i] ) );
 
@@ -227,7 +227,7 @@ void KODayMatrix::updateView( const QDate &actdate )
   // waste of computational power
   updateIncidences();
   QMap<QDate,QStringList> holidaysByDate = KOGlobals::self()->holiday( mDays[0], mDays[NUMDAYS-1] );
-  for ( int i = 0; i < NUMDAYS; i++ ) {
+  for ( int i = 0; i < NUMDAYS; ++i ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
     QStringList holidays = holidaysByDate[mDays[i]];
     QString holiStr;

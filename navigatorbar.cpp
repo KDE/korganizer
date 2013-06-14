@@ -161,7 +161,7 @@ void NavigatorBar::selectMonthFromMenu()
   month = 0;
   QAction *selectedAct = menu->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ) );
   if ( selectedAct && ( selectedAct != activateAction ) ) {
-    for ( int i=0; i < months; i++ ) {
+    for ( int i=0; i < months; ++i ) {
       if ( act[i] == selectedAct ) {
         month = i + 1;
       }
@@ -190,7 +190,7 @@ void NavigatorBar::selectYearFromMenu()
   QString yearStr;
   QAction *activateAction = 0;
   int y = minYear;
-  for ( int i=0; i < years; i++ ) {
+  for ( int i=0; i < years; ++i ) {
     QAction *yearAction = menu->addAction( yearStr.setNum( y ) );
     act.append( yearAction );
     if ( y == year ) {
@@ -205,7 +205,7 @@ void NavigatorBar::selectYearFromMenu()
   QAction *selectedAct = menu->exec( mYear->mapToGlobal( QPoint( 0, 0 ) ) );
   if ( selectedAct && ( selectedAct != activateAction ) ) {
     int y = minYear;
-    for ( int i=0; i < years; i++ ) {
+    for ( int i=0; i < years; ++i ) {
       if ( act[i] == selectedAct ) {
         year = y;
       }
