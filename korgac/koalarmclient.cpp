@@ -71,7 +71,9 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
   }
 #endif
-  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
+  QStringList mimeTypes;
+  mimeTypes << Event::eventMimeType() << Todo::todoMimeType();
+  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( mimeTypes ) );
   mCalendar->setObjectName( "KOrgac's calendar" );
   mETM = mCalendar->entityTreeModel();
 
