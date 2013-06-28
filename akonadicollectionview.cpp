@@ -52,7 +52,7 @@
 #include <KCheckableProxyModel>
 #include <KColorDialog>
 #include <KMessageBox>
-#include <krecursivefilterproxymodel.h> //krazy:exclude=camelcase TODO wait for kdelibs4.9
+#include <KRecursiveFilterProxyModel>
 
 #include <QHeaderView>
 #include <QPainter>
