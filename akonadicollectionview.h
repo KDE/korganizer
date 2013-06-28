@@ -107,7 +107,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     Akonadi::EntityTreeModel *entityTreeModel() const;
 
     Akonadi::StandardCalendarActionManager *mActionManager;
-    Akonadi::EntityTreeView *mCollectionview;
+    Akonadi::EntityTreeView *mCollectionView;
     QAbstractProxyModel *mBaseModel;
     KCheckableProxyModel *mSelectionProxyModel;
     KAction *mCreateAction;
