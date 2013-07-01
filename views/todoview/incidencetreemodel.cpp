@@ -586,7 +586,7 @@ int IncidenceTreeModel::rowCount( const QModelIndex &parent ) const
     Node *parentNode = reinterpret_cast<Node*>( parent.internalPointer() );
     Q_ASSERT( parentNode );
     d->assert_and_dump( !d->m_removedNodes.contains( parentNode ),
-                        QString::number( (long)parentNode, 16 ) + " was already deleted" );
+                        QString::number( (quintptr)parentNode, 16 ) + " was already deleted" );
 
     const int count = parentNode->directChilds.count();
     return count;
