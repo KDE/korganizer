@@ -311,9 +311,6 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
                                     Akonadi::StandardActionManager::DialogTitle,
                                     ki18nc( "@title:window", "Properties of Calendar Folder %1" ) );
 
-    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->
-      setProperty( "ContentMimeTypes", QStringList( KCalCore::Event::eventMimeType() ) );
-
     const QStringList pages =
       QStringList() << QLatin1String( "CalendarSupport::CollectionGeneralPage" )
                     << QLatin1String( "Akonadi::CachePolicyPage" )
