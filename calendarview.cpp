@@ -113,6 +113,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mCalendar->setObjectName( "KOrg Calendar" );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mITIPHandler = new Akonadi::ITIPHandler( this );
+  mITIPHandler->setCalendar( mCalendar );
   connect( mCalendarClipboard, SIGNAL(cutFinished(bool,QString)), SLOT(onCutFinished()) );
 
   Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
