@@ -49,8 +49,16 @@ K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
 K_EXPORT_PLUGIN( KOrganizerFactory( createAboutData() ) )
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
-  : KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
+  : KParts::ReadOnlyPart( parent )
 {
+  if ( parentWidget ) {
+    mTopLevelWidget = parentWidget->topLevelWidget();
+  } else if ( parent && parent->isWidgetType() ) {
+    mTopLevelWidget = (QWidget *)parent;
+  } else {
+    kError() << "Cannot initialize the part without a top level widget.";
+  }
+
   KGlobal::locale()->insertCatalog( "libkcalutils" );
   KGlobal::locale()->insertCatalog( "calendarsupport" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
