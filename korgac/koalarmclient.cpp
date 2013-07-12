@@ -161,7 +161,7 @@ void KOAlarmClient::deferredInit()
 bool KOAlarmClient::dockerEnabled()
 {
   KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
-  KConfigGroup generalGroup( &korgConfig, "General" );
+  KConfigGroup generalGroup( &korgConfig, "System Tray" );
   return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
 
