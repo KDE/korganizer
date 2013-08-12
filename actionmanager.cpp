@@ -59,6 +59,7 @@
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/Calendar/History>
+#include <Akonadi/Calendar/ICalImporter>
 
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
@@ -286,14 +287,14 @@ void ActionManager::initActions()
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  KAction *mergeAction = new KAction( i18n( "Import &Calendar..." ), this );
-  mergeAction->setHelpText(
+  mImportAction = new KAction( i18n( "Import &Calendar..." ), this );
+  mImportAction->setHelpText(
     i18n( "Merge the contents of another iCalendar" ) );
-  mergeAction->setWhatsThis(
+  mImportAction->setWhatsThis(
     i18n( "Select this menu entry if you would like to merge the contents "
           "of another iCalendar into your current calendar." ) );
-  mACollection->addAction( "import_icalendar", mergeAction );
-  connect( mergeAction, SIGNAL(triggered(bool)), SLOT(file_import()) );
+  mACollection->addAction( "import_icalendar", mImportAction );
+  connect( mImportAction, SIGNAL(triggered(bool)), SLOT(file_import()) );
 
   KAction *importAction = new KAction( i18n( "&Import From UNIX Ical Tool" ), this );
   importAction->setHelpText(
@@ -765,7 +766,40 @@ void ActionManager::slotNewSubTodo()
 
 void ActionManager::slotNewJournal()
 {
-  mCalendarView->newJournal( selectedCollection() );
+    mCalendarView->newJournal( selectedCollection() );
+}
+
+void ActionManager::slotMergeFinished(bool success, int total, int numErrors)
+{
+    Q_ASSERT(sender());
+    sender()->deleteLater();
+    mImportAction->setEnabled(true);
+
+    if (success) {
+        if (total == 1)
+            mCalendarView->showMessage(i18n("1 incidence was imported successfully."), KMessageWidget::Information);
+        else
+            mCalendarView->showMessage(i18n("%1 incidences were imported successfully.", total), KMessageWidget::Information);
+    } else {
+        if (total == 0) {
+            mCalendarView->showMessage(i18n("None of the %1 incidences were imported due to error.", numErrors), KMessageWidget::Error);
+        } else {
+            mCalendarView->showMessage(i18n("%1 incidences were imported successfully and %2 weren't due to error.", total, numErrors), KMessageWidget::Warning);
+        }
+    }
+}
+
+void ActionManager::slotNewResourceFinished(bool success)
+{
+    Q_ASSERT(sender());
+    sender()->deleteLater();
+    Akonadi::ICalImporter *importer = qobject_cast<Akonadi::ICalImporter*>(sender());
+    mImportAction->setEnabled(true);
+    if (success) {
+        mCalendarView->showMessage(i18n("New calendar added successfully"), KMessageWidget::Information);
+    } else {
+        mCalendarView->showMessage(i18n("Could not add a calendar. Error: %1", importer->errorMessage()), KMessageWidget::Error);
+    }
 }
 
 void ActionManager::readSettings()
@@ -880,8 +914,8 @@ void ActionManager::file_icalimport()
 
   if ( retVal >= 0 && retVal <= 2 ) {
     // now we need to MERGE what is in the iCal to the current calendar.
-    mCalendarView->openCalendar( tmpfn.fileName(), 1 );
-    if ( !retVal ) {
+    importURL(KUrl(tmpfn.fileName()), /*merge=*/ true);
+/*    if ( !retVal ) {
       KMessageBox::information( dialogParent(),
                                 i18n( "KOrganizer successfully imported and "
                                       "merged your .calendar file from ical "
@@ -894,7 +928,7 @@ void ActionManager::file_icalimport()
                                       "discard them; please check to see that all "
                                       "your relevant data was correctly imported." ),
                                 i18n( "ICal Import Successful with Warning" ) );
-    }
+    } */
   } else if ( retVal == -1 ) { // XXX this is bogus
     KMessageBox::error( dialogParent(),
                          i18n( "KOrganizer encountered an error parsing your "
@@ -931,107 +965,27 @@ void ActionManager::file_close()
   setTitle();
 }
 
-bool ActionManager::openURL( const KUrl &url, bool merge )
+bool ActionManager::importURL(const KUrl &url, bool merge)
 {
-  kDebug();
-
-  if ( url.isEmpty() ) {
-    kDebug() << "Error! Empty URL.";
-    return false;
-  }
-  if ( !url.isValid() ) {
-    kDebug() << "Error! URL is malformed.";
-    return false;
-  }
-
-  if ( url.isLocalFile() ) {
-    mURL = url;
-    mFile = url.toLocalFile();
-    if ( !KStandardDirs::exists( mFile ) ) {
-      mMainWindow->showStatusMessage( i18n( "New calendar '%1'.", url.prettyUrl() ) );
+    Akonadi::ICalImporter *importer = new Akonadi::ICalImporter();
+    bool jobStarted;
+    if (merge) {
+        connect(importer, SIGNAL(importIntoExistingFinished(bool,int,int)), SLOT(slotMergeFinished(bool,int,int))),
+        jobStarted = importer->importIntoExistingResource(url, Akonadi::Collection());
     } else {
-      bool success = mCalendarView->openCalendar( mFile, merge );
-      if ( success ) {
-        showStatusMessageOpen( merge );
-      }
+        connect(importer, SIGNAL(importIntoNewFinished(bool)), SLOT(slotNewResourceFinished(bool)));
+        jobStarted = importer->importIntoNewResource(url.path());
     }
-    setTitle();
-  } else {
-    QString tmpFile;
-    if ( KIO::NetAccess::download( url, tmpFile, view() ) ) {
-      kDebug() << "--- Downloaded to" << tmpFile;
-      bool success = mCalendarView->openCalendar( tmpFile, merge );
-      if ( merge ) {
-        KIO::NetAccess::removeTempFile( tmpFile );
-        if ( success ) {
-          showStatusMessageOpen( merge );
-        }
-      } else {
-        if ( success ) {
-          KIO::NetAccess::removeTempFile( mFile );
-          mURL = url;
-          mFile = tmpFile;
-          setTitle();
-          kDebug() << "-- Add recent URL:" << url.prettyUrl();
-          showStatusMessageOpen( merge );
-        }
-      }
-      return success;
-    } else { // download failed
-      KMessageBox::error( dialogParent(), KIO::NetAccess::lastErrorString() );
-      return false;
+
+    if (jobStarted) {
+        mImportAction->setEnabled(false);
+    } else {
+        // empty error message means user canceled.
+        if (!importer->errorMessage().isEmpty())
+            mCalendarView->showMessage(i18n("An error occured: %1", importer->errorMessage()), KMessageWidget::Error);
     }
-  }
-  return true;
-}
 
-bool ActionManager::addResource( const KUrl &url )
-{
-  kDebug() << url;
-  Akonadi::AgentType type =
-    Akonadi::AgentManager::self()->type( QLatin1String( "akonadi_ical_resource" ) );
-  Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type, this );
-  job->setProperty( "path", url.path() );
-  connect( job, SIGNAL(result(KJob*)), this, SLOT(agentCreated(KJob*)) );
-  job->start();
-  return true;
-}
-
-void ActionManager::agentCreated( KJob *job )
-{
-  kDebug();
-  Akonadi::AgentInstanceCreateJob *createjob =
-    qobject_cast<Akonadi::AgentInstanceCreateJob*>( job );
-  Q_ASSERT( createjob );
-  if ( createjob->error() ) {
-    mCalendarView->showErrorMessage( createjob->errorString() );
-    return;
-  }
-
-  Akonadi::AgentInstance instance = createjob->instance();
-  //instance.setName( CalendarName );
-  QDBusInterface iface(
-    QString::fromLatin1( "org.freedesktop.Akonadi.Resource.%1" ).arg( instance.identifier() ),
-    QLatin1String( "/Settings" ) );
-
-  if( ! iface.isValid() ) {
-    mCalendarView->showErrorMessage(
-      i18n( "Failed to obtain D-Bus interface for remote configuration." ) );
-    return;
-  }
-  QString path = createjob->property( "path" ).toString();
-  Q_ASSERT( ! path.isEmpty() );
-  iface.call( QLatin1String( "setPath" ), path );
-  instance.reconfigure();
-}
-
-void ActionManager::showStatusMessageOpen( bool merge )
-{
-  if ( merge ) {
-    mMainWindow->showStatusMessage( i18n( "Calendar Item successfully merged" ) );
-  } else {
-    mMainWindow->showStatusMessage( i18n( "Calendar Item successfully created" ) );
-  }
+    return jobStarted;
 }
 
 void ActionManager::closeUrl()
@@ -1300,21 +1254,9 @@ void ActionManager::saveProperties( KConfigGroup &config )
   }
 }
 
-void ActionManager::readProperties( const KConfigGroup &config )
+void ActionManager::readProperties( const KConfigGroup & )
 {
-  kDebug();
-
-  bool isResourceCalendar(
-    config.readEntry( "UseResourceCalendar", true ) );
-  QString calendarUrl = config.readPathEntry( "Calendar", QString() );
-
-  if ( !isResourceCalendar && !calendarUrl.isEmpty() ) {
-    mMainWindow->init( true );
-    KUrl u( calendarUrl );
-    openURL( u );
-  } else {
-    mMainWindow->init( false );
-  }
+   mMainWindow->init( false );
 }
 
 // Configuration changed as a result of the options dialog.
@@ -1378,6 +1320,12 @@ KOrg::MainWindow *ActionManager::findInstance( const KUrl &url )
   }
 }
 
+bool ActionManager::openURL(const QString &url)
+{
+    importCalendar(KUrl(url));
+    return true;
+}
+
 void ActionManager::dumpText( const QString &str )
 {
   kDebug() << str;
@@ -1419,14 +1367,9 @@ void ActionManager::toggleResourceView()
   }
 }
 
-bool ActionManager::openURL( const QString &url )
-{
-  return openURL( KUrl( url ) );
-}
-
 bool ActionManager::mergeURL( const QString &url )
 {
-  return openURL( KUrl( url ), true );
+  return importURL( KUrl( url ), true );
 }
 
 bool ActionManager::saveAsURL( const QString &url )
@@ -1467,18 +1410,18 @@ bool ActionManager::handleCommandLine()
   } else if ( args->count() <= 0 ) {
     // No filenames given => all other args are meaningless, show main Window
     mainWindow->topLevelWidget()->show();
-  } else if ( !args->isSet( "open" ) ) {
+  } else {
     // Import, merge, or ask => we need the resource calendar window anyway.
     mainWindow->topLevelWidget()->show();
 
     // Check for import, merge or ask
     if ( args->isSet( "import" ) ) {
       for ( int i = 0; i < args->count(); ++i ) {
-        mainWindow->actionManager()->addResource( args->url( i ) );
+        importURL( args->url( i ), /*merge=*/false );
       }
     } else if ( args->isSet( "merge" ) ) {
       for ( int i = 0; i < args->count(); ++i ) {
-        mainWindow->actionManager()->mergeURL( args->url( i ).url() );
+        importURL( args->url( i ), /*merge=*/true );
       }
     } else {
       for ( int i = 0; i < args->count(); ++i ) {
@@ -1537,7 +1480,7 @@ void ActionManager::downloadNewStuff()
         // FIXME (KNS2): hm, no way out here :-)
       }
 
-      if ( mCalendarView->openCalendar( file, true ) ) {
+      if ( importURL( KUrl(file), true ) ) {
         // FIXME (KNS2): here neither
       }
     }
@@ -1961,7 +1904,6 @@ void ActionManager::importCalendar( const KUrl &url )
            "the destination calendar.</p>"
            "<p>If you select add, then a new calendar will be created for you automatically.</p>" );
 
-reTry:
   const int answer =
     KMessageBox::questionYesNoCancel(
       dialogParent(),
@@ -1970,34 +1912,15 @@ reTry:
       KGuiItem( i18n( "Merge into existing calendar" ) ),
       KGuiItem( i18n( "Add as new calendar" ) ) );
 
-  bool status;
   switch( answer )  {
   case KMessageBox::Yes: //merge
-    status = openURL( url, true );
+    importURL( url, true );
     break;
   case KMessageBox::No:  //import
-    status = addResource( url );
+    importURL( url, false );
     break;
   default:
     return;
-  }
-
-  if ( !status ) {
-    int answer =
-      KMessageBox::questionYesNo(
-        dialogParent(),
-        i18nc( "@info",
-               "<p>An error occurred importing calendar item from %1.</p>"
-               "<p>Would you like to try again?</p>", url.prettyUrl() ) );
-    if ( answer == KMessageBox::Yes ) {
-      goto reTry;
-    }
-  } else {
-    KMessageBox::information(
-      dialogParent(),
-      i18nc( "@info",
-             "The calendar item from %1 was successfully imported.",
-             url.prettyUrl() ) );
   }
 }
 

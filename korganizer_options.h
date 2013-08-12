@@ -36,15 +36,11 @@ static KCmdLineOptions korganizer_options ()
                ki18n( "Import the specified files as separate calendars" ) );
   options.add( "m" );
   options.add( "merge",
-               ki18n( "Merge the specified files into the standard calendar " ) );
-  options.add( "o" );
-  options.add( "open",
-               ki18n( "Open the specified files as calendars in a new window" ) );
+               ki18n( "Merge the specified files into an existing calendar" ) );
   options.add( "+[calendars]",
                ki18n( "Calendar files or urls. "
-                      "Unless -i, -o or -m is explicitly specified, "
-                      "the user will be asked whether to import, merge "
-                      "or open in a separate window." ) );
+                      "Unless -i or -m is explicitly specified, "
+                      "the user will be asked whether to import or merge" ) );
   return options;
 }
 

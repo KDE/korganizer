@@ -83,21 +83,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void createCalendarAkonadi();
 
   public slots:
-
-    /** Add a new resource
-        @param mUrl The url for the new resource. Either a local or a remote
-                    resource will be added, depending on the type of the url.
-    */
-    bool addResource( const KUrl &mUrl );
-
-    /**
-      Open calendar file from URL. Merge into current calendar, if \a merge is true.
-        @param url The URL to open
-        @param merge If true, the items from the url will be inserted into the
-                     current calendar (default resource). Otherwise a new
-                     resource is added for the given url.
-    */
-    bool openURL( const KUrl &url, bool merge = false );
+    bool importURL( const KUrl &url, bool merge);
 
     /** Save calendar file to URL of current calendar */
     bool saveURL();
@@ -338,13 +324,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void updateUndoRedoActions();
 
-    void agentCreated( KJob * );
-
   protected:
     /** Get URL for saving. Opens FileDialog. */
     KUrl getSaveURL();
-
-    void showStatusMessageOpen( bool merge );
 
     /**
       Return widget used as parent for dialogs and message boxes.
@@ -362,6 +344,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void slotNewTodo();
     void slotNewSubTodo();
     void slotNewJournal();
+
+    void slotMergeFinished(bool success, int total, int numErrors);
+    void slotNewResourceFinished(bool);
+
+
   private:
     class ActionStringsVisitor;
 
@@ -391,6 +378,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KToggleAction *mEventViewerShowAction;
 
     KToggleAction *mHideMenuBarAction;
+
+    KAction *mImportAction;
 
     KAction *mNewEventAction;
     KAction *mNewTodoAction;

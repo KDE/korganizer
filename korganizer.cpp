@@ -115,7 +115,7 @@ void KOrganizer::newMainWindow( const KUrl &url )
   KOrganizer *korg = new KOrganizer();
   if ( url.isValid() || url.isEmpty() ) {
     korg->init( true );
-    if ( korg->openURL( url ) || url.isEmpty() ) {
+    if ( mActionManager->importURL( url, false ) || url.isEmpty() ) {
       korg->show();
     } else {
       delete korg;
@@ -204,7 +204,7 @@ void KOrganizer::showStatusMessage( const QString &message )
 
 bool KOrganizer::openURL( const KUrl &url, bool merge )
 {
-  return mActionManager->openURL( url, merge );
+  return mActionManager->importURL( url, merge );
 }
 
 bool KOrganizer::saveURL()

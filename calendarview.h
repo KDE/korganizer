@@ -36,6 +36,8 @@
 
 #include <akonadi/calendar/itiphandler.h>
 
+#include <calendarsupport/messagewidget.h>
+
 class CalPrinter;
 class DateChecker;
 class DateNavigator;
@@ -52,7 +54,6 @@ namespace KOrg {
 
 namespace CalendarSupport {
   class IncidenceViewer;
-  class MessageWidget;
 }
 
 namespace IncidenceEditorNG {
@@ -125,6 +126,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void setCalendar( const Akonadi::ETMCalendar::Ptr & );
     Akonadi::ETMCalendar::Ptr calendar() const;
+
+    void showMessage(const QString &message, KMessageWidget::MessageType);
 
     Akonadi::History *history() const;
     void setCheckableProxyModel( KOCheckableProxyModel * );
@@ -260,17 +263,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     */
     void updateCategories();
     void handleIncidenceCreated(const Akonadi::Item &item);
-
-    /**
-      Load calendar from file \a filename. If \a merge is true, load
-      calendar into existing one, if it is false, clear calendar, before
-      loading. Return true, if calendar could be successfully loaded.
-        @param filename the file name to load the calendar from
-        @param merge If true, the items from the file are inserted into the
-                     current calendar (default resource or calendar file). If
-                     false, the file is added as a new calendar resource.
-    */
-    bool openCalendar( const QString &filename, bool merge=false );
 
     /**
       Save calendar data to file. Return true if calendar could be
