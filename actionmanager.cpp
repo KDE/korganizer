@@ -52,8 +52,6 @@
 #include <incidenceeditor-ng/globalsettings.h>
 #include <incidenceeditor-ng/groupwareintegration.h>
 
-#include <Akonadi/AgentInstanceCreateJob>
-#include <Akonadi/AgentManager>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeView>
 #include <Akonadi/EntityTreeModel>
