@@ -923,11 +923,6 @@ void ActionManager::file_archive()
 
 void ActionManager::file_close()
 {
-#ifdef AKONADI_PORT_DISABLED
-  if ( !saveModifiedURL() ) {
-    return;
-  }
-#endif
   mCalendarView->closeCalendar();
   KIO::NetAccess::removeTempFile( mFile );
   mURL = "";
