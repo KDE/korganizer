@@ -774,15 +774,12 @@ void ActionManager::slotMergeFinished(bool success, int total, int numErrors)
     mImportAction->setEnabled(true);
 
     if (success) {
-        if (total == 1)
-            mCalendarView->showMessage(i18n("1 incidence was imported successfully."), KMessageWidget::Information);
-        else
-            mCalendarView->showMessage(i18n("%1 incidences were imported successfully.", total), KMessageWidget::Information);
+        mCalendarView->showMessage(i18np("1 incidence was imported successfully.", "%1 incidences were imported successfully.", total), KMessageWidget::Information);
     } else {
         if (total == 0) {
             mCalendarView->showMessage(i18n("None of the %1 incidences were imported due to error.", numErrors), KMessageWidget::Error);
         } else {
-            mCalendarView->showMessage(i18n("%1 incidences were imported successfully and %2 weren't due to error.", total, numErrors), KMessageWidget::Warning);
+            mCalendarView->showMessage(i18np("%1 incidence was imported successfully and %2 were not due to error.", "%1 incidences were imported successfully and %2 were not due to error.", total, numErrors), KMessageWidget::Warning);
         }
     }
 }
