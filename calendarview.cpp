@@ -372,14 +372,6 @@ bool CalendarView::saveCalendar( const QString &filename )
   return storage.save();
 }
 
-void CalendarView::closeCalendar()
-{
-  // child windows no longer valid
-  emit closingDown();
-  //mCalendar->close();
-  updateView();
-}
-
 void CalendarView::archiveCalendar()
 {
   mDialogManager->showArchiveDialog();

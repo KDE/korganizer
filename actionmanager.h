@@ -122,9 +122,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Save calendar file to URL */
     bool saveAsURL( const QString &url );
 
-    /** Close calendar file opened from URL */
-    void closeUrl();
-
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
 
@@ -233,12 +230,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void configChanged();
 
-    /**
-      Emitted when the topwidget is closing down, so that any attached
-      child windows can also close.
-    */
-    void closingDown();
-
   public slots:
     /**
       Options dialog made a changed to the configuration. we catch this
@@ -294,9 +285,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     /** delete or archive old entries in your calendar for speed/space. */
     void file_archive();
-
-    /** close a file, prompt for save if changes made. */
-    void file_close();
 
     /** Open kcontrol module for configuring date and time formats */
     void configureDateTime();

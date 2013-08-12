@@ -953,16 +953,6 @@ void ActionManager::file_archive()
   mCalendarView->archiveCalendar();
 }
 
-void ActionManager::file_close()
-{
-  mCalendarView->closeCalendar();
-  KIO::NetAccess::removeTempFile( mFile );
-  mURL = "";
-  mFile = "";
-
-  setTitle();
-}
-
 bool ActionManager::importURL(const KUrl &url, bool merge)
 {
     Akonadi::ICalImporter *importer = new Akonadi::ICalImporter();
@@ -984,12 +974,6 @@ bool ActionManager::importURL(const KUrl &url, bool merge)
     }
 
     return jobStarted;
-}
-
-void ActionManager::closeUrl()
-{
-  kDebug();
-  file_close();
 }
 
 bool ActionManager::saveURL()

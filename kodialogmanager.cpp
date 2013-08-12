@@ -126,7 +126,6 @@ void KODialogManager::showSearchDialog()
              mMainView, SLOT(editIncidence(Akonadi::Item)) );
     connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
              mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
-    connect( mMainView, SIGNAL(closingDown()),mSearchDialog,SLOT(reject()) );
   }
   // make sure the widget is on top again
   mSearchDialog->show();
@@ -201,7 +200,6 @@ void KODialogManager::connectEditor( IncidenceEditorNG::IncidenceDialog *editor 
            mCategoryEditDialog, SLOT(show()) );
   connect( editor, SIGNAL(dialogClose(Akonadi::Item)),
            mMainView, SLOT(dialogClosing(Akonadi::Item)) );
-  connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
   connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
            mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
 }

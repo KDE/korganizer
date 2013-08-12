@@ -50,7 +50,6 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
   public slots:
     bool openURL( const QString &url );
     bool mergeURL( const QString &url );
-    void closeUrl();
     bool saveURL();
     bool saveAsURL( const QString &url );
     QString getCurrentURLasString() const;

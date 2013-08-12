@@ -199,10 +199,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
      *  need to reload the list of categories */
     void categoryConfigChanged();
 
-    /** Emitted when the topwidget is closing down, so that any attached
-        child windows can also close. */
-    void closingDown();
-
     /** Emitted right before we die */
     void closed( QWidget * );
 
@@ -270,12 +266,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         @param filename The file name to save the calendar to
     */
     bool saveCalendar( const QString &filename );
-
-    /**
-      Close calendar. Clear calendar data and reset views to display an empty
-      calendar.
-    */
-    void closeCalendar();
 
     /** Archive old events of calendar */
     void archiveCalendar();
