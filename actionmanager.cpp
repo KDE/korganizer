@@ -767,20 +767,17 @@ void ActionManager::slotNewJournal()
     mCalendarView->newJournal( selectedCollection() );
 }
 
-void ActionManager::slotMergeFinished(bool success, int total, int numErrors)
+void ActionManager::slotMergeFinished(bool success, int total)
 {
     Q_ASSERT(sender());
     sender()->deleteLater();
     mImportAction->setEnabled(true);
+    Akonadi::ICalImporter *importer = qobject_cast<Akonadi::ICalImporter*>(sender());
 
     if (success) {
         mCalendarView->showMessage(i18np("1 incidence was imported successfully.", "%1 incidences were imported successfully.", total), KMessageWidget::Information);
     } else {
-        if (total == 0) {
-            mCalendarView->showMessage(i18n("None of the %1 incidences were imported due to error.", numErrors), KMessageWidget::Error);
-        } else {
-            mCalendarView->showMessage(i18np("%1 incidence was imported successfully and %2 were not due to error.", "%1 incidences were imported successfully and %2 were not due to error.", total, numErrors), KMessageWidget::Warning);
-        }
+        mCalendarView->showMessage(i18n("There was an error while merging the calendar: %1", importer->errorMessage()), KMessageWidget::Error);
     }
 }
 
@@ -955,7 +952,7 @@ bool ActionManager::importURL(const KUrl &url, bool merge)
     Akonadi::ICalImporter *importer = new Akonadi::ICalImporter();
     bool jobStarted;
     if (merge) {
-        connect(importer, SIGNAL(importIntoExistingFinished(bool,int,int)), SLOT(slotMergeFinished(bool,int,int))),
+        connect(importer, SIGNAL(importIntoExistingFinished(bool,int)), SLOT(slotMergeFinished(bool,int))),
         jobStarted = importer->importIntoExistingResource(url, Akonadi::Collection());
     } else {
         connect(importer, SIGNAL(importIntoNewFinished(bool)), SLOT(slotNewResourceFinished(bool)));

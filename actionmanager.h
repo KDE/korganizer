@@ -333,7 +333,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void slotNewSubTodo();
     void slotNewJournal();
 
-    void slotMergeFinished(bool success, int total, int numErrors);
+    void slotMergeFinished(bool success, int total);
     void slotNewResourceFinished(bool);
 
 
