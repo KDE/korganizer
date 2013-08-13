@@ -917,13 +917,11 @@ void ActionManager::file_icalimport()
         // else nothing, the operation is async and the use will se a message widget when the operation finishes, not now.
     }
   } else if ( retVal == -1 ) { // XXX this is bogus
-    KMessageBox::error( dialogParent(),
-                         i18n( "KOrganizer encountered an error parsing your "
-                              ".calendar file from ical; import has failed." ) );
+    mCalendarView->showMessage( i18n( "KOrganizer encountered an error parsing your "
+                                      ".calendar file from ical; import has failed." ), KMessageWidget::Error );
   } else if ( retVal == -2 ) { // XXX this is bogus
-    KMessageBox::error( dialogParent(),
-                         i18n( "KOrganizer does not think that your .calendar "
-                              "file is a valid ical calendar; import has failed." ) );
+    mCalendarView->showMessage( i18n( "KOrganizer does not think that your .calendar "
+                                      "file is a valid ical calendar; import has failed." ), KMessageWidget::Error );
   }
 }
 
