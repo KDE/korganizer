@@ -906,21 +906,16 @@ void ActionManager::file_icalimport()
 
   if ( retVal >= 0 && retVal <= 2 ) {
     // now we need to MERGE what is in the iCal to the current calendar.
-    importURL(KUrl(tmpfn.fileName()), /*merge=*/ true);
-/*    if ( !retVal ) {
-      KMessageBox::information( dialogParent(),
-                                i18n( "KOrganizer successfully imported and "
-                                      "merged your .calendar file from ical "
-                                      "into the currently opened calendar." ),
-                                "dotCalendarImportSuccess" );
+    const bool success = importURL(KUrl(tmpfn.fileName()), /*merge=*/ true);
+    if ( !success ) {
+        mCalendarView->showMessage( i18n( "KOrganizer encountered some unknown fields while "
+                                          "parsing your .calendar ical file, and had to "
+                                          "discard them; please check to see that all "
+                                          "your relevant data was correctly imported." ), KMessageWidget::Warning);
+
     } else {
-      KMessageBox::information( dialogParent(),
-                                i18n( "KOrganizer encountered some unknown fields while "
-                                      "parsing your .calendar ical file, and had to "
-                                      "discard them; please check to see that all "
-                                      "your relevant data was correctly imported." ),
-                                i18n( "ICal Import Successful with Warning" ) );
-    } */
+        // else nothing, the operation is async and the use will se a message widget when the operation finishes, not now.
+    }
   } else if ( retVal == -1 ) { // XXX this is bogus
     KMessageBox::error( dialogParent(),
                          i18n( "KOrganizer encountered an error parsing your "
