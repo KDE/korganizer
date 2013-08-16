@@ -31,7 +31,7 @@ class MyDesignerFields : public KCMDesignerFields
     MyDesignerFields( const KComponentData &kcd ) : KCMDesignerFields( kcd, 0 ) {}
     QString localUiDir() { return QString( KDESRCDIR ); }
     QString uiPath() { return QString( KDESRCDIR ); }
-    void writeActivePages( const QStringList & )  {};
+    void writeActivePages( const QStringList & )  {}
     QStringList readActivePages() { return QStringList(); }
     QString applicationName() { return "textkcmdesignerfields"; }
 };
