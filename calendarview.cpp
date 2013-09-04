@@ -1814,7 +1814,6 @@ void CalendarView::exportWeb()
   ExportWebDialog *dlg = new ExportWebDialog( settings, this );
   connect( dlg, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
            this, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)) );
-  connect(dlg, SIGNAL(destroyed(QObject*)), settings, SLOT(deleteLater()), Qt::QueuedConnection);
   dlg->show();
 }
 
