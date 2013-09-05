@@ -62,7 +62,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ), mDocker( 0 ), mDialog( 0 )
 {
   new KOrgacAdaptor( this );
-  Akonadi::DBusConnectionPool::threadConnection().registerObject( "/ac", this );
+  Akonadi::DBusConnectionPool::threadConnection().registerObject( QLatin1String("/ac"), this );
   kDebug();
 
 #if !defined(KORGAC_AKONADI_AGENT)
@@ -75,7 +75,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   QStringList mimeTypes;
   mimeTypes << Event::eventMimeType() << Todo::todoMimeType();
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( mimeTypes ) );
-  mCalendar->setObjectName( "KOrgac's calendar" );
+  mCalendar->setObjectName( QLatin1String("KOrgac's calendar") );
   mETM = mCalendar->entityTreeModel();
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
@@ -127,7 +127,7 @@ void KOAlarmClient::deferredInit()
   const int numReminders = genGroup.readEntry( "Reminders", 0 );
 
   for ( int i=1; i<=numReminders; ++i ) {
-    const QString group( QString( "Incidence-%1" ).arg( i ) );
+    const QString group( QString::fromLatin1( "Incidence-%1" ).arg( i ) );
     const KConfigGroup incGroup( KGlobal::config(), group );
 
     const KUrl url = incGroup.readEntry( "AkonadiUrl" );
@@ -160,7 +160,7 @@ void KOAlarmClient::deferredInit()
 
 bool KOAlarmClient::dockerEnabled()
 {
-  KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
+  KConfig korgConfig( KStandardDirs::locate( "config", QLatin1String("korganizerrc") ) );
   KConfigGroup generalGroup( &korgConfig, "System Tray" );
   return generalGroup.readEntry( "ShowReminderDaemon", true );
 }
@@ -315,13 +315,13 @@ QStringList KOAlarmClient::dumpAlarms()
 
   QStringList lst;
   // Don't translate, this is for debugging purposes.
-  lst << QString( "AlarmDeamon::dumpAlarms() from " ) + start.toString() + " to " +
+  lst << QLatin1String( "AlarmDeamon::dumpAlarms() from " ) + start.toString() + QLatin1String(" to ") +
          end.toString();
 
   Alarm::List alarms = mCalendar->alarms( start, end );
   foreach( Alarm::Ptr a, alarms ) {
     const Incidence::Ptr parentIncidence = mCalendar->incidence( a->parentUid() );
-    lst << QString( "  " ) + parentIncidence->summary() + " (" + a->time().toString() + ')';
+    lst << QLatin1String( "  " ) + parentIncidence->summary() + QLatin1String(" (") + a->time().toString() + QLatin1Char(')');
   }
 
   return lst;

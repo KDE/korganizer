@@ -37,17 +37,17 @@ class KItemIconCheckCombo::Private
 KItemIconCheckCombo::KItemIconCheckCombo( ViewType viewType, QWidget *parent )
   : KPIM::KCheckComboBox( parent ), d( new Private( viewType ) )
 {
-  addItem( "Calendar's custom icon" );
-  addItem( KOGlobals::self()->smallIcon( "view-calendar-tasks" ), i18n( "To-do" ) );
-  addItem( KOGlobals::self()->smallIcon( "view-pim-journal" ), i18n( "Journal" ) );
-  addItem( KOGlobals::self()->smallIcon( "appointment-recurring" ), i18n( "Recurring" ) );
-  addItem( KOGlobals::self()->smallIcon( "appointment-reminder" ), i18n( "Alarm" ) );
-  addItem( KOGlobals::self()->smallIcon( "object-locked" ), i18n( "Read Only" ) );
-  addItem( KOGlobals::self()->smallIcon( "mail-reply-sender" ), i18n( "Needs Reply" ) );
-  addItem( KOGlobals::self()->smallIcon( "meeting-attending" ), i18n( "Attending" ) );
-  addItem( KOGlobals::self()->smallIcon( "meeting-attending-tentative" ),
+  addItem( i18n("Calendar's custom icon") );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("view-calendar-tasks") ), i18n( "To-do" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("view-pim-journal") ), i18n( "Journal" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("appointment-recurring") ), i18n( "Recurring" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("appointment-reminder") ), i18n( "Alarm" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("object-locked") ), i18n( "Read Only" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("mail-reply-sender") ), i18n( "Needs Reply" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("meeting-attending") ), i18n( "Attending" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("meeting-attending-tentative") ),
                                          i18n( "Maybe Attending" ) );
-  addItem( KOGlobals::self()->smallIcon( "meeting-organizer" ), i18n( "Organizer" ) );
+  addItem( KOGlobals::self()->smallIcon( QLatin1String("meeting-organizer") ), i18n( "Organizer" ) );
 
   // Agenda view doesn't support journals yet
   setItemEnabled( EventViews::EventView::JournalIcon, viewType != AgendaType );

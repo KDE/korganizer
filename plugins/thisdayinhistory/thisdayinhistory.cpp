@@ -37,7 +37,7 @@ K_EXPORT_PLUGIN( ThisDayInHistoryFactory )
 
 ThisDayInHistory::ThisDayInHistory()
 {
-  KConfig _config( "korganizerrc" );
+  KConfig _config( QLatin1String("korganizerrc") );
   KConfigGroup config( &_config, "This Day in History Plugin" );
 }
 
@@ -52,7 +52,7 @@ Element::List ThisDayInHistory::createDayElements( const QDate &date )
   Element::List elements;
 
   StoredElement *element =
-    new StoredElement( "Wikipedia link", i18n( "This day in history" ) );
+    new StoredElement( QLatin1String("Wikipedia link"), i18n( "This day in history" ) );
 
   element->setUrl(
     QString( i18nc( "Localized Wikipedia website", "http://en.wikipedia.org/wiki/" ) +
@@ -69,7 +69,7 @@ Element::List ThisDayInHistory::createMonthElements( const QDate &date )
   Element::List elements;
 
   StoredElement *element =
-    new StoredElement( "Wikipedia link", i18n( "This month in history" ) );
+    new StoredElement( QLatin1String("Wikipedia link"), i18n( "This month in history" ) );
 
   element->setUrl(
     QString( i18nc( "Localized Wikipedia website", "http://en.wikipedia.org/wiki/" ) +

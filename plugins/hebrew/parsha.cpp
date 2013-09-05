@@ -286,7 +286,7 @@ QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
   QString buffer;
 
   if ( !array ) { /* Something is terribly wrong! */
-    buffer = "??Parsha??";
+    buffer = QLatin1String("??Parsha??");
     kWarning() << "Hebrew Plugin: Was not able to determine the Parsha."
                << "Please report this as a bug.";
     return buffer;
@@ -294,13 +294,13 @@ QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
 
   index = array[week];
   if ( index == XX ) {  // no Parsha this week.
-    buffer = "";
+    buffer.clear();
     return buffer;
   } else if ( index < 100 ) {
     buffer = parshiotNames[index];
     return buffer;
   } else {  // Create a double parsha
-    buffer = parshiotNames[index - 100] + '-' + parshiotNames[index - 99];
+    buffer = parshiotNames[index - 100] + QLatin1Char('-') + parshiotNames[index - 99];
     return buffer;
   }
 }

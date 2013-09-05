@@ -29,11 +29,11 @@ class MyDesignerFields : public KCMDesignerFields
 {
   public:
     MyDesignerFields( const KComponentData &kcd ) : KCMDesignerFields( kcd, 0 ) {}
-    QString localUiDir() { return QString( KDESRCDIR ); }
-    QString uiPath() { return QString( KDESRCDIR ); }
+    QString localUiDir() { return QString::fromLatin1( KDESRCDIR ); }
+    QString uiPath() { return QString::fromLatin1( KDESRCDIR ); }
     void writeActivePages( const QStringList & )  {}
     QStringList readActivePages() { return QStringList(); }
-    QString applicationName() { return "textkcmdesignerfields"; }
+    QString applicationName() { return QLatin1String("textkcmdesignerfields"); }
 };
 
 int main(int argc,char **argv)

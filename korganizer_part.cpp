@@ -59,14 +59,14 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
     kError() << "Cannot initialize the part without a top level widget.";
   }
 
-  KGlobal::locale()->insertCatalog( "libkcalutils" );
-  KGlobal::locale()->insertCatalog( "calendarsupport" );
-  KGlobal::locale()->insertCatalog( "libkdepim" );
-  KGlobal::locale()->insertCatalog( "kdgantt2" );
-  KGlobal::locale()->insertCatalog( "libakonadi" );
-  KGlobal::locale()->insertCatalog( "libincidenceeditors" );
-  KGlobal::locale()->insertCatalog( "libkpimutils" );
-  KGlobal::locale()->insertCatalog( "libpimcommon" );
+  KGlobal::locale()->insertCatalog( QLatin1String("libkcalutils") );
+  KGlobal::locale()->insertCatalog( QLatin1String("calendarsupport") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libkdepim") );
+  KGlobal::locale()->insertCatalog( QLatin1String("kdgantt2") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libakonadi") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libincidenceeditors") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libkpimutils") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libpimcommon") );
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
@@ -97,7 +97,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   mActionManager->init();
   mActionManager->readSettings();
 
-  setXMLFile( "korganizer_part.rc", true );
+  setXMLFile( QLatin1String("korganizer_part.rc"), true );
   mActionManager->loadParts();
   setTitle();
 }
@@ -117,7 +117,7 @@ void KOrganizerPart::slotChangeInfo( const Akonadi::Item &item, const QDate &dat
   Q_UNUSED( date );
   const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
   if ( incidence ) {
-    emit textChanged( incidence->summary() + " / " +
+    emit textChanged( incidence->summary() + QLatin1String(" / ") +
                       KCalUtils::IncidenceFormatter::timeToString( incidence->dtStart() ) );
   } else {
     emit textChanged( QString() );

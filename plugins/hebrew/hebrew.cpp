@@ -38,7 +38,7 @@ K_EXPORT_PLUGIN( HebrewFactory )
 
 Hebrew::Hebrew()
 {
-  KConfig config( "korganizerrc", KConfig::NoGlobals );
+  KConfig config( QLatin1String("korganizerrc"), KConfig::NoGlobals );
 
   KConfigGroup group( &config, "Hebrew Calendar Plugin" );
   areWeInIsrael = group.readEntry(
@@ -70,15 +70,15 @@ Element::List Hebrew::createDayElements( const QDate &date )
 
   KCalendarSystem *cal = KCalendarSystem::create( KLocale::HebrewCalendar );
 
-  text = cal->formatDate( date, KLocale::Day, KLocale::LongNumber ) + ' ' + cal->monthName( date );
+  text = cal->formatDate( date, KLocale::Day, KLocale::LongNumber ) + QLatin1Char(' ') + cal->monthName( date );
 
   foreach ( const QString &holiday, holidays ) {
-    text += "<br/>\n" + holiday;
+    text += QLatin1String("<br/>\n") + holiday;
   }
 
   text = i18nc( "Change the next two strings if emphasis is done differently in your language.",
                 "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text );
-  el.append( new StoredElement( "main element", text ) );
+  el.append( new StoredElement( QLatin1String("main element"), text ) );
 
   return el;
 }

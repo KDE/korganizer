@@ -127,7 +127,7 @@ AlarmDialog::AlarmDialog( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *pa
 
   connect( calendar.data(), SIGNAL(calendarChanged()), SLOT(slotCalendarChanged()) );
 
-  KIconLoader::global()->addAppDir( "korgac" );
+  KIconLoader::global()->addAppDir( QLatin1String("korgac") );
 
   KSharedConfig::Ptr config = KGlobal::config();
   KConfigGroup generalConfig( config, "General" );
@@ -140,7 +140,7 @@ AlarmDialog::AlarmDialog( const Akonadi::ETMCalendar::Ptr &calendar, QWidget *pa
   }
   setMainWidget( topBox );
   setCaption( i18nc( "@title:window", "Reminders" ) );
-  setWindowIcon( KIcon( "korgac" ) );
+  setWindowIcon( KIcon( QLatin1String("korgac") ) );
   setButtons( Ok | User1 | User2 | User3 );
   setDefaultButton( NoDefault );
   setButtonText( User3, i18nc( "@action:button", "Dismiss Reminder" ) );
@@ -287,7 +287,7 @@ static QString cleanSummary( const QString &summary )
   static QString etc = i18nc( "@label an elipsis", "..." );
   int maxLen = 30;
   QString retStr = summary;
-  retStr.replace( '\n', ' ' );
+  retStr.replace( QLatin1Char('\n'), QLatin1Char(' ') );
   if ( retStr.length() > maxLen ) {
     maxLen -= etc.length();
     retStr = retStr.left( maxLen );
@@ -320,9 +320,9 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
                                                       displayStr );
 
   if ( incidence->type() == Incidence::TypeEvent ) {
-    item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
+    item->setIcon( 0, SmallIcon( QLatin1String("view-calendar-day") ) );
   } else if ( incidence->type() == Incidence::TypeTodo ) {
-    item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
+    item->setIcon( 0, SmallIcon( QLatin1String("view-calendar-tasks")) );
   }
 
   item->mHappening = dateTime;
@@ -337,7 +337,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
       item->mRemindAt.date(), true,
       KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
-    tip += "<br>" + item->mDisplayText;
+    tip += QLatin1String("<br>") + item->mDisplayText;
   }
   item->setToolTip( 0, tip );
   item->setToolTip( 1, tip );
@@ -600,12 +600,12 @@ void AlarmDialog::eventNotification()
         QString program = alarm->programFile();
 
         // if the program name contains spaces escape it
-        if ( program.contains( ' ' )   &&
-             !( program.startsWith( '\"' ) && program.endsWith( '\"' ) ) ) {
-          program = '\"' + program + '\"';
+        if ( program.contains( QLatin1Char(' ') )   &&
+             !( program.startsWith( QLatin1Char('\"') ) && program.endsWith( QLatin1Char('\"') ) ) ) {
+          program = QLatin1Char('\"') + program + QLatin1Char('\"');
         }
 
-        QProcess::startDetached( program + ' ' + alarm->programArguments() );
+        QProcess::startDetached( program + QLatin1Char(' ') + alarm->programArguments() );
       } else if ( alarm->type() == Alarm::Audio ) {
         beeped = true;
         Phonon::MediaObject *player =
@@ -626,7 +626,7 @@ void AlarmDialog::eventNotification()
                 it != addresses.constEnd(); ++it ) {
             add << (*it)->fullName();
           }
-          to = add.join( ", " );
+          to = add.join( QLatin1String(", ") );
         }
 
         QString subject;
@@ -648,7 +648,7 @@ void AlarmDialog::eventNotification()
           IncidenceFormatter::mailBodyStr(
             parent.staticCast<IncidenceBase>(), KSystemTimeZones::local() );
         if ( !alarm->mailText().isEmpty() ) {
-          body += '\n' + alarm->mailText();
+          body += QLatin1Char('\n') + alarm->mailText();
         }
         //TODO: support attachments
         KOrg::MailClient mailer;
@@ -702,7 +702,7 @@ void AlarmDialog::slotSave()
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     KConfigGroup incidenceConfig( config,
-                                  QString( "Incidence-%1" ).arg( numReminders + 1 ) );
+                                  QString::fromLatin1( "Incidence-%1" ).arg( numReminders + 1 ) );
 
     Incidence::Ptr incidence = CalendarSupport::incidence( item->mIncidence );
     incidenceConfig.writeEntry( "AkonadiUrl", item->mIncidence.url() );
@@ -783,7 +783,7 @@ void AlarmDialog::showDetails()
     mDetailView->setIncidence( Akonadi::Item() );
   } else {
     if ( !item->mDisplayText.isEmpty() ) {
-      QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
+      QString txt = QLatin1String("<qt><p><b>") + item->mDisplayText + QLatin1String("</b></p></qt>");
       mDetailView->setHeaderText( txt );
     }
     mDetailView->setIncidence( item->mIncidence, item->mRemindAt.date() );
@@ -877,8 +877,8 @@ void AlarmDialog::keyPressEvent( QKeyEvent *e )
 
 bool AlarmDialog::openIncidenceEditorThroughKOrganizer( const Incidence::Ptr &incidence )
 {
-  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
-    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
+  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( QLatin1String("org.kde.korganizer") ) ) {
+    if ( KToolInvocation::startServiceByDesktopName( QLatin1String("korganizer"), QString() ) ) {
       KMessageBox::error(
         this,
         i18nc( "@info",
@@ -887,7 +887,7 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer( const Incidence::Ptr &in
     }
   }
   org::kde::korganizer::Korganizer korganizer(
-    "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+    QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus() );
 
   kDebug() << "editing incidence " << incidence->summary();
   if ( !korganizer.editIncidence( incidence->uid() ) ) {
@@ -900,11 +900,11 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer( const Incidence::Ptr &in
 
   // get desktop # where korganizer (or kontact) runs
   QString object =
-    QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
-    "kontact/MainWindow_1" : "korganizer/MainWindow_1";
-  QDBusInterface korganizerObj( "org.kde.korganizer", '/' + object );
+    QDBusConnection::sessionBus().interface()->isServiceRegistered( QLatin1String("org.kde.kontact") ) ?
+    QLatin1String("kontact/MainWindow_1") : QLatin1String("korganizer/MainWindow_1");
+  QDBusInterface korganizerObj( QLatin1String("org.kde.korganizer"), QLatin1Char('/') + object );
 #ifdef Q_WS_X11
-  QDBusReply<int> reply = korganizerObj.call( "winId" );
+  QDBusReply<int> reply = korganizerObj.call( QLatin1String("winId") );
   if ( reply.isValid() ) {
     int window = reply;
     int desktop = KWindowSystem::windowInfo( window, NET::WMDesktop ).desktop();
@@ -917,7 +917,7 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer( const Incidence::Ptr &in
   }
 #elif defined(Q_WS_WIN)
   // WId is a typedef to a void* on windows
-  QDBusReply<qlonglong> reply = korganizerObj.call( "winId" );
+  QDBusReply<qlonglong> reply = korganizerObj.call( QLatin1String("winId") );
   if ( reply.isValid() ) {
     qlonglong window = reply;
     KWindowSystem::minimizeWindow( winId(), false );
@@ -955,7 +955,7 @@ void AlarmDialog::removeFromConfig( const QList<Akonadi::Item::Id> &ids )
   QList<ConfItem> newReminders;
   // Delete everything
   for ( int i = 1; i <= oldNumReminders; ++i ) {
-    const QString group( QString( "Incidence-%1" ).arg( i ) );
+    const QString group( QString::fromLatin1( "Incidence-%1" ).arg( i ) );
     KConfigGroup incGroup( config, group );
     const QString uid = incGroup.readEntry( "UID" );
     const QDateTime remindAtDate = incGroup.readEntry( "RemindAt", QDateTime() );
@@ -975,7 +975,7 @@ void AlarmDialog::removeFromConfig( const QList<Akonadi::Item::Id> &ids )
 
   //Write everything except those which have an uid we don't want
   for ( int i = 0; i < newReminders.count(); ++i ) {
-    const QString group( QString( "Incidence-%1" ).arg( i + 1 ) );
+    const QString group( QString::fromLatin1( "Incidence-%1" ).arg( i + 1 ) );
     KConfigGroup incGroup( config, group );
     incGroup.writeEntry( "UID", newReminders[i].uid );
     incGroup.writeEntry( "RemindAt", newReminders[i].remindAt );

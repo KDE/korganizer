@@ -51,7 +51,7 @@ class PageItem : public QTreeWidgetItem
     {
       setFlags( flags() | Qt::ItemIsUserCheckable );
       setCheckState( 0, Qt::Unchecked );
-      mName = path.mid( path.lastIndexOf( '/' ) + 1 );
+      mName = path.mid( path.lastIndexOf( QLatin1Char('/') ) + 1 );
 
       QFile f( mPath );
       if (!f.open( QFile::ReadOnly ) ) 
@@ -67,27 +67,27 @@ class PageItem : public QTreeWidgetItem
         mPreview = QPixmap::fromImage(img);
 
         QMap<QString, QString> allowedTypes;
-        allowedTypes.insert( "QLineEdit", i18n( "Text" ) );
-        allowedTypes.insert( "QTextEdit", i18n( "Text" ) );
-        allowedTypes.insert( "QSpinBox", i18n( "Numeric Value" ) );
-        allowedTypes.insert( "QCheckBox", i18n( "Boolean" ) );
-        allowedTypes.insert( "QComboBox", i18n( "Selection" ) );
-        allowedTypes.insert( "QDateTimeEdit", i18n( "Date & Time" ) );
-        allowedTypes.insert( "KLineEdit", i18n( "Text" ) );
-        allowedTypes.insert( "KTextEdit", i18n( "Text" ) );
-        allowedTypes.insert( "KDateTimeWidget", i18n( "Date & Time" ) );
-        allowedTypes.insert( "KDatePicker", i18n( "Date" ) );
+        allowedTypes.insert( QLatin1String("QLineEdit"), i18n( "Text" ) );
+        allowedTypes.insert( QLatin1String("QTextEdit"), i18n( "Text" ) );
+        allowedTypes.insert( QLatin1String("QSpinBox"), i18n( "Numeric Value" ) );
+        allowedTypes.insert( QLatin1String("QCheckBox"), i18n( "Boolean" ) );
+        allowedTypes.insert( QLatin1String("QComboBox"), i18n( "Selection" ) );
+        allowedTypes.insert( QLatin1String("QDateTimeEdit"), i18n( "Date & Time" ) );
+        allowedTypes.insert( QLatin1String("KLineEdit"), i18n( "Text" ) );
+        allowedTypes.insert( QLatin1String("KTextEdit"), i18n( "Text" ) );
+        allowedTypes.insert( QLatin1String("KDateTimeWidget"), i18n( "Date & Time" ) );
+        allowedTypes.insert( QLatin1String("KDatePicker"), i18n( "Date" ) );
 
         QList<QWidget*> list = wdg->findChildren<QWidget*>();
         QWidget *it;
         Q_FOREACH ( it, list ) {
-          if ( allowedTypes.contains( it->metaObject()->className() ) ) {
+          if ( allowedTypes.contains( QLatin1String(it->metaObject()->className()) ) ) {
             QString name = it->objectName();
             if ( name.startsWith( QLatin1String( "X_" ) ) ) {
               new QTreeWidgetItem( this, QStringList()
                 << name
-                << allowedTypes[ it->metaObject()->className() ]
-                << it->metaObject()->className()
+                << allowedTypes[ QLatin1String(it->metaObject()->className()) ]
+                << QLatin1String(it->metaObject()->className())
                 << it->whatsThis() );
             }
           }
@@ -189,7 +189,7 @@ void KCMDesignerFields::deleteFile()
     if ( KMessageBox::warningContinueCancel(
            this,
            i18n( "<qt>Do you really want to delete '<b>%1</b>'?</qt>",
-                 pageItem->text(0) ), "", KStandardGuiItem::del() ) == KMessageBox::Continue ) {
+                 pageItem->text(0) ), QString(), KStandardGuiItem::del() ) == KMessageBox::Continue ) {
       KIO::NetAccess::del( pageItem->path(), 0 );
     }
   }
@@ -212,7 +212,7 @@ void KCMDesignerFields::importFile()
 
 void KCMDesignerFields::loadUiFiles()
 {
-  const QStringList list = KGlobal::dirs()->findAllResources( "data", uiPath() + "/*.ui",
+  const QStringList list = KGlobal::dirs()->findAllResources( "data", uiPath() + QLatin1String("/*.ui"),
                                                         KStandardDirs::Recursive |
                                                         KStandardDirs::NoDuplicates );
   for ( QStringList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
@@ -290,7 +290,7 @@ void KCMDesignerFields::initGUI()
   layout->setSpacing( KDialog::spacingHint() );
   layout->setMargin( KDialog::marginHint() );
 
-  bool noDesigner = KStandardDirs::findExe( "designer" ).isEmpty();
+  bool noDesigner = KStandardDirs::findExe( QLatin1String("designer") ).isEmpty();
 
   if ( noDesigner ) {
     QString txt =
@@ -388,14 +388,14 @@ void KCMDesignerFields::updatePreview()
 
   if ( item ) {
     if ( item->parent() ) {
-      QString details = QString( "<qt><table>"
+      QString details = QString::fromLatin1( "<qt><table>"
                                  "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
                                  "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
                                  "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
                                  "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
                                  "</table></qt>" )
                                 .arg( i18n( "Key:" ) )
-                                .arg( item->text( 0 ).replace( "X_","X-" ) )
+                                .arg( item->text( 0 ).replace( QLatin1String("X_"),QLatin1String("X-") ) )
                                 .arg( i18n( "Type:" ) )
                                 .arg( item->text( 1 ) )
                                 .arg( i18n( "Classname:" ) )
@@ -442,7 +442,7 @@ void KCMDesignerFields::itemClicked( QTreeWidgetItem *item )
 
 void KCMDesignerFields::startDesigner()
 {
-  QString cmdLine = "designer";
+  QString cmdLine = QLatin1String("designer");
 
   // check if path exists and create one if not.
   QString cepPath = localUiDir();
@@ -451,7 +451,7 @@ void KCMDesignerFields::startDesigner()
   }
 
   // finally jump there
-  QDir::setCurrent( cepPath.toLocal8Bit() );
+  QDir::setCurrent( QLatin1String(cepPath.toLocal8Bit()) );
 
   QTreeWidgetItem *item = 0;
   if ( mPageView->selectedItems().size() == 1 ) {
@@ -459,7 +459,7 @@ void KCMDesignerFields::startDesigner()
   }
   if ( item ) {
     PageItem *pageItem = static_cast<PageItem*>( item->parent() ? item->parent() : item );
-    cmdLine += ' ' + KShell::quoteArg( pageItem->path() );
+    cmdLine += QLatin1Char(' ') + KShell::quoteArg( pageItem->path() );
   }
 
   KRun::runCommand( cmdLine, topLevelWidget() );

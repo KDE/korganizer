@@ -44,14 +44,14 @@ int main( int argc, char **argv )
 
   KOrganizerApp app;
 
-  KGlobal::locale()->insertCatalog( "libkcalutils" );
-  KGlobal::locale()->insertCatalog( "calendarsupport" );
-  KGlobal::locale()->insertCatalog( "libkdepim" );
-  KGlobal::locale()->insertCatalog( "kdgantt2" );
-  KGlobal::locale()->insertCatalog( "libakonadi" );
-  KGlobal::locale()->insertCatalog( "libincidenceeditors" );
-  KGlobal::locale()->insertCatalog( "libkpimutils" );
-  KGlobal::locale()->insertCatalog( "libpimcommon" );
+  KGlobal::locale()->insertCatalog( QLatin1String("libkcalutils") );
+  KGlobal::locale()->insertCatalog( QLatin1String("calendarsupport") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libkdepim") );
+  KGlobal::locale()->insertCatalog( QLatin1String("kdgantt2") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libakonadi") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libincidenceeditors") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libkpimutils") );
+  KGlobal::locale()->insertCatalog( QLatin1String("libpimcommon") );
 
   if ( app.isSessionRestored() ) {
     RESTORE( KOrganizer )

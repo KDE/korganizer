@@ -40,8 +40,8 @@
 
 KOrganizerApp::KOrganizerApp() : KontactInterface::PimUniqueApplication()
 {
-  QString prodId = "-//K Desktop Environment//NONSGML KOrganizer %1//EN";
-  KCalCore::CalFormat::setApplication( "KOrganizer", prodId.arg( korgVersion ) );
+  QString prodId = QLatin1String("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
+  KCalCore::CalFormat::setApplication( QLatin1String("KOrganizer"), prodId.arg( QLatin1String(korgVersion) ) );
 
   // icons shared by the KDE PIM applications
   KGlobal::dirs()->addResourceType( "appicon", "data", "/kdepim/icons/" );

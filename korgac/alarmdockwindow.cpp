@@ -49,12 +49,12 @@ AlarmDockWindow::AlarmDockWindow()
 
   mName = i18nc( "@title:window", "KOrganizer Reminder Daemon" );
   setToolTipTitle( mName );
-  setToolTipIconByName( "korgac" );
+  setToolTipIconByName( QLatin1String("korgac") );
 
   // Set up icons
-  KIconLoader::global()->addAppDir( "korgac" );
-  KIconLoader::global()->addAppDir( "kdepim" );
-  QString iconPath = KIconLoader::global()->iconPath( "korgac", KIconLoader::Panel );
+  KIconLoader::global()->addAppDir( QLatin1String("korgac") );
+  KIconLoader::global()->addAppDir( QLatin1String("kdepim") );
+  QString iconPath = KIconLoader::global()->iconPath( QLatin1String("korgac"), KIconLoader::Panel );
   QIcon iconEnabled  = QIcon( iconPath );
   if ( iconEnabled.isNull() ) {
     KMessageBox::sorry( associatedWidget(),
@@ -97,7 +97,7 @@ AlarmDockWindow::AlarmDockWindow()
   // if the main window is hidden.
   KActionCollection *ac = actionCollection();
   const char *quitName = KStandardAction::name( KStandardAction::Quit );
-  QAction *quit = ac->action( quitName );
+  QAction *quit = ac->action( QLatin1String(quitName) );
   if ( !quit ) {
     kDebug() << "No Quit standard action.";
   } else {
@@ -118,11 +118,11 @@ void AlarmDockWindow::slotUpdate( int reminders )
   mSuspendAll->setEnabled( actif );
   mDismissAll->setEnabled( actif );
   if ( actif ) {
-    setToolTip( "korgac", mName, i18ncp( "@info:status",
+    setToolTip( QLatin1String("korgac"), mName, i18ncp( "@info:status",
                         "There is 1 active reminder.",
                         "There are %1 active reminders.", reminders ) );
   } else {
-    setToolTip( "korgac", mName, i18nc( "@info:status", "No active reminders." ) );
+    setToolTip( QLatin1String("korgac"), mName, i18nc( "@info:status", "No active reminders." ) );
   }
 }
 
@@ -162,7 +162,7 @@ void AlarmDockWindow::enableAutostart( bool enable )
 void AlarmDockWindow::activate( const QPoint &pos )
 {
   Q_UNUSED( pos );
-  KToolInvocation::startServiceByDesktopName( "korganizer", QString() );
+  KToolInvocation::startServiceByDesktopName( QLatin1String("korganizer"), QString() );
 }
 
 void AlarmDockWindow::slotQuit()
@@ -206,7 +206,7 @@ void AlarmDockWindow::slotQuit()
 void AlarmDockWindow::changeSystrayIcon( bool alarmsEnabled )
 {
   if ( alarmsEnabled ) {
-    setIconByName( "korgac" );
+    setIconByName( QLatin1String("korgac") );
   } else {
     setIconByPixmap( mIconDisabled.pixmap( 22, 22 ) );
   }
