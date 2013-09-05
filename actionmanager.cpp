@@ -143,7 +143,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
         KMessageBox::information( mCalendarView,
                                   i18n( "<qt>This will hide the menu bar completely."
                                         " You can show it again by typing %1.</qt>", accel ),
-                                  i18n("Hide menu bar"), "HideMenuBarWarning" );
+                                  i18n("Hide menu bar"), QLatin1String("HideMenuBarWarning") );
       }
       mMenuBar->hide();
     }
@@ -266,22 +266,22 @@ void ActionManager::initActions()
   if ( mIsPart ) {
     if ( mMainWindow->hasDocument() ) {
       KAction *a = mACollection->addAction( KStandardAction::Open, this, SLOT(file_open()) );
-      mACollection->addAction( "korganizer_open", a );
+      mACollection->addAction( QLatin1String("korganizer_open"), a );
     }
 
     QAction *a = mACollection->addAction( KStandardAction::Print, mCalendarView, SLOT(print()) );
-    mACollection->addAction( "korganizer_print", a );
+    mACollection->addAction( QLatin1String("korganizer_print"), a );
     a = mACollection->addAction( KStandardAction::PrintPreview, mCalendarView, SLOT(print()) );
-    mACollection->addAction( "korganizer_print_preview", a );
+    mACollection->addAction( QLatin1String("korganizer_print_preview"), a );
     a->setEnabled(
-      !KMimeTypeTrader::self()->query( "application/pdf", "KParts/ReadOnlyPart" ).isEmpty() );
+      !KMimeTypeTrader::self()->query( QLatin1String("application/pdf"), QLatin1String("KParts/ReadOnlyPart") ).isEmpty() );
   } else {
     KStandardAction::open( this, SLOT(file_open()), mACollection );
     KStandardAction::print( mCalendarView, SLOT(print()), mACollection );
     QAction *preview =
       KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );
     preview->setEnabled(
-      !KMimeTypeTrader::self()->query( "application/pdf", "KParts/ReadOnlyPart" ).isEmpty() );
+      !KMimeTypeTrader::self()->query( QLatin1String("application/pdf"), QLatin1String("KParts/ReadOnlyPart")).isEmpty() );
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -291,7 +291,7 @@ void ActionManager::initActions()
   mImportAction->setWhatsThis(
     i18n( "Select this menu entry if you would like to merge the contents "
           "of another iCalendar into your current calendar." ) );
-  mACollection->addAction( "import_icalendar", mImportAction );
+  mACollection->addAction( QLatin1String("import_icalendar"), mImportAction );
   connect( mImportAction, SIGNAL(triggered(bool)), SLOT(file_import()) );
 
   KAction *importAction = new KAction( i18n( "&Import From UNIX Ical Tool" ), this );
@@ -300,23 +300,23 @@ void ActionManager::initActions()
   importAction->setWhatsThis(
     i18n( "Select this menu entry if you would like to import the contents "
           "of a non-iCalendar formatted file into your current calendar." ) );
-  mACollection->addAction( "import_ical", importAction );
+  mACollection->addAction( QLatin1String("import_ical"), importAction );
   connect( importAction, SIGNAL(triggered(bool)), SLOT(file_icalimport()) );
 
   action = new KAction( i18n( "Get &Hot New Stuff..." ), this );
-  mACollection->addAction( "downloadnewstuff", action );
+  mACollection->addAction( QLatin1String("downloadnewstuff"), action );
   connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
 
   action = new KAction( i18n( "Export &Web Page..." ), this );
-  mACollection->addAction( "export_web", action );
+  mACollection->addAction( QLatin1String("export_web"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportWeb()) );
 
   action = new KAction( i18n( "Export as &iCalendar..." ), this );
-  mACollection->addAction( "export_icalendar", action );
+  mACollection->addAction( QLatin1String("export_icalendar"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportICalendar()) );
 
   action = new KAction( i18n( "Export as &vCalendar..." ), this );
-  mACollection->addAction( "export_vcalendar", action );
+  mACollection->addAction( QLatin1String("export_vcalendar"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportVCalendar()) );
 
   //Laurent: 2009-03-24 comment it until upload will implement
@@ -325,11 +325,11 @@ void ActionManager::initActions()
   //connect( action, SIGNAL(triggered(bool)), SLOT(uploadNewStuff()) );
 
   action = new KAction( i18n( "Archive O&ld Entries..." ), this );
-  mACollection->addAction( "file_archive", action );
+  mACollection->addAction( QLatin1String("file_archive"), action );
   connect( action, SIGNAL(triggered(bool)), SLOT(file_archive()) );
 
   action = new KAction( i18n( "Pur&ge Completed To-dos" ), mACollection );
-  mACollection->addAction( "purge_completed", action );
+  mACollection->addAction( QLatin1String("purge_completed"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(purgeCompleted()) );
 
   /************************** EDIT MENU *********************************/
@@ -338,15 +338,15 @@ void ActionManager::initActions()
   Akonadi::History *history = mCalendarView->history();
   if ( mIsPart ) {
     // edit menu
-    mCutAction = mACollection->addAction( KStandardAction::Cut, "korganizer_cut",
+    mCutAction = mACollection->addAction( KStandardAction::Cut, QLatin1String("korganizer_cut"),
                                           mCalendarView, SLOT(edit_cut()) );
-    mCopyAction = mACollection->addAction( KStandardAction::Copy, "korganizer_copy",
+    mCopyAction = mACollection->addAction( KStandardAction::Copy, QLatin1String("korganizer_copy"),
                                            mCalendarView, SLOT(edit_copy()) );
-    pasteAction = mACollection->addAction( KStandardAction::Paste, "korganizer_paste",
+    pasteAction = mACollection->addAction( KStandardAction::Paste, QLatin1String("korganizer_paste"),
                                            mCalendarView, SLOT(edit_paste()) );
-    mUndoAction = mACollection->addAction( KStandardAction::Undo, "korganizer_undo",
+    mUndoAction = mACollection->addAction( KStandardAction::Undo, QLatin1String("korganizer_undo"),
                                            history, SLOT(undo()) );
-    mRedoAction = mACollection->addAction( KStandardAction::Redo, "korganizer_redo",
+    mRedoAction = mACollection->addAction( KStandardAction::Redo, QLatin1String("korganizer_redo"),
                                            history, SLOT(redo()) );
   } else {
     mCutAction = KStandardAction::cut( mCalendarView, SLOT(edit_cut()), mACollection );
@@ -355,14 +355,14 @@ void ActionManager::initActions()
     mUndoAction = KStandardAction::undo( history, SLOT(undo()), mACollection );
     mRedoAction = KStandardAction::redo( history, SLOT(redo()), mACollection );
   }
-  mDeleteAction = new KAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this );
-  mACollection->addAction( "edit_delete", mDeleteAction );
+  mDeleteAction = new KAction( KIcon( QLatin1String("edit-delete") ), i18n( "&Delete" ), this );
+  mACollection->addAction( QLatin1String("edit_delete"), mDeleteAction );
   connect( mDeleteAction, SIGNAL(triggered(bool)), mCalendarView, SLOT(appointment_delete()) );
   if ( mIsPart ) {
     QAction *a =
       KStandardAction::find( mCalendarView->dialogManager(),
                              SLOT(showSearchDialog()), mACollection );
-    mACollection->addAction( "korganizer_find", a );
+    mACollection->addAction( QLatin1String("korganizer_find"), a );
   } else {
     KStandardAction::find( mCalendarView->dialogManager(),
                            SLOT(showSearchDialog()), mACollection );
@@ -376,56 +376,56 @@ void ActionManager::initActions()
   /************************** VIEW MENU *********************************/
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  action = new KAction( KIcon( "view-calendar-upcoming-events" ), i18n( "What's &Next" ), this );
-  mACollection->addAction( "view_whatsnext", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-upcoming-events") ), i18n( "What's &Next" ), this );
+  mACollection->addAction( QLatin1String("view_whatsnext"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWhatsNextView()) );
 
-  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
-  mACollection->addAction( "view_month", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-month") ), i18n( "&Month" ), this );
+  mACollection->addAction( QLatin1String("view_month"), action );
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showMonthView()) );
 
-  action = new KAction( KIcon( "view-calendar-agenda" ), i18n( "&Agenda" ), this );
-  mACollection->addAction( "view_agenda", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-agenda") ), i18n( "&Agenda" ), this );
+  mACollection->addAction( QLatin1String("view_agenda"), action );
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showAgendaView()) );
 
-  action = new KAction( KIcon( "view-calendar-list" ), i18n( "&Event List" ), this );
-  mACollection->addAction( "view_list", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-list") ), i18n( "&Event List" ), this );
+  mACollection->addAction( QLatin1String("view_list"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showListView()) );
 
-  action = new KAction( KIcon( "view-calendar-tasks" ), i18n( "&To-do List" ), this );
-  mACollection->addAction( "view_todo", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-tasks") ), i18n( "&To-do List" ), this );
+  mACollection->addAction( QLatin1String("view_todo"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTodoView()) );
 
-  action = new KAction( KIcon( "view-calendar-journal" ), i18n( "&Journal" ), this );
-  mACollection->addAction( "view_journal", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-journal" )), i18n( "&Journal" ), this );
+  mACollection->addAction( QLatin1String("view_journal"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showJournalView()) );
 
-  action = new KAction( KIcon( "view-calendar-timeline" ), i18n( "Time&line" ), this );
-  mACollection->addAction( "view_timeline", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-timeline") ), i18n( "Time&line" ), this );
+  mACollection->addAction( QLatin1String("view_timeline"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeLineView()) );
 
-  action = new KAction( KIcon( "view-calendar-time-spent" ), i18n( "Time&spent" ), this );
-  mACollection->addAction( "view_timespent", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-time-spent") ), i18n( "Time&spent" ), this );
+  mACollection->addAction( QLatin1String("view_timespent"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeSpentView()) );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   action = new KAction( i18n( "&Refresh" ), this );
-  mACollection->addAction( "update", action );
+  mACollection->addAction( QLatin1String("update"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(updateView()) );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   mFilterAction = new KSelectAction( i18n( "F&ilter" ), this );
   mFilterAction->setToolBarMode( KSelectAction::MenuMode );
-  mACollection->addAction( "filter_select", mFilterAction );
+  mACollection->addAction( QLatin1String("filter_select"), mFilterAction );
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL(triggered(int)),
            mCalendarView, SLOT(filterActivated(int)) );
@@ -436,45 +436,45 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions
-  action = new KAction( KIcon( "zoom-in" ), i18n( "In Horizontally" ), this );
+  action = new KAction( KIcon( QLatin1String("zoom-in") ), i18n( "In Horizontally" ), this );
   action->setEnabled( mCalendarView->currentView()->supportsZoom() );
-  mACollection->addAction( "zoom_in_horizontally", action );
+  mACollection->addAction( QLatin1String("zoom_in_horizontally"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomInHorizontally()) );
 
-  action = new KAction( KIcon( "zoom-out" ), i18n( "Out Horizontally" ), this );
+  action = new KAction( KIcon( QLatin1String("zoom-out") ), i18n( "Out Horizontally" ), this );
   action->setEnabled( mCalendarView->currentView()->supportsZoom() );
-  mACollection->addAction( "zoom_out_horizontally", action );
+  mACollection->addAction( QLatin1String("zoom_out_horizontally"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomOutHorizontally()) );
 
-  action = new KAction( KIcon( "zoom-in" ), i18n( "In Vertically" ), this );
+  action = new KAction( KIcon( QLatin1String("zoom-in") ), i18n( "In Vertically" ), this );
   action->setEnabled( mCalendarView->currentView()->supportsZoom() );
-  mACollection->addAction( "zoom_in_vertically", action );
+  mACollection->addAction( QLatin1String("zoom_in_vertically"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomInVertically()) );
 
-  action = new KAction( KIcon( "zoom-out" ), i18n( "Out Vertically" ), this );
+  action = new KAction( KIcon( QLatin1String("zoom-out") ), i18n( "Out Vertically" ), this );
   action->setEnabled( mCalendarView->currentView()->supportsZoom() );
-  mACollection->addAction( "zoom_out_vertically", action );
+  mACollection->addAction( QLatin1String("zoom_out_vertically"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomOutVertically()) );
 
   /************************** Actions MENU *********************************/
   bool isRTL = QApplication::isRightToLeft();
 
-  action = new KAction( KIcon( "go-jump-today" ),
+  action = new KAction( KIcon( QLatin1String("go-jump-today") ),
                         i18nc( "@action Jump to today", "To &Today" ), this );
   action->setIconText( i18n( "Today" ) );
   action->setHelpText( i18n( "Scroll to Today" ) );
-  mACollection->addAction( "go_today", action );
+  mACollection->addAction( QLatin1String("go_today"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
 
-  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ),
+  action = new KAction( KIcon( isRTL ? QLatin1String("go-next") : QLatin1String("go-previous") ),
                         i18nc( "scroll backward", "&Backward" ), this );
   action->setIconText( i18nc( "scroll backward", "Back" ) );
   action->setHelpText( i18n( "Scroll Backward" ) );
-  mACollection->addAction( "go_previous", action );
+  mACollection->addAction( QLatin1String("go_previous"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goPrevious()) );
 
   // Changing the action text by setText makes the toolbar button disappear.
@@ -485,100 +485,100 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL(changeNavStringPrev(QString)),
            this, SLOT(dumpText(QString)) );*/
 
-  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ),
+  action = new KAction( KIcon( isRTL ? QLatin1String("go-previous") : QLatin1String("go-next") ),
                         i18nc( "scroll forward", "&Forward" ), this );
   action->setIconText( i18nc( "scoll forward", "Forward" ) );
   action->setHelpText( i18n( "Scroll Forward" ) );
-  mACollection->addAction( "go_next", action );
+  mACollection->addAction( QLatin1String("go_next"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goNext()) );
   /*
   connect( mCalendarView,SIGNAL(changeNavStringNext(QString)),
            action,SLOT(setText(QString)) );
   */
 
-  action = new KAction( KIcon( "view-calendar-day" ), i18n( "&Day" ), this );
-  mACollection->addAction( "select_day", action );
+  action = new KAction( KIcon( QLatin1String("view-calendar-day") ), i18n( "&Day" ), this );
+  mACollection->addAction( QLatin1String("select_day"), action );
   action->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectDay()) );
 
-  mNextXDays = new KAction( KIcon( "view-calendar-upcoming-days" ), QString(), this );
+  mNextXDays = new KAction( KIcon( QLatin1String("view-calendar-upcoming-days") ), QString(), this );
   mNextXDays->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
-  mACollection->addAction( "select_nextx", mNextXDays );
+  mACollection->addAction( QLatin1String("select_nextx"), mNextXDays );
   connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectNextX()) );
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays ) );
 
-  action = new KAction( KIcon( "view-calendar-workweek" ), i18n( "W&ork Week" ), this );
+  action = new KAction( KIcon( QLatin1String("view-calendar-workweek") ), i18n( "W&ork Week" ), this );
   action->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
-  mACollection->addAction( "select_workweek", action );
+  mACollection->addAction( QLatin1String("select_workweek"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectWorkWeek()) );
 
-  action = new KAction( KIcon( "view-calendar-week" ), i18n( "&Week" ), this );
+  action = new KAction( KIcon( QLatin1String("view-calendar-week") ), i18n( "&Week" ), this );
   action->setEnabled( mCalendarView->currentView()->supportsDateRangeSelection() );
-  mACollection->addAction( "select_week", action );
+  mACollection->addAction( QLatin1String("select_week"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(selectWeek()) );
 
   /************************** Actions MENU *********************************/
-  mNewEventAction = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
+  mNewEventAction = new KAction( KIcon( QLatin1String("appointment-new") ), i18n( "New E&vent..." ), this );
   //mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
   mNewEventAction->setHelpText( i18n( "Create a new Event" ) );
 
-  mACollection->addAction( "new_event", mNewEventAction );
+  mACollection->addAction( QLatin1String("new_event"), mNewEventAction );
   connect( mNewEventAction, SIGNAL(triggered(bool)), this,
            SLOT(slotNewEvent()) );
 
-  mNewTodoAction = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
+  mNewTodoAction = new KAction( KIcon( QLatin1String("task-new") ), i18n( "New &To-do..." ), this );
   //mNewTodoAction->setIconText( i18n( "To-do" ) );
   mNewTodoAction->setHelpText( i18n( "Create a new To-do" ) );
-  mACollection->addAction( "new_todo", mNewTodoAction );
+  mACollection->addAction( QLatin1String("new_todo"), mNewTodoAction );
   connect( mNewTodoAction, SIGNAL(triggered(bool)), this,
            SLOT(slotNewTodo()) );
 
   mNewSubtodoAction = new KAction( i18n( "New Su&b-to-do..." ), this );
-  mACollection->addAction( "new_subtodo", mNewSubtodoAction );
+  mACollection->addAction( QLatin1String("new_subtodo"), mNewSubtodoAction );
   connect( mNewSubtodoAction, SIGNAL(triggered(bool)), this,
            SLOT(slotNewSubTodo()));
   mNewSubtodoAction->setEnabled( false );
   connect( mCalendarView,SIGNAL(todoSelected(bool)), mNewSubtodoAction,
            SLOT(setEnabled(bool)) );
 
-  mNewJournalAction = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
+  mNewJournalAction = new KAction( KIcon( QLatin1String("journal-new") ), i18n( "New &Journal..." ), this );
   //mNewJournalAction->setIconText( i18n( "Journal" ) );
   mNewJournalAction->setHelpText( i18n( "Create a new Journal" ) );
-  mACollection->addAction( "new_journal", mNewJournalAction );
+  mACollection->addAction( QLatin1String("new_journal"), mNewJournalAction );
   connect( mNewJournalAction, SIGNAL(triggered(bool)), this,
            SLOT(slotNewJournal()) );
 
-  mConfigureViewAction = new KAction( KIcon( "configure" ), i18n( "Configure View..." ), this );
+  mConfigureViewAction = new KAction( KIcon( QLatin1String("configure") ), i18n( "Configure View..." ), this );
   mConfigureViewAction->setIconText( i18n( "Configure" ) );
   mConfigureViewAction->setHelpText( i18n( "Configure the view" ) );
   mConfigureViewAction->setEnabled( mCalendarView->currentView() &&
                                     mCalendarView->currentView()->hasConfigurationDialog() );
-  mACollection->addAction( "configure_view", mConfigureViewAction );
+  mACollection->addAction( QLatin1String("configure_view"), mConfigureViewAction );
   connect( mConfigureViewAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(configureCurrentView()) );
 
   mShowIncidenceAction = new KAction( i18n( "&Show" ), this );
-  mACollection->addAction( "show_incidence", mShowIncidenceAction );
+  mACollection->addAction( QLatin1String("show_incidence"), mShowIncidenceAction );
   connect( mShowIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(showIncidence()) );
 
   mEditIncidenceAction = new KAction( i18n( "&Edit..." ), this );
-  mACollection->addAction( "edit_incidence", mEditIncidenceAction );
+  mACollection->addAction( QLatin1String("edit_incidence"), mEditIncidenceAction );
   connect( mEditIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(editIncidence()) );
 
   mDeleteIncidenceAction = new KAction( i18n( "&Delete" ), this );
-  mACollection->addAction( "delete_incidence", mDeleteIncidenceAction );
+  mACollection->addAction( QLatin1String("delete_incidence"), mDeleteIncidenceAction );
   connect( mDeleteIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(deleteIncidence()) );
   mDeleteIncidenceAction->setShortcut( QKeySequence( Qt::Key_Delete ) );
 
   action = new KAction( i18n( "&Make Sub-to-do Independent" ), this );
-  mACollection->addAction( "unsub_todo", action );
+  mACollection->addAction( QLatin1String("unsub_todo"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(todo_unsub()) );
   action->setEnabled( false );
@@ -591,66 +591,66 @@ void ActionManager::initActions()
 //                                         mACollection, "activate_alarm" );
 
   /************************** SCHEDULE MENU ********************************/
-  mPublishEvent = new KAction( KIcon( "mail-send" ), i18n( "&Publish Item Information..." ), this );
-  mACollection->addAction( "schedule_publish", mPublishEvent );
+  mPublishEvent = new KAction( KIcon( QLatin1String("mail-send") ), i18n( "&Publish Item Information..." ), this );
+  mACollection->addAction( QLatin1String("schedule_publish"), mPublishEvent );
   connect( mPublishEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_publish()) );
   mPublishEvent->setEnabled( false );
 
   mSendInvitation =
-    new KAction( KIcon( "mail-send" ), i18n( "Send &Invitation to Attendees" ), this );
-  mACollection->addAction( "schedule_request", mSendInvitation );
+    new KAction( KIcon( QLatin1String("mail-send") ), i18n( "Send &Invitation to Attendees" ), this );
+  mACollection->addAction( QLatin1String("schedule_request"), mSendInvitation );
   connect( mSendInvitation, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_request()) );
   mSendInvitation->setEnabled( false );
   connect( mCalendarView, SIGNAL(organizerEventsSelected(bool)),
            mSendInvitation, SLOT(setEnabled(bool)) );
 
   mRequestUpdate = new KAction( i18n( "Re&quest Update" ), this );
-  mACollection->addAction( "schedule_refresh", mRequestUpdate );
+  mACollection->addAction( QLatin1String("schedule_refresh"), mRequestUpdate );
   connect( mRequestUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_refresh()) );
   mRequestUpdate->setEnabled( false );
   connect( mCalendarView, SIGNAL(groupEventsSelected(bool)),
            mRequestUpdate, SLOT(setEnabled(bool)) );
 
   mSendCancel = new KAction( i18n( "Send &Cancellation to Attendees" ), this );
-  mACollection->addAction( "schedule_cancel", mSendCancel );
+  mACollection->addAction( QLatin1String("schedule_cancel"), mSendCancel );
   connect( mSendCancel, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_cancel()) );
   mSendCancel->setEnabled( false );
   connect( mCalendarView, SIGNAL(organizerEventsSelected(bool)),
            mSendCancel, SLOT(setEnabled(bool)) );
 
   mSendStatusUpdate =
-    new KAction( KIcon( "mail-reply-sender" ), i18n( "Send Status &Update" ), this );
-  mACollection->addAction( "schedule_reply", mSendStatusUpdate );
+    new KAction( KIcon(QLatin1String( "mail-reply-sender") ), i18n( "Send Status &Update" ), this );
+  mACollection->addAction( QLatin1String("schedule_reply"), mSendStatusUpdate );
   connect( mSendStatusUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_reply()) );
   mSendStatusUpdate->setEnabled( false );
   connect( mCalendarView, SIGNAL(groupEventsSelected(bool)),
            mSendStatusUpdate, SLOT(setEnabled(bool)) );
 
   mRequestChange = new KAction( i18nc( "counter proposal", "Request Chan&ge" ), this );
-  mACollection->addAction( "schedule_counter", mRequestChange );
+  mACollection->addAction( QLatin1String("schedule_counter"), mRequestChange );
   connect( mRequestChange, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_counter()) );
   mRequestChange->setEnabled( false );
   connect( mCalendarView, SIGNAL(groupEventsSelected(bool)),
            mRequestChange, SLOT(setEnabled(bool)) );
 
   action = new KAction( i18n( "&Mail Free Busy Information..." ), this );
-  mACollection->addAction( "mail_freebusy", action );
+  mACollection->addAction( QLatin1String("mail_freebusy"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(mailFreeBusy()) );
   action->setEnabled( true );
 
-  mForwardEvent = new KAction( KIcon( "mail-forward" ), i18n( "&Send as iCalendar..." ), this );
-  mACollection->addAction( "schedule_forward", mForwardEvent );
+  mForwardEvent = new KAction( KIcon( QLatin1String("mail-forward") ), i18n( "&Send as iCalendar..." ), this );
+  mACollection->addAction( QLatin1String("schedule_forward"), mForwardEvent );
   connect( mForwardEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()) );
   mForwardEvent->setEnabled( false );
 
   action = new KAction( i18n( "&Upload Free Busy Information" ), this );
-  mACollection->addAction( "upload_freebusy", action );
+  mACollection->addAction( QLatin1String("upload_freebusy"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(uploadFreeBusy()) );
   action->setEnabled( true );
 
   if ( !mIsPart ) {
-    action = new KAction( KIcon( "help-contents" ), i18n( "&Address Book" ), this );
-    mACollection->addAction( "addressbook", action );
+    action = new KAction( KIcon( QLatin1String("help-contents") ), i18n( "&Address Book" ), this );
+    mACollection->addAction( QLatin1String("addressbook"), action );
     connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(openAddressbook()) );
   }
 
@@ -658,15 +658,15 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   mDateNavigatorShowAction = new KToggleAction( i18n( "Show Date Navigator" ), this );
-  mACollection->addAction( "show_datenavigator", mDateNavigatorShowAction );
+  mACollection->addAction( QLatin1String("show_datenavigator"), mDateNavigatorShowAction );
   connect( mDateNavigatorShowAction, SIGNAL(triggered(bool)), SLOT(toggleDateNavigator()) );
 
   mTodoViewShowAction = new KToggleAction( i18n( "Show To-do View" ), this );
-  mACollection->addAction( "show_todoview", mTodoViewShowAction );
+  mACollection->addAction( QLatin1String("show_todoview"), mTodoViewShowAction );
   connect( mTodoViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleTodoView()) );
 
   mEventViewerShowAction = new KToggleAction( i18n( "Show Item Viewer" ), this );
-  mACollection->addAction( "show_eventviewer", mEventViewerShowAction );
+  mACollection->addAction( QLatin1String("show_eventviewer"), mEventViewerShowAction );
   connect( mEventViewerShowAction, SIGNAL(triggered(bool)), SLOT(toggleEventViewer()) );
   KConfigGroup config( KOGlobals::self()->config(), "Settings" );
   mDateNavigatorShowAction->setChecked( config.readEntry( "DateNavigatorVisible", true ) );
@@ -682,7 +682,7 @@ void ActionManager::initActions()
 
   if ( !mMainWindow->hasDocument() ) {
     mCollectionViewShowAction = new KToggleAction( i18n( "Show Calendar Manager" ), this );
-    mACollection->addAction( "show_resourceview", mCollectionViewShowAction );
+    mACollection->addAction( QLatin1String("show_resourceview"), mCollectionViewShowAction );
     connect( mCollectionViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleResourceView()) );
     mCollectionViewShowAction->setChecked( config.readEntry( "ResourceViewVisible", true ) );
 
@@ -695,7 +695,7 @@ void ActionManager::initActions()
   toggleMenubar( true );
 
   action = new KAction( i18n( "Configure &Date && Time..." ), this );
-  mACollection->addAction( "conf_datetime", action );
+  mACollection->addAction( QLatin1String("conf_datetime"), action );
   connect( action, SIGNAL(triggered(bool)),
            SLOT(configureDateTime()) );
 // TODO: Add an item to show the resource management dlg
@@ -703,22 +703,22 @@ void ActionManager::initActions()
 //                     this, SLOT(manageResources()),
 //                     mACollection, "conf_resources" );
 
-  action = new KAction( KIcon( "view-filter" ), i18n( "Manage View &Filters..." ), this );
-  mACollection->addAction( "edit_filters", action );
+  action = new KAction( KIcon( QLatin1String("view-filter") ), i18n( "Manage View &Filters..." ), this );
+  mACollection->addAction( QLatin1String("edit_filters"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(editFilters()) );
 
   action = new KAction( i18n( "Manage C&ategories..." ), this );
-  mACollection->addAction( "edit_categories", action );
+  mACollection->addAction( QLatin1String("edit_categories"), action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->dialogManager(),
            SLOT(showCategoryEditDialog()) );
 
   if ( mIsPart ) {
-    action = new KAction( KIcon( "configure" ), i18n( "&Configure KOrganizer..." ), this );
-    mACollection->addAction( "korganizer_configure", action );
+    action = new KAction( KIcon( QLatin1String("configure") ), i18n( "&Configure KOrganizer..." ), this );
+    mACollection->addAction( QLatin1String("korganizer_configure"), action );
     connect( action, SIGNAL(triggered(bool)), mCalendarView,
              SLOT(edit_options()) );
-    mACollection->addAction( KStandardAction::KeyBindings, "korganizer_configure_shortcuts",
+    mACollection->addAction( KStandardAction::KeyBindings, QLatin1String("korganizer_configure_shortcuts"),
                              this, SLOT(keyBindings()) );
   } else {
     KStandardAction::preferences( mCalendarView, SLOT(edit_options()), mACollection );
@@ -728,7 +728,7 @@ void ActionManager::initActions()
   /**************************** HELP MENU **********************************/
   QAction *a = mACollection->addAction( KStandardAction::TipofDay, this,
                                         SLOT(showTip()) );
-  mACollection->addAction( "help_tipofday", a );
+  mACollection->addAction( QLatin1String("help_tipofday"), a );
 }
 
 void ActionManager::setItems( const QStringList &lst, int idx )
@@ -849,8 +849,8 @@ void ActionManager::file_new()
 
 void ActionManager::file_open()
 {
-  const QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
-  const KUrl url = KFileDialog::getOpenUrl( defaultPath, "text/calendar", dialogParent() );
+  const QString defaultPath = KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") );
+  const KUrl url = KFileDialog::getOpenUrl( defaultPath, QLatin1String("text/calendar"), dialogParent() );
 
   file_open( url );
 }
@@ -884,7 +884,7 @@ void ActionManager::file_icalimport()
   KTemporaryFile tmpfn;
   tmpfn.open();
 
-  QString homeDir = QDir::homePath() + QString::fromLatin1( "/.calendar" );
+  QString homeDir = QDir::homePath() + QLatin1String( "/.calendar" );
 
   if ( !QFile::exists( homeDir ) ) {
     KMessageBox::error( dialogParent(),
@@ -894,7 +894,7 @@ void ActionManager::file_icalimport()
   }
 
   KProcess proc;
-  proc << "ical2vcal" << tmpfn.fileName();
+  proc << QLatin1String("ical2vcal") << tmpfn.fileName();
   retVal = proc.execute();
 
   if ( retVal < 0 ) {
@@ -927,8 +927,8 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_import()
 {
-  const KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
-                                      "text/calendar",
+  const KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") ),
+                                      QLatin1String("text/calendar"),
                                       dialogParent() );
   if ( !url.isEmpty() ) { // isEmpty if user canceled the dialog
     importCalendar( url );
@@ -980,13 +980,13 @@ bool ActionManager::saveURL()
             "'Export vCalendar' to save in vCalendar format." ),
       i18n( "Format Conversion" ), KGuiItem( i18n( "Proceed" ) ),
       KStandardGuiItem::cancel(),
-      QString( "dontaskFormatConversion" ), KMessageBox::Notify );
+      QLatin1String( "dontaskFormatConversion" ), KMessageBox::Notify );
     if ( result != KMessageBox::Continue ) {
       return false;
     }
 
     QString filename = mURL.fileName();
-    filename.replace( filename.length() - 4, 4, ".ics" );
+    filename.replace( filename.length() - 4, 4, QLatin1String(".ics") );
     mURL.setFileName( filename );
     if ( mURL.isLocalFile() ) {
       mFile = mURL.toLocalFile();
@@ -1015,7 +1015,7 @@ bool ActionManager::saveURL()
 
 void ActionManager::exportHTML()
 {
-  HTMLExportSettings *settings = new HTMLExportSettings( "KOrganizer" );
+  HTMLExportSettings *settings = new HTMLExportSettings( QLatin1String("KOrganizer") );
   mSettingsToFree.insert( settings );
   // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
@@ -1083,8 +1083,8 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
   settings->setEMail( CalendarSupport::KCalPrefs::instance()->email() );
   settings->setName( CalendarSupport::KCalPrefs::instance()->fullName() );
 
-  settings->setCreditName( "KOrganizer" );
-  settings->setCreditURL( "http://korganizer.kde.org" );
+  settings->setCreditName( QLatin1String("KOrganizer") );
+  settings->setCreditURL( QLatin1String("http://korganizer.kde.org") );
 
   KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob( calendar(), settings, autoMode, mMainWindow, view() );
 
@@ -1190,7 +1190,7 @@ bool ActionManager::saveModifiedURL()
 KUrl ActionManager::getSaveURL()
 {
   KUrl url =
-    KFileDialog::getSaveUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
+    KFileDialog::getSaveUrl( KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") ),
                              i18n( "*.ics *.vcs|Calendar Files" ),
                              dialogParent() );
 
@@ -1203,7 +1203,7 @@ KUrl ActionManager::getSaveURL()
   QString e = filename.right( 4 );
   if ( e != QLatin1String( ".vcs" ) && e != QLatin1String( ".ics" ) ) {
     // Default save format is iCalendar
-    filename += ".ics";
+    filename += QLatin1String(".ics");
   }
 
   url.setFileName( filename );
@@ -1256,7 +1256,7 @@ void ActionManager::updateConfig()
 void ActionManager::configureDateTime()
 {
   KProcess proc;
-  proc << "kcmshell4" << "language";
+  proc << QLatin1String("kcmshell4") << QLatin1String("language");
 
   if ( !proc.startDetached() ) {
     KMessageBox::sorry( dialogParent(),
@@ -1640,7 +1640,7 @@ void ActionManager::openEventEditor( const QString &summary,
                                      const QString &attachmentMimetype )
 {
   int action = IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod();
-  if ( attachmentMimetype != "message/rfc822" ) {
+  if ( attachmentMimetype != QLatin1String("message/rfc822") ) {
     action = IncidenceEditorNG::GlobalSettings::Link;
   } else if ( IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod() ==
               IncidenceEditorNG::GlobalSettings::Ask ) {
@@ -1649,7 +1649,7 @@ void ActionManager::openEventEditor( const QString &summary,
     QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
     QAction *attachBody = menu->addAction( i18n( "Attach inline &without attachments" ) );
     menu->addSeparator();
-    menu->addAction( KIcon( "dialog-cancel" ), i18n( "C&ancel" ) );
+    menu->addAction( KIcon( QLatin1String("dialog-cancel") ), i18n( "C&ancel" ) );
 
     QAction *ret = menu->exec( QCursor::pos() );
     delete menu;
@@ -1691,7 +1691,7 @@ void ActionManager::openEventEditor( const QString &summary,
              0,
              i18n( "Removing attachments from an email might invalidate its signature." ),
              i18n( "Remove Attachments" ), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
-             "BodyOnlyInlineAttachment" ) != KMessageBox::Continue ) {
+             QLatin1String("BodyOnlyInlineAttachment") ) != KMessageBox::Continue ) {
         delete msg;
         return;
       }
@@ -1746,14 +1746,14 @@ void ActionManager::openTodoEditor( const QString &summary,
                                     const QString &attachmentMimetype )
 {
   int action = KOPrefs::instance()->defaultTodoAttachMethod();
-  if ( attachmentMimetype != "message/rfc822" ) {
+  if ( attachmentMimetype != QLatin1String("message/rfc822") ) {
     action = KOPrefs::TodoAttachLink;
   } else if ( KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk ) {
     KMenu *menu = new KMenu( 0 );
     QAction *attachLink = menu->addAction( i18n( "Attach as &link" ) );
     QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
     menu->addSeparator();
-    menu->addAction( KIcon( "dialog-cancel" ), i18n( "C&ancel" ) );
+    menu->addAction( KIcon( QLatin1String("dialog-cancel") ), i18n( "C&ancel" ) );
 
     QAction *ret = menu->exec( QCursor::pos() );
     delete menu;

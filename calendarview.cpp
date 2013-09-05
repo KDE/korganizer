@@ -109,7 +109,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 
   mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
-  mCalendar->setObjectName( "KOrg Calendar" );
+  mCalendar->setObjectName( QLatin1String("KOrg Calendar") );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mITIPHandler = new Akonadi::ITIPHandler( this );
   mITIPHandler->setCalendar( mCalendar );
@@ -133,22 +133,22 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 
   // create the main layout frames.
   mPanner = new QSplitter( Qt::Horizontal, this );
-  mPanner->setObjectName( "CalendarView::Panner" );
+  mPanner->setObjectName( QLatin1String("CalendarView::Panner") );
   topLayout->addWidget( mPanner );
 
   mLeftSplitter = new QSplitter( Qt::Vertical, mPanner );
-  mLeftSplitter->setObjectName( "CalendarView::LeftFrame" );
+  mLeftSplitter->setObjectName( QLatin1String("CalendarView::LeftFrame") );
 
   mDateNavigatorContainer = new DateNavigatorContainer( mLeftSplitter );
-  mDateNavigatorContainer->setObjectName( "CalendarView::DateNavigator" );
+  mDateNavigatorContainer->setObjectName( QLatin1String("CalendarView::DateNavigator") );
 
   mTodoList = new KOTodoView( true/*sidebar*/, mLeftSplitter );
-  mTodoList->setObjectName( "todolist" );
+  mTodoList->setObjectName(QLatin1String( "todolist") );
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( 0 );
   mEventViewer = new CalendarSupport::IncidenceViewer( mCalendar.data(), mEventViewerBox );
-  mEventViewer->setObjectName( "EventViewer" );
+  mEventViewer->setObjectName( QLatin1String("EventViewer") );
 
   KVBox *rightBox = new KVBox( mPanner );
   rightBox->layout()->setMargin( 0 );
@@ -401,7 +401,7 @@ void CalendarView::readSettings()
   }
 
   mViewManager->readSettings( config );
-  mTodoList->restoreLayout( config, QString( "Sidebar Todo View" ), true );
+  mTodoList->restoreLayout( config, QLatin1String( "Sidebar Todo View" ), true );
 
   readFilterSettings( config );
 
@@ -432,7 +432,7 @@ void CalendarView::writeSettings()
   }
 
   mViewManager->writeSettings( config );
-  mTodoList->saveLayout( config, QString( "Sidebar Todo View" ) );
+  mTodoList->saveLayout( config, QLatin1String( "Sidebar Todo View" ) );
 
   KOPrefs::instance()->writeConfig();
   CalendarSupport::KCalPrefs::instance()->writeConfig();
@@ -459,7 +459,7 @@ void CalendarView::readFilterSettings( KConfig *config )
   QStringList::ConstIterator end = filterList.constEnd();
   while ( it != end ) {
     KCalCore::CalFilter *filter = new KCalCore::CalFilter( *it );
-    KConfigGroup filterConfig( config, "Filter_" + (*it) );
+    KConfigGroup filterConfig( config, QLatin1String("Filter_") + (*it) );
     filter->setCriteria( filterConfig.readEntry( "Criteria", 0 ) );
     filter->setCategoryList( filterConfig.readEntry( "CategoryList", QStringList() ) );
     if ( filter->criteria() & KCalCore::CalFilter::HideNoMatchingAttendeeTodos ) {
@@ -485,7 +485,7 @@ void CalendarView::writeFilterSettings( KConfig *config )
 
   foreach ( KCalCore::CalFilter *filter, mFilters ) {
     filterList << filter->name();
-    KConfigGroup filterConfig( config, "Filter_" + filter->name() );
+    KConfigGroup filterConfig( config, QLatin1String("Filter_") + filter->name() );
     filterConfig.writeEntry( "Criteria", filter->criteria() );
     filterConfig.writeEntry( "CategoryList", filter->categoryList() );
     filterConfig.writeEntry( "HideTodoDays", filter->completedTimeSpan() );
@@ -574,7 +574,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
                                          i18n( "Keep Absolute Times?" ),
                                          KGuiItem( i18n( "Keep Times" ) ),
                                          KGuiItem( i18n( "Move Times" ) ),
-                                         "calendarKeepAbsoluteTimes" );
+                                         QLatin1String("calendarKeepAbsoluteTimes") );
     if ( rc == KMessageBox::Yes ) {
       // keep the absolute time - note the new viewing time zone in the calendar
       mCalendar->setViewTimeSpec( newTimeSpec );
@@ -666,7 +666,7 @@ void CalendarView::slotModifyFinished( int changeId,
         Akonadi::Item journalItem = mCalendar->item( journals.first()->uid() );
         Journal::Ptr journal = CalendarSupport::journal( journalItem );
         Journal::Ptr oldJournal( journal->clone() );
-        journal->setDescription( journal->description().append( '\n' + description ) );
+        journal->setDescription( journal->description().append( QLatin1Char('\n') + description ) );
         mChanger->modifyIncidence( journalItem, oldJournal, this );
 
       }
@@ -1298,7 +1298,7 @@ bool CalendarView::incidence_unsub( const Akonadi::Item &item )
   }
 
   Incidence::Ptr oldInc( inc->clone() );
-  inc->setRelatedTo( 0 );
+  inc->setRelatedTo( QString() );
   mChanger->modifyIncidence( item, oldInc, this );
 
   return true;
@@ -1741,7 +1741,7 @@ void CalendarView::schedule( KCalCore::iTIPMethod method, const Akonadi::Item &i
 
 void CalendarView::openAddressbook()
 {
-  KRun::runCommand( "kaddressbook", topLevelWidget() );
+  KRun::runCommand( QLatin1String("kaddressbook"), topLevelWidget() );
 }
 
 bool CalendarView::isReadOnly() const
@@ -1806,7 +1806,7 @@ void CalendarView::printPreview()
 
 void CalendarView::exportWeb()
 {
-  KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings( "KOrganizer" );
+  KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings( QLatin1String("KOrganizer") );
   Q_ASSERT(settings);
   // Manually read in the config, because parameterized kconfigxt objects don't
   // seem to load the config theirselves
@@ -1820,11 +1820,11 @@ void CalendarView::exportWeb()
 void CalendarView::exportICalendar()
 {
   QString filename =
-    KFileDialog::getSaveFileName( KUrl( "icalout.ics" ), i18n( "*.ics|iCalendars" ), this );
+    KFileDialog::getSaveFileName( KUrl( QLatin1String("icalout.ics") ), i18n( "*.ics|iCalendars" ), this );
   if ( !filename.isEmpty() ) {
     // Force correct extension
-    if ( filename.right( 4 ) != ".ics" ) {
-      filename += ".ics";
+    if ( filename.right( 4 ) != QLatin1String(".ics") ) {
+      filename += QLatin1String(".ics");
     }
 
     if ( QFile( filename ).exists() ) {
@@ -1862,19 +1862,19 @@ void CalendarView::exportVCalendar()
       i18n( "Data Loss Warning" ),
       KGuiItem( i18n( "Proceed" ) ),
       KStandardGuiItem::cancel(),
-      QString( "dontaskVCalExport" ),
+      QLatin1String( "dontaskVCalExport" ),
       KMessageBox::Notify );
     if ( result != KMessageBox::Continue ) {
       return;
     }
   }
 
-  QString filename = KFileDialog::getSaveFileName( KUrl( "vcalout.vcs" ),
+  QString filename = KFileDialog::getSaveFileName( KUrl( QLatin1String("vcalout.vcs") ),
                                                    i18n( "*.vcs|vCalendars" ), this );
   if ( !filename.isEmpty() ) {
     // Force correct extension
-    if ( filename.right( 4 ) != ".vcs" ) {
-      filename += ".vcs";
+    if ( filename.right( 4 ) != QLatin1String(".vcs") ) {
+      filename += QLatin1String(".vcs");
     }
     if ( QFile( filename ).exists() ) {
       if ( KMessageBox::No == KMessageBox::warningYesNo(
@@ -1971,7 +1971,7 @@ void CalendarView::processIncidenceSelection( const Akonadi::Item &item, const Q
 
   if ( incidence->type() == Incidence::TypeTodo ) {
     todo = true;
-    subtodo = ( incidence->relatedTo() != 0 );
+    subtodo = ( incidence->relatedTo() != QString() );
   }
   emit todoSelected( todo );
   emit subtodoSelected( subtodo );
@@ -2398,7 +2398,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
               "belongs to a read-only calendar.",
               incidence->summary() ),
         i18n( "Removing not possible" ),
-        "deleteReadOnlyIncidence" );
+        QLatin1String("deleteReadOnlyIncidence") );
     }
     kWarning() << "CalendarView::deleteIncidence(): No rights to delete item";
     return false;
@@ -2554,7 +2554,7 @@ void CalendarView::purgeCompleted()
         i18nc( "@info",
                "Unable to purge to-dos with uncompleted children." ),
         i18n( "Delete To-do" ),
-        "UncompletedChildrenPurgeTodos" );
+        QLatin1String("UncompletedChildrenPurgeTodos") );
     }
   }
 }

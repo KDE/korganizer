@@ -295,7 +295,7 @@ void FilterEdit::editCategorySelection()
     CalendarSupport::CategoryConfig *cc =
       new CalendarSupport::CategoryConfig( KOPrefs::instance(), this );
     mCategorySelectDialog = new IncidenceEditorNG::CategorySelectDialog( cc, this );
-    mCategorySelectDialog->setHelp( "categories-view", "korganizer" );
+    mCategorySelectDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
     mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
     connect( mCategorySelectDialog, SIGNAL(categoriesSelected(QStringList)),
              SLOT(updateCategorySelection(QStringList)) );

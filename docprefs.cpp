@@ -35,7 +35,7 @@ DocPrefs::DocPrefs( const QString &type )
 {
   if ( !mConfig ) {
     mConfig = new KConfig(
-      KStandardDirs::locateLocal( "data", "korganizer/docprefs." + type + ".kconfig" ) );
+      KStandardDirs::locateLocal( "data", QLatin1String("korganizer/docprefs.") + type + QLatin1String(".kconfig") ) );
   }
 }
 

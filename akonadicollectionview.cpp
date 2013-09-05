@@ -221,7 +221,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   //topLayout->addWidget( searchCol );
 
   ColorProxyModel *colorProxy = new ColorProxyModel( this );
-  colorProxy->setObjectName( "Show calendar colors" );
+  colorProxy->setObjectName( QLatin1String("Show calendar colors") );
   colorProxy->setDynamicSortFilter( true );
   mBaseModel = colorProxy;
 
@@ -481,7 +481,7 @@ void AkonadiCollectionView::newCalendar()
   Akonadi::AgentTypeDialog dlg( this );
   dlg.setWindowTitle( i18n( "Add Calendar" ) );
   dlg.agentFilterProxyModel()->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
-  dlg.agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
+  dlg.agentFilterProxyModel()->addCapabilityFilter( QLatin1String("Resource") ); // show only resources, no agents
   if ( dlg.exec() ) {
     mNotSendAddRemoveSignal = true;
     const Akonadi::AgentType agentType = dlg.agentType();
