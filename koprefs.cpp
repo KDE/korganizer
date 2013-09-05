@@ -41,7 +41,7 @@ K_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
 
 KOPrefs::KOPrefs() : KOPrefsBase()
 {
-  KGlobal::locale()->insertCatalog( "calendarsupport" );
+  KGlobal::locale()->insertCatalog( QLatin1String("calendarsupport") );
 
   mEventViewsPrefs = EventViews::PrefsPtr( new EventViews::Prefs( this ) );
 
@@ -50,11 +50,11 @@ KOPrefs::KOPrefs() : KOPrefsBase()
   mDefaultMonthViewFont.setPointSize(
     qMax( mDefaultMonthViewFont.pointSize() - 2, 6 ) );
 
-  KConfigSkeleton::setCurrentGroup( "General" );
+  KConfigSkeleton::setCurrentGroup( QLatin1String("General") );
 
   // writes into mHtmlExportFile
-  addItemPath( "Html Export File", mHtmlExportFile,
-               QDir::homePath() + '/' + i18nc( "Default export file", "calendar.html" ) );
+  addItemPath( QLatin1String("Html Export File"), mHtmlExportFile,
+               QDir::homePath() + QLatin1Char('/') + i18nc( "Default export file", "calendar.html" ) );
 
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
 }

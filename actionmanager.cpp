@@ -104,7 +104,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
     mCollectionSelectionModelStateSaver( 0 ), mIsClosing( false )
 {
   new KOrgCalendarAdaptor( this );
-  QDBusConnection::sessionBus().registerObject( "/Calendar", this );
+  QDBusConnection::sessionBus().registerObject( QLatin1String("/Calendar"), this );
 
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -222,7 +222,7 @@ void ActionManager::createCalendarAkonadi()
   AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
-  mCollectionView->setObjectName( "Resource View" );
+  mCollectionView->setObjectName( QLatin1String("Resource View") );
   connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
   connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)),
            SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
