@@ -70,9 +70,9 @@ PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   // when someone edits a kmail attachment he's editing a tmp file, check for that
   // and if it's a tmp file then open a save dialog
   if ( isTempFile() ) {
-    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar..." ), "add" ) );
+    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar..." ), QLatin1String("add") ) );
   } else {
-    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar" ), "add" ) );
+    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar" ), QLatin1String("add") ) );
   }
 
   mLocalUrl = 0;
@@ -140,7 +140,7 @@ void PreviewDialog::slotAdd()
   KUrl finalUrl = mOriginalUrl;
   if ( isTempFile() ) {
     const QString fileName =
-      KFileDialog::getSaveFileName( KStandardDirs::locateLocal( "data","korganizer/" ),
+      KFileDialog::getSaveFileName( KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") ),
                                     i18n( "*.vcs *.ics|Calendar Files" ),
                                     this, i18n( "Select path for new calendar" ) );
 
@@ -162,7 +162,7 @@ void PreviewDialog::slotAdd()
 
 bool PreviewDialog::isTempFile() const
 {
-  return mOriginalUrl.path().startsWith( KStandardDirs::locateLocal( "tmp", "" ) );
+  return mOriginalUrl.path().startsWith( KStandardDirs::locateLocal( "tmp", QLatin1String("") ) );
 }
 
 #include "previewdialog.moc"

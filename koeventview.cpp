@@ -109,7 +109,7 @@ QMenu *KOEventView::newEventPopup()
   }
 
   return static_cast<QMenu*>
-      ( client->factory()->container( "rmb_selection_popup", client ) );
+      ( client->factory()->container( QLatin1String("rmb_selection_popup"), client ) );
 }
 //---------------------------------------------------------------------------
 

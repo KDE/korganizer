@@ -89,14 +89,14 @@ void KODialogManager::showOptionsDialog()
              mMainView, SLOT(updateConfig(QByteArray)) );
     QStringList modules;
 
-    modules.append( "korganizer_configmain.desktop" );
-    modules.append( "korganizer_configtime.desktop" );
-    modules.append( "korganizer_configviews.desktop" );
-    modules.append( "korganizer_configcolorsandfonts.desktop" );
-    modules.append( "korganizer_configgroupscheduling.desktop" );
-    modules.append( "korganizer_configfreebusy.desktop" );
-    modules.append( "korganizer_configplugins.desktop" );
-    modules.append( "korganizer_configdesignerfields.desktop" );
+    modules.append( QLatin1String("korganizer_configmain.desktop") );
+    modules.append( QLatin1String("korganizer_configtime.desktop") );
+    modules.append( QLatin1String("korganizer_configviews.desktop") );
+    modules.append( QLatin1String("korganizer_configcolorsandfonts.desktop") );
+    modules.append( QLatin1String("korganizer_configgroupscheduling.desktop") );
+    modules.append( QLatin1String("korganizer_configfreebusy.desktop") );
+    modules.append( QLatin1String("korganizer_configplugins.desktop") );
+    modules.append( QLatin1String("korganizer_configdesignerfields.desktop") );
 
     // add them all
     QStringList::iterator mit;
@@ -221,7 +221,7 @@ void KODialogManager::createCategoryEditor()
       new IncidenceEditorNG::CategoryEditDialog( cc, mMainView );
 
     mCategoryEditDialog->setModal( true );
-    mCategoryEditDialog->setHelp( "categories-view", "korganizer" );
+    mCategoryEditDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
 
     connect( mMainView, SIGNAL(categoriesChanged()),
              mCategoryEditDialog, SLOT(reload()) );

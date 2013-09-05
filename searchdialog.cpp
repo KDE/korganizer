@@ -82,7 +82,7 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   setButtons( User1 | Cancel );
   setDefaultButton( User1 );
   setButtonGuiItem( User1,
-                    KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
+                    KGuiItem( i18nc( "search in calendar", "&Search" ), QLatin1String("edit-find") ) );
   setButtonToolTip( User1, i18n( "Start searching" ) );
   showButtonSeparator( false );
 }

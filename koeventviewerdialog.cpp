@@ -41,7 +41,7 @@ KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidge
   setCaption( i18n( "Event Viewer" ) );
   setButtons( Close | User1 | User2 );
   setModal( false );
-  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( "document-edit" ) ) );
+  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( QLatin1String("document-edit") ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
   mEventViewer = new CalendarSupport::IncidenceViewer( calendar, this );
   setMainWidget( mEventViewer );
@@ -74,10 +74,10 @@ void KOEventViewerDialog::editIncidence()
 
   if ( CalendarSupport::hasIncidence( item ) ) {
     // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath( "korganizer" );
+    KToolInvocation::startServiceByDesktopPath( QLatin1String("korganizer" ));
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
-      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+      QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus() );
     korganizerIface.editIncidence( QString::number( item.id() ) );
   }
 }
@@ -88,10 +88,10 @@ void KOEventViewerDialog::showIncidenceContext()
 
   if ( CalendarSupport::hasIncidence( item ) ) {
     // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath( "korganizer" );
+    KToolInvocation::startServiceByDesktopPath( QLatin1String("korganizer") );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
-      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+      QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus() );
     korganizerIface.showIncidenceContext( QString::number( item.id() ) );
   }
 }

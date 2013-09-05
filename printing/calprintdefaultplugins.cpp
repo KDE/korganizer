@@ -53,7 +53,7 @@ using namespace KCalUtils;
 static QString cleanStr( const QString &instr )
 {
   QString ret = instr;
-  return ret.replace( '\n', ' ' );
+  return ret.replace( QLatin1Char('\n'), QLatin1Char(' ') );
 }
 
 /**************************************************************
@@ -231,8 +231,8 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
   QFont oldFont( p.font() );
-  QFont textFont( "sans-serif", 11, QFont::Normal );
-  QFont captionFont( "sans-serif", 11, QFont::Bold );
+  QFont textFont( QLatin1String("sans-serif"), 11, QFont::Normal );
+  QFont captionFont( QLatin1String("sans-serif"), 11, QFont::Bold );
   p.setFont( textFont );
   int lineHeight = p.fontMetrics().lineSpacing();
   QString cap, txt;
@@ -318,7 +318,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       if ( !recurs->exDates().isEmpty() ) {
         exceptString = i18nc( "except for listed dates", " except" );
         for ( int i = 0; i < recurs->exDates().size(); ++i ) {
-          exceptString.append( " " );
+          exceptString.append( QLatin1String(" ") );
           exceptString.append( KGlobal::locale()->formatDate( recurs->exDates()[i],
                                                               KLocale::ShortDate ) );
         }
@@ -546,22 +546,22 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           }
           subitemString += i18nc( "subitem counter", "%1: ", count );
           subitemString += todo->summary();
-          subitemString += '\n';
+          subitemString += QLatin1Char('\n');
           if ( !datesString.isEmpty() ) {
             subitemString += datesString;
-            subitemString += '\n';
+            subitemString += QLatin1Char('\n');
           }
           subitemString += i18nc( "subitem Status: statusString",
                                   "Status: %1\n",
                                    statusString );
-          subitemString += IncidenceFormatter::recurrenceString( todo ) + '\n';
+          subitemString += IncidenceFormatter::recurrenceString( todo ) + QLatin1Char('\n');
           subitemString += i18nc( "subitem Priority: N",
                                   "Priority: <numid>%1</numid>\n",
                                   todo->priority() );
           subitemString += i18nc( "subitem Secrecy: secrecyString",
                                   "Secrecy: %1\n",
                                   Stringify::incidenceSecrecy( todo->secrecy() ) );
-          subitemString += '\n';
+          subitemString += QLatin1Char('\n');
         }
         drawBoxWithCaption( p, notesBox, subitemCaption,
                   subitemString, /*sameLine=*/false,
@@ -607,7 +607,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       Attendee::List::ConstIterator ait = attendees.constBegin();
       for ( ; ait != attendees.constEnd(); ++ait ) {
         if ( !attendeeString.isEmpty() ) {
-          attendeeString += '\n';
+          attendeeString += QLatin1Char('\n');
         }
         attendeeString += i18nc(
                 "Formatting of an attendee: "
@@ -627,11 +627,11 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       QString optionsString;
       if ( !Stringify::incidenceStatus( (*it)->status() ).isEmpty() ) {
         optionsString += i18n( "Status: %1", Stringify::incidenceStatus( (*it)->status() ) );
-        optionsString += '\n';
+        optionsString += QLatin1Char('\n');
       }
       if ( !Stringify::incidenceSecrecy( (*it)->secrecy() ).isEmpty() ) {
         optionsString += i18n( "Secrecy: %1", Stringify::incidenceSecrecy( (*it)->secrecy() ) );
-        optionsString += '\n';
+        optionsString += QLatin1Char('\n');
       }
       if ( (*it)->type() == Incidence::TypeEvent ) {
         Event::Ptr e = (*it).staticCast<Event>();
@@ -640,12 +640,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         } else {
           optionsString += i18n( "Show as: Free" );
         }
-        optionsString += '\n';
+        optionsString += QLatin1Char('\n');
       } else if ( (*it)->type() == Incidence::TypeTodo ) {
         Todo::Ptr t = (*it).staticCast<Todo>();
         if ( t->isOverdue() ) {
           optionsString += i18n( "This task is overdue!" );
-          optionsString += '\n';
+          optionsString += QLatin1Char('\n');
         }
       } else if ( (*it)->type() == Incidence::TypeJournal ) {
         //TODO: Anything Journal-specific?
@@ -867,7 +867,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     }
 
     int fontSize = 11;
-    QFont textFont( "sans-serif", fontSize, QFont::Normal );
+    QFont textFont( QLatin1String("sans-serif"), fontSize, QFont::Normal );
     p.setFont( textFont );
     int lineSpacing = p.fontMetrics().lineSpacing();
 
@@ -879,7 +879,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     if ( alldayEvents.count() > 0 ) {
       // draw the side bar for all-day events
       QFont oldFont( p.font() );
-      p.setFont( QFont( "sans-serif", 9, QFont::Normal ) );
+      p.setFont( QFont( QLatin1String("sans-serif"), 9, QFont::Normal ) );
       drawVerticalBox( p,
                        BOX_BORDER_WIDTH,
                        QRect( 0, headerBox.bottom() + padding(), TIMELINE_WIDTH, allDayHeight ),
@@ -1521,7 +1521,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   QString outStr;
   QFont oldFont( p.font() );
 
-  p.setFont( QFont( "sans-serif", 9, QFont::Bold ) );
+  p.setFont( QFont( QLatin1String("sans-serif"), 9, QFont::Bold ) );
   lineSpacing = p.fontMetrics().lineSpacing();
   mCurrentLinePos += lineSpacing;
   if ( mIncludePriority ) {
@@ -1554,7 +1554,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     posdue = -1;
   }
 
-  p.setFont( QFont( "sans-serif", 10 ) );
+  p.setFont( QFont( QLatin1String("sans-serif"), 10 ) );
   //fontHeight = p.fontMetrics().height();
 
   KCalCore::Todo::List todoList;

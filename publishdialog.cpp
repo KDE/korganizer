@@ -40,9 +40,9 @@ PublishDialog::PublishDialog( QWidget *parent )
 {
   setCaption( i18n( "Select Addresses" ) );
   setButtons( Ok|Cancel|Help );
-  setHelp( "group-scheduling", "korganizer" );
+  setHelp( QLatin1String("group-scheduling"), QLatin1String("korganizer") );
   QWidget *widget = new QWidget( this );
-  widget->setObjectName( "PublishFreeBusy" );
+  widget->setObjectName( QLatin1String("PublishFreeBusy") );
   mUI.setupUi( widget );
   setMainWidget( widget );
   mUI.mListWidget->setSelectionMode( QAbstractItemView::SingleSelection );
@@ -60,10 +60,10 @@ PublishDialog::PublishDialog( QWidget *parent )
   setButtonWhatsThis( Help, i18n( "Click the <b>Help</b> button to read "
                                   "more information about Group Scheduling." ) );
 
-  mUI.mAdd->setIcon( KIcon( "list-add" ) );
-  mUI.mRemove->setIcon( KIcon( "list-remove" ) );
+  mUI.mAdd->setIcon( KIcon( QLatin1String("list-add") ) );
+  mUI.mRemove->setIcon( KIcon( QLatin1String("list-remove") ) );
   mUI.mRemove->setEnabled( false );
-  mUI.mSelectAddressee->setIcon( KIcon( "view-pim-contacts" ) );
+  mUI.mSelectAddressee->setIcon( KIcon( QLatin1String("view-pim-contacts") ) );
 
   connect( mUI.mListWidget, SIGNAL(itemSelectionChanged()),
            SLOT(updateInput()) );
@@ -96,7 +96,7 @@ void PublishDialog::addAttendee( const KCalCore::Attendee::Ptr &attendee )
 
 QString PublishDialog::addresses()
 {
-  QString to = "";
+  QString to;
   QListWidgetItem *item;
   int i, count;
   count = mUI.mListWidget->count();
@@ -105,7 +105,7 @@ QString PublishDialog::addresses()
     if( !item->text().isEmpty() ) {
       to += item->text();
       if ( i < count-1 ) {
-        to += ", ";
+        to += QLatin1String(", ");
       }
     }
   }
