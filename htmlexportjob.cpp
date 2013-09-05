@@ -295,8 +295,8 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
   while ( start < toDate() ) {
     // Write header
     QDate hDate( start.year(), start.month(), 1 );
-    QString hMon = hDate.toString( "MMMM" );
-    QString hYear = hDate.toString( "yyyy" );
+    QString hMon = hDate.toString( QLatin1String("MMMM") );
+    QString hYear = hDate.toString( QLatin1String("yyyy" ));
     *ts << "<h2>"
         << i18nc( "@title month and year", "%1 %2", hMon, hYear )
         << "</h2>" << endl;
@@ -766,7 +766,7 @@ void HtmlExportJob::formatAttendees( QTextStream *ts, const KCalCore::Incidence:
 
 QString HtmlExportJob::breakString( const QString &text )
 {
-  int number = text.count( '\n' );
+  int number = text.count( QLatin1Char('\n') );
   if ( number <= 0 ) {
     return text;
   } else {
@@ -775,10 +775,10 @@ QString HtmlExportJob::breakString( const QString &text )
     int pos = 0;
     QString tmp;
     for ( int i = 0; i <= number; ++i ) {
-      pos = tmpText.indexOf( '\n' );
+      pos = tmpText.indexOf( QLatin1Char('\n') );
       tmp = tmpText.left( pos );
       tmpText = tmpText.right( tmpText.length() - pos - 1 );
-      out += tmp + "<br />";
+      out += tmp + QLatin1String("<br />");
     }
     return out;
   }
@@ -825,19 +825,19 @@ void HtmlExportJob::createFooter( QTextStream *ts )
 QString cleanChars( const QString &text )
 {
   QString txt = text;
-  txt = txt.replace( '&', "&amp;" );
-  txt = txt.replace( '<', "&lt;" );
-  txt = txt.replace( '>', "&gt;" );
-  txt = txt.replace( '\"', "&quot;" );
-  txt = txt.replace( QString::fromUtf8( "ä" ), "&auml;" );
-  txt = txt.replace( QString::fromUtf8( "Ä" ), "&Auml;" );
-  txt = txt.replace( QString::fromUtf8( "ö" ), "&ouml;" );
-  txt = txt.replace( QString::fromUtf8( "Ö" ), "&Ouml;" );
-  txt = txt.replace( QString::fromUtf8( "ü" ), "&uuml;" );
-  txt = txt.replace( QString::fromUtf8( "Ü" ), "&Uuml;" );
-  txt = txt.replace( QString::fromUtf8( "ß" ), "&szlig;" );
-  txt = txt.replace( QString::fromUtf8( "€" ), "&euro;" );
-  txt = txt.replace( QString::fromUtf8( "é" ), "&eacute;" );
+  txt = txt.replace( QLatin1Char('&'), QLatin1String("&amp;") );
+  txt = txt.replace( QLatin1Char('<'), QLatin1String("&lt;") );
+  txt = txt.replace( QLatin1Char('>'), QLatin1String("&gt;") );
+  txt = txt.replace( QLatin1Char('\"'), QLatin1String("&quot;") );
+  txt = txt.replace( QString::fromUtf8( "ä" ), QLatin1String("&auml;") );
+  txt = txt.replace( QString::fromUtf8( "Ä" ), QLatin1String("&Auml;") );
+  txt = txt.replace( QString::fromUtf8( "ö" ), QLatin1String("&ouml;") );
+  txt = txt.replace( QString::fromUtf8( "Ö" ), QLatin1String("&Ouml;") );
+  txt = txt.replace( QString::fromUtf8( "ü" ), QLatin1String("&uuml;") );
+  txt = txt.replace( QString::fromUtf8( "Ü" ), QLatin1String("&Uuml;") );
+  txt = txt.replace( QString::fromUtf8( "ß" ), QLatin1String("&szlig;") );
+  txt = txt.replace( QString::fromUtf8( "€" ), QLatin1String("&euro;") );
+  txt = txt.replace( QString::fromUtf8( "é" ), QLatin1String("&eacute;") );
 
   return txt;
 }
@@ -851,27 +851,27 @@ QString HtmlExportJob::styleSheet() const
   QString css;
 
   if ( QApplication::isRightToLeft() ) {
-    css += "    body { background-color:white; color:black; direction: rtl }\n";
-    css += "    td { text-align:center; background-color:#eee }\n";
-    css += "    th { text-align:center; background-color:#228; color:white }\n";
-    css += "    td.sumdone { background-color:#ccc }\n";
-    css += "    td.done { background-color:#ccc }\n";
-    css += "    td.subhead { text-align:center; background-color:#ccf }\n";
-    css += "    td.datehead { text-align:center; background-color:#ccf }\n";
-    css += "    td.space { background-color:white }\n";
-    css += "    td.dateholiday { color:red }\n";
+    css += QLatin1String("    body { background-color:white; color:black; direction: rtl }\n");
+    css += QLatin1String("    td { text-align:center; background-color:#eee }\n");
+    css += QLatin1String("    th { text-align:center; background-color:#228; color:white }\n");
+    css += QLatin1String("    td.sumdone { background-color:#ccc }\n");
+    css += QLatin1String("    td.done { background-color:#ccc }\n");
+    css += QLatin1String("    td.subhead { text-align:center; background-color:#ccf }\n");
+    css += QLatin1String("    td.datehead { text-align:center; background-color:#ccf }\n");
+    css += QLatin1String("    td.space { background-color:white }\n");
+    css += QLatin1String("    td.dateholiday { color:red }\n");
   } else {
-    css += "    body { background-color:white; color:black }\n";
-    css += "    td { text-align:center; background-color:#eee }\n";
-    css += "    th { text-align:center; background-color:#228; color:white }\n";
-    css += "    td.sum { text-align:left }\n";
-    css += "    td.sumdone { text-align:left; background-color:#ccc }\n";
-    css += "    td.done { background-color:#ccc }\n";
-    css += "    td.subhead { text-align:center; background-color:#ccf }\n";
-    css += "    td.datehead { text-align:center; background-color:#ccf }\n";
-    css += "    td.space { background-color:white }\n";
-    css += "    td.date { text-align:left }\n";
-    css += "    td.dateholiday { text-align:left; color:red }\n";
+    css += QLatin1String("    body { background-color:white; color:black }\n");
+    css += QLatin1String( "    td { text-align:center; background-color:#eee }\n");
+    css += QLatin1String( "    th { text-align:center; background-color:#228; color:white }\n");
+    css += QLatin1String( "    td.sum { text-align:left }\n");
+    css += QLatin1String( "    td.sumdone { text-align:left; background-color:#ccc }\n");
+    css += QLatin1String( "    td.done { background-color:#ccc }\n");
+    css += QLatin1String( "    td.subhead { text-align:center; background-color:#ccf }\n");
+    css += QLatin1String( "    td.datehead { text-align:center; background-color:#ccf }\n");
+    css += QLatin1String( "    td.space { background-color:white }\n");
+    css += QLatin1String( "    td.date { text-align:left }\n");
+    css += QLatin1String( "    td.dateholiday { text-align:left; color:red }\n");
   }
 
   return css;

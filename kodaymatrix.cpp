@@ -239,7 +239,7 @@ void KODayMatrix::updateView( const QDate &actdate )
         holiStr = holidays.join( i18nc( "delimiter for joining holiday names", "," ) );
       }
       if ( holiStr.isEmpty() ) {
-        holiStr = "";
+        holiStr = QLatin1String("");
       }
     }
     mHolidays[i] = holiStr;
@@ -420,7 +420,7 @@ const QDate &KODayMatrix::getDate( int offset ) const
 QString KODayMatrix::getHolidayLabel( int offset ) const
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
-    return 0;
+      return QString();
   }
   return mHolidays[offset];
 }
@@ -515,11 +515,11 @@ void KODayMatrix::popupMenu( const QDate &date )
   KMenu popup( this );
   popup.addTitle( date.toString() );
   QAction *newEventAction = popup.addAction(
-    KIcon( "appointment-new" ), i18n( "New E&vent..." ) );
+    KIcon( QLatin1String("appointment-new") ), i18n( "New E&vent..." ) );
   QAction *newTodoAction = popup.addAction(
-    KIcon( "task-new" ), i18n( "New &To-do..." ) );
+    KIcon( QLatin1String("task-new") ), i18n( "New &To-do..." ) );
   QAction *newJournalAction = popup.addAction(
-    KIcon( "journal-new" ), i18n( "New &Journal..." ) );
+    KIcon( QLatin1String("journal-new") ), i18n( "New &Journal..." ) );
   QAction *ret = popup.exec( QCursor::pos() );
   if ( ret == newEventAction ) {
     emit newEventSignal( date );
@@ -673,16 +673,16 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       QAction *copy = 0, *move = 0;
       KMenu *menu = new KMenu( this );
       if ( exist ) {
-        move = menu->addAction( KOGlobals::self()->smallIcon( "edit-paste" ), i18n( "&Move" ) );
+        move = menu->addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-paste") ), i18n( "&Move" ) );
         if ( /*existingEvent*/1 ) {
-          copy = menu->addAction( KOGlobals::self()->smallIcon( "edit-copy" ), i18n( "&Copy" ) );
+          copy = menu->addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-copy") ), i18n( "&Copy" ) );
         }
       } else {
-        move = menu->addAction( KOGlobals::self()->smallIcon( "list-add" ), i18n( "&Add" ) );
+        move = menu->addAction( KOGlobals::self()->smallIcon( QLatin1String("list-add") ), i18n( "&Add" ) );
       }
       menu->addSeparator();
       /*QAction *cancel =*/
-      menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
+      menu->addAction( KOGlobals::self()->smallIcon( QLatin1String("process-stop") ), i18n( "&Cancel" ) );
       QAction *a = menu->exec( QCursor::pos() );
       if ( a == copy ) {
         action = DRAG_COPY;
@@ -825,7 +825,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       }
       //draw gray rectangle for today if in selection
       if ( i >= mSelStart && i <= mSelEnd ) {
-        const QColor grey( "grey" );
+        const QColor grey(QLatin1String( "grey") );
         todayPen.setColor( grey );
       }
       p.setPen( todayPen );

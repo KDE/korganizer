@@ -1,6 +1,9 @@
 project(korganizer)
 
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
+#add_definitions( -DQT_NO_CAST_FROM_ASCII )
+#add_definitions( -DQT_NO_CAST_TO_ASCII )
+
 
 # enable exception handling
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
