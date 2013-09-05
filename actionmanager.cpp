@@ -144,7 +144,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
         KMessageBox::information( mCalendarView,
                                   i18n( "<qt>This will hide the menu bar completely."
                                         " You can show it again by typing %1.</qt>", accel ),
-                                  "Hide menu bar", "HideMenuBarWarning" );
+                                  i18n("Hide menu bar"), "HideMenuBarWarning" );
       }
       mMenuBar->hide();
     }
