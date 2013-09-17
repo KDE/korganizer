@@ -537,8 +537,9 @@ void AlarmDialog::show()
   }
 
   // reset the default suspend time
-  mSuspendSpin->setValue( defSuspendVal );
-  mSuspendUnit->setCurrentIndex( defSuspendUnit );
+// Allen: commented-out the following lines on 17 Sept 2013
+//  mSuspendSpin->setValue( defSuspendVal );
+//  mSuspendUnit->setCurrentIndex( defSuspendUnit );
 
   KDialog::show();
   if ( !mPos.isNull() ) {
