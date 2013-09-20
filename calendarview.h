@@ -64,6 +64,7 @@ namespace Akonadi {
   class History;
   class IncidenceChanger;
   class CalendarClipboard;
+  class TodoPurger;
 }
 
 class KVBox;
@@ -664,6 +665,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
   private Q_SLOTS:
     void onCheckableProxyAboutToToggle( bool newState );
     void onCheckableProxyToggled( bool newState );
+    void onTodosPurged(bool success, int numDeleted, int numIgnored);
 
   private:
     void init();
@@ -673,11 +675,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void createPrinter();
 
     void dissociateOccurrence( const Akonadi::Item &incidence, const QDate & , bool futureOccurrences);
-
-    // Helper function for purgeCompleted that recursively purges a todo and
-    // its subitems. If it cannot delete a completed todo (because it has
-    // uncompleted subitems), notAllPurged is set to true.
-    bool purgeCompletedSubTodos( const Akonadi::Item &todo, bool &notAllPurged );
 
     /**
      * Returns the default collection.
@@ -696,6 +693,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection() );
 
     CalPrinter *mCalPrinter;
+    Akonadi::TodoPurger *mTodoPurger;
 
     QSplitter *mPanner;
     QSplitter *mLeftSplitter;

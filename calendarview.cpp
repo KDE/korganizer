@@ -75,6 +75,7 @@
 #include <Akonadi/CollectionPropertiesDialog>
 #include <Akonadi/Control>
 #include <Akonadi/AttributeFactory>
+#include <Akonadi/Calendar/TodoPurger>
 
 #include <KCalCore/CalFilter>
 #include <KCalCore/FileStorage>
@@ -119,6 +120,10 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
+  mTodoPurger = new Akonadi::TodoPurger(this);
+  //mTodoPurger->setCalendar(mCalendar);
+  connect(mTodoPurger, SIGNAL(todosPurged(bool,int,int)),
+          SLOT(onTodosPurged(bool,int,int)));
 
   mReadOnly = false;
   mSplitterSizesValid = false;
@@ -2493,36 +2498,6 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
   return true;
 }
 
-bool CalendarView::purgeCompletedSubTodos( const Akonadi::Item &todoItem, bool &allPurged )
-{
-  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
-  if ( !todo ) {
-    return true;
-  }
-
-  bool deleteThisTodo = true;
-  Akonadi::Item::List subTodos = mCalendar->childItems( todoItem.id() );
-  foreach ( const Akonadi::Item &item, subTodos ) {
-    if ( CalendarSupport::hasTodo( item ) ) {
-      deleteThisTodo &= purgeCompletedSubTodos( item, allPurged );
-    }
-  }
-
-  if ( deleteThisTodo ) {
-    if ( todo->isCompleted() ) {
-      if ( mChanger->deleteIncidence( todoItem, this ) == -1 ) {
-        allPurged = false;
-      }
-    } else {
-      deleteThisTodo = false;
-    }
-  } else {
-    if ( todo->isCompleted() ) {
-      allPurged = false;
-    }
-  }
-  return deleteThisTodo;
-}
 
 void CalendarView::purgeCompleted()
 {
@@ -2533,29 +2508,7 @@ void CalendarView::purgeCompleted()
     KGuiItem( i18n( "Purge" ) ) );
 
   if ( result == KMessageBox::Continue ) {
-    bool allDeleted = true;
-    startMultiModify( i18n( "Purging completed to-dos" ) );
-    KCalCore::Todo::List todos = calendar()->rawTodos();
-    Akonadi::Item::List rootTodos;
-    foreach ( const KCalCore::Todo::Ptr &todo, todos ) {
-      if ( todo && todo->relatedTo().isEmpty() ) { // top level todo //REVIEW(AKONADI_PORT)
-        rootTodos.append( mCalendar->item( todo->uid() ) );
-      }
-    }
-    // now that we have a list of all root todos, check them and their children
-    foreach ( const Akonadi::Item &item, rootTodos ) {
-      purgeCompletedSubTodos( item, allDeleted );
-    }
-
-    endMultiModify();
-    if ( !allDeleted ) {
-      KMessageBox::information(
-        this,
-        i18nc( "@info",
-               "Unable to purge to-dos with uncompleted children." ),
-        i18n( "Delete To-do" ),
-        QLatin1String("UncompletedChildrenPurgeTodos") );
-    }
+      mTodoPurger->purgeCompletedTodos();
   }
 }
 
@@ -2818,6 +2771,34 @@ void CalendarView::onCheckableProxyToggled( bool newState )
     if ( todoView )
       todoView->restoreViewState();
   }
+}
+
+void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
+{
+    QString message;
+    KMessageWidget::MessageType type = KMessageWidget::Information;
+    if (success) {
+        if (numDeleted == 0 && numIgnored > 0) {
+            type = KMessageWidget::Warning;
+            message = i18n("0 completed to-dos were purged.") + QLatin1Char('\n') +
+                    i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
+                          "%1 to-dos were ignored because they have uncompleted or read-only children.", numIgnored);
+        } else if (numDeleted > 0 && numIgnored == 0) {
+            message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted);
+        } else if (numDeleted == 0 && numIgnored == 0) {
+            message = i18n("There are no completed to-dos to purge.");
+        } else {
+            type = KMessageWidget::Warning;
+            message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.", numDeleted) + QLatin1Char('\n') +
+                    i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
+                          "%1 to-dos were ignored because they have uncompleted or read-only children.", numIgnored);
+        }
+    } else {
+        message = i18n("An error occurred while purging completed to-dos: %1", mTodoPurger->lastError());
+        type = KMessageWidget::Error;
+    }
+
+    showMessage(message, type);
 }
 
 void CalendarView::showMessage(const QString &message, KMessageWidget::MessageType type)
