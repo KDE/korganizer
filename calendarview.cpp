@@ -120,8 +120,8 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
-  mTodoPurger = new Akonadi::TodoPurger(this);
-  //mTodoPurger->setCalendar(mCalendar);
+  mTodoPurger = new Akonadi::TodoPurger( this );
+  mTodoPurger->setCalendar( mCalendar );
   connect(mTodoPurger, SIGNAL(todosPurged(bool,int,int)),
           SLOT(onTodosPurged(bool,int,int)));
 
