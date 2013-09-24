@@ -418,7 +418,7 @@ void CalPrintPluginBase::printEventString( QPainter &p, const QRect &box,
   QRect newbox( box );
   newbox.adjust( 3, 1, -1, -1 );
   p.drawText( newbox, ( flags == -1 ) ?
-              ( Qt::AlignTop | Qt::AlignJustify | Qt::TextWrapAnywhere ) : flags, str );
+              ( Qt::AlignTop | Qt::AlignLeft | Qt::TextWordWrap ) : flags, str );
 }
 
 void CalPrintPluginBase::showEventBox( QPainter &p, int linewidth, const QRect &box,
