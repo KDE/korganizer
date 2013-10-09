@@ -42,6 +42,7 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   layout->addWidget( mView );
   connect( mView, SIGNAL(printTodo()), SLOT(printTodo()) );
   connect( mView, SIGNAL(printPreviewTodo()), SLOT(printPreviewTodo()) );
+  connect( mView, SIGNAL(purgeCompletedSignal()), SIGNAL(purgeCompletedSignal()) );
 
   connect( mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
