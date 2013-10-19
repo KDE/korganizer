@@ -509,8 +509,8 @@ void KOViewManager::showAgendaView()
     if ( !mAgendaSideBySideView ) {
       mAgendaSideBySideView = new MultiAgendaView( parent );
       mAgendaSideBySideView->setIdentifier( "DefaultAgendaSideBySideView" );
-      addView( mAgendaSideBySideView, showBoth );
       mAgendaSideBySideView->setCalendar( mMainView->calendar() );
+      addView( mAgendaSideBySideView, showBoth );
 
 /*
     connect( mAgendaSideBySideView,SIGNAL(zoomViewHorizontally(QDate,int)),
