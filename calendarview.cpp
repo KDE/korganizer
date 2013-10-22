@@ -68,6 +68,7 @@
 #include <akonadi/calendar/freebusymanager.h>
 #include <akonadi/calendar/history.h>
 #include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/Calendar/CalendarSettings>
 #include <Akonadi/Calendar/CalendarClipboard>
 
 #include <pimcommon/acl/collectionaclpage.h>
@@ -460,6 +461,7 @@ void CalendarView::writeSettings()
   mViewManager->writeSettings( config );
   mTodoList->saveLayout( config, QString( "Sidebar Todo View" ) );
 
+  Akonadi::CalendarSettings::self()->writeConfig();
   KOPrefs::instance()->writeConfig();
   CalendarSupport::KCalPrefs::instance()->writeConfig();
 

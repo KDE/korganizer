@@ -1233,6 +1233,9 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
   const QString configFile = KStandardDirs::locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
   cfg.deleteGroup( CalendarSupport::KCalPrefs::instance()->email() );
+
+
+  Akonadi::CalendarSettings::self()->writeConfig();
 }
 
 extern "C"
