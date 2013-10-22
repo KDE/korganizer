@@ -36,7 +36,6 @@ if(NOT WINCE)
     add_subdirectory(kcmconfigs)
   endif()
 endif()
-add_subdirectory(korgac)
 
 if(NOT WINCE)
   set(PERL ${PERL_EXECUTABLE})
@@ -253,7 +252,7 @@ if(NOT WINCE)
     )
 
     qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
-      ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml
+      ${CMAKE_SOURCE_DIR}/korgac/org.kde.korganizer.KOrgac.xml
     )
 
     qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
