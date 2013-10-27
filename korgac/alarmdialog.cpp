@@ -35,7 +35,6 @@
 
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedialogfactory.h>
-#include <incidenceeditor-ng/groupwareintegration.h>
 
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
@@ -932,10 +931,6 @@ return true;
 
 bool AlarmDialog::openIncidenceEditorNG( const Akonadi::Item &item )
 {
-  if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
-    //TODO: Why do we need this to have a simple editor?
-    IncidenceEditorNG::GroupwareIntegration::activate( mCalendar );
-  }
   Incidence::Ptr incidence = CalendarSupport::incidence( item );
   IncidenceEditorNG::IncidenceDialog *dialog =
     IncidenceEditorNG::IncidenceDialogFactory::create(

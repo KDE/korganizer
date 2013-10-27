@@ -50,7 +50,6 @@
 #include <calendarsupport/utils.h>
 
 #include <incidenceeditor-ng/globalsettings.h>
-#include <incidenceeditor-ng/groupwareintegration.h>
 
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
@@ -242,11 +241,6 @@ void ActionManager::createCalendarAkonadi()
   EventViews::EventView::setGlobalCollectionSelection( collectionSelection );
 
   mCalendarView->readSettings();
-
-  // Construct the groupware object, it'll take care of the IncidenceEditors::EditorConfig as well
-  if ( !IncidenceEditorNG::GroupwareIntegration::isActive() ) {
-    IncidenceEditorNG::GroupwareIntegration::activate( calendar() );
-  }
 
   connect( calendar().data(), SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
