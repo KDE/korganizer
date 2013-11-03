@@ -28,6 +28,7 @@
 
 #include "ui_searchdialog_base.h"
 #include "calendarview.h"
+#include "koglobals.h"
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
@@ -51,8 +52,6 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   QWidget *mainWidget = new QWidget( this );
   m_ui->setupUi( mainWidget );
   setMainWidget( mainWidget );
-
-  resize( QSize( 775, 600 ).expandedTo( minimumSizeHint() ) );
 
   // Set nice initial start and end dates for the search
   const QDate currDate = QDate::currentDate();
@@ -79,16 +78,20 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   connect( listView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
 
+  readConfig();
+
   setButtons( User1 | Cancel );
   setDefaultButton( User1 );
   setButtonGuiItem( User1,
-                    KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
+                    KGuiItem( i18nc( "search in calendar", "&Search" ),
+                    QLatin1String( "edit-find" ) ) );
   setButtonToolTip( User1, i18n( "Start searching" ) );
   showButtonSeparator( false );
 }
 
 SearchDialog::~SearchDialog()
 {
+  writeConfig();
 }
 
 void SearchDialog::showEvent( QShowEvent *event )
@@ -198,8 +201,9 @@ void SearchDialog::search( const QRegExp &re )
   }
 
   mMatchedEvents.clear();
-  KCalCore::Incidence::List incidences = Akonadi::ETMCalendar::mergeIncidenceList( events, todos, journals );
-  Q_FOREACH ( const KCalCore::Incidence::Ptr &ev, incidences) {
+  KCalCore::Incidence::List incidences =
+    Akonadi::ETMCalendar::mergeIncidenceList( events, todos, journals );
+  Q_FOREACH ( const KCalCore::Incidence::Ptr &ev, incidences ) {
     Q_ASSERT( ev );
     Akonadi::Item item = m_calendarview->calendar()->item( ev->uid() );
     if ( m_ui->summaryCheck->isChecked() ) {
@@ -227,7 +231,7 @@ void SearchDialog::search( const QRegExp &re )
       }
     }
     if ( m_ui->attendeeCheck->isChecked() ) {
-      Q_FOREACH( const KCalCore::Attendee::Ptr &attendee, ev->attendees() ) {
+      Q_FOREACH ( const KCalCore::Attendee::Ptr &attendee, ev->attendees() ) {
         if ( re.indexIn( attendee->fullName() ) != -1 ) {
           mMatchedEvents.append( item );
           break;
@@ -235,6 +239,22 @@ void SearchDialog::search( const QRegExp &re )
       }
     }
   }
+}
+
+void SearchDialog::readConfig()
+{
+  KConfigGroup group( KOGlobals::self()->config(), QLatin1String( "SearchDialog" ) );
+  const QSize size = group.readEntry( "Size", QSize( 775, 600 ) );
+  if ( size.isValid() ) {
+    resize( size );
+  }
+}
+
+void SearchDialog::writeConfig()
+{
+  KConfigGroup group( KOGlobals::self()->config(), QLatin1String( "SearchDialog" ) );
+  group.writeEntry( "Size", size() );
+  group.sync();
 }
 
 #include "searchdialog.moc"

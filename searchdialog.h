@@ -77,6 +77,8 @@ class SearchDialog : public KDialog
    virtual void showEvent( QShowEvent *event );
   private:
     void search( const QRegExp & );
+    void readConfig();
+    void writeConfig();
 
     Ui::SearchDialog *m_ui;
     CalendarView *m_calendarview; // parent
