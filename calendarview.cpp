@@ -871,19 +871,6 @@ void CalendarView::edit_paste()
 
   Incidence::List pastedIncidences = factory.pasteIncidences( finalDateTime, pasteFlags );
   Incidence::List::Iterator it;
-  Akonadi::Collection selectedCollection;
-  {
-    // If only one collection exists, don't bother the user with a prompt
-    CalendarSupport::CollectionSelection *selection =
-      EventViews::EventView::globalCollectionSelection();
-
-    if ( selection && selection->model()->model()->rowCount() == 1 ) {
-      const QModelIndex index = selection->model()->model()->index( 0, 0 );
-      if ( index.isValid() ) {
-        selectedCollection = CalendarSupport::collectionFromIndex( index );
-      }
-    }
-  }
 
   for ( it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it ) {
     // FIXME: use a visitor here
@@ -901,7 +888,7 @@ void CalendarView::edit_paste()
 
       pastedEvent->setRelatedTo( QString() );
       mChanger->createIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
-                                 selectedCollection, this );
+                                 Akonadi::Collection(), this );
     } else if ( ( *it )->type() == Incidence::TypeTodo ) {
       KCalCore::Todo::Ptr pastedTodo = ( *it ).staticCast<Todo>();
       Akonadi::Item _selectedTodoItem = selectedTodo();
@@ -915,14 +902,11 @@ void CalendarView::edit_paste()
 
       // When pasting multiple incidences, don't ask which collection to use, for each one
       mChanger->createIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
-                                 selectedCollection, this );
+                                 Akonadi::Collection(), this );
     } else if ( ( *it )->type() == Incidence::TypeJournal ) {
-
-      if ( selectedCollection.isValid() ) {
-        // When pasting multiple incidences, don't ask which collection to use, for each one
-        mChanger->createIncidence( KCalCore::Incidence::Ptr( ( *it )->clone() ),
-                                   selectedCollection, this );
-      }
+      // When pasting multiple incidences, don't ask which collection to use, for each one
+      mChanger->createIncidence( KCalCore::Incidence::Ptr( ( *it )->clone() ),
+                                 Akonadi::Collection(), this );
     }
   }
 }
