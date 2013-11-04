@@ -920,13 +920,8 @@ void CalendarView::edit_paste()
       }
 
       pastedEvent->setRelatedTo( QString() );
-      if ( selectedCollection.isValid() ) {
-        mChanger->createIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
-                                selectedCollection, this );
-      } else {
-        mChanger->createIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
-                                   selectedCollection, this );
-      }
+      mChanger->createIncidence( KCalCore::Event::Ptr( pastedEvent->clone() ),
+                                 selectedCollection, this );
     } else if ( ( *it )->type() == Incidence::TypeTodo ) {
       KCalCore::Todo::Ptr pastedTodo = ( *it ).staticCast<Todo>();
       Akonadi::Item _selectedTodoItem = selectedTodo();
@@ -938,15 +933,9 @@ void CalendarView::edit_paste()
         pastedTodo->setRelatedTo( _selectedTodo->uid() );
       }
 
-      if ( selectedCollection.isValid() ) {
-        // When pasting multiple incidences, don't ask which collection to use, for each one
-        mChanger->createIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
-                                   selectedCollection, this );
-      } else {
-        mChanger->createIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
-                                   selectedCollection, this );
-      }
-
+      // When pasting multiple incidences, don't ask which collection to use, for each one
+      mChanger->createIncidence( KCalCore::Todo::Ptr( pastedTodo->clone() ),
+                                 selectedCollection, this );
     } else if ( ( *it )->type() == Incidence::TypeJournal ) {
 
       if ( selectedCollection.isValid() ) {
