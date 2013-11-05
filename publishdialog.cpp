@@ -97,11 +97,9 @@ void PublishDialog::addAttendee( const KCalCore::Attendee::Ptr &attendee )
 QString PublishDialog::addresses()
 {
   QString to;
-  QListWidgetItem *item;
-  int i, count;
-  count = mUI.mListWidget->count();
-  for ( i=0; i<count; ++i ) {
-    item = mUI.mListWidget->item( i );
+  const int count = mUI.mListWidget->count();
+  for ( int i=0; i<count; ++i ) {
+    const QListWidgetItem *item = mUI.mListWidget->item( i );
     if( !item->text().isEmpty() ) {
       to += item->text();
       if ( i < count-1 ) {

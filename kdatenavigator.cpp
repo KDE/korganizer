@@ -247,10 +247,9 @@ void KDateNavigator::updateView()
 
 void KDateNavigator::updateConfig()
 {
-  int day;
   int weekstart = KGlobal::locale()->weekStartDay();
   for ( int i=0; i < 7; ++i ) {
-    day = weekstart + i <= 7 ? weekstart + i : ( weekstart + i ) % 7;
+    const int day = weekstart + i <= 7 ? weekstart + i : ( weekstart + i ) % 7;
     QString dayName =
       KOGlobals::self()->calendarSystem()->weekDayName( day, KCalendarSystem::ShortDayName );
     QString longDayName =

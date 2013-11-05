@@ -1112,10 +1112,10 @@ void CalendarView::newJournal( const Akonadi::Collection &collection )
   IncidenceEditorNG::IncidenceDefaults defaults =
     IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
-  bool allDay = true;
   if ( mViewManager->currentView()->isEventView() ) {
     QDateTime startDt;
     QDateTime endDt;
+    bool allDay = true; 
     dateTimesForNewEvent( startDt, endDt, allDay );
 
     defaults.setStartDateTime( KDateTime( startDt ) );
@@ -1941,14 +1941,12 @@ void CalendarView::processIncidenceSelection( const Akonadi::Item &item, const Q
   mSelectedIncidence = item;
   mSaveDate = date;
 
-  bool organizerEvents = false;
-  bool groupEvents = false;
   bool todo = false;
   bool subtodo = false;
 
-  organizerEvents =
+  const bool organizerEvents =
     CalendarSupport::KCalPrefs::instance()->thatIsMe( incidence->organizer()->email() );
-  groupEvents = incidence->attendeeByMails( CalendarSupport::KCalPrefs::instance()->allEmails() );
+  const bool groupEvents = incidence->attendeeByMails( CalendarSupport::KCalPrefs::instance()->allEmails() );
 
   if ( incidence->type() == Incidence::TypeTodo ) {
     todo = true;

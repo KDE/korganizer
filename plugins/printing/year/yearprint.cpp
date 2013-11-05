@@ -63,10 +63,9 @@ void CalPrintYear::setSettingsWidget()
     QDate start;
     calsys->setDate( start, mYear, 1, 1 );
     int months = calsys->monthsInYear( start );
-    int pages = 0;
     int prevPages = 0;
     for ( int i=1; i<= months; ++i ) {
-      pages = ( months - 1 ) / i + 1;
+      const int pages = ( months - 1 ) / i + 1;
       if ( pages != prevPages ) {
         prevPages = pages;
         cfg->mPages->addItem( QString::number( pages ), 0 );
