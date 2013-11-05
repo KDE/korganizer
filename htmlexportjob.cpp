@@ -901,4 +901,3 @@ HTMLExportSettings *HtmlExportJob::settings() const
   return d->mSettings;
 }
 
-#include "htmlexportjob.moc"

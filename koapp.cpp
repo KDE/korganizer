@@ -129,4 +129,3 @@ void KOrganizerApp::processCalendar( const KUrl &url )
 #endif
 }
 
-#include "koapp.moc"

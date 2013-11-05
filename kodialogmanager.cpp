@@ -230,4 +230,3 @@ void KODialogManager::createCategoryEditor()
   }
 }
 
-#include "kodialogmanager.moc"

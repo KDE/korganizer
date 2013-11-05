@@ -165,4 +165,3 @@ bool PreviewDialog::isTempFile() const
   return mOriginalUrl.path().startsWith( KStandardDirs::locateLocal( "tmp", QLatin1String("") ) );
 }
 
-#include "previewdialog.moc"

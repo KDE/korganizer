@@ -369,4 +369,3 @@ void POTDElement::setThumbnailSize( const QSize &size )
   mThumbSize = size;
 }
 
-#include "picoftheday.moc"

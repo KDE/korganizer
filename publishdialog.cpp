@@ -199,4 +199,3 @@ void PublishDialog::updateInput()
   mUI.mEmailLineEdit->setText( mail );
 }
 
-#include "publishdialog.moc"

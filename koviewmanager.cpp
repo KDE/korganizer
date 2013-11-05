@@ -699,5 +699,4 @@ bool KOViewManager::agendaIsSelected() const
         ( mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget() );
 }
 
-#include "koviewmanager.moc"
 

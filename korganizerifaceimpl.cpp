@@ -134,4 +134,3 @@ bool KOrganizerIfaceImpl::handleCommandLine()
   return mActionManager->handleCommandLine();
 }
 
-#include "korganizerifaceimpl.moc"

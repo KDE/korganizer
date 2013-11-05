@@ -45,4 +45,3 @@ bool KOCheckableProxyModel::setData( const QModelIndex &index,
   return result;
 }
 
-#include "kocheckableproxymodel.moc"

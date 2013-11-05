@@ -2842,4 +2842,3 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
     }
 }
 
-#include "calendarview.moc"

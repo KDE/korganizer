@@ -204,4 +204,3 @@ void KOrganizerPart::setTitle()
   emit setWindowCaption( title );*/
 }
 
-#include "korganizer_part.moc"

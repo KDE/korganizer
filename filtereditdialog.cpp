@@ -326,4 +326,3 @@ void FilterEdit::updateCategoryConfig()
   }
 }
 
-#include "filtereditdialog.moc"

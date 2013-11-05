@@ -312,4 +312,3 @@ void DateNavigator::emitSelected( const QDate &preferredMonth )
   emit datesSelected( mSelectedDates, preferredMonth );
 }
 
-#include "datenavigator.moc"

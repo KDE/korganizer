@@ -245,4 +245,3 @@ void MonthView::showDates( const QDate &start, const QDate &end, const QDate &pr
   Q_UNUSED( preferredMonth );
 }
 
-#include "monthview.moc"

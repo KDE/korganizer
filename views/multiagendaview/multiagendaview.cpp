@@ -535,4 +535,3 @@ MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog()
   delete d;
 }
 
-#include "multiagendaview.moc"

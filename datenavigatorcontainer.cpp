@@ -428,4 +428,3 @@ KDateNavigator *DateNavigatorContainer::firstNavigatorForDate( const QDate &date
   return navigator;
 }
 
-#include "datenavigatorcontainer.moc"

@@ -24,7 +24,6 @@
 */
 
 #include "calprinter.h"
-#include "calprinter.moc"
 #include "calprintdefaultplugins.h"
 #include "korganizer/corehelper.h"
 

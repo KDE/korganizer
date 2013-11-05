@@ -257,4 +257,3 @@ void SearchDialog::writeConfig()
   group.sync();
 }
 
-#include "searchdialog.moc"

@@ -94,4 +94,3 @@ void ConfigDialog::slotOk()
   accept();
 }
 
-#include "configdialog.moc"

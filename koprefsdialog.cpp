@@ -1586,4 +1586,3 @@ QString KOPrefsDesignerFields::applicationName()
   return QLatin1String("KORGANIZER");
 }
 
-#include "koprefsdialog.moc"

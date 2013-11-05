@@ -243,4 +243,3 @@ void KOEventPopupMenu::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
   mCalendar = calendar;
 }
 
-#include "koeventpopupmenu.moc"

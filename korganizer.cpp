@@ -266,4 +266,3 @@ void KOrganizer::setTitle()
   setCaption( title, false );
 }
 
-#include "korganizer.moc"

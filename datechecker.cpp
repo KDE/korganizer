@@ -90,4 +90,3 @@ void DateChecker::possiblyPastMidnight()
   }
 }
 
-#include "datechecker.moc"

@@ -266,5 +266,4 @@ bool KOEventView::usesCompletedTodoPixmap( const Akonadi::Item &aitem, const QDa
   }
 }
 
-#include "koeventview.moc"
 

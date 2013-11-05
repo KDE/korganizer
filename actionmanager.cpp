@@ -1972,4 +1972,3 @@ void ActionManager::handleExportJobResult( KJob *job )
   }
 }
 
-#include "actionmanager.moc"

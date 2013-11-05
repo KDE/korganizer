@@ -197,4 +197,3 @@ void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal )
   }
 }
 
-#include "kojournalview.moc"

@@ -656,4 +656,3 @@ void AkonadiCollectionView::checkNewCalendar( const QModelIndex &parent, int beg
   }
 }
 
-#include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

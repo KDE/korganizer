@@ -224,4 +224,3 @@ void KOListView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
   mListView->setIncidenceChanger( changer );
 }
 
-#include "kolistview.moc"

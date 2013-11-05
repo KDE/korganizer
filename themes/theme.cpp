@@ -31,7 +31,6 @@
 
 #include <QtCore/QFile>
 
-#include "theme.moc"
 
 using namespace KOrg;
 

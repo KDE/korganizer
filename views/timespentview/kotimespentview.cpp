@@ -146,4 +146,3 @@ void KOTimeSpentView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
   mView->setCalendar( cal );
 }
 
-#include "kotimespentview.moc"

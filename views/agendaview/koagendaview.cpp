@@ -331,4 +331,3 @@ void KOAgendaView::setDateRange( const KDateTime &start, const KDateTime &end, c
   d->mAgendaView->setDateRange( start, end );
 }
 
-#include "koagendaview.moc"

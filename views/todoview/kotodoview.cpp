@@ -245,4 +245,3 @@ KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
   return KOrg::CalPrinterBase::Todolist;
 }
 
-#include "kotodoview.moc"

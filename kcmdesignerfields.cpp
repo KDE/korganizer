@@ -473,4 +473,3 @@ void KCMDesignerFields::showWhatsThis( const QString &href )
   }
 }
 
-#include "kcmdesignerfields.moc"

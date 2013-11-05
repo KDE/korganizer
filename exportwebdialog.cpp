@@ -282,4 +282,3 @@ void ExportWebDialog::updateState()
   mEventPage->setEnabled( exportEvents );
 }
 
-#include "exportwebdialog.moc"

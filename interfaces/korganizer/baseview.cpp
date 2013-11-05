@@ -236,4 +236,3 @@ EventViews::EventView::Changes BaseView::changes() const
   return d->mChanges;
 }
 
-#include "baseview.moc"
