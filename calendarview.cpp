@@ -292,9 +292,10 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 CalendarView::~CalendarView()
 {
   mCalendar->unregisterObserver( this );
+  mCalendar->setFilter( 0 ); // So calendar doesn't deleted it twice
   qDeleteAll( mFilters );
   qDeleteAll( mExtensions );
-//
+
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
