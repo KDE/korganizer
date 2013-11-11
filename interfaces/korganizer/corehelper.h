@@ -37,7 +37,6 @@ class CoreHelper
     virtual QString holidayString( const QDate &dt ) = 0;
     virtual QTime dayStart() = 0;
     virtual const KCalendarSystem *calendarSystem() = 0;
-    virtual KOrg::PrintPlugin::List loadPrintPlugins() = 0;
 };
 
 }

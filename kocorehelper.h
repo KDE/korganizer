@@ -51,11 +51,6 @@ class KOCoreHelper : public KOrg::CoreHelper
     {
       return KOGlobals::self()->calendarSystem();
     }
-
-    virtual KOrg::PrintPlugin::List loadPrintPlugins()
-    {
-      return KOCore::self()->loadPrintPlugins();
-    }
 };
 
 #endif

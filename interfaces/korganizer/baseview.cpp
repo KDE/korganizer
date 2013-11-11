@@ -72,9 +72,9 @@ void BaseView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
   }
 }
 
-CalPrinterBase::PrintType BaseView::printType() const
+CalendarSupport::CalPrinterBase::PrintType BaseView::printType() const
 {
-  return CalPrinterBase::Month;
+  return CalendarSupport::CalPrinterBase::Month;
 }
 
 Akonadi::ETMCalendar::Ptr BaseView::calendar()

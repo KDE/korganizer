@@ -23,11 +23,3 @@ set_target_properties(korganizer_interfaces PROPERTIES
 install(TARGETS
   korganizer_interfaces ${INSTALL_TARGETS_DEFAULT_ARGS}
 )
-
-########### install files ###############
-
-install(FILES
-  korganizerpart.desktop korgprintplugin.desktop
-  DESTINATION ${SERVICETYPES_INSTALL_DIR}
-)
-

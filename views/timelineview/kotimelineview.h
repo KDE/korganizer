@@ -58,8 +58,7 @@ class KOTimelineView : public KOEventView
     virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
     virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
-    // Specific for korg, not in eventviews
-    virtual KOrg::CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
   private:
     class Private;

@@ -66,7 +66,7 @@ class KOListView : public KOEventView
     void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
     void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
 
-    virtual KOrg::CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
   public slots:
     virtual void updateView();

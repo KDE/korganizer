@@ -120,13 +120,13 @@ void KOWhatsNextView::changeIncidenceDisplay( const Akonadi::Item &,
   updateView();
 }
 
-KOrg::CalPrinterBase::PrintType KOWhatsNextView::printType() const
+CalendarSupport::CalPrinterBase::PrintType KOWhatsNextView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {
-    return KOrg::CalPrinterBase::Day;
+    return CalendarSupport::CalPrinterBase::Day;
   } else {
-    return KOrg::CalPrinterBase::Week;
+    return CalendarSupport::CalPrinterBase::Week;
   }
 }
 

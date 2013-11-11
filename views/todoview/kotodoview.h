@@ -28,10 +28,11 @@
 #define KORG_VIEWS_KOTODOVIEW_H
 
 #include "korganizer/baseview.h"
-#include "printing/calprinter.h"
 
 #include <calendarsupport/utils.h>
+
 #include <calendarviews/todo/todoview.h>
+
 #include <QPointer>
 
 using namespace KOrg;
@@ -64,7 +65,7 @@ class KOTodoView : public BaseView
     void restoreViewState();
 
     bool supportsDateRangeSelection() { return false; }
-    virtual KOrg::CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
   public Q_SLOTS:
     void updateCategories();

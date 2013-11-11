@@ -1,7 +1,6 @@
 
 include_directories(
   ${CMAKE_SOURCE_DIR}/korganizer/interfaces
-  ${CMAKE_SOURCE_DIR}/korganizer/printing
 )
 
 ########### next target ###############

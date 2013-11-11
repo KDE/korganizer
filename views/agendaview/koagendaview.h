@@ -27,7 +27,8 @@
 #define KORG_VIEWS_KOAGENDAVIEW_H
 
 #include "koeventview.h"
-#include "calprinter.h"
+
+#include <calendarsupport/printing/calprinter.h>
 
 /**
   KOAgendaView is the agenda-like view that displays events in a single
@@ -55,7 +56,7 @@ class KOAgendaView : public KOEventView
     /** return the default start/end date/time for new events   */
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
-    CalPrinter::PrintType printType() const;
+    CalendarSupport::CalPrinter::PrintType printType() const;
 
     /** start-datetime of selection */
     virtual QDateTime selectionStart();

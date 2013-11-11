@@ -134,9 +134,9 @@ MonthView::~MonthView()
   delete d;
 }
 
-CalPrinterBase::PrintType MonthView::printType() const
+CalendarSupport::CalPrinterBase::PrintType MonthView::printType() const
 {
-  return CalPrinterBase::Month;
+  return CalendarSupport::CalPrinterBase::Month;
 }
 
 int MonthView::currentDateCount() const

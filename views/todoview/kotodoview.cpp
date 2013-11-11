@@ -27,10 +27,13 @@
 
 #include "kotodoview.h"
 #include "koprefs.h"
-#include "kocorehelper.h"
+
+#include <calendarsupport/printing/calprinter.h>
 
 #include <calendarviews/todo/todoview.h>
+
 #include <Akonadi/EntityTreeModel>
+
 #include <QVBoxLayout>
 
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
@@ -187,8 +190,7 @@ void KOTodoView::printTodo( bool preview )
   KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
   Q_ASSERT( todo );
 
-  KOCoreHelper helper;
-  CalPrinter printer( this, calendar(), &helper, true );
+  CalendarSupport::CalPrinter printer( this, calendar(), true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   KCalCore::Incidence::List selectedIncidences;
@@ -201,7 +203,7 @@ void KOTodoView::printTodo( bool preview )
     todoDate = todo->dtDue();
   }
 
-  printer.print( KOrg::CalPrinterBase::Incidence,
+  printer.print( CalendarSupport::CalPrinterBase::Incidence,
                  todoDate.date(), todoDate.date(), selectedIncidences, preview );
 
 }
@@ -240,8 +242,8 @@ bool KOTodoView::usesFullWindow()
   return mView->usesFullWindow();
 }
 
-KOrg::CalPrinterBase::PrintType KOTodoView::printType() const
+CalendarSupport::CalPrinterBase::PrintType KOTodoView::printType() const
 {
-  return KOrg::CalPrinterBase::Todolist;
+  return CalendarSupport::CalPrinterBase::Todolist;
 }
 

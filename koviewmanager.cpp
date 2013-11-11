@@ -639,7 +639,7 @@ QDate KOViewManager::currentSelectionDate()
 {
   QDate qd;
   if ( mCurrentView ) {
-    DateList qvl = mCurrentView->selectedIncidenceDates();
+    KCalCore::DateList qvl = mCurrentView->selectedIncidenceDates();
     if ( !qvl.isEmpty() ) {
       qd = qvl.first();
     }

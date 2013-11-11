@@ -62,7 +62,7 @@ class KOJournalView : public KOrg::BaseView
                            bool &highlightJournals );
 
     /** reimp */
-    KOrg::CalPrinterBase::PrintType printType() const;
+  CalendarSupport::CalPrinterBase::PrintType printType() const;
 
   public Q_SLOTS:
     void updateView();

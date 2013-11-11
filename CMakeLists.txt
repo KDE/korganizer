@@ -13,7 +13,6 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_SOURCE_DIR}/calendarsupport
   ${CMAKE_BINARY_DIR}/calendarsupport
-  ${CMAKE_SOURCE_DIR}/korganizer/printing
   ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
   ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
   ${CMAKE_SOURCE_DIR}/incidenceeditor-ng
@@ -203,9 +202,7 @@ if(NOT WINCE)
       publishdialog.cpp
       searchdialog.cpp
       statusdialog.cpp
-      printing/calprintdefaultplugins.cpp
-      printing/calprinter.cpp
-      printing/calprintpluginbase.cpp
+
       views/agendaview/koagendaview.cpp
       views/journalview/kojournalview.cpp
       views/listview/kolistview.cpp
@@ -227,11 +224,6 @@ if(NOT WINCE)
       publishdialog_base.ui
       searchdialog_base.ui
       timescaleedit_base.ui
-      printing/calprintdayconfig_base.ui
-      printing/calprintincidenceconfig_base.ui
-      printing/calprintmonthconfig_base.ui
-      printing/calprinttodoconfig_base.ui
-      printing/calprintweekconfig_base.ui
     )
 
     qt4_add_resources(korganizerprivate_LIB_SRCS

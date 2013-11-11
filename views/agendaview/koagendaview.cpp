@@ -200,7 +200,7 @@ Akonadi::Item::List KOAgendaView::selectedIncidences()
   return d->mAgendaView->selectedIncidences();
 }
 
-DateList KOAgendaView::selectedIncidenceDates()
+KCalCore::DateList KOAgendaView::selectedIncidenceDates()
 {
   return d->mAgendaView->selectedIncidenceDates();
 }
@@ -246,13 +246,13 @@ void KOAgendaView::changeIncidenceDisplay( const Akonadi::Item &, Akonadi::Incid
   // Do nothing, EventViews::AgendaView knows when items change
 }
 
-CalPrinter::PrintType KOAgendaView::printType() const
+CalendarSupport::CalPrinter::PrintType KOAgendaView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {
-    return CalPrinter::Day;
+    return CalendarSupport::CalPrinter::Day;
   } else {
-    return CalPrinter::Week;
+    return CalendarSupport::CalPrinter::Week;
   }
 }
 

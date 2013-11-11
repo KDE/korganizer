@@ -24,11 +24,12 @@
 #define KORG_INTERFACES_BASEVIEW_H
 
 #include "korganizer/korganizer_export.h"
-#include "printplugin.h"
+
+#include <calendarviews/eventview.h>
+#include <calendarsupport/printing/printplugin.h>
 
 #include <Akonadi/Calendar/IncidenceChanger>
 #include <Akonadi/Calendar/ETMCalendar>
-#include <calendarviews/eventview.h>
 
 #include <Akonadi/Collection>
 #include <Akonadi/Item>
@@ -98,7 +99,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual QDateTime selectionEnd() { return QDateTime(); }
 
-    virtual CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
     /**
       Returns the number of currently shown dates.

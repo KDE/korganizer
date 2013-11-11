@@ -52,18 +52,6 @@ int main(int argc,char **argv)
     }
   }
 
-  plugins = KOCore::self()->availablePrintPlugins();
-  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    kDebug() << "Print plugin:" << (*it)->desktopEntryName() << "("
-             << (*it)->name() << ")";
-    KOrg::PrintPlugin *p = KOCore::self()->loadPrintPlugin(*it);
-    if (!p) {
-      kDebug() << "Print plugin loading failed.";
-    } else {
-      kDebug() << "PRINT PLUGIN INFO:" << p->info();
-    }
-  }
-
   plugins = KOCore::self()->availableParts();
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "Part:" << (*it)->desktopEntryName() << "("

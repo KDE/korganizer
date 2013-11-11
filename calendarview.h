@@ -38,7 +38,6 @@
 
 #include <calendarsupport/messagewidget.h>
 
-class CalPrinter;
 class DateChecker;
 class DateNavigator;
 class DateNavigatorContainer;
@@ -53,6 +52,7 @@ namespace KOrg {
 }
 
 namespace CalendarSupport {
+  class CalPrinter;
   class IncidenceViewer;
 }
 
@@ -692,7 +692,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(
       const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection() );
 
-    CalPrinter *mCalPrinter;
+    CalendarSupport::CalPrinter *mCalPrinter;
     Akonadi::TodoPurger *mTodoPurger;
 
     QSplitter *mPanner;

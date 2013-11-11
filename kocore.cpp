@@ -81,12 +81,6 @@ KService::List KOCore::availableParts()
   return availablePlugins( KOrg::Part::serviceType(), KOrg::Part::interfaceVersion() );
 }
 
-KService::List KOCore::availablePrintPlugins()
-{
-  return
-    availablePlugins( KOrg::PrintPlugin::serviceType(), KOrg::PrintPlugin::interfaceVersion() );
-}
-
 CalendarSupport::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
   kDebug() << service->library();
@@ -186,33 +180,6 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   return pluginFactory->createPluginFactory( parent );
 }
 
-KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
-{
-  kDebug() << service->library();
-
-  if ( !service->hasServiceType( KOrg::PrintPlugin::serviceType() ) ) {
-    return 0;
-  }
-
-  KPluginLoader loader( *service );
-  KPluginFactory *factory = loader.factory();
-
-  if ( !factory ) {
-    kDebug() << "Factory creation failed";
-    return 0;
-  }
-
-  KOrg::PrintPluginFactory *pluginFactory =
-      static_cast<KOrg::PrintPluginFactory *>( factory );
-
-  if ( !pluginFactory ) {
-    kDebug() << "Cast failed";
-    return 0;
-  }
-
-  return pluginFactory->createPluginFactory();
-}
-
 void KOCore::addXMLGUIClient( QWidget *wdg, KXMLGUIClient *guiclient )
 {
   mXMLGUIClients.insert( wdg, guiclient );
@@ -245,18 +212,6 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
   for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPart( *it, parent );
-    }
-  }
-  return 0;
-}
-
-KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
-{
-  KService::List list = availablePrintPlugins();
-  KService::List::ConstIterator it;
-  for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
-    if ( (*it)->desktopEntryName() == name ) {
-      return loadPrintPlugin( *it );
     }
   }
   return 0;
@@ -307,26 +262,6 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
     }
   }
   return parts;
-}
-
-KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
-{
-  KOrg::PrintPlugin::List loadedPlugins;
-
-  EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
-  QStringList selectedPlugins = viewPrefs->selectedPlugins();
-
-  KService::List plugins = availablePrintPlugins();
-  KService::List::ConstIterator it;
-  for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
-    if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
-      KOrg::PrintPlugin *part = loadPrintPlugin( *it );
-      if ( part ) {
-        loadedPlugins.append( part );
-      }
-    }
-  }
-  return loadedPlugins;
 }
 
 void KOCore::unloadPlugins()

@@ -130,13 +130,13 @@ void KOTimeSpentView::updateView()
   mView->updateView();
 }
 
-KOrg::CalPrinterBase::PrintType KOTimeSpentView::printType() const
+CalendarSupport::CalPrinterBase::PrintType KOTimeSpentView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {
-    return KOrg::CalPrinterBase::Day;
+    return CalendarSupport::CalPrinterBase::Day;
   } else {
-    return KOrg::CalPrinterBase::Week;
+    return CalendarSupport::CalPrinterBase::Week;
   }
 }
 

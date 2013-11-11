@@ -42,7 +42,7 @@ class KOWhatsNextView : public KOrg::BaseView
     KCalCore::DateList selectedIncidenceDates() { return KCalCore::DateList(); }
 
     bool supportsDateNavigation() const { return true; }
-    virtual KOrg::CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
     void setCalendar( const Akonadi::ETMCalendar::Ptr & );
 
   public Q_SLOTS:

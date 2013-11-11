@@ -28,7 +28,6 @@
 
 #include "korganizer_export.h"
 #include "korganizer/part.h"
-#include "korganizer/printplugin.h"
 
 #include <calendarviews/agenda/calendardecoration.h>
 
@@ -48,7 +47,6 @@ class KORGANIZER_CORE_EXPORT KOCore
     KService::List availablePlugins();
     KService::List availableCalendarDecorations();
     KService::List availableParts();
-    KService::List availablePrintPlugins();
 
     CalendarSupport::Plugin *loadPlugin( KService::Ptr service );
     CalendarSupport::Plugin *loadPlugin( const QString & );
@@ -59,9 +57,6 @@ class KORGANIZER_CORE_EXPORT KOCore
     KOrg::Part *loadPart( KService::Ptr, KOrg::MainWindow *parent );
     KOrg::Part *loadPart( const QString &, KOrg::MainWindow *parent );
 
-    KOrg::PrintPlugin *loadPrintPlugin( KService::Ptr service );
-    KOrg::PrintPlugin *loadPrintPlugin( const QString & );
-    KOrg::PrintPlugin::List loadPrintPlugins();
     EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 

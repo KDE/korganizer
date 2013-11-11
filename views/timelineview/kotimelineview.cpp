@@ -182,13 +182,13 @@ bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
   return d->mTimeLineView->eventDurationHint( startDt, endDt, allDay );
 }
 
-KOrg::CalPrinterBase::PrintType KOTimelineView::printType() const
+CalendarSupport::CalPrinterBase::PrintType KOTimelineView::printType() const
 {
   // If up to three days are selected, use day style, otherwise week
   if ( currentDateCount() <= 3 ) {
-    return KOrg::CalPrinterBase::Day;
+    return CalendarSupport::CalPrinterBase::Day;
   } else {
-    return KOrg::CalPrinterBase::Week;
+    return CalendarSupport::CalPrinterBase::Week;
   }
 }
 

@@ -202,9 +202,9 @@ void KOListView::clear()
   mListView->clear();
 }
 
-KOrg::CalPrinterBase::PrintType KOListView::printType() const
+CalendarSupport::CalPrinterBase::PrintType KOListView::printType() const
 {
-  return KOrg::CalPrinterBase::Incidence;
+  return CalendarSupport::CalPrinterBase::Incidence;
 }
 
 QSize KOListView::sizeHint() const

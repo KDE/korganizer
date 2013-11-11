@@ -25,12 +25,13 @@
 
 #include "koeventpopupmenu.h"
 #include "actionmanager.h"
-#include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
+#include <calendarsupport/printing/calprinter.h>
+#include <calendarsupport/printing/calprintdefaultplugins.h>
 
 #include <KCalCore/Incidence>
 
@@ -158,7 +159,7 @@ void KOEventPopupMenu::print()
 void KOEventPopupMenu::print( bool preview )
 {
   KOCoreHelper helper;
-  CalPrinter printer( this, mCalendar, &helper, true );
+  CalendarSupport::CalPrinter printer( this, mCalendar, true );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   //Item::List selectedIncidences;
@@ -166,7 +167,7 @@ void KOEventPopupMenu::print( bool preview )
   Q_ASSERT( mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr>() );
   selectedIncidences.append( mCurrentIncidence.payload<KCalCore::Incidence::Ptr>() );
 
-  printer.print( KOrg::CalPrinterBase::Incidence,
+  printer.print( CalendarSupport::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, preview );
 }
 

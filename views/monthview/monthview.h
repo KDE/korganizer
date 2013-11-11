@@ -59,7 +59,7 @@ class MonthView : public KOEventView
 
     bool supportsDateRangeSelection();
 
-    KOrg::CalPrinterBase::PrintType printType() const;
+    CalendarSupport::CalPrinterBase::PrintType printType() const;
 
     int maxDatesHint() const;
 
