@@ -76,3 +76,10 @@ Key=FreeBusyRetrieveAuto,FreeBusyRetrieveAuto
 Key=FreeBusyRetrievePassword,FreeBusyRetrievePassword
 
 RemoveGroup=FreeBusy
+#
+#
+#
+Id=korganizer_4.13_RenamePrintingRC
+File=korganizer_printing.rc,calendar_printing.rc
+AllGroups
+AllKeys
