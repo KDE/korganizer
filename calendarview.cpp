@@ -145,6 +145,10 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 
   mLeftSplitter = new QSplitter( Qt::Vertical, mPanner );
   mLeftSplitter->setObjectName( QLatin1String("CalendarView::LeftFrame") );
+  // The GUI checkboxes of "show widget XYZ" are confusing when the QSplitter
+  // hides the widget magically. I know I blamed Akonadi for not showing my
+  // calendar more than once.
+  mLeftSplitter->setChildrenCollapsible( false );
 
   mDateNavigatorContainer = new DateNavigatorContainer( mLeftSplitter );
   mDateNavigatorContainer->setObjectName( QLatin1String("CalendarView::DateNavigator") );
