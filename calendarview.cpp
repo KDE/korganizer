@@ -2839,7 +2839,7 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
                            "On the left sidebar, enable it in the calendar manager to see the incidence.");
         } else {
             message = i18n("You created an incidence in a calendar that is currently filtered out.\n"
-                           "You can enabled it through the calendar manager (Settings->Sidebar->Show Calendar Manager)");
+                           "You can enable it through the calendar manager (Settings->Sidebar->Show Calendar Manager)");
         }
 
         mMessageWidget->setText(message);
