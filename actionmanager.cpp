@@ -44,6 +44,8 @@
 #include "reminderclient.h"
 #include "kocheckableproxymodel.h"
 
+#include <KHolidays/Holidays>
+
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/eventarchiver.h>
 #include <calendarsupport/kcalprefs.h>
@@ -62,7 +64,6 @@
 #include <KCalCore/ICalFormat>
 #include <KCalCore/Person>
 
-#include <KHolidays/Holidays>
 
 #include <KMime/KMimeMessage>
 
@@ -77,11 +78,9 @@
 #include <KMimeTypeTrader>
 #include <KProcess>
 #include <KSelectAction>
-#include <KSelectionProxyModel>
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStandardDirs>
-#include <KSystemTimeZones>
 #include <KTemporaryFile>
 #include <KTipDialog>
 #include <KToggleAction>

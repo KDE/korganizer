@@ -33,7 +33,6 @@
 
 #include <calendarviews/todo/todoview.h>
 
-#include <QPointer>
 
 using namespace KOrg;
 

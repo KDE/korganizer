@@ -37,7 +37,6 @@
 
 #include <KMessageBox>
 
-#include <QTimer>
 
 using namespace KOrg;
 

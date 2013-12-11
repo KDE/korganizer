@@ -51,6 +51,8 @@
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
 
+#include <KHolidays/Holidays>
+
 #include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
@@ -87,7 +89,6 @@
 #include <KCalUtils/Stringify>
 #include <KCalUtils/DndFactory>
 
-#include <KHolidays/Holidays>
 
 #include <KFileDialog>
 #include <KNotification>
@@ -96,7 +97,6 @@
 
 #include <QApplication>
 #include <QClipboard>
-#include <QItemSelectionModel>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QVBoxLayout>

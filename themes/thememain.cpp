@@ -24,10 +24,8 @@
 
 #include <KApplication>
 #include <KAboutData>
-#include <KMessageBox>
 #include <KCmdLineArgs>
 #include <KLocale>
-#include <KGlobal>
 #include <KDebug>
 
 #include "theme.h"

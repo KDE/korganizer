@@ -36,10 +36,7 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <KVBox>
 
-#include <QEvent>
-#include <QScrollArea>
 #include <QVBoxLayout>
 
 using namespace KOrg;

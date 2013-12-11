@@ -24,7 +24,6 @@
 #include <QtXml/QXmlStreamReader>
 
 #include <KConfig>
-#include <KUrl>
 
 #include "koprefs.h"
 
