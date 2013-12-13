@@ -1358,12 +1358,14 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
   KService::List::ConstIterator it;
   for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
-    QTreeWidgetItem *item;
+    QTreeWidgetItem *item = 0;
     if ( (*it)->hasServiceType( EventViews::CalendarDecoration::Decoration::serviceType() ) ) {
       item = new PluginItem( decorations, *it );
     } else if ( !(*it)->hasServiceType( QLatin1String( "KOrganizer/PrintPlugin"  ) ) ) {
       // we specifically skip print plugins since we no longer support them
       item = new PluginItem( others, *it );
+    } else {
+      continue;
     }
     if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
       item->setCheckState( 0, Qt::Checked );
