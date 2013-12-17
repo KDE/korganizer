@@ -32,7 +32,7 @@
 
 #include <Akonadi/Item>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KToolInvocation>
 
 KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent )

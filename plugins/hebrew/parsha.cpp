@@ -28,7 +28,7 @@
 #include "parsha.h"
 
 #include <KDebug>
-#include <KLocale>
+#include <KLocalizedString>
 
 QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
                                 bool useIsraelSettings )

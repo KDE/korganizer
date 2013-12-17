@@ -22,7 +22,7 @@
 #include "kitemiconcheckcombo.h"
 #include "koglobals.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 
 class KItemIconCheckCombo::Private
 {

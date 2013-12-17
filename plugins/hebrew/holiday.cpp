@@ -28,7 +28,7 @@
 #include "holiday.h"
 #include "parsha.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 
 QStringList Holiday::findHoliday( HebrewDate hd, bool useIsraelSettings,
                                   bool showParsha, bool showChol,

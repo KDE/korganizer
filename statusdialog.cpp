@@ -26,7 +26,7 @@
 #include <KCalUtils/Stringify>
 
 #include <KComboBox>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KPushButton>
 #include <KStandardGuiItem>
 

@@ -23,7 +23,7 @@
 #include "configdialog.h"
 
 #include <KConfig>
-#include <KLocale>
+#include <KLocalizedString>
 
 #include <QButtonGroup>
 #include <QGroupBox>

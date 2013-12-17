@@ -22,6 +22,7 @@
 #include "configdialog.h"
 
 #include <KConfig>
+#include <KLocalizedString>
 #include <KLocale>
 
 #include <QCheckBox>

@@ -31,7 +31,7 @@
 #include <KDebug>
 #include <KCalendarSystem>
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 
 DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {

@@ -34,7 +34,7 @@
 
 #include <KCalendarSystem>
 #include <KDebug>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KTemporaryFile>
 #include <KIO/NetAccess>

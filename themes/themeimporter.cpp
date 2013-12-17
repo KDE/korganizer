@@ -22,7 +22,7 @@
 #include "themeimporter.h"
 #include "theme.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 
 using namespace KOrg;
 

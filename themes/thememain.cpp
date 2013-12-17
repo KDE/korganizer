@@ -25,7 +25,7 @@
 #include <KApplication>
 #include <KAboutData>
 #include <KCmdLineArgs>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KDebug>
 
 #include "theme.h"
