@@ -20,7 +20,7 @@
 */
 
 #ifndef KORG_PLUGINS_HEBREW_HEBREW_H
-#define KORG_PLUGINS_HEWBREW_HEBREW_H
+#define KORG_PLUGINS_HEBREW_HEBREW_H
 
 #include <calendarviews/agenda/calendardecoration.h>
 
