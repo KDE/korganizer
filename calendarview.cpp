@@ -60,6 +60,7 @@
 #include <calendarsupport/utils.h>
 #include <calendarsupport/next/incidenceviewer.h>
 #include <calendarsupport/printing/calprinter.h>
+#include <calendarsupport/calendarsingleton.h>
 
 #include <incidenceeditor-ng/incidencedefaults.h>
 #include <incidenceeditor-ng/incidencedialog.h>
@@ -110,7 +111,12 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mChanger->setDefaultCollection( Akonadi::Collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() ) );
 
   mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
-  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar() );
+
+  // We reuse the EntityTreeModel from the calendar singleton to save memory.
+  // We don't reuse the entire ETMCalendar because we want a different selection model. Checking/unchecking
+  // calendars in korganizer shouldn't affect kontact's summary view
+  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( CalendarSupport::calendarSingleton() ) );
+
   mCalendar->setObjectName( QLatin1String("KOrg Calendar") );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mITIPHandler = new Akonadi::ITIPHandler( this );
