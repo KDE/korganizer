@@ -2043,7 +2043,7 @@ void CalPrintPluginBase::drawTodo( int &count, const KCalCore::Todo::Ptr &todo, 
   KCalCore::Todo::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
 #else
   KCalCore::Todo::List tl;
-  foreach ( const Todo::Ptr &todo, tl ) {
+  foreach ( const Todo::Ptr &todo, t ) {
     tl.append( todo );
   }
   KCalCore::Todo::List sl = mCalendar->sortTodos( tl, sortField, sortDir );
