@@ -1658,9 +1658,9 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
       monthentries.append( MonthEventStruct( e->dtStart(), e->dtEnd(), e ) );
     }
   }
-#ifdef __GNUC__
-#warning todo: to port the month entries sorting
-#endif
+
+// TODO: to port the month entries sorting
+
 //  qSort( monthentries.begin(), monthentries.end() );
 
   QList<MonthEventStruct>::ConstIterator mit = monthentries.constBegin();

@@ -207,7 +207,6 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     mSelectionProxyModel( 0 ),
     mNotSendAddRemoveSignal( false ),
     mWasDefaultCalendar( false ),
-    mInitDefaultCalendar( false ),
     mHasContextMenu( hasContextMenu )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
