@@ -110,16 +110,11 @@ class AkonadiCollectionView : public CalendarViewExtension
     Akonadi::EntityTreeView *mCollectionView;
     QAbstractProxyModel *mBaseModel;
     KCheckableProxyModel *mSelectionProxyModel;
-    KAction *mCreateAction;
-    KAction *mDeleteAction;
     KAction *mAssignColor;
     KAction *mDisableColor;
-    KAction *mEditAction;
     KAction *mDefaultCalendar;
-    CalendarSupport::CollectionSelection *mCollectionSelection;
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;
-    bool mInitDefaultCalendar;
     bool mHasContextMenu;
   };
 

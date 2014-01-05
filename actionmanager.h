@@ -409,7 +409,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     AkonadiCollectionView *mCollectionView;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver;
-    bool mIsClosing;
     QSet<KOrg::HTMLExportSettings*> mSettingsToFree;
 };
 

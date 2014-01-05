@@ -90,7 +90,6 @@ class MonthView : public KOEventView
 
     class Private;
     Private *const d;
-    KOEventPopupMenu *mViewPopup;
 };
 
 }

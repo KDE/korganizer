@@ -99,7 +99,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   : QObject( parent ),
     mCollectionViewShowAction( 0 ),
     mCollectionView( 0 ), mCollectionViewStateSaver( 0 ),
-    mCollectionSelectionModelStateSaver( 0 ), mIsClosing( false )
+    mCollectionSelectionModelStateSaver( 0 )
 {
   new KOrgCalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( QLatin1String("/Calendar"), this );
