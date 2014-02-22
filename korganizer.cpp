@@ -35,8 +35,10 @@
 #include "koglobals.h"
 #include "korganizerifaceimpl.h"
 
-#include <libkdepim/progresswidget/progressdialog.h>
-#include <libkdepim/progresswidget/statusbarprogresswidget.h>
+#include "libkdepim/progresswidget/progressstatusbarwidget.h"
+#include "libkdepim/progresswidget/statusbarprogresswidget.h"
+
+
 
 #include <KAction>
 #include <KActionCollection>
@@ -94,14 +96,9 @@ void KOrganizer::init( bool document )
   bar->insertItem( QString(), ID_GENERAL, 10 );
   connect( bar, SIGNAL(pressed(int)), SLOT(statusBarPressed(int)) );
 
-  KPIM::ProgressDialog *progressDialog = new KPIM::ProgressDialog( bar, this );
-  progressDialog->hide();
+  KPIM::ProgressStatusBarWidget *progressBar = new KPIM::ProgressStatusBarWidget( statusBar(), this);
 
-  KPIM::StatusbarProgressWidget *progressWidget;
-  progressWidget = new KPIM::StatusbarProgressWidget( progressDialog, bar );
-  progressWidget->show();
-
-  bar->addPermanentWidget( progressWidget );
+  bar->addPermanentWidget( progressBar->littleProgress() );
 
   connect( mActionManager->view(), SIGNAL(statusMessage(QString)),
            SLOT(showStatusMessage(QString)) );
