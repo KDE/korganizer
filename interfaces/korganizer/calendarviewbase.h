@@ -55,7 +55,6 @@ class CalendarViewBase : public QWidget
 
   public Q_SLOTS:
     virtual void updateView() = 0;
-    virtual void updateCategories() = 0;
 
   signals:
     virtual void newIncidenceChanger( Akonadi::IncidenceChanger * ) = 0;

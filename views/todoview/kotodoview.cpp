@@ -149,11 +149,6 @@ void KOTodoView::updateView()
   // View is always updated, it's connected to ETM.
 }
 
-void KOTodoView::updateCategories()
-{
-  mView->updateCategories();
-}
-
 void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType )
 {
   // Don't do anything, model is connected to ETM, it's up to date

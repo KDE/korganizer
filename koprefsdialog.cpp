@@ -34,6 +34,7 @@
 #include <calendarsupport/categoryconfig.h>
 
 #include <incidenceeditor-ng/globalsettings.h>
+#include <widgets/tagwidgets.h>
 
 #include <Akonadi/AgentFilterProxyModel>
 #include <Akonadi/AgentInstanceCreateJob>
@@ -867,9 +868,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   unsetCategoryColor->label()->setWhatsThis( unsetCategoryColor->button()->whatsThis() );
   unsetCategoryColor->label()->setToolTip( unsetCategoryColor->button()->toolTip() );
 
-  mCategoryCombo = new KComboBox( categoryGroup );
-  mCategoryCombo->addItems(
-    CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
+  mCategoryCombo = new KPIM::TagCombo( categoryGroup );
   mCategoryCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select here the event category you want to modify. "
@@ -990,9 +989,6 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
 
 void KOPrefsDialogColorsAndFonts::updateCategories()
 {
-  mCategoryCombo->clear();
-  mCategoryCombo->addItems(
-    CalendarSupport::CategoryConfig( KOPrefs::instance() ).customCategories() );
   updateCategoryColor();
 }
 
@@ -1007,6 +1003,7 @@ void KOPrefsDialogColorsAndFonts::updateCategoryColor()
   const QString cat = mCategoryCombo->currentText();
   QColor color = mCategoryDict.value( cat );
   if ( !color.isValid() ) {
+    //TODO get this from the tag
     color = CalendarSupport::KCalPrefs::instance()->categoryColor( cat );
   }
   if ( color.isValid() ) {

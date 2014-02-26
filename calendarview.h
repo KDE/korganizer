@@ -192,14 +192,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
      *  for notification to update their settings. */
     void configChanged();
 
-    /** Emitted when the categories were updated, and thus the categories editor
-     *  dialog needs to reload the list of categories */
-    void categoriesChanged();
-
-    /** Emitted when the categories were edited by the user, and thus the views
-     *  need to reload the list of categories */
-    void categoryConfigChanged();
-
     /** Emitted right before we die */
     void closed( QWidget * );
 
@@ -256,9 +248,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void updateConfig();
     void updateConfig( const QByteArray & );
 
-    /** Calendar configuration was changed, so refresh categories list
-    */
-    void updateCategories();
     void handleIncidenceCreated(const Akonadi::Item &item);
 
     /**

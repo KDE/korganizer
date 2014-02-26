@@ -33,12 +33,12 @@
 
 class FilterEdit;
 
-namespace IncidenceEditorNG {
-  class CategorySelectDialog;
-}
-
 namespace KCalCore {
   class CalFilter;
+}
+
+namespace KPIM {
+  class TagSelectionDialog;
 }
 
 /**
@@ -60,7 +60,6 @@ class FilterEditDialog : public KDialog
 
   public slots:
     void updateFilterList();
-    void updateCategoryConfig();
     void setDialogConsistent( bool consistent );
 
   private:
@@ -80,7 +79,6 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 
     void updateFilterList();
     void saveChanges();
-    void updateCategoryConfig();
 
   signals:
     void dataConsistent(bool);
@@ -92,7 +90,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
     void bNewPressed();
     void bDeletePressed();
     void updateSelectedName( const QString & );
-    void updateCategorySelection( const QStringList &categories );
+    void updateCategorySelection();
     void editCategorySelection();
 
   private:
@@ -100,7 +98,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 
     QList<KCalCore::CalFilter*> *mFilters;
     KCalCore::CalFilter *mCurrent;
-    IncidenceEditorNG::CategorySelectDialog *mCategorySelectDialog;
+    KPIM::TagSelectionDialog *mCategorySelectDialog;
 };
 
 #endif

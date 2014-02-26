@@ -179,12 +179,8 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   mAkonadiCollectionView = new AkonadiCollectionView( view(), true, parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)),
                     mView, SLOT(resourcesChanged()) );
-  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)),
-                    mView, SLOT(updateCategories()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesAddedRemoved()),
                     mView, SLOT(resourcesChanged()) );
-  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesAddedRemoved()),
-                    mView, SLOT(updateCategories()) );
   return mAkonadiCollectionView;
 }
 

@@ -31,13 +31,13 @@
 class CalendarView;
 class FilterEditDialog;
 class SearchDialog;
+class KDialog;
 
 namespace CalendarSupport {
   class ArchiveDialog;
 }
 
 namespace IncidenceEditorNG {
-  class CategoryEditDialog;
   class IncidenceDialog;
 }
 
@@ -81,7 +81,7 @@ class KODialogManager : public QObject
 
     CalendarView *mMainView;
     KCMultiDialog *mOptionsDialog;
-    QPointer<IncidenceEditorNG::CategoryEditDialog> mCategoryEditDialog;
+    QPointer<KDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog;
     CalendarSupport::ArchiveDialog *mArchiveDialog;
     FilterEditDialog *mFilterEditDialog;

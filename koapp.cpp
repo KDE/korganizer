@@ -58,7 +58,6 @@ int KOrganizerApp::newInstance()
   if ( isSessionRestored() && first ) {
      KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
      if ( korg ) {
-       korg->view()->updateCategories();
        korg->view()->updateView();
      }
      first = false;
@@ -116,7 +115,6 @@ void KOrganizerApp::processCalendar( const KUrl &url )
     if ( hasDocument ) {
       korg->openURL( url );
     } else {
-      korg->view()->updateCategories();
       //      korg->view()->updateView();
     }
   } else {

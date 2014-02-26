@@ -38,6 +38,7 @@
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 
 #include <Akonadi/Item>
+#include <Akonadi/TagManagementDialog>
 
 #include <KCalCore/Visitor>
 
@@ -194,10 +195,6 @@ void KODialogManager::connectEditor( IncidenceEditorNG::IncidenceDialog *editor 
   connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
            mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
 
-  connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
-           editor, SIGNAL(updateCategoryConfig()) );
-  connect( editor, SIGNAL(editCategories()),
-           mCategoryEditDialog, SLOT(show()) );
   connect( editor, SIGNAL(dialogClose(Akonadi::Item)),
            mMainView, SLOT(dialogClosing(Akonadi::Item)) );
   connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
@@ -214,19 +211,10 @@ void KODialogManager::updateSearchDialog()
 void KODialogManager::createCategoryEditor()
 {
   if ( mCategoryEditDialog == 0 ) {
-    CalendarSupport::CategoryConfig *cc =
-      new CalendarSupport::CategoryConfig( KOPrefs::instance(), this );
-
-    mCategoryEditDialog =
-      new IncidenceEditorNG::CategoryEditDialog( cc, mMainView );
+    mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
 
     mCategoryEditDialog->setModal( true );
     mCategoryEditDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
-
-    connect( mMainView, SIGNAL(categoriesChanged()),
-             mCategoryEditDialog, SLOT(reload()) );
-    connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
-             mMainView, SIGNAL(categoryConfigChanged()) );
   }
 }
 

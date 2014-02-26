@@ -67,7 +67,6 @@ class KOTodoView : public BaseView
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
   public Q_SLOTS:
-    void updateCategories();
     virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
     virtual void showDates( const QDate &start, const QDate &end,
                             const QDate &preferredMonth = QDate() );

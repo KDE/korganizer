@@ -28,8 +28,7 @@
 #include "koprefs.h"
 
 #include <calendarsupport/categoryconfig.h>
-
-#include <incidenceeditor-ng/categoryselectdialog.h>
+#include <libkdepim/widgets/tagwidgets.h>
 
 #include <KCalCore/CalFilter>
 
@@ -59,11 +58,6 @@ FilterEditDialog::~FilterEditDialog()
 void FilterEditDialog::updateFilterList()
 {
   mFilterEdit->updateFilterList();
-}
-
-void FilterEditDialog::updateCategoryConfig()
-{
-  mFilterEdit->updateCategoryConfig();
 }
 
 void FilterEditDialog::slotApply()
@@ -292,37 +286,20 @@ void FilterEdit::editCategorySelection()
   }
 
   if ( !mCategorySelectDialog ) {
-    CalendarSupport::CategoryConfig *cc =
-      new CalendarSupport::CategoryConfig( KOPrefs::instance(), this );
-    mCategorySelectDialog = new IncidenceEditorNG::CategorySelectDialog( cc, this );
+    mCategorySelectDialog = new KPIM::TagSelectionDialog( this );
     mCategorySelectDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
     mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
-    connect( mCategorySelectDialog, SIGNAL(categoriesSelected(QStringList)),
-             SLOT(updateCategorySelection(QStringList)) );
-    connect( mCategorySelectDialog, SIGNAL(editCategories()),
-             SIGNAL(editCategories()) );
-
+    connect(mCategorySelectDialog, SIGNAL(accepted()), this, SLOT(updateCategorySelection()));
   }
-  // we need the children not to autoselect or else some unselected
-  // children can also become selected
-  mCategorySelectDialog->setAutoselectChildren( false );
-  mCategorySelectDialog->setSelected( mCurrent->categoryList() );
-  mCategorySelectDialog->setAutoselectChildren( true );
+  mCategorySelectDialog->setSelection( mCurrent->categoryList() );
 
   mCategorySelectDialog->show();
 }
 
-void FilterEdit::updateCategorySelection( const QStringList &categories )
+void FilterEdit::updateCategorySelection()
 {
+  const QStringList &categories = mCategorySelectDialog->selection();
   mCatList->clear();
   mCatList->addItems( categories );
   mCurrent->setCategoryList( categories );
 }
-
-void FilterEdit::updateCategoryConfig()
-{
-  if ( mCategorySelectDialog ) {
-    mCategorySelectDialog->updateCategoryConfig();
-  }
-}
-

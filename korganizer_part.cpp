@@ -81,7 +81,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 
   mActionManager->createCalendarAkonadi();
   setHasDocument( false );
-  mView->updateCategories();
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 

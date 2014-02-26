@@ -53,7 +53,6 @@
 
 #include <KHolidays/Holidays>
 
-#include <calendarsupport/categoryconfig.h>
 #include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
@@ -2523,25 +2522,6 @@ void CalendarView::warningChangeFailed( const Akonadi::Item &item )
 void CalendarView::showErrorMessage( const QString &msg )
 {
   KMessageBox::error( this, msg );
-}
-
-void CalendarView::updateCategories()
-{
-  QStringList allCats( CalendarSupport::categories( mCalendar->rawIncidences() ) );
-  allCats.sort();
-
-  CalendarSupport::CategoryConfig cc( KOPrefs::instance() );
-
-  QStringList categories( cc.customCategories() );
-  for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
-    if ( !categories.contains( *si ) ) {
-      categories.append( *si );
-    }
-  }
-  cc.setCustomCategories( categories );
-  cc.writeConfig();
-  // Make the category editor update the list!
-  emit categoriesChanged();
 }
 
 void CalendarView::addIncidenceOn( const Akonadi::Item &itemadd, const QDate &dt )
