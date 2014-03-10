@@ -1019,9 +1019,9 @@ void ActionManager::exportHTML()
   QDate qd2 = qd1;
 
   if ( settings->monthView() ) {
-    qd2.addMonths( 1 );
+    qd2 = qd2.addMonths( 1 );
   } else {
-    qd2.addDays( 7 );
+    qd2 = qd2.addDays( 7 );
   }
   settings->setDateStart( QDateTime( qd1 ) );
   settings->setDateEnd( QDateTime( qd2 ) );
