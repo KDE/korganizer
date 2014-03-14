@@ -158,7 +158,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>mListWidget</tabstop>
-  <tabstop>mNew</tabstop>
   <tabstop>mRemove</tabstop>
   <tabstop>mSelectAddressee</tabstop>
   <tabstop>mNameLineEdit</tabstop>
