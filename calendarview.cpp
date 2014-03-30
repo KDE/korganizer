@@ -114,7 +114,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   // We reuse the EntityTreeModel from the calendar singleton to save memory.
   // We don't reuse the entire ETMCalendar because we want a different selection model. Checking/unchecking
   // calendars in korganizer shouldn't affect kontact's summary view
-  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( CalendarSupport::calendarSingleton() ) );
+  mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( CalendarSupport::calendarSingleton().data() ) );
 
   mCalendar->setObjectName( QLatin1String("KOrg Calendar") );
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
