@@ -1,2 +1,2 @@
-// DOXYGEN_REFERENCES = kdecore kdeui kparts kresources kcal kdgantt
+// DOXYGEN_REFERENCES = kdecore kdeui kparts kresources kcal kdgantt2 akonadi
 // DOXYGEN_SET_IGNORE_PREFIX = KO K 
