@@ -27,7 +27,7 @@
 
 #include "korganizer_export.h"
 
-#include <Akonadi/Entity>
+#include <AkonadiCore/Entity>
 
 #include <KCalCore/Incidence>
 

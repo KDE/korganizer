@@ -36,9 +36,9 @@
 #include <incidenceeditor-ng/globalsettings.h>
 #include <widgets/tagwidgets.h>
 
-#include <Akonadi/AgentFilterProxyModel>
-#include <Akonadi/AgentInstanceCreateJob>
-#include <Akonadi/AgentManager>
+#include <AkonadiCore/AgentFilterProxyModel>
+#include <AkonadiCore/AgentInstanceCreateJob>
+#include <AkonadiCore/AgentManager>
 #include <AkonadiWidgets/AgentTypeDialog>
 #include <AkonadiWidgets/CollectionComboBox>
 #include <AkonadiCore/CollectionModel>
@@ -49,7 +49,7 @@
 
 #include <KHolidays/Holidays>
 
-#include <Mailtransport/TransportManagementWidget>
+#include <MailTransport/TransportManagementWidget>
 
 #include <KCalendarSystem>
 #include <KColorButton>

@@ -32,7 +32,7 @@
 
 #include <calendarsupport/utils.h>
 
-#include <Akonadi/ItemFetchJob>
+#include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
 
 #include <KCalendarSystem>

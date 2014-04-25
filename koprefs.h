@@ -48,7 +48,7 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     void usrReadConfig();
 
     /** Write preferences to config file */
-    void usrWriteConfig();
+    bool usrWriteConfig();
 
   private:
     /** Constructor disabled for public. Use instance() to create a KOPrefs

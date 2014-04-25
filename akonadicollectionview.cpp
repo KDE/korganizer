@@ -35,9 +35,9 @@
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
 
-#include <Akonadi/AgentFilterProxyModel>
-#include <Akonadi/AgentInstanceCreateJob>
-#include <Akonadi/AgentManager>
+#include <AkonadiCore/AgentFilterProxyModel>
+#include <AkonadiCore/AgentInstanceCreateJob>
+#include <AkonadiCore/AgentManager>
 #include <AkonadiWidgets/AgentTypeDialog>
 #include <Akonadi/CollectionDeleteJob>
 #include <AkonadiCore/CollectionFilterProxyModel>

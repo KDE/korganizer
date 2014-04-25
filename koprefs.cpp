@@ -26,7 +26,8 @@
 #include "koprefs.h"
 
 #include <KGlobalSettings>
-
+#include <KGlobal>
+#include <KDebug>
 #include <QDir>
 
 class KOPrefsPrivate
@@ -92,14 +93,14 @@ void KOPrefs::usrReadConfig()
   KConfigSkeleton::usrReadConfig();
 }
 
-void KOPrefs::usrWriteConfig()
+bool KOPrefs::usrWriteConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
 
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
-  KConfigSkeleton::usrWriteConfig();
+  return KConfigSkeleton::usrWriteConfig();
 }
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )

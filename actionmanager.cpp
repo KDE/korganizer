@@ -87,6 +87,8 @@
 #include <KWindowSystem>
 #include <KIO/NetAccess>
 #include <KNS3/DownloadDialog>
+#include <KIcon>
+#include <KDebug>
 
 #include <QApplication>
 #include <QTimer>

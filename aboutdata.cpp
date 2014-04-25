@@ -24,12 +24,13 @@
 
 #include "aboutdata.h"
 #include "version.h"
+#include <KLocalizedString>
 using namespace KOrg;
 
 AboutData::AboutData()
-  : KAboutData( "korganizer", 0, ki18n( "KOrganizer" ), korgVersion,
+  : K4AboutData( "korganizer", 0, ki18n( "KOrganizer" ), korgVersion,
                 ki18n( "A Personal Organizer" ),
-                KAboutData::License_GPL,
+                K4AboutData::License_GPL,
                 ki18n( "Copyright © 1997–1999 Preston Brown\n"
                        "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
                        "Copyright © 2004–2005 Reinhold Kainhofer\n"
