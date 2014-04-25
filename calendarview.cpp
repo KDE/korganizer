@@ -75,9 +75,9 @@
 #include <pimcommon/acl/collectionaclpage.h>
 #include <pimcommon/acl/imapaclattribute.h>
 
-#include <Akonadi/CollectionPropertiesDialog>
-#include <Akonadi/Control>
-#include <Akonadi/AttributeFactory>
+#include <AkonadiWidgets/CollectionPropertiesDialog>
+#include <AkonadiCore/Control>
+#include <AkonadiCore/AttributeFactory>
 #include <Akonadi/Calendar/TodoPurger>
 
 #include <KCalCore/CalFilter>

@@ -29,7 +29,7 @@
 #include <QDate>
 #include <QMenu>
 
-#include <Akonadi/Item>
+#include <AkonadiCore/Item>
 #include <Akonadi/Calendar/ETMCalendar>
 
 /**

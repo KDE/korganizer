@@ -30,7 +30,7 @@
 #include <calendarsupport/next/incidenceviewer.h>
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <Akonadi/Item>
+#include <AkonadiCore/Item>
 
 #include <KLocalizedString>
 #include <KToolInvocation>

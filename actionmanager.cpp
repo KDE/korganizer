@@ -53,10 +53,10 @@
 
 #include <incidenceeditor-ng/globalsettings.h>
 
-#include <Akonadi/EntityDisplayAttribute>
-#include <Akonadi/EntityTreeView>
-#include <Akonadi/EntityTreeModel>
-#include <Akonadi/ETMViewStateSaver>
+#include <AkonadiCore/EntityDisplayAttribute>
+#include <AkonadiWidgets/EntityTreeView>
+#include <AkonadiCore/EntityTreeModel>
+#include <AkonadiWidgets/ETMViewStateSaver>
 #include <Akonadi/Calendar/History>
 #include <Akonadi/Calendar/ICalImporter>
 

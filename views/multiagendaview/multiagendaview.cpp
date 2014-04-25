@@ -29,8 +29,8 @@
 #include <calendarviews/agenda/agendaview.h>
 #include <calendarviews/multiagenda/multiagendaview.h>
 
-#include <Akonadi/EntityTreeView>
-#include <Akonadi/EntityTreeModel>
+#include <AkonadiWidgets/EntityTreeView>
+#include <AkonadiCore/EntityTreeModel>
 
 #include <KCheckableProxyModel>
 

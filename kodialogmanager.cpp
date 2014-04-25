@@ -37,8 +37,8 @@
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 
-#include <Akonadi/Item>
-#include <Akonadi/TagManagementDialog>
+#include <AkonadiCore/Item>
+#include <AkonadiWidgets/TagManagementDialog>
 
 #include <KCalCore/Visitor>
 

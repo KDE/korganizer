@@ -38,13 +38,13 @@
 #include <Akonadi/AgentFilterProxyModel>
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
-#include <Akonadi/AgentTypeDialog>
+#include <AkonadiWidgets/AgentTypeDialog>
 #include <Akonadi/CollectionDeleteJob>
-#include <Akonadi/CollectionFilterProxyModel>
-#include <Akonadi/EntityDisplayAttribute>
-#include <Akonadi/EntityTreeView>
-#include <Akonadi/EntityTreeModel>
-#include <Akonadi/ETMViewStateSaver>
+#include <AkonadiCore/CollectionFilterProxyModel>
+#include <AkonadiCore/EntityDisplayAttribute>
+#include <AkonadiWidgets/EntityTreeView>
+#include <AkonadiCore/EntityTreeModel>
+#include <AkonadiWidgets/ETMViewStateSaver>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 
 #include <KAction>

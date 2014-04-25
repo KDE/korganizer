@@ -32,7 +32,7 @@
 #include "korganizer_export.h"
 #include "korganizer/part.h"
 
-#include <Akonadi/Item>
+#include <AkonadiCore/Item>
 #include <Akonadi/Calendar/ETMCalendar>
 
 #include <KUrl>

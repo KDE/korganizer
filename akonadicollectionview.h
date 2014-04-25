@@ -28,7 +28,7 @@
 #define KORG_AKONADICOLLECTIONVIEW_H
 
 #include "calendarview.h"
-#include <Akonadi/Collection>
+#include <AkonadiCore/Collection>
 
 class AkonadiCollectionView;
 

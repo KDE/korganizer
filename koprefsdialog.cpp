@@ -39,9 +39,9 @@
 #include <Akonadi/AgentFilterProxyModel>
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
-#include <Akonadi/AgentTypeDialog>
-#include <Akonadi/CollectionComboBox>
-#include <Akonadi/CollectionModel>
+#include <AkonadiWidgets/AgentTypeDialog>
+#include <AkonadiWidgets/CollectionComboBox>
+#include <AkonadiCore/CollectionModel>
 #include <akonadi/calendar/calendarsettings.h>
 
 #include <KCalCore/Event>

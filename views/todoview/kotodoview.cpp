@@ -32,7 +32,7 @@
 
 #include <calendarviews/todo/todoview.h>
 
-#include <Akonadi/EntityTreeModel>
+#include <AkonadiCore/EntityTreeModel>
 
 #include <QVBoxLayout>
 
