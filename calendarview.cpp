@@ -69,7 +69,7 @@
 #include <akonadi/calendar/freebusymanager.h>
 #include <akonadi/calendar/history.h>
 #include <Akonadi/Calendar/IncidenceChanger>
-#include <Akonadi/Calendar/CalendarSettings>
+#include <akonadi/calendar/calendarsettings.h>
 #include <Akonadi/Calendar/CalendarClipboard>
 
 #include <pimcommon/acl/collectionaclpage.h>
@@ -94,6 +94,7 @@
 #include <KNotification>
 #include <KRun>
 #include <KVBox>
+#include <KDebug>
 
 #include <QApplication>
 #include <QClipboard>

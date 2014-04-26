@@ -51,7 +51,7 @@ namespace Akonadi {
   class ETMViewStateSaver;
 }
 
-class KAction;
+class QAction;
 class KMenuBar;
 class KSelectAction;
 class KTemporaryFile;
@@ -367,34 +367,34 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     KToggleAction *mHideMenuBarAction;
 
-    KAction *mImportAction;
+    QAction *mImportAction;
 
-    KAction *mNewEventAction;
-    KAction *mNewTodoAction;
-    KAction *mNewSubtodoAction;
-    KAction *mNewJournalAction;
-    KAction *mConfigureViewAction;
+    QAction *mNewEventAction;
+    QAction *mNewTodoAction;
+    QAction *mNewSubtodoAction;
+    QAction *mNewJournalAction;
+    QAction *mConfigureViewAction;
 
-    KAction *mShowIncidenceAction;
-    KAction *mEditIncidenceAction;
-    KAction *mDeleteIncidenceAction;
+    QAction *mShowIncidenceAction;
+    QAction *mEditIncidenceAction;
+    QAction *mDeleteIncidenceAction;
 
-    KAction *mCutAction;
-    KAction *mCopyAction;
-    KAction *mDeleteAction;
-    KAction *mNextXDays;
-    KAction *mPublishEvent;
-    KAction *mForwardEvent;
+    QAction *mCutAction;
+    QAction *mCopyAction;
+    QAction *mDeleteAction;
+    QAction *mNextXDays;
+    QAction *mPublishEvent;
+    QAction *mForwardEvent;
 
-    KAction *mSendInvitation;
-    KAction *mSendCancel;
-    KAction *mSendStatusUpdate;
+    QAction *mSendInvitation;
+    QAction *mSendCancel;
+    QAction *mSendStatusUpdate;
 
-    KAction *mRequestChange;
-    KAction *mRequestUpdate;
+    QAction *mRequestChange;
+    QAction *mRequestUpdate;
 
-    KAction *mUndoAction;
-    KAction *mRedoAction;
+    QAction *mUndoAction;
+    QAction *mRedoAction;
     KMenuBar *mMenuBar;
 
     KSelectAction *mFilterAction;

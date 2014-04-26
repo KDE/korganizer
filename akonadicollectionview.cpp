@@ -39,7 +39,7 @@
 #include <AkonadiCore/AgentInstanceCreateJob>
 #include <AkonadiCore/AgentManager>
 #include <AkonadiWidgets/AgentTypeDialog>
-#include <Akonadi/CollectionDeleteJob>
+#include <AkonadiCore/CollectionDeleteJob>
 #include <AkonadiCore/CollectionFilterProxyModel>
 #include <AkonadiCore/EntityDisplayAttribute>
 #include <AkonadiWidgets/EntityTreeView>
@@ -47,12 +47,13 @@
 #include <AkonadiWidgets/ETMViewStateSaver>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 
-#include <KAction>
+#include <QAction>
 #include <KActionCollection>
 #include <KCheckableProxyModel>
 #include <KColorDialog>
 #include <KMessageBox>
 #include <KRecursiveFilterProxyModel>
+#include <KDebug>
 
 #include <QHeaderView>
 #include <QPainter>
@@ -313,20 +314,20 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
     mActionManager->setCollectionPropertiesPageNames( pages );
 
-    mDisableColor = new KAction( mCollectionView );
+    mDisableColor = new QAction( mCollectionView );
     mDisableColor->setText( i18n( "&Disable Color" ) );
     mDisableColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ),
                                               mDisableColor );
     connect( mDisableColor, SIGNAL(triggered(bool)), this, SLOT(disableColor()) );
 
-    mAssignColor = new KAction( mCollectionView );
+    mAssignColor = new QAction( mCollectionView );
     mAssignColor->setText( i18n( "&Assign Color..." ) );
     mAssignColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "assign_color" ), mAssignColor );
     connect( mAssignColor, SIGNAL(triggered(bool)), this, SLOT(assignColor()) );
 
-    mDefaultCalendar = new KAction( mCollectionView );
+    mDefaultCalendar = new QAction( mCollectionView );
     mDefaultCalendar->setText( i18n( "Use as &Default Calendar" ) );
     mDefaultCalendar->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),

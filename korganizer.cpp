@@ -40,7 +40,7 @@
 
 
 
-#include <KAction>
+#include <QAction>
 #include <KActionCollection>
 #include <KDebug>
 #include <KShortcutsDialog>
