@@ -29,6 +29,7 @@
 #include "korganizer/mainwindow.h"
 
 #include <KParts/Part>
+#include <kparts/readonlypart.h>
 
 class CalendarView;
 
