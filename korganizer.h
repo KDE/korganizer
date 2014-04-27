@@ -115,7 +115,6 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 
     /** supplied so that close events close calendar properly.*/
     bool queryClose();
-    bool queryExit();
 
     /* Session management */
     void saveProperties( KConfigGroup & );
