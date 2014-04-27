@@ -33,6 +33,8 @@
 #include <KGlobal>
 #include <KLocalizedString>
 
+#include <QDate>
+
 DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {
   mSelectedDates.append( QDate::currentDate() );

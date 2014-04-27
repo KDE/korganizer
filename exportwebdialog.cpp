@@ -32,6 +32,8 @@
 #include <KMessageBox>
 #include <KUrlRequester>
 #include <KVBox>
+#include <KLocalizedString>
+#include <KDebug>
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -49,13 +51,13 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
 {
   setAttribute(Qt::WA_DeleteOnClose);
   setFaceType( Tabbed );
-  setCaption( i18n( "Export Calendar as Web Page" ) );
-  setButtons( /*Help|*/Default|User1|Cancel );
+  //QT5 setCaption( i18n( "Export Calendar as Web Page" ) );
+  //QT5 setButtons( /*Help|*/Default|User1|Cancel );
   /*enableButton( KDialog::Help, false );*/
-  setDefaultButton( User1 );
+  //QT5 setDefaultButton( User1 );
   setModal( false );
-  showButtonSeparator( false );
-  setButtonText( User1, i18n( "Export" ) );
+  //QT5 showButtonSeparator( false );
+  //QT5 setButtonText( User1, i18n( "Export" ) );
 
   setupGeneralPage();
   setupEventPage();
@@ -167,7 +169,7 @@ void ExportWebDialog::setupGeneralPage()
 
   KPIM::KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
                                              destGroup, QLatin1String("text/html"), KFile::File );
-  pathWid->urlRequester()->fileDialog()->setOperationMode( KFileDialog::Saving );
+  //QT5 pathWid->urlRequester()->fileDialog()->setOperationMode( KFileDialog::Saving );
   connect( pathWid->urlRequester(), SIGNAL(textChanged(QString)),
            SLOT(slotTextChanged(QString)) );
   destLayout->addWidget( pathWid->label() );
@@ -178,7 +180,7 @@ void ExportWebDialog::setupGeneralPage()
 
 void ExportWebDialog::slotTextChanged( const QString &_text )
 {
-    enableButton( User1, !_text.isEmpty() );
+    //QT5 enableButton( User1, !_text.isEmpty() );
 }
 
 void ExportWebDialog::setupTodoPage()

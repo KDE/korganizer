@@ -36,16 +36,18 @@
 
 #include <KStatusBar>
 #include <KParts/StatusBarExtension>
+#include <KGlobal>
+#include <KDebug>
 
 #include <QVBoxLayout>
 
-static const KAboutData &createAboutData()
+static const K4AboutData &createAboutData()
 {
   static KOrg::AboutData about;
   return about;
 }
 
-K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
+//QT5 K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
 K_EXPORT_PLUGIN( KOrganizerFactory( createAboutData() ) )
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
@@ -84,7 +86,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 
-  setComponentData( KOrganizerFactory::componentData() );
+  //QT5 setComponentData( KOrganizerFactory::componentData() );
 
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );
@@ -135,7 +137,7 @@ ActionManager *KOrganizerPart::actionManager()
 
 void KOrganizerPart::showStatusMessage( const QString &message )
 {
-  KStatusBar *statusBar = mStatusBarExtension->statusBar();
+  QStatusBar *statusBar = mStatusBarExtension->statusBar();
   if ( statusBar ) {
     statusBar->showMessage( message );
   }

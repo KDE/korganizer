@@ -9,3 +9,4 @@ GlobalEnums=true
 ItemAccessors=true
 SetUserTexts=true
 Visibility=
+IncludeFiles=KLocalizedString

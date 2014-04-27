@@ -37,6 +37,7 @@
 #include <KDebug>
 #include <KStandardDirs>
 #include <KStartupInfo>
+#include <KGlobal>
 
 KOrganizerApp::KOrganizerApp() : KontactInterface::PimUniqueApplication()
 {

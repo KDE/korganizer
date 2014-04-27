@@ -27,7 +27,7 @@
 #include <KCalCore/IncidenceBase> // for KCalCore::DateList typedef
 
 #include <QWidget>
-
+#include <QDate>
 class QToolButton;
 
 class NavigatorBar: public QWidget

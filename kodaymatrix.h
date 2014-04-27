@@ -32,6 +32,7 @@
 #include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
 
 #include <QFrame>
+#include <QDate>
 
 /**
  *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day

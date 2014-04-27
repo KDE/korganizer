@@ -30,7 +30,7 @@
 
 #include <KCalendarSystem>
 #include <KGlobalSettings>
-
+#include <KGlobal>
 #include <QEvent>
 #include <QGridLayout>
 #include <QLabel>

@@ -46,6 +46,7 @@
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStatusBar>
+#include <KGlobal>
 
 KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
 {
@@ -61,7 +62,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
   mCalendarView->setObjectName( QLatin1String("KOrganizer::CalendarView") );
   setCentralWidget( mCalendarView );
 
-  mActionManager = new ActionManager( this, mCalendarView, this, this, false, menuBar() );
+  //QT5 mActionManager = new ActionManager( this, mCalendarView, this, this, false, menuBar() );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 }
 
@@ -91,9 +92,9 @@ void KOrganizer::init( bool document )
   initActions();
   readSettings();
 
-  KStatusBar *bar = statusBar();
+  QStatusBar *bar = statusBar();
 
-  bar->insertItem( QString(), ID_GENERAL, 10 );
+  //QT5 bar->insertItem( QString(), ID_GENERAL, 10 );
   connect( bar, SIGNAL(pressed(int)), SLOT(statusBarPressed(int)) );
 
   KPIM::ProgressStatusBarWidget *progressBar = new KPIM::ProgressStatusBarWidget( statusBar(), this);

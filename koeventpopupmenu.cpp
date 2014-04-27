@@ -37,6 +37,7 @@
 
 #include <KActionCollection>
 #include <KMimeTypeTrader>
+#include <KDebug>
 
 KOEventPopupMenu::KOEventPopupMenu( Akonadi::ETMCalendar * calendar, QWidget *parent )
   : QMenu( parent ), mCalendar( calendar )

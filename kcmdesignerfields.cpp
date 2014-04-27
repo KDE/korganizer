@@ -32,6 +32,10 @@
 #include <KStandardDirs>
 #include <KIO/Job>
 #include <KIO/NetAccess>
+#include <KLocalizedString>
+#include <KDialog>
+#include <KUrl>
+#include <KGlobal>
 
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -135,7 +139,7 @@ class PageItem : public QTreeWidgetItem
 
 KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent,
                                       const QVariantList &args )
-  : KCModule( instance, parent, args ),
+  : KCModule( /*instance, */parent, args ),
     mPageView( 0 ),
     mPagePreview( 0 ),
     mPageDetails( 0 ),
@@ -143,6 +147,7 @@ KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *p
     mImportButton( 0 ),
     mDesignerButton( 0 )
 {
+#if 0 //QT5
   KAboutData *about = new KAboutData( I18N_NOOP( "KCMDesignerfields" ), 0,
                                       ki18n( "Qt Designer Fields Dialog" ),
                                       0, KLocalizedString(), KAboutData::License_LGPL,
@@ -151,6 +156,7 @@ KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *p
   about->addAuthor( ki18n( "Tobias Koenig" ), KLocalizedString(), "tokoe@kde.org" );
   about->addAuthor( ki18n( "Cornelius Schumacher" ), KLocalizedString(), "schumacher@kde.org" );
   setAboutData( about );
+#endif
 }
 
 void KCMDesignerFields::delayedInit()

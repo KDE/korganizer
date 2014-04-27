@@ -32,6 +32,7 @@
 #include <KCalCore/MemoryCalendar>
 
 #include <KDialog>
+#include <KUrl>
 
 class KOListView;
 

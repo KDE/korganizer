@@ -32,7 +32,7 @@
 #include <KCalCore/IncidenceBase> // for KCalCore::DateList typedef
 
 #include <QObject>
-
+#include <QDate>
 /**
   This class controls date navigation. All requests to move the views to another
   date are sent to the DateNavigator. The DateNavigator processes the new

@@ -34,6 +34,7 @@
 
 #include <KLocalizedString>
 #include <KToolInvocation>
+#include <KIcon>
 
 KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent )
   : KDialog( parent )

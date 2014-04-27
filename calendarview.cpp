@@ -95,6 +95,7 @@
 #include <KRun>
 #include <KVBox>
 #include <KDebug>
+#include <KGlobal>
 
 #include <QApplication>
 #include <QClipboard>
@@ -1627,7 +1628,7 @@ void CalendarView::dissociateOccurrence( const Akonadi::Item &item, const QDate 
   }
   KDateTime occurrenceDate( incidence->dtStart() );
   occurrenceDate.setDate(date);
-  kDebug() << "create exception: " << occurrenceDate;
+  //QT5 kDebug() << "create exception: " << occurrenceDate;
   KCalCore::Incidence::Ptr newInc( KCalCore::Calendar::createException(
       incidence, occurrenceDate, thisAndFuture) );
   if ( newInc ) {
@@ -2659,14 +2660,14 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
 {
   // 1. Try the view collection ( used in multi-agenda view )
   Akonadi::Collection collection = mCalendar->collection( mViewManager->currentView()->collectionId() );
-  bool supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  bool supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
   bool hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;
 
   // 2. Try the selected collection
   collection = selectedCollection();
-  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
   hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;
@@ -2674,7 +2675,7 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
   // 3. Try the checked collections
   Akonadi::Collection::List collections = checkedCollections();
   foreach( const Akonadi::Collection &checkedCollection, collections ) {
-    supportsMimeType = checkedCollection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+    supportsMimeType = checkedCollection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
     hasRights = checkedCollection.rights() & Akonadi::Collection::CanCreateItem;
     if ( checkedCollection.isValid() && supportsMimeType && hasRights )
       return checkedCollection;
@@ -2682,7 +2683,7 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
 
   // 4. Try the configured default collection
   collection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
-  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
   hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;

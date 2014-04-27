@@ -63,6 +63,9 @@
 #include <KTimeComboBox>
 #include <KUrlRequester>
 #include <KWindowSystem>
+#include <KGlobal>
+#include <KDebug>
+#include <KIcon>
 
 #include <QCheckBox>
 #include <QFormLayout>

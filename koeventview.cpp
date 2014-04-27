@@ -34,6 +34,7 @@
 #include <libkdepim/widgets/pimmessagebox.h>
 
 #include <KXMLGUIFactory>
+#include <KDebug>
 
 #include <QApplication>
 #include <QMenu>

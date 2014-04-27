@@ -32,7 +32,7 @@
 #include <Akonadi/Calendar/ETMCalendar>
 
 #include <QFrame>
-
+#include <QDate>
 class KDateNavigator;
 
 class DateNavigatorContainer: public QFrame

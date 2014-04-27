@@ -35,6 +35,9 @@
 
 #include <KPIMUtils/Email>
 
+#include <KIcon>
+#include <KLocalizedString>
+
 PublishDialog::PublishDialog( QWidget *parent )
   : KDialog( parent )
 {

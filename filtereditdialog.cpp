@@ -33,6 +33,7 @@
 #include <KCalCore/CalFilter>
 
 #include <KMessageBox>
+#include <KDebug>
 
 FilterEditDialog::FilterEditDialog( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )

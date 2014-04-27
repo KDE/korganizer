@@ -27,7 +27,7 @@
 #define KORG_KDATENAVIGATOR_H
 
 #include <QFrame>
-
+#include <QDate>
 #include <KCalCore/IncidenceBase> //for DateList typedef
 #include <Akonadi/Calendar/ETMCalendar>
 

@@ -25,6 +25,7 @@
 #include "holiday.h"
 
 #include <KCalendarSystem>
+#include <KGlobal>
 
 using namespace EventViews::CalendarDecoration;
 

@@ -38,10 +38,12 @@
 #include <KCalendarSystem>
 #include <KIcon>
 #include <KMenu>
+#include <KGlobal>
 
 #include <QMouseEvent>
 #include <QPainter>
 #include <QToolTip>
+#include <QMimeData>
 
 // ============================================================================
 //  K O D A Y M A T R I X

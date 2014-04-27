@@ -44,6 +44,7 @@
 #include <KActionCollection>
 #include <KMessageBox>
 #include <KTabWidget>
+#include <KGlobal>
 
 #include <QAction>
 #include <QStackedWidget>
