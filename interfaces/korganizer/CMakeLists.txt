@@ -16,8 +16,8 @@ target_link_libraries(korganizer_interfaces
 )
 
 set_target_properties(korganizer_interfaces PROPERTIES
-  VERSION ${GENERIC_LIB_VERSION}
-  SOVERSION ${GENERIC_LIB_SOVERSION}
+  VERSION ${KDEPIM_LIB_VERSION}
+  SOVERSION ${KDEPIM_LIB_SOVERSION}
 )
 
 install(TARGETS
