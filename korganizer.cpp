@@ -182,14 +182,6 @@ bool KOrganizer::queryClose()
   return close;
 }
 
-bool KOrganizer::queryExit()
-{
-  // Don't call writeSettings here, because filename isn't valid anymore.
-  // It is now called in queryClose.
-//  writeSettings();
-  return true;
-}
-
 void KOrganizer::statusBarPressed( int id )
 {
   Q_UNUSED( id );
