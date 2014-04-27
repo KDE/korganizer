@@ -66,7 +66,7 @@ if(KDEPIM_BUILD_DESKTOP)
     korganizer_interfaces
     korganizer_core
     calendarsupport
-    akonadi-calendar
+    KF5::AkonadiCalendar
   )
 
   install(TARGETS
@@ -84,7 +84,7 @@ if(KDEPIM_BUILD_DESKTOP)
   kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
   target_link_libraries(kcm_korganizer
-    akonadi-calendar
+    KF5::AkonadiCalendar
     calendarsupport
     eventviews
     incidenceeditorsng
@@ -252,7 +252,7 @@ set(korganizerprivate_LIB_SRCS
   target_link_libraries(korganizerprivate
     pimcommon
     akonadi_next
-    akonadi-calendar
+    KF5::AkonadiCalendar
     calendarsupport
     eventviews
     incidenceeditorsng
