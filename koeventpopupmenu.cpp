@@ -37,7 +37,7 @@
 
 #include <KActionCollection>
 #include <KMimeTypeTrader>
-#include <KDebug>
+#include <QDebug>
 
 KOEventPopupMenu::KOEventPopupMenu( Akonadi::ETMCalendar * calendar, QWidget *parent )
   : QMenu( parent ), mCalendar( calendar )
@@ -98,13 +98,13 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
   mCurrentDate = qd;
 
   if ( !CalendarSupport::hasIncidence( mCurrentIncidence )/*&& qd.isValid()*/ ) {
-    kDebug() << "No event selected";
+    qDebug() << "No event selected";
     return;
   }
 
   if ( !mCalendar ) {
     //TODO fix it
-    kDebug() << "Calendar is 0";
+    qDebug() << "Calendar is 0";
     return;
   }
 
@@ -229,7 +229,7 @@ void KOEventPopupMenu::forward()
   if ( action ) {
     action->trigger();
   } else {
-    kError() << "What happened to the schedule_forward action?";
+    qCritical() << "What happened to the schedule_forward action?";
   }
 }
 

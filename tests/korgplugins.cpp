@@ -24,7 +24,7 @@
 */
 #include <kaboutdata.h>
 #include <kapplication.h>
-#include <kdebug.h>
+#include <qdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
 
@@ -42,37 +42,37 @@ int main(int argc,char **argv)
   KService::List plugins = KOCore::self()->availablePlugins();
   KService::List::ConstIterator it;
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    kDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
+    qDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     CalendarSupport::Plugin *p = KOCore::self()->loadPlugin(*it);
     if (!p) {
-      kDebug() << "Plugin loading failed.";
+      qDebug() << "Plugin loading failed.";
     } else {
-      kDebug() << "PLUGIN INFO:" << p->info();
+      qDebug() << "PLUGIN INFO:" << p->info();
     }
   }
 
   plugins = KOCore::self()->availableParts();
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    kDebug() << "Part:" << (*it)->desktopEntryName() << "("
+    qDebug() << "Part:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     KOrg::Part *p = KOCore::self()->loadPart(*it,0);
     if (!p) {
-      kDebug() << "Part loading failed.";
+      qDebug() << "Part loading failed.";
     } else {
-      kDebug() << "PART INFO:" << p->info();
+      qDebug() << "PART INFO:" << p->info();
     }
   }
 
   plugins = KOCore::self()->availableCalendarDecorations();
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    kDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
+    qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
     if (!p) {
-      kDebug() << "Calendar decoration loading failed.";
+      qDebug() << "Calendar decoration loading failed.";
     } else {
-      kDebug() << "CALENDAR DECORATION INFO:" << p->info();
+      qDebug() << "CALENDAR DECORATION INFO:" << p->info();
     }
   }
 

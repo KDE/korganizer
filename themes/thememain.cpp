@@ -26,7 +26,7 @@
 #include <KAboutData>
 #include <KCmdLineArgs>
 #include <KLocalizedString>
-#include <KDebug>
+#include <QDebug>
 
 #include "theme.h"
 

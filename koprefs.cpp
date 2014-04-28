@@ -27,7 +27,7 @@
 
 #include <KGlobalSettings>
 #include <KGlobal>
-#include <KDebug>
+#include <QDebug>
 #include <QDir>
 
 class KOPrefsPrivate
@@ -62,7 +62,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
 KOPrefs::~KOPrefs()
 {
-  kDebug();
+  qDebug();
   mEventViewsPrefs->writeConfig();
 }
 

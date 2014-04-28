@@ -64,7 +64,7 @@
 #include <KUrlRequester>
 #include <KWindowSystem>
 #include <KGlobal>
-#include <KDebug>
+#include <QDebug>
 #include <KIcon>
 
 #include <QCheckBox>
@@ -1043,7 +1043,7 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
   if ( !ok ) {
     return;
   }
-  kDebug() << id << mResourceCombo->itemText( mResourceCombo->currentIndex() );
+  qDebug() << id << mResourceCombo->itemText( mResourceCombo->currentIndex() );
 
   QColor color = mResourceDict.value( id );
   if ( ! color.isValid() ) {

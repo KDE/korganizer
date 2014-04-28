@@ -41,7 +41,7 @@ void KODayMatrixTest::testMatrixLimits()
   while (iterator.hasNext()) {
     iterator.next();
     const DateRange range = KODayMatrix::matrixLimits( iterator.key() );
-    // kDebug() << "Expected is " << iterator.value() << " and got " << range;
+    // qDebug() << "Expected is " << iterator.value() << " and got " << range;
     QVERIFY( range == iterator.value() );
   }
 
@@ -58,7 +58,7 @@ void KODayMatrixTest::testMatrixLimits()
    while (iterator2.hasNext()) {
      iterator2.next();
      const DateRange range = KODayMatrix::matrixLimits( iterator2.key() );
-     // kDebug() << "Expected is " << iterator.value() << " and got " << range;
+     // qDebug() << "Expected is " << iterator.value() << " and got " << range;
      QVERIFY( range == iterator2.value() );
    }
 }

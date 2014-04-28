@@ -22,7 +22,7 @@
 #include "configdialog.h"
 
 #include <KConfig>
-#include <KDebug>
+#include <QDebug>
 #include <KIO/Scheduler>
 
 #include <QDomDocument>
@@ -112,10 +112,10 @@ void POTDElement::step1StartDownload()
 void POTDElement::step1Result( KJob *job )
 {
   if ( job->error() ) {
-    kWarning() << "POTD:" << mDate << ": could not get POTD file name:" << job->errorString();
-    kDebug() << "POTD:" << mDate << ": file name:" << mFileName;
-    kDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
-    kDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
+    qWarning() << "POTD:" << mDate << ": could not get POTD file name:" << job->errorString();
+    qDebug() << "POTD:" << mDate << ": file name:" << mFileName;
+    qDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
+    qDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
     mFirstStepCompleted = false;
     return;
   }
@@ -148,8 +148,8 @@ void POTDElement::step1Result( KJob *job )
   mLongText = i18n( "Wikipedia POTD: %1", mLongText );
   emit gotNewLongText( mLongText );
 
-  kDebug() << "FILENAME=" << mFileName;
-  kDebug() << "DESCRIPTION=" << mDescription;
+  qDebug() << "FILENAME=" << mFileName;
+  qDebug() << "DESCRIPTION=" << mDescription;
 
   mFirstStepCompleted = true;
   mFirstStepJob = 0;
@@ -183,10 +183,10 @@ void POTDElement::step2GetImagePage()
 void POTDElement::step2Result( KJob *job )
 {
   if ( job->error() ) {
-    kWarning() << "POTD:" << mDate << ": could not get POTD image page:" << job->errorString();
-    kDebug() << "POTD:" << mDate << ": file name:" << mFileName;
-    kDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
-    kDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
+    qWarning() << "POTD:" << mDate << ": could not get POTD image page:" << job->errorString();
+    qDebug() << "POTD:" << mDate << ": file name:" << mFileName;
+    qDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
+    qDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
     mSecondStepCompleted = false;
     return;
   }
@@ -198,7 +198,7 @@ void POTDElement::step2Result( KJob *job )
   QDomDocument imgPage;
   if ( !imgPage.setContent( QString::fromUtf8( transferJob->data().data(),
                                                transferJob->data().size() ) ) ) {
-    kWarning() << "POTD:" << mDate << ": Wikipedia returned an invalid XML page for image"
+    qWarning() << "POTD:" << mDate << ": Wikipedia returned an invalid XML page for image"
                << mFileName;
     return;
   }
@@ -231,8 +231,8 @@ void POTDElement::step2Result( KJob *job )
     }
 
   }
-  kDebug() << "POTD:" << mDate << ": h/w ratio:" << mHWRatio;
-  kDebug() << "POTD:" << mDate << ": got POTD image page source:" << mFullSizeImageUrl;
+  qDebug() << "POTD:" << mDate << ": h/w ratio:" << mHWRatio;
+  qDebug() << "POTD:" << mDate << ": got POTD image page source:" << mFullSizeImageUrl;
 
   if ( !mFullSizeImageUrl.isEmpty() ) {
     mSecondStepCompleted = true;
@@ -276,16 +276,16 @@ void POTDElement::step3GetThumbnail()
     thumbHeight = static_cast<int>( thumbWidth * mHWRatio );
   }
   mDlThumbSize = QSize( thumbWidth, thumbHeight );
-  kDebug() << "POTD:" << mDate << ": will download thumbnail of size" << mDlThumbSize;
+  qDebug() << "POTD:" << mDate << ": will download thumbnail of size" << mDlThumbSize;
   QString thumbUrl =
     QUrl::fromPercentEncoding(
       thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url().toLatin1() );
 
-  kDebug() << "POTD:" << mDate << ": got POTD thumbnail URL:" << thumbUrl;
+  qDebug() << "POTD:" << mDate << ": got POTD thumbnail URL:" << thumbUrl;
   mThumbUrl = thumbUrl;
 
   mThirdStepJob = KIO::storedGet( thumbUrl, KIO::NoReload, KIO::HideProgressInfo );
-  kDebug() << "POTD:" << mDate << ": get" << thumbUrl;//FIXME
+  qDebug() << "POTD:" << mDate << ": get" << thumbUrl;//FIXME
   KIO::Scheduler::setJobPriority( mThirdStepJob, 1 );
 
   connect( mThirdStepJob, SIGNAL(result(KJob*)),
@@ -304,17 +304,17 @@ void POTDElement::step3Result( KJob *job )
   mThirdStepJob = 0;
 
   if ( job->error() ) {
-    kWarning() << "POTD:" << mDate << ": could not get POTD:" << job->errorString();
-    kDebug() << "POTD:" << mDate << ": file name:" << mFileName;
-    kDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
-    kDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
+    qWarning() << "POTD:" << mDate << ": could not get POTD:" << job->errorString();
+    qDebug() << "POTD:" << mDate << ": file name:" << mFileName;
+    qDebug() << "POTD:" << mDate << ": full-size image:" << mFullSizeImageUrl.url();
+    qDebug() << "POTD:" << mDate << ": thumbnail:" << mThumbUrl.url();
     return;
   }
 
   // Last step completed: we get the pixmap from the transfer job's data
   KIO::StoredTransferJob* const transferJob = static_cast<KIO::StoredTransferJob*>( job );
   if ( mPixmap.loadFromData( transferJob->data() ) ) {
-    kDebug() << "POTD:" << mDate << ": got POTD.";
+    qDebug() << "POTD:" << mDate << ": got POTD.";
     emit gotNewPixmap( mPixmap.scaled( mThumbSize, Qt::KeepAspectRatio,
                                        Qt::SmoothTransformation ) );
   }
@@ -323,7 +323,7 @@ void POTDElement::step3Result( KJob *job )
 QPixmap POTDElement::newPixmap( const QSize &size )
 {
   if ( ( mThumbSize.width() < size.width() ) || ( mThumbSize.height() < size.height() ) ) {
-    kDebug() << "POTD:" << mDate << ": called for a new pixmap size ("
+    qDebug() << "POTD:" << mDate << ": called for a new pixmap size ("
              << size << "instead of" << mThumbSize << ", stored pixmap:"
              << mPixmap.size() << ")";
     setThumbnailSize( size );

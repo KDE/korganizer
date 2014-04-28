@@ -24,7 +24,7 @@
 #include "koprefs.h"
 
 #include <KIO/NetAccess>
-#include <KDebug>
+#include <QDebug>
 #include <KMimeType>
 #include <KStandardDirs>
 #include <KZip>
@@ -41,15 +41,15 @@ void Theme::useThemeFrom( const KUrl &url )
   }
 
   if( !url.isLocalFile() ) {
-      kDebug() << "can't import (1) : only local files are supported" << url.prettyUrl();
+      qDebug() << "can't import (1) : only local files are supported" << url.prettyUrl();
       return;
   }
 
   QFile *file = new QFile( url.toLocalFile() );
-  kDebug() << file->fileName();
+  qDebug() << file->fileName();
   if ( !file->open( QFile::ReadOnly | QFile::Text ) ) {
     //TODO: KMessageBox "invalid file"
-    kDebug() << "can't import: invalid file: (1)" << url.toLocalFile();
+    qDebug() << "can't import: invalid file: (1)" << url.toLocalFile();
     delete file;
     return;
   }
@@ -62,7 +62,7 @@ void Theme::useThemeFrom( const KUrl &url )
 
     if ( !zip->open( QIODevice::ReadOnly ) ) {
       //TODO: KMessageBox "invalid file"
-      kDebug() << "can't import: invalid file: (3)" << url.toLocalFile();
+      qDebug() << "can't import: invalid file: (3)" << url.toLocalFile();
       delete zip;
       delete file;
       return;
@@ -71,7 +71,7 @@ void Theme::useThemeFrom( const KUrl &url )
     const KArchiveDirectory *dir = zip->directory();
     if ( dir == 0 ) {
       //TODO: KMessageBox "invalid file"
-      kDebug() << "can't import: invalid file: (4)" << url.toLocalFile();
+      qDebug() << "can't import: invalid file: (4)" << url.toLocalFile();
       delete zip;
       delete file;
       return;
@@ -79,7 +79,7 @@ void Theme::useThemeFrom( const KUrl &url )
 
     if ( ! KIO::NetAccess::del( KUrl::fromPath( storageDir().absolutePath() ),
                                 0 ) ) {
-      kWarning() << "could not delete stale theme files";
+      qWarning() << "could not delete stale theme files";
     }
     dir->copyTo( storageDir().path() );
 
@@ -89,7 +89,7 @@ void Theme::useThemeFrom( const KUrl &url )
 
     if ( !file->open( QFile::ReadOnly | QFile::Text ) ) {
       //TODO: KMessageBox "invalid file"
-      kDebug() << "can't import: invalid file: (5)" << url.toLocalFile();
+      qDebug() << "can't import: invalid file: (5)" << url.toLocalFile();
       delete file;
       delete zip;
       return;
@@ -99,7 +99,7 @@ void Theme::useThemeFrom( const KUrl &url )
     mimeType = KMimeType::findByUrl( storageDir().path() + "/theme.xml" );
     if ( mimeType->name() != "application/xml" ) {
       //TODO: KMessageBox "invalid file"
-      kDebug() << "can't import: invalid file: (6)" << url.toLocalFile();
+      qDebug() << "can't import: invalid file: (6)" << url.toLocalFile();
       delete zip;
       delete file;
       return;
@@ -109,7 +109,7 @@ void Theme::useThemeFrom( const KUrl &url )
     delete file;
   } else {
     //TODO: KMessageBox "invalid file"
-    kDebug() << "can't import: invalid file: (2)" << url.toLocalFile();
+    qDebug() << "can't import: invalid file: (2)" << url.toLocalFile();
     delete file;
     return;
   }
@@ -126,17 +126,17 @@ void Theme::saveThemeTo( const KUrl &url )
 
   if ( ! zip->open( QIODevice::WriteOnly ) ) {
       //TODO: KMessageBox "no write permission"
-    kDebug() << "can't export: no write permission:" << path;
+    qDebug() << "can't export: no write permission:" << path;
     return;
   }
   if ( ! zip->addLocalDirectory( storageDir().absolutePath(), QString() ) ) {
       //TODO: KMessageBox "could not add theme files"
-    kDebug() << "can't export: could not add theme files to:" << path;
+    qDebug() << "can't export: could not add theme files to:" << path;
     return;
   }
   if ( ! zip->close() ) {
       //TODO: KMessageBox "could not write theme file"
-    kDebug() << "can't export: could not close theme file:" << path;
+    qDebug() << "can't export: could not close theme file:" << path;
     return;
   }
 }

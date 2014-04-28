@@ -34,7 +34,7 @@
 #include <KCalCore/CalFormat>
 
 #include <KCmdLineArgs>
-#include <KDebug>
+#include <QDebug>
 #include <KStandardDirs>
 #include <KStartupInfo>
 #include <KGlobal>
@@ -54,7 +54,7 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::newInstance()
 {
-  kDebug();
+  qDebug();
   static bool first = true;
   if ( isSessionRestored() && first ) {
      KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
@@ -81,7 +81,7 @@ int KOrganizerApp::newInstance()
   processCalendar( KUrl() );
   KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
   if ( !korg ) {
-      kError() << "Unable to find default calendar resources view.";
+      qCritical() << "Unable to find default calendar resources view.";
       return -1;
   }
   // Check for import, merge or ask
@@ -111,7 +111,7 @@ void KOrganizerApp::processCalendar( const KUrl &url )
     korg->init( hasDocument );
     korg->topLevelWidget()->show();
 
-    kDebug() << url.url();
+    qDebug() << url.url();
 
     if ( hasDocument ) {
       korg->openURL( url );

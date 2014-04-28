@@ -42,7 +42,7 @@
 
 #include <QAction>
 #include <KActionCollection>
-#include <KDebug>
+#include <QDebug>
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStatusBar>
@@ -54,7 +54,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
   // modal subdialogs will only affect this dialog, not the other windows
   setAttribute( Qt::WA_GroupLeader );
 
-  kDebug();
+  qDebug();
   KOCore::self()->addXMLGUIClient( this, this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
@@ -138,7 +138,7 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-  kDebug();
+  qDebug();
 
   KConfig *config = KOGlobals::self()->config();
 
@@ -169,7 +169,7 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-  kDebug();
+  qDebug();
 
   bool close = mActionManager->queryClose();
 

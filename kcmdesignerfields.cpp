@@ -23,7 +23,7 @@
 #include "kcmdesignerfields.h"
 
 #include <KAboutData>
-#include <KDebug>
+#include <QDebug>
 #include <KDirWatch>
 #include <KFileDialog>
 #include <KMessageBox>
@@ -161,7 +161,7 @@ KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *p
 
 void KCMDesignerFields::delayedInit()
 {
-  kDebug() << "KCMDesignerFields::delayedInit()";
+  qDebug() << "KCMDesignerFields::delayedInit()";
 
   initGUI();
 

@@ -37,7 +37,7 @@
 #include <KStatusBar>
 #include <KParts/StatusBarExtension>
 #include <KGlobal>
-#include <KDebug>
+#include <QDebug>
 
 #include <QVBoxLayout>
 
@@ -58,7 +58,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   } else if ( parent && parent->isWidgetType() ) {
     mTopLevelWidget = (QWidget *)parent;
   } else {
-    kError() << "Cannot initialize the part without a top level widget.";
+    qCritical() << "Cannot initialize the part without a top level widget.";
   }
 
   KGlobal::locale()->insertCatalog( QLatin1String("libkcalutils") );

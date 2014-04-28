@@ -33,7 +33,7 @@
 #include <KUrlRequester>
 #include <KVBox>
 #include <KLocalizedString>
-#include <KDebug>
+#include <QDebug>
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -112,7 +112,7 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-  kDebug();
+  qDebug();
 
   if ( KMessageBox::warningContinueCancel(
          this,

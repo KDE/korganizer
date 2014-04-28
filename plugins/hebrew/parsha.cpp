@@ -27,7 +27,7 @@
 
 #include "parsha.h"
 
-#include <KDebug>
+#include <QDebug>
 #include <KLocalizedString>
 
 QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
@@ -287,7 +287,7 @@ QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
 
   if ( !array ) { /* Something is terribly wrong! */
     buffer = QLatin1String("??Parsha??");
-    kWarning() << "Hebrew Plugin: Was not able to determine the Parsha."
+    qWarning() << "Hebrew Plugin: Was not able to determine the Parsha."
                << "Please report this as a bug.";
     return buffer;
   }

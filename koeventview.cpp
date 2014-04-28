@@ -34,7 +34,7 @@
 #include <libkdepim/widgets/pimmessagebox.h>
 
 #include <KXMLGUIFactory>
-#include <KDebug>
+#include <QDebug>
 
 #include <QApplication>
 #include <QMenu>
@@ -101,11 +101,11 @@ QMenu *KOEventView::newEventPopup()
 {
   KXMLGUIClient *client = KOCore::self()->xmlguiClient( this );
   if ( !client ) {
-    kError() << "no xmlGuiClient.";
+    qCritical() << "no xmlGuiClient.";
     return 0;
   }
   if ( !client->factory() ) {
-    kError() << "no factory";
+    qCritical() << "no factory";
     return 0; // can happen if called too early
   }
 
@@ -153,7 +153,7 @@ void KOEventView::showNewEventPopup()
 {
   QMenu *popup = newEventPopup();
   if ( !popup ) {
-    kError() << "popup creation failed";
+    qCritical() << "popup creation failed";
     return;
   }
 
@@ -164,10 +164,10 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction( const Akonadi::Item &aitem )
 {
-  kDebug();
+  qDebug();
   const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
   if ( !incidence ) {
-    kDebug() << "Ouch, null incidence";
+    qDebug() << "Ouch, null incidence";
     return;
   }
 

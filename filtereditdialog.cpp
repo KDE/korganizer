@@ -33,7 +33,7 @@
 #include <KCalCore/CalFilter>
 
 #include <KMessageBox>
-#include <KDebug>
+#include <QDebug>
 
 FilterEditDialog::FilterEditDialog( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )
@@ -195,7 +195,7 @@ void FilterEdit::filterSelected( KCalCore::CalFilter *filter )
   if( !filter || filter == mCurrent ) {
     return;
   }
-  kDebug() << "Selected filter" << filter->name();
+  qDebug() << "Selected filter" << filter->name();
   saveChanges();
 
   mCurrent = filter;

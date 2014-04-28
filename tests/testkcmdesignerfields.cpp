@@ -20,7 +20,7 @@
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <kdebug.h>
+#include <qdebug.h>
 #include <klocale.h>
 
 #include "kcmdesignerfields.h"

@@ -88,7 +88,7 @@
 #include <KIO/NetAccess>
 #include <KNS3/DownloadDialog>
 #include <KIcon>
-#include <KDebug>
+#include <QDebug>
 
 #include <QApplication>
 #include <QTimer>
@@ -865,7 +865,7 @@ void ActionManager::file_open( const KUrl &url )
     return;
   }
 
-  kDebug() << url.prettyUrl();
+  qDebug() << url.prettyUrl();
 
   importCalendar( url );
 }
@@ -893,11 +893,11 @@ void ActionManager::file_icalimport()
   retVal = proc.execute();
 
   if ( retVal < 0 ) {
-    kDebug() << "Error executing ical2vcal.";
+    qDebug() << "Error executing ical2vcal.";
     return;
   }
 
-  kDebug() << "ical2vcal return value:" << retVal;
+  qDebug() << "ical2vcal return value:" << retVal;
 
   if ( retVal >= 0 && retVal <= 2 ) {
     // now we need to MERGE what is in the iCal to the current calendar.
@@ -990,7 +990,7 @@ bool ActionManager::saveURL()
   }
 
   if ( !mCalendarView->saveCalendar( mFile ) ) {
-    kDebug() << "calendar view save failed.";
+    qDebug() << "calendar view save failed.";
     return false;
   }
 
@@ -1033,7 +1033,7 @@ void ActionManager::exportHTML()
 void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMode )
 {
   if ( !settings ) {
-    kWarning() << "Settings is null" << settings;
+    qWarning() << "Settings is null" << settings;
     return;
   }
 
@@ -1097,14 +1097,14 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
 
 bool ActionManager::saveAsURL( const KUrl &url )
 {
-  kDebug() << url.prettyUrl();
+  qDebug() << url.prettyUrl();
 
   if ( url.isEmpty() ) {
-    kDebug() << "Empty URL.";
+    qDebug() << "Empty URL.";
     return false;
   }
   if ( !url.isValid() ) {
-    kDebug() << "Malformed URL.";
+    qDebug() << "Malformed URL.";
     return false;
   }
 
@@ -1132,7 +1132,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
     KMessageBox::sorry( dialogParent(),
                         i18n( "Unable to save calendar to the file %1.", mFile ),
                         i18n( "Error" ) );
-    kDebug() << "failed";
+    qDebug() << "failed";
     mURL = URLOrig;
     mFile = fileOrig;
     delete tempFile;
@@ -1144,7 +1144,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
 #ifdef AKONADI_PORT_DISABLED // can go away, kept for reference
 bool ActionManager::saveModifiedURL()
 {
-  kDebug();
+  qDebug();
 
   // If calendar isn't modified do nothing.
   if ( !mCalendarView->isModified() ) {
@@ -1203,14 +1203,14 @@ KUrl ActionManager::getSaveURL()
 
   url.setFileName( filename );
 
-  kDebug() << "url:" << url.url();
+  qDebug() << "url:" << url.url();
 
   return url;
 }
 
 void ActionManager::saveProperties( KConfigGroup &config )
 {
-  kDebug();
+  qDebug();
 
   config.writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
   if ( mMainWindow->hasDocument() ) {
@@ -1226,7 +1226,7 @@ void ActionManager::readProperties( const KConfigGroup & )
 // Configuration changed as a result of the options dialog.
 void ActionManager::updateConfig()
 {
-  kDebug();
+  qDebug();
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days",
                               KOPrefs::instance()->mNextXDays ) );
 
@@ -1292,7 +1292,7 @@ bool ActionManager::openURL(const QString &url)
 
 void ActionManager::dumpText( const QString &str )
 {
-  kDebug() << str;
+  qDebug() << str;
 }
 
 void ActionManager::toggleDateNavigator()
@@ -1369,7 +1369,7 @@ bool ActionManager::handleCommandLine()
   bool ret = true;
 
   if ( !mainWindow ) {
-    kError() << "Unable to find default calendar resources view.";
+    qCritical() << "Unable to find default calendar resources view.";
     ret = false;
   } else if ( args->count() <= 0 ) {
     // No filenames given => all other args are meaningless, show main Window
@@ -1408,18 +1408,18 @@ bool ActionManager::addIncidence( const QString &ical )
 
 void ActionManager::downloadNewStuff()
 {
-  kDebug();
+  qDebug();
   KNS3::DownloadDialog dialog(mCalendarView);
   dialog.exec();
   foreach ( const KNS3::Entry &e, dialog.installedEntries() ) {
-    kDebug() << " downloadNewStuff :";
+    qDebug() << " downloadNewStuff :";
     const QStringList lstFile = e.installedFiles();
     if ( lstFile.count() != 1 ) {
       continue;
     }
     const QString file = lstFile.at( 0 );
     const KUrl filename( file );
-    kDebug() << "filename :" << filename;
+    qDebug() << "filename :" << filename;
     if( ! filename.isValid() ) {
       continue;
     }
@@ -1943,7 +1943,7 @@ void ActionManager::openTodoEditor( const QString &summary,
   Q_UNUSED( attendees );
   Q_UNUSED( attachmentMimetypes );
   Q_UNUSED( attachmentIsInline );
-  kWarning() << "Not implemented in korg-desktop";
+  qWarning() << "Not implemented in korg-desktop";
 }
 
 void ActionManager::openEventEditor( const QString &summary,
@@ -1959,7 +1959,7 @@ void ActionManager::openEventEditor( const QString &summary,
   Q_UNUSED( attendees );
   Q_UNUSED( attachmentMimetypes );
   Q_UNUSED( attachmentIsInline );
-  kWarning() << "Not implemented in korg-desktop";
+  qWarning() << "Not implemented in korg-desktop";
 }
 
 void ActionManager::handleExportJobResult( KJob *job )

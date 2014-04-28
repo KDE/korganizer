@@ -165,7 +165,7 @@ void ThemeImporter::readUnknownElement()
 {
   Q_ASSERT( isStartElement() );
 
-  kWarning() << "Unknown element found at line" << lineNumber()
+  qWarning() << "Unknown element found at line" << lineNumber()
              << ", ending at column" << columnNumber()
              << ":" << name().toString();
 
@@ -470,8 +470,8 @@ void ThemeImporter::setColor( const QString &viewType, const int year,
         configGroup( v )->writeEntry( v + key, color );
       } else {
       // TODO: implement this when date-dependent themes will be enabled
-      kWarning() << "feature not yet implemented";
-      kWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
+      qWarning() << "feature not yet implemented";
+      qWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
                  << ":" << v << ":" << key << ":" << value;
       }
     }
@@ -527,8 +527,8 @@ void ThemeImporter::setFont( const QString &viewType, const int year,
       configGroup( v )->writeEntry( v + key, f );
     } else {
     // TODO: implement this when date-dependent themes will be enabled
-    kWarning() << "feature not yet implemented";
-    kWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
+    qWarning() << "feature not yet implemented";
+    qWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
                << ":" << v << ":" << key << ":" << family << "\t"
                << styleHint << "\t" << pointSize << "\t" << weight << "\t"
                << style << "\t" << sf;
@@ -546,8 +546,8 @@ void ThemeImporter::setPath( const QString &viewType, const int year,
         configGroup( v )->writePathEntry( v + key, value );
       } else {
       // TODO: implement this when date-dependent themes will be enabled
-      kWarning() << "feature not yet implemented";
-      kWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
+      qWarning() << "feature not yet implemented";
+      qWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
                  << ":" << v << ":" << key << ":" << value;
       }
     }
@@ -564,8 +564,8 @@ void ThemeImporter::setString( const QString &viewType, const int year,
         configGroup( v )->writeEntry( v + key, value );
       } else {
       // TODO: implement this when date-dependent themes will be enabled
-      kWarning() << "feature not yet implemented";
-      kWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
+      qWarning() << "feature not yet implemented";
+      qWarning() << "THEORICAL setting:" << year << "-" << month << "-" << day
                  << ":" << v << ":" << key << ":" << value;
       }
     }
