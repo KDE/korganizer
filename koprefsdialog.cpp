@@ -42,7 +42,7 @@
 #include <AkonadiWidgets/AgentTypeDialog>
 #include <AkonadiWidgets/CollectionComboBox>
 #include <AkonadiCore/CollectionModel>
-#include <Akonadi/calendar/calendarsettings.h>
+#include <Akonadi/Calendar/calendarsettings.h>
 
 #include <KCalCore/Event>
 #include <KCalCore/Journal>

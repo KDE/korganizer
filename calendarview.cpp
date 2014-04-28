@@ -66,10 +66,10 @@
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 
 #include <libkdepim/widgets/pimmessagebox.h>
-#include <Akonadi/calendar/freebusymanager.h>
-#include <Akonadi/calendar/history.h>
+#include <Akonadi/Calendar/freebusymanager.h>
+#include <Akonadi/Calendar/history.h>
 #include <Akonadi/Calendar/IncidenceChanger>
-#include <Akonadi/calendar/calendarsettings.h>
+#include <Akonadi/Calendar/calendarsettings.h>
 #include <Akonadi/Calendar/CalendarClipboard>
 
 #include <pimcommon/acl/collectionaclpage.h>

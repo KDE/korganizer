@@ -34,7 +34,7 @@
 #include <KCalCore/Visitor>
 #include <KCalCore/ScheduleMessage>
 
-#include <Akonadi/calendar/itiphandler.h>
+#include <Akonadi/Calendar/itiphandler.h>
 
 #include <calendarsupport/messagewidget.h>
 
