@@ -236,15 +236,15 @@ set(korganizerprivate_LIB_SRCS
     ActionManager calendaradaptor KOrgCalendarAdaptor
   )
 
-  qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
+  qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     org.kde.korganizer.Korganizer.xml
   )
 
-  qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
+  qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     ${CMAKE_SOURCE_DIR}/korgac/org.kde.korganizer.KOrgac.xml
   )
 
-  qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
+  qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml
   )
 
