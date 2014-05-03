@@ -51,7 +51,7 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
 {
   setAttribute(Qt::WA_DeleteOnClose);
   setFaceType( Tabbed );
-  //QT5 setCaption( i18n( "Export Calendar as Web Page" ) );
+  setWindowTitle( i18n( "Export Calendar as Web Page" ) );
   //QT5 setButtons( /*Help|*/Default|User1|Cancel );
   /*enableButton( KDialog::Help, false );*/
   //QT5 setDefaultButton( User1 );
