@@ -33,7 +33,7 @@
 #include <KCalCore/Attendee>
 #include <KCalCore/Person>
 
-#include <KPIMUtils/Email>
+#include <KPIMUtils/kpimutils/Email>
 
 #include <KIcon>
 #include <KLocalizedString>
