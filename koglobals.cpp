@@ -25,7 +25,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KHolidays/HolidayRegion>
+#include <KHolidays/kholidays/HolidayRegion>
 
 #include <KGlobal>
 #include <KIconLoader>

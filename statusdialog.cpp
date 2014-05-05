@@ -23,7 +23,7 @@
 */
 #include "statusdialog.h"
 
-#include <KCalUtils/Stringify>
+#include <KCalUtils/kcalutils/Stringify>
 
 #include <KComboBox>
 #include <KLocalizedString>

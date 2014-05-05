@@ -44,7 +44,7 @@
 #include "reminderclient.h"
 #include "kocheckableproxymodel.h"
 
-#include <KHolidays/Holidays>
+#include <KHolidays/kholidays/Holidays>
 
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/eventarchiver.h>

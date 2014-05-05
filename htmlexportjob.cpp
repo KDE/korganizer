@@ -30,7 +30,7 @@
 
 #include <KCalCore/Attendee>
 
-#include <KCalUtils/IncidenceFormatter>
+#include <KCalUtils/kcalutils/IncidenceFormatter>
 
 #include <KCalendarSystem>
 #include <QDebug>

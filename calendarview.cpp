@@ -51,7 +51,7 @@
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
 
-#include <KHolidays/Holidays>
+#include <KHolidays/kholidays/Holidays>
 
 #include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
@@ -85,9 +85,9 @@
 #include <KCalCore/ICalFormat>
 #include <KCalCore/VCalFormat>
 
-#include <KCalUtils/ICalDrag>
-#include <KCalUtils/Stringify>
-#include <KCalUtils/DndFactory>
+#include <KCalUtils/kcalutils/ICalDrag>
+#include <KCalUtils/kcalutils/Stringify>
+#include <KCalUtils/kcalutils/DndFactory>
 
 
 #include <KFileDialog>
