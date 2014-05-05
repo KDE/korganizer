@@ -85,9 +85,9 @@
 #include <KCalCore/ICalFormat>
 #include <KCalCore/VCalFormat>
 
-#include <KCalUtils/kcalutils/ICalDrag>
-#include <KCalUtils/kcalutils/Stringify>
-#include <KCalUtils/kcalutils/DndFactory>
+#include <KCalUtils/ICalDrag>
+#include <KCalUtils/Stringify>
+#include <KCalUtils/DndFactory>
 
 
 #include <KFileDialog>

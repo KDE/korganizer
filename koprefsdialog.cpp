@@ -47,9 +47,9 @@
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
 
-#include <KHolidays/kholidays/Holidays>
+#include <KHolidays/Holidays>
 
-#include <MailTransport/mailtransport/TransportManagementWidget>
+#include <MailTransport/TransportManagementWidget>
 
 #include <KCalendarSystem>
 #include <KColorButton>

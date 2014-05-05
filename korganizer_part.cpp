@@ -32,7 +32,7 @@
 
 #include <calendarsupport/utils.h>
 
-#include <KCalUtils/kcalutils/IncidenceFormatter>
+#include <KCalUtils/IncidenceFormatter>
 
 #include <KStatusBar>
 #include <KParts/StatusBarExtension>
