@@ -26,7 +26,7 @@
 #ifndef KORG_KOAPP_H
 #define KORG_KOAPP_H
 
-#include <KontactInterface/kontactinterface/PimUniqueApplication>
+#include <KontactInterface/PimUniqueApplication>
 
 class KUrl;
 
