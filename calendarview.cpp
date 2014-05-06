@@ -453,7 +453,7 @@ void CalendarView::writeSettings()
   mViewManager->writeSettings( config );
   mTodoList->saveLayout( config, QLatin1String( "Sidebar Todo View" ) );
 
-  Akonadi::CalendarSettings::self()->writeConfig();
+  Akonadi::CalendarSettings::self()->save();
   KOPrefs::instance()->writeConfig();
   CalendarSupport::KCalPrefs::instance()->writeConfig();
 

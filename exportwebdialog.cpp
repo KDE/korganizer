@@ -56,7 +56,6 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
   /*enableButton( KDialog::Help, false );*/
   //QT5 setDefaultButton( User1 );
   setModal( false );
-  //QT5 showButtonSeparator( false );
   //QT5 setButtonText( User1, i18n( "Export" ) );
 
   setupGeneralPage();

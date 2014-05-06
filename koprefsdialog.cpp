@@ -1235,7 +1235,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
   cfg.deleteGroup( CalendarSupport::KCalPrefs::instance()->email() );
 
 
-  Akonadi::CalendarSettings::self()->writeConfig();
+  Akonadi::CalendarSettings::self()->save();
 }
 
 extern "C"
