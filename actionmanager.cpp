@@ -92,6 +92,7 @@
 
 #include <QApplication>
 #include <QTimer>
+#include <KSharedConfig>
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -1266,7 +1267,7 @@ void ActionManager::showTip()
 
 void ActionManager::showTipOnStart()
 {
-  KConfigGroup config( KGlobal::config(), "TipOfDay" );
+  KConfigGroup config( KSharedConfig::openConfig(), "TipOfDay" );
   KTipDialog::setShowOnStart( config.readEntry( "RunOnStart", false ) );
   KTipDialog::showTip( dialogParent() );
 }
