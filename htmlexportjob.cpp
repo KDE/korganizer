@@ -42,6 +42,7 @@
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
+#include <KLocale>
 
 using namespace KOrg;
 
@@ -300,7 +301,7 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
     *ts << "<h2>"
         << i18nc( "@title month and year", "%1 %2", hMon, hYear )
         << "</h2>" << endl;
-    if ( KGlobal::locale()->weekStartDay() == 1 ) {
+    if ( KLocale::global()->weekStartDay() == 1 ) {
       start = start.addDays( 1 - start.dayOfWeek() );
     } else {
       if ( start.dayOfWeek() != 7 ) {
@@ -312,7 +313,7 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
     // Write table header
     *ts << "  <tr>";
     for ( int i=0; i < 7; ++i ) {
-      *ts << "<th>" << KGlobal::locale()->calendar()->weekDayName( start.addDays(i) ) << "</th>";
+      *ts << "<th>" << KLocale::global()->calendar()->weekDayName( start.addDays(i) ) << "</th>";
     }
     *ts << "</tr>" << endl;
 
@@ -408,7 +409,7 @@ void HtmlExportJob::createEventList( QTextStream *ts )
     if ( !events.isEmpty() ) {
       *ts << "  <tr><td colspan=\"" << QString::number( columns )
           << "\" class=\"datehead\"><i>"
-          << KGlobal::locale()->formatDate( dt )
+          << KLocale::global()->formatDate( dt )
           << "</i></td></tr>" << endl;
 
       foreach ( const KCalCore::Event::Ptr &event, events ) {

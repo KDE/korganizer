@@ -73,7 +73,7 @@ void ConfigDialog::load()
   KConfigGroup group( &config, "Hebrew Calendar Plugin" );
   mIsraelBox->setChecked(
     group.readEntry( "UseIsraelSettings",
-                     ( KGlobal::locale()->country() == QLatin1String( ".il" ) ) ) );
+                     ( KLocale::global()->country() == QLatin1String( ".il" ) ) ) );
   mParshaBox->setChecked( group.readEntry( "ShowParsha", true ) );
   mCholBox->setChecked( group.readEntry( "ShowChol_HaMoed", true ) );
   mOmerBox->setChecked( group.readEntry( "ShowOmer", true ) );

@@ -44,6 +44,7 @@
 #include <QPainter>
 #include <QToolTip>
 #include <QMimeData>
+#include <KLocale>
 
 // ============================================================================
 //  K O D A Y M A T R I X
@@ -235,7 +236,7 @@ void KODayMatrix::updateView( const QDate &actdate )
     QString holiStr;
 
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[i] ) ==
-           KGlobal::locale()->weekDayOfPray() ) ||
+           KLocale::global()->weekDayOfPray() ) ||
          !holidays.isEmpty() ) {
       if ( !holidays.isEmpty() ) {
         holiStr = holidays.join( i18nc( "delimiter for joining holiday names", "," ) );
@@ -892,7 +893,7 @@ QPair<QDate,QDate> KODayMatrix::matrixLimits( const QDate &month )
   calSys->setDate( d, calSys->year( month ), calSys->month( month ), 1 );
 
   const int dayOfWeek = calSys->dayOfWeek( d );
-  const int weekstart = KGlobal::locale()->weekStartDay();
+  const int weekstart = KLocale::global()->weekStartDay();
 
   d = d.addDays( -( 7 + dayOfWeek - weekstart ) % 7 );
 

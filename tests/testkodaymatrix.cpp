@@ -23,6 +23,7 @@
 #include "../kodaymatrix.h"
 
 #include <qtest_kde.h>
+#include <KLocale>
 QTEST_KDEMAIN( KODayMatrixTest, GUI )
 
 typedef QPair<QDate,QDate> DateRange;
@@ -30,7 +31,7 @@ typedef QPair<QDate,QDate> DateRange;
 void KODayMatrixTest::testMatrixLimits()
 {
   QMap<QDate,DateRange> dates;
-  KGlobal::locale()->setWeekStartDay( 1 ); // Monday
+  KLocale::global()->setWeekStartDay( 1 ); // Monday
   dates.insert( QDate( 2011, 1, 1 ), DateRange( QDate( 2010, 12, 27 ), QDate( 2011, 2, 6 ) ) );
   dates.insert( QDate( 2011, 2, 1 ), DateRange( QDate( 2011, 1, 31 ), QDate( 2011, 3, 13 ) ) );
   dates.insert( QDate( 2011, 3, 1 ), DateRange( QDate( 2011, 2, 28 ), QDate( 2011, 4, 10 ) ) );
@@ -46,8 +47,8 @@ void KODayMatrixTest::testMatrixLimits()
   }
 
   QMap<QDate,DateRange> dates2;
-  KGlobal::locale()->setWeekStartDay( 1 ); // Monday
-  KGlobal::locale()->setWeekStartDay( 7 ); // Sunday
+  KLocale::global()->setWeekStartDay( 1 ); // Monday
+  KLocale::global()->setWeekStartDay( 7 ); // Sunday
   dates2.insert( QDate( 2011, 1, 1 ), DateRange( QDate( 2010, 12, 26 ), QDate( 2011, 2, 5 ) ) );
   dates2.insert( QDate( 2011, 2, 1 ), DateRange( QDate( 2011, 1, 30 ), QDate( 2011, 3, 12 ) ) );
   dates2.insert( QDate( 2011, 3, 1 ), DateRange( QDate( 2011, 2, 27 ), QDate( 2011, 4, 9 ) ) );

@@ -31,6 +31,7 @@
 #include <KIconLoader>
 
 #include <QApplication>
+#include <KLocale>
 
 class KOGlobalsSingletonPrivate
 {
@@ -64,7 +65,7 @@ KOGlobals::~KOGlobals()
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
 {
-  return KGlobal::locale()->calendar();
+  return KLocale::global()->calendar();
 }
 
 bool KOGlobals::reverseLayout()

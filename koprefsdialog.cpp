@@ -77,6 +77,7 @@
 #include <QTimeEdit>
 #include <QTreeWidget>
 #include <QVBoxLayout>
+#include <KLocale>
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -350,7 +351,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       foreach ( const QString & regionCode, regions ) {
         QString name = KHolidays::HolidayRegion::name( regionCode );
         QString languageName =
-          KGlobal::locale()->languageCodeToName(
+          KLocale::global()->languageCodeToName(
             KHolidays::HolidayRegion::languageCode( regionCode ) );
         QString label;
         if ( languageName.isEmpty() ) {
@@ -385,7 +386,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       workingHoursLayout->addLayout( workDaysLayout );
 
       // Respect start of week setting
-      int weekStart = KGlobal::locale()->weekStartDay();
+      int weekStart = KLocale::global()->weekStartDay();
       for ( int i=0; i < 7; ++i ) {
         const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
         QString weekDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
@@ -583,7 +584,7 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
-    KGlobal::locale()->insertCatalog( QLatin1String("timezones4") );
+    //QT5 KLocale::global()->insertCatalog( QLatin1String("timezones4") );
     return new KOPrefsDialogTime( KOGlobals::self()->componentData(), parent );
   }
 }
@@ -932,14 +933,14 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   KPIM::KPrefsWidFont *timeBarFont =
      addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
-                KGlobal::locale()->formatTime( QTime( 12, 34 ) ) );
+                KLocale::global()->formatTime( QTime( 12, 34 ) ) );
   fontLayout->addWidget( timeBarFont->label(), 0, 0 );
   fontLayout->addWidget( timeBarFont->preview(), 0, 1 );
   fontLayout->addWidget( timeBarFont->button(), 0, 2 );
 
   KPIM::KPrefsWidFont *monthViewFont =
     addWidFont( KOPrefs::instance()->monthViewFontItem(), fontFrame,
-                KGlobal::locale()->formatTime( QTime( 12, 34 ) ) + QLatin1Char(' ') +
+                KLocale::global()->formatTime( QTime( 12, 34 ) ) + QLatin1Char(' ') +
                 i18nc( "@label", "Event text" ) );
 
   fontLayout->addWidget( monthViewFont->label(), 1, 0 );
@@ -955,7 +956,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   KPIM::KPrefsWidFont *marcusBainsFont =
     addWidFont( KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
-                KGlobal::locale()->formatTime( QTime( 12, 34, 23 ) ) );
+                KLocale::global()->formatTime( QTime( 12, 34, 23 ) ) );
   fontLayout->addWidget( marcusBainsFont->label(), 3, 0 );
   fontLayout->addWidget( marcusBainsFont->preview(), 3, 1 );
   fontLayout->addWidget( marcusBainsFont->button(), 3, 2 );

@@ -93,6 +93,7 @@
 #include <QApplication>
 #include <QTimer>
 #include <KSharedConfig>
+#include <KLocale>
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -1817,7 +1818,7 @@ void ActionManager::goDate( const QDate &date )
 
 void ActionManager::goDate( const QString &date )
 {
-  goDate( KGlobal::locale()->readDate( date ) );
+  goDate( KLocale::global()->readDate( date ) );
 }
 
 void ActionManager::showDate( const QDate &date )
