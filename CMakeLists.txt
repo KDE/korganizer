@@ -25,7 +25,8 @@ include_directories(
   ${ZLIB_INCLUDE_DIRS}
 )
 
-add_subdirectory(tests)
+#REACTIVATE
+#add_subdirectory(tests)
 add_subdirectory(interfaces)
 if(KDEPIM_BUILD_DESKTOP)
   add_subdirectory(pixmaps)

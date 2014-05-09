@@ -23,7 +23,7 @@
 */
 
 #include <KApplication>
-#include <KAboutData>
+#include <K4AboutData>
 #include <KCmdLineArgs>
 #include <KLocalizedString>
 #include <QDebug>
@@ -32,12 +32,12 @@
 
 int main ( int argc, char **argv )
 {
-  KAboutData aboutData( "korganizer",
+  K4AboutData aboutData( "korganizer",
                         0,
                         ki18n( "KOrganizer Theming Stub" ),
                         "0.001",
                         ki18n( "DO NOT USE - Stub doing various things with KOrganizer themes" ),
-                        KAboutData::License_GPL,
+                        K4AboutData::License_GPL,
                         ki18n( "© 2007 Loïc Corbasson" ),
                         KLocalizedString(),
                         "http://blog.loic.corbasson.fr/",

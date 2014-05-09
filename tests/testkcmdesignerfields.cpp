@@ -17,7 +17,7 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <kapplication.h>
 #include <kcmdlineargs.h>
 #include <qdebug.h>
@@ -38,7 +38,7 @@ class MyDesignerFields : public KCMDesignerFields
 
 int main(int argc,char **argv)
 {
-  KAboutData aboutData( "testkcmdesignerfields", 0, KLocalizedString(), "0.1" );
+  K4AboutData aboutData( "testkcmdesignerfields", 0, KLocalizedString(), "0.1" );
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   KApplication app;

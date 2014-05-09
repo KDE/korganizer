@@ -22,7 +22,7 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <kapplication.h>
 #include <qdebug.h>
 #include <klocale.h>
@@ -34,7 +34,7 @@
 
 int main(int argc,char **argv)
 {
-  KAboutData aboutData("korgplugins", 0,ki18n("KOrgPlugins"),"0.1");
+  K4AboutData aboutData("korgplugins", 0,ki18n("KOrgPlugins"),"0.1");
   KCmdLineArgs::init(argc,argv,&aboutData);
 
   KApplication app;

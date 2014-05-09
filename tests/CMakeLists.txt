@@ -11,24 +11,24 @@ include_directories(
 
 set(korgplugins_SRCS korgplugins.cpp)
 
-kde4_add_executable(korgplugins TEST ${korgplugins_SRCS})
+add_executable(korgplugins ${korgplugins_SRCS})
 
 target_link_libraries(korgplugins
   korganizerprivate
   korganizer_core
-  ${KDEPIMLIBS_KHOLIDAYS_LIBS}
-  ${KDE4_KIO_LIBS}
+  KF5::Holidays
+  KF5::KIOCore
 )
 
 ########### next target ###############
 
-kde4_add_executable(testkodaymatrix TEST testkodaymatrix.cpp ../kodaymatrix.cpp)
+add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
 
 target_link_libraries(testkodaymatrix
-  ${KDEPIMLIBS_AKONADI_LIBS}
-  ${KDEPIMLIBS_KCALCORE_LIBS}
-  ${QT_QTCORE_LIBRARY}
-  ${QT_QTGUI_LIBRARY}
+  KF5::AkonadiCore
+  KF5::CalendarCore
+  
+  
   ${QT_QTTEST_LIBRARY}
   calendarsupport
   korganizer_core
@@ -37,9 +37,10 @@ target_link_libraries(testkodaymatrix
 
 ########### next target ###############
 
-kde4_add_executable(testkcmdesignerfields TEST testkcmdesignerfields.cpp ../kcmdesignerfields.cpp)
+add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfields.cpp)
 
 target_link_libraries(testkcmdesignerfields
-  ${KDE4_KIO_LIBS}
+  KF5::KIOCore
+  KF5::KDELibs4Support
   ${QT_QTUITOOLS_LIBRARY}
 )
