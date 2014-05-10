@@ -67,7 +67,7 @@ KOPrefs::~KOPrefs()
 KOPrefs *KOPrefs::instance()
 {
   if ( !sInstance.exists() ) {
-    sInstance->prefs->readConfig();
+    sInstance->prefs->load();
     sInstance->prefs->mEventViewsPrefs->readConfig();
   }
 
@@ -98,7 +98,7 @@ bool KOPrefs::usrWriteConfig()
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
-  return KConfigSkeleton::usrWriteConfig();
+  return KConfigSkeleton::usrSave();
 }
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )

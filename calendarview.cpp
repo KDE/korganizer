@@ -455,8 +455,8 @@ void CalendarView::writeSettings()
   mTodoList->saveLayout( config, QLatin1String( "Sidebar Todo View" ) );
 
   Akonadi::CalendarSettings::self()->save();
-  KOPrefs::instance()->writeConfig();
-  CalendarSupport::KCalPrefs::instance()->writeConfig();
+  KOPrefs::instance()->save();
+  CalendarSupport::KCalPrefs::instance()->save();
 
   writeFilterSettings( config );
 

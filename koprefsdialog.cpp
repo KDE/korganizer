@@ -551,8 +551,8 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
         }
       }
       KOPrefs::instance()->mWorkWeekMask = mask;
-      KOPrefs::instance()->writeConfig();
-      CalendarSupport::KCalPrefs::instance()->writeConfig();
+      KOPrefs::instance()->save();
+      CalendarSupport::KCalPrefs::instance()->save();
     }
 
     void setCombo( KComboBox *combo, const QString &text, const QStringList *tags = 0 )
@@ -1571,7 +1571,7 @@ QString KOPrefsDesignerFields::uiPath()
 void KOPrefsDesignerFields::writeActivePages( const QStringList &activePages )
 {
   CalendarSupport::KCalPrefs::instance()->setActiveDesignerFields( activePages );
-  CalendarSupport::KCalPrefs::instance()->writeConfig();
+  CalendarSupport::KCalPrefs::instance()->save();
 }
 
 QStringList KOPrefsDesignerFields::readActivePages()
