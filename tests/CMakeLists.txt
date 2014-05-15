@@ -27,9 +27,6 @@ add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
 target_link_libraries(testkodaymatrix
   KF5::AkonadiCore
   KF5::CalendarCore
-  
-  
-  ${QT_QTTEST_LIBRARY}
   calendarsupport
   korganizer_core
   korganizerprivate
