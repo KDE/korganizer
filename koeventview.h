@@ -92,8 +92,6 @@ class KOEventView : public KOrg::BaseView
     /** This view is a view for displaying events. */
     bool isEventView() { return true; }
 
-    int showMoveRecurDialog( const Akonadi::Item &inc, const QDate &date );
-
     /*
      * Sets the QObject that will receive key events that were made
      * while the new event dialog was still being created.
