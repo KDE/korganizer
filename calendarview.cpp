@@ -1804,7 +1804,7 @@ void CalendarView::exportWeb()
   Q_ASSERT(settings);
   // Manually read in the config, because parameterized kconfigxt objects don't
   // seem to load the config theirselves
-  settings->readConfig();
+  settings->load();
   ExportWebDialog *dlg = new ExportWebDialog( settings, this );
   connect( dlg, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
            this, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)) );
@@ -2442,8 +2442,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
         }
 
         if ( !( isFirst && isLast ) ) {
-          //QT5 fix return value !
-          km = PIMMessageBox::fourBtnMsgBox(
+            QDialogButtonBox::StandardButton returnValue = PIMMessageBox::fourBtnMsgBox(
             this,
             QMessageBox::Warning,
             message,
@@ -2451,6 +2450,21 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
             i18n( "Delete C&urrent" ),
             itemFuture,
             i18n( "Delete &All" ) );
+	    switch (returnValue) {
+		case QDialogButtonBox::Ok:
+		   km = KMessageBox::Ok;
+		   break;
+		case QDialogButtonBox::Yes:
+		   km = KMessageBox::Yes;
+		   break;
+		case QDialogButtonBox::No:
+		   km = KMessageBox::No;
+		   break;
+		case QDialogButtonBox::Cancel:
+                default:
+		   km = KMessageBox::Cancel;
+		   break;
+	    }
         } else {
           km = msgItemDelete( item );
         }
