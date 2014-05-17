@@ -2442,6 +2442,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
         }
 
         if ( !( isFirst && isLast ) ) {
+          //QT5 fix return value !
           km = PIMMessageBox::fourBtnMsgBox(
             this,
             QMessageBox::Warning,
