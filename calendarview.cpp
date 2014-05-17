@@ -2423,17 +2423,17 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
         bool isLast  = !incidence->recurrence()->getNextDateTime( itemDateTime ).isValid();
 
         QString message;
-        KGuiItem itemFuture( i18n( "Also Delete &Future" ) );
+        QString itemFuture( i18n( "Also Delete &Future" ) );
 
         if ( !isFirst && !isLast ) {
-          itemFuture.setEnabled( true );
+          //QT5 itemFuture.setEnabled( true );
           message = i18n( "The calendar item \"%1\" recurs over multiple dates. "
                           "Do you want to delete only the current one on %2, also "
                           "future occurrences, or all its occurrences?",
                           incidence->summary(),
                           KLocale::global()->formatDate( itemDate ) );
         } else {
-          itemFuture.setEnabled( false );
+          //QT5 itemFuture.setEnabled( false );
           message = i18n( "The calendar item \"%1\" recurs over multiple dates. "
                           "Do you want to delete only the current one on %2 "
                           "or all its occurrences?",
@@ -2447,9 +2447,9 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
             QMessageBox::Warning,
             message,
             i18n( "KOrganizer Confirmation" ),
-            KGuiItem ( i18n( "Delete C&urrent" ) ),
+            i18n( "Delete C&urrent" ),
             itemFuture,
-            KGuiItem( i18n( "Delete &All" ) ) );
+            i18n( "Delete &All" ) );
         } else {
           km = msgItemDelete( item );
         }

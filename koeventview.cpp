@@ -183,7 +183,7 @@ int KOEventView::showMoveRecurDialog( const Akonadi::Item &aitem, const QDate &d
 {
   const KCalCore::Incidence::Ptr inc = CalendarSupport::incidence( aitem );
   int answer = KMessageBox::Ok;
-  KGuiItem itemFuture( i18n( "Also &Future Items" ) );
+  QString itemFuture( i18n( "Also &Future Items" ) );
 
   KDateTime dateTime( date, CalendarSupport::KCalPrefs::instance()->timeSpec() );
   bool isFirst = !inc->recurrence()->getPreviousDateTime( dateTime ).isValid();
@@ -192,12 +192,12 @@ int KOEventView::showMoveRecurDialog( const Akonadi::Item &aitem, const QDate &d
   QString message;
 
   if ( !isFirst && !isLast ) {
-    itemFuture.setEnabled( true );
+    //QT5 itemFuture.setEnabled( true );
     message = i18n( "The item you are trying to change is a recurring item. "
                     "Should the changes be applied only to this single occurrence, "
                     "also to future items, or to all items in the recurrence?" );
   } else {
-    itemFuture.setEnabled( false );
+    //QT5 itemFuture.setEnabled( false );
     message = i18n( "The item you are trying to change is a recurring item. "
                     "Should the changes be applied only to this single occurrence "
                     "or to all items in the recurrence?" );
@@ -209,9 +209,9 @@ int KOEventView::showMoveRecurDialog( const Akonadi::Item &aitem, const QDate &d
       QMessageBox::Question,
       message,
       i18n( "Changing Recurring Item" ),
-      KGuiItem( i18n( "Only &This Item" ) ),
+      i18n( "Only &This Item" ),
       itemFuture,
-      KGuiItem( i18n( "&All Occurrences" ) ) );
+      i18n( "&All Occurrences" ) );
   }
 
   return answer;
