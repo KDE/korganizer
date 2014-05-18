@@ -32,6 +32,7 @@
 
 int main( int argc, char **argv )
 {
+  KLocalizedString::setApplicationDomain("korganizer");
   KOrg::AboutData aboutData;
 
   KCmdLineArgs::init( argc, argv, &aboutData );
