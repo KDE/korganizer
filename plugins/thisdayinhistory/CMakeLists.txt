@@ -10,13 +10,13 @@ set(korg_thisdayinhistory_PART_SRCS
   thisdayinhistory.cpp
 )
 
-kde4_add_plugin(korg_thisdayinhistory ${korg_thisdayinhistory_PART_SRCS})
+add_library(korg_thisdayinhistory MODULE ${korg_thisdayinhistory_PART_SRCS})
 
 target_link_libraries(korg_thisdayinhistory
   eventviews
   korganizerprivate
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
+  
+  
 )
 
 install(TARGETS

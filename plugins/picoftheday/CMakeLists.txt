@@ -11,13 +11,13 @@ set(korg_picoftheday_PART_SRCS
   picoftheday.cpp
 )
 
-kde4_add_plugin(korg_picoftheday ${korg_picoftheday_PART_SRCS})
+add_library(korg_picoftheday MODULE ${korg_picoftheday_PART_SRCS})
 
 target_link_libraries(korg_picoftheday
   eventviews
   korganizerprivate
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KIO_LIBS}
+  
+  KF5::KIOCore
 )
 
 install(TARGETS

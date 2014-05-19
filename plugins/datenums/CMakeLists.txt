@@ -11,13 +11,13 @@ set(korg_datenums_PART_SRCS
   datenums.cpp
 )
 
-kde4_add_plugin(korg_datenums ${korg_datenums_PART_SRCS})
+add_library(korg_datenums MODULE ${korg_datenums_PART_SRCS})
 
 target_link_libraries(korg_datenums
   eventviews
   korganizerprivate
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
+  
+  
 )
 install(TARGETS
   korg_datenums

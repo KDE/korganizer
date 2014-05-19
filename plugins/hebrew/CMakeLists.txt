@@ -14,13 +14,13 @@ set(korg_hebrew_PART_SRCS
   parsha.cpp
 )
 
-kde4_add_plugin(korg_hebrew ${korg_hebrew_PART_SRCS})
+add_library(korg_hebrew MODULE ${korg_hebrew_PART_SRCS})
 
 target_link_libraries(korg_hebrew
   eventviews
   korganizerprivate
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
+  
+  
 )
 
 install(TARGETS
