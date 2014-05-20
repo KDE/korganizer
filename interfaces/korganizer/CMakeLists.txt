@@ -6,13 +6,13 @@ set(korganizer_interfaces_LIB_SRCS
   mainwindow.cpp
 )
 
-kde4_add_library(korganizer_interfaces ${LIBRARY_TYPE} ${korganizer_interfaces_LIB_SRCS})
+add_library(korganizer_interfaces ${LIBRARY_TYPE} ${korganizer_interfaces_LIB_SRCS})
 
 target_link_libraries(korganizer_interfaces
   akonadi_next
   calendarsupport
-  ${KDEPIMLIBS_AKONADI_LIBS}
-  ${KDE4_KIO_LIBS}
+  KF5::AkonadiCore
+  KF5::KIOCore
 )
 
 set_target_properties(korganizer_interfaces PROPERTIES
