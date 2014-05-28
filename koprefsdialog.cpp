@@ -59,7 +59,7 @@
 #include <KMessageBox>
 #include <KService>
 #include <KStandardDirs>
-#include <KTabWidget>
+#include <QTabWidget>
 #include <KTimeComboBox>
 #include <KUrlRequester>
 #include <KWindowSystem>
@@ -83,7 +83,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
-  KTabWidget *tabWidget = new KTabWidget( this );
+  QTabWidget *tabWidget = new QTabWidget( this );
   topTopLayout->addWidget( tabWidget );
 
   // Personal Settings
@@ -305,7 +305,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       : KPIM::KPrefsModule( KOPrefs::instance(), inst, parent )
     {
       QVBoxLayout *layout = new QVBoxLayout( this );
-      KTabWidget *tabWidget = new KTabWidget( this );
+      QTabWidget *tabWidget = new QTabWidget( this );
       layout->addWidget( tabWidget );
 
       QFrame *regionalPage = new QFrame( parent );
@@ -601,7 +601,7 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
         mAgendaIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::AgendaType, this ) )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-      KTabWidget *tabWidget = new KTabWidget( this );
+      QTabWidget *tabWidget = new QTabWidget( this );
       topTopLayout->addWidget( tabWidget );
 
       connect( mMonthIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
@@ -805,7 +805,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   : KPIM::KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
-  KTabWidget *tabWidget = new KTabWidget( this );
+  QTabWidget *tabWidget = new QTabWidget( this );
   topTopLayout->addWidget( tabWidget );
 
   QWidget *colorFrame = new QWidget( this );

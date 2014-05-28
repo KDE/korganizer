@@ -43,7 +43,7 @@
 
 #include <KActionCollection>
 #include <KMessageBox>
-#include <KTabWidget>
+#include <QTabWidget>
 #include <KGlobal>
 
 #include <QAction>
@@ -473,7 +473,7 @@ void KOViewManager::showAgendaView()
   QWidget *parent = mMainView->viewStack();
   if ( showBoth ) {
     if ( !mAgendaViewTabs && showBoth ) {
-      mAgendaViewTabs = new KTabWidget( mMainView->viewStack() );
+      mAgendaViewTabs = new QTabWidget( mMainView->viewStack() );
       connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget*)),
               this, SLOT(currentAgendaViewTabChanged(QWidget*)) );
       mMainView->viewStack()->addWidget( mAgendaViewTabs );

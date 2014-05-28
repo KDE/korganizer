@@ -52,7 +52,7 @@ namespace Akonadi {
 }
 
 class KConfig;
-class KTabWidget;
+class QTabWidget;
 
 /**
   This class manages the views of the calendar. It owns the objects and handles
@@ -184,7 +184,7 @@ class KOViewManager : public QObject
     KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;
-    KTabWidget *mAgendaViewTabs;
+    QTabWidget *mAgendaViewTabs;
     int mAgendaViewTabIndex;
 
     RangeMode mRangeMode;
