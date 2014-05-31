@@ -214,7 +214,7 @@ set(korganizerprivate_LIB_SRCS
 
   kconfig_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc)
 
-  qt5_wrap_ui(korganizerprivate_LIB_SRCS
+  ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     accountscalendarwidget.ui
     filteredit_base.ui
     kogroupwareprefspage.ui
