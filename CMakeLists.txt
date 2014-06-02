@@ -54,8 +54,6 @@ if(KDEPIM_BUILD_DESKTOP)
   add_executable(korganizer ${korganizer_SRCS})
 
   target_link_libraries(korganizer
-    
-    ${KDE4_KPARTS_LIBRARY}
     KF5::Holidays
     KF5::KontactInterface
     KF5::AkonadiCore
@@ -121,8 +119,6 @@ if(KDEPIM_BUILD_DESKTOP)
     KF5::AkonadiCore
     KF5::CalendarCore
     KF5::CalendarUtils
-    
-    ${KDE4_KPARTS_LIBS}
   )
 
   install(TARGETS
@@ -263,7 +259,6 @@ set(korganizerprivate_LIB_SRCS
     kdgantt2
     korganizer_core
     korganizer_interfaces
-    ${KDEPIMLIBS_AKONADI_CALENDAR_LIBS}
     KF5::AkonadiCore
     KF5::Abc
     KF5::CalendarCore
@@ -274,7 +269,6 @@ set(korganizerprivate_LIB_SRCS
     KF5::MailTransport
     KF5::KCMUtils
     KF5::NewStuff
-    ${KDE4_KPRINTUTILS_LIBS}
     ${ZLIB_LIBRARIES}
   )
 
