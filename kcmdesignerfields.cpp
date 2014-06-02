@@ -22,7 +22,7 @@
 
 #include "kcmdesignerfields.h"
 
-#include <K4AboutData>
+#include <KAboutData>
 #include <QDebug>
 #include <KDirWatch>
 #include <KFileDialog>
@@ -147,16 +147,15 @@ KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *p
     mImportButton( 0 ),
     mDesignerButton( 0 )
 {
-#if 0 //QT5
-  K4AboutData *about = new K4AboutData( I18N_NOOP( "KCMDesignerfields" ), 0,
-                                      ki18n( "Qt Designer Fields Dialog" ),
-                                      0, KLocalizedString(), K4AboutData::License_LGPL,
-                                      ki18n( "(c), 2004 Tobias Koenig" ) );
-
-  about->addAuthor( ki18n( "Tobias Koenig" ), KLocalizedString(), "tokoe@kde.org" );
-  about->addAuthor( ki18n( "Cornelius Schumacher" ), KLocalizedString(), "schumacher@kde.org" );
-  setAboutData( about );
-#endif
+   KAboutData *about = new KAboutData(QStringLiteral("KCMDesignerfields"),
+                                     i18n("KCMDesignerfields"),
+                                     QString(),
+                                     i18n("Qt Designer Fields Dialog"),
+                                     KAboutLicense::LGPL,
+                                     i18n("(c) 2004 Tobias Koenig"));
+   about->addAuthor( ki18n( "Tobias Koenig" ).toString(), QString(), QStringLiteral("tokoe@kde.org") );
+   about->addAuthor( ki18n( "Cornelius Schumacher" ).toString(), QString(), QStringLiteral("schumacher@kde.org") );
+   setAboutData(about);
 }
 
 void KCMDesignerFields::delayedInit()
