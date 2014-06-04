@@ -55,7 +55,7 @@
 #include <KColorButton>
 #include <KComboBox>
 #include <KHBox>
-#include <KIntSpinBox>
+#include <QSpinBox>
 #include <KMessageBox>
 #include <KService>
 #include <KStandardDirs>
@@ -466,7 +466,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       remindersLayout->addWidget( reminderLabel, 0, 0 );
       reminderLabel->setWhatsThis(
         CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
-      mReminderTimeSpin  = new KIntSpinBox( defaultPage );
+      mReminderTimeSpin  = new QSpinBox( defaultPage );
       mReminderTimeSpin->setWhatsThis(
         CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin->setToolTip(
@@ -575,7 +575,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
   private:
     QStringList   tzonenames;
     KComboBox    *mHolidayCombo;
-    KIntSpinBox  *mReminderTimeSpin;
+    QSpinBox  *mReminderTimeSpin;
     KComboBox    *mReminderUnitsCombo;
     QCheckBox    *mWorkDays[7];
 };
