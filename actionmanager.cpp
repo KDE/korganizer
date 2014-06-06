@@ -72,7 +72,7 @@
 #include <KCmdLineArgs>
 #include <KFileDialog>
 #include <KGlobalSettings>
-#include <KMenu>
+#include <QMenu>
 #include <KMenuBar>
 #include <KMessageBox>
 #include <KMimeTypeTrader>
@@ -1641,7 +1641,7 @@ void ActionManager::openEventEditor( const QString &summary,
     action = IncidenceEditorNG::GlobalSettings::Link;
   } else if ( IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod() ==
               IncidenceEditorNG::GlobalSettings::Ask ) {
-    KMenu *menu = new KMenu( 0 );
+    QMenu *menu = new QMenu( 0 );
     QAction *attachLink = menu->addAction( i18n( "Attach as &link" ) );
     QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
     QAction *attachBody = menu->addAction( i18n( "Attach inline &without attachments" ) );
@@ -1746,7 +1746,7 @@ void ActionManager::openTodoEditor( const QString &summary,
   if ( attachmentMimetype != QLatin1String("message/rfc822") ) {
     action = KOPrefs::TodoAttachLink;
   } else if ( KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk ) {
-    KMenu *menu = new KMenu( 0 );
+    QMenu *menu = new QMenu( 0 );
     QAction *attachLink = menu->addAction( i18n( "Attach as &link" ) );
     QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
     menu->addSeparator();
