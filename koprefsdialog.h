@@ -31,6 +31,8 @@
 
 #include <libkdepim/prefs/kprefsdialog.h>
 
+class KPushButton;
+
 namespace Ui {
   class KOGroupwarePrefsPage;
 }

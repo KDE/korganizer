@@ -66,6 +66,7 @@
 #include <KGlobal>
 #include <QDebug>
 #include <KIcon>
+#include <KPushButton>
 
 #include <QCheckBox>
 #include <QFormLayout>
