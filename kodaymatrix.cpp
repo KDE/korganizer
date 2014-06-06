@@ -37,7 +37,7 @@
 
 #include <KCalendarSystem>
 #include <KIcon>
-#include <KMenu>
+#include <QMenu>
 #include <KGlobal>
 
 #include <QMouseEvent>
@@ -515,8 +515,8 @@ void KODayMatrix::mousePressEvent( QMouseEvent *e )
 
 void KODayMatrix::popupMenu( const QDate &date )
 {
-  KMenu popup( this );
-  popup.addTitle( date.toString() );
+  QMenu popup( this );
+  popup.setTitle( date.toString() );
   QAction *newEventAction = popup.addAction(
     KIcon( QLatin1String("appointment-new") ), i18n( "New E&vent..." ) );
   QAction *newTodoAction = popup.addAction(
@@ -674,7 +674,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       action = DRAG_MOVE;
     } else {
       QAction *copy = 0, *move = 0;
-      KMenu *menu = new KMenu( this );
+      QMenu *menu = new QMenu( this );
       if ( exist ) {
         move = menu->addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-paste") ), i18n( "&Move" ) );
         if ( /*existingEvent*/1 ) {
