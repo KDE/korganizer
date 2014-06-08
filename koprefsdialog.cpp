@@ -79,6 +79,7 @@
 #include <QTreeWidget>
 #include <QVBoxLayout>
 #include <KLocale>
+#include <QStandardPaths>
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -1232,7 +1233,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
     mGroupwarePage->retrieveSavePassword->isChecked());
 
   // clear the url cache for our user
-  const QString configFile = KStandardDirs::locateLocal( "data", QLatin1String("korganizer/freebusyurls") );
+  const QString configFile = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/freebusyurls") ;
   KConfig cfg( configFile );
   cfg.deleteGroup( CalendarSupport::KCalPrefs::instance()->email() );
 
@@ -1560,7 +1561,7 @@ KOPrefsDesignerFields::KOPrefsDesignerFields( const KComponentData &inst, QWidge
 
 QString KOPrefsDesignerFields::localUiDir()
 {
-  const QString dir = KStandardDirs::locateLocal( "data", QLatin1String("korganizer/designer/event/") );
+  const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/designer/event/") ;
   return dir;
 }
 

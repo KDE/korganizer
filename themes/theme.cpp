@@ -30,6 +30,7 @@
 #include <KZip>
 
 #include <QtCore/QFile>
+#include <QStandardPaths>
 
 
 using namespace KOrg;
@@ -151,7 +152,7 @@ void Theme::clearCurrentTheme()
 
 const QDir Theme::storageDir()
 {
-  QDir *dir = new QDir( KStandardDirs::locateLocal( "appdata", "theme" ) );
+  QDir *dir = new QDir( QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1Char('/') + "theme" ) ;
   return *dir;
 }
 

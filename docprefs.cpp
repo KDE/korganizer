@@ -28,6 +28,7 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KStandardDirs>
+#include <QStandardPaths>
 
 KConfig *DocPrefs::mConfig = 0;
 
@@ -35,7 +36,7 @@ DocPrefs::DocPrefs( const QString &type )
 {
   if ( !mConfig ) {
     mConfig = new KConfig(
-      KStandardDirs::locateLocal( "data", QLatin1String("korganizer/docprefs.") + type + QLatin1String(".kconfig") ) );
+      QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/docprefs.") + type + QLatin1String(".kconfig") ) ;
   }
 }
 

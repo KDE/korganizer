@@ -45,6 +45,7 @@
 #include <QTreeWidget>
 #include <QUiLoader>
 #include <QWhatsThis>
+#include <QStandardPaths>
 
 class PageItem : public QTreeWidgetItem
 {
@@ -295,7 +296,7 @@ void KCMDesignerFields::initGUI()
   layout->setSpacing( KDialog::spacingHint() );
   layout->setMargin( KDialog::marginHint() );
 
-  bool noDesigner = KStandardDirs::findExe( QLatin1String("designer") ).isEmpty();
+  bool noDesigner = QStandardPaths::findExecutable( QLatin1String("designer") ).isEmpty();
 
   if ( noDesigner ) {
     QString txt =
