@@ -36,7 +36,7 @@
 #include <AkonadiCore/ItemFetchScope>
 
 #include <KCalendarSystem>
-#include <KIcon>
+#include <QIcon>
 #include <QMenu>
 #include <KGlobal>
 
@@ -518,11 +518,11 @@ void KODayMatrix::popupMenu( const QDate &date )
   QMenu popup( this );
   popup.setTitle( date.toString() );
   QAction *newEventAction = popup.addAction(
-    KIcon( QLatin1String("appointment-new") ), i18n( "New E&vent..." ) );
+    QIcon::fromTheme( QLatin1String("appointment-new") ), i18n( "New E&vent..." ) );
   QAction *newTodoAction = popup.addAction(
-    KIcon( QLatin1String("task-new") ), i18n( "New &To-do..." ) );
+    QIcon::fromTheme( QLatin1String("task-new") ), i18n( "New &To-do..." ) );
   QAction *newJournalAction = popup.addAction(
-    KIcon( QLatin1String("journal-new") ), i18n( "New &Journal..." ) );
+    QIcon::fromTheme( QLatin1String("journal-new") ), i18n( "New &Journal..." ) );
   QAction *ret = popup.exec( QCursor::pos() );
   if ( ret == newEventAction ) {
     emit newEventSignal( date );

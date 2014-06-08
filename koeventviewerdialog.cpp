@@ -34,7 +34,7 @@
 
 #include <KLocalizedString>
 #include <KToolInvocation>
-#include <KIcon>
+#include <QIcon>
 
 KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent )
   : KDialog( parent )
@@ -42,7 +42,7 @@ KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidge
   setCaption( i18n( "Event Viewer" ) );
   setButtons( Close | User1 | User2 );
   setModal( false );
-  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), KIcon( QLatin1String("document-edit") ) ) );
+  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), QIcon::fromTheme( QLatin1String("document-edit") ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
   mEventViewer = new CalendarSupport::IncidenceViewer( calendar, this );
   setMainWidget( mEventViewer );

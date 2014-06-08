@@ -35,7 +35,7 @@
 
 #include <KPIMUtils/Email>
 
-#include <KIcon>
+#include <QIcon>
 #include <KLocalizedString>
 
 PublishDialog::PublishDialog( QWidget *parent )
@@ -63,10 +63,10 @@ PublishDialog::PublishDialog( QWidget *parent )
   setButtonWhatsThis( Help, i18n( "Click the <b>Help</b> button to read "
                                   "more information about Group Scheduling." ) );
 
-  mUI.mAdd->setIcon( KIcon( QLatin1String("list-add") ) );
-  mUI.mRemove->setIcon( KIcon( QLatin1String("list-remove") ) );
+  mUI.mAdd->setIcon( QIcon::fromTheme( QLatin1String("list-add") ) );
+  mUI.mRemove->setIcon( QIcon::fromTheme( QLatin1String("list-remove") ) );
   mUI.mRemove->setEnabled( false );
-  mUI.mSelectAddressee->setIcon( KIcon( QLatin1String("view-pim-contacts") ) );
+  mUI.mSelectAddressee->setIcon( QIcon::fromTheme( QLatin1String("view-pim-contacts") ) );
 
   connect( mUI.mListWidget, SIGNAL(itemSelectionChanged()),
            SLOT(updateInput()) );

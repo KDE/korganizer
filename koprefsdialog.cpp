@@ -65,7 +65,7 @@
 #include <KWindowSystem>
 #include <KGlobal>
 #include <QDebug>
-#include <KIcon>
+#include <QIcon>
 #include <KPushButton>
 
 #include <QCheckBox>
@@ -90,7 +90,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   // Personal Settings
   QWidget *personalFrame = new QWidget( this );
   QVBoxLayout *personalLayout = new QVBoxLayout( personalFrame );
-  tabWidget->addTab( personalFrame, KIcon( QLatin1String("preferences-desktop-personal") ),
+  tabWidget->addTab( personalFrame, QIcon::fromTheme( QLatin1String("preferences-desktop-personal") ),
                      i18nc( "@title:tab personal settings", "Personal" ) );
 
   KPIM::KPrefsWidBool *emailControlCenter =
@@ -118,7 +118,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   // Save Settings
   QFrame *saveFrame = new QFrame( this );
-  tabWidget->addTab( saveFrame, KIcon( QLatin1String("document-save") ),
+  tabWidget->addTab( saveFrame, QIcon::fromTheme( QLatin1String("document-save") ),
                      i18nc( "@title:tab", "Save" ) );
   QVBoxLayout *saveLayout = new QVBoxLayout( saveFrame );
 
@@ -156,7 +156,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   // System Tray Settings
   QFrame *systrayFrame = new QFrame( this );
   QVBoxLayout *systrayLayout = new QVBoxLayout( systrayFrame );
-  tabWidget->addTab( systrayFrame, KIcon( QLatin1String("preferences-other") ),
+  tabWidget->addTab( systrayFrame, QIcon::fromTheme( QLatin1String("preferences-other") ),
                      i18nc( "@title:tab systray settings", "System Tray" ) );
 
   QGroupBox *systrayGroupBox =
@@ -182,7 +182,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   //Calendar Account
   QFrame *calendarFrame = new QFrame( this );
-  tabWidget->addTab( calendarFrame, KIcon( QLatin1String("office-calendar") ),
+  tabWidget->addTab( calendarFrame, QIcon::fromTheme( QLatin1String("office-calendar") ),
                      i18nc( "@title:tab calendar account settings", "Calendars" ) );
 
   mAccountsCalendar.setupUi( calendarFrame );
@@ -310,7 +310,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       layout->addWidget( tabWidget );
 
       QFrame *regionalPage = new QFrame( parent );
-      tabWidget->addTab( regionalPage, KIcon( QLatin1String("flag") ),
+      tabWidget->addTab( regionalPage, QIcon::fromTheme( QLatin1String("flag") ),
                          i18nc( "@title:tab", "Regional" ) );
 
       QGridLayout *regionalLayout = new QGridLayout( regionalPage );
@@ -433,7 +433,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       regionalLayout->setRowStretch( 4, 1 );
 
       QFrame *defaultPage = new QFrame( parent );
-      tabWidget->addTab( defaultPage, KIcon( QLatin1String("draw-eraser") ),
+      tabWidget->addTab( defaultPage, QIcon::fromTheme( QLatin1String("draw-eraser") ),
                          i18nc( "@title:tab", "Default Values" ) );
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
       defaultLayout->setSpacing( KDialog::spacingHint() );
@@ -612,7 +612,7 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
 
       // Tab: Views->General
       QFrame *generalFrame = new QFrame( this );
-      tabWidget->addTab( generalFrame, KIcon( QLatin1String("view-choose") ),
+      tabWidget->addTab( generalFrame, QIcon::fromTheme( QLatin1String("view-choose") ),
                          i18nc( "@title:tab general settings", "General" ) );
 
       QBoxLayout *generalLayout = new QVBoxLayout( generalFrame );
@@ -659,7 +659,7 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
 
       // Tab: Views->Agenda View
       QFrame *agendaFrame = new QFrame( this );
-      tabWidget->addTab( agendaFrame, KIcon( QLatin1String("view-calendar-workweek") ),
+      tabWidget->addTab( agendaFrame, QIcon::fromTheme( QLatin1String("view-calendar-workweek") ),
                          i18nc( "@title:tab", "Agenda View" ) );
 
       QBoxLayout *agendaLayout = new QVBoxLayout( agendaFrame );
@@ -717,7 +717,7 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
 
       // Tab: Views->Month View
       QFrame *monthFrame = new QFrame( this );
-      tabWidget->addTab( monthFrame, KIcon( QLatin1String("view-calendar-month") ),
+      tabWidget->addTab( monthFrame, QIcon::fromTheme( QLatin1String("view-calendar-month") ),
                          i18nc( "@title:tab", "Month View" ) );
 
       QBoxLayout *monthLayout = new QVBoxLayout( monthFrame );
@@ -753,7 +753,7 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
 
       // Tab: Views->Todo View
       QFrame *todoFrame = new QFrame( this );
-      tabWidget->addTab( todoFrame, KIcon( QLatin1String("view-calendar-tasks") ),
+      tabWidget->addTab( todoFrame, QIcon::fromTheme( QLatin1String("view-calendar-tasks") ),
                          i18nc( "@title:tab", "Todo View" ) );
 
       QBoxLayout *todoLayout = new QVBoxLayout( todoFrame );
@@ -813,7 +813,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   topTopLayout->addWidget( colorFrame );
   QGridLayout *colorLayout = new QGridLayout(colorFrame);
   colorLayout->setSpacing( KDialog::spacingHint() );
-  tabWidget->addTab( colorFrame, KIcon( QLatin1String("preferences-desktop-color") ),
+  tabWidget->addTab( colorFrame, QIcon::fromTheme( QLatin1String("preferences-desktop-color") ),
                      i18nc( "@title:tab", "Colors" ) );
 
   // Holiday Color
@@ -926,7 +926,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   colorLayout->setRowStretch( 11, 1 );
 
   QWidget *fontFrame = new QWidget( this );
-  tabWidget->addTab( fontFrame, KIcon( QLatin1String("preferences-desktop-font") ),
+  tabWidget->addTab( fontFrame, QIcon::fromTheme( QLatin1String("preferences-desktop-font") ),
                      i18nc( "@title:tab", "Fonts" ) );
 
   QGridLayout *fontLayout = new QGridLayout( fontFrame );
@@ -1129,8 +1129,8 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KCompo
 
   mGroupwarePage->setupUi( widget );
 
-  mGroupwarePage->groupwareTab->setTabIcon( 0, KIcon( QLatin1String("go-up") ) );
-  mGroupwarePage->groupwareTab->setTabIcon( 1, KIcon( QLatin1String("go-down") ) );
+  mGroupwarePage->groupwareTab->setTabIcon( 0, QIcon::fromTheme( QLatin1String("go-up") ) );
+  mGroupwarePage->groupwareTab->setTabIcon( 1, QIcon::fromTheme( QLatin1String("go-down") ) );
 
   // signals and slots connections
 
