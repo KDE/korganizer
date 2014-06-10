@@ -39,7 +39,7 @@ class KOGlobalsSingletonPrivate
     KOGlobals instance;
 };
 
-K_GLOBAL_STATIC( KOGlobalsSingletonPrivate, sKOGlobalsSingletonPrivate )
+Q_GLOBAL_STATIC( KOGlobalsSingletonPrivate, sKOGlobalsSingletonPrivate )
 
 KOGlobals *KOGlobals::self()
 {

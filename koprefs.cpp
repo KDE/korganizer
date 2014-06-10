@@ -38,7 +38,7 @@ class KOPrefsPrivate
     KOPrefs *prefs;
 };
 
-K_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
+Q_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
 
 KOPrefs::KOPrefs() : KOPrefsBase()
 {
