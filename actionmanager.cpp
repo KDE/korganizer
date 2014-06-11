@@ -94,6 +94,7 @@
 #include <QTimer>
 #include <KSharedConfig>
 #include <KLocale>
+#include <QStandardPaths>
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -1055,7 +1056,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
 
     const QString fileName =
       KFileDialog::getSaveFileName(
-        KGlobalSettings::documentPath(),
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
         i18n( "*.html|HTML Files" ),
         dialogParent(),
         i18n( "Select path for HTML calendar export" ) );
