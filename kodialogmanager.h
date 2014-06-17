@@ -31,7 +31,7 @@
 class CalendarView;
 class FilterEditDialog;
 class SearchDialog;
-class KDialog;
+class QDialog;
 
 namespace CalendarSupport {
   class ArchiveDialog;
@@ -81,7 +81,7 @@ class KODialogManager : public QObject
 
     CalendarView *mMainView;
     KCMultiDialog *mOptionsDialog;
-    QPointer<KDialog> mCategoryEditDialog;
+    QPointer<QDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog;
     CalendarSupport::ArchiveDialog *mArchiveDialog;
     FilterEditDialog *mFilterEditDialog;

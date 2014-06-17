@@ -214,7 +214,7 @@ void KODialogManager::createCategoryEditor()
     mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
 
     mCategoryEditDialog->setModal( true );
-    mCategoryEditDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
+    //QT5 mCategoryEditDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
   }
 }
 
