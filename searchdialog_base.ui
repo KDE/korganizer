@@ -29,7 +29,7 @@
       </widget>
      </item>
      <item>
-      <widget class="KLineEdit" name="searchEdit">
+      <widget class="QLineEdit" name="searchEdit">
        <property name="toolTip">
         <string>Search pattern, use wildcards '*' and '?' as desired.</string>
        </property>
@@ -317,11 +317,6 @@
    <class>KComboBox</class>
    <extends>QComboBox</extends>
    <header>kcombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

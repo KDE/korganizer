@@ -80,7 +80,7 @@
            </widget>
           </item>
           <item>
-           <widget class="KLineEdit" name="mNameLineEdit"/>
+           <widget class="QLineEdit" name="mNameLineEdit"/>
           </item>
          </layout>
         </item>
@@ -281,11 +281,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
   <customwidget>
    <class>KIntNumInput</class>
    <extends>QWidget</extends>

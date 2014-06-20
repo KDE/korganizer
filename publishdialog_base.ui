@@ -103,14 +103,14 @@
       </widget>
      </item>
      <item>
-      <widget class="KLineEdit" name="mNameLineEdit">
+      <widget class="QLineEdit" name="mNameLineEdit">
        <property name="toolTip">
         <string>The recipient's name</string>
        </property>
        <property name="whatsThis">
         <string>This field contains the name of the recipient</string>
        </property>
-       <property name="ClearButtonShown" stdset="0">
+       <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>
       </widget>
@@ -130,7 +130,7 @@
       </widget>
      </item>
      <item>
-      <widget class="KLineEdit" name="mEmailLineEdit">
+      <widget class="QLineEdit" name="mEmailLineEdit">
        <property name="toolTip">
         <string>The recipient's email address</string>
        </property>
@@ -140,7 +140,7 @@
        <property name="text">
         <string/>
        </property>
-       <property name="ClearButtonShown" stdset="0">
+       <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>
       </widget>
@@ -149,13 +149,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>mListWidget</tabstop>
   <tabstop>mRemove</tabstop>
