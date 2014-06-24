@@ -27,7 +27,6 @@
 
 #include <KHolidays/kholidays/HolidayRegion>
 
-#include <KGlobal>
 #include <KIconLoader>
 
 #include <QApplication>

@@ -26,7 +26,6 @@
 #include <K4AboutData>
 #include <KCmdLineArgs>
 #include <KLocalizedString>
-#include <QDebug>
 
 #include "theme.h"
 

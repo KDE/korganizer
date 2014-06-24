@@ -71,7 +71,6 @@
 #include <KActionCollection>
 #include <KCmdLineArgs>
 #include <KFileDialog>
-#include <KGlobalSettings>
 #include <QMenu>
 #include <KMenuBar>
 #include <KMessageBox>

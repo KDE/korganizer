@@ -23,6 +23,7 @@
 #include "datenums.h"
 
 #include <KConfig>
+#include <KLocalizedString>
 
 #include <QButtonGroup>
 #include <QGroupBox>

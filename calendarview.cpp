@@ -95,7 +95,6 @@
 #include <KRun>
 #include <KVBox>
 #include <QDebug>
-#include <KGlobal>
 
 #include <QApplication>
 #include <QClipboard>

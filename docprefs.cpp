@@ -27,7 +27,6 @@
 
 #include <KConfig>
 #include <KConfigGroup>
-#include <KStandardDirs>
 #include <QStandardPaths>
 
 KConfig *DocPrefs::mConfig = 0;

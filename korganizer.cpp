@@ -40,7 +40,6 @@
 
 
 
-#include <QAction>
 #include <KActionCollection>
 #include <QDebug>
 #include <KShortcutsDialog>

@@ -30,8 +30,6 @@
 
 #include <QDebug>
 #include <KCalendarSystem>
-#include <KGlobal>
-#include <KLocalizedString>
 
 #include <QDate>
 #include <KLocale>

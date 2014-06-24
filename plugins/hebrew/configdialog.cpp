@@ -24,7 +24,6 @@
 #include <KConfig>
 #include <KLocalizedString>
 #include <KLocale>
-#include <KGlobal>
 
 #include <QCheckBox>
 #include <QFrame>

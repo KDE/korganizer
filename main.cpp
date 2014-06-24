@@ -28,7 +28,6 @@
 #include "korganizer.h"
 #include "korganizer_options.h"
 
-#include <KGlobal>
 
 int main( int argc, char **argv )
 {

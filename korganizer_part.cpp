@@ -36,7 +36,6 @@
 
 #include <KStatusBar>
 #include <KParts/StatusBarExtension>
-#include <KGlobal>
 #include <QDebug>
 
 #include <QVBoxLayout>

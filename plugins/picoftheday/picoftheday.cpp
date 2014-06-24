@@ -22,6 +22,7 @@
 #include "configdialog.h"
 
 #include <KConfig>
+#include <KLocalizedString>
 #include <QDebug>
 #include <KIO/Scheduler>
 

@@ -38,7 +38,6 @@
 #include <KCalendarSystem>
 #include <QIcon>
 #include <QMenu>
-#include <KGlobal>
 
 #include <QMouseEvent>
 #include <QPainter>

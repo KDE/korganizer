@@ -23,6 +23,7 @@
 
 #include <KConfig>
 #include <KConfigGroup>
+#include <KLocalizedString>
 
 class ThisDayInHistoryFactory : public DecorationFactory
 {

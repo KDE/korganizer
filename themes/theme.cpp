@@ -26,7 +26,6 @@
 #include <KIO/NetAccess>
 #include <QDebug>
 #include <KMimeType>
-#include <KStandardDirs>
 #include <KZip>
 
 #include <QtCore/QFile>
