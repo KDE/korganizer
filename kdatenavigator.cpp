@@ -36,6 +36,7 @@
 #include <QLabel>
 #include <QWheelEvent>
 #include <KLocale>
+#include <QFontDatabase>
 
 KDateNavigator::KDateNavigator( QWidget *parent )
   : QFrame( parent ), mBaseDate( 1970, 1, 1 )
@@ -54,7 +55,7 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   connect( mNavigatorBar, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int)) );
   connect( mNavigatorBar, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)));
 
-  QString generalFont = KGlobalSettings::generalFont().family();
+  QString generalFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont).family();
 
   // Set up the heading fields.
   for ( int i = 0; i < 7; ++i ) {

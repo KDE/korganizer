@@ -29,6 +29,7 @@
 #include <KGlobal>
 #include <QDebug>
 #include <QDir>
+#include <QFontDatabase>
 
 class KOPrefsPrivate
 {
@@ -44,7 +45,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 {
   mEventViewsPrefs = EventViews::PrefsPtr( new EventViews::Prefs( this ) );
 
-  mDefaultMonthViewFont = KGlobalSettings::generalFont();
+  mDefaultMonthViewFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont);
   // make it a bit smaller
   mDefaultMonthViewFont.setPointSize(
     qMax( mDefaultMonthViewFont.pointSize() - 2, 6 ) );
