@@ -29,6 +29,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
+#include <KDialog>
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/categoryconfig.h>
