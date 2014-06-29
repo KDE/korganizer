@@ -27,12 +27,13 @@
 
 #include <KComboBox>
 #include <KLocalizedString>
-#include <KPushButton>
+#include <QPushButton>
 #include <KStandardGuiItem>
 
 #include <QBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <KGuiItem>
 
 StatusDialog::StatusDialog( QWidget *parent )
   : KDialog( parent )
@@ -58,11 +59,13 @@ StatusDialog::StatusDialog( QWidget *parent )
   QBoxLayout *buttonLayout = new QHBoxLayout();
   topLayout->addItem( buttonLayout );
 
-  QPushButton *ok = new KPushButton( KStandardGuiItem::ok(), this );
+  QPushButton *ok = new QPushButton(this );
+  KGuiItem::assign(ok, KStandardGuiItem::ok());
   connect ( ok, SIGNAL(clicked()), this, SLOT(accept()) );
   buttonLayout->addWidget( ok );
 
-  QPushButton *cancel = new KPushButton( KStandardGuiItem::cancel(), this );
+  QPushButton *cancel = new QPushButton(this );
+  KGuiItem::assign(cancel, KStandardGuiItem::cancel());
   connect ( cancel, SIGNAL(clicked()), this, SLOT(reject()) );
   buttonLayout->addWidget( cancel );
 }
