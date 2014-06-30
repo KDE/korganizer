@@ -67,7 +67,7 @@
 #include <KGlobal>
 #include <QDebug>
 #include <QIcon>
-#include <KPushButton>
+#include <QPushButton>
 
 #include <QCheckBox>
 #include <QFormLayout>
@@ -1303,13 +1303,12 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
 
   QWidget *buttonRow = new QWidget( topFrame );
   QBoxLayout *buttonRowLayout = new QHBoxLayout( buttonRow );
-  mConfigureButton = new KPushButton(
-    KGuiItem( i18nc( "@action:button", "Configure &Plugin..." ),
+  mConfigureButton = new QPushButton( buttonRow );
+  KGuiItem::assign(mConfigureButton,     KGuiItem( i18nc( "@action:button", "Configure &Plugin..." ),
               QLatin1String("configure"), QString(),
               i18nc( "@info:whatsthis",
                      "This button allows you to configure"
-                     " the plugin that you have selected in the list above" ) ),
-    buttonRow );
+                     " the plugin that you have selected in the list above" ) ));
   buttonRowLayout->addWidget( mConfigureButton );
   buttonRowLayout->addItem( new QSpacerItem( 1, 1, QSizePolicy::Expanding ) );
   topLayout->addWidget( buttonRow );

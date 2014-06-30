@@ -31,7 +31,7 @@
 
 #include <libkdepim/prefs/kprefsdialog.h>
 
-class KPushButton;
+class QPushButton;
 
 namespace Ui {
   class KOGroupwarePrefsPage;
@@ -135,7 +135,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
     void buildList();
     QTreeWidget *mTreeWidget;
     QLabel *mDescription;
-    KPushButton *mConfigureButton;
+    QPushButton *mConfigureButton;
     QGroupBox *mPositioningGroupBox;
 
     //Decorations are not implemented in month view yet
