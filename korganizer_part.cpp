@@ -46,7 +46,7 @@ static const K4AboutData &createAboutData()
   return about;
 }
 
-//QT5 K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
+K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
 K_EXPORT_PLUGIN( KOrganizerFactory( createAboutData() ) )
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
@@ -195,3 +195,4 @@ void KOrganizerPart::setTitle()
   emit setWindowCaption( title );*/
 }
 
+#include "korganizer_part.moc"
