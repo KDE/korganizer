@@ -2422,7 +2422,7 @@ bool CalendarView::deleteIncidence( const Akonadi::Item &item, bool force )
         bool isLast  = !incidence->recurrence()->getNextDateTime( itemDateTime ).isValid();
 
         QString message;
-        QString itemFuture( i18n( "Also Delete &Future" ) );
+        QString itemFuture( i18n( "Also Delete &Future" ) ); //QT5 was a KGuiItem
 
         if ( !isFirst && !isLast ) {
           //QT5 itemFuture.setEnabled( true );
