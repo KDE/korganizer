@@ -52,11 +52,12 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
   setAttribute(Qt::WA_DeleteOnClose);
   setFaceType( Tabbed );
   setWindowTitle( i18n( "Export Calendar as Web Page" ) );
-  //QT5 setButtons( /*Help|*/Default|User1|Cancel );
-  /*enableButton( KDialog::Help, false );*/
-  //QT5 setDefaultButton( User1 );
+  setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::RestoreDefaults);
   setModal( false );
-  //QT5 setButtonText( User1, i18n( "Export" ) );
+  QPushButton *exportButton = new QPushButton(i18n( "Export" ));
+  exportButton->setDefault(true);
+  addActionButton(exportButton);
+
 
   setupGeneralPage();
   setupEventPage();
@@ -66,10 +67,9 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
 //  setupFreeBusyPage();
 //  setupAdvancedPage();
 
-  connect( this, SIGNAL(user1Clicked()), SLOT(slotOk()) );
-  connect( this, SIGNAL(cancelClicked()), SLOT(reject()) );
-  connect( this, SIGNAL(defaultClicked()), this, SLOT(slotDefault()) );
-  connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()) );
+  connect( exportButton, SIGNAL(clicked()), SLOT(slotOk()) );
+  connect( button(QDialogButtonBox::Cancel), SIGNAL(clicked()), SLOT(reject()) );
+  connect( button(QDialogButtonBox::RestoreDefaults), SIGNAL(clicked()), this, SLOT(slotDefault()) );
   readConfig();
   updateState();
 }
