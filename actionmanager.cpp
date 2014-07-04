@@ -27,7 +27,7 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-
+#include "config-kdepim.h"
 #include "actionmanager.h"
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
@@ -861,7 +861,7 @@ void ActionManager::file_open( const KUrl &url )
   // is that URL already opened somewhere else? Activate that window
   KOrg::MainWindow *korg = ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
-#ifdef Q_WS_X11
+#if KDEPIM_HAVE_X11
     KWindowSystem::activateWindow( korg->topLevelWidget()->winId() );
 #endif
     return;
