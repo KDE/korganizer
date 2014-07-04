@@ -54,9 +54,9 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
   setWindowTitle( i18n( "Export Calendar as Web Page" ) );
   setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::RestoreDefaults);
   setModal( false );
-  QPushButton *exportButton = new QPushButton(i18n( "Export" ));
-  exportButton->setDefault(true);
-  addActionButton(exportButton);
+  mExportButton = new QPushButton(i18n( "Export" ));
+  mExportButton->setDefault(true);
+  addActionButton(mExportButton);
 
 
   setupGeneralPage();
@@ -67,7 +67,7 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
 //  setupFreeBusyPage();
 //  setupAdvancedPage();
 
-  connect( exportButton, SIGNAL(clicked()), SLOT(slotOk()) );
+  connect( mExportButton, SIGNAL(clicked()), SLOT(slotOk()) );
   connect( button(QDialogButtonBox::Cancel), SIGNAL(clicked()), SLOT(reject()) );
   connect( button(QDialogButtonBox::RestoreDefaults), SIGNAL(clicked()), this, SLOT(slotDefault()) );
   readConfig();
@@ -179,7 +179,7 @@ void ExportWebDialog::setupGeneralPage()
 
 void ExportWebDialog::slotTextChanged( const QString &_text )
 {
-    //QT5 enableButton( User1, !_text.isEmpty() );
+    mExportButton->setEnabled( !_text.isEmpty() );
 }
 
 void ExportWebDialog::setupTodoPage()

@@ -26,7 +26,7 @@
 #define KORG_EXPORTWEBDIALOG_H
 
 #include <libkdepim/prefs/kprefsdialog.h>
-
+class QPushButton;
 namespace KOrg {
   class HTMLExportSettings;
 }
@@ -85,6 +85,7 @@ class ExportWebDialog : public KPageDialog, public KPIM::KPrefsWidManager
     QGroupBox *mDateRangeGroup;
     QCheckBox *mMonthViewCheckBox;
     QCheckBox *mEventListCheckBox;
+    QPushButton *mExportButton;
 };
 
 #endif // _EXPORTWEBDIALOG_H
