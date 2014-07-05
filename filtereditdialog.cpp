@@ -289,7 +289,7 @@ void FilterEdit::editCategorySelection()
   if ( !mCategorySelectDialog ) {
     mCategorySelectDialog = new KPIM::TagSelectionDialog( this );
     //QT5 mCategorySelectDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
-    //QT5 mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
+    mCategorySelectDialog->buttons()->setStandardButtons( QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help );
     connect(mCategorySelectDialog, SIGNAL(accepted()), this, SLOT(updateCategorySelection()));
   }
   mCategorySelectDialog->setSelection( mCurrent->categoryList() );
