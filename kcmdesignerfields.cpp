@@ -46,6 +46,7 @@
 #include <QUiLoader>
 #include <QWhatsThis>
 #include <QStandardPaths>
+#include <QDir>
 
 class PageItem : public QTreeWidgetItem
 {
@@ -181,7 +182,7 @@ void KCMDesignerFields::delayedInit()
 
   // Install a dirwatcher that will detect newly created or removed designer files
   KDirWatch *dw = new KDirWatch( this );
-  KStandardDirs::makeDir( localUiDir() );
+  QDir().mkpath( localUiDir() );
   dw->addDir( localUiDir(), KDirWatch::WatchFiles );
   connect( dw, SIGNAL(created(QString)), SLOT(rebuildList()) );
   connect( dw, SIGNAL(deleted(QString)), SLOT(rebuildList()) );
