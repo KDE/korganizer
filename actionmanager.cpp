@@ -846,7 +846,7 @@ void ActionManager::file_new()
 
 void ActionManager::file_open()
 {
-  const QString defaultPath = KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") );
+  const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/") ;
   const KUrl url = KFileDialog::getOpenUrl( defaultPath, QLatin1String("text/calendar"), dialogParent() );
 
   file_open( url );
@@ -924,7 +924,7 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_import()
 {
-  const KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") ),
+  const KUrl url = KFileDialog::getOpenUrl( QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
                                       QLatin1String("text/calendar"),
                                       dialogParent() );
   if ( !url.isEmpty() ) { // isEmpty if user canceled the dialog
@@ -1187,7 +1187,7 @@ bool ActionManager::saveModifiedURL()
 KUrl ActionManager::getSaveURL()
 {
   KUrl url =
-    KFileDialog::getSaveUrl( KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") ),
+    KFileDialog::getSaveUrl( QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
                              i18n( "*.ics *.vcs|Calendar Files" ),
                              dialogParent() );
 

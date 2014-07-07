@@ -41,6 +41,7 @@
 
 #include <QFrame>
 #include <QVBoxLayout>
+#include <QStandardPaths>
 
 PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   : KDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
@@ -140,7 +141,7 @@ void PreviewDialog::slotAdd()
   KUrl finalUrl = mOriginalUrl;
   if ( isTempFile() ) {
     const QString fileName =
-      KFileDialog::getSaveFileName( KStandardDirs::locateLocal( "data",QLatin1String("korganizer/") ),
+      KFileDialog::getSaveFileName( QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
                                     i18n( "*.vcs *.ics|Calendar Files" ),
                                     this, i18n( "Select path for new calendar" ) );
 
