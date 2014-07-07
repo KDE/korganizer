@@ -163,6 +163,7 @@ void PreviewDialog::slotAdd()
 
 bool PreviewDialog::isTempFile() const
 {
-  return mOriginalUrl.path().startsWith( KStandardDirs::locateLocal( "tmp", QLatin1String("") ) );
+  const QString tmpPath = QDir::tempPath();
+  return mOriginalUrl.path().startsWith( tmpPath );
 }
 
