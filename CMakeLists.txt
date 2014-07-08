@@ -311,7 +311,7 @@ set(korganizerprivate_LIB_SRCS
 
   install(FILES
     korganizerui.rc
-    DESTINATION ${DATA_INSTALL_DIR}/korganizer
+    DESTINATION ${KXMLGUI_INSTALL_DIR}/korganizer
   )
 
   install(FILES
