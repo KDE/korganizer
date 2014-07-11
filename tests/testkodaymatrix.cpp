@@ -22,9 +22,9 @@
 
 #include "../kodaymatrix.h"
 
-#include <qtest_kde.h>
+#include <qtest.h>
 #include <KLocale>
-QTEST_KDEMAIN( KODayMatrixTest, GUI )
+QTEST_MAIN( KODayMatrixTest )
 
 typedef QPair<QDate,QDate> DateRange;
 

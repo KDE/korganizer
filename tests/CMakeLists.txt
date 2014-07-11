@@ -18,6 +18,7 @@ target_link_libraries(korgplugins
   korganizer_core
   KF5::Holidays
   KF5::KIOCore
+  Qt5::Test
 )
 
 ########### next target ###############
@@ -30,14 +31,15 @@ target_link_libraries(testkodaymatrix
   calendarsupport
   korganizer_core
   korganizerprivate
+  Qt5::Test
 )
 
 ########### next target ###############
 
 add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfields.cpp)
-
+set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DKDESRCDIR="\\"${CMAKE_CURRENT_SOURCE_DIR}/\\"")
 target_link_libraries(testkcmdesignerfields
   KF5::KIOCore
   KF5::KDELibs4Support
-  ${QT_QTUITOOLS_LIBRARY}
+  Qt5::UiTools
 )

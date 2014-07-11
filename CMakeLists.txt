@@ -25,8 +25,7 @@ include_directories(
   ${ZLIB_INCLUDE_DIRS}
 )
 
-#REACTIVATE
-#add_subdirectory(tests)
+add_subdirectory(tests)
 add_subdirectory(interfaces)
 if(KDEPIM_BUILD_DESKTOP)
   add_subdirectory(pixmaps)
@@ -97,7 +96,7 @@ if(KDEPIM_BUILD_DESKTOP)
     KF5::Holidays
     KF5::MailTransport
     
-    ${QT_QTUITOOLS_LIBRARY}
+    Qt5::UiTools
   )
 
   install(TARGETS
@@ -220,7 +219,7 @@ set(korganizerprivate_LIB_SRCS
     timescaleedit_base.ui
   )
 
-  qt4_add_resources(korganizerprivate_LIB_SRCS
+  qt5_add_resources(korganizerprivate_LIB_SRCS
     agendaitem_pixmaps/agendaitemtheme.qrc)
 
   qt5_add_dbus_adaptor(korganizerprivate_LIB_SRCS
