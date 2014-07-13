@@ -212,7 +212,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
   //KLineEdit *searchCol = new KLineEdit( this );
   //searchCol->setClearButtonShown( true );
-  //searchCol->setClickMessage( i18nc( "@info/plain Displayed grayed-out inside the "
+  //searchCol->setPlaceholderText( i18nc( "@info/plain Displayed grayed-out inside the "
   //                                                   "textbox, verb to search", "Search" ) );
   //topLayout->addWidget( searchCol );
 

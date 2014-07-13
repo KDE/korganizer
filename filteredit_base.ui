@@ -19,7 +19,7 @@
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="KListWidgetSearchLine" name="searchline">
-           <property name="clickMessage">
+           <property name="placeholderText">
             <string>Search</string>
            </property>
           </widget>
