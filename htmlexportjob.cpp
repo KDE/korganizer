@@ -795,11 +795,11 @@ void HtmlExportJob::createFooter( QTextStream *ts )
   QString mail, name, credit, creditURL;*/
   if ( !d->mSettings->eMail().isEmpty() ) {
     if ( !d->mSettings->name().isEmpty() ) {
-      trailer += i18nc( "@info/plain page creator email link with name",
+      trailer += xi18nc( "@info/plain page creator email link with name",
                         "by <link url='mailto:%1'>%2</link> ",
                         d->mSettings->eMail(), d->mSettings->name() );
     } else {
-      trailer += i18nc( "@info/plain page creator email link",
+      trailer += xi18nc( "@info/plain page creator email link",
                         "by <link url='mailto:%1'>%2</link> ",
                         d->mSettings->eMail(), d->mSettings->eMail() );
     }
@@ -811,7 +811,7 @@ void HtmlExportJob::createFooter( QTextStream *ts )
   }
   if ( !d->mSettings->creditName().isEmpty() ) {
     if ( !d->mSettings->creditURL().isEmpty() ) {
-      trailer += i18nc( "@info/plain page credit with name and link",
+      trailer += xi18nc( "@info/plain page credit with name and link",
                         "with <link url='%1'>%2</link>",
                         d->mSettings->creditURL(), d->mSettings->creditName() );
     } else {

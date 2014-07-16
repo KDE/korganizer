@@ -175,7 +175,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
            "reminder daemon in your system tray (recommended)." ) );
 
   QLabel *note = new QLabel(
-    i18nc( "@info",
+    xi18nc( "@info",
            "<note>The daemon will continue running even if it is not shown "
            "in the system tray.</note>" ) );
   systrayGroupLayout->addWidget( note );
