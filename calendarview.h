@@ -67,7 +67,6 @@ namespace Akonadi {
   class TodoPurger;
 }
 
-class KVBox;
 
 class QSplitter;
 class QStackedWidget;
@@ -703,7 +702,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;
 
-    KVBox *mEventViewerBox;
+    QWidget *mEventViewerBox;
     CalendarSupport::IncidenceViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

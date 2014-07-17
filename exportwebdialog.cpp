@@ -28,10 +28,10 @@
 
 #include <KDateComboBox>
 #include <KFileDialog>
-#include <KHBox>
+#include <QHBoxLayout>
 #include <KMessageBox>
 #include <KUrlRequester>
-#include <KVBox>
+#include <QVBoxLayout>
 #include <KLocalizedString>
 #include <QDebug>
 
@@ -189,11 +189,15 @@ void ExportWebDialog::setupTodoPage()
   QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage );
   topLayout->setSpacing( 10 );
 
-  KHBox *hbox = new KHBox( mTodoPage );
+  QWidget *hbox = new QWidget( mTodoPage );
+  QHBoxLayout *hboxHBoxLayout = new QHBoxLayout(hbox);
+  hboxHBoxLayout->setMargin(0);
   topLayout->addWidget( hbox );
   addWidString( mSettings->todoListTitleItem(), hbox );
 
-  KVBox *vbox = new KVBox( mTodoPage );
+  QWidget *vbox = new QWidget( mTodoPage );
+  QVBoxLayout *vboxVBoxLayout = new QVBoxLayout(vbox);
+  vboxVBoxLayout->setMargin(0);
   topLayout->addWidget( vbox );
   addWidBool( mSettings->taskDueDateItem(), vbox );
   addWidBool( mSettings->taskLocationItem(), vbox );
@@ -212,11 +216,15 @@ void ExportWebDialog::setupEventPage()
   QVBoxLayout *topLayout = new QVBoxLayout( mEventPage );
   topLayout->setSpacing( 10 );
 
-  KHBox *hbox = new KHBox( mEventPage );
+  QWidget *hbox = new QWidget( mEventPage );
+  QHBoxLayout *hboxHBoxLayout = new QHBoxLayout(hbox);
+  hboxHBoxLayout->setMargin(0);
   topLayout->addWidget( hbox );
   addWidString( mSettings->eventTitleItem(), hbox );
 
-  KVBox *vbox = new KVBox( mEventPage );
+  QWidget *vbox = new QWidget( mEventPage );
+  QVBoxLayout *vboxVBoxLayout = new QVBoxLayout(vbox);
+  vboxVBoxLayout->setMargin(0);
   topLayout->addWidget( vbox );
   addWidBool( mSettings->eventLocationItem(), vbox );
   addWidBool( mSettings->eventCategoriesItem(), vbox );

@@ -93,7 +93,7 @@
 #include <KFileDialog>
 #include <KNotification>
 #include <KRun>
-#include <KVBox>
+#include <QVBoxLayout>
 #include <QDebug>
 
 #include <QApplication>
@@ -163,18 +163,24 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mTodoList = new KOTodoView( true/*sidebar*/, mLeftSplitter );
   mTodoList->setObjectName(QLatin1String( "todolist") );
 
-  mEventViewerBox = new KVBox( mLeftSplitter );
-  mEventViewerBox->setMargin( 0 );
+  mEventViewerBox = new QWidget( mLeftSplitter );
+  QVBoxLayout *mEventViewerBoxVBoxLayout = new QVBoxLayout(mEventViewerBox);
+  mEventViewerBoxVBoxLayout->setMargin(0);
+  mEventViewerBoxVBoxLayout->setMargin( 0 );
   mEventViewer = new CalendarSupport::IncidenceViewer( mCalendar.data(), mEventViewerBox );
   mEventViewer->setObjectName( QLatin1String("EventViewer") );
 
-  KVBox *rightBox = new KVBox( mPanner );
+  QWidget *rightBox = new QWidget( mPanner );
+  QVBoxLayout *rightBoxVBoxLayout = new QVBoxLayout(rightBox);
+  rightBoxVBoxLayout->setMargin(0);
   rightBox->layout()->setMargin( 0 );
   mNavigatorBar = new NavigatorBar( rightBox );
+  rightBoxVBoxLayout->addWidget(mNavigatorBar);
   mRightFrame = new QStackedWidget( rightBox );
+  rightBoxVBoxLayout->addWidget(mRightFrame);
   mMessageWidget = new CalendarSupport::MessageWidget( rightBox );
 
-  rightBox->setStretchFactor( mRightFrame, 1 );
+  rightBoxVBoxLayout->setStretchFactor( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
   mLeftFrame->installEventFilter( this );
