@@ -29,18 +29,31 @@
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QVBoxLayout>
+#include <QDialogButtonBox>
+#include <KConfigGroup>
+#include <QPushButton>
 
 ConfigDialog::ConfigDialog( QWidget *parent )
-  : KDialog( parent )
+  : QDialog( parent )
 {
-  setCaption( i18n( "Configure Picture of the Day" ) );
-  setButtons( Ok|Cancel );
-  setDefaultButton( Ok );
+  setWindowTitle( i18n( "Configure Picture of the Day" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  mainLayout->addWidget(buttonBox);
+  okButton->setDefault(true);
   setModal( true );
   QFrame *topFrame = new QFrame( this );
-  setMainWidget( topFrame );
+  mainLayout->addWidget( topFrame );
+  mainLayout->addWidget(mainWidget);
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setSpacing( spacingHint() );
+  //PORT QT5 topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
   QGroupBox *aspectRatioBox = new QGroupBox( i18n( "Thumbnail Aspect Ratio Mode" ), topFrame );
@@ -68,7 +81,7 @@ ConfigDialog::ConfigDialog( QWidget *parent )
   mAspectRatioGroup->addButton( btn, int( Qt::KeepAspectRatioByExpanding ) );
   groupLayout->addWidget( btn );
 
-  connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
+  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()) );
 
   load();
 }

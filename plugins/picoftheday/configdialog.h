@@ -21,11 +21,11 @@
 #ifndef KORG_PLUGINS_PICOFTHEDAY_CONFIGDIALOG_H
 #define KORG_PLUGINS_PICOFTHEDAY_CONFIGDIALOG_H
 
-#include <KDialog>
+#include <QDialog>
 
 class QButtonGroup;
 
-class ConfigDialog : public KDialog
+class ConfigDialog : public QDialog
 {
   Q_OBJECT
   public:

@@ -25,6 +25,7 @@
 #include <KLocalizedString>
 #include <QDebug>
 #include <KIO/Scheduler>
+#include <KConfigGroup>
 
 #include <QDomDocument>
 
