@@ -50,10 +50,11 @@
 #include <QAction>
 #include <KActionCollection>
 #include <KCheckableProxyModel>
-#include <KColorDialog>
+#include <QColorDialog>
 #include <KMessageBox>
 #include <KRecursiveFilterProxyModel>
 #include <QDebug>
+#include <KDialog>
 
 #include <QHeaderView>
 #include <QPainter>
@@ -381,8 +382,8 @@ void AkonadiCollectionView::assignColor()
   const QString identifier = QString::number( collection.id() );
   const QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
   QColor myColor;
-  const int result = KColorDialog::getColor( myColor, defaultColor );
-  if ( result == KColorDialog::Accepted && myColor != defaultColor ) {
+  myColor = QColorDialog::getColor(defaultColor);
+  if ( myColor.isValid() && myColor != defaultColor) {
     KOPrefs::instance()->setResourceColor( identifier, myColor );
     emit colorsChanged();
     updateMenu();
