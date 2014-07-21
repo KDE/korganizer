@@ -77,7 +77,7 @@ void Theme::useThemeFrom( const KUrl &url )
       return;
     }
 
-    if ( ! KIO::NetAccess::del( KUrl::fromPath( storageDir().absolutePath() ),
+    if ( ! KIO::NetAccess::del( QUrl::fromLocalFile( storageDir().absolutePath() ),
                                 0 ) ) {
       qWarning() << "could not delete stale theme files";
     }
