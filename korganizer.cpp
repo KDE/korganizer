@@ -76,7 +76,7 @@ void KOrganizer::init( bool document )
 {
   setHasDocument( document );
 
-  setComponentData( KGlobal::mainComponent() );
+  setComponentData( KComponentData::mainComponent() );
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
