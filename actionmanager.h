@@ -29,7 +29,7 @@
 #ifndef KORG_ACTIONMANAGER_H
 #define KORG_ACTIONMANAGER_H
 
-#include "korganizer_export.h"
+#include "korganizerprivate_export.h"
 #include "korganizer/part.h"
 
 #include <AkonadiCore/Item>

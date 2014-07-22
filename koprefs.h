@@ -25,7 +25,7 @@
 #ifndef KORG_KOPREFS_H
 #define KORG_KOPREFS_H
 
-#include "korganizer_export.h"
+#include "korganizer_core_export.h"
 #include "koprefs_base.h"
 
 #include <calendarviews/prefs.h>

@@ -23,7 +23,7 @@
 #ifndef KORG_INTERFACES_BASEVIEW_H
 #define KORG_INTERFACES_BASEVIEW_H
 
-#include "korganizer/korganizer_export.h"
+#include "korganizer_interfaces_export.h"
 
 #include <calendarviews/eventview.h>
 #include <calendarsupport/printing/printplugin.h>

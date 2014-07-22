@@ -25,7 +25,7 @@
 #ifndef KORG_KOHELPER_H
 #define KORG_KOHELPER_H
 
-#include "korganizer_export.h"
+#include "korganizerprivate_export.h"
 
 #include <AkonadiCore/Entity>
 

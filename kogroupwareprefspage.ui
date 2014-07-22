@@ -489,7 +489,7 @@ For security reasons, it is not recommended to store your password in the config
   <tabstop>retrieveSavePassword</tabstop>
  </tabstops>
  <includes>
-  <include location="global">korganizer_export.h</include>
+  <include location="global">kcm_korganizer_export.h</include>
  </includes>
  <resources/>
  <connections/>

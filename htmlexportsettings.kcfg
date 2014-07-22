@@ -3,7 +3,7 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
-  <include>korganizer_export.h</include>
+  <include>korganizerprivate_export.h</include>
   <kcfgfile name="korganizer_htmlexportrc">
     <parameter name="application" />
   </kcfgfile>

@@ -25,7 +25,7 @@
 #ifndef KORG_KOPREFSDIALOG_H
 #define KORG_KOPREFSDIALOG_H
 
-#include "korganizer_export.h"
+#include "kcm_korganizer_export.h"
 #include "kcmdesignerfields.h"
 #include "ui_accountscalendarwidget.h"
 

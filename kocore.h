@@ -26,7 +26,7 @@
 #ifndef KORG_KOCORE_H
 #define KORG_KOCORE_H
 
-#include "korganizer_export.h"
+#include "korganizer_core_export.h"
 #include "korganizer/part.h"
 
 #include <calendarviews/agenda/calendardecoration.h>

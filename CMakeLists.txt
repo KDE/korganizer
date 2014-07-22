@@ -81,6 +81,7 @@ if(KDEPIM_BUILD_DESKTOP)
   )
 
   add_library(kcm_korganizer MODULE ${kcm_korganizer_PART_SRCS})
+  generate_export_header(kcm_korganizer BASE_NAME kcm_korganizer) 
 
   target_link_libraries(kcm_korganizer
     KF5::AkonadiCalendar
@@ -138,6 +139,7 @@ set(korganizer_core_LIB_SRCS
 kconfig_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc)
 
 add_library(korganizer_core ${LIBRARY_TYPE} ${korganizer_core_LIB_SRCS})
+generate_export_header(korganizer_core BASE_NAME korganizer_core)
 
 target_link_libraries(korganizer_core
   calendarsupport
@@ -246,6 +248,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
+  generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
   target_link_libraries(korganizerprivate
     pimcommon

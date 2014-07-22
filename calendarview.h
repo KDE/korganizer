@@ -27,7 +27,7 @@
 #ifndef KORG_CALENDARVIEW_H
 #define KORG_CALENDARVIEW_H
 
-#include "korganizer_export.h"
+#include "korganizerprivate_export.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
 #include <KCalCore/Incidence>

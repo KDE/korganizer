@@ -25,7 +25,7 @@
 #ifndef KORG_KOGLOBALS_H
 #define KORG_KOGLOBALS_H
 
-#include "korganizer_export.h"
+#include "korganizerprivate_export.h"
 
 #include <KComponentData>
 

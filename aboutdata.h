@@ -24,7 +24,7 @@
 #ifndef KORG_ABOUTDATA_H
 #define KORG_ABOUTDATA_H
 
-#include "korganizer_export.h"
+#include "korganizerprivate_export.h"
 #include <k4aboutdata.h>
 
 namespace KOrg {

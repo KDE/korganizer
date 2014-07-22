@@ -22,8 +22,8 @@
 #ifndef KORG_INTERFACES_MAINWINDOW_H
 #define KORG_INTERFACES_MAINWINDOW_H
 
-#include "korganizer/korganizer_export.h"
-
+#include "korganizer_interfaces_export.h"
+#include <QString>
 class ActionManager;
 
 class KActionCollection;

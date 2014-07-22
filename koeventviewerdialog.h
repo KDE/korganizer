@@ -25,7 +25,7 @@
 #ifndef KORG_KOEVENTVIEWERDIALOG_H
 #define KORG_KOEVENTVIEWERDIALOG_H
 
-#include "korganizer_export.h"
+#include "korganizerprivate_export.h"
 
 #include <KDialog>
 
@@ -41,7 +41,7 @@ namespace Akonadi {
 /**
   Viewer dialog for events.
 */
-class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
+class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
