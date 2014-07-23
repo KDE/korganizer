@@ -82,7 +82,7 @@ void KOPrefs::usrSetDefaults()
   KConfigSkeleton::usrSetDefaults();
 }
 
-void KOPrefs::usrReadConfig()
+void KOPrefs::usrRead()
 {
   KConfigGroup generalConfig( config(), "General" );
 
@@ -92,7 +92,7 @@ void KOPrefs::usrReadConfig()
   KConfigSkeleton::usrRead();
 }
 
-bool KOPrefs::usrWriteConfig()
+bool KOPrefs::usrSave()
 {
   KConfigGroup generalConfig( config(), "General" );
 

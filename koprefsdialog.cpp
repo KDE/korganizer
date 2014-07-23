@@ -527,7 +527,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
     }
 
   protected:
-    void usrReadConfig()
+    void usrRead()
     {
       mReminderTimeSpin->setValue( CalendarSupport::KCalPrefs::instance()->mReminderTime );
       mReminderUnitsCombo->setCurrentIndex(
@@ -537,7 +537,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       }
     }
 
-    void usrWriteConfig()
+    void usrSave()
     {
       KOPrefs::instance()->mHolidays =
         mHolidayCombo->itemData( mHolidayCombo->currentIndex() ).toString();
@@ -780,7 +780,7 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
       load();
     }
   protected:
-    void usrWriteConfig()
+    void usrSave()
     {
       KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
         mAgendaIconComboBox->checkedIcons() );
@@ -970,7 +970,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   load();
 }
 
-void KOPrefsDialogColorsAndFonts::usrWriteConfig()
+void KOPrefsDialogColorsAndFonts::usrSave()
 {
   QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
   while ( i != mCategoryDict.constEnd() ) {
@@ -987,7 +987,7 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
   //mCalendarViewsPrefs->writeConfig();
 }
 
-void KOPrefsDialogColorsAndFonts::usrReadConfig()
+void KOPrefsDialogColorsAndFonts::usrRead()
 {
   updateCategories();
   updateResources();
@@ -1102,11 +1102,11 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   load();
 }
 
-void KOPrefsDialogGroupScheduling::usrReadConfig()
+void KOPrefsDialogGroupScheduling::usrRead()
 {
 }
 
-void KOPrefsDialogGroupScheduling::usrWriteConfig()
+void KOPrefsDialogGroupScheduling::usrSave()
 {
 }
 
@@ -1173,7 +1173,7 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
   delete mGroupwarePage;
 }
 
-void KOPrefsDialogGroupwareScheduling::usrReadConfig()
+void KOPrefsDialogGroupwareScheduling::usrRead()
 {
   mGroupwarePage->publishEnable->setChecked(
     Akonadi::CalendarSettings::self()->freeBusyPublishAuto() );
@@ -1204,7 +1204,7 @@ void KOPrefsDialogGroupwareScheduling::usrReadConfig()
     Akonadi::CalendarSettings::self()->freeBusyRetrieveSavePassword() );
 }
 
-void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
+void KOPrefsDialogGroupwareScheduling::usrSave()
 {
   Akonadi::CalendarSettings::self()->setFreeBusyPublishAuto(
     mGroupwarePage->publishEnable->isChecked());
@@ -1342,7 +1342,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   selectionChanged();
 }
 
-void KOPrefsDialogPlugins::usrReadConfig()
+void KOPrefsDialogPlugins::usrRead()
 {
   mTreeWidget->clear();
   KService::List plugins = KOCore::self()->availablePlugins();
@@ -1385,7 +1385,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
   mDecorationsAtAgendaViewBottom = viewPrefs->decorationsAtAgendaViewBottom().toSet();
 }
 
-void KOPrefsDialogPlugins::usrWriteConfig()
+void KOPrefsDialogPlugins::usrSave()
 {
   QStringList selectedPlugins;
 

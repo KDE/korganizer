@@ -68,8 +68,8 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsMod
     KOPrefsDialogColorsAndFonts( const KComponentData &inst, QWidget *parent );
 
   protected:
-    void usrWriteConfig();
-    void usrReadConfig();
+    void usrSave();
+    void usrRead();
 
   protected slots:
     void updateCategories();
@@ -97,8 +97,8 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsMo
     KOPrefsDialogGroupScheduling( const KComponentData &inst, QWidget *parent );
 
   protected:
-    void usrReadConfig();
-    void usrWriteConfig();
+    void usrRead();
+    void usrSave();
 };
 
 class KOGroupwarePrefsPage;
@@ -111,8 +111,8 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPIM::KPre
     ~KOPrefsDialogGroupwareScheduling();
 
   protected:
-    void usrReadConfig();
-    void usrWriteConfig();
+    void usrRead();
+    void usrSave();
 
   private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
@@ -125,8 +125,8 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
     KOPrefsDialogPlugins( const KComponentData &inst, QWidget *parent );
 
   protected slots:
-    void usrReadConfig();
-    void usrWriteConfig();
+    void usrRead();
+    void usrSave();
     void configure();
     void selectionChanged();
     void positioningChanged();
@@ -168,8 +168,8 @@ class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
     KOPrefsDialogThemes( const KComponentData &inst, QWidget *parent );
 
   protected slots:
-    void usrReadConfig();
-    void usrWriteConfig();
+    void usrRead();
+    void usrSave();
     void importTheme();
     void exportTheme();
 };*/
