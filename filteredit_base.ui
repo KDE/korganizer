@@ -145,7 +145,7 @@
            </widget>
           </item>
           <item>
-           <widget class="KIntNumInput" name="mCompletedTimeSpan">
+           <widget class="QSpinBox" name="mCompletedTimeSpan">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -281,11 +281,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KIntNumInput</class>
-   <extends>QWidget</extends>
-   <header>knuminput.h</header>
-  </customwidget>
   <customwidget>
    <class>KListWidgetSearchLine</class>
    <extends>KLineEdit</extends>
