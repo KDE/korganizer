@@ -1016,7 +1016,7 @@ void ActionManager::exportHTML()
   mSettingsToFree.insert( settings );
   // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
-  settings->readConfig();
+  settings->load();
 
   const QDate qd1 = QDate::currentDate();
   QDate qd2 = qd1;
@@ -1060,7 +1060,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
         dialogParent(),
         i18n( "Select path for HTML calendar export" ) );
     settings->setOutputFile( fileName );
-    settings->writeConfig();
+    settings->save();
   }
 
   if ( !autoMode && QFileInfo( settings->outputFile() ).exists() ) {
