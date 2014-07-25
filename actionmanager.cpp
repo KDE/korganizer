@@ -80,7 +80,7 @@
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStandardDirs>
-#include <KTemporaryFile>
+#include <QTemporaryFile>
 #include <KTipDialog>
 #include <KToggleAction>
 #include <KWindowSystem>
@@ -878,7 +878,7 @@ void ActionManager::file_icalimport()
   // for now, hard-coded to ical file, $HOME/.calendar.
   int retVal = -1;
   QString progPath;
-  KTemporaryFile tmpfn;
+  QTemporaryFile tmpfn;
   tmpfn.open();
 
   QString homeDir = QDir::homePath() + QLatin1String( "/.calendar" );
@@ -1113,11 +1113,11 @@ bool ActionManager::saveAsURL( const KUrl &url )
   QString fileOrig = mFile;
   KUrl URLOrig = mURL;
 
-  KTemporaryFile *tempFile = 0;
+  QTemporaryFile *tempFile = 0;
   if ( url.isLocalFile() ) {
     mFile = url.toLocalFile();
   } else {
-    tempFile = new KTemporaryFile;
+    tempFile = new QTemporaryFile;
     tempFile->setAutoRemove(false);
     tempFile->open();
     mFile = tempFile->fileName();
@@ -1663,7 +1663,7 @@ void ActionManager::openEventEditor( const QString &summary,
   }
 
   QString attData;
-  KTemporaryFile tf;
+  QTemporaryFile tf;
   tf.setAutoRemove( true );
   switch ( action ) {
   case IncidenceEditorNG::GlobalSettings::Link:

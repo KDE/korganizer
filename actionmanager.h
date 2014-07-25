@@ -54,7 +54,7 @@ namespace Akonadi {
 class QAction;
 class KMenuBar;
 class KSelectAction;
-class KTemporaryFile;
+class QTemporaryFile;
 class KToggleAction;
 
 /**
@@ -353,7 +353,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     QString mFile;           // Local name of calendar file
     QString mLastUrl;        // URL of last loaded calendar.
 
-    KTemporaryFile *mTempFile;
+    QTemporaryFile *mTempFile;
     QTimer *mAutoExportTimer;    // used if calendar is to be autoexported
     QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 

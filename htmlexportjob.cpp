@@ -36,7 +36,7 @@
 #include <QDebug>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KTemporaryFile>
+#include <QTemporaryFile>
 #include <KIO/NetAccess>
 
 #include <QApplication>
@@ -156,7 +156,7 @@ void HtmlExportJob::finishExport()
     saveStatus = save( dest.toLocalFile() );
     errorMessage = i18n( "Unable to write the output file." );
   } else {
-    KTemporaryFile tf;
+    QTemporaryFile tf;
     tf.open();
     QString tfile = tf.fileName();
     saveStatus = save( tfile );
