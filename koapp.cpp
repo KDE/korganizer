@@ -123,7 +123,7 @@ void KOrganizerApp::processCalendar( const KUrl &url )
   }
 
   // Handle window activation
-#if defined Q_WS_X11 && ! defined K_WS_QTONLY
+#if defined Q_OS_X11 && ! defined K_WS_QTONLY
   KStartupInfo::setNewStartupId( korg->topLevelWidget(), startupId() );
 #endif
 }
