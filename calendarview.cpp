@@ -64,6 +64,7 @@
 #include <incidenceeditor-ng/incidencedefaults.h>
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidencedialogfactory.h>
+#include <incidenceeditor-ng/individualmailcomponentfactory.h>
 
 #include <libkdepim/widgets/pimmessagebox.h>
 #include <Akonadi/Calendar/FreeBusyManager>
@@ -108,7 +109,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
                                                 mETMCollectionView( 0 )
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
-  mChanger = new Akonadi::IncidenceChanger( this );
+  mChanger = new Akonadi::IncidenceChanger( new IncidenceEditorNG::IndividualMailComponentFactory( this ), this );
   mChanger->setDefaultCollection( Akonadi::Collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() ) );
 
   mChanger->setDestinationPolicy( static_cast<Akonadi::IncidenceChanger::DestinationPolicy>( KOPrefs::instance()->destination() ) );
