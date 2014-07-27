@@ -52,7 +52,7 @@ namespace Akonadi {
 }
 
 class QAction;
-class KMenuBar;
+class QMenuBar;
 class KSelectAction;
 class QTemporaryFile;
 class KToggleAction;
@@ -69,7 +69,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
   public:
     ActionManager( KXMLGUIClient *client, CalendarView *widget,
                    QObject *parent, KOrg::MainWindow *mainWindow,
-                   bool isPart, KMenuBar *menuBar = 0 );
+                   bool isPart, QMenuBar *menuBar = 0 );
     virtual ~ActionManager();
 
     /** Peform initialization that requires this* to be full constructed */
@@ -395,7 +395,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     QAction *mUndoAction;
     QAction *mRedoAction;
-    KMenuBar *mMenuBar;
+    QMenuBar *mMenuBar;
 
     KSelectAction *mFilterAction;
 

@@ -72,7 +72,7 @@
 #include <KCmdLineArgs>
 #include <KFileDialog>
 #include <QMenu>
-#include <KMenuBar>
+#include <QMenuBar>
 #include <KMessageBox>
 #include <KMimeTypeTrader>
 #include <KProcess>
@@ -99,7 +99,7 @@ KOWindowList *ActionManager::mWindowList = 0;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
-                              bool isPart, KMenuBar *menuBar )
+                              bool isPart, QMenuBar *menuBar )
   : QObject( parent ),
     mCollectionViewShowAction( 0 ),
     mCollectionView( 0 ), mCollectionViewStateSaver( 0 ),
