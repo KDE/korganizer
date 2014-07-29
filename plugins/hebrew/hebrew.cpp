@@ -29,14 +29,6 @@
 
 using namespace EventViews::CalendarDecoration;
 
-class HebrewFactory : public DecorationFactory
-{
-  public:
-    Decoration *createPluginFactory() { return new Hebrew; }
-};
-
-K_EXPORT_PLUGIN( HebrewFactory )
-
 Hebrew::Hebrew()
 {
   KConfig config( QLatin1String("korganizerrc"), KConfig::NoGlobals );

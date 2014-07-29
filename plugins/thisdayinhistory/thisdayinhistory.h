@@ -39,4 +39,16 @@ class ThisDayInHistory : public Decoration
     QString info() const;
 };
 
+class ThisDayInHistoryFactory : public DecorationFactory
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.korganizer.ThisDayInHistory");
+  public:
+    Decoration *createPluginFactory()
+    {
+      return new ThisDayInHistory;
+    }
+};
+
+
 #endif

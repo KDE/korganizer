@@ -25,14 +25,6 @@
 
 #include <KCalendarSystem>
 
-class DatenumsFactory : public DecorationFactory
-{
-  public:
-    Decoration *createPluginFactory() { return new Datenums; }
-};
-
-K_EXPORT_PLUGIN( DatenumsFactory )
-
 Datenums::Datenums()
   : mDisplayedInfo( DayOfYear | DaysRemaining )
 {

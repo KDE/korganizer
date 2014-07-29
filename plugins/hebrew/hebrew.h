@@ -43,4 +43,13 @@ class Hebrew : public Decoration
     bool areWeInIsrael;
 };
 
+class HebrewFactory : public DecorationFactory
+{
+   Q_OBJECT
+   Q_PLUGIN_METADATA(IID "org.kde.korganizer.Hebrew");
+  public:
+    Decoration *createPluginFactory() { return new Hebrew; }
+};
+
+
 #endif

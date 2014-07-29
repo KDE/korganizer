@@ -29,14 +29,6 @@
 
 #include <QDomDocument>
 
-class PicofthedayFactory : public DecorationFactory
-{
-  public:
-    Decoration *createPluginFactory() { return new Picoftheday; }
-};
-
-K_EXPORT_PLUGIN( PicofthedayFactory )
-
 Picoftheday::Picoftheday()
 {
   KConfig _config( QLatin1String("korganizerrc" ));

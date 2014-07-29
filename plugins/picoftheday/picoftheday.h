@@ -28,6 +28,7 @@ using namespace EventViews::CalendarDecoration;
 
 class Picoftheday : public Decoration
 {
+
   public:
     Picoftheday();
     ~Picoftheday();
@@ -41,6 +42,16 @@ class Picoftheday : public Decoration
   private:
     QSize mThumbSize;
 };
+
+class PicofthedayFactory : public DecorationFactory
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.korganizer.Picoftheday");
+  public:
+    Decoration *createPluginFactory() { return new Picoftheday; }
+};
+
+
 
 class POTDElement : public StoredElement
 {

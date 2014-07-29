@@ -25,17 +25,6 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 
-class ThisDayInHistoryFactory : public DecorationFactory
-{
-  public:
-    Decoration *createPluginFactory()
-    {
-      return new ThisDayInHistory;
-    }
-};
-
-K_EXPORT_PLUGIN( ThisDayInHistoryFactory )
-
 ThisDayInHistory::ThisDayInHistory()
 {
   KConfig _config( QLatin1String("korganizerrc") );

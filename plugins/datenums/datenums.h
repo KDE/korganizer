@@ -48,6 +48,15 @@ class Datenums : public Decoration
     DayNumbers mDisplayedInfo;
 };
 
+class DatenumsFactory : public DecorationFactory
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.korganizer.Datenums");
+  public:
+    Decoration *createPluginFactory() { return new Datenums; }
+};
+
+
 Q_DECLARE_OPERATORS_FOR_FLAGS( Datenums::DayNumbers )
 
 #endif
