@@ -55,7 +55,7 @@
 #include <KCalendarSystem>
 #include <KColorButton>
 #include <KComboBox>
-#include <KHBox>
+#include <QHBoxLayout>
 #include <QSpinBox>
 #include <KMessageBox>
 #include <KService>
@@ -336,7 +336,9 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       QGridLayout *holidaysLayout = new QGridLayout( holidaysGroupBox );
 
       // holiday region selection
-      KHBox *holidayRegBox = new KHBox( regionalPage );
+      QWidget *holidayRegBox = new QWidget( regionalPage );
+      QHBoxLayout *holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
+      holidayRegBoxHBoxLayout->setMargin(0);
       holidaysLayout->addWidget( holidayRegBox, 1, 0, 1, 2 );
 
       QLabel *holidayLabel = new QLabel(
@@ -344,6 +346,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       holidayLabel->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
 
       mHolidayCombo = new KComboBox( holidayRegBox );
+      holidayRegBoxHBoxLayout->addWidget(mHolidayCombo);
       connect( mHolidayCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
 
       mHolidayCombo->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
