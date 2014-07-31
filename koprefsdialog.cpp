@@ -29,7 +29,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
-#include <KDialog>
+#include <QDialog>
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/categoryconfig.h>
@@ -189,8 +189,8 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   mAccountsCalendar.setupUi( calendarFrame );
 
-  mAccountsCalendar.vlay->setSpacing( KDialog::spacingHint() );
-  mAccountsCalendar.vlay->setMargin( KDialog::marginHint() );
+//TODO PORT QT5   mAccountsCalendar.vlay->setSpacing( QDialog::spacingHint() );
+//TODO PORT QT5   mAccountsCalendar.vlay->setMargin( QDialog::marginHint() );
 
   mAccountsCalendar.mAccountList->agentFilterProxyModel()->
     addMimeTypeFilter( QLatin1String("text/calendar") );
@@ -316,7 +316,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
                          i18nc( "@title:tab", "Regional" ) );
 
       QGridLayout *regionalLayout = new QGridLayout( regionalPage );
-      regionalLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5       regionalLayout->setSpacing( QDialog::spacingHint() );
 
       QGroupBox *datetimeGroupBox =
         new QGroupBox( i18nc( "@title:group", "General Time and Date" ), regionalPage );
@@ -441,7 +441,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       tabWidget->addTab( defaultPage, QIcon::fromTheme( QLatin1String("draw-eraser") ),
                          i18nc( "@title:tab", "Default Values" ) );
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
-      defaultLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5       defaultLayout->setSpacing( QDialog::spacingHint() );
 
       QGroupBox *timesGroupBox =
         new QGroupBox( i18nc( "@title:group", "Appointments" ), defaultPage );
@@ -817,7 +817,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   QWidget *colorFrame = new QWidget( this );
   topTopLayout->addWidget( colorFrame );
   QGridLayout *colorLayout = new QGridLayout(colorFrame);
-  colorLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5   colorLayout->setSpacing( QDialog::spacingHint() );
   tabWidget->addTab( colorFrame, QIcon::fromTheme( QLatin1String("preferences-desktop-color") ),
                      i18nc( "@title:tab", "Colors" ) );
 
@@ -935,7 +935,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
                      i18nc( "@title:tab", "Fonts" ) );
 
   QGridLayout *fontLayout = new QGridLayout( fontFrame );
-  fontLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5   fontLayout->setSpacing( QDialog::spacingHint() );
 
   KPIM::KPrefsWidFont *timeBarFont =
      addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
@@ -1080,7 +1080,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   topTopLayout->addWidget( topFrame );
 
   QGridLayout *topLayout = new QGridLayout( topFrame );
-  topLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5   topLayout->setSpacing( QDialog::spacingHint() );
 
   KPIM::KPrefsWidBool *useGroupwareBool =
     addWidBool( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
@@ -1284,7 +1284,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   QWidget *topFrame = new QWidget( this );
   topTopLayout->addWidget( topFrame );
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5   topLayout->setSpacing( QDialog::spacingHint() );
 
   mTreeWidget = new QTreeWidget( topFrame );
   mTreeWidget->setColumnCount( 1 );
