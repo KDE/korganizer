@@ -58,6 +58,12 @@ class KOEventPopupMenu : public QMenu
     void toggleTodoCompleted();
     void dissociateOccurrences();
     void forward();
+    void createTodo();
+    void createEvent();
+    void createNote();
+
+    void slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection);
+    void slotCreateNewNoteJobFinished(KJob*);
 
   signals:
     void configChanged();
@@ -83,6 +89,7 @@ class KOEventPopupMenu : public QMenu
     bool mHasAdditionalItems;
     QList<QAction *> mEditOnlyItems;
     QList<QAction *> mTodoOnlyItems;
+    QList<QAction *> mEventOnlyItems;
     QList<QAction *> mRecurrenceItems;
     QAction *mDissociateOccurrences;
     QAction *mToggleReminder;
