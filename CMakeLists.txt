@@ -187,6 +187,7 @@ set(korganizerprivate_LIB_SRCS
     kodaymatrix.cpp
     kodialogmanager.cpp
     koeventpopupmenu.cpp
+    noteeditdialog.cpp
     koeventview.cpp
     koeventviewerdialog.cpp
     koglobals.cpp
@@ -253,6 +254,7 @@ set(korganizerprivate_LIB_SRCS
     pimcommon
     akonadi_next
     akonadi-calendar
+    akonadi-notes
     calendarsupport
     eventviews
     incidenceeditorsng

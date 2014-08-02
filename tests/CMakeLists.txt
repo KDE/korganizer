@@ -43,3 +43,35 @@ target_link_libraries(testkcmdesignerfields
   ${KDE4_KIO_LIBS}
   ${QT_QTUITOOLS_LIBRARY}
 )
+
+kde4_add_unit_test(koeventpopmenutest TESTNAME koeventpopmenutest koeventpopupmenutest.cpp ../koeventpopupmenu.cpp ../kocorehelper.cpp ../noteeditdialog.cpp)
+target_link_libraries(koeventpopmenutest
+  ${QT_QTTEST_LIBRARY}
+  ${QT_QTGUI_LIBRARY}
+  ${QT_QTCORE_LIBRARY}
+  ${KDEPIMLIBS_KMIME_LIBS}
+  ${KDEPIMLIBS_AKONADI_LIBS}
+  ${KDEPIMLIBS_AKONADI_CALENDAR_LIBS}
+  ${KDEPIMLIBS_AKONADI_NOTES_LIBS}
+  ${KDEPIMLIBS_KCALCORE_LIBS}
+  incidenceeditorsng
+  calendarsupport
+  korganizer_core
+  korganizerprivate
+)
+
+kde4_add_unit_test(noteeditdialogtest TESTNAME noteeditdialogtest  noteeditdialogtest.cpp ../noteeditdialog.cpp)
+target_link_libraries(noteeditdialogtest
+  ${QT_QTTEST_LIBRARY}
+  ${QT_QTGUI_LIBRARY}
+  ${QT_QTCORE_LIBRARY}
+  ${KDEPIMLIBS_KMIME_LIBS}
+  ${KDEPIMLIBS_AKONADI_LIBS}
+  ${KDEPIMLIBS_AKONADI_CALENDAR_LIBS}
+  ${KDEPIMLIBS_AKONADI_NOTES_LIBS}
+  ${KDEPIMLIBS_KCALCORE_LIBS}
+  incidenceeditorsng
+  calendarsupport
+  korganizer_core
+  korganizerprivate
+  )
