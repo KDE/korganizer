@@ -44,6 +44,8 @@ class KOEventPopupMenu : public QMenu
 
   public slots:
     void showIncidencePopup( const Akonadi::Item &, const QDate & );
+    void createEvent( const Akonadi::Item &item );
+    void createNote( const Akonadi::Item &item );
 
   protected slots:
     void popupShow();

@@ -269,6 +269,13 @@ void KOEventPopupMenu::forward()
   }
 }
 
+void KOEventPopupMenu::createEvent(const Akonadi::Item &item)
+{
+    mCurrentIncidence = item;
+    createEvent();
+}
+
+
 void KOEventPopupMenu::createEvent()
 {
     // Must be a Incidence
@@ -296,6 +303,12 @@ void KOEventPopupMenu::createEvent()
         dlg->load(newEventItem);
         dlg->open();
     }
+}
+
+void KOEventPopupMenu::createNote(const Akonadi::Item &item)
+{
+    mCurrentIncidence = item;
+    createNote();
 }
 
 void KOEventPopupMenu::createNote()

@@ -27,6 +27,7 @@
 
 #include "kotodoview.h"
 #include "koprefs.h"
+#include "koeventpopupmenu.h"
 
 #include <calendarsupport/printing/calprinter.h>
 
@@ -39,6 +40,7 @@
 KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   : BaseView( parent )
 {
+  KOEventPopupMenu *eventPopup = new KOEventPopupMenu( calendar().data(), this );
   mView = new EventViews::TodoView( KOPrefs::instance()->eventViewsPreferences(),
                                     sidebarView, parent );
   QVBoxLayout *layout = new QVBoxLayout( this );
@@ -103,6 +105,11 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
 
   connect( mView, SIGNAL(fullViewChanged(bool)),
            SIGNAL(fullViewChanged(bool)) );
+
+  connect( mView, SIGNAL(createEvent(Akonadi::Item)),
+          eventPopup, SLOT(createEvent(Akonadi::Item)));
+  connect( mView, SIGNAL(createNote(Akonadi::Item)),
+          eventPopup, SLOT(createNote(Akonadi::Item)));
 }
 
 KOTodoView::~KOTodoView()
