@@ -1531,7 +1531,7 @@ class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
 
 void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const QDate &date )
 {
-  //kDebug(5850) << "ActionManager::processIncidenceSelection()";
+  //qDebug() << "ActionManager::processIncidenceSelection()";
   Q_UNUSED( date );
 
   const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
