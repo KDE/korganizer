@@ -22,22 +22,32 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#include <K4AboutData>
-#include <kapplication.h>
+#include <KAboutData>
+
 #include <qdebug.h>
 #include <klocale.h>
-#include <kcmdlineargs.h>
+
 
 #include <calendarsupport/plugin.h>
+#include <QApplication>
+#include <KLocalizedString>
+#include <QCommandLineParser>
 
 #include "kocore.h"
 
 int main(int argc,char **argv)
 {
-  K4AboutData aboutData("korgplugins", 0,ki18n("KOrgPlugins"),"0.1");
-  KCmdLineArgs::init(argc,argv,&aboutData);
+  KAboutData aboutData(QLatin1String("korgplugins"),i18n("KOrgPlugins"),QLatin1String("0.1"));
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    //PORTING SCRIPT: adapt aboutdata variable if necessary
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
-  KApplication app;
 
   KService::List plugins = KOCore::self()->availablePlugins();
   KService::List::ConstIterator it;
@@ -75,5 +85,5 @@ int main(int argc,char **argv)
       qDebug() << "CALENDAR DECORATION INFO:" << p->info();
     }
   }
-
+  return 0;
 }
