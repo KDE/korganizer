@@ -17,18 +17,20 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include <K4AboutData>
-#include <kapplication.h>
-#include <kcmdlineargs.h>
+#include <KAboutData>
+
+
 #include <qdebug.h>
-#include <klocale.h>
+#include <QApplication>
+#include <KLocalizedString>
+#include <QCommandLineParser>
 
 #include "kcmdesignerfields.h"
 
 class MyDesignerFields : public KCMDesignerFields
 {
   public:
-    MyDesignerFields( const KComponentData &kcd ) : KCMDesignerFields( kcd, 0 ) {}
+    MyDesignerFields( ) : KCMDesignerFields( 0 ) {}
     QString localUiDir() { return QString::fromLatin1( KDESRCDIR ); }
     QString uiPath() { return QString::fromLatin1( KDESRCDIR ); }
     void writeActivePages( const QStringList & )  {}
@@ -38,12 +40,19 @@ class MyDesignerFields : public KCMDesignerFields
 
 int main(int argc,char **argv)
 {
-  K4AboutData aboutData( "testkcmdesignerfields", 0, KLocalizedString(), "0.1" );
-  KCmdLineArgs::init( argc, argv, &aboutData );
+  KAboutData aboutData( QLatin1String("testkcmdesignerfields"), QString(), QLatin1String("0.1") );
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    //PORTING SCRIPT: adapt aboutdata variable if necessary
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
-  KApplication app;
 
-  MyDesignerFields *kcm = new MyDesignerFields( KComponentData( aboutData ) );
+  MyDesignerFields *kcm = new MyDesignerFields();
   kcm->show();
 
   app.exec();

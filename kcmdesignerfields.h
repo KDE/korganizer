@@ -25,7 +25,6 @@
 
 #include <KCModule>
 
-class KComponentData;
 
 class QLabel;
 class QPushButton;
@@ -36,7 +35,7 @@ class KCMDesignerFields : public KCModule
 {
   Q_OBJECT
   public:
-    explicit KCMDesignerFields( const KComponentData &instance, QWidget *parent=0,
+    explicit KCMDesignerFields( QWidget *parent=0,
                                 const QVariantList &args=QVariantList() );
 
     virtual void load();

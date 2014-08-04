@@ -40,6 +40,9 @@ add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfie
 set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DKDESRCDIR="\\"${CMAKE_CURRENT_SOURCE_DIR}/\\"")
 target_link_libraries(testkcmdesignerfields
   KF5::KIOCore
-  KF5::KDELibs4Support
+  KF5::I18n
   Qt5::UiTools
+  KF5::KCMUtils
+  KF5::KIOWidgets
+  KF5::KDELibs4Support
 )

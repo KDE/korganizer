@@ -25,7 +25,7 @@
 #include <KAboutData>
 #include <QDebug>
 #include <KDirWatch>
-#include <KFileDialog>
+#include <QFileDialog>
 #include <KMessageBox>
 #include <KRun>
 #include <KShell>
@@ -36,6 +36,7 @@
 #include <KDialog>
 #include <KUrl>
 #include <KGlobal>
+#include <KFileDialog>
 
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -139,9 +140,9 @@ class PageItem : public QTreeWidgetItem
     bool mIsActive;
 };
 
-KCMDesignerFields::KCMDesignerFields( const KComponentData &instance, QWidget *parent,
+KCMDesignerFields::KCMDesignerFields( QWidget *parent,
                                       const QVariantList &args )
-  : KCModule( /*instance, */parent, args ),
+  : KCModule( parent, args ),
     mPageView( 0 ),
     mPagePreview( 0 ),
     mPageDetails( 0 ),
@@ -222,6 +223,7 @@ void KCMDesignerFields::loadUiFiles()
   const QStringList list = KGlobal::dirs()->findAllResources( "data", uiPath() + QLatin1String("/*.ui"),
                                                         KStandardDirs::Recursive |
                                                         KStandardDirs::NoDuplicates );
+
   for ( QStringList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
     new PageItem( mPageView, *it );
   }
