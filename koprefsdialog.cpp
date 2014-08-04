@@ -1553,12 +1553,12 @@ extern "C"
 extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korgdesignerfields( QWidget *parent, const char * ) {
-    return new KOPrefsDesignerFields( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDesignerFields( parent );
   }
 }
 
-KOPrefsDesignerFields::KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent )
-  : KCMDesignerFields( inst, parent )
+KOPrefsDesignerFields::KOPrefsDesignerFields( QWidget *parent )
+  : KCMDesignerFields( parent )
 {
 }
 

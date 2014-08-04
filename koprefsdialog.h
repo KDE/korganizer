@@ -151,7 +151,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
 {
   public:
-    explicit KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent = 0 );
+    explicit KOPrefsDesignerFields( QWidget *parent = 0 );
 
   protected:
     QString localUiDir();
