@@ -47,7 +47,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:
-    KOPrefsDialogMain( const KComponentData &inst, QWidget *parent );
+    KOPrefsDialogMain( QWidget *parent );
 
   protected slots:
     void toggleEmailSettings( bool on );
@@ -65,7 +65,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsMod
 {
   Q_OBJECT
   public:
-    KOPrefsDialogColorsAndFonts( const KComponentData &inst, QWidget *parent );
+    KOPrefsDialogColorsAndFonts( QWidget *parent );
 
   protected:
     void usrSave();
@@ -94,7 +94,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsMo
 {
   Q_OBJECT
   public:
-    KOPrefsDialogGroupScheduling( const KComponentData &inst, QWidget *parent );
+    KOPrefsDialogGroupScheduling( QWidget *parent );
 
   protected:
     void usrRead();
@@ -107,7 +107,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPIM::KPre
 {
   Q_OBJECT
   public:
-    KOPrefsDialogGroupwareScheduling( const KComponentData &inst, QWidget *parent );
+    KOPrefsDialogGroupwareScheduling( QWidget *parent );
     ~KOPrefsDialogGroupwareScheduling();
 
   protected:
@@ -122,7 +122,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 {
   Q_OBJECT
   public:
-    KOPrefsDialogPlugins( const KComponentData &inst, QWidget *parent );
+    KOPrefsDialogPlugins( QWidget *parent );
 
   protected slots:
     void usrRead();

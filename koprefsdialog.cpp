@@ -82,8 +82,8 @@
 #include <KLocale>
 #include <QStandardPaths>
 
-KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
-  : KPrefsModule( KOPrefs::instance(), inst, parent )
+KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent )
+  : KPrefsModule( KOPrefs::instance(), parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
   QTabWidget *tabWidget = new QTabWidget( this );
@@ -294,7 +294,7 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfigmain( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogMain( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogMain( parent );
   }
 }
 
@@ -304,8 +304,8 @@ extern "C"
 class KOPrefsDialogTime : public KPIM::KPrefsModule
 {
   public:
-    KOPrefsDialogTime( const KComponentData &inst, QWidget *parent )
-      : KPIM::KPrefsModule( KOPrefs::instance(), inst, parent )
+    KOPrefsDialogTime( QWidget *parent )
+      : KPIM::KPrefsModule( KOPrefs::instance(), parent )
     {
       QVBoxLayout *layout = new QVBoxLayout( this );
       QTabWidget *tabWidget = new QTabWidget( this );
@@ -590,8 +590,7 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
-    //QT5 KLocale::global()->insertCatalog( QLatin1String("timezones4") );
-    return new KOPrefsDialogTime( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogTime( parent );
   }
 }
 
@@ -601,8 +600,8 @@ extern "C"
 class KOPrefsDialogViews : public KPIM::KPrefsModule
 {
   public:
-    KOPrefsDialogViews( const KComponentData &inst, QWidget *parent )
-      : KPIM::KPrefsModule( KOPrefs::instance(), inst, parent ),
+    KOPrefsDialogViews( QWidget *parent )
+      : KPIM::KPrefsModule( KOPrefs::instance(), parent ),
         mMonthIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::MonthType, this ) ),
         mAgendaIconComboBox( new KItemIconCheckCombo( KItemIconCheckCombo::AgendaType, this ) )
     {
@@ -799,16 +798,15 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfigviews( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogViews( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogViews( parent );
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &inst,
-                                                          QWidget *parent )
-  : KPIM::KPrefsModule( KOPrefs::instance(), inst, parent )
+KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( QWidget *parent )
+  : KPIM::KPrefsModule( KOPrefs::instance(), parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
   QTabWidget *tabWidget = new QTabWidget( this );
@@ -1063,16 +1061,15 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogColorsAndFonts( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogColorsAndFonts( parent );
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData &inst,
-                                                            QWidget *parent )
-  : KPIM::KPrefsModule( KOPrefs::instance(), inst, parent )
+KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent )
+  : KPIM::KPrefsModule( KOPrefs::instance(), parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
 
@@ -1117,16 +1114,15 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogGroupScheduling( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogGroupScheduling( parent );
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KComponentData &inst,
-                                                                    QWidget *parent )
-  : KPrefsModule( CalendarSupport::KCalPrefs::instance(), inst, parent )
+KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent )
+  : KPrefsModule( CalendarSupport::KCalPrefs::instance(), parent )
 {
   mGroupwarePage = new Ui::KOGroupwarePrefsPage();
   QWidget *widget = new QWidget( this );
@@ -1249,7 +1245,7 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfigfreebusy( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogGroupwareScheduling( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogGroupwareScheduling( parent );
   }
 }
 
@@ -1276,8 +1272,8 @@ class PluginItem : public QTreeWidgetItem
 /**
   Dialog for selecting and configuring KOrganizer plugins
 */
-KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget *parent )
-  : KPrefsModule( KOPrefs::instance(), inst, parent )
+KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent )
+  : KPrefsModule( KOPrefs::instance(), parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
 
@@ -1543,7 +1539,7 @@ extern "C"
 {
   Q_DECL_EXPORT KCModule *create_korganizerconfigplugins( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogPlugins( KOGlobals::self()->componentData(), parent );
+    return new KOPrefsDialogPlugins( parent );
   }
 }
 
