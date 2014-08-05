@@ -159,8 +159,10 @@ void KODialogManager::showFilterEditDialog( QList<KCalCore::CalFilter*> *filters
              mMainView, SLOT(updateFilter()) );
     connect( mFilterEditDialog, SIGNAL(editCategories()),
              mCategoryEditDialog, SLOT(show()) );
+#if 0
     connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
              mFilterEditDialog, SLOT(updateCategoryConfig()) );
+#endif
   }
   mFilterEditDialog->show();
   mFilterEditDialog->raise();
