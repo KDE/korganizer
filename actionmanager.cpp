@@ -572,7 +572,7 @@ void ActionManager::initActions()
   mACollection->addAction( QLatin1String("delete_incidence"), mDeleteIncidenceAction );
   connect( mDeleteIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(deleteIncidence()) );
-  mDeleteIncidenceAction->setShortcut( QKeySequence( Qt::Key_Delete ) );
+  mACollection->setDefaultShortcut(mDeleteIncidenceAction, QKeySequence( Qt::Key_Delete ) );
 
   action = new QAction( i18n( "&Make Sub-to-do Independent" ), this );
   mACollection->addAction( QLatin1String("unsub_todo"), action );
