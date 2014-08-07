@@ -94,8 +94,8 @@ NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )
   connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(prevMonthClicked()) );
   connect( mNextMonth, SIGNAL(clicked()), SIGNAL(nextMonthClicked()) );
   connect( mNextYear, SIGNAL(clicked()), SIGNAL(nextYearClicked()) );
-  connect( mMonth, SIGNAL(clicked()), SLOT(selectMonthFromMenu()) );
-  connect( mYear, SIGNAL(clicked()), SLOT(selectYearFromMenu()) );
+  connect(mMonth, &QToolButton::clicked, this, &NavigatorBar::selectMonthFromMenu);
+  connect(mYear, &QToolButton::clicked, this, &NavigatorBar::selectYearFromMenu);
 }
 
 NavigatorBar::~NavigatorBar()
