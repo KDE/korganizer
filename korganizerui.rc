@@ -166,6 +166,8 @@
   <Menu name="akonadi_collectionview_contextmenu">
     <Action name="akonadi_collection_create"/>
     <Action name="akonadi_collection_delete"/>
+    <Action name="collection_disable"/><text>Disable Calendar</text>
+    <Action name="collection_enable"/><text>Enable Calendar</text>
     <Separator/>
       <Menu name="calendar_color"><text>Calendar Colors</text>
       <Action name="assign_color"/>

@@ -173,6 +173,9 @@ set(korganizerprivate_LIB_SRCS
     aboutdata.cpp
     actionmanager.cpp
     akonadicollectionview.cpp
+    views/collectionview/reparentingmodel.cpp
+    views/collectionview/controller.cpp
+    views/collectionview/calendardelegate.cpp
     calendarview.cpp
     datechecker.cpp
     datenavigator.cpp
@@ -276,6 +279,7 @@ set(korganizerprivate_LIB_SRCS
     ${KDE4_KNEWSTUFF3_LIBS}
     ${KDE4_KPRINTUTILS_LIBS}
     ${ZLIB_LIBRARIES}
+    ${BALOO_LIBRARIES}
   )
 
   set_target_properties(korganizerprivate PROPERTIES
@@ -346,3 +350,5 @@ set(korganizerprivate_LIB_SRCS
   )
 
 endif()
+
+add_subdirectory(views/collectionview)

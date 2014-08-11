@@ -327,6 +327,15 @@ void ActionManager::initActions()
 
   /************************** EDIT MENU *********************************/
 
+  //Disable a calendar or remove a referenced calendar
+  QAction *disableAction = mACollection->addAction( QLatin1String("collection_disable"), mCollectionView, SLOT(edit_disable()) );
+  disableAction->setText( i18n( "Disable Calendar" ) );
+
+  //Enable (subscribe) to a calendar.
+  QAction *enableAction = mACollection->addAction( QLatin1String("collection_enable"), mCollectionView, SLOT(edit_enable()) );
+  enableAction->setText( i18n( "Enable Calendar" ) );
+  //TODO: hide option on enabled collections
+
   QAction *pasteAction;
   Akonadi::History *history = mCalendarView->history();
   if ( mIsPart ) {

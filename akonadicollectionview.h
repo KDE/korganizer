@@ -28,7 +28,10 @@
 #define KORG_AKONADICOLLECTIONVIEW_H
 
 #include "calendarview.h"
+#include "views/collectionview/reparentingmodel.h"
+#include "views/collectionview/controller.h"
 #include <Akonadi/Collection>
+#include <kidentityproxymodel.h>
 
 class AkonadiCollectionView;
 
@@ -61,6 +64,8 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     AkonadiCollectionView *mAkonadiCollectionView;
 };
 
+class NewNodeExpander;
+
 /**
  * This class provides a view of calendar resources.
  */
@@ -80,6 +85,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
     bool isChecked(const Akonadi::Collection &) const;
+  public Q_SLOTS:
+    void edit_disable();
+    void edit_enable();
 
   Q_SIGNALS:
     void resourcesChanged( bool enabled );
@@ -90,8 +98,6 @@ class AkonadiCollectionView : public CalendarViewExtension
   private Q_SLOTS:
     void updateView();
     void updateMenu();
-    void restoreTreeState();
-    void checkNewCalendar( const QModelIndex &parent, int begin, int end );
 
     void newCalendar();
     void newCalendarDone( KJob * );
@@ -102,12 +108,15 @@ class AkonadiCollectionView : public CalendarViewExtension
     void assignColor();
     void disableColor();
     void setDefaultCalendar();
+    void onSearchIsActive(bool);
+    void onCalendarEnabled(const QModelIndex &, bool);
 
   private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
 
     Akonadi::StandardCalendarActionManager *mActionManager;
     Akonadi::EntityTreeView *mCollectionView;
+    QStackedWidget *mStackedWidget;
     QAbstractProxyModel *mBaseModel;
     KCheckableProxyModel *mSelectionProxyModel;
     KAction *mAssignColor;
@@ -116,6 +125,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;
     bool mHasContextMenu;
+    Controller *mController;
+    NewNodeExpander *mNewNodeExpander;
   };
+
 
 #endif
