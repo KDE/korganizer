@@ -23,19 +23,6 @@ target_link_libraries(korgplugins
 
 ########### next target ###############
 
-add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
-
-target_link_libraries(testkodaymatrix
-  KF5::AkonadiCore
-  KF5::CalendarCore
-  calendarsupport
-  korganizer_core
-  korganizerprivate
-  Qt5::Test
-)
-
-########### next target ###############
-
 add_executable(testkcmdesignerfields testkcmdesignerfields.cpp ../kcmdesignerfields.cpp)
 set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DKDESRCDIR="\\"${CMAKE_CURRENT_SOURCE_DIR}/\\"")
 target_link_libraries(testkcmdesignerfields
