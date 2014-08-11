@@ -408,10 +408,10 @@ void Controller::onPersonEnabled(bool enabled, const Person& person)
         Akonadi::Collection rootCollection(person.rootCollection);
         if (rootCollection.isValid()) {
             //Reference the persons collections if available
+            //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
             Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(rootCollection, Akonadi::CollectionFetchJob::Recursive, this);
             fetchJob->setProperty("enable", enabled);
             fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-            fetchJob->fetchScope().setContentMimeTypes(QStringList() << QLatin1String("text/calendar"));
             connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonCollectionsFetched(KJob*)));
         }
     } else {
