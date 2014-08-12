@@ -41,15 +41,14 @@ class MyDesignerFields : public KCMDesignerFields
 int main(int argc,char **argv)
 {
   KAboutData aboutData( QLatin1String("testkcmdesignerfields"), QString(), QLatin1String("0.1") );
-    QApplication app(argc, argv);
-    QCommandLineParser parser;
-    KAboutData::setApplicationData(aboutData);
-    parser.addVersionOption();
-    parser.addHelpOption();
-    //PORTING SCRIPT: adapt aboutdata variable if necessary
-    aboutData.setupCommandLine(&parser);
-    parser.process(app);
-    aboutData.processCommandLine(&parser);
+  QApplication app(argc, argv);
+  QCommandLineParser parser;
+  KAboutData::setApplicationData(aboutData);
+  parser.addVersionOption();
+  parser.addHelpOption();
+  aboutData.setupCommandLine(&parser);
+  parser.process(app);
+  aboutData.processCommandLine(&parser);
 
 
   MyDesignerFields *kcm = new MyDesignerFields();

@@ -31,6 +31,7 @@
 #include <KCalCore/Attendee>
 
 #include <KCalUtils/IncidenceFormatter>
+#include <KUrl>
 
 #include <KCalendarSystem>
 #include <QDebug>

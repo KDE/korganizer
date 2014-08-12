@@ -25,7 +25,7 @@
 using namespace EventViews::CalendarDecoration;
 
 #include <KIO/Job>
-
+#include <KUrl>
 class Picoftheday : public Decoration
 {
 

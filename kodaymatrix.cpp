@@ -36,6 +36,7 @@
 #include <AkonadiCore/ItemFetchScope>
 
 #include <KCalendarSystem>
+#include <KUrl>
 #include <QIcon>
 #include <QMenu>
 
