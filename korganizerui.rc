@@ -183,6 +183,7 @@
     <Action name="akonadi_resource_create"/>
     <Action name="akonadi_resource_delete"/>
     <Action name="akonadi_collection_sync"/>
+    <Action name="akonadi_resource_synchronize_collectiontree"/>
     <Separator/>
     <Action name="akonadi_collection_properties"/>
     <Action name="akonadi_resource_properties"/>

@@ -519,6 +519,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
                     << Akonadi::StandardActionManager::DeleteResources
                     << Akonadi::StandardActionManager::ResourceProperties
                     << Akonadi::StandardActionManager::SynchronizeResources
+                    << Akonadi::StandardActionManager::SynchronizeCollectionTree
                     << Akonadi::StandardActionManager::SynchronizeCollectionsRecursive;
 
     Q_FOREACH( Akonadi::StandardActionManager::Type standardAction, standardActions ) {
