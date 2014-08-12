@@ -375,7 +375,8 @@ class CollectionFilter : public QSortFilterProxyModel
         const Akonadi::Collection &col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
         CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
-        if (attr && ((attr->collectionNamespace() == "usertoplevel") || (attr->collectionNamespace() == "usertoplevel"))) {
+        if (attr && ((attr->collectionNamespace() == "usertoplevel") || (attr->collectionNamespace() == "usertoplevel"))
+                || (col.name().contains(QLatin1String("Other Users")))) {
             return false;
         }
         return true;
