@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<component type="desktop">
+  <id>korganizer.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>KOrganizer</name>
+  <description>
+    <p>
+      KOrganizer is the calendar and scheduling component of the Kontact suite.
+      You can write journal entries, schedule appointments, events, and to-dos.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Support for multiple calendars and todo lists.</li>
+      <li>Storage model.</li>
+      <li>Undo and Redo.</li>
+      <li>Todo integration with agenda view.</li>
+      <li>Attachments for events and todos.</li>
+      <li>Quick todo and event entries.</li>
+      <li>Plugin for Jewish calendar dates.</li>
+      <li>Print support.</li>
+    </ul>
+  </description>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=korganizer</url>
+  <url type="help">http://docs.kde.org/stable/en/kdepim/korganizer/index.html</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://kde.org/images/screenshots/korganizer.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>korganizer</binary>
+  </provides>
+</component>

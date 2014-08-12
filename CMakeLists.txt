@@ -337,6 +337,11 @@ set(korganizerprivate_LIB_SRCS
     DESTINATION ${XDG_APPS_INSTALL_DIR}
   )
 
+  install(FILES
+    korganizer.appdata.xml
+    DESTINATION ${CMAKE_INSTALL_METAINFODIR}
+  )
+
   install(PROGRAMS
     ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal
     DESTINATION ${BIN_INSTALL_DIR}
