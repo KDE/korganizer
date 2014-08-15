@@ -35,7 +35,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QWheelEvent>
-#include <KLocale>
+#include <KLocalizedString>
 #include <QFontDatabase>
 
 KDateNavigator::KDateNavigator( QWidget *parent )

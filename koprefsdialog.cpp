@@ -79,7 +79,7 @@
 #include <QTimeEdit>
 #include <QTreeWidget>
 #include <QVBoxLayout>
-#include <KLocale>
+#include <KLocalizedString>
 #include <QStandardPaths>
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent )

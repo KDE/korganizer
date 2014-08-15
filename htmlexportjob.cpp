@@ -43,7 +43,7 @@
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
-#include <KLocale>
+#include <KLocalizedString>
 
 using namespace KOrg;
 

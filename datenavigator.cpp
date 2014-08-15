@@ -32,7 +32,7 @@
 #include <KCalendarSystem>
 
 #include <QDate>
-#include <KLocale>
+#include <KLocalizedString>
 
 DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {
