@@ -36,7 +36,7 @@
 
 #include <KFileDialog>
 #include <KMessageBox>
-#include <KStandardDirs>
+
 #include <KIO/NetAccess>
 
 #include <QFrame>

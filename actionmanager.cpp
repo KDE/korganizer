@@ -79,7 +79,7 @@
 #include <KSelectAction>
 #include <KShortcutsDialog>
 #include <KStandardAction>
-#include <KStandardDirs>
+
 #include <QTemporaryFile>
 #include <KTipDialog>
 #include <KToggleAction>
