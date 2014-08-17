@@ -59,7 +59,7 @@
 #include <QSpinBox>
 #include <KMessageBox>
 #include <KService>
-#include <KStandardDirs>
+
 #include <QTabWidget>
 #include <KTimeComboBox>
 #include <KUrlRequester>
@@ -500,7 +500,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       cb->setText( QString() );
 
       if ( CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
-        const QString defAudioFile = KGlobal::dirs()->locate( "sound", QLatin1String("KDE-Sys-Warning.ogg") );
+        const QString defAudioFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + QLatin1String("KDE-Sys-Warning.ogg") );
         CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
       }
       QString filter =
