@@ -490,9 +490,8 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       cb->setText( QString() );
 
       if ( CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty() ) {
-        QString defAudioFile = KGlobal::dirs()->findResourceDir( "sound", QLatin1String("KDE-Sys-Warning.ogg") );
-        CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(
-          defAudioFile + QLatin1String("KDE-Sys-Warning.ogg") );
+        const QString defAudioFile = KGlobal::dirs()->locate( "sound", QLatin1String("KDE-Sys-Warning.ogg") );
+        CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
       }
       QString filter =
         i18n( "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
