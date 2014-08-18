@@ -6,10 +6,13 @@
   <name>KOrganizer</name>
   <name xml:lang="ca">KOrganizer</name>
   <name xml:lang="cs">KOrganizer</name>
+  <name xml:lang="en-GB">KOrganizer</name>
   <name xml:lang="nds">KOrganizer</name>
   <name xml:lang="nl">KOrganizer</name>
   <name xml:lang="pl">KOrganizer</name>
+  <name xml:lang="ro">KOrganizer</name>
   <name xml:lang="sk">KOrganizer</name>
+  <name xml:lang="sl">KOrganizer</name>
   <name xml:lang="sv">Korganizer</name>
   <name xml:lang="uk">KOrganizer</name>
   <name xml:lang="x-test">xxKOrganizerxx</name>
@@ -19,85 +22,110 @@
       You can write journal entries, schedule appointments, events, and to-dos.
     </p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
+    <p xml:lang="en-GB">KOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.</p>
     <p xml:lang="nds">KOrganizer is de Plaan- un Kalennerkomponent binnen de Kontact-Sammeln. Du kannst Daagbookindrääg schrieven un Möten, Begeefnissen un Opgaven planen.</p>
     <p xml:lang="nl">KOrganizer is de agenda- en planningscomponent van Kontact. U kunt hierin journaals bijhouden, en afspraken, activiteiten en taken plannen</p>
     <p xml:lang="pl">KOrganizer jest składnikiem kalendarza i planowania pakietu Kontact. Można tworzyć wpisy dziennika, planować spotkania, wydarzenia i zadania.</p>
+    <p xml:lang="sl">KOrganizer je sestavni del paketa Kontact, ki omogoča razporejanje časa in prikazuje koledar. Ustvarjate lahko dnevnike, razporejate sestanke, dogodke in opravila.</p>
     <p xml:lang="sv">Korganizer är kalender- och schemaläggningskomponenten i Kontact-sviten. Det går att skriva journalanteckningar, samt schemalägga möten, händelser och uppgifter.</p>
     <p xml:lang="uk">KOrganizer — компонент комплексу програм Kontact, що відповідає за календар та планування. За його допомогою можна створювати записи журналу, планувати зустрічі, події або ставити завдання.</p>
     <p xml:lang="x-test">xxKOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.xx</p>
     <p>Features:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
+    <p xml:lang="en-GB">Features:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="pl">Możliwości:</p>
+    <p xml:lang="ro">Caracteristici:</p>
     <p xml:lang="sk">Funkcie:</p>
+    <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
     <ul>
       <li>Support for multiple calendars and todo lists.</li>
       <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents</li>
+      <li xml:lang="en-GB">Support for multiple calendars and todo lists.</li>
       <li xml:lang="nds">Ünnerstütt vele Kalenners un Opgavenlisten.</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten.</li>
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań.</li>
+      <li xml:lang="sl">Podpora več koledarjem in seznamom opravil.</li>
       <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor.</li>
       <li xml:lang="uk">підтримка роботи з декількома календарями та списками завдань;</li>
       <li xml:lang="x-test">xxSupport for multiple calendars and todo lists.xx</li>
       <li>Storage model.</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
+      <li xml:lang="en-GB">Storage model.</li>
       <li xml:lang="nds">Wohrmodell</li>
       <li xml:lang="nl">Opslagmodel.</li>
       <li xml:lang="pl">Model przechowalni.</li>
+      <li xml:lang="ro">Model de stocare.</li>
+      <li xml:lang="sl">Model za shranjevanje.</li>
       <li xml:lang="sv">Lagringsmodell.</li>
       <li xml:lang="uk">модель зберігання даних;</li>
       <li xml:lang="x-test">xxStorage model.xx</li>
       <li>Undo and Redo.</li>
       <li xml:lang="ca">Fes i desfés</li>
+      <li xml:lang="en-GB">Undo and Redo.</li>
       <li xml:lang="nds">Torüchnehmen un wedderhalen</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw.</li>
       <li xml:lang="pl">Cofanie i ponawianie.</li>
+      <li xml:lang="ro">Desfacere și refacere.</li>
+      <li xml:lang="sl">Uveljavi in razveljavi.</li>
       <li xml:lang="sv">Ångra och gör om.</li>
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="x-test">xxUndo and Redo.xx</li>
       <li>Todo integration with agenda view.</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
+      <li xml:lang="en-GB">Todo integration with agenda view.</li>
       <li xml:lang="nds">Opgaven binnen Tietplaan-Ansicht</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht.</li>
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć.</li>
+      <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda.</li>
       <li xml:lang="sv">Integrering av uppgifter med agendavyn.</li>
       <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
       <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
       <li>Attachments for events and todos.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
+      <li xml:lang="en-GB">Attachments for events and todos.</li>
       <li xml:lang="nds">Bilagen för Begeefnissen un Opgaven</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken.</li>
       <li xml:lang="pl">Załączniki dla wydarzeń i zadań.</li>
+      <li xml:lang="sl">Priloge za dogodke in opravila.</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter.</li>
       <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
       <li xml:lang="x-test">xxAttachments for events and todos.xx</li>
       <li>Quick todo and event entries.</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
+      <li xml:lang="en-GB">Quick todo and event entries.</li>
       <li xml:lang="nds">Opgaav- un Begeefnis-Indrääg laat sik gau opstellen</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken.</li>
       <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń.</li>
+      <li xml:lang="sl">Hitra opravila in vnosi dogodkov.</li>
       <li xml:lang="sv">Snabba uppgifts- och händelseposter.</li>
       <li xml:lang="uk">швидке створення записів завдань та подій;</li>
       <li xml:lang="x-test">xxQuick todo and event entries.xx</li>
       <li>Plugin for Jewish calendar dates.</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
+      <li xml:lang="en-GB">Plugin for Jewish calendar dates.</li>
       <li xml:lang="nds">Moduul för jöödsch Kalennerdaten</li>
       <li xml:lang="nl">Plugin voor Joodse feestdagen</li>
       <li xml:lang="pl">Wtyczka dla żydowskich dat kalendarza.</li>
+      <li xml:lang="ro">Extensie pentru calendar evreiesc.</li>
+      <li xml:lang="sl">Vstavek za židovski koledar.</li>
       <li xml:lang="sv">Insticksprogram för Judiska kalenderdatum.</li>
       <li xml:lang="uk">додаток для запису подій за єврейським календарем;</li>
       <li xml:lang="x-test">xxPlugin for Jewish calendar dates.xx</li>
       <li>Print support.</li>
       <li xml:lang="ca">Implementa la impressió</li>
       <li xml:lang="cs">Podpora tisku.</li>
+      <li xml:lang="en-GB">Print support.</li>
       <li xml:lang="nds">Druckünnerstütten</li>
       <li xml:lang="nl">Afdrukbeheer.</li>
       <li xml:lang="pl">Obsługa wydruku.</li>
+      <li xml:lang="ro">Suport pentru tipărire.</li>
+      <li xml:lang="sl">Podpora tiskanju.</li>
       <li xml:lang="sv">Stöd för utskrift.</li>
       <li xml:lang="uk">підтримка друку календарів.</li>
       <li xml:lang="x-test">xxPrint support.xx</li>
