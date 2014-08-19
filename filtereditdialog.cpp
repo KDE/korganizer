@@ -34,20 +34,32 @@
 
 #include <KMessageBox>
 #include <QDebug>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 FilterEditDialog::FilterEditDialog( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
-  : KDialog( parent )
+  : QDialog( parent )
 {
-  setCaption( i18nc( "@title::window", "Edit Calendar Filters" ) );
-  setButtons( Ok | Apply | Cancel );
-  setMainWidget( mFilterEdit = new FilterEdit( filters, this ) );
+  setWindowTitle( i18nc( "@title::window", "Edit Calendar Filters" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Apply);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mOkButton = buttonBox->button(QDialogButtonBox::Ok);
+  mApplyButton = buttonBox->button(QDialogButtonBox::Apply);
+  mOkButton->setDefault(true);
+  mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(slotOk()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  mainLayout->addWidget(mFilterEdit = new FilterEdit( filters, this ) );
+  mainLayout->addWidget(buttonBox);
 
   connect( mFilterEdit, SIGNAL(dataConsistent(bool)), SLOT(setDialogConsistent(bool)) );
   updateFilterList();
   connect( mFilterEdit, SIGNAL(editCategories()), SIGNAL(editCategories()) );
   connect( mFilterEdit, SIGNAL(filterChanged()), SIGNAL(filterChanged()) );
-  connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
-  connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()) );
+  connect(buttonBox->button(QDialogButtonBox::Apply), SIGNAL(clicked()), this, SLOT(slotApply()) );
 }
 
 FilterEditDialog::~FilterEditDialog()
@@ -74,8 +86,8 @@ void FilterEditDialog::slotOk()
 
 void FilterEditDialog::setDialogConsistent( bool consistent )
 {
-    enableButton( Ok, consistent );
-    enableButtonApply( consistent );
+    mOkButton->setEnabled(consistent);
+    mApplyButton->setEnabled( consistent );
 }
 
 FilterEdit::FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent )

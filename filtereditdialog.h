@@ -29,10 +29,11 @@
 
 #include "ui_filteredit_base.h"
 
-#include <KDialog>
+#include <QDialog>
+#include <KConfigGroup>
 
 class FilterEdit;
-
+class QPushButton;
 namespace KCalCore {
   class CalFilter;
 }
@@ -47,7 +48,7 @@ namespace KPIM {
   @short Creates a dialog box to create/edit a calendar filter
   @author Cornelius Schumacher, Thomas Zander
 */
-class FilterEditDialog : public KDialog
+class FilterEditDialog : public QDialog
 {
   Q_OBJECT
   public:
@@ -64,6 +65,8 @@ class FilterEditDialog : public KDialog
 
   private:
     FilterEdit *mFilterEdit;
+    QPushButton *mOkButton;
+    QPushButton *mApplyButton;
 
   protected slots:
     void slotApply();
