@@ -21,13 +21,13 @@
 #ifndef KORG_STATUSDIALOG_H
 #define KORG_STATUSDIALOG_H
 
-#include <KDialog>
+#include <QDialog>
 
 #include <KCalCore/Attendee>
 
 class KComboBox;
 
-class StatusDialog : public KDialog
+class StatusDialog : public QDialog
 {
   Q_OBJECT
   public:

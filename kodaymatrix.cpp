@@ -45,6 +45,7 @@
 #include <QToolTip>
 #include <QMimeData>
 #include <KLocalizedString>
+#include <QLocale>
 
 // ============================================================================
 //  K O D A Y M A T R I X
@@ -893,7 +894,7 @@ QPair<QDate,QDate> KODayMatrix::matrixLimits( const QDate &month )
   calSys->setDate( d, calSys->year( month ), calSys->month( month ), 1 );
 
   const int dayOfWeek = calSys->dayOfWeek( d );
-  const int weekstart = KLocale::global()->weekStartDay();
+  const int weekstart = QLocale().firstDayOfWeek();
 
   d = d.addDays( -( 7 + dayOfWeek - weekstart ) % 7 );
 

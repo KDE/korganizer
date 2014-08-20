@@ -33,6 +33,7 @@
 
 #include <QDate>
 #include <KLocalizedString>
+#include <QLocale>
 
 DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {
@@ -98,7 +99,7 @@ void DateNavigator::selectDates( const QDate &d, int count,
 void DateNavigator::selectWeekByDay( int weekDay, const QDate &d, const QDate &preferredMonth )
 {
   int dateCount = mSelectedDates.count();
-  bool weekStart = ( weekDay == KLocale::global()->weekStartDay() );
+  bool weekStart = ( weekDay == QLocale().firstDayOfWeek() );
   if ( weekStart && dateCount == 7 ) {
     selectWeek( d, preferredMonth );
   } else {
@@ -114,7 +115,7 @@ void DateNavigator::selectWeek()
 void DateNavigator::selectWeek( const QDate &d, const QDate &preferredMonth )
 {
   const int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
-  const int weekStart = KLocale::global()->weekStartDay();
+  const int weekStart = QLocale().firstDayOfWeek();
 
   QDate firstDate = d.addDays( weekStart - dayOfWeek );
 
@@ -132,7 +133,7 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek( const QDate &d )
 {
-  const int weekStart = KLocale::global()->weekStartDay();
+  const int weekStart = QLocale().firstDayOfWeek();
   const int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
   QDate currentDate = d.addDays( weekStart - dayOfWeek );
 

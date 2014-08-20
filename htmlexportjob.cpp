@@ -44,6 +44,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <KLocalizedString>
+#include <QLocale>
 
 using namespace KOrg;
 
@@ -302,7 +303,7 @@ void HtmlExportJob::createMonthView( QTextStream *ts )
     *ts << "<h2>"
         << i18nc( "@title month and year", "%1 %2", hMon, hYear )
         << "</h2>" << endl;
-    if ( KLocale::global()->weekStartDay() == 1 ) {
+    if ( QLocale().firstDayOfWeek() == 1 ) {
       start = start.addDays( 1 - start.dayOfWeek() );
     } else {
       if ( start.dayOfWeek() != 7 ) {

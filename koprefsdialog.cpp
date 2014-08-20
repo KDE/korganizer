@@ -81,6 +81,7 @@
 #include <QVBoxLayout>
 #include <KLocalizedString>
 #include <QStandardPaths>
+#include <QLocale>
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), parent )
@@ -392,7 +393,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
       workingHoursLayout->addLayout( workDaysLayout );
 
       // Respect start of week setting
-      int weekStart = KLocale::global()->weekStartDay();
+      int weekStart = QLocale().firstDayOfWeek();
       for ( int i=0; i < 7; ++i ) {
         const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
         QString weekDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,

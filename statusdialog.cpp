@@ -34,16 +34,17 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <KGuiItem>
+#include <KConfigGroup>
 
 StatusDialog::StatusDialog( QWidget *parent )
-  : KDialog( parent )
+  : QDialog( parent )
 {
   setModal( true );
-  setCaption( i18n( "Set Your Status" ) );
+  setWindowTitle( i18n( "Set Your Status" ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
-  topLayout->setSpacing( spacingHint() );
-  topLayout->setMargin( marginHint() );
+  //QT5 topLayout->setSpacing( spacingHint() );
+  //QT5 topLayout->setMargin( marginHint() );
 
   QBoxLayout *statusLayout = new QHBoxLayout();
   topLayout->addItem( statusLayout );
