@@ -66,7 +66,7 @@ void ReparentingModel::Node::reparent(ReparentingModel::Node *node)
     Node::Ptr nodePtr;
     if (node->parent) {
         //Reparent node
-        Ptr *it = node->parent->children.begin();
+        QVector<Node::Ptr>::iterator it = node->parent->children.begin();
         for (;it != node->parent->children.end(); it++) {
             if (it->data() == node) {
                 //Reuse smart pointer
