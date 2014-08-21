@@ -634,7 +634,7 @@ void HtmlExportJob::createTodo( QTextStream *ts, const KCalCore::Todo::Ptr &todo
     *ts << " class=\"done\"";
   }
   *ts << ">" << endl;
-  *ts << "    " << i18nc( "@info/plain to-do percent complete",
+  *ts << "    " << i18nc( "@info to-do percent complete",
                           "%1 %", todo->percentComplete() ) << endl;
   *ts << "  </td>" << endl;
 
@@ -789,7 +789,7 @@ QString HtmlExportJob::breakString( const QString &text )
 void HtmlExportJob::createFooter( QTextStream *ts )
 {
   // FIXME: Implement this in a translatable way!
-  QString trailer = i18nc( "@info/plain", "This page was created " );
+  QString trailer = i18nc( "@info", "This page was created " );
 
 /*  bool hasPerson = false;
   bool hasCredit = false;
@@ -807,7 +807,7 @@ void HtmlExportJob::createFooter( QTextStream *ts )
     }
   } else {
     if ( !d->mSettings->name().isEmpty() ) {
-      trailer += i18nc( "@info/plain page creator name only",
+      trailer += i18nc( "@info page creator name only",
                         "by %1 ", d->mSettings->name() );
     }
   }
@@ -817,7 +817,7 @@ void HtmlExportJob::createFooter( QTextStream *ts )
                         "with <link url='%1'>%2</link>",
                         d->mSettings->creditURL(), d->mSettings->creditName() );
     } else {
-      trailer += i18nc( "@info/plain page credit name only",
+      trailer += i18nc( "@info page credit name only",
                         "with %1", d->mSettings->creditName() );
     }
   }
@@ -884,7 +884,7 @@ void HtmlExportJob::addHoliday( const QDate &date, const QString &name )
   if ( d->mHolidayMap[date].isEmpty() ) {
     d->mHolidayMap[date] = name;
   } else {
-    d->mHolidayMap[date] = i18nc( "@info/plain holiday by date and name",
+    d->mHolidayMap[date] = i18nc( "@info holiday by date and name",
                                   "%1, %2", d->mHolidayMap[date], name );
   }
 }
