@@ -22,14 +22,14 @@
 #ifndef KORG_PLUGINS_HEBREW_CONFIGDIALOG_H
 #define KORG_PLUGINS_HEBREW_CONFIGDIALOG_H
 
-#include <KDialog>
+#include <QDialog>
 
 class QCheckBox;
 
 /**
   @author Jonathan Singer
 */
-class ConfigDialog : public KDialog
+class ConfigDialog : public QDialog
 {
     Q_OBJECT
 

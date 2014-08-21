@@ -28,19 +28,32 @@
 #include <QCheckBox>
 #include <QFrame>
 #include <QVBoxLayout>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 ConfigDialog::ConfigDialog( QWidget *parent )
-  :KDialog( parent )
+  :QDialog( parent )
 {
   QFrame *topFrame = new QFrame( this );
-  setMainWidget( topFrame );
-  setCaption( i18n( "Configure Holidays" ) );
-  setButtons( Ok | Cancel );
-  setDefaultButton( Ok );
+  
+//PORTING: Verify that widget was added to mainLayout:   setMainWidget( topFrame );
+// Add mainLayout->addWidget(topFrame); if necessary
+  setWindowTitle( i18n( "Configure Holidays" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(topFrame);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
+  mainLayout->addWidget(buttonBox);
+  okButton->setDefault(true);
   setModal( true );
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setMargin( 0 );
-  topLayout->setSpacing( spacingHint() );
+  //QT5topLayout->setSpacing( spacingHint() );
 
   mIsraelBox = new QCheckBox( topFrame );
   mIsraelBox->setText( i18n( "Use Israeli holidays" ) );

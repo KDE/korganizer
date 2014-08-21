@@ -26,6 +26,7 @@
 
 #include <KCalendarSystem>
 #include <KLocalizedString>
+#include <KConfigGroup>
 
 using namespace EventViews::CalendarDecoration;
 
