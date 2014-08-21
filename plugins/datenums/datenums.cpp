@@ -24,6 +24,7 @@
 #include "koglobals.h"
 
 #include <KCalendarSystem>
+#include <KConfigGroup>
 
 Datenums::Datenums()
   : mDisplayedInfo( DayOfYear | DaysRemaining )
