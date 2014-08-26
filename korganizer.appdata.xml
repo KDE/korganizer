@@ -11,6 +11,7 @@
   <name xml:lang="nl">KOrganizer</name>
   <name xml:lang="pl">KOrganizer</name>
   <name xml:lang="pt">KOrganizer</name>
+  <name xml:lang="pt-BR">KOrganizer</name>
   <name xml:lang="ro">KOrganizer</name>
   <name xml:lang="sk">KOrganizer</name>
   <name xml:lang="sl">KOrganizer</name>
@@ -28,6 +29,7 @@
     <p xml:lang="nl">KOrganizer is de agenda- en planningscomponent van Kontact. U kunt hierin journaals bijhouden, en afspraken, activiteiten en taken plannen</p>
     <p xml:lang="pl">KOrganizer jest składnikiem kalendarza i planowania pakietu Kontact. Można tworzyć wpisy dziennika, planować spotkania, wydarzenia i zadania.</p>
     <p xml:lang="pt">O KOrganizer é o componente de calendário e agendas do pacote Kontact. Poderá escrever itens de diário, agendar reuniões, eventos e itens por-fazer.</p>
+    <p xml:lang="pt-BR">KOrganizer é o componente de calendário e agendas do Kontact. Você pode criar itens de diário, agendar reuniões, eventos e tarefas.</p>
     <p xml:lang="sk">KOrganizer je komponent kalendára a plánovania pre balík Kontact. Môžete písať položky denníka, plánovať schôdzky, udalosti a úlohy.</p>
     <p xml:lang="sl">KOrganizer je sestavni del paketa Kontact, ki omogoča razporejanje časa in prikazuje koledar. Ustvarjate lahko dnevnike, razporejate sestanke, dogodke in opravila.</p>
     <p xml:lang="sv">Korganizer är kalender- och schemaläggningskomponenten i Kontact-sviten. Det går att skriva journalanteckningar, samt schemalägga möten, händelser och uppgifter.</p>
@@ -41,6 +43,7 @@
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="pl">Możliwości:</p>
     <p xml:lang="pt">Funcionalidades:</p>
+    <p xml:lang="pt-BR">Funcionalidades:</p>
     <p xml:lang="ro">Caracteristici:</p>
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sl">Zmožnosti:</p>
@@ -55,6 +58,7 @@
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten.</li>
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań.</li>
       <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer.</li>
+      <li xml:lang="pt-BR">Suporte a diversos calendários e listas tarefas.</li>
       <li xml:lang="sk">Podpora pre viaceho kalendárov a zoznamov úloh.</li>
       <li xml:lang="sl">Podpora več koledarjem in seznamom opravil.</li>
       <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor.</li>
@@ -67,6 +71,7 @@
       <li xml:lang="nl">Opslagmodel.</li>
       <li xml:lang="pl">Model przechowalni.</li>
       <li xml:lang="pt">Modelo de armazenamento versátil.</li>
+      <li xml:lang="pt-BR">Modelo de armazenamento.</li>
       <li xml:lang="ro">Model de stocare.</li>
       <li xml:lang="sk">Model úložiska.</li>
       <li xml:lang="sl">Model za shranjevanje.</li>
@@ -80,6 +85,7 @@
       <li xml:lang="nl">Ongedaan maken en opnieuw.</li>
       <li xml:lang="pl">Cofanie i ponawianie.</li>
       <li xml:lang="pt">Suporte para Desfazer e Refazer operações.</li>
+      <li xml:lang="pt-BR">Suporte para as ações Desfazer e Refazer.</li>
       <li xml:lang="ro">Desfacere și refacere.</li>
       <li xml:lang="sk">Funkcia Späť a Znova.</li>
       <li xml:lang="sl">Uveljavi in razveljavi.</li>
@@ -93,6 +99,7 @@
       <li xml:lang="nl">Taken integreren in agendaoverzicht.</li>
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć.</li>
       <li xml:lang="pt">Integração de itens por-fazer com a agenda.</li>
+      <li xml:lang="pt-BR">Integração de tarefas com a agenda.</li>
       <li xml:lang="sk">Integrácia úloh s pohľadom agendy.</li>
       <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda.</li>
       <li xml:lang="sv">Integrering av uppgifter med agendavyn.</li>
@@ -105,6 +112,7 @@
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken.</li>
       <li xml:lang="pl">Załączniki dla wydarzeń i zadań.</li>
       <li xml:lang="pt">Anexos para os eventos e itens por-fazer.</li>
+      <li xml:lang="pt-BR">Anexos para eventos e tarefas.</li>
       <li xml:lang="sk">Prílohy pre udalosti a úlohy.</li>
       <li xml:lang="sl">Priloge za dogodke in opravila.</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter.</li>
@@ -117,6 +125,7 @@
       <li xml:lang="nl">Snel invoeren van activiteiten en taken.</li>
       <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń.</li>
       <li xml:lang="pt">Criação rápida de itens por-fazer e eventos.</li>
+      <li xml:lang="pt-BR">Criação rápida de tarefas e eventos.</li>
       <li xml:lang="sk">Rýchle položky úloh a udalostí.</li>
       <li xml:lang="sl">Hitra opravila in vnosi dogodkov.</li>
       <li xml:lang="sv">Snabba uppgifts- och händelseposter.</li>
@@ -129,6 +138,7 @@
       <li xml:lang="nl">Plugin voor Joodse feestdagen</li>
       <li xml:lang="pl">Wtyczka dla żydowskich dat kalendarza.</li>
       <li xml:lang="pt">'Plugin' para datas do calendário Judeu.</li>
+      <li xml:lang="pt-BR">Plugin para datas do calendário judaico.</li>
       <li xml:lang="ro">Extensie pentru calendar evreiesc.</li>
       <li xml:lang="sk">Plugin pre dátumy židovského kalendára.</li>
       <li xml:lang="sl">Vstavek za židovski koledar.</li>
@@ -143,6 +153,7 @@
       <li xml:lang="nl">Afdrukbeheer.</li>
       <li xml:lang="pl">Obsługa wydruku.</li>
       <li xml:lang="pt">Suporte para a impressão.</li>
+      <li xml:lang="pt-BR">Suporte a impressão.</li>
       <li xml:lang="ro">Suport pentru tipărire.</li>
       <li xml:lang="sk">Podpora tlače.</li>
       <li xml:lang="sl">Podpora tiskanju.</li>
