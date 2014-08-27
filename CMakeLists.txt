@@ -151,7 +151,7 @@ target_link_libraries(korganizer_core
   KF5::CalendarCore
   KF5::CalendarUtils
   KF5::Mime
-  KF5::PimIdentities
+  KF5::IdentityManagement
   
   KF5::KIOCore
 )
@@ -268,7 +268,7 @@ set(korganizerprivate_LIB_SRCS
     KF5::CalendarUtils
     KF5::Holidays
     KF5::Mime
-    KF5::PimIdentities
+    KF5::IdentityManagement
     KF5::MailTransport
     KF5::KCMUtils
     KF5::NewStuff

@@ -301,7 +301,7 @@ void KOCore::reloadPlugins()
   loadCalendarDecorations();
 }
 
-KPIMIdentities::IdentityManager *KOCore::identityManager()
+KIdentityManagement::IdentityManager *KOCore::identityManager()
 {
   if ( !mIdentityManager ) {
     mIdentityManager = new CalendarSupport::IdentityManager;
