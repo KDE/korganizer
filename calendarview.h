@@ -34,6 +34,8 @@
 #include <KCalCore/Visitor>
 #include <KCalCore/ScheduleMessage>
 
+#include <KPIMIdentities/IdentityManager>
+
 #include <akonadi/calendar/itiphandler.h>
 
 #include <calendarsupport/messagewidget.h>
@@ -656,6 +658,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void onCheckableProxyToggled( bool newState );
     void onTodosPurged(bool success, int numDeleted, int numIgnored);
 
+    void onCheckVirtualCollections(const Akonadi::Collection::List &collections);
+    void createSearchJobFinished(KJob *job);
+    void modifyResult(KJob* job);
+    void onIdentitiesChanged();
   private:
     void init();
     Akonadi::Collection selectedCollection() const;
@@ -728,6 +734,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     Akonadi::CalendarClipboard *mCalendarClipboard;
     KOCheckableProxyModel *mCheckableProxyModel;
     AkonadiCollectionView *mETMCollectionView;
+
+    KPIMIdentities::IdentityManager mIdentityManager;
+    Akonadi::Collection mOpenInvitationCollection;
+    Akonadi::Collection mDeclineCollection;
 };
 
 #endif
