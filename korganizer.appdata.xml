@@ -7,6 +7,7 @@
   <name xml:lang="ca">KOrganizer</name>
   <name xml:lang="cs">KOrganizer</name>
   <name xml:lang="en-GB">KOrganizer</name>
+  <name xml:lang="ko">KOrganizer</name>
   <name xml:lang="nds">KOrganizer</name>
   <name xml:lang="nl">KOrganizer</name>
   <name xml:lang="pl">KOrganizer</name>
@@ -25,6 +26,7 @@
     </p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
     <p xml:lang="en-GB">KOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.</p>
+    <p xml:lang="ko">KOrganizer는 Kontact와 함께 사용할 수 있는 달력 및 일정 관리 프로그램입니다. 저널 항목 작성, 약속, 할 일, 행사를 관리할 수 있습니다.</p>
     <p xml:lang="nds">KOrganizer is de Plaan- un Kalennerkomponent binnen de Kontact-Sammeln. Du kannst Daagbookindrääg schrieven un Möten, Begeefnissen un Opgaven planen.</p>
     <p xml:lang="nl">KOrganizer is de agenda- en planningscomponent van Kontact. U kunt hierin journaals bijhouden, en afspraken, activiteiten en taken plannen</p>
     <p xml:lang="pl">KOrganizer jest składnikiem kalendarza i planowania pakietu Kontact. Można tworzyć wpisy dziennika, planować spotkania, wydarzenia i zadania.</p>
@@ -39,6 +41,7 @@
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="en-GB">Features:</p>
+    <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="pl">Możliwości:</p>
@@ -54,6 +57,7 @@
       <li>Support for multiple calendars and todo lists.</li>
       <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents</li>
       <li xml:lang="en-GB">Support for multiple calendars and todo lists.</li>
+      <li xml:lang="ko">다중 달력 및 할 일 목록 지원.</li>
       <li xml:lang="nds">Ünnerstütt vele Kalenners un Opgavenlisten.</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten.</li>
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań.</li>
@@ -67,6 +71,7 @@
       <li>Storage model.</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
       <li xml:lang="en-GB">Storage model.</li>
+      <li xml:lang="ko">저장소 모델.</li>
       <li xml:lang="nds">Wohrmodell</li>
       <li xml:lang="nl">Opslagmodel.</li>
       <li xml:lang="pl">Model przechowalni.</li>
@@ -81,6 +86,7 @@
       <li>Undo and Redo.</li>
       <li xml:lang="ca">Fes i desfés</li>
       <li xml:lang="en-GB">Undo and Redo.</li>
+      <li xml:lang="ko">실행 취소 및 재실행.</li>
       <li xml:lang="nds">Torüchnehmen un wedderhalen</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw.</li>
       <li xml:lang="pl">Cofanie i ponawianie.</li>
@@ -95,6 +101,7 @@
       <li>Todo integration with agenda view.</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
       <li xml:lang="en-GB">Todo integration with agenda view.</li>
+      <li xml:lang="ko">하루 보기와 통합된 할 일 목록.</li>
       <li xml:lang="nds">Opgaven binnen Tietplaan-Ansicht</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht.</li>
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć.</li>
@@ -108,6 +115,7 @@
       <li>Attachments for events and todos.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
       <li xml:lang="en-GB">Attachments for events and todos.</li>
+      <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원.</li>
       <li xml:lang="nds">Bilagen för Begeefnissen un Opgaven</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken.</li>
       <li xml:lang="pl">Załączniki dla wydarzeń i zadań.</li>
@@ -121,6 +129,7 @@
       <li>Quick todo and event entries.</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
       <li xml:lang="en-GB">Quick todo and event entries.</li>
+      <li xml:lang="ko">빠른 할 일과 이벤트 입력.</li>
       <li xml:lang="nds">Opgaav- un Begeefnis-Indrääg laat sik gau opstellen</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken.</li>
       <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń.</li>
@@ -134,6 +143,7 @@
       <li>Plugin for Jewish calendar dates.</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
       <li xml:lang="en-GB">Plugin for Jewish calendar dates.</li>
+      <li xml:lang="ko">종교별 달력 지원 플러그인.</li>
       <li xml:lang="nds">Moduul för jöödsch Kalennerdaten</li>
       <li xml:lang="nl">Plugin voor Joodse feestdagen</li>
       <li xml:lang="pl">Wtyczka dla żydowskich dat kalendarza.</li>
@@ -149,6 +159,7 @@
       <li xml:lang="ca">Implementa la impressió</li>
       <li xml:lang="cs">Podpora tisku.</li>
       <li xml:lang="en-GB">Print support.</li>
+      <li xml:lang="ko">인쇄 지원.</li>
       <li xml:lang="nds">Druckünnerstütten</li>
       <li xml:lang="nl">Afdrukbeheer.</li>
       <li xml:lang="pl">Obsługa wydruku.</li>
