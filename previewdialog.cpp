@@ -42,17 +42,32 @@
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QStandardPaths>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <KGuiItem>
 
 PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
-  : KDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
+  : QDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
 {
-  setCaption( i18n( "Import Calendar/Event" ) );
+  setWindowTitle( i18n( "Import Calendar/Event" ) );
   // KGuiItem( i18n("&Merge into existing calendar"), "merge" )
-  setButtons( User1 | User2 | Cancel );
-  setDefaultButton( User1 );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  QPushButton *user1Button = new QPushButton;
+  buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+  QPushButton *user2Button = new QPushButton;
+  buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &PreviewDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &PreviewDialog::reject);
+  user1Button->setDefault(true);
   QFrame *topFrame = new QFrame( this );
+  mainLayout->addWidget(topFrame);
+  mainLayout->addWidget(buttonBox);
+
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setSpacing( spacingHint() );
+  //QT5 topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
   mCalendar =
@@ -62,18 +77,18 @@ PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
   mListView = new KOListView( Akonadi::ETMCalendar::Ptr(), this, true );
   topLayout->addWidget( mListView );
 
-  topLayout->setSpacing( spacingHint() );
-  topLayout->setMargin( marginHint() );
+  //QT5 topLayout->setSpacing( spacingHint() );
+  //QT5 topLayout->setMargin( marginHint() );
 
-  connect( this, SIGNAL(user1Clicked()), SLOT(slotMerge()) );
-  connect( this, SIGNAL(user2Clicked()), SLOT(slotAdd()) );
+  connect(user1Button, &QPushButton::clicked, this, &PreviewDialog::slotMerge);
+  connect(user2Button, &QPushButton::clicked, this, &PreviewDialog::slotAdd);
 
   // when someone edits a kmail attachment he's editing a tmp file, check for that
   // and if it's a tmp file then open a save dialog
   if ( isTempFile() ) {
-    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar..." ), QLatin1String("add") ) );
+    KGuiItem::assign(user2Button, KGuiItem( i18n( "&Add as new calendar..." )));
   } else {
-    setButtonGuiItem( User2, KGuiItem( i18n( "&Add as new calendar" ), QLatin1String("add") ) );
+    KGuiItem::assign(user2Button, KGuiItem( i18n( "&Add as new calendar" )));
   }
 
   mLocalUrl = 0;

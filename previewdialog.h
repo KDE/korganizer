@@ -31,7 +31,7 @@
 
 #include <KCalCore/MemoryCalendar>
 
-#include <KDialog>
+#include <QDialog>
 #include <KUrl>
 
 class KOListView;
@@ -40,7 +40,7 @@ namespace KCalCore {
   class FileStorage;
 }
 
-class PreviewDialog : public KDialog
+class PreviewDialog : public QDialog
 {
   Q_OBJECT
   public:
