@@ -7,6 +7,7 @@
   <name xml:lang="ca">KOrganizer</name>
   <name xml:lang="cs">KOrganizer</name>
   <name xml:lang="en-GB">KOrganizer</name>
+  <name xml:lang="es">KOrganizer</name>
   <name xml:lang="fr">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
   <name xml:lang="nds">KOrganizer</name>
@@ -43,6 +44,7 @@
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="en-GB">Features:</p>
+    <p xml:lang="es">Características:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
