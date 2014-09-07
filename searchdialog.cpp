@@ -36,21 +36,25 @@
 #include <calendarviews/list/listview.h>
 
 #include <KMessageBox>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <KGuiItem>
+#include <QVBoxLayout>
 
 
 using namespace KOrg;
 
 SearchDialog::SearchDialog( CalendarView *calendarview )
-  : KDialog( calendarview ),
+  : QDialog( calendarview ),
     m_ui( new Ui::SearchDialog ),
     m_calendarview( calendarview )
 {
-  setCaption( i18n( "Search Calendar" ) );
+  setWindowTitle( i18n( "Search Calendar" ) );
   setModal( false );
 
   QWidget *mainWidget = new QWidget( this );
   m_ui->setupUi( mainWidget );
-  setMainWidget( mainWidget );
 
   // Set nice initial start and end dates for the search
   const QDate currDate = QDate::currentDate();
@@ -67,7 +71,21 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   layout->addWidget( listView );
   m_ui->listViewFrame->setLayout( layout );
 
-  connect( this, SIGNAL(user1Clicked()), SLOT(doSearch()) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  mUser1Button = new QPushButton;
+  buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  mainLayout->addWidget(buttonBox);
+  mUser1Button->setDefault(true);
+  KGuiItem::assign(mUser1Button, KGuiItem( i18nc( "search in calendar", "&Search" ) ));
+  mUser1Button->setToolTip(i18n( "Start searching"  ));
+
+
+  connect(mUser1Button, SIGNAL(clicked()), SLOT(doSearch()) );
 
   // Propagate edit and delete event signals from event list view
   connect( listView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
@@ -78,14 +96,6 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
 
   readConfig();
-
-  setButtons( User1 | Cancel );
-  setDefaultButton( User1 );
-  setButtonGuiItem( User1,
-                    KGuiItem( i18nc( "search in calendar", "&Search" ),
-                    QLatin1String( "edit-find" ) ) );
-  setButtonToolTip( User1, i18n( "Start searching" ) );
-  showButtonSeparator( false );
 }
 
 SearchDialog::~SearchDialog()
@@ -102,7 +112,7 @@ void SearchDialog::showEvent( QShowEvent *event )
 
 void SearchDialog::searchTextChanged( const QString &_text )
 {
-  enableButton( KDialog::User1, !_text.isEmpty() );
+  mUser1Button->setEnabled(!_text.isEmpty());
 }
 
 void SearchDialog::doSearch()

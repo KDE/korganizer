@@ -54,12 +54,13 @@
 #include <KMessageBox>
 #include <KRecursiveFilterProxyModel>
 #include <QDebug>
-#include <KDialog>
+#include <QDialog>
 
 #include <QHeaderView>
 #include <QPainter>
 #include <QStyledItemDelegate>
 #include <QVBoxLayout>
+#include <KConfigGroup>
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
   : mView( view ), mAkonadiCollectionView( 0 )
@@ -209,7 +210,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setMargin( 0 );
-  topLayout->setSpacing( KDialog::spacingHint() );
+//TODO PORT QT5   topLayout->setSpacing( QDialog::spacingHint() );
 
   //KLineEdit *searchCol = new KLineEdit( this );
   //searchCol->setClearButtonShown( true );
