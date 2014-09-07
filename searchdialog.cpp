@@ -91,6 +91,7 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
 SearchDialog::~SearchDialog()
 {
   writeConfig();
+  delete m_ui;
 }
 
 void SearchDialog::showEvent( QShowEvent *event )
