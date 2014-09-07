@@ -44,8 +44,8 @@ ConfigDialog::ConfigDialog( QWidget *parent )
   QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
   okButton->setDefault(true);
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &ConfigDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
   mainLayout->addWidget(buttonBox);
   okButton->setDefault(true);
   setModal( true );
@@ -81,7 +81,7 @@ ConfigDialog::ConfigDialog( QWidget *parent )
   mAspectRatioGroup->addButton( btn, int( Qt::KeepAspectRatioByExpanding ) );
   groupLayout->addWidget( btn );
 
-  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()) );
+  connect(okButton, &QPushButton::clicked, this, &ConfigDialog::slotOk);
 
   load();
 }

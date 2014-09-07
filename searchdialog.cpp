@@ -77,15 +77,15 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   mainLayout->addWidget(mainWidget);
   mUser1Button = new QPushButton;
   buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &SearchDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &SearchDialog::reject);
   mainLayout->addWidget(buttonBox);
   mUser1Button->setDefault(true);
   KGuiItem::assign(mUser1Button, KGuiItem( i18nc( "search in calendar", "&Search" ) ));
   mUser1Button->setToolTip(i18n( "Start searching"  ));
 
 
-  connect(mUser1Button, SIGNAL(clicked()), SLOT(doSearch()) );
+  connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
   // Propagate edit and delete event signals from event list view
   connect( listView, SIGNAL(showIncidenceSignal(Akonadi::Item)),

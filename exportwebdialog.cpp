@@ -67,9 +67,9 @@ ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *p
 //  setupFreeBusyPage();
 //  setupAdvancedPage();
 
-  connect( mExportButton, SIGNAL(clicked()), SLOT(slotOk()) );
-  connect( button(QDialogButtonBox::Cancel), SIGNAL(clicked()), SLOT(reject()) );
-  connect( button(QDialogButtonBox::RestoreDefaults), SIGNAL(clicked()), this, SLOT(slotDefault()) );
+  connect(mExportButton, &QPushButton::clicked, this, &ExportWebDialog::slotOk);
+  connect(button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &ExportWebDialog::reject);
+  connect(button(QDialogButtonBox::RestoreDefaults), &QPushButton::clicked, this, &ExportWebDialog::slotDefault);
   readConfig();
   updateState();
 }
@@ -148,11 +148,11 @@ void ExportWebDialog::setupGeneralPage()
   QBoxLayout *typeLayout = new QVBoxLayout( typeGroup );
 
   mMonthViewCheckBox = addWidBool( mSettings->monthViewItem() )->checkBox();
-  connect( mMonthViewCheckBox, SIGNAL(stateChanged(int)), SLOT(updateState()) );
+  connect(mMonthViewCheckBox, &QCheckBox::stateChanged, this, &ExportWebDialog::updateState);
   typeLayout->addWidget( mMonthViewCheckBox );
 
   mEventListCheckBox = addWidBool( mSettings->eventViewItem() )->checkBox();
-  connect( mEventListCheckBox, SIGNAL(stateChanged(int)), SLOT(updateState()) );
+  connect(mEventListCheckBox, &QCheckBox::stateChanged, this, &ExportWebDialog::updateState);
   typeLayout->addWidget( mEventListCheckBox );
 
   typeLayout->addWidget( addWidBool( mSettings->todoViewItem() )->checkBox() );

@@ -50,16 +50,16 @@ FilterEditDialog::FilterEditDialog( QList<KCalCore::CalFilter*> *filters, QWidge
   mApplyButton = buttonBox->button(QDialogButtonBox::Apply);
   mOkButton->setDefault(true);
   mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(slotOk()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &FilterEditDialog::slotOk);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &FilterEditDialog::reject);
   mainLayout->addWidget(mFilterEdit = new FilterEdit( filters, this ) );
   mainLayout->addWidget(buttonBox);
 
-  connect( mFilterEdit, SIGNAL(dataConsistent(bool)), SLOT(setDialogConsistent(bool)) );
+  connect(mFilterEdit, &FilterEdit::dataConsistent, this, &FilterEditDialog::setDialogConsistent);
   updateFilterList();
-  connect( mFilterEdit, SIGNAL(editCategories()), SIGNAL(editCategories()) );
-  connect( mFilterEdit, SIGNAL(filterChanged()), SIGNAL(filterChanged()) );
-  connect(buttonBox->button(QDialogButtonBox::Apply), SIGNAL(clicked()), this, SLOT(slotApply()) );
+  connect(mFilterEdit, &FilterEdit::editCategories, this, &FilterEditDialog::editCategories);
+  connect(mFilterEdit, &FilterEdit::filterChanged, this, &FilterEditDialog::filterChanged);
+  connect(buttonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &FilterEditDialog::slotApply);
 }
 
 FilterEditDialog::~FilterEditDialog()
@@ -112,7 +112,7 @@ FilterEdit::FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
            SLOT(bDeletePressed()) );
   connect( mNameLineEdit, SIGNAL(textChanged(QString)),
            SLOT(updateSelectedName(QString)) );
-  connect( mCatEditButton, SIGNAL(clicked()), SLOT(editCategorySelection()) );
+  connect(mCatEditButton, &QPushButton::clicked, this, &FilterEdit::editCategorySelection);
   connect( mCompletedCheck, SIGNAL(toggled(bool)),
            mCompletedTimeSpanLabel, SLOT(setEnabled(bool)) );
   connect( mCompletedCheck, SIGNAL(toggled(bool)),
@@ -302,7 +302,7 @@ void FilterEdit::editCategorySelection()
     mCategorySelectDialog = new KPIM::TagSelectionDialog( this );
     //QT5 mCategorySelectDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
     mCategorySelectDialog->buttons()->setStandardButtons( QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help );
-    connect(mCategorySelectDialog, SIGNAL(accepted()), this, SLOT(updateCategorySelection()));
+    connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted, this, &FilterEdit::updateCategorySelection);
   }
   mCategorySelectDialog->setSelection( mCurrent->categoryList() );
 

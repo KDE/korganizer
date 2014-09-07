@@ -44,8 +44,8 @@ KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
   QVBoxLayout *layout = new QVBoxLayout( this );
   layout->addWidget( mView );
   connect( mView, SIGNAL(printTodo()), SLOT(printTodo()) );
-  connect( mView, SIGNAL(printPreviewTodo()), SLOT(printPreviewTodo()) );
-  connect( mView, SIGNAL(purgeCompletedSignal()), SIGNAL(purgeCompletedSignal()) );
+  connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
+  connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
 
   connect( mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
@@ -186,7 +186,7 @@ void KOTodoView::printTodo( bool preview )
   Q_ASSERT( todo );
 
   CalendarSupport::CalPrinter printer( this, calendar(), true );
-  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+  connect(this, &KOTodoView::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
   KCalCore::Incidence::List selectedIncidences;
   selectedIncidences.append( todo );
