@@ -96,6 +96,7 @@
 #include <KRun>
 #include <QVBoxLayout>
 #include <QDebug>
+#include <QPushButton>
 
 #include <QApplication>
 #include <QClipboard>
@@ -2246,7 +2247,7 @@ void CalendarView::showIncidence( const Akonadi::Item &item )
   eventViewer->setIncidence( item, QDate() );
   // Disable the Edit button for read-only Incidences.
   if ( !mCalendar->hasRight( item, Akonadi::Collection::CanChangeItem ) ) {
-    eventViewer->enableButton( KDialog::User1, false );
+    eventViewer->editButton()->setEnabled(false);
   }
 
   eventViewer->show();

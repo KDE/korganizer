@@ -34,9 +34,13 @@
 
 #include <KCheckableProxyModel>
 
+#include <QDialogButtonBox>
+#include <QPushButton>
+
 #include <QHBoxLayout>
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
+#include <KConfigGroup>
 
 using namespace Future;
 using namespace KOrg;
@@ -312,12 +316,22 @@ void MultiAgendaView::saveConfig( KConfigGroup &configGroup )
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QAbstractItemModel *baseModel,
                                                           QWidget *parent )
-  : KDialog( parent ), d( new Private( baseModel, this ) )
+  : QDialog( parent ), d( new Private( baseModel, this ) )
 {
   setWindowTitle( i18n( "Configure Side-By-Side View" ) );
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
   QWidget *widget = new QWidget;
   d->ui.setupUi( widget );
-  setMainWidget( widget );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  mainLayout->addWidget(buttonBox);
+  mainLayout->addWidget(widget);
+
   d->ui.columnList->setModel( &d->listModel );
   connect( d->ui.columnList->selectionModel(),
            SIGNAL(currentChanged(QModelIndex,QModelIndex)),
@@ -527,7 +541,7 @@ void MultiAgendaViewConfigDialog::setColumnTitle( int column, const QString &tit
 void MultiAgendaViewConfigDialog::accept()
 {
   d->newlyCreated.clear();
-  KDialog::accept();
+  QDialog::accept();
 }
 
 MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog()

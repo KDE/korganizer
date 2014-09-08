@@ -35,28 +35,48 @@
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QIcon>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <KGuiItem>
+#include <QVBoxLayout>
 
 KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent )
-  : KDialog( parent )
+  : QDialog( parent )
 {
-  setCaption( i18n( "Event Viewer" ) );
-  setButtons( Close | User1 | User2 );
+  setWindowTitle( i18n( "Event Viewer" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mUser1Button = new QPushButton;
+  buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
+  QPushButton *user2Button = new QPushButton;
+  buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
   setModal( false );
-  setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ), QIcon::fromTheme( QLatin1String("document-edit") ) ) );
-  setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
+  KGuiItem::assign(mUser1Button, KGuiItem( i18n( "Edit..." ), QIcon::fromTheme( QLatin1String("document-edit") ) ));
+  KGuiItem::assign(user2Button, KGuiItem( i18n( "Show in Context" ) ));
   mEventViewer = new CalendarSupport::IncidenceViewer( calendar, this );
-  setMainWidget( mEventViewer );
+  mainLayout->addWidget(mEventViewer);
+  mainLayout->addWidget(buttonBox);
+
 
   resize( QSize( 500, 520 ).expandedTo( minimumSizeHint() ) );
 
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
-  connect( this, SIGNAL(user1Clicked()), this, SLOT(editIncidence()) );
-  connect( this, SIGNAL(user2Clicked()), this, SLOT(showIncidenceContext()) );
+  connect(mUser1Button, SIGNAL(clicked()), this, SLOT(editIncidence()) );
+  connect(user2Button, SIGNAL(clicked()), this, SLOT(showIncidenceContext()) );
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()
 {
   delete mEventViewer;
+}
+
+QPushButton *KOEventViewerDialog::editButton() const
+{
+  return mUser1Button;
 }
 
 void KOEventViewerDialog::setIncidence( const Akonadi::Item &incidence, const QDate &date )

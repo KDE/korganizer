@@ -37,31 +37,42 @@
 
 #include <QIcon>
 #include <KLocalizedString>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 PublishDialog::PublishDialog( QWidget *parent )
-  : KDialog( parent )
+  : QDialog( parent )
 {
-  setCaption( i18n( "Select Addresses" ) );
-  setButtons( Ok|Cancel|Help );
-  setHelp( QLatin1String("group-scheduling"), QLatin1String("korganizer") );
+  setWindowTitle( i18n( "Select Addresses" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  //QT5 setHelp( QLatin1String("group-scheduling"), QLatin1String("korganizer") );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( QLatin1String("PublishFreeBusy") );
   mUI.setupUi( widget );
-  setMainWidget( widget );
+  mainLayout->addWidget(widget);
+  mainLayout->addWidget(buttonBox);
+
   mUI.mListWidget->setSelectionMode( QAbstractItemView::SingleSelection );
   mUI.mNameLineEdit->setEnabled( false );
   mUI.mEmailLineEdit->setEnabled( false );
 
-  setButtonToolTip( Ok, i18n( "Send email to these recipients" ) );
-  setButtonWhatsThis( Ok, i18n( "Clicking the <b>Ok</b> button will cause "
+  okButton->setToolTip(i18n( "Send email to these recipients"  ));
+  okButton->setWhatsThis(i18n( "Clicking the <b>Ok</b> button will cause "
                                 "an email to be sent to the recipients you "
                                 "have entered." ) );
-  setButtonToolTip( Cancel, i18n( "Cancel recipient selection and the email" ) );
-  setButtonWhatsThis( Cancel, i18n( "Clicking the <b>Cancel</b> button will "
-                                    "cause the email operation to be terminated." ) );
+  buttonBox->button(QDialogButtonBox::Cancel)->setToolTip(i18n( "Cancel recipient selection and the email"  ));
+  buttonBox->button(QDialogButtonBox::Cancel)->setWhatsThis(i18n( "Clicking the <b>Cancel</b> button will cause the email operation to be terminated."  ));
 
-  setButtonWhatsThis( Help, i18n( "Click the <b>Help</b> button to read "
-                                  "more information about Group Scheduling." ) );
+  buttonBox->button(QDialogButtonBox::Help)->setWhatsThis(i18n( "Click the <b>Help</b> button to read more information about Group Scheduling."  ));
 
   mUI.mAdd->setIcon( QIcon::fromTheme( QLatin1String("list-add") ) );
   mUI.mRemove->setIcon( QIcon::fromTheme( QLatin1String("list-remove") ) );

@@ -27,7 +27,8 @@
 
 #include "korganizerprivate_export.h"
 
-#include <KDialog>
+#include <QDialog>
+class QPushButton;
 
 namespace CalendarSupport {
   class IncidenceViewer;
@@ -41,7 +42,7 @@ namespace Akonadi {
 /**
   Viewer dialog for events.
 */
-class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public KDialog
+class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public QDialog
 {
   Q_OBJECT
   public:
@@ -52,12 +53,16 @@ class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public KDialog
 
     void addText( const QString &text );
 
+    QPushButton *editButton() const;
+
+
   private Q_SLOTS:
     void editIncidence();
     void showIncidenceContext();
 
   private:
     CalendarSupport::IncidenceViewer *mEventViewer;
+    QPushButton *mUser1Button;
 };
 
 #endif

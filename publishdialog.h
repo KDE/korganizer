@@ -28,11 +28,11 @@
 
 #include <KCalCore/Attendee>
 
-#include <KDialog>
+#include <QDialog>
 
 class PublishDialog_base;
 
-class PublishDialog : public KDialog
+class PublishDialog : public QDialog
 {
   Q_OBJECT
   public:

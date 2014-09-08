@@ -25,7 +25,7 @@
 
 #include <calendarviews/multiagenda/configdialoginterface.h>
 
-#include <KDialog>
+#include <QDialog>
 
 #include <QAbstractItemModel>
 
@@ -87,7 +87,7 @@ class MultiAgendaView : public KOEventView
 
 };
 
-class MultiAgendaViewConfigDialog : public KDialog,
+class MultiAgendaViewConfigDialog : public QDialog,
                                     public EventViews::ConfigDialogInterface
 {
   Q_OBJECT
