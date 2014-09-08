@@ -62,12 +62,12 @@ StatusDialog::StatusDialog( QWidget *parent )
 
   QPushButton *ok = new QPushButton(this );
   KGuiItem::assign(ok, KStandardGuiItem::ok());
-  connect ( ok, SIGNAL(clicked()), this, SLOT(accept()) );
+  connect(ok, &QPushButton::clicked, this, &StatusDialog::accept);
   buttonLayout->addWidget( ok );
 
   QPushButton *cancel = new QPushButton(this );
   KGuiItem::assign(cancel, KStandardGuiItem::cancel());
-  connect ( cancel, SIGNAL(clicked()), this, SLOT(reject()) );
+  connect(cancel, &QPushButton::clicked, this, &StatusDialog::reject);
   buttonLayout->addWidget( cancel );
 }
 

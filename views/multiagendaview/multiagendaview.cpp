@@ -327,8 +327,8 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QAbstractItemModel *ba
   QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
   okButton->setDefault(true);
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &MultiAgendaViewConfigDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &MultiAgendaViewConfigDialog::reject);
   mainLayout->addWidget(buttonBox);
   mainLayout->addWidget(widget);
 

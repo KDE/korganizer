@@ -174,7 +174,7 @@ void ActionManager::init()
 
   // set up autoExporting stuff
   mAutoExportTimer = new QTimer( this );
-  connect( mAutoExportTimer, SIGNAL(timeout()), SLOT(checkAutoExport()) );
+  connect(mAutoExportTimer, &QTimer::timeout, this, &ActionManager::checkAutoExport);
   if ( KOPrefs::instance()->mAutoExport &&
        KOPrefs::instance()->mAutoExportInterval > 0 ) {
     mAutoExportTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoExportInterval );
@@ -183,7 +183,7 @@ void ActionManager::init()
   // set up autoSaving stuff
   mAutoArchiveTimer = new QTimer( this );
   mAutoArchiveTimer->setSingleShot( true );
-  connect( mAutoArchiveTimer, SIGNAL(timeout()), SLOT(slotAutoArchive()) );
+  connect(mAutoArchiveTimer, &QTimer::timeout, this, &ActionManager::slotAutoArchive);
 
   // First auto-archive should be in 5 minutes (like in kmail).
   if ( CalendarSupport::KCalPrefs::instance()->mAutoArchive ) {
@@ -192,8 +192,8 @@ void ActionManager::init()
 
   setTitle();
 
-  connect( mCalendarView, SIGNAL(modifiedChanged(bool)), SLOT(setTitle()) );
-  connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
+  connect(mCalendarView, &CalendarView::modifiedChanged, this, &ActionManager::setTitle);
+  connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
   connect( mCalendarView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            this, SLOT(processIncidenceSelection(Akonadi::Item,QDate)) );
@@ -225,7 +225,7 @@ void ActionManager::createCalendarAkonadi()
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
   mCollectionView->setObjectName( QLatin1String("Resource View") );
-  connect( mCollectionView, SIGNAL(resourcesAddedRemoved()), SLOT(slotResourcesAddedRemoved()));
+  connect(mCollectionView, &AkonadiCollectionView::resourcesAddedRemoved, this, &ActionManager::slotResourcesAddedRemoved);
   connect( mCollectionView, SIGNAL(defaultResourceChanged(Akonadi::Collection)),
            SLOT(slotDefaultResourceChanged(Akonadi::Collection)) );
   connect( mCollectionView, SIGNAL(colorsChanged()),
@@ -246,7 +246,7 @@ void ActionManager::createCalendarAkonadi()
 
   connect( calendar().data(), SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
+  connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
   calendar()->setOwner( KCalCore::Person::Ptr( new KCalCore::Person( CalendarSupport::KCalPrefs::instance()->fullName(),
                                                                     CalendarSupport::KCalPrefs::instance()->email() ) ) );
@@ -289,7 +289,7 @@ void ActionManager::initActions()
     i18n( "Select this menu entry if you would like to merge the contents "
           "of another iCalendar into your current calendar." ) );
   mACollection->addAction( QLatin1String("import_icalendar"), mImportAction );
-  connect( mImportAction, SIGNAL(triggered(bool)), SLOT(file_import()) );
+  connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
   QAction *importAction = new QAction( i18n( "&Import From UNIX Ical Tool" ), this );
   //QT5 importAction->setHelpText(
@@ -298,23 +298,23 @@ void ActionManager::initActions()
     i18n( "Select this menu entry if you would like to import the contents "
           "of a non-iCalendar formatted file into your current calendar." ) );
   mACollection->addAction( QLatin1String("import_ical"), importAction );
-  connect( importAction, SIGNAL(triggered(bool)), SLOT(file_icalimport()) );
+  connect(importAction, &QAction::triggered, this, &ActionManager::file_icalimport);
 
   action = new QAction( i18n( "Get &Hot New Stuff..." ), this );
   mACollection->addAction( QLatin1String("downloadnewstuff"), action );
-  connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
+  connect(action, &QAction::triggered, this, &ActionManager::downloadNewStuff);
 
   action = new QAction( i18n( "Export &Web Page..." ), this );
   mACollection->addAction( QLatin1String("export_web"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportWeb()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportWeb);
 
   action = new QAction( i18n( "Export as &iCalendar..." ), this );
   mACollection->addAction( QLatin1String("export_icalendar"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportICalendar()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportICalendar);
 
   action = new QAction( i18n( "Export as &vCalendar..." ), this );
   mACollection->addAction( QLatin1String("export_vcalendar"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportVCalendar()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportVCalendar);
 
   //Laurent: 2009-03-24 comment it until upload will implement
   //action = new QAction( i18n( "Upload &Hot New Stuff..." ), this );
@@ -323,11 +323,11 @@ void ActionManager::initActions()
 
   action = new QAction( i18n( "Archive O&ld Entries..." ), this );
   mACollection->addAction( QLatin1String("file_archive"), action );
-  connect( action, SIGNAL(triggered(bool)), SLOT(file_archive()) );
+  connect(action, &QAction::triggered, this, &ActionManager::file_archive);
 
   action = new QAction( i18n( "Pur&ge Completed To-dos" ), mACollection );
   mACollection->addAction( QLatin1String("purge_completed"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(purgeCompleted()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::purgeCompleted);
 
   /************************** EDIT MENU *********************************/
 
@@ -354,7 +354,7 @@ void ActionManager::initActions()
   }
   mDeleteAction = new QAction( QIcon::fromTheme( QLatin1String("edit-delete") ), i18n( "&Delete" ), this );
   mACollection->addAction( QLatin1String("edit_delete"), mDeleteAction );
-  connect( mDeleteAction, SIGNAL(triggered(bool)), mCalendarView, SLOT(appointment_delete()) );
+  connect(mDeleteAction, &QAction::triggered, mCalendarView, &CalendarView::appointment_delete);
   if ( mIsPart ) {
     QAction *a =
       KStandardAction::find( mCalendarView->dialogManager(),
@@ -367,7 +367,7 @@ void ActionManager::initActions()
   pasteAction->setEnabled( false );
   mUndoAction->setEnabled( false );
   mRedoAction->setEnabled( false );
-  connect( mCalendarView, SIGNAL(pasteEnabled(bool)), pasteAction, SLOT(setEnabled(bool)) );
+  connect(mCalendarView, &CalendarView::pasteEnabled, pasteAction, &QAction::setEnabled);
   connect( history, SIGNAL(changed()), SLOT(updateUndoRedoActions()) );
 
   /************************** VIEW MENU *********************************/
@@ -465,14 +465,14 @@ void ActionManager::initActions()
   action->setIconText( i18n( "Today" ) );
   //QT5 action->setHelpText( i18n( "Scroll to Today" ) );
   mACollection->addAction( QLatin1String("go_today"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
   action = new QAction( QIcon::fromTheme( isRTL ? QLatin1String("go-next") : QLatin1String("go-previous") ),
                         i18nc( "scroll backward", "&Backward" ), this );
   action->setIconText( i18nc( "scroll backward", "Back" ) );
   //QT5 action->setHelpText( i18n( "Scroll Backward" ) );
   mACollection->addAction( QLatin1String("go_previous"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goPrevious()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::goPrevious);
 
   // Changing the action text by setText makes the toolbar button disappear.
   // This has to be fixed first, before the connects below can be reenabled.
@@ -487,7 +487,7 @@ void ActionManager::initActions()
   action->setIconText( i18nc( "scoll forward", "Forward" ) );
   //QT5 action->setHelpText( i18n( "Scroll Forward" ) );
   mACollection->addAction( QLatin1String("go_next"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goNext()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::goNext);
   /*
   connect( mCalendarView,SIGNAL(changeNavStringNext(QString)),
            action,SLOT(setText(QString)) );
@@ -632,7 +632,7 @@ void ActionManager::initActions()
 
   action = new QAction( i18n( "&Mail Free Busy Information..." ), this );
   mACollection->addAction( QLatin1String("mail_freebusy"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(mailFreeBusy()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::mailFreeBusy);
   action->setEnabled( true );
 
   mForwardEvent = new QAction( QIcon::fromTheme( QLatin1String("mail-forward") ), i18n( "&Send as iCalendar..." ), this );
@@ -642,13 +642,13 @@ void ActionManager::initActions()
 
   action = new QAction( i18n( "&Upload Free Busy Information" ), this );
   mACollection->addAction( QLatin1String("upload_freebusy"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(uploadFreeBusy()) );
+  connect(action, &QAction::triggered, mCalendarView, &CalendarView::uploadFreeBusy);
   action->setEnabled( true );
 
   if ( !mIsPart ) {
     action = new QAction( QIcon::fromTheme( QLatin1String("help-contents") ), i18n( "&Address Book" ), this );
     mACollection->addAction( QLatin1String("addressbook"), action );
-    connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(openAddressbook()) );
+    connect(action, &QAction::triggered, mCalendarView, &CalendarView::openAddressbook);
   }
 
   /************************** SETTINGS MENU ********************************/
@@ -656,15 +656,15 @@ void ActionManager::initActions()
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   mDateNavigatorShowAction = new KToggleAction( i18n( "Show Date Navigator" ), this );
   mACollection->addAction( QLatin1String("show_datenavigator"), mDateNavigatorShowAction );
-  connect( mDateNavigatorShowAction, SIGNAL(triggered(bool)), SLOT(toggleDateNavigator()) );
+  connect(mDateNavigatorShowAction, &KToggleAction::triggered, this, &ActionManager::toggleDateNavigator);
 
   mTodoViewShowAction = new KToggleAction( i18n( "Show To-do View" ), this );
   mACollection->addAction( QLatin1String("show_todoview"), mTodoViewShowAction );
-  connect( mTodoViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleTodoView()) );
+  connect(mTodoViewShowAction, &KToggleAction::triggered, this, &ActionManager::toggleTodoView);
 
   mEventViewerShowAction = new KToggleAction( i18n( "Show Item Viewer" ), this );
   mACollection->addAction( QLatin1String("show_eventviewer"), mEventViewerShowAction );
-  connect( mEventViewerShowAction, SIGNAL(triggered(bool)), SLOT(toggleEventViewer()) );
+  connect(mEventViewerShowAction, &KToggleAction::triggered, this, &ActionManager::toggleEventViewer);
   KConfigGroup config( KOGlobals::self()->config(), "Settings" );
   mDateNavigatorShowAction->setChecked( config.readEntry( "DateNavigatorVisible", true ) );
   // if we are a kpart, then let's not show the todo in the left pane by
@@ -680,7 +680,7 @@ void ActionManager::initActions()
   if ( !mMainWindow->hasDocument() ) {
     mCollectionViewShowAction = new KToggleAction( i18n( "Show Calendar Manager" ), this );
     mACollection->addAction( QLatin1String("show_resourceview"), mCollectionViewShowAction );
-    connect( mCollectionViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleResourceView()) );
+    connect(mCollectionViewShowAction, &KToggleAction::triggered, this, &ActionManager::toggleResourceView);
     mCollectionViewShowAction->setChecked( config.readEntry( "ResourceViewVisible", true ) );
 
     toggleResourceView();
@@ -945,7 +945,7 @@ bool ActionManager::importURL(const KUrl &url, bool merge)
         connect(importer, SIGNAL(importIntoExistingFinished(bool,int)), SLOT(slotMergeFinished(bool,int))),
         jobStarted = importer->importIntoExistingResource(url, Akonadi::Collection());
     } else {
-        connect(importer, SIGNAL(importIntoNewFinished(bool)), SLOT(slotNewResourceFinished(bool)));
+        connect(importer, &Akonadi::ICalImporter::importIntoNewFinished, this, &ActionManager::slotNewResourceFinished);
         jobStarted = importer->importIntoNewResource(url.path());
     }
 
@@ -1093,7 +1093,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
     }
   }
 
-  connect( exportJob, SIGNAL(result(KJob*)), SLOT(handleExportJobResult(KJob*)) );
+  connect(exportJob, &KOrg::HtmlExportJob::result, this, &ActionManager::handleExportJobResult);
   exportJob->start();
 }
 

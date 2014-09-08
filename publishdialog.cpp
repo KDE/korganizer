@@ -52,8 +52,8 @@ PublishDialog::PublishDialog( QWidget *parent )
   QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
   okButton->setDefault(true);
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &PublishDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &PublishDialog::reject);
   //QT5 setHelp( QLatin1String("group-scheduling"), QLatin1String("korganizer") );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( QLatin1String("PublishFreeBusy") );

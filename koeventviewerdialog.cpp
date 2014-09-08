@@ -52,8 +52,8 @@ KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidge
   buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
   QPushButton *user2Button = new QPushButton;
   buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &KOEventViewerDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
   setModal( false );
   KGuiItem::assign(mUser1Button, KGuiItem( i18n( "Edit..." ), QIcon::fromTheme( QLatin1String("document-edit") ) ));
   KGuiItem::assign(user2Button, KGuiItem( i18n( "Show in Context" ) ));
@@ -64,14 +64,23 @@ KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidge
 
   resize( QSize( 500, 520 ).expandedTo( minimumSizeHint() ) );
 
-  connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
-  connect(mUser1Button, SIGNAL(clicked()), this, SLOT(editIncidence()) );
-  connect(user2Button, SIGNAL(clicked()), this, SLOT(showIncidenceContext()) );
+  connect(this, &KOEventViewerDialog::finished, this, &KOEventViewerDialog::delayedDestruct);
+  connect(mUser1Button, &QPushButton::clicked, this, &KOEventViewerDialog::editIncidence);
+  connect(user2Button, &QPushButton::clicked, this, &KOEventViewerDialog::showIncidenceContext);
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()
 {
   delete mEventViewer;
+}
+
+void KOEventViewerDialog::delayedDestruct()
+{
+    if (isVisible()) {
+        hide();
+    }
+
+    deleteLater();
 }
 
 QPushButton *KOEventViewerDialog::editButton() const

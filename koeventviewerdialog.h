@@ -59,6 +59,7 @@ class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public QDialog
   private Q_SLOTS:
     void editIncidence();
     void showIncidenceContext();
+    void delayedDestruct();
 
   private:
     CalendarSupport::IncidenceViewer *mEventViewer;

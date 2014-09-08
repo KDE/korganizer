@@ -321,20 +321,20 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     mDisableColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "disable_color" ),
                                               mDisableColor );
-    connect( mDisableColor, SIGNAL(triggered(bool)), this, SLOT(disableColor()) );
+    connect(mDisableColor, &QAction::triggered, this, &AkonadiCollectionView::disableColor);
 
     mAssignColor = new QAction( mCollectionView );
     mAssignColor->setText( i18n( "&Assign Color..." ) );
     mAssignColor->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "assign_color" ), mAssignColor );
-    connect( mAssignColor, SIGNAL(triggered(bool)), this, SLOT(assignColor()) );
+    connect(mAssignColor, &QAction::triggered, this, &AkonadiCollectionView::assignColor);
 
     mDefaultCalendar = new QAction( mCollectionView );
     mDefaultCalendar->setText( i18n( "Use as &Default Calendar" ) );
     mDefaultCalendar->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),
                                               mDefaultCalendar );
-    connect( mDefaultCalendar, SIGNAL(triggered(bool)), this, SLOT(setDefaultCalendar()) );
+    connect(mDefaultCalendar, &QAction::triggered, this, &AkonadiCollectionView::setDefaultCalendar);
   }
 }
 
@@ -486,7 +486,7 @@ void AkonadiCollectionView::newCalendar()
     if ( agentType.isValid() ) {
       Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
       job->configure( this );
-      connect( job, SIGNAL(result(KJob*)), this, SLOT(newCalendarDone(KJob*)) );
+      connect(job, &Akonadi::AgentInstanceCreateJob::result, this, &AkonadiCollectionView::newCalendarDone);
       job->start();
     }
   }
@@ -534,7 +534,7 @@ void AkonadiCollectionView::deleteCalendar()
     if ( !isTopLevel ) {
       // deletes contents
       Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection, this );
-      connect( job, SIGNAL(result(KJob*)), this, SLOT(deleteCalendarDone(KJob*)) );
+      connect(job, &Akonadi::AgentInstanceCreateJob::result, this, &AkonadiCollectionView::deleteCalendarDone);
     } else {
       // deletes the agent, not the contents
       const Akonadi::AgentInstance instance =

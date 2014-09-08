@@ -348,7 +348,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
 
       mHolidayCombo = new KComboBox( holidayRegBox );
       holidayRegBoxHBoxLayout->addWidget(mHolidayCombo);
-      connect( mHolidayCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
+      connect(mHolidayCombo, static_cast<void (KComboBox::*)(int)>(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
 
       mHolidayCombo->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
 
@@ -478,7 +478,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
         CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin->setToolTip(
         CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip() );
-      connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
+      connect(mReminderTimeSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KOPrefsDialogMain::slotWidChanged);
       remindersLayout->addWidget( mReminderTimeSpin, 0, 1 );
 
       mReminderUnitsCombo = new KComboBox( defaultPage );
@@ -486,7 +486,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
         CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip() );
       mReminderUnitsCombo->setWhatsThis(
         CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis() );
-      connect( mReminderUnitsCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
+      connect(mReminderUnitsCombo, static_cast<void (KComboBox::*)(int)>(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
       mReminderUnitsCombo->addItem(
         i18nc( "@item:inlistbox reminder units in minutes", "minute(s)" ) );
       mReminderUnitsCombo->addItem(
@@ -882,7 +882,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( QWidget *parent )
            "Select here the event category you want to modify. "
            "You can change the selected category color using "
            "the button below." ) );
-  connect( mCategoryCombo, SIGNAL(activated(int)), SLOT(updateCategoryColor()) );
+  connect(mCategoryCombo, static_cast<void (KComboBox::*)(int)>(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
   categoryLayout->addWidget( mCategoryCombo, 1, 0 );
 
   mCategoryButton = new KColorButton( categoryGroup );
@@ -890,7 +890,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( QWidget *parent )
     i18nc( "@info:whatsthis",
            "Choose here the color of the event category selected "
            "using the combo box above." ) );
-  connect( mCategoryButton, SIGNAL(changed(QColor)), SLOT(setCategoryColor()) );
+  connect(mCategoryButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setCategoryColor);
   categoryLayout->addWidget( mCategoryButton, 1, 1 );
 
   updateCategoryColor();
@@ -915,7 +915,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( QWidget *parent )
            "Select the calendar you want to modify. "
            "You can change the selected calendar color using "
            "the button below." ) );
-  connect( mResourceCombo, SIGNAL(activated(int)), SLOT(updateResourceColor()) );
+  connect(mResourceCombo, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
   resourceLayout->addWidget( mResourceCombo );
 
   mResourceButton = new KColorButton( resourceGroup );
@@ -923,7 +923,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( QWidget *parent )
     i18nc( "@info:whatsthis",
            "Choose here the color of the calendar selected "
            "using the combo box above." ) );
-  connect( mResourceButton, SIGNAL(changed(QColor)), SLOT(setResourceColor()) );
+  connect(mResourceButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setResourceColor);
   resourceLayout->addWidget( mResourceButton );
 
   colorLayout->setRowStretch( 11, 1 );
@@ -1326,15 +1326,15 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent )
   positioningLayout->addStretch( 1 );
   topLayout->addWidget( mPositioningGroupBox );
 
-  connect( mConfigureButton, SIGNAL(clicked()), SLOT(configure()) );
+  connect(mConfigureButton, &QPushButton::clicked, this, &KOPrefsDialogPlugins::configure);
 
   //connect( mPositionMonthTop, SIGNAL(clicked()), SLOT(positioningChanged()) );
-  connect( mPositionAgendaTop, SIGNAL(clicked()), SLOT(positioningChanged()) );
-  connect( mPositionAgendaBottom, SIGNAL(clicked()), SLOT(positioningChanged()) );
+  connect(mPositionAgendaTop, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
+  connect(mPositionAgendaBottom, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
 
-  connect( mTreeWidget, SIGNAL(itemSelectionChanged()), SLOT(selectionChanged()) );
-  connect( mTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem*,int)), SLOT(selectionChanged()) );
-  connect( mTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), SLOT(slotWidChanged()) );
+  connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this, &KOPrefsDialogPlugins::selectionChanged);
+  connect(mTreeWidget, &QTreeWidget::itemChanged, this, &KOPrefsDialogPlugins::selectionChanged);
+  connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotWidChanged);
 
   load();
 
