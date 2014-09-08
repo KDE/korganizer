@@ -34,7 +34,7 @@
 
 #include <KCalUtils/IncidenceFormatter>
 
-#include <KStatusBar>
+#include <QStatusBar>
 #include <KParts/StatusBarExtension>
 #include <QDebug>
 

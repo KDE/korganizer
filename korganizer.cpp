@@ -39,13 +39,11 @@
 #include "libkdepim/progresswidget/statusbarprogresswidget.h"
 
 
-
 #include <KActionCollection>
 #include <QDebug>
 #include <KShortcutsDialog>
 #include <KStandardAction>
-#include <KStatusBar>
-#include <KGlobal>
+#include <QStatusBar>
 
 KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
 {
