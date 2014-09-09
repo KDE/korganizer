@@ -333,7 +333,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(PROGRAMS
-    korganizer.desktop korganizer-import.desktop
+    org.kde.korganizer.desktop korganizer-import.desktop
     DESTINATION ${XDG_APPS_INSTALL_DIR}
   )
 
