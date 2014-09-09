@@ -9,6 +9,7 @@
   <name xml:lang="en-GB">KOrganizer</name>
   <name xml:lang="es">KOrganizer</name>
   <name xml:lang="fr">KOrganizer</name>
+  <name xml:lang="hu">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
   <name xml:lang="nds">KOrganizer</name>
   <name xml:lang="nl">KOrganizer</name>
@@ -28,7 +29,9 @@
     </p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
     <p xml:lang="en-GB">KOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.</p>
+    <p xml:lang="es">KOrganizer es el componente de calendario y planificación de la suite Kontact. Usted puede escribir entradas de diario, citas de planificaciones, eventos y tareas pendientes.</p>
     <p xml:lang="fr">KOrganizer est le composant de calendrier et agenda de la suite Kontact. Vous pouvez y tenir un journal, planifier des rendez-vous et évènements, et tenir des listes de choses à faire.</p>
+    <p xml:lang="hu">A KOrganizer a Kontact csomag naptár- és határidő-kezelő eleme, mellyel bejegyzéseket írhat, határidőket, eseményeket és tennivalókat ütemezhet.</p>
     <p xml:lang="ko">KOrganizer는 Kontact와 함께 사용할 수 있는 달력 및 일정 관리 프로그램입니다. 저널 항목 작성, 약속, 할 일, 행사를 관리할 수 있습니다.</p>
     <p xml:lang="nds">KOrganizer is de Plaan- un Kalennerkomponent binnen de Kontact-Sammeln. Du kannst Daagbookindrääg schrieven un Möten, Begeefnissen un Opgaven planen.</p>
     <p xml:lang="nl">KOrganizer is de agenda- en planningscomponent van Kontact. U kunt hierin journaals bijhouden, en afspraken, activiteiten en taken plannen</p>
@@ -46,6 +49,7 @@
     <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Características:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
+    <p xml:lang="hu">Szolgáltatások:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
@@ -62,7 +66,9 @@
       <li>Support for multiple calendars and todo lists.</li>
       <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents</li>
       <li xml:lang="en-GB">Support for multiple calendars and todo lists.</li>
+      <li xml:lang="es">Admite varios calendarios y listas de tareas pendientes.</li>
       <li xml:lang="fr">Prise en charge de plusieurs calendriers et listes de choses à faire.</li>
+      <li xml:lang="hu">Több naptár és feladatlista kezelése.</li>
       <li xml:lang="ko">다중 달력 및 할 일 목록 지원.</li>
       <li xml:lang="nds">Ünnerstütt vele Kalenners un Opgavenlisten.</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten.</li>
@@ -77,7 +83,9 @@
       <li>Storage model.</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
       <li xml:lang="en-GB">Storage model.</li>
+      <li xml:lang="es">Modelo de almacenamiento.</li>
       <li xml:lang="fr">Modèle de stockage.</li>
+      <li xml:lang="hu">Tárolómodell.</li>
       <li xml:lang="ko">저장소 모델.</li>
       <li xml:lang="nds">Wohrmodell</li>
       <li xml:lang="nl">Opslagmodel.</li>
@@ -93,7 +101,9 @@
       <li>Undo and Redo.</li>
       <li xml:lang="ca">Fes i desfés</li>
       <li xml:lang="en-GB">Undo and Redo.</li>
+      <li xml:lang="es">Deshacer y rehacer.</li>
       <li xml:lang="fr">Annuler et Refaire.</li>
+      <li xml:lang="hu">Visszavonás és újra végrehajtás.</li>
       <li xml:lang="ko">실행 취소 및 재실행.</li>
       <li xml:lang="nds">Torüchnehmen un wedderhalen</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw.</li>
@@ -109,7 +119,9 @@
       <li>Todo integration with agenda view.</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
       <li xml:lang="en-GB">Todo integration with agenda view.</li>
+      <li xml:lang="es">Integración de tareas pendientes con la vista de agenda.</li>
       <li xml:lang="fr">Intégration de listes de choses à faire avec la vue agenda.</li>
+      <li xml:lang="hu">Tennivalók integrációja a napi nézetbe.</li>
       <li xml:lang="ko">하루 보기와 통합된 할 일 목록.</li>
       <li xml:lang="nds">Opgaven binnen Tietplaan-Ansicht</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht.</li>
@@ -124,7 +136,9 @@
       <li>Attachments for events and todos.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
       <li xml:lang="en-GB">Attachments for events and todos.</li>
+      <li xml:lang="es">Adjuntos para eventos y tareas pendientes.</li>
       <li xml:lang="fr">Pièces jointes pour les évènements et les choses à faire.</li>
+      <li xml:lang="hu">Mellékletek csatolása eseményekhez és  tennivalókhoz.</li>
       <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원.</li>
       <li xml:lang="nds">Bilagen för Begeefnissen un Opgaven</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken.</li>
@@ -139,7 +153,9 @@
       <li>Quick todo and event entries.</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
       <li xml:lang="en-GB">Quick todo and event entries.</li>
+      <li xml:lang="es">Entradas rápidas para tareas pendientes y eventos.</li>
       <li xml:lang="fr">Saisie rapide d'évènements et choses à faire.</li>
+      <li xml:lang="hu">Gyors tennivalók és eseménybejegyzések.</li>
       <li xml:lang="ko">빠른 할 일과 이벤트 입력.</li>
       <li xml:lang="nds">Opgaav- un Begeefnis-Indrääg laat sik gau opstellen</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken.</li>
@@ -154,7 +170,9 @@
       <li>Plugin for Jewish calendar dates.</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
       <li xml:lang="en-GB">Plugin for Jewish calendar dates.</li>
+      <li xml:lang="es">Complemento para fechas del calendario judío.</li>
       <li xml:lang="fr">Module de prise en charge du calendrier juif.</li>
+      <li xml:lang="hu">Bővítmény zsidó dátumokhoz.</li>
       <li xml:lang="ko">종교별 달력 지원 플러그인.</li>
       <li xml:lang="nds">Moduul för jöödsch Kalennerdaten</li>
       <li xml:lang="nl">Plugin voor Joodse feestdagen</li>
@@ -171,7 +189,9 @@
       <li xml:lang="ca">Implementa la impressió</li>
       <li xml:lang="cs">Podpora tisku.</li>
       <li xml:lang="en-GB">Print support.</li>
+      <li xml:lang="es">Apoyo de impresión.</li>
       <li xml:lang="fr">Prise en charge d'impression.</li>
+      <li xml:lang="hu">Nyomtatási lehetőség.</li>
       <li xml:lang="ko">인쇄 지원.</li>
       <li xml:lang="nds">Druckünnerstütten</li>
       <li xml:lang="nl">Afdrukbeheer.</li>
