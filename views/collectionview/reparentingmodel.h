@@ -78,6 +78,7 @@ public:
 
         //Allows the implementation to create proxy nodes as necessary
         virtual void checkSourceIndex(const QModelIndex &sourceIndex){};
+        virtual void checkSourceIndexRemoval(const QModelIndex &sourceIndex){};
     };
 
 public:

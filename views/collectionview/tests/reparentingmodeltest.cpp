@@ -146,6 +146,8 @@ private Q_SLOTS:
     void testSourceDataChanged();
     void testSourceLayoutChanged();
     void testInvalidLayoutChanged();
+    void testAddRemoveNodeByNodeManager();
+    void testRemoveNodeByNodeManagerWithDataChanged();
 };
 
 void ReparentingModelTest::testPopulation()
@@ -269,7 +271,7 @@ void ReparentingModelTest::testAddRemoveProxyNode()
     QVERIFY(getIndex("row1", reparentingModel).isValid());
     QVERIFY(!getIndex("proxy1", reparentingModel).isValid());
 
-    QCOMPARE(spy.mSignals, QStringList() << QLatin1String("modelReset") << QLatin1String("modelReset"));
+    QCOMPARE(spy.mSignals, QStringList() << QLatin1String("modelReset") << QLatin1String("rowsRemoved"));
 }
 
 void ReparentingModelTest::testDeduplicate()
@@ -559,6 +561,72 @@ void ReparentingModelTest::testInvalidLayoutChanged()
     //This fails because the persistenIndex is no longer valid
     persistentIndex.data().toString();
     QVERIFY(!persistentIndex.isValid());
+}
+
+class DummyNodeManager : public ReparentingModel::NodeManager
+{
+public:
+    DummyNodeManager(ReparentingModel &m) : ReparentingModel::NodeManager(m){};
+private:
+    void checkSourceIndex(const QModelIndex &sourceIndex) {
+        if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
+            model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model, QLatin1String("personnode"))));
+        }
+    }
+
+    void checkSourceIndexRemoval(const QModelIndex &sourceIndex) {
+        if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
+            model.removeNode(DummyNode(model, QLatin1String("personnode")));
+        }
+    }
+};
+
+void ReparentingModelTest::testAddRemoveNodeByNodeManager()
+{
+    QStandardItemModel sourceModel;
+    sourceModel.appendRow(new QStandardItem(QLatin1String("personfolder")));
+    ReparentingModel reparentingModel;
+    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
+    reparentingModel.setSourceModel(&sourceModel);
+
+    QTest::qWait(0);
+
+    QVERIFY(getIndex("personnode", reparentingModel).isValid());
+    QVERIFY(getIndex("personfolder", reparentingModel).isValid());
+
+    sourceModel.removeRows(0, 1, QModelIndex());
+
+    QTest::qWait(0);
+    QVERIFY(!getIndex("personnode", reparentingModel).isValid());
+    QVERIFY(!getIndex("personfolder", reparentingModel).isValid());
+}
+
+/*
+ * This tests a special case that is caused by the delayed doAddNode call,
+ * causing a removed node to be readded immediately if it's removed while
+ * a doAddNode call is pending (that can be triggered by dataChanged).
+ */
+void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
+{
+    QStandardItemModel sourceModel;
+    QStandardItem *item = new QStandardItem(QLatin1String("personfolder"));
+    sourceModel.appendRow(item);
+    ReparentingModel reparentingModel;
+    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
+    reparentingModel.setSourceModel(&sourceModel);
+
+    QTest::qWait(0);
+
+    QVERIFY(getIndex("personnode", reparentingModel).isValid());
+    QVERIFY(getIndex("personfolder", reparentingModel).isValid());
+
+    //Trigger data changed
+    item->setStatusTip(QLatin1String("sldkfjlfsj"));
+    sourceModel.removeRows(0, 1, QModelIndex());
+
+    QTest::qWait(0);
+    QVERIFY(!getIndex("personnode", reparentingModel).isValid());
+    QVERIFY(!getIndex("personfolder", reparentingModel).isValid());
 }
 
 
