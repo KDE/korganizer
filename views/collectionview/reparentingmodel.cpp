@@ -224,6 +224,16 @@ bool ReparentingModel::validateNode(const Node *node) const
 
 void ReparentingModel::addNode(const ReparentingModel::Node::Ptr& node)
 {
+    //We have to make this check before issuing the async method,
+    //otherwise we run into the problem that while a node is being removed,
+    //the async request could be triggered (due to a changed signal),
+    //resulting in the node getting readded immediately after it had been removed.
+    Q_FOREACH(const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
+        if (*existing == *node) {
+            // kDebug() << "node is already existing";
+            return;
+        }
+    }
     qRegisterMetaType<Node::Ptr>("Node::Ptr");
     QMetaObject::invokeMethod(this, "doAddNode", Qt::QueuedConnection, QGenericReturnArgument(), Q_ARG(Node::Ptr, node));
 }
@@ -245,17 +255,19 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
 
 void ReparentingModel::removeNode(const ReparentingModel::Node& node)
 {
-    beginResetModel();
     for (int i = 0; i < mProxyNodes.size(); i++) {
         if (*mProxyNodes.at(i) == node) {
+            //TODO: this does not yet take care of un-reparenting reparented nodes.
+            const Node &n = *mProxyNodes.at(i);
+            Node *parentNode = n.parent;
+            beginRemoveRows(index(parentNode), n.row(), n.row());
+            parentNode->children.remove(n.row()); //deletes node
             mProxyNodes.remove(i);
+            endRemoveRows();
             break;
         }
     }
-    rebuildAll();
-    endResetModel();
 }
-
 
 void ReparentingModel::setNodes(const QList<Node::Ptr> &nodes)
 {
@@ -462,6 +474,10 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(QModelIndex parent, int star
         parentNode->children.remove(targetRow); //deletes node
         endRemoveRows();
     }
+    //Allows the node manager to remove nodes that are no longer relevant
+    for (int row = start; row <= end; row++) {
+        mNodeManager->checkSourceIndexRemoval(sourceModel()->index(row, 0, parent));
+    }
 }
 
 void ReparentingModel::onSourceRowsRemoved(QModelIndex parent, int start, int end)
@@ -559,10 +575,10 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex& pare
         parentNode = &mRootNode;
     }
     //At least QAbstractItemView expects that we deal with this properly (see rowsAboutToBeRemoved "find the next visible and enabled item")
-    if (parentNode->children.size() <= row) {
+    //Also QAbstractItemModel::match does all kinds of weird shit including passing row=-1
+    if (parentNode->children.size() <= row || row < 0) {
         return QModelIndex();
     }
-    Q_ASSERT(parentNode->children.size() > row);
     Node *node = parentNode->children.at(row).data();
     Q_ASSERT(validateNode(node));
     return createIndex(row, column, node);
@@ -593,7 +609,7 @@ ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourc
 
 QModelIndex ReparentingModel::mapFromSource(const QModelIndex& sourceIndex) const
 {
-    kDebug() << sourceIndex << sourceIndex.data().toString();
+    // kDebug() << sourceIndex << sourceIndex.data().toString();
     if (!sourceIndex.isValid()) {
         return QModelIndex();
     }
@@ -716,7 +732,6 @@ QModelIndex ReparentingModel::index(Node *node) const
 QModelIndex ReparentingModel::parent(const QModelIndex& child) const
 {
     // kDebug() << child << child.data().toString();
-    Q_ASSERT(child.isValid());
     if (!child.isValid()) {
         return QModelIndex();
     }
