@@ -338,7 +338,7 @@ void KOViewManager::connectView( KOrg::BaseView *view )
            mMainView, SLOT(newJournal(QDate)) );
 
   // reload settings
-  connect( mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()) );
+  connect(mMainView, &CalendarView::configChanged, view, &KOrg::BaseView::updateConfig);
 
   // Notifications about added, changed and deleted incidences
   connect( mMainView, SIGNAL(dayPassed(QDate)),

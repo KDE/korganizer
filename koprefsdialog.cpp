@@ -511,7 +511,7 @@ class KOPrefsDialogTime : public KPIM::KPrefsModule
                                       0, filter )->urlRequester();
       rq->setEnabled( cb->isChecked() );
 
-      connect( cb, SIGNAL(toggled(bool)), rq, SLOT(setEnabled(bool)) );
+      connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
 
       QHBoxLayout *audioFileRemindersBox = new QHBoxLayout( remindersGroupBox );
       audioFileRemindersBox->addWidget( cb );

@@ -124,7 +124,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mITIPHandler = new Akonadi::ITIPHandler( this );
   mITIPHandler->setCalendar( mCalendar );
-  connect( mCalendarClipboard, SIGNAL(cutFinished(bool,QString)), SLOT(onCutFinished()) );
+  connect(mCalendarClipboard, &Akonadi::CalendarClipboard::cutFinished, this, &CalendarView::onCutFinished);
 
   Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
 
@@ -383,7 +383,7 @@ void CalendarView::createPrinter()
 {
   if ( !mCalPrinter ) {
     mCalPrinter = new CalendarSupport::CalPrinter( this, mCalendar );
-    connect( this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()) );
+    connect(this, &CalendarView::configChanged, mCalPrinter, &CalendarSupport::CalPrinter::updateConfig);
   }
 }
 
@@ -955,7 +955,7 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt,
 IncidenceEditorNG::IncidenceDialog *CalendarView::incidenceDialog(const Akonadi::Item &item)
 {
     IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item);
-    connect(dialog, SIGNAL(incidenceCreated(Akonadi::Item)), SLOT(handleIncidenceCreated(Akonadi::Item)));
+    connect(dialog, &IncidenceEditorNG::IncidenceDialog::incidenceCreated, this, &CalendarView::handleIncidenceCreated);
     return dialog;
 }
 

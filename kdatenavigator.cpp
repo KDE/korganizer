@@ -48,12 +48,12 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   mNavigatorBar = new NavigatorBar( this );
   topLayout->addWidget( mNavigatorBar, 0, 0, 1, 8 );
 
-  connect( mNavigatorBar, SIGNAL(prevYearClicked()), SIGNAL(prevYearClicked()) );
-  connect( mNavigatorBar, SIGNAL(prevMonthClicked()), SIGNAL(prevMonthClicked()) );
-  connect( mNavigatorBar, SIGNAL(nextMonthClicked()), SIGNAL(nextMonthClicked()) );
-  connect( mNavigatorBar, SIGNAL(nextYearClicked()), SIGNAL(nextYearClicked()) );
-  connect( mNavigatorBar, SIGNAL(monthSelected(int)), SIGNAL(monthSelected(int)) );
-  connect( mNavigatorBar, SIGNAL(yearSelected(int)), SIGNAL(yearSelected(int)));
+  connect(mNavigatorBar, &NavigatorBar::prevYearClicked, this, &KDateNavigator::prevYearClicked);
+  connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, &KDateNavigator::prevMonthClicked);
+  connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, &KDateNavigator::nextMonthClicked);
+  connect(mNavigatorBar, &NavigatorBar::nextYearClicked, this, &KDateNavigator::nextYearClicked);
+  connect(mNavigatorBar, &NavigatorBar::monthSelected, this, &KDateNavigator::monthSelected);
+  connect(mNavigatorBar, &NavigatorBar::yearSelected, this, &KDateNavigator::yearSelected);
 
   QString generalFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont).family();
 

@@ -186,9 +186,9 @@ void KCMDesignerFields::delayedInit()
   KDirWatch *dw = new KDirWatch( this );
   QDir().mkpath( localUiDir() );
   dw->addDir( localUiDir(), KDirWatch::WatchFiles );
-  connect( dw, SIGNAL(created(QString)), SLOT(rebuildList()) );
-  connect( dw, SIGNAL(deleted(QString)), SLOT(rebuildList()) );
-  connect( dw, SIGNAL(dirty(QString)), SLOT(rebuildList()) );
+  connect(dw, &KDirWatch::created, this, &KCMDesignerFields::rebuildList);
+  connect(dw, &KDirWatch::deleted, this, &KCMDesignerFields::rebuildList);
+  connect(dw, &KDirWatch::dirty, this, &KCMDesignerFields::rebuildList);
 }
 
 void KCMDesignerFields::deleteFile()

@@ -166,7 +166,7 @@ void POTDElement::step2GetImagePage()
 
     connect( mSecondStepJob, SIGNAL(result(KJob*)),
              this, SLOT(step2Result(KJob*)) );
-    connect( this, SIGNAL(step2Success()), SLOT(step3GetThumbnail()) );
+    connect(this, &POTDElement::step2Success, this, &POTDElement::step3GetThumbnail);
   }
 }
 
@@ -331,7 +331,7 @@ QPixmap POTDElement::newPixmap( const QSize &size )
         // we'll run after that
         disconnect( this, SIGNAL(step3Success()),
                     this, SLOT(step3GetThumbnail()) );
-        connect( this, SIGNAL(step3Success()), SLOT(step3GetThumbnail()) );
+        connect(this, &POTDElement::step3Success, this, &POTDElement::step3GetThumbnail);
       } else if ( mFirstStepJob || mSecondStepJob ) {
         // The download process did not get to step 3 yet, and will download
         // the correct size automagically

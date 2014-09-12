@@ -90,10 +90,10 @@ NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )
   ctrlLayout->addWidget( mNextMonth );
   ctrlLayout->addWidget( mNextYear );
 
-  connect( mPrevYear, SIGNAL(clicked()), SIGNAL(prevYearClicked()) );
-  connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(prevMonthClicked()) );
-  connect( mNextMonth, SIGNAL(clicked()), SIGNAL(nextMonthClicked()) );
-  connect( mNextYear, SIGNAL(clicked()), SIGNAL(nextYearClicked()) );
+  connect(mPrevYear, &QToolButton::clicked, this, &NavigatorBar::prevYearClicked);
+  connect(mPrevMonth, &QToolButton::clicked, this, &NavigatorBar::prevMonthClicked);
+  connect(mNextMonth, &QToolButton::clicked, this, &NavigatorBar::nextMonthClicked);
+  connect(mNextYear, &QToolButton::clicked, this, &NavigatorBar::nextYearClicked);
   connect(mMonth, &QToolButton::clicked, this, &NavigatorBar::selectMonthFromMenu);
   connect(mYear, &QToolButton::clicked, this, &NavigatorBar::selectYearFromMenu);
 }
