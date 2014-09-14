@@ -429,16 +429,17 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
 
   //Filter tree view.
+  ReparentingModel *searchProxy = new ReparentingModel( this );
+  searchProxy->setSourceModel(collectionFilter);
+  searchProxy->setObjectName(QLatin1String("searchProxy"));
+
   KRecursiveFilterProxyModel *filterTreeViewModel = new KRecursiveFilterProxyModel( this );
   filterTreeViewModel->setDynamicSortFilter( true );
-  filterTreeViewModel->setSourceModel( userProxy );
+  filterTreeViewModel->setSourceModel( searchProxy );
   filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
 //   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   connect( searchCol, SIGNAL(textChanged(QString)),
           filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
-
-  ReparentingModel *searchProxy = new ReparentingModel( this );
-  searchProxy->setSourceModel(filterTreeViewModel);
 
 
   Akonadi::EntityTreeView *mSearchView = new Akonadi::EntityTreeView( this );
@@ -449,7 +450,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     connect(delegate, SIGNAL(action(QModelIndex, int)), this, SLOT(onAction(QModelIndex, int)));
     mSearchView->setItemDelegate( delegate );
   }
-  mSearchView->setModel( searchProxy );
+  mSearchView->setModel( filterTreeViewModel );
   new NewNodeExpander(mSearchView, true, QString());
 
   mController = new Controller(userProxy, searchProxy, this);
