@@ -63,14 +63,14 @@ static QStyle *style(const QStyleOptionViewItem &option)
 
 static QStyleOptionButton buttonOpt(const QStyleOptionViewItemV4 &opt, const QPixmap &pixmap, int pos = 1)
 {
-    QStyleOptionButton buttonOpt;
-    buttonOpt.icon = pixmap;
+    QStyleOptionButton option;
+    option.icon = pixmap;
     QRect r = opt.rect;
     const int h = r.height() - 4;
-    buttonOpt.rect = enableButtonRect(r, pos);
-    buttonOpt.state = QStyle::State_Active | QStyle::State_Enabled;
-    buttonOpt.iconSize = QSize(h, h);
-    return buttonOpt;
+    option.rect = enableButtonRect(r, pos);
+    option.state = QStyle::State_Active | QStyle::State_Enabled;
+    option.iconSize = QSize(h, h);
+    return option;
 }
 
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -130,15 +130,12 @@ void StyledCalendarDelegate::paint( QPainter * painter, const QStyleOptionViewIt
     if (opt.checkState){
         QColor color = KOHelper::resourceColor(col);
         if (color.isValid()){
-            QRect r = opt.rect;
-            const int h = r.height()- 4;
-            r.adjust(r.width()- h - 2, 2, - 2, -2);
             painter->save();
             painter->setRenderHint(QPainter::Antialiasing);
             QPen pen = painter->pen();
             pen.setColor(color);
             QPainterPath path;
-            path.addRoundedRect(r, 5, 5);
+            path.addRoundedRect(enableButtonRect(opt.rect, 0), 5, 5);
             color.setAlpha(200);
             painter->fillPath(path, color);
             painter->strokePath(path, pen);
@@ -197,6 +194,9 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
 
 QSize StyledCalendarDelegate::sizeHint( const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    return QStyledItemDelegate::sizeHint(option, index);
+    QSize size = QStyledItemDelegate::sizeHint(option, index);
+    //Without this adjustment toplevel resource folders get a slightly greater height, which looks silly and breaks the toolbutton position.
+    size.setHeight(mPixmap.value(AddToList).height() + 4);
+    return size;
 }
 
