@@ -109,7 +109,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void disableColor();
     void setDefaultCalendar();
     void onSearchIsActive(bool);
-    void onCalendarEnabled(const QModelIndex &, bool);
+    void onAction(const QModelIndex &index, int action);
 
   private:
     Akonadi::EntityTreeModel *entityTreeModel() const;

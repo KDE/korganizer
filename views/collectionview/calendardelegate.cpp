@@ -27,10 +27,14 @@
 
 #include <calendarsupport/utils.h>
 #include <kohelper.h>
+#include "controller.h"
 
 StyledCalendarDelegate::StyledCalendarDelegate(QObject * parent)
     : QStyledItemDelegate(parent)
 {
+    mPixmap.insert(Enable, KIconLoader().loadIcon(QLatin1String("bookmarks"), KIconLoader::Small));
+    mPixmap.insert(RemoveFromList, KIconLoader().loadIcon(QLatin1String("list-remove"), KIconLoader::Small));
+    mPixmap.insert(AddToList, KIconLoader().loadIcon(QLatin1String("list-add"), KIconLoader::Small));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
@@ -38,12 +42,13 @@ StyledCalendarDelegate::~StyledCalendarDelegate()
 
 }
 
-static QRect enableButtonRect(const QRect &rect)
+static QRect enableButtonRect(const QRect &rect, int pos = 1)
 {
-    QRect r = rect;
-    const int h = r.height()- 4;
-    r.adjust(r.width()- h*2 - 2*2, 2, -2 - h - 2, -2);
-    return r;
+    //2px border on each side of the icon
+    static int border = 2;
+    const int side = rect.height() - (2 * border);
+    const int offset = side * pos + border * (pos + 1);
+    return rect.adjusted(rect.width() - (offset + side), border, -offset, -border);
 }
 
 static QStyle *style(const QStyleOptionViewItem &option)
@@ -54,38 +59,71 @@ static QStyle *style(const QStyleOptionViewItem &option)
     }
     QStyle *style = widget ? widget->style() : QApplication::style();
     return style;
+}
 
+static QStyleOptionButton buttonOpt(const QStyleOptionViewItemV4 &opt, const QPixmap &pixmap, int pos = 1)
+{
+    QStyleOptionButton buttonOpt;
+    buttonOpt.icon = pixmap;
+    QRect r = opt.rect;
+    const int h = r.height() - 4;
+    buttonOpt.rect = enableButtonRect(r, pos);
+    buttonOpt.state = QStyle::State_Active | QStyle::State_Enabled;
+    buttonOpt.iconSize = QSize(h, h);
+    return buttonOpt;
+}
+
+QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    const bool isSearchResult = index.data(IsSearchResultRole).toBool();
+    const bool hover = option.state & QStyle::State_MouseOver;
+    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+    const bool enabled = col.shouldList(Akonadi::Collection::ListDisplay);
+    const bool referenced = col.referenced();
+
+    QList<Action> buttons;
+    if (isSearchResult) {
+        buttons << AddToList;
+    } else {
+        //Folders that have been pulled in due to a subfolder
+        // if (!enabled && !referenced) {
+        //     return QList<Action>() << RemoveFromList;
+        // }
+        if (hover) {
+            if (!enabled) {
+                buttons << Enable;
+            }
+            buttons << RemoveFromList;
+        } else {
+            if (enabled) {
+                buttons << Enable;
+            }
+        }
+    }
+    return buttons;
 }
 
 void StyledCalendarDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
     Q_ASSERT(index.isValid());
 
-    QStyledItemDelegate::paint( painter, option, index );
+    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+
     QStyleOptionViewItemV4 opt = option;
     initStyleOption(&opt, index);
+    QStyledItemDelegate::paint(painter, opt, index);
 
     QStyle *s = style(option);
 
-    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-
-    //Favorite button
+    //Buttons
     {
-        static QPixmap enablePixmap = KIconLoader().loadIcon(QLatin1String("bookmarks"), KIconLoader::Small);
-        static QPixmap disablePixmap = KIconLoader().loadIcon(QLatin1String("window-close"), KIconLoader::Small);
-        QStyleOptionButton buttonOpt;
-        if (!col.shouldList(Akonadi::Collection::ListDisplay)) {
-            buttonOpt.icon = enablePixmap;
-        } else {
-            buttonOpt.icon = disablePixmap;
+        QList<Action> buttons;
+        int i = 1;
+        Q_FOREACH (Action action, getActions(option, index)) {
+            QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
+            s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
+            i++;
         }
-        QRect r = opt.rect;
-        const int h = r.height()- 4;
-        buttonOpt.rect = enableButtonRect(r);
-        buttonOpt.state = QStyle::State_Active | QStyle::State_Enabled;
-        buttonOpt.iconSize = QSize(h, h);
-
-        s->drawControl(QStyle::CE_PushButton, &buttonOpt, painter, 0);
     }
 
     //Color indicator
@@ -117,15 +155,24 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
     Q_ASSERT(event);
     Q_ASSERT(model);
 
+    int button = -1;
     // make sure that we have the right event type
     if ((event->type() == QEvent::MouseButtonRelease)
         || (event->type() == QEvent::MouseButtonDblClick)
         || (event->type() == QEvent::MouseButtonPress)) {
 
-        QRect buttonRect = enableButtonRect(option.rect);
-
         QMouseEvent *me = static_cast<QMouseEvent*>(event);
-        if (me->button() != Qt::LeftButton || !buttonRect.contains(me->pos())) {
+
+        if (enableButtonRect(option.rect, 1).contains(me->pos())) {
+            button = 1;
+        }
+        if (enableButtonRect(option.rect, 2).contains(me->pos())) {
+            button = 2;
+        }
+        if (enableButtonRect(option.rect, 3).contains(me->pos())) {
+            button = 3;
+        }
+        if (me->button() != Qt::LeftButton || button < 0) {
             return QStyledItemDelegate::editorEvent(event, model, option, index);
         }
 
@@ -137,14 +184,15 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
         return QStyledItemDelegate::editorEvent(event, model, option, index);
     }
 
-    onEnableButtonClicked(index);
-    return true;
-}
+    Q_ASSERT(button > 0);
+    QStyleOptionViewItem opt = option;
+    opt.state |= QStyle::State_MouseOver;
 
-void StyledCalendarDelegate::onEnableButtonClicked(const QModelIndex &index)
-{
-    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-    emit enabled(index, !col.enabled());
+    const Action a = getActions(opt, index).at(button - 1);
+    // kDebug() << "Button clicked: " << a;
+    emit action(index, a);
+
+    return true;
 }
 
 QSize StyledCalendarDelegate::sizeHint( const QStyleOptionViewItem &option, const QModelIndex &index ) const
