@@ -37,7 +37,8 @@
 CollectionNode::CollectionNode(ReparentingModel& personModel, const Akonadi::Collection& col)
 :   Node(personModel),
     mCollection(col),
-    mCheckState(Qt::Unchecked)
+    mCheckState(Qt::Unchecked),
+    isSearchNode(false)
 {
 }
 
@@ -73,10 +74,19 @@ QVariant CollectionNode::data(int role) const
         return QVariant();
     }
     if (role == Qt::CheckStateRole) {
+        if (isSearchNode) {
+            return QVariant();
+        }
         return mCheckState;
     }
     if (role == Qt::ToolTipRole) {
         return QString(QLatin1String("Collection: ") + mCollection.name() + QString::number(mCollection.id()));
+    }
+    if (role == IsSearchResultRole) {
+        return isSearchNode;
+    }
+    if (role == CollectionRole) {
+        return QVariant::fromValue(mCollection);
     }
     return QVariant();
 }
@@ -100,7 +110,8 @@ bool CollectionNode::isDuplicateOf(const QModelIndex& sourceIndex)
 PersonNode::PersonNode(ReparentingModel& personModel, const Person& person)
 :   Node(personModel),
     mPerson(person),
-    mCheckState(Qt::Unchecked)
+    mCheckState(Qt::Unchecked),
+    isSearchNode(false)
 {
 
 }
@@ -137,6 +148,9 @@ QVariant PersonNode::data(int role) const
         return KIcon(QLatin1String("meeting-participant"));
     }
     if (role == Qt::CheckStateRole) {
+        if (isSearchNode) {
+            return QVariant();
+        }
         return mCheckState;
     }
     if (role == Qt::ToolTipRole) {
@@ -144,6 +158,9 @@ QVariant PersonNode::data(int role) const
     }
     if (role == PersonRole) {
         return QVariant::fromValue(mPerson);
+    }
+    if (role == IsSearchResultRole) {
+        return isSearchNode;
     }
     return QVariant();
 }
@@ -184,11 +201,11 @@ bool PersonNode::isDuplicateOf(const QModelIndex& sourceIndex)
 void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
 {
     const Akonadi::Collection col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-    kDebug() << col.displayName() << col.enabled();
+    // kDebug() << col.displayName() << col.enabled();
     if (col.isValid()) {
         CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
         if (attr && attr->collectionNamespace() == "usertoplevel") {
-            kDebug() << "Found user folder, creating person node";
+            kDebug() << "Found user folder, creating person node " << col.displayName();
             Person person;
             person.name = col.displayName();
             person.rootCollection = col.id();
@@ -197,6 +214,23 @@ void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
         }
     }
 }
+
+void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
+{
+    const Akonadi::Collection col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+    // kDebug() << col.displayName() << col.enabled();
+    if (col.isValid()) {
+        CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
+        if (attr && attr->collectionNamespace() == "usertoplevel") {
+            kDebug() << "Found user folder, removing person node " << col.displayName();
+            Person person;
+            person.name = col.displayName();
+            person.rootCollection = col.id();
+            model.removeNode(PersonNode(model, person));
+        }
+    }
+}
+
 
 CollectionSearchJob::CollectionSearchJob(const QString& searchString, QObject* parent)
     : KJob(parent),
@@ -400,25 +434,7 @@ void Controller::setSearchString(const QString &searchString)
 
 void Controller::onPersonEnabled(bool enabled, const Person& person)
 {
-    // kDebug() << person.name << enabled;
-    if (enabled) {
-        PersonNode *personNode = new PersonNode(*mPersonModel, person);
-        personNode->setChecked(true);
-        mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
-        Akonadi::Collection rootCollection(person.rootCollection);
-        if (rootCollection.isValid()) {
-            //Reference the persons collections if available
-            //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
-            Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(rootCollection, Akonadi::CollectionFetchJob::Recursive, this);
-            fetchJob->setProperty("enable", enabled);
-            fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-            connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonCollectionsFetched(KJob*)));
-        }
-    } else {
-        //If we accidentally added a person and want to remove it again
-        mPersonModel->removeNode(PersonNode(*mPersonModel, person));
-        //Dereference subcollections
-    }
+    setPersonEnabled(person, enabled);
 
 }
 
@@ -444,6 +460,7 @@ void Controller::onCollectionsFound(KJob* job)
     Q_ASSERT(mCollectionSearchJob == static_cast<CollectionSearchJob*>(job));
     Q_FOREACH(const Akonadi::Collection &col, mCollectionSearchJob->matchingCollections()) {
         CollectionNode *collectionNode = new CollectionNode(*mSearchModel, col);
+        collectionNode->isSearchNode = true;
         //toggled by the checkbox, results in collection getting monitored
         connect(&collectionNode->emitter, SIGNAL(enabled(bool, Akonadi::Collection)), this, SLOT(onCollectionEnabled(bool, Akonadi::Collection)));
         mSearchModel->addNode(ReparentingModel::Node::Ptr(collectionNode));
@@ -461,6 +478,7 @@ void Controller::onPersonsFound(KJob* job)
     Q_ASSERT(mPersonSearchJob == static_cast<PersonSearchJob*>(job));
     Q_FOREACH(const Person &p, mPersonSearchJob->matches()) {
         PersonNode *personNode = new PersonNode(*mSearchModel, p);
+        personNode->isSearchNode = true;
         //toggled by the checkbox, results in person getting added to main model
         connect(&personNode->emitter, SIGNAL(enabled(bool, Person)), this, SLOT(onPersonEnabled(bool, Person)));
         mSearchModel->addNode(ReparentingModel::Node::Ptr(personNode));
@@ -521,8 +539,26 @@ void Controller::setCollection(const Akonadi::Collection &collection, bool enabl
     etm->setCollectionReferenced(modifiedCollection, referenced);
 }
 
-void Controller::setPersonDisabled(const Person &person)
+void Controller::setPersonEnabled(const Person &person, bool enabled)
 {
-    mPersonModel->removeNode(PersonNode(*mPersonModel, person));
+    // kDebug() << person.name << enabled;
+    if (enabled) {
+        PersonNode *personNode = new PersonNode(*mPersonModel, person);
+        personNode->setChecked(true);
+        mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
+    } else {
+        mPersonModel->removeNode(PersonNode(*mPersonModel, person));
+    }
+
+    Akonadi::Collection rootCollection(person.rootCollection);
+    // kDebug() << rootCollection.id();
+    if (rootCollection.isValid()) {
+        //Reference the persons collections if available
+        //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
+        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(rootCollection, Akonadi::CollectionFetchJob::Recursive, this);
+        fetchJob->setProperty("enable", enabled);
+        fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
+        connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonCollectionsFetched(KJob*)));
+    }
 }
 

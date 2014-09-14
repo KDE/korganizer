@@ -248,41 +248,6 @@ static bool hasCompatibleMimeTypes( const Akonadi::Collection &collection )
   return false;
 }
 
-class ColorDelegate : public QStyledItemDelegate
-{
-  public:
-    explicit ColorDelegate( QObject * parent = 0 ) : QStyledItemDelegate( parent )
-    {
-    }
-
-    void paint ( QPainter *painter, const QStyleOptionViewItem &option,
-                 const QModelIndex &index ) const
-    {
-      QStyledItemDelegate::paint( painter, option, index );
-      QStyleOptionViewItemV4 v4 = option;
-      initStyleOption( &v4, index );
-      if ( v4.checkState ) {
-        const Akonadi::Collection collection = CalendarSupport::collectionFromIndex( index );
-        QColor color = KOHelper::resourceColor( collection );
-        if ( color.isValid() ) {
-          QRect r = v4.rect;
-          const int h = r.height() - 4;
-          r.adjust( r.width() - h - 2, 2, - 2, -2 );
-          painter->save();
-          painter->setRenderHint( QPainter::Antialiasing );
-          QPen pen = painter->pen();
-          pen.setColor( color );
-          QPainterPath path;
-          path.addRoundedRect( r, 5, 5 );
-          color.setAlpha( 200 );
-          painter->fillPath( path, color );
-          painter->strokePath( path, pen );
-          painter->restore();
-        }
-      }
-    }
-};
-
 class SortProxyModel : public QSortFilterProxyModel
 {
   public:
@@ -294,8 +259,8 @@ class SortProxyModel : public QSortFilterProxyModel
      bool lessThan(const QModelIndex &left,
                                        const QModelIndex &right) const
     {
-        QVariant leftPerson = left.data(PersonNode::PersonRole);
-        QVariant rightPerson = right.data(PersonNode::PersonRole);
+        QVariant leftPerson = left.data(PersonRole);
+        QVariant rightPerson = right.data(PersonRole);
         if (leftPerson.isValid() && !rightPerson.isValid()) {
             return true;
         }
@@ -452,7 +417,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   mCollectionView->setRootIsDecorated( true );
   {
     StyledCalendarDelegate *delegate = new StyledCalendarDelegate(mCollectionView);
-    connect(delegate, SIGNAL(enabled(QModelIndex, bool)), this, SLOT(onCalendarEnabled(QModelIndex, bool)));
+    connect(delegate, SIGNAL(action(QModelIndex, int)), this, SLOT(onAction(QModelIndex, int)));
     mCollectionView->setItemDelegate( delegate );
   }
   mCollectionView->setModel( collectionFilter );
@@ -478,7 +443,11 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   Akonadi::EntityTreeView *mSearchView = new Akonadi::EntityTreeView( this );
   mSearchView->header()->hide();
   mSearchView->setRootIsDecorated( true );
-  mSearchView->setItemDelegate( new ColorDelegate( this ) );
+  {
+    StyledCalendarDelegate *delegate = new StyledCalendarDelegate(mCollectionView);
+    connect(delegate, SIGNAL(action(QModelIndex, int)), this, SLOT(onAction(QModelIndex, int)));
+    mSearchView->setItemDelegate( delegate );
+  }
   mSearchView->setModel( searchProxy );
   new NewNodeExpander(mSearchView, true, QString());
 
@@ -892,13 +861,23 @@ void AkonadiCollectionView::edit_enable()
     }
 }
 
-void AkonadiCollectionView::onCalendarEnabled(const QModelIndex &index, bool enabled)
+void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
 {
-    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-    if (col.isValid()) {
-        mController->setCollection(col, enabled, false);
-    } else {
-        if (!enabled) {
+    const StyledCalendarDelegate::Action action = static_cast<StyledCalendarDelegate::Action>(a);
+    switch (action) {
+        case StyledCalendarDelegate::AddToList: {
+            const Akonadi::Collection col = index.data(CollectionRole).value<Akonadi::Collection>();
+            if (col.isValid()) {
+                mController->setCollection(col, false, true);
+            } else {
+                const QVariant var = index.data(PersonRole);
+                if (var.isValid()) {
+                    mController->setPersonEnabled(var.value<Person>(), true);
+                }
+            }
+        }
+        break;
+        case StyledCalendarDelegate::RemoveFromList: {
             //Disable all child collections
             const QAbstractItemModel *model = index.model();
             for (int row = 0; row < model->rowCount(index); row++) {
@@ -907,12 +886,24 @@ void AkonadiCollectionView::onCalendarEnabled(const QModelIndex &index, bool ena
                     mController->setCollection(col, false, false);
                 }
             }
+            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+            if (col.isValid()) {
+                mController->setCollection(col, false, false);
+            } else {
+                const QVariant var = index.data(PersonRole);
+                if (var.isValid()) {
+                    mController->setPersonEnabled(var.value<Person>(), false);
+                }
+            }
         }
-        
-        const QVariant var = index.data(PersonNode::PersonRole);
-        if (var.isValid()) {
-            mController->setPersonDisabled(var.value<Person>());
+        break;
+        case StyledCalendarDelegate::Enable: {
+            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+            if (col.isValid()) {
+                mController->setCollection(col, true, false);
+            }
         }
+        break;
     }
 }
 

@@ -29,6 +29,12 @@
 #include <Akonadi/Collection>
 #include "reparentingmodel.h"
 
+enum DataRole {
+    PersonRole = Akonadi::EntityTreeModel::UserRole + 1,
+    IsSearchResultRole,
+    CollectionRole
+};
+
 struct Person
 {
     Person(): rootCollection(-1){};
@@ -69,10 +75,6 @@ public:
 class PersonNode : public ReparentingModel::Node
 {
 public:
-    enum DataRole {
-        PersonRole = Akonadi::EntityTreeModel::UserRole + 1
-    };
-
     PersonNode(ReparentingModel &personModel, const Person &person);
     virtual ~PersonNode();
     virtual bool operator==(const Node &) const;
@@ -82,6 +84,8 @@ public:
     virtual QVariant data(int role) const;
 
     Emitter emitter;
+    bool isSearchNode;
+
 private:
     virtual bool setData(const QVariant& variant, int role);
     virtual bool adopts(const QModelIndex& sourceIndex);
@@ -99,6 +103,7 @@ public:
     virtual bool operator==(const Node &) const;
 
     Emitter emitter;
+    bool isSearchNode;
 
 private:
     virtual QVariant data(int role) const;
@@ -114,6 +119,7 @@ public:
     PersonNodeManager(ReparentingModel &personModel) : ReparentingModel::NodeManager(personModel){};
 private:
     void checkSourceIndex(const QModelIndex &sourceIndex);
+    void checkSourceIndexRemoval(const QModelIndex &sourceIndex);
 };
 
 class CollectionSearchJob : public KJob
@@ -172,7 +178,7 @@ public:
     void setCollectionReferenced(bool enabled, const Akonadi::Collection &collection);
     void setCollectionEnabled(bool enabled, const Akonadi::Collection &collection);
     void setCollection(const Akonadi::Collection &collection, bool enabled, bool referenced);
-    void setPersonDisabled(const Person &person);
+    void setPersonEnabled(const Person &person, bool enabled);
 
 Q_SIGNALS:
     void searchIsActive(bool);
@@ -184,7 +190,6 @@ private Q_SLOTS:
     void onCollectionsFound(KJob *job);
     void onPersonsFound(KJob *job);
     void onPersonEnabled(bool enabled, const Person &person);
-    // void onPersonCollectionsReceived(Akonadi::Collection::List);
     void onPersonCollectionsFetched(KJob *job);
     void onCollectionEnabled(bool enabled, const Akonadi::Collection &collection);
 

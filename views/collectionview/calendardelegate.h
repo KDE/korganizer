@@ -32,8 +32,14 @@ public:
     void paint( QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
     QSize sizeHint( const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 
+    enum Action {
+        AddToList,
+        RemoveFromList,
+        Enable
+    };
+
 Q_SIGNALS:
-    void enabled(const QModelIndex &, bool);
+    void action(const QModelIndex &, int);
 
 protected:
     bool editorEvent(QEvent *event,
@@ -42,7 +48,8 @@ protected:
                     const QModelIndex &index);
 
 private:
-    void onEnableButtonClicked(const QModelIndex &index);
+    QList<Action> getActions(const QStyleOptionViewItem & option, const QModelIndex &index) const;
+    QHash<Action, QPixmap> mPixmap;
 };
     
 #endif
