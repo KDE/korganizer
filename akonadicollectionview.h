@@ -122,6 +122,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     KAction *mAssignColor;
     KAction *mDisableColor;
     KAction *mDefaultCalendar;
+    QAction *mEnableAction;
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;
     bool mHasContextMenu;

@@ -63,6 +63,7 @@
 #include <QStyledItemDelegate>
 #include <QVBoxLayout>
 #include <QStackedWidget>
+#include <QAction>
 
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
 {
@@ -552,6 +553,17 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     mDefaultCalendar->setEnabled( false );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "set_standard_calendar" ),
                                               mDefaultCalendar );
+
+    //Disable a calendar or remove a referenced calendar
+    QAction *disableAction = xmlclient->actionCollection()->addAction( QLatin1String("collection_disable"), this, SLOT(edit_disable()) );
+    disableAction->setText( i18n( "Remove from list" ) );
+    disableAction->setIcon(KIconLoader().loadIcon(QLatin1String("list-remove"), KIconLoader::Small));
+
+    //Enable (subscribe) to a calendar.
+    mEnableAction = xmlclient->actionCollection()->addAction( QLatin1String("collection_enable"), this, SLOT(edit_enable()) );
+    mEnableAction->setText( i18n( "Add to list permanently" ) );
+    mEnableAction->setIcon(KIconLoader().loadIcon(QLatin1String("bookmarks"), KIconLoader::Small));
+
     connect( mDefaultCalendar, SIGNAL(triggered(bool)), this, SLOT(setDefaultCalendar()) );
   }
 }
@@ -673,6 +685,11 @@ void AkonadiCollectionView::updateMenu()
       mDefaultCalendar->setEnabled( !KOHelper::isStandardCalendar( collection.id() ) &&
                                     collection.rights() & Akonadi::Collection::CanCreateItem );
       disableStuff = false;
+    }
+    if ( collection.isValid() && collection.shouldList(Akonadi::Collection::ListDisplay) ) {
+        mEnableAction->setEnabled(false);
+    } else {
+        mEnableAction->setEnabled(true);
     }
   }
   if ( disableStuff ) {
