@@ -78,24 +78,20 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
     const bool isSearchResult = index.data(IsSearchResultRole).toBool();
     const bool hover = option.state & QStyle::State_MouseOver;
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-    const bool enabled = col.shouldList(Akonadi::Collection::ListDisplay);
-    const bool referenced = col.referenced();
+    Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
+    // kDebug() << index.data().toString() << enabled;
 
     QList<Action> buttons;
     if (isSearchResult) {
         buttons << AddToList;
     } else {
-        //Folders that have been pulled in due to a subfolder
-        // if (!enabled && !referenced) {
-        //     return QList<Action>() << RemoveFromList;
-        // }
         if (hover) {
-            if (!enabled) {
+            if (enabled != Qt::Checked) {
                 buttons << Enable;
             }
             buttons << RemoveFromList;
         } else {
-            if (enabled) {
+            if (enabled == Qt::Checked) {
                 buttons << Enable;
             }
         }
@@ -108,6 +104,10 @@ void StyledCalendarDelegate::paint( QPainter * painter, const QStyleOptionViewIt
     Q_ASSERT(index.isValid());
 
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+    //We display the toolbuttons while hovering
+    const bool showButtons = option.state & QStyle::State_MouseOver;
+    // const bool enabled = col.shouldList(Akonadi::Collection::ListDisplay);
+    Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
 
     QStyleOptionViewItemV4 opt = option;
     initStyleOption(&opt, index);
@@ -121,6 +121,12 @@ void StyledCalendarDelegate::paint( QPainter * painter, const QStyleOptionViewIt
         int i = 1;
         Q_FOREACH (Action action, getActions(option, index)) {
             QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
+            if (action == Enable && showButtons) {
+                buttonOption.state = QStyle::State_Active;
+            }
+            if (action == Enable && !showButtons && enabled == Qt::PartiallyChecked) {
+                buttonOption.state = QStyle::State_Active;
+            }
             s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
             i++;
         }

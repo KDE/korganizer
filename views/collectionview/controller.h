@@ -29,10 +29,18 @@
 #include <Akonadi/Collection>
 #include "reparentingmodel.h"
 
-enum DataRole {
+enum DataRoles {
     PersonRole = Akonadi::EntityTreeModel::UserRole + 1,
     IsSearchResultRole,
-    CollectionRole
+    CollectionRole,
+    NodeTypeRole,
+    EnabledRole
+};
+
+enum NodeTypeRoles {
+    SourceNodeRole,
+    PersonNodeRole,
+    CollectionNodeRole
 };
 
 struct Person
@@ -175,10 +183,15 @@ public:
      */
     void setEntityTreeModel(Akonadi::EntityTreeModel *etm);
 
-    void setCollectionReferenced(bool enabled, const Akonadi::Collection &collection);
-    void setCollectionEnabled(bool enabled, const Akonadi::Collection &collection);
-    void setCollection(const Akonadi::Collection &collection, bool enabled, bool referenced);
-    void setPersonEnabled(const Person &person, bool enabled);
+    enum CollectionState {
+        Disabled,
+        Referenced,
+        Enabled
+    };
+    void setCollectionState(const Akonadi::Collection &collection, CollectionState collectionState, bool recursive = false);
+
+    void addPerson(const Person &person);
+    void removePerson(const Person &person);
 
 Q_SIGNALS:
     void searchIsActive(bool);
@@ -189,9 +202,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void onCollectionsFound(KJob *job);
     void onPersonsFound(KJob *job);
-    void onPersonEnabled(bool enabled, const Person &person);
     void onPersonCollectionsFetched(KJob *job);
-    void onCollectionEnabled(bool enabled, const Akonadi::Collection &collection);
 
 private:
     ReparentingModel *mPersonModel;
