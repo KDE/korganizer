@@ -88,6 +88,9 @@ QVariant CollectionNode::data(int role) const
     if (role == CollectionRole) {
         return QVariant::fromValue(mCollection);
     }
+    if (role == NodeTypeRole) {
+        return CollectionNodeRole;
+    }
     return QVariant();
 }
 
@@ -161,6 +164,9 @@ QVariant PersonNode::data(int role) const
     }
     if (role == IsSearchResultRole) {
         return isSearchNode;
+    }
+    if (role == NodeTypeRole) {
+        return PersonNodeRole;
     }
     return QVariant();
 }
@@ -432,24 +438,6 @@ void Controller::setSearchString(const QString &searchString)
     mCollectionSearchJob->start();
 }
 
-void Controller::onPersonEnabled(bool enabled, const Person& person)
-{
-    setPersonEnabled(person, enabled);
-
-}
-
-void Controller::onPersonCollectionsFetched(KJob* job)
-{
-    if (job->error()) {
-        kWarning() << "Failed to fetch collections " << job->errorString();
-        return;
-    }
-    const bool enable = job->property("enable").toBool();
-    Q_FOREACH(const Akonadi::Collection &col, static_cast<Akonadi::CollectionFetchJob*>(job)->collections()) {
-        setCollectionReferenced(enable, col);
-    }
-}
-
 void Controller::onCollectionsFound(KJob* job)
 {
     if (job->error()) {
@@ -462,7 +450,7 @@ void Controller::onCollectionsFound(KJob* job)
         CollectionNode *collectionNode = new CollectionNode(*mSearchModel, col);
         collectionNode->isSearchNode = true;
         //toggled by the checkbox, results in collection getting monitored
-        connect(&collectionNode->emitter, SIGNAL(enabled(bool, Akonadi::Collection)), this, SLOT(onCollectionEnabled(bool, Akonadi::Collection)));
+        // connect(&collectionNode->emitter, SIGNAL(enabled(bool, Akonadi::Collection)), this, SLOT(onCollectionEnabled(bool, Akonadi::Collection)));
         mSearchModel->addNode(ReparentingModel::Node::Ptr(collectionNode));
     }
     mCollectionSearchJob = 0;
@@ -480,7 +468,7 @@ void Controller::onPersonsFound(KJob* job)
         PersonNode *personNode = new PersonNode(*mSearchModel, p);
         personNode->isSearchNode = true;
         //toggled by the checkbox, results in person getting added to main model
-        connect(&personNode->emitter, SIGNAL(enabled(bool, Person)), this, SLOT(onPersonEnabled(bool, Person)));
+        // connect(&personNode->emitter, SIGNAL(enabled(bool, Person)), this, SLOT(onPersonEnabled(bool, Person)));
         mSearchModel->addNode(ReparentingModel::Node::Ptr(personNode));
     }
     mPersonSearchJob = 0;
@@ -500,65 +488,67 @@ static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
     return qobject_cast<Akonadi::EntityTreeModel*>(model);
 }
 
-void Controller::setCollectionReferenced(bool enabled, const Akonadi::Collection& collection)
+void Controller::setCollectionState(const Akonadi::Collection &collection, CollectionState collectionState, bool recursive)
 {
-    kDebug() << collection.displayName() << "do reference " << enabled;
-    kDebug() << "current " << collection.referenced();
-    Akonadi::EntityTreeModel *etm = findEtm(mPersonModel);
-    Q_ASSERT(etm);
-    etm->setCollectionReferenced(collection, enabled);
+    //We removed the children first, so the children in the tree are removed before the parents
+    if (recursive) {
+        //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
+        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection, Akonadi::CollectionFetchJob::Recursive, this);
+        fetchJob->setProperty("collectionState", static_cast<int>(collectionState));
+        fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
+        connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonCollectionsFetched(KJob*)));
+    }
+    {
+        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection, Akonadi::CollectionFetchJob::Base, this);
+        fetchJob->setProperty("collectionState", static_cast<int>(collectionState));
+        fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
+        connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonCollectionsFetched(KJob*)));
+    }
 }
 
-void Controller::setCollectionEnabled(bool enabled, const Akonadi::Collection& collection)
+void Controller::onPersonCollectionsFetched(KJob* job)
 {
-    kDebug() << collection.displayName() << "do enable " << enabled;
-    kDebug() << "current " << collection.enabled();
-
-    Akonadi::Collection modifiedCollection = collection;
-    modifiedCollection.setShouldList(Akonadi::Collection::ListDisplay, enabled);
-    new Akonadi::CollectionModifyJob(modifiedCollection);
-}
-
-void Controller::onCollectionEnabled(bool enabled, const Akonadi::Collection& collection)
-{
-    setCollectionReferenced(enabled, collection);
-}
-
-void Controller::setCollection(const Akonadi::Collection &collection, bool enabled, bool referenced)
-{
+    if (job->error()) {
+        kWarning() << "Failed to fetch collections " << job->errorString();
+        return;
+    }
     Akonadi::EntityTreeModel *etm = findEtm(mPersonModel);
     if (!etm) {
         kWarning() << "Couldn't find etm";
         return;
     }
-    kDebug() << collection.displayName() << "do enable " << enabled;
-    Akonadi::Collection modifiedCollection = collection;
-    modifiedCollection.setShouldList(Akonadi::Collection::ListDisplay, enabled);
-    //HACK: We have no way of getting to the correct session as used by the etm,
-    //and two concurrent jobs end up overwriting the enabled state of each other.
-    etm->setCollectionReferenced(modifiedCollection, referenced);
+
+    const CollectionState collectionState = static_cast<CollectionState>(job->property("collectionState").toInt());
+    Q_FOREACH(const Akonadi::Collection &col, static_cast<Akonadi::CollectionFetchJob*>(job)->collections()) {
+        // kDebug() << col.displayName() << "do enable " << enabled;
+        Akonadi::Collection modifiedCollection = col;
+        if (collectionState == Enabled) {
+            modifiedCollection.setShouldList(Akonadi::Collection::ListDisplay, true);
+        }
+        if (collectionState == Disabled) {
+            modifiedCollection.setShouldList(Akonadi::Collection::ListDisplay, false);
+        }
+        //HACK: We have no way of getting to the correct session as used by the etm,
+        //and two concurrent jobs end up overwriting the enabled state of each other.
+        etm->setCollectionReferenced(modifiedCollection, collectionState == Referenced);
+    }
 }
 
-void Controller::setPersonEnabled(const Person &person, bool enabled)
+void Controller::addPerson(const Person &person)
 {
-    // kDebug() << person.name << enabled;
-    if (enabled) {
-        PersonNode *personNode = new PersonNode(*mPersonModel, person);
-        personNode->setChecked(true);
-        mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
-    } else {
-        mPersonModel->removeNode(PersonNode(*mPersonModel, person));
-    }
+    kDebug() << person.name;
+    PersonNode *personNode = new PersonNode(*mPersonModel, person);
+    personNode->setChecked(true);
+    mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
 
-    Akonadi::Collection rootCollection(person.rootCollection);
-    // kDebug() << rootCollection.id();
-    if (rootCollection.isValid()) {
-        //Reference the persons collections if available
-        //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
-        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(rootCollection, Akonadi::CollectionFetchJob::Recursive, this);
-        fetchJob->setProperty("enable", enabled);
-        fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-        connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonCollectionsFetched(KJob*)));
-    }
+    setCollectionState(Akonadi::Collection(person.rootCollection), Referenced, true);
+}
+
+void Controller::removePerson(const Person &person)
+{
+    kDebug() << person.name;
+    mPersonModel->removeNode(PersonNode(*mPersonModel, person));
+
+    setCollectionState(Akonadi::Collection(person.rootCollection), Disabled, true);
 }
 

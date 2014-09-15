@@ -255,6 +255,7 @@ class SortProxyModel : public QSortFilterProxyModel
     explicit SortProxyModel( QObject *parent=0 )
       : QSortFilterProxyModel( parent )
     {
+        setDynamicSortFilter(true);
     }
 
      bool lessThan(const QModelIndex &left,
@@ -349,6 +350,85 @@ class CollectionFilter : public QSortFilterProxyModel
     }
 };
 
+class EnabledModel : public QSortFilterProxyModel
+{
+public:
+    explicit EnabledModel(QObject *parent=0)
+      : QSortFilterProxyModel(parent)
+    {
+    }
+
+protected:
+
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
+    {
+        if (role == EnabledRole) {
+            Akonadi::Collection col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            if (col.shouldList(Akonadi::Collection::ListDisplay)) {
+                return Qt::Checked;
+            } else {
+                return Qt::Unchecked;
+            }
+        }
+        return QSortFilterProxyModel::data(index, role);
+    }
+};
+
+class CalendarDelegateModel : public QSortFilterProxyModel
+{
+public:
+    explicit CalendarDelegateModel(QObject *parent=0)
+      : QSortFilterProxyModel(parent)
+    {
+    }
+
+protected:
+    bool checkChildren(const QModelIndex &index, int role, const QVariant &value) const
+    {
+        const QModelIndex sourceIndex = mapToSource(index);
+        for (int i = 0; i < sourceModel()->rowCount(sourceIndex); i++) {
+            const QModelIndex child = sourceModel()->index(i, 0, sourceIndex);
+            if (child.data(role) != value) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
+    {
+        if (role == Qt::CheckStateRole) {
+            if (sourceModel()->hasChildren(mapToSource(index)) && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
+                bool allChecked = checkChildren(index, role, Qt::Checked);
+                bool allUnchecked = checkChildren(index, role, Qt::Unchecked);
+                if (allChecked) {
+                    return Qt::Checked;
+                } else if (allUnchecked) {
+                    return Qt::Unchecked;
+                } else {
+                    return Qt::PartiallyChecked;
+                }
+            }
+        }
+        if (role == EnabledRole) {
+            if (sourceModel()->hasChildren(mapToSource(index)) && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
+                bool allChecked = checkChildren(index, role, Qt::Checked);
+                bool allUnchecked = checkChildren(index, role, Qt::Unchecked);
+                // kDebug() << "person node " << index.data().toString() << allChecked << allUnchecked;
+                if (allChecked) {
+                    return Qt::Checked;
+                } else if (allUnchecked) {
+                    return Qt::Unchecked;
+                } else {
+                    return Qt::PartiallyChecked;
+                }
+            }
+        }
+
+        return QSortFilterProxyModel::data(index, role);
+    }
+};
+
 } // anonymous namespace
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
@@ -403,14 +483,17 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   userProxy->setNodeManager(ReparentingModel::NodeManager::Ptr(new PersonNodeManager(*userProxy)));
   userProxy->setSourceModel(colorProxy);
 
+  EnabledModel *enabledModel = new EnabledModel(this);
+  enabledModel->setSourceModel(userProxy);
+
+  CalendarDelegateModel *calendarDelegateModel = new CalendarDelegateModel(this);
+  calendarDelegateModel->setSourceModel(enabledModel);
+
   SortProxyModel *sortProxy = new SortProxyModel( this );
-  // sortProxy->setObjectName( QLatin1String("Show calendar colors") );
-  sortProxy->setDynamicSortFilter( true );
-  sortProxy->setSourceModel(userProxy);
+  sortProxy->setSourceModel(calendarDelegateModel);
 
   //Hide collections that are not required
   CollectionFilter *collectionFilter = new CollectionFilter( this );
-  collectionFilter->setDynamicSortFilter( true );
   collectionFilter->setSourceModel( sortProxy );
 
   mCollectionView = new Akonadi::EntityTreeView( this );
@@ -867,15 +950,24 @@ void AkonadiCollectionView::edit_disable()
 {
     Akonadi::Collection col = mCollectionView->currentIndex().data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     if (col.isValid()) {
-        mController->setCollection(col, false, false);
+        mController->setCollectionState(col, Controller::Disabled);
+    }
+    const QVariant var = mCollectionView->currentIndex().data(PersonRole);
+    if (var.isValid()) {
+        mController->removePerson(var.value<Person>());
     }
 }
 
 void AkonadiCollectionView::edit_enable()
 {
     Akonadi::Collection col = mCollectionView->currentIndex().data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+    kDebug() << col.name();
     if (col.isValid()) {
-        mController->setCollection(col, true, false);
+        mController->setCollectionState(col, Controller::Enabled);
+    }
+    const QVariant var = mCollectionView->currentIndex().data(PersonRole);
+    if (var.isValid()) {
+        mController->addPerson(var.value<Person>());
     }
 }
 
@@ -886,31 +978,23 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
         case StyledCalendarDelegate::AddToList: {
             const Akonadi::Collection col = index.data(CollectionRole).value<Akonadi::Collection>();
             if (col.isValid()) {
-                mController->setCollection(col, false, true);
+                mController->setCollectionState(col, Controller::Referenced);
             } else {
                 const QVariant var = index.data(PersonRole);
                 if (var.isValid()) {
-                    mController->setPersonEnabled(var.value<Person>(), true);
+                    mController->addPerson(var.value<Person>());
                 }
             }
         }
         break;
         case StyledCalendarDelegate::RemoveFromList: {
-            //Disable all child collections
-            const QAbstractItemModel *model = index.model();
-            for (int row = 0; row < model->rowCount(index); row++) {
-                const Akonadi::Collection col = CalendarSupport::collectionFromIndex(model->index(row, 0, index));
-                if (col.isValid()) {
-                    mController->setCollection(col, false, false);
-                }
-            }
             const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
             if (col.isValid()) {
-                mController->setCollection(col, false, false);
+                mController->setCollectionState(col, Controller::Disabled);
             } else {
                 const QVariant var = index.data(PersonRole);
                 if (var.isValid()) {
-                    mController->setPersonEnabled(var.value<Person>(), false);
+                    mController->removePerson(var.value<Person>());
                 }
             }
         }
@@ -918,7 +1002,12 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
         case StyledCalendarDelegate::Enable: {
             const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
             if (col.isValid()) {
-                mController->setCollection(col, true, false);
+                mController->setCollectionState(col, Controller::Enabled);
+            } else {
+                const QVariant var = index.data(PersonRole);
+                if (var.isValid()) {
+                    mController->addPerson(var.value<Person>());
+                }
             }
         }
         break;
