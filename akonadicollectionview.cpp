@@ -1006,7 +1006,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
             } else {
                 const QVariant var = index.data(PersonRole);
                 if (var.isValid()) {
-                    mController->addPerson(var.value<Person>());
+                    mController->setCollectionState(Akonadi::Collection(var.value<Person>().rootCollection), Controller::Enabled, true);
                 }
             }
         }
