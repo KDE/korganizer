@@ -234,6 +234,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr& node)
             return;
         }
     }
+    mNodesToAdd << node;
     qRegisterMetaType<Node::Ptr>("Node::Ptr");
     QMetaObject::invokeMethod(this, "doAddNode", Qt::QueuedConnection, QGenericReturnArgument(), Q_ARG(Node::Ptr, node));
 }
@@ -246,6 +247,20 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
             return;
         }
     }
+    //If a datachanged call triggered this through checkSourceIndex, right after a person node has been removed.
+    //We'd end-up re-inserting the node that has just been removed. Therefore removeNode can cancel the pending addNode
+    //call through mNodesToAdd.
+    bool addNodeAborted = true;
+    for (int i = 0; i < mNodesToAdd.size(); i++) {
+        if (*mNodesToAdd.at(i) == *node) {
+            mNodesToAdd.remove(i);
+            addNodeAborted = false;
+            break;
+        }
+    }
+    if (addNodeAborted) {
+        return;
+    }
 
     beginResetModel();
     mProxyNodes << node;
@@ -255,6 +270,12 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
 
 void ReparentingModel::removeNode(const ReparentingModel::Node& node)
 {
+    //If there is an addNode in progress for that node, abort it.
+    for (int i = 0; i < mNodesToAdd.size(); i++) {
+        if (*mNodesToAdd.at(i) == node) {
+            mNodesToAdd.remove(i);
+        }
+    }
     for (int i = 0; i < mProxyNodes.size(); i++) {
         if (*mProxyNodes.at(i) == node) {
             //TODO: this does not yet take care of un-reparenting reparented nodes.
@@ -466,13 +487,16 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(QModelIndex parent, int star
         Q_ASSERT(sourceIndex.isValid());
 
         const QModelIndex proxyIndex = mapFromSource(sourceIndex);
-        const Node *node = extractNode(proxyIndex);
-        Node *parentNode = node->parent;
-        Q_ASSERT(parentNode);
-        const int targetRow = node->row();
-        beginRemoveRows(index(parentNode), targetRow, targetRow);
-        parentNode->children.remove(targetRow); //deletes node
-        endRemoveRows();
+        //If the indexes have already been removed (e.g. by removeNode)this can indeed return an invalid index
+        if (proxyIndex.isValid()) {
+            const Node *node = extractNode(proxyIndex);
+            Node *parentNode = node->parent;
+            Q_ASSERT(parentNode);
+            const int targetRow = node->row();
+            beginRemoveRows(index(parentNode), targetRow, targetRow);
+            parentNode->children.remove(targetRow); //deletes node
+            endRemoveRows();
+        }
     }
     //Allows the node manager to remove nodes that are no longer relevant
     for (int row = start; row <= end; row++) {
