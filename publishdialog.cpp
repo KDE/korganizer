@@ -79,18 +79,12 @@ PublishDialog::PublishDialog( QWidget *parent )
   mUI.mRemove->setEnabled( false );
   mUI.mSelectAddressee->setIcon( QIcon::fromTheme( QLatin1String("view-pim-contacts") ) );
 
-  connect( mUI.mListWidget, SIGNAL(itemSelectionChanged()),
-           SLOT(updateInput()) );
-  connect( mUI.mAdd, SIGNAL(clicked()),
-           SLOT(addItem()) );
-  connect( mUI.mRemove, SIGNAL(clicked()),
-           SLOT(removeItem()) );
-  connect( mUI.mSelectAddressee, SIGNAL(clicked()),
-           SLOT(openAddressbook()) );
-  connect( mUI.mNameLineEdit, SIGNAL(textChanged(QString)),
-           SLOT(updateItem()) );
-  connect( mUI.mEmailLineEdit, SIGNAL(textChanged(QString)),
-           SLOT(updateItem()) );
+  connect(mUI.mListWidget, &QListWidget::itemSelectionChanged, this, &PublishDialog::updateInput);
+  connect(mUI.mAdd, &QPushButton::clicked, this, &PublishDialog::addItem);
+  connect(mUI.mRemove, &QPushButton::clicked, this, &PublishDialog::removeItem);
+  connect(mUI.mSelectAddressee, &QPushButton::clicked, this, &PublishDialog::openAddressbook);
+  connect(mUI.mNameLineEdit, &QLineEdit::textChanged, this, &PublishDialog::updateItem);
+  connect(mUI.mEmailLineEdit, &QLineEdit::textChanged, this, &PublishDialog::updateItem);
 }
 
 PublishDialog::~PublishDialog()

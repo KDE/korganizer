@@ -106,17 +106,13 @@ FilterEdit::FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
 
   connect( mRulesList, SIGNAL(itemSelectionChanged()),
            this, SLOT(filterSelected()) );
-  connect( mNewButton, SIGNAL(clicked()),
-           SLOT(bNewPressed()) );
-  connect( mDeleteButton, SIGNAL(clicked()),
-           SLOT(bDeletePressed()) );
-  connect( mNameLineEdit, SIGNAL(textChanged(QString)),
-           SLOT(updateSelectedName(QString)) );
+
+  connect(mNewButton, &QPushButton::clicked, this, &FilterEdit::bNewPressed);
+  connect(mDeleteButton, &QPushButton::clicked, this, &FilterEdit::bDeletePressed);
+  connect(mNameLineEdit, &QLineEdit::textChanged, this, &FilterEdit::updateSelectedName);
   connect(mCatEditButton, &QPushButton::clicked, this, &FilterEdit::editCategorySelection);
-  connect( mCompletedCheck, SIGNAL(toggled(bool)),
-           mCompletedTimeSpanLabel, SLOT(setEnabled(bool)) );
-  connect( mCompletedCheck, SIGNAL(toggled(bool)),
-           mCompletedTimeSpan, SLOT(setEnabled(bool)) );
+  connect(mCompletedCheck, &QCheckBox::toggled, mCompletedTimeSpanLabel, &QLabel::setEnabled);
+  connect(mCompletedCheck, &QCheckBox::toggled, mCompletedTimeSpan, &QSpinBox::setEnabled);
 
 }
 

@@ -121,12 +121,9 @@ void KODialogManager::showSearchDialog()
   if ( !mSearchDialog ) {
     mSearchDialog = new SearchDialog( mMainView );
     //mSearchDialog->setCalendar( mMainView->calendar() );
-    connect( mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-             mMainView, SLOT(showIncidence(Akonadi::Item)) );
-    connect( mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-             mMainView, SLOT(editIncidence(Akonadi::Item)) );
-    connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-             mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
+    connect( mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)), mMainView, SLOT(showIncidence(Akonadi::Item)) );
+    connect( mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView, SLOT(editIncidence(Akonadi::Item)) );
+    connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
   }
   // make sure the widget is on top again
   mSearchDialog->show();
@@ -138,10 +135,8 @@ void KODialogManager::showArchiveDialog()
   if ( !mArchiveDialog ) {
     mArchiveDialog =
       new CalendarSupport::ArchiveDialog( mMainView->calendar(), mMainView->incidenceChanger() );
-    connect( mArchiveDialog, SIGNAL(eventsDeleted()),
-             mMainView, SLOT(updateView()) );
-    connect( mArchiveDialog, SIGNAL(autoArchivingSettingsModified()),
-             mMainView, SLOT(slotAutoArchivingSettingsModified()) );
+    connect( mArchiveDialog, SIGNAL(eventsDeleted()), mMainView, SLOT(updateView()) );
+    connect( mArchiveDialog, SIGNAL(autoArchivingSettingsModified()), mMainView, SLOT(slotAutoArchivingSettingsModified()) );
   }
   mArchiveDialog->show();
   mArchiveDialog->raise();
@@ -155,10 +150,8 @@ void KODialogManager::showFilterEditDialog( QList<KCalCore::CalFilter*> *filters
   createCategoryEditor();
   if ( !mFilterEditDialog ) {
     mFilterEditDialog = new FilterEditDialog( filters, mMainView );
-    connect( mFilterEditDialog, SIGNAL(filterChanged()),
-             mMainView, SLOT(updateFilter()) );
-    connect( mFilterEditDialog, SIGNAL(editCategories()),
-             mCategoryEditDialog, SLOT(show()) );
+    connect( mFilterEditDialog, SIGNAL(filterChanged()), mMainView, SLOT(updateFilter()) );
+    connect( mFilterEditDialog, SIGNAL(editCategories()), mCategoryEditDialog, SLOT(show()) );
 #if 0
     connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
              mFilterEditDialog, SLOT(updateCategoryConfig()) );
@@ -194,13 +187,10 @@ void KODialogManager::connectTypeAhead( IncidenceEditorNG::IncidenceDialog *dial
 void KODialogManager::connectEditor( IncidenceEditorNG::IncidenceDialog *editor )
 {
   createCategoryEditor();
-  connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-           mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
+  connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
 
-  connect( editor, SIGNAL(dialogClose(Akonadi::Item)),
-           mMainView, SLOT(dialogClosing(Akonadi::Item)) );
-  connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
-           mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
+  connect( editor, SIGNAL(dialogClose(Akonadi::Item)), mMainView, SLOT(dialogClosing(Akonadi::Item)) );
+  connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)), mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
 }
 
 void KODialogManager::updateSearchDialog()

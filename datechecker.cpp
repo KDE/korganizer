@@ -50,8 +50,7 @@ void DateChecker::enableRollover( RolloverType r )
     case FollowMonth:
       if ( !mUpdateTimer ) {
         mUpdateTimer = new QTimer( this );
-        connect( mUpdateTimer, SIGNAL(timeout()),
-                 SLOT(possiblyPastMidnight()) );
+        connect(mUpdateTimer, &QTimer::timeout, this, &DateChecker::possiblyPastMidnight);
       }
       mUpdateTimer->setSingleShot( true );
       mUpdateTimer->start( 0 );

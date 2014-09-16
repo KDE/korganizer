@@ -61,8 +61,7 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   m_ui->startDate->setDate( currDate );
   m_ui->endDate->setDate( currDate.addYears( 1 ) );
 
-  connect( m_ui->searchEdit, SIGNAL(textChanged(QString)),
-           this, SLOT(searchTextChanged(QString)) );
+  connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchTextChanged);
 
   // Results list view
   QVBoxLayout *layout = new QVBoxLayout;

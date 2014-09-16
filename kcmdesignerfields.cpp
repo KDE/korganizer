@@ -168,17 +168,12 @@ void KCMDesignerFields::delayedInit()
 
   initGUI();
 
-  connect( mPageView, SIGNAL(itemSelectionChanged()),
-           this, SLOT(updatePreview()) );
-  connect( mPageView, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
-           this, SLOT(itemClicked(QTreeWidgetItem*)) );
+  connect(mPageView, &QTreeWidget::itemSelectionChanged, this, &KCMDesignerFields::updatePreview);
+  connect(mPageView, &QTreeWidget::itemClicked, this, &KCMDesignerFields::itemClicked);
 
-  connect( mDeleteButton, SIGNAL(clicked()),
-           this, SLOT(deleteFile()) );
-  connect( mImportButton, SIGNAL(clicked()),
-           this, SLOT(importFile()) );
-  connect( mDesignerButton, SIGNAL(clicked()),
-           this, SLOT(startDesigner()) );
+  connect(mDeleteButton, &QPushButton::clicked, this, &KCMDesignerFields::deleteFile);
+  connect(mImportButton, &QPushButton::clicked, this, &KCMDesignerFields::importFile);
+  connect(mDesignerButton, &QPushButton::clicked, this, &KCMDesignerFields::startDesigner);
 
   load();
 
@@ -366,8 +361,7 @@ void KCMDesignerFields::initGUI()
     i18n( "<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto ), this );
   activeLabel->setTextInteractionFlags( Qt::LinksAccessibleByMouse|
                                         Qt::LinksAccessibleByKeyboard );
-  connect( activeLabel, SIGNAL(linkActivated(QString)),
-           this, SLOT(showWhatsThis(QString)) );
+  connect(activeLabel, &QLabel::linkActivated, this, &KCMDesignerFields::showWhatsThis);
   hbox->addWidget( activeLabel );
 
   // ### why is this needed? Looks like a KActiveLabel bug...
