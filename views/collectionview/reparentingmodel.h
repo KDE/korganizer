@@ -135,6 +135,7 @@ private:
     Node mRootNode;
     QList<Node*> mSourceNodes;
     QVector<Node::Ptr> mProxyNodes;
+    QVector<Node::Ptr> mNodesToAdd;
     NodeManager::Ptr mNodeManager;
     // QModelIndexList mLayoutChangedProxyIndexes;
     // QList<QPersistentModelIndex> mLayoutChangedSourcePersistentModelIndexes;
