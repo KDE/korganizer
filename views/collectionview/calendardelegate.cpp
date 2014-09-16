@@ -73,6 +73,18 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItemV4 &opt, const QPi
     return option;
 }
 
+static bool isChildOfPersonCollection(const QModelIndex &index)
+{
+    QModelIndex parent = index.parent();
+    while (parent.isValid()) {
+        if (parent.data(NodeTypeRole).toInt() == PersonNodeRole) {
+            return true;
+        }
+        parent = parent.parent();
+    }
+    return false;
+}
+
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     const bool isSearchResult = index.data(IsSearchResultRole).toBool();
@@ -89,7 +101,10 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
             if (enabled != Qt::Checked) {
                 buttons << Enable;
             }
-            buttons << RemoveFromList;
+            //The remove button should not be available for person subfolders
+            if (!isChildOfPersonCollection(index)) {
+                buttons << RemoveFromList;
+            }
         } else {
             if (enabled == Qt::Checked) {
                 buttons << Enable;
