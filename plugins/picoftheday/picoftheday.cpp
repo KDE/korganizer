@@ -92,10 +92,8 @@ void POTDElement::step1StartDownload()
     mFirstStepJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
     KIO::Scheduler::setJobPriority( mFirstStepJob, 1 );
 
-    connect( mFirstStepJob, SIGNAL(result(KJob*)),
-             this, SLOT(step1Result(KJob*)) );
-    connect( this, SIGNAL(step1Success()),
-             this, SLOT(step2GetImagePage()) );
+    connect(mFirstStepJob, &KIO::SimpleJob::result, this, &POTDElement::step1Result);
+    connect(this, &POTDElement::step1Success, this, &POTDElement::step2GetImagePage);
   }
 }
 
@@ -164,8 +162,7 @@ void POTDElement::step2GetImagePage()
     mSecondStepJob = KIO::storedGet( mUrl, KIO::NoReload, KIO::HideProgressInfo );
     KIO::Scheduler::setJobPriority( mSecondStepJob, 1 );
 
-    connect( mSecondStepJob, SIGNAL(result(KJob*)),
-             this, SLOT(step2Result(KJob*)) );
+    connect(mSecondStepJob, &KIO::SimpleJob::result, this, &POTDElement::step2Result);
     connect(this, &POTDElement::step2Success, this, &POTDElement::step3GetThumbnail);
   }
 }
@@ -282,8 +279,7 @@ void POTDElement::step3GetThumbnail()
   qDebug() << "POTD:" << mDate << ": get" << thumbUrl;//FIXME
   KIO::Scheduler::setJobPriority( mThirdStepJob, 1 );
 
-  connect( mThirdStepJob, SIGNAL(result(KJob*)),
-           this, SLOT(step3Result(KJob*)) );
+  connect(mThirdStepJob, &KIO::SimpleJob::result, this, &POTDElement::step3Result);
 }
 
 /**
@@ -329,8 +325,7 @@ QPixmap POTDElement::newPixmap( const QSize &size )
       if ( mThirdStepJob ) {
         // Another download (for the old size) is already running;
         // we'll run after that
-        disconnect( this, SIGNAL(step3Success()),
-                    this, SLOT(step3GetThumbnail()) );
+        disconnect(this, &POTDElement::step3Success, this, &POTDElement::step3GetThumbnail);
         connect(this, &POTDElement::step3Success, this, &POTDElement::step3GetThumbnail);
       } else if ( mFirstStepJob || mSecondStepJob ) {
         // The download process did not get to step 3 yet, and will download
@@ -339,10 +334,8 @@ QPixmap POTDElement::newPixmap( const QSize &size )
         // We start a new thumbnail download a little later; the following code
         // is to avoid too frequent transfers e.g. when resizing
         mTimer->stop();
-        disconnect( mTimer, SIGNAL(timeout()),
-                   this, SLOT(step3GetThumbnail()) );
-        connect( mTimer, SIGNAL(timeout()),
-                 this, SLOT(step3GetThumbnail()) );
+        disconnect(mTimer, &QTimer::timeout, this, &POTDElement::step3GetThumbnail);
+        connect(mTimer, &QTimer::timeout, this, &POTDElement::step3GetThumbnail);
         mTimer->setSingleShot( true );
         mTimer->start( 1000 );
       }
