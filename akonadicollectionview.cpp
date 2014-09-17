@@ -434,6 +434,28 @@ protected:
 
         return QSortFilterProxyModel::data(index, role);
     }
+
+    void setChildren(const QModelIndex &sourceIndex, const QVariant &value, int role) const
+    {
+        if (!sourceIndex.isValid()) {
+            return;
+        }
+        for (int i = 0; i < sourceModel()->rowCount(sourceIndex); i++) {
+            const QModelIndex child = sourceModel()->index(i, 0, sourceIndex);
+            sourceModel()->setData(child, value, role);
+            setChildren(child, value, role);
+        }
+    }
+
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole)
+    {
+        if (role == Qt::CheckStateRole) {
+            if (sourceModel()->hasChildren(mapToSource(index)) && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
+                setChildren(mapToSource(index), value, role);
+            }
+        }
+        return QSortFilterProxyModel::setData(index, value, role);
+    }
 };
 
 } // anonymous namespace
