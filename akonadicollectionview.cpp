@@ -258,21 +258,28 @@ class SortProxyModel : public QSortFilterProxyModel
         setDynamicSortFilter(true);
     }
 
-     bool lessThan(const QModelIndex &left,
-                                       const QModelIndex &right) const
+    static int score(const QModelIndex &index)
     {
-        QVariant leftPerson = left.data(PersonRole);
-        QVariant rightPerson = right.data(PersonRole);
-        if (leftPerson.isValid() && !rightPerson.isValid()) {
-            return true;
+        int score = 0;
+        if (index.data(PersonRole).isValid()) {
+            score += 1;
         }
-        QString leftString = left.data().toString();
-        QString rightString = right.data().toString();
-        if (leftPerson.isValid() && rightPerson.isValid()) {
-            leftString = leftPerson.value<Person>().name;
-            rightString = rightPerson.value<Person>().name;
+        if (index.data(IsSearchResultRole).toBool()) {
+            score += 2;
         }
-        return QString::localeAwareCompare(leftString, rightString) < 0;
+        return score;
+    }
+
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const
+    {
+        const int leftScore = score(left);
+        const int rightScore = score(right);
+        // kDebug() << left.data().toString() << leftScore << " : " << right.data().toString() << rightScore;
+        if (leftScore != rightScore) {
+            return leftScore < rightScore;
+        }
+
+        return QString::localeAwareCompare(left.data().toString(), right.data().toString()) < 0;
     }
 };
 
@@ -489,22 +496,23 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   CalendarDelegateModel *calendarDelegateModel = new CalendarDelegateModel(this);
   calendarDelegateModel->setSourceModel(enabledModel);
 
-  SortProxyModel *sortProxy = new SortProxyModel( this );
-  sortProxy->setSourceModel(calendarDelegateModel);
-
   //Hide collections that are not required
   CollectionFilter *collectionFilter = new CollectionFilter( this );
-  collectionFilter->setSourceModel( sortProxy );
+  collectionFilter->setSourceModel( calendarDelegateModel );
+
+  SortProxyModel *sortProxy = new SortProxyModel( this );
+  sortProxy->setSourceModel(collectionFilter);
 
   mCollectionView = new Akonadi::EntityTreeView( this );
   mCollectionView->header()->hide();
   mCollectionView->setRootIsDecorated( true );
+  // mCollectionView->setSorting( true );
   {
     StyledCalendarDelegate *delegate = new StyledCalendarDelegate(mCollectionView);
     connect(delegate, SIGNAL(action(QModelIndex, int)), this, SLOT(onAction(QModelIndex, int)));
     mCollectionView->setItemDelegate( delegate );
   }
-  mCollectionView->setModel( collectionFilter );
+  mCollectionView->setModel( sortProxy );
   connect( mCollectionView->selectionModel(),
            SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(updateMenu()) );
@@ -524,6 +532,8 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   connect( searchCol, SIGNAL(textChanged(QString)),
           filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
 
+  SortProxyModel *searchSortProxy = new SortProxyModel( this );
+  searchSortProxy->setSourceModel(filterTreeViewModel);
 
   Akonadi::EntityTreeView *mSearchView = new Akonadi::EntityTreeView( this );
   mSearchView->header()->hide();
@@ -533,7 +543,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     connect(delegate, SIGNAL(action(QModelIndex, int)), this, SLOT(onAction(QModelIndex, int)));
     mSearchView->setItemDelegate( delegate );
   }
-  mSearchView->setModel( filterTreeViewModel );
+  mSearchView->setModel( searchSortProxy );
   new NewNodeExpander(mSearchView, true, QString());
 
   mController = new Controller(userProxy, searchProxy, this);
