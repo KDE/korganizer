@@ -283,8 +283,7 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   mImportAction = new QAction( i18n( "Import &Calendar..." ), this );
-  //QT5 mImportAction->setHelpText(
-    //i18n( "Merge the contents of another iCalendar" ) );
+  setHelpText(mImportAction,i18n( "Merge the contents of another iCalendar" ) );
   mImportAction->setWhatsThis(
     i18n( "Select this menu entry if you would like to merge the contents "
           "of another iCalendar into your current calendar." ) );
@@ -292,8 +291,7 @@ void ActionManager::initActions()
   connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
   QAction *importAction = new QAction( i18n( "&Import From UNIX Ical Tool" ), this );
-  //QT5 importAction->setHelpText(
-    //i18n( "Import a calendar in another format" ) );
+  setHelpText(importAction, i18n( "Import a calendar in another format" ) );
   importAction->setWhatsThis(
     i18n( "Select this menu entry if you would like to import the contents "
           "of a non-iCalendar formatted file into your current calendar." ) );
@@ -463,14 +461,14 @@ void ActionManager::initActions()
   action = new QAction( QIcon::fromTheme( QLatin1String("go-jump-today") ),
                         i18nc( "@action Jump to today", "To &Today" ), this );
   action->setIconText( i18n( "Today" ) );
-  //QT5 action->setHelpText( i18n( "Scroll to Today" ) );
+  setHelpText(action, i18n( "Scroll to Today" ) );
   mACollection->addAction( QLatin1String("go_today"), action );
   connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
   action = new QAction( QIcon::fromTheme( isRTL ? QLatin1String("go-next") : QLatin1String("go-previous") ),
                         i18nc( "scroll backward", "&Backward" ), this );
   action->setIconText( i18nc( "scroll backward", "Back" ) );
-  //QT5 action->setHelpText( i18n( "Scroll Backward" ) );
+  setHelpText(action, i18n( "Scroll Backward" ) );
   mACollection->addAction( QLatin1String("go_previous"), action );
   connect(action, &QAction::triggered, mCalendarView, &CalendarView::goPrevious);
 
@@ -485,7 +483,7 @@ void ActionManager::initActions()
   action = new QAction( QIcon::fromTheme( isRTL ? QLatin1String("go-previous") : QLatin1String("go-next") ),
                         i18nc( "scroll forward", "&Forward" ), this );
   action->setIconText( i18nc( "scoll forward", "Forward" ) );
-  //QT5 action->setHelpText( i18n( "Scroll Forward" ) );
+  setHelpText(action, i18n( "Scroll Forward" ) );
   mACollection->addAction( QLatin1String("go_next"), action );
   connect(action, &QAction::triggered, mCalendarView, &CalendarView::goNext);
   /*
@@ -521,7 +519,7 @@ void ActionManager::initActions()
   /************************** Actions MENU *********************************/
   mNewEventAction = new QAction( QIcon::fromTheme( QLatin1String("appointment-new") ), i18n( "New E&vent..." ), this );
   //mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
-  //QT5 mNewEventAction->setHelpText( i18n( "Create a new Event" ) );
+  setHelpText(mNewEventAction, i18n( "Create a new Event" ) );
 
   mACollection->addAction( QLatin1String("new_event"), mNewEventAction );
   connect( mNewEventAction, SIGNAL(triggered(bool)), this,
@@ -529,7 +527,7 @@ void ActionManager::initActions()
 
   mNewTodoAction = new QAction( QIcon::fromTheme( QLatin1String("task-new") ), i18n( "New &To-do..." ), this );
   //mNewTodoAction->setIconText( i18n( "To-do" ) );
-  //QT5 mNewTodoAction->setHelpText( i18n( "Create a new To-do" ) );
+  setHelpText( mNewTodoAction, i18n( "Create a new To-do" ) );
   mACollection->addAction( QLatin1String("new_todo"), mNewTodoAction );
   connect( mNewTodoAction, SIGNAL(triggered(bool)), this,
            SLOT(slotNewTodo()) );
@@ -544,14 +542,14 @@ void ActionManager::initActions()
 
   mNewJournalAction = new QAction( QIcon::fromTheme( QLatin1String("journal-new") ), i18n( "New &Journal..." ), this );
   //mNewJournalAction->setIconText( i18n( "Journal" ) );
-  //QT5 mNewJournalAction->setHelpText( i18n( "Create a new Journal" ) );
+  setHelpText(mNewJournalAction, i18n( "Create a new Journal" ) );
   mACollection->addAction( QLatin1String("new_journal"), mNewJournalAction );
   connect( mNewJournalAction, SIGNAL(triggered(bool)), this,
            SLOT(slotNewJournal()) );
 
   mConfigureViewAction = new QAction( QIcon::fromTheme( QLatin1String("configure") ), i18n( "Configure View..." ), this );
   mConfigureViewAction->setIconText( i18n( "Configure" ) );
-  //QT5 mConfigureViewAction->setHelpText( i18n( "Configure the view" ) );
+  setHelpText( mConfigureViewAction, i18n( "Configure the view" ) );
   mConfigureViewAction->setEnabled( mCalendarView->currentView() &&
                                     mCalendarView->currentView()->hasConfigurationDialog() );
   mACollection->addAction( QLatin1String("configure_view"), mConfigureViewAction );
@@ -1973,5 +1971,14 @@ void ActionManager::handleExportJobResult( KJob *job )
     mSettingsToFree.remove( htmlExportJob->settings() );
     delete htmlExportJob->settings();
   }
+}
+
+void ActionManager::setHelpText(QAction *act, const QString &text)
+{
+    act->setStatusTip(text);
+    act->setToolTip(text);
+    if (act->whatsThis().isEmpty()) {
+        act->setWhatsThis(text);
+    }
 }
 

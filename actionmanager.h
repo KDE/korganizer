@@ -339,7 +339,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
   private:
     class ActionStringsVisitor;
-
+    void setHelpText(QAction *act, const QString &text);
     void restoreCollectionViewSetting();
     /** Create all the actions. */
     void initActions();
