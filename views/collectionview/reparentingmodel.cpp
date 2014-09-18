@@ -39,8 +39,8 @@ ReparentingModel::Node::Node(ReparentingModel& model)
 }
 
 ReparentingModel::Node::Node(ReparentingModel& model, ReparentingModel::Node* p, const QModelIndex& srcIndex)
-:   parent(p),
-    sourceIndex(srcIndex),
+:   sourceIndex(srcIndex),
+    parent(p),
     personModel(model),
     mIsSourceNode(true)
 {
@@ -94,7 +94,7 @@ void ReparentingModel::Node::clearHierarchy()
     children.clear();
 }
 
-bool ReparentingModel::Node::setData(const QVariant& value, int role)
+bool ReparentingModel::Node::setData(const QVariant& /* value */, int /* role */)
 {
     return false;
 }
@@ -107,12 +107,12 @@ QVariant ReparentingModel::Node::data(int role) const
     return QVariant();
 }
 
-bool ReparentingModel::Node::adopts(const QModelIndex& sourceIndex)
+bool ReparentingModel::Node::adopts(const QModelIndex& /* sourceIndex */)
 {
     return false;
 }
 
-bool ReparentingModel::Node::isDuplicateOf(const QModelIndex& sourceIndex)
+bool ReparentingModel::Node::isDuplicateOf(const QModelIndex& /* sourceIndex */)
 {
     return false;
 }
@@ -510,18 +510,18 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(QModelIndex parent, int star
     }
 }
 
-void ReparentingModel::onSourceRowsRemoved(QModelIndex parent, int start, int end)
+void ReparentingModel::onSourceRowsRemoved(QModelIndex /* parent */, int /* start */, int /* end */)
 {
 }
 
-void ReparentingModel::onSourceRowsAboutToBeMoved(QModelIndex sourceParent, int sourceStart, int sourceEnd, QModelIndex destParent, int dest)
+void ReparentingModel::onSourceRowsAboutToBeMoved(QModelIndex /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, QModelIndex /* destParent */, int /* dest */)
 {
     kWarning() << "not implemented";
     //TODO
     beginResetModel();
 }
 
-void ReparentingModel::onSourceRowsMoved(QModelIndex sourceParent, int sourceStart, int sourceEnd, QModelIndex destParent, int dest)
+void ReparentingModel::onSourceRowsMoved(QModelIndex /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, QModelIndex /* destParent */, int /* dest */)
 {
     kWarning() << "not implemented";
     //TODO
@@ -668,7 +668,7 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
     }
 }
 
-bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode)
+bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode) const
 {
     Q_FOREACH(const Node *n, mSourceNodes) {
         // kDebug() << index << index.data().toString();
@@ -814,7 +814,7 @@ bool ReparentingModel::hasChildren(const QModelIndex& parent) const
     return (rowCount(parent) != 0);
 }
 
-int ReparentingModel::columnCount(const QModelIndex& parent) const
+int ReparentingModel::columnCount(const QModelIndex& /* parent */) const
 {
     return 1;
 }
