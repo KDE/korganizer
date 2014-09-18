@@ -271,7 +271,7 @@ void ReparentingModelTest::testAddRemoveProxyNode()
     QVERIFY(getIndex("row1", reparentingModel).isValid());
     QVERIFY(!getIndex("proxy1", reparentingModel).isValid());
 
-    QCOMPARE(spy.mSignals, QStringList() << QLatin1String("modelReset") << QLatin1String("rowsRemoved"));
+    QCOMPARE(spy.mSignals, QStringList() << QLatin1String("rowsInserted") << QLatin1String("rowsRemoved"));
 }
 
 void ReparentingModelTest::testDeduplicate()
