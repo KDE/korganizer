@@ -56,11 +56,9 @@ class MonthView::Private
 MonthView::MonthView( QWidget *parent )
   : KOEventView( parent ), d( new Private( this ) )
 {
-  connect( d->mMonthView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-           d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
+  connect( d->mMonthView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)), d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
 
-  connect( d->mMonthView, SIGNAL(showNewEventPopupSignal()),
-           SLOT(showNewEventPopup()) );
+  connect(d->mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
 
   connect( d->mMonthView, SIGNAL(datesSelected(KCalCore::DateList)),
            SIGNAL(datesSelected(KCalCore::DateList)) );
