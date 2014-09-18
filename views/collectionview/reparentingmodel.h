@@ -121,6 +121,9 @@ private Q_SLOTS:
 
 private:
     void rebuildFromSource(Node *parentNode, const QModelIndex &idx, const QModelIndexList &skip = QModelIndexList());
+    bool isDuplicate(const Node::Ptr &proxyNode) const;
+    void insertProxyNode(const Node::Ptr &proxyNode);
+    void reparentSourceNodes(const Node::Ptr &proxyNode);
     void rebuildAll();
     QModelIndex index(Node *node) const;
     Node *getReparentNode(const QModelIndex &sourceIndex);

@@ -262,10 +262,16 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
         return;
     }
 
-    beginResetModel();
-    mProxyNodes << node;
-    rebuildAll();
-    endResetModel();
+    if (!isDuplicate(node)) {
+        const int targetRow = mRootNode.children.size();
+        beginInsertRows(QModelIndex(), targetRow, targetRow);
+        mProxyNodes << node;
+        insertProxyNode(node);
+        endInsertRows();
+        reparentSourceNodes(node);
+    } else {
+        mProxyNodes << node;
+    }
 }
 
 void ReparentingModel::removeNode(const ReparentingModel::Node& node)
@@ -662,6 +668,44 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
     }
 }
 
+bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode)
+{
+    Q_FOREACH(const Node *n, mSourceNodes) {
+        // kDebug() << index << index.data().toString();
+        if (proxyNode->isDuplicateOf(n->sourceIndex)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void ReparentingModel::insertProxyNode(const Node::Ptr &proxyNode)
+{
+    // kDebug() << "checking " << proxyNode->data(Qt::DisplayRole).toString();
+    proxyNode->parent = &mRootNode;
+    mRootNode.addChild(proxyNode);
+    Q_ASSERT(validateNode(proxyNode.data()));
+}
+
+void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
+{
+    //Reparent source nodes according to the provided rules
+    Q_FOREACH(Node *n, mSourceNodes) {
+        if (proxyNode->adopts(n->sourceIndex)) {
+            const int oldRow = n->sourceIndex.row();
+            beginRemoveRows(index(n->parent), oldRow, oldRow);
+            //We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
+            endRemoveRows();
+
+            const int newRow = proxyNode->children.size();
+            beginInsertRows(index(proxyNode.data()), newRow, newRow);
+            proxyNode->reparent(n);
+            endInsertRows();
+            Q_ASSERT(validateNode(n));
+        }
+    }
+}
+
 void ReparentingModel::rebuildAll()
 {
     mRootNode.children.clear();
@@ -674,30 +718,11 @@ void ReparentingModel::rebuildAll()
     Q_FOREACH(const Node::Ptr &proxyNode, mProxyNodes) {
         // kDebug() << "checking " << proxyNode->data(Qt::DisplayRole).toString();
         //Avoid inserting a node that is already part of the source model
-        bool isDuplicate = false;
-        Q_FOREACH(const Node *n, mSourceNodes) {
-            // kDebug() << index << index.data().toString();
-            if (proxyNode->isDuplicateOf(n->sourceIndex)) {
-                isDuplicate = true;
-                break;
-            }
-        }
-        if (isDuplicate) {
+        if (isDuplicate(proxyNode)) {
             continue;
         }
-
-        proxyNode->parent = &mRootNode;
-        mRootNode.addChild(proxyNode);
-        Q_ASSERT(validateNode(proxyNode.data()));
-
-        //Reparent source nodes according to the provided rules
-        Q_FOREACH(Node *n, mSourceNodes) {
-            if (proxyNode->adopts(n->sourceIndex)) {
-                Node *reparentNode = n;
-                proxyNode->reparent(reparentNode);
-                Q_ASSERT(validateNode(reparentNode));
-            }
-        }
+        insertProxyNode(proxyNode);
+        reparentSourceNodes(proxyNode);
     }
 }
 
