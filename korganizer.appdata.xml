@@ -12,6 +12,7 @@
   <name xml:lang="fr">KOrganizer</name>
   <name xml:lang="hu">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
+  <name xml:lang="lt">KOrganizer</name>
   <name xml:lang="nb">KOrganizer</name>
   <name xml:lang="nds">KOrganizer</name>
   <name xml:lang="nl">KOrganizer</name>
@@ -54,6 +55,7 @@
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="hu">Szolgáltatások:</p>
     <p xml:lang="ko">기능:</p>
+    <p xml:lang="lt">Galimybės:</p>
     <p xml:lang="nb">Egenskaper:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
@@ -203,11 +205,13 @@
       <li>Print support.</li>
       <li xml:lang="ca">Implementa la impressió</li>
       <li xml:lang="cs">Podpora tisku.</li>
+      <li xml:lang="de">Unterstützung für Drücken.</li>
       <li xml:lang="en-GB">Print support.</li>
       <li xml:lang="es">Apoyo de impresión.</li>
       <li xml:lang="fr">Prise en charge d'impression.</li>
       <li xml:lang="hu">Nyomtatási lehetőség.</li>
       <li xml:lang="ko">인쇄 지원.</li>
+      <li xml:lang="lt">Spausdinimas.</li>
       <li xml:lang="nb">Støtte for utskrift.</li>
       <li xml:lang="nds">Druckünnerstütten</li>
       <li xml:lang="nl">Afdrukbeheer.</li>
