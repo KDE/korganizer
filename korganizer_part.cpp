@@ -81,8 +81,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   topLayout->addWidget( mView );
   topLayout->setMargin( 0 );
 
-  connect( mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           SLOT(slotChangeInfo(Akonadi::Item,QDate)) );
+  connect(mView, &CalendarView::incidenceSelected, this, &KOrganizerPart::slotChangeInfo);
 
   mActionManager->init();
   mActionManager->readSettings();

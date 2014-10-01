@@ -87,12 +87,9 @@ SearchDialog::SearchDialog( CalendarView *calendarview )
   connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
   // Propagate edit and delete event signals from event list view
-  connect( listView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-          SIGNAL(showIncidenceSignal(Akonadi::Item)) );
-  connect( listView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-          SIGNAL(editIncidenceSignal(Akonadi::Item)) );
-  connect( listView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-          SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+  connect(listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
+  connect(listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
+  connect(listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
 
   readConfig();
 }

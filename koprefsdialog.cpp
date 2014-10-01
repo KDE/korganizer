@@ -200,26 +200,21 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent )
   mAccountsCalendar.mFilterAccount->
     setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
 
-  connect( mAccountsCalendar.mAccountList->view()->selectionModel(),
-           SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(slotAccountSelected()));
-  connect( mAccountsCalendar.mAccountList, SIGNAL(doubleClicked(Akonadi::AgentInstance)),
-           this, SLOT(slotModifySelectedAccount()) );
+  connect(mAccountsCalendar.mAccountList, &Akonadi::AgentInstanceWidget::doubleClicked, this, &KOPrefsDialogMain::slotModifySelectedAccount);
 
   mAccountsCalendar.hlay->insertWidget( 0, mAccountsCalendar.mAccountList );
 
-  connect( mAccountsCalendar.mAddAccountButton, SIGNAL(clicked()),
-           this, SLOT(slotAddAccount()) );
+  connect(mAccountsCalendar.mAddAccountButton, &QPushButton::clicked, this, &KOPrefsDialogMain::slotAddAccount);
 
-  connect( mAccountsCalendar.mModifyAccountButton, SIGNAL(clicked()),
-           this, SLOT(slotModifySelectedAccount()) );
+  connect(mAccountsCalendar.mModifyAccountButton, &QPushButton::clicked, this, &KOPrefsDialogMain::slotModifySelectedAccount);
 
   const bool hasSelection = !mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty();
   mAccountsCalendar.mModifyAccountButton->setEnabled( hasSelection );
   mAccountsCalendar.mRemoveAccountButton->setEnabled( hasSelection );
 
-  connect( mAccountsCalendar.mRemoveAccountButton, SIGNAL(clicked()),
-           this, SLOT(slotRemoveSelectedAccount()) );
+  connect(mAccountsCalendar.mRemoveAccountButton, &QPushButton::clicked, this, &KOPrefsDialogMain::slotRemoveSelectedAccount);
 
   load();
 }
@@ -1135,32 +1130,19 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
 
   // signals and slots connections
 
-  connect( mGroupwarePage->publishDays, SIGNAL(valueChanged(int)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishUrl, SIGNAL(textChanged(QString)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishUser, SIGNAL(textChanged(QString)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishPassword, SIGNAL(textChanged(QString)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishSavePassword, SIGNAL(toggled(bool)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveEnable, SIGNAL(toggled(bool)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveUser, SIGNAL(textChanged(QString)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrievePassword, SIGNAL(textChanged(QString)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveSavePassword, SIGNAL(toggled(bool)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->retrieveUrl, SIGNAL(textChanged(QString)),
-           SLOT(slotWidChanged()));
-  connect( mGroupwarePage->publishDelay, SIGNAL(valueChanged(int)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->fullDomainRetrieval, SIGNAL(toggled(bool)),
-           SLOT(slotWidChanged()) );
-  connect( mGroupwarePage->publishEnable, SIGNAL(toggled(bool)),
-           SLOT(slotWidChanged()) );
+  connect(mGroupwarePage->publishDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->publishUser, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->publishSavePassword, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->retrieveEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->retrieveUser, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->publishDelay, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+  connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 
   ( new QVBoxLayout( this ) )->addWidget( widget );
 

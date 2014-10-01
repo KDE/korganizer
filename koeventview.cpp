@@ -54,8 +54,7 @@ KOEventView::KOEventView( QWidget *parent )
   //another editor, for each keypress
   //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112)
   //  -Frank
-  connect( qobject_cast<QApplication*>( QApplication::instance() ),
-           SIGNAL(focusChanged(QWidget*,QWidget*)),
+  connect( qobject_cast<QApplication*>( QApplication::instance() ), SIGNAL(focusChanged(QWidget*,QWidget*)),
            this, SLOT(focusChanged(QWidget*,QWidget*)) );
 }
 
@@ -71,28 +70,17 @@ KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu( calendar().data(), this );
 
-  connect( eventPopup, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-           SIGNAL(editIncidenceSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-           SIGNAL(showIncidenceSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-           SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-           SIGNAL(cutIncidenceSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-           SIGNAL(copyIncidenceSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(pasteIncidenceSignal()),
-           SIGNAL(pasteIncidenceSignal()));
-  connect( eventPopup, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-           SIGNAL(toggleAlarmSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
-  connect( eventPopup, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
-  connect( eventPopup, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
-  connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+  connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this, &KOEventView::editIncidenceSignal);
+  connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this, &KOEventView::showIncidenceSignal);
+  connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this, &KOEventView::deleteIncidenceSignal);
+  connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this, &KOEventView::cutIncidenceSignal);
+  connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this, &KOEventView::copyIncidenceSignal);
+  connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this, &KOEventView::pasteIncidenceSignal);
+  connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this, &KOEventView::toggleAlarmSignal);
+  connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this, &KOEventView::toggleTodoCompletedSignal);
+  connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this, &KOEventView::copyIncidenceToResourceSignal);
+  connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this, &KOEventView::moveIncidenceToResourceSignal);
+  connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this, &KOEventView::dissociateOccurrencesSignal);
 
   return eventPopup;
 }

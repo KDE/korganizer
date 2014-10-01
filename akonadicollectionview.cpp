@@ -180,10 +180,8 @@ class ColorProxyModel : public QSortFilterProxyModel
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
   mAkonadiCollectionView = new AkonadiCollectionView( view(), true, parent );
-  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)),
-                    mView, SLOT(resourcesChanged()) );
-  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesAddedRemoved()),
-                    mView, SLOT(resourcesChanged()) );
+  QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::resourcesChanged, mView, &CalendarView::resourcesChanged);
+  QObject::connect(mAkonadiCollectionView, &AkonadiCollectionView::resourcesAddedRemoved, mView, &CalendarView::resourcesChanged);
   return mAkonadiCollectionView;
 }
 
@@ -236,8 +234,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   //filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
   //filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   mCollectionView->setModel( colorProxy );
-  connect( mCollectionView->selectionModel(),
-           SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+  connect( mCollectionView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
            SLOT(updateMenu()) );
 
   connect( mCollectionView->model(), SIGNAL(rowsInserted(QModelIndex,int,int)),
@@ -246,8 +243,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   //connect( searchCol, SIGNAL(textChanged(QString)),
   //         filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
 
-  connect( mBaseModel, SIGNAL(rowsInserted(QModelIndex,int,int)),
-           this, SLOT(rowsInserted(QModelIndex,int,int)) );
+  connect(mBaseModel, &QAbstractProxyModel::rowsInserted, this, &AkonadiCollectionView::rowsInserted);
 
   //mCollectionView->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
@@ -295,14 +291,11 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteResources );
     mActionManager->interceptAction( Akonadi::StandardActionManager::DeleteCollections );
 
-    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ),
-             SIGNAL(triggered(bool)),
+    connect( mActionManager->action( Akonadi::StandardActionManager::CreateResource ), SIGNAL(triggered(bool)),
              this, SLOT(newCalendar()) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ),
-             SIGNAL(triggered(bool)),
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteResources ), SIGNAL(triggered(bool)),
              this, SLOT(deleteCalendar()) );
-    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ),
-             SIGNAL(triggered(bool)),
+    connect( mActionManager->action( Akonadi::StandardActionManager::DeleteCollections ), SIGNAL(triggered(bool)),
              this, SLOT(deleteCalendar()) );
 
     mActionManager->setContextText( Akonadi::StandardActionManager::CollectionProperties,
