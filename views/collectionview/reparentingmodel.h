@@ -87,6 +87,7 @@ public:
 
     void setNodeManager(const NodeManager::Ptr &nodeManager);
     void addNode(const Node::Ptr &node);
+    void updateNode(const Node::Ptr &node);
     void removeNode(const Node &node);
     void setNodes(const QList<Node::Ptr> &nodes);
     void clear();
@@ -126,6 +127,7 @@ private:
     void reparentSourceNodes(const Node::Ptr &proxyNode);
     void rebuildAll();
     QModelIndex index(Node *node) const;
+    int row(Node *node) const;
     Node *getReparentNode(const QModelIndex &sourceIndex);
     Node *getParentNode(const QModelIndex &sourceIndex);
     bool validateNode(const Node *node) const;

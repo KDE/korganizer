@@ -581,6 +581,16 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
   topLayout->addWidget( mStackedWidget );
 
+  KMessageWidget *msgWidget = new KMessageWidget(this);
+  msgWidget->setCloseButtonVisible(false);
+  msgWidget->setMessageType(KMessageWidget::Positive);
+  msgWidget->setObjectName(QLatin1String("msgwidget"));
+  msgWidget->setVisible(false);
+  msgWidget->setText(i18n("searching..."));
+  connect(mController, SIGNAL(searching(bool)),
+          msgWidget, SLOT(setVisible(bool)));
+  topLayout->addWidget(msgWidget);
+
   connect( mBaseModel, SIGNAL(rowsInserted(QModelIndex,int,int)),
            this, SLOT(rowsInserted(QModelIndex,int,int)) );
 

@@ -30,9 +30,10 @@
 class DummyNode : public ReparentingModel::Node
 {
 public:
-    DummyNode(ReparentingModel &personModel, const QString &name)
+    DummyNode(ReparentingModel &personModel, const QString &name, const QString &data=QString())
     : ReparentingModel::Node(personModel),
-    mName(name)
+    mName(name),
+    mData(data)
     {}
 
     virtual ~DummyNode(){};
@@ -49,10 +50,14 @@ private:
     virtual QVariant data(int role) const {
         if (role == Qt::DisplayRole) {
             return mName;
+        } else if (role == Qt::UserRole) {
+            return mData;
         }
         return QVariant();
     }
     virtual bool setData(const QVariant& variant, int role){
+        Q_UNUSED(variant);
+        Q_UNUSED(role);
         return false;
     }
     virtual bool isDuplicateOf(const QModelIndex& sourceIndex) {
@@ -64,6 +69,7 @@ private:
     }
 
     QString mName;
+    QString mData;
 };
 
 class ModelSignalSpy : public QObject {
@@ -80,6 +86,7 @@ public:
 
     QStringList mSignals;
     QModelIndex parent;
+    QModelIndex topLeft, bottomRight;
     int start;
     int end;
 
@@ -99,8 +106,10 @@ public Q_SLOTS:
     void onRowsMoved(QModelIndex,int,int,QModelIndex,int) {
         mSignals << QLatin1String("rowsMoved");
     }
-    void onDataChanged(QModelIndex,QModelIndex) {
+    void onDataChanged(QModelIndex t,QModelIndex b) {
         mSignals << QLatin1String("dataChanged");
+        topLeft = t;
+        bottomRight = b;
     }
     void onLayoutChanged() {
         mSignals << QLatin1String("layoutChanged");
@@ -137,6 +146,7 @@ private Q_SLOTS:
     void testDeduplicateNested();
     void testDeduplicateProxyNodeFirst();
     void testNestedDeduplicateProxyNodeFirst();
+    void testUpdateNode();
     void testReparent();
     void testReparentResetWithoutCrash();
     void testAddReparentedSourceItem();
@@ -350,6 +360,40 @@ void ReparentingModelTest::testNestedDeduplicateProxyNodeFirst()
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QCOMPARE(getIndexList("child1", reparentingModel).size(), 1);
     //TODO ensure we actually have the source index and not the proxy index
+}
+
+/**
+ * updateNode should update the node datas
+ */
+void ReparentingModelTest::testUpdateNode()
+{
+    QStandardItemModel sourceModel;
+    ReparentingModel reparentingModel;
+    reparentingModel.setSourceModel(&sourceModel);
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QLatin1String("proxy1"), QLatin1String("blub"))));
+
+    QTest::qWait(0);
+
+    QModelIndex index = getIndex("proxy1", reparentingModel);
+    QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
+    QVERIFY(index.isValid());
+    QCOMPARE(reparentingModel.data(index,Qt::UserRole).toString(), QLatin1String("blub"));
+
+    ModelSignalSpy spy(reparentingModel);
+    reparentingModel.updateNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QLatin1String("proxy1"), QLatin1String("new data"))));
+    QTest::qWait(0);
+
+    QModelIndex i2 = getIndex("proxy1", reparentingModel);
+    QCOMPARE(i2.column(), index.column());
+    QCOMPARE(i2.row(), index.row());
+
+    QCOMPARE(spy.mSignals.count(), 1);
+    QCOMPARE(spy.mSignals.takeLast(),QLatin1String("dataChanged"));
+    QCOMPARE(spy.topLeft, i2);
+    QCOMPARE(spy.bottomRight, i2);
+
+    QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
+    QCOMPARE(reparentingModel.data(i2,Qt::UserRole).toString(), QLatin1String("new data"));
 }
 
 void ReparentingModelTest::testReparent()

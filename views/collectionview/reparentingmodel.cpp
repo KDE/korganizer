@@ -274,6 +274,23 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
     }
 }
 
+void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
+{
+    Q_FOREACH(const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
+        if (*existing == *node) {
+            node->parent = existing->parent;
+            int r = row(existing.data());
+            existing->parent->children.replace(r, node);
+            const QModelIndex i = index(node.data());
+            Q_ASSERT(i.row() == r);
+            emit dataChanged(i, i);
+            return;
+        }
+    }
+
+    kWarning() << "no node to update"; 
+}
+
 void ReparentingModel::removeNode(const ReparentingModel::Node& node)
 {
     //If there is an addNode in progress for that node, abort it.
@@ -761,21 +778,30 @@ Qt::ItemFlags ReparentingModel::flags(const QModelIndex& index) const
     return sourceModel()->flags(mapToSource(index));
 }
 
-QModelIndex ReparentingModel::index(Node *node) const
+int ReparentingModel::row(ReparentingModel::Node *node) const
 {
     Q_ASSERT(node);
     if (node == &mRootNode) {
-        return QModelIndex();
+        return -1;
     }
     Q_ASSERT(validateNode(node));
     int row = 0;
     Q_FOREACH(const Node::Ptr &c, node->parent->children) {
         if (c.data() == node) {
-            break;
+            return row;
         }
         row++;
     }
-    return createIndex(row, 0, node);
+    return -1;
+}
+
+QModelIndex ReparentingModel::index(Node *node) const
+{
+    const int r = row(node);
+    if (r < 0) {
+        return QModelIndex();
+    }
+    return createIndex(r, 0, node);
 }
 
 QModelIndex ReparentingModel::parent(const QModelIndex& child) const

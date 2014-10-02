@@ -29,6 +29,8 @@
 #include <Akonadi/Collection>
 #include "reparentingmodel.h"
 
+#include <libkdepim/ldap/ldapclientsearch.h>
+
 enum DataRoles {
     PersonRole = Akonadi::EntityTreeModel::UserRole + 1,
     IsSearchResultRole,
@@ -45,8 +47,12 @@ enum NodeTypeRoles {
 
 struct Person
 {
-    Person(): rootCollection(-1){};
+    Person(): rootCollection(-1), updateDisplayName(false) {};
     QString name;
+    QString uid;
+    QString ou;
+    QString mail;
+    bool updateDisplayName;
     Akonadi::Collection::Id rootCollection;
     
     //FIXME not sure we actually require those two
@@ -156,18 +162,33 @@ class PersonSearchJob : public KJob
     Q_OBJECT
 public:
     explicit PersonSearchJob(const QString &searchString, QObject* parent = 0);
+    virtual ~PersonSearchJob();
 
     virtual void start();
 
     QList<Person> matches() const;
 
+Q_SIGNALS:
+    void personsFound(const QList<Person> &persons);
+    void personUpdate(const Person &person);
+
+public Q_SLOTS:
+    bool kill(KillVerbosity verbosity=Quietly);
+
 private Q_SLOTS:
     void onCollectionsReceived(const Akonadi::Collection::List &);
     void onCollectionsFetched(KJob *);
+    void onLDAPSearchData(const QList<KLDAP::LdapResultObject> &);
+    void onLDAPSearchDone();
+    void updatePersonCollection(const Person &person);
+    void modifyResult(KJob *job);
 
 private:
     QString mSearchString;
-    QList<Person> mMatches;
+    QHash<QString, Person> mMatches;
+    KLDAP::LdapClientSearch mLdapSearch;
+    bool mCollectionSearchDone;
+    bool mLdapSearchDone;
 };
 
 /**
@@ -195,12 +216,15 @@ public:
 
 Q_SIGNALS:
     void searchIsActive(bool);
+    void searching(bool);
 
 public Q_SLOTS:
     void setSearchString(const QString &);
 
 private Q_SLOTS:
     void onCollectionsFound(KJob *job);
+    void onPersonsFound(const QList<Person> &persons);
+    void onPersonUpdate(const Person &person);
     void onPersonsFound(KJob *job);
     void onPersonCollectionsFetched(KJob *job);
 
