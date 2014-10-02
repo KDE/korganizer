@@ -28,6 +28,7 @@
 #include <Akonadi/CollectionFetchScope>
 #include <Akonadi/AttributeFactory>
 #include <KIcon>
+#include <KLocale>
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
 #include <KCalCore/Todo>
@@ -80,7 +81,7 @@ QVariant CollectionNode::data(int role) const
         return mCheckState;
     }
     if (role == Qt::ToolTipRole) {
-        return QString(QLatin1String("Collection: ") + mCollection.name() + QString::number(mCollection.id()));
+        return QString(i18n("Collection: ") + mCollection.name() + QLatin1String(" ") + QString::number(mCollection.id()));
     }
     if (role == IsSearchResultRole) {
         return isSearchNode;
@@ -128,7 +129,7 @@ bool PersonNode::operator==(const Node &node) const
 {
     const PersonNode *personNode = dynamic_cast<const PersonNode*>(&node);
     if (personNode) {
-        return (personNode->mPerson.name == mPerson.name);
+        return (personNode->mPerson.uid == mPerson.uid);
     }
     return false;
 }
@@ -145,7 +146,11 @@ void PersonNode::setChecked(bool enabled)
 QVariant PersonNode::data(int role) const
 {
     if (role == Qt::DisplayRole) {
-        return mPerson.name;
+        QString name = mPerson.name;
+        if (!mPerson.ou.isEmpty()) {
+            name += QLatin1String(" (") + mPerson.ou + QLatin1String(")");
+        }
+        return name;
     }
     if (role == Qt::DecorationRole) {
         return KIcon(QLatin1String("meeting-participant"));
@@ -157,7 +162,14 @@ QVariant PersonNode::data(int role) const
         return mCheckState;
     }
     if (role == Qt::ToolTipRole) {
-        return QString(QLatin1String("Person: ") + mPerson.name);
+        QString tooltip = i18n("Person: ") + mPerson.name;
+        if (!mPerson.mail.isEmpty()) {
+            tooltip += QLatin1String("\n") + i18n("Mail: ") + mPerson.mail;
+        }
+        if (!mPerson.ou.isEmpty()) {
+            tooltip += QLatin1String("\n") + i18n("Organization Unit: ") + mPerson.ou;
+        }
+        return tooltip;
     }
     if (role == PersonRole) {
         return QVariant::fromValue(mPerson);
@@ -214,6 +226,9 @@ void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
             kDebug() << "Found user folder, creating person node " << col.displayName();
             Person person;
             person.name = col.displayName();
+            person.mail = QString::fromUtf8(attr->mail());
+            person.ou = QString::fromUtf8(attr->ou());
+            person.uid = col.name();
             person.rootCollection = col.id();
 
             model.addNode(ReparentingModel::Node::Ptr(new PersonNode(model, person)));
@@ -231,6 +246,9 @@ void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
             kDebug() << "Found user folder, removing person node " << col.displayName();
             Person person;
             person.name = col.displayName();
+            person.mail = QString::fromUtf8(attr->mail());
+            person.ou = QString::fromUtf8(attr->ou());
+            person.uid = col.name();
             person.rootCollection = col.id();
             model.removeNode(PersonNode(model, person));
         }
@@ -312,6 +330,7 @@ static Akonadi::Collection replaceParent(Akonadi::Collection col, const Akonadi:
     Q_FOREACH (const Akonadi::Collection &c, ancestors) {
         if (col == c) {
             col = c;
+            break;
         }
     }
     col.setParentCollection(parent);
@@ -343,6 +362,22 @@ PersonSearchJob::PersonSearchJob(const QString& searchString, QObject* parent)
     : KJob(parent),
     mSearchString(searchString)
 {
+    connect(&mLdapSearch, SIGNAL(searchData(const QList<KLDAP::LdapResultObject> &)),
+            SLOT(onLDAPSearchData(const QList<KLDAP::LdapResultObject> &)));
+
+    connect(&mLdapSearch, SIGNAL(searchDone()),
+            SLOT(onLDAPSearchDone()));
+}
+
+PersonSearchJob::~PersonSearchJob()
+{
+    mLdapSearch.cancelSearch();
+}
+
+bool PersonSearchJob::kill(KJob::KillVerbosity verbosity)
+{
+    mLdapSearch.cancelSearch();
+    return KJob::kill(verbosity);
 }
 
 void PersonSearchJob::start()
@@ -358,9 +393,14 @@ void PersonSearchJob::start()
     }
     kDebug() << "Found persons " << collections.size();
 
+    mCollectionSearchDone = false;
+    mLdapSearchDone = false;
+
+    mLdapSearch.startSearch(QLatin1String("*") + mSearchString);
+
     if (collections.isEmpty()) {
         //We didn't find anything
-        emitResult();
+        mCollectionSearchDone = true;
         return;
     }
 
@@ -369,21 +409,130 @@ void PersonSearchJob::start()
     fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
     connect(fetchJob, SIGNAL(collectionsReceived(Akonadi::Collection::List)), this, SLOT(onCollectionsReceived(Akonadi::Collection::List)));
     connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onCollectionsFetched(KJob*)));
-    //TODO query ldap for available persons and their folders.
-    //TODO identify imap folders as person folders and list them here (after indexing them in baloo).
-    //
+
     //The IMAP resource should add a "Person" attribute to the collections in the person namespace,
     //the ldap query can then be used to update the name (entitydisplayattribute) for the person.
 }
 
+void PersonSearchJob::onLDAPSearchData(const QList< KLDAP::LdapResultObject > &list)
+{
+    QList<Person> persons;
+    Q_FOREACH(const KLDAP::LdapResultObject &item, list) {
+        Person person;
+        person.name = QString::fromUtf8(item.object.value(QLatin1String("cn")));
+        person.mail = QString::fromUtf8(item.object.value(QLatin1String("mail")));
+
+        const int depth = item.object.dn().depth();
+        for ( int i = 0; i < depth; ++i ) {
+            const QString rdnStr = item.object.dn().rdnString(i);
+            if ( rdnStr.startsWith(QLatin1String("ou="), Qt::CaseInsensitive) ) {
+                person.ou = rdnStr.mid(3);
+                break;
+            }
+        }
+        const QStringList &parts = person.mail.split(QLatin1Char('@'));
+        if (parts.count() == 2) {
+            const QString &uid = parts.at(0);
+            person.uid = uid;
+            if (mMatches.contains(uid)) {
+                const Person &p = mMatches.value(uid);
+                if (p.mail != person.mail ) {
+                    if (p.rootCollection > -1) {
+                        person.rootCollection = p.rootCollection;
+                        person.updateDisplayName = p.updateDisplayName;
+                        updatePersonCollection(person);
+                        mMatches.insert(uid, person);
+                    } else {
+                        kWarning() << "That should not happen: we found two times persons with the same uid ("<< uid << "), but differnet name:" << p.name << "vs" << person.name;
+                    }
+                }
+            } else {            //New person found
+                mMatches.insert(uid, person);
+                persons << person;
+            }
+        } else {
+            kWarning() << item.object.dn().toString() << ": invalid email address" << person.mail;
+        }
+    }
+    if (persons.count() > 0) {
+        emit personsFound(persons);
+    }
+}
+
+void PersonSearchJob::onLDAPSearchDone()
+{
+    mLdapSearchDone = true;
+    if (mCollectionSearchDone) {
+        emitResult();
+    }
+}
+
 void PersonSearchJob::onCollectionsReceived(const Akonadi::Collection::List &list)
 {
+    QList<Person> persons;
     Q_FOREACH(const Akonadi::Collection &col, list) {
         Person person;
-        person.name = col.displayName();
+        const QString &uid = col.name();
+        const CollectionIdentificationAttribute *const attr = col.attribute<CollectionIdentificationAttribute>();
+        const Akonadi::EntityDisplayAttribute *const displayname = col.attribute<Akonadi::EntityDisplayAttribute>();
         person.rootCollection = col.id();
-        mMatches << person;
+        person.uid = uid;
+        if (attr) {
+            person.ou = QString::fromUtf8(attr->ou());
+            person.mail = QString::fromUtf8(attr->mail());
+            person.name = QString::fromUtf8(attr->identifier());
+            if (!displayname || displayname->displayName().isEmpty() || displayname->displayName() == person.name) {
+                person.updateDisplayName = true;
+            }
+        } else {
+            person.name = col.displayName();
+            if (!displayname || displayname->displayName().isEmpty()) {
+                person.updateDisplayName = true;
+            }
+        }
+        if (mMatches.contains(uid)) {
+            Person p = mMatches.value(uid);
+            if (p.rootCollection > -1) {
+                //two collection with the same uid ?! 
+                kWarning() << "Two collections match to same person" << p.rootCollection << person.rootCollection;
+            } else if (p.mail != person.mail) {
+                p.rootCollection = person.rootCollection;
+                p.updateDisplayName = person.updateDisplayName;
+                updatePersonCollection(p);
+            } else {
+                mMatches.insert(uid, person);
+                emit personUpdate(person);
+            }
+        } else {
+            mMatches.insert(uid, person);
+            persons << person;
+        }
     }
+
+    if (persons.count() > 0) {
+        emit personsFound(persons);
+    }
+}
+
+void PersonSearchJob::updatePersonCollection(const Person &person)
+{
+    Akonadi::Collection c(person.rootCollection);
+    CollectionIdentificationAttribute *identification = c.attribute<CollectionIdentificationAttribute>(Akonadi::Entity::AddIfMissing);
+
+    if (person.updateDisplayName) {
+        Akonadi::EntityDisplayAttribute *displayname  = c.attribute<Akonadi::EntityDisplayAttribute >(Akonadi::Entity::AddIfMissing);
+        displayname->setDisplayName(person.name);
+    }
+
+    //identification->setIdentifier("Other Users/" + person.uid);
+    identification->setIdentifier(person.name.toUtf8());
+    identification->setName(person.name.toUtf8());
+    identification->setCollectionNamespace("usertoplevel");
+    identification->setMail(person.mail.toUtf8());
+    identification->setOu(person.ou.toUtf8());
+
+    Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( c, this );
+    connect(job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)));
 }
 
 void PersonSearchJob::onCollectionsFetched(KJob *job)
@@ -391,12 +540,45 @@ void PersonSearchJob::onCollectionsFetched(KJob *job)
     if (job->error()) {
         kWarning() << job->errorString();
     }
-    emitResult();
+    mCollectionSearchDone = true;
+    if (mLdapSearchDone) {
+        emitResult();
+    }
 }
 
 QList<Person> PersonSearchJob::matches() const
 {
-    return mMatches;
+    return mMatches.values();
+}
+
+void PersonSearchJob::modifyResult(KJob *job)
+{
+    if (job->error()) {
+        kWarning() << job->errorString();
+        return;
+    }
+
+    const Akonadi::CollectionModifyJob *modifyJob = static_cast<Akonadi::CollectionModifyJob*>(job);
+    const Akonadi::Collection &col = modifyJob->collection();
+
+    const CollectionIdentificationAttribute *const attr = col.attribute<CollectionIdentificationAttribute>();
+    const Akonadi::EntityDisplayAttribute *const displayname = col.attribute<Akonadi::EntityDisplayAttribute>();
+    const QString &uid = col.name();
+    Person &person = mMatches[col.name()];
+    person.rootCollection = col.id();
+    person.uid = uid;
+    if (attr) {
+        person.ou = QString::fromUtf8(attr->ou());
+        person.mail = QString::fromUtf8(attr->mail());
+        person.name = QString::fromUtf8(attr->identifier());
+        if (!displayname || displayname->displayName().isEmpty() || displayname->displayName() == person.name) {
+            person.updateDisplayName = true;
+        }
+    }
+    kDebug() << "modified person to" << person.uid << person.name << person.rootCollection;
+
+    mMatches.insert(person.uid, person);
+    emit personUpdate(person);
 }
 
 
@@ -426,10 +608,15 @@ void Controller::setSearchString(const QString &searchString)
     mSearchModel->clear();
     emit searchIsActive(!searchString.isEmpty());
     if (searchString.size() < 2) {
+        emit searching(false);
         return;
     }
 
+    emit searching(true);
+
     mPersonSearchJob = new PersonSearchJob(searchString, this);
+    connect(mPersonSearchJob, SIGNAL(personsFound(QList<Person>)), this, SLOT(onPersonsFound(QList<Person>)));
+    connect(mPersonSearchJob, SIGNAL(personUpdate(Person)), this, SLOT(onPersonUpdate(Person)));
     connect(mPersonSearchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonsFound(KJob*)));
     mPersonSearchJob->start();
 
@@ -440,6 +627,9 @@ void Controller::setSearchString(const QString &searchString)
 
 void Controller::onCollectionsFound(KJob* job)
 {
+    if (!mPersonSearchJob) {
+        emit searching(false);
+    }
     if (job->error()) {
         kWarning() << job->errorString();
         mCollectionSearchJob = 0;
@@ -456,20 +646,33 @@ void Controller::onCollectionsFound(KJob* job)
     mCollectionSearchJob = 0;
 }
 
-void Controller::onPersonsFound(KJob* job)
+void Controller::onPersonsFound(const QList<Person> &persons)
 {
-    if (job->error()) {
-        kWarning() << job->errorString();
-        mPersonSearchJob = 0;
-        return;
-    }
-    Q_ASSERT(mPersonSearchJob == static_cast<PersonSearchJob*>(job));
-    Q_FOREACH(const Person &p, mPersonSearchJob->matches()) {
+    Q_FOREACH(const Person &p, persons) {
         PersonNode *personNode = new PersonNode(*mSearchModel, p);
         personNode->isSearchNode = true;
         //toggled by the checkbox, results in person getting added to main model
         // connect(&personNode->emitter, SIGNAL(enabled(bool, Person)), this, SLOT(onPersonEnabled(bool, Person)));
         mSearchModel->addNode(ReparentingModel::Node::Ptr(personNode));
+    }
+}
+
+void Controller::onPersonUpdate(const Person &person)
+{
+    PersonNode *personNode = new PersonNode(*mSearchModel, person);
+    personNode->isSearchNode = true;
+    mSearchModel->updateNode(ReparentingModel::Node::Ptr(personNode));
+}
+
+void Controller::onPersonsFound(KJob* job)
+{
+    if (!mCollectionSearchJob) {
+        emit searching(false);
+    }
+    if (job->error()) {
+        kWarning() << job->errorString();
+        mPersonSearchJob = 0;
+        return;
     }
     mPersonSearchJob = 0;
 }
@@ -536,19 +739,44 @@ void Controller::onPersonCollectionsFetched(KJob* job)
 
 void Controller::addPerson(const Person &person)
 {
-    kDebug() << person.name;
+    kDebug() << person.uid << person.name << person.rootCollection;
+
+    if (person.rootCollection == -1) {
+        Baloo::PIM::CollectionQuery query;
+        query.setNamespace(QStringList() << QLatin1String("usertoplevel"));
+        query.pathMatches(QLatin1String("/Other Users/")+person.uid);
+        query.setLimit(200);
+        Baloo::PIM::ResultIterator it = query.exec();
+        Akonadi::Collection::List collections;
+        while (it.next()) {
+            collections << Akonadi::Collection(it.id());
+        }
+        kDebug() << "Found collections " << collections.size() << "for" << person.name;
+        //TODO: use the found collection and update attribute
+    }
+
     PersonNode *personNode = new PersonNode(*mPersonModel, person);
     personNode->setChecked(true);
     mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
 
-    setCollectionState(Akonadi::Collection(person.rootCollection), Referenced, true);
+    if (person.rootCollection > -1) {
+        setCollectionState(Akonadi::Collection(person.rootCollection), Referenced, true);
+    } else {
+        kDebug() << "well this only a ldap search object without a collection";
+        //TODO: use freebusy data into calendar
+    }
 }
 
 void Controller::removePerson(const Person &person)
 {
-    kDebug() << person.name;
+    kDebug() << person.uid << person.name << person.rootCollection;
     mPersonModel->removeNode(PersonNode(*mPersonModel, person));
 
-    setCollectionState(Akonadi::Collection(person.rootCollection), Disabled, true);
+    if (person.rootCollection > -1) {
+        setCollectionState(Akonadi::Collection(person.rootCollection), Disabled, true);
+    } else {
+        kDebug() << "well this only a ldap search object without a collection";
+        //TODO: delete freebusy data from calendar
+    }
 }
 
