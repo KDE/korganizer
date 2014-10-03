@@ -47,6 +47,9 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
   public:
     KOPrefsDialogMain( const KComponentData &inst, QWidget *parent );
 
+  protected:
+    void usrWriteConfig();
+
   protected slots:
     void toggleEmailSettings( bool on );
     void slotAccountSelected();

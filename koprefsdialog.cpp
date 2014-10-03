@@ -216,6 +216,12 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   load();
 }
 
+void KOPrefsDialogMain::usrWriteConfig()
+{
+    KPIM::KPrefsModule::usrWriteConfig();
+    IncidenceEditorNG::GlobalSettings::self()->writeConfig();
+}
+
 void KOPrefsDialogMain::slotAccountSelected()
 {
   if ( mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty() ) {
