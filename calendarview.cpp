@@ -50,6 +50,7 @@
 #include "views/todoview/kotodoview.h"
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
+#include <incidenceeditor-ng/globalsettings.h>
 
 #include <KHolidays/kholidays/Holidays>
 
@@ -2688,14 +2689,29 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;
 
-  // 2. Try the selected collection
+  // 2. Try the configured default collection
+  collection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
+
+  // 3. Try last selected folder
+  collection = mCalendar->collection( IncidenceEditorNG::GlobalSettings::self()->lastSelectedFolder() );
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
+  if ( collection.isValid() && supportsMimeType && hasRights )
+    return collection;
+
+
+  // 4. Try the selected collection
   collection = selectedCollection();
   supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
   hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;
 
-  // 3. Try the checked collections
+  // 5. Try the checked collections
   Akonadi::Collection::List collections = checkedCollections();
   foreach( const Akonadi::Collection &checkedCollection, collections ) {
     supportsMimeType = checkedCollection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
@@ -2703,14 +2719,6 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
     if ( checkedCollection.isValid() && supportsMimeType && hasRights )
       return checkedCollection;
   }
-
-  // 4. Try the configured default collection
-  collection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
-  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
-  hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
-  if ( collection.isValid() && supportsMimeType && hasRights )
-    return collection;
-
 
   // 5. Return a invalid collection, the editor will use the first one in the combo
   return Akonadi::Collection();

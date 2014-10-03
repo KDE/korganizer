@@ -362,6 +362,7 @@ void KCMDesignerFields::initGUI()
   activeLabel->setTextInteractionFlags( Qt::LinksAccessibleByMouse|
                                         Qt::LinksAccessibleByKeyboard );
   connect(activeLabel, &QLabel::linkActivated, this, &KCMDesignerFields::showWhatsThis);
+  activeLabel->setContextMenuPolicy(Qt::NoContextMenu);
   hbox->addWidget( activeLabel );
 
   // ### why is this needed? Looks like a KActiveLabel bug...
