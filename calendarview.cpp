@@ -2700,8 +2700,6 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::createIncidenceEditor(
 
   if ( collection.isValid() ) {
     dialog->selectCollection( collection );
-  } else {
-    dialog->selectCollection( defaultCollection( incidence->mimeType() ) );
   }
 
   return dialog;
