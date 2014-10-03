@@ -2691,14 +2691,14 @@ Akonadi::Collection CalendarView::defaultCollection( const QLatin1String &mimeTy
 
   // 2. Try the configured default collection
   collection = mCalendar->collection( CalendarSupport::KCalPrefs::instance()->defaultCalendarId() );
-  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
   hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;
 
   // 3. Try last selected folder
   collection = mCalendar->collection( IncidenceEditorNG::GlobalSettings::self()->lastSelectedFolder() );
-  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == "";
+  supportsMimeType = collection.contentMimeTypes().contains( mimeType ) || mimeType == QLatin1String("");
   hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
   if ( collection.isValid() && supportsMimeType && hasRights )
     return collection;
