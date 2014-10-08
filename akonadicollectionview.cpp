@@ -33,6 +33,8 @@
 #include "koglobals.h"
 #include "views/collectionview/reparentingmodel.h"
 #include "views/collectionview/calendardelegate.h"
+#include "views/collectionview/quickview.h"
+
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
@@ -349,8 +351,8 @@ class CollectionFilter : public QSortFilterProxyModel
         const Akonadi::Collection &col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
         CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
-        if (attr && ((attr->collectionNamespace() == "usertoplevel") || (attr->collectionNamespace() == "usertoplevel"))
-                || (col.name().contains(QLatin1String("Other Users")))) {
+        if ( (attr && attr->collectionNamespace().startsWith("user"))
+                || col.name().contains(QLatin1String("Other Users"))) {
             return false;
         }
         return true;
@@ -1018,7 +1020,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const StyledCalendarDelegate::Action action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
         case StyledCalendarDelegate::AddToList: {
-            const Akonadi::Collection col = index.data(CollectionRole).value<Akonadi::Collection>();
+            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
             if (col.isValid()) {
                 mController->setCollectionState(col, Controller::Referenced);
             } else {
@@ -1050,6 +1052,25 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
                 if (var.isValid()) {
                     mController->setCollectionState(Akonadi::Collection(var.value<Person>().rootCollection), Controller::Enabled, true);
                 }
+            }
+        }
+        break;
+        case StyledCalendarDelegate::Quickview: {
+            QVariant person = index.data(PersonRole);
+            Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+            QModelIndex i = index;
+            while (!person.isValid()) {
+                i = i.parent();
+                if (!i.isValid()) {
+                    break;
+                }
+                person = i.data(PersonRole);
+            }
+            if (person.isValid()) {
+                Quickview *quickview = new Quickview(person.value<Person>(), col);
+                quickview->show();
+            } else {
+                kWarning() << "No valid person found for" << index;
             }
         }
         break;
