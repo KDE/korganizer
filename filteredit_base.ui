@@ -80,7 +80,11 @@
            </widget>
           </item>
           <item>
-           <widget class="KLineEdit" name="mNameLineEdit"/>
+           <widget class="KLineEdit" name="mNameLineEdit">
+            <property name="trapEnterKeyEvent" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -282,6 +286,11 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
  </widget>
  <customwidgets>
   <customwidget>
+   <class>KListWidgetSearchLine</class>
+   <extends>KLineEdit</extends>
+   <header>klistwidgetsearchline.h</header>
+  </customwidget>
+  <customwidget>
    <class>KLineEdit</class>
    <extends>QLineEdit</extends>
    <header>klineedit.h</header>
@@ -290,11 +299,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
    <class>KIntNumInput</class>
    <extends>QWidget</extends>
    <header>knuminput.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KListWidgetSearchLine</class>
-   <extends>KLineEdit</extends>
-   <header>klistwidgetsearchline.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
