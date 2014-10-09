@@ -38,6 +38,7 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <kcolorscheme.h>
 
 FilterEditDialog::FilterEditDialog( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
   : QDialog( parent )
@@ -277,6 +278,10 @@ void FilterEdit::updateSelectedName( const QString &newText )
     item->setText( newText );
   }
   mRulesList->blockSignals( false );
+  if (correctName(newText)) {
+      emit dataConsistent( false );
+      return;
+  }
   bool allOk = true;
 
   foreach ( KCalCore::CalFilter *i, *mFilters ) {
@@ -287,6 +292,36 @@ void FilterEdit::updateSelectedName( const QString &newText )
 
   emit dataConsistent( allOk );
 }
+
+bool FilterEdit::correctName(const QString &newText)
+{
+#ifndef QT_NO_STYLE_STYLESHEET
+    QString styleSheet;
+    if (mNegativeBackground.isEmpty()) {
+        KStatefulBrush bgBrush = KStatefulBrush(KColorScheme::View, KColorScheme::NegativeBackground);
+        mNegativeBackground = QString::fromLatin1("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
+    }
+    bool negative = false;
+    if (!newText.isEmpty()) {
+        for ( int i = 0; i < mRulesList->count(); ++i ) {
+            QListWidgetItem *item = mRulesList->item(i);
+            if ( item && (mRulesList->currentItem() != item)) {
+                if (newText == item->text()) {
+                    negative = true;
+                    break;
+                }
+            }
+        }
+    } else {
+        negative = true;
+    }
+    if (negative)
+        styleSheet = mNegativeBackground;
+    mNameLineEdit->setStyleSheet(styleSheet);
+#endif
+    return negative;
+}
+
 
 void FilterEdit::editCategorySelection()
 {

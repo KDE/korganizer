@@ -97,8 +97,10 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
     void editCategorySelection();
 
   private:
+    bool correctName(const QString &newText);
     void filterSelected( KCalCore::CalFilter *f );
 
+    QString mNegativeBackground;
     QList<KCalCore::CalFilter*> *mFilters;
     KCalCore::CalFilter *mCurrent;
     KPIM::TagSelectionDialog *mCategorySelectDialog;
