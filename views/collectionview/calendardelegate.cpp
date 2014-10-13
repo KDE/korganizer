@@ -35,6 +35,7 @@ StyledCalendarDelegate::StyledCalendarDelegate(QObject * parent)
     mPixmap.insert(Enable, KIconLoader().loadIcon(QLatin1String("bookmarks"), KIconLoader::Small));
     mPixmap.insert(RemoveFromList, KIconLoader().loadIcon(QLatin1String("list-remove"), KIconLoader::Small));
     mPixmap.insert(AddToList, KIconLoader().loadIcon(QLatin1String("list-add"), KIconLoader::Small));
+    mPixmap.insert(Quickview, KIconLoader().loadIcon(QLatin1String("quickview"), KIconLoader::Small));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
@@ -85,6 +86,14 @@ static bool isChildOfPersonCollection(const QModelIndex &index)
     return false;
 }
 
+static bool isPersonNode(const QModelIndex &index)
+{
+    if (index.data(NodeTypeRole).toInt() == PersonNodeRole) {
+        return true;
+    }
+    return false;
+}
+
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     const bool isSearchResult = index.data(IsSearchResultRole).toBool();
@@ -110,6 +119,9 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
                 buttons << Enable;
             }
         }
+    }
+    if (isPersonNode(index)) {
+        buttons << Quickview;
     }
     return buttons;
 }
@@ -181,14 +193,11 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
 
         QMouseEvent *me = static_cast<QMouseEvent*>(event);
 
-        if (enableButtonRect(option.rect, 1).contains(me->pos())) {
-            button = 1;
-        }
-        if (enableButtonRect(option.rect, 2).contains(me->pos())) {
-            button = 2;
-        }
-        if (enableButtonRect(option.rect, 3).contains(me->pos())) {
-            button = 3;
+        for (int i = 1; i < 4; i++) {
+            if (enableButtonRect(option.rect, i).contains(me->pos())) {
+                button = i;
+                break;
+            }
         }
         if (me->button() != Qt::LeftButton || button < 0) {
             return QStyledItemDelegate::editorEvent(event, model, option, index);
@@ -206,11 +215,13 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
     QStyleOptionViewItem opt = option;
     opt.state |= QStyle::State_MouseOver;
 
-    const Action a = getActions(opt, index).at(button - 1);
-    // kDebug() << "Button clicked: " << a;
-    emit action(index, a);
-
-    return true;
+    QList<StyledCalendarDelegate::Action> actions = getActions(opt, index);
+    if (actions.count() >= button) {
+        const Action a = actions.at(button - 1);
+        emit action(index, a);
+        return true;
+    }
+    return QStyledItemDelegate::editorEvent(event, model, option, index);
 }
 
 QSize StyledCalendarDelegate::sizeHint( const QStyleOptionViewItem &option, const QModelIndex &index ) const
