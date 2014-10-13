@@ -89,7 +89,7 @@ public:
 class PersonNode : public ReparentingModel::Node
 {
 public:
-    PersonNode(ReparentingModel &personModel, const Person &person, const QModelIndex &colIndex);
+    PersonNode(ReparentingModel &personModel, const Person &person);
     virtual ~PersonNode();
     virtual bool operator==(const Node &) const;
 
@@ -107,7 +107,6 @@ private:
 
     Person mPerson;
     Qt::CheckState mCheckState;
-    QModelIndex mCollectionIndex;
 };
 
 class CollectionNode : public ReparentingModel::Node

@@ -111,16 +111,14 @@ bool CollectionNode::isDuplicateOf(const QModelIndex& sourceIndex)
 }
 
 
-PersonNode::PersonNode(ReparentingModel& personModel, const Person& person, const QModelIndex &colIndex)
+PersonNode::PersonNode(ReparentingModel& personModel, const Person& person)
 :   Node(personModel),
     mPerson(person),
     mCheckState(Qt::Unchecked),
-    isSearchNode(false),
-    mCollectionIndex(colIndex)
+    isSearchNode(false)
 {
 
 }
-
 
 PersonNode::~PersonNode()
 {
@@ -182,12 +180,7 @@ QVariant PersonNode::data(int role) const
     if (role == NodeTypeRole) {
         return PersonNodeRole;
     }
-
-    if (mCollectionIndex.isValid()) {
-        return mCollectionIndex.data(role);
-    } else {
-        return QVariant();
-    }
+    return QVariant();
 }
 
 bool PersonNode::setData(const QVariant& value, int role)
@@ -220,7 +213,7 @@ bool PersonNode::adopts(const QModelIndex& sourceIndex)
 
 bool PersonNode::isDuplicateOf(const QModelIndex& sourceIndex)
 {
-    return (sourceIndex.data(PersonRole).value<Person>().uid == mPerson.uid);
+    return (sourceIndex.data(PersonRole).value<Person>().name == mPerson.name);
 }
 
 void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
@@ -238,7 +231,7 @@ void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
             person.uid = col.name();
             person.rootCollection = col.id();
 
-            model.addNode(ReparentingModel::Node::Ptr(new PersonNode(model, person, sourceIndex)));
+            model.addNode(ReparentingModel::Node::Ptr(new PersonNode(model, person)));
         }
     }
 }
@@ -257,7 +250,7 @@ void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
             person.ou = QString::fromUtf8(attr->ou());
             person.uid = col.name();
             person.rootCollection = col.id();
-            model.removeNode(PersonNode(model, person, sourceIndex));
+            model.removeNode(PersonNode(model, person));
         }
     }
 }
@@ -656,7 +649,7 @@ void Controller::onCollectionsFound(KJob* job)
 void Controller::onPersonsFound(const QList<Person> &persons)
 {
     Q_FOREACH(const Person &p, persons) {
-        PersonNode *personNode = new PersonNode(*mSearchModel, p, QModelIndex());
+        PersonNode *personNode = new PersonNode(*mSearchModel, p);
         personNode->isSearchNode = true;
         //toggled by the checkbox, results in person getting added to main model
         // connect(&personNode->emitter, SIGNAL(enabled(bool, Person)), this, SLOT(onPersonEnabled(bool, Person)));
@@ -666,7 +659,7 @@ void Controller::onPersonsFound(const QList<Person> &persons)
 
 void Controller::onPersonUpdate(const Person &person)
 {
-    PersonNode *personNode = new PersonNode(*mSearchModel, person, QModelIndex());
+    PersonNode *personNode = new PersonNode(*mSearchModel, person);
     personNode->isSearchNode = true;
     mSearchModel->updateNode(ReparentingModel::Node::Ptr(personNode));
 }
@@ -762,7 +755,7 @@ void Controller::addPerson(const Person &person)
         //TODO: use the found collection and update attribute
     }
 
-    PersonNode *personNode = new PersonNode(*mPersonModel, person, QModelIndex());
+    PersonNode *personNode = new PersonNode(*mPersonModel, person);
     personNode->setChecked(true);
     mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
 
@@ -777,7 +770,7 @@ void Controller::addPerson(const Person &person)
 void Controller::removePerson(const Person &person)
 {
     kDebug() << person.uid << person.name << person.rootCollection;
-    mPersonModel->removeNode(PersonNode(*mPersonModel, person, QModelIndex()));
+    mPersonModel->removeNode(PersonNode(*mPersonModel, person));
 
     if (person.rootCollection > -1) {
         setCollectionState(Akonadi::Collection(person.rootCollection), Disabled, true);
