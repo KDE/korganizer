@@ -33,6 +33,8 @@
 #include "koglobals.h"
 #include "views/collectionview/reparentingmodel.h"
 #include "views/collectionview/calendardelegate.h"
+#include "views/collectionview/quickview.h"
+
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
@@ -349,8 +351,8 @@ class CollectionFilter : public QSortFilterProxyModel
         const Akonadi::Collection &col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
         CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
-        if (attr && ((attr->collectionNamespace() == "usertoplevel") || (attr->collectionNamespace() == "usertoplevel"))
-                || (col.name().contains(QLatin1String("Other Users")))) {
+        if ( (attr && attr->collectionNamespace().startsWith("user"))
+                || col.name().contains(QLatin1String("Other Users"))) {
             return false;
         }
         return true;
@@ -1018,38 +1020,58 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const StyledCalendarDelegate::Action action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
         case StyledCalendarDelegate::AddToList: {
-            const Akonadi::Collection col = index.data(CollectionRole).value<Akonadi::Collection>();
-            if (col.isValid()) {
-                mController->setCollectionState(col, Controller::Referenced);
+            const QVariant var = index.data(PersonRole);
+            if (var.isValid()) {
+                mController->addPerson(var.value<Person>());
             } else {
-                const QVariant var = index.data(PersonRole);
-                if (var.isValid()) {
-                    mController->addPerson(var.value<Person>());
+                const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+                if (col.isValid()) {
+                    mController->setCollectionState(col, Controller::Referenced);
                 }
             }
         }
         break;
         case StyledCalendarDelegate::RemoveFromList: {
-            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-            if (col.isValid()) {
-                mController->setCollectionState(col, Controller::Disabled);
+            const QVariant var = index.data(PersonRole);
+            if (var.isValid()) {
+                kDebug() << "person";
+                mController->removePerson(var.value<Person>());
             } else {
-                const QVariant var = index.data(PersonRole);
-                if (var.isValid()) {
-                    mController->removePerson(var.value<Person>());
+                const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+                if (col.isValid()) {
+                    mController->setCollectionState(col, Controller::Disabled);
                 }
             }
         }
         break;
         case StyledCalendarDelegate::Enable: {
-            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-            if (col.isValid()) {
-                mController->setCollectionState(col, Controller::Enabled);
+            const QVariant var = index.data(PersonRole);
+            if (var.isValid()) {
+                mController->setCollectionState(Akonadi::Collection(var.value<Person>().rootCollection), Controller::Enabled, true);
             } else {
-                const QVariant var = index.data(PersonRole);
-                if (var.isValid()) {
-                    mController->setCollectionState(Akonadi::Collection(var.value<Person>().rootCollection), Controller::Enabled, true);
+                const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+                if (col.isValid()) {
+                    mController->setCollectionState(col, Controller::Enabled);
                 }
+            }
+        }
+        break;
+        case StyledCalendarDelegate::Quickview: {
+            QVariant person = index.data(PersonRole);
+            QModelIndex i = index;
+            while (!person.isValid()) {
+                i = i.parent();
+                if (!i.isValid()) {
+                    break;
+                }
+                person = i.data(PersonRole);
+            }
+            if (person.isValid()) {
+                Quickview *quickview = new Quickview(person.value<Person>(), Akonadi::Collection(person.value<Person>().rootCollection));
+                quickview->setAttribute(Qt::WA_DeleteOnClose, true);
+                quickview->show();
+            } else {
+                kWarning() << "No valid person found for" << index;
             }
         }
         break;

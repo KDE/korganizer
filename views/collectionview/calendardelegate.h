@@ -35,7 +35,8 @@ public:
     enum Action {
         AddToList,
         RemoveFromList,
-        Enable
+        Enable,
+        Quickview
     };
 
 Q_SIGNALS:
