@@ -176,7 +176,6 @@ set(korganizerprivate_LIB_SRCS
     views/collectionview/reparentingmodel.cpp
     views/collectionview/controller.cpp
     views/collectionview/calendardelegate.cpp
-    views/collectionview/quickview.cpp
     calendarview.cpp
     datechecker.cpp
     datenavigator.cpp
@@ -225,7 +224,6 @@ set(korganizerprivate_LIB_SRCS
     publishdialog_base.ui
     searchdialog_base.ui
     timescaleedit_base.ui
-    views/collectionview/quickview.ui
   )
 
   qt4_add_resources(korganizerprivate_LIB_SRCS
