@@ -133,8 +133,10 @@ class PersonNodeManager : public ReparentingModel::NodeManager
 public:
     PersonNodeManager(ReparentingModel &personModel) : ReparentingModel::NodeManager(personModel){};
 private:
+    Person person(const QModelIndex &sourceIndex);
     void checkSourceIndex(const QModelIndex &sourceIndex);
     void checkSourceIndexRemoval(const QModelIndex &sourceIndex);
+    void updateSourceIndex(const QModelIndex &sourceIndex);
 };
 
 class CollectionSearchJob : public KJob

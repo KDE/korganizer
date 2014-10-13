@@ -5,6 +5,7 @@ include_directories(
 set(reparentingmodeltest_SRCS
     reparentingmodeltest.cpp
     ../reparentingmodel.cpp
+    modeltest.cpp
 )
 
 kde4_add_unit_test(reparentingmodeltest NOGUI ${reparentingmodeltest_SRCS})
