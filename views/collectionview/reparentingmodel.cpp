@@ -279,7 +279,13 @@ void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
     Q_FOREACH(const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
         if (*existing == *node) {
             node->parent = existing->parent;
+            node->children = existing->children;
+            Q_FOREACH(ReparentingModel::Node::Ptr child, existing->children) {
+                child->parent = node.data();
+            }
+            node->sourceIndex = existing->sourceIndex;
             int r = row(existing.data());
+            mProxyNodes.replace(mProxyNodes.indexOf(existing), node);
             existing->parent->children.replace(r, node);
             const QModelIndex i = index(node.data());
             Q_ASSERT(i.row() == r);
@@ -468,7 +474,7 @@ void ReparentingModel::onSourceRowsInserted(QModelIndex parent, int start, int e
             Q_ASSERT(validateNode(parentNode));
         }
         Q_ASSERT(parentNode);
-        
+
         //Remove any duplicates that we are going to replace
         removeDuplicates(sourceIndex);
 
@@ -588,9 +594,8 @@ void ReparentingModel::onSourceLayoutChanged()
 void ReparentingModel::onSourceDataChanged(QModelIndex begin, QModelIndex end)
 {
     for (int row = begin.row(); row <= end.row(); row++) {
-        mNodeManager->checkSourceIndex(sourceModel()->index(row, begin.column(), begin.parent()));
+        mNodeManager->updateSourceIndex(sourceModel()->index(row, begin.column(), begin.parent()));
     }
-    emit dataChanged(mapFromSource(begin), mapFromSource(end));
 }
 
 void ReparentingModel::onSourceModelAboutToBeReset()
@@ -614,6 +619,9 @@ ReparentingModel::Node *ReparentingModel::extractNode(const QModelIndex &index) 
 
 QModelIndex ReparentingModel::index(int row, int column, const QModelIndex& parent) const
 {
+    if (row < 0 || column != 0) {
+        return QModelIndex();
+    }
     // kDebug() << parent << row;
     const Node *parentNode;
     if (parent.isValid()) {
@@ -623,7 +631,7 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex& pare
     }
     //At least QAbstractItemView expects that we deal with this properly (see rowsAboutToBeRemoved "find the next visible and enabled item")
     //Also QAbstractItemModel::match does all kinds of weird shit including passing row=-1
-    if (parentNode->children.size() <= row || row < 0) {
+    if (parentNode->children.size() <= row) {
         return QModelIndex();
     }
     Node *node = parentNode->children.at(row).data();
@@ -709,15 +717,14 @@ void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
     //Reparent source nodes according to the provided rules
     Q_FOREACH(Node *n, mSourceNodes) {
         if (proxyNode->adopts(n->sourceIndex)) {
-            const int oldRow = n->sourceIndex.row();
-            beginRemoveRows(index(n->parent), oldRow, oldRow);
-            //We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
-            endRemoveRows();
-
+            //kDebug() << "reparenting" << n->data(Qt::DisplayRole).toString() << "from" << n->parent->data(Qt::DisplayRole).toString()
+            //         << "to" << proxyNode->data(Qt::DisplayRole).toString();
+            const int oldRow = row(n);
             const int newRow = proxyNode->children.size();
-            beginInsertRows(index(proxyNode.data()), newRow, newRow);
+            beginMoveRows(index(n->parent), oldRow, oldRow,
+                          index(proxyNode.data()), newRow);
             proxyNode->reparent(n);
-            endInsertRows();
+            endMoveRows();
             Q_ASSERT(validateNode(n));
         }
     }
@@ -745,7 +752,9 @@ void ReparentingModel::rebuildAll()
 
 QVariant ReparentingModel::data(const QModelIndex& proxyIndex, int role) const
 {
-    Q_ASSERT(proxyIndex.isValid());
+    if (!proxyIndex.isValid()) {
+        return QVariant();
+    }
     const Node *node = extractNode(proxyIndex);
     if (node->isSourceNode()) {
         return sourceModel()->data(mapToSource(proxyIndex), role);
@@ -755,6 +764,9 @@ QVariant ReparentingModel::data(const QModelIndex& proxyIndex, int role) const
 
 bool ReparentingModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    if (!index.isValid()) {
+        return false;
+    }
     Q_ASSERT(index.isValid());
     if (!sourceModel()) {
         return false;
@@ -831,6 +843,11 @@ int ReparentingModel::rowCount(const QModelIndex& parent) const
     if (!parent.isValid()) {
         return mRootNode.children.size();
     }
+
+    if (parent.column() != 0) {
+        return 0;
+    }
+
     Node *node = extractNode(parent);
     return node->children.size();
 }

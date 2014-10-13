@@ -110,7 +110,6 @@ bool CollectionNode::isDuplicateOf(const QModelIndex& sourceIndex)
     return (sourceIndex.data(Akonadi::EntityTreeModel::CollectionIdRole).value<Akonadi::Collection::Id>() == mCollection.id());
 }
 
-
 PersonNode::PersonNode(ReparentingModel& personModel, const Person& person)
 :   Node(personModel),
     mPerson(person),
@@ -216,28 +215,31 @@ bool PersonNode::isDuplicateOf(const QModelIndex& sourceIndex)
     return (sourceIndex.data(PersonRole).value<Person>().name == mPerson.name);
 }
 
-void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
+Person PersonNodeManager::person(const QModelIndex &sourceIndex)
 {
+    Person person;
     const Akonadi::Collection col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-    // kDebug() << col.displayName() << col.enabled();
     if (col.isValid()) {
         CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
         if (attr && attr->collectionNamespace() == "usertoplevel") {
-            kDebug() << "Found user folder, creating person node " << col.displayName();
-            Person person;
             person.name = col.displayName();
             person.mail = QString::fromUtf8(attr->mail());
             person.ou = QString::fromUtf8(attr->ou());
             person.uid = col.name();
             person.rootCollection = col.id();
+<<<<<<< HEAD
 
             model.addNode(ReparentingModel::Node::Ptr(new PersonNode(model, person)));
+=======
+>>>>>>> 4a8d069... Make it possible to update personnodes for the reparenting model
         }
     }
+    return person;
 }
 
-void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
+void PersonNodeManager::checkSourceIndex(const QModelIndex &sourceIndex)
 {
+<<<<<<< HEAD
     const Akonadi::Collection col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     // kDebug() << col.displayName() << col.enabled();
     if (col.isValid()) {
@@ -252,9 +254,30 @@ void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
             person.rootCollection = col.id();
             model.removeNode(PersonNode(model, person));
         }
+=======
+    const Person &p = person(sourceIndex);
+    if (p.rootCollection > -1) {
+        model.addNode(ReparentingModel::Node::Ptr(new PersonNode(model, p, sourceIndex)));
     }
 }
 
+void PersonNodeManager::updateSourceIndex(const QModelIndex &sourceIndex)
+{
+    const Person &p = person(sourceIndex);
+    if (p.rootCollection > -1) {
+        model.updateNode(ReparentingModel::Node::Ptr(new PersonNode(model, p, sourceIndex)));
+>>>>>>> 4a8d069... Make it possible to update personnodes for the reparenting model
+    }
+}
+
+
+void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
+{
+    const Person &p = person(sourceIndex);
+    if (p.rootCollection > -1) {
+        model.removeNode(PersonNode(model, p, sourceIndex));
+    }
+}
 
 CollectionSearchJob::CollectionSearchJob(const QString& searchString, QObject* parent)
     : KJob(parent),

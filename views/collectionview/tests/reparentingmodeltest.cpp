@@ -33,7 +33,9 @@ public:
     DummyNode(ReparentingModel &personModel, const QString &name, const QString &data=QString())
     : ReparentingModel::Node(personModel),
     mName(name),
-    mData(data)
+    mData(data),
+    mUid(name),
+    mParent(QLatin1String("orphan"))
     {}
 
     virtual ~DummyNode(){};
@@ -41,15 +43,21 @@ public:
     virtual bool operator==(const Node &node) const {
         const DummyNode *dummyNode = dynamic_cast<const DummyNode*>(&node);
         if (dummyNode) {
-            return (dummyNode->mName == mName);
+            return (dummyNode->mUid == mUid);
         }
         return false;
     }
 
+    QString mUid;
+    QString mParent;
 private:
     virtual QVariant data(int role) const {
         if (role == Qt::DisplayRole) {
-            return mName;
+            if (mName != mUid) {
+                return QString(mUid+QLatin1Char('-')+mName);
+            } else {
+                return mName;
+            }
         } else if (role == Qt::UserRole) {
             return mData;
         }
@@ -61,11 +69,11 @@ private:
         return false;
     }
     virtual bool isDuplicateOf(const QModelIndex& sourceIndex) {
-        return (sourceIndex.data().toString() == mName);
+        return (sourceIndex.data().toString() == mUid);
     }
 
     virtual bool adopts(const QModelIndex& sourceIndex) {
-        return sourceIndex.data().toString().contains(QLatin1String("orphan"));
+        return sourceIndex.data().toString().contains(mParent);
     }
 
     QString mName;
@@ -148,6 +156,7 @@ private Q_SLOTS:
     void testNestedDeduplicateProxyNodeFirst();
     void testUpdateNode();
     void testReparent();
+    void testReparentSubcollections();
     void testReparentResetWithoutCrash();
     void testAddReparentedSourceItem();
     void testRemoveReparentedSourceItem();
@@ -411,6 +420,63 @@ void ReparentingModelTest::testReparent()
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QVERIFY(getIndex("proxy1", reparentingModel).isValid());
     QCOMPARE(reparentingModel.rowCount(getIndex("proxy1", reparentingModel)), 1);
+}
+
+void ReparentingModelTest::testReparentSubcollections()
+{
+    QStandardItemModel sourceModel;
+    ReparentingModel reparentingModel;  
+    reparentingModel.setSourceModel(&sourceModel);
+
+    /* Source structure
+     -- + 
+        -- + orphan
+           -- + col1
+              -- sub1
+              -- sub2
+           -- col2
+    */
+    sourceModel.appendRow(new QStandardItem(QLatin1String("orphan")));
+    sourceModel.item(0,0)->appendRow(new QStandardItem(QLatin1String("col1")));
+    sourceModel.item(0,0)->child(0,0)->appendRow(new QStandardItem(QLatin1String("sub1")));
+    sourceModel.item(0,0)->child(0,0)->appendRow(new QStandardItem(QLatin1String("sub2")));
+    sourceModel.item(0,0)->appendRow(new QStandardItem(QLatin1String("col2")));
+    
+    DummyNode *node = new DummyNode(reparentingModel, QLatin1String("col1"));
+    node->mUid = QLatin1String("uid");
+    node->mParent = QLatin1String("col");
+    
+    /* new srutcure:
+     -- + 
+        -- orphan
+        -- + uid-col1
+           -- + col1
+              -- sub1
+              -- sub2
+           -- col2
+    */
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(node));
+
+    QTest::qWait(0);
+
+    QCOMPARE(reparentingModel.rowCount(QModelIndex()), 2);
+    QVERIFY(getIndex("col1", reparentingModel).isValid());
+    QCOMPARE(getIndex("col1", reparentingModel).parent(), getIndex("uid-col1", reparentingModel));
+    QCOMPARE(reparentingModel.rowCount(getIndex("col1", reparentingModel)), 2);
+    QCOMPARE(reparentingModel.rowCount(getIndex("uid-col1", reparentingModel)), 2);
+
+    node = new DummyNode(reparentingModel, QLatin1String("xxx"));
+    node->mUid = QLatin1String("uid");
+    node->mParent = QLatin1String("col");
+
+    // same structure but new data
+    reparentingModel.updateNode(ReparentingModel::Node::Ptr(node));
+
+    QTest::qWait(0);
+
+    QCOMPARE(getIndex("col1", reparentingModel).parent(), getIndex("uid-xxx", reparentingModel));
+    QCOMPARE(reparentingModel.rowCount(getIndex("col1", reparentingModel)), 2);
+    QCOMPARE(reparentingModel.rowCount(getIndex("uid-xxx", reparentingModel)), 2);
 }
 
 /*
@@ -677,3 +743,4 @@ void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
 QTEST_MAIN(ReparentingModelTest)
 
 #include "reparentingmodeltest.moc"
+    
