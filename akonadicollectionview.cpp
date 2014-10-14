@@ -347,7 +347,8 @@ class CollectionFilter : public QSortFilterProxyModel
 
   protected:
     virtual bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const {
-        const QModelIndex sourceIndex = sourceParent.child(row, 0);
+        const QModelIndex sourceIndex = sourceModel()->index(row, 0, sourceParent);
+        Q_ASSERT(sourceIndex.isValid());
         const Akonadi::Collection &col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
         CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
