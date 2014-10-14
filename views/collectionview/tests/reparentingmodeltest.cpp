@@ -76,6 +76,13 @@ private:
         return sourceIndex.data().toString().contains(mParent);
     }
 
+    void update(const Node::Ptr &node)
+    {
+        mName = node.staticCast<DummyNode>()->mName;
+        mData = node.staticCast<DummyNode>()->mData;
+    }
+
+
     QString mName;
     QString mData;
 };

@@ -117,6 +117,11 @@ bool ReparentingModel::Node::isDuplicateOf(const QModelIndex& /* sourceIndex */)
     return false;
 }
 
+void ReparentingModel::Node::update(const Node::Ptr &/* node */)
+{
+
+}
+
 bool ReparentingModel::Node::isSourceNode() const
 {
     return mIsSourceNode;
@@ -278,17 +283,8 @@ void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
 {
     Q_FOREACH(const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
         if (*existing == *node) {
-            node->parent = existing->parent;
-            node->children = existing->children;
-            Q_FOREACH(ReparentingModel::Node::Ptr child, existing->children) {
-                child->parent = node.data();
-            }
-            node->sourceIndex = existing->sourceIndex;
-            int r = row(existing.data());
-            mProxyNodes.replace(mProxyNodes.indexOf(existing), node);
-            existing->parent->children.replace(r, node);
-            const QModelIndex i = index(node.data());
-            Q_ASSERT(i.row() == r);
+            existing->update(node);
+            const QModelIndex i = index(existing.data());
             emit dataChanged(i, i);
             return;
         }

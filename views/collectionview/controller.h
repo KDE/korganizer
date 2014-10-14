@@ -104,6 +104,7 @@ private:
     virtual bool setData(const QVariant& variant, int role);
     virtual bool adopts(const QModelIndex& sourceIndex);
     virtual bool isDuplicateOf(const QModelIndex& sourceIndex);
+    virtual void update(const Node::Ptr &node);
 
     Person mPerson;
     Qt::CheckState mCheckState;
