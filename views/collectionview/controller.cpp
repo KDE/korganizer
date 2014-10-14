@@ -215,6 +215,11 @@ bool PersonNode::isDuplicateOf(const QModelIndex& sourceIndex)
     return (sourceIndex.data(PersonRole).value<Person>().name == mPerson.name);
 }
 
+void PersonNode::update(const Node::Ptr &node)
+{
+    mPerson = node.staticCast<PersonNode>()->mPerson;
+}
+
 Person PersonNodeManager::person(const QModelIndex &sourceIndex)
 {
     Person person;

@@ -50,6 +50,7 @@ public:
         virtual bool setData(const QVariant &variant, int role);
         virtual bool adopts(const QModelIndex &sourceIndex);
         virtual bool isDuplicateOf(const QModelIndex &sourceIndex);
+        virtual void update(const Node::Ptr &node);
 
         bool isSourceNode() const;
         void reparent(Node *node);
