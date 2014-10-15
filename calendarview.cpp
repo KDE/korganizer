@@ -370,7 +370,7 @@ void CalendarView::onIdentitiesChanged()
         Akonadi::PersistentSearchAttribute *attribute = mOpenInvitationCollection.attribute<Akonadi::PersistentSearchAttribute>( Akonadi::Entity::AddIfMissing );
         Akonadi::EntityDisplayAttribute *displayname  = mOpenInvitationCollection.attribute<Akonadi::EntityDisplayAttribute >( Akonadi::Entity::AddIfMissing );
         attribute->setQueryString( QString::fromLatin1(query.toJSON()) );
-        displayname->setDisplayName(i18nc("A collection of all open invidation", "open invitations"));
+        displayname->setDisplayName(i18nc("A collection of all open invidations.", "Open Invitations"));
         Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mOpenInvitationCollection, this );
         connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
         kDebug() <<  "updating OpenIncidence (" << mOpenInvitationCollection.id() << ") virtual Collection";
@@ -395,7 +395,7 @@ void CalendarView::onIdentitiesChanged()
         Akonadi::EntityDisplayAttribute *displayname  = mDeclineCollection.attribute<Akonadi::EntityDisplayAttribute >( Akonadi::Entity::AddIfMissing );
 
         persistentsearch->setQueryString( QString::fromLatin1(query.toJSON()) );
-        displayname->setDisplayName(i18nc("A collection of all declined invidation", "decliend invitations"));
+        displayname->setDisplayName(i18nc("A collection of all declined invidations.", "Declined Invitations"));
         Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mDeclineCollection, this );
         connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
         kDebug() <<  "updating DeclinedIncidence(" << mDeclineCollection.id() << ") virtual Collection";
