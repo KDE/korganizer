@@ -52,6 +52,8 @@
 
 #include <MailTransport/TransportManagementWidget>
 
+#include "pimcommon/widgets/manageaccountwidget.h"
+
 #include <KCalendarSystem>
 #include <KColorButton>
 #include <KComboBox>
@@ -187,34 +189,13 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent )
   QFrame *calendarFrame = new QFrame( this );
   tabWidget->addTab( calendarFrame, QIcon::fromTheme( QLatin1String("office-calendar") ),
                      i18nc( "@title:tab calendar account settings", "Calendars" ) );
+  QHBoxLayout *calendarFrameLayout = new QHBoxLayout;
+  calendarFrame->setLayout(calendarFrameLayout);
+  PimCommon::ManageAccountWidget *manageAccountWidget = new PimCommon::ManageAccountWidget(this);
+  calendarFrameLayout->addWidget(manageAccountWidget);
 
-  mAccountsCalendar.setupUi( calendarFrame );
-
-//TODO PORT QT5   mAccountsCalendar.vlay->setSpacing( QDialog::spacingHint() );
-//TODO PORT QT5   mAccountsCalendar.vlay->setMargin( QDialog::marginHint() );
-
-  mAccountsCalendar.mAccountList->agentFilterProxyModel()->
-    addMimeTypeFilter( QLatin1String("text/calendar") );
-  mAccountsCalendar.mAccountList->agentFilterProxyModel()->
-    addCapabilityFilter( QLatin1String("Resource") ); // show only resources, no agents
-  mAccountsCalendar.mFilterAccount->
-    setProxy( mAccountsCalendar.mAccountList->agentFilterProxyModel() );
-
-  connect( mAccountsCalendar.mAccountList->view()->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-           SLOT(slotAccountSelected()));
-  connect(mAccountsCalendar.mAccountList, &Akonadi::AgentInstanceWidget::doubleClicked, this, &KOPrefsDialogMain::slotModifySelectedAccount);
-
-  mAccountsCalendar.hlay->insertWidget( 0, mAccountsCalendar.mAccountList );
-
-  connect(mAccountsCalendar.mAddAccountButton, &QPushButton::clicked, this, &KOPrefsDialogMain::slotAddAccount);
-
-  connect(mAccountsCalendar.mModifyAccountButton, &QPushButton::clicked, this, &KOPrefsDialogMain::slotModifySelectedAccount);
-
-  const bool hasSelection = !mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty();
-  mAccountsCalendar.mModifyAccountButton->setEnabled( hasSelection );
-  mAccountsCalendar.mRemoveAccountButton->setEnabled( hasSelection );
-
-  connect(mAccountsCalendar.mRemoveAccountButton, &QPushButton::clicked, this, &KOPrefsDialogMain::slotRemoveSelectedAccount);
+  manageAccountWidget->setMimeTypeFilter(QStringList() <<QLatin1String("text/calendar"));
+  manageAccountWidget->setCapabilityFilter(QStringList() << QLatin1String("Resource") ); // show only resources, no agents
 
   load();
 }
@@ -223,69 +204,6 @@ void KOPrefsDialogMain::usrWriteConfig()
 {
     KPIM::KPrefsModule::usrWriteConfig();
     IncidenceEditorNG::GlobalSettings::self()->writeConfig();
-}
-
-void KOPrefsDialogMain::slotAccountSelected()
-{
-  if ( mAccountsCalendar.mAccountList->selectedAgentInstances().isEmpty() ) {
-    mAccountsCalendar.mModifyAccountButton->setEnabled( false );
-    mAccountsCalendar.mRemoveAccountButton->setEnabled( false );
-  } else {
-    Akonadi::AgentInstance selectedAgent =
-      mAccountsCalendar.mAccountList->selectedAgentInstances().first();
-
-    mAccountsCalendar.mModifyAccountButton->setEnabled(
-      !selectedAgent.type().capabilities().contains( QLatin1String( "NoConfig" ) ) );
-
-    mAccountsCalendar.mRemoveAccountButton->setEnabled( true );
-  }
-}
-
-void KOPrefsDialogMain::slotAddAccount()
-{
-  //TODO verify this dialog box. We can see note etc...
-  Akonadi::AgentTypeDialog dlg( this );
-  Akonadi::AgentFilterProxyModel *filter = dlg.agentFilterProxyModel();
-  filter->addMimeTypeFilter( QLatin1String("text/calendar") );
-  filter->addCapabilityFilter( QLatin1String("Resource") );
-  if ( dlg.exec() ) {
-    const Akonadi::AgentType agentType = dlg.agentType();
-
-    if ( agentType.isValid() ) {
-
-      Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
-      job->configure( this );
-      job->start();
-    }
-  }
-}
-
-void KOPrefsDialogMain::slotModifySelectedAccount()
-{
-  Akonadi::AgentInstance instance = mAccountsCalendar.mAccountList->currentAgentInstance();
-  if ( instance.isValid() ) {
-    KWindowSystem::allowExternalProcessWindowActivation();
-    instance.configure( this );
-  }
-}
-
-void KOPrefsDialogMain::slotRemoveSelectedAccount()
-{    
-  const Akonadi::AgentInstance instance =  mAccountsCalendar.mAccountList->currentAgentInstance();
-  if ( instance.isValid() ) {
-    const int rc = KMessageBox::questionYesNo( this,
-                                       i18n("Do you want to remove account '%1'?", instance.name()),
-                                       i18n("Remove account?"));
-    if ( rc == KMessageBox::No ) {
-      return;
-    }
-
-    Akonadi::AgentManager::self()->removeInstance( instance );
-  } else {
-    return;
-  }
-
-  slotAccountSelected();
 }
 
 void KOPrefsDialogMain::toggleEmailSettings( bool on )

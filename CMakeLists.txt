@@ -99,6 +99,7 @@ if(KDEPIM_BUILD_DESKTOP)
     KF5::MailTransport
     
     Qt5::UiTools
+    pimcommon
   )
 
   install(TARGETS
@@ -212,7 +213,6 @@ set(korganizerprivate_LIB_SRCS
   kconfig_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc)
 
   ki18n_wrap_ui(korganizerprivate_LIB_SRCS
-    accountscalendarwidget.ui
     filteredit_base.ui
     kogroupwareprefspage.ui
     multiagendaviewconfigwidget.ui
