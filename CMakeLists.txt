@@ -91,6 +91,7 @@ if(KDEPIM_BUILD_DESKTOP)
     kdepim
     korganizer_core
     korganizerprivate
+    pimcommon
     ${KDEPIMLIBS_AKONADI_LIBS}
     ${KDEPIMLIBS_KCALCORE_LIBS}
     ${KDEPIMLIBS_KCALUTILS_LIBS}
@@ -213,7 +214,6 @@ set(korganizerprivate_LIB_SRCS
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc)
 
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
-    accountscalendarwidget.ui
     filteredit_base.ui
     kogroupwareprefspage.ui
     multiagendaviewconfigwidget.ui

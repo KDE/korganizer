@@ -27,8 +27,7 @@
 
 #include "korganizer_export.h"
 #include "kcmdesignerfields.h"
-#include "ui_accountscalendarwidget.h"
-
+#include <QSet>
 #include <libkdepim/prefs/kprefsdialog.h>
 
 namespace Ui {
@@ -52,14 +51,9 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
 
   protected slots:
     void toggleEmailSettings( bool on );
-    void slotAccountSelected();
-    void slotAddAccount();
-    void slotModifySelectedAccount();
-    void slotRemoveSelectedAccount();
 
   private:
     QWidget *mUserEmailSettings;
-    Ui_AccountsCalendarWidget mAccountsCalendar;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule
