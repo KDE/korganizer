@@ -269,6 +269,10 @@ class SortProxyModel : public QSortFilterProxyModel
         if (index.data(IsSearchResultRole).toBool()) {
             score += 2;
         }
+        //Search collection
+        if (index.data(Akonadi::EntityTreeModel::CollectionIdRole).toLongLong() == 1) {
+            score += 3;
+        }
         return score;
     }
 
