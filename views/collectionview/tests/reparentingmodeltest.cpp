@@ -174,6 +174,7 @@ private Q_SLOTS:
     void testInvalidLayoutChanged();
     void testAddRemoveNodeByNodeManager();
     void testRemoveNodeByNodeManagerWithDataChanged();
+    void testDataChanged();
 };
 
 void ReparentingModelTest::testPopulation()
@@ -746,8 +747,27 @@ void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
     QVERIFY(!getIndex("personfolder", reparentingModel).isValid());
 }
 
+void ReparentingModelTest::testDataChanged()
+{
+    QStandardItemModel sourceModel;
+    QStandardItem *item = new QStandardItem(QLatin1String("folder"));
+    sourceModel.appendRow(item);
+    ReparentingModel reparentingModel;
+    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
+    reparentingModel.setSourceModel(&sourceModel);
+    ModelSignalSpy spy(reparentingModel);
+
+    QTest::qWait(0);
+
+    //Trigger data changed
+    item->setStatusTip(QLatin1String("sldkfjlfsj"));
+
+    QTest::qWait(0);
+
+    QCOMPARE(spy.mSignals, QStringList() << QLatin1String("dataChanged"));
+}
 
 QTEST_MAIN(ReparentingModelTest)
 
 #include "reparentingmodeltest.moc"
-    
+
