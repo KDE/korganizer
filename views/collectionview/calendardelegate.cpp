@@ -101,26 +101,30 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
     Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
     // kDebug() << index.data().toString() << enabled;
+    const bool isSearchCollection = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
+    const bool isToplevelSearchCollection = (col.id() == 1);
 
     QList<Action> buttons;
-    if (isSearchResult) {
-        buttons << AddToList;
-    } else {
-        if (hover) {
-            if (enabled != Qt::Checked) {
-                buttons << Enable;
-            }
-            //The remove button should not be available for person subfolders
-            if (!isChildOfPersonCollection(index)) {
-                buttons << RemoveFromList;
-            }
+    if (!isSearchCollection) {
+        if (isSearchResult) {
+            buttons << AddToList;
         } else {
-            if (enabled == Qt::Checked) {
-                buttons << Enable;
+            if (hover) {
+                if (enabled != Qt::Checked) {
+                    buttons << Enable;
+                }
+                //The remove button should not be available for person subfolders
+                if (!isChildOfPersonCollection(index)) {
+                    buttons << RemoveFromList;
+                }
+            } else {
+                if (enabled == Qt::Checked) {
+                    buttons << Enable;
+                }
             }
         }
     }
-    if (isPersonNode(index)) {
+    if (isPersonNode(index) || (isSearchCollection && !isToplevelSearchCollection)) {
         buttons << Quickview;
     }
     return buttons;
