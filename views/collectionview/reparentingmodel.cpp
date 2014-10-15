@@ -592,6 +592,7 @@ void ReparentingModel::onSourceDataChanged(QModelIndex begin, QModelIndex end)
     for (int row = begin.row(); row <= end.row(); row++) {
         mNodeManager->updateSourceIndex(sourceModel()->index(row, begin.column(), begin.parent()));
     }
+    emit dataChanged(mapFromSource(begin), mapFromSource(end));
 }
 
 void ReparentingModel::onSourceModelAboutToBeReset()
@@ -715,12 +716,18 @@ void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
         if (proxyNode->adopts(n->sourceIndex)) {
             //kDebug() << "reparenting" << n->data(Qt::DisplayRole).toString() << "from" << n->parent->data(Qt::DisplayRole).toString()
             //         << "to" << proxyNode->data(Qt::DisplayRole).toString();
-            const int oldRow = row(n);
+
+            //WARNING: While a beginMoveRows/endMoveRows would be more suitable, QSortFilterProxyModel can't deal with that. Therefore we
+            //cannot use them.
+            const int oldRow = n->sourceIndex.row();
+            beginRemoveRows(index(n->parent), oldRow, oldRow);
+            //We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
+            endRemoveRows();
+
             const int newRow = proxyNode->children.size();
-            beginMoveRows(index(n->parent), oldRow, oldRow,
-                          index(proxyNode.data()), newRow);
+            beginInsertRows(index(proxyNode.data()), newRow, newRow);
             proxyNode->reparent(n);
-            endMoveRows();
+            endInsertRows();
             Q_ASSERT(validateNode(n));
         }
     }
