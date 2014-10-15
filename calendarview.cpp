@@ -360,6 +360,7 @@ void CalendarView::onIdentitiesChanged()
     if (!mOpenInvitationCollection.isValid()) {
         const QString name = QLatin1String("OpenInvitations");
         Akonadi::SearchCreateJob *job = new Akonadi::SearchCreateJob(name, query);
+        job->setRemoteSearchEnabled(false);
         job->setSearchMimeTypes(QStringList() << KCalCore::Event::eventMimeType()
             << KCalCore::Todo::todoMimeType()
             << KCalCore::Journal::journalMimeType());
@@ -370,6 +371,7 @@ void CalendarView::onIdentitiesChanged()
         Akonadi::PersistentSearchAttribute *attribute = mOpenInvitationCollection.attribute<Akonadi::PersistentSearchAttribute>( Akonadi::Entity::AddIfMissing );
         Akonadi::EntityDisplayAttribute *displayname  = mOpenInvitationCollection.attribute<Akonadi::EntityDisplayAttribute >( Akonadi::Entity::AddIfMissing );
         attribute->setQueryString( QString::fromLatin1(query.toJSON()) );
+        attribute->setRemoteSearchEnabled(false);
         displayname->setDisplayName(i18nc("A collection of all open invidations.", "Open Invitations"));
         Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mOpenInvitationCollection, this );
         connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
@@ -384,6 +386,7 @@ void CalendarView::onIdentitiesChanged()
     if (!mDeclineCollection.isValid()) {
         const QString name = QLatin1String("DeclinedInvitations");
         Akonadi::SearchCreateJob *job = new Akonadi::SearchCreateJob(name, query);
+        job->setRemoteSearchEnabled(false);
         job->setSearchMimeTypes(QStringList() << KCalCore::Event::eventMimeType()
             << KCalCore::Todo::todoMimeType()
             << KCalCore::Journal::journalMimeType());
@@ -395,6 +398,7 @@ void CalendarView::onIdentitiesChanged()
         Akonadi::EntityDisplayAttribute *displayname  = mDeclineCollection.attribute<Akonadi::EntityDisplayAttribute >( Akonadi::Entity::AddIfMissing );
 
         persistentsearch->setQueryString( QString::fromLatin1(query.toJSON()) );
+        persistentsearch->setRemoteSearchEnabled(false);
         displayname->setDisplayName(i18nc("A collection of all declined invidations.", "Declined Invitations"));
         Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mDeclineCollection, this );
         connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
