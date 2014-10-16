@@ -178,7 +178,7 @@ void ExportWebDialog::setupGeneralPage()
 
 void ExportWebDialog::slotTextChanged( const QString &_text )
 {
-    enableButton( User1, !_text.isEmpty() );
+    enableButton( User1, !_text.trimmed().isEmpty() );
 }
 
 void ExportWebDialog::setupTodoPage()
