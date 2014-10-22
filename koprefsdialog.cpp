@@ -203,7 +203,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent )
 void KOPrefsDialogMain::usrWriteConfig()
 {
     KPIM::KPrefsModule::usrWriteConfig();
-    IncidenceEditorNG::GlobalSettings::self()->writeConfig();
+    IncidenceEditorNG::GlobalSettings::self()->save();
 }
 
 void KOPrefsDialogMain::toggleEmailSettings( bool on )
