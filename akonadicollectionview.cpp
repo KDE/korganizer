@@ -164,7 +164,11 @@ private Q_SLOTS:
         for (int i = start; i <= end; i++) {
             const QModelIndex index = mTreeView->model()->index(i, 0, parent);
             // kDebug() << "expanding " << index.data().toString();
-            mTreeView->expand(index);
+            if (index.data(NodeTypeRole).toInt() == PersonNodeRole) {
+                mTreeView->collapse(index);
+            } else {
+                mTreeView->expand(index);
+            }
             if (mTreeView->model()->hasChildren(index)) {
                 onSourceRowsInserted(index, 0, mTreeView->model()->rowCount(index) - 1);
             }
