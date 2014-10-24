@@ -67,11 +67,6 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     void setTimeScaleTimezones( const QStringList &list );
 
   private:
-    QHash<QString,QColor> mCategoryColors;
-    QColor mDefaultCategoryColor;
-
-    QHash<QString,QColor> mResourceColors;
-    QColor mDefaultResourceColor;
 
     QFont mDefaultMonthViewFont;
 
