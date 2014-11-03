@@ -139,27 +139,6 @@ private:
     void updateSourceIndex(const QModelIndex &sourceIndex);
 };
 
-class CollectionSearchJob : public KJob
-{
-    Q_OBJECT
-public:
-    explicit CollectionSearchJob(const QString &searchString, QObject* parent = 0);
-
-    virtual void start();
-
-    Akonadi::Collection::List matchingCollections() const;
-
-private Q_SLOTS:
-    void onCollectionsReceived(const Akonadi::Collection::List &);
-    void onCollectionsFetched(KJob *);
-    void onAncestorsFetched(KJob *);
-
-private:
-    QString mSearchString;
-    Akonadi::Collection::List mMatchingCollections;
-    Akonadi::Collection::List mAncestors;
-};
-
 class PersonSearchJob : public KJob
 {
     Q_OBJECT
@@ -193,6 +172,8 @@ private:
     bool mCollectionSearchDone;
     bool mLdapSearchDone;
 };
+
+class CollectionSearchJob;
 
 /**
  * Add search results to the search model, and use the selection to add results to the person model.

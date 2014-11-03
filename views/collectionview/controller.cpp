@@ -35,6 +35,8 @@
 #include <baloo/pim/collectionquery.h>
 #include <akonadi/collectionidentificationattribute.h>
 
+#include "collectionsearchjob.h"
+
 CollectionNode::CollectionNode(ReparentingModel& personModel, const Akonadi::Collection& col)
 :   Node(personModel),
     mCollection(col),
@@ -282,107 +284,6 @@ void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
     if (p.rootCollection > -1) {
         model.removeNode(PersonNode(model, p, sourceIndex));
     }
-}
-
-CollectionSearchJob::CollectionSearchJob(const QString& searchString, QObject* parent)
-    : KJob(parent),
-    mSearchString(searchString)
-{
-}
-
-void CollectionSearchJob::start()
-{
-    Baloo::PIM::CollectionQuery query;
-    //We exclude the other users namespace
-    query.setNamespace(QStringList() << QLatin1String("shared") << QLatin1String(""));
-    query.pathMatches(mSearchString);
-    query.setMimetype(QStringList() << QLatin1String("text/calendar"));
-    query.setLimit(200);
-    Baloo::PIM::ResultIterator it = query.exec();
-    Akonadi::Collection::List collections;
-    while (it.next()) {
-        collections << Akonadi::Collection(it.id());
-    }
-    kDebug() << "Found collections " << collections.size();
-    
-    if (collections.isEmpty()) {
-        //We didn't find anything
-        emitResult();
-        return;
-    }
-
-    Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collections, Akonadi::CollectionFetchJob::Base, this);
-    fetchJob->fetchScope().setAncestorRetrieval(Akonadi::CollectionFetchScope::All);
-    fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-    connect(fetchJob, SIGNAL(collectionsReceived(Akonadi::Collection::List)), this, SLOT(onCollectionsReceived(Akonadi::Collection::List)));
-    connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onCollectionsFetched(KJob*)));
-}
-
-void CollectionSearchJob::onCollectionsReceived(const Akonadi::Collection::List &list)
-{
-    Q_FOREACH(const Akonadi::Collection &col, list) {
-        if (col.name().contains(mSearchString)) {
-            mMatchingCollections << col;
-            Akonadi::Collection ancestor = col.parentCollection();
-            while (ancestor.isValid() && (ancestor != Akonadi::Collection::root())) {
-                if (!mAncestors.contains(ancestor)) {
-                    mAncestors << ancestor;
-                }
-                ancestor = ancestor.parentCollection();
-            }
-        }
-    }
-}
-
-void CollectionSearchJob::onCollectionsFetched(KJob *job)
-{
-    if (job->error()) {
-        kWarning() << job->errorString();
-    }
-    if (!mAncestors.isEmpty()) {
-        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(mAncestors, Akonadi::CollectionFetchJob::Base, this);
-        fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-        connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onAncestorsFetched(KJob*)));
-    } else {
-        //We didn't find anything
-        emitResult();
-    }
-}
-
-static Akonadi::Collection replaceParent(Akonadi::Collection col, const Akonadi::Collection::List &ancestors)
-{
-    if (!col.isValid()) {
-        return col;
-    }
-    const Akonadi::Collection parent = replaceParent(col.parentCollection(), ancestors);
-    Q_FOREACH (const Akonadi::Collection &c, ancestors) {
-        if (col == c) {
-            col = c;
-            break;
-        }
-    }
-    col.setParentCollection(parent);
-    return col;
-}
-
-void CollectionSearchJob::onAncestorsFetched(KJob *job)
-{
-    if (job->error()) {
-        kWarning() << job->errorString();
-    }
-    Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob*>(job);
-    Akonadi::Collection::List matchingCollections;
-    Q_FOREACH (const Akonadi::Collection &c, mMatchingCollections) {
-        //We need to replace the parents with the version that contains the name, so we can display it accordingly
-        matchingCollections << replaceParent(c, fetchJob->collections());
-    }
-    mMatchingCollections = matchingCollections;
-    emitResult();
-}
-
-Akonadi::Collection::List CollectionSearchJob::matchingCollections() const
-{
-    return mMatchingCollections;
 }
 
 
