@@ -1251,7 +1251,7 @@ void ActionManager::updateConfig()
 void ActionManager::configureDateTime()
 {
   KProcess proc;
-  proc << QLatin1String("kcmshell4") << QLatin1String("language");
+  proc << QLatin1String("kcmshell5") << QLatin1String("language");
 
   if ( !proc.startDetached() ) {
     KMessageBox::sorry( dialogParent(),
