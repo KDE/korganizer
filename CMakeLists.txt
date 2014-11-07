@@ -261,7 +261,7 @@ set(korganizerprivate_LIB_SRCS
     korganizer_core
     korganizer_interfaces
     KF5::AkonadiCore
-    KF5::Abc
+    KF5::Contacts
     KF5::CalendarCore
     KF5::CalendarUtils
     KF5::Holidays

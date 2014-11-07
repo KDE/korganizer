@@ -72,7 +72,7 @@ class KOrg::HtmlExportJob::Private
     QWidget *mParentWidget;
     QMap<QDate,QString> mHolidayMap;
     qulonglong mSubJobCount;
-    QMap<QString, KABC::Addressee> mOrganizersMap;
+    QMap<QString, KContacts::Addressee> mOrganizersMap;
 };
 //@endcond
 
@@ -135,7 +135,7 @@ void HtmlExportJob::receivedOrganizerInfo( KJob *job )
 
   if ( !job->error() ) {
     Akonadi::ContactSearchJob *searchJob = qobject_cast<Akonadi::ContactSearchJob*>( job );
-    const KABC::Addressee::List contacts = searchJob->contacts();
+    const KContacts::Addressee::List contacts = searchJob->contacts();
     if ( !contacts.isEmpty() ) {
       d->mOrganizersMap.insert(
         searchJob->property( "incidenceUid" ).toString(), contacts.first() );
@@ -743,7 +743,7 @@ void HtmlExportJob::formatAttendees( QTextStream *ts, const KCalCore::Incidence:
   KCalCore::Attendee::List attendees = incidence->attendees();
   if ( attendees.count() ) {
     *ts << "<em>";
-    const KABC::Addressee organizer = d->mOrganizersMap.value( incidence->uid() );
+    const KContacts::Addressee organizer = d->mOrganizersMap.value( incidence->uid() );
     if ( !organizer.isEmpty() ) {
       *ts << "<a href=\"mailto:" << incidence->organizer()->email() << "\">";
       *ts << cleanChars( organizer.formattedName() ) << "</a>" << endl;
