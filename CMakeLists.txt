@@ -198,7 +198,6 @@ set(korganizerprivate_LIB_SRCS
     navigatorbar.cpp
     previewdialog.cpp
     searchdialog.cpp
-    statusdialog.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
