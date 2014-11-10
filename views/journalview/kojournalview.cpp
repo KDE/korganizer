@@ -49,8 +49,8 @@ KOJournalView::KOJournalView( QWidget *parent )
 
   layout->addWidget( mJournalView );
 
-  connect( mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr)),
-           SLOT(printJournal(KCalCore::Journal::Ptr)) );
+  connect( mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr,bool)),
+           SLOT(printJournal(KCalCore::Journal::Ptr,bool)) );
 
   connect( mJournalView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
@@ -175,7 +175,7 @@ void KOJournalView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
   mJournalView->setCalendar( calendar );
 }
 
-void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal )
+void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal, bool preview )
 {
   if ( journal ) {
     CalendarSupport::CalPrinter printer( this, calendar(), true );
@@ -189,7 +189,7 @@ void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal )
     const QString ss = styleSheet();
     setStyleSheet( QString() );
     printer.print( CalendarSupport::CalPrinterBase::Incidence,
-                   dtStart, dtStart, selectedIncidences );
+                   dtStart, dtStart, selectedIncidences, preview );
     setStyleSheet( ss );
   }
 }

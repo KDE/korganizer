@@ -74,7 +74,7 @@ class KOJournalView : public KOrg::BaseView
     void changeIncidenceDisplay( const Akonadi::Item &incidence,
                                  Akonadi::IncidenceChanger::ChangeType );
     void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
-    void printJournal( const KCalCore::Journal::Ptr &journal );
+    void printJournal( const KCalCore::Journal::Ptr &journal, bool preview );
 
   private:
     EventViews::JournalView *mJournalView;
