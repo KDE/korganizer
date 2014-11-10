@@ -216,7 +216,6 @@ set(korganizerprivate_LIB_SRCS
     kogroupwareprefspage.ui
     multiagendaviewconfigwidget.ui
     searchdialog_base.ui
-    timescaleedit_base.ui
   )
 
   qt4_add_resources(korganizerprivate_LIB_SRCS
