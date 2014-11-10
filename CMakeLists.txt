@@ -178,7 +178,6 @@ set(korganizerprivate_LIB_SRCS
     datechecker.cpp
     datenavigator.cpp
     datenavigatorcontainer.cpp
-    docprefs.cpp
     exportwebdialog.cpp
     filtereditdialog.cpp
     htmlexportjob.cpp
@@ -214,7 +213,7 @@ set(korganizerprivate_LIB_SRCS
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
     filteredit_base.ui
     kogroupwareprefspage.ui
-    multiagendaviewconfigwidget.ui
+    views/multiagendaview/multiagendaviewconfigwidget.ui
     searchdialog_base.ui
   )
 
