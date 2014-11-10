@@ -178,7 +178,6 @@ set(korganizerprivate_LIB_SRCS
     datechecker.cpp
     datenavigator.cpp
     datenavigatorcontainer.cpp
-    docprefs.cpp
     exportwebdialog.cpp
     filtereditdialog.cpp
     htmlexportjob.cpp
@@ -198,7 +197,6 @@ set(korganizerprivate_LIB_SRCS
     navigatorbar.cpp
     previewdialog.cpp
     searchdialog.cpp
-    statusdialog.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
@@ -215,9 +213,8 @@ set(korganizerprivate_LIB_SRCS
   ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     filteredit_base.ui
     kogroupwareprefspage.ui
-    multiagendaviewconfigwidget.ui
+    views/multiagendaview/multiagendaviewconfigwidget.ui
     searchdialog_base.ui
-    timescaleedit_base.ui
   )
 
   qt5_add_resources(korganizerprivate_LIB_SRCS
