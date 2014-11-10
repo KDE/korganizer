@@ -197,7 +197,6 @@ set(korganizerprivate_LIB_SRCS
     kowindowlist.cpp
     navigatorbar.cpp
     previewdialog.cpp
-    publishdialog.cpp
     searchdialog.cpp
     statusdialog.cpp
     views/agendaview/koagendaview.cpp
@@ -217,7 +216,6 @@ set(korganizerprivate_LIB_SRCS
     filteredit_base.ui
     kogroupwareprefspage.ui
     multiagendaviewconfigwidget.ui
-    publishdialog_base.ui
     searchdialog_base.ui
     timescaleedit_base.ui
   )
