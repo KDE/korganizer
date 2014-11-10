@@ -29,14 +29,14 @@ class KComboBox;
 
 class StatusDialog : public QDialog
 {
-  Q_OBJECT
-  public:
-    explicit StatusDialog( QWidget *parent=0 );
+    Q_OBJECT
+public:
+    explicit StatusDialog(QWidget *parent = 0);
     ~StatusDialog();
 
     KCalCore::Attendee::PartStat status();
 
-  private:
+private:
     KComboBox *mStatus;
 };
 

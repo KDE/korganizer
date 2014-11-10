@@ -27,11 +27,12 @@
 #include "korganizerprivate_export.h"
 #include <k4aboutdata.h>
 
-namespace KOrg {
+namespace KOrg
+{
 
 class KORGANIZERPRIVATE_EXPORT AboutData : public K4AboutData
 {
-  public:
+public:
     AboutData();
 };
 

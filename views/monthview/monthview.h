@@ -28,13 +28,14 @@
 
 #include "koeventview.h"
 
-namespace KOrg {
+namespace KOrg
+{
 
 class MonthView : public KOEventView
 {
-  Q_OBJECT
-  public:
-    explicit MonthView( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit MonthView(QWidget *parent = 0);
     ~MonthView();
 
     int currentDateCount() const;
@@ -48,7 +49,7 @@ class MonthView : public KOEventView
     QDateTime selectionStart();
 
     QDateTime selectionEnd();
-    bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
     /**
      * Returns the average date in the view
@@ -63,30 +64,30 @@ class MonthView : public KOEventView
 
     int maxDatesHint() const;
 
-    void setTypeAheadReceiver( QObject *o );
+    void setTypeAheadReceiver(QObject *o);
 
-    void setDateRange( const KDateTime &start, const KDateTime &end,
-                       const QDate &preferredMonth = QDate() );
+    void setDateRange(const KDateTime &start, const KDateTime &end,
+                      const QDate &preferredMonth = QDate());
 
-    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
 
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
 
-  public slots:
+public slots:
     void updateView();
 
-    void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
 
-    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
 
     void updateConfig();
 
-  signals:
-    void fullViewChanged( bool enabled );
+signals:
+    void fullViewChanged(bool enabled);
 
-  private:
-    void showDates( const QDate &start, const QDate &end,
-                    const QDate &preferredMonth = QDate() );
+private:
+    void showDates(const QDate &start, const QDate &end,
+                   const QDate &preferredMonth = QDate());
 
     class Private;
     Private *const d;

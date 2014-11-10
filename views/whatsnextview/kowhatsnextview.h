@@ -32,27 +32,36 @@
 */
 class KOWhatsNextView : public KOrg::BaseView
 {
-  Q_OBJECT
-  public:
-    explicit KOWhatsNextView( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit KOWhatsNextView(QWidget *parent = 0);
     ~KOWhatsNextView();
 
     virtual int currentDateCount() const;
-    virtual Akonadi::Item::List selectedIncidences() { return Akonadi::Item::List(); }
-    KCalCore::DateList selectedIncidenceDates() { return KCalCore::DateList(); }
+    virtual Akonadi::Item::List selectedIncidences()
+    {
+        return Akonadi::Item::List();
+    }
+    KCalCore::DateList selectedIncidenceDates()
+    {
+        return KCalCore::DateList();
+    }
 
-    bool supportsDateNavigation() const { return true; }
+    bool supportsDateNavigation() const
+    {
+        return true;
+    }
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
-    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     virtual void updateView();
-    virtual void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth );
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth);
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
 
-    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
 
-  private:
+private:
     EventViews::WhatsNextView *mView;
 };
 

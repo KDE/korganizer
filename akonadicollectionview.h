@@ -32,10 +32,11 @@
 
 class AkonadiCollectionView;
 
-namespace Akonadi {
-  class EntityTreeView;
-  class EntityTreeModel;
-  class StandardCalendarActionManager;
+namespace Akonadi
+{
+class EntityTreeView;
+class EntityTreeModel;
+class StandardCalendarActionManager;
 }
 
 class QAction;
@@ -48,15 +49,15 @@ class QModelIndex;
  */
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 {
-  public:
-    explicit AkonadiCollectionViewFactory( CalendarView *view );
+public:
+    explicit AkonadiCollectionViewFactory(CalendarView *view);
 
     CalendarView *view() const;
     AkonadiCollectionView *collectionView() const;
 
-    CalendarViewExtension *create( QWidget * );
+    CalendarViewExtension *create(QWidget *);
 
-  private:
+private:
     CalendarView *mView;
     AkonadiCollectionView *mAkonadiCollectionView;
 };
@@ -66,44 +67,44 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
  */
 class AkonadiCollectionView : public CalendarViewExtension
 {
-  Q_OBJECT
-  public:
-    explicit AkonadiCollectionView( CalendarView *view, bool hasContextMenu = true,
-                                    QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit AkonadiCollectionView(CalendarView *view, bool hasContextMenu = true,
+                                   QWidget *parent = 0);
     ~AkonadiCollectionView();
 
     Akonadi::EntityTreeView *view() const;
 
     KCheckableProxyModel *collectionSelectionProxyModel() const;
-    void setCollectionSelectionProxyModel( KCheckableProxyModel * );
+    void setCollectionSelectionProxyModel(KCheckableProxyModel *);
 
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
     bool isChecked(const Akonadi::Collection &) const;
 
-  Q_SIGNALS:
-    void resourcesChanged( bool enabled );
+Q_SIGNALS:
+    void resourcesChanged(bool enabled);
     void resourcesAddedRemoved();
-    void defaultResourceChanged( const Akonadi::Collection & );
+    void defaultResourceChanged(const Akonadi::Collection &);
     void colorsChanged();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void updateView();
     void updateMenu();
     void restoreTreeState();
-    void checkNewCalendar( const QModelIndex &parent, int begin, int end );
+    void checkNewCalendar(const QModelIndex &parent, int begin, int end);
 
     void newCalendar();
-    void newCalendarDone( KJob * );
+    void newCalendarDone(KJob *);
 
     void deleteCalendar();
-    void deleteCalendarDone( KJob * );
-    void rowsInserted( const QModelIndex &, int, int );
+    void deleteCalendarDone(KJob *);
+    void rowsInserted(const QModelIndex &, int, int);
     void assignColor();
     void disableColor();
     void setDefaultCalendar();
 
-  private:
+private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
 
     Akonadi::StandardCalendarActionManager *mActionManager;
@@ -116,6 +117,6 @@ class AkonadiCollectionView : public CalendarViewExtension
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;
     bool mHasContextMenu;
-  };
+};
 
 #endif

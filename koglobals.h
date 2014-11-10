@@ -29,8 +29,9 @@
 
 #include <KComponentData>
 
-namespace KHolidays {
-  class HolidayRegion;
+namespace KHolidays
+{
+class HolidayRegion;
 }
 
 class KCalendarSystem;
@@ -38,8 +39,8 @@ class KConfig;
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
 {
-  friend class KOGlobalsSingletonPrivate;
-  public:
+    friend class KOGlobalsSingletonPrivate;
+public:
     static KOGlobals *self();
 
     KConfig *config() const;
@@ -50,16 +51,16 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     ~KOGlobals();
 
-    QPixmap smallIcon( const QString &name ) const;
+    QPixmap smallIcon(const QString &name) const;
 
-    QMap<QDate,QStringList> holiday( const QDate &start, const QDate &end ) const;
+    QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
 
-    bool isWorkDay( const QDate &qd ) const;
+    bool isWorkDay(const QDate &qd) const;
 
     /**
        Returns a list containing work days between @p start and @end.
     */
-    QList<QDate> workDays( const QDate &start, const QDate &end ) const;
+    QList<QDate> workDays(const QDate &start, const QDate &end) const;
 
     int getWorkWeekMask();
 
@@ -68,18 +69,21 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
        @param h a HolidayRegion object initialized with the desired locale.
        We capture this object, so you must not delete it.
     */
-    void setHolidays( KHolidays::HolidayRegion *h );
+    void setHolidays(KHolidays::HolidayRegion *h);
 
     /** return the HolidayRegion object or 0 if none has been defined
     */
     KHolidays::HolidayRegion *holidays() const;
 
-    const KComponentData &componentData() const { return mOwnInstance; }
+    const KComponentData &componentData() const
+    {
+        return mOwnInstance;
+    }
 
-  protected:
+protected:
     KOGlobals();
 
-  private:
+private:
     KComponentData mOwnInstance;
     KHolidays::HolidayRegion *mHolidays;
 };

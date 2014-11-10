@@ -36,39 +36,39 @@
 #include <KGuiItem>
 #include <KConfigGroup>
 
-StatusDialog::StatusDialog( QWidget *parent )
-  : QDialog( parent )
+StatusDialog::StatusDialog(QWidget *parent)
+    : QDialog(parent)
 {
-  setModal( true );
-  setWindowTitle( i18n( "Set Your Status" ) );
+    setModal(true);
+    setWindowTitle(i18n("Set Your Status"));
 
-  QBoxLayout *topLayout = new QVBoxLayout( this );
-  //QT5 topLayout->setSpacing( spacingHint() );
-  //QT5 topLayout->setMargin( marginHint() );
+    QBoxLayout *topLayout = new QVBoxLayout(this);
+    //QT5 topLayout->setSpacing( spacingHint() );
+    //QT5 topLayout->setMargin( marginHint() );
 
-  QBoxLayout *statusLayout = new QHBoxLayout();
-  topLayout->addItem( statusLayout );
+    QBoxLayout *statusLayout = new QHBoxLayout();
+    topLayout->addItem(statusLayout);
 
-  QLabel *text = new QLabel( i18n( "Set your status" ), this );
-  statusLayout->addWidget( text );
+    QLabel *text = new QLabel(i18n("Set your status"), this);
+    statusLayout->addWidget(text);
 
-  mStatus = new KComboBox( this );
-  mStatus->setEditable( false );
-  mStatus->addItems( KCalUtils::Stringify::attendeeStatusList() );
-  statusLayout->addWidget( mStatus );
+    mStatus = new KComboBox(this);
+    mStatus->setEditable(false);
+    mStatus->addItems(KCalUtils::Stringify::attendeeStatusList());
+    statusLayout->addWidget(mStatus);
 
-  QBoxLayout *buttonLayout = new QHBoxLayout();
-  topLayout->addItem( buttonLayout );
+    QBoxLayout *buttonLayout = new QHBoxLayout();
+    topLayout->addItem(buttonLayout);
 
-  QPushButton *ok = new QPushButton(this );
-  KGuiItem::assign(ok, KStandardGuiItem::ok());
-  connect(ok, &QPushButton::clicked, this, &StatusDialog::accept);
-  buttonLayout->addWidget( ok );
+    QPushButton *ok = new QPushButton(this);
+    KGuiItem::assign(ok, KStandardGuiItem::ok());
+    connect(ok, &QPushButton::clicked, this, &StatusDialog::accept);
+    buttonLayout->addWidget(ok);
 
-  QPushButton *cancel = new QPushButton(this );
-  KGuiItem::assign(cancel, KStandardGuiItem::cancel());
-  connect(cancel, &QPushButton::clicked, this, &StatusDialog::reject);
-  buttonLayout->addWidget( cancel );
+    QPushButton *cancel = new QPushButton(this);
+    KGuiItem::assign(cancel, KStandardGuiItem::cancel());
+    connect(cancel, &QPushButton::clicked, this, &StatusDialog::reject);
+    buttonLayout->addWidget(cancel);
 }
 
 StatusDialog::~StatusDialog()
@@ -77,6 +77,6 @@ StatusDialog::~StatusDialog()
 
 KCalCore::Attendee::PartStat StatusDialog::status()
 {
-  return KCalCore::Attendee::PartStat( mStatus->currentIndex() ) ;
+    return KCalCore::Attendee::PartStat(mStatus->currentIndex()) ;
 }
 

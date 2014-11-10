@@ -32,46 +32,46 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 
-ConfigDialog::ConfigDialog( QWidget *parent )
-  :QDialog( parent )
+ConfigDialog::ConfigDialog(QWidget *parent)
+    : QDialog(parent)
 {
-  QFrame *topFrame = new QFrame( this );
-  
+    QFrame *topFrame = new QFrame(this);
+
 //PORTING: Verify that widget was added to mainLayout:   setMainWidget( topFrame );
 // Add mainLayout->addWidget(topFrame); if necessary
-  setWindowTitle( i18n( "Configure Holidays" ) );
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
-  mainLayout->addWidget(topFrame);
-  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
-  okButton->setDefault(true);
-  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
-  mainLayout->addWidget(buttonBox);
-  okButton->setDefault(true);
-  setModal( true );
-  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setMargin( 0 );
-  //QT5topLayout->setSpacing( spacingHint() );
+    setWindowTitle(i18n("Configure Holidays"));
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    setLayout(mainLayout);
+    mainLayout->addWidget(topFrame);
+    QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+    okButton->setDefault(true);
+    okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
+    mainLayout->addWidget(buttonBox);
+    okButton->setDefault(true);
+    setModal(true);
+    QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
+    topLayout->setMargin(0);
+    //QT5topLayout->setSpacing( spacingHint() );
 
-  mIsraelBox = new QCheckBox( topFrame );
-  mIsraelBox->setText( i18n( "Use Israeli holidays" ) );
-  topLayout->addWidget( mIsraelBox );
+    mIsraelBox = new QCheckBox(topFrame);
+    mIsraelBox->setText(i18n("Use Israeli holidays"));
+    topLayout->addWidget(mIsraelBox);
 
-  mParshaBox = new QCheckBox( topFrame );
-  mParshaBox->setText( i18n( "Show weekly parsha" ) );
-  topLayout->addWidget( mParshaBox );
+    mParshaBox = new QCheckBox(topFrame);
+    mParshaBox->setText(i18n("Show weekly parsha"));
+    topLayout->addWidget(mParshaBox);
 
-  mOmerBox = new QCheckBox( topFrame );
-  mOmerBox->setText( i18n( "Show day of Omer" ) );
-  topLayout->addWidget( mOmerBox );
+    mOmerBox = new QCheckBox(topFrame);
+    mOmerBox->setText(i18n("Show day of Omer"));
+    topLayout->addWidget(mOmerBox);
 
-  mCholBox = new QCheckBox( topFrame );
-  mCholBox->setText( i18n( "Show Chol HaMoed" ) );
-  topLayout->addWidget( mCholBox );
-  connect(okButton, &QPushButton::clicked, this, &ConfigDialog::slotOk);
-  load();
+    mCholBox = new QCheckBox(topFrame);
+    mCholBox->setText(i18n("Show Chol HaMoed"));
+    topLayout->addWidget(mCholBox);
+    connect(okButton, &QPushButton::clicked, this, &ConfigDialog::slotOk);
+    load();
 }
 
 ConfigDialog::~ConfigDialog()
@@ -80,31 +80,31 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config( QLatin1String("korganizerrc") );
+    KConfig config(QLatin1String("korganizerrc"));
 
-  KConfigGroup group( &config, "Hebrew Calendar Plugin" );
-  mIsraelBox->setChecked(
-    group.readEntry( "UseIsraelSettings",
-                     ( KLocale::global()->country() == QLatin1String( ".il" ) ) ) );
-  mParshaBox->setChecked( group.readEntry( "ShowParsha", true ) );
-  mCholBox->setChecked( group.readEntry( "ShowChol_HaMoed", true ) );
-  mOmerBox->setChecked( group.readEntry( "ShowOmer", true ) );
+    KConfigGroup group(&config, "Hebrew Calendar Plugin");
+    mIsraelBox->setChecked(
+        group.readEntry("UseIsraelSettings",
+                        (KLocale::global()->country() == QLatin1String(".il"))));
+    mParshaBox->setChecked(group.readEntry("ShowParsha", true));
+    mCholBox->setChecked(group.readEntry("ShowChol_HaMoed", true));
+    mOmerBox->setChecked(group.readEntry("ShowOmer", true));
 }
 
 void ConfigDialog::save()
 {
-  KConfig config( QLatin1String("korganizerrc" ));
-  KConfigGroup group( &config, "Hebrew Calendar Plugin" );
-  group.writeEntry( "UseIsraelSettings", mIsraelBox->isChecked() );
-  group.writeEntry( "ShowParsha", mParshaBox->isChecked() );
-  group.writeEntry( "ShowChol_HaMoed", mCholBox->isChecked() );
-  group.writeEntry( "ShowOmer", mOmerBox->isChecked() );
-  group.sync();
+    KConfig config(QLatin1String("korganizerrc"));
+    KConfigGroup group(&config, "Hebrew Calendar Plugin");
+    group.writeEntry("UseIsraelSettings", mIsraelBox->isChecked());
+    group.writeEntry("ShowParsha", mParshaBox->isChecked());
+    group.writeEntry("ShowChol_HaMoed", mCholBox->isChecked());
+    group.writeEntry("ShowOmer", mOmerBox->isChecked());
+    group.sync();
 }
 
 void ConfigDialog::slotOk()
 {
-  save();
-  accept();
+    save();
+    accept();
 }
 

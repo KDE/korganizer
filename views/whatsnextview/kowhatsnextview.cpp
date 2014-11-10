@@ -25,69 +25,69 @@
 #include "kowhatsnextview.h"
 #include <QVBoxLayout>
 
-KOWhatsNextView::KOWhatsNextView( QWidget *parent )
-  : KOrg::BaseView( parent )
+KOWhatsNextView::KOWhatsNextView(QWidget *parent)
+    : KOrg::BaseView(parent)
 {
-  mView = new EventViews::WhatsNextView( this );
-  QVBoxLayout *topLayout = new QVBoxLayout( this );
-  topLayout->addWidget(mView);
+    mView = new EventViews::WhatsNextView(this);
+    QVBoxLayout *topLayout = new QVBoxLayout(this);
+    topLayout->addWidget(mView);
 
-  connect( mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+    connect(mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
 
-  connect( mView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+            SIGNAL(showIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+            SIGNAL(editIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(pasteIncidenceSignal()),
-           SIGNAL(pasteIncidenceSignal()) );
+    connect(mView, SIGNAL(pasteIncidenceSignal()),
+            SIGNAL(pasteIncidenceSignal()));
 
-  connect( mView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+    connect(mView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
 
-  connect( mView, SIGNAL(newEventSignal()),
-           SIGNAL(newEventSignal()) );
+    connect(mView, SIGNAL(newEventSignal()),
+            SIGNAL(newEventSignal()));
 
-  connect( mView, SIGNAL(newEventSignal(QDate)),
-           SIGNAL(newEventSignal(QDate)) );
+    connect(mView, SIGNAL(newEventSignal(QDate)),
+            SIGNAL(newEventSignal(QDate)));
 
-  connect( mView, SIGNAL(newEventSignal(QDateTime)),
-           SIGNAL(newEventSignal(QDateTime)) );
+    connect(mView, SIGNAL(newEventSignal(QDateTime)),
+            SIGNAL(newEventSignal(QDateTime)));
 
-  connect( mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+    connect(mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+            SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-  connect( mView, SIGNAL(newTodoSignal(QDate)),
-           SIGNAL(newTodoSignal(QDate)) );
+    connect(mView, SIGNAL(newTodoSignal(QDate)),
+            SIGNAL(newTodoSignal(QDate)));
 
-  connect( mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+            SIGNAL(newSubTodoSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(newJournalSignal(QDate)),
-           SIGNAL(newJournalSignal(QDate)) );
+    connect(mView, SIGNAL(newJournalSignal(QDate)),
+            SIGNAL(newJournalSignal(QDate)));
 }
 
 KOWhatsNextView::~KOWhatsNextView()
@@ -96,43 +96,43 @@ KOWhatsNextView::~KOWhatsNextView()
 
 int KOWhatsNextView::currentDateCount() const
 {
-  return mView->currentDateCount();
+    return mView->currentDateCount();
 }
 
 void KOWhatsNextView::updateView()
 {
-  mView->updateView();
+    mView->updateView();
 }
 
-void KOWhatsNextView::showDates( const QDate &start, const QDate &end, const QDate &dummy )
+void KOWhatsNextView::showDates(const QDate &start, const QDate &end, const QDate &dummy)
 {
-  mView->showDates( start, end, dummy );
+    mView->showDates(start, end, dummy);
 }
 
-void KOWhatsNextView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
+void KOWhatsNextView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
-  mView->showIncidences( incidenceList, date );
+    mView->showIncidences(incidenceList, date);
 }
 
-void KOWhatsNextView::changeIncidenceDisplay( const Akonadi::Item &,
-                                              Akonadi::IncidenceChanger::ChangeType )
+void KOWhatsNextView::changeIncidenceDisplay(const Akonadi::Item &,
+        Akonadi::IncidenceChanger::ChangeType)
 {
-  updateView();
+    updateView();
 }
 
 CalendarSupport::CalPrinterBase::PrintType KOWhatsNextView::printType() const
 {
-  // If up to three days are selected, use day style, otherwise week
-  if ( currentDateCount() <= 3 ) {
-    return CalendarSupport::CalPrinterBase::Day;
-  } else {
-    return CalendarSupport::CalPrinterBase::Week;
-  }
+    // If up to three days are selected, use day style, otherwise week
+    if (currentDateCount() <= 3) {
+        return CalendarSupport::CalPrinterBase::Day;
+    } else {
+        return CalendarSupport::CalPrinterBase::Week;
+    }
 }
 
-void KOWhatsNextView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
+void KOWhatsNextView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
-  KOrg::BaseView::setCalendar( cal );
-  mView->setCalendar( cal );
+    KOrg::BaseView::setCalendar(cal);
+    mView->setCalendar(cal);
 }
 

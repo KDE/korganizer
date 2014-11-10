@@ -26,24 +26,24 @@
 
 #include <calendarsupport/kcalprefs.h>
 
-QColor KOCoreHelper::categoryColor( const QStringList &categories )
+QColor KOCoreHelper::categoryColor(const QStringList &categories)
 {
-  if ( categories.isEmpty() ) {
-    return CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
-  }
-  // FIXME: Correctly treat events with multiple categories
-  const QString cat = categories.first();
-  QColor bgColor;
-  if ( cat.isEmpty() ) {
-    bgColor = CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
-  } else {
-    bgColor = CalendarSupport::KCalPrefs::instance()->categoryColor( cat );
-  }
-  return bgColor;
+    if (categories.isEmpty()) {
+        return CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
+    }
+    // FIXME: Correctly treat events with multiple categories
+    const QString cat = categories.first();
+    QColor bgColor;
+    if (cat.isEmpty()) {
+        bgColor = CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
+    } else {
+        bgColor = CalendarSupport::KCalPrefs::instance()->categoryColor(cat);
+    }
+    return bgColor;
 }
 
-QString KOCoreHelper::holidayString( const QDate &dt )
+QString KOCoreHelper::holidayString(const QDate &dt)
 {
-  QStringList lst( KOGlobals::self()->holiday( dt, dt )[dt] );
-  return lst.join( i18nc( "@item:intext delimiter for joining holiday names", "," ) );
+    QStringList lst(KOGlobals::self()->holiday(dt, dt)[dt]);
+    return lst.join(i18nc("@item:intext delimiter for joining holiday names", ","));
 }

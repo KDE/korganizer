@@ -37,15 +37,15 @@
 */
 class KOEventPopupMenu : public QMenu
 {
-  Q_OBJECT
-  public:
-    explicit KOEventPopupMenu( Akonadi::ETMCalendar * , QWidget *parent = 0 );
-    void setCalendar( const Akonadi::ETMCalendar::Ptr &calendar );
+    Q_OBJECT
+public:
+    explicit KOEventPopupMenu(Akonadi::ETMCalendar *, QWidget *parent = 0);
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &calendar);
 
-  public slots:
-    void showIncidencePopup( const Akonadi::Item &, const QDate & );
+public slots:
+    void showIncidencePopup(const Akonadi::Item &, const QDate &);
 
-  protected slots:
+protected slots:
     void popupShow();
     void popupEdit();
     void popupPaste();
@@ -59,22 +59,22 @@ class KOEventPopupMenu : public QMenu
     void dissociateOccurrences();
     void forward();
 
-  signals:
+signals:
     void configChanged();
-    void editIncidenceSignal( const Akonadi::Item & );
-    void showIncidenceSignal( const Akonadi::Item & );
-    void deleteIncidenceSignal( const Akonadi::Item & );
-    void cutIncidenceSignal( const Akonadi::Item & );
-    void copyIncidenceSignal( const Akonadi::Item & );
+    void editIncidenceSignal(const Akonadi::Item &);
+    void showIncidenceSignal(const Akonadi::Item &);
+    void deleteIncidenceSignal(const Akonadi::Item &);
+    void cutIncidenceSignal(const Akonadi::Item &);
+    void copyIncidenceSignal(const Akonadi::Item &);
     void pasteIncidenceSignal();
-    void toggleAlarmSignal( const Akonadi::Item & );
-    void toggleTodoCompletedSignal( const Akonadi::Item & );
-    void copyIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
-    void moveIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
-    void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
+    void toggleAlarmSignal(const Akonadi::Item &);
+    void toggleTodoCompletedSignal(const Akonadi::Item &);
+    void copyIncidenceToResourceSignal(const Akonadi::Item &, const QString &);
+    void moveIncidenceToResourceSignal(const Akonadi::Item &, const QString &);
+    void dissociateOccurrencesSignal(const Akonadi::Item &, const QDate &);
 
-  private:
-    void print( bool previous );
+private:
+    void print(bool previous);
 
     Akonadi::ETMCalendar::Ptr mCalendar;
     Akonadi::Item mCurrentIncidence;

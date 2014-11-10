@@ -25,7 +25,6 @@
 
 #include <KCModule>
 
-
 class QLabel;
 class QPushButton;
 class QTreeWidget;
@@ -33,37 +32,37 @@ class QTreeWidgetItem;
 
 class KCMDesignerFields : public KCModule
 {
-  Q_OBJECT
-  public:
-    explicit KCMDesignerFields( QWidget *parent=0,
-                                const QVariantList &args=QVariantList() );
+    Q_OBJECT
+public:
+    explicit KCMDesignerFields(QWidget *parent = 0,
+                               const QVariantList &args = QVariantList());
 
     virtual void load();
     virtual void save();
     virtual void defaults();
 
-  protected:
+protected:
     void loadUiFiles();
-    void loadActivePages( const QStringList & );
+    void loadActivePages(const QStringList &);
     QStringList saveActivePages();
 
     virtual QString localUiDir() = 0;
     virtual QString uiPath() = 0;
-    virtual void writeActivePages( const QStringList & ) = 0;
+    virtual void writeActivePages(const QStringList &) = 0;
     virtual QStringList readActivePages() = 0;
     virtual QString applicationName() = 0;
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void updatePreview();
-    void itemClicked( QTreeWidgetItem * );
+    void itemClicked(QTreeWidgetItem *);
     void startDesigner();
     void rebuildList();
     void deleteFile();
     void importFile();
     void delayedInit();
-    void showWhatsThis( const QString &href );
+    void showWhatsThis(const QString &href);
 
-  private:
+private:
     void initGUI();
 
     QTreeWidget *mPageView;

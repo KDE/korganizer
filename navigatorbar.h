@@ -32,34 +32,34 @@ class QToolButton;
 
 class NavigatorBar: public QWidget
 {
-  Q_OBJECT
-  public:
-    explicit NavigatorBar( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit NavigatorBar(QWidget *parent = 0);
     ~NavigatorBar();
 
-    void showButtons( bool left, bool right );
+    void showButtons(bool left, bool right);
 
-  public slots:
-    void selectDates( const KCalCore::DateList & );
+public slots:
+    void selectDates(const KCalCore::DateList &);
 
-  signals:
+signals:
     void nextMonthClicked();
     void prevMonthClicked();
     void nextYearClicked();
     void prevYearClicked();
-    void monthSelected( int month );
-    void yearSelected( int year );
+    void monthSelected(int month);
+    void yearSelected(int year);
 
-  protected:
-    QToolButton *createNavigationButton( const QString &icon,
-                                         const QString &toolTip,
-                                         const QString &whatsThis );
+protected:
+    QToolButton *createNavigationButton(const QString &icon,
+                                        const QString &toolTip,
+                                        const QString &whatsThis);
 
-  private slots:
+private slots:
     void selectMonthFromMenu();
     void selectYearFromMenu();
 
-  private:
+private:
     QDate mDate;
 
     QToolButton *mPrevYear;

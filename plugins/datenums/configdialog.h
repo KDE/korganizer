@@ -27,20 +27,20 @@ class QButtonGroup;
 
 class ConfigDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit ConfigDialog( QWidget *parent = 0 );
+public:
+    explicit ConfigDialog(QWidget *parent = 0);
     virtual ~ConfigDialog();
 
-  protected:
+protected:
     void load();
     void save();
 
-  protected slots:
+protected slots:
     void slotOk();
 
-  private:
+private:
     QButtonGroup *mDayNumGroup;
 };
 

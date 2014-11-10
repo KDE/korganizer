@@ -27,8 +27,9 @@
 
 #include <libkdepim/prefs/kprefsdialog.h>
 class QPushButton;
-namespace KOrg {
-  class HTMLExportSettings;
+namespace KOrg
+{
+class HTMLExportSettings;
 }
 
 /**
@@ -37,15 +38,15 @@ namespace KOrg {
 */
 class ExportWebDialog : public KPageDialog, public KPIM::KPrefsWidManager
 {
-  Q_OBJECT
-  public:
-    explicit ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit ExportWebDialog(KOrg::HTMLExportSettings *settings, QWidget *parent = 0);
     virtual ~ExportWebDialog();
 
-  public slots:
-    void slotTextChanged( const QString & _text );
+public slots:
+    void slotTextChanged(const QString &_text);
 
-  protected:
+protected:
     void setupGeneralPage();
     void setupEventPage();
     void setupTodoPage();
@@ -53,28 +54,28 @@ class ExportWebDialog : public KPageDialog, public KPIM::KPrefsWidManager
 //    void setupFreeBusyPage();
 //    void setupAdvancedPage();
 
-  public slots:
+public slots:
     void setDefaults();
     void readConfig();
     void writeConfig();
 
-  signals:
+signals:
     void configChanged();
-    void exportHTML( KOrg::HTMLExportSettings * );
+    void exportHTML(KOrg::HTMLExportSettings *);
 
-  protected slots:
+protected slots:
     void slotOk();
     void slotApply();
     void slotDefault();
 
-  protected:
+protected:
     virtual void usrReadConfig() {}
     virtual void usrWriteConfig() {}
 
-  private slots:
+private slots:
     void updateState();
 
-  private:
+private:
     KOrg::HTMLExportSettings *mSettings;
     QFrame *mGeneralPage;
     QFrame *mEventPage;

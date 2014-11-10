@@ -29,8 +29,9 @@
 
 #include "korganizer/baseview.h"
 
-namespace Akonadi {
-  class Item;
+namespace Akonadi
+{
+class Item;
 }
 
 class KOEventPopupMenu;
@@ -53,11 +54,11 @@ class QMenu;
 */
 class KOEventView : public KOrg::BaseView
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     enum {
-      // This value is passed to QColor's lighter(int factor) for selected events
-      BRIGHTNESS_FACTOR = 125
+        // This value is passed to QColor's lighter(int factor) for selected events
+        BRIGHTNESS_FACTOR = 125
     };
 
     /**
@@ -66,7 +67,7 @@ class KOEventView : public KOrg::BaseView
      *        will be retrieved for display.
      * @param parent is the parent QWidget.
      */
-    explicit KOEventView( QWidget *parent=0 );
+    explicit KOEventView(QWidget *parent = 0);
 
     /**
      * Destructor.  Views will do view-specific cleanups here.
@@ -90,7 +91,10 @@ class KOEventView : public KOrg::BaseView
     QMenu *newEventPopup();
 
     /** This view is a view for displaying events. */
-    bool isEventView() { return true; }
+    bool isEventView()
+    {
+        return true;
+    }
 
     /*
      * Sets the QObject that will receive key events that were made
@@ -100,7 +104,7 @@ class KOEventView : public KOrg::BaseView
      * because not all views are in kdepim/calendarviews yet
      *
      */
-    virtual void setTypeAheadReceiver( QObject *o );
+    virtual void setTypeAheadReceiver(QObject *o);
 
     /*
      * Returns true if the view item, that represents a to-do, should use the "completed"
@@ -112,20 +116,23 @@ class KOEventView : public KOrg::BaseView
      * a particular occurrence.
      *
      */
-    static bool usesCompletedTodoPixmap( const Akonadi::Item &todo, const QDate &date );
+    static bool usesCompletedTodoPixmap(const Akonadi::Item &todo, const QDate &date);
 
-    bool supportsDateNavigation() const { return true; }
+    bool supportsDateNavigation() const
+    {
+        return true;
+    }
 
-  public slots:
-    void focusChanged( QWidget *, QWidget * );
+public slots:
+    void focusChanged(QWidget *, QWidget *);
 
     /**
      * Performs the default action for an incidence, e.g. open the event editor,
      * when double-clicking an event in the agenda view.
      */
-    void defaultAction( const Akonadi::Item &incidence );
+    void defaultAction(const Akonadi::Item &incidence);
 
-  signals:
+signals:
     /**
      * When the view changes the dates that are selected in one way or
      * another, this signal is emitted.  It should be connected back to
@@ -134,15 +141,15 @@ class KOEventView : public KOrg::BaseView
      * selected dates has changed.
      *   @param datelist the new list of selected dates
      */
-    void datesSelected( const KCalCore::DateList datelist );
+    void datesSelected(const KCalCore::DateList datelist);
 
     /**
      * Emitted when an event is moved using the mouse in an agenda
      * view (week / month).
      */
-    void shiftedEvent( const QDate &olddate, const QDate &ewdate );
+    void shiftedEvent(const QDate &olddate, const QDate &ewdate);
 
-  protected slots:
+protected slots:
     void popupShow();
     void popupEdit();
     void popupDelete();
@@ -150,17 +157,17 @@ class KOEventView : public KOrg::BaseView
     void popupCopy();
     virtual void showNewEventPopup();
 
-  protected:
+protected:
     Akonadi::Item mCurrentIncidence;  // Incidence selected e.g. for a context menu
 
-  private:
+private:
     /*
      * This is called when the new event dialog is shown. It sends
      * all events in mTypeAheadEvents to the receiver.
      */
     void finishTypeAhead();
 
-  private:
+private:
 
     /* When we receive a QEvent with a key_Return release
      * we will only show a new event dialog if we previously received a
@@ -170,7 +177,7 @@ class KOEventView : public KOrg::BaseView
 
     bool mTypeAhead;
     QObject *mTypeAheadReceiver;
-    QList<QEvent*> mTypeAheadEvents;
+    QList<QEvent *> mTypeAheadEvents;
 };
 
 #endif

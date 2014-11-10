@@ -31,7 +31,8 @@
 
 class QTextStream;
 
-namespace KOrg {
+namespace KOrg
+{
 
 class HTMLExportSettings;
 class MainWindow;
@@ -41,8 +42,8 @@ class MainWindow;
 */
 class HtmlExportJob : public KJob
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     /**
       Create new HTML exporter for calendar.
       @param calendar is a pointer to a Akonadi::ETMCalendar instance.
@@ -52,61 +53,61 @@ class HtmlExportJob : public KJob
       @param mainWindow is a pointer to KOrganizer MainWindow.
       @param parent is a pointer to the parent CalendarView.
     */
-    HtmlExportJob( const Akonadi::ETMCalendar::Ptr &calendar,
-                   HTMLExportSettings *settings, bool autoMode,
-                   KOrg::MainWindow *mainWindow,
-                   QWidget *parent = 0 );
+    HtmlExportJob(const Akonadi::ETMCalendar::Ptr &calendar,
+                  HTMLExportSettings *settings, bool autoMode,
+                  KOrg::MainWindow *mainWindow,
+                  QWidget *parent = 0);
 
     virtual ~HtmlExportJob();
 
-    void addHoliday( const QDate &date, const QString &name );
+    void addHoliday(const QDate &date, const QString &name);
 
     virtual void start();
     HTMLExportSettings *settings() const;
 
-  protected:
-    void createWeekView( QTextStream *ts );
-    void createMonthView( QTextStream *ts );
-    void createEventList( QTextStream *ts );
-    void createTodoList( QTextStream *ts );
-    void createJournalView( QTextStream *ts );
-    void createFreeBusyView( QTextStream *ts );
+protected:
+    void createWeekView(QTextStream *ts);
+    void createMonthView(QTextStream *ts);
+    void createEventList(QTextStream *ts);
+    void createTodoList(QTextStream *ts);
+    void createJournalView(QTextStream *ts);
+    void createFreeBusyView(QTextStream *ts);
 
-    void createTodo( QTextStream *ts, const KCalCore::Todo::Ptr &todo );
-    void createEvent( QTextStream *ts, const KCalCore::Event::Ptr &event, QDate date,
-                      bool withDescription = true );
-    void createFooter( QTextStream *ts );
+    void createTodo(QTextStream *ts, const KCalCore::Todo::Ptr &todo);
+    void createEvent(QTextStream *ts, const KCalCore::Event::Ptr &event, QDate date,
+                     bool withDescription = true);
+    void createFooter(QTextStream *ts);
 
-    bool checkSecrecy( const KCalCore::Incidence::Ptr &incidence );
+    bool checkSecrecy(const KCalCore::Incidence::Ptr &incidence);
 
-    void formatLocation( QTextStream *ts, const KCalCore::Incidence::Ptr &incidence );
-    void formatCategories( QTextStream *ts, const KCalCore::Incidence::Ptr &incidence );
-    void formatAttendees( QTextStream *ts, const KCalCore::Incidence::Ptr &incidence );
+    void formatLocation(QTextStream *ts, const KCalCore::Incidence::Ptr &incidence);
+    void formatCategories(QTextStream *ts, const KCalCore::Incidence::Ptr &incidence);
+    void formatAttendees(QTextStream *ts, const KCalCore::Incidence::Ptr &incidence);
 
-    QString breakString( const QString &text );
+    QString breakString(const QString &text);
 
     QDate fromDate() const;
     QDate toDate() const;
     QString styleSheet() const;
 
-  private Q_SLOTS:
-    void receivedOrganizerInfo( KJob * );
+private Q_SLOTS:
+    void receivedOrganizerInfo(KJob *);
 
-  private:
+private:
     /**
       Writes out the calendar in HTML format.
     */
-    bool save( const QString &fileName = QString() );
+    bool save(const QString &fileName = QString());
 
     /**
       Writes out calendar to text stream.
     */
-    bool save( QTextStream *ts );
+    bool save(QTextStream *ts);
 
     void finishExport();
 
     //@cond PRIVATE
-    Q_DISABLE_COPY( HtmlExportJob )
+    Q_DISABLE_COPY(HtmlExportJob)
     class Private;
     Private *const d;
     //@endcond

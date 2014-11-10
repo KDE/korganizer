@@ -36,28 +36,29 @@
 
 class KOListView;
 
-namespace KCalCore {
-  class FileStorage;
+namespace KCalCore
+{
+class FileStorage;
 }
 
 class PreviewDialog : public QDialog
 {
-  Q_OBJECT
-  public:
-    PreviewDialog( const KUrl &url, QWidget *parent );
+    Q_OBJECT
+public:
+    PreviewDialog(const KUrl &url, QWidget *parent);
     ~PreviewDialog();
     bool loadCalendar();
 
-  public slots:
+public slots:
     void slotAdd();
     void slotMerge();
 
-  signals:
-    void dialogFinished( PreviewDialog * );
-    void openURL( const KUrl &, bool );
-    void addResource( const KUrl & );
+signals:
+    void dialogFinished(PreviewDialog *);
+    void openURL(const KUrl &, bool);
+    void addResource(const KUrl &);
 
-  private:
+private:
     // Checks if mOriginalUrl is a temp file, if it is we ask the user a place to
     // keep the calendar file
     bool isTempFile() const;

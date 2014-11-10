@@ -27,12 +27,12 @@ using namespace EventViews::CalendarDecoration;
 
 class ThisDayInHistory : public Decoration
 {
-  public:
+public:
     ThisDayInHistory();
     ~ThisDayInHistory() {}
 
-    Element::List createDayElements( const QDate & );
-    Element::List createMonthElements( const QDate & );
+    Element::List createDayElements(const QDate &);
+    Element::List createMonthElements(const QDate &);
 
 //    void configure( QWidget *parent );
 
@@ -43,12 +43,11 @@ class ThisDayInHistoryFactory : public DecorationFactory
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.kde.korganizer.ThisDayInHistory");
-  public:
+public:
     Decoration *createPluginFactory()
     {
-      return new ThisDayInHistory;
+        return new ThisDayInHistory;
     }
 };
-
 
 #endif

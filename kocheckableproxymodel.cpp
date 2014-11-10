@@ -24,24 +24,24 @@
 
 #include "kocheckableproxymodel.h"
 
-KOCheckableProxyModel::KOCheckableProxyModel( QObject *parent ) : KCheckableProxyModel( parent )
+KOCheckableProxyModel::KOCheckableProxyModel(QObject *parent) : KCheckableProxyModel(parent)
 {
 }
 
 /**reimp*/
-bool KOCheckableProxyModel::setData( const QModelIndex &index,
-                                     const QVariant &value, int role )
+bool KOCheckableProxyModel::setData(const QModelIndex &index,
+                                    const QVariant &value, int role)
 {
-  Qt::CheckState newState = static_cast<Qt::CheckState> ( value.toInt() );
-  if ( role == Qt::CheckStateRole && index.column() == 0 ) {
-    emit aboutToToggle( newState );
-  }
+    Qt::CheckState newState = static_cast<Qt::CheckState>(value.toInt());
+    if (role == Qt::CheckStateRole && index.column() == 0) {
+        emit aboutToToggle(newState);
+    }
 
-  const bool result = KCheckableProxyModel::setData( index, value, role );
+    const bool result = KCheckableProxyModel::setData(index, value, role);
 
-  if ( result ) {
-    emit toggled( newState );
-  }
-  return result;
+    if (result) {
+        emit toggled(newState);
+    }
+    return result;
 }
 

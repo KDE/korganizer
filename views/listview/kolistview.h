@@ -31,22 +31,24 @@
 
 #include <KCalCore/Incidence> //for KCalCore::DateList typedef
 
-namespace EventViews {
-  class ListView;
+namespace EventViews
+{
+class ListView;
 }
 
-namespace Akonadi {
-  class IncidenceChanger;
+namespace Akonadi
+{
+class IncidenceChanger;
 }
 
 class QModelIndex;
 
 class KOListView : public KOEventView
 {
-  Q_OBJECT
-  public:
-    explicit KOListView( const Akonadi::ETMCalendar::Ptr &calendar,
-                         QWidget *parent = 0, bool nonInteractive = false );
+    Q_OBJECT
+public:
+    explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
+                        QWidget *parent = 0, bool nonInteractive = false);
     ~KOListView();
 
     virtual int maxDatesHint() const;
@@ -57,33 +59,33 @@ class KOListView : public KOEventView
     // Shows all incidences of the calendar
     void showAll();
 
-    void readSettings( KConfig *config );
-    void writeSettings( KConfig *config );
+    void readSettings(KConfig *config);
+    void writeSettings(KConfig *config);
 
     void clear();
     QSize sizeHint() const;
 
-    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
 
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
-  public slots:
+public slots:
     virtual void updateView();
-    virtual void showDates( const QDate &start, const QDate &end,
-                            const QDate &preferredMonth = QDate() );
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    virtual void showDates(const QDate &start, const QDate &end,
+                           const QDate &preferredMonth = QDate());
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
 
     void clearSelection();
 
-    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
 
-    void defaultItemAction( const QModelIndex & );
-    void defaultItemAction( const Akonadi::Item::Id id );
+    void defaultItemAction(const QModelIndex &);
+    void defaultItemAction(const Akonadi::Item::Id id);
 
-    void popupMenu( const QPoint & );
+    void popupMenu(const QPoint &);
 
-  private:
+private:
     KOEventPopupMenu *mPopupMenu;
     EventViews::ListView *mListView;
 };

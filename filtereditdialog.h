@@ -34,12 +34,14 @@
 
 class FilterEdit;
 class QPushButton;
-namespace KCalCore {
-  class CalFilter;
+namespace KCalCore
+{
+class CalFilter;
 }
 
-namespace KPIM {
-  class TagSelectionDialog;
+namespace KPIM
+{
+class TagSelectionDialog;
 }
 
 /**
@@ -50,58 +52,58 @@ namespace KPIM {
 */
 class FilterEditDialog : public QDialog
 {
-  Q_OBJECT
-  public:
-    explicit FilterEditDialog( QList<KCalCore::CalFilter*> *, QWidget *parent=0 );
+    Q_OBJECT
+public:
+    explicit FilterEditDialog(QList<KCalCore::CalFilter *> *, QWidget *parent = 0);
     virtual ~FilterEditDialog();
 
-  signals:
+signals:
     void filterChanged();
     void editCategories();
 
-  public slots:
+public slots:
     void updateFilterList();
-    void setDialogConsistent( bool consistent );
+    void setDialogConsistent(bool consistent);
 
-  private:
+private:
     FilterEdit *mFilterEdit;
     QPushButton *mOkButton;
     QPushButton *mApplyButton;
 
-  protected slots:
+protected slots:
     void slotApply();
     void slotOk();
 };
 
 class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
-  Q_OBJECT
-  public:
-    explicit FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent );
+    Q_OBJECT
+public:
+    explicit FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent);
     ~FilterEdit();
 
     void updateFilterList();
     void saveChanges();
 
-  signals:
+signals:
     void dataConsistent(bool);
     void filterChanged();
     void editCategories();
 
-  private slots:
+private slots:
     void filterSelected();
     void bNewPressed();
     void bDeletePressed();
-    void updateSelectedName( const QString & );
+    void updateSelectedName(const QString &);
     void updateCategorySelection();
     void editCategorySelection();
 
-  private:
+private:
     bool correctName(const QString &newText);
-    void filterSelected( KCalCore::CalFilter *f );
+    void filterSelected(KCalCore::CalFilter *f);
 
     QString mNegativeBackground;
-    QList<KCalCore::CalFilter*> *mFilters;
+    QList<KCalCore::CalFilter *> *mFilters;
     KCalCore::CalFilter *mCurrent;
     KPIM::TagSelectionDialog *mCategorySelectDialog;
 };

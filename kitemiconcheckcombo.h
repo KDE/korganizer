@@ -28,20 +28,20 @@
 
 class KItemIconCheckCombo : public KPIM::KCheckComboBox
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     enum ViewType {
-      AgendaType = 0,
-      MonthType
+        AgendaType = 0,
+        MonthType
     };
 
-    explicit KItemIconCheckCombo( ViewType viewType, QWidget *parent = 0 );
+    explicit KItemIconCheckCombo(ViewType viewType, QWidget *parent = 0);
     ~KItemIconCheckCombo();
 
-    void setCheckedIcons( const QSet<EventViews::EventView::ItemIcon> &icons );
+    void setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons);
     QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
 
-  private:
+private:
     class Private;
     Private *const d;
 };

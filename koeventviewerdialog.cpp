@@ -41,37 +41,36 @@
 #include <KGuiItem>
 #include <QVBoxLayout>
 
-KOEventViewerDialog::KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent )
-  : QDialog( parent )
+KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget *parent)
+    : QDialog(parent)
 {
-  setWindowTitle( i18n( "Event Viewer" ) );
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
-  mUser1Button = new QPushButton;
-  buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
-  QPushButton *user2Button = new QPushButton;
-  buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
-  connect(buttonBox, &QDialogButtonBox::accepted, this, &KOEventViewerDialog::accept);
-  connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
-  setModal( false );
-  KGuiItem::assign(mUser1Button, KGuiItem( i18n( "Edit..." ), QIcon::fromTheme( QLatin1String("document-edit") ) ));
-  KGuiItem::assign(user2Button, KGuiItem( i18n( "Show in Context" ) ));
-  mEventViewer = new CalendarSupport::IncidenceViewer( calendar, this );
-  mainLayout->addWidget(mEventViewer);
-  mainLayout->addWidget(buttonBox);
+    setWindowTitle(i18n("Event Viewer"));
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    setLayout(mainLayout);
+    mUser1Button = new QPushButton;
+    buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
+    QPushButton *user2Button = new QPushButton;
+    buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &KOEventViewerDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
+    setModal(false);
+    KGuiItem::assign(mUser1Button, KGuiItem(i18n("Edit..."), QIcon::fromTheme(QLatin1String("document-edit"))));
+    KGuiItem::assign(user2Button, KGuiItem(i18n("Show in Context")));
+    mEventViewer = new CalendarSupport::IncidenceViewer(calendar, this);
+    mainLayout->addWidget(mEventViewer);
+    mainLayout->addWidget(buttonBox);
 
+    resize(QSize(500, 520).expandedTo(minimumSizeHint()));
 
-  resize( QSize( 500, 520 ).expandedTo( minimumSizeHint() ) );
-
-  connect(this, &KOEventViewerDialog::finished, this, &KOEventViewerDialog::delayedDestruct);
-  connect(mUser1Button, &QPushButton::clicked, this, &KOEventViewerDialog::editIncidence);
-  connect(user2Button, &QPushButton::clicked, this, &KOEventViewerDialog::showIncidenceContext);
+    connect(this, &KOEventViewerDialog::finished, this, &KOEventViewerDialog::delayedDestruct);
+    connect(mUser1Button, &QPushButton::clicked, this, &KOEventViewerDialog::editIncidence);
+    connect(user2Button, &QPushButton::clicked, this, &KOEventViewerDialog::showIncidenceContext);
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()
 {
-  delete mEventViewer;
+    delete mEventViewer;
 }
 
 void KOEventViewerDialog::delayedDestruct()
@@ -85,44 +84,44 @@ void KOEventViewerDialog::delayedDestruct()
 
 QPushButton *KOEventViewerDialog::editButton() const
 {
-  return mUser1Button;
+    return mUser1Button;
 }
 
-void KOEventViewerDialog::setIncidence( const Akonadi::Item &incidence, const QDate &date )
+void KOEventViewerDialog::setIncidence(const Akonadi::Item &incidence, const QDate &date)
 {
-  mEventViewer->setIncidence( incidence, date );
+    mEventViewer->setIncidence(incidence, date);
 }
 
-void KOEventViewerDialog::addText( const QString &text )
+void KOEventViewerDialog::addText(const QString &text)
 {
-  mEventViewer->setHeaderText( text );
+    mEventViewer->setHeaderText(text);
 }
 
 void KOEventViewerDialog::editIncidence()
 {
-  const Akonadi::Item item = mEventViewer->item();
+    const Akonadi::Item item = mEventViewer->item();
 
-  if ( CalendarSupport::hasIncidence( item ) ) {
-    // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath( QLatin1String("korganizer" ));
+    if (CalendarSupport::hasIncidence(item)) {
+        // make sure korganizer is running or the part is shown
+        KToolInvocation::startServiceByDesktopPath(QLatin1String("korganizer"));
 
-    OrgKdeKorganizerKorganizerInterface korganizerIface(
-      QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus() );
-    korganizerIface.editIncidence( QString::number( item.id() ) );
-  }
+        OrgKdeKorganizerKorganizerInterface korganizerIface(
+            QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus());
+        korganizerIface.editIncidence(QString::number(item.id()));
+    }
 }
 
 void KOEventViewerDialog::showIncidenceContext()
 {
-  const Akonadi::Item item = mEventViewer->item();
+    const Akonadi::Item item = mEventViewer->item();
 
-  if ( CalendarSupport::hasIncidence( item ) ) {
-    // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath( QLatin1String("korganizer") );
+    if (CalendarSupport::hasIncidence(item)) {
+        // make sure korganizer is running or the part is shown
+        KToolInvocation::startServiceByDesktopPath(QLatin1String("korganizer"));
 
-    OrgKdeKorganizerKorganizerInterface korganizerIface(
-      QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus() );
-    korganizerIface.showIncidenceContext( QString::number( item.id() ) );
-  }
+        OrgKdeKorganizerKorganizerInterface korganizerIface(
+            QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus());
+        korganizerIface.showIncidenceContext(QString::number(item.id()));
+    }
 }
 

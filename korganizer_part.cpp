@@ -42,124 +42,124 @@
 
 static const K4AboutData &createAboutData()
 {
-  static KOrg::AboutData about;
-  return about;
+    static KOrg::AboutData about;
+    return about;
 }
 
-K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
+K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 
-KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
-  : KParts::ReadOnlyPart( parent )
+KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
+    : KParts::ReadOnlyPart(parent)
 {
-  if ( parentWidget ) {
-    mTopLevelWidget = parentWidget->topLevelWidget();
-  } else if ( parent && parent->isWidgetType() ) {
-    mTopLevelWidget = (QWidget *)parent;
-  } else {
-    qCritical() << "Cannot initialize the part without a top level widget.";
-  }
+    if (parentWidget) {
+        mTopLevelWidget = parentWidget->topLevelWidget();
+    } else if (parent && parent->isWidgetType()) {
+        mTopLevelWidget = (QWidget *)parent;
+    } else {
+        qCritical() << "Cannot initialize the part without a top level widget.";
+    }
 
-  KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
+    KOCore::self()->addXMLGUIClient(mTopLevelWidget, this);
 
-  // create a canvas to insert our widget
-  QWidget *canvas = new QWidget( parentWidget );
-  canvas->setFocusPolicy( Qt::ClickFocus );
-  setWidget( canvas );
-  mView = new CalendarView( canvas );
+    // create a canvas to insert our widget
+    QWidget *canvas = new QWidget(parentWidget);
+    canvas->setFocusPolicy(Qt::ClickFocus);
+    setWidget(canvas);
+    mView = new CalendarView(canvas);
 
-  mActionManager = new ActionManager( this, mView, this, this, true );
-  (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
+    mActionManager = new ActionManager(this, mView, this, this, true);
+    (void)new KOrganizerIfaceImpl(mActionManager, this, "IfaceImpl");
 
-  mActionManager->createCalendarAkonadi();
-  setHasDocument( false );
+    mActionManager->createCalendarAkonadi();
+    setHasDocument(false);
 
-  mStatusBarExtension = new KParts::StatusBarExtension( this );
+    mStatusBarExtension = new KParts::StatusBarExtension(this);
 
-  //QT5 setComponentData( KOrganizerFactory::componentData() );
+    //QT5 setComponentData( KOrganizerFactory::componentData() );
 
-  QVBoxLayout *topLayout = new QVBoxLayout( canvas );
-  topLayout->addWidget( mView );
-  topLayout->setMargin( 0 );
+    QVBoxLayout *topLayout = new QVBoxLayout(canvas);
+    topLayout->addWidget(mView);
+    topLayout->setMargin(0);
 
-  connect(mView, &CalendarView::incidenceSelected, this, &KOrganizerPart::slotChangeInfo);
+    connect(mView, &CalendarView::incidenceSelected, this, &KOrganizerPart::slotChangeInfo);
 
-  mActionManager->init();
-  mActionManager->readSettings();
+    mActionManager->init();
+    mActionManager->readSettings();
 
-  setXMLFile( QLatin1String("korganizer_part.rc"), true );
-  mActionManager->loadParts();
-  setTitle();
+    setXMLFile(QLatin1String("korganizer_part.rc"), true);
+    mActionManager->loadParts();
+    setTitle();
 }
 
 KOrganizerPart::~KOrganizerPart()
 {
-  mActionManager->writeSettings();
+    mActionManager->writeSettings();
 
-  delete mActionManager;
-  mActionManager = 0;
+    delete mActionManager;
+    mActionManager = 0;
 
-  KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
+    KOCore::self()->removeXMLGUIClient(mTopLevelWidget);
 }
 
-void KOrganizerPart::slotChangeInfo( const Akonadi::Item &item, const QDate &date )
+void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date)
 {
-  Q_UNUSED( date );
-  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( item );
-  if ( incidence ) {
-    emit textChanged( incidence->summary() + QLatin1String(" / ") +
-                      KCalUtils::IncidenceFormatter::timeToString( incidence->dtStart() ) );
-  } else {
-    emit textChanged( QString() );
-  }
+    Q_UNUSED(date);
+    const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    if (incidence) {
+        emit textChanged(incidence->summary() + QLatin1String(" / ") +
+                         KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart()));
+    } else {
+        emit textChanged(QString());
+    }
 }
 
 QWidget *KOrganizerPart::topLevelWidget()
 {
-  return mView->topLevelWidget();
+    return mView->topLevelWidget();
 }
 
 ActionManager *KOrganizerPart::actionManager()
 {
-  return mActionManager;
+    return mActionManager;
 }
 
-void KOrganizerPart::showStatusMessage( const QString &message )
+void KOrganizerPart::showStatusMessage(const QString &message)
 {
-  QStatusBar *statusBar = mStatusBarExtension->statusBar();
-  if ( statusBar ) {
-    statusBar->showMessage( message );
-  }
+    QStatusBar *statusBar = mStatusBarExtension->statusBar();
+    if (statusBar) {
+        statusBar->showMessage(message);
+    }
 }
 
 KOrg::CalendarViewBase *KOrganizerPart::view() const
 {
-  return mView;
+    return mView;
 }
 
-bool KOrganizerPart::openURL( const KUrl &url, bool merge )
+bool KOrganizerPart::openURL(const KUrl &url, bool merge)
 {
-  return mActionManager->importURL( url, merge );
+    return mActionManager->importURL(url, merge);
 }
 
 bool KOrganizerPart::saveURL()
 {
-  return mActionManager->saveURL();
+    return mActionManager->saveURL();
 }
 
-bool KOrganizerPart::saveAsURL( const KUrl &kurl )
+bool KOrganizerPart::saveAsURL(const KUrl &kurl)
 {
-  return mActionManager->saveAsURL( kurl );
+    return mActionManager->saveAsURL(kurl);
 }
 
 KUrl KOrganizerPart::getCurrentURL() const
 {
-  return mActionManager->url();
+    return mActionManager->url();
 }
 
 bool KOrganizerPart::openFile()
 {
-  mActionManager->importCalendar( localFilePath() );
-  return true;
+    mActionManager->importCalendar(localFilePath());
+    return true;
 }
 
 // FIXME: This is copied verbatim from the KOrganizer class. Move it to the common base class!
@@ -169,28 +169,28 @@ void KOrganizerPart::setTitle()
 // FIXME: Inside kontact we want to have different titles depending on the
 //        type of view (calendar, to-do, journal). How can I add the filter
 //        name in that case?
-/*
-  QString title;
-  if ( !hasDocument() ) {
-    title = i18n("Calendar");
-  } else {
-    KUrl url = mActionManager->url();
+    /*
+      QString title;
+      if ( !hasDocument() ) {
+        title = i18n("Calendar");
+      } else {
+        KUrl url = mActionManager->url();
 
-    if ( !url.isEmpty() ) {
-      if ( url.isLocalFile() ) title = url.fileName();
-      else title = url.prettyUrl();
-    } else {
-      title = i18n("New Calendar");
-    }
+        if ( !url.isEmpty() ) {
+          if ( url.isLocalFile() ) title = url.fileName();
+          else title = url.prettyUrl();
+        } else {
+          title = i18n("New Calendar");
+        }
 
-    if ( mView->isReadOnly() ) {
-      title += " [" + i18n("read-only") + ']';
-    }
-  }
+        if ( mView->isReadOnly() ) {
+          title += " [" + i18n("read-only") + ']';
+        }
+      }
 
-  title += " - <" + mView->currentFilterName() + "> ";
+      title += " - <" + mView->currentFilterName() + "> ";
 
-  emit setWindowCaption( title );*/
+      emit setWindowCaption( title );*/
 }
 
 #include "korganizer_part.moc"

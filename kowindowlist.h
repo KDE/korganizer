@@ -27,8 +27,9 @@
 
 #include <QObject>
 
-namespace KOrg {
-  class MainWindow;
+namespace KOrg
+{
+class MainWindow;
 }
 
 class KUrl;
@@ -43,8 +44,8 @@ class KUrl;
 */
 class KOWindowList : public QObject
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     /**
       Constructs a new list of KOrganizer windows. There should only be one
       instance of this class. The ActionManager class takes care of this.
@@ -60,7 +61,7 @@ class KOWindowList : public QObject
     /**
       Is there a instance with this URL?
     */
-    KOrg::MainWindow *findInstance( const KUrl &url );
+    KOrg::MainWindow *findInstance(const KUrl &url);
 
     /**
       Return default instance. This is the main window for the resource based
@@ -68,18 +69,18 @@ class KOWindowList : public QObject
     */
     KOrg::MainWindow *defaultInstance();
 
-  public slots:
+public slots:
     /**
       Register a main window.
     */
-    void addWindow( KOrg::MainWindow * );
+    void addWindow(KOrg::MainWindow *);
     /**
       Unregister a main window.
     */
-    void removeWindow( KOrg::MainWindow * );
+    void removeWindow(KOrg::MainWindow *);
 
-  private:
-    QList<KOrg::MainWindow*> mWindowList; // list of all existing KOrganizer instances
+private:
+    QList<KOrg::MainWindow *> mWindowList; // list of all existing KOrganizer instances
 
     KOrg::MainWindow *mDefaultWindow;
 };

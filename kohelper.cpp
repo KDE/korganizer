@@ -29,48 +29,48 @@
 
 #include <KMessageBox>
 
-QColor KOHelper::getTextColor( const QColor &c )
+QColor KOHelper::getTextColor(const QColor &c)
 {
-  double luminance = ( c.red() * 0.299 ) + ( c.green() * 0.587 ) + ( c.blue() * 0.114 );
-  return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
+    double luminance = (c.red() * 0.299) + (c.green() * 0.587) + (c.blue() * 0.114);
+    return (luminance > 128.0) ? QColor(0, 0, 0) : QColor(255, 255, 255);
 }
 
-QColor KOHelper::resourceColor( const Akonadi::Collection &coll )
+QColor KOHelper::resourceColor(const Akonadi::Collection &coll)
 {
-  if ( !coll.isValid() ) {
-    return QColor();
-  }
+    if (!coll.isValid()) {
+        return QColor();
+    }
 
-  const QString id = QString::number( coll.id() );
-  return KOPrefs::instance()->resourceColor( id );
+    const QString id = QString::number(coll.id());
+    return KOPrefs::instance()->resourceColor(id);
 }
 
-QColor KOHelper::resourceColor( const Akonadi::Item &item )
+QColor KOHelper::resourceColor(const Akonadi::Item &item)
 {
-  if ( !item.isValid() ) {
-    return QColor();
-  }
+    if (!item.isValid()) {
+        return QColor();
+    }
 
-  const QString id = QString::number( item.storageCollectionId() );
-  return KOPrefs::instance()->resourceColor( id );
+    const QString id = QString::number(item.storageCollectionId());
+    return KOPrefs::instance()->resourceColor(id);
 }
 
-int KOHelper::yearDiff( const QDate &start, const QDate &end )
+int KOHelper::yearDiff(const QDate &start, const QDate &end)
 {
-  return end.year() - start.year();
+    return end.year() - start.year();
 }
 
-bool KOHelper::isStandardCalendar( const Akonadi::Entity::Id &id )
+bool KOHelper::isStandardCalendar(const Akonadi::Entity::Id &id)
 {
-  return id == CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+    return id == CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
 }
 
-void KOHelper::showSaveIncidenceErrorMsg( QWidget *parent,
-                                          const KCalCore::Incidence::Ptr &incidence )
+void KOHelper::showSaveIncidenceErrorMsg(QWidget *parent,
+        const KCalCore::Incidence::Ptr &incidence)
 {
-  KMessageBox::sorry(
-    parent,
-    i18n( "Unable to save %1 \"%2\".",
-          i18n( incidence->typeStr() ), incidence->summary() ) );
+    KMessageBox::sorry(
+        parent,
+        i18n("Unable to save %1 \"%2\".",
+             i18n(incidence->typeStr()), incidence->summary()));
 }
 

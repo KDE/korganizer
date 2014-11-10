@@ -32,8 +32,8 @@ class KUrl;
 
 class KOrganizerApp : public KontactInterface::PimUniqueApplication
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     KOrganizerApp();
     ~KOrganizerApp();
 
@@ -43,12 +43,12 @@ class KOrganizerApp : public KontactInterface::PimUniqueApplication
     */
     int newInstance();
 
-  private:
+private:
     /**
       Process calendar from URL \arg url. If url is empty open the default
       calendar based on the resource framework.
     */
-    void processCalendar( const KUrl &url );
+    void processCalendar(const KUrl &url);
 };
 
 #endif

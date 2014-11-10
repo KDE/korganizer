@@ -33,16 +33,19 @@ class FilterEditDialog;
 class SearchDialog;
 class QDialog;
 
-namespace CalendarSupport {
-  class ArchiveDialog;
+namespace CalendarSupport
+{
+class ArchiveDialog;
 }
 
-namespace IncidenceEditorNG {
-  class IncidenceDialog;
+namespace IncidenceEditorNG
+{
+class IncidenceDialog;
 }
 
-namespace KCalCore {
-  class CalFilter;
+namespace KCalCore
+{
+class CalFilter;
 }
 
 class KCMultiDialog;
@@ -53,28 +56,28 @@ class KCMultiDialog;
 */
 class KODialogManager : public QObject
 {
-  Q_OBJECT
-  public:
-    explicit KODialogManager( CalendarView * );
+    Q_OBJECT
+public:
+    explicit KODialogManager(CalendarView *);
     virtual ~KODialogManager();
 
-    IncidenceEditorNG::IncidenceDialog *createDialog( const Akonadi::Item &item );
+    IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 
     // TODO_NG: see if editors-NG have the needed slots.
-    void connectEditor( IncidenceEditorNG::IncidenceDialog *editor );
+    void connectEditor(IncidenceEditorNG::IncidenceDialog *editor);
 
     void updateSearchDialog();
 
-    void connectTypeAhead( IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view );
+    void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view);
 
-  public slots:
+public slots:
     void showOptionsDialog();
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog( QList<KCalCore::CalFilter*> *filters );
+    void showFilterEditDialog(QList<KCalCore::CalFilter *> *filters);
 
-  private:
+private:
     void createCategoryEditor();
     class DialogManagerVisitor;
     class EditorDialogVisitor;

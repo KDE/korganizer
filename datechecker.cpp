@@ -27,65 +27,65 @@
 
 #include <QTimer>
 
-DateChecker::DateChecker( QObject *parent ) : QObject( parent ), mUpdateTimer( 0 )
+DateChecker::DateChecker(QObject *parent) : QObject(parent), mUpdateTimer(0)
 {
-  enableRollover( FollowMonth );
+    enableRollover(FollowMonth);
 }
 
 DateChecker::~DateChecker()
 {
 }
 
-void DateChecker::enableRollover( RolloverType r )
+void DateChecker::enableRollover(RolloverType r)
 {
-  switch( r ) {
+    switch (r) {
     case None:
-      if ( mUpdateTimer ) {
-        mUpdateTimer->stop();
-        delete mUpdateTimer;
-        mUpdateTimer = 0;
-      }
-      break;
+        if (mUpdateTimer) {
+            mUpdateTimer->stop();
+            delete mUpdateTimer;
+            mUpdateTimer = 0;
+        }
+        break;
     case FollowDay:
     case FollowMonth:
-      if ( !mUpdateTimer ) {
-        mUpdateTimer = new QTimer( this );
-        connect(mUpdateTimer, &QTimer::timeout, this, &DateChecker::possiblyPastMidnight);
-      }
-      mUpdateTimer->setSingleShot( true );
-      mUpdateTimer->start( 0 );
-      mLastDayChecked = QDate::currentDate();
-  }
-  mUpdateRollover = r;
+        if (!mUpdateTimer) {
+            mUpdateTimer = new QTimer(this);
+            connect(mUpdateTimer, &QTimer::timeout, this, &DateChecker::possiblyPastMidnight);
+        }
+        mUpdateTimer->setSingleShot(true);
+        mUpdateTimer->start(0);
+        mLastDayChecked = QDate::currentDate();
+    }
+    mUpdateRollover = r;
 }
 
 void DateChecker::passedMidnight()
 {
-  QDate today = QDate::currentDate();
+    QDate today = QDate::currentDate();
 
-  if ( today.month() != mLastDayChecked.month() ) {
-     if ( mUpdateRollover == FollowMonth ) {
-       emit monthPassed( today );
-     }
-  }
-  emit dayPassed( today );
+    if (today.month() != mLastDayChecked.month()) {
+        if (mUpdateRollover == FollowMonth) {
+            emit monthPassed(today);
+        }
+    }
+    emit dayPassed(today);
 }
 
 void DateChecker::possiblyPastMidnight()
 {
-  if ( mLastDayChecked != QDate::currentDate() ) {
-    passedMidnight();
-    mLastDayChecked = QDate::currentDate();
-  }
-  // Set the timer to go off 1 second after midnight
-  // or after 8 minutes, whichever comes first.
-  if ( mUpdateTimer ) {
-    QTime now = QTime::currentTime();
-    QTime midnight = QTime( 23, 59, 59 );
-    int msecsWait = qMin( 480000, now.msecsTo( midnight ) + 2000 );
+    if (mLastDayChecked != QDate::currentDate()) {
+        passedMidnight();
+        mLastDayChecked = QDate::currentDate();
+    }
+    // Set the timer to go off 1 second after midnight
+    // or after 8 minutes, whichever comes first.
+    if (mUpdateTimer) {
+        QTime now = QTime::currentTime();
+        QTime midnight = QTime(23, 59, 59);
+        int msecsWait = qMin(480000, now.msecsTo(midnight) + 2000);
 
-    mUpdateTimer->stop();
-    mUpdateTimer->start( msecsWait );
-  }
+        mUpdateTimer->stop();
+        mUpdateTimer->start(msecsWait);
+    }
 }
 

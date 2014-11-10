@@ -42,224 +42,222 @@
 #include <KGuiItem>
 #include <QVBoxLayout>
 
-
 using namespace KOrg;
 
-SearchDialog::SearchDialog( CalendarView *calendarview )
-  : QDialog( calendarview ),
-    m_ui( new Ui::SearchDialog ),
-    m_calendarview( calendarview )
+SearchDialog::SearchDialog(CalendarView *calendarview)
+    : QDialog(calendarview),
+      m_ui(new Ui::SearchDialog),
+      m_calendarview(calendarview)
 {
-  setWindowTitle( i18n( "Search Calendar" ) );
-  setModal( false );
+    setWindowTitle(i18n("Search Calendar"));
+    setModal(false);
 
-  QWidget *mainWidget = new QWidget( this );
-  m_ui->setupUi( mainWidget );
+    QWidget *mainWidget = new QWidget(this);
+    m_ui->setupUi(mainWidget);
 
-  // Set nice initial start and end dates for the search
-  const QDate currDate = QDate::currentDate();
-  m_ui->startDate->setDate( currDate );
-  m_ui->endDate->setDate( currDate.addYears( 1 ) );
+    // Set nice initial start and end dates for the search
+    const QDate currDate = QDate::currentDate();
+    m_ui->startDate->setDate(currDate);
+    m_ui->endDate->setDate(currDate.addYears(1));
 
-  connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchTextChanged);
+    connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchTextChanged);
 
-  // Results list view
-  QVBoxLayout *layout = new QVBoxLayout;
-  layout->setMargin( 0 );
-  listView = new EventViews::ListView( m_calendarview->calendar(), this );
-  layout->addWidget( listView );
-  m_ui->listViewFrame->setLayout( layout );
+    // Results list view
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->setMargin(0);
+    listView = new EventViews::ListView(m_calendarview->calendar(), this);
+    layout->addWidget(listView);
+    m_ui->listViewFrame->setLayout(layout);
 
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
-  mainLayout->addWidget(mainWidget);
-  mUser1Button = new QPushButton;
-  buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
-  connect(buttonBox, &QDialogButtonBox::accepted, this, &SearchDialog::accept);
-  connect(buttonBox, &QDialogButtonBox::rejected, this, &SearchDialog::reject);
-  mainLayout->addWidget(buttonBox);
-  mUser1Button->setDefault(true);
-  KGuiItem::assign(mUser1Button, KGuiItem( i18nc( "search in calendar", "&Search" ) ));
-  mUser1Button->setToolTip(i18n( "Start searching"  ));
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    setLayout(mainLayout);
+    mainLayout->addWidget(mainWidget);
+    mUser1Button = new QPushButton;
+    buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &SearchDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &SearchDialog::reject);
+    mainLayout->addWidget(buttonBox);
+    mUser1Button->setDefault(true);
+    KGuiItem::assign(mUser1Button, KGuiItem(i18nc("search in calendar", "&Search")));
+    mUser1Button->setToolTip(i18n("Start searching"));
 
+    connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
-  connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
+    // Propagate edit and delete event signals from event list view
+    connect(listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
+    connect(listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
+    connect(listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
 
-  // Propagate edit and delete event signals from event list view
-  connect(listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
-  connect(listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
-  connect(listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
-
-  readConfig();
+    readConfig();
 }
 
 SearchDialog::~SearchDialog()
 {
-  writeConfig();
-  delete m_ui;
+    writeConfig();
+    delete m_ui;
 }
 
-void SearchDialog::showEvent( QShowEvent *event )
+void SearchDialog::showEvent(QShowEvent *event)
 {
-  Q_UNUSED( event );
-  m_ui->searchEdit->setFocus();
+    Q_UNUSED(event);
+    m_ui->searchEdit->setFocus();
 }
 
-void SearchDialog::searchTextChanged( const QString &_text )
+void SearchDialog::searchTextChanged(const QString &_text)
 {
-  mUser1Button->setEnabled(!_text.isEmpty());
+    mUser1Button->setEnabled(!_text.isEmpty());
 }
 
 void SearchDialog::doSearch()
 {
-  QRegExp re;
-  re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
-  re.setCaseSensitivity( Qt::CaseInsensitive );
-  re.setPattern( m_ui->searchEdit->text() );
-  if ( !re.isValid() ) {
-    KMessageBox::sorry(
-      this,
-      i18n( "Invalid search expression, cannot perform the search. "
-            "Please enter a search expression using the wildcard characters "
-            "'*' and '?' where needed." ) );
-    return;
-  }
+    QRegExp re;
+    re.setPatternSyntax(QRegExp::Wildcard);   // most people understand these better.
+    re.setCaseSensitivity(Qt::CaseInsensitive);
+    re.setPattern(m_ui->searchEdit->text());
+    if (!re.isValid()) {
+        KMessageBox::sorry(
+            this,
+            i18n("Invalid search expression, cannot perform the search. "
+                 "Please enter a search expression using the wildcard characters "
+                 "'*' and '?' where needed."));
+        return;
+    }
 
-  search( re );
-  listView->showIncidences( mMatchedEvents, QDate() );
-  if ( mMatchedEvents.isEmpty() ) {
-    m_ui->numItems->setText ( QString() );
-    KMessageBox::information(
-      this,
-      i18n( "No items were found that match your search pattern." ),
-      i18n( "Search Results" ),
-      QLatin1String( "NoSearchResults" ) );
-  } else {
-    m_ui->numItems->setText( i18np( "%1 item","%1 items", mMatchedEvents.count() ) );
-  }
+    search(re);
+    listView->showIncidences(mMatchedEvents, QDate());
+    if (mMatchedEvents.isEmpty()) {
+        m_ui->numItems->setText(QString());
+        KMessageBox::information(
+            this,
+            i18n("No items were found that match your search pattern."),
+            i18n("Search Results"),
+            QLatin1String("NoSearchResults"));
+    } else {
+        m_ui->numItems->setText(i18np("%1 item", "%1 items", mMatchedEvents.count()));
+    }
 }
 
 void SearchDialog::updateView()
 {
-  QRegExp re;
-  re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
-  re.setCaseSensitivity( Qt::CaseInsensitive );
-  re.setPattern( m_ui->searchEdit->text() );
-  if ( re.isValid() ) {
-    search( re );
-  } else {
-    mMatchedEvents.clear();
-  }
-  listView->showIncidences( mMatchedEvents, QDate() );
+    QRegExp re;
+    re.setPatternSyntax(QRegExp::Wildcard);   // most people understand these better.
+    re.setCaseSensitivity(Qt::CaseInsensitive);
+    re.setPattern(m_ui->searchEdit->text());
+    if (re.isValid()) {
+        search(re);
+    } else {
+        mMatchedEvents.clear();
+    }
+    listView->showIncidences(mMatchedEvents, QDate());
 }
 
-void SearchDialog::search( const QRegExp &re )
+void SearchDialog::search(const QRegExp &re)
 {
-  const QDate startDt = m_ui->startDate->date();
-  const QDate endDt = m_ui->endDate->date();
+    const QDate startDt = m_ui->startDate->date();
+    const QDate endDt = m_ui->endDate->date();
 
-  KCalCore::Event::List events;
-  KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
-  if ( m_ui->eventsCheck->isChecked() ) {
-    events =
-      m_calendarview->calendar()->events(
-        startDt, endDt, timeSpec, m_ui->inclusiveCheck->isChecked() );
-  }
+    KCalCore::Event::List events;
+    KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
+    if (m_ui->eventsCheck->isChecked()) {
+        events =
+            m_calendarview->calendar()->events(
+                startDt, endDt, timeSpec, m_ui->inclusiveCheck->isChecked());
+    }
 
-  KCalCore::Todo::List todos;
+    KCalCore::Todo::List todos;
 
-  if ( m_ui->todosCheck->isChecked() ) {
-    if ( m_ui->includeUndatedTodos->isChecked() ) {
-      KDateTime::Spec spec = CalendarSupport::KCalPrefs::instance()->timeSpec();
-      KCalCore::Todo::List alltodos = m_calendarview->calendar()->todos();
-      Q_FOREACH ( const KCalCore::Todo::Ptr &todo, alltodos ) {
-        Q_ASSERT( todo );
-        if ( ( !todo->hasStartDate() && !todo->hasDueDate() ) || // undated
-             ( todo->hasStartDate() &&
-               ( todo->dtStart().toTimeSpec( spec ).date() >= startDt ) &&
-               ( todo->dtStart().toTimeSpec( spec ).date() <= endDt ) ) || //start dt in range
-             ( todo->hasDueDate() &&
-               ( todo->dtDue().toTimeSpec( spec ).date() >= startDt ) &&
-               ( todo->dtDue().toTimeSpec( spec ).date() <= endDt ) ) || //due dt in range
-             ( todo->hasCompletedDate() &&
-               ( todo->completed().toTimeSpec( spec ).date() >= startDt ) &&
-               ( todo->completed().toTimeSpec( spec ).date() <= endDt ) ) ) {//completed dt in range
-          todos.append( todo );
+    if (m_ui->todosCheck->isChecked()) {
+        if (m_ui->includeUndatedTodos->isChecked()) {
+            KDateTime::Spec spec = CalendarSupport::KCalPrefs::instance()->timeSpec();
+            KCalCore::Todo::List alltodos = m_calendarview->calendar()->todos();
+            Q_FOREACH (const KCalCore::Todo::Ptr &todo, alltodos) {
+                Q_ASSERT(todo);
+                if ((!todo->hasStartDate() && !todo->hasDueDate()) ||    // undated
+                        (todo->hasStartDate() &&
+                         (todo->dtStart().toTimeSpec(spec).date() >= startDt) &&
+                         (todo->dtStart().toTimeSpec(spec).date() <= endDt)) ||      //start dt in range
+                        (todo->hasDueDate() &&
+                         (todo->dtDue().toTimeSpec(spec).date() >= startDt) &&
+                         (todo->dtDue().toTimeSpec(spec).date() <= endDt)) ||      //due dt in range
+                        (todo->hasCompletedDate() &&
+                         (todo->completed().toTimeSpec(spec).date() >= startDt) &&
+                         (todo->completed().toTimeSpec(spec).date() <= endDt))) {      //completed dt in range
+                    todos.append(todo);
+                }
+            }
+        } else {
+            QDate dt = startDt;
+            while (dt <= endDt) {
+                todos += m_calendarview->calendar()->todos(dt);
+                dt = dt.addDays(1);
+            }
         }
-      }
-    } else {
-      QDate dt = startDt;
-      while ( dt <= endDt ) {
-        todos += m_calendarview->calendar()->todos( dt );
-        dt = dt.addDays( 1 );
-      }
     }
-  }
 
-  KCalCore::Journal::List journals;
-  if ( m_ui->journalsCheck->isChecked() ) {
-    QDate dt = startDt;
-    while ( dt <= endDt ) {
-      journals += m_calendarview->calendar()->journals( dt );
-      dt = dt.addDays( 1 );
-    }
-  }
-
-  mMatchedEvents.clear();
-  KCalCore::Incidence::List incidences =
-    Akonadi::ETMCalendar::mergeIncidenceList( events, todos, journals );
-  Q_FOREACH ( const KCalCore::Incidence::Ptr &ev, incidences ) {
-    Q_ASSERT( ev );
-    Akonadi::Item item = m_calendarview->calendar()->item( ev->uid() );
-    if ( m_ui->summaryCheck->isChecked() ) {
-      if ( re.indexIn( ev->summary() ) != -1 ) {
-        mMatchedEvents.append( item );
-        continue;
-      }
-    }
-    if ( m_ui->descriptionCheck->isChecked() ) {
-      if ( re.indexIn( ev->description() ) != -1 ) {
-        mMatchedEvents.append( item );
-        continue;
-      }
-    }
-    if ( m_ui->categoryCheck->isChecked() ) {
-      if ( re.indexIn( ev->categoriesStr() ) != -1 ) {
-        mMatchedEvents.append( item );
-        continue;
-      }
-    }
-    if ( m_ui->locationCheck->isChecked() ) {
-      if ( re.indexIn( ev->location() ) != -1 ) {
-        mMatchedEvents.append( item );
-        continue;
-      }
-    }
-    if ( m_ui->attendeeCheck->isChecked() ) {
-      Q_FOREACH ( const KCalCore::Attendee::Ptr &attendee, ev->attendees() ) {
-        if ( re.indexIn( attendee->fullName() ) != -1 ) {
-          mMatchedEvents.append( item );
-          break;
+    KCalCore::Journal::List journals;
+    if (m_ui->journalsCheck->isChecked()) {
+        QDate dt = startDt;
+        while (dt <= endDt) {
+            journals += m_calendarview->calendar()->journals(dt);
+            dt = dt.addDays(1);
         }
-      }
     }
-  }
+
+    mMatchedEvents.clear();
+    KCalCore::Incidence::List incidences =
+        Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
+    Q_FOREACH (const KCalCore::Incidence::Ptr &ev, incidences) {
+        Q_ASSERT(ev);
+        Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());
+        if (m_ui->summaryCheck->isChecked()) {
+            if (re.indexIn(ev->summary()) != -1) {
+                mMatchedEvents.append(item);
+                continue;
+            }
+        }
+        if (m_ui->descriptionCheck->isChecked()) {
+            if (re.indexIn(ev->description()) != -1) {
+                mMatchedEvents.append(item);
+                continue;
+            }
+        }
+        if (m_ui->categoryCheck->isChecked()) {
+            if (re.indexIn(ev->categoriesStr()) != -1) {
+                mMatchedEvents.append(item);
+                continue;
+            }
+        }
+        if (m_ui->locationCheck->isChecked()) {
+            if (re.indexIn(ev->location()) != -1) {
+                mMatchedEvents.append(item);
+                continue;
+            }
+        }
+        if (m_ui->attendeeCheck->isChecked()) {
+            Q_FOREACH (const KCalCore::Attendee::Ptr &attendee, ev->attendees()) {
+                if (re.indexIn(attendee->fullName()) != -1) {
+                    mMatchedEvents.append(item);
+                    break;
+                }
+            }
+        }
+    }
 }
 
 void SearchDialog::readConfig()
 {
-  KConfigGroup group( KOGlobals::self()->config(), QLatin1String( "SearchDialog" ) );
-  const QSize size = group.readEntry( "Size", QSize( 775, 600 ) );
-  if ( size.isValid() ) {
-    resize( size );
-  }
+    KConfigGroup group(KOGlobals::self()->config(), QLatin1String("SearchDialog"));
+    const QSize size = group.readEntry("Size", QSize(775, 600));
+    if (size.isValid()) {
+        resize(size);
+    }
 }
 
 void SearchDialog::writeConfig()
 {
-  KConfigGroup group( KOGlobals::self()->config(), QLatin1String( "SearchDialog" ) );
-  group.writeEntry( "Size", size() );
-  group.sync();
+    KConfigGroup group(KOGlobals::self()->config(), QLatin1String("SearchDialog"));
+    group.writeEntry("Size", size());
+    group.sync();
 }
 

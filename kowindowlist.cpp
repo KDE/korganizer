@@ -28,7 +28,7 @@
 #include <KUrl>
 
 KOWindowList::KOWindowList()
-  : QObject( 0 ), mDefaultWindow( 0 )
+    : QObject(0), mDefaultWindow(0)
 {
 }
 
@@ -36,49 +36,49 @@ KOWindowList::~KOWindowList()
 {
 }
 
-void KOWindowList::addWindow( KOrg::MainWindow *korg )
+void KOWindowList::addWindow(KOrg::MainWindow *korg)
 {
-  if ( !korg->hasDocument() ) {
-    mDefaultWindow = korg;
-  } else {
-    mWindowList.append( korg );
-  }
+    if (!korg->hasDocument()) {
+        mDefaultWindow = korg;
+    } else {
+        mWindowList.append(korg);
+    }
 }
 
-void KOWindowList::removeWindow( KOrg::MainWindow *korg )
+void KOWindowList::removeWindow(KOrg::MainWindow *korg)
 {
-  if ( korg == mDefaultWindow ) {
-    mDefaultWindow = 0;
-  } else {
-    mWindowList.removeAll( korg );
-  }
+    if (korg == mDefaultWindow) {
+        mDefaultWindow = 0;
+    } else {
+        mWindowList.removeAll(korg);
+    }
 }
 
 bool KOWindowList::lastInstance()
 {
-  if ( mWindowList.count() == 1 && !mDefaultWindow ) {
-    return true;
-  }
+    if (mWindowList.count() == 1 && !mDefaultWindow) {
+        return true;
+    }
 
-  if ( mWindowList.count() == 0 && mDefaultWindow ) {
-    return true;
-  } else {
-    return false;
-  }
+    if (mWindowList.count() == 0 && mDefaultWindow) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-KOrg::MainWindow *KOWindowList::findInstance( const KUrl &url )
+KOrg::MainWindow *KOWindowList::findInstance(const KUrl &url)
 {
-  foreach ( KOrg::MainWindow *inst, mWindowList ) {
-    if ( inst && inst->getCurrentURL() == url ) {
-      return inst;
+    foreach (KOrg::MainWindow *inst, mWindowList) {
+        if (inst && inst->getCurrentURL() == url) {
+            return inst;
+        }
     }
-  }
-  return 0;
+    return 0;
 }
 
 KOrg::MainWindow *KOWindowList::defaultInstance()
 {
-  return mDefaultWindow;
+    return mDefaultWindow;
 }
 

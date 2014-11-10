@@ -28,8 +28,9 @@
 #include "korganizer/baseview.h"
 #include <Akonadi/Calendar/ETMCalendar>
 
-namespace EventViews {
-  class TimeSpentView;
+namespace EventViews
+{
+class TimeSpentView;
 }
 
 /**
@@ -37,35 +38,35 @@ namespace EventViews {
 */
 class KOTimeSpentView : public KOrg::BaseView
 {
-  Q_OBJECT
-  public:
-    explicit KOTimeSpentView( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit KOTimeSpentView(QWidget *parent = 0);
     ~KOTimeSpentView();
 
     virtual int currentDateCount() const;
 
     virtual Akonadi::Item::List selectedIncidences()
     {
-      return Akonadi::Item::List();
+        return Akonadi::Item::List();
     }
 
     KCalCore::DateList selectedIncidenceDates()
     {
-      return KCalCore::DateList();
+        return KCalCore::DateList();
     }
 
-    void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     virtual void updateView();
-    virtual void showDates( const QDate &start, const QDate &end,
-                            const QDate &preferredMonth = QDate() );
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    virtual void showDates(const QDate &start, const QDate &end,
+                           const QDate &preferredMonth = QDate());
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
 
-    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
-  private:
+private:
     EventViews::TimeSpentView *mView;
 };
 

@@ -36,9 +36,9 @@
 */
 class KOAgendaView : public KOEventView
 {
-  Q_OBJECT
-  public:
-    explicit KOAgendaView( QWidget *parent = 0, bool isSideBySide = false );
+    Q_OBJECT
+public:
+    explicit KOAgendaView(QWidget *parent = 0, bool isSideBySide = false);
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
@@ -54,7 +54,7 @@ class KOAgendaView : public KOEventView
     virtual KCalCore::DateList selectedIncidenceDates();
 
     /** return the default start/end date/time for new events   */
-    virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
     CalendarSupport::CalPrinter::PrintType printType() const;
 
@@ -72,50 +72,50 @@ class KOAgendaView : public KOEventView
     bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
+    virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
 
     /** reimpl */
-    virtual void setTypeAheadReceiver( QObject *o );
+    virtual void setTypeAheadReceiver(QObject *o);
 
-    void setChanges( EventViews::EventView::Changes changes );
+    void setChanges(EventViews::EventView::Changes changes);
 
     /** reimpl */
-    void setDateRange( const KDateTime &start, const KDateTime &end,
-                       const QDate &preferredMonth = QDate() );
+    void setDateRange(const KDateTime &start, const KDateTime &end,
+                      const QDate &preferredMonth = QDate());
 
-  public slots:
+public slots:
     virtual void updateView();
     virtual void updateConfig();
-    virtual void showDates( const QDate &start, const QDate &end,
-                            const QDate &preferredMonth = QDate() );
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    virtual void showDates(const QDate &start, const QDate &end,
+                           const QDate &preferredMonth = QDate());
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
 
-    void changeIncidenceDisplayAdded( const Akonadi::Item &incidence );
-    void changeIncidenceDisplay( const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType );
+    void changeIncidenceDisplayAdded(const Akonadi::Item &incidence);
+    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType);
 
     void clearSelection();
 
     void readSettings();
-    void readSettings( KConfig * );
-    void writeSettings( KConfig * );
+    void readSettings(KConfig *);
+    void writeSettings(KConfig *);
 
-    void enableAgendaUpdate( bool enable );
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void enableAgendaUpdate(bool enable);
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
 
-    void zoomInHorizontally( const QDate &date=QDate() );
-    void zoomOutHorizontally( const QDate &date=QDate() );
+    void zoomInHorizontally(const QDate &date = QDate());
+    void zoomOutHorizontally(const QDate &date = QDate());
 
-    void zoomInVertically( );
-    void zoomOutVertically( );
+    void zoomInVertically();
+    void zoomOutVertically();
 
-    void zoomView( const int delta, const QPoint &pos,
-                   const Qt::Orientation orient = Qt::Horizontal );
+    void zoomView(const int delta, const QPoint &pos,
+                  const Qt::Orientation orient = Qt::Horizontal);
 
-  signals:
-    void zoomViewHorizontally( const QDate &, int count );
+signals:
+    void zoomViewHorizontally(const QDate &, int count);
     void timeSpanSelectionChanged();
 
-  private:
+private:
     class Private;
     Private *const d;
 };

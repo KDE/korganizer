@@ -36,17 +36,17 @@
  */
 class KOCheckableProxyModel : public KCheckableProxyModel
 {
-  Q_OBJECT
-  public:
-    explicit KOCheckableProxyModel( QObject *parent );
+    Q_OBJECT
+public:
+    explicit KOCheckableProxyModel(QObject *parent);
 
     /**reimp*/
-    bool setData( const QModelIndex &index, const QVariant &value,
-                  int role = Qt::EditRole );
+    bool setData(const QModelIndex &index, const QVariant &value,
+                 int role = Qt::EditRole);
 
-  Q_SIGNALS:
-    void aboutToToggle( bool oldState );
-    void toggled( bool newState );
+Q_SIGNALS:
+    void aboutToToggle(bool oldState);
+    void toggled(bool newState);
 };
 
 #endif

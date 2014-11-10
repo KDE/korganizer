@@ -51,16 +51,22 @@ typedef KParts::MainWindow KPartsMainWindow;
 */
 class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     KOrganizer();
     virtual ~KOrganizer();
 
-    void init( bool hasDocument );
+    void init(bool hasDocument);
 
     KOrg::CalendarViewBase *view() const;
-    ActionManager *actionManager() { return mActionManager; }
-    KActionCollection *getActionCollection() const { return actionCollection(); }
+    ActionManager *actionManager()
+    {
+        return mActionManager;
+    }
+    KActionCollection *getActionCollection() const
+    {
+        return actionCollection();
+    }
 
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
@@ -71,26 +77,35 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
                      false if the URL should be added as a new resource.
         @return true on success, false if an error occurred
     */
-    bool openURL( const KUrl &url, bool merge = false );
+    bool openURL(const KUrl &url, bool merge = false);
 
     /** Save calendar file to URL of current calendar */
     bool saveURL();
 
     /** Save calendar file to URL */
-    bool saveAsURL( const KUrl &kurl );
+    bool saveAsURL(const KUrl &kurl);
 
     /** Get current URL */
     KUrl getCurrentURL() const;
 
-    virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
-    virtual KXMLGUIClient *mainGuiClient() { return this; }
-    virtual QWidget *topLevelWidget() { return this; }
+    virtual KXMLGUIFactory *mainGuiFactory()
+    {
+        return factory();
+    }
+    virtual KXMLGUIClient *mainGuiClient()
+    {
+        return this;
+    }
+    virtual QWidget *topLevelWidget()
+    {
+        return this;
+    }
 
-  public slots:
+public slots:
     /** show status message */
-    void showStatusMessage( const QString & );
+    void showStatusMessage(const QString &);
 
-  protected slots:
+protected slots:
 
     /** using the KConfig associated with the kapp variable, read in the
      * settings from the config file.
@@ -100,16 +115,16 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     /** write current state to config file. */
     void writeSettings();
 
-    void statusBarPressed( int id );
+    void statusBarPressed(int id);
 
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
-    void newMainWindow( const KUrl & );
+    void newMainWindow(const KUrl &);
 
     void slotEditKeys();
 
-  protected:
+protected:
     void initActions();
 //    void initViews();
 
@@ -117,20 +132,20 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     bool queryClose();
 
     /* Session management */
-    void saveProperties( KConfigGroup & );
-    void readProperties( const KConfigGroup & );
+    void saveProperties(KConfigGroup &);
+    void readProperties(const KConfigGroup &);
 
-  private:
+private:
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
     // status bar ids
     enum {
-      ID_HISTORY,
-      ID_GENERAL,
-      ID_ACTIVE,
-      ID_MESSAGES_IN,
-      ID_MESSAGES_OUT
+        ID_HISTORY,
+        ID_GENERAL,
+        ID_ACTIVE,
+        ID_MESSAGES_IN,
+        ID_MESSAGES_OUT
     };
     ActionManager *mActionManager;
 };

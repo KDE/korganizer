@@ -40,74 +40,74 @@
 */
 class DateNavigator : public QObject
 {
-  Q_OBJECT
-  public:
-    explicit DateNavigator( QObject *parent = 0 );
+    Q_OBJECT
+public:
+    explicit DateNavigator(QObject *parent = 0);
     ~DateNavigator();
 
     KCalCore::DateList selectedDates();
 
     int datesCount() const;
 
-  public slots:
-    void selectDates( const KCalCore::DateList &, const QDate &preferredMonth = QDate() );
-    void selectDate( const QDate & );
+public slots:
+    void selectDates(const KCalCore::DateList &, const QDate &preferredMonth = QDate());
+    void selectDate(const QDate &);
 
-    void selectDates( int count );
-    void selectDates( const QDate &, int count, const QDate &preferredMonth = QDate() );
+    void selectDates(int count);
+    void selectDates(const QDate &, int count, const QDate &preferredMonth = QDate());
 
     void selectWeek();
-    void selectWeek( const QDate &, const QDate &preferredMonth = QDate() );
+    void selectWeek(const QDate &, const QDate &preferredMonth = QDate());
 
     void selectWorkWeek();
-    void selectWorkWeek( const QDate & );
+    void selectWorkWeek(const QDate &);
 
-    void selectWeekByDay( int weekDay, const QDate &, const QDate &preferredMonth = QDate() );
+    void selectWeekByDay(int weekDay, const QDate &, const QDate &preferredMonth = QDate());
 
     void selectToday();
 
     void selectPreviousYear();
-    void selectPreviousMonth( const QDate &currentMonth = QDate(),
-                              const QDate &selectionLowerLimit = QDate(),
-                              const QDate &selectionUpperLimit = QDate() );
+    void selectPreviousMonth(const QDate &currentMonth = QDate(),
+                             const QDate &selectionLowerLimit = QDate(),
+                             const QDate &selectionUpperLimit = QDate());
     void selectPreviousWeek();
     void selectNextWeek();
-    void selectNextMonth( const QDate &currentMonth = QDate(),
-                          const QDate &selectionLowerLimit = QDate(),
-                          const QDate &selectionUpperLimit = QDate() );
+    void selectNextMonth(const QDate &currentMonth = QDate(),
+                         const QDate &selectionLowerLimit = QDate(),
+                         const QDate &selectionUpperLimit = QDate());
     void selectNextYear();
 
     void selectPrevious();
     void selectNext();
 
-    void selectMonth( int month );
-    void selectYear( int year );
+    void selectMonth(int month);
+    void selectYear(int year);
 
-  signals:
+signals:
     /* preferredMonth is useful when the datelist crosses months,
        if valid, any month-like component should honour it
     */
-    void datesSelected( const KCalCore::DateList &, const QDate &preferredMonth );
+    void datesSelected(const KCalCore::DateList &, const QDate &preferredMonth);
 
-  protected:
-    void emitSelected( const QDate &preferredMonth = QDate() );
+protected:
+    void emitSelected(const QDate &preferredMonth = QDate());
 
-  private:
+private:
 
     /*
       Selects next month if offset equals 1, or previous month
       if offset equals -1.
       Bigger offsets are accepted.
     */
-    void shiftMonth( const QDate &date,
-                     const QDate &selectionLowerLimit,
-                     const QDate &selectionUpperLimit,
-                     int offset );
+    void shiftMonth(const QDate &date,
+                    const QDate &selectionLowerLimit,
+                    const QDate &selectionUpperLimit,
+                    int offset);
 
     KCalCore::DateList mSelectedDates;
 
     enum {
-      MAX_SELECTABLE_DAYS = 50
+        MAX_SELECTABLE_DAYS = 50
     };
 };
 

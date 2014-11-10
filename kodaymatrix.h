@@ -69,14 +69,14 @@
  */
 class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     /** constructor to create a day matrix widget.
      *
      *  @param parent widget that is the parent of the day matrix.
      *  Normally this should be a KDateNavigator
      */
-    explicit KODayMatrix( QWidget *parent );
+    explicit KODayMatrix(QWidget *parent);
 
     /** destructor that deallocates all dynamically allocated private members.
      */
@@ -85,13 +85,13 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
     /** returns the first and last date of the 6*7 matrix that displays @p month
      * @param month The month we want to get matrix boundaries
      */
-    static QPair<QDate,QDate> matrixLimits( const QDate &month );
+    static QPair<QDate, QDate> matrixLimits(const QDate &month);
 
     /**
       Associate a calendar with this day matrix. If there is a calendar, the
       day matrix will accept drops and days with events will be highlighted.
     */
-    void setCalendar( const Akonadi::ETMCalendar::Ptr &  );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
     /** updates the day matrix to start with the given date. Does all the
      *  necessary checks for holidays or events on a day and stores them
@@ -101,7 +101,7 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      *  @param actdate recalculates the day matrix to show NUMDAYS starting
      *  from this date.
      */
-    void updateView( const QDate &actdate );
+    void updateView(const QDate &actdate);
 
     /**
       Update incidence states of dates. Depending of the preferences days with
@@ -113,19 +113,19 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      * Returns the QDate object associated with day indexed by the supplied
      * offset.
      */
-    const QDate &getDate( int offset ) const;
+    const QDate &getDate(int offset) const;
 
     /**
      * Returns the official name of this holy day or 0 if there is no label
      * for this day.
      */
-    QString getHolidayLabel( int offset ) const;
+    QString getHolidayLabel(int offset) const;
 
     /**
      * Adds all actual selected days from mSelStart to mSelEnd to the supplied
      * DateList.
      */
-    void addSelectedDaysTo( KCalCore::DateList & );
+    void addSelectedDaysTo(KCalCore::DateList &);
 
     /**
      * Sets the actual to be displayed selection in the day matrix starting
@@ -134,7 +134,7 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      * @param start start of the new selection
      * @param end end date of the new selection
      */
-    void setSelectedDaysFrom( const QDate &start, const QDate &end );
+    void setSelectedDaysFrom(const QDate &start, const QDate &end);
 
     /**
       Clear all selections.
@@ -144,7 +144,10 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
     /** Is today visible in the view? Keep this in sync with
      * the values today (below) can take.
      */
-    bool isTodayVisible() const { return mToday >= 0; }
+    bool isTodayVisible() const
+    {
+        return mToday >= 0;
+    }
 
     /**
      * If today is visible, then we can find out if today is
@@ -153,23 +156,29 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      * in the array of visible dates and going from
      * top left (0) to bottom right (41).
      */
-    bool isBeginningOfMonth() const { return mToday <= 8; }
-    bool isEndOfMonth() const { return mToday >= 27; }
+    bool isBeginningOfMonth() const
+    {
+        return mToday <= 8;
+    }
+    bool isEndOfMonth() const
+    {
+        return mToday >= 27;
+    }
 
     /**
      *  Reimplemented from Akonadi::ETMCalendar
      *  They set mPendingChanges to true
      */
-    void calendarIncidenceAdded( const KCalCore::Incidence::Ptr &incidence );
-    void calendarIncidenceChanged( const KCalCore::Incidence::Ptr &incidence );
-    void calendarIncidenceDeleted( const KCalCore::Incidence::Ptr &incidence );
+    void calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence);
+    void calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incidence);
+    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence);
 
     /** Sets which incidences should be highlighted */
-    void setHighlightMode( bool highlightEvents,
-                           bool highlightTodos,
-                           bool highlightJournals );
+    void setHighlightMode(bool highlightEvents,
+                          bool highlightTodos,
+                          bool highlightJournals);
     void setUpdateNeeded();
-  public slots:
+public slots:
     /**
      * Recalculates all the flags of the days in the matrix like holidays or
      * events on a day (Actually calls above method with the actual startdate).
@@ -187,18 +196,18 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      */
     void resourcesChanged();
 
-  signals:
+signals:
     /**
      * Emitted if the user selects a block of days with the mouse by dragging
      * a rectangle inside the matrix
      *
      * @param daylist list of days that have been selected by the user
      */
-    void selected( const KCalCore::DateList &daylist );
+    void selected(const KCalCore::DateList &daylist);
 
-    void newEventSignal( const QDate &date );
-    void newTodoSignal( const QDate &date );
-    void newJournalSignal( const QDate &date );
+    void newEventSignal(const QDate &date);
+    void newTodoSignal(const QDate &date);
+    void newJournalSignal(const QDate &date);
 
     /**
      * Emitted if the user has dropped an incidence (event or todo) inside
@@ -207,7 +216,7 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      * @param incidence the dropped calendar incidence
      * @param dt QDate that has been selected
      */
-    void incidenceDropped( const Akonadi::Item &item, const QDate &dt );
+    void incidenceDropped(const Akonadi::Item &item, const QDate &dt);
 
     /**
      * Emitted if the user has dropped an event inside the matrix and chose
@@ -216,48 +225,48 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
      * @param oldincidence the new calendar incidence
      * @param dt QDate that has been selected
      */
-    void incidenceDroppedMove( const Akonadi::Item &item, const QDate &dt );
+    void incidenceDroppedMove(const Akonadi::Item &item, const QDate &dt);
 
-  protected:
-    bool event( QEvent *e );
+protected:
+    bool event(QEvent *e);
 
-    void paintEvent( QPaintEvent *ev );
+    void paintEvent(QPaintEvent *ev);
 
-    void mousePressEvent( QMouseEvent *e );
+    void mousePressEvent(QMouseEvent *e);
 
-    void mouseReleaseEvent( QMouseEvent *e );
+    void mouseReleaseEvent(QMouseEvent *e);
 
-    void mouseMoveEvent( QMouseEvent *e );
+    void mouseMoveEvent(QMouseEvent *e);
 
-    void resizeEvent( QResizeEvent * );
+    void resizeEvent(QResizeEvent *);
 
-    void dragEnterEvent( QDragEnterEvent *e );
+    void dragEnterEvent(QDragEnterEvent *e);
 
-    void dragMoveEvent( QDragMoveEvent *e );
+    void dragMoveEvent(QDragMoveEvent *e);
 
-    void dragLeaveEvent( QDragLeaveEvent *e );
+    void dragLeaveEvent(QDragLeaveEvent *e);
 
-    void dropEvent( QDropEvent *e );
+    void dropEvent(QDropEvent *e);
 
-  private:
+private:
     /**
      * Pop-up a context menu for creating a new Event, To-do, or Journal.
      */
-    void popupMenu( const QDate &date );
+    void popupMenu(const QDate &date);
 
     /** returns the index of the day located at the matrix's widget (x,y) position.
      *
      *  @param x horizontal coordinate
      *  @param y vertical coordinate
      */
-    int getDayIndexFrom( int x, int y ) const;
+    int getDayIndexFrom(int x, int y) const;
 
     /** calculates a "shaded" color from the supplied color object.
      *  (Copied from Cornelius's kdpdatebutton.cpp)
      *
      *  @param color source based on which a shaded color should be calculated.
      */
-    QColor getShadedColor( const QColor &color ) const;
+    QColor getShadedColor(const QColor &color) const;
 
     /** updates mEvent list with all days that have events */
     void updateEvents();
@@ -289,7 +298,7 @@ class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
     QList<QDate> mEvents;
 
     /** stores holiday names of the days shown in the matrix. */
-    QMap<int,QString> mHolidays;
+    QMap<int, QString> mHolidays;
 
     /** index of today or -1 if today is not visible in the matrix. */
     int mToday;

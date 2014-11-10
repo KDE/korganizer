@@ -26,7 +26,6 @@
 
 #include <qdebug.h>
 
-
 #include <calendarsupport/plugin.h>
 #include <QApplication>
 #include <KLocalizedString>
@@ -34,54 +33,53 @@
 
 #include "kocore.h"
 
-int main(int argc,char **argv)
+int main(int argc, char **argv)
 {
-  KAboutData aboutData(QLatin1String("korgplugins"),i18n("KOrgPlugins"),QLatin1String("0.1"));
-  QApplication app(argc, argv);
-  QCommandLineParser parser;
-  KAboutData::setApplicationData(aboutData);
-  parser.addVersionOption();
-  parser.addHelpOption();
-  aboutData.setupCommandLine(&parser);
-  parser.process(app);
-  aboutData.processCommandLine(&parser);
+    KAboutData aboutData(QLatin1String("korgplugins"), i18n("KOrgPlugins"), QLatin1String("0.1"));
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
-
-  KService::List plugins = KOCore::self()->availablePlugins();
-  KService::List::ConstIterator it;
-  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    qDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
-             << (*it)->name() << ")";
-    CalendarSupport::Plugin *p = KOCore::self()->loadPlugin(*it);
-    if (!p) {
-      qDebug() << "Plugin loading failed.";
-    } else {
-      qDebug() << "PLUGIN INFO:" << p->info();
+    KService::List plugins = KOCore::self()->availablePlugins();
+    KService::List::ConstIterator it;
+    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
+        qDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
+                 << (*it)->name() << ")";
+        CalendarSupport::Plugin *p = KOCore::self()->loadPlugin(*it);
+        if (!p) {
+            qDebug() << "Plugin loading failed.";
+        } else {
+            qDebug() << "PLUGIN INFO:" << p->info();
+        }
     }
-  }
 
-  plugins = KOCore::self()->availableParts();
-  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    qDebug() << "Part:" << (*it)->desktopEntryName() << "("
-             << (*it)->name() << ")";
-    KOrg::Part *p = KOCore::self()->loadPart(*it,0);
-    if (!p) {
-      qDebug() << "Part loading failed.";
-    } else {
-      qDebug() << "PART INFO:" << p->info();
+    plugins = KOCore::self()->availableParts();
+    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
+        qDebug() << "Part:" << (*it)->desktopEntryName() << "("
+                 << (*it)->name() << ")";
+        KOrg::Part *p = KOCore::self()->loadPart(*it, 0);
+        if (!p) {
+            qDebug() << "Part loading failed.";
+        } else {
+            qDebug() << "PART INFO:" << p->info();
+        }
     }
-  }
 
-  plugins = KOCore::self()->availableCalendarDecorations();
-  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-    qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
-             << (*it)->name() << ")";
-    EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
-    if (!p) {
-      qDebug() << "Calendar decoration loading failed.";
-    } else {
-      qDebug() << "CALENDAR DECORATION INFO:" << p->info();
+    plugins = KOCore::self()->availableCalendarDecorations();
+    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
+        qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
+                 << (*it)->name() << ")";
+        EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
+        if (!p) {
+            qDebug() << "Calendar decoration loading failed.";
+        } else {
+            qDebug() << "CALENDAR DECORATION INFO:" << p->info();
+        }
     }
-  }
-  return 0;
+    return 0;
 }

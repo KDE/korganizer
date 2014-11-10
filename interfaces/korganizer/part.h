@@ -29,25 +29,26 @@
 
 #include <QWidget>
 
-namespace KOrg {
+namespace KOrg
+{
 
 class Part : public KParts::Part
 {
-  public:
+public:
     static int interfaceVersion()
     {
-      return 2;
+        return 2;
     }
 
     static QString serviceType()
     {
-      return QLatin1String( "KOrganizer/Part" );
+        return QLatin1String("KOrganizer/Part");
     }
 
-    typedef QList<Part*> List;
+    typedef QList<Part *> List;
 
-    explicit Part( MainWindow *parent )
-      : KParts::Part( parent ? ( parent->topLevelWidget() ) : 0 ), mMainWindow( parent )
+    explicit Part(MainWindow *parent)
+        : KParts::Part(parent ? (parent->topLevelWidget()) : 0), mMainWindow(parent)
     {
     }
 
@@ -62,22 +63,22 @@ class Part : public KParts::Part
 
     MainWindow *mainWindow()
     {
-      return mMainWindow;
+        return mMainWindow;
     }
 
-  private:
+private:
     MainWindow *mMainWindow;
 };
 
 class PartFactory : public KPluginFactory
 {
-  public:
-    virtual Part *createPluginFactory( MainWindow *parent ) = 0;
+public:
+    virtual Part *createPluginFactory(MainWindow *parent) = 0;
 
-  protected:
-    virtual QObject *createObject( QObject *, const char *, const QStringList & )
+protected:
+    virtual QObject *createObject(QObject *, const char *, const QStringList &)
     {
-      return 0;
+        return 0;
     }
 };
 

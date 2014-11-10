@@ -32,7 +32,7 @@
 
 class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 {
-  public:
+public:
     virtual ~KOPrefs();
 
     /** Get instance of KOPrefs. It is made sure that there is only one
@@ -50,23 +50,23 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
     /** Write preferences to config file */
     bool usrSave();
 
-  private:
+private:
     /** Constructor disabled for public. Use instance() to create a KOPrefs
     object. */
     KOPrefs();
     friend class KOPrefsPrivate;
 
-  public:
-    void setResourceColor ( const QString &, const QColor & );
-    QColor resourceColor( const QString & );
+public:
+    void setResourceColor(const QString &, const QColor &);
+    QColor resourceColor(const QString &);
 
-    void setHtmlExportFile( const QString &fileName );
+    void setHtmlExportFile(const QString &fileName);
     QString htmlExportFile() const;
 
     QStringList timeScaleTimezones() const;
-    void setTimeScaleTimezones( const QStringList &list );
+    void setTimeScaleTimezones(const QStringList &list);
 
-  private:
+private:
 
     QFont mDefaultMonthViewFont;
 
@@ -76,7 +76,7 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 
     EventViews::PrefsPtr mEventViewsPrefs;
 
-  public: // Do not use - except in KOPrefsDialogMain
+public: // Do not use - except in KOPrefsDialogMain
     QString mName;
     QString mEmail;
 };

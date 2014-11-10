@@ -41,14 +41,16 @@ class KOTimelineView;
 class KOTimeSpentView;
 class KOTodoView;
 class KOWhatsNextView;
-namespace KOrg {
-  class BaseView;
-  class MultiAgendaView;
-  class MonthView;
+namespace KOrg
+{
+class BaseView;
+class MultiAgendaView;
+class MonthView;
 }
 
-namespace Akonadi {
-  class Item;
+namespace Akonadi
+{
+class Item;
 }
 
 class KConfig;
@@ -61,44 +63,44 @@ class QTabWidget;
 class KOViewManager : public QObject
 {
 
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
 
     enum RangeMode {
-      NO_RANGE,
-      DAY_RANGE,
-      WORK_WEEK_RANGE,
-      WEEK_RANGE,
-      NEXTX_RANGE,
-      OTHER_RANGE // for example, showing 8 days
+        NO_RANGE,
+        DAY_RANGE,
+        WORK_WEEK_RANGE,
+        WEEK_RANGE,
+        NEXTX_RANGE,
+        OTHER_RANGE // for example, showing 8 days
     };
 
-    explicit KOViewManager( CalendarView * );
+    explicit KOViewManager(CalendarView *);
     virtual ~KOViewManager();
 
     /** changes the view to be the currently selected view */
-    void showView( KOrg::BaseView * );
+    void showView(KOrg::BaseView *);
 
-    void readSettings( KConfig *config );
-    void writeSettings( KConfig *config );
+    void readSettings(KConfig *config);
+    void writeSettings(KConfig *config);
 
     /** Read which view was shown last from config file */
-    void readCurrentView( KConfig *config );
+    void readCurrentView(KConfig *config);
     /** Write which view is currently shown to config file */
-    void writeCurrentView( KConfig *config );
+    void writeCurrentView(KConfig *config);
 
     KOrg::BaseView *currentView();
 
-    void setDocumentId( const QString & );
+    void setDocumentId(const QString &);
 
     void updateView();
-    void updateView( const QDate &start, const QDate &end, const QDate &preferredMonth );
+    void updateView(const QDate &start, const QDate &end, const QDate &preferredMonth);
 
-    void goMenu( bool enable );
+    void goMenu(bool enable);
     void raiseCurrentView();
 
-    void connectView( KOrg::BaseView * );
-    void addView( KOrg::BaseView *, bool isTab = false );
+    void connectView(KOrg::BaseView *);
+    void addView(KOrg::BaseView *, bool isTab = false);
 
     Akonadi::Item currentSelection();
 
@@ -108,10 +110,22 @@ class KOViewManager : public QObject
      */
     QDate currentSelectionDate();
 
-    KOAgendaView *agendaView() const { return mAgendaView; }
-    KOrg::MultiAgendaView *multiAgendaView() const { return mAgendaSideBySideView; }
-    KOTodoView *todoView() const { return mTodoView; }
-    KOrg::MonthView *monthView() const { return mMonthView; }
+    KOAgendaView *agendaView() const
+    {
+        return mAgendaView;
+    }
+    KOrg::MultiAgendaView *multiAgendaView() const
+    {
+        return mAgendaSideBySideView;
+    }
+    KOTodoView *todoView() const
+    {
+        return mTodoView;
+    }
+    KOrg::MonthView *monthView() const
+    {
+        return mMonthView;
+    }
 
     void updateMultiCalendarDisplay();
 
@@ -128,13 +142,16 @@ class KOViewManager : public QObject
       Return the current range mode:
       week, work week, day or nextX days, etc.
     */
-    RangeMode rangeMode() const { return mRangeMode; }
+    RangeMode rangeMode() const
+    {
+        return mRangeMode;
+    }
 
-  signals:
+signals:
     void configChanged();
-    void datesSelected( const KCalCore::DateList & );
+    void datesSelected(const KCalCore::DateList &);
 
-  public slots:
+public slots:
     void showWhatsNextView();
     void showListView();
     void showAgendaView();
@@ -150,7 +167,7 @@ class KOViewManager : public QObject
     void selectWeek();
     void selectNextX();
 
-    void connectTodoView( KOTodoView *todoView );
+    void connectTodoView(KOTodoView *todoView);
 
     void zoomInHorizontally();
     void zoomOutHorizontally();
@@ -162,14 +179,14 @@ class KOViewManager : public QObject
        next time CalendarView::updateView() is called, views won't try to be smart
        and ignore the update for performance reasons.
     */
-    void addChange( EventViews::EventView::Change change );
+    void addChange(EventViews::EventView::Change change);
 
-  private slots:
-    void currentAgendaViewTabChanged( QWidget * );
+private slots:
+    void currentAgendaViewTabChanged(QWidget *);
 
-  private:
-    QWidget *widgetForView( KOrg::BaseView * ) const;
-    QList<KOrg::BaseView*> mViews;
+private:
+    QWidget *widgetForView(KOrg::BaseView *) const;
+    QList<KOrg::BaseView *> mViews;
     CalendarView *mMainView;
 
     KOAgendaView *mAgendaView;

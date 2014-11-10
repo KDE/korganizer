@@ -31,52 +31,56 @@
 class QPushButton;
 class CalendarView;
 
-namespace Ui {
-  class SearchDialog;
+namespace Ui
+{
+class SearchDialog;
 }
 
-namespace EventViews {
-  class ListView;
+namespace EventViews
+{
+class ListView;
 }
 
-namespace Akonadi {
-  class Item;
+namespace Akonadi
+{
+class Item;
 }
 
-namespace KCalCore {
-  class Incidence;
+namespace KCalCore
+{
+class Incidence;
 }
 
 class SearchDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit SearchDialog( CalendarView *calendarview );
+public:
+    explicit SearchDialog(CalendarView *calendarview);
     virtual ~SearchDialog();
 
     void updateView();
 
-  public slots:
-    void changeIncidenceDisplay( KCalCore::Incidence *, int )
+public slots:
+    void changeIncidenceDisplay(KCalCore::Incidence *, int)
     {
-      updateView();
+        updateView();
     }
 
-  protected slots:
+protected slots:
     void doSearch();
-    void searchTextChanged( const QString &_text );
+    void searchTextChanged(const QString &_text);
 
-  signals:
-    void showIncidenceSignal( const Akonadi::Item & );
-    void editIncidenceSignal( const Akonadi::Item & );
-    void deleteIncidenceSignal( const Akonadi::Item & );
+signals:
+    void showIncidenceSignal(const Akonadi::Item &);
+    void editIncidenceSignal(const Akonadi::Item &);
+    void deleteIncidenceSignal(const Akonadi::Item &);
 
-  protected:
+protected:
     /*reimp*/
-   virtual void showEvent( QShowEvent *event );
-  private:
-    void search( const QRegExp & );
+    virtual void showEvent(QShowEvent *event);
+private:
+    void search(const QRegExp &);
     void readConfig();
     void writeConfig();
 

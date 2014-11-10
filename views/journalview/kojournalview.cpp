@@ -36,78 +36,77 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-
 #include <QVBoxLayout>
 
 using namespace KOrg;
 
-KOJournalView::KOJournalView( QWidget *parent )
-  : KOrg::BaseView( parent )
+KOJournalView::KOJournalView(QWidget *parent)
+    : KOrg::BaseView(parent)
 {
-  QVBoxLayout *layout = new QVBoxLayout( this );
-  mJournalView = new EventViews::JournalView( this );
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    mJournalView = new EventViews::JournalView(this);
 
-  layout->addWidget( mJournalView );
+    layout->addWidget(mJournalView);
 
-  connect( mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr,bool)),
-           SLOT(printJournal(KCalCore::Journal::Ptr,bool)) );
+    connect(mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr,bool)),
+            SLOT(printJournal(KCalCore::Journal::Ptr,bool)));
 
-  connect( mJournalView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+    connect(mJournalView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
 
-  connect( mJournalView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+            SIGNAL(showIncidenceSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+            SIGNAL(editIncidenceSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(pasteIncidenceSignal()),
-           SIGNAL(pasteIncidenceSignal()) );
+    connect(mJournalView, SIGNAL(pasteIncidenceSignal()),
+            SIGNAL(pasteIncidenceSignal()));
 
-  connect( mJournalView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mJournalView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mJournalView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mJournalView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mJournalView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+    connect(mJournalView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
 
-  connect( mJournalView, SIGNAL(newEventSignal()),
-           SIGNAL(newEventSignal()) );
+    connect(mJournalView, SIGNAL(newEventSignal()),
+            SIGNAL(newEventSignal()));
 
-  connect( mJournalView, SIGNAL(newEventSignal(QDate)),
-           SIGNAL(newEventSignal(QDate)) );
+    connect(mJournalView, SIGNAL(newEventSignal(QDate)),
+            SIGNAL(newEventSignal(QDate)));
 
-  connect( mJournalView, SIGNAL(newEventSignal(QDateTime)),
-           SIGNAL(newEventSignal(QDateTime)) );
+    connect(mJournalView, SIGNAL(newEventSignal(QDateTime)),
+            SIGNAL(newEventSignal(QDateTime)));
 
-  connect( mJournalView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+    connect(mJournalView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+            SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-  connect( mJournalView, SIGNAL(newTodoSignal(QDate)),
-           SIGNAL(newTodoSignal(QDate)) );
+    connect(mJournalView, SIGNAL(newTodoSignal(QDate)),
+            SIGNAL(newTodoSignal(QDate)));
 
-  connect( mJournalView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+    connect(mJournalView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+            SIGNAL(newSubTodoSignal(Akonadi::Item)));
 
-  connect( mJournalView, SIGNAL(newJournalSignal(QDate)),
-           SIGNAL(newJournalSignal(QDate)) );
+    connect(mJournalView, SIGNAL(newJournalSignal(QDate)),
+            SIGNAL(newJournalSignal(QDate)));
 }
 
 KOJournalView::~KOJournalView()
@@ -116,81 +115,81 @@ KOJournalView::~KOJournalView()
 
 int KOJournalView::currentDateCount() const
 {
-  return mJournalView->currentDateCount();
+    return mJournalView->currentDateCount();
 }
 
 Akonadi::Item::List KOJournalView::selectedIncidences()
 {
-  return mJournalView->selectedIncidences();
+    return mJournalView->selectedIncidences();
 }
 
 void KOJournalView::updateView()
 {
-  mJournalView->updateView();
+    mJournalView->updateView();
 }
 
 void KOJournalView::flushView()
 {
-  mJournalView->flushView();
+    mJournalView->flushView();
 }
 
-void KOJournalView::showDates( const QDate &start, const QDate &end, const QDate &dummy )
+void KOJournalView::showDates(const QDate &start, const QDate &end, const QDate &dummy)
 {
-  mJournalView->showDates( start, end, dummy );
+    mJournalView->showDates(start, end, dummy);
 }
 
-void KOJournalView::showIncidences( const Akonadi::Item::List &incidences, const QDate &date )
+void KOJournalView::showIncidences(const Akonadi::Item::List &incidences, const QDate &date)
 {
-  mJournalView->showIncidences( incidences, date );
+    mJournalView->showIncidences(incidences, date);
 }
 
-void KOJournalView::changeIncidenceDisplay( const Akonadi::Item &incidence,
-                                            Akonadi::IncidenceChanger::ChangeType changeType )
+void KOJournalView::changeIncidenceDisplay(const Akonadi::Item &incidence,
+        Akonadi::IncidenceChanger::ChangeType changeType)
 {
-  mJournalView->changeIncidenceDisplay( incidence, changeType );
+    mJournalView->changeIncidenceDisplay(incidence, changeType);
 }
 
-void KOJournalView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+void KOJournalView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
-  mJournalView->setIncidenceChanger( changer );
+    mJournalView->setIncidenceChanger(changer);
 }
 
-void KOJournalView::getHighlightMode( bool &highlightEvents,
-                                      bool &highlightTodos,
-                                      bool &highlightJournals )
+void KOJournalView::getHighlightMode(bool &highlightEvents,
+                                     bool &highlightTodos,
+                                     bool &highlightJournals)
 {
-  highlightJournals = KOPrefs::instance()->mHighlightJournals;
-  highlightTodos    = false;
-  highlightEvents   = !highlightJournals;
+    highlightJournals = KOPrefs::instance()->mHighlightJournals;
+    highlightTodos    = false;
+    highlightEvents   = !highlightJournals;
 }
 
 CalendarSupport::CalPrinterBase::PrintType KOJournalView::printType() const
 {
-  return CalendarSupport::CalPrinterBase::Journallist;
+    return CalendarSupport::CalPrinterBase::Journallist;
 }
 
-void KOJournalView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
+void KOJournalView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
-  BaseView::setCalendar( calendar );
-  mJournalView->setCalendar( calendar );
+    BaseView::setCalendar(calendar);
+    mJournalView->setCalendar(calendar);
 }
 
-void KOJournalView::printJournal( const KCalCore::Journal::Ptr &journal, bool preview )
+void KOJournalView::printJournal(const KCalCore::Journal::Ptr &journal, bool preview)
 {
-  if ( journal ) {
-    CalendarSupport::CalPrinter printer( this, calendar(), true );
-    KCalCore::Incidence::List selectedIncidences;
-    selectedIncidences.append( journal );
+    if (journal) {
+        CalendarSupport::CalPrinter printer(this, calendar(), true);
+        KCalCore::Incidence::List selectedIncidences;
+        selectedIncidences.append(journal);
 
-    const QDate dtStart = journal->dtStart().date();
+        const QDate dtStart = journal->dtStart().date();
 
-    //make sure to clear and then restore the view stylesheet, else the view
-    //stylesheet is propagated to the child print dialog. see bug 303902
-    const QString ss = styleSheet();
-    setStyleSheet( QString() );
-    printer.print( CalendarSupport::CalPrinterBase::Incidence,
-                   dtStart, dtStart, selectedIncidences, preview );
-    setStyleSheet( ss );
-  }
+        //make sure to clear and then restore the view stylesheet, else the view
+        //stylesheet is propagated to the child print dialog. see bug 303902
+        const QString ss = styleSheet();
+        setStyleSheet(QString());
+        printer.print(CalendarSupport::CalPrinterBase::Incidence,
+                      dtStart, dtStart, selectedIncidences, preview);
+        setStyleSheet(ss);
+    }
 }
 

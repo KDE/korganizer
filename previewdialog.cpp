@@ -47,138 +47,138 @@
 #include <QPushButton>
 #include <KGuiItem>
 
-PreviewDialog::PreviewDialog( const KUrl &url, QWidget *parent )
-  : QDialog( parent ), mOriginalUrl( url ), mFileStorage( 0 )
+PreviewDialog::PreviewDialog(const KUrl &url, QWidget *parent)
+    : QDialog(parent), mOriginalUrl(url), mFileStorage(0)
 {
-  setWindowTitle( i18n( "Import Calendar/Event" ) );
-  // KGuiItem( i18n("&Merge into existing calendar"), "merge" )
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
-  QPushButton *user1Button = new QPushButton;
-  buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
-  QPushButton *user2Button = new QPushButton;
-  buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
-  connect(buttonBox, &QDialogButtonBox::accepted, this, &PreviewDialog::accept);
-  connect(buttonBox, &QDialogButtonBox::rejected, this, &PreviewDialog::reject);
-  user1Button->setDefault(true);
-  QFrame *topFrame = new QFrame( this );
-  mainLayout->addWidget(topFrame);
-  mainLayout->addWidget(buttonBox);
+    setWindowTitle(i18n("Import Calendar/Event"));
+    // KGuiItem( i18n("&Merge into existing calendar"), "merge" )
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    setLayout(mainLayout);
+    QPushButton *user1Button = new QPushButton;
+    buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+    QPushButton *user2Button = new QPushButton;
+    buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &PreviewDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &PreviewDialog::reject);
+    user1Button->setDefault(true);
+    QFrame *topFrame = new QFrame(this);
+    mainLayout->addWidget(topFrame);
+    mainLayout->addWidget(buttonBox);
 
-  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  //QT5 topLayout->setSpacing( spacingHint() );
-  topLayout->setMargin( 0 );
+    QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
+    //QT5 topLayout->setSpacing( spacingHint() );
+    topLayout->setMargin(0);
 
-  mCalendar =
-    KCalCore::MemoryCalendar::Ptr(
-      new KCalCore::MemoryCalendar( KOPrefs::instance()->mTimeZoneId ) );
+    mCalendar =
+        KCalCore::MemoryCalendar::Ptr(
+            new KCalCore::MemoryCalendar(KOPrefs::instance()->mTimeZoneId));
 
-  mListView = new KOListView( Akonadi::ETMCalendar::Ptr(), this, true );
-  topLayout->addWidget( mListView );
+    mListView = new KOListView(Akonadi::ETMCalendar::Ptr(), this, true);
+    topLayout->addWidget(mListView);
 
-  //QT5 topLayout->setSpacing( spacingHint() );
-  //QT5 topLayout->setMargin( marginHint() );
+    //QT5 topLayout->setSpacing( spacingHint() );
+    //QT5 topLayout->setMargin( marginHint() );
 
-  connect(user1Button, &QPushButton::clicked, this, &PreviewDialog::slotMerge);
-  connect(user2Button, &QPushButton::clicked, this, &PreviewDialog::slotAdd);
+    connect(user1Button, &QPushButton::clicked, this, &PreviewDialog::slotMerge);
+    connect(user2Button, &QPushButton::clicked, this, &PreviewDialog::slotAdd);
 
-  // when someone edits a kmail attachment he's editing a tmp file, check for that
-  // and if it's a tmp file then open a save dialog
-  if ( isTempFile() ) {
-    KGuiItem::assign(user2Button, KGuiItem( i18n( "&Add as new calendar..." )));
-  } else {
-    KGuiItem::assign(user2Button, KGuiItem( i18n( "&Add as new calendar" )));
-  }
+    // when someone edits a kmail attachment he's editing a tmp file, check for that
+    // and if it's a tmp file then open a save dialog
+    if (isTempFile()) {
+        KGuiItem::assign(user2Button, KGuiItem(i18n("&Add as new calendar...")));
+    } else {
+        KGuiItem::assign(user2Button, KGuiItem(i18n("&Add as new calendar")));
+    }
 
-  mLocalUrl = 0;
+    mLocalUrl = 0;
 }
 
 PreviewDialog::~PreviewDialog()
 {
-  if ( mLocalUrl && !mOriginalUrl.isLocalFile() ) {
-    KIO::NetAccess::removeTempFile( mLocalUrl->path() );
-    delete mLocalUrl;
-  }
+    if (mLocalUrl && !mOriginalUrl.isLocalFile()) {
+        KIO::NetAccess::removeTempFile(mLocalUrl->path());
+        delete mLocalUrl;
+    }
 
-  delete mFileStorage;
+    delete mFileStorage;
 }
 
 bool PreviewDialog::loadCalendar()
 {
-  // If it's a remote file, download it so we can give it to CalendarLocal
-  if ( !mOriginalUrl.isLocalFile() ) {
-    if ( mLocalUrl ) {
-      // loadCalendar already called.. remove old one.
-      KIO::NetAccess::removeTempFile( mLocalUrl->path() );
-      delete mLocalUrl;
-    }
+    // If it's a remote file, download it so we can give it to CalendarLocal
+    if (!mOriginalUrl.isLocalFile()) {
+        if (mLocalUrl) {
+            // loadCalendar already called.. remove old one.
+            KIO::NetAccess::removeTempFile(mLocalUrl->path());
+            delete mLocalUrl;
+        }
 
-    QString tmpFile;
-    if ( KIO::NetAccess::download( mOriginalUrl, tmpFile, 0 ) ) {
-      mLocalUrl = new KUrl( tmpFile );
+        QString tmpFile;
+        if (KIO::NetAccess::download(mOriginalUrl, tmpFile, 0)) {
+            mLocalUrl = new KUrl(tmpFile);
+        } else {
+            mLocalUrl = 0;
+        }
     } else {
-      mLocalUrl = 0;
+        mLocalUrl = &mOriginalUrl;
     }
-  } else {
-    mLocalUrl = &mOriginalUrl;
-  }
 
-  if ( mLocalUrl ) {
-    mFileStorage = new KCalCore::FileStorage( mCalendar,
-                                              mLocalUrl->path(),
-                                              new KCalCore::ICalFormat() );
+    if (mLocalUrl) {
+        mFileStorage = new KCalCore::FileStorage(mCalendar,
+                mLocalUrl->path(),
+                new KCalCore::ICalFormat());
 
-    const bool success = mFileStorage->load();
+        const bool success = mFileStorage->load();
 
-    if ( !success && !mOriginalUrl.isLocalFile() ) {
-      KIO::NetAccess::removeTempFile( mLocalUrl->path() );
+        if (!success && !mOriginalUrl.isLocalFile()) {
+            KIO::NetAccess::removeTempFile(mLocalUrl->path());
+        } else {
+            mListView->showAll();
+        }
+        return success;
     } else {
-      mListView->showAll();
+        return false;
     }
-    return success;
-  } else {
-    return false;
-  }
 }
 
 void PreviewDialog::slotMerge()
 {
-  if ( mLocalUrl ) {
-    emit openURL( *mLocalUrl, true );
-    emit dialogFinished( this );
-    accept();
-  }
+    if (mLocalUrl) {
+        emit openURL(*mLocalUrl, true);
+        emit dialogFinished(this);
+        accept();
+    }
 }
 
 void PreviewDialog::slotAdd()
 {
-  KUrl finalUrl = mOriginalUrl;
-  if ( isTempFile() ) {
-    const QString fileName =
-      KFileDialog::getSaveFileName( QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
-                                    i18n( "*.vcs *.ics|Calendar Files" ),
-                                    this, i18n( "Select path for new calendar" ) );
+    KUrl finalUrl = mOriginalUrl;
+    if (isTempFile()) {
+        const QString fileName =
+            KFileDialog::getSaveFileName(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
+                                         i18n("*.vcs *.ics|Calendar Files"),
+                                         this, i18n("Select path for new calendar"));
 
-    finalUrl = KUrl( fileName );
+        finalUrl = KUrl(fileName);
 
-    if ( !KIO::NetAccess::file_copy( mOriginalUrl, finalUrl, this ) &&
-         KIO::NetAccess::lastError() ) {
-      KMessageBox::error( this, KIO::NetAccess::lastErrorString() );
-      return;
+        if (!KIO::NetAccess::file_copy(mOriginalUrl, finalUrl, this) &&
+                KIO::NetAccess::lastError()) {
+            KMessageBox::error(this, KIO::NetAccess::lastErrorString());
+            return;
+        }
     }
-  }
 
-  if ( finalUrl.isValid() ) {
-    emit addResource( finalUrl );
-    emit dialogFinished( this );
-    accept();
-  }
+    if (finalUrl.isValid()) {
+        emit addResource(finalUrl);
+        emit dialogFinished(this);
+        accept();
+    }
 }
 
 bool PreviewDialog::isTempFile() const
 {
-  const QString tmpPath = QDir::tempPath();
-  return mOriginalUrl.path().startsWith( tmpPath );
+    const QString tmpPath = QDir::tempPath();
+    return mOriginalUrl.path().startsWith(tmpPath);
 }
 

@@ -33,20 +33,22 @@
 
 class CalendarView;
 
-namespace Akonadi {
-  class Item;
+namespace Akonadi
+{
+class Item;
 }
 
-namespace KParts {
-  class StatusBarExtension;
+namespace KParts
+{
+class StatusBarExtension;
 }
 
 class KOrganizerPart: public KParts::ReadOnlyPart,
-                      public KOrg::MainWindow
+    public KOrg::MainWindow
 {
-  Q_OBJECT
-  public:
-    KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & );
+    Q_OBJECT
+public:
+    KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &);
     virtual ~KOrganizerPart();
 
     virtual KOrg::CalendarViewBase *view() const;
@@ -60,40 +62,49 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
       @return true on success, false if an error occurred
     */
-    virtual bool openURL( const KUrl &url, bool merge = false );
+    virtual bool openURL(const KUrl &url, bool merge = false);
 
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL();
 
     /** Save calendar file to URL */
-    virtual bool saveAsURL( const KUrl &kurl );
+    virtual bool saveAsURL(const KUrl &kurl);
 
     /** Get current URL */
     virtual KUrl getCurrentURL() const;
 
-    virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
-    virtual KXMLGUIClient *mainGuiClient() { return this; }
+    virtual KXMLGUIFactory *mainGuiFactory()
+    {
+        return factory();
+    }
+    virtual KXMLGUIClient *mainGuiClient()
+    {
+        return this;
+    }
     virtual QWidget *topLevelWidget();
     virtual ActionManager *actionManager();
-    virtual KActionCollection *getActionCollection() const { return actionCollection(); }
-    virtual void showStatusMessage( const QString &message );
+    virtual KActionCollection *getActionCollection() const
+    {
+        return actionCollection();
+    }
+    virtual void showStatusMessage(const QString &message);
 
     void setTitle();
 
-  public slots:
-    void slotChangeInfo( const Akonadi::Item &, const QDate &date );
+public slots:
+    void slotChangeInfo(const Akonadi::Item &, const QDate &date);
 
-  protected:
+protected:
     virtual bool openFile();
 
-  private:
+private:
     CalendarView *mView;
     ActionManager *mActionManager;
     KParts::StatusBarExtension *mStatusBarExtension;
     QWidget *mTopLevelWidget;
 
-  signals:
-    void textChanged( const QString & );
+signals:
+    void textChanged(const QString &);
 };
 
 #endif

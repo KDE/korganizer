@@ -29,16 +29,17 @@
 
 #include <QAbstractItemModel>
 
-namespace KOrg {
+namespace KOrg
+{
 
 /**
   Shows one agenda for every resource side-by-side.
 */
 class MultiAgendaView : public KOEventView
 {
-  Q_OBJECT
-  public:
-    explicit MultiAgendaView( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit MultiAgendaView(QWidget *parent = 0);
     ~MultiAgendaView();
 
     Akonadi::Item::List selectedIncidences();
@@ -46,8 +47,8 @@ class MultiAgendaView : public KOEventView
     int currentDateCount() const;
     int maxDatesHint() const;
 
-    bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    /* reimp */void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    /* reimp */void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
 
     /**
      * reimplemented from KOrg::BaseView
@@ -57,69 +58,69 @@ class MultiAgendaView : public KOEventView
     /**
      * reimplemented from KOrg::BaseView
      */
-    void showConfigurationDialog( QWidget *parent );
+    void showConfigurationDialog(QWidget *parent);
 
-    void setChanges( EventViews::EventView::Changes changes );
+    void setChanges(EventViews::EventView::Changes changes);
 
     KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
-    void setCustomCollectionSelectionProxyModel( KCheckableProxyModel *model );
+    void setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model);
 
-    void restoreConfig( const KConfigGroup &configGroup );
-    void saveConfig( KConfigGroup &configGroup );
+    void restoreConfig(const KConfigGroup &configGroup);
+    void saveConfig(KConfigGroup &configGroup);
 
-    void setDateRange( const KDateTime &start, const KDateTime &end,
-                       const QDate &preferredMonth = QDate() );
+    void setDateRange(const KDateTime &start, const KDateTime &end,
+                      const QDate &preferredMonth = QDate());
 
     Akonadi::Collection::Id collectionId() const;
 
-  public slots:
-    void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
-    void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+public slots:
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate());
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
     void updateView();
-    void changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType );
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
     void updateConfig();
 
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
 
-  private:
+private:
     class Private;
     Private *const d;
 
 };
 
 class MultiAgendaViewConfigDialog : public QDialog,
-                                    public EventViews::ConfigDialogInterface
+    public EventViews::ConfigDialogInterface
 {
-  Q_OBJECT
-  public:
-    explicit MultiAgendaViewConfigDialog( QAbstractItemModel *baseModel,
-                                          QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel,
+                                         QWidget *parent = 0);
     ~MultiAgendaViewConfigDialog();
 
     bool useCustomColumns() const;
-    void setUseCustomColumns( bool );
+    void setUseCustomColumns(bool);
 
     int numberOfColumns() const;
-    void setNumberOfColumns( int n );
+    void setNumberOfColumns(int n);
 
-    QString columnTitle( int column ) const;
-    void setColumnTitle( int column, const QString &title );
-    KCheckableProxyModel *takeSelectionModel( int column );
-    void setSelectionModel( int column, KCheckableProxyModel *model );
+    QString columnTitle(int column) const;
+    void setColumnTitle(int column, const QString &title);
+    KCheckableProxyModel *takeSelectionModel(int column);
+    void setSelectionModel(int column, KCheckableProxyModel *model);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * reimplemented from QDialog
      */
     void accept();
 
-  private Q_SLOTS:
-    void useCustomToggled( bool );
-    void numberOfColumnsChanged( int );
-    void currentChanged( const QModelIndex &index );
-    void titleEdited( const QString &text );
+private Q_SLOTS:
+    void useCustomToggled(bool);
+    void numberOfColumnsChanged(int);
+    void currentChanged(const QModelIndex &index);
+    void titleEdited(const QString &text);
 
-  private:
+private:
     class Private;
     Private *const d;
 };

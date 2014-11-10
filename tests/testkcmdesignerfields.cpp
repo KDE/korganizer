@@ -19,7 +19,6 @@
 
 #include <KAboutData>
 
-
 #include <qdebug.h>
 #include <QApplication>
 #include <KLocalizedString>
@@ -29,31 +28,42 @@
 
 class MyDesignerFields : public KCMDesignerFields
 {
-  public:
-    MyDesignerFields( ) : KCMDesignerFields( 0 ) {}
-    QString localUiDir() { return QString::fromLatin1( KDESRCDIR ); }
-    QString uiPath() { return QString::fromLatin1( KDESRCDIR ); }
-    void writeActivePages( const QStringList & )  {}
-    QStringList readActivePages() { return QStringList(); }
-    QString applicationName() { return QLatin1String("textkcmdesignerfields"); }
+public:
+    MyDesignerFields() : KCMDesignerFields(0) {}
+    QString localUiDir()
+    {
+        return QString::fromLatin1(KDESRCDIR);
+    }
+    QString uiPath()
+    {
+        return QString::fromLatin1(KDESRCDIR);
+    }
+    void writeActivePages(const QStringList &)  {}
+    QStringList readActivePages()
+    {
+        return QStringList();
+    }
+    QString applicationName()
+    {
+        return QLatin1String("textkcmdesignerfields");
+    }
 };
 
-int main(int argc,char **argv)
+int main(int argc, char **argv)
 {
-  KAboutData aboutData( QLatin1String("testkcmdesignerfields"), QString(), QLatin1String("0.1") );
-  QApplication app(argc, argv);
-  QCommandLineParser parser;
-  KAboutData::setApplicationData(aboutData);
-  parser.addVersionOption();
-  parser.addHelpOption();
-  aboutData.setupCommandLine(&parser);
-  parser.process(app);
-  aboutData.processCommandLine(&parser);
+    KAboutData aboutData(QLatin1String("testkcmdesignerfields"), QString(), QLatin1String("0.1"));
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
+    MyDesignerFields *kcm = new MyDesignerFields();
+    kcm->show();
 
-  MyDesignerFields *kcm = new MyDesignerFields();
-  kcm->show();
-
-  app.exec();
-  delete kcm;
+    app.exec();
+    delete kcm;
 }

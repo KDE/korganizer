@@ -33,9 +33,9 @@ class QTimer;
 
 class DateChecker: public QObject
 {
-  Q_OBJECT
-  public:
-    explicit DateChecker( QObject *parent = 0 );
+    Q_OBJECT
+public:
+    explicit DateChecker(QObject *parent = 0);
     ~DateChecker();
 
     /**
@@ -50,35 +50,35 @@ class DateChecker: public QObject
       visible and emits monthPassed() when the month changes.
     */
     enum RolloverType {
-      None,
-      FollowDay,
-      FollowMonth
+        None,
+        FollowDay,
+        FollowMonth
     };
-    void enableRollover( RolloverType );
+    void enableRollover(RolloverType);
 
-  signals:
+signals:
     // Signals emitted at midnight carrying the new date.
-    void dayPassed( const QDate & );
-    void monthPassed( const QDate & );
+    void dayPassed(const QDate &);
+    void monthPassed(const QDate &);
 
-  protected slots:
-     /**
-       Called regularly to see if we need to update the view
-       wrt. the today box and the month box. Only important
-       if you leave KOrganizer idle for long periods of time.
+protected slots:
+    /**
+      Called regularly to see if we need to update the view
+      wrt. the today box and the month box. Only important
+      if you leave KOrganizer idle for long periods of time.
 
-       Until we have a reliable way of setting QTimers to go
-       off at a particular wall-clock time, we need this,
-       which calls passedMidnight() at the right moments.
-     */
-     void possiblyPastMidnight();
+      Until we have a reliable way of setting QTimers to go
+      off at a particular wall-clock time, we need this,
+      which calls passedMidnight() at the right moments.
+    */
+    void possiblyPastMidnight();
 
-     /**
-       Handles updating the view when midnight has come by due to idle time.
-     */
-     void passedMidnight();
+    /**
+      Handles updating the view when midnight has come by due to idle time.
+    */
+    void passedMidnight();
 
-  private:
+private:
     QTimer *mUpdateTimer;
     QDate mLastDayChecked;
     RolloverType mUpdateRollover;

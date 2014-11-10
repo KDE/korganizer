@@ -32,19 +32,19 @@ class KConfig;
 
 class DocPrefs
 {
-  public:
-    explicit DocPrefs( const QString &type=QLatin1String("general") );
+public:
+    explicit DocPrefs(const QString &type = QLatin1String("general"));
     ~DocPrefs();
 
-    void setDoc( const QString &identifier );
+    void setDoc(const QString &identifier);
     QString doc() const;
 
-    bool readBoolEntry( const QString &identifier ) const;
-    void writeBoolEntry( const QString &identifier, bool value );
-    int readNumEntry( const QString &identifier ) const;
-    void writeNumEntry( const QString &identifier, int value );
+    bool readBoolEntry(const QString &identifier) const;
+    void writeBoolEntry(const QString &identifier, bool value);
+    int readNumEntry(const QString &identifier) const;
+    void writeNumEntry(const QString &identifier, int value);
 
-  private:
+private:
     static KConfig *mConfig;
     QString mDocId;
 };

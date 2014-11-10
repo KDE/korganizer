@@ -33,62 +33,67 @@
 
 #include <calendarviews/todo/todoview.h>
 
-
 using namespace KOrg;
 
 class KOTodoView : public BaseView
 {
-  Q_OBJECT
-  public:
-    KOTodoView( bool sidebarView, QWidget *parent );
+    Q_OBJECT
+public:
+    KOTodoView(bool sidebarView, QWidget *parent);
     ~KOTodoView();
 
-    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr & );
+    virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
     virtual Akonadi::Item::List selectedIncidences();
     virtual KCalCore::DateList selectedIncidenceDates();
-    virtual int currentDateCount() const { return 0; }
+    virtual int currentDateCount() const
+    {
+        return 0;
+    }
 
-    void setDocumentId( const QString & ) {}
-    void saveLayout( KConfig *config, const QString &group ) const;
-    void restoreLayout( KConfig *config, const QString &group, bool minimalDefaults );
+    void setDocumentId(const QString &) {}
+    void saveLayout(KConfig *config, const QString &group) const;
+    void restoreLayout(KConfig *config, const QString &group, bool minimalDefaults);
 
     /** documentation in baseview.h */
-    void getHighlightMode( bool &highlightEvents,
-                           bool &highlightTodos,
-                           bool &highlightJournals );
+    void getHighlightMode(bool &highlightEvents,
+                          bool &highlightTodos,
+                          bool &highlightJournals);
 
     bool usesFullWindow();
 
     void saveViewState();
     void restoreViewState();
 
-    bool supportsDateRangeSelection() { return false; }
+    bool supportsDateRangeSelection()
+    {
+        return false;
+    }
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
-  public Q_SLOTS:
-    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
-    virtual void showDates( const QDate &start, const QDate &end,
-                            const QDate &preferredMonth = QDate() );
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+public Q_SLOTS:
+    virtual void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+    virtual void showDates(const QDate &start, const QDate &end,
+                           const QDate &preferredMonth = QDate());
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
     virtual void updateView();
-    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType );
+    virtual void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType);
     virtual void updateConfig();
     virtual void clearSelection();
 
-  private Q_SLOTS:
-    void printTodo( bool );
+private Q_SLOTS:
+    void printTodo(bool);
     void printTodo();
     void printPreviewTodo();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void purgeCompletedSignal();
     void unSubTodoSignal();
     void unAllSubTodoSignal();
     void configChanged();
-    void fullViewChanged( bool enabled );
+    void fullViewChanged(bool enabled);
 
-  private:
+private:
     EventViews::TodoView *mView;
 };
 

@@ -36,102 +36,102 @@
 #include "korganizeradaptor.h"
 #include <QDebug>
 
-KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager *actionManager,
-                                          QObject *parent, const char *name )
-  : QObject( parent ), mActionManager( actionManager )
+KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager,
+        QObject *parent, const char *name)
+    : QObject(parent), mActionManager(actionManager)
 {
-  setObjectName( QLatin1String(name) );
-  new KorganizerAdaptor( this );
-  QDBusConnection::sessionBus().registerObject(
-    QLatin1String("/Korganizer"), this, QDBusConnection::ExportAdaptors );
+    setObjectName(QLatin1String(name));
+    new KorganizerAdaptor(this);
+    QDBusConnection::sessionBus().registerObject(
+        QLatin1String("/Korganizer"), this, QDBusConnection::ExportAdaptors);
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()
 {
 }
 
-bool KOrganizerIfaceImpl::openURL( const QString &url )
+bool KOrganizerIfaceImpl::openURL(const QString &url)
 {
-  return mActionManager->openURL( url );
+    return mActionManager->openURL(url);
 }
 
-bool KOrganizerIfaceImpl::mergeURL( const QString &url )
+bool KOrganizerIfaceImpl::mergeURL(const QString &url)
 {
-  return mActionManager->mergeURL( url );
+    return mActionManager->mergeURL(url);
 }
 
 bool KOrganizerIfaceImpl::saveURL()
 {
-  return mActionManager->saveURL();
+    return mActionManager->saveURL();
 }
 
-bool KOrganizerIfaceImpl::saveAsURL( const QString &url )
+bool KOrganizerIfaceImpl::saveAsURL(const QString &url)
 {
-  return mActionManager->saveAsURL( url );
+    return mActionManager->saveAsURL(url);
 }
 
 QString KOrganizerIfaceImpl::getCurrentURLasString() const
 {
-  return mActionManager->getCurrentURLasString();
+    return mActionManager->getCurrentURLasString();
 }
 
-bool KOrganizerIfaceImpl::deleteIncidence( const QString &uid, bool force )
+bool KOrganizerIfaceImpl::deleteIncidence(const QString &uid, bool force)
 {
-  bool ok;
-  qint64 id = QVariant( uid ).toLongLong( &ok );
-  if ( !ok ) {
-    qWarning() << "Invalid uid" << uid;
-    return false;
-  }
-  return mActionManager->deleteIncidence( id, force );
+    bool ok;
+    qint64 id = QVariant(uid).toLongLong(&ok);
+    if (!ok) {
+        qWarning() << "Invalid uid" << uid;
+        return false;
+    }
+    return mActionManager->deleteIncidence(id, force);
 }
 
-bool KOrganizerIfaceImpl::editIncidence( const QString &itemId )
+bool KOrganizerIfaceImpl::editIncidence(const QString &itemId)
 {
-  bool ok;
-  qint64 id = QVariant( itemId ).toLongLong( &ok );
-  if ( !ok ) {
-    qWarning() << "Invalid item id = " << itemId;
-    return false;
-  }
-  return mActionManager->editIncidence( id );
+    bool ok;
+    qint64 id = QVariant(itemId).toLongLong(&ok);
+    if (!ok) {
+        qWarning() << "Invalid item id = " << itemId;
+        return false;
+    }
+    return mActionManager->editIncidence(id);
 }
 
-bool KOrganizerIfaceImpl::addIncidence( const QString &uid )
+bool KOrganizerIfaceImpl::addIncidence(const QString &uid)
 {
-  //bool ok;
-  //qint64 id = QVariant(uid).toLongLong(&ok);
-  //if(! ok) {
-  //  qWarning() << "Invalid uid"<<uid;
-  //  return false;
-  //}
-  return mActionManager->addIncidence( uid );
+    //bool ok;
+    //qint64 id = QVariant(uid).toLongLong(&ok);
+    //if(! ok) {
+    //  qWarning() << "Invalid uid"<<uid;
+    //  return false;
+    //}
+    return mActionManager->addIncidence(uid);
 }
 
-bool KOrganizerIfaceImpl::showIncidence( const QString &uid )
+bool KOrganizerIfaceImpl::showIncidence(const QString &uid)
 {
-  bool ok;
-  qint64 id = QVariant( uid ).toLongLong( &ok );
-  if ( !ok ) {
-    qWarning() << "Invalid uid" << uid;
-    return false;
-  }
-  return mActionManager->showIncidence( id );
+    bool ok;
+    qint64 id = QVariant(uid).toLongLong(&ok);
+    if (!ok) {
+        qWarning() << "Invalid uid" << uid;
+        return false;
+    }
+    return mActionManager->showIncidence(id);
 }
 
-bool KOrganizerIfaceImpl::showIncidenceContext( const QString &uid )
+bool KOrganizerIfaceImpl::showIncidenceContext(const QString &uid)
 {
-  bool ok;
-  qint64 id = QVariant( uid ).toLongLong( &ok );
-  if ( !ok ) {
-    qWarning() << "Invalid uid" << uid;
-    return false;
-  }
-  return mActionManager->showIncidenceContext( id );
+    bool ok;
+    qint64 id = QVariant(uid).toLongLong(&ok);
+    if (!ok) {
+        qWarning() << "Invalid uid" << uid;
+        return false;
+    }
+    return mActionManager->showIncidenceContext(id);
 }
 
 bool KOrganizerIfaceImpl::handleCommandLine()
 {
-  return mActionManager->handleCommandLine();
+    return mActionManager->handleCommandLine();
 }
 

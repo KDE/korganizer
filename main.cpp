@@ -28,28 +28,26 @@
 #include "korganizer.h"
 #include "korganizer_options.h"
 
-
-int main( int argc, char **argv )
+int main(int argc, char **argv)
 {
-  KLocalizedString::setApplicationDomain("korganizer");
-  KOrg::AboutData aboutData;
+    KLocalizedString::setApplicationDomain("korganizer");
+    KOrg::AboutData aboutData;
 
-  KCmdLineArgs::init( argc, argv, &aboutData );
-  KCmdLineArgs::addCmdLineOptions( korganizer_options() );
-  KUniqueApplication::addCmdLineOptions();
+    KCmdLineArgs::init(argc, argv, &aboutData);
+    KCmdLineArgs::addCmdLineOptions(korganizer_options());
+    KUniqueApplication::addCmdLineOptions();
 
-  KUniqueApplication::StartFlags flags;
-  //flags |= KUniqueApplication::NonUniqueInstance;
-  if ( !KOrganizerApp::start(flags) ) {
-    return 0;
-  }
+    KUniqueApplication::StartFlags flags;
+    //flags |= KUniqueApplication::NonUniqueInstance;
+    if (!KOrganizerApp::start(flags)) {
+        return 0;
+    }
 
-  KOrganizerApp app;
+    KOrganizerApp app;
 
+    if (app.isSessionRestored()) {
+        RESTORE(KOrganizer)
+    }
 
-  if ( app.isSessionRestored() ) {
-    RESTORE( KOrganizer )
-  }
-
-  return app.exec();
+    return app.exec();
 }

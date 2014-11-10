@@ -28,20 +28,20 @@
 
 #include <KCmdLineOptions>
 
-static KCmdLineOptions korganizer_options ()
+static KCmdLineOptions korganizer_options()
 {
-  KCmdLineOptions options;
-  options.add( "i" );
-  options.add( "import",
-               ki18n( "Import the specified files as separate calendars" ) );
-  options.add( "m" );
-  options.add( "merge",
-               ki18n( "Merge the specified files into an existing calendar" ) );
-  options.add( "+[calendars]",
-               ki18n( "Calendar files or urls. "
+    KCmdLineOptions options;
+    options.add("i");
+    options.add("import",
+                ki18n("Import the specified files as separate calendars"));
+    options.add("m");
+    options.add("merge",
+                ki18n("Merge the specified files into an existing calendar"));
+    options.add("+[calendars]",
+                ki18n("Calendar files or urls. "
                       "Unless -i or -m is explicitly specified, "
-                      "the user will be asked whether to import or merge" ) );
-  return options;
+                      "the user will be asked whether to import or merge"));
+    return options;
 }
 
 #endif

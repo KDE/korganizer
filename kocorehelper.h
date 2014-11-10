@@ -34,22 +34,22 @@
 
 class KOCoreHelper : public KOrg::CoreHelper
 {
-  public:
+public:
     KOCoreHelper() {}
     virtual ~KOCoreHelper() {}
 
-    virtual QColor categoryColor( const QStringList &cats );
+    virtual QColor categoryColor(const QStringList &cats);
 
-    virtual QString holidayString( const QDate &dt );
+    virtual QString holidayString(const QDate &dt);
 
     virtual QTime dayStart()
     {
-      return KOPrefs::instance()->mDayBegins.time();
+        return KOPrefs::instance()->mDayBegins.time();
     }
 
     virtual const KCalendarSystem *calendarSystem()
     {
-      return KOGlobals::self()->calendarSystem();
+        return KOGlobals::self()->calendarSystem();
     }
 };
 

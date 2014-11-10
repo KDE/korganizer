@@ -28,28 +28,30 @@ using namespace EventViews::CalendarDecoration;
 
 class Hebrew : public Decoration
 {
-  public:
+public:
     Hebrew();
     ~Hebrew();
 
-    void configure( QWidget *parent );
+    void configure(QWidget *parent);
 
-    Element::List createDayElements( const QDate & );
+    Element::List createDayElements(const QDate &);
 
     QString info() const;
 
-  private:
+private:
     bool showParsha, showChol, showOmer;
     bool areWeInIsrael;
 };
 
 class HebrewFactory : public DecorationFactory
 {
-   Q_OBJECT
-   Q_PLUGIN_METADATA(IID "org.kde.korganizer.Hebrew");
-  public:
-    Decoration *createPluginFactory() { return new Hebrew; }
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.korganizer.Hebrew");
+public:
+    Decoration *createPluginFactory()
+    {
+        return new Hebrew;
+    }
 };
-
 
 #endif

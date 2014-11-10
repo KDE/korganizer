@@ -41,21 +41,21 @@
 
 //---------------------------------------------------------------------------
 
-KOEventView::KOEventView( QWidget *parent )
-  : KOrg::BaseView( parent )
+KOEventView::KOEventView(QWidget *parent)
+    : KOrg::BaseView(parent)
 {
-  mReturnPressed = false;
-  mTypeAhead = false;
-  mTypeAheadReceiver = 0;
+    mReturnPressed = false;
+    mTypeAhead = false;
+    mTypeAheadReceiver = 0;
 
-  //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(),
-  //which triggered finishTypeAhead. But the global focus widget in QApplication is
-  //changed later, thus subsequent keyevents still went to this view, triggering
-  //another editor, for each keypress
-  //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112)
-  //  -Frank
-  connect( qobject_cast<QApplication*>( QApplication::instance() ), SIGNAL(focusChanged(QWidget*,QWidget*)),
-           this, SLOT(focusChanged(QWidget*,QWidget*)) );
+    //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(),
+    //which triggered finishTypeAhead. But the global focus widget in QApplication is
+    //changed later, thus subsequent keyevents still went to this view, triggering
+    //another editor, for each keypress
+    //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112)
+    //  -Frank
+    connect(qobject_cast<QApplication *>(QApplication::instance()), SIGNAL(focusChanged(QWidget*,QWidget*)),
+            this, SLOT(focusChanged(QWidget*,QWidget*)));
 }
 
 //---------------------------------------------------------------------------
@@ -68,152 +68,151 @@ KOEventView::~KOEventView()
 
 KOEventPopupMenu *KOEventView::eventPopup()
 {
-  KOEventPopupMenu *eventPopup = new KOEventPopupMenu( calendar().data(), this );
+    KOEventPopupMenu *eventPopup = new KOEventPopupMenu(calendar().data(), this);
 
-  connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this, &KOEventView::editIncidenceSignal);
-  connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this, &KOEventView::showIncidenceSignal);
-  connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this, &KOEventView::deleteIncidenceSignal);
-  connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this, &KOEventView::cutIncidenceSignal);
-  connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this, &KOEventView::copyIncidenceSignal);
-  connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this, &KOEventView::pasteIncidenceSignal);
-  connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this, &KOEventView::toggleAlarmSignal);
-  connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this, &KOEventView::toggleTodoCompletedSignal);
-  connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this, &KOEventView::copyIncidenceToResourceSignal);
-  connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this, &KOEventView::moveIncidenceToResourceSignal);
-  connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this, &KOEventView::dissociateOccurrencesSignal);
+    connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this, &KOEventView::editIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this, &KOEventView::showIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this, &KOEventView::deleteIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this, &KOEventView::cutIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this, &KOEventView::copyIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this, &KOEventView::pasteIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this, &KOEventView::toggleAlarmSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this, &KOEventView::toggleTodoCompletedSignal);
+    connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this, &KOEventView::copyIncidenceToResourceSignal);
+    connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this, &KOEventView::moveIncidenceToResourceSignal);
+    connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this, &KOEventView::dissociateOccurrencesSignal);
 
-  return eventPopup;
+    return eventPopup;
 }
 
 QMenu *KOEventView::newEventPopup()
 {
-  KXMLGUIClient *client = KOCore::self()->xmlguiClient( this );
-  if ( !client ) {
-    qCritical() << "no xmlGuiClient.";
-    return 0;
-  }
-  if ( !client->factory() ) {
-    qCritical() << "no factory";
-    return 0; // can happen if called too early
-  }
+    KXMLGUIClient *client = KOCore::self()->xmlguiClient(this);
+    if (!client) {
+        qCritical() << "no xmlGuiClient.";
+        return 0;
+    }
+    if (!client->factory()) {
+        qCritical() << "no factory";
+        return 0; // can happen if called too early
+    }
 
-  return static_cast<QMenu*>
-      ( client->factory()->container( QLatin1String("rmb_selection_popup"), client ) );
+    return static_cast<QMenu *>
+           (client->factory()->container(QLatin1String("rmb_selection_popup"), client));
 }
 //---------------------------------------------------------------------------
 
 void KOEventView::popupShow()
 {
-  emit showIncidenceSignal(mCurrentIncidence);
+    emit showIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupEdit()
 {
-  emit editIncidenceSignal(mCurrentIncidence);
+    emit editIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupDelete()
 {
-  emit deleteIncidenceSignal(mCurrentIncidence);
+    emit deleteIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupCut()
 {
-  emit cutIncidenceSignal(mCurrentIncidence);
+    emit cutIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupCopy()
 {
-  emit copyIncidenceSignal(mCurrentIncidence);
+    emit copyIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::showNewEventPopup()
 {
-  QMenu *popup = newEventPopup();
-  if ( !popup ) {
-    qCritical() << "popup creation failed";
-    return;
-  }
+    QMenu *popup = newEventPopup();
+    if (!popup) {
+        qCritical() << "popup creation failed";
+        return;
+    }
 
-  popup->popup( QCursor::pos() );
+    popup->popup(QCursor::pos());
 }
 
 //---------------------------------------------------------------------------
 
-void KOEventView::defaultAction( const Akonadi::Item &aitem )
+void KOEventView::defaultAction(const Akonadi::Item &aitem)
 {
-  qDebug();
-  const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( aitem );
-  if ( !incidence ) {
-    qDebug() << "Ouch, null incidence";
-    return;
-  }
+    qDebug();
+    const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
+    if (!incidence) {
+        qDebug() << "Ouch, null incidence";
+        return;
+    }
 
-  if ( !calendar()->hasRight( aitem, Akonadi::Collection::CanChangeItem ) ) {
-    emit showIncidenceSignal( aitem );
-  } else {
-    emit editIncidenceSignal( aitem );
-  }
+    if (!calendar()->hasRight(aitem, Akonadi::Collection::CanChangeItem)) {
+        emit showIncidenceSignal(aitem);
+    } else {
+        emit editIncidenceSignal(aitem);
+    }
 }
 
-void KOEventView::setTypeAheadReceiver( QObject *o )
+void KOEventView::setTypeAheadReceiver(QObject *o)
 {
-  mTypeAheadReceiver = o;
+    mTypeAheadReceiver = o;
 }
 
-void KOEventView::focusChanged( QWidget *, QWidget *now )
+void KOEventView::focusChanged(QWidget *, QWidget *now)
 {
-  if ( mTypeAhead && now && now == mTypeAheadReceiver ) {
-    finishTypeAhead();
-  }
+    if (mTypeAhead && now && now == mTypeAheadReceiver) {
+        finishTypeAhead();
+    }
 }
 
 void KOEventView::finishTypeAhead()
 {
-  if ( mTypeAheadReceiver ) {
-    foreach ( QEvent *e, mTypeAheadEvents ) {
-      QApplication::sendEvent( mTypeAheadReceiver, e );
+    if (mTypeAheadReceiver) {
+        foreach (QEvent *e, mTypeAheadEvents) {
+            QApplication::sendEvent(mTypeAheadReceiver, e);
+        }
     }
-  }
-  qDeleteAll( mTypeAheadEvents );
-  mTypeAheadEvents.clear();
-  mTypeAhead = false;
+    qDeleteAll(mTypeAheadEvents);
+    mTypeAheadEvents.clear();
+    mTypeAhead = false;
 }
 
-bool KOEventView::usesCompletedTodoPixmap( const Akonadi::Item &aitem, const QDate &date )
+bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDate &date)
 {
-  const KCalCore::Todo::Ptr todo = CalendarSupport::todo( aitem );
-  if ( !todo ) {
-    return false;
-  }
-
-  if ( todo->isCompleted() ) {
-    return true;
-  } else if ( todo->recurs() ) {
-    QTime time;
-    if ( todo->allDay() ) {
-      time = QTime( 0, 0 );
-    } else {
-      time = todo->dtDue().toTimeSpec( CalendarSupport::KCalPrefs::instance()->timeSpec() ).time();
+    const KCalCore::Todo::Ptr todo = CalendarSupport::todo(aitem);
+    if (!todo) {
+        return false;
     }
 
-    KDateTime itemDateTime( date, time, CalendarSupport::KCalPrefs::instance()->timeSpec() );
+    if (todo->isCompleted()) {
+        return true;
+    } else if (todo->recurs()) {
+        QTime time;
+        if (todo->allDay()) {
+            time = QTime(0, 0);
+        } else {
+            time = todo->dtDue().toTimeSpec(CalendarSupport::KCalPrefs::instance()->timeSpec()).time();
+        }
 
-    return itemDateTime < todo->dtDue( false );
+        KDateTime itemDateTime(date, time, CalendarSupport::KCalPrefs::instance()->timeSpec());
 
-  } else {
-    return false;
-  }
+        return itemDateTime < todo->dtDue(false);
+
+    } else {
+        return false;
+    }
 }
-
 

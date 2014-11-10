@@ -26,7 +26,8 @@
 #include "korganizer/baseview.h"
 #include <Akonadi/Calendar/ETMCalendar>
 
-namespace KOrg {
+namespace KOrg
+{
 
 /**
   @short interface for main calendar view widget
@@ -34,8 +35,8 @@ namespace KOrg {
 */
 class CalendarViewBase : public QWidget
 {
-  public:
-    explicit CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
+public:
+    explicit CalendarViewBase(QWidget *parent) : QWidget(parent) {}
     virtual ~CalendarViewBase() {}
 
     virtual Akonadi::ETMCalendar::Ptr calendar() const = 0;
@@ -46,18 +47,18 @@ class CalendarViewBase : public QWidget
 
     virtual Akonadi::Item currentSelection() = 0;
 
-    virtual void addView( KOrg::BaseView * ) = 0;
+    virtual void addView(KOrg::BaseView *) = 0;
 
     /** changes the view to be the currently selected view */
-    virtual void showView( KOrg::BaseView * ) = 0;
+    virtual void showView(KOrg::BaseView *) = 0;
 
-    virtual bool editIncidence( const Akonadi::Item &item, bool isCounter = false ) = 0;
+    virtual bool editIncidence(const Akonadi::Item &item, bool isCounter = false) = 0;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     virtual void updateView() = 0;
 
-  signals:
-    virtual void newIncidenceChanger( Akonadi::IncidenceChanger * ) = 0;
+signals:
+    virtual void newIncidenceChanger(Akonadi::IncidenceChanger *) = 0;
 
 };
 

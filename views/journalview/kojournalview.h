@@ -28,8 +28,9 @@
 #include "korganizer/baseview.h"
 #include <KCalCore/Incidence> // for KCalCore::DateList typedef
 
-namespace EventViews {
-  class JournalView;
+namespace EventViews
+{
+class JournalView;
 }
 
 /**
@@ -41,9 +42,9 @@ namespace EventViews {
  */
 class KOJournalView : public KOrg::BaseView
 {
-  Q_OBJECT
-  public:
-    explicit KOJournalView( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit KOJournalView(QWidget *parent = 0);
     ~KOJournalView();
 
     virtual int currentDateCount() const;
@@ -51,32 +52,32 @@ class KOJournalView : public KOrg::BaseView
 
     KCalCore::DateList selectedIncidenceDates()
     {
-      return KCalCore::DateList();
+        return KCalCore::DateList();
     }
 
-    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
     /** reimp */
-    void getHighlightMode( bool &highlightEvents,
-                           bool &highlightTodos,
-                           bool &highlightJournals );
+    void getHighlightMode(bool &highlightEvents,
+                          bool &highlightTodos,
+                          bool &highlightJournals);
 
     /** reimp */
-  CalendarSupport::CalPrinterBase::PrintType printType() const;
+    CalendarSupport::CalPrinterBase::PrintType printType() const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void updateView();
     void flushView();
 
-    void showDates( const QDate &start, const QDate &end, const QDate &preferredMonth = QDate() );
-    void showIncidences( const Akonadi::Item::List &incidences, const QDate &date );
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate());
+    void showIncidences(const Akonadi::Item::List &incidences, const QDate &date);
 
-    void changeIncidenceDisplay( const Akonadi::Item &incidence,
-                                 Akonadi::IncidenceChanger::ChangeType );
-    void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
-    void printJournal( const KCalCore::Journal::Ptr &journal, bool preview );
+    void changeIncidenceDisplay(const Akonadi::Item &incidence,
+                                Akonadi::IncidenceChanger::ChangeType);
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+    void printJournal(const KCalCore::Journal::Ptr &journal, bool preview);
 
-  private:
+private:
     EventViews::JournalView *mJournalView;
 };
 

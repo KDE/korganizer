@@ -33,7 +33,8 @@ class KXMLGUIFactory;
 
 class QWidget;
 
-namespace KOrg {
+namespace KOrg
+{
 
 class CalendarViewBase;
 
@@ -43,11 +44,11 @@ class CalendarViewBase;
 */
 class KORGANIZER_INTERFACES_EXPORT MainWindow
 {
-  public:
+public:
     MainWindow();
     virtual ~MainWindow();
 
-    virtual void init( bool hasDocument );
+    virtual void init(bool hasDocument);
 
     virtual CalendarViewBase *view() const = 0;
 
@@ -57,11 +58,11 @@ class KORGANIZER_INTERFACES_EXPORT MainWindow
                       current calendar (default resource). Otherwise the URL
                       is added as a new resource.
     */
-    virtual bool openURL( const KUrl &url, bool merge = false ) = 0;
+    virtual bool openURL(const KUrl &url, bool merge = false) = 0;
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL() = 0;
     /** Save calendar file to URL */
-    virtual bool saveAsURL( const KUrl &kurl ) = 0;
+    virtual bool saveAsURL(const KUrl &kurl) = 0;
 
     /** Get current URL */
     virtual KUrl getCurrentURL() const = 0;
@@ -89,17 +90,17 @@ class KORGANIZER_INTERFACES_EXPORT MainWindow
     /**
       Show status message in status bar.
     */
-    virtual void showStatusMessage( const QString &message ) = 0;
+    virtual void showStatusMessage(const QString &message) = 0;
 
     /**
       Set window title.
     */
     virtual void setTitle() = 0;
 
-    void setHasDocument( bool d );
+    void setHasDocument(bool d);
     bool hasDocument() const;
 
-  private:
+private:
     bool mDocument;
 };
 

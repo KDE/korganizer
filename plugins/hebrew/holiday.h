@@ -37,7 +37,7 @@
 */
 class Holiday
 {
-  public:
+public:
     /**
       Given a day of a Hebrew month, figures out all the interesting holidays
       that correspond to that date.
@@ -49,39 +49,39 @@ class Holiday
       whether we will use the settings corresponding to Israel or to the
       diaspora.
     */
-    static QStringList findHoliday( HebrewDate hd, bool useIsraelSettings,
-                                    bool showParsha, bool showChol,
-                                    bool showOmer );
+    static QStringList findHoliday(HebrewDate hd, bool useIsraelSettings,
+                                   bool showParsha, bool showChol,
+                                   bool showOmer);
 
-  private:
+private:
     /**
       Return a string corresponding to the nth day of the Omer (the seven weeks
       from the end of Passover to Shavuot).
     */
-    static QString sfirah( int );
+    static QString sfirah(int);
 
     enum HebrewMonths {
-      Nissan = 1,
-      Iyar = 2,
-      Sivan = 3,
-      Tamuz = 4,
-      Ab = 5,
-      Elul = 6,
-      Tishrei = 7,
-      Cheshvan = 8,
-      Kislev = 9,
-      Tevet = 10,
-      Shvat = 11,
-      Adar = 12,
-      AdarII = 13,
-      AdarI = 12
+        Nissan = 1,
+        Iyar = 2,
+        Sivan = 3,
+        Tamuz = 4,
+        Ab = 5,
+        Elul = 6,
+        Tishrei = 7,
+        Cheshvan = 8,
+        Kislev = 9,
+        Tevet = 10,
+        Shvat = 11,
+        Adar = 12,
+        AdarII = 13,
+        AdarI = 12
     };
 
-    static QStringList findHoliday( int month, int day, int weekday,
-                                    int kvia, bool leap_year_p,
-                                    bool useIsraelSettings, int day_number,
-                                    int year, bool showParsha, bool showChol,
-                                    bool showOmer );
+    static QStringList findHoliday(int month, int day, int weekday,
+                                   int kvia, bool leap_year_p,
+                                   bool useIsraelSettings, int day_number,
+                                   int year, bool showParsha, bool showChol,
+                                   bool showOmer);
 };
 
 #endif

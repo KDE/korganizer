@@ -30,13 +30,15 @@
 #include <QDialog>
 class QPushButton;
 
-namespace CalendarSupport {
-  class IncidenceViewer;
+namespace CalendarSupport
+{
+class IncidenceViewer;
 }
 
-namespace Akonadi {
-  class Item;
-  class ETMCalendar;
+namespace Akonadi
+{
+class Item;
+class ETMCalendar;
 }
 
 /**
@@ -44,24 +46,23 @@ namespace Akonadi {
 */
 class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public QDialog
 {
-  Q_OBJECT
-  public:
-    explicit KOEventViewerDialog( Akonadi::ETMCalendar *calendar, QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget *parent = 0);
     virtual ~KOEventViewerDialog();
 
-    void setIncidence( const Akonadi::Item &incidence, const QDate &date );
+    void setIncidence(const Akonadi::Item &incidence, const QDate &date);
 
-    void addText( const QString &text );
+    void addText(const QString &text);
 
     QPushButton *editButton() const;
 
-
-  private Q_SLOTS:
+private Q_SLOTS:
     void editIncidence();
     void showIncidenceContext();
     void delayedDestruct();
 
-  private:
+private:
     CalendarSupport::IncidenceViewer *mEventViewer;
     QPushButton *mUser1Button;
 };

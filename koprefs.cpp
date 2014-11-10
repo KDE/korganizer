@@ -33,106 +33,109 @@
 
 class KOPrefsPrivate
 {
-  public:
-    KOPrefsPrivate() : prefs( new KOPrefs ) {}
-    ~KOPrefsPrivate() { delete prefs; }
+public:
+    KOPrefsPrivate() : prefs(new KOPrefs) {}
+    ~KOPrefsPrivate()
+    {
+        delete prefs;
+    }
     KOPrefs *prefs;
 };
 
-Q_GLOBAL_STATIC( KOPrefsPrivate, sInstance )
+Q_GLOBAL_STATIC(KOPrefsPrivate, sInstance)
 
 KOPrefs::KOPrefs() : KOPrefsBase()
 {
-  mEventViewsPrefs = EventViews::PrefsPtr( new EventViews::Prefs( this ) );
+    mEventViewsPrefs = EventViews::PrefsPtr(new EventViews::Prefs(this));
 
-  mDefaultMonthViewFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont);
-  // make it a bit smaller
-  mDefaultMonthViewFont.setPointSize(
-    qMax( mDefaultMonthViewFont.pointSize() - 2, 6 ) );
+    mDefaultMonthViewFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont);
+    // make it a bit smaller
+    mDefaultMonthViewFont.setPointSize(
+        qMax(mDefaultMonthViewFont.pointSize() - 2, 6));
 
-  KConfigSkeleton::setCurrentGroup( QLatin1String("General") );
+    KConfigSkeleton::setCurrentGroup(QLatin1String("General"));
 
-  // writes into mHtmlExportFile
-  addItemPath( QLatin1String("Html Export File"), mHtmlExportFile,
-               QDir::homePath() + QLatin1Char('/') + i18nc( "Default export file", "calendar.html" ) );
+    // writes into mHtmlExportFile
+    addItemPath(QLatin1String("Html Export File"), mHtmlExportFile,
+                QDir::homePath() + QLatin1Char('/') + i18nc("Default export file", "calendar.html"));
 
-  monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
+    monthViewFontItem()->setDefaultValue(mDefaultMonthViewFont);
 }
 
 KOPrefs::~KOPrefs()
 {
-  qDebug();
-  mEventViewsPrefs->writeConfig();
+    qDebug();
+    mEventViewsPrefs->writeConfig();
 }
 
 KOPrefs *KOPrefs::instance()
 {
-  if ( !sInstance.exists() ) {
-    sInstance->prefs->load();
-    sInstance->prefs->mEventViewsPrefs->readConfig();
-  }
+    if (!sInstance.exists()) {
+        sInstance->prefs->load();
+        sInstance->prefs->mEventViewsPrefs->readConfig();
+    }
 
-  return sInstance->prefs;
+    return sInstance->prefs;
 }
 
 void KOPrefs::usrSetDefaults()
 {
-  setMonthViewFont( mDefaultMonthViewFont );
+    setMonthViewFont(mDefaultMonthViewFont);
 
-  KConfigSkeleton::usrSetDefaults();
+    KConfigSkeleton::usrSetDefaults();
 }
 
 void KOPrefs::usrRead()
 {
-  KConfigGroup generalConfig( config(), "General" );
+    KConfigGroup generalConfig(config(), "General");
 
-  KConfigGroup timeScaleConfig( config(), "Timescale" );
-  setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
+    KConfigGroup timeScaleConfig(config(), "Timescale");
+    setTimeScaleTimezones(timeScaleConfig.readEntry("Timescale Timezones", QStringList()));
 
-  KConfigSkeleton::usrRead();
+    KConfigSkeleton::usrRead();
 }
 
 bool KOPrefs::usrSave()
 {
-  KConfigGroup generalConfig( config(), "General" );
+    KConfigGroup generalConfig(config(), "General");
 
-  KConfigGroup timeScaleConfig( config(), "Timescale" );
-  timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
+    KConfigGroup timeScaleConfig(config(), "Timescale");
+    timeScaleConfig.writeEntry("Timescale Timezones", timeScaleTimezones());
 
-  return KConfigSkeleton::usrSave();
+    return KConfigSkeleton::usrSave();
 }
 
-void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
+void KOPrefs::setResourceColor(const QString &cal, const QColor &color)
 {
-  return mEventViewsPrefs->setResourceColor( cal, color );
+    return mEventViewsPrefs->setResourceColor(cal, color);
 }
 
-QColor KOPrefs::resourceColor( const QString &cal )
+QColor KOPrefs::resourceColor(const QString &cal)
 {
-  return mEventViewsPrefs->resourceColor( cal );
+    return mEventViewsPrefs->resourceColor(cal);
 }
 
 QStringList KOPrefs::timeScaleTimezones() const
 {
-  return mTimeScaleTimeZones;
+    return mTimeScaleTimeZones;
 }
 
-void KOPrefs::setTimeScaleTimezones( const QStringList &list )
+void KOPrefs::setTimeScaleTimezones(const QStringList &list)
 {
-  mTimeScaleTimeZones = list;
+    mTimeScaleTimeZones = list;
 }
 
-void KOPrefs::setHtmlExportFile( const QString &fileName )
+void KOPrefs::setHtmlExportFile(const QString &fileName)
 {
-  mHtmlExportFile = fileName;
+    mHtmlExportFile = fileName;
 }
 
 QString KOPrefs::htmlExportFile() const
 {
-  return mHtmlExportFile;
+    return mHtmlExportFile;
 }
 
 EventViews::PrefsPtr KOPrefs::eventViewsPreferences() const
 {
-  return mEventViewsPrefs;
+    return mEventViewsPrefs;
 }

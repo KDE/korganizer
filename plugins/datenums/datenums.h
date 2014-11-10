@@ -27,24 +27,24 @@ using namespace EventViews::CalendarDecoration;
 
 class Datenums : public Decoration
 {
-  public:
+public:
     Datenums();
     ~Datenums() {}
 
-    void configure( QWidget *parent );
+    void configure(QWidget *parent);
 
-    Element::List createDayElements( const QDate & );
-    Element::List createWeekElements( const QDate & );
+    Element::List createDayElements(const QDate &);
+    Element::List createWeekElements(const QDate &);
 
     enum DayNumber {
-      DayOfYear = 1,
-      DaysRemaining = 2
+        DayOfYear = 1,
+        DaysRemaining = 2
     };
-    Q_DECLARE_FLAGS( DayNumbers, DayNumber )
+    Q_DECLARE_FLAGS(DayNumbers, DayNumber)
 
     QString info() const;
 
-  private:
+private:
     DayNumbers mDisplayedInfo;
 };
 
@@ -52,11 +52,13 @@ class DatenumsFactory : public DecorationFactory
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.kde.korganizer.Datenums");
-  public:
-    Decoration *createPluginFactory() { return new Datenums; }
+public:
+    Decoration *createPluginFactory()
+    {
+        return new Datenums;
+    }
 };
 
-
-Q_DECLARE_OPERATORS_FOR_FLAGS( Datenums::DayNumbers )
+Q_DECLARE_OPERATORS_FOR_FLAGS(Datenums::DayNumbers)
 
 #endif

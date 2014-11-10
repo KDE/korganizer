@@ -37,21 +37,21 @@ class KDateNavigator;
 
 class DateNavigatorContainer: public QFrame
 {
-  Q_OBJECT
-  public:
-    explicit DateNavigatorContainer( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit DateNavigatorContainer(QWidget *parent = 0);
     ~DateNavigatorContainer();
 
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
-    void setHighlightMode( bool highlightEvents,
-                           bool highlightTodos,
-                           bool highlightJournals ) const;
+    void setHighlightMode(bool highlightEvents,
+                          bool highlightTodos,
+                          bool highlightJournals) const;
     void setUpdateNeeded();
 
     /**
@@ -61,15 +61,15 @@ class DateNavigatorContainer: public QFrame
        functions.
        An invalid QDate() is returned if the index is too big or too small.
     */
-    QDate monthOfNavigator( int navigatorIndex = 0 ) const;
-  public slots:
+    QDate monthOfNavigator(int navigatorIndex = 0) const;
+public slots:
 
     /**
        preferredMonth is useful when the datelist crosses months, if different
        from -1, it has the month that the kdatenavigator should show in case
        of ambiguity
     */
-    void selectDates( const KCalCore::DateList &, const QDate &preferredMonth = QDate() );
+    void selectDates(const KCalCore::DateList &, const QDate &preferredMonth = QDate());
 
     void updateView();
     void updateConfig();
@@ -79,20 +79,20 @@ class DateNavigatorContainer: public QFrame
     void goPrevMonth();
     void goNextMonth();
 
-  signals:
-    void datesSelected( const KCalCore::DateList &, const QDate &preferredMonth );
-    void incidenceDropped( const Akonadi::Item &, const QDate & );
-    void incidenceDroppedMove( const Akonadi::Item &, const QDate & );
-    void newEventSignal( const QDate & );
-    void newTodoSignal( const QDate & );
-    void newJournalSignal( const QDate & );
+signals:
+    void datesSelected(const KCalCore::DateList &, const QDate &preferredMonth);
+    void incidenceDropped(const Akonadi::Item &, const QDate &);
+    void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
+    void newEventSignal(const QDate &);
+    void newTodoSignal(const QDate &);
+    void newJournalSignal(const QDate &);
 
     /**
      * @param preferredMonth Holds the month that should be selected when the
      * week crosses months. It's a QDate instead of uint so it can be easily
      * fed to KCalendarSystem's functions.
      */
-    void weekClicked( const QDate &week, const QDate &preferredMonth );
+    void weekClicked(const QDate &week, const QDate &preferredMonth);
 
     void goPrevious();
     void goNext();
@@ -108,24 +108,24 @@ class DateNavigatorContainer: public QFrame
         @param selectionLowerLimit The first date of the first KDateNavigator.
         @param selectionUpperLimit The last date of the last KDateNavigator.
     */
-    void prevMonthClicked( const QDate &currentMonth,
-                           const QDate &selectionLowerLimit,
-                           const QDate &selectionUpperLimit );
+    void prevMonthClicked(const QDate &currentMonth,
+                          const QDate &selectionLowerLimit,
+                          const QDate &selectionUpperLimit);
 
-    void nextMonthClicked( const QDate &currentMonth,
-                           const QDate &selectionLowerLimit,
-                           const QDate &selectionUpperLimit );
+    void nextMonthClicked(const QDate &currentMonth,
+                          const QDate &selectionLowerLimit,
+                          const QDate &selectionUpperLimit);
 
-    void monthSelected( int month );
+    void monthSelected(int month);
 
-    void yearSelected( int year );
+    void yearSelected(int year);
 
-  protected:
-    void resizeEvent( QResizeEvent * );
-    void setBaseDates( const QDate &start );
-    void connectNavigatorView( KDateNavigator *v );
+protected:
+    void resizeEvent(QResizeEvent *);
+    void setBaseDates(const QDate &start);
+    void connectNavigatorView(KDateNavigator *v);
 
-  protected slots:
+protected slots:
     /**
      * Resizes all the child elements after the size of the widget changed.
      * This slot is called by a QTimer::singleShot from resizeEvent.
@@ -134,11 +134,11 @@ class DateNavigatorContainer: public QFrame
      */
     void resizeAllContents();
 
-  private slots:
-    void handleDatesSelectedSignal( const KCalCore::DateList & );
-    void handleWeekClickedSignal( const QDate &, const QDate & );
+private slots:
+    void handleDatesSelectedSignal(const KCalCore::DateList &);
+    void handleWeekClickedSignal(const QDate &, const QDate &);
 
-  private:
+private:
     /* Returns the first day of the first KDateNavigator, and the last day
        of the last KDateNavigator.
 
@@ -146,19 +146,19 @@ class DateNavigatorContainer: public QFrame
        January and February and want to know the boundaries of,
        for e.g. displaying February and March, use monthOffset = 1.
     */
-    QPair<QDate,QDate> dateLimits( int monthOffset = 0 ) const;
+    QPair<QDate, QDate> dateLimits(int monthOffset = 0) const;
 
     /**
      * Returns the first KDateNavigator that displays date, or 0 if
      * no KDateNavigator displays it.
      */
-    KDateNavigator *firstNavigatorForDate( const QDate &date ) const;
+    KDateNavigator *firstNavigatorForDate(const QDate &date) const;
 
     KDateNavigator *mNavigatorView;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
 
-    QList<KDateNavigator*> mExtraViews;
+    QList<KDateNavigator *> mExtraViews;
 
     int mHorizontalCount;
     int mVerticalCount;

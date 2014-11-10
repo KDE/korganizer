@@ -34,106 +34,106 @@
 
 class KOGlobalsSingletonPrivate
 {
-  public:
+public:
     KOGlobals instance;
 };
 
-Q_GLOBAL_STATIC( KOGlobalsSingletonPrivate, sKOGlobalsSingletonPrivate )
+Q_GLOBAL_STATIC(KOGlobalsSingletonPrivate, sKOGlobalsSingletonPrivate)
 
 KOGlobals *KOGlobals::self()
 {
-  return &sKOGlobalsSingletonPrivate->instance;
+    return &sKOGlobalsSingletonPrivate->instance;
 }
 
 KOGlobals::KOGlobals()
-  : mOwnInstance( "korganizer" ), mHolidays( 0 )
+    : mOwnInstance("korganizer"), mHolidays(0)
 {
-  KIconLoader::global()->addAppDir( QLatin1String("kdepim") );
+    KIconLoader::global()->addAppDir(QLatin1String("kdepim"));
 }
 
 KConfig *KOGlobals::config() const
 {
-  KSharedConfig::Ptr c = mOwnInstance.config();
-  return c.data();
+    KSharedConfig::Ptr c = mOwnInstance.config();
+    return c.data();
 }
 
 KOGlobals::~KOGlobals()
 {
-  delete mHolidays;
+    delete mHolidays;
 }
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
 {
-  return KLocale::global()->calendar();
+    return KLocale::global()->calendar();
 }
 
 bool KOGlobals::reverseLayout()
 {
-  return QApplication::isRightToLeft();
+    return QApplication::isRightToLeft();
 }
 
-QPixmap KOGlobals::smallIcon( const QString &name ) const
+QPixmap KOGlobals::smallIcon(const QString &name) const
 {
-  return SmallIcon( name );
+    return SmallIcon(name);
 }
 
-QMap<QDate,QStringList> KOGlobals::holiday( const QDate &start, const QDate &end ) const
+QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end) const
 {
-  QMap<QDate,QStringList> holidaysByDate;
+    QMap<QDate, QStringList> holidaysByDate;
 
-  if ( !mHolidays ) {
+    if (!mHolidays) {
+        return holidaysByDate;
+    }
+
+    const KHolidays::Holiday::List list = mHolidays->holidays(start, end);
+    for (int i = 0; i < list.count(); ++i) {
+        const KHolidays::Holiday &h = list.at(i);
+        holidaysByDate[h.date()].append(h.text());
+    }
     return holidaysByDate;
-  }
-
-  const KHolidays::Holiday::List list = mHolidays->holidays( start, end );
-  for ( int i = 0; i < list.count(); ++i ) {
-    const KHolidays::Holiday &h = list.at( i );
-    holidaysByDate[h.date()].append( h.text() );
-  }
-  return holidaysByDate;
 }
 
-QList<QDate> KOGlobals::workDays( const QDate &startDate,
-                                  const QDate &endDate ) const
+QList<QDate> KOGlobals::workDays(const QDate &startDate,
+                                 const QDate &endDate) const
 {
-  QList<QDate> result;
+    QList<QDate> result;
 
-  const int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
-  const int numDays = startDate.daysTo( endDate ) + 1;
+    const int mask(~(KOPrefs::instance()->mWorkWeekMask));
+    const int numDays = startDate.daysTo(endDate) + 1;
 
-  for ( int i = 0; i < numDays; ++i ) {
-    const QDate date = startDate.addDays( i );
-    if ( !( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) ) ) {
-      result.append( date );
+    for (int i = 0; i < numDays; ++i) {
+        const QDate date = startDate.addDays(i);
+        if (!(mask & (1 << (date.dayOfWeek() - 1)))) {
+            result.append(date);
+        }
     }
-  }
 
-  if ( mHolidays && KOPrefs::instance()->mExcludeHolidays ) {
-    const KHolidays::Holiday::List list = mHolidays->holidays( startDate, endDate );
-    for ( int i = 0; i < list.count(); ++i ) {
-      const KHolidays::Holiday &h = list.at( i );
-      const QString dateString = h.date().toString();
-      if ( h.dayType() == KHolidays::Holiday::NonWorkday ) {
-        result.removeAll( h.date() );
-      }
+    if (mHolidays && KOPrefs::instance()->mExcludeHolidays) {
+        const KHolidays::Holiday::List list = mHolidays->holidays(startDate, endDate);
+        for (int i = 0; i < list.count(); ++i) {
+            const KHolidays::Holiday &h = list.at(i);
+            const QString dateString = h.date().toString();
+            if (h.dayType() == KHolidays::Holiday::NonWorkday) {
+                result.removeAll(h.date());
+            }
+        }
     }
-  }
 
-  return result;
+    return result;
 }
 
 int KOGlobals::getWorkWeekMask()
 {
-  return KOPrefs::instance()->mWorkWeekMask;
+    return KOPrefs::instance()->mWorkWeekMask;
 }
 
-void KOGlobals::setHolidays( KHolidays::HolidayRegion *h )
+void KOGlobals::setHolidays(KHolidays::HolidayRegion *h)
 {
-  delete mHolidays;
-  mHolidays = h;
+    delete mHolidays;
+    mHolidays = h;
 }
 
 KHolidays::HolidayRegion *KOGlobals::holidays() const
 {
-  return mHolidays;
+    return mHolidays;
 }

@@ -21,9 +21,10 @@
 
 #include "mainwindow.h"
 
-namespace KOrg {
+namespace KOrg
+{
 
-MainWindow::MainWindow() : mDocument( true )
+MainWindow::MainWindow() : mDocument(true)
 {
 }
 
@@ -31,19 +32,19 @@ MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::init( bool hasDocument )
+void MainWindow::init(bool hasDocument)
 {
-  Q_UNUSED( hasDocument );
+    Q_UNUSED(hasDocument);
 }
 
-void MainWindow::setHasDocument( bool d )
+void MainWindow::setHasDocument(bool d)
 {
-  mDocument = d;
+    mDocument = d;
 }
 
 bool MainWindow::hasDocument() const
 {
-  return mDocument;
+    return mDocument;
 }
 
 } // namespace KOrg

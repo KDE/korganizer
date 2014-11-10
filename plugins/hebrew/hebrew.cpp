@@ -32,52 +32,52 @@ using namespace EventViews::CalendarDecoration;
 
 Hebrew::Hebrew()
 {
-  KConfig config( QLatin1String("korganizerrc"), KConfig::NoGlobals );
+    KConfig config(QLatin1String("korganizerrc"), KConfig::NoGlobals);
 
-  KConfigGroup group( &config, "Hebrew Calendar Plugin" );
-  areWeInIsrael = group.readEntry(
-    "UseIsraelSettings", ( KLocale::global()->country() == QLatin1String( ".il" ) ) );
-  showParsha = group.readEntry( "ShowParsha", true );
-  showChol = group.readEntry( "ShowChol_HaMoed", true );
-  showOmer = group.readEntry( "ShowOmer", true );
+    KConfigGroup group(&config, "Hebrew Calendar Plugin");
+    areWeInIsrael = group.readEntry(
+                        "UseIsraelSettings", (KLocale::global()->country() == QLatin1String(".il")));
+    showParsha = group.readEntry("ShowParsha", true);
+    showChol = group.readEntry("ShowChol_HaMoed", true);
+    showOmer = group.readEntry("ShowOmer", true);
 }
 
 Hebrew::~Hebrew()
 {
 }
 
-void Hebrew::configure( QWidget *parent )
+void Hebrew::configure(QWidget *parent)
 {
-  ConfigDialog dlg( parent );
-  dlg.exec();
+    ConfigDialog dlg(parent);
+    dlg.exec();
 }
 
-Element::List Hebrew::createDayElements( const QDate &date )
+Element::List Hebrew::createDayElements(const QDate &date)
 {
-  Element::List el;
-  QString text;
+    Element::List el;
+    QString text;
 
-  HebrewDate hd = HebrewDate::fromSecular( date.year(), date.month(), date.day() );
+    HebrewDate hd = HebrewDate::fromSecular(date.year(), date.month(), date.day());
 
-  QStringList holidays = Holiday::findHoliday( hd, areWeInIsrael, showParsha,
-                                               showChol, showOmer );
+    QStringList holidays = Holiday::findHoliday(hd, areWeInIsrael, showParsha,
+                           showChol, showOmer);
 
-  KCalendarSystem *cal = KCalendarSystem::create( KLocale::HebrewCalendar );
+    KCalendarSystem *cal = KCalendarSystem::create(KLocale::HebrewCalendar);
 
-  text = cal->formatDate( date, KLocale::Day, KLocale::LongNumber ) + QLatin1Char(' ') + cal->monthName( date );
+    text = cal->formatDate(date, KLocale::Day, KLocale::LongNumber) + QLatin1Char(' ') + cal->monthName(date);
 
-  foreach ( const QString &holiday, holidays ) {
-    text += QLatin1String("<br/>\n") + holiday;
-  }
+    foreach (const QString &holiday, holidays) {
+        text += QLatin1String("<br/>\n") + holiday;
+    }
 
-  text = i18nc( "Change the next two strings if emphasis is done differently in your language.",
-                "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text );
-  el.append( new StoredElement( QLatin1String("main element"), text ) );
+    text = i18nc("Change the next two strings if emphasis is done differently in your language.",
+                 "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text);
+    el.append(new StoredElement(QLatin1String("main element"), text));
 
-  return el;
+    return el;
 }
 
 QString Hebrew::info() const
 {
-  return i18n( "This plugin provides the date in the Jewish calendar." );
+    return i18n("This plugin provides the date in the Jewish calendar.");
 }

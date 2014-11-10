@@ -32,43 +32,45 @@
 
 class QPushButton;
 
-namespace Ui {
-  class KOGroupwarePrefsPage;
+namespace Ui
+{
+class KOGroupwarePrefsPage;
 }
 
-namespace Akonadi {
-  class CollectionComboBox;
+namespace Akonadi
+{
+class CollectionComboBox;
 }
 
 class QRadioButton;
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
 {
-  Q_OBJECT
-  public:
-    KOPrefsDialogMain( QWidget *parent );
+    Q_OBJECT
+public:
+    KOPrefsDialogMain(QWidget *parent);
 
-  protected:
+protected:
     void usrWriteConfig();
 
-  protected slots:
-    void toggleEmailSettings( bool on );
+protected slots:
+    void toggleEmailSettings(bool on);
 
-  private:
+private:
     QWidget *mUserEmailSettings;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule
 {
-  Q_OBJECT
-  public:
-    KOPrefsDialogColorsAndFonts( QWidget *parent );
+    Q_OBJECT
+public:
+    KOPrefsDialogColorsAndFonts(QWidget *parent);
 
-  protected:
+protected:
     void usrSave();
     void usrRead();
 
-  protected slots:
+protected slots:
     void updateCategories();
     void setCategoryColor();
     void updateCategoryColor();
@@ -77,10 +79,10 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsMod
     void setResourceColor();
     void updateResourceColor();
 
-  private:
+private:
     KComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
-    QHash<QString,QColor> mCategoryDict;
+    QHash<QString, QColor> mCategoryDict;
 
     Akonadi::CollectionComboBox *mResourceCombo;
     KColorButton  *mResourceButton;
@@ -89,11 +91,11 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsMod
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsModule
 {
-  Q_OBJECT
-  public:
-    KOPrefsDialogGroupScheduling( QWidget *parent );
+    Q_OBJECT
+public:
+    KOPrefsDialogGroupScheduling(QWidget *parent);
 
-  protected:
+protected:
     void usrRead();
     void usrSave();
 };
@@ -102,33 +104,33 @@ class KOGroupwarePrefsPage;
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPIM::KPrefsModule
 {
-  Q_OBJECT
-  public:
-    KOPrefsDialogGroupwareScheduling( QWidget *parent );
+    Q_OBJECT
+public:
+    KOPrefsDialogGroupwareScheduling(QWidget *parent);
     ~KOPrefsDialogGroupwareScheduling();
 
-  protected:
+protected:
     void usrRead();
     void usrSave();
 
-  private:
+private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 {
-  Q_OBJECT
-  public:
-    KOPrefsDialogPlugins( QWidget *parent );
+    Q_OBJECT
+public:
+    KOPrefsDialogPlugins(QWidget *parent);
 
-  protected slots:
+protected slots:
     void usrRead();
     void usrSave();
     void configure();
     void selectionChanged();
     void positioningChanged();
 
-  private:
+private:
     void buildList();
     QTreeWidget *mTreeWidget;
     QLabel *mDescription;
@@ -147,13 +149,13 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 
 class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
 {
-  public:
-    explicit KOPrefsDesignerFields( QWidget *parent = 0 );
+public:
+    explicit KOPrefsDesignerFields(QWidget *parent = 0);
 
-  protected:
+protected:
     QString localUiDir();
     QString uiPath();
-    void writeActivePages( const QStringList & );
+    void writeActivePages(const QStringList &);
     QStringList readActivePages();
     QString applicationName();
 };

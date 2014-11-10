@@ -39,209 +39,209 @@
 #include <KMimeTypeTrader>
 #include <QDebug>
 
-KOEventPopupMenu::KOEventPopupMenu( Akonadi::ETMCalendar * calendar, QWidget *parent )
-  : QMenu( parent ), mCalendar( calendar )
+KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
+    : QMenu(parent), mCalendar(calendar)
 {
-  mHasAdditionalItems = false;
+    mHasAdditionalItems = false;
 
-  addAction( KOGlobals::self()->smallIcon( QLatin1String("document-preview") ), i18n( "&Show" ),
-             this, SLOT(popupShow()) );
-  mEditOnlyItems.append(
-    addAction( KOGlobals::self()->smallIcon( QLatin1String("document-edit") ), i18n( "&Edit..." ),
-               this, SLOT(popupEdit()) ) );
-  mEditOnlyItems.append( addSeparator() );
-  addAction( KOGlobals::self()->smallIcon( QLatin1String("document-print") ), i18n( "&Print..." ),
-             this, SLOT(print()) );
-  QAction *preview = addAction( KOGlobals::self()->smallIcon( QLatin1String("document-print-preview") ),
-                                i18n( "Print Previe&w..." ),
-                                this, SLOT(printPreview()) );
-  preview->setEnabled( !KMimeTypeTrader::self()->query(QLatin1String( "application/pdf"),
-                                                        QLatin1String("KParts/ReadOnlyPart") ).isEmpty() );
-  //------------------------------------------------------------------------
-  mEditOnlyItems.append( addSeparator() );
-  mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-cut") ),
-                                    i18nc( "cut this event", "C&ut" ),
-                                    this, SLOT(popupCut()) ) );
-  mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-copy") ),
-                                    i18nc( "copy this event", "&Copy" ),
-                                    this, SLOT(popupCopy()) ) );
-  // paste is always possible
-  mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-paste") ),
-                                    i18n( "&Paste" ),
-                                    this, SLOT(popupPaste()) ) );
-  mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( QLatin1String("edit-delete") ),
-                                    i18nc( "delete this incidence", "&Delete" ),
-                                    this, SLOT(popupDelete()) ) );
-  //------------------------------------------------------------------------
-  mEditOnlyItems.append( addSeparator() );
-  mTodoOnlyItems.append( addAction( KOGlobals::self()->smallIcon( QLatin1String("task-complete") ),
-                                    i18n( "Togg&le To-do Completed" ),
-                                    this, SLOT(toggleTodoCompleted()) ) );
-  mToggleReminder =  addAction( QIcon( KOGlobals::self()->smallIcon( QLatin1String("appointment-reminder") ) ),
-                                    i18n( "&Toggle Reminder" ), this, SLOT(toggleAlarm()));
-  mEditOnlyItems.append( mToggleReminder );
-  //------------------------------------------------------------------------
-  mRecurrenceItems.append( addSeparator() );
-  mDissociateOccurrences = addAction( i18n( "&Dissociate From Recurrence..." ),
-                                      this, SLOT(dissociateOccurrences()) );
-  mRecurrenceItems.append( mDissociateOccurrences );
+    addAction(KOGlobals::self()->smallIcon(QLatin1String("document-preview")), i18n("&Show"),
+              this, SLOT(popupShow()));
+    mEditOnlyItems.append(
+        addAction(KOGlobals::self()->smallIcon(QLatin1String("document-edit")), i18n("&Edit..."),
+                  this, SLOT(popupEdit())));
+    mEditOnlyItems.append(addSeparator());
+    addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print")), i18n("&Print..."),
+              this, SLOT(print()));
+    QAction *preview = addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print-preview")),
+                                 i18n("Print Previe&w..."),
+                                 this, SLOT(printPreview()));
+    preview->setEnabled(!KMimeTypeTrader::self()->query(QLatin1String("application/pdf"),
+                        QLatin1String("KParts/ReadOnlyPart")).isEmpty());
+    //------------------------------------------------------------------------
+    mEditOnlyItems.append(addSeparator());
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-cut")),
+                                    i18nc("cut this event", "C&ut"),
+                                    this, SLOT(popupCut())));
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-copy")),
+                                    i18nc("copy this event", "&Copy"),
+                                    this, SLOT(popupCopy())));
+    // paste is always possible
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-paste")),
+                                    i18n("&Paste"),
+                                    this, SLOT(popupPaste())));
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-delete")),
+                                    i18nc("delete this incidence", "&Delete"),
+                                    this, SLOT(popupDelete())));
+    //------------------------------------------------------------------------
+    mEditOnlyItems.append(addSeparator());
+    mTodoOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("task-complete")),
+                                    i18n("Togg&le To-do Completed"),
+                                    this, SLOT(toggleTodoCompleted())));
+    mToggleReminder =  addAction(QIcon(KOGlobals::self()->smallIcon(QLatin1String("appointment-reminder"))),
+                                 i18n("&Toggle Reminder"), this, SLOT(toggleAlarm()));
+    mEditOnlyItems.append(mToggleReminder);
+    //------------------------------------------------------------------------
+    mRecurrenceItems.append(addSeparator());
+    mDissociateOccurrences = addAction(i18n("&Dissociate From Recurrence..."),
+                                       this, SLOT(dissociateOccurrences()));
+    mRecurrenceItems.append(mDissociateOccurrences);
 
-  addSeparator();
-  addAction( KOGlobals::self()->smallIcon( QLatin1String("mail-forward") ),
-             i18n( "Send as iCalendar..." ),
-             this, SLOT(forward()) );
+    addSeparator();
+    addAction(KOGlobals::self()->smallIcon(QLatin1String("mail-forward")),
+              i18n("Send as iCalendar..."),
+              this, SLOT(forward()));
 }
 
-void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate &qd)
 {
-  mCurrentIncidence = item;
-  mCurrentDate = qd;
+    mCurrentIncidence = item;
+    mCurrentDate = qd;
 
-  if ( !CalendarSupport::hasIncidence( mCurrentIncidence )/*&& qd.isValid()*/ ) {
-    qDebug() << "No event selected";
-    return;
-  }
+    if (!CalendarSupport::hasIncidence(mCurrentIncidence)/*&& qd.isValid()*/) {
+        qDebug() << "No event selected";
+        return;
+    }
 
-  if ( !mCalendar ) {
-    //TODO fix it
-    qDebug() << "Calendar is 0";
-    return;
-  }
+    if (!mCalendar) {
+        //TODO fix it
+        qDebug() << "Calendar is 0";
+        return;
+    }
 
-  const bool hasChangeRights = mCalendar->hasRight( mCurrentIncidence, Akonadi::Collection::CanChangeItem );
+    const bool hasChangeRights = mCalendar->hasRight(mCurrentIncidence, Akonadi::Collection::CanChangeItem);
 
-  KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence( mCurrentIncidence );
-  Q_ASSERT( incidence );
-  if ( incidence->recurs() ) {
-    const KDateTime thisDateTime( qd, CalendarSupport::KCalPrefs::instance()->timeSpec() );
-    const bool isLastOccurrence =
-      !incidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
-    const bool isFirstOccurrence =
-      !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
-    mDissociateOccurrences->setEnabled(
-      !( isFirstOccurrence && isLastOccurrence ) && hasChangeRights );
-  }
+    KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
+    Q_ASSERT(incidence);
+    if (incidence->recurs()) {
+        const KDateTime thisDateTime(qd, CalendarSupport::KCalPrefs::instance()->timeSpec());
+        const bool isLastOccurrence =
+            !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
+        const bool isFirstOccurrence =
+            !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
+        mDissociateOccurrences->setEnabled(
+            !(isFirstOccurrence && isLastOccurrence) && hasChangeRights);
+    }
 
-  // Enable/Disabled menu items only valid for editable events.
-  QList<QAction *>::Iterator it;
-  for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-    (*it)->setEnabled( hasChangeRights );
-  }
-  mToggleReminder->setVisible( ( incidence->type() != KCalCore::Incidence::TypeJournal ) );
-  for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
-    (*it)->setVisible( incidence->recurs() );
-  }
-  for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
-    (*it)->setVisible( incidence->type() == KCalCore::Incidence::TypeTodo );
-    (*it)->setEnabled( hasChangeRights );
-  }
-  popup( QCursor::pos() );
+    // Enable/Disabled menu items only valid for editable events.
+    QList<QAction *>::Iterator it;
+    for (it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it) {
+        (*it)->setEnabled(hasChangeRights);
+    }
+    mToggleReminder->setVisible((incidence->type() != KCalCore::Incidence::TypeJournal));
+    for (it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it) {
+        (*it)->setVisible(incidence->recurs());
+    }
+    for (it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it) {
+        (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeTodo);
+        (*it)->setEnabled(hasChangeRights);
+    }
+    popup(QCursor::pos());
 }
 
 void KOEventPopupMenu::popupShow()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit showIncidenceSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit showIncidenceSignal(mCurrentIncidence);
+    }
 }
 
 void KOEventPopupMenu::popupEdit()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit editIncidenceSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit editIncidenceSignal(mCurrentIncidence);
+    }
 }
 
 void KOEventPopupMenu::print()
 {
-  print( false );
+    print(false);
 }
 
-void KOEventPopupMenu::print( bool preview )
+void KOEventPopupMenu::print(bool preview)
 {
-  KOCoreHelper helper;
-  CalendarSupport::CalPrinter printer( this, mCalendar, true );
-  connect(this, &KOEventPopupMenu::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
+    KOCoreHelper helper;
+    CalendarSupport::CalPrinter printer(this, mCalendar, true);
+    connect(this, &KOEventPopupMenu::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
-  //Item::List selectedIncidences;
-  KCalCore::Incidence::List selectedIncidences;
-  Q_ASSERT( mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr>() );
-  selectedIncidences.append( mCurrentIncidence.payload<KCalCore::Incidence::Ptr>() );
+    //Item::List selectedIncidences;
+    KCalCore::Incidence::List selectedIncidences;
+    Q_ASSERT(mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr>());
+    selectedIncidences.append(mCurrentIncidence.payload<KCalCore::Incidence::Ptr>());
 
-  printer.print( CalendarSupport::CalPrinterBase::Incidence,
-                 mCurrentDate, mCurrentDate, selectedIncidences, preview );
+    printer.print(CalendarSupport::CalPrinterBase::Incidence,
+                  mCurrentDate, mCurrentDate, selectedIncidences, preview);
 }
 
 void KOEventPopupMenu::printPreview()
 {
-  print( true );
+    print(true);
 }
 
 void KOEventPopupMenu::popupDelete()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit deleteIncidenceSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit deleteIncidenceSignal(mCurrentIncidence);
+    }
 }
 
 void KOEventPopupMenu::popupCut()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit cutIncidenceSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit cutIncidenceSignal(mCurrentIncidence);
+    }
 }
 
 void KOEventPopupMenu::popupCopy()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit copyIncidenceSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit copyIncidenceSignal(mCurrentIncidence);
+    }
 }
 
 void KOEventPopupMenu::popupPaste()
 {
-  emit pasteIncidenceSignal();
+    emit pasteIncidenceSignal();
 }
 
 void KOEventPopupMenu::toggleAlarm()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit toggleAlarmSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit toggleAlarmSignal(mCurrentIncidence);
+    }
 }
 
 void KOEventPopupMenu::dissociateOccurrences()
 {
-  if ( CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    emit dissociateOccurrencesSignal( mCurrentIncidence, mCurrentDate );
-  }
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        emit dissociateOccurrencesSignal(mCurrentIncidence, mCurrentDate);
+    }
 }
 
 void KOEventPopupMenu::forward()
 {
-  KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
-  if ( !w || !CalendarSupport::hasIncidence( mCurrentIncidence ) ) {
-    return;
-  }
+    KOrg::MainWindow *w = ActionManager::findInstance(KUrl());
+    if (!w || !CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        return;
+    }
 
-  KActionCollection *ac = w->getActionCollection();
-  QAction *action = ac->action( QLatin1String("schedule_forward") );
-  if ( action ) {
-    action->trigger();
-  } else {
-    qCritical() << "What happened to the schedule_forward action?";
-  }
+    KActionCollection *ac = w->getActionCollection();
+    QAction *action = ac->action(QLatin1String("schedule_forward"));
+    if (action) {
+        action->trigger();
+    } else {
+        qCritical() << "What happened to the schedule_forward action?";
+    }
 }
 
 void KOEventPopupMenu::toggleTodoCompleted()
 {
-  if ( CalendarSupport::hasTodo( mCurrentIncidence ) ) {
-    emit toggleTodoCompletedSignal( mCurrentIncidence );
-  }
+    if (CalendarSupport::hasTodo(mCurrentIncidence)) {
+        emit toggleTodoCompletedSignal(mCurrentIncidence);
+    }
 }
 
-void KOEventPopupMenu::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
+void KOEventPopupMenu::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
-  mCalendar = calendar;
+    mCalendar = calendar;
 }
 

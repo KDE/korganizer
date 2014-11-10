@@ -36,209 +36,209 @@
 
 #include <QVBoxLayout>
 
-KOTodoView::KOTodoView( bool sidebarView, QWidget *parent )
-  : BaseView( parent )
+KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
+    : BaseView(parent)
 {
-  mView = new EventViews::TodoView( KOPrefs::instance()->eventViewsPreferences(),
-                                    sidebarView, parent );
-  QVBoxLayout *layout = new QVBoxLayout( this );
-  layout->addWidget( mView );
-  connect( mView, SIGNAL(printTodo()), SLOT(printTodo()) );
-  connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
-  connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
+    mView = new EventViews::TodoView(KOPrefs::instance()->eventViewsPreferences(),
+                                     sidebarView, parent);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addWidget(mView);
+    connect(mView, SIGNAL(printTodo()), SLOT(printTodo()));
+    connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
+    connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
 
-  connect( mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+    connect(mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
 
-  connect( mView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+            SIGNAL(showIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+            SIGNAL(editIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(pasteIncidenceSignal()),
-           SIGNAL(pasteIncidenceSignal()) );
+    connect(mView, SIGNAL(pasteIncidenceSignal()),
+            SIGNAL(pasteIncidenceSignal()));
 
-  connect( mView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+    connect(mView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
 
-  connect( mView, SIGNAL(newEventSignal()),
-           SIGNAL(newEventSignal()) );
+    connect(mView, SIGNAL(newEventSignal()),
+            SIGNAL(newEventSignal()));
 
-  connect( mView, SIGNAL(newEventSignal(QDate)),
-           SIGNAL(newEventSignal(QDate)) );
+    connect(mView, SIGNAL(newEventSignal(QDate)),
+            SIGNAL(newEventSignal(QDate)));
 
-  connect( mView, SIGNAL(newEventSignal(QDateTime)),
-           SIGNAL(newEventSignal(QDateTime)) );
+    connect(mView, SIGNAL(newEventSignal(QDateTime)),
+            SIGNAL(newEventSignal(QDateTime)));
 
-  connect( mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+    connect(mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+            SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-  connect( mView, SIGNAL(newTodoSignal(QDate)),
-           SIGNAL(newTodoSignal(QDate)) );
+    connect(mView, SIGNAL(newTodoSignal(QDate)),
+            SIGNAL(newTodoSignal(QDate)));
 
-  connect( mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+    connect(mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+            SIGNAL(newSubTodoSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(fullViewChanged(bool)),
-           SIGNAL(fullViewChanged(bool)) );
+    connect(mView, SIGNAL(fullViewChanged(bool)),
+            SIGNAL(fullViewChanged(bool)));
 }
 
 KOTodoView::~KOTodoView()
 {
 }
 
-void KOTodoView::setCalendar( const Akonadi::ETMCalendar::Ptr &calendar )
+void KOTodoView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
-  BaseView::setCalendar( calendar );
-  mView->setCalendar( calendar );
+    BaseView::setCalendar(calendar);
+    mView->setCalendar(calendar);
 }
 
 Akonadi::Item::List KOTodoView::selectedIncidences()
 {
-  return mView->selectedIncidences();
+    return mView->selectedIncidences();
 }
 
 KCalCore::DateList KOTodoView::selectedIncidenceDates()
 {
-  return KCalCore::DateList();
+    return KCalCore::DateList();
 }
 
-void KOTodoView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+void KOTodoView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
-  BaseView::setIncidenceChanger( changer );
-  mView->setIncidenceChanger( changer );
+    BaseView::setIncidenceChanger(changer);
+    mView->setIncidenceChanger(changer);
 }
 
-void KOTodoView::showDates( const QDate &start, const QDate &end, const QDate & )
+void KOTodoView::showDates(const QDate &start, const QDate &end, const QDate &)
 {
-  // There is nothing to do here for the Todo View
-  Q_UNUSED( start );
-  Q_UNUSED( end );
+    // There is nothing to do here for the Todo View
+    Q_UNUSED(start);
+    Q_UNUSED(end);
 }
 
-void KOTodoView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
+void KOTodoView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
-  Q_UNUSED( incidenceList );
-  Q_UNUSED( date );
+    Q_UNUSED(incidenceList);
+    Q_UNUSED(date);
 }
 
 void KOTodoView::updateView()
 {
-  // View is always updated, it's connected to ETM.
+    // View is always updated, it's connected to ETM.
 }
 
-void KOTodoView::changeIncidenceDisplay( const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType )
+void KOTodoView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
-  // Don't do anything, model is connected to ETM, it's up to date
+    // Don't do anything, model is connected to ETM, it's up to date
 }
 
 void KOTodoView::updateConfig()
 {
-  mView->updateConfig();
+    mView->updateConfig();
 }
 
 void KOTodoView::clearSelection()
 {
-  mView->clearSelection();
+    mView->clearSelection();
 }
 
 void KOTodoView::printTodo()
 {
-  printTodo( false );
+    printTodo(false);
 }
 
 void KOTodoView::printPreviewTodo()
 {
-  printTodo( true );
+    printTodo(true);
 }
 
-void KOTodoView::printTodo( bool preview )
+void KOTodoView::printTodo(bool preview)
 {
-  Akonadi::Item::List selectedItems = mView->selectedIncidences();
-  if ( selectedItems.count() != 1 ) {
-    return;
-  }
+    Akonadi::Item::List selectedItems = mView->selectedIncidences();
+    if (selectedItems.count() != 1) {
+        return;
+    }
 
-  Akonadi::Item todoItem = selectedItems.first();
-  KCalCore::Todo::Ptr todo = CalendarSupport::todo( todoItem );
-  Q_ASSERT( todo );
+    Akonadi::Item todoItem = selectedItems.first();
+    KCalCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
+    Q_ASSERT(todo);
 
-  CalendarSupport::CalPrinter printer( this, calendar(), true );
-  connect(this, &KOTodoView::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
+    CalendarSupport::CalPrinter printer(this, calendar(), true);
+    connect(this, &KOTodoView::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
-  KCalCore::Incidence::List selectedIncidences;
-  selectedIncidences.append( todo );
+    KCalCore::Incidence::List selectedIncidences;
+    selectedIncidences.append(todo);
 
-  KDateTime todoDate;
-  if ( todo->hasStartDate() ) {
-    todoDate = todo->dtStart();
-  } else {
-    todoDate = todo->dtDue();
-  }
+    KDateTime todoDate;
+    if (todo->hasStartDate()) {
+        todoDate = todo->dtStart();
+    } else {
+        todoDate = todo->dtDue();
+    }
 
-  printer.print( CalendarSupport::CalPrinterBase::Incidence,
-                 todoDate.date(), todoDate.date(), selectedIncidences, preview );
+    printer.print(CalendarSupport::CalPrinterBase::Incidence,
+                  todoDate.date(), todoDate.date(), selectedIncidences, preview);
 
 }
 
-void KOTodoView::getHighlightMode( bool &highlightEvents,
-                                   bool &highlightTodos,
-                                   bool &highlightJournals )
+void KOTodoView::getHighlightMode(bool &highlightEvents,
+                                  bool &highlightTodos,
+                                  bool &highlightJournals)
 {
-  highlightTodos    = KOPrefs::instance()->mHighlightTodos;
-  highlightEvents   = !highlightTodos;
-  highlightJournals = false;
+    highlightTodos    = KOPrefs::instance()->mHighlightTodos;
+    highlightEvents   = !highlightTodos;
+    highlightJournals = false;
 }
 
 void KOTodoView::saveViewState()
 {
-  mView->saveViewState();
+    mView->saveViewState();
 }
 
 void KOTodoView::restoreViewState()
 {
-  mView->restoreViewState();
+    mView->restoreViewState();
 }
 
-void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool minimalDefaults )
+void KOTodoView::restoreLayout(KConfig *config, const QString &group, bool minimalDefaults)
 {
-  mView->restoreLayout( config, group, minimalDefaults );
+    mView->restoreLayout(config, group, minimalDefaults);
 }
 
-void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
+void KOTodoView::saveLayout(KConfig *config, const QString &group) const
 {
-  mView->saveLayout( config, group );
+    mView->saveLayout(config, group);
 }
 
 bool KOTodoView::usesFullWindow()
 {
-  return mView->usesFullWindow();
+    return mView->usesFullWindow();
 }
 
 CalendarSupport::CalPrinterBase::PrintType KOTodoView::printType() const
 {
-  return CalendarSupport::CalPrinterBase::Todolist;
+    return CalendarSupport::CalPrinterBase::Todolist;
 }
 

@@ -31,9 +31,10 @@
 
 #include <KCalCore/Incidence>
 
-namespace Akonadi {
-  class Collection;
-  class Item;
+namespace Akonadi
+{
+class Collection;
+class Item;
 }
 
 class QColor;
@@ -41,37 +42,38 @@ class QDate;
 
 // Provides static methods that are useful to all views.
 
-namespace KOHelper {
-  /**
-    Returns a nice QColor for text, give the input color &c.
-  */
-  KORGANIZERPRIVATE_EXPORT QColor getTextColor( const QColor &c );
+namespace KOHelper
+{
+/**
+  Returns a nice QColor for text, give the input color &c.
+*/
+KORGANIZERPRIVATE_EXPORT QColor getTextColor(const QColor &c);
 
-  /**
-    This method returns the proper resource / subresource color for the view.
-    @return The resource color for the incidence. If the incidence belongs
-    to a subresource, the color for the subresource is returned (if set).
-    @param calendar the calendar for which the resource color should be obtained
-    @param incidence the incidence for which the color is needed (to
-                     determine which  subresource needs to be used)
-  */
-  KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Item &incidence );
+/**
+  This method returns the proper resource / subresource color for the view.
+  @return The resource color for the incidence. If the incidence belongs
+  to a subresource, the color for the subresource is returned (if set).
+  @param calendar the calendar for which the resource color should be obtained
+  @param incidence the incidence for which the color is needed (to
+                   determine which  subresource needs to be used)
+*/
+KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Item &incidence);
 
-  KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Collection &collection );
+KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Collection &collection);
 
-  /**
-    Returns the number of years between the @p start QDate and the @p end QDate
-    (i.e. the difference in the year number of both dates)
-  */
-  KORGANIZERPRIVATE_EXPORT int yearDiff( const QDate &start, const QDate &end );
+/**
+  Returns the number of years between the @p start QDate and the @p end QDate
+  (i.e. the difference in the year number of both dates)
+*/
+KORGANIZERPRIVATE_EXPORT int yearDiff(const QDate &start, const QDate &end);
 
-  /**
-    Return true if it's the standard calendar
-  */
-  KORGANIZERPRIVATE_EXPORT bool isStandardCalendar( const Akonadi::Entity::Id &id );
+/**
+  Return true if it's the standard calendar
+*/
+KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(const Akonadi::Entity::Id &id);
 
-  KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(
-    QWidget *parent, const KCalCore::Incidence::Ptr &incidence );
+KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(
+    QWidget *parent, const KCalCore::Incidence::Ptr &incidence);
 }
 
 #endif

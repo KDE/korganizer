@@ -34,193 +34,193 @@
 
 using namespace KOrg;
 
-KOListView::KOListView( const Akonadi::ETMCalendar::Ptr &calendar,
-                        QWidget *parent, bool nonInteractive )
-  : KOEventView( parent )
+KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
+                       QWidget *parent, bool nonInteractive)
+    : KOEventView(parent)
 {
-  QVBoxLayout *layout = new QVBoxLayout( this );
-  mListView = new EventViews::ListView( calendar, this, nonInteractive );
-  mPopupMenu = eventPopup();
-  setCalendar( calendar );
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    mListView = new EventViews::ListView(calendar, this, nonInteractive);
+    mPopupMenu = eventPopup();
+    setCalendar(calendar);
 
-  layout->addWidget( mListView );
+    layout->addWidget(mListView);
 
-  connect( mListView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-           mPopupMenu, SLOT(showIncidencePopup(Akonadi::Item,QDate)) );
+    connect(mListView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
+            mPopupMenu, SLOT(showIncidencePopup(Akonadi::Item,QDate)));
 
-  connect( mListView, SIGNAL(showNewEventPopupSignal()),
-           SLOT(showNewEventPopup()) );
+    connect(mListView, SIGNAL(showNewEventPopupSignal()),
+            SLOT(showNewEventPopup()));
 
-  connect( mListView, SIGNAL(datesSelected(KCalCore::DateList)),
-           SIGNAL(datesSelected(KCalCore::DateList)) );
+    connect(mListView, SIGNAL(datesSelected(KCalCore::DateList)),
+            SIGNAL(datesSelected(KCalCore::DateList)));
 
-  connect( mListView, SIGNAL(shiftedEvent(QDate,QDate)),
-           SIGNAL(shiftedEvent(QDate,QDate)) );
+    connect(mListView, SIGNAL(shiftedEvent(QDate,QDate)),
+            SIGNAL(shiftedEvent(QDate,QDate)));
 
-  connect( mListView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-           SIGNAL(incidenceSelected(Akonadi::Item,QDate)) );
+    connect(mListView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
 
-  connect( mListView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-           SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+            SIGNAL(showIncidenceSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-           SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+            SIGNAL(editIncidenceSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-           SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-           SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-           SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(pasteIncidenceSignal()),
-           SIGNAL(pasteIncidenceSignal()) );
+    connect(mListView, SIGNAL(pasteIncidenceSignal()),
+            SIGNAL(pasteIncidenceSignal()));
 
-  connect( mListView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-           SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mListView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mListView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+    connect(mListView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
+            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
 
-  connect( mListView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
+    connect(mListView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
 
-  connect( mListView, SIGNAL(newEventSignal()),
-           SIGNAL(newEventSignal()) );
+    connect(mListView, SIGNAL(newEventSignal()),
+            SIGNAL(newEventSignal()));
 
-  connect( mListView, SIGNAL(newEventSignal(QDate)),
-           SIGNAL(newEventSignal(QDate)) );
+    connect(mListView, SIGNAL(newEventSignal(QDate)),
+            SIGNAL(newEventSignal(QDate)));
 
-  connect( mListView, SIGNAL(newEventSignal(QDateTime)),
-           SIGNAL(newEventSignal(QDateTime)) );
+    connect(mListView, SIGNAL(newEventSignal(QDateTime)),
+            SIGNAL(newEventSignal(QDateTime)));
 
-  connect( mListView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-           SIGNAL(newEventSignal(QDateTime,QDateTime)) );
+    connect(mListView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+            SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-  connect( mListView, SIGNAL(newTodoSignal(QDate)),
-           SIGNAL(newTodoSignal(QDate)) );
+    connect(mListView, SIGNAL(newTodoSignal(QDate)),
+            SIGNAL(newTodoSignal(QDate)));
 
-  connect( mListView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-           SIGNAL(newSubTodoSignal(Akonadi::Item)) );
+    connect(mListView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+            SIGNAL(newSubTodoSignal(Akonadi::Item)));
 
-  connect( mListView, SIGNAL(newJournalSignal(QDate)),
-           SIGNAL(newJournalSignal(QDate)) );
+    connect(mListView, SIGNAL(newJournalSignal(QDate)),
+            SIGNAL(newJournalSignal(QDate)));
 }
 
 KOListView::~KOListView()
 {
-  delete mPopupMenu;
-  delete mListView;
+    delete mPopupMenu;
+    delete mListView;
 }
 
 int KOListView::maxDatesHint() const
 {
-  return 0;
+    return 0;
 }
 
 int KOListView::currentDateCount() const
 {
-  return mListView->currentDateCount();
+    return mListView->currentDateCount();
 }
 
 Akonadi::Item::List KOListView::selectedIncidences()
 {
-  return mListView->selectedIncidences();
+    return mListView->selectedIncidences();
 }
 
 KCalCore::DateList KOListView::selectedIncidenceDates()
 {
-  return mListView->selectedIncidenceDates();
+    return mListView->selectedIncidenceDates();
 }
 
 void KOListView::updateView()
 {
-  mListView->updateView();
+    mListView->updateView();
 }
 
-void KOListView::showDates( const QDate &start, const QDate &end, const QDate & )
+void KOListView::showDates(const QDate &start, const QDate &end, const QDate &)
 {
-  mListView->showDates( start, end );
+    mListView->showDates(start, end);
 }
 
 void KOListView::showAll()
 {
-  mListView->showAll();
+    mListView->showAll();
 }
 
-void KOListView::showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date )
+void KOListView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
-  mListView->showIncidences( incidenceList, date );
+    mListView->showIncidences(incidenceList, date);
 }
 
-void KOListView::changeIncidenceDisplay( const Akonadi::Item & aitem,
-                                         Akonadi::IncidenceChanger::ChangeType changeType )
+void KOListView::changeIncidenceDisplay(const Akonadi::Item &aitem,
+                                        Akonadi::IncidenceChanger::ChangeType changeType)
 {
-  mListView->changeIncidenceDisplay( aitem, changeType );
+    mListView->changeIncidenceDisplay(aitem, changeType);
 }
 
-void KOListView::defaultItemAction( const QModelIndex &index )
+void KOListView::defaultItemAction(const QModelIndex &index)
 {
-  mListView->defaultItemAction( index );
+    mListView->defaultItemAction(index);
 }
 
-void KOListView::defaultItemAction( const Akonadi::Item::Id id )
+void KOListView::defaultItemAction(const Akonadi::Item::Id id)
 {
-  mListView->defaultItemAction( id );
+    mListView->defaultItemAction(id);
 }
 
-void KOListView::popupMenu( const QPoint &point )
+void KOListView::popupMenu(const QPoint &point)
 {
-  mListView->popupMenu( point );
+    mListView->popupMenu(point);
 }
 
-void KOListView::readSettings( KConfig *config )
+void KOListView::readSettings(KConfig *config)
 {
-  mListView->readSettings( config );
+    mListView->readSettings(config);
 }
 
-void KOListView::writeSettings( KConfig *config )
+void KOListView::writeSettings(KConfig *config)
 {
-  mListView->writeSettings( config );
+    mListView->writeSettings(config);
 }
 
 void KOListView::clearSelection()
 {
-  mListView->clearSelection();
+    mListView->clearSelection();
 }
 
 void KOListView::clear()
 {
-  mListView->clear();
+    mListView->clear();
 }
 
 CalendarSupport::CalPrinterBase::PrintType KOListView::printType() const
 {
-  return CalendarSupport::CalPrinterBase::Incidence;
+    return CalendarSupport::CalPrinterBase::Incidence;
 }
 
 QSize KOListView::sizeHint() const
 {
-  return mListView->sizeHint();
+    return mListView->sizeHint();
 }
 
-void KOListView::setCalendar( const Akonadi::ETMCalendar::Ptr &cal )
+void KOListView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
-  KOEventView::setCalendar( cal );
-  mPopupMenu->setCalendar( cal );
-  mListView->setCalendar( cal );
+    KOEventView::setCalendar(cal);
+    mPopupMenu->setCalendar(cal);
+    mListView->setCalendar(cal);
 }
 
-void KOListView::setIncidenceChanger( Akonadi::IncidenceChanger *changer )
+void KOListView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
-  mListView->setIncidenceChanger( changer );
+    mListView->setIncidenceChanger(changer);
 }
 

@@ -31,8 +31,9 @@
 
 #include "koeventview.h"
 
-namespace Akonadi {
-  class IncidenceChanger;
+namespace Akonadi
+{
+class IncidenceChanger;
 }
 
 /**
@@ -40,29 +41,32 @@ namespace Akonadi {
 */
 class KOTimelineView : public KOEventView
 {
-  Q_OBJECT
-  public:
-    explicit KOTimelineView( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit KOTimelineView(QWidget *parent = 0);
     ~KOTimelineView();
 
     virtual Akonadi::Item::List selectedIncidences();
     virtual KCalCore::DateList selectedIncidenceDates();
     virtual int currentDateCount() const;
-    virtual void showDates( const QDate &, const QDate &, const QDate &preferredMonth = QDate() );
-    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
+    virtual void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate());
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
     virtual void updateView();
-    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence,
-                                         Akonadi::IncidenceChanger::ChangeType );
-    virtual int maxDatesHint() const { return 0; }
-    virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    virtual void setCalendar( const Akonadi::ETMCalendar::Ptr &cal );
-    virtual void setIncidenceChanger( Akonadi::IncidenceChanger *changer );
+    virtual void changeIncidenceDisplay(const Akonadi::Item &incidence,
+                                        Akonadi::IncidenceChanger::ChangeType);
+    virtual int maxDatesHint() const
+    {
+        return 0;
+    }
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
+    virtual void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
 
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
-  private:
+private:
     class Private;
-    Private * const d;
+    Private *const d;
 };
 
 #endif

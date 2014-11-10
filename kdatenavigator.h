@@ -34,43 +34,44 @@
 class KODayMatrix;
 class NavigatorBar;
 
-namespace Akonadi {
-  class Item;
+namespace Akonadi
+{
+class Item;
 }
 
 class QLabel;
 
 class KDateNavigator: public QFrame
 {
-  Q_OBJECT
-  public:
-    explicit KDateNavigator( QWidget *parent = 0 );
+    Q_OBJECT
+public:
+    explicit KDateNavigator(QWidget *parent = 0);
     ~KDateNavigator();
 
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( const Akonadi::ETMCalendar::Ptr & );
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
-    void setBaseDate( const QDate & );
+    void setBaseDate(const QDate &);
 
     KCalCore::DateList selectedDates() const
     {
-      return mSelectedDates;
+        return mSelectedDates;
     }
 
-    QSizePolicy sizePolicy () const;
+    QSizePolicy sizePolicy() const;
 
     NavigatorBar *navigatorBar() const
     {
-      return mNavigatorBar;
+        return mNavigatorBar;
     }
 
     QDate startDate() const;
     QDate endDate() const;
-    void setHighlightMode( bool highlightEvents,
-                           bool highlightTodos,
-                           bool highlightJournals ) const;
+    void setHighlightMode(bool highlightEvents,
+                          bool highlightTodos,
+                          bool highlightJournals) const;
 
     /**
        Returns the current displayed month.
@@ -79,8 +80,8 @@ class KDateNavigator: public QFrame
     */
     QDate month() const;
 
-  public slots:
-    void selectDates( const KCalCore::DateList & );
+public slots:
+    void selectDates(const KCalCore::DateList &);
     void selectPreviousMonth();
     void selectNextMonth();
     void updateView();
@@ -89,14 +90,14 @@ class KDateNavigator: public QFrame
     void updateToday();
     void setUpdateNeeded();
 
-  signals:
-    void datesSelected( const KCalCore::DateList & );
-    void incidenceDropped( const Akonadi::Item &, const QDate & );
-    void incidenceDroppedMove( const Akonadi::Item &, const QDate & );
-    void newEventSignal( const QDate & );
-    void newTodoSignal( const QDate & );
-    void newJournalSignal( const QDate & );
-    void weekClicked( const QDate &week, const QDate &month );
+signals:
+    void datesSelected(const KCalCore::DateList &);
+    void incidenceDropped(const Akonadi::Item &, const QDate &);
+    void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
+    void newEventSignal(const QDate &);
+    void newTodoSignal(const QDate &);
+    void newJournalSignal(const QDate &);
+    void weekClicked(const QDate &week, const QDate &month);
 
     void goPrevious();
     void goNext();
@@ -105,20 +106,20 @@ class KDateNavigator: public QFrame
     void nextYearClicked();
     void prevYearClicked();
 
-    void monthSelected( int month );
-    void yearSelected( int year );
+    void monthSelected(int month);
+    void yearSelected(int year);
 
-  protected:
+protected:
     void updateDates();
 
-    void wheelEvent( QWheelEvent * );
+    void wheelEvent(QWheelEvent *);
 
-    bool eventFilter( QObject *, QEvent * );
+    bool eventFilter(QObject *, QEvent *);
 
-    void setShowWeekNums( bool enabled );
+    void setShowWeekNums(bool enabled);
 
-  private:
-    void selectMonthHelper( int monthDifference );
+private:
+    void selectMonthHelper(int monthDifference);
     NavigatorBar *mNavigatorBar;
 
     QLabel *mHeadings[ 7 ];
@@ -131,8 +132,8 @@ class KDateNavigator: public QFrame
     Akonadi::ETMCalendar::Ptr mCalendar;
 
     // Disabling copy constructor and assignment operator
-    KDateNavigator( const KDateNavigator & );
-    KDateNavigator &operator=( const KDateNavigator & );
+    KDateNavigator(const KDateNavigator &);
+    KDateNavigator &operator=(const KDateNavigator &);
 };
 
 #endif

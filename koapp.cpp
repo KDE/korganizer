@@ -41,11 +41,11 @@
 
 KOrganizerApp::KOrganizerApp() : KontactInterface::PimUniqueApplication()
 {
-  QString prodId = QLatin1String("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
-  KCalCore::CalFormat::setApplication( QLatin1String("KOrganizer"), prodId.arg( QLatin1String(korgVersion) ) );
+    QString prodId = QLatin1String("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
+    KCalCore::CalFormat::setApplication(QLatin1String("KOrganizer"), prodId.arg(QLatin1String(korgVersion)));
 
-  // icons shared by the KDE PIM applications
-  KGlobal::dirs()->addResourceType( "appicon", "data", "/kdepim/icons/" );
+    // icons shared by the KDE PIM applications
+    KGlobal::dirs()->addResourceType("appicon", "data", "/kdepim/icons/");
 }
 
 KOrganizerApp::~KOrganizerApp()
@@ -54,77 +54,77 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::newInstance()
 {
-  qDebug();
-  static bool first = true;
-  if ( isSessionRestored() && first ) {
-     KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
-     if ( korg ) {
-       korg->view()->updateView();
-     }
-     first = false;
-     return 0;
-  }
-  first = false;
+    qDebug();
+    static bool first = true;
+    if (isSessionRestored() && first) {
+        KOrg::MainWindow *korg = ActionManager::findInstance(KUrl());
+        if (korg) {
+            korg->view()->updateView();
+        }
+        first = false;
+        return 0;
+    }
+    first = false;
 
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
-  KPIM::ReminderClient::startDaemon();
+    KPIM::ReminderClient::startDaemon();
 
-  // No filenames given => all other args are meaningless, show main Window
-  if ( args->count() <= 0 ) {
-    processCalendar( KUrl() );
+    // No filenames given => all other args are meaningless, show main Window
+    if (args->count() <= 0) {
+        processCalendar(KUrl());
+        return 0;
+    }
+
+    // If filenames were given as arguments, load them as calendars, one per window.
+    // Import, merge, or ask => we need the resource calendar window anyway.
+    processCalendar(KUrl());
+    KOrg::MainWindow *korg = ActionManager::findInstance(KUrl());
+    if (!korg) {
+        qCritical() << "Unable to find default calendar resources view.";
+        return -1;
+    }
+    // Check for import, merge or ask
+    if (args->isSet("import")) {
+        for (int i = 0; i < args->count(); ++i) {
+            korg->actionManager()->importURL(args->url(i), false);
+        }
+    } else if (args->isSet("merge")) {
+        for (int i = 0; i < args->count(); ++i) {
+            korg->actionManager()->importURL(args->url(i), true);
+        }
+    } else {
+        for (int i = 0; i < args->count(); ++i) {
+            korg->actionManager()->importCalendar(args->url(i));
+        }
+    }
+
     return 0;
-  }
-
-  // If filenames were given as arguments, load them as calendars, one per window.
-  // Import, merge, or ask => we need the resource calendar window anyway.
-  processCalendar( KUrl() );
-  KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
-  if ( !korg ) {
-      qCritical() << "Unable to find default calendar resources view.";
-      return -1;
-  }
-  // Check for import, merge or ask
-  if ( args->isSet( "import" ) ) {
-      for ( int i = 0; i < args->count(); ++i ) {
-          korg->actionManager()->importURL( args->url( i ), false );
-      }
-  } else if ( args->isSet( "merge" ) ) {
-      for ( int i = 0; i < args->count(); ++i ) {
-          korg->actionManager()->importURL( args->url( i ), true );
-      }
-  } else {
-      for ( int i = 0; i < args->count(); ++i ) {
-          korg->actionManager()->importCalendar( args->url( i ) );
-      }
-  }
-
-  return 0;
 }
 
-void KOrganizerApp::processCalendar( const KUrl &url )
+void KOrganizerApp::processCalendar(const KUrl &url)
 {
-  KOrg::MainWindow *korg = ActionManager::findInstance( url );
-  if ( !korg ) {
-    bool hasDocument = !url.isEmpty();
-    korg = new KOrganizer();
-    korg->init( hasDocument );
-    korg->topLevelWidget()->show();
+    KOrg::MainWindow *korg = ActionManager::findInstance(url);
+    if (!korg) {
+        bool hasDocument = !url.isEmpty();
+        korg = new KOrganizer();
+        korg->init(hasDocument);
+        korg->topLevelWidget()->show();
 
-    qDebug() << url.url();
+        qDebug() << url.url();
 
-    if ( hasDocument ) {
-      korg->openURL( url );
+        if (hasDocument) {
+            korg->openURL(url);
+        } else {
+            //      korg->view()->updateView();
+        }
     } else {
-      //      korg->view()->updateView();
+        korg->topLevelWidget()->show();
     }
-  } else {
-    korg->topLevelWidget()->show();
-  }
 
-  // Handle window activation
+    // Handle window activation
 #if defined Q_OS_X11 && ! defined K_WS_QTONLY
-  KStartupInfo::setNewStartupId( korg->topLevelWidget(), startupId() );
+    KStartupInfo::setNewStartupId(korg->topLevelWidget(), startupId());
 #endif
 }
 

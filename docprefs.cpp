@@ -31,51 +31,51 @@
 
 KConfig *DocPrefs::mConfig = 0;
 
-DocPrefs::DocPrefs( const QString &type )
+DocPrefs::DocPrefs(const QString &type)
 {
-  if ( !mConfig ) {
-    mConfig = new KConfig(
-      QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/docprefs.") + type + QLatin1String(".kconfig") ) ;
-  }
+    if (!mConfig) {
+        mConfig = new KConfig(
+            QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/docprefs.") + type + QLatin1String(".kconfig")) ;
+    }
 }
 
 DocPrefs::~DocPrefs()
 {
-  mConfig->sync();
+    mConfig->sync();
 }
 
-void DocPrefs::setDoc( const QString &identifier )
+void DocPrefs::setDoc(const QString &identifier)
 {
-  mDocId = identifier;
+    mDocId = identifier;
 }
 
 QString DocPrefs::doc() const
 {
-  return mDocId;
+    return mDocId;
 }
 
-bool DocPrefs::readBoolEntry( const QString &id ) const
+bool DocPrefs::readBoolEntry(const QString &id) const
 {
-  KConfigGroup docConfig( mConfig, mDocId );
-  bool result = docConfig.readEntry( id, false );
-  return result;
+    KConfigGroup docConfig(mConfig, mDocId);
+    bool result = docConfig.readEntry(id, false);
+    return result;
 }
 
-void DocPrefs::writeBoolEntry( const QString &id, bool value )
+void DocPrefs::writeBoolEntry(const QString &id, bool value)
 {
-  KConfigGroup docConfig( mConfig, mDocId );
-  docConfig.writeEntry( id, value );
+    KConfigGroup docConfig(mConfig, mDocId);
+    docConfig.writeEntry(id, value);
 }
 
-int DocPrefs::readNumEntry( const QString &id ) const
+int DocPrefs::readNumEntry(const QString &id) const
 {
-  KConfigGroup docConfig( mConfig, mDocId );
-  int result = docConfig.readEntry( id, 0 );
-  return result;
+    KConfigGroup docConfig(mConfig, mDocId);
+    int result = docConfig.readEntry(id, 0);
+    return result;
 }
 
-void DocPrefs::writeNumEntry( const QString &id, int value )
+void DocPrefs::writeNumEntry(const QString &id, int value)
 {
-  KConfigGroup docConfig( mConfig, mDocId );
-  docConfig.writeEntry( id, value );
+    KConfigGroup docConfig(mConfig, mDocId);
+    docConfig.writeEntry(id, value);
 }
