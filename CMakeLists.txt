@@ -195,7 +195,6 @@ set(korganizerprivate_LIB_SRCS
     koviewmanager.cpp
     kowindowlist.cpp
     navigatorbar.cpp
-    previewdialog.cpp
     searchdialog.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
