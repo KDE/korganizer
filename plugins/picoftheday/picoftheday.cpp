@@ -85,7 +85,7 @@ void POTDElement::step1StartDownload()
 {
     // Start downloading the picture
     if (!mFirstStepCompleted && !mFirstStepJob) {
-        KUrl url = KUrl(QLatin1String("http://en.wikipedia.org/w/index.php?title=Template:POTD/") +
+        QUrl url = QUrl(QLatin1String("http://en.wikipedia.org/w/index.php?title=Template:POTD/") +
                         mDate.toString(Qt::ISODate) + QLatin1String("&action=raw"));
         // The file at that URL contains the file name for the POTD
 
@@ -152,7 +152,7 @@ void POTDElement::step1Result(KJob *job)
 void POTDElement::step2GetImagePage()
 {
     if (!mSecondStepCompleted && !mSecondStepJob) {
-        mUrl = KUrl(QLatin1String("http://en.wikipedia.org/wiki/File:") + mFileName);
+        mUrl = QUrl(QLatin1String("http://en.wikipedia.org/wiki/File:") + mFileName);
         // We'll find the info to get the thumbnail we want on the POTD's image page
 
         emit gotNewUrl(mUrl);

@@ -283,7 +283,7 @@ protected slots:
         after the URL is obtained from the user.
         @param url the URL to open
     */
-    void file_open(const KUrl &url);
+    void file_open(const QUrl &url);
 
     /** import a non-ics calendar from another program like ical. */
     void file_icalimport();

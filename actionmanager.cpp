@@ -844,12 +844,12 @@ void ActionManager::file_new()
 void ActionManager::file_open()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/") ;
-    const KUrl url = KFileDialog::getOpenUrl(defaultPath, QLatin1String("text/calendar"), dialogParent());
+    const QUrl url = KFileDialog::getOpenUrl(defaultPath, QLatin1String("text/calendar"), dialogParent());
 
     file_open(url);
 }
 
-void ActionManager::file_open(const KUrl &url)
+void ActionManager::file_open(const QUrl &url)
 {
     if (url.isEmpty()) {
         return;
@@ -864,7 +864,7 @@ void ActionManager::file_open(const KUrl &url)
         return;
     }
 
-    qDebug() << url.prettyUrl();
+    qDebug() << url.toDisplayString();
 
     importCalendar(url);
 }

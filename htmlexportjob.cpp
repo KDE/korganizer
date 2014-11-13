@@ -153,7 +153,7 @@ void HtmlExportJob::finishExport()
     bool saveStatus;
     QString errorMessage;
     Q_ASSERT(d->mSettings);
-    KUrl dest(d->mSettings->outputFile());
+    QUrl dest(QUrl::fromLocalFile(d->mSettings->outputFile()));
     if (dest.isLocalFile()) {
         saveStatus = save(dest.toLocalFile());
         errorMessage = i18n("Unable to write the output file.");

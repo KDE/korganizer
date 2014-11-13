@@ -77,7 +77,7 @@ signals:
     void gotNewShortText(const QString &) const;
     void gotNewLongText(const QString &) const;
     void gotNewExtensiveText(const QString &) const;
-    void gotNewUrl(const KUrl &) const;
+    void gotNewUrl(const QUrl &) const;
     // The following three signals are only used internally
     void step1Success() const;
     void step2Success() const;

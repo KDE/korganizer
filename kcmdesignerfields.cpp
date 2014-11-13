@@ -203,12 +203,13 @@ void KCMDesignerFields::deleteFile()
 
 void KCMDesignerFields::importFile()
 {
-    KUrl src = KFileDialog::getOpenFileName(QDir::homePath(),
+    QUrl src = KFileDialog::getOpenFileName(QDir::homePath(),
                                             i18n("*.ui|Designer Files"),
                                             this, i18n("Import Page"));
-    KUrl dest = localUiDir();
+    QUrl dest = QUrl::fromLocalFile(localUiDir());
     QDir().mkpath(localUiDir());
-    dest.setFileName(src.fileName());
+    dest = dest.adjusted(QUrl::RemoveFilename);
+    dest.setPath(src.fileName());
     KIO::Job *job = KIO::file_copy(src, dest, -1, KIO::Overwrite);
     KIO::NetAccess::synchronousRun(job, this);
 
