@@ -34,7 +34,6 @@
 #include <KIO/NetAccess>
 #include <KLocalizedString>
 #include <QDialog>
-#include <KUrl>
 #include <KGlobal>
 #include <KFileDialog>
 
