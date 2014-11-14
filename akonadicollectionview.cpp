@@ -313,20 +313,20 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mDisableColor = new QAction(mCollectionView);
         mDisableColor->setText(i18n("&Disable Color"));
         mDisableColor->setEnabled(false);
-        xmlclient->actionCollection()->addAction(QString::fromLatin1("disable_color"),
+        xmlclient->actionCollection()->addAction(QStringLiteral("disable_color"),
                 mDisableColor);
         connect(mDisableColor, &QAction::triggered, this, &AkonadiCollectionView::disableColor);
 
         mAssignColor = new QAction(mCollectionView);
         mAssignColor->setText(i18n("&Assign Color..."));
         mAssignColor->setEnabled(false);
-        xmlclient->actionCollection()->addAction(QString::fromLatin1("assign_color"), mAssignColor);
+        xmlclient->actionCollection()->addAction(QStringLiteral("assign_color"), mAssignColor);
         connect(mAssignColor, &QAction::triggered, this, &AkonadiCollectionView::assignColor);
 
         mDefaultCalendar = new QAction(mCollectionView);
         mDefaultCalendar->setText(i18n("Use as &Default Calendar"));
         mDefaultCalendar->setEnabled(false);
-        xmlclient->actionCollection()->addAction(QString::fromLatin1("set_standard_calendar"),
+        xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"),
                 mDefaultCalendar);
         connect(mDefaultCalendar, &QAction::triggered, this, &AkonadiCollectionView::setDefaultCalendar);
     }
@@ -472,7 +472,7 @@ void AkonadiCollectionView::newCalendar()
 {
     Akonadi::AgentTypeDialog dlg(this);
     dlg.setWindowTitle(i18n("Add Calendar"));
-    dlg.agentFilterProxyModel()->addMimeTypeFilter(QString::fromLatin1("text/calendar"));
+    dlg.agentFilterProxyModel()->addMimeTypeFilter(QStringLiteral("text/calendar"));
     dlg.agentFilterProxyModel()->addCapabilityFilter(QLatin1String("Resource"));   // show only resources, no agents
     if (dlg.exec()) {
         mNotSendAddRemoveSignal = true;

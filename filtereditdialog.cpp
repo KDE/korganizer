@@ -299,7 +299,7 @@ bool FilterEdit::correctName(const QString &newText)
     QString styleSheet;
     if (mNegativeBackground.isEmpty()) {
         KStatefulBrush bgBrush = KStatefulBrush(KColorScheme::View, KColorScheme::NegativeBackground);
-        mNegativeBackground = QString::fromLatin1("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
+        mNegativeBackground = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
     }
     bool negative = false;
     if (!newText.isEmpty()) {

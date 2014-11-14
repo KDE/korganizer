@@ -395,7 +395,7 @@ void KCMDesignerFields::updatePreview()
 
     if (item) {
         if (item->parent()) {
-            QString details = QString::fromLatin1("<qt><table>"
+            QString details = QStringLiteral("<qt><table>"
                                                   "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
                                                   "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
                                                   "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
