@@ -80,7 +80,7 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-    KConfig _config(QLatin1String("korganizerrc"), KConfig::NoGlobals);
+    KConfig _config(QStringLiteral("korganizerrc"), KConfig::NoGlobals);
     KConfigGroup config(&_config, "Calendar/Datenums Plugin");
     int datenum = config.readEntry(
                       "ShowDayNumbers", int(Datenums::DayOfYear | Datenums::DaysRemaining));
@@ -93,7 +93,7 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-    KConfig _config(QLatin1String("korganizerrc"), KConfig::NoGlobals);
+    KConfig _config(QStringLiteral("korganizerrc"), KConfig::NoGlobals);
     KConfigGroup config(&_config, "Calendar/Datenums Plugin");
     config.writeEntry("ShowDayNumbers", mDayNumGroup->checkedId());
     config.sync();
