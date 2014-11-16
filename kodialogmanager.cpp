@@ -43,6 +43,8 @@
 #include <KCalCore/Visitor>
 
 #include <KCMultiDialog>
+#include <KHelpClient>
+#include <QPushButton>
 
 using namespace KOrg;
 
@@ -204,9 +206,14 @@ void KODialogManager::createCategoryEditor()
 {
     if (mCategoryEditDialog == 0) {
         mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
+        mCategoryEditDialog->buttons()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+        connect(mCategoryEditDialog->buttons()->button(QDialogButtonBox::Help), &QPushButton::clicked, this, &KODialogManager::slotHelp);
 
         mCategoryEditDialog->setModal(true);
-        //QT5 mCategoryEditDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
     }
 }
 
+void KODialogManager::slotHelp()
+{
+    KHelpClient::invokeHelp(QLatin1String("categories-view"), QLatin1String("korganizer"));
+}

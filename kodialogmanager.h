@@ -47,6 +47,9 @@ namespace KCalCore
 {
 class CalFilter;
 }
+namespace Akonadi {
+class TagManagementDialog;
+}
 
 class KCMultiDialog;
 
@@ -77,6 +80,9 @@ public slots:
     void showArchiveDialog();
     void showFilterEditDialog(QList<KCalCore::CalFilter *> *filters);
 
+private slots:
+    void slotHelp();
+
 private:
     void createCategoryEditor();
     class DialogManagerVisitor;
@@ -84,7 +90,7 @@ private:
 
     CalendarView *mMainView;
     KCMultiDialog *mOptionsDialog;
-    QPointer<QDialog> mCategoryEditDialog;
+    QPointer<Akonadi::TagManagementDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog;
     CalendarSupport::ArchiveDialog *mArchiveDialog;
     FilterEditDialog *mFilterEditDialog;

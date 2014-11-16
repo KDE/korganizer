@@ -39,6 +39,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <kcolorscheme.h>
+#include <KHelpClient>
 
 FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
     : QDialog(parent)
@@ -331,13 +332,18 @@ void FilterEdit::editCategorySelection()
 
     if (!mCategorySelectDialog) {
         mCategorySelectDialog = new KPIM::TagSelectionDialog(this);
-        //QT5 mCategorySelectDialog->setHelp( QLatin1String("categories-view"), QLatin1String("korganizer") );
         mCategorySelectDialog->buttons()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
         connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted, this, &FilterEdit::updateCategorySelection);
+        connect(mCategorySelectDialog->buttons()->button(QDialogButtonBox::Help), &QPushButton::clicked, this, &FilterEdit::slotHelp);
     }
     mCategorySelectDialog->setSelection(mCurrent->categoryList());
 
     mCategorySelectDialog->show();
+}
+
+void FilterEdit::slotHelp()
+{
+    KHelpClient::invokeHelp(QLatin1String("categories-view"), QLatin1String("korganizer"));
 }
 
 void FilterEdit::updateCategorySelection()
