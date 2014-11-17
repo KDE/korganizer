@@ -47,7 +47,8 @@ namespace KCalCore
 {
 class CalFilter;
 }
-namespace Akonadi {
+namespace Akonadi
+{
 class TagManagementDialog;
 }
 

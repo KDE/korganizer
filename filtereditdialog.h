@@ -96,7 +96,7 @@ private slots:
     void bDeletePressed();
     void updateSelectedName(const QString &);
     void updateCategorySelection();
-    void editCategorySelection();    
+    void editCategorySelection();
     void slotHelp();
 
 private:

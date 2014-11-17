@@ -395,11 +395,11 @@ void KCMDesignerFields::updatePreview()
     if (item) {
         if (item->parent()) {
             QString details = QStringLiteral("<qt><table>"
-                                                  "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
-                                                  "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
-                                                  "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
-                                                  "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
-                                                  "</table></qt>")
+                                             "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
+                                             "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
+                                             "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
+                                             "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
+                                             "</table></qt>")
                               .arg(i18n("Key:"))
                               .arg(item->text(0).replace(QLatin1String("X_"), QLatin1String("X-")))
                               .arg(i18n("Type:"))

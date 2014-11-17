@@ -58,7 +58,7 @@ KService::List KOCore::availablePlugins(const QString &type, int version)
     QString constraint;
     if (version >= 0) {
         constraint =
-            QString::fromLatin1("[X-KDE-PluginInterfaceVersion] == %1").arg(QString::number(version));
+            QStringLiteral("[X-KDE-PluginInterfaceVersion] == %1").arg(QString::number(version));
     }
 
     return KServiceTypeTrader::self()->query(type, constraint);
