@@ -12,6 +12,7 @@
   <name xml:lang="fi">KOrganizer</name>
   <name xml:lang="fr">KOrganizer</name>
   <name xml:lang="hu">KOrganizer</name>
+  <name xml:lang="it">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
   <name xml:lang="lt">KOrganizer</name>
   <name xml:lang="nb">KOrganizer</name>
@@ -58,6 +59,7 @@
     <p xml:lang="fi">Ominaisuudet:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="hu">Szolgáltatások:</p>
+    <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="lt">Galimybės:</p>
     <p xml:lang="nb">Egenskaper:</p>
@@ -81,6 +83,7 @@
       <li xml:lang="fi">Tuki useammille kalentereille ja tehtäväluetteloille.</li>
       <li xml:lang="fr">Prise en charge de plusieurs calendriers et listes de choses à faire.</li>
       <li xml:lang="hu">Több naptár és feladatlista kezelése.</li>
+      <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare.</li>
       <li xml:lang="ko">다중 달력 및 할 일 목록 지원.</li>
       <li xml:lang="nb">Støtte for flere kalendere og gjøremålslister.</li>
       <li xml:lang="nds">Ünnerstütt vele Kalenners un Opgavenlisten.</li>
@@ -141,6 +144,7 @@
       <li xml:lang="fi">Tehtävien integrointi päivyrinäkymään.</li>
       <li xml:lang="fr">Intégration de listes de choses à faire avec la vue agenda.</li>
       <li xml:lang="hu">Tennivalók integrációja a napi nézetbe.</li>
+      <li xml:lang="it">Integrazione delle cose da fare con la vista agenda.</li>
       <li xml:lang="ko">하루 보기와 통합된 할 일 목록.</li>
       <li xml:lang="nb">Gjøremål integrert med dagsorden-visning.</li>
       <li xml:lang="nds">Opgaven binnen Tietplaan-Ansicht</li>
@@ -161,6 +165,7 @@
       <li xml:lang="fi">Liitteet tapahtumille ja tehtäville.</li>
       <li xml:lang="fr">Pièces jointes pour les évènements et les choses à faire.</li>
       <li xml:lang="hu">Mellékletek csatolása eseményekhez és  tennivalókhoz.</li>
+      <li xml:lang="it">Allegati per eventi e cose da fare.</li>
       <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원.</li>
       <li xml:lang="nb">Vedlegg til hendelser og gjøremål.</li>
       <li xml:lang="nds">Bilagen för Begeefnissen un Opgaven</li>
@@ -200,6 +205,7 @@
       <li xml:lang="fi">Liitännäinen juutalaiselle kalenterille.</li>
       <li xml:lang="fr">Module de prise en charge du calendrier juif.</li>
       <li xml:lang="hu">Bővítmény zsidó dátumokhoz.</li>
+      <li xml:lang="it">Estensione per le date del calendario ebraico.</li>
       <li xml:lang="ko">종교별 달력 지원 플러그인.</li>
       <li xml:lang="nb">Programtillegg for jødiske kalenderdatoer.</li>
       <li xml:lang="nds">Moduul för jöödsch Kalennerdaten</li>
@@ -222,6 +228,7 @@
       <li xml:lang="fi">Tulostustuki.</li>
       <li xml:lang="fr">Prise en charge d'impression.</li>
       <li xml:lang="hu">Nyomtatási lehetőség.</li>
+      <li xml:lang="it">Supporto per la stampa.</li>
       <li xml:lang="ko">인쇄 지원.</li>
       <li xml:lang="lt">Spausdinimas.</li>
       <li xml:lang="nb">Støtte for utskrift.</li>
