@@ -29,7 +29,7 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
-
+#include "korgstartup.h"
 #include <calendarsupport/utils.h>
 
 #include <KCalUtils/IncidenceFormatter>
@@ -51,6 +51,7 @@ K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
     : KParts::ReadOnlyPart(parent)
 {
+    KOrgStartup::migrateConfig();
     if (parentWidget) {
         mTopLevelWidget = parentWidget->topLevelWidget();
     } else if (parent && parent->isWidgetType()) {

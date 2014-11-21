@@ -171,6 +171,7 @@ install(TARGETS
 if(KDEPIM_BUILD_DESKTOP)
 
 set(korganizerprivate_LIB_SRCS
+    korgstartup.cpp
     aboutdata.cpp
     actionmanager.cpp
     akonadicollectionview.cpp
