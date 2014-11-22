@@ -102,10 +102,13 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
     Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
     // kDebug() << index.data().toString() << enabled;
     const bool isSearchCollection = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
-    const bool isToplevelSearchCollection = (col.id() == 1);
+    const bool isKolabCollection = col.resource().startsWith(QLatin1String("akonadi_kolab_resource"));
+    const bool isTopLevelCollection = (col.parentCollection() == Akonadi::Collection::root());
+    const bool isToplevelSearchCollection = (isTopLevelCollection && isSearchCollection);
+    const bool isToplevelKolabCollection = (isTopLevelCollection && isKolabCollection);
 
     QList<Action> buttons;
-    if (!isSearchCollection) {
+    if (!isSearchCollection && !isToplevelKolabCollection) {
         if (isSearchResult) {
             buttons << AddToList;
         } else {
@@ -124,7 +127,7 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
             }
         }
     }
-    if (isPersonNode(index) || (isSearchCollection && !isToplevelSearchCollection)) {
+    if (!isToplevelSearchCollection && !isToplevelKolabCollection) {
         buttons << Quickview;
     }
     return buttons;

@@ -52,8 +52,8 @@ struct Person
     QString uid;
     QString ou;
     QString mail;
-    bool updateDisplayName;
     Akonadi::Collection::Id rootCollection;
+    bool updateDisplayName;
     
     //FIXME not sure we actually require those two
     QStringList folderPaths;

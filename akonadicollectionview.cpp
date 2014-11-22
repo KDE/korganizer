@@ -1081,6 +1081,9 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
                 quickview->show();
             } else {
                 kWarning() << "No valid person found for" << index;
+                Quickview *quickview = new Quickview(Person(), index.data(CollectionRole).value<Akonadi::Collection>());
+                quickview->setAttribute(Qt::WA_DeleteOnClose, true);
+                quickview->show();
             }
         }
         break;
