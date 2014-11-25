@@ -37,9 +37,9 @@ public:
     explicit KCMDesignerFields(QWidget *parent = 0,
                                const QVariantList &args = QVariantList());
 
-    virtual void load();
-    virtual void save();
-    virtual void defaults();
+    void load() Q_DECL_OVERRIDE;
+    void save() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
 
 protected:
     void loadUiFiles();
