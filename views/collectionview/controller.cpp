@@ -673,27 +673,31 @@ void Controller::onPersonCollectionsFetched(KJob* job)
 void Controller::addPerson(const Person &person)
 {
     kDebug() << person.uid << person.name << person.rootCollection;
+    Person p = person;
 
     if (person.rootCollection == -1) {
         Baloo::PIM::CollectionQuery query;
         query.setNamespace(QStringList() << QLatin1String("usertoplevel"));
-        query.pathMatches(QLatin1String("/Other Users/")+person.uid);
-        query.setLimit(200);
+        query.pathMatches(QLatin1String("/Other Users/")+p.uid);
+        query.setLimit(2);
         Baloo::PIM::ResultIterator it = query.exec();
         Akonadi::Collection::List collections;
         while (it.next()) {
             collections << Akonadi::Collection(it.id());
         }
-        kDebug() << "Found collections " << collections.size() << "for" << person.name;
-        //TODO: use the found collection and update attribute
+        kDebug() << "Found collections " << collections.size() << "for" << p.name;
+        if (collections.size() == 1) {
+            kDebug() << "Set rootCollection=" << collections.at(0).id();
+            p.rootCollection = collections.at(0).id();
+        }
     }
 
-    PersonNode *personNode = new PersonNode(*mPersonModel, person);
+    PersonNode *personNode = new PersonNode(*mPersonModel, p);
     personNode->setChecked(true);
     mPersonModel->addNode(ReparentingModel::Node::Ptr(personNode));
 
-    if (person.rootCollection > -1) {
-        setCollectionState(Akonadi::Collection(person.rootCollection), Referenced, true);
+    if (p.rootCollection > -1) {
+        setCollectionState(Akonadi::Collection(p.rootCollection), Referenced, true);
     } else {
         kDebug() << "well this only a ldap search object without a collection";
         //TODO: use freebusy data into calendar
