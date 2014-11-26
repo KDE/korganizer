@@ -96,11 +96,11 @@ KOTimelineView::KOTimelineView( QWidget *parent )
   connect( d->mTimeLineView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
 
-  connect( d->mTimeLineView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+  connect( d->mTimeLineView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
 
-  connect( d->mTimeLineView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+  connect( d->mTimeLineView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
 
   connect( d->mTimeLineView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );

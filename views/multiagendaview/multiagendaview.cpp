@@ -108,11 +108,11 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
   connect( d->mMultiAgendaView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)) );
+  connect( d->mMultiAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
 
-  connect( d->mMultiAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)) );
+  connect( d->mMultiAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
 
   connect( d->mMultiAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );

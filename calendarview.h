@@ -387,8 +387,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void toggleAlarm( const Akonadi::Item &incidence );
     void toggleTodoCompleted( const Akonadi::Item &incidence );
-    void copyIncidenceToResource( const Akonadi::Item &incidence, const QString &resourceId );
-    void moveIncidenceToResource( const Akonadi::Item &incidence, const QString &resourceId );
+    void copyIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col );
+    void moveIncidenceToResource( const Akonadi::Item &incidence, const Akonadi::Collection &col );
     void dissociateOccurrences( const Akonadi::Item &incidence, const QDate &date );
 
     /**

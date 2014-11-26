@@ -69,8 +69,8 @@ class KOEventPopupMenu : public QMenu
     void pasteIncidenceSignal();
     void toggleAlarmSignal( const Akonadi::Item & );
     void toggleTodoCompletedSignal( const Akonadi::Item & );
-    void copyIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
-    void moveIncidenceToResourceSignal( const Akonadi::Item &, const QString & );
+    void copyIncidenceToResourceSignal( const Akonadi::Item &, const Akonadi::Collection & );
+    void moveIncidenceToResourceSignal( const Akonadi::Item &, const Akonadi::Collection & );
     void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
   private:
