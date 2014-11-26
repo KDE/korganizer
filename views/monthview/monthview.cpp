@@ -93,11 +93,11 @@ MonthView::MonthView(QWidget *parent)
     connect(d->mMonthView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
             SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
 
-    connect(d->mMonthView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,QString)));
+  connect( d->mMonthView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
 
-    connect(d->mMonthView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,QString)));
+  connect( d->mMonthView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
 
     connect(d->mMonthView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
             SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));

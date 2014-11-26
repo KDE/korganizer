@@ -37,6 +37,7 @@
 
 #include <KActionCollection>
 #include <KMimeTypeTrader>
+#include <KPrintPreview>
 #include <QDebug>
 
 KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
@@ -52,11 +53,12 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mEditOnlyItems.append(addSeparator());
     addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print")), i18n("&Print..."),
               this, SLOT(print()));
-    QAction *preview = addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print-preview")),
-                                 i18n("Print Previe&w..."),
-                                 this, SLOT(printPreview()));
-    preview->setEnabled(!KMimeTypeTrader::self()->query(QLatin1String("application/pdf"),
-                        QLatin1String("KParts/ReadOnlyPart")).isEmpty());
+  if (KPrintPreview::isAvailable()) {
+      addAction( KOGlobals::self()->smallIcon( QLatin1String("document-print-preview") ),
+                 i18n( "Print Previe&w..." ),
+                 this, SLOT(printPreview()) );
+  }
+
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
     mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-cut")),
