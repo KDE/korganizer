@@ -125,18 +125,22 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     }
 
     // Enable/Disabled menu items only valid for editable events.
-    QList<QAction *>::Iterator it;
-    for (it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it) {
-        (*it)->setEnabled(hasChangeRights);
-    }
-    mToggleReminder->setVisible((incidence->type() != KCalCore::Incidence::TypeJournal));
-    for (it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it) {
-        (*it)->setVisible(incidence->recurs());
-    }
-    for (it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it) {
-        (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeTodo);
-        (*it)->setEnabled(hasChangeRights);
-    }
+  QList<QAction *>::Iterator it;
+  QList<QAction *>::Iterator end(mEditOnlyItems.end());
+  for ( it = mEditOnlyItems.begin(); it != end; ++it ) {
+    (*it)->setEnabled( hasChangeRights );
+  }
+  mToggleReminder->setVisible( ( incidence->type() != KCalCore::Incidence::TypeJournal ) );
+  end = mRecurrenceItems.end();
+  for ( it = mRecurrenceItems.begin(); it != end; ++it ) {
+    (*it)->setVisible( incidence->recurs() );
+  }
+  end = mTodoOnlyItems.end();
+  for ( it = mTodoOnlyItems.begin(); it != end; ++it ) {
+    (*it)->setVisible( incidence->type() == KCalCore::Incidence::TypeTodo );
+    (*it)->setEnabled( hasChangeRights );
+  }
+
     popup(QCursor::pos());
 }
 
