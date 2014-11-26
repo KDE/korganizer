@@ -123,14 +123,17 @@ void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDat
 
   // Enable/Disabled menu items only valid for editable events.
   QList<QAction *>::Iterator it;
-  for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
+  QList<QAction *>::Iterator end(mEditOnlyItems.end());
+  for ( it = mEditOnlyItems.begin(); it != end; ++it ) {
     (*it)->setEnabled( hasChangeRights );
   }
   mToggleReminder->setVisible( ( incidence->type() != KCalCore::Incidence::TypeJournal ) );
-  for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
+  end = mRecurrenceItems.end();
+  for ( it = mRecurrenceItems.begin(); it != end; ++it ) {
     (*it)->setVisible( incidence->recurs() );
   }
-  for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
+  end = mTodoOnlyItems.end();
+  for ( it = mTodoOnlyItems.begin(); it != end; ++it ) {
     (*it)->setVisible( incidence->type() == KCalCore::Incidence::TypeTodo );
     (*it)->setEnabled( hasChangeRights );
   }
