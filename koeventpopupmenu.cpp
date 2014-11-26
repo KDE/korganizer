@@ -225,7 +225,7 @@ void KOEventPopupMenu::dissociateOccurrences()
 
 void KOEventPopupMenu::forward()
 {
-    KOrg::MainWindow *w = ActionManager::findInstance(KUrl());
+    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
     if (!w || !CalendarSupport::hasIncidence(mCurrentIncidence)) {
         return;
     }

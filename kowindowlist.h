@@ -61,7 +61,7 @@ public:
     /**
       Is there a instance with this URL?
     */
-    KOrg::MainWindow *findInstance(const KUrl &url);
+    KOrg::MainWindow *findInstance(const QUrl &url);
 
     /**
       Return default instance. This is the main window for the resource based

@@ -105,7 +105,7 @@ void KOrganizer::init(bool document)
     setTitle();
 }
 
-void KOrganizer::newMainWindow(const KUrl &url)
+void KOrganizer::newMainWindow(const QUrl &url)
 {
     KOrganizer *korg = new KOrganizer();
     if (url.isValid() || url.isEmpty()) {
@@ -189,7 +189,7 @@ void KOrganizer::showStatusMessage(const QString &message)
     statusBar()->showMessage(message, 2000);
 }
 
-bool KOrganizer::openURL(const KUrl &url, bool merge)
+bool KOrganizer::openURL(const QUrl &url, bool merge)
 {
     return mActionManager->importURL(url, merge);
 }
@@ -199,12 +199,12 @@ bool KOrganizer::saveURL()
     return mActionManager->saveURL();
 }
 
-bool KOrganizer::saveAsURL(const KUrl &kurl)
+bool KOrganizer::saveAsURL(const QUrl &kurl)
 {
     return mActionManager->saveAsURL(kurl)  ;
 }
 
-KUrl KOrganizer::getCurrentURL() const
+QUrl KOrganizer::getCurrentURL() const
 {
     return mActionManager->url();
 }
@@ -230,13 +230,13 @@ void KOrganizer::setTitle()
     if (!hasDocument()) {
         title = i18n("Calendar");
     } else {
-        KUrl url = mActionManager->url();
+        QUrl url = mActionManager->url();
 
         if (!url.isEmpty()) {
             if (url.isLocalFile()) {
                 title = url.fileName();
             } else {
-                title = url.prettyUrl();
+                title = url.toDisplayString();
             }
         } else {
             title = i18n("New Calendar");

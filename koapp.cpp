@@ -57,7 +57,7 @@ int KOrganizerApp::newInstance()
     qDebug();
     static bool first = true;
     if (isSessionRestored() && first) {
-        KOrg::MainWindow *korg = ActionManager::findInstance(KUrl());
+        KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
         if (korg) {
             korg->view()->updateView();
         }
@@ -72,14 +72,14 @@ int KOrganizerApp::newInstance()
 
     // No filenames given => all other args are meaningless, show main Window
     if (args->count() <= 0) {
-        processCalendar(KUrl());
+        processCalendar(QUrl());
         return 0;
     }
 
     // If filenames were given as arguments, load them as calendars, one per window.
     // Import, merge, or ask => we need the resource calendar window anyway.
-    processCalendar(KUrl());
-    KOrg::MainWindow *korg = ActionManager::findInstance(KUrl());
+    processCalendar(QUrl());
+    KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
     if (!korg) {
         qCritical() << "Unable to find default calendar resources view.";
         return -1;
@@ -102,7 +102,7 @@ int KOrganizerApp::newInstance()
     return 0;
 }
 
-void KOrganizerApp::processCalendar(const KUrl &url)
+void KOrganizerApp::processCalendar(const QUrl &url)
 {
     KOrg::MainWindow *korg = ActionManager::findInstance(url);
     if (!korg) {

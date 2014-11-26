@@ -137,7 +137,7 @@ KOrg::CalendarViewBase *KOrganizerPart::view() const
     return mView;
 }
 
-bool KOrganizerPart::openURL(const KUrl &url, bool merge)
+bool KOrganizerPart::openURL(const QUrl &url, bool merge)
 {
     return mActionManager->importURL(url, merge);
 }
@@ -147,12 +147,12 @@ bool KOrganizerPart::saveURL()
     return mActionManager->saveURL();
 }
 
-bool KOrganizerPart::saveAsURL(const KUrl &kurl)
+bool KOrganizerPart::saveAsURL(const QUrl &kurl)
 {
     return mActionManager->saveAsURL(kurl);
 }
 
-KUrl KOrganizerPart::getCurrentURL() const
+QUrl KOrganizerPart::getCurrentURL() const
 {
     return mActionManager->url();
 }

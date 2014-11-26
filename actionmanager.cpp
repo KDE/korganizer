@@ -900,7 +900,7 @@ void ActionManager::file_icalimport()
 
     if (retVal >= 0 && retVal <= 2) {
         // now we need to MERGE what is in the iCal to the current calendar.
-        const bool success = importURL(KUrl(tmpfn.fileName()), /*merge=*/ true);
+        const bool success = importURL(QUrl::fromLocalFile(tmpfn.fileName()), /*merge=*/ true);
         if (!success) {
             mCalendarView->showMessage(i18n("KOrganizer encountered some unknown fields while "
                                             "parsing your .calendar ical file, and had to "
@@ -921,7 +921,7 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_import()
 {
-    const KUrl url = KFileDialog::getOpenUrl(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
+    const QUrl url = KFileDialog::getOpenUrl(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
                      QLatin1String("text/calendar"),
                      dialogParent());
     if (!url.isEmpty()) {   // isEmpty if user canceled the dialog
@@ -934,7 +934,7 @@ void ActionManager::file_archive()
     mCalendarView->archiveCalendar();
 }
 
-bool ActionManager::importURL(const KUrl &url, bool merge)
+bool ActionManager::importURL(const QUrl &url, bool merge)
 {
     Akonadi::ICalImporter *importer = new Akonadi::ICalImporter();
     bool jobStarted;
@@ -982,7 +982,8 @@ bool ActionManager::saveURL()
 
         QString filename = mURL.fileName();
         filename.replace(filename.length() - 4, 4, QLatin1String(".ics"));
-        mURL.setFileName(filename);
+        mURL = mURL.adjusted(QUrl::RemoveFilename);
+        mURL.setPath(mURL.path() + filename);
         if (mURL.isLocalFile()) {
             mFile = mURL.toLocalFile();
         }
@@ -997,13 +998,13 @@ bool ActionManager::saveURL()
     if (!mURL.isLocalFile()) {
         if (!KIO::NetAccess::upload(mFile, mURL, view())) {
             QString msg = i18n("Cannot upload calendar to '%1'",
-                               mURL.prettyUrl());
+                               mURL.toDisplayString());
             KMessageBox::error(dialogParent(), msg);
             return false;
         }
     }
 
-    mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.", mURL.prettyUrl()));
+    mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.", mURL.toDisplayString()));
 
     return true;
 }
@@ -1095,9 +1096,9 @@ void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode
     exportJob->start();
 }
 
-bool ActionManager::saveAsURL(const KUrl &url)
+bool ActionManager::saveAsURL(const QUrl &url)
 {
-    qDebug() << url.prettyUrl();
+    qDebug() << url.toDisplayString();
 
     if (url.isEmpty()) {
         qDebug() << "Empty URL.";
@@ -1109,7 +1110,7 @@ bool ActionManager::saveAsURL(const KUrl &url)
     }
 
     QString fileOrig = mFile;
-    KUrl URLOrig = mURL;
+    QUrl URLOrig = mURL;
 
     QTemporaryFile *tempFile = 0;
     if (url.isLocalFile()) {
@@ -1181,14 +1182,14 @@ bool ActionManager::saveModifiedURL()
 }
 #endif
 
-KUrl ActionManager::getSaveURL()
+QUrl ActionManager::getSaveURL()
 {
-    KUrl url =
+    QUrl url =
         KFileDialog::getSaveUrl(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
                                 i18n("*.ics *.vcs|Calendar Files"),
                                 dialogParent());
 
-    if (url == KUrl()) {
+    if (url == QUrl()) {
         return url;
     }
 
@@ -1199,8 +1200,8 @@ KUrl ActionManager::getSaveURL()
         // Default save format is iCalendar
         filename += QLatin1String(".ics");
     }
-
-    url.setFileName(filename);
+    url = url.adjusted(QUrl::RemoveFilename);
+    url.setPath(url.path() + filename);
 
     qDebug() << "url:" << url.url();
 
@@ -1270,7 +1271,7 @@ void ActionManager::showTipOnStart()
     KTipDialog::showTip(dialogParent());
 }
 
-KOrg::MainWindow *ActionManager::findInstance(const KUrl &url)
+KOrg::MainWindow *ActionManager::findInstance(const QUrl &url)
 {
     if (mWindowList) {
         if (url.isEmpty()) {
@@ -1285,7 +1286,7 @@ KOrg::MainWindow *ActionManager::findInstance(const KUrl &url)
 
 bool ActionManager::openURL(const QString &url)
 {
-    importCalendar(KUrl(url));
+    importCalendar(QUrl::fromLocalFile(url));
     return true;
 }
 
@@ -1332,12 +1333,12 @@ void ActionManager::toggleResourceView()
 
 bool ActionManager::mergeURL(const QString &url)
 {
-    return importURL(KUrl(url), true);
+    return importURL(QUrl::fromLocalFile(url), true);
 }
 
 bool ActionManager::saveAsURL(const QString &url)
 {
-    return saveAsURL(KUrl(url));
+    return saveAsURL(QUrl::fromLocalFile(url));
 }
 
 QString ActionManager::getCurrentURLasString() const
@@ -1363,7 +1364,7 @@ bool ActionManager::showIncidenceContext(Akonadi::Item::Id id)
 bool ActionManager::handleCommandLine()
 {
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-    KOrg::MainWindow *mainWindow = ActionManager::findInstance(KUrl());
+    KOrg::MainWindow *mainWindow = ActionManager::findInstance(QUrl());
 
     bool ret = true;
 
@@ -1417,7 +1418,7 @@ void ActionManager::downloadNewStuff()
             continue;
         }
         const QString file = lstFile.at(0);
-        const KUrl filename(file);
+        const QUrl filename = QUrl::fromLocalFile(file);
         qDebug() << "filename :" << filename;
         if (! filename.isValid()) {
             continue;
@@ -1443,7 +1444,7 @@ void ActionManager::downloadNewStuff()
                 // FIXME (KNS2): hm, no way out here :-)
             }
 
-            if (importURL(KUrl(file), true)) {
+            if (importURL(QUrl::fromLocalFile(file), true)) {
                 // FIXME (KNS2): here neither
             }
         }
@@ -1850,11 +1851,11 @@ bool ActionManager::queryClose()
     return true;
 }
 
-void ActionManager::importCalendar(const KUrl &url)
+void ActionManager::importCalendar(const QUrl &url)
 {
     if (!url.isValid()) {
         KMessageBox::error(dialogParent(),
-                           i18n("URL '%1' is invalid.", url.prettyUrl()));
+                           i18n("URL '%1' is invalid.", url.toDisplayString()));
         return;
     }
 

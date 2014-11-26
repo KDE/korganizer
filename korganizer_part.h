@@ -62,16 +62,16 @@ public:
 
       @return true on success, false if an error occurred
     */
-    virtual bool openURL(const KUrl &url, bool merge = false);
+    virtual bool openURL(const QUrl &url, bool merge = false);
 
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL();
 
     /** Save calendar file to URL */
-    virtual bool saveAsURL(const KUrl &kurl);
+    virtual bool saveAsURL(const QUrl &kurl);
 
     /** Get current URL */
-    virtual KUrl getCurrentURL() const;
+    virtual QUrl getCurrentURL() const;
 
     virtual KXMLGUIFactory *mainGuiFactory()
     {

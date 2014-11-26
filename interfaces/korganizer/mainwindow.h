@@ -27,7 +27,7 @@
 class ActionManager;
 
 class KActionCollection;
-class KUrl;
+class QUrl;
 class KXMLGUIClient;
 class KXMLGUIFactory;
 
@@ -58,14 +58,14 @@ public:
                       current calendar (default resource). Otherwise the URL
                       is added as a new resource.
     */
-    virtual bool openURL(const KUrl &url, bool merge = false) = 0;
+    virtual bool openURL(const QUrl &url, bool merge = false) = 0;
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL() = 0;
     /** Save calendar file to URL */
-    virtual bool saveAsURL(const KUrl &kurl) = 0;
+    virtual bool saveAsURL(const QUrl &kurl) = 0;
 
     /** Get current URL */
-    virtual KUrl getCurrentURL() const = 0;
+    virtual QUrl getCurrentURL() const = 0;
 
     /**
       Return XML GUI factory of this main window.

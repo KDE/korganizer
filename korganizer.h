@@ -77,16 +77,16 @@ public:
                      false if the URL should be added as a new resource.
         @return true on success, false if an error occurred
     */
-    bool openURL(const KUrl &url, bool merge = false);
+    bool openURL(const QUrl &url, bool merge = false);
 
     /** Save calendar file to URL of current calendar */
     bool saveURL();
 
     /** Save calendar file to URL */
-    bool saveAsURL(const KUrl &kurl);
+    bool saveAsURL(const QUrl &kurl);
 
     /** Get current URL */
-    KUrl getCurrentURL() const;
+    QUrl getCurrentURL() const;
 
     virtual KXMLGUIFactory *mainGuiFactory()
     {
@@ -120,7 +120,7 @@ protected slots:
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
-    void newMainWindow(const KUrl &);
+    void newMainWindow(const QUrl &);
 
     void slotEditKeys();
 

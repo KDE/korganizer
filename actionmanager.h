@@ -35,7 +35,7 @@
 #include <AkonadiCore/Item>
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <KUrl>
+#include <QUrl>
 #include <KViewStateMaintainer>
 
 #include <QObject>
@@ -88,13 +88,13 @@ public:
     void createCalendarAkonadi();
 
 public slots:
-    bool importURL(const KUrl &url, bool merge);
+    bool importURL(const QUrl &url, bool merge);
 
     /** Save calendar file to URL of current calendar */
     bool saveURL();
 
     /** Save calendar file to URL */
-    bool saveAsURL(const KUrl &kurl);
+    bool saveAsURL(const QUrl &QUrl);
 
     /**
       Export the calendar to an HTML file. Reads up the user settings as needed.
@@ -113,13 +113,13 @@ public slots:
 
 public:
     /** Get current URL */
-    KUrl url() const
+    QUrl url() const
     {
         return mURL;
     }
 
     /** Is there a instance with this URL? */
-    static KOrg::MainWindow *findInstance(const KUrl &url);
+    static KOrg::MainWindow *findInstance(const QUrl &url);
 
     /** Open calendar file from URL */
     bool openURL(const QString &url);
@@ -229,7 +229,7 @@ signals:
     /**
       Emitted when the "New" action is activated.
     */
-    //void actionNewMainWindow( const KUrl &url = KUrl() );
+    //void actionNewMainWindow( const QUrl &url = QUrl() );
     void toggleMenuBar();
     /**
       When change is made to options dialog, the topwidget will catch this
@@ -265,7 +265,7 @@ public slots:
 
     void loadParts();
 
-    void importCalendar(const KUrl &url);
+    void importCalendar(const QUrl &url);
 
 protected slots:
     void setItems(const QStringList &, int);
@@ -322,7 +322,7 @@ protected slots:
 
 protected:
     /** Get URL for saving. Opens FileDialog. */
-    KUrl getSaveURL();
+    QUrl getSaveURL();
 
     /**
       Return widget used as parent for dialogs and message boxes.
@@ -356,7 +356,7 @@ private:
     Akonadi::Collection selectedCollection() const;
 
     KOrg::Part::List mParts; // List of parts loaded
-    KUrl mURL;               // URL of calendar file
+    QUrl mURL;               // URL of calendar file
     QString mFile;           // Local name of calendar file
     QString mLastUrl;        // URL of last loaded calendar.
 

@@ -28,7 +28,7 @@
 
 #include <KontactInterface/PimUniqueApplication>
 
-class KUrl;
+class QUrl;
 
 class KOrganizerApp : public KontactInterface::PimUniqueApplication
 {
@@ -48,7 +48,7 @@ private:
       Process calendar from URL \arg url. If url is empty open the default
       calendar based on the resource framework.
     */
-    void processCalendar(const KUrl &url);
+    void processCalendar(const QUrl &url);
 };
 
 #endif

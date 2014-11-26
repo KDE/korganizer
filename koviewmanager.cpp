@@ -190,7 +190,7 @@ void KOViewManager::showView(KOrg::BaseView *view)
     mMainView->processIncidenceSelection(Akonadi::Item(), QDate());
     mMainView->updateView();
     mMainView->adaptNavigationUnits();
-    KOrg::MainWindow *w = ActionManager::findInstance(KUrl());
+    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
 
     if (w) {
         KActionCollection *ac = w->getActionCollection();
@@ -228,7 +228,7 @@ void KOViewManager::showView(KOrg::BaseView *view)
 
 void KOViewManager::goMenu(bool enable)
 {
-    KOrg::MainWindow *w = ActionManager::findInstance(KUrl());
+    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
     if (w) {
         KActionCollection *ac = w->getActionCollection();
         if (ac) {
