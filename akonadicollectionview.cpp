@@ -1076,12 +1076,12 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
                 person = i.data(PersonRole);
             }
             if (person.isValid()) {
-                Quickview *quickview = new Quickview(person.value<Person>(), Akonadi::Collection(person.value<Person>().rootCollection));
+                Quickview *quickview = new Quickview(person.value<Person>(), CalendarSupport::collectionFromIndex(index));
                 quickview->setAttribute(Qt::WA_DeleteOnClose, true);
                 quickview->show();
             } else {
                 kWarning() << "No valid person found for" << index;
-                Quickview *quickview = new Quickview(Person(), index.data(CollectionRole).value<Akonadi::Collection>());
+                Quickview *quickview = new Quickview(Person(), CalendarSupport::collectionFromIndex(index));
                 quickview->setAttribute(Qt::WA_DeleteOnClose, true);
                 quickview->show();
             }

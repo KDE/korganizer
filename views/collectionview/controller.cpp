@@ -88,7 +88,7 @@ QVariant CollectionNode::data(int role) const
     if (role == IsSearchResultRole) {
         return isSearchNode;
     }
-    if (role == CollectionRole) {
+    if (role == CollectionRole || role == Akonadi::EntityTreeModel::CollectionRole) {
         return QVariant::fromValue(mCollection);
     }
     if (role == NodeTypeRole) {
@@ -181,6 +181,10 @@ QVariant PersonNode::data(int role) const
     if (role == NodeTypeRole) {
         return PersonNodeRole;
     }
+    if (role == CollectionRole || role == Akonadi::EntityTreeModel::CollectionRole) {
+        return QVariant::fromValue(Akonadi::Collection(mPerson.rootCollection));
+    }
+
     return QVariant();
 }
 
