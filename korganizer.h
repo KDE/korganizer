@@ -83,7 +83,7 @@ public:
     bool saveURL();
 
     /** Save calendar file to URL */
-    bool saveAsURL(const QUrl &kurl);
+    bool saveAsURL(const QUrl &url);
 
     /** Get current URL */
     QUrl getCurrentURL() const;

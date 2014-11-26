@@ -1165,7 +1165,7 @@ bool ActionManager::saveModifiedURL()
         switch (result) {
         case KMessageBox::Yes:
             if (mURL.isEmpty()) {
-                KUrl url = getSaveURL();
+                QUrl url = getSaveURL();
                 return saveAsURL(url);
             } else {
                 return saveURL();

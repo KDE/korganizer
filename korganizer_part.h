@@ -68,7 +68,7 @@ public:
     virtual bool saveURL();
 
     /** Save calendar file to URL */
-    virtual bool saveAsURL(const QUrl &kurl);
+    virtual bool saveAsURL(const QUrl &url);
 
     /** Get current URL */
     virtual QUrl getCurrentURL() const;

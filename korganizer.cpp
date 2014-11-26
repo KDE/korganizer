@@ -80,8 +80,8 @@ void KOrganizer::init(bool document)
     mActionManager->createCalendarAkonadi();
 
     mActionManager->init();
-    /*connect( mActionManager, SIGNAL(actionNewMainWindow(KUrl)),
-             SLOT(newMainWindow(KUrl)) );*/
+    /*connect( mActionManager, SIGNAL(actionNewMainWindow(QUrl)),
+             SLOT(newMainWindow(QUrl)) );*/
 
     mActionManager->loadParts();
 

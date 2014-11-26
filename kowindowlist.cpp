@@ -25,7 +25,7 @@
 #include "kowindowlist.h"
 #include "korganizer/mainwindow.h"
 
-#include <KUrl>
+#include <QUrl>
 
 KOWindowList::KOWindowList()
     : QObject(0), mDefaultWindow(0)
