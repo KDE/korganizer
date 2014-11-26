@@ -53,6 +53,7 @@ public:
         virtual void update(const Node::Ptr &node);
 
         bool isSourceNode() const;
+        Node::Ptr searchNode(Node *node);
         void reparent(Node *node);
         void addChild(const Node::Ptr &node);
         int row() const;

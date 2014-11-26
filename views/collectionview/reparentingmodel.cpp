@@ -61,7 +61,7 @@ bool ReparentingModel::Node::operator==(const ReparentingModel::Node &node) cons
     return (this == &node);
 }
 
-void ReparentingModel::Node::reparent(ReparentingModel::Node *node)
+ReparentingModel::Node::Ptr ReparentingModel::Node::searchNode(ReparentingModel::Node *node)
 {
     Node::Ptr nodePtr;
     if (node->parent) {
@@ -79,6 +79,13 @@ void ReparentingModel::Node::reparent(ReparentingModel::Node *node)
     } else {
         nodePtr = Node::Ptr(node);
     }
+
+    return nodePtr;
+}
+
+void ReparentingModel::Node::reparent(ReparentingModel::Node *node)
+{
+    Node::Ptr nodePtr = searchNode(node);
     addChild(nodePtr);
 }
 
@@ -719,14 +726,15 @@ void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
 
             //WARNING: While a beginMoveRows/endMoveRows would be more suitable, QSortFilterProxyModel can't deal with that. Therefore we
             //cannot use them.
-            const int oldRow = n->sourceIndex.row();
+            const int oldRow = n->row();
             beginRemoveRows(index(n->parent), oldRow, oldRow);
+            Node::Ptr nodePtr = proxyNode->searchNode(n);
             //We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
             endRemoveRows();
 
             const int newRow = proxyNode->children.size();
             beginInsertRows(index(proxyNode.data()), newRow, newRow);
-            proxyNode->reparent(n);
+            proxyNode->addChild(nodePtr);
             endInsertRows();
             Q_ASSERT(validateNode(n));
         }
