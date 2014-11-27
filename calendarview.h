@@ -408,11 +408,11 @@ public slots:
 
     void configureCurrentView();
 
-    void toggleAlarm( const Akonadi::Item &incidence );
-    void toggleTodoCompleted( const Akonadi::Item &incidence );
-    void copyIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col );
-    void moveIncidenceToResource( const Akonadi::Item &incidence, const Akonadi::Collection &col );
-    void dissociateOccurrences( const Akonadi::Item &incidence, const QDate &date );
+    void toggleAlarm(const Akonadi::Item &incidence);
+    void toggleTodoCompleted(const Akonadi::Item &incidence);
+    void copyIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
+    void moveIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
+    void dissociateOccurrences(const Akonadi::Item &incidence, const QDate &date);
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is

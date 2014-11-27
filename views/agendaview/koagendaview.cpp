@@ -109,11 +109,11 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide) :
     connect(d->mAgendaView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
             SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
 
-  connect( d->mAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-           SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
+    connect(d->mAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
 
-  connect( d->mAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-           SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)) );
+    connect(d->mAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
+            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
 
     connect(d->mAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
             SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));

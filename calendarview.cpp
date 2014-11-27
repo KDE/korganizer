@@ -1421,7 +1421,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     mChanger->endAtomicOperation();
 }
 
-void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const Akonadi::Collection &col )
+void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col)
 {
 #ifdef AKONADI_PORT_DISABLED
     if (!incidence) {
@@ -1485,13 +1485,13 @@ void CalendarView::copyIncidenceToResource( const Akonadi::Item &item, const Ako
             i18nc("@title:window", "Copying Failed"));
     }
 #else
-  Q_UNUSED( col );
-  Q_UNUSED( item );
-  qDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
+    Q_UNUSED(col);
+    Q_UNUSED(item);
+    qDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
-void CalendarView::moveIncidenceToResource( const Akonadi::Item &item, const Akonadi::Collection &col )
+void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col)
 {
 #ifdef AKONADI_PORT_DISABLED
     if (!incidence) {
@@ -1571,9 +1571,9 @@ void CalendarView::moveIncidenceToResource( const Akonadi::Item &item, const Ako
             i18nc("@title:window", "Moving Failed"));
     }
 #else
-  Q_UNUSED( col );
-  Q_UNUSED( item );
-  qDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
+    Q_UNUSED(col);
+    Q_UNUSED(item);
+    qDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 

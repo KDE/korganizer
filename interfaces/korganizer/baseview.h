@@ -316,12 +316,12 @@ Q_SIGNALS:
     /**
      * Copy the incidence to the specified resource.
      */
-    void copyIncidenceToResourceSignal( const Akonadi::Item &, const Akonadi::Collection & );
+    void copyIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);
 
     /**
      * Move the incidence to the specified resource.
      */
-    void moveIncidenceToResourceSignal( const Akonadi::Item &, const Akonadi::Collection & );
+    void moveIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);
 
     /** Dissociate from a recurring incidence the occurrence on the given
      *  date to a new incidence or dissociate all occurrences from the

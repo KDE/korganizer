@@ -67,14 +67,14 @@ signals:
     void cutIncidenceSignal(const Akonadi::Item &);
     void copyIncidenceSignal(const Akonadi::Item &);
     void pasteIncidenceSignal();
-    void toggleAlarmSignal( const Akonadi::Item & );
-    void toggleTodoCompletedSignal( const Akonadi::Item & );
-    void copyIncidenceToResourceSignal( const Akonadi::Item &, const Akonadi::Collection & );
-    void moveIncidenceToResourceSignal( const Akonadi::Item &, const Akonadi::Collection & );
-    void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
+    void toggleAlarmSignal(const Akonadi::Item &);
+    void toggleTodoCompletedSignal(const Akonadi::Item &);
+    void copyIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);
+    void moveIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);
+    void dissociateOccurrencesSignal(const Akonadi::Item &, const QDate &);
 
-  private:
-    void print( bool previous );
+private:
+    void print(bool previous);
 
     Akonadi::ETMCalendar::Ptr mCalendar;
     Akonadi::Item mCurrentIncidence;

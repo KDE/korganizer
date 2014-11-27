@@ -53,11 +53,11 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mEditOnlyItems.append(addSeparator());
     addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print")), i18n("&Print..."),
               this, SLOT(print()));
-  if (KPrintPreview::isAvailable()) {
-      addAction( KOGlobals::self()->smallIcon( QLatin1String("document-print-preview") ),
-                 i18n( "Print Previe&w..." ),
-                 this, SLOT(printPreview()) );
-  }
+    if (KPrintPreview::isAvailable()) {
+        addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print-preview")),
+                  i18n("Print Previe&w..."),
+                  this, SLOT(printPreview()));
+    }
 
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
@@ -125,21 +125,21 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     }
 
     // Enable/Disabled menu items only valid for editable events.
-  QList<QAction *>::Iterator it;
-  QList<QAction *>::Iterator end(mEditOnlyItems.end());
-  for ( it = mEditOnlyItems.begin(); it != end; ++it ) {
-    (*it)->setEnabled( hasChangeRights );
-  }
-  mToggleReminder->setVisible( ( incidence->type() != KCalCore::Incidence::TypeJournal ) );
-  end = mRecurrenceItems.end();
-  for ( it = mRecurrenceItems.begin(); it != end; ++it ) {
-    (*it)->setVisible( incidence->recurs() );
-  }
-  end = mTodoOnlyItems.end();
-  for ( it = mTodoOnlyItems.begin(); it != end; ++it ) {
-    (*it)->setVisible( incidence->type() == KCalCore::Incidence::TypeTodo );
-    (*it)->setEnabled( hasChangeRights );
-  }
+    QList<QAction *>::Iterator it;
+    QList<QAction *>::Iterator end(mEditOnlyItems.end());
+    for (it = mEditOnlyItems.begin(); it != end; ++it) {
+        (*it)->setEnabled(hasChangeRights);
+    }
+    mToggleReminder->setVisible((incidence->type() != KCalCore::Incidence::TypeJournal));
+    end = mRecurrenceItems.end();
+    for (it = mRecurrenceItems.begin(); it != end; ++it) {
+        (*it)->setVisible(incidence->recurs());
+    }
+    end = mTodoOnlyItems.end();
+    for (it = mTodoOnlyItems.begin(); it != end; ++it) {
+        (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeTodo);
+        (*it)->setEnabled(hasChangeRights);
+    }
 
     popup(QCursor::pos());
 }
