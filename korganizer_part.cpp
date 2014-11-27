@@ -147,9 +147,9 @@ bool KOrganizerPart::saveURL()
     return mActionManager->saveURL();
 }
 
-bool KOrganizerPart::saveAsURL(const QUrl &kurl)
+bool KOrganizerPart::saveAsURL(const QUrl &url)
 {
-    return mActionManager->saveAsURL(kurl);
+    return mActionManager->saveAsURL(url);
 }
 
 QUrl KOrganizerPart::getCurrentURL() const
@@ -175,7 +175,7 @@ void KOrganizerPart::setTitle()
       if ( !hasDocument() ) {
         title = i18n("Calendar");
       } else {
-        KUrl url = mActionManager->url();
+        QUrl url = mActionManager->url();
 
         if ( !url.isEmpty() ) {
           if ( url.isLocalFile() ) title = url.fileName();
