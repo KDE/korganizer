@@ -232,7 +232,7 @@ protected:
 
     void paintEvent(QPaintEvent *ev);
 
-    void mousePressEvent(QMouseEvent *e);
+    void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
     void mouseReleaseEvent(QMouseEvent *e);
 
@@ -246,7 +246,7 @@ protected:
 
     void dragLeaveEvent(QDragLeaveEvent *e);
 
-    void dropEvent(QDropEvent *e);
+    void dropEvent(QDropEvent *e) Q_DECL_OVERRIDE;
 
 private:
     /**
