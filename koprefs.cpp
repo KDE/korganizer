@@ -112,6 +112,11 @@ QColor KOPrefs::resourceColor( const QString &cal )
   return mEventViewsPrefs->resourceColor( cal );
 }
 
+QColor KOPrefs::resourceColorKnown(const QString &cal)
+{
+  return mEventViewsPrefs->resourceColorKnown( cal );
+}
+
 QStringList KOPrefs::timeScaleTimezones() const
 {
   return mTimeScaleTimeZones;

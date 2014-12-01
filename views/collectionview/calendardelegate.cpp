@@ -86,6 +86,18 @@ static bool isChildOfPersonCollection(const QModelIndex &index)
     return false;
 }
 
+static Akonadi::Collection personCollection(const QModelIndex &index)
+{
+    QModelIndex parent = index.parent();
+    while (parent.isValid()) {
+        if (parent.data(NodeTypeRole).toInt() == PersonNodeRole) {
+            return CalendarSupport::collectionFromIndex(parent);
+        }
+        parent = parent.parent();
+    }
+    return Akonadi::Collection();
+}
+
 static bool isPersonNode(const QModelIndex &index)
 {
     if (index.data(NodeTypeRole).toInt() == PersonNodeRole) {
@@ -168,7 +180,18 @@ void StyledCalendarDelegate::paint( QPainter * painter, const QStyleOptionViewIt
 
     //Color indicator
     if (opt.checkState){
-        QColor color = KOHelper::resourceColor(col);
+        QColor color = KOHelper::resourceColorKnown(col);
+        if (!color.isValid() && isChildOfPersonCollection(index)){
+            const Akonadi::Collection parentCol = personCollection(index);
+            if (parentCol.isValid()) {
+                color = KOHelper::resourceColor(parentCol);
+                KOHelper::setResourceColor(col, color);
+            } else {
+                color = KOHelper::resourceColor(col);
+            }
+        } else {
+             color = KOHelper::resourceColor(col);
+        }
         if (color.isValid()){
             painter->save();
             painter->setRenderHint(QPainter::Antialiasing);

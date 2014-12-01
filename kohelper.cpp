@@ -45,6 +45,25 @@ QColor KOHelper::resourceColor( const Akonadi::Collection &coll )
   return KOPrefs::instance()->resourceColor( id );
 }
 
+QColor KOHelper::resourceColorKnown( const Akonadi::Collection &coll )
+{
+  if ( !coll.isValid() ) {
+    return QColor();
+  }
+
+  const QString id = QString::number( coll.id() );
+  return KOPrefs::instance()->resourceColorKnown( id );
+}
+
+void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QColor &color)
+{
+  if ( collection.isValid() ) {
+      const QString id = QString::number( collection.id() );
+      return KOPrefs::instance()->setResourceColor(id, color);
+  }
+}
+
+
 QColor KOHelper::resourceColor( const Akonadi::Item &item )
 {
   if ( !item.isValid() ) {
