@@ -228,23 +228,23 @@ signals:
     void incidenceDroppedMove(const Akonadi::Item &item, const QDate &dt);
 
 protected:
-    bool event(QEvent *e);
+    bool event(QEvent *e) Q_DECL_OVERRIDE;
 
-    void paintEvent(QPaintEvent *ev);
+    void paintEvent(QPaintEvent *ev) Q_DECL_OVERRIDE;
 
     void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
-    void mouseReleaseEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
-    void mouseMoveEvent(QMouseEvent *e);
+    void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
-    void resizeEvent(QResizeEvent *);
+    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
 
-    void dragEnterEvent(QDragEnterEvent *e);
+    void dragEnterEvent(QDragEnterEvent *e) Q_DECL_OVERRIDE;
 
-    void dragMoveEvent(QDragMoveEvent *e);
+    void dragMoveEvent(QDragMoveEvent *e) Q_DECL_OVERRIDE;
 
-    void dragLeaveEvent(QDragLeaveEvent *e);
+    void dragLeaveEvent(QDragLeaveEvent *e) Q_DECL_OVERRIDE;
 
     void dropEvent(QDropEvent *e) Q_DECL_OVERRIDE;
 
