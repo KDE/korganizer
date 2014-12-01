@@ -679,7 +679,7 @@ void Controller::addPerson(const Person &person)
         Baloo::PIM::CollectionQuery query;
         query.setNamespace(QStringList() << QLatin1String("usertoplevel"));
         query.pathMatches(QLatin1String("/Other Users/")+p.uid);
-        query.setLimit(2);
+        query.setLimit(1);
         Baloo::PIM::ResultIterator it = query.exec();
         Akonadi::Collection::List collections;
         while (it.next()) {
