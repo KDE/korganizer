@@ -1076,18 +1076,23 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
     addWidBool( CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
   topLayout->addWidget( useGroupwareBool->checkBox(), 0, 0, 1, 2 );
 
+  KPIM::KPrefsWidCombo *defaultSendPolicy =
+    addWidCombo( CalendarSupport::KCalPrefs::instance()->sendPolicyItem(), topFrame );
+  topLayout->addWidget( defaultSendPolicy->label(), 1, 0, 1, 2 );
+  topLayout->addWidget( defaultSendPolicy->comboBox(), 2, 0, 1, 2 );
+
   KPIM::KPrefsWidBool *bcc =
     addWidBool( Akonadi::CalendarSettings::self()->bccItem(), topFrame );
-  topLayout->addWidget( bcc->checkBox(), 1, 0, 1, 2 );
+  topLayout->addWidget( bcc->checkBox(), 3, 0, 1, 2 );
 
   QLabel *aTransportLabel = new QLabel(
     i18nc( "@label", "Mail transport:" ), topFrame );
-  topLayout->addWidget( aTransportLabel, 2, 0, 1, 2 );
+  topLayout->addWidget( aTransportLabel, 4, 0, 1, 2 );
 
   MailTransport::TransportManagementWidget *tmw =
     new MailTransport::TransportManagementWidget( topFrame );
   tmw->layout()->setContentsMargins( 0, 0, 0, 0 );
-  topLayout->addWidget( tmw, 3, 0, 1, 2 );
+  topLayout->addWidget( tmw, 5, 0, 1, 2 );
 
   //topLayout->setRowStretch( 2, 1 );
 
