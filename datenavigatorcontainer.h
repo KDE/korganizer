@@ -121,7 +121,7 @@ signals:
     void yearSelected(int year);
 
 protected:
-    void resizeEvent(QResizeEvent *);
+    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
     void setBaseDates(const QDate &start);
     void connectNavigatorView(KDateNavigator *v);
 
