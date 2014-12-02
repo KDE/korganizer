@@ -112,7 +112,7 @@ signals:
 protected:
     void updateDates();
 
-    void wheelEvent(QWheelEvent *);
+    void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;
 
     bool eventFilter(QObject *, QEvent *);
 
