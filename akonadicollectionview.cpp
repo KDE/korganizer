@@ -92,6 +92,7 @@ public:
         mCheckableProxy(model)
     {
         connect(model, SIGNAL(rowsInserted(QModelIndex, int, int)), this, SLOT(onSourceRowsInserted(QModelIndex, int, int)));
+        qRegisterMetaType<QPersistentModelIndex>("QPersistentModelIndex");
     }
 
 private slots:
@@ -103,12 +104,16 @@ private slots:
             return;
         }
         for (int i = start; i <= end; i++) {
-            kDebug() << "checking " << mCheckableProxy->index(i, 0, parent).data().toString();
+            kDebug() << "checking " << i << parent << mCheckableProxy->index(i, 0, parent).data().toString();
             const QModelIndex index = mCheckableProxy->index(i, 0, parent);
-            mCheckableProxy->setData(index, Qt::Checked, Qt::CheckStateRole);
-            if (mCheckableProxy->hasChildren(index)) {
-                onSourceRowsInserted(index, 0, mCheckableProxy->rowCount(index) - 1);
-            }
+            QMetaObject::invokeMethod(this, "setCheckState", Qt::QueuedConnection, QGenericReturnArgument(), Q_ARG(QPersistentModelIndex, index));
+        }
+    }
+    void setCheckState(const QPersistentModelIndex &index)
+    {
+        mCheckableProxy->setData(index, Qt::Checked, Qt::CheckStateRole);
+        if (mCheckableProxy->hasChildren(index)) {
+            onSourceRowsInserted(index, 0, mCheckableProxy->rowCount(index) - 1);
         }
     }
 
@@ -535,6 +540,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
 
   SortProxyModel *sortProxy = new SortProxyModel( this );
   sortProxy->setSourceModel(collectionFilter);
+  sortProxy->setObjectName(QLatin1String("sortproxy"));
 
   mCollectionView = new Akonadi::EntityTreeView( this );
   mCollectionView->header()->hide();
@@ -1043,7 +1049,6 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
         case StyledCalendarDelegate::RemoveFromList: {
             const QVariant var = index.data(PersonRole);
             if (var.isValid()) {
-                kDebug() << "person";
                 mController->removePerson(var.value<Person>());
             } else {
                 const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
