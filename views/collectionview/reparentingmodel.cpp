@@ -297,7 +297,8 @@ void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
         }
     }
 
-    kWarning() << "no node to update"; 
+    kWarning() << objectName() << "no node to update, create new node";
+    addNode(node);
 }
 
 void ReparentingModel::removeNode(const ReparentingModel::Node& node)
@@ -451,7 +452,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
             if (proxyNode->isDuplicateOf(descendant)) {
                 //Removenode from proxy
                 if (!proxyNode->parent) {
-                    kWarning() << "Found proxy that is already not part of the model " << proxyNode->data(Qt::DisplayRole).toString();
+                    kWarning() <<  objectName() << "Found proxy that is already not part of the model " << proxyNode->data(Qt::DisplayRole).toString();
                     continue;
                 }
                 const int targetRow = proxyNode->row();
@@ -466,7 +467,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
 
 void ReparentingModel::onSourceRowsInserted(QModelIndex parent, int start, int end)
 {
-    kDebug() << parent << start << end;
+    // kDebug() << objectName() << parent << start << end;
     for (int row = start; row <= end; row++) {
         QModelIndex sourceIndex = sourceModel()->index(row, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
@@ -512,7 +513,7 @@ void ReparentingModel::onSourceRowsInserted(QModelIndex parent, int start, int e
 
 void ReparentingModel::onSourceRowsAboutToBeRemoved(QModelIndex parent, int start, int end)
 {
-    // kDebug() << parent << start << end;
+    // kDebug() << objectName() << parent << start << end;
     //we remove in reverse order as otherwise the indexes in parentNode->children wouldn't be correct
     for (int row = end; row >= start; row--) {
         QModelIndex sourceIndex = sourceModel()->index(row, 0, parent);
@@ -596,6 +597,7 @@ void ReparentingModel::onSourceLayoutChanged()
 
 void ReparentingModel::onSourceDataChanged(QModelIndex begin, QModelIndex end)
 {
+    // kDebug() << objectName() << begin << end;
     for (int row = begin.row(); row <= end.row(); row++) {
         mNodeManager->updateSourceIndex(sourceModel()->index(row, begin.column(), begin.parent()));
     }
@@ -663,6 +665,7 @@ ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourc
             return n;
         }
     }
+    // kDebug() << objectName() <<  "no node found for " << sourceIndex;
     return 0;
 }
 
