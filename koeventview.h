@@ -67,7 +67,7 @@ public:
      *        will be retrieved for display.
      * @param parent is the parent QWidget.
      */
-    explicit KOEventView(QWidget *parent = 0);
+    explicit KOEventView(QWidget *parent = Q_NULLPTR);
 
     /**
      * Destructor.  Views will do view-specific cleanups here.

@@ -34,7 +34,7 @@ class NavigatorBar: public QWidget
 {
     Q_OBJECT
 public:
-    explicit NavigatorBar(QWidget *parent = 0);
+    explicit NavigatorBar(QWidget *parent = Q_NULLPTR);
     ~NavigatorBar();
 
     void showButtons(bool left, bool right);

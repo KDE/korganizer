@@ -48,7 +48,7 @@ class KORGANIZERPRIVATE_EXPORT KOEventViewerDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget *parent = 0);
+    explicit KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget *parent = Q_NULLPTR);
     virtual ~KOEventViewerDialog();
 
     void setIncidence(const Akonadi::Item &incidence, const QDate &date);

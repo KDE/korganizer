@@ -61,7 +61,7 @@ public:
                     will be retrieved for display.
       @param parent parent widget.
     */
-    explicit BaseView(QWidget *parent = 0);
+    explicit BaseView(QWidget *parent = Q_NULLPTR);
 
     /**
       Destructor.  Views will do view-specific cleanups here.

@@ -54,7 +54,7 @@ class FilterEditDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit FilterEditDialog(QList<KCalCore::CalFilter *> *, QWidget *parent = 0);
+    explicit FilterEditDialog(QList<KCalCore::CalFilter *> *, QWidget *parent = Q_NULLPTR);
     virtual ~FilterEditDialog();
 
 signals:
