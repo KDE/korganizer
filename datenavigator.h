@@ -42,7 +42,7 @@ class DateNavigator : public QObject
 {
     Q_OBJECT
 public:
-    explicit DateNavigator(QObject *parent = 0);
+    explicit DateNavigator(QObject *parent = Q_NULLPTR);
     ~DateNavigator();
 
     KCalCore::DateList selectedDates();

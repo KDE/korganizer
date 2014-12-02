@@ -35,7 +35,7 @@ class DateChecker: public QObject
 {
     Q_OBJECT
 public:
-    explicit DateChecker(QObject *parent = 0);
+    explicit DateChecker(QObject *parent = Q_NULLPTR);
     ~DateChecker();
 
     /**
