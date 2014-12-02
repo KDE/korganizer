@@ -114,7 +114,7 @@ protected:
 
     void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;
 
-    bool eventFilter(QObject *, QEvent *);
+    bool eventFilter(QObject *, QEvent *) Q_DECL_OVERRIDE;
 
     void setShowWeekNums(bool enabled);
 

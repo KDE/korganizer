@@ -675,7 +675,7 @@ protected:
     void dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bool &allDay);
     IncidenceEditorNG::IncidenceDialog *newEventEditor(const KCalCore::Event::Ptr &event);
 
-    bool eventFilter(QObject *watched, QEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void onCheckableProxyAboutToToggle(bool newState);
