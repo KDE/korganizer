@@ -63,7 +63,7 @@ public:
     void writeSettings(KConfig *config);
 
     void clear();
-    QSize sizeHint() const;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer);

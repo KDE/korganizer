@@ -47,8 +47,8 @@ public:
     */
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
-    QSize minimumSizeHint() const;
-    QSize sizeHint() const;
+    QSize minimumSizeHint() const Q_DECL_OVERRIDE;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
     void setHighlightMode(bool highlightEvents,
                           bool highlightTodos,
                           bool highlightJournals) const;
