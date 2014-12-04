@@ -28,6 +28,7 @@
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/Collection>
 #include "reparentingmodel.h"
+#include "person.h"
 
 #include <libkdepim/ldap/ldapclientsearch.h>
 
@@ -44,23 +45,6 @@ enum NodeTypeRoles {
     PersonNodeRole,
     CollectionNodeRole
 };
-
-struct Person
-{
-    Person(): rootCollection(-1), updateDisplayName(false) {};
-    QString name;
-    QString uid;
-    QString ou;
-    QString mail;
-    Akonadi::Collection::Id rootCollection;
-    bool updateDisplayName;
-    
-    //FIXME not sure we actually require those two
-    QStringList folderPaths;
-    QList<Akonadi::Collection::Id> collections;
-};
-
-Q_DECLARE_METATYPE(Person);
 
 /**
  * We need to emit signals in the subclass but don't want to make the parent a QObject
@@ -139,41 +123,8 @@ private:
     void updateSourceIndex(const QModelIndex &sourceIndex);
 };
 
-class PersonSearchJob : public KJob
-{
-    Q_OBJECT
-public:
-    explicit PersonSearchJob(const QString &searchString, QObject* parent = 0);
-    virtual ~PersonSearchJob();
-
-    virtual void start();
-
-    QList<Person> matches() const;
-
-Q_SIGNALS:
-    void personsFound(const QList<Person> &persons);
-    void personUpdate(const Person &person);
-
-public Q_SLOTS:
-    bool kill(KillVerbosity verbosity=Quietly);
-
-private Q_SLOTS:
-    void onCollectionsReceived(const Akonadi::Collection::List &);
-    void onCollectionsFetched(KJob *);
-    void onLDAPSearchData(const QList<KLDAP::LdapResultObject> &);
-    void onLDAPSearchDone();
-    void updatePersonCollection(const Person &person);
-    void modifyResult(KJob *job);
-
-private:
-    QString mSearchString;
-    QHash<QString, Person> mMatches;
-    KLDAP::LdapClientSearch mLdapSearch;
-    bool mCollectionSearchDone;
-    bool mLdapSearchDone;
-};
-
 class CollectionSearchJob;
+class PersonSearchJob;
 
 /**
  * Add search results to the search model, and use the selection to add results to the person model.

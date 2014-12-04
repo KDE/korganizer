@@ -176,6 +176,7 @@ set(korganizerprivate_LIB_SRCS
     views/collectionview/reparentingmodel.cpp
     views/collectionview/controller.cpp
     views/collectionview/collectionsearchjob.cpp
+    views/collectionview/personsearchjob.cpp
     views/collectionview/calendardelegate.cpp
     views/collectionview/quickview.cpp
     calendarview.cpp
