@@ -129,7 +129,7 @@ protected:
 //    void initViews();
 
     /** supplied so that close events close calendar properly.*/
-    bool queryClose();
+    bool queryClose() Q_DECL_OVERRIDE;
 
     /* Session management */
     void saveProperties(KConfigGroup &);
