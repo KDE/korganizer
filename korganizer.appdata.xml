@@ -39,6 +39,7 @@
     <p xml:lang="fi">KOrganizer on Kontact-ohjelmiston kalenteri- ja ajastusosa. Voit kirjoittaa päiväkirjamerkintöjä sekä ajastaa tapaamisia, tapahtumia ja tehtäviä.</p>
     <p xml:lang="fr">KOrganizer est le composant de calendrier et agenda de la suite Kontact. Vous pouvez y tenir un journal, planifier des rendez-vous et évènements, et tenir des listes de choses à faire.</p>
     <p xml:lang="hu">A KOrganizer a Kontact csomag naptár- és határidő-kezelő eleme, mellyel bejegyzéseket írhat, határidőket, eseményeket és tennivalókat ütemezhet.</p>
+    <p xml:lang="it">KOrganizer è il componente calendario e di pianificazione della suite Kontact. Puoi scrivere voci di diario, pianificare appuntamenti, eventi e cose da fare.</p>
     <p xml:lang="ko">KOrganizer는 Kontact와 함께 사용할 수 있는 달력 및 일정 관리 프로그램입니다. 저널 항목 작성, 약속, 할 일, 행사를 관리할 수 있습니다.</p>
     <p xml:lang="nb">KOrganizer er Kontact-komponenten som behandler kalender og tidsplanlegging. Du kan skrive dagboknotater, fastlegge avtaler, hendelser og gjøremål.</p>
     <p xml:lang="nds">KOrganizer is de Plaan- un Kalennerkomponent binnen de Kontact-Sammeln. Du kannst Daagbookindrääg schrieven un Möten, Begeefnissen un Opgaven planen.</p>
@@ -104,6 +105,7 @@
       <li xml:lang="fi">Tietovarastomalli.</li>
       <li xml:lang="fr">Modèle de stockage.</li>
       <li xml:lang="hu">Tárolómodell.</li>
+      <li xml:lang="it">Modello di memorizzazione.</li>
       <li xml:lang="ko">저장소 모델.</li>
       <li xml:lang="nb">Lagringsmodell.</li>
       <li xml:lang="nds">Wohrmodell</li>
@@ -125,6 +127,7 @@
       <li xml:lang="fi">Kumoaminen ja uudelleen tekeminen.</li>
       <li xml:lang="fr">Annuler et Refaire.</li>
       <li xml:lang="hu">Visszavonás és újra végrehajtás.</li>
+      <li xml:lang="it">Annulla/ripeti.</li>
       <li xml:lang="ko">실행 취소 및 재실행.</li>
       <li xml:lang="nb">Angre/gjør om.</li>
       <li xml:lang="nds">Torüchnehmen un wedderhalen</li>
@@ -186,6 +189,7 @@
       <li xml:lang="fi">Nopeat tehtävä- ja tapahtumamerkinnät.</li>
       <li xml:lang="fr">Saisie rapide d'évènements et choses à faire.</li>
       <li xml:lang="hu">Gyors tennivalók és eseménybejegyzések.</li>
+      <li xml:lang="it">Voci rapide per cose da fare ed eventi.</li>
       <li xml:lang="ko">빠른 할 일과 이벤트 입력.</li>
       <li xml:lang="nb">Kjappe oppføringer av hendelser og gjøremål.</li>
       <li xml:lang="nds">Opgaav- un Begeefnis-Indrääg laat sik gau opstellen</li>
