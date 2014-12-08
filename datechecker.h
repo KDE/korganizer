@@ -56,12 +56,12 @@ public:
     };
     void enableRollover(RolloverType);
 
-signals:
+Q_SIGNALS:
     // Signals emitted at midnight carrying the new date.
     void dayPassed(const QDate &);
     void monthPassed(const QDate &);
 
-protected slots:
+protected Q_SLOTS:
     /**
       Called regularly to see if we need to update the view
       wrt. the today box and the month box. Only important

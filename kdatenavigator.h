@@ -80,7 +80,7 @@ public:
     */
     QDate month() const;
 
-public slots:
+public Q_SLOTS:
     void selectDates(const KCalCore::DateList &);
     void selectPreviousMonth();
     void selectNextMonth();
@@ -90,7 +90,7 @@ public slots:
     void updateToday();
     void setUpdateNeeded();
 
-signals:
+Q_SIGNALS:
     void datesSelected(const KCalCore::DateList &);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);

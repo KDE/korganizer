@@ -87,7 +87,7 @@ public:
     */
     void createCalendarAkonadi();
 
-public slots:
+public Q_SLOTS:
     bool importURL(const QUrl &url, bool merge);
 
     /** Save calendar file to URL of current calendar */
@@ -166,7 +166,7 @@ public:
      */
     bool handleCommandLine();
 
-public slots:
+public Q_SLOTS:
     void openEventEditor(const QString &);
     void openEventEditor(const QString &summary,
                          const QString &description,
@@ -225,7 +225,7 @@ public:
 
     bool queryClose();
 
-signals:
+Q_SIGNALS:
     /**
       Emitted when the "New" action is activated.
     */
@@ -238,7 +238,7 @@ signals:
     */
     void configChanged();
 
-public slots:
+public Q_SLOTS:
     /**
       Options dialog made a changed to the configuration. we catch this
       and notify all widgets which need to update their configuration.
@@ -267,7 +267,7 @@ public slots:
 
     void importCalendar(const QUrl &url);
 
-protected slots:
+protected Q_SLOTS:
     void setItems(const QStringList &, int);
 
     /** called by the autoExportTimer to automatically export the calendar */
@@ -329,7 +329,7 @@ protected:
     */
     QWidget *dialogParent();
 
-private slots:
+private Q_SLOTS:
     void handleExportJobResult(KJob *);
     void dumpText(const QString &);    // only for debugging purposes
 

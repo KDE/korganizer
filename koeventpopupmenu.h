@@ -42,10 +42,10 @@ public:
     explicit KOEventPopupMenu(Akonadi::ETMCalendar *, QWidget *parent = Q_NULLPTR);
     void setCalendar(const Akonadi::ETMCalendar::Ptr &calendar);
 
-public slots:
+public Q_SLOTS:
     void showIncidencePopup(const Akonadi::Item &, const QDate &);
 
-protected slots:
+protected Q_SLOTS:
     void popupShow();
     void popupEdit();
     void popupPaste();
@@ -59,7 +59,7 @@ protected slots:
     void dissociateOccurrences();
     void forward();
 
-signals:
+Q_SIGNALS:
     void configChanged();
     void editIncidenceSignal(const Akonadi::Item &);
     void showIncidenceSignal(const Akonadi::Item &);

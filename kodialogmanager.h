@@ -74,14 +74,14 @@ public:
 
     void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view);
 
-public slots:
+public Q_SLOTS:
     void showOptionsDialog();
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
     void showFilterEditDialog(QList<KCalCore::CalFilter *> *filters);
 
-private slots:
+private Q_SLOTS:
     void slotHelp();
 
 private:

@@ -73,7 +73,7 @@ public:
 
     Akonadi::Collection::Id collectionId() const;
 
-public slots:
+public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate());
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
     void updateView();

@@ -147,11 +147,11 @@ public:
         return mRangeMode;
     }
 
-signals:
+Q_SIGNALS:
     void configChanged();
     void datesSelected(const KCalCore::DateList &);
 
-public slots:
+public Q_SLOTS:
     void showWhatsNextView();
     void showListView();
     void showAgendaView();
@@ -181,7 +181,7 @@ public slots:
     */
     void addChange(EventViews::EventView::Change change);
 
-private slots:
+private Q_SLOTS:
     void currentAgendaViewTabChanged(QWidget *);
 
 private:

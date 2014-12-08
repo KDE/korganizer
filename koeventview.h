@@ -123,7 +123,7 @@ public:
         return true;
     }
 
-public slots:
+public Q_SLOTS:
     void focusChanged(QWidget *, QWidget *);
 
     /**
@@ -132,7 +132,7 @@ public slots:
      */
     void defaultAction(const Akonadi::Item &incidence);
 
-signals:
+Q_SIGNALS:
     /**
      * When the view changes the dates that are selected in one way or
      * another, this signal is emitted.  It should be connected back to
@@ -149,7 +149,7 @@ signals:
      */
     void shiftedEvent(const QDate &olddate, const QDate &ewdate);
 
-protected slots:
+protected Q_SLOTS:
     void popupShow();
     void popupEdit();
     void popupDelete();

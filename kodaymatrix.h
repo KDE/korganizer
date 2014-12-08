@@ -178,7 +178,7 @@ public:
                           bool highlightTodos,
                           bool highlightJournals);
     void setUpdateNeeded();
-public slots:
+public Q_SLOTS:
     /**
      * Recalculates all the flags of the days in the matrix like holidays or
      * events on a day (Actually calls above method with the actual startdate).
@@ -196,7 +196,7 @@ public slots:
      */
     void resourcesChanged();
 
-signals:
+Q_SIGNALS:
     /**
      * Emitted if the user selects a block of days with the mouse by dragging
      * a rectangle inside the matrix

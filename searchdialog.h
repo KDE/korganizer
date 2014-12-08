@@ -61,17 +61,17 @@ public:
 
     void updateView();
 
-public slots:
+public Q_SLOTS:
     void changeIncidenceDisplay(KCalCore::Incidence *, int)
     {
         updateView();
     }
 
-protected slots:
+protected Q_SLOTS:
     void doSearch();
     void searchTextChanged(const QString &_text);
 
-signals:
+Q_SIGNALS:
     void showIncidenceSignal(const Akonadi::Item &);
     void editIncidenceSignal(const Akonadi::Item &);
     void deleteIncidenceSignal(const Akonadi::Item &);

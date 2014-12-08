@@ -49,7 +49,7 @@ public:
 
     int datesCount() const;
 
-public slots:
+public Q_SLOTS:
     void selectDates(const KCalCore::DateList &, const QDate &preferredMonth = QDate());
     void selectDate(const QDate &);
 
@@ -83,7 +83,7 @@ public slots:
     void selectMonth(int month);
     void selectYear(int year);
 
-signals:
+Q_SIGNALS:
     /* preferredMonth is useful when the datelist crosses months,
        if valid, any month-like component should honour it
     */

@@ -47,7 +47,7 @@ public:
                                  QObject *parent = Q_NULLPTR, const char *name = 0);
     ~KOrganizerIfaceImpl();
 
-public slots:
+public Q_SLOTS:
     bool openURL(const QString &url);
     bool mergeURL(const QString &url);
     bool saveURL();

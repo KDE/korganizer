@@ -62,7 +62,7 @@ public:
        An invalid QDate() is returned if the index is too big or too small.
     */
     QDate monthOfNavigator(int navigatorIndex = 0) const;
-public slots:
+public Q_SLOTS:
 
     /**
        preferredMonth is useful when the datelist crosses months, if different
@@ -79,7 +79,7 @@ public slots:
     void goPrevMonth();
     void goNextMonth();
 
-signals:
+Q_SIGNALS:
     void datesSelected(const KCalCore::DateList &, const QDate &preferredMonth);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
@@ -125,7 +125,7 @@ protected:
     void setBaseDates(const QDate &start);
     void connectNavigatorView(KDateNavigator *v);
 
-protected slots:
+protected Q_SLOTS:
     /**
      * Resizes all the child elements after the size of the widget changed.
      * This slot is called by a QTimer::singleShot from resizeEvent.
@@ -134,7 +134,7 @@ protected slots:
      */
     void resizeAllContents();
 
-private slots:
+private Q_SLOTS:
     void handleDatesSelectedSignal(const KCalCore::DateList &);
     void handleWeekClickedSignal(const QDate &, const QDate &);
 

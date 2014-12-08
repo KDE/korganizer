@@ -73,7 +73,7 @@ public:
 
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
 
-public slots:
+public Q_SLOTS:
     void updateView();
 
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
@@ -82,7 +82,7 @@ public slots:
 
     void updateConfig();
 
-signals:
+Q_SIGNALS:
     void fullViewChanged(bool enabled);
 
 private:

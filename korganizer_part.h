@@ -91,7 +91,7 @@ public:
 
     void setTitle();
 
-public slots:
+public Q_SLOTS:
     void slotChangeInfo(const Akonadi::Item &, const QDate &date);
 
 protected:
@@ -103,7 +103,7 @@ private:
     KParts::StatusBarExtension *mStatusBarExtension;
     QWidget *mTopLevelWidget;
 
-signals:
+Q_SIGNALS:
     void textChanged(const QString &);
 };
 

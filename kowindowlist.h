@@ -69,7 +69,7 @@ public:
     */
     KOrg::MainWindow *defaultInstance();
 
-public slots:
+public Q_SLOTS:
     /**
       Register a main window.
     */

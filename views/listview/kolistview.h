@@ -70,7 +70,7 @@ public:
 
     virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
 
-public slots:
+public Q_SLOTS:
     virtual void updateView();
     virtual void showDates(const QDate &start, const QDate &end,
                            const QDate &preferredMonth = QDate());

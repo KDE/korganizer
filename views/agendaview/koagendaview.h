@@ -83,7 +83,7 @@ public:
     void setDateRange(const KDateTime &start, const KDateTime &end,
                       const QDate &preferredMonth = QDate());
 
-public slots:
+public Q_SLOTS:
     virtual void updateView();
     virtual void updateConfig();
     virtual void showDates(const QDate &start, const QDate &end,
@@ -111,7 +111,7 @@ public slots:
     void zoomView(const int delta, const QPoint &pos,
                   const Qt::Orientation orient = Qt::Horizontal);
 
-signals:
+Q_SIGNALS:
     void zoomViewHorizontally(const QDate &, int count);
     void timeSpanSelectionChanged();
 

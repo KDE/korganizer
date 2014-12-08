@@ -72,7 +72,7 @@ public:
       Returns the thumbnail URL for a given width corresponding to a full-size image URL. */
     KUrl thumbnailUrl(const KUrl &fullSizeUrl, const int width = 0) const;
 
-signals:
+Q_SIGNALS:
     void gotNewPixmap(const QPixmap &) const;
     void gotNewShortText(const QString &) const;
     void gotNewLongText(const QString &) const;
@@ -83,7 +83,7 @@ signals:
     void step2Success() const;
     void step3Success() const;
 
-protected slots:
+protected Q_SLOTS:
     void step1StartDownload();
     void step2GetImagePage();
     void step3GetThumbnail();
@@ -104,7 +104,7 @@ private:
     KIO::SimpleJob *mThirdStepJob;
     QTimer *mTimer;
 
-private slots:
+private Q_SLOTS:
     void step1Result(KJob *job);
     void step2Result(KJob *job);
     void step3Result(KJob *job);

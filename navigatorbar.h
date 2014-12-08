@@ -39,10 +39,10 @@ public:
 
     void showButtons(bool left, bool right);
 
-public slots:
+public Q_SLOTS:
     void selectDates(const KCalCore::DateList &);
 
-signals:
+Q_SIGNALS:
     void nextMonthClicked();
     void prevMonthClicked();
     void nextYearClicked();
@@ -55,7 +55,7 @@ protected:
                                         const QString &toolTip,
                                         const QString &whatsThis);
 
-private slots:
+private Q_SLOTS:
     void selectMonthFromMenu();
     void selectYearFromMenu();
 

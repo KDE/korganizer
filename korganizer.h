@@ -101,11 +101,11 @@ public:
         return this;
     }
 
-public slots:
+public Q_SLOTS:
     /** show status message */
     void showStatusMessage(const QString &);
 
-protected slots:
+protected Q_SLOTS:
 
     /** using the KConfig associated with the kapp variable, read in the
      * settings from the config file.

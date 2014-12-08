@@ -43,7 +43,7 @@ public:
     explicit ExportWebDialog(KOrg::HTMLExportSettings *settings, QWidget *parent = Q_NULLPTR);
     virtual ~ExportWebDialog();
 
-public slots:
+public Q_SLOTS:
     void slotTextChanged(const QString &_text);
 
 protected:
@@ -54,16 +54,16 @@ protected:
 //    void setupFreeBusyPage();
 //    void setupAdvancedPage();
 
-public slots:
+public Q_SLOTS:
     void setDefaults();
     void readConfig();
     void writeConfig();
 
-signals:
+Q_SIGNALS:
     void configChanged();
     void exportHTML(KOrg::HTMLExportSettings *);
 
-protected slots:
+protected Q_SLOTS:
     void slotOk();
     void slotApply();
     void slotDefault();
@@ -72,7 +72,7 @@ protected:
     virtual void usrReadConfig() {}
     virtual void usrWriteConfig() {}
 
-private slots:
+private Q_SLOTS:
     void updateState();
 
 private:

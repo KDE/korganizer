@@ -37,7 +37,7 @@ protected:
     void load();
     void save();
 
-protected slots:
+protected Q_SLOTS:
     void slotOk();
 
 private:

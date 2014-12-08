@@ -209,7 +209,7 @@ public:
      */
     QString currentFilterName() const;
 
-signals:
+Q_SIGNALS:
     /** when change is made to options dialog, the topwidget will catch this
      *  and emit this signal which notifies all widgets which have registered
      *  for notification to update their settings. */
@@ -265,7 +265,7 @@ signals:
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
 
-public slots:
+public Q_SLOTS:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
     void updateConfig();
@@ -623,7 +623,7 @@ public slots:
      */
     void changeFullView(bool fullView);
 
-protected slots:
+protected Q_SLOTS:
     /**
      * Select a view or adapt the current view to display the specified dates.
      * @p preferredMonth is useful when the datelist crosses months, if valid,

@@ -57,11 +57,11 @@ public:
     explicit FilterEditDialog(QList<KCalCore::CalFilter *> *, QWidget *parent = Q_NULLPTR);
     virtual ~FilterEditDialog();
 
-signals:
+Q_SIGNALS:
     void filterChanged();
     void editCategories();
 
-public slots:
+public Q_SLOTS:
     void updateFilterList();
     void setDialogConsistent(bool consistent);
 
@@ -70,7 +70,7 @@ private:
     QPushButton *mOkButton;
     QPushButton *mApplyButton;
 
-protected slots:
+protected Q_SLOTS:
     void slotApply();
     void slotOk();
 };
@@ -85,12 +85,12 @@ public:
     void updateFilterList();
     void saveChanges();
 
-signals:
+Q_SIGNALS:
     void dataConsistent(bool);
     void filterChanged();
     void editCategories();
 
-private slots:
+private Q_SLOTS:
     void filterSelected();
     void bNewPressed();
     void bDeletePressed();

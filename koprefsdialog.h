@@ -53,7 +53,7 @@ public:
 protected:
     void usrWriteConfig();
 
-protected slots:
+protected Q_SLOTS:
     void toggleEmailSettings(bool on);
 
 private:
@@ -70,7 +70,7 @@ protected:
     void usrSave();
     void usrRead();
 
-protected slots:
+protected Q_SLOTS:
     void updateCategories();
     void setCategoryColor();
     void updateCategoryColor();
@@ -123,7 +123,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 public:
     KOPrefsDialogPlugins(QWidget *parent);
 
-protected slots:
+protected Q_SLOTS:
     void usrRead();
     void usrSave();
     void configure();
@@ -166,7 +166,7 @@ protected:
   public:
     KOPrefsDialogThemes( const KComponentData &inst, QWidget *parent );
 
-  protected slots:
+  protected Q_SLOTS:
     void usrRead();
     void usrSave();
     void importTheme();
