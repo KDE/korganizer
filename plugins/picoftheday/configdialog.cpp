@@ -53,7 +53,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     mainLayout->addWidget(topFrame);
     mainLayout->addWidget(mainWidget);
     QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    //PORT QT5 topLayout->setSpacing( spacingHint() );
     topLayout->setMargin(0);
 
     QGroupBox *aspectRatioBox = new QGroupBox(i18n("Thumbnail Aspect Ratio Mode"), topFrame);

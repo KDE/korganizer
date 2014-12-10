@@ -209,7 +209,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 {
     QVBoxLayout *topLayout = new QVBoxLayout(this);
     topLayout->setMargin(0);
-//TODO PORT QT5   topLayout->setSpacing( QDialog::spacingHint() );
 
     //KLineEdit *searchCol = new KLineEdit( this );
     //searchCol->setClearButtonShown( true );

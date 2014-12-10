@@ -245,7 +245,6 @@ public:
                           i18nc("@title:tab", "Regional"));
 
         QGridLayout *regionalLayout = new QGridLayout(regionalPage);
-//TODO PORT QT5       regionalLayout->setSpacing( QDialog::spacingHint() );
 
         QGroupBox *datetimeGroupBox =
             new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
@@ -370,7 +369,6 @@ public:
         tabWidget->addTab(defaultPage, QIcon::fromTheme(QLatin1String("draw-eraser")),
                           i18nc("@title:tab", "Default Values"));
         QGridLayout *defaultLayout = new QGridLayout(defaultPage);
-//TODO PORT QT5       defaultLayout->setSpacing( QDialog::spacingHint() );
 
         QGroupBox *timesGroupBox =
             new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
@@ -743,7 +741,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QWidget *colorFrame = new QWidget(this);
     topTopLayout->addWidget(colorFrame);
     QGridLayout *colorLayout = new QGridLayout(colorFrame);
-//TODO PORT QT5   colorLayout->setSpacing( QDialog::spacingHint() );
     tabWidget->addTab(colorFrame, QIcon::fromTheme(QLatin1String("preferences-desktop-color")),
                       i18nc("@title:tab", "Colors"));
 
@@ -861,7 +858,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
                       i18nc("@title:tab", "Fonts"));
 
     QGridLayout *fontLayout = new QGridLayout(fontFrame);
-//TODO PORT QT5   fontLayout->setSpacing( QDialog::spacingHint() );
 
     KPIM::KPrefsWidFont *timeBarFont =
         addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
@@ -1005,7 +1001,6 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     topTopLayout->addWidget(topFrame);
 
     QGridLayout *topLayout = new QGridLayout(topFrame);
-//TODO PORT QT5   topLayout->setSpacing( QDialog::spacingHint() );
 
     KPIM::KPrefsWidBool *useGroupwareBool =
         addWidBool(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
@@ -1195,7 +1190,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     QWidget *topFrame = new QWidget(this);
     topTopLayout->addWidget(topFrame);
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-//TODO PORT QT5   topLayout->setSpacing( QDialog::spacingHint() );
 
     mTreeWidget = new QTreeWidget(topFrame);
     mTreeWidget->setColumnCount(1);

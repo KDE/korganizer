@@ -293,8 +293,6 @@ void KCMDesignerFields::defaults()
 void KCMDesignerFields::initGUI()
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
-//TODO PORT QT5   layout->setSpacing( QDialog::spacingHint() );
-//TODO PORT QT5   layout->setMargin( QDialog::marginHint() );
 
     bool noDesigner = QStandardPaths::findExecutable(QLatin1String("designer")).isEmpty();
 
@@ -308,7 +306,6 @@ void KCMDesignerFields::initGUI()
 
     QHBoxLayout *hbox = new QHBoxLayout();
     layout->addLayout(hbox);
-//TODO PORT QT5   hbox->setSpacing( QDialog::spacingHint() );
 
     mPageView = new QTreeWidget(this);
     mPageView->setHeaderLabel(i18n("Available Pages"));
@@ -334,7 +331,6 @@ void KCMDesignerFields::initGUI()
 
     hbox = new QHBoxLayout();
     layout->addLayout(hbox);
-//TODO PORT QT5   hbox->setSpacing( QDialog::spacingHint() );
 
     QString cwHowto =
         i18n("<qt><p>This section allows you to add your own GUI"

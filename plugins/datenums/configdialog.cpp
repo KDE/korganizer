@@ -50,7 +50,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     mainLayout->addWidget(topFrame);
     mainLayout->addWidget(buttonBox);
     QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    //QT5 topLayout->setSpacing( spacingHint() );
     topLayout->setMargin(0);
 
     QGroupBox *dayNumBox = new QGroupBox(i18n("Show Date Number"), topFrame);

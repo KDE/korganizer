@@ -53,7 +53,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     setModal(true);
     QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setMargin(0);
-    //QT5topLayout->setSpacing( spacingHint() );
 
     mIsraelBox = new QCheckBox(topFrame);
     mIsraelBox->setText(i18n("Use Israeli holidays"));
