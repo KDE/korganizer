@@ -134,7 +134,7 @@ public:
     }
 
     /* reimp */
-    QVariant data(const QModelIndex &index, int role) const
+    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE
     {
         if (!index.isValid()) {
             return QVariant();
