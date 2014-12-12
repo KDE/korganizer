@@ -34,7 +34,7 @@
 #include <KCalCore/CalFormat>
 
 #include <KCmdLineArgs>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <KStandardDirs>
 #include <KStartupInfo>
 #include <KGlobal>
@@ -54,7 +54,7 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::newInstance()
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
     static bool first = true;
     if (isSessionRestored() && first) {
         KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
@@ -111,7 +111,7 @@ void KOrganizerApp::processCalendar(const QUrl &url)
         korg->init(hasDocument);
         korg->topLevelWidget()->show();
 
-        qDebug() << url.url();
+        qCDebug(KORGANIZER_LOG) << url.url();
 
         if (hasDocument) {
             korg->openURL(url);

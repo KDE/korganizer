@@ -33,7 +33,7 @@
 #include <KCalCore/CalFilter>
 
 #include <KMessageBox>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
@@ -125,9 +125,9 @@ FilterEdit::~FilterEdit()
 void FilterEdit::updateFilterList()
 {
     mRulesList->clear();
-    qDebug() << "  FilterEdit::updateFilterList() :" << mFilters;
+    qCDebug(KORGANIZER_LOG) << "  FilterEdit::updateFilterList() :" << mFilters;
     if (mFilters) {
-        qDebug() << " mFilters->empty() :" << mFilters->empty();
+        qCDebug(KORGANIZER_LOG) << " mFilters->empty() :" << mFilters->empty();
     }
     if (!mFilters || mFilters->empty()) {
         mDetailsFrame->setEnabled(false);
@@ -205,7 +205,7 @@ void FilterEdit::filterSelected(KCalCore::CalFilter *filter)
     if (!filter || filter == mCurrent) {
         return;
     }
-    qDebug() << "Selected filter" << filter->name();
+    qCDebug(KORGANIZER_LOG) << "Selected filter" << filter->name();
     saveChanges();
 
     mCurrent = filter;

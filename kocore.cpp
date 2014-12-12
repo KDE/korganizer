@@ -28,7 +28,7 @@
 
 #include <calendarsupport/identitymanager.h>
 
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <KServiceTypeTrader>
 #include <KXMLGUIFactory>
 
@@ -83,7 +83,7 @@ KService::List KOCore::availableParts()
 
 CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
 {
-    qDebug() << service->library();
+    qCDebug(KORGANIZER_LOG) << service->library();
 
     if (!service->hasServiceType(CalendarSupport::Plugin::serviceType())) {
         return 0;
@@ -93,7 +93,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
     KPluginFactory *factory = loader.factory();
 
     if (!factory) {
-        qDebug() << "Factory creation failed";
+        qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return 0;
     }
 
@@ -101,7 +101,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
         static_cast<CalendarSupport::PluginFactory *>(factory);
 
     if (!pluginFactory) {
-        qDebug() << "Cast failed";
+        qCDebug(KORGANIZER_LOG) << "Cast failed";
         return 0;
     }
 
@@ -126,7 +126,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KServ
     KPluginFactory *factory = loader.factory();
 
     if (!factory) {
-        qDebug() << "Factory creation failed";
+        qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return 0;
     }
 
@@ -134,7 +134,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KServ
         static_cast<EventViews::CalendarDecoration::DecorationFactory *>(factory);
 
     if (!pluginFactory) {
-        qDebug() << "Cast failed";
+        qCDebug(KORGANIZER_LOG) << "Cast failed";
         return 0;
     }
 
@@ -155,7 +155,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
 
 KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
 {
-    qDebug() << service->library();
+    qCDebug(KORGANIZER_LOG) << service->library();
 
     if (!service->hasServiceType(KOrg::Part::serviceType())) {
         return 0;
@@ -165,7 +165,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
     KPluginFactory *factory = loader.factory();
 
     if (!factory) {
-        qDebug() << "Factory creation failed";
+        qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return 0;
     }
 
@@ -173,7 +173,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
         static_cast<KOrg::PartFactory *>(factory);
 
     if (!pluginFactory) {
-        qDebug() << "Cast failed";
+        qCDebug(KORGANIZER_LOG) << "Cast failed";
         return 0;
     }
 

@@ -33,7 +33,7 @@
 #include <KCalUtils/IncidenceFormatter>
 
 #include <KCalendarSystem>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <QTemporaryFile>
@@ -84,7 +84,7 @@ HtmlExportJob::HtmlExportJob(const Akonadi::ETMCalendar::Ptr &calendar,
 
 HtmlExportJob::~HtmlExportJob()
 {
-    //qDebug()<<"HtmlExportJob::~HtmlExportJob()";
+    //qCDebug(KORGANIZER_LOG)<<"HtmlExportJob::~HtmlExportJob()";
     delete d;
 }
 
@@ -403,7 +403,7 @@ void HtmlExportJob::createEventList(QTextStream *ts)
     *ts << "  </tr>" << endl;
 
     for (QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1)) {
-        qDebug() << "Getting events for" << dt.toString();
+        qCDebug(KORGANIZER_LOG) << "Getting events for" << dt.toString();
         KCalCore::Event::List events = d->mCalendar->events(dt, d->mCalendar->timeSpec(),
                                        KCalCore::EventSortStartDate,
                                        KCalCore::SortDirectionAscending);
@@ -428,7 +428,7 @@ void HtmlExportJob::createEventList(QTextStream *ts)
 void HtmlExportJob::createEvent(QTextStream *ts, const KCalCore::Event::Ptr &event,
                                 QDate date, bool withDescription)
 {
-    qDebug() << event->summary();
+    qCDebug(KORGANIZER_LOG) << event->summary();
     *ts << "  <tr>" << endl;
 
     if (!event->allDay()) {
@@ -596,7 +596,7 @@ void HtmlExportJob::createTodoList(QTextStream *ts)
 
 void HtmlExportJob::createTodo(QTextStream *ts, const KCalCore::Todo::Ptr &todo)
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
 
     const bool completed = todo->isCompleted();
 

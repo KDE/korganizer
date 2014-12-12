@@ -36,7 +36,7 @@
 
 #include <QStatusBar>
 #include <KParts/StatusBarExtension>
-#include <QDebug>
+#include "korganizer_debug.h"
 
 #include <QVBoxLayout>
 
@@ -166,7 +166,7 @@ bool KOrganizerPart::openFile()
 // FIXME: This is copied verbatim from the KOrganizer class. Move it to the common base class!
 void KOrganizerPart::setTitle()
 {
-//  qDebug() <<"KOrganizer::setTitle";
+//  qCDebug(KORGANIZER_LOG) <<"KOrganizer::setTitle";
 // FIXME: Inside kontact we want to have different titles depending on the
 //        type of view (calendar, to-do, journal). How can I add the filter
 //        name in that case?

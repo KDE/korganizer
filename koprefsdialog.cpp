@@ -67,7 +67,7 @@
 #include <KUrlRequester>
 #include <KWindowSystem>
 #include <KGlobal>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <QIcon>
 #include <QPushButton>
 
@@ -972,7 +972,7 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
     if (!ok) {
         return;
     }
-    qDebug() << id << mResourceCombo->itemText(mResourceCombo->currentIndex());
+    qCDebug(KORGANIZER_LOG) << id << mResourceCombo->itemText(mResourceCombo->currentIndex());
 
     QColor color = mResourceDict.value(id);
     if (! color.isValid()) {

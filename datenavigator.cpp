@@ -28,7 +28,7 @@
 #include "datenavigator.h"
 #include "koglobals.h"
 
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <KCalendarSystem>
 
 #include <QDate>
@@ -67,7 +67,7 @@ void DateNavigator::selectDate(const QDate &date)
     QDate d = date;
 
     if (!d.isValid()) {
-        qDebug() << "an invalid date was passed as a parameter!";
+        qCDebug(KORGANIZER_LOG) << "an invalid date was passed as a parameter!";
         d = QDate::currentDate();
     }
     mSelectedDates.clear();

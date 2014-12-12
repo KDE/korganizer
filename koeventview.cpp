@@ -34,7 +34,7 @@
 #include <libkdepim/widgets/pimmessagebox.h>
 
 #include <KXMLGUIFactory>
-#include <QDebug>
+#include "korganizer_debug.h"
 
 #include <QApplication>
 #include <QMenu>
@@ -152,10 +152,10 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction(const Akonadi::Item &aitem)
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
     if (!incidence) {
-        qDebug() << "Ouch, null incidence";
+        qCDebug(KORGANIZER_LOG) << "Ouch, null incidence";
         return;
     }
 

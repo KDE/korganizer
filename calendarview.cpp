@@ -95,7 +95,7 @@
 #include <KNotification>
 #include <KRun>
 #include <QVBoxLayout>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <QPushButton>
 
 #include <QApplication>
@@ -859,7 +859,7 @@ void CalendarView::edit_paste()
     MonthView *monthView = mViewManager->monthView();
 
     if (!curView) {
-        qWarning() << "No view is selected, can't paste";
+        qCWarning(KORGANIZER_LOG) << "No view is selected, can't paste";
         return;
     }
 
@@ -1195,7 +1195,7 @@ void CalendarView::newSubTodo()
 void CalendarView::newSubTodo(const Akonadi::Collection &collection)
 {
     if (!CalendarSupport::hasTodo(selectedTodo())) {
-        qWarning() << "CalendarSupport::hasTodo() is false";
+        qCWarning(KORGANIZER_LOG) << "CalendarSupport::hasTodo() is false";
         return;
     }
 
@@ -1296,7 +1296,7 @@ bool CalendarView::incidence_unsub(const Akonadi::Item &item)
     const KCalCore::Incidence::Ptr inc = CalendarSupport::incidence(item);
 
     if (!inc || inc->relatedTo().isEmpty()) {
-        qDebug() << "Refusing to unparent this to-do" << inc;
+        qCDebug(KORGANIZER_LOG) << "Refusing to unparent this to-do" << inc;
         return false;
     }
 
@@ -1326,7 +1326,7 @@ bool CalendarView::makeChildrenIndependent(const Akonadi::Item &item)
     Akonadi::Item::List subIncs = mCalendar->childItems(item.id());
 
     if (!inc || subIncs.isEmpty()) {
-        qDebug() << "Refusing to  make children independent" << inc;
+        qCDebug(KORGANIZER_LOG) << "Refusing to  make children independent" << inc;
         return false;
     }
     startMultiModify(i18n("Make sub-to-dos independent"));
@@ -1401,7 +1401,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
         return;
     }
     if (incidence->type() != KCalCore::Incidence::TypeTodo) {
-        qDebug() << "called for a non-Todo incidence";
+        qCDebug(KORGANIZER_LOG) << "called for a non-Todo incidence";
         return;
     }
 
@@ -1461,7 +1461,7 @@ void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akon
         nJournal->setUid(KCalCore::CalFormat::createUniqueId());
         newInc = nJournal;
     } else {
-        qWarning() << "Trying to copy an incidence type that cannot be copied";
+        qCWarning(KORGANIZER_LOG) << "Trying to copy an incidence type that cannot be copied";
         return;
     }
 
@@ -1487,7 +1487,7 @@ void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akon
 #else
     Q_UNUSED(col);
     Q_UNUSED(item);
-    qDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
+    qCDebug(KORGANIZER_LOG) << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -1531,7 +1531,7 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
         nJournal->setUid(KCalCore::CalFormat::createUniqueId());
         newInc = nJournal;
     } else {
-        qWarning() << "Trying to move an incidence type that cannot be moved";
+        qCWarning(KORGANIZER_LOG) << "Trying to move an incidence type that cannot be moved";
         return;
     }
 
@@ -1573,7 +1573,7 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
 #else
     Q_UNUSED(col);
     Q_UNUSED(item);
-    qDebug() << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
+    qCDebug(KORGANIZER_LOG) << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
 
@@ -1638,7 +1638,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     }
     KDateTime occurrenceDate(incidence->dtStart());
     occurrenceDate.setDate(date);
-    //QT5 qDebug() << "create exception: " << occurrenceDate;
+    //QT5 qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalCore::Incidence::Ptr newInc(KCalCore::Calendar::createException(
                                         incidence, occurrenceDate, thisAndFuture));
     if (newInc) {
@@ -2080,7 +2080,7 @@ void CalendarView::takeOverEvent()
 
 void CalendarView::showIntro()
 {
-    qDebug() << "To be implemented.";
+    qCDebug(KORGANIZER_LOG) << "To be implemented.";
 }
 
 void CalendarView::showDateNavigator(bool show)
@@ -2388,7 +2388,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
 
     if (mChanger->deletedRecently(item.id())) {
         // it was deleted already but the etm wasn't notified yet
-        qWarning() << "CalendarView::deleteIncidence(): item with id" << item.id()
+        qCWarning(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): item with id" << item.id()
                    << "was deleted recently, skipping";
         return true;
     }
@@ -2404,7 +2404,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                 i18n("Removing not possible"),
                 QLatin1String("deleteReadOnlyIncidence"));
         }
-        qWarning() << "CalendarView::deleteIncidence(): No rights to delete item";
+        qCWarning(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): No rights to delete item";
         return false;
     }
 
@@ -2420,7 +2420,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
         int km = KMessageBox::Ok;
         if (!force) {
             if (!itemDate.isValid()) {
-                qDebug() << "Date Not Valid";
+                qCDebug(KORGANIZER_LOG) << "Date Not Valid";
                 km = KMessageBox::warningContinueCancel(
                          this,
                          i18n("The calendar item \"%1\" recurs over multiple dates; "
@@ -2856,7 +2856,7 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
 {
     Akonadi::Collection collection = item.parentCollection();
     if (!collection.isValid()) {
-        qWarning() << "Item was creating in an invalid collection !? item id=" << item.id();
+        qCWarning(KORGANIZER_LOG) << "Item was creating in an invalid collection !? item id=" << item.id();
         return;
     }
 

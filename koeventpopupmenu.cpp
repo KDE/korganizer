@@ -38,7 +38,7 @@
 #include <KActionCollection>
 #include <KMimeTypeTrader>
 #include <KPrintPreview>
-#include <QDebug>
+#include "korganizer_debug.h"
 
 KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
     : QMenu(parent), mCalendar(calendar)
@@ -100,13 +100,13 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     mCurrentDate = qd;
 
     if (!CalendarSupport::hasIncidence(mCurrentIncidence)/*&& qd.isValid()*/) {
-        qDebug() << "No event selected";
+        qCDebug(KORGANIZER_LOG) << "No event selected";
         return;
     }
 
     if (!mCalendar) {
         //TODO fix it
-        qDebug() << "Calendar is 0";
+        qCDebug(KORGANIZER_LOG) << "Calendar is 0";
         return;
     }
 

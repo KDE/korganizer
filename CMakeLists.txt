@@ -47,6 +47,7 @@ if(KDEPIM_BUILD_DESKTOP)
     main.cpp
     korganizer.cpp
     koapp.cpp
+    korganizer_debug.cpp
   )
 
   kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-korganizer.png")
@@ -78,6 +79,7 @@ if(KDEPIM_BUILD_DESKTOP)
     kcmdesignerfields.cpp
     koprefsdialog.cpp
     kitemiconcheckcombo.cpp
+    korganizer_debug.cpp
   )
 
   add_library(kcm_korganizer MODULE ${kcm_korganizer_PART_SRCS})
@@ -135,6 +137,7 @@ endif()
 set(korganizer_core_LIB_SRCS
   koprefs.cpp
   kocore.cpp
+  korganizer_debug.cpp
 )
 
 kconfig_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc)
@@ -171,6 +174,7 @@ install(TARGETS
 if(KDEPIM_BUILD_DESKTOP)
 
 set(korganizerprivate_LIB_SRCS
+    korganizer_debug.cpp
     korgstartup.cpp
     aboutdata.cpp
     actionmanager.cpp

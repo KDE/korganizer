@@ -648,7 +648,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         return;
     }
     QList<QUrl> urls = (e->mimeData()->urls());
-    //qDebug()<<" urls :"<<urls;
+    //qCDebug(KORGANIZER_LOG)<<" urls :"<<urls;
     if (urls.isEmpty()) {
         e->ignore();
         return;

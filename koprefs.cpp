@@ -27,7 +27,7 @@
 
 #include <KGlobalSettings>
 #include <KGlobal>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <QDir>
 #include <QFontDatabase>
 
@@ -64,7 +64,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
 KOPrefs::~KOPrefs()
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
     mEventViewsPrefs->writeConfig();
 }
 

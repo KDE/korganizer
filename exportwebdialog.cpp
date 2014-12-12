@@ -33,7 +33,7 @@
 #include <KUrlRequester>
 #include <QVBoxLayout>
 #include <KLocalizedString>
-#include <QDebug>
+#include "korganizer_debug.h"
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -110,7 +110,7 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
 
     if (KMessageBox::warningContinueCancel(
                 this,

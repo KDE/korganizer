@@ -34,7 +34,7 @@
 #include "korganizerifaceimpl.h"
 #include "actionmanager.h"
 #include "korganizeradaptor.h"
-#include <QDebug>
+#include "korganizer_debug.h"
 
 KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager,
         QObject *parent, const char *name)
@@ -80,7 +80,7 @@ bool KOrganizerIfaceImpl::deleteIncidence(const QString &uid, bool force)
     bool ok;
     qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
-        qWarning() << "Invalid uid" << uid;
+        qCWarning(KORGANIZER_LOG) << "Invalid uid" << uid;
         return false;
     }
     return mActionManager->deleteIncidence(id, force);
@@ -91,7 +91,7 @@ bool KOrganizerIfaceImpl::editIncidence(const QString &itemId)
     bool ok;
     qint64 id = QVariant(itemId).toLongLong(&ok);
     if (!ok) {
-        qWarning() << "Invalid item id = " << itemId;
+        qCWarning(KORGANIZER_LOG) << "Invalid item id = " << itemId;
         return false;
     }
     return mActionManager->editIncidence(id);
@@ -102,7 +102,7 @@ bool KOrganizerIfaceImpl::addIncidence(const QString &uid)
     //bool ok;
     //qint64 id = QVariant(uid).toLongLong(&ok);
     //if(! ok) {
-    //  qWarning() << "Invalid uid"<<uid;
+    //  qCWarning(KORGANIZER_LOG) << "Invalid uid"<<uid;
     //  return false;
     //}
     return mActionManager->addIncidence(uid);
@@ -113,7 +113,7 @@ bool KOrganizerIfaceImpl::showIncidence(const QString &uid)
     bool ok;
     qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
-        qWarning() << "Invalid uid" << uid;
+        qCWarning(KORGANIZER_LOG) << "Invalid uid" << uid;
         return false;
     }
     return mActionManager->showIncidence(id);
@@ -124,7 +124,7 @@ bool KOrganizerIfaceImpl::showIncidenceContext(const QString &uid)
     bool ok;
     qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
-        qWarning() << "Invalid uid" << uid;
+        qCWarning(KORGANIZER_LOG) << "Invalid uid" << uid;
         return false;
     }
     return mActionManager->showIncidenceContext(id);

@@ -53,7 +53,7 @@
 #include <QColorDialog>
 #include <KMessageBox>
 #include <KRecursiveFilterProxyModel>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <QDialog>
 
 #include <QHeaderView>
@@ -492,7 +492,7 @@ void AkonadiCollectionView::newCalendarDone(KJob *job)
         //TODO(AKONADI_PORT)
         // this should show an error dialog and should be merged
         // with the identical code in ActionManager
-        qWarning() << "Create calendar failed:" << createjob->errorString();
+        qCWarning(KORGANIZER_LOG) << "Create calendar failed:" << createjob->errorString();
         mNotSendAddRemoveSignal = false;
         return;
     }
@@ -543,7 +543,7 @@ void AkonadiCollectionView::deleteCalendarDone(KJob *job)
 {
     Akonadi::CollectionDeleteJob *deletejob = static_cast<Akonadi::CollectionDeleteJob *>(job);
     if (deletejob->error()) {
-        qWarning() << "Delete calendar failed:" << deletejob->errorString();
+        qCWarning(KORGANIZER_LOG) << "Delete calendar failed:" << deletejob->errorString();
         mNotSendAddRemoveSignal = false;
         return;
     }
@@ -630,7 +630,7 @@ Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
         proxy = qobject_cast<QAbstractProxyModel *>(proxy->sourceModel());
     }
 
-    qWarning() << "Couldn't find EntityTreeModel";
+    qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
     return 0;
 }
 

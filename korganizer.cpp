@@ -39,7 +39,7 @@
 #include "libkdepim/progresswidget/statusbarprogresswidget.h"
 
 #include <KActionCollection>
-#include <QDebug>
+#include "korganizer_debug.h"
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <QStatusBar>
@@ -50,7 +50,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
     // modal subdialogs will only affect this dialog, not the other windows
     setAttribute(Qt::WA_GroupLeader);
 
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
     KOCore::self()->addXMLGUIClient(this, this);
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
@@ -135,7 +135,7 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
 
     KConfig *config = KOGlobals::self()->config();
 
@@ -166,7 +166,7 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-    qDebug();
+    qCDebug(KORGANIZER_LOG);
 
     bool close = mActionManager->queryClose();
 
