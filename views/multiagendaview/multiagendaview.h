@@ -42,36 +42,36 @@ public:
     explicit MultiAgendaView(QWidget *parent = Q_NULLPTR);
     ~MultiAgendaView();
 
-    Akonadi::Item::List selectedIncidences();
-    KCalCore::DateList selectedIncidenceDates();
-    int currentDateCount() const;
-    int maxDatesHint() const;
+    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
+    int currentDateCount() const Q_DECL_OVERRIDE;
+    int maxDatesHint() const Q_DECL_OVERRIDE;
 
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
-    /* reimp */void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
-
-    /**
-     * reimplemented from KOrg::BaseView
-     */
-    bool hasConfigurationDialog() const;
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
+    /* reimp */void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
 
     /**
      * reimplemented from KOrg::BaseView
      */
-    void showConfigurationDialog(QWidget *parent);
+    bool hasConfigurationDialog() const Q_DECL_OVERRIDE;
 
-    void setChanges(EventViews::EventView::Changes changes);
+    /**
+     * reimplemented from KOrg::BaseView
+     */
+    void showConfigurationDialog(QWidget *parent) Q_DECL_OVERRIDE;
+
+    void setChanges(EventViews::EventView::Changes changes) Q_DECL_OVERRIDE;
 
     KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
     void setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model);
 
-    void restoreConfig(const KConfigGroup &configGroup);
-    void saveConfig(KConfigGroup &configGroup);
+    void restoreConfig(const KConfigGroup &configGroup) Q_DECL_OVERRIDE;
+    void saveConfig(KConfigGroup &configGroup) Q_DECL_OVERRIDE;
 
     void setDateRange(const KDateTime &start, const KDateTime &end,
-                      const QDate &preferredMonth = QDate());
+                      const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
 
-    Akonadi::Collection::Id collectionId() const;
+    Akonadi::Collection::Id collectionId() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate());
