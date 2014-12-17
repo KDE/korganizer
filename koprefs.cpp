@@ -24,9 +24,7 @@
 */
 
 #include "koprefs.h"
-
-#include <KGlobalSettings>
-#include <KGlobal>
+#include <KLocalizedString>
 #include "korganizer_debug.h"
 #include <QDir>
 #include <QFontDatabase>

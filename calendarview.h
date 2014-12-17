@@ -113,7 +113,7 @@ public:
     class CalendarViewVisitor : public KCalCore::Visitor
     {
     public:
-        CalendarViewVisitor() : mView(0)
+        CalendarViewVisitor() : mView(Q_NULLPTR)
         {
         }
 
