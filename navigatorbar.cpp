@@ -41,25 +41,25 @@ NavigatorBar::NavigatorBar(QWidget *parent) : QWidget(parent)
     bool isRTL = KOGlobals::self()->reverseLayout();
 
     mPrevYear = createNavigationButton(
-                    isRTL ? QLatin1String("arrow-right-double") : QLatin1String("arrow-left-double"),
+                    isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
                     i18n("Scroll backward to the previous year"),
                     i18n("Click this button to scroll the display to the "
                          "same approximate day of the previous year"));
 
     mPrevMonth = createNavigationButton(
-                     isRTL ? QLatin1String("arrow-right") : QLatin1String("arrow-left"),
+                     isRTL ? QStringLiteral("arrow-right") : QStringLiteral("arrow-left"),
                      i18n("Scroll backward to the previous month"),
                      i18n("Click this button to scroll the display to the "
                           "same approximate date of the previous month"));
 
     mNextMonth = createNavigationButton(
-                     isRTL ? QLatin1String("arrow-left") : QLatin1String("arrow-right"),
+                     isRTL ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right"),
                      i18n("Scroll forward to the next month"),
                      i18n("Click this button to scroll the display to the "
                           "same approximate date of the next month"));
 
     mNextYear = createNavigationButton(
-                    isRTL ? QLatin1String("arrow-left-double") : QLatin1String("arrow-right-double"),
+                    isRTL ? QStringLiteral("arrow-left-double") : QStringLiteral("arrow-right-double"),
                     i18n("Scroll forward to the next year"),
                     i18n("Click this button to scroll the display to the "
                          "same approximate day of the next year"));

@@ -343,7 +343,7 @@ void FilterEdit::editCategorySelection()
 
 void FilterEdit::slotHelp()
 {
-    KHelpClient::invokeHelp(QLatin1String("categories-view"), QLatin1String("korganizer"));
+    KHelpClient::invokeHelp(QStringLiteral("categories-view"), QStringLiteral("korganizer"));
 }
 
 void FilterEdit::updateCategorySelection()
