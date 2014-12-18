@@ -112,7 +112,7 @@ public Q_SLOTS:
     /**
      * reimplemented from QDialog
      */
-    void accept();
+    void accept() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void useCustomToggled(bool);
