@@ -271,6 +271,7 @@ set(korganizerprivate_LIB_SRCS
     KF5::MailTransport
     KF5::KCMUtils
     KF5::NewStuff
+    calendarsupportcollectionpage
     ${ZLIB_LIBRARIES}
   )
 
