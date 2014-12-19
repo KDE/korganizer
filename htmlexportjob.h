@@ -62,7 +62,7 @@ public:
 
     void addHoliday(const QDate &date, const QString &name);
 
-    virtual void start() Q_DECL_OVERRIDE;
+    void start() Q_DECL_OVERRIDE;
     HTMLExportSettings *settings() const;
 
 protected:
