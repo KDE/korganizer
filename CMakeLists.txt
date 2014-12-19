@@ -255,6 +255,7 @@ set(korganizerprivate_LIB_SRCS
     kdgantt2
     korganizer_core
     korganizer_interfaces
+    calendarsupportcollectionpage
     ${KDEPIMLIBS_AKONADI_CALENDAR_LIBS}
     ${KDEPIMLIBS_AKONADI_LIBS}
     ${KDEPIMLIBS_KABC_LIBS}
