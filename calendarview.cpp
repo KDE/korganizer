@@ -2389,7 +2389,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
     if (mChanger->deletedRecently(item.id())) {
         // it was deleted already but the etm wasn't notified yet
         qCWarning(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): item with id" << item.id()
-                   << "was deleted recently, skipping";
+                                  << "was deleted recently, skipping";
         return true;
     }
 
