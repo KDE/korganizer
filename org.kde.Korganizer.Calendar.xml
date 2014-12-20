@@ -7,6 +7,7 @@
     <method name="goDate">
       <arg name="date" type="(iii)" direction="in"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QDate"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QDate"/>
     </method>
     <method name="goDate">
       <arg name="date" type="s" direction="in"/>
@@ -14,6 +15,7 @@
     <method name="showDate">
       <arg name="date" type="(iii)" direction="in"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QDate"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QDate"/>
     </method>
     <method name="openEventEditor">
       <arg name="text" type="s" direction="in"/>
@@ -78,11 +80,13 @@
     <method name="openJournalEditor">
       <arg name="date" type="(iii)" direction="in"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QDate"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QDate"/>
     </method>
     <method name="openJournalEditor">
       <arg name="text" type="s" direction="in"/>
       <arg name="date" type="(iii)" direction="in"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.In1" value="QDate"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QDate"/>
     </method>
     <method name="openJournalEditor">
       <arg name="text" type="s" direction="in"/>
