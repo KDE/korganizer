@@ -1268,7 +1268,9 @@ void KOPrefsDialogPlugins::usrRead()
                                 i18nc("@title:group", "Other Plugins")));
 
     KService::List::ConstIterator it;
-    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
+    KService::List::ConstIterator end(plugins.constEnd());
+
+    for (it = plugins.constBegin(); it != end; ++it) {
         QTreeWidgetItem *item = 0;
         if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
             item = new PluginItem(decorations, *it);
@@ -1299,7 +1301,7 @@ void KOPrefsDialogPlugins::usrSave()
 
     for (int i = 0; i < mTreeWidget->topLevelItemCount(); ++i) {
         QTreeWidgetItem *serviceTypeGroup = mTreeWidget->topLevelItem(i);
-        for (int j = 0; j < serviceTypeGroup->childCount(); j++) {
+        for (int j = 0; j < serviceTypeGroup->childCount(); ++j) {
             PluginItem *item = static_cast<PluginItem *>(serviceTypeGroup->child(j));
             if (item->checkState(0) == Qt::Checked) {
                 selectedPlugins.append(item->service()->desktopEntryName());
