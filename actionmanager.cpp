@@ -384,30 +384,30 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showAgendaView()) );
 
-  action = new KAction( KIcon( QLatin1String("view-calendar-list") ), i18n( "&Event List" ), this );
-  mACollection->addAction( QLatin1String("view_list"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showListView()) );
+  // action = new KAction( KIcon( QLatin1String("view-calendar-list") ), i18n( "&Event List" ), this );
+  // mACollection->addAction( QLatin1String("view_list"), action );
+  // connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+  //          SLOT(showListView()) );
 
-  action = new KAction( KIcon( QLatin1String("view-calendar-tasks") ), i18n( "&To-do List" ), this );
-  mACollection->addAction( QLatin1String("view_todo"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showTodoView()) );
+  // action = new KAction( KIcon( QLatin1String("view-calendar-tasks") ), i18n( "&To-do List" ), this );
+  // mACollection->addAction( QLatin1String("view_todo"), action );
+  // connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+  //          SLOT(showTodoView()) );
 
-  action = new KAction( KIcon( QLatin1String("view-calendar-journal" )), i18n( "&Journal" ), this );
-  mACollection->addAction( QLatin1String("view_journal"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showJournalView()) );
+  // action = new KAction( KIcon( QLatin1String("view-calendar-journal" )), i18n( "&Journal" ), this );
+  // mACollection->addAction( QLatin1String("view_journal"), action );
+  // connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+  //          SLOT(showJournalView()) );
 
-  action = new KAction( KIcon( QLatin1String("view-calendar-timeline") ), i18n( "Time&line" ), this );
-  mACollection->addAction( QLatin1String("view_timeline"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showTimeLineView()) );
+  // action = new KAction( KIcon( QLatin1String("view-calendar-timeline") ), i18n( "Time&line" ), this );
+  // mACollection->addAction( QLatin1String("view_timeline"), action );
+  // connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+  //          SLOT(showTimeLineView()) );
 
-  action = new KAction( KIcon( QLatin1String("view-calendar-time-spent") ), i18n( "Time&spent" ), this );
-  mACollection->addAction( QLatin1String("view_timespent"), action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showTimeSpentView()) );
+  // action = new KAction( KIcon( QLatin1String("view-calendar-time-spent") ), i18n( "Time&spent" ), this );
+  // mACollection->addAction( QLatin1String("view_timespent"), action );
+  // connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+  //          SLOT(showTimeSpentView()) );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   action = new KAction( i18n( "&Refresh" ), this );
