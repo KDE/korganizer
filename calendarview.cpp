@@ -82,6 +82,7 @@
 #include <Akonadi/Calendar/TodoPurger>
 #include <Akonadi/SearchCreateJob>
 #include <Akonadi/CollectionModifyJob>
+#include <Akonadi/CollectionFetchJob>
 #include <Akonadi/SearchQuery>
 #include <akonadi/persistentsearchattribute.h>
 #include <akonadi/entitydisplayattribute.h>
@@ -129,8 +130,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( CalendarSupport::calendarSingleton() ) );
 
   mCalendar->setObjectName( QLatin1String("KOrg Calendar") );
-  connect(mCalendar->entityTreeModel(), SIGNAL(collectionTreeFetched(Akonadi::Collection::List)),
-          SLOT(onCheckVirtualCollections(Akonadi::Collection::List)));
+  setupSearchCollections();
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mITIPHandler = new Akonadi::ITIPHandler( this );
   mITIPHandler->setCalendar( mCalendar );
@@ -276,7 +276,7 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
 
    // IdentityManager
    connect(&mIdentityManager, SIGNAL(changed()),
-            SLOT(onIdentitiesChanged()));
+            SLOT(createOrUpdateSearchCollections()));
 
   //TODO: do a pretty Summary,
   QString s;
@@ -338,20 +338,29 @@ Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
   return mCalendar;
 }
 
-void CalendarView::onCheckVirtualCollections(const Akonadi::Collection::List &collections)
+void CalendarView::setupSearchCollections()
 {
-    foreach(Akonadi::Collection col,  collections) {
-        kDebug() << "found collection:" << col.name();
+    Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(1), Akonadi::CollectionFetchJob::FirstLevel);
+    connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onSearchCollectionsFetched(KJob*)));
+}
+
+void CalendarView::onSearchCollectionsFetched(KJob *job)
+{
+    if (job->error()) {
+        kWarning() << job->errorString();
+    }
+    Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob*>(job);
+    Q_FOREACH(const Akonadi::Collection &col, fetchJob->collections()) {
         if (col.name() == QLatin1String("OpenInvitations")) {
             mOpenInvitationCollection = col;
         } else if (col.name() == QLatin1String("DeclinedInvitations")) {
             mDeclineCollection = col;
         }
     }
-    onIdentitiesChanged();
+    createOrUpdateSearchCollections();
 }
 
-void CalendarView::onIdentitiesChanged()
+void CalendarView::createOrUpdateSearchCollections()
 {
     Akonadi::SearchQuery query;
     foreach (const QString email, mIdentityManager.allEmails()) {

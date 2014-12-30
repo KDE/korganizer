@@ -658,12 +658,13 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void onCheckableProxyToggled( bool newState );
     void onTodosPurged(bool success, int numDeleted, int numIgnored);
 
-    void onCheckVirtualCollections(const Akonadi::Collection::List &collections);
+    void onSearchCollectionsFetched(KJob *job);
     void createSearchJobFinished(KJob *job);
     void modifyResult(KJob* job);
-    void onIdentitiesChanged();
+    void createOrUpdateSearchCollections();
   private:
     void init();
+    void setupSearchCollections();
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
 
