@@ -56,6 +56,7 @@ AboutData::AboutData()
               "schumacher@kde.org");
     addAuthor(ki18n("Preston Brown"), ki18n("Original Author"),
               "pbrown@kde.org");
+    addAuthor(ki18n("Laurent Montel"), ki18n("Developer"), "montel@kde.org");
     addCredit(ki18n("Richard Apodaca"));
     addCredit(ki18n("Björn Balazs"));
     addCredit(ki18n("Jan-Pascal van Best"));
