@@ -55,6 +55,7 @@ void CollectionSearchJob::start()
     Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collections, Akonadi::CollectionFetchJob::Base, this);
     fetchJob->fetchScope().setAncestorRetrieval(Akonadi::CollectionFetchScope::All);
     fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
+    fetchJob->fetchScope().setIgnoreRetrievalErrors(true);
     connect(fetchJob, SIGNAL(collectionsReceived(Akonadi::Collection::List)), this, SLOT(onCollectionsReceived(Akonadi::Collection::List)));
     connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onCollectionsFetched(KJob*)));
 }
