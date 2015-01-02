@@ -167,6 +167,7 @@ void ExportWebDialog::setupGeneralPage()
 
     KPIM::KPrefsWidPath *pathWid = addWidPath(mSettings->outputFileItem(),
                                    destGroup, QLatin1String("text/html"), KFile::File);
+#pragma "port QT5"
     //QT5 pathWid->urlRequester()->fileDialog()->setOperationMode( KFileDialog::Saving );
     connect(pathWid->urlRequester(), SIGNAL(textChanged(QString)),
             SLOT(slotTextChanged(QString)));

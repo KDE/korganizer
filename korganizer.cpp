@@ -90,6 +90,7 @@ void KOrganizer::init(bool document)
 
     QStatusBar *bar = statusBar();
 
+#pragma "port QT5"
     //QT5 bar->insertItem( QString(), ID_GENERAL, 10 );
     //QT5: FIX ME
     connect(bar, SIGNAL(pressed(int)), SLOT(statusBarPressed(int)));

@@ -1638,6 +1638,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     }
     KDateTime occurrenceDate(incidence->dtStart());
     occurrenceDate.setDate(date);
+#pragma "port QT5"
     //QT5 qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalCore::Incidence::Ptr newInc(KCalCore::Calendar::createException(
                                         incidence, occurrenceDate, thisAndFuture));
@@ -2437,6 +2438,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                 QString itemFuture(i18n("Also Delete &Future"));     //QT5 was a KGuiItem
 
                 if (!isFirst && !isLast) {
+#pragma "port QT5"
                     //QT5 itemFuture.setEnabled( true );
                     message = i18n("The calendar item \"%1\" recurs over multiple dates. "
                                    "Do you want to delete only the current one on %2, also "
@@ -2444,6 +2446,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                                    incidence->summary(),
                                    KLocale::global()->formatDate(itemDate));
                 } else {
+#pragma "port QT5"
                     //QT5 itemFuture.setEnabled( false );
                     message = i18n("The calendar item \"%1\" recurs over multiple dates. "
                                    "Do you want to delete only the current one on %2 "
