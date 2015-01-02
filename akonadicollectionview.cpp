@@ -387,7 +387,7 @@ protected:
     {
         if (role == EnabledRole) {
             Akonadi::Collection col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-            if (col.shouldList(Akonadi::Collection::ListDisplay)) {
+            if (col.enabled()) {
                 return Qt::Checked;
             } else {
                 return Qt::Unchecked;
