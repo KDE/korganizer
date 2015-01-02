@@ -341,20 +341,22 @@ Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
 void CalendarView::setupSearchCollections()
 {
     Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(1), Akonadi::CollectionFetchJob::FirstLevel);
+    fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
     connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onSearchCollectionsFetched(KJob*)));
 }
 
 void CalendarView::onSearchCollectionsFetched(KJob *job)
 {
     if (job->error()) {
-        kWarning() << job->errorString();
-    }
-    Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob*>(job);
-    Q_FOREACH(const Akonadi::Collection &col, fetchJob->collections()) {
-        if (col.name() == QLatin1String("OpenInvitations")) {
-            mOpenInvitationCollection = col;
-        } else if (col.name() == QLatin1String("DeclinedInvitations")) {
-            mDeclineCollection = col;
+        kWarning() << "Search failed: " << job->errorString();
+    } else {
+        Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob*>(job);
+        Q_FOREACH(const Akonadi::Collection &col, fetchJob->collections()) {
+            if (col.name() == QLatin1String("OpenInvitations")) {
+                mOpenInvitationCollection = col;
+            } else if (col.name() == QLatin1String("DeclinedInvitations")) {
+                mDeclineCollection = col;
+            }
         }
     }
     createOrUpdateSearchCollections();
@@ -382,6 +384,7 @@ void CalendarView::createOrUpdateSearchCollections()
         attribute->setQueryString( QString::fromLatin1(query.toJSON()) );
         attribute->setRemoteSearchEnabled(false);
         displayname->setDisplayName(i18nc("A collection of all open invidations.", "Open Invitations"));
+        mOpenInvitationCollection.setEnabled(true);
         Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mOpenInvitationCollection, this );
         connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
         kDebug() <<  "updating OpenIncidence (" << mOpenInvitationCollection.id() << ") virtual Collection";
@@ -409,6 +412,7 @@ void CalendarView::createOrUpdateSearchCollections()
         persistentsearch->setQueryString( QString::fromLatin1(query.toJSON()) );
         persistentsearch->setRemoteSearchEnabled(false);
         displayname->setDisplayName(i18nc("A collection of all declined invidations.", "Declined Invitations"));
+        mDeclineCollection.setEnabled(true);
         Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mDeclineCollection, this );
         connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
         kDebug() <<  "updating DeclinedIncidence(" << mDeclineCollection.id() << ") virtual Collection";
@@ -420,10 +424,10 @@ void CalendarView::createOrUpdateSearchCollections()
 void CalendarView::modifyResult(KJob* job)
 {
     if (job->error()) {
-        kDebug() << "Error occurred " <<  job->errorString();
-        return;
+        kWarning() << "Error occurred " <<  job->errorString();
+    } else {
+        kDebug() << "modify was successfull";
     }
-    kDebug() << "modify was successfull";
 }
 
 
@@ -432,7 +436,7 @@ void CalendarView::createSearchJobFinished( KJob *job )
     Akonadi::SearchCreateJob *createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
     const Akonadi::Collection searchCollection = createJob->createdCollection();
     if (job->error()) {
-        qDebug() << "Error occurred " <<  searchCollection.name();
+        kWarning() << "Error occurred " <<  searchCollection.name() << job->errorString();
         return;
     }
     qDebug() << "Created search folder successfully " <<  searchCollection.name();
