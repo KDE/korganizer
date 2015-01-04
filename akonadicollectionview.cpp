@@ -93,7 +93,7 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 class ColorDelegate : public QStyledItemDelegate
 {
 public:
-    explicit ColorDelegate(QObject *parent = 0) : QStyledItemDelegate(parent)
+    explicit ColorDelegate(QObject *parent = Q_NULLPTR) : QStyledItemDelegate(parent)
     {
     }
 
@@ -128,7 +128,7 @@ public:
 class ColorProxyModel : public QSortFilterProxyModel
 {
 public:
-    explicit ColorProxyModel(QObject *parent = 0)
+    explicit ColorProxyModel(QObject *parent = Q_NULLPTR)
         : QSortFilterProxyModel(parent), mInitDefaultCalendar(false)
     {
     }
