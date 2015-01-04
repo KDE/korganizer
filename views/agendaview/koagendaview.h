@@ -75,13 +75,13 @@ public:
     virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
 
     /** reimpl */
-    virtual void setTypeAheadReceiver(QObject *o);
+    void setTypeAheadReceiver(QObject *o) Q_DECL_OVERRIDE;
 
-    void setChanges(EventViews::EventView::Changes changes);
+    void setChanges(EventViews::EventView::Changes changes) Q_DECL_OVERRIDE;
 
     /** reimpl */
     void setDateRange(const KDateTime &start, const KDateTime &end,
-                      const QDate &preferredMonth = QDate());
+                      const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     virtual void updateView();
