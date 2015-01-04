@@ -75,7 +75,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     setHasDocument(false);
 
     mStatusBarExtension = new KParts::StatusBarExtension(this);
-#pragma "port QT5"
+#pragma message("port QT5")
     //QT5 setComponentData( KOrganizerFactory::componentData() );
 
     QVBoxLayout *topLayout = new QVBoxLayout(canvas);
