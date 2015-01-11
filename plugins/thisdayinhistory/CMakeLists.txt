@@ -21,12 +21,12 @@ target_link_libraries(korg_thisdayinhistory
 
 install(TARGETS
   korg_thisdayinhistory
-  DESTINATION ${PLUGIN_INSTALL_DIR}
+  DESTINATION ${KDE_INSTALL_PLUGINDIR}
 )
 
 ########### install files ###############
 
 install(FILES
   thisdayinhistory.desktop
-  DESTINATION ${SERVICES_INSTALL_DIR}/korganizer
+  DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/korganizer
 )

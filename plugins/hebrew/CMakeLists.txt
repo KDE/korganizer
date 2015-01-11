@@ -25,12 +25,12 @@ target_link_libraries(korg_hebrew
 
 install(TARGETS
   korg_hebrew
-  DESTINATION ${PLUGIN_INSTALL_DIR}
+  DESTINATION ${KDE_INSTALL_PLUGINDIR}
 )
 
 ########### install files ###############
 
 install(FILES
   hebrew.desktop
-  DESTINATION ${SERVICES_INSTALL_DIR}/korganizer
+  DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/korganizer
 )

@@ -69,7 +69,7 @@ if(KDEPIM_BUILD_DESKTOP)
   )
 
   install(TARGETS
-    korganizer ${INSTALL_TARGETS_DEFAULT_ARGS}
+    korganizer ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
   )
 
 ########### next target ###############
@@ -105,7 +105,7 @@ if(KDEPIM_BUILD_DESKTOP)
 
   install(TARGETS
     kcm_korganizer
-    DESTINATION ${PLUGIN_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_PLUGINDIR}
   )
 
 ########### next target ###############
@@ -126,7 +126,7 @@ if(KDEPIM_BUILD_DESKTOP)
 
   install(TARGETS
     korganizerpart
-    DESTINATION ${PLUGIN_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_PLUGINDIR}
   )
 
 endif()
@@ -165,7 +165,7 @@ set_target_properties(korganizer_core PROPERTIES
 )
 
 install(TARGETS
-  korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS}
+  korganizer_core ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 ########### next target ###############
@@ -280,7 +280,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(TARGETS
-    korganizerprivate ${INSTALL_TARGETS_DEFAULT_ARGS}
+    korganizerprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
     LIBRARY NAMELINK_SKIP
   )
 
@@ -288,62 +288,62 @@ set(korganizerprivate_LIB_SRCS
 
   install(FILES
     korganizer.kcfg
-    DESTINATION ${KCFG_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_KCFGDIR}
   )
 
   install(FILES
     korganizer_part.rc
-    DESTINATION ${KXMLGUI_INSTALL_DIR}/korganizer
+    DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/korganizer
   )
 
   install(FILES
     dbuscalendar.desktop
-    DESTINATION ${SERVICETYPES_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR}
   )
 
   install(FILES
     tips
-    DESTINATION ${DATA_INSTALL_DIR}/korganizer
+    DESTINATION ${KDE_INSTALL_DATADIR}/korganizer
   )
 
   install(FILES
     korganizer_part.desktop webcal.protocol
-    DESTINATION ${SERVICES_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
   )
 
   install(FILES
     korganizerui.rc
-    DESTINATION ${KXMLGUI_INSTALL_DIR}/korganizer
+    DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/korganizer
   )
 
   install(FILES
     korganizer.upd
-    DESTINATION ${KCONF_UPDATE_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
   )
 
   install(FILES
     org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml
-    DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
   )
 
   install(FILES
     korganizer.knsrc
-    DESTINATION ${CONFIG_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_CONFDIR}
   )
 
   install(PROGRAMS
     org.kde.korganizer.desktop korganizer-import.desktop
-    DESTINATION ${XDG_APPS_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_APPDIR}
   )
 
   install(FILES
     korganizer.appdata.xml
-    DESTINATION ${CMAKE_INSTALL_METAINFODIR}
+    DESTINATION ${KDE_INSTALL_METAINFODIR}
   )
 
   install(PROGRAMS
     ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal
-    DESTINATION ${BIN_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_BINDIR}
   )
 
 endif()
