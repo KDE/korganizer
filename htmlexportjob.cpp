@@ -170,7 +170,12 @@ void HtmlExportJob::finishExport()
 
   QString saveMessage;
   if ( saveStatus ) {
-    saveMessage = i18n( "Web page successfully written to \"%1\"", dest.url() );
+      QString urlStr;
+      if (dest.isLocalFile())
+          urlStr = dest.toLocalFile();
+      else
+          urlStr = dest.prettyUrl();
+    saveMessage = i18n( "Web page successfully written to \"%1\"", urlStr );
   } else {
     saveMessage = i18n( "Export failed. %1", errorMessage );
   }
