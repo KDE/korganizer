@@ -167,8 +167,6 @@ void ExportWebDialog::setupGeneralPage()
 
     KPIM::KPrefsWidPath *pathWid = addWidPath(mSettings->outputFileItem(),
                                    destGroup, QLatin1String("text/html"), KFile::File);
-#pragma message("port QT5")
-    //QT5 pathWid->urlRequester()->fileDialog()->setOperationMode( KFileDialog::Saving );
     connect(pathWid->urlRequester(), SIGNAL(textChanged(QString)),
             SLOT(slotTextChanged(QString)));
     destLayout->addWidget(pathWid->label());
@@ -193,16 +191,22 @@ void ExportWebDialog::setupTodoPage()
     QHBoxLayout *hboxHBoxLayout = new QHBoxLayout(hbox);
     hboxHBoxLayout->setMargin(0);
     topLayout->addWidget(hbox);
-    addWidString(mSettings->todoListTitleItem(), hbox);
+    KPIM::KPrefsWidString *s = addWidString(mSettings->todoListTitleItem(), hbox);
+    hboxHBoxLayout->addWidget(s->label());
+    hboxHBoxLayout->addWidget(s->lineEdit());
 
     QWidget *vbox = new QWidget(mTodoPage);
     QVBoxLayout *vboxVBoxLayout = new QVBoxLayout(vbox);
     vboxVBoxLayout->setMargin(0);
     topLayout->addWidget(vbox);
-    addWidBool(mSettings->taskDueDateItem(), vbox);
-    addWidBool(mSettings->taskLocationItem(), vbox);
-    addWidBool(mSettings->taskCategoriesItem(), vbox);
-    addWidBool(mSettings->taskAttendeesItem(), vbox);
+    KPIM::KPrefsWidBool *boolWid = addWidBool(mSettings->taskDueDateItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
+    boolWid = addWidBool(mSettings->taskLocationItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
+    boolWid = addWidBool(mSettings->taskCategoriesItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
+    boolWid = addWidBool(mSettings->taskAttendeesItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
 //  addWidBool( mSettings->taskExcludePrivateItem(), vbox );
 //  addWidBool( mSettings->taskExcludeConfidentialItem(), vbox );
 
@@ -220,15 +224,20 @@ void ExportWebDialog::setupEventPage()
     QHBoxLayout *hboxHBoxLayout = new QHBoxLayout(hbox);
     hboxHBoxLayout->setMargin(0);
     topLayout->addWidget(hbox);
-    addWidString(mSettings->eventTitleItem(), hbox);
+    KPIM::KPrefsWidString *s = addWidString(mSettings->eventTitleItem(), hbox);
+    hboxHBoxLayout->addWidget(s->label());
+    hboxHBoxLayout->addWidget(s->lineEdit());
 
     QWidget *vbox = new QWidget(mEventPage);
     QVBoxLayout *vboxVBoxLayout = new QVBoxLayout(vbox);
     vboxVBoxLayout->setMargin(0);
     topLayout->addWidget(vbox);
-    addWidBool(mSettings->eventLocationItem(), vbox);
-    addWidBool(mSettings->eventCategoriesItem(), vbox);
-    addWidBool(mSettings->eventAttendeesItem(), vbox);
+    KPIM::KPrefsWidBool *boolWid = addWidBool(mSettings->eventLocationItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
+    boolWid = addWidBool(mSettings->eventCategoriesItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
+    boolWid = addWidBool(mSettings->eventAttendeesItem(), vbox);
+    vboxVBoxLayout->addWidget(boolWid->checkBox());
 //  addWidBool( mSettings->eventExcludePrivateItem(), vbox );
 //  addWidBool( mSettings->eventExcludeConfidentialItem(), vbox );
 
