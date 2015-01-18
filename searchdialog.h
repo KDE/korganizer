@@ -78,7 +78,7 @@ Q_SIGNALS:
 
 protected:
     /*reimp*/
-    virtual void showEvent(QShowEvent *event);
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
 private:
     void search(const QRegExp &);
     void readConfig();
