@@ -318,43 +318,44 @@ void Controller::setSearchString(const QString &searchString)
     //TODO: Delay and abort when results are found
     mSearchModel->clear();
     emit searchIsActive(!searchString.isEmpty());
-    if (searchString.size() < 2) {
+    const bool showAllPersonalFolders = (searchString == QLatin1String("*"));
+    if (searchString.size() < 2 && !showAllPersonalFolders) {
         emit searching(false);
         return;
     }
 
-    emit searching(true);
+    if (!showAllPersonalFolders) {
+        emit searching(true);
 
-    mPersonSearchJob = new PersonSearchJob(searchString, this);
-    connect(mPersonSearchJob, SIGNAL(personsFound(QList<Person>)), this, SLOT(onPersonsFound(QList<Person>)));
-    connect(mPersonSearchJob, SIGNAL(personUpdate(Person)), this, SLOT(onPersonUpdate(Person)));
-    connect(mPersonSearchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonsFound(KJob*)));
-    mPersonSearchJob->start();
+        mPersonSearchJob = new PersonSearchJob(searchString, this);
+        connect(mPersonSearchJob, SIGNAL(personsFound(QList<Person>)), this, SLOT(onPersonsFound(QList<Person>)));
+        connect(mPersonSearchJob, SIGNAL(personUpdate(Person)), this, SLOT(onPersonUpdate(Person)));
+        connect(mPersonSearchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonsFound(KJob*)));
+        mPersonSearchJob->start();
+    }
 
-    mCollectionSearchJob = new CollectionSearchJob(searchString, QStringList(), this);
+    mCollectionSearchJob = new CollectionSearchJob(searchString, QStringList() << QLatin1String("text/calendar"), this);
     connect(mCollectionSearchJob, SIGNAL(result(KJob*)), this, SLOT(onCollectionsFound(KJob*)));
     mCollectionSearchJob->start();
 }
 
 void Controller::onCollectionsFound(KJob* job)
 {
+    mCollectionSearchJob = 0;
     if (!mPersonSearchJob) {
         emit searching(false);
     }
     if (job->error()) {
         kWarning() << job->errorString();
-        mCollectionSearchJob = 0;
         return;
     }
-    Q_ASSERT(mCollectionSearchJob == static_cast<CollectionSearchJob*>(job));
-    Q_FOREACH(const Akonadi::Collection &col, mCollectionSearchJob->matchingCollections()) {
+    Q_FOREACH(const Akonadi::Collection &col, static_cast<CollectionSearchJob*>(job)->matchingCollections()) {
         CollectionNode *collectionNode = new CollectionNode(*mSearchModel, col);
         collectionNode->isSearchNode = true;
         //toggled by the checkbox, results in collection getting monitored
         // connect(&collectionNode->emitter, SIGNAL(enabled(bool, Akonadi::Collection)), this, SLOT(onCollectionEnabled(bool, Akonadi::Collection)));
         mSearchModel->addNode(ReparentingModel::Node::Ptr(collectionNode));
     }
-    mCollectionSearchJob = 0;
 }
 
 void Controller::onPersonsFound(const QList<Person> &persons)
@@ -377,15 +378,14 @@ void Controller::onPersonUpdate(const Person &person)
 
 void Controller::onPersonsFound(KJob* job)
 {
+    mPersonSearchJob = 0;
     if (!mCollectionSearchJob) {
         emit searching(false);
     }
     if (job->error()) {
         kWarning() << job->errorString();
-        mPersonSearchJob = 0;
         return;
     }
-    mPersonSearchJob = 0;
 }
 
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)

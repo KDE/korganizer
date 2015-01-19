@@ -569,7 +569,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView *view, bool hasContex
   filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
 //   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
   connect( searchCol, SIGNAL(textChanged(QString)),
-          filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
+          filterTreeViewModel, SLOT(setFilterWildcard(QString)) );
 
   SortProxyModel *searchSortProxy = new SortProxyModel( this );
   searchSortProxy->setSourceModel(filterTreeViewModel);
