@@ -35,8 +35,8 @@
 #include <baloo/pim/collectionquery.h>
 #include <akonadi/collectionidentificationattribute.h>
 
-#include "collectionsearchjob.h"
-#include "personsearchjob.h"
+#include <libkdepim/job/collectionsearchjob.h>
+#include <libkdepim/job/personsearchjob.h>
 
 CollectionNode::CollectionNode(ReparentingModel& personModel, const Akonadi::Collection& col)
 :   Node(personModel),
@@ -331,7 +331,7 @@ void Controller::setSearchString(const QString &searchString)
     connect(mPersonSearchJob, SIGNAL(result(KJob*)), this, SLOT(onPersonsFound(KJob*)));
     mPersonSearchJob->start();
 
-    mCollectionSearchJob = new CollectionSearchJob(searchString, this);
+    mCollectionSearchJob = new CollectionSearchJob(searchString, QStringList(), this);
     connect(mCollectionSearchJob, SIGNAL(result(KJob*)), this, SLOT(onCollectionsFound(KJob*)));
     mCollectionSearchJob->start();
 }

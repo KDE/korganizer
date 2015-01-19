@@ -28,7 +28,7 @@
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/Collection>
 #include "reparentingmodel.h"
-#include "person.h"
+#include <libkdepim/job/person.h>
 
 #include <libkdepim/ldap/ldapclientsearch.h>
 
