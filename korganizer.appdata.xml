@@ -28,6 +28,7 @@
   <name xml:lang="sv">Korganizer</name>
   <name xml:lang="uk">KOrganizer</name>
   <name xml:lang="x-test">xxKOrganizerxx</name>
+  <name xml:lang="zh-CN">KOrganizer</name>
   <description>
     <p>
       KOrganizer is the calendar and scheduling component of the Kontact suite.
@@ -76,6 +77,7 @@
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
+    <p xml:lang="zh-CN">功能：</p>
     <ul>
       <li>Support for multiple calendars and todo lists.</li>
       <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents</li>
@@ -141,6 +143,7 @@
       <li xml:lang="sv">Ångra och gör om.</li>
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="x-test">xxUndo and Redo.xx</li>
+      <li xml:lang="zh-CN">撤消和重做。</li>
       <li>Todo integration with agenda view.</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
       <li xml:lang="en-GB">Todo integration with agenda view.</li>
@@ -224,6 +227,7 @@
       <li xml:lang="sv">Insticksprogram för Judiska kalenderdatum.</li>
       <li xml:lang="uk">додаток для запису подій за єврейським календарем;</li>
       <li xml:lang="x-test">xxPlugin for Jewish calendar dates.xx</li>
+      <li xml:lang="zh-CN">犹太教日历插件。</li>
       <li>Print support.</li>
       <li xml:lang="ca">Implementa la impressió</li>
       <li xml:lang="cs">Podpora tisku.</li>
@@ -248,6 +252,7 @@
       <li xml:lang="sv">Stöd för utskrift.</li>
       <li xml:lang="uk">підтримка друку календарів.</li>
       <li xml:lang="x-test">xxPrint support.xx</li>
+      <li xml:lang="zh-CN">打印支持。</li>
     </ul>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=korganizer</url>
