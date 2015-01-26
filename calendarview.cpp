@@ -171,6 +171,7 @@ CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),
     mEventViewerBoxVBoxLayout->setMargin(0);
     mEventViewer = new CalendarSupport::IncidenceViewer(mCalendar.data(), mEventViewerBox);
     mEventViewer->setObjectName(QLatin1String("EventViewer"));
+    mEventViewerBoxVBoxLayout->addWidget(mEventViewer);
 
     QWidget *rightBox = new QWidget(mPanner);
     QVBoxLayout *rightBoxVBoxLayout = new QVBoxLayout(rightBox);
