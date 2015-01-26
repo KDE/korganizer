@@ -52,7 +52,7 @@ ExportWebDialog::ExportWebDialog(KOrg::HTMLExportSettings *settings, QWidget *pa
     setAttribute(Qt::WA_DeleteOnClose);
     setFaceType(Tabbed);
     setWindowTitle(i18n("Export Calendar as Web Page"));
-    setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
     setModal(false);
     mExportButton = new QPushButton(i18n("Export"));
     mExportButton->setDefault(true);
