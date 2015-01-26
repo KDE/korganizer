@@ -44,6 +44,7 @@
 #include <QTextStream>
 #include <KLocalizedString>
 #include <QLocale>
+#include <QDesktopServices>
 
 using namespace KOrg;
 
@@ -179,16 +180,25 @@ void HtmlExportJob::finishExport()
             urlStr = dest.toDisplayString();
         }
 
-        saveMessage = i18n("Web page successfully written to \"%1\"", urlStr);
+        saveMessage = i18n("Web page successfully written to \"%1\". Do you want to show it?", urlStr);
     } else {
         saveMessage = i18n("Export failed. %1", errorMessage);
     }
 
     if (!d->mAutoMode) {
-        KMessageBox::information(
-            d->mParentWidget,
-            saveMessage,
-            i18nc("@title:window", "Export Status"));
+        if (saveStatus) {
+            if (KMessageBox::Yes == KMessageBox::questionYesNo(
+                        d->mParentWidget,
+                        saveMessage,
+                        i18nc("@title:window", "Export Status"), KGuiItem(i18n("Show page Web")),KStandardGuiItem::no())) {
+                QDesktopServices::openUrl(dest);
+            }
+        } else {
+            KMessageBox::information(d->mParentWidget,
+                                     saveMessage,
+                                     i18nc("@title:window", "Export Status"));
+
+        }
     } else {
         d->mMainWindow->showStatusMessage(
             i18nc("@info:status",
