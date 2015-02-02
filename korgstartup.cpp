@@ -22,7 +22,7 @@
 void KOrgStartup::migrateConfig()
 {
     Kdelibs4ConfigMigrator migrate(QLatin1String("korganizer"));
-    migrate.setConfigFiles(QStringList() << QLatin1String("korganizer_htmlexportrc") << QLatin1String("korganizerrc"));
+    migrate.setConfigFiles(QStringList() << QLatin1String("korganizer_htmlexportrc") << QLatin1String("korganizerrc") << QLatin1String("freebusyurls"));
     migrate.setUiFiles(QStringList() << QLatin1String("korganizer_part.rc") << QLatin1String("korganizerui.rc"));
     migrate.migrate();
 }
