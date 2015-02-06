@@ -189,6 +189,7 @@ void ExportWebDialog::setupTodoPage()
   topLayout->setSpacing( 10 );
 
   KHBox *hbox = new KHBox( mTodoPage );
+  hbox->setSpacing(10);
   topLayout->addWidget( hbox );
   addWidString( mSettings->todoListTitleItem(), hbox );
 
@@ -212,6 +213,7 @@ void ExportWebDialog::setupEventPage()
   topLayout->setSpacing( 10 );
 
   KHBox *hbox = new KHBox( mEventPage );
+  hbox->setSpacing(10);
   topLayout->addWidget( hbox );
   addWidString( mSettings->eventTitleItem(), hbox );
 
