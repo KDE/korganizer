@@ -234,11 +234,11 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     //filterTreeViewModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
     //filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
     mCollectionView->setModel(colorProxy);
-    connect(mCollectionView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            SLOT(updateMenu()));
+    connect(mCollectionView->selectionModel(), &QItemSelectionModel::selectionChanged,
+            this, &AkonadiCollectionView::updateMenu);
 
-    connect(mCollectionView->model(), SIGNAL(rowsInserted(QModelIndex,int,int)),
-            SLOT(checkNewCalendar(QModelIndex,int,int)));
+    connect(mCollectionView->model(), &QAbstractItemModel::rowsInserted,
+            this, &AkonadiCollectionView::checkNewCalendar);
 
     //connect( searchCol, SIGNAL(textChanged(QString)),
     //         filterTreeViewModel, SLOT(setFilterFixedString(QString)) );
@@ -291,12 +291,12 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mActionManager->interceptAction(Akonadi::StandardActionManager::DeleteResources);
         mActionManager->interceptAction(Akonadi::StandardActionManager::DeleteCollections);
 
-        connect(mActionManager->action(Akonadi::StandardActionManager::CreateResource), SIGNAL(triggered(bool)),
-                this, SLOT(newCalendar()));
-        connect(mActionManager->action(Akonadi::StandardActionManager::DeleteResources), SIGNAL(triggered(bool)),
-                this, SLOT(deleteCalendar()));
-        connect(mActionManager->action(Akonadi::StandardActionManager::DeleteCollections), SIGNAL(triggered(bool)),
-                this, SLOT(deleteCalendar()));
+        connect(mActionManager->action(Akonadi::StandardActionManager::CreateResource), &QAction::triggered,
+                this, &AkonadiCollectionView::newCalendar);
+        connect(mActionManager->action(Akonadi::StandardActionManager::DeleteResources), &QAction::triggered,
+                this, &AkonadiCollectionView::deleteCalendar);
+        connect(mActionManager->action(Akonadi::StandardActionManager::DeleteCollections), &QAction::triggered,
+                this, &AkonadiCollectionView::deleteCalendar);
 
         mActionManager->setContextText(Akonadi::StandardActionManager::CollectionProperties,
                                        Akonadi::StandardActionManager::DialogTitle,

@@ -99,8 +99,8 @@ void KOrganizer::init(bool document)
 
     bar->addPermanentWidget(progressBar->littleProgress());
 
-    connect(mActionManager->view(), SIGNAL(statusMessage(QString)),
-            SLOT(showStatusMessage(QString)));
+    connect(mActionManager->view(), &CalendarView::statusMessage,
+            this, &KOrganizer::showStatusMessage);
 
     setStandardToolBarMenuEnabled(true);
     setTitle();
