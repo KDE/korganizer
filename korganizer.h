@@ -88,15 +88,15 @@ public:
     /** Get current URL */
     QUrl getCurrentURL() const;
 
-    virtual KXMLGUIFactory *mainGuiFactory()
+    KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE
     {
         return factory();
     }
-    virtual KXMLGUIClient *mainGuiClient()
+    KXMLGUIClient *mainGuiClient() Q_DECL_OVERRIDE
     {
         return this;
     }
-    virtual QWidget *topLevelWidget()
+    QWidget *topLevelWidget() Q_DECL_OVERRIDE
     {
         return this;
     }
