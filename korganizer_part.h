@@ -73,17 +73,17 @@ public:
     /** Get current URL */
     QUrl getCurrentURL() const Q_DECL_OVERRIDE;
 
-    virtual KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE
+    KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE
     {
         return factory();
     }
-    virtual KXMLGUIClient *mainGuiClient() Q_DECL_OVERRIDE
+    KXMLGUIClient *mainGuiClient() Q_DECL_OVERRIDE
     {
         return this;
     }
     QWidget *topLevelWidget() Q_DECL_OVERRIDE;
     ActionManager *actionManager() Q_DECL_OVERRIDE;
-    virtual KActionCollection *getActionCollection() const Q_DECL_OVERRIDE
+    KActionCollection *getActionCollection() const Q_DECL_OVERRIDE
     {
         return actionCollection();
     }

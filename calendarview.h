@@ -162,7 +162,7 @@ public:
     }
     // TODO_NG
     //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    virtual Akonadi::IncidenceChanger *incidenceChanger() const Q_DECL_OVERRIDE
+    Akonadi::IncidenceChanger *incidenceChanger() const Q_DECL_OVERRIDE
     {
         return mChanger;
     }

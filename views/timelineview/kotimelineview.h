@@ -54,7 +54,7 @@ public:
     void updateView() Q_DECL_OVERRIDE;
     virtual void changeIncidenceDisplay(const Akonadi::Item &incidence,
                                         Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
-    virtual int maxDatesHint() const Q_DECL_OVERRIDE
+    int maxDatesHint() const Q_DECL_OVERRIDE
     {
         return 0;
     }

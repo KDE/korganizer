@@ -38,7 +38,7 @@ public:
     ~KOWhatsNextView();
 
     int currentDateCount() const Q_DECL_OVERRIDE;
-    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE
+    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE
     {
         return Akonadi::Item::List();
     }
