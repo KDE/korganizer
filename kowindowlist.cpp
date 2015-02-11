@@ -28,7 +28,7 @@
 #include <QUrl>
 
 KOWindowList::KOWindowList()
-    : QObject(0), mDefaultWindow(0)
+    : QObject(Q_NULLPTR), mDefaultWindow(Q_NULLPTR)
 {
 }
 
@@ -48,7 +48,7 @@ void KOWindowList::addWindow(KOrg::MainWindow *korg)
 void KOWindowList::removeWindow(KOrg::MainWindow *korg)
 {
     if (korg == mDefaultWindow) {
-        mDefaultWindow = 0;
+        mDefaultWindow = Q_NULLPTR;
     } else {
         mWindowList.removeAll(korg);
     }
@@ -74,7 +74,7 @@ KOrg::MainWindow *KOWindowList::findInstance(const QUrl &url)
             return inst;
         }
     }
-    return 0;
+    return Q_NULLPTR;
 }
 
 KOrg::MainWindow *KOWindowList::defaultInstance()

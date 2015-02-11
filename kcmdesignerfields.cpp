@@ -65,7 +65,7 @@ public:
             return;
         }
         QUiLoader builder;
-        QWidget *wdg = builder.load(&f, 0);
+        QWidget *wdg = builder.load(&f, Q_NULLPTR);
         f.close();
         if (wdg) {
             setText(0, wdg->windowTitle());
@@ -144,12 +144,12 @@ private:
 KCMDesignerFields::KCMDesignerFields(QWidget *parent,
                                      const QVariantList &args)
     : KCModule(parent, args),
-      mPageView(0),
-      mPagePreview(0),
-      mPageDetails(0),
-      mDeleteButton(0),
-      mImportButton(0),
-      mDesignerButton(0)
+      mPageView(Q_NULLPTR),
+      mPagePreview(Q_NULLPTR),
+      mPageDetails(Q_NULLPTR),
+      mDeleteButton(Q_NULLPTR),
+      mImportButton(Q_NULLPTR),
+      mDesignerButton(Q_NULLPTR)
 {
     KAboutData *about = new KAboutData(QStringLiteral("KCMDesignerfields"),
                                        i18n("KCMDesignerfields"),
@@ -194,7 +194,7 @@ void KCMDesignerFields::deleteFile()
                     this,
                     i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>",
                          pageItem->text(0)), QString(), KStandardGuiItem::del()) == KMessageBox::Continue) {
-            KIO::NetAccess::del(pageItem->path(), 0);
+            KIO::NetAccess::del(pageItem->path(), Q_NULLPTR);
         }
     }
     // The actual view refresh will be done automagically by the slots connected to kdirwatch
@@ -242,7 +242,7 @@ void KCMDesignerFields::loadActivePages(const QStringList &ai)
 {
     QTreeWidgetItemIterator it(mPageView);
     while (*it) {
-        if ((*it)->parent() == 0) {
+        if ((*it)->parent() == Q_NULLPTR) {
             PageItem *item = static_cast<PageItem *>(*it);
             if (ai.contains(item->name())) {
                 item->setCheckState(0, Qt::Checked);
@@ -270,7 +270,7 @@ QStringList KCMDesignerFields::saveActivePages()
 
     QStringList activePages;
     while (*it) {
-        if ((*it)->parent() == 0) {
+        if ((*it)->parent() == Q_NULLPTR) {
             PageItem *item = static_cast<PageItem *>(*it);
             activePages.append(item->name());
         }
@@ -382,7 +382,7 @@ void KCMDesignerFields::initGUI()
 
 void KCMDesignerFields::updatePreview()
 {
-    QTreeWidgetItem *item = 0;
+    QTreeWidgetItem *item = Q_NULLPTR;
     if (mPageView->selectedItems().size() == 1) {
         item = mPageView->selectedItems().first();
     }
@@ -430,7 +430,7 @@ void KCMDesignerFields::updatePreview()
 
 void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
 {
-    if (!item || item->parent() != 0) {
+    if (!item || item->parent() != Q_NULLPTR) {
         return;
     }
 
@@ -455,7 +455,7 @@ void KCMDesignerFields::startDesigner()
     // finally jump there
     QDir::setCurrent(QLatin1String(cepPath.toLocal8Bit()));
 
-    QTreeWidgetItem *item = 0;
+    QTreeWidgetItem *item = Q_NULLPTR;
     if (mPageView->selectedItems().size() == 1) {
         item = mPageView->selectedItems().first();
     }

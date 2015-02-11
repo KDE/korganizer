@@ -94,15 +94,15 @@
 #include <KLocale>
 #include <QStandardPaths>
 
-KOWindowList *ActionManager::mWindowList = 0;
+KOWindowList *ActionManager::mWindowList = Q_NULLPTR;
 
 ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
                              QObject *parent, KOrg::MainWindow *mainWindow,
                              bool isPart, QMenuBar *menuBar)
     : QObject(parent),
-      mCollectionViewShowAction(0),
-      mCollectionView(0), mCollectionViewStateSaver(0),
-      mCollectionSelectionModelStateSaver(0)
+      mCollectionViewShowAction(Q_NULLPTR),
+      mCollectionView(Q_NULLPTR), mCollectionViewStateSaver(Q_NULLPTR),
+      mCollectionSelectionModelStateSaver(Q_NULLPTR)
 {
     new KOrgCalendarAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QLatin1String("/Calendar"), this);
@@ -111,7 +111,7 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
     mACollection = mGUIClient->actionCollection();
     mCalendarView = widget;
     mIsPart = isPart;
-    mTempFile = 0;
+    mTempFile = Q_NULLPTR;
     mHtmlExportSync = false;
     mMainWindow = mainWindow;
     mMenuBar = menuBar;
@@ -857,7 +857,7 @@ void ActionManager::file_open(const QUrl &url)
 
     // is that URL already opened somewhere else? Activate that window
     KOrg::MainWindow *korg = ActionManager::findInstance(url);
-    if ((0 != korg) && (korg != mMainWindow)) {
+    if ((Q_NULLPTR != korg) && (korg != mMainWindow)) {
 #if KDEPIM_HAVE_X11
         KWindowSystem::activateWindow(korg->topLevelWidget()->winId());
 #endif
@@ -1112,7 +1112,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
     QString fileOrig = mFile;
     QUrl URLOrig = mURL;
 
-    QTemporaryFile *tempFile = 0;
+    QTemporaryFile *tempFile = Q_NULLPTR;
     if (url.isLocalFile()) {
         mFile = url.toLocalFile();
     } else {
@@ -1280,7 +1280,7 @@ KOrg::MainWindow *ActionManager::findInstance(const QUrl &url)
             return mWindowList->findInstance(url);
         }
     } else {
-        return 0;
+        return Q_NULLPTR;
     }
 }
 
@@ -1459,7 +1459,7 @@ QString ActionManager::localFileName()
 class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
 {
 public:
-    ActionStringsVisitor() : mShow(0), mEdit(0), mDelete(0) {}
+    ActionStringsVisitor() : mShow(Q_NULLPTR), mEdit(Q_NULLPTR), mDelete(Q_NULLPTR) {}
 
     bool act(KCalCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del)
     {
@@ -1470,7 +1470,7 @@ public:
     }
 
 protected:
-    bool visit(KCalCore::Event::Ptr)
+    bool visit(KCalCore::Event::Ptr) Q_DECL_OVERRIDE
     {
         if (mShow) {
             mShow->setText(i18n("&Show Event"));
@@ -1484,7 +1484,7 @@ protected:
         return true;
     }
 
-    bool visit(KCalCore::Todo::Ptr)
+    bool visit(KCalCore::Todo::Ptr) Q_DECL_OVERRIDE
     {
         if (mShow) {
             mShow->setText(i18n("&Show To-do"));
@@ -1498,12 +1498,12 @@ protected:
         return true;
     }
 
-    bool visit(KCalCore::Journal::Ptr)
+    bool visit(KCalCore::Journal::Ptr) Q_DECL_OVERRIDE
     {
         return assignDefaultStrings();
     }
 
-    bool visit(KCalCore::FreeBusy::Ptr)   // to inhibit hidden virtual compile warning
+    bool visit(KCalCore::FreeBusy::Ptr) Q_DECL_OVERRIDE   // to inhibit hidden virtual compile warning
     {
         return false;
     }
@@ -1678,11 +1678,11 @@ void ActionManager::openEventEditor(const QString &summary,
         KMime::Message *msg = new KMime::Message();
         msg->setContent(f.readAll());
         msg->parse();
-        if (msg == msg->textContent() || msg->textContent() == 0) {   // no attachments
+        if (msg == msg->textContent() || msg->textContent() == Q_NULLPTR) {   // no attachments
             attData = file;
         } else {
             if (KMessageBox::warningContinueCancel(
-                        0,
+                        Q_NULLPTR,
                         i18n("Removing attachments from an email might invalidate its signature."),
                         i18n("Remove Attachments"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
                         QLatin1String("BodyOnlyInlineAttachment")) != KMessageBox::Continue) {

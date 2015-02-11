@@ -46,23 +46,23 @@ public:
     explicit KOTimelineView(QWidget *parent = Q_NULLPTR);
     ~KOTimelineView();
 
-    virtual Akonadi::Item::List selectedIncidences();
-    virtual KCalCore::DateList selectedIncidenceDates();
-    virtual int currentDateCount() const;
-    virtual void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate());
-    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
-    virtual void updateView();
+    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    virtual KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
+    virtual int currentDateCount() const Q_DECL_OVERRIDE;
+    virtual void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
+    virtual void updateView() Q_DECL_OVERRIDE;
     virtual void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                        Akonadi::IncidenceChanger::ChangeType);
-    virtual int maxDatesHint() const
+                                        Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
+    virtual int maxDatesHint() const Q_DECL_OVERRIDE
     {
         return 0;
     }
-    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
-    virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
-    virtual void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
+    virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
+    virtual void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
 
-    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
 
 private:
     class Private;

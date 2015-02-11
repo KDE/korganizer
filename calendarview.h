@@ -128,7 +128,7 @@ public:
     };
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
-    Akonadi::ETMCalendar::Ptr calendar() const;
+    Akonadi::ETMCalendar::Ptr calendar() const Q_DECL_OVERRIDE;
 
     void showMessage(const QString &message, KMessageWidget::MessageType);
 
@@ -162,7 +162,7 @@ public:
     }
     // TODO_NG
     //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    virtual Akonadi::IncidenceChanger *incidenceChanger() const
+    virtual Akonadi::IncidenceChanger *incidenceChanger() const Q_DECL_OVERRIDE
     {
         return mChanger;
     }
@@ -174,12 +174,12 @@ public:
      */
     void updateHighlightModes();
 
-    QDate startDate();
-    QDate endDate();
+    QDate startDate() Q_DECL_OVERRIDE;
+    QDate endDate() Q_DECL_OVERRIDE;
 
     KOrg::BaseView *currentView() const;
-    void addView(KOrg::BaseView *);
-    void showView(KOrg::BaseView *);
+    void addView(KOrg::BaseView *) Q_DECL_OVERRIDE;
+    void showView(KOrg::BaseView *) Q_DECL_OVERRIDE;
 
     /**
      * Adds a calendar view extension widget. CalendarView takes ownership of the
@@ -191,7 +191,7 @@ public:
      * Returns the item selected in the current view (or an invalid one if none selected)
      * @reimp
      */
-    Akonadi::Item currentSelection();
+    Akonadi::Item currentSelection() Q_DECL_OVERRIDE;
 
     /**
      * Returns a pointer to the incidence selected in the current view. If there
@@ -259,7 +259,7 @@ Q_SIGNALS:
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger(Akonadi::IncidenceChanger *);
+    void newIncidenceChanger(Akonadi::IncidenceChanger *) Q_DECL_OVERRIDE;
     void exportHTML(KOrg::HTMLExportSettings *);
 
     void filtersUpdated(const QStringList &, int);
@@ -326,7 +326,7 @@ public Q_SLOTS:
     bool showIncidenceContext(Akonadi::Item::Id id);
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    bool editIncidence(const Akonadi::Item &item, bool isCounter = false);
+    bool editIncidence(const Akonadi::Item &item, bool isCounter = false) Q_DECL_OVERRIDE;
     bool editIncidence(Akonadi::Item::Id id);
     void editIncidence();
 
@@ -462,7 +462,7 @@ public Q_SLOTS:
 
     void updateView(const QDate &start, const QDate &end,
                     const QDate &preferredMonth, const bool updateTodos = true);
-    void updateView();
+    void updateView() Q_DECL_OVERRIDE;
 
     void updateUnmanagedViews();
 

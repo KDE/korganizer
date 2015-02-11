@@ -42,13 +42,13 @@ public:
     EventViews::PrefsPtr eventViewsPreferences() const;
 
     /** Set preferences to default values */
-    void usrSetDefaults();
+    void usrSetDefaults() Q_DECL_OVERRIDE;
 
     /** Read preferences from config file */
-    void usrRead();
+    void usrRead() Q_DECL_OVERRIDE;
 
     /** Write preferences to config file */
-    bool usrSave();
+    bool usrSave() Q_DECL_OVERRIDE;
 
 private:
     /** Constructor disabled for public. Use instance() to create a KOPrefs

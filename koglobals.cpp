@@ -46,7 +46,7 @@ KOGlobals *KOGlobals::self()
 }
 
 KOGlobals::KOGlobals()
-    : mOwnInstance("korganizer"), mHolidays(0)
+    : mOwnInstance("korganizer"), mHolidays(Q_NULLPTR)
 {
     KIconLoader::global()->addAppDir(QLatin1String("kdepim"));
 }

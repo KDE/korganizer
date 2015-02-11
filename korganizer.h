@@ -56,14 +56,14 @@ public:
     KOrganizer();
     virtual ~KOrganizer();
 
-    void init(bool hasDocument);
+    void init(bool hasDocument) Q_DECL_OVERRIDE;
 
-    KOrg::CalendarViewBase *view() const;
-    ActionManager *actionManager()
+    KOrg::CalendarViewBase *view() const Q_DECL_OVERRIDE;
+    ActionManager *actionManager() Q_DECL_OVERRIDE
     {
         return mActionManager;
     }
-    KActionCollection *getActionCollection() const
+    KActionCollection *getActionCollection() const Q_DECL_OVERRIDE
     {
         return actionCollection();
     }
@@ -77,16 +77,16 @@ public:
                      false if the URL should be added as a new resource.
         @return true on success, false if an error occurred
     */
-    bool openURL(const QUrl &url, bool merge = false);
+    bool openURL(const QUrl &url, bool merge = false) Q_DECL_OVERRIDE;
 
     /** Save calendar file to URL of current calendar */
-    bool saveURL();
+    bool saveURL() Q_DECL_OVERRIDE;
 
     /** Save calendar file to URL */
-    bool saveAsURL(const QUrl &url);
+    bool saveAsURL(const QUrl &url) Q_DECL_OVERRIDE;
 
     /** Get current URL */
-    QUrl getCurrentURL() const;
+    QUrl getCurrentURL() const Q_DECL_OVERRIDE;
 
     KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE
     {
@@ -103,7 +103,7 @@ public:
 
 public Q_SLOTS:
     /** show status message */
-    void showStatusMessage(const QString &);
+    void showStatusMessage(const QString &) Q_DECL_OVERRIDE;
 
 protected Q_SLOTS:
 
@@ -118,7 +118,7 @@ protected Q_SLOTS:
     void statusBarPressed(int id);
 
     /** Sets title of window according to filename and modification state */
-    void setTitle();
+    void setTitle() Q_DECL_OVERRIDE;
 
     void newMainWindow(const QUrl &);
 
@@ -132,8 +132,8 @@ protected:
     bool queryClose() Q_DECL_OVERRIDE;
 
     /* Session management */
-    void saveProperties(KConfigGroup &);
-    void readProperties(const KConfigGroup &);
+    void saveProperties(KConfigGroup &) Q_DECL_OVERRIDE;
+    void readProperties(const KConfigGroup &) Q_DECL_OVERRIDE;
 
 private:
     CalendarView *mCalendarView;  // Main view widget

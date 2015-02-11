@@ -42,7 +42,7 @@ public:
 
     /**reimp*/
     bool setData(const QModelIndex &index, const QVariant &value,
-                 int role = Qt::EditRole);
+                 int role = Qt::EditRole) Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void aboutToToggle(bool oldState);

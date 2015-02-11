@@ -38,56 +38,56 @@ public:
     explicit MonthView(QWidget *parent = Q_NULLPTR);
     ~MonthView();
 
-    int currentDateCount() const;
+    int currentDateCount() const Q_DECL_OVERRIDE;
     int currentMonth() const;
 
-    Akonadi::Item::List selectedIncidences();
+    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
 
     /** Returns dates of the currently selected events */
-    KCalCore::DateList selectedIncidenceDates();
+    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
 
-    QDateTime selectionStart();
+    QDateTime selectionStart() Q_DECL_OVERRIDE;
 
-    QDateTime selectionEnd();
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    QDateTime selectionEnd() Q_DECL_OVERRIDE;
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
 
     /**
      * Returns the average date in the view
      */
     QDate averageDate() const;
 
-    bool usesFullWindow();
+    bool usesFullWindow() Q_DECL_OVERRIDE;
 
-    bool supportsDateRangeSelection();
+    bool supportsDateRangeSelection() Q_DECL_OVERRIDE;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const;
+    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
 
-    int maxDatesHint() const;
+    int maxDatesHint() const Q_DECL_OVERRIDE;
 
-    void setTypeAheadReceiver(QObject *o);
+    void setTypeAheadReceiver(QObject *o) Q_DECL_OVERRIDE;
 
     void setDateRange(const KDateTime &start, const KDateTime &end,
-                      const QDate &preferredMonth = QDate());
+                      const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
 
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void updateView();
+    void updateView() Q_DECL_OVERRIDE;
 
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
 
-    void updateConfig();
+    void updateConfig() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void fullViewChanged(bool enabled);
 
 private:
     void showDates(const QDate &start, const QDate &end,
-                   const QDate &preferredMonth = QDate());
+                   const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
 
     class Private;
     Private *const d;

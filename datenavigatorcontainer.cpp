@@ -406,7 +406,7 @@ void DateNavigatorContainer::handleWeekClickedSignal(const QDate &week, const QD
 
 KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date) const
 {
-    KDateNavigator *navigator = 0;
+    KDateNavigator *navigator = Q_NULLPTR;
     if (date.isValid()) {
         QPair<QDate, QDate> limits = KODayMatrix::matrixLimits(mNavigatorView->month());
 

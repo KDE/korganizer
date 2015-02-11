@@ -373,7 +373,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
     // this explicit enabling/disabling of the ETV is necessary, as the stack
     // widget state is not propagated to the collection views.  pprobably because
     // the Akonadi error overlays enable/disable the ETV explicitly and thus
-    // override the parent-child relationship?
+    // Q_DECL_OVERRIDE the parent-child relationship?
     for (int i = 0; i < d->ui.selectionStack->count(); ++i) {
         d->view(i)->view()->setEnabled(on);
     }
@@ -382,7 +382,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
 AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
     KCheckableProxyModel *model)
 {
-    AkonadiCollectionView *cview = new AkonadiCollectionView(0, false, q);
+    AkonadiCollectionView *cview = new AkonadiCollectionView(Q_NULLPTR, false, q);
     cview->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     cview->setCollectionSelectionProxyModel(model);
     return cview;
@@ -475,7 +475,7 @@ void MultiAgendaViewConfigDialog::setNumberOfColumns(int n)
 KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column)
 {
     if (column < 0 || column >= d->selections.size()) {
-        return 0;
+        return Q_NULLPTR;
     }
 
     KCheckableProxyModel *const m = d->selections[column];

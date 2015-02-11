@@ -35,7 +35,7 @@
 class KOTimelineView::Private
 {
 public:
-    Private(KOTimelineView *q) : mEventPopup(0), mParent(q)
+    Private(KOTimelineView *q) : mEventPopup(Q_NULLPTR), mParent(q)
     {
         QVBoxLayout *vbox = new QVBoxLayout(mParent);
         vbox->setMargin(0);

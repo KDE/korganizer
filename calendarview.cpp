@@ -106,8 +106,8 @@
 #include <KLocale>
 
 CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),
-    mCheckableProxyModel(0),
-    mETMCollectionView(0)
+    mCheckableProxyModel(Q_NULLPTR),
+    mETMCollectionView(Q_NULLPTR)
 {
     Akonadi::Control::widgetNeedsAkonadi(this);
     mChanger = new Akonadi::IncidenceChanger(new IncidenceEditorNG::IndividualMailComponentFactory(this), this);
@@ -139,7 +139,7 @@ CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),
     mReadOnly = false;
     mSplitterSizesValid = false;
 
-    mCalPrinter = 0;
+    mCalPrinter = Q_NULLPTR;
 
     mDateNavigator = new DateNavigator(this);
     mDateChecker = new DateChecker(this);
@@ -317,7 +317,7 @@ CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),
 CalendarView::~CalendarView()
 {
     mCalendar->unregisterObserver(this);
-    mCalendar->setFilter(0);   // So calendar doesn't deleted it twice
+    mCalendar->setFilter(Q_NULLPTR);   // So calendar doesn't deleted it twice
     qDeleteAll(mFilters);
     qDeleteAll(mExtensions);
 
@@ -501,7 +501,7 @@ void CalendarView::readFilterSettings(KConfig *config)
     }
 
     int pos = filterList.indexOf(currentFilter);
-    mCurrentFilter = 0;
+    mCurrentFilter = Q_NULLPTR;
     if (pos >= 0) {
         mCurrentFilter = mFilters.at(pos);
     }
@@ -583,7 +583,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
 
     if (mCalPrinter) {
         mCalPrinter->deleteLater();
-        mCalPrinter = 0;
+        mCalPrinter = Q_NULLPTR;
     }
 
     KOGlobals::self()->setHolidays(new KHolidays::HolidayRegion(KOPrefs::instance()->mHolidays));
@@ -853,7 +853,7 @@ void CalendarView::edit_paste()
     QDateTime endDT;
     KDateTime finalDateTime;
     bool useEndTime = false;
-    KCalUtils::DndFactory::PasteFlags pasteFlags = 0;
+    KCalUtils::DndFactory::PasteFlags pasteFlags = Q_NULLPTR;
 
     KOrg::BaseView *curView = mViewManager->currentView();
     KOAgendaView *agendaView = mViewManager->agendaView();
@@ -2013,7 +2013,7 @@ void CalendarView::updateFilter()
 
     int pos = mFilters.indexOf(mCurrentFilter);
     if (pos < 0) {
-        mCurrentFilter = 0;
+        mCurrentFilter = Q_NULLPTR;
     }
 
     filters << i18n("No filter");
@@ -2032,7 +2032,7 @@ void CalendarView::updateFilter()
 
 void CalendarView::filterActivated(int filterNo)
 {
-    KCalCore::CalFilter *newFilter = 0;
+    KCalCore::CalFilter *newFilter = Q_NULLPTR;
     if (filterNo > 0 && filterNo <= int(mFilters.count())) {
         newFilter = mFilters.at(filterNo - 1);
     }
@@ -2047,7 +2047,7 @@ void CalendarView::filterActivated(int filterNo)
 
 bool CalendarView::isFiltered() const
 {
-    return mCurrentFilter != 0;
+    return mCurrentFilter != Q_NULLPTR;
 }
 
 QString CalendarView::currentFilterName() const

@@ -154,7 +154,7 @@ void KOrganizer::initActions()
     KStandardAction::quit(this, SLOT(close()), actionCollection());
 
     setXMLFile(QLatin1String("korganizerui.rc"), true);
-    createGUI(0);
+    createGUI(Q_NULLPTR);
 
     setAutoSaveSettings();
 }

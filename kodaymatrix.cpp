@@ -81,7 +81,7 @@ void KODayMatrix::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
     mCalendar = calendar;
     mCalendar->registerObserver(this);
 
-    setAcceptDrops(mCalendar != 0);
+    setAcceptDrops(mCalendar != Q_NULLPTR);
     updateIncidences();
 }
 
@@ -675,7 +675,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         } else if (keyboardModifiers & Qt::ShiftModifier) {
             action = DRAG_MOVE;
         } else {
-            QAction *copy = 0, *move = 0;
+            QAction *copy = Q_NULLPTR, *move = Q_NULLPTR;
             QMenu *menu = new QMenu(this);
             if (exist) {
                 move = menu->addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-paste")), i18n("&Move"));

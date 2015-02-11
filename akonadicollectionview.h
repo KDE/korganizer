@@ -55,7 +55,7 @@ public:
     CalendarView *view() const;
     AkonadiCollectionView *collectionView() const;
 
-    CalendarViewExtension *create(QWidget *);
+    CalendarViewExtension *create(QWidget *) Q_DECL_OVERRIDE;
 
 private:
     CalendarView *mView;

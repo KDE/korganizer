@@ -63,7 +63,7 @@
 #include <KConfigGroup>
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory(CalendarView *view)
-    : mView(view), mAkonadiCollectionView(0)
+    : mView(view), mAkonadiCollectionView(Q_NULLPTR)
 {
 }
 
@@ -98,7 +98,7 @@ public:
     }
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
-               const QModelIndex &index) const
+               const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         QStyledItemDelegate::paint(painter, option, index);
         QStyleOptionViewItemV4 v4 = option;
@@ -167,7 +167,7 @@ public:
     }
 
     /* reimp */
-    Qt::ItemFlags flags(const QModelIndex &index) const
+    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         return Qt::ItemIsSelectable | QSortFilterProxyModel::flags(index);
     }
@@ -199,10 +199,10 @@ AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu,
         QWidget *parent)
     : CalendarViewExtension(parent),
-      mActionManager(0),
-      mCollectionView(0),
-      mBaseModel(0),
-      mSelectionProxyModel(0),
+      mActionManager(Q_NULLPTR),
+      mCollectionView(Q_NULLPTR),
+      mBaseModel(Q_NULLPTR),
+      mSelectionProxyModel(Q_NULLPTR),
       mNotSendAddRemoveSignal(false),
       mWasDefaultCalendar(false),
       mHasContextMenu(hasContextMenu)
@@ -336,7 +336,7 @@ AkonadiCollectionView::~AkonadiCollectionView()
     Akonadi::ETMViewStateSaver treeStateSaver;
     KConfigGroup group(KOGlobals::self()->config(), "CollectionTreeView");
     treeStateSaver.setView(mCollectionView);
-    treeStateSaver.setSelectionModel(0);   // we only save expand state
+    treeStateSaver.setSelectionModel(Q_NULLPTR);   // we only save expand state
     treeStateSaver.saveState(group);
 }
 
@@ -349,7 +349,7 @@ void AkonadiCollectionView::restoreTreeState()
     treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
     KConfigGroup group(KOGlobals::self()->config(), "CollectionTreeView");
     treeStateRestorer->setView(mCollectionView);
-    treeStateRestorer->setSelectionModel(0);   // we only restore expand state
+    treeStateRestorer->setSelectionModel(Q_NULLPTR);   // we only restore expand state
     treeStateRestorer->restoreState(group);
 }
 
@@ -631,7 +631,7 @@ Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
     }
 
     qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
-    return 0;
+    return Q_NULLPTR;
 }
 
 void AkonadiCollectionView::checkNewCalendar(const QModelIndex &parent, int begin, int end)

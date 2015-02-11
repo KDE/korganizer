@@ -27,7 +27,7 @@
 
 #include <QTimer>
 
-DateChecker::DateChecker(QObject *parent) : QObject(parent), mUpdateTimer(0)
+DateChecker::DateChecker(QObject *parent) : QObject(parent), mUpdateTimer(Q_NULLPTR)
 {
     enableRollover(FollowMonth);
 }
@@ -43,7 +43,7 @@ void DateChecker::enableRollover(RolloverType r)
         if (mUpdateTimer) {
             mUpdateTimer->stop();
             delete mUpdateTimer;
-            mUpdateTimer = 0;
+            mUpdateTimer = Q_NULLPTR;
         }
         break;
     case FollowDay:

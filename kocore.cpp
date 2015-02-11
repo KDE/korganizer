@@ -32,7 +32,7 @@
 #include <KServiceTypeTrader>
 #include <KXMLGUIFactory>
 
-KOCore *KOCore::mSelf = 0;
+KOCore *KOCore::mSelf = Q_NULLPTR;
 
 KOCore *KOCore::self()
 {
@@ -44,13 +44,13 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-    : mCalendarDecorationsLoaded(false), mIdentityManager(0)
+    : mCalendarDecorationsLoaded(false), mIdentityManager(Q_NULLPTR)
 {
 }
 
 KOCore::~KOCore()
 {
-    mSelf = 0;
+    mSelf = Q_NULLPTR;
 }
 
 KService::List KOCore::availablePlugins(const QString &type, int version)
@@ -86,7 +86,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
     qCDebug(KORGANIZER_LOG) << service->library();
 
     if (!service->hasServiceType(CalendarSupport::Plugin::serviceType())) {
-        return 0;
+        return Q_NULLPTR;
     }
 
     KPluginLoader loader(*service);
@@ -94,7 +94,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return 0;
+        return Q_NULLPTR;
     }
 
     CalendarSupport::PluginFactory *pluginFactory =
@@ -102,7 +102,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return 0;
+        return Q_NULLPTR;
     }
 
     return pluginFactory->createPluginFactory();
@@ -117,7 +117,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
             return loadPlugin(*it);
         }
     }
-    return 0;
+    return Q_NULLPTR;
 }
 
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KService::Ptr service)
@@ -127,7 +127,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KServ
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return 0;
+        return Q_NULLPTR;
     }
 
     EventViews::CalendarDecoration::DecorationFactory *pluginFactory =
@@ -135,7 +135,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KServ
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return 0;
+        return Q_NULLPTR;
     }
 
     return pluginFactory->createPluginFactory();
@@ -150,7 +150,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
             return loadCalendarDecoration(*it);
         }
     }
-    return 0;
+    return Q_NULLPTR;
 }
 
 KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
@@ -158,7 +158,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
     qCDebug(KORGANIZER_LOG) << service->library();
 
     if (!service->hasServiceType(KOrg::Part::serviceType())) {
-        return 0;
+        return Q_NULLPTR;
     }
 
     KPluginLoader loader(*service);
@@ -166,7 +166,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return 0;
+        return Q_NULLPTR;
     }
 
     KOrg::PartFactory *pluginFactory =
@@ -174,7 +174,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return 0;
+        return Q_NULLPTR;
     }
 
     return pluginFactory->createPluginFactory(parent);
@@ -193,7 +193,7 @@ void KOCore::removeXMLGUIClient(QWidget *wdg)
 KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
 {
     if (!wdg) {
-        return 0;
+        return Q_NULLPTR;
     }
 
     QWidget *topLevel = wdg->topLevelWidget();
@@ -202,7 +202,7 @@ KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
         return it.value();
     }
 
-    return 0;
+    return Q_NULLPTR;
 }
 
 KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
@@ -214,7 +214,7 @@ KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
             return loadPart(*it, parent);
         }
     }
-    return 0;
+    return Q_NULLPTR;
 }
 
 EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()

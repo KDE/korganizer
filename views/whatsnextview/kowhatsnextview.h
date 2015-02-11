@@ -37,29 +37,29 @@ public:
     explicit KOWhatsNextView(QWidget *parent = Q_NULLPTR);
     ~KOWhatsNextView();
 
-    virtual int currentDateCount() const;
-    virtual Akonadi::Item::List selectedIncidences()
+    virtual int currentDateCount() const Q_DECL_OVERRIDE;
+    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE
     {
         return Akonadi::Item::List();
     }
-    KCalCore::DateList selectedIncidenceDates()
+    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE
     {
         return KCalCore::DateList();
     }
 
-    bool supportsDateNavigation() const
+    bool supportsDateNavigation() const Q_DECL_OVERRIDE
     {
         return true;
     }
-    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    virtual void updateView();
-    virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth);
-    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
+    virtual void updateView() Q_DECL_OVERRIDE;
+    virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) Q_DECL_OVERRIDE;
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
 
 private:
     EventViews::WhatsNextView *mView;

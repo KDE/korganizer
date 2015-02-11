@@ -71,7 +71,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 public:
     ActionManager(KXMLGUIClient *client, CalendarView *widget,
                   QObject *parent, KOrg::MainWindow *mainWindow,
-                  bool isPart, QMenuBar *menuBar = 0);
+                  bool isPart, QMenuBar *menuBar = Q_NULLPTR);
     virtual ~ActionManager();
 
     /** Peform initialization that requires this* to be full constructed */

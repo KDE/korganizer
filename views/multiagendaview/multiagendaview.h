@@ -74,13 +74,13 @@ public:
     Akonadi::Collection::Id collectionId() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate());
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
-    void updateView();
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
-    void updateConfig();
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
+    void updateView() Q_DECL_OVERRIDE;
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
+    void updateConfig() Q_DECL_OVERRIDE;
 
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
 
 private:
     class Private;
@@ -97,15 +97,15 @@ public:
                                          QWidget *parent = Q_NULLPTR);
     ~MultiAgendaViewConfigDialog();
 
-    bool useCustomColumns() const;
+    bool useCustomColumns() const Q_DECL_OVERRIDE;
     void setUseCustomColumns(bool);
 
-    int numberOfColumns() const;
+    int numberOfColumns() const Q_DECL_OVERRIDE;
     void setNumberOfColumns(int n);
 
-    QString columnTitle(int column) const;
+    QString columnTitle(int column) const Q_DECL_OVERRIDE;
     void setColumnTitle(int column, const QString &title);
-    KCheckableProxyModel *takeSelectionModel(int column);
+    KCheckableProxyModel *takeSelectionModel(int column) Q_DECL_OVERRIDE;
     void setSelectionModel(int column, KCheckableProxyModel *model);
 
 public Q_SLOTS:

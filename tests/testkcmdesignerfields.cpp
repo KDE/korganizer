@@ -29,21 +29,21 @@
 class MyDesignerFields : public KCMDesignerFields
 {
 public:
-    MyDesignerFields() : KCMDesignerFields(0) {}
-    QString localUiDir()
+    MyDesignerFields() : KCMDesignerFields(Q_NULLPTR) {}
+    QString localUiDir() Q_DECL_OVERRIDE
     {
         return QString::fromLatin1(KDESRCDIR);
     }
-    QString uiPath()
+    QString uiPath() Q_DECL_OVERRIDE
     {
         return QString::fromLatin1(KDESRCDIR);
     }
-    void writeActivePages(const QStringList &)  {}
-    QStringList readActivePages()
+    void writeActivePages(const QStringList &) Q_DECL_OVERRIDE  {}
+    QStringList readActivePages() Q_DECL_OVERRIDE
     {
         return QStringList();
     }
-    QString applicationName()
+    QString applicationName() Q_DECL_OVERRIDE
     {
         return QLatin1String("textkcmdesignerfields");
     }

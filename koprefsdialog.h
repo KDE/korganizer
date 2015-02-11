@@ -51,7 +51,7 @@ public:
     KOPrefsDialogMain(QWidget *parent);
 
 protected:
-    void usrWriteConfig();
+    void usrWriteConfig() Q_DECL_OVERRIDE;
 
 protected Q_SLOTS:
     void toggleEmailSettings(bool on);
@@ -153,11 +153,11 @@ public:
     explicit KOPrefsDesignerFields(QWidget *parent = Q_NULLPTR);
 
 protected:
-    QString localUiDir();
-    QString uiPath();
-    void writeActivePages(const QStringList &);
-    QStringList readActivePages();
-    QString applicationName();
+    QString localUiDir() Q_DECL_OVERRIDE;
+    QString uiPath() Q_DECL_OVERRIDE;
+    void writeActivePages(const QStringList &) Q_DECL_OVERRIDE;
+    QStringList readActivePages() Q_DECL_OVERRIDE;
+    QString applicationName() Q_DECL_OVERRIDE;
 };
 
 /*class KCM_KORGANIZER_EXPORT KOPrefsDialogThemes : public KPrefsModule

@@ -28,7 +28,7 @@
 using namespace KOrg;
 
 AboutData::AboutData()
-    : K4AboutData("korganizer", 0, ki18n("KOrganizer"), korgVersion,
+    : K4AboutData("korganizer", Q_NULLPTR, ki18n("KOrganizer"), korgVersion,
                   ki18n("A Personal Organizer"),
                   K4AboutData::License_GPL,
                   ki18n("Copyright © 1997–1999 Preston Brown\n"

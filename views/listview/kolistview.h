@@ -51,10 +51,10 @@ public:
                         QWidget *parent = Q_NULLPTR, bool nonInteractive = false);
     ~KOListView();
 
-    virtual int maxDatesHint() const;
-    virtual int currentDateCount() const;
-    virtual Akonadi::Item::List selectedIncidences();
-    virtual KCalCore::DateList selectedIncidenceDates();
+    virtual int maxDatesHint() const Q_DECL_OVERRIDE;
+    virtual int currentDateCount() const Q_DECL_OVERRIDE;
+    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    virtual KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
 
     // Shows all incidences of the calendar
     void showAll();
@@ -65,20 +65,20 @@ public:
     void clear();
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
 
-    virtual CalendarSupport::CalPrinterBase::PrintType printType() const;
+    virtual CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    virtual void updateView();
+    virtual void updateView() Q_DECL_OVERRIDE;
     virtual void showDates(const QDate &start, const QDate &end,
-                           const QDate &preferredMonth = QDate());
-    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date);
+                           const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
+    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
 
-    void clearSelection();
+    void clearSelection() Q_DECL_OVERRIDE;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType);
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
 
     void defaultItemAction(const QModelIndex &);
     void defaultItemAction(const Akonadi::Item::Id id);

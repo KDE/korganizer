@@ -47,34 +47,34 @@ public:
     explicit KOJournalView(QWidget *parent = Q_NULLPTR);
     ~KOJournalView();
 
-    virtual int currentDateCount() const;
-    virtual Akonadi::Item::List selectedIncidences();
+    virtual int currentDateCount() const Q_DECL_OVERRIDE;
+    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
 
-    KCalCore::DateList selectedIncidenceDates()
+    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE
     {
         return KCalCore::DateList();
     }
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &) Q_DECL_OVERRIDE;
 
     /** reimp */
     void getHighlightMode(bool &highlightEvents,
                           bool &highlightTodos,
-                          bool &highlightJournals);
+                          bool &highlightJournals) Q_DECL_OVERRIDE;
 
     /** reimp */
-    CalendarSupport::CalPrinterBase::PrintType printType() const;
+    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void updateView();
-    void flushView();
+    void updateView() Q_DECL_OVERRIDE;
+    void flushView() Q_DECL_OVERRIDE;
 
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate());
-    void showIncidences(const Akonadi::Item::List &incidences, const QDate &date);
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
+    void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) Q_DECL_OVERRIDE;
 
     void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                Akonadi::IncidenceChanger::ChangeType);
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer);
+                                Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
     void printJournal(const KCalCore::Journal::Ptr &journal, bool preview);
 
 private:

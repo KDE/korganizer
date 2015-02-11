@@ -53,7 +53,7 @@ using namespace KOrg;
 class KODialogManager::DialogManagerVisitor : public KCalCore::Visitor
 {
 public:
-    DialogManagerVisitor() : mDialogManager(0) {}
+    DialogManagerVisitor() : mDialogManager(Q_NULLPTR) {}
 
     bool act(KCalCore::IncidenceBase::Ptr incidence, KODialogManager *manager)
     {
@@ -68,11 +68,11 @@ protected:
 KODialogManager::KODialogManager(CalendarView *mainView)
     : QObject(), mMainView(mainView)
 {
-    mOptionsDialog = 0;
-    mSearchDialog = 0;
-    mArchiveDialog = 0;
-    mFilterEditDialog = 0;
-    mCategoryEditDialog = 0;
+    mOptionsDialog = Q_NULLPTR;
+    mSearchDialog = Q_NULLPTR;
+    mArchiveDialog = Q_NULLPTR;
+    mFilterEditDialog = Q_NULLPTR;
+    mCategoryEditDialog = Q_NULLPTR;
 }
 
 KODialogManager::~KODialogManager()
@@ -167,7 +167,7 @@ IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog(const Akonadi:
 {
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
-        return 0;
+        return Q_NULLPTR;
     }
 
     IncidenceEditorNG::IncidenceDialog *dialog =
@@ -204,7 +204,7 @@ void KODialogManager::updateSearchDialog()
 
 void KODialogManager::createCategoryEditor()
 {
-    if (mCategoryEditDialog == 0) {
+    if (mCategoryEditDialog == Q_NULLPTR) {
         mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
         mCategoryEditDialog->buttons()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
         connect(mCategoryEditDialog->buttons()->button(QDialogButtonBox::Help), &QPushButton::clicked, this, &KODialogManager::slotHelp);

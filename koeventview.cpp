@@ -46,7 +46,7 @@ KOEventView::KOEventView(QWidget *parent)
 {
     mReturnPressed = false;
     mTypeAhead = false;
-    mTypeAheadReceiver = 0;
+    mTypeAheadReceiver = Q_NULLPTR;
 
     //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(),
     //which triggered finishTypeAhead. But the global focus widget in QApplication is
@@ -90,11 +90,11 @@ QMenu *KOEventView::newEventPopup()
     KXMLGUIClient *client = KOCore::self()->xmlguiClient(this);
     if (!client) {
         qCritical() << "no xmlGuiClient.";
-        return 0;
+        return Q_NULLPTR;
     }
     if (!client->factory()) {
         qCritical() << "no factory";
-        return 0; // can happen if called too early
+        return Q_NULLPTR; // can happen if called too early
     }
 
     return static_cast<QMenu *>

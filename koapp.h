@@ -41,7 +41,7 @@ public:
       Create new instance of KOrganizer. If there is already running a
       KOrganizer only an additional main window is opened.
     */
-    int newInstance();
+    int newInstance() Q_DECL_OVERRIDE;
 
 private:
     /**

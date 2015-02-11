@@ -97,7 +97,7 @@ KOrganizerPart::~KOrganizerPart()
     mActionManager->writeSettings();
 
     delete mActionManager;
-    mActionManager = 0;
+    mActionManager = Q_NULLPTR;
 
     KOCore::self()->removeXMLGUIClient(mTopLevelWidget);
 }
