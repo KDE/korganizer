@@ -51,10 +51,10 @@ public:
                         QWidget *parent = Q_NULLPTR, bool nonInteractive = false);
     ~KOListView();
 
-    virtual int maxDatesHint() const Q_DECL_OVERRIDE;
-    virtual int currentDateCount() const Q_DECL_OVERRIDE;
-    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
-    virtual KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
+    int maxDatesHint() const Q_DECL_OVERRIDE;
+    int currentDateCount() const Q_DECL_OVERRIDE;
+    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
 
     // Shows all incidences of the calendar
     void showAll();
@@ -68,13 +68,13 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
 
-    virtual CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
+    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    virtual void updateView() Q_DECL_OVERRIDE;
+    void updateView() Q_DECL_OVERRIDE;
     virtual void showDates(const QDate &start, const QDate &end,
                            const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    virtual void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
 
     void clearSelection() Q_DECL_OVERRIDE;
 

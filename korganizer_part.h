@@ -51,7 +51,7 @@ public:
     KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &);
     virtual ~KOrganizerPart();
 
-    virtual KOrg::CalendarViewBase *view() const Q_DECL_OVERRIDE;
+    KOrg::CalendarViewBase *view() const Q_DECL_OVERRIDE;
 
     /**
       Load calendar file from URL and merge it into the current calendar.
@@ -62,16 +62,16 @@ public:
 
       @return true on success, false if an error occurred
     */
-    virtual bool openURL(const QUrl &url, bool merge = false) Q_DECL_OVERRIDE;
+    bool openURL(const QUrl &url, bool merge = false) Q_DECL_OVERRIDE;
 
     /** Save calendar file to URL of current calendar */
-    virtual bool saveURL() Q_DECL_OVERRIDE;
+    bool saveURL() Q_DECL_OVERRIDE;
 
     /** Save calendar file to URL */
-    virtual bool saveAsURL(const QUrl &url) Q_DECL_OVERRIDE;
+    bool saveAsURL(const QUrl &url) Q_DECL_OVERRIDE;
 
     /** Get current URL */
-    virtual QUrl getCurrentURL() const Q_DECL_OVERRIDE;
+    QUrl getCurrentURL() const Q_DECL_OVERRIDE;
 
     virtual KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE
     {
@@ -81,13 +81,13 @@ public:
     {
         return this;
     }
-    virtual QWidget *topLevelWidget() Q_DECL_OVERRIDE;
-    virtual ActionManager *actionManager() Q_DECL_OVERRIDE;
+    QWidget *topLevelWidget() Q_DECL_OVERRIDE;
+    ActionManager *actionManager() Q_DECL_OVERRIDE;
     virtual KActionCollection *getActionCollection() const Q_DECL_OVERRIDE
     {
         return actionCollection();
     }
-    virtual void showStatusMessage(const QString &message) Q_DECL_OVERRIDE;
+    void showStatusMessage(const QString &message) Q_DECL_OVERRIDE;
 
     void setTitle() Q_DECL_OVERRIDE;
 
@@ -95,7 +95,7 @@ public Q_SLOTS:
     void slotChangeInfo(const Akonadi::Item &, const QDate &date);
 
 protected:
-    virtual bool openFile() Q_DECL_OVERRIDE;
+    bool openFile() Q_DECL_OVERRIDE;
 
 private:
     CalendarView *mView;

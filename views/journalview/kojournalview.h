@@ -47,8 +47,8 @@ public:
     explicit KOJournalView(QWidget *parent = Q_NULLPTR);
     ~KOJournalView();
 
-    virtual int currentDateCount() const Q_DECL_OVERRIDE;
-    virtual Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    int currentDateCount() const Q_DECL_OVERRIDE;
+    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
 
     KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE
     {
