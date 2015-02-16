@@ -26,6 +26,7 @@
   <name xml:lang="sk">KOrganizer</name>
   <name xml:lang="sl">KOrganizer</name>
   <name xml:lang="sv">Korganizer</name>
+  <name xml:lang="tr">KOrganizer</name>
   <name xml:lang="uk">KOrganizer</name>
   <name xml:lang="x-test">xxKOrganizerxx</name>
   <name xml:lang="zh-CN">KOrganizer</name>
@@ -51,6 +52,7 @@
     <p xml:lang="sk">KOrganizer je komponent kalendára a plánovania pre balík Kontact. Môžete písať položky denníka, plánovať schôdzky, udalosti a úlohy.</p>
     <p xml:lang="sl">KOrganizer je sestavni del paketa Kontact, ki omogoča razporejanje časa in prikazuje koledar. Ustvarjate lahko dnevnike, razporejate sestanke, dogodke in opravila.</p>
     <p xml:lang="sv">Korganizer är kalender- och schemaläggningskomponenten i Kontact-sviten. Det går att skriva journalanteckningar, samt schemalägga möten, händelser och uppgifter.</p>
+    <p xml:lang="tr">KOrganizer Kontact takımının takvim ve zamanlama bileşenidir. Günlük girdileri yazabilir, randevu, olaylar ve yapılacakları programlayabilirsiniz.</p>
     <p xml:lang="uk">KOrganizer — компонент комплексу програм Kontact, що відповідає за календар та планування. За його допомогою можна створювати записи журналу, планувати зустрічі, події або ставити завдання.</p>
     <p xml:lang="x-test">xxKOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.xx</p>
     <p>Features:</p>
@@ -75,6 +77,7 @@
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
+    <p xml:lang="tr">Özellikler:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
     <p xml:lang="zh-CN">功能：</p>
@@ -98,6 +101,7 @@
       <li xml:lang="sk">Podpora pre viaceho kalendárov a zoznamov úloh.</li>
       <li xml:lang="sl">Podpora več koledarjem in seznamom opravil.</li>
       <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor.</li>
+      <li xml:lang="tr">Birden çok takvim ve yapılacaklar listesi destekler.</li>
       <li xml:lang="uk">підтримка роботи з декількома календарями та списками завдань;</li>
       <li xml:lang="x-test">xxSupport for multiple calendars and todo lists.xx</li>
       <li>Storage model.</li>
@@ -119,6 +123,7 @@
       <li xml:lang="sk">Model úložiska.</li>
       <li xml:lang="sl">Model za shranjevanje.</li>
       <li xml:lang="sv">Lagringsmodell.</li>
+      <li xml:lang="tr">Depolama kipi.</li>
       <li xml:lang="uk">модель зберігання даних;</li>
       <li xml:lang="x-test">xxStorage model.xx</li>
       <li>Undo and Redo.</li>
@@ -141,6 +146,7 @@
       <li xml:lang="sk">Funkcia Späť a Znova.</li>
       <li xml:lang="sl">Uveljavi in razveljavi.</li>
       <li xml:lang="sv">Ångra och gör om.</li>
+      <li xml:lang="tr">Geri al ve Tekrarla.</li>
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="x-test">xxUndo and Redo.xx</li>
       <li xml:lang="zh-CN">撤消和重做。</li>
@@ -162,6 +168,7 @@
       <li xml:lang="sk">Integrácia úloh s pohľadom agendy.</li>
       <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda.</li>
       <li xml:lang="sv">Integrering av uppgifter med agendavyn.</li>
+      <li xml:lang="tr">Ajanda görünümüyle yapılacakların tümleşimi</li>
       <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
       <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
       <li>Attachments for events and todos.</li>
@@ -183,6 +190,7 @@
       <li xml:lang="sk">Prílohy pre udalosti a úlohy.</li>
       <li xml:lang="sl">Priloge za dogodke in opravila.</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter.</li>
+      <li xml:lang="tr">Olaylar ve yapılacaklar için eklentiler.</li>
       <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
       <li xml:lang="x-test">xxAttachments for events and todos.xx</li>
       <li>Quick todo and event entries.</li>
@@ -203,6 +211,7 @@
       <li xml:lang="sk">Rýchle položky úloh a udalostí.</li>
       <li xml:lang="sl">Hitra opravila in vnosi dogodkov.</li>
       <li xml:lang="sv">Snabba uppgifts- och händelseposter.</li>
+      <li xml:lang="tr">Hızlı yapılacak ve olay girişi.</li>
       <li xml:lang="uk">швидке створення записів завдань та подій;</li>
       <li xml:lang="x-test">xxQuick todo and event entries.xx</li>
       <li>Plugin for Jewish calendar dates.</li>
@@ -225,6 +234,7 @@
       <li xml:lang="sk">Plugin pre dátumy židovského kalendára.</li>
       <li xml:lang="sl">Vstavek za židovski koledar.</li>
       <li xml:lang="sv">Insticksprogram för Judiska kalenderdatum.</li>
+      <li xml:lang="tr">Yahudi takvim tarihleri için eklenti.</li>
       <li xml:lang="uk">додаток для запису подій за єврейським календарем;</li>
       <li xml:lang="x-test">xxPlugin for Jewish calendar dates.xx</li>
       <li xml:lang="zh-CN">犹太教日历插件。</li>
@@ -250,6 +260,7 @@
       <li xml:lang="sk">Podpora tlače.</li>
       <li xml:lang="sl">Podpora tiskanju.</li>
       <li xml:lang="sv">Stöd för utskrift.</li>
+      <li xml:lang="tr">Yazdırma desteği.</li>
       <li xml:lang="uk">підтримка друку календарів.</li>
       <li xml:lang="x-test">xxPrint support.xx</li>
       <li xml:lang="zh-CN">打印支持。</li>
