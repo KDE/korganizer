@@ -364,7 +364,7 @@ void CalendarView::onSearchCollectionsFetched(KJob *job)
 
 void CalendarView::createOrUpdateSearchCollections()
 {
-    Akonadi::SearchQuery query;
+    Akonadi::SearchQuery query(Akonadi::SearchTerm::RelOr);
     foreach (const QString email, mIdentityManager.allEmails()) {
         query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email+ QString::number(KCalCore::Attendee::NeedsAction))));
     }
@@ -391,7 +391,7 @@ void CalendarView::createOrUpdateSearchCollections()
         kDebug() <<  query.toJSON();
     }
 
-    query = Akonadi::SearchQuery();
+    query = Akonadi::SearchQuery(Akonadi::SearchTerm::RelOr);
     foreach (const QString email, mIdentityManager.allEmails()) {
         query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email+ QString::number(KCalCore::Attendee::Declined))));
     }
