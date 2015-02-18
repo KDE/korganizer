@@ -27,7 +27,7 @@
 #include "htmlexportsettings.h"
 
 #include <KDateComboBox>
-#include <KFileDialog>
+#include <QFileDialog>
 #include <QHBoxLayout>
 #include <KMessageBox>
 #include <KUrlRequester>
