@@ -70,6 +70,7 @@
 #include <KActionCollection>
 #include <KCmdLineArgs>
 #include <KFileDialog>
+#include <QFileDialog>
 #include <QMenu>
 #include <QMenuBar>
 #include <KMessageBox>
@@ -1185,9 +1186,9 @@ bool ActionManager::saveModifiedURL()
 QUrl ActionManager::getSaveURL()
 {
     QUrl url =
-        KFileDialog::getSaveUrl(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
-                                i18n("*.ics *.vcs|Calendar Files"),
-                                dialogParent());
+        QFileDialog::getSaveFileUrl(dialogParent(), QString(), QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
+                                i18n("*.ics *.vcs|Calendar Files")
+                                );
 
     if (url == QUrl()) {
         return url;
