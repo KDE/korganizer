@@ -35,7 +35,7 @@
 #include <KLocalizedString>
 #include <QDialog>
 #include <KGlobal>
-#include <KFileDialog>
+#include <QFileDialog>
 
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -202,9 +202,9 @@ void KCMDesignerFields::deleteFile()
 
 void KCMDesignerFields::importFile()
 {
-    QUrl src = KFileDialog::getOpenFileName(QDir::homePath(),
-                                            i18n("*.ui|Designer Files"),
-                                            this, i18n("Import Page"));
+    QUrl src = QFileDialog::getOpenFileUrl(this, i18n("Import Page"), QDir::homePath(),
+                                            i18n("*.ui|Designer Files")
+                                            );
     QUrl dest = QUrl::fromLocalFile(localUiDir());
     QDir().mkpath(localUiDir());
     dest = dest.adjusted(QUrl::RemoveFilename);
