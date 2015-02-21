@@ -45,13 +45,11 @@ public:
 
     int currentDateCount() const Q_DECL_OVERRIDE;
 
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE
-    {
+    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE {
         return Akonadi::Item::List();
     }
 
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE
-    {
+    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE {
         return KCalCore::DateList();
     }
 

@@ -30,21 +30,17 @@ class MyDesignerFields : public KCMDesignerFields
 {
 public:
     MyDesignerFields() : KCMDesignerFields(Q_NULLPTR) {}
-    QString localUiDir() Q_DECL_OVERRIDE
-    {
+    QString localUiDir() Q_DECL_OVERRIDE {
         return QString::fromLatin1(KDESRCDIR);
     }
-    QString uiPath() Q_DECL_OVERRIDE
-    {
+    QString uiPath() Q_DECL_OVERRIDE {
         return QString::fromLatin1(KDESRCDIR);
     }
     void writeActivePages(const QStringList &) Q_DECL_OVERRIDE  {}
-    QStringList readActivePages() Q_DECL_OVERRIDE
-    {
+    QStringList readActivePages() Q_DECL_OVERRIDE {
         return QStringList();
     }
-    QString applicationName() Q_DECL_OVERRIDE
-    {
+    QString applicationName() Q_DECL_OVERRIDE {
         return QLatin1String("textkcmdesignerfields");
     }
 };

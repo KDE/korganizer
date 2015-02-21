@@ -91,8 +91,7 @@ public:
     QMenu *newEventPopup();
 
     /** This view is a view for displaying events. */
-    bool isEventView() Q_DECL_OVERRIDE
-    {
+    bool isEventView() Q_DECL_OVERRIDE {
         return true;
     }
 

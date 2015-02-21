@@ -65,8 +65,7 @@ public:
     void saveViewState();
     void restoreViewState();
 
-    bool supportsDateRangeSelection() Q_DECL_OVERRIDE
-    {
+    bool supportsDateRangeSelection() Q_DECL_OVERRIDE {
         return false;
     }
     CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;

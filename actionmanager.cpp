@@ -1187,8 +1187,8 @@ QUrl ActionManager::getSaveURL()
 {
     QUrl url =
         QFileDialog::getSaveFileUrl(dialogParent(), QString(), QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
-                                i18n("*.ics *.vcs|Calendar Files")
-                                );
+                                    i18n("*.ics *.vcs|Calendar Files")
+                                   );
 
     if (url == QUrl()) {
         return url;
@@ -1471,41 +1471,43 @@ public:
     }
 
 protected:
-    bool visit(KCalCore::Event::Ptr) Q_DECL_OVERRIDE
-    {
-        if (mShow) {
+    bool visit(KCalCore::Event::Ptr) Q_DECL_OVERRIDE {
+        if (mShow)
+        {
             mShow->setText(i18n("&Show Event"));
         }
-        if (mEdit) {
+        if (mEdit)
+        {
             mEdit->setText(i18n("&Edit Event..."));
         }
-        if (mDelete) {
+        if (mDelete)
+        {
             mDelete->setText(i18n("&Delete Event"));
         }
         return true;
     }
 
-    bool visit(KCalCore::Todo::Ptr) Q_DECL_OVERRIDE
-    {
-        if (mShow) {
+    bool visit(KCalCore::Todo::Ptr) Q_DECL_OVERRIDE {
+        if (mShow)
+        {
             mShow->setText(i18n("&Show To-do"));
         }
-        if (mEdit) {
+        if (mEdit)
+        {
             mEdit->setText(i18n("&Edit To-do..."));
         }
-        if (mDelete) {
+        if (mDelete)
+        {
             mDelete->setText(i18n("&Delete To-do"));
         }
         return true;
     }
 
-    bool visit(KCalCore::Journal::Ptr) Q_DECL_OVERRIDE
-    {
+    bool visit(KCalCore::Journal::Ptr) Q_DECL_OVERRIDE {
         return assignDefaultStrings();
     }
 
-    bool visit(KCalCore::FreeBusy::Ptr) Q_DECL_OVERRIDE   // to inhibit hidden virtual compile warning
-    {
+    bool visit(KCalCore::FreeBusy::Ptr) Q_DECL_OVERRIDE { // to inhibit hidden virtual compile warning
         return false;
     }
 

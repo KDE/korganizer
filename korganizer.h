@@ -59,8 +59,7 @@ public:
     void init(bool hasDocument) Q_DECL_OVERRIDE;
 
     KOrg::CalendarViewBase *view() const Q_DECL_OVERRIDE;
-    ActionManager *actionManager() Q_DECL_OVERRIDE
-    {
+    ActionManager *actionManager() Q_DECL_OVERRIDE {
         return mActionManager;
     }
     KActionCollection *getActionCollection() const Q_DECL_OVERRIDE
@@ -88,16 +87,13 @@ public:
     /** Get current URL */
     QUrl getCurrentURL() const Q_DECL_OVERRIDE;
 
-    KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE
-    {
+    KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE {
         return factory();
     }
-    KXMLGUIClient *mainGuiClient() Q_DECL_OVERRIDE
-    {
+    KXMLGUIClient *mainGuiClient() Q_DECL_OVERRIDE {
         return this;
     }
-    QWidget *topLevelWidget() Q_DECL_OVERRIDE
-    {
+    QWidget *topLevelWidget() Q_DECL_OVERRIDE {
         return this;
     }
 

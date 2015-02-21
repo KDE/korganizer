@@ -42,13 +42,11 @@ public:
 
     QString holidayString(const QDate &dt) Q_DECL_OVERRIDE;
 
-    QTime dayStart() Q_DECL_OVERRIDE
-    {
+    QTime dayStart() Q_DECL_OVERRIDE {
         return KOPrefs::instance()->mDayBegins.time();
     }
 
-    const KCalendarSystem *calendarSystem() Q_DECL_OVERRIDE
-    {
+    const KCalendarSystem *calendarSystem() Q_DECL_OVERRIDE {
         return KOGlobals::self()->calendarSystem();
     }
 };

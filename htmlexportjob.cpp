@@ -190,7 +190,7 @@ void HtmlExportJob::finishExport()
             if (KMessageBox::Yes == KMessageBox::questionYesNo(
                         d->mParentWidget,
                         saveMessage,
-                        i18nc("@title:window", "Export Status"), KGuiItem(i18n("Show page Web")),KStandardGuiItem::no())) {
+                        i18nc("@title:window", "Export Status"), KGuiItem(i18n("Show page Web")), KStandardGuiItem::no())) {
                 QDesktopServices::openUrl(dest);
             }
         } else {

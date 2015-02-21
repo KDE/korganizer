@@ -44,8 +44,7 @@ class ThisDayInHistoryFactory : public DecorationFactory
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.kde.korganizer.ThisDayInHistory");
 public:
-    Decoration *createPluginFactory() Q_DECL_OVERRIDE
-    {
+    Decoration *createPluginFactory() Q_DECL_OVERRIDE {
         return new ThisDayInHistory;
     }
 };
