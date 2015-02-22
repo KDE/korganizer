@@ -29,7 +29,7 @@
 #include <KMessageBox>
 #include <KRun>
 #include <KShell>
-#include <KStandardDirs>
+#include <QStandardPaths>
 #include <KIO/Job>
 #include <KIO/NetAccess>
 #include <KLocalizedString>
@@ -217,12 +217,12 @@ void KCMDesignerFields::importFile()
 
 void KCMDesignerFields::loadUiFiles()
 {
-    const QStringList list = KGlobal::dirs()->findAllResources("data", uiPath() + QLatin1String("/*.ui"),
-                             KStandardDirs::Recursive |
-                             KStandardDirs::NoDuplicates);
-
-    for (QStringList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it) {
-        new PageItem(mPageView, *it);
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, uiPath(), QStandardPaths::LocateDirectory);
+    Q_FOREACH (const QString &dir, dirs) {
+        const QStringList fileNames = QDir(dir).entryList(QStringList() << QLatin1String("*.ui"));
+        Q_FOREACH (const QString &file, fileNames) {
+            new PageItem(mPageView, dir + QLatin1Char('/') + file);
+        }
     }
 }
 
@@ -448,7 +448,7 @@ void KCMDesignerFields::startDesigner()
 
     // check if path exists and create one if not.
     QString cepPath = localUiDir();
-    if (!KGlobal::dirs()->exists(cepPath)) {
+    if (!QDir(cepPath).exists()) {
         KIO::NetAccess::mkdir(cepPath, this);
     }
 
