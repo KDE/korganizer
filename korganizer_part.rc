@@ -1,6 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="423" translationDomain="korganizer">
-
+<kpartgui name="korganizer" version="424" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -195,6 +194,8 @@
     <Action name="akonadi_resource_create"/>
     <Action name="akonadi_resource_delete"/>
     <Action name="akonadi_collection_sync"/>
+    <Action name="akonadi_resource_synchronize"/>
+    <Action name="akonadi_collection_sync_recursive"/>
     <Separator/>
     <Action name="akonadi_collection_properties"/>
     <Action name="akonadi_resource_properties"/>
