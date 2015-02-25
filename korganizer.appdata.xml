@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KOrganizer</name>
+  <name xml:lang="bs">KOrganizator</name>
   <name xml:lang="ca">KOrganizer</name>
   <name xml:lang="cs">KOrganizer</name>
   <name xml:lang="da">KOrganizer</name>
@@ -58,6 +59,7 @@
     <p xml:lang="x-test">xxKOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.xx</p>
     <p xml:lang="zh-TW">KOrganizer 是 Kontact 套件中的行事曆軟體。您可以寫日誌、排約會、事件與待辦清單等。</p>
     <p>Features:</p>
+    <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="de">Funktionen:</p>
