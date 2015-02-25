@@ -48,7 +48,7 @@ public:
     int maxDatesHint() const Q_DECL_OVERRIDE;
 
     bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
-    /* reimp */void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
 
     /**
      * reimplemented from KOrg::BaseView
