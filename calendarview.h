@@ -28,6 +28,8 @@
 #define KORG_CALENDARVIEW_H
 
 #include "korganizer_export.h"
+#include "searchcollectionhelper.h"
+
 #include "interfaces/korganizer/calendarviewbase.h"
 
 #include <KCalCore/Incidence>
@@ -658,13 +660,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void onCheckableProxyToggled( bool newState );
     void onTodosPurged(bool success, int numDeleted, int numIgnored);
 
-    void onSearchCollectionsFetched(KJob *job);
-    void createSearchJobFinished(KJob *job);
-    void modifyResult(KJob* job);
-    void createOrUpdateSearchCollections();
   private:
     void init();
-    void setupSearchCollections();
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
 
@@ -736,9 +733,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     KOCheckableProxyModel *mCheckableProxyModel;
     AkonadiCollectionView *mETMCollectionView;
 
-    KPIMIdentities::IdentityManager mIdentityManager;
-    Akonadi::Collection mOpenInvitationCollection;
-    Akonadi::Collection mDeclineCollection;
+    SearchCollectionHelper mSearchCollectionHelper;
 };
 
 #endif

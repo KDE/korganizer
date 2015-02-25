@@ -80,12 +80,6 @@
 #include <Akonadi/Control>
 #include <Akonadi/AttributeFactory>
 #include <Akonadi/Calendar/TodoPurger>
-#include <Akonadi/SearchCreateJob>
-#include <Akonadi/CollectionModifyJob>
-#include <Akonadi/CollectionFetchJob>
-#include <Akonadi/SearchQuery>
-#include <akonadi/persistentsearchattribute.h>
-#include <akonadi/entitydisplayattribute.h>
 
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
@@ -98,8 +92,6 @@
 #include <KCalUtils/ICalDrag>
 #include <KCalUtils/Stringify>
 #include <KCalUtils/DndFactory>
-
-#include <KPIMIdentities/IdentityManager>
 
 #include <klocalizedstring.h>
 #include <KFileDialog>
@@ -116,7 +108,7 @@
 CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
                                                 mCheckableProxyModel( 0 ),
                                                 mETMCollectionView( 0 ),
-                                                mIdentityManager(/*ro=*/ true)
+                                                mSearchCollectionHelper(this)
 {
   Akonadi::Control::widgetNeedsAkonadi( this );
   mChanger = new Akonadi::IncidenceChanger( new IncidenceEditorNG::IndividualMailComponentFactory( this ), this );
@@ -130,7 +122,6 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   mCalendar = Akonadi::ETMCalendar::Ptr( new Akonadi::ETMCalendar( CalendarSupport::calendarSingleton() ) );
 
   mCalendar->setObjectName( QLatin1String("KOrg Calendar") );
-  setupSearchCollections();
   mCalendarClipboard = new Akonadi::CalendarClipboard( mCalendar, mChanger, this );
   mITIPHandler = new Akonadi::ITIPHandler( this );
   mITIPHandler->setCalendar( mCalendar );
@@ -274,10 +265,6 @@ CalendarView::CalendarView( QWidget *parent ) : CalendarViewBase( parent ),
   connect( this, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
            mEventViewer, SLOT(setIncidence(Akonadi::Item,QDate)) );
 
-   // IdentityManager
-   connect(&mIdentityManager, SIGNAL(changed()),
-            SLOT(createOrUpdateSearchCollections()));
-
   //TODO: do a pretty Summary,
   QString s;
   s = i18n( "<p><em>No Item Selected</em></p>"
@@ -336,116 +323,6 @@ CalendarView::~CalendarView()
 Akonadi::ETMCalendar::Ptr CalendarView::calendar() const
 {
   return mCalendar;
-}
-
-void CalendarView::setupSearchCollections()
-{
-    Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(1), Akonadi::CollectionFetchJob::FirstLevel);
-    fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-    connect(fetchJob, SIGNAL(result(KJob*)), this, SLOT(onSearchCollectionsFetched(KJob*)));
-}
-
-void CalendarView::onSearchCollectionsFetched(KJob *job)
-{
-    if (job->error()) {
-        kWarning() << "Search failed: " << job->errorString();
-    } else {
-        Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob*>(job);
-        Q_FOREACH(const Akonadi::Collection &col, fetchJob->collections()) {
-            if (col.name() == QLatin1String("OpenInvitations")) {
-                mOpenInvitationCollection = col;
-            } else if (col.name() == QLatin1String("DeclinedInvitations")) {
-                mDeclineCollection = col;
-            }
-        }
-    }
-    createOrUpdateSearchCollections();
-}
-
-void CalendarView::createOrUpdateSearchCollections()
-{
-    Akonadi::SearchQuery query(Akonadi::SearchTerm::RelOr);
-    foreach (const QString email, mIdentityManager.allEmails()) {
-        query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email+ QString::number(KCalCore::Attendee::NeedsAction))));
-    }
-    if (!mOpenInvitationCollection.isValid()) {
-        const QString name = QLatin1String("OpenInvitations");
-        Akonadi::SearchCreateJob *job = new Akonadi::SearchCreateJob(name, query);
-        job->setRemoteSearchEnabled(false);
-        job->setSearchMimeTypes(QStringList() << KCalCore::Event::eventMimeType()
-            << KCalCore::Todo::todoMimeType()
-            << KCalCore::Journal::journalMimeType());
-        connect(job, SIGNAL(result(KJob*)), SLOT(createSearchJobFinished(KJob*)));
-
-        kDebug() <<  "We have to create a OpenIncidence virtual Collection";
-    } else {
-        Akonadi::PersistentSearchAttribute *attribute = mOpenInvitationCollection.attribute<Akonadi::PersistentSearchAttribute>( Akonadi::Entity::AddIfMissing );
-        Akonadi::EntityDisplayAttribute *displayname  = mOpenInvitationCollection.attribute<Akonadi::EntityDisplayAttribute >( Akonadi::Entity::AddIfMissing );
-        attribute->setQueryString( QString::fromLatin1(query.toJSON()) );
-        attribute->setRemoteSearchEnabled(false);
-        displayname->setDisplayName(i18nc("A collection of all open invidations.", "Open Invitations"));
-        mOpenInvitationCollection.setEnabled(true);
-        Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mOpenInvitationCollection, this );
-        connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
-        kDebug() <<  "updating OpenIncidence (" << mOpenInvitationCollection.id() << ") virtual Collection";
-        kDebug() <<  query.toJSON();
-    }
-
-    query = Akonadi::SearchQuery(Akonadi::SearchTerm::RelOr);
-    foreach (const QString email, mIdentityManager.allEmails()) {
-        query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email+ QString::number(KCalCore::Attendee::Declined))));
-    }
-    if (!mDeclineCollection.isValid()) {
-        const QString name = QLatin1String("DeclinedInvitations");
-        Akonadi::SearchCreateJob *job = new Akonadi::SearchCreateJob(name, query);
-        job->setRemoteSearchEnabled(false);
-        job->setSearchMimeTypes(QStringList() << KCalCore::Event::eventMimeType()
-            << KCalCore::Todo::todoMimeType()
-            << KCalCore::Journal::journalMimeType());
-        connect(job, SIGNAL(result(KJob*)), SLOT(createSearchJobFinished(KJob*)));
-
-        kDebug() <<  "We have to create a DeclinedIncidence virtual Collection";
-    } else {
-        Akonadi::PersistentSearchAttribute *persistentsearch = mDeclineCollection.attribute<Akonadi::PersistentSearchAttribute >( Akonadi::Entity::AddIfMissing );
-        Akonadi::EntityDisplayAttribute *displayname  = mDeclineCollection.attribute<Akonadi::EntityDisplayAttribute >( Akonadi::Entity::AddIfMissing );
-
-        persistentsearch->setQueryString( QString::fromLatin1(query.toJSON()) );
-        persistentsearch->setRemoteSearchEnabled(false);
-        displayname->setDisplayName(i18nc("A collection of all declined invidations.", "Declined Invitations"));
-        mDeclineCollection.setEnabled(true);
-        Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob( mDeclineCollection, this );
-        connect( job, SIGNAL(result(KJob*)), this, SLOT(modifyResult(KJob*)) );
-        kDebug() <<  "updating DeclinedIncidence(" << mDeclineCollection.id() << ") virtual Collection";
-        kDebug() <<  query.toJSON();
-    }
-}
-
-
-void CalendarView::modifyResult(KJob* job)
-{
-    if (job->error()) {
-        kWarning() << "Error occurred " <<  job->errorString();
-    } else {
-        kDebug() << "modify was successfull";
-    }
-}
-
-
-void CalendarView::createSearchJobFinished( KJob *job )
-{
-    Akonadi::SearchCreateJob *createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
-    const Akonadi::Collection searchCollection = createJob->createdCollection();
-    if (job->error()) {
-        kWarning() << "Error occurred " <<  searchCollection.name() << job->errorString();
-        return;
-    }
-    qDebug() << "Created search folder successfully " <<  searchCollection.name();
-
-    if (searchCollection.name() ==  QLatin1String("OpenInvitations")) {
-        mOpenInvitationCollection = searchCollection;
-    } else if (searchCollection.name() ==  QLatin1String("DeclinedInvitations")) {
-        mDeclineCollection = searchCollection;
-    }
 }
 
 QDate CalendarView::activeDate( bool fallbackToToday )
@@ -2961,4 +2838,3 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
         mMessageWidget->show();
     }
 }
-

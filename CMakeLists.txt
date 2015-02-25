@@ -203,6 +203,7 @@ set(korganizerprivate_LIB_SRCS
     previewdialog.cpp
     publishdialog.cpp
     searchdialog.cpp
+    searchcollectionhelper.cpp
     statusdialog.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
