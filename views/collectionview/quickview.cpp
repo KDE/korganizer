@@ -99,6 +99,7 @@ Quickview::Quickview(const Person &person, const Akonadi::Collection &col)
     , mCollection(col)
     , mDayRange(7)
 {
+    setButtons(KDialog::Close);
     QWidget *w = new QWidget( this );
     mUi->setupUi( w );
     setMainWidget( w );
