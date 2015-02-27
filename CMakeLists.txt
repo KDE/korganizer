@@ -49,7 +49,8 @@ if(KDEPIM_BUILD_DESKTOP)
     korganizer_debug.cpp
   )
 
-  kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-korganizer.png")
+  file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-korganizer.png")
+  ecm_add_app_icon(korganizer_SRCS ICONS ${ICONS_SRCS})
 
   add_executable(korganizer ${korganizer_SRCS})
 
