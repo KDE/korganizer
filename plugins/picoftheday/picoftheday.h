@@ -25,7 +25,7 @@
 using namespace EventViews::CalendarDecoration;
 
 #include <KIO/Job>
-#include <KUrl>
+#include <QUrl>
 class Picoftheday : public Decoration
 {
 
@@ -69,7 +69,7 @@ public:
 
     /**
       Returns the thumbnail URL for a given width corresponding to a full-size image URL. */
-    KUrl thumbnailUrl(const KUrl &fullSizeUrl, const int width = 0) const;
+    QUrl thumbnailUrl(const QUrl &fullSizeUrl, const int width = 0) const;
 
 Q_SIGNALS:
     void gotNewPixmap(const QPixmap &) const;
@@ -92,10 +92,10 @@ private:
     QString mDescription;
     QSize mDlThumbSize;
     QString mFileName;
-    KUrl mFullSizeImageUrl;
+    QUrl mFullSizeImageUrl;
     float mHWRatio;
     QSize mThumbSize;
-    KUrl mThumbUrl;
+    QUrl mThumbUrl;
     bool mFirstStepCompleted;
     bool mSecondStepCompleted;
     KIO::SimpleJob *mFirstStepJob;

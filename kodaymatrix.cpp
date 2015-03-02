@@ -36,7 +36,7 @@
 #include <AkonadiCore/ItemFetchScope>
 
 #include <KCalendarSystem>
-#include <KUrl>
+#include <QUrl>
 #include <QIcon>
 #include <QMenu>
 
@@ -656,7 +656,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     Akonadi::Item items;
     //For the moment support 1 url
     if (urls.count() >= 1) {
-        KUrl res = urls.at(0);
+        QUrl res = urls.at(0);
 
         Akonadi::ItemFetchJob *job = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(res));
         job->fetchScope().setAncestorRetrieval(Akonadi::ItemFetchScope::Parent);

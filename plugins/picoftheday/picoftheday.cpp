@@ -232,7 +232,7 @@ void POTDElement::step2Result(KJob *job)
     }
 }
 
-KUrl POTDElement::thumbnailUrl(const KUrl &fullSizeUrl, const int width) const
+QUrl POTDElement::thumbnailUrl(const QUrl &fullSizeUrl, const int width) const
 {
     QString thumbUrl = fullSizeUrl.url();
     if (width != 0) {
@@ -245,7 +245,7 @@ KUrl POTDElement::thumbnailUrl(const KUrl &fullSizeUrl, const int width) const
                          QLatin1String("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2"));
     }
     thumbUrl.replace(QRegExp(QLatin1String("^file:////")), QLatin1String("http://"));
-    return KUrl(thumbUrl);
+    return QUrl(thumbUrl);
 }
 
 /** Third step of three in the downloading process */
