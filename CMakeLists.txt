@@ -210,10 +210,10 @@ set(korganizerprivate_LIB_SRCS
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc)
 
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
-    filteredit_base.ui
-    kogroupwareprefspage.ui
+    ui/filteredit_base.ui
+    ui/kogroupwareprefspage.ui
     views/multiagendaview/multiagendaviewconfigwidget.ui
-    searchdialog_base.ui
+    ui/searchdialog_base.ui
   )
 
   qt4_add_resources(korganizerprivate_LIB_SRCS
