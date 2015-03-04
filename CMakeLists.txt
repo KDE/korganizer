@@ -13,12 +13,6 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/calendarsupport
   ${CMAKE_BINARY_DIR}/calendarsupport
   ${CMAKE_BINARY_DIR}/calendarviews
-  ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
-  ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
-  ${CMAKE_SOURCE_DIR}/incidenceeditor-ng
-  ${CMAKE_SOURCE_DIR}/calendarviews
-  ${CMAKE_SOURCE_DIR}/pimcommon/
-  ${CMAKE_SOURCE_DIR}/libkdepim
   ${AKONADI_INCLUDE_DIR}
   ${Boost_INCLUDE_DIRS}
   ${ZLIB_INCLUDE_DIRS}
