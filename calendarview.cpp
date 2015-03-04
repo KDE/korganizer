@@ -91,7 +91,7 @@
 #include <KCalUtils/Stringify>
 #include <KCalUtils/DndFactory>
 
-#include <KFileDialog>
+#include <QFileDialog>
 #include <KNotification>
 #include <KRun>
 #include <QVBoxLayout>
@@ -1828,7 +1828,7 @@ void CalendarView::exportWeb()
 void CalendarView::exportICalendar()
 {
     QString filename =
-        KFileDialog::getSaveFileName(QUrl(QLatin1String("icalout.ics")), i18n("*.ics|iCalendars"), this);
+        QFileDialog::getSaveFileName(this, QString(), QLatin1String("icalout.ics"), i18n("*.ics|iCalendars"));
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".ics")) {
@@ -1877,8 +1877,7 @@ void CalendarView::exportVCalendar()
         }
     }
 
-    QString filename = KFileDialog::getSaveFileName(QUrl(QLatin1String("vcalout.vcs")),
-                       i18n("*.vcs|vCalendars"), this);
+    QString filename = QFileDialog::getSaveFileName(this, QString(), QLatin1String("vcalout.vcs"), i18n("*.vcs|vCalendars"));
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".vcs")) {
