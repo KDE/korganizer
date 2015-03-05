@@ -27,7 +27,7 @@
 */
 
 #include "datenavigatorcontainer.h"
-#include "kdatenavigator.h"
+#include "../widgets/kdatenavigator.h"
 #include "kodaymatrix.h"
 #include "koglobals.h"
 #include "navigatorbar.h"

@@ -178,24 +178,24 @@ set(korganizerprivate_LIB_SRCS
     datechecker.cpp
     datenavigator.cpp
     datenavigatorcontainer.cpp
-    exportwebdialog.cpp
-    filtereditdialog.cpp
+    dialog/exportwebdialog.cpp
+    dialog/filtereditdialog.cpp
     htmlexportjob.cpp
-    kdatenavigator.cpp
+    widgets/kdatenavigator.cpp
     kocheckableproxymodel.cpp
     kocorehelper.cpp
     kodaymatrix.cpp
     kodialogmanager.cpp
     koeventpopupmenu.cpp
     koeventview.cpp
-    koeventviewerdialog.cpp
+    dialog/koeventviewerdialog.cpp
     koglobals.cpp
     kohelper.cpp
     korganizerifaceimpl.cpp
     koviewmanager.cpp
     kowindowlist.cpp
     navigatorbar.cpp
-    searchdialog.cpp
+    dialog/searchdialog.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
