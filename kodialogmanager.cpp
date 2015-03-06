@@ -25,9 +25,9 @@
 
 #include "kodialogmanager.h"
 #include "calendarview.h"
-#include "filtereditdialog.h"
+#include "dialog/filtereditdialog.h"
 #include "koprefs.h"
-#include "searchdialog.h"
+#include "dialog/searchdialog.h"
 
 #include <calendarsupport/archivedialog.h>
 #include <calendarsupport/categoryconfig.h>
