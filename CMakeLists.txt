@@ -180,7 +180,7 @@ set(korganizerprivate_LIB_SRCS
     datenavigatorcontainer.cpp
     dialog/exportwebdialog.cpp
     dialog/filtereditdialog.cpp
-    htmlexportjob.cpp
+    job/htmlexportjob.cpp
     widgets/kdatenavigator.cpp
     kocheckableproxymodel.cpp
     kocorehelper.cpp

@@ -32,7 +32,7 @@
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
 #include "calendarview.h"
-#include "htmlexportjob.h"
+#include "job/htmlexportjob.h"
 #include "htmlexportsettings.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
