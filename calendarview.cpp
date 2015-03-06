@@ -1862,7 +1862,7 @@ void CalendarView::exportVCalendar()
   }
 
   QString filename = KFileDialog::getSaveFileName( KUrl( QLatin1String("vcalout.vcs") ),
-                                                   i18n( "*.vcs|vCalendars" ), this );
+                                                   i18n( "*.vcs|vCalendars" ), this, QString(), KFileDialog::ConfirmOverwrite );
   if ( !filename.isEmpty() ) {
     // Force correct extension
     if ( filename.right( 4 ) != QLatin1String(".vcs") ) {

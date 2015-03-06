@@ -1054,7 +1054,7 @@ void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings, bool autoMod
         KGlobalSettings::documentPath(),
         i18n( "*.html|HTML Files" ),
         dialogParent(),
-        i18n( "Select path for HTML calendar export" ) );
+        i18n( "Select path for HTML calendar export" ), KFileDialog::ConfirmOverwrite );
     settings->setOutputFile( fileName );
     settings->writeConfig();
   }
