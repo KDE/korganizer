@@ -314,7 +314,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer.upd
+    kconf_update/korganizer.upd
     DESTINATION ${KCONF_UPDATE_INSTALL_DIR}
   )
 
