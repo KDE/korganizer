@@ -32,7 +32,7 @@
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
 #include "calendarview.h"
-#include "htmlexportjob.h"
+#include "job/htmlexportjob.h"
 #include "htmlexportsettings.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
@@ -1058,7 +1058,7 @@ void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode
                 QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
                 i18n("*.html|HTML Files"),
                 dialogParent(),
-                i18n("Select path for HTML calendar export"));
+                i18n("Select path for HTML calendar export"), KFileDialog::ConfirmOverwrite);
         settings->setOutputFile(fileName);
         settings->save();
     }

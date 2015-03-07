@@ -179,7 +179,7 @@ set(korganizerprivate_LIB_SRCS
     datenavigatorcontainer.cpp
     dialog/exportwebdialog.cpp
     dialog/filtereditdialog.cpp
-    htmlexportjob.cpp
+    job/htmlexportjob.cpp
     widgets/kdatenavigator.cpp
     kocheckableproxymodel.cpp
     kocorehelper.cpp
@@ -312,8 +312,8 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer.upd
-    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
+    kconf_update/korganizer.upd
+    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR} 
   )
 
   install(FILES
