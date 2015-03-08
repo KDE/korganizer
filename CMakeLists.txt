@@ -138,7 +138,7 @@ set(korganizer_core_LIB_SRCS
   kocore.cpp
 )
 
-kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc)
+kde4_add_kcfg_files(korganizer_core_LIB_SRCS settings/koprefs_base.kcfgc)
 
 kde4_add_library(korganizer_core ${LIBRARY_TYPE} ${korganizer_core_LIB_SRCS})
 
