@@ -284,7 +284,7 @@ set(korganizerprivate_LIB_SRCS
 ########### install files ###############
 
   install(FILES
-    korganizer.kcfg
+    settings/korganizer.kcfg
     DESTINATION ${KCFG_INSTALL_DIR}
   )
 
