@@ -304,7 +304,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer_part.desktop webcal.protocol
+    korganizer_part.desktop data/webcal.protocol
     DESTINATION ${SERVICES_INSTALL_DIR}
   )
 
