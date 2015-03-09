@@ -207,7 +207,7 @@ set(korganizerprivate_LIB_SRCS
     views/whatsnextview/kowhatsnextview.cpp
   )
 
-  kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc)
+  kde4_add_kcfg_files(korganizerprivate_LIB_SRCS settings/htmlexportsettings.kcfgc)
 
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui
