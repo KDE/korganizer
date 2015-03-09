@@ -134,7 +134,7 @@ set(korganizer_core_LIB_SRCS
   korganizer_debug.cpp
 )
 
-kconfig_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc)
+kconfig_add_kcfg_files(korganizer_core_LIB_SRCS settings/koprefs_base.kcfgc)
 
 add_library(korganizer_core ${korganizer_core_LIB_SRCS})
 generate_export_header(korganizer_core BASE_NAME korganizer_core)
@@ -282,7 +282,7 @@ set(korganizerprivate_LIB_SRCS
 ########### install files ###############
 
   install(FILES
-    korganizer.kcfg
+    settings/korganizer.kcfg
     DESTINATION ${KDE_INSTALL_KCFGDIR}
   )
 
