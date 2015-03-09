@@ -194,7 +194,7 @@ set(korganizerprivate_LIB_SRCS
     korganizerifaceimpl.cpp
     koviewmanager.cpp
     kowindowlist.cpp
-    navigatorbar.cpp
+    widgets/navigatorbar.cpp
     dialog/searchdialog.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp

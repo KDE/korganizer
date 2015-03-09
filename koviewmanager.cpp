@@ -29,7 +29,7 @@
 #include "datenavigator.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "navigatorbar.h"
+#include "widgets/navigatorbar.h"
 #include "korganizer/mainwindow.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/journalview/kojournalview.h"
