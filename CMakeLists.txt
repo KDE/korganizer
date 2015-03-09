@@ -206,7 +206,7 @@ set(korganizerprivate_LIB_SRCS
     views/whatsnextview/kowhatsnextview.cpp
   )
 
-  kconfig_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc)
+  kconfig_add_kcfg_files(korganizerprivate_LIB_SRCS settings/htmlexportsettings.kcfgc)
 
   ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui
@@ -287,7 +287,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer_part.rc
+    data/korganizer_part.rc
     DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/korganizer
   )
 
@@ -307,7 +307,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizerui.rc
+    data/korganizerui.rc
     DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/korganizer
   )
 
@@ -322,7 +322,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer.knsrc
+    data/korganizer.knsrc
     DESTINATION ${KDE_INSTALL_CONFDIR}
   )
 
