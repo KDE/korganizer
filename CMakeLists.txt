@@ -289,7 +289,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer_part.rc
+    data/korganizer_part.rc
     DESTINATION ${DATA_INSTALL_DIR}/korganizer
   )
 
@@ -309,7 +309,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizerui.rc
+    data/korganizerui.rc
     DESTINATION ${DATA_INSTALL_DIR}/korganizer
   )
 
@@ -324,7 +324,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    korganizer.knsrc
+    data/korganizer.knsrc
     DESTINATION ${CONFIG_INSTALL_DIR}
   )
 
