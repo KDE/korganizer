@@ -29,7 +29,6 @@
 #include "calendarview.h"
 #include "korganizer.h"
 #include "reminderclient.h"
-#include "version.h"
 
 #include <KCalCore/CalFormat>
 
@@ -37,11 +36,12 @@
 #include <KDebug>
 #include <KStandardDirs>
 #include <KStartupInfo>
+#include "kdepim-version.h"
 
 KOrganizerApp::KOrganizerApp() : KontactInterface::PimUniqueApplication()
 {
   QString prodId = QLatin1String("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
-  KCalCore::CalFormat::setApplication( QLatin1String("KOrganizer"), prodId.arg( QLatin1String(korgVersion) ) );
+  KCalCore::CalFormat::setApplication( QLatin1String("KOrganizer"), prodId.arg( QLatin1String(KDEPIM_VERSION) ) );
 
   // icons shared by the KDE PIM applications
   KGlobal::dirs()->addResourceType( "appicon", "data", "/kdepim/icons/" );
