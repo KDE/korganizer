@@ -23,12 +23,12 @@
 */
 
 #include "aboutdata.h"
-#include "version.h"
+#include "kdepim-version.h"
 #include <KLocalizedString>
 using namespace KOrg;
 
 AboutData::AboutData()
-    : K4AboutData("korganizer", Q_NULLPTR, ki18n("KOrganizer"), korgVersion,
+    : K4AboutData("korganizer", Q_NULLPTR, ki18n("KOrganizer"), KDEPIM_VERSION,
                   ki18n("A Personal Organizer"),
                   K4AboutData::License_GPL,
                   ki18n("Copyright © 1997–1999 Preston Brown\n"
@@ -42,7 +42,7 @@ AboutData::AboutData()
     const QByteArray rev(KDEPIM_GIT_REVISION_STRING);
     const QByteArray last(KDEPIM_GIT_LAST_CHANGE);
     if (!rev.isEmpty() && !last.isEmpty()) {
-        QByteArray versionInfo(korgVersion);
+        QByteArray versionInfo(KDEPIM_VERSION);
         versionInfo += '-' + rev + ' ' + '(' + last + ')';
         setVersion(versionInfo);
     }

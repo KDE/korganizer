@@ -43,7 +43,7 @@
 #include "koprefs.h"
 #include "koviewmanager.h"
 #include "htmlexportsettings.h"
-#include "navigatorbar.h"
+#include "widgets/navigatorbar.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"

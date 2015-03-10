@@ -30,7 +30,7 @@
 #include "../widgets/kdatenavigator.h"
 #include "kodaymatrix.h"
 #include "koglobals.h"
-#include "navigatorbar.h"
+#include "widgets/navigatorbar.h"
 
 #include <KCalendarSystem>
 
