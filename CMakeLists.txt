@@ -220,17 +220,17 @@ set(korganizerprivate_LIB_SRCS
     agendaitem_pixmaps/agendaitemtheme.qrc)
 
   qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS
-    org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h
+    data/org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h
     KOrganizerIfaceImpl
   )
 
   qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS
-    org.kde.Korganizer.Calendar.xml actionmanager.h
+    data/org.kde.Korganizer.Calendar.xml actionmanager.h
     ActionManager calendaradaptor KOrgCalendarAdaptor
   )
 
   qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
-    org.kde.korganizer.Korganizer.xml
+    data/org.kde.korganizer.Korganizer.xml
   )
 
   qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
@@ -238,7 +238,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS
-    ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml
+    ${CMAKE_SOURCE_DIR}/korganizer/data/org.kde.korganizer.Korganizer.xml
   )
 
   kde4_add_library(korganizerprivate ${LIBRARY_TYPE} ${korganizerprivate_LIB_SRCS})
@@ -319,7 +319,7 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml
+    data/org.kde.Korganizer.Calendar.xml data/org.kde.korganizer.Korganizer.xml
     DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
   )
 
