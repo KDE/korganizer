@@ -83,6 +83,7 @@ FilterEdit::FilterEdit( QList<KCalCore::CalFilter*> *filters, QWidget *parent )
 {
   setupUi( this );
   searchline->setListWidget( mRulesList );
+  searchline->setTrapReturnKey(true);
   mDetailsFrame->setEnabled( false );
   mFilters = filters;
   mNewButton->setWhatsThis(
