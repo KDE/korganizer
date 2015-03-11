@@ -225,9 +225,20 @@ void FilterEdit::bNewPressed()
 {
   mDetailsFrame->setEnabled( true );
   saveChanges();
+  QStringList filterNames;
+  for (int i=0; i < mRulesList->count(); ++i) {
+      filterNames << mRulesList->item(i)->text();
+  }
+  QString newFilterName;
+  for (int i = 1;;++i) {
+      newFilterName = i18nc( "@label default filter name",
+                             "New Filter %1", i );
+      if (!filterNames.contains(newFilterName)) {
+          break;
+      }
+  }
   KCalCore::CalFilter *newFilter =
-    new KCalCore::CalFilter( i18nc( "@label default filter name",
-                                    "New Filter %1", mFilters->count() ) );
+    new KCalCore::CalFilter( newFilterName );
   mFilters->append( newFilter );
   updateFilterList();
   mRulesList->setCurrentRow( mRulesList->count() - 1 );
