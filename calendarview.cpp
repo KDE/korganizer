@@ -641,7 +641,7 @@ void CalendarView::slotCreateFinished( int changeId,
     changeIncidenceDisplay( item, Akonadi::IncidenceChanger::ChangeTypeCreate );
     updateUnmanagedViews();
     checkForFilteredChange( item );
-  } else {
+  } else if (!errorString.isEmpty()){
     kError() << "Incidence not added, job reported error: " << errorString;
   }
 }
