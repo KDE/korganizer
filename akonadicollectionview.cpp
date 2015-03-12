@@ -255,7 +255,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 
         QList<Akonadi::StandardActionManager::Type> standardActions;
         standardActions << Akonadi::StandardActionManager::CreateCollection
-                        << Akonadi::StandardActionManager::CopyCollections
                         << Akonadi::StandardActionManager::DeleteCollections
                         << Akonadi::StandardActionManager::SynchronizeCollections
                         << Akonadi::StandardActionManager::CollectionProperties
@@ -263,7 +262,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardActionManager::Paste
                         << Akonadi::StandardActionManager::DeleteItems
                         << Akonadi::StandardActionManager::CutItems
-                        << Akonadi::StandardActionManager::CutCollections
                         << Akonadi::StandardActionManager::CreateResource
                         << Akonadi::StandardActionManager::DeleteResources
                         << Akonadi::StandardActionManager::ResourceProperties
