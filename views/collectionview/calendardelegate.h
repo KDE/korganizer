@@ -36,7 +36,8 @@ public:
         AddToList,
         RemoveFromList,
         Enable,
-        Quickview
+        Quickview,
+        Total
     };
 
 Q_SIGNALS:

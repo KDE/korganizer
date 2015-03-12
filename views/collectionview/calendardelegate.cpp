@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <QPainter>
 #include <QMouseEvent>
+#include <akonadi/collectionstatistics.h>
 
 #include <calendarsupport/utils.h>
 #include <kohelper.h>
@@ -142,6 +143,9 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
     if (!isToplevelSearchCollection && !isToplevelKolabCollection) {
         buttons << Quickview;
     }
+    if (isSearchCollection && !isToplevelSearchCollection) {
+        buttons << Total;
+    }
     return buttons;
 }
 
@@ -166,14 +170,24 @@ void StyledCalendarDelegate::paint( QPainter * painter, const QStyleOptionViewIt
         QList<Action> buttons;
         int i = 1;
         Q_FOREACH (Action action, getActions(option, index)) {
-            QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
-            if (action == Enable && showButtons) {
-                buttonOption.state = QStyle::State_Active;
+            if (action != Total) {
+                QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
+                if (action == Enable && showButtons) {
+                    buttonOption.state = QStyle::State_Active;
+                }
+                if (action == Enable && !showButtons && enabled == Qt::PartiallyChecked) {
+                    buttonOption.state = QStyle::State_Active;
+                }
+                s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
+            } else {
+                QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), i);
+                buttonOption.features = QStyleOptionButton::Flat;
+                buttonOption.rect.setHeight(buttonOption.rect.height() + 4);
+                if (col.statistics().count() > 0) {
+                    buttonOption.text = QString::number(col.statistics().count());
+                }
+                s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
             }
-            if (action == Enable && !showButtons && enabled == Qt::PartiallyChecked) {
-                buttonOption.state = QStyle::State_Active;
-            }
-            s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
             i++;
         }
     }
