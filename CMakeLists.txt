@@ -72,8 +72,8 @@ if(KDEPIM_BUILD_DESKTOP)
   set(kcm_korganizer_PART_SRCS
     kcmdesignerfields.cpp
     koprefsdialog.cpp
-    kitemiconcheckcombo.cpp
     korganizer_debug.cpp
+    widgets/kitemiconcheckcombo.cpp
   )
 
   add_library(kcm_korganizer MODULE ${kcm_korganizer_PART_SRCS})

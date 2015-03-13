@@ -106,7 +106,7 @@ public:
         if (v4.checkState == Qt::Checked) {
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
             QColor color = KOHelper::resourceColor(collection);
-            if (color.isValid()) {
+            if (color.isValid() && (collection.remoteId() != QLatin1String("akonadi_birthdays_resource"))) {
                 QRect r = v4.rect;
                 const int h = r.height() - 4;
                 r.adjust(r.width() - h - 2, 2, - 2, -2);
@@ -451,6 +451,11 @@ void AkonadiCollectionView::updateMenu()
             const QString identifier = QString::number(collection.id());
             const QColor defaultColor = KOPrefs::instance()->resourceColor(identifier);
             enableAction = enableAction && defaultColor.isValid();
+            if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
+                enableAction = false;
+                mAssignColor->setEnabled( enableAction );
+            }
+
             mDisableColor->setEnabled(enableAction);
             mDefaultCalendar->setEnabled(!KOHelper::isStandardCalendar(collection.id()) &&
                                          collection.rights() & Akonadi::Collection::CanCreateItem);

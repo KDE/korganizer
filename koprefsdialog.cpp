@@ -24,7 +24,7 @@
 */
 
 #include "koprefsdialog.h"
-#include "kitemiconcheckcombo.h"
+#include "widgets/kitemiconcheckcombo.h"
 #include "kocore.h"
 #include "koglobals.h"
 #include "koprefs.h"
