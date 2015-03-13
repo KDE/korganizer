@@ -267,9 +267,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardActionManager::ResourceProperties
                         << Akonadi::StandardActionManager::SynchronizeResources
                         << Akonadi::StandardActionManager::SynchronizeCollectionsRecursive
-                    << Akonadi::StandardActionManager::CopyCollectionToMenu
-                    << Akonadi::StandardActionManager::MoveCollectionToMenu;
-
+                        << Akonadi::StandardActionManager::CopyCollectionToMenu
+                        << Akonadi::StandardActionManager::MoveCollectionToMenu;
 
         Q_FOREACH (Akonadi::StandardActionManager::Type standardAction, standardActions) {
             mActionManager->createAction(standardAction);
@@ -453,7 +452,7 @@ void AkonadiCollectionView::updateMenu()
             enableAction = enableAction && defaultColor.isValid();
             if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
                 enableAction = false;
-                mAssignColor->setEnabled( enableAction );
+                mAssignColor->setEnabled(enableAction);
             }
 
             mDisableColor->setEnabled(enableAction);
