@@ -47,7 +47,12 @@ public:
     virtual ~FreebusyViewCalendar() {};
     virtual bool isValid(const KCalCore::Incidence::Ptr &incidence) const
     {
-        return incidence->uid().startsWith(QLatin1String("fb-"));
+        return isValid(incidence->uid());
+    }
+
+    virtual bool isValid(const QString &incidenceIdentifier) const
+    {
+        return incidenceIdentifier.startsWith(QLatin1String("fb-"));
     }
 
     virtual QString displayName(const KCalCore::Incidence::Ptr &incidence) const
