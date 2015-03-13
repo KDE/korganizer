@@ -106,7 +106,7 @@ class PageItem : public QTreeWidgetItem
       return mPath;
     }
 
-    QPixmap preview()
+    QPixmap preview() const
     {
       return mPreview;
     }
