@@ -114,7 +114,7 @@ public:
         return mPath;
     }
 
-    QPixmap preview()
+    QPixmap preview() const
     {
         return mPreview;
     }
