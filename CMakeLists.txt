@@ -77,7 +77,7 @@ if(KDEPIM_BUILD_DESKTOP)
 
   set(kcm_korganizer_PART_SRCS
     kcmdesignerfields.cpp
-    koprefsdialog.cpp
+    prefs/koprefsdialog.cpp
     widgets/kitemiconcheckcombo.cpp
   )
 
@@ -134,7 +134,7 @@ endif()
 ########### next target ###############
 
 set(korganizer_core_LIB_SRCS
-  koprefs.cpp
+  prefs/koprefs.cpp
   kocore.cpp
 )
 

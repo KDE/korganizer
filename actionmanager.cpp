@@ -38,7 +38,7 @@
 #include "kodialogmanager.h"
 #include "korganizeradaptor.h"
 #include "koglobals.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "reminderclient.h"

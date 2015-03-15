@@ -25,7 +25,7 @@
 
 #include "monthview.h"
 #include "koeventpopupmenu.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarviews/month/monthview.h>
 

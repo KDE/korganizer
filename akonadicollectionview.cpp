@@ -29,7 +29,7 @@
 #include "akonadicollectionview.h"
 #include "kocore.h"
 #include "kohelper.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 #include "koglobals.h"
 
 #include <calendarsupport/kcalprefs.h>

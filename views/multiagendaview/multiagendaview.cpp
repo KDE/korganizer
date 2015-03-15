@@ -21,7 +21,7 @@
 #include "multiagendaview.h"
 #include "akonadicollectionview.h"
 #include "koeventpopupmenu.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 #include "ui_multiagendaviewconfigwidget.h"
 
 #include <akonadi_next/kcolumnfilterproxymodel.h>

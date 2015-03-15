@@ -28,7 +28,7 @@
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "koglobals.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 #include "widgets/navigatorbar.h"
 #include "korganizer/mainwindow.h"
 #include "views/agendaview/koagendaview.h"
