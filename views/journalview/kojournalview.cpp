@@ -26,7 +26,7 @@
 // View of Journal entries
 
 #include "kojournalview.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarviews/journal/journalview.h>
 

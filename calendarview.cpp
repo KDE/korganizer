@@ -40,7 +40,7 @@
 #include "dialog/koeventviewerdialog.h"
 #include "koglobals.h"
 #include "kohelper.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 #include "koviewmanager.h"
 #include "htmlexportsettings.h"
 #include "widgets/navigatorbar.h"

@@ -24,7 +24,7 @@
 
 #include "koagendaview.h"
 #include "koeventpopupmenu.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarviews/agenda/agendaview.h>
 

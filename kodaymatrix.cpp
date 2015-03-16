@@ -28,7 +28,7 @@
 
 #include "kodaymatrix.h"
 #include "koglobals.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarsupport/utils.h>
 

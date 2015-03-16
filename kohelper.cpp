@@ -23,7 +23,7 @@
 */
 
 #include "kohelper.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarsupport/kcalprefs.h>
 

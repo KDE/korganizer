@@ -24,7 +24,7 @@
 */
 
 #include "kocore.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarsupport/identitymanager.h>
 

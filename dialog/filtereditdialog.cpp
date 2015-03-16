@@ -25,7 +25,7 @@
 */
 
 #include "filtereditdialog.h"
-#include "koprefs.h"
+#include "prefs/koprefs.h"
 
 #include <calendarsupport/categoryconfig.h>
 #include <libkdepim/widgets/tagwidgets.h>
