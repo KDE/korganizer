@@ -38,7 +38,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
 {
     setWindowTitle(i18n("Configure Picture of the Day"));
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-    QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     setLayout(mainLayout);
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
@@ -51,7 +50,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     setModal(true);
     QFrame *topFrame = new QFrame(this);
     mainLayout->addWidget(topFrame);
-    mainLayout->addWidget(mainWidget);
     QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setMargin(0);
 
