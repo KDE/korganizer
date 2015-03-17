@@ -30,7 +30,7 @@ endif()
 
 set(PERL ${PERL_EXECUTABLE})
 configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY
+  ${CMAKE_CURRENT_SOURCE_DIR}/data/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY
 )
 
 ########### next target ###############
