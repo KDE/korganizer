@@ -33,7 +33,7 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "koglobals.h"
-#include "korganizerifaceimpl.h"
+#include "impl/korganizerifaceimpl.h"
 
 #include "libkdepim/progresswidget/progressstatusbarwidget.h"
 #include "libkdepim/progresswidget/statusbarprogresswidget.h"

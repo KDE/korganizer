@@ -28,7 +28,7 @@
 #include "actionmanager.h"
 #include "calendarview.h"
 #include "kocore.h"
-#include "korganizerifaceimpl.h"
+#include "impl/korganizerifaceimpl.h"
 #include "korgstartup.h"
 #include <calendarsupport/utils.h>
 

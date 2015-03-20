@@ -190,7 +190,7 @@ set(korganizerprivate_LIB_SRCS
     dialog/koeventviewerdialog.cpp
     koglobals.cpp
     kohelper.cpp
-    korganizerifaceimpl.cpp
+    impl/korganizerifaceimpl.cpp
     koviewmanager.cpp
     kowindowlist.cpp
     widgets/navigatorbar.cpp
@@ -219,7 +219,7 @@ set(korganizerprivate_LIB_SRCS
     agendaitem_pixmaps/agendaitemtheme.qrc)
 
   qt5_add_dbus_adaptor(korganizerprivate_LIB_SRCS
-    data/org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h
+    data/org.kde.korganizer.Korganizer.xml impl/korganizerifaceimpl.h
     KOrganizerIfaceImpl
   )
 
