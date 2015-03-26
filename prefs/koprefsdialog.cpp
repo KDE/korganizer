@@ -34,6 +34,7 @@
 #include <calendarsupport/categoryconfig.h>
 
 #include <incidenceeditor-ng/globalsettings.h>
+#include <widgets/tagselectioncombo.h>
 #include <widgets/tagwidgets.h>
 
 #include <Akonadi/AgentFilterProxyModel>
