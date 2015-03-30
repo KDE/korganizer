@@ -101,13 +101,13 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     connect(mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
             SIGNAL(newSubTodoSignal(Akonadi::Item)));
 
-  connect( mView, SIGNAL(fullViewChanged(bool)),
-           SIGNAL(fullViewChanged(bool)) );
+    connect(mView, SIGNAL(fullViewChanged(bool)),
+            SIGNAL(fullViewChanged(bool)));
 
-  connect( mView, SIGNAL(unSubTodoSignal()),
-           SIGNAL(unSubTodoSignal()) );
-  connect( mView, SIGNAL(unAllSubTodoSignal()),
-           SIGNAL(unAllSubTodoSignal()) );
+    connect(mView, SIGNAL(unSubTodoSignal()),
+            SIGNAL(unSubTodoSignal()));
+    connect(mView, SIGNAL(unAllSubTodoSignal()),
+            SIGNAL(unAllSubTodoSignal()));
 }
 
 KOTodoView::~KOTodoView()
