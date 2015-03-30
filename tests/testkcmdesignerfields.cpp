@@ -41,13 +41,13 @@ public:
         return QStringList();
     }
     QString applicationName() Q_DECL_OVERRIDE {
-        return QLatin1String("textkcmdesignerfields");
+        return QStringLiteral("textkcmdesignerfields");
     }
 };
 
 int main(int argc, char **argv)
 {
-    KAboutData aboutData(QLatin1String("testkcmdesignerfields"), QString(), QLatin1String("0.1"));
+    KAboutData aboutData(QStringLiteral("testkcmdesignerfields"), QString(), QStringLiteral("0.1"));
     QApplication app(argc, argv);
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);

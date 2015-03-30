@@ -45,41 +45,41 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
 {
     mHasAdditionalItems = false;
 
-    addAction(KOGlobals::self()->smallIcon(QLatin1String("document-preview")), i18n("&Show"),
+    addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-preview")), i18n("&Show"),
               this, SLOT(popupShow()));
     mEditOnlyItems.append(
-        addAction(KOGlobals::self()->smallIcon(QLatin1String("document-edit")), i18n("&Edit..."),
+        addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-edit")), i18n("&Edit..."),
                   this, SLOT(popupEdit())));
     mEditOnlyItems.append(addSeparator());
-    addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print")), i18n("&Print..."),
+    addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print")), i18n("&Print..."),
               this, SLOT(print()));
     if (KPrintPreview::isAvailable()) {
-        addAction(KOGlobals::self()->smallIcon(QLatin1String("document-print-preview")),
+        addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print-preview")),
                   i18n("Print Previe&w..."),
                   this, SLOT(printPreview()));
     }
 
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-cut")),
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-cut")),
                                     i18nc("cut this event", "C&ut"),
                                     this, SLOT(popupCut())));
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-copy")),
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-copy")),
                                     i18nc("copy this event", "&Copy"),
                                     this, SLOT(popupCopy())));
     // paste is always possible
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-paste")),
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-paste")),
                                     i18n("&Paste"),
                                     this, SLOT(popupPaste())));
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("edit-delete")),
+    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-delete")),
                                     i18nc("delete this incidence", "&Delete"),
                                     this, SLOT(popupDelete())));
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
-    mTodoOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QLatin1String("task-complete")),
+    mTodoOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("task-complete")),
                                     i18n("Togg&le To-do Completed"),
                                     this, SLOT(toggleTodoCompleted())));
-    mToggleReminder =  addAction(QIcon(KOGlobals::self()->smallIcon(QLatin1String("appointment-reminder"))),
+    mToggleReminder =  addAction(QIcon(KOGlobals::self()->smallIcon(QStringLiteral("appointment-reminder"))),
                                  i18n("&Toggle Reminder"), this, SLOT(toggleAlarm()));
     mEditOnlyItems.append(mToggleReminder);
     //------------------------------------------------------------------------
@@ -89,7 +89,7 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mRecurrenceItems.append(mDissociateOccurrences);
 
     addSeparator();
-    addAction(KOGlobals::self()->smallIcon(QLatin1String("mail-forward")),
+    addAction(KOGlobals::self()->smallIcon(QStringLiteral("mail-forward")),
               i18n("Send as iCalendar..."),
               this, SLOT(forward()));
 }
@@ -231,7 +231,7 @@ void KOEventPopupMenu::forward()
     }
 
     KActionCollection *ac = w->getActionCollection();
-    QAction *action = ac->action(QLatin1String("schedule_forward"));
+    QAction *action = ac->action(QStringLiteral("schedule_forward"));
     if (action) {
         action->trigger();
     } else {

@@ -92,14 +92,14 @@ void KODialogManager::showOptionsDialog()
                 mMainView, SLOT(updateConfig(QByteArray)));
         QStringList modules;
 
-        modules.append(QLatin1String("korganizer_configmain.desktop"));
-        modules.append(QLatin1String("korganizer_configtime.desktop"));
-        modules.append(QLatin1String("korganizer_configviews.desktop"));
-        modules.append(QLatin1String("korganizer_configcolorsandfonts.desktop"));
-        modules.append(QLatin1String("korganizer_configgroupscheduling.desktop"));
-        modules.append(QLatin1String("korganizer_configfreebusy.desktop"));
-        modules.append(QLatin1String("korganizer_configplugins.desktop"));
-        modules.append(QLatin1String("korganizer_configdesignerfields.desktop"));
+        modules.append(QStringLiteral("korganizer_configmain.desktop"));
+        modules.append(QStringLiteral("korganizer_configtime.desktop"));
+        modules.append(QStringLiteral("korganizer_configviews.desktop"));
+        modules.append(QStringLiteral("korganizer_configcolorsandfonts.desktop"));
+        modules.append(QStringLiteral("korganizer_configgroupscheduling.desktop"));
+        modules.append(QStringLiteral("korganizer_configfreebusy.desktop"));
+        modules.append(QStringLiteral("korganizer_configplugins.desktop"));
+        modules.append(QStringLiteral("korganizer_configdesignerfields.desktop"));
 
         // add them all
         QStringList::iterator mit;
@@ -215,5 +215,5 @@ void KODialogManager::createCategoryEditor()
 
 void KODialogManager::slotHelp()
 {
-    KHelpClient::invokeHelp(QLatin1String("categories-view"), QLatin1String("korganizer"));
+    KHelpClient::invokeHelp(QStringLiteral("categories-view"), QStringLiteral("korganizer"));
 }
