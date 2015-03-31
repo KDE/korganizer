@@ -57,7 +57,7 @@ public:
 
 public Q_SLOTS:
     void updateView() Q_DECL_OVERRIDE;
-    virtual void showDates(const QDate &start, const QDate &end,
+    void showDates(const QDate &start, const QDate &end,
                            const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
 

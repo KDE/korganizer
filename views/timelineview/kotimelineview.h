@@ -52,7 +52,7 @@ public:
     void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
     void updateView() Q_DECL_OVERRIDE;
-    virtual void changeIncidenceDisplay(const Akonadi::Item &incidence,
+    void changeIncidenceDisplay(const Akonadi::Item &incidence,
                                         Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
     int maxDatesHint() const Q_DECL_OVERRIDE
     {
