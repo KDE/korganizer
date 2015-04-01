@@ -27,7 +27,7 @@
 
 ThisDayInHistory::ThisDayInHistory()
 {
-    KConfig _config(QLatin1String("korganizerrc"));
+    KConfig _config(QStringLiteral("korganizerrc"));
     KConfigGroup config(&_config, "This Day in History Plugin");
 }
 
@@ -42,7 +42,7 @@ Element::List ThisDayInHistory::createDayElements(const QDate &date)
     Element::List elements;
 
     StoredElement *element =
-        new StoredElement(QLatin1String("Wikipedia link"), i18n("This day in history"));
+        new StoredElement(QStringLiteral("Wikipedia link"), i18n("This day in history"));
 
     element->setUrl(
         QString(i18nc("Localized Wikipedia website", "http://en.wikipedia.org/wiki/") +
@@ -59,7 +59,7 @@ Element::List ThisDayInHistory::createMonthElements(const QDate &date)
     Element::List elements;
 
     StoredElement *element =
-        new StoredElement(QLatin1String("Wikipedia link"), i18n("This month in history"));
+        new StoredElement(QStringLiteral("Wikipedia link"), i18n("This month in history"));
 
     element->setUrl(
         QString(i18nc("Localized Wikipedia website", "http://en.wikipedia.org/wiki/") +
