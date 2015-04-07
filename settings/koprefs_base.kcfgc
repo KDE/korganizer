@@ -7,3 +7,5 @@ MemberVariables=public
 GlobalEnums=true
 ItemAccessors=true
 SetUserTexts=true
+CategoryLoggingName=KORGANIZER_LOG
+IncludeFiles=korganizer_debug.h
