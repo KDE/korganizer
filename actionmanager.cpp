@@ -169,7 +169,7 @@ void ActionManager::init()
     // addWindow is called.
     mWindowList->addWindow(mMainWindow);
 
-    // initialize the KAction instances
+    // initialize the QAction instances
     initActions();
 
     // set up autoExporting stuff
