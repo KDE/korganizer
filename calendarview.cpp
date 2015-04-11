@@ -53,7 +53,6 @@
 #include <incidenceeditor-ng/globalsettings.h>
 
 #include <KHolidays/kholidays/Holidays>
-
 #include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>
@@ -1646,8 +1645,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     }
     KDateTime occurrenceDate(incidence->dtStart());
     occurrenceDate.setDate(date);
-#pragma message("port QT5")
-    //QT5 qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
+    qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate.dateTime();
     KCalCore::Incidence::Ptr newInc(KCalCore::Calendar::createException(
                                         incidence, occurrenceDate, thisAndFuture));
     if (newInc) {
