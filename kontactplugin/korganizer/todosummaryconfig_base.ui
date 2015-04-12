@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Allen Winter &lt;winter@kde.org&gt;</author>
+ <comment>Configuration page for the Korganizer To-do Summary</comment>
+ <class>TodoSummaryConfig_Base</class>
+ <widget class="QWidget" name="TodoSummaryConfig_Base">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>360</width>
+    <height>424</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>To-do Summary Configuration</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <widget class="QGroupBox" name="mDaysGroup">
+     <property name="title">
+      <string>Show To-dos Due</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="mDateTodayButton">
+        <property name="toolTip">
+         <string>Show To-dos due today only</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to see To-dos due on this date only.</string>
+        </property>
+        <property name="text">
+         <string>&amp;Today only</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="mDateMonthButton">
+        <property name="toolTip">
+         <string>Show To-dos due within the next month</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to see To-dos that are due sometime during the next 31 days.</string>
+        </property>
+        <property name="text">
+         <string>Within the next &amp;month (31 days)</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QRadioButton" name="mDateRangeButton">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="toolTip">
+           <string>Select the days for showing pending To-dos</string>
+          </property>
+          <property name="statusTip">
+           <string/>
+          </property>
+          <property name="whatsThis">
+           <string>Check this box if you want specify the number of days in the future for pending To-dos.</string>
+          </property>
+          <property name="text">
+           <string>Within the &amp;next:</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="mCustomDays">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Set the number of days to show pending To-dos</string>
+          </property>
+          <property name="whatsThis">
+           <string>Use this spinbox to set the number of days to show pending To-dos up to 1 year in the future.</string>
+          </property>
+          <property name="specialValueText">
+           <string>1 day</string>
+          </property>
+          <property name="suffix">
+           <string comment="days to show in summary"> days</string>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>365</number>
+          </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+          <property name="value">
+           <number>7</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>1</width>
+            <height>0</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="mHideGroup">
+     <property name="title">
+      <string>Hide Following To-do Types</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="mHideCompletedBox">
+        <property name="toolTip">
+         <string>Hide completed To-dos</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you do not want to see To-dos that have already been completed.</string>
+        </property>
+        <property name="text">
+         <string>&amp;Completed</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mHideOpenEndedBox">
+        <property name="toolTip">
+         <string>Hide To-dos without a due date</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you do not want to see open-ended To-dos.</string>
+        </property>
+        <property name="text">
+         <string>&amp;Open-ended (no due date)</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mHideUnstartedBox">
+        <property name="toolTip">
+         <string>Hide unstarted To-dos</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you do not want to see To-dos with a start date in the future.</string>
+        </property>
+        <property name="text">
+         <string>&amp;Unstarted (start date is in the future)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mHideInProgressBox">
+        <property name="toolTip">
+         <string>Hide in-progress To-dos</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you do not want to see To-dos that have been started but are not yet completed.</string>
+        </property>
+        <property name="text">
+         <string>&amp;In-progress (started but not completed)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mHideOverdueBox">
+        <property name="toolTip">
+         <string>Hide overdue To-dos</string>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you do not want to see To-dos that are past their due date but have not yet been completed.</string>
+        </property>
+        <property name="text">
+         <string>Over&amp;due (not completed and beyond due-date)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="mGroupwareGroup">
+     <property name="title">
+      <string>Groupware Settings</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QCheckBox" name="mShowMineOnly">
+        <property name="toolTip">
+         <string>Show To-dos belonging to my calendars only</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want the summary to show To-dos belonging to your calendars only.</string>
+        </property>
+        <property name="text">
+         <string>Show &amp;my To-dos only</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>1</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>mDateRangeButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mCustomDays</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

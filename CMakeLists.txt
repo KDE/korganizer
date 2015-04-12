@@ -342,3 +342,4 @@ set(korganizerprivate_LIB_SRCS
   )
 
 endif()
+add_subdirectory(kontactplugin)
