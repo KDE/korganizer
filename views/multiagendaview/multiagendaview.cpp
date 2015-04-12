@@ -24,7 +24,7 @@
 #include "prefs/koprefs.h"
 #include "ui_multiagendaviewconfigwidget.h"
 
-#include <akonadi_next/kcolumnfilterproxymodel.h>
+#include "libkdepim/proxy/kcolumnfilterproxymodel.h"
 
 #include <calendarviews/agenda/agendaview.h>
 #include <calendarviews/multiagenda/multiagendaview.h>
@@ -42,7 +42,7 @@
 #include <QStandardItem>
 #include <KConfigGroup>
 
-using namespace Future;
+using namespace KPIM;
 using namespace KOrg;
 
 static QString generateColumnLabel(int c)

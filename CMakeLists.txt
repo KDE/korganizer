@@ -245,7 +245,7 @@ set(korganizerprivate_LIB_SRCS
 
   target_link_libraries(korganizerprivate
     pimcommon
-    akonadi_next
+    
     KF5::AkonadiCalendar
     calendarsupport
     eventviews
