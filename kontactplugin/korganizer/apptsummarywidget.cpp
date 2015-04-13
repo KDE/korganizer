@@ -59,7 +59,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     mainLayout->setMargin(3);
 
     QWidget *header = createHeader(
-                          this, QLatin1String("view-calendar-upcoming-events"), i18n("Upcoming Events"));
+                          this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -86,7 +86,7 @@ ApptSummaryWidget::~ApptSummaryWidget()
 
 void ApptSummaryWidget::configUpdated()
 {
-    KConfig config(QLatin1String("kcmapptsummaryrc"));
+    KConfig config(QStringLiteral("kcmapptsummaryrc"));
 
     KConfigGroup group = config.group("Days");
     mDaysAhead = group.readEntry("DaysToShow", 7);
@@ -118,10 +118,10 @@ void ApptSummaryWidget::updateView()
     QLabel *label = Q_NULLPTR;
     int counter = 0;
 
-    KIconLoader loader(QLatin1String("korganizer"));
-    QPixmap pm = loader.loadIcon(QLatin1String("view-calendar-day"), KIconLoader::Small);
-    QPixmap pmb = loader.loadIcon(QLatin1String("view-calendar-birthday"), KIconLoader::Small);
-    QPixmap pma = loader.loadIcon(QLatin1String("view-calendar-wedding-anniversary"), KIconLoader::Small);
+    KIconLoader loader(QStringLiteral("korganizer"));
+    QPixmap pm = loader.loadIcon(QStringLiteral("view-calendar-day"), KIconLoader::Small);
+    QPixmap pmb = loader.loadIcon(QStringLiteral("view-calendar-birthday"), KIconLoader::Small);
+    QPixmap pma = loader.loadIcon(QStringLiteral("view-calendar-wedding-anniversary"), KIconLoader::Small);
 
     QStringList uidList;
     SummaryEventInfo::setShowSpecialEvents(mShowBirthdaysFromCal,
@@ -151,9 +151,9 @@ void ApptSummaryWidget::updateView()
 
         // Icon label
         label = new QLabel(this);
-        if (ev->categories().contains(QLatin1String("BIRTHDAY"), Qt::CaseInsensitive)) {
+        if (ev->categories().contains(QStringLiteral("BIRTHDAY"), Qt::CaseInsensitive)) {
             label->setPixmap(pmb);
-        } else if (ev->categories().contains(QLatin1String("ANNIVERSARY"), Qt::CaseInsensitive)) {
+        } else if (ev->categories().contains(QStringLiteral("ANNIVERSARY"), Qt::CaseInsensitive)) {
             label->setPixmap(pma);
         } else {
             label->setPixmap(pm);
@@ -232,9 +232,9 @@ void ApptSummaryWidget::viewEvent(const QString &uid)
     Akonadi::Item::Id id = mCalendar->item(uid).id();
 
     if (id != -1) {
-        mPlugin->core()->selectPlugin(QLatin1String("kontact_korganizerplugin"));   //ensure loaded
+        mPlugin->core()->selectPlugin(QStringLiteral("kontact_korganizerplugin"));   //ensure loaded
         OrgKdeKorganizerKorganizerInterface korganizer(
-            QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus());
+            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
         korganizer.editIncidence(QString::number(id));
     }
 }
@@ -254,7 +254,7 @@ void ApptSummaryWidget::popupMenu(const QString &uid)
 
     QAction *delIt = popup.addAction(i18n("&Delete Appointment"));
     delIt->setIcon(KIconLoader::global()->
-                   loadIcon(QLatin1String("edit-delete"), KIconLoader::Small));
+                   loadIcon(QStringLiteral("edit-delete"), KIconLoader::Small));
 
     Akonadi::Item item = mCalendar->item(uid);
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
@@ -284,6 +284,6 @@ bool ApptSummaryWidget::eventFilter(QObject *obj, QEvent *e)
 
 QStringList ApptSummaryWidget::configModules() const
 {
-    return QStringList() << QLatin1String("kcmapptsummary.desktop");
+    return QStringList() << QStringLiteral("kcmapptsummary.desktop");
 }
 

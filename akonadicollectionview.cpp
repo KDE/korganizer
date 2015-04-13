@@ -75,7 +75,7 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
     static QStringList goodMimeTypes;
 
     if (goodMimeTypes.isEmpty()) {
-        goodMimeTypes << QLatin1String("text/calendar")
+        goodMimeTypes << QStringLiteral("text/calendar")
                       << KCalCore::Event::eventMimeType()
                       << KCalCore::Todo::todoMimeType()
                       << KCalCore::Journal::journalMimeType();
@@ -106,7 +106,7 @@ public:
         if (v4.checkState == Qt::Checked) {
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
             QColor color = KOHelper::resourceColor(collection);
-            if (color.isValid() && (collection.remoteId() != QLatin1String("akonadi_birthdays_resource"))) {
+            if (color.isValid() && (collection.remoteId() != QStringLiteral("akonadi_birthdays_resource"))) {
                 QRect r = v4.rect;
                 const int h = r.height() - 4;
                 r.adjust(r.width() - h - 2, 2, - 2, -2);
@@ -217,7 +217,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     //topLayout->addWidget( searchCol );
 
     ColorProxyModel *colorProxy = new ColorProxyModel(this);
-    colorProxy->setObjectName(QLatin1String("Show calendar colors"));
+    colorProxy->setObjectName(QStringLiteral("Show calendar colors"));
     colorProxy->setDynamicSortFilter(true);
     mBaseModel = colorProxy;
 
@@ -303,9 +303,9 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                                        ki18nc("@title:window", "Properties of Calendar Folder %1"));
 
         const QStringList pages =
-            QStringList() << QLatin1String("CalendarSupport::CollectionGeneralPage")
-            << QLatin1String("Akonadi::CachePolicyPage")
-            << QLatin1String("PimCommon::CollectionAclPage");
+            QStringList() << QStringLiteral("CalendarSupport::CollectionGeneralPage")
+            << QStringLiteral("Akonadi::CachePolicyPage")
+            << QStringLiteral("PimCommon::CollectionAclPage");
 
         mActionManager->setCollectionPropertiesPageNames(pages);
 
@@ -450,7 +450,7 @@ void AkonadiCollectionView::updateMenu()
             const QString identifier = QString::number(collection.id());
             const QColor defaultColor = KOPrefs::instance()->resourceColor(identifier);
             enableAction = enableAction && defaultColor.isValid();
-            if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
+            if (collection.remoteId() == QStringLiteral("akonadi_birthdays_resource")) {
                 enableAction = false;
                 mAssignColor->setEnabled(enableAction);
             }
@@ -477,7 +477,7 @@ void AkonadiCollectionView::newCalendar()
     Akonadi::AgentTypeDialog dlg(this);
     dlg.setWindowTitle(i18n("Add Calendar"));
     dlg.agentFilterProxyModel()->addMimeTypeFilter(QStringLiteral("text/calendar"));
-    dlg.agentFilterProxyModel()->addCapabilityFilter(QLatin1String("Resource"));   // show only resources, no agents
+    dlg.agentFilterProxyModel()->addCapabilityFilter(QStringLiteral("Resource"));   // show only resources, no agents
     if (dlg.exec()) {
         mNotSendAddRemoveSignal = true;
         const Akonadi::AgentType agentType = dlg.agentType();

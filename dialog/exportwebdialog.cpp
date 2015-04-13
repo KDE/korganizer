@@ -166,7 +166,7 @@ void ExportWebDialog::setupGeneralPage()
     QBoxLayout *destLayout = new QHBoxLayout(destGroup);
 
     KPIM::KPrefsWidPath *pathWid = addWidPath(mSettings->outputFileItem(),
-                                   destGroup, QLatin1String("text/html"), KFile::File);
+                                   destGroup, QStringLiteral("text/html"), KFile::File);
     connect(pathWid->urlRequester(), SIGNAL(textChanged(QString)),
             SLOT(slotTextChanged(QString)));
     destLayout->addWidget(pathWid->label());

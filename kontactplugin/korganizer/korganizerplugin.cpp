@@ -58,13 +58,13 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
 {
 #pragma message("port QT5")
     //QT5 setComponentData( KontactPluginFactory::componentData() );
-    KIconLoader::global()->addAppDir(QLatin1String("korganizer"));
-    KIconLoader::global()->addAppDir(QLatin1String("kdepim"));
+    KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
+    KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 
     QAction *action  =
-        new QAction(QIcon::fromTheme(QLatin1String("appointment-new")),
+        new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
                     i18nc("@action:inmenu", "New Event..."), this);
-    actionCollection()->addAction(QLatin1String("new_event"), action);
+    actionCollection()->addAction(QStringLiteral("new_event"), action);
     action->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_E));
     QString str = i18nc("@info:status", "Create a new event");
     action->setStatusTip(str);
@@ -77,9 +77,9 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
     insertNewAction(action);
 
     QAction *syncAction =
-        new QAction(QIcon::fromTheme(QLatin1String("view-refresh")),
+        new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
                     i18nc("@action:inmenu", "Sync Calendar"), this);
-    actionCollection()->addAction(QLatin1String("korganizer_sync"), syncAction);
+    actionCollection()->addAction(QStringLiteral("korganizer_sync"), syncAction);
     str = i18nc("@info:status", "Synchronize groupware calendar");
     syncAction->setStatusTip(str);
     syncAction->setToolTip(str);
@@ -112,26 +112,26 @@ KParts::ReadOnlyPart *KOrganizerPlugin::createPart()
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(
-        QLatin1String("org.kde.korganizer"), QLatin1String("/Calendar"), QDBusConnection::sessionBus(), this);
+        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
 
 QString KOrganizerPlugin::tipFile() const
 {
-    QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("korganizer/tips"));
+    QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("korganizer/tips"));
     return file;
 }
 
 QStringList KOrganizerPlugin::invisibleToolbarActions() const
 {
     QStringList invisible;
-    invisible += QLatin1String("new_event");
-    invisible += QLatin1String("new_todo");
-    invisible += QLatin1String("new_journal");
+    invisible += QStringLiteral("new_event");
+    invisible += QStringLiteral("new_todo");
+    invisible += QStringLiteral("new_journal");
 
-    invisible += QLatin1String("view_todo");
-    invisible += QLatin1String("view_journal");
+    invisible += QStringLiteral("view_todo");
+    invisible += QStringLiteral("view_journal");
     return invisible;
 }
 
@@ -170,7 +170,7 @@ void KOrganizerPlugin::slotSyncEvents()
 
 bool KOrganizerPlugin::createDBUSInterface(const QString &serviceType)
 {
-    if (serviceType == QLatin1String("DBUS/Organizer") || serviceType == QLatin1String("DBUS/Calendar")) {
+    if (serviceType == QStringLiteral("DBUS/Organizer") || serviceType == QStringLiteral("DBUS/Calendar")) {
         if (part()) {
             return true;
         }
@@ -205,7 +205,7 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
         for (it = contacts.constBegin(); it != end; ++it) {
             QString email = (*it).fullEmail();
             if (email.isEmpty()) {
-                attendees.append((*it).realName() + QLatin1String("<>"));
+                attendees.append((*it).realName() + QStringLiteral("<>"));
             } else {
                 attendees.append(email);
             }
@@ -260,11 +260,11 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
             QTemporaryFile tf;
             tf.setAutoRemove(true);
             tf.open();
-            QString uri = QLatin1String("kmail:") + QString::number(mail.serialNumber());
-            tf.write(event->mimeData()->data(QLatin1String("message/rfc822")));
+            QString uri = QStringLiteral("kmail:") + QString::number(mail.serialNumber());
+            tf.write(event->mimeData()->data(QStringLiteral("message/rfc822")));
             interface()->openEventEditor(
                 i18nc("@item", "Mail: %1", mail.subject()), txt,
-                uri, tf.fileName(), QStringList(), QLatin1String("message/rfc822"));
+                uri, tf.fileName(), QStringList(), QStringLiteral("message/rfc822"));
             tf.close();
         }
         return;

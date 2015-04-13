@@ -43,13 +43,13 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
 {
 #pragma message("port QT5")
     //QT5 setComponentData( KontactPluginFactory::componentData() );
-    KIconLoader::global()->addAppDir(QLatin1String("korganizer"));
-    KIconLoader::global()->addAppDir(QLatin1String("kdepim"));
+    KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
+    KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 
     QAction *action =
-        new QAction(QIcon::fromTheme(QLatin1String("journal-new")),
+        new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),
                     i18nc("@action:inmenu", "New Journal..."), this);
-    actionCollection()->addAction(QLatin1String("new_journal"), action);
+    actionCollection()->addAction(QStringLiteral("new_journal"), action);
     action->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_J));
     QString str = i18nc("@info:status", "Create a new journal");
     action->setStatusTip(str);
@@ -63,9 +63,9 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     insertNewAction(action);
 
     QAction *syncAction =
-        new QAction(QIcon::fromTheme(QLatin1String("view-refresh")),
+        new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
                     i18nc("@action:inmenu", "Sync Journal"), this);
-    actionCollection()->addAction(QLatin1String("journal_sync"), syncAction);
+    actionCollection()->addAction(QStringLiteral("journal_sync"), syncAction);
     str = i18nc("@info:status", "Synchronize groupware journal");
     syncAction->setStatusTip(str);
     syncAction->setToolTip(str);
@@ -93,7 +93,7 @@ KParts::ReadOnlyPart *JournalPlugin::createPart()
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(
-        QLatin1String("org.kde.korganizer"), QLatin1String("/Calendar"), QDBusConnection::sessionBus(), this);
+        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
@@ -106,21 +106,21 @@ void JournalPlugin::select()
 QStringList JournalPlugin::invisibleToolbarActions() const
 {
     QStringList invisible;
-    invisible += QLatin1String("new_event");
-    invisible += QLatin1String("new_todo");
-    invisible += QLatin1String("new_journal");
+    invisible += QStringLiteral("new_event");
+    invisible += QStringLiteral("new_todo");
+    invisible += QStringLiteral("new_journal");
 
-    invisible += QLatin1String("view_whatsnext");
-    invisible += QLatin1String("view_day");
-    invisible += QLatin1String("view_nextx");
-    invisible += QLatin1String("view_month");
-    invisible += QLatin1String("view_workweek");
-    invisible += QLatin1String("view_week");
-    invisible += QLatin1String("view_list");
-    invisible += QLatin1String("view_todo");
-    invisible += QLatin1String("view_journal");
-    invisible += QLatin1String("view_timeline");
-    invisible += QLatin1String("view_timespent");
+    invisible += QStringLiteral("view_whatsnext");
+    invisible += QStringLiteral("view_day");
+    invisible += QStringLiteral("view_nextx");
+    invisible += QStringLiteral("view_month");
+    invisible += QStringLiteral("view_workweek");
+    invisible += QStringLiteral("view_week");
+    invisible += QStringLiteral("view_list");
+    invisible += QStringLiteral("view_todo");
+    invisible += QStringLiteral("view_journal");
+    invisible += QStringLiteral("view_timeline");
+    invisible += QStringLiteral("view_timespent");
 
     return invisible;
 }
@@ -155,7 +155,7 @@ void JournalPlugin::slotSyncJournal()
 
 bool JournalPlugin::createDBUSInterface(const QString &serviceType)
 {
-    if (serviceType == QLatin1String("DBUS/Organizer") || serviceType == QLatin1String("DBUS/Calendar")) {
+    if (serviceType == QStringLiteral("DBUS/Organizer") || serviceType == QStringLiteral("DBUS/Calendar")) {
         if (part()) {
             return true;
         }
