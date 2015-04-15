@@ -54,8 +54,7 @@ EXPORT_KONTACT_PLUGIN(TodoPlugin, todo)
 TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, "korganizer", "todo"), mIface(Q_NULLPTR)
 {
-#pragma message("port QT5")
-    //QT5 setComponentData( KontactPluginFactory::componentData() );
+    setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 
