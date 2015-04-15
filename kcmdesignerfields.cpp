@@ -70,7 +70,8 @@ public:
         if (wdg) {
             setText(0, wdg->windowTitle());
 
-            QPixmap pm = QPixmap::grabWidget(wdg);
+
+            QPixmap pm = wdg->grab();
             QImage img = pm.toImage().scaled(300, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             mPreview = QPixmap::fromImage(img);
 
