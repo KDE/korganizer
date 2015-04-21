@@ -29,7 +29,7 @@
 Datenums::Datenums()
     : mDisplayedInfo(DayOfYear | DaysRemaining)
 {
-    KConfig _config(QLatin1String("korganizerrc"), KConfig::NoGlobals);
+    KConfig _config(QStringLiteral("korganizerrc"), KConfig::NoGlobals);
     KConfigGroup config(&_config, "Calendar/Datenums Plugin");
     mDisplayedInfo = (DayNumbers)config.readEntry(
                          "DayNumbers", int(DayOfYear | DaysRemaining));
@@ -57,17 +57,17 @@ Element::List Datenums::createDayElements(const QDate &date)
     StoredElement *e;
     switch (mDisplayedInfo) {
     case DayOfYear: // only day of year
-        e = new StoredElement(QLatin1String("main element"), QString::number(dayOfYear));
+        e = new StoredElement(QStringLiteral("main element"), QString::number(dayOfYear));
         break;
     case DaysRemaining: // only days until end of year
-        e = new StoredElement(QLatin1String("main element"), QString::number(remainingDays),
+        e = new StoredElement(QStringLiteral("main element"), QString::number(remainingDays),
                               i18np("1 day before the end of the year",
                                     "%1 days before the end of the year",
                                     remainingDays));
         break;
     case DayOfYear + DaysRemaining: // both day of year and days till end of year
     default:
-        e = new StoredElement(QLatin1String("main element"), QString::number(dayOfYear),
+        e = new StoredElement(QStringLiteral("main element"), QString::number(dayOfYear),
                               i18nc("dayOfYear / daysTillEndOfYear", "%1 / %2",
                                     dayOfYear, remainingDays),
                               i18np("1 day since the beginning of the year,\n",
@@ -149,16 +149,16 @@ Element::List Datenums::createWeekElements(const QDate &date)
     StoredElement *e;
     switch (mDisplayedInfo) {
     case DayOfYear: // only week of year
-        e = new StoredElement(QLatin1String("main element"), weekOfYearShort, weekOfYearLong,
+        e = new StoredElement(QStringLiteral("main element"), weekOfYearShort, weekOfYearLong,
                               weekOfYearExtensive);
         break;
     case DaysRemaining: // only weeks until end of year
-        e = new StoredElement(QLatin1String("main element"), remainingWeeksShort,
+        e = new StoredElement(QStringLiteral("main element"), remainingWeeksShort,
                               remainingWeeksLong, remainingWeeksExtensive);
         break;
     case DayOfYear + DaysRemaining: // both week of year and weeks till end of year
     default:
-        e = new StoredElement(QLatin1String("main element"), weekOfYearShort,
+        e = new StoredElement(QStringLiteral("main element"), weekOfYearShort,
                               weekOfYearAndRemainingWeeksShort,
                               i18nc("n weeks since the beginning of the year\n"
                                     "n weeks until the end of the year",

@@ -82,23 +82,23 @@ void KOViewManager::readSettings(KConfig *config)
     KConfigGroup generalConfig(config, "General");
     const QString view = generalConfig.readEntry("Current View");
 
-    if (view == QLatin1String("WhatsNext")) {
+    if (view == QStringLiteral("WhatsNext")) {
         showWhatsNextView();
-    } else if (view == QLatin1String("OldMonth")) {
+    } else if (view == QStringLiteral("OldMonth")) {
         // the oldmonth view is gone, so we assume the new month view
         showMonthView();
-    } else if (view == QLatin1String("List")) {
+    } else if (view == QStringLiteral("List")) {
         showListView();
         mListView->readSettings(config);
-    } else if (view == QLatin1String("Journal")) {
+    } else if (view == QStringLiteral("Journal")) {
         showJournalView();
-    } else if (view == QLatin1String("Todo")) {
+    } else if (view == QStringLiteral("Todo")) {
         showTodoView();
-    } else if (view == QLatin1String("Timeline")) {
+    } else if (view == QStringLiteral("Timeline")) {
         showTimeLineView();
-    } else if (view == QLatin1String("TimeSpent")) {
+    } else if (view == QStringLiteral("TimeSpent")) {
         showTimeSpentView();
-    } else if (view == QLatin1String("Month")) {
+    } else if (view == QStringLiteral("Month")) {
         showMonthView();
     } else {
         showAgendaView();
@@ -131,21 +131,21 @@ void KOViewManager::writeSettings(KConfig *config)
     KConfigGroup generalConfig(config, "General");
     QString view;
     if (mCurrentView == mWhatsNextView) {
-        view = QLatin1String("WhatsNext");
+        view = QStringLiteral("WhatsNext");
     } else if (mCurrentView == mListView) {
-        view = QLatin1String("List");
+        view = QStringLiteral("List");
     } else if (mCurrentView == mJournalView) {
-        view = QLatin1String("Journal");
+        view = QStringLiteral("Journal");
     } else if (mCurrentView == mTodoView) {
-        view = QLatin1String("Todo");
+        view = QStringLiteral("Todo");
     } else if (mCurrentView == mTimelineView) {
-        view = QLatin1String("Timeline");
+        view = QStringLiteral("Timeline");
     } else if (mCurrentView == mTimeSpentView) {
-        view = QLatin1String("TimeSpent");
+        view = QStringLiteral("TimeSpent");
     } else if (mCurrentView == mMonthView) {
-        view = QLatin1String("Month");
+        view = QStringLiteral("Month");
     } else {
-        view = QLatin1String("Agenda");
+        view = QStringLiteral("Agenda");
     }
 
     generalConfig.writeEntry("Current View", view);
@@ -157,7 +157,7 @@ void KOViewManager::writeSettings(KConfig *config)
         mListView->writeSettings(config);
     }
     if (mTodoView) {
-        mTodoView->saveLayout(config, QLatin1String("Todo View"));
+        mTodoView->saveLayout(config, QStringLiteral("Todo View"));
     }
 
     // write out custom view configuration
@@ -195,21 +195,21 @@ void KOViewManager::showView(KOrg::BaseView *view)
     if (w) {
         KActionCollection *ac = w->getActionCollection();
         if (ac) {
-            if (QAction *action = ac->action(QLatin1String("configure_view"))) {
+            if (QAction *action = ac->action(QStringLiteral("configure_view"))) {
                 action->setEnabled(view->hasConfigurationDialog());
             }
 
             QStringList zoomActions;
             QStringList rangeActions;
 
-            zoomActions << QLatin1String("zoom_in_horizontally")
-                        << QLatin1String("zoom_out_horizontally")
-                        << QLatin1String("zoom_in_vertically")
-                        << QLatin1String("zoom_out_vertically");
-            rangeActions << QLatin1String("select_workweek")
-                         << QLatin1String("select_week")
-                         << QLatin1String("select_day")
-                         << QLatin1String("select_nextx");
+            zoomActions << QStringLiteral("zoom_in_horizontally")
+                        << QStringLiteral("zoom_out_horizontally")
+                        << QStringLiteral("zoom_in_vertically")
+                        << QStringLiteral("zoom_out_vertically");
+            rangeActions << QStringLiteral("select_workweek")
+                         << QStringLiteral("select_week")
+                         << QStringLiteral("select_day")
+                         << QStringLiteral("select_nextx");
 
             for (int i = 0; i < zoomActions.size(); ++i) {
                 if (QAction *action = ac->action(zoomActions[i])) {
@@ -233,15 +233,15 @@ void KOViewManager::goMenu(bool enable)
         KActionCollection *ac = w->getActionCollection();
         if (ac) {
             QAction *action;
-            action = ac->action(QLatin1String("go_today"));
+            action = ac->action(QStringLiteral("go_today"));
             if (action) {
                 action->setEnabled(enable);
             }
-            action = ac->action(QLatin1String("go_previous"));
+            action = ac->action(QStringLiteral("go_previous"));
             if (action) {
                 action->setEnabled(enable);
             }
-            action = ac->action(QLatin1String("go_next"));
+            action = ac->action(QStringLiteral("go_next"));
             if (action) {
                 action->setEnabled(enable);
             }
@@ -580,7 +580,7 @@ void KOViewManager::showTodoView()
         connectTodoView(mTodoView);
 
         KConfig *config = KOGlobals::self()->config();
-        mTodoView->restoreLayout(config, QLatin1String("Todo View"), false);
+        mTodoView->restoreLayout(config, QStringLiteral("Todo View"), false);
     }
     goMenu(false);
     showView(mTodoView);

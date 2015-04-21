@@ -132,7 +132,7 @@ void SearchDialog::doSearch()
             this,
             i18n("No items were found that match your search pattern."),
             i18n("Search Results"),
-            QLatin1String("NoSearchResults"));
+            QStringLiteral("NoSearchResults"));
     } else {
         m_ui->numItems->setText(i18np("%1 item", "%1 items", mMatchedEvents.count()));
     }
@@ -247,7 +247,7 @@ void SearchDialog::search(const QRegExp &re)
 
 void SearchDialog::readConfig()
 {
-    KConfigGroup group(KOGlobals::self()->config(), QLatin1String("SearchDialog"));
+    KConfigGroup group(KOGlobals::self()->config(), QStringLiteral("SearchDialog"));
     const QSize size = group.readEntry("Size", QSize(775, 600));
     if (size.isValid()) {
         resize(size);
@@ -256,7 +256,7 @@ void SearchDialog::readConfig()
 
 void SearchDialog::writeConfig()
 {
-    KConfigGroup group(KOGlobals::self()->config(), QLatin1String("SearchDialog"));
+    KConfigGroup group(KOGlobals::self()->config(), QStringLiteral("SearchDialog"));
     group.writeEntry("Size", size());
     group.sync();
 }

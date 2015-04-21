@@ -51,10 +51,10 @@ KOPrefs::KOPrefs() : KOPrefsBase()
     mDefaultMonthViewFont.setPointSize(
         qMax(mDefaultMonthViewFont.pointSize() - 2, 6));
 
-    KConfigSkeleton::setCurrentGroup(QLatin1String("General"));
+    KConfigSkeleton::setCurrentGroup(QStringLiteral("General"));
 
     // writes into mHtmlExportFile
-    addItemPath(QLatin1String("Html Export File"), mHtmlExportFile,
+    addItemPath(QStringLiteral("Html Export File"), mHtmlExportFile,
                 QDir::homePath() + QLatin1Char('/') + i18nc("Default export file", "calendar.html"));
 
     monthViewFontItem()->setDefaultValue(mDefaultMonthViewFont);

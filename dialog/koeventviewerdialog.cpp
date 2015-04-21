@@ -55,7 +55,7 @@ KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget
     connect(buttonBox, &QDialogButtonBox::accepted, this, &KOEventViewerDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
     setModal(false);
-    KGuiItem::assign(mUser1Button, KGuiItem(i18n("Edit..."), QIcon::fromTheme(QLatin1String("document-edit"))));
+    KGuiItem::assign(mUser1Button, KGuiItem(i18n("Edit..."), QIcon::fromTheme(QStringLiteral("document-edit"))));
     KGuiItem::assign(user2Button, KGuiItem(i18n("Show in Context")));
     mEventViewer = new CalendarSupport::IncidenceViewer(calendar, this);
     mainLayout->addWidget(mEventViewer);
@@ -103,10 +103,10 @@ void KOEventViewerDialog::editIncidence()
 
     if (CalendarSupport::hasIncidence(item)) {
         // make sure korganizer is running or the part is shown
-        KToolInvocation::startServiceByDesktopPath(QLatin1String("korganizer"));
+        KToolInvocation::startServiceByDesktopPath(QStringLiteral("korganizer"));
 
         OrgKdeKorganizerKorganizerInterface korganizerIface(
-            QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus());
+            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
         korganizerIface.editIncidence(QString::number(item.id()));
     }
 }
@@ -117,10 +117,10 @@ void KOEventViewerDialog::showIncidenceContext()
 
     if (CalendarSupport::hasIncidence(item)) {
         // make sure korganizer is running or the part is shown
-        KToolInvocation::startServiceByDesktopPath(QLatin1String("korganizer"));
+        KToolInvocation::startServiceByDesktopPath(QStringLiteral("korganizer"));
 
         OrgKdeKorganizerKorganizerInterface korganizerIface(
-            QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus());
+            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
         korganizerIface.showIncidenceContext(QString::number(item.id()));
     }
 }

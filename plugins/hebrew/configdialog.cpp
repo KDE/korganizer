@@ -79,12 +79,12 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-    KConfig config(QLatin1String("korganizerrc"));
+    KConfig config(QStringLiteral("korganizerrc"));
 
     KConfigGroup group(&config, "Hebrew Calendar Plugin");
     mIsraelBox->setChecked(
         group.readEntry("UseIsraelSettings",
-                        (KLocale::global()->country() == QLatin1String(".il"))));
+                        (KLocale::global()->country() == QStringLiteral(".il"))));
     mParshaBox->setChecked(group.readEntry("ShowParsha", true));
     mCholBox->setChecked(group.readEntry("ShowChol_HaMoed", true));
     mOmerBox->setChecked(group.readEntry("ShowOmer", true));
@@ -92,7 +92,7 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-    KConfig config(QLatin1String("korganizerrc"));
+    KConfig config(QStringLiteral("korganizerrc"));
     KConfigGroup group(&config, "Hebrew Calendar Plugin");
     group.writeEntry("UseIsraelSettings", mIsraelBox->isChecked());
     group.writeEntry("ShowParsha", mParshaBox->isChecked());
