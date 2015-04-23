@@ -181,6 +181,7 @@ CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),
     mRightFrame = new QStackedWidget(rightBox);
     rightBoxVBoxLayout->addWidget(mRightFrame);
     mMessageWidget = new CalendarSupport::MessageWidget(rightBox);
+    rightBoxVBoxLayout->addWidget(mMessageWidget);
 
     rightBoxVBoxLayout->setStretchFactor(mRightFrame, 1);
 
