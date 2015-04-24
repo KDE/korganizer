@@ -38,9 +38,7 @@
 #include <QBoxLayout>
 #include <QCheckBox>
 #include <QGroupBox>
-#include <QHBoxLayout>
 #include <QLabel>
-#include <QVBoxLayout>
 
 // FIXME: The basic structure of this dialog has been copied from KPrefsDialog,
 //        because we want custom buttons, a Tabbed dialog, and a different

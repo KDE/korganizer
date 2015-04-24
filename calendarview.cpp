@@ -101,7 +101,6 @@
 #include <QClipboard>
 #include <QSplitter>
 #include <QStackedWidget>
-#include <QVBoxLayout>
 #include <KLocale>
 
 CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),

@@ -42,7 +42,6 @@
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
-#include <KLocalizedString>
 #include <QLocale>
 #include <QDesktopServices>
 

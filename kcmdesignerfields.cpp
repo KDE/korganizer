@@ -35,7 +35,6 @@
 #include <KLocalizedString>
 #include <QDialog>
 #include <KGlobal>
-#include <QFileDialog>
 
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -45,7 +44,6 @@
 #include <QTreeWidget>
 #include <QUiLoader>
 #include <QWhatsThis>
-#include <QStandardPaths>
 #include <QDir>
 #include <KConfigGroup>
 
