@@ -35,7 +35,7 @@ AboutData::AboutData()
                        "Copyright © 2004–2005 Reinhold Kainhofer\n"
                        "Copyright © 2006–2012 Allen Winter" ),
                 KLocalizedString(),
-                "http://korganizer.kde.org" )
+                "https://userbase.kde.org/KOrganizer" )
 {
 #if defined( KDEPIM_GIT_REVISION_STRING ) && defined( KDEPIM_GIT_LAST_CHANGE )
   const QByteArray rev( KDEPIM_GIT_REVISION_STRING );
