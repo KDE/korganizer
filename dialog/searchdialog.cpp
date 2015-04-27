@@ -75,7 +75,6 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
-    connect(buttonBox, &QDialogButtonBox::accepted, this, &SearchDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &SearchDialog::reject);
     mainLayout->addWidget(buttonBox);
     mUser1Button->setDefault(true);

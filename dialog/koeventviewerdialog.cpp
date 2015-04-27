@@ -52,7 +52,6 @@ KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
     QPushButton *user2Button = new QPushButton;
     buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
-    connect(buttonBox, &QDialogButtonBox::accepted, this, &KOEventViewerDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
     setModal(false);
     KGuiItem::assign(mUser1Button, KGuiItem(i18n("Edit..."), QIcon::fromTheme(QStringLiteral("document-edit"))));
