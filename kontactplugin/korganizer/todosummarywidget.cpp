@@ -314,9 +314,9 @@ void TodoSummaryWidget::viewTodo(const QString &uid)
     Akonadi::Item::Id id = mCalendar->item(uid).id();
 
     if (id != -1) {
-        mPlugin->core()->selectPlugin(QLatin1String("kontact_todoplugin"));  //ensure loaded
+        mPlugin->core()->selectPlugin(QStringLiteral("kontact_todoplugin"));  //ensure loaded
         OrgKdeKorganizerKorganizerInterface korganizer(
-            QLatin1String("org.kde.korganizer"), QLatin1String("/Korganizer"), QDBusConnection::sessionBus());
+            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
 
         korganizer.editIncidence(QString::number(id));
     }
@@ -359,7 +359,7 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
 
     if (!todo->isCompleted()) {
         doneIt = popup.addAction(i18n("&Mark To-do Completed"));
-        doneIt->setIcon(KIconLoader::global()->loadIcon(QLatin1String("task-complete"), KIconLoader::Small));
+        doneIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("task-complete"), KIconLoader::Small));
         doneIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem));
     }
     // TODO: add icons to the menu actions

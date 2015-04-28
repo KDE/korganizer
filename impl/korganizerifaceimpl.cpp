@@ -43,7 +43,7 @@ KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager,
     setObjectName(QLatin1String(name));
     new KorganizerAdaptor(this);
     QDBusConnection::sessionBus().registerObject(
-        QLatin1String("/Korganizer"), this, QDBusConnection::ExportAdaptors);
+        QStringLiteral("/Korganizer"), this, QDBusConnection::ExportAdaptors);
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()

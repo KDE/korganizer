@@ -287,7 +287,7 @@ void ActionManager::initActions()
     mImportAction->setWhatsThis(
         i18n("Select this menu entry if you would like to merge the contents "
              "of another iCalendar into your current calendar."));
-    mACollection->addAction(QLatin1String("import_icalendar"), mImportAction);
+    mACollection->addAction(QStringLiteral("import_icalendar"), mImportAction);
     connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
     QAction *importAction = new QAction(i18n("&Import From UNIX Ical Tool"), this);
@@ -295,23 +295,23 @@ void ActionManager::initActions()
     importAction->setWhatsThis(
         i18n("Select this menu entry if you would like to import the contents "
              "of a non-iCalendar formatted file into your current calendar."));
-    mACollection->addAction(QLatin1String("import_ical"), importAction);
+    mACollection->addAction(QStringLiteral("import_ical"), importAction);
     connect(importAction, &QAction::triggered, this, &ActionManager::file_icalimport);
 
     action = new QAction(i18n("Get &Hot New Stuff..."), this);
-    mACollection->addAction(QLatin1String("downloadnewstuff"), action);
+    mACollection->addAction(QStringLiteral("downloadnewstuff"), action);
     connect(action, &QAction::triggered, this, &ActionManager::downloadNewStuff);
 
     action = new QAction(i18n("Export &Web Page..."), this);
-    mACollection->addAction(QLatin1String("export_web"), action);
+    mACollection->addAction(QStringLiteral("export_web"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportWeb);
 
     action = new QAction(i18n("Export as &iCalendar..."), this);
-    mACollection->addAction(QLatin1String("export_icalendar"), action);
+    mACollection->addAction(QStringLiteral("export_icalendar"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportICalendar);
 
     action = new QAction(i18n("Export as &vCalendar..."), this);
-    mACollection->addAction(QLatin1String("export_vcalendar"), action);
+    mACollection->addAction(QStringLiteral("export_vcalendar"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportVCalendar);
 
     //Laurent: 2009-03-24 comment it until upload will implement
@@ -371,56 +371,56 @@ void ActionManager::initActions()
     /************************** VIEW MENU *********************************/
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-upcoming-events")), i18n("What's &Next"), this);
-    mACollection->addAction(QLatin1String("view_whatsnext"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")), i18n("What's &Next"), this);
+    mACollection->addAction(QStringLiteral("view_whatsnext"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(showWhatsNextView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-month")), i18n("&Month"), this);
-    mACollection->addAction(QLatin1String("view_month"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18n("&Month"), this);
+    mACollection->addAction(QStringLiteral("view_month"), action);
     connect(action, SIGNAL(triggered(bool)),
             mCalendarView->viewManager(), SLOT(showMonthView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-agenda")), i18n("&Agenda"), this);
-    mACollection->addAction(QLatin1String("view_agenda"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")), i18n("&Agenda"), this);
+    mACollection->addAction(QStringLiteral("view_agenda"), action);
     connect(action, SIGNAL(triggered(bool)),
             mCalendarView->viewManager(), SLOT(showAgendaView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-list")), i18n("&Event List"), this);
-    mACollection->addAction(QLatin1String("view_list"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-list")), i18n("&Event List"), this);
+    mACollection->addAction(QStringLiteral("view_list"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(showListView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-tasks")), i18n("&To-do List"), this);
-    mACollection->addAction(QLatin1String("view_todo"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("&To-do List"), this);
+    mACollection->addAction(QStringLiteral("view_todo"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(showTodoView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-journal")), i18n("&Journal"), this);
-    mACollection->addAction(QLatin1String("view_journal"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-journal")), i18n("&Journal"), this);
+    mACollection->addAction(QStringLiteral("view_journal"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(showJournalView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-timeline")), i18n("Time&line"), this);
-    mACollection->addAction(QLatin1String("view_timeline"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-timeline")), i18n("Time&line"), this);
+    mACollection->addAction(QStringLiteral("view_timeline"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(showTimeLineView()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-time-spent")), i18n("Time&spent"), this);
-    mACollection->addAction(QLatin1String("view_timespent"), action);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-time-spent")), i18n("Time&spent"), this);
+    mACollection->addAction(QStringLiteral("view_timespent"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(showTimeSpentView()));
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     action = new QAction(i18n("&Refresh"), this);
-    mACollection->addAction(QLatin1String("update"), action);
+    mACollection->addAction(QStringLiteral("update"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView, SLOT(updateView()));
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     mFilterAction = new KSelectAction(i18n("F&ilter"), this);
     mFilterAction->setToolBarMode(KSelectAction::MenuMode);
-    mACollection->addAction(QLatin1String("filter_select"), mFilterAction);
+    mACollection->addAction(QStringLiteral("filter_select"), mFilterAction);
     mFilterAction->setEditable(false);
     connect(mFilterAction, SIGNAL(triggered(int)),
             mCalendarView, SLOT(filterActivated(int)));

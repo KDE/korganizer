@@ -96,7 +96,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     // Personal Settings
     QWidget *personalFrame = new QWidget(this);
     QVBoxLayout *personalLayout = new QVBoxLayout(personalFrame);
-    tabWidget->addTab(personalFrame, QIcon::fromTheme(QLatin1String("preferences-desktop-personal")),
+    tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-personal")),
                       i18nc("@title:tab personal settings", "Personal"));
 
     KPIM::KPrefsWidBool *emailControlCenter =
@@ -162,7 +162,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     // System Tray Settings
     QFrame *systrayFrame = new QFrame(this);
     QVBoxLayout *systrayLayout = new QVBoxLayout(systrayFrame);
-    tabWidget->addTab(systrayFrame, QIcon::fromTheme(QLatin1String("preferences-other")),
+    tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")),
                       i18nc("@title:tab systray settings", "System Tray"));
 
     QGroupBox *systrayGroupBox =
@@ -543,7 +543,7 @@ public:
 
         // Tab: Views->General
         QFrame *generalFrame = new QFrame(this);
-        tabWidget->addTab(generalFrame, QIcon::fromTheme(QLatin1String("view-choose")),
+        tabWidget->addTab(generalFrame, QIcon::fromTheme(QStringLiteral("view-choose")),
                           i18nc("@title:tab general settings", "General"));
 
         QBoxLayout *generalLayout = new QVBoxLayout(generalFrame);
@@ -1214,7 +1214,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
     mConfigureButton = new QPushButton(buttonRow);
     KGuiItem::assign(mConfigureButton,     KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
-                     QLatin1String("configure"), QString(),
+                     QStringLiteral("configure"), QString(),
                      i18nc("@info:whatsthis",
                            "This button allows you to configure"
                            " the plugin that you have selected in the list above")));
@@ -1479,7 +1479,7 @@ QString KOPrefsDesignerFields::localUiDir()
 
 QString KOPrefsDesignerFields::uiPath()
 {
-    return QLatin1String("korganizer/designer/event/");
+    return QStringLiteral("korganizer/designer/event/");
 }
 
 void KOPrefsDesignerFields::writeActivePages(const QStringList &activePages)
@@ -1495,6 +1495,6 @@ QStringList KOPrefsDesignerFields::readActivePages()
 
 QString KOPrefsDesignerFields::applicationName()
 {
-    return QLatin1String("KORGANIZER");
+    return QStringLiteral("KORGANIZER");
 }
 

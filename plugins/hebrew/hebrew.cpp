@@ -32,11 +32,11 @@ using namespace EventViews::CalendarDecoration;
 
 Hebrew::Hebrew()
 {
-    KConfig config(QLatin1String("korganizerrc"), KConfig::NoGlobals);
+    KConfig config(QStringLiteral("korganizerrc"), KConfig::NoGlobals);
 
     KConfigGroup group(&config, "Hebrew Calendar Plugin");
     areWeInIsrael = group.readEntry(
-                        "UseIsraelSettings", (KLocale::global()->country() == QLatin1String(".il")));
+                        "UseIsraelSettings", (KLocale::global()->country() == QStringLiteral(".il")));
     showParsha = group.readEntry("ShowParsha", true);
     showChol = group.readEntry("ShowChol_HaMoed", true);
     showOmer = group.readEntry("ShowOmer", true);
