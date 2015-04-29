@@ -31,7 +31,7 @@
 #include <KActionCollection>
 #include <KIconLoader>
 #include <KLocalizedString>
-#include <QDebug>
+#include "korganizerplugin_debug.h"
 #include <QtDBus/QtDBus>
 #include <QAction>
 #include <QIcon>
@@ -149,7 +149,7 @@ void JournalPlugin::slotSyncJournal()
     message << QString("Journal");
     QDBusConnection::sessionBus().send(message);
 #else
-    qWarning() << " JournalPlugin::slotSyncJournal : need to port to Akonadi";
+    qCWarning(KORGANIZERPLUGIN_LOG) << " JournalPlugin::slotSyncJournal : need to port to Akonadi";
 #endif
 }
 

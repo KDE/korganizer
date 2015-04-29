@@ -4,7 +4,7 @@ include_directories(${CMAKE_SOURCE_DIR}/korganizer ${CMAKE_SOURCE_DIR}/korganize
 
 
 ########### next target ###############
-set(libcommon_SRCS korg_uniqueapp.cpp)
+set(libcommon_SRCS korg_uniqueapp.cpp korganizerplugin_debug.cpp)
 
 set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp ${libcommon_SRCS})
 

@@ -40,7 +40,7 @@
 
 #include <QAction>
 #include <KActionCollection>
-#include <QDebug>
+#include "korganizerplugin_debug.h"
 #include <QIcon>
 #include <KIconLoader>
 #include <KLocalizedString>
@@ -163,7 +163,7 @@ void KOrganizerPlugin::slotSyncEvents()
     message << QString("Calendar");
     QDBusConnection::sessionBus().send(message);
 #else
-    qWarning() << " KOrganizerPlugin::slotSyncEvents : need to port to Akonadi";
+    qCWarning(KORGANIZERPLUGIN_LOG) << " KOrganizerPlugin::slotSyncEvents : need to port to Akonadi";
 #endif
 }
 
@@ -239,7 +239,7 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
 
     if (md->hasText()) {
         const QString text = md->text();
-        qDebug() << "DROP:" << text;
+        qCDebug(KORGANIZERPLUGIN_LOG) << "DROP:" << text;
         interface()->openEventEditor(text);
         return;
     }
@@ -268,6 +268,6 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
         }
         return;
     }
-    qWarning() << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
+    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
 }
 #include "korganizerplugin.moc"
