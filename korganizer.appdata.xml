@@ -13,6 +13,7 @@
   <name xml:lang="es">KOrganizer</name>
   <name xml:lang="fi">KOrganizer</name>
   <name xml:lang="fr">KOrganizer</name>
+  <name xml:lang="gl">KOrganizer</name>
   <name xml:lang="hu">KOrganizer</name>
   <name xml:lang="it">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
@@ -42,6 +43,7 @@
     <p xml:lang="es">KOrganizer es el componente de calendario y planificación de la suite Kontact. Usted puede escribir entradas de diario, citas de planificaciones, eventos y tareas pendientes.</p>
     <p xml:lang="fi">KOrganizer on Kontact-ohjelmiston kalenteri- ja ajastusosa. Voit kirjoittaa päiväkirjamerkintöjä sekä ajastaa tapaamisia, tapahtumia ja tehtäviä.</p>
     <p xml:lang="fr">KOrganizer est le composant de calendrier et agenda de la suite Kontact. Vous pouvez y tenir un journal, planifier des rendez-vous et évènements, et tenir des listes de choses à faire.</p>
+    <p xml:lang="gl">KOrganizer é o compoñente de calendarios e programación da colección de software Kontact. Pode escribir entradas no seu diario e programar citas, acontecementos e tarefas.</p>
     <p xml:lang="hu">A KOrganizer a Kontact csomag naptár- és határidő-kezelő eleme, mellyel bejegyzéseket írhat, határidőket, eseményeket és tennivalókat ütemezhet.</p>
     <p xml:lang="it">KOrganizer è il componente calendario e di pianificazione della suite Kontact. Puoi scrivere voci di diario, pianificare appuntamenti, eventi e cose da fare.</p>
     <p xml:lang="ko">KOrganizer는 Kontact와 함께 사용할 수 있는 달력 및 일정 관리 프로그램입니다. 저널 항목 작성, 약속, 할 일, 행사를 관리할 수 있습니다.</p>
@@ -67,6 +69,7 @@
     <p xml:lang="es">Características:</p>
     <p xml:lang="fi">Ominaisuudet:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
+    <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="hu">Szolgáltatások:</p>
     <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
@@ -94,6 +97,7 @@
       <li xml:lang="es">Admite varios calendarios y listas de tareas pendientes.</li>
       <li xml:lang="fi">Tuki useammille kalentereille ja tehtäväluetteloille.</li>
       <li xml:lang="fr">Prise en charge de plusieurs calendriers et listes de choses à faire.</li>
+      <li xml:lang="gl">Compatíbel con varios formatos de calendario e de lista de tarefas.</li>
       <li xml:lang="hu">Több naptár és feladatlista kezelése.</li>
       <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare.</li>
       <li xml:lang="ko">다중 달력 및 할 일 목록 지원.</li>
@@ -116,6 +120,7 @@
       <li xml:lang="es">Modelo de almacenamiento.</li>
       <li xml:lang="fi">Tietovarastomalli.</li>
       <li xml:lang="fr">Modèle de stockage.</li>
+      <li xml:lang="gl">Modelo de almacenamento.</li>
       <li xml:lang="hu">Tárolómodell.</li>
       <li xml:lang="it">Modello di memorizzazione.</li>
       <li xml:lang="ko">저장소 모델.</li>
@@ -140,6 +145,7 @@
       <li xml:lang="es">Deshacer y rehacer.</li>
       <li xml:lang="fi">Kumoaminen ja uudelleen tekeminen.</li>
       <li xml:lang="fr">Annuler et Refaire.</li>
+      <li xml:lang="gl">Funcionalidade de desfacer e refacer.</li>
       <li xml:lang="hu">Visszavonás és újra végrehajtás.</li>
       <li xml:lang="it">Annulla/ripeti.</li>
       <li xml:lang="ko">실행 취소 및 재실행.</li>
@@ -164,6 +170,7 @@
       <li xml:lang="es">Integración de tareas pendientes con la vista de agenda.</li>
       <li xml:lang="fi">Tehtävien integrointi päivyrinäkymään.</li>
       <li xml:lang="fr">Intégration de listes de choses à faire avec la vue agenda.</li>
+      <li xml:lang="gl">Integración da lista de tarefas coa vista da axenda.</li>
       <li xml:lang="hu">Tennivalók integrációja a napi nézetbe.</li>
       <li xml:lang="it">Integrazione delle cose da fare con la vista agenda.</li>
       <li xml:lang="ko">하루 보기와 통합된 할 일 목록.</li>
@@ -187,6 +194,7 @@
       <li xml:lang="es">Adjuntos para eventos y tareas pendientes.</li>
       <li xml:lang="fi">Liitteet tapahtumille ja tehtäville.</li>
       <li xml:lang="fr">Pièces jointes pour les évènements et les choses à faire.</li>
+      <li xml:lang="gl">Permite anexar ficheiros a acontecementos e tarefas.</li>
       <li xml:lang="hu">Mellékletek csatolása eseményekhez és  tennivalókhoz.</li>
       <li xml:lang="it">Allegati per eventi e cose da fare.</li>
       <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원.</li>
@@ -209,6 +217,7 @@
       <li xml:lang="es">Entradas rápidas para tareas pendientes y eventos.</li>
       <li xml:lang="fi">Nopeat tehtävä- ja tapahtumamerkinnät.</li>
       <li xml:lang="fr">Saisie rapide d'évènements et choses à faire.</li>
+      <li xml:lang="gl">Entradas rápidas de tarefas e acontecementos.</li>
       <li xml:lang="hu">Gyors tennivalók és eseménybejegyzések.</li>
       <li xml:lang="it">Voci rapide per cose da fare ed eventi.</li>
       <li xml:lang="ko">빠른 할 일과 이벤트 입력.</li>
@@ -232,6 +241,7 @@
       <li xml:lang="es">Complemento para fechas del calendario judío.</li>
       <li xml:lang="fi">Liitännäinen juutalaiselle kalenterille.</li>
       <li xml:lang="fr">Module de prise en charge du calendrier juif.</li>
+      <li xml:lang="gl">Complemento para datas do calendario xudeu.</li>
       <li xml:lang="hu">Bővítmény zsidó dátumokhoz.</li>
       <li xml:lang="it">Estensione per le date del calendario ebraico.</li>
       <li xml:lang="ko">종교별 달력 지원 플러그인.</li>
@@ -258,6 +268,7 @@
       <li xml:lang="es">Apoyo de impresión.</li>
       <li xml:lang="fi">Tulostustuki.</li>
       <li xml:lang="fr">Prise en charge d'impression.</li>
+      <li xml:lang="gl">Permite imprimir.</li>
       <li xml:lang="hu">Nyomtatási lehetőség.</li>
       <li xml:lang="it">Supporto per la stampa.</li>
       <li xml:lang="ko">인쇄 지원.</li>
