@@ -133,14 +133,6 @@ private:
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
-    // status bar ids
-    enum {
-        ID_HISTORY,
-        ID_GENERAL,
-        ID_ACTIVE,
-        ID_MESSAGES_IN,
-        ID_MESSAGES_OUT
-    };
     ActionManager *mActionManager;
 };
 
