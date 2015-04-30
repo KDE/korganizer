@@ -111,8 +111,6 @@ protected Q_SLOTS:
     /** write current state to config file. */
     void writeSettings();
 
-    void statusBarPressed(int id);
-
     /** Sets title of window according to filename and modification state */
     void setTitle() Q_DECL_OVERRIDE;
 

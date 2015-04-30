@@ -42,6 +42,7 @@
 #include "korganizer_debug.h"
 #include <KShortcutsDialog>
 #include <KStandardAction>
+#include <QLabel>
 #include <QStatusBar>
 
 KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
@@ -90,10 +91,7 @@ void KOrganizer::init(bool document)
 
     QStatusBar *bar = statusBar();
 
-#pragma message("port QT5")
-    //QT5 bar->insertItem( QString(), ID_GENERAL, 10 );
-    //QT5: FIX ME
-    connect(bar, SIGNAL(pressed(int)), SLOT(statusBarPressed(int)));
+    bar->addWidget(new QLabel(this));
 
     KPIM::ProgressStatusBarWidget *progressBar = new KPIM::ProgressStatusBarWidget(statusBar(), this);
 
@@ -178,11 +176,6 @@ bool KOrganizer::queryClose()
     }
 
     return close;
-}
-
-void KOrganizer::statusBarPressed(int id)
-{
-    Q_UNUSED(id);
 }
 
 void KOrganizer::showStatusMessage(const QString &message)
