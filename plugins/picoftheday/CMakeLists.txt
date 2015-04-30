@@ -9,6 +9,7 @@ include_directories(
 set(korg_picoftheday_PART_SRCS
   configdialog.cpp
   picoftheday.cpp
+  korganizer_picoftheday_plugin_debug.cpp
 )
 
 add_library(korg_picoftheday MODULE ${korg_picoftheday_PART_SRCS})
