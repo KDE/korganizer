@@ -147,14 +147,14 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
 void KOEventPopupMenu::popupShow()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit showIncidenceSignal(mCurrentIncidence);
+        Q_EMIT showIncidenceSignal(mCurrentIncidence);
     }
 }
 
 void KOEventPopupMenu::popupEdit()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit editIncidenceSignal(mCurrentIncidence);
+        Q_EMIT editIncidenceSignal(mCurrentIncidence);
     }
 }
 
@@ -186,40 +186,40 @@ void KOEventPopupMenu::printPreview()
 void KOEventPopupMenu::popupDelete()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit deleteIncidenceSignal(mCurrentIncidence);
+        Q_EMIT deleteIncidenceSignal(mCurrentIncidence);
     }
 }
 
 void KOEventPopupMenu::popupCut()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit cutIncidenceSignal(mCurrentIncidence);
+        Q_EMIT cutIncidenceSignal(mCurrentIncidence);
     }
 }
 
 void KOEventPopupMenu::popupCopy()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit copyIncidenceSignal(mCurrentIncidence);
+        Q_EMIT copyIncidenceSignal(mCurrentIncidence);
     }
 }
 
 void KOEventPopupMenu::popupPaste()
 {
-    emit pasteIncidenceSignal();
+    Q_EMIT pasteIncidenceSignal();
 }
 
 void KOEventPopupMenu::toggleAlarm()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit toggleAlarmSignal(mCurrentIncidence);
+        Q_EMIT toggleAlarmSignal(mCurrentIncidence);
     }
 }
 
 void KOEventPopupMenu::dissociateOccurrences()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        emit dissociateOccurrencesSignal(mCurrentIncidence, mCurrentDate);
+        Q_EMIT dissociateOccurrencesSignal(mCurrentIncidence, mCurrentDate);
     }
 }
 
@@ -242,7 +242,7 @@ void KOEventPopupMenu::forward()
 void KOEventPopupMenu::toggleTodoCompleted()
 {
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
-        emit toggleTodoCompletedSignal(mCurrentIncidence);
+        Q_EMIT toggleTodoCompletedSignal(mCurrentIncidence);
     }
 }
 

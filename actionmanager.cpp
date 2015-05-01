@@ -838,7 +838,7 @@ void ActionManager::writeSettings()
 /*
 void ActionManager::file_new()
 {
-  emit actionNewMainWindow();
+  Q_EMIT actionNewMainWindow();
 }
 */
 

@@ -106,10 +106,10 @@ void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date
     Q_UNUSED(date);
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (incidence) {
-        emit textChanged(incidence->summary() + QLatin1String(" / ") +
+        Q_EMIT textChanged(incidence->summary() + QLatin1String(" / ") +
                          KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart()));
     } else {
-        emit textChanged(QString());
+        Q_EMIT textChanged(QString());
     }
 }
 
@@ -190,7 +190,7 @@ void KOrganizerPart::setTitle()
 
       title += " - <" + mView->currentFilterName() + "> ";
 
-      emit setWindowCaption( title );*/
+      Q_EMIT setWindowCaption( title );*/
 }
 
 #include "korganizer_part.moc"

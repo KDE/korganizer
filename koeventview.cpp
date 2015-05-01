@@ -104,35 +104,35 @@ QMenu *KOEventView::newEventPopup()
 
 void KOEventView::popupShow()
 {
-    emit showIncidenceSignal(mCurrentIncidence);
+    Q_EMIT showIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupEdit()
 {
-    emit editIncidenceSignal(mCurrentIncidence);
+    Q_EMIT editIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupDelete()
 {
-    emit deleteIncidenceSignal(mCurrentIncidence);
+    Q_EMIT deleteIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupCut()
 {
-    emit cutIncidenceSignal(mCurrentIncidence);
+    Q_EMIT cutIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
 
 void KOEventView::popupCopy()
 {
-    emit copyIncidenceSignal(mCurrentIncidence);
+    Q_EMIT copyIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------
@@ -160,9 +160,9 @@ void KOEventView::defaultAction(const Akonadi::Item &aitem)
     }
 
     if (!calendar()->hasRight(aitem, Akonadi::Collection::CanChangeItem)) {
-        emit showIncidenceSignal(aitem);
+        Q_EMIT showIncidenceSignal(aitem);
     } else {
-        emit editIncidenceSignal(aitem);
+        Q_EMIT editIncidenceSignal(aitem);
     }
 }
 

@@ -321,9 +321,9 @@ void KDateNavigator::selectDates(const KCalCore::DateList &dateList)
 void KDateNavigator::wheelEvent(QWheelEvent *e)
 {
     if (e->delta() > 0) {
-        emit goPrevious();
+        Q_EMIT goPrevious();
     } else {
-        emit goNext();
+        Q_EMIT goNext();
     }
     e->accept();
 }
@@ -335,7 +335,7 @@ bool KDateNavigator::eventFilter(QObject *o, QEvent *e)
         for (i = 0; i < 6; ++i) {
             if (o == mWeeknos[i]) {
                 const QDate weekstart = mDayMatrix->getDate(i * 7);
-                emit weekClicked(weekstart, month());
+                Q_EMIT weekClicked(weekstart, month());
                 break;
             }
         }

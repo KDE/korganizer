@@ -172,7 +172,7 @@ void NavigatorBar::selectMonthFromMenu()
     delete menu;
 
     if (month > 0) {
-        emit monthSelected(month);
+        Q_EMIT monthSelected(month);
     }
 }
 
@@ -217,7 +217,7 @@ void NavigatorBar::selectYearFromMenu()
     delete menu;
 
     if (year > 0) {
-        emit yearSelected(year);
+        Q_EMIT yearSelected(year);
     }
 }
 

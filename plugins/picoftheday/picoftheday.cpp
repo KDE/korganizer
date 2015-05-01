@@ -138,14 +138,14 @@ void POTDElement::step1Result(KJob *job)
         mLongText = mFileName;
     }
     mLongText = i18n("Wikipedia POTD: %1", mLongText);
-    emit gotNewLongText(mLongText);
+    Q_EMIT gotNewLongText(mLongText);
 
     qCDebug(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << "FILENAME=" << mFileName;
     qCDebug(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << "DESCRIPTION=" << mDescription;
 
     mFirstStepCompleted = true;
     mFirstStepJob = Q_NULLPTR;
-    emit step1Success();
+    Q_EMIT step1Success();
 }
 
 /** Second step of three in the download process */
@@ -155,9 +155,9 @@ void POTDElement::step2GetImagePage()
         mUrl = QUrl(QLatin1String("http://en.wikipedia.org/wiki/File:") + mFileName);
         // We'll find the info to get the thumbnail we want on the POTD's image page
 
-        emit gotNewUrl(mUrl);
+        Q_EMIT gotNewUrl(mUrl);
         mShortText = i18n("Picture Page");
-        emit gotNewShortText(mShortText);
+        Q_EMIT gotNewShortText(mShortText);
 
         mSecondStepJob = KIO::storedGet(mUrl, KIO::NoReload, KIO::HideProgressInfo);
         KIO::Scheduler::setJobPriority(mSecondStepJob, 1);
@@ -228,7 +228,7 @@ void POTDElement::step2Result(KJob *job)
     if (!mFullSizeImageUrl.isEmpty()) {
         mSecondStepCompleted = true;
         mSecondStepJob = Q_NULLPTR;
-        emit step2Success();
+        Q_EMIT step2Success();
     }
 }
 
@@ -305,7 +305,7 @@ void POTDElement::step3Result(KJob *job)
     KIO::StoredTransferJob *const transferJob = static_cast<KIO::StoredTransferJob *>(job);
     if (mPixmap.loadFromData(transferJob->data())) {
         qCDebug(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << "POTD:" << mDate << ": got POTD.";
-        emit gotNewPixmap(mPixmap.scaled(mThumbSize, Qt::KeepAspectRatio,
+        Q_EMIT gotNewPixmap(mPixmap.scaled(mThumbSize, Qt::KeepAspectRatio,
                                          Qt::SmoothTransformation));
     }
 }

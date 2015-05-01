@@ -379,10 +379,10 @@ bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
     if (obj->inherits("KUrlLabel")) {
         KUrlLabel *label = static_cast<KUrlLabel *>(obj);
         if (e->type() == QEvent::Enter) {
-            emit message(i18n("Edit To-do: \"%1\"", label->text()));
+            Q_EMIT message(i18n("Edit To-do: \"%1\"", label->text()));
         }
         if (e->type() == QEvent::Leave) {
-            emit message(QString());
+            Q_EMIT message(QString());
         }
     }
     return KontactInterface::Summary::eventFilter(obj, e);

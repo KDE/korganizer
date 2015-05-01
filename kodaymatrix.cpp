@@ -527,11 +527,11 @@ void KODayMatrix::popupMenu(const QDate &date)
                                     QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."));
     QAction *ret = popup.exec(QCursor::pos());
     if (ret == newEventAction) {
-        emit newEventSignal(date);
+        Q_EMIT newEventSignal(date);
     } else if (ret == newTodoAction) {
-        emit newTodoSignal(date);
+        Q_EMIT newTodoSignal(date);
     } else if (ret == newJournalAction) {
-        emit newJournalSignal(date);
+        Q_EMIT newJournalSignal(date);
     }
 }
 
@@ -569,7 +569,7 @@ void KODayMatrix::mouseReleaseEvent(QMouseEvent *e)
     for (int i = mSelStart; i <= mSelEnd; ++i) {
         daylist.append(mDays[i]);
     }
-    emit selected(static_cast<const KCalCore::DateList>(daylist));
+    Q_EMIT selected(static_cast<const KCalCore::DateList>(daylist));
 }
 
 void KODayMatrix::mouseMoveEvent(QMouseEvent *e)
@@ -702,9 +702,9 @@ void KODayMatrix::dropEvent(QDropEvent *e)
             int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
 
             if (action == DRAG_COPY) {
-                emit incidenceDropped(items.at(0), mDays[idx]);
+                Q_EMIT incidenceDropped(items.at(0), mDays[idx]);
             } else if (action == DRAG_MOVE) {
-                emit incidenceDroppedMove(items.at(0), mDays[idx]);
+                Q_EMIT incidenceDroppedMove(items.at(0), mDays[idx]);
             }
         }
     }

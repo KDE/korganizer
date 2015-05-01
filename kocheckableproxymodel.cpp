@@ -34,13 +34,13 @@ bool KOCheckableProxyModel::setData(const QModelIndex &index,
 {
     Qt::CheckState newState = static_cast<Qt::CheckState>(value.toInt());
     if (role == Qt::CheckStateRole && index.column() == 0) {
-        emit aboutToToggle(newState);
+        Q_EMIT aboutToToggle(newState);
     }
 
     const bool result = KCheckableProxyModel::setData(index, value, role);
 
     if (result) {
-        emit toggled(newState);
+        Q_EMIT toggled(newState);
     }
     return result;
 }

@@ -211,7 +211,7 @@ public:
 
 Q_SIGNALS:
     /** when change is made to options dialog, the topwidget will catch this
-     *  and emit this signal which notifies all widgets which have registered
+     *  and Q_EMIT this signal which notifies all widgets which have registered
      *  for notification to update their settings. */
     void configChanged();
 
@@ -593,7 +593,7 @@ public Q_SLOTS:
 
     void slotAutoArchivingSettingsModified()
     {
-        emit autoArchivingSettingsModified();
+        Q_EMIT autoArchivingSettingsModified();
     }
 
     void showErrorMessage(const QString &);

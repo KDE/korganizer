@@ -624,7 +624,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
     // if there weren't changed they are ignored
     updateHighlightModes();
 
-    emit configChanged();
+    Q_EMIT configChanged();
 
     //switch beetween merged, side by side and tabbed agenda if needed
     mViewManager->updateMultiCalendarDisplay();
@@ -1766,7 +1766,7 @@ void CalendarView::setReadOnly(bool readOnly)
 {
     if (mReadOnly != readOnly) {
         mReadOnly = readOnly;
-        emit readOnlyChanged(mReadOnly);
+        Q_EMIT readOnlyChanged(mReadOnly);
     }
 }
 
@@ -1926,11 +1926,11 @@ void CalendarView::adaptNavigationUnits()
     if (mViewManager->currentView()->isEventView()) {
         int days = mViewManager->currentView()->currentDateCount();
         if (days == 1) {
-            emit changeNavStringPrev(i18n("&Previous Day"));
-            emit changeNavStringNext(i18n("&Next Day"));
+            Q_EMIT changeNavStringPrev(i18n("&Previous Day"));
+            Q_EMIT changeNavStringNext(i18n("&Next Day"));
         } else {
-            emit changeNavStringPrev(i18n("&Previous Week"));
-            emit changeNavStringNext(i18n("&Next Week"));
+            Q_EMIT changeNavStringPrev(i18n("&Previous Week"));
+            Q_EMIT changeNavStringNext(i18n("&Next Week"));
         }
     }
 }
@@ -1956,7 +1956,7 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (item != mSelectedIncidence) {
         // This signal also must be emitted if incidence is 0
-        emit incidenceSelected(item, date);
+        Q_EMIT incidenceSelected(item, date);
     }
 
     if (!incidence) {
@@ -1983,15 +1983,15 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
         todo = true;
         subtodo = (incidence->relatedTo() != QString());
     }
-    emit todoSelected(todo);
-    emit subtodoSelected(subtodo);
-    emit organizerEventsSelected(organizerEvents);
-    emit groupEventsSelected(groupEvents);
+    Q_EMIT todoSelected(todo);
+    Q_EMIT subtodoSelected(subtodo);
+    Q_EMIT organizerEventsSelected(organizerEvents);
+    Q_EMIT groupEventsSelected(groupEvents);
 }
 
 void CalendarView::checkClipboard()
 {
-    emit pasteEnabled(mCalendarClipboard->pasteAvailable());
+    Q_EMIT pasteEnabled(mCalendarClipboard->pasteAvailable());
 }
 
 void CalendarView::showDates(const KCalCore::DateList &selectedDates, const QDate &preferredMonth)
@@ -2029,7 +2029,7 @@ void CalendarView::updateFilter()
 
     // account for the additional "No filter" at the beginning! if the
     // filter is not in the list, pos == -1...
-    emit filtersUpdated(filters, pos + 1);
+    Q_EMIT filtersUpdated(filters, pos + 1);
 
     mCalendar->setFilter(mCurrentFilter);
 }
@@ -2046,7 +2046,7 @@ void CalendarView::filterActivated(int filterNo)
         mViewManager->addChange(EventViews::EventView::FilterChanged);
         updateView();
     }
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
 bool CalendarView::isFiltered() const
@@ -2142,7 +2142,7 @@ void CalendarView::showLeftFrame(bool show)
     if (show) {
         mMainSplitterSizes.clear();
         mLeftFrame->show();
-        emit calendarViewExpanded(false);
+        Q_EMIT calendarViewExpanded(false);
     } else {
         // mPanner splitter sizes are useless if mLeftFrame is hidden, so remember them beforehand.
         if (mMainSplitterSizes.isEmpty()) {
@@ -2150,7 +2150,7 @@ void CalendarView::showLeftFrame(bool show)
         }
 
         mLeftFrame->hide();
-        emit calendarViewExpanded(true);
+        Q_EMIT calendarViewExpanded(true);
     }
 }
 

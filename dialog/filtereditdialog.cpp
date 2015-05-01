@@ -185,7 +185,7 @@ void FilterEdit::saveChanges()
         }
     }
     mCurrent->setCategoryList(categoryList);
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
 void FilterEdit::filterSelected()
@@ -248,7 +248,7 @@ void FilterEdit::bNewPressed()
     mFilters->append(newFilter);
     updateFilterList();
     mRulesList->setCurrentRow(mRulesList->count() - 1);
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
 void FilterEdit::bDeletePressed()
@@ -276,7 +276,7 @@ void FilterEdit::bDeletePressed()
     mCurrent = Q_NULLPTR;
     updateFilterList();
     mRulesList->setCurrentRow(qMin(mRulesList->count() - 1, selected));
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
 void FilterEdit::updateSelectedName(const QString &newText)
@@ -288,7 +288,7 @@ void FilterEdit::updateSelectedName(const QString &newText)
     }
     mRulesList->blockSignals(false);
     if (correctName(newText)) {
-        emit dataConsistent(false);
+        Q_EMIT dataConsistent(false);
         return;
     }
     bool allOk = true;
@@ -299,7 +299,7 @@ void FilterEdit::updateSelectedName(const QString &newText)
         }
     }
 
-    emit dataConsistent(allOk);
+    Q_EMIT dataConsistent(allOk);
 }
 
 bool FilterEdit::correctName(const QString &newText)

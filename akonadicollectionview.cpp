@@ -363,7 +363,7 @@ void AkonadiCollectionView::setDefaultCalendar()
     updateMenu();
     updateView();
 
-    emit defaultResourceChanged(collection);
+    Q_EMIT defaultResourceChanged(collection);
 }
 
 void AkonadiCollectionView::assignColor()
@@ -379,7 +379,7 @@ void AkonadiCollectionView::assignColor()
     myColor = QColorDialog::getColor(defaultColor);
     if (myColor.isValid() && myColor != defaultColor) {
         KOPrefs::instance()->setResourceColor(identifier, myColor);
-        emit colorsChanged();
+        Q_EMIT colorsChanged();
         updateMenu();
         updateView();
     }
@@ -395,7 +395,7 @@ void AkonadiCollectionView::disableColor()
     KOPrefs::instance()->setResourceColor(identifier, QColor());
     updateMenu();
     updateView();
-    emit colorsChanged();
+    Q_EMIT colorsChanged();
 }
 
 void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyModel *m)
@@ -424,7 +424,7 @@ Akonadi::EntityTreeView *AkonadiCollectionView::view() const
 
 void AkonadiCollectionView::updateView()
 {
-    emit resourcesChanged(mSelectionProxyModel ?
+    Q_EMIT resourcesChanged(mSelectionProxyModel ?
                           mSelectionProxyModel->selectionModel()->hasSelection() :
                           false);
 }
@@ -562,7 +562,7 @@ void AkonadiCollectionView::deleteCalendarDone(KJob *job)
 void AkonadiCollectionView::rowsInserted(const QModelIndex &, int, int)
 {
     if (!mNotSendAddRemoveSignal) {
-        emit resourcesAddedRemoved();
+        Q_EMIT resourcesAddedRemoved();
     }
     restoreTreeState();
 }

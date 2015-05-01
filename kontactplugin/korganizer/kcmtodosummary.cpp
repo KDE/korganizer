@@ -69,7 +69,7 @@ KCMTodoSummary::~KCMTodoSummary()
 
 void KCMTodoSummary::modified()
 {
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 void KCMTodoSummary::customDaysChanged(int value)
@@ -103,7 +103,7 @@ void KCMTodoSummary::load()
     group = config.group("Groupware");
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void KCMTodoSummary::save()
@@ -132,7 +132,7 @@ void KCMTodoSummary::save()
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     config.sync();
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void KCMTodoSummary::defaults()
@@ -149,7 +149,7 @@ void KCMTodoSummary::defaults()
 
     mShowMineOnly->setChecked(false);
 
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 const KAboutData *KCMTodoSummary::aboutData() const

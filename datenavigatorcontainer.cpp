@@ -335,7 +335,7 @@ void DateNavigatorContainer::goNextMonth()
 {
     const QPair<QDate, QDate> p = dateLimits(1);
 
-    emit nextMonthClicked(mNavigatorView->month(),
+    Q_EMIT nextMonthClicked(mNavigatorView->month(),
                           p.first,
                           p.second);
 }
@@ -344,7 +344,7 @@ void DateNavigatorContainer::goPrevMonth()
 {
     const QPair<QDate, QDate> p = dateLimits(-1);
 
-    emit prevMonthClicked(mNavigatorView->month(),
+    Q_EMIT prevMonthClicked(mNavigatorView->month(),
                           p.first,
                           p.second);
 }
@@ -392,7 +392,7 @@ void DateNavigatorContainer::handleDatesSelectedSignal(const KCalCore::DateList 
     KDateNavigator *navigator = firstNavigatorForDate(firstDate);
     navigator = navigator ? navigator : qobject_cast<KDateNavigator *>(sender());
 
-    emit datesSelected(dateList, navigator->month());
+    Q_EMIT datesSelected(dateList, navigator->month());
 }
 
 void DateNavigatorContainer::handleWeekClickedSignal(const QDate &week, const QDate &)
@@ -401,7 +401,7 @@ void DateNavigatorContainer::handleWeekClickedSignal(const QDate &week, const QD
     KDateNavigator *navigator = firstNavigatorForDate(week);
     navigator = navigator ? navigator : qobject_cast<KDateNavigator *>(sender());
 
-    emit weekClicked(week, navigator->month());
+    Q_EMIT weekClicked(week, navigator->month());
 }
 
 KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date) const

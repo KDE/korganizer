@@ -96,13 +96,13 @@ void ExportWebDialog::writeConfig()
 void ExportWebDialog::slotApply()
 {
     writeConfig();
-    emit configChanged();
+    Q_EMIT configChanged();
 }
 
 void ExportWebDialog::slotOk()
 {
     slotApply();
-    emit exportHTML(mSettings);
+    Q_EMIT exportHTML(mSettings);
     accept();
 }
 

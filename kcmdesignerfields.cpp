@@ -435,7 +435,7 @@ void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
     PageItem *pageItem = static_cast<PageItem *>(item);
 
     if (pageItem->isOn() != pageItem->isActive()) {
-        emit changed(true);
+        Q_EMIT changed(true);
         pageItem->setIsActive(pageItem->isOn());
     }
 }

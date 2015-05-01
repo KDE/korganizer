@@ -71,7 +71,7 @@ KCMApptSummary::KCMApptSummary(QWidget *parent)
 
 void KCMApptSummary::modified()
 {
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 void KCMApptSummary::buttonClicked(int id)
@@ -108,7 +108,7 @@ void KCMApptSummary::load()
     group = config.group("Groupware");
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void KCMApptSummary::save()
@@ -140,7 +140,7 @@ void KCMApptSummary::save()
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     config.sync();
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void KCMApptSummary::defaults()
@@ -154,7 +154,7 @@ void KCMApptSummary::defaults()
 
     mShowMineOnly->setChecked(false);
 
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 const KAboutData *KCMApptSummary::aboutData() const

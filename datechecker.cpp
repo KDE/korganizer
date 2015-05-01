@@ -65,10 +65,10 @@ void DateChecker::passedMidnight()
 
     if (today.month() != mLastDayChecked.month()) {
         if (mUpdateRollover == FollowMonth) {
-            emit monthPassed(today);
+            Q_EMIT monthPassed(today);
         }
     }
-    emit dayPassed(today);
+    Q_EMIT dayPassed(today);
 }
 
 void DateChecker::possiblyPastMidnight()

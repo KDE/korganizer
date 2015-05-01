@@ -311,6 +311,6 @@ void DateNavigator::selectYear(int year)
 
 void DateNavigator::emitSelected(const QDate &preferredMonth)
 {
-    emit datesSelected(mSelectedDates, preferredMonth);
+    Q_EMIT datesSelected(mSelectedDates, preferredMonth);
 }
 

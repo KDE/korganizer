@@ -70,7 +70,7 @@ KCMSDSummary::KCMSDSummary(QWidget *parent)
 
 void KCMSDSummary::modified()
 {
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 void KCMSDSummary::buttonClicked(int id)
@@ -114,7 +114,7 @@ void KCMSDSummary::load()
     group = config.group("Groupware");
     mShowMineOnly->setChecked(group.readEntry("ShowMineOnly", false));
 
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void KCMSDSummary::save()
@@ -149,7 +149,7 @@ void KCMSDSummary::save()
     group.writeEntry("ShowMineOnly", mShowMineOnly->isChecked());
 
     group.sync();
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void KCMSDSummary::defaults()
@@ -167,7 +167,7 @@ void KCMSDSummary::defaults()
 
     mShowMineOnly->setChecked(false);
 
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 const KAboutData *KCMSDSummary::aboutData() const
