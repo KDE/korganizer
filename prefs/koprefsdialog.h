@@ -160,17 +160,4 @@ protected:
     QString applicationName() Q_DECL_OVERRIDE;
 };
 
-/*class KCM_KORGANIZER_EXPORT KOPrefsDialogThemes : public KPrefsModule
-{
-  Q_OBJECT
-  public:
-    KOPrefsDialogThemes( const KComponentData &inst, QWidget *parent );
-
-  protected Q_SLOTS:
-    void usrRead();
-    void usrSave();
-    void importTheme();
-    void exportTheme();
-};*/
-
 #endif
