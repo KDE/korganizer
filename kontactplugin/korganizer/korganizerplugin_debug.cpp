@@ -20,4 +20,3 @@
 #include "korganizerplugin_debug.h"
 Q_LOGGING_CATEGORY(KORGANIZERPLUGIN_LOG, "log_korganizer_plugin")
 
-

@@ -190,7 +190,7 @@ void POTDElement::step2Result(KJob *job)
     if (!imgPage.setContent(QString::fromUtf8(transferJob->data().data(),
                             transferJob->data().size()))) {
         qCWarning(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << "POTD:" << mDate << ": Wikipedia returned an invalid XML page for image"
-                   << mFileName;
+                << mFileName;
         return;
     }
 
@@ -306,7 +306,7 @@ void POTDElement::step3Result(KJob *job)
     if (mPixmap.loadFromData(transferJob->data())) {
         qCDebug(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << "POTD:" << mDate << ": got POTD.";
         Q_EMIT gotNewPixmap(mPixmap.scaled(mThumbSize, Qt::KeepAspectRatio,
-                                         Qt::SmoothTransformation));
+                                           Qt::SmoothTransformation));
     }
 }
 
@@ -314,8 +314,8 @@ QPixmap POTDElement::newPixmap(const QSize &size)
 {
     if ((mThumbSize.width() < size.width()) || (mThumbSize.height() < size.height())) {
         qCDebug(KORGANIZERPICOFTHEDAYPLUGIN_LOG) << "POTD:" << mDate << ": called for a new pixmap size ("
-                 << size << "instead of" << mThumbSize << ", stored pixmap:"
-                 << mPixmap.size() << ")";
+                << size << "instead of" << mThumbSize << ", stored pixmap:"
+                << mPixmap.size() << ")";
         setThumbnailSize(size);
 
         if (!mFirstStepCompleted) {

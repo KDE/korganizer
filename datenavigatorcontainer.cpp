@@ -336,8 +336,8 @@ void DateNavigatorContainer::goNextMonth()
     const QPair<QDate, QDate> p = dateLimits(1);
 
     Q_EMIT nextMonthClicked(mNavigatorView->month(),
-                          p.first,
-                          p.second);
+                            p.first,
+                            p.second);
 }
 
 void DateNavigatorContainer::goPrevMonth()
@@ -345,8 +345,8 @@ void DateNavigatorContainer::goPrevMonth()
     const QPair<QDate, QDate> p = dateLimits(-1);
 
     Q_EMIT prevMonthClicked(mNavigatorView->month(),
-                          p.first,
-                          p.second);
+                            p.first,
+                            p.second);
 }
 
 QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const

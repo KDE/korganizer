@@ -425,8 +425,8 @@ Akonadi::EntityTreeView *AkonadiCollectionView::view() const
 void AkonadiCollectionView::updateView()
 {
     Q_EMIT resourcesChanged(mSelectionProxyModel ?
-                          mSelectionProxyModel->selectionModel()->hasSelection() :
-                          false);
+                            mSelectionProxyModel->selectionModel()->hasSelection() :
+                            false);
 }
 
 void AkonadiCollectionView::updateMenu()

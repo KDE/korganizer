@@ -20,4 +20,3 @@
 #include "korganizer_picoftheday_plugin_debug.h"
 Q_LOGGING_CATEGORY(KORGANIZERPICOFTHEDAYPLUGIN_LOG, "log_korganizer_picoftheday_plugins")
 
-
