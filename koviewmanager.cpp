@@ -82,23 +82,23 @@ void KOViewManager::readSettings(KConfig *config)
     KConfigGroup generalConfig(config, "General");
     const QString view = generalConfig.readEntry("Current View");
 
-    if (view == QStringLiteral("WhatsNext")) {
+    if (view == QLatin1String("WhatsNext")) {
         showWhatsNextView();
-    } else if (view == QStringLiteral("OldMonth")) {
+    } else if (view == QLatin1String("OldMonth")) {
         // the oldmonth view is gone, so we assume the new month view
         showMonthView();
-    } else if (view == QStringLiteral("List")) {
+    } else if (view == QLatin1String("List")) {
         showListView();
         mListView->readSettings(config);
-    } else if (view == QStringLiteral("Journal")) {
+    } else if (view == QLatin1String("Journal")) {
         showJournalView();
-    } else if (view == QStringLiteral("Todo")) {
+    } else if (view == QLatin1String("Todo")) {
         showTodoView();
-    } else if (view == QStringLiteral("Timeline")) {
+    } else if (view == QLatin1String("Timeline")) {
         showTimeLineView();
-    } else if (view == QStringLiteral("TimeSpent")) {
+    } else if (view == QLatin1String("TimeSpent")) {
         showTimeSpentView();
-    } else if (view == QStringLiteral("Month")) {
+    } else if (view == QLatin1String("Month")) {
         showMonthView();
     } else {
         showAgendaView();

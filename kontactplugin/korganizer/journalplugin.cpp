@@ -155,7 +155,7 @@ void JournalPlugin::slotSyncJournal()
 
 bool JournalPlugin::createDBUSInterface(const QString &serviceType)
 {
-    if (serviceType == QStringLiteral("DBUS/Organizer") || serviceType == QStringLiteral("DBUS/Calendar")) {
+    if (serviceType == QLatin1String("DBUS/Organizer") || serviceType == QLatin1String("DBUS/Calendar")) {
         if (part()) {
             return true;
         }

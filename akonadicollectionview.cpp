@@ -450,7 +450,7 @@ void AkonadiCollectionView::updateMenu()
             const QString identifier = QString::number(collection.id());
             const QColor defaultColor = KOPrefs::instance()->resourceColor(identifier);
             enableAction = enableAction && defaultColor.isValid();
-            if (collection.remoteId() == QStringLiteral("akonadi_birthdays_resource")) {
+            if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
                 enableAction = false;
                 mAssignColor->setEnabled(enableAction);
             }
