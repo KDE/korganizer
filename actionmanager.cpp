@@ -1370,7 +1370,7 @@ bool ActionManager::handleCommandLine()
     bool ret = true;
 
     if (!mainWindow) {
-        qCritical() << "Unable to find default calendar resources view.";
+        qCCritical(KORGANIZER_LOG) << "Unable to find default calendar resources view.";
         ret = false;
     } else if (args->count() <= 0) {
         // No filenames given => all other args are meaningless, show main Window

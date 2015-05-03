@@ -235,7 +235,7 @@ void KOEventPopupMenu::forward()
     if (action) {
         action->trigger();
     } else {
-        qCritical() << "What happened to the schedule_forward action?";
+        qCCritical(KORGANIZER_LOG) << "What happened to the schedule_forward action?";
     }
 }
 

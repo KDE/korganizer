@@ -650,7 +650,7 @@ void CalendarView::slotCreateFinished(int changeId,
         updateUnmanagedViews();
         checkForFilteredChange(item);
     } else if (!errorString.isEmpty()) {
-        qCritical() << "Incidence not added, job reported error: " << errorString;
+        qCCritical(KORGANIZER_LOG) << "Incidence not added, job reported error: " << errorString;
     }
 }
 
@@ -661,7 +661,7 @@ void CalendarView::slotModifyFinished(int changeId,
 {
     Q_UNUSED(changeId);
     if (resultCode != Akonadi::IncidenceChanger::ResultCodeSuccess) {
-        qCritical() << "Incidence not modified, job reported error: " << errorString;
+        qCCritical(KORGANIZER_LOG) << "Incidence not modified, job reported error: " << errorString;
         return;
     }
 
@@ -693,7 +693,7 @@ void CalendarView::slotModifyFinished(int changeId,
                 journal->setDescription(description);
 
                 if (mChanger->createIncidence(journal, item.parentCollection(), this) == -1) {
-                    qCritical() << "Unable to add Journal";
+                    qCCritical(KORGANIZER_LOG) << "Unable to add Journal";
                     return;
                 }
 
@@ -728,7 +728,7 @@ void CalendarView::slotDeleteFinished(int changeId,
         }
         updateUnmanagedViews();
     } else {
-        qCritical() << "Incidence not deleted, job reported error: " << errorString;
+        qCCritical(KORGANIZER_LOG) << "Incidence not deleted, job reported error: " << errorString;
     }
 }
 
@@ -825,7 +825,7 @@ void CalendarView::edit_cut()
     const Akonadi::Item item = selectedIncidence();
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
 
@@ -838,14 +838,14 @@ void CalendarView::edit_copy()
 
     if (!item.isValid()) {
         KNotification::beep();
-        qCritical() << "Invalid item";
+        qCCritical(KORGANIZER_LOG) << "Invalid item";
         return;
     }
 
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     Q_ASSERT(incidence);
     if (!mCalendarClipboard->copyIncidence(incidence, Akonadi::CalendarClipboard::AskMode)) {
-        qCritical() << "Error copying incidence";
+        qCCritical(KORGANIZER_LOG) << "Error copying incidence";
     }
 
     checkClipboard();
@@ -1350,7 +1350,7 @@ bool CalendarView::deleteIncidence(Akonadi::Item::Id id, bool force)
 {
     Akonadi::Item item = mCalendar->item(id);
     if (!CalendarSupport::hasIncidence(item)) {
-        qCritical() << "CalendarView::deleteIncidence(): Item does not contain incidence.";
+        qCCritical(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): Item does not contain incidence.";
         return false;
     }
     return deleteIncidence(item, force);
@@ -1360,7 +1360,7 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
 {
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
     KCalCore::Incidence::Ptr oldincidence(incidence->clone());
@@ -1404,7 +1404,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(todoItem);
 
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
     if (incidence->type() != KCalCore::Incidence::TypeTodo) {
@@ -1432,7 +1432,7 @@ void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akon
 {
 #ifdef AKONADI_PORT_DISABLED
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
 
@@ -1502,7 +1502,7 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
 {
 #ifdef AKONADI_PORT_DISABLED
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
 
@@ -1589,7 +1589,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate 
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
 
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
 
@@ -2295,7 +2295,7 @@ bool CalendarView::editIncidence(const Akonadi::Item &item, bool isCounter)
     Q_UNUSED(isCounter);
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
-        qCritical() << "Null incidence";
+        qCCritical(KORGANIZER_LOG) << "Null incidence";
         KNotification::beep();
         return false;
     }
@@ -2385,10 +2385,10 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
         if (!force) {
-            qCritical() << "Null incidence";
+            qCCritical(KORGANIZER_LOG) << "Null incidence";
             KNotification::beep();
         }
-        qCritical() << "CalendarView::deleteIncidence(): Unable do delete, incidence is null.";
+        qCCritical(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): Unable do delete, incidence is null.";
         return false;
     }
 

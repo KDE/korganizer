@@ -105,7 +105,7 @@ if(KDEPIM_BUILD_DESKTOP)
 
 ########### next target ###############
 
-  set(korganizerpart_PART_SRCS korganizer_part.cpp)
+  set(korganizerpart_PART_SRCS korganizer_part.cpp korganizer_debug.cpp)
 
   add_library(korganizerpart MODULE ${korganizerpart_PART_SRCS})
 

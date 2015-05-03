@@ -89,11 +89,11 @@ QMenu *KOEventView::newEventPopup()
 {
     KXMLGUIClient *client = KOCore::self()->xmlguiClient(this);
     if (!client) {
-        qCritical() << "no xmlGuiClient.";
+        qCCritical(KORGANIZER_LOG) << "no xmlGuiClient.";
         return Q_NULLPTR;
     }
     if (!client->factory()) {
-        qCritical() << "no factory";
+        qCCritical(KORGANIZER_LOG) << "no factory";
         return Q_NULLPTR; // can happen if called too early
     }
 
@@ -141,7 +141,7 @@ void KOEventView::showNewEventPopup()
 {
     QMenu *popup = newEventPopup();
     if (!popup) {
-        qCritical() << "popup creation failed";
+        qCCritical(KORGANIZER_LOG) << "popup creation failed";
         return;
     }
 

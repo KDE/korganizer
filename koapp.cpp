@@ -80,7 +80,7 @@ int KOrganizerApp::newInstance()
     processCalendar(QUrl());
     KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
     if (!korg) {
-        qCritical() << "Unable to find default calendar resources view.";
+        qCCritical(KORGANIZER_LOG) << "Unable to find default calendar resources view.";
         return -1;
     }
     // Check for import, merge or ask
