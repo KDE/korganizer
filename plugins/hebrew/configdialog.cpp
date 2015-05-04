@@ -37,8 +37,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
 {
     QFrame *topFrame = new QFrame(this);
 
-//PORTING: Verify that widget was added to mainLayout:   setMainWidget( topFrame );
-// Add mainLayout->addWidget(topFrame); if necessary
     setWindowTitle(i18n("Configure Holidays"));
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     QVBoxLayout *mainLayout = new QVBoxLayout;
