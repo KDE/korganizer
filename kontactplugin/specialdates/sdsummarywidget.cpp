@@ -644,7 +644,7 @@ void SDSummaryWidget::mailContact(const QString &url)
 {
     const Akonadi::Item item = Akonadi::Item::fromUrl(url);
     if (!item.isValid()) {
-        qDebug() << QLatin1String("Invalid item found");
+        qDebug() << QStringLiteral("Invalid item found");
         return;
     }
 
