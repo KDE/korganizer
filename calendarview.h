@@ -28,6 +28,8 @@
 #define KORG_CALENDARVIEW_H
 
 #include "korganizerprivate_export.h"
+#include "searchcollectionhelper.h"
+
 #include "interfaces/korganizer/calendarviewbase.h"
 
 #include <KCalCore/Incidence>
@@ -754,6 +756,8 @@ private:
     Akonadi::CalendarClipboard *mCalendarClipboard;
     KOCheckableProxyModel *mCheckableProxyModel;
     AkonadiCollectionView *mETMCollectionView;
+
+    SearchCollectionHelper mSearchCollectionHelper;
 };
 
 #endif

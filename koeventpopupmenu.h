@@ -44,6 +44,8 @@ public:
 
 public Q_SLOTS:
     void showIncidencePopup(const Akonadi::Item &, const QDate &);
+    void createEvent(const Akonadi::Item &item);
+    void createNote(const Akonadi::Item &item);
 
 protected Q_SLOTS:
     void popupShow();
@@ -58,6 +60,12 @@ protected Q_SLOTS:
     void toggleTodoCompleted();
     void dissociateOccurrences();
     void forward();
+    void createTodo();
+    void createEvent();
+    void createNote();
+
+    void slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection);
+    void slotCreateNewNoteJobFinished(KJob *);
 
 Q_SIGNALS:
     void configChanged();
@@ -83,6 +91,7 @@ private:
     bool mHasAdditionalItems;
     QList<QAction *> mEditOnlyItems;
     QList<QAction *> mTodoOnlyItems;
+    QList<QAction *> mEventOnlyItems;
     QList<QAction *> mRecurrenceItems;
     QAction *mDissociateOccurrences;
     QAction *mToggleReminder;

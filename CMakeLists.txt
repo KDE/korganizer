@@ -173,6 +173,10 @@ set(korganizerprivate_LIB_SRCS
     aboutdata.cpp
     actionmanager.cpp
     akonadicollectionview.cpp
+    views/collectionview/reparentingmodel.cpp
+    views/collectionview/controller.cpp
+    views/collectionview/calendardelegate.cpp
+    views/collectionview/quickview.cpp
     calendarview.cpp
     datechecker.cpp
     datenavigator.cpp
@@ -186,6 +190,7 @@ set(korganizerprivate_LIB_SRCS
     kodaymatrix.cpp
     kodialogmanager.cpp
     koeventpopupmenu.cpp
+    noteeditdialog.cpp
     koeventview.cpp
     dialog/koeventviewerdialog.cpp
     koglobals.cpp
@@ -195,6 +200,7 @@ set(korganizerprivate_LIB_SRCS
     kowindowlist.cpp
     widgets/navigatorbar.cpp
     dialog/searchdialog.cpp
+    searchcollectionhelper.cpp
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
@@ -213,6 +219,7 @@ set(korganizerprivate_LIB_SRCS
     ui/kogroupwareprefspage.ui
     views/multiagendaview/multiagendaviewconfigwidget.ui
     ui/searchdialog_base.ui
+    views/collectionview/quickview.ui
   )
 
   qt5_add_resources(korganizerprivate_LIB_SRCS
@@ -247,6 +254,7 @@ set(korganizerprivate_LIB_SRCS
     pimcommon
     
     KF5::AkonadiCalendar
+    akonadi-notes
     calendarsupport
     eventviews
     incidenceeditorsng
@@ -267,6 +275,7 @@ set(korganizerprivate_LIB_SRCS
     KF5::NewStuff
     calendarsupportcollectionpage
     ${ZLIB_LIBRARIES}
+    KF5:AkonadiSearch
   )
 
   set_target_properties(korganizerprivate PROPERTIES
@@ -343,3 +352,4 @@ set(korganizerprivate_LIB_SRCS
 
 endif()
 add_subdirectory(kontactplugin)
+add_subdirectory(views/collectionview)

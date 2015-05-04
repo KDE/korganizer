@@ -19,3 +19,39 @@ target_link_libraries(testkodaymatrix
   korganizerprivate
   Qt5::Test
 )
+
+add_executable(koeventpopmenutest koeventpopupmenutest.cpp ../koeventpopupmenu.cpp ../kocorehelper.cpp ../noteeditdialog.cpp)
+add_test(koeventpopmenutest koeventpopupmenutest)
+ecm_mark_as_test(koeventpopmenutest)
+target_link_libraries(koeventpopmenutest
+  Qt5::Test
+  Qt5::Gui
+  Qt5::Core
+  KF5::Mime
+  KF5::AkonadiCore
+  KF5::AkonadiCalendar
+  KF5::AkonadiNotes
+  KF5::CalendarCore
+  incidenceeditorsng
+  calendarsupport
+  korganizer_core
+  korganizerprivate
+)
+
+add_executable(noteeditdialogtest noteeditdialogtest.cpp ../noteeditdialog.cpp)
+add_test(noteeditdialogtest noteeditdialogtest)
+ecm_mark_as_test(noteeditdialogtest)
+target_link_libraries(noteeditdialogtest
+  Qt5::Test
+  Qt5::Gui
+  Qt5::Core
+  KF5::Mime
+  KF5::AkonadiCore
+  KF5::AkonadiCalendar
+  KF5::AkonadiNotes
+  KF5::CalendarCore
+  incidenceeditorsng
+  calendarsupport
+  korganizer_core
+  korganizerprivate
+  )

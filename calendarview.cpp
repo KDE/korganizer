@@ -103,9 +103,11 @@
 #include <QStackedWidget>
 #include <KLocale>
 
-CalendarView::CalendarView(QWidget *parent) : CalendarViewBase(parent),
-    mCheckableProxyModel(Q_NULLPTR),
-    mETMCollectionView(Q_NULLPTR)
+CalendarView::CalendarView(QWidget *parent)
+    : CalendarViewBase(parent)
+    , mCheckableProxyModel(Q_NULLPTR)
+    , mETMCollectionView(Q_NULLPTR)
+    , mSearchCollectionHelper(this)
 {
     Akonadi::Control::widgetNeedsAkonadi(this);
     mChanger = new Akonadi::IncidenceChanger(new IncidenceEditorNG::IndividualMailComponentFactory(this), this);
