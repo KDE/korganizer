@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     KOrganizerApp app;
 
     if (app.isSessionRestored()) {
-        RESTORE(KOrganizer)
+        kRestoreMainWindows<KOrganizer>();
     }
 
     return app.exec();
