@@ -35,8 +35,8 @@
 
 int main(int argc, char **argv)
 {
-    KAboutData aboutData(QStringLiteral("korgplugins"), i18n("KOrgPlugins"), QStringLiteral("0.1"));
     QApplication app(argc, argv);
+    KAboutData aboutData(QStringLiteral("korgplugins"), i18n("KOrgPlugins"), QStringLiteral("0.1"));
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
