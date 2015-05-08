@@ -45,7 +45,7 @@ QColor KOHelper::resourceColor(const Akonadi::Collection &coll) const
     return KOPrefs::instance()->resourceColor(id);
 }
 
-QColor KOHelper::resourceColorKnown(onst Akonadi::Collection &coll) const
+QColor KOHelper::resourceColorKnown(const Akonadi::Collection &coll) const
 {
     if (!coll.isValid()) {
         return QColor();
