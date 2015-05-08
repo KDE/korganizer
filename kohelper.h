@@ -57,10 +57,10 @@ KORGANIZERPRIVATE_EXPORT QColor getTextColor(const QColor &c);
   @param incidence the incidence for which the color is needed (to
                    determine which  subresource needs to be used)
 */
-KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Item &incidence) const;
+KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Item &incidence);
 
-KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Collection &collection) const;
-KORGANIZERPRIVATE_EXPORT QColor resourceColorKnown(const Akonadi::Collection &collection) const;
+KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Collection &collection);
+KORGANIZERPRIVATE_EXPORT QColor resourceColorKnown(const Akonadi::Collection &collection);
 KORGANIZERPRIVATE_EXPORT void setResourceColor(const Akonadi::Collection &collection, const QColor &color);
 
 /**

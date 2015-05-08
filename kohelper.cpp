@@ -35,7 +35,7 @@ QColor KOHelper::getTextColor(const QColor &c)
     return (luminance > 128.0) ? QColor(0, 0, 0) : QColor(255, 255, 255);
 }
 
-QColor KOHelper::resourceColor(const Akonadi::Collection &coll) const
+QColor KOHelper::resourceColor(const Akonadi::Collection &coll)
 {
     if (!coll.isValid()) {
         return QColor();
@@ -45,14 +45,16 @@ QColor KOHelper::resourceColor(const Akonadi::Collection &coll) const
     return KOPrefs::instance()->resourceColor(id);
 }
 
-QColor KOHelper::resourceColorKnown(const Akonadi::Collection &coll) const
+QColor KOHelper::resourceColorKnown(const Akonadi::Collection &coll)
 {
     if (!coll.isValid()) {
         return QColor();
     }
 
     const QString id = QString::number(coll.id());
-    return KOPrefs::instance()->resourceColorKnown(id);
+//FIX ME!
+    return QString();
+    //return KOPrefs::instance()->resourceColorKnown(id);
 }
 
 void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QColor &color)
@@ -64,7 +66,7 @@ void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QCo
 }
 
 
-QColor KOHelper::resourceColor(const Akonadi::Item &item) const
+QColor KOHelper::resourceColor(const Akonadi::Item &item)
 {
     if (!item.isValid()) {
         return QColor();
