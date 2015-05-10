@@ -65,7 +65,6 @@ void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QCo
     }
 }
 
-
 QColor KOHelper::resourceColor(const Akonadi::Item &item)
 {
     if (!item.isValid()) {
