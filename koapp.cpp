@@ -31,6 +31,7 @@
 #include "reminderclient.h"
 #include "kdepim-version.h"
 #include <KCalCore/CalFormat>
+#include <KStartupInfo>
 
 #include <KCmdLineArgs>
 #include "korganizer_debug.h"
