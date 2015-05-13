@@ -52,9 +52,7 @@ QColor KOHelper::resourceColorKnown(const Akonadi::Collection &coll)
     }
 
     const QString id = QString::number(coll.id());
-//FIX ME!
-    return QString();
-    //return KOPrefs::instance()->resourceColorKnown(id);
+    return KOPrefs::instance()->resourceColorKnown(id);
 }
 
 void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QColor &color)
