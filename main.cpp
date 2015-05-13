@@ -28,23 +28,29 @@
 #include "korganizer.h"
 #include "korganizer_options.h"
 #include "korgstartup.h"
+#include "korganizer_debug.h"
+
+#include <KLocalizedString>
+
 int main(int argc, char **argv)
 {
     KOrgStartup::migrateConfig();
     KLocalizedString::setApplicationDomain("korganizer");
+
     KOrg::AboutData aboutData;
 
-    KCmdLineArgs::init(argc, argv, &aboutData);
-    KCmdLineArgs::addCmdLineOptions(korganizer_options());
-    KUniqueApplication::addCmdLineOptions();
+    KOrganizerApp app(argc, &argv, aboutData);
+    QCommandLineParser *cmdArgs = app.cmdArgs();
+    korganizer_options(cmdArgs);
 
-    KUniqueApplication::StartFlags flags;
-    //flags |= KUniqueApplication::NonUniqueInstance;
-    if (!KOrganizerApp::start(flags)) {
+    const QStringList args = QApplication::arguments();
+    cmdArgs->process(args);
+    aboutData.processCommandLine(cmdArgs);
+
+    if (!KOrganizerApp::start(args)) {
+        qCDebug(KORGANIZER_LOG) << "korganizer already running, exiting";
         return 0;
     }
-
-    KOrganizerApp app;
 
     if (app.isSessionRestored()) {
         kRestoreMainWindows<KOrganizer>();

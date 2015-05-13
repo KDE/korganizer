@@ -26,22 +26,23 @@
 #ifndef KORG_KORGANIZER_OPTIONS_H
 #define KORG_KORGANIZER_OPTIONS_H
 
-#include <KCmdLineOptions>
+#include <QCommandLineParser>
+#include <KLocalizedString>
 
-static KCmdLineOptions korganizer_options()
+static void korganizer_options(QCommandLineParser *parser)
 {
-    KCmdLineOptions options;
-    options.add("i");
-    options.add("import",
-                ki18n("Import the specified files as separate calendars"));
-    options.add("m");
-    options.add("merge",
-                ki18n("Merge the specified files into an existing calendar"));
-    options.add("+[calendars]",
-                ki18n("Calendar files or urls. "
-                      "Unless -i or -m is explicitly specified, "
-                      "the user will be asked whether to import or merge"));
-    return options;
+    parser->addOption(QCommandLineOption(
+          QStringList() << QLatin1String("i") << QLatin1String("import"),
+          i18n("Import the specified files as separate calendars")));
+    parser->addOption(QCommandLineOption(
+          QStringList() << QLatin1String("m") << QLatin1String("merge"),
+          i18n("Merge the specified files into an existing calendar")));
+
+    parser->addPositionalArgument(
+          QLatin1String("calendars"),
+          i18n("Calendar files or urls. Unless -i or -m is explicitly specified, "
+               "the user will be asked whether to import or merge"),
+          QLatin1String("[calendar...]"));
 }
 
 #endif

@@ -88,6 +88,7 @@
 #include <KNS3/DownloadDialog>
 #include <QIcon>
 #include "korganizer_debug.h"
+#include "korganizer_options.h"
 
 #include <QApplication>
 #include <QTimer>
@@ -1362,9 +1363,12 @@ bool ActionManager::showIncidenceContext(Akonadi::Item::Id id)
     return mCalendarView->showIncidenceContext(id);
 }
 
-bool ActionManager::handleCommandLine()
+bool ActionManager::handleCommandLine(const QStringList &args)
 {
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    QCommandLineParser parser;
+    korganizer_options(&parser);
+    parser.process(args);
+
     KOrg::MainWindow *mainWindow = ActionManager::findInstance(QUrl());
 
     bool ret = true;
@@ -1372,7 +1376,7 @@ bool ActionManager::handleCommandLine()
     if (!mainWindow) {
         qCCritical(KORGANIZER_LOG) << "Unable to find default calendar resources view.";
         ret = false;
-    } else if (args->count() <= 0) {
+    } else if (parser.positionalArguments().isEmpty()) {
         // No filenames given => all other args are meaningless, show main Window
         mainWindow->topLevelWidget()->show();
     } else {
@@ -1380,17 +1384,17 @@ bool ActionManager::handleCommandLine()
         mainWindow->topLevelWidget()->show();
 
         // Check for import, merge or ask
-        if (args->isSet("import")) {
-            for (int i = 0; i < args->count(); ++i) {
-                importURL(args->url(i), /*merge=*/false);
+        if (parser.isSet(QLatin1String("import"))) {
+            for (const QString &url : parser.positionalArguments()) {
+                importURL(QUrl::fromUserInput(url), /*merge=*/false);
             }
-        } else if (args->isSet("merge")) {
-            for (int i = 0; i < args->count(); ++i) {
-                importURL(args->url(i), /*merge=*/true);
+        } else if (parser.isSet(QLatin1String("merge"))) {
+            for (const QString &url : parser.positionalArguments()) {
+                importURL(QUrl::fromUserInput(url), /*merge=*/true);
             }
         } else {
-            for (int i = 0; i < args->count(); ++i) {
-                mainWindow->actionManager()->importCalendar(args->url(i));
+            for (const QString &url : parser.positionalArguments()) {
+                mainWindow->actionManager()->importCalendar(QUrl::fromUserInput(url));
             }
         }
     }

@@ -47,6 +47,7 @@
     </method>
     <method name="handleCommandLine">
       <arg type="b" direction="out"/>
+      <arg name="args" type="as" direction="in"/>
     </method>
   </interface>
 </node>

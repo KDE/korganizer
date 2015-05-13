@@ -130,8 +130,8 @@ bool KOrganizerIfaceImpl::showIncidenceContext(const QString &uid)
     return mActionManager->showIncidenceContext(id);
 }
 
-bool KOrganizerIfaceImpl::handleCommandLine()
+bool KOrganizerIfaceImpl::handleCommandLine(const QStringList &args)
 {
-    return mActionManager->handleCommandLine();
+    return mActionManager->handleCommandLine(args);
 }
 
