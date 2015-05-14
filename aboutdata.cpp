@@ -30,9 +30,9 @@
 using namespace KOrg;
 
 AboutData::AboutData()
-    : KAboutData(QLatin1String("korganizer"),
+    : KAboutData(QStringLiteral("korganizer"),
                  i18n("KOrganizer"),
-                 QLatin1String(KDEPIM_VERSION),
+                 QStringLiteral(KDEPIM_VERSION),
                  i18n("A Personal Organizer"),
                  KAboutLicense::GPL,
                  i18n("Copyright © 1997–1999 Preston Brown\n"
@@ -41,7 +41,7 @@ AboutData::AboutData()
                       "Copyright © 2006–2012 Allen Winter\n"
                       "Copyright © 2012–2015 KOrganizer authors"),
                  QString(),
-                 QLatin1String("https://userbase.kde.org/KOrganizer"))
+                 QStringLiteral("https://userbase.kde.org/KOrganizer"))
 {
 #if defined( KDEPIM_GIT_REVISION_STRING ) && defined( KDEPIM_GIT_LAST_CHANGE )
     const QByteArray rev(KDEPIM_GIT_REVISION_STRING);
@@ -54,15 +54,15 @@ AboutData::AboutData()
 #endif
 
     addAuthor(i18n("Allen Winter"), i18n("Maintainer"),
-              QLatin1String("winter@kde.org"));
+              QStringLiteral("winter@kde.org"));
     addAuthor(i18n("Reinhold Kainhofer"), i18n("Former Maintainer"),
-              QLatin1String("reinhold@kainhofer.com"));
+              QStringLiteral("reinhold@kainhofer.com"));
     addAuthor(i18n("Cornelius Schumacher"), i18n("Former Maintainer"),
-              QLatin1String("schumacher@kde.org"));
+              QStringLiteral("schumacher@kde.org"));
     addAuthor(i18n("Preston Brown"), i18n("Original Author"),
-              QLatin1String("pbrown@kde.org"));
+              QStringLiteral("pbrown@kde.org"));
     addAuthor(i18n("Laurent Montel"), i18n("Developer"),
-              QLatin1String("montel@kde.org"));
+              QStringLiteral("montel@kde.org"));
     addCredit(i18n("Richard Apodaca"));
     addCredit(i18n("Björn Balazs"));
     addCredit(i18n("Jan-Pascal van Best"));

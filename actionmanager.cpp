@@ -1384,11 +1384,11 @@ bool ActionManager::handleCommandLine(const QStringList &args)
         mainWindow->topLevelWidget()->show();
 
         // Check for import, merge or ask
-        if (parser.isSet(QLatin1String("import"))) {
+        if (parser.isSet(QStringLiteral("import"))) {
             for (const QString &url : parser.positionalArguments()) {
                 importURL(QUrl::fromUserInput(url), /*merge=*/false);
             }
-        } else if (parser.isSet(QLatin1String("merge"))) {
+        } else if (parser.isSet(QStringLiteral("merge"))) {
             for (const QString &url : parser.positionalArguments()) {
                 importURL(QUrl::fromUserInput(url), /*merge=*/true);
             }

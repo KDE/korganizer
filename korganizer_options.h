@@ -32,17 +32,17 @@
 static void korganizer_options(QCommandLineParser *parser)
 {
     parser->addOption(QCommandLineOption(
-          QStringList() << QLatin1String("i") << QLatin1String("import"),
+          QStringList() << QStringLiteral("i") << QStringLiteral("import"),
           i18n("Import the specified files as separate calendars")));
     parser->addOption(QCommandLineOption(
-          QStringList() << QLatin1String("m") << QLatin1String("merge"),
+          QStringList() << QStringLiteral("m") << QStringLiteral("merge"),
           i18n("Merge the specified files into an existing calendar")));
 
     parser->addPositionalArgument(
-          QLatin1String("calendars"),
+          QStringLiteral("calendars"),
           i18n("Calendar files or urls. Unless -i or -m is explicitly specified, "
                "the user will be asked whether to import or merge"),
-          QLatin1String("[calendar...]"));
+          QStringLiteral("[calendar...]"));
 }
 
 #endif
