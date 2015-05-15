@@ -253,7 +253,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
                 core(),
                 i18nc("@info", "Dropping multiple mails is not supported."));
         } else {
-            KPIM::MailSummary mail = mails.first();
+            KPIM::MailSummary mail = mails.at(0);
             QString txt = i18nc("@item", "From: %1\nTo: %2\nSubject: %3",
                                 mail.from(), mail.to(), mail.subject());
             QString uri = QStringLiteral("kmail:") +
