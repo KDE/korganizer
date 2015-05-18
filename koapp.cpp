@@ -31,14 +31,18 @@
 #include "reminderclient.h"
 #include "kdepim-version.h"
 #include <KCalCore/CalFormat>
+#include <KStartupInfo>
 
 #include <KCmdLineArgs>
 #include "korganizer_debug.h"
+#include "korganizer_options.h"
 #include <KStandardDirs>
 #include <KStartupInfo>
 #include <KGlobal>
+#include <QCommandLineParser>
 
-KOrganizerApp::KOrganizerApp() : KontactInterface::PimUniqueApplication()
+KOrganizerApp::KOrganizerApp(int &argc, char **argv[], KAboutData &about)
+  : KontactInterface::PimUniqueApplication(argc, argv, about)
 {
     QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
     KCalCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KDEPIM_VERSION)));
@@ -51,7 +55,7 @@ KOrganizerApp::~KOrganizerApp()
 {
 }
 
-int KOrganizerApp::newInstance()
+int KOrganizerApp::activate(const QStringList &args)
 {
     qCDebug(KORGANIZER_LOG);
     static bool first = true;
@@ -65,12 +69,14 @@ int KOrganizerApp::newInstance()
     }
     first = false;
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    QCommandLineParser parser;
+    korganizer_options(&parser);
+    parser.process(args);
 
     KPIM::ReminderClient::startDaemon();
 
     // No filenames given => all other args are meaningless, show main Window
-    if (args->count() <= 0) {
+    if (parser.positionalArguments().isEmpty()) {
         processCalendar(QUrl());
         return 0;
     }
@@ -84,17 +90,17 @@ int KOrganizerApp::newInstance()
         return -1;
     }
     // Check for import, merge or ask
-    if (args->isSet("import")) {
-        for (int i = 0; i < args->count(); ++i) {
-            korg->actionManager()->importURL(args->url(i), false);
+    if (parser.isSet(QStringLiteral("import"))) {
+        for (const QString &url : parser.positionalArguments()) {
+            korg->actionManager()->importURL(QUrl::fromUserInput(url), false);
         }
-    } else if (args->isSet("merge")) {
-        for (int i = 0; i < args->count(); ++i) {
-            korg->actionManager()->importURL(args->url(i), true);
+    } else if (parser.isSet(QStringLiteral("merge"))) {
+        for (const QString &url : parser.positionalArguments()) {
+            korg->actionManager()->importURL(QUrl::fromUserInput(url), true);
         }
     } else {
-        for (int i = 0; i < args->count(); ++i) {
-            korg->actionManager()->importCalendar(args->url(i));
+        for (const QString &url : parser.positionalArguments()) {
+            korg->actionManager()->importCalendar(QUrl::fromUserInput(url));
         }
     }
 

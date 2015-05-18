@@ -30,8 +30,9 @@ public:
     explicit KOrganizerUniqueAppHandler(KontactInterface::Plugin *plugin)
         : KontactInterface::UniqueAppHandler(plugin) {}
     virtual ~KOrganizerUniqueAppHandler() {}
-    void loadCommandLineOptions() Q_DECL_OVERRIDE;
-    int newInstance() Q_DECL_OVERRIDE;
+
+    void loadCommandLineOptions(QCommandLineParser *parser) Q_DECL_OVERRIDE;
+    int activate(const QStringList &args) Q_DECL_OVERRIDE;
 };
 
 #endif /* KORG_UNIQUEAPP_H */

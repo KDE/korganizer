@@ -40,7 +40,7 @@
 
 #include <QVBoxLayout>
 
-static const K4AboutData &createAboutData()
+static const KAboutData &createAboutData()
 {
     static KOrg::AboutData about;
     return about;

@@ -34,14 +34,14 @@ class KOrganizerApp : public KontactInterface::PimUniqueApplication
 {
     Q_OBJECT
 public:
-    KOrganizerApp();
+    KOrganizerApp(int &argc, char **argv[], KAboutData &aboutData);
     ~KOrganizerApp();
 
     /**
       Create new instance of KOrganizer. If there is already running a
       KOrganizer only an additional main window is opened.
     */
-    int newInstance() Q_DECL_OVERRIDE;
+    int activate(const QStringList &args) Q_DECL_OVERRIDE;
 
 private:
     /**

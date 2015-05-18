@@ -102,7 +102,7 @@ public Q_SLOTS:
      * Returns true if the command line was successfully handled
      * false otherwise.
      */
-    bool handleCommandLine();
+    bool handleCommandLine(const QStringList &args);
 
 private:
     ActionManager *mActionManager;

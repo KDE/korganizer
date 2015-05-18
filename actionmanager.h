@@ -164,7 +164,7 @@ public:
      * Returns true if the command line was successfully handled
      * false otherwise.
      */
-    bool handleCommandLine();
+    bool handleCommandLine(const QStringList &args);
 
 public Q_SLOTS:
     void openEventEditor(const QString &);

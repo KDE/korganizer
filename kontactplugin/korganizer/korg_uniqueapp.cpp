@@ -30,12 +30,12 @@
 #include <QDBusMessage>
 #include <QDBusConnection>
 
-void KOrganizerUniqueAppHandler::loadCommandLineOptions()
+void KOrganizerUniqueAppHandler::loadCommandLineOptions(QCommandLineParser *parser)
 {
-    KCmdLineArgs::addCmdLineOptions(korganizer_options());
+    korganizer_options(parser);
 }
 
-int KOrganizerUniqueAppHandler::newInstance()
+int KOrganizerUniqueAppHandler::activate(const QStringList &args)
 {
     // Ensure part is loaded
     (void)plugin()->part();
@@ -44,6 +44,7 @@ int KOrganizerUniqueAppHandler::newInstance()
                            QStringLiteral("/Korganizer"),
                            QStringLiteral("org.kde.korganizer.Korganizer"),
                            QStringLiteral("handleCommandLine"));
+    message.setArguments(QList<QVariant>() << (args));
     QDBusConnection::sessionBus().send(message);
 
     // Bring korganizer's plugin to front
