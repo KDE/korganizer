@@ -142,16 +142,8 @@ generate_export_header(korganizer_core BASE_NAME korganizer_core)
 target_link_libraries(korganizer_core
   calendarsupport
   eventviews
-  incidenceeditorsng
-  kdepim
-  korganizer_interfaces
-  KF5::AkonadiCore
-  KF5::CalendarCore
-  KF5::CalendarUtils
-  KF5::Mime
   KF5::IdentityManagement
-  
-  KF5::KIOCore
+  korganizer_interfaces
 )
 
 set_target_properties(korganizer_core PROPERTIES
