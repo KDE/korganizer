@@ -40,11 +40,6 @@
 
 #include <QVBoxLayout>
 
-static const KAboutData &createAboutData()
-{
-    static KOrg::AboutData about;
-    return about;
-}
 
 K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 

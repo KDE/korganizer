@@ -68,7 +68,6 @@
 
 #include <QAction>
 #include <KActionCollection>
-#include <KCmdLineArgs>
 #include <KFileDialog>
 #include <QFileDialog>
 #include <QMenu>
