@@ -33,7 +33,6 @@
 #include <KCalCore/CalFormat>
 #include <KStartupInfo>
 
-#include <KCmdLineArgs>
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
 #include <KStandardDirs>
