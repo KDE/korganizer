@@ -10,3 +10,4 @@ ItemAccessors=true
 SetUserTexts=true
 Visibility=
 IncludeFiles=KLocalizedString
+TranslationDomain=korganizer
