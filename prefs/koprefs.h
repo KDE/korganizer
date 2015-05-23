@@ -59,7 +59,7 @@ private:
 public:
     void setResourceColor(const QString &, const QColor &);
     QColor resourceColor(const QString &);
-    QColor resourceColorKnown(const QString& cal) const;
+    QColor resourceColorKnown(const QString &cal) const;
 
     void setHtmlExportFile(const QString &fileName);
     QString htmlExportFile() const;

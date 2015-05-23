@@ -41,7 +41,7 @@
 #include <QCommandLineParser>
 
 KOrganizerApp::KOrganizerApp(int &argc, char **argv[], KAboutData &about)
-  : KontactInterface::PimUniqueApplication(argc, argv, about)
+    : KontactInterface::PimUniqueApplication(argc, argv, about)
 {
     QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
     KCalCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KDEPIM_VERSION)));
