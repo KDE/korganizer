@@ -35,9 +35,7 @@
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
-#include <KStandardDirs>
 #include <KStartupInfo>
-#include <KGlobal>
 #include <QCommandLineParser>
 
 KOrganizerApp::KOrganizerApp(int &argc, char **argv[], KAboutData &about)
@@ -45,9 +43,6 @@ KOrganizerApp::KOrganizerApp(int &argc, char **argv[], KAboutData &about)
 {
     QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
     KCalCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KDEPIM_VERSION)));
-
-    // icons shared by the KDE PIM applications
-    KGlobal::dirs()->addResourceType("appicon", "data", "/kdepim/icons/");
 }
 
 KOrganizerApp::~KOrganizerApp()
