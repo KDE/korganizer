@@ -29,7 +29,6 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "impl/korganizerifaceimpl.h"
-#include "korgstartup.h"
 #include <calendarsupport/utils.h>
 
 #include <KCalUtils/IncidenceFormatter>
@@ -37,6 +36,7 @@
 #include <QStatusBar>
 #include <KParts/StatusBarExtension>
 #include "korganizer_debug.h"
+#include "korgmigrateapplication.h"
 
 #include <QVBoxLayout>
 
@@ -45,7 +45,8 @@ K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
     : KParts::ReadOnlyPart(parent)
 {
-    KOrgStartup::migrateConfig();
+    KOrgMigrateApplication migrate;
+    migrate.migrate();
     if (parentWidget) {
         mTopLevelWidget = parentWidget->topLevelWidget();
     } else if (parent && parent->isWidgetType()) {
