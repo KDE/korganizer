@@ -46,7 +46,7 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     : QDialog(parent)
 {
     setWindowTitle(i18nc("@title:window", "Create Note"));
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     setLayout(mainLayout);

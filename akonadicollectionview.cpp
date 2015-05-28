@@ -465,9 +465,9 @@ protected:
         }
     }
 
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) Q_DECL_OVERRIDE
-    {
-        if (role == Qt::CheckStateRole) {
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) Q_DECL_OVERRIDE {
+        if (role == Qt::CheckStateRole)
+        {
             if (sourceModel()->hasChildren(mapToSource(index)) && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
                 setChildren(mapToSource(index), value, role);
             }
@@ -513,7 +513,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     QLineEdit *searchCol = new QLineEdit(this);
     searchCol->setClearButtonEnabled(true);
     searchCol->setPlaceholderText(i18nc("@info/plain Displayed grayed-out inside the "
-                                     "textbox, verb to search", "Search"));
+                                        "textbox, verb to search", "Search"));
     topLayout->addWidget(searchCol);
 
     ColorProxyModel *colorProxy = new ColorProxyModel(this);
