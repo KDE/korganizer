@@ -42,9 +42,23 @@ void KOrgMigrateApplication::migrate()
 
 void KOrgMigrateApplication::initializeMigrator()
 {
-    mMigrator.setApplicationName(QStringLiteral("kaddressbook"));
-    mMigrator.setConfigFileName(QStringLiteral("kaddressbookrc"));
+    mMigrator.setApplicationName(QStringLiteral("korganizer"));
+    mMigrator.setConfigFileName(QStringLiteral("korganizerrc"));
     mMigrator.setCurrentConfigVersion(1);
+
+    // Templates
+    PimCommon::MigrateFileInfo migrateInfoTemplates;
+    migrateInfoTemplates.setFolder(true);
+    migrateInfoTemplates.setType(QStringLiteral("apps"));
+    migrateInfoTemplates.setPath(QStringLiteral("korganizer/templates/"));
+    mMigrator.insertMigrateInfo(migrateInfoTemplates);
+
+    // Designer
+    PimCommon::MigrateFileInfo migrateInfoDesigner;
+    migrateInfoDesigner.setFolder(true);
+    migrateInfoDesigner.setType(QStringLiteral("apps"));
+    migrateInfoDesigner.setPath(QStringLiteral("korganizer/designer/"));
+    mMigrator.insertMigrateInfo(migrateInfoDesigner);
     //TODO add folder to migrate
 }
 
