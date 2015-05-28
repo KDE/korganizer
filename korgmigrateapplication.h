@@ -1,5 +1,7 @@
 /*
-  Copyright (c) 2014-2015 Montel Laurent <montel@kde.org>
+  Copyright (c) 2015 Montel Laurent <montel@kde.org>
+
+  based on code from Sune Vuorela <sune@vuorela.dk> (Rawatar source code)
 
   This program is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License, version 2, as
@@ -15,13 +17,21 @@
   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef KORGSTARTUP_H
-#define KORGSTARTUP_H
+#ifndef KORGMIGRATEAPPLICATION_H
+#define KORGMIGRATEAPPLICATION_H
+
+#include "pimcommon/migration/migrateapplicationfiles.h"
 #include "korganizerprivate_export.h"
 
-namespace KOrgStartup
+class KORGANIZERPRIVATE_EXPORT KOrgMigrateApplication
 {
-KORGANIZERPRIVATE_EXPORT void migrateConfig();
+public:
+    KOrgMigrateApplication();
+
+    void migrate();
+private:
+    void initializeMigrator();
+    PimCommon::MigrateApplicationFiles mMigrator;
 };
 
-#endif // KORGSTARTUP_H
+#endif // KORGMIGRATEAPPLICATION_H

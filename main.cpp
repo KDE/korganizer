@@ -27,14 +27,16 @@
 #include "koapp.h"
 #include "korganizer.h"
 #include "korganizer_options.h"
-#include "korgstartup.h"
 #include "korganizer_debug.h"
+#include "korgmigrateapplication.h"
 
 #include <KLocalizedString>
 
 int main(int argc, char **argv)
 {
-    KOrgStartup::migrateConfig();
+    KOrgMigrateApplication migrate;
+    migrate.migrate();
+
     KLocalizedString::setApplicationDomain("korganizer");
 
     KOrg::AboutData aboutData;

@@ -1,5 +1,7 @@
 /*
-  Copyright (c) 2014 Montel Laurent <montel@kde.org>
+  Copyright (c) 2015 Montel Laurent <montel@kde.org>
+
+  based on code from Sune Vuorela <sune@vuorela.dk> (Rawatar source code)
 
   This program is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License, version 2, as
@@ -15,14 +17,34 @@
   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "korgstartup.h"
+#include "korgmigrateapplication.h"
 
-#include <kdelibs4configmigrator.h>
-#include <QString>
-void KOrgStartup::migrateConfig()
+#include <Kdelibs4ConfigMigrator>
+
+KOrgMigrateApplication::KOrgMigrateApplication()
 {
+    initializeMigrator();
+}
+
+void KOrgMigrateApplication::migrate()
+{
+    //Migrate to xdg
     Kdelibs4ConfigMigrator migrate(QStringLiteral("korganizer"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("korganizer_htmlexportrc") << QStringLiteral("korganizerrc") << QStringLiteral("freebusyurls"));
     migrate.setUiFiles(QStringList() << QStringLiteral("korganizer_part.rc") << QStringLiteral("korganizerui.rc"));
     migrate.migrate();
+
+    // Migrate folders and files.
+    if (mMigrator.checkIfNecessary()) {
+        mMigrator.start();
+    }
 }
+
+void KOrgMigrateApplication::initializeMigrator()
+{
+    mMigrator.setApplicationName(QStringLiteral("kaddressbook"));
+    mMigrator.setConfigFileName(QStringLiteral("kaddressbookrc"));
+    mMigrator.setCurrentConfigVersion(1);
+    //TODO add folder to migrate
+}
+

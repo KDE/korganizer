@@ -161,7 +161,7 @@ if(KDEPIM_BUILD_DESKTOP)
 
 set(korganizerprivate_LIB_SRCS
     korganizer_debug.cpp
-    korgstartup.cpp
+    korgmigrateapplication.cpp 
     aboutdata.cpp
     actionmanager.cpp
     akonadicollectionview.cpp
