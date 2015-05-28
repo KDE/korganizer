@@ -123,9 +123,10 @@ private:
     void updateSourceIndex(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
 };
 
-namespace KPIM {
-    class CollectionSearchJob;
-    class PersonSearchJob;
+namespace KPIM
+{
+class CollectionSearchJob;
+class PersonSearchJob;
 }
 
 /**

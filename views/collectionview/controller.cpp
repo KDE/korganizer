@@ -412,7 +412,7 @@ void Controller::onPersonCollectionsFetched(KJob *job)
     }
 
     const CollectionState collectionState = static_cast<CollectionState>(job->property("collectionState").toInt());
-    Q_FOREACH(const Akonadi::Collection & col, static_cast<Akonadi::CollectionFetchJob *>(job)->collections()) {
+    Q_FOREACH (const Akonadi::Collection &col, static_cast<Akonadi::CollectionFetchJob *>(job)->collections()) {
         // qCDebug(KORGANIZER_LOG) << col.displayName() << "do enable " << enabled;
         Akonadi::Collection modifiedCollection = col;
         if (collectionState == Enabled) {

@@ -139,7 +139,7 @@ int ReparentingModel::Node::row() const
 {
     Q_ASSERT(parent);
     int row = 0;
-    Q_FOREACH (const Node::Ptr & node, parent->children) {
+    Q_FOREACH (const Node::Ptr &node, parent->children) {
         if (node.data() == this) {
             return row;
         }
@@ -200,7 +200,7 @@ bool ReparentingModel::validateNode(const Node *node) const
         }
 
         bool found = false;
-        Q_FOREACH(const Node::Ptr & child, n->parent->children) {
+        Q_FOREACH (const Node::Ptr &child, n->parent->children) {
             if (child.data() == n) {
                 found = true;
             }
@@ -252,7 +252,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
 {
-    Q_FOREACH(const ReparentingModel::Node::Ptr & existing, mProxyNodes) {
+    Q_FOREACH (const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";
             return;
@@ -688,7 +688,7 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
 
 bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode) const
 {
-    Q_FOREACH(const Node * n, mSourceNodes) {
+    Q_FOREACH (const Node *n, mSourceNodes) {
         // qCDebug(KORGANIZER_LOG) << index << index.data().toString();
         if (proxyNode->isDuplicateOf(n->sourceIndex)) {
             return true;

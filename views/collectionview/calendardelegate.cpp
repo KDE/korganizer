@@ -173,7 +173,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     {
         QList<Action> buttons;
         int i = 1;
-        Q_FOREACH(Action action, getActions(option, index)) {
+        Q_FOREACH (Action action, getActions(option, index)) {
             if (action != Total) {
                 QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
                 if (action == Enable && showButtons) {

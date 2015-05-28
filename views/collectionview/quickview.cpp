@@ -151,7 +151,7 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
         monitor->setItemFetchScope(scope);
         monitor->setAllMonitored(true);
 
-        foreach(const QString & mimetype, allMimeTypes) {
+        foreach (const QString &mimetype, allMimeTypes) {
             monitor->setMimeTypeMonitored(mimetype, true);
         }
 

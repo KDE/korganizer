@@ -65,24 +65,20 @@ private:
         }
         return QVariant();
     }
-    bool setData(const QVariant &variant, int role) Q_DECL_OVERRIDE
-    {
+    bool setData(const QVariant &variant, int role) Q_DECL_OVERRIDE {
         Q_UNUSED(variant);
         Q_UNUSED(role);
         return false;
     }
-    bool isDuplicateOf(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE
-    {
+    bool isDuplicateOf(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE {
         return (sourceIndex.data().toString() == mUid);
     }
 
-    bool adopts(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE
-    {
+    bool adopts(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE {
         return sourceIndex.data().toString().contains(mParent);
     }
 
-    void update(const Node::Ptr &node) Q_DECL_OVERRIDE
-    {
+    void update(const Node::Ptr &node) Q_DECL_OVERRIDE {
         mName = node.staticCast<DummyNode>()->mName;
         mData = node.staticCast<DummyNode>()->mData;
     }
