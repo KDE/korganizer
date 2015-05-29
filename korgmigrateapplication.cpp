@@ -42,15 +42,20 @@ void KOrgMigrateApplication::migrate()
 
 void KOrgMigrateApplication::initializeMigrator()
 {
+    const int currentVersion = 2;
     mMigrator.setApplicationName(QStringLiteral("korganizer"));
     mMigrator.setConfigFileName(QStringLiteral("korganizerrc"));
-    mMigrator.setCurrentConfigVersion(1);
+    mMigrator.setCurrentConfigVersion(currentVersion);
+
+    // To migrate we need a version < currentVersion
+    const int initialVersion = currentVersion - 1;
 
     // Templates
     PimCommon::MigrateFileInfo migrateInfoTemplates;
     migrateInfoTemplates.setFolder(true);
     migrateInfoTemplates.setType(QStringLiteral("apps"));
     migrateInfoTemplates.setPath(QStringLiteral("korganizer/templates/"));
+    migrateInfoTemplates.setVersion(initialVersion);
     mMigrator.insertMigrateInfo(migrateInfoTemplates);
 
     // Designer
@@ -58,7 +63,10 @@ void KOrgMigrateApplication::initializeMigrator()
     migrateInfoDesigner.setFolder(true);
     migrateInfoDesigner.setType(QStringLiteral("apps"));
     migrateInfoDesigner.setPath(QStringLiteral("korganizer/designer/"));
+    migrateInfoDesigner.setVersion(initialVersion);
     mMigrator.insertMigrateInfo(migrateInfoDesigner);
+
     //TODO add folder to migrate
+    // If you add new MigrateFileInfo we need to increase "currentVersion"  and initialVersion
 }
 
