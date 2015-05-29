@@ -48,7 +48,7 @@ void KOrgMigrateApplication::initializeMigrator()
     mMigrator.setCurrentConfigVersion(currentVersion);
 
     // To migrate we need a version < currentVersion
-    const int initialVersion = currentVersion - 1;
+    const int initialVersion = currentVersion + 1;
 
     // Templates
     PimCommon::MigrateFileInfo migrateInfoTemplates;
