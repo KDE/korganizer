@@ -193,4 +193,3 @@ void Quickview::onTodayClicked()
     mAgendaView->showDates(start, start.addDays(mDayRange - 1));
 }
 
-#include "quickview.moc"
