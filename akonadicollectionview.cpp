@@ -98,7 +98,7 @@ public:
         qRegisterMetaType<QPersistentModelIndex>("QPersistentModelIndex");
     }
 
-private slots:
+private Q_SLOTS:
     void onSourceRowsInserted(const QModelIndex &parent, int start, int end)
     {
         Akonadi::EntityTreeModel *etm = findEtm(mCheckableProxy);
