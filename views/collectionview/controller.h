@@ -79,7 +79,7 @@ public:
 
     void setChecked(bool);
 
-    virtual QVariant data(int role) const Q_DECL_OVERRIDE;
+    QVariant data(int role) const Q_DECL_OVERRIDE;
 
     Emitter emitter;
     bool isSearchNode;

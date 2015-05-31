@@ -360,7 +360,7 @@ public:
     }
 
 protected:
-    virtual bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE
+    bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE
     {
         const QModelIndex sourceIndex = sourceModel()->index(row, 0, sourceParent);
         Q_ASSERT(sourceIndex.isValid());
@@ -385,7 +385,7 @@ public:
 
 protected:
 
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE
     {
         if (role == EnabledRole) {
             Akonadi::Collection col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
