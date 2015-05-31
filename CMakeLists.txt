@@ -19,7 +19,9 @@ include_directories(
 )
 
 add_subdirectory(tests)
-add_subdirectory(autotests)
+if (BUILD_TESTING)
+   add_subdirectory(autotests)
+endif()
 add_subdirectory(interfaces)
 if(KDEPIM_BUILD_DESKTOP)
   add_subdirectory(pixmaps)
