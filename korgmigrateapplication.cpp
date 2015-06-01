@@ -53,7 +53,7 @@ void KOrgMigrateApplication::initializeMigrator()
     // Templates
     PimCommon::MigrateFileInfo migrateInfoTemplates;
     migrateInfoTemplates.setFolder(true);
-    migrateInfoTemplates.setType(QStringLiteral("apps"));
+    migrateInfoTemplates.setType(QStringLiteral("data"));
     migrateInfoTemplates.setPath(QStringLiteral("korganizer/templates/"));
     migrateInfoTemplates.setVersion(initialVersion);
     mMigrator.insertMigrateInfo(migrateInfoTemplates);
@@ -61,7 +61,7 @@ void KOrgMigrateApplication::initializeMigrator()
     // Designer
     PimCommon::MigrateFileInfo migrateInfoDesigner;
     migrateInfoDesigner.setFolder(true);
-    migrateInfoDesigner.setType(QStringLiteral("apps"));
+    migrateInfoDesigner.setType(QStringLiteral("data"));
     migrateInfoDesigner.setPath(QStringLiteral("korganizer/designer/"));
     migrateInfoDesigner.setVersion(initialVersion);
     mMigrator.insertMigrateInfo(migrateInfoDesigner);
