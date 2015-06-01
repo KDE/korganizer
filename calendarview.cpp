@@ -77,7 +77,7 @@
 #include <pimcommon/acl/imapaclattribute.h>
 
 #include <AkonadiWidgets/CollectionPropertiesDialog>
-#include <AkonadiCore/Control>
+#include <AkonadiWidgets/ControlGui>
 #include <AkonadiCore/AttributeFactory>
 #include <Akonadi/Calendar/TodoPurger>
 
@@ -109,7 +109,7 @@ CalendarView::CalendarView(QWidget *parent)
     , mETMCollectionView(Q_NULLPTR)
     , mSearchCollectionHelper(this)
 {
-    Akonadi::Control::widgetNeedsAkonadi(this);
+    Akonadi::ControlGui::widgetNeedsAkonadi(this);
     mChanger = new Akonadi::IncidenceChanger(new IncidenceEditorNG::IndividualMailComponentFactory(this), this);
     mChanger->setDefaultCollection(Akonadi::Collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId()));
 
