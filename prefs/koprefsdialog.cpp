@@ -425,7 +425,6 @@ public:
         QCheckBox *cb =
             addWidBool(
                 CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
-        cb->setText(QString());
 
         if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
             const QString defAudioFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
@@ -440,7 +439,7 @@ public:
 
         connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
 
-        QHBoxLayout *audioFileRemindersBox = new QHBoxLayout(remindersGroupBox);
+        QVBoxLayout *audioFileRemindersBox = new QVBoxLayout(remindersGroupBox);
         audioFileRemindersBox->addWidget(cb);
         audioFileRemindersBox->addWidget(rq);
 
