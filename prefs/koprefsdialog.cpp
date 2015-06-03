@@ -141,6 +141,8 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
            autoExportInterval->spinBox(), SLOT(setEnabled(bool)) );
   intervalLayout->addWidget( autoExportInterval->label() );
   intervalLayout->addWidget( autoExportInterval->spinBox() );
+  autoExportInterval->spinBox()->setEnabled(autoExportHTML->checkBox()->isChecked());
+  autoExportInterval->label()->setEnabled(autoExportHTML->checkBox()->isChecked());
 
   KPIM::KPrefsWidBool *confirmItem =
     addWidBool( KOPrefs::instance()->confirmItem(), saveFrame );
