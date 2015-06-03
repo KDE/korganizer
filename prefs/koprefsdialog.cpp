@@ -895,7 +895,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     load();
 }
 
-void KOPrefsDialogColorsAndFonts::usrSave()
+void KOPrefsDialogColorsAndFonts::usrWriteConfig()
 {
     QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
     while (i != mCategoryDict.constEnd()) {
@@ -912,7 +912,7 @@ void KOPrefsDialogColorsAndFonts::usrSave()
     //mCalendarViewsPrefs->writeConfig();
 }
 
-void KOPrefsDialogColorsAndFonts::usrRead()
+void KOPrefsDialogColorsAndFonts::usrReadConfig()
 {
     updateCategories();
     updateResources();
@@ -1024,11 +1024,11 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     load();
 }
 
-void KOPrefsDialogGroupScheduling::usrRead()
+void KOPrefsDialogGroupScheduling::usrReadConfig()
 {
 }
 
-void KOPrefsDialogGroupScheduling::usrSave()
+void KOPrefsDialogGroupScheduling::usrWriteConfig()
 {
 }
 
@@ -1081,7 +1081,7 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
     delete mGroupwarePage;
 }
 
-void KOPrefsDialogGroupwareScheduling::usrRead()
+void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
     mGroupwarePage->publishEnable->setChecked(
         Akonadi::CalendarSettings::self()->freeBusyPublishAuto());
@@ -1112,7 +1112,7 @@ void KOPrefsDialogGroupwareScheduling::usrRead()
         Akonadi::CalendarSettings::self()->freeBusyRetrieveSavePassword());
 }
 
-void KOPrefsDialogGroupwareScheduling::usrSave()
+void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
     Akonadi::CalendarSettings::self()->setFreeBusyPublishAuto(
         mGroupwarePage->publishEnable->isChecked());
@@ -1250,7 +1250,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     selectionChanged();
 }
 
-void KOPrefsDialogPlugins::usrRead()
+void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
     KService::List plugins = KOCore::self()->availablePlugins();
@@ -1295,7 +1295,7 @@ void KOPrefsDialogPlugins::usrRead()
     mDecorationsAtAgendaViewBottom = viewPrefs->decorationsAtAgendaViewBottom().toSet();
 }
 
-void KOPrefsDialogPlugins::usrSave()
+void KOPrefsDialogPlugins::usrWriteConfig()
 {
     QStringList selectedPlugins;
 

@@ -67,8 +67,8 @@ public:
     KOPrefsDialogColorsAndFonts(QWidget *parent);
 
 protected:
-    void usrSave();
-    void usrRead();
+    void usrWriteConfig() Q_DECL_OVERRIDE;
+    void usrReadConfig() Q_DECL_OVERRIDE;
 
 protected Q_SLOTS:
     void updateCategories();
@@ -96,8 +96,8 @@ public:
     KOPrefsDialogGroupScheduling(QWidget *parent);
 
 protected:
-    void usrRead();
-    void usrSave();
+    void usrWriteConfig() Q_DECL_OVERRIDE;
+    void usrReadConfig() Q_DECL_OVERRIDE;
 };
 
 class KOGroupwarePrefsPage;
@@ -110,8 +110,8 @@ public:
     ~KOPrefsDialogGroupwareScheduling();
 
 protected:
-    void usrRead();
-    void usrSave();
+    void usrWriteConfig() Q_DECL_OVERRIDE;
+    void usrReadConfig() Q_DECL_OVERRIDE;
 
 private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
@@ -124,8 +124,8 @@ public:
     KOPrefsDialogPlugins(QWidget *parent);
 
 protected Q_SLOTS:
-    void usrRead();
-    void usrSave();
+    void usrWriteConfig() Q_DECL_OVERRIDE;
+    void usrReadConfig() Q_DECL_OVERRIDE;
     void configure();
     void selectionChanged();
     void positioningChanged();
