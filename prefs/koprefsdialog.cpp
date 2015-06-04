@@ -155,6 +155,9 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     saveLayout->addWidget(confirmItem->checkBox());
     KPIM::KPrefsWidRadios *destinationItem =
         addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
+    autoExportInterval->spinBox()->setEnabled(autoExportHTML->checkBox()->isChecked());
+    autoExportInterval->label()->setEnabled(autoExportHTML->checkBox()->isChecked());
+
 
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
