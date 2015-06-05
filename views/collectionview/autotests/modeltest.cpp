@@ -330,7 +330,7 @@ void ModelTest::checkChildren(const QModelIndex &parent, int currentDepth)
     for (int i = 0; i < currentDepth; ++i) {
         indent += QLatin1String("    ");
     }
-    qDebug() << QString(indent + QLatin1String("+")).toUtf8() << model->data(parent).value<QString>();
+    qDebug() << QString(indent + QLatin1String("+")).toUtf8() << model->data(parent).toString();
 
     if (rows > 0) {
 
