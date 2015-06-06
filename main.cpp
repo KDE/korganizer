@@ -37,8 +37,6 @@ int main(int argc, char **argv)
     KOrgMigrateApplication migrate;
     migrate.migrate();
 
-    KLocalizedString::setApplicationDomain("korganizer");
-
     KOrg::AboutData aboutData;
 
     KOrganizerApp app(argc, &argv, aboutData);

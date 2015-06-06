@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="425">
+<kpartgui name="korganizer" version="426"  translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
