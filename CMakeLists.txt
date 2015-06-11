@@ -4,9 +4,6 @@ add_definitions( -DQT_NO_CAST_FROM_ASCII )
 add_definitions( -DQT_NO_CAST_TO_ASCII )
 add_definitions(-DTRANSLATION_DOMAIN=\"korganizer\")
 
-# enable exception handling
-
-
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
   ${CMAKE_CURRENT_BINARY_DIR}
