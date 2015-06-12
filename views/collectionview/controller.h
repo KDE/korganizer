@@ -115,7 +115,7 @@ private:
 class PersonNodeManager : public ReparentingModel::NodeManager
 {
 public:
-    PersonNodeManager(ReparentingModel &personModel) : ReparentingModel::NodeManager(personModel) {};
+    PersonNodeManager(ReparentingModel &personModel) : ReparentingModel::NodeManager(personModel) {}
 private:
     KPIM::Person person(const QModelIndex &sourceIndex);
     void checkSourceIndex(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;

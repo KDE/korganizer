@@ -176,13 +176,13 @@ Quickview::~Quickview()
 
 void Quickview::onNextClicked()
 {
-    QDate start = mAgendaView->startDate().addDays(mDayRange);
+    const QDate start = mAgendaView->startDate().addDays(mDayRange);
     mAgendaView->showDates(start, start.addDays(mDayRange - 1));
 }
 
 void Quickview::onPreviousClicked()
 {
-    QDate start = mAgendaView->startDate().addDays(-mDayRange);
+    const QDate start = mAgendaView->startDate().addDays(-mDayRange);
     mAgendaView->showDates(start, start.addDays(mDayRange - 1));
 }
 
