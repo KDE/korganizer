@@ -172,8 +172,9 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
 
     SummaryEventInfo::List eventInfoList;
     KCalCore::Event::Ptr ev;
-    KCalCore::Event::List::ConstIterator itEnd = events.constEnd();
-    for (KCalCore::Event::List::ConstIterator it = events.constBegin(); it != itEnd; ++it) {
+    eventInfoList.reserve(events.count());
+    auto itEnd = events.constEnd();
+    for (auto it = events.constBegin(); it != itEnd; ++it) {
         ev = *it;
         // Count number of days remaining in multiday event
         int span = 1;

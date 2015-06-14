@@ -231,7 +231,9 @@ void FilterEdit::bNewPressed()
     mDetailsFrame->setEnabled(true);
     saveChanges();
     QStringList filterNames;
-    for (int i = 0; i < mRulesList->count(); ++i) {
+    const int numRules = mRulesList->count();
+    filterNames.reserve(numRules);
+    for (int i = 0; i < numRules; ++i) {
         filterNames << mRulesList->item(i)->text();
     }
     QString newFilterName;

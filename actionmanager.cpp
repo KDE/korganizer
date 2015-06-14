@@ -1436,7 +1436,8 @@ void ActionManager::downloadNewStuff()
         } else {
             QStringList eventSummaries;
             KCalCore::Event::List events = calendar()->events();
-            foreach (KCalCore::Event::Ptr event, events) {
+            eventSummaries.reserve(events.count());
+            foreach (const KCalCore::Event::Ptr &event, events) {
                 eventSummaries.append(event->summary());
             }
 

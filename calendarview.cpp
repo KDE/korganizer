@@ -520,6 +520,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
         group.deleteGroup();
     }
 
+    filterList.reserve(mFilters.count());
     foreach (KCalCore::CalFilter *filter, mFilters) {
         filterList << filter->name();
         KConfigGroup filterConfig(config, QLatin1String("Filter_") + filter->name());

@@ -86,9 +86,9 @@ void DateNavigator::selectDates(const QDate &d, int count,
                                 const QDate &preferredMonth)
 {
     KCalCore::DateList dates;
+    dates.reserve(count);
 
-    int i;
-    for (i = 0; i < count; ++i) {
+    for (int i = 0; i < count; ++i) {
         dates.append(d.addDays(i));
     }
 

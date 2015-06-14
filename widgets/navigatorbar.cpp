@@ -145,9 +145,10 @@ void NavigatorBar::selectMonthFromMenu()
     int months = calSys->monthsInYear(mDate);
 
     QMenu *menu = new QMenu(mMonth);
-    QList<QAction *>act;
+    QList<QAction *> act;
 
     QAction *activateAction = Q_NULLPTR;
+    act.reserve(months);
     for (int i = 1; i <= months; ++i) {
         QAction *monthAction = menu->addAction(calSys->monthName(i, year));
         act.append(monthAction);
@@ -185,7 +186,8 @@ void NavigatorBar::selectYearFromMenu()
     int minYear = year - (years / 3);
 
     QMenu *menu = new QMenu(mYear);
-    QList<QAction *>act;
+    QList<QAction *> act;
+    act.reserve(years);
 
     QString yearStr;
     QAction *activateAction = Q_NULLPTR;
