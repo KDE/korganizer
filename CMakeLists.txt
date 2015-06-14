@@ -48,18 +48,13 @@ if(KDEPIM_BUILD_DESKTOP)
   add_executable(korganizer ${korganizer_SRCS})
 
   target_link_libraries(korganizer
-    KF5::Holidays
     KF5::KontactInterface
-    KF5::AkonadiCore
     KF5::CalendarCore
-    KF5::CalendarUtils
     kdepim
     kdepimdbusinterfaces
     korganizerprivate
     korganizer_interfaces
     korganizer_core
-    calendarsupport
-    KF5::AkonadiCalendar
   )
 
   install(TARGETS
