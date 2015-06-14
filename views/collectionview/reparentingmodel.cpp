@@ -420,7 +420,8 @@ QModelIndexList ReparentingModel::descendants(const QModelIndex &sourceIndex)
     }
     QModelIndexList list;
     if (sourceModel()->hasChildren(sourceIndex)) {
-        for (int i = 0; i < sourceModel()->rowCount(sourceIndex); ++i) {
+        const int count = sourceModel()->rowCount(sourceIndex);
+        for (int i = 0; i < count; ++i) {
             const QModelIndex index = sourceModel()->index(i, 0, sourceIndex);
             list << index;
             list << descendants(index);
