@@ -43,12 +43,13 @@ using namespace KCalUtils;
 bool SummaryEventInfo::mShowBirthdays = true;
 bool SummaryEventInfo::mShowAnniversaries = true;
 
-static QHash<QString, KDateTime> sDateTimeByUid;
+typedef QHash<QString, KDateTime> DateTimeByUidHash;
+Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid);
 
 static bool eventLessThan(const KCalCore::Event::Ptr &event1, const KCalCore::Event::Ptr &event2)
 {
-    KDateTime kdt1 = sDateTimeByUid.value(event1->instanceIdentifier());
-    KDateTime kdt2 = sDateTimeByUid.value(event2->instanceIdentifier());
+    KDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
+    KDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
     if (kdt1.date() < kdt2.date()) { // Compare dates first since comparing all day with non-all-day doesn't work
         return true;
     } else if (kdt1.date() > kdt2.date()) {
@@ -139,7 +140,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
     const KDateTime currentDateTime = KDateTime::currentDateTime(spec);
     const QDate currentDate = currentDateTime.date();
 
-    sDateTimeByUid.clear();
+    sDateTimeByUid()->clear();
 
     for (int i = 0; i < allEvents.count(); ++i) {
         KCalCore::Event::Ptr event = allEvents.at(i);
@@ -153,16 +154,16 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             KCalCore::DateTimeList occurrences = event->recurrence()->timesInInterval(KDateTime(start, spec), KDateTime(end, spec));
             if (!occurrences.isEmpty()) {
                 events << event;
-                sDateTimeByUid.insert(event->instanceIdentifier(), occurrences.first());
+                sDateTimeByUid()->insert(event->instanceIdentifier(), occurrences.first());
             }
         } else {
             if ((end >= eventStart.date() && start <= eventEnd.date()) ||
                     (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
                 if (eventStart.date() < start) {
-                    sDateTimeByUid.insert(event->instanceIdentifier(), KDateTime(start, spec));
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(start, spec));
                 } else {
-                    sDateTimeByUid.insert(event->instanceIdentifier(), eventStart);
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), eventStart);
                 }
             }
         }
@@ -181,7 +182,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         int dayof = 1;
         const KDateTime eventStart = ev->dtStart().toTimeSpec(spec);
         const KDateTime eventEnd = ev->dtEnd().toTimeSpec(spec);
-        const QDate occurrenceStartDate = sDateTimeByUid.value(ev->instanceIdentifier()).date();
+        const QDate occurrenceStartDate = sDateTimeByUid()->value(ev->instanceIdentifier()).date();
 
         QDate startOfMultiday = eventStart.date();
         if (startOfMultiday < currentDate) {
