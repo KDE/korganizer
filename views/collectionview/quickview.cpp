@@ -59,7 +59,7 @@ public:
     virtual QString displayName(const KCalCore::Incidence::Ptr &incidence) const
     {
         Q_UNUSED(incidence);
-        return i18n("Freebusycalendar from %1", name);
+        return i18n("Free/Busy calendar from %1", name);
     }
 
     virtual QColor resourceColor(const KCalCore::Incidence::Ptr &incidence) const
