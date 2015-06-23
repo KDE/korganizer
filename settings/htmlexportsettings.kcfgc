@@ -11,3 +11,5 @@ SetUserTexts=true
 Visibility=
 IncludeFiles=KLocalizedString
 TranslationDomain=korganizer
+TranslationSystem=kde
+
