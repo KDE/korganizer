@@ -124,7 +124,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     // Save Settings
     QFrame *saveFrame = new QFrame(this);
-    tabWidget->addTab(saveFrame, QIcon::fromTheme(QLatin1String("document-save")),
+    tabWidget->addTab(saveFrame, QIcon::fromTheme(QStringLiteral("document-save")),
                       i18nc("@title:tab", "Save"));
     QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
 
@@ -191,7 +191,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     //Calendar Account
     QFrame *calendarFrame = new QFrame(this);
-    tabWidget->addTab(calendarFrame, QIcon::fromTheme(QLatin1String("office-calendar")),
+    tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")),
                       i18nc("@title:tab calendar account settings", "Calendars"));
     QHBoxLayout *calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
@@ -245,7 +245,7 @@ public:
         layout->addWidget(tabWidget);
 
         QFrame *regionalPage = new QFrame(parent);
-        tabWidget->addTab(regionalPage, QIcon::fromTheme(QLatin1String("flag")),
+        tabWidget->addTab(regionalPage, QIcon::fromTheme(QStringLiteral("flag")),
                           i18nc("@title:tab", "Regional"));
 
         QGridLayout *regionalLayout = new QGridLayout(regionalPage);
@@ -370,7 +370,7 @@ public:
         regionalLayout->setRowStretch(4, 1);
 
         QFrame *defaultPage = new QFrame(parent);
-        tabWidget->addTab(defaultPage, QIcon::fromTheme(QLatin1String("draw-eraser")),
+        tabWidget->addTab(defaultPage, QIcon::fromTheme(QStringLiteral("draw-eraser")),
                           i18nc("@title:tab", "Default Values"));
         QGridLayout *defaultLayout = new QGridLayout(defaultPage);
 
@@ -592,7 +592,7 @@ public:
 
         // Tab: Views->Agenda View
         QFrame *agendaFrame = new QFrame(this);
-        tabWidget->addTab(agendaFrame, QIcon::fromTheme(QLatin1String("view-calendar-workweek")),
+        tabWidget->addTab(agendaFrame, QIcon::fromTheme(QStringLiteral("view-calendar-workweek")),
                           i18nc("@title:tab", "Agenda View"));
 
         QBoxLayout *agendaLayout = new QVBoxLayout(agendaFrame);
@@ -650,7 +650,7 @@ public:
 
         // Tab: Views->Month View
         QFrame *monthFrame = new QFrame(this);
-        tabWidget->addTab(monthFrame, QIcon::fromTheme(QLatin1String("view-calendar-month")),
+        tabWidget->addTab(monthFrame, QIcon::fromTheme(QStringLiteral("view-calendar-month")),
                           i18nc("@title:tab", "Month View"));
 
         QBoxLayout *monthLayout = new QVBoxLayout(monthFrame);
@@ -686,7 +686,7 @@ public:
 
         // Tab: Views->Todo View
         QFrame *todoFrame = new QFrame(this);
-        tabWidget->addTab(todoFrame, QIcon::fromTheme(QLatin1String("view-calendar-tasks")),
+        tabWidget->addTab(todoFrame, QIcon::fromTheme(QStringLiteral("view-calendar-tasks")),
                           i18nc("@title:tab", "Todo View"));
 
         QBoxLayout *todoLayout = new QVBoxLayout(todoFrame);
@@ -744,7 +744,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QWidget *colorFrame = new QWidget(this);
     topTopLayout->addWidget(colorFrame);
     QGridLayout *colorLayout = new QGridLayout(colorFrame);
-    tabWidget->addTab(colorFrame, QIcon::fromTheme(QLatin1String("preferences-desktop-color")),
+    tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")),
                       i18nc("@title:tab", "Colors"));
 
     // Holiday Color
@@ -857,7 +857,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     colorLayout->setRowStretch(11, 1);
 
     QWidget *fontFrame = new QWidget(this);
-    tabWidget->addTab(fontFrame, QIcon::fromTheme(QLatin1String("preferences-desktop-font")),
+    tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")),
                       i18nc("@title:tab", "Fonts"));
 
     QGridLayout *fontLayout = new QGridLayout(fontFrame);
@@ -1055,8 +1055,8 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
 
     mGroupwarePage->setupUi(widget);
 
-    mGroupwarePage->groupwareTab->setTabIcon(0, QIcon::fromTheme(QLatin1String("go-up")));
-    mGroupwarePage->groupwareTab->setTabIcon(1, QIcon::fromTheme(QLatin1String("go-down")));
+    mGroupwarePage->groupwareTab->setTabIcon(0, QIcon::fromTheme(QStringLiteral("go-up")));
+    mGroupwarePage->groupwareTab->setTabIcon(1, QIcon::fromTheme(QStringLiteral("go-down")));
 
     // signals and slots connections
 

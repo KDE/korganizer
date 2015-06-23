@@ -350,7 +350,7 @@ void ActionManager::initActions()
         mUndoAction = KStandardAction::undo(history, SLOT(undo()), mACollection);
         mRedoAction = KStandardAction::redo(history, SLOT(redo()), mACollection);
     }
-    mDeleteAction = new QAction(QIcon::fromTheme(QLatin1String("edit-delete")), i18n("&Delete"), this);
+    mDeleteAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18n("&Delete"), this);
     mACollection->addAction(QLatin1String("edit_delete"), mDeleteAction);
     connect(mDeleteAction, &QAction::triggered, mCalendarView, &CalendarView::appointment_delete);
     if (mIsPart) {
@@ -431,25 +431,25 @@ void ActionManager::initActions()
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // TODO: try to find / create better icons for the following 4 actions
-    action = new QAction(QIcon::fromTheme(QLatin1String("zoom-in")), i18n("In Horizontally"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18n("In Horizontally"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QLatin1String("zoom_in_horizontally"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(zoomInHorizontally()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("zoom-out")), i18n("Out Horizontally"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-out")), i18n("Out Horizontally"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QLatin1String("zoom_out_horizontally"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(zoomOutHorizontally()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("zoom-in")), i18n("In Vertically"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18n("In Vertically"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QLatin1String("zoom_in_vertically"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(zoomInVertically()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("zoom-out")), i18n("Out Vertically"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-out")), i18n("Out Vertically"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QLatin1String("zoom_out_vertically"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
@@ -458,7 +458,7 @@ void ActionManager::initActions()
     /************************** Actions MENU *********************************/
     bool isRTL = QApplication::isRightToLeft();
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("go-jump-today")),
+    action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump-today")),
                          i18nc("@action Jump to today", "To &Today"), this);
     action->setIconText(i18n("Today"));
     setHelpText(action, i18n("Scroll to Today"));
@@ -491,33 +491,33 @@ void ActionManager::initActions()
              action,SLOT(setText(QString)) );
     */
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-day")), i18n("&Day"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("&Day"), this);
     mACollection->addAction(QLatin1String("select_day"), action);
     action->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(selectDay()));
 
-    mNextXDays = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-upcoming-days")), QString(), this);
+    mNextXDays = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-days")), QString(), this);
     mNextXDays->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
     mACollection->addAction(QLatin1String("select_nextx"), mNextXDays);
     connect(mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(selectNextX()));
     mNextXDays->setText(i18np("&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-workweek")), i18n("W&ork Week"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18n("W&ork Week"), this);
     action->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
     mACollection->addAction(QLatin1String("select_workweek"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(selectWorkWeek()));
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-calendar-week")), i18n("&Week"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-week")), i18n("&Week"), this);
     action->setEnabled(mCalendarView->currentView()->supportsDateRangeSelection());
     mACollection->addAction(QLatin1String("select_week"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
             SLOT(selectWeek()));
 
     /************************** Actions MENU *********************************/
-    mNewEventAction = new QAction(QIcon::fromTheme(QLatin1String("appointment-new")), i18n("New E&vent..."), this);
+    mNewEventAction = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent..."), this);
     //mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
     setHelpText(mNewEventAction, i18n("Create a new Event"));
 
@@ -525,7 +525,7 @@ void ActionManager::initActions()
     connect(mNewEventAction, SIGNAL(triggered(bool)), this,
             SLOT(slotNewEvent()));
 
-    mNewTodoAction = new QAction(QIcon::fromTheme(QLatin1String("task-new")), i18n("New &To-do..."), this);
+    mNewTodoAction = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do..."), this);
     //mNewTodoAction->setIconText( i18n( "To-do" ) );
     setHelpText(mNewTodoAction, i18n("Create a new To-do"));
     mACollection->addAction(QLatin1String("new_todo"), mNewTodoAction);
@@ -540,14 +540,14 @@ void ActionManager::initActions()
     connect(mCalendarView, SIGNAL(todoSelected(bool)), mNewSubtodoAction,
             SLOT(setEnabled(bool)));
 
-    mNewJournalAction = new QAction(QIcon::fromTheme(QLatin1String("journal-new")), i18n("New &Journal..."), this);
+    mNewJournalAction = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."), this);
     //mNewJournalAction->setIconText( i18n( "Journal" ) );
     setHelpText(mNewJournalAction, i18n("Create a new Journal"));
     mACollection->addAction(QLatin1String("new_journal"), mNewJournalAction);
     connect(mNewJournalAction, SIGNAL(triggered(bool)), this,
             SLOT(slotNewJournal()));
 
-    mConfigureViewAction = new QAction(QIcon::fromTheme(QLatin1String("configure")), i18n("Configure View..."), this);
+    mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure View..."), this);
     mConfigureViewAction->setIconText(i18n("Configure"));
     setHelpText(mConfigureViewAction, i18n("Configure the view"));
     mConfigureViewAction->setEnabled(mCalendarView->currentView() &&
@@ -586,13 +586,13 @@ void ActionManager::initActions()
 //                                         mACollection, "activate_alarm" );
 
     /************************** SCHEDULE MENU ********************************/
-    mPublishEvent = new QAction(QIcon::fromTheme(QLatin1String("mail-send")), i18n("&Publish Item Information..."), this);
+    mPublishEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("&Publish Item Information..."), this);
     mACollection->addAction(QLatin1String("schedule_publish"), mPublishEvent);
     connect(mPublishEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_publish()));
     mPublishEvent->setEnabled(false);
 
     mSendInvitation =
-        new QAction(QIcon::fromTheme(QLatin1String("mail-send")), i18n("Send &Invitation to Attendees"), this);
+        new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("Send &Invitation to Attendees"), this);
     mACollection->addAction(QLatin1String("schedule_request"), mSendInvitation);
     connect(mSendInvitation, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_request()));
     mSendInvitation->setEnabled(false);
@@ -614,7 +614,7 @@ void ActionManager::initActions()
             mSendCancel, SLOT(setEnabled(bool)));
 
     mSendStatusUpdate =
-        new QAction(QIcon::fromTheme(QLatin1String("mail-reply-sender")), i18n("Send Status &Update"), this);
+        new QAction(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Send Status &Update"), this);
     mACollection->addAction(QLatin1String("schedule_reply"), mSendStatusUpdate);
     connect(mSendStatusUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_reply()));
     mSendStatusUpdate->setEnabled(false);
@@ -633,7 +633,7 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::mailFreeBusy);
     action->setEnabled(true);
 
-    mForwardEvent = new QAction(QIcon::fromTheme(QLatin1String("mail-forward")), i18n("&Send as iCalendar..."), this);
+    mForwardEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18n("&Send as iCalendar..."), this);
     mACollection->addAction(QLatin1String("schedule_forward"), mForwardEvent);
     connect(mForwardEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()));
     mForwardEvent->setEnabled(false);
@@ -644,7 +644,7 @@ void ActionManager::initActions()
     action->setEnabled(true);
 
     if (!mIsPart) {
-        action = new QAction(QIcon::fromTheme(QLatin1String("help-contents")), i18n("&Address Book"), this);
+        action = new QAction(QIcon::fromTheme(QStringLiteral("help-contents")), i18n("&Address Book"), this);
         mACollection->addAction(QLatin1String("addressbook"), action);
         connect(action, &QAction::triggered, mCalendarView, &CalendarView::openAddressbook);
     }
@@ -698,7 +698,7 @@ void ActionManager::initActions()
 //                     this, SLOT(manageResources()),
 //                     mACollection, "conf_resources" );
 
-    action = new QAction(QIcon::fromTheme(QLatin1String("view-filter")), i18n("Manage View &Filters..."), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-filter")), i18n("Manage View &Filters..."), this);
     mACollection->addAction(QLatin1String("edit_filters"), action);
     connect(action, SIGNAL(triggered(bool)), mCalendarView,
             SLOT(editFilters()));
@@ -709,7 +709,7 @@ void ActionManager::initActions()
             SLOT(showCategoryEditDialog()));
 
     if (mIsPart) {
-        action = new QAction(QIcon::fromTheme(QLatin1String("configure")), i18n("&Configure KOrganizer..."), this);
+        action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("&Configure KOrganizer..."), this);
         mACollection->addAction(QLatin1String("korganizer_configure"), action);
         connect(action, SIGNAL(triggered(bool)), mCalendarView,
                 SLOT(edit_options()));
@@ -1651,7 +1651,7 @@ void ActionManager::openEventEditor(const QString &summary,
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         QAction *attachBody = menu->addAction(i18n("Attach inline &without attachments"));
         menu->addSeparator();
-        menu->addAction(QIcon::fromTheme(QLatin1String("dialog-cancel")), i18n("C&ancel"));
+        menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("C&ancel"));
 
         QAction *ret = menu->exec(QCursor::pos());
         delete menu;
@@ -1754,7 +1754,7 @@ void ActionManager::openTodoEditor(const QString &summary,
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         menu->addSeparator();
-        menu->addAction(QIcon::fromTheme(QLatin1String("dialog-cancel")), i18n("C&ancel"));
+        menu->addAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("C&ancel"));
 
         QAction *ret = menu->exec(QCursor::pos());
         delete menu;
