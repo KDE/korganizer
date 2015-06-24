@@ -292,7 +292,7 @@ void KCMDesignerFields::initGUI()
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    bool noDesigner = QStandardPaths::findExecutable(QLatin1String("designer")).isEmpty();
+    bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
 
     if (noDesigner) {
         QString txt =
