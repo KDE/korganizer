@@ -198,8 +198,8 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     PimCommon::ManageAccountWidget *manageAccountWidget = new PimCommon::ManageAccountWidget(this);
     calendarFrameLayout->addWidget(manageAccountWidget);
 
-    manageAccountWidget->setMimeTypeFilter(QStringList() << QLatin1String("text/calendar"));
-    manageAccountWidget->setCapabilityFilter(QStringList() << QLatin1String("Resource"));  // show only resources, no agents
+    manageAccountWidget->setMimeTypeFilter(QStringList() << QStringLiteral("text/calendar"));
+    manageAccountWidget->setCapabilityFilter(QStringList() << QStringLiteral("Resource"));  // show only resources, no agents
 
     load();
 }

@@ -390,7 +390,7 @@ bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
 
 QStringList TodoSummaryWidget::configModules() const
 {
-    return QStringList() << QLatin1String("kcmtodosummary.desktop");
+    return QStringList() << QStringLiteral("kcmtodosummary.desktop");
 }
 
 bool TodoSummaryWidget::startsToday(const KCalCore::Todo::Ptr &todo)

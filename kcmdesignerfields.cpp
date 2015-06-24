@@ -217,7 +217,7 @@ void KCMDesignerFields::loadUiFiles()
 {
     const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, uiPath(), QStandardPaths::LocateDirectory);
     Q_FOREACH (const QString &dir, dirs) {
-        const QStringList fileNames = QDir(dir).entryList(QStringList() << QLatin1String("*.ui"));
+        const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.ui"));
         Q_FOREACH (const QString &file, fileNames) {
             new PageItem(mPageView, dir + QLatin1Char('/') + file);
         }
