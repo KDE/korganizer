@@ -89,7 +89,7 @@ public:
             Q_FOREACH (it, list) {
                 if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
                     QString name = it->objectName();
-                    if (name.startsWith(QLatin1String("X_"))) {
+                    if (name.startsWith(QStringLiteral("X_"))) {
                         new QTreeWidgetItem(this, QStringList()
                                             << name
                                             << allowedTypes[ QLatin1String(it->metaObject()->className()) ]
@@ -467,7 +467,7 @@ void KCMDesignerFields::startDesigner()
 
 void KCMDesignerFields::showWhatsThis(const QString &href)
 {
-    if (href.startsWith(QLatin1String("whatsthis:"))) {
+    if (href.startsWith(QStringLiteral("whatsthis:"))) {
         QPoint pos = QCursor::pos();
         QWhatsThis::showText(pos, href.mid(10), this);
     }

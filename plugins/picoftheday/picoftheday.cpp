@@ -118,7 +118,7 @@ void POTDElement::step1Result(KJob *job)
         QString::fromUtf8(transferJob->data().data(), transferJob->data().size()).split(QLatin1Char('\n'));
 
     Q_FOREACH (const QString &line, lines) {
-        if (line.startsWith(QLatin1String("|image="))) {
+        if (line.startsWith(QStringLiteral("|image="))) {
             mFileName = line;
             break;
         }
@@ -126,7 +126,7 @@ void POTDElement::step1Result(KJob *job)
     mFileName = mFileName.remove(QLatin1String("|image=")).replace(QLatin1Char(' '), QLatin1Char('_'));
 
     Q_FOREACH (const QString &line, lines) {
-        if (line.startsWith(QLatin1String("|texttitle="))) {
+        if (line.startsWith(QStringLiteral("|texttitle="))) {
             mDescription = line;
             break;
         }
