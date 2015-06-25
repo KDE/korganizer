@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="426"  translationDomain="korganizer">
+<kpartgui name="korganizer" version="427"  translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
@@ -185,6 +185,8 @@
     <Separator/>
     <Action name="akonadi_collection_properties"/>
     <Action name="akonadi_resource_properties"/>
+    <Separator/>
+    <Action name="serverside_subscription"/>
   </Menu>
 
 </kpartgui>

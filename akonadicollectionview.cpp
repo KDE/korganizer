@@ -50,6 +50,8 @@
 #include <AkonadiWidgets/ETMViewStateSaver>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 #include <AkonadiCore/CollectionIdentificationAttribute>
+#include <manageserversidesubscription/manageserversidesubscriptionjob.h>
+#include "pimcommon/util/pimutil.h"
 
 #include <KActionCollection>
 #include <KCheckableProxyModel>
@@ -696,6 +698,10 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mEnableAction->setText(i18n("Add to list permanently"));
         mEnableAction->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("bookmarks"), KIconLoader::Small));
 
+        mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral("folder-bookmarks")), i18n("Serverside Subscription..."), this);
+        xmlclient->actionCollection()->addAction(QStringLiteral("serverside_subscription"), mServerSideSubscription);
+        connect(mServerSideSubscription, &QAction::triggered, this, &AkonadiCollectionView::slotServerSideSubscription);
+
     }
 }
 
@@ -712,6 +718,20 @@ void AkonadiCollectionView::onSearchIsActive(bool active)
     } else {
         mStackedWidget->setCurrentIndex(1);
     }
+}
+
+void AkonadiCollectionView::slotServerSideSubscription()
+{
+    const QModelIndex index = mCollectionView->selectionModel()->currentIndex(); //selectedRows()
+    Q_ASSERT(index.isValid());
+    const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    if (!collection.isValid()) {
+        return;
+    }
+    PimCommon::ManageServerSideSubscriptionJob *job = new PimCommon::ManageServerSideSubscriptionJob(this);
+    job->setCurrentCollection(collection);
+    job->setParentWidget(this);
+    job->start();
 }
 
 void AkonadiCollectionView::setDefaultCalendar()
@@ -827,11 +847,14 @@ void AkonadiCollectionView::updateMenu()
         } else {
             mEnableAction->setEnabled(true);
         }
+        bool isOnline;
+        mServerSideSubscription->setEnabled(PimCommon::Util::isImapFolder(collection, isOnline));
     }
     if (disableStuff) {
         mDisableColor->setEnabled(false);
         mDefaultCalendar->setEnabled(false);
         mAssignColor->setEnabled(false);
+        mServerSideSubscription->setEnabled(false);
     }
 }
 
