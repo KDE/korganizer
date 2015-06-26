@@ -113,13 +113,13 @@ public:
     QModelIndex mapToSource(const QModelIndex &proxyIndex) const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void onSourceRowsAboutToBeInserted(QModelIndex, int, int);
-    void onSourceRowsInserted(QModelIndex, int, int);
-    void onSourceRowsAboutToBeRemoved(QModelIndex, int, int);
-    void onSourceRowsRemoved(QModelIndex, int, int);
-    void onSourceRowsAboutToBeMoved(QModelIndex, int, int, QModelIndex, int);
-    void onSourceRowsMoved(QModelIndex, int, int, QModelIndex, int);
-    void onSourceDataChanged(QModelIndex, QModelIndex);
+    void onSourceRowsAboutToBeInserted(const QModelIndex &, int, int);
+    void onSourceRowsInserted(const QModelIndex &, int, int);
+    void onSourceRowsAboutToBeRemoved(const QModelIndex&, int, int);
+    void onSourceRowsRemoved(const QModelIndex&, int, int);
+    void onSourceRowsAboutToBeMoved(const QModelIndex &, int, int, const QModelIndex&, int);
+    void onSourceRowsMoved(const QModelIndex &, int, int, const QModelIndex &, int);
+    void onSourceDataChanged(const QModelIndex &, const QModelIndex &);
     void onSourceLayoutAboutToBeChanged();
     void onSourceLayoutChanged();
     void onSourceModelAboutToBeReset();
