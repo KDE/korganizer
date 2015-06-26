@@ -849,12 +849,13 @@ void AkonadiCollectionView::updateMenu()
         }
         bool isOnline;
         mServerSideSubscription->setEnabled(PimCommon::Util::isImapFolder(collection, isOnline));
+    } else {
+        mServerSideSubscription->setEnabled(false);
     }
     if (disableStuff) {
         mDisableColor->setEnabled(false);
         mDefaultCalendar->setEnabled(false);
         mAssignColor->setEnabled(false);
-        mServerSideSubscription->setEnabled(false);
     }
 }
 
