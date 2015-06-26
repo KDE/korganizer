@@ -37,10 +37,10 @@
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
-    mPixmap.insert(Enable, KIconLoader().loadIcon(QStringLiteral("bookmarks"), KIconLoader::Small));
-    mPixmap.insert(RemoveFromList, KIconLoader().loadIcon(QStringLiteral("list-remove"), KIconLoader::Small));
-    mPixmap.insert(AddToList, KIconLoader().loadIcon(QStringLiteral("list-add"), KIconLoader::Small));
-    mPixmap.insert(Quickview, KIconLoader().loadIcon(QStringLiteral("quickview"), KIconLoader::Small));
+    mPixmap.insert(Enable, KIconLoader::global()->loadIcon(QStringLiteral("bookmarks"), KIconLoader::Small));
+    mPixmap.insert(RemoveFromList, KIconLoader::global()->loadIcon(QStringLiteral("list-remove"), KIconLoader::Small));
+    mPixmap.insert(AddToList, KIconLoader::global()->loadIcon(QStringLiteral("list-add"), KIconLoader::Small));
+    mPixmap.insert(Quickview, KIconLoader::global()->loadIcon(QStringLiteral("quickview"), KIconLoader::Small));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
