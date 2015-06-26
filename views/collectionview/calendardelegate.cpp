@@ -103,14 +103,6 @@ static Akonadi::Collection personCollection(const QModelIndex &index)
     return Akonadi::Collection();
 }
 
-static bool isPersonNode(const QModelIndex &index)
-{
-    if (index.data(NodeTypeRole).toInt() == PersonNodeRole) {
-        return true;
-    }
-    return false;
-}
-
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     const bool isSearchResult = index.data(IsSearchResultRole).toBool();
