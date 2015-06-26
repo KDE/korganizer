@@ -695,14 +695,14 @@ public:
 private:
     void checkSourceIndex(const QModelIndex &sourceIndex)
     {
-        if (sourceIndex.data().toString() == QStringLiteral("personfolder")) {
+        if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
             model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model, QStringLiteral("personnode"))));
         }
     }
 
     void checkSourceIndexRemoval(const QModelIndex &sourceIndex)
     {
-        if (sourceIndex.data().toString() == QStringLiteral("personfolder")) {
+        if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
             model.removeNode(DummyNode(model, QStringLiteral("personnode")));
         }
     }

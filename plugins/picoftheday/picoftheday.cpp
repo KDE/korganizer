@@ -244,7 +244,7 @@ QUrl POTDElement::thumbnailUrl(const QUrl &fullSizeUrl, const int width) const
         thumbUrl.replace(QRegExp(QLatin1String("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
                          QLatin1String("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2"));
     }
-    thumbUrl.replace(QRegExp(QLatin1String("^file:////")), QLatin1String("http://"));
+    thumbUrl.replace(QRegExp(QLatin1String("^file:////")), QStringLiteral("http://"));
     return QUrl(thumbUrl);
 }
 

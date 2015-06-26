@@ -395,7 +395,7 @@ void KCMDesignerFields::updatePreview()
                                              "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
                                              "</table></qt>")
                               .arg(i18n("Key:"))
-                              .arg(item->text(0).replace(QLatin1String("X_"), QLatin1String("X-")))
+                              .arg(item->text(0).replace(QLatin1String("X_"), QStringLiteral("X-")))
                               .arg(i18n("Type:"))
                               .arg(item->text(1))
                               .arg(i18n("Classname:"))

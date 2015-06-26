@@ -371,7 +371,7 @@ void ReparentingModel::setSourceModel(QAbstractItemModel *sourceModel)
     endResetModel();
 }
 
-void ReparentingModel::onSourceRowsAboutToBeInserted(QModelIndex parent, int start, int end)
+void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, int start, int end)
 {
     Q_UNUSED(parent);
     Q_UNUSED(start);
@@ -452,7 +452,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
     }
 }
 
-void ReparentingModel::onSourceRowsInserted(QModelIndex parent, int start, int end)
+void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start, int end)
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
     for (int row = start; row <= end; row++) {
@@ -498,7 +498,7 @@ void ReparentingModel::onSourceRowsInserted(QModelIndex parent, int start, int e
     }
 }
 
-void ReparentingModel::onSourceRowsAboutToBeRemoved(QModelIndex parent, int start, int end)
+void ReparentingModel::onSourceRowsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
     //we remove in reverse order as otherwise the indexes in parentNode->children wouldn't be correct
@@ -524,18 +524,18 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(QModelIndex parent, int star
     }
 }
 
-void ReparentingModel::onSourceRowsRemoved(QModelIndex /* parent */, int /* start */, int /* end */)
+void ReparentingModel::onSourceRowsRemoved(const QModelIndex & /* parent */, int /* start */, int /* end */)
 {
 }
 
-void ReparentingModel::onSourceRowsAboutToBeMoved(QModelIndex /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, QModelIndex /* destParent */, int /* dest */)
+void ReparentingModel::onSourceRowsAboutToBeMoved(const QModelIndex & /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, const QModelIndex & /* destParent */, int /* dest */)
 {
     qCWarning(KORGANIZER_LOG) << "not implemented";
     //TODO
     beginResetModel();
 }
 
-void ReparentingModel::onSourceRowsMoved(QModelIndex /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, QModelIndex /* destParent */, int /* dest */)
+void ReparentingModel::onSourceRowsMoved(const QModelIndex & /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, const QModelIndex & /* destParent */, int /* dest */)
 {
     qCWarning(KORGANIZER_LOG) << "not implemented";
     //TODO
@@ -582,7 +582,7 @@ void ReparentingModel::onSourceLayoutChanged()
     // layoutChanged();
 }
 
-void ReparentingModel::onSourceDataChanged(QModelIndex begin, QModelIndex end)
+void ReparentingModel::onSourceDataChanged(const QModelIndex &begin, const QModelIndex &end)
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << begin << end;
     for (int row = begin.row(); row <= end.row(); row++) {

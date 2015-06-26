@@ -145,7 +145,7 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
                 KMessageBox::information(mCalendarView,
                                          i18n("<qt>This will hide the menu bar completely."
                                               " You can show it again by typing %1.</qt>", accel),
-                                         i18n("Hide menu bar"), QLatin1String("HideMenuBarWarning"));
+                                         i18n("Hide menu bar"), QStringLiteral("HideMenuBarWarning"));
             }
             mMenuBar->hide();
         }
@@ -271,14 +271,14 @@ void ActionManager::initActions()
         a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(print()));
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
         a->setEnabled(
-            !KMimeTypeTrader::self()->query(QLatin1String("application/pdf"), QLatin1String("KParts/ReadOnlyPart")).isEmpty());
+            !KMimeTypeTrader::self()->query(QLatin1String("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
     } else {
         KStandardAction::open(this, SLOT(file_open()), mACollection);
         KStandardAction::print(mCalendarView, SLOT(print()), mACollection);
         QAction *preview =
             KStandardAction::printPreview(mCalendarView, SLOT(printPreview()), mACollection);
         preview->setEnabled(
-            !KMimeTypeTrader::self()->query(QLatin1String("application/pdf"), QLatin1String("KParts/ReadOnlyPart")).isEmpty());
+            !KMimeTypeTrader::self()->query(QLatin1String("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -333,15 +333,15 @@ void ActionManager::initActions()
     Akonadi::History *history = mCalendarView->history();
     if (mIsPart) {
         // edit menu
-        mCutAction = mACollection->addAction(KStandardAction::Cut, QLatin1String("korganizer_cut"),
+        mCutAction = mACollection->addAction(KStandardAction::Cut, QStringLiteral("korganizer_cut"),
                                              mCalendarView, SLOT(edit_cut()));
-        mCopyAction = mACollection->addAction(KStandardAction::Copy, QLatin1String("korganizer_copy"),
+        mCopyAction = mACollection->addAction(KStandardAction::Copy, QStringLiteral("korganizer_copy"),
                                               mCalendarView, SLOT(edit_copy()));
-        pasteAction = mACollection->addAction(KStandardAction::Paste, QLatin1String("korganizer_paste"),
+        pasteAction = mACollection->addAction(KStandardAction::Paste, QStringLiteral("korganizer_paste"),
                                               mCalendarView, SLOT(edit_paste()));
-        mUndoAction = mACollection->addAction(KStandardAction::Undo, QLatin1String("korganizer_undo"),
+        mUndoAction = mACollection->addAction(KStandardAction::Undo, QStringLiteral("korganizer_undo"),
                                               history, SLOT(undo()));
-        mRedoAction = mACollection->addAction(KStandardAction::Redo, QLatin1String("korganizer_redo"),
+        mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"),
                                               history, SLOT(redo()));
     } else {
         mCutAction = KStandardAction::cut(mCalendarView, SLOT(edit_cut()), mACollection);
@@ -713,7 +713,7 @@ void ActionManager::initActions()
         mACollection->addAction(QStringLiteral("korganizer_configure"), action);
         connect(action, SIGNAL(triggered(bool)), mCalendarView,
                 SLOT(edit_options()));
-        mACollection->addAction(KStandardAction::KeyBindings, QLatin1String("korganizer_configure_shortcuts"),
+        mACollection->addAction(KStandardAction::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"),
                                 this, SLOT(keyBindings()));
     } else {
         KStandardAction::preferences(mCalendarView, SLOT(edit_options()), mACollection);
@@ -845,7 +845,7 @@ void ActionManager::file_new()
 void ActionManager::file_open()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/") ;
-    const QUrl url = KFileDialog::getOpenUrl(defaultPath, QLatin1String("text/calendar"), dialogParent());
+    const QUrl url = KFileDialog::getOpenUrl(defaultPath, QStringLiteral("text/calendar"), dialogParent());
 
     file_open(url);
 }
@@ -982,7 +982,7 @@ bool ActionManager::saveURL()
         }
 
         QString filename = mURL.fileName();
-        filename.replace(filename.length() - 4, 4, QLatin1String(".ics"));
+        filename.replace(filename.length() - 4, 4, QStringLiteral(".ics"));
         mURL = mURL.adjusted(QUrl::RemoveFilename);
         mURL.setPath(mURL.path() + filename);
         if (mURL.isLocalFile()) {

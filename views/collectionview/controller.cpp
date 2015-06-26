@@ -295,7 +295,7 @@ void Controller::setSearchString(const QString &searchString)
     //TODO: Delay and abort when results are found
     mSearchModel->clear();
     Q_EMIT searchIsActive(!searchString.isEmpty());
-    const bool showAllPersonalFolders = (searchString == QStringLiteral("*"));
+    const bool showAllPersonalFolders = (searchString == QLatin1String("*"));
     if (searchString.size() < 2 && !showAllPersonalFolders) {
         Q_EMIT searching(false);
         return;

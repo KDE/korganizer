@@ -844,19 +844,19 @@ void HtmlExportJob::createFooter(QTextStream *ts)
 QString cleanChars(const QString &text)
 {
     QString txt = text;
-    txt = txt.replace(QLatin1Char('&'), QLatin1String("&amp;"));
-    txt = txt.replace(QLatin1Char('<'), QLatin1String("&lt;"));
-    txt = txt.replace(QLatin1Char('>'), QLatin1String("&gt;"));
-    txt = txt.replace(QLatin1Char('\"'), QLatin1String("&quot;"));
-    txt = txt.replace(QString::fromUtf8("ä"), QLatin1String("&auml;"));
-    txt = txt.replace(QString::fromUtf8("Ä"), QLatin1String("&Auml;"));
-    txt = txt.replace(QString::fromUtf8("ö"), QLatin1String("&ouml;"));
-    txt = txt.replace(QString::fromUtf8("Ö"), QLatin1String("&Ouml;"));
-    txt = txt.replace(QString::fromUtf8("ü"), QLatin1String("&uuml;"));
-    txt = txt.replace(QString::fromUtf8("Ü"), QLatin1String("&Uuml;"));
-    txt = txt.replace(QString::fromUtf8("ß"), QLatin1String("&szlig;"));
-    txt = txt.replace(QString::fromUtf8("€"), QLatin1String("&euro;"));
-    txt = txt.replace(QString::fromUtf8("é"), QLatin1String("&eacute;"));
+    txt = txt.replace(QLatin1Char('&'), QStringLiteral("&amp;"));
+    txt = txt.replace(QLatin1Char('<'), QStringLiteral("&lt;"));
+    txt = txt.replace(QLatin1Char('>'), QStringLiteral("&gt;"));
+    txt = txt.replace(QLatin1Char('\"'), QStringLiteral("&quot;"));
+    txt = txt.replace(QString::fromUtf8("ä"), QStringLiteral("&auml;"));
+    txt = txt.replace(QString::fromUtf8("Ä"), QStringLiteral("&Auml;"));
+    txt = txt.replace(QString::fromUtf8("ö"), QStringLiteral("&ouml;"));
+    txt = txt.replace(QString::fromUtf8("Ö"), QStringLiteral("&Ouml;"));
+    txt = txt.replace(QString::fromUtf8("ü"), QStringLiteral("&uuml;"));
+    txt = txt.replace(QString::fromUtf8("Ü"), QStringLiteral("&Uuml;"));
+    txt = txt.replace(QString::fromUtf8("ß"), QStringLiteral("&szlig;"));
+    txt = txt.replace(QString::fromUtf8("€"), QStringLiteral("&euro;"));
+    txt = txt.replace(QString::fromUtf8("é"), QStringLiteral("&eacute;"));
 
     return txt;
 }

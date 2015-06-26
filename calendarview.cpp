@@ -430,7 +430,7 @@ void CalendarView::readSettings()
     }
 
     mViewManager->readSettings(config);
-    mTodoList->restoreLayout(config, QLatin1String("Sidebar Todo View"), true);
+    mTodoList->restoreLayout(config, QStringLiteral("Sidebar Todo View"), true);
 
     readFilterSettings(config);
 
@@ -461,7 +461,7 @@ void CalendarView::writeSettings()
     }
 
     mViewManager->writeSettings(config);
-    mTodoList->saveLayout(config, QLatin1String("Sidebar Todo View"));
+    mTodoList->saveLayout(config, QStringLiteral("Sidebar Todo View"));
 
     Akonadi::CalendarSettings::self()->save();
     KOPrefs::instance()->save();
@@ -489,7 +489,7 @@ void CalendarView::readFilterSettings(KConfig *config)
     QStringList::ConstIterator end = filterList.constEnd();
     while (it != end) {
         KCalCore::CalFilter *filter = new KCalCore::CalFilter(*it);
-        KConfigGroup filterConfig(config, QLatin1String("Filter_") + (*it));
+        KConfigGroup filterConfig(config, QStringLiteral("Filter_") + (*it));
         filter->setCriteria(filterConfig.readEntry("Criteria", 0));
         filter->setCategoryList(filterConfig.readEntry("CategoryList", QStringList()));
         if (filter->criteria() & KCalCore::CalFilter::HideNoMatchingAttendeeTodos) {
@@ -523,7 +523,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
     filterList.reserve(mFilters.count());
     foreach (KCalCore::CalFilter *filter, mFilters) {
         filterList << filter->name();
-        KConfigGroup filterConfig(config, QLatin1String("Filter_") + filter->name());
+        KConfigGroup filterConfig(config, QStringLiteral("Filter_") + filter->name());
         filterConfig.writeEntry("Criteria", filter->criteria());
         filterConfig.writeEntry("CategoryList", filter->categoryList());
         filterConfig.writeEntry("HideTodoDays", filter->completedTimeSpan());
@@ -1836,7 +1836,7 @@ void CalendarView::exportWeb()
 void CalendarView::exportICalendar()
 {
     QString filename =
-        QFileDialog::getSaveFileName(this, QString(), QLatin1String("icalout.ics"), i18n("*.ics|iCalendars"));
+        QFileDialog::getSaveFileName(this, QString(), QStringLiteral("icalout.ics"), i18n("*.ics|iCalendars"));
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".ics")) {
@@ -1885,7 +1885,7 @@ void CalendarView::exportVCalendar()
         }
     }
 
-    QString filename = QFileDialog::getSaveFileName(this, QString(), QLatin1String("vcalout.vcs"), i18n("*.vcs|vCalendars"));
+    QString filename = QFileDialog::getSaveFileName(this, QString(), QStringLiteral("vcalout.vcs"), i18n("*.vcs|vCalendars"));
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".vcs")) {

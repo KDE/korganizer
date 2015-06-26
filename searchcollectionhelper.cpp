@@ -65,9 +65,9 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
     } else {
         Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob *>(job);
         Q_FOREACH (const Akonadi::Collection &col, fetchJob->collections()) {
-            if (col.name() == QStringLiteral("OpenInvitations")) {
+            if (col.name() == QLatin1String("OpenInvitations")) {
                 mOpenInvitationCollection = col;
-            } else if (col.name() == QStringLiteral("DeclinedInvitations")) {
+            } else if (col.name() == QLatin1String("DeclinedInvitations")) {
                 mDeclineCollection = col;
             }
         }
@@ -133,10 +133,10 @@ void SearchCollectionHelper::createSearchJobFinished(KJob *job)
     }
     qCDebug(KORGANIZER_LOG) << "Created search folder successfully " << searchCollection.name();
 
-    if (searchCollection.name() == QStringLiteral("OpenInvitations")) {
+    if (searchCollection.name() == QLatin1String("OpenInvitations")) {
         mOpenInvitationCollection = searchCollection;
         updateOpenInvitation();
-    } else if (searchCollection.name() == QStringLiteral("DeclinedInvitations")) {
+    } else if (searchCollection.name() == QLatin1String("DeclinedInvitations")) {
         mDeclineCollection = searchCollection;
         updateDeclinedInvitation();
     }

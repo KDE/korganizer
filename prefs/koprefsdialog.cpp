@@ -430,7 +430,7 @@ public:
                 CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
 
         if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
-            const QString defAudioFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
+            const QString defAudioFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
             CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
         }
         QString filter =
