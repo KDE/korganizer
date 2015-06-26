@@ -31,7 +31,6 @@
 class CalendarView;
 class FilterEditDialog;
 class SearchDialog;
-class QDialog;
 
 namespace CalendarSupport
 {
