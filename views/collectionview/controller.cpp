@@ -44,10 +44,10 @@
 #include <QDebug>
 
 CollectionNode::CollectionNode(ReparentingModel &personModel, const Akonadi::Collection &col)
-    :   Node(personModel),
-        mCollection(col),
-        mCheckState(Qt::Unchecked),
-        isSearchNode(false)
+    : Node(personModel),
+      isSearchNode(false),
+      mCollection(col),
+      mCheckState(Qt::Unchecked)
 {
 }
 

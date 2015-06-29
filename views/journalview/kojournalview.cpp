@@ -99,11 +99,11 @@ KOJournalView::KOJournalView(QWidget *parent)
     connect(mJournalView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(mJournalView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(mJournalView, &EventViews::EventView::newTodoSignal,
+            this, &BaseView::newTodoSignal);
 
-    connect(mJournalView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::newSubTodoSignal,
+            this, &BaseView::newSubTodoSignal);
 
     connect(mJournalView, SIGNAL(newJournalSignal(QDate)),
             SIGNAL(newJournalSignal(QDate)));
