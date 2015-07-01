@@ -158,7 +158,6 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     autoExportInterval->spinBox()->setEnabled(autoExportHTML->checkBox()->isChecked());
     autoExportInterval->label()->setEnabled(autoExportHTML->checkBox()->isChecked());
 
-
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
 

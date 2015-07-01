@@ -109,7 +109,7 @@ private Q_SLOTS:
     void disableColor();
     void setDefaultCalendar();
     void onSearchIsActive(bool);
-    void onAction(const QModelIndex &index, int action);    
+    void onAction(const QModelIndex &index, int action);
     void slotServerSideSubscription();
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;

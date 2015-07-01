@@ -115,9 +115,9 @@ public:
 private Q_SLOTS:
     void onSourceRowsAboutToBeInserted(const QModelIndex &, int, int);
     void onSourceRowsInserted(const QModelIndex &, int, int);
-    void onSourceRowsAboutToBeRemoved(const QModelIndex&, int, int);
-    void onSourceRowsRemoved(const QModelIndex&, int, int);
-    void onSourceRowsAboutToBeMoved(const QModelIndex &, int, int, const QModelIndex&, int);
+    void onSourceRowsAboutToBeRemoved(const QModelIndex &, int, int);
+    void onSourceRowsRemoved(const QModelIndex &, int, int);
+    void onSourceRowsAboutToBeMoved(const QModelIndex &, int, int, const QModelIndex &, int);
     void onSourceRowsMoved(const QModelIndex &, int, int, const QModelIndex &, int);
     void onSourceDataChanged(const QModelIndex &, const QModelIndex &);
     void onSourceLayoutAboutToBeChanged();
