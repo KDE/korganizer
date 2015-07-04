@@ -39,6 +39,7 @@
       You can write journal entries, schedule appointments, events, and to-dos.
     </p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
+    <p xml:lang="de">KOrganizer ist die Kalender. und Terminplanungskomponente der Kontakt-Software. Sie können Termine, Verabredungen, Aufgaben planen und Einträge in das Journal schreiben.</p>
     <p xml:lang="en-GB">KOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.</p>
     <p xml:lang="es">KOrganizer es el componente de calendario y planificación de la suite Kontact. Usted puede escribir entradas de diario, citas de planificaciones, eventos y tareas pendientes.</p>
     <p xml:lang="fi">KOrganizer on Kontact-ohjelmiston kalenteri- ja ajastusosa. Voit kirjoittaa päiväkirjamerkintöjä sekä ajastaa tapaamisia, tapahtumia ja tehtäviä.</p>
@@ -116,6 +117,7 @@
       <li xml:lang="zh-TW">支援多重行事曆與待辦清單。</li>
       <li>Storage model.</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
+      <li xml:lang="de">Speichermodell.</li>
       <li xml:lang="en-GB">Storage model.</li>
       <li xml:lang="es">Modelo de almacenamiento.</li>
       <li xml:lang="fi">Tietovarastomalli.</li>
@@ -166,6 +168,7 @@
       <li xml:lang="zh-TW">復原、重做。</li>
       <li>Todo integration with agenda view.</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
+      <li xml:lang="de">Integration von Aufgaben mit Tagesansicht.</li>
       <li xml:lang="en-GB">Todo integration with agenda view.</li>
       <li xml:lang="es">Integración de tareas pendientes con la vista de agenda.</li>
       <li xml:lang="fi">Tehtävien integrointi päivyrinäkymään.</li>
@@ -213,6 +216,7 @@
       <li xml:lang="zh-TW">事件與待辦事項的附件。</li>
       <li>Quick todo and event entries.</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
+      <li xml:lang="de">Schnelles Eintragen von Aufgaben und Ereignissen.</li>
       <li xml:lang="en-GB">Quick todo and event entries.</li>
       <li xml:lang="es">Entradas rápidas para tareas pendientes y eventos.</li>
       <li xml:lang="fi">Nopeat tehtävä- ja tapahtumamerkinnät.</li>
