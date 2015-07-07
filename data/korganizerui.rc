@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="427"  translationDomain="korganizer">
+<kpartgui name="korganizer" version="428"  translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
@@ -176,6 +176,9 @@
     <Separator/>
     <Action name="akonadi_collection_move_to_menu"/>
     <Action name="akonadi_collection_copy_to_menu"/>
+    <Separator/>
+    <Action name="collection_disable"/>
+    <Action name="collection_enable"/>
     <Separator/>
     <Action name="akonadi_resource_create"/>
     <Action name="akonadi_resource_delete"/>
