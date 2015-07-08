@@ -81,7 +81,7 @@ KService::List KOCore::availableParts()
     return availablePlugins(KOrg::Part::serviceType(), KOrg::Part::interfaceVersion());
 }
 
-CalendarSupport::Plugin *KOCore::loadPlugin(KService::Ptr service)
+CalendarSupport::Plugin *KOCore::loadPlugin(const KService::Ptr &service)
 {
     qCDebug(KORGANIZER_LOG) << service->library();
 
@@ -120,7 +120,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
     return Q_NULLPTR;
 }
 
-EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KService::Ptr service)
+EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
 {
     KPluginLoader loader(*service);
     KPluginFactory *factory = loader.factory();
@@ -153,7 +153,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
     return Q_NULLPTR;
 }
 
-KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
+KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *parent)
 {
     qCDebug(KORGANIZER_LOG) << service->library();
 

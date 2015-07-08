@@ -1165,10 +1165,10 @@ extern "C"
 class PluginItem : public QTreeWidgetItem
 {
 public:
-    PluginItem(QTreeWidget *parent, KService::Ptr service)
+    PluginItem(QTreeWidget *parent, const KService::Ptr &service)
         : QTreeWidgetItem(parent, QStringList(service->name())),
           mService(service) {}
-    PluginItem(QTreeWidgetItem *parent, KService::Ptr service)
+    PluginItem(QTreeWidgetItem *parent, const KService::Ptr &service)
         : QTreeWidgetItem(parent, QStringList(service->name())),
           mService(service) {}
 

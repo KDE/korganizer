@@ -49,13 +49,13 @@ public:
     KService::List availableCalendarDecorations();
     KService::List availableParts();
 
-    CalendarSupport::Plugin *loadPlugin(KService::Ptr service);
+    CalendarSupport::Plugin *loadPlugin(const KService::Ptr &service);
     CalendarSupport::Plugin *loadPlugin(const QString &);
 
-    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(KService::Ptr service);
+    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KService::Ptr &service);
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const QString &);
 
-    KOrg::Part *loadPart(KService::Ptr, KOrg::MainWindow *parent);
+    KOrg::Part *loadPart(const KService::Ptr &, KOrg::MainWindow *parent);
     KOrg::Part *loadPart(const QString &, KOrg::MainWindow *parent);
 
     EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
