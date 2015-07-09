@@ -307,11 +307,6 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    kconf_update/korganizer.upd
-    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR} 
-  )
-
-  install(FILES
     data/org.kde.Korganizer.Calendar.xml data/org.kde.korganizer.Korganizer.xml
     DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
   )
