@@ -31,7 +31,7 @@
 
 Picoftheday::Picoftheday()
 {
-    KConfig _config(QLatin1String("korganizerrc"));
+    KConfig _config(QStringLiteral("korganizerrc"));
     KConfigGroup config(&_config, "Picture of the Day Plugin");
     mThumbSize = config.readEntry("InitialThumbnailSize", QSize(120, 60));
 }
@@ -56,7 +56,7 @@ Element::List Picoftheday::createDayElements(const QDate &date)
 {
     Element::List elements;
 
-    POTDElement *element = new POTDElement(QLatin1String("main element"), date, mThumbSize);
+    POTDElement *element = new POTDElement(QStringLiteral("main element"), date, mThumbSize);
     elements.append(element);
 
     return elements;
@@ -86,7 +86,7 @@ void POTDElement::step1StartDownload()
     // Start downloading the picture
     if (!mFirstStepCompleted && !mFirstStepJob) {
         QUrl url = QUrl(QLatin1String("http://en.wikipedia.org/w/index.php?title=Template:POTD/") +
-                        mDate.toString(Qt::ISODate) + QLatin1String("&action=raw"));
+                        mDate.toString(Qt::ISODate) + QStringLiteral("&action=raw"));
         // The file at that URL contains the file name for the POTD
 
         mFirstStepJob = KIO::storedGet(url, KIO::NoReload, KIO::HideProgressInfo);
@@ -123,7 +123,7 @@ void POTDElement::step1Result(KJob *job)
             break;
         }
     }
-    mFileName = mFileName.remove(QLatin1String("|image=")).replace(QLatin1Char(' '), QLatin1Char('_'));
+    mFileName = mFileName.remove(QStringLiteral("|image=")).replace(QLatin1Char(' '), QLatin1Char('_'));
 
     Q_FOREACH (const QString &line, lines) {
         if (line.startsWith(QStringLiteral("|texttitle="))) {
@@ -131,7 +131,7 @@ void POTDElement::step1Result(KJob *job)
             break;
         }
     }
-    mDescription = mDescription.remove(QLatin1String("|texttitle="));
+    mDescription = mDescription.remove(QStringLiteral("|texttitle="));
     if (!mDescription.isEmpty()) {
         mLongText = mDescription;
     } else {
@@ -195,11 +195,11 @@ void POTDElement::step2Result(KJob *job)
     }
 
     // We go through all links and stop at the first right-looking candidate
-    QDomNodeList links = imgPage.elementsByTagName(QLatin1String("a"));
+    QDomNodeList links = imgPage.elementsByTagName(QStringLiteral("a"));
     for (int i = 0; i < links.length(); ++i) {
-        QString href = links.item(i).attributes().namedItem(QLatin1String("href")).nodeValue();
+        QString href = links.item(i).attributes().namedItem(QStringLiteral("href")).nodeValue();
         if (href.startsWith(
-                    QLatin1String("//upload.wikimedia.org/wikipedia/commons/"))) {
+                    QStringLiteral("//upload.wikimedia.org/wikipedia/commons/"))) {
             mFullSizeImageUrl = href;
             break;
         }
@@ -207,16 +207,16 @@ void POTDElement::step2Result(KJob *job)
 
     // We get the image's width/height ratio
     mHWRatio = 1.0;
-    QDomNodeList images = imgPage.elementsByTagName(QLatin1String("img"));
+    QDomNodeList images = imgPage.elementsByTagName(QStringLiteral("img"));
     for (int i = 0; i < links.length(); ++i) {
         QDomNamedNodeMap attr = images.item(i).attributes();
-        QString src = attr.namedItem(QLatin1String("src")).nodeValue();
+        QString src = attr.namedItem(QStringLiteral("src")).nodeValue();
 
         if (src.startsWith(thumbnailUrl(mFullSizeImageUrl).url())) {
-            if ((attr.namedItem(QLatin1String("height")).nodeValue().toInt() != 0) &&
-                    (attr.namedItem(QLatin1String("width")).nodeValue().toInt() != 0)) {
-                mHWRatio = attr.namedItem(QLatin1String("height")).nodeValue().toFloat() /
-                           attr.namedItem(QLatin1String("width")).nodeValue().toFloat();
+            if ((attr.namedItem(QStringLiteral("height")).nodeValue().toInt() != 0) &&
+                    (attr.namedItem(QStringLiteral("width")).nodeValue().toInt() != 0)) {
+                mHWRatio = attr.namedItem(QStringLiteral("height")).nodeValue().toFloat() /
+                           attr.namedItem(QStringLiteral("width")).nodeValue().toFloat();
             }
             break;
         }
@@ -236,15 +236,15 @@ QUrl POTDElement::thumbnailUrl(const QUrl &fullSizeUrl, const int width) const
 {
     QString thumbUrl = fullSizeUrl.url();
     if (width != 0) {
-        thumbUrl.replace(QRegExp(QLatin1String("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
-                         QLatin1String("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/") +
-                         QString::number(width) + QLatin1String("px-\\2"));
+        thumbUrl.replace(QRegExp(QStringLiteral("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
+                         QStringLiteral("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/") +
+                         QString::number(width) + QStringLiteral("px-\\2"));
     } else {  // This will not return a valid thumbnail URL, but will at least
         // give some info (the beginning of the URL)
-        thumbUrl.replace(QRegExp(QLatin1String("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
-                         QLatin1String("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2"));
+        thumbUrl.replace(QRegExp(QStringLiteral("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
+                         QStringLiteral("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2"));
     }
-    thumbUrl.replace(QRegExp(QLatin1String("^file:////")), QStringLiteral("http://"));
+    thumbUrl.replace(QRegExp(QStringLiteral("^file:////")), QStringLiteral("http://"));
     return QUrl(thumbUrl);
 }
 
