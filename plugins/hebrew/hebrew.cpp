@@ -72,7 +72,7 @@ Element::List Hebrew::createDayElements(const QDate &date)
 
     text = i18nc("Change the next two strings if emphasis is done differently in your language.",
                  "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text);
-    el.append(new StoredElement(QLatin1String("main element"), text));
+    el.append(new StoredElement(QStringLiteral("main element"), text));
 
     return el;
 }
