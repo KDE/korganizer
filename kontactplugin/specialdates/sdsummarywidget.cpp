@@ -177,7 +177,7 @@ SDSummaryWidget::~SDSummaryWidget()
 
 void SDSummaryWidget::configUpdated()
 {
-    KConfig config(QLatin1String("kcmsdsummaryrc"));
+    KConfig config(QStringLiteral("kcmsdsummaryrc"));
 
     KConfigGroup group = config.group("Days");
     mDaysAhead = group.readEntry("DaysToShow", 7);
@@ -201,7 +201,7 @@ void SDSummaryWidget::configUpdated()
 
 bool SDSummaryWidget::initHolidays()
 {
-    KConfig _hconfig(QLatin1String("korganizerrc"));
+    KConfig _hconfig(QStringLiteral("korganizerrc"));
     KConfigGroup hconfig(&_hconfig, "Time & Date");
     QString location = hconfig.readEntry("Holidays");
     if (!location.isEmpty()) {
@@ -278,7 +278,7 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
 
 void SDSummaryWidget::createLabels()
 {
-    KIconLoader loader(QLatin1String("kdepim"));
+    KIconLoader loader(QStringLiteral("kdepim"));
 
     QLabel *label = Q_NULLPTR;
 
@@ -345,7 +345,7 @@ void SDSummaryWidget::createLabels()
                     }
 
                     // Append Anniversary Event?
-                    if (mShowAnniversariesFromCal && (itUpper == QLatin1String("ANNIVERSARY"))) {
+                    if (mShowAnniversariesFromCal && (itUpper == QStringLiteral("ANNIVERSARY"))) {
                         SDEntry entry;
                         entry.type = IncidenceTypeEvent;
                         entry.category = CategoryAnniversary;
@@ -441,7 +441,7 @@ void SDSummaryWidget::createLabels()
             KContacts::Picture pic;
             switch ((*addrIt).category) {
             case CategoryBirthday:
-                icon_name = QLatin1String("view-calendar-birthday");
+                icon_name = QStringLiteral("view-calendar-birthday");
                 pic = (*addrIt).addressee.photo();
                 if (pic.isIntern() && !pic.data().isNull()) {
                     QImage img = pic.data();
@@ -453,7 +453,7 @@ void SDSummaryWidget::createLabels()
                 }
                 break;
             case CategoryAnniversary:
-                icon_name = QLatin1String("view-calendar-wedding-anniversary");
+                icon_name = QStringLiteral("view-calendar-wedding-anniversary");
                 pic = (*addrIt).addressee.photo();
                 if (pic.isIntern() && !pic.data().isNull()) {
                     QImage img = pic.data();
@@ -465,10 +465,10 @@ void SDSummaryWidget::createLabels()
                 }
                 break;
             case CategoryHoliday:
-                icon_name = QLatin1String("view-calendar-holiday");
+                icon_name = QStringLiteral("view-calendar-holiday");
                 break;
             case CategoryOther:
-                icon_name = QLatin1String("favorites");
+                icon_name = QStringLiteral("favorites");
                 break;
             }
             label = new QLabel(this);

@@ -38,7 +38,7 @@ SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const QVari
     : KontactInterface::Plugin(core, core, Q_NULLPTR)
 {
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
-    KIconLoader::global()->addAppDir(QLatin1String("kdepim"));
+    KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 }
 
 SpecialdatesPlugin::~SpecialdatesPlugin()
@@ -52,9 +52,9 @@ KontactInterface::Summary *SpecialdatesPlugin::createSummaryWidget(QWidget *pare
 
 const KAboutData SpecialdatesPlugin::aboutData()
 {
-    KAboutData aboutData = KAboutData(QLatin1String("specialdates"),
+    KAboutData aboutData = KAboutData(QStringLiteral("specialdates"),
                                       i18n("Special Dates Summary"),
-                                      QLatin1String("1.0"),
+                                      QStringLiteral("1.0"),
                                       i18n("Kontact Special Dates Summary"),
                                       KAboutLicense::LGPL,
                                       i18n("Copyright © 2003 Tobias Koenig\n"

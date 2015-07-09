@@ -86,7 +86,7 @@ void TodoSummaryWidget::updateView()
     qDeleteAll(mLabels);
     mLabels.clear();
 
-    KConfig config(QLatin1String("kcmtodosummaryrc"));
+    KConfig config(QStringLiteral("kcmtodosummaryrc"));
     KConfigGroup group = config.group("Days");
     int mDaysToGo = group.readEntry("DaysToShow", 7);
 
@@ -175,8 +175,8 @@ void TodoSummaryWidget::updateView()
 
     if (!prList.isEmpty()) {
 
-        KIconLoader loader(QLatin1String("korganizer"));
-        QPixmap pm = loader.loadIcon(QLatin1String("view-calendar-tasks"), KIconLoader::Small);
+        KIconLoader loader(QStringLiteral("korganizer"));
+        QPixmap pm = loader.loadIcon(QStringLiteral("view-calendar-tasks"), KIconLoader::Small);
 
         QString str;
 
@@ -352,7 +352,7 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     QMenu popup(this);
     QAction *editIt = popup.addAction(i18n("&Edit To-do..."));
     QAction *delIt = popup.addAction(i18n("&Delete To-do"));
-    delIt->setIcon(KIconLoader::global()->loadIcon(QLatin1String("edit-delete"), KIconLoader::Small));
+    delIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("edit-delete"), KIconLoader::Small));
 
     QAction *doneIt = Q_NULLPTR;
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
