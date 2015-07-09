@@ -7,7 +7,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 include_directories(${Boost_INCLUDE_DIR})
 
-set(kontact_specialdatesplugin_PART_SRCS specialdates_plugin.cpp sdsummarywidget.cpp)
+set(kontact_specialdatesplugin_PART_SRCS specialdates_plugin.cpp sdsummarywidget.cpp korganizer_kontactplugins_specialdates_debug.cpp)
 
 add_library(kontact_specialdatesplugin MODULE ${kontact_specialdatesplugin_PART_SRCS})
 

@@ -24,7 +24,7 @@
 */
 
 #include "sdsummarywidget.h"
-
+#include "korganizer_kontactplugins_specialdates_debug.h"
 #include <KontactInterface/Core>
 #include <KontactInterface/Plugin>
 
@@ -644,7 +644,7 @@ void SDSummaryWidget::mailContact(const QString &url)
 {
     const Akonadi::Item item = Akonadi::Item::fromUrl(url);
     if (!item.isValid()) {
-        qDebug() << QStringLiteral("Invalid item found");
+        qCDebug(KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG) << QStringLiteral("Invalid item found");
         return;
     }
 
@@ -656,7 +656,7 @@ void SDSummaryWidget::mailContact(const QString &url)
 void SDSummaryWidget::slotItemFetchJobDone(KJob *job)
 {
     if (job->error()) {
-        qWarning() << job->errorString();
+        qCWarning(KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG) << job->errorString();
         return;
     }
     const Akonadi::Item::List lst = qobject_cast<Akonadi::ItemFetchJob *>(job)->items();
@@ -672,7 +672,7 @@ void SDSummaryWidget::viewContact(const QString &url)
 {
     const Akonadi::Item item = Akonadi::Item::fromUrl(url);
     if (!item.isValid()) {
-        qDebug() << "Invalid item found";
+        qCDebug(KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG) << "Invalid item found";
         return;
     }
 
