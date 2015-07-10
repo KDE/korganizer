@@ -68,7 +68,7 @@
 
 #include <QAction>
 #include <KActionCollection>
-#include <KFileDialog>
+#include <QFileDialog>
 #include <QFileDialog>
 #include <QMenu>
 #include <QMenuBar>
@@ -845,7 +845,7 @@ void ActionManager::file_new()
 void ActionManager::file_open()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/") ;
-    const QUrl url = KFileDialog::getOpenUrl(defaultPath, QStringLiteral("text/calendar"), dialogParent());
+    const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(), QString(), QUrl::fromLocalFile(defaultPath), QStringLiteral("text/calendar") );
 
     file_open(url);
 }
@@ -922,9 +922,8 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_import()
 {
-    const QUrl url = KFileDialog::getOpenUrl(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
-                     QLatin1String("text/calendar"),
-                     dialogParent());
+    const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(), QString(), QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")),
+                     QLatin1String("text/calendar"));
     if (!url.isEmpty()) {   // isEmpty if user canceled the dialog
         importCalendar(url);
     }
@@ -1054,11 +1053,9 @@ void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode
         }
 
         const QString fileName =
-            KFileDialog::getSaveFileName(
+            QFileDialog::getSaveFileName(dialogParent(), i18n("Select path for HTML calendar export"),
                 QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-                i18n("*.html|HTML Files"),
-                dialogParent(),
-                i18n("Select path for HTML calendar export"), KFileDialog::ConfirmOverwrite);
+                i18n("HTML Files (*.html)"));
         settings->setOutputFile(fileName);
         settings->save();
     }
