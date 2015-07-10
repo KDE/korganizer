@@ -45,47 +45,48 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
 
     layout->addWidget(mListView);
 
-    connect(mListView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-            mPopupMenu, SLOT(showIncidencePopup(Akonadi::Item,QDate)));
+    connect(mListView, &EventViews::ListView::showIncidencePopupSignal,
+            mPopupMenu, &KOEventPopupMenu::showIncidencePopup);
 
     connect(mListView, SIGNAL(showNewEventPopupSignal()),
             SLOT(showNewEventPopup()));
 
-    connect(mListView, SIGNAL(datesSelected(KCalCore::DateList)),
-            SIGNAL(datesSelected(KCalCore::DateList)));
 
-    connect(mListView, SIGNAL(shiftedEvent(QDate,QDate)),
-            SIGNAL(shiftedEvent(QDate,QDate)));
+    connect(mListView, &EventViews::EventView::datesSelected,
+            this, &KOEventView::datesSelected);
 
-    connect(mListView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(mListView, &EventViews::EventView::shiftedEvent,
+            this, &KOEventView::shiftedEvent);
 
-    connect(mListView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::incidenceSelected,
+            this, &BaseView::incidenceSelected);
 
-    connect(mListView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::showIncidenceSignal,
+            this, &BaseView::showIncidenceSignal);
 
-    connect(mListView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::editIncidenceSignal,
+            this, &BaseView::editIncidenceSignal);
 
-    connect(mListView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &BaseView::deleteIncidenceSignal);
 
-    connect(mListView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::cutIncidenceSignal,
+            this, &BaseView::cutIncidenceSignal);
 
-    connect(mListView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(mListView, &EventViews::EventView::copyIncidenceSignal,
+            this, &BaseView::copyIncidenceSignal);
 
-    connect(mListView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &BaseView::pasteIncidenceSignal);
 
-    connect(mListView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::toggleAlarmSignal,
+            this, &BaseView::toggleAlarmSignal);
 
-    connect(mListView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(mListView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &BaseView::toggleTodoCompletedSignal);
+
+    connect(mListView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &BaseView::copyIncidenceToResourceSignal);
 
     connect(mListView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
             SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));

@@ -101,7 +101,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     KPIM::KPrefsWidBool *emailControlCenter =
         addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(), personalFrame);
-    connect(emailControlCenter->checkBox(), SIGNAL(toggled(bool)), SLOT(toggleEmailSettings(bool)));
+    connect(emailControlCenter->checkBox(), &QAbstractButton::toggled, this, &KOPrefsDialogMain::toggleEmailSettings);
     personalLayout->addWidget(emailControlCenter->checkBox());
 
     mUserEmailSettings =

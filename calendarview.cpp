@@ -133,8 +133,8 @@ CalendarView::CalendarView(QWidget *parent)
     mTodoPurger = new Akonadi::TodoPurger(this);
     mTodoPurger->setCalendar(mCalendar);
     mTodoPurger->setIncidenceChager(mChanger);
-    connect(mTodoPurger, SIGNAL(todosPurged(bool,int,int)),
-            SLOT(onTodosPurged(bool,int,int)));
+    connect(mTodoPurger, &Akonadi::TodoPurger::todosPurged,
+            this, &CalendarView::onTodosPurged);
 
     mReadOnly = false;
     mSplitterSizesValid = false;
@@ -231,22 +231,22 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mDateNavigatorContainer, SIGNAL(weekClicked(QDate,QDate)),
             SLOT(selectWeek(QDate,QDate)));
 
-    connect(mDateNavigatorContainer, SIGNAL(prevMonthClicked(QDate,QDate,QDate)),
-            mDateNavigator, SLOT(selectPreviousMonth(QDate,QDate,QDate)));
-    connect(mDateNavigatorContainer, SIGNAL(nextMonthClicked(QDate,QDate,QDate)),
-            mDateNavigator, SLOT(selectNextMonth(QDate,QDate,QDate)));
-    connect(mDateNavigatorContainer, SIGNAL(prevYearClicked()),
-            mDateNavigator, SLOT(selectPreviousYear()));
-    connect(mDateNavigatorContainer, SIGNAL(nextYearClicked()),
-            mDateNavigator, SLOT(selectNextYear()));
-    connect(mDateNavigatorContainer, SIGNAL(monthSelected(int)),
-            mDateNavigator, SLOT(selectMonth(int)));
-    connect(mDateNavigatorContainer, SIGNAL(yearSelected(int)),
-            mDateNavigator, SLOT(selectYear(int)));
-    connect(mDateNavigatorContainer, SIGNAL(goPrevious()),
-            mDateNavigator, SLOT(selectPrevious()));
-    connect(mDateNavigatorContainer, SIGNAL(goNext()),
-            mDateNavigator, SLOT(selectNext()));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::prevMonthClicked,
+            mDateNavigator, &DateNavigator::selectPreviousMonth);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::nextMonthClicked,
+            mDateNavigator, &DateNavigator::selectNextMonth);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::prevYearClicked,
+            mDateNavigator, &DateNavigator::selectPreviousYear);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::nextYearClicked,
+            mDateNavigator, &DateNavigator::selectNextYear);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::monthSelected,
+            mDateNavigator, &DateNavigator::selectMonth);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::yearSelected,
+            mDateNavigator, &DateNavigator::selectYear);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::goPrevious,
+            mDateNavigator, &DateNavigator::selectPrevious);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::goNext,
+            mDateNavigator, &DateNavigator::selectNext);
 
     connect(mDateNavigatorContainer, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
             mDateNavigator, SLOT(selectDates(KCalCore::DateList,QDate)));
@@ -259,8 +259,8 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
             SLOT(moveIncidenceTo(Akonadi::Item,QDate)));
 
-    connect(mDateChecker, SIGNAL(dayPassed(QDate)),
-            mTodoList, SLOT(dayPassed(QDate)));
+    connect(mDateChecker, &DateChecker::dayPassed,
+            mTodoList, &BaseView::dayPassed);
     connect(mDateChecker, SIGNAL(dayPassed(QDate)),
             SIGNAL(dayPassed(QDate)));
     connect(mDateChecker, SIGNAL(dayPassed(QDate)),

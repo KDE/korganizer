@@ -165,8 +165,8 @@ void ExportWebDialog::setupGeneralPage()
 
     KPIM::KPrefsWidPath *pathWid = addWidPath(mSettings->outputFileItem(),
                                    destGroup, QStringLiteral("text/html"), KFile::File);
-    connect(pathWid->urlRequester(), SIGNAL(textChanged(QString)),
-            SLOT(slotTextChanged(QString)));
+    connect(pathWid->urlRequester(), &KUrlRequester::textChanged,
+            this, &ExportWebDialog::slotTextChanged);
     destLayout->addWidget(pathWid->label());
     destLayout->addWidget(pathWid->urlRequester());
 
