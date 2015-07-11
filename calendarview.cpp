@@ -2855,7 +2855,8 @@ Akonadi::Collection::List CalendarView::checkedCollections() const
     Akonadi::Collection::Id id = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
     for (int i = 0; i < count; ++i) {
         if (id == collections[i].id()) {
-            collections.move(i, 0);
+            const Akonadi::Collection col = collections.takeAt(i);
+            collections.insert(0, col);
             break;
         }
     }
