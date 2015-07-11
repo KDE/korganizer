@@ -28,6 +28,7 @@
 #define KORG_SEARCHDIALOG_H
 
 #include <QDialog>
+#include <item.h>
 class QPushButton;
 class CalendarView;
 
@@ -39,11 +40,6 @@ class SearchDialog;
 namespace EventViews
 {
 class ListView;
-}
-
-namespace Akonadi
-{
-class Item;
 }
 
 namespace KCalCore
@@ -86,7 +82,7 @@ private:
 
     Ui::SearchDialog *m_ui;
     CalendarView *m_calendarview; // parent
-    QList<Akonadi::Item> mMatchedEvents;
+    Akonadi::Item::List mMatchedEvents;
     EventViews::ListView *listView;
     QPushButton *mUser1Button;
 };
