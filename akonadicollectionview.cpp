@@ -1027,10 +1027,12 @@ Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
 
 void AkonadiCollectionView::edit_disable()
 {
+#if 0
     Akonadi::Collection col = mCollectionView->currentIndex().data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     if (col.isValid()) {
         mController->setCollectionState(col, Controller::Disabled);
     }
+#endif
     const QVariant var = mCollectionView->currentIndex().data(PersonRole);
     if (var.isValid()) {
         mController->removePerson(var.value<KPIM::Person>());
@@ -1067,6 +1069,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     }
     break;
     case StyledCalendarDelegate::RemoveFromList: {
+#if 0
         const QVariant var = index.data(PersonRole);
         if (var.isValid()) {
             mController->removePerson(var.value<KPIM::Person>());
@@ -1076,6 +1079,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
                 mController->setCollectionState(col, Controller::Disabled);
             }
         }
+#endif
     }
     break;
     case StyledCalendarDelegate::Enable: {
