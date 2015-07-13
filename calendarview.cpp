@@ -191,16 +191,16 @@ CalendarView::CalendarView(QWidget *parent)
 
     mChanger->setGroupwareCommunication(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication());
     connect(mChanger,
-            SIGNAL(createFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
-            SLOT(slotCreateFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)));
+            &Akonadi::IncidenceChanger::createFinished,
+            this, &CalendarView::slotCreateFinished);
 
     connect(mChanger,
-            SIGNAL(deleteFinished(int,QVector<Akonadi::Item::Id>,Akonadi::IncidenceChanger::ResultCode,QString)),
-            SLOT(slotDeleteFinished(int,QVector<Akonadi::Item::Id>,Akonadi::IncidenceChanger::ResultCode,QString)));
+            &Akonadi::IncidenceChanger::deleteFinished,
+            this, &CalendarView::slotDeleteFinished);
 
     connect(mChanger,
-            SIGNAL(modifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)),
-            SLOT(slotModifyFinished(int,Akonadi::Item,Akonadi::IncidenceChanger::ResultCode,QString)));
+            &Akonadi::IncidenceChanger::modifyFinished,
+            this, &CalendarView::slotModifyFinished);
 
     // Signals emitted by mDateNavigator
     connect(mDateNavigator, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
@@ -214,18 +214,18 @@ CalendarView::CalendarView(QWidget *parent)
             SLOT(newJournal(QDate)));
 
     // Signals emitted by mNavigatorBar
-    connect(mNavigatorBar, SIGNAL(prevYearClicked()),
-            mDateNavigator, SLOT(selectPreviousYear()));
-    connect(mNavigatorBar, SIGNAL(nextYearClicked()),
-            mDateNavigator, SLOT(selectNextYear()));
+    connect(mNavigatorBar, &NavigatorBar::prevYearClicked,
+            mDateNavigator, &DateNavigator::selectPreviousYear);
+    connect(mNavigatorBar, &NavigatorBar::nextYearClicked,
+            mDateNavigator, &DateNavigator::selectNextYear);
     connect(mNavigatorBar, SIGNAL(prevMonthClicked()),
             mDateNavigator, SLOT(selectPreviousMonth()));
     connect(mNavigatorBar, SIGNAL(nextMonthClicked()),
             mDateNavigator, SLOT(selectNextMonth()));
-    connect(mNavigatorBar, SIGNAL(monthSelected(int)),
-            mDateNavigator, SLOT(selectMonth(int)));
-    connect(mNavigatorBar, SIGNAL(yearSelected(int)),
-            mDateNavigator, SLOT(selectYear(int)));
+    connect(mNavigatorBar, &NavigatorBar::monthSelected,
+            mDateNavigator, &DateNavigator::selectMonth);
+    connect(mNavigatorBar, &NavigatorBar::yearSelected,
+            mDateNavigator, &DateNavigator::selectYear);
 
     // Signals emitted by mDateNavigatorContainer
     connect(mDateNavigatorContainer, SIGNAL(weekClicked(QDate,QDate)),
