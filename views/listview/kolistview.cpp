@@ -51,7 +51,6 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
     connect(mListView, SIGNAL(showNewEventPopupSignal()),
             SLOT(showNewEventPopup()));
 
-
     connect(mListView, &EventViews::EventView::datesSelected,
             this, &KOEventView::datesSelected);
 

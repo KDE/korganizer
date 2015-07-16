@@ -20,4 +20,3 @@
 #include "korganizer_kontactplugins_specialdates_debug.h"
 Q_LOGGING_CATEGORY(KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG, "log_korganizer_kontactplugins_specialdates")
 
-
