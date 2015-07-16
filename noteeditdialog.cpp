@@ -23,6 +23,7 @@
 #include "noteeditdialog.h"
 
 #include <KLocalizedString>
+#include <KSharedConfig>
 #include <QLineEdit>
 #include <KRichTextEdit>
 #include <QIcon>
@@ -108,10 +109,29 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     layout->addWidget(mNoteText, 1, 1);
 
     setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed));
+    readConfig();
 }
 
 NoteEditDialog::~NoteEditDialog()
 {
+    writeConfig();
+}
+
+void NoteEditDialog::readConfig()
+{
+    KConfigGroup group(KSharedConfig::openConfig(), "NoteEditDialog");
+
+    const QSize size = group.readEntry("Size", QSize(500, 300));
+    if (size.isValid()) {
+        resize(size);
+    }
+}
+
+void NoteEditDialog::writeConfig()
+{
+    KConfigGroup group(KSharedConfig::openConfig(), "NoteEditDialog");
+    group.writeEntry("Size", size());
+    group.sync();
 }
 
 void NoteEditDialog::slotUpdateButtons()

@@ -68,6 +68,8 @@ Q_SIGNALS:
     void collectionChanged(const Akonadi::Collection &col);
 
 private:
+    void readConfig();
+    void writeConfig();
     Akonadi::Collection mCollection;
     Akonadi::Item mItem;
     QLineEdit *mNoteTitle;
