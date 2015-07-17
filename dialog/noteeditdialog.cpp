@@ -109,6 +109,7 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     //Second Line
     lab = new QLabel(i18n("Text:"));
     layout->addWidget(lab, 1, 0);
+    layout->setAlignment(lab, Qt::AlignTop);
     layout->addWidget(mNoteText, 1, 1);
 
     readConfig();
