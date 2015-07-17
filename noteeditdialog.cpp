@@ -21,6 +21,8 @@
  */
 
 #include "noteeditdialog.h"
+#include "pimcommon/texteditor/richtexteditor/richtexteditorwidget.h"
+#include "pimcommon/texteditor/richtexteditor/richtexteditor.h"
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -90,9 +92,9 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     connect(mCollectionCombobox, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::currentIndexChanged), this, &NoteEditDialog::slotCollectionChanged);
     connect(mCollectionCombobox, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::activated), this, &NoteEditDialog::slotCollectionChanged);
 
-    mNoteText = new KRichTextEdit(parent);
+    mNoteText = new PimCommon::RichTextEditorWidget(parent);
     mNoteText->setObjectName(QStringLiteral("notetext"));
-    connect(mNoteText, &KRichTextEdit::textChanged, this, &NoteEditDialog::slotUpdateButtons);
+    connect(mNoteText->editor(), &PimCommon::RichTextEditor::textChanged, this, &NoteEditDialog::slotUpdateButtons);
 
     //First line
     hbox->addWidget(mNoteTitle);
@@ -108,7 +110,7 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     layout->addWidget(lab, 1, 0);
     layout->addWidget(mNoteText, 1, 1);
 
-    setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed));
+    //setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed));
     readConfig();
 }
 
@@ -179,10 +181,12 @@ void NoteEditDialog::accept()
     Akonadi::NoteUtils::NoteMessageWrapper note(mItem.payload<KMime::Message::Ptr>());
     note.setTitle(mNoteTitle->text());
     Qt::TextFormat format = Qt::PlainText;
-    if (mNoteText->textMode() == KRichTextEdit::Rich) {
+    if (mNoteText->acceptRichText()) {
         format = Qt::RichText;
+        note.setText(mNoteText->editor()->toHtml(), format);
+    } else {
+        note.setText(mNoteText->editor()->toPlainText(), format);
     }
-    note.setText(mNoteText->textOrHtml(), format);
     mItem.setPayload<KMime::Message::Ptr>(note.message());
     emit createNote(mItem, collection);
 }
@@ -191,9 +195,11 @@ void NoteEditDialog::load(const Akonadi::Item &item)
 {
     mItem = item;
     Akonadi::NoteUtils::NoteMessageWrapper note(item.payload<KMime::Message::Ptr>());
-    mNoteText->setTextOrHtml(note.text());
+    mNoteText->editor()->setHtml(note.text());
     if (note.textFormat() == Qt::RichText) {
-        mNoteText->enableRichTextMode();
+        mNoteText->setAcceptRichText(true);
+    } else {
+        mNoteText->setAcceptRichText(false);
     }
     mNoteTitle->setText(note.title());
 }

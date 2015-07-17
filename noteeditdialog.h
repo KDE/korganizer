@@ -32,8 +32,11 @@
 
 class QLineEdit;
 class QPushButton;
-class KRichTextEdit;
 class QAbstractItemModel;
+namespace PimCommon
+{
+class RichTextEditorWidget;
+}
 
 namespace Akonadi
 {
@@ -74,7 +77,7 @@ private:
     Akonadi::Item mItem;
     QLineEdit *mNoteTitle;
     QPushButton *mOkButton;
-    KRichTextEdit *mNoteText;
+    PimCommon::RichTextEditorWidget *mNoteText;
     Akonadi::CollectionComboBox *mCollectionCombobox;
 };
 
