@@ -48,6 +48,7 @@ QAbstractItemModel *NoteEditDialog::_k_noteEditStubModel = Q_NULLPTR;
 NoteEditDialog::NoteEditDialog(QWidget *parent)
     : QDialog(parent)
 {
+    setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(i18nc("@title:window", "Create Note"));
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     QWidget *mainWidget = new QWidget(this);
@@ -110,7 +111,6 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     layout->addWidget(lab, 1, 0);
     layout->addWidget(mNoteText, 1, 1);
 
-    //setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed));
     readConfig();
 }
 
