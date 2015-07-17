@@ -21,7 +21,7 @@
  */
 
 #include "noteeditdialogtest.h"
-#include "noteeditdialog.h"
+#include "dialog/noteeditdialog.h"
 #include <AkonadiCore/Collection>
 #include <AkonadiWidgets/CollectionComboBox>
 #include <AkonadiCore/EntityTreeModel>

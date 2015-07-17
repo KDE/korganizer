@@ -176,7 +176,7 @@ set(korganizerprivate_LIB_SRCS
     kodaymatrix.cpp
     kodialogmanager.cpp
     koeventpopupmenu.cpp
-    noteeditdialog.cpp
+    dialog/noteeditdialog.cpp
     koeventview.cpp
     dialog/koeventviewerdialog.cpp
     koglobals.cpp

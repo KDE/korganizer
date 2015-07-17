@@ -16,7 +16,7 @@
 */
 
 #include "koeventpopupmenutest.h"
-#include "noteeditdialog.h"
+#include "dialog/noteeditdialog.h"
 #include "koeventpopupmenu.h"
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidenceattendee.h>

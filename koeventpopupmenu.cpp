@@ -27,7 +27,7 @@
 #include "actionmanager.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
-#include "noteeditdialog.h"
+#include "dialog/noteeditdialog.h"
 
 #include <calendarsupport/kcalprefs.h>
 #include <calendarsupport/utils.h>
