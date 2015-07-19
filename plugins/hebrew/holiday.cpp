@@ -30,7 +30,7 @@
 
 #include <KLocalizedString>
 
-QStringList Holiday::findHoliday(HebrewDate hd, bool useIsraelSettings,
+QStringList Holiday::findHoliday(const HebrewDate &hd, bool useIsraelSettings,
                                  bool showParsha, bool showChol,
                                  bool showOmer)
 {

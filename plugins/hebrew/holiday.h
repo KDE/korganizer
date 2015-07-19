@@ -49,7 +49,7 @@ public:
       whether we will use the settings corresponding to Israel or to the
       diaspora.
     */
-    static QStringList findHoliday(HebrewDate hd, bool useIsraelSettings,
+    static QStringList findHoliday(const HebrewDate &hd, bool useIsraelSettings,
                                    bool showParsha, bool showChol,
                                    bool showOmer);
 

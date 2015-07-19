@@ -22,7 +22,7 @@
 
 #include "converter.h"
 
-HebrewDate::HebrewDate(struct DateResult d)
+HebrewDate::HebrewDate(const DateResult &d)
     : mYear(d.year), mMonth(d.month), mDay(d.day),
       mDayOfWeek(d.day_of_week),
       mHebrewMonthLength(d.hebrew_month_length),
@@ -39,14 +39,14 @@ HebrewDate::~HebrewDate()
 
 HebrewDate HebrewDate::fromSecular(int year, int month, int day)
 {
-    struct DateResult result;
+    DateResult result;
     Converter::secularToHebrewConversion(year, month, day, &result);
     return HebrewDate(result);
 }
 
 HebrewDate HebrewDate::fromHebrew(int year, int month, int day)
 {
-    struct DateResult result;
+    DateResult result;
     Converter::hebrewToSecularConversion(year, month, day, &result);
     return HebrewDate(result);
 }

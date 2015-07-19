@@ -63,8 +63,8 @@ public:
     }
 
 Q_SIGNALS:
-    void enabled(bool, KPIM::Person);
-    void enabled(bool, Akonadi::Collection);
+    void enabled(bool, const KPIM::Person &);
+    void enabled(bool, const Akonadi::Collection &);
 };
 
 /**
