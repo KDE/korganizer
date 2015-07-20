@@ -442,7 +442,7 @@ void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
 
 void KCMDesignerFields::startDesigner()
 {
-    QString cmdLine = QLatin1String("designer");
+    QString cmdLine = QStringLiteral("designer");
 
     // check if path exists and create one if not.
     QString cepPath = localUiDir();
