@@ -22,7 +22,7 @@
 #ifndef TESTKODAYMATRIX_H
 #define TESTKODAYMATRIX_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KODayMatrixTest : public QObject
 {
