@@ -56,7 +56,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
     mCalendarView = new CalendarView(this);
-    mCalendarView->setObjectName(QLatin1String("KOrganizer::CalendarView"));
+    mCalendarView->setObjectName(QStringLiteral("KOrganizer::CalendarView"));
     setCentralWidget(mCalendarView);
 
     mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar());

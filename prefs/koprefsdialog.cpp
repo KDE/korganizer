@@ -1050,7 +1050,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
 {
     mGroupwarePage = new Ui::KOGroupwarePrefsPage();
     QWidget *widget = new QWidget(this);
-    widget->setObjectName(QLatin1String("KOGrouparePrefsPage"));
+    widget->setObjectName(QStringLiteral("KOGrouparePrefsPage"));
 
     mGroupwarePage->setupUi(widget);
 
