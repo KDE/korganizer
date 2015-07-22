@@ -28,7 +28,7 @@
 #define KORG_CALENDARVIEW_H
 
 #include "korganizerprivate_export.h"
-#include "searchcollectionhelper.h"
+#include "helper/searchcollectionhelper.h"
 
 #include "interfaces/korganizer/calendarviewbase.h"
 
