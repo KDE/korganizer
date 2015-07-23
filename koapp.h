@@ -34,7 +34,7 @@ class KOrganizerApp : public KontactInterface::PimUniqueApplication
 {
     Q_OBJECT
 public:
-    KOrganizerApp(int &argc, char **argv[], KAboutData &aboutData);
+    KOrganizerApp(int &argc, char **argv[]);
     ~KOrganizerApp();
 
     /**

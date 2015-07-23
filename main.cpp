@@ -34,12 +34,14 @@
 
 int main(int argc, char **argv)
 {
+    KOrganizerApp app(argc, &argv);
     KOrgMigrateApplication migrate;
     migrate.migrate();
 
     KOrg::AboutData aboutData;
+    app.setAboutData(aboutData);
 
-    KOrganizerApp app(argc, &argv, aboutData);
+
     QCommandLineParser *cmdArgs = app.cmdArgs();
     korganizer_options(cmdArgs);
 
