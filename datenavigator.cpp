@@ -56,7 +56,7 @@ int DateNavigator::datesCount() const
 
 void DateNavigator::selectDates(const KCalCore::DateList &dateList, const QDate &preferredMonth)
 {
-    if (dateList.count() > 0) {
+    if (!dateList.isEmpty()) {
         mSelectedDates = dateList;
         emitSelected(preferredMonth);
     }
