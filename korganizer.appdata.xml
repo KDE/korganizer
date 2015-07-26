@@ -25,6 +25,7 @@
   <name xml:lang="pt">KOrganizer</name>
   <name xml:lang="pt-BR">KOrganizer</name>
   <name xml:lang="ro">KOrganizer</name>
+  <name xml:lang="ru">KOrganizer</name>
   <name xml:lang="sk">KOrganizer</name>
   <name xml:lang="sl">KOrganizer</name>
   <name xml:lang="sv">Korganizer</name>
@@ -82,6 +83,7 @@
     <p xml:lang="pt">Funcionalidades:</p>
     <p xml:lang="pt-BR">Funcionalidades:</p>
     <p xml:lang="ro">Caracteristici:</p>
+    <p xml:lang="ru">Возможности:</p>
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
@@ -108,6 +110,7 @@
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań.</li>
       <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer.</li>
       <li xml:lang="pt-BR">Suporte a diversos calendários e listas tarefas.</li>
+      <li xml:lang="ru">Работа с произвольным числом календарей и списков задач;</li>
       <li xml:lang="sk">Podpora pre viaceho kalendárov a zoznamov úloh.</li>
       <li xml:lang="sl">Podpora več koledarjem in seznamom opravil.</li>
       <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor.</li>
@@ -158,6 +161,7 @@
       <li xml:lang="pt">Suporte para Desfazer e Refazer operações.</li>
       <li xml:lang="pt-BR">Suporte para as ações Desfazer e Refazer.</li>
       <li xml:lang="ro">Desfacere și refacere.</li>
+      <li xml:lang="ru">Отмена и возврат действий;</li>
       <li xml:lang="sk">Funkcia Späť a Znova.</li>
       <li xml:lang="sl">Uveljavi in razveljavi.</li>
       <li xml:lang="sv">Ångra och gör om.</li>
@@ -284,6 +288,7 @@
       <li xml:lang="pt">Suporte para a impressão.</li>
       <li xml:lang="pt-BR">Suporte a impressão.</li>
       <li xml:lang="ro">Suport pentru tipărire.</li>
+      <li xml:lang="ru">Печать календарей.</li>
       <li xml:lang="sk">Podpora tlače.</li>
       <li xml:lang="sl">Podpora tiskanju.</li>
       <li xml:lang="sv">Stöd för utskrift.</li>
