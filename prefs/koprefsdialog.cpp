@@ -41,9 +41,9 @@
 #include <AkonadiCore/AgentFilterProxyModel>
 #include <AkonadiCore/AgentInstanceCreateJob>
 #include <AkonadiCore/AgentManager>
+#include <AkonadiCore/EntityTreeModel>
 #include <AkonadiWidgets/AgentTypeDialog>
 #include <AkonadiWidgets/CollectionComboBox>
-#include <AkonadiCore/CollectionModel>
 #include <akonadi/calendar/calendarsettings.h>
 
 #include <KCalCore/Event>
@@ -956,7 +956,7 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
     const QString id =
         QString::number(mResourceCombo->itemData(
                             mResourceCombo->currentIndex(),
-                            Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok));
+                            Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
     if (! ok) {
         return;
     }
@@ -970,7 +970,7 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
     const QString id =
         QString::number(mResourceCombo->itemData(
                             mResourceCombo->currentIndex(),
-                            Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok));
+                            Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
     if (!ok) {
         return;
     }
