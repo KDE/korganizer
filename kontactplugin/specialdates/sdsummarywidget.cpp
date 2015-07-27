@@ -32,6 +32,7 @@
 #include <calendarsupport/calendarsingleton.h>
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
+#include <AkonadiCore/SearchQuery>
 #include <AkonadiCore/EntityDisplayAttribute>
 #include <Akonadi/Contact/ContactSearchJob>
 #include <Akonadi/Contact/ContactViewerDialog>
@@ -64,37 +65,15 @@ BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
     : ItemSearchJob(parent)
 {
     fetchScope().fetchFullPayload();
+    setMimeTypes(QStringList() << KContacts::Addressee::mimeType());
 
-    const QString query = QString::fromLatin1(
-                              "prefix nco:<http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> "
-                              "prefix xsd:<http://www.w3.org/2001/XMLSchema#> "
-                              ""
-                              "SELECT DISTINCT ?r "
-                              "WHERE { "
-                              "  graph ?g "
-                              "  { "
-                              "    { "
-                              "      ?r a nco:PersonContact . "
-                              "      ?r <%1> ?akonadiItemId . "
-                              "      ?r nco:birthDate ?birthDate . "
-                              "      FILTER( bif:dayofyear(?birthDate) >= bif:dayofyear(xsd:date(\"%2\")) ) "
-                              "      FILTER( bif:dayofyear(?birthDate) <= bif:dayofyear(xsd:date(\"%2\")) + %3 ) "
-                              "    } "
-                              "    UNION "
-                              "    { "
-                              "      ?r a nco:PersonContact . "
-                              "      ?r <%1> ?akonadiItemId . "
-                              "      ?r nco:birthDate ?birthDate . "
-                              "      FILTER( bif:dayofyear(?birthDate) + 365 >= bif:dayofyear(xsd:date(\"%2\")) ) "
-                              "      FILTER( bif:dayofyear(?birthDate) + 365 <= bif:dayofyear(xsd:date(\"%2\")) + %3 ) "
-                              "    } "
-                              "  } "
-                              "}").
-                          arg(QString::fromLatin1(Akonadi::ItemSearchJob::akonadiItemIdUri().toEncoded())).
-                          arg(QDate::currentDate().toString(Qt::ISODate)).
-                          arg(daysInAdvance);
-#pragma message("port QT5")
-    //QT5 Akonadi::ItemSearchJob::setQuery( query );
+    Akonadi::SearchQuery query;
+    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().toJulianDay(),
+                  Akonadi::SearchTerm::CondGreaterOrEqual);
+    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().addDays(daysInAdvance).toJulianDay(),
+                  Akonadi::SearchTerm::CondLessOrEqual);
+
+    ItemSearchJob::setQuery(query);
 }
 
 enum SDIncidenceType {
