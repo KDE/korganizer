@@ -61,9 +61,10 @@ public:
 };
 
 BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
-    : ItemSearchJob(QString(), parent)
+    : ItemSearchJob(parent)
 {
     fetchScope().fetchFullPayload();
+
     const QString query = QString::fromLatin1(
                               "prefix nco:<http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> "
                               "prefix xsd:<http://www.w3.org/2001/XMLSchema#> "
