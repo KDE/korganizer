@@ -234,7 +234,7 @@ KPIM::Person PersonNodeManager::person(const QModelIndex &sourceIndex)
     KPIM::Person person;
     const Akonadi::Collection col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     if (col.isValid()) {
-        CollectionIdentificationAttribute *attr = col.attribute<CollectionIdentificationAttribute>();
+        Akonadi::CollectionIdentificationAttribute *attr = col.attribute<Akonadi::CollectionIdentificationAttribute>();
         if (attr && attr->collectionNamespace() == "usertoplevel") {
             person.name = col.displayName();
             person.mail = QString::fromUtf8(attr->mail());
@@ -277,7 +277,7 @@ Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchMo
       mCollectionSearchJob(0),
       mPersonSearchJob(0)
 {
-    Akonadi::AttributeFactory::registerAttribute<CollectionIdentificationAttribute>();
+    Akonadi::AttributeFactory::registerAttribute<Akonadi::CollectionIdentificationAttribute>();
 }
 
 void Controller::setSearchString(const QString &searchString)
