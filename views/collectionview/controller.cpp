@@ -119,9 +119,9 @@ bool CollectionNode::isDuplicateOf(const QModelIndex &sourceIndex)
 
 PersonNode::PersonNode(ReparentingModel &personModel, const KPIM::Person &person)
     :   Node(personModel),
+        isSearchNode(false),
         mPerson(person),
-        mCheckState(Qt::Unchecked),
-        isSearchNode(false)
+        mCheckState(Qt::Unchecked)
 {
 
 }
