@@ -51,7 +51,7 @@ private:
 class DatenumsFactory : public DecorationFactory
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.korganizer.Datenums");
+    Q_PLUGIN_METADATA(IID "org.kde.korganizer.Datenums")
 public:
     Decoration *createPluginFactory() Q_DECL_OVERRIDE {
         return new Datenums;
