@@ -25,7 +25,7 @@
 
 #include "todosummarywidget.h"
 #include "todoplugin.h"
-#include "korganizer/korganizerinterface.h"
+#include "korganizerinterface.h"
 
 #include <calendarsupport/utils.h>
 #include <calendarsupport/calendarsingleton.h>
