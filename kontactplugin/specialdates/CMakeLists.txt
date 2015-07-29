@@ -14,17 +14,13 @@ add_library(kontact_specialdatesplugin MODULE ${kontact_specialdatesplugin_PART_
 set(_korganizerprivate_lib "korganizerprivate")
 
 target_link_libraries(kontact_specialdatesplugin
-  KF5::AkonadiCalendar
-  
   KF5::Contacts
   KF5::CalendarCore
   KF5::Holidays
   KF5::KontactInterface
   KF5::AkonadiCore
   KF5::AkonadiContact
-  kdepim
   calendarsupport
-  ${_korganizerprivate_lib}
 )
 
 ########### next target ###############

@@ -22,7 +22,7 @@ qt5_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${CMAKE_SOURCE_DIR}/korgani
 
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
 
-target_link_libraries(kontact_todoplugin KF5::AkonadiCalendar  KF5::Contacts kdepim KF5::KontactInterface KF5::CalendarCore KF5::CalendarUtils korganizerprivate calendarsupport KF5::AkonadiCalendar)
+target_link_libraries(kontact_todoplugin KF5::AkonadiCalendar  KF5::Contacts kdepim KF5::KontactInterface KF5::CalendarCore KF5::CalendarUtils calendarsupport KF5::AkonadiCalendar)
 
 ########### next target ###############
 
@@ -42,7 +42,7 @@ ki18n_wrap_ui(kcm_apptsummary_PART_SRCS apptsummaryconfig_base.ui)
 
 add_library(kcm_apptsummary MODULE ${kcm_apptsummary_PART_SRCS})
 
-target_link_libraries(kcm_apptsummary  korganizerprivate KF5::CalendarUtils KF5::KCMUtils)
+target_link_libraries(kcm_apptsummary  KF5::KCMUtils KF5::I18n)
 
 ########### next target ###############
 

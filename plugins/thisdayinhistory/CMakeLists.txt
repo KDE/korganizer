@@ -14,9 +14,6 @@ add_library(korg_thisdayinhistory MODULE ${korg_thisdayinhistory_PART_SRCS})
 
 target_link_libraries(korg_thisdayinhistory
   eventviews
-  korganizerprivate
-  
-  
 )
 
 install(TARGETS

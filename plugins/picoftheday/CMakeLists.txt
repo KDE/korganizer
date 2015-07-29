@@ -16,8 +16,6 @@ add_library(korg_picoftheday MODULE ${korg_picoftheday_PART_SRCS})
 
 target_link_libraries(korg_picoftheday
   eventviews
-  korganizerprivate
-  
   KF5::KIOCore
 )
 

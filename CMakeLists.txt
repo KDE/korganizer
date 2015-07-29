@@ -82,9 +82,7 @@ if(KDEPIM_BUILD_DESKTOP)
     korganizer_core
     korganizerprivate
     Qt5::UiTools
-    KF5::AkonadiCore
     KF5::CalendarCore
-    KF5::CalendarUtils
     KF5::Holidays
     KF5::MailTransport
     
@@ -244,7 +242,6 @@ set(korganizerprivate_LIB_SRCS
     incidenceeditorsng
     kdepim
     kdepimdbusinterfaces
-    kdgantt2
     korganizer_core
     korganizer_interfaces
     KF5::AkonadiCore
@@ -257,7 +254,6 @@ set(korganizerprivate_LIB_SRCS
     KF5::Holidays
     KF5::Mime
     KF5::IdentityManagement
-    KF5::MailTransport
     KF5::KCMUtils
     KF5::NewStuff
     calendarsupportcollectionpage
