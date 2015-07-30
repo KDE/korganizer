@@ -297,12 +297,6 @@ protected Q_SLOTS:
     /** Open kcontrol module for configuring date and time formats */
     void configureDateTime();
 
-    /** Show tip of the day */
-    void showTip();
-
-    /** Show tip of the day */
-    void showTipOnStart();
-
     void downloadNewStuff();
 
     void toggleDateNavigator();

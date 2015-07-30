@@ -54,7 +54,6 @@ public:
 
     KontactInterface::Summary *createSummaryWidget(QWidget *parent) Q_DECL_OVERRIDE;
 
-    QString tipFile() const Q_DECL_OVERRIDE;
     QStringList invisibleToolbarActions() const Q_DECL_OVERRIDE;
 
     void select() Q_DECL_OVERRIDE;

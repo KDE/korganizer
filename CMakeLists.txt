@@ -288,11 +288,6 @@ set(korganizerprivate_LIB_SRCS
   )
 
   install(FILES
-    tips
-    DESTINATION ${KDE_INSTALL_DATADIR}/korganizer
-  )
-
-  install(FILES
     korganizer_part.desktop data/webcal.protocol
     DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
   )

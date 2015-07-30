@@ -116,12 +116,6 @@ KParts::ReadOnlyPart *KOrganizerPlugin::createPart()
     return part;
 }
 
-QString KOrganizerPlugin::tipFile() const
-{
-    QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("korganizer/tips"));
-    return file;
-}
-
 QStringList KOrganizerPlugin::invisibleToolbarActions() const
 {
     QStringList invisible;

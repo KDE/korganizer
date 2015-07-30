@@ -80,7 +80,6 @@
 #include <KStandardAction>
 
 #include <QTemporaryFile>
-#include <KTipDialog>
 #include <KToggleAction>
 #include <KWindowSystem>
 #include <KIO/NetAccess>
@@ -158,10 +157,6 @@ void ActionManager::init()
     // add this instance of the window to the static list.
     if (!mWindowList) {
         mWindowList = new KOWindowList;
-        // Show tip of the day, when the first calendar is shown.
-        if (!mIsPart) {
-            QTimer::singleShot(0, this, SLOT(showTipOnStart()));
-        }
     }
 
     // Note: We need this ActionManager to be fully constructed, and
@@ -719,11 +714,6 @@ void ActionManager::initActions()
         KStandardAction::preferences(mCalendarView, SLOT(edit_options()), mACollection);
         KStandardAction::keyBindings(this, SLOT(keyBindings()), mACollection);
     }
-
-    /**************************** HELP MENU **********************************/
-    QAction *a = mACollection->addAction(KStandardAction::TipofDay, this,
-                                         SLOT(showTip()));
-    mACollection->addAction(QStringLiteral("help_tipofday"), a);
 }
 
 void ActionManager::setItems(const QStringList &lst, int idx)
@@ -1255,18 +1245,6 @@ void ActionManager::configureDateTime()
         KMessageBox::sorry(dialogParent(),
                            i18n("Could not start control module for date and time format."));
     }
-}
-
-void ActionManager::showTip()
-{
-    KTipDialog::showTip(dialogParent(), QString(), true);
-}
-
-void ActionManager::showTipOnStart()
-{
-    KConfigGroup config(KSharedConfig::openConfig(), "TipOfDay");
-    KTipDialog::setShowOnStart(config.readEntry("RunOnStart", false));
-    KTipDialog::showTip(dialogParent());
 }
 
 KOrg::MainWindow *ActionManager::findInstance(const QUrl &url)
