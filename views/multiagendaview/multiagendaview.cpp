@@ -260,8 +260,9 @@ void MultiAgendaView::showConfigurationDialog(QWidget *parent)
         dlg->setSelectionModel(i, models[i]);
     }
 
-    QVector<QString> customColumnTitles = d->mMultiAgendaView->customColumnTitles();
-    for (int i = 0; i < customColumnTitles.size(); ++i) {
+    QStringList customColumnTitles = d->mMultiAgendaView->customColumnTitles();
+    const int numTitles = customColumnTitles.size();
+    for (int i = 0; i < numTitles; ++i) {
         dlg->setColumnTitle(i, customColumnTitles[i]);
     }
 
