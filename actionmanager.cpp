@@ -105,7 +105,7 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
       mCollectionSelectionModelStateSaver(Q_NULLPTR)
 {
     new KOrgCalendarAdaptor(this);
-    QDBusConnection::sessionBus().registerObject(QLatin1String("/Calendar"), this);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/Calendar"), this);
 
     mGUIClient = client;
     mACollection = mGUIClient->actionCollection();
@@ -266,7 +266,7 @@ void ActionManager::initActions()
         a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(print()));
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
         a->setEnabled(
-            !KMimeTypeTrader::self()->query(QLatin1String("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
+            !KMimeTypeTrader::self()->query(QStringLiteral("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
     } else {
         KStandardAction::open(this, SLOT(file_open()), mACollection);
         KStandardAction::print(mCalendarView, SLOT(print()), mACollection);
@@ -1001,7 +1001,7 @@ bool ActionManager::saveURL()
 
 void ActionManager::exportHTML()
 {
-    HTMLExportSettings *settings = new HTMLExportSettings(QLatin1String("KOrganizer"));
+    HTMLExportSettings *settings = new HTMLExportSettings(QStringLiteral("KOrganizer"));
     mSettingsToFree.insert(settings);
     // Manually read in the config, because parametrized kconfigxt objects don't
     // seem to load the config theirselves
@@ -1067,8 +1067,8 @@ void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode
     settings->setEMail(CalendarSupport::KCalPrefs::instance()->email());
     settings->setName(CalendarSupport::KCalPrefs::instance()->fullName());
 
-    settings->setCreditName(QLatin1String("KOrganizer"));
-    settings->setCreditURL(QLatin1String("http://korganizer.kde.org"));
+    settings->setCreditName(QStringLiteral("KOrganizer"));
+    settings->setCreditURL(QStringLiteral("http://korganizer.kde.org"));
 
     KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob(calendar(), settings, autoMode, mMainWindow, view());
 

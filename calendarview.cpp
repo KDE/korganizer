@@ -612,7 +612,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
                                             i18n("Keep Absolute Times?"),
                                             KGuiItem(i18n("Keep Times")),
                                             KGuiItem(i18n("Move Times")),
-                                            QLatin1String("calendarKeepAbsoluteTimes"));
+                                            QStringLiteral("calendarKeepAbsoluteTimes"));
         if (rc == KMessageBox::Yes) {
             // keep the absolute time - note the new viewing time zone in the calendar
             mCalendar->setViewTimeSpec(newTimeSpec);
@@ -1822,7 +1822,7 @@ void CalendarView::printPreview()
 
 void CalendarView::exportWeb()
 {
-    KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings(QLatin1String("KOrganizer"));
+    KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings(QStringLiteral("KOrganizer"));
     Q_ASSERT(settings);
     // Manually read in the config, because parameterized kconfigxt objects don't
     // seem to load the config theirselves

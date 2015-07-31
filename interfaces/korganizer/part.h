@@ -42,7 +42,7 @@ public:
 
     static QString serviceType()
     {
-        return QLatin1String("KOrganizer/Part");
+        return QStringLiteral("KOrganizer/Part");
     }
 
     typedef QList<Part *> List;

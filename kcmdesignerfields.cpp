@@ -73,16 +73,16 @@ public:
             mPreview = QPixmap::fromImage(img);
 
             QMap<QString, QString> allowedTypes;
-            allowedTypes.insert(QLatin1String("QLineEdit"), i18n("Text"));
-            allowedTypes.insert(QLatin1String("QTextEdit"), i18n("Text"));
-            allowedTypes.insert(QLatin1String("QSpinBox"), i18n("Numeric Value"));
-            allowedTypes.insert(QLatin1String("QCheckBox"), i18n("Boolean"));
-            allowedTypes.insert(QLatin1String("QComboBox"), i18n("Selection"));
-            allowedTypes.insert(QLatin1String("QDateTimeEdit"), i18n("Date & Time"));
-            allowedTypes.insert(QLatin1String("KLineEdit"), i18n("Text"));
-            allowedTypes.insert(QLatin1String("KTextEdit"), i18n("Text"));
-            allowedTypes.insert(QLatin1String("KDateTimeWidget"), i18n("Date & Time"));
-            allowedTypes.insert(QLatin1String("KDatePicker"), i18n("Date"));
+            allowedTypes.insert(QStringLiteral("QLineEdit"), i18n("Text"));
+            allowedTypes.insert(QStringLiteral("QTextEdit"), i18n("Text"));
+            allowedTypes.insert(QStringLiteral("QSpinBox"), i18n("Numeric Value"));
+            allowedTypes.insert(QStringLiteral("QCheckBox"), i18n("Boolean"));
+            allowedTypes.insert(QStringLiteral("QComboBox"), i18n("Selection"));
+            allowedTypes.insert(QStringLiteral("QDateTimeEdit"), i18n("Date & Time"));
+            allowedTypes.insert(QStringLiteral("KLineEdit"), i18n("Text"));
+            allowedTypes.insert(QStringLiteral("KTextEdit"), i18n("Text"));
+            allowedTypes.insert(QStringLiteral("KDateTimeWidget"), i18n("Date & Time"));
+            allowedTypes.insert(QStringLiteral("KDatePicker"), i18n("Date"));
 
             QList<QWidget *> list = wdg->findChildren<QWidget *>();
             QWidget *it;
