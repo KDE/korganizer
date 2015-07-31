@@ -288,7 +288,7 @@ public:
         return score;
     }
 
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const Q_DECL_OVERRIDE
     {
         const int leftScore = score(left);
         const int rightScore = score(right);
