@@ -76,7 +76,7 @@ void SummaryEventTester::test_Multiday()
         qDebug() << i;*/
 
         QCOMPARE(ev5->summaryText, QString(multiDayWithTimeFuture + QString::fromLatin1(" (%1/7)").arg(i - 100 + 1)));
-        QCOMPARE(ev5->daysToGo, QString::fromLatin1("in %1 days").arg(i));
+        QCOMPARE(ev5->daysToGo, QStringLiteral("in %1 days").arg(i));
 
         qDeleteAll(events5);
     }
