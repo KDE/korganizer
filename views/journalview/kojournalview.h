@@ -56,12 +56,10 @@ public:
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) Q_DECL_OVERRIDE;
 
-    /** reimp */
     void getHighlightMode(bool &highlightEvents,
                           bool &highlightTodos,
                           bool &highlightJournals) Q_DECL_OVERRIDE;
 
-    /** reimp */
     CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
