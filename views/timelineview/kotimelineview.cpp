@@ -132,44 +132,37 @@ KOTimelineView::~KOTimelineView()
     delete d;
 }
 
-/*virtual*/
 Akonadi::Item::List KOTimelineView::selectedIncidences()
 {
     return d->mTimeLineView->selectedIncidences();
 }
 
-/*virtual*/
 KCalCore::DateList KOTimelineView::selectedIncidenceDates()
 {
     return d->mTimeLineView->selectedIncidenceDates();
 }
 
-/*virtual*/
 int KOTimelineView::currentDateCount() const
 {
     return d->mTimeLineView->currentDateCount();
 }
 
-/*virtual*/
 void KOTimelineView::showDates(const QDate &start, const QDate &end, const QDate &)
 {
     d->mTimeLineView->showDates(start, end);
 }
 
-/*virtual*/
 void KOTimelineView::showIncidences(const Akonadi::Item::List &incidenceList,
                                     const QDate &date)
 {
     d->mTimeLineView->showIncidences(incidenceList, date);
 }
 
-/*virtual*/
 void KOTimelineView::updateView()
 {
     d->mTimeLineView->updateView();
 }
 
-/*virtual*/
 void KOTimelineView::changeIncidenceDisplay(const Akonadi::Item &incidence,
         Akonadi::IncidenceChanger::ChangeType changeType)
 {
