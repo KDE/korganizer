@@ -1,11 +1,6 @@
-
-include_directories(${Boost_INCLUDE_DIRS})
-
 ########### next target ###############
 
 
-
-include_directories(${Boost_INCLUDE_DIR})
 
 set(kontact_specialdatesplugin_PART_SRCS specialdates_plugin.cpp sdsummarywidget.cpp korganizer_kontactplugins_specialdates_debug.cpp)
 

@@ -11,7 +11,6 @@ include_directories(
   ${CMAKE_BINARY_DIR}/calendarsupport
   ${CMAKE_BINARY_DIR}/calendarviews
   ${AKONADI_INCLUDE_DIR}
-  ${Boost_INCLUDE_DIRS}
   ${ZLIB_INCLUDE_DIRS}
 )
 
