@@ -41,7 +41,6 @@ int main(int argc, char **argv)
     KOrg::AboutData aboutData;
     app.setAboutData(aboutData);
 
-
     QCommandLineParser *cmdArgs = app.cmdArgs();
     korganizer_options(cmdArgs);
 
