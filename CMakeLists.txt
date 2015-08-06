@@ -11,7 +11,6 @@ include_directories(
   ${CMAKE_BINARY_DIR}/calendarsupport
   ${CMAKE_BINARY_DIR}/calendarviews
   ${AKONADI_INCLUDE_DIR}
-  ${ZLIB_INCLUDE_DIRS}
 )
 
 if(BUILD_TESTING)
@@ -256,7 +255,6 @@ set(korganizerprivate_LIB_SRCS
     KF5::KCMUtils
     KF5::NewStuff
     calendarsupportcollectionpage
-    ${ZLIB_LIBRARIES}
   )
 
   set_target_properties(korganizerprivate PROPERTIES
