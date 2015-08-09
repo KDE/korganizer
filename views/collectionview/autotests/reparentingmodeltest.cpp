@@ -31,11 +31,11 @@ class DummyNode : public ReparentingModel::Node
 {
 public:
     DummyNode(ReparentingModel &personModel, const QString &name, const QString &data = QString())
-        : ReparentingModel::Node(personModel),
-          mName(name),
-          mData(data),
-          mUid(name),
-          mParent(QStringLiteral("orphan"))
+        : ReparentingModel::Node(personModel)
+        , mUid(name)
+        , mParent(QStringLiteral("orphan"))
+        , mName(name)
+        , mData(data)
     {}
 
     virtual ~DummyNode() {};
