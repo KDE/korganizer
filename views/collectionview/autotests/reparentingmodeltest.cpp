@@ -142,7 +142,7 @@ public Q_SLOTS:
     }
 };
 
-QModelIndex getIndex(char *string, const QAbstractItemModel &model)
+QModelIndex getIndex(const char *string, const QAbstractItemModel &model)
 {
     QModelIndexList list = model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(string), 1, Qt::MatchRecursive);
     if (list.isEmpty()) {
@@ -151,7 +151,7 @@ QModelIndex getIndex(char *string, const QAbstractItemModel &model)
     return list.first();
 }
 
-QModelIndexList getIndexList(char *string, const QAbstractItemModel &model)
+QModelIndexList getIndexList(const char *string, const QAbstractItemModel &model)
 {
     return model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(string), 1, Qt::MatchRecursive);
 }
