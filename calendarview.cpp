@@ -1076,7 +1076,7 @@ void CalendarView::newTodo(const QString &summary, const QString &description,
         summary, description, attachments,
         attendees, attachmentMimetypes,
         QStringList()/* attachment labels */,
-        inlineAttachment, defaultCol,
+        inlineAttachment, defaultCol, true/* cleanupAttachmentTempFiles */,
         this/* parent */);
 }
 
