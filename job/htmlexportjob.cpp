@@ -848,15 +848,15 @@ QString cleanChars(const QString &text)
     txt = txt.replace(QLatin1Char('<'), QStringLiteral("&lt;"));
     txt = txt.replace(QLatin1Char('>'), QStringLiteral("&gt;"));
     txt = txt.replace(QLatin1Char('\"'), QStringLiteral("&quot;"));
-    txt = txt.replace(QString::fromUtf8("ä"), QStringLiteral("&auml;"));
-    txt = txt.replace(QString::fromUtf8("Ä"), QStringLiteral("&Auml;"));
-    txt = txt.replace(QString::fromUtf8("ö"), QStringLiteral("&ouml;"));
-    txt = txt.replace(QString::fromUtf8("Ö"), QStringLiteral("&Ouml;"));
-    txt = txt.replace(QString::fromUtf8("ü"), QStringLiteral("&uuml;"));
-    txt = txt.replace(QString::fromUtf8("Ü"), QStringLiteral("&Uuml;"));
-    txt = txt.replace(QString::fromUtf8("ß"), QStringLiteral("&szlig;"));
-    txt = txt.replace(QString::fromUtf8("€"), QStringLiteral("&euro;"));
-    txt = txt.replace(QString::fromUtf8("é"), QStringLiteral("&eacute;"));
+    txt = txt.replace(QStringLiteral("ä"), QStringLiteral("&auml;"));
+    txt = txt.replace(QStringLiteral("Ä"), QStringLiteral("&Auml;"));
+    txt = txt.replace(QStringLiteral("ö"), QStringLiteral("&ouml;"));
+    txt = txt.replace(QStringLiteral("Ö"), QStringLiteral("&Ouml;"));
+    txt = txt.replace(QStringLiteral("ü"), QStringLiteral("&uuml;"));
+    txt = txt.replace(QStringLiteral("Ü"), QStringLiteral("&Uuml;"));
+    txt = txt.replace(QStringLiteral("ß"), QStringLiteral("&szlig;"));
+    txt = txt.replace(QStringLiteral("€"), QStringLiteral("&euro;"));
+    txt = txt.replace(QStringLiteral("é"), QStringLiteral("&eacute;"));
 
     return txt;
 }
