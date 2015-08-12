@@ -21,7 +21,7 @@ target_link_libraries(testkodaymatrix
 )
 
 add_executable(koeventpopmenutest koeventpopupmenutest.cpp ../koeventpopupmenu.cpp ../kocorehelper.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
-add_test(koeventpopmenutest koeventpopupmenutest)
+add_test(koeventpopmenutest koeventpopmenutest)
 ecm_mark_as_test(koeventpopmenutest)
 target_link_libraries(koeventpopmenutest
   Qt5::Test
