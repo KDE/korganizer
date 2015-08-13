@@ -94,7 +94,7 @@
     <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Support for multiple calendars and todo lists.</li>
-      <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents</li>
+      <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents.</li>
       <li xml:lang="de">Unterstützt mehrere Kalender und Aufgabenlisten.</li>
       <li xml:lang="en-GB">Support for multiple calendars and todo lists.</li>
       <li xml:lang="es">Admite varios calendarios y listas de tareas pendientes.</li>
@@ -119,7 +119,7 @@
       <li xml:lang="x-test">xxSupport for multiple calendars and todo lists.xx</li>
       <li xml:lang="zh-TW">支援多重行事曆與待辦清單。</li>
       <li>Storage model.</li>
-      <li xml:lang="ca">Model d'emmagatzematge</li>
+      <li xml:lang="ca">Model d'emmagatzematge.</li>
       <li xml:lang="de">Speichermodell.</li>
       <li xml:lang="en-GB">Storage model.</li>
       <li xml:lang="es">Modelo de almacenamiento.</li>
@@ -144,7 +144,7 @@
       <li xml:lang="x-test">xxStorage model.xx</li>
       <li xml:lang="zh-TW">儲存模型。</li>
       <li>Undo and Redo.</li>
-      <li xml:lang="ca">Fes i desfés</li>
+      <li xml:lang="ca">Fes i desfés.</li>
       <li xml:lang="de">Zurücknehmen und Wiederherstellen.</li>
       <li xml:lang="en-GB">Undo and Redo.</li>
       <li xml:lang="es">Deshacer y rehacer.</li>
@@ -171,7 +171,7 @@
       <li xml:lang="zh-CN">撤消和重做。</li>
       <li xml:lang="zh-TW">復原、重做。</li>
       <li>Todo integration with agenda view.</li>
-      <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
+      <li xml:lang="ca">Integra les pendents amb la vista d'agenda.</li>
       <li xml:lang="de">Integration von Aufgaben mit Tagesansicht.</li>
       <li xml:lang="en-GB">Todo integration with agenda view.</li>
       <li xml:lang="es">Integración de tareas pendientes con la vista de agenda.</li>
@@ -195,7 +195,7 @@
       <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
       <li xml:lang="zh-TW">將待辦事項與行程檢視整合。</li>
       <li>Attachments for events and todos.</li>
-      <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
+      <li xml:lang="ca">Adjunts pels esdeveniments i pendents.</li>
       <li xml:lang="de">Anhänge für Ereignisse und Aufgaben.</li>
       <li xml:lang="en-GB">Attachments for events and todos.</li>
       <li xml:lang="es">Adjuntos para eventos y tareas pendientes.</li>
@@ -219,7 +219,7 @@
       <li xml:lang="x-test">xxAttachments for events and todos.xx</li>
       <li xml:lang="zh-TW">事件與待辦事項的附件。</li>
       <li>Quick todo and event entries.</li>
-      <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
+      <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids.</li>
       <li xml:lang="de">Schnelles Eintragen von Aufgaben und Ereignissen.</li>
       <li xml:lang="en-GB">Quick todo and event entries.</li>
       <li xml:lang="es">Entradas rápidas para tareas pendientes y eventos.</li>
@@ -243,7 +243,7 @@
       <li xml:lang="x-test">xxQuick todo and event entries.xx</li>
       <li xml:lang="zh-TW">快速待辦與事件項目。</li>
       <li>Plugin for Jewish calendar dates.</li>
-      <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
+      <li xml:lang="ca">Connector per a les dates del calendari jueu.</li>
       <li xml:lang="de">Modul für jüdische Kalenderdaten.</li>
       <li xml:lang="en-GB">Plugin for Jewish calendar dates.</li>
       <li xml:lang="es">Complemento para fechas del calendario judío.</li>
@@ -269,7 +269,7 @@
       <li xml:lang="zh-CN">犹太教日历插件。</li>
       <li xml:lang="zh-TW">猶太行事曆外掛程式。</li>
       <li>Print support.</li>
-      <li xml:lang="ca">Implementa la impressió</li>
+      <li xml:lang="ca">Implementa la impressió.</li>
       <li xml:lang="cs">Podpora tisku.</li>
       <li xml:lang="de">Unterstützung für Drücken.</li>
       <li xml:lang="en-GB">Print support.</li>
