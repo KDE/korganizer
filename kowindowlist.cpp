@@ -23,7 +23,7 @@
 */
 
 #include "kowindowlist.h"
-#include "korganizer/mainwindow.h"
+#include "mainwindow.h"
 
 #include <QUrl>
 

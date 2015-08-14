@@ -5,12 +5,7 @@ add_definitions( -DQT_NO_CAST_TO_ASCII )
 add_definitions(-DTRANSLATION_DOMAIN=\"korganizer\")
 
 include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
   ${CMAKE_CURRENT_BINARY_DIR}
-  ${CMAKE_SOURCE_DIR}/calendarsupport
-  ${CMAKE_BINARY_DIR}/calendarsupport
-  ${CMAKE_BINARY_DIR}/calendarviews
-  ${AKONADI_INCLUDE_DIR}
 )
 
 if(BUILD_TESTING)
@@ -83,7 +78,7 @@ if(KDEPIM_BUILD_DESKTOP)
     KF5::CalendarCore
     KF5::Holidays
     KF5::MailTransport
-    
+
     Qt5::UiTools
     pimcommon
   )
@@ -134,6 +129,10 @@ target_link_libraries(korganizer_core
   eventviews
   KF5::IdentityManagement
   korganizer_interfaces
+)
+
+target_include_directories(korganizer_core PUBLIC
+  "$<BUILD_INTERFACE:${korganizer_SOURCE_DIR};${korganizer_BINARY_DIR}>"
 )
 
 set_target_properties(korganizer_core PROPERTIES
@@ -234,7 +233,6 @@ set(korganizerprivate_LIB_SRCS
 
   target_link_libraries(korganizerprivate
     pimcommon
-    
     calendarsupport
     eventviews
     incidenceeditorsng
@@ -255,6 +253,10 @@ set(korganizerprivate_LIB_SRCS
     KF5::KCMUtils
     KF5::NewStuff
     calendarsupportcollectionpage
+  )
+
+  target_include_directories(korganizerprivate PUBLIC
+    "$<BUILD_INTERFACE:${korganizer_SOURCE_DIR};${korganizer_BINARY_DIR}>"
   )
 
   set_target_properties(korganizerprivate PROPERTIES

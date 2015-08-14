@@ -30,7 +30,7 @@
 #include "koglobals.h"
 #include "prefs/koprefs.h"
 #include "widgets/navigatorbar.h"
-#include "korganizer/mainwindow.h"
+#include "mainwindow.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/journalview/kojournalview.h"
 #include "views/listview/kolistview.h"

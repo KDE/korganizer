@@ -1,9 +1,3 @@
-
-include_directories(
-  ${CMAKE_SOURCE_DIR}/korganizer/interfaces
-  ${CMAKE_SOURCE_DIR}/korganizer
-)
-
 ########### next target ###############
 
 set(korg_datenums_PART_SRCS

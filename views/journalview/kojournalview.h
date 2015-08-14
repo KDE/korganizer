@@ -25,7 +25,7 @@
 #ifndef KORG_VIEWS_KOJOURNALVIEW_H
 #define KORG_VIEWS_KOJOURNALVIEW_H
 
-#include "korganizer/baseview.h"
+#include "baseview.h"
 #include <KCalCore/Incidence> // for KCalCore::DateList typedef
 
 namespace EventViews

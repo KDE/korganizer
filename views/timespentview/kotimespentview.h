@@ -25,7 +25,7 @@
 #ifndef KORG_VIEWS_KOTIMESPENTVIEW_H
 #define KORG_VIEWS_KOTIMESPENTVIEW_H
 
-#include "korganizer/baseview.h"
+#include "baseview.h"
 #include <Akonadi/Calendar/ETMCalendar>
 
 namespace EventViews

@@ -24,7 +24,7 @@
 #ifndef KORG_VIEWS_KOWHATSNEXTVIEW_H
 #define KORG_VIEWS_KOWHATSNEXTVIEW_H
 
-#include "korganizer/baseview.h"
+#include "baseview.h"
 #include <calendarviews/whatsnext/whatsnextview.h>
 
 /**

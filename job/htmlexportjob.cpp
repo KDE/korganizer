@@ -22,7 +22,7 @@
 
 #include "htmlexportjob.h"
 #include "htmlexportsettings.h"
-#include "korganizer/mainwindow.h"
+#include "mainwindow.h"
 
 #include <calendarsupport/utils.h>
 

@@ -30,8 +30,8 @@
 #ifndef KORG_KORGANIZER_H
 #define KORG_KORGANIZER_H
 
-#include "korganizer/mainwindow.h"
-#include "korganizer/part.h"
+#include "mainwindow.h"
+#include "part.h"
 
 #include <KParts/MainWindow>
 

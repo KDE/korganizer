@@ -30,7 +30,7 @@
 #define KORG_ACTIONMANAGER_H
 
 #include "korganizerprivate_export.h"
-#include "korganizer/part.h"
+#include "part.h"
 
 #include <AkonadiCore/Item>
 #include <Akonadi/Calendar/ETMCalendar>

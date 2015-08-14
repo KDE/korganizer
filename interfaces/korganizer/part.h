@@ -22,7 +22,7 @@
 #ifndef KORG_INTERFACES_PART_H
 #define KORG_INTERFACES_PART_H
 
-#include "korganizer/mainwindow.h"
+#include "mainwindow.h"
 
 #include <KPluginFactory>
 #include <KParts/Part>

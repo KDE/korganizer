@@ -27,7 +27,7 @@
 #ifndef KORG_KOEVENTVIEW_H
 #define KORG_KOEVENTVIEW_H
 
-#include "korganizer/baseview.h"
+#include "baseview.h"
 
 namespace Akonadi
 {

@@ -30,7 +30,7 @@
 #include "kocore.h"
 #include "koglobals.h"
 #include "prefs/koprefs.h"
-#include "korganizer/corehelper.h"
+#include "corehelper.h"
 
 class KOCoreHelper : public KOrg::CoreHelper
 {

@@ -26,7 +26,7 @@
 #ifndef KORG_KORGANIZER_PART_H
 #define KORG_KORGANIZER_PART_H
 
-#include "korganizer/mainwindow.h"
+#include "mainwindow.h"
 
 #include <KParts/Part>
 #include <kparts/readonlypart.h>
