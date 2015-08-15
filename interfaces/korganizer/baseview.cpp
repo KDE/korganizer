@@ -26,7 +26,7 @@
 
 using namespace KOrg;
 
-class BaseView::Private
+class Q_DECL_HIDDEN BaseView::Private
 {
     BaseView *const q;
 
