@@ -41,7 +41,6 @@
 #include <QTextEdit>
 #include <QShortcut>
 
-Q_DECLARE_METATYPE(KMime::Message::Ptr)
 NoteEditDialogTest::NoteEditDialogTest()
 {
     qRegisterMetaType<Akonadi::Collection>();
