@@ -665,10 +665,10 @@ void SDSummaryWidget::popupMenu(const QString &url)
 {
     QMenu popup(this);
     const QAction *sendMailAction = popup.addAction(
-                                        KIconLoader::global()->loadIcon(QLatin1String("mail-message-new"), KIconLoader::Small),
+                                        KIconLoader::global()->loadIcon(QStringLiteral("mail-message-new"), KIconLoader::Small),
                                         i18n("Send &Mail"));
     const QAction *viewContactAction = popup.addAction(
-                                           KIconLoader::global()->loadIcon(QLatin1String("view-pim-contacts"), KIconLoader::Small),
+                                           KIconLoader::global()->loadIcon(QStringLiteral("view-pim-contacts"), KIconLoader::Small),
                                            i18n("View &Contact"));
 
     const QAction *ret = popup.exec(QCursor::pos());

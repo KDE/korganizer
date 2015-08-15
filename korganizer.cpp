@@ -151,7 +151,7 @@ void KOrganizer::initActions()
     KStandardAction::configureToolbars(this, SLOT(configureToolbars()), actionCollection());
     KStandardAction::quit(this, SLOT(close()), actionCollection());
 
-    setXMLFile(QLatin1String("korganizerui.rc"), true);
+    setXMLFile(QStringLiteral("korganizerui.rc"), true);
     createGUI(Q_NULLPTR);
 
     setAutoSaveSettings();

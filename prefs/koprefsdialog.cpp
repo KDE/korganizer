@@ -386,7 +386,7 @@ public:
 
         KPIM::KPrefsWidDuration *defaultDuration =
             addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
-                           QLatin1String("hh:mm"), defaultPage);
+                           QStringLiteral("hh:mm"), defaultPage);
 
         timesLayout->addWidget(defaultDuration->label(), 1, 0);
         timesLayout->addWidget(defaultDuration->timeEdit(), 1, 1);
@@ -1276,7 +1276,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
         QTreeWidgetItem *item = Q_NULLPTR;
         if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
             item = new PluginItem(decorations, *it);
-        } else if (!(*it)->hasServiceType(QLatin1String("KOrganizer/PrintPlugin"))) {
+        } else if (!(*it)->hasServiceType(QStringLiteral("KOrganizer/PrintPlugin"))) {
             // we specifically skip print plugins since we no longer support them
             item = new PluginItem(others, *it);
         } else {
@@ -1339,7 +1339,7 @@ void KOPrefsDialogPlugins::configure()
     } else {
         KMessageBox::sorry(this,
                            i18nc("@info", "Unable to configure this plugin"),
-                           QLatin1String("PluginConfigUnable"));
+                           QStringLiteral("PluginConfigUnable"));
     }
 }
 
@@ -1403,7 +1403,7 @@ void KOPrefsDialogPlugins::selectionChanged()
         return;
     }
 
-    QVariant variant = item->service()->property(QLatin1String("X-KDE-KOrganizer-HasSettings"));
+    QVariant variant = item->service()->property(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
 
     bool hasSettings = true;
     if (variant.isValid()) {

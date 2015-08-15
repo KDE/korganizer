@@ -273,7 +273,7 @@ void ActionManager::initActions()
         QAction *preview =
             KStandardAction::printPreview(mCalendarView, SLOT(printPreview()), mACollection);
         preview->setEnabled(
-            !KMimeTypeTrader::self()->query(QLatin1String("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
+            !KMimeTypeTrader::self()->query(QStringLiteral("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -460,7 +460,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("go_today"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
-    action = new QAction(QIcon::fromTheme(isRTL ? QLatin1String("go-next") : QLatin1String("go-previous")),
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next") : QStringLiteral("go-previous")),
                          i18nc("scroll backward", "&Backward"), this);
     action->setIconText(i18nc("scroll backward", "Back"));
     setHelpText(action, i18n("Scroll Backward"));
@@ -475,7 +475,7 @@ void ActionManager::initActions()
     connect( mCalendarView, SIGNAL(changeNavStringPrev(QString)),
              this, SLOT(dumpText(QString)) );*/
 
-    action = new QAction(QIcon::fromTheme(isRTL ? QLatin1String("go-previous") : QLatin1String("go-next")),
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") : QStringLiteral("go-next")),
                          i18nc("scroll forward", "&Forward"), this);
     action->setIconText(i18nc("scoll forward", "Forward"));
     setHelpText(action, i18n("Scroll Forward"));
@@ -913,7 +913,7 @@ void ActionManager::file_icalimport()
 void ActionManager::file_import()
 {
     const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(), QString(), QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")),
-                     QLatin1String("text/calendar"));
+                     QStringLiteral("text/calendar"));
     if (!url.isEmpty()) {   // isEmpty if user canceled the dialog
         importCalendar(url);
     }
@@ -965,7 +965,7 @@ bool ActionManager::saveURL()
                               "'Export vCalendar' to save in vCalendar format."),
                          i18n("Format Conversion"), KGuiItem(i18n("Proceed")),
                          KStandardGuiItem::cancel(),
-                         QLatin1String("dontaskFormatConversion"), KMessageBox::Notify);
+                         QStringLiteral("dontaskFormatConversion"), KMessageBox::Notify);
         if (result != KMessageBox::Continue) {
             return false;
         }
@@ -1667,7 +1667,7 @@ void ActionManager::openEventEditor(const QString &summary,
                         Q_NULLPTR,
                         i18n("Removing attachments from an email might invalidate its signature."),
                         i18n("Remove Attachments"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
-                        QLatin1String("BodyOnlyInlineAttachment")) != KMessageBox::Continue) {
+                        QStringLiteral("BodyOnlyInlineAttachment")) != KMessageBox::Continue) {
                 delete msg;
                 return;
             }

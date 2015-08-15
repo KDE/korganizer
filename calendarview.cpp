@@ -513,7 +513,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
 {
     QStringList filterList;
 
-    const QStringList oldFilterList = config->groupList().filter(QRegExp(QLatin1String("^Filter_.*")));
+    const QStringList oldFilterList = config->groupList().filter(QRegExp(QStringLiteral("^Filter_.*")));
     //Delete Old Group
     Q_FOREACH (const QString &conf, oldFilterList) {
         KConfigGroup group = config->group(conf);
@@ -1757,7 +1757,7 @@ void CalendarView::schedule(KCalCore::iTIPMethod method, const Akonadi::Item &it
 
 void CalendarView::openAddressbook()
 {
-    KRun::runCommand(QLatin1String("kaddressbook"), topLevelWidget());
+    KRun::runCommand(QStringLiteral("kaddressbook"), topLevelWidget());
 }
 
 bool CalendarView::isReadOnly() const
@@ -1878,7 +1878,7 @@ void CalendarView::exportVCalendar()
                          i18n("Data Loss Warning"),
                          KGuiItem(i18n("Proceed")),
                          KStandardGuiItem::cancel(),
-                         QLatin1String("dontaskVCalExport"),
+                         QStringLiteral("dontaskVCalExport"),
                          KMessageBox::Notify);
         if (result != KMessageBox::Continue) {
             return;
@@ -2411,7 +2411,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                      "belongs to a read-only calendar.",
                      incidence->summary()),
                 i18n("Removing not possible"),
-                QLatin1String("deleteReadOnlyIncidence"));
+                QStringLiteral("deleteReadOnlyIncidence"));
         }
         qCWarning(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): No rights to delete item";
         return false;

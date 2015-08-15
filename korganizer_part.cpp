@@ -81,7 +81,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     mActionManager->init();
     mActionManager->readSettings();
 
-    setXMLFile(QLatin1String("korganizer_part.rc"), true);
+    setXMLFile(QStringLiteral("korganizer_part.rc"), true);
     mActionManager->loadParts();
     setTitle();
 }
