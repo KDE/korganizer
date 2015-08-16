@@ -44,7 +44,7 @@ bool SummaryEventInfo::mShowBirthdays = true;
 bool SummaryEventInfo::mShowAnniversaries = true;
 
 typedef QHash<QString, KDateTime> DateTimeByUidHash;
-Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid);
+Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid)
 
 static bool eventLessThan(const KCalCore::Event::Ptr &event1, const KCalCore::Event::Ptr &event2)
 {
