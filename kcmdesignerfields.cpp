@@ -30,8 +30,10 @@
 #include <KRun>
 #include <KShell>
 #include <QStandardPaths>
-#include <KIO/Job>
-#include <KIO/NetAccess>
+#include <KIO/DeleteJob>
+#include <KIO/FileCopyJob>
+#include <KIO/MkdirJob>
+#include <KJobWidgets>
 #include <KLocalizedString>
 #include <QDialog>
 #include <KGlobal>
@@ -192,7 +194,8 @@ void KCMDesignerFields::deleteFile()
                     this,
                     i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>",
                          pageItem->text(0)), QString(), KStandardGuiItem::del()) == KMessageBox::Continue) {
-            KIO::NetAccess::del(pageItem->path(), Q_NULLPTR);
+            auto job = KIO::del(pageItem->path());
+            job->exec();
         }
     }
     // The actual view refresh will be done automagically by the slots connected to kdirwatch
@@ -208,6 +211,7 @@ void KCMDesignerFields::importFile()
     dest = dest.adjusted(QUrl::RemoveFilename);
     dest.setPath(src.fileName());
     KIO::Job *job = KIO::file_copy(src, dest, -1, KIO::Overwrite);
+    KJobWidgets::setWindow(job, this);
     job->exec();
     // The actual view refresh will be done automagically by the slots connected to kdirwatch
 }
@@ -446,7 +450,9 @@ void KCMDesignerFields::startDesigner()
     // check if path exists and create one if not.
     QString cepPath = localUiDir();
     if (!QDir(cepPath).exists()) {
-        KIO::NetAccess::mkdir(cepPath, this);
+        auto job = KIO::mkdir(cepPath);
+        KJobWidgets::setWindow(job, this);
+        job->exec();
     }
 
     // finally jump there
