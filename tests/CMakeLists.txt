@@ -31,5 +31,4 @@ target_link_libraries(testkcmdesignerfields
   Qt5::UiTools
   KF5::KCMUtils
   KF5::KIOWidgets
-  KF5::KDELibs4Support
 )

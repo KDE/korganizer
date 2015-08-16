@@ -36,7 +36,6 @@
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <QDialog>
-#include <KGlobal>
 
 #include <QGroupBox>
 #include <QHBoxLayout>
