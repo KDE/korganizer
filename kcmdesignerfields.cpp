@@ -208,8 +208,7 @@ void KCMDesignerFields::importFile()
     dest = dest.adjusted(QUrl::RemoveFilename);
     dest.setPath(src.fileName());
     KIO::Job *job = KIO::file_copy(src, dest, -1, KIO::Overwrite);
-    KIO::NetAccess::synchronousRun(job, this);
-
+    job->exec();
     // The actual view refresh will be done automagically by the slots connected to kdirwatch
 }
 
