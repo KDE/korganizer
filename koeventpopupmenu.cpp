@@ -44,7 +44,6 @@
 #include <KActionCollection>
 #include <KMime/Message>
 #include <KMimeTypeTrader>
-#include <KPrintPreview>
 #include "korganizer_debug.h"
 
 #include <incidenceeditor-ng/incidencedialogfactory.h>
@@ -63,11 +62,9 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mEditOnlyItems.append(addSeparator());
     addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print")), i18n("&Print..."),
               this, SLOT(print()));
-    if (KPrintPreview::isAvailable()) {
-        addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print-preview")),
-                  i18n("Print Previe&w..."),
-                  this, SLOT(printPreview()));
-    }
+    addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print-preview")),
+              i18n("Print Previe&w..."),
+              this, SLOT(printPreview()));
 
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
