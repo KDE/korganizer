@@ -368,43 +368,43 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")), i18n("What's &Next"), this);
     mACollection->addAction(QStringLiteral("view_whatsnext"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-            SLOT(showWhatsNextView()));
+    connect(action, &QAction::triggered, mCalendarView->viewManager(),
+            &KOViewManager::showWhatsNextView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18n("&Month"), this);
     mACollection->addAction(QStringLiteral("view_month"), action);
-    connect(action, SIGNAL(triggered(bool)),
-            mCalendarView->viewManager(), SLOT(showMonthView()));
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showMonthView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")), i18n("&Agenda"), this);
     mACollection->addAction(QStringLiteral("view_agenda"), action);
-    connect(action, SIGNAL(triggered(bool)),
-            mCalendarView->viewManager(), SLOT(showAgendaView()));
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showAgendaView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-list")), i18n("&Event List"), this);
     mACollection->addAction(QStringLiteral("view_list"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-            SLOT(showListView()));
+    connect(action, &QAction::triggered, mCalendarView->viewManager(),
+            &KOViewManager::showListView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("&To-do List"), this);
     mACollection->addAction(QStringLiteral("view_todo"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-            SLOT(showTodoView()));
+    connect(action, &QAction::triggered, mCalendarView->viewManager(),
+            &KOViewManager::showTodoView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-journal")), i18n("&Journal"), this);
     mACollection->addAction(QStringLiteral("view_journal"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-            SLOT(showJournalView()));
+    connect(action, &QAction::triggered, mCalendarView->viewManager(),
+            &KOViewManager::showJournalView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-timeline")), i18n("Time&line"), this);
     mACollection->addAction(QStringLiteral("view_timeline"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-            SLOT(showTimeLineView()));
+    connect(action, &QAction::triggered, mCalendarView->viewManager(),
+            &KOViewManager::showTimeLineView);
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-time-spent")), i18n("Time&spent"), this);
     mACollection->addAction(QStringLiteral("view_timespent"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-            SLOT(showTimeSpentView()));
+    connect(action, &QAction::triggered, mCalendarView->viewManager(),
+            &KOViewManager::showTimeSpentView);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     action = new QAction(i18n("&Refresh"), this);
@@ -529,18 +529,18 @@ void ActionManager::initActions()
 
     mNewSubtodoAction = new QAction(i18n("New Su&b-to-do..."), this);
     mACollection->addAction(QStringLiteral("new_subtodo"), mNewSubtodoAction);
-    connect(mNewSubtodoAction, SIGNAL(triggered(bool)), this,
-            SLOT(slotNewSubTodo()));
+    connect(mNewSubtodoAction, &QAction::triggered, this,
+            &ActionManager::slotNewSubTodo);
     mNewSubtodoAction->setEnabled(false);
-    connect(mCalendarView, SIGNAL(todoSelected(bool)), mNewSubtodoAction,
-            SLOT(setEnabled(bool)));
+    connect(mCalendarView, &CalendarView::todoSelected, mNewSubtodoAction,
+            &QAction::setEnabled);
 
     mNewJournalAction = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."), this);
     //mNewJournalAction->setIconText( i18n( "Journal" ) );
     setHelpText(mNewJournalAction, i18n("Create a new Journal"));
     mACollection->addAction(QStringLiteral("new_journal"), mNewJournalAction);
-    connect(mNewJournalAction, SIGNAL(triggered(bool)), this,
-            SLOT(slotNewJournal()));
+    connect(mNewJournalAction, &QAction::triggered, this,
+            &ActionManager::slotNewJournal);
 
     mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure View..."), this);
     mConfigureViewAction->setIconText(i18n("Configure"));
@@ -548,8 +548,8 @@ void ActionManager::initActions()
     mConfigureViewAction->setEnabled(mCalendarView->currentView() &&
                                      mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
-    connect(mConfigureViewAction, SIGNAL(triggered(bool)), mCalendarView,
-            SLOT(configureCurrentView()));
+    connect(mConfigureViewAction, &QAction::triggered, mCalendarView,
+            &CalendarView::configureCurrentView);
 
     mShowIncidenceAction = new QAction(i18n("&Show"), this);
     mACollection->addAction(QStringLiteral("show_incidence"), mShowIncidenceAction);
