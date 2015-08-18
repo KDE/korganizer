@@ -17,6 +17,9 @@ add_subdirectory(pixmaps)
 add_subdirectory(sounds)
 add_subdirectory(plugins)
 add_subdirectory(kcmconfigs)
+add_subdirectory(kontactplugin)
+add_subdirectory(views/collectionview)
+add_subdirectory(kconf_update)
 
 set(PERL ${PERL_EXECUTABLE})
 configure_file(
@@ -314,6 +317,3 @@ install(PROGRAMS
     ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal
     DESTINATION ${KDE_INSTALL_BINDIR}
 )
-
-add_subdirectory(kontactplugin)
-add_subdirectory(views/collectionview)
