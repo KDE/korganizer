@@ -26,6 +26,9 @@ if(KDEPIM_BUILD_DESKTOP)
   add_subdirectory(plugins)
   add_subdirectory(kcmconfigs)
 endif()
+add_subdirectory(kontactplugin)
+add_subdirectory(views/collectionview)
+add_subdirectory(kconf_update)
 
 set(PERL ${PERL_EXECUTABLE})
 configure_file(
@@ -332,5 +335,3 @@ set(korganizerprivate_LIB_SRCS
   )
 
 endif()
-add_subdirectory(kontactplugin)
-add_subdirectory(views/collectionview)
