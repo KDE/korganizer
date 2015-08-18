@@ -41,7 +41,7 @@ public:
       Create new instance of KOrganizer. If there is already running a
       KOrganizer only an additional main window is opened.
     */
-    int activate(const QStringList &args) Q_DECL_OVERRIDE;
+    int activate(const QStringList &args, const QString &workingDir) Q_DECL_OVERRIDE;
 
 private:
     /**

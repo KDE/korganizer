@@ -49,7 +49,7 @@ KOrganizerApp::~KOrganizerApp()
 {
 }
 
-int KOrganizerApp::activate(const QStringList &args)
+int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
 {
     qCDebug(KORGANIZER_LOG);
     static bool first = true;

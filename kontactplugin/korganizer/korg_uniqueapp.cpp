@@ -35,8 +35,10 @@ void KOrganizerUniqueAppHandler::loadCommandLineOptions(QCommandLineParser *pars
     korganizer_options(parser);
 }
 
-int KOrganizerUniqueAppHandler::activate(const QStringList &args)
+int KOrganizerUniqueAppHandler::activate(const QStringList &args, const QString &workingDir)
 {
+    Q_UNUSED(workingDir);
+
     // Ensure part is loaded
     (void)plugin()->part();
 
