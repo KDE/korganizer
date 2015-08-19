@@ -229,7 +229,9 @@ add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
 target_link_libraries(korganizerprivate
+PUBLIC
     pimcommon
+PRIVATE
     calendarsupport
     eventviews
     incidenceeditorsng
