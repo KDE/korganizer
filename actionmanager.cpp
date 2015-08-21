@@ -65,6 +65,9 @@
 #include <KCalCore/Person>
 
 #include <KMime/KMimeMessage>
+#include <KJobWidgets>
+#include <KIO/StatJob>
+#include <KIO/FileCopyJob>
 
 #include <QAction>
 #include <KActionCollection>
@@ -986,7 +989,9 @@ bool ActionManager::saveURL()
     }
 
     if (!mURL.isLocalFile()) {
-        if (!KIO::NetAccess::upload(mFile, mURL, view())) {
+        auto job = KIO::file_copy(QUrl::fromLocalFile(mFile), mURL);
+        KJobWidgets::setWindow(job, view());
+        if (!job->exec()) {
             QString msg = i18n("Cannot upload calendar to '%1'",
                                mURL.toDisplayString());
             KMessageBox::error(dialogParent(), msg);
