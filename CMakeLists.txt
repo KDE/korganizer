@@ -123,10 +123,12 @@ add_library(korganizer_core ${korganizer_core_LIB_SRCS})
 generate_export_header(korganizer_core BASE_NAME korganizer_core)
 
 target_link_libraries(korganizer_core
+PUBLIC
+  korganizer_interfaces
+PRIVATE
   calendarsupport
   eventviews
   KF5::IdentityManagement
-  korganizer_interfaces
 )
 
 target_include_directories(korganizer_core PUBLIC
