@@ -268,15 +268,10 @@ void ActionManager::initActions()
         mACollection->addAction(QStringLiteral("korganizer_print"), a);
         a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(print()));
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
-        a->setEnabled(
-            !KMimeTypeTrader::self()->query(QStringLiteral("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
     } else {
         KStandardAction::open(this, SLOT(file_open()), mACollection);
         KStandardAction::print(mCalendarView, SLOT(print()), mACollection);
-        QAction *preview =
-            KStandardAction::printPreview(mCalendarView, SLOT(printPreview()), mACollection);
-        preview->setEnabled(
-            !KMimeTypeTrader::self()->query(QStringLiteral("application/pdf"), QStringLiteral("KParts/ReadOnlyPart")).isEmpty());
+        KStandardAction::printPreview(mCalendarView, SLOT(printPreview()), mACollection);
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
