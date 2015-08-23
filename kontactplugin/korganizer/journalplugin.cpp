@@ -44,7 +44,6 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
 
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
-    KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 
     QAction *action =
         new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),

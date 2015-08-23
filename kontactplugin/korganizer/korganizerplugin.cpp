@@ -58,7 +58,6 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
 {
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
-    KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 
     QAction *action  =
         new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),

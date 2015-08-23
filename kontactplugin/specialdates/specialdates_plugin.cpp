@@ -38,7 +38,6 @@ SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const QVari
     : KontactInterface::Plugin(core, core, Q_NULLPTR)
 {
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
-    KIconLoader::global()->addAppDir(QStringLiteral("kdepim"));
 }
 
 SpecialdatesPlugin::~SpecialdatesPlugin()
