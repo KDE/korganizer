@@ -36,9 +36,10 @@
 #include "korganizer_debug.h"
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <QTemporaryFile>
-#include <KIO/NetAccess>
+#include <KIO/FileCopyJob>
+#include <KJobWidgets>
 
+#include <QTemporaryFile>
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
@@ -162,7 +163,9 @@ void HtmlExportJob::finishExport()
         QString tfile = tf.fileName();
         saveStatus = save(tfile);
         errorMessage = i18n("Unable to write the temporary file for uploading.");
-        if (!KIO::NetAccess::upload(tfile, dest, d->mParentWidget)) {
+        auto job = KIO::file_copy(QUrl::fromLocalFile(tfile), dest);
+        KJobWidgets::setWindow(job, d->mParentWidget);
+        if (!job->exec()) {
             saveStatus = false;
             errorMessage = i18n("Unable to upload the export file.");
         }
