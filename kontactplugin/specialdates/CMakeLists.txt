@@ -2,7 +2,9 @@
 
 
 
-set(kontact_specialdatesplugin_PART_SRCS specialdates_plugin.cpp sdsummarywidget.cpp korganizer_kontactplugins_specialdates_debug.cpp)
+set(kontact_specialdatesplugin_PART_SRCS specialdates_plugin.cpp sdsummarywidget.cpp)
+
+ecm_qt_declare_logging_category(kontact_specialdatesplugin_PART_SRCS HEADER korganizer_kontactplugins_specialdates_debug.h IDENTIFIER KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG CATEGORY_NAME log_korganizer_kontactplugins_specialdates)
 
 add_library(kontact_specialdatesplugin MODULE ${kontact_specialdatesplugin_PART_SRCS})
 
