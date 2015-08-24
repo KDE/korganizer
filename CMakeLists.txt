@@ -28,11 +28,14 @@ configure_file(
 
 ########### next target ###############
 
+set(korganizer_common_SRCS)
+ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME log_korganizer)
+
 set(korganizer_SRCS
   main.cpp
   korganizer.cpp
   koapp.cpp
-  korganizer_debug.cpp
+  ${korganizer_common_SRCS}
 )
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korganizer.png")
@@ -114,7 +117,7 @@ install(TARGETS
 set(korganizer_core_LIB_SRCS
   prefs/koprefs.cpp
   kocore.cpp
-  korganizer_debug.cpp
+  ${korganizer_common_SRCS}
 )
 
 kconfig_add_kcfg_files(korganizer_core_LIB_SRCS settings/koprefs_base.kcfgc)
@@ -148,7 +151,7 @@ install(TARGETS
 
 
 set(korganizerprivate_LIB_SRCS
-    korganizer_debug.cpp
+    ${korganizer_common_SRCS}
     korgmigrateapplication.cpp 
     aboutdata.cpp
     actionmanager.cpp
