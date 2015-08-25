@@ -43,7 +43,8 @@
 K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
-    : KParts::ReadOnlyPart(parent)
+    : KParts::ReadOnlyPart(parent),
+      mTopLevelWidget(Q_NULLPTR)
 {
     KOrgMigrateApplication migrate;
     migrate.migrate();

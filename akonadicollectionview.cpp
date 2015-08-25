@@ -505,6 +505,11 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
       mCollectionView(Q_NULLPTR),
       mBaseModel(Q_NULLPTR),
       mSelectionProxyModel(Q_NULLPTR),
+      mAssignColor(Q_NULLPTR),
+      mDisableColor(Q_NULLPTR),
+      mDefaultCalendar(Q_NULLPTR),
+      mEnableAction(Q_NULLPTR),
+      mServerSideSubscription(Q_NULLPTR),
       mNotSendAddRemoveSignal(false),
       mWasDefaultCalendar(false),
       mHasContextMenu(hasContextMenu)
