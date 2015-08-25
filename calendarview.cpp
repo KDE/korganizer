@@ -2464,7 +2464,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                 }
 
                 if (!(isFirst && isLast)) {
-                    QDialogButtonBox::StandardButton returnValue = PIMMessageBox::fourBtnMsgBox(
+                    QDialogButtonBox::StandardButton returnValue = KPIM::PIMMessageBox::fourBtnMsgBox(
                                 this,
                                 QMessageBox::Warning,
                                 message,
