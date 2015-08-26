@@ -693,7 +693,7 @@ void ReparentingModelTest::testInvalidLayoutChanged()
 class DummyNodeManager : public ReparentingModel::NodeManager
 {
 public:
-    DummyNodeManager(ReparentingModel &m) : ReparentingModel::NodeManager(m) {};
+    DummyNodeManager(ReparentingModel &m) : ReparentingModel::NodeManager(m) {}
 private:
     void checkSourceIndex(const QModelIndex &sourceIndex)
     {
