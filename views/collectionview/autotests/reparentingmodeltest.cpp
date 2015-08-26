@@ -38,7 +38,7 @@ public:
         , mData(data)
     {}
 
-    virtual ~DummyNode() {};
+    virtual ~DummyNode() {}
 
     bool operator==(const Node &node) const Q_DECL_OVERRIDE
     {
@@ -92,6 +92,8 @@ class ModelSignalSpy : public QObject
     Q_OBJECT
 public:
     explicit ModelSignalSpy(QAbstractItemModel &model)
+        : start(0),
+          end(0)
     {
         connect(&model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onRowsInserted(QModelIndex,int,int)));
         connect(&model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onRowsRemoved(QModelIndex,int,int)));
