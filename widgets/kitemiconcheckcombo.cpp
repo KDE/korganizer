@@ -38,16 +38,16 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     : KPIM::KCheckComboBox(parent), d(new Private(viewType))
 {
     addItem(i18n("Calendar's custom icon"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("view-calendar-tasks")), i18n("To-do"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("view-pim-journal")), i18n("Journal"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("appointment-recurring")), i18n("Recurring"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("appointment-reminder")), i18n("Alarm"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("object-locked")), i18n("Read Only"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("mail-reply-sender")), i18n("Needs Reply"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("meeting-attending")), i18n("Attending"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("meeting-attending-tentative")),
+    addItem(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("To-do"));
+    addItem(QIcon::fromTheme(QStringLiteral("view-pim-journal")), i18n("Journal"));
+    addItem(QIcon::fromTheme(QStringLiteral("appointment-recurring")), i18n("Recurring"));
+    addItem(QIcon::fromTheme(QStringLiteral("appointment-reminder")), i18n("Alarm"));
+    addItem(QIcon::fromTheme(QStringLiteral("object-locked")), i18n("Read Only"));
+    addItem(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Needs Reply"));
+    addItem(QIcon::fromTheme(QStringLiteral("meeting-attending")), i18n("Attending"));
+    addItem(QIcon::fromTheme(QStringLiteral("meeting-attending-tentative")),
             i18n("Maybe Attending"));
-    addItem(KOGlobals::self()->smallIcon(QStringLiteral("meeting-organizer")), i18n("Organizer"));
+    addItem(QIcon::fromTheme(QStringLiteral("meeting-organizer")), i18n("Organizer"));
 
     // Agenda view doesn't support journals yet
     setItemEnabled(EventViews::EventView::JournalIcon, viewType != AgendaType);

@@ -54,58 +54,58 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
 {
     mHasAdditionalItems = false;
 
-    addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-preview")), i18n("&Show"),
+    addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18n("&Show"),
               this, SLOT(popupShow()));
     mEditOnlyItems.append(
-        addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-edit")), i18n("&Edit..."),
+        addAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18n("&Edit..."),
                   this, SLOT(popupEdit())));
     mEditOnlyItems.append(addSeparator());
-    addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print")), i18n("&Print..."),
+    addAction(QIcon::fromTheme(QStringLiteral("document-print")), i18n("&Print..."),
               this, SLOT(print()));
-    addAction(KOGlobals::self()->smallIcon(QStringLiteral("document-print-preview")),
+    addAction(QIcon::fromTheme(QStringLiteral("document-print-preview")),
               i18n("Print Previe&w..."),
               this, SLOT(printPreview()));
 
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-cut")),
+    mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-cut")),
                                     i18nc("cut this event", "C&ut"),
                                     this, SLOT(popupCut())));
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-copy")),
+    mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-copy")),
                                     i18nc("copy this event", "&Copy"),
                                     this, SLOT(popupCopy())));
     // paste is always possible
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-paste")),
+    mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-paste")),
                                     i18n("&Paste"),
                                     this, SLOT(popupPaste())));
-    mEditOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("edit-delete")),
+    mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-delete")),
                                     i18nc("delete this incidence", "&Delete"),
                                     this, SLOT(popupDelete())));
     //------------------------------------------------------------------------
     addSeparator();
     QAction *action;
-    action = addAction(KOGlobals::self()->smallIcon(QStringLiteral("task-new")),
+    action = addAction(QIcon::fromTheme(QStringLiteral("task-new")),
                        i18n("Create To-do"),
                        this, SLOT(createTodo()));
     action->setObjectName(QStringLiteral("createtodo"));
     mEventOnlyItems.append(action);
 
-    action = addAction(KOGlobals::self()->smallIcon(QStringLiteral("appointment-new")),
+    action = addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
                        i18n("Create Event"),
                        this, SLOT(createEvent()));
     action->setObjectName(QStringLiteral("createevent"));
     mTodoOnlyItems.append(action);
 
-    action = addAction(KOGlobals::self()->smallIcon(QStringLiteral("view-pim-notes")),
+    action = addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
                        i18n("Create Note"),
                        this, SLOT(createNote()));
     action->setObjectName(QStringLiteral("createnote"));
     //------------------------------------------------------------------------
     addSeparator();
-    mTodoOnlyItems.append(addAction(KOGlobals::self()->smallIcon(QStringLiteral("task-complete")),
+    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-complete")),
                                     i18n("Togg&le To-do Completed"),
                                     this, SLOT(toggleTodoCompleted())));
-    mToggleReminder =  addAction(QIcon(KOGlobals::self()->smallIcon(QStringLiteral("appointment-reminder"))),
+    mToggleReminder =  addAction(QIcon(QIcon::fromTheme(QStringLiteral("appointment-reminder"))),
                                  i18n("&Toggle Reminder"), this, SLOT(toggleAlarm()));
     mEditOnlyItems.append(mToggleReminder);
     //------------------------------------------------------------------------
@@ -115,7 +115,7 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mRecurrenceItems.append(mDissociateOccurrences);
 
     addSeparator();
-    addAction(KOGlobals::self()->smallIcon(QStringLiteral("mail-forward")),
+    addAction(QIcon::fromTheme(QStringLiteral("mail-forward")),
               i18n("Send as iCalendar..."),
               this, SLOT(forward()));
 
