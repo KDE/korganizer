@@ -35,6 +35,7 @@
 int main(int argc, char **argv)
 {
     KOrganizerApp app(argc, &argv);
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KOrgMigrateApplication migrate;
     migrate.migrate();
 
