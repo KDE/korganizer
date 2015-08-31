@@ -50,6 +50,7 @@
 #include "views/todoview/kotodoview.h"
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
+#include "korganizer_debug.h"
 #include <incidenceeditor-ng/globalsettings.h>
 
 #include <KHolidays/kholidays/Holidays>
@@ -90,18 +91,17 @@
 #include <KCalUtils/Stringify>
 #include <KCalUtils/DndFactory>
 
-#include <QFileDialog>
 #include <KNotification>
 #include <KRun>
-#include <QVBoxLayout>
-#include "korganizer_debug.h"
-#include <QPushButton>
 
+#include <QFileDialog>
+#include <QVBoxLayout>
+#include <QPushButton>
 #include <QApplication>
 #include <QClipboard>
 #include <QSplitter>
 #include <QStackedWidget>
-#include <KLocale>
+#include <QLocale>
 
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)
@@ -681,7 +681,7 @@ void CalendarView::slotModifyFinished(int changeId,
             (dirtyFields.contains(KCalCore::Incidence::FieldCompleted))) {
         KCalCore::Todo::Ptr todo = incidence.dynamicCast<KCalCore::Todo>();
         if (todo->isCompleted() || todo->recurs()) {
-            QString timeStr = KLocale::global()->formatTime(QTime::currentTime());
+            QString timeStr = QLocale::system().toString(QTime::currentTime(), QLocale::ShortFormat);
             QString description = i18n("Todo completed: %1 (%2)", incidence->summary(), timeStr);
 
             KCalCore::Journal::List journals = calendar()->journals(QDate::currentDate());
@@ -691,7 +691,7 @@ void CalendarView::slotModifyFinished(int changeId,
                 journal->setDtStart(
                     KDateTime::currentDateTime(CalendarSupport::KCalPrefs::instance()->timeSpec()));
 
-                QString dateStr = KLocale::global()->formatDate(QDate::currentDate());
+                QString dateStr = QLocale::system().toString(QDate::currentDate(), QLocale::LongFormat);
                 journal->setSummary(i18n("Journal of %1", dateStr));
                 journal->setDescription(description);
 
@@ -1609,7 +1609,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate 
                      i18n("Do you want to dissociate "
                           "the occurrence on %1 "
                           "from the recurrence?",
-                          KLocale::global()->formatDate(date)),
+                          QLocale::system().toString(date, QLocale::LongFormat)),
                      i18n("KOrganizer Confirmation"),
                      KGuiItem(i18n("&Dissociate")),
                      KStandardGuiItem::cancel());
@@ -1622,7 +1622,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate 
                           "the occurrence on %1 "
                           "from the recurrence or also "
                           "dissociate future ones?",
-                          KLocale::global()->formatDate(date)),
+                          QLocale::system().toString(date, QLocale::LongFormat)),
                      i18n("KOrganizer Confirmation"),
                      KGuiItem(i18n("&Only Dissociate This One")),
                      KGuiItem(i18n("&Also Dissociate Future Ones")));
@@ -2452,7 +2452,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                                    "Do you want to delete only the current one on %2, also "
                                    "future occurrences, or all its occurrences?",
                                    incidence->summary(),
-                                   KLocale::global()->formatDate(itemDate));
+                                   QLocale::system().toString(itemDate, QLocale::LongFormat));
                 } else {
 #pragma message("port QT5")
                     //QT5 itemFuture.setEnabled( false );
@@ -2460,7 +2460,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                                    "Do you want to delete only the current one on %2 "
                                    "or all its occurrences?",
                                    incidence->summary(),
-                                   KLocale::global()->formatDate(itemDate));
+                                   QLocale::system().toString(itemDate, QLocale::LongFormat));
                 }
 
                 if (!(isFirst && isLast)) {
