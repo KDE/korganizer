@@ -49,7 +49,7 @@
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
 
-#include <KHolidays/Holidays>
+#include <KHolidays/HolidayRegion>
 
 #include <MailTransport/TransportManagementWidget>
 

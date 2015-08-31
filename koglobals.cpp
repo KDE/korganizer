@@ -25,7 +25,7 @@
 #include "koglobals.h"
 #include "prefs/koprefs.h"
 
-#include <KHolidays/kholidays/HolidayRegion>
+#include <KHolidays/HolidayRegion>
 
 #include <KIconLoader>
 
@@ -87,7 +87,7 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
     const KHolidays::Holiday::List list = mHolidays->holidays(start, end);
     for (int i = 0; i < list.count(); ++i) {
         const KHolidays::Holiday &h = list.at(i);
-        holidaysByDate[h.date()].append(h.text());
+        holidaysByDate[h.observedStartDate()].append(h.name());
     }
     return holidaysByDate;
 }
@@ -111,9 +111,9 @@ QList<QDate> KOGlobals::workDays(const QDate &startDate,
         const KHolidays::Holiday::List list = mHolidays->holidays(startDate, endDate);
         for (int i = 0; i < list.count(); ++i) {
             const KHolidays::Holiday &h = list.at(i);
-            const QString dateString = h.date().toString();
+            const QString dateString = h.observedStartDate().toString();
             if (h.dayType() == KHolidays::Holiday::NonWorkday) {
-                result.removeAll(h.date());
+                result.removeAll(h.observedStartDate());
             }
         }
     }

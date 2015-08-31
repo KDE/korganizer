@@ -44,7 +44,7 @@
 #include "reminderclient.h"
 #include "kocheckableproxymodel.h"
 
-#include <KHolidays/kholidays/Holidays>
+#include <KHolidays/HolidayRegion>
 
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/eventarchiver.h>
@@ -1076,7 +1076,7 @@ void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode
         KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
                                                 settings->dateStart().date(), settings->dateEnd().date());
         foreach (const KHolidays::Holiday &holiday, holidays) {
-            exportJob->addHoliday(holiday.date(), holiday.text());
+            exportJob->addHoliday(holiday.observedStartDate(), holiday.name());
         }
     }
 

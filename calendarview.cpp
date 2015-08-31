@@ -53,7 +53,7 @@
 #include "korganizer_debug.h"
 #include <incidenceeditor-ng/globalsettings.h>
 
-#include <KHolidays/kholidays/Holidays>
+#include <KHolidays/HolidayRegion>
 #include <calendarsupport/collectiongeneralpage.h>
 #include <calendarsupport/collectionselection.h>
 #include <calendarsupport/kcalprefs.h>

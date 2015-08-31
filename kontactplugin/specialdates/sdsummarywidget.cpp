@@ -46,7 +46,7 @@
 #include <KIconLoader>
 #include <KConfigGroup>
 #include <QDesktopServices>
-#include <KHolidays/kholidays/Holidays>
+#include <KHolidays/HolidayRegion>
 
 #include <QDate>
 #include <QEvent>
@@ -394,7 +394,7 @@ void SDSummaryWidget::createLabels()
                     entry.category = ((*it).dayType() == Holiday::NonWorkday) ?
                                      CategoryHoliday : CategoryOther;
                     entry.date = dt;
-                    entry.summary = (*it).text();
+                    entry.summary = (*it).name();
                     dateDiff(dt, entry.daysTo, entry.yearsOld);
                     entry.yearsOld = -1; //ignore age of holidays
                     entry.span = 1;
