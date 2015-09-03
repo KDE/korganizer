@@ -32,7 +32,6 @@
 
 #include <KCalUtils/IncidenceFormatter>
 
-#include <KCalendarSystem>
 #include "korganizer_debug.h"
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -333,7 +332,7 @@ void HtmlExportJob::createMonthView(QTextStream *ts)
         // Write table header
         *ts << "  <tr>";
         for (int i = 0; i < 7; ++i) {
-            *ts << "<th>" << KLocale::global()->calendar()->weekDayName(start.addDays(i)) << "</th>";
+            *ts << "<th>" << QLocale::system().dayName(start.addDays(i).dayOfWeek()) << "</th>";
         }
         *ts << "</tr>" << endl;
 
@@ -429,7 +428,7 @@ void HtmlExportJob::createEventList(QTextStream *ts)
         if (!events.isEmpty()) {
             *ts << "  <tr><td colspan=\"" << QString::number(columns)
                 << "\" class=\"datehead\"><i>"
-                << KLocale::global()->formatDate(dt)
+                << QLocale::system().toString(dt)
                 << "</i></td></tr>" << endl;
 
             foreach (const KCalCore::Event::Ptr &event, events) {
