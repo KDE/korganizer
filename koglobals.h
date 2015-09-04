@@ -75,11 +75,6 @@ public:
     */
     KHolidays::HolidayRegion *holidays() const;
 
-    const KComponentData &componentData() const
-    {
-        return mOwnInstance;
-    }
-
 protected:
     KOGlobals();
 
