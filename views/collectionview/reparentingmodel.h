@@ -84,7 +84,7 @@ public:
         virtual void updateSourceIndex(const QModelIndex &sourceIndex)
         {
             checkSourceIndex(sourceIndex);
-        };
+        }
     };
 
 public:
