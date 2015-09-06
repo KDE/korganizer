@@ -82,6 +82,16 @@ Akonadi::ETMCalendar::Ptr BaseView::calendar()
     return d->calendar;
 }
 
+QDateTime BaseView::selectionStart()
+{
+    return QDateTime();
+}
+
+QDateTime BaseView::selectionEnd()
+{
+    return QDateTime();
+}
+
 bool BaseView::isEventView()
 {
     return false;
