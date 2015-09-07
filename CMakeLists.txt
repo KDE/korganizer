@@ -257,6 +257,7 @@ PRIVATE
     KF5::KCMUtils
     KF5::NewStuff
     calendarsupportcollectionpage
+    KF5::Ldap
 )
 
 target_include_directories(korganizerprivate PUBLIC
