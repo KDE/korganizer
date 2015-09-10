@@ -51,7 +51,7 @@
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
 #include "korganizer_debug.h"
-#include <incidenceeditor-ng/globalsettings.h>
+#include <incidenceeditor-ng/incidenceeditorsettings.h>
 
 #include <KHolidays/HolidayRegion>
 #include <calendarsupport/collectiongeneralpage.h>
