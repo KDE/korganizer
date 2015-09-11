@@ -27,9 +27,9 @@
 #include <AkonadiCore/EntityTreeModel>
 #include <AkonadiCore/Collection>
 #include "reparentingmodel.h"
-#include <libkdepim/job/person.h>
+#include <Libkdepim/Person>
 
-#include <libkdepim/ldap/ldapclientsearch.h>
+#include <Libkdepim/LdapClientSearch>
 
 enum DataRoles {
     PersonRole = Akonadi::EntityTreeModel::UserRole + 1,

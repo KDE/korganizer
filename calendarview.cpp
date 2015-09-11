@@ -67,7 +67,7 @@
 #include <incidenceeditor-ng/incidencedialogfactory.h>
 #include <incidenceeditor-ng/individualmailcomponentfactory.h>
 
-#include <libkdepim/widgets/pimmessagebox.h>
+#include <Libkdepim/PIMMessageBox>
 #include <Akonadi/Calendar/FreeBusyManager>
 #include <Akonadi/Calendar/History>
 #include <Akonadi/Calendar/IncidenceChanger>

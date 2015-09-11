@@ -22,7 +22,7 @@
 #ifndef KORG_KITEMICONCHECKCOMBO_H
 #define KORG_KITEMICONCHECKCOMBO_H
 
-#include <libkdepim/widgets/kcheckcombobox.h>
+#include <Libkdepim/KCheckComboBox>
 
 #include <calendarviews/eventview.h>
 

@@ -24,7 +24,7 @@
 #include "prefs/koprefs.h"
 #include "ui_multiagendaviewconfigwidget.h"
 
-#include "libkdepim/proxy/kcolumnfilterproxymodel.h"
+#include "Libkdepim/KColumnFilterProxyModel"
 
 #include <calendarviews/agenda/agendaview.h>
 #include <calendarviews/multiagenda/multiagendaview.h>

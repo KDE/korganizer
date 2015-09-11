@@ -46,7 +46,7 @@ add_executable(korganizer ${korganizer_SRCS})
 target_link_libraries(korganizer
   KF5::KontactInterface
   KF5::CalendarCore
-  kdepim
+  KF5::Libkdepim
   kdepimdbusinterfaces
   korganizerprivate
   korganizer_interfaces
@@ -74,7 +74,7 @@ target_link_libraries(kcm_korganizer
   calendarsupport
   eventviews
   incidenceeditorsng
-  kdepim
+  KF5::Libkdepim
   korganizer_core
   korganizerprivate
   Qt5::UiTools
@@ -240,7 +240,7 @@ PRIVATE
     calendarsupport
     eventviews
     incidenceeditorsng
-    kdepim
+    KF5::Libkdepim
     kdepimdbusinterfaces
     korganizer_core
     korganizer_interfaces

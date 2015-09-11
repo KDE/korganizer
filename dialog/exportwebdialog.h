@@ -25,7 +25,7 @@
 #ifndef KORG_EXPORTWEBDIALOG_H
 #define KORG_EXPORTWEBDIALOG_H
 
-#include <libkdepim/prefs/kprefsdialog.h>
+#include <Libkdepim/KPrefsDialog>
 class QPushButton;
 namespace KOrg
 {

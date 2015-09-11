@@ -22,8 +22,8 @@
 
 #include "controller.h"
 
-#include <libkdepim/job/collectionsearchjob.h>
-#include <libkdepim/job/personsearchjob.h>
+#include <Libkdepim/CollectionSearchJob>
+#include <Libkdepim/PersonSearchJob>
 #include "korganizer_debug.h"
 
 #include <AkonadiCore/EntityTreeModel>

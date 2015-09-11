@@ -35,8 +35,8 @@
 #include "koglobals.h"
 #include "impl/korganizerifaceimpl.h"
 
-#include "libkdepim/progresswidget/progressstatusbarwidget.h"
-#include "libkdepim/progresswidget/statusbarprogresswidget.h"
+#include "Libkdepim/ProgressStatusBarWidget"
+#include "Libkdepim/StatusbarProgressWidget"
 
 #include <KActionCollection>
 #include "korganizer_debug.h"

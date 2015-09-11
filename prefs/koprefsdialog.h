@@ -28,7 +28,7 @@
 #include "kcm_korganizer_export.h"
 #include "kcmdesignerfields.h"
 #include <QSet>
-#include <libkdepim/prefs/kprefsdialog.h>
+#include <Libkdepim/KPrefsDialog>
 
 class QPushButton;
 
