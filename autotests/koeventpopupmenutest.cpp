@@ -20,7 +20,7 @@
 #include "koeventpopupmenu.h"
 #include <incidenceeditor-ng/incidencedialog.h>
 #include <incidenceeditor-ng/incidenceattendee.h>
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/Utils>
 #include <AkonadiCore/EntityTreeModel>
 #include <Akonadi/Notes/NoteUtils>
 #include <KCalCore/Event>

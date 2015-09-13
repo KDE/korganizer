@@ -54,13 +54,13 @@
 #include <incidenceeditor-ng/incidenceeditorsettings.h>
 
 #include <KHolidays/HolidayRegion>
-#include <calendarsupport/collectiongeneralpage.h>
-#include <calendarsupport/collectionselection.h>
-#include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/utils.h>
-#include <calendarsupport/next/incidenceviewer.h>
-#include <calendarsupport/printing/calprinter.h>
-#include <calendarsupport/calendarsingleton.h>
+#include <CalendarSupport/CollectionGeneralPage>
+#include <CalendarSupport/CollectionSelection>
+#include <CalendarSupport/KCalPrefs>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/IncidenceViewer>
+#include <CalendarSupport/CalPrinter>
+#include <CalendarSupport/CalendarSingleton>
 
 #include <incidenceeditor-ng/incidencedefaults.h>
 #include <incidenceeditor-ng/incidencedialog.h>

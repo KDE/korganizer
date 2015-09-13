@@ -29,7 +29,7 @@
 #include <QMouseEvent>
 #include <AkonadiCore/collectionstatistics.h>
 
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/Utils>
 #include <kohelper.h>
 #include "korganizer_debug.h"
 #include "controller.h"

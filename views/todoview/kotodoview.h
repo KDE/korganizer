@@ -29,7 +29,7 @@
 
 #include "baseview.h"
 
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/Utils>
 
 #include <calendarviews/todo/todoview.h>
 

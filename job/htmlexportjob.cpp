@@ -24,7 +24,7 @@
 #include "htmlexportsettings.h"
 #include "mainwindow.h"
 
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/Utils>
 
 #include <Akonadi/Contact/ContactSearchJob>
 

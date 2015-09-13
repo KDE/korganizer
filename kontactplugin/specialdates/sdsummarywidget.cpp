@@ -28,8 +28,8 @@
 #include <KontactInterface/Core>
 #include <KontactInterface/Plugin>
 
-#include <calendarsupport/utils.h>
-#include <calendarsupport/calendarsingleton.h>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/CalendarSingleton>
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
 #include <AkonadiCore/SearchQuery>

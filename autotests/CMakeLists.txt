@@ -7,7 +7,7 @@ add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
 target_link_libraries(testkodaymatrix
   KF5::AkonadiCore
   KF5::CalendarCore
-  calendarsupport
+  KF5::CalendarSupport
   korganizer_core
   korganizerprivate
   Qt5::Test
@@ -26,7 +26,7 @@ target_link_libraries(koeventpopmenutest
   KF5::AkonadiNotes
   KF5::CalendarCore
   incidenceeditorsng
-  calendarsupport
+  KF5::CalendarSupport
   korganizer_core
   korganizerprivate
 )
@@ -44,7 +44,7 @@ target_link_libraries(noteeditdialogtest
   KF5::AkonadiNotes
   KF5::CalendarCore
   incidenceeditorsng
-  calendarsupport
+  KF5::CalendarSupport
   korganizer_core
   korganizerprivate
   )

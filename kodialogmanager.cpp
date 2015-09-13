@@ -29,9 +29,9 @@
 #include "prefs/koprefs.h"
 #include "dialog/searchdialog.h"
 
-#include <calendarsupport/archivedialog.h>
-#include <calendarsupport/categoryconfig.h>
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/ArchiveDialog>
+#include <CalendarSupport/CategoryConfig>
+#include <CalendarSupport/Utils>
 
 #include <incidenceeditor-ng/categoryeditdialog.h>
 #include <incidenceeditor-ng/incidencedialog.h>

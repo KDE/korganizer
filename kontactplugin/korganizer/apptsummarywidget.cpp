@@ -29,8 +29,8 @@
 
 #include "korganizer/korganizerinterface.h"
 
-#include <calendarsupport/utils.h>
-#include <calendarsupport/calendarsingleton.h>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/CalendarSingleton>
 
 #include <AkonadiCore/Collection>
 #include <Akonadi/Calendar/IncidenceChanger>

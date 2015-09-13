@@ -28,7 +28,7 @@
 
 #include "koeventview.h"
 
-#include <calendarsupport/printing/calprinter.h>
+#include <CalendarSupport/CalPrinter>
 
 /**
   KOAgendaView is the agenda-like view that displays events in a single

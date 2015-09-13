@@ -26,7 +26,7 @@
 
 #include <qdebug.h>
 
-#include <calendarsupport/plugin.h>
+#include <CalendarSupport/Plugin>
 #include <QApplication>
 #include <KLocalizedString>
 #include <QCommandLineParser>

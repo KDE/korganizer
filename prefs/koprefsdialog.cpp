@@ -31,8 +31,8 @@
 #include "ui_kogroupwareprefspage.h"
 #include <QDialog>
 
-#include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/categoryconfig.h>
+#include <CalendarSupport/KCalPrefs>
+#include <CalendarSupport/CategoryConfig>
 
 #include <incidenceeditor-ng/incidenceeditorsettings.h>
 #include <widgets/tagselectioncombo.h>

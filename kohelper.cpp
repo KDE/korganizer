@@ -25,7 +25,7 @@
 #include "kohelper.h"
 #include "prefs/koprefs.h"
 
-#include <calendarsupport/kcalprefs.h>
+#include <CalendarSupport/KCalPrefs>
 
 #include <KMessageBox>
 

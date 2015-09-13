@@ -30,8 +30,8 @@
 #include "calendarview.h"
 #include "koglobals.h"
 
-#include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/KCalPrefs>
+#include <CalendarSupport/Utils>
 
 #include <calendarviews/list/listview.h>
 

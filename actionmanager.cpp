@@ -46,10 +46,10 @@
 
 #include <KHolidays/HolidayRegion>
 
-#include <calendarsupport/collectionselection.h>
-#include <calendarsupport/eventarchiver.h>
-#include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/CollectionSelection>
+#include <CalendarSupport/EventArchiver>
+#include <CalendarSupport/KCalPrefs>
+#include <CalendarSupport/Utils>
 
 #include <incidenceeditor-ng/incidenceeditorsettings.h>
 

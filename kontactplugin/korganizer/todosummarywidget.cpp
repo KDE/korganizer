@@ -27,8 +27,8 @@
 #include "todoplugin.h"
 #include "korganizerinterface.h"
 
-#include <calendarsupport/utils.h>
-#include <calendarsupport/calendarsingleton.h>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/CalendarSingleton>
 
 #include <AkonadiCore/Collection>
 #include <AkonadiCore/ItemFetchScope>

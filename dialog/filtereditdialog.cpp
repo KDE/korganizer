@@ -27,7 +27,7 @@
 #include "filtereditdialog.h"
 #include "prefs/koprefs.h"
 
-#include <calendarsupport/categoryconfig.h>
+#include <CalendarSupport/CategoryConfig>
 #include <Libkdepim/TagWidgets>
 
 #include <KCalCore/CalFilter>

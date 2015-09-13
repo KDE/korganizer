@@ -26,7 +26,7 @@
 #include "kocore.h"
 #include "prefs/koprefs.h"
 
-#include <calendarsupport/identitymanager.h>
+#include <CalendarSupport/IdentityManager>
 
 #include "korganizer_debug.h"
 #include <KServiceTypeTrader>

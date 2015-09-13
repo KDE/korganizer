@@ -30,9 +30,9 @@
 
 #include <calendarviews/journal/journalview.h>
 
-#include <calendarsupport/utils.h>
-#include <calendarsupport/printing/calprinter.h>
-#include <calendarsupport/printing/calprintdefaultplugins.h>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/CalPrinter>
+#include <CalendarSupport/CalPrintDefaultPlugins>
 
 #include <Akonadi/Calendar/ETMCalendar>
 

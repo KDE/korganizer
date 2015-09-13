@@ -29,7 +29,7 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "impl/korganizerifaceimpl.h"
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/Utils>
 
 #include <KCalUtils/IncidenceFormatter>
 

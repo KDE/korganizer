@@ -24,7 +24,7 @@
 
 #include "kocorehelper.h"
 
-#include <calendarsupport/kcalprefs.h>
+#include <CalendarSupport/KCalPrefs>
 
 QColor KOCoreHelper::categoryColor(const QStringList &categories)
 {

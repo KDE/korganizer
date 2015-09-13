@@ -26,8 +26,8 @@
 #include "koeventviewerdialog.h"
 #include "korganizerinterface.h"
 
-#include <calendarsupport/utils.h>
-#include <calendarsupport/next/incidenceviewer.h>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/IncidenceViewer>
 #include <Akonadi/Calendar/ETMCalendar>
 
 #include <AkonadiCore/Item>

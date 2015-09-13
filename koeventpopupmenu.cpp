@@ -29,10 +29,10 @@
 #include "koglobals.h"
 #include "dialog/noteeditdialog.h"
 
-#include <calendarsupport/kcalprefs.h>
-#include <calendarsupport/utils.h>
-#include <calendarsupport/printing/calprinter.h>
-#include <calendarsupport/printing/calprintdefaultplugins.h>
+#include <CalendarSupport/KCalPrefs>
+#include <CalendarSupport/Utils>
+#include <CalendarSupport/CalPrinter>
+#include <CalendarSupport/CalPrintDefaultPlugins>
 
 #include <KCalCore/CalFormat>
 #include <KCalCore/Incidence>

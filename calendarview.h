@@ -38,7 +38,7 @@
 
 #include <Akonadi/Calendar/ITIPHandler>
 
-#include <calendarsupport/messagewidget.h>
+#include <CalendarSupport/MessageWidget>
 
 class DateChecker;
 class DateNavigator;

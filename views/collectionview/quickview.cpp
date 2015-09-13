@@ -32,7 +32,7 @@
 
 #include <calendarviews/agenda/agendaview.h>
 #include <calendarviews/agenda/viewcalendar.h>
-#include <calendarsupport/calendarsingleton.h>
+#include <CalendarSupport/CalendarSingleton>
 
 #include <freebusymodel/freebusycalendar.h>
 

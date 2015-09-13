@@ -9,7 +9,7 @@ set(korganizer_interfaces_LIB_SRCS
 add_library(korganizer_interfaces ${korganizer_interfaces_LIB_SRCS})
 generate_export_header(korganizer_interfaces BASE_NAME korganizer_interfaces)
 target_link_libraries(korganizer_interfaces
-  calendarsupport
+  KF5::CalendarSupport
   eventviews
   KF5::AkonadiCore
 )

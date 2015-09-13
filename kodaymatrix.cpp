@@ -30,7 +30,7 @@
 #include "koglobals.h"
 #include "prefs/koprefs.h"
 
-#include <calendarsupport/utils.h>
+#include <CalendarSupport/Utils>
 
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>

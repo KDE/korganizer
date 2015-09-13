@@ -29,7 +29,7 @@
 #include "prefs/koprefs.h"
 #include "koeventpopupmenu.h"
 
-#include <calendarsupport/printing/calprinter.h>
+#include <CalendarSupport/CalPrinter>
 
 #include <calendarviews/todo/todoview.h>
 

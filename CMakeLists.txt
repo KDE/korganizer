@@ -71,7 +71,7 @@ generate_export_header(kcm_korganizer BASE_NAME kcm_korganizer)
 
 target_link_libraries(kcm_korganizer
   KF5::AkonadiCalendar
-  calendarsupport
+  KF5::CalendarSupport 
   eventviews
   incidenceeditorsng
   KF5::Libkdepim
@@ -97,7 +97,7 @@ set(korganizerpart_PART_SRCS korganizer_part.cpp korganizer_debug.cpp)
 add_library(korganizerpart MODULE ${korganizerpart_PART_SRCS})
 
 target_link_libraries(korganizerpart
-  calendarsupport
+  KF5::CalendarSupport 
   korganizer_core
   korganizer_interfaces
   korganizerprivate
@@ -129,7 +129,7 @@ target_link_libraries(korganizer_core
 PUBLIC
   korganizer_interfaces
 PRIVATE
-  calendarsupport
+  KF5::CalendarSupport 
   eventviews
   KF5::IdentityManagement
 )
@@ -237,7 +237,7 @@ target_link_libraries(korganizerprivate
 PUBLIC
     pimcommon
 PRIVATE
-    calendarsupport
+    KF5::CalendarSupport 
     eventviews
     incidenceeditorsng
     KF5::Libkdepim
