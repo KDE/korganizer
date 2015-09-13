@@ -23,7 +23,7 @@
 
 #include "koeventview.h"
 
-#include <eventviews/multiagenda/configdialoginterface.h>
+#include <EventViews/ConfigDialogInterface>
 
 #include <QDialog>
 

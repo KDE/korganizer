@@ -28,7 +28,7 @@
 #include "kotimelineview.h"
 #include "koeventpopupmenu.h"
 
-#include <eventviews/timeline/timelineview.h>
+#include <EventViews/TimeLineView>
 
 #include <QVBoxLayout>
 

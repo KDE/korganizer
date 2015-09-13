@@ -24,7 +24,7 @@
 
 #include "kotimespentview.h"
 
-#include <eventviews/timespent/timespentview.h>
+#include <EventViews/TimeSpentView>
 #include <Akonadi/Calendar/ETMCalendar>
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>

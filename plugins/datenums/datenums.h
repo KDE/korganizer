@@ -21,7 +21,7 @@
 #ifndef KORG_PLUGINS_DATENUMS_DATENUMS_H
 #define KORG_PLUGINS_DATENUMS_DATENUMS_H
 
-#include <eventviews/agenda/calendardecoration.h>
+#include <EventViews/CalendarDecoration>
 
 using namespace EventViews::CalendarDecoration;
 

@@ -25,7 +25,7 @@
 
 #include "controller.h"
 
-#include <eventviews/agenda/viewcalendar.h>
+#include <EventViews/ViewCalendar>
 
 #include <KCalCore/FreeBusy>
 #include <QDialog>

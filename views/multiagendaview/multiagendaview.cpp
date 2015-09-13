@@ -26,8 +26,8 @@
 
 #include "Libkdepim/KColumnFilterProxyModel"
 
-#include <eventviews/agenda/agendaview.h>
-#include <eventviews/multiagenda/multiagendaview.h>
+#include <EventViews/AgendaView>
+#include <EventViews/MultiAgendaView>
 
 #include <AkonadiWidgets/EntityTreeView>
 #include <AkonadiCore/EntityTreeModel>

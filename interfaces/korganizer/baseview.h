@@ -25,7 +25,7 @@
 
 #include "korganizer_interfaces_export.h"
 
-#include <eventviews/eventview.h>
+#include <EventViews/EventView>
 #include <CalendarSupport/PrintPlugin>
 
 #include <Akonadi/Calendar/IncidenceChanger>

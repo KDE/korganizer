@@ -26,7 +26,7 @@
 #include "koeventpopupmenu.h"
 #include "prefs/koprefs.h"
 
-#include <eventviews/agenda/agendaview.h>
+#include <EventViews/AgendaView>
 
 #include <QHBoxLayout>
 

@@ -28,7 +28,7 @@
 #include "kolistview.h"
 #include "koeventpopupmenu.h"
 
-#include <eventviews/list/listview.h>
+#include <EventViews/ListView>
 
 #include <QVBoxLayout>
 

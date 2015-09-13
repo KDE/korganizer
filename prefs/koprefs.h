@@ -28,7 +28,7 @@
 #include "korganizer_core_export.h"
 #include "koprefs_base.h"
 
-#include <eventviews/prefs.h>
+#include <EventViews/Prefs>
 
 class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 {

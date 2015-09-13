@@ -29,7 +29,7 @@
 #include "korganizer_core_export.h"
 #include "part.h"
 
-#include <eventviews/agenda/calendardecoration.h>
+#include <EventViews/CalendarDecoration>
 
 #include <KService>
 

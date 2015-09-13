@@ -72,7 +72,7 @@ generate_export_header(kcm_korganizer BASE_NAME kcm_korganizer)
 target_link_libraries(kcm_korganizer
   KF5::AkonadiCalendar
   KF5::CalendarSupport 
-  eventviews
+  KF5::EventViews
   KF5::IncidenceEditorsng
   KF5::Libkdepim
   korganizer_core
@@ -130,7 +130,7 @@ PUBLIC
   korganizer_interfaces
 PRIVATE
   KF5::CalendarSupport 
-  eventviews
+  KF5::EventViews
   KF5::IdentityManagement
 )
 
@@ -238,7 +238,7 @@ PUBLIC
     pimcommon
 PRIVATE
     KF5::CalendarSupport 
-    eventviews
+    KF5::EventViews
     KF5::IncidenceEditorsng
     KF5::Libkdepim
     kdepimdbusinterfaces

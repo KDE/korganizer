@@ -24,7 +24,7 @@
 
 #include <Libkdepim/KCheckComboBox>
 
-#include <eventviews/eventview.h>
+#include <EventViews/EventView>
 
 class KItemIconCheckCombo : public KPIM::KCheckComboBox
 {

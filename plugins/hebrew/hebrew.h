@@ -22,7 +22,7 @@
 #ifndef KORG_PLUGINS_HEBREW_HEBREW_H
 #define KORG_PLUGINS_HEBREW_HEBREW_H
 
-#include <eventviews/agenda/calendardecoration.h>
+#include <EventViews/CalendarDecoration>
 
 using namespace EventViews::CalendarDecoration;
 

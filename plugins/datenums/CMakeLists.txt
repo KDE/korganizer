@@ -8,7 +8,7 @@ set(korg_datenums_PART_SRCS
 add_library(korg_datenums MODULE ${korg_datenums_PART_SRCS})
 
 target_link_libraries(korg_datenums
-  eventviews
+  KF5::EventViews
   korganizerprivate
   
   
