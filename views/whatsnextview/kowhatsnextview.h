@@ -25,7 +25,7 @@
 #define KORG_VIEWS_KOWHATSNEXTVIEW_H
 
 #include "baseview.h"
-#include <calendarviews/whatsnext/whatsnextview.h>
+#include <eventviews/whatsnext/whatsnextview.h>
 
 /**
   This class provides a view of the next events and todos

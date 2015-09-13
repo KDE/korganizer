@@ -30,8 +30,8 @@
 #include <AkonadiCore/changerecorder.h>
 #include <AkonadiCore/itemfetchscope.h>
 
-#include <calendarviews/agenda/agendaview.h>
-#include <calendarviews/agenda/viewcalendar.h>
+#include <eventviews/agenda/agendaview.h>
+#include <eventviews/agenda/viewcalendar.h>
 #include <CalendarSupport/CalendarSingleton>
 
 #include <freebusymodel/freebusycalendar.h>

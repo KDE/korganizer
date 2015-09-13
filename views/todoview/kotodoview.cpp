@@ -31,7 +31,7 @@
 
 #include <CalendarSupport/CalPrinter>
 
-#include <calendarviews/todo/todoview.h>
+#include <eventviews/todo/todoview.h>
 
 #include <AkonadiCore/EntityTreeModel>
 

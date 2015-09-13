@@ -31,7 +31,7 @@
 
 #include <CalendarSupport/Utils>
 
-#include <calendarviews/todo/todoview.h>
+#include <eventviews/todo/todoview.h>
 
 using namespace KOrg;
 

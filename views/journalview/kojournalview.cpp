@@ -28,7 +28,7 @@
 #include "kojournalview.h"
 #include "prefs/koprefs.h"
 
-#include <calendarviews/journal/journalview.h>
+#include <eventviews/journal/journalview.h>
 
 #include <CalendarSupport/Utils>
 #include <CalendarSupport/CalPrinter>

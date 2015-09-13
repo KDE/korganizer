@@ -33,7 +33,7 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
-#include <calendarviews/list/listview.h>
+#include <eventviews/list/listview.h>
 
 #include <KMessageBox>
 #include <KConfigGroup>

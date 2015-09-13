@@ -21,7 +21,7 @@
 #ifndef KORG_PLUGINS_PICOFTHEDAY_PICOFTHEDAY_H
 #define KORG_PLUGINS_PICOFTHEDAY_PICOFTHEDAY_H
 
-#include <calendarviews/agenda/calendardecoration.h>
+#include <eventviews/agenda/calendardecoration.h>
 using namespace EventViews::CalendarDecoration;
 
 #include <KIO/Job>
