@@ -25,7 +25,7 @@ target_link_libraries(koeventpopmenutest
   KF5::AkonadiCalendar
   KF5::AkonadiNotes
   KF5::CalendarCore
-  incidenceeditorsng
+  KF5::IncidenceEditorsng
   KF5::CalendarSupport
   korganizer_core
   korganizerprivate
@@ -43,7 +43,7 @@ target_link_libraries(noteeditdialogtest
   KF5::AkonadiCalendar
   KF5::AkonadiNotes
   KF5::CalendarCore
-  incidenceeditorsng
+  KF5::IncidenceEditorsng
   KF5::CalendarSupport
   korganizer_core
   korganizerprivate

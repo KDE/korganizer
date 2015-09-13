@@ -51,7 +51,7 @@
 #include "kocheckableproxymodel.h"
 #include "akonadicollectionview.h"
 #include "korganizer_debug.h"
-#include <incidenceeditor-ng/incidenceeditorsettings.h>
+#include <IncidenceEditorsng/IncidenceEditorSettings>
 
 #include <KHolidays/HolidayRegion>
 #include <CalendarSupport/CollectionGeneralPage>
@@ -62,10 +62,10 @@
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalendarSingleton>
 
-#include <incidenceeditor-ng/incidencedefaults.h>
-#include <incidenceeditor-ng/incidencedialog.h>
-#include <incidenceeditor-ng/incidencedialogfactory.h>
-#include <incidenceeditor-ng/individualmailcomponentfactory.h>
+#include <IncidenceEditorsng/IncidenceDefaults>
+#include <IncidenceEditorsng/IncidenceDialog>
+#include <IncidenceEditorsng/IncidenceDialogFactory>
+#include <IncidenceEditorsng/IndividualMailComponentFactory>
 
 #include <Libkdepim/PIMMessageBox>
 #include <Akonadi/Calendar/FreeBusyManager>

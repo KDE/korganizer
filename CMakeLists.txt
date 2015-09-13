@@ -73,7 +73,7 @@ target_link_libraries(kcm_korganizer
   KF5::AkonadiCalendar
   KF5::CalendarSupport 
   eventviews
-  incidenceeditorsng
+  KF5::IncidenceEditorsng
   KF5::Libkdepim
   korganizer_core
   korganizerprivate
@@ -239,7 +239,7 @@ PUBLIC
 PRIVATE
     KF5::CalendarSupport 
     eventviews
-    incidenceeditorsng
+    KF5::IncidenceEditorsng
     KF5::Libkdepim
     kdepimdbusinterfaces
     korganizer_core

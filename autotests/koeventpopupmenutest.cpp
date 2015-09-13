@@ -18,8 +18,8 @@
 #include "koeventpopupmenutest.h"
 #include "dialog/noteeditdialog.h"
 #include "koeventpopupmenu.h"
-#include <incidenceeditor-ng/incidencedialog.h>
-#include <incidenceeditor-ng/incidenceattendee.h>
+#include <IncidenceEditorsng/IncidenceDialog>
+#include <IncidenceEditorsng/IncidenceAttendee>
 #include <CalendarSupport/Utils>
 #include <AkonadiCore/EntityTreeModel>
 #include <Akonadi/Notes/NoteUtils>

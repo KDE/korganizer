@@ -34,7 +34,7 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/CategoryConfig>
 
-#include <incidenceeditor-ng/incidenceeditorsettings.h>
+#include <IncidenceEditorsng/IncidenceEditorSettings>
 #include <widgets/tagselectioncombo.h>
 #include <widgets/tagwidgets.h>
 

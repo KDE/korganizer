@@ -46,8 +46,8 @@
 #include <KMimeTypeTrader>
 #include "korganizer_debug.h"
 
-#include <incidenceeditor-ng/incidencedialogfactory.h>
-#include <incidenceeditor-ng/incidencedialog.h>
+#include <IncidenceEditorsng/IncidenceDialogFactory>
+#include <IncidenceEditorsng/IncidenceDialog>
 
 KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
     : QMenu(parent), mCalendar(calendar)

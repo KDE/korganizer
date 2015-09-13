@@ -33,9 +33,9 @@
 #include <CalendarSupport/CategoryConfig>
 #include <CalendarSupport/Utils>
 
-#include <incidenceeditor-ng/categoryeditdialog.h>
-#include <incidenceeditor-ng/incidencedialog.h>
-#include <incidenceeditor-ng/incidencedialogfactory.h>
+#include <IncidenceEditorsng/CategoryEditDialog>
+#include <IncidenceEditorsng/IncidenceDialog>
+#include <IncidenceEditorsng/IncidenceDialogFactory>
 
 #include <AkonadiCore/Item>
 #include <AkonadiWidgets/TagManagementDialog>

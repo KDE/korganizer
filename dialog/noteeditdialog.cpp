@@ -36,8 +36,8 @@
 #include <AkonadiWidgets/CollectionComboBox>
 #include <QPushButton>
 
-#include <incidenceeditor-ng/incidencedialogfactory.h>
-#include <incidenceeditor-ng/incidencedialog.h>
+#include <IncidenceEditorsng/IncidenceDialogFactory>
+#include <IncidenceEditorsng/IncidenceDialog>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QVBoxLayout>
