@@ -82,7 +82,7 @@ target_link_libraries(kcm_korganizer
   KF5::Holidays
   KF5::MailTransport
   Qt5::UiTools
-  pimcommon
+  KF5::PimCommon
 )
 
 install(TARGETS
@@ -235,7 +235,7 @@ generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
 target_link_libraries(korganizerprivate
 PUBLIC
-    pimcommon
+    KF5::PimCommon
 PRIVATE
     KF5::CalendarSupport 
     KF5::EventViews

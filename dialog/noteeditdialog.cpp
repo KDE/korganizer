@@ -21,8 +21,8 @@
  */
 
 #include "noteeditdialog.h"
-#include "pimcommon/texteditor/richtexteditor/richtexteditorwidget.h"
-#include "pimcommon/texteditor/richtexteditor/richtexteditor.h"
+#include "PimCommon/RichTextEditorWidget"
+#include "PimCommon/RichTextEditor"
 
 #include <KLocalizedString>
 #include <KSharedConfig>

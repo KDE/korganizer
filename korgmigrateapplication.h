@@ -20,7 +20,7 @@
 #ifndef KORGMIGRATEAPPLICATION_H
 #define KORGMIGRATEAPPLICATION_H
 
-#include "pimcommon/migration/migrateapplicationfiles.h"
+#include "PimCommon/MigrateApplicationFiles"
 #include "korganizerprivate_export.h"
 
 class KORGANIZERPRIVATE_EXPORT KOrgMigrateApplication

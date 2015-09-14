@@ -51,7 +51,7 @@
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 #include <AkonadiCore/CollectionIdentificationAttribute>
 #include <manageserversidesubscription/manageserversidesubscriptionjob.h>
-#include "pimcommon/util/pimutil.h"
+#include "PimCommon/PimUtil"
 
 #include <KActionCollection>
 #include <KCheckableProxyModel>

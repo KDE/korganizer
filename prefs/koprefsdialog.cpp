@@ -53,7 +53,7 @@
 
 #include <MailTransport/TransportManagementWidget>
 
-#include "pimcommon/widgets/manageaccountwidget.h"
+#include "PimCommon/ManageAccountWidget"
 
 #include <KCalendarSystem>
 #include <KColorButton>
