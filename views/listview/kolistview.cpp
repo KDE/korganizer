@@ -48,8 +48,8 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
     connect(mListView, &EventViews::ListView::showIncidencePopupSignal,
             mPopupMenu, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(mListView, SIGNAL(showNewEventPopupSignal()),
-            SLOT(showNewEventPopup()));
+    connect(mListView, &EventViews::ListView::showNewEventPopupSignal,
+            this, &KOListView::showNewEventPopup);
 
     connect(mListView, &EventViews::EventView::datesSelected,
             this, &KOEventView::datesSelected);
@@ -87,11 +87,11 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
     connect(mListView, &EventViews::EventView::copyIncidenceToResourceSignal,
             this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mListView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(mListView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mListView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(mListView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &BaseView::dissociateOccurrencesSignal);
 
     connect(mListView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -105,14 +105,14 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
     connect(mListView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(mListView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(mListView, &EventViews::EventView::newTodoSignal,
+            this, &BaseView::newTodoSignal);
 
-    connect(mListView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(mListView, &EventViews::EventView::newSubTodoSignal,
+            this, &BaseView::newSubTodoSignal);
 
-    connect(mListView, SIGNAL(newJournalSignal(QDate)),
-            SIGNAL(newJournalSignal(QDate)));
+    connect(mListView, &EventViews::EventView::newJournalSignal,
+            this, &BaseView::newJournalSignal);
 }
 
 KOListView::~KOListView()

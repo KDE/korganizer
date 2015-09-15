@@ -203,8 +203,8 @@ CalendarView::CalendarView(QWidget *parent)
             this, &CalendarView::slotModifyFinished);
 
     // Signals emitted by mDateNavigator
-    connect(mDateNavigator, SIGNAL(datesSelected(KCalCore::DateList,QDate)),
-            SLOT(showDates(KCalCore::DateList,QDate)));
+    connect(mDateNavigator, &DateNavigator::datesSelected,
+            this, &CalendarView::showDates);
 
     connect(mDateNavigatorContainer, SIGNAL(newEventSignal(QDate)),
             SLOT(newEvent(QDate)));
@@ -228,8 +228,8 @@ CalendarView::CalendarView(QWidget *parent)
             mDateNavigator, &DateNavigator::selectYear);
 
     // Signals emitted by mDateNavigatorContainer
-    connect(mDateNavigatorContainer, SIGNAL(weekClicked(QDate,QDate)),
-            SLOT(selectWeek(QDate,QDate)));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::weekClicked,
+            this, &CalendarView::selectWeek);
 
     connect(mDateNavigatorContainer, &DateNavigatorContainer::prevMonthClicked,
             mDateNavigator, &DateNavigator::selectPreviousMonth);
@@ -254,23 +254,23 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mViewManager, SIGNAL(datesSelected(KCalCore::DateList)),
             mDateNavigator, SLOT(selectDates(KCalCore::DateList)));
 
-    connect(mDateNavigatorContainer, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
-            SLOT(addIncidenceOn(Akonadi::Item,QDate)));
-    connect(mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
-            SLOT(moveIncidenceTo(Akonadi::Item,QDate)));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::incidenceDropped,
+            this, &CalendarView::addIncidenceOn);
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::incidenceDroppedMove,
+            this, &CalendarView::moveIncidenceTo);
 
     connect(mDateChecker, &DateChecker::dayPassed,
             mTodoList, &BaseView::dayPassed);
-    connect(mDateChecker, SIGNAL(dayPassed(QDate)),
-            SIGNAL(dayPassed(QDate)));
-    connect(mDateChecker, SIGNAL(dayPassed(QDate)),
-            mDateNavigatorContainer, SLOT(updateToday()));
+    connect(mDateChecker, &DateChecker::dayPassed,
+            this, &CalendarView::dayPassed);
+    connect(mDateChecker, &DateChecker::dayPassed,
+            mDateNavigatorContainer, &DateNavigatorContainer::updateToday);
 
-    connect(this, SIGNAL(configChanged()),
-            mDateNavigatorContainer, SLOT(updateConfig()));
+    connect(this, &CalendarView::configChanged,
+            mDateNavigatorContainer, &DateNavigatorContainer::updateConfig);
 
-    connect(this, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            mEventViewer, SLOT(setIncidence(Akonadi::Item,QDate)));
+    connect(this, &CalendarView::incidenceSelected,
+            mEventViewer, &CalendarSupport::IncidenceViewer::setIncidence);
 
     //TODO: do a pretty Summary,
     QString s;
@@ -289,12 +289,12 @@ CalendarView::CalendarView(QWidget *parent)
 
     KOGlobals::self()->setHolidays(new KHolidays::HolidayRegion(KOPrefs::instance()->mHolidays));
 
-    connect(QApplication::clipboard(), SIGNAL(dataChanged()), SLOT(checkClipboard()));
+    connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &CalendarView::checkClipboard);
 
-    connect(mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            this, SLOT(processTodoListSelection(Akonadi::Item,QDate)));
-    disconnect(mTodoList, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-               this, SLOT(processMainViewSelection(Akonadi::Item,QDate)));
+    connect(mTodoList, &BaseView::incidenceSelected,
+            this, &CalendarView::processTodoListSelection);
+    disconnect(mTodoList, &BaseView::incidenceSelected,
+               this, &CalendarView::processMainViewSelection);
 
     {
         static bool pageRegistered = false;
@@ -1828,8 +1828,8 @@ void CalendarView::exportWeb()
     // seem to load the config theirselves
     settings->load();
     ExportWebDialog *dlg = new ExportWebDialog(settings, this);
-    connect(dlg, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
-            this, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)));
+    connect(dlg, &ExportWebDialog::exportHTML,
+            this, &CalendarView::exportHTML);
     dlg->show();
 }
 
@@ -2775,8 +2775,8 @@ void CalendarView::setCheckableProxyModel(KOCheckableProxyModel *model)
     }
 
     mCheckableProxyModel = model;
-    connect(model, SIGNAL(aboutToToggle(bool)), SLOT(onCheckableProxyAboutToToggle(bool)));
-    connect(model, SIGNAL(toggled(bool)), SLOT(onCheckableProxyToggled(bool)));
+    connect(model, &KOCheckableProxyModel::aboutToToggle, this, &CalendarView::onCheckableProxyAboutToToggle);
+    connect(model, &KOCheckableProxyModel::toggled, this, &CalendarView::onCheckableProxyToggled);
 }
 
 void CalendarView::onCheckableProxyAboutToToggle(bool newState)

@@ -138,13 +138,13 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
     mShowSpecialsFromCal = true;
 
     // Setup the Addressbook
-    connect(mPlugin->core(), SIGNAL(dayChanged(QDate)),
-            this, SLOT(updateView()));
+    connect(mPlugin->core(), &KontactInterface::Core::dayChanged,
+            this, &SDSummaryWidget::updateView);
 
-    connect(mCalendar.data(), SIGNAL(calendarChanged()),
-            this, SLOT(updateView()));
-    connect(mPlugin->core(), SIGNAL(dayChanged(QDate)),
-            this, SLOT(updateView()));
+    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged,
+            this, &SDSummaryWidget::updateView);
+    connect(mPlugin->core(), &KontactInterface::Core::dayChanged,
+            this, &SDSummaryWidget::updateView);
 
     // Update Configuration
     configUpdated();

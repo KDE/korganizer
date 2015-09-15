@@ -54,8 +54,8 @@ KOEventView::KOEventView(QWidget *parent)
     //another editor, for each keypress
     //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112)
     //  -Frank
-    connect(qobject_cast<QApplication *>(QApplication::instance()), SIGNAL(focusChanged(QWidget*,QWidget*)),
-            this, SLOT(focusChanged(QWidget*,QWidget*)));
+    connect(qobject_cast<QApplication *>(QApplication::instance()), &QApplication::focusChanged,
+            this, &KOEventView::focusChanged);
 }
 
 //---------------------------------------------------------------------------

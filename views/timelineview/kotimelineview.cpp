@@ -57,53 +57,53 @@ private:
 KOTimelineView::KOTimelineView(QWidget *parent)
     : KOEventView(parent), d(new Private(this))
 {
-    connect(d->mTimeLineView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-            d->mEventPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)));
+    connect(d->mTimeLineView, &EventViews::TimelineView::showIncidencePopupSignal,
+            d->mEventPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mTimeLineView, SIGNAL(showNewEventPopupSignal()),
-            SLOT(showNewEventPopup()));
+    connect(d->mTimeLineView, &EventViews::TimelineView::showNewEventPopupSignal,
+            this, &KOTimelineView::showNewEventPopup);
 
-    connect(d->mTimeLineView, SIGNAL(datesSelected(KCalCore::DateList)),
-            SIGNAL(datesSelected(KCalCore::DateList)));
+    connect(d->mTimeLineView, &EventViews::EventView::datesSelected,
+            this, &KOEventView::datesSelected);
 
-    connect(d->mTimeLineView, SIGNAL(shiftedEvent(QDate,QDate)),
-            SIGNAL(shiftedEvent(QDate,QDate)));
+    connect(d->mTimeLineView, &EventViews::EventView::shiftedEvent,
+            this, &KOEventView::shiftedEvent);
 
-    connect(d->mTimeLineView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(d->mTimeLineView, &EventViews::EventView::incidenceSelected,
+            this, &KOrg::BaseView::incidenceSelected);
 
-    connect(d->mTimeLineView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::showIncidenceSignal,
+            this, &KOrg::BaseView::showIncidenceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::editIncidenceSignal,
+            this, &KOrg::BaseView::editIncidenceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &KOrg::BaseView::deleteIncidenceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::cutIncidenceSignal,
+            this, &KOrg::BaseView::cutIncidenceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::copyIncidenceSignal,
+            this, &KOrg::BaseView::copyIncidenceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(d->mTimeLineView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &KOrg::BaseView::pasteIncidenceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::toggleAlarmSignal,
+            this, &KOrg::BaseView::toggleAlarmSignal);
 
-    connect(d->mTimeLineView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &KOrg::BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mTimeLineView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mTimeLineView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &KOrg::BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mTimeLineView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &KOrg::BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mTimeLineView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(d->mTimeLineView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &KOrg::BaseView::dissociateOccurrencesSignal);
 
     connect(d->mTimeLineView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -117,14 +117,14 @@ KOTimelineView::KOTimelineView(QWidget *parent)
     connect(d->mTimeLineView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(d->mTimeLineView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(d->mTimeLineView, &EventViews::EventView::newTodoSignal,
+            this, &KOrg::BaseView::newTodoSignal);
 
-    connect(d->mTimeLineView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(d->mTimeLineView, &EventViews::EventView::newSubTodoSignal,
+            this, &KOrg::BaseView::newSubTodoSignal);
 
-    connect(d->mTimeLineView, SIGNAL(newJournalSignal(QDate)),
-            SIGNAL(newJournalSignal(QDate)));
+    connect(d->mTimeLineView, &EventViews::EventView::newJournalSignal,
+            this, &KOrg::BaseView::newJournalSignal);
 }
 
 KOTimelineView::~KOTimelineView()

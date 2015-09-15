@@ -49,41 +49,41 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
     connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
 
-    connect(mView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(mView, &EventViews::EventView::incidenceSelected,
+            this, &BaseView::incidenceSelected);
 
-    connect(mView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::showIncidenceSignal,
+            this, &BaseView::showIncidenceSignal);
 
-    connect(mView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::editIncidenceSignal,
+            this, &BaseView::editIncidenceSignal);
 
-    connect(mView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &BaseView::deleteIncidenceSignal);
 
-    connect(mView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::cutIncidenceSignal,
+            this, &BaseView::cutIncidenceSignal);
 
-    connect(mView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::copyIncidenceSignal,
+            this, &BaseView::copyIncidenceSignal);
 
-    connect(mView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(mView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &BaseView::pasteIncidenceSignal);
 
-    connect(mView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::toggleAlarmSignal,
+            this, &BaseView::toggleAlarmSignal);
 
-    connect(mView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(mView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(mView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(mView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(mView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &BaseView::dissociateOccurrencesSignal);
 
     connect(mView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -97,19 +97,19 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     connect(mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(mView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(mView, &EventViews::EventView::newTodoSignal,
+            this, &BaseView::newTodoSignal);
 
-    connect(mView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(mView, &EventViews::EventView::newSubTodoSignal,
+            this, &BaseView::newSubTodoSignal);
 
-    connect(mView, SIGNAL(fullViewChanged(bool)),
-            SIGNAL(fullViewChanged(bool)));
+    connect(mView, &EventViews::TodoView::fullViewChanged,
+            this, &KOTodoView::fullViewChanged);
 
-    connect(mView, SIGNAL(unSubTodoSignal()),
-            SIGNAL(unSubTodoSignal()));
-    connect(mView, SIGNAL(unAllSubTodoSignal()),
-            SIGNAL(unAllSubTodoSignal()));
+    connect(mView, &EventViews::TodoView::unSubTodoSignal,
+            this, &KOTodoView::unSubTodoSignal);
+    connect(mView, &EventViews::TodoView::unAllSubTodoSignal,
+            this, &KOTodoView::unAllSubTodoSignal);
 
     connect(mView, static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView::createEvent),
             eventPopup, static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createEvent));

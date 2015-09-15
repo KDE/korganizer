@@ -56,51 +56,51 @@ private:
 MonthView::MonthView(QWidget *parent)
     : KOEventView(parent), d(new Private(this))
 {
-    connect(d->mMonthView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)), d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)));
+    connect(d->mMonthView, &EventViews::MonthView::showIncidencePopupSignal, d->mPopup, &KOEventPopupMenu::showIncidencePopup);
 
     connect(d->mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
 
-    connect(d->mMonthView, SIGNAL(datesSelected(KCalCore::DateList)),
-            SIGNAL(datesSelected(KCalCore::DateList)));
+    connect(d->mMonthView, &EventViews::EventView::datesSelected,
+            this, &KOEventView::datesSelected);
 
-    connect(d->mMonthView, SIGNAL(shiftedEvent(QDate,QDate)),
-            SIGNAL(shiftedEvent(QDate,QDate)));
+    connect(d->mMonthView, &EventViews::EventView::shiftedEvent,
+            this, &KOEventView::shiftedEvent);
 
-    connect(d->mMonthView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(d->mMonthView, &EventViews::EventView::incidenceSelected,
+            this, &BaseView::incidenceSelected);
 
-    connect(d->mMonthView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::showIncidenceSignal,
+            this, &BaseView::showIncidenceSignal);
 
-    connect(d->mMonthView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::editIncidenceSignal,
+            this, &BaseView::editIncidenceSignal);
 
-    connect(d->mMonthView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &BaseView::deleteIncidenceSignal);
 
-    connect(d->mMonthView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::cutIncidenceSignal,
+            this, &BaseView::cutIncidenceSignal);
 
-    connect(d->mMonthView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::copyIncidenceSignal,
+            this, &BaseView::copyIncidenceSignal);
 
-    connect(d->mMonthView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(d->mMonthView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &BaseView::pasteIncidenceSignal);
 
-    connect(d->mMonthView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::toggleAlarmSignal,
+            this, &BaseView::toggleAlarmSignal);
 
-    connect(d->mMonthView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mMonthView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mMonthView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mMonthView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mMonthView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mMonthView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(d->mMonthView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &BaseView::dissociateOccurrencesSignal);
 
     connect(d->mMonthView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -114,17 +114,17 @@ MonthView::MonthView(QWidget *parent)
     connect(d->mMonthView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(d->mMonthView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(d->mMonthView, &EventViews::EventView::newTodoSignal,
+            this, &BaseView::newTodoSignal);
 
-    connect(d->mMonthView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(d->mMonthView, &EventViews::EventView::newSubTodoSignal,
+            this, &BaseView::newSubTodoSignal);
 
-    connect(d->mMonthView, SIGNAL(newJournalSignal(QDate)),
-            SIGNAL(newJournalSignal(QDate)));
+    connect(d->mMonthView, &EventViews::EventView::newJournalSignal,
+            this, &BaseView::newJournalSignal);
 
-    connect(d->mMonthView, SIGNAL(fullViewChanged(bool)),
-            SIGNAL(fullViewChanged(bool)));
+    connect(d->mMonthView, &EventViews::MonthView::fullViewChanged,
+            this, &MonthView::fullViewChanged);
 }
 
 MonthView::~MonthView()

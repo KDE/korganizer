@@ -64,59 +64,59 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide) :
     layout->setMargin(0);
     layout->addWidget(d->mAgendaView);
 
-    connect(d->mAgendaView, SIGNAL(zoomViewHorizontally(QDate,int)),
-            SIGNAL(zoomViewHorizontally(QDate,int)));
+    connect(d->mAgendaView, &EventViews::AgendaView::zoomViewHorizontally,
+            this, &KOAgendaView::zoomViewHorizontally);
 
-    connect(d->mAgendaView, SIGNAL(timeSpanSelectionChanged()),
-            SIGNAL(timeSpanSelectionChanged()));
+    connect(d->mAgendaView, &EventViews::AgendaView::timeSpanSelectionChanged,
+            this, &KOAgendaView::timeSpanSelectionChanged);
 
-    connect(d->mAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-            d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)));
+    connect(d->mAgendaView, &EventViews::AgendaView::showIncidencePopupSignal,
+            d->mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mAgendaView, SIGNAL(showNewEventPopupSignal()),
-            SLOT(showNewEventPopup()));
+    connect(d->mAgendaView, &EventViews::AgendaView::showNewEventPopupSignal,
+            this, &KOAgendaView::showNewEventPopup);
 
-    connect(d->mAgendaView, SIGNAL(datesSelected(KCalCore::DateList)),
-            SIGNAL(datesSelected(KCalCore::DateList)));
+    connect(d->mAgendaView, &EventViews::EventView::datesSelected,
+            this, &KOEventView::datesSelected);
 
-    connect(d->mAgendaView, SIGNAL(shiftedEvent(QDate,QDate)),
-            SIGNAL(shiftedEvent(QDate,QDate)));
+    connect(d->mAgendaView, &EventViews::EventView::shiftedEvent,
+            this, &KOEventView::shiftedEvent);
 
-    connect(d->mAgendaView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(d->mAgendaView, &EventViews::EventView::incidenceSelected,
+            this, &KOrg::BaseView::incidenceSelected);
 
-    connect(d->mAgendaView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::showIncidenceSignal,
+            this, &KOrg::BaseView::showIncidenceSignal);
 
-    connect(d->mAgendaView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::editIncidenceSignal,
+            this, &KOrg::BaseView::editIncidenceSignal);
 
-    connect(d->mAgendaView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &KOrg::BaseView::deleteIncidenceSignal);
 
-    connect(d->mAgendaView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::cutIncidenceSignal,
+            this, &KOrg::BaseView::cutIncidenceSignal);
 
-    connect(d->mAgendaView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::copyIncidenceSignal,
+            this, &KOrg::BaseView::copyIncidenceSignal);
 
-    connect(d->mAgendaView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(d->mAgendaView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &KOrg::BaseView::pasteIncidenceSignal);
 
-    connect(d->mAgendaView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::toggleAlarmSignal,
+            this, &KOrg::BaseView::toggleAlarmSignal);
 
-    connect(d->mAgendaView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &KOrg::BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mAgendaView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &KOrg::BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mAgendaView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &KOrg::BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(d->mAgendaView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &KOrg::BaseView::dissociateOccurrencesSignal);
 
     connect(d->mAgendaView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -130,14 +130,14 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide) :
     connect(d->mAgendaView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(d->mAgendaView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(d->mAgendaView, &EventViews::EventView::newTodoSignal,
+            this, &KOrg::BaseView::newTodoSignal);
 
-    connect(d->mAgendaView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(d->mAgendaView, &EventViews::EventView::newSubTodoSignal,
+            this, &KOrg::BaseView::newSubTodoSignal);
 
-    connect(d->mAgendaView, SIGNAL(newJournalSignal(QDate)),
-            SIGNAL(newJournalSignal(QDate)));
+    connect(d->mAgendaView, &EventViews::EventView::newJournalSignal,
+            this, &KOrg::BaseView::newJournalSignal);
 
     d->mAgendaView->show();
 }

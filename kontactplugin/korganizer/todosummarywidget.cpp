@@ -71,8 +71,8 @@ TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
 
     mChanger = new Akonadi::IncidenceChanger(parent);
 
-    connect(mCalendar.data(), SIGNAL(calendarChanged()), SLOT(updateView()));
-    connect(mPlugin->core(), SIGNAL(dayChanged(QDate)), SLOT(updateView()));
+    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &TodoSummaryWidget::updateView);
+    connect(mPlugin->core(), &KontactInterface::Core::dayChanged, this, &TodoSummaryWidget::updateView);
 
     updateView();
 }

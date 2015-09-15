@@ -143,10 +143,10 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     KPIM::KPrefsWidInt *autoExportInterval =
         addWidInt(KOPrefs::instance()->autoExportIntervalItem(), saveGroupBox);
-    connect(autoExportHTML->checkBox(), SIGNAL(toggled(bool)),
-            autoExportInterval->label(), SLOT(setEnabled(bool)));
-    connect(autoExportHTML->checkBox(), SIGNAL(toggled(bool)),
-            autoExportInterval->spinBox(), SLOT(setEnabled(bool)));
+    connect(autoExportHTML->checkBox(), &QAbstractButton::toggled,
+            autoExportInterval->label(), &QWidget::setEnabled);
+    connect(autoExportHTML->checkBox(), &QAbstractButton::toggled,
+            autoExportInterval->spinBox(), &QWidget::setEnabled);
     intervalLayout->addWidget(autoExportInterval->label());
     intervalLayout->addWidget(autoExportInterval->spinBox());
 
@@ -338,7 +338,7 @@ public:
                       "this box, or the working hours will not be "
                       "marked with color."));
 
-            connect(mWorkDays[ index ], SIGNAL(stateChanged(int)), SLOT(slotWidChanged()));
+            connect(mWorkDays[ index ], &QCheckBox::stateChanged, this, &KPIM::KPrefsModule::slotWidChanged);
 
             workDaysLayout->addWidget(mWorkDays[ index ]);
         }
@@ -537,10 +537,10 @@ public:
         QTabWidget *tabWidget = new QTabWidget(this);
         topTopLayout->addWidget(tabWidget);
 
-        connect(mMonthIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
-                SLOT(slotWidChanged()));
-        connect(mAgendaIconComboBox, SIGNAL(checkedItemsChanged(QStringList)),
-                SLOT(slotWidChanged()));
+        connect(mMonthIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
+                this, &KPIM::KPrefsModule::slotWidChanged);
+        connect(mAgendaIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
+                this, &KPIM::KPrefsModule::slotWidChanged);
 
         // Tab: Views->General
         QFrame *generalFrame = new QFrame(this);
@@ -622,8 +622,8 @@ public:
 
         KPIM::KPrefsWidBool *marcusBainsShowSeconds =
             addWidBool(KOPrefs::instance()->marcusBainsShowSecondsItem());
-        connect(marcusBainsEnabled->checkBox(), SIGNAL(toggled(bool)),
-                marcusBainsShowSeconds->checkBox(), SLOT(setEnabled(bool)));
+        connect(marcusBainsEnabled->checkBox(), &QAbstractButton::toggled,
+                marcusBainsShowSeconds->checkBox(), &QWidget::setEnabled);
 
         adisplayLayout->addWidget(marcusBainsShowSeconds->checkBox());
         adisplayLayout->addWidget(

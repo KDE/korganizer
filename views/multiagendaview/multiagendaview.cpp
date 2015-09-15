@@ -73,53 +73,53 @@ private:
 MultiAgendaView::MultiAgendaView(QWidget *parent)
     : KOEventView(parent), d(new Private(this))
 {
-    connect(d->mMultiAgendaView, SIGNAL(datesSelected(KCalCore::DateList)),
-            SIGNAL(datesSelected(KCalCore::DateList)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected,
+            this, &KOEventView::datesSelected);
 
-    connect(d->mMultiAgendaView, SIGNAL(shiftedEvent(QDate,QDate)),
-            SIGNAL(shiftedEvent(QDate,QDate)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::shiftedEvent,
+            this, &KOEventView::shiftedEvent);
 
-    connect(d->mMultiAgendaView, SIGNAL(showIncidencePopupSignal(Akonadi::Item,QDate)),
-            d->mPopup, SLOT(showIncidencePopup(Akonadi::Item,QDate)));
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showIncidencePopupSignal,
+            d->mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mMultiAgendaView, SIGNAL(showNewEventPopupSignal()),
-            SLOT(showNewEventPopup()));
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showNewEventPopupSignal,
+            this, &MultiAgendaView::showNewEventPopup);
 
-    connect(d->mMultiAgendaView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::incidenceSelected,
+            this, &BaseView::incidenceSelected);
 
-    connect(d->mMultiAgendaView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::showIncidenceSignal,
+            this, &BaseView::showIncidenceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::editIncidenceSignal,
+            this, &BaseView::editIncidenceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &BaseView::deleteIncidenceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::cutIncidenceSignal,
+            this, &BaseView::cutIncidenceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::copyIncidenceSignal,
+            this, &BaseView::copyIncidenceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(d->mMultiAgendaView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &BaseView::pasteIncidenceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::toggleAlarmSignal,
+            this, &BaseView::toggleAlarmSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &BaseView::dissociateOccurrencesSignal);
 
     connect(d->mMultiAgendaView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -133,14 +133,14 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
     connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(d->mMultiAgendaView, SIGNAL(newTodoSignal(QDate)),
-            SIGNAL(newTodoSignal(QDate)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::newTodoSignal,
+            this, &BaseView::newTodoSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(newSubTodoSignal(Akonadi::Item)),
-            SIGNAL(newSubTodoSignal(Akonadi::Item)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::newSubTodoSignal,
+            this, &BaseView::newSubTodoSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(newJournalSignal(QDate)),
-            SIGNAL(newJournalSignal(QDate)));
+    connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal,
+            this, &BaseView::newJournalSignal);
 
 }
 
@@ -338,14 +338,14 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
 
     d->ui.columnList->setModel(&d->listModel);
     connect(d->ui.columnList->selectionModel(),
-            SIGNAL(currentChanged(QModelIndex,QModelIndex)),
-            this, SLOT(currentChanged(QModelIndex)));
-    connect(d->ui.useCustomRB, SIGNAL(toggled(bool)),
-            this, SLOT(useCustomToggled(bool)));
+            &QItemSelectionModel::currentChanged,
+            this, &MultiAgendaViewConfigDialog::currentChanged);
+    connect(d->ui.useCustomRB, &QAbstractButton::toggled,
+            this, &MultiAgendaViewConfigDialog::useCustomToggled);
     connect(d->ui.columnNumberSB, SIGNAL(valueChanged(int)),
             this, SLOT(numberOfColumnsChanged(int)));
-    connect(d->ui.titleLE, SIGNAL(textEdited(QString)),
-            this, SLOT(titleEdited(QString)));
+    connect(d->ui.titleLE, &QLineEdit::textEdited,
+            this, &MultiAgendaViewConfigDialog::titleEdited);
     d->setUpColumns(numberOfColumns());
     useCustomToggled(false);
 }

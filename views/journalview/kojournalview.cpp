@@ -48,44 +48,44 @@ KOJournalView::KOJournalView(QWidget *parent)
 
     layout->addWidget(mJournalView);
 
-    connect(mJournalView, SIGNAL(printJournal(KCalCore::Journal::Ptr,bool)),
-            SLOT(printJournal(KCalCore::Journal::Ptr,bool)));
+    connect(mJournalView, &EventViews::JournalView::printJournal,
+            this, &KOJournalView::printJournal);
 
-    connect(mJournalView, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            SIGNAL(incidenceSelected(Akonadi::Item,QDate)));
+    connect(mJournalView, &EventViews::EventView::incidenceSelected,
+            this, &BaseView::incidenceSelected);
 
-    connect(mJournalView, SIGNAL(showIncidenceSignal(Akonadi::Item)),
-            SIGNAL(showIncidenceSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::showIncidenceSignal,
+            this, &BaseView::showIncidenceSignal);
 
-    connect(mJournalView, SIGNAL(editIncidenceSignal(Akonadi::Item)),
-            SIGNAL(editIncidenceSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::editIncidenceSignal,
+            this, &BaseView::editIncidenceSignal);
 
-    connect(mJournalView, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
-            SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::deleteIncidenceSignal,
+            this, &BaseView::deleteIncidenceSignal);
 
-    connect(mJournalView, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::cutIncidenceSignal,
+            this, &BaseView::cutIncidenceSignal);
 
-    connect(mJournalView, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            SIGNAL(copyIncidenceSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::copyIncidenceSignal,
+            this, &BaseView::copyIncidenceSignal);
 
-    connect(mJournalView, SIGNAL(pasteIncidenceSignal()),
-            SIGNAL(pasteIncidenceSignal()));
+    connect(mJournalView, &EventViews::EventView::pasteIncidenceSignal,
+            this, &BaseView::pasteIncidenceSignal);
 
-    connect(mJournalView, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            SIGNAL(toggleAlarmSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::toggleAlarmSignal,
+            this, &BaseView::toggleAlarmSignal);
 
-    connect(mJournalView, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+    connect(mJournalView, &EventViews::EventView::toggleTodoCompletedSignal,
+            this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(mJournalView, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(mJournalView, &EventViews::EventView::copyIncidenceToResourceSignal,
+            this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mJournalView, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)));
+    connect(mJournalView, &EventViews::EventView::moveIncidenceToResourceSignal,
+            this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mJournalView, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)));
+    connect(mJournalView, &EventViews::EventView::dissociateOccurrencesSignal,
+            this, &BaseView::dissociateOccurrencesSignal);
 
     connect(mJournalView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
@@ -105,8 +105,8 @@ KOJournalView::KOJournalView(QWidget *parent)
     connect(mJournalView, &EventViews::EventView::newSubTodoSignal,
             this, &BaseView::newSubTodoSignal);
 
-    connect(mJournalView, SIGNAL(newJournalSignal(QDate)),
-            SIGNAL(newJournalSignal(QDate)));
+    connect(mJournalView, &EventViews::EventView::newJournalSignal,
+            this, &BaseView::newJournalSignal);
 }
 
 KOJournalView::~KOJournalView()

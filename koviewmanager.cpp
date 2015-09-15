@@ -293,8 +293,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     }
 
     // selecting an incidence
-    connect(view, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
-            mMainView, SLOT(processMainViewSelection(Akonadi::Item,QDate)));
+    connect(view, &BaseView::incidenceSelected,
+            mMainView, &CalendarView::processMainViewSelection);
 
     // showing/editing/deleting an incidence. The calendar view takes care of the action.
     connect(view, SIGNAL(showIncidenceSignal(Akonadi::Item)),
@@ -303,22 +303,22 @@ void KOViewManager::connectView(KOrg::BaseView *view)
             mMainView, SLOT(editIncidence(Akonadi::Item)));
     connect(view, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
             mMainView, SLOT(deleteIncidence(Akonadi::Item)));
-    connect(view, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
-            mMainView, SLOT(copyIncidence(Akonadi::Item)));
-    connect(view, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
-            mMainView, SLOT(cutIncidence(Akonadi::Item)));
-    connect(view, SIGNAL(pasteIncidenceSignal()),
-            mMainView, SLOT(pasteIncidence()));
-    connect(view, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
-            mMainView, SLOT(toggleAlarm(Akonadi::Item)));
-    connect(view, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
-            mMainView, SLOT(toggleTodoCompleted(Akonadi::Item)));
-    connect(view, SIGNAL(copyIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            mMainView, SLOT(copyIncidenceToResource(Akonadi::Item,Akonadi::Collection)));
-    connect(view, SIGNAL(moveIncidenceToResourceSignal(Akonadi::Item,Akonadi::Collection)),
-            mMainView, SLOT(moveIncidenceToResource(Akonadi::Item,Akonadi::Collection)));
-    connect(view, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
-            mMainView, SLOT(dissociateOccurrences(Akonadi::Item,QDate)));
+    connect(view, &BaseView::copyIncidenceSignal,
+            mMainView, &CalendarView::copyIncidence);
+    connect(view, &BaseView::cutIncidenceSignal,
+            mMainView, &CalendarView::cutIncidence);
+    connect(view, &BaseView::pasteIncidenceSignal,
+            mMainView, &CalendarView::pasteIncidence);
+    connect(view, &BaseView::toggleAlarmSignal,
+            mMainView, &CalendarView::toggleAlarm);
+    connect(view, &BaseView::toggleTodoCompletedSignal,
+            mMainView, &CalendarView::toggleTodoCompleted);
+    connect(view, &BaseView::copyIncidenceToResourceSignal,
+            mMainView, &CalendarView::copyIncidenceToResource);
+    connect(view, &BaseView::moveIncidenceToResourceSignal,
+            mMainView, &CalendarView::moveIncidenceToResource);
+    connect(view, &BaseView::dissociateOccurrencesSignal,
+            mMainView, &CalendarView::dissociateOccurrences);
 
     // signals to create new incidences
     connect(view, SIGNAL(newEventSignal()),
@@ -341,12 +341,12 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(mMainView, &CalendarView::configChanged, view, &KOrg::BaseView::updateConfig);
 
     // Notifications about added, changed and deleted incidences
-    connect(mMainView, SIGNAL(dayPassed(QDate)),
-            view, SLOT(dayPassed(QDate)));
-    connect(view, SIGNAL(startMultiModify(QString)),
-            mMainView, SLOT(startMultiModify(QString)));
-    connect(view, SIGNAL(endMultiModify()),
-            mMainView, SLOT(endMultiModify()));
+    connect(mMainView, &CalendarView::dayPassed,
+            view, &BaseView::dayPassed);
+    connect(view, &BaseView::startMultiModify,
+            mMainView, &CalendarView::startMultiModify);
+    connect(view, &BaseView::endMultiModify,
+            mMainView, &CalendarView::endMultiModify);
 
     connect(mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger*)),
             view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger*)));
@@ -361,15 +361,15 @@ void KOViewManager::connectTodoView(KOTodoView *todoView)
     }
 
     // SIGNALS/SLOTS FOR TODO VIEW
-    connect(todoView, SIGNAL(purgeCompletedSignal()),
-            mMainView, SLOT(purgeCompleted()));
-    connect(todoView, SIGNAL(unSubTodoSignal()),
-            mMainView, SLOT(todo_unsub()));
-    connect(todoView, SIGNAL(unAllSubTodoSignal()),
-            mMainView, SLOT(makeSubTodosIndependent()));
+    connect(todoView, &KOTodoView::purgeCompletedSignal,
+            mMainView, &CalendarView::purgeCompleted);
+    connect(todoView, &KOTodoView::unSubTodoSignal,
+            mMainView, &CalendarView::todo_unsub);
+    connect(todoView, &KOTodoView::unAllSubTodoSignal,
+            mMainView, &CalendarView::makeSubTodosIndependent);
 
-    connect(todoView, SIGNAL(fullViewChanged(bool)),
-            mMainView, SLOT(changeFullView(bool)));
+    connect(todoView, &KOTodoView::fullViewChanged,
+            mMainView, &CalendarView::changeFullView);
 }
 
 void KOViewManager::zoomInHorizontally()
@@ -430,8 +430,8 @@ void KOViewManager::showMonthView()
         mMonthView->setCalendar(mMainView->calendar());
         mMonthView->setIdentifier("DefaultMonthView");
         addView(mMonthView);
-        connect(mMonthView, SIGNAL(fullViewChanged(bool)),
-                mMainView, SLOT(changeFullView(bool)));
+        connect(mMonthView, &MonthView::fullViewChanged,
+                mMainView, &CalendarView::changeFullView);
     }
     goMenu(true);
     showView(mMonthView);
