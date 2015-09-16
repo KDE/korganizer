@@ -153,7 +153,7 @@ void KODialogManager::showFilterEditDialog(QList<KCalCore::CalFilter *> *filters
     if (!mFilterEditDialog) {
         mFilterEditDialog = new FilterEditDialog(filters, mMainView);
         connect(mFilterEditDialog, &FilterEditDialog::filterChanged, mMainView, &CalendarView::updateFilter);
-        connect(mFilterEditDialog, &FilterEditDialog::editCategories, mCategoryEditDialog, &QWidget::show);
+        connect(mFilterEditDialog, SIGNAL(editCategories()), mCategoryEditDialog, SLOT(show()));
 #if 0
         connect(mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
                 mFilterEditDialog, SLOT(updateCategoryConfig()));
