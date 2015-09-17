@@ -41,7 +41,7 @@
 #include "prefs/koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "reminderclient.h"
+#include "libkdepimdbusinterfaces/src/reminderclient.h"
 #include "kocheckableproxymodel.h"
 
 #include <KHolidays/HolidayRegion>
