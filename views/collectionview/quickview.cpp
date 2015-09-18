@@ -34,7 +34,7 @@
 #include <EventViews/ViewCalendar>
 #include <CalendarSupport/CalendarSingleton>
 
-#include <freebusymodel/freebusycalendar.h>
+#include <CalendarSupport/FreeBusyCalendar>
 
 #include "korganizer_debug.h"
 #include <KCheckableProxyModel>
