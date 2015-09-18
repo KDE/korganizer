@@ -54,7 +54,7 @@
 #include <IncidenceEditorsng/IncidenceEditorSettings>
 
 #include <KHolidays/HolidayRegion>
-#include <CalendarSupport/CollectionGeneralPage>
+#include "collectiongeneralpage.h"
 #include <CalendarSupport/CollectionSelection>
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>

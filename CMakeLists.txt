@@ -152,7 +152,8 @@ install(TARGETS
 
 set(korganizerprivate_LIB_SRCS
     ${korganizer_common_SRCS}
-    korgmigrateapplication.cpp 
+    korgmigrateapplication.cpp
+    collectiongeneralpage.cpp
     aboutdata.cpp
     actionmanager.cpp
     akonadicollectionview.cpp
@@ -256,8 +257,8 @@ PRIVATE
     KF5::IdentityManagement
     KF5::KCMUtils
     KF5::NewStuff
-    calendarsupportcollectionpage
     KF5::Ldap
+    KF5::MailCommon
 )
 
 target_include_directories(korganizerprivate PUBLIC
