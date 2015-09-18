@@ -28,7 +28,7 @@
 #include "actionmanager.h"
 #include "calendarview.h"
 #include "korganizer.h"
-#include "libkdepimdbusinterfaces/src/reminderclient.h"
+#include "KdepimDBusInterfaces/ReminderClient"
 #include "kdepim-version.h"
 #include <KCalCore/CalFormat>
 #include <KStartupInfo>

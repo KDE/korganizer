@@ -47,7 +47,7 @@ target_link_libraries(korganizer
   KF5::KontactInterface
   KF5::CalendarCore
   KF5::Libkdepim
-  kdepimdbusinterfaces
+  KF5::KdepimDBusInterfaces
   korganizerprivate
   korganizer_interfaces
   korganizer_core
@@ -242,7 +242,7 @@ PRIVATE
     KF5::EventViews
     KF5::IncidenceEditorsng
     KF5::Libkdepim
-    kdepimdbusinterfaces
+    KF5::KdepimDBusInterfaces
     korganizer_core
     korganizer_interfaces
     KF5::AkonadiCore
