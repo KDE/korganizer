@@ -29,7 +29,6 @@
 #include "widgets/navigatorbar.h"
 
 #include <KCalendarSystem>
-#include <KGlobal>
 #include <QEvent>
 #include <QGridLayout>
 #include <QLabel>

@@ -67,7 +67,6 @@
 #include <KTimeComboBox>
 #include <KUrlRequester>
 #include <KWindowSystem>
-#include <KGlobal>
 #include "korganizer_debug.h"
 #include <QIcon>
 #include <QPushButton>
