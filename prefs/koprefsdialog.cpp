@@ -36,7 +36,7 @@
 
 #include <IncidenceEditorsng/IncidenceEditorSettings>
 #include <Libkdepim/TagSelectionCombo>
-#include <widgets/tagwidgets.h>
+#include <libkdepim/tagwidgets.h>
 
 #include <AkonadiCore/AgentFilterProxyModel>
 #include <AkonadiCore/AgentInstanceCreateJob>

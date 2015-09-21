@@ -34,8 +34,8 @@
 #include <QSignalSpy>
 #include <qtestkeyboard.h>
 #include <qtestmouse.h>
-#include <texteditor/richtexteditor/richtexteditorwidget.h>
-#include <texteditor/richtexteditor/richtexteditor.h>
+#include <pimcommon/richtexteditorwidget.h>
+#include <pimcommon/richtexteditor.h>
 
 #include <QLineEdit>
 #include <QTextEdit>
