@@ -184,7 +184,7 @@ void CollectionGeneralPage::save(Collection &collection)
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
     }
     MailCommon::CollectionAnnotationsAttribute *annotationsAttribute =
-        collection.attribute<MailCommon::CollectionAnnotationsAttribute>(Entity::AddIfMissing);
+        collection.attribute<MailCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
 
     QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();
 

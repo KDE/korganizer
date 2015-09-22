@@ -27,7 +27,7 @@
 
 #include "korganizerprivate_export.h"
 
-#include <AkonadiCore/Entity>
+#include <AkonadiCore/Collection>
 
 #include <KCalCore/Incidence>
 
@@ -72,7 +72,7 @@ KORGANIZERPRIVATE_EXPORT int yearDiff(const QDate &start, const QDate &end);
 /**
   Return true if it's the standard calendar
 */
-KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(const Akonadi::Entity::Id &id);
+KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(const Akonadi::Collection::Id &id);
 
 KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(
     QWidget *parent, const KCalCore::Incidence::Ptr &incidence);
