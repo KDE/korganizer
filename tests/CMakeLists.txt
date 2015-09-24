@@ -17,7 +17,6 @@ target_link_libraries(korgplugins
   korganizer_core
   KF5::Holidays
   KF5::KIOCore
-  Qt5::Test
 )
 
 ########### next target ###############
