@@ -45,15 +45,8 @@ KOGlobals *KOGlobals::self()
     return &sKOGlobalsSingletonPrivate->instance;
 }
 
-KOGlobals::KOGlobals()
-    : mOwnInstance("korganizer"), mHolidays(Q_NULLPTR)
+KOGlobals::KOGlobals() : mHolidays(Q_NULLPTR)
 {
-}
-
-KConfig *KOGlobals::config() const
-{
-    KSharedConfig::Ptr c = mOwnInstance.config();
-    return c.data();
 }
 
 KOGlobals::~KOGlobals()

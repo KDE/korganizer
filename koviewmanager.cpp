@@ -477,8 +477,7 @@ void KOViewManager::showAgendaView()
                     this, SLOT(currentAgendaViewTabChanged(QWidget*)));
             mMainView->viewStack()->addWidget(mAgendaViewTabs);
 
-            KConfig *config = KOGlobals::self()->config();
-            KConfigGroup viewConfig(config, "Views");
+            KConfigGroup viewConfig = KSharedConfig::openConfig()->group(QStringLiteral("Views"));
             mAgendaViewTabIndex = viewConfig.readEntry("Agenda View Tab Index", 0);
         }
         parent = mAgendaViewTabs;
@@ -494,7 +493,8 @@ void KOViewManager::showAgendaView()
 
             connect(mAgendaView, SIGNAL(zoomViewHorizontally(QDate,int)),
                     mMainView->dateNavigator(), SLOT(selectDates(QDate,int)));
-            mAgendaView->readSettings(KOGlobals::self()->config());
+            auto config = KSharedConfig::openConfig();
+            mAgendaView->readSettings(config.data());
         }
         if (showBoth && mAgendaViewTabs->indexOf(mAgendaView) < 0) {
             mAgendaViewTabs->addTab(mAgendaView, i18n("Merged calendar"));
@@ -579,8 +579,8 @@ void KOViewManager::showTodoView()
         addView(mTodoView);
         connectTodoView(mTodoView);
 
-        KConfig *config = KOGlobals::self()->config();
-        mTodoView->restoreLayout(config, QStringLiteral("Todo View"), false);
+        KSharedConfig::Ptr config = KSharedConfig::openConfig();
+        mTodoView->restoreLayout(config.data(), QStringLiteral("Todo View"), false);
     }
     goMenu(false);
     showView(mTodoView);
@@ -663,7 +663,7 @@ QWidget *KOViewManager::widgetForView(KOrg::BaseView *view) const
 
 void KOViewManager::currentAgendaViewTabChanged(QWidget *widget)
 {
-    KConfig *config = KOGlobals::self()->config();
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup viewConfig(config, "Views");
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 

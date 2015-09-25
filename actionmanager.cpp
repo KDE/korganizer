@@ -213,7 +213,7 @@ void ActionManager::createCalendarAkonadi()
 {
     Q_ASSERT(calendar());
 
-    KConfig *config = KOGlobals::self()->config();
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mCollectionSelectionModelStateSaver =
         new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(
         config->group("GlobalCollectionSelection"));
@@ -656,7 +656,8 @@ void ActionManager::initActions()
     mEventViewerShowAction = new KToggleAction(i18n("Show Item Viewer"), this);
     mACollection->addAction(QStringLiteral("show_eventviewer"), mEventViewerShowAction);
     connect(mEventViewerShowAction, &KToggleAction::triggered, this, &ActionManager::toggleEventViewer);
-    KConfigGroup config(KOGlobals::self()->config(), "Settings");
+
+    KConfigGroup config(KSharedConfig::openConfig(), "Settings");
     mDateNavigatorShowAction->setChecked(config.readEntry("DateNavigatorVisible", true));
     // if we are a kpart, then let's not show the todo in the left pane by
     // default since there's also a Todo part and we'll assume they'll be
@@ -794,33 +795,34 @@ void ActionManager::restoreCollectionViewSetting()
 
 void ActionManager::writeSettings()
 {
-    KConfigGroup config = KOGlobals::self()->config()->group("Settings");
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KConfigGroup group = config->group("Settings");
     mCalendarView->writeSettings();
 
     if (mDateNavigatorShowAction) {
-        config.writeEntry("DateNavigatorVisible", mDateNavigatorShowAction->isChecked());
+        group.writeEntry("DateNavigatorVisible", mDateNavigatorShowAction->isChecked());
     }
 
     if (mTodoViewShowAction) {
-        config.writeEntry("TodoViewVisible", mTodoViewShowAction->isChecked());
+        group.writeEntry("TodoViewVisible", mTodoViewShowAction->isChecked());
     }
 
     if (mCollectionViewShowAction) {
-        config.writeEntry("ResourceViewVisible", mCollectionViewShowAction->isChecked());
+        group.writeEntry("ResourceViewVisible", mCollectionViewShowAction->isChecked());
     }
 
     if (mEventViewerShowAction) {
-        config.writeEntry("EventViewerVisible", mEventViewerShowAction->isChecked());
+        group.writeEntry("EventViewerVisible", mEventViewerShowAction->isChecked());
     }
 
     mCollectionViewStateSaver->saveState();
     mCollectionSelectionModelStateSaver->saveState();
 
-    KConfigGroup selectionViewGroup = KOGlobals::self()->config()->group("GlobalCollectionView");
-    KConfigGroup selectionGroup = KOGlobals::self()->config()->group("GlobalCollectionSelection");
+    KConfigGroup selectionViewGroup = config->group("GlobalCollectionView");
+    KConfigGroup selectionGroup = config->group("GlobalCollectionSelection");
     selectionGroup.sync();
     selectionViewGroup.sync();
-    config.sync();
+    config->sync();
 }
 
 /*

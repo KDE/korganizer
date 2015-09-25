@@ -203,7 +203,8 @@ private:
     void saveTreeState()
     {
         Akonadi::ETMViewStateSaver treeStateSaver;
-        KConfigGroup group(KOGlobals::self()->config(), mTreeStateConfig);
+        KSharedConfig::Ptr config = KSharedConfig::openConfig();
+        KConfigGroup group = config->group(mTreeStateConfig);
         treeStateSaver.setView(mTreeView);
         treeStateSaver.setSelectionModel(0); // we only save expand state
         treeStateSaver.saveState(group);
@@ -223,7 +224,7 @@ private:
         }
         qCDebug(KORGANIZER_LOG) << "Restore tree state";
         treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
-        KConfigGroup group(KOGlobals::self()->config(), mTreeStateConfig);
+        KConfigGroup group(KSharedConfig::openConfig(), mTreeStateConfig);
         treeStateRestorer->setView(mTreeView);
         treeStateRestorer->setSelectionModel(0);   // we only restore expand state
         treeStateRestorer->restoreState(group);

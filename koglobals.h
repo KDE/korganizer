@@ -27,7 +27,11 @@
 
 #include "korganizerprivate_export.h"
 
-#include <KComponentData>
+#include <QPixmap>
+#include <QString>
+#include <QDate>
+#include <QMap>
+#include <QList>
 
 namespace KHolidays
 {
@@ -42,8 +46,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
     friend class KOGlobalsSingletonPrivate;
 public:
     static KOGlobals *self();
-
-    KConfig *config() const;
 
     static bool reverseLayout();
 
@@ -79,7 +81,6 @@ protected:
     KOGlobals();
 
 private:
-    KComponentData mOwnInstance;
     KHolidays::HolidayRegion *mHolidays;
 };
 

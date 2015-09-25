@@ -413,8 +413,7 @@ void CalendarView::readSettings()
     // read settings from the KConfig, supplying reasonable
     // defaults where none are to be found
 
-    KConfig *config = KOGlobals::self()->config();
-
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup geometryConfig(config, "KOrganizer Geometry");
 
     QList<int> sizes = geometryConfig.readEntry("Separator1", QList<int>());
@@ -429,10 +428,10 @@ void CalendarView::readSettings()
         mLeftSplitter->setSizes(sizes);
     }
 
-    mViewManager->readSettings(config);
-    mTodoList->restoreLayout(config, QStringLiteral("Sidebar Todo View"), true);
+    mViewManager->readSettings(config.data());
+    mTodoList->restoreLayout(config.data(), QStringLiteral("Sidebar Todo View"), true);
 
-    readFilterSettings(config);
+    readFilterSettings(config.data());
 
     KConfigGroup viewConfig(config, "Views");
     int dateCount = viewConfig.readEntry("ShownDatesCount", 7);
@@ -445,8 +444,7 @@ void CalendarView::readSettings()
 
 void CalendarView::writeSettings()
 {
-    KConfig *config = KOGlobals::self()->config();
-
+    auto config = KSharedConfig::openConfig();
     KConfigGroup geometryConfig(config, "KOrganizer Geometry");
 
     QList<int> list = mMainSplitterSizes.isEmpty() ? mPanner->sizes() : mMainSplitterSizes;
@@ -460,14 +458,14 @@ void CalendarView::writeSettings()
         geometryConfig.writeEntry("Separator2", list);
     }
 
-    mViewManager->writeSettings(config);
-    mTodoList->saveLayout(config, QStringLiteral("Sidebar Todo View"));
+    mViewManager->writeSettings(config.data());
+    mTodoList->saveLayout(config.data(), QStringLiteral("Sidebar Todo View"));
 
     Akonadi::CalendarSettings::self()->save();
     KOPrefs::instance()->save();
     CalendarSupport::KCalPrefs::instance()->save();
 
-    writeFilterSettings(config);
+    writeFilterSettings(config.data());
 
     KConfigGroup viewConfig(config, "Views");
     viewConfig.writeEntry("ShownDatesCount", mDateNavigator->selectedDates().count());

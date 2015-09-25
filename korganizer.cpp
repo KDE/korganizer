@@ -42,6 +42,7 @@
 #include "korganizer_debug.h"
 #include <KShortcutsDialog>
 #include <KStandardAction>
+#include <KSharedConfig>
 #include <QLabel>
 #include <QStatusBar>
 
@@ -74,7 +75,6 @@ void KOrganizer::init(bool document)
 {
     setHasDocument(document);
 
-    setComponentData(KComponentData::mainComponent());
 
     // Create calendar object, which manages all calendar information associated
     // with this calendar view window.
@@ -125,10 +125,8 @@ void KOrganizer::readSettings()
     // read settings from the KConfig, supplying reasonable
     // defaults where none are to be found
 
-    KConfig *config = KOGlobals::self()->config();
-
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mActionManager->readSettings();
-
     config->sync();
 }
 
@@ -136,8 +134,7 @@ void KOrganizer::writeSettings()
 {
     qCDebug(KORGANIZER_LOG);
 
-    KConfig *config = KOGlobals::self()->config();
-
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mActionManager->writeSettings();
     config->sync();
 }
