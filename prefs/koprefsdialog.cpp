@@ -53,7 +53,7 @@
 
 #include <MailTransport/TransportManagementWidget>
 
-#include "PimCommon/ManageAccountWidget"
+#include "AkonadiWidgets/ManageAccountWidget"
 
 #include <KCalendarSystem>
 #include <KColorButton>
@@ -193,7 +193,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                       i18nc("@title:tab calendar account settings", "Calendars"));
     QHBoxLayout *calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
-    PimCommon::ManageAccountWidget *manageAccountWidget = new PimCommon::ManageAccountWidget(this);
+    Akonadi::ManageAccountWidget *manageAccountWidget = new Akonadi::ManageAccountWidget(this);
     calendarFrameLayout->addWidget(manageAccountWidget);
 
     manageAccountWidget->setMimeTypeFilter(QStringList() << QStringLiteral("text/calendar"));
