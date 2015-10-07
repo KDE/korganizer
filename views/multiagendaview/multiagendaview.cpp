@@ -24,8 +24,6 @@
 #include "prefs/koprefs.h"
 #include "ui_multiagendaviewconfigwidget.h"
 
-#include "Libkdepim/KColumnFilterProxyModel"
-
 #include <EventViews/AgendaView>
 #include <EventViews/MultiAgendaView>
 
@@ -34,6 +32,7 @@
 
 #include <KCheckableProxyModel>
 
+#include <KRearrangeColumnsProxyModel>
 #include <QDialogButtonBox>
 #include <QPushButton>
 
@@ -428,8 +427,8 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
             sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
 
-            KColumnFilterProxyModel *columnFilterProxy = new KColumnFilterProxyModel(sortProxy);
-            columnFilterProxy->setVisibleColumn(Akonadi::ETMCalendar::CollectionTitle);
+            KRearrangeColumnsProxyModel *columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
+            columnFilterProxy->setSourceColumns(QVector<int>()<<Akonadi::ETMCalendar::CollectionTitle);
             columnFilterProxy->setSourceModel(sortProxy);
 
             QItemSelectionModel *qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
