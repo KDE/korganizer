@@ -2711,7 +2711,7 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
     }
 
     // 3. Try last selected folder
-    collection = mCalendar->collection(IncidenceEditorNG::GlobalSettings::self()->lastSelectedFolder());
+    collection = mCalendar->collection(IncidenceEditorNG::IncidenceEditorSettings::self()->lastSelectedFolder());
     supportsMimeType = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {

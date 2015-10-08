@@ -1618,11 +1618,11 @@ void ActionManager::openEventEditor(const QString &summary,
                                     const QStringList &attendees,
                                     const QString &attachmentMimetype)
 {
-    int action = IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod();
+    int action = IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod();
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
-        action = IncidenceEditorNG::GlobalSettings::Link;
-    } else if (IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethod() ==
-               IncidenceEditorNG::GlobalSettings::Ask) {
+        action = IncidenceEditorNG::IncidenceEditorSettings::Link;
+    } else if (IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod() ==
+               IncidenceEditorNG::IncidenceEditorSettings::Ask) {
         QMenu *menu = new QMenu(Q_NULLPTR);
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
@@ -1634,11 +1634,11 @@ void ActionManager::openEventEditor(const QString &summary,
         delete menu;
 
         if (ret == attachLink) {
-            action = IncidenceEditorNG::GlobalSettings::Link;
+            action = IncidenceEditorNG::IncidenceEditorSettings::Link;
         } else if (ret == attachInline) {
-            action = IncidenceEditorNG::GlobalSettings::InlineFull;
+            action = IncidenceEditorNG::IncidenceEditorSettings::InlineFull;
         } else if (ret == attachBody) {
-            action = IncidenceEditorNG::GlobalSettings::InlineBody;
+            action = IncidenceEditorNG::IncidenceEditorSettings::InlineBody;
         } else {
             return;
         }
@@ -1648,13 +1648,13 @@ void ActionManager::openEventEditor(const QString &summary,
     QTemporaryFile tf;
     tf.setAutoRemove(true);
     switch (action) {
-    case IncidenceEditorNG::GlobalSettings::Link:
+    case IncidenceEditorNG::IncidenceEditorSettings::Link:
         attData = uri;
         break;
-    case IncidenceEditorNG::GlobalSettings::InlineFull:
+    case IncidenceEditorNG::IncidenceEditorSettings::InlineFull:
         attData = file;
         break;
-    case IncidenceEditorNG::GlobalSettings::InlineBody: {
+    case IncidenceEditorNG::IncidenceEditorSettings::InlineBody: {
         QFile f(file);
         if (!f.open(QFile::ReadOnly)) {
             return;
@@ -1694,7 +1694,7 @@ void ActionManager::openEventEditor(const QString &summary,
 
     mCalendarView->newEvent(summary, description, QStringList(attData),
                             attendees, QStringList(attachmentMimetype),
-                            action != IncidenceEditorNG::GlobalSettings::Link);
+                            action != IncidenceEditorNG::IncidenceEditorSettings::Link);
 }
 
 void ActionManager::openTodoEditor(const QString &text)

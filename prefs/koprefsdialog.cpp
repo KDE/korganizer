@@ -117,7 +117,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     KPIM::KPrefsWidRadios *defaultEmailAttachMethod =
         addWidRadios(
-            IncidenceEditorNG::GlobalSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
+            IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
     personalLayout->addStretch(1);
 
@@ -205,7 +205,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 void KOPrefsDialogMain::usrWriteConfig()
 {
     KPIM::KPrefsModule::usrWriteConfig();
-    IncidenceEditorNG::GlobalSettings::self()->save();
+    IncidenceEditorNG::IncidenceEditorSettings::self()->save();
 }
 
 void KOPrefsDialogMain::toggleEmailSettings(bool on)
