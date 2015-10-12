@@ -39,7 +39,6 @@ class HolidayRegion;
 }
 
 class KCalendarSystem;
-class KConfig;
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
 {
