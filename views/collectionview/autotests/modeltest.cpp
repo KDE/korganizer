@@ -569,7 +569,7 @@ void ModelTest::rowsAboutToBeMoved(const QModelIndex &srcParent, int start, int 
     cs.parent = srcParent;
     cs.oldSize = model->rowCount(srcParent);
     cs.last = model->data(model->index(start - 1, 0, srcParent));
-    qDebug() << start << model->data(model->index(start , 0, srcParent)).toString();
+    qDebug() << start << model->data(model->index(start, 0, srcParent)).toString();
     cs.next = model->data(model->index(end + 1, 0, srcParent));
     remove.push(cs);
     Changing cd;
@@ -607,7 +607,7 @@ void ModelTest::rowsMoved(const QModelIndex &srcParent, int start, int end, cons
     } else {
         Q_ASSERT(cs.oldSize - (end - start + 1) == model->rowCount(srcParent));
         qDebug() << start - 1 << model->data(model->index(start - 1, 0, srcParent)).toString() << cs.last.toString();
-        qDebug() << start << model->data(model->index(start , 0, srcParent)).toString() << cs.next.toString();
+        qDebug() << start << model->data(model->index(start, 0, srcParent)).toString() << cs.next.toString();
         Q_ASSERT(cs.last == model->data(model->index(start - 1, 0, srcParent)));
         qDebug() << cs.next << model->data(model->index(start, 0, srcParent));
         Q_ASSERT(cs.next == model->data(model->index(start, 0, srcParent)));

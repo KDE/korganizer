@@ -834,7 +834,7 @@ void ActionManager::file_new()
 
 void ActionManager::file_open()
 {
-    const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/") ;
+    const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/");
     const QUrl url = QFileDialog::getOpenFileUrl(dialogParent(), QString(), QUrl::fromLocalFile(defaultPath), QStringLiteral("text/calendar"));
 
     file_open(url);
@@ -1175,7 +1175,7 @@ bool ActionManager::saveModifiedURL()
 QUrl ActionManager::getSaveURL()
 {
     QUrl url =
-        QFileDialog::getSaveFileUrl(dialogParent(), QString(), QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")) ,
+        QFileDialog::getSaveFileUrl(dialogParent(), QString(), QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")),
                                     i18n("*.ics *.vcs|Calendar Files")
                                    );
 

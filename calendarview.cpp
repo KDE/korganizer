@@ -2336,7 +2336,7 @@ void CalendarView::deleteTodoIncidence(const Akonadi::Item &todoItem, bool force
 {
     const KCalCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
     if (!todo) {
-        return ;
+        return;
     }
 
     // it a simple todo, ask and delete it.

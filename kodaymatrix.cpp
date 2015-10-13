@@ -506,7 +506,7 @@ void KODayMatrix::mousePressEvent(QMouseEvent *e)
 {
     mSelStart = getDayIndexFrom(e->x(), e->y());
     if (e->button() == Qt::RightButton) {
-        popupMenu(mDays[mSelStart]) ;
+        popupMenu(mDays[mSelStart]);
     } else if (e->button() == Qt::LeftButton) {
         if (mSelStart > NUMDAYS - 1) {
             mSelStart = NUMDAYS - 1;

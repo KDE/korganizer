@@ -75,7 +75,6 @@ void KOrganizer::init(bool document)
 {
     setHasDocument(document);
 
-
     // Create calendar object, which manages all calendar information associated
     // with this calendar view window.
     mActionManager->createCalendarAkonadi();
@@ -192,7 +191,7 @@ bool KOrganizer::saveURL()
 
 bool KOrganizer::saveAsURL(const QUrl &kurl)
 {
-    return mActionManager->saveAsURL(kurl)  ;
+    return mActionManager->saveAsURL(kurl);
 }
 
 QUrl KOrganizer::getCurrentURL() const
