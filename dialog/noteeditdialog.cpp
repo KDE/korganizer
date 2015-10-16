@@ -21,8 +21,8 @@
  */
 
 #include "noteeditdialog.h"
-#include "PimCommon/RichTextEditorWidget"
-#include "PimCommon/RichTextEditor"
+#include "kpimtextedit/richtexteditorwidget.h"
+#include "kpimtextedit/richtexteditor.h"
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -93,9 +93,9 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     connect(mCollectionCombobox, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::currentIndexChanged), this, &NoteEditDialog::slotCollectionChanged);
     connect(mCollectionCombobox, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::activated), this, &NoteEditDialog::slotCollectionChanged);
 
-    mNoteText = new PimCommon::RichTextEditorWidget(parent);
+    mNoteText = new KPIMTextEdit::RichTextEditorWidget(parent);
     mNoteText->setObjectName(QStringLiteral("notetext"));
-    connect(mNoteText->editor(), &PimCommon::RichTextEditor::textChanged, this, &NoteEditDialog::slotUpdateButtons);
+    connect(mNoteText->editor(), &KPIMTextEdit::RichTextEditor::textChanged, this, &NoteEditDialog::slotUpdateButtons);
 
     //First line
     hbox->addWidget(mNoteTitle);
