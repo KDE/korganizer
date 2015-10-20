@@ -28,7 +28,6 @@ KOCheckableProxyModel::KOCheckableProxyModel(QObject *parent) : KCheckableProxyM
 {
 }
 
-/**reimp*/
 bool KOCheckableProxyModel::setData(const QModelIndex &index,
                                     const QVariant &value, int role)
 {

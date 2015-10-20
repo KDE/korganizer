@@ -310,7 +310,6 @@ public:
     {
     }
 
-    /* reimp */
     QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE
     {
         if (!index.isValid()) {
@@ -343,7 +342,6 @@ public:
         return QSortFilterProxyModel::data(index, role);
     }
 
-    /* reimp */
     Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         return Qt::ItemIsSelectable | QSortFilterProxyModel::flags(index);
