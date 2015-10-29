@@ -306,7 +306,7 @@ void Controller::setSearchString(const QString &searchString)
 
         mPersonSearchJob = new KPIM::PersonSearchJob(searchString, this);
         connect(mPersonSearchJob, &KPIM::PersonSearchJob::personsFound,
-                this, static_cast<void (Controller::*)(const QList<KPIM::Person> &)>(&Controller::onPersonsFound));
+                this, static_cast<void (Controller::*)(const QVector<KPIM::Person> &)>(&Controller::onPersonsFound));
         connect(mPersonSearchJob, &KPIM::PersonSearchJob::personUpdate, this, &Controller::onPersonUpdate);
         connect(mPersonSearchJob, &KPIM::PersonSearchJob::result,
                 this, static_cast<void (Controller::*)(KJob *)>(&Controller::onPersonsFound));
@@ -337,7 +337,7 @@ void Controller::onCollectionsFound(KJob *job)
     }
 }
 
-void Controller::onPersonsFound(const QList<KPIM::Person> &persons)
+void Controller::onPersonsFound(const QVector<KPIM::Person> &persons)
 {
     Q_FOREACH (const KPIM::Person &p, persons) {
         PersonNode *personNode = new PersonNode(*mSearchModel, p);

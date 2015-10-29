@@ -189,7 +189,7 @@ void NoteEditDialog::accept()
         note.setText(mNoteText->editor()->toPlainText(), format);
     }
     mItem.setPayload<KMime::Message::Ptr>(note.message());
-    emit createNote(mItem, collection);
+    Q_EMIT createNote(mItem, collection);
 }
 
 void NoteEditDialog::load(const Akonadi::Item &item)

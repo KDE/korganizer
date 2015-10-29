@@ -257,7 +257,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
     QList<StyledCalendarDelegate::Action> actions = getActions(opt, index);
     if (actions.count() >= button) {
         const Action a = actions.at(button - 1);
-        emit action(index, a);
+        Q_EMIT action(index, a);
         return true;
     }
     return QStyledItemDelegate::editorEvent(event, model, option, index);

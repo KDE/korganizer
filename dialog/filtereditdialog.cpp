@@ -127,7 +127,7 @@ void FilterEdit::updateFilterList()
     mRulesList->clear();
     if (!mFilters || mFilters->empty()) {
         mDetailsFrame->setEnabled(false);
-        emit(dataConsistent(false));
+        Q_EMIT(dataConsistent(false));
     } else {
         QList<KCalCore::CalFilter *>::iterator i;
         for (i = mFilters->begin(); i != mFilters->end(); ++i) {
@@ -141,7 +141,7 @@ void FilterEdit::updateFilterList()
                 filterSelected(f);
             }
         }
-        emit(dataConsistent(true));
+        Q_EMIT(dataConsistent(true));
     }
     if (mFilters && mFilters->count() > 0 && !mCurrent) {
         filterSelected(mFilters->at(0));

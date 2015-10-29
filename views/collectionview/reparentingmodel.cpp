@@ -291,7 +291,7 @@ void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
         if (*existing == *node) {
             existing->update(node);
             const QModelIndex i = index(existing.data());
-            emit dataChanged(i, i);
+            Q_EMIT dataChanged(i, i);
             return;
         }
     }
@@ -588,7 +588,7 @@ void ReparentingModel::onSourceDataChanged(const QModelIndex &begin, const QMode
     for (int row = begin.row(); row <= end.row(); row++) {
         mNodeManager->updateSourceIndex(sourceModel()->index(row, begin.column(), begin.parent()));
     }
-    emit dataChanged(mapFromSource(begin), mapFromSource(end));
+    Q_EMIT dataChanged(mapFromSource(begin), mapFromSource(end));
 }
 
 void ReparentingModel::onSourceModelAboutToBeReset()
