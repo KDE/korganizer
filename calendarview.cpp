@@ -1834,7 +1834,7 @@ void CalendarView::exportWeb()
 void CalendarView::exportICalendar()
 {
     QString filename =
-        QFileDialog::getSaveFileName(this, QString(), QStringLiteral("icalout.ics"), i18n("*.ics|iCalendars"));
+        QFileDialog::getSaveFileName(this, QString(), QStringLiteral("icalout.ics"), i18n("iCalendars (*.ics)"));
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".ics")) {
