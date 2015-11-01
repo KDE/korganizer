@@ -31,10 +31,10 @@ class MyDesignerFields : public KCMDesignerFields
 public:
     MyDesignerFields() : KCMDesignerFields(Q_NULLPTR) {}
     QString localUiDir() Q_DECL_OVERRIDE {
-        return QString::fromLatin1(KDESRCDIR);
+        return QStringLiteral(KDESRCDIR);
     }
     QString uiPath() Q_DECL_OVERRIDE {
-        return QString::fromLatin1(KDESRCDIR);
+        return QStringLiteral(KDESRCDIR);
     }
     void writeActivePages(const QStringList &) Q_DECL_OVERRIDE  {}
     QStringList readActivePages() Q_DECL_OVERRIDE {
