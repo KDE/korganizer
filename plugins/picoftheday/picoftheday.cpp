@@ -236,15 +236,15 @@ QUrl POTDElement::thumbnailUrl(const QUrl &fullSizeUrl, const int width) const
 {
     QString thumbUrl = fullSizeUrl.url();
     if (width != 0) {
-        thumbUrl.replace(QRegExp(QStringLiteral("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
+        thumbUrl.replace(QRegExp(QLatin1String("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
                          QStringLiteral("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/") +
                          QString::number(width) + QStringLiteral("px-\\2"));
     } else {  // This will not return a valid thumbnail URL, but will at least
         // give some info (the beginning of the URL)
-        thumbUrl.replace(QRegExp(QStringLiteral("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
+        thumbUrl.replace(QRegExp(QLatin1String("//upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)")),
                          QStringLiteral("//upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2"));
     }
-    thumbUrl.replace(QRegExp(QStringLiteral("^file:////")), QStringLiteral("http://"));
+    thumbUrl.replace(QRegExp(QLatin1String("^file:////")), QStringLiteral("http://"));
     return QUrl(thumbUrl);
 }
 
