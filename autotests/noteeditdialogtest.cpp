@@ -29,7 +29,6 @@
 #include <KMime/KMimeMessage>
 #include <QStandardItemModel>
 #include <QPushButton>
-#include <KRichTextEdit>
 #include <QTest>
 #include <QSignalSpy>
 #include <qtestkeyboard.h>

@@ -27,7 +27,6 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <QLineEdit>
-#include <KRichTextEdit>
 #include <QIcon>
 #include <QHBoxLayout>
 #include <QGridLayout>
