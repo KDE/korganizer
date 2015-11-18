@@ -266,7 +266,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Summary label
         str = ev->richSummary();
         if (ev->isMultiDay() && !ev->allDay()) {
-            str.append(QStringLiteral(" (%1/%2)").arg(dayof).arg(span));
+            str.append(QStringLiteral(" (%1/%2)").arg(dayof, span));
         }
         summaryEvent->summaryText = str;
         summaryEvent->summaryUrl = ev->uid();
