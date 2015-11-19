@@ -78,7 +78,7 @@ int KOHelper::yearDiff(const QDate &start, const QDate &end)
     return end.year() - start.year();
 }
 
-bool KOHelper::isStandardCalendar(const Akonadi::Collection::Id &id)
+bool KOHelper::isStandardCalendar(Akonadi::Collection::Id id)
 {
     return id == CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
 }
