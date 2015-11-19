@@ -110,25 +110,25 @@ public:
     int end;
 
 public Q_SLOTS:
-    void onRowsInserted(QModelIndex p, int s, int e)
+    void onRowsInserted(const QModelIndex &p, int s, int e)
     {
         mSignals << QStringLiteral("rowsInserted");
         parent = p;
         start = s;
         end = e;
     }
-    void onRowsRemoved(QModelIndex p, int s, int e)
+    void onRowsRemoved(const QModelIndex &p, int s, int e)
     {
         mSignals << QStringLiteral("rowsRemoved");
         parent = p;
         start = s;
         end = e;
     }
-    void onRowsMoved(QModelIndex, int, int, QModelIndex, int)
+    void onRowsMoved(const QModelIndex&, int, int,const QModelIndex&, int)
     {
         mSignals << QStringLiteral("rowsMoved");
     }
-    void onDataChanged(QModelIndex t, QModelIndex b)
+    void onDataChanged(const QModelIndex &t, const QModelIndex &b)
     {
         mSignals << QStringLiteral("dataChanged");
         topLeft = t;

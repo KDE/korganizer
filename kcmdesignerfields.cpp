@@ -89,7 +89,7 @@ public:
             QWidget *it;
             Q_FOREACH (it, list) {
                 if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
-                    QString name = it->objectName();
+                    const QString name = it->objectName();
                     if (name.startsWith(QStringLiteral("X_"))) {
                         new QTreeWidgetItem(this, QStringList()
                                             << name
@@ -396,14 +396,7 @@ void KCMDesignerFields::updatePreview()
                                              "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
                                              "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
                                              "</table></qt>")
-                              .arg(i18n("Key:"))
-                              .arg(item->text(0).replace(QLatin1String("X_"), QStringLiteral("X-")))
-                              .arg(i18n("Type:"))
-                              .arg(item->text(1))
-                              .arg(i18n("Classname:"))
-                              .arg(item->text(2))
-                              .arg(i18n("Description:"))
-                              .arg(item->text(3));
+                              .arg(i18n("Key:"), item->text(0).replace(QLatin1String("X_"), QStringLiteral("X-")), i18n("Type:"), item->text(1), i18n("Classname:"), item->text(2), i18n("Description:"), item->text(3));
 
             mPageDetails->setText(details);
 
