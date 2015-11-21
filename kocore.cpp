@@ -90,15 +90,14 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const KService::Ptr &service)
     }
 
     KPluginLoader loader(*service);
-    KPluginFactory *factory = loader.factory();
+    auto factory = loader.instance();
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return Q_NULLPTR;
     }
 
-    CalendarSupport::PluginFactory *pluginFactory =
-        static_cast<CalendarSupport::PluginFactory *>(factory);
+    auto pluginFactory = qobject_cast<CalendarSupport::PluginFactory*>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
@@ -123,15 +122,14 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
 {
     KPluginLoader loader(*service);
-    KPluginFactory *factory = loader.factory();
+    auto factory = loader.instance();
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return Q_NULLPTR;
     }
 
-    EventViews::CalendarDecoration::DecorationFactory *pluginFactory =
-        static_cast<EventViews::CalendarDecoration::DecorationFactory *>(factory);
+    auto pluginFactory = qobject_cast<EventViews::CalendarDecoration::DecorationFactory *>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
