@@ -1179,7 +1179,7 @@ QUrl ActionManager::getSaveURL()
                                     i18n("*.ics *.vcs|Calendar Files")
                                    );
 
-    if (url == QUrl()) {
+    if (!url.isValid()) {
         return url;
     }
 
