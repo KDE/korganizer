@@ -44,7 +44,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     okButton->setDefault(true);
     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
-    mainLayout->addWidget(buttonBox);
     okButton->setDefault(true);
     setModal(true);
     QFrame *topFrame = new QFrame(this);
@@ -78,6 +77,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     groupLayout->addWidget(btn);
 
     connect(okButton, &QPushButton::clicked, this, &ConfigDialog::slotOk);
+    mainLayout->addWidget(buttonBox);
 
     load();
 }
