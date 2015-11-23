@@ -26,6 +26,7 @@
 
 class KOrganizerUniqueAppHandler : public KontactInterface::UniqueAppHandler
 {
+    Q_OBJECT
 public:
     explicit KOrganizerUniqueAppHandler(KontactInterface::Plugin *plugin)
         : KontactInterface::UniqueAppHandler(plugin) {}
