@@ -97,7 +97,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const KService::Ptr &service)
         return Q_NULLPTR;
     }
 
-    auto pluginFactory = qobject_cast<CalendarSupport::PluginFactory*>(factory);
+    auto pluginFactory = qobject_cast<CalendarSupport::PluginFactory *>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";

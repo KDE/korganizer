@@ -124,7 +124,7 @@ public Q_SLOTS:
         start = s;
         end = e;
     }
-    void onRowsMoved(const QModelIndex&, int, int,const QModelIndex&, int)
+    void onRowsMoved(const QModelIndex &, int, int, const QModelIndex &, int)
     {
         mSignals << QStringLiteral("rowsMoved");
     }
