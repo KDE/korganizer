@@ -43,16 +43,6 @@ AboutData::AboutData()
                  QString(),
                  QStringLiteral("https://userbase.kde.org/KOrganizer"))
 {
-#if defined( KDEPIM_GIT_REVISION_STRING ) && defined( KDEPIM_GIT_LAST_CHANGE )
-    const QByteArray rev(KDEPIM_GIT_REVISION_STRING);
-    const QByteArray last(KDEPIM_GIT_LAST_CHANGE);
-    if (!rev.isEmpty() && !last.isEmpty()) {
-        QByteArray versionInfo(KDEPIM_VERSION);
-        versionInfo += '-' + rev + ' ' + '(' + last + ')';
-        setVersion(versionInfo);
-    }
-#endif
-
     addAuthor(i18n("Allen Winter"), i18n("Maintainer"),
               QStringLiteral("winter@kde.org"));
     addAuthor(i18n("Reinhold Kainhofer"), i18n("Former Maintainer"),
