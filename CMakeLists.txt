@@ -148,8 +148,12 @@ install(TARGETS
 
 ########### next target ###############
 
+set(korganizerprivate_plugin_LIB_SRCS
+   plugininterface/korganizerplugininterface.cpp
+)
 
 set(korganizerprivate_LIB_SRCS
+    ${korganizerprivate_plugin_LIB_SRCS}
     ${korganizer_common_SRCS}
     korgmigrateapplication.cpp
     collectiongeneralpage.cpp
