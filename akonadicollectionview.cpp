@@ -56,7 +56,6 @@
 #include <KActionCollection>
 #include <KCheckableProxyModel>
 #include <KConfigGroup>
-#include <KIconLoader>
 #include <KMessageBox>
 #include <KRecursiveFilterProxyModel>
 #include "korganizer_debug.h"
