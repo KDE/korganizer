@@ -99,12 +99,6 @@ bool KOrganizerIfaceImpl::editIncidence(const QString &itemId)
 
 bool KOrganizerIfaceImpl::addIncidence(const QString &uid)
 {
-    //bool ok;
-    //qint64 id = QVariant(uid).toLongLong(&ok);
-    //if(! ok) {
-    //  qCWarning(KORGANIZER_LOG) << "Invalid uid"<<uid;
-    //  return false;
-    //}
     return mActionManager->addIncidence(uid);
 }
 
