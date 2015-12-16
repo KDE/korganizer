@@ -18,7 +18,6 @@
 #include "korganizerplugininterface.h"
 #include <KActionCollection>
 
-
 KOrganizerPluginInterface::KOrganizerPluginInterface(KActionCollection *ac, QObject *parent)
     : PimCommon::PluginInterface(ac, parent)
 {
