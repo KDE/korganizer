@@ -34,6 +34,7 @@
 #include "kocore.h"
 #include "koglobals.h"
 #include "impl/korganizerifaceimpl.h"
+#include "plugininterface/korganizerplugininterface.h"
 
 #include "Libkdepim/ProgressStatusBarWidget"
 #include "Libkdepim/StatusbarProgressWidget"
@@ -80,11 +81,9 @@ void KOrganizer::init(bool document)
     mActionManager->createCalendarAkonadi();
 
     mActionManager->init();
-    /*connect( mActionManager, SIGNAL(actionNewMainWindow(QUrl)),
-             SLOT(newMainWindow(QUrl)) );*/
-
     mActionManager->loadParts();
 
+    mPluginInterface = new KOrganizerPluginInterface(actionCollection(), this);
     initActions();
     readSettings();
 
