@@ -266,7 +266,7 @@ void ActionManager::initActions()
 
         QAction *a = mACollection->addAction(KStandardAction::Print, mCalendarView, SLOT(print()));
         mACollection->addAction(QStringLiteral("korganizer_print"), a);
-        a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(print()));
+        a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(printPreview()));
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
     } else {
         KStandardAction::open(this, SLOT(file_open()), mACollection);
