@@ -67,6 +67,7 @@ public:
         return actionCollection();
     }
 
+    void initializePluginActions();
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.

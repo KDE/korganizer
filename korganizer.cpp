@@ -102,6 +102,23 @@ void KOrganizer::init(bool document)
     setTitle();
 }
 
+void KOrganizer::initializePluginActions()
+{
+#if 0
+    if (mXmlGuiClient->factory()) {
+        QHashIterator<PimCommon::ActionType::Type, QList<QAction *> > localActionsType(mPluginInterface->actionsType());
+        while (localActionsType.hasNext()) {
+            localActionsType.next();
+            QList<QAction *> lst = localActionsType.value();
+            if (!lst.isEmpty()) {
+                const QString actionlistname = QStringLiteral("korganizer") + PimCommon::PluginInterface::actionXmlExtension(localActionsType.key());
+                mXmlGuiClient->unplugActionList(actionlistname);
+                mXmlGuiClient->plugActionList(actionlistname, lst);
+            }
+        }
+    }
+#endif
+}
 void KOrganizer::newMainWindow(const QUrl &url)
 {
     KOrganizer *korg = new KOrganizer();
