@@ -171,7 +171,7 @@ public:
      */
     void calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence) Q_DECL_OVERRIDE;
     void calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incidence) Q_DECL_OVERRIDE;
-    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence) Q_DECL_OVERRIDE;
+    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence, const KCalCore::Calendar *calendar) Q_DECL_OVERRIDE;
 
     /** Sets which incidences should be highlighted */
     void setHighlightMode(bool highlightEvents,

@@ -448,9 +448,10 @@ void KODayMatrix::calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incid
     mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence)
+void KODayMatrix::calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence,  const KCalCore::Calendar *calendar)
 {
     Q_UNUSED(incidence);
+    Q_UNUSED(calendar);
     mPendingChanges = true;
 }
 
