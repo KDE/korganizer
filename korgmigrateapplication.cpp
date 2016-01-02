@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2015 Montel Laurent <montel@kde.org>
+  Copyright (c) 2015-2016 Montel Laurent <montel@kde.org>
 
   based on code from Sune Vuorela <sune@vuorela.dk> (Rawatar source code)
 
