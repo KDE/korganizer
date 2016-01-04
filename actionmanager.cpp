@@ -51,7 +51,7 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
-#include <IncidenceEditorsng/IncidenceEditorSettings>
+#include <IncidenceEditor/IncidenceEditorSettings>
 
 #include <AkonadiCore/EntityDisplayAttribute>
 #include <AkonadiWidgets/EntityTreeView>
