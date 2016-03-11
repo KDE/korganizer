@@ -317,7 +317,7 @@ install(PROGRAMS
 )
 
 install(FILES
-    korganizer.appdata.xml
+    org.kde.korganizer.appdata.xml
     DESTINATION ${KDE_INSTALL_METAINFODIR}
 )
 
