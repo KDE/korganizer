@@ -154,7 +154,7 @@
       <li>Undo and Redo.</li>
       <li xml:lang="ca">Fes i desfés.</li>
       <li xml:lang="ca-valencia">Fes i desfés.</li>
-      <li xml:lang="de">Zurücknehmen und Wiederherstellen.</li>
+      <li xml:lang="de">Rückgängig/Wiederherstellen.</li>
       <li xml:lang="en-GB">Undo and Redo.</li>
       <li xml:lang="es">Deshacer y rehacer.</li>
       <li xml:lang="fi">Kumoaminen ja uudelleen tekeminen.</li>
@@ -208,7 +208,7 @@
       <li>Attachments for events and todos.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents.</li>
       <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents.</li>
-      <li xml:lang="de">Anhänge für Ereignisse und Aufgaben.</li>
+      <li xml:lang="de">Anhänge für Termine und Aufgaben.</li>
       <li xml:lang="en-GB">Attachments for events and todos.</li>
       <li xml:lang="es">Adjuntos para eventos y tareas pendientes.</li>
       <li xml:lang="fi">Liitteet tapahtumille ja tehtäville.</li>
@@ -234,7 +234,7 @@
       <li>Quick todo and event entries.</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids.</li>
       <li xml:lang="ca-valencia">Entrades de pendents i esdeveniments ràpids.</li>
-      <li xml:lang="de">Schnelles Eintragen von Aufgaben und Ereignissen.</li>
+      <li xml:lang="de">Schnelles Eintragen von Aufgaben und Terminen.</li>
       <li xml:lang="en-GB">Quick todo and event entries.</li>
       <li xml:lang="es">Entradas rápidas para tareas pendientes y eventos.</li>
       <li xml:lang="fi">Nopeat tehtävä- ja tapahtumamerkinnät.</li>
@@ -287,7 +287,7 @@
       <li xml:lang="ca">Implementa la impressió.</li>
       <li xml:lang="ca-valencia">Implementa la impressió.</li>
       <li xml:lang="cs">Podpora tisku.</li>
-      <li xml:lang="de">Unterstützung für Drücken.</li>
+      <li xml:lang="de">Unterstützung zum Ausdrucken.</li>
       <li xml:lang="en-GB">Print support.</li>
       <li xml:lang="es">Apoyo de impresión.</li>
       <li xml:lang="fi">Tulostustuki.</li>
