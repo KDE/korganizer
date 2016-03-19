@@ -865,7 +865,6 @@ void ActionManager::file_icalimport()
     // FIXME: eventually, we will need a dialog box to select import type, etc.
     // for now, hard-coded to ical file, $HOME/.calendar.
     int retVal = -1;
-    QString progPath;
     QTemporaryFile tmpfn;
     tmpfn.open();
 
@@ -881,11 +880,6 @@ void ActionManager::file_icalimport()
     KProcess proc;
     proc << QStringLiteral("ical2vcal") << tmpfn.fileName();
     retVal = proc.execute();
-
-    if (retVal < 0) {
-        qCDebug(KORGANIZER_LOG) << "Error executing ical2vcal.";
-        return;
-    }
 
     qCDebug(KORGANIZER_LOG) << "ical2vcal return value:" << retVal;
 
