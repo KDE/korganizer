@@ -26,6 +26,7 @@
 
 #include <KLocalizedString>
 #include <KSharedConfig>
+#include <KConfigGroup>
 #include <QLineEdit>
 #include <QIcon>
 #include <QHBoxLayout>
