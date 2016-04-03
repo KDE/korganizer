@@ -28,7 +28,6 @@
 #include "koglobals.h"
 #include "widgets/navigatorbar.h"
 
-#include <KCalendarSystem>
 #include <QEvent>
 #include <QGridLayout>
 #include <QLabel>
@@ -146,11 +145,10 @@ QDate KDateNavigator::startDate() const
 {
     // Find the first day of the week of the current month.
     QDate dayone(mBaseDate.year(), mBaseDate.month(), mBaseDate.day());
-    int d2 = KOGlobals::self()->calendarSystem()->day(dayone);
+    int d2 = dayone.day();
     dayone = dayone.addDays(-d2 + 1);
 
-    const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
-    int m_fstDayOfWkCalsys = calsys->dayOfWeek(dayone);
+    int m_fstDayOfWkCalsys = dayone.dayOfWeek();
     int weekstart = QLocale().firstDayOfWeek();
 
     // If month begins on Monday and Monday is first day of week,
@@ -184,15 +182,13 @@ void KDateNavigator::updateDates()
 
     mDayMatrix->updateView(dayone);
 
-    const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
-
     // set the week numbers.
     for (int i = 0; i < 6; ++i) {
         // Use QDate's weekNumber method to determine the week number!
         QDate dtStart = mDayMatrix->getDate(i * 7);
         QDate dtEnd = mDayMatrix->getDate((i + 1) * 7 - 1);
-        const int weeknumstart = calsys->week(dtStart);
-        const int weeknumend = calsys->week(dtEnd);
+        const int weeknumstart = dtStart.weekNumber();
+        const int weeknumend = dtEnd.weekNumber();
         QString weeknum;
 
         if (weeknumstart != weeknumend) {
@@ -226,14 +222,12 @@ void KDateNavigator::setUpdateNeeded()
 QDate KDateNavigator::month() const
 {
     QDate firstCell = startDate();
-    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
-    if (calSys->day(firstCell) == 1) {
+    if (firstCell.day() == 1) {
         return firstCell;
     } else {
-        calSys->setDate(firstCell, calSys->year(firstCell),
-                        calSys->month(firstCell), 1);
-        return calSys->addMonths(firstCell, 1);
+        firstCell.setDate(firstCell.year(), firstCell.month(), 1);
+        return firstCell.addMonths(1);
     }
 }
 
@@ -248,10 +242,8 @@ void KDateNavigator::updateConfig()
     int weekstart = QLocale().firstDayOfWeek();
     for (int i = 0; i < 7; ++i) {
         const int day = weekstart + i <= 7 ? weekstart + i : (weekstart + i) % 7;
-        QString dayName =
-            KOGlobals::self()->calendarSystem()->weekDayName(day, KCalendarSystem::ShortDayName);
-        QString longDayName =
-            KOGlobals::self()->calendarSystem()->weekDayName(day, KCalendarSystem::LongDayName);
+        QString dayName = QLocale().dayName(day, QLocale::ShortFormat);
+        QString longDayName = QLocale().dayName(day, QLocale::LongFormat);
         mHeadings[i]->setText(dayName);
         mHeadings[i]->setToolTip(i18n("%1", longDayName));
         mHeadings[i]->setWhatsThis(
@@ -277,13 +269,11 @@ void KDateNavigator::setShowWeekNums(bool enabled)
 
 void KDateNavigator::selectMonthHelper(int monthDifference)
 {
-    QDate baseDateNextMonth = KOGlobals::self()->calendarSystem()->addMonths(
-                                  mBaseDate, monthDifference);
+    QDate baseDateNextMonth = mBaseDate.addMonths(monthDifference);
 
     KCalCore::DateList newSelection = mSelectedDates;
     for (int i = 0; i < mSelectedDates.count(); ++i) {
-        newSelection[i] =
-            KOGlobals::self()->calendarSystem()->addMonths(newSelection[i], monthDifference);
+        newSelection[i] = newSelection[i].addMonths(monthDifference);
     }
 
     setBaseDate(baseDateNextMonth);

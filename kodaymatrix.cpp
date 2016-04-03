@@ -35,7 +35,6 @@
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
 
-#include <KCalendarSystem>
 #include <QUrl>
 #include <QIcon>
 #include <QMenu>
@@ -162,7 +161,7 @@ void KODayMatrix::recalculateToday()
     mToday = -1;
     for (int i = 0; i < NUMDAYS; ++i) {
         mDays[i] = mStartDate.addDays(i);
-        mDayLabels[i] = QString::number(KOGlobals::self()->calendarSystem()->day(mDays[i]));
+        mDayLabels[i] = QString::number(mDays[i].day());
 
         // if today is in the currently displayed month, hilight today
         if (mDays[i].year() == QDate::currentDate().year() &&
@@ -236,9 +235,7 @@ void KODayMatrix::updateView(const QDate &actdate)
         QStringList holidays = holidaysByDate[mDays[i]];
         QString holiStr;
 
-        if ((KOGlobals::self()->calendarSystem()->dayOfWeek(mDays[i]) ==
-                KLocale::global()->weekDayOfPray()) ||
-                !holidays.isEmpty()) {
+        if (!holidays.isEmpty()) {
             if (!holidays.isEmpty()) {
                 holiStr = holidays.join(i18nc("delimiter for joining holiday names", ","));
             }
@@ -797,7 +794,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
         column = isRTL ? 6 - (i - row * 7) : i - row * 7;
 
         // if it is the first day of a month switch color from normal to shaded and vice versa
-        if (KOGlobals::self()->calendarSystem()->day(mDays[i]) == 1) {
+        if (mDays[i].day() == 1) {
             if (actcol == textColorShaded) {
                 actcol = textColor;
             } else {
@@ -892,11 +889,9 @@ void KODayMatrix::resizeEvent(QResizeEvent *)
 /* static */
 QPair<QDate, QDate> KODayMatrix::matrixLimits(const QDate &month)
 {
-    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-    QDate d = month;
-    calSys->setDate(d, calSys->year(month), calSys->month(month), 1);
+    QDate d(month.year(), month.month(), 1);
 
-    const int dayOfWeek = calSys->dayOfWeek(d);
+    const int dayOfWeek = d.dayOfWeek();
     const int weekstart = QLocale().firstDayOfWeek();
 
     d = d.addDays(-(7 + dayOfWeek - weekstart) % 7);
