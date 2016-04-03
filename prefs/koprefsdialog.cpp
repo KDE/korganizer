@@ -285,9 +285,8 @@ public:
 
         foreach (const QString &regionCode, regions) {
             QString name = KHolidays::HolidayRegion::name(regionCode);
-            QString languageName =
-                KLocale::global()->languageCodeToName(
-                    KHolidays::HolidayRegion::languageCode(regionCode));
+            QLocale locale(KHolidays::HolidayRegion::languageCode(regionCode));
+            QString languageName = QLocale::languageToString(locale.language());
             QString label;
             if (languageName.isEmpty()) {
                 label = name;
@@ -859,14 +858,14 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     KPIM::KPrefsWidFont *timeBarFont =
         addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
-                   KLocale::global()->formatTime(QTime(12, 34)));
+                   QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
     fontLayout->addWidget(timeBarFont->label(), 0, 0);
     fontLayout->addWidget(timeBarFont->preview(), 0, 1);
     fontLayout->addWidget(timeBarFont->button(), 0, 2);
 
     KPIM::KPrefsWidFont *monthViewFont =
         addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
-                   KLocale::global()->formatTime(QTime(12, 34)) + QLatin1Char(' ') +
+                   QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ') +
                    i18nc("@label", "Event text"));
 
     fontLayout->addWidget(monthViewFont->label(), 1, 0);
@@ -882,7 +881,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     KPIM::KPrefsWidFont *marcusBainsFont =
         addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
-                   KLocale::global()->formatTime(QTime(12, 34, 23)));
+                   QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
     fontLayout->addWidget(marcusBainsFont->label(), 3, 0);
     fontLayout->addWidget(marcusBainsFont->preview(), 3, 1);
     fontLayout->addWidget(marcusBainsFont->button(), 3, 2);
