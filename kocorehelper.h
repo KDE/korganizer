@@ -45,10 +45,6 @@ public:
     QTime dayStart() Q_DECL_OVERRIDE {
         return KOPrefs::instance()->mDayBegins.time();
     }
-
-    const KCalendarSystem *calendarSystem() Q_DECL_OVERRIDE {
-        return KOGlobals::self()->calendarSystem();
-    }
 };
 
 #endif

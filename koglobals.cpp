@@ -30,7 +30,6 @@
 #include <KIconLoader>
 
 #include <QApplication>
-#include <KLocale>
 
 class KOGlobalsSingletonPrivate
 {
@@ -52,11 +51,6 @@ KOGlobals::KOGlobals() : mHolidays(Q_NULLPTR)
 KOGlobals::~KOGlobals()
 {
     delete mHolidays;
-}
-
-const KCalendarSystem *KOGlobals::calendarSystem() const
-{
-    return KLocale::global()->calendar();
 }
 
 bool KOGlobals::reverseLayout()

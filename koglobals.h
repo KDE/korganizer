@@ -38,8 +38,6 @@ namespace KHolidays
 class HolidayRegion;
 }
 
-class KCalendarSystem;
-
 class KORGANIZERPRIVATE_EXPORT KOGlobals
 {
     friend class KOGlobalsSingletonPrivate;
@@ -47,8 +45,6 @@ public:
     static KOGlobals *self();
 
     static bool reverseLayout();
-
-    const KCalendarSystem *calendarSystem() const;
 
     ~KOGlobals();
 

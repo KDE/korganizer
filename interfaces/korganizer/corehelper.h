@@ -37,7 +37,6 @@ public:
     virtual QColor categoryColor(const QStringList &cats) = 0;
     virtual QString holidayString(const QDate &dt) = 0;
     virtual QTime dayStart() = 0;
-    virtual const KCalendarSystem *calendarSystem() = 0;
 };
 
 }
