@@ -25,10 +25,11 @@
 #include "navigatorbar.h"
 #include "koglobals.h"
 
-#include <KCalendarSystem>
 #include <KIconLoader>
+#include <KLocalizedString>
 
 #include <QHBoxLayout>
+#include <QLocale>
 #include <QMenu>
 #include <QToolButton>
 
@@ -126,23 +127,16 @@ void NavigatorBar::selectDates(const KCalCore::DateList &dateList)
     if (dateList.count() > 0) {
         mDate = dateList.first();
 
-        const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
         // set the label text at the top of the navigator
-        mMonth->setText(i18nc("monthname", "%1", calSys->monthName(mDate)));
-        mYear->setText(i18nc("4 digit year", "%1",
-                             calSys->formatDate(mDate, KLocale::Year, KLocale::LongNumber)));
+        mMonth->setText(i18nc("monthname", "%1", QLocale().monthName(mDate.month(), QLocale::LongFormat)));
+        mYear->setText(i18nc("4 digit year", "%1", QLocale().toString(mDate, QLatin1String("yyyy"))));
     }
 }
 
 void NavigatorBar::selectMonthFromMenu()
 {
-    // every year can have different month names (in some calendar systems)
-    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
-    int month = calSys->month(mDate);
-    int year = calSys->year(mDate);
-    int months = calSys->monthsInYear(mDate);
+    int month = mDate.month();
+    const int months = 12;
 
     QMenu *menu = new QMenu(mMonth);
     QList<QAction *> act;
@@ -150,7 +144,7 @@ void NavigatorBar::selectMonthFromMenu()
     QAction *activateAction = Q_NULLPTR;
     act.reserve(months);
     for (int i = 1; i <= months; ++i) {
-        QAction *monthAction = menu->addAction(calSys->monthName(i, year));
+        QAction *monthAction = menu->addAction(QLocale().monthName(i, QLocale::LongFormat));
         act.append(monthAction);
         if (i == month) {
             activateAction = monthAction;
@@ -179,9 +173,7 @@ void NavigatorBar::selectMonthFromMenu()
 
 void NavigatorBar::selectYearFromMenu()
 {
-    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
-    int year = calSys->year(mDate);
+    int year = mDate.year();
     int years = 11;  // odd number (show a few years ago -> a few years from now)
     int minYear = year - (years / 3);
 

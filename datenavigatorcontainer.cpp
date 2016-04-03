@@ -32,7 +32,7 @@
 #include "koglobals.h"
 #include "widgets/navigatorbar.h"
 
-#include <KCalendarSystem>
+#include <KLocalizedString>
 
 #include <QTimer>
 
@@ -175,13 +175,9 @@ void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList,
             navsecond = navfirst;
         }
 
-        const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
         // If the datelist crosses months we won't know which month to show
         // so we read what's in preferredMonth
-        const bool changingMonth =
-            (preferredMonth.isValid()  &&
-             calSys->month(mNavigatorView->month()) != calSys->month(preferredMonth));
+        const bool changingMonth = preferredMonth.isValid() && mNavigatorView->month().month() != preferredMonth.month();
 
         if (start < navfirst ||  // <- start should always be visible
                 // end is not visible and we have a spare month at the beginning:
@@ -214,7 +210,7 @@ void DateNavigatorContainer::setBaseDates(const QDate &start)
     }
 
     foreach (KDateNavigator *n, mExtraViews) {
-        baseDate = KOGlobals::self()->calendarSystem()->addMonths(baseDate, 1);
+        baseDate = baseDate.addMonths(1);
         if (!mIgnoreNavigatorUpdates) {
             n->setBaseDate(baseDate);
         }
@@ -351,7 +347,6 @@ void DateNavigatorContainer::goPrevMonth()
 
 QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
 {
-    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
     QDate firstMonth, lastMonth;
     if (mExtraViews.isEmpty()) {
         lastMonth = mNavigatorView->month();
@@ -359,8 +354,8 @@ QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
         lastMonth = mExtraViews.last()->month();
     }
 
-    firstMonth = calSys->addMonths(mNavigatorView->month(), offset);
-    lastMonth = calSys->addMonths(lastMonth, offset);
+    firstMonth = mNavigatorView->month().addMonths(offset);
+    lastMonth = lastMonth.addMonths(offset);
 
     QPair<QDate, QDate> firstMonthBoundary = KODayMatrix::matrixLimits(firstMonth);
     QPair<QDate, QDate> lastMonthBoundary = KODayMatrix::matrixLimits(lastMonth);
