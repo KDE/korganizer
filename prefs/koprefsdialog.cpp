@@ -55,7 +55,6 @@
 
 #include "AkonadiWidgets/ManageAccountWidget"
 
-#include <KCalendarSystem>
 #include <KColorButton>
 #include <KComboBox>
 #include <QHBoxLayout>
@@ -324,9 +323,7 @@ public:
         // Respect start of week setting
         int weekStart = QLocale().firstDayOfWeek();
         for (int i = 0; i < 7; ++i) {
-            const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-            QString weekDayName = calSys->weekDayName((i + weekStart + 6) % 7 + 1,
-                                  KCalendarSystem::ShortDayName);
+            QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::ShortFormat);
             int index = (i + weekStart + 6) % 7;
             mWorkDays[ index ] = new QCheckBox(weekDayName);
             mWorkDays[ index ]->setWhatsThis(
