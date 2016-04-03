@@ -3,7 +3,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 ########### next target ###############
 
 add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
-
+add_test(testkodaymatrix testkodaymatrix)
+ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
   KF5::AkonadiCore
   KF5::CalendarCore
