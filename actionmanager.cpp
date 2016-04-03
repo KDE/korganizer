@@ -94,7 +94,6 @@
 #include <QApplication>
 #include <QTimer>
 #include <KSharedConfig>
-#include <KLocale>
 #include <QStandardPaths>
 
 KOWindowList *ActionManager::mWindowList = Q_NULLPTR;
@@ -1793,7 +1792,7 @@ void ActionManager::goDate(const QDate &date)
 
 void ActionManager::goDate(const QString &date)
 {
-    goDate(KLocale::global()->readDate(date));
+    goDate(QLocale().toDate(date));
 }
 
 void ActionManager::showDate(const QDate &date)
