@@ -223,7 +223,7 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     )
 
 qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
-    ${CMAKE_SOURCE_DIR}/korgac/org.kde.korganizer.KOrgac.xml
+    ../korgac/org.kde.korganizer.KOrgac.xml
     )
 
 qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
