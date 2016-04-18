@@ -24,7 +24,7 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 
-#include "kcmdesignerfields.h"
+#include "../kcmdesignerfields.h"
 
 class MyDesignerFields : public KCMDesignerFields
 {

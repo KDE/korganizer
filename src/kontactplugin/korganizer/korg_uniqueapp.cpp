@@ -20,7 +20,7 @@
 */
 
 #include "korg_uniqueapp.h"
-#include "korganizer/korganizer_options.h"
+#include "../../../src/korganizer_options.h"
 
 #include <KontactInterface/Core>
 
