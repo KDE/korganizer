@@ -6,7 +6,7 @@ include_directories(
     ${CMAKE_BINARY_DIR}/korgac
     )
 
-set(korganizer_xml ${CMAKE_SOURCE_DIR}/korganizer/src/data/org.kde.korganizer.Korganizer.xml)
+set(korganizer_xml ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
 ########### next target ###############
 

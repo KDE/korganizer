@@ -1,5 +1,3 @@
-project(korganizer)
-
 add_definitions( -DQT_NO_CAST_FROM_ASCII )
 add_definitions( -DQT_NO_CAST_TO_ASCII )
 add_definitions(-DTRANSLATION_DOMAIN=\"korganizer\")
@@ -227,7 +225,7 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     )
 
 qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
-    ${CMAKE_SOURCE_DIR}/korganizer/src/data/org.kde.korganizer.Korganizer.xml
+    ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml
     )
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
