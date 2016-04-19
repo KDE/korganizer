@@ -23,7 +23,7 @@
 */
 
 #include "aboutdata.h"
-#include "kdepim-version.h"
+#include "korganizer-version.h"
 
 #include <KLocalizedString>
 

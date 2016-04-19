@@ -25,7 +25,7 @@
 #include <config-enterprise.h>
 
 #include "mailclient.h"
-#include "kdepim-version.h"
+#include "korganizer-version.h"
 #include "koalarmclient_debug.h"
 
 #include <AkonadiCore/Collection>

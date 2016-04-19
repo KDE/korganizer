@@ -24,7 +24,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "config-kdepim.h"
+#include "config-korganizer.h"
 #include "alarmdialog.h"
 #include "korganizer_interface.h"
 #include "mailclient.h"

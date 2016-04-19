@@ -23,7 +23,7 @@
 */
 
 #include "koalarmclient.h"
-#include "kdepim-version.h"
+#include "korganizer-version.h"
 
 #include <kaboutdata.h>
 

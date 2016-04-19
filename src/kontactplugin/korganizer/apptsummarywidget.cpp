@@ -27,7 +27,7 @@
 #include "korganizerplugin.h"
 #include "summaryeventinfo.h"
 
-#include "korganizer/korganizerinterface.h"
+#include "korganizerinterface.h"
 
 #include <CalendarSupport/Utils>
 #include <CalendarSupport/CalendarSingleton>

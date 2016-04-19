@@ -29,7 +29,7 @@
 #include "calendarview.h"
 #include "korganizer.h"
 #include "KdepimDBusInterfaces/ReminderClient"
-#include "kdepim-version.h"
+#include "korganizer-version.h"
 #include <KCalCore/CalFormat>
 #include <KStartupInfo>
 

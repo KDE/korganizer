@@ -27,7 +27,7 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#include "config-kdepim.h"
+#include "config-korganizer.h"
 #include "actionmanager.h"
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
