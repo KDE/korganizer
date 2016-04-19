@@ -45,7 +45,7 @@ ecm_add_app_icon(korgac_SRCS ICONS ${ICONS_SRCS})
 add_executable(korgac ${korgac_SRCS})
 if( APPLE )
     set_target_properties(korgac PROPERTIES
-        MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/Info.plist.template
+        MACOSX_BUNDLE_INFO_PLIST ${korganizer_SOURCE_DIR}/korgac/Info.plist.template
         )
     set_target_properties(korgac PROPERTIES
         MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.pim.korgac"
