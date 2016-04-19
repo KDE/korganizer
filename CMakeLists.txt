@@ -126,6 +126,8 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${korganizer_SOURCE_DIR})
     if (NOT APPLE)
         find_package(X11)
     endif()
+    find_package(Boost 1.34.0)
+    set_package_properties(Boost PROPERTIES DESCRIPTION "Boost C++ Libraries" URL "http://www.boost.org" TYPE REQUIRED PURPOSE "Boost is required for building most KDEPIM applications")
 
     set(KDEPIM_HAVE_X11 ${X11_FOUND})
     configure_file(korgac/config-enterprise.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-enterprise.h )
