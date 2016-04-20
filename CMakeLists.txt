@@ -125,11 +125,10 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${korganizer_SOURCE_DIR})
     set_package_properties(Boost PROPERTIES DESCRIPTION "Boost C++ Libraries" URL "http://www.boost.org" TYPE REQUIRED PURPOSE "Boost is required for building most KDEPIM applications")
 
     set(KDEPIM_HAVE_X11 ${X11_FOUND})
-    configure_file(korgac/config-enterprise.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-enterprise.h )
 endif()
 configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h )
-
-include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
+configure_file(korgac/config-enterprise.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-enterprise.h )
+include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_SOURCE_DIR} ${korgac_BINARY_DIR})
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 add_definitions( -DQT_NO_CAST_FROM_ASCII )
@@ -139,5 +138,5 @@ add_subdirectory(src)
 add_subdirectory(korgac)
 
 if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+    feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 endif()
