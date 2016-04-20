@@ -1,3 +1,9 @@
+NOTE! The GPL below is copyrighted by the Free Software Foundation, but
+the instance of code that it refers to (the kde programs) are copyrighted
+by the authors who actually wrote it.
+
+---------------------------------------------------------------------------
+			
 		    GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991
 
@@ -278,7 +284,6 @@ PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGES.
 
 		     END OF TERMS AND CONDITIONS
-
 
 	    How to Apply These Terms to Your New Programs
 
