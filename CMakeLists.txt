@@ -123,6 +123,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${korganizer_SOURCE_DIR})
     endif()
     find_package(Boost 1.34.0)
     set_package_properties(Boost PROPERTIES DESCRIPTION "Boost C++ Libraries" URL "http://www.boost.org" TYPE REQUIRED PURPOSE "Boost is required for building most KDEPIM applications")
+    add_definitions(-DQT_USE_QSTRINGBUILDER)
 
     set(KDEPIM_HAVE_X11 ${X11_FOUND})
 endif()
