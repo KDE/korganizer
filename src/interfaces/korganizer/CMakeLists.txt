@@ -14,8 +14,6 @@ target_link_libraries(korganizer_interfaces
   KF5::AkonadiCore
 )
 
-target_include_directories(korganizer_interfaces PUBLIC "$<BUILD_INTERFACE:${korganizer_SOURCE_DIR}/interfaces/korganizer;${korganizer_BINARY_DIR}/interfaces/korganizer>")
-
 set_target_properties(korganizer_interfaces PROPERTIES
   VERSION ${KDEPIM_LIB_VERSION}
   SOVERSION ${KDEPIM_LIB_SOVERSION}
