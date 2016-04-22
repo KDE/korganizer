@@ -1,8 +1,10 @@
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
+#Laurent : don't remove korgac (break standalone build)
 include_directories(
     ${CMAKE_SOURCE_DIR}/korganizer
     ${CMAKE_BINARY_DIR}/korganizer
+    ${CMAKE_BINARY_DIR}/korgac
     )
 
 set(korganizer_xml ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
