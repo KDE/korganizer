@@ -1,6 +1,6 @@
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/..
-  ${CMAKE_SOURCE_DIR}/korganizer
+  ${korganizer_SOURCE_DIR}/
 )
 
 set(reparentingmodeltest_SRCS

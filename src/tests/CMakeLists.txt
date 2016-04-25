@@ -1,8 +1,8 @@
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 include_directories(
-  ${CMAKE_SOURCE_DIR}/korganizer
-  ${CMAKE_BINARY_DIR}/korganizer
+  ${korganizer_SOURCE_DIR}/
+  ${korganizer_BINARY_DIR}/
 )
 
 ########### next target ###############
