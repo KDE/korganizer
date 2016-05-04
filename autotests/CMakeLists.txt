@@ -13,11 +13,8 @@ target_link_libraries(testkodaymatrix
   Qt5::Test
 )
 
-add_executable(koeventpopmenutest koeventpopupmenutest.cpp ../koeventpopupmenu.cpp ../kocorehelper.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
-add_test(koeventpopmenutest koeventpopmenutest)
-ecm_mark_as_test(koeventpopmenutest)
-target_link_libraries(koeventpopmenutest
-  Qt5::Test
+set(koeventpopupmenutest_SRCS ../koeventpopupmenu.cpp ../kocorehelper.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
+set(koeventpopupmenutest_LIBS Qt5::Test
   Qt5::Gui
   Qt5::Core
   KF5::Mime
@@ -30,6 +27,7 @@ target_link_libraries(koeventpopmenutest
   korganizer_core
   korganizerprivate
 )
+add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenutest_SRCS}" "${koeventpopupmenutest_LIBS}")
 
 add_executable(noteeditdialogtest noteeditdialogtest.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
 add_test(noteeditdialogtest noteeditdialogtest)
