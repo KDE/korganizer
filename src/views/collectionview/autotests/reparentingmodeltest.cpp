@@ -695,14 +695,14 @@ class DummyNodeManager : public ReparentingModel::NodeManager
 public:
     DummyNodeManager(ReparentingModel &m) : ReparentingModel::NodeManager(m) {}
 private:
-    void checkSourceIndex(const QModelIndex &sourceIndex)
+    void checkSourceIndex(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE
     {
         if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
             model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model, QStringLiteral("personnode"))));
         }
     }
 
-    void checkSourceIndexRemoval(const QModelIndex &sourceIndex)
+    void checkSourceIndexRemoval(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE
     {
         if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
             model.removeNode(DummyNode(model, QStringLiteral("personnode")));
