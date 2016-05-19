@@ -67,7 +67,7 @@ static QStyle *style(const QStyleOptionViewItem &option)
     return style;
 }
 
-static QStyleOptionButton buttonOpt(const QStyleOptionViewItemV4 &opt, const QPixmap &pixmap, int pos = 1)
+static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap, int pos = 1)
 {
     QStyleOptionButton option;
     option.icon = pixmap;
@@ -155,7 +155,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     // const bool enabled = col.shouldList(Akonadi::Collection::ListDisplay);
     Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
 
-    QStyleOptionViewItemV4 opt = option;
+    QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
     QStyledItemDelegate::paint(painter, opt, index);
 
