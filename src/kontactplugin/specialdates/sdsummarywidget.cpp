@@ -406,7 +406,7 @@ void SDSummaryWidget::createLabels()
     }
 
     // Sort, then Print the Special Dates
-    qSort(mDates);
+    std::sort(mDates.begin(), mDates.end());
 
     if (!mDates.isEmpty()) {
         int counter = 0;

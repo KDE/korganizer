@@ -170,7 +170,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         }
     }
 
-    qSort(events.begin(), events.end(), eventLessThan);
+    std::sort(events.begin(), events.end(), eventLessThan);
 
     SummaryEventInfo::List eventInfoList;
     KCalCore::Event::Ptr ev;
