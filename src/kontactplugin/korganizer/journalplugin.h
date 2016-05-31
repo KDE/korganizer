@@ -58,7 +58,6 @@ protected:
 
 private Q_SLOTS:
     void slotNewJournal();
-    void slotSyncJournal();
 
 private:
     OrgKdeKorganizerCalendarInterface *mIface;

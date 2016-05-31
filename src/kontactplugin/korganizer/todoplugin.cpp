@@ -71,19 +71,6 @@ TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
               "You will be presented with a dialog where you can create a new to-do item."));
     connect(action, &QAction::triggered, this, &TodoPlugin::slotNewTodo);
     insertNewAction(action);
-
-    QAction *syncAction =
-        new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
-                    i18nc("@action:inmenu", "Sync To-do List"), this);
-    str = i18nc("@info:status", "Synchronize groupware to-do list");
-    syncAction->setStatusTip(str);
-    syncAction->setToolTip(str);
-    syncAction->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Choose this option to synchronize your groupware to-do list."));
-    connect(syncAction, &QAction::triggered, this, &TodoPlugin::slotSyncTodos);
-    insertSyncAction(syncAction);
-
     mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(
         new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
@@ -150,20 +137,6 @@ OrgKdeKorganizerCalendarInterface *TodoPlugin::interface()
 void TodoPlugin::slotNewTodo()
 {
     interface()->openTodoEditor(QString());
-}
-
-void TodoPlugin::slotSyncTodos()
-{
-#if 0
-    QDBusMessage message =
-        QDBusMessage::createMethodCall("org.kde.kmail", "/Groupware",
-                                       "org.kde.kmail.groupware",
-                                       "triggerSync");
-    message << QString("Todo");
-    QDBusConnection::sessionBus().send(message);
-#else
-    qCWarning(KORGANIZERPLUGIN_LOG) << "TodoPlugin::slotSyncTodos : need to port to Akonadi";
-#endif
 }
 
 bool TodoPlugin::createDBUSInterface(const QString &serviceType)

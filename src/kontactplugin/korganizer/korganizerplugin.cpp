@@ -74,20 +74,6 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
     connect(action, &QAction::triggered, this, &KOrganizerPlugin::slotNewEvent);
     insertNewAction(action);
 
-    QAction *syncAction =
-        new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
-                    i18nc("@action:inmenu", "Sync Calendar"), this);
-    actionCollection()->addAction(QStringLiteral("korganizer_sync"), syncAction);
-    str = i18nc("@info:status", "Synchronize groupware calendar");
-    syncAction->setStatusTip(str);
-    syncAction->setToolTip(str);
-
-    syncAction->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Choose this option to synchronize your groupware events."));
-    connect(syncAction, &QAction::triggered, this, &KOrganizerPlugin::slotSyncEvents);
-    insertSyncAction(syncAction);
-
     mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(
         new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
@@ -144,20 +130,6 @@ OrgKdeKorganizerCalendarInterface *KOrganizerPlugin::interface()
 void KOrganizerPlugin::slotNewEvent()
 {
     interface()->openEventEditor(QString());
-}
-
-void KOrganizerPlugin::slotSyncEvents()
-{
-#if 0
-    QDBusMessage message =
-        QDBusMessage::createMethodCall("org.kde.kmail", "/Groupware",
-                                       "org.kde.kmail.groupware",
-                                       "triggerSync");
-    message << QString("Calendar");
-    QDBusConnection::sessionBus().send(message);
-#else
-    qCWarning(KORGANIZERPLUGIN_LOG) << " KOrganizerPlugin::slotSyncEvents : need to port to Akonadi";
-#endif
 }
 
 bool KOrganizerPlugin::createDBUSInterface(const QString &serviceType)

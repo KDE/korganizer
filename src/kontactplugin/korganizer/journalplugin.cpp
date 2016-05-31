@@ -61,20 +61,6 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     connect(action, &QAction::triggered, this, &JournalPlugin::slotNewJournal);
     insertNewAction(action);
 
-    QAction *syncAction =
-        new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
-                    i18nc("@action:inmenu", "Sync Journal"), this);
-    actionCollection()->addAction(QStringLiteral("journal_sync"), syncAction);
-    str = i18nc("@info:status", "Synchronize groupware journal");
-    syncAction->setStatusTip(str);
-    syncAction->setToolTip(str);
-
-    syncAction->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Choose this option to synchronize your groupware journal entries."));
-    connect(syncAction, &QAction::triggered, this, &JournalPlugin::slotSyncJournal);
-    insertSyncAction(syncAction);
-
     mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(
         new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
@@ -136,20 +122,6 @@ OrgKdeKorganizerCalendarInterface *JournalPlugin::interface()
 void JournalPlugin::slotNewJournal()
 {
     interface()->openJournalEditor(QString(), QDate());
-}
-
-void JournalPlugin::slotSyncJournal()
-{
-#if 0 //TODO porting !!!!
-    QDBusMessage message =
-        QDBusMessage::createMethodCall("org.kde.kmail", "/Groupware",
-                                       "org.kde.kmail.groupware",
-                                       "triggerSync");
-    message << QString("Journal");
-    QDBusConnection::sessionBus().send(message);
-#else
-    qCWarning(KORGANIZERPLUGIN_LOG) << " JournalPlugin::slotSyncJournal : need to port to Akonadi";
-#endif
 }
 
 bool JournalPlugin::createDBUSInterface(const QString &serviceType)
