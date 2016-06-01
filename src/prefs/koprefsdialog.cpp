@@ -753,16 +753,17 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     colorLayout->addWidget(agendaBgColor->label(), 3, 0);
     colorLayout->addWidget(agendaBgColor->button(), 3, 1);
 
+    KPIM::KPrefsWidColor *viewBgBusyColor =
+        addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
+    colorLayout->addWidget(viewBgBusyColor->label(), 4, 0);
+    colorLayout->addWidget(viewBgBusyColor->button(), 4, 1);
+
     // agenda view Marcus Bains line color
     KPIM::KPrefsWidColor *mblColor =
         addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
-    KPIM::KPrefsWidColor *viewBgBusyColor =
-        addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
-    colorLayout->addWidget(viewBgBusyColor->label(), 4, 0);
-    colorLayout->addWidget(viewBgBusyColor->button(), 4, 1);
 
     // working hours color
     KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
