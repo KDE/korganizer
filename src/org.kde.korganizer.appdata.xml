@@ -100,8 +100,8 @@
     <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Support for multiple calendars and todo lists.</li>
-      <li xml:lang="ca">Implementa múltiples calendaris i llistes de pendents.</li>
-      <li xml:lang="ca-valencia">Implementa múltiples calendaris i llistes de pendents.</li>
+      <li xml:lang="ca">Permet múltiples calendaris i llistes de pendents.</li>
+      <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de pendents.</li>
       <li xml:lang="de">Unterstützt mehrere Kalender und Aufgabenlisten.</li>
       <li xml:lang="en-GB">Support for multiple calendars and todo lists.</li>
       <li xml:lang="es">Admite varios calendarios y listas de tareas pendientes.</li>
@@ -284,8 +284,8 @@
       <li xml:lang="zh-CN">犹太教日历插件。</li>
       <li xml:lang="zh-TW">猶太行事曆外掛程式。</li>
       <li>Print support.</li>
-      <li xml:lang="ca">Implementa la impressió.</li>
-      <li xml:lang="ca-valencia">Implementa la impressió.</li>
+      <li xml:lang="ca">Permet la impressió.</li>
+      <li xml:lang="ca-valencia">Permet la impressió.</li>
       <li xml:lang="cs">Podpora tisku.</li>
       <li xml:lang="de">Unterstützung zum Ausdrucken.</li>
       <li xml:lang="en-GB">Print support.</li>
