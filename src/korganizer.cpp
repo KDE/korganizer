@@ -36,8 +36,8 @@
 #include "impl/korganizerifaceimpl.h"
 #include "plugininterface/korganizerplugininterface.h"
 
-#include "Libkdepim/ProgressStatusBarWidget"
-#include "Libkdepim/StatusbarProgressWidget"
+#include <Libkdepim/ProgressStatusBarWidget>
+#include <Libkdepim/StatusbarProgressWidget>
 
 #include <KActionCollection>
 #include "korganizer_debug.h"
