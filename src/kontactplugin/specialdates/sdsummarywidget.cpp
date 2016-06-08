@@ -57,8 +57,9 @@ using namespace KHolidays;
 
 class BirthdaySearchJob : public Akonadi::ItemSearchJob
 {
+    Q_OBJECT
 public:
-    BirthdaySearchJob(QObject *parent, int daysInAdvance);
+    explicit BirthdaySearchJob(QObject *parent, int daysInAdvance);
 };
 
 BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
@@ -229,7 +230,7 @@ int SDSummaryWidget::dayof(const KCalCore::Event::Ptr &event, const QDate &date)
 void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
 {
     // ;)
-    BirthdaySearchJob *bJob = dynamic_cast< BirthdaySearchJob *>(job);
+    BirthdaySearchJob *bJob = qobject_cast< BirthdaySearchJob *>(job);
     if (bJob) {
         foreach (const Akonadi::Item &item, bJob->items()) {
             if (item.hasPayload<KContacts::Addressee>()) {
@@ -728,3 +729,4 @@ QStringList SDSummaryWidget::configModules() const
     return QStringList() << QStringLiteral("kcmsdsummary.desktop");
 }
 
+#include "sdsummarywidget.moc"
