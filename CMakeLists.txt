@@ -1,7 +1,7 @@
 project(korganizer)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${korganizer_SOURCE_DIR})
-    cmake_minimum_required(VERSION 2.8.12)
+    cmake_minimum_required(VERSION 3.1)
     if (POLICY CMP0063)
         cmake_policy(SET CMP0063 NEW)
     endif()
