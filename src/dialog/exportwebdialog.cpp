@@ -108,7 +108,7 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-    qCDebug(KORGANIZER_LOG);
+    
 
     if (KMessageBox::warningContinueCancel(
                 this,

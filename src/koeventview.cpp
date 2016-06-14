@@ -152,7 +152,7 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction(const Akonadi::Item &aitem)
 {
-    qCDebug(KORGANIZER_LOG);
+    
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
     if (!incidence) {
         qCDebug(KORGANIZER_LOG) << "Ouch, null incidence";

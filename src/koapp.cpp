@@ -51,7 +51,7 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
 {
-    qCDebug(KORGANIZER_LOG);
+    
     static bool first = true;
     if (isSessionRestored() && first) {
         KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());

@@ -62,7 +62,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
 KOPrefs::~KOPrefs()
 {
-    qCDebug(KORGANIZER_LOG);
+    
     mEventViewsPrefs->writeConfig();
 }
 

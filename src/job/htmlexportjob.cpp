@@ -614,7 +614,7 @@ void HtmlExportJob::createTodoList(QTextStream *ts)
 
 void HtmlExportJob::createTodo(QTextStream *ts, const KCalCore::Todo::Ptr &todo)
 {
-    qCDebug(KORGANIZER_LOG);
+    
 
     const bool completed = todo->isCompleted();
 

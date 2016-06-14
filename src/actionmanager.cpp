@@ -1128,7 +1128,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
 #ifdef AKONADI_PORT_DISABLED // can go away, kept for reference
 bool ActionManager::saveModifiedURL()
 {
-    qCDebug(KORGANIZER_LOG);
+
 
     // If calendar isn't modified do nothing.
     if (!mCalendarView->isModified()) {
@@ -1193,7 +1193,7 @@ QUrl ActionManager::getSaveURL()
 
 void ActionManager::saveProperties(KConfigGroup &config)
 {
-    qCDebug(KORGANIZER_LOG);
+
 
     config.writeEntry("UseResourceCalendar", !mMainWindow->hasDocument());
     if (mMainWindow->hasDocument()) {
@@ -1209,7 +1209,7 @@ void ActionManager::readProperties(const KConfigGroup &)
 // Configuration changed as a result of the options dialog.
 void ActionManager::updateConfig()
 {
-    qCDebug(KORGANIZER_LOG);
+
     mNextXDays->setText(i18np("&Next Day", "&Next %1 Days",
                               KOPrefs::instance()->mNextXDays));
 
@@ -1382,7 +1382,7 @@ bool ActionManager::addIncidence(const QString &ical)
 
 void ActionManager::downloadNewStuff()
 {
-    qCDebug(KORGANIZER_LOG);
+
     KNS3::DownloadDialog dialog(mCalendarView);
     dialog.exec();
     foreach (const KNS3::Entry &e, dialog.installedEntries()) {
