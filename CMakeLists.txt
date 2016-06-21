@@ -114,6 +114,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${korganizer_SOURCE_DIR})
     set_package_properties(Boost PROPERTIES DESCRIPTION "Boost C++ Libraries" URL "http://www.boost.org" TYPE REQUIRED PURPOSE "Boost is required for building most KDEPIM applications")
 
     set(KDEPIM_HAVE_X11 ${X11_FOUND})
+    add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 endif()
 add_definitions(-DQT_USE_QSTRINGBUILDER)
 configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h )
