@@ -623,7 +623,7 @@ void SDSummaryWidget::updateView()
 
 void SDSummaryWidget::mailContact(const QString &url)
 {
-    const Akonadi::Item item = Akonadi::Item::fromUrl(url);
+    const Akonadi::Item item = Akonadi::Item::fromUrl(QUrl(url));
     if (!item.isValid()) {
         qCDebug(KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG) << QStringLiteral("Invalid item found");
         return;
@@ -651,7 +651,7 @@ void SDSummaryWidget::slotItemFetchJobDone(KJob *job)
 
 void SDSummaryWidget::viewContact(const QString &url)
 {
-    const Akonadi::Item item = Akonadi::Item::fromUrl(url);
+    const Akonadi::Item item = Akonadi::Item::fromUrl(QUrl(url));
     if (!item.isValid()) {
         qCDebug(KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG) << "Invalid item found";
         return;

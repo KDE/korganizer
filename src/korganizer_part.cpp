@@ -154,7 +154,7 @@ QUrl KOrganizerPart::getCurrentURL() const
 
 bool KOrganizerPart::openFile()
 {
-    mActionManager->importCalendar(localFilePath());
+    mActionManager->importCalendar(QUrl::fromLocalFile(localFilePath()));
     return true;
 }
 

@@ -1168,7 +1168,7 @@ bool ActionManager::saveModifiedURL()
 QUrl ActionManager::getSaveURL()
 {
     QUrl url =
-        QFileDialog::getSaveFileUrl(dialogParent(), QString(), QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")),
+        QFileDialog::getSaveFileUrl(dialogParent(), QString(), QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")),
                                     i18n("*.ics *.vcs|Calendar Files")
                                    );
 

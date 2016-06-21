@@ -114,7 +114,7 @@ void KOAlarmClient::deferredInit()
         const QString group(QStringLiteral("Incidence-%1").arg(i));
         const KConfigGroup incGroup(KSharedConfig::openConfig(), group);
 
-        const QUrl url = incGroup.readEntry("AkonadiUrl");
+        const QUrl url(incGroup.readEntry("AkonadiUrl"));
         Akonadi::Item::Id akonadiItemId = -1;
         if (!url.isValid()) {
             // logic to migrate old KOrganizer incidence uid's to a Akonadi item.

@@ -320,7 +320,7 @@ void KOEventPopupMenu::createNote()
         note.setText(incidence->description(), incidence->descriptionIsRich() ? Qt::RichText : Qt::PlainText);
         note.setFrom(QCoreApplication::applicationName() + QCoreApplication::applicationVersion());
         note.setLastModifiedDate(QDateTime::currentDateTimeUtc());
-        Akonadi::NoteUtils::Attachment attachment(mCurrentIncidence.url().url(), mCurrentIncidence.mimeType());
+        Akonadi::NoteUtils::Attachment attachment(mCurrentIncidence.url(), mCurrentIncidence.mimeType());
         note.attachments().append(attachment);
         Akonadi::Item newNoteItem;
         newNoteItem.setMimeType(Akonadi::NoteUtils::noteMimeType());

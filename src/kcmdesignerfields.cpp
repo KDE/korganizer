@@ -193,8 +193,7 @@ void KCMDesignerFields::deleteFile()
                     this,
                     i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>",
                          pageItem->text(0)), QString(), KStandardGuiItem::del()) == KMessageBox::Continue) {
-            auto job = KIO::del(pageItem->path());
-            job->exec();
+            QFile::remove(pageItem->path());
         }
     }
     // The actual view refresh will be done automagically by the slots connected to kdirwatch
@@ -442,9 +441,7 @@ void KCMDesignerFields::startDesigner()
     // check if path exists and create one if not.
     QString cepPath = localUiDir();
     if (!QDir(cepPath).exists()) {
-        auto job = KIO::mkdir(cepPath);
-        KJobWidgets::setWindow(job, this);
-        job->exec();
+        QDir().mkdir(cepPath);
     }
 
     // finally jump there

@@ -1012,7 +1012,7 @@ void AlarmDialog::removeFromConfig(const QList<Akonadi::Item::Id> &ids)
         KConfigGroup incGroup(config, group);
         const QString uid = incGroup.readEntry("UID");
         const QDateTime remindAtDate = incGroup.readEntry("RemindAt", QDateTime());
-        const QUrl akonadiUrl = incGroup.readEntry("AkonadiUrl");
+        const QUrl akonadiUrl(incGroup.readEntry("AkonadiUrl"));
         const Akonadi::Item::Id id = Akonadi::Item::fromUrl(akonadiUrl).id();
         if (!ids.contains(id)) {
             ConfItem ci;
