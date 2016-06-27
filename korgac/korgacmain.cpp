@@ -33,10 +33,6 @@
 #include <KDBusService>
 #include <KLocalizedString>
 #include <QApplication>
-#ifdef SERIALIZER_PLUGIN_STATIC
-
-Q_IMPORT_PLUGIN(akonadi_serializer_kcalcore)
-#endif
 
 int main(int argc, char **argv)
 {
