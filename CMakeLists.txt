@@ -70,7 +70,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${korganizer_SOURCE_DIR})
     set(EVENTVIEW_LIB_VERSION_LIB "5.2.80")
     set(KCONTACTS_LIB_VERSION "5.2.80")
 
-    find_package(KF5AkonadiSearch "5.2.41" CONFIG REQUIRED)
+    find_package(KF5AkonadiSearch "5.2.80" CONFIG REQUIRED)
     set_package_properties(KF5AkonadiSearch PROPERTIES DESCRIPTION "The Akonadi Search libraries" URL "http://www.kde.org" TYPE REQUIRED PURPOSE "Provides search capabilities in KMail and Akonadi")
 
     # Find KF5 package
