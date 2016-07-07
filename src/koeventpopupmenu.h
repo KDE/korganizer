@@ -51,7 +51,7 @@ protected Q_SLOTS:
     void popupShow();
     void popupEdit();
     void popupPaste();
-    void print();
+    void slotPrint();
     void printPreview();
     void popupDelete();
     void popupCut();

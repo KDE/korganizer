@@ -678,7 +678,7 @@ void ActionManager::initActions()
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    mHideMenuBarAction = KStandardAction::showMenubar(this, SLOT(toggleMenubar()), mACollection);
+    mHideMenuBarAction = KStandardAction::showMenubar(this, &ActionManager::toggleMenubar, mACollection);
     mHideMenuBarAction->setChecked(KOPrefs::instance()->showMenuBar());
     toggleMenubar(true);
 
@@ -710,7 +710,7 @@ void ActionManager::initActions()
                                 this, SLOT(keyBindings()));
     } else {
         KStandardAction::preferences(mCalendarView, SLOT(edit_options()), mACollection);
-        KStandardAction::keyBindings(this, SLOT(keyBindings()), mACollection);
+        KStandardAction::keyBindings(this, &ActionManager::keyBindings, mACollection);
     }
 }
 

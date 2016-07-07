@@ -55,16 +55,16 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mHasAdditionalItems = false;
 
     addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18n("&Show"),
-              this, SLOT(popupShow()));
+              this, &KOEventPopupMenu::popupShow);
     mEditOnlyItems.append(
         addAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18n("&Edit..."),
-                  this, SLOT(popupEdit())));
+                  this, &KOEventPopupMenu::popupEdit));
     mEditOnlyItems.append(addSeparator());
     addAction(QIcon::fromTheme(QStringLiteral("document-print")), i18n("&Print..."),
-              this, SLOT(print()));
+              this, &KOEventPopupMenu::slotPrint);
     addAction(QIcon::fromTheme(QStringLiteral("document-print-preview")),
               i18n("Print Previe&w..."),
-              this, SLOT(printPreview()));
+              this, &KOEventPopupMenu::printPreview);
 
     //------------------------------------------------------------------------
     mEditOnlyItems.append(addSeparator());
@@ -188,7 +188,7 @@ void KOEventPopupMenu::popupEdit()
     }
 }
 
-void KOEventPopupMenu::print()
+void KOEventPopupMenu::slotPrint()
 {
     print(false);
 }
