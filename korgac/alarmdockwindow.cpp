@@ -73,10 +73,10 @@ AlarmDockWindow::AlarmDockWindow()
     // Set up the context menu
     mSuspendAll =
         contextMenu()->addAction(i18nc("@action:inmenu", "Suspend All Reminders"), this,
-                                 SLOT(slotSuspendAll()));
+                                 &AlarmDockWindow::slotSuspendAll);
     mDismissAll =
         contextMenu()->addAction(i18nc("@action:inmenu", "Dismiss All Reminders"), this,
-                                 SLOT(slotDismissAll()));
+                                 &AlarmDockWindow::slotDismissAll);
     mSuspendAll->setEnabled(false);
     mDismissAll->setEnabled(false);
 
