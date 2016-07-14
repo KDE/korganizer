@@ -31,12 +31,13 @@
 #include "korgmigrateapplication.h"
 
 #include <KLocalizedString>
-
+#include <KCrash>
 int main(int argc, char **argv)
 {
     KOrganizerApp app(argc, &argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
+    KCrash::initialize();
     KLocalizedString::setApplicationDomain("korganizer");
     KOrgMigrateApplication migrate;
     migrate.migrate();
