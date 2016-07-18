@@ -435,7 +435,7 @@ public:
 
         connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
 
-        QVBoxLayout *audioFileRemindersBox = new QVBoxLayout(remindersGroupBox);
+        QVBoxLayout *audioFileRemindersBox = new QVBoxLayout;
         audioFileRemindersBox->addWidget(cb);
         audioFileRemindersBox->addWidget(rq);
 
@@ -1469,13 +1469,13 @@ KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent)
 
 QString KOPrefsDesignerFields::localUiDir()
 {
-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/designer/event/");
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + uiPath();
     return dir;
 }
 
 QString KOPrefsDesignerFields::uiPath()
 {
-    return QStringLiteral("korganizer/designer/event/");
+    return QStringLiteral("/korganizer/designer/event/");
 }
 
 void KOPrefsDesignerFields::writeActivePages(const QStringList &activePages)
