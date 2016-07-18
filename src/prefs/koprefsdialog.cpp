@@ -435,7 +435,7 @@ public:
 
         connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
 
-        QVBoxLayout *audioFileRemindersBox = new QVBoxLayout(remindersGroupBox);
+        QVBoxLayout *audioFileRemindersBox = new QVBoxLayout;
         audioFileRemindersBox->addWidget(cb);
         audioFileRemindersBox->addWidget(rq);
 
