@@ -85,8 +85,6 @@ void KOPrefs::usrSetDefaults()
 
 void KOPrefs::usrRead()
 {
-    KConfigGroup generalConfig(config(), "General");
-
     KConfigGroup timeScaleConfig(config(), "Timescale");
     setTimeScaleTimezones(timeScaleConfig.readEntry("Timescale Timezones", QStringList()));
 
@@ -95,8 +93,6 @@ void KOPrefs::usrRead()
 
 bool KOPrefs::usrSave()
 {
-    KConfigGroup generalConfig(config(), "General");
-
     KConfigGroup timeScaleConfig(config(), "Timescale");
     timeScaleConfig.writeEntry("Timescale Timezones", timeScaleTimezones());
 
