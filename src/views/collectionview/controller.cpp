@@ -75,7 +75,7 @@ QVariant CollectionNode::data(int role) const
             path.prepend(c.name());
             c = c.parentCollection();
         }
-        return path.join(QStringLiteral("/"));
+        return path.join(QLatin1Char('/'));
     }
     case Qt::DecorationRole:
         if (mCollection.hasAttribute<Akonadi::EntityDisplayAttribute>()) {
