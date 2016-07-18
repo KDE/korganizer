@@ -304,7 +304,6 @@ public:
             i.next();
             mHolidayCombo->addItem(i.key(), i.value());
         }
-
         if (KOGlobals::self()->holidays() && KOGlobals::self()->holidays()->isValid()) {
             mHolidayCombo->setCurrentIndex(
                 mHolidayCombo->findData(KOGlobals::self()->holidays()->regionCode()));
@@ -457,7 +456,7 @@ public:
     }
 
 protected:
-    void usrRead()
+    void usrReadConfig() Q_DECL_OVERRIDE
     {
         mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
         mReminderUnitsCombo->setCurrentIndex(
@@ -467,7 +466,7 @@ protected:
         }
     }
 
-    void usrSave()
+    void usrWriteConfig() Q_DECL_OVERRIDE
     {
         KOPrefs::instance()->mHolidays =
             mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
@@ -709,7 +708,7 @@ public:
         load();
     }
 protected:
-    void usrSave()
+    void usrReadConfig() Q_DECL_OVERRIDE
     {
         KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
             mAgendaIconComboBox->checkedIcons());
