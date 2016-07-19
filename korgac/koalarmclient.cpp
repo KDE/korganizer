@@ -35,6 +35,7 @@
 #include <AkonadiCore/Item>
 #include <AkonadiCore/ItemFetchScope>
 #include <AkonadiCore/Session>
+#include <AkonadiCore/ServerManager>
 
 #include <KCalCore/Calendar>
 
@@ -59,6 +60,41 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
         connect(this, &KOAlarmClient::reminderCount, mDocker, &AlarmDockWindow::slotUpdate);
         connect(mDocker, &AlarmDockWindow::quitSignal, this, &KOAlarmClient::slotQuit);
     }
+
+    // Check if Akonadi is already configured
+    const QString akonadiConfigFile = Akonadi::ServerManager::serverConfigFilePath(Akonadi::ServerManager::ReadWrite);
+    if (QFile::exists(akonadiConfigFile)) {
+        // Akonadi is configured, create ETM and friends, which will start Akonadi
+        // if its not running yet
+        setupAkonadi();
+    } else {
+        // Akonadi has not been set up yet, wait for someone else to start it,
+        // so that we don't unnecessarily slow session start up
+        connect(Akonadi::ServerManager::self(), &Akonadi::ServerManager::stateChanged,
+                this, [this](Akonadi::ServerManager::State state) {
+                    if (state == Akonadi::ServerManager::Running) {
+                        setupAkonadi();
+                    }
+                });
+    }
+
+    KConfigGroup alarmGroup(KSharedConfig::openConfig(), "Alarms");
+    const int interval = alarmGroup.readEntry("Interval", 60);
+    qCDebug(KOALARMCLIENT_LOG) << "KOAlarmClient check interval:" << interval << "seconds.";
+    mLastChecked = alarmGroup.readEntry("CalendarsLastChecked", QDateTime());
+
+    mCheckTimer.start(1000 * interval);    // interval in seconds
+    connect(qApp, &QApplication::commitDataRequest, this, &KOAlarmClient::slotCommitData);
+}
+
+KOAlarmClient::~KOAlarmClient()
+{
+    delete mDocker;
+    delete mDialog;
+}
+
+void KOAlarmClient::setupAkonadi()
+{
     QStringList mimeTypes;
     mimeTypes << Event::eventMimeType() << Todo::todoMimeType();
     mCalendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(mimeTypes));
@@ -69,20 +105,8 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
     connect(mETM, &Akonadi::EntityTreeModel::collectionPopulated, this, &KOAlarmClient::deferredInit);
     connect(mETM, &Akonadi::EntityTreeModel::collectionTreeFetched, this, &KOAlarmClient::deferredInit);
 
-    KConfigGroup alarmGroup(KSharedConfig::openConfig(), "Alarms");
-    const int interval = alarmGroup.readEntry("Interval", 60);
-    qCDebug(KOALARMCLIENT_LOG) << "KOAlarmClient check interval:" << interval << "seconds.";
-    mLastChecked = alarmGroup.readEntry("CalendarsLastChecked", QDateTime());
-
     checkAlarms();
-    mCheckTimer.start(1000 * interval);    // interval in seconds
-    connect(qApp, &QApplication::commitDataRequest, this, &KOAlarmClient::slotCommitData);
-}
 
-KOAlarmClient::~KOAlarmClient()
-{
-    delete mDocker;
-    delete mDialog;
 }
 
 void checkAllItems(KCheckableProxyModel *model, const QModelIndex &parent = QModelIndex())
