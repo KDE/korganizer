@@ -60,6 +60,7 @@ protected Q_SLOTS:
     void deferredInit();
     void checkAlarms();
 private Q_SLOTS:
+    void setupAkonadi();
     void slotCommitData(QSessionManager &);
 
 Q_SIGNALS:
