@@ -50,7 +50,6 @@ class Incidence;
 class SearchDialog : public QDialog
 {
     Q_OBJECT
-
 public:
     explicit SearchDialog(CalendarView *calendarview);
     virtual ~SearchDialog();
@@ -76,6 +75,7 @@ protected:
     /*reimp*/
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
 private:
+    void slotHelpRequested();
     void search(const QRegExp &);
     void readConfig();
     void writeConfig();
