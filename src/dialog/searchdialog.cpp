@@ -36,6 +36,7 @@
 #include <EventViews/ListView>
 
 #include <KMessageBox>
+#include <PimCommon/PimUtil>
 #include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
@@ -69,13 +70,14 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     layout->addWidget(listView);
     m_ui->listViewFrame->setLayout(layout);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::Help);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     setLayout(mainLayout);
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &SearchDialog::reject);
+    connect(buttonBox, &QDialogButtonBox::helpRequested, this, &SearchDialog::slotHelpRequested);
     mainLayout->addWidget(buttonBox);
     mUser1Button->setDefault(true);
     KGuiItem::assign(mUser1Button, KGuiItem(i18nc("search in calendar", "&Search")));
@@ -260,3 +262,7 @@ void SearchDialog::writeConfig()
     group.sync();
 }
 
+void SearchDialog::slotHelpRequested()
+{
+    PimCommon::Util::invokeHelp(QStringLiteral("korganizer/search-view.html"));
+}
