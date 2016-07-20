@@ -29,6 +29,7 @@
 
 #include <CalendarSupport/CategoryConfig>
 #include <Libkdepim/TagWidgets>
+#include <PimCommon/PimUtil>
 
 #include <KCalCore/CalFilter>
 
@@ -353,7 +354,7 @@ void FilterEdit::editCategorySelection()
 
 void FilterEdit::slotHelp()
 {
-    KHelpClient::invokeHelp(QStringLiteral("categories-view"), QStringLiteral("korganizer"));
+    PimCommon::Util::invokeHelp(QStringLiteral("korganizer/filters-view.html"));
 }
 
 void FilterEdit::updateCategorySelection()

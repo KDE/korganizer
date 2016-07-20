@@ -29,6 +29,7 @@
 #include "prefs/koprefs.h"
 #include "dialog/searchdialog.h"
 
+#include <PimCommon/PimUtil>
 #include <CalendarSupport/ArchiveDialog>
 #include <CalendarSupport/CategoryConfig>
 #include <CalendarSupport/Utils>
@@ -43,7 +44,6 @@
 #include <KCalCore/Visitor>
 
 #include <KCMultiDialog>
-#include <KHelpClient>
 #include <QPushButton>
 
 using namespace KOrg;
@@ -215,5 +215,5 @@ void KODialogManager::createCategoryEditor()
 
 void KODialogManager::slotHelp()
 {
-    KHelpClient::invokeHelp(QStringLiteral("categories-view"), QStringLiteral("korganizer"));
+    PimCommon::Util::invokeHelp(QStringLiteral("korganizer/categories-view.html"));
 }
