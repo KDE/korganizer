@@ -94,15 +94,13 @@ public Q_SLOTS:
 Q_SIGNALS:
     void reminderCount(int count);
 
-private Q_SLOTS:
-    void update();
-    void updateButtons();
-
 protected:
     void keyPressEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
     void closeEvent(QCloseEvent *) Q_DECL_OVERRIDE;
 
 private:
+    void update();
+    void updateButtons();
     typedef QList<ReminderTreeItem *> ReminderList;
 
     static KDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc,
