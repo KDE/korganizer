@@ -835,7 +835,6 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         } else {
             mDetailView->setHeaderText(QString());
         }
-        Incidence::Ptr incidence = CalendarSupport::incidence(reminderItem->mIncidence);
         mDetailView->setIncidence(reminderItem->mIncidence, reminderItem->mRemindAt.date());
     }
 }
