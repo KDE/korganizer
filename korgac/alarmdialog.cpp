@@ -870,8 +870,6 @@ KDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
         return result;
     }
 
-    Alarm::Ptr alarm = incidence->alarms().at(0);
-
     if (incidence->recurs()) {
         result = incidence->recurrence()->getNextDateTime(
                      KDateTime(reminderAt, KDateTime::Spec::LocalZone()));
