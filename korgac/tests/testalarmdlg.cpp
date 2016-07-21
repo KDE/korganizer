@@ -100,8 +100,8 @@ int main(int argc, char **argv)
     e4->setDtEnd(now.addSecs(180));
     e4->newAlarm();
 
-    Akonadi::ETMCalendar::Ptr invalidPtr;
-    AlarmDialog dlg(invalidPtr);
+    Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
+    AlarmDialog dlg(calendar);
     dlg.addIncidence(incidenceToItem(e2), QDateTime::currentDateTime().addSecs(60),
                      QString());
     dlg.addIncidence(incidenceToItem(t1), QDateTime::currentDateTime().addSecs(300),
