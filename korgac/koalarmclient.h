@@ -50,8 +50,8 @@ public:
     void hide();
     void show();
     void forceAlarmCheck();
-    QString dumpDebug();
-    QStringList dumpAlarms();
+    QString dumpDebug() const;
+    QStringList dumpAlarms() const;
 
 public Q_SLOTS:
     void slotQuit();
@@ -59,15 +59,14 @@ public Q_SLOTS:
 protected Q_SLOTS:
     void deferredInit();
     void checkAlarms();
-private Q_SLOTS:
-    void setupAkonadi();
-    void slotCommitData(QSessionManager &);
 
 Q_SIGNALS:
     void reminderCount(int);
     void saveAllSignal();
 
 private:
+    void setupAkonadi();
+    void slotCommitData(QSessionManager &);
     bool dockerEnabled();
     bool collectionsAvailable() const;
     void createReminder(const Akonadi::ETMCalendar::Ptr &calendar,

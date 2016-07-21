@@ -49,7 +49,9 @@
 using namespace KCalCore;
 
 KOAlarmClient::KOAlarmClient(QObject *parent)
-    : QObject(parent), mDocker(0), mDialog(0)
+    : QObject(parent),
+      mDocker(Q_NULLPTR),
+      mDialog(Q_NULLPTR)
 {
     new KOrgacAdaptor(this);
     KDBusConnectionPool::threadConnection().registerObject(QStringLiteral("/ac"), this);
@@ -95,8 +97,7 @@ KOAlarmClient::~KOAlarmClient()
 
 void KOAlarmClient::setupAkonadi()
 {
-    QStringList mimeTypes;
-    mimeTypes << Event::eventMimeType() << Todo::todoMimeType();
+    const QStringList mimeTypes { Event::eventMimeType(), Todo::todoMimeType() };
     mCalendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(mimeTypes));
     mCalendar->setObjectName(QStringLiteral("KOrgac's calendar"));
     mETM = mCalendar->entityTreeModel();
@@ -284,7 +285,7 @@ void KOAlarmClient::forceAlarmCheck()
     saveLastCheckTime();
 }
 
-QString KOAlarmClient::dumpDebug()
+QString KOAlarmClient::dumpDebug() const
 {
     KConfigGroup cfg(KSharedConfig::openConfig(), "Alarms");
     const QDateTime lastChecked = cfg.readEntry("CalendarsLastChecked", QDateTime());
@@ -292,7 +293,7 @@ QString KOAlarmClient::dumpDebug()
     return str;
 }
 
-QStringList KOAlarmClient::dumpAlarms()
+QStringList KOAlarmClient::dumpAlarms() const
 {
     const KDateTime start = KDateTime(QDateTime::currentDateTime().date(),
                                       QTime(0, 0), KDateTime::LocalZone);
@@ -321,7 +322,7 @@ QStringList KOAlarmClient::dumpAlarms()
 void KOAlarmClient::hide()
 {
     delete mDocker;
-    mDocker = 0;
+    mDocker = Q_NULLPTR;
 }
 
 void KOAlarmClient::show()
