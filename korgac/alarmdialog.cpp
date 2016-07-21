@@ -189,6 +189,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     setMinimumHeight(300);
 
     QVBoxLayout *mTopLayout = new QVBoxLayout(topBox);
+    mTopLayout->setMargin(0);
 
     QLabel *label = new QLabel(
         i18nc("@label",
