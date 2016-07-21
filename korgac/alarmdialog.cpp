@@ -907,9 +907,10 @@ void AlarmDialog::slotCalendarChanged()
 
                 const QString summary = cleanSummary(incidence->summary());
 
-                if (displayStr != item->text(1) || summary != item->text(0)) {
+                if (displayStr != item->text(1) || summary != item->text(0) || item->mHappening != dateTime) {
                     item->setText(1, displayStr);
                     item->setText(0, summary);
+                    item->mHappening = dateTime;
                 }
             }
         }
