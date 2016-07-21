@@ -228,10 +228,9 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     connect(mIncidenceTree, &ReminderTree::itemSelectionChanged, this, &AlarmDialog::updateButtons);
 
     mDetailView = new CalendarSupport::IncidenceViewer(mCalendar.data(), topBox);
-    QString s;
-    s = xi18nc("@info default incidence details string",
-               "<emphasis>Select an event or to-do from the list above "
-               "to view its details here.</emphasis>");
+    const QString s = xi18nc("@info default incidence details string",
+                             "<emphasis>Select an event or to-do from the list above "
+                             "to view its details here.</emphasis>");
     mDetailView->setDefaultMessage(s);
     mTopLayout->addWidget(mDetailView);
     mDetailView->hide();
@@ -602,8 +601,6 @@ void AlarmDialog::eventNotification()
     bool beeped = false;
     bool found = false;
 
-    ReminderList list;
-
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
         ReminderTreeItem *item = static_cast<ReminderTreeItem *>(*it);
@@ -652,8 +649,9 @@ void AlarmDialog::eventNotification()
                     const Person::List addresses = alarm->mailAddresses();
                     QStringList add;
                     add.reserve(addresses.count());
+                    Person::List::ConstIterator end(addresses.constEnd());
                     for (Person::List::ConstIterator it = addresses.constBegin();
-                            it != addresses.constEnd(); ++it) {
+                            it != end; ++it) {
                         add << (*it)->fullName();
                     }
                     to = add.join(QStringLiteral(", "));
