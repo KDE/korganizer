@@ -835,7 +835,6 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         } else {
             mDetailView->setHeaderText(QString());
         }
-        Incidence::Ptr incidence = CalendarSupport::incidence(reminderItem->mIncidence);
         mDetailView->setIncidence(reminderItem->mIncidence, reminderItem->mRemindAt.date());
     }
 }
@@ -870,8 +869,6 @@ KDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
     if (incidence->alarms().isEmpty()) {
         return result;
     }
-
-    Alarm::Ptr alarm = incidence->alarms().at(0);
 
     if (incidence->recurs()) {
         result = incidence->recurrence()->getNextDateTime(
@@ -910,9 +907,10 @@ void AlarmDialog::slotCalendarChanged()
 
                 const QString summary = cleanSummary(incidence->summary());
 
-                if (displayStr != item->text(1) || summary != item->text(0)) {
+                if (displayStr != item->text(1) || summary != item->text(0) || item->mHappening != dateTime) {
                     item->setText(1, displayStr);
                     item->setText(0, summary);
+                    item->mHappening = dateTime;
                 }
             }
         }
