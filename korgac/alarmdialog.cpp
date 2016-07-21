@@ -137,7 +137,9 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     // User3 => Dismiss Selected
     //    Ok => Suspend
 
-    connect(calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &AlarmDialog::slotCalendarChanged);
+    if (calendar) {
+        connect(calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &AlarmDialog::slotCalendarChanged);
+    }
 
     KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
 
@@ -791,7 +793,9 @@ void AlarmDialog::updateButtons()
     mOkButton->setEnabled(enabled);
     if (count == 1) {
         ReminderTreeItem  *item = selection.first();
-        mUser1Button->setEnabled(mCalendar->hasRight(item->mIncidence, Akonadi::Collection::CanChangeItem));
+        if (mCalendar) {
+            mUser1Button->setEnabled(mCalendar->hasRight(item->mIncidence, Akonadi::Collection::CanChangeItem));
+        }
     } else {
         mUser1Button->setEnabled(false);
     }
