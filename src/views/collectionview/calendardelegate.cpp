@@ -60,7 +60,7 @@ static QRect enableButtonRect(const QRect &rect, int pos = 1)
 static QStyle *style(const QStyleOptionViewItem &option)
 {
     QWidget const *widget = 0;
-    if (const QStyleOptionViewItemV3 *v3 = qstyleoption_cast<const QStyleOptionViewItemV3 *>(&option)) {
+    if (const QStyleOptionViewItem *v3 = qstyleoption_cast<const QStyleOptionViewItem *>(&option)) {
         widget = v3->widget;
     }
     QStyle *style = widget ? widget->style() : QApplication::style();
