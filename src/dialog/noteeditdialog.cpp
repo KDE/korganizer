@@ -50,7 +50,7 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
 {
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(i18nc("@title:window", "Create Note"));
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     setLayout(mainLayout);
@@ -70,6 +70,7 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     mOkButton->setEnabled(false);
 
     QGridLayout *layout = new QGridLayout(mainWidget);
+    layout->setMargin(0);
     QHBoxLayout *hbox = new QHBoxLayout;
     hbox->setMargin(0);
     hbox->setSpacing(2);
@@ -102,12 +103,12 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     hbox->addSpacing(5);
     hbox->addWidget(mCollectionCombobox);
 
-    QLabel *lab = new QLabel(i18n("Title:"));
+    QLabel *lab = new QLabel(i18n("Title:"), this);
     layout->addWidget(lab, 0, 0);
     layout->addLayout(hbox, 0, 1);
 
     //Second Line
-    lab = new QLabel(i18n("Text:"));
+    lab = new QLabel(i18n("Text:"), this);
     layout->addWidget(lab, 1, 0);
     layout->setAlignment(lab, Qt::AlignTop);
     layout->addWidget(mNoteText, 1, 1);
