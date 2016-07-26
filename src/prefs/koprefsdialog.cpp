@@ -452,28 +452,28 @@ public:
     }
 
 protected:
-    void usrReadConfig() Q_DECL_OVERRIDE
-    {
+    void usrReadConfig() Q_DECL_OVERRIDE {
         mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
         mReminderUnitsCombo->setCurrentIndex(
             CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
-        for (int i = 0; i < 7; ++i) {
+        for (int i = 0; i < 7; ++i)
+        {
             mWorkDays[i]->setChecked((1 << i) & (KOPrefs::instance()->mWorkWeekMask));
         }
     }
 
-    void usrWriteConfig() Q_DECL_OVERRIDE
-    {
+    void usrWriteConfig() Q_DECL_OVERRIDE {
         KOPrefs::instance()->mHolidays =
-            mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
+        mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
 
         CalendarSupport::KCalPrefs::instance()->mReminderTime =
-            mReminderTimeSpin->value();
+        mReminderTimeSpin->value();
         CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits =
-            mReminderUnitsCombo->currentIndex();
+        mReminderUnitsCombo->currentIndex();
 
         int mask = 0;
-        for (int i = 0; i < 7; ++i) {
+        for (int i = 0; i < 7; ++i)
+        {
             if (mWorkDays[i]->isChecked()) {
                 mask = mask | (1 << i);
             }
@@ -704,8 +704,7 @@ public:
         load();
     }
 protected:
-    void usrReadConfig() Q_DECL_OVERRIDE
-    {
+    void usrReadConfig() Q_DECL_OVERRIDE {
         KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
             mAgendaIconComboBox->checkedIcons());
         KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(
@@ -762,7 +761,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
         addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
-
 
     // working hours color
     KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor =

@@ -108,7 +108,6 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-    
 
     if (KMessageBox::warningContinueCancel(
                 this,
