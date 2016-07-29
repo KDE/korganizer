@@ -121,11 +121,11 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
 
     //show fbcalendar for person in quickview
     if (!person.mail.isEmpty()) {
-        KPIM::FreeBusyItemModel *model = new KPIM::FreeBusyItemModel(this);
-        KPIM::FreeBusyCalendar *fbCal = new KPIM::FreeBusyCalendar(this);
+        CalendarSupport::FreeBusyItemModel *model = new CalendarSupport::FreeBusyItemModel(this);
+        CalendarSupport::FreeBusyCalendar *fbCal = new CalendarSupport::FreeBusyCalendar(this);
         FreebusyViewCalendar *fbCalendar = new FreebusyViewCalendar();
         KCalCore::Attendee::Ptr attendee(new KCalCore::Attendee(person.name,  person.mail));
-        KPIM::FreeBusyItem::Ptr freebusy(new KPIM::FreeBusyItem(attendee, this));
+        CalendarSupport::FreeBusyItem::Ptr freebusy(new CalendarSupport::FreeBusyItem(attendee, this));
 
         fbCal->setModel(model);
         model->addItem(freebusy);
