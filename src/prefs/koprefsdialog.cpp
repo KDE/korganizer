@@ -998,6 +998,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     topTopLayout->addWidget(topFrame);
 
     QGridLayout *topLayout = new QGridLayout(topFrame);
+    topLayout->setMargin(0);
 
     KPIM::KPrefsWidBool *useGroupwareBool =
         addWidBool(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
@@ -1183,17 +1184,12 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     : KPrefsModule(KOPrefs::instance(), parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
-
-    QWidget *topFrame = new QWidget(this);
-    topTopLayout->addWidget(topFrame);
-    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-
-    mTreeWidget = new QTreeWidget(topFrame);
+    mTreeWidget = new QTreeWidget(this);
     mTreeWidget->setColumnCount(1);
     mTreeWidget->setHeaderLabel(i18nc("@title:column plugin name", "Name"));
-    topLayout->addWidget(mTreeWidget);
+    topTopLayout->addWidget(mTreeWidget);
 
-    mDescription = new QLabel(topFrame);
+    mDescription = new QLabel(this);
     mDescription->setAlignment(Qt::AlignVCenter);
     mDescription->setWordWrap(true);
     mDescription->setFrameShape(QLabel::Panel);
@@ -1204,10 +1200,11 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     policy.setVerticalStretch(0);
     policy.setHeightForWidth(mDescription->sizePolicy().hasHeightForWidth());
     mDescription->setSizePolicy(policy);
-    topLayout->addWidget(mDescription);
+    topTopLayout->addWidget(mDescription);
 
-    QWidget *buttonRow = new QWidget(topFrame);
+    QWidget *buttonRow = new QWidget(this);
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
+    buttonRowLayout->setMargin(0);
     mConfigureButton = new QPushButton(buttonRow);
     KGuiItem::assign(mConfigureButton,     KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
                      QStringLiteral("configure"), QString(),
@@ -1216,9 +1213,9 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
                            " the plugin that you have selected in the list above")));
     buttonRowLayout->addWidget(mConfigureButton);
     buttonRowLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding));
-    topLayout->addWidget(buttonRow);
+    topTopLayout->addWidget(buttonRow);
 
-    mPositioningGroupBox = new QGroupBox(i18nc("@title:group", "Position"), topFrame);
+    mPositioningGroupBox = new QGroupBox(i18nc("@title:group", "Position"), this);
     //mPositionMonthTop = new QCheckBox(
     //i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
     mPositionAgendaTop = new QRadioButton(
@@ -1230,7 +1227,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     positioningLayout->addWidget(mPositionAgendaTop);
     positioningLayout->addWidget(mPositionAgendaBottom);
     positioningLayout->addStretch(1);
-    topLayout->addWidget(mPositioningGroupBox);
+    topTopLayout->addWidget(mPositioningGroupBox);
 
     connect(mConfigureButton, &QPushButton::clicked, this, &KOPrefsDialogPlugins::configure);
 
