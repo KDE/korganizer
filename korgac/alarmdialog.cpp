@@ -935,7 +935,7 @@ void AlarmDialog::keyPressEvent(QKeyEvent *e)
 bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &incidence)
 {
     if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.korganizer"))) {
-        if (KToolInvocation::startServiceByDesktopName(QStringLiteral("korganizer"), QString())) {
+        if (KToolInvocation::startServiceByDesktopName(QStringLiteral("org.kde.korganizer"), QString())) {
             KMessageBox::error(
                 this,
                 i18nc("@info",
