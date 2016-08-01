@@ -182,7 +182,7 @@ public Q_SLOTS:
     void addChange(EventViews::EventView::Change change);
 
 private Q_SLOTS:
-    void currentAgendaViewTabChanged(QWidget *);
+    void currentAgendaViewTabChanged(int index);
 
 private:
     QWidget *widgetForView(KOrg::BaseView *) const;
