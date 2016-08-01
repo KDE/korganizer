@@ -43,11 +43,11 @@ using namespace KOrg;
 
 SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
     : QObject(parent)
-    , mIdentityManager(/*ro=*/ true)
 {
+    mIdentityManager = KIdentityManagement::IdentityManager::self();
     setupSearchCollections();
-    connect(&mIdentityManager, static_cast<void (KIdentityManagement::IdentityManager::*)()>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
-    connect(&mIdentityManager, static_cast<void (KIdentityManagement::IdentityManager::*)()>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
+    connect(mIdentityManager, static_cast<void (KIdentityManagement::IdentityManager::*)()>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
+    connect(mIdentityManager, static_cast<void (KIdentityManagement::IdentityManager::*)()>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
 }
 
 void SearchCollectionHelper::setupSearchCollections()
@@ -81,7 +81,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
     // Update or create search collections
 
     Akonadi::SearchQuery query(Akonadi::SearchTerm::RelOr);
-    foreach (const QString email, mIdentityManager.allEmails()) {
+    foreach (const QString email, mIdentityManager->allEmails()) {
         if (!email.isEmpty()) {
             query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email + QString::number(status))));
         }

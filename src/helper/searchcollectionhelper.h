@@ -56,7 +56,7 @@ private:
     void updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status, const QString &name, const QString &displayName);
 
 private:
-    KIdentityManagement::IdentityManager mIdentityManager;
+    KIdentityManagement::IdentityManager *mIdentityManager;
     Akonadi::Collection mOpenInvitationCollection;
     Akonadi::Collection mDeclineCollection;
 };
