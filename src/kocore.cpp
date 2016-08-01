@@ -44,7 +44,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-    : mCalendarDecorationsLoaded(false), mIdentityManager(Q_NULLPTR)
+    : mCalendarDecorationsLoaded(false)
 {
 }
 
@@ -301,8 +301,5 @@ void KOCore::reloadPlugins()
 
 KIdentityManagement::IdentityManager *KOCore::identityManager()
 {
-    if (!mIdentityManager) {
-        mIdentityManager = new CalendarSupport::IdentityManager;
-    }
-    return mIdentityManager;
+    return CalendarSupport::IdentityManager::self();
 }

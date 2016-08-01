@@ -97,8 +97,6 @@ private:
     bool mCalendarDecorationsLoaded;
 
     QMap<QWidget *, KXMLGUIClient *> mXMLGUIClients;
-
-    KIdentityManagement::IdentityManager *mIdentityManager;
 };
 
 #endif
