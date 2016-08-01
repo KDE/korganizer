@@ -473,8 +473,8 @@ void KOViewManager::showAgendaView()
     if (showBoth) {
         if (!mAgendaViewTabs && showBoth) {
             mAgendaViewTabs = new QTabWidget(mMainView->viewStack());
-            connect(mAgendaViewTabs, SIGNAL(currentChanged(QWidget*)),
-                    this, SLOT(currentAgendaViewTabChanged(QWidget*)));
+            connect(mAgendaViewTabs, SIGNAL(currentChanged(int)),
+                    this, SLOT(currentAgendaViewTabChanged(int)));
             mMainView->viewStack()->addWidget(mAgendaViewTabs);
 
             KConfigGroup viewConfig = KSharedConfig::openConfig()->group(QStringLiteral("Views"));
@@ -661,15 +661,18 @@ QWidget *KOViewManager::widgetForView(KOrg::BaseView *view) const
     return view;
 }
 
-void KOViewManager::currentAgendaViewTabChanged(QWidget *widget)
+void KOViewManager::currentAgendaViewTabChanged(int index)
 {
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup viewConfig(config, "Views");
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 
-    if (widget) {
+    if (index > -1 ) {
         goMenu(true);
-        showView(static_cast<KOrg::BaseView *>(widget));
+        QWidget *widget = mAgendaViewTabs->widget(index);
+        if (widget) {
+            showView(static_cast<KOrg::BaseView *>(widget));
+        }
     }
 }
 
