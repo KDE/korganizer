@@ -193,6 +193,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QHBoxLayout *calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
     Akonadi::ManageAccountWidget *manageAccountWidget = new Akonadi::ManageAccountWidget(this);
+    manageAccountWidget->setDescriptionLabelText(i18n("Calendar Accounts"));
     calendarFrameLayout->addWidget(manageAccountWidget);
 
     manageAccountWidget->setMimeTypeFilter(QStringList() << QStringLiteral("text/calendar"));
