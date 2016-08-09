@@ -108,7 +108,7 @@ void KOEventViewerDialog::editIncidence()
         QString error;
         if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(
-                        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+                QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
             korganizerIface.editIncidence(QString::number(item.id()));
         } else {
             qCWarning(KORGANIZER_LOG) << "Failure starting korganizer:" << error;
@@ -126,7 +126,7 @@ void KOEventViewerDialog::showIncidenceContext()
         QString error;
         if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(
-                        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+                QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
             korganizerIface.showIncidenceContext(QString::number(item.id()));
         } else {
             qCWarning(KORGANIZER_LOG) << "Failure starting korganizer:" << error;

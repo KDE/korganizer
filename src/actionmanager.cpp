@@ -1129,7 +1129,6 @@ bool ActionManager::saveAsURL(const QUrl &url)
 bool ActionManager::saveModifiedURL()
 {
 
-
     // If calendar isn't modified do nothing.
     if (!mCalendarView->isModified()) {
         return true;
@@ -1193,7 +1192,6 @@ QUrl ActionManager::getSaveURL()
 
 void ActionManager::saveProperties(KConfigGroup &config)
 {
-
 
     config.writeEntry("UseResourceCalendar", !mMainWindow->hasDocument());
     if (mMainWindow->hasDocument()) {

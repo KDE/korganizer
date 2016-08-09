@@ -62,7 +62,7 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
 KOPrefs::~KOPrefs()
 {
-    
+
     mEventViewsPrefs->writeConfig();
 }
 

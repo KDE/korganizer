@@ -53,7 +53,6 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow(), mPluginInte
     // modal subdialogs will only affect this dialog, not the other windows
     setAttribute(Qt::WA_GroupLeader);
 
-    
     KOCore::self()->addXMLGUIClient(this, this);
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
@@ -147,7 +146,6 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-    
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mActionManager->writeSettings();
@@ -177,7 +175,6 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-    
 
     bool close = mActionManager->queryClose();
 

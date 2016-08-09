@@ -667,7 +667,7 @@ void KOViewManager::currentAgendaViewTabChanged(int index)
     KConfigGroup viewConfig(config, "Views");
     viewConfig.writeEntry("Agenda View Tab Index", mAgendaViewTabs->currentIndex());
 
-    if (index > -1 ) {
+    if (index > -1) {
         goMenu(true);
         QWidget *widget = mAgendaViewTabs->widget(index);
         if (widget) {

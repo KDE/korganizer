@@ -73,11 +73,11 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
         // Akonadi has not been set up yet, wait for someone else to start it,
         // so that we don't unnecessarily slow session start up
         connect(Akonadi::ServerManager::self(), &Akonadi::ServerManager::stateChanged,
-                this, [this](Akonadi::ServerManager::State state) {
-                    if (state == Akonadi::ServerManager::Running) {
-                        setupAkonadi();
-                    }
-                });
+        this, [this](Akonadi::ServerManager::State state) {
+            if (state == Akonadi::ServerManager::Running) {
+                setupAkonadi();
+            }
+        });
     }
 
     KConfigGroup alarmGroup(KSharedConfig::openConfig(), "Alarms");
