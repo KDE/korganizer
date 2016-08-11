@@ -41,7 +41,6 @@
 #include <KLocalizedString>
 
 #include <QIcon>
-#include <QDebug>
 
 CollectionNode::CollectionNode(ReparentingModel &personModel, const Akonadi::Collection &col)
     : Node(personModel),
