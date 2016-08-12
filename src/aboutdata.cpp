@@ -32,7 +32,7 @@ using namespace KOrg;
 AboutData::AboutData()
     : KAboutData(QStringLiteral("korganizer"),
                  i18n("KOrganizer"),
-                 QStringLiteral(KDEPIM_VERSION),
+                 QStringLiteral(KORGANIZER_VERSION),
                  i18n("A Personal Organizer"),
                  KAboutLicense::GPL,
                  i18n("Copyright © 1997–1999 Preston Brown\n"

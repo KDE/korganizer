@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     migrate.migrate();
 
     KAboutData aboutData(QStringLiteral("korgac"), i18n("KOrganizer Reminder Daemon"),
-                         QStringLiteral(KDEPIM_VERSION), i18n("KOrganizer Reminder Daemon"),
+                         QStringLiteral(KORGANIZER_VERSION), i18n("KOrganizer Reminder Daemon"),
                          KAboutLicense::GPL,
                          i18n("(c) 2003 Cornelius Schumacher"),
                          QString(), QStringLiteral("http://pim.kde.org"));

@@ -262,7 +262,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity,
     // Set the headers
     message->userAgent()->fromUnicodeString(
         KProtocolManager::userAgentForApplication(
-            QStringLiteral("KOrganizer"), QStringLiteral(KDEPIM_VERSION)), "utf-8");
+            QStringLiteral("KOrganizer"), QStringLiteral(KORGANIZER_VERSION)), "utf-8");
     message->from()->fromUnicodeString(from, "utf-8");
     message->to()->fromUnicodeString(to, "utf-8");
     message->cc()->fromUnicodeString(cc, "utf-8");
