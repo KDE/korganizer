@@ -42,7 +42,7 @@ KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     : KontactInterface::PimUniqueApplication(argc, argv)
 {
     QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
-    KCalCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KDEPIM_VERSION)));
+    KCalCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
 }
 
 KOrganizerApp::~KOrganizerApp()
