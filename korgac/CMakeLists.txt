@@ -83,6 +83,3 @@ install(FILES
     org.kde.korganizer.KOrgac.xml
     DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
     )
-if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-endif()
