@@ -47,8 +47,7 @@ FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidge
 {
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply);
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    setLayout(mainLayout);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mApplyButton = buttonBox->button(QDialogButtonBox::Apply);
     mOkButton->setDefault(true);
