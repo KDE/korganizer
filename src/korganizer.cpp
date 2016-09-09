@@ -47,7 +47,7 @@
 #include <QLabel>
 #include <QStatusBar>
 
-KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow(), mPluginInterface(Q_NULLPTR)
+KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
 {
     // Set this to be the group leader for all subdialogs - this means
     // modal subdialogs will only affect this dialog, not the other windows
@@ -82,7 +82,8 @@ void KOrganizer::init(bool document)
     mActionManager->init();
     mActionManager->loadParts();
 
-    mPluginInterface = new KOrganizerPluginInterface(actionCollection(), this);
+    KOrganizerPluginInterface::self()->setActionCollection(actionCollection());
+    KOrganizerPluginInterface::self()->initializePlugins();
     initActions();
     readSettings();
 

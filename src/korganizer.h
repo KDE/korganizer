@@ -135,7 +135,6 @@ private:
     KOrg::Part::List mParts; // List of parts loaded
 
     ActionManager *mActionManager;
-    KOrganizerPluginInterface *mPluginInterface;
 };
 
 #endif

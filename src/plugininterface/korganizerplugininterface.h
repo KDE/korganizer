@@ -27,8 +27,9 @@ class KOrganizerPluginInterface : public PimCommon::PluginInterface
 {
     Q_OBJECT
 public:
-    explicit KOrganizerPluginInterface(KActionCollection *ac, QObject *parent = Q_NULLPTR);
+    explicit KOrganizerPluginInterface(QObject *parent = Q_NULLPTR);
     ~KOrganizerPluginInterface();
+    static KOrganizerPluginInterface *self();
 };
 
 #endif // KORGANIZERPLUGININTERFACE_H

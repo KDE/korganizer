@@ -20,15 +20,36 @@
 #include "korganizerplugininterface.h"
 #include <KActionCollection>
 
-KOrganizerPluginInterface::KOrganizerPluginInterface(KActionCollection *ac, QObject *parent)
-    : PimCommon::PluginInterface(ac, parent)
+class KOrganizerPluginInterfacePrivate
+{
+public:
+    KOrganizerPluginInterfacePrivate()
+        : korganizerPluginInterface(new KOrganizerPluginInterface)
+    {
+    }
+
+    ~KOrganizerPluginInterfacePrivate()
+    {
+        delete korganizerPluginInterface;
+    }
+    KOrganizerPluginInterface *korganizerPluginInterface;
+};
+
+Q_GLOBAL_STATIC(KOrganizerPluginInterfacePrivate, sInstance)
+
+KOrganizerPluginInterface::KOrganizerPluginInterface(QObject *parent)
+    : PimCommon::PluginInterface(parent)
 {
     setPluginName(QStringLiteral("korganizer"));
     setServiceTypeName(QStringLiteral("KOrganizer/MainViewPlugin"));
-    initializePlugins();
 }
 
 KOrganizerPluginInterface::~KOrganizerPluginInterface()
 {
 
+}
+
+KOrganizerPluginInterface *KOrganizerPluginInterface::self()
+{
+    return sInstance->korganizerPluginInterface;
 }
