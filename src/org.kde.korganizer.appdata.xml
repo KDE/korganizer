@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KOrganizer</name>
+  <name xml:lang="ar">منظّمك</name>
   <name xml:lang="ast">KOrganizer</name>
   <name xml:lang="bs">KOrganizator</name>
   <name xml:lang="ca">KOrganizer</name>
@@ -68,6 +69,7 @@
     <p xml:lang="x-test">xxKOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.xx</p>
     <p xml:lang="zh-TW">KOrganizer 是 Kontact 套件中的行事曆軟體。您可以寫日誌、排約會、事件與待辦清單等。</p>
     <p>Features:</p>
+    <p xml:lang="ar">الميزات:</p>
     <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
@@ -157,6 +159,7 @@
       <li xml:lang="x-test">xxStorage model.xx</li>
       <li xml:lang="zh-TW">儲存模型。</li>
       <li>Undo and Redo.</li>
+      <li xml:lang="ar">التّراجع والإعادة.</li>
       <li xml:lang="ca">Fes i desfés.</li>
       <li xml:lang="ca-valencia">Fes i desfés.</li>
       <li xml:lang="de">Rückgängig/Wiederherstellen.</li>
@@ -213,6 +216,7 @@
       <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
       <li xml:lang="zh-TW">將待辦事項與行程檢視整合。</li>
       <li>Attachments for events and todos.</li>
+      <li xml:lang="ar">مرفقات للأحداث والمهامّ.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents.</li>
       <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents.</li>
       <li xml:lang="de">Anhänge für Termine und Aufgaben.</li>
@@ -266,6 +270,7 @@
       <li xml:lang="x-test">xxQuick todo and event entries.xx</li>
       <li xml:lang="zh-TW">快速待辦與事件項目。</li>
       <li>Plugin for Jewish calendar dates.</li>
+      <li xml:lang="ar">ملحقة لتواريخ التّقويم اليهوديّ.</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu.</li>
       <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu.</li>
       <li xml:lang="de">Modul für jüdische Kalenderdaten.</li>
@@ -294,6 +299,7 @@
       <li xml:lang="zh-CN">犹太教日历插件。</li>
       <li xml:lang="zh-TW">猶太行事曆外掛程式。</li>
       <li>Print support.</li>
+      <li xml:lang="ar">دعم الطّباعة.</li>
       <li xml:lang="ca">Permet la impressió.</li>
       <li xml:lang="ca-valencia">Permet la impressió.</li>
       <li xml:lang="cs">Podpora tisku.</li>
