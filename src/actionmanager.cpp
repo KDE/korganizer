@@ -269,8 +269,8 @@ void ActionManager::initActions()
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
     } else {
         KStandardAction::open(this, SLOT(file_open()), mACollection);
-        KStandardAction::print(mCalendarView, SLOT(print()), mACollection);
-        KStandardAction::printPreview(mCalendarView, SLOT(printPreview()), mACollection);
+        KStandardAction::print(mCalendarView, &CalendarView::print, mACollection);
+        KStandardAction::printPreview(mCalendarView, &CalendarView::printPreview, mACollection);
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -336,9 +336,9 @@ void ActionManager::initActions()
         mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"),
                                               history, SLOT(redo()));
     } else {
-        mCutAction = KStandardAction::cut(mCalendarView, SLOT(edit_cut()), mACollection);
-        mCopyAction = KStandardAction::copy(mCalendarView, SLOT(edit_copy()), mACollection);
-        pasteAction = KStandardAction::paste(mCalendarView, SLOT(edit_paste()), mACollection);
+        mCutAction = KStandardAction::cut(mCalendarView, &CalendarView::edit_cut, mACollection);
+        mCopyAction = KStandardAction::copy(mCalendarView, &CalendarView::edit_copy, mACollection);
+        pasteAction = KStandardAction::paste(mCalendarView, &CalendarView::edit_paste, mACollection);
         mUndoAction = KStandardAction::undo(history, SLOT(undo()), mACollection);
         mRedoAction = KStandardAction::redo(history, SLOT(redo()), mACollection);
     }
@@ -709,7 +709,7 @@ void ActionManager::initActions()
         mACollection->addAction(KStandardAction::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"),
                                 this, SLOT(keyBindings()));
     } else {
-        KStandardAction::preferences(mCalendarView, SLOT(edit_options()), mACollection);
+        KStandardAction::preferences(mCalendarView, &CalendarView::edit_options, mACollection);
         KStandardAction::keyBindings(this, &ActionManager::keyBindings, mACollection);
     }
 }
