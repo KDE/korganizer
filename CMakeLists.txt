@@ -128,7 +128,7 @@ add_subdirectory(src)
 add_subdirectory(korgac)
 
 
-install( FILES korganizer.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
+install( FILES korganizer.renamecategories korganizer.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 
 add_subdirectory(doc)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

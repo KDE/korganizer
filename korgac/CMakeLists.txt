@@ -17,7 +17,7 @@ set(korgac_SRCS
     koalarmclient.cpp
     )
 
-ecm_qt_declare_logging_category(korgac_SRCS HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME log_koalarmclient)
+ecm_qt_declare_logging_category(korgac_SRCS HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME org.kde.pim.koalarmclient)
 
 set(korgac_SRCS ${korgac_SRCS} korgacmain.cpp)
 

@@ -1,4 +1,4 @@
-log_korganizer korganizer (korganizer)
-log_korganizer_plugin korganizer (korganizer kontact plugins)
-log_korganizer_kontactplugins_specialdates korganizer (kontactplugins korganizer special dates)
-log_koalarmclient korganizer (koalarmclient)
+org.kde.pim.korganizer korganizer (korganizer)
+org.kde.pim.korganizer_plugin korganizer (korganizer kontact plugins)
+org.kde.pim.korganizer_kontactplugins_specialdates korganizer (kontactplugins korganizer special dates)
+org.kde.pim.koalarmclient korganizer (koalarmclient)

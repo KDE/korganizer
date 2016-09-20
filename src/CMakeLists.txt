@@ -26,7 +26,7 @@ configure_file(
 ########### next target ###############
 
 set(korganizer_common_SRCS)
-ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME log_korganizer)
+ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME org.kde.pim.korganizer)
 
 set(korganizer_SRCS
     main.cpp

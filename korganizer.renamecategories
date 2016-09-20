@@ -1,0 +1,4 @@
+log_korganizer org.kde.pim.korganizer
+log_korganizer_plugin org.kde.pim.korganizer_plugin
+log_korganizer_kontactplugins_specialdates org.kde.pim.korganizer_kontactplugins_specialdates
+log_koalarmclient org.kde.pim.koalarmclient
