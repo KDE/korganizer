@@ -107,15 +107,14 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
 {
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
     QWidget *mainWidget = new QWidget(this);
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    setLayout(mainLayout);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &Quickview::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &Quickview::reject);
-    mainLayout->addWidget(buttonBox);
     QWidget *w = new QWidget(this);
     mUi->setupUi(w);
     mainLayout->addWidget(w);
+    mainLayout->addWidget(buttonBox);
 
     mAgendaView = new EventViews::AgendaView(QDate(), QDate(), false,  false);
 
