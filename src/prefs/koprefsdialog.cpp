@@ -1390,13 +1390,14 @@ void KOPrefsDialogPlugins::selectionChanged()
     PluginItem *item = dynamic_cast<PluginItem *>(mTreeWidget->selectedItems().last());
     if (!item) {
         mConfigureButton->setEnabled(false);
+        mConfigureButton->hide();
         mDescription->setText(QString());
         return;
     }
 
     QVariant variant = item->service()->property(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
 
-    bool hasSettings = true;
+    bool hasSettings = false;
     if (variant.isValid()) {
         hasSettings = variant.toBool();
     }
