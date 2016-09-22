@@ -1267,9 +1267,6 @@ void KOPrefsDialogPlugins::usrReadConfig()
         QTreeWidgetItem *item = Q_NULLPTR;
         if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
             item = new PluginItem(decorations, *it);
-        } else if (!(*it)->hasServiceType(QStringLiteral("KOrganizer/PrintPlugin"))) {
-            // we specifically skip print plugins since we no longer support them
-            item = new PluginItem(others, *it);
         } else {
             continue;
         }
