@@ -24,6 +24,7 @@
       <whatsthis>Set the interval between automatic exporting of calendar events in minutes here.</whatsthis>
       <default>10</default>
       <min>1</min>
+      <max>99999</max>
     </entry>
 
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
