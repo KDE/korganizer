@@ -692,12 +692,12 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                 mDefaultCalendar);
 
         //Disable a calendar or remove a referenced calendar
-        QAction *disableAction = xmlclient->actionCollection()->addAction(QStringLiteral("collection_disable"), this, SLOT(edit_disable()));
+        QAction *disableAction = xmlclient->actionCollection()->addAction(QStringLiteral("collection_disable"), this, &AkonadiCollectionView::edit_disable);
         disableAction->setText(i18n("Remove from list"));
         disableAction->setIcon(QIcon::fromTheme(QStringLiteral("list-remove")));
 
         //Enable (subscribe) to a calendar.
-        mEnableAction = xmlclient->actionCollection()->addAction(QStringLiteral("collection_enable"), this, SLOT(edit_enable()));
+        mEnableAction = xmlclient->actionCollection()->addAction(QStringLiteral("collection_enable"), this, &AkonadiCollectionView::edit_enable);
         mEnableAction->setText(i18n("Add to list permanently"));
         mEnableAction->setIcon(QIcon::fromTheme(QStringLiteral("bookmarks")));
 
