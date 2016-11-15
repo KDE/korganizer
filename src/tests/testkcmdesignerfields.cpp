@@ -28,6 +28,7 @@
 
 class MyDesignerFields : public KCMDesignerFields
 {
+    Q_OBJECT
 public:
     MyDesignerFields() : KCMDesignerFields(Q_NULLPTR) {}
     QString localUiDir() Q_DECL_OVERRIDE {
@@ -63,3 +64,6 @@ int main(int argc, char **argv)
     app.exec();
     delete kcm;
 }
+
+#include "testkcmdesignerfields.moc"
+

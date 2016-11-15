@@ -1351,16 +1351,17 @@ bool ActionManager::handleCommandLine(const QStringList &args)
         mainWindow->topLevelWidget()->show();
 
         // Check for import, merge or ask
+        const QStringList argList = parser.positionalArguments();
         if (parser.isSet(QStringLiteral("import"))) {
-            for (const QString &url : parser.positionalArguments()) {
+            for (const QString &url : argList) {
                 importURL(QUrl::fromUserInput(url), /*merge=*/false);
             }
         } else if (parser.isSet(QStringLiteral("merge"))) {
-            for (const QString &url : parser.positionalArguments()) {
+            for (const QString &url : argList) {
                 importURL(QUrl::fromUserInput(url), /*merge=*/true);
             }
         } else {
-            for (const QString &url : parser.positionalArguments()) {
+            for (const QString &url : argList) {
                 mainWindow->actionManager()->importCalendar(QUrl::fromUserInput(url));
             }
         }

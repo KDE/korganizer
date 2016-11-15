@@ -32,6 +32,7 @@
 
 class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 {
+    Q_OBJECT
 public:
     virtual ~KOPrefs();
 

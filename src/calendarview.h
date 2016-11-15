@@ -80,6 +80,7 @@ using namespace KOrg;
 
 class CalendarViewExtension : public QWidget
 {
+    Q_OBJECT
 public:
     explicit CalendarViewExtension(QWidget *parent) : QWidget(parent) {}
 

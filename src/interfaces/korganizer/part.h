@@ -34,6 +34,7 @@ namespace KOrg
 
 class Part : public KParts::Part
 {
+    Q_OBJECT
 public:
     static int interfaceVersion()
     {

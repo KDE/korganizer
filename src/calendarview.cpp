@@ -342,8 +342,8 @@ QDate CalendarView::activeDate(bool fallbackToToday)
 
         // Try the view's selectedIncidenceDates()
         if (!curView->selectedIncidenceDates().isEmpty()) {
-            if (curView->selectedIncidenceDates().first().isValid()) {
-                return curView->selectedIncidenceDates().first();
+            if (curView->selectedIncidenceDates().constFirst().isValid()) {
+                return curView->selectedIncidenceDates().constFirst();
             }
         }
     }
@@ -352,7 +352,7 @@ QDate CalendarView::activeDate(bool fallbackToToday)
     if (fallbackToToday) {
         return QDate::currentDate();
     } else {
-        return mDateNavigator->selectedDates().first();
+        return mDateNavigator->selectedDates().constFirst();
     }
 }
 
