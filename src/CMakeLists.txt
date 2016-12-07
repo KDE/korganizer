@@ -150,6 +150,7 @@ install(TARGETS
 
 set(korganizerprivate_LIB_SRCS
     ${korganizer_common_SRCS}
+    manageshowcollectionproperties.cpp
     korgmigrateapplication.cpp
     collectiongeneralpage.cpp
     aboutdata.cpp
