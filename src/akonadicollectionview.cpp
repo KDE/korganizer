@@ -31,6 +31,7 @@
 #include "kohelper.h"
 #include "prefs/koprefs.h"
 #include "koglobals.h"
+#include "manageshowcollectionproperties.h"
 #include "views/collectionview/reparentingmodel.h"
 #include "views/collectionview/calendardelegate.h"
 #include "views/collectionview/quickview.h"
@@ -512,6 +513,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
       mWasDefaultCalendar(false),
       mHasContextMenu(hasContextMenu)
 {
+    mManagerShowCollectionProperties = new ManageShowCollectionProperties(this);
+
     QVBoxLayout *topLayout = new QVBoxLayout(this);
     topLayout->setMargin(0);
 

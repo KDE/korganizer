@@ -33,6 +33,7 @@
 #include "views/collectionview/controller.h"
 
 class AkonadiCollectionView;
+class ManageShowCollectionProperties;
 
 namespace Akonadi
 {
@@ -130,6 +131,7 @@ private:
     bool mHasContextMenu;
     Controller *mController;
     NewNodeExpander *mNewNodeExpander;
+    ManageShowCollectionProperties *mManagerShowCollectionProperties;
 };
 
 #endif

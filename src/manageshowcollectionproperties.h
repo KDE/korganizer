@@ -23,18 +23,18 @@
 
 #include <QObject>
 #include <QPointer>
-#include <MailCommon/FolderCollection>
-
+#include <AkonadiCore/Collection>
 namespace Akonadi
 {
 class CollectionPropertiesDialog;
 }
-
+class KJob;
+class AkonadiCollectionView;
 class ManageShowCollectionProperties : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManageShowCollectionProperties(QObject *parent = Q_NULLPTR);
+    explicit ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent = Q_NULLPTR);
     ~ManageShowCollectionProperties();
 
 public Q_SLOTS:
@@ -45,7 +45,7 @@ private:
     void slotCollectionPropertiesFinished(KJob *job);
     QHash<Akonadi::Collection::Id, QPointer<Akonadi::CollectionPropertiesDialog> > mHashDialogBox;
     QStringList mPages;
-    //MainWidget *mMainWidget;
+    AkonadiCollectionView *mCollectionView;
 };
 
 #endif // MANAGESHOWCOLLECTIONPROPERTIES_H
