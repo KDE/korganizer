@@ -513,7 +513,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
       mWasDefaultCalendar(false),
       mHasContextMenu(hasContextMenu)
 {
-    mManagerShowCollectionProperties = new ManageShowCollectionProperties(this);
+    mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);
 
     QVBoxLayout *topLayout = new QVBoxLayout(this);
     topLayout->setMargin(0);
@@ -668,12 +668,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mActionManager->action(Akonadi::StandardActionManager::CreateCollection)->setProperty("ContentMimeTypes",
                 QStringList() << Akonadi::Collection::mimeType() << KCalCore::Event::eventMimeType());
 
-        const QStringList pages =
-            QStringList() << QStringLiteral("CalendarSupport::CollectionGeneralPage")
-            << QStringLiteral("Akonadi::CachePolicyPage")
-            << QStringLiteral("PimCommon::CollectionAclPage");
-
-        mActionManager->setCollectionPropertiesPageNames(pages);
+        mActionManager->interceptAction(Akonadi::StandardActionManager::CollectionProperties);
+        connect(mActionManager->action(Akonadi::StandardActionManager::CollectionProperties), &QAction::triggered, mManagerShowCollectionProperties, &ManageShowCollectionProperties::showCollectionProperties);
 
         mDisableColor = new QAction(mCollectionView);
         mDisableColor->setText(i18n("&Disable Color"));
