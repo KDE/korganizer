@@ -737,6 +737,14 @@ void AkonadiCollectionView::slotServerSideSubscription()
     job->start();
 }
 
+Akonadi::Collection AkonadiCollectionView::currentCalendar() const
+{
+    const QModelIndex index = mCollectionView->selectionModel()->currentIndex(); //selectedRows()
+    Q_ASSERT(index.isValid());
+    Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    return collection;
+}
+
 void AkonadiCollectionView::setDefaultCalendar()
 {
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); //selectedRows()

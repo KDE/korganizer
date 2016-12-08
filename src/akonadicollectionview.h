@@ -85,6 +85,7 @@ public:
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
     bool isChecked(const Akonadi::Collection &) const;
+    Akonadi::Collection currentCalendar() const;
 public Q_SLOTS:
     void edit_disable();
     void edit_enable();
