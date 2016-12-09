@@ -373,7 +373,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
     // this explicit enabling/disabling of the ETV is necessary, as the stack
     // widget state is not propagated to the collection views.  pprobably because
     // the Akonadi error overlays enable/disable the ETV explicitly and thus
-    // Q_DECL_OVERRIDE the parent-child relationship?
+    // override the parent-child relationship?
     for (int i = 0; i < d->ui.selectionStack->count(); ++i) {
         d->view(i)->view()->setEnabled(on);
     }
