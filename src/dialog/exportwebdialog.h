@@ -50,9 +50,6 @@ protected:
     void setupGeneralPage();
     void setupEventPage();
     void setupTodoPage();
-//    void setupJournalPage();
-//    void setupFreeBusyPage();
-//    void setupAdvancedPage();
 
 public Q_SLOTS:
     void setDefaults();
@@ -80,9 +77,6 @@ private:
     QFrame *mGeneralPage;
     QFrame *mEventPage;
     QFrame *mTodoPage;
-//    QFrame *mJournalPage;
-//    QFrame *mFreeBusyPage;
-//    QFrame *mAdvancedPage;
     QGroupBox *mDateRangeGroup;
     QCheckBox *mMonthViewCheckBox;
     QCheckBox *mEventListCheckBox;

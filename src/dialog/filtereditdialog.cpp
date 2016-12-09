@@ -46,8 +46,9 @@ FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidge
     : QDialog(parent)
 {
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
+
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply, this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mApplyButton = buttonBox->button(QDialogButtonBox::Apply);
     mOkButton->setDefault(true);
@@ -130,7 +131,8 @@ void FilterEdit::updateFilterList()
         Q_EMIT(dataConsistent(false));
     } else {
         QList<KCalCore::CalFilter *>::iterator i;
-        for (i = mFilters->begin(); i != mFilters->end(); ++i) {
+        QList<KCalCore::CalFilter *>::iterator end(mFilters->end());
+        for (i = mFilters->begin(); i != end; ++i) {
             if (*i) {
                 mRulesList->addItem((*i)->name());
             }
@@ -143,7 +145,7 @@ void FilterEdit::updateFilterList()
         }
         Q_EMIT(dataConsistent(true));
     }
-    if (mFilters && mFilters->count() > 0 && !mCurrent) {
+    if (mFilters && !mFilters->isEmpty() && !mCurrent) {
         filterSelected(mFilters->at(0));
     }
     if (mFilters) {

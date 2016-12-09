@@ -59,10 +59,6 @@ ExportWebDialog::ExportWebDialog(KOrg::HTMLExportSettings *settings, QWidget *pa
     setupGeneralPage();
     setupEventPage();
     setupTodoPage();
-// Disabled bacause the functionality is not yet implemented.
-//  setupJournalPage();
-//  setupFreeBusyPage();
-//  setupAdvancedPage();
 
     connect(mExportButton, &QPushButton::clicked, this, &ExportWebDialog::slotOk);
     connect(button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &ExportWebDialog::reject);
@@ -240,54 +236,6 @@ void ExportWebDialog::setupEventPage()
 
     topLayout->addStretch(1);
 }
-/*
-void ExportWebDialog::setupJournalPage()
-{
-  mJournalPage = addPage(i18n("Journal"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mJournalPage );
-  topLayout->setSpacing( 10 );
-
-  QHBox *hbox = new QHBox( mJournalPage );
-  topLayout->addWidget( hbox );
-  addWidString( mSettings->journalTitleItem(), hbox );
-
-  QVBox *vbox = new QVBox( mJournalPage );
-  topLayout->addWidget( vbox );
-//  addWidBool( mSettings->eventExcludeConfidentialItem(), vbox );
-
-  topLayout->addStretch(1);
-}
-
-void ExportWebDialog::setupFreeBusyPage()
-{
-  mFreeBusyPage = addPage(i18n("Free/Busy"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mFreeBusyPage );
-  topLayout->setSpacing( 10 );
-
-  QHBox *hbox = new QHBox( mFreeBusyPage );
-  topLayout->addWidget( hbox );
-  addWidString( mSettings->journalTitleItem(), hbox );
-
-  QVBox *vbox = new QVBox( mFreeBusyPage );
-  topLayout->addWidget( vbox );
-//  addWidBool( mSettings->eventExcludeConfidentialItem(), vbox );
-
-  topLayout->addStretch(1);
-}
-
-void ExportWebDialog::setupAdvancedPage()
-{
-  mAdvancedPage = addPage(i18n("Advanced"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mAdvancedPage );
-  topLayout->setSpacing( 10 );
-
-  QVBox *vbox = new QVBox( mAdvancedPage );
-  topLayout->addWidget( vbox );
-//  addWidBool( mSettings->eventExcludeConfidentialItem(), vbox );
-
-  topLayout->addStretch(1);
-}
-*/
 
 void ExportWebDialog::updateState()
 {
