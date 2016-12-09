@@ -180,7 +180,8 @@ void FilterEdit::saveChanges()
     mCurrent->setCompletedTimeSpan(mCompletedTimeSpan->value());
 
     QStringList categoryList;
-    for (int i = 0; i < mCatList->count(); ++i) {
+    const int numberOfCat(mCatList->count());
+    for (int i = 0; i < numberOfCat; ++i) {
         QListWidgetItem *item = mCatList->item(i);
         if (item) {
             categoryList.append(item->text());
