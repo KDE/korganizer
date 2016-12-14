@@ -1,3 +1,4 @@
 [KNewStuff3]
-ProvidersUrl=http://download.kde.org/khotnewstuff/korganizercalenders-providers.xml
+ProvidersUrl=https://autoconfig.kde.org/ocs/providers.xml
+Categories=KOrganizer Calendar
 TargetDir=korganizer
