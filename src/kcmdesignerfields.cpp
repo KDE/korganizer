@@ -85,7 +85,7 @@ public:
             allowedTypes.insert(QStringLiteral("KDateTimeWidget"), i18n("Date & Time"));
             allowedTypes.insert(QStringLiteral("KDatePicker"), i18n("Date"));
 
-            QList<QWidget *> list = wdg->findChildren<QWidget *>();
+            const QList<QWidget *> list = wdg->findChildren<QWidget *>();
             QWidget *it;
             Q_FOREACH (it, list) {
                 if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
@@ -217,9 +217,9 @@ void KCMDesignerFields::importFile()
 void KCMDesignerFields::loadUiFiles()
 {
     const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, uiPath(), QStandardPaths::LocateDirectory);
-    Q_FOREACH (const QString &dir, dirs) {
+    for (const QString &dir : dirs) {
         const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.ui"));
-        Q_FOREACH (const QString &file, fileNames) {
+        for (const QString &file : fileNames) {
             new PageItem(mPageView, dir + QLatin1Char('/') + file);
         }
     }

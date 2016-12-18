@@ -361,7 +361,7 @@ void HtmlExportJob::createMonthView(QTextStream *ts)
                     KCalCore::Event::List events = d->mCalendar->events(start, d->mCalendar->timeSpec(),
                                                    KCalCore::EventSortStartDate,
                                                    KCalCore::SortDirectionAscending);
-                    if (events.count()) {
+                    if (!events.isEmpty()) {
                         *ts << "<table>";
                         foreach (const KCalCore::Event::Ptr &event, events) {
                             Q_ASSERT(event);
@@ -632,7 +632,7 @@ void HtmlExportJob::createTodo(QTextStream *ts, const KCalCore::Todo::Ptr &todo)
     if (!todo->description().isEmpty()) {
         *ts << "    <p>" << breakString(cleanChars(todo->description())) << "</p>" << endl;
     }
-    if (relations.count()) {
+    if (!relations.isEmpty()) {
         *ts << "    <div align=\"right\"><a href=\"#sub" << todo->uid()
             << "\">" << i18nc("@title:column sub-to-dos of the parent to-do",
                               "Sub-To-dos") << "</a></div>" << endl;
@@ -759,7 +759,7 @@ void HtmlExportJob::formatCategories(QTextStream *ts, const KCalCore::Incidence:
 void HtmlExportJob::formatAttendees(QTextStream *ts, const KCalCore::Incidence::Ptr &incidence)
 {
     KCalCore::Attendee::List attendees = incidence->attendees();
-    if (attendees.count()) {
+    if (!attendees.isEmpty()) {
         *ts << "<em>";
         const KContacts::Addressee organizer = d->mOrganizersMap.value(incidence->uid());
         if (!organizer.isEmpty()) {

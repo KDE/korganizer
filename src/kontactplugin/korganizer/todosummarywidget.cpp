@@ -115,8 +115,8 @@ void TodoSummaryWidget::updateView()
     KCalCore::Todo::List prList;
 
     const QDate currDate = QDate::currentDate();
-    KCalCore::Todo::List todos = mCalendar->todos();
-    Q_FOREACH (const KCalCore::Todo::Ptr &todo, todos) {
+    const KCalCore::Todo::List todos = mCalendar->todos();
+    for (const KCalCore::Todo::Ptr &todo : todos) {
         if (todo->hasDueDate()) {
             const int daysTo = currDate.daysTo(todo->dtDue().date());
             if (daysTo >= mDaysToGo) {

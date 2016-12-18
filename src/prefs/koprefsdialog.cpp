@@ -281,10 +281,10 @@ public:
 
         mHolidayCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
-        QStringList regions = KHolidays::HolidayRegion::regionCodes();
+        const QStringList regions = KHolidays::HolidayRegion::regionCodes();
         QMap<QString, QString> regionsMap;
 
-        foreach (const QString &regionCode, regions) {
+        for (const QString &regionCode : regions) {
             QString name = KHolidays::HolidayRegion::name(regionCode);
             QLocale locale(KHolidays::HolidayRegion::languageCode(regionCode));
             QString languageName = QLocale::languageToString(locale.language());

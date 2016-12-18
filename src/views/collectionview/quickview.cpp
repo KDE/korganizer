@@ -140,10 +140,7 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
         //create etm for mCollection
         Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder(this);
         Akonadi::ItemFetchScope scope;
-        QStringList allMimeTypes;
-
-        allMimeTypes << KCalCore::Event::eventMimeType() << KCalCore::Todo::todoMimeType()
-                     << KCalCore::Journal::journalMimeType();
+        const QStringList allMimeTypes = { KCalCore::Event::eventMimeType(), KCalCore::Todo::todoMimeType(), KCalCore::Journal::journalMimeType()};
 
         scope.fetchFullPayload(true);
         scope.fetchAttribute<Akonadi::EntityDisplayAttribute>();
@@ -153,7 +150,7 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
         monitor->setItemFetchScope(scope);
         monitor->setAllMonitored(true);
 
-        foreach (const QString &mimetype, allMimeTypes) {
+        for (const QString &mimetype : allMimeTypes) {
             monitor->setMimeTypeMonitored(mimetype, true);
         }
 

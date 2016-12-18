@@ -433,9 +433,8 @@ QModelIndexList ReparentingModel::descendants(const QModelIndex &sourceIndex)
 
 void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
 {
-    QModelIndexList list;
-    list << sourceIndex << descendants(sourceIndex);
-    Q_FOREACH (const QModelIndex &descendant, list) {
+    const QModelIndexList list = QModelIndexList() << sourceIndex << descendants(sourceIndex);
+    for (const QModelIndex &descendant : list) {
         Q_FOREACH (const Node::Ptr &proxyNode, mProxyNodes) {
             if (proxyNode->isDuplicateOf(descendant)) {
                 //Removenode from proxy
