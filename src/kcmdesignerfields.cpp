@@ -86,8 +86,7 @@ public:
             allowedTypes.insert(QStringLiteral("KDatePicker"), i18n("Date"));
 
             const QList<QWidget *> list = wdg->findChildren<QWidget *>();
-            QWidget *it;
-            Q_FOREACH (it, list) {
+            for (QWidget *it : list) {
                 if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
                     const QString name = it->objectName();
                     if (name.startsWith(QStringLiteral("X_"))) {

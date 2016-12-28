@@ -346,10 +346,10 @@ void KODayMatrix::updateEvents()
         // No point in wasting cpu, all days are bold already
         return;
     }
-    KCalCore::Event::List eventlist = mCalendar->events(mDays[0], mDays[NUMDAYS - 1],
+    const KCalCore::Event::List eventlist = mCalendar->events(mDays[0], mDays[NUMDAYS - 1],
                                       mCalendar->timeSpec());
 
-    Q_FOREACH (const KCalCore::Event::Ptr &event, eventlist) {
+    for (const KCalCore::Event::Ptr &event : eventlist) {
         if (mEvents.count() == NUMDAYS) {
             // No point in wasting cpu, all days are bold already
             break;

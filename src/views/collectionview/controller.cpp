@@ -338,7 +338,7 @@ void Controller::onCollectionsFound(KJob *job)
 
 void Controller::onPersonsFound(const QVector<KPIM::Person> &persons)
 {
-    Q_FOREACH (const KPIM::Person &p, persons) {
+    for (const KPIM::Person &p : persons) {
         PersonNode *personNode = new PersonNode(*mSearchModel, p);
         personNode->isSearchNode = true;
         //toggled by the checkbox, results in person getting added to main model

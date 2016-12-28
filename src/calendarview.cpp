@@ -513,7 +513,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
 
     const QStringList oldFilterList = config->groupList().filter(QRegularExpression(QStringLiteral("^Filter_.*")));
     //Delete Old Group
-    Q_FOREACH (const QString &conf, oldFilterList) {
+    for (const QString &conf : oldFilterList) {
         KConfigGroup group = config->group(conf);
         group.deleteGroup();
     }

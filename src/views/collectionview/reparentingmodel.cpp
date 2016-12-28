@@ -324,7 +324,7 @@ void ReparentingModel::removeNode(const ReparentingModel::Node &node)
 
 void ReparentingModel::setNodes(const QList<Node::Ptr> &nodes)
 {
-    Q_FOREACH (const ReparentingModel::Node::Ptr &node, nodes) {
+    for (const ReparentingModel::Node::Ptr &node : nodes) {
         addNode(node);
     }
     Q_FOREACH (const ReparentingModel::Node::Ptr &node, mProxyNodes) {
