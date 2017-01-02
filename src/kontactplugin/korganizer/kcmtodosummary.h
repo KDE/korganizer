@@ -39,7 +39,7 @@ class KCMTodoSummary : public KCModule, public Ui::TodoSummaryConfig_Base
     Q_OBJECT
 
 public:
-    explicit KCMTodoSummary(QWidget *parent = Q_NULLPTR);
+    explicit KCMTodoSummary(QWidget *parent = nullptr);
     virtual ~KCMTodoSummary();
 
     void load() Q_DECL_OVERRIDE;

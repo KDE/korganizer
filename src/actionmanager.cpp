@@ -96,15 +96,15 @@
 #include <KSharedConfig>
 #include <QStandardPaths>
 
-KOWindowList *ActionManager::mWindowList = Q_NULLPTR;
+KOWindowList *ActionManager::mWindowList = nullptr;
 
 ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
                              QObject *parent, KOrg::MainWindow *mainWindow,
                              bool isPart, QMenuBar *menuBar)
     : QObject(parent),
-      mCollectionViewShowAction(Q_NULLPTR),
-      mCollectionView(Q_NULLPTR), mCollectionViewStateSaver(Q_NULLPTR),
-      mCollectionSelectionModelStateSaver(Q_NULLPTR)
+      mCollectionViewShowAction(nullptr),
+      mCollectionView(nullptr), mCollectionViewStateSaver(nullptr),
+      mCollectionSelectionModelStateSaver(nullptr)
 {
     new KOrgCalendarAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Calendar"), this);
@@ -113,7 +113,7 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
     mACollection = mGUIClient->actionCollection();
     mCalendarView = widget;
     mIsPart = isPart;
-    mTempFile = Q_NULLPTR;
+    mTempFile = nullptr;
     mHtmlExportSync = false;
     mMainWindow = mainWindow;
     mMenuBar = menuBar;
@@ -847,7 +847,7 @@ void ActionManager::file_open(const QUrl &url)
 
     // is that URL already opened somewhere else? Activate that window
     KOrg::MainWindow *korg = ActionManager::findInstance(url);
-    if ((Q_NULLPTR != korg) && (korg != mMainWindow)) {
+    if ((nullptr != korg) && (korg != mMainWindow)) {
 #if KDEPIM_HAVE_X11
         KWindowSystem::activateWindow(korg->topLevelWidget()->winId());
 #endif
@@ -1095,7 +1095,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
     QString fileOrig = mFile;
     QUrl URLOrig = mURL;
 
-    QTemporaryFile *tempFile = Q_NULLPTR;
+    QTemporaryFile *tempFile = nullptr;
     if (url.isLocalFile()) {
         mFile = url.toLocalFile();
     } else {
@@ -1249,7 +1249,7 @@ KOrg::MainWindow *ActionManager::findInstance(const QUrl &url)
             return mWindowList->findInstance(url);
         }
     } else {
-        return Q_NULLPTR;
+        return nullptr;
     }
 }
 
@@ -1433,7 +1433,7 @@ QString ActionManager::localFileName()
 class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
 {
 public:
-    ActionStringsVisitor() : mShow(Q_NULLPTR), mEdit(Q_NULLPTR), mDelete(Q_NULLPTR) {}
+    ActionStringsVisitor() : mShow(nullptr), mEdit(nullptr), mDelete(nullptr) {}
 
     bool act(KCalCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del)
     {
@@ -1615,7 +1615,7 @@ void ActionManager::openEventEditor(const QString &summary,
         action = IncidenceEditorNG::IncidenceEditorSettings::Link;
     } else if (IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod() ==
                IncidenceEditorNG::IncidenceEditorSettings::Ask) {
-        QMenu *menu = new QMenu(Q_NULLPTR);
+        QMenu *menu = new QMenu(nullptr);
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         QAction *attachBody = menu->addAction(i18n("Attach inline &without attachments"));
@@ -1654,11 +1654,11 @@ void ActionManager::openEventEditor(const QString &summary,
         KMime::Message *msg = new KMime::Message();
         msg->setContent(f.readAll());
         msg->parse();
-        if (msg == msg->textContent() || msg->textContent() == Q_NULLPTR) {   // no attachments
+        if (msg == msg->textContent() || msg->textContent() == nullptr) {   // no attachments
             attData = file;
         } else {
             if (KMessageBox::warningContinueCancel(
-                        Q_NULLPTR,
+                        nullptr,
                         i18n("Removing attachments from an email might invalidate its signature."),
                         i18n("Remove Attachments"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
                         QStringLiteral("BodyOnlyInlineAttachment")) != KMessageBox::Continue) {
@@ -1719,7 +1719,7 @@ void ActionManager::openTodoEditor(const QString &summary,
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
         action = KOPrefs::TodoAttachLink;
     } else if (KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk) {
-        QMenu *menu = new QMenu(Q_NULLPTR);
+        QMenu *menu = new QMenu(nullptr);
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         menu->addSeparator();

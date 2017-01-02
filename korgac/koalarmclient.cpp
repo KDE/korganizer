@@ -50,8 +50,8 @@ using namespace KCalCore;
 
 KOAlarmClient::KOAlarmClient(QObject *parent)
     : QObject(parent),
-      mDocker(Q_NULLPTR),
-      mDialog(Q_NULLPTR)
+      mDocker(nullptr),
+      mDialog(nullptr)
 {
     new KOrgacAdaptor(this);
     KDBusConnectionPool::threadConnection().registerObject(QStringLiteral("/ac"), this);
@@ -322,7 +322,7 @@ QStringList KOAlarmClient::dumpAlarms() const
 void KOAlarmClient::hide()
 {
     delete mDocker;
-    mDocker = Q_NULLPTR;
+    mDocker = nullptr;
 }
 
 void KOAlarmClient::show()

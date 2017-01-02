@@ -38,7 +38,7 @@ class KCMApptSummary : public KCModule, public Ui::ApptSummaryConfig_Base
     Q_OBJECT
 
 public:
-    explicit KCMApptSummary(QWidget *parent = Q_NULLPTR);
+    explicit KCMApptSummary(QWidget *parent = nullptr);
 
     void load() Q_DECL_OVERRIDE;
     void save() Q_DECL_OVERRIDE;

@@ -40,7 +40,7 @@ class KORGANIZERPRIVATE_EXPORT CollectionGeneralPage : public Akonadi::Collectio
     Q_OBJECT
 
 public:
-    explicit CollectionGeneralPage(QWidget *parent = Q_NULLPTR);
+    explicit CollectionGeneralPage(QWidget *parent = nullptr);
     ~CollectionGeneralPage();
 
     void load(const Akonadi::Collection &collection) Q_DECL_OVERRIDE;

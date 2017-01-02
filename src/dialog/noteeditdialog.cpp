@@ -43,7 +43,7 @@
 #include <QVBoxLayout>
 #include "korganizer_debug.h"
 
-QAbstractItemModel *NoteEditDialog::_k_noteEditStubModel = Q_NULLPTR;
+QAbstractItemModel *NoteEditDialog::_k_noteEditStubModel = nullptr;
 
 NoteEditDialog::NoteEditDialog(QWidget *parent)
     : QDialog(parent)

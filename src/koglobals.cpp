@@ -44,7 +44,7 @@ KOGlobals *KOGlobals::self()
     return &sKOGlobalsSingletonPrivate->instance;
 }
 
-KOGlobals::KOGlobals() : mHolidays(Q_NULLPTR)
+KOGlobals::KOGlobals() : mHolidays(nullptr)
 {
 }
 

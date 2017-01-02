@@ -99,7 +99,7 @@ KDateNavigator::~KDateNavigator()
 void KDateNavigator::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
     if (mCalendar) {
-        disconnect(mCalendar.data(), Q_NULLPTR, this, Q_NULLPTR);
+        disconnect(mCalendar.data(), nullptr, this, nullptr);
     }
 
     mCalendar = calendar;

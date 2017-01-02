@@ -47,7 +47,7 @@ public:
 
 protected:
     KParts::ReadOnlyPart *createPart() Q_DECL_OVERRIDE {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
 };

@@ -30,7 +30,7 @@ class MyDesignerFields : public KCMDesignerFields
 {
     Q_OBJECT
 public:
-    MyDesignerFields() : KCMDesignerFields(Q_NULLPTR) {}
+    MyDesignerFields() : KCMDesignerFields(nullptr) {}
     QString localUiDir() Q_DECL_OVERRIDE {
         return QStringLiteral(TESTKCMDESIGNERCURRENTDIR);
     }

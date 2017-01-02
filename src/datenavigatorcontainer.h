@@ -39,7 +39,7 @@ class DateNavigatorContainer: public QFrame
 {
     Q_OBJECT
 public:
-    explicit DateNavigatorContainer(QWidget *parent = Q_NULLPTR);
+    explicit DateNavigatorContainer(QWidget *parent = nullptr);
     ~DateNavigatorContainer();
 
     /**

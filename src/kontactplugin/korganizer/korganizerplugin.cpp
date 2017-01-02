@@ -54,7 +54,7 @@
 EXPORT_KONTACT_PLUGIN(KOrganizerPlugin, korganizer)
 
 KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "calendar"), mIface(Q_NULLPTR)
+    : KontactInterface::Plugin(core, core, "korganizer", "calendar"), mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
@@ -92,7 +92,7 @@ KParts::ReadOnlyPart *KOrganizerPlugin::createPart()
     KParts::ReadOnlyPart *part = loadPart();
 
     if (!part) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(

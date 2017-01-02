@@ -34,7 +34,7 @@ class ModelTest : public QObject
     Q_OBJECT
 
 public:
-    explicit ModelTest(QAbstractItemModel *model, QObject *parent = Q_NULLPTR);
+    explicit ModelTest(QAbstractItemModel *model, QObject *parent = nullptr);
 
 private Q_SLOTS:
     void nonDestructiveBasicTest();

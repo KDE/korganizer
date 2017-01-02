@@ -61,7 +61,7 @@ class AlarmDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = Q_NULLPTR);
+    explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
     ~AlarmDialog();
 
     void addIncidence(const Akonadi::Item &incidence, const QDateTime &reminderAt,

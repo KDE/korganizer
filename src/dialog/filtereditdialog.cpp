@@ -68,7 +68,7 @@ FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidge
 FilterEditDialog::~FilterEditDialog()
 {
     delete mFilterEdit;
-    mFilterEdit = Q_NULLPTR;
+    mFilterEdit = nullptr;
 }
 
 void FilterEditDialog::updateFilterList()
@@ -94,7 +94,7 @@ void FilterEditDialog::setDialogConsistent(bool consistent)
 }
 
 FilterEdit::FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
-    : QWidget(parent), mCurrent(Q_NULLPTR), mCategorySelectDialog(Q_NULLPTR)
+    : QWidget(parent), mCurrent(nullptr), mCategorySelectDialog(nullptr)
 {
     setupUi(this);
     searchline->setListWidget(mRulesList);
@@ -278,7 +278,7 @@ void FilterEdit::bDeletePressed()
     KCalCore::CalFilter *filter = mFilters->at(selected);
     mFilters->removeAll(filter);
     delete filter;
-    mCurrent = Q_NULLPTR;
+    mCurrent = nullptr;
     updateFilterList();
     mRulesList->setCurrentRow(qMin(mRulesList->count() - 1, selected));
     Q_EMIT filterChanged();

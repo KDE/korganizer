@@ -431,7 +431,7 @@ public:
             i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
                  "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
         KUrlRequester *rq = addWidPath(CalendarSupport::KCalPrefs::instance()->audioFilePathItem(),
-                                       Q_NULLPTR, filter)->urlRequester();
+                                       nullptr, filter)->urlRequester();
         rq->setEnabled(cb->isChecked());
 
         connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
@@ -484,7 +484,7 @@ protected:
         CalendarSupport::KCalPrefs::instance()->save();
     }
 
-    void setCombo(KComboBox *combo, const QString &text, const QStringList *tags = Q_NULLPTR)
+    void setCombo(KComboBox *combo, const QString &text, const QStringList *tags = nullptr)
     {
         if (tags) {
             int i = tags->indexOf(text);
@@ -1264,7 +1264,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
     KService::List::ConstIterator end(plugins.constEnd());
 
     for (it = plugins.constBegin(); it != end; ++it) {
-        QTreeWidgetItem *item = Q_NULLPTR;
+        QTreeWidgetItem *item = nullptr;
         if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
             item = new PluginItem(decorations, *it);
         } else {

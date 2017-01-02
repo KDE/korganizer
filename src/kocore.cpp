@@ -32,7 +32,7 @@
 #include <KServiceTypeTrader>
 #include <KXMLGUIFactory>
 
-KOCore *KOCore::mSelf = Q_NULLPTR;
+KOCore *KOCore::mSelf = nullptr;
 
 KOCore *KOCore::self()
 {
@@ -50,7 +50,7 @@ KOCore::KOCore()
 
 KOCore::~KOCore()
 {
-    mSelf = Q_NULLPTR;
+    mSelf = nullptr;
 }
 
 KService::List KOCore::availablePlugins(const QString &type, int version)
@@ -86,7 +86,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const KService::Ptr &service)
     qCDebug(KORGANIZER_LOG) << service->library();
 
     if (!service->hasServiceType(CalendarSupport::Plugin::serviceType())) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     KPluginLoader loader(*service);
@@ -94,14 +94,14 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const KService::Ptr &service)
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     auto pluginFactory = qobject_cast<CalendarSupport::PluginFactory *>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     return pluginFactory->createPluginFactory();
@@ -116,7 +116,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
             return loadPlugin(*it);
         }
     }
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
@@ -126,14 +126,14 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     auto pluginFactory = qobject_cast<EventViews::CalendarDecoration::DecorationFactory *>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     return pluginFactory->createPluginFactory();
@@ -148,7 +148,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
             return loadCalendarDecoration(*it);
         }
     }
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *parent)
@@ -156,7 +156,7 @@ KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *par
     qCDebug(KORGANIZER_LOG) << service->library();
 
     if (!service->hasServiceType(KOrg::Part::serviceType())) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     KPluginLoader loader(*service);
@@ -164,7 +164,7 @@ KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *par
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     KOrg::PartFactory *pluginFactory =
@@ -172,7 +172,7 @@ KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *par
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     return pluginFactory->createPluginFactory(parent);
@@ -191,7 +191,7 @@ void KOCore::removeXMLGUIClient(QWidget *wdg)
 KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
 {
     if (!wdg) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     QWidget *topLevel = wdg->topLevelWidget();
@@ -200,7 +200,7 @@ KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
         return it.value();
     }
 
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
@@ -212,7 +212,7 @@ KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
             return loadPart(*it, parent);
         }
     }
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()

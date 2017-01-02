@@ -237,7 +237,7 @@ private:
 };
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory(CalendarView *view)
-    : mView(view), mAkonadiCollectionView(Q_NULLPTR)
+    : mView(view), mAkonadiCollectionView(nullptr)
 {
 }
 
@@ -267,7 +267,7 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 class SortProxyModel : public QSortFilterProxyModel
 {
 public:
-    explicit SortProxyModel(QObject *parent = Q_NULLPTR)
+    explicit SortProxyModel(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
     {
         setDynamicSortFilter(true);
@@ -305,7 +305,7 @@ public:
 class ColorProxyModel : public QSortFilterProxyModel
 {
 public:
-    explicit ColorProxyModel(QObject *parent = Q_NULLPTR)
+    explicit ColorProxyModel(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent), mInitDefaultCalendar(false)
     {
     }
@@ -354,7 +354,7 @@ private:
 class CollectionFilter : public QSortFilterProxyModel
 {
 public:
-    explicit CollectionFilter(QObject *parent = Q_NULLPTR)
+    explicit CollectionFilter(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
     {
         setDynamicSortFilter(true);
@@ -379,7 +379,7 @@ protected:
 class EnabledModel : public QSortFilterProxyModel
 {
 public:
-    explicit EnabledModel(QObject *parent = Q_NULLPTR)
+    explicit EnabledModel(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
     {
     }
@@ -403,7 +403,7 @@ protected:
 class CalendarDelegateModel : public QSortFilterProxyModel
 {
 public:
-    explicit CalendarDelegateModel(QObject *parent = Q_NULLPTR)
+    explicit CalendarDelegateModel(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
     {
     }
@@ -500,15 +500,15 @@ AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu,
         QWidget *parent)
     : CalendarViewExtension(parent),
-      mActionManager(Q_NULLPTR),
-      mCollectionView(Q_NULLPTR),
-      mBaseModel(Q_NULLPTR),
-      mSelectionProxyModel(Q_NULLPTR),
-      mAssignColor(Q_NULLPTR),
-      mDisableColor(Q_NULLPTR),
-      mDefaultCalendar(Q_NULLPTR),
-      mEnableAction(Q_NULLPTR),
-      mServerSideSubscription(Q_NULLPTR),
+      mActionManager(nullptr),
+      mCollectionView(nullptr),
+      mBaseModel(nullptr),
+      mSelectionProxyModel(nullptr),
+      mAssignColor(nullptr),
+      mDisableColor(nullptr),
+      mDefaultCalendar(nullptr),
+      mEnableAction(nullptr),
+      mServerSideSubscription(nullptr),
       mNotSendAddRemoveSignal(false),
       mWasDefaultCalendar(false),
       mHasContextMenu(hasContextMenu)
@@ -1032,7 +1032,7 @@ Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
     }
 
     qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 void AkonadiCollectionView::edit_disable()

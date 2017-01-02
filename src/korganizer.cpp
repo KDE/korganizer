@@ -163,7 +163,7 @@ void KOrganizer::initActions()
     KStandardAction::quit(this, &KOrganizer::close, actionCollection());
 
     setXMLFile(QStringLiteral("korganizerui.rc"), true);
-    createGUI(Q_NULLPTR);
+    createGUI(nullptr);
 
     setAutoSaveSettings();
 }

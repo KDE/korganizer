@@ -110,13 +110,13 @@ public:
       Constructs a new calendar view widget.
       @param parent   parent window
     */
-    explicit CalendarView(QWidget *parent = Q_NULLPTR);
+    explicit CalendarView(QWidget *parent = nullptr);
     virtual ~CalendarView();
 
     class CalendarViewVisitor : public KCalCore::Visitor
     {
     public:
-        CalendarViewVisitor() : mView(Q_NULLPTR)
+        CalendarViewVisitor() : mView(nullptr)
         {
         }
 

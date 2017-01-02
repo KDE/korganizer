@@ -382,7 +382,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
 AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
     KCheckableProxyModel *model)
 {
-    AkonadiCollectionView *cview = new AkonadiCollectionView(Q_NULLPTR, false, q);
+    AkonadiCollectionView *cview = new AkonadiCollectionView(nullptr, false, q);
     cview->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     cview->setCollectionSelectionProxyModel(model);
     return cview;
@@ -475,7 +475,7 @@ void MultiAgendaViewConfigDialog::setNumberOfColumns(int n)
 KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column)
 {
     if (column < 0 || column >= d->selections.size()) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     KCheckableProxyModel *const m = d->selections[column];

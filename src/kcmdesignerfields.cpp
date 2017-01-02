@@ -64,7 +64,7 @@ public:
             return;
         }
         QUiLoader builder;
-        QWidget *wdg = builder.load(&f, Q_NULLPTR);
+        QWidget *wdg = builder.load(&f, nullptr);
         f.close();
         if (wdg) {
             setText(0, wdg->windowTitle());
@@ -142,12 +142,12 @@ private:
 KCMDesignerFields::KCMDesignerFields(QWidget *parent,
                                      const QVariantList &args)
     : KCModule(parent, args),
-      mPageView(Q_NULLPTR),
-      mPagePreview(Q_NULLPTR),
-      mPageDetails(Q_NULLPTR),
-      mDeleteButton(Q_NULLPTR),
-      mImportButton(Q_NULLPTR),
-      mDesignerButton(Q_NULLPTR)
+      mPageView(nullptr),
+      mPagePreview(nullptr),
+      mPageDetails(nullptr),
+      mDeleteButton(nullptr),
+      mImportButton(nullptr),
+      mDesignerButton(nullptr)
 {
     KAboutData *about = new KAboutData(QStringLiteral("KCMDesignerfields"),
                                        i18n("KCMDesignerfields"),
@@ -240,7 +240,7 @@ void KCMDesignerFields::loadActivePages(const QStringList &ai)
 {
     QTreeWidgetItemIterator it(mPageView);
     while (*it) {
-        if ((*it)->parent() == Q_NULLPTR) {
+        if ((*it)->parent() == nullptr) {
             PageItem *item = static_cast<PageItem *>(*it);
             if (ai.contains(item->name())) {
                 item->setCheckState(0, Qt::Checked);
@@ -268,7 +268,7 @@ QStringList KCMDesignerFields::saveActivePages()
 
     QStringList activePages;
     while (*it) {
-        if ((*it)->parent() == Q_NULLPTR) {
+        if ((*it)->parent() == nullptr) {
             PageItem *item = static_cast<PageItem *>(*it);
             activePages.append(item->name());
         }
@@ -381,7 +381,7 @@ void KCMDesignerFields::initGUI()
 
 void KCMDesignerFields::updatePreview()
 {
-    QTreeWidgetItem *item = Q_NULLPTR;
+    QTreeWidgetItem *item = nullptr;
     if (mPageView->selectedItems().size() == 1) {
         item = mPageView->selectedItems().first();
     }
@@ -422,7 +422,7 @@ void KCMDesignerFields::updatePreview()
 
 void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
 {
-    if (!item || item->parent() != Q_NULLPTR) {
+    if (!item || item->parent() != nullptr) {
         return;
     }
 
@@ -447,7 +447,7 @@ void KCMDesignerFields::startDesigner()
     // finally jump there
     QDir::setCurrent(QLatin1String(cepPath.toLocal8Bit()));
 
-    QTreeWidgetItem *item = Q_NULLPTR;
+    QTreeWidgetItem *item = nullptr;
     if (mPageView->selectedItems().size() == 1) {
         item = mPageView->selectedItems().first();
     }

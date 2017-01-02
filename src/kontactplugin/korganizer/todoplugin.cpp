@@ -52,7 +52,7 @@
 EXPORT_KONTACT_PLUGIN(TodoPlugin, todo)
 
 TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "todo"), mIface(Q_NULLPTR)
+    : KontactInterface::Plugin(core, core, "korganizer", "todo"), mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
@@ -89,7 +89,7 @@ KParts::ReadOnlyPart *TodoPlugin::createPart()
     KParts::ReadOnlyPart *part = loadPart();
 
     if (!part) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(

@@ -115,7 +115,7 @@ void ApptSummaryWidget::updateView()
     //   the summary is the event summary
     //   the time range is the start-end time (only for non-floating events)
 
-    QLabel *label = Q_NULLPTR;
+    QLabel *label = nullptr;
     int counter = 0;
 
     KIconLoader loader(QStringLiteral("korganizer"));

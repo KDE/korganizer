@@ -52,19 +52,19 @@
 KOViewManager::KOViewManager(CalendarView *mainView)
     : QObject(), mMainView(mainView)
 {
-    mCurrentView = Q_NULLPTR;
-    mLastEventView = Q_NULLPTR;
-    mWhatsNextView = Q_NULLPTR;
-    mTodoView = Q_NULLPTR;
-    mAgendaView = Q_NULLPTR;
-    mAgendaSideBySideView = Q_NULLPTR;
-    mListView = Q_NULLPTR;
-    mJournalView = Q_NULLPTR;
-    mTimelineView = Q_NULLPTR;
-    mAgendaViewTabs = Q_NULLPTR;
+    mCurrentView = nullptr;
+    mLastEventView = nullptr;
+    mWhatsNextView = nullptr;
+    mTodoView = nullptr;
+    mAgendaView = nullptr;
+    mAgendaSideBySideView = nullptr;
+    mListView = nullptr;
+    mJournalView = nullptr;
+    mTimelineView = nullptr;
+    mAgendaViewTabs = nullptr;
     mAgendaViewTabIndex = 0;
-    mTimeSpentView = Q_NULLPTR;
-    mMonthView = Q_NULLPTR;
+    mTimeSpentView = nullptr;
+    mMonthView = nullptr;
     mRangeMode = NO_RANGE;
 }
 

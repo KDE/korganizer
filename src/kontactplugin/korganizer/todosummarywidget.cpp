@@ -171,7 +171,7 @@ void TodoSummaryWidget::updateView()
     //     not-started (no start date and 0% completed)
 
     int counter = 0;
-    QLabel *label = Q_NULLPTR;
+    QLabel *label = nullptr;
 
     if (!prList.isEmpty()) {
 
@@ -354,7 +354,7 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     QAction *delIt = popup.addAction(i18n("&Delete To-do"));
     delIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("edit-delete"), KIconLoader::Small));
 
-    QAction *doneIt = Q_NULLPTR;
+    QAction *doneIt = nullptr;
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
     if (!todo->isCompleted()) {

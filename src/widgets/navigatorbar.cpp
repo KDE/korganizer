@@ -141,7 +141,7 @@ void NavigatorBar::selectMonthFromMenu()
     QMenu *menu = new QMenu(mMonth);
     QList<QAction *> act;
 
-    QAction *activateAction = Q_NULLPTR;
+    QAction *activateAction = nullptr;
     act.reserve(months);
     for (int i = 1; i <= months; ++i) {
         QAction *monthAction = menu->addAction(QLocale().monthName(i, QLocale::LongFormat));
@@ -182,7 +182,7 @@ void NavigatorBar::selectYearFromMenu()
     act.reserve(years);
 
     QString yearStr;
-    QAction *activateAction = Q_NULLPTR;
+    QAction *activateAction = nullptr;
     int y = minYear;
     for (int i = 0; i < years; ++i) {
         QAction *yearAction = menu->addAction(yearStr.setNum(y));

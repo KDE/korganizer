@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
         qDebug() << "Part:" << (*it)->desktopEntryName() << "("
                  << (*it)->name() << ")";
-        KOrg::Part *p = KOCore::self()->loadPart(*it, Q_NULLPTR);
+        KOrg::Part *p = KOCore::self()->loadPart(*it, nullptr);
         if (!p) {
             qDebug() << "Part loading failed.";
         } else {

@@ -35,7 +35,7 @@ public:
         : q(qq),
           mChanges(EventViews::EventView::IncidencesAdded |
                    EventViews::EventView::DatesChanged),
-          calendar(Q_NULLPTR)
+          calendar(nullptr)
     {
         QByteArray cname = q->metaObject()->className();
         cname.replace(':', '_');
@@ -56,7 +56,7 @@ public:
 };
 
 BaseView::BaseView(QWidget *parent)
-    : QWidget(parent), mChanger(Q_NULLPTR), d(new Private(this))
+    : QWidget(parent), mChanger(nullptr), d(new Private(this))
 {
 }
 

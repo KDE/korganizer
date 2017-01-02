@@ -34,7 +34,7 @@ class KCMDesignerFields : public KCModule
 {
     Q_OBJECT
 public:
-    explicit KCMDesignerFields(QWidget *parent = Q_NULLPTR,
+    explicit KCMDesignerFields(QWidget *parent = nullptr,
                                const QVariantList &args = QVariantList());
 
     void load() Q_DECL_OVERRIDE;

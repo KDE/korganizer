@@ -39,7 +39,7 @@
 EXPORT_KONTACT_PLUGIN(JournalPlugin, journal)
 
 JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "journal"), mIface(Q_NULLPTR)
+    : KontactInterface::Plugin(core, core, "korganizer", "journal"), mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
 
@@ -74,7 +74,7 @@ KParts::ReadOnlyPart *JournalPlugin::createPart()
     KParts::ReadOnlyPart *part = loadPart();
 
     if (!part) {
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(

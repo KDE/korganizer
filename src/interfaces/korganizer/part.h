@@ -49,7 +49,7 @@ public:
     typedef QList<Part *> List;
 
     explicit Part(MainWindow *parent)
-        : KParts::Part(parent ? (parent->topLevelWidget()) : Q_NULLPTR), mMainWindow(parent)
+        : KParts::Part(parent ? (parent->topLevelWidget()) : nullptr), mMainWindow(parent)
     {
     }
 
@@ -78,7 +78,7 @@ public:
 
 protected:
     QObject *createObject(QObject *, const char *, const QStringList &) Q_DECL_OVERRIDE {
-        return Q_NULLPTR;
+        return nullptr;
     }
 };
 

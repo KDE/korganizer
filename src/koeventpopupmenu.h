@@ -39,7 +39,7 @@ class KOEventPopupMenu : public QMenu
 {
     Q_OBJECT
 public:
-    explicit KOEventPopupMenu(Akonadi::ETMCalendar *, QWidget *parent = Q_NULLPTR);
+    explicit KOEventPopupMenu(Akonadi::ETMCalendar *, QWidget *parent = nullptr);
     void setCalendar(const Akonadi::ETMCalendar::Ptr &calendar);
 
 public Q_SLOTS:

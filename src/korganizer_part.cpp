@@ -44,7 +44,7 @@ K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
     : KParts::ReadOnlyPart(parent),
-      mTopLevelWidget(Q_NULLPTR)
+      mTopLevelWidget(nullptr)
 {
     KOrgMigrateApplication migrate;
     migrate.migrate();
@@ -92,7 +92,7 @@ KOrganizerPart::~KOrganizerPart()
     mActionManager->writeSettings();
 
     delete mActionManager;
-    mActionManager = Q_NULLPTR;
+    mActionManager = nullptr;
 
     KOCore::self()->removeXMLGUIClient(mTopLevelWidget);
 }
