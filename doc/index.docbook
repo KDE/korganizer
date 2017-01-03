@@ -1,8 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
  "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&korganizer;">
-  <!ENTITY package "kdepim">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
@@ -101,8 +99,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2011-06-24</date>
-<releaseinfo>&kde; 4.7</releaseinfo>
+<date>2016-12-08</date>
+<releaseinfo>5.4.40 (Applications 16.12)</releaseinfo>
 
 <abstract><para>&korganizer; is an easy to use personal information manager
 (<acronym>PIM</acronym>).  You can write journal entries, schedule appointments,
@@ -125,7 +123,7 @@ help you keep your schedule. </para></abstract>
 
 </bookinfo>
 
-<chapter id="introduction"> <!-- updated to 4.6/7-->
+<chapter id="introduction"><!--updated to 5.4.40-->
 <title>Introduction</title>
 
 <para>&korganizer; is an intuitive and easy to use personal information manager
@@ -180,7 +178,7 @@ linkend="managing-data">the documentation</link>!</para>
 
 </chapter>
 
-<chapter id="five-minute-course"> <!-- updated to 4.6/7-->
+<chapter id="five-minute-course"><!--updated to 5.4.40-->
 <title>Five-minute Fly-over Course of &korganizer;</title>
 <subtitle> (for the experienced and for the impatient)</subtitle>
 
@@ -220,7 +218,7 @@ this area, or just start typing the title of the event to open the
 <guilabel>New Event</guilabel> dialog.</para></step>
 
 <step><para><link linkend="entering-data-events">Enter event details</link>. 
-Use the five tabs at the bottom of the window to move
+Use the six tabs at the bottom of the window to move
 around the dialog and access all the event's characteristics.</para></step>
 
 <step><para>Press <guibutton>OK</guibutton> to save the
@@ -252,7 +250,7 @@ to-do.</para></step>
 <procedure>
 
 <step><para>Select the <inlinemediaobject><imageobject>
-<imagedata fileref="view-calendar-journal.png" format="PNG"/></imageobject>
+<imagedata fileref="journal-new.png" format="PNG"/></imageobject>
 </inlinemediaobject><menuchoice><guimenu>View</guimenu>
 <guimenuitem>Journal</guimenuitem></menuchoice> menu item to open the
 <link linkend="journal-view"><guilabel>Journal</guilabel> main
@@ -304,6 +302,7 @@ into quarter hours. If that is not precision enough, you can enter the
 desired time directly.</para>
 
 </sect1>
+
 <sect1 id="course-rescheduling-todos">
 <title>Rescheduling or Editing To-dos</title>
 
@@ -348,7 +347,7 @@ should at least skip through the <link linkend="faq">&FAQ;</link>.</para>
 
 </chapter>
 
-<chapter id="managing-data"> <!-- updated to 4.6/7 except managing-resources-->
+<chapter id="managing-data"><!--updated to 5.4.40-->
 <title>Importing, Exporting, and Managing Calendars</title>
 
 <para>&korganizer; can store (and retrieve) events, journal entries
@@ -367,20 +366,13 @@ vCalendar file. These files are supported by most scheduling applications.
 The web page can be used to publish your calendar and to-do list on the
 web or on the local network.</para>
 
-<!-- not in 4.5 para>If you have a calendar containing events of public interest, such as
-a conference or championship schedule, you can upload it using the
-<link linkend="managing-get-hot-new-stuff">get hot new stuff</link> framework.
-You can use the same framework to check if there are events worth downloading.
-</para-->
-
 <para>In this chapter, we will explain how to manage your calendar, using the
 resources, import and export actions and the get hot new stuff scheme.</para>
 
 <sect1 id="managing-resources">
 <title>Calendar Resources</title>
 
-<para>&korganizer; uses a local file, usually
-<filename>$KDEHOME/share/apps/korganizer/std.ics</filename>,
+<para>&korganizer; uses a local file
 as its default resource. But this is not your only option: there are several
 other resources you can add: groupware servers, journal entries as blogs,
 network files, &etc; If you use more than one resource, &korganizer;
@@ -437,8 +429,7 @@ display it.</para></step>
 <step><para>Press the <guibutton>Add...</guibutton> button to add new resources to
 the list of available resources.</para></step>
 
-<step><para>Check or uncheck the resource box to enable or
-disable it.</para></step>
+<step><para>Select the resource to enable it.</para></step>
 
 <step><para>Later, if you want to edit or delete a resource, select it on the
 <guilabel>Calendar Manager</guilabel> sidebar and press <guibutton>Delete Calendar</guibutton> to delete it or
@@ -448,8 +439,6 @@ disable it.</para></step>
 <para>Among the existing resources, you can find in &korganizer;:</para>
 
 <variablelist>
-<!--this is in korganizer 4.6, relation to KDE Resources and Akonadi Resources in systemsettings?
-  KDE Resources in 4.7.0 no longer kcmodul/in systemsettings?-->
 
 <varlistentry>
 <term><guilabel>Birthdays &amp; Anniversaries</guilabel></term>
@@ -462,18 +451,33 @@ disable it.</para></step>
 </varlistentry>
 
 <varlistentry>
+<term><guilabel>Google Calendars and Tasks</guilabel></term>
+<listitem><para>Accesss your Google Calendars and Tasks from KDE.</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><guilabel>ICal Calendar File</guilabel></term>
 <listitem><para>Loads data from an iCal file.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>KDE Address Book (traditional)</guilabel></term>
-<listitem><para>Loads data from a traditional KDE address book resource.</para></listitem>
+<term><guilabel>ICal Calendar Folder</guilabel></term>
+<listitem><para>Provides access to calendar items, each stored in a single file, in a given directory.</para></listitem>
 </varlistentry>
-<!-- Knut An agent for debugging purpose -->
+
+<varlistentry>
+<term><guilabel>KAlarm Calendar File</guilabel></term>
+<listitem><para>Loads data from a KAlarm calendar file.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>KAlarm Calendar Directory</guilabel></term>
+<listitem><para>Loads data from a local KAlarm folder.</para></listitem>
+</varlistentry>
+
 <varlistentry>
 <term><guilabel>Kolab Groupware Server</guilabel></term>
-<listitem><para>Provides access to Kolab groupware folders on an IMAP server (IMAP accounts need to be set up separately).</para></listitem>
+<listitem><para>Provides access to Kolab groupware folders and e-mail on a Kolab IMAP Server.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -483,329 +487,9 @@ disable it.</para></step>
 
 </variablelist>
 
-<!-- KDE Resources no longer in 4.7 ???-->
-<para>Alternatively, you can configure the &korganizer; resources (plus all
-other &kde; resources), in the &systemsettings;, using the <guilabel>&kde;
-Resources</guilabel> configuration module.</para>
-
-<variablelist>
-<!--
-Akonadi Ressources Configuration 4.6
-AkoNotes
-Birthdays &amp; Anniversaries 
-Calendar Search Agent (disabled)
-DAV groupware resource
-Dummy MailTransport Resource
-ICal Calendar File
-IMAP E-Mail Server
-Invitations Dispatcher Agent
-KDE Accounts
-KDE Address Book (traditional)
-KDE Calendar (traditional)
-KMail Maildir
-Knut
-Kolab Groupware Server
-Local Bookmarks
-Mail Dispatcher Agent (disabled)
-Maildir
-Mbox
-Microblog (Twitter and Identi.ca)
-Nepomuk Calendar Feeder
-Nepomuk Contact Feeder
-Nepomuk EMail Feeder
-Nepomuk Tags (Virtual Folders)
-Notes
-Open-Xchange Groupware Server
-POP3
-Personal Contacs
-Usenet Usegroups (NNTP)
-VCard Directory
-VCard File
-
-KDE Resources 4.7
-Calendar:
-Akonadi, Journal in a blog, Bugzilla To-do List, Calendar in Local File, Novell GroupWise Server, 
-Calendar in Local Directory, Calendar in remote File
-Notes: Notes in Local Files
-Contacts:
-Akonadi Address Book, Folder, File, Novell GroupWise Server, LDAP, Network
-Alarms:
-Alarms in Local File, Alarms in Local Directory, Alarms in Remote File
--->
-
-<!--the following is outdated and has to be updated to 4.6/7-->
-
-<varlistentry>
-<term><guilabel>Akonadi</guilabel></term>
-<listitem><para>Provides access to calendars stored in Akonadi calendar 
-folders.</para></listitem>
-</varlistentry>
-<!-- not in 4.7?
-<varlistentry>
-<term><guilabel>Birthdays from &kaddressbook;</guilabel></term>
-<listitem><para>Add this resource to view birthdays from contacts in &kaddressbook;
-in your calendar. The birthday appears in your calendar as a read only event and
-without associated time.</para></listitem>
-</varlistentry>
--->
-<varlistentry>
-<term><guilabel>Journal in a blog</guilabel></term>
-<listitem><para>Add this resource to be able to read your blogs as journal entries,
-directly from blog servers, such as blogger and drupal.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Bugzilla To-do List</guilabel></term>
-<listitem><para>Add this resource to load bugzilla open bugs as to-dos.
-This resource is based on the &kbugbuster; application, and uses its bug cache
-information. Bugzilla is an open source bug tracking system.</para>
-
-<para>If you are a developer working on a project that uses bugzilla, you can
-use this resource to view as to-dos the open bugs of the applications or
-libraries you are interested in (they are called <quote>products</quote> and/or
-<quote>components</quote> in bugzilla). This resource is available as part of
-the &kde; Software Development kit.
-</para></listitem>
-</varlistentry>
-<!-- not in 4.7?
-<varlistentry>
-<term><guilabel>&XML; Feature Plan</guilabel></term>
-<listitem><para>Add this resource to load a &XML; Feature Plan as to-dos.
-The &XML; Feature Plan is a scheme designed to document the new features of
-future software releases. It was designed to fit the &kde; release schedule
-needs, but can be helpful for any software project. The information from the
-&XML; file can be used to control feature freezes, to report the new
-features of new release or the status of the new features of a future release.
-</para></listitem>
-</varlistentry>
--->
-<varlistentry>
-<term><guilabel>Calendar in Local File</guilabel></term>
-<listitem><para>Add this resource to be able to save (and load) your events,
-to-dos and journal entries to a local file. The file can be in the iCalendar or
-in the vCalendar standard format. &korganizer; uses this resource by default,
-storing your calendar information under
-<filename>$KDEHOME/share/apps/korganizer/std.ics</filename>.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>GroupDav Server (e.g. Open Groupware)</guilabel></term>
-<listitem><para>
-If you have access to a server that supports the
-<ulink url="http://www.groupdav.org">GroupDav protocol</ulink>, add this
-resource in order to be able to save (and load) events<!--, journals, free/busy information?--> and to-dos
-to the server. To add the resource, you will need to know the server &URL;, your
-user name and your password. The GroupDav protocol supports the storage of 
-contacts, so you may want to add and configure the &kaddressbook;
-resource too.</para>
-<para>As of June 2005, the groupware servers that implement this protocol
-are the <ulink url="http://www.opengroupware.org">OpenGroupware server</ulink>
-and the <ulink url="http://www.citadel.org">Citadel server</ulink>. An up to
-date list can be obtained at the
-<ulink url="http://www.groupdav.org">GroupDav website</ulink>.
-</para></listitem>
-</varlistentry>
-<!-- no Groupware tab in kmail anymore, is this outdated? -->
-<varlistentry>
-<term><guilabel>Calendar on IMAP Server via &kmail;</guilabel></term>
-<listitem><para>
-If you have access to a server that shares calendar data via IMAP, add this
-resource in order to be able to save (and load) events, to-dos, free/busy
-information and journal entries to the IMAP server. To enable IMAP access, you
-will need to configure &kmail; first, then add the &korganizer; resource.
-Also, since you are using &kmail; to contact the server, &korganizer; will
-open &kmail; automatically, and use it to access your data. The
-<quote>IMAP server via &kmail;</quote> schema supports the storage
-of contacts, so you may want to add the &kaddressbook; resource too.</para>
-
-<para>Most IMAP servers can be used to hold calendar and address book resources,
-allowing you to access your data from just anywhere! If you are a user
-looking for a simple way to access and manage your groupware information,
-this is a simple and very efficient solution.</para>
-
-<para>To use this resource, it is necessary to configure &kmail; first. Choose
-the <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &kmail;...</guimenuitem></menuchoice> menu item.
-Click the <guilabel>Accounts</guilabel> icon in the configure dialog sidebar
-and add the IMAP server as a disconnected IMAP incoming account. Now click the
-<guilabel>Misc</guilabel> icon in the sidebar and click the
-<guilabel>Groupware</guilabel> tab to enable and configure the IMAP resource
-folder options. Only then you can add the &korganizer; (and &kaddressbook;)
-resources. For more information on configuring &kmail;, consult the &kmail;
-handbook.</para>
-
-<para>A more complete implementation of this schema is the
-<ulink url="http://www.kolab.org">Kolab Server</ulink>. This groupware
-implementation offers additional features for system administrators, such as
-support of mixed client environments (&Microsoft; Outlook&reg;, &kde;
-<acronym>PIM</acronym>  and web mail), a web administration interface, shared
-address book, email server, &etc; As of June 2005, the groupware servers that
-implement the <quote>Kolab 1</quote> and <quote>Kolab 2</quote> protocols are
-the Kolab server, version 1 and 2, and the 
-<ulink url="http://www.citadel.org">Citadel server</ulink> (Kolab 1 only). An up
-to date list can be obtained at the <ulink url="http://www.kolab.org">Kolab
-website</ulink>.</para>
-
-<para>The most practical way to configure the access to a Kolab server is to use
-the <application>kolabwizard</application> wizard application. You can start it
-from the command line prompt:
-  <!-- no kolabwizard in > 4.4 anymore-->
-<screen><prompt>$</prompt><command>kolabwizard</command></screen>
-
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Calendar in Local Directory</guilabel></term>
-<listitem><para>Add this resource to be able to save and load your events,
-to-dos and journal entries from a local folder. Each calendar item will be saved
-in a separate file, inside the folder.
-</para>
-<para>Since there is only one file per event, to-do, or journal entry, &korganizer;
-does not need to parse one big calendar file, sometimes with thousands of items
-when saving or loading, just one single calendar item. Also, in case of file
-corruption, you will lose only one calendar item, not the whole calendar.</para>
-</listitem>
-</varlistentry>
-<!-- obsolete? no program exchangewizard in debian! 
-<varlistentry>
-<term><guilabel>Calendar on Exchange Server (Experimental)</guilabel></term>
-<listitem><para>
-If you have access to a
-<ulink url="http://www.microsoft.com/exchange">Exchange 2000 Server</ulink>,
-add this resource in order to be able to save (and load)
-events FIXME:,journals, free/busy information and to-dos? to the server. To add the resource, you will
-need to know the server &URL;, FIXME:port? your user name and your password. There
-is support for (read only) contacts, so you may want to configure &kaddressbook;
-resource.</para>
-<para>The most practical way to configure the access to a Exchange server is
-to use the <application>exchangewizard</application> wizard. You can start it
-from the command line prompt:
-
-<screen><prompt>$</prompt><command>exchangewizard</command></screen>
-
-The wizard will configure not only &korganizer; to use the
-Exchange resources, but &kmail;, &kaddressbook; too.</para>
-</listitem>
-</varlistentry>
--->
-
-<varlistentry>
-<term><guilabel>Calendar in Remote File</guilabel></term>
-<listitem><para>Add this resource to be able to save and load your events,
-to-dos and journal entries from a remote file.
-<!--FIXME: make sure this is all true-->
-There are two main advantages of keeping your calendar data in a remote server:
-you can access your data even if you are away from your computer, and
-you can let other people (for instance, a secretary) view it.
-&korganizer; keeps a cache of the data locally.
-</para>
-
-<screenshot id="screenshot-remotefile-resource">
-<screeninfo>A screenshot of &korganizer;'s Remote File Resource Configuration</screeninfo>
-<mediaobject>
-<imageobject><imagedata fileref="remotefile-resource.png" format="PNG"/></imageobject>
-<textobject><phrase>A screenshot of &korganizer;'s Remote File Resource Configuration</phrase></textobject>
-<caption><para>A screenshot of &korganizer;'s Remote File Resource Configuration</para></caption>
-</mediaobject>
-</screenshot>
-
-<para>You can configure the resource to be read only, keeping the remote file
-untouched. In this case, you won't need to supply a <guilabel>Upload
-to</guilabel> location, just a <guilabel>Download
-from</guilabel> location for the remote file. If you plan to use a
-writable remote resource, you will have to supply both locations. The reason
-to have separate  locations, is that some servers may have an upload queue,
-a place where you need to put the upload file, different from its final location.
-In most cases, if you have write access to the remote file, the <guilabel>Upload
-to</guilabel> and <guilabel>Download from</guilabel> file locations should be
-the same.
-</para>
-
-<para>It is important to understand that the remote file resource does not
-add or remove individual items from the remote file, it simply saves the
-remote file over local cache when downloading and save the local cache over the
-remote file when uploading. Therefore, if the resource is read only, it makes
-sense to set the <guilabel>Automatic Reload</guilabel> option to a
-<guilabel>Regular interval</guilabel>, but if not (if the resource is writable),
-it is recommended to reload the file only before starting to edit it, by setting
-the <guilabel>Automatic Reload</guilabel> option to <guilabel>On
-startup</guilabel>, and to save it before exiting, by setting the
-<guilabel>Automatic Save</guilabel> option at least to
-<guilabel>On exit</guilabel>, or better yet, if you have a fast and stable
-connection to the remote file, set it to <guilabel>On every change</guilabel>
-to avoid data loss.</para>
-
-<warning><para>If you add, change or remove events, journal entries or to-dos and
-reload the remote file, all your local changes will be lost, and the
-file will revert to its previous state. This can happen in different scenarios
-(for instance if the system crashes, &korganizer; will reload the remote file on
-the next start, if you set the <guilabel>Automatic Save</guilabel> to
-<guilabel>Never</guilabel>, or if you set the <guilabel>Automatic Reload</guilabel>
-to a regular interval). If you plan to use a calendar resource in
-writable mode, make sure that your connection is stable, configure the
-resource to save the file on each change (or at frequent intervals),
-and do not reload the file at regular intervals.</para>
-
-<para>A related, but opposite problem, is that two users cannot safely edit
-the same remote file at the same time, because the remote file resource does not
-offer a conflict resolution mechanism. For instance, if someone else changes
-(and saves) the remote file, after you loaded it, and at some later time you
-save the file, his changes will be lost.
-</para></warning>
-
-</listitem>
-</varlistentry>
-<!-- obsolete? no <application>sloxwizard</application>in kdepim > 4.4 
-<varlistentry>
-<term><guilabel>SUSE &Linux; OpenExchange Server</guilabel></term>
-<listitem><para>
-If you have access to a
-<ulink url="http://www.novell.com/coolsolutions/openexchange/">SUSE &Linux; OpenExchange
-Server</ulink>, version 4.1, add this resource in order to be able to save
-(and load) events, free/busy information and to-dos to the server. To add the
-resource, you will need to know the server &URL;, your user name and your
-password. There is support for storage of contacts, so you may want to configure
-&kaddressbook; resource.</para>
-<para>The most practical way to configure the access to an OpenExchange server is
-to use the <application>sloxwizard</application> wizard. You can start it
-from the command line prompt:
-
-<screen><prompt>$</prompt><command>sloxwizard</command></screen>
-
-The wizard will configure not only &korganizer; to use the
-OpenExchange resources, but &kmail;, &kaddressbook; too.</para>
-</listitem>
-</varlistentry>
--->
-  <!-- obsolete? no <application>egroupwarewizard</application>in kdepim >4.4
-<varlistentry>
-<term><guilabel>eGroupware Server (via &XML;-RPC)</guilabel></term>
-<listitem><para>
-If you have access to a
-<ulink url="http://www.egroupware.org">eGroupware
-Server</ulink>, version 1.0, add this resource in order to be able to save
-(and load) events, free/busy information and to-dos to the server. To add the
-resource, you will need to know the server &URL;, your user name and your
-password. There is support for storage of contacts, so you may want to configure
-&kaddressbook; resource.</para>
-<para>The most practical way to configure the access to a eGroupware server is
-to use the <application>egroupwarewizard</application> wizard. You can start it
-from the command line prompt:
-
-<screen><prompt>$</prompt><command>egroupwarewizard</command></screen>
-
-The wizard will configure not only &korganizer; to use the
-eGroupware resources, but &kmail;, &kaddressbook; too.</para>
-</listitem>
-</varlistentry>
--->
-</variablelist>
-
 </sect1>
 
-<sect1 id="managing-import-export">  <!-- updated to 4.7-->
+<sect1 id="managing-import-export">
 <title>Importing, Exporting and Maintaining Calendars</title>
 
 <para>While local files are just one among many other resources that can be used
@@ -819,11 +503,9 @@ copies, or import items from your old calendar program.</para>
 would like to import it, choose the <menuchoice><guimenu>File</guimenu>
 <guisubmenu>Import</guisubmenu><guimenuitem>Import Calendar...</guimenuitem>
 </menuchoice> menu item. &korganizer; will ask you if you want to <guilabel>Add as new
-calendar</guilabel>, which adds the calendar file as a new local file resource,
+calendar</guilabel>, which adds the calendar file as a new local file resource or
 <guilabel>Merge into existing calendar</guilabel>, which merges the calendar
-items into an existing resource or <guilabel>Open in separate window</guilabel>,
-which will allow you to view and edit the calendar, but will not add it to
-its default view.</para>
+items into an existing resource.</para>
 
 <para>A good time to do this would be if you received a
 vCalendar with a few entries via email, for instance, or if you are planning
@@ -842,7 +524,7 @@ If any errors or suspicious things occur during the process, you will be
 notified via a message box.</para>
 
 <!--Get Hot New Stuff
-KDE-Files.org KOrganizer Calendars-->
+store.kde.org KOrganizer Calendars-->
 </sect2>
 
 <sect2 id="managing-export">
@@ -901,7 +583,7 @@ to-do list</guilabel> box.</para></step>
 <guilabel>Export events as list</guilabel> box.</para></step>
 <step><para>Specify the web output file in the <guilabel>Output filename</guilabel>
 field. If you want to set another location, press the <inlinemediaobject>
-<imageobject><imagedata fileref="document-open.png" format="PNG"/></imageobject>
+<imageobject><imagedata fileref="document-open.png" format="PNG"/></imageobject><!--wrong png-->
 </inlinemediaobject><guibutton>Open file dialog</guibutton> button to find it.</para></step>
 </substeps></step>
 <step><para><guilabel>Events</guilabel> tab: specify if you want to include
@@ -948,7 +630,7 @@ do not wish to view them in the to-do lists, consider
 
 </sect1>
 <!-- only import ??-->
-<sect1 id="managing-get-hot-new-stuff">  <!-- updated to 4.7-->
+<sect1 id="managing-get-hot-new-stuff">
 <title>Downloading Using Get Hot New Stuff</title>
 
 <!--para>If you have a calendar containing events of public interest, such as
@@ -980,7 +662,7 @@ choose the <menuchoice><guimenu>File</guimenu><guisubmenu>Export</guisubmenu>
 
 </chapter>
 
-<chapter id="chapter-views-and-filters"><!-- updated to 4.6/7-->
+<chapter id="chapter-views-and-filters"><!-- updated to 5.4.40-->
 
 <title>Views and Filters</title>
 
@@ -1179,7 +861,7 @@ a single day.</para>
 <para>Switch the display to the Day view by choosing the
 <menuchoice><guimenu>Go</guimenu>
 <guimenuitem>Day</guimenuitem></menuchoice>
-menu item or pressing the <inlinemediaobject><imageobject><imagedata fileref="view-calendar-day.png"
+menu item or pressing the <inlinemediaobject><imageobject><imagedata fileref="go-jump-today.png"
  format="PNG"/></imageobject></inlinemediaobject><guilabel>Day</guilabel> button
 in the toolbar.</para>
 
@@ -1341,7 +1023,7 @@ available drag-and-drop operations.</para>
 <para>The Journal view provides a place for you to record your reflections,
 occurrences or experiences. You can display the Journal view in the main
 panel if you press the <inlinemediaobject><imageobject>
-<imagedata fileref="view-calendar-journal.png" format="PNG"/></imageobject>
+<imagedata fileref="journal-new.png" format="PNG"/></imageobject>
 </inlinemediaobject><guilabel>Journal View</guilabel> toolbar button or if you choose the
 <menuchoice><guimenu>View</guimenu><guimenuitem>Journal</guimenuitem>
 </menuchoice> menu item.</para>
@@ -1452,7 +1134,7 @@ or edit the event or to-do details. Get more information about these details in
 
 </chapter>
 
-<chapter id="entering-data">  <!--updated to 4.7-->
+<chapter id="entering-data">  <!--updated to 5.4.40-->
 
 <title>Entering Data</title>
 
@@ -1485,7 +1167,7 @@ to-dos, described below.</para></step>
 <step><para>In the main panel, double click the time and date when your
 event starts. </para></step>
 
-<step><para>A dialog with five tabs at the bottom of the window appears.
+<step><para>A dialog with six tabs at the bottom of the window appears.
 Enter your data as described below.</para></step>
 </procedure>
 
@@ -1564,16 +1246,6 @@ either Personal or Special Occasion - it is your choice.</para></tip>
 </listitem>
 </varlistentry>
 
-<!--varlistentry not in 4.6.0 lueck>
-<term><guilabel>Time associated</guilabel></term>
-<listitem><para>Uncheck the <guilabel>Time associated</guilabel> box if your
-event is not scheduled on an exact time.</para>
-
-<tip><para>Most events are scheduled to an exact time. If your event does not
-need specific time, perhaps it should be created as a <link
-linkend="entering-data-to-do">to-do</link></para></tip></listitem>
-</varlistentry-->
-
 <varlistentry>
 <term><guilabel>Access:</guilabel></term>
 <listitem><para>Choose <guilabel>Public</guilabel>, <guilabel>Private</guilabel> or <guilabel>Confidential</guilabel>
@@ -1592,12 +1264,6 @@ only you can access.</para></warning></listitem>
 </varlistentry>
 
 </variablelist>
-<!-- not in 4.6.0 lueck varlistentry>
-<term><guilabel>Show Time As:</guilabel></term>
-<listitem><para>The duration of the event may be shown as Busy or Free in your
-schedule. Choose it from the <guilabel>Show Time As</guilabel>
-drop down box.</para></listitem>
-</varlistentry-->
 
 </sect2>
 
@@ -1679,6 +1345,8 @@ automatically.</para></listitem>
 </variablelist>
 
 </sect2>
+
+<!--Fixme Resources tab missing -->
 
 <sect2 id="entering-data-events-reminder">
 <title>Reminder Tab</title>
@@ -1847,10 +1515,8 @@ often or may be moved (or removed) from their current location.</para>
 
 </sect2>
 
-<!-- not in 4.6.0 lueck
-Does this work via Reschedule button on Attendees tab???
--->
-<!--sect2 id="entering-data-events-freebusy"> 
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy"> 
 <title>Free/Busy</title>
 
 <para>When adding attendees to your event, you need to know if they are
@@ -1906,11 +1572,10 @@ from the corresponding servers.</para></listitem>
 </variablelist>
 
 <para>When you want to confirm, call off or revert the entered data, choose
-among the <link linkend="reference-action-buttons">Action Buttons</link>,
-<guibutton>OK</guibutton>, <guibutton>Apply</guibutton> and
+among the Action Buttons <guibutton>OK</guibutton>, <guibutton>Apply</guibutton> and
 <guibutton>Cancel</guibutton>.</para>
 
-</sect2-->
+</sect2>
 
 <sect2 id="entering-data-events-template-buttons">
 <title>Manage Templates</title>
@@ -2003,7 +1668,7 @@ empty.</para></listitem>
 </sect1>
 </chapter>
 
-<chapter id="group-scheduling">   <!--updated to 4.7-->
+<chapter id="group-scheduling">   <!--updated to 5.4.40-->
 <title>Group Scheduling</title>
 
 <para>The group schedule functionality of &korganizer; allows you to
@@ -2097,7 +1762,7 @@ attendee tab</link>, in the <guilabel>Edit Event</guilabel>, or
 <link linkend="agenda-view">Agenda view</link>, a little icon
 <inlinemediaobject>
 <imageobject>
-<imagedata fileref="organizer.png" format="PNG"/>
+<imagedata fileref="organizer.png" format="PNG"/><!--FIXME wrong icon meeting-organizer?-->
 </imageobject>
 <textobject>
 <phrase>Organizer Icon</phrase>
@@ -2159,7 +1824,7 @@ they can remove the item from their calendars too.</para>
 is added to your calendar. If it is an event, a little icon
 <inlinemediaobject>
 <imageobject>
-<imagedata fileref="groupevent.png" format="PNG"/>
+<imagedata fileref="meeting-attending.png" format="PNG"/>
 </imageobject>
 <textobject>
 <phrase>Attendee Icon</phrase>
@@ -2349,11 +2014,7 @@ If you are satisfied, click <guibutton>OK</guibutton>.</para></step>
 
 </chapter>
 
-<chapter id="config">  <!--updated to 4.7, a few items missing
-System Tray tab
-Calendars tab
-
--->
+<chapter id="config">  <!--updated to 5.4.40, missing General System Tray + Calendars-->
 <title>&korganizer; Configuration</title>
 
 <para>To change &korganizer;'s look and behavior, choose the
@@ -2364,24 +2025,21 @@ about all the configure options and possibilities in
 
 <para>To customize the set of tools available on the bar, choose the
 <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...
-</guimenuitem></menuchoice> menu item and read the <link
-linkend="config-toolbars">configure toolbars detailed description</link>.</para>
-
-<para>To move toolbars around the screen, point your mouse over
-the toolbar handle and drag the toolbar to a new position on the
-&korganizer; window.</para>
+</guimenuitem></menuchoice> menu item and read the Section <ulink
+url="help:/fundamentals/config.html#toolbars">Customizing Toolbars</ulink>
+in the &kde; Fundamentals.</para>
 
 <para>Localization information like date and time formats can be
-configured from &systemsettings; within the <guilabel>Country/Region &amp;
-Language</guilabel> module.  This control module can be
+configured from &systemsettings; within the <guilabel>Language</guilabel> module.
+This control module can be
 accessed from within &korganizer;: just choose the <menuchoice><guimenu>
 Settings</guimenu><guimenuitem>Configure Date &amp;
 Time...</guimenuitem></menuchoice> menu item.  &korganizer; has to be restarted
 for changes done in &systemsettings; to take effect.</para>
 
 <para>To configure where &korganizer; stores and retrieves calendar events,
-journal entries and to-dos, (in local files, groupware servers, journal entries as blogs,
-network files, &etc;), please check <xref linkend="managing-resources" />.</para>
+journal entries and to-dos, (in local files, groupware servers &etc;),
+please check <xref linkend="managing-resources" />.</para>
 
 <sect1 id="config-main">
 <title>&korganizer; Main Configuration</title>
@@ -2427,7 +2085,7 @@ will not be able to modify it because it will be read-only.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Default email attachment method</guilabel></term>
+<term><guilabel>Default Email Attachment Method</guilabel></term>
 <listitem><para>This option allows you to select the way an email is attached to
 an event. You can attach an email as the complete email including attachments,
 the email excluding attachments or only a link to the email.</para>
@@ -2449,21 +2107,6 @@ the email excluding attachments or only a link to the email.</para>
 your calendar and to-do list to an &HTML; file in your home folder at an interval
 which defaults to 10 minutes.</para></listitem>
 </varlistentry>
-
-<!--not in 4.7 varlistentry>
-<term><guilabel>Enable automatic saving of manually opened calendar files</guilabel></term>
-<listitem><para>When this box is checked,
-manually opened calendar files are saved automatically when you exit
-&korganizer;, without asking. Furthermore, the calendar file is saved
-periodically as you work to prevent the loss of valuable data. You can also
-specify the save interval in  minutes.
-
-<important><para>This option does not affect your
-resource settings. To change the resource saving options, you have to configure
-each resource individually. For more information about resources, please check
-<xref linkend="managing-resources" />.</para></important>
-</para></listitem>
-</varlistentry-->
 
 <varlistentry>
 <term><guilabel>Confirm deletes</guilabel></term>
@@ -2503,12 +2146,6 @@ and which information is published in the shared folders.</para>
 <title>Regional tab</title>
 
 <variablelist>
-<!--varlistentry>
-<term><guilabel>Timezone</guilabel></term>
-<listitem><para>Select your location from the list on the drop
-down. If your city is not listed, select one that shares the same time zone.
-&korganizer; will automatically adjust for daylight savings.</para></listitem> 
-</varlistentry-->
 
 <varlistentry>
 <term><guilabel>Day begins at</guilabel></term>
@@ -2521,7 +2158,7 @@ in the Agenda view.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Use holiday region</guilabel></term>
+<term><guilabel>Holidays</guilabel></term>
 <listitem><para>Select your country from the drop down list, or if
 it is not listed, select <guilabel>(None)</guilabel>.
 If your country is selected, &korganizer; will recognize and display
@@ -2616,13 +2253,6 @@ seconds.</para></listitem>
 colors specific to their due, due today or overdue state.</para></listitem>
 </varlistentry>
 
-<!--varlistentry>
-<term><guilabel>Show to-dos in day, week and month views</guilabel></term>
-<listitem><para>This check box toggles the display of to-dos in the day, week
-and month views in the agenda (day and week) and month views. If you have
-too many to-dos which have due date associated, you may want to turn them
-off to avoid clutter.</para></listitem>
-</varlistentry-->
 </variablelist>
 
 <para><link linkend="description-view">Date Navigator</link> options:</para>
@@ -2714,7 +2344,7 @@ select a time range in the daily and weekly view. To select a time range, drag
 the mouse from the start time to the end time of the event you are about to
 plan.</para></listitem>
 </varlistentry>
-
+<!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
 <term><guilabel>Color Usage</guilabel></term>
 <listitem>
@@ -2764,26 +2394,14 @@ from the context menu.
 <para><link linkend="month-view">Month view</link> options:</para>
 
 <variablelist>
-<!--varlistentry>
-<term><guilabel>Enable scrollbars in month view items</guilabel></term>
-<listitem><para>This check box toggles the cell scrollbars in the
-month view on and off. Even if you check this box, the scrollbars will
-only appear when needed.</para></listitem>
-</varlistentry>
-not in 4.6.0 -->
+
 <varlistentry>
 <term><guilabel>Display Options</guilabel></term>
 <listitem><para>Use the first four check boxes to display the time, icons
 (reminder, recursion &etc;),
 to-dos or journals in Month view.</para></listitem>
 </varlistentry>
-
-<varlistentry>
-<term><guilabel>Month view uses full window</guilabel></term>
-<listitem><para>If you check this box, the Month view will be displayed
-in the whole &korganizer; window instead of sharing the window with the sidebar
-(the Date Navigator, the to-dos and the calendar resources).</para></listitem>
-</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
 <term><guilabel>Color busy days with a different background color</guilabel></term>
@@ -2799,29 +2417,6 @@ busy color of your choosing.</para></listitem>
 <para>Configure the colors for the Month view as in <link linkend="config-main-views-agenda">Agenda view</link>.</para></listitem>
 </varlistentry>
 
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term><guilabel>Month view uses category colors</guilabel></term>
-<listitem><para>With &korganizer;, you can
-<link linkend="config-main-colors">assign a different color to each
-category</link>. If you check this box, the event or to-do color in the month
-view will reflect the category color, instead of using no color, or only the
-resource color. Note that if you do not assign different category colors,
-there is little sense in using this feature, as &korganizer; default
-configuration is to use the same color for all categories.</para></listitem>
-</varlistentry-->
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term><guilabel>Month view uses resource colors</guilabel></term>
-<listitem><para>With &korganizer;, you can
-<link linkend="config-main-colors">assign a different color to each
-resource</link>. If you check this box, the event or to-do color in the month
-view will reflect the resource color, instead of using no color, or only the
-category color. Note that if you do not assign different resource colors, there
-is little sense in using this feature, as &korganizer; default configuration
-is to use the same color for all resources.</para></listitem>
-</varlistentry-->
-
 </variablelist>
 </sect3>
 
@@ -2836,14 +2431,6 @@ is to use the same color for all resources.</para></listitem>
 <term><guilabel>Always display completed to-dos at the bottom of the list</guilabel></term>
 <listitem><para>If you enable this option, all completed to-dos will be always 
 grouped at the bottom of the To-do List.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>To-do list view uses full window</guilabel></term>
-<listitem><para>Enable this option to use the full &korganizer; window when displaying 
-the To-do List view. You will gain some space for the To-do List view, but other widgets,
-such as the Date Navigator, the to-do details and the calendars list, will not be displayed.
-</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -2877,23 +2464,6 @@ allowing you to select the holiday color. The holiday color will be used for the
 holiday name in the Month view and the holiday date in the Date
 Navigator.</para></listitem>
 </varlistentry>
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term><guilabel>Highlight color</guilabel></term>
-<listitem><para>This button opens the <guilabel>Select Color</guilabel> dialog,
-allowing you to select the highlight color. The highlight color will be used for
-marking the currently selected area in your agenda and in the date
-navigator.</para></listitem>
-</varlistentry-->
-<!--not in 4.6.0-->
-<!--varlistentry>
-<term><guilabel>Default event color</guilabel></term>
-<listitem><para>This button opens the <guilabel>Select Color</guilabel> dialog,
-allowing you to select the default event color. The default event color will
-be used for events categories in your agenda and (depending on the settings) in
-the month view. Note that you can specify a separate color for each event
-category below.</para></listitem>
-</varlistentry-->
 
 <varlistentry>
 <term><guilabel>Agenda view background color</guilabel></term>
@@ -3023,62 +2593,9 @@ to use. You can either use &kmail; or the &Sendmail; command (which must be
 installed on your system in order to work).</para></listitem>
 </varlistentry>
 
-<varlistentry>
-<term><guilabel>Additional email addresses</guilabel></term>
-<listitem><para>This tells &korganizer; which further email addresses you have.
-You can add, edit or remove additional email addresses. These email addresses
-are the ones you have in addition to the one set in
-<link linkend="config-main-general-personal">personal preferences</link>.
-If you get an invitation to an event through another email address, you
-need to list the address here so that &korganizer; can recognize it as yours, and
-add the item to your calendar.
-</para></listitem>
-</varlistentry>
-
 </variablelist>
 
 </sect2>
-
-<!-- 
-<sect2 id="config-main-groupautomation">
-<title>Group Automation</title>
-
-<variablelist>
-
-<varlistentry>
-<term><guilabel>Auto Send Refresh</guilabel></term>
-<listitem><para>to be written...
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Auto Insert IMIP Replies</guilabel></term>
-<listitem><para>to be written...
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Auto Insert IMIP Requests</guilabel></term>
-<listitem><para>to be written...
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Auto Send FreeBusy information</guilabel></term>
-<listitem><para>to be written...
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>AutoSave FreeBusy Replies</guilabel></term>
-<listitem><para>to be written...
-</para></listitem>
-</varlistentry>
-
-</variablelist>
-
-</sect2>
--->
 
 <sect2 id="config-main-free-busy">
 <title>Free/Busy</title>
@@ -3233,7 +2750,7 @@ configuration file for security reasons.</para></warning>
 <xref linkend="plugins-chapter" /></para>
 
 </sect2>
-<!--
+
 <sect2 id="config-custom-pages">
 <title>Custom Pages</title>
 
@@ -3242,147 +2759,11 @@ values into &korganizer;.</para>
 <para>Create your elements as described in <guilabel>How does this work?</guilabel></para>
 
 </sect2>
--->
 </sect1>
-
-<sect1 id="config-toolbars"><!--updated to 4.7-->
-<title>Toolbars Configuration</title>
-
-<para>&korganizer; has four toolbars: a Main toolbar (with
-<guiicon>New Event</guiicon>, <guiicon>New To-do</guiicon>, <guiicon>New Journal</guiicon>,
-<guiicon>Back</guiicon>, <guiicon>Forward</guiicon>, <guiicon>Today</guiicon>, <guiicon>Day</guiicon> and
-<guiicon>Week</guiicon> buttons), a
-<guiicon>Views</guiicon> toolbar (for selecting between
-<guiicon>Agenda</guiicon>, <guiicon>Month View</guiicon>,
-<guiicon>Timeline</guiicon>, <guiicon>To-do List</guiicon> and <guiicon>Journal</guiicon>
-views), a Schedule toolbar (with <guiicon>Publish Item Information</guiicon>,
-<guiicon>Send Invitations to Attendees</guiicon>, <guiicon>Send
-Status Update</guiicon> and <guiicon>Address Book</guiicon> buttons) and a
-Filters toolbar, which allows you to choose a filter for the &korganizer; views
-and manage the view filters as well.
-You can customize these toolbars in various ways: you can add new icons,
-change the icon size, change toolbar position and add text description
-to the icons.</para>
-
-<para>There are two ways to change the position of the toolbars:
-<itemizedlist>
-<listitem><para>
-You can right click the toolbar to bring up the <guimenu>Toolbar Menu</guimenu>.
-The icon size and text position can also be adjusted from this menu.
-</para></listitem>
-<listitem><para>
-If a toolbar is unlocked, you can simply drag the toolbar by the handle on the left border of each
-toolbar, and drop it whenever you wish. Also look at other easy <link
-linkend="other-features-drag-and-drop">drag-and-drop operations</link>.
-</para></listitem></itemizedlist>
-</para>
-
-<para>The toolbars are configured in two places:
-<itemizedlist>
-<listitem><para>The tool set is configured in the <menuchoice><guimenu>
-Settings</guimenu><guimenuitem>Configure
-Toolbars...</guimenuitem></menuchoice> menu item.
-</para></listitem>
-<listitem><para>The graphic style (icon size, text position, &etc;) is
-adjusted through the <guimenu>Toolbar Context Menu</guimenu>. Right click the
-toolbar to access this menu.
-</para></listitem>
-</itemizedlist>
-</para>
-
-<sect2 id="config-toolbars-settings-config">
-<title>Configure Toolbars Dialog</title>
-
-<para>This dialog allows you to customize the selection of tools on the
-toolbar. Open it choosing the <menuchoice><guimenu>Settings</guimenu><guimenuitem>
-Configure Toolbars...</guimenuitem></menuchoice> menu item.</para>
-
-<sect3 id="config-toolbars-choose-toolbar">
-<title>Choosing the toolbar</title>
-
-<para>First you need to choose the toolbar that you want to modify. All actions
-apply to the toolbar that is selected from the drop down menu at the top of
-the window.</para>
-</sect3>
-
-<sect3 id="config-toolbars-available-actions">
-<title>Available Actions</title>
-
-<para>There are two rectangles below the toolbar title: <guilabel>Available
-actions</guilabel> and <guilabel>Current actions</guilabel>. Using the left and
-right arrows (located between the rectangles) you can move icons from the
-<guilabel>Available actions</guilabel> group to the <guilabel>Current actions</guilabel> group. The
-toolbar will have every icon that is in the <guilabel>Current actions</guilabel>
-box. The up and down arrows allow you to reposition an icon.</para>
-
-<para>The buttons below the <guilabel>Current actions</guilabel> list allows you 
-to change the icon and the text of a button. In the <guilabel>Change Text</guilabel>
-dialog you can select <guilabel>Hide text when toolbar shows text alongside icons</guilabel>
-to save space in this mode so that all buttons are visible.</para>
-
-<tip><para>Remember that less icons may be better, because the screen is less
-busy and therefore it is easier to find the toolbar buttons you actually use.
-For instance if you always cut and paste with the keyboard hotkeys, you do not
-need the <guiicon>Cut</guiicon>, <guiicon>Copy</guiicon> and
-<guiicon>Paste</guiicon> icons.</para></tip>
-
-</sect3>
-</sect2>
-
-<sect2 id="config-toolbars-context-menu">
-<title>Toolbar Context Menu</title>
-
-<para>This menu allows you to change the look of the toolbars.
-<mousebutton>Right</mousebutton> click the toolbar to access this
-menu.</para>
-
-<sect3 id="config-toolbars-text-display">
-<title>Show Text</title>
-
-<para>If text is shown alongside icons choose if the text of the button is displayed.</para>
-</sect3>
-
-<sect3 id="config-toolbars-text-position">
-<title>Text Position</title>
-
-<para>Initially, icons have text alongside each icon. You may prefer
-having text under each icon. You can also have
-plain texts without any icons or icons only.</para>
-</sect3>
-
-<sect3 id="config-toolbars-icon-size">
-<title>Icon Size</title>
-
-<para>You can change the size of the icons. Make your choice between small,
-medium, large and huge icons.</para>
-</sect3>
-
-<sect3 id="config-toolbars-lock-toolbar-position">
-<title>Lock Toolbar Position</title>
-
-<para>If you unlock a toolbar, you can move the toolbar to the top, bottom,
-left, right side or even outside the main &korganizer; window.</para>
-</sect3>
-
-</sect2>
-</sect1>
-
-<!--
-<sect1 id="reference-windows-outgoing">
-<title>Outgoing Messages</title>
-<para>to be written</para>
-</sect1>
-
-<sect1 id="reference-windows-incoming">
-<title>Incoming Messages</title>
-<para>to be written</para>
-</sect1>
--->
-
 
 </chapter>
 
-<chapter id="plugins-chapter"><!--updated to 4.7-->
+<chapter id="plugins-chapter"><!--updated to 5.4.40-->
 
 <title>Plugins</title>
 
@@ -3432,20 +2813,6 @@ Chol HaMoed.
 </para>
 </sect2>
 
-<sect2 id="journal-print-plugin">
-<title>Journal Print Style</title>
-<para>
-This plugin allows you to print out journal entries (diary entries).
-</para>
-</sect2>
-
-<sect2 id="yearly-print-plugin">
-<title>Yearly Print Style</title>
-<para>
-This plugin allows you to print out a yearly calendar.
-</para>
-</sect2>
-
 </sect1>
 
 </chapter>
@@ -3453,7 +2820,7 @@ This plugin allows you to print out a yearly calendar.
 <chapter id="reference">
 <title>Reference</title>
 
-<sect1 id="reference-menus"><!--updated to 4.6/7, missing Timespent, Send as iCalendar, Show Menubar-->
+<sect1 id="reference-menus"><!--updated to 5.4.40, missing Timespent, Send as iCalendar-->
 <title>Menus</title>
 
 <para>When &korganizer; starts, the main &korganizer; window
@@ -3476,36 +2843,6 @@ the entire calendar.</para>
 
 <variablelist>
 
-<!-- not in 4.6 lueck 
-<varlistentry id="menu-file-new">
-<term><menuchoice>
-<shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</shortcut><guimenu>File</guimenu> <guimenuitem>New</guimenuitem></menuchoice>
-<inlinemediaobject><imageobject><imagedata fileref="i_file_new.png"
- format="PNG"/></imageobject></inlinemediaobject></term>
-<listitem>
-
-<para><action>Opens another main window.</action> This window initially
-contains unnamed calendar. You can use the new window to:</para>
-
-<itemizedlist>
-<listitem><para>open the same calendar twice (select the
-<menuchoice><guimenu>File</guimenu><guimenuitem>Open</guimenuitem></menuchoice>
-menu item and choose the same calendar as in the original window)</para></listitem>
-<listitem><para>have two different calendars open at the same time (select the
-<menuchoice><guimenu>File</guimenu><guimenuitem>Open</guimenuitem></menuchoice>
-menu item and choose a different calendar). </para></listitem>
-<listitem><para>create a new calendar (select the
-<menuchoice><guimenu>File</guimenu><guimenuitem>Save</guimenuitem></menuchoice>
-menu item to give your new calendar a filename and to save it).</para></listitem>
-</itemizedlist>
-
-<para>For more information about this action, please refer to
-<xref linkend="managing-import-export" />.</para>
-
-</listitem>
-</varlistentry-->
-
 <varlistentry id="menu-file-open">
 <term><inlinemediaobject><imageobject><imagedata fileref="document-open.png"
  format="PNG"/></imageobject></inlinemediaobject><menuchoice>
@@ -3523,70 +2860,6 @@ new one.</para>
 <xref linkend="managing-import-export" />.</para>
 </listitem> 
 </varlistentry>
-
-<!-- not in 4.6 lueck 
-<varlistentry id="menu-file-open-recent">
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Open Recent</guimenuitem>
-</menuchoice><inlinemediaobject><imageobject><imagedata fileref="i_file_open.png"
- format="PNG"/></imageobject></inlinemediaobject></term>
-<listitem><para><guimenuitem>Open Recent</guimenuitem> <action>provides
-a list of recently opened calendar files for quick access, allowing you to
-bypass the file dialog entirely.</action></para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-import-export" />.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-save">
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
-</shortcut>
-<guimenu>
-File</guimenu> <guimenuitem>Save</guimenuitem></menuchoice>
-<inlinemediaobject><imageobject><imagedata fileref="i_file_save.png"
- format="PNG"/></imageobject></inlinemediaobject></term>
-<listitem><para>When you choose <guimenuitem>Save</guimenuitem> or click the
-<guiicon>Save</guiicon> icon, &korganizer; <action>saves the calendar to
-disk, and makes sure all changes that you made will be
-remembered</action>.  If the calendar has no name, Save will behave like
-<guilabel>Save As</guilabel>.</para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-import-export" />.</para>
-</listitem> 
-</varlistentry>
-
-<varlistentry id="menu-file-save-as">
-<term><menuchoice>
-<guimenu>File</guimenu><guimenuitem>Save As...</guimenuitem>
-</menuchoice>
-<inlinemediaobject><imageobject><imagedata fileref="i_file_saveas.png"
- format="PNG"/></imageobject></inlinemediaobject></term>
-<listitem><para><guilabel>Save As</guilabel> <action>displays a file dialog in
-which you may choose a different name for your calendar than the one currently
-assigned to it</action>. This is useful if you have made changes to a calendar
-that you want to save, but also want to keep separate from your
-<quote>regular</quote> calendar.</para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-import-export" />.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-revert">
-<term><menuchoice>
-<guimenu>
-File</guimenu> <guimenuitem>Revert</guimenuitem></menuchoice>
-<inlinemediaobject><imageobject><imagedata fileref="i_file_revert.png"
- format="PNG"/></imageobject></inlinemediaobject></term>
-<listitem><para>When you choose <guimenuitem>Revert</guimenuitem>, &korganizer;
-<action>loads the last saved version of the calendar, discarding all the
-changes made after the last save</action>.</para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-import-export" />.</para>
-</listitem>
-</varlistentry-->
 
 <varlistentry id="menu-file-print">
 <term><inlinemediaobject><imageobject><imagedata fileref="document-print.png"
@@ -3737,32 +3010,6 @@ events.</action></para>
 </listitem>
 </varlistentry>
 
-<!--not in 4.6.0
-<varlistentry id="menu-file-make-active">
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Make active</guimenuitem>
-</menuchoice></term>
-<listitem><para>If you opened more than one calendar, only one calendar can
-display reminders; only one calendar can be active. Click the <guilabel>Make
-active</guilabel> menu item to <action>activate the current calendar
-window.</action></para>
-<para>The active calendar is loaded as default calendar when starting
-&korganizer;. In other words, if you work with more than one calendar, you
-should make your main calendar active.</para></listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-addressbook">
-<term><menuchoice>
-<guimenu><inlinemediaobject><imageobject><imagedata fileref="i_file_addressbook.png"
- format="PNG"/></imageobject></inlinemediaobject>File</guimenu>
-<guimenuitem>Addressbook</guimenuitem>
-</menuchoice></term>
-<listitem><para>This action will open the address book browser in a new
-window.</para></listitem>
-</varlistentry>
--->
-
 <varlistentry id="menu-file-purge">
 <term><menuchoice>
 <guimenu>File</guimenu>
@@ -3773,21 +3020,6 @@ active calendar.</para>
 <para>For more information about this action, please refer to
 <xref linkend="managing-purge-archive" />.</para>
 </listitem></varlistentry>
-
-<!--not in 4.6.0
-<varlistentry id="menu-file-close">
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>W</keycap></keycombo>
-</shortcut>
-<guimenu><inlinemediaobject><imageobject><imagedata fileref="i_file_close.png"
- format="PNG"/></imageobject></inlinemediaobject>
-File</guimenu> <guimenuitem>Close</guimenuitem></menuchoice></term>
-<listitem><para><action>Closes the current calendar. The window itself will
-remain open, and may be reused to open another
-calendar.</action></para></listitem>
-</varlistentry>
--->
 
 <varlistentry id="menu-file-quit">
 <term><inlinemediaobject><imageobject><imagedata
@@ -4031,7 +3263,7 @@ displayed one per line.</para>
 
 <varlistentry id="menu-view-journal">
 <term><inlinemediaobject><imageobject><imagedata
- fileref="view-calendar-journal.png"
+ fileref="journal-new.png"
 format="PNG"/></imageobject></inlinemediaobject><menuchoice>
 <guimenu>View</guimenu>
 <guimenuitem>Journal</guimenuitem>
@@ -4120,7 +3352,7 @@ Go</guimenu><guimenuitem>To Today</guimenuitem></menuchoice>
 </varlistentry>
 
 <varlistentry id="menu-view-day">
-<term><inlinemediaobject><imageobject><imagedata fileref="view-calendar-day.png"
+<term><inlinemediaobject><imageobject><imagedata fileref="go-jump-today.png"
  format="PNG"/></imageobject></inlinemediaobject><menuchoice>
 <guimenu>
 Go</guimenu><guimenuitem>Day</guimenuitem></menuchoice>
@@ -4196,7 +3428,7 @@ linkend="entering-data-events">the Entering Events</link> section.</para></listi
 </varlistentry>
 
 <varlistentry id="menu-actions-new-todo">
-<term><inlinemediaobject><imageobject><imagedata fileref="view-task-add.png"
+<term><inlinemediaobject><imageobject><imagedata fileref="view-task.png"
 format="PNG"/></imageobject></inlinemediaobject><menuchoice>
 <guimenu>Actions</guimenu>
 <guimenuitem>New To-do...</guimenuitem>
@@ -4223,7 +3455,8 @@ linkend="entering-data-to-do">Entering To-dos</link> section.</para></listitem>
 </varlistentry>
 
 <varlistentry id="menu-actions-new-journal">
-<term><menuchoice>
+<term><inlinemediaobject><imageobject><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject></inlinemediaobject><menuchoice>
 <guimenu>Actions</guimenu>
 <guimenuitem>New Journal...</guimenuitem>
 </menuchoice></term>
@@ -4253,7 +3486,7 @@ currently selected journal entry, event or to-do.</action></para></listitem>
 <varlistentry id="menu-actions-delete-event">
 <term><menuchoice>
 <shortcut>
-<keysym>Del</keysym>
+&Del;
 </shortcut>
 <guimenu>Actions</guimenu>
 <guimenuitem>Delete</guimenuitem>
@@ -4385,38 +3618,14 @@ Other users will then be able to retrieve the information.</para>
 
 </sect2>
 
-<sect2 id="reference-menus-settings">
-<title>Settings</title>
+<sect2 id="reference-menus-settings-help">
+<title>Settings and Help</title>
+
+<para>Apart from the common &kde; menus described in the <ulink url="help:/fundamentals/ui.html#menus">Menu</ulink>
+chapter of the &kde; Fundamentals documentation &korganizer; has these application specific Setting and Help menu entries:
+</para>
 
 <variablelist>
-<!--varlistentry id="menu-settings-show-menubar">
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>V</keycap></keycombo>
-</shortcut>
-<guimenu>Settings</guimenu>
-<guisubmenu>Show Menubar</guisubmenu>
-</menuchoice></term>
-<listitem><para><action>.</action></para></listitem>
-</varlistentry-->
-
-<varlistentry id="menu-settings-show-toolbar">
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Toolbars Shown</guisubmenu>
-</menuchoice></term>
-<listitem><para><action>Click the menu items of this submenu to show or hide
-&korganizer; toolbars.</action></para></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-show-statusbar">
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Choose this menu item to toggle the display of the
-status bar on and off</action>.</para></listitem>
-</varlistentry>
 
 <varlistentry id="menu-settings-sidebar">
 <term><menuchoice>
@@ -4428,18 +3637,7 @@ status bar on and off</action>.</para></listitem>
 when <link linkend="config-main-views">the current view does not use the full
 window.</link></para></listitem>
 </varlistentry>
-<!-- not in 4.6.0
-<varlistentry id="menu-settings-show-resource-buttons">
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Sidebar</guisubmenu>
-<guimenuitem>Show Resource Buttons</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Click this menu item toggle the display of the
-<link linkend="managing-resources">resource view sidebar</link> buttons on and
-off</action>.</para></listitem>
-</varlistentry>
--->
+
 <varlistentry id="menu-settings-configure-date-time">
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -4472,295 +3670,25 @@ and edit calendar item categories. Categories are used to organize your events a
 to-dos in related groups.</para></listitem>
 </varlistentry>
 
-<varlistentry id="menu-settings-configure-shortcuts">
-<term><menuchoice>
-<guimenu>
-Settings</guimenu>
-<guimenuitem>Configure Shortcuts...</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Choose this menu item to open the <guilabel>Configure
-Shortcuts</guilabel> dialog</action>. This dialog allows you to assign shortcuts
-to &korganizer; actions, and configure the shortcuts already assigned.</para></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-configure-toolbars">
-<term><menuchoice>
-<guimenu>
-Settings</guimenu>
-<guimenuitem>Configure Toolbars...</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Choose this menu item to open the <link
-linkend="config-toolbars"><guilabel>Configure
-Toolbars</guilabel> dialog</link></action>. This dialog allows you to add, remove and
-change the order of the actions in &korganizer; toolbars.</para></listitem>
-</varlistentry>
-
-<varlistentry id="menu-settings-configure-korganizer">
-<term><menuchoice>
-<guimenu>
-Settings</guimenu><guimenuitem>Configure &korganizer;...</guimenuitem></menuchoice>
-</term>
-<listitem><para>Choose the <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &korganizer;...</guimenuitem> </menuchoice> menu item
- to display &korganizer; <link linkend="config-main">Configure
-dialog</link>.</para>
-<para>For more information about this action, please refer to
-<xref linkend="config-main" />.</para></listitem>
-</varlistentry>
-
 </variablelist>
 
 </sect2>
-
-<sect2 id="reference-menus-help">
-<title>Help</title>
-
-&help.menu.documentation;
-
-</sect2>
-
-</sect1>
-
-<sect1 id="reference-hotkey"> <!--updated to 4.6, five shortcuts missing-->
-<title>HotKeys</title>
-
-<para>This is a reference to all hotkeys and their corresponding description in
-the handbook.</para>
-
-<!--Ctrl+M, Del, Shift+F1, Ctrl+Z, Ctrl+Shift+Z missing -->
-<sect2 id="reference-hotkey-sortalpha">
-<title>Hotkeys Sorted Alphabetically</title> 
-
-<informaltable>
-<tgroup cols="2">
-<colspec colname="hotkey"/>
-<colspec colname="desc"/>
-<thead>
-<row>
-  <entry>Hotkey</entry>
-  <entry>Description</entry>
-</row>
-</thead>
-<tbody>
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>C</keycap> </keycombo></entry>
-  <entry><link linkend="menu-edit-copy"><menuchoice><guimenu>Edit</guimenu>
-  <guimenuitem>Copy</guimenuitem></menuchoice></link> equivalent; copy the
-  selection to clipboard.</entry>
-</row>
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></entry>
-  <entry><link linkend="menu-edit-find"><menuchoice><guimenu>Edit</guimenu>
-  <guimenuitem>Find</guimenuitem></menuchoice></link> equivalent; Find data in
-  current calendar.</entry>
-</row>
-<row>
-  <entry><keycap>F1</keycap></entry>
-  <entry><menuchoice><guimenu>Help</guimenu>
-  <guimenuitem>Contents</guimenuitem></menuchoice> equivalent; help for
-  &korganizer;.</entry>
-</row>
-<!--row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></entry>
-  <entry><link linkend="menu-file-new"><menuchoice><guimenu>File</guimenu>
-  <guimenuitem>New</guimenuitem></menuchoice></link> equivalent; create and open
-  new calendar.</entry>
-</row-->
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></entry>
-  <entry><link linkend="menu-file-open"><menuchoice><guimenu>File</guimenu>
-  <guimenuitem>Open</guimenuitem></menuchoice></link> equivalent; open a
-  calendar file in the current window.</entry>
-</row>
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>P</keycap></keycombo></entry>
-  <entry><link linkend="menu-file-print"><menuchoice><guimenu>File</guimenu>
-  <guimenuitem>Print</guimenuitem></menuchoice></link> equivalent; print current
-  calendar.</entry>
-</row>
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>Q</keycap></keycombo></entry>
-  <entry><link linkend="menu-file-quit"><menuchoice><guimenu>File</guimenu>
-  <guimenuitem>Quit</guimenuitem></menuchoice></link> equivalent; quit current
-  calendar. </entry>
-</row>
-<!--row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>S</keycap></keycombo></entry>
-  <entry><link linkend="menu-file-save"><menuchoice><guimenu>File</guimenu>
-  <guimenuitem>Save</guimenuitem></menuchoice></link> equivalent; save current
-  calendar.</entry>
-</row-->
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></entry>
-  <entry><link linkend="menu-edit-paste"><menuchoice><guimenu>Edit</guimenu>
-  <guimenuitem>Paste</guimenuitem></menuchoice></link> equivalent; paste data
-  from clipboard.</entry>
-</row>
-<!--<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>W</keycap></keycombo></entry>
-  <entry><link linkend="menu-file-close"><menuchoice><guimenu>File</guimenu>
-  <guimenuitem>Close</guimenuitem></menuchoice></link> equivalent; close current
-  calendar.</entry>
-</row>-->
-<row>
-  <entry><keycombo action="simul">&Ctrl; <keycap>X</keycap></keycombo></entry>
-  <entry><link linkend="menu-edit-cut"><menuchoice><guimenu>Edit</guimenu>
-  <guimenuitem>Cut</guimenuitem></menuchoice></link> equivalent; cut the
-  selection to the clipboard.</entry>
-</row>
-</tbody>
-</tgroup>
-</informaltable>
-
-</sect2>
-
-<sect2 id="reference-hotkey-sortbyfunc">
-<title>Hotkeys Sorted by Function</title> 
-
-<informaltable>
-<tgroup cols="2">
-<colspec colname="desc"/>
-<colspec colname="hotkey"/>
-<thead>
-<row>
-  <entry>Description</entry>
-  <entry>Hotkey</entry>
-</row>
-</thead>
-<tbody>
-<!--<row>
-  <entry><emphasis>Close:</emphasis> <link linkend="menu-file-close"> <menuchoice>
-  <guimenu>File</guimenu> <guimenuitem>Close</guimenuitem></menuchoice></link>
-  equivalent; close current calendar.</entry>
-  <entry><keycombo action="simul">&Ctrl; <keycap>W</keycap></keycombo></entry>
-</row>-->
-<row>
-  <entry><emphasis>Copy:</emphasis> <link linkend="menu-edit-copy"> <menuchoice>
-  <guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem></menuchoice> </link>
-  equivalent; copy the selection to clipboard.</entry>
-  <entry><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></entry>
-</row>
-<row>
-  <entry><emphasis>Cut:</emphasis> <link linkend="menu-edit-cut"> <menuchoice>
-  <guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem></menuchoice> </link>
-  equivalent; cut the selection to the clipboard.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>X</keycap></keycombo></entry>
-</row>
-<row>
-  <entry><emphasis>Find:</emphasis> <link linkend="menu-edit-find"> <menuchoice>
-  <guimenu>Edit</guimenu> <guimenuitem>Find</guimenuitem></menuchoice></link>
-  equivalent; Find data in current calendar.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>F</keycap></keycombo></entry>
-</row>
-<row>
-  <entry><emphasis>Help:</emphasis>  <menuchoice>
-  <guimenu>Help</guimenu>
-  <guimenuitem>Contents</guimenuitem></menuchoice> equivalent; help for
-  &korganizer;.</entry>
-  <entry><keycap>F1</keycap></entry>
-</row>
-<!--row>
-  <entry><emphasis>New:</emphasis> <link linkend="menu-file-new"> <menuchoice>
-  <guimenu>File</guimenu> <guimenuitem>New</guimenuitem></menuchoice></link>
-  equivalent; create and open new calendar.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry>
-</row-->
-<row>
-  <entry><emphasis>Open:</emphasis> <link linkend="menu-file-open"> <menuchoice>
-  <guimenu>File</guimenu> <guimenuitem>Open</guimenuitem></menuchoice></link>
-  equivalent; open a calendar file in the current window.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></entry>
-</row>
-<row>
-  <entry><emphasis>Paste:</emphasis> <link linkend="menu-edit-paste"> <menuchoice>
-  <guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem></menuchoice></link>
-  equivalent; paste data from clipboard.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>V</keycap></keycombo></entry>
-</row>
-<row>
-  <entry><emphasis>Print:</emphasis> <link linkend="menu-file-print"> <menuchoice>
-  <guimenu>File</guimenu> <guimenuitem>Print</guimenuitem> </menuchoice> </link>
-  equivalent; print current calendar.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>P</keycap></keycombo></entry>
-</row>
-<row>
-  <entry><emphasis>Quit:</emphasis> <link linkend="menu-file-quit"> <menuchoice>
-  <guimenu>File</guimenu> <guimenuitem>Quit</guimenuitem></menuchoice></link>
-  equivalent; quit current calendar. </entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry>
-</row>
-<!--row>
-  <entry><emphasis>Save:</emphasis> <link linkend="menu-file-save"> <menuchoice>
-  <guimenu>File</guimenu> <guimenuitem>Save</guimenuitem></menuchoice></link>
-  equivalent; save current calendar.</entry>
-  <entry><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></entry>
-</row-->
-</tbody>
-</tgroup>
-</informaltable>
-
-</sect2> 
-
-</sect1>
-
-<sect1 id="reference-action-buttons"> <!--has to be updated to 4.5-->
-<title>Action Buttons</title>
-
-<para>Many windows contain <guibutton>Default</guibutton>,
-<guibutton>Delete</guibutton>, <guibutton>OK</guibutton>,
-<guibutton>Apply</guibutton>, and <guibutton>Cancel</guibutton> buttons. With these
-buttons you can decide whether the data that you entered into the window will
-be saved or forgotten.</para>  
-
-<variablelist>
-<varlistentry>
-<term><guibutton>Default</guibutton></term>
-<listitem><para>If you click the <guibutton>Default</guibutton> button, changes
-you have made will be forgotten, and all choices will be returned to their
-default values.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><guibutton>Delete</guibutton></term>
-<listitem><para>Click <guibutton>Delete</guibutton> to completely remove the
-event or data that you are editing from the calendar.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><guibutton>OK</guibutton></term>
-<listitem><para>When you click the <guibutton>OK</guibutton> button, your
-changes will be remembered and &korganizer; will close the
- window.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><guibutton>Apply</guibutton></term>
-<listitem><para>When you click the <guibutton>Apply</guibutton> button, your
-changes will be remembered, and the window will remain on-screen for further
-editing.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><guibutton>Cancel</guibutton></term>
-<listitem><para>If you click the <guibutton>Cancel</guibutton> button, your
-editing will be forgotten, and &korganizer; will close the
- window.</para></listitem> 
-</varlistentry>
-</variablelist>
 
 </sect1>
 
 </chapter>
 
-<chapter id="other-features">  <!--updated to 4.7-->
+<chapter id="other-features">  <!--updated to 5.4.40-->
 <title>Other Features</title>
 
 <para>In this chapter, you'll learn of other useful features of
 &korganizer;: what tricks you can do with a click
-of your mouse and what interaction between &korganizer; and &konqueror; is
-possible.</para>
+of your mouse.</para>
 
 <sect1 id="other-features-commandline-options">
 <title>Command Line</title>
 
-<para>A nice program to access a &kde; calendar from the command line is konsolekalendar, which 
-is included in the kdepim package together with &korganizer;.</para>
+<para>A nice program to access a &kde; calendar from the command line is konsolekalendar.</para>
 
 </sect1>
 
@@ -4789,19 +3717,6 @@ Agenda view in another calendar.</para></tip></listitem>
 over the toolbar's handle, and drag it to a new location on your
 screen.</para></listitem>
 </itemizedlist>
-
-</sect1>
-
-<sect1 id="other-features-konqueror-interaction">
-<title>&konqueror; Interaction</title>
-
-<para>&konqueror; recognizes the vCalendar format used by
-&korganizer;. If you use &konqueror; to navigate to your calendar, it
-will be displayed <emphasis>inside</emphasis> &konqueror; as a live
-object. You will be able to perform most operations with your calendar
-inside &konqueror;; you will not need to start &korganizer;. In
-technical jargon, this is described as <quote>embedding vCalendar as
-KPart inside &konqueror;</quote>.</para>
 
 </sect1>
 
@@ -4865,29 +3780,6 @@ linkend="config-main-free-busy">Free/Busy</link>.</para>
 &underGPL;
 
 </chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-korg">
-<title>How to Obtain &korganizer;</title>
-
-&install.intro.documentation;
-
-<para>Click the <guisubmenu>Applications</guisubmenu> menu of the
-<guimenu>main</guimenu> menu to see if &korganizer; is already installed on your
-system. If &korganizer; is not there,  either it is not installed, or perhaps
- the
-administrator of your system has moved it to some other place.</para>
-
-</sect1>
-
-<sect1 id="Compilation">
-<title>Compilation and Installation</title>
-&install.compile.documentation;
-</sect1>
-
-</appendix>
 
 <glossary id="glossary">
 <title>Glossary</title>
