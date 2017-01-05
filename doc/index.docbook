@@ -452,7 +452,7 @@ the list of available resources.</para></step>
 
 <varlistentry>
 <term><guilabel>Google Calendars and Tasks</guilabel></term>
-<listitem><para>Accesss your Google Calendars and Tasks from KDE.</para></listitem>
+<listitem><para>Access your Google Calendars and Tasks from KDE.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3622,7 +3622,7 @@ Other users will then be able to retrieve the information.</para>
 <title>Settings and Help</title>
 
 <para>Apart from the common &kde; menus described in the <ulink url="help:/fundamentals/ui.html#menus">Menu</ulink>
-chapter of the &kde; Fundamentals documentation &korganizer; has these application specific Setting and Help menu entries:
+chapter of the &kde; Fundamentals documentation &korganizer; has these application specific Settings and Help menu entries:
 </para>
 
 <variablelist>
