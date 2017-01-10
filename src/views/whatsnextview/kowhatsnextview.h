@@ -34,7 +34,7 @@ class KOWhatsNextView : public KOrg::BaseView
 {
     Q_OBJECT
 public:
-    explicit KOWhatsNextView(QWidget *parent = Q_NULLPTR);
+    explicit KOWhatsNextView(QWidget *parent = nullptr);
     ~KOWhatsNextView();
 
     int currentDateCount() const Q_DECL_OVERRIDE;

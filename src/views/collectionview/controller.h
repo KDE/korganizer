@@ -136,7 +136,7 @@ class Controller : public QObject
 {
     Q_OBJECT
 public:
-    explicit Controller(ReparentingModel *personModel, ReparentingModel *searchModel, QObject *parent = Q_NULLPTR);
+    explicit Controller(ReparentingModel *personModel, ReparentingModel *searchModel, QObject *parent = nullptr);
     /**
      *  This model will be used to select the collections that are available in the ETM
      */

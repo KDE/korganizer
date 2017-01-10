@@ -40,7 +40,7 @@ class KOTimeSpentView : public KOrg::BaseView
 {
     Q_OBJECT
 public:
-    explicit KOTimeSpentView(QWidget *parent = Q_NULLPTR);
+    explicit KOTimeSpentView(QWidget *parent = nullptr);
     ~KOTimeSpentView();
 
     int currentDateCount() const Q_DECL_OVERRIDE;

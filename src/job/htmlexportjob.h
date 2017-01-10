@@ -56,7 +56,7 @@ public:
     HtmlExportJob(const Akonadi::ETMCalendar::Ptr &calendar,
                   HTMLExportSettings *settings, bool autoMode,
                   KOrg::MainWindow *mainWindow,
-                  QWidget *parent = Q_NULLPTR);
+                  QWidget *parent = nullptr);
 
     virtual ~HtmlExportJob();
 

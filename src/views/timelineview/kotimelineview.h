@@ -43,7 +43,7 @@ class KOTimelineView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit KOTimelineView(QWidget *parent = Q_NULLPTR);
+    explicit KOTimelineView(QWidget *parent = nullptr);
     ~KOTimelineView();
 
     Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;

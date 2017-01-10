@@ -45,7 +45,7 @@ class KDateNavigator: public QFrame
 {
     Q_OBJECT
 public:
-    explicit KDateNavigator(QWidget *parent = Q_NULLPTR);
+    explicit KDateNavigator(QWidget *parent = nullptr);
     ~KDateNavigator();
 
     /**

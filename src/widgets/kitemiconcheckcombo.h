@@ -35,7 +35,7 @@ public:
         MonthType
     };
 
-    explicit KItemIconCheckCombo(ViewType viewType, QWidget *parent = Q_NULLPTR);
+    explicit KItemIconCheckCombo(ViewType viewType, QWidget *parent = nullptr);
     ~KItemIconCheckCombo();
 
     void setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons);

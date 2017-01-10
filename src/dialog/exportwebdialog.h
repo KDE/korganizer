@@ -40,7 +40,7 @@ class ExportWebDialog : public KPageDialog, public KPIM::KPrefsWidManager
 {
     Q_OBJECT
 public:
-    explicit ExportWebDialog(KOrg::HTMLExportSettings *settings, QWidget *parent = Q_NULLPTR);
+    explicit ExportWebDialog(KOrg::HTMLExportSettings *settings, QWidget *parent = nullptr);
     virtual ~ExportWebDialog();
 
 public Q_SLOTS:

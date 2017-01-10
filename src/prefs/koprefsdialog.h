@@ -150,7 +150,7 @@ private:
 class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
 {
 public:
-    explicit KOPrefsDesignerFields(QWidget *parent = Q_NULLPTR);
+    explicit KOPrefsDesignerFields(QWidget *parent = nullptr);
 
 protected:
     QString localUiDir() Q_DECL_OVERRIDE;

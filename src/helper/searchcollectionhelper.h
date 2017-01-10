@@ -41,7 +41,7 @@ class SearchCollectionHelper: public QObject
 {
     Q_OBJECT
 public:
-    explicit SearchCollectionHelper(QObject *parent = Q_NULLPTR);
+    explicit SearchCollectionHelper(QObject *parent = nullptr);
 
 private Q_SLOTS:
     void onSearchCollectionsFetched(KJob *job);

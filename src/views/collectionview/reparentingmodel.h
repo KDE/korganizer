@@ -88,7 +88,7 @@ public:
     };
 
 public:
-    explicit ReparentingModel(QObject *parent = Q_NULLPTR);
+    explicit ReparentingModel(QObject *parent = nullptr);
     virtual ~ReparentingModel();
 
     void setNodeManager(const NodeManager::Ptr &nodeManager);

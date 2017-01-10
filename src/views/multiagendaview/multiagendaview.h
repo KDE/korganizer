@@ -39,7 +39,7 @@ class MultiAgendaView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit MultiAgendaView(QWidget *parent = Q_NULLPTR);
+    explicit MultiAgendaView(QWidget *parent = nullptr);
     ~MultiAgendaView();
 
     Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
@@ -94,7 +94,7 @@ class MultiAgendaViewConfigDialog : public QDialog,
     Q_OBJECT
 public:
     explicit MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel,
-                                         QWidget *parent = Q_NULLPTR);
+                                         QWidget *parent = nullptr);
     ~MultiAgendaViewConfigDialog();
 
     bool useCustomColumns() const Q_DECL_OVERRIDE;
