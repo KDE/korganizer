@@ -452,16 +452,16 @@ the list of available resources.</para></step>
 
 <varlistentry>
 <term><guilabel>Google Calendars and Tasks</guilabel></term>
-<listitem><para>Access your Google Calendars and Tasks from KDE.</para></listitem>
+<listitem><para>Access your Google Calendars and Tasks.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>ICal Calendar File</guilabel></term>
+<term><guilabel>iCal Calendar File</guilabel></term>
 <listitem><para>Loads data from an iCal file.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>ICal Calendar Folder</guilabel></term>
+<term><guilabel>iCal Calendar Folder</guilabel></term>
 <listitem><para>Provides access to calendar items, each stored in a single file, in a given directory.</para></listitem>
 </varlistentry>
 
