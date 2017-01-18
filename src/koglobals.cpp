@@ -98,7 +98,6 @@ QList<QDate> KOGlobals::workDays(const QDate &startDate,
         const KHolidays::Holiday::List list = mHolidays->holidays(startDate, endDate);
         for (int i = 0; i < list.count(); ++i) {
             const KHolidays::Holiday &h = list.at(i);
-            const QString dateString = h.observedStartDate().toString();
             if (h.dayType() == KHolidays::Holiday::NonWorkday) {
                 result.removeAll(h.observedStartDate());
             }
