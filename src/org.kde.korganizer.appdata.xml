@@ -38,6 +38,7 @@
   <name xml:lang="x-test">xxKOrganizerxx</name>
   <name xml:lang="zh-CN">KOrganizer</name>
   <name xml:lang="zh-TW">行事曆_KOrganizer</name>
+  <summary>KOrganizer is a calendar and scheduling component application.</summary>
   <description>
     <p>
       KOrganizer is the calendar and scheduling component of the Kontact suite.
