@@ -142,7 +142,7 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
             mMenuBar->show();
         } else {
             if (!dontShowWarning) {
-                QString accel = mHideMenuBarAction->shortcut().toString();
+                const QString accel = mHideMenuBarAction->shortcut().toString();
                 KMessageBox::information(mCalendarView,
                                          i18n("<qt>This will hide the menu bar completely."
                                               " You can show it again by typing %1.</qt>", accel),

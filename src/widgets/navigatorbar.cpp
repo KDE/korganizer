@@ -124,7 +124,7 @@ void NavigatorBar::showButtons(bool left, bool right)
 
 void NavigatorBar::selectDates(const KCalCore::DateList &dateList)
 {
-    if (dateList.count() > 0) {
+    if (!dateList.isEmpty()) {
         mDate = dateList.first();
 
         // set the label text at the top of the navigator

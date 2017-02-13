@@ -105,7 +105,7 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
     , mCollection(col)
     , mDayRange(7)
 {
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);

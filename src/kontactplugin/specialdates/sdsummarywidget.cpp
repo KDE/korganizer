@@ -66,7 +66,7 @@ BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
     : ItemSearchJob(parent)
 {
     fetchScope().fetchFullPayload();
-    setMimeTypes(QStringList() << KContacts::Addressee::mimeType());
+    setMimeTypes({KContacts::Addressee::mimeType()});
 
     Akonadi::SearchQuery query;
     query.addTerm(QStringLiteral("birthday"), QDate::currentDate().toJulianDay(),

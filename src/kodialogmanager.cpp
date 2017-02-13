@@ -104,7 +104,7 @@ void KODialogManager::showOptionsDialog()
         // add them all
         QStringList::iterator mit;
         QStringList::iterator mitEnd(modules.end());
-        for (mit = modules.begin(); mit != mitEnd   ; ++mit) {
+        for (mit = modules.begin(); mit != mitEnd ; ++mit) {
             mOptionsDialog->addModule(*mit);
         }
     }

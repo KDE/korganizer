@@ -987,10 +987,10 @@ Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
     if (!selectionModel) {
         return collections;
     }
-    QModelIndexList indexes = selectionModel->selectedIndexes();
-    foreach (const QModelIndex &index, indexes) {
+    const QModelIndexList indexes = selectionModel->selectedIndexes();
+    for (const QModelIndex &index : indexes) {
         if (index.isValid()) {
-            Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            const Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
             if (collection.isValid()) {
                 collections << collection;
             }
@@ -1008,10 +1008,10 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
     if (!selectionModel) {
         return false;
     }
-    QModelIndexList indexes = selectionModel->selectedIndexes();
-    foreach (const QModelIndex &index, indexes) {
+    const QModelIndexList indexes = selectionModel->selectedIndexes();
+    for (const QModelIndex &index : indexes) {
         if (index.isValid()) {
-            Akonadi::Collection c = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            const Akonadi::Collection c = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
             if (c.id() == collection.id()) {
                 return true;
             }

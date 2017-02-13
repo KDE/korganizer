@@ -111,7 +111,8 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
 {
     KService::List list = availablePlugins();
     KService::List::ConstIterator it;
-    for (it = list.constBegin(); it != list.constEnd(); ++it) {
+    KService::List::ConstIterator end(list.constEnd());
+    for (it = list.constBegin(); it != end; ++it) {
         if ((*it)->desktopEntryName() == name) {
             return loadPlugin(*it);
         }
@@ -143,7 +144,8 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
 {
     KService::List list = availableCalendarDecorations();
     KService::List::ConstIterator it;
-    for (it = list.constBegin(); it != list.constEnd(); ++it) {
+    KService::List::ConstIterator end(list.constEnd());
+    for (it = list.constBegin(); it != end; ++it) {
         if ((*it)->desktopEntryName() == name) {
             return loadCalendarDecoration(*it);
         }
@@ -207,7 +209,8 @@ KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
 {
     KService::List list = availableParts();
     KService::List::ConstIterator it;
-    for (it = list.constBegin(); it != list.constEnd(); ++it) {
+    KService::List::ConstIterator end(list.constEnd());
+    for (it = list.constBegin(); it != end; ++it) {
         if ((*it)->desktopEntryName() == name) {
             return loadPart(*it, parent);
         }

@@ -188,7 +188,7 @@ void KOTodoView::printPreviewTodo()
 
 void KOTodoView::printTodo(bool preview)
 {
-    Akonadi::Item::List selectedItems = mView->selectedIncidences();
+    const Akonadi::Item::List selectedItems = mView->selectedIncidences();
     if (selectedItems.count() != 1) {
         return;
     }
