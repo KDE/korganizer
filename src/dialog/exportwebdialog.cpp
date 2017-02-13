@@ -104,7 +104,6 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-
     if (KMessageBox::warningContinueCancel(
                 this,
                 i18n("You are about to set all preferences to default values. "

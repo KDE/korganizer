@@ -70,9 +70,8 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     layout->addWidget(listView);
     m_ui->listViewFrame->setLayout(layout);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::Help);
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    setLayout(mainLayout);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::Help, this);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
@@ -236,7 +235,8 @@ void SearchDialog::search(const QRegExp &re)
             }
         }
         if (m_ui->attendeeCheck->isChecked()) {
-            Q_FOREACH (const KCalCore::Attendee::Ptr &attendee, ev->attendees()) {
+            const KCalCore::Attendee::List lstAttendees = ev->attendees();
+            for (const KCalCore::Attendee::Ptr &attendee : lstAttendees) {
                 if (re.indexIn(attendee->fullName()) != -1) {
                     mMatchedEvents.append(item);
                     break;

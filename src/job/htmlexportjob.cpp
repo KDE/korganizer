@@ -506,7 +506,7 @@ void HtmlExportJob::createTodoList(QTextStream *ts)
     while (index < rawTodoList.count()) {
         const KCalCore::Todo::Ptr todo = rawTodoList.value(index);
         Q_ASSERT(todo);
-        const Akonadi::Item parentItem = d->mCalendar->item(todo->relatedTo());
+        //const Akonadi::Item parentItem = d->mCalendar->item(todo->relatedTo());
 
         ++index;
     }

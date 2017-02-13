@@ -309,13 +309,13 @@ void FilterEdit::updateSelectedName(const QString &newText)
 
 bool FilterEdit::correctName(const QString &newText)
 {
+    bool negative = false;
 #ifndef QT_NO_STYLE_STYLESHEET
     QString styleSheet;
     if (mNegativeBackground.isEmpty()) {
         KStatefulBrush bgBrush = KStatefulBrush(KColorScheme::View, KColorScheme::NegativeBackground);
         mNegativeBackground = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
     }
-    bool negative = false;
     if (!newText.isEmpty()) {
         for (int i = 0; i < mRulesList->count(); ++i) {
             QListWidgetItem *item = mRulesList->item(i);

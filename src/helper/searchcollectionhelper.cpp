@@ -64,7 +64,8 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
         qCWarning(KORGANIZER_LOG) << "Search failed: " << job->errorString();
     } else {
         Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob *>(job);
-        Q_FOREACH (const Akonadi::Collection &col, fetchJob->collections()) {
+        const Akonadi::Collection::List lstCols = fetchJob->collections();
+        for (const Akonadi::Collection &col : lstCols) {
             if (col.name() == QLatin1String("OpenInvitations")) {
                 mOpenInvitationCollection = col;
             } else if (col.name() == QLatin1String("DeclinedInvitations")) {
@@ -81,7 +82,8 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
     // Update or create search collections
 
     Akonadi::SearchQuery query(Akonadi::SearchTerm::RelOr);
-    foreach (const QString email, mIdentityManager->allEmails()) {
+    const QStringList lstEmails = mIdentityManager->allEmails();
+    for (const QString email : lstEmails) {
         if (!email.isEmpty()) {
             query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email + QString::number(status))));
         }
