@@ -1126,6 +1126,10 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
         }
     }
     break;
+    case StyledCalendarDelegate::Total: {
+        //TODO: anything to implement here?
+    }
+    break;
     }
 }
 

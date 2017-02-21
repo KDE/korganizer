@@ -86,6 +86,7 @@ public:
 
     QString iconForIncidence(const KCalCore::Incidence::Ptr &incidence) const Q_DECL_OVERRIDE
     {
+        Q_UNUSED(incidence);
         return QString();
     }
 
@@ -191,4 +192,3 @@ void Quickview::onTodayClicked()
     start = start.addDays(-QDate::currentDate().dayOfWeek() + 1);
     mAgendaView->showDates(start, start.addDays(mDayRange - 1));
 }
-

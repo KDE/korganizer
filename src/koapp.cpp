@@ -31,7 +31,6 @@
 #include "KdepimDBusInterfaces/ReminderClient"
 #include "korganizer-version.h"
 #include <KCalCore/CalFormat>
-#include <KStartupInfo>
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
@@ -51,7 +50,7 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
 {
-
+    Q_UNUSED(workingDir);
     static bool first = true;
     if (isSessionRestored() && first) {
         KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
@@ -126,4 +125,3 @@ void KOrganizerApp::processCalendar(const QUrl &url)
     KStartupInfo::setNewStartupId(korg->topLevelWidget(), startupId());
 #endif
 }
-
