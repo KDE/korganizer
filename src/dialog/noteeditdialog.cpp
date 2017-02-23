@@ -139,7 +139,7 @@ void NoteEditDialog::writeConfig()
 
 void NoteEditDialog::slotUpdateButtons()
 {
-    if (mNoteTitle->text().trimmed().isEmpty() && mNoteText->toPlainText().isEmpty()) {
+    if (mNoteTitle->text().trimmed().isEmpty() && mNoteText->isEmpty()) {
         mOkButton->setEnabled(false);
     } else {
         mOkButton->setEnabled(true);
@@ -174,7 +174,7 @@ void NoteEditDialog::accept()
         return;
     }
 
-    if (mNoteTitle->text().isEmpty() && mNoteText->toPlainText().isEmpty()) {
+    if (mNoteTitle->text().isEmpty() && mNoteText->isEmpty()) {
         qCDebug(KORGANIZER_LOG) << " empty note do not save it";
         return;
     }
