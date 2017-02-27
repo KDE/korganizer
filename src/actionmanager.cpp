@@ -1068,9 +1068,9 @@ void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode
     KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob(calendar(), settings, autoMode, mMainWindow, view());
 
     if (KOGlobals::self()->holidays()) {
-        KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
+        const KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
                                                 settings->dateStart().date(), settings->dateEnd().date());
-        foreach (const KHolidays::Holiday &holiday, holidays) {
+        for (const KHolidays::Holiday &holiday : holidays) {
             exportJob->addHoliday(holiday.observedStartDate(), holiday.name());
         }
     }
@@ -1404,9 +1404,9 @@ void ActionManager::downloadNewStuff()
             KMessageBox::error(mCalendarView, i18n("Could not load calendar %1.", file));
         } else {
             QStringList eventSummaries;
-            KCalCore::Event::List events = calendar()->events();
+            const KCalCore::Event::List events = calendar()->events();
             eventSummaries.reserve(events.count());
-            foreach (const KCalCore::Event::Ptr &event, events) {
+            for (const KCalCore::Event::Ptr &event : events) {
                 eventSummaries.append(event->summary());
             }
 

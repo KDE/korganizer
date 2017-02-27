@@ -274,7 +274,7 @@ void KODayMatrix::updateJournals()
 {
     const KCalCore::Incidence::List incidences = mCalendar->incidences();
 
-    foreach (const KCalCore::Incidence::Ptr &inc, incidences) {
+    for (const KCalCore::Incidence::Ptr &inc : incidences) {
         Q_ASSERT(inc);
         QDate d = inc->dtStart().toTimeSpec(mCalendar->timeSpec()).date();
         if (inc->type() == KCalCore::Incidence::TypeJournal &&
@@ -303,7 +303,7 @@ void KODayMatrix::updateTodos()
 {
     const KCalCore::Todo::List incidences = mCalendar->todos();
     QDate d;
-    foreach (const KCalCore::Todo::Ptr &t, incidences) {
+    for (const KCalCore::Todo::Ptr &t : incidences) {
         if (mEvents.count() == NUMDAYS) {
             // No point in wasting cpu, all days are bold already
             break;

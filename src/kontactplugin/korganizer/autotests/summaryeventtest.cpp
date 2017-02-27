@@ -146,8 +146,8 @@ void SummaryEventTester::test_Multiday()
     QCOMPARE(ev1->makeBold, false);
     // Make sure multiday is only displayed once
     for (int i = 1; i < 30; ++i) {
-        SummaryEventInfo::List events3 = SummaryEventInfo::eventsForDate(today.addDays(multiDayFuture + i), cal);
-        foreach (SummaryEventInfo *ev, events3) {
+        const SummaryEventInfo::List events3 = SummaryEventInfo::eventsForDate(today.addDays(multiDayFuture + i), cal);
+        for (SummaryEventInfo *ev : events3) {
             QVERIFY(ev->summaryText.contains(multiDayAllDayInFuture));
         }
         qDeleteAll(events3);

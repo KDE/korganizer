@@ -220,7 +220,7 @@ void KOAlarmClient::checkAlarms()
                                KDateTime(mLastChecked, KDateTime::LocalZone),
                                true /* exclude blocked alarms */);
 
-    foreach (const Alarm::Ptr &alarm, alarms) {
+    for (const Alarm::Ptr &alarm : alarms) {
         const QString uid = alarm->customProperty("ETMCalendar", "parentUid");
         const Akonadi::Item::Id id = mCalendar->item(uid).id();
         const Akonadi::Item item = mCalendar->item(id);

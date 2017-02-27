@@ -721,7 +721,7 @@ void CalendarView::slotDeleteFinished(int changeId,
 {
     Q_UNUSED(changeId);
     if (resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess) {
-        foreach (Akonadi::Item::Id id, itemIdList) {
+        for (Akonadi::Item::Id id : itemIdList) {
             Akonadi::Item item = mCalendar->item(id);
             if (item.isValid()) {
                 changeIncidenceDisplay(item, Akonadi::IncidenceChanger::ChangeTypeDelete);
@@ -1331,7 +1331,7 @@ bool CalendarView::makeChildrenIndependent(const Akonadi::Item &item)
 {
     const KCalCore::Incidence::Ptr inc = CalendarSupport::incidence(item);
 
-    Akonadi::Item::List subIncs = mCalendar->childItems(item.id());
+    const Akonadi::Item::List subIncs = mCalendar->childItems(item.id());
 
     if (!inc || subIncs.isEmpty()) {
         qCDebug(KORGANIZER_LOG) << "Refusing to  make children independent" << inc;
@@ -1339,7 +1339,7 @@ bool CalendarView::makeChildrenIndependent(const Akonadi::Item &item)
     }
     startMultiModify(i18n("Make sub-to-dos independent"));
 
-    foreach (const Akonadi::Item &item, subIncs) {
+    for (const Akonadi::Item &item : subIncs) {
         incidence_unsub(item);
     }
 
@@ -1782,8 +1782,8 @@ void CalendarView::print()
     KCalCore::Incidence::List selectedIncidences;
     if (currentView) {
         printType = currentView->printType();
-        Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
-        foreach (const Akonadi::Item &item, selectedViewIncidences) {
+        const Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
+        for (const Akonadi::Item &item : selectedViewIncidences) {
             if (item.hasPayload<KCalCore::Incidence::Ptr>()) {
                 selectedIncidences.append(item.payload<KCalCore::Incidence::Ptr>());
             }
@@ -1805,8 +1805,8 @@ void CalendarView::printPreview()
     KCalCore::Incidence::List selectedIncidences;
     if (currentView) {
         printType = currentView->printType();
-        Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
-        foreach (const Akonadi::Item &item, selectedViewIncidences) {
+        const Akonadi::Item::List selectedViewIncidences = currentView->selectedIncidences();
+        for (const Akonadi::Item &item : selectedViewIncidences) {
             if (item.hasPayload<KCalCore::Incidence::Ptr>()) {
                 selectedIncidences.append(item.payload<KCalCore::Incidence::Ptr>());
             }
@@ -2727,8 +2727,8 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
     }
 
     // 5. Try the checked collections
-    Akonadi::Collection::List collections = checkedCollections();
-    foreach (const Akonadi::Collection &checkedCollection, collections) {
+    const Akonadi::Collection::List collections = checkedCollections();
+    for (const Akonadi::Collection &checkedCollection : collections) {
         supportsMimeType = checkedCollection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
         hasRights = checkedCollection.rights() & Akonadi::Collection::CanCreateItem;
         if (checkedCollection.isValid() && supportsMimeType && hasRights) {

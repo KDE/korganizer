@@ -93,7 +93,7 @@ void HtmlExportJob::start()
     bool canExportItem = false;
     // first collect the email addresses of all organisators
     const KCalCore::Event::List events = d->mCalendar->events();
-    foreach (const KCalCore::Event::Ptr &event, events) {
+    for (const KCalCore::Event::Ptr &event : events) {
         Q_ASSERT(event);
         const KCalCore::Attendee::List attendees = event->attendees();
         if (!attendees.isEmpty()) {
@@ -109,7 +109,7 @@ void HtmlExportJob::start()
     }
 
     const KCalCore::Todo::List todos = d->mCalendar->todos();
-    foreach (const KCalCore::Todo::Ptr &todo, todos) {
+    for (const KCalCore::Todo::Ptr &todo : todos) {
         Q_ASSERT(todo);
         const KCalCore::Attendee::List attendees = todo->attendees();
         if (!attendees.isEmpty()) {
