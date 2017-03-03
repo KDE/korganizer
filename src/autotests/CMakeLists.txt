@@ -19,6 +19,7 @@ set(koeventpopupmenutest_LIBS Qt5::Test
   Qt5::Gui
   Qt5::Core
   KF5::Mime
+  KF5::AkonadiWidgets
   KF5::AkonadiCore
   KF5::AkonadiCalendar
   KF5::AkonadiNotes
@@ -44,6 +45,7 @@ target_link_libraries(noteeditdialogtest
   KF5::CalendarCore
   KF5::IncidenceEditor
   KF5::CalendarSupport
+  KF5::AkonadiWidgets
   korganizer_core
   korganizerprivate
   )

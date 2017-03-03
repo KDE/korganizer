@@ -83,6 +83,7 @@ target_link_libraries(kcm_korganizer
     KF5::MailTransport
     Qt5::UiTools
     KF5::PimCommon
+    KF5::AkonadiWidgets
     )
 
 install(TARGETS
