@@ -74,8 +74,8 @@
 #include <akonadi/calendar/calendarsettings.h>
 #include <Akonadi/Calendar/CalendarClipboard>
 
-#include <PimCommon/CollectionAclPage>
-#include <PimCommon/ImapAclAttribute>
+#include <PimCommonAkonadi/CollectionAclPage>
+#include <PimCommonAkonadi/ImapAclAttribute>
 
 #include <AkonadiWidgets/CollectionPropertiesDialog>
 #include <AkonadiWidgets/ControlGui>

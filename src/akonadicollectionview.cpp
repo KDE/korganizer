@@ -51,8 +51,8 @@
 #include <AkonadiWidgets/ETMViewStateSaver>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 #include <AkonadiCore/CollectionIdentificationAttribute>
-#include <pimcommon/manageserversidesubscriptionjob.h>
-#include "PimCommon/PimUtil"
+#include <PimCommonAkonadi/ManageServerSideSubscriptionJob>
+#include "PimCommonAkonadi/MailUtil"
 
 #include <KActionCollection>
 #include <KCheckableProxyModel>
@@ -858,7 +858,7 @@ void AkonadiCollectionView::updateMenu()
             mEnableAction->setEnabled(true);
         }
         bool isOnline;
-        mServerSideSubscription->setEnabled(PimCommon::Util::isImapFolder(collection, isOnline));
+        mServerSideSubscription->setEnabled(PimCommon::MailUtil::isImapFolder(collection, isOnline));
     } else {
         mServerSideSubscription->setEnabled(false);
     }

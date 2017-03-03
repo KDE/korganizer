@@ -21,7 +21,7 @@
 #define KORGANIZERPLUGININTERFACE_H
 
 #include <QObject>
-#include <pimcommon/plugininterface.h>
+#include <PimCommonAkonadi/PluginInterface>
 class KActionCollection;
 class KOrganizerPluginInterface : public PimCommon::PluginInterface
 {

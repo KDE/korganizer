@@ -49,6 +49,7 @@ target_link_libraries(korganizer
     korganizerprivate
     korganizer_interfaces
     korganizer_core
+    KF5::PimCommonAkonadi
     KF5::Crash
     )
 
