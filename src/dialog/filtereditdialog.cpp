@@ -28,7 +28,7 @@
 #include "prefs/koprefs.h"
 
 #include <CalendarSupport/CategoryConfig>
-#include <Libkdepim/TagWidgets>
+#include <LibkdepimAkonadi/TagWidgets>
 #include <PimCommon/PimUtil>
 
 #include <KCalCore/CalFilter>

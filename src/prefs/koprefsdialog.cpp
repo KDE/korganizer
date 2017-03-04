@@ -35,8 +35,8 @@
 #include <CalendarSupport/CategoryConfig>
 
 #include <IncidenceEditor/IncidenceEditorSettings>
-#include <Libkdepim/TagSelectionCombo>
-#include <libkdepim/tagwidgets.h>
+#include <LibkdepimAkonadi/TagSelectionCombo>
+#include <libkdepimakonadi/tagwidgets.h>
 
 #include <AkonadiCore/AgentFilterProxyModel>
 #include <AkonadiCore/AgentInstanceCreateJob>

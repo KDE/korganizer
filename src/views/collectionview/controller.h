@@ -27,7 +27,7 @@
 #include <AkonadiCore/EntityTreeModel>
 #include <AkonadiCore/Collection>
 #include "reparentingmodel.h"
-#include <Libkdepim/Person>
+#include <LibkdepimAkonadi/Person>
 
 #include <Libkdepim/LdapClientSearch>
 
