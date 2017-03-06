@@ -42,7 +42,7 @@
 
 #include <KEmailAddress>
 
-#include <MailTransport/MessageQueueJob>
+#include <MailTransportAkonadi/MessageQueueJob>
 #include <MailTransport/Transport>
 #include <MailTransport/TransportManager>
 

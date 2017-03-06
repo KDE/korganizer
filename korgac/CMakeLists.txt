@@ -62,7 +62,7 @@ target_link_libraries(korgac
     KF5::CalendarCore
     KF5::CalendarUtils
     KF5::IdentityManagement
-    KF5::MailTransport
+    KF5::MailTransportAkonadi
     KF5::Codecs
     KF5::DBusAddons
     Phonon::phonon4qt5
