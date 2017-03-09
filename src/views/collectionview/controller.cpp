@@ -154,7 +154,7 @@ QVariant PersonNode::data(int role) const
     case Qt::DisplayRole: {
         QString name = mPerson.name;
         if (!mPerson.ou.isEmpty()) {
-            name += QStringLiteral(" (") + mPerson.ou + QStringLiteral(")");
+            name += QStringLiteral(" (") + mPerson.ou + QLatin1Char(')');
         }
         return name;
     }
