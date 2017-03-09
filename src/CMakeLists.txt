@@ -237,7 +237,7 @@ generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
 target_link_libraries(korganizerprivate
     PUBLIC
-    KF5::PimCommon
+    KF5::PimCommonAkonadi
     PRIVATE
     KF5::CalendarSupport
     KF5::EventViews
@@ -259,7 +259,7 @@ target_link_libraries(korganizerprivate
     KF5::KCMUtils
     KF5::NewStuff
     KF5::Ldap
-    KF5::MailCommon
+    KF5::AkonadiWidgets
     )
 
 target_include_directories(korganizerprivate PUBLIC

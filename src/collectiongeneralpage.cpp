@@ -39,9 +39,9 @@
 #include <QVBoxLayout>
 #include <KConfigGroup>
 
-#include <MailCommon/CollectionAnnotationsAttribute>
-#include <MailCommon/CollectionTypeUtil>
-#include <MailCommon/IncidencesForWidget>
+#include <PimCommonAkonadi/CollectionAnnotationsAttribute>
+#include <PimCommonAkonadi/CollectionTypeUtil>
+#include <PimCommonAkonadi/IncidencesForWidget>
 
 using namespace Akonadi;
 using namespace CalendarSupport;
@@ -105,20 +105,20 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     hbox->addStretch();
 
     if ((collection.parentCollection() != Akonadi::Collection::root()) && PimCommon::Util::isImapResource(collection.resource())) {
-        const MailCommon::CollectionAnnotationsAttribute *annotationAttribute =
-            collection.attribute<MailCommon::CollectionAnnotationsAttribute>();
+        const PimCommon::CollectionAnnotationsAttribute *annotationAttribute =
+            collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
 
         const QMap<QByteArray, QByteArray> annotations =
             (annotationAttribute ?
              annotationAttribute->annotations() :
              QMap<QByteArray, QByteArray>());
 
-        MailCommon::CollectionTypeUtil collectionUtil;
-        const MailCommon::CollectionTypeUtil::IncidencesFor incidencesFor =
-            collectionUtil.incidencesForFromString(QLatin1String(annotations.value(MailCommon::CollectionTypeUtil::kolabIncidencesFor())));
+        PimCommon::CollectionTypeUtil collectionUtil;
+        const PimCommon::CollectionTypeUtil::IncidencesFor incidencesFor =
+            collectionUtil.incidencesForFromString(QLatin1String(annotations.value(PimCommon::CollectionTypeUtil::kolabIncidencesFor())));
         hbox = new QHBoxLayout();
         topLayout->addItem(hbox);
-        mIncidencesForComboBox = new MailCommon::IncidencesForWidget(this);
+        mIncidencesForComboBox = new PimCommon::IncidencesForWidget(this);
         hbox->addWidget(mIncidencesForComboBox);
 
         mIncidencesForComboBox->setCurrentIndex(incidencesFor);
@@ -183,20 +183,20 @@ void CollectionGeneralPage::save(Collection &collection)
     } else if (collection.hasAttribute<EntityDisplayAttribute>()) {
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
     }
-    MailCommon::CollectionAnnotationsAttribute *annotationsAttribute =
-        collection.attribute<MailCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
+    PimCommon::CollectionAnnotationsAttribute *annotationsAttribute =
+        collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
 
     QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();
 
-    MailCommon::CollectionTypeUtil collectionUtil;
+    PimCommon::CollectionTypeUtil collectionUtil;
     if (mIncidencesForComboBox && mIncidencesForComboBox->isEnabled()) {
-        annotations[ MailCommon::CollectionTypeUtil::kolabIncidencesFor() ] =
+        annotations[ PimCommon::CollectionTypeUtil::kolabIncidencesFor() ] =
             collectionUtil.incidencesForToString(
-                static_cast<MailCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->currentIndex())).toLatin1();
+                static_cast<PimCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->currentIndex())).toLatin1();
     }
 
     if (annotations.isEmpty()) {
-        collection.removeAttribute<MailCommon::CollectionAnnotationsAttribute>();
+        collection.removeAttribute<PimCommon::CollectionAnnotationsAttribute>();
     } else {
         annotationsAttribute->setAnnotations(annotations);
     }

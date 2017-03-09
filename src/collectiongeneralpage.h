@@ -22,13 +22,13 @@
 
 #include "korganizerprivate_export.h"
 
-#include <CollectionPropertiesPage>
+#include <AkonadiWidgets/CollectionPropertiesPage>
 
 class QLineEdit;
 class KIconButton;
 class QCheckBox;
 
-namespace MailCommon
+namespace PimCommon
 {
 class IncidencesForWidget;
 }
@@ -52,7 +52,7 @@ private:
     QLineEdit *mNameEdit;
     QCheckBox *mIconCheckBox;
     KIconButton *mIconButton;
-    MailCommon::IncidencesForWidget *mIncidencesForComboBox;
+    PimCommon::IncidencesForWidget *mIncidencesForComboBox;
 };
 
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage)
