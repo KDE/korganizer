@@ -294,7 +294,7 @@ AlarmDialog::~AlarmDialog()
 
 ReminderTreeItem *AlarmDialog::searchByItem(const Akonadi::Item &incidence)
 {
-    ReminderTreeItem *found = 0;
+    ReminderTreeItem *found = nullptr;
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
         ReminderTreeItem *item = static_cast<ReminderTreeItem *>(*it);
@@ -485,7 +485,7 @@ void AlarmDialog::suspend()
         break;
     }
 
-    ReminderTreeItem *selitem = 0;
+    ReminderTreeItem *selitem = nullptr;
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
         if ((*it)->isSelected() && !(*it)->isDisabled()) {   //suspend selected, non-suspended reminders
@@ -695,7 +695,7 @@ void AlarmDialog::wakeUp()
 {
     bool activeReminders = false;
     QTreeWidgetItemIterator it(mIncidenceTree);
-    QTreeWidgetItem *firstItem = 0;
+    QTreeWidgetItem *firstItem = nullptr;
     while (*it) {
         if (!firstItem) {
             firstItem = *it;

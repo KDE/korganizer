@@ -1441,7 +1441,7 @@ void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akon
     KCalCore::CalendarResourceManager *const manager = resources->resourceManager();
 
     // Find the resource the incidence should be copied to
-    ResourceCalendar *newCal = 0;
+    ResourceCalendar *newCal = nullptr;
     KCalCore::CalendarResourceManager::iterator it;
     for (it = manager->begin(); it != manager->end(); ++it) {
         ResourceCalendar *const resource = *it;
@@ -1511,7 +1511,7 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
     KCalCore::CalendarResourceManager *const manager = resources->resourceManager();
 
     // Find the resource the incidence should be moved to
-    ResourceCalendar *newCal = 0;
+    ResourceCalendar *newCal = nullptr;
     KCalCore::CalendarResourceManager::iterator it;
     for (it = manager->begin(); it != manager->end(); ++it) {
         ResourceCalendar *const resource = *it;
