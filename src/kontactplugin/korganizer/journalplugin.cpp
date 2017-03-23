@@ -41,7 +41,7 @@ EXPORT_KONTACT_PLUGIN(JournalPlugin, journal)
 JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, "korganizer", "journal"), mIface(nullptr)
 {
-    setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
+    setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
