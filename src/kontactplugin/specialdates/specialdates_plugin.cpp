@@ -37,7 +37,7 @@ EXPORT_KONTACT_PLUGIN(SpecialdatesPlugin, specialdates)
 SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, nullptr)
 {
-    setComponentName(QStringLiteral("korganizer"), QStringLiteral("korganizer"));
+    setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 }
 
 SpecialdatesPlugin::~SpecialdatesPlugin()
