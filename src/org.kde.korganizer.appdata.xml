@@ -38,7 +38,7 @@
   <name xml:lang="x-test">xxKOrganizerxx</name>
   <name xml:lang="zh-CN">KOrganizer</name>
   <name xml:lang="zh-TW">行事曆_KOrganizer</name>
-  <summary>KOrganizer is a calendar and scheduling component application.</summary>
+  <summary>KOrganizer is a calendar and scheduling application</summary>
   <summary xml:lang="ca">El KOrganizer és una aplicació amb els components de calendari i planificació de tasques.</summary>
   <summary xml:lang="ca-valencia">El KOrganizer és una aplicació amb els components de calendari i planificació de tasques.</summary>
   <summary xml:lang="cs">KOrganizer je aplikace kalendáře a plánovacích komponent</summary>
@@ -118,7 +118,7 @@
     <p xml:lang="zh-CN">功能：</p>
     <p xml:lang="zh-TW">功能：</p>
     <ul>
-      <li>Support for multiple calendars and todo lists.</li>
+      <li>Support for multiple calendars and todo lists</li>
       <li xml:lang="ca">Permet múltiples calendaris i llistes de pendents.</li>
       <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de pendents.</li>
       <li xml:lang="de">Unterstützt mehrere Kalender und Aufgabenlisten.</li>
@@ -145,7 +145,7 @@
       <li xml:lang="uk">підтримка роботи з декількома календарями та списками завдань;</li>
       <li xml:lang="x-test">xxSupport for multiple calendars and todo lists.xx</li>
       <li xml:lang="zh-TW">支援多重行事曆與待辦清單。</li>
-      <li>Storage model.</li>
+      <li>Storage model</li>
       <li xml:lang="ca">Model d'emmagatzematge.</li>
       <li xml:lang="ca-valencia">Model d'emmagatzematge.</li>
       <li xml:lang="de">Speichermodell.</li>
@@ -172,7 +172,7 @@
       <li xml:lang="uk">модель зберігання даних;</li>
       <li xml:lang="x-test">xxStorage model.xx</li>
       <li xml:lang="zh-TW">儲存模型。</li>
-      <li>Undo and Redo.</li>
+      <li>Undo and Redo</li>
       <li xml:lang="ar">التّراجع والإعادة.</li>
       <li xml:lang="ca">Fes i desfés.</li>
       <li xml:lang="ca-valencia">Fes i desfés.</li>
@@ -202,7 +202,7 @@
       <li xml:lang="x-test">xxUndo and Redo.xx</li>
       <li xml:lang="zh-CN">撤销和重做。</li>
       <li xml:lang="zh-TW">復原、重做。</li>
-      <li>Todo integration with agenda view.</li>
+      <li>Todo integration with agenda view</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda.</li>
       <li xml:lang="ca-valencia">Integra les pendents amb la vista d'agenda.</li>
       <li xml:lang="de">Integration von Aufgaben mit Tagesansicht.</li>
@@ -229,7 +229,7 @@
       <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
       <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
       <li xml:lang="zh-TW">將待辦事項與行程檢視整合。</li>
-      <li>Attachments for events and todos.</li>
+      <li>Attachments for events and todos</li>
       <li xml:lang="ar">مرفقات للأحداث والمهامّ.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents.</li>
       <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents.</li>
@@ -257,7 +257,7 @@
       <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
       <li xml:lang="x-test">xxAttachments for events and todos.xx</li>
       <li xml:lang="zh-TW">事件與待辦事項的附件。</li>
-      <li>Quick todo and event entries.</li>
+      <li>Quick todo and event entries</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids.</li>
       <li xml:lang="ca-valencia">Entrades de pendents i esdeveniments ràpids.</li>
       <li xml:lang="de">Schnelles Eintragen von Aufgaben und Terminen.</li>
@@ -283,7 +283,7 @@
       <li xml:lang="uk">швидке створення записів завдань та подій;</li>
       <li xml:lang="x-test">xxQuick todo and event entries.xx</li>
       <li xml:lang="zh-TW">快速待辦與事件項目。</li>
-      <li>Plugin for Jewish calendar dates.</li>
+      <li>Plugin for Jewish calendar dates</li>
       <li xml:lang="ar">ملحقة لتواريخ التّقويم اليهوديّ.</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu.</li>
       <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu.</li>
@@ -312,7 +312,7 @@
       <li xml:lang="x-test">xxPlugin for Jewish calendar dates.xx</li>
       <li xml:lang="zh-CN">犹太教日历插件。</li>
       <li xml:lang="zh-TW">猶太行事曆外掛程式。</li>
-      <li>Print support.</li>
+      <li>Print support</li>
       <li xml:lang="ar">دعم الطّباعة.</li>
       <li xml:lang="ca">Permet la impressió.</li>
       <li xml:lang="ca-valencia">Permet la impressió.</li>
@@ -346,8 +346,9 @@
       <li xml:lang="zh-TW">支援列印功能。</li>
     </ul>
   </description>
+  <url type="homepage">https://www.kde.org/applications/office/korganizer/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=korganizer</url>
-  <url type="help">http://docs.kde.org/stable/en/kdepim/korganizer/index.html</url>
+  <url type="help">https://docs.kde.org/?application=korganizer</url>
   <screenshots>
     <screenshot type="default">
       <image>http://kde.org/images/screenshots/korganizer.png</image>
