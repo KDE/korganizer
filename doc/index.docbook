@@ -2025,8 +2025,8 @@ url="help:/fundamentals/config.html#toolbars">Customizing Toolbars</ulink>
 in the &kde; Fundamentals.</para>
 
 <para>Localization information like date and time formats can be
-configured from &systemsettings; within the <guilabel>Language</guilabel> module.
-This control module can be
+configured from &systemsettings; within the modules <guilabel>Language</guilabel>,
+and <guilabel>Formats</guilabel>. These control modules can be
 accessed from within &korganizer;: just choose the <menuchoice><guimenu>
 Settings</guimenu><guimenuitem>Configure Date &amp;
 Time...</guimenuitem></menuchoice> menu item.  &korganizer; has to be restarted
