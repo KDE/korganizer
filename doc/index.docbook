@@ -1288,13 +1288,8 @@ only you can access.</para></warning></listitem>
 or event. If &korganizer; is configured to send invitation emails, the identity
 selected on this combo box will be used when sending these emails. The default
 identity can be set in the <guilabel>Personal</guilabel> section of the
-&korganizer; configuration, other identities in the <guilabel>Account Details</guilabel>-&gt;
-<guilabel>Password &amp; User Account</guilabel> module 
-of the &systemsettings;. In addition, identities are gathered from your &kmail;
-settings and from your address book. If you choose to set it globally for &kde;
-in the &systemsettings;, be sure to check the <guilabel>Use email settings from
-System Settings</guilabel> box in the <guilabel>Personal</guilabel> section of
-the &korganizer; configuration.</para></listitem>
+&korganizer; configuration. In addition, identities are gathered from your &kmail;
+settings and from your address book.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -2060,20 +2055,11 @@ categories.</para>
 <variablelist>
 
 <varlistentry>
-<term><guilabel>Use email settings from System Settings</guilabel></term>
-<listitem><para>Check this box to use your name and email address as set in
-&systemsettings; (<menuchoice><guimenuitem>Account Details</guimenuitem>
-<guimenuitem>Password &amp; User Account</guimenuitem></menuchoice>).</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
 <term><guilabel>Full name</guilabel></term>
 <listitem><para><guilabel>Full name</guilabel> is initially set to
 <quote>Anonymous</quote> with an email address of
 <quote>nobody@nowhere</quote>. You can change your name by directly
-entering it here or you can use your Email Settings from &systemsettings; (see
-above).  This name will be displayed by default as
+entering it here. This name will be displayed by default as
 <guilabel>Organizer</guilabel> in to-dos and Events.</para></listitem> 
 </varlistentry>
 
