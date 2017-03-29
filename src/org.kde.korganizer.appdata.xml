@@ -149,6 +149,7 @@
       <li>Storage model.</li>
       <li xml:lang="ca">Model d'emmagatzematge.</li>
       <li xml:lang="ca-valencia">Model d'emmagatzematge.</li>
+      <li xml:lang="cs">Model úložiště.</li>
       <li xml:lang="de">Speichermodell.</li>
       <li xml:lang="en-GB">Storage model.</li>
       <li xml:lang="es">Modelo de almacenamiento.</li>
@@ -177,6 +178,7 @@
       <li xml:lang="ar">التّراجع والإعادة.</li>
       <li xml:lang="ca">Fes i desfés.</li>
       <li xml:lang="ca-valencia">Fes i desfés.</li>
+      <li xml:lang="cs">Zpět a Vpřed.</li>
       <li xml:lang="de">Rückgängig/Wiederherstellen.</li>
       <li xml:lang="en-GB">Undo and Redo.</li>
       <li xml:lang="es">Deshacer y rehacer.</li>
@@ -206,6 +208,7 @@
       <li>Todo integration with agenda view.</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda.</li>
       <li xml:lang="ca-valencia">Integra les pendents amb la vista d'agenda.</li>
+      <li xml:lang="cs">Integrace úkolů s pohledem na agendu.</li>
       <li xml:lang="de">Integration von Aufgaben mit Tagesansicht.</li>
       <li xml:lang="en-GB">Todo integration with agenda view.</li>
       <li xml:lang="es">Integración de tareas pendientes con la vista de agenda.</li>
@@ -234,6 +237,7 @@
       <li xml:lang="ar">مرفقات للأحداث والمهامّ.</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents.</li>
       <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents.</li>
+      <li xml:lang="cs">Přílohy pro události a úkoly.</li>
       <li xml:lang="de">Anhänge für Termine und Aufgaben.</li>
       <li xml:lang="en-GB">Attachments for events and todos.</li>
       <li xml:lang="es">Adjuntos para eventos y tareas pendientes.</li>
@@ -288,6 +292,7 @@
       <li xml:lang="ar">ملحقة لتواريخ التّقويم اليهوديّ.</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu.</li>
       <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu.</li>
+      <li xml:lang="cs">Modul pro židovská kalendářní data.</li>
       <li xml:lang="de">Modul für jüdische Kalenderdaten.</li>
       <li xml:lang="en-GB">Plugin for Jewish calendar dates.</li>
       <li xml:lang="es">Complemento para fechas del calendario judío.</li>
