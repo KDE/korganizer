@@ -40,6 +40,8 @@
   <name xml:lang="zh-TW">行事曆_KOrganizer</name>
   <summary>KOrganizer is a calendar and scheduling application</summary>
   <summary xml:lang="ca">El KOrganizer és una aplicació de calendari i planificació de tasques</summary>
+  <summary xml:lang="ca-valencia">El KOrganizer és una aplicació de calendari i planificació de tasques</summary>
+  <summary xml:lang="cs">KOrganizer je aplikace pro kalendáře a plánování</summary>
   <summary xml:lang="nl">KOrganizer is een agenda- en planningstoepassing</summary>
   <summary xml:lang="pt">O KOrganizer é uma aplicação com componentes de calendários e agendas</summary>
   <summary xml:lang="sl">KOrganizer je program za koledar in razporejanje dogodkov</summary>
@@ -114,6 +116,7 @@
     <ul>
       <li>Support for multiple calendars and todo lists</li>
       <li xml:lang="ca">Permet múltiples calendaris i llistes de pendents</li>
+      <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de pendents</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten</li>
       <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer</li>
       <li xml:lang="sl">Podpora več koledarjem in seznamom opravil</li>
@@ -122,6 +125,8 @@
       <li xml:lang="x-test">xxSupport for multiple calendars and todo listsxx</li>
       <li>Storage model</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
+      <li xml:lang="ca-valencia">Model d'emmagatzematge</li>
+      <li xml:lang="cs">Model úložiště</li>
       <li xml:lang="nl">Opslagmodel</li>
       <li xml:lang="pt">Modelo de armazenamento</li>
       <li xml:lang="sl">Model za shranjevanje</li>
@@ -130,6 +135,8 @@
       <li xml:lang="x-test">xxStorage modelxx</li>
       <li>Undo and Redo</li>
       <li xml:lang="ca">Fes i desfés</li>
+      <li xml:lang="ca-valencia">Fes i desfés</li>
+      <li xml:lang="cs">Zpět a Vpřed</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw</li>
       <li xml:lang="pt">Desfazer e Refazer operações</li>
       <li xml:lang="sl">Uveljavi in razveljavi</li>
@@ -138,6 +145,8 @@
       <li xml:lang="x-test">xxUndo and Redoxx</li>
       <li>Todo integration with agenda view</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
+      <li xml:lang="ca-valencia">Integra les pendents amb la vista d'agenda</li>
+      <li xml:lang="cs">Integrace úkolů s pohledem na agendu</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
       <li xml:lang="pt">Integração de itens por-fazer com a agenda</li>
       <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda</li>
@@ -146,6 +155,8 @@
       <li xml:lang="x-test">xxTodo integration with agenda viewxx</li>
       <li>Attachments for events and todos</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
+      <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents</li>
+      <li xml:lang="cs">Přílohy pro události a úkoly</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken</li>
       <li xml:lang="pt">Anexos para os eventos e itens por-fazer</li>
       <li xml:lang="sl">Priloge za dogodke in opravila</li>
@@ -154,6 +165,7 @@
       <li xml:lang="x-test">xxAttachments for events and todosxx</li>
       <li>Quick todo and event entries</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
+      <li xml:lang="ca-valencia">Entrades de pendents i esdeveniments ràpids</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken</li>
       <li xml:lang="pt">Criação rápida de itens por-fazer e eventos</li>
       <li xml:lang="sl">Hitra opravila in vnosi dogodkov</li>
@@ -162,6 +174,8 @@
       <li xml:lang="x-test">xxQuick todo and event entriesxx</li>
       <li>Plugin for Jewish calendar dates</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
+      <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu</li>
+      <li xml:lang="cs">Modul pro židovská kalendářní data</li>
       <li xml:lang="nl">Plug-in voor Joodse feestdagen</li>
       <li xml:lang="pt">'Plugin' para datas do calendário Judeu</li>
       <li xml:lang="sl">Vstavek za židovski koledar</li>
@@ -170,6 +184,8 @@
       <li xml:lang="x-test">xxPlugin for Jewish calendar datesxx</li>
       <li>Print support</li>
       <li xml:lang="ca">Permet la impressió</li>
+      <li xml:lang="ca-valencia">Permet la impressió</li>
+      <li xml:lang="cs">Podpora tisku</li>
       <li xml:lang="nl">Ondersteuning voor afdrukken</li>
       <li xml:lang="pt">Suporte para a impressão</li>
       <li xml:lang="sl">Podpora tiskanju</li>
