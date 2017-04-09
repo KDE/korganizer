@@ -65,7 +65,7 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
 
     // Check if Akonadi is already configured
     const QString akonadiConfigFile = Akonadi::ServerManager::serverConfigFilePath(Akonadi::ServerManager::ReadWrite);
-    if (QFile::exists(akonadiConfigFile)) {
+    if (QFileInfo::exists(akonadiConfigFile)) {
         // Akonadi is configured, create ETM and friends, which will start Akonadi
         // if its not running yet
         setupAkonadi();
