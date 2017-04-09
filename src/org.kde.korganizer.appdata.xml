@@ -44,6 +44,7 @@
   <summary xml:lang="cs">KOrganizer je aplikace pro kalendáře a plánování</summary>
   <summary xml:lang="it">KOrganizer è un'applicazione per il calendario e la pianificazione.</summary>
   <summary xml:lang="nl">KOrganizer is een agenda- en planningstoepassing</summary>
+  <summary xml:lang="pl">KOrganizer jest aplikacją kalendarza i planowania</summary>
   <summary xml:lang="pt">O KOrganizer é uma aplicação com componentes de calendários e agendas</summary>
   <summary xml:lang="sl">KOrganizer je program za koledar in razporejanje dogodkov</summary>
   <summary xml:lang="sv">Korganizer är ett kalender- och schemaläggningsprogram</summary>
@@ -120,6 +121,7 @@
       <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de pendents</li>
       <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten</li>
+      <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań</li>
       <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer</li>
       <li xml:lang="sl">Podpora več koledarjem in seznamom opravil</li>
       <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor</li>
@@ -131,6 +133,7 @@
       <li xml:lang="cs">Model úložiště</li>
       <li xml:lang="it">Modello di memorizzazione</li>
       <li xml:lang="nl">Opslagmodel</li>
+      <li xml:lang="pl">Model przechowalni</li>
       <li xml:lang="pt">Modelo de armazenamento</li>
       <li xml:lang="sl">Model za shranjevanje</li>
       <li xml:lang="sv">Lagringsmodell</li>
@@ -142,6 +145,7 @@
       <li xml:lang="cs">Zpět a Vpřed</li>
       <li xml:lang="it">Annulla/ripeti</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw</li>
+      <li xml:lang="pl">Cofanie i ponawianie</li>
       <li xml:lang="pt">Desfazer e Refazer operações</li>
       <li xml:lang="sl">Uveljavi in razveljavi</li>
       <li xml:lang="sv">Ångra och gör om</li>
@@ -153,6 +157,7 @@
       <li xml:lang="cs">Integrace úkolů s pohledem na agendu</li>
       <li xml:lang="it">Integrazione delle cose da fare con la vista agenda</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
+      <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć</li>
       <li xml:lang="pt">Integração de itens por-fazer com a agenda</li>
       <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda</li>
       <li xml:lang="sv">Integrering av uppgifter med agendavyn</li>
@@ -164,6 +169,7 @@
       <li xml:lang="cs">Přílohy pro události a úkoly</li>
       <li xml:lang="it">Allegati per eventi e cose da fare</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken</li>
+      <li xml:lang="pl">Załączniki dla wydarzeń i zadań</li>
       <li xml:lang="pt">Anexos para os eventos e itens por-fazer</li>
       <li xml:lang="sl">Priloge za dogodke in opravila</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter</li>
@@ -290,6 +296,7 @@
       <li xml:lang="ca-valencia">Entrades de pendents i esdeveniments ràpids</li>
       <li xml:lang="it">Voci rapide per cose da fare ed eventi</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken</li>
+      <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń</li>
       <li xml:lang="pt">Criação rápida de itens por-fazer e eventos</li>
       <li xml:lang="sl">Hitra opravila in vnosi dogodkov</li>
       <li xml:lang="sv">Snabba uppgifts- och händelseposter</li>
@@ -330,6 +337,7 @@
       <li xml:lang="cs">Podpora tisku</li>
       <li xml:lang="it">Supporto per la stampa</li>
       <li xml:lang="nl">Ondersteuning voor afdrukken</li>
+      <li xml:lang="pl">Obsługa wydruku</li>
       <li xml:lang="pt">Suporte para a impressão</li>
       <li xml:lang="sl">Podpora tiskanju</li>
       <li xml:lang="sv">Utskriftsstöd</li>

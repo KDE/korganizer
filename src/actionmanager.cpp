@@ -85,7 +85,6 @@
 #include <QTemporaryFile>
 #include <KToggleAction>
 #include <KWindowSystem>
-#include <KIO/NetAccess>
 #include <KNS3/DownloadDialog>
 #include <QIcon>
 #include "korganizer_debug.h"
@@ -1110,7 +1109,6 @@ bool ActionManager::saveAsURL(const QUrl &url)
     if (success) {
         delete mTempFile;
         mTempFile = tempFile;
-        KIO::NetAccess::removeTempFile(fileOrig);
         setTitle();
     } else {
         KMessageBox::sorry(dialogParent(),
