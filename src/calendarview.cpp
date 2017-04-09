@@ -1841,7 +1841,7 @@ void CalendarView::exportICalendar()
             filename += QLatin1String(".ics");
         }
 
-        if (QFile(filename).exists()) {
+        if (QFileInfo::exists(filename)) {
             if (KMessageBox::No == KMessageBox::warningYesNo(
                         this,
                         i18n("Do you want to overwrite %1?", filename))) {
@@ -1889,7 +1889,7 @@ void CalendarView::exportVCalendar()
         if (filename.right(4) != QLatin1String(".vcs")) {
             filename += QLatin1String(".vcs");
         }
-        if (QFile(filename).exists()) {
+        if (QFileInfo::exists(filename)) {
             if (KMessageBox::No == KMessageBox::warningYesNo(
                         this,
                         i18n("Do you want to overwrite %1?", filename))) {
