@@ -868,7 +868,7 @@ void ActionManager::file_icalimport()
 
     QString homeDir = QDir::homePath() + QLatin1String("/.calendar");
 
-    if (!QFile::exists(homeDir)) {
+    if (!QFileInfo::exists(homeDir)) {
         KMessageBox::error(dialogParent(),
                            i18n("You have no ical file in your home directory.\n"
                                 "Import cannot proceed.\n"));
