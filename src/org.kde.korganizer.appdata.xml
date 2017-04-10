@@ -115,234 +115,177 @@
     <p xml:lang="x-test">xxFeatures:xx</p>
     <p xml:lang="zh-CN">功能：</p>
     <p xml:lang="zh-TW">功能：</p>
-    <ul>
-      <li>Support for multiple calendars and todo lists</li>
-      <li xml:lang="ca">Permet múltiples calendaris i llistes de pendents</li>
-      <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de pendents</li>
-      <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare</li>
-      <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten</li>
-      <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań</li>
-      <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer</li>
-      <li xml:lang="sl">Podpora več koledarjem in seznamom opravil</li>
-      <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor</li>
-      <li xml:lang="uk">підтримка роботи з декількома календарями та списками завдань;</li>
-      <li xml:lang="x-test">xxSupport for multiple calendars and todo listsxx</li>
-      <li>Storage model</li>
-      <li xml:lang="ca">Model d'emmagatzematge</li>
-      <li xml:lang="ca-valencia">Model d'emmagatzematge</li>
-      <li xml:lang="cs">Model úložiště</li>
-      <li xml:lang="it">Modello di memorizzazione</li>
-      <li xml:lang="nl">Opslagmodel</li>
-      <li xml:lang="pl">Model przechowalni</li>
-      <li xml:lang="pt">Modelo de armazenamento</li>
-      <li xml:lang="sl">Model za shranjevanje</li>
-      <li xml:lang="sv">Lagringsmodell</li>
-      <li xml:lang="uk">модель зберігання даних;</li>
-      <li xml:lang="x-test">xxStorage modelxx</li>
-      <li>Undo and Redo</li>
-      <li xml:lang="ca">Fes i desfés</li>
-      <li xml:lang="ca-valencia">Fes i desfés</li>
-      <li xml:lang="cs">Zpět a Vpřed</li>
-      <li xml:lang="it">Annulla/ripeti</li>
-      <li xml:lang="nl">Ongedaan maken en opnieuw</li>
-      <li xml:lang="pl">Cofanie i ponawianie</li>
-      <li xml:lang="pt">Desfazer e Refazer operações</li>
-      <li xml:lang="sl">Uveljavi in razveljavi</li>
-      <li xml:lang="sv">Ångra och gör om</li>
-      <li xml:lang="uk">можливості скасування та повторення дій;</li>
-      <li xml:lang="x-test">xxUndo and Redoxx</li>
-      <li>Todo integration with agenda view</li>
-      <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
-      <li xml:lang="ca-valencia">Integra les pendents amb la vista d'agenda</li>
-      <li xml:lang="cs">Integrace úkolů s pohledem na agendu</li>
-      <li xml:lang="it">Integrazione delle cose da fare con la vista agenda</li>
-      <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
-      <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć</li>
-      <li xml:lang="pt">Integração de itens por-fazer com a agenda</li>
-      <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda</li>
-      <li xml:lang="sv">Integrering av uppgifter med agendavyn</li>
-      <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
-      <li xml:lang="x-test">xxTodo integration with agenda viewxx</li>
-      <li>Attachments for events and todos</li>
-      <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
-      <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents</li>
-      <li xml:lang="cs">Přílohy pro události a úkoly</li>
-      <li xml:lang="it">Allegati per eventi e cose da fare</li>
-      <li xml:lang="nl">Aanhangsels voor activiteiten en taken</li>
-      <li xml:lang="pl">Załączniki dla wydarzeń i zadań</li>
-      <li xml:lang="pt">Anexos para os eventos e itens por-fazer</li>
-      <li xml:lang="sl">Priloge za dogodke in opravila</li>
-      <li xml:lang="sv">Bilagor för händelser och uppgifter</li>
+    <ul><li>Support for multiple calendars and todo lists</li><li>Storage model</li><li>Undo and Redo</li><li>Todo integration with agenda view</li><li>Attachments for events and todos</li>
 =======
-      <li xml:lang="x-test">xxSupport for multiple calendars and todo lists.xx</li>
-      <li xml:lang="zh-TW">支援多重行事曆與待辦清單。</li>
+      
+      
       <li>Storage model.</li>
-      <li xml:lang="ca">Model d'emmagatzematge.</li>
-      <li xml:lang="ca-valencia">Model d'emmagatzematge.</li>
-      <li xml:lang="cs">Model úložiště.</li>
-      <li xml:lang="de">Speichermodell.</li>
-      <li xml:lang="en-GB">Storage model.</li>
-      <li xml:lang="es">Modelo de almacenamiento.</li>
-      <li xml:lang="et">Salvestimudel</li>
-      <li xml:lang="fi">Tietovarastomalli.</li>
-      <li xml:lang="fr">Modèle de stockage.</li>
-      <li xml:lang="gl">Modelo de almacenamento.</li>
-      <li xml:lang="hu">Tárolómodell.</li>
-      <li xml:lang="it">Modello di memorizzazione.</li>
-      <li xml:lang="ko">저장소 모델.</li>
-      <li xml:lang="nb">Lagringsmodell.</li>
-      <li xml:lang="nds">Wohrmodell</li>
-      <li xml:lang="nl">Opslagmodel.</li>
-      <li xml:lang="pl">Model przechowalni.</li>
-      <li xml:lang="pt">Modelo de armazenamento versátil.</li>
-      <li xml:lang="pt-BR">Modelo de armazenamento.</li>
-      <li xml:lang="ro">Model de stocare.</li>
-      <li xml:lang="sk">Model úložiska.</li>
-      <li xml:lang="sl">Model za shranjevanje.</li>
-      <li xml:lang="sv">Lagringsmodell.</li>
-      <li xml:lang="tr">Depolama kipi.</li>
-      <li xml:lang="uk">модель зберігання даних;</li>
-      <li xml:lang="x-test">xxStorage model.xx</li>
-      <li xml:lang="zh-TW">儲存模型。</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <li>Undo and Redo.</li>
-      <li xml:lang="ar">التّراجع والإعادة.</li>
-      <li xml:lang="ca">Fes i desfés.</li>
-      <li xml:lang="ca-valencia">Fes i desfés.</li>
-      <li xml:lang="cs">Zpět a Vpřed.</li>
-      <li xml:lang="de">Rückgängig/Wiederherstellen.</li>
-      <li xml:lang="en-GB">Undo and Redo.</li>
-      <li xml:lang="es">Deshacer y rehacer.</li>
-      <li xml:lang="et">Tagasivõtmine ja uuestitegemine</li>
-      <li xml:lang="fi">Kumoaminen ja uudelleen tekeminen.</li>
-      <li xml:lang="fr">Annuler et Refaire.</li>
-      <li xml:lang="gl">Funcionalidade de desfacer e refacer.</li>
-      <li xml:lang="hu">Visszavonás és újra végrehajtás.</li>
-      <li xml:lang="it">Annulla/ripeti.</li>
-      <li xml:lang="ko">실행 취소 및 재실행.</li>
-      <li xml:lang="nb">Angre/gjør om.</li>
-      <li xml:lang="nds">Torüchnehmen un wedderhalen</li>
-      <li xml:lang="nl">Ongedaan maken en opnieuw.</li>
-      <li xml:lang="pl">Cofanie i ponawianie.</li>
-      <li xml:lang="pt">Suporte para Desfazer e Refazer operações.</li>
-      <li xml:lang="pt-BR">Suporte para as ações Desfazer e Refazer.</li>
-      <li xml:lang="ro">Desfacere și refacere.</li>
-      <li xml:lang="ru">Отмена и возврат действий;</li>
-      <li xml:lang="sk">Funkcia Späť a Znova.</li>
-      <li xml:lang="sl">Uveljavi in razveljavi.</li>
-      <li xml:lang="sv">Ångra och gör om.</li>
-      <li xml:lang="tr">Geri al ve Tekrarla.</li>
-      <li xml:lang="uk">можливості скасування та повторення дій;</li>
-      <li xml:lang="x-test">xxUndo and Redo.xx</li>
-      <li xml:lang="zh-CN">撤销和重做。</li>
-      <li xml:lang="zh-TW">復原、重做。</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <li>Todo integration with agenda view.</li>
-      <li xml:lang="ca">Integra les pendents amb la vista d'agenda.</li>
-      <li xml:lang="ca-valencia">Integra les pendents amb la vista d'agenda.</li>
-      <li xml:lang="cs">Integrace úkolů s pohledem na agendu.</li>
-      <li xml:lang="de">Integration von Aufgaben mit Tagesansicht.</li>
-      <li xml:lang="en-GB">Todo integration with agenda view.</li>
-      <li xml:lang="es">Integración de tareas pendientes con la vista de agenda.</li>
-      <li xml:lang="et">Ülesannete lõimimine päevakavavaatega</li>
-      <li xml:lang="fi">Tehtävien integrointi päivyrinäkymään.</li>
-      <li xml:lang="fr">Intégration de listes de choses à faire avec la vue agenda.</li>
-      <li xml:lang="gl">Integración da lista de tarefas coa vista da axenda.</li>
-      <li xml:lang="hu">Tennivalók integrációja a napi nézetbe.</li>
-      <li xml:lang="it">Integrazione delle cose da fare con la vista agenda.</li>
-      <li xml:lang="ko">하루 보기와 통합된 할 일 목록.</li>
-      <li xml:lang="nb">Gjøremål integrert med dagsorden-visning.</li>
-      <li xml:lang="nds">Opgaven binnen Tietplaan-Ansicht</li>
-      <li xml:lang="nl">Taken integreren in agendaoverzicht.</li>
-      <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć.</li>
-      <li xml:lang="pt">Integração de itens por-fazer com a agenda.</li>
-      <li xml:lang="pt-BR">Integração de tarefas com a agenda.</li>
-      <li xml:lang="ru">Показ задач в расписании на день;</li>
-      <li xml:lang="sk">Integrácia úloh s pohľadom agendy.</li>
-      <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda.</li>
-      <li xml:lang="sv">Integrering av uppgifter med agendavyn.</li>
-      <li xml:lang="tr">Ajanda görünümüyle yapılacakların tümleşimi</li>
-      <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
-      <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
-      <li xml:lang="zh-TW">將待辦事項與行程檢視整合。</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <li>Attachments for events and todos.</li>
-      <li xml:lang="ar">مرفقات للأحداث والمهامّ.</li>
-      <li xml:lang="ca">Adjunts pels esdeveniments i pendents.</li>
-      <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents.</li>
-      <li xml:lang="cs">Přílohy pro události a úkoly.</li>
-      <li xml:lang="de">Anhänge für Termine und Aufgaben.</li>
-      <li xml:lang="en-GB">Attachments for events and todos.</li>
-      <li xml:lang="es">Adjuntos para eventos y tareas pendientes.</li>
-      <li xml:lang="et">Sündmuste ja ülesannete manused</li>
-      <li xml:lang="fi">Liitteet tapahtumille ja tehtäville.</li>
-      <li xml:lang="fr">Pièces jointes pour les évènements et les choses à faire.</li>
-      <li xml:lang="gl">Permite anexar ficheiros a acontecementos e tarefas.</li>
-      <li xml:lang="hu">Mellékletek csatolása eseményekhez és  tennivalókhoz.</li>
-      <li xml:lang="it">Allegati per eventi e cose da fare.</li>
-      <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원.</li>
-      <li xml:lang="nb">Vedlegg til hendelser og gjøremål.</li>
-      <li xml:lang="nds">Bilagen för Begeefnissen un Opgaven</li>
-      <li xml:lang="nl">Aanhangsels voor activiteiten en taken.</li>
-      <li xml:lang="pl">Załączniki dla wydarzeń i zadań.</li>
-      <li xml:lang="pt">Anexos para os eventos e itens por-fazer.</li>
-      <li xml:lang="pt-BR">Anexos para eventos e tarefas.</li>
-      <li xml:lang="ru">Прикрепление файлов к событиям и задачам;</li>
-      <li xml:lang="sk">Prílohy pre udalosti a úlohy.</li>
-      <li xml:lang="sl">Priloge za dogodke in opravila.</li>
-      <li xml:lang="sv">Bilagor för händelser och uppgifter.</li>
-      <li xml:lang="tr">Olaylar ve yapılacaklar için eklentiler.</li>
-      <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
-      <li xml:lang="x-test">xxAttachments for events and todosxx</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <li>Quick todo and event entries</li>
-      <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
-      <li xml:lang="ca-valencia">Entrades de pendents i esdeveniments ràpids</li>
-      <li xml:lang="it">Voci rapide per cose da fare ed eventi</li>
-      <li xml:lang="nl">Snel invoeren van activiteiten en taken</li>
-      <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń</li>
-      <li xml:lang="pt">Criação rápida de itens por-fazer e eventos</li>
-      <li xml:lang="sl">Hitra opravila in vnosi dogodkov</li>
-      <li xml:lang="sv">Snabba uppgifts- och händelseposter</li>
-      <li xml:lang="uk">швидке створення записів завдань та подій;</li>
-      <li xml:lang="x-test">xxQuick todo and event entries.xx</li>
-      <li xml:lang="zh-TW">快速待辦與事件項目。</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <li>Plugin for Jewish calendar dates.</li>
-      <li xml:lang="ar">ملحقة لتواريخ التّقويم اليهوديّ.</li>
-      <li xml:lang="ca">Connector per a les dates del calendari jueu.</li>
-      <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu.</li>
-      <li xml:lang="cs">Modul pro židovská kalendářní data.</li>
-      <li xml:lang="de">Modul für jüdische Kalenderdaten.</li>
-      <li xml:lang="en-GB">Plugin for Jewish calendar dates.</li>
-      <li xml:lang="es">Complemento para fechas del calendario judío.</li>
-      <li xml:lang="et">Juudi kalendri plugin</li>
-      <li xml:lang="fi">Liitännäinen juutalaiselle kalenterille.</li>
-      <li xml:lang="fr">Module de prise en charge du calendrier juif.</li>
-      <li xml:lang="gl">Complemento para datas do calendario xudeu.</li>
-      <li xml:lang="hu">Bővítmény zsidó dátumokhoz.</li>
-      <li xml:lang="it">Estensione per le date del calendario ebraico.</li>
-      <li xml:lang="ko">종교별 달력 지원 플러그인.</li>
-      <li xml:lang="nb">Programtillegg for jødiske kalenderdatoer.</li>
-      <li xml:lang="nds">Moduul för jöödsch Kalennerdaten</li>
-      <li xml:lang="nl">Plugin voor Joodse feestdagen</li>
-      <li xml:lang="pl">Wtyczka dla żydowskich dat kalendarza.</li>
-      <li xml:lang="pt">'Plugin' para datas do calendário Judeu.</li>
-      <li xml:lang="pt-BR">Plugin para datas do calendário judaico.</li>
-      <li xml:lang="ro">Extensie pentru calendar evreiesc.</li>
-      <li xml:lang="sk">Plugin pre dátumy židovského kalendára.</li>
-      <li xml:lang="sl">Vstavek za židovski koledar.</li>
-      <li xml:lang="sv">Insticksprogram för Judiska kalenderdatum.</li>
-      <li xml:lang="tr">Yahudi takvim tarihleri için eklenti.</li>
-      <li xml:lang="uk">додаток для запису подій за єврейським календарем;</li>
-      <li xml:lang="x-test">xxPlugin for Jewish calendar datesxx</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <li>Print support</li>
-      <li xml:lang="ca">Permet la impressió</li>
-      <li xml:lang="ca-valencia">Permet la impressió</li>
-      <li xml:lang="cs">Podpora tisku</li>
-      <li xml:lang="it">Supporto per la stampa</li>
-      <li xml:lang="nl">Ondersteuning voor afdrukken</li>
-      <li xml:lang="pl">Obsługa wydruku</li>
-      <li xml:lang="pt">Suporte para a impressão</li>
-      <li xml:lang="sl">Podpora tiskanju</li>
-      <li xml:lang="sv">Utskriftsstöd</li>
-      <li xml:lang="uk">підтримка друку календарів.</li>
-      <li xml:lang="x-test">xxPrint supportxx</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     </ul>
   </description>
   <url type="homepage">https://www.kde.org/applications/office/korganizer/</url>
