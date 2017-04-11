@@ -79,15 +79,6 @@ using namespace KCalUtils;
 static int defSuspendVal = 5;
 static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
 
-class ReminderTree : public QTreeWidget
-{
-public:
-    ReminderTree(QWidget *parent) : QTreeWidget(parent)
-    {
-    }
-
-};
-
 class ReminderTreeItem : public QTreeWidgetItem
 {
 public:
@@ -198,7 +189,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
         topBox);
     mTopLayout->addWidget(label);
 
-    mIncidenceTree = new ReminderTree(topBox);
+    mIncidenceTree = new QTreeWidget(topBox);
     mIncidenceTree->setColumnCount(3);
     mIncidenceTree->setSortingEnabled(true);
     const QStringList headerLabels =
@@ -225,7 +216,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 
     connect(mIncidenceTree, &QTreeWidget::itemClicked, this, &AlarmDialog::update);
     connect(mIncidenceTree, &QTreeWidget::itemDoubleClicked, this, &AlarmDialog::edit);
-    connect(mIncidenceTree, &ReminderTree::itemSelectionChanged, this, &AlarmDialog::updateButtons);
+    connect(mIncidenceTree, &QTreeWidget::itemSelectionChanged, this, &AlarmDialog::updateButtons);
 
     mDetailView = new CalendarSupport::IncidenceViewer(mCalendar.data(), topBox);
     const QString s = xi18nc("@info default incidence details string",
