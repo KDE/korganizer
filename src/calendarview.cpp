@@ -33,7 +33,6 @@
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
-#include "dialog/exportwebdialog.h"
 #include "kocorehelper.h"
 #include "kodaymatrix.h"
 #include "kodialogmanager.h"
@@ -42,7 +41,6 @@
 #include "kohelper.h"
 #include "prefs/koprefs.h"
 #include "koviewmanager.h"
-#include "htmlexportsettings.h"
 #include "widgets/navigatorbar.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
@@ -1816,19 +1814,6 @@ void CalendarView::printPreview()
     KCalCore::DateList tmpDateList = mDateNavigator->selectedDates();
     mCalPrinter->print(printType, tmpDateList.first(), tmpDateList.last(),
                        selectedIncidences, true);
-}
-
-void CalendarView::exportWeb()
-{
-    KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings(QStringLiteral("KOrganizer"));
-    Q_ASSERT(settings);
-    // Manually read in the config, because parameterized kconfigxt objects don't
-    // seem to load the config theirselves
-    settings->load();
-    ExportWebDialog *dlg = new ExportWebDialog(settings, this);
-    connect(dlg, &ExportWebDialog::exportHTML,
-            this, &CalendarView::exportHTML);
-    dlg->show();
 }
 
 void CalendarView::exportICalendar()

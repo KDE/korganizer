@@ -49,10 +49,6 @@ class KOViewManager;
 class NavigatorBar;
 class KOCheckableProxyModel;
 class AkonadiCollectionView;
-namespace KOrg
-{
-class HTMLExportSettings;
-}
 
 namespace CalendarSupport
 {
@@ -263,7 +259,6 @@ Q_SIGNALS:
     void autoArchivingSettingsModified();
 
     void newIncidenceChanger(Akonadi::IncidenceChanger *) Q_DECL_OVERRIDE;
-    void exportHTML(KOrg::HTMLExportSettings *);
 
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
@@ -489,9 +484,6 @@ public Q_SLOTS:
     */
     void print();
     void printPreview();
-
-    /** Export as HTML file */
-    void exportWeb();
 
     /** Export as iCalendar file */
     void exportICalendar();

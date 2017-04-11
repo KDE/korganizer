@@ -62,9 +62,6 @@ public:
     QColor resourceColor(const QString &);
     QColor resourceColorKnown(const QString &cal) const;
 
-    void setHtmlExportFile(const QString &fileName);
-    QString htmlExportFile() const;
-
     QStringList timeScaleTimezones() const;
     void setTimeScaleTimezones(const QStringList &list);
 
@@ -73,8 +70,6 @@ private:
     QFont mDefaultMonthViewFont;
 
     QStringList mTimeScaleTimeZones;
-
-    QString mHtmlExportFile;
 
     EventViews::PrefsPtr mEventViewsPrefs;
 

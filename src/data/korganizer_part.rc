@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="427" translationDomain="korganizer">
+<kpartgui name="korganizer" version="428" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -16,7 +16,6 @@
         <Action name="downloadnewstuff"/>
       </Menu>
       <Menu name="export"><text>&amp;Export</text>
-        <Action name="export_web" />
         <Action name="export_icalendar"/>
         <Action name="export_vcalendar"/>
         <Merge/>

@@ -30,7 +30,7 @@ void KOrgMigrateApplication::migrate()
 {
     //Migrate to xdg
     Kdelibs4ConfigMigrator migrate(QStringLiteral("korganizer"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("korganizer_htmlexportrc") << QStringLiteral("korganizerrc") << QStringLiteral("freebusyurls"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("korganizerrc") << QStringLiteral("freebusyurls"));
     migrate.setUiFiles(QStringList() << QStringLiteral("korganizer_part.rc") << QStringLiteral("korganizerui.rc"));
     migrate.migrate();
 

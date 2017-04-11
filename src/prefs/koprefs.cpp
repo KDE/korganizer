@@ -53,10 +53,6 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
     KConfigSkeleton::setCurrentGroup(QStringLiteral("General"));
 
-    // writes into mHtmlExportFile
-    addItemPath(QStringLiteral("HTML Export File"), mHtmlExportFile,
-                QDir::homePath() + QLatin1Char('/') + i18nc("Default export file", "calendar.html"));
-
     monthViewFontItem()->setDefaultValue(mDefaultMonthViewFont);
 }
 
@@ -122,16 +118,6 @@ QStringList KOPrefs::timeScaleTimezones() const
 void KOPrefs::setTimeScaleTimezones(const QStringList &list)
 {
     mTimeScaleTimeZones = list;
-}
-
-void KOPrefs::setHtmlExportFile(const QString &fileName)
-{
-    mHtmlExportFile = fileName;
-}
-
-QString KOPrefs::htmlExportFile() const
-{
-    return mHtmlExportFile;
 }
 
 EventViews::PrefsPtr KOPrefs::eventViewsPreferences() const

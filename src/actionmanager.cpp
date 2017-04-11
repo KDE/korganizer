@@ -32,8 +32,6 @@
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
 #include "calendarview.h"
-#include "job/htmlexportjob.h"
-#include "htmlexportsettings.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
 #include "korganizeradaptor.h"
@@ -113,7 +111,6 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
     mCalendarView = widget;
     mIsPart = isPart;
     mTempFile = nullptr;
-    mHtmlExportSync = false;
     mMainWindow = mainWindow;
     mMenuBar = menuBar;
 }
@@ -168,14 +165,6 @@ void ActionManager::init()
     // initialize the QAction instances
     initActions();
 
-    // set up autoExporting stuff
-    mAutoExportTimer = new QTimer(this);
-    connect(mAutoExportTimer, &QTimer::timeout, this, &ActionManager::checkAutoExport);
-    if (KOPrefs::instance()->mAutoExport &&
-            KOPrefs::instance()->mAutoExportInterval > 0) {
-        mAutoExportTimer->start(1000 * 60 * KOPrefs::instance()->mAutoExportInterval);
-    }
-
     // set up autoSaving stuff
     mAutoArchiveTimer = new QTimer(this);
     mAutoArchiveTimer->setSingleShot(true);
@@ -193,8 +182,6 @@ void ActionManager::init()
 
     connect(mCalendarView, &CalendarView::incidenceSelected,
             this, &ActionManager::processIncidenceSelection);
-    connect(mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
-            this, SLOT(exportHTML(KOrg::HTMLExportSettings*)));
 
     processIncidenceSelection(Akonadi::Item(), QDate());
 
@@ -292,10 +279,6 @@ void ActionManager::initActions()
     action = new QAction(i18n("Get &Hot New Stuff..."), this);
     mACollection->addAction(QStringLiteral("downloadnewstuff"), action);
     connect(action, &QAction::triggered, this, &ActionManager::downloadNewStuff);
-
-    action = new QAction(i18n("Export &Web Page..."), this);
-    mACollection->addAction(QStringLiteral("export_web"), action);
-    connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportWeb);
 
     action = new QAction(i18n("Export as &iCalendar..."), this);
     mACollection->addAction(QStringLiteral("export_icalendar"), action);
@@ -991,91 +974,6 @@ bool ActionManager::saveURL()
     mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.", mURL.toDisplayString()));
 
     return true;
-}
-
-void ActionManager::exportHTML()
-{
-    HTMLExportSettings *settings = new HTMLExportSettings(QStringLiteral("KOrganizer"));
-    mSettingsToFree.insert(settings);
-    // Manually read in the config, because parametrized kconfigxt objects don't
-    // seem to load the config theirselves
-    settings->load();
-
-    const QDate qd1 = QDate::currentDate();
-    QDate qd2 = qd1;
-
-    if (settings->monthView()) {
-        qd2 = qd2.addMonths(1);
-    } else {
-        qd2 = qd2.addDays(7);
-    }
-    settings->setDateStart(QDateTime(qd1));
-    settings->setDateEnd(QDateTime(qd2));
-
-    exportHTML(settings, true/*autoMode*/);
-}
-
-void ActionManager::exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode)
-{
-    if (!settings) {
-        qCWarning(KORGANIZER_LOG) << "Settings is null" << settings;
-        return;
-    }
-
-    if (settings->outputFile().isEmpty()) {
-        int result = KMessageBox::questionYesNo(
-                         dialogParent(),
-                         i18n("The HTML calendar export file has not been specified yet.\n"
-                              "Do you want to set it now?\n\n"
-                              "If you answer \"no\" then this export operation will be canceled"),
-                         QString());
-        if (result == KMessageBox::No) {
-            mMainWindow->showStatusMessage(
-                i18nc("@info:status",
-                      "Calendar HTML operation canceled due to unspecified output file name"));
-            return;
-        }
-
-        const QString fileName =
-            QFileDialog::getSaveFileName(dialogParent(), i18n("Select path for HTML calendar export"),
-                                         QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-                                         i18n("HTML Files (*.html)"));
-        settings->setOutputFile(fileName);
-        settings->save();
-    }
-
-    if (!autoMode && QFileInfo(settings->outputFile()).exists()) {
-        if (KMessageBox::warningContinueCancel(
-                    dialogParent(),
-                    i18n("Do you want to overwrite file \"%1\"?",
-                         settings->outputFile()),
-                    QString(),
-                    KStandardGuiItem::overwrite()) == KMessageBox::Cancel) {
-            mMainWindow->showStatusMessage(
-                i18nc("@info:status",
-                      "Calendar HTML operation canceled due to output file overwrite"));
-            return;
-        }
-    }
-
-    settings->setEMail(CalendarSupport::KCalPrefs::instance()->email());
-    settings->setName(CalendarSupport::KCalPrefs::instance()->fullName());
-
-    settings->setCreditName(QStringLiteral("KOrganizer"));
-    settings->setCreditURL(QStringLiteral("http://korganizer.kde.org"));
-
-    KOrg::HtmlExportJob *exportJob = new KOrg::HtmlExportJob(calendar(), settings, autoMode, mMainWindow, view());
-
-    if (KOGlobals::self()->holidays()) {
-        const KHolidays::Holiday::List holidays = KOGlobals::self()->holidays()->holidays(
-                                                settings->dateStart().date(), settings->dateEnd().date());
-        for (const KHolidays::Holiday &holiday : holidays) {
-            exportJob->addHoliday(holiday.observedStartDate(), holiday.name());
-        }
-    }
-
-    connect(exportJob, &KOrg::HtmlExportJob::result, this, &ActionManager::handleExportJobResult);
-    exportJob->start();
 }
 
 bool ActionManager::saveAsURL(const QUrl &url)
@@ -1890,19 +1788,6 @@ QWidget *ActionManager::dialogParent()
     return mCalendarView->topLevelWidget();
 }
 
-void ActionManager::checkAutoExport()
-{
-    // Don't save if auto save interval is zero
-    if (KOPrefs::instance()->mAutoExportInterval == 0) {
-        return;
-    }
-
-    // has this calendar been saved before? If yes automatically save it.
-    if (KOPrefs::instance()->mAutoExport) {
-        exportHTML();
-    }
-}
-
 void ActionManager::openTodoEditor(const QString &summary,
                                    const QString &description,
                                    const QStringList &attachmentUris,
@@ -1933,17 +1818,6 @@ void ActionManager::openEventEditor(const QString &summary,
     Q_UNUSED(attachmentMimetypes);
     Q_UNUSED(attachmentIsInline);
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
-}
-
-void ActionManager::handleExportJobResult(KJob *job)
-{
-    HtmlExportJob *htmlExportJob = qobject_cast<HtmlExportJob *>(job);
-    Q_ASSERT(htmlExportJob);
-
-    if (mSettingsToFree.contains(htmlExportJob->settings())) {
-        mSettingsToFree.remove(htmlExportJob->settings());
-        delete htmlExportJob->settings();
-    }
 }
 
 void ActionManager::setHelpText(QAction *act, const QString &text)

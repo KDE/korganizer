@@ -134,7 +134,7 @@ you keep your schedule.</para>
 
 <para>But &korganizer; is not only about your personal calendar, it can
 help you to interact with your colleagues and friends too. With &korganizer;,
-you can publish a calendar as a web page, invite anyone with an email address
+you can invite anyone with an email address
 to an event and process responses, share a calendar (using a groupware
 server or simply a file over the network), and share events (&eg;
 the schedule of a championship or a conference), using the get hot new stuff
@@ -361,10 +361,9 @@ import the data (merge) into an existing resource and open the file in a new
 window too. Importing files in the format used by the old
 <application>ical</application> application is also supported.</para>
 
-<para>You can export your data as a web page, as an iCalendar or
+<para>You can export your data as an iCalendar or
 vCalendar file. These files are supported by most scheduling applications.
-The web page can be used to publish your calendar and to-do list on the
-web or on the local network.</para>
+</para>
 
 <para>In this chapter, we will explain how to manage your calendar, using the
 resources, import and export actions and the get hot new stuff scheme.</para>
@@ -530,10 +529,9 @@ store.kde.org KOrganizer Calendars-->
 <sect2 id="managing-export">
 <title>Exporting Calendars</title>
 
-<para>You can export your data as a web page, or as an iCalendar or
+<para>You can export your data as an iCalendar or
 vCalendar file, which are supported by most scheduling applications.
-The web page can be used to publish your calendar and to-do list on the
-web or on the local network. Either way, &korganizer; will export all calendar
+Either way, &korganizer; will export all calendar
 items from the enabled (checked) resources which are
 <link linkend="filters-view">not filtered out</link> (let's call these items
 <quote>active</quote> items). In other words, if you cannot see a calendar
@@ -555,42 +553,6 @@ data as a new vCalendar file choose the <menuchoice><guimenu>File</guimenu>
 </menuchoice> menu item. The <guilabel>Save As</guilabel> dialog will pop up.
 Enter the file name and location for the new file to complete the export
 action.</para>
-
-<para>You can export your calendar or a part of it as an &HTML;
-file, suitable for publishing on the web. Anyone with access to this file,
-using a web browser, will be able to view it. This is an easy way to share
-calendar information with your colleagues and friends.</para>
-
-<!--TODO: use case: export your friends birthdays?-->
-
-<procedure id="procedure-export-html">
-<step><para>Disable all the resources you do not want to export, and filter out
-the items you do not want to export.</para></step>
-<step><para>Choose the <menuchoice><guimenu>File</guimenu>
-<guisubmenu>Export</guisubmenu><guimenuitem>Export Web Page...</guimenuitem>
-</menuchoice> menu item. You will get a window with three tabs:
-<guilabel>General</guilabel>,  <guilabel>Events</guilabel>, and
-<guilabel>To-dos</guilabel>.</para></step>
-<step><para><guilabel>General</guilabel> tab:</para>
-<substeps>
-<step><para>Specify the date range that you want published. Enter dates
-manually or use the Calendar Widget.</para></step>
-<step><para>If you want to export to-dos, check the <guilabel>Export
-to-do list</guilabel> box.</para></step>
-<step><para>If you want to export the items displayed in the Month view, check the
-<guilabel>Export in month view</guilabel> box.</para></step>
-<step><para>If you want to export events formatted as a list of events, check the
-<guilabel>Export events as list</guilabel> box.</para></step>
-<step><para>Specify the web output file in the <guilabel>Output filename</guilabel>
-field. If you want to set another location, press the <inlinemediaobject>
-<imageobject><imagedata fileref="document-open.png" format="PNG"/></imageobject><!--wrong png-->
-</inlinemediaobject><guibutton>Open file dialog</guibutton> button to find it.</para></step>
-</substeps></step>
-<step><para><guilabel>Events</guilabel> tab: specify if you want to include
-categories and attendees in the exported web page.</para></step>
-<step><para><guilabel>To-dos</guilabel> tab: specify if you want to list Due
-Dates, Categories, and Attendees.</para></step>
-</procedure>
 
 </sect2>
 
@@ -2088,13 +2050,6 @@ the email excluding attachments or only a link to the email.</para>
 <variablelist>
 
 <varlistentry>
-<term><guilabel>Export to &HTML; periodically</guilabel></term>
-<listitem><para>By checking this option, you can order &korganizer; to export
-your calendar and to-do list to an &HTML; file in your home folder at an interval
-which defaults to 10 minutes.</para></listitem>
-</varlistentry>
-
-<varlistentry>
 <term><guilabel>Confirm deletes</guilabel></term>
 <listitem><para>When you check <guilabel>Confirm deletes</guilabel> box,
  &korganizer;
@@ -2926,18 +2881,6 @@ added to your calendar.</para>
 <para>For more information about this action, please refer to
 <xref linkend="managing-get-hot-new-stuff" />.</para>
 </listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-export-as-web">
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guisubmenu>Export</guisubmenu>
-<guimenuitem>Export Web Page...</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>You can export your calendar or a part of it as a &HTML;
-file, suitable for publishing on the World Wide Web.</action></para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-export" />.</para></listitem>
 </varlistentry>
 
 <varlistentry id="menu-file-export-icalendar">

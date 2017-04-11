@@ -126,35 +126,11 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                       i18nc("@title:tab", "Save"));
     QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
 
-    QGroupBox *saveGroupBox =
-        new QGroupBox(i18nc("@title:group", "Exporting Calendar"), saveFrame);
-    saveLayout->addWidget(saveGroupBox);
-    QVBoxLayout *saveGroupLayout = new QVBoxLayout;
-    saveGroupBox->setLayout(saveGroupLayout);
-
-    KPIM::KPrefsWidBool *autoExportHTML =
-        addWidBool(KOPrefs::instance()->autoExportItem(), saveGroupBox);
-    saveGroupLayout->addWidget(autoExportHTML->checkBox());
-
-    QBoxLayout *intervalLayout = new QHBoxLayout;
-    saveGroupLayout->addLayout(intervalLayout);
-
-    KPIM::KPrefsWidInt *autoExportInterval =
-        addWidInt(KOPrefs::instance()->autoExportIntervalItem(), saveGroupBox);
-    connect(autoExportHTML->checkBox(), &QAbstractButton::toggled,
-            autoExportInterval->label(), &QWidget::setEnabled);
-    connect(autoExportHTML->checkBox(), &QAbstractButton::toggled,
-            autoExportInterval->spinBox(), &QWidget::setEnabled);
-    intervalLayout->addWidget(autoExportInterval->label());
-    intervalLayout->addWidget(autoExportInterval->spinBox());
-
     KPIM::KPrefsWidBool *confirmItem =
         addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
     saveLayout->addWidget(confirmItem->checkBox());
     KPIM::KPrefsWidRadios *destinationItem =
         addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
-    autoExportInterval->spinBox()->setEnabled(autoExportHTML->checkBox()->isChecked());
-    autoExportInterval->label()->setEnabled(autoExportHTML->checkBox()->isChecked());
 
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);

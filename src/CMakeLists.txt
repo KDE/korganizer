@@ -165,9 +165,7 @@ set(korganizerprivate_LIB_SRCS
     datechecker.cpp
     datenavigator.cpp
     datenavigatorcontainer.cpp
-    dialog/exportwebdialog.cpp
     dialog/filtereditdialog.cpp
-    job/htmlexportjob.cpp
     widgets/kdatenavigator.cpp
     kocheckableproxymodel.cpp
     kocorehelper.cpp
@@ -195,8 +193,6 @@ set(korganizerprivate_LIB_SRCS
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
     )
-
-kconfig_add_kcfg_files(korganizerprivate_LIB_SRCS settings/htmlexportsettings.kcfgc)
 
 ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui

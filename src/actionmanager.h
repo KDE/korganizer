@@ -43,10 +43,6 @@
 class AkonadiCollectionView;
 class CalendarView;
 class KOWindowList;
-namespace KOrg
-{
-class HTMLExportSettings;
-}
 
 namespace Akonadi
 {
@@ -96,19 +92,6 @@ public Q_SLOTS:
     /** Save calendar file to URL */
     bool saveAsURL(const QUrl &QUrl);
 
-    /**
-      Export the calendar to an HTML file. Reads up the user settings as needed.
-      Intended to be used as part of the auto HTML export feature.
-    */
-    void exportHTML();
-
-    /**
-      Export the calendar to an HTML file, per the user settings.
-      @param settings is a pointer to an KOrg::HTMLExportSettings instance.
-      @param autoMode if true, indicates that this export is for an autosave;
-                      if false, then the export is explicitly user invoked.
-    */
-    void exportHTML(KOrg::HTMLExportSettings *settings, bool autoMode = false);
     void toggleMenubar(bool dontShowWarning = false);
 
 public:
@@ -270,9 +253,6 @@ public Q_SLOTS:
 protected Q_SLOTS:
     void setItems(const QStringList &, int);
 
-    /** called by the autoExportTimer to automatically export the calendar */
-    void checkAutoExport();
-
     /** open new window */
     //void file_new();
 
@@ -324,7 +304,6 @@ protected:
     QWidget *dialogParent();
 
 private Q_SLOTS:
-    void handleExportJobResult(KJob *);
     void dumpText(const QString &);    // only for debugging purposes
 
     void slotDefaultResourceChanged(const Akonadi::Collection &);
@@ -405,12 +384,10 @@ private:
     CalendarView *mCalendarView;
     KOrg::MainWindow *mMainWindow;
     bool mIsPart;
-    bool mHtmlExportSync;
 
     AkonadiCollectionView *mCollectionView;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver;
-    QSet<KOrg::HTMLExportSettings *> mSettingsToFree;
 };
 
 #endif
