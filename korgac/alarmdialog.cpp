@@ -101,7 +101,7 @@ public:
 
     const Akonadi::Item mIncidence;
     QDateTime mRemindAt;
-    KDateTime mTrigger;
+    QDateTime mTrigger;
     KDateTime mHappening;
     bool mNotified;
 };
@@ -333,7 +333,7 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
     item->mNotified = false;
     item->mHappening = KDateTime();
     item->mRemindAt = reminderAt;
-    item->mTrigger = KDateTime::currentLocalDateTime();
+    item->mTrigger = QDateTime::currentDateTime();
     item->mDisplayText = displayText;
     item->setText(0, cleanSummary(incidence->summary()));
 
@@ -350,8 +350,7 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
     item->mHappening = dateTime;
     item->setText(1, displayStr);
 
-    item->setText(2, IncidenceFormatter::dateTimeToString(
-                      item->mTrigger, false, true, KDateTime::Spec::LocalZone()));
+    item->setText(2, QLocale().toString(item->mTrigger, QLocale::ShortFormat));
     QString tip =
         IncidenceFormatter::toolTipStr(
             CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
