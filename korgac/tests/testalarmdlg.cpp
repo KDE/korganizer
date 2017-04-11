@@ -38,9 +38,10 @@
 
 using namespace KCalCore;
 
+static Akonadi::Item::Id id = 1;
 template<class T> Akonadi::Item incidenceToItem(T *incidence)
 {
-    Akonadi::Item item;
+    Akonadi::Item item(++id);
     item.setPayload< QSharedPointer<T> >(QSharedPointer<T>(incidence));
     return item;
 }
