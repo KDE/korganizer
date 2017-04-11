@@ -253,9 +253,6 @@ public Q_SLOTS:
 protected Q_SLOTS:
     void setItems(const QStringList &, int);
 
-    /** open new window */
-    //void file_new();
-
     /** open a file, load it into the calendar. */
     void file_open();
 

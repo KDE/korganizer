@@ -806,13 +806,6 @@ void ActionManager::writeSettings()
     config->sync();
 }
 
-/*
-void ActionManager::file_new()
-{
-  Q_EMIT actionNewMainWindow();
-}
-*/
-
 void ActionManager::file_open()
 {
     const QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/");
@@ -1020,45 +1013,6 @@ bool ActionManager::saveAsURL(const QUrl &url)
 
     return success;
 }
-
-#ifdef AKONADI_PORT_DISABLED // can go away, kept for reference
-bool ActionManager::saveModifiedURL()
-{
-
-    // If calendar isn't modified do nothing.
-    if (!mCalendarView->isModified()) {
-        return true;
-    }
-
-    mHtmlExportSync = true;
-    if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
-        // Save automatically, when auto save is enabled.
-        return saveURL();
-    } else {
-        int result = KMessageBox::warningYesNoCancel(
-                         dialogParent(),
-                         i18n("The calendar has been modified.\nDo you want to save it?"),
-                         QString(),
-                         KStandardGuiItem::save(), KStandardGuiItem::discard());
-        switch (result) {
-        case KMessageBox::Yes:
-            if (mURL.isEmpty()) {
-                QUrl url = getSaveURL();
-                return saveAsURL(url);
-            } else {
-                return saveURL();
-            }
-        case KMessageBox::No:
-            return true;
-        case KMessageBox::Cancel:
-        default: {
-            mHtmlExportSync = false;
-            return false;
-        }
-        }
-    }
-}
-#endif
 
 QUrl ActionManager::getSaveURL()
 {
