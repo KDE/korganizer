@@ -128,6 +128,7 @@ configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer
 
 add_definitions( -DQT_NO_CAST_FROM_ASCII )
 add_definitions( -DQT_NO_CAST_TO_ASCII )
+add_definitions( -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT )
 
 add_subdirectory(src)
 add_subdirectory(korgac)
