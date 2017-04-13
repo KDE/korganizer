@@ -1,5 +1,5 @@
-<!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="428" translationDomain="korganizer">
+<!DOCTYPE gui>
+<gui name="korganizer" version="428" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -201,4 +201,4 @@
     <Action name="serverside_subscription"/>
   </Menu>
 
-</kpartgui>
+</gui>
