@@ -249,7 +249,8 @@ KOrg::Part::List KOCore::loadParts(KOrg::MainWindow *parent)
 
     KService::List plugins = availableParts();
     KService::List::ConstIterator it;
-    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
+    KService::List::ConstIterator end(plugins.constEnd());
+    for (it = plugins.constBegin(); it != end; ++it) {
         if (selectedPlugins.contains((*it)->desktopEntryName())) {
             KOrg::Part *part = loadPart(*it, parent);
             if (part) {
@@ -287,7 +288,7 @@ KOrg::Part::List KOCore::reloadParts(KOrg::MainWindow *parent, KOrg::Part::List 
     factory->removeClient(parent->mainGuiClient());
 
     unloadParts(parent, parts);
-    KOrg::Part::List list = loadParts(parent);
+    const KOrg::Part::List list = loadParts(parent);
 
     factory->addClient(parent->mainGuiClient());
 

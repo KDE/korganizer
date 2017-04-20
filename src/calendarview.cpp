@@ -174,7 +174,6 @@ CalendarView::CalendarView(QWidget *parent)
     QWidget *rightBox = new QWidget(mPanner);
     QVBoxLayout *rightBoxVBoxLayout = new QVBoxLayout(rightBox);
     rightBoxVBoxLayout->setMargin(0);
-    rightBox->layout()->setMargin(0);
     mNavigatorBar = new NavigatorBar(rightBox);
     rightBoxVBoxLayout->addWidget(mNavigatorBar);
     mRightFrame = new QStackedWidget(rightBox);

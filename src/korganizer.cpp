@@ -117,6 +117,8 @@ void KOrganizer::initializePluginActions()
             }
         }
     }
+#else
+    qCDebug(KORGANIZER_LOG) << " Plugins not implemented yet";
 #endif
 }
 void KOrganizer::newMainWindow(const QUrl &url)
@@ -231,9 +233,7 @@ KOrg::CalendarViewBase *KOrganizer::view() const
 void KOrganizer::setTitle()
 {
     QString title;
-    if (!hasDocument()) {
-        title = i18n("Calendar");
-    } else {
+    if (hasDocument()) {
         QUrl url = mActionManager->url();
 
         if (!url.isEmpty()) {
@@ -249,6 +249,8 @@ void KOrganizer::setTitle()
         if (mCalendarView->isReadOnly()) {
             title += QLatin1String(" [") + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
         }
+    } else {
+        title = i18n("Calendar");
     }
     if (mCalendarView->isFiltered()) {
         title += QLatin1String(" - <") + mCalendarView->currentFilterName() + QLatin1String("> ");

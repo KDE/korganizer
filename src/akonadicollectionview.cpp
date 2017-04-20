@@ -206,7 +206,7 @@ private:
         KSharedConfig::Ptr config = KSharedConfig::openConfig();
         KConfigGroup group = config->group(mTreeStateConfig);
         treeStateSaver.setView(mTreeView);
-        treeStateSaver.setSelectionModel(0); // we only save expand state
+        treeStateSaver.setSelectionModel(nullptr); // we only save expand state
         treeStateSaver.saveState(group);
     }
 

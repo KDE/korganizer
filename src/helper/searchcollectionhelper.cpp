@@ -83,7 +83,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
 
     Akonadi::SearchQuery query(Akonadi::SearchTerm::RelOr);
     const QStringList lstEmails = mIdentityManager->allEmails();
-    for (const QString email : lstEmails) {
+    for (const QString &email : lstEmails) {
         if (!email.isEmpty()) {
             query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email + QString::number(status))));
         }

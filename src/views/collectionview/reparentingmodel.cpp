@@ -32,7 +32,7 @@
  */
 
 ReparentingModel::Node::Node(ReparentingModel &model)
-    :   parent(0),
+    :   parent(nullptr),
         personModel(model),
         mIsSourceNode(false)
 {
@@ -98,7 +98,7 @@ void ReparentingModel::Node::addChild(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::Node::clearHierarchy()
 {
-    parent = 0;
+    parent = nullptr;
     children.clear();
 }
 
@@ -139,7 +139,7 @@ int ReparentingModel::Node::row() const
 {
     Q_ASSERT(parent);
     int row = 0;
-    Q_FOREACH (const Node::Ptr &node, parent->children) {
+    for (const Node::Ptr &node : qAsConst(parent->children)) {
         if (node.data() == this) {
             return row;
         }
@@ -200,7 +200,7 @@ bool ReparentingModel::validateNode(const Node *node) const
         }
 
         bool found = false;
-        Q_FOREACH (const Node::Ptr &child, n->parent->children) {
+        for (const Node::Ptr &child : qAsConst(n->parent->children)) {
             if (child.data() == n) {
                 found = true;
             }
@@ -239,7 +239,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     //otherwise we run into the problem that while a node is being removed,
     //the async request could be triggered (due to a changed signal),
     //resulting in the node getting readded immediately after it had been removed.
-    Q_FOREACH (const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
+    for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";
             return;
@@ -252,7 +252,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
 {
-    Q_FOREACH (const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
+    for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";
             return;
@@ -287,7 +287,7 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
 
 void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
 {
-    Q_FOREACH (const ReparentingModel::Node::Ptr &existing, mProxyNodes) {
+    for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
         if (*existing == *node) {
             existing->update(node);
             const QModelIndex i = index(existing.data());
@@ -380,7 +380,7 @@ void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, 
 
 ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
 {
-    Q_FOREACH (const Node::Ptr &proxyNode, mProxyNodes) {
+    for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
         //Reparent source nodes according to the provided rules
         //The proxy can be ignored if it is a duplicate, so only reparent to proxies that are in the model
         if (proxyNode->parent && proxyNode->adopts(sourceIndex)) {
@@ -653,7 +653,7 @@ ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourc
         }
     }
     // qCDebug(KORGANIZER_LOG) << objectName() <<  "no node found for " << sourceIndex;
-    return 0;
+    return nullptr;
 }
 
 QModelIndex ReparentingModel::mapFromSource(const QModelIndex &sourceIndex) const
@@ -734,7 +734,7 @@ void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
 void ReparentingModel::rebuildAll()
 {
     mRootNode.children.clear();
-    Q_FOREACH (const Node::Ptr &proxyNode, mProxyNodes) {
+    for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
         proxyNode->clearHierarchy();
     }
     Q_ASSERT(mSourceNodes.isEmpty());
@@ -799,7 +799,7 @@ int ReparentingModel::row(ReparentingModel::Node *node) const
     }
     Q_ASSERT(validateNode(node));
     int row = 0;
-    Q_FOREACH (const Node::Ptr &c, node->parent->children) {
+    for (const Node::Ptr &c : qAsConst(node->parent->children)) {
         if (c.data() == node) {
             return row;
         }

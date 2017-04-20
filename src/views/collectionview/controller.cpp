@@ -273,8 +273,8 @@ Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchMo
     : QObject(parent),
       mPersonModel(personModel),
       mSearchModel(searchModel),
-      mCollectionSearchJob(0),
-      mPersonSearchJob(0)
+      mCollectionSearchJob(nullptr),
+      mPersonSearchJob(nullptr)
 {
     Akonadi::AttributeFactory::registerAttribute<Akonadi::CollectionIdentificationAttribute>();
 }
@@ -284,12 +284,12 @@ void Controller::setSearchString(const QString &searchString)
     if (mCollectionSearchJob) {
         disconnect(mCollectionSearchJob, 0, this, 0);
         mCollectionSearchJob->kill(KJob::Quietly);
-        mCollectionSearchJob = 0;
+        mCollectionSearchJob = nullptr;
     }
     if (mPersonSearchJob) {
         disconnect(mPersonSearchJob, 0, this, 0);
         mPersonSearchJob->kill(KJob::Quietly);
-        mPersonSearchJob = 0;
+        mPersonSearchJob = nullptr;
     }
     //TODO: Delay and abort when results are found
     mSearchModel->clear();
@@ -319,7 +319,7 @@ void Controller::setSearchString(const QString &searchString)
 
 void Controller::onCollectionsFound(KJob *job)
 {
-    mCollectionSearchJob = 0;
+    mCollectionSearchJob = nullptr;
     if (!mPersonSearchJob) {
         Q_EMIT searching(false);
     }
@@ -356,7 +356,7 @@ void Controller::onPersonUpdate(const KPIM::Person &person)
 
 void Controller::onPersonsFound(KJob *job)
 {
-    mPersonSearchJob = 0;
+    mPersonSearchJob = nullptr;
     if (!mCollectionSearchJob) {
         Q_EMIT searching(false);
     }

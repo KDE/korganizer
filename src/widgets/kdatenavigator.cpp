@@ -295,7 +295,7 @@ void KDateNavigator::selectPreviousMonth()
 
 void KDateNavigator::selectDates(const KCalCore::DateList &dateList)
 {
-    if (dateList.count() > 0) {
+    if (!dateList.isEmpty()) {
         mSelectedDates = dateList;
 
         updateDates();
