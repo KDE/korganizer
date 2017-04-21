@@ -203,7 +203,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity,
     Q_UNUSED(hidden);
 
     if (!MailTransport::TransportManager::self()->showTransportCreationDialog(
-                0, MailTransport::TransportManager::IfNoTransportExists)) {
+                nullptr, MailTransport::TransportManager::IfNoTransportExists)) {
         return false;
     }
 
