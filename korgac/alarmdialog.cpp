@@ -417,11 +417,11 @@ void AlarmDialog::dismissAll()
     Q_EMIT reminderCount(activeCount());
 }
 
-void AlarmDialog::dismiss(ReminderList selections)
+void AlarmDialog::dismiss(const ReminderList &selections)
 {
     QList<Akonadi::Item::Id> ids;
     ids.reserve(selections.count());
-    for (ReminderList::Iterator it = selections.begin(); it != selections.end(); ++it) {
+    for (ReminderList::const_iterator it = selections.constBegin(); it != selections.constEnd(); ++it) {
         qCDebug(KOALARMCLIENT_LOG) << "removing " << CalendarSupport::incidence((*it)->mIncidence)->summary();
         if (mIncidenceTree->itemBelow(*it)) {
             mIncidenceTree->setCurrentItem(mIncidenceTree->itemBelow(*it));

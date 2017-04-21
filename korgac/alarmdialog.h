@@ -119,7 +119,7 @@ private:
     bool startKOrganizer();
     ReminderTreeItem *searchByItem(const Akonadi::Item &incidence);
     void setTimer();
-    void dismiss(ReminderList selections);
+    void dismiss(const ReminderList &selections);
     int activeCount();
     ReminderList selectedItems() const;
     void toggleDetails(QTreeWidgetItem *item);
