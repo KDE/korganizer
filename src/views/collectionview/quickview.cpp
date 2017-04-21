@@ -68,19 +68,19 @@ public:
         int status = incidence->customProperty(QStringLiteral("FREEBUSY").toLatin1(), QStringLiteral("STATUS").toLatin1()).toInt(&ok);
 
         if (!ok) {
-            return QColor(QStringLiteral("#555"));
+            return QColor(85, 85, 85);
         }
 
         switch (status) {
         case KCalCore::FreeBusyPeriod::Busy:
-            return QColor(QStringLiteral("#f00"));
+            return QColor(255, 0, 0);
         case KCalCore::FreeBusyPeriod::BusyTentative:
         case KCalCore::FreeBusyPeriod::BusyUnavailable:
-            return QColor(QStringLiteral("#f70"));
+            return QColor(255, 119, 0);
         case KCalCore::FreeBusyPeriod::Free:
-            return QColor(QStringLiteral("#0f0"));
+            return QColor(0, 255, 0);
         default:
-            return QColor(QStringLiteral("#555"));
+            return QColor(85, 85, 85);
         }
     }
 
