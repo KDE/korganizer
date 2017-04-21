@@ -27,7 +27,8 @@
 
 #include <QTimer>
 
-DateChecker::DateChecker(QObject *parent) : QObject(parent), mUpdateTimer(nullptr)
+DateChecker::DateChecker(QObject *parent)
+    : QObject(parent), mUpdateTimer(nullptr)
 {
     enableRollover(FollowMonth);
 }
@@ -55,6 +56,7 @@ void DateChecker::enableRollover(RolloverType r)
         mUpdateTimer->setSingleShot(true);
         mUpdateTimer->start(0);
         mLastDayChecked = QDate::currentDate();
+        break;
     }
     mUpdateRollover = r;
 }
@@ -82,7 +84,7 @@ void DateChecker::possiblyPastMidnight()
     if (mUpdateTimer) {
         QTime now = QTime::currentTime();
         QTime midnight = QTime(23, 59, 59);
-        int msecsWait = qMin(480000, now.msecsTo(midnight) + 2000);
+        const int msecsWait = qMin(480000, now.msecsTo(midnight) + 2000);
 
         mUpdateTimer->stop();
         mUpdateTimer->start(msecsWait);

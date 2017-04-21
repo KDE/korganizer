@@ -98,7 +98,7 @@ void DateNavigatorContainer::setCalendar(const Akonadi::ETMCalendar::Ptr &calend
 {
     mCalendar = calendar;
     mNavigatorView->setCalendar(calendar);
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->setCalendar(calendar);
         }
@@ -111,7 +111,7 @@ void DateNavigatorContainer::setCalendar(const Akonadi::ETMCalendar::Ptr &calend
 void DateNavigatorContainer::updateDayMatrix()
 {
     mNavigatorView->updateDayMatrix();
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->updateDayMatrix();
         }
@@ -121,7 +121,7 @@ void DateNavigatorContainer::updateDayMatrix()
 void DateNavigatorContainer::updateToday()
 {
     mNavigatorView->updateToday();
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->updateToday();
         }
@@ -131,7 +131,7 @@ void DateNavigatorContainer::updateToday()
 void DateNavigatorContainer::setUpdateNeeded()
 {
     mNavigatorView->setUpdateNeeded();
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->setUpdateNeeded();
         }
@@ -141,7 +141,7 @@ void DateNavigatorContainer::setUpdateNeeded()
 void DateNavigatorContainer::updateView()
 {
     mNavigatorView->updateView();
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->setUpdateNeeded();
         }
@@ -151,7 +151,7 @@ void DateNavigatorContainer::updateView()
 void DateNavigatorContainer::updateConfig()
 {
     mNavigatorView->updateConfig();
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->updateConfig();
         }
@@ -193,7 +193,7 @@ void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList,
 
         if (!mIgnoreNavigatorUpdates) {
             mNavigatorView->selectDates(dateList);
-            foreach (KDateNavigator *n, mExtraViews) {
+            for (KDateNavigator *n : qAsConst(mExtraViews)) {
                 if (n) {
                     n->selectDates(dateList);
                 }
@@ -209,7 +209,7 @@ void DateNavigatorContainer::setBaseDates(const QDate &start)
         mNavigatorView->setBaseDate(baseDate);
     }
 
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         baseDate = baseDate.addMonths(1);
         if (!mIgnoreNavigatorUpdates) {
             n->setBaseDate(baseDate);
@@ -260,7 +260,7 @@ void DateNavigatorContainer::resizeAllContents()
         mVerticalCount = verticalCount;
         setBaseDates(mNavigatorView->selectedDates().first());
         selectDates(mNavigatorView->selectedDates());
-        foreach (KDateNavigator *n, mExtraViews) {
+        for (KDateNavigator *n : qAsConst(mExtraViews)) {
             if (n) {
                 n->show();
             }
@@ -319,7 +319,7 @@ void DateNavigatorContainer::setHighlightMode(bool highlightEvents,
 
     mNavigatorView->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 
-    foreach (KDateNavigator *n, mExtraViews) {
+    for (KDateNavigator *n : qAsConst(mExtraViews)) {
         if (n) {
             n->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
         }
@@ -409,7 +409,7 @@ KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date)
             // The date is in the first navigator
             navigator = mNavigatorView;
         } else {
-            foreach (KDateNavigator *nav, mExtraViews) {
+            for (KDateNavigator *nav : qAsConst(mExtraViews)) {
                 if (nav) {
                     limits = KODayMatrix::matrixLimits(nav->month());
                     if (date >= limits.first && date <= limits.second) {

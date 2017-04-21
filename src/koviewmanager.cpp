@@ -161,7 +161,7 @@ void KOViewManager::writeSettings(KConfig *config)
     }
 
     // write out custom view configuration
-    Q_FOREACH (KOrg::BaseView *const view, mViews) {
+    for (KOrg::BaseView *const view : qAsConst(mViews)) {
         KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
         view->saveConfig(group);
     }
@@ -199,14 +199,11 @@ void KOViewManager::showView(KOrg::BaseView *view)
                 action->setEnabled(view->hasConfigurationDialog());
             }
 
-            QStringList zoomActions;
-            QStringList rangeActions;
-
-            zoomActions << QStringLiteral("zoom_in_horizontally")
+            const QStringList zoomActions = QStringList() << QStringLiteral("zoom_in_horizontally")
                         << QStringLiteral("zoom_out_horizontally")
                         << QStringLiteral("zoom_in_vertically")
                         << QStringLiteral("zoom_out_vertically");
-            rangeActions << QStringLiteral("select_workweek")
+            const QStringList rangeActions = QStringList() <<  QStringLiteral("select_workweek")
                          << QStringLiteral("select_week")
                          << QStringLiteral("select_day")
                          << QStringLiteral("select_nextx");
