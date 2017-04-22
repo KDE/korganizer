@@ -77,6 +77,7 @@
 
 #include <AkonadiWidgets/CollectionPropertiesDialog>
 #include <AkonadiWidgets/ControlGui>
+#include <AkonadiWidgets/CollectionMaintenancePage>
 #include <AkonadiCore/AttributeFactory>
 #include <Akonadi/Calendar/TodoPurger>
 
@@ -300,6 +301,7 @@ CalendarView::CalendarView(QWidget *parent)
             Akonadi::CollectionPropertiesDialog::registerPage(
                 new CalendarSupport::CollectionGeneralPageFactory);
             Akonadi::CollectionPropertiesDialog::registerPage(new PimCommon::CollectionAclPageFactory);
+            Akonadi::CollectionPropertiesDialog::registerPage(new Akonadi::CollectionMaintenancePageFactory);
             pageRegistered = true;
         }
     }

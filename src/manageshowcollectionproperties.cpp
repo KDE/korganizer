@@ -21,8 +21,10 @@
 #include "akonadicollectionview.h"
 #include "korganizer_debug.h"
 #include <AkonadiWidgets/CollectionPropertiesDialog>
+#include <AkonadiWidgets/CollectionMaintenancePage>
 #include <AkonadiCore/CollectionAttributesSynchronizationJob>
 #include <AkonadiCore/CollectionFetchJob>
+#include <AkonadiCore/CollectionFetchScope>
 
 ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent)
     : QObject(parent),
@@ -30,7 +32,8 @@ ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollection
 {
     mPages = QStringList() << QStringLiteral("CalendarSupport::CollectionGeneralPage")
                            << QStringLiteral("Akonadi::CachePolicyPage")
-                           << QStringLiteral("PimCommon::CollectionAclPage");
+                           << QStringLiteral("PimCommon::CollectionAclPage")
+                           << QStringLiteral("Akonadi::CollectionMaintenancePage");
 }
 
 ManageShowCollectionProperties::~ManageShowCollectionProperties()
@@ -68,6 +71,7 @@ void ManageShowCollectionProperties::slotCollectionPropertiesContinued(KJob *job
     }
     Akonadi::CollectionFetchJob *fetch = new Akonadi::CollectionFetchJob(mCollectionView->currentCalendar(),
             Akonadi::CollectionFetchJob::Base);
+    fetch->fetchScope().setIncludeStatistics(true);
     connect(fetch, &KJob::result,
             this, &ManageShowCollectionProperties::slotCollectionPropertiesFinished);
 }
