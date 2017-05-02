@@ -36,7 +36,6 @@
 #include <KParts/MainWindow>
 
 class CalendarView;
-class KOrganizerPluginInterface;
 // Workaround for moc workaround for visual c++ 6.0 sucking
 typedef KOrg::MainWindow KOrgMainWindow;
 typedef KParts::MainWindow KPartsMainWindow;

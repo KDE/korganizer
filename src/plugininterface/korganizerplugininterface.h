@@ -22,7 +22,6 @@
 
 #include <QObject>
 #include <PimCommonAkonadi/PluginInterface>
-class KActionCollection;
 class KOrganizerPluginInterface : public PimCommon::PluginInterface
 {
     Q_OBJECT
