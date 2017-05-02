@@ -43,7 +43,6 @@
 #include <KCalUtils/IncidenceFormatter>
 
 #include <KIdentityManagement/Identity>
-#include <KIdentityManagement/IdentityManager>
 
 #include <AkonadiCore/Item>
 

@@ -27,16 +27,13 @@
 #include "alarmdockwindow.h"
 
 #include <QAction>
-#include <KActionCollection>
 #include <KConfigGroup>
 #include <KIconEffect>
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KStandardAction>
 #include <KToolInvocation>
 #include <KSharedConfig>
-
 #include <QMenu>
 #include "koalarmclient_debug.h"
 
