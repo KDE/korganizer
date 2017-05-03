@@ -100,9 +100,9 @@ void KoEventPopupMenuTest::createEventFromTodo()
     menu.showIncidencePopup(item, QDate());
     QAction *createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
-    IncidenceEditorNG::IncidenceDialog *dlg = qFindChild<IncidenceEditorNG::IncidenceDialog *>(&menu);
+    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
     QVERIFY(dlg);
-    IncidenceEditorNG::IncidenceEditor *editor = qFindChild<IncidenceEditorNG::IncidenceEditor *>(&menu);
+    IncidenceEditorNG::IncidenceEditor *editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
     KCalCore::Event::Ptr event(editor->incidence<KCalCore::Event>());
     QVERIFY(event->uid() != todo->uid());
@@ -134,9 +134,9 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     menu.showIncidencePopup(item, QDate());
     QAction *createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
-    IncidenceEditorNG::IncidenceDialog *dlg = qFindChild<IncidenceEditorNG::IncidenceDialog *>(&menu);
+    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
     QVERIFY(dlg);
-    IncidenceEditorNG::IncidenceEditor *editor = qFindChild<IncidenceEditorNG::IncidenceEditor *>(&menu);
+    IncidenceEditorNG::IncidenceEditor *editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
     KCalCore::Todo::Ptr todo(editor->incidence<KCalCore::Todo>());
     QVERIFY(todo->uid() != event->uid());
@@ -169,10 +169,10 @@ void KoEventPopupMenuTest::createNoteFromEvent()
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
     QAction *createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
-    NoteEditDialog *noteedit = qFindChild<NoteEditDialog *>(&menu);
+    NoteEditDialog *noteedit = menu.findChild<NoteEditDialog *>();
     QVERIFY(!noteedit);
     createnote->trigger();
-    noteedit = qFindChild<NoteEditDialog *>(&menu);
+    noteedit = menu.findChild<NoteEditDialog *>();
     QVERIFY(noteedit);
     Akonadi::NoteUtils::NoteMessageWrapper note(noteedit->note());
     QCOMPARE(note.title(), summary);
@@ -208,10 +208,10 @@ void KoEventPopupMenuTest::createNoteFromTodo()
     menu.showIncidencePopup(item, QDate());
     QAction *createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
 
-    NoteEditDialog *noteedit = qFindChild<NoteEditDialog *>(&menu);
+    NoteEditDialog *noteedit = menu.findChild<NoteEditDialog *>();
     QVERIFY(!noteedit);
     createnote->trigger();
-    noteedit = qFindChild<NoteEditDialog *>(&menu);
+    noteedit = menu.findChild<NoteEditDialog *>();
     QVERIFY(noteedit);
     Akonadi::NoteUtils::NoteMessageWrapper note(noteedit->note());
     QCOMPARE(note.title(), summary);

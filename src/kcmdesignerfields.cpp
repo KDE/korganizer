@@ -310,7 +310,7 @@ void KCMDesignerFields::initGUI()
     mPageView->setHeaderLabel(i18n("Available Pages"));
     mPageView->setRootIsDecorated(true);
     mPageView->setAllColumnsShowFocus(true);
-    mPageView->header()->setResizeMode(QHeaderView::Stretch);
+    mPageView->header()->setSectionResizeMode(QHeaderView::Stretch);
     hbox->addWidget(mPageView);
 
     QGroupBox *box = new QGroupBox(i18n("Preview of Selected Page"), this);
