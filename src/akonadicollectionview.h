@@ -87,9 +87,6 @@ public:
     Akonadi::Collection::List checkedCollections() const;
     bool isChecked(const Akonadi::Collection &) const;
     Akonadi::Collection currentCalendar() const;
-public Q_SLOTS:
-    void edit_disable();
-    void edit_enable();
 
 Q_SIGNALS:
     void resourcesChanged(bool enabled);
@@ -124,7 +121,6 @@ private:
     QAction *mAssignColor;
     QAction *mDisableColor;
     QAction *mDefaultCalendar;
-    QAction *mEnableAction;
     QAction *mServerSideSubscription;
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;

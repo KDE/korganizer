@@ -507,7 +507,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
       mAssignColor(nullptr),
       mDisableColor(nullptr),
       mDefaultCalendar(nullptr),
-      mEnableAction(nullptr),
       mServerSideSubscription(nullptr),
       mNotSendAddRemoveSignal(false),
       mWasDefaultCalendar(false),
@@ -690,16 +689,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"),
                 mDefaultCalendar);
 
-        //Disable a calendar or remove a referenced calendar
-        QAction *disableAction = xmlclient->actionCollection()->addAction(QStringLiteral("collection_disable"), this, &AkonadiCollectionView::edit_disable);
-        disableAction->setText(i18n("Remove from list"));
-        disableAction->setIcon(QIcon::fromTheme(QStringLiteral("list-remove")));
-
-        //Enable (subscribe) to a calendar.
-        mEnableAction = xmlclient->actionCollection()->addAction(QStringLiteral("collection_enable"), this, &AkonadiCollectionView::edit_enable);
-        mEnableAction->setText(i18n("Add to list permanently"));
-        mEnableAction->setIcon(QIcon::fromTheme(QStringLiteral("bookmarks")));
-
         mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral("folder-bookmarks")), i18n("Serverside Subscription..."), this);
         xmlclient->actionCollection()->addAction(QStringLiteral("serverside_subscription"), mServerSideSubscription);
         connect(mServerSideSubscription, &QAction::triggered, this, &AkonadiCollectionView::slotServerSideSubscription);
@@ -851,11 +840,6 @@ void AkonadiCollectionView::updateMenu()
             mDefaultCalendar->setEnabled(!KOHelper::isStandardCalendar(collection.id()) &&
                                          collection.rights() & Akonadi::Collection::CanCreateItem);
             disableStuff = false;
-        }
-        if (collection.isValid() && collection.shouldList(Akonadi::Collection::ListDisplay)) {
-            mEnableAction->setEnabled(false);
-        } else {
-            mEnableAction->setEnabled(true);
         }
         bool isOnline;
         mServerSideSubscription->setEnabled(PimCommon::MailUtil::isImapFolder(collection, isOnline));
@@ -1033,33 +1017,6 @@ Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
 
     qCWarning(KORGANIZER_LOG) << "Couldn't find EntityTreeModel";
     return nullptr;
-}
-
-void AkonadiCollectionView::edit_disable()
-{
-#if 0
-    Akonadi::Collection col = mCollectionView->currentIndex().data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-    if (col.isValid()) {
-        mController->setCollectionState(col, Controller::Disabled);
-    }
-#endif
-    const QVariant var = mCollectionView->currentIndex().data(PersonRole);
-    if (var.isValid()) {
-        mController->removePerson(var.value<KPIM::Person>());
-    }
-}
-
-void AkonadiCollectionView::edit_enable()
-{
-    Akonadi::Collection col = mCollectionView->currentIndex().data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-    qCDebug(KORGANIZER_LOG) << col.name();
-    if (col.isValid()) {
-        mController->setCollectionState(col, Controller::Enabled);
-    }
-    const QVariant var = mCollectionView->currentIndex().data(PersonRole);
-    if (var.isValid()) {
-        mController->addPerson(var.value<KPIM::Person>());
-    }
 }
 
 void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
