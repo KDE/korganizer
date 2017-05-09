@@ -224,9 +224,10 @@ EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations
         QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
         mCalendarDecorations.clear();
-        KService::List plugins = availableCalendarDecorations();
+        const KService::List plugins = availableCalendarDecorations();
         KService::List::ConstIterator it;
-        for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
+        const KService::List::ConstIterator end(plugins.constEnd());
+        for (it = plugins.constBegin(); it != end; ++it) {
             if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
                 QString name = (*it)->desktopEntryName();
                 if (selectedPlugins.contains(name)) {
@@ -247,9 +248,9 @@ KOrg::Part::List KOCore::loadParts(KOrg::MainWindow *parent)
 
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-    KService::List plugins = availableParts();
+    const KService::List plugins = availableParts();
     KService::List::ConstIterator it;
-    KService::List::ConstIterator end(plugins.constEnd());
+    const KService::List::ConstIterator end(plugins.constEnd());
     for (it = plugins.constBegin(); it != end; ++it) {
         if (selectedPlugins.contains((*it)->desktopEntryName())) {
             KOrg::Part *part = loadPart(*it, parent);
