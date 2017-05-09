@@ -167,7 +167,8 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
         (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeTodo);
         (*it)->setEnabled(hasChangeRights);
     }
-    for (it = mEventOnlyItems.begin(); it != mEventOnlyItems.end(); ++it) {
+    end = mEventOnlyItems.end();
+    for (it = mEventOnlyItems.begin(); it != end; ++it) {
         (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeEvent);
         (*it)->setEnabled(hasChangeRights);
     }
