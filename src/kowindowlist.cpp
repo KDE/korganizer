@@ -56,11 +56,12 @@ void KOWindowList::removeWindow(KOrg::MainWindow *korg)
 
 bool KOWindowList::lastInstance()
 {
-    if (mWindowList.count() == 1 && !mDefaultWindow) {
+    const int countWindow = mWindowList.count();
+    if (countWindow == 1 && !mDefaultWindow) {
         return true;
     }
 
-    if (mWindowList.count() == 0 && mDefaultWindow) {
+    if (countWindow == 0 && mDefaultWindow) {
         return true;
     } else {
         return false;

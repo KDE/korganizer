@@ -271,8 +271,7 @@ CalendarView::CalendarView(QWidget *parent)
             mEventViewer, &CalendarSupport::IncidenceViewer::setIncidence);
 
     //TODO: do a pretty Summary,
-    QString s;
-    s = i18n("<p><em>No Item Selected</em></p>"
+    const QString s = i18n("<p><em>No Item Selected</em></p>"
              "<p>Select an event, to-do or journal entry to view its details "
              "here.</p>");
 
@@ -407,8 +406,6 @@ void CalendarView::archiveCalendar()
 
 void CalendarView::readSettings()
 {
-    QString str;
-
     // read settings from the KConfig, supplying reasonable
     // defaults where none are to be found
 
@@ -1365,9 +1362,10 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
     }
     KCalCore::Incidence::Ptr oldincidence(incidence->clone());
 
-    KCalCore::Alarm::List alarms = incidence->alarms();
+    const KCalCore::Alarm::List alarms = incidence->alarms();
     KCalCore::Alarm::List::ConstIterator it;
-    for (it = alarms.constBegin(); it != alarms.constEnd(); ++it) {
+    KCalCore::Alarm::List::ConstIterator end(alarms.constEnd());
+    for (it = alarms.constBegin(); it != end; ++it) {
         (*it)->toggleAlarm();
     }
     if (alarms.isEmpty()) {
