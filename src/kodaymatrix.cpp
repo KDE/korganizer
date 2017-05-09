@@ -652,7 +652,6 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         e->ignore();
         return;
     }
-    Akonadi::Item items;
     //For the moment support 1 url
     if (urls.count() >= 1) {
         QUrl res = urls.at(0);
