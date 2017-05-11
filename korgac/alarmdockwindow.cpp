@@ -38,7 +38,7 @@
 #include "koalarmclient_debug.h"
 
 AlarmDockWindow::AlarmDockWindow()
-    : KStatusNotifierItem(0)
+    : KStatusNotifierItem(nullptr)
 {
     // Read the autostart status from the config file
     KConfigGroup config(KSharedConfig::openConfig(), "General");

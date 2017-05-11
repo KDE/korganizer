@@ -822,7 +822,7 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         mDetailView->setIncidence(Akonadi::Item());
     } else {
         if (!reminderItem->mDisplayText.isEmpty()) {
-            QString txt = QLatin1String("<qt><p><b>") + reminderItem->mDisplayText + QLatin1String("</b></p></qt>");
+            const QString txt = QLatin1String("<qt><p><b>") + reminderItem->mDisplayText + QLatin1String("</b></p></qt>");
             mDetailView->setHeaderText(txt);
         } else {
             mDetailView->setHeaderText(QString());
@@ -882,9 +882,10 @@ KDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
 void AlarmDialog::slotCalendarChanged()
 {
     KCalCore::Incidence::List incidences = mCalendar->incidences();
-    Akonadi::Item::List items = mCalendar->itemList(incidences);
+    const Akonadi::Item::List items = mCalendar->itemList(incidences);
+    Akonadi::Item::List::ConstIterator end(items.constEnd());
     for (Akonadi::Item::List::ConstIterator it = items.constBegin();
-            it != items.constEnd(); ++it) {
+            it != end; ++it) {
         ReminderTreeItem *item = searchByItem(*it);
 
         if (item) {
@@ -983,7 +984,7 @@ bool AlarmDialog::openIncidenceEditorNG(const Akonadi::Item &item)
     IncidenceEditorNG::IncidenceDialog *dialog =
         IncidenceEditorNG::IncidenceDialogFactory::create(
             false, /*doesn't need initial saving*/
-            incidence->type(), 0, this);
+            incidence->type(), nullptr, this);
     dialog->load(item);
     return true;
 }
