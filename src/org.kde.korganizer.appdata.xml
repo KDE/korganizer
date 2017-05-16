@@ -172,7 +172,6 @@
       <li xml:lang="sk">Model úložiska.</li>
       <li xml:lang="sl">Model za shranjevanje.</li>
       <li xml:lang="sv">Lagringsmodell.</li>
-      <li xml:lang="tr">Depolama kipi.</li>
       <li xml:lang="uk">модель зберігання даних;</li>
       <li xml:lang="x-test">xxStorage model.xx</li>
       <li xml:lang="zh-TW">儲存模型。</li>
@@ -202,7 +201,6 @@
       <li xml:lang="sk">Funkcia Späť a Znova.</li>
       <li xml:lang="sl">Uveljavi in razveljavi.</li>
       <li xml:lang="sv">Ångra och gör om.</li>
-      <li xml:lang="tr">Geri al ve Tekrarla.</li>
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="x-test">xxUndo and Redo.xx</li>
       <li xml:lang="zh-CN">撤销和重做。</li>
@@ -231,7 +229,6 @@
       <li xml:lang="sk">Integrácia úloh s pohľadom agendy.</li>
       <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda.</li>
       <li xml:lang="sv">Integrering av uppgifter med agendavyn.</li>
-      <li xml:lang="tr">Ajanda görünümüyle yapılacakların tümleşimi</li>
       <li xml:lang="uk">вбудовування завдань до порядку денного;</li>
       <li xml:lang="x-test">xxTodo integration with agenda view.xx</li>
       <li xml:lang="zh-TW">將待辦事項與行程檢視整合。</li>
@@ -260,7 +257,6 @@
       <li xml:lang="sk">Prílohy pre udalosti a úlohy.</li>
       <li xml:lang="sl">Priloge za dogodke in opravila.</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter.</li>
-      <li xml:lang="tr">Olaylar ve yapılacaklar için eklentiler.</li>
       <li xml:lang="uk">можливість створення долучень до записів подій та завдань;</li>
       <li xml:lang="x-test">xxAttachments for events and todos.xx</li>
       <li xml:lang="zh-TW">事件與待辦事項的附件。</li>
