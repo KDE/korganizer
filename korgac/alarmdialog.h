@@ -83,7 +83,7 @@ public Q_SLOTS:
     void dismissAll();
     void dismissCurrent();
     /*reimp*/
-    void accept() Q_DECL_OVERRIDE;
+    void accept() override;
 
     /**
        If an incidence changed, for example in korg, we must update
@@ -95,8 +95,8 @@ Q_SIGNALS:
     void reminderCount(int count);
 
 protected:
-    void keyPressEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
-    void closeEvent(QCloseEvent *) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent *e) override;
+    void closeEvent(QCloseEvent *) override;
 
 private:
     void update();

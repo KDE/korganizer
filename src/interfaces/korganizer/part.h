@@ -77,7 +77,7 @@ public:
     virtual Part *createPluginFactory(MainWindow *parent) = 0;
 
 protected:
-    QObject *createObject(QObject *, const char *, const QStringList &) Q_DECL_OVERRIDE {
+    QObject *createObject(QObject *, const char *, const QStringList &) override {
         return nullptr;
     }
 };

@@ -42,27 +42,27 @@ public:
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
-    int maxDatesHint() const Q_DECL_OVERRIDE;
+    int maxDatesHint() const override;
 
     /** Returns number of currently shown dates. */
-    int currentDateCount() const Q_DECL_OVERRIDE;
+    int currentDateCount() const override;
 
     /** returns the currently selected events */
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    Akonadi::Item::List selectedIncidences() override;
 
     /** returns the currently selected incidence's dates */
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
+    KCalCore::DateList selectedIncidenceDates() override;
 
     /** return the default start/end date/time for new events   */
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
 
-    CalendarSupport::CalPrinter::PrintType printType() const Q_DECL_OVERRIDE;
+    CalendarSupport::CalPrinter::PrintType printType() const override;
 
     /** start-datetime of selection */
-    QDateTime selectionStart() Q_DECL_OVERRIDE;
+    QDateTime selectionStart() override;
 
     /** end-datetime of selection */
-    QDateTime selectionEnd() Q_DECL_OVERRIDE;
+    QDateTime selectionEnd() override;
 
     /** returns true if selection is for whole day */
     bool selectedIsAllDay();
@@ -72,33 +72,33 @@ public:
     bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
 
-    void setTypeAheadReceiver(QObject *o) Q_DECL_OVERRIDE;
+    void setTypeAheadReceiver(QObject *o) override;
 
-    void setChanges(EventViews::EventView::Changes changes) Q_DECL_OVERRIDE;
+    void setChanges(EventViews::EventView::Changes changes) override;
 
     void setDateRange(const KDateTime &start, const KDateTime &end,
-                      const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
+                      const QDate &preferredMonth = QDate()) override;
 
 public Q_SLOTS:
-    void updateView() Q_DECL_OVERRIDE;
-    void updateConfig() Q_DECL_OVERRIDE;
+    void updateView() override;
+    void updateConfig() override;
     void showDates(const QDate &start, const QDate &end,
-                   const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
+                   const QDate &preferredMonth = QDate()) override;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
     void changeIncidenceDisplayAdded(const Akonadi::Item &incidence);
-    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
+    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;
 
-    void clearSelection() Q_DECL_OVERRIDE;
+    void clearSelection() override;
 
     void readSettings();
     void readSettings(KConfig *);
     void writeSettings(KConfig *);
 
     void enableAgendaUpdate(bool enable);
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
     void zoomInHorizontally(const QDate &date = QDate());
     void zoomOutHorizontally(const QDate &date = QDate());

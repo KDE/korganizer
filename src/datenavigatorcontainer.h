@@ -47,8 +47,8 @@ public:
     */
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
 
-    QSize minimumSizeHint() const Q_DECL_OVERRIDE;
-    QSize sizeHint() const Q_DECL_OVERRIDE;
+    QSize minimumSizeHint() const override;
+    QSize sizeHint() const override;
     void setHighlightMode(bool highlightEvents,
                           bool highlightTodos,
                           bool highlightJournals) const;
@@ -121,7 +121,7 @@ Q_SIGNALS:
     void yearSelected(int year);
 
 protected:
-    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *) override;
     void setBaseDates(const QDate &start);
     void connectNavigatorView(KDateNavigator *v);
 

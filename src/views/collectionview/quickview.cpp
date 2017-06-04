@@ -46,23 +46,23 @@ class FreebusyViewCalendar : public EventViews::ViewCalendar
 {
 public:
     virtual ~FreebusyViewCalendar() {}
-    bool isValid(const KCalCore::Incidence::Ptr &incidence) const Q_DECL_OVERRIDE
+    bool isValid(const KCalCore::Incidence::Ptr &incidence) const override
     {
         return isValid(incidence->uid());
     }
 
-    bool isValid(const QString &incidenceIdentifier) const Q_DECL_OVERRIDE
+    bool isValid(const QString &incidenceIdentifier) const override
     {
         return incidenceIdentifier.startsWith(QStringLiteral("fb-"));
     }
 
-    QString displayName(const KCalCore::Incidence::Ptr &incidence) const Q_DECL_OVERRIDE
+    QString displayName(const KCalCore::Incidence::Ptr &incidence) const override
     {
         Q_UNUSED(incidence);
         return i18n("Free/Busy calendar from %1", name);
     }
 
-    QColor resourceColor(const KCalCore::Incidence::Ptr &incidence) const Q_DECL_OVERRIDE
+    QColor resourceColor(const KCalCore::Incidence::Ptr &incidence) const override
     {
         bool ok = false;
         int status = incidence->customProperty(QStringLiteral("FREEBUSY").toLatin1(), QStringLiteral("STATUS").toLatin1()).toInt(&ok);
@@ -84,13 +84,13 @@ public:
         }
     }
 
-    QString iconForIncidence(const KCalCore::Incidence::Ptr &incidence) const Q_DECL_OVERRIDE
+    QString iconForIncidence(const KCalCore::Incidence::Ptr &incidence) const override
     {
         Q_UNUSED(incidence);
         return QString();
     }
 
-    KCalCore::Calendar::Ptr getCalendar() const Q_DECL_OVERRIDE
+    KCalCore::Calendar::Ptr getCalendar() const override
     {
         return mCalendar;
     }

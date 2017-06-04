@@ -42,11 +42,11 @@ public:
     KOTodoView(bool sidebarView, QWidget *parent);
     ~KOTodoView();
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &) Q_DECL_OVERRIDE;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
-    int currentDateCount() const Q_DECL_OVERRIDE
+    Akonadi::Item::List selectedIncidences() override;
+    KCalCore::DateList selectedIncidenceDates() override;
+    int currentDateCount() const override
     {
         return 0;
     }
@@ -58,27 +58,27 @@ public:
     /** documentation in baseview.h */
     void getHighlightMode(bool &highlightEvents,
                           bool &highlightTodos,
-                          bool &highlightJournals) Q_DECL_OVERRIDE;
+                          bool &highlightJournals) override;
 
-    bool usesFullWindow() Q_DECL_OVERRIDE;
+    bool usesFullWindow() override;
 
     void saveViewState();
     void restoreViewState();
 
-    bool supportsDateRangeSelection() Q_DECL_OVERRIDE {
+    bool supportsDateRangeSelection() override {
         return false;
     }
-    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
+    CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
     virtual void showDates(const QDate &start, const QDate &end,
-                           const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
-    void updateView() Q_DECL_OVERRIDE;
-    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType) Q_DECL_OVERRIDE;
-    void updateConfig() Q_DECL_OVERRIDE;
-    void clearSelection() Q_DECL_OVERRIDE;
+                           const QDate &preferredMonth = QDate()) override;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
+    void updateView() override;
+    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType) override;
+    void updateConfig() override;
+    void clearSelection() override;
 
 private Q_SLOTS:
     void printTodo(bool);

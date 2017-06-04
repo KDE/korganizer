@@ -51,7 +51,7 @@ public:
     KOPrefsDialogMain(QWidget *parent);
 
 protected:
-    void usrWriteConfig() Q_DECL_OVERRIDE;
+    void usrWriteConfig() override;
 
 protected Q_SLOTS:
     void toggleEmailSettings(bool on);
@@ -67,8 +67,8 @@ public:
     KOPrefsDialogColorsAndFonts(QWidget *parent);
 
 protected:
-    void usrWriteConfig() Q_DECL_OVERRIDE;
-    void usrReadConfig() Q_DECL_OVERRIDE;
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
 
 protected Q_SLOTS:
     void updateCategories();
@@ -96,8 +96,8 @@ public:
     KOPrefsDialogGroupScheduling(QWidget *parent);
 
 protected:
-    void usrWriteConfig() Q_DECL_OVERRIDE;
-    void usrReadConfig() Q_DECL_OVERRIDE;
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
 };
 
 class KOGroupwarePrefsPage;
@@ -110,8 +110,8 @@ public:
     ~KOPrefsDialogGroupwareScheduling();
 
 protected:
-    void usrWriteConfig() Q_DECL_OVERRIDE;
-    void usrReadConfig() Q_DECL_OVERRIDE;
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
 
 private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
@@ -124,8 +124,8 @@ public:
     KOPrefsDialogPlugins(QWidget *parent);
 
 protected Q_SLOTS:
-    void usrWriteConfig() Q_DECL_OVERRIDE;
-    void usrReadConfig() Q_DECL_OVERRIDE;
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
     void configure();
     void selectionChanged();
     void positioningChanged();
@@ -153,11 +153,11 @@ public:
     explicit KOPrefsDesignerFields(QWidget *parent = nullptr);
 
 protected:
-    QString localUiDir() Q_DECL_OVERRIDE;
-    QString uiPath() Q_DECL_OVERRIDE;
-    void writeActivePages(const QStringList &) Q_DECL_OVERRIDE;
-    QStringList readActivePages() Q_DECL_OVERRIDE;
-    QString applicationName() Q_DECL_OVERRIDE;
+    QString localUiDir() override;
+    QString uiPath() override;
+    void writeActivePages(const QStringList &) override;
+    QStringList readActivePages() override;
+    QString applicationName() override;
 };
 
 #endif

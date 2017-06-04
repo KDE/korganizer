@@ -42,45 +42,45 @@ public:
     explicit MultiAgendaView(QWidget *parent = nullptr);
     ~MultiAgendaView();
 
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
-    int currentDateCount() const Q_DECL_OVERRIDE;
-    int maxDatesHint() const Q_DECL_OVERRIDE;
+    Akonadi::Item::List selectedIncidences() override;
+    KCalCore::DateList selectedIncidenceDates() override;
+    int currentDateCount() const override;
+    int maxDatesHint() const override;
 
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
-
-    /**
-     * reimplemented from KOrg::BaseView
-     */
-    bool hasConfigurationDialog() const Q_DECL_OVERRIDE;
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
 
     /**
      * reimplemented from KOrg::BaseView
      */
-    void showConfigurationDialog(QWidget *parent) Q_DECL_OVERRIDE;
+    bool hasConfigurationDialog() const override;
 
-    void setChanges(EventViews::EventView::Changes changes) Q_DECL_OVERRIDE;
+    /**
+     * reimplemented from KOrg::BaseView
+     */
+    void showConfigurationDialog(QWidget *parent) override;
+
+    void setChanges(EventViews::EventView::Changes changes) override;
 
     KCheckableProxyModel *takeCustomCollectionSelectionProxyModel();
     void setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model);
 
-    void restoreConfig(const KConfigGroup &configGroup) Q_DECL_OVERRIDE;
-    void saveConfig(KConfigGroup &configGroup) Q_DECL_OVERRIDE;
+    void restoreConfig(const KConfigGroup &configGroup) override;
+    void saveConfig(KConfigGroup &configGroup) override;
 
     void setDateRange(const KDateTime &start, const KDateTime &end,
-                      const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
+                      const QDate &preferredMonth = QDate()) override;
 
-    Akonadi::Collection::Id collectionId() const Q_DECL_OVERRIDE;
+    Akonadi::Collection::Id collectionId() const override;
 
 public Q_SLOTS:
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
-    void updateView() Q_DECL_OVERRIDE;
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
-    void updateConfig() Q_DECL_OVERRIDE;
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
+    void updateView() override;
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
+    void updateConfig() override;
 
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
 private:
     class Private;
@@ -97,22 +97,22 @@ public:
                                          QWidget *parent = nullptr);
     ~MultiAgendaViewConfigDialog();
 
-    bool useCustomColumns() const Q_DECL_OVERRIDE;
+    bool useCustomColumns() const override;
     void setUseCustomColumns(bool);
 
-    int numberOfColumns() const Q_DECL_OVERRIDE;
+    int numberOfColumns() const override;
     void setNumberOfColumns(int n);
 
-    QString columnTitle(int column) const Q_DECL_OVERRIDE;
+    QString columnTitle(int column) const override;
     void setColumnTitle(int column, const QString &title);
-    KCheckableProxyModel *takeSelectionModel(int column) Q_DECL_OVERRIDE;
+    KCheckableProxyModel *takeSelectionModel(int column) override;
     void setSelectionModel(int column, KCheckableProxyModel *model);
 
 public Q_SLOTS:
     /**
      * reimplemented from QDialog
      */
-    void accept() Q_DECL_OVERRIDE;
+    void accept() override;
 
 private Q_SLOTS:
     void useCustomToggled(bool);

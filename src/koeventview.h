@@ -91,7 +91,7 @@ public:
     QMenu *newEventPopup();
 
     /** This view is a view for displaying events. */
-    bool isEventView() Q_DECL_OVERRIDE {
+    bool isEventView() override {
         return true;
     }
 
@@ -117,7 +117,7 @@ public:
      */
     static bool usesCompletedTodoPixmap(const Akonadi::Item &todo, const QDate &date);
 
-    bool supportsDateNavigation() const Q_DECL_OVERRIDE
+    bool supportsDateNavigation() const override
     {
         return true;
     }

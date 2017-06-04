@@ -47,31 +47,31 @@ public:
     explicit KOJournalView(QWidget *parent = nullptr);
     ~KOJournalView();
 
-    int currentDateCount() const Q_DECL_OVERRIDE;
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
+    int currentDateCount() const override;
+    Akonadi::Item::List selectedIncidences() override;
 
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE {
+    KCalCore::DateList selectedIncidenceDates() override {
         return KCalCore::DateList();
     }
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &) Q_DECL_OVERRIDE;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
     void getHighlightMode(bool &highlightEvents,
                           bool &highlightTodos,
-                          bool &highlightJournals) Q_DECL_OVERRIDE;
+                          bool &highlightJournals) override;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
+    CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
-    void updateView() Q_DECL_OVERRIDE;
-    void flushView() Q_DECL_OVERRIDE;
+    void updateView() override;
+    void flushView() override;
 
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) Q_DECL_OVERRIDE;
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+    void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) override;
 
     void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
+                                Akonadi::IncidenceChanger::ChangeType) override;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
     void printJournal(const KCalCore::Journal::Ptr &journal, bool preview);
 
 private:

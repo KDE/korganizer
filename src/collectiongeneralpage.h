@@ -43,8 +43,8 @@ public:
     explicit CollectionGeneralPage(QWidget *parent = nullptr);
     ~CollectionGeneralPage();
 
-    void load(const Akonadi::Collection &collection) Q_DECL_OVERRIDE;
-    void save(Akonadi::Collection &collection) Q_DECL_OVERRIDE;
+    void load(const Akonadi::Collection &collection) override;
+    void save(Akonadi::Collection &collection) override;
 
 private:
     void init(const Akonadi::Collection &collection);

@@ -73,7 +73,7 @@ Q_SIGNALS:
 
 protected:
     /*reimp*/
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) override;
 private:
     void slotHelpRequested();
     void search(const QRegExp &);

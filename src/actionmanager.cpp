@@ -1294,7 +1294,7 @@ public:
     }
 
 protected:
-    bool visit(const KCalCore::Event::Ptr &) Q_DECL_OVERRIDE {
+    bool visit(const KCalCore::Event::Ptr &) override {
         if (mShow)
         {
             mShow->setText(i18n("&Show Event"));
@@ -1310,7 +1310,7 @@ protected:
         return true;
     }
 
-    bool visit(const KCalCore::Todo::Ptr &) Q_DECL_OVERRIDE {
+    bool visit(const KCalCore::Todo::Ptr &) override {
         if (mShow)
         {
             mShow->setText(i18n("&Show To-do"));
@@ -1326,11 +1326,11 @@ protected:
         return true;
     }
 
-    bool visit(const KCalCore::Journal::Ptr &) Q_DECL_OVERRIDE {
+    bool visit(const KCalCore::Journal::Ptr &) override {
         return assignDefaultStrings();
     }
 
-    bool visit(const KCalCore::FreeBusy::Ptr &) Q_DECL_OVERRIDE { // to inhibit hidden virtual compile warning
+    bool visit(const KCalCore::FreeBusy::Ptr &) override { // to inhibit hidden virtual compile warning
         return false;
     }
 

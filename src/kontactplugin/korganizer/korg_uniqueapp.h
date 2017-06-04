@@ -32,8 +32,8 @@ public:
         : KontactInterface::UniqueAppHandler(plugin) {}
     virtual ~KOrganizerUniqueAppHandler() {}
 
-    void loadCommandLineOptions(QCommandLineParser *parser) Q_DECL_OVERRIDE;
-    int activate(const QStringList &args, const QString &workingDir) Q_DECL_OVERRIDE;
+    void loadCommandLineOptions(QCommandLineParser *parser) override;
+    int activate(const QStringList &args, const QString &workingDir) override;
 };
 
 #endif /* KORG_UNIQUEAPP_H */

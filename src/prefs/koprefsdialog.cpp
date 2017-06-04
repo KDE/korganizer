@@ -429,7 +429,7 @@ public:
     }
 
 protected:
-    void usrReadConfig() Q_DECL_OVERRIDE {
+    void usrReadConfig() override {
         mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
         mReminderUnitsCombo->setCurrentIndex(
             CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
@@ -439,7 +439,7 @@ protected:
         }
     }
 
-    void usrWriteConfig() Q_DECL_OVERRIDE {
+    void usrWriteConfig() override {
         KOPrefs::instance()->mHolidays =
         mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
 
@@ -681,7 +681,7 @@ public:
         load();
     }
 protected:
-    void usrReadConfig() Q_DECL_OVERRIDE {
+    void usrReadConfig() override {
         KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
             mAgendaIconComboBox->checkedIcons());
         KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(

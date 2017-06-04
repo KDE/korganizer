@@ -60,7 +60,7 @@ public:
     static QAbstractItemModel *_k_noteEditStubModel;
 
 public Q_SLOTS:
-    void accept() Q_DECL_OVERRIDE;
+    void accept() override;
 
 private Q_SLOTS:
     void slotCollectionChanged(int);

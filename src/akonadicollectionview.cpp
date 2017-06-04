@@ -289,7 +289,7 @@ public:
         return score;
     }
 
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const Q_DECL_OVERRIDE
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override
     {
         const int leftScore = score(left);
         const int rightScore = score(right);
@@ -310,7 +310,7 @@ public:
     {
     }
 
-    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE
+    QVariant data(const QModelIndex &index, int role) const override
     {
         if (!index.isValid()) {
             return QVariant();
@@ -342,7 +342,7 @@ public:
         return QSortFilterProxyModel::data(index, role);
     }
 
-    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE
+    Qt::ItemFlags flags(const QModelIndex &index) const override
     {
         return Qt::ItemIsSelectable | QSortFilterProxyModel::flags(index);
     }
@@ -361,7 +361,7 @@ public:
     }
 
 protected:
-    bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE
+    bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const override
     {
         const QModelIndex sourceIndex = sourceModel()->index(row, 0, sourceParent);
         Q_ASSERT(sourceIndex.isValid());
@@ -386,7 +386,7 @@ public:
 
 protected:
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
     {
         if (role == EnabledRole) {
             Akonadi::Collection col = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
@@ -421,7 +421,7 @@ protected:
         return true;
     }
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
     {
         if (role == Qt::CheckStateRole) {
             if (sourceModel()->hasChildren(mapToSource(index)) && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
@@ -466,7 +466,7 @@ protected:
         }
     }
 
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) Q_DECL_OVERRIDE {
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override {
         if (role == Qt::CheckStateRole)
         {
             if (sourceModel()->hasChildren(mapToSource(index)) && index.data(NodeTypeRole).toInt() == PersonNodeRole) {

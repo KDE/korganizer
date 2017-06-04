@@ -46,23 +46,23 @@ public:
     explicit KOTimelineView(QWidget *parent = nullptr);
     ~KOTimelineView();
 
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
-    int currentDateCount() const Q_DECL_OVERRIDE;
-    void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
-    void updateView() Q_DECL_OVERRIDE;
+    Akonadi::Item::List selectedIncidences() override;
+    KCalCore::DateList selectedIncidenceDates() override;
+    int currentDateCount() const override;
+    void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) override;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
+    void updateView() override;
     void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
-    int maxDatesHint() const Q_DECL_OVERRIDE
+                                Akonadi::IncidenceChanger::ChangeType) override;
+    int maxDatesHint() const override
     {
         return 0;
     }
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) Q_DECL_OVERRIDE;
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
+    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
+    CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 private:
     class Private;

@@ -51,10 +51,10 @@ public:
                         QWidget *parent = nullptr, bool nonInteractive = false);
     ~KOListView();
 
-    int maxDatesHint() const Q_DECL_OVERRIDE;
-    int currentDateCount() const Q_DECL_OVERRIDE;
-    Akonadi::Item::List selectedIncidences() Q_DECL_OVERRIDE;
-    KCalCore::DateList selectedIncidenceDates() Q_DECL_OVERRIDE;
+    int maxDatesHint() const override;
+    int currentDateCount() const override;
+    Akonadi::Item::List selectedIncidences() override;
+    KCalCore::DateList selectedIncidenceDates() override;
 
     // Shows all incidences of the calendar
     void showAll();
@@ -63,22 +63,22 @@ public:
     void writeSettings(KConfig *config);
 
     void clear();
-    QSize sizeHint() const Q_DECL_OVERRIDE;
+    QSize sizeHint() const override;
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) Q_DECL_OVERRIDE;
-    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) Q_DECL_OVERRIDE;
+    void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
+    void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const Q_DECL_OVERRIDE;
+    CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
-    void updateView() Q_DECL_OVERRIDE;
+    void updateView() override;
     virtual void showDates(const QDate &start, const QDate &end,
-                           const QDate &preferredMonth = QDate()) Q_DECL_OVERRIDE;
-    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) Q_DECL_OVERRIDE;
+                           const QDate &preferredMonth = QDate()) override;
+    void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
-    void clearSelection() Q_DECL_OVERRIDE;
+    void clearSelection() override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) Q_DECL_OVERRIDE;
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
 
     void defaultItemAction(const QModelIndex &);
     void defaultItemAction(const Akonadi::Item::Id id);

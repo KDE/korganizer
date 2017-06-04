@@ -40,7 +40,7 @@ public:
 
     virtual ~DummyNode() {}
 
-    bool operator==(const Node &node) const Q_DECL_OVERRIDE
+    bool operator==(const Node &node) const override
     {
         const DummyNode *dummyNode = dynamic_cast<const DummyNode *>(&node);
         if (dummyNode) {
@@ -52,7 +52,7 @@ public:
     QString mUid;
     QString mParent;
 private:
-    QVariant data(int role) const Q_DECL_OVERRIDE
+    QVariant data(int role) const override
     {
         if (role == Qt::DisplayRole) {
             if (mName != mUid) {
@@ -65,20 +65,20 @@ private:
         }
         return QVariant();
     }
-    bool setData(const QVariant &variant, int role) Q_DECL_OVERRIDE {
+    bool setData(const QVariant &variant, int role) override {
         Q_UNUSED(variant);
         Q_UNUSED(role);
         return false;
     }
-    bool isDuplicateOf(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE {
+    bool isDuplicateOf(const QModelIndex &sourceIndex) override {
         return (sourceIndex.data().toString() == mUid);
     }
 
-    bool adopts(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE {
+    bool adopts(const QModelIndex &sourceIndex) override {
         return sourceIndex.data().toString().contains(mParent);
     }
 
-    void update(const Node::Ptr &node) Q_DECL_OVERRIDE {
+    void update(const Node::Ptr &node) override {
         mName = node.staticCast<DummyNode>()->mName;
         mData = node.staticCast<DummyNode>()->mData;
     }
@@ -695,14 +695,14 @@ class DummyNodeManager : public ReparentingModel::NodeManager
 public:
     DummyNodeManager(ReparentingModel &m) : ReparentingModel::NodeManager(m) {}
 private:
-    void checkSourceIndex(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE {
+    void checkSourceIndex(const QModelIndex &sourceIndex) override {
         if (sourceIndex.data().toString() == QLatin1String("personfolder"))
         {
             model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model, QStringLiteral("personnode"))));
         }
     }
 
-    void checkSourceIndexRemoval(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE {
+    void checkSourceIndexRemoval(const QModelIndex &sourceIndex) override {
         if (sourceIndex.data().toString() == QLatin1String("personfolder"))
         {
             model.removeNode(DummyNode(model, QStringLiteral("personnode")));

@@ -169,9 +169,9 @@ public:
      *  Reimplemented from Akonadi::ETMCalendar
      *  They set mPendingChanges to true
      */
-    void calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence) Q_DECL_OVERRIDE;
-    void calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incidence) Q_DECL_OVERRIDE;
-    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence, const KCalCore::Calendar *calendar) Q_DECL_OVERRIDE;
+    void calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence) override;
+    void calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incidence) override;
+    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence, const KCalCore::Calendar *calendar) override;
 
     /** Sets which incidences should be highlighted */
     void setHighlightMode(bool highlightEvents,
@@ -228,25 +228,25 @@ Q_SIGNALS:
     void incidenceDroppedMove(const Akonadi::Item &item, const QDate &dt);
 
 protected:
-    bool event(QEvent *e) Q_DECL_OVERRIDE;
+    bool event(QEvent *e) override;
 
-    void paintEvent(QPaintEvent *ev) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *ev) override;
 
-    void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent *e) override;
 
-    void mouseReleaseEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent *e) override;
 
-    void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *e) override;
 
-    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *) override;
 
-    void dragEnterEvent(QDragEnterEvent *e) Q_DECL_OVERRIDE;
+    void dragEnterEvent(QDragEnterEvent *e) override;
 
-    void dragMoveEvent(QDragMoveEvent *e) Q_DECL_OVERRIDE;
+    void dragMoveEvent(QDragMoveEvent *e) override;
 
-    void dragLeaveEvent(QDragLeaveEvent *e) Q_DECL_OVERRIDE;
+    void dragLeaveEvent(QDragLeaveEvent *e) override;
 
-    void dropEvent(QDropEvent *e) Q_DECL_OVERRIDE;
+    void dropEvent(QDropEvent *e) override;
 
 private:
     /**

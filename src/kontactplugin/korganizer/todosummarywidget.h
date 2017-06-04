@@ -51,20 +51,20 @@ public:
     TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent);
     ~TodoSummaryWidget();
 
-    int summaryHeight() const Q_DECL_OVERRIDE
+    int summaryHeight() const override
     {
         return 3;
     }
-    QStringList configModules() const Q_DECL_OVERRIDE;
+    QStringList configModules() const override;
 
 public Q_SLOTS:
-    void updateSummary(bool force = false) Q_DECL_OVERRIDE {
+    void updateSummary(bool force = false) override {
         Q_UNUSED(force);
         updateView();
     }
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *e) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *e) override;
 
 private Q_SLOTS:
     void updateView();

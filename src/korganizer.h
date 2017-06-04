@@ -55,13 +55,13 @@ public:
     KOrganizer();
     virtual ~KOrganizer();
 
-    void init(bool hasDocument) Q_DECL_OVERRIDE;
+    void init(bool hasDocument) override;
 
-    KOrg::CalendarViewBase *view() const Q_DECL_OVERRIDE;
-    ActionManager *actionManager() Q_DECL_OVERRIDE {
+    KOrg::CalendarViewBase *view() const override;
+    ActionManager *actionManager() override {
         return mActionManager;
     }
-    KActionCollection *getActionCollection() const Q_DECL_OVERRIDE
+    KActionCollection *getActionCollection() const override
     {
         return actionCollection();
     }
@@ -76,30 +76,30 @@ public:
                      false if the URL should be added as a new resource.
         @return true on success, false if an error occurred
     */
-    bool openURL(const QUrl &url, bool merge = false) Q_DECL_OVERRIDE;
+    bool openURL(const QUrl &url, bool merge = false) override;
 
     /** Save calendar file to URL of current calendar */
-    bool saveURL() Q_DECL_OVERRIDE;
+    bool saveURL() override;
 
     /** Save calendar file to URL */
-    bool saveAsURL(const QUrl &url) Q_DECL_OVERRIDE;
+    bool saveAsURL(const QUrl &url) override;
 
     /** Get current URL */
-    QUrl getCurrentURL() const Q_DECL_OVERRIDE;
+    QUrl getCurrentURL() const override;
 
-    KXMLGUIFactory *mainGuiFactory() Q_DECL_OVERRIDE {
+    KXMLGUIFactory *mainGuiFactory() override {
         return factory();
     }
-    KXMLGUIClient *mainGuiClient() Q_DECL_OVERRIDE {
+    KXMLGUIClient *mainGuiClient() override {
         return this;
     }
-    QWidget *topLevelWidget() Q_DECL_OVERRIDE {
+    QWidget *topLevelWidget() override {
         return this;
     }
 
 public Q_SLOTS:
     /** show status message */
-    void showStatusMessage(const QString &) Q_DECL_OVERRIDE;
+    void showStatusMessage(const QString &) override;
 
 protected Q_SLOTS:
 
@@ -112,7 +112,7 @@ protected Q_SLOTS:
     void writeSettings();
 
     /** Sets title of window according to filename and modification state */
-    void setTitle() Q_DECL_OVERRIDE;
+    void setTitle() override;
 
     void newMainWindow(const QUrl &);
 
@@ -123,11 +123,11 @@ protected:
 //    void initViews();
 
     /** supplied so that close events close calendar properly.*/
-    bool queryClose() Q_DECL_OVERRIDE;
+    bool queryClose() override;
 
     /* Session management */
-    void saveProperties(KConfigGroup &) Q_DECL_OVERRIDE;
-    void readProperties(const KConfigGroup &) Q_DECL_OVERRIDE;
+    void saveProperties(KConfigGroup &) override;
+    void readProperties(const KConfigGroup &) override;
 
 private:
     CalendarView *mCalendarView;  // Main view widget

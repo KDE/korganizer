@@ -112,9 +112,9 @@ Q_SIGNALS:
 protected:
     void updateDates();
 
-    void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;
+    void wheelEvent(QWheelEvent *) override;
 
-    bool eventFilter(QObject *, QEvent *) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *, QEvent *) override;
 
     void setShowWeekNums(bool enabled);
 

@@ -75,20 +75,20 @@ class PersonNode : public ReparentingModel::Node
 public:
     PersonNode(ReparentingModel &personModel, const KPIM::Person &person);
     virtual ~PersonNode();
-    bool operator==(const Node &) const Q_DECL_OVERRIDE;
+    bool operator==(const Node &) const override;
 
     void setChecked(bool);
 
-    QVariant data(int role) const Q_DECL_OVERRIDE;
+    QVariant data(int role) const override;
 
     Emitter emitter;
     bool isSearchNode;
 
 private:
-    bool setData(const QVariant &variant, int role) Q_DECL_OVERRIDE;
-    bool adopts(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
-    bool isDuplicateOf(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
-    void update(const Node::Ptr &node) Q_DECL_OVERRIDE;
+    bool setData(const QVariant &variant, int role) override;
+    bool adopts(const QModelIndex &sourceIndex) override;
+    bool isDuplicateOf(const QModelIndex &sourceIndex) override;
+    void update(const Node::Ptr &node) override;
 
     KPIM::Person mPerson;
     Qt::CheckState mCheckState;
@@ -99,15 +99,15 @@ class CollectionNode : public ReparentingModel::Node
 public:
     CollectionNode(ReparentingModel &personModel, const Akonadi::Collection &col);
     virtual ~CollectionNode();
-    bool operator==(const Node &) const Q_DECL_OVERRIDE;
+    bool operator==(const Node &) const override;
 
     Emitter emitter;
     bool isSearchNode;
 
 private:
-    QVariant data(int role) const Q_DECL_OVERRIDE;
-    bool setData(const QVariant &variant, int role) Q_DECL_OVERRIDE;
-    bool isDuplicateOf(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
+    QVariant data(int role) const override;
+    bool setData(const QVariant &variant, int role) override;
+    bool isDuplicateOf(const QModelIndex &sourceIndex) override;
     Akonadi::Collection mCollection;
     Qt::CheckState mCheckState;
 };
@@ -118,9 +118,9 @@ public:
     PersonNodeManager(ReparentingModel &personModel) : ReparentingModel::NodeManager(personModel) {}
 private:
     KPIM::Person person(const QModelIndex &sourceIndex);
-    void checkSourceIndex(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
-    void checkSourceIndexRemoval(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
-    void updateSourceIndex(const QModelIndex &sourceIndex) Q_DECL_OVERRIDE;
+    void checkSourceIndex(const QModelIndex &sourceIndex) override;
+    void checkSourceIndexRemoval(const QModelIndex &sourceIndex) override;
+    void updateSourceIndex(const QModelIndex &sourceIndex) override;
 };
 
 namespace KPIM

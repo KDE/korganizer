@@ -38,11 +38,11 @@ public:
     KOCoreHelper() {}
     virtual ~KOCoreHelper() {}
 
-    QColor categoryColor(const QStringList &cats) Q_DECL_OVERRIDE;
+    QColor categoryColor(const QStringList &cats) override;
 
-    QString holidayString(const QDate &dt) Q_DECL_OVERRIDE;
+    QString holidayString(const QDate &dt) override;
 
-    QTime dayStart() Q_DECL_OVERRIDE {
+    QTime dayStart() override {
         return KOPrefs::instance()->mDayBegins.time();
     }
 };

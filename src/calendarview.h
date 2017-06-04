@@ -127,7 +127,7 @@ public:
     };
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
-    Akonadi::ETMCalendar::Ptr calendar() const Q_DECL_OVERRIDE;
+    Akonadi::ETMCalendar::Ptr calendar() const override;
 
     void showMessage(const QString &message, KMessageWidget::MessageType);
 
@@ -161,7 +161,7 @@ public:
     }
     // TODO_NG
     //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    Akonadi::IncidenceChanger *incidenceChanger() const Q_DECL_OVERRIDE
+    Akonadi::IncidenceChanger *incidenceChanger() const override
     {
         return mChanger;
     }
@@ -173,12 +173,12 @@ public:
      */
     void updateHighlightModes();
 
-    QDate startDate() Q_DECL_OVERRIDE;
-    QDate endDate() Q_DECL_OVERRIDE;
+    QDate startDate() override;
+    QDate endDate() override;
 
     KOrg::BaseView *currentView() const;
-    void addView(KOrg::BaseView *) Q_DECL_OVERRIDE;
-    void showView(KOrg::BaseView *) Q_DECL_OVERRIDE;
+    void addView(KOrg::BaseView *) override;
+    void showView(KOrg::BaseView *) override;
 
     /**
      * Adds a calendar view extension widget. CalendarView takes ownership of the
@@ -190,7 +190,7 @@ public:
      * Returns the item selected in the current view (or an invalid one if none selected)
      * @reimp
      */
-    Akonadi::Item currentSelection() Q_DECL_OVERRIDE;
+    Akonadi::Item currentSelection() override;
 
     /**
      * Returns a pointer to the incidence selected in the current view. If there
@@ -258,7 +258,7 @@ Q_SIGNALS:
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger(Akonadi::IncidenceChanger *) Q_DECL_OVERRIDE;
+    void newIncidenceChanger(Akonadi::IncidenceChanger *) override;
 
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
@@ -324,7 +324,7 @@ public Q_SLOTS:
     bool showIncidenceContext(Akonadi::Item::Id id);
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    bool editIncidence(const Akonadi::Item &item, bool isCounter = false) Q_DECL_OVERRIDE;
+    bool editIncidence(const Akonadi::Item &item, bool isCounter = false) override;
     bool editIncidence(Akonadi::Item::Id id);
     void editIncidence();
 
@@ -460,7 +460,7 @@ public Q_SLOTS:
 
     void updateView(const QDate &start, const QDate &end,
                     const QDate &preferredMonth, const bool updateTodos = true);
-    void updateView() Q_DECL_OVERRIDE;
+    void updateView() override;
 
     void updateUnmanagedViews();
 
@@ -670,7 +670,7 @@ protected:
     void dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bool &allDay);
     IncidenceEditorNG::IncidenceDialog *newEventEditor(const KCalCore::Event::Ptr &event);
 
-    bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 private Q_SLOTS:
     void onCheckableProxyAboutToToggle(bool newState);

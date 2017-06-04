@@ -40,21 +40,21 @@ public:
     JournalPlugin(KontactInterface::Core *core, const QVariantList &);
     ~JournalPlugin();
 
-    bool createDBUSInterface(const QString &serviceType) Q_DECL_OVERRIDE;
-    bool isRunningStandalone() const Q_DECL_OVERRIDE;
-    int weight() const Q_DECL_OVERRIDE
+    bool createDBUSInterface(const QString &serviceType) override;
+    bool isRunningStandalone() const override;
+    int weight() const override
     {
         return 525;
     }
 
-    QStringList invisibleToolbarActions() const Q_DECL_OVERRIDE;
+    QStringList invisibleToolbarActions() const override;
 
-    void select() Q_DECL_OVERRIDE;
+    void select() override;
 
     OrgKdeKorganizerCalendarInterface *interface();
 
 protected:
-    KParts::ReadOnlyPart *createPart() Q_DECL_OVERRIDE;
+    KParts::ReadOnlyPart *createPart() override;
 
 private Q_SLOTS:
     void slotNewJournal();
