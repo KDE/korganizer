@@ -515,7 +515,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
     }
 
     filterList.reserve(mFilters.count());
-    foreach (KCalCore::CalFilter *filter, mFilters) {
+    for (KCalCore::CalFilter *filter : qAsConst(mFilters)) {
         filterList << filter->name();
         KConfigGroup filterConfig(config, QStringLiteral("Filter_") + filter->name());
         filterConfig.writeEntry("Criteria", filter->criteria());
@@ -2006,7 +2006,7 @@ void CalendarView::updateFilter()
     }
 
     filters << i18n("No filter");
-    foreach (KCalCore::CalFilter *filter, mFilters) {
+    for (KCalCore::CalFilter *filter : qAsConst(mFilters)) {
         if (filter) {
             filters << filter->name();
         }

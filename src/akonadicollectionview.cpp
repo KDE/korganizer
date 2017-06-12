@@ -632,7 +632,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardActionManager::CopyCollectionToMenu
                         << Akonadi::StandardActionManager::MoveCollectionToMenu;
 
-        Q_FOREACH (Akonadi::StandardActionManager::Type standardAction, standardActions) {
+        for (Akonadi::StandardActionManager::Type standardAction : qAsConst(standardActions)) {
             mActionManager->createAction(standardAction);
         }
 
@@ -643,7 +643,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardCalendarActionManager::CreateJournal
                         << Akonadi::StandardCalendarActionManager::EditIncidence;
 
-        Q_FOREACH (Akonadi::StandardCalendarActionManager::Type calendarAction, calendarActions) {
+        for (Akonadi::StandardCalendarActionManager::Type calendarAction : qAsConst(calendarActions)) {
             mActionManager->createAction(calendarAction);
         }
 

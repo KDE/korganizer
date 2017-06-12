@@ -317,12 +317,12 @@ void KODayMatrix::updateTodos()
                     !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
 
                 // It's a recurring todo, find out in which days it occurs
-                KCalCore::DateTimeList timeDateList =
+                const KCalCore::DateTimeList timeDateList =
                     t->recurrence()->timesInInterval(
                         KDateTime(mDays[0], mCalendar->timeSpec()),
                         KDateTime(mDays[NUMDAYS - 1], mCalendar->timeSpec()));
 
-                foreach (const KDateTime &dt, timeDateList) {
+                for (const KDateTime &dt : timeDateList) {
                     d = dt.toTimeSpec(mCalendar->timeSpec()).date();
                     if (!mEvents.contains(d)) {
                         mEvents.append(d);

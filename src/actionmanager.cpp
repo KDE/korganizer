@@ -1415,7 +1415,7 @@ void ActionManager::keyBindings()
         dlg.addCollection(mMainWindow->getActionCollection());
     }
 
-    foreach (KOrg::Part *part, mParts) {
+    for (KOrg::Part *part : qAsConst(mParts)) {
         if (part) {
             dlg.addCollection(part->actionCollection(), part->shortInfo());
         }
