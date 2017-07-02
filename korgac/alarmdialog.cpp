@@ -965,9 +965,9 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
     }
 #elif defined(Q_OS_WIN)
     // WId is a typedef to a void* on windows
-    QDBusReply<qlonglong> reply = korganizerObj.call(QStringLiteral("winId"));
+    QDBusReply<int> reply = korganizerObj.call(QStringLiteral("winId"));
     if (reply.isValid()) {
-        qlonglong window = reply;
+        int window = reply;
         KWindowSystem::minimizeWindow(winId(), false);
         KWindowSystem::allowExternalProcessWindowActivation();
         KWindowSystem::activateWindow(reinterpret_cast<WId>(window));
