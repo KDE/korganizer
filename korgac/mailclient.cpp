@@ -67,7 +67,7 @@ bool MailClient::mailAttendees(const KCalCore::IncidenceBase::Ptr &incidence,
 {
     KCalCore::Attendee::List attendees = incidence->attendees();
     if (attendees.isEmpty()) {
-        qCDebug(KOALARMCLIENT_LOG) << "There are no attendees to e-mail";
+        qCWarning(KOALARMCLIENT_LOG) << "There are no attendees to e-mail";
         return false;
     }
 
@@ -306,7 +306,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity,
         bodyMessage->setHeader(bodyDisposition);
         message->addContent(bodyMessage);
 
-        // Set the sedcond multipart, the attachment.
+        // Set the second multipart, the attachment.
         if (!attachment.isEmpty()) {
             KMime::Content *attachMessage = new KMime::Content;
             KMime::Headers::ContentDisposition *attachDisposition = new KMime::Headers::ContentDisposition;
