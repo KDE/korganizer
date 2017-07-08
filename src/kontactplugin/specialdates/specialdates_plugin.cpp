@@ -30,7 +30,6 @@
 
 #include <KAboutData>
 #include <KLocalizedString>
-#include <KIconLoader>
 
 EXPORT_KONTACT_PLUGIN(SpecialdatesPlugin, specialdates)
 

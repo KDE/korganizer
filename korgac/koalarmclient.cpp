@@ -310,7 +310,7 @@ QStringList KOAlarmClient::dumpAlarms() const
         lst << QStringLiteral("No alarm found.");
     } else {
 
-        foreach (const Alarm::Ptr &a, alarms) {
+        for (const Alarm::Ptr &a : alarms) {
             const Incidence::Ptr parentIncidence = mCalendar->incidence(a->parentUid());
             lst << QStringLiteral("  ") + parentIncidence->summary() + QLatin1String(" (") + a->time().toString() + QLatin1Char(')');
         }

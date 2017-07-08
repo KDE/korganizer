@@ -647,7 +647,7 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
 
 ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourceIndex) const
 {
-    Q_FOREACH (Node *n, mSourceNodes) {
+    for (Node *n : qAsConst(mSourceNodes)) {
         if (n->sourceIndex == sourceIndex) {
             return n;
         }
@@ -689,7 +689,7 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
 
 bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode) const
 {
-    Q_FOREACH (const Node *n, mSourceNodes) {
+    for (const Node *n : qAsConst(mSourceNodes)) {
         // qCDebug(KORGANIZER_LOG) << index << index.data().toString();
         if (proxyNode->isDuplicateOf(n->sourceIndex)) {
             return true;
@@ -740,7 +740,7 @@ void ReparentingModel::rebuildAll()
     Q_ASSERT(mSourceNodes.isEmpty());
     mSourceNodes.clear();
     rebuildFromSource(&mRootNode, QModelIndex());
-    Q_FOREACH (const Node::Ptr &proxyNode, mProxyNodes) {
+    for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
         // qCDebug(KORGANIZER_LOG) << "checking " << proxyNode->data(Qt::DisplayRole).toString();
         //Avoid inserting a node that is already part of the source model
         if (isDuplicate(proxyNode)) {

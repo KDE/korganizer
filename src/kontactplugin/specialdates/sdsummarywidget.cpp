@@ -259,8 +259,6 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
 
 void SDSummaryWidget::createLabels()
 {
-    KIconLoader loader(QStringLiteral("kdepim"));
-
     QLabel *label = nullptr;
 
     // Remove all special date labels from the layout and delete them, as we

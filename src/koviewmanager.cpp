@@ -675,7 +675,7 @@ void KOViewManager::currentAgendaViewTabChanged(int index)
 
 void KOViewManager::addChange(EventViews::EventView::Change change)
 {
-    foreach (BaseView *view, mViews) {
+    for (BaseView *view : qAsConst(mViews)) {
         if (view) {
             view->setChanges(view->changes() | change);
         }
