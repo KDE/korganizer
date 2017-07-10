@@ -749,7 +749,6 @@ void ActionManager::slotMergeFinished(bool success, int total)
 void ActionManager::slotNewResourceFinished(bool success)
 {
     Q_ASSERT(sender());
-    sender()->deleteLater();
     Akonadi::ICalImporter *importer = qobject_cast<Akonadi::ICalImporter *>(sender());
     mImportAction->setEnabled(true);
     if (success) {
@@ -757,6 +756,7 @@ void ActionManager::slotNewResourceFinished(bool success)
     } else {
         mCalendarView->showMessage(i18n("Could not add a calendar. Error: %1", importer->errorMessage()), KMessageWidget::Error);
     }
+    sender()->deleteLater();
 }
 
 void ActionManager::readSettings()
