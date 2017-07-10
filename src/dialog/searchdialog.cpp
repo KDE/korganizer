@@ -70,7 +70,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     layout->addWidget(listView);
     m_ui->listViewFrame->setLayout(layout);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::Help, this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close | QDialogButtonBox::Help, this);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
