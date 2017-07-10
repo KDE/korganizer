@@ -102,9 +102,8 @@ void KODialogManager::showOptionsDialog()
         modules.append(QStringLiteral("korganizer_configdesignerfields.desktop"));
 
         // add them all
-        QStringList::iterator mit;
-        QStringList::iterator mitEnd(modules.end());
-        for (mit = modules.begin(); mit != mitEnd ; ++mit) {
+        const QStringList::iterator mitEnd(modules.end());
+        for (QStringList::iterator mit = modules.begin(); mit != mitEnd ; ++mit) {
             mOptionsDialog->addModule(*mit);
         }
     }
