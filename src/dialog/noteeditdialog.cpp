@@ -182,12 +182,10 @@ void NoteEditDialog::accept()
 
     Akonadi::NoteUtils::NoteMessageWrapper note(mItem.payload<KMime::Message::Ptr>());
     note.setTitle(mNoteTitle->text());
-    Qt::TextFormat format = Qt::PlainText;
     if (mNoteText->acceptRichText()) {
-        format = Qt::RichText;
-        note.setText(mNoteText->editor()->toHtml(), format);
+        note.setText(mNoteText->editor()->toHtml(), Qt::RichText);
     } else {
-        note.setText(mNoteText->editor()->toPlainText(), format);
+        note.setText(mNoteText->editor()->toPlainText(), Qt::PlainText);
     }
     mItem.setPayload<KMime::Message::Ptr>(note.message());
     Q_EMIT createNote(mItem, collection);
