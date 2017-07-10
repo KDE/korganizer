@@ -117,6 +117,7 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
 
 NoteEditDialog::~NoteEditDialog()
 {
+    disconnect(mNoteText->editor(), &KPIMTextEdit::RichTextEditor::textChanged, this, &NoteEditDialog::slotUpdateButtons);
     writeConfig();
 }
 
