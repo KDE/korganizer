@@ -897,8 +897,8 @@ bool ActionManager::importURL(const QUrl &url, bool merge)
     Akonadi::ICalImporter *importer = new Akonadi::ICalImporter();
     bool jobStarted;
     if (merge) {
-        connect(importer, &Akonadi::ICalImporter::importIntoExistingFinished, this, &ActionManager::slotMergeFinished),
-                jobStarted = importer->importIntoExistingResource(url, Akonadi::Collection());
+        connect(importer, &Akonadi::ICalImporter::importIntoExistingFinished, this, &ActionManager::slotMergeFinished);
+        jobStarted = importer->importIntoExistingResource(url, Akonadi::Collection());
     } else {
         connect(importer, &Akonadi::ICalImporter::importIntoNewFinished, this, &ActionManager::slotNewResourceFinished);
         jobStarted = importer->importIntoNewResource(url.path());
