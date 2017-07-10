@@ -81,6 +81,9 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     mUser1Button->setDefault(true);
     KGuiItem::assign(mUser1Button, KGuiItem(i18nc("search in calendar", "&Search")));
     mUser1Button->setToolTip(i18n("Start searching"));
+    mUser1Button->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Press this button to start the search."));
 
     connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
