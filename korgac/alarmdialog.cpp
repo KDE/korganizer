@@ -463,12 +463,24 @@ void AlarmDialog::suspend()
     switch (mSuspendUnit->currentIndex()) {
     case 3: // weeks
         unit *=  7;
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
     case 2: // days
         unit *= 24;
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
     case 1: // hours
         unit *= 60;
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
     case 0: // minutes
         unit *= 60;
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
     default:
         break;
     }
