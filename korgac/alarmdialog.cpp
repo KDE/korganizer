@@ -144,9 +144,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     }
     setWindowTitle(i18nc("@title:window", "Reminders"));
     setWindowIcon(QIcon::fromTheme(QStringLiteral("korgac")));
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok);
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    setLayout(mainLayout);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok, this);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(topBox);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
@@ -390,12 +389,13 @@ void AlarmDialog::dismissCurrent()
 {
     dismiss(selectedItems());
 
-    if (activeCount() == 0) {
+    const int activeCountNumber = activeCount();
+    if (activeCountNumber == 0) {
         accept();
     } else {
         update();
     }
-    Q_EMIT reminderCount(activeCount());
+    Q_EMIT reminderCount(activeCountNumber);
 }
 
 void AlarmDialog::dismissAll()
@@ -438,20 +438,19 @@ void AlarmDialog::dismiss(const ReminderList &selections)
 void AlarmDialog::edit()
 {
     ReminderList selection = selectedItems();
-    if (selection.count() != 1) {
-        return;
-    }
-    Incidence::Ptr incidence = CalendarSupport::incidence(selection.first()->mIncidence);
-    if (!mCalendar->hasRight(selection.first()->mIncidence, Akonadi::Collection::CanChangeItem)) {
-        KMessageBox::sorry(
-            this,
-            i18nc("@info",
-                  "\"%1\" is a read-only item so modifications are not possible.",
-                  cleanSummary(incidence->summary())));
-        return;
-    }
+    if (selection.count() == 1) {
+        Incidence::Ptr incidence = CalendarSupport::incidence(selection.first()->mIncidence);
+        if (!mCalendar->hasRight(selection.first()->mIncidence, Akonadi::Collection::CanChangeItem)) {
+            KMessageBox::sorry(
+                        this,
+                        i18nc("@info",
+                              "\"%1\" is a read-only item so modifications are not possible.",
+                              cleanSummary(incidence->summary())));
+            return;
+        }
 
-    openIncidenceEditorNG(selection.first()->mIncidence);
+        openIncidenceEditorNG(selection.first()->mIncidence);
+    }
 }
 
 void AlarmDialog::suspend()
