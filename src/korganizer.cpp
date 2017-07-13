@@ -61,7 +61,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
     setCentralWidget(mCalendarView);
 
     mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar());
-    (void)new KOrganizerIfaceImpl(mActionManager, this, "IfaceImpl");
+    (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
 }
 
 KOrganizer::~KOrganizer()

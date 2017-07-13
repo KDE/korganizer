@@ -65,7 +65,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     mView = new CalendarView(canvas);
 
     mActionManager = new ActionManager(this, mView, this, this, true);
-    (void)new KOrganizerIfaceImpl(mActionManager, this, "IfaceImpl");
+    (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
 
     mActionManager->createCalendarAkonadi();
     setHasDocument(false);

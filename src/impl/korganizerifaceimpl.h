@@ -44,7 +44,7 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
     Q_OBJECT
 public:
     explicit KOrganizerIfaceImpl(ActionManager *mActionManager,
-                                 QObject *parent = nullptr, const char *name = nullptr);
+                                 QObject *parent = nullptr, const QString &name = QString());
     ~KOrganizerIfaceImpl();
 
 public Q_SLOTS:

@@ -317,7 +317,8 @@ bool FilterEdit::correctName(const QString &newText)
         mNegativeBackground = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
     }
     if (!newText.isEmpty()) {
-        for (int i = 0; i < mRulesList->count(); ++i) {
+        const int val = mRulesList->count();
+        for (int i = 0; i < val; ++i) {
             QListWidgetItem *item = mRulesList->item(i);
             if (item && (mRulesList->currentItem() != item)) {
                 if (newText == item->text()) {
