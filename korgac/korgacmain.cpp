@@ -28,7 +28,6 @@
 #include <kaboutdata.h>
 
 #include <kdelibs4configmigrator.h>
-#include <stdlib.h>
 #include <QCommandLineParser>
 #include <KDBusService>
 #include <KLocalizedString>
