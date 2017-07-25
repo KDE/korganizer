@@ -52,6 +52,9 @@ private Q_SLOTS:
     void onPreviousClicked();
 
 private:
+    void readConfig();
+    void writeConfig();
+
     Ui_quickview *mUi;
     EventViews::AgendaView *mAgendaView;
     KPIM::Person mPerson;
