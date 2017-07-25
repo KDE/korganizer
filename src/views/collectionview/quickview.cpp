@@ -22,22 +22,26 @@
 
 #include "quickview.h"
 #include "ui_quickview.h"
+#include "korganizer_debug.h"
 
-#include <KCalCore/Event>
-#include <KCalCore/FreeBusy>
-#include <KCalCore/MemoryCalendar>
 #include <AkonadiCore/entitydisplayattribute.h>
 #include <AkonadiCore/changerecorder.h>
 #include <AkonadiCore/itemfetchscope.h>
 
+#include <KCalCore/Event>
+#include <KCalCore/FreeBusy>
+#include <KCalCore/MemoryCalendar>
+
 #include <EventViews/AgendaView>
 #include <EventViews/ViewCalendar>
-#include <CalendarSupport/CalendarSingleton>
 
+#include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/FreeBusyCalendar>
 
-#include "korganizer_debug.h"
 #include <KCheckableProxyModel>
+#include <KConfigGroup>
+#include <KSharedConfig>
+
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -167,10 +171,13 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
     connect(mUi->mPreviousBtn, &QPushButton::clicked, this, &Quickview::onPreviousClicked);
 
     onTodayClicked();
+
+    readConfig();
 }
 
 Quickview::~Quickview()
 {
+    writeConfig();
     delete mUi;
 }
 
@@ -191,4 +198,20 @@ void Quickview::onTodayClicked()
     QDate start = QDate::currentDate();
     start = start.addDays(-QDate::currentDate().dayOfWeek() + 1);
     mAgendaView->showDates(start, start.addDays(mDayRange - 1));
+}
+
+void Quickview::readConfig()
+{
+    KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("Quickview"));
+    const QSize size = group.readEntry("Size", QSize(775, 600));
+    if (size.isValid()) {
+        resize(size);
+    }
+}
+
+void Quickview::writeConfig()
+{
+    KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("Quickview"));
+    group.writeEntry("Size", size());
+    group.sync();
 }
