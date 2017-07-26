@@ -224,11 +224,16 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
     Q_ASSERT(event);
     Q_ASSERT(model);
 
+    // double-click mouse starts the quickview dialog
+    if (event->type() == QEvent::MouseButtonDblClick) {
+        Q_EMIT action(index, Quickview);
+        return true;
+    }
+
     int button = -1;
     // make sure that we have the right event type
-    if ((event->type() == QEvent::MouseButtonRelease)
-            || (event->type() == QEvent::MouseButtonDblClick)
-            || (event->type() == QEvent::MouseButtonPress)) {
+    if ((event->type() == QEvent::MouseButtonRelease) ||
+        (event->type() == QEvent::MouseButtonPress)) {
 
         QMouseEvent *me = static_cast<QMouseEvent *>(event);
 
@@ -238,14 +243,15 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
                 break;
             }
         }
+
         if (me->button() != Qt::LeftButton || button < 0) {
             return QStyledItemDelegate::editorEvent(event, model, option, index);
         }
 
-        if ((event->type() == QEvent::MouseButtonPress)
-                || (event->type() == QEvent::MouseButtonDblClick)) {
+        if (event->type() == QEvent::MouseButtonPress) {
             return true;
         }
+
     } else {
         return QStyledItemDelegate::editorEvent(event, model, option, index);
     }
@@ -270,4 +276,3 @@ QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option, const
     size.setHeight(mPixmap.value(AddToList).height() + 4);
     return size;
 }
-
