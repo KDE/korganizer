@@ -44,6 +44,7 @@
 
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QSplitter>
 #include <QVBoxLayout>
 
 class FreebusyViewCalendar : public EventViews::ViewCalendar
@@ -203,15 +204,28 @@ void Quickview::onTodayClicked()
 void Quickview::readConfig()
 {
     KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("Quickview"));
+
     const QSize size = group.readEntry("Size", QSize(775, 600));
     if (size.isValid()) {
         resize(size);
+    }
+
+    const QList<int> sizes = group.readEntry("Separator", QList<int>());
+
+    // don't allow invalid/corrupted settings or else agenda becomes invisible
+    if (sizes.count() >= 2 && !sizes.contains(0)) {
+        mAgendaView->splitter()->setSizes(sizes);
     }
 }
 
 void Quickview::writeConfig()
 {
     KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("Quickview"));
+
     group.writeEntry("Size", size());
+
+    QList<int> list = mAgendaView->splitter()->sizes();
+    group.writeEntry("Separator", list);
+
     group.sync();
 }
