@@ -35,8 +35,8 @@
 #include <EventViews/AgendaView>
 #include <EventViews/ViewCalendar>
 
-#include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/FreeBusyCalendar>
+#include <CalendarSupport/Utils>
 
 #include <KCheckableProxyModel>
 #include <KConfigGroup>
@@ -164,6 +164,10 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
 
         calendar->setCollectionFilteringEnabled(false);
         mAgendaView->setCalendar(calendar);
+
+        setWindowTitle(i18nc("@title:window",
+                             "%1",
+                             CalendarSupport::displayName(calendar.data(), mCollection)));
     }
     mUi->calender->addWidget(mAgendaView);
 
