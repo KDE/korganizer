@@ -237,7 +237,10 @@ void KOAlarmClient::createReminder(const Akonadi::ETMCalendar::Ptr &calendar,
     if (!CalendarSupport::hasIncidence(aitem)) {
         return;
     }
-
+    if (remindAtDate.addDays(10) < mLastChecked) {
+        // ignore reminders more than 10 days old
+        return;
+    }
     if (!mDialog) {
         mDialog = new AlarmDialog(calendar);
         connect(this, &KOAlarmClient::saveAllSignal, mDialog, &AlarmDialog::slotSave);
@@ -341,4 +344,3 @@ void KOAlarmClient::show()
         }
     }
 }
-
