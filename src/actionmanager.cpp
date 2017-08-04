@@ -41,6 +41,7 @@
 #include "kowindowlist.h"
 #include "KdepimDBusInterfaces/ReminderClient"
 #include "kocheckableproxymodel.h"
+#include <KAuthorized>
 
 #include <KHolidays/HolidayRegion>
 
@@ -276,9 +277,11 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("import_ical"), importAction);
     connect(importAction, &QAction::triggered, this, &ActionManager::file_icalimport);
 
-    action = new QAction(i18n("Get &Hot New Stuff..."), this);
-    mACollection->addAction(QStringLiteral("downloadnewstuff"), action);
-    connect(action, &QAction::triggered, this, &ActionManager::downloadNewStuff);
+    if (KAuthorized::authorize(QStringLiteral("ghns"))) {
+        action = new QAction(i18n("Get &Hot New Stuff..."), this);
+        mACollection->addAction(QStringLiteral("downloadnewstuff"), action);
+        connect(action, &QAction::triggered, this, &ActionManager::downloadNewStuff);
+    }
 
     action = new QAction(i18n("Export as &iCalendar..."), this);
     mACollection->addAction(QStringLiteral("export_icalendar"), action);
