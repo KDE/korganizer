@@ -268,8 +268,8 @@ void TodoSummaryWidget::updateView()
             mLayout->addWidget(urlLabel, counter, 4);
             mLabels.append(urlLabel);
 
-            connect(urlLabel, static_cast<void (KUrlLabel::*)(const QString &)>(&KUrlLabel::leftClickedUrl), this, &TodoSummaryWidget::viewTodo);
-            connect(urlLabel, static_cast<void (KUrlLabel::*)(const QString &)>(&KUrlLabel::rightClickedUrl), this, &TodoSummaryWidget::popupMenu);
+            connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &TodoSummaryWidget::viewTodo);
+            connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &TodoSummaryWidget::popupMenu);
 
             /*
                Commented out because a ETMCalendar doesn't have any name, it's a group of selected

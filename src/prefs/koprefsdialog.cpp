@@ -253,7 +253,7 @@ public:
 
         mHolidayCombo = new KComboBox(holidayRegBox);
         holidayRegBoxHBoxLayout->addWidget(mHolidayCombo);
-        connect(mHolidayCombo, static_cast<void (KComboBox::*)(int)>(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
+        connect(mHolidayCombo, QOverload<int>::of(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
 
         mHolidayCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
@@ -378,7 +378,7 @@ public:
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
         mReminderTimeSpin->setToolTip(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
-        connect(mReminderTimeSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KOPrefsDialogMain::slotWidChanged);
+        connect(mReminderTimeSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &KOPrefsDialogMain::slotWidChanged);
         remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
         mReminderUnitsCombo = new KComboBox(defaultPage);
@@ -386,7 +386,7 @@ public:
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip());
         mReminderUnitsCombo->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
-        connect(mReminderUnitsCombo, static_cast<void (KComboBox::*)(int)>(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
+        connect(mReminderUnitsCombo, QOverload<int>::of(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
         mReminderUnitsCombo->addItem(
             i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
         mReminderUnitsCombo->addItem(
@@ -779,7 +779,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
               "Select here the event category you want to modify. "
               "You can change the selected category color using "
               "the button below."));
-    connect(mCategoryCombo, static_cast<void (KComboBox::*)(int)>(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
+    connect(mCategoryCombo, QOverload<int>::of(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
     categoryLayout->addWidget(mCategoryCombo, 1, 0);
 
     mCategoryButton = new KColorButton(categoryGroup);
@@ -812,7 +812,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
               "Select the calendar you want to modify. "
               "You can change the selected calendar color using "
               "the button below."));
-    connect(mResourceCombo, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
+    connect(mResourceCombo, QOverload<int>::of(&Akonadi::CollectionComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
     resourceLayout->addWidget(mResourceCombo);
 
     mResourceButton = new KColorButton(resourceGroup);
@@ -1030,7 +1030,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
 
     // signals and slots connections
 
-    connect(mGroupwarePage->publishDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUser, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
@@ -1040,7 +1040,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishDelay, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishDelay, QOverload<int>::of(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 

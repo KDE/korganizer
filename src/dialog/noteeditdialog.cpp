@@ -90,8 +90,8 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
 #endif
     mCollectionCombobox->setToolTip(i18n("Calendar where the new note will be stored."));
 
-    connect(mCollectionCombobox, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::currentIndexChanged), this, &NoteEditDialog::slotCollectionChanged);
-    connect(mCollectionCombobox, static_cast<void (Akonadi::CollectionComboBox::*)(int)>(&Akonadi::CollectionComboBox::activated), this, &NoteEditDialog::slotCollectionChanged);
+    connect(mCollectionCombobox, QOverload<int>::of(&Akonadi::CollectionComboBox::currentIndexChanged), this, &NoteEditDialog::slotCollectionChanged);
+    connect(mCollectionCombobox, QOverload<int>::of(&Akonadi::CollectionComboBox::activated), this, &NoteEditDialog::slotCollectionChanged);
 
     mNoteText = new KPIMTextEdit::RichTextEditorWidget(parent);
     mNoteText->setObjectName(QStringLiteral("notetext"));

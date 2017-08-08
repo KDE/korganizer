@@ -193,8 +193,8 @@ void ApptSummaryWidget::updateView()
         mLayout->addWidget(urlLabel, counter, 3);
         mLabels.append(urlLabel);
 
-        connect(urlLabel, static_cast<void (KUrlLabel::*)(const QString &)>(&KUrlLabel::leftClickedUrl), this, &ApptSummaryWidget::viewEvent);
-        connect(urlLabel, static_cast<void (KUrlLabel::*)(const QString &)>(&KUrlLabel::rightClickedUrl), this, &ApptSummaryWidget::popupMenu);
+        connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &ApptSummaryWidget::viewEvent);
+        connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &ApptSummaryWidget::popupMenu);
         if (!event->summaryTooltip.isEmpty()) {
             urlLabel->setToolTip(event->summaryTooltip);
         }

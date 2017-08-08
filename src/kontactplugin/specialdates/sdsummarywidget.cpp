@@ -538,8 +538,8 @@ void SDSummaryWidget::createLabels()
                 mLayout->addWidget(urlLabel, counter, 4);
                 mLabels.append(urlLabel);
 
-                connect(urlLabel, static_cast<void (KUrlLabel::*)(const QString &)>(&KUrlLabel::leftClickedUrl), this, &SDSummaryWidget::mailContact);
-                connect(urlLabel, static_cast<void (KUrlLabel::*)(const QString &)>(&KUrlLabel::rightClickedUrl), this, &SDSummaryWidget::popupMenu);
+                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &SDSummaryWidget::mailContact);
+                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &SDSummaryWidget::popupMenu);
             } else {
                 label = new QLabel(this);
                 label->setText((*addrIt).summary);

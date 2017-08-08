@@ -336,8 +336,7 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     mainLayout->addWidget(widget);
 
     d->ui.columnList->setModel(&d->listModel);
-    connect(d->ui.columnList->selectionModel(),
-            &QItemSelectionModel::currentChanged,
+    connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged,
             this, &MultiAgendaViewConfigDialog::currentChanged);
     connect(d->ui.useCustomRB, &QAbstractButton::toggled,
             this, &MultiAgendaViewConfigDialog::useCustomToggled);

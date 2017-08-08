@@ -56,13 +56,13 @@ KCMApptSummary::KCMApptSummary(QWidget *parent)
 
     customDaysChanged(7);
 
-    connect(mDaysButtonGroup, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mDaysButtonGroup, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::buttonClicked);
-    connect(mShowButtonGroup, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mGroupwareButtonGroup, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mDaysButtonGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mDaysButtonGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::buttonClicked);
+    connect(mShowButtonGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mGroupwareButtonGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
 
-    connect(mCustomDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KCMApptSummary::modified);
-    connect(mCustomDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &KCMApptSummary::customDaysChanged);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMApptSummary::modified);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMApptSummary::customDaysChanged);
 
     KAcceleratorManager::manage(this);
 
