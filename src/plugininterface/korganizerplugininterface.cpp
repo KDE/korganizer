@@ -20,23 +20,6 @@
 #include "korganizerplugininterface.h"
 #include <KActionCollection>
 
-class KOrganizerPluginInterfacePrivate
-{
-public:
-    KOrganizerPluginInterfacePrivate()
-        : korganizerPluginInterface(new KOrganizerPluginInterface)
-    {
-    }
-
-    ~KOrganizerPluginInterfacePrivate()
-    {
-        delete korganizerPluginInterface;
-    }
-    KOrganizerPluginInterface *korganizerPluginInterface;
-};
-
-Q_GLOBAL_STATIC(KOrganizerPluginInterfacePrivate, sInstance)
-
 KOrganizerPluginInterface::KOrganizerPluginInterface(QObject *parent)
     : PimCommon::PluginInterface(parent)
 {
@@ -51,5 +34,6 @@ KOrganizerPluginInterface::~KOrganizerPluginInterface()
 
 KOrganizerPluginInterface *KOrganizerPluginInterface::self()
 {
-    return sInstance->korganizerPluginInterface;
+    static KOrganizerPluginInterface s_self;
+    return &s_self;
 }
