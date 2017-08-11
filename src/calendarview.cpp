@@ -1818,7 +1818,7 @@ void CalendarView::printPreview()
 void CalendarView::exportICalendar()
 {
     QString filename =
-        QFileDialog::getSaveFileName(this, QString(), QStringLiteral("icalout.ics"), i18n("iCalendars (*.ics)"));
+        QFileDialog::getSaveFileName(this, QString(), QStringLiteral("icalout.ics"), i18n("iCalendars (*.ics)"), nullptr, QFileDialog::DontConfirmOverwrite);
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".ics")) {
@@ -1867,7 +1867,7 @@ void CalendarView::exportVCalendar()
         }
     }
 
-    QString filename = QFileDialog::getSaveFileName(this, QString(), QStringLiteral("vcalout.vcs"), i18n("vCalendars (*.vcs)"));
+    QString filename = QFileDialog::getSaveFileName(this, QString(), QStringLiteral("vcalout.vcs"), i18n("vCalendars (*.vcs)"), nullptr, QFileDialog::DontConfirmOverwrite);
     if (!filename.isEmpty()) {
         // Force correct extension
         if (filename.right(4) != QLatin1String(".vcs")) {
