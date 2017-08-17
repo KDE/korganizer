@@ -11,7 +11,7 @@ set(reparentingmodeltest_SRCS
 )
 
 add_executable(reparentingmodeltest ${reparentingmodeltest_SRCS})
-add_test(reparentingmodeltest reparentingmodeltest)
+add_test(NAME reparentingmodeltest COMMAND reparentingmodeltest)
 ecm_mark_as_test(reparentingmodeltest)
 ecm_mark_nongui_executable(reparentingmodeltest)
 target_link_libraries(reparentingmodeltest

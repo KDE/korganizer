@@ -3,7 +3,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 ########### next target ###############
 
 add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
-add_test(testkodaymatrix testkodaymatrix)
+add_test(NAME testkodaymatrix COMMAND testkodaymatrix)
 ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
   KF5::AkonadiCore
@@ -32,7 +32,7 @@ set(koeventpopupmenutest_LIBS Qt5::Test
 add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenutest_SRCS}" "${koeventpopupmenutest_LIBS}")
 
 add_executable(noteeditdialogtest noteeditdialogtest.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
-add_test(noteeditdialogtest noteeditdialogtest)
+add_test(NAME noteeditdialogtest COMMAND noteeditdialogtest)
 ecm_mark_as_test(noteeditdialogtest)
 target_link_libraries(noteeditdialogtest
   Qt5::Test
