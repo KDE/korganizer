@@ -1235,9 +1235,9 @@ bool ActionManager::addIncidence(const QString &ical)
 void ActionManager::downloadNewStuff()
 {
 
-    KNS3::DownloadDialog dialog(mCalendarView);
-    dialog.exec();
-    foreach (const KNS3::Entry &e, dialog.installedEntries()) {
+    QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(mCalendarView);
+    dialog->exec();
+    foreach (const KNS3::Entry &e, dialog->installedEntries()) {
         qCDebug(KORGANIZER_LOG) << " downloadNewStuff :";
         const QStringList lstFile = e.installedFiles();
         if (lstFile.count() != 1) {
@@ -1276,6 +1276,7 @@ void ActionManager::downloadNewStuff()
             }
         }
     }
+    delete dialog;
 }
 
 QString ActionManager::localFileName()

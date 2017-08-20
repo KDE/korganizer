@@ -655,9 +655,10 @@ void SDSummaryWidget::viewContact(const QString &url)
         return;
     }
 
-    Akonadi::ContactViewerDialog dlg(this);
-    dlg.setContact(item);
-    dlg.exec();
+    QPointer<Akonadi::ContactViewerDialog> dlg = new Akonadi::ContactViewerDialog(this);
+    dlg->setContact(item);
+    dlg->exec();
+    delete dlg;
 }
 
 void SDSummaryWidget::popupMenu(const QString &url)

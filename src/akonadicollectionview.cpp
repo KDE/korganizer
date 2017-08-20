@@ -855,13 +855,13 @@ void AkonadiCollectionView::updateMenu()
 
 void AkonadiCollectionView::newCalendar()
 {
-    Akonadi::AgentTypeDialog dlg(this);
-    dlg.setWindowTitle(i18n("Add Calendar"));
-    dlg.agentFilterProxyModel()->addMimeTypeFilter(QStringLiteral("text/calendar"));
-    dlg.agentFilterProxyModel()->addCapabilityFilter(QStringLiteral("Resource"));   // show only resources, no agents
-    if (dlg.exec()) {
+    QPointer<Akonadi::AgentTypeDialog> dlg = new Akonadi::AgentTypeDialog(this);
+    dlg->setWindowTitle(i18n("Add Calendar"));
+    dlg->agentFilterProxyModel()->addMimeTypeFilter(QStringLiteral("text/calendar"));
+    dlg->agentFilterProxyModel()->addCapabilityFilter(QStringLiteral("Resource"));   // show only resources, no agents
+    if (dlg->exec()) {
         mNotSendAddRemoveSignal = true;
-        const Akonadi::AgentType agentType = dlg.agentType();
+        const Akonadi::AgentType agentType = dlg->agentType();
         if (agentType.isValid()) {
             Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob(agentType, this);
             job->configure(this);
@@ -869,6 +869,7 @@ void AkonadiCollectionView::newCalendar()
             job->start();
         }
     }
+    delete dlg;
 }
 
 void AkonadiCollectionView::newCalendarDone(KJob *job)
