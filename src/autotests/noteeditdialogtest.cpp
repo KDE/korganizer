@@ -38,10 +38,12 @@
 
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QStandardPaths>
 #include <QShortcut>
 
 NoteEditDialogTest::NoteEditDialogTest()
 {
+    QStandardPaths::setTestModeEnabled(true);
     qRegisterMetaType<Akonadi::Collection>();
     qRegisterMetaType<Akonadi::Item>();
     qRegisterMetaType<KMime::Message::Ptr>();
