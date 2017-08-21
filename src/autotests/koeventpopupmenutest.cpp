@@ -30,6 +30,7 @@
 #include <QPushButton>
 #include <qtest.h>
 #include <qtestkeyboard.h>
+#include <QStandardPaths>
 #include <qtestmouse.h>
 
 #include <QShortcut>
@@ -37,6 +38,7 @@
 
 KoEventPopupMenuTest::KoEventPopupMenuTest()
 {
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void KoEventPopupMenuTest::createEventFromEvent()
