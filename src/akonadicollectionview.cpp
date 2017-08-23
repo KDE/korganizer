@@ -759,6 +759,7 @@ void AkonadiCollectionView::assignColor()
     myColor = QColorDialog::getColor(defaultColor);
     if (myColor.isValid() && myColor != defaultColor) {
         KOPrefs::instance()->setResourceColor(identifier, myColor);
+        KOPrefs::instance()->eventViewsPreferences()->writeConfig();
         Q_EMIT colorsChanged();
         updateMenu();
         updateView();
@@ -773,6 +774,7 @@ void AkonadiCollectionView::disableColor()
     Q_ASSERT(collection.isValid());
     const QString identifier = QString::number(collection.id());
     KOPrefs::instance()->setResourceColor(identifier, QColor());
+    KOPrefs::instance()->eventViewsPreferences()->writeConfig();
     updateMenu();
     updateView();
     Q_EMIT colorsChanged();
