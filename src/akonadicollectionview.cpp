@@ -768,13 +768,11 @@ void AkonadiCollectionView::assignColor()
     const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
     Q_ASSERT(collection.isValid());
 
-    const QString identifier = QString::number(collection.id());
-    const QColor defaultColor = KOPrefs::instance()->resourceColor(identifier);
+    const QColor defaultColor = KOHelper::resourceColor(collection);
     QColor myColor;
     myColor = QColorDialog::getColor(defaultColor);
     if (myColor.isValid() && myColor != defaultColor) {
-        KOPrefs::instance()->setResourceColor(identifier, myColor);
-        KOPrefs::instance()->eventViewsPreferences()->writeConfig();
+        KOHelper::setResourceColor(collection, myColor);
         Q_EMIT colorsChanged();
         updateMenu();
         updateView();
@@ -787,9 +785,7 @@ void AkonadiCollectionView::disableColor()
     Q_ASSERT(index.isValid());
     const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
     Q_ASSERT(collection.isValid());
-    const QString identifier = QString::number(collection.id());
-    KOPrefs::instance()->setResourceColor(identifier, QColor());
-    KOPrefs::instance()->eventViewsPreferences()->writeConfig();
+    KOHelper::setResourceColor(collection, QColor());
     updateMenu();
     updateView();
     Q_EMIT colorsChanged();
@@ -845,8 +841,7 @@ void AkonadiCollectionView::updateMenu()
         const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
 
         if (collection.isValid() && !collection.contentMimeTypes().isEmpty()) {
-            const QString identifier = QString::number(collection.id());
-            const QColor defaultColor = KOPrefs::instance()->resourceColor(identifier);
+            const QColor defaultColor = KOHelper::resourceColor(collection);
             enableAction = enableAction && defaultColor.isValid();
             if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
                 enableAction = false;

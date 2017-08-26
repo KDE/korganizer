@@ -25,8 +25,9 @@
 #include "kohelper.h"
 #include "prefs/koprefs.h"
 
-#include <CalendarSupport/KCalPrefs>
+#include <EventViews/Helper>
 
+#include <CalendarSupport/KCalPrefs>
 #include <KMessageBox>
 
 QColor KOHelper::getTextColor(const QColor &c)
@@ -37,40 +38,23 @@ QColor KOHelper::getTextColor(const QColor &c)
 
 QColor KOHelper::resourceColor(const Akonadi::Collection &coll)
 {
-    if (!coll.isValid()) {
-        return QColor();
-    }
-
-    const QString id = QString::number(coll.id());
-    return KOPrefs::instance()->resourceColor(id);
+    return EventViews::resourceColor(coll, KOPrefs::instance()->eventViewsPreferences());
 }
 
 QColor KOHelper::resourceColorKnown(const Akonadi::Collection &coll)
 {
-    if (!coll.isValid()) {
-        return QColor();
-    }
-
-    const QString id = QString::number(coll.id());
-    return KOPrefs::instance()->resourceColorKnown(id);
+    return EventViews::resourceColor(coll, KOPrefs::instance()->eventViewsPreferences());
 }
 
 void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QColor &color)
 {
-    if (collection.isValid()) {
-        const QString id = QString::number(collection.id());
-        return KOPrefs::instance()->setResourceColor(id, color);
-    }
+    EventViews::setResourceColor(collection, color, KOPrefs::instance()->eventViewsPreferences());
+    KOPrefs::instance()->eventViewsPreferences()->writeConfig();
 }
 
 QColor KOHelper::resourceColor(const Akonadi::Item &item)
 {
-    if (!item.isValid()) {
-        return QColor();
-    }
-
-    const QString id = QString::number(item.storageCollectionId());
-    return KOPrefs::instance()->resourceColor(id);
+    return EventViews::resourceColor(item, KOPrefs::instance()->eventViewsPreferences());
 }
 
 int KOHelper::yearDiff(const QDate &start, const QDate &end)
