@@ -1017,32 +1017,6 @@ bool ActionManager::saveAsURL(const QUrl &url)
     return success;
 }
 
-QUrl ActionManager::getSaveURL()
-{
-    QUrl url =
-        QFileDialog::getSaveFileUrl(dialogParent(), QString(), QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/")),
-                                    i18n("*.ics *.vcs|Calendar Files")
-                                   );
-
-    if (!url.isValid()) {
-        return url;
-    }
-
-    QString filename = url.fileName();
-
-    QString e = filename.right(4);
-    if (e != QLatin1String(".vcs") && e != QLatin1String(".ics")) {
-        // Default save format is iCalendar
-        filename += QLatin1String(".ics");
-    }
-    url = url.adjusted(QUrl::RemoveFilename);
-    url.setPath(url.path() + filename);
-
-    qCDebug(KORGANIZER_LOG) << "url:" << url.url();
-
-    return url;
-}
-
 void ActionManager::saveProperties(KConfigGroup &config)
 {
 

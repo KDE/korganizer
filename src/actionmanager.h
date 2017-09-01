@@ -292,8 +292,6 @@ protected Q_SLOTS:
     void updateUndoRedoActions();
 
 protected:
-    /** Get URL for saving. Opens FileDialog. */
-    QUrl getSaveURL();
 
     /**
       Return widget used as parent for dialogs and message boxes.
