@@ -201,7 +201,7 @@ void KCMDesignerFields::deleteFile()
 void KCMDesignerFields::importFile()
 {
     QUrl src = QFileDialog::getOpenFileUrl(this, i18n("Import Page"), QUrl::fromLocalFile(QDir::homePath()),
-                                           i18n("Designer Files (*.ui)")
+                                           QStringLiteral("%1 (*.ui)").arg(i18n("Designer Files"))
                                           );
     QUrl dest = QUrl::fromLocalFile(localUiDir());
     QDir().mkpath(localUiDir());
