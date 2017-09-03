@@ -868,17 +868,15 @@ KDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
     if (incidence->recurs()) {
         result = incidence->recurrence()->getNextDateTime(
                      KDateTime(reminderAt, KDateTime::Spec::LocalZone()));
-
-        displayStr = KLocale::global()->formatDateTime(result.toLocalZone());
     }
 
     if (!result.isValid()) {
         result = incidence->dateTime(Incidence::RoleAlarm);
-        displayStr = IncidenceFormatter::dateTimeToString(result, false,
-                     true,
-                     KDateTime::Spec::LocalZone());
     }
 
+    if (result.isValid()) {
+        displayStr = QLocale().toString(result.toLocalZone().dateTime(), QLocale::ShortFormat);
+    }
     return result;
 }
 
@@ -1033,4 +1031,3 @@ void AlarmDialog::removeFromConfig(const QList<Akonadi::Item::Id> &ids)
     }
     genGroup.sync();
 }
-
