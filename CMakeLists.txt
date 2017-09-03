@@ -1,6 +1,17 @@
-project(korganizer)
-
 cmake_minimum_required(VERSION 3.1)
+# Do NOT add quote
+set(KDEPIM_DEV_VERSION alpha1)
+
+# add an extra space
+if(DEFINED KDEPIM_DEV_VERSION)
+    set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
+endif()
+
+set(KDEPIM_VERSION_NUMBER "5.6.40")
+set(KDEPIM_VERSION "${KDEPIM_VERSION_NUMBER}${KDEPIM_DEV_VERSION}")
+
+project(korganizer VERSION ${KDEPIM_VERSION_NUMBER})
+
 if (POLICY CMP0063)
     cmake_policy(SET CMP0063 NEW)
 endif()
@@ -34,16 +45,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
 include(ECMCoverageOption)
-# Do NOT add quote
-set(KDEPIM_DEV_VERSION alpha1)
-
-# add an extra space
-if(DEFINED KDEPIM_DEV_VERSION)
-    set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
-endif()
-
-set(KDEPIM_VERSION_NUMBER "5.6.40")
-set(KDEPIM_VERSION "${KDEPIM_VERSION_NUMBER}${KDEPIM_DEV_VERSION}")
 
 
 set(AKONADI_MIMELIB_VERSION "5.6.40")
