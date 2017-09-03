@@ -47,7 +47,7 @@ int main(int argc, char **argv)
                          QStringLiteral(KORGANIZER_VERSION), i18n("KOrganizer Reminder Daemon"),
                          KAboutLicense::GPL,
                          i18n("(c) 2003 Cornelius Schumacher"),
-                         QString(), QStringLiteral("http://pim.kde.org"));
+                         QString(), QStringLiteral("https://community.kde.org/KDE_PIM/"));
     aboutData.addAuthor(i18n("Cornelius Schumacher"), i18n("Former Maintainer"),
                         QStringLiteral("schumacher@kde.org"));
     aboutData.addAuthor(i18n("Reinhold Kainhofer"), i18n("Former Maintainer"),
