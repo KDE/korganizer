@@ -61,7 +61,7 @@ public:
 
         QPersistentModelIndex sourceIndex;
         QVector<Ptr> children;
-        Node *parent;
+        Node *parent = nullptr;
         ReparentingModel &personModel;
         bool mIsSourceNode;
     };

@@ -93,7 +93,7 @@ Q_SIGNALS:
     void fullViewChanged(bool enabled);
 
 private:
-    EventViews::TodoView *mView;
+    EventViews::TodoView *mView = nullptr;
 };
 
 #endif /*KOTODOVIEW_H*/

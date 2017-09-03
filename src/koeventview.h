@@ -175,7 +175,7 @@ private:
     bool mReturnPressed;
 
     bool mTypeAhead;
-    QObject *mTypeAheadReceiver;
+    QObject *mTypeAheadReceiver = nullptr;
     QList<QEvent *> mTypeAheadEvents;
 };
 

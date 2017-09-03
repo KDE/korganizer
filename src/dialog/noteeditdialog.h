@@ -75,10 +75,10 @@ private:
     void writeConfig();
     Akonadi::Collection mCollection;
     Akonadi::Item mItem;
-    QLineEdit *mNoteTitle;
-    QPushButton *mOkButton;
-    KPIMTextEdit::RichTextEditorWidget *mNoteText;
-    Akonadi::CollectionComboBox *mCollectionCombobox;
+    QLineEdit *mNoteTitle = nullptr;
+    QPushButton *mOkButton = nullptr;
+    KPIMTextEdit::RichTextEditorWidget *mNoteText = nullptr;
+    Akonadi::CollectionComboBox *mCollectionCombobox = nullptr;
 };
 
 #endif // NOTEEDITDIALOG_H

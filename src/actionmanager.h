@@ -328,61 +328,61 @@ private:
     QString mFile;           // Local name of calendar file
     QString mLastUrl;        // URL of last loaded calendar.
 
-    QTemporaryFile *mTempFile;
-    QTimer *mAutoExportTimer;    // used if calendar is to be autoexported
-    QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
+    QTemporaryFile *mTempFile = nullptr;
+    QTimer *mAutoExportTimer = nullptr;    // used if calendar is to be autoexported
+    QTimer *mAutoArchiveTimer = nullptr; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
     static KOWindowList *mWindowList;
 
-    KToggleAction *mDateNavigatorShowAction;
-    KToggleAction *mTodoViewShowAction;
-    KToggleAction *mCollectionViewShowAction;
-    KToggleAction *mEventViewerShowAction;
+    KToggleAction *mDateNavigatorShowAction = nullptr;
+    KToggleAction *mTodoViewShowAction = nullptr;
+    KToggleAction *mCollectionViewShowAction = nullptr;
+    KToggleAction *mEventViewerShowAction = nullptr;
 
-    KToggleAction *mHideMenuBarAction;
+    KToggleAction *mHideMenuBarAction = nullptr;
 
-    QAction *mImportAction;
+    QAction *mImportAction = nullptr;
 
-    QAction *mNewEventAction;
-    QAction *mNewTodoAction;
-    QAction *mNewSubtodoAction;
-    QAction *mNewJournalAction;
-    QAction *mConfigureViewAction;
+    QAction *mNewEventAction = nullptr;
+    QAction *mNewTodoAction = nullptr;
+    QAction *mNewSubtodoAction = nullptr;
+    QAction *mNewJournalAction = nullptr;
+    QAction *mConfigureViewAction = nullptr;
 
-    QAction *mShowIncidenceAction;
-    QAction *mEditIncidenceAction;
-    QAction *mDeleteIncidenceAction;
+    QAction *mShowIncidenceAction = nullptr;
+    QAction *mEditIncidenceAction = nullptr;
+    QAction *mDeleteIncidenceAction = nullptr;
 
-    QAction *mCutAction;
-    QAction *mCopyAction;
-    QAction *mDeleteAction;
-    QAction *mNextXDays;
-    QAction *mPublishEvent;
-    QAction *mForwardEvent;
+    QAction *mCutAction = nullptr;
+    QAction *mCopyAction = nullptr;
+    QAction *mDeleteAction = nullptr;
+    QAction *mNextXDays = nullptr;
+    QAction *mPublishEvent = nullptr;
+    QAction *mForwardEvent = nullptr;
 
-    QAction *mSendInvitation;
-    QAction *mSendCancel;
-    QAction *mSendStatusUpdate;
+    QAction *mSendInvitation = nullptr;
+    QAction *mSendCancel = nullptr;
+    QAction *mSendStatusUpdate = nullptr;
 
-    QAction *mRequestChange;
-    QAction *mRequestUpdate;
+    QAction *mRequestChange = nullptr;
+    QAction *mRequestUpdate = nullptr;
 
-    QAction *mUndoAction;
-    QAction *mRedoAction;
-    QMenuBar *mMenuBar;
+    QAction *mUndoAction = nullptr;
+    QAction *mRedoAction = nullptr;
+    QMenuBar *mMenuBar = nullptr;
 
-    KSelectAction *mFilterAction;
+    KSelectAction *mFilterAction = nullptr;
 
-    KXMLGUIClient *mGUIClient;
-    KActionCollection *mACollection;
-    CalendarView *mCalendarView;
-    KOrg::MainWindow *mMainWindow;
+    KXMLGUIClient *mGUIClient = nullptr;
+    KActionCollection *mACollection = nullptr;
+    CalendarView *mCalendarView = nullptr;
+    KOrg::MainWindow *mMainWindow = nullptr;
     bool mIsPart;
 
-    AkonadiCollectionView *mCollectionView;
-    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver;
-    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver;
+    AkonadiCollectionView *mCollectionView = nullptr;
+    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver = nullptr;
+    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver = nullptr;
 };
 
 #endif

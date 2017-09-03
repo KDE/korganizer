@@ -68,7 +68,7 @@ public:
     }
 
 private:
-    MainWindow *mMainWindow;
+    MainWindow *mMainWindow = nullptr;
 };
 
 class PartFactory : public KPluginFactory

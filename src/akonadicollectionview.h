@@ -61,8 +61,8 @@ public:
     CalendarViewExtension *create(QWidget *) override;
 
 private:
-    CalendarView *mView;
-    AkonadiCollectionView *mAkonadiCollectionView;
+    CalendarView *mView = nullptr;
+    AkonadiCollectionView *mAkonadiCollectionView = nullptr;
 };
 
 class NewNodeExpander;
@@ -113,21 +113,21 @@ private Q_SLOTS:
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
 
-    Akonadi::StandardCalendarActionManager *mActionManager;
-    Akonadi::EntityTreeView *mCollectionView;
-    QStackedWidget *mStackedWidget;
-    QAbstractProxyModel *mBaseModel;
-    KCheckableProxyModel *mSelectionProxyModel;
-    QAction *mAssignColor;
-    QAction *mDisableColor;
-    QAction *mDefaultCalendar;
-    QAction *mServerSideSubscription;
+    Akonadi::StandardCalendarActionManager *mActionManager = nullptr;
+    Akonadi::EntityTreeView *mCollectionView = nullptr;
+    QStackedWidget *mStackedWidget = nullptr;
+    QAbstractProxyModel *mBaseModel = nullptr;
+    KCheckableProxyModel *mSelectionProxyModel = nullptr;
+    QAction *mAssignColor = nullptr;
+    QAction *mDisableColor = nullptr;
+    QAction *mDefaultCalendar = nullptr;
+    QAction *mServerSideSubscription = nullptr;
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;
     bool mHasContextMenu;
-    Controller *mController;
-    NewNodeExpander *mNewNodeExpander;
-    ManageShowCollectionProperties *mManagerShowCollectionProperties;
+    Controller *mController = nullptr;
+    NewNodeExpander *mNewNodeExpander = nullptr;
+    ManageShowCollectionProperties *mManagerShowCollectionProperties = nullptr;
 };
 
 #endif

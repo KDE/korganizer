@@ -78,7 +78,7 @@
 
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
 {
-    QAbstractProxyModel *proxyModel;
+    QAbstractProxyModel *proxyModel = nullptr;
     while (model) {
         proxyModel = qobject_cast<QAbstractProxyModel *>(model);
         if (proxyModel && proxyModel->sourceModel()) {
@@ -128,7 +128,7 @@ private Q_SLOTS:
     }
 
 private:
-    QAbstractItemModel *mCheckableProxy;
+    QAbstractItemModel *mCheckableProxy = nullptr;
 };
 
 /**
@@ -236,8 +236,8 @@ private:
     }
 
     QPointer<Akonadi::ETMViewStateSaver> treeStateRestorer;
-    QTreeView *mTreeView;
-    bool mExpandAll;
+    QTreeView *mTreeView = nullptr;
+    bool mExpandAll = false;
     QString mTreeStateConfig;
 };
 

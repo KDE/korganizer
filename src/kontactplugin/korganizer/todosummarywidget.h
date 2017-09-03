@@ -74,20 +74,20 @@ private Q_SLOTS:
     void completeTodo(Akonadi::Item::Id id);
 
 private:
-    TodoPlugin *mPlugin;
-    QGridLayout *mLayout;
+    TodoPlugin *mPlugin = nullptr;
+    QGridLayout *mLayout = nullptr;
 
-    bool mDaysToGo;
-    bool mHideInProgress;
-    bool mHideOverdue;
-    bool mHideCompleted;
-    bool mHideOpenEnded;
-    bool mHideNotStarted;
-    bool mShowMineOnly;
+    bool mDaysToGo = false;
+    bool mHideInProgress = false;
+    bool mHideOverdue = false;
+    bool mHideCompleted = false;
+    bool mHideOpenEnded = false;
+    bool mHideNotStarted = false;
+    bool mShowMineOnly = false;
 
     QList<QLabel *> mLabels;
     Akonadi::ETMCalendar::Ptr mCalendar;
-    Akonadi::IncidenceChanger *mChanger;
+    Akonadi::IncidenceChanger *mChanger = nullptr;
 
     /**
       Test if the To-do starts today.

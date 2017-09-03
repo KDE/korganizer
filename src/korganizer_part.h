@@ -96,10 +96,10 @@ protected:
     bool openFile() override;
 
 private:
-    CalendarView *mView;
-    ActionManager *mActionManager;
-    KParts::StatusBarExtension *mStatusBarExtension;
-    QWidget *mTopLevelWidget;
+    CalendarView *mView = nullptr;
+    ActionManager *mActionManager = nullptr;
+    KParts::StatusBarExtension *mStatusBarExtension = nullptr;
+    QWidget *mTopLevelWidget = nullptr;
 
 Q_SIGNALS:
     void textChanged(const QString &);

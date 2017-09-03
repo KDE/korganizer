@@ -50,8 +50,8 @@ public:
         delete mPopup;
     }
 
-    EventViews::AgendaView *mAgendaView;
-    KOEventPopupMenu *mPopup;
+    EventViews::AgendaView *mAgendaView = nullptr;
+    KOEventPopupMenu *mPopup = nullptr;
 
 private:
     KOAgendaView *const q;

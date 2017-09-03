@@ -105,7 +105,7 @@ public Q_SLOTS:
     bool handleCommandLine(const QStringList &args);
 
 private:
-    ActionManager *mActionManager;
+    ActionManager *mActionManager = nullptr;
 };
 
 #endif // KORGANIZER_SHARED_H

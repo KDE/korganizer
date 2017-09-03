@@ -239,7 +239,7 @@ void ActionManager::createCalendarAkonadi()
 
 void ActionManager::initActions()
 {
-    QAction *action;
+    QAction *action = nullptr;
 
     /*************************** FILE MENU **********************************/
 
@@ -306,7 +306,7 @@ void ActionManager::initActions()
 
     /************************** EDIT MENU *********************************/
 
-    QAction *pasteAction;
+    QAction *pasteAction = nullptr;
     Akonadi::History *history = mCalendarView->history();
     if (mIsPart) {
         // edit menu
@@ -1326,9 +1326,9 @@ protected:
         }
         return true;
     }
-    QAction *mShow;
-    QAction *mEdit;
-    QAction *mDelete;
+    QAction *mShow = nullptr;
+    QAction *mEdit = nullptr;
+    QAction *mDelete = nullptr;
 };
 
 void ActionManager::processIncidenceSelection(const Akonadi::Item &item, const QDate &date)

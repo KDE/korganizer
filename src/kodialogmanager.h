@@ -88,12 +88,12 @@ private:
     class DialogManagerVisitor;
     class EditorDialogVisitor;
 
-    CalendarView *mMainView;
-    KCMultiDialog *mOptionsDialog;
+    CalendarView *mMainView = nullptr;
+    KCMultiDialog *mOptionsDialog = nullptr;
     QPointer<Akonadi::TagManagementDialog> mCategoryEditDialog;
-    SearchDialog *mSearchDialog;
-    CalendarSupport::ArchiveDialog *mArchiveDialog;
-    FilterEditDialog *mFilterEditDialog;
+    SearchDialog *mSearchDialog = nullptr;
+    CalendarSupport::ArchiveDialog *mArchiveDialog = nullptr;
+    FilterEditDialog *mFilterEditDialog = nullptr;
 };
 
 #endif

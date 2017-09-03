@@ -60,7 +60,7 @@ public Q_SLOTS:
     void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
 
 private:
-    EventViews::WhatsNextView *mView;
+    EventViews::WhatsNextView *mView = nullptr;
 };
 
 #endif

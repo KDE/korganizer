@@ -53,7 +53,7 @@ using namespace KOrg;
 class KODialogManager::DialogManagerVisitor : public KCalCore::Visitor
 {
 public:
-    DialogManagerVisitor() : mDialogManager(nullptr) {}
+    DialogManagerVisitor() {}
 
     bool act(KCalCore::IncidenceBase::Ptr incidence, KODialogManager *manager)
     {
@@ -62,7 +62,7 @@ public:
     }
 
 protected:
-    KODialogManager *mDialogManager;
+    KODialogManager *mDialogManager = nullptr;
 };
 
 KODialogManager::KODialogManager(CalendarView *mainView)

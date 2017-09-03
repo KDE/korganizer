@@ -86,8 +86,8 @@ public Q_SLOTS:
     void popupMenu(const QPoint &);
 
 private:
-    KOEventPopupMenu *mPopupMenu;
-    EventViews::ListView *mListView;
+    KOEventPopupMenu *mPopupMenu = nullptr;
+    EventViews::ListView *mListView = nullptr;
 };
 
 #endif

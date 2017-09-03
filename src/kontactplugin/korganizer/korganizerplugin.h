@@ -67,8 +67,8 @@ private Q_SLOTS:
     void slotNewEvent();
 
 private:
-    OrgKdeKorganizerCalendarInterface *mIface;
-    KontactInterface::UniqueAppWatcher *mUniqueAppWatcher;
+    OrgKdeKorganizerCalendarInterface *mIface = nullptr;
+    KontactInterface::UniqueAppWatcher *mUniqueAppWatcher = nullptr;
 };
 
 #endif

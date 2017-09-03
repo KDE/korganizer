@@ -93,8 +93,8 @@ private:
     QList<QAction *> mTodoOnlyItems;
     QList<QAction *> mEventOnlyItems;
     QList<QAction *> mRecurrenceItems;
-    QAction *mDissociateOccurrences;
-    QAction *mToggleReminder;
+    QAction *mDissociateOccurrences = nullptr;
+    QAction *mToggleReminder = nullptr;
 };
 
 #endif

@@ -120,12 +120,12 @@ protected:
 
 private:
     void selectMonthHelper(int monthDifference);
-    NavigatorBar *mNavigatorBar;
+    NavigatorBar *mNavigatorBar = nullptr;
 
     QLabel *mHeadings[ 7 ];
     QLabel *mWeeknos[ 7 ];
 
-    KODayMatrix *mDayMatrix;
+    KODayMatrix *mDayMatrix = nullptr;
 
     KCalCore::DateList mSelectedDates;
     QDate mBaseDate;

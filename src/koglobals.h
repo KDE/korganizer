@@ -76,7 +76,7 @@ protected:
     KOGlobals();
 
 private:
-    KHolidays::HolidayRegion *mHolidays;
+    KHolidays::HolidayRegion *mHolidays = nullptr;
 };
 
 #endif

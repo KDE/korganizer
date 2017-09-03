@@ -82,7 +82,7 @@ public Q_SLOTS:
 private:
     QList<KOrg::MainWindow *> mWindowList; // list of all existing KOrganizer instances
 
-    KOrg::MainWindow *mDefaultWindow;
+    KOrg::MainWindow *mDefaultWindow = nullptr;
 };
 
 #endif

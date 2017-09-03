@@ -75,7 +75,7 @@ public Q_SLOTS:
     void printJournal(const KCalCore::Journal::Ptr &journal, bool preview);
 
 private:
-    EventViews::JournalView *mJournalView;
+    EventViews::JournalView *mJournalView = nullptr;
 };
 
 #endif

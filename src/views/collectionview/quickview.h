@@ -55,8 +55,8 @@ private:
     void readConfig();
     void writeConfig();
 
-    Ui_quickview *mUi;
-    EventViews::AgendaView *mAgendaView;
+    Ui_quickview *mUi = nullptr;
+    EventViews::AgendaView *mAgendaView = nullptr;
     KPIM::Person mPerson;
     Akonadi::Collection mCollection;
     int mDayRange;

@@ -288,11 +288,11 @@ private:
     QDate mStartDate;
 
     /** array of day labels to optimeize drawing performance. */
-    QString *mDayLabels;
+    QString *mDayLabels = nullptr;
 
     /** array of days displayed to reduce memory consumption by
         subsequently calling QDate::addDays(). */
-    QDate *mDays;
+    QDate *mDays = nullptr;
 
     /** List for storing days which should be drawn using bold font. */
     QList<QDate> mEvents;
@@ -329,16 +329,16 @@ private:
     /**
      * Indicate pending calendar changes.
      */
-    bool mPendingChanges;
+    bool mPendingChanges = false;
 
     /** Whether days with events are highlighted */
-    bool mHighlightEvents;
+    bool mHighlightEvents = false;
 
     /** Whether days with to-dos (with due date) are highlighted */
-    bool mHighlightTodos;
+    bool mHighlightTodos = false;
 
     /** Whether days with journals are highlighted */
-    bool mHighlightJournals;
+    bool mHighlightJournals = false;
 };
 
 #endif

@@ -402,7 +402,7 @@ protected Q_SLOTS:
     virtual void calendarReset();
 
 protected:
-    Akonadi::IncidenceChanger *mChanger;
+    Akonadi::IncidenceChanger *mChanger = nullptr;
 
 private:
     class Private;

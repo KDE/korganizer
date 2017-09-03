@@ -48,11 +48,11 @@ public:
 
 private:
     void init(const Akonadi::Collection &collection);
-    QCheckBox *mBlockAlarmsCheckBox;
-    QLineEdit *mNameEdit;
-    QCheckBox *mIconCheckBox;
-    KIconButton *mIconButton;
-    PimCommon::IncidencesForWidget *mIncidencesForComboBox;
+    QCheckBox *mBlockAlarmsCheckBox = nullptr;
+    QLineEdit *mNameEdit = nullptr;
+    QCheckBox *mIconCheckBox = nullptr;
+    KIconButton *mIconButton = nullptr;
+    PimCommon::IncidencesForWidget *mIncidencesForComboBox = nullptr;
 };
 
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage)

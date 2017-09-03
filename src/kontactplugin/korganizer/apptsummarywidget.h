@@ -73,15 +73,15 @@ private:
     void dateDiff(const QDate &date, int &days);
 
     Akonadi::ETMCalendar::Ptr mCalendar;
-    Akonadi::IncidenceChanger *mChanger;
+    Akonadi::IncidenceChanger *mChanger = nullptr;
 
-    QGridLayout *mLayout;
+    QGridLayout *mLayout = nullptr;
     QList<QLabel *> mLabels;
-    KOrganizerPlugin *mPlugin;
+    KOrganizerPlugin *mPlugin = nullptr;
     int mDaysAhead;
-    bool mShowBirthdaysFromCal;
-    bool mShowAnniversariesFromCal;
-    bool mShowMineOnly;
+    bool mShowBirthdaysFromCal = false;
+    bool mShowAnniversariesFromCal = false;
+    bool mShowMineOnly = false;
 };
 
 #endif

@@ -57,7 +57,7 @@ protected Q_SLOTS:
     void toggleEmailSettings(bool on);
 
 private:
-    QWidget *mUserEmailSettings;
+    QWidget *mUserEmailSettings = nullptr;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule
@@ -80,12 +80,12 @@ protected Q_SLOTS:
     void updateResourceColor();
 
 private:
-    KComboBox     *mCategoryCombo;
-    KColorButton  *mCategoryButton;
+    KComboBox     *mCategoryCombo = nullptr;
+    KColorButton  *mCategoryButton = nullptr;
     QHash<QString, QColor> mCategoryDict;
 
-    Akonadi::CollectionComboBox *mResourceCombo;
-    KColorButton  *mResourceButton;
+    Akonadi::CollectionComboBox *mResourceCombo = nullptr;
+    KColorButton  *mResourceButton = nullptr;
     QHash<QString, QColor> mResourceDict;
 };
 

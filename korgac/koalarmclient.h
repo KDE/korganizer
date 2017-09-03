@@ -74,14 +74,14 @@ private:
                         const QDateTime &dt, const QString &displayText);
     void saveLastCheckTime();
 
-    AlarmDockWindow *mDocker;  // the panel icon
+    AlarmDockWindow *mDocker = nullptr;  // the panel icon
     Akonadi::ETMCalendar::Ptr mCalendar;
-    Akonadi::EntityTreeModel *mETM;
+    Akonadi::EntityTreeModel *mETM = nullptr;
 
     QDateTime mLastChecked;
     QTimer mCheckTimer;
 
-    AlarmDialog *mDialog;
+    AlarmDialog *mDialog = nullptr;
 };
 
 #endif

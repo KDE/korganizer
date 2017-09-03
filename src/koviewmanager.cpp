@@ -229,8 +229,7 @@ void KOViewManager::goMenu(bool enable)
     if (w) {
         KActionCollection *ac = w->getActionCollection();
         if (ac) {
-            QAction *action;
-            action = ac->action(QStringLiteral("go_today"));
+            QAction *action = ac->action(QStringLiteral("go_today"));
             if (action) {
                 action->setEnabled(enable);
             }

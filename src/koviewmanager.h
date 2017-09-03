@@ -187,21 +187,21 @@ private Q_SLOTS:
 private:
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
-    CalendarView *mMainView;
+    CalendarView *mMainView = nullptr;
 
-    KOAgendaView *mAgendaView;
-    KOrg::MultiAgendaView *mAgendaSideBySideView;
-    KOListView *mListView;
-    KOTodoView *mTodoView;
-    KOWhatsNextView *mWhatsNextView;
-    KOJournalView *mJournalView;
-    KOTimelineView *mTimelineView;
-    KOTimeSpentView *mTimeSpentView;
-    KOrg::MonthView *mMonthView;
-    KOrg::BaseView *mCurrentView;
+    KOAgendaView *mAgendaView = nullptr;
+    KOrg::MultiAgendaView *mAgendaSideBySideView = nullptr;
+    KOListView *mListView = nullptr;
+    KOTodoView *mTodoView = nullptr;
+    KOWhatsNextView *mWhatsNextView = nullptr;
+    KOJournalView *mJournalView = nullptr;
+    KOTimelineView *mTimelineView = nullptr;
+    KOTimeSpentView *mTimeSpentView = nullptr;
+    KOrg::MonthView *mMonthView = nullptr;
+    KOrg::BaseView *mCurrentView = nullptr;
 
-    KOrg::BaseView *mLastEventView;
-    QTabWidget *mAgendaViewTabs;
+    KOrg::BaseView *mLastEventView = nullptr;
+    QTabWidget *mAgendaViewTabs = nullptr;
     int mAgendaViewTabIndex;
 
     RangeMode mRangeMode;

@@ -65,7 +65,7 @@ public Q_SLOTS:
     CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 private:
-    EventViews::TimeSpentView *mView;
+    EventViews::TimeSpentView *mView = nullptr;
 };
 
 #endif

@@ -61,12 +61,12 @@ private:
     QIcon mIconDisabled;
     QString mName;
 
-    QAction *mAlarmsEnabled;
-    QAction *mAutostart;
-    QAction *mSuspendAll;
-    QAction *mDismissAll;
+    QAction *mAlarmsEnabled = nullptr;
+    QAction *mAutostart = nullptr;
+    QAction *mSuspendAll = nullptr;
+    QAction *mDismissAll = nullptr;
 
-    bool mAutostartSet;
+    bool mAutostartSet = false;
 };
 
 #endif

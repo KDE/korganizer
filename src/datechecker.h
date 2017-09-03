@@ -79,7 +79,7 @@ protected Q_SLOTS:
     void passedMidnight();
 
 private:
-    QTimer *mUpdateTimer;
+    QTimer *mUpdateTimer = nullptr;
     QDate mLastDayChecked;
     RolloverType mUpdateRollover;
 };

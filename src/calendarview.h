@@ -112,7 +112,7 @@ public:
     class CalendarViewVisitor : public KCalCore::Visitor
     {
     public:
-        CalendarViewVisitor() : mView(nullptr)
+        CalendarViewVisitor()
         {
         }
 
@@ -123,7 +123,7 @@ public:
         }
 
     protected:
-        CalendarView *mView;
+        CalendarView *mView = nullptr;
     };
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &);
@@ -702,32 +702,32 @@ private:
     IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(
         const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection());
 
-    CalendarSupport::CalPrinter *mCalPrinter;
-    Akonadi::TodoPurger *mTodoPurger;
+    CalendarSupport::CalPrinter *mCalPrinter = nullptr;
+    Akonadi::TodoPurger *mTodoPurger = nullptr;
 
-    QSplitter *mPanner;
-    QSplitter *mLeftSplitter;
-    QWidget *mLeftFrame;
-    QStackedWidget *mRightFrame;
-    CalendarSupport::MessageWidget *mMessageWidget;
+    QSplitter *mPanner = nullptr;
+    QSplitter *mLeftSplitter = nullptr;
+    QWidget *mLeftFrame = nullptr;
+    QStackedWidget *mRightFrame = nullptr;
+    CalendarSupport::MessageWidget *mMessageWidget = nullptr;
 
     // This navigator bar is used when in full window month view
     // It has nothing to do with the date navigator
-    NavigatorBar *mNavigatorBar;
+    NavigatorBar *mNavigatorBar = nullptr;
 
-    DateNavigatorContainer *mDateNavigatorContainer;
+    DateNavigatorContainer *mDateNavigatorContainer = nullptr;
 
     QList<CalendarViewExtension *> mExtensions;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
 
-    DateNavigator *mDateNavigator;
-    DateChecker *mDateChecker;
+    DateNavigator *mDateNavigator = nullptr;
+    DateChecker *mDateChecker = nullptr;
 
-    QWidget *mEventViewerBox;
-    CalendarSupport::IncidenceViewer *mEventViewer;
-    KOViewManager *mViewManager;
-    KODialogManager *mDialogManager;
+    QWidget *mEventViewerBox = nullptr;
+    CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
+    KOViewManager *mViewManager = nullptr;
+    KODialogManager *mDialogManager = nullptr;
 
     // Calendar filters
     QList<KCalCore::CalFilter *> mFilters;
@@ -739,16 +739,16 @@ private:
     Akonadi::Item mSelectedIncidence;
     QDate mSaveDate;
 
-    KOTodoView *mTodoList;
-    Akonadi::IncidenceChanger *mChanger;
-    Akonadi::ITIPHandler *mITIPHandler;
+    KOTodoView *mTodoList = nullptr;
+    Akonadi::IncidenceChanger *mChanger = nullptr;
+    Akonadi::ITIPHandler *mITIPHandler = nullptr;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
     bool mCreatingEnabled;
 
-    Akonadi::CalendarClipboard *mCalendarClipboard;
-    KOCheckableProxyModel *mCheckableProxyModel;
-    AkonadiCollectionView *mETMCollectionView;
+    Akonadi::CalendarClipboard *mCalendarClipboard = nullptr;
+    KOCheckableProxyModel *mCheckableProxyModel = nullptr;
+    AkonadiCollectionView *mETMCollectionView = nullptr;
 
     SearchCollectionHelper mSearchCollectionHelper;
 };

@@ -66,9 +66,9 @@ public Q_SLOTS:
     void setDialogConsistent(bool consistent);
 
 private:
-    FilterEdit *mFilterEdit;
-    QPushButton *mOkButton;
-    QPushButton *mApplyButton;
+    FilterEdit *mFilterEdit = nullptr;
+    QPushButton *mOkButton = nullptr;
+    QPushButton *mApplyButton = nullptr;
 
 protected Q_SLOTS:
     void slotApply();
@@ -104,9 +104,9 @@ private:
     void filterSelected(KCalCore::CalFilter *f);
 
     QString mNegativeBackground;
-    QList<KCalCore::CalFilter *> *mFilters;
-    KCalCore::CalFilter *mCurrent;
-    KPIM::TagSelectionDialog *mCategorySelectDialog;
+    QList<KCalCore::CalFilter *> *mFilters = nullptr;
+    KCalCore::CalFilter *mCurrent = nullptr;
+    KPIM::TagSelectionDialog *mCategorySelectDialog = nullptr;
 };
 
 #endif

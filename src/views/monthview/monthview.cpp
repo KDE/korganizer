@@ -46,11 +46,11 @@ public:
         mPopup = q->eventPopup();
     }
 
-    EventViews::MonthView *mMonthView;
-    KOEventPopupMenu *mPopup;
+    EventViews::MonthView *mMonthView = nullptr;
+    KOEventPopupMenu *mPopup = nullptr;
 
 private:
-    MonthView *q;
+    MonthView *q = nullptr;
 };
 
 MonthView::MonthView(QWidget *parent)

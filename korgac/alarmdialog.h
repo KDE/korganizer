@@ -126,19 +126,19 @@ private:
     void showDetails(QTreeWidgetItem *item);
 
     Akonadi::ETMCalendar::Ptr mCalendar;
-    QTreeWidget *mIncidenceTree;
-    CalendarSupport::IncidenceViewer *mDetailView;
-    KIdentityManagement::IdentityManager *mIdentityManager;
+    QTreeWidget *mIncidenceTree = nullptr;
+    CalendarSupport::IncidenceViewer *mDetailView = nullptr;
+    KIdentityManagement::IdentityManager *mIdentityManager = nullptr;
 
     QPoint mPos;
-    QSpinBox *mSuspendSpin;
-    KComboBox *mSuspendUnit;
+    QSpinBox *mSuspendSpin = nullptr;
+    KComboBox *mSuspendUnit = nullptr;
     QTimer mSuspendTimer;
-    QTreeWidgetItem *mLastItem;
-    QPushButton *mUser1Button;
-    QPushButton *mUser2Button;
-    QPushButton *mUser3Button;
-    QPushButton *mOkButton;
+    QTreeWidgetItem *mLastItem = nullptr;
+    QPushButton *mUser1Button = nullptr;
+    QPushButton *mUser2Button = nullptr;
+    QPushButton *mUser3Button = nullptr;
+    QPushButton *mOkButton = nullptr;
 
 };
 

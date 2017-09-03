@@ -63,8 +63,8 @@ private Q_SLOTS:
     void delayedDestruct();
 
 private:
-    CalendarSupport::IncidenceViewer *mEventViewer;
-    QPushButton *mUser1Button;
+    CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
+    QPushButton *mUser1Button = nullptr;
 };
 
 #endif

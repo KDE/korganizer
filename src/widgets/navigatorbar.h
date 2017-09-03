@@ -62,12 +62,12 @@ private Q_SLOTS:
 private:
     QDate mDate;
 
-    QToolButton *mPrevYear;
-    QToolButton *mPrevMonth;
-    QToolButton *mMonth;
-    QToolButton *mYear;
-    QToolButton *mNextMonth;
-    QToolButton *mNextYear;
+    QToolButton *mPrevYear = nullptr;
+    QToolButton *mPrevMonth = nullptr;
+    QToolButton *mMonth = nullptr;
+    QToolButton *mYear = nullptr;
+    QToolButton *mNextMonth = nullptr;
+    QToolButton *mNextYear = nullptr;
 };
 
 #endif

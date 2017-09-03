@@ -83,8 +83,7 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
                                     this, SLOT(popupDelete())));
     //------------------------------------------------------------------------
     addSeparator();
-    QAction *action;
-    action = addAction(QIcon::fromTheme(QStringLiteral("task-new")),
+    QAction *action = addAction(QIcon::fromTheme(QStringLiteral("task-new")),
                        i18n("Create To-do"),
                        this, SLOT(createTodo()));
     action->setObjectName(QStringLiteral("createtodo"));

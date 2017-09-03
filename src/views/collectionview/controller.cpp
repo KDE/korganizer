@@ -368,7 +368,7 @@ void Controller::onPersonsFound(KJob *job)
 
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
 {
-    QAbstractProxyModel *proxyModel;
+    QAbstractProxyModel *proxyModel = nullptr;
     while (model) {
         proxyModel = qobject_cast<QAbstractProxyModel *>(model);
         if (proxyModel && proxyModel->sourceModel()) {

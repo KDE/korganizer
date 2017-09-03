@@ -167,10 +167,10 @@ private Q_SLOTS:
     void onPersonCollectionsFetched(KJob *job);
 
 private:
-    ReparentingModel *mPersonModel;
-    ReparentingModel *mSearchModel;
-    KPIM::CollectionSearchJob *mCollectionSearchJob;
-    KPIM::PersonSearchJob *mPersonSearchJob;
+    ReparentingModel *mPersonModel = nullptr;
+    ReparentingModel *mSearchModel = nullptr;
+    KPIM::CollectionSearchJob *mCollectionSearchJob = nullptr;
+    KPIM::PersonSearchJob *mPersonSearchJob = nullptr;
 };
 
 #endif

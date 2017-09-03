@@ -479,9 +479,9 @@ protected:
 
 private:
     QStringList   tzonenames;
-    KComboBox    *mHolidayCombo;
-    QSpinBox  *mReminderTimeSpin;
-    KComboBox    *mReminderUnitsCombo;
+    KComboBox    *mHolidayCombo = nullptr;
+    QSpinBox  *mReminderTimeSpin = nullptr;
+    KComboBox    *mReminderUnitsCombo = nullptr;
     QCheckBox    *mWorkDays[7];
 };
 

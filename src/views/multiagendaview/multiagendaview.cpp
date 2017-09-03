@@ -62,8 +62,8 @@ public:
         mPopup = q->eventPopup();
     }
 
-    EventViews::MultiAgendaView *mMultiAgendaView;
-    KOEventPopupMenu *mPopup;
+    EventViews::MultiAgendaView *mMultiAgendaView = nullptr;
+    KOEventPopupMenu *mPopup = nullptr;
 
 private:
     MultiAgendaView *const q;

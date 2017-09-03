@@ -80,11 +80,11 @@ private:
     void readConfig();
     void writeConfig();
 
-    Ui::SearchDialog *m_ui;
-    CalendarView *m_calendarview; // parent
+    Ui::SearchDialog *m_ui = nullptr;
+    CalendarView *m_calendarview = nullptr; // parent
     Akonadi::Item::List mMatchedEvents;
-    EventViews::ListView *listView;
-    QPushButton *mUser1Button;
+    EventViews::ListView *listView = nullptr;
+    QPushButton *mUser1Button = nullptr;
 };
 
 #endif

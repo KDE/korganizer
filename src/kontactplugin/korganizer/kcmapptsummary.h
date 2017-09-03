@@ -51,9 +51,9 @@ private Q_SLOTS:
     void customDaysChanged(int value);
 
 private:
-    QButtonGroup *mDaysButtonGroup;
-    QButtonGroup *mShowButtonGroup;
-    QButtonGroup *mGroupwareButtonGroup;
+    QButtonGroup *mDaysButtonGroup = nullptr;
+    QButtonGroup *mShowButtonGroup = nullptr;
+    QButtonGroup *mGroupwareButtonGroup = nullptr;
 };
 
 #endif

@@ -81,9 +81,9 @@ private:
 
     Akonadi::ETMCalendar::Ptr mCalendar;
 
-    QGridLayout *mLayout;
+    QGridLayout *mLayout = nullptr;
     QList<QLabel *> mLabels;
-    KontactInterface::Plugin *mPlugin;
+    KontactInterface::Plugin *mPlugin = nullptr;
 
     int mDaysAhead;
     bool mShowBirthdaysFromKAB;
@@ -97,7 +97,7 @@ private:
     QList<SDEntry> mDates;
     void createLabels();
 
-    KHolidays::HolidayRegion *mHolidays;
+    KHolidays::HolidayRegion *mHolidays = nullptr;
 };
 
 #endif

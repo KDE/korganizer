@@ -47,11 +47,11 @@ public:
     {
         delete mEventPopup;
     }
-    KOEventPopupMenu *mEventPopup;
-    EventViews::TimelineView *mTimeLineView;
+    KOEventPopupMenu *mEventPopup = nullptr;
+    EventViews::TimelineView *mTimeLineView = nullptr;
 
 private:
-    KOTimelineView *mParent;
+    KOTimelineView *mParent = nullptr;
 };
 
 KOTimelineView::KOTimelineView(QWidget *parent)
