@@ -118,9 +118,9 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
     mainLayout->setSpacing(3);
     mainLayout->setMargin(3);
 
-    //TODO: we want our own special dates icon
-    QWidget *header = createHeader(
-                          this, QStringLiteral("favorites"), i18n("Upcoming Special Dates"));
+    QWidget *header = createHeader(this,
+                                   QStringLiteral("view-calendar-special-occasion"),
+                                   i18n("Upcoming Special Dates"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -143,8 +143,6 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
             this, &SDSummaryWidget::updateView);
 
     connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged,
-            this, &SDSummaryWidget::updateView);
-    connect(mPlugin->core(), &KontactInterface::Core::dayChanged,
             this, &SDSummaryWidget::updateView);
 
     // Update Configuration
@@ -230,7 +228,7 @@ int SDSummaryWidget::dayof(const KCalCore::Event::Ptr &event, const QDate &date)
 void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
 {
     // ;)
-    BirthdaySearchJob *bJob = qobject_cast< BirthdaySearchJob *>(job);
+    BirthdaySearchJob *bJob = qobject_cast<BirthdaySearchJob *>(job);
     if (bJob) {
         foreach (const Akonadi::Item &item, bJob->items()) {
             if (item.hasPayload<KContacts::Addressee>()) {
@@ -241,7 +239,6 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
                     entry.type = IncidenceTypeContact;
                     entry.category = CategoryBirthday;
                     dateDiff(birthday, entry.daysTo, entry.yearsOld);
-
                     entry.date = birthday;
                     entry.addressee = addressee;
                     entry.item = item;
@@ -273,8 +270,8 @@ void SDSummaryWidget::createLabels()
 
     QDate dt;
     for (dt = QDate::currentDate();
-            dt <= QDate::currentDate().addDays(mDaysAhead - 1);
-            dt = dt.addDays(1)) {
+         dt <= QDate::currentDate().addDays(mDaysAhead - 1);
+         dt = dt.addDays(1)) {
         const KCalCore::Event::List events  = mCalendar->events(dt, mCalendar->timeSpec(),
                                         KCalCore::EventSortStartDate,
                                         KCalCore::SortDirectionAscending);
@@ -383,8 +380,8 @@ void SDSummaryWidget::createLabels()
     if (mShowHolidays) {
         if (initHolidays()) {
             for (dt = QDate::currentDate();
-                    dt <= QDate::currentDate().addDays(mDaysAhead - 1);
-                    dt = dt.addDays(1)) {
+                 dt <= QDate::currentDate().addDays(mDaysAhead - 1);
+                 dt = dt.addDays(1)) {
                 QList<Holiday> holidays = mHolidays->holidays(dt);
                 QList<Holiday>::ConstIterator it = holidays.constBegin();
                 for (; it != holidays.constEnd(); ++it) {
@@ -447,7 +444,7 @@ void SDSummaryWidget::createLabels()
                 icon_name = QStringLiteral("view-calendar-holiday");
                 break;
             case CategoryOther:
-                icon_name = QStringLiteral("favorites");
+                icon_name = QStringLiteral("view-calendar-special-occasion");
                 break;
             }
             label = new QLabel(this);
@@ -538,8 +535,10 @@ void SDSummaryWidget::createLabels()
                 mLayout->addWidget(urlLabel, counter, 4);
                 mLabels.append(urlLabel);
 
-                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &SDSummaryWidget::mailContact);
-                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &SDSummaryWidget::popupMenu);
+                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl),
+                        this, &SDSummaryWidget::mailContact);
+                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl),
+                        this, &SDSummaryWidget::popupMenu);
             } else {
                 label = new QLabel(this);
                 label->setText((*addrIt).summary);
@@ -664,12 +663,12 @@ void SDSummaryWidget::viewContact(const QString &url)
 void SDSummaryWidget::popupMenu(const QString &url)
 {
     QMenu popup(this);
-    const QAction *sendMailAction = popup.addAction(
-                                        KIconLoader::global()->loadIcon(QStringLiteral("mail-message-new"), KIconLoader::Small),
-                                        i18n("Send &Mail"));
-    const QAction *viewContactAction = popup.addAction(
-                                           KIconLoader::global()->loadIcon(QStringLiteral("view-pim-contacts"), KIconLoader::Small),
-                                           i18n("View &Contact"));
+    const QAction *sendMailAction =
+        popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("mail-message-new"), KIconLoader::Small),
+                        i18n("Send &Mail"));
+    const QAction *viewContactAction =
+        popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("view-pim-contacts"), KIconLoader::Small),
+                        i18n("View &Contact"));
 
     const QAction *ret = popup.exec(QCursor::pos());
     if (ret == sendMailAction) {

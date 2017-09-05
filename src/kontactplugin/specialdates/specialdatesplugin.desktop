@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Service
-Icon=favorites
+Icon=view-calendar-special-occasion
 X-KDE-ServiceTypes=Kontact/Plugin,KPluginInfo
 
 X-KDE-Library=kontact_specialdatesplugin
