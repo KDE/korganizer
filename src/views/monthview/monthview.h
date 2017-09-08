@@ -66,7 +66,7 @@ public:
 
     void setTypeAheadReceiver(QObject *o) override;
 
-    void setDateRange(const KDateTime &start, const KDateTime &end,
+    void setDateRange(const QDateTime &start, const QDateTime &end,
                       const QDate &preferredMonth = QDate()) override;
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;

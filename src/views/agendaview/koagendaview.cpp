@@ -326,7 +326,7 @@ void KOAgendaView::setChanges(EventViews::EventView::Changes changes)
     d->mAgendaView->setChanges(c | d->mAgendaView->changes());
 }
 
-void KOAgendaView::setDateRange(const KDateTime &start, const KDateTime &end, const QDate &)
+void KOAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &)
 {
     d->mAgendaView->setDateRange(start, end);
 }

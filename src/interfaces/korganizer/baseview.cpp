@@ -49,10 +49,10 @@ public:
     EventViews::EventView::Changes mChanges;
     Akonadi::ETMCalendar::Ptr calendar;
     QByteArray identifier;
-    KDateTime startDateTime;
-    KDateTime endDateTime;
-    KDateTime actualStartDateTime;
-    KDateTime actualEndDateTime;
+    QDateTime startDateTime;
+    QDateTime endDateTime;
+    QDateTime actualStartDateTime;
+    QDateTime actualEndDateTime;
 };
 
 BaseView::BaseView(QWidget *parent)
@@ -125,33 +125,33 @@ bool BaseView::hasConfigurationDialog() const
     return false;
 }
 
-void BaseView::setDateRange(const KDateTime &start, const KDateTime &end,
+void BaseView::setDateRange(const QDateTime &start, const QDateTime &end,
                             const QDate &preferredMonth)
 {
     d->startDateTime = start;
     d->endDateTime = end;
     showDates(start.date(), end.date(), preferredMonth);
-    const QPair<KDateTime, KDateTime> adjusted = actualDateRange(start, end, preferredMonth);
+    const QPair<QDateTime, QDateTime> adjusted = actualDateRange(start, end, preferredMonth);
     d->actualStartDateTime = adjusted.first;
     d->actualEndDateTime = adjusted.second;
 }
 
-KDateTime BaseView::startDateTime() const
+QDateTime BaseView::startDateTime() const
 {
     return d->startDateTime;
 }
 
-KDateTime BaseView::endDateTime() const
+QDateTime BaseView::endDateTime() const
 {
     return d->endDateTime;
 }
 
-KDateTime BaseView::actualStartDateTime() const
+QDateTime BaseView::actualStartDateTime() const
 {
     return d->actualStartDateTime;
 }
 
-KDateTime BaseView::actualEndDateTime() const
+QDateTime BaseView::actualEndDateTime() const
 {
     return d->actualEndDateTime;
 }
@@ -228,8 +228,8 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<KDateTime, KDateTime> BaseView::actualDateRange(const KDateTime &start,
-        const KDateTime &end,
+QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start,
+        const QDateTime &end,
         const QDate &preferredMonth) const
 {
     Q_UNUSED(preferredMonth);

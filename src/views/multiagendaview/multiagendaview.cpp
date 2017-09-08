@@ -198,7 +198,7 @@ int MultiAgendaView::maxDatesHint() const
     return EventViews::AgendaView::MAX_DAY_COUNT;
 }
 
-void MultiAgendaView::setDateRange(const KDateTime &start, const KDateTime &end, const QDate &)
+void MultiAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &)
 {
     d->mMultiAgendaView->setDateRange(start, end);
 }

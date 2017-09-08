@@ -68,7 +68,7 @@ public:
     void restoreConfig(const KConfigGroup &configGroup) override;
     void saveConfig(KConfigGroup &configGroup) override;
 
-    void setDateRange(const KDateTime &start, const KDateTime &end,
+    void setDateRange(const QDateTime &start, const QDateTime &end,
                       const QDate &preferredMonth = QDate()) override;
 
     Akonadi::Collection::Id collectionId() const override;

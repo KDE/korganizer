@@ -271,7 +271,7 @@ void KOViewManager::updateView()
 void KOViewManager::updateView(const QDate &start, const QDate &end, const QDate &preferredMonth)
 {
     if (mCurrentView && mCurrentView != mTodoView) {
-        mCurrentView->setDateRange(KDateTime(start), KDateTime(end), preferredMonth);
+        mCurrentView->setDateRange(QDateTime(start), QDateTime(end), preferredMonth);
     } else if (mTodoView) {
         mTodoView->updateView();
     }

@@ -187,14 +187,14 @@ public:
       @param start Start of date range.
       @param end   End of date range.
     */
-    virtual void setDateRange(const KDateTime &start, const KDateTime &end,
+    virtual void setDateRange(const QDateTime &start, const QDateTime &end,
                               const QDate &preferredMonth = QDate());
 
-    KDateTime startDateTime() const;
-    KDateTime endDateTime() const;
+    QDateTime startDateTime() const;
+    QDateTime endDateTime() const;
 
-    KDateTime actualStartDateTime() const;
-    KDateTime actualEndDateTime() const;
+    QDateTime actualStartDateTime() const;
+    QDateTime actualEndDateTime() const;
 
     /** Returns true if the view supports navigation through the date navigator
         ( selecting a date range, changing month, changing year, etc. )
@@ -393,9 +393,9 @@ protected:
      * supported range (e.g., a month view always displays one month).
      * The default implementation returns the range unmodified
      */
-    virtual QPair<KDateTime, KDateTime> actualDateRange(
-        const KDateTime &start,
-        const KDateTime &end,
+    virtual QPair<QDateTime, QDateTime> actualDateRange(
+        const QDateTime &start,
+        const QDateTime &end,
         const QDate &preferredMonth = QDate()) const;
 
 protected Q_SLOTS:
