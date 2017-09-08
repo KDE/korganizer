@@ -204,12 +204,12 @@ bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDat
         if (todo->allDay()) {
             time = QTime(0, 0);
         } else {
-            time = todo->dtDue().toTimeSpec(CalendarSupport::KCalPrefs::instance()->timeSpec()).time();
+            time = todo->dtDue().toLocalZone().time();
         }
 
-        KDateTime itemDateTime(date, time, CalendarSupport::KCalPrefs::instance()->timeSpec());
+        QDateTime itemDateTime(date, time, Qt::LocalTime);
 
-        return itemDateTime < todo->dtDue(false);
+        return itemDateTime < todo->dtDue(false).toLocalZone().dateTime();
 
     } else {
         return false;

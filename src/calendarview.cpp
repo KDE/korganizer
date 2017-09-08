@@ -656,8 +656,7 @@ void CalendarView::slotModifyFinished(int changeId,
 
             if (journals.isEmpty()) {
                 KCalCore::Journal::Ptr journal(new KCalCore::Journal);
-                journal->setDtStart(
-                    KDateTime::currentDateTime(CalendarSupport::KCalPrefs::instance()->timeSpec()));
+                journal->setDtStart(KDateTime::currentLocalDateTime());
 
                 QString dateStr = QLocale::system().toString(QDate::currentDate(), QLocale::LongFormat);
                 journal->setSummary(i18n("Journal of %1", dateStr));
@@ -1391,8 +1390,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     if (todo->isCompleted()) {
         todo->setPercentComplete(0);
     } else {
-        todo->setCompleted(KDateTime::currentDateTime(
-                               CalendarSupport::KCalPrefs::instance()->timeSpec()));
+        todo->setCompleted(KDateTime::currentLocalDateTime());
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
@@ -2232,9 +2230,7 @@ void CalendarView::showIncidenceContext(const Akonadi::Item &item)
             viewManager()->showAgendaView();
         }
         // just select the appropriate date
-        mDateNavigator->selectWeek(
-            incidence->dtStart().toTimeSpec(
-                CalendarSupport::KCalPrefs::instance()->timeSpec()).date());
+        mDateNavigator->selectWeek(incidence->dtStart().toLocalZone().date());
         return;
     } else if (CalendarSupport::hasJournal(item)) {
         if (!viewManager()->currentView()->inherits("KOJournalView")) {

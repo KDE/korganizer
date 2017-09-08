@@ -172,20 +172,19 @@ void SearchDialog::search(const QRegExp &re)
 
     if (m_ui->todosCheck->isChecked()) {
         if (m_ui->includeUndatedTodos->isChecked()) {
-            KDateTime::Spec spec = CalendarSupport::KCalPrefs::instance()->timeSpec();
             const KCalCore::Todo::List alltodos = m_calendarview->calendar()->todos();
             for (const KCalCore::Todo::Ptr &todo : alltodos) {
                 Q_ASSERT(todo);
                 if ((!todo->hasStartDate() && !todo->hasDueDate()) ||    // undated
                         (todo->hasStartDate() &&
-                         (todo->dtStart().toTimeSpec(spec).date() >= startDt) &&
-                         (todo->dtStart().toTimeSpec(spec).date() <= endDt)) ||      //start dt in range
+                         (todo->dtStart().toLocalZone().date() >= startDt) &&
+                         (todo->dtStart().toLocalZone().date() <= endDt)) ||      //start dt in range
                         (todo->hasDueDate() &&
-                         (todo->dtDue().toTimeSpec(spec).date() >= startDt) &&
-                         (todo->dtDue().toTimeSpec(spec).date() <= endDt)) ||      //due dt in range
+                         (todo->dtDue().toLocalZone().date() >= startDt) &&
+                         (todo->dtDue().toLocalZone().date() <= endDt)) ||      //due dt in range
                         (todo->hasCompletedDate() &&
-                         (todo->completed().toTimeSpec(spec).date() >= startDt) &&
-                         (todo->completed().toTimeSpec(spec).date() <= endDt))) {      //completed dt in range
+                         (todo->completed().toLocalZone().date() >= startDt) &&
+                         (todo->completed().toLocalZone().date() <= endDt))) {      //completed dt in range
                     todos.append(todo);
                 }
             }
