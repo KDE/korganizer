@@ -591,32 +591,6 @@ void CalendarView::updateConfig(const QByteArray &receiver)
 
     KOGlobals::self()->setHolidays(new KHolidays::HolidayRegion(KOPrefs::instance()->mHolidays));
 
-    // Only set a new time zone if it changed. This prevents the window
-    // from being modified on start
-    KDateTime::Spec newTimeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
-    if (mCalendar->viewTimeSpec() != newTimeSpec) {
-
-        const QString question(i18n("The time zone setting was changed. "
-                                    "Do you want to keep the absolute time of "
-                                    "the items in your calendar, which will show "
-                                    "them to be at a different time than "
-                                    "before, or move them to be at the old time "
-                                    "also in the new time zone?"));
-        int rc = KMessageBox::questionYesNo(this, question,
-                                            i18n("Keep Absolute Times?"),
-                                            KGuiItem(i18n("Keep Times")),
-                                            KGuiItem(i18n("Move Times")),
-                                            QStringLiteral("calendarKeepAbsoluteTimes"));
-        if (rc == KMessageBox::Yes) {
-            // keep the absolute time - note the new viewing time zone in the calendar
-            mCalendar->setViewTimeSpec(newTimeSpec);
-        } else {
-            // only set the new timezone, wihtout shifting events, they will be
-            // interpreted as being in the new timezone now
-            mCalendar->shiftTimes(mCalendar->viewTimeSpec(), newTimeSpec);
-        }
-    }
-
     // config changed lets tell the date navigator the new modes
     // if there weren't changed they are ignored
     updateHighlightModes();
