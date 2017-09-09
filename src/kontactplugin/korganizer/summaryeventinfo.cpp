@@ -138,7 +138,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
     KCalCore::Event::List allEvents = calendar->events(); // calendar->rawEvents() isn't exactly what we want, doesn't handle recurrence right
     KCalCore::Event::List events;
     KDateTime::Spec spec = KSystemTimeZones::local();
-    const KDateTime currentDateTime = KDateTime::currentDateTime(spec);
+    const auto currentDateTime = QDateTime::currentDateTime();
     const QDate currentDate = currentDateTime.date();
 
     sDateTimeByUid()->clear();
@@ -149,8 +149,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             continue;
         }
 
-        KDateTime eventStart = event->dtStart().toTimeSpec(spec);
-        KDateTime eventEnd = event->dtEnd().toTimeSpec(spec);
+        const auto eventStart = event->dtStart().toLocalZone().dateTime();
+        const auto eventEnd = event->dtEnd().toLocalZone().dateTime();
         if (event->recurs()) {
             KCalCore::DateTimeList occurrences = event->recurrence()->timesInInterval(KDateTime(start, spec), KDateTime(end, spec));
             if (!occurrences.isEmpty()) {
@@ -164,7 +164,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                 if (eventStart.date() < start) {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(start, spec));
                 } else {
-                    sDateTimeByUid()->insert(event->instanceIdentifier(), eventStart);
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(eventStart));
                 }
             }
         }
@@ -181,8 +181,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Count number of days remaining in multiday event
         int span = 1;
         int dayof = 1;
-        const KDateTime eventStart = ev->dtStart().toTimeSpec(spec);
-        const KDateTime eventEnd = ev->dtEnd().toTimeSpec(spec);
+        const auto eventStart = ev->dtStart().toLocalZone().dateTime();
+        const auto eventEnd = ev->dtEnd().toLocalZone().dateTime();
         const QDate occurrenceStartDate = sDateTimeByUid()->value(ev->instanceIdentifier()).date();
 
         QDate startOfMultiday = eventStart.date();
@@ -233,11 +233,11 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             if (!ev->allDay()) {
                 int secs;
                 if (!ev->recurs()) {
-                    secs = currentDateTime.secsTo(ev->dtStart());
+                    secs = currentDateTime.secsTo(ev->dtStart().dateTime());
                 } else {
-                    KDateTime kdt(start, QTime(0, 0, 0), spec);
+                    QDateTime kdt(start, QTime(0, 0, 0), Qt::LocalTime);
                     kdt = kdt.addSecs(-1);
-                    KDateTime next = ev->recurrence()->getNextDateTime(kdt);
+                    const auto next = ev->recurrence()->getNextDateTime(KDateTime(kdt)).dateTime();
                     secs = currentDateTime.secsTo(next);
                 }
                 if (secs > 0) {
