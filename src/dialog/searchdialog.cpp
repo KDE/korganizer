@@ -30,17 +30,18 @@
 #include "calendarview.h"
 #include "koglobals.h"
 
-#include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
 #include <EventViews/ListView>
+#include <PimCommon/PimUtil>
 
 #include <KMessageBox>
-#include <PimCommon/PimUtil>
 #include <KConfigGroup>
+#include <KGuiItem>
+#include <KSharedConfig>
+
 #include <QDialogButtonBox>
 #include <QPushButton>
-#include <KGuiItem>
 #include <QVBoxLayout>
 
 using namespace KOrg;
@@ -161,11 +162,10 @@ void SearchDialog::search(const QRegExp &re)
     const QDate endDt = m_ui->endDate->date();
 
     KCalCore::Event::List events;
-    KDateTime::Spec timeSpec = CalendarSupport::KCalPrefs::instance()->timeSpec();
     if (m_ui->eventsCheck->isChecked()) {
         events =
             m_calendarview->calendar()->events(
-                startDt, endDt, timeSpec, m_ui->inclusiveCheck->isChecked());
+                startDt, endDt, KDateTime::LocalZone, m_ui->inclusiveCheck->isChecked());
     }
 
     KCalCore::Todo::List todos;

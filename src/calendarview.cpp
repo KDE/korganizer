@@ -880,7 +880,7 @@ void CalendarView::edit_paste()
             if (agendaView && endDT.isValid() && useEndTime) {
                 if ((pastedEvent->allDay() && agendaView->selectedIsAllDay()) ||
                         (!pastedEvent->allDay() && !agendaView->selectedIsAllDay())) {
-                    KDateTime kdt(endDT, CalendarSupport::KCalPrefs::instance()->timeSpec());
+                    KDateTime kdt(endDT, KDateTime::LocalZone);
                     pastedEvent->setDtEnd(kdt.toTimeSpec(pastedEvent->dtEnd().timeSpec()));
                 }
             }
@@ -1563,7 +1563,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate 
         return;
     }
 
-    KDateTime thisDateTime(date, CalendarSupport::KCalPrefs::instance()->timeSpec());
+    KDateTime thisDateTime(date, KDateTime::LocalZone);
     bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
 
     int answer;
@@ -2391,7 +2391,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                          i18n("KOrganizer Confirmation"),
                          KGuiItem(i18n("Delete All")));
             } else {
-                KDateTime itemDateTime(itemDate, CalendarSupport::KCalPrefs::instance()->timeSpec());
+                KDateTime itemDateTime(itemDate, KDateTime::LocalZone);
                 bool isFirst = !incidence->recurrence()->getPreviousDateTime(itemDateTime).isValid();
                 bool isLast  = !incidence->recurrence()->getNextDateTime(itemDateTime).isValid();
 
