@@ -989,8 +989,8 @@ void CalendarView::newEvent(const QDateTime &startDtParam, const QDateTime &endD
 
     IncidenceEditorNG::IncidenceDefaults defaults =
         IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setStartDateTime(KDateTime(startDt));
-    defaults.setEndDateTime(KDateTime(endDt));
+    defaults.setStartDateTime(startDt);
+    defaults.setEndDateTime(endDt);
 
     KCalCore::Event::Ptr event(new KCalCore::Event);
     defaults.setDefaults(event);
@@ -1016,8 +1016,8 @@ void CalendarView::newEvent(const QString &summary, const QString &description,
 
     IncidenceEditorNG::IncidenceDefaults defaults =
         IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setStartDateTime(KDateTime(startDt));
-    defaults.setEndDateTime(KDateTime(endDt));
+    defaults.setStartDateTime(startDt);
+    defaults.setEndDateTime(endDt);
     // if attach or attendee list is empty, these methods don't do anything, so
     // it's safe to call them in every case
     defaults.setAttachments(attachments, attachmentMimetypes, QStringList(), inlineAttachment);
@@ -1063,8 +1063,8 @@ void CalendarView::newTodo(const Akonadi::Collection &collection)
         QDateTime endDt;
         dateTimesForNewEvent(startDt, endDt, allDay);
 
-        defaults.setStartDateTime(KDateTime(startDt));
-        defaults.setEndDateTime(KDateTime(endDt));
+        defaults.setStartDateTime(startDt);
+        defaults.setEndDateTime(endDt);
     }
 
     KCalCore::Todo::Ptr todo(new KCalCore::Todo);
@@ -1083,7 +1083,7 @@ void CalendarView::newTodo(const QDate &date)
 {
     IncidenceEditorNG::IncidenceDefaults defaults =
         IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setEndDateTime(KDateTime(date, QTime::currentTime()));
+    defaults.setEndDateTime(QDateTime(date, QTime::currentTime()));
 
     KCalCore::Todo::Ptr todo(new KCalCore::Todo);
     defaults.setDefaults(todo);
@@ -1117,8 +1117,8 @@ void CalendarView::newJournal(const Akonadi::Collection &collection)
         bool allDay = true;
         dateTimesForNewEvent(startDt, endDt, allDay);
 
-        defaults.setStartDateTime(KDateTime(startDt));
-        defaults.setEndDateTime(KDateTime(endDt));
+        defaults.setStartDateTime(startDt);
+        defaults.setEndDateTime(endDt);
     }
 
     KCalCore::Journal::Ptr journal(new KCalCore::Journal);
@@ -1136,7 +1136,7 @@ void CalendarView::newJournal(const QString &text, const QDate &date)
         IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
     KCalCore::Journal::Ptr journal(new KCalCore::Journal);
-    defaults.setStartDateTime(KDateTime(date));
+    defaults.setStartDateTime(QDateTime(date));
     defaults.setDefaults(journal);
 
     journal->setSummary(text);
