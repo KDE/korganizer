@@ -56,7 +56,6 @@
 #include <KMessageBox>
 #include <KNotification>
 #include <KSharedConfig>
-#include <KSystemTimeZone>
 #include <KToolInvocation>
 #include <KWindowSystem>
 #include <KIconLoader>
@@ -343,9 +342,7 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
     QString tip =
         IncidenceFormatter::toolTipStr(
             CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
-            incidence,
-            item->mRemindAt.date(), true,
-            KDateTime::Spec::LocalZone());
+            incidence, item->mRemindAt.date(), true);
     if (!item->mDisplayText.isEmpty()) {
         tip += QLatin1String("<br>") + item->mDisplayText;
     }
@@ -664,9 +661,7 @@ void AlarmDialog::eventNotification()
                     subject = i18nc("@title", "Reminder: %1", alarm->mailSubject());
                 }
 
-                QString body =
-                    IncidenceFormatter::mailBodyStr(
-                        parent.staticCast<IncidenceBase>(), KSystemTimeZones::local());
+                QString body = IncidenceFormatter::mailBodyStr(parent.staticCast<IncidenceBase>());
                 if (!alarm->mailText().isEmpty()) {
                     body += QLatin1Char('\n') + alarm->mailText();
                 }

@@ -48,7 +48,6 @@
 
 #include <KLocalizedString>
 #include <KProtocolManager>
-#include <KSystemTimeZone>
 
 using namespace KOrg;
 
@@ -131,7 +130,7 @@ bool MailClient::mailAttendees(const KCalCore::IncidenceBase::Ptr &incidence,
     }
 
     const QString body =
-        KCalUtils::IncidenceFormatter::mailBodyStr(incidence, KSystemTimeZones::local());
+        KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
 
     return send(identity, from, to, cc, subject, body, false,
                 bccMe, attachment, mailTransport);
@@ -155,7 +154,7 @@ bool MailClient::mailOrganizer(const KCalCore::IncidenceBase::Ptr &incidence,
         subject = i18n("Free Busy Message");
     }
 
-    const QString body = KCalUtils::IncidenceFormatter::mailBodyStr(incidence, KSystemTimeZones::local());
+    const QString body = KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
 
     return send(identity, from, to, QString(), subject, body, false,
                 bccMe, attachment, mailTransport);
@@ -176,7 +175,7 @@ bool MailClient::mailTo(const KCalCore::IncidenceBase::Ptr &incidence,
         subject = i18n("Free Busy Message");
     }
     const QString body =
-        KCalUtils::IncidenceFormatter::mailBodyStr(incidence, KSystemTimeZones::local());
+        KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
 
     return send(identity, from, recipients, QString(), subject, body, false,
                 bccMe, attachment, mailTransport);
