@@ -114,7 +114,7 @@ protected:
     void usrReadConfig() override;
 
 private:
-    Ui::KOGroupwarePrefsPage *mGroupwarePage;
+    Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
@@ -132,16 +132,14 @@ protected Q_SLOTS:
 
 private:
     void buildList();
-    QTreeWidget *mTreeWidget;
-    QLabel *mDescription;
-    QPushButton *mConfigureButton;
-    QGroupBox *mPositioningGroupBox;
+    QTreeWidget *mTreeWidget = nullptr;
+    QLabel *mDescription = nullptr;
+    QPushButton *mConfigureButton = nullptr;
+    QGroupBox *mPositioningGroupBox = nullptr;
 
-    //Decorations are not implemented in month view yet
-    //QCheckBox *mPositionMonthTop;
 
-    QRadioButton *mPositionAgendaTop;
-    QRadioButton *mPositionAgendaBottom;
+    QRadioButton *mPositionAgendaTop = nullptr;
+    QRadioButton *mPositionAgendaBottom = nullptr;
     QSet<QString> mDecorationsAtMonthViewTop;
     QSet<QString> mDecorationsAtAgendaViewTop;
     QSet<QString> mDecorationsAtAgendaViewBottom;

@@ -303,7 +303,7 @@ public:
     QVector<QString> titles;
     Ui::MultiAgendaViewConfigWidget ui;
     QStandardItemModel listModel;
-    QAbstractItemModel *baseModel;
+    QAbstractItemModel *baseModel = nullptr;
     int currentColumn;
 };
 

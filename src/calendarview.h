@@ -731,7 +731,7 @@ private:
 
     // Calendar filters
     QList<KCalCore::CalFilter *> mFilters;
-    KCalCore::CalFilter *mCurrentFilter;
+    KCalCore::CalFilter *mCurrentFilter = nullptr;
 
     // various housekeeping variables.
     bool  mReadOnly; // flag indicating if calendar is read-only

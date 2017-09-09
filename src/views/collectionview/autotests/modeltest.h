@@ -61,7 +61,7 @@ protected Q_SLOTS:
 private:
     void checkChildren(const QModelIndex &parent, int currentDepth = 0);
 
-    QAbstractItemModel *model;
+    QAbstractItemModel *model = nullptr;
 
     struct Changing {
         QModelIndex parent;
