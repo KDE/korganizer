@@ -34,8 +34,6 @@ using namespace KCalCore;
 using namespace KCalUtils;
 
 #include <KLocalizedString>
-#include <KSystemTimeZones>
-#include <KLocale>
 
 #include <QDate>
 #include <QLocale>
@@ -137,7 +135,6 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
 {
     KCalCore::Event::List allEvents = calendar->events(); // calendar->rawEvents() isn't exactly what we want, doesn't handle recurrence right
     KCalCore::Event::List events;
-    KDateTime::Spec spec = KSystemTimeZones::local();
     const auto currentDateTime = QDateTime::currentDateTime();
     const QDate currentDate = currentDateTime.date();
 
@@ -152,7 +149,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         const auto eventStart = event->dtStart().toLocalZone().dateTime();
         const auto eventEnd = event->dtEnd().toLocalZone().dateTime();
         if (event->recurs()) {
-            KCalCore::DateTimeList occurrences = event->recurrence()->timesInInterval(KDateTime(start, spec), KDateTime(end, spec));
+            KCalCore::DateTimeList occurrences = event->recurrence()->timesInInterval(KDateTime(start), KDateTime(end));
             if (!occurrences.isEmpty()) {
                 events << event;
                 sDateTimeByUid()->insert(event->instanceIdentifier(), occurrences.first());
@@ -162,7 +159,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                     (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
                 if (eventStart.date() < start) {
-                    sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(start, spec));
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(start));
                 } else {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(eventStart));
                 }
@@ -206,7 +203,16 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         } else if (sD == currentDate.addDays(1)) {
             str = i18nc("the appointment is tomorrow", "Tomorrow");
         } else {
-            str = KLocale::global()->formatDate(sD, KLocale::FancyLongDate);
+            const auto locale = QLocale::system();
+            for (int i = 2; i < 7; ++i) {
+                if (sD < currentDate.addDays(i)) {
+                    str = locale.dayName(sD.dayOfWeek(), QLocale::LongFormat);
+                    break;
+                }
+            }
+            if (str.isEmpty()) {
+                str = locale.toString(sD, QLocale::ShortFormat);
+            }
         }
         summaryEvent->startDate = str;
 
@@ -302,7 +308,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
 
         // For recurring events, append the next occurrence to the time range label
         if (ev->recurs()) {
-            KDateTime kdt(start, QTime(0, 0, 0), spec);
+            KDateTime kdt(start, QTime(0, 0, 0));
             kdt = kdt.addSecs(-1);
             KDateTime next = ev->recurrence()->getNextDateTime(kdt);
             QString tmp = IncidenceFormatter::dateTimeToString(

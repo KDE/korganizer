@@ -45,7 +45,6 @@
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KSystemTimeZone>
 #include <QTemporaryFile>
 
 #include <QDropEvent>
@@ -182,7 +181,7 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
 
     if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
         KCalCore::MemoryCalendar::Ptr cal(
-            new KCalCore::MemoryCalendar(KSystemTimeZones::local()));
+            new KCalCore::MemoryCalendar(KDateTime::LocalZone));
         if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
             KCalCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());

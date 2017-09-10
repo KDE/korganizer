@@ -41,10 +41,10 @@
 
 #include <QMenu>
 #include <KLocalizedString>
-#include <KLocale>
 #include <KUrlLabel>
 #include <KIconLoader>
 #include <KConfigGroup>
+#include <KConfig>
 #include <QDesktopServices>
 #include <KHolidays/HolidayRegion>
 
@@ -470,13 +470,21 @@ void SDSummaryWidget::createLabels()
             } else if ((*addrIt).daysTo == 1) {
                 datestr = i18nc("the special day is tomorrow", "Tomorrow");
             } else {
-                datestr = KLocale::global()->formatDate(sD, KLocale::FancyLongDate);
+                const auto locale = QLocale::system();
+                for (int i = 3; i < 8; ++i) {
+                    if ((*addrIt).daysTo < i) {
+                        datestr = locale.dayName(sD.dayOfWeek(), QLocale::LongFormat);
+                        break;
+                    }
+                }
+                if (datestr.isEmpty()) {
+                    datestr = locale.toString(sD, QLocale::ShortFormat);
+                }
             }
             // Print the date span for multiday, floating events, for the
             // first day of the event only.
             if ((*addrIt).span > 1) {
-                QString endstr =
-                    KLocale::global()->formatDate(sD.addDays((*addrIt).span - 1));
+                QString endstr = QLocale::system().toString(sD.addDays((*addrIt).span - 1), QLocale::LongFormat);
                 datestr += QLatin1String(" -\n ") + endstr;
             }
 

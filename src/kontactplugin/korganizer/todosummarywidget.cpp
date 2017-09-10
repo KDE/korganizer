@@ -38,12 +38,11 @@
 
 #include <KontactInterface/Core>
 
-#include <KLocale>
+#include <KConfig>
 #include <KConfigGroup>
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <QMenu>
-#include <KSystemTimeZones>
 #include <KUrlLabel>
 
 #include <QGridLayout>
@@ -210,7 +209,18 @@ void TodoSummaryWidget::updateView()
                 } else if (daysTo == 1) {
                     str = i18nc("the to-do is due tomorrow", "Tomorrow");
                 } else {
-                    str = KLocale::global()->formatDate(todo->dtDue().date(), KLocale::FancyLongDate);
+                    const auto locale = QLocale::system();
+                    for (int i = 3; i < 8; ++i) {
+                        if (daysTo < i * 24 * 60 * 60) {
+                            str = i18nc("1. weekday, 2. time", "%1 %2",
+                                        locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
+                                        locale.toString(todo->dtDue().time(), QLocale::ShortFormat));
+                            break;
+                        }
+                    }
+                    if (str.isEmpty()) {
+                        str = locale.toString(todo->dtDue().dateTime(), QLocale::ShortFormat);
+                    }
                 }
             }
 
