@@ -204,14 +204,14 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             str = i18nc("the appointment is tomorrow", "Tomorrow");
         } else {
             const auto locale = QLocale::system();
-            for (int i = 2; i < 7; ++i) {
+            for (int i = 3; i < 8; ++i) {
                 if (sD < currentDate.addDays(i)) {
                     str = locale.dayName(sD.dayOfWeek(), QLocale::LongFormat);
                     break;
                 }
             }
             if (str.isEmpty()) {
-                str = locale.toString(sD, QLocale::ShortFormat);
+                str = locale.toString(sD, QLocale::LongFormat);
             }
         }
         summaryEvent->startDate = str;

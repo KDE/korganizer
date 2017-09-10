@@ -141,7 +141,7 @@ void SummaryEventTester::test_Multiday()
     SummaryEventInfo *ev1 = events2.at(0);
     QCOMPARE(ev1->summaryText, multiDayAllDayInFuture);
     QVERIFY(ev1->timeRange.isEmpty());
-    QCOMPARE(ev1->startDate, KLocale::global()->formatDate(QDate(today.addDays(multiDayFuture))));
+    QCOMPARE(ev1->startDate, QLocale::system().toString(today.addDays(multiDayFuture)));
     QCOMPARE(ev1->daysToGo, QString::fromLatin1("in %1 days").arg(multiDayFuture));
     QCOMPARE(ev1->makeBold, false);
     // Make sure multiday is only displayed once
