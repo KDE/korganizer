@@ -28,7 +28,6 @@
 #include <Item>
 #include <QDialog>
 #include <KCalCore/Incidence>
-#include <KDateTime>
 
 #include <QPoint>
 #include <QTimer>
@@ -103,7 +102,7 @@ private:
     void updateButtons();
     typedef QList<ReminderTreeItem *> ReminderList;
 
-    static KDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc,
+    static QDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc,
             const QDateTime &reminderAt,
             QString &displayStr);
 

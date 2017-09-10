@@ -49,8 +49,8 @@
 #include <MailTransport/TransportManager>
 #include <QUrl>
 
-#include <KLocale>
 #include <KComboBox>
+#include <KDateTime>
 #include <QHBoxLayout>
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -91,7 +91,7 @@ public:
     const Akonadi::Item mIncidence;
     QDateTime mRemindAt;
     QDateTime mTrigger;
-    KDateTime mHappening;
+    QDateTime mHappening;
     bool mNotified;
 };
 
@@ -319,15 +319,14 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
         item = new ReminderTreeItem(incidenceitem, mIncidenceTree);
     }
     item->mNotified = false;
-    item->mHappening = KDateTime();
+    item->mHappening = QDateTime();
     item->mRemindAt = reminderAt;
     item->mTrigger = QDateTime::currentDateTime();
     item->mDisplayText = displayText;
     item->setText(0, cleanSummary(incidence->summary()));
 
     QString displayStr;
-    const KDateTime dateTime = triggerDateForIncidence(incidence, reminderAt,
-                               displayStr);
+    const auto dateTime = triggerDateForIncidence(incidence, reminderAt, displayStr);
 
     if (incidence->type() == Incidence::TypeEvent) {
         item->setIcon(0, QIcon::fromTheme(QStringLiteral("view-calendar-day")));
@@ -482,9 +481,9 @@ void AlarmDialog::suspend()
             (*it)->setDisabled(true);
             ReminderTreeItem *item = static_cast<ReminderTreeItem *>(*it);
             item->mRemindAt = QDateTime::currentDateTime().addSecs(unit * mSuspendSpin->value());
-            item->mHappening = KDateTime(item->mRemindAt, KDateTime::Spec::LocalZone());
+            item->mHappening = item->mRemindAt;
             item->mNotified = false;
-            (*it)->setText(1, KLocale::global()->formatDateTime(item->mHappening));
+            (*it)->setText(1, QLocale().toString(item->mHappening, QLocale::ShortFormat));
             selitem = item;
         }
         ++it;
@@ -850,27 +849,26 @@ void AlarmDialog::accept()
 }
 
 /** static */
-KDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
+QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
         const QDateTime &reminderAt,
         QString &displayStr)
 {
-    KDateTime result;
+    QDateTime result;
 
     if (incidence->alarms().isEmpty()) {
         return result;
     }
 
     if (incidence->recurs()) {
-        result = incidence->recurrence()->getNextDateTime(
-                     KDateTime(reminderAt, KDateTime::Spec::LocalZone()));
+        result = incidence->recurrence()->getNextDateTime(KDateTime(reminderAt, KDateTime::Spec::LocalZone())).toLocalZone().dateTime();
     }
 
     if (!result.isValid()) {
-        result = incidence->dateTime(Incidence::RoleAlarm);
+        result = incidence->dateTime(Incidence::RoleAlarm).toLocalZone().dateTime();
     }
 
     if (result.isValid()) {
-        displayStr = QLocale().toString(result.toLocalZone().dateTime(), QLocale::ShortFormat);
+        displayStr = QLocale().toString(result, QLocale::ShortFormat);
     }
     return result;
 }
@@ -890,9 +888,7 @@ void AlarmDialog::slotCalendarChanged()
 
             // Yes, alarms can be empty, if someone edited the incidence and removed all alarms
             if (!incidence->alarms().isEmpty()) {
-                const KDateTime dateTime = triggerDateForIncidence(incidence,
-                                           item->mRemindAt,
-                                           displayStr);
+                const auto dateTime = triggerDateForIncidence(incidence, item->mRemindAt, displayStr);
 
                 const QString summary = cleanSummary(incidence->summary());
 
