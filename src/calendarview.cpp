@@ -827,7 +827,7 @@ void CalendarView::edit_paste()
 // In all other cases, use the navigator's selected date.
 
     QDateTime endDT;
-    KDateTime finalDateTime;
+    QDateTime finalDateTime;
     bool useEndTime = false;
     KCalUtils::DndFactory::PasteFlags pasteFlags = nullptr;
 
@@ -845,17 +845,17 @@ void CalendarView::edit_paste()
         endDT = agendaView->selectionEnd();
         useEndTime = !agendaView->selectedIsSingleCell();
         if (agendaView->selectedIsAllDay()) {
-            finalDateTime = KDateTime(date);
+            finalDateTime = QDateTime(date);
         } else {
-            finalDateTime = KDateTime(date, agendaView->selectionStart().time());
+            finalDateTime = QDateTime(date, agendaView->selectionStart().time());
         }
     } else if (curView == monthView && monthView->selectionStart().isValid()) {
-        finalDateTime = KDateTime(monthView->selectionStart().date());
+        finalDateTime = QDateTime(monthView->selectionStart().date());
         pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
     } else if (!mDateNavigator->selectedDates().isEmpty() &&
                curView->supportsDateNavigation()) {
         // default to the selected date from the navigator
-        finalDateTime = KDateTime(mDateNavigator->selectedDates().first());
+        finalDateTime = QDateTime(mDateNavigator->selectedDates().first());
         pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
     }
 
