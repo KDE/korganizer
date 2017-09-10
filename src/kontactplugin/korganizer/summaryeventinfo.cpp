@@ -224,9 +224,9 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = IncidenceFormatter::dateToString(ev->dtStart(), false) +
+            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalZone().date(), false) +
                   QLatin1String(" -\n ") +
-                  IncidenceFormatter::dateToString(ev->dtEnd(), false);
+                  IncidenceFormatter::dateToString(ev->dtEnd().toLocalZone().date(), false);
         }
         summaryEvent->dateSpan = str;
 
@@ -312,7 +312,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             kdt = kdt.addSecs(-1);
             KDateTime next = ev->recurrence()->getNextDateTime(kdt);
             QString tmp = IncidenceFormatter::dateTimeToString(
-                    ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
+                    ev->recurrence()->getNextDateTime(next).dateTime(), ev->allDay(), true);
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1String("<br>");
             }
