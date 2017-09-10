@@ -281,18 +281,6 @@ void TodoSummaryWidget::updateView()
             connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &TodoSummaryWidget::viewTodo);
             connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &TodoSummaryWidget::popupMenu);
 
-            /*
-               Commented out because a ETMCalendar doesn't have any name, it's a group of selected
-               calendars, not an individual one.
-
-             QString tipText( IncidenceFormatter::toolTipStr(
-                                 IncidenceFormatter::resourceString( mCalendar, todo ),
-                               todo, currDate, true, KSystemTimeZones::local() ) );
-            // FIXME: IncidenceFormatter::resourceString() isn't implemented
-            if ( !tipText.isEmpty() ) {
-              urlLabel->setToolTip( tipText );
-            }*/
-
             // State text label
             str = stateStr(todo);
             label = new QLabel(str, this);
