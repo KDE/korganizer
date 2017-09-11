@@ -85,6 +85,7 @@
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
 #include <KCalCore/VCalFormat>
+#include <KCalCore/Utils>
 
 #include <KCalUtils/ICalDrag>
 #include <KCalUtils/Stringify>
