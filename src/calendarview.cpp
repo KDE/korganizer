@@ -1613,7 +1613,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     } else {
         startMultiModify(i18n("Dissociate occurrence"));
     }
-    QDateTime occurrenceDate = incidence->dtStart().dateTime();
+    QDateTime occurrenceDate = KCalCore::k2q(incidence->dtStart());
     occurrenceDate.setDate(date);
     qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalCore::Incidence::Ptr newInc(KCalCore::Calendar::createException(
