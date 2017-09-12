@@ -216,9 +216,7 @@ void KOAlarmClient::checkAlarms()
 
     qCDebug(KOALARMCLIENT_LOG) << "Check:" << from.toString() << " -" << mLastChecked.toString();
 
-    const Alarm::List alarms = mCalendar->alarms(KDateTime(from, KDateTime::LocalZone),
-                               KDateTime(mLastChecked, KDateTime::LocalZone),
-                               true /* exclude blocked alarms */);
+    const Alarm::List alarms = mCalendar->alarms(from, mLastChecked, true /* exclude blocked alarms */);
 
     for (const Alarm::Ptr &alarm : alarms) {
         const QString uid = alarm->customProperty("ETMCalendar", "parentUid");
@@ -298,9 +296,8 @@ QString KOAlarmClient::dumpDebug() const
 
 QStringList KOAlarmClient::dumpAlarms() const
 {
-    const KDateTime start = KDateTime(QDateTime::currentDateTime().date(),
-                                      QTime(0, 0), KDateTime::LocalZone);
-    const KDateTime end = start.addDays(1).addSecs(-1);
+    const QDateTime start = QDateTime(QDate::currentDate(), QTime(0, 0), Qt::LocalTime);
+    const QDateTime end = start.addDays(1).addSecs(-1);
 
     QStringList lst;
     const Alarm::List alarms = mCalendar->alarms(start, end);
