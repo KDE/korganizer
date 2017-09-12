@@ -1221,7 +1221,7 @@ void CalendarView::newFloatingEvent()
 bool CalendarView::addIncidence(const QString &ical)
 {
     KCalCore::ICalFormat format;
-    format.setTimeSpec(mCalendar->timeSpec());
+    format.setTimeZone(mCalendar->timeZone());
     KCalCore::Incidence::Ptr incidence(format.fromString(ical));
     return addIncidence(incidence);
 }

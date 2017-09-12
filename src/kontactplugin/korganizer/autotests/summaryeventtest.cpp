@@ -25,6 +25,7 @@
 #include <KCalCore/Event>
 #include <KCalCore/MemoryCalendar>
 #include <KLocale>
+#include <QTimeZone>
 
 QTEST_GUILESS_MAIN(SummaryEventTester)
 
@@ -33,7 +34,7 @@ void SummaryEventTester::test_Multiday()
     QDate today = QDate::currentDate();
     QString multidayWithTimeInProgress = QStringLiteral("Multiday, time specified, in progress");
 
-    KCalCore::MemoryCalendar *cal = new KCalCore::MemoryCalendar(KDateTime().timeSpec());
+    KCalCore::MemoryCalendar *cal = new KCalCore::MemoryCalendar(QTimeZone::systemTimeZone());
 
     KCalCore::Event::Ptr event(new KCalCore::Event());
     event->setDtStart(KDateTime(today.addDays(-1)));
@@ -179,7 +180,7 @@ void SummaryEventTester::test_eventsForRange()
 
     QDate today = QDate::currentDate();
 
-    KCalCore::MemoryCalendar *cal = new KCalCore::MemoryCalendar(KDateTime().timeSpec());
+    KCalCore::MemoryCalendar *cal = new KCalCore::MemoryCalendar(QTimeZone::systemTimeZone());
 
     KCalCore::Event::Ptr event(new KCalCore::Event());
     event->setDtStart(KDateTime(today.addDays(start)));

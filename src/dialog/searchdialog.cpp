@@ -165,7 +165,7 @@ void SearchDialog::search(const QRegExp &re)
     if (m_ui->eventsCheck->isChecked()) {
         events =
             m_calendarview->calendar()->events(
-                startDt, endDt, KDateTime::LocalZone, m_ui->inclusiveCheck->isChecked());
+                startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
     }
 
     KCalCore::Todo::List todos;

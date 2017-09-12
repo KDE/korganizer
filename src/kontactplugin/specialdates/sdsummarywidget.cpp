@@ -272,7 +272,7 @@ void SDSummaryWidget::createLabels()
     for (dt = QDate::currentDate();
          dt <= QDate::currentDate().addDays(mDaysAhead - 1);
          dt = dt.addDays(1)) {
-        const KCalCore::Event::List events  = mCalendar->events(dt, mCalendar->timeSpec(),
+        const KCalCore::Event::List events  = mCalendar->events(dt, mCalendar->timeZone(),
                                         KCalCore::EventSortStartDate,
                                         KCalCore::SortDirectionAscending);
         for (const KCalCore::Event::Ptr &ev : events) {
