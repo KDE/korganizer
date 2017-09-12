@@ -276,7 +276,7 @@ void KODayMatrix::updateJournals()
 
     for (const KCalCore::Incidence::Ptr &inc : incidences) {
         Q_ASSERT(inc);
-        QDate d = inc->dtStart().toTimeSpec(mCalendar->timeSpec()).date();
+        QDate d = inc->dtStart().toLocalZone().date();
         if (inc->type() == KCalCore::Incidence::TypeJournal &&
                 d >= mDays[0] &&
                 d <= mDays[NUMDAYS - 1] &&
@@ -319,18 +319,18 @@ void KODayMatrix::updateTodos()
                 // It's a recurring todo, find out in which days it occurs
                 const KCalCore::DateTimeList timeDateList =
                     t->recurrence()->timesInInterval(
-                        KDateTime(mDays[0], mCalendar->timeSpec()),
-                        KDateTime(mDays[NUMDAYS - 1], mCalendar->timeSpec()));
+                        KDateTime(mDays[0], KDateTime::LocalZone),
+                        KDateTime(mDays[NUMDAYS - 1], KDateTime::LocalZone));
 
                 for (const KDateTime &dt : timeDateList) {
-                    d = dt.toTimeSpec(mCalendar->timeSpec()).date();
+                    d = dt.toLocalZone().date();
                     if (!mEvents.contains(d)) {
                         mEvents.append(d);
                     }
                 }
 
             } else {
-                d = t->dtDue().toTimeSpec(mCalendar->timeSpec()).date();
+                d = t->dtDue().toLocalZone().date();
                 if (d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
                     mEvents.append(d);
                 }
@@ -357,13 +357,13 @@ void KODayMatrix::updateEvents()
 
         Q_ASSERT(event);
         const ushort recurType = event->recurrenceType();
-        const KDateTime dtStart = event->dtStart().toTimeSpec(mCalendar->timeSpec());
+        const KDateTime dtStart = event->dtStart().toLocalZone();
 
         // timed incidences occur in
         //   [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
         // so we subtract 1 second in the timed case
         const int secsToAdd = event->allDay() ? 0 : -1;
-        const KDateTime dtEnd = event->dtEnd().toTimeSpec(mCalendar->timeSpec()).addSecs(secsToAdd);
+        const KDateTime dtEnd = event->dtEnd().toLocalZone().addSecs(secsToAdd);
 
         if (!(recurType == KCalCore::Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur) &&
                 !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
@@ -375,21 +375,21 @@ void KODayMatrix::updateEvents()
             if (isRecurrent) {
                 //Its a recurring event, find out in which days it occurs
                 timeDateList = event->recurrence()->timesInInterval(
-                                   KDateTime(mDays[0], mCalendar->timeSpec()),
-                                   KDateTime(mDays[NUMDAYS - 1], mCalendar->timeSpec()));
+                                   KDateTime(mDays[0], KDateTime::LocalZone),
+                                   KDateTime(mDays[NUMDAYS - 1], KDateTime::LocalZone));
             } else {
                 if (dtStart.date() >= mDays[0]) {
                     timeDateList.append(dtStart);
                 } else {
                     // The event starts in another month (not visible))
-                    timeDateList.append(KDateTime(mDays[0], mCalendar->timeSpec()));
+                    timeDateList.append(KDateTime(mDays[0], KDateTime::LocalZone));
                 }
             }
 
             KCalCore::DateTimeList::iterator t;
             for (t = timeDateList.begin(); t != timeDateList.end(); ++t) {
                 //This could be a multiday event, so iterate from dtStart() to dtEnd()
-                QDate d = t->toTimeSpec(mCalendar->timeSpec()).date();
+                QDate d = t->toLocalZone().date();
                 int j   = 0;
 
                 QDate occurrenceEnd;
