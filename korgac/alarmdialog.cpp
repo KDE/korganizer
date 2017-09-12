@@ -860,7 +860,7 @@ QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
     }
 
     if (incidence->recurs()) {
-        result = incidence->recurrence()->getNextDateTime(KDateTime(reminderAt, KDateTime::Spec::LocalZone())).toLocalZone().dateTime();
+        result = incidence->recurrence()->getNextDateTime(reminderAt).toLocalTime();
     }
 
     if (!result.isValid()) {

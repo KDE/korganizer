@@ -35,6 +35,8 @@
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
 
+#include <KCalCore/Utils>
+
 #include <QUrl>
 #include <QIcon>
 #include <QMenu>
@@ -317,13 +319,13 @@ void KODayMatrix::updateTodos()
                     !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
 
                 // It's a recurring todo, find out in which days it occurs
-                const KCalCore::DateTimeList timeDateList =
+                const auto timeDateList =
                     t->recurrence()->timesInInterval(
-                        KDateTime(mDays[0], KDateTime::LocalZone),
-                        KDateTime(mDays[NUMDAYS - 1], KDateTime::LocalZone));
+                        QDateTime(mDays[0], {}, Qt::LocalTime),
+                        QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
 
-                for (const KDateTime &dt : timeDateList) {
-                    d = dt.toLocalZone().date();
+                for (const QDateTime &dt : timeDateList) {
+                    d = dt.toLocalTime().date();
                     if (!mEvents.contains(d)) {
                         mEvents.append(d);
                     }
@@ -368,28 +370,27 @@ void KODayMatrix::updateEvents()
         if (!(recurType == KCalCore::Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur) &&
                 !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
 
-            KCalCore::DateTimeList timeDateList;
+            KCalCore::SortableList<QDateTime> timeDateList;
             const bool isRecurrent = event->recurs();
             const int eventDuration = dtStart.daysTo(dtEnd);
 
             if (isRecurrent) {
                 //Its a recurring event, find out in which days it occurs
                 timeDateList = event->recurrence()->timesInInterval(
-                                   KDateTime(mDays[0], KDateTime::LocalZone),
-                                   KDateTime(mDays[NUMDAYS - 1], KDateTime::LocalZone));
+                                   QDateTime(mDays[0], {}, Qt::LocalTime),
+                                   QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
             } else {
                 if (dtStart.date() >= mDays[0]) {
-                    timeDateList.append(dtStart);
+                    timeDateList.append(KCalCore::k2q(dtStart));
                 } else {
                     // The event starts in another month (not visible))
-                    timeDateList.append(KDateTime(mDays[0], KDateTime::LocalZone));
+                    timeDateList.append(QDateTime(mDays[0], {}, Qt::LocalTime));
                 }
             }
 
-            KCalCore::DateTimeList::iterator t;
-            for (t = timeDateList.begin(); t != timeDateList.end(); ++t) {
+            for (auto t = timeDateList.begin(); t != timeDateList.end(); ++t) {
                 //This could be a multiday event, so iterate from dtStart() to dtEnd()
-                QDate d = t->toLocalZone().date();
+                QDate d = t->toLocalTime().date();
                 int j   = 0;
 
                 QDate occurrenceEnd;

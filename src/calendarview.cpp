@@ -1564,7 +1564,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate 
         return;
     }
 
-    KDateTime thisDateTime(date, KDateTime::LocalZone);
+    QDateTime thisDateTime(date, {}, Qt::LocalTime);
     bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
 
     int answer;
@@ -2392,7 +2392,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                          i18n("KOrganizer Confirmation"),
                          KGuiItem(i18n("Delete All")));
             } else {
-                KDateTime itemDateTime(itemDate, KDateTime::LocalZone);
+                QDateTime itemDateTime(itemDate, {}, Qt::LocalTime);
                 bool isFirst = !incidence->recurrence()->getPreviousDateTime(itemDateTime).isValid();
                 bool isLast  = !incidence->recurrence()->getNextDateTime(itemDateTime).isValid();
 

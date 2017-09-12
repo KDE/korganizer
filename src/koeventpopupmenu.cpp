@@ -141,7 +141,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
     Q_ASSERT(incidence);
     if (incidence->recurs()) {
-        const KDateTime thisDateTime(qd, KDateTime::LocalZone);
+        const QDateTime thisDateTime(qd, {}, Qt::LocalTime);
         const bool isLastOccurrence =
             !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
         const bool isFirstOccurrence =

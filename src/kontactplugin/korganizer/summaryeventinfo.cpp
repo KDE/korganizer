@@ -28,6 +28,7 @@
 
 #include <KCalCore/Calendar>
 #include <KCalCore/Event>
+#include <KCalCore/Utils>
 using namespace KCalCore;
 
 #include <KCalUtils/IncidenceFormatter>
@@ -149,10 +150,10 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         const auto eventStart = event->dtStart().toLocalZone().dateTime();
         const auto eventEnd = event->dtEnd().toLocalZone().dateTime();
         if (event->recurs()) {
-            KCalCore::DateTimeList occurrences = event->recurrence()->timesInInterval(KDateTime(start), KDateTime(end));
+            const auto occurrences = event->recurrence()->timesInInterval(QDateTime(start, {}), QDateTime(end, {}));
             if (!occurrences.isEmpty()) {
                 events << event;
-                sDateTimeByUid()->insert(event->instanceIdentifier(), occurrences.first());
+                sDateTimeByUid()->insert(event->instanceIdentifier(), KCalCore::q2k(occurrences.first()));
             }
         } else {
             if ((end >= eventStart.date() && start <= eventEnd.date()) ||
@@ -243,7 +244,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                 } else {
                     QDateTime kdt(start, QTime(0, 0, 0), Qt::LocalTime);
                     kdt = kdt.addSecs(-1);
-                    const auto next = ev->recurrence()->getNextDateTime(KDateTime(kdt)).dateTime();
+                    const auto next = ev->recurrence()->getNextDateTime(kdt);
                     secs = currentDateTime.secsTo(next);
                 }
                 if (secs > 0) {
@@ -308,11 +309,11 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
 
         // For recurring events, append the next occurrence to the time range label
         if (ev->recurs()) {
-            KDateTime kdt(start, QTime(0, 0, 0));
+            QDateTime kdt(start, QTime(0, 0, 0));
             kdt = kdt.addSecs(-1);
-            KDateTime next = ev->recurrence()->getNextDateTime(kdt);
+            QDateTime next = ev->recurrence()->getNextDateTime(kdt);
             QString tmp = IncidenceFormatter::dateTimeToString(
-                    ev->recurrence()->getNextDateTime(next).dateTime(), ev->allDay(), true);
+                    ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1String("<br>");
             }
