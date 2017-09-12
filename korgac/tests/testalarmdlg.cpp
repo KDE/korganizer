@@ -29,11 +29,8 @@
 #include <KCalCore/Event>
 #include <KCalCore/Todo>
 
-#include <KAboutData>
-
 #include <QDateTime>
 #include <QApplication>
-#include <KLocalizedString>
 #include <QCommandLineParser>
 
 using namespace KCalCore;
@@ -49,14 +46,10 @@ template<class T> Akonadi::Item incidenceToItem(T *incidence)
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    KAboutData aboutData(QStringLiteral("testkabc"), i18n("TestKabc"), QStringLiteral("0.1"));
     QCommandLineParser parser;
-    KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-    aboutData.setupCommandLine(&parser);
     parser.process(app);
-    aboutData.processCommandLine(&parser);
 
     Event *e1 = new Event;
     e1->setSummary(QStringLiteral("This is a summary."));
