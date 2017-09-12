@@ -203,15 +203,15 @@ void KOTodoView::printTodo(bool preview)
     KCalCore::Incidence::List selectedIncidences;
     selectedIncidences.append(todo);
 
-    KDateTime todoDate;
+    QDate todoDate;
     if (todo->hasStartDate()) {
-        todoDate = todo->dtStart();
+        todoDate = todo->dtStart().date();
     } else {
-        todoDate = todo->dtDue();
+        todoDate = todo->dtDue().date();
     }
 
     printer.print(CalendarSupport::CalPrinterBase::Incidence,
-                  todoDate.date(), todoDate.date(), selectedIncidences, preview);
+                  todoDate, todoDate, selectedIncidences, preview);
 
 }
 
