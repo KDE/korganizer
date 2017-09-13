@@ -32,4 +32,7 @@ target_link_libraries(testalarmdlg
     KF5::IdentityManagement
     KF5::MailTransport
     Phonon::phonon4qt5
+    KF5::Notifications
+    KF5::IconThemes
+    KF5::WindowSystem
     )

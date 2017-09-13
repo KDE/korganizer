@@ -28,7 +28,6 @@
 
 #include <KCalCore/Calendar>
 #include <KCalCore/Event>
-#include <KCalCore/Utils>
 using namespace KCalCore;
 
 #include <KCalUtils/IncidenceFormatter>
@@ -43,31 +42,19 @@ using namespace KCalUtils;
 bool SummaryEventInfo::mShowBirthdays = true;
 bool SummaryEventInfo::mShowAnniversaries = true;
 
-typedef QHash<QString, KDateTime> DateTimeByUidHash;
+typedef QHash<QString, QDateTime> DateTimeByUidHash;
 Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid)
 
 static bool eventLessThan(const KCalCore::Event::Ptr &event1, const KCalCore::Event::Ptr &event2)
 {
-    KDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
-    KDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
-    if (kdt1.date() < kdt2.date()) { // Compare dates first since comparing all day with non-all-day doesn't work
+    QDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
+    QDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
+    if (kdt1 > kdt2) {
         return true;
-    } else if (kdt1.date() > kdt2.date()) {
+    } else if (kdt1 < kdt2) {
         return false;
     } else {
-        if (kdt1.isDateOnly() && !kdt2.isDateOnly()) {
-            return false;
-        } else if (!kdt1.isDateOnly() && kdt2.isDateOnly())  {
-            return true;
-        } else {
-            if (kdt1 > kdt2) {
-                return true;
-            } else if (kdt1 < kdt2) {
-                return false;
-            } else {
-                return event1->summary() > event2->summary();
-            }
-        }
+        return event1->summary() > event2->summary();
     }
 }
 
@@ -147,22 +134,22 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             continue;
         }
 
-        const auto eventStart = event->dtStart().toLocalZone().dateTime();
-        const auto eventEnd = event->dtEnd().toLocalZone().dateTime();
+        const auto eventStart = event->dtStart().toLocalTime();
+        const auto eventEnd = event->dtEnd().toLocalTime();
         if (event->recurs()) {
             const auto occurrences = event->recurrence()->timesInInterval(QDateTime(start, {}), QDateTime(end, {}));
             if (!occurrences.isEmpty()) {
                 events << event;
-                sDateTimeByUid()->insert(event->instanceIdentifier(), KCalCore::q2k(occurrences.first()));
+                sDateTimeByUid()->insert(event->instanceIdentifier(), occurrences.first());
             }
         } else {
             if ((end >= eventStart.date() && start <= eventEnd.date()) ||
                     (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
                 if (eventStart.date() < start) {
-                    sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(start));
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), QDateTime(start));
                 } else {
-                    sDateTimeByUid()->insert(event->instanceIdentifier(), KDateTime(eventStart));
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), eventStart);
                 }
             }
         }
@@ -179,8 +166,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Count number of days remaining in multiday event
         int span = 1;
         int dayof = 1;
-        const auto eventStart = ev->dtStart().toLocalZone().dateTime();
-        const auto eventEnd = ev->dtEnd().toLocalZone().dateTime();
+        const auto eventStart = ev->dtStart().toLocalTime();
+        const auto eventEnd = ev->dtEnd().toLocalTime();
         const QDate occurrenceStartDate = sDateTimeByUid()->value(ev->instanceIdentifier()).date();
 
         QDate startOfMultiday = eventStart.date();
@@ -225,9 +212,9 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalZone().date(), false) +
+            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false) +
                   QLatin1String(" -\n ") +
-                  IncidenceFormatter::dateToString(ev->dtEnd().toLocalZone().date(), false);
+                  IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
         }
         summaryEvent->dateSpan = str;
 
@@ -240,7 +227,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             if (!ev->allDay()) {
                 int secs;
                 if (!ev->recurs()) {
-                    secs = currentDateTime.secsTo(ev->dtStart().dateTime());
+                    secs = currentDateTime.secsTo(ev->dtStart());
                 } else {
                     QDateTime kdt(start, QTime(0, 0, 0), Qt::LocalTime);
                     kdt = kdt.addSecs(-1);

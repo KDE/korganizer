@@ -90,10 +90,10 @@ void KoEventPopupMenuTest::createEventFromTodo()
     item.setMimeType(KCalCore::Todo::todoMimeType());
     item.setPayload<KCalCore::Todo::Ptr>(todo);
 
-    KDateTime start, end;
+    QDateTime start, end;
     QString summary(QStringLiteral("a test"));
-    start.setTime_t(1402593346);
-    end.setTime_t(1403593346);
+    start = QDateTime::fromSecsSinceEpoch(1402593346);
+    end = QDateTime::fromSecsSinceEpoch(1403593346);
     todo->setDtStart(start);
     todo->setDtDue(end);
     todo->setSummary(summary);
@@ -124,10 +124,10 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     item.setMimeType(KCalCore::Event::eventMimeType());
     item.setPayload<KCalCore::Event::Ptr>(event);
 
-    KDateTime start, end;
+    QDateTime start, end;
     QString summary(QStringLiteral("a test"));
-    start.setTime_t(1402593346);
-    end.setTime_t(1403593346);
+    start = QDateTime::fromSecsSinceEpoch(1402593346);
+    end = QDateTime::fromSecsSinceEpoch(1403593346);
     event->setDtStart(start);
     event->setDtEnd(end);
     event->setSummary(summary);
@@ -158,11 +158,11 @@ void KoEventPopupMenuTest::createNoteFromEvent()
     item.setMimeType(KCalCore::Event::eventMimeType());
     item.setPayload<KCalCore::Event::Ptr>(event);
 
-    KDateTime start, end;
+    QDateTime start, end;
     QString summary(QStringLiteral("A test"));
     QString description(QStringLiteral("A long description"));
-    start.setTime_t(1402593346);
-    end.setTime_t(1403593346);
+    start = QDateTime::fromSecsSinceEpoch(1402593346);
+    end = QDateTime::fromSecsSinceEpoch(1403593346);
     event->setDtStart(start);
     event->setDtEnd(end);
     event->setSummary(summary);
@@ -196,11 +196,11 @@ void KoEventPopupMenuTest::createNoteFromTodo()
     item.setMimeType(KCalCore::Todo::todoMimeType());
     item.setPayload<KCalCore::Todo::Ptr>(todo);
 
-    KDateTime start, end;
+    QDateTime start, end;
     QString summary(QStringLiteral("a test"));
     QString description(QStringLiteral("A long description"));
-    start.setTime_t(1402593346);
-    end.setTime_t(1403593346);
+    start = QDateTime::fromSecsSinceEpoch(1402593346);
+    end = QDateTime::fromSecsSinceEpoch(1403593346);
     todo->setDtStart(start);
     todo->setDtDue(end);
     todo->setSummary(summary);

@@ -26,6 +26,8 @@
 
 #include <CalendarSupport/KCalPrefs>
 
+#include <KLocalizedString>
+
 QColor KOCoreHelper::categoryColor(const QStringList &categories)
 {
     if (categories.isEmpty()) {

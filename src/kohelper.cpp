@@ -28,6 +28,7 @@
 #include <EventViews/Helper>
 
 #include <CalendarSupport/KCalPrefs>
+#include <KLocalizedString>
 #include <KMessageBox>
 
 QColor KOHelper::getTextColor(const QColor &c)

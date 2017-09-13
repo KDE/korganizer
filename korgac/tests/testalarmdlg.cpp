@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
     Event *e1 = new Event;
     e1->setSummary(QStringLiteral("This is a summary."));
-    KDateTime now = KDateTime::currentLocalDateTime();
+    QDateTime now = QDateTime::currentDateTime();
     e1->setDtStart(now);
     e1->setDtEnd(now.addDays(1));
     Alarm::Ptr a = e1->newAlarm();

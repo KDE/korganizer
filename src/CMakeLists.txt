@@ -51,6 +51,7 @@ target_link_libraries(korganizer
     korganizer_core
     KF5::PimCommonAkonadi
     KF5::Crash
+    KF5::WindowSystem
     )
 
 install(TARGETS
@@ -83,6 +84,7 @@ target_link_libraries(kcm_korganizer
     KF5::MailTransport
     KF5::PimCommon
     KF5::AkonadiWidgets
+    KF5::WindowSystem
     )
 
 install(TARGETS
@@ -255,6 +257,10 @@ target_link_libraries(korganizerprivate
     KF5::NewStuff
     KF5::Ldap
     KF5::AkonadiWidgets
+    KF5::IconThemes
+    KF5::WindowSystem
+    KF5::Notifications
+    KF5::ItemViews
     )
 
 target_include_directories(korganizerprivate PUBLIC

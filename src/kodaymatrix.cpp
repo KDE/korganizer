@@ -35,8 +35,6 @@
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
 
-#include <KCalCore/Utils>
-
 #include <QUrl>
 #include <QIcon>
 #include <QMenu>
@@ -278,7 +276,7 @@ void KODayMatrix::updateJournals()
 
     for (const KCalCore::Incidence::Ptr &inc : incidences) {
         Q_ASSERT(inc);
-        QDate d = inc->dtStart().toLocalZone().date();
+        QDate d = inc->dtStart().toLocalTime().date();
         if (inc->type() == KCalCore::Incidence::TypeJournal &&
                 d >= mDays[0] &&
                 d <= mDays[NUMDAYS - 1] &&
@@ -332,7 +330,7 @@ void KODayMatrix::updateTodos()
                 }
 
             } else {
-                d = t->dtDue().toLocalZone().date();
+                d = t->dtDue().toLocalTime().date();
                 if (d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
                     mEvents.append(d);
                 }
@@ -359,13 +357,13 @@ void KODayMatrix::updateEvents()
 
         Q_ASSERT(event);
         const ushort recurType = event->recurrenceType();
-        const KDateTime dtStart = event->dtStart().toLocalZone();
+        const QDateTime dtStart = event->dtStart().toLocalTime();
 
         // timed incidences occur in
         //   [dtStart(), dtEnd()[. All-day incidences occur in [dtStart(), dtEnd()]
         // so we subtract 1 second in the timed case
         const int secsToAdd = event->allDay() ? 0 : -1;
-        const KDateTime dtEnd = event->dtEnd().toLocalZone().addSecs(secsToAdd);
+        const QDateTime dtEnd = event->dtEnd().toLocalTime().addSecs(secsToAdd);
 
         if (!(recurType == KCalCore::Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur) &&
                 !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
@@ -381,7 +379,7 @@ void KODayMatrix::updateEvents()
                                    QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
             } else {
                 if (dtStart.date() >= mDays[0]) {
-                    timeDateList.append(KCalCore::k2q(dtStart));
+                    timeDateList.append(dtStart);
                 } else {
                     // The event starts in another month (not visible))
                     timeDateList.append(QDateTime(mDays[0], {}, Qt::LocalTime));

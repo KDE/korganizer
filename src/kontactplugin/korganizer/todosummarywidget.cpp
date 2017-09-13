@@ -219,7 +219,7 @@ void TodoSummaryWidget::updateView()
                         }
                     }
                     if (str.isEmpty()) {
-                        str = locale.toString(todo->dtDue().dateTime(), QLocale::ShortFormat);
+                        str = locale.toString(todo->dtDue(), QLocale::ShortFormat);
                     }
                 }
             }
@@ -333,7 +333,7 @@ void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
         KCalCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
         if (!todo->isReadOnly()) {
             KCalCore::Todo::Ptr oldTodo(todo->clone());
-            todo->setCompleted(KDateTime::currentLocalDateTime());
+            todo->setCompleted(QDateTime::currentDateTime());
             mChanger->modifyIncidence(todoItem, oldTodo);
             updateView();
         }

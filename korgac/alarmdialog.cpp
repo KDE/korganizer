@@ -50,7 +50,6 @@
 #include <QUrl>
 
 #include <KComboBox>
-#include <KDateTime>
 #include <QHBoxLayout>
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -864,7 +863,7 @@ QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
     }
 
     if (!result.isValid()) {
-        result = incidence->dateTime(Incidence::RoleAlarm).toLocalZone().dateTime();
+        result = incidence->dateTime(Incidence::RoleAlarm).toLocalTime();
     }
 
     if (result.isValid()) {

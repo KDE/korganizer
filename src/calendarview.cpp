@@ -85,7 +85,6 @@
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
 #include <KCalCore/VCalFormat>
-#include <KCalCore/Utils>
 
 #include <KCalUtils/ICalDrag>
 #include <KCalUtils/Stringify>
@@ -657,7 +656,7 @@ void CalendarView::slotModifyFinished(int changeId,
 
             if (journals.isEmpty()) {
                 KCalCore::Journal::Ptr journal(new KCalCore::Journal);
-                journal->setDtStart(KDateTime::currentLocalDateTime());
+                journal->setDtStart(QDateTime::currentDateTime());
 
                 QString dateStr = QLocale::system().toString(QDate::currentDate(), QLocale::LongFormat);
                 journal->setSummary(i18n("Journal of %1", dateStr));
@@ -881,8 +880,8 @@ void CalendarView::edit_paste()
             if (agendaView && endDT.isValid() && useEndTime) {
                 if ((pastedEvent->allDay() && agendaView->selectedIsAllDay()) ||
                         (!pastedEvent->allDay() && !agendaView->selectedIsAllDay())) {
-                    KDateTime kdt(endDT, KDateTime::LocalZone);
-                    pastedEvent->setDtEnd(kdt.toTimeSpec(pastedEvent->dtEnd().timeSpec()));
+                    QDateTime kdt = endDT.toLocalTime();
+                    pastedEvent->setDtEnd(kdt.toTimeZone(pastedEvent->dtEnd().timeZone()));
                 }
             }
 
@@ -1391,7 +1390,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     if (todo->isCompleted()) {
         todo->setPercentComplete(0);
     } else {
-        todo->setCompleted(KDateTime::currentLocalDateTime());
+        todo->setCompleted(QDateTime::currentDateTime());
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
@@ -1614,7 +1613,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     } else {
         startMultiModify(i18n("Dissociate occurrence"));
     }
-    QDateTime occurrenceDate = KCalCore::k2q(incidence->dtStart());
+    QDateTime occurrenceDate = incidence->dtStart();
     occurrenceDate.setDate(date);
     qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalCore::Incidence::Ptr newInc(KCalCore::Calendar::createException(
@@ -2231,7 +2230,7 @@ void CalendarView::showIncidenceContext(const Akonadi::Item &item)
             viewManager()->showAgendaView();
         }
         // just select the appropriate date
-        mDateNavigator->selectWeek(incidence->dtStart().toLocalZone().date());
+        mDateNavigator->selectWeek(incidence->dtStart().toLocalTime().date());
         return;
     } else if (CalendarSupport::hasJournal(item)) {
         if (!viewManager()->currentView()->inherits("KOJournalView")) {
@@ -2537,8 +2536,8 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
     if (const KCalCore::Event::Ptr event = incidence.dynamicCast<KCalCore::Event>()) {
 
         // Adjust date
-        KDateTime start = event->dtStart();
-        KDateTime end = event->dtEnd();
+        QDateTime start = event->dtStart();
+        QDateTime end = event->dtEnd();
 
         int duration = start.daysTo(end);
         start.setDate(dt);
@@ -2548,7 +2547,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
         event->setDtEnd(end);
 
     } else if (const KCalCore::Todo::Ptr todo = incidence.dynamicCast<KCalCore::Todo>()) {
-        KDateTime due = todo->dtDue();
+        QDateTime due = todo->dtDue();
         due.setDate(dt);
 
         todo->setDtDue(due);
@@ -2577,8 +2576,8 @@ void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, const QDate &d
 
     if (const KCalCore::Event::Ptr event = incidence.dynamicCast<KCalCore::Event>()) {
         // Adjust date
-        KDateTime start = event->dtStart();
-        KDateTime end = event->dtEnd();
+        QDateTime start = event->dtStart();
+        QDateTime end = event->dtEnd();
 
         int duration = start.daysTo(end);
         start.setDate(dt);
@@ -2588,7 +2587,7 @@ void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, const QDate &d
         event->setDtEnd(end);
 
     } if (const KCalCore::Todo::Ptr todo = incidence.dynamicCast<KCalCore::Todo>()) {
-        KDateTime due = todo->dtDue();
+        QDateTime due = todo->dtDue();
         due.setDate(dt);
 
         todo->setDtDue(due);

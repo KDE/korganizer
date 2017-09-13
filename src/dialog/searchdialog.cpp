@@ -177,14 +177,14 @@ void SearchDialog::search(const QRegExp &re)
                 Q_ASSERT(todo);
                 if ((!todo->hasStartDate() && !todo->hasDueDate()) ||    // undated
                         (todo->hasStartDate() &&
-                         (todo->dtStart().toLocalZone().date() >= startDt) &&
-                         (todo->dtStart().toLocalZone().date() <= endDt)) ||      //start dt in range
+                         (todo->dtStart().toLocalTime().date() >= startDt) &&
+                         (todo->dtStart().toLocalTime().date() <= endDt)) ||      //start dt in range
                         (todo->hasDueDate() &&
-                         (todo->dtDue().toLocalZone().date() >= startDt) &&
-                         (todo->dtDue().toLocalZone().date() <= endDt)) ||      //due dt in range
+                         (todo->dtDue().toLocalTime().date() >= startDt) &&
+                         (todo->dtDue().toLocalTime().date() <= endDt)) ||      //due dt in range
                         (todo->hasCompletedDate() &&
-                         (todo->completed().toLocalZone().date() >= startDt) &&
-                         (todo->completed().toLocalZone().date() <= endDt))) {      //completed dt in range
+                         (todo->completed().toLocalTime().date() >= startDt) &&
+                         (todo->completed().toLocalTime().date() <= endDt))) {      //completed dt in range
                     todos.append(todo);
                 }
             }

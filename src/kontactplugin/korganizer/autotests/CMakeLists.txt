@@ -9,4 +9,5 @@ target_link_libraries(
   KF5::CalendarCore
   KF5::CalendarUtils
   Qt5::Test
+  KF5::I18n
 )

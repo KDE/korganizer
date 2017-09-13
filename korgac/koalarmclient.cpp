@@ -42,6 +42,7 @@
 #include <KCheckableProxyModel>
 #include <KConfig>
 #include <KConfigGroup>
+#include <KSharedConfig>
 #include <QApplication>
 
 #include "koalarmclient_debug.h"
