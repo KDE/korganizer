@@ -91,6 +91,7 @@ find_package(KF5Service ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5WindowSystem ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5XmlGui ${KF5_VERSION} CONFIG REQUIRED)
+find_package(KF5Notifications ${KF5_VERSION} CONFIG REQUIRED)
 
 # Find KdepimLibs Package
 find_package(KF5PimTextEdit ${KPIMTEXTEDIT_LIB_VERSION} CONFIG REQUIRED)
