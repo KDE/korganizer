@@ -35,7 +35,6 @@
 #include <KIO/MkdirJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
-#include <QDialog>
 
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -46,7 +45,6 @@
 #include <QUiLoader>
 #include <QWhatsThis>
 #include <QDir>
-#include <KConfigGroup>
 
 class PageItem : public QTreeWidgetItem
 {

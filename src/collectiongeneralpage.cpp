@@ -28,7 +28,6 @@
 #include <KCalCore/Journal>
 #include <KCalCore/Todo>
 
-#include <QDialog>
 #include <KIconButton>
 #include <QLineEdit>
 #include <KLocalizedString>
@@ -37,7 +36,6 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <KConfigGroup>
 
 #include <PimCommonAkonadi/CollectionAnnotationsAttribute>
 #include <PimCommonAkonadi/CollectionTypeUtil>

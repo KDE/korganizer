@@ -31,7 +31,6 @@
 #include "korganizer_debug.h"
 
 #include <QDate>
-#include <KLocalizedString>
 #include <QLocale>
 
 DateNavigator::DateNavigator(QObject *parent) : QObject(parent)

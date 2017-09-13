@@ -35,12 +35,10 @@
 
 #include <KMessageBox>
 #include "korganizer_debug.h"
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <kcolorscheme.h>
-#include <KHelpClient>
 
 FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
     : QDialog(parent)

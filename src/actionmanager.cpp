@@ -39,9 +39,9 @@
 #include "prefs/koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "KdepimDBusInterfaces/ReminderClient"
 #include "kocheckableproxymodel.h"
 #include <KAuthorized>
+#include "KdepimDBusInterfaces/ReminderClient"
 
 #include <KHolidays/HolidayRegion>
 
@@ -75,7 +75,6 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <KMessageBox>
-#include <KMimeTypeTrader>
 #include <KProcess>
 #include <KSelectAction>
 #include <KShortcutsDialog>

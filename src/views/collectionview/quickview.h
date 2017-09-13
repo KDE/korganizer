@@ -30,7 +30,6 @@
 #include <KCalCore/FreeBusy>
 #include <QDialog>
 
-#include <QStringList>
 
 class  Ui_quickview;
 

@@ -43,7 +43,6 @@
 
 #include <KActionCollection>
 #include <KMime/Message>
-#include <KMimeTypeTrader>
 #include "korganizer_debug.h"
 
 #include <IncidenceEditor/IncidenceDialogFactory>

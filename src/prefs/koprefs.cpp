@@ -24,9 +24,7 @@
 */
 
 #include "koprefs.h"
-#include <KLocalizedString>
 #include "korganizer_debug.h"
-#include <QDir>
 #include <QFontDatabase>
 
 class KOPrefsPrivate

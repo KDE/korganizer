@@ -36,7 +36,6 @@
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QIcon>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <KGuiItem>

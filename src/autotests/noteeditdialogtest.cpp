@@ -37,7 +37,6 @@
 #include <kpimtextedit/richtexteditor.h>
 
 #include <QLineEdit>
-#include <QTextEdit>
 #include <QStandardPaths>
 #include <QShortcut>
 

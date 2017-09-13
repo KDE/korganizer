@@ -32,7 +32,6 @@
 #include <KIconLoader>
 #include <KLocalizedString>
 #include "korganizerplugin_debug.h"
-#include <QtDBus>
 #include <QAction>
 #include <QIcon>
 

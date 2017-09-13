@@ -30,7 +30,6 @@
 #include "ui_filteredit_base.h"
 
 #include <QDialog>
-#include <KConfigGroup>
 
 class FilterEdit;
 class QPushButton;

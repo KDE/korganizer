@@ -28,13 +28,12 @@
 #include "actionmanager.h"
 #include "calendarview.h"
 #include "korganizer.h"
-#include "KdepimDBusInterfaces/ReminderClient"
 #include "korganizer-version.h"
 #include <KCalCore/CalFormat>
+#include "KdepimDBusInterfaces/ReminderClient"
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
-#include <KStartupInfo>
 #include <QCommandLineParser>
 
 KOrganizerApp::KOrganizerApp(int &argc, char **argv[])

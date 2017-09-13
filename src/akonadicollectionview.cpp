@@ -68,12 +68,9 @@
 
 #include <QAction>
 #include <QColorDialog>
-#include <QDialog>
 #include <QHeaderView>
 #include <QLineEdit>
-#include <QPainter>
 #include <QStackedWidget>
-#include <QStyledItemDelegate>
 #include <QVBoxLayout>
 
 static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)

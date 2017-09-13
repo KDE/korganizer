@@ -21,7 +21,6 @@
 
 #include <qdebug.h>
 #include <QApplication>
-#include <KLocalizedString>
 #include <QCommandLineParser>
 
 #include "../kcmdesignerfields.h"
