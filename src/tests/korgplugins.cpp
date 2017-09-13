@@ -22,13 +22,10 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#include <KAboutData>
-
 #include <qdebug.h>
 
 #include <CalendarSupport/Plugin>
 #include <QApplication>
-#include <KLocalizedString>
 #include <QCommandLineParser>
 
 #include "kocore.h"
@@ -36,14 +33,10 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    KAboutData aboutData(QStringLiteral("korgplugins"), i18n("KOrgPlugins"), QStringLiteral("0.1"));
     QCommandLineParser parser;
-    KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-    aboutData.setupCommandLine(&parser);
     parser.process(app);
-    aboutData.processCommandLine(&parser);
 
     KService::List plugins = KOCore::self()->availablePlugins();
     KService::List::ConstIterator it;
