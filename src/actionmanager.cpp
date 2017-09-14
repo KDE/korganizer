@@ -286,10 +286,6 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("export_icalendar"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportICalendar);
 
-    action = new QAction(i18n("Export as &vCalendar..."), this);
-    mACollection->addAction(QStringLiteral("export_vcalendar"), action);
-    connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportVCalendar);
-
     //Laurent: 2009-03-24 comment it until upload will implement
     //action = new QAction( i18n( "Upload &Hot New Stuff..." ), this );
     //mACollection->addAction( "uploadnewstuff", action );
@@ -921,28 +917,6 @@ bool ActionManager::saveURL()
         ext = mFile.right(4);
     } else {
         ext = mURL.fileName().right(4);
-    }
-
-    if (ext == QLatin1String(".vcs")) {
-        int result = KMessageBox::warningContinueCancel(
-                         dialogParent(),
-                         i18n("Your calendar will be saved in iCalendar format. Use "
-                              "'Export vCalendar' to save in vCalendar format."),
-                         i18n("Format Conversion"), KGuiItem(i18n("Proceed")),
-                         KStandardGuiItem::cancel(),
-                         QStringLiteral("dontaskFormatConversion"), KMessageBox::Notify);
-        if (result != KMessageBox::Continue) {
-            return false;
-        }
-
-        QString filename = mURL.fileName();
-        filename.replace(filename.length() - 4, 4, QStringLiteral(".ics"));
-        mURL = mURL.adjusted(QUrl::RemoveFilename);
-        mURL.setPath(mURL.path() + filename);
-        if (mURL.isLocalFile()) {
-            mFile = mURL.toLocalFile();
-        }
-        setTitle();
     }
 
     if (!mCalendarView->saveCalendar(mFile)) {

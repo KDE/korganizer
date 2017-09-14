@@ -488,9 +488,6 @@ public Q_SLOTS:
     /** Export as iCalendar file */
     void exportICalendar();
 
-    /** Export as vCalendar file */
-    void exportVCalendar();
-
     /** pop up a dialog to show an existing appointment. */
     void appointment_show();
     /**

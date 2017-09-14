@@ -529,9 +529,8 @@ store.kde.org KOrganizer Calendars-->
 <sect2 id="managing-export">
 <title>Exporting Calendars</title>
 
-<para>You can export your data as an iCalendar or
-vCalendar file, which are supported by most scheduling applications.
-Either way, &korganizer; will export all calendar
+<para>You can export your data as an iCalendar file, which is supported by
+most scheduling applications. &korganizer; will export all calendar
 items from the enabled (checked) resources which are
 <link linkend="filters-view">not filtered out</link> (let's call these items
 <quote>active</quote> items). In other words, if you cannot see a calendar
@@ -547,10 +546,8 @@ sidebar.</para>
 <para>To export all your <quote>active</quote> events, to-dos and journal entries
 (independent of to what resource they belong) as a new iCalendar
 file, choose the <menuchoice><guimenu>File</guimenu><guisubmenu>Export</guisubmenu>
-<guimenuitem>Export as iCalendar...</guimenuitem></menuchoice> menu item. To export the same
-data as a new vCalendar file choose the <menuchoice><guimenu>File</guimenu>
-<guisubmenu>Export</guisubmenu> <guimenuitem>Export as vCalendar...</guimenuitem>
-</menuchoice> menu item. The <guilabel>Save As</guilabel> dialog will pop up.
+<guimenuitem>Export as iCalendar...</guimenuitem></menuchoice> menu item.
+The <guilabel>Save As</guilabel> dialog will pop up.
 Enter the file name and location for the new file to complete the export
 action.</para>
 
@@ -1219,7 +1216,7 @@ information depends on the client and/or groupware server implementation.</para>
 <warning><para>Currently, &korganizer; <emphasis>will</emphasis> display
 items owned by other people and marked as confidential. Other
 clients may treat them differently, but be careful when publishing private or
-confidential events: vCalendar and iCalendar are text files, and can be read
+confidential events: iCalendar is a text file format, and can be read
 with any text editor (if someone has read access to them). So if you want to
 keep items really confidential, make sure you use a resource that
 only you can access.</para></warning></listitem>
@@ -2891,20 +2888,6 @@ added to your calendar.</para>
 </menuchoice></term>
 <listitem><para>This action will export all your active events, to-dos and
 journal entries (independent of to which resource they belong) as a new iCalendar
-file.</para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-export" />.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-export-vcalendar">
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guisubmenu>Export</guisubmenu>
-<guimenuitem>Export as vCalendar</guimenuitem>
-</menuchoice></term>
-<listitem><para>This action will export all your active events, to-dos and
-journal entries (independent of to which resource they belong) as a new vCalendar
 file.</para>
 <para>For more information about this action, please refer to
 <xref linkend="managing-export" />.</para>

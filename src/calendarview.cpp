@@ -84,7 +84,6 @@
 #include <KCalCore/CalFilter>
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
-#include <KCalCore/VCalFormat>
 
 #include <KCalUtils/ICalDrag>
 #include <KCalUtils/Stringify>
@@ -1818,55 +1817,6 @@ void CalendarView::exportICalendar()
                 this,
                 i18nc("@info",
                       "Cannot write iCalendar file %1. %2",
-                      filename, errmess));
-        }
-    }
-}
-
-void CalendarView::exportVCalendar()
-{
-    if (!mCalendar->journals().isEmpty()) {
-        int result = KMessageBox::warningContinueCancel(
-                         this,
-                         i18n("The journal entries cannot be exported to a vCalendar file."),
-                         i18n("Data Loss Warning"),
-                         KGuiItem(i18n("Proceed")),
-                         KStandardGuiItem::cancel(),
-                         QStringLiteral("dontaskVCalExport"),
-                         KMessageBox::Notify);
-        if (result != KMessageBox::Continue) {
-            return;
-        }
-    }
-
-    QString filename = QFileDialog::getSaveFileName(this, QString(), QStringLiteral("vcalout.vcs"),
-                                                    QStringLiteral("%1 (*.vcs)").arg(i18n("vCalendars files")), nullptr, QFileDialog::DontConfirmOverwrite);
-    if (!filename.isEmpty()) {
-        // Force correct extension
-        if (filename.right(4) != QLatin1String(".vcs")) {
-            filename += QLatin1String(".vcs");
-        }
-        if (QFileInfo::exists(filename)) {
-            if (KMessageBox::No == KMessageBox::warningYesNo(
-                        this,
-                        i18n("Do you want to overwrite %1?", filename))) {
-                return;
-            }
-        }
-        KCalCore::VCalFormat *format = new KCalCore::VCalFormat;
-
-        KCalCore::FileStorage storage(mCalendar, filename, format);
-        if (!storage.save()) {
-            QString errmess;
-            if (format->exception()) {
-                errmess = KCalUtils::Stringify::errorMessage(*format->exception());
-            } else {
-                errmess = i18nc("save failure cause unknown", "Reason unknown");
-            }
-            KMessageBox::error(
-                this,
-                i18nc("@info",
-                      "Cannot write vCalendar file %1. %2",
                       filename, errmess));
         }
     }
