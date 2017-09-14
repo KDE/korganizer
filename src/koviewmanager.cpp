@@ -37,7 +37,6 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/timelineview/kotimelineview.h"
-#include "views/timespentview/kotimespentview.h"
 #include "views/todoview/kotodoview.h"
 #include "views/whatsnextview/kowhatsnextview.h"
 
@@ -63,7 +62,6 @@ KOViewManager::KOViewManager(CalendarView *mainView)
     mTimelineView = nullptr;
     mAgendaViewTabs = nullptr;
     mAgendaViewTabIndex = 0;
-    mTimeSpentView = nullptr;
     mMonthView = nullptr;
     mRangeMode = NO_RANGE;
 }
@@ -96,8 +94,6 @@ void KOViewManager::readSettings(KConfig *config)
         showTodoView();
     } else if (view == QLatin1String("Timeline")) {
         showTimeLineView();
-    } else if (view == QLatin1String("TimeSpent")) {
-        showTimeSpentView();
     } else if (view == QLatin1String("Month")) {
         showMonthView();
     } else {
@@ -140,8 +136,6 @@ void KOViewManager::writeSettings(KConfig *config)
         view = QStringLiteral("Todo");
     } else if (mCurrentView == mTimelineView) {
         view = QStringLiteral("Timeline");
-    } else if (mCurrentView == mTimeSpentView) {
-        view = QStringLiteral("TimeSpent");
     } else if (mCurrentView == mMonthView) {
         view = QStringLiteral("Month");
     } else {
@@ -405,18 +399,6 @@ void KOViewManager::addView(KOrg::BaseView *view, bool isTab)
     if (!isTab) {
         mMainView->viewStack()->addWidget(view);
     }
-}
-
-void KOViewManager::showTimeSpentView()
-{
-    if (!mTimeSpentView) {
-        mTimeSpentView = new KOTimeSpentView(mMainView->viewStack());
-        mTimeSpentView->setCalendar(mMainView->calendar());
-        mTimeSpentView->setIdentifier("DefaultTimeSpentView");
-        addView(mTimeSpentView);
-    }
-    goMenu(true);
-    showView(mTimeSpentView);
 }
 
 void KOViewManager::showMonthView()

@@ -294,7 +294,7 @@ void KODayMatrix::updateJournals()
   * Although updateTodos() is simpler it has some similarities with updateEvent()
   * but don't bother refactoring them so they share code, there's a bigger fish:
   * Try to refactor updateTodos(), updateEvent(), updateJournals(), monthview,
-  * agenda view, timespent view, timeline view, event list view and todo list view
+  * agenda view, timeline view, event list view and todo list view
   * all these 9 places have incidence listing code in common, maybe it could go
   * to kcal. Ah, and then there's kontact's summary view which still uses
   * the old CPU consuming code.

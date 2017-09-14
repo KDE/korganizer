@@ -191,7 +191,6 @@ set(korganizerprivate_LIB_SRCS
     views/monthview/monthview.cpp
     views/multiagendaview/multiagendaview.cpp
     views/timelineview/kotimelineview.cpp
-    views/timespentview/kotimespentview.cpp
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
     )

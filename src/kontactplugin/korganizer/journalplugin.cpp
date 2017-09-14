@@ -104,7 +104,6 @@ QStringList JournalPlugin::invisibleToolbarActions() const
     invisible += QStringLiteral("view_todo");
     invisible += QStringLiteral("view_journal");
     invisible += QStringLiteral("view_timeline");
-    invisible += QStringLiteral("view_timespent");
 
     return invisible;
 }

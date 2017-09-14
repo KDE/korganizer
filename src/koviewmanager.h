@@ -38,7 +38,6 @@ class KOAgendaView;
 class KOJournalView;
 class KOListView;
 class KOTimelineView;
-class KOTimeSpentView;
 class KOTodoView;
 class KOWhatsNextView;
 namespace KOrg
@@ -157,7 +156,6 @@ public Q_SLOTS:
     void showAgendaView();
     void showTodoView();
     void showTimeLineView();
-    void showTimeSpentView();
     void showMonthView();
     void showJournalView();
     void showEventView();
@@ -196,7 +194,6 @@ private:
     KOWhatsNextView *mWhatsNextView = nullptr;
     KOJournalView *mJournalView = nullptr;
     KOTimelineView *mTimelineView = nullptr;
-    KOTimeSpentView *mTimeSpentView = nullptr;
     KOrg::MonthView *mMonthView = nullptr;
     KOrg::BaseView *mCurrentView = nullptr;
 

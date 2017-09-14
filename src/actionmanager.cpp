@@ -382,11 +382,6 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView->viewManager(),
             &KOViewManager::showTimeLineView);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-time-spent")), i18n("Time&spent"), this);
-    mACollection->addAction(QStringLiteral("view_timespent"), action);
-    connect(action, &QAction::triggered, mCalendarView->viewManager(),
-            &KOViewManager::showTimeSpentView);
-
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     action = new QAction(i18n("&Refresh"), this);
     mACollection->addAction(QStringLiteral("update"), action);

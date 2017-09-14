@@ -917,7 +917,7 @@ in the toolbar.</para>
 
 </sect2>
 
-<!-- Timespent View-->
+<!-- Timeline View-->
 
 <sect2 id="timeline-view">
 <title>Timeline View</title>
@@ -2761,7 +2761,7 @@ Chol HaMoed.
 <chapter id="reference">
 <title>Reference</title>
 
-<sect1 id="reference-menus"><!--updated to 5.4.40, missing Timespent, Send as iCalendar-->
+<sect1 id="reference-menus"><!--updated to 5.4.40, Send as iCalendar-->
 <title>Menus</title>
 
 <para>When &korganizer; starts, the main &korganizer; window
@@ -3187,8 +3187,6 @@ displayed one per line.</para>
 <xref linkend="whatsnext-view" />.</para>
 </listitem>
 </varlistentry>
-
-<!-- missing Timespent-->
 
 <varlistentry id="menu-view-journal">
 <term><inlinemediaobject><imageobject><imagedata
