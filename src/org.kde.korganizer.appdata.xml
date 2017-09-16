@@ -264,6 +264,7 @@
       <li xml:lang="tr">Yazdırma desteği</li>
       <li xml:lang="uk">підтримка друку календарів.</li>
       <li xml:lang="x-test">xxPrint supportxx</li>
+      <li xml:lang="zh-CN">打印支持</li>
     </ul>
   </description>
   <url type="homepage">https://www.kde.org/applications/office/korganizer/</url>
