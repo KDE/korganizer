@@ -468,7 +468,8 @@ protected:
                 combo->setCurrentIndex(i);
             }
         } else {
-            for (int i = 0; i < combo->count(); ++i) {
+            const int numberOfElements{combo->count()};
+            for (int i = 0; i < numberOfElements; ++i) {
                 if (combo->itemText(i) == text) {
                     combo->setCurrentIndex(i);
                     break;
