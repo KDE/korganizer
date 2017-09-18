@@ -102,6 +102,7 @@ void KOrganizer::init(bool document)
     setTitle();
 }
 
+#if 0
 void KOrganizer::initializePluginActions()
 {
 #if 0
@@ -121,6 +122,8 @@ void KOrganizer::initializePluginActions()
     qCDebug(KORGANIZER_LOG) << " Plugins not implemented yet";
 #endif
 }
+#endif
+
 void KOrganizer::newMainWindow(const QUrl &url)
 {
     KOrganizer *korg = new KOrganizer();
@@ -215,6 +218,21 @@ QUrl KOrganizer::getCurrentURL() const
     return mActionManager->url();
 }
 
+KXMLGUIFactory *KOrganizer::mainGuiFactory()
+{
+    return factory();
+}
+
+KXMLGUIClient *KOrganizer::mainGuiClient()
+{
+    return this;
+}
+
+QWidget *KOrganizer::topLevelWidget()
+{
+    return this;
+}
+
 void KOrganizer::saveProperties(KConfigGroup &config)
 {
     return mActionManager->saveProperties(config);
@@ -228,6 +246,16 @@ void KOrganizer::readProperties(const KConfigGroup &config)
 KOrg::CalendarViewBase *KOrganizer::view() const
 {
     return mActionManager->view();
+}
+
+ActionManager *KOrganizer::actionManager()
+{
+    return mActionManager;
+}
+
+KActionCollection *KOrganizer::getActionCollection() const
+{
+    return actionCollection();
 }
 
 void KOrganizer::setTitle()

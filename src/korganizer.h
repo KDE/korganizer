@@ -58,15 +58,10 @@ public:
     void init(bool hasDocument) override;
 
     KOrg::CalendarViewBase *view() const override;
-    ActionManager *actionManager() override {
-        return mActionManager;
-    }
-    KActionCollection *getActionCollection() const override
-    {
-        return actionCollection();
-    }
+    ActionManager *actionManager() override;
+    KActionCollection *getActionCollection() const override;
 
-    void initializePluginActions();
+    //void initializePluginActions();
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
@@ -87,15 +82,9 @@ public:
     /** Get current URL */
     QUrl getCurrentURL() const override;
 
-    KXMLGUIFactory *mainGuiFactory() override {
-        return factory();
-    }
-    KXMLGUIClient *mainGuiClient() override {
-        return this;
-    }
-    QWidget *topLevelWidget() override {
-        return this;
-    }
+    KXMLGUIFactory *mainGuiFactory() override;
+    KXMLGUIClient *mainGuiClient() override;
+    QWidget *topLevelWidget() override;
 
 public Q_SLOTS:
     /** show status message */
