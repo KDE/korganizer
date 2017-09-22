@@ -49,12 +49,12 @@ static bool eventLessThan(const KCalCore::Event::Ptr &event1, const KCalCore::Ev
 {
     QDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
     QDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
-    if (kdt1 > kdt2) {
+    if (kdt1 < kdt2) {
         return true;
-    } else if (kdt1 < kdt2) {
+    } else if (kdt1 > kdt2) {
         return false;
     } else {
-        return event1->summary() > event2->summary();
+        return event1->summary() < event2->summary();
     }
 }
 
@@ -146,7 +146,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             if ((end >= eventStart.date() && start <= eventEnd.date()) ||
                     (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
-                if (eventStart.date() < start) {
+                if (eventStart.date() > start) {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), QDateTime(start));
                 } else {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), eventStart);
