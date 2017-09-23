@@ -241,12 +241,15 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
                     entry.type = IncidenceTypeContact;
                     entry.category = CategoryBirthday;
                     dateDiff(birthday, entry.daysTo, entry.yearsOld);
-
-                    entry.date = birthday;
-                    entry.addressee = addressee;
-                    entry.item = item;
-                    entry.span = 1;
-                    mDates.append(entry);
+                    if (entry.daysTo < mDaysAhead) {
+                        // We need to check the days ahead here because we don't
+                        // filter out Contact Birthdays by mDaysAhead in createLabels().
+                        entry.date = birthday;
+                        entry.addressee = addressee;
+                        entry.item = item;
+                        entry.span = 1;
+                        mDates.append(entry);
+                    }
                 }
             }
         }
