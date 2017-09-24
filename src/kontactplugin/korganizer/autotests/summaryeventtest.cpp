@@ -18,20 +18,17 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "qtest.h"
 #include "summaryeventtest.h"
 #include "../summaryeventinfo.h"
 
-#include <KCalCore/Event>
 #include <KCalCore/MemoryCalendar>
-#include <QTimeZone>
 
+#include <QTest>
 QTEST_GUILESS_MAIN(SummaryEventTester)
 
 void SummaryEventTester::test_Multiday()
 {
     QDate today = QDate::currentDate();
-    QString multidayWithTimeInProgress = QStringLiteral("Multiday, time specified, in progress");
 
     KCalCore::MemoryCalendar *cal = new KCalCore::MemoryCalendar(QTimeZone::systemTimeZone());
 
@@ -46,12 +43,13 @@ void SummaryEventTester::test_Multiday()
     event = KCalCore::Event::Ptr(new KCalCore::Event());
     event->setDtStart(QDateTime(today.addDays(-1), QTime(12, 00)));
     event->setDtEnd(QDateTime(today.addDays(5), QTime(12, 00)));
+    QString multidayWithTimeInProgress = QStringLiteral("Multiday, time specified, in progress");
     event->setSummary(multidayWithTimeInProgress);
     QVERIFY(cal->addEvent(event));
     for (int i = 0; i < 5; ++i) {
         SummaryEventInfo::List events4 = SummaryEventInfo::eventsForDate(today.addDays(i), cal);
         QCOMPARE(2, events4.size());
-        SummaryEventInfo *ev4 = events4.at(0);
+        SummaryEventInfo *ev4 = events4.at(1);
 
         QCOMPARE(ev4->summaryText, QString(multidayWithTimeInProgress + QString::fromLatin1(" (%1/7)").arg(i + 2)));
         QCOMPARE(ev4->timeRange, QStringLiteral("%1 - %2").arg(
