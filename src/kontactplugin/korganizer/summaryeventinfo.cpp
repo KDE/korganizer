@@ -121,7 +121,7 @@ SummaryEventInfo::SummaryEventInfo()
 SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, const QDate &end,
         KCalCore::Calendar *calendar)
 {
-    KCalCore::Event::List allEvents = calendar->events(); // calendar->rawEvents() isn't exactly what we want, doesn't handle recurrence right
+    KCalCore::Event::List allEvents = calendar->events();
     KCalCore::Event::List events;
     const auto currentDateTime = QDateTime::currentDateTime();
     const QDate currentDate = currentDateTime.date();
@@ -146,7 +146,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             if ((end >= eventStart.date() && start <= eventEnd.date()) ||
                     (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
-                if (eventStart.date() > start) {
+                if (eventStart.date() < start) {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), QDateTime(start));
                 } else {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), eventStart);
