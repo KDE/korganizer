@@ -1207,7 +1207,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
 
     connect(mConfigureButton, &QPushButton::clicked, this, &KOPrefsDialogPlugins::configure);
 
-    //connect( mPositionMonthTop, SIGNAL(clicked()), SLOT(positioningChanged()) );
     connect(mPositionAgendaTop, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
     connect(mPositionAgendaBottom, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
 
