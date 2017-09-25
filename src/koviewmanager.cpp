@@ -451,8 +451,8 @@ void KOViewManager::showAgendaView()
     if (showBoth) {
         if (!mAgendaViewTabs && showBoth) {
             mAgendaViewTabs = new QTabWidget(mMainView->viewStack());
-            connect(mAgendaViewTabs, SIGNAL(currentChanged(int)),
-                    this, SLOT(currentAgendaViewTabChanged(int)));
+            connect(mAgendaViewTabs, &QTabWidget::currentChanged,
+                    this, &KOViewManager::currentAgendaViewTabChanged);
             mMainView->viewStack()->addWidget(mAgendaViewTabs);
 
             KConfigGroup viewConfig = KSharedConfig::openConfig()->group(QStringLiteral("Views"));
