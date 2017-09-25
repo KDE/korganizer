@@ -21,18 +21,20 @@
  */
 
 #include "calendardelegate.h"
+#include "controller.h"
+#include "kohelper.h"
+#include "korganizer_debug.h"
+
+#include <AkonadiCore/CollectionStatistics>
+
+#include <CalendarSupport/Utils>
 
 #include <KIconLoader>
 
 #include <QApplication>
-#include <QPainter>
+#include <QFontDatabase>
 #include <QMouseEvent>
-#include <AkonadiCore/collectionstatistics.h>
-
-#include <CalendarSupport/Utils>
-#include <kohelper.h>
-#include "korganizer_debug.h"
-#include "controller.h"
+#include <QPainter>
 
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
@@ -45,7 +47,6 @@ StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
 {
-
 }
 
 static QRect enableButtonRect(const QRect &rect, int pos = 1)
@@ -103,7 +104,8 @@ static Akonadi::Collection personCollection(const QModelIndex &index)
     return Akonadi::Collection();
 }
 
-QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const
+QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option,
+                                                                         const QModelIndex &index) const
 {
     const bool isSearchResult = index.data(IsSearchResultRole).toBool();
     const bool hover = option.state & QStyle::State_MouseOver;
@@ -145,7 +147,8 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const Q
     return buttons;
 }
 
-void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
+                                   const QModelIndex &index) const
 {
     Q_ASSERT(index.isValid());
 
@@ -156,6 +159,9 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
 
     QStyleOptionViewItem opt = option;
+    opt.font = QFont(QFontDatabase::systemFont(QFontDatabase::GeneralFont));
+    opt.textElideMode = QApplication::isRightToLeft() ? Qt::ElideRight : Qt::ElideLeft;
+
     initStyleOption(&opt, index);
     QStyledItemDelegate::paint(painter, opt, index);
 
@@ -164,7 +170,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     //Buttons
     {
         int i = 1;
-        Q_FOREACH (Action action, getActions(option, index)) {
+        Q_FOREACH (const Action &action, getActions(option, index)) {
             if (action != Total) {
                 QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
                 if (action == Enable && showButtons) {
