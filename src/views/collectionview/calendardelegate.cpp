@@ -160,7 +160,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
 
     QStyleOptionViewItem opt = option;
     opt.font = QFont(QFontDatabase::systemFont(QFontDatabase::GeneralFont));
-    opt.textElideMode = QApplication::isRightToLeft() ? Qt::ElideRight : Qt::ElideLeft;
+    opt.textElideMode = Qt::ElideLeft;
 
     initStyleOption(&opt, index);
     QStyledItemDelegate::paint(painter, opt, index);
