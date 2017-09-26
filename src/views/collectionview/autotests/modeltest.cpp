@@ -130,7 +130,6 @@ void ModelTest::nonDestructiveBasicTest()
     model->setData(QModelIndex(), variant, -1);
     model->setHeaderData(-1, Qt::Horizontal, QVariant());
     model->setHeaderData(999999, Qt::Horizontal, QVariant());
-    QMap<int, QVariant> roles;
     model->sibling(0, 0, QModelIndex());
     model->span(QModelIndex());
     model->supportedDropActions();
@@ -461,7 +460,7 @@ void ModelTest::data()
     // Check that the alignment is one we know about
     QVariant textAlignmentVariant = model->data(model->index(0, 0), Qt::TextAlignmentRole);
     if (textAlignmentVariant.isValid()) {
-        int alignment = textAlignmentVariant.toInt();
+        uint alignment = textAlignmentVariant.toUInt();
         Q_ASSERT(alignment == (alignment & (Qt::AlignHorizontal_Mask | Qt::AlignVertical_Mask)));
         Q_UNUSED(alignment);
     }
@@ -649,4 +648,3 @@ void ModelTest::rowsRemoved(const QModelIndex &parent, int start, int end)
     Q_ASSERT(c.last == model->data(model->index(start - 1, 0, c.parent)));
     Q_ASSERT(c.next == model->data(model->index(start, 0, c.parent)));
 }
-
