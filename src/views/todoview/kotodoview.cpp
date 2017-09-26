@@ -45,7 +45,7 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
                                      sidebarView, parent);
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(mView);
-    connect(mView, SIGNAL(printTodo()), SLOT(printTodo()));
+    connect(mView, &EventViews::TodoView::printTodo, this, [this]() { printTodo();});
     connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
     connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
 
