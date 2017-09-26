@@ -433,7 +433,10 @@ void CalendarView::readSettings()
     if (dateCount == 7) {
         mDateNavigator->selectWeek();
     } else {
-        mDateNavigator->selectDates(mDateNavigator->selectedDates().first(), dateCount);
+        const KCalCore::DateList dates = mDateNavigator->selectedDates();
+        if (!dates.isEmpty()) {
+            mDateNavigator->selectDates(dates.first(), dateCount);
+        }
     }
 }
 
@@ -851,11 +854,13 @@ void CalendarView::edit_paste()
     } else if (curView == monthView && monthView->selectionStart().isValid()) {
         finalDateTime = QDateTime(monthView->selectionStart().date());
         pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
-    } else if (!mDateNavigator->selectedDates().isEmpty() &&
-               curView->supportsDateNavigation()) {
+    } else if (!mDateNavigator->selectedDates().isEmpty() && curView->supportsDateNavigation()) {
         // default to the selected date from the navigator
-        finalDateTime = QDateTime(mDateNavigator->selectedDates().first());
-        pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
+        const KCalCore::DateList dates = mDateNavigator->selectedDates();
+        if (!dates.isEmpty()) {
+            finalDateTime = QDateTime(dates.first());
+            pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
+        }
     }
 
     if (!finalDateTime.isValid() && curView->supportsDateNavigation()) {
@@ -2792,4 +2797,3 @@ void CalendarView::handleIncidenceCreated(const Akonadi::Item &item)
         mMessageWidget->show();
     }
 }
-

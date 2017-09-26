@@ -89,12 +89,16 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
         return;
     }
 
-    const Akonadi::Collection collection = fetch->collections().first();
+    const Akonadi::Collection::List collections = fetch->collections();
+    if (!collections.isEmpty()) {
+        const Akonadi::Collection collection = collections.first();
 
-    QPointer<Akonadi::CollectionPropertiesDialog> dlg = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
-    dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1", collection.name()));
+        QPointer<Akonadi::CollectionPropertiesDialog> dlg =
+            new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
+        dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1", collection.name()));
 
-    dlg->show();
-    mHashDialogBox.insert(collection.id(), dlg);
+        dlg->show();
+        mHashDialogBox.insert(collection.id(), dlg);
+        delete dlg;
+    }
 }
-

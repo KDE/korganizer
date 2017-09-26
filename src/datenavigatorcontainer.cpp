@@ -258,11 +258,14 @@ void DateNavigatorContainer::resizeAllContents()
 
         mHorizontalCount = horizontalCount;
         mVerticalCount = verticalCount;
-        setBaseDates(mNavigatorView->selectedDates().first());
-        selectDates(mNavigatorView->selectedDates());
-        for (KDateNavigator *n : qAsConst(mExtraViews)) {
-            if (n) {
-                n->show();
+        const KCalCore::DateList dates = mNavigatorView->selectedDates();
+        if (!dates.isEmpty()) {
+            setBaseDates(dates.first());
+            selectDates(dates);
+            for (KDateNavigator *n : qAsConst(mExtraViews)) {
+                if (n) {
+                    n->show();
+                }
             }
         }
     }
@@ -423,4 +426,3 @@ KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date)
 
     return navigator;
 }
-

@@ -675,7 +675,9 @@ void ReparentingModelTest::testInvalidLayoutChanged()
     QTest::qWait(0);
 
     //Take reference to proxy node
-    QPersistentModelIndex persistentIndex = getIndexList("row1", reparentingModel).first();
+    const QModelIndexList row1List = getIndexList("row1", reparentingModel);
+    QVERIFY(!row1List.isEmpty());
+    QPersistentModelIndex persistentIndex = row1List.first();
     QVERIFY(persistentIndex.isValid());
 
     sourceModel.appendRow(new QStandardItem(QStringLiteral("row1")));
@@ -781,4 +783,3 @@ void ReparentingModelTest::testDataChanged()
 QTEST_MAIN(ReparentingModelTest)
 
 #include "reparentingmodeltest.moc"
-
