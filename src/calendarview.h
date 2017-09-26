@@ -258,8 +258,6 @@ Q_SIGNALS:
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger(Akonadi::IncidenceChanger *) override;
-
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
 
