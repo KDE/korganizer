@@ -24,7 +24,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "config-korganizer.h"
+#include <config-korganizer.h>
 #include "alarmdialog.h"
 #include "korganizer_interface.h"
 #include "mailclient.h"
@@ -74,7 +74,7 @@ using namespace KCalCore;
 using namespace KCalUtils;
 
 static int defSuspendVal = 5;
-static int defSuspendUnit = 0; // 0=>minutes, 1=>hours, 2=>days, 3=>weeks
+static int defSuspendUnit = AlarmDialog::SuspendInMinutes;
 
 class ReminderTreeItem : public QTreeWidgetItem
 {
@@ -134,6 +134,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup generalConfig(config, "General");
     QPoint pos = generalConfig.readEntry("Position", QPoint(0, 0));
+    int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
+    SuspendUnit suspendUnit = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit", defSuspendUnit));
 
     QWidget *topBox = new QWidget(this);
     if (!pos.isNull()) {
@@ -234,7 +236,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mSuspendSpin = new QSpinBox(suspendBox);
     suspendBoxHBoxLayout->addWidget(mSuspendSpin);
     mSuspendSpin->setRange(1, 9999);
-    mSuspendSpin->setValue(defSuspendVal);    // default suspend duration
+    mSuspendSpin->setValue(suspendVal);    // default suspend duration
     mSuspendSpin->setToolTip(
         i18nc("@info:tooltip",
               "Suspend the reminders by this amount of time"));
@@ -261,7 +263,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
               "using this time unit. You can set the number of time units "
               "in the adjacent number entry input."));
 
-    mSuspendUnit->setCurrentIndex(defSuspendUnit);
+    mSuspendUnit->setCurrentIndex(static_cast<int>(suspendUnit));
 
     connect(&mSuspendTimer, &QTimer::timeout, this, &AlarmDialog::wakeUp);
 
@@ -456,16 +458,16 @@ void AlarmDialog::suspend()
 
     int unit = 1;
     switch (mSuspendUnit->currentIndex()) {
-    case 3: // weeks
+    case SuspendInWeeks:
         unit *=  7;
         Q_FALLTHROUGH();
-    case 2: // days
+    case SuspendInDays:
         unit *= 24;
         Q_FALLTHROUGH();
-    case 1: // hours
+    case SuspendInHours:
         unit *= 60;
         Q_FALLTHROUGH();
-    case 0: // minutes
+    case SuspendInMinutes:
         unit *= 60;
         Q_FALLTHROUGH();
     default:
@@ -730,6 +732,9 @@ void AlarmDialog::slotSave()
 
     generalConfig.writeEntry("Reminders", numReminders);
     generalConfig.writeEntry("Position", pos());
+    generalConfig.writeEntry("SuspendValue", mSuspendSpin->value());
+    generalConfig.writeEntry("SuspendUnit", mSuspendUnit->currentIndex());
+
     config->sync();
 }
 

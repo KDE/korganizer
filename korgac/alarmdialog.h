@@ -59,7 +59,19 @@ class QSpinBox;
 class AlarmDialog : public QDialog
 {
     Q_OBJECT
+    Q_ENUMS(SuspendUnit)
+
 public:
+    /**
+     * The suspend time unit.
+     */
+    enum SuspendUnit {
+        SuspendInMinutes = 0,  ///< Suspend time is in minutes
+        SuspendInHours   = 1,  ///< Suspend time is in hours
+        SuspendInDays    = 2,  ///< Suspend time is in days
+        SuspendInWeeks   = 3   ///< Suspend time is in weeks
+    };
+
     explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
     ~AlarmDialog();
 
