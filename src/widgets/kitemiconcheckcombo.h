@@ -42,8 +42,7 @@ public:
     QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
 
 private:
-    class Private;
-    Private *const d;
+    KItemIconCheckCombo::ViewType mViewType;
 };
 
 #endif // KITEMICONCHECKCOMBO_H

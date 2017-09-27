@@ -24,18 +24,8 @@
 
 #include <KLocalizedString>
 
-class KItemIconCheckCombo::Private
-{
-public:
-    Private(ViewType viewType) : mViewType(viewType)
-    {
-    }
-
-    KItemIconCheckCombo::ViewType mViewType;
-};
-
 KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
-    : KPIM::KCheckComboBox(parent), d(new Private(viewType))
+    : KPIM::KCheckComboBox(parent), mViewType(viewType)
 {
     addItem(i18n("Calendar's custom icon"));
     addItem(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("To-do"));
@@ -62,7 +52,6 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
 
 KItemIconCheckCombo::~KItemIconCheckCombo()
 {
-    delete d;
 }
 
 void KItemIconCheckCombo::setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons)

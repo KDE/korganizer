@@ -37,9 +37,7 @@
 #include <QTimer>
 
 DateNavigatorContainer::DateNavigatorContainer(QWidget *parent)
-    : QFrame(parent),
-      mHorizontalCount(1), mVerticalCount(1),
-      mIgnoreNavigatorUpdates(false)
+    : QFrame(parent)
 {
     mNavigatorView = new KDateNavigator(this);
     mNavigatorView->setWhatsThis(

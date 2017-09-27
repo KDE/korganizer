@@ -160,10 +160,10 @@ private:
 
     QList<KDateNavigator *> mExtraViews;
 
-    int mHorizontalCount;
-    int mVerticalCount;
+    int mHorizontalCount = 1;
+    int mVerticalCount = 1;
 
-    bool mIgnoreNavigatorUpdates;
+    bool mIgnoreNavigatorUpdates = false;
 };
 
 #endif

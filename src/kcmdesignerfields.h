@@ -65,12 +65,12 @@ private Q_SLOTS:
 private:
     void initGUI();
 
-    QTreeWidget *mPageView;
-    QLabel *mPagePreview;
-    QLabel *mPageDetails;
-    QPushButton *mDeleteButton;
-    QPushButton *mImportButton;
-    QPushButton *mDesignerButton;
+    QTreeWidget *mPageView = nullptr;
+    QLabel *mPagePreview = nullptr;
+    QLabel *mPageDetails = nullptr;
+    QPushButton *mDeleteButton = nullptr;
+    QPushButton *mImportButton = nullptr;
+    QPushButton *mDesignerButton = nullptr;
 };
 
 #endif

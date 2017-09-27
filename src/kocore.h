@@ -94,7 +94,7 @@ private:
     static KOCore *mSelf;
 
     EventViews::CalendarDecoration::Decoration::List mCalendarDecorations;
-    bool mCalendarDecorationsLoaded;
+    bool mCalendarDecorationsLoaded = false;
 
     QMap<QWidget *, KXMLGUIClient *> mXMLGUIClients;
 };
