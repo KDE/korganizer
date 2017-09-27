@@ -33,103 +33,89 @@
 
 using namespace KOrg;
 
-class MonthView::Private
-{
-public:
-    Private(MonthView *qq) : q(qq)
-    {
-        QVBoxLayout *layout = new QVBoxLayout(q);
-        layout->setMargin(0);
-        mMonthView = new EventViews::MonthView(EventViews::MonthView::Visible, q);
-        mMonthView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
-        layout->addWidget(mMonthView);
-        mPopup = q->eventPopup();
-    }
-
-    EventViews::MonthView *mMonthView = nullptr;
-    KOEventPopupMenu *mPopup = nullptr;
-
-private:
-    MonthView *q = nullptr;
-};
-
 MonthView::MonthView(QWidget *parent)
-    : KOEventView(parent), d(new Private(this))
+    : KOEventView(parent)
 {
-    connect(d->mMonthView, &EventViews::MonthView::showIncidencePopupSignal, d->mPopup, &KOEventPopupMenu::showIncidencePopup);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setMargin(0);
+    mMonthView = new EventViews::MonthView(EventViews::MonthView::Visible, this);
+    mMonthView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
+    layout->addWidget(mMonthView);
+    mPopup = eventPopup();
 
-    connect(d->mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
+    connect(mMonthView, &EventViews::MonthView::showIncidencePopupSignal, mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mMonthView, &EventViews::EventView::datesSelected,
+    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
+
+    connect(mMonthView, &EventViews::EventView::datesSelected,
             this, &KOEventView::datesSelected);
 
-    connect(d->mMonthView, &EventViews::EventView::shiftedEvent,
+    connect(mMonthView, &EventViews::EventView::shiftedEvent,
             this, &KOEventView::shiftedEvent);
 
-    connect(d->mMonthView, &EventViews::EventView::incidenceSelected,
+    connect(mMonthView, &EventViews::EventView::incidenceSelected,
             this, &BaseView::incidenceSelected);
 
-    connect(d->mMonthView, &EventViews::EventView::showIncidenceSignal,
+    connect(mMonthView, &EventViews::EventView::showIncidenceSignal,
             this, &BaseView::showIncidenceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::editIncidenceSignal,
+    connect(mMonthView, &EventViews::EventView::editIncidenceSignal,
             this, &BaseView::editIncidenceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::deleteIncidenceSignal,
+    connect(mMonthView, &EventViews::EventView::deleteIncidenceSignal,
             this, &BaseView::deleteIncidenceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::cutIncidenceSignal,
+    connect(mMonthView, &EventViews::EventView::cutIncidenceSignal,
             this, &BaseView::cutIncidenceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::copyIncidenceSignal,
+    connect(mMonthView, &EventViews::EventView::copyIncidenceSignal,
             this, &BaseView::copyIncidenceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::pasteIncidenceSignal,
+    connect(mMonthView, &EventViews::EventView::pasteIncidenceSignal,
             this, &BaseView::pasteIncidenceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::toggleAlarmSignal,
+    connect(mMonthView, &EventViews::EventView::toggleAlarmSignal,
             this, &BaseView::toggleAlarmSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::toggleTodoCompletedSignal,
+    connect(mMonthView, &EventViews::EventView::toggleTodoCompletedSignal,
             this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::copyIncidenceToResourceSignal,
+    connect(mMonthView, &EventViews::EventView::copyIncidenceToResourceSignal,
             this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::moveIncidenceToResourceSignal,
+    connect(mMonthView, &EventViews::EventView::moveIncidenceToResourceSignal,
             this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::dissociateOccurrencesSignal,
+    connect(mMonthView, &EventViews::EventView::dissociateOccurrencesSignal,
             this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(d->mMonthView, SIGNAL(newEventSignal()),
+    connect(mMonthView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
 
-    connect(d->mMonthView, SIGNAL(newEventSignal(QDate)),
+    connect(mMonthView, SIGNAL(newEventSignal(QDate)),
             SIGNAL(newEventSignal(QDate)));
 
-    connect(d->mMonthView, SIGNAL(newEventSignal(QDateTime)),
+    connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
             SIGNAL(newEventSignal(QDateTime)));
 
-    connect(d->mMonthView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+    connect(mMonthView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(d->mMonthView, &EventViews::EventView::newTodoSignal,
+    connect(mMonthView, &EventViews::EventView::newTodoSignal,
             this, &BaseView::newTodoSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::newSubTodoSignal,
+    connect(mMonthView, &EventViews::EventView::newSubTodoSignal,
             this, &BaseView::newSubTodoSignal);
 
-    connect(d->mMonthView, &EventViews::EventView::newJournalSignal,
+    connect(mMonthView, &EventViews::EventView::newJournalSignal,
             this, &BaseView::newJournalSignal);
 
-    connect(d->mMonthView, &EventViews::MonthView::fullViewChanged,
+    connect(mMonthView, &EventViews::MonthView::fullViewChanged,
             this, &MonthView::fullViewChanged);
 }
 
 MonthView::~MonthView()
 {
-    delete d;
 }
 
 CalendarSupport::CalPrinterBase::PrintType MonthView::printType() const
@@ -139,68 +125,68 @@ CalendarSupport::CalPrinterBase::PrintType MonthView::printType() const
 
 int MonthView::currentDateCount() const
 {
-    return d->mMonthView->currentDateCount();
+    return mMonthView->currentDateCount();
 }
 
 int MonthView::currentMonth() const
 {
-    return d->mMonthView->currentMonth();
+    return mMonthView->currentMonth();
 }
 
 KCalCore::DateList MonthView::selectedIncidenceDates()
 {
-    return d->mMonthView->selectedIncidenceDates();
+    return mMonthView->selectedIncidenceDates();
 }
 
 QDateTime MonthView::selectionStart()
 {
-    return d->mMonthView->selectionStart();
+    return mMonthView->selectionStart();
 }
 
 QDateTime MonthView::selectionEnd()
 {
-    return d->mMonthView->selectionEnd();
+    return mMonthView->selectionEnd();
 }
 
 bool MonthView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
-    return d->mMonthView->eventDurationHint(startDt, endDt, allDay);
+    return mMonthView->eventDurationHint(startDt, endDt, allDay);
 }
 
 QDate MonthView::averageDate() const
 {
-    return d->mMonthView->averageDate();
+    return mMonthView->averageDate();
 }
 
 bool MonthView::usesFullWindow()
 {
-    return d->mMonthView->usesFullWindow();
+    return mMonthView->usesFullWindow();
 }
 
 bool MonthView::supportsDateRangeSelection()
 {
-    return d->mMonthView->supportsDateRangeSelection();
+    return mMonthView->supportsDateRangeSelection();
 }
 
 void MonthView::updateView()
 {
-    d->mMonthView->updateView();
+    mMonthView->updateView();
 }
 
 void MonthView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
-    d->mMonthView->showIncidences(incidenceList, date);
+    mMonthView->showIncidences(incidenceList, date);
 }
 
 void MonthView::changeIncidenceDisplay(const Akonadi::Item &item,
                                        Akonadi::IncidenceChanger::ChangeType changeType)
 {
-    d->mMonthView->changeIncidenceDisplay(item, changeType);
+    mMonthView->changeIncidenceDisplay(item, changeType);
 }
 
 void MonthView::updateConfig()
 {
-    d->mMonthView->updateConfig();
+    mMonthView->updateConfig();
 }
 
 int MonthView::maxDatesHint() const
@@ -210,30 +196,30 @@ int MonthView::maxDatesHint() const
 
 Akonadi::Item::List MonthView::selectedIncidences()
 {
-    return d->mMonthView->selectedIncidences();
+    return mMonthView->selectedIncidences();
 }
 
 void MonthView::setTypeAheadReceiver(QObject *o)
 {
-    d->mMonthView->setTypeAheadReceiver(o);
+    mMonthView->setTypeAheadReceiver(o);
 }
 
 void MonthView::setDateRange(const QDateTime &start, const QDateTime &end,
                              const QDate &preferredMonth)
 {
-    d->mMonthView->setDateRange(start, end, preferredMonth);
+    mMonthView->setDateRange(start, end, preferredMonth);
 }
 
 void MonthView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
     KOEventView::setCalendar(cal);
-    d->mPopup->setCalendar(cal);
-    d->mMonthView->setCalendar(cal);
+    mPopup->setCalendar(cal);
+    mMonthView->setCalendar(cal);
 }
 
 void MonthView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
-    d->mMonthView->setIncidenceChanger(changer);
+    mMonthView->setIncidenceChanger(changer);
 }
 
 void MonthView::showDates(const QDate &start, const QDate &end, const QDate &preferredMonth)

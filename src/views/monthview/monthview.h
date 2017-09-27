@@ -28,6 +28,10 @@
 
 #include "koeventview.h"
 
+namespace EventViews
+{
+class MonthView;
+}
 namespace KOrg
 {
 
@@ -89,8 +93,8 @@ private:
     void showDates(const QDate &start, const QDate &end,
                    const QDate &preferredMonth = QDate()) override;
 
-    class Private;
-    Private *const d;
+    EventViews::MonthView *mMonthView = nullptr;
+    KOEventPopupMenu *mPopup = nullptr;
 };
 
 }

@@ -32,147 +32,131 @@
 
 #include <QVBoxLayout>
 
-class KOTimelineView::Private
-{
-public:
-    Private(KOTimelineView *q) : mEventPopup(nullptr), mParent(q)
-    {
-        QVBoxLayout *vbox = new QVBoxLayout(mParent);
-        vbox->setMargin(0);
-        mTimeLineView = new EventViews::TimelineView(mParent);
-        vbox->addWidget(mTimeLineView);
-        mEventPopup = q->eventPopup();
-    }
-    ~Private()
-    {
-        delete mEventPopup;
-    }
-    KOEventPopupMenu *mEventPopup = nullptr;
-    EventViews::TimelineView *mTimeLineView = nullptr;
-
-private:
-    KOTimelineView *mParent = nullptr;
-};
-
 KOTimelineView::KOTimelineView(QWidget *parent)
-    : KOEventView(parent), d(new Private(this))
+    : KOEventView(parent)
 {
-    connect(d->mTimeLineView, &EventViews::TimelineView::showIncidencePopupSignal,
-            d->mEventPopup, &KOEventPopupMenu::showIncidencePopup);
+    QVBoxLayout *vbox = new QVBoxLayout(this);
+    vbox->setMargin(0);
+    mTimeLineView = new EventViews::TimelineView(this);
+    vbox->addWidget(mTimeLineView);
+    mEventPopup = eventPopup();
 
-    connect(d->mTimeLineView, &EventViews::TimelineView::showNewEventPopupSignal,
+    connect(mTimeLineView, &EventViews::TimelineView::showIncidencePopupSignal,
+            mEventPopup, &KOEventPopupMenu::showIncidencePopup);
+
+    connect(mTimeLineView, &EventViews::TimelineView::showNewEventPopupSignal,
             this, &KOTimelineView::showNewEventPopup);
 
-    connect(d->mTimeLineView, &EventViews::EventView::datesSelected,
+    connect(mTimeLineView, &EventViews::EventView::datesSelected,
             this, &KOEventView::datesSelected);
 
-    connect(d->mTimeLineView, &EventViews::EventView::shiftedEvent,
+    connect(mTimeLineView, &EventViews::EventView::shiftedEvent,
             this, &KOEventView::shiftedEvent);
 
-    connect(d->mTimeLineView, &EventViews::EventView::incidenceSelected,
+    connect(mTimeLineView, &EventViews::EventView::incidenceSelected,
             this, &KOrg::BaseView::incidenceSelected);
 
-    connect(d->mTimeLineView, &EventViews::EventView::showIncidenceSignal,
+    connect(mTimeLineView, &EventViews::EventView::showIncidenceSignal,
             this, &KOrg::BaseView::showIncidenceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::editIncidenceSignal,
+    connect(mTimeLineView, &EventViews::EventView::editIncidenceSignal,
             this, &KOrg::BaseView::editIncidenceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::deleteIncidenceSignal,
+    connect(mTimeLineView, &EventViews::EventView::deleteIncidenceSignal,
             this, &KOrg::BaseView::deleteIncidenceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::cutIncidenceSignal,
+    connect(mTimeLineView, &EventViews::EventView::cutIncidenceSignal,
             this, &KOrg::BaseView::cutIncidenceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::copyIncidenceSignal,
+    connect(mTimeLineView, &EventViews::EventView::copyIncidenceSignal,
             this, &KOrg::BaseView::copyIncidenceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::pasteIncidenceSignal,
+    connect(mTimeLineView, &EventViews::EventView::pasteIncidenceSignal,
             this, &KOrg::BaseView::pasteIncidenceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::toggleAlarmSignal,
+    connect(mTimeLineView, &EventViews::EventView::toggleAlarmSignal,
             this, &KOrg::BaseView::toggleAlarmSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::toggleTodoCompletedSignal,
+    connect(mTimeLineView, &EventViews::EventView::toggleTodoCompletedSignal,
             this, &KOrg::BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::copyIncidenceToResourceSignal,
+    connect(mTimeLineView, &EventViews::EventView::copyIncidenceToResourceSignal,
             this, &KOrg::BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::moveIncidenceToResourceSignal,
+    connect(mTimeLineView, &EventViews::EventView::moveIncidenceToResourceSignal,
             this, &KOrg::BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::dissociateOccurrencesSignal,
+    connect(mTimeLineView, &EventViews::EventView::dissociateOccurrencesSignal,
             this, &KOrg::BaseView::dissociateOccurrencesSignal);
 
-    connect(d->mTimeLineView, SIGNAL(newEventSignal()),
+    connect(mTimeLineView, SIGNAL(newEventSignal()),
             SIGNAL(newEventSignal()));
 
-    connect(d->mTimeLineView, SIGNAL(newEventSignal(QDate)),
+    connect(mTimeLineView, SIGNAL(newEventSignal(QDate)),
             SIGNAL(newEventSignal(QDate)));
 
-    connect(d->mTimeLineView, SIGNAL(newEventSignal(QDateTime)),
+    connect(mTimeLineView, SIGNAL(newEventSignal(QDateTime)),
             SIGNAL(newEventSignal(QDateTime)));
 
-    connect(d->mTimeLineView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
+    connect(mTimeLineView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
             SIGNAL(newEventSignal(QDateTime,QDateTime)));
 
-    connect(d->mTimeLineView, &EventViews::EventView::newTodoSignal,
+    connect(mTimeLineView, &EventViews::EventView::newTodoSignal,
             this, &KOrg::BaseView::newTodoSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::newSubTodoSignal,
+    connect(mTimeLineView, &EventViews::EventView::newSubTodoSignal,
             this, &KOrg::BaseView::newSubTodoSignal);
 
-    connect(d->mTimeLineView, &EventViews::EventView::newJournalSignal,
+    connect(mTimeLineView, &EventViews::EventView::newJournalSignal,
             this, &KOrg::BaseView::newJournalSignal);
 }
 
 KOTimelineView::~KOTimelineView()
 {
-    delete d;
+    delete mEventPopup;
 }
 
 Akonadi::Item::List KOTimelineView::selectedIncidences()
 {
-    return d->mTimeLineView->selectedIncidences();
+    return mTimeLineView->selectedIncidences();
 }
 
 KCalCore::DateList KOTimelineView::selectedIncidenceDates()
 {
-    return d->mTimeLineView->selectedIncidenceDates();
+    return mTimeLineView->selectedIncidenceDates();
 }
 
 int KOTimelineView::currentDateCount() const
 {
-    return d->mTimeLineView->currentDateCount();
+    return mTimeLineView->currentDateCount();
 }
 
 void KOTimelineView::showDates(const QDate &start, const QDate &end, const QDate &)
 {
-    d->mTimeLineView->showDates(start, end);
+    mTimeLineView->showDates(start, end);
 }
 
 void KOTimelineView::showIncidences(const Akonadi::Item::List &incidenceList,
                                     const QDate &date)
 {
-    d->mTimeLineView->showIncidences(incidenceList, date);
+    mTimeLineView->showIncidences(incidenceList, date);
 }
 
 void KOTimelineView::updateView()
 {
-    d->mTimeLineView->updateView();
+    mTimeLineView->updateView();
 }
 
 void KOTimelineView::changeIncidenceDisplay(const Akonadi::Item &incidence,
         Akonadi::IncidenceChanger::ChangeType changeType)
 {
-    d->mTimeLineView->changeIncidenceDisplay(incidence, changeType);
+    mTimeLineView->changeIncidenceDisplay(incidence, changeType);
 }
 
 bool KOTimelineView::eventDurationHint(QDateTime &startDt, QDateTime &endDt,
                                        bool &allDay)
 {
-    return d->mTimeLineView->eventDurationHint(startDt, endDt, allDay);
+    return mTimeLineView->eventDurationHint(startDt, endDt, allDay);
 }
 
 CalendarSupport::CalPrinterBase::PrintType KOTimelineView::printType() const
@@ -188,12 +172,12 @@ CalendarSupport::CalPrinterBase::PrintType KOTimelineView::printType() const
 void KOTimelineView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
     KOEventView::setCalendar(cal);
-    d->mEventPopup->setCalendar(cal);
-    d->mTimeLineView->setCalendar(cal);
+    mEventPopup->setCalendar(cal);
+    mTimeLineView->setCalendar(cal);
 }
 
 void KOTimelineView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
-    d->mTimeLineView->setIncidenceChanger(changer);
+    mTimeLineView->setIncidenceChanger(changer);
 }
 

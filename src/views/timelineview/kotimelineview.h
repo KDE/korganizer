@@ -36,6 +36,11 @@ namespace Akonadi
 class IncidenceChanger;
 }
 
+namespace EventViews
+{
+class TimelineView;
+}
+
 /**
   This class provides a view ....
 */
@@ -65,8 +70,8 @@ public:
     CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 private:
-    class Private;
-    Private *const d;
+    KOEventPopupMenu *mEventPopup = nullptr;
+    EventViews::TimelineView *mTimeLineView = nullptr;
 };
 
 #endif
