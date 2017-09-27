@@ -105,8 +105,8 @@ FilterEdit::FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
         i18nc("@info:whatsthis",
               "Press this button to remove the currently active filter."));
 
-    connect(mRulesList, SIGNAL(itemSelectionChanged()),
-            this, SLOT(filterSelected()));
+    connect(mRulesList, QOverload<>::of(&QListWidget::itemSelectionChanged),
+            this, QOverload<>::of(&FilterEdit::filterSelected));
 
     connect(mNewButton, &QPushButton::clicked, this, &FilterEdit::bNewPressed);
     connect(mDeleteButton, &QPushButton::clicked, this, &FilterEdit::bDeletePressed);

@@ -62,10 +62,6 @@ public Q_SLOTS:
         updateView();
     }
 
-protected Q_SLOTS:
-    void doSearch();
-    void searchTextChanged(const QString &_text);
-
 Q_SIGNALS:
     void showIncidenceSignal(const Akonadi::Item &);
     void editIncidenceSignal(const Akonadi::Item &);
@@ -75,6 +71,8 @@ protected:
     /*reimp*/
     void showEvent(QShowEvent *event) override;
 private:
+    void doSearch();
+    void searchTextChanged(const QString &_text);
     void slotHelpRequested();
     void search(const QRegExp &);
     void readConfig();

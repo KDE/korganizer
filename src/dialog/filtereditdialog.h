@@ -89,7 +89,7 @@ Q_SIGNALS:
     void filterChanged();
     void editCategories();
 
-private Q_SLOTS:
+private:
     void filterSelected();
     void bNewPressed();
     void bDeletePressed();
@@ -98,7 +98,6 @@ private Q_SLOTS:
     void editCategorySelection();
     void slotHelp();
 
-private:
     bool correctName(const QString &newText);
     void filterSelected(KCalCore::CalFilter *f);
 

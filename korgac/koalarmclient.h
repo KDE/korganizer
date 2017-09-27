@@ -56,15 +56,13 @@ public:
 public Q_SLOTS:
     void slotQuit();
 
-protected Q_SLOTS:
-    void deferredInit();
-    void checkAlarms();
-
 Q_SIGNALS:
     void reminderCount(int);
     void saveAllSignal();
 
 private:
+    void deferredInit();
+    void checkAlarms();
     void setupAkonadi();
     void slotCommitData(QSessionManager &);
     bool dockerEnabled();

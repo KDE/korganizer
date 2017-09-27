@@ -43,7 +43,7 @@ class SearchCollectionHelper: public QObject
 public:
     explicit SearchCollectionHelper(QObject *parent = nullptr);
 
-private Q_SLOTS:
+private:
     void onSearchCollectionsFetched(KJob *job);
     void updateOpenInvitation();
     void updateDeclinedInvitation();
@@ -51,7 +51,6 @@ private Q_SLOTS:
     void createSearchJobFinished(KJob *job);
     void modifyResult(KJob *job);
 
-private:
     void setupSearchCollections();
     void updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status, const QString &name, const QString &displayName);
 

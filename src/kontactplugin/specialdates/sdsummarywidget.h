@@ -65,7 +65,7 @@ public:
 protected:
     bool eventFilter(QObject *obj, QEvent *e) override;
 
-private Q_SLOTS:
+private:
     void updateView();
     void popupMenu(const QString &url);
     void mailContact(const QString &url);
@@ -73,11 +73,11 @@ private Q_SLOTS:
     void slotBirthdayJobFinished(KJob *job);
     void slotItemFetchJobDone(KJob *job);
 
-private:
     int span(const KCalCore::Event::Ptr &event) const;
     int dayof(const KCalCore::Event::Ptr &event, const QDate &date) const;
     bool initHolidays();
     void dateDiff(const QDate &date, int &days, int &years) const;
+    void createLabels();
 
     Akonadi::ETMCalendar::Ptr mCalendar;
 
@@ -86,16 +86,15 @@ private:
     KontactInterface::Plugin *mPlugin = nullptr;
 
     int mDaysAhead;
-    bool mShowBirthdaysFromKAB;
-    bool mShowBirthdaysFromCal;
-    bool mShowAnniversariesFromKAB;
-    bool mShowAnniversariesFromCal;
-    bool mShowHolidays;
-    bool mShowSpecialsFromCal;
-    bool mShowMineOnly;
-    bool mJobRunning;
+    bool mShowBirthdaysFromKAB = false;
+    bool mShowBirthdaysFromCal = false;
+    bool mShowAnniversariesFromKAB = false;
+    bool mShowAnniversariesFromCal = false;
+    bool mShowHolidays = false;
+    bool mShowSpecialsFromCal = false;
+    bool mShowMineOnly = false;
+    bool mJobRunning = false;
     QList<SDEntry> mDates;
-    void createLabels();
 
     KHolidays::HolidayRegion *mHolidays = nullptr;
 };

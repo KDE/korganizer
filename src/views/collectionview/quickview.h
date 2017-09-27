@@ -58,7 +58,7 @@ private:
     EventViews::AgendaView *mAgendaView = nullptr;
     KPIM::Person mPerson;
     Akonadi::Collection mCollection;
-    int mDayRange;
+    int mDayRange = 7;
 };
 
 #endif // QUICKVIEW_H

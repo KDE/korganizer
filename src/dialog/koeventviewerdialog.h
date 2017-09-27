@@ -57,12 +57,10 @@ public:
 
     QPushButton *editButton() const;
 
-private Q_SLOTS:
+private:
     void editIncidence();
     void showIncidenceContext();
     void delayedDestruct();
-
-private:
     CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
     QPushButton *mUser1Button = nullptr;
 };
