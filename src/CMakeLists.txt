@@ -195,6 +195,8 @@ set(korganizerprivate_LIB_SRCS
     views/whatsnextview/kowhatsnextview.cpp
     )
 
+qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)
+
 ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui
     ui/kogroupwareprefspage.ui
@@ -296,11 +298,6 @@ install(FILES
 install(FILES
     korganizer_part.desktop data/webcal.protocol
     DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
-    )
-
-install(FILES
-    data/korganizerui.rc
-    DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/korganizer
     )
 
 install(FILES

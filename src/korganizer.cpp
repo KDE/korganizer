@@ -167,7 +167,7 @@ void KOrganizer::initActions()
     KStandardAction::configureToolbars(this, &KOrganizer::configureToolbars, actionCollection());
     KStandardAction::quit(this, &KOrganizer::close, actionCollection());
 
-    setXMLFile(QStringLiteral("korganizerui.rc"), true);
+    setXMLFile(QStringLiteral(":/kxmlgui5/korganizer/korganizerui.rc"), true);
     createGUI(nullptr);
 
     setAutoSaveSettings();

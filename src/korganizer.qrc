@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/kxmlgui5/korganizer">
+        <file alias="korganizerui.rc">data/korganizerui.rc</file>
+    </qresource>
+</RCC>
