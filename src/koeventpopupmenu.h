@@ -88,7 +88,7 @@ private:
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 
-    bool mHasAdditionalItems;
+    bool mHasAdditionalItems = false;
     QList<QAction *> mEditOnlyItems;
     QList<QAction *> mTodoOnlyItems;
     QList<QAction *> mEventOnlyItems;

@@ -51,7 +51,6 @@
 KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
     : QMenu(parent), mCalendar(calendar)
 {
-    mHasAdditionalItems = false;
 
     addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18n("&Show"),
               this, &KOEventPopupMenu::popupShow);
