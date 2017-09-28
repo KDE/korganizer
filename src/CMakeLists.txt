@@ -286,11 +286,6 @@ install(FILES
     )
 
 install(FILES
-    data/korganizer_part.rc
-    DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/korganizer
-    )
-
-install(FILES
     dbuscalendar.desktop
     DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR}
     )
