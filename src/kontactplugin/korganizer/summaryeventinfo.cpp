@@ -82,36 +82,6 @@ bool SummaryEventInfo::skip(const KCalCore::Event::Ptr &event)
     return false;
 }
 
-void SummaryEventInfo::dateDiff(const QDate &date, int &days)
-{
-    QDate currentDate;
-    QDate eventDate;
-
-    if (QDate::isLeapYear(date.year()) && date.month() == 2 && date.day() == 29) {
-        currentDate = QDate(date.year(), QDate::currentDate().month(), QDate::currentDate().day());
-        if (!QDate::isLeapYear(QDate::currentDate().year())) {
-            eventDate = QDate(date.year(), date.month(), 28);   // celebrate one day earlier ;)
-        } else {
-            eventDate = QDate(date.year(), date.month(), date.day());
-        }
-    } else {
-        currentDate = QDate(QDate::currentDate().year(),
-                            QDate::currentDate().month(),
-                            QDate::currentDate().day());
-        eventDate = QDate(QDate::currentDate().year(), date.month(), date.day());
-    }
-
-    int offset = currentDate.daysTo(eventDate);
-    if (offset < 0) {
-        days = 365 + offset;
-        if (QDate::isLeapYear(QDate::currentDate().year())) {
-            days++;
-        }
-    } else {
-        days = offset;
-    }
-}
-
 SummaryEventInfo::SummaryEventInfo()
     : makeBold(false)
 {

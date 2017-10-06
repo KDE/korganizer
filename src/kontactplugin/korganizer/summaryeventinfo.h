@@ -59,8 +59,6 @@ public:
     bool makeBold;
 
 private:
-
-    static void dateDiff(const QDate &date, int &days);
     static bool skip(const KCalCore::Event::Ptr &event);
     static bool mShowBirthdays, mShowAnniversaries;
 };

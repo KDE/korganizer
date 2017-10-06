@@ -718,7 +718,6 @@ void KODayMatrix::paintEvent(QPaintEvent *)
     const int dayHeight = mDaySize.height();
     const int dayWidth = mDaySize.width();
     int row, column;
-    int selectionWidth, selectionHeight;
     const bool isRTL = KOGlobals::self()->reverseLayout();
 
     QPalette pal = palette();
@@ -758,7 +757,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
                 p.fillRect(isRTL ? 0 : column * dayWidth, row * dayHeight,
                            (7 - column) * dayWidth, dayHeight, selectionColor);
                 // draw full block till last line
-                selectionHeight = mSelEnd / 7 - row;
+                int selectionHeight = mSelEnd / 7 - row;
                 if (selectionHeight + row >= 6) {
                     selectionHeight = 6 - row;
                 }
@@ -768,7 +767,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
                 }
                 // draw last block from left to mSelEnd
                 if (mSelEnd / 7 < 6) {
-                    selectionWidth = mSelEnd - 7 * (mSelEnd / 7) + 1;
+                    int selectionWidth = mSelEnd - 7 * (mSelEnd / 7) + 1;
                     p.fillRect(isRTL ?
                                (7 - selectionWidth) * dayWidth :
                                0,
