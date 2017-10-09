@@ -342,7 +342,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity,
         }
     }
 
-    if (transport && transport->specifySenderOverwriteAddress()) {
+    if (transport->specifySenderOverwriteAddress()) {
         qjob->addressAttribute().setFrom(
             KEmailAddress::extractEmailAddress(
                 KEmailAddress::normalizeAddressesAndEncodeIdn(transport->senderOverwriteAddress())));
