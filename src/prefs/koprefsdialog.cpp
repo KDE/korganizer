@@ -1383,9 +1383,9 @@ void KOPrefsDialogPlugins::selectionChanged()
         mConfigureButton->setEnabled(item->checkState(0) == Qt::Checked);
     }
 
-    bool hasPosition = false;
     if (item->service()->hasServiceType(
                 EventViews::CalendarDecoration::Decoration::serviceType())) {
+        bool hasPosition = false;
         QString decoration = item->service()->desktopEntryName();
         /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
           mPositionMonthTop->setChecked( true );
