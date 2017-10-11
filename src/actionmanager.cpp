@@ -257,7 +257,7 @@ void ActionManager::initActions()
         a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(printPreview()));
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
     } else {
-        KStandardAction::open(this, SLOT(file_open()), mACollection);
+        KStandardAction::open(this, QOverload<>::of(&ActionManager::file_open), mACollection);
         KStandardAction::print(mCalendarView, &CalendarView::print, mACollection);
         KStandardAction::printPreview(mCalendarView, &CalendarView::printPreview, mACollection);
     }
@@ -384,7 +384,7 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     action = new QAction(i18n("&Refresh"), this);
     mACollection->addAction(QStringLiteral("update"), action);
-    connect(action, SIGNAL(triggered(bool)), mCalendarView, SLOT(updateView()));
+    connect(action, &QAction::triggered, mCalendarView, QOverload<>::of(&CalendarView::updateView));
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -528,18 +528,18 @@ void ActionManager::initActions()
 
     mShowIncidenceAction = new QAction(i18n("&Show"), this);
     mACollection->addAction(QStringLiteral("show_incidence"), mShowIncidenceAction);
-    connect(mShowIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
-            SLOT(showIncidence()));
+    connect(mShowIncidenceAction, &QAction::triggered, mCalendarView,
+            QOverload<>::of(&CalendarView::showIncidence));
 
     mEditIncidenceAction = new QAction(i18n("&Edit..."), this);
     mACollection->addAction(QStringLiteral("edit_incidence"), mEditIncidenceAction);
-    connect(mEditIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
-            SLOT(editIncidence()));
+    connect(mEditIncidenceAction, &QAction::triggered, mCalendarView,
+            QOverload<>::of(&CalendarView::editIncidence));
 
     mDeleteIncidenceAction = new QAction(i18n("&Delete"), this);
     mACollection->addAction(QStringLiteral("delete_incidence"), mDeleteIncidenceAction);
-    connect(mDeleteIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
-            SLOT(deleteIncidence()));
+    connect(mDeleteIncidenceAction, &QAction::triggered, mCalendarView,
+            QOverload<>::of(&CalendarView::deleteIncidence));
     mACollection->setDefaultShortcut(mDeleteIncidenceAction, QKeySequence(Qt::Key_Delete));
 
     action = new QAction(i18n("&Make Sub-to-do Independent"), this);
