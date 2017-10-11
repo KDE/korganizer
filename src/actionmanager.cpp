@@ -213,8 +213,8 @@ void ActionManager::createCalendarAkonadi()
     connect(mCollectionView, &AkonadiCollectionView::defaultResourceChanged,
             this, &ActionManager::slotDefaultResourceChanged);
 
-    connect(mCollectionView, SIGNAL(colorsChanged()),
-            mCalendarView, SLOT(updateConfig()));
+    connect(mCollectionView, &AkonadiCollectionView::colorsChanged,
+            mCalendarView, QOverload<>::of(&CalendarView::updateConfig));
 
     mCollectionViewStateSaver =
         new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group("GlobalCollectionView"));
@@ -288,11 +288,6 @@ void ActionManager::initActions()
     action = new QAction(i18n("Export as &iCalendar..."), this);
     mACollection->addAction(QStringLiteral("export_icalendar"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportICalendar);
-
-    //Laurent: 2009-03-24 comment it until upload will implement
-    //action = new QAction( i18n( "Upload &Hot New Stuff..." ), this );
-    //mACollection->addAction( "uploadnewstuff", action );
-    //connect( action, SIGNAL(triggered(bool)), SLOT(uploadNewStuff()) );
 
     action = new QAction(i18n("Archive O&ld Entries..."), this);
     mACollection->addAction(QStringLiteral("file_archive"), action);
@@ -392,8 +387,8 @@ void ActionManager::initActions()
     mFilterAction->setToolBarMode(KSelectAction::MenuMode);
     mACollection->addAction(QStringLiteral("filter_select"), mFilterAction);
     mFilterAction->setEditable(false);
-    connect(mFilterAction, SIGNAL(triggered(int)),
-            mCalendarView, SLOT(filterActivated(int)));
+    connect(mFilterAction, QOverload<int>::of(&KSelectAction::triggered),
+            mCalendarView, &CalendarView::filterActivated);
     connect(mCalendarView, &CalendarView::filtersUpdated,
             this, &ActionManager::setItems);
     connect(mCalendarView, &CalendarView::filterChanged,
