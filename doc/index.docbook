@@ -217,7 +217,7 @@ hour in the main panel that reflects the time of the event. Double click
 this area, or just start typing the title of the event to open the
 <guilabel>New Event</guilabel> dialog.</para></step>
 
-<step><para><link linkend="entering-data-events">Enter event details</link>. 
+<step><para><link linkend="entering-data-events">Enter event details</link>.
 Use the six tabs at the bottom of the window to move
 around the dialog and access all the event's characteristics.</para></step>
 
@@ -414,11 +414,11 @@ groupware server to use it!</para></note>
 <title>Adding a New &korganizer; Resource</title>
 
 <step><para>Open &korganizer;'s settings dialog with <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &korganizer;...</guimenuitem></menuchoice> and select the 
+<guimenuitem>Configure &korganizer;...</guimenuitem></menuchoice> and select the
 <guilabel>Calendars</guilabel> tab from the <guilabel>General</guilabel> page.
 </para>
 <para>Alternatively open the context menu in the
-<guilabel>Calendar Manager</guilabel> sidebar with a &RMB; click 
+<guilabel>Calendar Manager</guilabel> sidebar with a &RMB; click
 and select <guilabel>Add Calendar...</guilabel></para></step>
 <step><para>If the <guilabel>Calendar Manager</guilabel> is not displayed on the sidebar,
 choose the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Sidebar</guisubmenu>
@@ -511,16 +511,6 @@ vCalendar with a few entries via email, for instance, or if you are planning
 to import your calendar from another application. In the latter case, the first
 thing to do is to use that application to export the calendar data in one of the
 formats above, or use a tool to convert from the application's native format.</para>
-
-<para>If you have used <application>ical</application>, a popular but
-older calendar program for &UNIX;, you may wish to <action>import your events,
-journal entries, and to-dos</action> directly to &korganizer;. To do so, choose the
-<menuchoice><guimenu>File</guimenu><guisubmenu>Import</guisubmenu>
-<guimenuitem>Import From &UNIX; Ical Tool</guimenuitem></menuchoice> menu item.
-This action will read the <filename class="extension">.calendar</filename> file from your home
-folder and merge any entries it contains into your current calendar.
-If any errors or suspicious things occur during the process, you will be
-notified via a message box.</para>
 
 <!--Get Hot New Stuff
 store.kde.org KOrganizer Calendars-->
@@ -956,7 +946,7 @@ choices: you can <guimenuitem>Show</guimenuitem> the summary,
 create a <guimenuitem>New Sub-To-do...</guimenuitem> You could for example make
 a large to-do like building a house, and make sub-to-dos like choosing the
 right building site, hiring an architect, hiring workers and finally arranging
-a party for your friends.</para> 
+a party for your friends.</para>
 
 <para>When you choose <guimenuitem>New To-do...</guimenuitem>, a dialog will
 pop up, allowing you to enter all necessary <link
@@ -969,7 +959,7 @@ description, you will be able to edit all its details.</para>
 
 <para>You may also pick <link linkend="managing-purge-archive">Purge
 Completed</link> from the <mousebutton>right</mousebutton> mouse button menu to
-delete all to-do entries that you have marked completed.</para> 
+delete all to-do entries that you have marked completed.</para>
 
 <para>To-dos can also be dragged around with the mouse to rearrange the
 hierarchy or to exchange to-dos with other calendar windows. You can also
@@ -1010,7 +1000,7 @@ later when searching, filtering, and displaying events and to-dos.</para>
 <para>To assign categories when editing or creating new
 <link linkend="entering-data-events-general">events</link> or
 <link linkend="entering-data-to-do-general">to-dos</link>, select a category
-from the drop down box labelled <guilabel>Categories</guilabel> 
+from the drop down box labelled <guilabel>Categories</guilabel>
 in the <guilabel>General</guilabel> tab. You can assign more than
 one category for each item.</para>
 
@@ -1156,7 +1146,7 @@ on the &korganizer; main panel.</para></listitem>
 
 <varlistentry>
 <term><guilabel>Location:</guilabel></term>
-<listitem><para>Enter short description of the <guilabel>location</guilabel> 
+<listitem><para>Enter short description of the <guilabel>location</guilabel>
 where the event will take place.</para></listitem>
 </varlistentry>
 
@@ -1194,8 +1184,8 @@ you.</para></listitem>
 <listitem><para>You can assign several
 <link linkend="categories-view">categories</link> to a calendar item. Click the
 drop down box to display all available categories. Check the category boxes to
-assign suitable categories to the event.</para> 
-<para>You can also add a new category, modify a category or delete a category in the 
+assign suitable categories to the event.</para>
+<para>You can also add a new category, modify a category or delete a category in the
 <guilabel>Edit Categories</guilabel> dialog. Open this dialog with <menuchoice>
 <guimenu>Settings</guimenu> <guimenuitem>Manage Categories</guimenuitem></menuchoice>.</para>
 
@@ -1254,7 +1244,7 @@ settings and from your address book.</para></listitem>
 <varlistentry>
 <term>Attendee list</term>
 <listitem><para>The list in the center of the tab displays the attendees
-selected for this event, and lets you add attendees by entering the name and mail address, 
+selected for this event, and lets you add attendees by entering the name and mail address,
 edit or remove them.</para>
 <para>If the attendee(s) are in your Address Book, you do not have to
 remember or type his email address to add it to the attendee list. Just click
@@ -1268,7 +1258,7 @@ is also used by &kmail; and can also be called as a separate application
 <varlistentry>
 <term>Participants</term>
 <listitem><para>Choose the role of the attendee (Participant,
-Optional Participant, Observer, Chair) from the drop down menu at the left side of an entry. 
+Optional Participant, Observer, Chair) from the drop down menu at the left side of an entry.
 The role is a simple reminder of what part the attendee plays in this event.
 </para></listitem>
 </varlistentry>
@@ -1276,7 +1266,7 @@ The role is a simple reminder of what part the attendee plays in this event.
 <varlistentry>
 <term>Status</term>
 <listitem><para>Choose the status of the attendee (Needs Action, Accepted,
-Declined, Tentative, Delegated) from the drop down menu at the right side of an entry. 
+Declined, Tentative, Delegated) from the drop down menu at the right side of an entry.
 If you use groupware schedule and request responses from your
 attendees, as you receive the responses the status of the attendee will be
 updated. If you do not request responses, you will have to update the status
@@ -1307,14 +1297,14 @@ automatically.</para></listitem>
 <variablelist>
 <varlistentry>
 <term>Reminder</term>
-<listitem><para>Select a default reminder in the drop down box and press 
+<listitem><para>Select a default reminder in the drop down box and press
 <guibutton>Add</guibutton> if &korganizer; should remind you about an event.</para>
 <para>Use the <guibutton>Configure</guibutton> button to open the
-<guilabel>Edit existing reminder</guilabel> dialog. Using this dialog, you can choose 
+<guilabel>Edit existing reminder</guilabel> dialog. Using this dialog, you can choose
 how many minutes, hours or days before or after the events start or end you want to be reminded, you can set
 repeating intervals for your reminders, and create special reminders that display text, send emails, play
 sounds or run programs and scripts.</para>
-<tip><para>If you select to run a specific program or script at the reminder time, 
+<tip><para>If you select to run a specific program or script at the reminder time,
 make sure, however, that you have sufficient rights to run that
 program; if you do not, the program will not run.</para></tip>
 </listitem>
@@ -1339,8 +1329,8 @@ here.</para>
 </mediaobject>
 </screenshot>
 
-<note><para>To activate the settings, start by selecting a recurrence rule at 
-the right of <guilabel>Repeats</guilabel> from the drop down box. If <guilabel>Never</guilabel> 
+<note><para>To activate the settings, start by selecting a recurrence rule at
+the right of <guilabel>Repeats</guilabel> from the drop down box. If <guilabel>Never</guilabel>
 is selected, you are not able to make any changes on this tab.</para></note>
 
 <sect3 id="recurrence-recurrence-rule">
@@ -1430,10 +1420,10 @@ button.</para>
 </mediaobject>
 </screenshot>
 
-<para>Checking <guilabel>Store attachment inline</guilabel> will cause the attachment to be stored inside your 
-calendar, which can take a lot of space depending on the size of the 
-attachment. If this option is not checked, then only a link pointing to the 
-attachment will be stored.  Do not use a link for attachments that change 
+<para>Checking <guilabel>Store attachment inline</guilabel> will cause the attachment to be stored inside your
+calendar, which can take a lot of space depending on the size of the
+attachment. If this option is not checked, then only a link pointing to the
+attachment will be stored.  Do not use a link for attachments that change
 often or may be moved (or removed) from their current location.</para>
 
 <para>The following actions in the context menu are provided to work with attachments:</para>
@@ -1470,7 +1460,7 @@ often or may be moved (or removed) from their current location.</para>
 </sect2>
 
 <!--FIXME works with certain type of calendars e.g. google calendar ?-->
-<sect2 id="entering-data-events-freebusy"> 
+<sect2 id="entering-data-events-freebusy">
 <title>Free/Busy</title>
 
 <para>When adding attendees to your event, you need to know if they are
@@ -1559,7 +1549,7 @@ finished at the latest (date due).</para>
 
 <para>To enter a new to-do, choose
 <menuchoice><guimenu>Actions</guimenu><guimenuitem>New
-To-do...</guimenuitem></menuchoice>. A window with 
+To-do...</guimenuitem></menuchoice>. A window with
 five tabs at the bottom will appear.</para>
 
 <sect2 id="entering-data-to-do-general">
@@ -1574,7 +1564,7 @@ five tabs at the bottom will appear.</para>
 </mediaobject>
 </screenshot>
 
-<para>This tab shares a lot of options with the <guilabel>Edit Events</guilabel> dialog, 
+<para>This tab shares a lot of options with the <guilabel>Edit Events</guilabel> dialog,
 but has some additional items for to-dos:</para>
 
 <variablelist>
@@ -1608,7 +1598,7 @@ empty when entering events and to-dos:</para>
 <itemizedlist>
 <listitem><para>In the <guilabel>General</guilabel> Tab, you should at least
 fill the <guilabel>Title</guilabel> field and the description (the large
-rectangle), even though neither is mandatory. If you set a <guilabel>Reminder</guilabel>, 
+rectangle), even though neither is mandatory. If you set a <guilabel>Reminder</guilabel>,
 you should also specify the time, and
 either the sound to be played or the program to be run.</para></listitem>
 <listitem><para>The <guilabel>Attendees</guilabel> tab may be left completely
@@ -1738,7 +1728,7 @@ date for all people involved.</para>
 attendees tab. &korganizer; can send invitations to the
 attendees, either automatically (depending on
 <link linkend="config-main-groupscheduling">&korganizer; group
-scheduling configuration</link>), or by selecting the event or to-do and 
+scheduling configuration</link>), or by selecting the event or to-do and
 choosing the <menuchoice><guimenu>Schedule</guimenu><guimenuitem>Send Invitation
 to Attendees</guimenuitem></menuchoice> menu item.
 The attendees get an email containing all the relevant information
@@ -1754,7 +1744,7 @@ invitation) you will be asked to accept the new attendees.
 </sect2>
 
 <sect2 id="cancel">
-<title>Cancelling an Event or To-do</title> 
+<title>Cancelling an Event or To-do</title>
 
 <para>To cancel an event or to-do you have to be the organizer. If you
 checked the <guilabel>Use Groupware Communication</guilabel> box
@@ -1909,13 +1899,13 @@ The Plan, Conclusion</userinput> on three separate lines.</para></step>
 reminder time to 15 minutes, just long enough to brew a cup of tea
 prior to the meeting start.</para></step>
 
-<step><para>Select <guilabel>Appointment</guilabel> from the 
+<step><para>Select <guilabel>Appointment</guilabel> from the
 <guilabel>Categories</guilabel> drop down box.</para></step>
 
-<step><para>Go to the <guilabel>Recurrence</guilabel> tab and select the 
+<step><para>Go to the <guilabel>Recurrence</guilabel> tab and select the
 <guilabel>Weekly</guilabel> repeats.</para>
 <note><para>Most work has been done for you automatically. &korganizer;
-defaults to recurring weekly. Also note that <guilabel>Ends:</guilabel> <guilabel>never</guilabel> 
+defaults to recurring weekly. Also note that <guilabel>Ends:</guilabel> <guilabel>never</guilabel>
 is chosen. This means that this event will be repeated each
 Monday (starting, of course, on Monday August 30, 2010) until the end of
 time (that is, until you delete it).</para></note></step>
@@ -2019,7 +2009,7 @@ categories.</para>
 <quote>Anonymous</quote> with an email address of
 <quote>nobody@nowhere</quote>. You can change your name by directly
 entering it here. This name will be displayed by default as
-<guilabel>Organizer</guilabel> in to-dos and Events.</para></listitem> 
+<guilabel>Organizer</guilabel> in to-dos and Events.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -2062,8 +2052,8 @@ used to save each new item.</para>
 <para>Kolab2 server specificity: It is recommended to choose <guilabel>Be asked
 which calendar to use</guilabel>, if you intend to use the shared folder
 functionality of the <guilabel>Kolab</guilabel> server. This
-will allow you to keep control of which information is available only to you, 
-and which information is published in the shared folders.</para> 
+will allow you to keep control of which information is available only to you,
+and which information is published in the shared folders.</para>
 </listitem>
 </varlistentry>
 
@@ -2100,7 +2090,7 @@ in the Agenda view.</para></listitem>
 <listitem><para>Select your country from the drop down list, or if
 it is not listed, select <guilabel>(None)</guilabel>.
 If your country is selected, &korganizer; will recognize and display
-its important dates and holidays in the calendar view.</para></listitem> 
+its important dates and holidays in the calendar view.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -2147,10 +2137,10 @@ some other manner such that &korganizer; cannot guess its duration,
 <varlistentry>
 <term><guilabel>Reminders</guilabel></term>
 <listitem><para>
-Select a <guilabel>Default reminder time</guilabel> to determine how long before 
+Select a <guilabel>Default reminder time</guilabel> to determine how long before
 the actual event's scheduled time the reminder will activate.</para>
-<para>Set a file to be used as the default sound file for new reminders. You can 
-always specify another file in the Advanced Reminder accessible from the 
+<para>Set a file to be used as the default sound file for new reminders. You can
+always specify another file in the Advanced Reminder accessible from the
 event or to-do editors.</para>
 <para>Check the next two boxes if you want to enable reminders for all newly created events
 or to-dos. You can always turn-off the reminders in the editor dialogs.</para>
@@ -2176,7 +2166,7 @@ or to-dos. You can always turn-off the reminders in the editor dialogs.</para>
 menu.</para></listitem>
 </varlistentry>
 
-<varlistentry>	
+<varlistentry>
 <term><guilabel>Enable tooltips for displaying summaries</guilabel></term>
 <listitem><para>If your summary for an event is longer than would fit in the
 current View, the remaining characters are not displayed. Check <guilabel>Enable
@@ -2185,9 +2175,9 @@ displayed when hovering the mouse pointer over the appointment for a few
 seconds.</para></listitem>
 </varlistentry>
 
-<varlistentry>	
+<varlistentry>
 <term><guilabel>To-dos use category colors</guilabel></term>
-<listitem><para>Check this box so that to-dos will use category colors and not 
+<listitem><para>Check this box so that to-dos will use category colors and not
 colors specific to their due, due today or overdue state.</para></listitem>
 </varlistentry>
 
@@ -2213,20 +2203,20 @@ events are shown in bold typeface in the Date Navigator.</para></listitem>
 
 <varlistentry>
 <term><guilabel>Show to-dos instead of events when in Todo View</guilabel></term>
-<listitem><para>Check this box to show the days containing to-dos in bold typeface in the 
+<listitem><para>Check this box to show the days containing to-dos in bold typeface in the
 Date Navigator when in To-do view.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guilabel>Show journals instead of events when in Journal View</guilabel></term>
-<listitem><para>Check this box to show the days containing journals in bold typeface in the 
+<listitem><para>Check this box to show the days containing journals in bold typeface in the
 Date Navigator when in Journal view.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guilabel>Week numbers select a work week when in work week mode</guilabel></term>
 <listitem><para>If the <guilabel>Week numbers select a work week when in work
-week mode</guilabel> box is checked, clicking on the week numbers along the 
+week mode</guilabel> box is checked, clicking on the week numbers along the
 side of the Date Navigator will navigate through work weeks rather than
 through normal 7-day weeks.</para></listitem>
 </varlistentry>
@@ -2286,21 +2276,21 @@ plan.</para></listitem>
 <varlistentry>
 <term><guilabel>Color Usage</guilabel></term>
 <listitem>
-<para>Select the <guilabel>Category inside, calendar outside</guilabel> option if you would like to 
-draw calendar items in their associated category color, with the item's 
+<para>Select the <guilabel>Category inside, calendar outside</guilabel> option if you would like to
+draw calendar items in their associated category color, with the item's
 border drawn in the color of its calendar.</para>
 
-<para>Select the <guilabel>Calendar inside, category outside</guilabel> option if you would like to 
-draw calendar items in their associated calendar color, with the item's 
+<para>Select the <guilabel>Calendar inside, category outside</guilabel> option if you would like to
+draw calendar items in their associated calendar color, with the item's
 border drawn in the color of its category.</para>
 
-<para>Select the <guilabel>Only category</guilabel> option if you would like to draw calendar items 
+<para>Select the <guilabel>Only category</guilabel> option if you would like to draw calendar items
 (both inside and border) in the color of their associated category.</para>
 
-<para>Select the <guilabel>Only calendar</guilabel> option if you would like to draw calendar items 
-(both inside and border) in the color of their calendar.</para>  
+<para>Select the <guilabel>Only calendar</guilabel> option if you would like to draw calendar items
+(both inside and border) in the color of their calendar.</para>
 
-<para>Please use the <link linkend="config-main-colors">Colors and Fonts</link> 
+<para>Please use the <link linkend="config-main-colors">Colors and Fonts</link>
 configuration page for setting these colors.</para>
 </listitem>
 </varlistentry>
@@ -2318,7 +2308,7 @@ busy color of your choosing.</para></listitem>
 <listitem><para>
 Select if all calendars should be merged into one Agenda view, each calendar should
 be displayed in its own Agenda view or if each view should be available via tabs.
-The side by side view can be customized with <guimenuitem>Configure View</guimenuitem> 
+The side by side view can be customized with <guimenuitem>Configure View</guimenuitem>
 from the context menu.
 </para></listitem>
 </varlistentry>
@@ -2367,7 +2357,7 @@ busy color of your choosing.</para></listitem>
 
 <varlistentry>
 <term><guilabel>Always display completed to-dos at the bottom of the list</guilabel></term>
-<listitem><para>If you enable this option, all completed to-dos will be always 
+<listitem><para>If you enable this option, all completed to-dos will be always
 grouped at the bottom of the To-do List.</para></listitem>
 </varlistentry>
 
@@ -2692,7 +2682,7 @@ configuration file for security reasons.</para></warning>
 <sect2 id="config-custom-pages">
 <title>Custom Pages</title>
 
-<para>This page allows you to add your own &GUI; Elements to store your own 
+<para>This page allows you to add your own &GUI; Elements to store your own
 values into &korganizer;.</para>
 <para>Create your elements as described in <guilabel>How does this work?</guilabel></para>
 
@@ -2796,7 +2786,7 @@ current calendar, you will be given the option of saving them before loading a
 new one.</para>
 <para>For more information about this, please refer to
 <xref linkend="managing-import-export" />.</para>
-</listitem> 
+</listitem>
 </varlistentry>
 
 <varlistentry id="menu-file-print">
@@ -2817,7 +2807,7 @@ To-dos and Journal).</para></listitem>
 
 <varlistentry id="menu-file-print-preview">
 <term><inlinemediaobject><imageobject>
-<imagedata fileref="document-print-preview.png" 
+<imagedata fileref="document-print-preview.png"
 format="PNG"/></imageobject></inlinemediaobject><menuchoice>
 <guimenu>
 File</guimenu><guimenuitem>Print Preview</guimenuitem></menuchoice>
@@ -2826,7 +2816,7 @@ File</guimenu><guimenuitem>Print Preview</guimenuitem></menuchoice>
 the <guiicon>Print Preview</guiicon> icon, <action>the current calendar will be
 printed on your screen, instead of on your printer</action>. Use this
 feature to check if the printout will be correct before you start
-printing.</para> 
+printing.</para>
 <para>You can specify the range of dates to be printed (either manually or with
 the Calendar Widget) and the View Type (Day, Week, Month or To-do).</para>
 </listitem>
@@ -2846,24 +2836,6 @@ vCalendar with a few entries via email, for instance.</para>
 <para>For more information about this action, please refer to
 <xref linkend="managing-import" />.</para>
 </listitem>
-</varlistentry>
-
-<varlistentry id="menu-file-import-ical">
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guisubmenu>Import</guisubmenu>
-<guimenuitem>Import From UNIX Ical Tool</guimenuitem>
-</menuchoice></term>
-<listitem><para>If you have used <application>ical</application>, a popular but
-older calendar program for &UNIX;, you may wish to <action>import your events
-and to-do</action> directly to &korganizer;. This action
-will read the <filename>.calendar</filename> file from your home
-folder and merge any entries it contains into your current calendar.
-If any errors or suspicious things occur during the process, you will be
-notified via a message box.</para>
-<para>For more information about this action, please refer to
-<xref linkend="managing-import" />.</para>
-</listitem> 
 </varlistentry>
 
 <varlistentry id="menu-file-import-ghns">
@@ -3202,9 +3174,9 @@ more or less data.</action></para>
 <para>In the Agenda view (Day(s) or Week view), you can use the zoom actions to
 show more or less days (<menuchoice><guisubmenu>Zoom</guisubmenu>
 <guimenuitem>In Horizontally</guimenuitem></menuchoice> and <menuchoice>
-<guisubmenu>Zoom</guisubmenu><guimenuitem>Out Horizontally</guimenuitem></menuchoice>), 
+<guisubmenu>Zoom</guisubmenu><guimenuitem>Out Horizontally</guimenuitem></menuchoice>),
 or more or less hours in the day (<menuchoice><guisubmenu>Zoom</guisubmenu>
-<guimenuitem>In Vertically</guimenuitem></menuchoice> and 
+<guimenuitem>In Vertically</guimenuitem></menuchoice> and
 <menuchoice><guisubmenu>Zoom</guisubmenu><guimenuitem>Out Vertically</guimenuitem>
 </menuchoice>).</para></listitem>
 </varlistentry>
@@ -3215,7 +3187,7 @@ or more or less hours in the day (<menuchoice><guisubmenu>Zoom</guisubmenu>
 <guisubmenu>Filter</guisubmenu>
 </menuchoice></term>
 <listitem><para>This submenu offers access to the filters already created using
-the <link linkend="menu-settings-edit-filters"><guilabel>Edit Calendar 
+the <link linkend="menu-settings-edit-filters"><guilabel>Edit Calendar
 Filters</guilabel></link> dialog. <action>Select on this submenu the filter
 that will be used in &korganizer; view</action>. If you do not want to use a
 filter, choose <guilabel>No filter</guilabel>.</para></listitem>
@@ -3286,7 +3258,7 @@ defined in &korganizer; main configuration.</action></para>
 </listitem>
 </varlistentry>
 
-<varlistentry id="menu-view-workweek">	
+<varlistentry id="menu-view-workweek">
 <term><inlinemediaobject><imageobject><imagedata
  fileref="view-calendar-workweek.png"
 format="PNG"/></imageobject></inlinemediaobject><menuchoice>
@@ -3463,7 +3435,7 @@ organizer.</para>
 <guimenu>Schedule</guimenu>
 <guimenuitem>Send Cancellation to Attendees</guimenuitem>
 </menuchoice></term>
-<listitem><para>If you plan to cancel an event or to-do, select it, and 
+<listitem><para>If you plan to cancel an event or to-do, select it, and
 choose this menu item to notify the attendees about the cancellation.</para>
 <para>For more information about this action, please refer to
 <xref linkend="cancel" />.</para></listitem>
@@ -3613,7 +3585,7 @@ operations are detailed below.</para>
 <listitem><para>Any event can be re-sized with your mouse. Simply move the mouse
 pointer near the top or bottom edge of the event, and drag the edge up or
 down. This way you can visually modify the starting and ending time of your
-appointment. This works in the Day, Week and Work Week views.</para></listitem> 
+appointment. This works in the Day, Week and Work Week views.</para></listitem>
 <listitem><para>Any event can be rescheduled with your mouse. Move the mouse
 pointer over the event, and drag it to a new time location. This works in the
 Day, Week and Work Week views.</para></listitem>
@@ -3636,14 +3608,6 @@ screen.</para></listitem>
 <title>Questions and Answers</title> <!-- link to userbase faq? -->
 
 <qandaset id="faq-questions">
-<qandaentry>
-<question>
-<para>Can I import my old <application>Ical</application> data?</para>
-</question>
-<answer><para>Sure! Follow the instructions in <link
-linkend="menu-file-import-ical">Import From &UNIX; Ical section</link>.</para>
-</answer>
-</qandaentry>
 <qandaentry>
 <question>
 <para>Can I use freebusy-time with &korganizer;?</para>

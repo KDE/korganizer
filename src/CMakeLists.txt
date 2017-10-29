@@ -18,11 +18,6 @@ add_subdirectory(kontactplugin)
 add_subdirectory(views/collectionview)
 add_subdirectory(kconf_update)
 
-set(PERL ${PERL_EXECUTABLE})
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/data/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY
-    )
-
 ########### next target ###############
 
 set(korganizer_common_SRCS)
@@ -68,7 +63,7 @@ set(kcm_korganizer_PART_SRCS
     )
 
 add_library(kcm_korganizer MODULE ${kcm_korganizer_PART_SRCS})
-generate_export_header(kcm_korganizer BASE_NAME kcm_korganizer) 
+generate_export_header(kcm_korganizer BASE_NAME kcm_korganizer)
 
 target_link_libraries(kcm_korganizer
     KF5::AkonadiCalendar
@@ -313,9 +308,4 @@ install(PROGRAMS
 install(FILES
     org.kde.korganizer.appdata.xml
     DESTINATION ${KDE_INSTALL_METAINFODIR}
-    )
-
-install(PROGRAMS
-    ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal
-    DESTINATION ${KDE_INSTALL_BINDIR}
     )

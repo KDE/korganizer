@@ -262,9 +262,6 @@ protected Q_SLOTS:
     */
     void file_open(const QUrl &url);
 
-    /** import a non-ics calendar from another program like ical. */
-    void file_icalimport();
-
     /** import a generic ics file */
     void file_import();
 

@@ -271,14 +271,6 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("import_icalendar"), mImportAction);
     connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
-    QAction *importAction = new QAction(i18n("&Import From UNIX Ical Tool"), this);
-    setHelpText(importAction, i18n("Import a calendar in another format"));
-    importAction->setWhatsThis(
-        i18n("Select this menu entry if you would like to import the contents "
-             "of a non-iCalendar formatted file into your current calendar."));
-    mACollection->addAction(QStringLiteral("import_ical"), importAction);
-    connect(importAction, &QAction::triggered, this, &ActionManager::file_icalimport);
-
     if (KAuthorized::authorize(QStringLiteral("ghns"))) {
         action = new QAction(i18n("Get &Hot New Stuff..."), this);
         mACollection->addAction(QStringLiteral("downloadnewstuff"), action);
@@ -839,51 +831,6 @@ void ActionManager::file_open(const QUrl &url)
     qCDebug(KORGANIZER_LOG) << url.toDisplayString();
 
     importCalendar(url);
-}
-
-void ActionManager::file_icalimport()
-{
-    // FIXME: eventually, we will need a dialog box to select import type, etc.
-    // for now, hard-coded to ical file, $HOME/.calendar.
-    int retVal = -1;
-    QTemporaryFile tmpfn;
-    tmpfn.open();
-
-    QString homeDir = QDir::homePath() + QLatin1String("/.calendar");
-
-    if (!QFileInfo::exists(homeDir)) {
-        KMessageBox::error(dialogParent(),
-                           i18n("You have no ical file in your home directory.\n"
-                                "Import cannot proceed.\n"));
-        return;
-    }
-
-    KProcess proc;
-    proc << QStringLiteral("ical2vcal") << tmpfn.fileName();
-    retVal = proc.execute();
-
-    qCDebug(KORGANIZER_LOG) << "ical2vcal return value:" << retVal;
-
-    if (retVal >= 0 && retVal <= 2) {
-        // now we need to MERGE what is in the iCal to the current calendar.
-        const bool success = importURL(QUrl::fromLocalFile(tmpfn.fileName()), /*merge=*/ true);
-        if (!success) {
-            mCalendarView->showMessage(i18n("KOrganizer encountered some unknown fields while "
-                                            "parsing your .calendar ical file, and had to "
-                                            "discard them; please check to see that all "
-                                            "your relevant data was correctly imported."), KMessageWidget::Warning);
-
-        } else {
-            // else nothing
-            // the operation is async and will use a message widget when the operation finishes, not now.
-        }
-    } else if (retVal == -1) {   // XXX this is bogus
-        mCalendarView->showMessage(i18n("KOrganizer encountered an error parsing your "
-                                        ".calendar file from ical; import has failed."), KMessageWidget::Error);
-    } else if (retVal == -2) {   // XXX this is bogus
-        mCalendarView->showMessage(i18n("KOrganizer does not think that your .calendar "
-                                        "file is a valid ical calendar; import has failed."), KMessageWidget::Error);
-    }
 }
 
 void ActionManager::file_import()
