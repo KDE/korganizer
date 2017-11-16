@@ -51,10 +51,11 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     if (parentWidget) {
         mTopLevelWidget = parentWidget->topLevelWidget();
     } else if (parent && parent->isWidgetType()) {
-        mTopLevelWidget = (QWidget *)parent;
+        mTopLevelWidget = dynamic_cast<QWidget *>(parent);
     } else {
         qCCritical(KORGANIZER_LOG) << "Cannot initialize the part without a top level widget.";
     }
+    Q_ASSERT(mTopLevelWidget);
 
     KOCore::self()->addXMLGUIClient(mTopLevelWidget, this);
 
