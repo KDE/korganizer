@@ -55,7 +55,7 @@ class KODialogManager::DialogManagerVisitor : public KCalCore::Visitor
 public:
     DialogManagerVisitor() {}
 
-    bool act(KCalCore::IncidenceBase::Ptr incidence, KODialogManager *manager)
+    bool act(KCalCore::IncidenceBase::Ptr &incidence, KODialogManager *manager)
     {
         mDialogManager = manager;
         return incidence->accept(*this, incidence);
