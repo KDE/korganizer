@@ -36,7 +36,6 @@ ReparentingModel::Node::Node(ReparentingModel &model)
         personModel(model),
         mIsSourceNode(false)
 {
-
 }
 
 ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *p, const QModelIndex &srcIndex)
@@ -127,7 +126,6 @@ bool ReparentingModel::Node::isDuplicateOf(const QModelIndex & /* sourceIndex */
 
 void ReparentingModel::Node::update(const Node::Ptr &/* node */)
 {
-
 }
 
 bool ReparentingModel::Node::isSourceNode() const
@@ -153,7 +151,6 @@ ReparentingModel::ReparentingModel(QObject *parent)
         mRootNode(*this),
         mNodeManager(NodeManager::Ptr(new NodeManager(*this)))
 {
-
 }
 
 ReparentingModel::~ReparentingModel()
@@ -185,7 +182,7 @@ bool ReparentingModel::validateNode(const Node *node) const
             qCWarning(KORGANIZER_LOG) << "nullptr" << depth;
             return false;
         }
-        if ((long)(n) < 1000) {
+        if ((intptr_t)(n) < 1000) {
             //Detect corruptions with unlikely pointers
             qCWarning(KORGANIZER_LOG) << "corrupt pointer" << depth;
             return false;
@@ -862,4 +859,3 @@ int ReparentingModel::columnCount(const QModelIndex & /* parent */) const
 {
     return 1;
 }
-
