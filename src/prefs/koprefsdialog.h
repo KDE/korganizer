@@ -122,6 +122,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
     Q_OBJECT
 public:
     KOPrefsDialogPlugins(QWidget *parent);
+    ~KOPrefsDialogPlugins();
 
 protected Q_SLOTS:
     void usrWriteConfig() override;
@@ -140,6 +141,8 @@ private:
 
     QRadioButton *mPositionAgendaTop = nullptr;
     QRadioButton *mPositionAgendaBottom = nullptr;
+    QTreeWidgetItem *mDecorations = nullptr;
+    QTreeWidgetItem *mOthers = nullptr;
     QSet<QString> mDecorationsAtMonthViewTop;
     QSet<QString> mDecorationsAtAgendaViewTop;
     QSet<QString> mDecorationsAtAgendaViewBottom;

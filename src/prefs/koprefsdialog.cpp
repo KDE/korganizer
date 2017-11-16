@@ -1219,6 +1219,12 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     selectionChanged();
 }
 
+KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
+{
+    delete mDecorations;
+    delete mOthers;
+}
+
 void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
@@ -1229,12 +1235,10 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
     QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
-    QTreeWidgetItem *decorations =
-        new QTreeWidgetItem(mTreeWidget, QStringList(
-                                i18nc("@title:group", "Calendar Decorations")));
-    QTreeWidgetItem *others =
-        new QTreeWidgetItem(mTreeWidget, QStringList(
-                                i18nc("@title:group", "Other Plugins")));
+    mDecorations = new QTreeWidgetItem(mTreeWidget,
+                                       QStringList(i18nc("@title:group", "Calendar Decorations")));
+    mOthers = new QTreeWidgetItem(mTreeWidget,
+                                  QStringList(i18nc("@title:group", "Other Plugins")));
 
     KService::List::ConstIterator it;
     KService::List::ConstIterator end(plugins.constEnd());
@@ -1242,7 +1246,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
     for (it = plugins.constBegin(); it != end; ++it) {
         QTreeWidgetItem *item = nullptr;
         if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
-            item = new PluginItem(decorations, *it);
+            item = new PluginItem(mDecorations, *it);
         } else {
             continue;
         }
@@ -1253,8 +1257,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
         }
     }
 
-    decorations->setExpanded(true);
-    others->setExpanded(true);
+    mDecorations->setExpanded(true);
+    mOthers->setExpanded(true);
 
     mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();
     mDecorationsAtAgendaViewTop = viewPrefs->decorationsAtAgendaViewTop().toSet();
@@ -1463,4 +1467,3 @@ QString KOPrefsDesignerFields::applicationName()
 {
     return QStringLiteral("KORGANIZER");
 }
-
