@@ -243,9 +243,6 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory(CalendarView *view)
 {
 }
 
-namespace
-{
-
 static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 {
     static QStringList goodMimeTypes;
@@ -265,6 +262,9 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 
     return false;
 }
+
+namespace
+{
 
 class SortProxyModel : public QSortFilterProxyModel
 {
