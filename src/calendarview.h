@@ -741,7 +741,6 @@ private:
     Akonadi::ITIPHandler *mITIPHandler = nullptr;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
-    bool mCreatingEnabled;
 
     Akonadi::CalendarClipboard *mCalendarClipboard = nullptr;
     KOCheckableProxyModel *mCheckableProxyModel = nullptr;
