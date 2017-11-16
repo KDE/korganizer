@@ -390,7 +390,7 @@ void ReparentingModelTest::testNestedDeduplicateProxyNodeFirst()
 }
 
 /**
- * updateNode should update the node datas
+ * updateNode should update the node data
  */
 void ReparentingModelTest::testUpdateNode()
 {

@@ -149,6 +149,6 @@ void SearchCollectionHelper::modifyResult(KJob *job)
     if (job->error()) {
         qCWarning(KORGANIZER_LOG) << "Error occurred " << job->errorString();
     } else {
-        qCDebug(KORGANIZER_LOG) << "modify was successfull";
+        qCDebug(KORGANIZER_LOG) << "modify was successful";
     }
 }

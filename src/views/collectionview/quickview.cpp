@@ -169,7 +169,7 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
                              "%1",
                              CalendarSupport::displayName(calendar.data(), mCollection)));
     }
-    mUi->calender->addWidget(mAgendaView);
+    mUi->calendar->addWidget(mAgendaView);
 
     connect(mUi->mTodayBtn, &QPushButton::clicked, this, &Quickview::onTodayClicked);
     connect(mUi->mNextBtn, &QPushButton::clicked, this, &Quickview::onNextClicked);

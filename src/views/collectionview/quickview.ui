@@ -108,7 +108,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="calender">
+    <layout class="QHBoxLayout" name="calendar">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
