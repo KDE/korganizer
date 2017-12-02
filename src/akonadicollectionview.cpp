@@ -577,7 +577,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 #else
     QSortFilterProxyModel *filterTreeViewModel = new QSortFilterProxyModel(this);
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-    filterTreeViewModel->setRecursiveFiltering(true);
+    filterTreeViewModel->setRecursiveFilteringEnabled(true);
     filterTreeViewModel->setDynamicSortFilter(true);
     filterTreeViewModel->setSourceModel(searchProxy);
 //   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
