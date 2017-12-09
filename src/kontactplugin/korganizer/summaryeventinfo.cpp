@@ -26,6 +26,8 @@
 
 #include "summaryeventinfo.h"
 
+#include <AkonadiCore/Item>
+
 #include <KCalCore/Calendar>
 #include <KCalCore/Event>
 using namespace KCalCore;
@@ -89,15 +91,15 @@ SummaryEventInfo::SummaryEventInfo()
 
 /**static*/
 SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, const QDate &end,
-        KCalCore::Calendar *calendar)
+                                                        const Akonadi::ETMCalendar::Ptr &calendar)
 {
+
     KCalCore::Event::List allEvents = calendar->events();
     KCalCore::Event::List events;
     const auto currentDateTime = QDateTime::currentDateTime();
     const QDate currentDate = currentDateTime.date();
 
     sDateTimeByUid()->clear();
-
     for (int i = 0; i < allEvents.count(); ++i) {
         KCalCore::Event::Ptr event = allEvents.at(i);
         if (skip(event)) {
@@ -234,16 +236,16 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         }
         summaryEvent->summaryText = str;
         summaryEvent->summaryUrl = ev->uid();
-        /*
-         Commented out because a ETMCalendar doesn't have any name, it's a group of selected
-         calendars, not an individual one.
 
-         QString tipText( KCalUtils::IncidenceFormatter::toolTipStr(
-                           KCalUtils::IncidenceFormatter::resourceString(
-                             calendar, ev ), ev, start, true, spec ) );
-        if ( !tipText.isEmpty() ) {
-          summaryEvent->summaryTooltip = tipText;
-        }*/
+        QString displayName;
+        Akonadi::Item item = calendar->item(ev);
+        if (item.isValid()) {
+            const Akonadi::Collection col = item.parentCollection();
+            if (col.isValid()) {
+                displayName = col.displayName();
+            }
+        }
+        summaryEvent->summaryTooltip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start, true);
 
         // Time range label (only for non-floating events)
         str.clear();
@@ -284,7 +286,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
 }
 
 SummaryEventInfo::List SummaryEventInfo::eventsForDate(const QDate &date,
-        KCalCore::Calendar *calendar)
+                                                       const Akonadi::ETMCalendar::Ptr &calendar)
 {
     return eventsForRange(date, date, calendar);
 }

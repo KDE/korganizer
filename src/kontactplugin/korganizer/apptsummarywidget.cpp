@@ -128,7 +128,7 @@ void ApptSummaryWidget::updateView()
                                            mShowAnniversariesFromCal);
     QDate currentDate = QDate::currentDate();
 
-    SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(mDaysAhead - 1), mCalendar.data());
+    SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(mDaysAhead - 1), mCalendar);
 
     foreach (SummaryEventInfo *event, events) {
 
@@ -286,4 +286,3 @@ QStringList ApptSummaryWidget::configModules() const
 {
     return QStringList() << QStringLiteral("kcmapptsummary.desktop");
 }
-

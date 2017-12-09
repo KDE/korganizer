@@ -1,3 +1,6 @@
+message(STATUS "Warning: the summaryevent tests needs to be ported to Akonadi")
+return()
+
 set(summaryeventtest_SRCS  summaryeventtest.cpp ../summaryeventinfo.cpp)
 
 add_executable( summaryeventtest ${summaryeventtest_SRCS} )

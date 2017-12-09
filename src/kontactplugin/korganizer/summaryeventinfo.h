@@ -26,11 +26,7 @@
 #ifndef SUMMARYEVENTINFO_H
 #define SUMMARYEVENTINFO_H
 
-#include <KCalCore/Calendar>
-#include <KCalCore/Event>
-
-#include <QList>
-#include <QString>
+#include <Akonadi/Calendar/ETMCalendar>
 
 class QDate;
 
@@ -43,9 +39,9 @@ public:
     SummaryEventInfo();
 
     static List eventsForDate(const QDate &date,
-                              KCalCore::Calendar *calendar);
+                              const Akonadi::ETMCalendar::Ptr &calendar);
     static List eventsForRange(const QDate &start, const QDate &end, // range is inclusive
-                               KCalCore::Calendar *calendar);
+                               const Akonadi::ETMCalendar::Ptr &calendar);
     static void setShowSpecialEvents(bool skipBirthdays, bool skipAnniversaries);
 
     KCalCore::Event::Ptr ev;
