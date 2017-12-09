@@ -41,6 +41,7 @@
 #include <KontactInterface/Core>
 
 #include <KConfigGroup>
+#include <KColorScheme>
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <QMenu>
@@ -130,6 +131,11 @@ void ApptSummaryWidget::updateView()
 
     SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(mDaysAhead - 1), mCalendar);
 
+    QPalette todayPalette = palette();
+    KColorScheme::adjustBackground(todayPalette, KColorScheme::ActiveBackground, QPalette::Window);
+    QPalette urgentPalette = palette();
+    KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
+
     foreach (SummaryEventInfo *event, events) {
 
         // Optionally, show only my Events
@@ -175,6 +181,12 @@ void ApptSummaryWidget::updateView()
             QFont font = label->font();
             font.setBold(true);
             label->setFont(font);
+            if (!event->makeUrgent) {
+                label->setPalette(todayPalette);
+            } else {
+                label->setPalette(urgentPalette);
+            }
+            label->setAutoFillBackground(true);
         }
 
         // Days to go label

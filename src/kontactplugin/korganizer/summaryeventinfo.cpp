@@ -73,11 +73,11 @@ bool SummaryEventInfo::skip(const KCalCore::Event::Ptr &event)
     //the appropriate category to the event.
     QStringList c = event->categories();
     if (!mShowBirthdays &&
-            c.contains(QStringLiteral("BIRTHDAY"), Qt::CaseInsensitive)) {
+        c.contains(QStringLiteral("BIRTHDAY"), Qt::CaseInsensitive)) {
         return true;
     }
     if (!mShowAnniversaries &&
-            c.contains(QStringLiteral("ANNIVERSARY"), Qt::CaseInsensitive)) {
+        c.contains(QStringLiteral("ANNIVERSARY"), Qt::CaseInsensitive)) {
         return true;
     }
 
@@ -85,7 +85,7 @@ bool SummaryEventInfo::skip(const KCalCore::Event::Ptr &event)
 }
 
 SummaryEventInfo::SummaryEventInfo()
-    : makeBold(false)
+    : makeBold(false), makeUrgent(false)
 {
 }
 
@@ -219,6 +219,10 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                     if (mins > 0) {
                         str += i18ncp("use abbreviation for minute to keep the text short",
                                       "1 min", "%1 mins", mins);
+                        if (hours < 1) {
+                            // happens in less than 1 hour
+                            summaryEvent->makeUrgent = true;
+                        }
                     }
                 } else {
                     str = i18n("now");

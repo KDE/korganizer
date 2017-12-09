@@ -53,6 +53,7 @@ public:
     QString summaryUrl;
     QString summaryTooltip;
     bool makeBold;
+    bool makeUrgent;
 
 private:
     static bool skip(const KCalCore::Event::Ptr &event);
