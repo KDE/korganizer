@@ -46,7 +46,8 @@ FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidge
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply, this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(
+        QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply, this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mApplyButton = buttonBox->button(QDialogButtonBox::Apply);
     mOkButton->setDefault(true);
@@ -60,7 +61,9 @@ FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidge
     updateFilterList();
     connect(mFilterEdit, &FilterEdit::editCategories, this, &FilterEditDialog::editCategories);
     connect(mFilterEdit, &FilterEdit::filterChanged, this, &FilterEditDialog::filterChanged);
-    connect(buttonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &FilterEditDialog::slotApply);
+    connect(buttonBox->button(
+                QDialogButtonBox::Apply), &QPushButton::clicked, this,
+            &FilterEditDialog::slotApply);
 }
 
 FilterEditDialog::~FilterEditDialog()
@@ -92,7 +95,9 @@ void FilterEditDialog::setDialogConsistent(bool consistent)
 }
 
 FilterEdit::FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
-    : QWidget(parent), mCurrent(nullptr), mCategorySelectDialog(nullptr)
+    : QWidget(parent)
+    , mCurrent(nullptr)
+    , mCategorySelectDialog(nullptr)
 {
     setupUi(this);
     searchline->setListWidget(mRulesList);
@@ -114,7 +119,6 @@ FilterEdit::FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
     connect(mCatEditButton, &QPushButton::clicked, this, &FilterEdit::editCategorySelection);
     connect(mCompletedCheck, &QCheckBox::toggled, mCompletedTimeSpanLabel, &QLabel::setEnabled);
     connect(mCompletedCheck, &QCheckBox::toggled, mCompletedTimeSpan, &QSpinBox::setEnabled);
-
 }
 
 FilterEdit::~FilterEdit()
@@ -246,8 +250,8 @@ void FilterEdit::bNewPressed()
         }
     }
 
-    KCalCore::CalFilter *newFilter =
-        new KCalCore::CalFilter(newFilterName);
+    KCalCore::CalFilter *newFilter
+        = new KCalCore::CalFilter(newFilterName);
     mFilters->append(newFilter);
     updateFilterList();
     mRulesList->setCurrentRow(mRulesList->count() - 1);
@@ -264,11 +268,11 @@ void FilterEdit::bDeletePressed()
     }
 
     if (KMessageBox::warningContinueCancel(
-                this,
-                i18nc("@info",
-                      "Do you really want to permanently remove the filter \"%1\"?", mCurrent->name()),
-                i18nc("@title:window", "Delete Filter?"),
-                KStandardGuiItem::del()) == KMessageBox::Cancel) {
+            this,
+            i18nc("@info",
+                  "Do you really want to permanently remove the filter \"%1\"?", mCurrent->name()),
+            i18nc("@title:window", "Delete Filter?"),
+            KStandardGuiItem::del()) == KMessageBox::Cancel) {
         return;
     }
 
@@ -311,8 +315,11 @@ bool FilterEdit::correctName(const QString &newText)
 #ifndef QT_NO_STYLE_STYLESHEET
     QString styleSheet;
     if (mNegativeBackground.isEmpty()) {
-        const KStatefulBrush bgBrush = KStatefulBrush(KColorScheme::View, KColorScheme::NegativeBackground);
-        mNegativeBackground = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
+        const KStatefulBrush bgBrush = KStatefulBrush(KColorScheme::View,
+                                                      KColorScheme::NegativeBackground);
+        mNegativeBackground
+            = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(
+                                                                         mNameLineEdit).color().name());
     }
     if (!newText.isEmpty()) {
         const int val = mRulesList->count();
@@ -344,9 +351,12 @@ void FilterEdit::editCategorySelection()
 
     if (!mCategorySelectDialog) {
         mCategorySelectDialog = new KPIM::TagSelectionDialog(this);
-        mCategorySelectDialog->buttons()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
-        connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted, this, &FilterEdit::updateCategorySelection);
-        connect(mCategorySelectDialog->buttons()->button(QDialogButtonBox::Help), &QPushButton::clicked, this, &FilterEdit::slotHelp);
+        mCategorySelectDialog->buttons()->setStandardButtons(
+            QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+        connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted, this,
+                &FilterEdit::updateCategorySelection);
+        connect(mCategorySelectDialog->buttons()->button(
+                    QDialogButtonBox::Help), &QPushButton::clicked, this, &FilterEdit::slotHelp);
     }
     mCategorySelectDialog->setSelection(mCurrent->categoryList());
 

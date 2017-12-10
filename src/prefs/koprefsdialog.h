@@ -32,13 +32,11 @@
 
 class QPushButton;
 
-namespace Ui
-{
+namespace Ui {
 class KOGroupwarePrefsPage;
 }
 
-namespace Akonadi
-{
+namespace Akonadi {
 class CollectionComboBox;
 }
 
@@ -80,12 +78,12 @@ protected Q_SLOTS:
     void updateResourceColor();
 
 private:
-    KComboBox     *mCategoryCombo = nullptr;
-    KColorButton  *mCategoryButton = nullptr;
+    KComboBox *mCategoryCombo = nullptr;
+    KColorButton *mCategoryButton = nullptr;
     QHash<QString, QColor> mCategoryDict;
 
     Akonadi::CollectionComboBox *mResourceCombo = nullptr;
-    KColorButton  *mResourceButton = nullptr;
+    KColorButton *mResourceButton = nullptr;
     QHash<QString, QColor> mResourceDict;
 };
 
@@ -137,7 +135,6 @@ private:
     QLabel *mDescription = nullptr;
     QPushButton *mConfigureButton = nullptr;
     QGroupBox *mPositioningGroupBox = nullptr;
-
 
     QRadioButton *mPositionAgendaTop = nullptr;
     QRadioButton *mPositionAgendaBottom = nullptr;

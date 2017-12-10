@@ -53,7 +53,8 @@
 using namespace KCalUtils;
 
 TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
-    : KontactInterface::Summary(parent), mPlugin(plugin)
+    : KontactInterface::Summary(parent)
+    , mPlugin(plugin)
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(3);
@@ -70,8 +71,11 @@ TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
 
     mChanger = new Akonadi::IncidenceChanger(parent);
 
-    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &TodoSummaryWidget::updateView);
-    connect(mPlugin->core(), &KontactInterface::Core::dayChanged, this, &TodoSummaryWidget::updateView);
+    connect(
+        mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
+        &TodoSummaryWidget::updateView);
+    connect(
+        mPlugin->core(), &KontactInterface::Core::dayChanged, this, &TodoSummaryWidget::updateView);
 
     updateView();
 }
@@ -143,14 +147,14 @@ void TodoSummaryWidget::updateView()
     }
     if (!prList.isEmpty()) {
         prList = Akonadi::ETMCalendar::sortTodos(prList,
-                 KCalCore::TodoSortSummary,
-                 KCalCore::SortDirectionAscending);
+                                                 KCalCore::TodoSortSummary,
+                                                 KCalCore::SortDirectionAscending);
         prList = Akonadi::ETMCalendar::sortTodos(prList,
-                 KCalCore::TodoSortPriority,
-                 KCalCore::SortDirectionAscending);
+                                                 KCalCore::TodoSortPriority,
+                                                 KCalCore::SortDirectionAscending);
         prList = Akonadi::ETMCalendar::sortTodos(prList,
-                 KCalCore::TodoSortDueDate,
-                 KCalCore::SortDirectionAscending);
+                                                 KCalCore::TodoSortDueDate,
+                                                 KCalCore::SortDirectionAscending);
     }
 
     // The to-do print consists of the following fields:
@@ -173,7 +177,6 @@ void TodoSummaryWidget::updateView()
     QLabel *label = nullptr;
 
     if (!prList.isEmpty()) {
-
         KIconLoader loader(QStringLiteral("korganizer"));
         QPixmap pm = loader.loadIcon(QStringLiteral("view-calendar-tasks"), KIconLoader::Small);
 
@@ -213,8 +216,10 @@ void TodoSummaryWidget::updateView()
                     for (int i = 3; i < 8; ++i) {
                         if (daysTo < i * 24 * 60 * 60) {
                             str = i18nc("1. weekday, 2. time", "%1 %2",
-                                        locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
-                                        locale.toString(todo->dtDue().time(), QLocale::ShortFormat));
+                                        locale.dayName(todo->dtDue().date().dayOfWeek(),
+                                                       QLocale::LongFormat),
+                                        locale.toString(todo->dtDue().time(),
+                                                        QLocale::ShortFormat));
                             break;
                         }
                     }
@@ -278,8 +283,10 @@ void TodoSummaryWidget::updateView()
             mLayout->addWidget(urlLabel, counter, 4);
             mLabels.append(urlLabel);
 
-            connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &TodoSummaryWidget::viewTodo);
-            connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &TodoSummaryWidget::popupMenu);
+            connect(urlLabel, QOverload<const QString &>::of(
+                        &KUrlLabel::leftClickedUrl), this, &TodoSummaryWidget::viewTodo);
+            connect(urlLabel, QOverload<const QString &>::of(
+                        &KUrlLabel::rightClickedUrl), this, &TodoSummaryWidget::popupMenu);
 
             // State text label
             str = stateStr(todo);
@@ -314,7 +321,8 @@ void TodoSummaryWidget::viewTodo(const QString &uid)
     if (id != -1) {
         mPlugin->core()->selectPlugin(QStringLiteral("kontact_todoplugin"));  //ensure loaded
         OrgKdeKorganizerKorganizerInterface korganizer(
-            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+            QStringLiteral("org.kde.korganizer"), QStringLiteral(
+                "/Korganizer"), QDBusConnection::sessionBus());
 
         korganizer.editIncidence(QString::number(id));
     }
@@ -350,14 +358,16 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     QMenu popup(this);
     QAction *editIt = popup.addAction(i18n("&Edit To-do..."));
     QAction *delIt = popup.addAction(i18n("&Delete To-do"));
-    delIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("edit-delete"), KIconLoader::Small));
+    delIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral(
+                                                       "edit-delete"), KIconLoader::Small));
 
     QAction *doneIt = nullptr;
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
     if (!todo->isCompleted()) {
         doneIt = popup.addAction(i18n("&Mark To-do Completed"));
-        doneIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("task-complete"), KIconLoader::Small));
+        doneIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("task-complete"),
+                                                        KIconLoader::Small));
         doneIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem));
     }
     // TODO: add icons to the menu actions
@@ -393,8 +403,8 @@ QStringList TodoSummaryWidget::configModules() const
 
 bool TodoSummaryWidget::startsToday(const KCalCore::Todo::Ptr &todo)
 {
-    return todo->hasStartDate() &&
-           todo->dtStart().date() == QDate::currentDate();
+    return todo->hasStartDate()
+           && todo->dtStart().date() == QDate::currentDate();
 }
 
 const QString TodoSummaryWidget::stateStr(const KCalCore::Todo::Ptr &todo)
@@ -404,9 +414,9 @@ const QString TodoSummaryWidget::stateStr(const KCalCore::Todo::Ptr &todo)
     if (todo->isOpenEnded()) {
         str1 = i18n("open-ended");
     } else if (todo->isOverdue()) {
-        str1 = QLatin1String("<font color=\"red\">") +
-               i18nc("the to-do is overdue", "overdue") +
-               QLatin1String("</font>");
+        str1 = QLatin1String("<font color=\"red\">")
+               +i18nc("the to-do is overdue", "overdue")
+               +QLatin1String("</font>");
     } else if (startsToday(todo)) {
         str1 = i18nc("the to-do starts today", "starts today");
     }
@@ -417,7 +427,8 @@ const QString TodoSummaryWidget::stateStr(const KCalCore::Todo::Ptr &todo)
         str2 += i18nc("the to-do is completed", "completed");
     } else if (todo->isInProgress(false)) {
         str2 += i18nc("the to-do is in-progress", "in-progress ");
-        str2 += QLatin1String(" (") + QString::number(todo->percentComplete()) + QLatin1String("%)");
+        str2 += QLatin1String(" (") + QString::number(todo->percentComplete())
+                + QLatin1String("%)");
     }
 
     if (!str1.isEmpty() && !str2.isEmpty()) {
@@ -426,4 +437,3 @@ const QString TodoSummaryWidget::stateStr(const KCalCore::Todo::Ptr &todo)
 
     return str1 + str2;
 }
-

@@ -28,13 +28,10 @@
 
 #include "koeventview.h"
 
-namespace EventViews
-{
+namespace EventViews {
 class MonthView;
 }
-namespace KOrg
-{
-
+namespace KOrg {
 class MonthView : public KOEventView
 {
     Q_OBJECT
@@ -82,7 +79,8 @@ public Q_SLOTS:
 
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &,
+                                Akonadi::IncidenceChanger::ChangeType) override;
 
     void updateConfig() override;
 
@@ -96,6 +94,5 @@ private:
     EventViews::MonthView *mMonthView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
 };
-
 }
 #endif

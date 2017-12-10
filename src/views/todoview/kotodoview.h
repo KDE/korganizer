@@ -51,13 +51,15 @@ public:
         return 0;
     }
 
-    void setDocumentId(const QString &) {}
+    void setDocumentId(const QString &)
+    {
+    }
+
     void saveLayout(KConfig *config, const QString &group) const;
     void restoreLayout(KConfig *config, const QString &group, bool minimalDefaults);
 
     /** documentation in baseview.h */
-    void getHighlightMode(bool &highlightEvents,
-                          bool &highlightTodos,
+    void getHighlightMode(bool &highlightEvents, bool &highlightTodos,
                           bool &highlightJournals) override;
 
     bool usesFullWindow() override;
@@ -65,9 +67,11 @@ public:
     void saveViewState();
     void restoreViewState();
 
-    bool supportsDateRangeSelection() override {
+    bool supportsDateRangeSelection() override
+    {
         return false;
     }
+
     CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
@@ -76,7 +80,8 @@ public Q_SLOTS:
                            const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
-    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &incidence,
+                                Akonadi::IncidenceChanger::ChangeType changeType) override;
     void updateConfig() override;
     void clearSelection() override;
 

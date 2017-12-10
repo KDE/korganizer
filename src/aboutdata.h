@@ -27,15 +27,12 @@
 #include "korganizerprivate_export.h"
 #include <KAboutData>
 
-namespace KOrg
-{
-
+namespace KOrg {
 class KORGANIZERPRIVATE_EXPORT AboutData : public KAboutData
 {
 public:
     AboutData();
 };
-
 }
 
 #endif

@@ -46,10 +46,10 @@ public:
     KontactInterface::Summary *createSummaryWidget(QWidget *parentWidget) override;
 
 protected:
-    KParts::ReadOnlyPart *createPart() override {
+    KParts::ReadOnlyPart *createPart() override
+    {
         return nullptr;
     }
-
 };
 
 #endif

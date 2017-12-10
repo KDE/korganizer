@@ -28,7 +28,8 @@
 #include <QTimer>
 
 DateChecker::DateChecker(QObject *parent)
-    : QObject(parent), mUpdateTimer(nullptr)
+    : QObject(parent)
+    , mUpdateTimer(nullptr)
 {
     enableRollover(FollowMonth);
 }
@@ -90,4 +91,3 @@ void DateChecker::possiblyPastMidnight()
         mUpdateTimer->start(msecsWait);
     }
 }
-

@@ -31,13 +31,11 @@
 #include <KontactInterface/Summary>
 #include <Akonadi/Calendar/ETMCalendar>
 
-namespace KHolidays
-{
+namespace KHolidays {
 class HolidayRegion;
 }
 
-namespace KontactInterface
-{
+namespace KontactInterface {
 class Plugin;
 }
 
@@ -57,7 +55,8 @@ public:
 
     QStringList configModules() const override;
     void configUpdated();
-    void updateSummary(bool force = false) override {
+    void updateSummary(bool force = false) override
+    {
         Q_UNUSED(force);
         updateView();
     }

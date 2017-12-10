@@ -43,23 +43,22 @@
 #include <QIcon>
 
 CollectionNode::CollectionNode(ReparentingModel &personModel, const Akonadi::Collection &col)
-    : Node(personModel),
-      isSearchNode(false),
-      mCollection(col),
-      mCheckState(Qt::Unchecked)
+    : Node(personModel)
+    , isSearchNode(false)
+    , mCollection(col)
+    , mCheckState(Qt::Unchecked)
 {
 }
 
 CollectionNode::~CollectionNode()
 {
-
 }
 
 bool CollectionNode::operator==(const ReparentingModel::Node &node) const
 {
     const CollectionNode *collectionNode = dynamic_cast<const CollectionNode *>(&node);
     if (collectionNode) {
-        return (collectionNode->mCollection == mCollection);
+        return collectionNode->mCollection == mCollection;
     }
     return false;
 }
@@ -67,7 +66,8 @@ bool CollectionNode::operator==(const ReparentingModel::Node &node) const
 QVariant CollectionNode::data(int role) const
 {
     switch (role) {
-    case Qt::DisplayRole: {
+    case Qt::DisplayRole:
+    {
         QStringList path;
         Akonadi::Collection c = mCollection;
         while (c.isValid()) {
@@ -87,7 +87,8 @@ QVariant CollectionNode::data(int role) const
         }
         return mCheckState;
     case Qt::ToolTipRole:
-        return i18nc("Collection: name collectionId", "Collection: %1(%2)", mCollection.name(), QString::number(mCollection.id()));
+        return i18nc("Collection: name collectionId", "Collection: %1(%2)",
+                     mCollection.name(), QString::number(mCollection.id()));
     case IsSearchResultRole:
         return isSearchNode;
     case CollectionRole:
@@ -113,28 +114,27 @@ bool CollectionNode::setData(const QVariant &value, int role)
 
 bool CollectionNode::isDuplicateOf(const QModelIndex &sourceIndex)
 {
-    return (sourceIndex.data(Akonadi::EntityTreeModel::CollectionIdRole).value<Akonadi::Collection::Id>() == mCollection.id());
+    return sourceIndex.data(Akonadi::EntityTreeModel::CollectionIdRole).value<Akonadi::Collection::Id>()
+           == mCollection.id();
 }
 
 PersonNode::PersonNode(ReparentingModel &personModel, const KPIM::Person &person)
-    :   Node(personModel),
-        isSearchNode(false),
-        mPerson(person),
-        mCheckState(Qt::Unchecked)
+    :   Node(personModel)
+    , isSearchNode(false)
+    , mPerson(person)
+    , mCheckState(Qt::Unchecked)
 {
-
 }
 
 PersonNode::~PersonNode()
 {
-
 }
 
 bool PersonNode::operator==(const Node &node) const
 {
     const PersonNode *personNode = dynamic_cast<const PersonNode *>(&node);
     if (personNode) {
-        return (personNode->mPerson.uid == mPerson.uid);
+        return personNode->mPerson.uid == mPerson.uid;
     }
     return false;
 }
@@ -151,7 +151,8 @@ void PersonNode::setChecked(bool enabled)
 QVariant PersonNode::data(int role) const
 {
     switch (role) {
-    case Qt::DisplayRole: {
+    case Qt::DisplayRole:
+    {
         QString name = mPerson.name;
         if (!mPerson.ou.isEmpty()) {
             name += QStringLiteral(" (") + mPerson.ou + QLatin1Char(')');
@@ -165,7 +166,8 @@ QVariant PersonNode::data(int role) const
             return QVariant();
         }
         return mCheckState;
-    case Qt::ToolTipRole: {
+    case Qt::ToolTipRole:
+    {
         QString tooltip = i18n("Person: %1", mPerson.name);
         if (!mPerson.mail.isEmpty()) {
             tooltip += QStringLiteral("\n") + i18n("Mail: %1", mPerson.mail);
@@ -202,16 +204,19 @@ bool PersonNode::setData(const QVariant &value, int role)
 
 bool PersonNode::adopts(const QModelIndex &sourceIndex)
 {
-    const Akonadi::Collection &parent = sourceIndex.data(Akonadi::EntityTreeModel::ParentCollectionRole).value<Akonadi::Collection>();
+    const Akonadi::Collection &parent = sourceIndex.data(
+        Akonadi::EntityTreeModel::ParentCollectionRole).value<Akonadi::Collection>();
     if (parent.id() == mPerson.rootCollection) {
         return true;
     }
 
-    const Akonadi::Collection &col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+    const Akonadi::Collection &col
+        = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     // qCDebug(KORGANIZER_LOG) << col.displayName();
     //FIXME: we need a way to compare the path we get from LDAP to the folder in akonadi.
     //TODO: get it from the folder attribute
-    if ((col.isValid() && mPerson.folderPaths.contains(col.displayName())) || mPerson.collections.contains(col.id())) {
+    if ((col.isValid() && mPerson.folderPaths.contains(col.displayName()))
+        || mPerson.collections.contains(col.id())) {
         // qCDebug(KORGANIZER_LOG) << "reparenting " << col.displayName() << " to " << mPerson.name;
         return true;
     }
@@ -220,7 +225,7 @@ bool PersonNode::adopts(const QModelIndex &sourceIndex)
 
 bool PersonNode::isDuplicateOf(const QModelIndex &sourceIndex)
 {
-    return (sourceIndex.data(PersonRole).value<KPIM::Person>().uid == mPerson.uid);
+    return sourceIndex.data(PersonRole).value<KPIM::Person>().uid == mPerson.uid;
 }
 
 void PersonNode::update(const Node::Ptr &node)
@@ -231,9 +236,11 @@ void PersonNode::update(const Node::Ptr &node)
 KPIM::Person PersonNodeManager::person(const QModelIndex &sourceIndex)
 {
     KPIM::Person person;
-    const Akonadi::Collection col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+    const Akonadi::Collection col
+        = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     if (col.isValid()) {
-        Akonadi::CollectionIdentificationAttribute *attr = col.attribute<Akonadi::CollectionIdentificationAttribute>();
+        Akonadi::CollectionIdentificationAttribute *attr
+            = col.attribute<Akonadi::CollectionIdentificationAttribute>();
         if (attr && attr->collectionNamespace() == "usertoplevel") {
             person.name = col.displayName();
             person.mail = QString::fromUtf8(attr->mail());
@@ -269,12 +276,13 @@ void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
     }
 }
 
-Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchModel, QObject *parent)
-    : QObject(parent),
-      mPersonModel(personModel),
-      mSearchModel(searchModel),
-      mCollectionSearchJob(nullptr),
-      mPersonSearchJob(nullptr)
+Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchModel,
+                       QObject *parent)
+    : QObject(parent)
+    , mPersonModel(personModel)
+    , mSearchModel(searchModel)
+    , mCollectionSearchJob(nullptr)
+    , mPersonSearchJob(nullptr)
 {
     Akonadi::AttributeFactory::registerAttribute<Akonadi::CollectionIdentificationAttribute>();
 }
@@ -305,15 +313,21 @@ void Controller::setSearchString(const QString &searchString)
 
         mPersonSearchJob = new KPIM::PersonSearchJob(searchString, this);
         connect(mPersonSearchJob, &KPIM::PersonSearchJob::personsFound,
-                this, static_cast<void (Controller::*)(const QVector<KPIM::Person> &)>(&Controller::onPersonsFound));
-        connect(mPersonSearchJob, &KPIM::PersonSearchJob::personUpdate, this, &Controller::onPersonUpdate);
+                this,
+                static_cast<void (Controller::*)(
+                                const QVector<KPIM::Person> &)>(&Controller::onPersonsFound));
+        connect(mPersonSearchJob, &KPIM::PersonSearchJob::personUpdate, this,
+                &Controller::onPersonUpdate);
         connect(mPersonSearchJob, &KPIM::PersonSearchJob::result,
                 this, static_cast<void (Controller::*)(KJob *)>(&Controller::onPersonsFound));
         mPersonSearchJob->start();
     }
 
-    mCollectionSearchJob = new KPIM::CollectionSearchJob(searchString, QStringList() << QStringLiteral("text/calendar"), this);
-    connect(mCollectionSearchJob, &KPIM::CollectionSearchJob::result, this, &Controller::onCollectionsFound);
+    mCollectionSearchJob = new KPIM::CollectionSearchJob(searchString,
+                                                         QStringList()
+    << QStringLiteral("text/calendar"), this);
+    connect(mCollectionSearchJob, &KPIM::CollectionSearchJob::result, this,
+            &Controller::onCollectionsFound);
     mCollectionSearchJob->start();
 }
 
@@ -327,7 +341,8 @@ void Controller::onCollectionsFound(KJob *job)
         qCWarning(KORGANIZER_LOG) << job->errorString();
         return;
     }
-    Q_FOREACH (const Akonadi::Collection &col, static_cast<KPIM::CollectionSearchJob *>(job)->matchingCollections()) {
+    Q_FOREACH (const Akonadi::Collection &col,
+               static_cast<KPIM::CollectionSearchJob *>(job)->matchingCollections()) {
         CollectionNode *collectionNode = new CollectionNode(*mSearchModel, col);
         collectionNode->isSearchNode = true;
         //toggled by the checkbox, results in collection getting monitored
@@ -380,21 +395,28 @@ static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
     return qobject_cast<Akonadi::EntityTreeModel *>(model);
 }
 
-void Controller::setCollectionState(const Akonadi::Collection &collection, CollectionState collectionState, bool recursive)
+void Controller::setCollectionState(const Akonadi::Collection &collection,
+                                    CollectionState collectionState, bool recursive)
 {
     //We removed the children first, so the children in the tree are removed before the parents
     if (recursive) {
         //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
-        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection, Akonadi::CollectionFetchJob::Recursive, this);
+        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection,
+                                                                                Akonadi::CollectionFetchJob::Recursive,
+                                                                                this);
         fetchJob->setProperty("collectionState", static_cast<int>(collectionState));
         fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-        connect(fetchJob, &Akonadi::CollectionFetchJob::result, this, &Controller::onPersonCollectionsFetched);
+        connect(fetchJob, &Akonadi::CollectionFetchJob::result, this,
+                &Controller::onPersonCollectionsFetched);
     }
     {
-        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection, Akonadi::CollectionFetchJob::Base, this);
+        Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection,
+                                                                                Akonadi::CollectionFetchJob::Base,
+                                                                                this);
         fetchJob->setProperty("collectionState", static_cast<int>(collectionState));
         fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-        connect(fetchJob, &Akonadi::CollectionFetchJob::result, this, &Controller::onPersonCollectionsFetched);
+        connect(fetchJob, &Akonadi::CollectionFetchJob::result, this,
+                &Controller::onPersonCollectionsFetched);
     }
 }
 
@@ -410,8 +432,10 @@ void Controller::onPersonCollectionsFetched(KJob *job)
         return;
     }
 
-    const CollectionState collectionState = static_cast<CollectionState>(job->property("collectionState").toInt());
-    Q_FOREACH (const Akonadi::Collection &col, static_cast<Akonadi::CollectionFetchJob *>(job)->collections()) {
+    const CollectionState collectionState
+        = static_cast<CollectionState>(job->property("collectionState").toInt());
+    Q_FOREACH (const Akonadi::Collection &col,
+               static_cast<Akonadi::CollectionFetchJob *>(job)->collections()) {
         // qCDebug(KORGANIZER_LOG) << col.displayName() << "do enable " << enabled;
         Akonadi::Collection modifiedCollection = col;
         if (collectionState == Enabled) {
@@ -472,4 +496,3 @@ void Controller::removePerson(const KPIM::Person &person)
         //TODO: delete freebusy data from calendar
     }
 }
-

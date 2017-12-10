@@ -32,18 +32,15 @@
 class QPushButton;
 class CalendarView;
 
-namespace Ui
-{
+namespace Ui {
 class SearchDialog;
 }
 
-namespace EventViews
-{
+namespace EventViews {
 class ListView;
 }
 
-namespace KCalCore
-{
+namespace KCalCore {
 class Incidence;
 }
 

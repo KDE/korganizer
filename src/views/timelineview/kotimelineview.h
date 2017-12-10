@@ -31,13 +31,11 @@
 
 #include "koeventview.h"
 
-namespace Akonadi
-{
+namespace Akonadi {
 class IncidenceChanger;
 }
 
-namespace EventViews
-{
+namespace EventViews {
 class TimelineView;
 }
 
@@ -63,6 +61,7 @@ public:
     {
         return 0;
     }
+
     bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;

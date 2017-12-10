@@ -34,10 +34,8 @@
 
 class KJob;
 
-namespace KOrg
-{
-
-class SearchCollectionHelper: public QObject
+namespace KOrg {
+class SearchCollectionHelper : public QObject
 {
     Q_OBJECT
 public:
@@ -52,7 +50,8 @@ private:
     void modifyResult(KJob *job);
 
     void setupSearchCollections();
-    void updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status, const QString &name, const QString &displayName);
+    void updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status,
+                                const QString &name, const QString &displayName);
 
 private:
     KIdentityManagement::IdentityManager *mIdentityManager = nullptr;

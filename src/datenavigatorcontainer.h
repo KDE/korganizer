@@ -35,7 +35,7 @@
 #include <QDate>
 class KDateNavigator;
 
-class DateNavigatorContainer: public QFrame
+class DateNavigatorContainer : public QFrame
 {
     Q_OBJECT
 public:
@@ -49,9 +49,7 @@ public:
 
     QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
-    void setHighlightMode(bool highlightEvents,
-                          bool highlightTodos,
-                          bool highlightJournals) const;
+    void setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals) const;
     void setUpdateNeeded();
 
     /**
@@ -108,12 +106,10 @@ Q_SIGNALS:
         @param selectionLowerLimit The first date of the first KDateNavigator.
         @param selectionUpperLimit The last date of the last KDateNavigator.
     */
-    void prevMonthClicked(const QDate &currentMonth,
-                          const QDate &selectionLowerLimit,
+    void prevMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit,
                           const QDate &selectionUpperLimit);
 
-    void nextMonthClicked(const QDate &currentMonth,
-                          const QDate &selectionLowerLimit,
+    void nextMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit,
                           const QDate &selectionUpperLimit);
 
     void monthSelected(int month);

@@ -30,7 +30,7 @@
 #include <QDate>
 class QToolButton;
 
-class NavigatorBar: public QWidget
+class NavigatorBar : public QWidget
 {
     Q_OBJECT
 public:
@@ -51,8 +51,7 @@ Q_SIGNALS:
     void yearSelected(int year);
 
 protected:
-    QToolButton *createNavigationButton(const QString &icon,
-                                        const QString &toolTip,
+    QToolButton *createNavigationButton(const QString &icon, const QString &toolTip,
                                         const QString &whatsThis);
 
 private Q_SLOTS:

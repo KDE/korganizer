@@ -53,14 +53,15 @@
 EXPORT_KONTACT_PLUGIN(KOrganizerPlugin, korganizer)
 
 KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "calendar"), mIface(nullptr)
+    : KontactInterface::Plugin(core, core, "korganizer", "calendar")
+    , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
-    QAction *action  =
-        new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
-                    i18nc("@action:inmenu", "New Event..."), this);
+    QAction *action
+        = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
+                      i18nc("@action:inmenu", "New Event..."), this);
     actionCollection()->addAction(QStringLiteral("new_event"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_E));
     QString str = i18nc("@info:status", "Create a new event");
@@ -95,7 +96,8 @@ KParts::ReadOnlyPart *KOrganizerPlugin::createPart()
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
+        QStringLiteral("org.kde.korganizer"), QStringLiteral(
+            "/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
@@ -133,7 +135,8 @@ void KOrganizerPlugin::slotNewEvent()
 
 bool KOrganizerPlugin::createDBUSInterface(const QString &serviceType)
 {
-    if (serviceType == QLatin1String("DBUS/Organizer") || serviceType == QLatin1String("DBUS/Calendar")) {
+    if (serviceType == QLatin1String("DBUS/Organizer")
+        || serviceType == QLatin1String("DBUS/Calendar")) {
         if (part()) {
             return true;
         }
@@ -148,9 +151,9 @@ bool KOrganizerPlugin::isRunningStandalone() const
 
 bool KOrganizerPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
-    return mimeData->hasText() ||
-           KPIM::MailList::canDecode(mimeData) ||
-           KContacts::VCardDrag::canDecode(mimeData);
+    return mimeData->hasText()
+           || KPIM::MailList::canDecode(mimeData)
+           || KContacts::VCardDrag::canDecode(mimeData);
 }
 
 void KOrganizerPlugin::processDropEvent(QDropEvent *event)
@@ -232,6 +235,9 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
         }
         return;
     }
-    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
+    qCWarning(KORGANIZERPLUGIN_LOG)
+    << QStringLiteral("Cannot handle drop events of type '%1'.").arg(
+        event->mimeData()->formats().join(QLatin1Char(';')));
 }
+
 #include "korganizerplugin.moc"

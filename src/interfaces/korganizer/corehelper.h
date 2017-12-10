@@ -25,19 +25,21 @@
 #ifndef KORG_INTERFACES_COREHELPER_H
 #define KORG_INTERFACES_COREHELPER_H
 
-namespace KOrg
-{
-
+namespace KOrg {
 class CoreHelper
 {
 public:
-    CoreHelper() {}
-    virtual ~CoreHelper() {}
+    CoreHelper()
+    {
+    }
+
+    virtual ~CoreHelper()
+    {
+    }
 
     virtual QColor categoryColor(const QStringList &cats) = 0;
     virtual QString holidayString(const QDate &dt) = 0;
     virtual QTime dayStart() = 0;
 };
-
 }
 #endif

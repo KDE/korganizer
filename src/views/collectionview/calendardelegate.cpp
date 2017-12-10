@@ -39,10 +39,17 @@
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
-    mPixmap.insert(Enable, KIconLoader::global()->loadIcon(QStringLiteral("bookmarks"), KIconLoader::Small));
-    mPixmap.insert(RemoveFromList, KIconLoader::global()->loadIcon(QStringLiteral("list-remove"), KIconLoader::Small));
-    mPixmap.insert(AddToList, KIconLoader::global()->loadIcon(QStringLiteral("list-add"), KIconLoader::Small));
-    mPixmap.insert(Quickview, KIconLoader::global()->loadIcon(QStringLiteral("quickview"), KIconLoader::Small));
+    mPixmap.insert(Enable,
+                   KIconLoader::global()->loadIcon(QStringLiteral("bookmarks"),
+                                                   KIconLoader::Small));
+    mPixmap.insert(RemoveFromList,
+                   KIconLoader::global()->loadIcon(QStringLiteral(
+                                                       "list-remove"), KIconLoader::Small));
+    mPixmap.insert(AddToList,
+                   KIconLoader::global()->loadIcon(QStringLiteral("list-add"), KIconLoader::Small));
+    mPixmap.insert(Quickview,
+                   KIconLoader::global()->loadIcon(QStringLiteral("quickview"),
+                                                   KIconLoader::Small));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
@@ -68,7 +75,8 @@ static QStyle *style(const QStyleOptionViewItem &option)
     return style;
 }
 
-static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap, int pos = 1)
+static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap,
+                                    int pos = 1)
 {
     QStyleOptionButton option;
     option.icon = pixmap;
@@ -104,16 +112,18 @@ static Akonadi::Collection personCollection(const QModelIndex &index)
     return Akonadi::Collection();
 }
 
-QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &option,
-                                                                         const QModelIndex &index) const
+QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
+    const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     const bool isSearchResult = index.data(IsSearchResultRole).toBool();
     const bool hover = option.state & QStyle::State_MouseOver;
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
     Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
     // qCDebug(KORGANIZER_LOG) << index.data().toString() << enabled;
-    const bool isSearchCollection = col.resource().startsWith(QStringLiteral("akonadi_search_resource"));
-    const bool isKolabCollection = col.resource().startsWith(QStringLiteral("akonadi_kolab_resource"));
+    const bool isSearchCollection
+        = col.resource().startsWith(QStringLiteral("akonadi_search_resource"));
+    const bool isKolabCollection = col.resource().startsWith(QStringLiteral(
+                                                                 "akonadi_kolab_resource"));
     const bool isTopLevelCollection = (col.parentCollection() == Akonadi::Collection::root());
     const bool isToplevelSearchCollection = (isTopLevelCollection && isSearchCollection);
     const bool isToplevelKolabCollection = (isTopLevelCollection && isKolabCollection);
@@ -222,10 +232,9 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     }
 }
 
-bool StyledCalendarDelegate::editorEvent(QEvent *event,
-        QAbstractItemModel *model,
-        const QStyleOptionViewItem &option,
-        const QModelIndex &index)
+bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
+                                         const QStyleOptionViewItem &option,
+                                         const QModelIndex &index)
 {
     Q_ASSERT(event);
     Q_ASSERT(model);
@@ -238,9 +247,8 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
 
     int button = -1;
     // make sure that we have the right event type
-    if ((event->type() == QEvent::MouseButtonRelease) ||
-        (event->type() == QEvent::MouseButtonPress)) {
-
+    if ((event->type() == QEvent::MouseButtonRelease)
+        || (event->type() == QEvent::MouseButtonPress)) {
         QMouseEvent *me = static_cast<QMouseEvent *>(event);
 
         for (int i = 1; i < 4; i++) {
@@ -257,7 +265,6 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
         if (event->type() == QEvent::MouseButtonPress) {
             return true;
         }
-
     } else {
         return QStyledItemDelegate::editorEvent(event, model, option, index);
     }
@@ -275,7 +282,8 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event,
     return QStyledItemDelegate::editorEvent(event, model, option, index);
 }
 
-QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option,
+                                       const QModelIndex &index) const
 {
     QSize size = QStyledItemDelegate::sizeHint(option, index);
     //Without this adjustment toplevel resource folders get a slightly greater height, which looks silly and breaks the toolbutton position.

@@ -67,7 +67,7 @@
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame, public Akonadi::ETMCalendar::CalendarObserver
+class KODayMatrix : public QFrame, public Akonadi::ETMCalendar::CalendarObserver
 {
     Q_OBJECT
 public:
@@ -160,6 +160,7 @@ public:
     {
         return mToday <= 8;
     }
+
     bool isEndOfMonth() const
     {
         return mToday >= 27;
@@ -171,12 +172,11 @@ public:
      */
     void calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence) override;
     void calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incidence) override;
-    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence, const KCalCore::Calendar *calendar) override;
+    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence,
+                                  const KCalCore::Calendar *calendar) override;
 
     /** Sets which incidences should be highlighted */
-    void setHighlightMode(bool highlightEvents,
-                          bool highlightTodos,
-                          bool highlightJournals);
+    void setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals);
     void setUpdateNeeded();
 public Q_SLOTS:
     /**

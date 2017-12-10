@@ -28,7 +28,8 @@
 #include <QUrl>
 
 KOWindowList::KOWindowList()
-    : QObject(nullptr), mDefaultWindow(nullptr)
+    : QObject(nullptr)
+    , mDefaultWindow(nullptr)
 {
 }
 
@@ -82,4 +83,3 @@ KOrg::MainWindow *KOWindowList::defaultInstance()
 {
     return mDefaultWindow;
 }
-

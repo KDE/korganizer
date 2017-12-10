@@ -45,9 +45,12 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
                                      sidebarView, parent);
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(mView);
-    connect(mView, &EventViews::TodoView::printTodo, this, [this]() { printTodo();});
+    connect(mView, &EventViews::TodoView::printTodo, this, [this]() {
+        printTodo();
+    });
     connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
-    connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
+    connect(mView, &EventViews::TodoView::purgeCompletedSignal, this,
+            &KOTodoView::purgeCompletedSignal);
 
     connect(mView, &EventViews::EventView::incidenceSelected,
             this, &BaseView::incidenceSelected);
@@ -111,10 +114,20 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     connect(mView, &EventViews::TodoView::unAllSubTodoSignal,
             this, &KOTodoView::unAllSubTodoSignal);
 
-    connect(mView, static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView::createEvent),
-            eventPopup, static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createEvent));
-    connect(mView, static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView::createNote),
-            eventPopup, static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createNote));
+    connect(mView,
+            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView
+                                                                               ::
+                                                                               createEvent),
+            eventPopup,
+            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::
+                                                                           createEvent));
+    connect(mView,
+            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView
+                                                                               ::
+                                                                               createNote),
+            eventPopup,
+            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::
+                                                                           createNote));
 }
 
 KOTodoView::~KOTodoView()
@@ -161,7 +174,8 @@ void KOTodoView::updateView()
     // View is always updated, it's connected to ETM.
 }
 
-void KOTodoView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
+void KOTodoView::changeIncidenceDisplay(const Akonadi::Item &,
+                                        Akonadi::IncidenceChanger::ChangeType)
 {
     // Don't do anything, model is connected to ETM, it's up to date
 }
@@ -212,15 +226,13 @@ void KOTodoView::printTodo(bool preview)
 
     printer.print(CalendarSupport::CalPrinterBase::Incidence,
                   todoDate, todoDate, selectedIncidences, preview);
-
 }
 
-void KOTodoView::getHighlightMode(bool &highlightEvents,
-                                  bool &highlightTodos,
+void KOTodoView::getHighlightMode(bool &highlightEvents, bool &highlightTodos,
                                   bool &highlightJournals)
 {
-    highlightTodos    = KOPrefs::instance()->mHighlightTodos;
-    highlightEvents   = !highlightTodos;
+    highlightTodos = KOPrefs::instance()->mHighlightTodos;
+    highlightEvents = !highlightTodos;
     highlightJournals = false;
 }
 
@@ -253,4 +265,3 @@ CalendarSupport::CalPrinterBase::PrintType KOTodoView::printType() const
 {
     return CalendarSupport::CalPrinterBase::Todolist;
 }
-

@@ -29,9 +29,7 @@
 
 #include <QWidget>
 
-namespace KOrg
-{
-
+namespace KOrg {
 class Part : public KParts::Part
 {
     Q_OBJECT
@@ -49,7 +47,8 @@ public:
     typedef QList<Part *> List;
 
     explicit Part(MainWindow *parent)
-        : KParts::Part(parent ? (parent->topLevelWidget()) : nullptr), mMainWindow(parent)
+        : KParts::Part(parent ? (parent->topLevelWidget()) : nullptr)
+        , mMainWindow(parent)
     {
     }
 
@@ -77,11 +76,11 @@ public:
     virtual Part *createPluginFactory(MainWindow *parent) = 0;
 
 protected:
-    QObject *createObject(QObject *, const char *, const QStringList &) override {
+    QObject *createObject(QObject *, const char *, const QStringList &) override
+    {
         return nullptr;
     }
 };
-
 }
 
 #endif

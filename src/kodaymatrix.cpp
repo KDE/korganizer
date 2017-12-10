@@ -54,7 +54,9 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix(QWidget *parent)
-    : QFrame(parent), mStartDate(), mPendingChanges(false)
+    : QFrame(parent)
+    , mStartDate()
+    , mPendingChanges(false)
 {
     // initialize dynamic arrays
     mDays = new QDate[NUMDAYS];
@@ -65,8 +67,8 @@ KODayMatrix::KODayMatrix(QWidget *parent)
 
     recalculateToday();
 
-    mHighlightEvents   = true;
-    mHighlightTodos    = false;
+    mHighlightEvents = true;
+    mHighlightTodos = false;
     mHighlightJournals = false;
 }
 
@@ -164,9 +166,9 @@ void KODayMatrix::recalculateToday()
         mDayLabels[i] = QString::number(mDays[i].day());
 
         // if today is in the currently displayed month, hilight today
-        if (mDays[i].year() == QDate::currentDate().year() &&
-                mDays[i].month() == QDate::currentDate().month() &&
-                mDays[i].day() == QDate::currentDate().day()) {
+        if (mDays[i].year() == QDate::currentDate().year()
+            && mDays[i].month() == QDate::currentDate().month()
+            && mDays[i].day() == QDate::currentDate().day()) {
             mToday = i;
         }
     }
@@ -229,7 +231,8 @@ void KODayMatrix::updateView(const QDate &actdate)
     // there's no need to update the whole list of incidences... This is just a
     // waste of computational power
     updateIncidences();
-    QMap<QDate, QStringList> holidaysByDate = KOGlobals::self()->holiday(mDays[0], mDays[NUMDAYS - 1]);
+    QMap<QDate, QStringList> holidaysByDate = KOGlobals::self()->holiday(mDays[0],
+                                                                         mDays[NUMDAYS - 1]);
     for (int i = 0; i < NUMDAYS; ++i) {
         //if it is a holy day then draw it red. Sundays are consider holidays, too
         QStringList holidays = holidaysByDate[mDays[i]];
@@ -277,10 +280,10 @@ void KODayMatrix::updateJournals()
     for (const KCalCore::Incidence::Ptr &inc : incidences) {
         Q_ASSERT(inc);
         QDate d = inc->dtStart().toLocalTime().date();
-        if (inc->type() == KCalCore::Incidence::TypeJournal &&
-                d >= mDays[0] &&
-                d <= mDays[NUMDAYS - 1] &&
-                !mEvents.contains(d)) {
+        if (inc->type() == KCalCore::Incidence::TypeJournal
+            && d >= mDays[0]
+            && d <= mDays[NUMDAYS - 1]
+            && !mEvents.contains(d)) {
             mEvents.append(d);
         }
         if (mEvents.count() == NUMDAYS) {
@@ -312,15 +315,15 @@ void KODayMatrix::updateTodos()
         if (t->hasDueDate()) {
             ushort recurType = t->recurrenceType();
 
-            if (t->recurs() &&
-                    !(recurType == KCalCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur) &&
-                    !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
-
+            if (t->recurs()
+                && !(recurType == KCalCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
+                && !(recurType == KCalCore::Recurrence::rWeekly
+                     && !KOPrefs::instance()->mWeeklyRecur)) {
                 // It's a recurring todo, find out in which days it occurs
-                const auto timeDateList =
-                    t->recurrence()->timesInInterval(
-                        QDateTime(mDays[0], {}, Qt::LocalTime),
-                        QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
+                const auto timeDateList
+                    = t->recurrence()->timesInInterval(
+                    QDateTime(mDays[0], {}, Qt::LocalTime),
+                    QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
 
                 for (const QDateTime &dt : timeDateList) {
                     d = dt.toLocalTime().date();
@@ -328,7 +331,6 @@ void KODayMatrix::updateTodos()
                         mEvents.append(d);
                     }
                 }
-
             } else {
                 d = t->dtDue().toLocalTime().date();
                 if (d >= mDays[0] && d <= mDays[NUMDAYS - 1] && !mEvents.contains(d)) {
@@ -347,7 +349,7 @@ void KODayMatrix::updateEvents()
         return;
     }
     const KCalCore::Event::List eventlist = mCalendar->events(mDays[0], mDays[NUMDAYS - 1],
-                                      mCalendar->timeZone());
+                                                              mCalendar->timeZone());
 
     for (const KCalCore::Event::Ptr &event : eventlist) {
         if (mEvents.count() == NUMDAYS) {
@@ -365,9 +367,9 @@ void KODayMatrix::updateEvents()
         const int secsToAdd = event->allDay() ? 0 : -1;
         const QDateTime dtEnd = event->dtEnd().toLocalTime().addSecs(secsToAdd);
 
-        if (!(recurType == KCalCore::Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur) &&
-                !(recurType == KCalCore::Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {
-
+        if (!(recurType == KCalCore::Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur)
+            && !(recurType == KCalCore::Recurrence::rWeekly
+                 && !KOPrefs::instance()->mWeeklyRecur)) {
             KCalCore::SortableList<QDateTime> timeDateList;
             const bool isRecurrent = event->recurs();
             const int eventDuration = dtStart.daysTo(dtEnd);
@@ -375,8 +377,8 @@ void KODayMatrix::updateEvents()
             if (isRecurrent) {
                 //Its a recurring event, find out in which days it occurs
                 timeDateList = event->recurrence()->timesInInterval(
-                                   QDateTime(mDays[0], {}, Qt::LocalTime),
-                                   QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
+                    QDateTime(mDays[0], {}, Qt::LocalTime),
+                    QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
             } else {
                 if (dtStart.date() >= mDays[0]) {
                     timeDateList.append(dtStart);
@@ -389,7 +391,7 @@ void KODayMatrix::updateEvents()
             for (auto t = timeDateList.begin(); t != timeDateList.end(); ++t) {
                 //This could be a multiday event, so iterate from dtStart() to dtEnd()
                 QDate d = t->toLocalTime().date();
-                int j   = 0;
+                int j = 0;
 
                 QDate occurrenceEnd;
                 if (isRecurrent) {
@@ -427,9 +429,9 @@ QString KODayMatrix::getHolidayLabel(int offset) const
 
 int KODayMatrix::getDayIndexFrom(int x, int y) const
 {
-    return 7 * (y / mDaySize.height()) +
-           (KOGlobals::self()->reverseLayout() ?
-            6 - x / mDaySize.width() : x / mDaySize.width());
+    return 7 * (y / mDaySize.height())
+           +(KOGlobals::self()->reverseLayout()
+             ? 6 - x / mDaySize.width() : x / mDaySize.width());
 }
 
 void KODayMatrix::calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence)
@@ -444,24 +446,23 @@ void KODayMatrix::calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incid
     mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence,  const KCalCore::Calendar *calendar)
+void KODayMatrix::calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence,
+                                           const KCalCore::Calendar *calendar)
 {
     Q_UNUSED(incidence);
     Q_UNUSED(calendar);
     mPendingChanges = true;
 }
 
-void KODayMatrix::setHighlightMode(bool highlightEvents,
-                                   bool highlightTodos,
+void KODayMatrix::setHighlightMode(bool highlightEvents, bool highlightTodos,
                                    bool highlightJournals)
 {
-
     // don't set mPendingChanges to true if nothing changed
-    if (highlightTodos    != mHighlightTodos    ||
-            highlightEvents   != mHighlightEvents   ||
-            highlightJournals != mHighlightJournals) {
-        mHighlightEvents   = highlightEvents;
-        mHighlightTodos    = highlightTodos;
+    if (highlightTodos != mHighlightTodos
+        || highlightEvents != mHighlightEvents
+        || highlightJournals != mHighlightJournals) {
+        mHighlightEvents = highlightEvents;
+        mHighlightTodos = highlightTodos;
         mHighlightJournals = highlightJournals;
         mPendingChanges = true;
     }
@@ -517,11 +518,11 @@ void KODayMatrix::popupMenu(const QDate &date)
     QMenu popup(this);
     popup.setTitle(date.toString());
     QAction *newEventAction = popup.addAction(
-                                  QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent..."));
+        QIcon::fromTheme(QStringLiteral("appointment-new")), i18n("New E&vent..."));
     QAction *newTodoAction = popup.addAction(
-                                 QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do..."));
+        QIcon::fromTheme(QStringLiteral("task-new")), i18n("New &To-do..."));
     QAction *newJournalAction = popup.addAction(
-                                    QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."));
+        QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."));
     QAction *ret = popup.exec(QCursor::pos());
     if (ret == newEventAction) {
         Q_EMIT newEventSignal(date);
@@ -675,9 +676,13 @@ void KODayMatrix::dropEvent(QDropEvent *e)
             QAction *copy = nullptr, *move = nullptr;
             QMenu *menu = new QMenu(this);
             if (exist) {
-                move = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-paste")), i18n("&Move"));
-                if (/*existingEvent*/1) {
-                    copy = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("&Copy"));
+                move
+                    = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-paste")),
+                                      i18n("&Move"));
+                if (/*existingEvent*/ 1) {
+                    copy
+                        = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")),
+                                          i18n("&Copy"));
                 }
             } else {
                 move = menu->addAction(QIcon::fromTheme(QStringLiteral("list-add")), i18n("&Add"));
@@ -694,7 +699,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
             delete menu;
         }
 
-        if (action == DRAG_COPY  || action == DRAG_MOVE) {
+        if (action == DRAG_COPY || action == DRAG_MOVE) {
             e->accept();
             int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
 
@@ -735,7 +740,6 @@ void KODayMatrix::paintEvent(QPaintEvent *)
 
     // draw selected days with highlighted background color
     if (mSelStart != NOSELECTION) {
-
         row = mSelStart / 7;
         // fix larger selections starting in the previous month
         if (row < 0 && mSelEnd > 0) {
@@ -747,9 +751,9 @@ void KODayMatrix::paintEvent(QPaintEvent *)
         if (row < 6 && row >= 0) {
             if (row == mSelEnd / 7) {
                 // Single row selection
-                p.fillRect(isRTL ?
-                           (7 - (mSelEnd - mSelStart + 1) - column) * dayWidth :
-                           column * dayWidth,
+                p.fillRect(isRTL
+                           ? (7 - (mSelEnd - mSelStart + 1) - column) * dayWidth
+                           : column * dayWidth,
                            row * dayHeight,
                            (mSelEnd - mSelStart + 1) * dayWidth, dayHeight, selectionColor);
             } else {
@@ -768,9 +772,9 @@ void KODayMatrix::paintEvent(QPaintEvent *)
                 // draw last block from left to mSelEnd
                 if (mSelEnd / 7 < 6) {
                     int selectionWidth = mSelEnd - 7 * (mSelEnd / 7) + 1;
-                    p.fillRect(isRTL ?
-                               (7 - selectionWidth) * dayWidth :
-                               0,
+                    p.fillRect(isRTL
+                               ? (7 - selectionWidth) * dayWidth
+                               : 0,
                                (row + selectionHeight) * dayHeight,
                                selectionWidth * dayWidth, dayHeight, selectionColor);
                 }
@@ -807,8 +811,8 @@ void KODayMatrix::paintEvent(QPaintEvent *)
 
         const bool holiday = !workDays.contains(mDays[i]);
 
-        const QColor holidayColorShaded =
-            getShadedColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
+        const QColor holidayColorShaded
+            = getShadedColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
 
         // if today then draw rectangle around day
         if (mToday == i) {
@@ -899,4 +903,3 @@ QPair<QDate, QDate> KODayMatrix::matrixLimits(const QDate &month)
 
     return qMakePair(d, d.addDays(NUMDAYS - 1));
 }
-

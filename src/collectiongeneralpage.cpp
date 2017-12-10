@@ -45,12 +45,12 @@ using namespace Akonadi;
 using namespace CalendarSupport;
 
 CollectionGeneralPage::CollectionGeneralPage(QWidget *parent)
-    : CollectionPropertiesPage(parent),
-      mBlockAlarmsCheckBox(nullptr),
-      mNameEdit(nullptr),
-      mIconCheckBox(nullptr),
-      mIconButton(nullptr),
-      mIncidencesForComboBox(nullptr)
+    : CollectionPropertiesPage(parent)
+    , mBlockAlarmsCheckBox(nullptr)
+    , mNameEdit(nullptr)
+    , mIconCheckBox(nullptr)
+    , mIconButton(nullptr)
+    , mIncidencesForComboBox(nullptr)
 {
     setObjectName(QStringLiteral("CalendarSupport::CollectionGeneralPage"));
     setPageTitle(i18nc("@title:tab General settings for a folder.", "General"));
@@ -102,18 +102,22 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     hbox->addWidget(mIconButton);
     hbox->addStretch();
 
-    if ((collection.parentCollection() != Akonadi::Collection::root()) && PimCommon::Util::isImapResource(collection.resource())) {
-        const PimCommon::CollectionAnnotationsAttribute *annotationAttribute =
-            collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
+    if ((collection.parentCollection() != Akonadi::Collection::root())
+        && PimCommon::Util::isImapResource(collection.resource())) {
+        const PimCommon::CollectionAnnotationsAttribute *annotationAttribute
+            = collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
 
-        const QMap<QByteArray, QByteArray> annotations =
-            (annotationAttribute ?
-             annotationAttribute->annotations() :
-             QMap<QByteArray, QByteArray>());
+        const QMap<QByteArray, QByteArray> annotations
+            = (annotationAttribute
+               ? annotationAttribute->annotations()
+               : QMap<QByteArray, QByteArray>());
 
         PimCommon::CollectionTypeUtil collectionUtil;
-        const PimCommon::CollectionTypeUtil::IncidencesFor incidencesFor =
-            collectionUtil.incidencesForFromString(QLatin1String(annotations.value(PimCommon::CollectionTypeUtil::kolabIncidencesFor())));
+        const PimCommon::CollectionTypeUtil::IncidencesFor incidencesFor
+            = collectionUtil.incidencesForFromString(QLatin1String(annotations.value(PimCommon::
+                                                                                     CollectionTypeUtil
+                                                                                     ::
+                                                                                     kolabIncidencesFor())));
         hbox = new QHBoxLayout();
         topLayout->addItem(hbox);
         mIncidencesForComboBox = new PimCommon::IncidencesForWidget(this);
@@ -136,7 +140,9 @@ void CollectionGeneralPage::load(const Akonadi::Collection &collection)
     const QString displayName = collection.displayName();
 
     mNameEdit->setText(displayName);
-    mBlockAlarmsCheckBox->setChecked(collection.hasAttribute<BlockAlarmsAttribute>() && collection.attribute<BlockAlarmsAttribute>()->isEverythingBlocked());
+    mBlockAlarmsCheckBox->setChecked(
+        collection.hasAttribute<BlockAlarmsAttribute>()
+        && collection.attribute<BlockAlarmsAttribute>()->isEverythingBlocked());
 
     QString iconName;
     if (collection.hasAttribute<EntityDisplayAttribute>()) {
@@ -145,8 +151,8 @@ void CollectionGeneralPage::load(const Akonadi::Collection &collection)
 
     if (iconName.isEmpty()) {
         const QStringList mimeTypes = collection.contentMimeTypes();
-        if (collection.contentMimeTypes().count() > 1 ||
-                collection.contentMimeTypes().contains(KCalCore::Event::eventMimeType())) {
+        if (collection.contentMimeTypes().count() > 1
+            || collection.contentMimeTypes().contains(KCalCore::Event::eventMimeType())) {
             mIconButton->setIcon(QIcon::fromTheme(QStringLiteral("view-pim-calendar")));
         } else if (collection.contentMimeTypes().contains(KCalCore::Todo::todoMimeType())) {
             mIconButton->setIcon(QIcon::fromTheme(QStringLiteral("view-pim-tasks")));
@@ -165,14 +171,15 @@ void CollectionGeneralPage::load(const Akonadi::Collection &collection)
 
 void CollectionGeneralPage::save(Collection &collection)
 {
-    if (collection.hasAttribute<EntityDisplayAttribute>() &&
-            !collection.attribute<EntityDisplayAttribute>()->displayName().isEmpty()) {
+    if (collection.hasAttribute<EntityDisplayAttribute>()
+        && !collection.attribute<EntityDisplayAttribute>()->displayName().isEmpty()) {
         collection.attribute<EntityDisplayAttribute>()->setDisplayName(mNameEdit->text());
     } else {
         collection.setName(mNameEdit->text());
     }
 
-    BlockAlarmsAttribute *attr = collection.attribute<BlockAlarmsAttribute>(Collection::AddIfMissing);
+    BlockAlarmsAttribute *attr
+        = collection.attribute<BlockAlarmsAttribute>(Collection::AddIfMissing);
     attr->blockEverything(mBlockAlarmsCheckBox->isChecked());
 
     if (mIconCheckBox->isChecked()) {
@@ -181,16 +188,17 @@ void CollectionGeneralPage::save(Collection &collection)
     } else if (collection.hasAttribute<EntityDisplayAttribute>()) {
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
     }
-    PimCommon::CollectionAnnotationsAttribute *annotationsAttribute =
-        collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
+    PimCommon::CollectionAnnotationsAttribute *annotationsAttribute
+        = collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
 
     QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();
 
     PimCommon::CollectionTypeUtil collectionUtil;
     if (mIncidencesForComboBox && mIncidencesForComboBox->isEnabled()) {
-        annotations[ PimCommon::CollectionTypeUtil::kolabIncidencesFor() ] =
-            collectionUtil.incidencesForToString(
-                static_cast<PimCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->currentIndex())).toLatin1();
+        annotations[ PimCommon::CollectionTypeUtil::kolabIncidencesFor() ]
+            = collectionUtil.incidencesForToString(
+            static_cast<PimCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->
+                                                                      currentIndex())).toLatin1();
     }
 
     if (annotations.isEmpty()) {
@@ -198,6 +206,4 @@ void CollectionGeneralPage::save(Collection &collection)
     } else {
         annotationsAttribute->setAnnotations(annotations);
     }
-
 }
-

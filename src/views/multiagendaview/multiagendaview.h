@@ -29,9 +29,7 @@
 
 #include <QAbstractItemModel>
 
-namespace KOrg
-{
-
+namespace KOrg {
 /**
   Shows one agenda for every resource side-by-side.
 */
@@ -74,10 +72,12 @@ public:
     Akonadi::Collection::Id collectionId() const override;
 
 public Q_SLOTS:
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+    void showDates(const QDate &start, const QDate &end,
+                   const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &,
+                                Akonadi::IncidenceChanger::ChangeType) override;
     void updateConfig() override;
 
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
@@ -85,16 +85,13 @@ public Q_SLOTS:
 private:
     class Private;
     Private *const d;
-
 };
 
-class MultiAgendaViewConfigDialog : public QDialog,
-    public EventViews::ConfigDialogInterface
+class MultiAgendaViewConfigDialog : public QDialog, public EventViews::ConfigDialogInterface
 {
     Q_OBJECT
 public:
-    explicit MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel,
-                                         QWidget *parent = nullptr);
+    explicit MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent = nullptr);
     ~MultiAgendaViewConfigDialog();
 
     bool useCustomColumns() const override;
@@ -124,7 +121,6 @@ private:
     class Private;
     Private *const d;
 };
-
 }
 
 #endif

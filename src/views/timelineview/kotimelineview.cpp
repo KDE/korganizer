@@ -136,8 +136,7 @@ void KOTimelineView::showDates(const QDate &start, const QDate &end, const QDate
     mTimeLineView->showDates(start, end);
 }
 
-void KOTimelineView::showIncidences(const Akonadi::Item::List &incidenceList,
-                                    const QDate &date)
+void KOTimelineView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
     mTimeLineView->showIncidences(incidenceList, date);
 }
@@ -148,13 +147,12 @@ void KOTimelineView::updateView()
 }
 
 void KOTimelineView::changeIncidenceDisplay(const Akonadi::Item &incidence,
-        Akonadi::IncidenceChanger::ChangeType changeType)
+                                            Akonadi::IncidenceChanger::ChangeType changeType)
 {
     mTimeLineView->changeIncidenceDisplay(incidence, changeType);
 }
 
-bool KOTimelineView::eventDurationHint(QDateTime &startDt, QDateTime &endDt,
-                                       bool &allDay)
+bool KOTimelineView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
     return mTimeLineView->eventDurationHint(startDt, endDt, allDay);
 }
@@ -180,4 +178,3 @@ void KOTimelineView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
     mTimeLineView->setIncidenceChanger(changer);
 }
-

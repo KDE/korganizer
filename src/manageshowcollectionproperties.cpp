@@ -26,9 +26,10 @@
 #include <AkonadiCore/CollectionFetchJob>
 #include <AkonadiCore/CollectionFetchScope>
 
-ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent)
-    : QObject(parent),
-      mCollectionView(collectionView)
+ManageShowCollectionProperties::ManageShowCollectionProperties(
+    AkonadiCollectionView *collectionView, QObject *parent)
+    : QObject(parent)
+    , mCollectionView(collectionView)
 {
     mPages = QStringList() << QStringLiteral("CalendarSupport::CollectionGeneralPage")
                            << QStringLiteral("Akonadi::CachePolicyPage")
@@ -38,7 +39,6 @@ ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollection
 
 ManageShowCollectionProperties::~ManageShowCollectionProperties()
 {
-
 }
 
 void ManageShowCollectionProperties::showCollectionProperties()
@@ -69,8 +69,9 @@ void ManageShowCollectionProperties::slotCollectionPropertiesContinued(KJob *job
             return;
         }
     }
-    Akonadi::CollectionFetchJob *fetch = new Akonadi::CollectionFetchJob(mCollectionView->currentCalendar(),
-            Akonadi::CollectionFetchJob::Base);
+    Akonadi::CollectionFetchJob *fetch = new Akonadi::CollectionFetchJob(
+        mCollectionView->currentCalendar(),
+        Akonadi::CollectionFetchJob::Base);
     fetch->fetchScope().setIncludeStatistics(true);
     connect(fetch, &KJob::result,
             this, &ManageShowCollectionProperties::slotCollectionPropertiesFinished);
@@ -93,9 +94,10 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
     if (!collections.isEmpty()) {
         const Akonadi::Collection collection = collections.first();
 
-        QPointer<Akonadi::CollectionPropertiesDialog> dlg =
-            new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
-        dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1", collection.name()));
+        QPointer<Akonadi::CollectionPropertiesDialog> dlg
+            = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
+        dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1",
+                                  collection.name()));
 
         dlg->show();
         mHashDialogBox.insert(collection.id(), dlg);

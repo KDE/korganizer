@@ -30,11 +30,15 @@
 class KOPrefsPrivate
 {
 public:
-    KOPrefsPrivate() : prefs(new KOPrefs) {}
+    KOPrefsPrivate() : prefs(new KOPrefs)
+    {
+    }
+
     ~KOPrefsPrivate()
     {
         delete prefs;
     }
+
     KOPrefs *prefs = nullptr;
 };
 
@@ -56,7 +60,6 @@ KOPrefs::KOPrefs() : KOPrefsBase()
 
 KOPrefs::~KOPrefs()
 {
-
     mEventViewsPrefs->writeConfig();
 }
 

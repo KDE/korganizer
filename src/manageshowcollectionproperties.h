@@ -17,15 +17,13 @@
    Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef MANAGESHOWCOLLECTIONPROPERTIES_H
 #define MANAGESHOWCOLLECTIONPROPERTIES_H
 
 #include <QObject>
 #include <QPointer>
 #include <AkonadiCore/Collection>
-namespace Akonadi
-{
+namespace Akonadi {
 class CollectionPropertiesDialog;
 }
 class KJob;
@@ -34,7 +32,8 @@ class ManageShowCollectionProperties : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent = nullptr);
+    explicit ManageShowCollectionProperties(AkonadiCollectionView *collectionView,
+                                            QObject *parent = nullptr);
     ~ManageShowCollectionProperties();
 
 public Q_SLOTS:

@@ -33,10 +33,10 @@ static void korganizer_options(QCommandLineParser *parser)
 {
     parser->addOption(QCommandLineOption(
                           QStringList() << QStringLiteral("i") << QStringLiteral("import"),
-                          i18n("Import the specified files as separate calendars")));
+                              i18n("Import the specified files as separate calendars")));
     parser->addOption(QCommandLineOption(
                           QStringList() << QStringLiteral("m") << QStringLiteral("merge"),
-                          i18n("Merge the specified files into an existing calendar")));
+                              i18n("Merge the specified files into an existing calendar")));
 
     parser->addPositionalArgument(
         QStringLiteral("calendars"),
@@ -46,4 +46,3 @@ static void korganizer_options(QCommandLineParser *parser)
 }
 
 #endif
-

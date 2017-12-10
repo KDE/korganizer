@@ -25,7 +25,8 @@
 #include <KLocalizedString>
 
 KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
-    : KPIM::KCheckComboBox(parent), mViewType(viewType)
+    : KPIM::KCheckComboBox(parent)
+    , mViewType(viewType)
 {
     addItem(i18n("Calendar's custom icon"));
     addItem(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n("To-do"));
@@ -61,9 +62,9 @@ void KItemIconCheckCombo::setCheckedIcons(const QSet<EventViews::EventView::Item
         if (itemEnabled(i)) {
             setItemCheckState(
                 i,
-                icons.contains(static_cast<EventViews::EventView::ItemIcon>(i)) ?
-                Qt::Checked :
-                Qt::Unchecked);
+                icons.contains(static_cast<EventViews::EventView::ItemIcon>(i))
+                ? Qt::Checked
+                : Qt::Unchecked);
         } else {
             setItemCheckState(i, Qt::Unchecked);
         }
@@ -82,4 +83,3 @@ QSet<EventViews::EventView::ItemIcon> KItemIconCheckCombo::checkedIcons() const
     }
     return icons;
 }
-

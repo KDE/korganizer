@@ -31,8 +31,7 @@
 
 class KOrganizerPlugin;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 class IncidenceChanger;
 }
@@ -53,9 +52,11 @@ public:
     {
         return 3;
     }
+
     QStringList configModules() const override;
     void configUpdated();
-    void updateSummary(bool force = false) override {
+    void updateSummary(bool force = false) override
+    {
         Q_UNUSED(force);
         updateView();
     }

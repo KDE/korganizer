@@ -79,8 +79,7 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
     return holidaysByDate;
 }
 
-QList<QDate> KOGlobals::workDays(const QDate &startDate,
-                                 const QDate &endDate) const
+QList<QDate> KOGlobals::workDays(const QDate &startDate, const QDate &endDate) const
 {
     QList<QDate> result;
 

@@ -70,7 +70,8 @@ private:
 };
 
 MultiAgendaView::MultiAgendaView(QWidget *parent)
-    : KOEventView(parent), d(new Private(this))
+    : KOEventView(parent)
+    , d(new Private(this))
 {
     connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected,
             this, &KOEventView::datesSelected);
@@ -140,7 +141,6 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
 
     connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal,
             this, &BaseView::newJournalSignal);
-
 }
 
 void MultiAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
@@ -189,7 +189,8 @@ Akonadi::Collection::Id MultiAgendaView::collectionId() const
     return d->mMultiAgendaView->collectionId();
 }
 
-void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
+void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &,
+                                             Akonadi::IncidenceChanger::ChangeType)
 {
 }
 
@@ -203,8 +204,7 @@ void MultiAgendaView::setDateRange(const QDateTime &start, const QDateTime &end,
     d->mMultiAgendaView->setDateRange(start, end);
 }
 
-bool MultiAgendaView::eventDurationHint(QDateTime &startDt, QDateTime &endDt,
-                                        bool &allDay)
+bool MultiAgendaView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
     return d->mMultiAgendaView->eventDurationHint(startDt, endDt, allDay);
 }
@@ -287,8 +287,11 @@ class MultiAgendaViewConfigDialog::Private
 public:
     MultiAgendaViewConfigDialog *const q;
     explicit Private(QAbstractItemModel *base, MultiAgendaViewConfigDialog *qq)
-        : q(qq), baseModel(base), currentColumn(0)
-    {}
+        : q(qq)
+        , baseModel(base)
+        , currentColumn(0)
+    {
+    }
 
     ~Private()
     {
@@ -318,14 +321,16 @@ void MultiAgendaView::saveConfig(KConfigGroup &configGroup)
 }
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel,
-        QWidget *parent)
-    : QDialog(parent), d(new Private(baseModel, this))
+                                                         QWidget *parent)
+    : QDialog(parent)
+    , d(new Private(baseModel, this))
 {
     setWindowTitle(i18n("Configure Side-By-Side View"));
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     QWidget *widget = new QWidget;
     d->ui.setupUi(widget);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(
+        QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
     okButton->setDefault(true);
     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
@@ -425,11 +430,14 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
             sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
 
-            KRearrangeColumnsProxyModel *columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
-            columnFilterProxy->setSourceColumns(QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
+            KRearrangeColumnsProxyModel *columnFilterProxy = new KRearrangeColumnsProxyModel(
+                sortProxy);
+            columnFilterProxy->setSourceColumns(
+                QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
             columnFilterProxy->setSourceModel(sortProxy);
 
-            QItemSelectionModel *qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
+            QItemSelectionModel *qsm
+                = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
             KCheckableProxyModel *selection = new KCheckableProxyModel;
             selection->setSourceModel(columnFilterProxy);
@@ -549,4 +557,3 @@ MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog()
 {
     delete d;
 }
-

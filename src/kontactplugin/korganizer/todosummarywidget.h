@@ -35,8 +35,7 @@
 
 class TodoPlugin;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class IncidenceChanger;
 }
 
@@ -55,10 +54,12 @@ public:
     {
         return 3;
     }
+
     QStringList configModules() const override;
 
 public Q_SLOTS:
-    void updateSummary(bool force = false) override {
+    void updateSummary(bool force = false) override
+    {
         Q_UNUSED(force);
         updateView();
     }

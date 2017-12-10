@@ -29,18 +29,31 @@ class MyDesignerFields : public KCMDesignerFields
 {
     Q_OBJECT
 public:
-    MyDesignerFields() : KCMDesignerFields(nullptr) {}
-    QString localUiDir() override {
+    MyDesignerFields() : KCMDesignerFields(nullptr)
+    {
+    }
+
+    QString localUiDir() override
+    {
         return QStringLiteral(TESTKCMDESIGNERCURRENTDIR);
     }
-    QString uiPath() override {
+
+    QString uiPath() override
+    {
         return QStringLiteral(TESTKCMDESIGNERCURRENTDIR);
     }
-    void writeActivePages(const QStringList &) override  {}
-    QStringList readActivePages() override {
+
+    void writeActivePages(const QStringList &) override
+    {
+    }
+
+    QStringList readActivePages() override
+    {
         return QStringList();
     }
-    QString applicationName() override {
+
+    QString applicationName() override
+    {
         return QStringLiteral("textkcmdesignerfields");
     }
 };
@@ -63,4 +76,3 @@ int main(int argc, char **argv)
 }
 
 #include "testkcmdesignerfields.moc"
-

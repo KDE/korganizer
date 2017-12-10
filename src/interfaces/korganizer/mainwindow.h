@@ -33,9 +33,7 @@ class KXMLGUIFactory;
 
 class QWidget;
 
-namespace KOrg
-{
-
+namespace KOrg {
 class CalendarViewBase;
 
 /**
@@ -103,7 +101,6 @@ public:
 private:
     bool mDocument;
 };
-
 }
 
 #endif

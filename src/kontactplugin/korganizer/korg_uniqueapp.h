@@ -29,12 +29,16 @@ class KOrganizerUniqueAppHandler : public KontactInterface::UniqueAppHandler
     Q_OBJECT
 public:
     explicit KOrganizerUniqueAppHandler(KontactInterface::Plugin *plugin)
-        : KontactInterface::UniqueAppHandler(plugin) {}
-    virtual ~KOrganizerUniqueAppHandler() {}
+        : KontactInterface::UniqueAppHandler(plugin)
+    {
+    }
+
+    virtual ~KOrganizerUniqueAppHandler()
+    {
+    }
 
     void loadCommandLineOptions(QCommandLineParser *parser) override;
     int activate(const QStringList &args, const QString &workingDir) override;
 };
 
 #endif /* KORG_UNIQUEAPP_H */
-

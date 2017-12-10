@@ -28,7 +28,6 @@ KOrganizerPluginInterface::KOrganizerPluginInterface(QObject *parent)
 
 KOrganizerPluginInterface::~KOrganizerPluginInterface()
 {
-
 }
 
 KOrganizerPluginInterface *KOrganizerPluginInterface::self()

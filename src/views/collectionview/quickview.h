@@ -30,11 +30,9 @@
 #include <KCalCore/FreeBusy>
 #include <QDialog>
 
+class Ui_quickview;
 
-class  Ui_quickview;
-
-namespace EventViews
-{
+namespace EventViews {
 class AgendaView;
 }
 

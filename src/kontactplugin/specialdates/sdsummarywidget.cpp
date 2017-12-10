@@ -71,7 +71,8 @@ BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
     Akonadi::SearchQuery query;
     query.addTerm(QStringLiteral("birthday"), QDate::currentDate().toJulianDay(),
                   Akonadi::SearchTerm::CondGreaterOrEqual);
-    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().addDays(daysInAdvance).toJulianDay(),
+    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().addDays(
+                      daysInAdvance).toJulianDay(),
                   Akonadi::SearchTerm::CondLessOrEqual);
 
     ItemSearchJob::setQuery(query);
@@ -110,7 +111,9 @@ public:
 };
 
 SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *parent)
-    : KontactInterface::Summary(parent), mPlugin(plugin), mHolidays(nullptr)
+    : KontactInterface::Summary(parent)
+    , mPlugin(plugin)
+    , mHolidays(nullptr)
 {
     mCalendar = CalendarSupport::calendarSingleton();
     // Create the Summary Layout
@@ -276,9 +279,9 @@ void SDSummaryWidget::createLabels()
     for (dt = QDate::currentDate();
          dt <= QDate::currentDate().addDays(mDaysAhead - 1);
          dt = dt.addDays(1)) {
-        const KCalCore::Event::List events  = mCalendar->events(dt, mCalendar->timeZone(),
-                                        KCalCore::EventSortStartDate,
-                                        KCalCore::SortDirectionAscending);
+        const KCalCore::Event::List events = mCalendar->events(dt, mCalendar->timeZone(),
+                                                               KCalCore::EventSortStartDate,
+                                                               KCalCore::SortDirectionAscending);
         for (const KCalCore::Event::Ptr &ev : events) {
             // Optionally, show only my Events
             /* if ( mShowMineOnly &&
@@ -300,7 +303,6 @@ void SDSummaryWidget::createLabels()
                 const QStringList c = ev->categories();
                 QStringList::ConstIterator end(c.constEnd());
                 for (it2 = c.constBegin(); it2 != end; ++it2) {
-
                     const QString itUpper((*it2).toUpper());
                     // Append Birthday Event?
                     if (mShowBirthdaysFromCal && (itUpper == QLatin1String("BIRTHDAY"))) {
@@ -318,7 +320,7 @@ void SDSummaryWidget::createLabels()
                          * with summary and date equal to some KABC Atendee we don't show it
                          * FIXME: port to akonadi, it's kresource based
                          * */
-                        if (/*!check( bdayRes, dt, ev->summary() )*/true) {
+                        if (/*!check( bdayRes, dt, ev->summary() )*/ true) {
                             mDates.append(entry);
                         }
                         break;
@@ -334,7 +336,7 @@ void SDSummaryWidget::createLabels()
                         entry.desc = ev->description();
                         dateDiff(ev->dtStart().date(), entry.daysTo, entry.yearsOld);
                         entry.span = 1;
-                        if (/*!check( annvRes, dt, ev->summary() )*/true) {
+                        if (/*!check( annvRes, dt, ev->summary() )*/ true) {
                             mDates.append(entry);
                         }
                         break;
@@ -391,8 +393,8 @@ void SDSummaryWidget::createLabels()
                 for (; it != holidays.constEnd(); ++it) {
                     SDEntry entry;
                     entry.type = IncidenceTypeEvent;
-                    entry.category = ((*it).dayType() == Holiday::NonWorkday) ?
-                                     CategoryHoliday : CategoryOther;
+                    entry.category = ((*it).dayType() == Holiday::NonWorkday)
+                                     ? CategoryHoliday : CategoryOther;
                     entry.date = dt;
                     entry.summary = (*it).name();
                     dateDiff(dt, entry.daysTo, entry.yearsOld);
@@ -488,7 +490,9 @@ void SDSummaryWidget::createLabels()
             // Print the date span for multiday, floating events, for the
             // first day of the event only.
             if ((*addrIt).span > 1) {
-                QString endstr = QLocale::system().toString(sD.addDays((*addrIt).span - 1), QLocale::LongFormat);
+                QString endstr = QLocale::system().toString(sD.addDays(
+                                                                (*addrIt).span - 1),
+                                                            QLocale::LongFormat);
                 datestr += QLatin1String(" -\n ") + endstr;
             }
 
@@ -563,8 +567,8 @@ void SDSummaryWidget::createLabels()
             }
 
             // Age
-            if ((*addrIt).category == CategoryBirthday ||
-                    (*addrIt).category == CategoryAnniversary) {
+            if ((*addrIt).category == CategoryBirthday
+                || (*addrIt).category == CategoryAnniversary) {
                 label = new QLabel(this);
                 if ((*addrIt).yearsOld <= 0) {
                     label->setText(QString());
@@ -675,12 +679,14 @@ void SDSummaryWidget::viewContact(const QString &url)
 void SDSummaryWidget::popupMenu(const QString &url)
 {
     QMenu popup(this);
-    const QAction *sendMailAction =
-        popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("mail-message-new"), KIconLoader::Small),
-                        i18n("Send &Mail"));
-    const QAction *viewContactAction =
-        popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("view-pim-contacts"), KIconLoader::Small),
-                        i18n("View &Contact"));
+    const QAction *sendMailAction
+        = popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("mail-message-new"),
+                                                          KIconLoader::Small),
+                          i18n("Send &Mail"));
+    const QAction *viewContactAction
+        = popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("view-pim-contacts"),
+                                                          KIconLoader::Small),
+                          i18n("View &Contact"));
 
     const QAction *ret = popup.exec(QCursor::pos());
     if (ret == sendMailAction) {

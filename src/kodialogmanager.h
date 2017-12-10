@@ -32,22 +32,18 @@ class CalendarView;
 class FilterEditDialog;
 class SearchDialog;
 
-namespace CalendarSupport
-{
+namespace CalendarSupport {
 class ArchiveDialog;
 }
 
-namespace IncidenceEditorNG
-{
+namespace IncidenceEditorNG {
 class IncidenceDialog;
 }
 
-namespace KCalCore
-{
+namespace KCalCore {
 class CalFilter;
 }
-namespace Akonadi
-{
+namespace Akonadi {
 class TagManagementDialog;
 }
 

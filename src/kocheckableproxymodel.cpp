@@ -28,8 +28,7 @@ KOCheckableProxyModel::KOCheckableProxyModel(QObject *parent) : KCheckableProxyM
 {
 }
 
-bool KOCheckableProxyModel::setData(const QModelIndex &index,
-                                    const QVariant &value, int role)
+bool KOCheckableProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Qt::CheckState newState = static_cast<Qt::CheckState>(value.toInt());
     if (role == Qt::CheckStateRole && index.column() == 0) {
@@ -43,4 +42,3 @@ bool KOCheckableProxyModel::setData(const QModelIndex &index,
     }
     return result;
 }
-

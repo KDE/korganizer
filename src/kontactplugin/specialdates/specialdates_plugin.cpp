@@ -64,4 +64,5 @@ const KAboutData SpecialdatesPlugin::aboutData()
     aboutData.setProductName("kontact/specialdates");
     return aboutData;
 }
+
 #include "specialdates_plugin.moc"

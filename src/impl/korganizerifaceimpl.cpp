@@ -36,9 +36,10 @@
 #include "korganizeradaptor.h"
 #include "korganizer_debug.h"
 
-KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager,
-        QObject *parent, const QString &name)
-    : QObject(parent), mActionManager(actionManager)
+KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager, QObject *parent,
+                                         const QString &name)
+    : QObject(parent)
+    , mActionManager(actionManager)
 {
     setObjectName(name);
     new KorganizerAdaptor(this);
@@ -128,4 +129,3 @@ bool KOrganizerIfaceImpl::handleCommandLine(const QStringList &args)
 {
     return mActionManager->handleCommandLine(args);
 }
-

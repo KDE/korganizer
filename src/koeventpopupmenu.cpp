@@ -49,9 +49,9 @@
 #include <IncidenceEditor/IncidenceDialog>
 
 KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
-    : QMenu(parent), mCalendar(calendar)
+    : QMenu(parent)
+    , mCalendar(calendar)
 {
-
     addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18n("&Show"),
               this, &KOEventPopupMenu::popupShow);
     mEditOnlyItems.append(
@@ -82,8 +82,8 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     //------------------------------------------------------------------------
     addSeparator();
     QAction *action = addAction(QIcon::fromTheme(QStringLiteral("task-new")),
-                       i18n("Create To-do"),
-                       this, SLOT(createTodo()));
+                                i18n("Create To-do"),
+                                this, SLOT(createTodo()));
     action->setObjectName(QStringLiteral("createtodo"));
     mEventOnlyItems.append(action);
 
@@ -102,8 +102,8 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-complete")),
                                     i18n("Togg&le To-do Completed"),
                                     this, SLOT(toggleTodoCompleted())));
-    mToggleReminder =  addAction(QIcon(QIcon::fromTheme(QStringLiteral("appointment-reminder"))),
-                                 i18n("&Toggle Reminder"), this, SLOT(toggleAlarm()));
+    mToggleReminder = addAction(QIcon(QIcon::fromTheme(QStringLiteral("appointment-reminder"))),
+                                i18n("&Toggle Reminder"), this, SLOT(toggleAlarm()));
     mEditOnlyItems.append(mToggleReminder);
     //------------------------------------------------------------------------
     mRecurrenceItems.append(addSeparator());
@@ -115,7 +115,6 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
     addAction(QIcon::fromTheme(QStringLiteral("mail-forward")),
               i18n("Send as iCalendar..."),
               this, SLOT(forward()));
-
 }
 
 void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate &qd)
@@ -123,7 +122,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     mCurrentIncidence = item;
     mCurrentDate = qd;
 
-    if (!CalendarSupport::hasIncidence(mCurrentIncidence)/*&& qd.isValid()*/) {
+    if (!CalendarSupport::hasIncidence(mCurrentIncidence) /*&& qd.isValid()*/) {
         qCDebug(KORGANIZER_LOG) << "No event selected";
         return;
     }
@@ -134,16 +133,17 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
         return;
     }
 
-    const bool hasChangeRights = mCalendar->hasRight(mCurrentIncidence, Akonadi::Collection::CanChangeItem);
+    const bool hasChangeRights = mCalendar->hasRight(mCurrentIncidence,
+                                                     Akonadi::Collection::CanChangeItem);
 
     KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
     Q_ASSERT(incidence);
     if (incidence->recurs()) {
         const QDateTime thisDateTime(qd, {}, Qt::LocalTime);
-        const bool isLastOccurrence =
-            !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
-        const bool isFirstOccurrence =
-            !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
+        const bool isLastOccurrence
+            = !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
+        const bool isFirstOccurrence
+            = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
         mDissociateOccurrences->setEnabled(
             !(isFirstOccurrence && isLastOccurrence) && hasChangeRights);
     }
@@ -195,7 +195,8 @@ void KOEventPopupMenu::print(bool preview)
 {
     KOCoreHelper helper;
     CalendarSupport::CalPrinter printer(this, mCalendar, true);
-    connect(this, &KOEventPopupMenu::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
+    connect(this, &KOEventPopupMenu::configChanged, &printer,
+            &CalendarSupport::CalPrinter::updateConfig);
 
     //Item::List selectedIncidences;
     KCalCore::Incidence::List selectedIncidences;
@@ -295,7 +296,8 @@ void KOEventPopupMenu::createEvent()
         newEventItem.setMimeType(KCalCore::Event::eventMimeType());
         newEventItem.setPayload<KCalCore::Event::Ptr>(event);
 
-        IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(true, KCalCore::IncidenceBase::TypeEvent, 0, this);
+        IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
+            true, KCalCore::IncidenceBase::TypeEvent, 0, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newEventItem);
         dlg->open();
@@ -315,10 +317,12 @@ void KOEventPopupMenu::createNote()
         KCalCore::Incidence::Ptr incidence(CalendarSupport::incidence(mCurrentIncidence));
         Akonadi::NoteUtils::NoteMessageWrapper note;
         note.setTitle(incidence->summary());
-        note.setText(incidence->description(), incidence->descriptionIsRich() ? Qt::RichText : Qt::PlainText);
+        note.setText(incidence->description(),
+                     incidence->descriptionIsRich() ? Qt::RichText : Qt::PlainText);
         note.setFrom(QCoreApplication::applicationName() + QCoreApplication::applicationVersion());
         note.setLastModifiedDate(QDateTime::currentDateTimeUtc());
-        Akonadi::NoteUtils::Attachment attachment(mCurrentIncidence.url(), mCurrentIncidence.mimeType());
+        Akonadi::NoteUtils::Attachment attachment(
+            mCurrentIncidence.url(), mCurrentIncidence.mimeType());
         note.attachments().append(attachment);
         Akonadi::Item newNoteItem;
         newNoteItem.setMimeType(Akonadi::NoteUtils::noteMimeType());
@@ -331,10 +335,12 @@ void KOEventPopupMenu::createNote()
     }
 }
 
-void KOEventPopupMenu::slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection)
+void KOEventPopupMenu::slotCreateNote(const Akonadi::Item &noteItem,
+                                      const Akonadi::Collection &collection)
 {
     Akonadi::ItemCreateJob *createJob = new Akonadi::ItemCreateJob(noteItem, collection, this);
-    connect(createJob, &Akonadi::ItemCreateJob::result, this, &KOEventPopupMenu::slotCreateNewNoteJobFinished);
+    connect(createJob, &Akonadi::ItemCreateJob::result, this,
+            &KOEventPopupMenu::slotCreateNewNoteJobFinished);
     createJob->start();
 }
 
@@ -367,7 +373,8 @@ void KOEventPopupMenu::createTodo()
         newTodoItem.setMimeType(KCalCore::Todo::todoMimeType());
         newTodoItem.setPayload<KCalCore::Todo::Ptr>(todo);
 
-        IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(true, KCalCore::IncidenceBase::TypeTodo, 0, this);
+        IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
+            true, KCalCore::IncidenceBase::TypeTodo, 0, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newTodoItem);
         dlg->open();
@@ -385,4 +392,3 @@ void KOEventPopupMenu::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
     mCalendar = calendar;
 }
-

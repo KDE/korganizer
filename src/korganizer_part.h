@@ -33,18 +33,15 @@
 
 class CalendarView;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 }
 
-namespace KParts
-{
+namespace KParts {
 class StatusBarExtension;
 }
 
-class KOrganizerPart: public KParts::ReadOnlyPart,
-    public KOrg::MainWindow
+class KOrganizerPart : public KParts::ReadOnlyPart, public KOrg::MainWindow
 {
     Q_OBJECT
 public:
@@ -73,18 +70,23 @@ public:
     /** Get current URL */
     QUrl getCurrentURL() const override;
 
-    KXMLGUIFactory *mainGuiFactory() override {
+    KXMLGUIFactory *mainGuiFactory() override
+    {
         return factory();
     }
-    KXMLGUIClient *mainGuiClient() override {
+
+    KXMLGUIClient *mainGuiClient() override
+    {
         return this;
     }
+
     QWidget *topLevelWidget() override;
     ActionManager *actionManager() override;
     KActionCollection *getActionCollection() const override
     {
         return actionCollection();
     }
+
     void showStatusMessage(const QString &message) override;
 
     void setTitle() override;

@@ -34,14 +34,13 @@
 class KODayMatrix;
 class NavigatorBar;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 }
 
 class QLabel;
 
-class KDateNavigator: public QFrame
+class KDateNavigator : public QFrame
 {
     Q_OBJECT
 public:
@@ -69,9 +68,7 @@ public:
 
     QDate startDate() const;
     QDate endDate() const;
-    void setHighlightMode(bool highlightEvents,
-                          bool highlightTodos,
-                          bool highlightJournals) const;
+    void setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals) const;
 
     /**
        Returns the current displayed month.

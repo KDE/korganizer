@@ -36,9 +36,7 @@
 
 #include <QWidget>
 
-namespace KOrg
-{
-
+namespace KOrg {
 /**
   This class provides an interface for all views being displayed within the
   main calendar view. It has functions to update the view, to specify date
@@ -125,8 +123,7 @@ public:
      * This function writes to these 3 parameters the result,
      * the original value is ignored
      */
-    virtual void getHighlightMode(bool &highlightEvents,
-                                  bool &highlightTodos,
+    virtual void getHighlightMode(bool &highlightEvents, bool &highlightTodos,
                                   bool &highlightJournals);
 
     /**
@@ -394,9 +391,7 @@ protected:
      * The default implementation returns the range unmodified
      */
     virtual QPair<QDateTime, QDateTime> actualDateRange(
-        const QDateTime &start,
-        const QDateTime &end,
-        const QDate &preferredMonth = QDate()) const;
+        const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) const;
 
 protected Q_SLOTS:
     virtual void calendarReset();
@@ -409,7 +404,6 @@ private:
     Private *const d;
     friend class KOrg::BaseView::Private;
 };
-
 }
 
 #endif

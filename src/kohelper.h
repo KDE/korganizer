@@ -31,8 +31,7 @@
 
 #include <KCalCore/Incidence>
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Collection;
 class Item;
 }
@@ -42,8 +41,7 @@ class QDate;
 
 // Provides static methods that are useful to all views.
 
-namespace KOHelper
-{
+namespace KOHelper {
 /**
   Returns a nice QColor for text, give the input color &c.
 */
@@ -61,7 +59,8 @@ KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Item &incidence);
 
 KORGANIZERPRIVATE_EXPORT QColor resourceColor(const Akonadi::Collection &collection);
 KORGANIZERPRIVATE_EXPORT QColor resourceColorKnown(const Akonadi::Collection &collection);
-KORGANIZERPRIVATE_EXPORT void setResourceColor(const Akonadi::Collection &collection, const QColor &color);
+KORGANIZERPRIVATE_EXPORT void setResourceColor(const Akonadi::Collection &collection,
+                                               const QColor &color);
 
 /**
   Returns the number of years between the @p start QDate and the @p end QDate

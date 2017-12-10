@@ -53,14 +53,15 @@
 #include <QVBoxLayout>
 
 ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
-    : KontactInterface::Summary(parent), mPlugin(plugin)
+    : KontactInterface::Summary(parent)
+    , mPlugin(plugin)
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(3);
     mainLayout->setMargin(3);
 
     QWidget *header = createHeader(
-                          this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));
+        this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -74,8 +75,11 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
 
     mChanger = new Akonadi::IncidenceChanger(parent);
 
-    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &ApptSummaryWidget::updateView);
-    connect(mPlugin->core(), &KontactInterface::Core::dayChanged, this, &ApptSummaryWidget::updateView);
+    connect(
+        mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
+        &ApptSummaryWidget::updateView);
+    connect(
+        mPlugin->core(), &KontactInterface::Core::dayChanged, this, &ApptSummaryWidget::updateView);
 
     // Update Configuration
     configUpdated();
@@ -122,22 +126,25 @@ void ApptSummaryWidget::updateView()
     KIconLoader loader(QStringLiteral("korganizer"));
     QPixmap pm = loader.loadIcon(QStringLiteral("view-calendar-day"), KIconLoader::Small);
     QPixmap pmb = loader.loadIcon(QStringLiteral("view-calendar-birthday"), KIconLoader::Small);
-    QPixmap pma = loader.loadIcon(QStringLiteral("view-calendar-wedding-anniversary"), KIconLoader::Small);
+    QPixmap pma = loader.loadIcon(QStringLiteral(
+                                      "view-calendar-wedding-anniversary"), KIconLoader::Small);
 
     QStringList uidList;
     SummaryEventInfo::setShowSpecialEvents(mShowBirthdaysFromCal,
                                            mShowAnniversariesFromCal);
     QDate currentDate = QDate::currentDate();
 
-    SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(mDaysAhead - 1), mCalendar);
+    SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(
+                                                                         mDaysAhead - 1),
+                                                                     mCalendar);
 
     QPalette todayPalette = palette();
     KColorScheme::adjustBackground(todayPalette, KColorScheme::ActiveBackground, QPalette::Window);
     QPalette urgentPalette = palette();
-    KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
+    KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground,
+                                   QPalette::Window);
 
     foreach (SummaryEventInfo *event, events) {
-
         // Optionally, show only my Events
         /*      if ( mShowMineOnly &&
                   !KCalCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, event->ev ) ) {
@@ -205,8 +212,10 @@ void ApptSummaryWidget::updateView()
         mLayout->addWidget(urlLabel, counter, 3);
         mLabels.append(urlLabel);
 
-        connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl), this, &ApptSummaryWidget::viewEvent);
-        connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl), this, &ApptSummaryWidget::popupMenu);
+        connect(urlLabel, QOverload<const QString &>::of(
+                    &KUrlLabel::leftClickedUrl), this, &ApptSummaryWidget::viewEvent);
+        connect(urlLabel, QOverload<const QString &>::of(
+                    &KUrlLabel::rightClickedUrl), this, &ApptSummaryWidget::popupMenu);
         if (!event->summaryTooltip.isEmpty()) {
             urlLabel->setToolTip(event->summaryTooltip);
         }
@@ -246,7 +255,8 @@ void ApptSummaryWidget::viewEvent(const QString &uid)
     if (id != -1) {
         mPlugin->core()->selectPlugin(QStringLiteral("kontact_korganizerplugin"));   //ensure loaded
         OrgKdeKorganizerKorganizerInterface korganizer(
-            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+            QStringLiteral("org.kde.korganizer"), QStringLiteral(
+                "/Korganizer"), QDBusConnection::sessionBus());
         korganizer.editIncidence(QString::number(id));
     }
 }

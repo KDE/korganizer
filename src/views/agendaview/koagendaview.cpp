@@ -36,11 +36,11 @@ public:
     Private(bool isSideBySide, KOAgendaView *parent) : q(parent)
     {
         mAgendaView = new EventViews::AgendaView(KOPrefs::instance()->eventViewsPreferences(),
-                QDate::currentDate(),
-                QDate::currentDate(),
-                true,
-                isSideBySide,
-                parent);
+                                                 QDate::currentDate(),
+                                                 QDate::currentDate(),
+                                                 true,
+                                                 isSideBySide,
+                                                 parent);
         mPopup = q->eventPopup();
     }
 
@@ -57,8 +57,9 @@ private:
     KOAgendaView *const q;
 };
 
-KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide) :
-    KOEventView(parent), d(new Private(isSideBySide, this))
+KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
+    : KOEventView(parent)
+    , d(new Private(isSideBySide, this))
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setMargin(0);
@@ -241,7 +242,8 @@ void KOAgendaView::changeIncidenceDisplayAdded(const Akonadi::Item &)
     // Do nothing, EventViews::AgendaView knows when items change
 }
 
-void KOAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
+void KOAgendaView::changeIncidenceDisplay(const Akonadi::Item &,
+                                          Akonadi::IncidenceChanger::ChangeType)
 {
     // Do nothing, EventViews::AgendaView knows when items change
 }
@@ -330,4 +332,3 @@ void KOAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, co
 {
     d->mAgendaView->setDateRange(start, end);
 }
-

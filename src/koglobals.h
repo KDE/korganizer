@@ -33,8 +33,7 @@
 #include <QMap>
 #include <QList>
 
-namespace KHolidays
-{
+namespace KHolidays {
 class HolidayRegion;
 }
 

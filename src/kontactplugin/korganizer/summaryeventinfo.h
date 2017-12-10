@@ -38,8 +38,7 @@ public:
 
     SummaryEventInfo();
 
-    static List eventsForDate(const QDate &date,
-                              const Akonadi::ETMCalendar::Ptr &calendar);
+    static List eventsForDate(const QDate &date, const Akonadi::ETMCalendar::Ptr &calendar);
     static List eventsForRange(const QDate &start, const QDate &end, // range is inclusive
                                const Akonadi::ETMCalendar::Ptr &calendar);
     static void setShowSpecialEvents(bool skipBirthdays, bool skipAnniversaries);

@@ -157,7 +157,7 @@ void DateNavigatorContainer::updateConfig()
 }
 
 void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList,
-        const QDate &preferredMonth)
+                                         const QDate &preferredMonth)
 {
     if (!dateList.isEmpty()) {
         QDate start(dateList.first());
@@ -175,13 +175,13 @@ void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList,
 
         // If the datelist crosses months we won't know which month to show
         // so we read what's in preferredMonth
-        const bool changingMonth = preferredMonth.isValid() && mNavigatorView->month().month() != preferredMonth.month();
+        const bool changingMonth = preferredMonth.isValid()
+                                   && mNavigatorView->month().month() != preferredMonth.month();
 
-        if (start < navfirst ||  // <- start should always be visible
-                // end is not visible and we have a spare month at the beginning:
-                (end > navlast && start >= navsecond) ||
-                changingMonth) {
-
+        if (start < navfirst     // <- start should always be visible
+            ||  // end is not visible and we have a spare month at the beginning:
+            (end > navlast && start >= navsecond)
+            || changingMonth) {
             if (preferredMonth.isValid()) {
                 setBaseDates(preferredMonth);
             } else {
@@ -278,8 +278,8 @@ void DateNavigatorContainer::resizeAllContents()
         bar->showButtons(true, true);
     }
 
-    mNavigatorView->setGeometry((((KOGlobals::self()->reverseLayout()) ?
-                                  (horizontalCount - 1) : 0) * width),
+    mNavigatorView->setGeometry((((KOGlobals::self()->reverseLayout())
+                                  ? (horizontalCount - 1) : 0) * width),
                                 0, width, height);
     for (int i = 0; i < mExtraViews.count(); ++i) {
         int x = (i + 1) % horizontalCount;
@@ -296,10 +296,9 @@ void DateNavigatorContainer::resizeAllContents()
                 bar->showButtons(false, false);
             }
         }
-        view->setGeometry((((KOGlobals::self()->reverseLayout()) ?
-                            (horizontalCount - 1 - x) : x) * width),
+        view->setGeometry((((KOGlobals::self()->reverseLayout())
+                            ? (horizontalCount - 1 - x) : x) * width),
                           y * height, width, height);
-
     }
 }
 
@@ -313,11 +312,9 @@ QSize DateNavigatorContainer::sizeHint() const
     return mNavigatorView->sizeHint();
 }
 
-void DateNavigatorContainer::setHighlightMode(bool highlightEvents,
-        bool highlightTodos,
-        bool highlightJournals) const
+void DateNavigatorContainer::setHighlightMode(bool highlightEvents, bool highlightTodos,
+                                              bool highlightJournals) const
 {
-
     mNavigatorView->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 
     for (KDateNavigator *n : qAsConst(mExtraViews)) {
@@ -325,7 +322,6 @@ void DateNavigatorContainer::setHighlightMode(bool highlightEvents,
             n->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
         }
     }
-
 }
 
 void DateNavigatorContainer::goNextMonth()

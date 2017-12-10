@@ -51,14 +51,15 @@
 EXPORT_KONTACT_PLUGIN(TodoPlugin, todo)
 
 TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "todo"), mIface(nullptr)
+    : KontactInterface::Plugin(core, core, "korganizer", "todo")
+    , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
-    QAction *action =
-        new QAction(QIcon::fromTheme(QStringLiteral("task-new")),
-                    i18nc("@action:inmenu", "New To-do..."), this);
+    QAction *action
+        = new QAction(QIcon::fromTheme(QStringLiteral("task-new")),
+                      i18nc("@action:inmenu", "New To-do..."), this);
     actionCollection()->addAction(QStringLiteral("new_todo"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T));
     QString str = i18nc("@info:status", "Create a new to-do");
@@ -92,7 +93,8 @@ KParts::ReadOnlyPart *TodoPlugin::createPart()
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
+        QStringLiteral("org.kde.korganizer"), QStringLiteral(
+            "/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
@@ -139,7 +141,8 @@ void TodoPlugin::slotNewTodo()
 
 bool TodoPlugin::createDBUSInterface(const QString &serviceType)
 {
-    if (serviceType == QLatin1String("DBUS/Organizer") || serviceType == QLatin1String("DBUS/Calendar")) {
+    if (serviceType == QLatin1String("DBUS/Organizer")
+        || serviceType == QLatin1String("DBUS/Calendar")) {
         if (part()) {
             return true;
         }
@@ -150,10 +153,10 @@ bool TodoPlugin::createDBUSInterface(const QString &serviceType)
 bool TodoPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
     return
-        mimeData->hasText() ||
-        KPIM::MailList::canDecode(mimeData) ||
-        KContacts::VCardDrag::canDecode(mimeData) ||
-        KCalUtils::ICalDrag::canDecode(mimeData);
+        mimeData->hasText()
+        || KPIM::MailList::canDecode(mimeData)
+        || KContacts::VCardDrag::canDecode(mimeData)
+        || KCalUtils::ICalDrag::canDecode(mimeData);
 }
 
 bool TodoPlugin::isRunningStandalone() const
@@ -226,9 +229,9 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
             KPIM::MailSummary mail = mails.at(0);
             QString txt = i18nc("@item", "From: %1\nTo: %2\nSubject: %3",
                                 mail.from(), mail.to(), mail.subject());
-            QString uri = QStringLiteral("kmail:") +
-                          QString::number(mail.serialNumber()) + QLatin1Char('/') +
-                          mail.messageId();
+            QString uri = QStringLiteral("kmail:")
+                          +QString::number(mail.serialNumber()) + QLatin1Char('/')
+                          +mail.messageId();
             QTemporaryFile tf;
             tf.setAutoRemove(true);
 
@@ -240,6 +243,9 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
         }
         return;
     }
-    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
+    qCWarning(KORGANIZERPLUGIN_LOG)
+    << QStringLiteral("Cannot handle drop events of type '%1'.").arg(
+        event->mimeData()->formats().join(QLatin1Char(';')));
 }
+
 #include "todoplugin.moc"

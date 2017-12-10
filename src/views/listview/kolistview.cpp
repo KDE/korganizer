@@ -34,8 +34,8 @@
 
 using namespace KOrg;
 
-KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
-                       QWidget *parent, bool nonInteractive)
+KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent,
+                       bool nonInteractive)
     : KOEventView(parent)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -223,4 +223,3 @@ void KOListView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
     mListView->setIncidenceChanger(changer);
 }
-

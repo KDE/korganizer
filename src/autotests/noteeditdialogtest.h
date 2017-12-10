@@ -53,4 +53,3 @@ private Q_SLOTS:
 };
 
 #endif // NOTEEDITDIALOGTEST_H
-

@@ -30,7 +30,7 @@
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_apptsummary(QWidget *parent, const char *);
+Q_DECL_EXPORT KCModule *create_apptsummary(QWidget *parent, const char *);
 }
 
 class KCMApptSummary : public KCModule, public Ui::ApptSummaryConfig_Base

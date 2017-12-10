@@ -41,8 +41,7 @@ public:
     explicit KOCheckableProxyModel(QObject *parent);
 
     /**reimp*/
-    bool setData(const QModelIndex &index, const QVariant &value,
-                 int role = Qt::EditRole) override;
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
 Q_SIGNALS:
     void aboutToToggle(bool oldState);

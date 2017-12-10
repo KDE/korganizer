@@ -49,7 +49,8 @@
 #include <KSharedConfig>
 
 KOViewManager::KOViewManager(CalendarView *mainView)
-    : QObject(), mMainView(mainView)
+    : QObject()
+    , mMainView(mainView)
 {
     mCurrentView = nullptr;
     mLastEventView = nullptr;
@@ -194,13 +195,13 @@ void KOViewManager::showView(KOrg::BaseView *view)
             }
 
             const QStringList zoomActions = QStringList() << QStringLiteral("zoom_in_horizontally")
-                        << QStringLiteral("zoom_out_horizontally")
-                        << QStringLiteral("zoom_in_vertically")
-                        << QStringLiteral("zoom_out_vertically");
+                                                          << QStringLiteral("zoom_out_horizontally")
+                                                          << QStringLiteral("zoom_in_vertically")
+                                                          << QStringLiteral("zoom_out_vertically");
             const QStringList rangeActions = QStringList() <<  QStringLiteral("select_workweek")
-                         << QStringLiteral("select_week")
-                         << QStringLiteral("select_day")
-                         << QStringLiteral("select_nextx");
+                                                           << QStringLiteral("select_week")
+                                                           << QStringLiteral("select_day")
+                                                           << QStringLiteral("select_nextx");
 
             for (int i = 0; i < zoomActions.size(); ++i) {
                 if (QAction *action = ac->action(zoomActions[i])) {
@@ -338,8 +339,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::endMultiModify,
             mMainView, &CalendarView::endMultiModify);
 
-    connect(mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger*)),
-            view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger*)));
+    connect(mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger *)),
+            view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)));
 
     view->setIncidenceChanger(mMainView->incidenceChanger());
 }
@@ -440,12 +441,13 @@ void KOViewManager::showListView()
 
 void KOViewManager::showAgendaView()
 {
-    const bool showBoth =
-        KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
-    const bool showMerged =
-        showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
-    const bool showSideBySide =
-        showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
+    const bool showBoth
+        = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
+    const bool showMerged
+        = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
+    const bool showSideBySide
+        = showBoth
+          || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
 
     QWidget *parent = mMainView->viewStack();
     if (showBoth) {
@@ -550,7 +552,7 @@ void KOViewManager::selectNextX()
 void KOViewManager::showTodoView()
 {
     if (!mTodoView) {
-        mTodoView = new KOTodoView(false/*not sidebar*/, mMainView->viewStack());
+        mTodoView = new KOTodoView(false /*not sidebar*/, mMainView->viewStack());
         mTodoView->setCalendar(mMainView->calendar());
         mTodoView->setIdentifier("DefaultTodoView");
         mTodoView->setCalendar(mMainView->calendar());
@@ -674,8 +676,7 @@ void KOViewManager::updateMultiCalendarDisplay()
 
 bool KOViewManager::agendaIsSelected() const
 {
-    return mCurrentView == mAgendaView            ||
-           mCurrentView == mAgendaSideBySideView  ||
-           (mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget());
+    return mCurrentView == mAgendaView
+           || mCurrentView == mAgendaSideBySideView
+           || (mAgendaViewTabs && mCurrentView == mAgendaViewTabs->currentWidget());
 }
-

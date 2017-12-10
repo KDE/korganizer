@@ -40,11 +40,12 @@
 
 #include <QVBoxLayout>
 
-K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
+K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();
+                 )
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
-    : KParts::ReadOnlyPart(parent),
-      mTopLevelWidget(nullptr)
+    : KParts::ReadOnlyPart(parent)
+    , mTopLevelWidget(nullptr)
 {
     KOrgMigrateApplication migrate;
     migrate.migrate();
@@ -103,8 +104,9 @@ void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date
     Q_UNUSED(date);
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (incidence) {
-        Q_EMIT textChanged(incidence->summary() + QLatin1String(" / ") +
-                           KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().toLocalTime().time()));
+        Q_EMIT textChanged(incidence->summary() + QLatin1String(" / ")
+                           +KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().
+                                                                        toLocalTime().time()));
     } else {
         Q_EMIT textChanged(QString());
     }

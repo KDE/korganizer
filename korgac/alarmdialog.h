@@ -32,18 +32,15 @@
 #include <QPoint>
 #include <QTimer>
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 }
 
-namespace KIdentityManagement
-{
+namespace KIdentityManagement {
 class IdentityManager;
 }
 
-namespace CalendarSupport
-{
+namespace CalendarSupport {
 class IncidenceViewer;
 }
 
@@ -67,9 +64,9 @@ public:
      */
     enum SuspendUnit {
         SuspendInMinutes = 0,  ///< Suspend time is in minutes
-        SuspendInHours   = 1,  ///< Suspend time is in hours
-        SuspendInDays    = 2,  ///< Suspend time is in days
-        SuspendInWeeks   = 3   ///< Suspend time is in weeks
+        SuspendInHours = 1,    ///< Suspend time is in hours
+        SuspendInDays = 2,     ///< Suspend time is in days
+        SuspendInWeeks = 3     ///< Suspend time is in weeks
     };
 
     explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
@@ -115,8 +112,7 @@ private:
     typedef QList<ReminderTreeItem *> ReminderList;
 
     static QDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc,
-            const QDateTime &reminderAt,
-            QString &displayStr);
+                                             const QDateTime &reminderAt, QString &displayStr);
 
     // Removes each Incidence-X group that has one of the specified uids
     void removeFromConfig(const QList<Akonadi::Item::Id> &);
@@ -150,7 +146,6 @@ private:
     QPushButton *mUser2Button = nullptr;
     QPushButton *mUser3Button = nullptr;
     QPushButton *mOkButton = nullptr;
-
 };
 
 #endif

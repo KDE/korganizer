@@ -28,13 +28,10 @@ class QLineEdit;
 class KIconButton;
 class QCheckBox;
 
-namespace PimCommon
-{
+namespace PimCommon {
 class IncidencesForWidget;
 }
-namespace CalendarSupport
-{
-
+namespace CalendarSupport {
 class KORGANIZERPRIVATE_EXPORT CollectionGeneralPage : public Akonadi::CollectionPropertiesPage
 {
     Q_OBJECT
@@ -56,7 +53,6 @@ private:
 };
 
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage)
-
 }
 
 #endif

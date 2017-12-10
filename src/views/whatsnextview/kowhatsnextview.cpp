@@ -115,7 +115,7 @@ void KOWhatsNextView::showIncidences(const Akonadi::Item::List &incidenceList, c
 }
 
 void KOWhatsNextView::changeIncidenceDisplay(const Akonadi::Item &,
-        Akonadi::IncidenceChanger::ChangeType)
+                                             Akonadi::IncidenceChanger::ChangeType)
 {
     updateView();
 }
@@ -135,4 +135,3 @@ void KOWhatsNextView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
     KOrg::BaseView::setCalendar(cal);
     mView->setCalendar(cal);
 }
-

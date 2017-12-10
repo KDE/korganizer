@@ -40,15 +40,13 @@ class KOListView;
 class KOTimelineView;
 class KOTodoView;
 class KOWhatsNextView;
-namespace KOrg
-{
+namespace KOrg {
 class BaseView;
 class MultiAgendaView;
 class MonthView;
 }
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 }
 
@@ -61,7 +59,6 @@ class QTabWidget;
 */
 class KOViewManager : public QObject
 {
-
     Q_OBJECT
 public:
 
@@ -113,14 +110,17 @@ public:
     {
         return mAgendaView;
     }
+
     KOrg::MultiAgendaView *multiAgendaView() const
     {
         return mAgendaSideBySideView;
     }
+
     KOTodoView *todoView() const
     {
         return mTodoView;
     }
+
     KOrg::MonthView *monthView() const
     {
         return mMonthView;

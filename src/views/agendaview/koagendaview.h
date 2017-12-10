@@ -89,7 +89,8 @@ public Q_SLOTS:
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
     void changeIncidenceDisplayAdded(const Akonadi::Item &incidence);
-    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &incidence,
+                                Akonadi::IncidenceChanger::ChangeType) override;
 
     void clearSelection() override;
 

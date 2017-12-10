@@ -80,9 +80,12 @@ class ReminderTreeItem : public QTreeWidgetItem
 {
 public:
     ReminderTreeItem(const Akonadi::Item &incidence, QTreeWidget *parent)
-        : QTreeWidgetItem(parent), mIncidence(incidence), mNotified(false)
+        : QTreeWidgetItem(parent)
+        , mIncidence(incidence)
+        , mNotified(false)
     {
     }
+
     bool operator<(const QTreeWidgetItem &other) const override;
 
     QString mDisplayText;
@@ -103,22 +106,25 @@ struct ConfItem {
 bool ReminderTreeItem::operator<(const QTreeWidgetItem &other) const
 {
     switch (treeWidget()->sortColumn()) {
-    case 1: { // happening datetime
+    case 1:
+    {         // happening datetime
         const ReminderTreeItem *item = static_cast<const ReminderTreeItem *>(&other);
         return item->mHappening < mHappening;
     }
-    case 2: { // trigger datetime
+    case 2:
+    {         // trigger datetime
         const ReminderTreeItem *item = static_cast<const ReminderTreeItem *>(&other);
         return item->mTrigger < mTrigger;
     }
     default:
-        return QTreeWidgetItem::operator < (other);
+        return QTreeWidgetItem::operator <(other);
     }
 }
 
 AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent)
-    : QDialog(parent, Qt::WindowStaysOnTopHint),
-      mCalendar(calendar), mSuspendTimer(this)
+    : QDialog(parent, Qt::WindowStaysOnTopHint)
+    , mCalendar(calendar)
+    , mSuspendTimer(this)
 {
     // User1 => Edit...
     // User2 => Dismiss All
@@ -126,7 +132,9 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     //    Ok => Suspend
 
     if (calendar) {
-        connect(calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &AlarmDialog::slotCalendarChanged);
+        connect(
+            calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
+            &AlarmDialog::slotCalendarChanged);
     }
 
     KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
@@ -135,7 +143,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     KConfigGroup generalConfig(config, "General");
     QPoint pos = generalConfig.readEntry("Position", QPoint(0, 0));
     int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
-    SuspendUnit suspendUnit = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit", defSuspendUnit));
+    SuspendUnit suspendUnit
+        = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit", defSuspendUnit));
 
     QWidget *topBox = new QWidget(this);
     if (!pos.isNull()) {
@@ -190,10 +199,10 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mIncidenceTree = new QTreeWidget(topBox);
     mIncidenceTree->setColumnCount(3);
     mIncidenceTree->setSortingEnabled(true);
-    const QStringList headerLabels =
-        (QStringList(i18nc("@title:column reminder title", "Title"))
-         << i18nc("@title:column happens at date/time", "Date Time")
-         << i18nc("@title:column trigger date/time", "Trigger Time"));
+    const QStringList headerLabels
+        = (QStringList(i18nc("@title:column reminder title", "Title"))
+           << i18nc("@title:column happens at date/time", "Date Time")
+           << i18nc("@title:column trigger date/time", "Trigger Time"));
     mIncidenceTree->setHeaderLabels(headerLabels);
     mIncidenceTree->headerItem()->setToolTip(
         0,
@@ -310,8 +319,7 @@ static QString cleanSummary(const QString &summary)
     return retStr;
 }
 
-void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
-                               const QDateTime &reminderAt,
+void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTime &reminderAt,
                                const QString &displayText)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(incidenceitem);
@@ -339,10 +347,10 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
     item->setText(1, displayStr);
 
     item->setText(2, QLocale().toString(item->mTrigger, QLocale::ShortFormat));
-    QString tip =
-        IncidenceFormatter::toolTipStr(
-            CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
-            incidence, item->mRemindAt.date(), true);
+    QString tip
+        = IncidenceFormatter::toolTipStr(
+        CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
+        incidence, item->mRemindAt.date(), true);
     if (!item->mDisplayText.isEmpty()) {
         tip += QLatin1String("<br>") + item->mDisplayText;
     }
@@ -365,7 +373,7 @@ void AlarmDialog::slotUser1()
 {
     const ReminderList selection = selectedItems();
     if (!selection.isEmpty()) {
-        ReminderTreeItem  *item = selection.first();
+        ReminderTreeItem *item = selection.first();
         if (mCalendar->hasRight(item->mIncidence, Akonadi::Collection::CanChangeItem)) {
             edit();
         }
@@ -417,8 +425,10 @@ void AlarmDialog::dismiss(const ReminderList &selections)
 {
     QList<Akonadi::Item::Id> ids;
     ids.reserve(selections.count());
-    for (ReminderList::const_iterator it = selections.constBegin(); it != selections.constEnd(); ++it) {
-        qCDebug(KOALARMCLIENT_LOG) << "removing " << CalendarSupport::incidence((*it)->mIncidence)->summary();
+    for (ReminderList::const_iterator it = selections.constBegin(); it != selections.constEnd();
+         ++it) {
+        qCDebug(KOALARMCLIENT_LOG) << "removing "
+                                   << CalendarSupport::incidence((*it)->mIncidence)->summary();
         if (mIncidenceTree->itemBelow(*it)) {
             mIncidenceTree->setCurrentItem(mIncidenceTree->itemBelow(*it));
         } else if (mIncidenceTree->itemAbove(*it)) {
@@ -437,12 +447,13 @@ void AlarmDialog::edit()
     ReminderList selection = selectedItems();
     if (selection.count() == 1) {
         Incidence::Ptr incidence = CalendarSupport::incidence(selection.first()->mIncidence);
-        if (!mCalendar->hasRight(selection.first()->mIncidence, Akonadi::Collection::CanChangeItem)) {
+        if (!mCalendar->hasRight(selection.first()->mIncidence,
+                                 Akonadi::Collection::CanChangeItem)) {
             KMessageBox::sorry(
-                        this,
-                        i18nc("@info",
-                              "\"%1\" is a read-only item so modifications are not possible.",
-                              cleanSummary(incidence->summary())));
+                this,
+                i18nc("@info",
+                      "\"%1\" is a read-only item so modifications are not possible.",
+                      cleanSummary(incidence->summary())));
             return;
         }
 
@@ -459,7 +470,7 @@ void AlarmDialog::suspend()
     int unit = 1;
     switch (mSuspendUnit->currentIndex()) {
     case SuspendInWeeks:
-        unit *=  7;
+        unit *= 7;
         Q_FALLTHROUGH();
     case SuspendInDays:
         unit *= 24;
@@ -613,20 +624,21 @@ void AlarmDialog::eventNotification()
                 QString program = alarm->programFile();
 
                 // if the program name contains spaces escape it
-                if (program.contains(QLatin1Char(' '))   &&
-                        !(program.startsWith(QLatin1Char('\"')) &&
-                          program.endsWith(QLatin1Char('\"')))) {
+                if (program.contains(QLatin1Char(' '))
+                    && !(program.startsWith(QLatin1Char('\"'))
+                         && program.endsWith(QLatin1Char('\"')))) {
                     program = QLatin1Char('\"') + program + QLatin1Char('\"');
                 }
 
                 QProcess::startDetached(program + QLatin1Char(' ') + alarm->programArguments());
             } else if (alarm->type() == Alarm::Audio) {
                 beeped = true;
-                Phonon::MediaObject *player =
-                    Phonon::createPlayer(Phonon::NotificationCategory,
-                                         QUrl::fromLocalFile(alarm->audioFile()));
+                Phonon::MediaObject *player
+                    = Phonon::createPlayer(Phonon::NotificationCategory,
+                                           QUrl::fromLocalFile(alarm->audioFile()));
                 player->setParent(this);
-                connect(player, &Phonon::MediaObject::finished, player, &Phonon::MediaObject::deleteLater);
+                connect(player, &Phonon::MediaObject::finished, player,
+                        &Phonon::MediaObject::deleteLater);
                 player->play();
             } else if (alarm->type() == Alarm::Email) {
                 QString from = CalendarSupport::KCalPrefs::instance()->email();
@@ -640,7 +652,7 @@ void AlarmDialog::eventNotification()
                     add.reserve(addresses.count());
                     Person::List::ConstIterator end(addresses.constEnd());
                     for (Person::List::ConstIterator it = addresses.constBegin();
-                            it != end; ++it) {
+                         it != end; ++it) {
                         add << (*it)->fullName();
                     }
                     to = add.join(QStringLiteral(", "));
@@ -781,9 +793,10 @@ void AlarmDialog::updateButtons()
     mUser3Button->setEnabled(enabled);
     mOkButton->setEnabled(enabled);
     if (count == 1) {
-        ReminderTreeItem  *item = selection.first();
+        ReminderTreeItem *item = selection.first();
         if (mCalendar) {
-            mUser1Button->setEnabled(mCalendar->hasRight(item->mIncidence, Akonadi::Collection::CanChangeItem));
+            mUser1Button->setEnabled(mCalendar->hasRight(item->mIncidence,
+                                                         Akonadi::Collection::CanChangeItem));
         }
     } else {
         mUser1Button->setEnabled(false);
@@ -823,7 +836,8 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         mDetailView->setIncidence(Akonadi::Item());
     } else {
         if (!reminderItem->mDisplayText.isEmpty()) {
-            const QString txt = QLatin1String("<qt><p><b>") + reminderItem->mDisplayText + QLatin1String("</b></p></qt>");
+            const QString txt = QLatin1String("<qt><p><b>") + reminderItem->mDisplayText
+                                + QLatin1String("</b></p></qt>");
             mDetailView->setHeaderText(txt);
         } else {
             mDetailView->setHeaderText(QString());
@@ -838,8 +852,10 @@ void AlarmDialog::update()
 
     const ReminderList selection = selectedItems();
     if (!selection.isEmpty()) {
-        ReminderTreeItem  *item = selection.first();
-        mUser1Button->setEnabled((mCalendar->hasRight(item->mIncidence, Akonadi::Collection::CanChangeItem)) && (selection.count() == 1));
+        ReminderTreeItem *item = selection.first();
+        mUser1Button->setEnabled((mCalendar->hasRight(item->mIncidence,
+                                                      Akonadi::Collection::CanChangeItem))
+                                 && (selection.count() == 1));
         toggleDetails(item);
     }
 }
@@ -854,8 +870,7 @@ void AlarmDialog::accept()
 
 /** static */
 QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
-        const QDateTime &reminderAt,
-        QString &displayStr)
+                                               const QDateTime &reminderAt, QString &displayStr)
 {
     QDateTime result;
 
@@ -883,7 +898,7 @@ void AlarmDialog::slotCalendarChanged()
     const Akonadi::Item::List items = mCalendar->itemList(incidences);
     Akonadi::Item::List::ConstIterator end(items.constEnd());
     for (Akonadi::Item::List::ConstIterator it = items.constBegin();
-            it != end; ++it) {
+         it != end; ++it) {
         ReminderTreeItem *item = searchByItem(*it);
 
         if (item) {
@@ -892,11 +907,13 @@ void AlarmDialog::slotCalendarChanged()
 
             // Yes, alarms can be empty, if someone edited the incidence and removed all alarms
             if (!incidence->alarms().isEmpty()) {
-                const auto dateTime = triggerDateForIncidence(incidence, item->mRemindAt, displayStr);
+                const auto dateTime
+                    = triggerDateForIncidence(incidence, item->mRemindAt, displayStr);
 
                 const QString summary = cleanSummary(incidence->summary());
 
-                if (displayStr != item->text(1) || summary != item->text(0) || item->mHappening != dateTime) {
+                if (displayStr != item->text(1) || summary != item->text(0)
+                    || item->mHappening != dateTime) {
                     item->setText(1, displayStr);
                     item->setText(0, summary);
                     item->mHappening = dateTime;
@@ -920,8 +937,11 @@ void AlarmDialog::keyPressEvent(QKeyEvent *e)
 
 bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &incidence)
 {
-    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.korganizer"))) {
-        if (KToolInvocation::startServiceByDesktopName(QStringLiteral("org.kde.korganizer"), QString())) {
+    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral(
+                                                                            "org.kde.korganizer")))
+    {
+        if (KToolInvocation::startServiceByDesktopName(QStringLiteral("org.kde.korganizer"),
+                                                       QString())) {
             KMessageBox::error(
                 this,
                 i18nc("@info",
@@ -930,7 +950,8 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
         }
     }
     org::kde::korganizer::Korganizer korganizer(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+        QStringLiteral("org.kde.korganizer"), QStringLiteral(
+            "/Korganizer"), QDBusConnection::sessionBus());
 
     qCDebug(KOALARMCLIENT_LOG) << "editing incidence " << incidence->summary();
     if (!korganizer.editIncidence(incidence->uid())) {
@@ -942,9 +963,10 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
     }
 
     // get desktop # where korganizer (or kontact) runs
-    QString object =
-        QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.kontact")) ?
-        QStringLiteral("kontact/MainWindow_1") : QStringLiteral("korganizer/MainWindow_1");
+    QString object
+        = QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral(
+                                                                             "org.kde.kontact"))
+          ? QStringLiteral("kontact/MainWindow_1") : QStringLiteral("korganizer/MainWindow_1");
     QDBusInterface korganizerObj(QStringLiteral("org.kde.korganizer"), QLatin1Char('/') + object);
 #if KDEPIM_HAVE_X11
     QDBusReply<int> reply = korganizerObj.call(QStringLiteral("winId"));
@@ -977,10 +999,10 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
 bool AlarmDialog::openIncidenceEditorNG(const Akonadi::Item &item)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(item);
-    IncidenceEditorNG::IncidenceDialog *dialog =
-        IncidenceEditorNG::IncidenceDialogFactory::create(
-            false, /*doesn't need initial saving*/
-            incidence->type(), nullptr, this);
+    IncidenceEditorNG::IncidenceDialog *dialog
+        = IncidenceEditorNG::IncidenceDialogFactory::create(
+        false,     /*doesn't need initial saving*/
+        incidence->type(), nullptr, this);
     dialog->load(item);
     return true;
 }

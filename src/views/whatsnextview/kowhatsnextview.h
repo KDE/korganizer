@@ -38,10 +38,13 @@ public:
     ~KOWhatsNextView();
 
     int currentDateCount() const override;
-    Akonadi::Item::List selectedIncidences() override {
+    Akonadi::Item::List selectedIncidences() override
+    {
         return Akonadi::Item::List();
     }
-    KCalCore::DateList selectedIncidenceDates() override {
+
+    KCalCore::DateList selectedIncidenceDates() override
+    {
         return KCalCore::DateList();
     }
 
@@ -49,6 +52,7 @@ public:
     {
         return true;
     }
+
     CalendarSupport::CalPrinterBase::PrintType printType() const override;
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
@@ -57,7 +61,8 @@ public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &,
+                                Akonadi::IncidenceChanger::ChangeType) override;
 
 private:
     EventViews::WhatsNextView *mView = nullptr;

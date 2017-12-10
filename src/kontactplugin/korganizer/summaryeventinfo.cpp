@@ -60,8 +60,7 @@ static bool eventLessThan(const KCalCore::Event::Ptr &event1, const KCalCore::Ev
     }
 }
 
-void SummaryEventInfo::setShowSpecialEvents(bool showBirthdays,
-        bool showAnniversaries)
+void SummaryEventInfo::setShowSpecialEvents(bool showBirthdays, bool showAnniversaries)
 {
     mShowBirthdays = showBirthdays;
     mShowAnniversaries = showAnniversaries;
@@ -72,12 +71,12 @@ bool SummaryEventInfo::skip(const KCalCore::Event::Ptr &event)
     //simply check categories because the birthdays resource always adds
     //the appropriate category to the event.
     QStringList c = event->categories();
-    if (!mShowBirthdays &&
-        c.contains(QStringLiteral("BIRTHDAY"), Qt::CaseInsensitive)) {
+    if (!mShowBirthdays
+        && c.contains(QStringLiteral("BIRTHDAY"), Qt::CaseInsensitive)) {
         return true;
     }
-    if (!mShowAnniversaries &&
-        c.contains(QStringLiteral("ANNIVERSARY"), Qt::CaseInsensitive)) {
+    if (!mShowAnniversaries
+        && c.contains(QStringLiteral("ANNIVERSARY"), Qt::CaseInsensitive)) {
         return true;
     }
 
@@ -85,7 +84,8 @@ bool SummaryEventInfo::skip(const KCalCore::Event::Ptr &event)
 }
 
 SummaryEventInfo::SummaryEventInfo()
-    : makeBold(false), makeUrgent(false)
+    : makeBold(false)
+    , makeUrgent(false)
 {
 }
 
@@ -93,7 +93,6 @@ SummaryEventInfo::SummaryEventInfo()
 SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, const QDate &end,
                                                         const Akonadi::ETMCalendar::Ptr &calendar)
 {
-
     KCalCore::Event::List allEvents = calendar->events();
     KCalCore::Event::List events;
     const auto currentDateTime = QDateTime::currentDateTime();
@@ -109,14 +108,16 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         const auto eventStart = event->dtStart().toLocalTime();
         const auto eventEnd = event->dtEnd().toLocalTime();
         if (event->recurs()) {
-            const auto occurrences = event->recurrence()->timesInInterval(QDateTime(start, {}), QDateTime(end, {}));
+            const auto occurrences = event->recurrence()->timesInInterval(QDateTime(start,
+                                                                                    {}),
+                                                                          QDateTime(end, {}));
             if (!occurrences.isEmpty()) {
                 events << event;
                 sDateTimeByUid()->insert(event->instanceIdentifier(), occurrences.first());
             }
         } else {
-            if ((end >= eventStart.date() && start <= eventEnd.date()) ||
-                    (start >= eventStart.date() && end <= eventEnd.date())) {
+            if ((end >= eventStart.date() && start <= eventEnd.date())
+                || (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
                 if (eventStart.date() < start) {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), QDateTime(start));
@@ -184,9 +185,9 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false) +
-                  QLatin1String(" -\n ") +
-                  IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
+            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false)
+                  +QLatin1String(" -\n ")
+                  +IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
         }
         summaryEvent->dateSpan = str;
 
@@ -249,7 +250,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                 displayName = col.displayName();
             }
         }
-        summaryEvent->summaryTooltip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start, true);
+        summaryEvent->summaryTooltip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev,
+                                                                                 start, true);
 
         // Time range label (only for non-floating events)
         str.clear();
@@ -276,13 +278,13 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             kdt = kdt.addSecs(-1);
             QDateTime next = ev->recurrence()->getNextDateTime(kdt);
             QString tmp = IncidenceFormatter::dateTimeToString(
-                    ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
+                ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1String("<br>");
             }
-            summaryEvent->timeRange += QLatin1String("<font size=\"small\"><i>") +
-                                       i18nc("next occurrence", "Next: %1", tmp) +
-                                       QLatin1String("</i></font>");
+            summaryEvent->timeRange += QLatin1String("<font size=\"small\"><i>")
+                                       +i18nc("next occurrence", "Next: %1", tmp)
+                                       +QLatin1String("</i></font>");
         }
     }
 

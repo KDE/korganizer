@@ -50,7 +50,10 @@
 class FreebusyViewCalendar : public EventViews::ViewCalendar
 {
 public:
-    virtual ~FreebusyViewCalendar() {}
+    virtual ~FreebusyViewCalendar()
+    {
+    }
+
     bool isValid(const KCalCore::Incidence::Ptr &incidence) const override
     {
         return isValid(incidence->uid());
@@ -70,7 +73,9 @@ public:
     QColor resourceColor(const KCalCore::Incidence::Ptr &incidence) const override
     {
         bool ok = false;
-        int status = incidence->customProperty(QStringLiteral("FREEBUSY").toLatin1(), QStringLiteral("STATUS").toLatin1()).toInt(&ok);
+        int status = incidence->customProperty(QStringLiteral(
+                                                   "FREEBUSY").toLatin1(), QStringLiteral(
+                                                   "STATUS").toLatin1()).toInt(&ok);
 
         if (!ok) {
             return QColor(85, 85, 85);
@@ -122,7 +127,7 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
     mainLayout->addWidget(w);
     mainLayout->addWidget(buttonBox);
 
-    mAgendaView = new EventViews::AgendaView(QDate(), QDate(), false,  false);
+    mAgendaView = new EventViews::AgendaView(QDate(), QDate(), false, false);
     mUi->mAgendaBtn->hide();
     mUi->mMothBtn->hide();
     mUi->mWeekBtn->hide();
@@ -132,8 +137,9 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
         CalendarSupport::FreeBusyItemModel *model = new CalendarSupport::FreeBusyItemModel(this);
         CalendarSupport::FreeBusyCalendar *fbCal = new CalendarSupport::FreeBusyCalendar(this);
         FreebusyViewCalendar *fbCalendar = new FreebusyViewCalendar();
-        KCalCore::Attendee::Ptr attendee(new KCalCore::Attendee(person.name,  person.mail));
-        CalendarSupport::FreeBusyItem::Ptr freebusy(new CalendarSupport::FreeBusyItem(attendee, this));
+        KCalCore::Attendee::Ptr attendee(new KCalCore::Attendee(person.name, person.mail));
+        CalendarSupport::FreeBusyItem::Ptr freebusy(new CalendarSupport::FreeBusyItem(attendee,
+                                                                                      this));
 
         fbCal->setModel(model);
         model->addItem(freebusy);
@@ -146,7 +152,9 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
         //create etm for mCollection
         Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder(this);
         Akonadi::ItemFetchScope scope;
-        const QStringList allMimeTypes = { KCalCore::Event::eventMimeType(), KCalCore::Todo::todoMimeType(), KCalCore::Journal::journalMimeType()};
+        const QStringList allMimeTypes
+            = { KCalCore::Event::eventMimeType(), KCalCore::Todo::todoMimeType(),
+                KCalCore::Journal::journalMimeType()};
 
         scope.fetchFullPayload(true);
         scope.fetchAttribute<Akonadi::EntityDisplayAttribute>();
@@ -160,7 +168,8 @@ Quickview::Quickview(const KPIM::Person &person, const Akonadi::Collection &col)
             monitor->setMimeTypeMonitored(mimetype, true);
         }
 
-        Akonadi::ETMCalendar::Ptr calendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(monitor));
+        Akonadi::ETMCalendar::Ptr calendar
+            = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(monitor));
 
         calendar->setCollectionFilteringEnabled(false);
         mAgendaView->setCalendar(calendar);

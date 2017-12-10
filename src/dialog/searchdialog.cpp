@@ -47,9 +47,9 @@
 using namespace KOrg;
 
 SearchDialog::SearchDialog(CalendarView *calendarview)
-    : QDialog(calendarview),
-      m_ui(new Ui::SearchDialog),
-      m_calendarview(calendarview)
+    : QDialog(calendarview)
+    , m_ui(new Ui::SearchDialog)
+    , m_calendarview(calendarview)
 {
     setWindowTitle(i18n("Search Calendar"));
     setModal(false);
@@ -71,7 +71,8 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     layout->addWidget(listView);
     m_ui->listViewFrame->setLayout(layout);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close | QDialogButtonBox::Help, this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(
+        QDialogButtonBox::Close | QDialogButtonBox::Help, this);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
@@ -89,9 +90,12 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
     // Propagate edit and delete event signals from event list view
-    connect(listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
-    connect(listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
-    connect(listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
+    connect(listView, &EventViews::ListView::showIncidenceSignal, this,
+            &SearchDialog::showIncidenceSignal);
+    connect(listView, &EventViews::ListView::editIncidenceSignal, this,
+            &SearchDialog::editIncidenceSignal);
+    connect(listView, &EventViews::ListView::deleteIncidenceSignal, this,
+            &SearchDialog::deleteIncidenceSignal);
 
     readConfig();
 }
@@ -163,9 +167,9 @@ void SearchDialog::search(const QRegExp &re)
 
     KCalCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
-        events =
-            m_calendarview->calendar()->events(
-                startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+        events
+            = m_calendarview->calendar()->events(
+            startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
     }
 
     KCalCore::Todo::List todos;
@@ -175,16 +179,16 @@ void SearchDialog::search(const QRegExp &re)
             const KCalCore::Todo::List alltodos = m_calendarview->calendar()->todos();
             for (const KCalCore::Todo::Ptr &todo : alltodos) {
                 Q_ASSERT(todo);
-                if ((!todo->hasStartDate() && !todo->hasDueDate()) ||    // undated
-                        (todo->hasStartDate() &&
-                         (todo->dtStart().toLocalTime().date() >= startDt) &&
-                         (todo->dtStart().toLocalTime().date() <= endDt)) ||      //start dt in range
-                        (todo->hasDueDate() &&
-                         (todo->dtDue().toLocalTime().date() >= startDt) &&
-                         (todo->dtDue().toLocalTime().date() <= endDt)) ||      //due dt in range
-                        (todo->hasCompletedDate() &&
-                         (todo->completed().toLocalTime().date() >= startDt) &&
-                         (todo->completed().toLocalTime().date() <= endDt))) {      //completed dt in range
+                if ((!todo->hasStartDate() && !todo->hasDueDate())       // undated
+                    || (todo->hasStartDate()
+                        && (todo->dtStart().toLocalTime().date() >= startDt)
+                        && (todo->dtStart().toLocalTime().date() <= endDt))       //start dt in range
+                    || (todo->hasDueDate()
+                        && (todo->dtDue().toLocalTime().date() >= startDt)
+                        && (todo->dtDue().toLocalTime().date() <= endDt))       //due dt in range
+                    || (todo->hasCompletedDate()
+                        && (todo->completed().toLocalTime().date() >= startDt)
+                        && (todo->completed().toLocalTime().date() <= endDt))) {    //completed dt in range
                     todos.append(todo);
                 }
             }
@@ -207,8 +211,8 @@ void SearchDialog::search(const QRegExp &re)
     }
 
     mMatchedEvents.clear();
-    const KCalCore::Incidence::List incidences =
-        Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
+    const KCalCore::Incidence::List incidences
+        = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
     for (const KCalCore::Incidence::Ptr &ev : incidences) {
         Q_ASSERT(ev);
         Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());

@@ -47,7 +47,8 @@
 #include <QLabel>
 #include <QStatusBar>
 
-KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
+KOrganizer::KOrganizer() : KParts::MainWindow()
+    , KOrg::MainWindow()
 {
     // Set this to be the group leader for all subdialogs - this means
     // modal subdialogs will only affect this dialog, not the other windows
@@ -91,7 +92,8 @@ void KOrganizer::init(bool document)
 
     bar->addWidget(new QLabel(this));
 
-    KPIM::ProgressStatusBarWidget *progressBar = new KPIM::ProgressStatusBarWidget(statusBar(), this);
+    KPIM::ProgressStatusBarWidget *progressBar
+        = new KPIM::ProgressStatusBarWidget(statusBar(), this);
 
     bar->addPermanentWidget(progressBar->littleProgress());
 
@@ -107,12 +109,15 @@ void KOrganizer::initializePluginActions()
 {
 #if 0
     if (mXmlGuiClient->factory()) {
-        QHashIterator<PimCommon::ActionType::Type, QList<QAction *> > localActionsType(mPluginInterface->actionsType());
+        QHashIterator<PimCommon::ActionType::Type, QList<QAction *> > localActionsType(
+            mPluginInterface->actionsType());
         while (localActionsType.hasNext()) {
             localActionsType.next();
             QList<QAction *> lst = localActionsType.value();
             if (!lst.isEmpty()) {
-                const QString actionlistname = QStringLiteral("korganizer") + PimCommon::PluginInterface::actionXmlExtension(localActionsType.key());
+                const QString actionlistname = QStringLiteral("korganizer")
+                                               + PimCommon::PluginInterface::actionXmlExtension(
+                    localActionsType.key());
                 mXmlGuiClient->unplugActionList(actionlistname);
                 mXmlGuiClient->plugActionList(actionlistname, lst);
             }
@@ -122,6 +127,7 @@ void KOrganizer::initializePluginActions()
     qCDebug(KORGANIZER_LOG) << " Plugins not implemented yet";
 #endif
 }
+
 #endif
 
 void KOrganizer::newMainWindow(const QUrl &url)
@@ -152,7 +158,6 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mActionManager->writeSettings();
     config->sync();
@@ -181,7 +186,6 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-
     bool close = mActionManager->queryClose();
 
     // Write configuration. I don't know if it really makes sense doing it this
@@ -275,7 +279,8 @@ void KOrganizer::setTitle()
         }
 
         if (mCalendarView->isReadOnly()) {
-            title += QLatin1String(" [") + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
+            title += QLatin1String(" [")
+                     + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
         }
     } else {
         title = i18n("Calendar");
@@ -286,4 +291,3 @@ void KOrganizer::setTitle()
 
     setCaption(title, false);
 }
-

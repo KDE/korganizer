@@ -31,13 +31,11 @@
 
 #include <KCalCore/Incidence> //for KCalCore::DateList typedef
 
-namespace EventViews
-{
+namespace EventViews {
 class ListView;
 }
 
-namespace Akonadi
-{
+namespace Akonadi {
 class IncidenceChanger;
 }
 
@@ -47,8 +45,8 @@ class KOListView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar,
-                        QWidget *parent = nullptr, bool nonInteractive = false);
+    explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr,
+                        bool nonInteractive = false);
     ~KOListView();
 
     int maxDatesHint() const override;
@@ -78,7 +76,8 @@ public Q_SLOTS:
 
     void clearSelection() override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &,
+                                Akonadi::IncidenceChanger::ChangeType) override;
 
     void defaultItemAction(const QModelIndex &);
     void defaultItemAction(const Akonadi::Item::Id id);

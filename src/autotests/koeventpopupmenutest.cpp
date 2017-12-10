@@ -56,9 +56,9 @@ void KoEventPopupMenuTest::createEventFromEvent()
     QAction *createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
 
-    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
+    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral(
+                                                                                                       "incidencedialog"));
     QVERIFY(!dlg);
-
 }
 
 void KoEventPopupMenuTest::createTodoFromTodo()
@@ -76,7 +76,8 @@ void KoEventPopupMenuTest::createTodoFromTodo()
     QAction *createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
 
-    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
+    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral(
+                                                                                                       "incidencedialog"));
     QVERIFY(!dlg);
 }
 
@@ -102,9 +103,11 @@ void KoEventPopupMenuTest::createEventFromTodo()
     menu.showIncidencePopup(item, QDate());
     QAction *createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
-    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
+    IncidenceEditorNG::IncidenceDialog *dlg
+        = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
     QVERIFY(dlg);
-    IncidenceEditorNG::IncidenceEditor *editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
+    IncidenceEditorNG::IncidenceEditor *editor
+        = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
     KCalCore::Event::Ptr event(editor->incidence<KCalCore::Event>());
     QVERIFY(event->uid() != todo->uid());
@@ -136,9 +139,11 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     menu.showIncidencePopup(item, QDate());
     QAction *createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
-    IncidenceEditorNG::IncidenceDialog *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
+    IncidenceEditorNG::IncidenceDialog *dlg
+        = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
     QVERIFY(dlg);
-    IncidenceEditorNG::IncidenceEditor *editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
+    IncidenceEditorNG::IncidenceEditor *editor
+        = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
     KCalCore::Todo::Ptr todo(editor->incidence<KCalCore::Todo>());
     QVERIFY(todo->uid() != event->uid());

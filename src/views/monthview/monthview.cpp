@@ -43,9 +43,11 @@ MonthView::MonthView(QWidget *parent)
     layout->addWidget(mMonthView);
     mPopup = eventPopup();
 
-    connect(mMonthView, &EventViews::MonthView::showIncidencePopupSignal, mPopup, &KOEventPopupMenu::showIncidencePopup);
+    connect(mMonthView, &EventViews::MonthView::showIncidencePopupSignal, mPopup,
+            &KOEventPopupMenu::showIncidencePopup);
 
-    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
+    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this,
+            &MonthView::showNewEventPopup);
 
     connect(mMonthView, &EventViews::EventView::datesSelected,
             this, &KOEventView::datesSelected);
@@ -228,4 +230,3 @@ void MonthView::showDates(const QDate &start, const QDate &end, const QDate &pre
     Q_UNUSED(end);
     Q_UNUSED(preferredMonth);
 }
-

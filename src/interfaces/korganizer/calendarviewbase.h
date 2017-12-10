@@ -26,9 +26,7 @@
 #include "baseview.h"
 #include <Akonadi/Calendar/ETMCalendar>
 
-namespace KOrg
-{
-
+namespace KOrg {
 /**
   @short interface for main calendar view widget
   @author Cornelius Schumacher
@@ -36,8 +34,13 @@ namespace KOrg
 class CalendarViewBase : public QWidget
 {
 public:
-    explicit CalendarViewBase(QWidget *parent) : QWidget(parent) {}
-    virtual ~CalendarViewBase() {}
+    explicit CalendarViewBase(QWidget *parent) : QWidget(parent)
+    {
+    }
+
+    virtual ~CalendarViewBase()
+    {
+    }
 
     virtual Akonadi::ETMCalendar::Ptr calendar() const = 0;
     virtual Akonadi::IncidenceChanger *incidenceChanger() const = 0;
@@ -59,9 +62,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     virtual void newIncidenceChanger(Akonadi::IncidenceChanger *) = 0;
-
 };
-
 }
 
 #endif

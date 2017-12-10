@@ -28,8 +28,7 @@
 #include "baseview.h"
 #include <KCalCore/Incidence> // for KCalCore::DateList typedef
 
-namespace EventViews
-{
+namespace EventViews {
 class JournalView;
 }
 
@@ -50,14 +49,14 @@ public:
     int currentDateCount() const override;
     Akonadi::Item::List selectedIncidences() override;
 
-    KCalCore::DateList selectedIncidenceDates() override {
+    KCalCore::DateList selectedIncidenceDates() override
+    {
         return KCalCore::DateList();
     }
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
-    void getHighlightMode(bool &highlightEvents,
-                          bool &highlightTodos,
+    void getHighlightMode(bool &highlightEvents, bool &highlightTodos,
                           bool &highlightJournals) override;
 
     CalendarSupport::CalPrinterBase::PrintType printType() const override;
@@ -66,7 +65,8 @@ public Q_SLOTS:
     void updateView() override;
     void flushView() override;
 
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+    void showDates(const QDate &start, const QDate &end,
+                   const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) override;
 
     void changeIncidenceDisplay(const Akonadi::Item &incidence,

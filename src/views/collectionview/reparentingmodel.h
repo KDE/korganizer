@@ -69,8 +69,13 @@ public:
     struct NodeManager {
         typedef QSharedPointer<NodeManager> Ptr;
 
-        NodeManager(ReparentingModel &m) : model(m) {}
-        virtual ~NodeManager() {}
+        NodeManager(ReparentingModel &m) : model(m)
+        {
+        }
+
+        virtual ~NodeManager()
+        {
+        }
 
     protected:
         ReparentingModel &model;
@@ -79,8 +84,14 @@ public:
         friend class ReparentingModel;
 
         //Allows the implementation to create proxy nodes as necessary
-        virtual void checkSourceIndex(const QModelIndex &/* sourceIndex */) {}
-        virtual void checkSourceIndexRemoval(const QModelIndex &/* sourceIndex */) {}
+        virtual void checkSourceIndex(const QModelIndex & /* sourceIndex */)
+        {
+        }
+
+        virtual void checkSourceIndexRemoval(const QModelIndex & /* sourceIndex */)
+        {
+        }
+
         virtual void updateSourceIndex(const QModelIndex &sourceIndex)
         {
             checkSourceIndex(sourceIndex);
@@ -100,7 +111,8 @@ public:
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex index(int row, int column,
+                      const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;
     QVariant data(const QModelIndex &proxyIndex, int role = Qt::DisplayRole) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
@@ -127,7 +139,8 @@ private Q_SLOTS:
     void doAddNode(const Node::Ptr &node);
 
 private:
-    void rebuildFromSource(Node *parentNode, const QModelIndex &idx, const QModelIndexList &skip = QModelIndexList());
+    void rebuildFromSource(Node *parentNode, const QModelIndex &idx,
+                           const QModelIndexList &skip = QModelIndexList());
     bool isDuplicate(const Node::Ptr &proxyNode) const;
     void insertProxyNode(const Node::Ptr &proxyNode);
     void reparentSourceNodes(const Node::Ptr &proxyNode);
@@ -138,7 +151,8 @@ private:
     Node *getParentNode(const QModelIndex &sourceIndex);
     bool validateNode(const Node *node) const;
     Node *extractNode(const QModelIndex &index) const;
-    void appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex, const QModelIndexList &skip = QModelIndexList());
+    void appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex,
+                          const QModelIndexList &skip = QModelIndexList());
     QModelIndexList descendants(const QModelIndex &sourceIndex);
     void removeDuplicates(const QModelIndex &sourceIndex);
     Node *getSourceNode(const QModelIndex &sourceIndex) const;

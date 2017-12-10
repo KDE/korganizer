@@ -38,15 +38,16 @@
 EXPORT_KONTACT_PLUGIN(JournalPlugin, journal)
 
 JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "journal"), mIface(nullptr)
+    : KontactInterface::Plugin(core, core, "korganizer", "journal")
+    , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
     KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
-    QAction *action =
-        new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),
-                    i18nc("@action:inmenu", "New Journal..."), this);
+    QAction *action
+        = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),
+                      i18nc("@action:inmenu", "New Journal..."), this);
     actionCollection()->addAction(QStringLiteral("new_journal"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_J));
     QString str = i18nc("@info:status", "Create a new journal");
@@ -77,7 +78,8 @@ KParts::ReadOnlyPart *JournalPlugin::createPart()
     }
 
     mIface = new OrgKdeKorganizerCalendarInterface(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
+        QStringLiteral("org.kde.korganizer"), QStringLiteral(
+            "/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
@@ -124,7 +126,8 @@ void JournalPlugin::slotNewJournal()
 
 bool JournalPlugin::createDBUSInterface(const QString &serviceType)
 {
-    if (serviceType == QLatin1String("DBUS/Organizer") || serviceType == QLatin1String("DBUS/Calendar")) {
+    if (serviceType == QLatin1String("DBUS/Organizer")
+        || serviceType == QLatin1String("DBUS/Calendar")) {
         if (part()) {
             return true;
         }
@@ -136,4 +139,5 @@ bool JournalPlugin::isRunningStandalone() const
 {
     return mUniqueAppWatcher->isRunningStandalone();
 }
+
 #include "journalplugin.moc"

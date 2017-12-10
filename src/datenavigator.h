@@ -67,14 +67,14 @@ public Q_SLOTS:
     void selectToday();
 
     void selectPreviousYear();
-    void selectPreviousMonth(const QDate &currentMonth = QDate(),
-                             const QDate &selectionLowerLimit = QDate(),
-                             const QDate &selectionUpperLimit = QDate());
+    void selectPreviousMonth(
+        const QDate &currentMonth = QDate(),
+        const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
     void selectPreviousWeek();
     void selectNextWeek();
-    void selectNextMonth(const QDate &currentMonth = QDate(),
-                         const QDate &selectionLowerLimit = QDate(),
-                         const QDate &selectionUpperLimit = QDate());
+    void selectNextMonth(
+        const QDate &currentMonth = QDate(),
+        const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
     void selectNextYear();
 
     void selectPrevious();
@@ -99,10 +99,8 @@ private:
       if offset equals -1.
       Bigger offsets are accepted.
     */
-    void shiftMonth(const QDate &date,
-                    const QDate &selectionLowerLimit,
-                    const QDate &selectionUpperLimit,
-                    int offset);
+    void shiftMonth(const QDate &date, const QDate &selectionLowerLimit,
+                    const QDate &selectionUpperLimit, int offset);
 
     KCalCore::DateList mSelectedDates;
 

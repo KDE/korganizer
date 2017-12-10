@@ -94,29 +94,34 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     // Personal Settings
     QWidget *personalFrame = new QWidget(this);
     QVBoxLayout *personalLayout = new QVBoxLayout(personalFrame);
-    tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-personal")),
+    tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral(
+                                                          "preferences-desktop-personal")),
                       i18nc("@title:tab personal settings", "Personal"));
 
-    KPIM::KPrefsWidBool *emailControlCenter =
-        addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(), personalFrame);
-    connect(emailControlCenter->checkBox(), &QAbstractButton::toggled, this, &KOPrefsDialogMain::toggleEmailSettings);
+    KPIM::KPrefsWidBool *emailControlCenter
+        = addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(),
+                     personalFrame);
+    connect(
+        emailControlCenter->checkBox(), &QAbstractButton::toggled, this,
+        &KOPrefsDialogMain::toggleEmailSettings);
     personalLayout->addWidget(emailControlCenter->checkBox());
 
-    mUserEmailSettings =
-        new QGroupBox(i18nc("@title:group email settings", "Email Settings"), personalFrame);
+    mUserEmailSettings
+        = new QGroupBox(i18nc("@title:group email settings", "Email Settings"), personalFrame);
 
     personalLayout->addWidget(mUserEmailSettings);
     QFormLayout *emailSettingsLayout = new QFormLayout(mUserEmailSettings);
-    KPIM::KPrefsWidString *s =
-        addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
+    KPIM::KPrefsWidString *s
+        = addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
     emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
     s = addWidString(CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings);
     emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
-    KPIM::KPrefsWidRadios *defaultEmailAttachMethod =
-        addWidRadios(
-            IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
+    KPIM::KPrefsWidRadios *defaultEmailAttachMethod
+        = addWidRadios(
+        IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
+        personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
     personalLayout->addStretch(1);
 
@@ -126,11 +131,11 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                       i18nc("@title:tab", "Save"));
     QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
 
-    KPIM::KPrefsWidBool *confirmItem =
-        addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
+    KPIM::KPrefsWidBool *confirmItem
+        = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
     saveLayout->addWidget(confirmItem->checkBox());
-    KPIM::KPrefsWidRadios *destinationItem =
-        addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
+    KPIM::KPrefsWidRadios *destinationItem
+        = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
 
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
@@ -141,18 +146,18 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")),
                       i18nc("@title:tab systray settings", "System Tray"));
 
-    QGroupBox *systrayGroupBox =
-        new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
+    QGroupBox *systrayGroupBox
+        = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
     systrayLayout->addWidget(systrayGroupBox);
     QVBoxLayout *systrayGroupLayout = new QVBoxLayout;
     systrayGroupBox->setLayout(systrayGroupLayout);
 
-    KPIM::KPrefsWidBool *showReminderDaemonItem =
-        addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
+    KPIM::KPrefsWidBool *showReminderDaemonItem
+        = addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
     systrayGroupLayout->addWidget(showReminderDaemonItem->checkBox());
     showReminderDaemonItem->checkBox()->setToolTip(
         i18nc("@info:tooltip", "Enable this setting to show the KOrganizer "
-              "reminder daemon in your system tray (recommended)."));
+                               "reminder daemon in your system tray (recommended)."));
 
     QLabel *note = new QLabel(
         xi18nc("@info",
@@ -199,10 +204,10 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogMain(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogMain(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -224,19 +229,19 @@ public:
 
         QGridLayout *regionalLayout = new QGridLayout(regionalPage);
 
-        QGroupBox *datetimeGroupBox =
-            new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
+        QGroupBox *datetimeGroupBox
+            = new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
         regionalLayout->addWidget(datetimeGroupBox, 0, 0);
 
         QGridLayout *datetimeLayout = new QGridLayout(datetimeGroupBox);
 
-        KPIM::KPrefsWidTime *dayBegins =
-            addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
+        KPIM::KPrefsWidTime *dayBegins
+            = addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
         datetimeLayout->addWidget(dayBegins->label(), 1, 0);
         datetimeLayout->addWidget(dayBegins->timeEdit(), 1, 1);
 
-        QGroupBox *holidaysGroupBox =
-            new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
+        QGroupBox *holidaysGroupBox
+            = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
         regionalLayout->addWidget(holidaysGroupBox, 1, 0);
 
         QGridLayout *holidaysLayout = new QGridLayout(holidaysGroupBox);
@@ -253,7 +258,8 @@ public:
 
         mHolidayCombo = new KComboBox(holidayRegBox);
         holidayRegBoxHBoxLayout->addWidget(mHolidayCombo);
-        connect(mHolidayCombo, QOverload<int>::of(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
+        connect(mHolidayCombo, QOverload<int>::of(
+                    &KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
 
         mHolidayCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
@@ -286,8 +292,8 @@ public:
             mHolidayCombo->setCurrentIndex(0);
         }
 
-        QGroupBox *workingHoursGroupBox =
-            new QGroupBox(i18nc("@title:group", "Working Period"), regionalPage);
+        QGroupBox *workingHoursGroupBox
+            = new QGroupBox(i18nc("@title:group", "Working Period"), regionalPage);
         regionalLayout->addWidget(workingHoursGroupBox, 2, 0);
 
         QBoxLayout *workingHoursLayout = new QVBoxLayout(workingHoursGroupBox);
@@ -298,7 +304,8 @@ public:
         // Respect start of week setting
         int weekStart = QLocale().firstDayOfWeek();
         for (int i = 0; i < 7; ++i) {
-            QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::ShortFormat);
+            QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1,
+                                                    QLocale::ShortFormat);
             int index = (i + weekStart + 6) % 7;
             mWorkDays[ index ] = new QCheckBox(weekDayName);
             mWorkDays[ index ]->setWhatsThis(
@@ -309,13 +316,14 @@ public:
                       "this box, or the working hours will not be "
                       "marked with color."));
 
-            connect(mWorkDays[ index ], &QCheckBox::stateChanged, this, &KPIM::KPrefsModule::slotWidChanged);
+            connect(mWorkDays[ index ], &QCheckBox::stateChanged, this,
+                    &KPIM::KPrefsModule::slotWidChanged);
 
             workDaysLayout->addWidget(mWorkDays[ index ]);
         }
 
-        KPIM::KPrefsWidTime *workStart =
-            addWidTime(KOPrefs::instance()->workingHoursStartItem());
+        KPIM::KPrefsWidTime *workStart
+            = addWidTime(KOPrefs::instance()->workingHoursStartItem());
 
         QHBoxLayout *workStartLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(workStartLayout);
@@ -323,8 +331,8 @@ public:
         workStartLayout->addWidget(workStart->label());
         workStartLayout->addWidget(workStart->timeEdit());
 
-        KPIM::KPrefsWidTime *workEnd =
-            addWidTime(KOPrefs::instance()->workingHoursEndItem());
+        KPIM::KPrefsWidTime *workEnd
+            = addWidTime(KOPrefs::instance()->workingHoursEndItem());
 
         QHBoxLayout *workEndLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(workEndLayout);
@@ -332,8 +340,8 @@ public:
         workEndLayout->addWidget(workEnd->label());
         workEndLayout->addWidget(workEnd->timeEdit());
 
-        KPIM::KPrefsWidBool *excludeHolidays =
-            addWidBool(KOPrefs::instance()->excludeHolidaysItem());
+        KPIM::KPrefsWidBool *excludeHolidays
+            = addWidBool(KOPrefs::instance()->excludeHolidaysItem());
 
         workingHoursLayout->addWidget(excludeHolidays->checkBox());
 
@@ -344,41 +352,42 @@ public:
                           i18nc("@title:tab", "Default Values"));
         QGridLayout *defaultLayout = new QGridLayout(defaultPage);
 
-        QGroupBox *timesGroupBox =
-            new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
+        QGroupBox *timesGroupBox
+            = new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
         defaultLayout->addWidget(timesGroupBox, 0, 0);
 
         QGridLayout *timesLayout = new QGridLayout(timesGroupBox);
 
-        KPIM::KPrefsWidTime *defaultTime =
-            addWidTime(CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage);
+        KPIM::KPrefsWidTime *defaultTime
+            = addWidTime(CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage);
         timesLayout->addWidget(defaultTime->label(), 0, 0);
         timesLayout->addWidget(defaultTime->timeEdit(), 0, 1);
 
-        KPIM::KPrefsWidDuration *defaultDuration =
-            addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
-                           QStringLiteral("hh:mm"), defaultPage);
+        KPIM::KPrefsWidDuration *defaultDuration
+            = addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
+                             QStringLiteral("hh:mm"), defaultPage);
 
         timesLayout->addWidget(defaultDuration->label(), 1, 0);
         timesLayout->addWidget(defaultDuration->timeEdit(), 1, 1);
 
-        QGroupBox *remindersGroupBox =
-            new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
+        QGroupBox *remindersGroupBox
+            = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
         defaultLayout->addWidget(remindersGroupBox, 1, 0);
 
         QGridLayout *remindersLayout = new QGridLayout(remindersGroupBox);
 
-        QLabel *reminderLabel =
-            new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
+        QLabel *reminderLabel
+            = new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
         remindersLayout->addWidget(reminderLabel, 0, 0);
         reminderLabel->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
-        mReminderTimeSpin  = new QSpinBox(defaultPage);
+        mReminderTimeSpin = new QSpinBox(defaultPage);
         mReminderTimeSpin->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
         mReminderTimeSpin->setToolTip(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
-        connect(mReminderTimeSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &KOPrefsDialogMain::slotWidChanged);
+        connect(mReminderTimeSpin, QOverload<int>::of(
+                    &QSpinBox::valueChanged), this, &KOPrefsDialogMain::slotWidChanged);
         remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
         mReminderUnitsCombo = new KComboBox(defaultPage);
@@ -386,7 +395,8 @@ public:
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip());
         mReminderUnitsCombo->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
-        connect(mReminderUnitsCombo, QOverload<int>::of(&KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
+        connect(mReminderUnitsCombo, QOverload<int>::of(
+                    &KComboBox::activated), this, &KOPrefsDialogMain::slotWidChanged);
         mReminderUnitsCombo->addItem(
             i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
         mReminderUnitsCombo->addItem(
@@ -395,17 +405,20 @@ public:
             i18nc("@item:inlistbox reminder time units in days", "day(s)"));
         remindersLayout->addWidget(mReminderUnitsCombo, 0, 2);
 
-        QCheckBox *cb =
-            addWidBool(
-                CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
+        QCheckBox *cb
+            = addWidBool(
+            CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
 
         if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
-            const QString defAudioFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
+            const QString defAudioFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral(
+                                                                    "sound/")
+                                                                + QLatin1String(
+                                                                    "KDE-Sys-Warning.ogg"));
             CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
         }
-        QString filter =
-            i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
-                 "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
+        QString filter
+            = i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
+                   "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
         KUrlRequester *rq = addWidPath(CalendarSupport::KCalPrefs::instance()->audioFilePathItem(),
                                        nullptr, filter)->urlRequester();
         rq->setEnabled(cb->isChecked());
@@ -419,38 +432,40 @@ public:
         remindersLayout->addLayout(audioFileRemindersBox, 1, 0);
         remindersLayout->addWidget(
             addWidBool(
-                CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem())->checkBox(), 2, 0);
+                CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem())->checkBox(), 2,
+            0);
         remindersLayout->addWidget(
             addWidBool(
-                CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem())->checkBox(), 3, 0);
+                CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem())->checkBox(), 3,
+            0);
 
         defaultLayout->setRowStretch(3, 1);
         load();
     }
 
 protected:
-    void usrReadConfig() override {
+    void usrReadConfig() override
+    {
         mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
         mReminderUnitsCombo->setCurrentIndex(
             CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
-        for (int i = 0; i < 7; ++i)
-        {
+        for (int i = 0; i < 7; ++i) {
             mWorkDays[i]->setChecked((1 << i) & (KOPrefs::instance()->mWorkWeekMask));
         }
     }
 
-    void usrWriteConfig() override {
-        KOPrefs::instance()->mHolidays =
-        mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
+    void usrWriteConfig() override
+    {
+        KOPrefs::instance()->mHolidays
+            = mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
 
-        CalendarSupport::KCalPrefs::instance()->mReminderTime =
-        mReminderTimeSpin->value();
-        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits =
-        mReminderUnitsCombo->currentIndex();
+        CalendarSupport::KCalPrefs::instance()->mReminderTime
+            = mReminderTimeSpin->value();
+        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits
+            = mReminderUnitsCombo->currentIndex();
 
         int mask = 0;
-        for (int i = 0; i < 7; ++i)
-        {
+        for (int i = 0; i < 7; ++i) {
             if (mWorkDays[i]->isChecked()) {
                 mask = mask | (1 << i);
             }
@@ -479,19 +494,19 @@ protected:
     }
 
 private:
-    QStringList   tzonenames;
-    KComboBox    *mHolidayCombo = nullptr;
-    QSpinBox  *mReminderTimeSpin = nullptr;
-    KComboBox    *mReminderUnitsCombo = nullptr;
-    QCheckBox    *mWorkDays[7];
+    QStringList tzonenames;
+    KComboBox *mHolidayCombo = nullptr;
+    QSpinBox *mReminderTimeSpin = nullptr;
+    KComboBox *mReminderUnitsCombo = nullptr;
+    QCheckBox *mWorkDays[7];
 };
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogTime(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogTime(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -501,9 +516,9 @@ class KOPrefsDialogViews : public KPIM::KPrefsModule
 {
 public:
     KOPrefsDialogViews(QWidget *parent)
-        : KPIM::KPrefsModule(KOPrefs::instance(), parent),
-          mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this)),
-          mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
+        : KPIM::KPrefsModule(KOPrefs::instance(), parent)
+        , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
+        , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
     {
         QBoxLayout *topTopLayout = new QVBoxLayout(this);
         QTabWidget *tabWidget = new QTabWidget(this);
@@ -528,8 +543,8 @@ public:
         QBoxLayout *nextDaysLayout = new QHBoxLayout;
         gdisplayLayout->addLayout(nextDaysLayout);
 
-        KPIM::KPrefsWidInt *nextDays =
-            addWidInt(KOPrefs::instance()->nextXDaysItem());
+        KPIM::KPrefsWidInt *nextDays
+            = addWidInt(KOPrefs::instance()->nextXDaysItem());
         nextDays->spinBox()->setSuffix(
             i18nc("@label suffix in the N days spin box", " days"));
 
@@ -575,8 +590,8 @@ public:
         QHBoxLayout *hourSizeLayout = new QHBoxLayout;
         adisplayLayout->addLayout(hourSizeLayout);
 
-        KPIM::KPrefsWidInt *hourSize =
-            addWidInt(KOPrefs::instance()->hourSizeItem());
+        KPIM::KPrefsWidInt *hourSize
+            = addWidInt(KOPrefs::instance()->hourSizeItem());
         hourSize->spinBox()->setSuffix(
             i18nc("@label suffix in the hour size spin box", " pixels"));
 
@@ -588,12 +603,12 @@ public:
             addWidBool(KOPrefs::instance()->enableAgendaItemIconsItem())->checkBox());
         adisplayLayout->addWidget(
             addWidBool(KOPrefs::instance()->showTodosAgendaViewItem())->checkBox());
-        KPIM::KPrefsWidBool *marcusBainsEnabled =
-            addWidBool(KOPrefs::instance()->marcusBainsEnabledItem());
+        KPIM::KPrefsWidBool *marcusBainsEnabled
+            = addWidBool(KOPrefs::instance()->marcusBainsEnabledItem());
         adisplayLayout->addWidget(marcusBainsEnabled->checkBox());
 
-        KPIM::KPrefsWidBool *marcusBainsShowSeconds =
-            addWidBool(KOPrefs::instance()->marcusBainsShowSecondsItem());
+        KPIM::KPrefsWidBool *marcusBainsShowSeconds
+            = addWidBool(KOPrefs::instance()->marcusBainsShowSecondsItem());
         connect(marcusBainsEnabled->checkBox(), &QAbstractButton::toggled,
                 marcusBainsShowSeconds->checkBox(), &QWidget::setEnabled);
 
@@ -681,13 +696,16 @@ public:
 
         load();
     }
+
 protected:
-    void usrReadConfig() override {
+    void usrReadConfig() override
+    {
         KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
             mAgendaIconComboBox->checkedIcons());
         KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(
             mMonthIconComboBox->checkedIcons());
     }
+
 private:
     KItemIconCheckCombo *mMonthIconComboBox;
     KItemIconCheckCombo *mAgendaIconComboBox;
@@ -695,10 +713,10 @@ private:
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogViews(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogViews(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -718,45 +736,45 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
                       i18nc("@title:tab", "Colors"));
 
     // Holiday Color
-    KPIM::KPrefsWidColor *holidayColor =
-        addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *holidayColor
+        = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
     colorLayout->addWidget(holidayColor->label(), 0, 0);
     colorLayout->addWidget(holidayColor->button(), 0, 1);
 
     // agenda view background color
-    KPIM::KPrefsWidColor *agendaBgColor =
-        addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *agendaBgColor
+        = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
     colorLayout->addWidget(agendaBgColor->label(), 3, 0);
     colorLayout->addWidget(agendaBgColor->button(), 3, 1);
 
-    KPIM::KPrefsWidColor *viewBgBusyColor =
-        addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *viewBgBusyColor
+        = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
     colorLayout->addWidget(viewBgBusyColor->label(), 4, 0);
     colorLayout->addWidget(viewBgBusyColor->button(), 4, 1);
 
     // agenda view Marcus Bains line color
-    KPIM::KPrefsWidColor *mblColor =
-        addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *mblColor
+        = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
     // working hours color
-    KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
-        addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
+        = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 6, 0);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 6, 1);
 
     // Todo due today color
-    KPIM::KPrefsWidColor *todoDueTodayColor =
-        addWidColor(
-            KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *todoDueTodayColor
+        = addWidColor(
+        KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
     colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
     colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
 
     // Todo overdue color
-    KPIM::KPrefsWidColor *todoOverdueColor =
-        addWidColor(
-            KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
+    KPIM::KPrefsWidColor *todoOverdueColor
+        = addWidColor(
+        KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
     colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
@@ -767,8 +785,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QGridLayout *categoryLayout = new QGridLayout;
     categoryGroup->setLayout(categoryLayout);
 
-    KPIM::KPrefsWidColor *unsetCategoryColor =
-        addWidColor(CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
+    KPIM::KPrefsWidColor *unsetCategoryColor
+        = addWidColor(
+        CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
     categoryLayout->addWidget(unsetCategoryColor->label(), 0, 0);
     categoryLayout->addWidget(unsetCategoryColor->button(), 0, 1);
     unsetCategoryColor->label()->setWhatsThis(unsetCategoryColor->button()->whatsThis());
@@ -780,7 +799,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
               "Select here the event category you want to modify. "
               "You can change the selected category color using "
               "the button below."));
-    connect(mCategoryCombo, QOverload<int>::of(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
+    connect(mCategoryCombo, QOverload<int>::of(
+                &KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
     categoryLayout->addWidget(mCategoryCombo, 1, 0);
 
     mCategoryButton = new KColorButton(categoryGroup);
@@ -788,7 +808,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
         i18nc("@info:whatsthis",
               "Choose here the color of the event category selected "
               "using the combo box above."));
-    connect(mCategoryButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setCategoryColor);
+    connect(mCategoryButton, &KColorButton::changed, this,
+            &KOPrefsDialogColorsAndFonts::setCategoryColor);
     categoryLayout->addWidget(mCategoryButton, 1, 1);
 
     updateCategoryColor();
@@ -813,7 +834,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
               "Select the calendar you want to modify. "
               "You can change the selected calendar color using "
               "the button below."));
-    connect(mResourceCombo, QOverload<int>::of(&Akonadi::CollectionComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
+    connect(mResourceCombo, QOverload<int>::of(
+                &Akonadi::CollectionComboBox::activated), this,
+            &KOPrefsDialogColorsAndFonts::updateResourceColor);
     resourceLayout->addWidget(mResourceCombo);
 
     mResourceButton = new KColorButton(resourceGroup);
@@ -821,7 +844,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
         i18nc("@info:whatsthis",
               "Choose here the color of the calendar selected "
               "using the combo box above."));
-    connect(mResourceButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setResourceColor);
+    connect(mResourceButton, &KColorButton::changed, this,
+            &KOPrefsDialogColorsAndFonts::setResourceColor);
     resourceLayout->addWidget(mResourceButton);
 
     colorLayout->setRowStretch(11, 1);
@@ -832,32 +856,32 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     QGridLayout *fontLayout = new QGridLayout(fontFrame);
 
-    KPIM::KPrefsWidFont *timeBarFont =
-        addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
-                   QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
+    KPIM::KPrefsWidFont *timeBarFont
+        = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
+                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
     fontLayout->addWidget(timeBarFont->label(), 0, 0);
     fontLayout->addWidget(timeBarFont->preview(), 0, 1);
     fontLayout->addWidget(timeBarFont->button(), 0, 2);
 
-    KPIM::KPrefsWidFont *monthViewFont =
-        addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
-                   QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ') +
-                   i18nc("@label", "Event text"));
+    KPIM::KPrefsWidFont *monthViewFont
+        = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
+                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
+                     +i18nc("@label", "Event text"));
 
     fontLayout->addWidget(monthViewFont->label(), 1, 0);
     fontLayout->addWidget(monthViewFont->preview(), 1, 1);
     fontLayout->addWidget(monthViewFont->button(), 1, 2);
 
-    KPIM::KPrefsWidFont *agendaViewFont =
-        addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
-                   i18nc("@label", "Event text"));
+    KPIM::KPrefsWidFont *agendaViewFont
+        = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
+                     i18nc("@label", "Event text"));
     fontLayout->addWidget(agendaViewFont->label(), 2, 0);
     fontLayout->addWidget(agendaViewFont->preview(), 2, 1);
     fontLayout->addWidget(agendaViewFont->button(), 2, 2);
 
-    KPIM::KPrefsWidFont *marcusBainsFont =
-        addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
-                   QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+    KPIM::KPrefsWidFont *marcusBainsFont
+        = addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
+                     QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
     fontLayout->addWidget(marcusBainsFont->label(), 3, 0);
     fontLayout->addWidget(marcusBainsFont->preview(), 3, 1);
     fontLayout->addWidget(marcusBainsFont->button(), 3, 2);
@@ -924,11 +948,11 @@ void KOPrefsDialogColorsAndFonts::updateResources()
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
     bool ok;
-    const QString id =
-        QString::number(mResourceCombo->itemData(
-                            mResourceCombo->currentIndex(),
-                            Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
-    if (! ok) {
+    const QString id
+        = QString::number(mResourceCombo->itemData(
+                              mResourceCombo->currentIndex(),
+                              Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
+    if (!ok) {
         return;
     }
     mResourceDict.insert(id, mResourceButton->color());
@@ -938,17 +962,17 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
     bool ok;
-    const QString id =
-        QString::number(mResourceCombo->itemData(
-                            mResourceCombo->currentIndex(),
-                            Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
+    const QString id
+        = QString::number(mResourceCombo->itemData(
+                              mResourceCombo->currentIndex(),
+                              Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
     if (!ok) {
         return;
     }
     qCDebug(KORGANIZER_LOG) << id << mResourceCombo->itemText(mResourceCombo->currentIndex());
 
     QColor color = mResourceDict.value(id);
-    if (! color.isValid()) {
+    if (!color.isValid()) {
         color = KOPrefs::instance()->resourceColor(id);
     }
     mResourceButton->setColor(color);
@@ -956,10 +980,10 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogColorsAndFonts(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogColorsAndFonts(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -976,20 +1000,21 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     QGridLayout *topLayout = new QGridLayout(topFrame);
     topLayout->setMargin(0);
 
-    KPIM::KPrefsWidBool *useGroupwareBool =
-        addWidBool(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
+    KPIM::KPrefsWidBool *useGroupwareBool
+        = addWidBool(
+        CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
     topLayout->addWidget(useGroupwareBool->checkBox(), 0, 0, 1, 2);
 
-    KPIM::KPrefsWidBool *bcc =
-        addWidBool(Akonadi::CalendarSettings::self()->bccItem(), topFrame);
+    KPIM::KPrefsWidBool *bcc
+        = addWidBool(Akonadi::CalendarSettings::self()->bccItem(), topFrame);
     topLayout->addWidget(bcc->checkBox(), 1, 0, 1, 2);
 
     QLabel *aTransportLabel = new QLabel(
         i18nc("@label", "Mail transport:"), topFrame);
     topLayout->addWidget(aTransportLabel, 2, 0, 1, 2);
 
-    MailTransport::TransportManagementWidget *tmw =
-        new MailTransport::TransportManagementWidget(topFrame);
+    MailTransport::TransportManagementWidget *tmw
+        = new MailTransport::TransportManagementWidget(topFrame);
     tmw->layout()->setContentsMargins(0, 0, 0, 0);
     topLayout->addWidget(tmw, 3, 0, 1, 2);
 
@@ -1008,10 +1033,10 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogGroupScheduling(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogGroupScheduling(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1031,19 +1056,32 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
 
     // signals and slots connections
 
-    connect(mGroupwarePage->publishDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishUser, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishSavePassword, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->retrieveEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->retrieveUser, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishDelay, QOverload<int>::of(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishDays, QOverload<int>::of(
+                &QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishUser, &QLineEdit::textChanged, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishSavePassword, &QCheckBox::toggled, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->retrieveEnable, &QCheckBox::toggled, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->retrieveUser, &QLineEdit::textChanged, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishDelay, QOverload<int>::of(
+                &QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this,
+            &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 
     (new QVBoxLayout(this))->addWidget(widget);
 
@@ -1116,7 +1154,9 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
         mGroupwarePage->retrieveSavePassword->isChecked());
 
     // clear the url cache for our user
-    const QString configFile = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/korganizer/freebusyurls");
+    const QString configFile
+        = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String(
+        "/korganizer/freebusyurls");
     KConfig cfg(configFile);
     cfg.deleteGroup(CalendarSupport::KCalPrefs::instance()->email());
 
@@ -1125,10 +1165,10 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfigfreebusy(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogGroupwareScheduling(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfigfreebusy(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogGroupwareScheduling(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1138,11 +1178,16 @@ class PluginItem : public QTreeWidgetItem
 {
 public:
     PluginItem(QTreeWidget *parent, const KService::Ptr &service)
-        : QTreeWidgetItem(parent, QStringList(service->name())),
-          mService(service) {}
+        : QTreeWidgetItem(parent, QStringList(service->name()))
+        , mService(service)
+    {
+    }
+
     PluginItem(QTreeWidgetItem *parent, const KService::Ptr &service)
-        : QTreeWidgetItem(parent, QStringList(service->name())),
-          mService(service) {}
+        : QTreeWidgetItem(parent, QStringList(service->name()))
+        , mService(service)
+    {
+    }
 
     KService::Ptr service()
     {
@@ -1182,11 +1227,11 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
     buttonRowLayout->setMargin(0);
     mConfigureButton = new QPushButton(buttonRow);
-    KGuiItem::assign(mConfigureButton,     KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
-                     QStringLiteral("configure"), QString(),
-                     i18nc("@info:whatsthis",
-                           "This button allows you to configure"
-                           " the plugin that you have selected in the list above")));
+    KGuiItem::assign(mConfigureButton, KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
+                                                QStringLiteral("configure"), QString(),
+                                                i18nc("@info:whatsthis",
+                                                      "This button allows you to configure"
+                                                      " the plugin that you have selected in the list above")));
     buttonRowLayout->addWidget(mConfigureButton);
     buttonRowLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding));
     topTopLayout->addWidget(buttonRow);
@@ -1207,10 +1252,13 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
 
     connect(mConfigureButton, &QPushButton::clicked, this, &KOPrefsDialogPlugins::configure);
 
-    connect(mPositionAgendaTop, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
-    connect(mPositionAgendaBottom, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
+    connect(mPositionAgendaTop, &QRadioButton::clicked, this,
+            &KOPrefsDialogPlugins::positioningChanged);
+    connect(mPositionAgendaBottom, &QRadioButton::clicked, this,
+            &KOPrefsDialogPlugins::positioningChanged);
 
-    connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this, &KOPrefsDialogPlugins::selectionChanged);
+    connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this,
+            &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemChanged, this, &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotWidChanged);
 
@@ -1388,7 +1436,7 @@ void KOPrefsDialogPlugins::selectionChanged()
     }
 
     if (item->service()->hasServiceType(
-                EventViews::CalendarDecoration::Decoration::serviceType())) {
+            EventViews::CalendarDecoration::Decoration::serviceType())) {
         bool hasPosition = false;
         QString decoration = item->service()->desktopEntryName();
         /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
@@ -1419,10 +1467,10 @@ void KOPrefsDialogPlugins::selectionChanged()
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korganizerconfigplugins(QWidget *parent, const char *)
-    {
-        return new KOPrefsDialogPlugins(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korganizerconfigplugins(QWidget *parent, const char *)
+{
+    return new KOPrefsDialogPlugins(parent);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1430,10 +1478,10 @@ extern "C"
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_korgdesignerfields(QWidget *parent, const char *)
-    {
-        return new KOPrefsDesignerFields(parent);
-    }
+Q_DECL_EXPORT KCModule *create_korgdesignerfields(QWidget *parent, const char *)
+{
+    return new KOPrefsDesignerFields(parent);
+}
 }
 
 KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent)
@@ -1443,7 +1491,8 @@ KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent)
 
 QString KOPrefsDesignerFields::localUiDir()
 {
-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + uiPath();
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
+                        + uiPath();
     return dir;
 }
 

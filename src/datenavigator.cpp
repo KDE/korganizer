@@ -80,8 +80,7 @@ void DateNavigator::selectDates(int count)
     selectDates(mSelectedDates.first(), count);
 }
 
-void DateNavigator::selectDates(const QDate &d, int count,
-                                const QDate &preferredMonth)
+void DateNavigator::selectDates(const QDate &d, int count, const QDate &preferredMonth)
 {
     KCalCore::DateList dates;
     dates.reserve(count);
@@ -175,8 +174,7 @@ void DateNavigator::selectPreviousYear()
     selectWeekByDay(weekDay, firstSelected);
 }
 
-void DateNavigator::selectPreviousMonth(const QDate &currentMonth,
-                                        const QDate &selectionLowerLimit,
+void DateNavigator::selectPreviousMonth(const QDate &currentMonth, const QDate &selectionLowerLimit,
                                         const QDate &selectionUpperLimit)
 {
     shiftMonth(currentMonth,
@@ -204,10 +202,8 @@ void DateNavigator::selectNextWeek()
     selectWeekByDay(weekDay, firstSelected);
 }
 
-void DateNavigator::shiftMonth(const QDate &currentMonth,
-                               const QDate &selectionLowerLimit,
-                               const QDate &selectionUpperLimit,
-                               int offset)
+void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selectionLowerLimit,
+                               const QDate &selectionUpperLimit, int offset)
 {
     QDate firstSelected = mSelectedDates.first();
     const int weekDay = firstSelected.dayOfWeek();
@@ -222,19 +218,18 @@ void DateNavigator::shiftMonth(const QDate &currentMonth,
     /* When firstSelected doesn't belong to currentMonth it can happen
        that the new selection won't be visible on our KDateNavigators
        so we must adjust it */
-    if (selectionLowerLimit.isValid() &&
-            firstSelected < selectionLowerLimit) {
+    if (selectionLowerLimit.isValid()
+        && firstSelected < selectionLowerLimit) {
         firstSelected = selectionLowerLimit;
-    } else if (selectionUpperLimit.isValid() &&
-               firstSelected > selectionUpperLimit) {
+    } else if (selectionUpperLimit.isValid()
+               && firstSelected > selectionUpperLimit) {
         firstSelected = selectionUpperLimit.addDays(-6);
     }
 
     selectWeekByDay(weekDay, firstSelected, nextMonth);
 }
 
-void DateNavigator::selectNextMonth(const QDate &currentMonth,
-                                    const QDate &selectionLowerLimit,
+void DateNavigator::selectNextMonth(const QDate &currentMonth, const QDate &selectionLowerLimit,
                                     const QDate &selectionUpperLimit)
 {
     shiftMonth(currentMonth,
@@ -306,4 +301,3 @@ void DateNavigator::emitSelected(const QDate &preferredMonth)
 {
     Q_EMIT datesSelected(mSelectedDates, preferredMonth);
 }
-

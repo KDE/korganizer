@@ -33,7 +33,8 @@ public:
     explicit StyledCalendarDelegate(QObject *parent);
     virtual ~StyledCalendarDelegate();
 
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+    void paint(QPainter *painter, const QStyleOptionViewItem &option,
+               const QModelIndex &index) const override;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
     enum Action {
@@ -48,9 +49,7 @@ Q_SIGNALS:
     void action(const QModelIndex &, int);
 
 protected:
-    bool editorEvent(QEvent *event,
-                     QAbstractItemModel *model,
-                     const QStyleOptionViewItem &option,
+    bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option,
                      const QModelIndex &index) override;
 
 private:
@@ -59,4 +58,3 @@ private:
 };
 
 #endif
-

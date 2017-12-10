@@ -37,7 +37,8 @@
 #include <QLocale>
 
 KDateNavigator::KDateNavigator(QWidget *parent)
-    : QFrame(parent), mBaseDate(1970, 1, 1)
+    : QFrame(parent)
+    , mBaseDate(1970, 1, 1)
 {
     QGridLayout *topLayout = new QGridLayout(this);
     topLayout->setMargin(0);
@@ -47,8 +48,10 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     topLayout->addWidget(mNavigatorBar, 0, 0, 1, 8);
 
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, this, &KDateNavigator::prevYearClicked);
-    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, &KDateNavigator::prevMonthClicked);
-    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, &KDateNavigator::nextMonthClicked);
+    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this,
+            &KDateNavigator::prevMonthClicked);
+    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this,
+            &KDateNavigator::nextMonthClicked);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, this, &KDateNavigator::nextYearClicked);
     connect(mNavigatorBar, &NavigatorBar::monthSelected, this, &KDateNavigator::monthSelected);
     connect(mNavigatorBar, &NavigatorBar::yearSelected, this, &KDateNavigator::yearSelected);
@@ -80,7 +83,8 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     connect(mDayMatrix, &KODayMatrix::selected, this, &KDateNavigator::datesSelected);
 
     connect(mDayMatrix, &KODayMatrix::incidenceDropped, this, &KDateNavigator::incidenceDropped);
-    connect(mDayMatrix, &KODayMatrix::incidenceDroppedMove, this, &KDateNavigator::incidenceDroppedMove);
+    connect(mDayMatrix, &KODayMatrix::incidenceDroppedMove, this,
+            &KDateNavigator::incidenceDroppedMove);
 
     connect(mDayMatrix, &KODayMatrix::newEventSignal, this, &KDateNavigator::newEventSignal);
     connect(mDayMatrix, &KODayMatrix::newTodoSignal, this, &KDateNavigator::newTodoSignal);
@@ -105,7 +109,9 @@ void KDateNavigator::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
     mCalendar = calendar;
 
     if (mCalendar) {
-        connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &KDateNavigator::setUpdateNeeded);
+        connect(
+            mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
+            &KDateNavigator::setUpdateNeeded);
     }
 
     mDayMatrix->setCalendar(calendar);
@@ -168,11 +174,9 @@ QDate KDateNavigator::endDate() const
     return startDate().addDays(6 * 7);
 }
 
-void KDateNavigator::setHighlightMode(bool highlightEvents,
-                                      bool highlightTodos,
+void KDateNavigator::setHighlightMode(bool highlightEvents, bool highlightTodos,
                                       bool highlightJournals) const
 {
-
     mDayMatrix->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 }
 
@@ -333,4 +337,3 @@ bool KDateNavigator::eventFilter(QObject *o, QEvent *e)
         return false;
     }
 }
-

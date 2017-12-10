@@ -33,13 +33,11 @@
 class QLineEdit;
 class QPushButton;
 class QAbstractItemModel;
-namespace KPIMTextEdit
-{
+namespace KPIMTextEdit {
 class RichTextEditorWidget;
 }
 
-namespace Akonadi
-{
+namespace Akonadi {
 class CollectionComboBox;
 }
 

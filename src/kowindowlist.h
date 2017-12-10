@@ -27,8 +27,7 @@
 
 #include <QObject>
 
-namespace KOrg
-{
+namespace KOrg {
 class MainWindow;
 }
 

@@ -35,14 +35,20 @@
 class KOCoreHelper : public KOrg::CoreHelper
 {
 public:
-    KOCoreHelper() {}
-    virtual ~KOCoreHelper() {}
+    KOCoreHelper()
+    {
+    }
+
+    virtual ~KOCoreHelper()
+    {
+    }
 
     QColor categoryColor(const QStringList &cats) override;
 
     QString holidayString(const QDate &dt) override;
 
-    QTime dayStart() override {
+    QTime dayStart() override
+    {
         return KOPrefs::instance()->mDayBegins.time();
     }
 };

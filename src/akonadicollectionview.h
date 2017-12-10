@@ -35,8 +35,7 @@
 class AkonadiCollectionView;
 class ManageShowCollectionProperties;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class EntityTreeView;
 class EntityTreeModel;
 class StandardCalendarActionManager;

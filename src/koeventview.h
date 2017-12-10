@@ -29,8 +29,7 @@
 
 #include "baseview.h"
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 }
 
@@ -91,7 +90,8 @@ public:
     QMenu *newEventPopup();
 
     /** This view is a view for displaying events. */
-    bool isEventView() override {
+    bool isEventView() override
+    {
         return true;
     }
 

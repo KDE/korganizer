@@ -31,7 +31,7 @@
 
 class QTimer;
 
-class DateChecker: public QObject
+class DateChecker : public QObject
 {
     Q_OBJECT
 public:

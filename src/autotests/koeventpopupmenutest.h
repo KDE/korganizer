@@ -21,8 +21,7 @@
 #include <AkonadiCore/Collection>
 #include <QObject>
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Collection;
 }
 
@@ -44,4 +43,3 @@ private Q_SLOTS:
 };
 
 #endif // KOEVENTPOPUPMENUTESTTEST_H
-

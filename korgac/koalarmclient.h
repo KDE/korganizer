@@ -32,8 +32,7 @@
 class AlarmDialog;
 class AlarmDockWindow;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 class EntityTreeModel;
 }
@@ -67,8 +66,7 @@ private:
     void slotCommitData(QSessionManager &);
     bool dockerEnabled();
     bool collectionsAvailable() const;
-    void createReminder(const Akonadi::ETMCalendar::Ptr &calendar,
-                        const Akonadi::Item &incidence,
+    void createReminder(const Akonadi::ETMCalendar::Ptr &calendar, const Akonadi::Item &incidence,
                         const QDateTime &dt, const QString &displayText);
     void saveLastCheckTime();
 

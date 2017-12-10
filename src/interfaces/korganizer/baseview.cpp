@@ -32,10 +32,10 @@ class Q_DECL_HIDDEN BaseView::Private
 
 public:
     explicit Private(BaseView *qq)
-        : q(qq),
-          mChanges(EventViews::EventView::IncidencesAdded |
-                   EventViews::EventView::DatesChanged),
-          calendar(nullptr)
+        : q(qq)
+        , mChanges(EventViews::EventView::IncidencesAdded
+                   |EventViews::EventView::DatesChanged)
+        , calendar(nullptr)
     {
         QByteArray cname = q->metaObject()->className();
         cname.replace(':', '_');
@@ -56,7 +56,9 @@ public:
 };
 
 BaseView::BaseView(QWidget *parent)
-    : QWidget(parent), mChanger(nullptr), d(new Private(this))
+    : QWidget(parent)
+    , mChanger(nullptr)
+    , d(new Private(this))
 {
 }
 
@@ -200,12 +202,11 @@ bool BaseView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &all
     return false;
 }
 
-void BaseView::getHighlightMode(bool &highlightEvents,
-                                bool &highlightTodos,
+void BaseView::getHighlightMode(bool &highlightEvents, bool &highlightTodos,
                                 bool &highlightJournals)
 {
-    highlightEvents   = true;
-    highlightTodos    = false;
+    highlightEvents = true;
+    highlightTodos = false;
     highlightJournals = false;
 }
 
@@ -228,9 +229,8 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start,
-        const QDateTime &end,
-        const QDate &preferredMonth) const
+QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start, const QDateTime &end,
+                                                      const QDate &preferredMonth) const
 {
     Q_UNUSED(preferredMonth);
     return qMakePair(start, end);
@@ -245,4 +245,3 @@ EventViews::EventView::Changes BaseView::changes() const
 {
     return d->mChanges;
 }
-

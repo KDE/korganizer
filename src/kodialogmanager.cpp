@@ -53,7 +53,9 @@ using namespace KOrg;
 class KODialogManager::DialogManagerVisitor : public KCalCore::Visitor
 {
 public:
-    DialogManagerVisitor() {}
+    DialogManagerVisitor()
+    {
+    }
 
     bool act(KCalCore::IncidenceBase::Ptr &incidence, KODialogManager *manager)
     {
@@ -66,7 +68,8 @@ protected:
 };
 
 KODialogManager::KODialogManager(CalendarView *mainView)
-    : QObject(), mMainView(mainView)
+    : QObject()
+    , mMainView(mainView)
 {
     mOptionsDialog = nullptr;
     mSearchDialog = nullptr;
@@ -103,7 +106,7 @@ void KODialogManager::showOptionsDialog()
 
         // add them all
         const QStringList::iterator mitEnd(modules.end());
-        for (QStringList::iterator mit = modules.begin(); mit != mitEnd ; ++mit) {
+        for (QStringList::iterator mit = modules.begin(); mit != mitEnd; ++mit) {
             mOptionsDialog->addModule(*mit);
         }
     }
@@ -123,9 +126,12 @@ void KODialogManager::showSearchDialog()
     if (!mSearchDialog) {
         mSearchDialog = new SearchDialog(mMainView);
         //mSearchDialog->setCalendar( mMainView->calendar() );
-        connect(mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)), mMainView, SLOT(showIncidence(Akonadi::Item)));
-        connect(mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView, SLOT(editIncidence(Akonadi::Item)));
-        connect(mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)));
+        connect(mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)), mMainView,
+                SLOT(showIncidence(Akonadi::Item)));
+        connect(mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView,
+                SLOT(editIncidence(Akonadi::Item)));
+        connect(mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView,
+                SLOT(deleteIncidence(Akonadi::Item)));
     }
     // make sure the widget is on top again
     mSearchDialog->show();
@@ -135,10 +141,12 @@ void KODialogManager::showSearchDialog()
 void KODialogManager::showArchiveDialog()
 {
     if (!mArchiveDialog) {
-        mArchiveDialog =
-            new CalendarSupport::ArchiveDialog(mMainView->calendar(), mMainView->incidenceChanger());
+        mArchiveDialog
+            = new CalendarSupport::ArchiveDialog(mMainView->calendar(),
+                                                 mMainView->incidenceChanger());
         connect(mArchiveDialog, SIGNAL(eventsDeleted()), mMainView, SLOT(updateView()));
-        connect(mArchiveDialog, &CalendarSupport::ArchiveDialog::autoArchivingSettingsModified, mMainView, &CalendarView::slotAutoArchivingSettingsModified);
+        connect(mArchiveDialog, &CalendarSupport::ArchiveDialog::autoArchivingSettingsModified,
+                mMainView, &CalendarView::slotAutoArchivingSettingsModified);
     }
     mArchiveDialog->show();
     mArchiveDialog->raise();
@@ -152,8 +160,10 @@ void KODialogManager::showFilterEditDialog(QList<KCalCore::CalFilter *> *filters
     createCategoryEditor();
     if (!mFilterEditDialog) {
         mFilterEditDialog = new FilterEditDialog(filters, mMainView);
-        connect(mFilterEditDialog, &FilterEditDialog::filterChanged, mMainView, &CalendarView::updateFilter);
-        connect(mFilterEditDialog, &FilterEditDialog::editCategories, mCategoryEditDialog.data(), &QWidget::show);
+        connect(mFilterEditDialog, &FilterEditDialog::filterChanged, mMainView,
+                &CalendarView::updateFilter);
+        connect(mFilterEditDialog, &FilterEditDialog::editCategories,
+                mCategoryEditDialog.data(), &QWidget::show);
 #if 0
         connect(mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
                 mFilterEditDialog, SLOT(updateCategoryConfig()));
@@ -170,10 +180,10 @@ IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog(const Akonadi:
         return nullptr;
     }
 
-    IncidenceEditorNG::IncidenceDialog *dialog =
-        IncidenceEditorNG::IncidenceDialogFactory::create(
-            /*needs initial saving=*/false,
-            incidence->type(), mMainView->incidenceChanger(), mMainView);
+    IncidenceEditorNG::IncidenceDialog *dialog
+        = IncidenceEditorNG::IncidenceDialogFactory::create(
+        /*needs initial saving=*/ false,
+        incidence->type(), mMainView->incidenceChanger(), mMainView);
 
     return dialog;
 }
@@ -189,10 +199,13 @@ void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialo
 void KODialogManager::connectEditor(IncidenceEditorNG::IncidenceDialog *editor)
 {
     createCategoryEditor();
-    connect(editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)));
+    connect(editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView,
+            SLOT(deleteIncidence(Akonadi::Item)));
 
-    connect(editor, SIGNAL(dialogClose(Akonadi::Item)), mMainView, SLOT(dialogClosing(Akonadi::Item)));
-    connect(editor, SIGNAL(deleteAttendee(Akonadi::Item)), mMainView, SIGNAL(cancelAttendees(Akonadi::Item)));
+    connect(editor, SIGNAL(dialogClose(Akonadi::Item)), mMainView, SLOT(dialogClosing(
+                                                                            Akonadi::Item)));
+    connect(editor, SIGNAL(deleteAttendee(Akonadi::Item)), mMainView,
+            SIGNAL(cancelAttendees(Akonadi::Item)));
 }
 
 void KODialogManager::updateSearchDialog()
@@ -206,8 +219,11 @@ void KODialogManager::createCategoryEditor()
 {
     if (mCategoryEditDialog == nullptr) {
         mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
-        mCategoryEditDialog->buttons()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
-        connect(mCategoryEditDialog->buttons()->button(QDialogButtonBox::Help), &QPushButton::clicked, this, &KODialogManager::slotHelp);
+        mCategoryEditDialog->buttons()->setStandardButtons(
+            QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+        connect(mCategoryEditDialog->buttons()->button(
+                    QDialogButtonBox::Help), &QPushButton::clicked, this,
+                &KODialogManager::slotHelp);
 
         mCategoryEditDialog->setModal(true);
     }

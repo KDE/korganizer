@@ -70,17 +70,28 @@ KOEventPopupMenu *KOEventView::eventPopup()
 {
     KOEventPopupMenu *eventPopup = new KOEventPopupMenu(calendar().data(), this);
 
-    connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this, &KOEventView::editIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this, &KOEventView::showIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this, &KOEventView::deleteIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this, &KOEventView::cutIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this, &KOEventView::copyIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this, &KOEventView::pasteIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this, &KOEventView::toggleAlarmSignal);
-    connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this, &KOEventView::toggleTodoCompletedSignal);
-    connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this, &KOEventView::copyIncidenceToResourceSignal);
-    connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this, &KOEventView::moveIncidenceToResourceSignal);
-    connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this, &KOEventView::dissociateOccurrencesSignal);
+    connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this,
+            &KOEventView::editIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this,
+            &KOEventView::showIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this,
+            &KOEventView::deleteIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this,
+            &KOEventView::cutIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this,
+            &KOEventView::copyIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this,
+            &KOEventView::pasteIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this,
+            &KOEventView::toggleAlarmSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
+            &KOEventView::toggleTodoCompletedSignal);
+    connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this,
+            &KOEventView::copyIncidenceToResourceSignal);
+    connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this,
+            &KOEventView::moveIncidenceToResourceSignal);
+    connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this,
+            &KOEventView::dissociateOccurrencesSignal);
 
     return eventPopup;
 }
@@ -100,6 +111,7 @@ QMenu *KOEventView::newEventPopup()
     return static_cast<QMenu *>
            (client->factory()->container(QStringLiteral("rmb_selection_popup"), client));
 }
+
 //---------------------------------------------------------------------------
 
 void KOEventView::popupShow()
@@ -152,7 +164,6 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction(const Akonadi::Item &aitem)
 {
-
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
     if (!incidence) {
         qCDebug(KORGANIZER_LOG) << "Ouch, null incidence";
@@ -210,9 +221,7 @@ bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDat
         QDateTime itemDateTime(date, time, Qt::LocalTime);
 
         return itemDateTime < todo->dtDue(false).toLocalTime();
-
     } else {
         return false;
     }
 }
-

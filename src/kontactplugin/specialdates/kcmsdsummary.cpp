@@ -33,10 +33,10 @@
 
 extern "C"
 {
-    Q_DECL_EXPORT KCModule *create_sdsummary(QWidget *parent, const char *)
-    {
-        return new KCMSDSummary(parent);
-    }
+Q_DECL_EXPORT KCModule *create_sdsummary(QWidget *parent, const char *)
+{
+    return new KCMSDSummary(parent);
+}
 }
 
 KCMSDSummary::KCMSDSummary(QWidget *parent)
@@ -50,8 +50,10 @@ KCMSDSummary::KCMSDSummary(QWidget *parent)
     connect(mDateMonthButton, &QRadioButton::clicked, this, &KCMSDSummary::modified);
     connect(mDateRangeButton, &QRadioButton::clicked, this, &KCMSDSummary::modified);
 
-    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMSDSummary::modified);
-    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMSDSummary::customDaysChanged);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this,
+            &KCMSDSummary::modified);
+    connect(mCustomDays, QOverload<int>::of(
+                &QSpinBox::valueChanged), this, &KCMSDSummary::customDaysChanged);
 
     connect(mShowBirthdaysFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowAnniversariesFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
@@ -186,4 +188,3 @@ const KAboutData *KCMSDSummary::aboutData() const
 
     return about;
 }
-

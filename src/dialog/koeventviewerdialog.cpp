@@ -54,7 +54,8 @@ KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget
     buttonBox->addButton(user2Button, QDialogButtonBox::ActionRole);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KOEventViewerDialog::reject);
     setModal(false);
-    KGuiItem::assign(mUser1Button, KGuiItem(i18n("Edit..."), QIcon::fromTheme(QStringLiteral("document-edit"))));
+    KGuiItem::assign(mUser1Button,
+                     KGuiItem(i18n("Edit..."), QIcon::fromTheme(QStringLiteral("document-edit"))));
     KGuiItem::assign(user2Button, KGuiItem(i18n("Show in Context")));
     mEventViewer = new CalendarSupport::IncidenceViewer(calendar, this);
     mainLayout->addWidget(mEventViewer);
@@ -102,11 +103,13 @@ void KOEventViewerDialog::editIncidence()
 
     if (CalendarSupport::hasIncidence(item)) {
         // make sure korganizer is running or the part is shown
-        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
+        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral(
+                                                               "org.kde.korganizer.desktop"));
         QString error;
         if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(
-                QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+                QStringLiteral("org.kde.korganizer"), QStringLiteral(
+                    "/Korganizer"), QDBusConnection::sessionBus());
             korganizerIface.editIncidence(QString::number(item.id()));
         } else {
             qCWarning(KORGANIZER_LOG) << "Failure starting korganizer:" << error;
@@ -120,15 +123,16 @@ void KOEventViewerDialog::showIncidenceContext()
 
     if (CalendarSupport::hasIncidence(item)) {
         // make sure korganizer is running or the part is shown
-        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
+        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral(
+                                                               "org.kde.korganizer.desktop"));
         QString error;
         if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(
-                QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+                QStringLiteral("org.kde.korganizer"), QStringLiteral(
+                    "/Korganizer"), QDBusConnection::sessionBus());
             korganizerIface.showIncidenceContext(QString::number(item.id()));
         } else {
             qCWarning(KORGANIZER_LOG) << "Failure starting korganizer:" << error;
         }
     }
 }
-

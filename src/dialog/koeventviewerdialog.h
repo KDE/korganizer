@@ -30,13 +30,11 @@
 #include <QDialog>
 class QPushButton;
 
-namespace CalendarSupport
-{
+namespace CalendarSupport {
 class IncidenceViewer;
 }
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Item;
 class ETMCalendar;
 }

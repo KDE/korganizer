@@ -36,7 +36,8 @@ void SummaryEventTester::test_Multiday()
     event->setDtStart(QDateTime(today.addDays(-1)));
     event->setDtEnd(QDateTime(today.addDays(5)));
     event->setAllDay(true);
-    QString multiDayAllDayStartingYesterday = QStringLiteral("Multiday, allday, in progress (day 2/6)");
+    QString multiDayAllDayStartingYesterday = QStringLiteral(
+        "Multiday, allday, in progress (day 2/6)");
     event->setSummary(multiDayAllDayStartingYesterday);
     QVERIFY(cal->addEvent(event));
 
@@ -51,7 +52,8 @@ void SummaryEventTester::test_Multiday()
         QCOMPARE(2, events4.size());
         SummaryEventInfo *ev4 = events4.at(1);
 
-        QCOMPARE(ev4->summaryText, QString(multidayWithTimeInProgress + QString::fromLatin1(" (%1/7)").arg(i + 2)));
+        QCOMPARE(ev4->summaryText,
+                 QString(multidayWithTimeInProgress + QString::fromLatin1(" (%1/7)").arg(i + 2)));
         QCOMPARE(ev4->timeRange, QStringLiteral("%1 - %2").arg(
                      QLocale::system().toString(QTime(0, 0), QLocale::ShortFormat),
                      QLocale::system().toString(QTime(23, 59), QLocale::ShortFormat)));
@@ -64,8 +66,11 @@ void SummaryEventTester::test_Multiday()
     // Test date a multiday event in the future has to correct DaysTo set
     QString multiDayWithTimeFuture = QStringLiteral("Multiday, with time, in the future");
     event = KCalCore::Event::Ptr(new KCalCore::Event());
-    event->setDtStart(QDateTime(today.addDays(100), QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
-    event->setDtEnd(QDateTime(today.addDays(106), QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
+    event->setDtStart(QDateTime(today.addDays(100),
+                                QTime::fromString(QStringLiteral("12:00"),
+                                                  QStringLiteral("hh:mm"))));
+    event->setDtEnd(QDateTime(today.addDays(106),
+                              QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
     event->setSummary(multiDayWithTimeFuture);
     QVERIFY(cal->addEvent(event));
     for (int i = 100; i <= 106; ++i) {
@@ -76,7 +81,8 @@ void SummaryEventTester::test_Multiday()
         qDebug() << ev5->daysToGo;
         qDebug() << i;*/
 
-        QCOMPARE(ev5->summaryText, QString(multiDayWithTimeFuture + QString::fromLatin1(" (%1/7)").arg(i - 100 + 1)));
+        QCOMPARE(ev5->summaryText,
+                 QString(multiDayWithTimeFuture + QString::fromLatin1(" (%1/7)").arg(i - 100 + 1)));
         QCOMPARE(ev5->daysToGo, QStringLiteral("in %1 days").arg(i));
 
         qDeleteAll(events5);
@@ -92,8 +98,11 @@ void SummaryEventTester::test_Multiday()
     QVERIFY(cal->addEvent(event));
 
     event = KCalCore::Event::Ptr(new KCalCore::Event());
-    event->setDtStart(QDateTime(today.addDays(2), QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
-    event->setDtEnd(QDateTime(today.addDays(5), QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
+    event->setDtStart(QDateTime(today.addDays(2),
+                                QTime::fromString(QStringLiteral("12:00"),
+                                                  QStringLiteral("hh:mm"))));
+    event->setDtEnd(QDateTime(today.addDays(5),
+                              QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
     event->setSummary(QStringLiteral("Multiday, time specified, in future"));
     QVERIFY(cal->addEvent(event));
 
@@ -106,8 +115,11 @@ void SummaryEventTester::test_Multiday()
     QVERIFY(cal->addEvent(event));
 
     event = KCalCore::Event::Ptr(new KCalCore::Event());
-    event->setDtStart(QDateTime(today.addDays(-10), QTime::fromString(QStringLiteral("12:00"), QStringLiteral("hh:mm"))));
-    event->setDtEnd(QDateTime(today.addDays(-5), QTime::fromString(QStringLiteral("10:00"), QStringLiteral("hh:mm"))));
+    event->setDtStart(QDateTime(today.addDays(-10),
+                                QTime::fromString(QStringLiteral("12:00"),
+                                                  QStringLiteral("hh:mm"))));
+    event->setDtEnd(QDateTime(today.addDays(-5),
+                              QTime::fromString(QStringLiteral("10:00"), QStringLiteral("hh:mm"))));
     event->setSummary(QStringLiteral("Some event in the past"));
     QVERIFY(cal->addEvent(event));
 
@@ -132,12 +144,14 @@ void SummaryEventTester::test_Multiday()
             QCOMPARE(ev->daysToGo, QStringLiteral("all day"));
             QCOMPARE(ev->makeBold, true);
         } else {
-            qDebug() << "Unexpected " << ev->summaryText << ev->startDate << ev->timeRange << ev->daysToGo;
+            qDebug() << "Unexpected " << ev->summaryText << ev->startDate << ev->timeRange
+                     << ev->daysToGo;
             QVERIFY(false);   // unexpected event!
         }
     }
 
-    SummaryEventInfo::List events2 = SummaryEventInfo::eventsForDate(today.addDays(multiDayFuture), cal);
+    SummaryEventInfo::List events2 = SummaryEventInfo::eventsForDate(today.addDays(
+                                                                         multiDayFuture), cal);
     QCOMPARE(1, events2.size());
     SummaryEventInfo *ev1 = events2.at(0);
     QCOMPARE(ev1->summaryText, multiDayAllDayInFuture);
@@ -147,7 +161,8 @@ void SummaryEventTester::test_Multiday()
     QCOMPARE(ev1->makeBold, false);
     // Make sure multiday is only displayed once
     for (int i = 1; i < 30; ++i) {
-        const SummaryEventInfo::List events3 = SummaryEventInfo::eventsForDate(today.addDays(multiDayFuture + i), cal);
+        const SummaryEventInfo::List events3
+            = SummaryEventInfo::eventsForDate(today.addDays(multiDayFuture + i), cal);
         for (SummaryEventInfo *ev : events3) {
             QVERIFY(ev->summaryText.contains(multiDayAllDayInFuture));
         }

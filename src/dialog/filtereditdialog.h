@@ -33,13 +33,11 @@
 
 class FilterEdit;
 class QPushButton;
-namespace KCalCore
-{
+namespace KCalCore {
 class CalFilter;
 }
 
-namespace KPIM
-{
+namespace KPIM {
 class TagSelectionDialog;
 }
 

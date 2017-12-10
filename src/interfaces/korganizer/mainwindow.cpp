@@ -21,9 +21,7 @@
 
 #include "mainwindow.h"
 
-namespace KOrg
-{
-
+namespace KOrg {
 MainWindow::MainWindow() : mDocument(true)
 {
 }
@@ -46,6 +44,4 @@ bool MainWindow::hasDocument() const
 {
     return mDocument;
 }
-
 } // namespace KOrg
-

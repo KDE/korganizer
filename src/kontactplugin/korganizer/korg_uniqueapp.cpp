@@ -43,9 +43,10 @@ int KOrganizerUniqueAppHandler::activate(const QStringList &args, const QString 
     (void)plugin()->part();
 
     QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.korganizer"),
-                           QStringLiteral("/Korganizer"),
-                           QStringLiteral("org.kde.korganizer.Korganizer"),
-                           QStringLiteral("handleCommandLine"));
+                                                          QStringLiteral("/Korganizer"),
+                                                          QStringLiteral(
+                                                              "org.kde.korganizer.Korganizer"),
+                                                          QStringLiteral("handleCommandLine"));
     message.setArguments(QList<QVariant>() << (args));
     QDBusConnection::sessionBus().send(message);
 
