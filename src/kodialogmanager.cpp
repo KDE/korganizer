@@ -126,8 +126,8 @@ void KODialogManager::showSearchDialog()
     if (!mSearchDialog) {
         mSearchDialog = new SearchDialog(mMainView);
         //mSearchDialog->setCalendar( mMainView->calendar() );
-        connect(mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)), mMainView,
-                SLOT(showIncidence(Akonadi::Item)));
+        connect(mSearchDialog, &SearchDialog::showIncidenceSignal, mMainView,
+                QOverload<>::of(&CalendarView::showIncidence));
         connect(mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView,
                 SLOT(editIncidence(Akonadi::Item)));
         connect(mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView,
