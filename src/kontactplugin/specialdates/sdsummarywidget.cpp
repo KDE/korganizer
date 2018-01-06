@@ -87,6 +87,7 @@ enum SDCategory {
     CategoryBirthday,
     CategoryAnniversary,
     CategoryHoliday,
+    CategorySeasonal,
     CategoryOther
 };
 
@@ -382,7 +383,7 @@ void SDSummaryWidget::createLabels()
         }
     }
 
-    // Seach for Holidays
+    // Search for Holidays
     if (mShowHolidays) {
         if (initHolidays()) {
             for (dt = QDate::currentDate();
@@ -393,8 +394,13 @@ void SDSummaryWidget::createLabels()
                 for (; it != holidays.constEnd(); ++it) {
                     SDEntry entry;
                     entry.type = IncidenceTypeEvent;
-                    entry.category = ((*it).dayType() == Holiday::NonWorkday)
-                                     ? CategoryHoliday : CategoryOther;
+                    if ((*it).categoryList().contains(QStringLiteral("seasonal"))) {
+                        entry.category = CategorySeasonal;
+                    } else if ((*it).categoryList().contains(QStringLiteral("public"))) {
+                        entry.category = CategoryHoliday;
+                    } else {
+                        entry.category = CategoryOther;
+                    }
                     entry.date = dt;
                     entry.summary = (*it).name();
                     dateDiff(dt, entry.daysTo, entry.yearsOld);
@@ -449,6 +455,7 @@ void SDSummaryWidget::createLabels()
             case CategoryHoliday:
                 icon_name = QStringLiteral("view-calendar-holiday");
                 break;
+            case CategorySeasonal:
             case CategoryOther:
                 icon_name = QStringLiteral("view-calendar-special-occasion");
                 break;
@@ -530,6 +537,9 @@ void SDSummaryWidget::createLabels()
             case CategoryHoliday:
                 what = i18n("Holiday");
                 break;
+            case CategorySeasonal:
+                what = i18n("Change of Seasons");
+                break;
             case CategoryOther:
                 what = i18n("Special Occasion");
                 break;
@@ -567,8 +577,8 @@ void SDSummaryWidget::createLabels()
             }
 
             // Age
-            if ((*addrIt).category == CategoryBirthday
-                || (*addrIt).category == CategoryAnniversary) {
+            if ((*addrIt).category == CategoryBirthday ||
+                (*addrIt).category == CategoryAnniversary) {
                 label = new QLabel(this);
                 if ((*addrIt).yearsOld <= 0) {
                     label->setText(QString());

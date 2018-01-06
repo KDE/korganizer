@@ -4,7 +4,7 @@ set(KDEPIM_DEV_VERSION alpha)
 
 # add an extra space
 if(DEFINED KDEPIM_DEV_VERSION)
-    set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
+  set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
 endif()
 
 set(KDEPIM_VERSION_NUMBER "5.7.40")
@@ -12,8 +12,8 @@ set(KDEPIM_VERSION "${KDEPIM_VERSION_NUMBER}${KDEPIM_DEV_VERSION}")
 
 project(korganizer VERSION ${KDEPIM_VERSION_NUMBER})
 
-if (POLICY CMP0063)
-    cmake_policy(SET CMP0063 NEW)
+if(POLICY CMP0063)
+  cmake_policy(SET CMP0063 NEW)
 endif()
 set(KF5_VERSION "5.41.0")
 
@@ -46,7 +46,6 @@ if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
   list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "K_PLUGIN_FACTORY_WITH_JSON" "K_PLUGIN_FACTORY" "EXPORT_KONTACT_PLUGIN")
 endif()
 
-
 set(AKONADI_MIMELIB_VERSION "5.7.40")
 set(AKONADI_CONTACT_VERSION "5.7.40")
 set(KCALENDARCORE_LIB_VERSION "5.7.40")
@@ -54,7 +53,7 @@ set(IDENTITYMANAGEMENT_LIB_VERSION "5.7.40")
 set(KLDAP_LIB_VERSION "5.7.40")
 set(KMAILTRANSPORT_LIB_VERSION "5.7.40")
 set(CALENDARUTILS_LIB_VERSION "5.7.40")
-set(KHOLIDAYS_LIB_VERSION "5.7.40")
+set(KHOLIDAYS_LIB_VERSION "5.7.41")
 set(AKONADICALENDAR_LIB_VERSION "5.7.40")
 set(KONTACTINTERFACE_LIB_VERSION "5.7.40")
 set(KMIME_LIB_VERSION "5.7.40")
@@ -125,15 +124,15 @@ find_package(KF5LibkdepimAkonadi ${LIBKDEPIM_LIB_VERSION_LIB} CONFIG REQUIRED)
 find_package(KF5IncidenceEditor ${LIBINCIDENCEEDITOR_LIB_VERSION_LIB} CONFIG REQUIRED)
 find_package(KF5CalendarSupport ${CALENDARSUPPORT_LIB_VERSION_LIB} CONFIG REQUIRED)
 find_package(KF5EventViews ${EVENTVIEW_LIB_VERSION_LIB} CONFIG REQUIRED)
-if (NOT APPLE)
-    find_package(X11)
+if(NOT APPLE)
+  find_package(X11)
 endif()
 
 set(KDEPIM_HAVE_X11 ${X11_FOUND})
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 add_definitions(-DQT_USE_QSTRINGBUILDER)
-configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h )
-configure_file(korgac/config-enterprise.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-enterprise.h )
+configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
+configure_file(korgac/config-enterprise.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-enterprise.h)
 include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_SOURCE_DIR} ${korgac_BINARY_DIR})
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
@@ -144,8 +143,7 @@ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 add_subdirectory(src)
 add_subdirectory(korgac)
 
-
-install( FILES korganizer.renamecategories korganizer.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
+install(FILES korganizer.renamecategories korganizer.categories DESTINATION ${KDE_INSTALL_CONFDIR})
 
 add_subdirectory(doc)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
