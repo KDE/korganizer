@@ -192,6 +192,9 @@ set(korganizerprivate_LIB_SRCS
 
 qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)
 
+set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)
+set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_agendaitemtheme.cpp PROPERTY SKIP_AUTOMOC ON)
+
 ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui
     ui/kogroupwareprefspage.ui
