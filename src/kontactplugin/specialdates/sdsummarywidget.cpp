@@ -394,9 +394,9 @@ void SDSummaryWidget::createLabels()
                 for (; it != holidays.constEnd(); ++it) {
                     SDEntry entry;
                     entry.type = IncidenceTypeEvent;
-                    if ((*it).categoryList().contains(QStringLiteral("seasonal"))) {
+                    if ((*it).categoryList().contains(QLatin1String("seasonal"))) {
                         entry.category = CategorySeasonal;
-                    } else if ((*it).categoryList().contains(QStringLiteral("public"))) {
+                    } else if ((*it).categoryList().contains(QLatin1String("public"))) {
                         entry.category = CategoryHoliday;
                     } else {
                         entry.category = CategoryOther;
