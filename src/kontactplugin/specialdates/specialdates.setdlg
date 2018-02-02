@@ -1,7 +1,7 @@
 [Special Dates]
 Name=Special Dates Summary
 Name[af]=Spesiale datums opsomming
-Name[ar]=ملخص المواعيد الخاصة
+Name[ar]=ملخّص بالتّواريخ الخاصّة
 Name[bg]=Special Dates Summary
 Name[bs]=Sažetak posebnih datuma
 Name[ca]=Resum de dates especials
@@ -65,7 +65,7 @@ Name[zh_CN]=特殊日期摘要
 Name[zh_TW]=特殊日期摘要
 Comment=Special Dates Summary Component
 Comment[af]=Spesiale datums opsomming komponent
-Comment[ar]=مكوّن ملخص المواعيد الخاصة
+Comment[ar]=مكوّن تلخيص التّواريخ الخاصّة
 Comment[bg]=Модул за обобщение на специалните случаи
 Comment[bs]=Komponenta kratkog sadržaja posebnih datuma
 Comment[ca]=Component pel resum de dates especials

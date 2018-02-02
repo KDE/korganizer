@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=DBUSCalendar
-Name[ar]=التقويم DBUS
+Name[ar]=تقويم D-Bus
 Name[ast]=DBUSCalendar
 Name[bg]=DBUSCalendar
 Name[bs]=DBUSKalendar
@@ -53,7 +53,7 @@ Name[zh_TW]=DBUS行事曆
 Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-Bus interface
-Comment[ar]=برنامج المنظم مع واجهة D-Bus
+Comment[ar]=منظّم بواجهة D-Bus
 Comment[bs]=Organizator sa D-Bus Sučeljom
 Comment[ca]=Organitzador amb una interfície de D-Bus
 Comment[ca@valencia]=Organitzador amb una interfície de D-Bus
