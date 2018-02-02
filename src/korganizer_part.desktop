@@ -2,7 +2,7 @@
 MimeType=text/calendar;
 Comment=Calendar and Scheduling Program
 Comment[af]=Kalender en Skedulering Program
-Comment[ar]=برنامج التقويم والجدولة
+Comment[ar]=برنامج تقويم وجدولة
 Comment[bg]=Програма за календар и разписание
 Comment[bs]=Program za kalendar i rokovnik
 Comment[ca]=Un programa de calendari i planificació
@@ -75,7 +75,7 @@ Icon=korganizer
 Type=Service
 Name=KOrganizer
 Name[af]=Korganizer
-Name[ar]=برنامج المنظَم KOrganizer
+Name[ar]=منظّمك
 Name[bg]=KOrganizer
 Name[br]=KOrganizer
 Name[bs]=KOrganizator

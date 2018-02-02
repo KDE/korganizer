@@ -17,7 +17,7 @@ X-KDE-PluginInfo-EnabledByDefault=true
 
 Comment=Kontact KOrganizer Plugin
 Comment[af]=Kontact KOrganizer inprop module
-Comment[ar]=ملحق Kontact KOrganizer
+Comment[ar]=ملحقة «منظّمك» لِ‍«متراسلك»
 Comment[bg]=Приставка за календар и връзка с KOrganizer
 Comment[br]=Lugent Kontact KOrganizer
 Comment[bs]=Kontakt KOrganizer dodatak
@@ -84,7 +84,7 @@ Comment[zh_CN]=Kontact KOrganizer 插件
 Comment[zh_TW]=Kontact KOrganizer 外掛程式
 Name=Calendar
 Name[af]=Kalender
-Name[ar]=التقويم
+Name[ar]=التّقويم
 Name[bg]=Calendar
 Name[br]=Deiziadur
 Name[bs]=Kalendar

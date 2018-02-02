@@ -15,7 +15,7 @@ X-KDE-PluginInfo-EnabledByDefault=true
 
 Name=Special Dates
 Name[af]=Spesiale datums
-Name[ar]=المواعيد الخاصة
+Name[ar]=التّواريخ الخاصّة
 Name[bg]=Special Dates
 Name[br]=Deiziadoù dibar
 Name[bs]=Posebni datumi
@@ -82,7 +82,7 @@ Name[zh_CN]=特殊日期
 Name[zh_TW]=特殊日期
 Comment=Special Dates Plugin
 Comment[af]=Spesiale datums inprop module
-Comment[ar]=ملحق المواعيد الخاصة
+Comment[ar]=ملحقة التّواريخ الخاصّة
 Comment[bg]=Приставка за специални случаи
 Comment[bs]=Dodaci za posebne datume
 Comment[ca]=Connector de dates especials

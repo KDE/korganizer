@@ -17,7 +17,7 @@ X-KDE-PluginInfo-EnabledByDefault=true
 
 Comment=Kontact KOrganizer Journal Plugin
 Comment[af]=Kontact KOrganizer joernaal inprop module
-Comment[ar]=ملحق Kontact KOrganizer Journal
+Comment[ar]=ملحقة يوميّة «منظّمك» لِ‍«متراسلك»
 Comment[bg]=Приставка за дневника
 Comment[bs]=Kontat KOrganizer dodatak za dnevnik
 Comment[ca]=Connector de diaris del KOrganizer pel Kontact
@@ -75,7 +75,7 @@ Comment[zh_CN]=Kontact KOrganizer 日记插件
 Comment[zh_TW]=Kontact KOrganizer Journal 外掛程式
 Name=Journal
 Name[af]=Joernaal
-Name[ar]=اليوميات
+Name[ar]=اليوميّات
 Name[bg]=Journal
 Name[br]=Deizlevr
 Name[bs]=Dnevnik
