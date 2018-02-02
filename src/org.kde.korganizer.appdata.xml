@@ -39,6 +39,7 @@
   <name xml:lang="zh-CN">KOrganizer</name>
   <name xml:lang="zh-TW">行事曆_KOrganizer</name>
   <summary>KOrganizer is a calendar and scheduling application</summary>
+  <summary xml:lang="ar">«منظّمك» هو تطبيق تقاويم وجدولة</summary>
   <summary xml:lang="ca">El KOrganizer és una aplicació de calendari i planificació de tasques</summary>
   <summary xml:lang="ca-valencia">El KOrganizer és una aplicació de calendari i planificació de tasques</summary>
   <summary xml:lang="cs">KOrganizer je aplikace pro kalendáře a plánování</summary>
@@ -64,6 +65,7 @@
       KOrganizer is the calendar and scheduling component of the Kontact suite.
       You can write journal entries, schedule appointments, events, and to-dos.
     </p>
+    <p xml:lang="ar">«منظّمك» هو مكوّن التّقاويم والجدولة لطقم «متراسلك». يمكنك كتابة مدخلات الدّوريّات، وجدولة المواعيد، والأحداث والمهامّ.</p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
     <p xml:lang="ca-valencia">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
     <p xml:lang="de">KOrganizer ist die Kalender. und Terminplanungskomponente der Kontakt-Software. Sie können Termine, Verabredungen, Aufgaben planen und Einträge in das Journal schreiben.</p>
@@ -127,6 +129,7 @@
     <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Support for multiple calendars and todo lists</li>
+      <li xml:lang="ar">دعم مختلف التّقاويم وقوائم المهامّ</li>
       <li xml:lang="ca">Permet múltiples calendaris i llistes de pendents</li>
       <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de pendents</li>
       <li xml:lang="de">Unterstützt mehrere Kalender und Aufgabenlisten</li>
@@ -147,6 +150,7 @@
       <li xml:lang="x-test">xxSupport for multiple calendars and todo listsxx</li>
       <li xml:lang="zh-CN">支持多个日历和待办事项清单</li>
       <li>Storage model</li>
+      <li xml:lang="ar">نموذج للتّخزين</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
       <li xml:lang="ca-valencia">Model d'emmagatzematge</li>
       <li xml:lang="cs">Model úložiště</li>
@@ -168,6 +172,7 @@
       <li xml:lang="x-test">xxStorage modelxx</li>
       <li xml:lang="zh-CN">存储模式</li>
       <li>Undo and Redo</li>
+      <li xml:lang="ar">التّراجع والإعادة</li>
       <li xml:lang="ca">Fes i desfés</li>
       <li xml:lang="ca-valencia">Fes i desfés</li>
       <li xml:lang="cs">Zpět a Vpřed</li>
@@ -189,6 +194,7 @@
       <li xml:lang="x-test">xxUndo and Redoxx</li>
       <li xml:lang="zh-CN">撤消和重做</li>
       <li>Todo integration with agenda view</li>
+      <li xml:lang="ar">تكامل المهامّ مع منظور جدول الأعمال</li>
       <li xml:lang="ca">Integra les pendents amb la vista d'agenda</li>
       <li xml:lang="ca-valencia">Integra les pendents amb la vista d'agenda</li>
       <li xml:lang="cs">Integrace úkolů s pohledem na agendu</li>
@@ -210,6 +216,7 @@
       <li xml:lang="x-test">xxTodo integration with agenda viewxx</li>
       <li xml:lang="zh-CN">待办集成到议程视图</li>
       <li>Attachments for events and todos</li>
+      <li xml:lang="ar">مرفقات للأحداث والمهامّ</li>
       <li xml:lang="ca">Adjunts pels esdeveniments i pendents</li>
       <li xml:lang="ca-valencia">Adjunts pels esdeveniments i pendents</li>
       <li xml:lang="cs">Přílohy pro události a úkoly</li>
@@ -231,6 +238,7 @@
       <li xml:lang="x-test">xxAttachments for events and todosxx</li>
       <li xml:lang="zh-CN">事件和待办附件</li>
       <li>Quick todo and event entries</li>
+      <li xml:lang="ar">مدخلات مهامّ وأحداث سريعة</li>
       <li xml:lang="ca">Entrades de pendents i esdeveniments ràpids</li>
       <li xml:lang="ca-valencia">Entrades de pendents i esdeveniments ràpids</li>
       <li xml:lang="de">Schnelles Eintragen von Aufgaben und Terminen</li>
@@ -251,6 +259,7 @@
       <li xml:lang="x-test">xxQuick todo and event entriesxx</li>
       <li xml:lang="zh-CN">快速待办和事件项目</li>
       <li>Plugin for Jewish calendar dates</li>
+      <li xml:lang="ar">ملحقة لتواريخ التّقويم اليهوديّ</li>
       <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
       <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu</li>
       <li xml:lang="cs">Modul pro židovská kalendářní data</li>
@@ -272,6 +281,7 @@
       <li xml:lang="x-test">xxPlugin for Jewish calendar datesxx</li>
       <li xml:lang="zh-CN">犹太历日期插件</li>
       <li>Print support</li>
+      <li xml:lang="ar">دعم الطّباعة</li>
       <li xml:lang="ca">Permet la impressió</li>
       <li xml:lang="ca-valencia">Permet la impressió</li>
       <li xml:lang="cs">Podpora tisku</li>
