@@ -121,8 +121,8 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
     Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
     // qCDebug(KORGANIZER_LOG) << index.data().toString() << enabled;
     const bool isSearchCollection
-        = col.resource().startsWith(QStringLiteral("akonadi_search_resource"));
-    const bool isKolabCollection = col.resource().startsWith(QStringLiteral(
+        = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
+    const bool isKolabCollection = col.resource().startsWith(QLatin1String(
                                                                  "akonadi_kolab_resource"));
     const bool isTopLevelCollection = (col.parentCollection() == Akonadi::Collection::root());
     const bool isToplevelSearchCollection = (isTopLevelCollection && isSearchCollection);
