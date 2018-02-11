@@ -66,7 +66,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 public:
     ActionManager(KXMLGUIClient *client, CalendarView *widget, QObject *parent,
                   KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar = nullptr);
-    virtual ~ActionManager();
+    ~ActionManager() override;
 
     /** Peform initialization that requires this* to be full constructed */
     void init();

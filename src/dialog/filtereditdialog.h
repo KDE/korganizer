@@ -52,7 +52,7 @@ class FilterEditDialog : public QDialog
     Q_OBJECT
 public:
     explicit FilterEditDialog(QList<KCalCore::CalFilter *> *, QWidget *parent = nullptr);
-    virtual ~FilterEditDialog();
+    ~FilterEditDialog() override;
 
 Q_SIGNALS:
     void filterChanged();

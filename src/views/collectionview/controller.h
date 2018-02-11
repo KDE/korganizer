@@ -74,7 +74,7 @@ class PersonNode : public ReparentingModel::Node
 {
 public:
     PersonNode(ReparentingModel &personModel, const KPIM::Person &person);
-    virtual ~PersonNode();
+    ~PersonNode() override;
     bool operator==(const Node &) const override;
 
     void setChecked(bool);
@@ -98,7 +98,7 @@ class CollectionNode : public ReparentingModel::Node
 {
 public:
     CollectionNode(ReparentingModel &personModel, const Akonadi::Collection &col);
-    virtual ~CollectionNode();
+    ~CollectionNode() override;
     bool operator==(const Node &) const override;
 
     Emitter emitter;

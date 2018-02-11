@@ -46,7 +46,7 @@ class KOrganizerPart : public KParts::ReadOnlyPart, public KOrg::MainWindow
     Q_OBJECT
 public:
     KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &);
-    virtual ~KOrganizerPart();
+    ~KOrganizerPart() override;
 
     KOrg::CalendarViewBase *view() const override;
 

@@ -53,7 +53,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     Q_OBJECT
 public:
     KOrganizer();
-    virtual ~KOrganizer();
+    ~KOrganizer() override;
 
     void init(bool hasDocument) override;
 

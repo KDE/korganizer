@@ -49,7 +49,7 @@ class SearchDialog : public QDialog
     Q_OBJECT
 public:
     explicit SearchDialog(CalendarView *calendarview);
-    virtual ~SearchDialog();
+    ~SearchDialog() override;
 
     void updateView();
 

@@ -41,7 +41,7 @@ class Quickview : public QDialog
     Q_OBJECT
 public:
     Quickview(const KPIM::Person &person, const Akonadi::Collection &col);
-    virtual ~Quickview();
+    ~Quickview() override;
 
 private Q_SLOTS:
     void onTodayClicked();

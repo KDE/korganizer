@@ -72,7 +72,7 @@ public:
     };
 
     explicit KOViewManager(CalendarView *);
-    virtual ~KOViewManager();
+    ~KOViewManager() override;
 
     /** changes the view to be the currently selected view */
     void showView(KOrg::BaseView *);

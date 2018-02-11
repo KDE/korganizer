@@ -35,7 +35,7 @@ class AlarmDockWindow : public KStatusNotifierItem
     Q_OBJECT
 public:
     AlarmDockWindow();
-    virtual ~AlarmDockWindow();
+    ~AlarmDockWindow() override;
 
     void enableAutostart(bool enabled);
 

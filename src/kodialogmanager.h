@@ -58,7 +58,7 @@ class KODialogManager : public QObject
     Q_OBJECT
 public:
     explicit KODialogManager(CalendarView *);
-    virtual ~KODialogManager();
+    ~KODialogManager() override;
 
     IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 

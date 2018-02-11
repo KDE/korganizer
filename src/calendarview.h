@@ -109,7 +109,7 @@ public:
       @param parent   parent window
     */
     explicit CalendarView(QWidget *parent = nullptr);
-    virtual ~CalendarView();
+    ~CalendarView() override;
 
     class CalendarViewVisitor : public KCalCore::Visitor
     {

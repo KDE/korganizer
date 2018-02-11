@@ -31,7 +31,7 @@ class StyledCalendarDelegate : public QStyledItemDelegate
 
 public:
     explicit StyledCalendarDelegate(QObject *parent);
-    virtual ~StyledCalendarDelegate();
+    ~StyledCalendarDelegate() override;
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;

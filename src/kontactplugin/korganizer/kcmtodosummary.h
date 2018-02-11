@@ -40,7 +40,7 @@ class KCMTodoSummary : public KCModule, public Ui::TodoSummaryConfig_Base
 
 public:
     explicit KCMTodoSummary(QWidget *parent = nullptr);
-    virtual ~KCMTodoSummary();
+    ~KCMTodoSummary() override;
 
     void load() override;
     void save() override;

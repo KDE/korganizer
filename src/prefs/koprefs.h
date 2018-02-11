@@ -34,7 +34,7 @@ class KORGANIZER_CORE_EXPORT KOPrefs : public KOPrefsBase
 {
     Q_OBJECT
 public:
-    virtual ~KOPrefs();
+    ~KOPrefs() override;
 
     /** Get instance of KOPrefs. It is made sure that there is only one
     instance. */

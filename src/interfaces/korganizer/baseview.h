@@ -64,7 +64,7 @@ public:
     /**
       Destructor.  Views will do view-specific cleanups here.
     */
-    virtual ~BaseView();
+    ~BaseView() override;
 
     virtual void setCalendar(const Akonadi::ETMCalendar::Ptr &cal);
     /**

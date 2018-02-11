@@ -71,7 +71,7 @@ public:
     /**
      * Destructor.  Views will do view-specific cleanups here.
      */
-    virtual ~KOEventView();
+    ~KOEventView() override;
 
     /**
      * provides a hint back to the caller on the maximum number of dates

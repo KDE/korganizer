@@ -39,7 +39,7 @@ class KOAgendaView : public KOEventView
     Q_OBJECT
 public:
     explicit KOAgendaView(QWidget *parent = nullptr, bool isSideBySide = false);
-    virtual ~KOAgendaView();
+    ~KOAgendaView() override;
 
     /** Returns maximum number of days supported by the koagendaview */
     int maxDatesHint() const override;

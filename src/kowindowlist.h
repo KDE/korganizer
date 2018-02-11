@@ -50,7 +50,7 @@ public:
       instance of this class. The ActionManager class takes care of this.
     */
     KOWindowList();
-    virtual ~KOWindowList();
+    ~KOWindowList() override;
 
     /**
       Is there only one instance left?
