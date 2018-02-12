@@ -50,7 +50,7 @@
 class FreebusyViewCalendar : public EventViews::ViewCalendar
 {
 public:
-    virtual ~FreebusyViewCalendar()
+    ~FreebusyViewCalendar() override
     {
     }
 

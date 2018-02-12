@@ -189,7 +189,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
                 if (action == Enable && !showButtons && enabled == Qt::PartiallyChecked) {
                     buttonOption.state = QStyle::State_Active;
                 }
-                s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
+                s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             } else {
                 QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), i);
                 buttonOption.features = QStyleOptionButton::Flat;
@@ -197,7 +197,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
                 if (col.statistics().count() > 0) {
                     buttonOption.text = QString::number(col.statistics().count());
                 }
-                s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, 0);
+                s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             }
             i++;
         }

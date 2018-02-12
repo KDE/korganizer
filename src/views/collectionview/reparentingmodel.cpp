@@ -398,7 +398,7 @@ ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sou
             return proxyNode.data();
         }
     }
-    return 0;
+    return nullptr;
 }
 
 ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourceIndex)
@@ -410,7 +410,7 @@ ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourc
     if (proxyIndex.isValid()) {
         return extractNode(proxyIndex);
     }
-    return 0;
+    return nullptr;
 }
 
 void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex,
@@ -459,7 +459,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
                 const int targetRow = proxyNode->row();
                 beginRemoveRows(index(proxyNode->parent), targetRow, targetRow);
                 proxyNode->parent->children.remove(targetRow);
-                proxyNode->parent = 0;
+                proxyNode->parent = nullptr;
                 endRemoveRows();
             }
         }

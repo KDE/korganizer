@@ -290,12 +290,12 @@ Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchMo
 void Controller::setSearchString(const QString &searchString)
 {
     if (mCollectionSearchJob) {
-        disconnect(mCollectionSearchJob, 0, this, 0);
+        disconnect(mCollectionSearchJob, nullptr, this, nullptr);
         mCollectionSearchJob->kill(KJob::Quietly);
         mCollectionSearchJob = nullptr;
     }
     if (mPersonSearchJob) {
-        disconnect(mPersonSearchJob, 0, this, 0);
+        disconnect(mPersonSearchJob, nullptr, this, nullptr);
         mPersonSearchJob->kill(KJob::Quietly);
         mPersonSearchJob = nullptr;
     }
