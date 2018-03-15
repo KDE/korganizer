@@ -30,6 +30,8 @@
 #include <KLocalizedString>
 #include <KConfig>
 
+#include <QButtonGroup>
+
 KCModule *create_apptsummary(QWidget *parent, const char *)
 {
     return new KCMApptSummary(parent);
