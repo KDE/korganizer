@@ -54,7 +54,7 @@ void ManageShowCollectionProperties::showCollectionProperties()
     Akonadi::CollectionAttributesSynchronizationJob *sync
         = new Akonadi::CollectionAttributesSynchronizationJob(col);
     sync->setProperty("collectionId", id);
-    connect(sync, &KJob::result,
+    connect(sync, &Akonadi::CollectionAttributesSynchronizationJob::result,
             this, &ManageShowCollectionProperties::slotCollectionPropertiesContinued);
     sync->start();
 }
@@ -101,6 +101,5 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
 
         dlg->show();
         mHashDialogBox.insert(collection.id(), dlg);
-        delete dlg;
     }
 }
