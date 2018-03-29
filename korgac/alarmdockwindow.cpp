@@ -96,7 +96,7 @@ AlarmDockWindow::AlarmDockWindow()
     // if the main window is hidden.
     QAction *act = action(QStringLiteral("quit"));
     if (act) {
-        act->disconnect(SIGNAL(triggered(bool)), this, SLOT(maybeQuit()));
+        disconnect(act, SIGNAL(triggered(bool)), this, SLOT(maybeQuit()));
         connect(act, &QAction::triggered, this, &AlarmDockWindow::slotQuit);
     } else {
         qCDebug(KOALARMCLIENT_LOG) << "No Quit standard action.";
