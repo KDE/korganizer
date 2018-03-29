@@ -698,10 +698,6 @@ void ActionManager::initActions()
     action = new QAction(i18n("Configure &Date && Time..."), this);
     mACollection->addAction(QStringLiteral("conf_datetime"), action);
     connect(action, &QAction::triggered, this, &ActionManager::configureDateTime);
-// TODO: Add an item to show the resource management dlg
-//   new QAction( i18n( "Manage &Calendars..." ), 0,
-//                     this, SLOT(manageResources()),
-//                     mACollection, "conf_resources" );
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-filter")),
                          i18n("Manage View &Filters..."), this);
