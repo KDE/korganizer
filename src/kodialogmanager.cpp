@@ -91,8 +91,8 @@ void KODialogManager::showOptionsDialog()
 {
     if (!mOptionsDialog) {
         mOptionsDialog = new KCMultiDialog(mMainView);
-        connect(mOptionsDialog, SIGNAL(configCommitted(QByteArray)),
-                mMainView, SLOT(updateConfig(QByteArray)));
+        connect(mOptionsDialog, QOverload<const QByteArray &>::of(&KCMultiDialog::configCommitted),
+                mMainView, QOverload<const QByteArray &>::of(&CalendarView::updateConfig));
         QStringList modules;
 
         modules.append(QStringLiteral("korganizer_configmain.desktop"));
@@ -213,7 +213,7 @@ void KODialogManager::updateSearchDialog()
 
 void KODialogManager::createCategoryEditor()
 {
-    if (mCategoryEditDialog == nullptr) {
+    if (!mCategoryEditDialog) {
         mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
         mCategoryEditDialog->buttons()->setStandardButtons(
             QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
