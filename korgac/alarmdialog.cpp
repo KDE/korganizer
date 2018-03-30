@@ -73,6 +73,7 @@ using namespace KIdentityManagement;
 using namespace KCalCore;
 using namespace KCalUtils;
 
+// fallback defaults
 static int defSuspendVal = 5;
 static int defSuspendUnit = AlarmDialog::SuspendInMinutes;
 
@@ -142,9 +143,13 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup generalConfig(config, "General");
     QPoint pos = generalConfig.readEntry("Position", QPoint(0, 0));
+
+    int defSuspendVal = generalConfig.readEntry("DefaultSuspendValue", defSuspendVal);
     int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
-    SuspendUnit suspendUnit
-        = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit", defSuspendUnit));
+
+    int defSuspendUnit = generalConfig.readEntry("SuspendUnit", defSuspendUnit);
+    SuspendUnit suspendUnit = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit",
+                                                                               defSuspendUnit));
 
     QWidget *topBox = new QWidget(this);
     if (!pos.isNull()) {
@@ -271,8 +276,28 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
               "Each reminder for the selected incidences will be suspended "
               "using this time unit. You can set the number of time units "
               "in the adjacent number entry input."));
-
     mSuspendUnit->setCurrentIndex(static_cast<int>(suspendUnit));
+
+    mSuspendMenu = new QMenu();
+    mSuspendMenu->setToolTipsVisible(true);
+    mOkButton->setMenu(mSuspendMenu);
+
+    QAction *mResetSuspendAction = new QAction(i18nc("@action:inmenu", "Reset"));
+    connect(mResetSuspendAction, &QAction::triggered, this, &AlarmDialog::resetSuspend);
+    mResetSuspendAction->setToolTip(i18nc("@info:tooltip",
+                                          "Reset the suspend time to the default value"));
+    mResetSuspendAction->setWhatsThis(i18nc("@info:whatsthis",
+                                            "Reset the suspend time to the default value"));
+    mSuspendMenu->addAction(mResetSuspendAction);
+
+    QAction *mSetDefaultSuspendAction = new QAction(i18nc("@action:inmenu", "Set as Default"));
+    connect(mSetDefaultSuspendAction, &QAction::triggered, this, &AlarmDialog::setDefaultSuspend);
+    mSetDefaultSuspendAction->setToolTip(i18nc("@info:tooltip",
+                                               "Set the current suspend time as the new default"));
+    mSetDefaultSuspendAction->setWhatsThis(i18nc("@info:whatsthis",
+                                                 "Press this button to set the current suspend "
+                                                 "time as the new default value"));
+    mSuspendMenu->addAction(mSetDefaultSuspendAction);
 
     connect(&mSuspendTimer, &QTimer::timeout, this, &AlarmDialog::wakeUp);
 
@@ -362,6 +387,18 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTi
     mIncidenceTree->setCurrentItem(item);
     showDetails(item);
     slotSave();
+}
+
+void AlarmDialog::resetSuspend()
+{
+    mSuspendSpin->setValue(defSuspendVal);    // default suspend duration
+    mSuspendUnit->setCurrentIndex(defSuspendUnit);
+}
+
+void AlarmDialog::setDefaultSuspend()
+{
+    defSuspendVal = mSuspendSpin->value();
+    defSuspendUnit = mSuspendUnit->currentIndex();
 }
 
 void AlarmDialog::slotOk()
@@ -744,6 +781,8 @@ void AlarmDialog::slotSave()
 
     generalConfig.writeEntry("Reminders", numReminders);
     generalConfig.writeEntry("Position", pos());
+    generalConfig.writeEntry("DefaultSuspendValue", defSuspendVal);
+    generalConfig.writeEntry("DefaultSuspendUnit", defSuspendUnit);
     generalConfig.writeEntry("SuspendValue", mSuspendSpin->value());
     generalConfig.writeEntry("SuspendUnit", mSuspendUnit->currentIndex());
 

@@ -25,10 +25,11 @@
 #define KORGAC_ALARMDIALOG_H
 
 #include <Akonadi/Calendar/ETMCalendar>
-#include <Item>
-#include <QDialog>
+
 #include <KCalCore/Incidence>
 
+#include <QDialog>
+#include <QMenu>
 #include <QPoint>
 #include <QTimer>
 
@@ -82,6 +83,8 @@ public Q_SLOTS:
     void slotUser1(); // edit
     void slotUser2(); // dismiss all
     void slotUser3(); // dismiss selected
+    void resetSuspend(); //reset the suspend value to the default
+    void setDefaultSuspend(); //set current suspend value as the default
     void slotSave();
     void wakeUp();
     void show();
@@ -140,6 +143,9 @@ private:
     QPoint mPos;
     QSpinBox *mSuspendSpin = nullptr;
     KComboBox *mSuspendUnit = nullptr;
+    QMenu *mSuspendMenu = nullptr;
+    QAction *mResetSuspendAction = nullptr;
+    QAction *mSetDefaultSuspendAction = nullptr;
     QTimer mSuspendTimer;
     QTreeWidgetItem *mLastItem = nullptr;
     QPushButton *mUser1Button = nullptr;
