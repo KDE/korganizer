@@ -176,18 +176,31 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mUser3Button->setText(i18nc("@action:button", "Dismiss Reminder"));
     mUser3Button->setToolTip(i18nc("@info:tooltip",
                                    "Dismiss the reminders for the selected incidences"));
+    mUser3Button->setWhatsThis(i18nc("@info:whatsthis",
+                                     "Press this button to dismiss the currently selected incidence.  "
+                                     "All non-selected non-incidences will be unaffected."));
+
     mUser2Button->setText(i18nc("@action:button", "Dismiss All"));
     mUser2Button->setToolTip(i18nc("@info:tooltip",
                                    "Dismiss the reminders for all listed incidences"));
+    mUser2Button->setWhatsThis(i18nc("@info:whatsthis",
+                                     "Press this button to dismiss all the listed incidences."));
     mUser1Button->setText(i18nc("@action:button", "Edit..."));
     mUser1Button->setToolTip(i18nc("@info:tooltip",
                                    "Edit the selected incidence"));
+    mUser1Button->setWhatsThis(i18nc("@info::whatsthis",
+                                     "Press this button if you want to edit the selected incidence.  "
+                                     "A dialog will popup allowing you to edit the incidence."));
     mOkButton->setText(i18nc("@action:button", "Suspend"));
     mOkButton->setToolTip(i18nc("@info:tooltip",
                                 "Suspend the reminders for the selected incidences "
                                 "by the specified interval"));
+    mOkButton->setWhatsThis(i18nc("@info:whatsthis",
+                                  "Press this button to suspend the currently selected incidences.  "
+                                  "The suspend interval is configurable by the Suspend duration settings."));
 
-    // Try to keep the dialog small and non-obtrusive.
+    // Initial dialog should be rather small.
+    // However, the user can resize and the window geometry is saved/restored.
     setMinimumWidth(575);
     setMinimumHeight(300);
 
@@ -661,9 +674,9 @@ void AlarmDialog::eventNotification()
                 QString program = alarm->programFile();
 
                 // if the program name contains spaces escape it
-                if (program.contains(QLatin1Char(' '))
-                    && !(program.startsWith(QLatin1Char('\"'))
-                         && program.endsWith(QLatin1Char('\"')))) {
+                if (program.contains(QLatin1Char(' ')) &&
+                    !(program.startsWith(QLatin1Char('\"')) &&
+                      program.endsWith(QLatin1Char('\"')))) {
                     program = QLatin1Char('\"') + program + QLatin1Char('\"');
                 }
 
@@ -875,8 +888,8 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         mDetailView->setIncidence(Akonadi::Item());
     } else {
         if (!reminderItem->mDisplayText.isEmpty()) {
-            const QString txt = QLatin1String("<qt><p><b>") + reminderItem->mDisplayText
-                                + QLatin1String("</b></p></qt>");
+            const QString txt =
+                QLatin1String("<qt><p><b>") + reminderItem->mDisplayText + QLatin1String("</b></p></qt>");
             mDetailView->setHeaderText(txt);
         } else {
             mDetailView->setHeaderText(QString());
@@ -892,9 +905,8 @@ void AlarmDialog::update()
     const ReminderList selection = selectedItems();
     if (!selection.isEmpty()) {
         ReminderTreeItem *item = selection.first();
-        mUser1Button->setEnabled((mCalendar->hasRight(item->mIncidence,
-                                                      Akonadi::Collection::CanChangeItem))
-                                 && (selection.count() == 1));
+        mUser1Button->setEnabled(
+            (mCalendar->hasRight(item->mIncidence, Akonadi::Collection::CanChangeItem)) && (selection.count() == 1));
         toggleDetails(item);
     }
 }
@@ -946,13 +958,10 @@ void AlarmDialog::slotCalendarChanged()
 
             // Yes, alarms can be empty, if someone edited the incidence and removed all alarms
             if (!incidence->alarms().isEmpty()) {
-                const auto dateTime
-                    = triggerDateForIncidence(incidence, item->mRemindAt, displayStr);
-
+                const auto dateTime = triggerDateForIncidence(incidence, item->mRemindAt, displayStr);
                 const QString summary = cleanSummary(incidence->summary());
 
-                if (displayStr != item->text(1) || summary != item->text(0)
-                    || item->mHappening != dateTime) {
+                if (displayStr != item->text(1) || summary != item->text(0) || item->mHappening != dateTime) {
                     item->setText(1, displayStr);
                     item->setText(0, summary);
                     item->mHappening = dateTime;
