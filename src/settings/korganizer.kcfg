@@ -60,6 +60,13 @@
       <whatsthis>Select from which region you want to use the holidays here. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
     </entry>
 
+    <entry type="Enum" name="WeekStartDay">
+      <label>Weekly start day:</label>
+      <tooltip>Select the first day of each week</tooltip>
+      <whatsthis>Select the first day of each week. Normally, you can ignore this since it is set in your locale.</whatsthis>
+      <default>QLocale().firstDayOfWeek()-1</default>
+    </entry>
+
     <entry type="DateTime" name="WorkingHoursStart">
       <label>Daily starting hour</label>
       <whatsthis>Enter the start time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>

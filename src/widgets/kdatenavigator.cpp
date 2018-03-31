@@ -155,7 +155,7 @@ QDate KDateNavigator::startDate() const
     dayone = dayone.addDays(-d2 + 1);
 
     int m_fstDayOfWkCalsys = dayone.dayOfWeek();
-    int weekstart = QLocale().firstDayOfWeek();
+    int weekstart = KOGlobals::self()->firstDayOfWeek();
 
     // If month begins on Monday and Monday is first day of week,
     // month should begin on second line. Sunday doesn't have this problem.
@@ -243,7 +243,7 @@ void KDateNavigator::updateView()
 
 void KDateNavigator::updateConfig()
 {
-    int weekstart = QLocale().firstDayOfWeek();
+    int weekstart = KOGlobals::self()->firstDayOfWeek();
     for (int i = 0; i < 7; ++i) {
         const int day = weekstart + i <= 7 ? weekstart + i : (weekstart + i) % 7;
         QString dayName = QLocale().dayName(day, QLocale::ShortFormat);

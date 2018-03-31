@@ -51,7 +51,7 @@ public:
 
     QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
 
-    bool isWorkDay(const QDate &qd) const;
+    int firstDayOfWeek() const;
 
     /**
        Returns a list containing work days between @p start and @end.

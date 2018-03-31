@@ -79,6 +79,11 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
     return holidaysByDate;
 }
 
+int KOGlobals::firstDayOfWeek() const
+{
+    return KOPrefs::instance()->mWeekStartDay + 1;
+}
+
 QList<QDate> KOGlobals::workDays(const QDate &startDate, const QDate &endDate) const
 {
     QList<QDate> result;

@@ -27,7 +27,6 @@
 
 #include "datenavigator.h"
 #include "koglobals.h"
-
 #include "korganizer_debug.h"
 
 #include <QDate>
@@ -96,7 +95,7 @@ void DateNavigator::selectDates(const QDate &d, int count, const QDate &preferre
 void DateNavigator::selectWeekByDay(int weekDay, const QDate &d, const QDate &preferredMonth)
 {
     int dateCount = mSelectedDates.count();
-    bool weekStart = (weekDay == QLocale().firstDayOfWeek());
+    bool weekStart = (weekDay == KOGlobals::self()->firstDayOfWeek());
     if (weekStart && dateCount == 7) {
         selectWeek(d, preferredMonth);
     } else {
@@ -112,7 +111,7 @@ void DateNavigator::selectWeek()
 void DateNavigator::selectWeek(const QDate &d, const QDate &preferredMonth)
 {
     const int dayOfWeek = d.dayOfWeek();
-    const int weekStart = QLocale().firstDayOfWeek();
+    const int weekStart = KOGlobals::self()->firstDayOfWeek();
 
     QDate firstDate = d.addDays(weekStart - dayOfWeek);
 
@@ -130,7 +129,7 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek(const QDate &d)
 {
-    const int weekStart = QLocale().firstDayOfWeek();
+    const int weekStart = KOGlobals::self()->firstDayOfWeek();
     const int dayOfWeek = d.dayOfWeek();
     QDate currentDate = d.addDays(weekStart - dayOfWeek);
 
@@ -218,11 +217,9 @@ void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selection
     /* When firstSelected doesn't belong to currentMonth it can happen
        that the new selection won't be visible on our KDateNavigators
        so we must adjust it */
-    if (selectionLowerLimit.isValid()
-        && firstSelected < selectionLowerLimit) {
+    if (selectionLowerLimit.isValid() && firstSelected < selectionLowerLimit) {
         firstSelected = selectionLowerLimit;
-    } else if (selectionUpperLimit.isValid()
-               && firstSelected > selectionUpperLimit) {
+    } else if (selectionUpperLimit.isValid() && firstSelected > selectionUpperLimit) {
         firstSelected = selectionUpperLimit.addDays(-6);
     }
 
