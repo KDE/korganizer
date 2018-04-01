@@ -22,13 +22,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#include <qdebug.h>
-
-#include <CalendarSupport/Plugin>
-#include <QApplication>
-#include <QCommandLineParser>
 
 #include "kocore.h"
+
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QDebug>
+
+#include <KService>
 
 int main(int argc, char **argv)
 {

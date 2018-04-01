@@ -25,20 +25,18 @@
 */
 
 #include "filtereditdialog.h"
-#include "prefs/koprefs.h"
-
-#include <CalendarSupport/CategoryConfig>
-#include <LibkdepimAkonadi/TagWidgets>
-#include <PimCommon/PimUtil>
+#include "korganizer_debug.h"
 
 #include <KCalCore/CalFilter>
 
+#include <LibkdepimAkonadi/TagWidgets>
+
+#include <PimCommon/PimUtil>
+
 #include <KMessageBox>
-#include "korganizer_debug.h"
+#include <KColorScheme>
+
 #include <QDialogButtonBox>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <kcolorscheme.h>
 
 FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
     : QDialog(parent)

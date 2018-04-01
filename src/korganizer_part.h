@@ -28,8 +28,7 @@
 
 #include "mainwindow.h"
 
-#include <KParts/Part>
-#include <kparts/readonlypart.h>
+#include <KParts/ReadOnlyPart>
 
 class CalendarView;
 

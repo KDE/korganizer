@@ -27,8 +27,10 @@
 #ifndef KORG_SEARCHDIALOG_H
 #define KORG_SEARCHDIALOG_H
 
+#include <AkonadiCore/Item>
+
 #include <QDialog>
-#include <item.h>
+
 class QPushButton;
 class CalendarView;
 

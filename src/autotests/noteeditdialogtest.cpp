@@ -22,24 +22,21 @@
 
 #include "noteeditdialogtest.h"
 #include "dialog/noteeditdialog.h"
-#include <AkonadiCore/Collection>
-#include <AkonadiWidgets/CollectionComboBox>
+
 #include <AkonadiCore/EntityTreeModel>
 
-#include <KMime/KMimeMessage>
-#include <QStandardItemModel>
-#include <QPushButton>
-#include <QTest>
-#include <QSignalSpy>
-#include <qtestkeyboard.h>
-#include <qtestmouse.h>
-#include <kpimtextedit/richtexteditorwidget.h>
-#include <kpimtextedit/richtexteditor.h>
+#include <AkonadiWidgets/CollectionComboBox>
+
+#include <KPIMTextEdit/RichTextEditor>
+#include <KPIMTextEdit/RichTextEditorWidget>
 
 #include <QLineEdit>
+#include <QPushButton>
+#include <QSignalSpy>
+#include <QStandardItemModel>
 #include <QStandardPaths>
-#include <QShortcut>
 
+#include <QTest>
 NoteEditDialogTest::NoteEditDialogTest()
 {
     QStandardPaths::setTestModeEnabled(true);

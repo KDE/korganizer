@@ -17,10 +17,10 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef SUMMRAYEVENTTEST_H
-#define SUMMRAYEVENTTEST_H
+#ifndef SUMMARYEVENTTEST_H
+#define SUMMARYEVENTTEST_H
 
-#include <qobject.h>
+#include <QObject>
 
 class SummaryEventTester : public QObject
 {

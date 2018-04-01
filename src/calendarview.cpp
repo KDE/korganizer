@@ -30,76 +30,71 @@
 */
 
 #include "calendarview.h"
+
+#include "collectiongeneralpage.h"
+#include "akonadicollectionview.h"
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
-#include "kocorehelper.h"
+#include "kocheckableproxymodel.h"
 #include "kodaymatrix.h"
 #include "kodialogmanager.h"
-#include "dialog/koeventviewerdialog.h"
 #include "koglobals.h"
-#include "kohelper.h"
-#include "prefs/koprefs.h"
 #include "koviewmanager.h"
-#include "widgets/navigatorbar.h"
+#include "dialog/koeventviewerdialog.h"
+#include "prefs/koprefs.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
-#include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
-#include "kocheckableproxymodel.h"
-#include "akonadicollectionview.h"
-#include "korganizer_debug.h"
-#include <IncidenceEditor/IncidenceEditorSettings>
+#include "widgets/navigatorbar.h"
 
-#include <KHolidays/HolidayRegion>
-#include "collectiongeneralpage.h"
-#include <CalendarSupport/CollectionSelection>
-#include <CalendarSupport/KCalPrefs>
-#include <CalendarSupport/Utils>
-#include <CalendarSupport/IncidenceViewer>
-#include <CalendarSupport/CalPrinter>
+#include <AkonadiCore/AttributeFactory>
+
+#include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+#include <Akonadi/Calendar/CalendarClipboard>
+#include <Akonadi/Calendar/FreeBusyManager>
+#include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/Calendar/TodoPurger>
+
+#include <AkonadiWidgets/CollectionMaintenancePage>
+#include <AkonadiWidgets/CollectionPropertiesDialog>
+#include <AkonadiWidgets/ControlGui>
+
 #include <CalendarSupport/CalendarSingleton>
+#include <CalendarSupport/CalPrinter>
+#include <CalendarSupport/IncidenceViewer>
+#include <CalendarSupport/KCalPrefs>
 
 #include <IncidenceEditor/IncidenceDefaults>
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
+#include <IncidenceEditor/IncidenceEditorSettings>
 #include <IncidenceEditor/IndividualMailComponentFactory>
-
-#include <Libkdepim/PIMMessageBox>
-#include <Akonadi/Calendar/FreeBusyManager>
-#include <Akonadi/Calendar/History>
-#include <Akonadi/Calendar/IncidenceChanger>
-#include <akonadi/calendar/calendarsettings.h>
-#include <Akonadi/Calendar/CalendarClipboard>
-
-#include <PimCommonAkonadi/CollectionAclPage>
-#include <PimCommonAkonadi/ImapAclAttribute>
-
-#include <AkonadiWidgets/CollectionPropertiesDialog>
-#include <AkonadiWidgets/ControlGui>
-#include <AkonadiWidgets/CollectionMaintenancePage>
-#include <AkonadiCore/AttributeFactory>
-#include <Akonadi/Calendar/TodoPurger>
 
 #include <KCalCore/CalFilter>
 #include <KCalCore/FileStorage>
 #include <KCalCore/ICalFormat>
 
-#include <KCalUtils/ICalDrag>
-#include <KCalUtils/Stringify>
 #include <KCalUtils/DndFactory>
+#include <KCalUtils/Stringify>
 
+#include <KHolidays/HolidayRegion>
+
+#include <Libkdepim/PIMMessageBox>
+
+#include <PimCommonAkonadi/CollectionAclPage>
+#include <PimCommonAkonadi/ImapAclAttribute>
+
+#include <KMessageBox>
 #include <KNotification>
 #include <KRun>
 
-#include <QFileDialog>
-#include <QVBoxLayout>
-#include <QPushButton>
 #include <QApplication>
 #include <QClipboard>
+#include <QFileDialog>
 #include <QSplitter>
 #include <QStackedWidget>
-#include <QLocale>
+#include <QVBoxLayout>
 
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)
@@ -689,8 +684,8 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item,
                 Akonadi::Item journalItem = mCalendar->item(journals.first()->uid());
                 KCalCore::Journal::Ptr journal = CalendarSupport::journal(journalItem);
                 KCalCore::Journal::Ptr oldJournal(journal->clone());
-                journal->setDescription(journal->description().append(QLatin1Char('\n')
-                                                                      + description));
+                journal->setDescription(
+                    journal->description().append(QLatin1Char('\n') + description));
                 mChanger->modifyIncidence(journalItem, oldJournal, this);
             }
         }
@@ -897,8 +892,8 @@ void CalendarView::edit_paste()
             // only use selected area if event is of the same type (all-day or non-all-day
             // as the current selection is
             if (agendaView && endDT.isValid() && useEndTime) {
-                if ((pastedEvent->allDay() && agendaView->selectedIsAllDay())
-                    || (!pastedEvent->allDay() && !agendaView->selectedIsAllDay())) {
+                if ((pastedEvent->allDay() && agendaView->selectedIsAllDay()) ||
+                    (!pastedEvent->allDay() && !agendaView->selectedIsAllDay())) {
                     QDateTime kdt = endDT.toLocalTime();
                     pastedEvent->setDtEnd(kdt.toTimeZone(pastedEvent->dtEnd().timeZone()));
                 }
@@ -942,9 +937,9 @@ void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bo
         startDt.setDate(activeDate(true));
         startDt.setTime(CalendarSupport::KCalPrefs::instance()->mStartTime.time());
 
-        int addSecs
-            = (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600)
-              +(CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().minute() * 60);
+        int addSecs =
+            (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600) +
+            (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().minute() * 60);
         endDt = startDt.addSecs(addSecs);
     }
 }
@@ -982,9 +977,9 @@ void CalendarView::newEvent(const QDate &dt)
     QTime duration = CalendarSupport::KCalPrefs::instance()->defaultDuration().time();
     QTime time = startDt.time();
 
-    time = time.addSecs(duration.hour() * 3600
-                        +duration.minute() * 60
-                        +duration.second());
+    time = time.addSecs(duration.hour() * 3600 +
+                        duration.minute() * 60 +
+                        duration.second());
     QDateTime endDt(startDt);
     endDt.setTime(time);
     newEvent(startDt, endDt);
@@ -2607,8 +2602,8 @@ void CalendarView::updateHighlightModes()
 
 void CalendarView::selectWeek(const QDate &date, const QDate &preferredMonth)
 {
-    if (KOPrefs::instance()->mWeekNumbersShowWork
-        && mViewManager->rangeMode() == KOViewManager::WORK_WEEK_RANGE) {
+    if (KOPrefs::instance()->mWeekNumbersShowWork &&
+        mViewManager->rangeMode() == KOViewManager::WORK_WEEK_RANGE) {
         mDateNavigator->selectWorkWeek(date);
     } else {
         mDateNavigator->selectWeek(date, preferredMonth);
@@ -2630,29 +2625,30 @@ void CalendarView::changeFullView(bool fullView)
 Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeType) const
 {
     // 1. Try the view collection ( used in multi-agenda view )
-    Akonadi::Collection collection = mCalendar->collection(
-        mViewManager->currentView()->collectionId());
-    bool supportsMimeType = collection.contentMimeTypes().contains(mimeType)
-                            || mimeType == QLatin1String("");
+    Akonadi::Collection collection =
+        mCalendar->collection(mViewManager->currentView()->collectionId());
+    bool supportsMimeType =
+        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     bool hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
     }
 
     // 2. Try the configured default collection
-    collection = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
-    supportsMimeType = collection.contentMimeTypes().contains(mimeType)
-                       || mimeType == QLatin1String("");
+    collection =
+        mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    supportsMimeType =
+        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
     }
 
     // 3. Try last selected folder
-    collection = mCalendar->collection(
-        IncidenceEditorNG::IncidenceEditorSettings::self()->lastSelectedFolder());
-    supportsMimeType = collection.contentMimeTypes().contains(mimeType)
-                       || mimeType == QLatin1String("");
+    collection =
+        mCalendar->collection(IncidenceEditorNG::IncidenceEditorSettings::self()->lastSelectedFolder());
+    supportsMimeType =
+        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
@@ -2660,8 +2656,8 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
 
     // 4. Try the selected collection
     collection = selectedCollection();
-    supportsMimeType = collection.contentMimeTypes().contains(mimeType)
-                       || mimeType == QLatin1String("");
+    supportsMimeType =
+        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
@@ -2670,8 +2666,8 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
     // 5. Try the checked collections
     const Akonadi::Collection::List collections = checkedCollections();
     for (const Akonadi::Collection &checkedCollection : collections) {
-        supportsMimeType = checkedCollection.contentMimeTypes().contains(mimeType)
-                           || mimeType == QLatin1String("");
+        supportsMimeType =
+            checkedCollection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
         hasRights = checkedCollection.rights() & Akonadi::Collection::CanCreateItem;
         if (checkedCollection.isValid() && supportsMimeType && hasRights) {
             return checkedCollection;
@@ -2751,11 +2747,11 @@ void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
     if (success) {
         if (numDeleted == 0 && numIgnored > 0) {
             type = KMessageWidget::Warning;
-            message = i18n("0 completed to-dos were purged.") + QLatin1Char('\n')
-                      +i18np(
-                "%1 to-do was ignored because it has uncompleted or read-only children.",
-                "%1 to-dos were ignored because they have uncompleted or read-only children.",
-                numIgnored);
+            message =
+                i18n("0 completed to-dos were purged.") + QLatin1Char('\n') +
+                i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
+                      "%1 to-dos were ignored because they have uncompleted or read-only children.",
+                      numIgnored);
         } else if (numDeleted > 0 && numIgnored == 0) {
             message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.",
                             numDeleted);
@@ -2763,12 +2759,12 @@ void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
             message = i18n("There are no completed to-dos to purge.");
         } else {
             type = KMessageWidget::Warning;
-            message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.",
-                            numDeleted) + QLatin1Char('\n')
-                      +i18np(
-                "%1 to-do was ignored because it has uncompleted or read-only children.",
-                "%1 to-dos were ignored because they have uncompleted or read-only children.",
-                numIgnored);
+            message =
+                i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.",
+                      numDeleted) + QLatin1Char('\n') +
+                i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
+                      "%1 to-dos were ignored because they have uncompleted or read-only children.",
+                      numIgnored);
         }
     } else {
         message = i18n("An error occurred while purging completed to-dos: %1",

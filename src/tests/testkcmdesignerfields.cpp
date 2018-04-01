@@ -17,13 +17,12 @@
     Boston, MA 02110-1301, USA.
 */
 
+#include "../kcmdesignerfields.h"
+
 #include <KAboutData>
 
-#include <qdebug.h>
 #include <QApplication>
 #include <QCommandLineParser>
-
-#include "../kcmdesignerfields.h"
 
 class MyDesignerFields : public KCMDesignerFields
 {

@@ -23,21 +23,21 @@
 */
 
 #include "searchcollectionhelper.h"
+#include "korganizer_debug.h"
 
-#include <AkonadiCore/SearchCreateJob>
-#include <AkonadiCore/CollectionModifyJob>
 #include <AkonadiCore/CollectionFetchJob>
+#include <AkonadiCore/CollectionFetchScope>
+#include <AkonadiCore/CollectionModifyJob>
+#include <AkonadiCore/EntityDisplayAttribute>
+#include <AkonadiCore/PersistentSearchAttribute>
+#include <AkonadiCore/SearchCreateJob>
 #include <AkonadiCore/SearchQuery>
-#include <AkonadiCore/persistentsearchattribute.h>
-#include <AkonadiCore/entitydisplayattribute.h>
-#include <AkonadiCore/collectionfetchscope.h>
 
-#include <KCalCore/Todo>
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
+#include <KCalCore/Todo>
 
-#include <klocalizedstring.h>
-#include "korganizer_debug.h"
+#include <KLocalizedString>
 
 using namespace KOrg;
 

@@ -25,13 +25,14 @@
 #include "koalarmclient.h"
 #include "korganizer-version.h"
 
-#include <kaboutdata.h>
-
-#include <kdelibs4configmigrator.h>
-#include <QCommandLineParser>
+#include <KAboutData>
 #include <KDBusService>
 #include <KLocalizedString>
+
+#include <KCoreAddons/Kdelibs4ConfigMigrator>
+
 #include <QApplication>
+#include <QCommandLineParser>
 
 int main(int argc, char **argv)
 {

@@ -23,29 +23,23 @@
 */
 
 #include "koalarmclient.h"
+
 #include "alarmdialog.h"
 #include "alarmdockwindow.h"
 #include "korgacadaptor.h"
+#include "koalarmclient_debug.h"
 
-#include <CalendarSupport/Utils>
-#include <AkonadiCore/ChangeRecorder>
-#include <AkonadiCore/Collection>
-#include <kdbusconnectionpool.h>
 #include <AkonadiCore/EntityTreeModel>
-#include <AkonadiCore/Item>
-#include <AkonadiCore/ItemFetchScope>
-#include <AkonadiCore/Session>
 #include <AkonadiCore/ServerManager>
 
-#include <KCalCore/Calendar>
+#include <CalendarSupport/Utils>
 
 #include <KCheckableProxyModel>
-#include <KConfig>
 #include <KConfigGroup>
+#include <KDBusConnectionPool>
 #include <KSharedConfig>
-#include <QApplication>
 
-#include "koalarmclient_debug.h"
+#include <QApplication>
 
 using namespace KCalCore;
 
@@ -99,16 +93,19 @@ KOAlarmClient::~KOAlarmClient()
 
 void KOAlarmClient::setupAkonadi()
 {
-    const QStringList mimeTypes { Event::eventMimeType(), Todo::todoMimeType() };
+    const QStringList mimeTypes {
+        Event::eventMimeType(),
+        Todo::todoMimeType()
+    };
     mCalendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(mimeTypes));
     mCalendar->setObjectName(QStringLiteral("KOrgac's calendar"));
     mETM = mCalendar->entityTreeModel();
 
     connect(&mCheckTimer, &QTimer::timeout, this, &KOAlarmClient::checkAlarms);
-    connect(mETM, &Akonadi::EntityTreeModel::collectionPopulated, this,
-            &KOAlarmClient::deferredInit);
-    connect(mETM, &Akonadi::EntityTreeModel::collectionTreeFetched, this,
-            &KOAlarmClient::deferredInit);
+    connect(mETM, &Akonadi::EntityTreeModel::collectionPopulated,
+            this, &KOAlarmClient::deferredInit);
+    connect(mETM, &Akonadi::EntityTreeModel::collectionTreeFetched,
+            this, &KOAlarmClient::deferredInit);
 
     checkAlarms();
 }
@@ -157,8 +154,8 @@ void KOAlarmClient::deferredInit()
         if (akonadiItemId >= 0) {
             const QDateTime dt = incGroup.readEntry("RemindAt", QDateTime());
             Akonadi::Item i = mCalendar->item(Akonadi::Item::fromUrl(url).id());
-            if (CalendarSupport::hasIncidence(i)
-                && !CalendarSupport::incidence(i)->alarms().isEmpty()) {
+            if (CalendarSupport::hasIncidence(i) &&
+                !CalendarSupport::incidence(i)->alarms().isEmpty()) {
                 createReminder(mCalendar, i, dt, QString());
             }
         }
@@ -317,8 +314,8 @@ QStringList KOAlarmClient::dumpAlarms() const
     } else {
         for (const Alarm::Ptr &a : alarms) {
             const Incidence::Ptr parentIncidence = mCalendar->incidence(a->parentUid());
-            lst << QStringLiteral("  ") + parentIncidence->summary() + QLatin1String(" (")
-                + a->time().toString() + QLatin1Char(')');
+            lst << QStringLiteral("  ") + parentIncidence->summary() +
+                   QLatin1String(" (") + a->time().toString() + QLatin1Char(')');
         }
     }
 

@@ -21,27 +21,22 @@
  */
 
 #include "noteeditdialog.h"
-#include "kpimtextedit/richtexteditorwidget.h"
-#include "kpimtextedit/richtexteditor.h"
-
-#include <KLocalizedString>
-#include <KSharedConfig>
-#include <KConfigGroup>
-#include <QLineEdit>
-#include <QIcon>
-#include <QHBoxLayout>
-#include <QGridLayout>
-#include <QLabel>
+#include "korganizer_debug.h"
 
 #include <AkonadiWidgets/CollectionComboBox>
-#include <QPushButton>
 
-#include <IncidenceEditor/IncidenceDialogFactory>
-#include <IncidenceEditor/IncidenceDialog>
+#include <KConfigGroup>
+#include <KLocalizedString>
+#include <KSharedConfig>
+
 #include <QDialogButtonBox>
+#include <QLabel>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include "korganizer_debug.h"
+
+#include <KPIMTextEdit/RichTextEditor>
+#include <KPIMTextEdit/RichTextEditorWidget>
 
 QAbstractItemModel *NoteEditDialog::_k_noteEditStubModel = nullptr;
 

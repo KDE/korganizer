@@ -16,25 +16,17 @@
 */
 
 #include "koeventpopupmenutest.h"
-#include "dialog/noteeditdialog.h"
 #include "koeventpopupmenu.h"
-#include <IncidenceEditor/IncidenceDialog>
-#include <IncidenceEditor/IncidenceAttendee>
+#include "dialog/noteeditdialog.h"
+
 #include <CalendarSupport/Utils>
-#include <AkonadiCore/EntityTreeModel>
-#include <Akonadi/Notes/NoteUtils>
-#include <KCalCore/Event>
-#include <KCalCore/Todo>
 
-#include <KMime/KMimeMessage>
-#include <QPushButton>
-#include <qtest.h>
-#include <qtestkeyboard.h>
+#include <IncidenceEditor/IncidenceDialog>
+#include <IncidenceEditor/IncidenceEditor-Ng>
+
 #include <QStandardPaths>
-#include <qtestmouse.h>
 
-#include <QShortcut>
-#include <QAction>
+#include <QTest>
 
 KoEventPopupMenuTest::KoEventPopupMenuTest()
 {
