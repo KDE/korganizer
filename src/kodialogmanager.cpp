@@ -195,13 +195,13 @@ void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialo
 void KODialogManager::connectEditor(IncidenceEditorNG::IncidenceDialog *editor)
 {
     createCategoryEditor();
-    connect(editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView,
-            SLOT(deleteIncidence(Akonadi::Item)));
+    connect(editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+            mMainView, SLOT(deleteIncidence(Akonadi::Item)));
 
-    connect(editor, SIGNAL(dialogClose(Akonadi::Item)), mMainView, SLOT(dialogClosing(
-                                                                            Akonadi::Item)));
-    connect(editor, SIGNAL(deleteAttendee(Akonadi::Item)), mMainView,
-            SIGNAL(cancelAttendees(Akonadi::Item)));
+    connect(editor, SIGNAL(dialogClose(Akonadi::Item)),
+            mMainView, SLOT(dialogClosing(Akonadi::Item)));
+    connect(editor, SIGNAL(deleteAttendee(Akonadi::Item)),
+            mMainView, SIGNAL(cancelAttendees(Akonadi::Item)));
 }
 
 void KODialogManager::updateSearchDialog()
