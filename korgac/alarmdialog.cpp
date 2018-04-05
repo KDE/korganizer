@@ -87,6 +87,7 @@ public:
         , mNotified(false)
     {
     }
+    ~ReminderTreeItem() override {}
 
     bool operator<(const QTreeWidgetItem &other) const override;
 
