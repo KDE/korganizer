@@ -68,6 +68,7 @@
 #include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QToolButton>
 
 using namespace KIdentityManagement;
 using namespace KCalCore;
@@ -158,10 +159,10 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     }
     setWindowTitle(i18nc("@title:window", "Reminders"));
     setWindowIcon(QIcon::fromTheme(QStringLiteral("korgac")));
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok, this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(topBox);
-    mOkButton = buttonBox->button(QDialogButtonBox::Ok);
+    mOkButton = new QToolButton;
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     mUser1Button = new QPushButton;
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
@@ -172,6 +173,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     connect(buttonBox, &QDialogButtonBox::accepted, this, &AlarmDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &AlarmDialog::reject);
     mainLayout->addWidget(buttonBox);
+    buttonBox->addButton(mOkButton, QDialogButtonBox::ActionRole);
 
     mUser3Button->setText(i18nc("@action:button", "Dismiss Reminder"));
     mUser3Button->setToolTip(i18nc("@info:tooltip",

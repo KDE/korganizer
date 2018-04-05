@@ -53,7 +53,7 @@ class QDateTime;
 class QTreeWidget;
 class QTreeWidgetItem;
 class QSpinBox;
-
+class QToolButton;
 class AlarmDialog : public QDialog
 {
     Q_OBJECT
@@ -151,7 +151,7 @@ private:
     QPushButton *mUser1Button = nullptr;
     QPushButton *mUser2Button = nullptr;
     QPushButton *mUser3Button = nullptr;
-    QPushButton *mOkButton = nullptr;
+    QToolButton *mOkButton = nullptr;
 };
 
 #endif
