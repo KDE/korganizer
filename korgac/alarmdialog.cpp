@@ -250,7 +250,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mDetailView->setDefaultMessage(s);
     mTopLayout->addWidget(mDetailView);
     mDetailView->hide();
-    mLastItem = 0;
+    mLastItem = nullptr;
 
     QWidget *suspendBox = new QWidget(topBox);
     QHBoxLayout *suspendBoxHBoxLayout = new QHBoxLayout(suspendBox);
