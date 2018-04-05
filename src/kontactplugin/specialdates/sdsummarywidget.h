@@ -51,7 +51,7 @@ class SDSummaryWidget : public KontactInterface::Summary
 
 public:
     SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *parent);
-    ~SDSummaryWidget();
+    ~SDSummaryWidget() override;
 
     QStringList configModules() const override;
     void configUpdated();

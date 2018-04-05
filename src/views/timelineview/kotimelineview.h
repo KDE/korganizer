@@ -47,7 +47,7 @@ class KOTimelineView : public KOEventView
     Q_OBJECT
 public:
     explicit KOTimelineView(QWidget *parent = nullptr);
-    ~KOTimelineView();
+    ~KOTimelineView() override;
 
     Akonadi::Item::List selectedIncidences() override;
     KCalCore::DateList selectedIncidenceDates() override;

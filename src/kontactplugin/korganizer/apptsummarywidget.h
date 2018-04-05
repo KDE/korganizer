@@ -46,7 +46,7 @@ class ApptSummaryWidget : public KontactInterface::Summary
 
 public:
     ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent);
-    ~ApptSummaryWidget();
+    ~ApptSummaryWidget() override;
 
     int summaryHeight() const override
     {

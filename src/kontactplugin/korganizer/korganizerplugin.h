@@ -39,7 +39,7 @@ class KOrganizerPlugin : public KontactInterface::Plugin
 
 public:
     KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &);
-    ~KOrganizerPlugin();
+    ~KOrganizerPlugin() override;
 
     bool createDBUSInterface(const QString &serviceType) override;
     bool isRunningStandalone() const override;

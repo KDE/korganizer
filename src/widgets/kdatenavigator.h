@@ -45,7 +45,7 @@ class KDateNavigator : public QFrame
     Q_OBJECT
 public:
     explicit KDateNavigator(QWidget *parent = nullptr);
-    ~KDateNavigator();
+    ~KDateNavigator() override;
 
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.

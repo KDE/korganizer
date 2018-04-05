@@ -34,7 +34,7 @@ class SpecialdatesPlugin : public KontactInterface::Plugin
     Q_OBJECT
 public:
     SpecialdatesPlugin(KontactInterface::Core *core, const QVariantList &);
-    ~SpecialdatesPlugin();
+    ~SpecialdatesPlugin() override;
 
     int weight() const override
     {

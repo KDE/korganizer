@@ -38,7 +38,7 @@ class MultiAgendaView : public KOEventView
     Q_OBJECT
 public:
     explicit MultiAgendaView(QWidget *parent = nullptr);
-    ~MultiAgendaView();
+    ~MultiAgendaView() override;
 
     Akonadi::Item::List selectedIncidences() override;
     KCalCore::DateList selectedIncidenceDates() override;

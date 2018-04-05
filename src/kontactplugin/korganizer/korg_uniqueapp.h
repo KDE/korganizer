@@ -33,7 +33,7 @@ public:
     {
     }
 
-    virtual ~KOrganizerUniqueAppHandler()
+    ~KOrganizerUniqueAppHandler() override
     {
     }
 

@@ -37,7 +37,7 @@ class TodoPlugin : public KontactInterface::Plugin
     Q_OBJECT
 public:
     TodoPlugin(KontactInterface::Core *core, const QVariantList &);
-    ~TodoPlugin();
+    ~TodoPlugin() override;
 
     bool createDBUSInterface(const QString &serviceType) override;
     bool isRunningStandalone() const override;

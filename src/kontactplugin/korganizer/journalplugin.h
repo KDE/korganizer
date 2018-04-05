@@ -37,7 +37,7 @@ class JournalPlugin : public KontactInterface::Plugin
     Q_OBJECT
 public:
     JournalPlugin(KontactInterface::Core *core, const QVariantList &);
-    ~JournalPlugin();
+    ~JournalPlugin() override;
 
     bool createDBUSInterface(const QString &serviceType) override;
     bool isRunningStandalone() const override;

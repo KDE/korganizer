@@ -35,7 +35,7 @@ class KOWhatsNextView : public KOrg::BaseView
     Q_OBJECT
 public:
     explicit KOWhatsNextView(QWidget *parent = nullptr);
-    ~KOWhatsNextView();
+    ~KOWhatsNextView() override;
 
     int currentDateCount() const override;
     Akonadi::Item::List selectedIncidences() override

@@ -40,7 +40,7 @@ class KOTodoView : public BaseView
     Q_OBJECT
 public:
     KOTodoView(bool sidebarView, QWidget *parent);
-    ~KOTodoView();
+    ~KOTodoView() override;
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 

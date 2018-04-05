@@ -47,7 +47,7 @@ class KOListView : public KOEventView
 public:
     explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr,
                         bool nonInteractive = false);
-    ~KOListView();
+    ~KOListView() override;
 
     int maxDatesHint() const override;
     int currentDateCount() const override;

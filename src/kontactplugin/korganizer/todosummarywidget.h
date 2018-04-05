@@ -48,7 +48,7 @@ class TodoSummaryWidget : public KontactInterface::Summary
 
 public:
     TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent);
-    ~TodoSummaryWidget();
+    ~TodoSummaryWidget() override;
 
     int summaryHeight() const override
     {

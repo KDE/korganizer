@@ -37,7 +37,7 @@ class MonthView : public KOEventView
     Q_OBJECT
 public:
     explicit MonthView(QWidget *parent = nullptr);
-    ~MonthView();
+    ~MonthView() override;
 
     int currentDateCount() const override;
     int currentMonth() const;

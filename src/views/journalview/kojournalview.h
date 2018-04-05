@@ -44,7 +44,7 @@ class KOJournalView : public KOrg::BaseView
     Q_OBJECT
 public:
     explicit KOJournalView(QWidget *parent = nullptr);
-    ~KOJournalView();
+    ~KOJournalView() override;
 
     int currentDateCount() const override;
     Akonadi::Item::List selectedIncidences() override;
