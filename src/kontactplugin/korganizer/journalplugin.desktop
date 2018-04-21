@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Service
-Icon=korg-journal
+Icon=view-pim-journal
 X-KDE-ServiceTypes=Kontact/Plugin
 
 X-KDE-Library=kontact_journalplugin

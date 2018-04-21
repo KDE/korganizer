@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Service
-Icon=korg-todo
+Icon=view-pim-tasks
 X-KDE-ServiceTypes=Kontact/Plugin
 
 X-KDE-Library=kontact_todoplugin
