@@ -297,7 +297,7 @@ void KOEventPopupMenu::createEvent()
         newEventItem.setPayload<KCalCore::Event::Ptr>(event);
 
         IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
-            true, KCalCore::IncidenceBase::TypeEvent, 0, this);
+            true, KCalCore::IncidenceBase::TypeEvent, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newEventItem);
         dlg->open();
@@ -374,7 +374,7 @@ void KOEventPopupMenu::createTodo()
         newTodoItem.setPayload<KCalCore::Todo::Ptr>(todo);
 
         IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
-            true, KCalCore::IncidenceBase::TypeTodo, 0, this);
+            true, KCalCore::IncidenceBase::TypeTodo, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newTodoItem);
         dlg->open();

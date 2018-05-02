@@ -92,7 +92,7 @@ class MultiAgendaViewConfigDialog : public QDialog, public EventViews::ConfigDia
     Q_OBJECT
 public:
     explicit MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent = nullptr);
-    ~MultiAgendaViewConfigDialog();
+    ~MultiAgendaViewConfigDialog() override;
 
     bool useCustomColumns() const override;
     void setUseCustomColumns(bool);

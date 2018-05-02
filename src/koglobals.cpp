@@ -89,7 +89,7 @@ QList<QDate> KOGlobals::workDays(const QDate &startDate, const QDate &endDate) c
     QList<QDate> result;
 
     const int mask(~(KOPrefs::instance()->mWorkWeekMask));
-    const int numDays = startDate.daysTo(endDate) + 1;
+    const qint64 numDays = startDate.daysTo(endDate) + 1;
 
     for (int i = 0; i < numDays; ++i) {
         const QDate date = startDate.addDays(i);

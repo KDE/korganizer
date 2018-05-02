@@ -38,7 +38,7 @@ class KORGANIZERPRIVATE_EXPORT CollectionGeneralPage : public Akonadi::Collectio
 
 public:
     explicit CollectionGeneralPage(QWidget *parent = nullptr);
-    ~CollectionGeneralPage();
+    ~CollectionGeneralPage() override;
 
     void load(const Akonadi::Collection &collection) override;
     void save(Akonadi::Collection &collection) override;

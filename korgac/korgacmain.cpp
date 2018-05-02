@@ -64,7 +64,6 @@ int main(int argc, char **argv)
 
     KDBusService service(KDBusService::Unique);
     KOAlarmClient client;
-    //app.disableSessionManagement();
 
     return app.exec();
 }

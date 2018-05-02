@@ -35,7 +35,7 @@ class KOrganizerApp : public KontactInterface::PimUniqueApplication
     Q_OBJECT
 public:
     KOrganizerApp(int &argc, char **argv[]);
-    ~KOrganizerApp();
+    ~KOrganizerApp() override;
 
     /**
       Create new instance of KOrganizer. If there is already running a

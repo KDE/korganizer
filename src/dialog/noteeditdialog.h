@@ -46,7 +46,7 @@ class NoteEditDialog : public QDialog
     Q_OBJECT
 public:
     explicit NoteEditDialog(QWidget *parent = nullptr);
-    ~NoteEditDialog();
+    ~NoteEditDialog() override;
 
     Akonadi::Collection collection() const;
     void setCollection(const Akonadi::Collection &value);

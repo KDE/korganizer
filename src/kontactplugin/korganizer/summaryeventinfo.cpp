@@ -193,7 +193,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
 
         // Days to go label
         str.clear();
-        const int daysTo = currentDate.daysTo(occurrenceStartDate);
+        const qint64 daysTo = currentDate.daysTo(occurrenceStartDate);
         if (daysTo > 0) {
             str = i18np("in 1 day", "in %1 days", daysTo);
         } else {

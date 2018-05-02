@@ -39,7 +39,7 @@ public:
     {
     }
 
-    virtual ~KOCoreHelper()
+    ~KOCoreHelper() override
     {
     }
 

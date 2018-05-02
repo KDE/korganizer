@@ -105,7 +105,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPIM::KPre
     Q_OBJECT
 public:
     KOPrefsDialogGroupwareScheduling(QWidget *parent);
-    ~KOPrefsDialogGroupwareScheduling();
+    ~KOPrefsDialogGroupwareScheduling() override;
 
 protected:
     void usrWriteConfig() override;
@@ -120,7 +120,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
     Q_OBJECT
 public:
     KOPrefsDialogPlugins(QWidget *parent);
-    ~KOPrefsDialogPlugins();
+    ~KOPrefsDialogPlugins() override;
 
 protected Q_SLOTS:
     void usrWriteConfig() override;

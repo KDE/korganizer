@@ -100,7 +100,7 @@ public:
 
 public:
     explicit ReparentingModel(QObject *parent = nullptr);
-    virtual ~ReparentingModel();
+    ~ReparentingModel() override;
 
     void setNodeManager(const NodeManager::Ptr &nodeManager);
     void addNode(const Node::Ptr &node);
