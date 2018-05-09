@@ -607,7 +607,7 @@ void AlarmDialog::show()
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
         ReminderTreeItem *item = static_cast<ReminderTreeItem *>(*it);
-        if (!item->mNotified) {
+        if (!item->mNotified && !item->isDisabled()) {
             (*it)->setSelected(true);
             break;
         }
