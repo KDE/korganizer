@@ -27,6 +27,7 @@
 
 #include <AkonadiCore/CollectionStatistics>
 
+#include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/Utils>
 
 #include <KIconLoader>
@@ -76,7 +77,7 @@ static QStyle *style(const QStyleOptionViewItem &option)
 }
 
 static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap,
-                                    int pos = 1)
+                                    const QModelIndex &index, int pos = 1)
 {
     QStyleOptionButton option;
     option.icon = pixmap;
@@ -85,6 +86,11 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
     option.rect = enableButtonRect(r, pos);
     option.state = QStyle::State_Active | QStyle::State_Enabled;
     option.iconSize = QSize(h, h);
+    QWidget *w = const_cast<QWidget *>(opt.widget);
+    if (w) {
+        const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+        w->setToolTip(CalendarSupport::toolTipString(col));
+    }
     return option;
 }
 
@@ -182,7 +188,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         int i = 1;
         Q_FOREACH (Action action, getActions(option, index)) {
             if (action != Total) {
-                QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), i);
+                QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), index, i);
                 if (action == Enable && showButtons) {
                     buttonOption.state = QStyle::State_Active;
                 }
@@ -191,7 +197,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
                 }
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             } else {
-                QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), i);
+                QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), index, i);
                 buttonOption.features = QStyleOptionButton::Flat;
                 buttonOption.rect.setHeight(buttonOption.rect.height() + 4);
                 if (col.statistics().count() > 0) {
@@ -247,8 +253,8 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
 
     int button = -1;
     // make sure that we have the right event type
-    if ((event->type() == QEvent::MouseButtonRelease)
-        || (event->type() == QEvent::MouseButtonPress)) {
+    if ((event->type() == QEvent::MouseButtonRelease) ||
+        (event->type() == QEvent::MouseButtonPress)) {
         QMouseEvent *me = static_cast<QMouseEvent *>(event);
 
         for (int i = 1; i < 4; i++) {
@@ -286,7 +292,8 @@ QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option,
                                        const QModelIndex &index) const
 {
     QSize size = QStyledItemDelegate::sizeHint(option, index);
-    //Without this adjustment toplevel resource folders get a slightly greater height, which looks silly and breaks the toolbutton position.
+    // Without this adjustment toplevel resource folders get a slightly greater height,
+    // which looks silly and breaks the toolbutton position.
     size.setHeight(mPixmap.value(AddToList).height() + 4);
     return size;
 }
