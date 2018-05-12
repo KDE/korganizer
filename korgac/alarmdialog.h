@@ -57,7 +57,6 @@ class QToolButton;
 class AlarmDialog : public QDialog
 {
     Q_OBJECT
-    Q_ENUMS(SuspendUnit)
 
 public:
     /**
@@ -69,6 +68,7 @@ public:
         SuspendInDays = 2,     ///< Suspend time is in days
         SuspendInWeeks = 3     ///< Suspend time is in weeks
     };
+    Q_ENUM(SuspendUnit)
 
     explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
     ~AlarmDialog();
