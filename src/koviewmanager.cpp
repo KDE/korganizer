@@ -517,7 +517,7 @@ void KOViewManager::showAgendaView()
 void KOViewManager::selectDay()
 {
     mRangeMode = DAY_RANGE;
-    const QDate date = mMainView->activeDate();
+    const QDate date = mMainView->activeDate(true);
     mMainView->dateNavigator()->selectDate(date);
 }
 
