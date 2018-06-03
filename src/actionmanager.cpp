@@ -43,8 +43,6 @@
 #include <KAuthorized>
 #include "KdepimDBusInterfaces/ReminderClient"
 
-#include <KHolidays/HolidayRegion>
-
 #include <CalendarSupport/CollectionSelection>
 #include <CalendarSupport/EventArchiver>
 #include <CalendarSupport/KCalPrefs>
@@ -547,8 +545,8 @@ void ActionManager::initActions()
                       this);
     mConfigureViewAction->setIconText(i18n("Configure"));
     setHelpText(mConfigureViewAction, i18n("Configure the view"));
-    mConfigureViewAction->setEnabled(mCalendarView->currentView()
-                                     && mCalendarView->currentView()->hasConfigurationDialog());
+    mConfigureViewAction->setEnabled(mCalendarView->currentView() &&
+                                     mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView,
             &CalendarView::configureCurrentView);
@@ -1216,10 +1214,11 @@ void ActionManager::downloadNewStuff()
                 eventSummaries.append(event->summary());
             }
 
-            const int result = KMessageBox::warningContinueCancelList(mCalendarView,
-                                                                      i18n(
-                                                                          "The downloaded events will be merged into your current calendar."),
-                                                                      eventSummaries);
+            const int result =
+                KMessageBox::warningContinueCancelList(
+                    mCalendarView,
+                    i18n("The downloaded events will be merged into your current calendar."),
+                    eventSummaries);
 
             if (result != KMessageBox::Continue) {
                 // FIXME (KNS2): hm, no way out here :-)
@@ -1241,9 +1240,10 @@ QString ActionManager::localFileName()
 class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
 {
 public:
-    ActionStringsVisitor() : mShow(nullptr)
-        , mEdit(nullptr)
-        , mDelete(nullptr)
+    ActionStringsVisitor() :
+      mShow(nullptr),
+      mEdit(nullptr),
+      mDelete(nullptr)
     {
     }
 

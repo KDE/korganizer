@@ -61,21 +61,20 @@ public:
     int getWorkWeekMask();
 
     /**
-       Set which holidays the user wants to use.
-       @param h a HolidayRegion object initialized with the desired locale.
-       We capture this object, so you must not delete it.
+       Set which holiday regions the user wants to use.
+       @param regions a list of Holiday Regions strings.
     */
-    void setHolidays(KHolidays::HolidayRegion *h);
+    void setHolidays(const QStringList &regions);
 
     /** return the HolidayRegion object or 0 if none has been defined
     */
-    KHolidays::HolidayRegion *holidays() const;
+    QList<KHolidays::HolidayRegion*> holidays() const;
 
 protected:
     KOGlobals();
 
 private:
-    KHolidays::HolidayRegion *mHolidays = nullptr;
+    QList<KHolidays::HolidayRegion*> mHolidayRegions;
 };
 
 #endif

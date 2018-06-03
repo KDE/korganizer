@@ -44,13 +44,13 @@ KOGlobals *KOGlobals::self()
     return &sKOGlobalsSingletonPrivate->instance;
 }
 
-KOGlobals::KOGlobals() : mHolidays(nullptr)
+KOGlobals::KOGlobals()
 {
 }
 
 KOGlobals::~KOGlobals()
 {
-    delete mHolidays;
+    qDeleteAll(mHolidayRegions);
 }
 
 bool KOGlobals::reverseLayout()
@@ -67,15 +67,24 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
 {
     QMap<QDate, QStringList> holidaysByDate;
 
-    if (!mHolidays) {
+    if (mHolidayRegions.isEmpty()) {
         return holidaysByDate;
     }
 
-    const KHolidays::Holiday::List list = mHolidays->holidays(start, end);
-    for (int i = 0; i < list.count(); ++i) {
-        const KHolidays::Holiday &h = list.at(i);
-        holidaysByDate[h.observedStartDate()].append(h.name());
+    foreach (const KHolidays::HolidayRegion *region, mHolidayRegions) {
+        if (region && region->isValid()) {
+            const KHolidays::Holiday::List list = region->holidays(start, end);
+            const int listCount(list.count());
+            for (int i = 0; i < listCount; ++i) {
+                const KHolidays::Holiday &h = list.at(i);
+                // dedupe, since we support multiple holiday regions which may have similar holidays
+                if (!holidaysByDate[h.observedStartDate()].contains(h.name())) {
+                    holidaysByDate[h.observedStartDate()].append(h.name());
+                }
+            }
+        }
     }
+
     return holidaysByDate;
 }
 
@@ -98,12 +107,14 @@ QList<QDate> KOGlobals::workDays(const QDate &startDate, const QDate &endDate) c
         }
     }
 
-    if (mHolidays && KOPrefs::instance()->mExcludeHolidays) {
-        const KHolidays::Holiday::List list = mHolidays->holidays(startDate, endDate);
-        for (int i = 0; i < list.count(); ++i) {
-            const KHolidays::Holiday &h = list.at(i);
-            if (h.dayType() == KHolidays::Holiday::NonWorkday) {
-                result.removeAll(h.observedStartDate());
+    if (KOPrefs::instance()->mExcludeHolidays) {
+        foreach (const KHolidays::HolidayRegion *region, mHolidayRegions) {
+            const KHolidays::Holiday::List list = region->holidays(startDate, endDate);
+            for (int i = 0; i < list.count(); ++i) {
+                const KHolidays::Holiday &h = list.at(i);
+                if (h.dayType() == KHolidays::Holiday::NonWorkday) {
+                    result.removeAll(h.observedStartDate());
+                }
             }
         }
     }
@@ -116,13 +127,21 @@ int KOGlobals::getWorkWeekMask()
     return KOPrefs::instance()->mWorkWeekMask;
 }
 
-void KOGlobals::setHolidays(KHolidays::HolidayRegion *h)
+void KOGlobals::setHolidays(const QStringList &regions)
 {
-    delete mHolidays;
-    mHolidays = h;
+    qDeleteAll(mHolidayRegions);
+    mHolidayRegions.clear();
+    foreach (const QString &regionStr, regions) {
+        KHolidays::HolidayRegion *region = new KHolidays::HolidayRegion(regionStr);
+        if (region->isValid()) {
+            mHolidayRegions.append(region);
+        } else {
+            delete region;
+        }
+    }
 }
 
-KHolidays::HolidayRegion *KOGlobals::holidays() const
+QList<KHolidays::HolidayRegion*> KOGlobals::holidays() const
 {
-    return mHolidays;
+    return mHolidayRegions;
 }

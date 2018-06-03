@@ -55,9 +55,9 @@
       <default>QDateTime(QDate(1752,1,1), QTime(7,0))</default>
     </entry>
 
-    <entry type="String" name="Holidays">
-      <label>Use holiday region:</label>
-      <whatsthis>Select from which region you want to use the holidays here. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
+    <entry type="StringList" name="Holidays">
+      <label>Use holiday regions:</label>
+      <whatsthis>Select which regions you want to use the holidays here. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
     </entry>
 
     <entry type="Enum" name="WeekStartDay">

@@ -289,7 +289,7 @@ CalendarView::CalendarView(QWidget *parent)
     mViewManager->connectTodoView(mTodoList);
     mViewManager->connectView(mTodoList);
 
-    KOGlobals::self()->setHolidays(new KHolidays::HolidayRegion(KOPrefs::instance()->mHolidays));
+    KOGlobals::self()->setHolidays(KOPrefs::instance()->mHolidays);
 
     connect(QApplication::clipboard(), &QClipboard::dataChanged, this,
             &CalendarView::checkClipboard);
@@ -602,7 +602,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
         mCalPrinter = nullptr;
     }
 
-    KOGlobals::self()->setHolidays(new KHolidays::HolidayRegion(KOPrefs::instance()->mHolidays));
+    KOGlobals::self()->setHolidays(KOPrefs::instance()->mHolidays);
 
     // config changed lets tell the date navigator the new modes
     // if there weren't changed they are ignored
@@ -656,9 +656,9 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item,
     // Record completed todos in journals, if enabled. we should to this here in
     // favor of the todolist. users can mark a task as completed in an editor
     // as well.
-    if (incidence->type() == KCalCore::Incidence::TypeTodo
-        && KOPrefs::instance()->recordTodosInJournals()
-        && (dirtyFields.contains(KCalCore::Incidence::FieldCompleted))) {
+    if (incidence->type() == KCalCore::Incidence::TypeTodo &&
+        KOPrefs::instance()->recordTodosInJournals() &&
+        (dirtyFields.contains(KCalCore::Incidence::FieldCompleted))) {
         KCalCore::Todo::Ptr todo = incidence.dynamicCast<KCalCore::Todo>();
         if (todo->isCompleted() || todo->recurs()) {
             QString timeStr

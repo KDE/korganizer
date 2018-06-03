@@ -29,12 +29,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
-#include <QDialog>
 
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/CategoryConfig>
 
 #include <IncidenceEditor/IncidenceEditorSettings>
+
 #include <LibkdepimAkonadi/TagSelectionCombo>
 #include <LibkdepimAkonadi/TagWidgets>
 
@@ -56,6 +56,7 @@
 
 #include <KColorButton>
 #include <KComboBox>
+#include <QDialog>
 #include <QHBoxLayout>
 #include <QSpinBox>
 #include <KMessageBox>
@@ -172,11 +173,12 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QHBoxLayout *calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
     Akonadi::ManageAccountWidget *manageAccountWidget = new Akonadi::ManageAccountWidget(this);
-    manageAccountWidget->setDescriptionLabelText(i18n("Calendar Accounts"));
+    manageAccountWidget->setDescriptionLabelText(i18nc("@title", "Calendar Accounts"));
     calendarFrameLayout->addWidget(manageAccountWidget);
 
     manageAccountWidget->setMimeTypeFilter(QStringList() << QStringLiteral("text/calendar"));
-    manageAccountWidget->setCapabilityFilter(QStringList() << QStringLiteral("Resource"));  // show only resources, no agents
+    // show only resources, no agents
+    manageAccountWidget->setCapabilityFilter(QStringList() << QStringLiteral("Resource"));
 
     load();
 }
@@ -251,42 +253,48 @@ public:
         holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
 
         QLabel *holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);
+        holidayLabel->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
         holidayLabel->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
-        mHolidayCombo = new KComboBox(holidayRegBox);
-        holidayRegBoxHBoxLayout->addWidget(mHolidayCombo);
-        connect(mHolidayCombo, QOverload<int>::of(&KComboBox::activated),
+        mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
+        holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
+        connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged,
                 this, &KOPrefsDialogMain::slotWidChanged);
 
-        mHolidayCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
+        mHolidayCheckCombo->lineEdit()->setClearButtonEnabled(false);
+        mHolidayCheckCombo->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
+        mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
         const QStringList regions = KHolidays::HolidayRegion::regionCodes();
         QMap<QString, QString> regionsMap;
 
         for (const QString &regionCode : regions) {
-            QString name = KHolidays::HolidayRegion::name(regionCode);
-            QLocale locale(KHolidays::HolidayRegion::languageCode(regionCode));
-            QString languageName = QLocale::languageToString(locale.language());
+            const QString name = KHolidays::HolidayRegion::name(regionCode);
+            const QLocale locale(KHolidays::HolidayRegion::languageCode(regionCode));
+            const QString languageName = QLocale::languageToString(locale.language());
             QString label;
             if (languageName.isEmpty()) {
                 label = name;
             } else {
-                label = i18nc("Holday region, region language", "%1 (%2)", name, languageName);
+                label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)",
+                              name, languageName);
             }
             regionsMap.insert(label, regionCode);
         }
 
-        mHolidayCombo->addItem(i18nc("No holiday region", "None"), QString());
+        mHolidayCheckCombo->clear();
+        mHolidayCheckCombo->setDefaultText(i18nc("@item:inlistbox", "Select Holiday Regions"));
         QMapIterator<QString, QString> i(regionsMap);
         while (i.hasNext()) {
             i.next();
-            mHolidayCombo->addItem(i.key(), i.value());
+            mHolidayCheckCombo->addItem(i.key(), i.value());
         }
-        if (KOGlobals::self()->holidays() && KOGlobals::self()->holidays()->isValid()) {
-            mHolidayCombo->setCurrentIndex(
-                mHolidayCombo->findData(KOGlobals::self()->holidays()->regionCode()));
-        } else {
-            mHolidayCombo->setCurrentIndex(0); //TODO: can we do better with a heuristic?
+
+        QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
+        foreach (KHolidays::HolidayRegion *region, KOGlobals::self()->holidays()) {
+            QString regionStr = region->regionCode();
+            mHolidayCheckCombo->setItemCheckState(
+                mHolidayCheckCombo->findData(regionStr), Qt::Checked);
         }
 
         QGroupBox *workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Working Period"),
@@ -466,13 +474,19 @@ protected:
 
     void usrWriteConfig() override
     {
-        KOPrefs::instance()->mHolidays
-            = mHolidayCombo->itemData(mHolidayCombo->currentIndex()).toString();
+        QStringList HolidayRegions;
+        foreach (const QString &str, mHolidayCheckCombo->checkedItems()) {
+            int index = mHolidayCheckCombo->findText(str);
+            if (index >= 0) {
+                HolidayRegions.append(mHolidayCheckCombo->itemData(index).toString());
+            }
+        }
+        KOPrefs::instance()->mHolidays = HolidayRegions;
 
-        CalendarSupport::KCalPrefs::instance()->mReminderTime
-            = mReminderTimeSpin->value();
-        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits
-            = mReminderUnitsCombo->currentIndex();
+        CalendarSupport::KCalPrefs::instance()->mReminderTime =
+            mReminderTimeSpin->value();
+        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits =
+            mReminderUnitsCombo->currentIndex();
 
         int mask = 0;
         for (int i = 0; i < 7; ++i) {
@@ -505,7 +519,7 @@ protected:
 
 private:
     QStringList tzonenames;
-    KComboBox *mHolidayCombo = nullptr;
+    KPIM::KCheckComboBox *mHolidayCheckCombo = nullptr;
     QSpinBox *mReminderTimeSpin = nullptr;
     KComboBox *mReminderUnitsCombo = nullptr;
     QCheckBox *mWorkDays[7];
