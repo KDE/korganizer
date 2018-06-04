@@ -261,7 +261,6 @@ public:
         connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged,
                 this, &KOPrefsDialogMain::slotWidChanged);
 
-        mHolidayCheckCombo->lineEdit()->setClearButtonEnabled(false);
         mHolidayCheckCombo->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
         mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
