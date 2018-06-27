@@ -36,7 +36,7 @@ KoEventPopupMenuTest::KoEventPopupMenuTest()
 void KoEventPopupMenuTest::createEventFromEvent()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Event::Ptr event(new KCalCore::Event());
     Akonadi::Item item;
@@ -56,7 +56,7 @@ void KoEventPopupMenuTest::createEventFromEvent()
 void KoEventPopupMenuTest::createTodoFromTodo()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Todo::Ptr todo(new KCalCore::Todo());
     Akonadi::Item item;
@@ -76,7 +76,7 @@ void KoEventPopupMenuTest::createTodoFromTodo()
 void KoEventPopupMenuTest::createEventFromTodo()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Todo::Ptr todo(new KCalCore::Todo());
     Akonadi::Item item;
@@ -112,7 +112,7 @@ void KoEventPopupMenuTest::createEventFromTodo()
 void KoEventPopupMenuTest::createTodoFromEvent()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Event::Ptr event(new KCalCore::Event());
     Akonadi::Item item;
@@ -148,7 +148,7 @@ void KoEventPopupMenuTest::createTodoFromEvent()
 void KoEventPopupMenuTest::createNoteFromEvent()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Event::Ptr event(new KCalCore::Event());
     Akonadi::Item item;
@@ -186,7 +186,7 @@ void KoEventPopupMenuTest::createNoteFromEvent()
 void KoEventPopupMenuTest::createNoteFromTodo()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Todo::Ptr todo(new KCalCore::Todo());
     Akonadi::Item item;
@@ -224,7 +224,7 @@ void KoEventPopupMenuTest::createNoteFromTodo()
 void KoEventPopupMenuTest::defaultMenuEventVisible()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Event::Ptr event(new KCalCore::Event());
     Akonadi::Item item;
@@ -244,7 +244,7 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
 void KoEventPopupMenuTest::defaultMenuTodoVisible()
 {
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
-    KOEventPopupMenu menu(0);
+    KOEventPopupMenu menu(nullptr);
 
     KCalCore::Todo::Ptr todo(new KCalCore::Todo());
 

@@ -239,7 +239,7 @@ private:
         treeStateRestorer = new Akonadi::ETMViewStateSaver(); // not a leak
         KConfigGroup group(KSharedConfig::openConfig(), mTreeStateConfig);
         treeStateRestorer->setView(mTreeView);
-        treeStateRestorer->setSelectionModel(0);   // we only restore expand state
+        treeStateRestorer->setSelectionModel(nullptr);   // we only restore expand state
         treeStateRestorer->restoreState(group);
     }
 
