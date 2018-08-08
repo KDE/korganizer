@@ -245,7 +245,7 @@ target_link_libraries(korganizerprivate
     KF5::AkonadiCore
     KF5::AkonadiCalendar
     KF5::AkonadiNotes
-    KF5::AkonadiSearchPIM
+    KF5::AkonadiSearch
     KF5::Contacts
     KF5::CalendarCore
     KF5::CalendarUtils

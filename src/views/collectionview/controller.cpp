@@ -33,7 +33,8 @@
 #include <AkonadiCore/CollectionFetchJob>
 #include <AkonadiCore/CollectionFetchScope>
 #include <AkonadiCore/AttributeFactory>
-#include <AkonadiSearch/PIM/collectionquery.h>
+#include <AkonadiCore/SearchQuery>
+#include <AkonadiSearch/SearchRunner>
 
 #include <KCalCore/Event>
 #include <KCalCore/Journal>
@@ -456,20 +457,28 @@ void Controller::addPerson(const KPIM::Person &person)
     KPIM::Person p = person;
 
     if (person.rootCollection == -1) {
-        Akonadi::Search::PIM::CollectionQuery query;
-        query.setNamespace(QStringList() << QStringLiteral("usertoplevel"));
-        query.pathMatches(QStringLiteral("/Other Users/") + p.uid);
-        query.setLimit(1);
-        Akonadi::Search::PIM::ResultIterator it = query.exec();
-        Akonadi::Collection::List collections;
-        while (it.next()) {
-            collections << Akonadi::Collection(it.id());
-        }
-        qCDebug(KORGANIZER_LOG) << "Found collections " << collections.size() << "for" << p.name;
-        if (collections.size() == 1) {
-            qCDebug(KORGANIZER_LOG) << "Set rootCollection=" << collections.at(0).id();
-            p.rootCollection = collections.at(0).id();
-        }
+        Akonadi::SearchQuery query;
+        query.addTerm(Akonadi::CollectionSearchTerm::hasNamespaces({QStringLiteral("usertoplevel")}));
+        query.addTerm(Akonadi::CollectionSearchTerm::nameMatches(p.uid));
+
+        auto runner = new Akonadi::Search::SearchRunner(query, Akonadi::Collection::mimeType(), this);
+        runner->setLimit(1);
+        connect(runner, &Akonadi::Search::SearchRunner::finished,
+                this, [this, p](Akonadi::Search::ResultIterator iter) {
+                    KPIM::Person p_ = p;
+                    Akonadi::Collection::List collections;
+                    while (iter.next()) {
+                        collections.push_back(Akonadi::Collection(iter.id()));
+                    }
+                    qCDebug(KORGANIZER_LOG) << "Found" << collections.size() << "collections for" << p.name;
+                    if (collections.size() == 1) {
+                        qCDebug(KORGANIZER_LOG) << "Set rootCollection=" << collections.at(0).id();
+                        p_.rootCollection = collections.at(0).id();
+                    }
+
+                    addPerson(p_);
+                });
+        return;
     }
 
     PersonNode *personNode = new PersonNode(*mPersonModel, p);
