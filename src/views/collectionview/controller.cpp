@@ -478,6 +478,7 @@ void Controller::addPerson(const KPIM::Person &person)
 
                     addPerson(p_);
                 });
+        runner->start();
         return;
     }
 
