@@ -1912,7 +1912,7 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
 
     if (incidence->type() == KCalCore::Incidence::TypeTodo) {
         todo = true;
-        subtodo = (incidence->relatedTo() != QString());
+        subtodo = !incidence->relatedTo().isEmpty();
     }
     Q_EMIT todoSelected(todo);
     Q_EMIT subtodoSelected(subtodo);
