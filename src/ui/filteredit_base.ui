@@ -32,7 +32,7 @@
          <item>
           <widget class="KListWidgetSearchLine" name="searchline">
            <property name="placeholderText">
-            <string>Search</string>
+            <string comment="Displayed grayed-out inside the textbox, verb to search">Search</string>
            </property>
           </widget>
          </item>

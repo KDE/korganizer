@@ -384,7 +384,7 @@ protected:
         Akonadi::CollectionIdentificationAttribute *attr
             = col.attribute<Akonadi::CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
-        if ((attr && attr->collectionNamespace().startsWith("usertoplevel"))
+        if ((attr && attr->collectionNamespace().startsWith(QLatin1String("usertoplevel")))
             || col.name().contains(QLatin1String("Other Users"))) {
             return false;
         }
@@ -539,6 +539,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     topLayout->setMargin(0);
 
     QLineEdit *searchCol = new QLineEdit(this);
+    searchCol->setToolTip(i18nc("info:tooltip", "Set search keyword"));
     searchCol->setClearButtonEnabled(true);
     searchCol->setPlaceholderText(i18nc("@info/plain Displayed grayed-out inside the "
                                         "textbox, verb to search", "Search"));

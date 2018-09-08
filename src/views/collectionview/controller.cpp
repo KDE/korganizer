@@ -88,7 +88,7 @@ QVariant CollectionNode::data(int role) const
         return mCheckState;
     case Qt::ToolTipRole:
         return i18nc("Collection: name collectionId", "Collection: %1(%2)",
-                     mCollection.name(), QString::number(mCollection.id()));
+                     mCollection.name(), mCollection.id());
     case IsSearchResultRole:
         return isSearchNode;
     case CollectionRole:

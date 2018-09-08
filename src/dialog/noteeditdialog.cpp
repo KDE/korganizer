@@ -54,14 +54,14 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
     mainLayout->addWidget(buttonBox);
 
-    buttonBox->button(QDialogButtonBox::Cancel)->setText(i18nc("@action:discard creating note",
+    buttonBox->button(QDialogButtonBox::Cancel)->setText(i18nc("@action:button",
                                                                "Cancel"));
 
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mOkButton->setObjectName(QStringLiteral("save-button"));
     mOkButton->setDefault(true);
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-    mOkButton->setText(i18nc("@action:save note", "Save"));
+    mOkButton->setText(i18nc("@action:button", "Save"));
     mOkButton->setIcon(QIcon::fromTheme(QStringLiteral("view-pim-notes")));
     mOkButton->setEnabled(false);
 
