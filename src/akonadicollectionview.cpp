@@ -384,7 +384,7 @@ protected:
         Akonadi::CollectionIdentificationAttribute *attr
             = col.attribute<Akonadi::CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
-        if ((attr && attr->collectionNamespace().startsWith(QLatin1String("usertoplevel")))
+        if ((attr && attr->collectionNamespace().startsWith("usertoplevel"))
             || col.name().contains(QLatin1String("Other Users"))) {
             return false;
         }
