@@ -81,7 +81,7 @@
          <item>
           <widget class="QLabel" name="titleLabel">
            <property name="text">
-            <string cooment="Agenda title">Title</string>
+            <string comment="Agenda title">Title</string>
            </property>
           </widget>
          </item>
