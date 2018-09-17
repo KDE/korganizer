@@ -73,5 +73,5 @@ void KOHelper::showSaveIncidenceErrorMsg(QWidget *parent, const KCalCore::Incide
     KMessageBox::sorry(
         parent,
         i18n("Unable to save %1 \"%2\".",
-             i18n(incidence->typeStr()), incidence->summary()));
+             i18n(incidence->typeStr().constData()), incidence->summary()));
 }
