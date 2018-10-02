@@ -29,7 +29,7 @@ set(korganizer_SRCS
     ${korganizer_common_SRCS}
     )
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korganizer.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korganizer.svg")
 ecm_add_app_icon(korganizer_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(korganizer ${korganizer_SRCS})
