@@ -3,6 +3,7 @@
   <id>org.kde.korganizer.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
+  <developer_name>The KDE Community</developer_name>
   <name>KOrganizer</name>
   <name xml:lang="ar">منظّمك</name>
   <name xml:lang="ast">KOrganizer</name>
@@ -64,8 +65,7 @@
   <summary xml:lang="zh-CN">KOrganizer 是一个日历和计划任务程序</summary>
   <description>
     <p>
-      KOrganizer is the calendar and scheduling component of the Kontact suite.
-      You can write journal entries, schedule appointments, events, and to-dos.
+      KOrganizer is the calendar and scheduling component of Kontact. It provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more. It is able to work together with a wide variety of clanedaring services, including NextCloud, Kolab, Google Calendar and others. KOrganizer is fully customizable to your needs and is an integral part of the Kontact suite, which aims to be a complete solution for organizing your personal data. KOrganizer supports the two dominant standards for storing and exchanging calendar data, vCalendar and iCalendar.
     </p>
     <p xml:lang="ar">«منظّمك» هو مكوّن التّقاويم والجدولة لطقم «متراسلك». يمكنك كتابة مدخلات الدّوريّات، وجدولة المواعيد، والأحداث والمهامّ.</p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
@@ -272,30 +272,6 @@
       <li xml:lang="uk">швидке створення записів завдань та подій;</li>
       <li xml:lang="x-test">xxQuick todo and event entriesxx</li>
       <li xml:lang="zh-CN">快速待办和事件项目</li>
-      <li>Plugin for Jewish calendar dates</li>
-      <li xml:lang="ar">ملحقة لتواريخ التّقويم اليهوديّ</li>
-      <li xml:lang="ca">Connector per a les dates del calendari jueu</li>
-      <li xml:lang="ca-valencia">Connector per a les dates del calendari jueu</li>
-      <li xml:lang="cs">Modul pro židovská kalendářní data</li>
-      <li xml:lang="de">Modul für jüdische Kalenderdaten</li>
-      <li xml:lang="en-GB">Plugin for Jewish calendar dates</li>
-      <li xml:lang="es">Complemento para fechas del calendario judío</li>
-      <li xml:lang="fi">Liitännäinen juutalaiselle kalenterille</li>
-      <li xml:lang="fr">Module de prise en charge du calendrier juif</li>
-      <li xml:lang="gl">Complemento para datas do calendario xudeu.</li>
-      <li xml:lang="it">Estensione per le date del calendario ebraico</li>
-      <li xml:lang="ko">유대교 달력 지원 플러그인</li>
-      <li xml:lang="nl">Plug-in voor Joodse agendadagen.</li>
-      <li xml:lang="pl">Wtyczka dla żydowskich dat kalendarza</li>
-      <li xml:lang="pt">'Plugin' para datas do calendário Judeu</li>
-      <li xml:lang="pt-BR">Plugin para datas do calendário judaico</li>
-      <li xml:lang="sk">Plugin pre dátumy židovského kalendára</li>
-      <li xml:lang="sl">Vstavek za židovski koledar</li>
-      <li xml:lang="sv">Insticksprogram för Judiska kalenderdatum.</li>
-      <li xml:lang="tr">Yahudi takvim tarihleri için eklenti</li>
-      <li xml:lang="uk">додаток для запису подій за єврейським календарем;</li>
-      <li xml:lang="x-test">xxPlugin for Jewish calendar datesxx</li>
-      <li xml:lang="zh-CN">犹太历日期插件</li>
       <li>Print support</li>
       <li xml:lang="ar">دعم الطّباعة</li>
       <li xml:lang="ca">Permet la impressió</li>
@@ -322,12 +298,12 @@
       <li xml:lang="zh-CN">打印支持</li>
     </ul>
   </description>
-  <url type="homepage">https://www.kde.org/applications/office/korganizer/</url>
+  <url type="homepage">https://kontact.kde.org/components/korganizer.html</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=korganizer</url>
   <url type="help">https://docs.kde.org/?application=korganizer</url>
   <screenshots>
     <screenshot type="default">
-      <image>http://kde.org/images/screenshots/korganizer.png</image>
+      <image type="source" width="1280" height="720">https://kontact.org/assets/img/appstream/kontact-korganizer.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
