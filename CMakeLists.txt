@@ -37,7 +37,7 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
-include(ECMCoverageOption)
+
 
 set(AKONADI_MIMELIB_VERSION "5.9.40")
 set(AKONADI_CONTACT_VERSION "5.9.40")
