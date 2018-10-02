@@ -1,8 +1,10 @@
+file(GLOB korganizer_icons "*-apps-korganizer.*")
+file(GLOB korg_todo_icons "*-apps-korg-todo.*")
+file(GLOB korg_journal_icons "*-apps-korg-journal.*")
 ecm_install_icons(ICONS
-    48-apps-korganizer.svg
-    48-apps-korg-todo.svg
-    128-apps-korg-journal.png 16-apps-korg-journal.png  22-apps-korg-journal.png
-    32-apps-korg-journal.png  48-apps-korg-journal.png  64-apps-korg-journal.png
+    ${korganizer_icons}
+    ${korg_todo_icons}
+    ${korg_journal_icons}
     DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
