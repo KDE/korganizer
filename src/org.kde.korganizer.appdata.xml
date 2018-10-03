@@ -67,33 +67,6 @@
     <p>
       KOrganizer is the calendar and scheduling component of Kontact. It provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more. It is able to work together with a wide variety of clanedaring services, including NextCloud, Kolab, Google Calendar and others. KOrganizer is fully customizable to your needs and is an integral part of the Kontact suite, which aims to be a complete solution for organizing your personal data. KOrganizer supports the two dominant standards for storing and exchanging calendar data, vCalendar and iCalendar.
     </p>
-    <p xml:lang="ar">«منظّمك» هو مكوّن التّقاويم والجدولة لطقم «متراسلك». يمكنك كتابة مدخلات الدّوريّات، وجدولة المواعيد، والأحداث والمهامّ.</p>
-    <p xml:lang="ca">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
-    <p xml:lang="ca-valencia">El KOrganizer és el component de calendari i planificació de la suite Kontact. Podeu escriure entrades de diari, planificar les cites, esdeveniments i les pendents.</p>
-    <p xml:lang="de">KOrganizer ist die Kalender. und Terminplanungskomponente der Kontakt-Software. Sie können Termine, Verabredungen, Aufgaben planen und Einträge in das Journal schreiben.</p>
-    <p xml:lang="en-GB">KOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.</p>
-    <p xml:lang="es">KOrganizer es el componente de calendario y planificación de la suite Kontact. Usted puede escribir entradas de diario, citas de planificaciones, eventos y tareas pendientes.</p>
-    <p xml:lang="et">KOrganizer on Kontacti komplekti kalendri- ja ajastamiskomponent. Sellega saab kirjutada päevikukirjeid, ajastada kohtumisi, sündmusi ja ülesandeid.</p>
-    <p xml:lang="fi">KOrganizer on Kontact-ohjelmiston kalenteri- ja ajastusosa. Voit kirjoittaa päiväkirjamerkintöjä sekä ajastaa tapaamisia, tapahtumia ja tehtäviä.</p>
-    <p xml:lang="fr">KOrganizer est le composant de calendrier et agenda de la suite Kontact. Vous pouvez y tenir un journal, planifier des rendez-vous et évènements, et tenir des listes de choses à faire.</p>
-    <p xml:lang="gl">KOrganizer é o compoñente de calendarios e programación da colección de software Kontact. Pode escribir entradas no seu diario e programar citas, eventos e tarefas.</p>
-    <p xml:lang="hu">A KOrganizer a Kontact csomag naptár- és határidő-kezelő eleme, mellyel bejegyzéseket írhat, határidőket, eseményeket és tennivalókat ütemezhet.</p>
-    <p xml:lang="it">KOrganizer è il componente calendario e di pianificazione della suite Kontact. Puoi scrivere voci di diario, pianificare appuntamenti, eventi e cose da fare.</p>
-    <p xml:lang="ko">KOrganizer는 Kontact와 함께 사용할 수 있는 달력 및 일정 관리 프로그램입니다. 저널 항목 작성, 약속, 할 일, 행사를 관리할 수 있습니다.</p>
-    <p xml:lang="nb">KOrganizer er Kontact-komponenten som behandler kalender og tidsplanlegging. Du kan skrive dagboknotater, fastlegge avtaler, hendelser og gjøremål.</p>
-    <p xml:lang="nds">KOrganizer is de Plaan- un Kalennerkomponent binnen de Kontact-Sammeln. Du kannst Daagbookindrääg schrieven un Möten, Begeefnissen un Opgaven planen.</p>
-    <p xml:lang="nl">KOrganizer is de agenda- en planningscomponent van Kontact. U kunt hierin journaals bijhouden, en afspraken, activiteiten en taken plannen</p>
-    <p xml:lang="pl">KOrganizer jest składnikiem kalendarza i planowania pakietu Kontact. Można tworzyć wpisy dziennika, planować spotkania, wydarzenia i zadania.</p>
-    <p xml:lang="pt">O KOrganizer é o componente de calendário e agendas do pacote Kontact. Poderá escrever itens de diário, agendar reuniões, eventos e itens por-fazer.</p>
-    <p xml:lang="pt-BR">KOrganizer é o componente de calendário e agendas do Kontact. Você pode criar itens de diário, agendar reuniões, eventos e tarefas.</p>
-    <p xml:lang="sk">KOrganizer je komponent kalendára a plánovania pre balík Kontact. Môžete písať položky denníka, plánovať schôdzky, udalosti a úlohy.</p>
-    <p xml:lang="sl">KOrganizer je sestavni del paketa Kontact, ki omogoča razporejanje časa in prikazuje koledar. Ustvarjate lahko dnevnike, razporejate sestanke, dogodke in opravila.</p>
-    <p xml:lang="sv">Korganizer är kalender- och schemaläggningskomponenten i Kontact-sviten. Det går att skriva journalanteckningar, samt schemalägga möten, händelser och uppgifter.</p>
-    <p xml:lang="tr">KOrganizer Kontact takımının takvim ve zamanlama bileşenidir. Günlük girdileri yazabilir, randevu, olaylar ve yapılacakları programlayabilirsiniz.</p>
-    <p xml:lang="uk">KOrganizer — компонент комплексу програм Kontact, що відповідає за календар та планування. За його допомогою можна створювати записи журналу, планувати зустрічі, події або ставити завдання.</p>
-    <p xml:lang="x-test">xxKOrganizer is the calendar and scheduling component of the Kontact suite. You can write journal entries, schedule appointments, events, and to-dos.xx</p>
-    <p xml:lang="zh-CN">KOrgnaizer 是 Kontact 套件的日历和计划任务组件。您可以写日志，计划约会，活动和待办事项。</p>
-    <p xml:lang="zh-TW">KOrganizer 是 Kontact 套件中的行事曆軟體。您可以寫日誌、排約會、事件與待辦清單等。</p>
     <p>Features:</p>
     <p xml:lang="ar">الميزات:</p>
     <p xml:lang="bs">Svojstva:</p>
