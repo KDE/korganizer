@@ -207,15 +207,15 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     setMinimumWidth(575);
     setMinimumHeight(300);
 
-    QVBoxLayout *mTopLayout = new QVBoxLayout(topBox);
-    mTopLayout->setMargin(0);
+    QVBoxLayout *topLayout = new QVBoxLayout(topBox);
+    topLayout->setMargin(0);
 
     QLabel *label = new QLabel(
         i18nc("@label",
               "Reminders: "
               "Click on a title to toggle the details viewer for that item"),
         topBox);
-    mTopLayout->addWidget(label);
+    topLayout->addWidget(label);
 
     mIncidenceTree = new QTreeWidget(topBox);
     mIncidenceTree->setColumnCount(3);
@@ -240,7 +240,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mIncidenceTree->setSelectionMode(QAbstractItemView::ExtendedSelection);
     mIncidenceTree->setRootIsDecorated(false);
 
-    mTopLayout->addWidget(mIncidenceTree);
+    topLayout->addWidget(mIncidenceTree);
 
     connect(mIncidenceTree, &QTreeWidget::itemClicked, this, &AlarmDialog::update);
     connect(mIncidenceTree, &QTreeWidget::itemDoubleClicked, this, &AlarmDialog::edit);
@@ -251,14 +251,14 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
                              "<emphasis>Select an event or to-do from the list above "
                              "to view its details here.</emphasis>");
     mDetailView->setDefaultMessage(s);
-    mTopLayout->addWidget(mDetailView);
+    topLayout->addWidget(mDetailView);
     mDetailView->hide();
     mLastItem = nullptr;
 
     QWidget *suspendBox = new QWidget(topBox);
     QHBoxLayout *suspendBoxHBoxLayout = new QHBoxLayout(suspendBox);
     suspendBoxHBoxLayout->setMargin(0);
-    mTopLayout->addWidget(suspendBox);
+    topLayout->addWidget(suspendBox);
 
     QLabel *l = new QLabel(i18nc("@label:spinbox", "Suspend &duration:"), suspendBox);
     suspendBoxHBoxLayout->addWidget(l);
