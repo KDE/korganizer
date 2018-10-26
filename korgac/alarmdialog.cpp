@@ -202,18 +202,22 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
                                   "Press this button to suspend the currently selected incidences.  "
                                   "The suspend interval is configurable by the Suspend duration settings."));
 
-    // Initial dialog should be rather small.
-    // However, the user can resize and the window geometry is saved/restored.
-    setMinimumWidth(575);
-    setMinimumHeight(300);
-
     QVBoxLayout *topLayout = new QVBoxLayout(topBox);
-    topLayout->setMargin(0);
+    // Try to keep the dialog small and non-obtrusive.
+    // the user can resize down to the minimum
+    setMinimumSize(280, 160);
+    // a more useful size to start with
+    resize(QSize(424, 187));
+    // take out some padding which makes it larger
+    topLayout->setSpacing(2);
+    QMargins margins(0, 0, 0, 0);
+    topLayout->setContentsMargins(margins);
+    setContentsMargins(margins);
 
     QLabel *label = new QLabel(
         i18nc("@label",
               "Reminders: "
-              "Click on a title to toggle the details viewer for that item"),
+              "Clicking on the title toggles details for item"),
         topBox);
     topLayout->addWidget(label);
 
