@@ -134,6 +134,7 @@ private:
     ReminderList selectedItems() const;
     void toggleDetails(QTreeWidgetItem *item);
     void showDetails(QTreeWidgetItem *item);
+    static bool grabFocus();
 
     Akonadi::ETMCalendar::Ptr mCalendar;
     QTreeWidget *mIncidenceTree = nullptr;

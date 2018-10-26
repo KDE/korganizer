@@ -626,7 +626,11 @@ void AlarmDialog::show()
     KWindowSystem::unminimizeWindow(winId(), false);
     KWindowSystem::setState(winId(), NET::KeepAbove | NET::DemandsAttention);
     KWindowSystem::setOnAllDesktops(winId(), true);
-    KWindowSystem::activateWindow(winId());
+    if (grabFocus()) {
+        KWindowSystem::activateWindow(winId());
+    } else {
+        KWindowSystem::raiseWindow(winId());
+    }
 
     // Audio, Procedure, and EMail alarms
     eventNotification();
@@ -1098,4 +1102,11 @@ void AlarmDialog::removeFromConfig(const QList<Akonadi::Item::Id> &ids)
         incGroup.sync();
     }
     genGroup.sync();
+}
+
+bool AlarmDialog::grabFocus()
+{
+    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KConfigGroup generalConfig(config, "General");
+    return generalConfig.readEntry("GrabFocus", false);
 }

@@ -44,6 +44,7 @@ AlarmDockWindow::AlarmDockWindow()
     KConfigGroup config(KSharedConfig::openConfig(), "General");
     const bool autostartSet = config.hasKey("Autostart");
     const bool autostart = config.readEntry("Autostart", true);
+    const bool grabFocus = config.readEntry("GrabFocus", false);
     const bool alarmsEnabled = config.readEntry("Enabled", true);
 
     mName = i18nc("@title:window", "KOrganizer Reminder Daemon");
@@ -92,6 +93,17 @@ AlarmDockWindow::AlarmDockWindow()
     mAlarmsEnabled->setChecked(alarmsEnabled);
     mAutostart->setChecked(autostart);
 
+    mGrabFocus =
+        contextMenu()->addAction(i18nc( "@action:inmenu", "Reminder Requests Focus"));
+    mGrabFocus->setToolTip(i18nc("@info:tooltip",
+                                 "When this option is enabled the reminder dialog will "
+                                 "automatically receive keyboard focus when it opens."));
+    connect(mGrabFocus, &QAction::toggled, this, &AlarmDockWindow::toggleGrabFocus);
+    // ToolTips aren't enabled for menus by default.
+    contextMenu()->setToolTipsVisible(true);
+    mGrabFocus->setCheckable(true);
+    mGrabFocus->setChecked(grabFocus);
+
     // Disable standard quit behaviour. We have to intercept the quit even,
     // if the main window is hidden.
     QAction *act = action(QStringLiteral("quit"));
@@ -137,6 +149,12 @@ void AlarmDockWindow::toggleAutostart(bool checked)
     qCDebug(KOALARMCLIENT_LOG);
     mAutostartSet = true;
     enableAutostart(checked);
+}
+
+void AlarmDockWindow::toggleGrabFocus(bool checked)
+{
+    KConfigGroup config(KSharedConfig::openConfig(), "General");
+    config.writeEntry("GrabFocus", checked);
 }
 
 void AlarmDockWindow::slotSuspendAll()
