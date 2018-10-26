@@ -95,6 +95,7 @@ public Q_SLOTS:
     void dismissCurrent();
     /*reimp*/
     void accept() override;
+    void reject() override;
 
     /**
        If an incidence changed, for example in korg, we must update
@@ -141,7 +142,7 @@ private:
     CalendarSupport::IncidenceViewer *mDetailView = nullptr;
     KIdentityManagement::IdentityManager *mIdentityManager = nullptr;
 
-    QPoint mPos;
+    QRect mRect;
     QSpinBox *mSuspendSpin = nullptr;
     KComboBox *mSuspendUnit = nullptr;
     QMenu *mSuspendMenu = nullptr;

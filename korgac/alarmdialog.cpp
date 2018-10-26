@@ -144,7 +144,16 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup generalConfig(config, "General");
-    QPoint pos = generalConfig.readEntry("Position", QPoint(0, 0));
+
+    const QSize initialSize(424, 187);
+    // split up position and size to be compatible with previous version
+    // that only stored the position.
+    QPoint pos = generalConfig.readEntry("Position", QPoint());
+    if (!pos.isNull()) {
+        QSize size = generalConfig.readEntry("Size", initialSize);
+        mRect = QRect(pos, size);
+        setGeometry(mRect);
+    }
 
     int defSuspendVal = generalConfig.readEntry("DefaultSuspendValue", defSuspendVal);
     int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
@@ -154,10 +163,6 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
                                                                                defSuspendUnit));
 
     QWidget *topBox = new QWidget(this);
-    if (!pos.isNull()) {
-        mPos = pos;
-        topBox->move(mPos);
-    }
     setWindowTitle(i18nc("@title:window", "Reminders"));
     setWindowIcon(QIcon::fromTheme(QStringLiteral("korgac")));
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
@@ -207,7 +212,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     // the user can resize down to the minimum
     setMinimumSize(280, 160);
     // a more useful size to start with
-    resize(QSize(424, 187));
+    resize(initialSize);
     // take out some padding which makes it larger
     topLayout->setSpacing(2);
     QMargins margins(0, 0, 0, 0);
@@ -623,10 +628,11 @@ void AlarmDialog::show()
 //  mSuspendSpin->setValue( defSuspendVal );
 //  mSuspendUnit->setCurrentIndex( defSuspendUnit );
 
-    QDialog::show();
-    if (!mPos.isNull()) {
-        QDialog::move(mPos);
+    // move then show, avoids a visible jump if it is show then move
+    if (!mRect.isNull()) {
+        setGeometry(mRect);
     }
+    QDialog::show();
     KWindowSystem::unminimizeWindow(winId(), false);
     KWindowSystem::setState(winId(), NET::KeepAbove | NET::DemandsAttention);
     KWindowSystem::setOnAllDesktops(winId(), true);
@@ -804,7 +810,9 @@ void AlarmDialog::slotSave()
     }
 
     generalConfig.writeEntry("Reminders", numReminders);
-    generalConfig.writeEntry("Position", pos());
+    mRect = geometry();
+    generalConfig.writeEntry("Position", mRect.topLeft());
+    generalConfig.writeEntry("Size", mRect.size());
     generalConfig.writeEntry("DefaultSuspendValue", defSuspendVal);
     generalConfig.writeEntry("DefaultSuspendUnit", defSuspendUnit);
     generalConfig.writeEntry("SuspendValue", mSuspendSpin->value());
@@ -843,8 +851,15 @@ int AlarmDialog::activeCount()
 
 void AlarmDialog::closeEvent(QCloseEvent *)
 {
+    // note, this is on application close (not window hide)
     slotSave();
     accept();
+}
+
+void AlarmDialog::reject()
+{
+    slotSave();
+    QDialog::reject();
 }
 
 void AlarmDialog::updateButtons()
@@ -925,7 +940,7 @@ void AlarmDialog::update()
 void AlarmDialog::accept()
 {
     if (activeCount() == 0) {
-        mPos = pos();
+        slotSave();
         hide();
     }
 }
