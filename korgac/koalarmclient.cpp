@@ -56,6 +56,7 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
         mDocker = new AlarmDockWindow;
         connect(this, &KOAlarmClient::reminderCount, mDocker, &AlarmDockWindow::slotUpdate);
         connect(mDocker, &AlarmDockWindow::quitSignal, this, &KOAlarmClient::slotQuit);
+        connect(mDocker, &AlarmDockWindow::showReminderSignal, this, &KOAlarmClient::showReminder);
     }
 
     // Check if Akonadi is already configured
@@ -156,7 +157,7 @@ void KOAlarmClient::deferredInit()
             Akonadi::Item i = mCalendar->item(Akonadi::Item::fromUrl(url).id());
             if (CalendarSupport::hasIncidence(i) &&
                 !CalendarSupport::incidence(i)->alarms().isEmpty()) {
-                createReminder(mCalendar, i, dt, QString());
+                createReminder(i, dt, QString());
             }
         }
     }
@@ -226,23 +227,39 @@ void KOAlarmClient::checkAlarms()
         const Akonadi::Item::Id id = mCalendar->item(uid).id();
         const Akonadi::Item item = mCalendar->item(id);
 
-        createReminder(mCalendar, item, from, alarm->text());
+        createReminder(item, from, alarm->text());
     }
 }
 
-void KOAlarmClient::createReminder(const Akonadi::ETMCalendar::Ptr &calendar,
-                                   const Akonadi::Item &aitem, const QDateTime &remindAtDate,
+void KOAlarmClient::createReminder(const Akonadi::Item &aitem, const QDateTime &remindAtDate,
                                    const QString &displayText)
 {
     if (!CalendarSupport::hasIncidence(aitem)) {
         return;
     }
+
     if (remindAtDate.addDays(10) < mLastChecked) {
         // ignore reminders more than 10 days old
         return;
     }
+
+    createDialog();
+
+    mDialog->addIncidence(aitem, remindAtDate, displayText);
+    mDialog->wakeUp();
+    saveLastCheckTime();
+}
+
+void KOAlarmClient::showReminder()
+{
+    createDialog();
+    mDialog->show();
+}
+
+void KOAlarmClient::createDialog() 
+{
     if (!mDialog) {
-        mDialog = new AlarmDialog(calendar);
+        mDialog = new AlarmDialog(mCalendar);
         connect(this, &KOAlarmClient::saveAllSignal, mDialog, &AlarmDialog::slotSave);
         if (mDocker) {
             connect(mDialog, &AlarmDialog::reminderCount, mDocker, &AlarmDockWindow::slotUpdate);
@@ -250,10 +267,6 @@ void KOAlarmClient::createReminder(const Akonadi::ETMCalendar::Ptr &calendar,
             connect(mDocker, &AlarmDockWindow::dismissAllSignal, mDialog, &AlarmDialog::dismissAll);
         }
     }
-
-    mDialog->addIncidence(aitem, remindAtDate, displayText);
-    mDialog->wakeUp();
-    saveLastCheckTime();
 }
 
 void KOAlarmClient::slotQuit()

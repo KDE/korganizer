@@ -71,11 +71,17 @@ AlarmDockWindow::AlarmDockWindow()
 
     // Set up the context menu
     mSuspendAll
-        = contextMenu()->addAction(i18nc("@action:inmenu", "Suspend All Reminders"), this,
+        = contextMenu()->addAction(i18nc("@action:inmenu", "&Suspend All Reminders"), this,
                                    &AlarmDockWindow::slotSuspendAll);
     mDismissAll
-        = contextMenu()->addAction(i18nc("@action:inmenu", "Dismiss All Reminders"), this,
+        = contextMenu()->addAction(i18nc("@action:inmenu", "&Dismiss All Reminders"), this,
                                    &AlarmDockWindow::slotDismissAll);
+    // leave mShow always enabled that way you can get to alarms that are
+    // suspended and inactive to dismiss them before they go off again
+    // (as opposed to the other two that are initially disabled)
+    mShow
+        = contextMenu()->addAction(i18nc("@action:inmenu", "Show &Reminders"), this,
+                                   &AlarmDockWindow::showReminderSignal);
     mSuspendAll->setEnabled(false);
     mDismissAll->setEnabled(false);
 

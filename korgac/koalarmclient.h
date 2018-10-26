@@ -64,11 +64,13 @@ private:
     void checkAlarms();
     void setupAkonadi();
     void slotCommitData(QSessionManager &);
+    void showReminder();
     bool dockerEnabled();
     bool collectionsAvailable() const;
-    void createReminder(const Akonadi::ETMCalendar::Ptr &calendar, const Akonadi::Item &incidence,
+    void createReminder(const Akonadi::Item &incidence,
                         const QDateTime &dt, const QString &displayText);
     void saveLastCheckTime();
+    void createDialog();
 
     AlarmDockWindow *mDocker = nullptr;  // the panel icon
     Akonadi::ETMCalendar::Ptr mCalendar;

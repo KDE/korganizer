@@ -49,6 +49,7 @@ Q_SIGNALS:
     void quitSignal();
     void suspendAllSignal();
     void dismissAllSignal();
+    void showReminderSignal();
 
 protected Q_SLOTS:
     void activate(const QPoint &pos) override;
@@ -71,6 +72,7 @@ private:
     // user is typing AlarmDialog now gets those keys and space or return will
     // dismiss all notifications before the user has a chance to read them.
     QAction *mGrabFocus = nullptr;
+    QAction *mShow = nullptr;
 
     bool mAutostartSet = false;
 };
