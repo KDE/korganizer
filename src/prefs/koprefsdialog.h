@@ -29,6 +29,7 @@
 #include "kcmdesignerfields.h"
 #include <QSet>
 #include <Libkdepim/KPrefsDialog>
+#include <KColorButton>
 
 class QPushButton;
 
@@ -68,6 +69,9 @@ protected:
     void usrWriteConfig() override;
     void usrReadConfig() override;
 
+private Q_SLOTS:
+    void useSystemColorToggle(bool useSystemColor);
+    
 protected Q_SLOTS:
     void updateCategories();
     void setCategoryColor();
@@ -76,7 +80,7 @@ protected Q_SLOTS:
     void updateResources();
     void setResourceColor();
     void updateResourceColor();
-
+    
 private:
     KComboBox *mCategoryCombo = nullptr;
     KColorButton *mCategoryButton = nullptr;
@@ -85,6 +89,7 @@ private:
     Akonadi::CollectionComboBox *mResourceCombo = nullptr;
     KColorButton *mResourceButton = nullptr;
     QHash<QString, QColor> mResourceDict;
+    QList<KColorButton *> mButtonsDisable; // button that are disabled when using system color
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsModule

@@ -757,36 +757,51 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QGridLayout *colorLayout = new QGridLayout(colorFrame);
     tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")),
                       i18nc("@title:tab", "Colors"));
-
-    // Holiday Color
-    KPIM::KPrefsWidColor *holidayColor
-        = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
-    colorLayout->addWidget(holidayColor->label(), 0, 0);
-    colorLayout->addWidget(holidayColor->button(), 0, 1);
+    
+    // Use System color
+    KPIM::KPrefsWidBool *useSystemColorBool
+        = addWidBool(KOPrefs::instance()->useSystemColorItem(), colorFrame);
+        
+    QCheckBox* useSystemColorButton = useSystemColorBool->checkBox();
+    QObject::connect(useSystemColorButton, &QCheckBox::toggled,
+                     this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
+    colorLayout->addWidget(useSystemColorBool->checkBox(), 1, 0, 1, 2);
 
     // agenda view background color
     KPIM::KPrefsWidColor *agendaBgColor
         = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
-    colorLayout->addWidget(agendaBgColor->label(), 3, 0);
-    colorLayout->addWidget(agendaBgColor->button(), 3, 1);
+    KColorButton *agendaBgColorButton = agendaBgColor->button();
+    mButtonsDisable.push_back(agendaBgColorButton);
+    colorLayout->addWidget(agendaBgColor->label(), 2, 0);
+    colorLayout->addWidget(agendaBgColorButton, 2, 1);
 
     KPIM::KPrefsWidColor *viewBgBusyColor
         = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
-    colorLayout->addWidget(viewBgBusyColor->label(), 4, 0);
-    colorLayout->addWidget(viewBgBusyColor->button(), 4, 1);
+    KColorButton *viewBgBusyColorButton = viewBgBusyColor->button();
+    mButtonsDisable.push_back(viewBgBusyColorButton);
+    colorLayout->addWidget(viewBgBusyColor->label(), 3, 0);
+    colorLayout->addWidget(viewBgBusyColorButton, 3, 1);
 
+    // working hours color
+    KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
+        = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
+    KColorButton *agendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
+    mButtonsDisable.push_back(agendaGridWorkHoursBackgroundColorButton);
+    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
+    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
+    
     // agenda view Marcus Bains line color
     KPIM::KPrefsWidColor *mblColor
         = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
-    // working hours color
-    KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
-        = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
-    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 6, 0);
-    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 6, 1);
-
+    // Holiday Color
+    KPIM::KPrefsWidColor *holidayColor
+        = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
+    colorLayout->addWidget(holidayColor->label(), 6, 0);
+    colorLayout->addWidget(holidayColor->button(), 6, 1);
+    
     // Todo due today color
     KPIM::KPrefsWidColor *todoDueTodayColor
         = addWidColor(
@@ -936,6 +951,17 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
     updateCategories();
     updateResources();
     //mCalendarViewsPrefs->readConfig();
+}
+
+void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)
+{
+    for (KColorButton *colorButton : mButtonsDisable) {
+        if (useSystemColor) {
+            colorButton->setEnabled(false);
+        } else {
+            colorButton->setEnabled(true);
+        }
+    }
 }
 
 void KOPrefsDialogColorsAndFonts::updateCategories()

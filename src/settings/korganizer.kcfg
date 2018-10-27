@@ -563,6 +563,11 @@
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
+    <entry type="Bool" key="Use System Color">
+      <label>Use system color</label>
+      <whatsthis>Use system color insteal of user defined color. If enabled will ignore all other color settings</whatsthis>
+      <default>true</default>
+    </entry>
     <entry key="Agenda Holidays Background Image" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
