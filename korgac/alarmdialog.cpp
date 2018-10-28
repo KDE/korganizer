@@ -614,6 +614,8 @@ void AlarmDialog::show()
         ++it;
     }
 
+    mUser2Button->setVisible(mIncidenceTree->topLevelItemCount() > 1);
+
     // reset the default suspend time
 // Allen: commented-out the following lines on 17 Sept 2013
 //  mSuspendSpin->setValue( defSuspendVal );
