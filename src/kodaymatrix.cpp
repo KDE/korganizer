@@ -165,7 +165,7 @@ void KODayMatrix::recalculateToday()
         mDays[i] = mStartDate.addDays(i);
         mDayLabels[i] = QString::number(mDays[i].day());
 
-        // if today is in the currently displayed month, hilight today
+        // if today is in the currently displayed month, highlight today
         if (mDays[i].year() == QDate::currentDate().year() &&
             mDays[i].month() == QDate::currentDate().month() &&
             mDays[i].day() == QDate::currentDate().day()) {

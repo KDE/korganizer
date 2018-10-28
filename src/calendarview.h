@@ -646,7 +646,7 @@ public:
       Returns the best guess at the current active date in the view.
       This has nothing to do with selected incidences, use activeIncidenceDate()
       for that, for example, agenda supports time selection and incidence selection
-      and they can have diferent dates.
+      and they can have different dates.
 
       @param fallbackToToday If guessing doesn't work, some views will prefer
       today to be returned instead of the first select date in the day matrix,

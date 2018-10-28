@@ -400,7 +400,7 @@ void Controller::setCollectionState(const Akonadi::Collection &collection,
 {
     //We removed the children first, so the children in the tree are removed before the parents
     if (recursive) {
-        //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collectoins are referenced)
+        //We have to include all mimetypes since mimetypes are not available yet (they will be synced once the collections are referenced)
         Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(collection,
                                                                                 Akonadi::CollectionFetchJob::Recursive,
                                                                                 this);

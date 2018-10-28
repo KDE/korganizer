@@ -68,7 +68,7 @@ public:
                   KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar = nullptr);
     ~ActionManager() override;
 
-    /** Peform initialization that requires this* to be full constructed */
+    /** Perform initialization that requires this* to be full constructed */
     void init();
 
     CalendarView *view() const

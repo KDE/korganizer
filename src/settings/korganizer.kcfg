@@ -565,7 +565,7 @@
     </entry>
     <entry type="Bool" key="Use System Color">
       <label>Use system color</label>
-      <whatsthis>Use system color insteal of user defined color. If enabled will ignore all other color settings</whatsthis>
+      <whatsthis>Use system color instead of user defined color. If enabled will ignore all other color settings</whatsthis>
       <default>true</default>
     </entry>
     <entry key="Agenda Holidays Background Image" type="String">

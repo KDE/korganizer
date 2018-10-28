@@ -357,7 +357,7 @@ ReminderTreeItem *AlarmDialog::searchByItem(const Akonadi::Item &incidence)
 
 static QString cleanSummary(const QString &summary)
 {
-    static QString etc = i18nc("@label an elipsis", "...");
+    static QString etc = i18nc("@label an ellipsis", "...");
     int maxLen = 30;
     QString retStr = summary;
     retStr.replace(QLatin1Char('\n'), QLatin1Char(' '));

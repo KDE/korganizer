@@ -610,7 +610,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
 
     Q_EMIT configChanged();
 
-    //switch beetween merged, side by side and tabbed agenda if needed
+    //switch between merged, side by side and tabbed agenda if needed
     mViewManager->updateMultiCalendarDisplay();
 
     // To make the "fill window" configurations work

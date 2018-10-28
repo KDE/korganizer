@@ -101,7 +101,7 @@ public:
     QDate date;
     QString summary;
     QString desc;
-    int span; // #days in the special occassion.
+    int span; // #days in the special occasion.
     KContacts::Addressee addressee;
     Akonadi::Item item;
 
@@ -318,7 +318,7 @@ void SDSummaryWidget::createLabels()
 
                         /* The following check is to prevent duplicate entries,
                          * so in case of having a KCal incidence with category birthday
-                         * with summary and date equal to some KABC Atendee we don't show it
+                         * with summary and date equal to some KABC Attendee we don't show it
                          * FIXME: port to akonadi, it's kresource based
                          * */
                         if (/*!check( bdayRes, dt, ev->summary() )*/ true) {

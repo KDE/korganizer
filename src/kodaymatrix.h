@@ -186,7 +186,7 @@ public Q_SLOTS:
     void updateView();
 
     /**
-     * Calculates which square in the matrix should be hiighted to indicate
+     * Calculates which square in the matrix should be highlighted to indicate
      * the square is on "today".
      */
     void recalculateToday();
