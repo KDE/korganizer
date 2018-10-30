@@ -318,17 +318,22 @@ QStringList KOAlarmClient::dumpAlarms() const
     const Alarm::List alarms = mCalendar->alarms(start, end);
     lst.reserve(1 + (alarms.isEmpty() ? 1 : alarms.count()));
     // Don't translate, this is for debugging purposes.
-    lst << QStringLiteral("AlarmDeamon::dumpAlarms() from ") + start.toString() + QLatin1String(
-        " to ")
-        +end.toString();
+    lst << QStringLiteral("dumpAlarms() from ") + start.toString() +
+           QLatin1String(" to ") + end.toString();
 
     if (alarms.isEmpty()) {
         lst << QStringLiteral("No alarm found.");
     } else {
-        for (const Alarm::Ptr &a : alarms) {
-            const Incidence::Ptr parentIncidence = mCalendar->incidence(a->parentUid());
-            lst << QStringLiteral("  ") + parentIncidence->summary() +
-                   QLatin1String(" (") + a->time().toString() + QLatin1Char(')');
+        for (const Alarm::Ptr &alarm : alarms) {
+            const QString uid = alarm->customProperty("ETMCalendar", "parentUid");
+            const Akonadi::Item::Id id = mCalendar->item(uid).id();
+            const Akonadi::Item item = mCalendar->item(id);
+
+            const Incidence::Ptr incidence = CalendarSupport::incidence(item);
+            const QString summary = incidence->summary();
+
+            const QDateTime time = incidence->dateTime(Incidence::RoleAlarm);
+            lst << QStringLiteral("%1: \"%2\" (alarm text \"%3\")").arg(time.toString(Qt::ISODate), summary, alarm->text());
         }
     }
 
