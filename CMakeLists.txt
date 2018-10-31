@@ -125,7 +125,7 @@ configure_file(korgac/config-enterprise.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/conf
 include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_SOURCE_DIR} ${korgac_BINARY_DIR})
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
-add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
+
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 add_subdirectory(src)
 add_subdirectory(korgac)
