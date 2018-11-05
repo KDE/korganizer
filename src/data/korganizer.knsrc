@@ -1,9 +1,12 @@
 [KNewStuff3]
 Name=KOrganizer Calendar
 Name[ca]=Calendari del KOrganizer
+Name[ca@valencia]=Calendari del KOrganizer
 Name[gl]=Calendario de KOrganizer
 Name[nl]=KOrganizer-agenda
+Name[pl]=Kalendarz KOrganizera
 Name[pt]=Calendário do KOrganizer
+Name[sv]=Korganizer-kalender
 Name[uk]=Календар KOrganizer
 Name[x-test]=xxKOrganizer Calendarxx
 ProvidersUrl=https://autoconfig.kde.org/ocs/providers.xml
