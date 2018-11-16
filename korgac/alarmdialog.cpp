@@ -211,8 +211,6 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     // Try to keep the dialog small and non-obtrusive.
     // the user can resize down to the minimum
     setMinimumSize(280, 160);
-    // a more useful size to start with
-    resize(initialSize);
     // take out some padding which makes it larger
     topLayout->setSpacing(2);
     QMargins margins(0, 0, 0, 0);
