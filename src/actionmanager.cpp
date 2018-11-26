@@ -760,7 +760,6 @@ void ActionManager::slotNewJournal()
 void ActionManager::slotMergeFinished(bool success, int total)
 {
     Q_ASSERT(sender());
-    sender()->deleteLater();
     mImportAction->setEnabled(true);
     Akonadi::ICalImporter *importer = qobject_cast<Akonadi::ICalImporter *>(sender());
 
@@ -773,6 +772,7 @@ void ActionManager::slotMergeFinished(bool success, int total)
                                         importer->errorMessage()),
                                    KMessageWidget::Error);
     }
+    sender()->deleteLater();
 }
 
 void ActionManager::slotNewResourceFinished(bool success)
