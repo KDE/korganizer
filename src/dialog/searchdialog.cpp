@@ -82,6 +82,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     mainLayout->addWidget(buttonBox);
     mUser1Button->setDefault(true);
     KGuiItem::assign(mUser1Button, KGuiItem(i18nc("search in calendar", "&Search")));
+    mUser1Button->setIcon(QIcon::fromTheme(QStringLiteral("search")));
     mUser1Button->setToolTip(i18n("Start searching"));
     mUser1Button->setWhatsThis(
         i18nc("@info:whatsthis",
