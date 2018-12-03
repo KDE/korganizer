@@ -2470,7 +2470,7 @@ void CalendarView::purgeCompleted()
         this,
         i18n("Delete all completed to-dos from checked calendars?"),
         i18n("Purge To-dos"),
-        KGuiItem(i18n("Purge")));
+        KGuiItem(i18n("Purge"), QIcon::fromTheme(QStringLiteral("entry-delete"))));
 
     if (result == KMessageBox::Continue) {
         mTodoPurger->purgeCompletedTodos();
