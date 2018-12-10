@@ -15,7 +15,7 @@ project(korganizer VERSION ${KDEPIM_VERSION_NUMBER})
 if(POLICY CMP0063)
   cmake_policy(SET CMP0063 NEW)
 endif()
-set(KF5_VERSION "5.51.0")
+set(KF5_VERSION "5.53.0")
 
 find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 
