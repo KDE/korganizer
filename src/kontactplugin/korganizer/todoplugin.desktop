@@ -9,7 +9,7 @@ X-KDE-KontactPartLibraryName=korganizerpart
 X-KDE-KontactPartExecutableName=korganizer
 X-KDE-KontactPluginHasSummary=true
 
-X-KDE-PluginInfo-Website=http://korganizer.kde.org
+X-KDE-PluginInfo-Website=https://kontact.kde.org/components/korganizer.html
 X-KDE-PluginInfo-Name=kontact_todoplugin
 X-KDE-PluginInfo-Version=0.1
 X-KDE-PluginInfo-License=GPL

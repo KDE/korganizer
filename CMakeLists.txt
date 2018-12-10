@@ -67,7 +67,7 @@ set(CALENDARSUPPORT_LIB_VERSION_LIB "5.10.40")
 set(EVENTVIEW_LIB_VERSION_LIB "5.10.40")
 
 find_package(KF5AkonadiSearch "5.10.40" CONFIG REQUIRED)
-set_package_properties(KF5AkonadiSearch PROPERTIES DESCRIPTION "The Akonadi Search libraries" URL "http://www.kde.org" TYPE REQUIRED PURPOSE "Provides search capabilities in KMail and Akonadi")
+set_package_properties(KF5AkonadiSearch PROPERTIES DESCRIPTION "The Akonadi Search libraries" URL "https://www.kde.org" TYPE REQUIRED PURPOSE "Provides search capabilities in KMail and Akonadi")
 
 # Find KF5 package
 find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
