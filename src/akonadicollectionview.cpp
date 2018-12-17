@@ -59,11 +59,7 @@
 #include <KConfigGroup>
 #include <KMessageBox>
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
-#include <KRecursiveFilterProxyModel>
-#else
 #include <QSortFilterProxyModel>
-#endif
 #include "korganizer_debug.h"
 
 #include <QAction>
@@ -590,24 +586,13 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     searchProxy->setSourceModel(collectionFilter);
     searchProxy->setObjectName(QStringLiteral("searchProxy"));
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
-    KRecursiveFilterProxyModel *filterTreeViewModel = new KRecursiveFilterProxyModel(this);
-    filterTreeViewModel->setDynamicSortFilter(true);
-    filterTreeViewModel->setSourceModel(searchProxy);
-    filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-//   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
-    connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel,
-            &KRecursiveFilterProxyModel::setFilterWildcard);
-#else
     QSortFilterProxyModel *filterTreeViewModel = new QSortFilterProxyModel(this);
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
     filterTreeViewModel->setDynamicSortFilter(true);
     filterTreeViewModel->setSourceModel(searchProxy);
-//   filterTreeViewModel->setObjectName( "Recursive filtering, for the search bar" );
     connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel,
             &QSortFilterProxyModel::setFilterWildcard);
-#endif
 
     SortProxyModel *searchSortProxy = new SortProxyModel(this);
     searchSortProxy->setSourceModel(filterTreeViewModel);
