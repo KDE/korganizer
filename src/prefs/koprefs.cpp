@@ -98,7 +98,7 @@ bool KOPrefs::usrSave()
 
 void KOPrefs::setResourceColor(const QString &cal, const QColor &color)
 {
-    return mEventViewsPrefs->setResourceColor(cal, color);
+    mEventViewsPrefs->setResourceColor(cal, color);
 }
 
 QColor KOPrefs::resourceColor(const QString &cal)

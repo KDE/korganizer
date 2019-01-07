@@ -29,7 +29,7 @@ class KoEventPopupMenuTest : public QObject
 {
     Q_OBJECT
 public:
-    KoEventPopupMenuTest();
+    explicit KoEventPopupMenuTest(QObject *parent = nullptr);
 
 private Q_SLOTS:
     void createEventFromTodo();

@@ -239,12 +239,12 @@ QWidget *KOrganizer::topLevelWidget()
 
 void KOrganizer::saveProperties(KConfigGroup &config)
 {
-    return mActionManager->saveProperties(config);
+    mActionManager->saveProperties(config);
 }
 
 void KOrganizer::readProperties(const KConfigGroup &config)
 {
-    return mActionManager->readProperties(config);
+    mActionManager->readProperties(config);
 }
 
 KOrg::CalendarViewBase *KOrganizer::view() const

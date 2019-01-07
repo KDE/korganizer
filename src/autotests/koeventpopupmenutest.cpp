@@ -28,7 +28,8 @@
 
 #include <QTest>
 
-KoEventPopupMenuTest::KoEventPopupMenuTest()
+KoEventPopupMenuTest::KoEventPopupMenuTest(QObject *parent)
+    : QObject(parent)
 {
     QStandardPaths::setTestModeEnabled(true);
 }
