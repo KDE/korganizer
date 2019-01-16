@@ -603,6 +603,18 @@ void AlarmDialog::setTimer()
     }
 }
 
+void AlarmDialog::showEvent(QShowEvent *event)
+{
+    QDialog::showEvent(event);
+    // Moving to showEvent from show() because with QDialog and Qt 5.7
+    // setOnAllDesktops seemed to work only if the dialog was already showing,
+    // which happens when a notification appears and the dialog was already
+    // up.
+    KWindowSystem::setOnAllDesktops(winId(), true);
+    KWindowSystem::unminimizeWindow(winId(), false);
+    KWindowSystem::setState(winId(), NET::KeepAbove | NET::DemandsAttention);
+}
+
 void AlarmDialog::show()
 {
     mIncidenceTree->resizeColumnToContents(0);
@@ -633,9 +645,6 @@ void AlarmDialog::show()
         setGeometry(mRect);
     }
     QDialog::show();
-    KWindowSystem::unminimizeWindow(winId(), false);
-    KWindowSystem::setState(winId(), NET::KeepAbove | NET::DemandsAttention);
-    KWindowSystem::setOnAllDesktops(winId(), true);
     if (grabFocus()) {
         KWindowSystem::activateWindow(winId());
     } else {

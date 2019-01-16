@@ -109,6 +109,7 @@ Q_SIGNALS:
 protected:
     void keyPressEvent(QKeyEvent *e) override;
     void closeEvent(QCloseEvent *) override;
+    void showEvent(QShowEvent *event) override;
 
 private:
     void update();
