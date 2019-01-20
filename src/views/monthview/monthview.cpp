@@ -180,8 +180,7 @@ void MonthView::showIncidences(const Akonadi::Item::List &incidenceList, const Q
     mMonthView->showIncidences(incidenceList, date);
 }
 
-void MonthView::changeIncidenceDisplay(const Akonadi::Item &item,
-                                       Akonadi::IncidenceChanger::ChangeType changeType)
+void MonthView::changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::IncidenceChanger::ChangeType changeType)
 {
     mMonthView->changeIncidenceDisplay(item, changeType);
 }
@@ -206,8 +205,7 @@ void MonthView::setTypeAheadReceiver(QObject *o)
     mMonthView->setTypeAheadReceiver(o);
 }
 
-void MonthView::setDateRange(const QDateTime &start, const QDateTime &end,
-                             const QDate &preferredMonth)
+void MonthView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth)
 {
     mMonthView->setDateRange(start, end, preferredMonth);
 }

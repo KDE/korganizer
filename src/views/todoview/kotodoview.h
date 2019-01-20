@@ -59,8 +59,7 @@ public:
     void restoreLayout(KConfig *config, const QString &group, bool minimalDefaults);
 
     /** documentation in baseview.h */
-    void getHighlightMode(bool &highlightEvents, bool &highlightTodos,
-                          bool &highlightJournals) override;
+    void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 
     bool usesFullWindow() override;
 
@@ -76,12 +75,10 @@ public:
 
 public Q_SLOTS:
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
-    virtual void showDates(const QDate &start, const QDate &end,
-                           const QDate &preferredMonth = QDate()) override;
+    virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
-    void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                Akonadi::IncidenceChanger::ChangeType changeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType) override;
     void updateConfig() override;
     void clearSelection() override;
 

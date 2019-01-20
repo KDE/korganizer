@@ -56,8 +56,7 @@ public:
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
-    void getHighlightMode(bool &highlightEvents, bool &highlightTodos,
-                          bool &highlightJournals) override;
+    void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 
     CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
@@ -65,11 +64,10 @@ public Q_SLOTS:
     void updateView() override;
     void flushView() override;
 
-    void showDates(const QDate &start, const QDate &end,
-                   const QDate &preferredMonth = QDate()) override;
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &incidence,
+    void changeIncidenceDisplay(const Akonadi::Item & incidence,
                                 Akonadi::IncidenceChanger::ChangeType) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
     void printJournal(const KCalCore::Journal::Ptr &journal, bool preview);

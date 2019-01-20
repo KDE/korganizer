@@ -155,8 +155,8 @@ void KOAlarmClient::deferredInit()
         if (akonadiItemId >= 0) {
             const QDateTime dt = incGroup.readEntry("RemindAt", QDateTime());
             Akonadi::Item i = mCalendar->item(Akonadi::Item::fromUrl(url).id());
-            if (CalendarSupport::hasIncidence(i) &&
-                !CalendarSupport::incidence(i)->alarms().isEmpty()) {
+            if (CalendarSupport::hasIncidence(i)
+                && !CalendarSupport::incidence(i)->alarms().isEmpty()) {
                 createReminder(i, dt, QString());
             }
         }
@@ -231,8 +231,7 @@ void KOAlarmClient::checkAlarms()
     }
 }
 
-void KOAlarmClient::createReminder(const Akonadi::Item &aitem, const QDateTime &remindAtDate,
-                                   const QString &displayText)
+void KOAlarmClient::createReminder(const Akonadi::Item &aitem, const QDateTime &remindAtDate, const QString &displayText)
 {
     if (!CalendarSupport::hasIncidence(aitem)) {
         return;
@@ -256,7 +255,7 @@ void KOAlarmClient::showReminder()
     mDialog->show();
 }
 
-void KOAlarmClient::createDialog() 
+void KOAlarmClient::createDialog()
 {
     if (!mDialog) {
         mDialog = new AlarmDialog(mCalendar);
@@ -318,8 +317,8 @@ QStringList KOAlarmClient::dumpAlarms() const
     const Alarm::List alarms = mCalendar->alarms(start, end);
     lst.reserve(1 + (alarms.isEmpty() ? 1 : alarms.count()));
     // Don't translate, this is for debugging purposes.
-    lst << QStringLiteral("dumpAlarms() from ") + start.toString() +
-           QLatin1String(" to ") + end.toString();
+    lst << QStringLiteral("dumpAlarms() from ") + start.toString()
+        +QLatin1String(" to ") + end.toString();
 
     if (alarms.isEmpty()) {
         lst << QStringLiteral("No alarm found.");

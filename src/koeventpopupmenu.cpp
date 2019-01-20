@@ -335,8 +335,7 @@ void KOEventPopupMenu::createNote()
     }
 }
 
-void KOEventPopupMenu::slotCreateNote(const Akonadi::Item &noteItem,
-                                      const Akonadi::Collection &collection)
+void KOEventPopupMenu::slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection)
 {
     Akonadi::ItemCreateJob *createJob = new Akonadi::ItemCreateJob(noteItem, collection, this);
     connect(createJob, &Akonadi::ItemCreateJob::result, this,

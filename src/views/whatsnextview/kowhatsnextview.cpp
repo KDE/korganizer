@@ -114,8 +114,7 @@ void KOWhatsNextView::showIncidences(const Akonadi::Item::List &incidenceList, c
     mView->showIncidences(incidenceList, date);
 }
 
-void KOWhatsNextView::changeIncidenceDisplay(const Akonadi::Item &,
-                                             Akonadi::IncidenceChanger::ChangeType)
+void KOWhatsNextView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
     updateView();
 }

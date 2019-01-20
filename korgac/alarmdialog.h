@@ -73,8 +73,7 @@ public:
     explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
     ~AlarmDialog();
 
-    void addIncidence(const Akonadi::Item &incidence, const QDateTime &reminderAt,
-                      const QString &displayText);
+    void addIncidence(const Akonadi::Item &incidence, const QDateTime &reminderAt, const QString &displayText);
     void setRemindAt(const QDateTime &dt);
     void eventNotification();
 
@@ -116,8 +115,7 @@ private:
     void updateButtons();
     typedef QList<ReminderTreeItem *> ReminderList;
 
-    static QDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc,
-                                             const QDateTime &reminderAt, QString &displayStr);
+    static QDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
 
     // Removes each Incidence-X group that has one of the specified uids
     void removeFromConfig(const QList<Akonadi::Item::Id> &);

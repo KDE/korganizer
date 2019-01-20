@@ -577,8 +577,8 @@ void SDSummaryWidget::createLabels()
             }
 
             // Age
-            if ((*addrIt).category == CategoryBirthday ||
-                (*addrIt).category == CategoryAnniversary) {
+            if ((*addrIt).category == CategoryBirthday
+                || (*addrIt).category == CategoryAnniversary) {
                 label = new QLabel(this);
                 if ((*addrIt).yearsOld <= 0) {
                     label->setText(QString());

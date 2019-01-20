@@ -146,8 +146,7 @@ void KOTimelineView::updateView()
     mTimeLineView->updateView();
 }
 
-void KOTimelineView::changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                            Akonadi::IncidenceChanger::ChangeType changeType)
+void KOTimelineView::changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType)
 {
     mTimeLineView->changeIncidenceDisplay(incidence, changeType);
 }

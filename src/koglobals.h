@@ -68,13 +68,13 @@ public:
 
     /** return the HolidayRegion object or 0 if none has been defined
     */
-    QList<KHolidays::HolidayRegion*> holidays() const;
+    QList<KHolidays::HolidayRegion *> holidays() const;
 
 protected:
     KOGlobals();
 
 private:
-    QList<KHolidays::HolidayRegion*> mHolidayRegions;
+    QList<KHolidays::HolidayRegion *> mHolidayRegions;
 };
 
 #endif

@@ -174,8 +174,7 @@ QDate KDateNavigator::endDate() const
     return startDate().addDays(6 * 7);
 }
 
-void KDateNavigator::setHighlightMode(bool highlightEvents, bool highlightTodos,
-                                      bool highlightJournals) const
+void KDateNavigator::setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals) const
 {
     mDayMatrix->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 }

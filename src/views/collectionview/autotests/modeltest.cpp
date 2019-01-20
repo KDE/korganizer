@@ -564,8 +564,7 @@ void ModelTest::layoutChanged()
     changing.clear();
 }
 
-void ModelTest::rowsAboutToBeMoved(const QModelIndex &srcParent, int start, int end,
-                                   const QModelIndex &destParent, int destinationRow)
+void ModelTest::rowsAboutToBeMoved(const QModelIndex &srcParent, int start, int end, const QModelIndex &destParent, int destinationRow)
 {
     qDebug() << "rowsAboutToBeMoved" << srcParent << start << end << destParent << destinationRow;
     Changing cs;
@@ -583,8 +582,7 @@ void ModelTest::rowsAboutToBeMoved(const QModelIndex &srcParent, int start, int 
     insert.push(cd);
 }
 
-void ModelTest::rowsMoved(const QModelIndex &srcParent, int start, int end,
-                          const QModelIndex &destParent, int destinationRow)
+void ModelTest::rowsMoved(const QModelIndex &srcParent, int start, int end, const QModelIndex &destParent, int destinationRow)
 {
     qDebug() << "rowsMoved" << srcParent << start << end << destParent << destinationRow;
 

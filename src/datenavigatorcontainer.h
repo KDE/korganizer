@@ -106,11 +106,9 @@ Q_SIGNALS:
         @param selectionLowerLimit The first date of the first KDateNavigator.
         @param selectionUpperLimit The last date of the last KDateNavigator.
     */
-    void prevMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit,
-                          const QDate &selectionUpperLimit);
+    void prevMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit);
 
-    void nextMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit,
-                          const QDate &selectionUpperLimit);
+    void nextMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit);
 
     void monthSelected(int month);
 

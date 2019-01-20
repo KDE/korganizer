@@ -143,8 +143,7 @@ void KOJournalView::showIncidences(const Akonadi::Item::List &incidences, const 
     mJournalView->showIncidences(incidences, date);
 }
 
-void KOJournalView::changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                           Akonadi::IncidenceChanger::ChangeType changeType)
+void KOJournalView::changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType)
 {
     mJournalView->changeIncidenceDisplay(incidence, changeType);
 }
@@ -154,8 +153,7 @@ void KOJournalView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
     mJournalView->setIncidenceChanger(changer);
 }
 
-void KOJournalView::getHighlightMode(bool &highlightEvents, bool &highlightTodos,
-                                     bool &highlightJournals)
+void KOJournalView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)
 {
     highlightJournals = KOPrefs::instance()->mHighlightJournals;
     highlightTodos = false;

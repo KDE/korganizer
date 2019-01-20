@@ -141,7 +141,7 @@ void KOGlobals::setHolidays(const QStringList &regions)
     }
 }
 
-QList<KHolidays::HolidayRegion*> KOGlobals::holidays() const
+QList<KHolidays::HolidayRegion *> KOGlobals::holidays() const
 {
     return mHolidayRegions;
 }

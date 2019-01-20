@@ -178,14 +178,13 @@ IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog(const Akonadi:
 
     IncidenceEditorNG::IncidenceDialog *dialog
         = IncidenceEditorNG::IncidenceDialogFactory::create(
-        /*needs initial saving=*/ false,
-        incidence->type(), mMainView->incidenceChanger(), mMainView);
+              /*needs initial saving=*/ false,
+              incidence->type(), mMainView->incidenceChanger(), mMainView);
 
     return dialog;
 }
 
-void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialog,
-                                       KOEventView *view)
+void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialog, KOEventView *view)
 {
     if (dialog && view) {
         view->setTypeAheadReceiver(dialog->typeAheadReceiver());

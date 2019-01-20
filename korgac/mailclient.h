@@ -47,19 +47,13 @@ public:
     MailClient();
     ~MailClient();
 
-    bool mailAttendees(const KCalCore::IncidenceBase::Ptr &,
-                       const KIdentityManagement::Identity &identity, bool bccMe,
-                       const QString &attachment = QString(),
+    bool mailAttendees(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment = QString(),
                        const QString &mailTransport = QString());
 
-    bool mailOrganizer(const KCalCore::IncidenceBase::Ptr &,
-                       const KIdentityManagement::Identity &identity, const QString &from,
-                       bool bccMe,
-                       const QString &attachment = QString(),
-                       const QString &sub = QString(), const QString &mailTransport = QString());
+    bool mailOrganizer(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe,
+                       const QString &attachment = QString(), const QString &sub = QString(), const QString &mailTransport = QString());
 
-    bool mailTo(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity,
-                const QString &from, bool bccMe, const QString &recipients,
+    bool mailTo(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients,
                 const QString &attachment = QString(), const QString &mailTransport = QString());
 
     /**
@@ -79,10 +73,8 @@ public:
       @param mailTransport defines the mail transport method. See here the
       kdepimlibs/mailtransport library.
     */
-    bool send(const KIdentityManagement::Identity &identity, const QString &from, const QString &to,
-              const QString &cc, const QString &subject, const QString &body, bool hidden = false,
-              bool bccMe = false,
-              const QString &attachment = QString(), const QString &mailTransport = QString());
+    bool send(const KIdentityManagement::Identity &identity, const QString &from, const QString &to, const QString &cc, const QString &subject, const QString &body, bool hidden = false,
+              bool bccMe = false, const QString &attachment = QString(), const QString &mailTransport = QString());
 };
 }
 

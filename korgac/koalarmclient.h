@@ -67,8 +67,7 @@ private:
     void showReminder();
     bool dockerEnabled();
     bool collectionsAvailable() const;
-    void createReminder(const Akonadi::Item &incidence,
-                        const QDateTime &dt, const QString &displayText);
+    void createReminder(const Akonadi::Item &incidence, const QDateTime &dt, const QString &displayText);
     void saveLastCheckTime();
     void createDialog();
 

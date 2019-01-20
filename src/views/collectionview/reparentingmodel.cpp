@@ -38,8 +38,7 @@ ReparentingModel::Node::Node(ReparentingModel &model)
 {
 }
 
-ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *p,
-                             const QModelIndex &srcIndex)
+ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *p, const QModelIndex &srcIndex)
     :   sourceIndex(srcIndex)
     , parent(p)
     , personModel(model)
@@ -413,8 +412,7 @@ ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourc
     return nullptr;
 }
 
-void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex,
-                                        const QModelIndexList &skip)
+void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sourceIndex, const QModelIndexList &skip)
 {
     mNodeManager->checkSourceIndex(sourceIndex);
 
@@ -452,7 +450,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
                 if (!proxyNode->parent) {
                     qCWarning(KORGANIZER_LOG) <<  objectName()
                                               <<
-                    "Found proxy that is already not part of the model " << proxyNode->data(
+                        "Found proxy that is already not part of the model " << proxyNode->data(
                         Qt::DisplayRole).toString();
                     continue;
                 }
@@ -538,24 +536,18 @@ void ReparentingModel::onSourceRowsAboutToBeRemoved(const QModelIndex &parent, i
     }
 }
 
-void ReparentingModel::onSourceRowsRemoved(const QModelIndex & /* parent */, int /* start */,
-                                           int /* end */)
+void ReparentingModel::onSourceRowsRemoved(const QModelIndex & /* parent */, int /* start */, int /* end */)
 {
 }
 
-void ReparentingModel::onSourceRowsAboutToBeMoved(const QModelIndex & /* sourceParent */,
-                                                  int /* sourceStart */, int /* sourceEnd */,
-                                                  const QModelIndex & /* destParent */,
-                                                  int /* dest */)
+void ReparentingModel::onSourceRowsAboutToBeMoved(const QModelIndex & /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, const QModelIndex & /* destParent */, int /* dest */)
 {
     qCWarning(KORGANIZER_LOG) << "not implemented";
     //TODO
     beginResetModel();
 }
 
-void ReparentingModel::onSourceRowsMoved(const QModelIndex & /* sourceParent */,
-                                         int /* sourceStart */, int /* sourceEnd */,
-                                         const QModelIndex & /* destParent */, int /* dest */)
+void ReparentingModel::onSourceRowsMoved(const QModelIndex & /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, const QModelIndex & /* destParent */, int /* dest */)
 {
     qCWarning(KORGANIZER_LOG) << "not implemented";
     //TODO
@@ -691,8 +683,7 @@ QModelIndex ReparentingModel::mapFromSource(const QModelIndex &sourceIndex) cons
     return index(node);
 }
 
-void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &sourceParent,
-                                         const QModelIndexList &skip)
+void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &sourceParent, const QModelIndexList &skip)
 {
     Q_ASSERT(parentNode);
     if (!sourceModel()) {

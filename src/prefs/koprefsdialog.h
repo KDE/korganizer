@@ -71,7 +71,7 @@ protected:
 
 private Q_SLOTS:
     void useSystemColorToggle(bool useSystemColor);
-    
+
 protected Q_SLOTS:
     void updateCategories();
     void setCategoryColor();
@@ -80,7 +80,7 @@ protected Q_SLOTS:
     void updateResources();
     void setResourceColor();
     void updateResourceColor();
-    
+
 private:
     KComboBox *mCategoryCombo = nullptr;
     KColorButton *mCategoryButton = nullptr;

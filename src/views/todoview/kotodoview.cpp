@@ -174,8 +174,7 @@ void KOTodoView::updateView()
     // View is always updated, it's connected to ETM.
 }
 
-void KOTodoView::changeIncidenceDisplay(const Akonadi::Item &,
-                                        Akonadi::IncidenceChanger::ChangeType)
+void KOTodoView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
     // Don't do anything, model is connected to ETM, it's up to date
 }
@@ -228,8 +227,7 @@ void KOTodoView::printTodo(bool preview)
                   todoDate, todoDate, selectedIncidences, preview);
 }
 
-void KOTodoView::getHighlightMode(bool &highlightEvents, bool &highlightTodos,
-                                  bool &highlightJournals)
+void KOTodoView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)
 {
     highlightTodos = KOPrefs::instance()->mHighlightTodos;
     highlightEvents = !highlightTodos;

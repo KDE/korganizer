@@ -123,8 +123,7 @@ public:
      * This function writes to these 3 parameters the result,
      * the original value is ignored
      */
-    virtual void getHighlightMode(bool &highlightEvents, bool &highlightTodos,
-                                  bool &highlightJournals);
+    virtual void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals);
 
     /**
      * returns whether this view should be displayed full window.
@@ -184,8 +183,7 @@ public:
       @param start Start of date range.
       @param end   End of date range.
     */
-    virtual void setDateRange(const QDateTime &start, const QDateTime &end,
-                              const QDate &preferredMonth = QDate());
+    virtual void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate());
 
     QDateTime startDateTime() const;
     QDateTime endDateTime() const;
@@ -381,8 +379,7 @@ protected:
     /**
       @deprecated
      */
-    virtual void showDates(const QDate &start, const QDate &end,
-                           const QDate &preferredMonth = QDate()) = 0;
+    virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) = 0;
 
     /**
      * From the requested date range (passed via setDateRange()), calculates the

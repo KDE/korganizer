@@ -36,8 +36,7 @@
 #include "korganizeradaptor.h"
 #include "korganizer_debug.h"
 
-KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager, QObject *parent,
-                                         const QString &name)
+KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager, QObject *parent, const QString &name)
     : QObject(parent)
     , mActionManager(actionManager)
 {

@@ -197,8 +197,8 @@ void CollectionGeneralPage::save(Collection &collection)
     if (mIncidencesForComboBox && mIncidencesForComboBox->isEnabled()) {
         annotations[ PimCommon::CollectionTypeUtil::kolabIncidencesFor() ]
             = collectionUtil.incidencesForToString(
-            static_cast<PimCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->
-                                                                      currentIndex())).toLatin1();
+                  static_cast<PimCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->
+                                                                            currentIndex())).toLatin1();
     }
 
     if (annotations.isEmpty()) {

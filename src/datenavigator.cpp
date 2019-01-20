@@ -173,8 +173,7 @@ void DateNavigator::selectPreviousYear()
     selectWeekByDay(weekDay, firstSelected);
 }
 
-void DateNavigator::selectPreviousMonth(const QDate &currentMonth, const QDate &selectionLowerLimit,
-                                        const QDate &selectionUpperLimit)
+void DateNavigator::selectPreviousMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit)
 {
     shiftMonth(currentMonth,
                selectionLowerLimit,
@@ -201,8 +200,7 @@ void DateNavigator::selectNextWeek()
     selectWeekByDay(weekDay, firstSelected);
 }
 
-void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selectionLowerLimit,
-                               const QDate &selectionUpperLimit, int offset)
+void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit, int offset)
 {
     QDate firstSelected = mSelectedDates.first();
     const int weekDay = firstSelected.dayOfWeek();
@@ -226,8 +224,7 @@ void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selection
     selectWeekByDay(weekDay, firstSelected, nextMonth);
 }
 
-void DateNavigator::selectNextMonth(const QDate &currentMonth, const QDate &selectionLowerLimit,
-                                    const QDate &selectionUpperLimit)
+void DateNavigator::selectNextMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit)
 {
     shiftMonth(currentMonth,
                selectionLowerLimit,

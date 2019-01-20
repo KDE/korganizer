@@ -127,8 +127,7 @@ bool BaseView::hasConfigurationDialog() const
     return false;
 }
 
-void BaseView::setDateRange(const QDateTime &start, const QDateTime &end,
-                            const QDate &preferredMonth)
+void BaseView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth)
 {
     d->startDateTime = start;
     d->endDateTime = end;
@@ -202,8 +201,7 @@ bool BaseView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &all
     return false;
 }
 
-void BaseView::getHighlightMode(bool &highlightEvents, bool &highlightTodos,
-                                bool &highlightJournals)
+void BaseView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)
 {
     highlightEvents = true;
     highlightTodos = false;
@@ -229,8 +227,7 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start, const QDateTime &end,
-                                                      const QDate &preferredMonth) const
+QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth) const
 {
     Q_UNUSED(preferredMonth);
     return qMakePair(start, end);

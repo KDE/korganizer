@@ -76,8 +76,7 @@ static QStyle *style(const QStyleOptionViewItem &option)
     return style;
 }
 
-static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap,
-                                    const QModelIndex &index, int pos = 1)
+static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap, const QModelIndex &index, int pos = 1)
 {
     QStyleOptionButton option;
     option.icon = pixmap;
@@ -163,8 +162,7 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
     return buttons;
 }
 
-void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
-                                   const QModelIndex &index) const
+void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     Q_ASSERT(index.isValid());
 
@@ -238,9 +236,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     }
 }
 
-bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
-                                         const QStyleOptionViewItem &option,
-                                         const QModelIndex &index)
+bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index)
 {
     Q_ASSERT(event);
     Q_ASSERT(model);
@@ -253,8 +249,8 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
 
     int button = -1;
     // make sure that we have the right event type
-    if ((event->type() == QEvent::MouseButtonRelease) ||
-        (event->type() == QEvent::MouseButtonPress)) {
+    if ((event->type() == QEvent::MouseButtonRelease)
+        || (event->type() == QEvent::MouseButtonPress)) {
         QMouseEvent *me = static_cast<QMouseEvent *>(event);
 
         for (int i = 1; i < 4; i++) {
@@ -288,8 +284,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
     return QStyledItemDelegate::editorEvent(event, model, option, index);
 }
 
-QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option,
-                                       const QModelIndex &index) const
+QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QSize size = QStyledItemDelegate::sizeHint(option, index);
     // Without this adjustment toplevel resource folders get a slightly greater height,

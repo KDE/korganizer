@@ -92,8 +92,7 @@
 
 KOWindowList *ActionManager::mWindowList = nullptr;
 
-ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget, QObject *parent,
-                             KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar)
+ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget, QObject *parent, KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar)
     : QObject(parent)
     , mCollectionViewShowAction(nullptr)
     , mCollectionView(nullptr)
@@ -200,7 +199,7 @@ void ActionManager::createCalendarAkonadi()
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mCollectionSelectionModelStateSaver
         = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(
-        config->group("GlobalCollectionSelection"));
+              config->group("GlobalCollectionSelection"));
     mCollectionSelectionModelStateSaver->setSelectionModel(
         calendar()->checkableProxyModel()->selectionModel());
 
@@ -545,8 +544,8 @@ void ActionManager::initActions()
                       this);
     mConfigureViewAction->setIconText(i18n("Configure"));
     setHelpText(mConfigureViewAction, i18n("Configure the view"));
-    mConfigureViewAction->setEnabled(mCalendarView->currentView() &&
-                                     mCalendarView->currentView()->hasConfigurationDialog());
+    mConfigureViewAction->setEnabled(mCalendarView->currentView()
+                                     && mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView,
             &CalendarView::configureCurrentView);
@@ -1214,11 +1213,11 @@ void ActionManager::downloadNewStuff()
                 eventSummaries.append(event->summary());
             }
 
-            const int result =
-                KMessageBox::warningContinueCancelList(
-                    mCalendarView,
-                    i18n("The downloaded events will be merged into your current calendar."),
-                    eventSummaries);
+            const int result
+                = KMessageBox::warningContinueCancelList(
+                      mCalendarView,
+                      i18n("The downloaded events will be merged into your current calendar."),
+                      eventSummaries);
 
             if (result != KMessageBox::Continue) {
                 // FIXME (KNS2): hm, no way out here :-)
@@ -1240,10 +1239,10 @@ QString ActionManager::localFileName()
 class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
 {
 public:
-    ActionStringsVisitor() :
-      mShow(nullptr),
-      mEdit(nullptr),
-      mDelete(nullptr)
+    ActionStringsVisitor()
+        : mShow(nullptr)
+        , mEdit(nullptr)
+        , mDelete(nullptr)
     {
     }
 
@@ -1399,21 +1398,17 @@ void ActionManager::openEventEditor(const QString &text)
     mCalendarView->newEvent(text);
 }
 
-void ActionManager::openEventEditor(const QString &summary, const QString &description,
-                                    const QStringList &attachments)
+void ActionManager::openEventEditor(const QString &summary, const QString &description, const QStringList &attachments)
 {
     mCalendarView->newEvent(summary, description, attachments);
 }
 
-void ActionManager::openEventEditor(const QString &summary, const QString &description,
-                                    const QStringList &attachments, const QStringList &attendees)
+void ActionManager::openEventEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees)
 {
     mCalendarView->newEvent(summary, description, attachments, attendees);
 }
 
-void ActionManager::openEventEditor(const QString &summary, const QString &description,
-                                    const QString &uri, const QString &file,
-                                    const QStringList &attendees, const QString &attachmentMimetype)
+void ActionManager::openEventEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype)
 {
     int action = IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod();
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
@@ -1501,21 +1496,17 @@ void ActionManager::openTodoEditor(const QString &text)
     mCalendarView->newTodo(text);
 }
 
-void ActionManager::openTodoEditor(const QString &summary, const QString &description,
-                                   const QStringList &attachments)
+void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QStringList &attachments)
 {
     mCalendarView->newTodo(summary, description, attachments);
 }
 
-void ActionManager::openTodoEditor(const QString &summary, const QString &description,
-                                   const QStringList &attachments, const QStringList &attendees)
+void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees)
 {
     mCalendarView->newTodo(summary, description, attachments, attendees);
 }
 
-void ActionManager::openTodoEditor(const QString &summary, const QString &description,
-                                   const QString &uri, const QString &file,
-                                   const QStringList &attendees, const QString &attachmentMimetype)
+void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype)
 {
     int action = KOPrefs::instance()->defaultTodoAttachMethod();
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
@@ -1647,11 +1638,11 @@ void ActionManager::importCalendar(const QUrl &url)
 
     const int answer
         = KMessageBox::questionYesNoCancel(
-        dialogParent(),
-        questionText,
-        i18nc("@title:window", "Import Calendar"),
-        KGuiItem(i18n("Merge into existing calendar")),
-        KGuiItem(i18n("Add as new calendar")));
+              dialogParent(),
+              questionText,
+              i18nc("@title:window", "Import Calendar"),
+              KGuiItem(i18n("Merge into existing calendar")),
+              KGuiItem(i18n("Add as new calendar")));
 
     switch (answer) {
     case KMessageBox::Yes: //merge
@@ -1695,9 +1686,8 @@ QWidget *ActionManager::dialogParent()
     return mCalendarView->topLevelWidget();
 }
 
-void ActionManager::openTodoEditor(const QString &summary, const QString &description,
-                                   const QStringList &attachmentUris, const QStringList &attendees,
-                                   const QStringList &attachmentMimetypes, bool attachmentIsInline)
+void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes,
+                                   bool attachmentIsInline)
 {
     Q_UNUSED(summary);
     Q_UNUSED(description);
@@ -1708,9 +1698,8 @@ void ActionManager::openTodoEditor(const QString &summary, const QString &descri
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }
 
-void ActionManager::openEventEditor(const QString &summary, const QString &description,
-                                    const QStringList &attachmentUris, const QStringList &attendees,
-                                    const QStringList &attachmentMimetypes, bool attachmentIsInline)
+void ActionManager::openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes,
+                                    bool attachmentIsInline)
 {
     Q_UNUSED(summary);
     Q_UNUSED(description);

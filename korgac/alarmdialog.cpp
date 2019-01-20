@@ -87,7 +87,10 @@ public:
         , mNotified(false)
     {
     }
-    ~ReminderTreeItem() override {}
+
+    ~ReminderTreeItem() override
+    {
+    }
 
     bool operator<(const QTreeWidgetItem &other) const override;
 
@@ -367,8 +370,7 @@ static QString cleanSummary(const QString &summary)
     return retStr;
 }
 
-void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTime &reminderAt,
-                               const QString &displayText)
+void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTime &reminderAt, const QString &displayText)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(incidenceitem);
     ReminderTreeItem *item = searchByItem(incidenceitem);
@@ -397,8 +399,8 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTi
     item->setText(2, QLocale().toString(item->mTrigger, QLocale::ShortFormat));
     QString tip
         = IncidenceFormatter::toolTipStr(
-        CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
-        incidence, item->mRemindAt.date(), true);
+              CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
+              incidence, item->mRemindAt.date(), true);
     if (!item->mDisplayText.isEmpty()) {
         tip += QLatin1String("<br>") + item->mDisplayText;
     }
@@ -700,9 +702,9 @@ void AlarmDialog::eventNotification()
                 QString program = alarm->programFile();
 
                 // if the program name contains spaces escape it
-                if (program.contains(QLatin1Char(' ')) &&
-                    !(program.startsWith(QLatin1Char('\"')) &&
-                      program.endsWith(QLatin1Char('\"')))) {
+                if (program.contains(QLatin1Char(' '))
+                    && !(program.startsWith(QLatin1Char('\"'))
+                         && program.endsWith(QLatin1Char('\"')))) {
                     program = QLatin1Char('\"') + program + QLatin1Char('\"');
                 }
 
@@ -923,8 +925,8 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         mDetailView->setIncidence(Akonadi::Item());
     } else {
         if (!reminderItem->mDisplayText.isEmpty()) {
-            const QString txt =
-                QLatin1String("<qt><p><b>") + reminderItem->mDisplayText + QLatin1String("</b></p></qt>");
+            const QString txt
+                = QLatin1String("<qt><p><b>") + reminderItem->mDisplayText + QLatin1String("</b></p></qt>");
             mDetailView->setHeaderText(txt);
         } else {
             mDetailView->setHeaderText(QString());
@@ -955,8 +957,7 @@ void AlarmDialog::accept()
 }
 
 /** static */
-QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
-                                               const QDateTime &reminderAt, QString &displayStr)
+QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence, const QDateTime &reminderAt, QString &displayStr)
 {
     QDateTime result;
 
@@ -1021,8 +1022,7 @@ void AlarmDialog::keyPressEvent(QKeyEvent *e)
 bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &incidence)
 {
     if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral(
-                                                                            "org.kde.korganizer")))
-    {
+                                                                            "org.kde.korganizer"))) {
         if (KToolInvocation::startServiceByDesktopName(QStringLiteral("org.kde.korganizer"),
                                                        QString())) {
             KMessageBox::error(
@@ -1084,8 +1084,8 @@ bool AlarmDialog::openIncidenceEditorNG(const Akonadi::Item &item)
     Incidence::Ptr incidence = CalendarSupport::incidence(item);
     IncidenceEditorNG::IncidenceDialog *dialog
         = IncidenceEditorNG::IncidenceDialogFactory::create(
-        false,     /*doesn't need initial saving*/
-        incidence->type(), nullptr, this);
+              false, /*doesn't need initial saving*/
+              incidence->type(), nullptr, this);
     dialog->load(item);
     return true;
 }

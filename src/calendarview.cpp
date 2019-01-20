@@ -624,9 +624,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
         CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication());
 }
 
-void CalendarView::slotCreateFinished(int changeId, const Akonadi::Item &item,
-                                      Akonadi::IncidenceChanger::ResultCode resultCode,
-                                      const QString &errorString)
+void CalendarView::slotCreateFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
 {
     Q_UNUSED(changeId);
     if (resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess) {
@@ -638,9 +636,7 @@ void CalendarView::slotCreateFinished(int changeId, const Akonadi::Item &item,
     }
 }
 
-void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item,
-                                      Akonadi::IncidenceChanger::ResultCode resultCode,
-                                      const QString &errorString)
+void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
 {
     Q_UNUSED(changeId);
     if (resultCode != Akonadi::IncidenceChanger::ResultCodeSuccess) {
@@ -656,9 +652,9 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item,
     // Record completed todos in journals, if enabled. we should to this here in
     // favor of the todolist. users can mark a task as completed in an editor
     // as well.
-    if (incidence->type() == KCalCore::Incidence::TypeTodo &&
-        KOPrefs::instance()->recordTodosInJournals() &&
-        (dirtyFields.contains(KCalCore::Incidence::FieldCompleted))) {
+    if (incidence->type() == KCalCore::Incidence::TypeTodo
+        && KOPrefs::instance()->recordTodosInJournals()
+        && (dirtyFields.contains(KCalCore::Incidence::FieldCompleted))) {
         KCalCore::Todo::Ptr todo = incidence.dynamicCast<KCalCore::Todo>();
         if (todo->isCompleted() || todo->recurs()) {
             QString timeStr
@@ -696,9 +692,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item,
     checkForFilteredChange(item);
 }
 
-void CalendarView::slotDeleteFinished(int changeId, const QVector<Akonadi::Item::Id> &itemIdList,
-                                      Akonadi::IncidenceChanger::ResultCode resultCode,
-                                      const QString &errorString)
+void CalendarView::slotDeleteFinished(int changeId, const QVector<Akonadi::Item::Id> &itemIdList, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
 {
     Q_UNUSED(changeId);
     if (resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess) {
@@ -738,8 +732,7 @@ void CalendarView::endMultiModify()
     mChanger->endAtomicOperation();
 }
 
-void CalendarView::changeIncidenceDisplay(const Akonadi::Item &item,
-                                          Akonadi::IncidenceChanger::ChangeType changeType)
+void CalendarView::changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::IncidenceChanger::ChangeType changeType)
 {
     if (mDateNavigatorContainer->isVisible()) {
         mDateNavigatorContainer->updateView();
@@ -755,8 +748,7 @@ void CalendarView::changeIncidenceDisplay(const Akonadi::Item &item,
     }
 }
 
-void CalendarView::updateView(const QDate &start, const QDate &end, const QDate &preferredMonth,
-                              const bool updateTodos)
+void CalendarView::updateView(const QDate &start, const QDate &end, const QDate &preferredMonth, const bool updateTodos)
 {
     const bool currentViewIsTodoView = mViewManager->currentView()->identifier()
                                        == "DefaultTodoView";
@@ -892,8 +884,8 @@ void CalendarView::edit_paste()
             // only use selected area if event is of the same type (all-day or non-all-day
             // as the current selection is
             if (agendaView && endDT.isValid() && useEndTime) {
-                if ((pastedEvent->allDay() && agendaView->selectedIsAllDay()) ||
-                    (!pastedEvent->allDay() && !agendaView->selectedIsAllDay())) {
+                if ((pastedEvent->allDay() && agendaView->selectedIsAllDay())
+                    || (!pastedEvent->allDay() && !agendaView->selectedIsAllDay())) {
                     QDateTime kdt = endDT.toLocalTime();
                     pastedEvent->setDtEnd(kdt.toTimeZone(pastedEvent->dtEnd().timeZone()));
                 }
@@ -937,9 +929,9 @@ void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bo
         startDt.setDate(activeDate(true));
         startDt.setTime(CalendarSupport::KCalPrefs::instance()->mStartTime.time());
 
-        int addSecs =
-            (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600) +
-            (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().minute() * 60);
+        int addSecs
+            = (CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().hour() * 3600)
+              +(CalendarSupport::KCalPrefs::instance()->mDefaultDuration.time().minute() * 60);
         endDt = startDt.addSecs(addSecs);
     }
 }
@@ -977,9 +969,9 @@ void CalendarView::newEvent(const QDate &dt)
     QTime duration = CalendarSupport::KCalPrefs::instance()->defaultDuration().time();
     QTime time = startDt.time();
 
-    time = time.addSecs(duration.hour() * 3600 +
-                        duration.minute() * 60 +
-                        duration.second());
+    time = time.addSecs(duration.hour() * 3600
+                        +duration.minute() * 60
+                        +duration.second());
     QDateTime endDt(startDt);
     endDt.setTime(time);
     newEvent(startDt, endDt);
@@ -1016,9 +1008,8 @@ void CalendarView::newEvent(const QDateTime &startDtParam, const QDateTime &endD
     eventEditor->selectCollection(defaultCollection(KCalCore::Event::eventMimeType()));
 }
 
-void CalendarView::newEvent(const QString &summary, const QString &description,
-                            const QStringList &attachments, const QStringList &attendees,
-                            const QStringList &attachmentMimetypes, bool inlineAttachment)
+void CalendarView::newEvent(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees, const QStringList &attachmentMimetypes,
+                            bool inlineAttachment)
 {
     // Adjust the start/end date times (i.e. replace invalid values by defaults,
     // and let the view adjust the type.
@@ -1045,9 +1036,8 @@ void CalendarView::newEvent(const QString &summary, const QString &description,
     newEventEditor(event);
 }
 
-void CalendarView::newTodo(const QString &summary, const QString &description,
-                           const QStringList &attachments, const QStringList &attendees,
-                           const QStringList &attachmentMimetypes, bool inlineAttachment)
+void CalendarView::newTodo(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees, const QStringList &attachmentMimetypes,
+                           bool inlineAttachment)
 {
     Akonadi::Collection defaultCol = defaultCollection(KCalCore::Todo::todoMimeType());
 
@@ -1412,8 +1402,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     mChanger->endAtomicOperation();
 }
 
-void CalendarView::copyIncidenceToResource(const Akonadi::Item &item,
-                                           const Akonadi::Collection &col)
+void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col)
 {
 #ifdef AKONADI_PORT_DISABLED
     if (!incidence) {
@@ -1483,8 +1472,7 @@ void CalendarView::copyIncidenceToResource(const Akonadi::Item &item,
 #endif
 }
 
-void CalendarView::moveIncidenceToResource(const Akonadi::Item &item,
-                                           const Akonadi::Collection &col)
+void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col)
 {
 #ifdef AKONADI_PORT_DISABLED
     if (!incidence) {
@@ -1621,8 +1609,7 @@ void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate 
     }
 }
 
-void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &date,
-                                        bool thisAndFuture)
+void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &date, bool thisAndFuture)
 {
     const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
 
@@ -2394,13 +2381,13 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                 if (!(isFirst && isLast)) {
                     QDialogButtonBox::StandardButton returnValue
                         = KPIM::PIMMessageBox::fourBtnMsgBox(
-                        this,
-                        QMessageBox::Warning,
-                        message,
-                        i18n("KOrganizer Confirmation"),
-                        i18n("Delete C&urrent"),
-                        itemFuture,
-                        i18n("Delete &All"));
+                              this,
+                              QMessageBox::Warning,
+                              message,
+                              i18n("KOrganizer Confirmation"),
+                              i18n("Delete C&urrent"),
+                              itemFuture,
+                              i18n("Delete &All"));
                     switch (returnValue) {
                     case QDialogButtonBox::Ok:
                         km = KMessageBox::Ok;
@@ -2602,8 +2589,8 @@ void CalendarView::updateHighlightModes()
 
 void CalendarView::selectWeek(const QDate &date, const QDate &preferredMonth)
 {
-    if (KOPrefs::instance()->mWeekNumbersShowWork &&
-        mViewManager->rangeMode() == KOViewManager::WORK_WEEK_RANGE) {
+    if (KOPrefs::instance()->mWeekNumbersShowWork
+        && mViewManager->rangeMode() == KOViewManager::WORK_WEEK_RANGE) {
         mDateNavigator->selectWorkWeek(date);
     } else {
         mDateNavigator->selectWeek(date, preferredMonth);
@@ -2625,30 +2612,30 @@ void CalendarView::changeFullView(bool fullView)
 Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeType) const
 {
     // 1. Try the view collection ( used in multi-agenda view )
-    Akonadi::Collection collection =
-        mCalendar->collection(mViewManager->currentView()->collectionId());
-    bool supportsMimeType =
-        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
+    Akonadi::Collection collection
+        = mCalendar->collection(mViewManager->currentView()->collectionId());
+    bool supportsMimeType
+        = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     bool hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
     }
 
     // 2. Try the configured default collection
-    collection =
-        mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
-    supportsMimeType =
-        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
+    collection
+        = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    supportsMimeType
+        = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
     }
 
     // 3. Try last selected folder
-    collection =
-        mCalendar->collection(IncidenceEditorNG::IncidenceEditorSettings::self()->lastSelectedFolder());
-    supportsMimeType =
-        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
+    collection
+        = mCalendar->collection(IncidenceEditorNG::IncidenceEditorSettings::self()->lastSelectedFolder());
+    supportsMimeType
+        = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
@@ -2656,8 +2643,8 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
 
     // 4. Try the selected collection
     collection = selectedCollection();
-    supportsMimeType =
-        collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
+    supportsMimeType
+        = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
         return collection;
@@ -2666,8 +2653,8 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
     // 5. Try the checked collections
     const Akonadi::Collection::List collections = checkedCollections();
     for (const Akonadi::Collection &checkedCollection : collections) {
-        supportsMimeType =
-            checkedCollection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
+        supportsMimeType
+            = checkedCollection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1String("");
         hasRights = checkedCollection.rights() & Akonadi::Collection::CanCreateItem;
         if (checkedCollection.isValid() && supportsMimeType && hasRights) {
             return checkedCollection;
@@ -2747,11 +2734,11 @@ void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
     if (success) {
         if (numDeleted == 0 && numIgnored > 0) {
             type = KMessageWidget::Warning;
-            message =
-                i18n("0 completed to-dos were purged.") + QLatin1Char('\n') +
-                i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
-                      "%1 to-dos were ignored because they have uncompleted or read-only children.",
-                      numIgnored);
+            message
+                = i18n("0 completed to-dos were purged.") + QLatin1Char('\n')
+                  +i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
+                         "%1 to-dos were ignored because they have uncompleted or read-only children.",
+                         numIgnored);
         } else if (numDeleted > 0 && numIgnored == 0) {
             message = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.",
                             numDeleted);
@@ -2759,12 +2746,12 @@ void CalendarView::onTodosPurged(bool success, int numDeleted, int numIgnored)
             message = i18n("There are no completed to-dos to purge.");
         } else {
             type = KMessageWidget::Warning;
-            message =
-                i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.",
-                      numDeleted) + QLatin1Char('\n') +
-                i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
-                      "%1 to-dos were ignored because they have uncompleted or read-only children.",
-                      numIgnored);
+            message
+                = i18np("%1 completed to-do was purged.", "%1 completed to-dos were purged.",
+                        numDeleted) + QLatin1Char('\n')
+                  +i18np("%1 to-do was ignored because it has uncompleted or read-only children.",
+                         "%1 to-dos were ignored because they have uncompleted or read-only children.",
+                         numIgnored);
         }
     } else {
         message = i18n("An error occurred while purging completed to-dos: %1",

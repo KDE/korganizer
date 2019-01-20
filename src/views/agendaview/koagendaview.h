@@ -78,18 +78,16 @@ public:
 
     void setChanges(EventViews::EventView::Changes changes) override;
 
-    void setDateRange(const QDateTime &start, const QDateTime &end,
-                      const QDate &preferredMonth = QDate()) override;
+    void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) override;
 
 public Q_SLOTS:
     void updateView() override;
     void updateConfig() override;
-    void showDates(const QDate &start, const QDate &end,
-                   const QDate &preferredMonth = QDate()) override;
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
     void changeIncidenceDisplayAdded(const Akonadi::Item &incidence);
-    void changeIncidenceDisplay(const Akonadi::Item &incidence,
+    void changeIncidenceDisplay(const Akonadi::Item & incidence,
                                 Akonadi::IncidenceChanger::ChangeType) override;
 
     void clearSelection() override;
@@ -107,8 +105,7 @@ public Q_SLOTS:
     void zoomInVertically();
     void zoomOutVertically();
 
-    void zoomView(const int delta, const QPoint &pos,
-                  const Qt::Orientation orient = Qt::Horizontal);
+    void zoomView(const int delta, const QPoint &pos, const Qt::Orientation orient = Qt::Horizontal);
 
 Q_SIGNALS:
     void zoomViewHorizontally(const QDate &, int count);

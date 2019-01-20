@@ -329,8 +329,7 @@ public:
 
             if (hasCompatibleMimeTypes(collection)) {
                 if (collection.hasAttribute<Akonadi::EntityDisplayAttribute>()
-                    && !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty())
-                {
+                    && !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty()) {
                     return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
                 }
             }
@@ -514,8 +513,7 @@ AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
     return mAkonadiCollectionView;
 }
 
-AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu,
-                                             QWidget *parent)
+AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu, QWidget *parent)
     : CalendarViewExtension(parent)
     , mActionManager(nullptr)
     , mCollectionView(nullptr)
@@ -638,7 +636,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 
         mActionManager
             = new Akonadi::StandardCalendarActionManager(
-            xmlclient->actionCollection(), mCollectionView);
+                  xmlclient->actionCollection(), mCollectionView);
 
         QList<Akonadi::StandardActionManager::Type> standardActions;
         standardActions << Akonadi::StandardActionManager::CreateCollection

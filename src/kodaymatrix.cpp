@@ -166,9 +166,9 @@ void KODayMatrix::recalculateToday()
         mDayLabels[i] = QString::number(mDays[i].day());
 
         // if today is in the currently displayed month, highlight today
-        if (mDays[i].year() == QDate::currentDate().year() &&
-            mDays[i].month() == QDate::currentDate().month() &&
-            mDays[i].day() == QDate::currentDate().day()) {
+        if (mDays[i].year() == QDate::currentDate().year()
+            && mDays[i].month() == QDate::currentDate().month()
+            && mDays[i].day() == QDate::currentDate().day()) {
             mToday = i;
         }
     }
@@ -280,10 +280,10 @@ void KODayMatrix::updateJournals()
     for (const KCalCore::Incidence::Ptr &inc : incidences) {
         Q_ASSERT(inc);
         QDate d = inc->dtStart().toLocalTime().date();
-        if (inc->type() == KCalCore::Incidence::TypeJournal &&
-            d >= mDays[0] &&
-            d <= mDays[NUMDAYS - 1] &&
-            !mEvents.contains(d)) {
+        if (inc->type() == KCalCore::Incidence::TypeJournal
+            && d >= mDays[0]
+            && d <= mDays[NUMDAYS - 1]
+            && !mEvents.contains(d)) {
             mEvents.append(d);
         }
         if (mEvents.count() == NUMDAYS) {
@@ -315,16 +315,16 @@ void KODayMatrix::updateTodos()
         if (t->hasDueDate()) {
             ushort recurType = t->recurrenceType();
 
-            if (t->recurs() &&
-                !(recurType == KCalCore::Recurrence::rDaily &&
-                  !KOPrefs::instance()->mDailyRecur) &&
-                !(recurType == KCalCore::Recurrence::rWeekly &&
-                  !KOPrefs::instance()->mWeeklyRecur)) {
+            if (t->recurs()
+                && !(recurType == KCalCore::Recurrence::rDaily
+                     && !KOPrefs::instance()->mDailyRecur)
+                && !(recurType == KCalCore::Recurrence::rWeekly
+                     && !KOPrefs::instance()->mWeeklyRecur)) {
                 // It's a recurring todo, find out in which days it occurs
                 const auto timeDateList
                     = t->recurrence()->timesInInterval(
-                    QDateTime(mDays[0], {}, Qt::LocalTime),
-                    QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
+                          QDateTime(mDays[0], {}, Qt::LocalTime),
+                          QDateTime(mDays[NUMDAYS - 1], {}, Qt::LocalTime));
 
                 for (const QDateTime &dt : timeDateList) {
                     d = dt.toLocalTime().date();
@@ -368,10 +368,10 @@ void KODayMatrix::updateEvents()
         const int secsToAdd = event->allDay() ? 0 : -1;
         const QDateTime dtEnd = event->dtEnd().toLocalTime().addSecs(secsToAdd);
 
-        if (!(recurType == KCalCore::Recurrence::rDaily &&
-              !KOPrefs::instance()->mDailyRecur) &&
-            !(recurType == KCalCore::Recurrence::rWeekly &&
-              !KOPrefs::instance()->mWeeklyRecur)) {
+        if (!(recurType == KCalCore::Recurrence::rDaily
+              && !KOPrefs::instance()->mDailyRecur)
+            && !(recurType == KCalCore::Recurrence::rWeekly
+                 && !KOPrefs::instance()->mWeeklyRecur)) {
             KCalCore::SortableList<QDateTime> timeDateList;
             const bool isRecurrent = event->recurs();
             const int eventDuration = dtStart.daysTo(dtEnd);
@@ -431,8 +431,8 @@ QString KODayMatrix::getHolidayLabel(int offset) const
 
 int KODayMatrix::getDayIndexFrom(int x, int y) const
 {
-    return 7 * (y / mDaySize.height()) +
-        (KOGlobals::self()->reverseLayout() ? 6 - x / mDaySize.width() : x / mDaySize.width());
+    return 7 * (y / mDaySize.height())
+           +(KOGlobals::self()->reverseLayout() ? 6 - x / mDaySize.width() : x / mDaySize.width());
 }
 
 void KODayMatrix::calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence)
@@ -447,21 +447,19 @@ void KODayMatrix::calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incid
     mPendingChanges = true;
 }
 
-void KODayMatrix::calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence,
-                                           const KCalCore::Calendar *calendar)
+void KODayMatrix::calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence, const KCalCore::Calendar *calendar)
 {
     Q_UNUSED(incidence);
     Q_UNUSED(calendar);
     mPendingChanges = true;
 }
 
-void KODayMatrix::setHighlightMode(bool highlightEvents, bool highlightTodos,
-                                   bool highlightJournals)
+void KODayMatrix::setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals)
 {
     // don't set mPendingChanges to true if nothing changed
-    if (highlightTodos != mHighlightTodos ||
-        highlightEvents != mHighlightEvents ||
-        highlightJournals != mHighlightJournals) {
+    if (highlightTodos != mHighlightTodos
+        || highlightEvents != mHighlightEvents
+        || highlightJournals != mHighlightJournals) {
         mHighlightEvents = highlightEvents;
         mHighlightTodos = highlightTodos;
         mHighlightJournals = highlightJournals;
@@ -753,8 +751,8 @@ void KODayMatrix::paintEvent(QPaintEvent *)
             if (row == mSelEnd / 7) {
                 // Single row selection
                 p.fillRect(
-                    isRTL ?
-                        (7 - (mSelEnd - mSelStart + 1) - column) * dayWidth : column * dayWidth,
+                    isRTL
+                    ? (7 - (mSelEnd - mSelStart + 1) - column) * dayWidth : column * dayWidth,
                     row * dayHeight,
                     (mSelEnd - mSelStart + 1) * dayWidth, dayHeight, selectionColor);
             } else {

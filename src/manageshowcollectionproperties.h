@@ -32,8 +32,7 @@ class ManageShowCollectionProperties : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManageShowCollectionProperties(AkonadiCollectionView *collectionView,
-                                            QObject *parent = nullptr);
+    explicit ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent = nullptr);
     ~ManageShowCollectionProperties();
 
 public Q_SLOTS:

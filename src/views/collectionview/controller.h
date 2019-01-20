@@ -138,8 +138,7 @@ class Controller : public QObject
 {
     Q_OBJECT
 public:
-    explicit Controller(ReparentingModel *personModel, ReparentingModel *searchModel,
-                        QObject *parent = nullptr);
+    explicit Controller(ReparentingModel *personModel, ReparentingModel *searchModel, QObject *parent = nullptr);
     /**
      *  This model will be used to select the collections that are available in the ETM
      */
@@ -150,8 +149,7 @@ public:
         Referenced,
         Enabled
     };
-    void setCollectionState(const Akonadi::Collection &collection, CollectionState collectionState,
-                            bool recursive = false);
+    void setCollectionState(const Akonadi::Collection &collection, CollectionState collectionState, bool recursive = false);
 
     void addPerson(const KPIM::Person &person);
     void removePerson(const KPIM::Person &person);

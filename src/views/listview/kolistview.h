@@ -45,8 +45,7 @@ class KOListView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr,
-                        bool nonInteractive = false);
+    explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr, bool nonInteractive = false);
     ~KOListView() override;
 
     int maxDatesHint() const override;
@@ -70,8 +69,7 @@ public:
 
 public Q_SLOTS:
     void updateView() override;
-    virtual void showDates(const QDate &start, const QDate &end,
-                           const QDate &preferredMonth = QDate()) override;
+    virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
     void clearSelection() override;

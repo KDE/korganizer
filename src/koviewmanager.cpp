@@ -441,12 +441,12 @@ void KOViewManager::showListView()
 
 void KOViewManager::showAgendaView()
 {
-    const bool showBoth =
-        KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
-    const bool showMerged =
-        showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
-    const bool showSideBySide =
-        showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
+    const bool showBoth
+        = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
+    const bool showMerged
+        = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
+    const bool showSideBySide
+        = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
 
     QWidget *parent = mMainView->viewStack();
     if (showBoth) {
@@ -551,7 +551,7 @@ void KOViewManager::selectNextX()
 void KOViewManager::showTodoView()
 {
     if (!mTodoView) {
-        mTodoView = new KOTodoView(false/*not sidebar*/, mMainView->viewStack());
+        mTodoView = new KOTodoView(false /*not sidebar*/, mMainView->viewStack());
         mTodoView->setCalendar(mMainView->calendar());
         mTodoView->setIdentifier("DefaultTodoView");
         mTodoView->setCalendar(mMainView->calendar());

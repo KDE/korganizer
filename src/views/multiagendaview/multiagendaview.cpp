@@ -189,8 +189,7 @@ Akonadi::Collection::Id MultiAgendaView::collectionId() const
     return d->mMultiAgendaView->collectionId();
 }
 
-void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &,
-                                             Akonadi::IncidenceChanger::ChangeType)
+void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
 }
 
@@ -320,8 +319,7 @@ void MultiAgendaView::saveConfig(KConfigGroup &configGroup)
     d->mMultiAgendaView->saveConfig(configGroup);
 }
 
-MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel,
-                                                         QWidget *parent)
+MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)
     : QDialog(parent)
     , d(new Private(baseModel, this))
 {

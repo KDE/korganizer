@@ -242,8 +242,7 @@ void KOAgendaView::changeIncidenceDisplayAdded(const Akonadi::Item &)
     // Do nothing, EventViews::AgendaView knows when items change
 }
 
-void KOAgendaView::changeIncidenceDisplay(const Akonadi::Item &,
-                                          Akonadi::IncidenceChanger::ChangeType)
+void KOAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
     // Do nothing, EventViews::AgendaView knows when items change
 }

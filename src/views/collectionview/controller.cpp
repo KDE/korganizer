@@ -276,8 +276,7 @@ void PersonNodeManager::checkSourceIndexRemoval(const QModelIndex &sourceIndex)
     }
 }
 
-Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchModel,
-                       QObject *parent)
+Controller::Controller(ReparentingModel *personModel, ReparentingModel *searchModel, QObject *parent)
     : QObject(parent)
     , mPersonModel(personModel)
     , mSearchModel(searchModel)
@@ -325,7 +324,7 @@ void Controller::setSearchString(const QString &searchString)
 
     mCollectionSearchJob = new KPIM::CollectionSearchJob(searchString,
                                                          QStringList()
-    << QStringLiteral("text/calendar"), this);
+                                                         << QStringLiteral("text/calendar"), this);
     connect(mCollectionSearchJob, &KPIM::CollectionSearchJob::result, this,
             &Controller::onCollectionsFound);
     mCollectionSearchJob->start();
@@ -395,8 +394,7 @@ static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
     return qobject_cast<Akonadi::EntityTreeModel *>(model);
 }
 
-void Controller::setCollectionState(const Akonadi::Collection &collection,
-                                    CollectionState collectionState, bool recursive)
+void Controller::setCollectionState(const Akonadi::Collection &collection, CollectionState collectionState, bool recursive)
 {
     //We removed the children first, so the children in the tree are removed before the parents
     if (recursive) {

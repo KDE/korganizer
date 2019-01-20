@@ -84,9 +84,7 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
     updateDeclinedInvitation();
 }
 
-void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col,
-                                                    KCalCore::Attendee::PartStat status,
-                                                    const QString &name, const QString &displayName)
+void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status, const QString &name, const QString &displayName)
 {
     // Update or create search collections
 

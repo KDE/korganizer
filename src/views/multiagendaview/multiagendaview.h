@@ -66,14 +66,12 @@ public:
     void restoreConfig(const KConfigGroup &configGroup) override;
     void saveConfig(KConfigGroup &configGroup) override;
 
-    void setDateRange(const QDateTime &start, const QDateTime &end,
-                      const QDate &preferredMonth = QDate()) override;
+    void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) override;
 
     Akonadi::Collection::Id collectionId() const override;
 
 public Q_SLOTS:
-    void showDates(const QDate &start, const QDate &end,
-                   const QDate &preferredMonth = QDate()) override;
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
     void changeIncidenceDisplay(const Akonadi::Item &,

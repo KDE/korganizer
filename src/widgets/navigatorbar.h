@@ -51,8 +51,7 @@ Q_SIGNALS:
     void yearSelected(int year);
 
 protected:
-    QToolButton *createNavigationButton(const QString &icon, const QString &toolTip,
-                                        const QString &whatsThis);
+    QToolButton *createNavigationButton(const QString &icon, const QString &toolTip, const QString &whatsThis);
 
 private Q_SLOTS:
     void selectMonthFromMenu();

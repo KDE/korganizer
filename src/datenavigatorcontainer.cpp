@@ -156,8 +156,7 @@ void DateNavigatorContainer::updateConfig()
     }
 }
 
-void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList,
-                                         const QDate &preferredMonth)
+void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList, const QDate &preferredMonth)
 {
     if (!dateList.isEmpty()) {
         QDate start(dateList.first());
@@ -312,8 +311,7 @@ QSize DateNavigatorContainer::sizeHint() const
     return mNavigatorView->sizeHint();
 }
 
-void DateNavigatorContainer::setHighlightMode(bool highlightEvents, bool highlightTodos,
-                                              bool highlightJournals) const
+void DateNavigatorContainer::setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals) const
 {
     mNavigatorView->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 

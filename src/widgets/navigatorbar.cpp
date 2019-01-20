@@ -217,8 +217,7 @@ void NavigatorBar::selectYearFromMenu()
     }
 }
 
-QToolButton *NavigatorBar::createNavigationButton(const QString &icon, const QString &toolTip,
-                                                  const QString &whatsThis)
+QToolButton *NavigatorBar::createNavigationButton(const QString &icon, const QString &toolTip, const QString &whatsThis)
 {
     QToolButton *button = new QToolButton(this);
 

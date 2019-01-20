@@ -99,8 +99,8 @@ AlarmDockWindow::AlarmDockWindow()
     mAlarmsEnabled->setChecked(alarmsEnabled);
     mAutostart->setChecked(autostart);
 
-    mGrabFocus =
-        contextMenu()->addAction(i18nc( "@action:inmenu", "Reminder Requests Focus"));
+    mGrabFocus
+        = contextMenu()->addAction(i18nc("@action:inmenu", "Reminder Requests Focus"));
     mGrabFocus->setToolTip(i18nc("@info:tooltip",
                                  "When this option is enabled the reminder dialog will "
                                  "automatically receive keyboard focus when it opens."));

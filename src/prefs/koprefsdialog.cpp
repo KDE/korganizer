@@ -119,8 +119,8 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     KPIM::KPrefsWidRadios *defaultEmailAttachMethod
         = addWidRadios(
-        IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
-        personalFrame);
+              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
+              personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
     personalLayout->addStretch(1);
 
@@ -428,12 +428,12 @@ public:
 
         QCheckBox *cb
             = addWidBool(
-            CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
+                  CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
 
         if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
-            const QString defAudioFile =
-                QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                       QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
+            const QString defAudioFile
+                = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                         QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
             CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
         }
         QString filter = i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
@@ -482,10 +482,10 @@ protected:
         }
         KOPrefs::instance()->mHolidays = HolidayRegions;
 
-        CalendarSupport::KCalPrefs::instance()->mReminderTime =
-            mReminderTimeSpin->value();
-        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits =
-            mReminderUnitsCombo->currentIndex();
+        CalendarSupport::KCalPrefs::instance()->mReminderTime
+            = mReminderTimeSpin->value();
+        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits
+            = mReminderUnitsCombo->currentIndex();
 
         int mask = 0;
         for (int i = 0; i < 7; ++i) {
@@ -757,12 +757,12 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QGridLayout *colorLayout = new QGridLayout(colorFrame);
     tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")),
                       i18nc("@title:tab", "Colors"));
-    
+
     // Use System color
     KPIM::KPrefsWidBool *useSystemColorBool
         = addWidBool(KOPrefs::instance()->useSystemColorItem(), colorFrame);
-        
-    QCheckBox* useSystemColorButton = useSystemColorBool->checkBox();
+
+    QCheckBox *useSystemColorButton = useSystemColorBool->checkBox();
     QObject::connect(useSystemColorButton, &QCheckBox::toggled,
                      this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
     colorLayout->addWidget(useSystemColorBool->checkBox(), 1, 0, 1, 2);
@@ -789,7 +789,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     mButtonsDisable.push_back(agendaGridWorkHoursBackgroundColorButton);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
-    
+
     // agenda view Marcus Bains line color
     KPIM::KPrefsWidColor *mblColor
         = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
@@ -801,18 +801,18 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
         = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
     colorLayout->addWidget(holidayColor->label(), 6, 0);
     colorLayout->addWidget(holidayColor->button(), 6, 1);
-    
+
     // Todo due today color
     KPIM::KPrefsWidColor *todoDueTodayColor
         = addWidColor(
-        KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
+              KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
     colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
     colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
 
     // Todo overdue color
     KPIM::KPrefsWidColor *todoOverdueColor
         = addWidColor(
-        KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
+              KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
     colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
@@ -825,7 +825,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     KPIM::KPrefsWidColor *unsetCategoryColor
         = addWidColor(
-        CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
+              CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
     categoryLayout->addWidget(unsetCategoryColor->label(), 0, 0);
     categoryLayout->addWidget(unsetCategoryColor->button(), 0, 1);
     unsetCategoryColor->label()->setWhatsThis(unsetCategoryColor->button()->whatsThis());
@@ -902,8 +902,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     KPIM::KPrefsWidFont *monthViewFont
         = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ') +
-                     i18nc("@label", "Event text"));
+                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
+                     +i18nc("@label", "Event text"));
 
     fontLayout->addWidget(monthViewFont->label(), 1, 0);
     fontLayout->addWidget(monthViewFont->preview(), 1, 1);
@@ -1050,7 +1050,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
 
     KPIM::KPrefsWidBool *useGroupwareBool
         = addWidBool(
-        CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
+              CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
     topLayout->addWidget(useGroupwareBool->checkBox(), 0, 0, 1, 2);
 
     KPIM::KPrefsWidBool *bcc
@@ -1204,7 +1204,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
     // clear the url cache for our user
     const QString configFile
         = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String(
-        "/korganizer/freebusyurls");
+              "/korganizer/freebusyurls");
     KConfig cfg(configFile);
     cfg.deleteGroup(CalendarSupport::KCalPrefs::instance()->email());
 
@@ -1539,8 +1539,8 @@ KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent)
 
 QString KOPrefsDesignerFields::localUiDir()
 {
-    const QString dir =
-        QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + uiPath();
+    const QString dir
+        = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + uiPath();
     return dir;
 }
 
