@@ -249,7 +249,7 @@ public:
         // holiday region selection
         QWidget *holidayRegBox = new QWidget(regionalPage);
         QHBoxLayout *holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
-        holidayRegBoxHBoxLayout->setMargin(0);
+        holidayRegBoxHBoxLayout->setContentsMargins(0, 0, 0, 0);
         holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
 
         QLabel *holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);
@@ -1046,7 +1046,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     topTopLayout->addWidget(topFrame);
 
     QGridLayout *topLayout = new QGridLayout(topFrame);
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
 
     KPIM::KPrefsWidBool *useGroupwareBool
         = addWidBool(
@@ -1273,7 +1273,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
 
     QWidget *buttonRow = new QWidget(this);
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
-    buttonRowLayout->setMargin(0);
+    buttonRowLayout->setContentsMargins(0, 0, 0, 0);
     mConfigureButton = new QPushButton(buttonRow);
     KGuiItem::assign(mConfigureButton, KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
                                                 QStringLiteral("configure"), QString(),

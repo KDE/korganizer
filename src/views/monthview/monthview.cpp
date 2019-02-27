@@ -37,7 +37,7 @@ MonthView::MonthView(QWidget *parent)
     : KOEventView(parent)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     mMonthView = new EventViews::MonthView(EventViews::MonthView::Visible, this);
     mMonthView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
     layout->addWidget(mMonthView);

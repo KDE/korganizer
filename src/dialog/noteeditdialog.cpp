@@ -66,9 +66,9 @@ NoteEditDialog::NoteEditDialog(QWidget *parent)
     mOkButton->setEnabled(false);
 
     QGridLayout *layout = new QGridLayout(mainWidget);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     QHBoxLayout *hbox = new QHBoxLayout;
-    hbox->setMargin(0);
+    hbox->setContentsMargins(0, 0, 0, 0);
     hbox->setSpacing(2);
 
     mNoteTitle = new QLineEdit;

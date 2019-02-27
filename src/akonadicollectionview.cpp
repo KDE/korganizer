@@ -530,7 +530,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);
 
     QVBoxLayout *topLayout = new QVBoxLayout(this);
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
 
     QLineEdit *searchCol = new QLineEdit(this);
     searchCol->setToolTip(i18nc("info:tooltip", "Set search keyword"));

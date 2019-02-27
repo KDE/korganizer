@@ -36,7 +36,7 @@ KOTimelineView::KOTimelineView(QWidget *parent)
     : KOEventView(parent)
 {
     QVBoxLayout *vbox = new QVBoxLayout(this);
-    vbox->setMargin(0);
+    vbox->setContentsMargins(0, 0, 0, 0);
     mTimeLineView = new EventViews::TimelineView(this);
     vbox->addWidget(mTimeLineView);
     mEventPopup = eventPopup();

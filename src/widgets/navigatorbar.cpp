@@ -81,7 +81,7 @@ NavigatorBar::NavigatorBar(QWidget *parent) : QWidget(parent)
 
     // set up control frame layout
     QHBoxLayout *ctrlLayout = new QHBoxLayout(this);
-    ctrlLayout->setMargin(0);
+    ctrlLayout->setContentsMargins(0, 0, 0, 0);
     ctrlLayout->addWidget(mPrevYear);
     ctrlLayout->addWidget(mPrevMonth);
     ctrlLayout->addStretch();

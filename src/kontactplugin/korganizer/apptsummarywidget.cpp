@@ -58,7 +58,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(3);
-    mainLayout->setMargin(3);
+    mainLayout->setContentsMargins(3, 3, 3, 3);
 
     QWidget *header = createHeader(
         this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));

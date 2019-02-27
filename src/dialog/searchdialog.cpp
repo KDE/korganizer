@@ -66,7 +66,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
 
     // Results list view
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     listView = new EventViews::ListView(m_calendarview->calendar(), this);
     layout->addWidget(listView);
     m_ui->listViewFrame->setLayout(layout);

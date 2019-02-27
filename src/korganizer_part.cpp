@@ -77,7 +77,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
 
     QVBoxLayout *topLayout = new QVBoxLayout(canvas);
     topLayout->addWidget(mView);
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
 
     connect(mView, &CalendarView::incidenceSelected, this, &KOrganizerPart::slotChangeInfo);
 
