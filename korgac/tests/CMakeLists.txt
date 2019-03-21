@@ -31,7 +31,7 @@ target_link_libraries(testalarmdlg
     KF5::CalendarUtils
     KF5::IdentityManagement
     KF5::MailTransport
-    Phonon::phonon4qt5
+    Qt5::Multimedia
     KF5::Notifications
     KF5::IconThemes
     KF5::WindowSystem
