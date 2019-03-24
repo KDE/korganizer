@@ -376,7 +376,7 @@ protected:
         Q_ASSERT(sourceIndex.isValid());
         const Akonadi::Collection &col
             = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-        Akonadi::CollectionIdentificationAttribute *attr
+        const Akonadi::CollectionIdentificationAttribute *attr
             = col.attribute<Akonadi::CollectionIdentificationAttribute>();
         //We filter the user folders because we insert person nodes for user folders.
         if ((attr && attr->collectionNamespace().startsWith("usertoplevel"))

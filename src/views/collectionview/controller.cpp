@@ -239,7 +239,7 @@ KPIM::Person PersonNodeManager::person(const QModelIndex &sourceIndex)
     const Akonadi::Collection col
         = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
     if (col.isValid()) {
-        Akonadi::CollectionIdentificationAttribute *attr
+        const Akonadi::CollectionIdentificationAttribute *attr
             = col.attribute<Akonadi::CollectionIdentificationAttribute>();
         if (attr && attr->collectionNamespace() == "usertoplevel") {
             person.name = col.displayName();
