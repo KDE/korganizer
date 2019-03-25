@@ -126,7 +126,12 @@ include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_S
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+# workaround for https://bugreports.qt.io/browse/QTBUG-74665 (bug in qt5.13 reevaluate it)
+if (${Qt5Widgets_VERSION} STRGREATER "5.13")
+   MESSAGE(STATUS "Qt version: ${Qt5Widgets_VERSION} DISABLE compile without deprecated methods. bug QTBUG-74665")
+else()
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
 add_subdirectory(src)
 add_subdirectory(korgac)
 
