@@ -34,7 +34,6 @@
 #include <CalendarSupport/CategoryConfig>
 #include <CalendarSupport/Utils>
 
-#include <IncidenceEditor/CategoryEditDialog>
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
 
