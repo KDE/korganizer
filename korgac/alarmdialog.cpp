@@ -59,7 +59,7 @@
 #include <KWindowSystem>
 #include <KIconLoader>
 #include <QIcon>
-#include <QMediaPlayer>
+#include <phonon/mediaobject.h>
 #include <QLabel>
 #include <QKeyEvent>
 #include <QSpinBox>
@@ -711,16 +711,12 @@ void AlarmDialog::eventNotification()
                 QProcess::startDetached(program + QLatin1Char(' ') + alarm->programArguments());
             } else if (alarm->type() == Alarm::Audio) {
                 beeped = true;
-                QMediaPlayer *player = new QMediaPlayer;
-                player->setMedia(QUrl::fromLocalFile(alarm->audioFile()));
-                player->setVolume(50);
-
+                Phonon::MediaObject *player
+                    = Phonon::createPlayer(Phonon::NotificationCategory,
+                                           QUrl::fromLocalFile(alarm->audioFile()));
                 player->setParent(this);
-                connect(player, &QMediaPlayer::stateChanged, this, [this, player](QMediaPlayer::State state) {
-                    if (state == QMediaPlayer::StoppedState) {
-                        player->deleteLater();
-                    }
-                });
+                connect(player, &Phonon::MediaObject::finished, player,
+                        &Phonon::MediaObject::deleteLater);
                 player->play();
             } else if (alarm->type() == Alarm::Email) {
                 QString from = CalendarSupport::KCalPrefs::instance()->email();

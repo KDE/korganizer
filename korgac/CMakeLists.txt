@@ -63,13 +63,13 @@ target_link_libraries(korgac
     KF5::MailTransportAkonadi
     KF5::Codecs
     KF5::DBusAddons
+    Phonon::phonon4qt5
     KF5::Notifications
     KF5::Completion
     KF5::IconThemes
     KF5::Service
     KF5::KIOCore
     KF5::WindowSystem
-    Qt5::Multimedia
     )
 
 install(TARGETS
