@@ -279,8 +279,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     }
 
     if (view->isEventView()) {
-        connect(view, SIGNAL(datesSelected(KCalCore::DateList)),
-                SIGNAL(datesSelected(KCalCore::DateList)));
+        connect(static_cast<KOEventView *>(view), &KOEventView::datesSelected,
+                this, &KOViewManager::datesSelected);
     }
 
     // selecting an incidence
