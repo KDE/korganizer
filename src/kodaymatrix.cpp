@@ -372,7 +372,7 @@ void KODayMatrix::updateEvents()
               && !KOPrefs::instance()->mDailyRecur)
             && !(recurType == KCalCore::Recurrence::rWeekly
                  && !KOPrefs::instance()->mWeeklyRecur)) {
-            KCalCore::SortableList<QDateTime> timeDateList;
+            KCalCore::DateTimeList timeDateList;
             const bool isRecurrent = event->recurs();
             const int eventDuration = dtStart.daysTo(dtEnd);
 
