@@ -30,7 +30,6 @@
 #include "calendarview.h"
 #include <AkonadiCore/Collection>
 #include "views/collectionview/reparentingmodel.h"
-#include "views/collectionview/controller.h"
 
 class AkonadiCollectionView;
 class ManageShowCollectionProperties;
@@ -123,7 +122,6 @@ private:
     bool mNotSendAddRemoveSignal;
     bool mWasDefaultCalendar;
     bool mHasContextMenu;
-    Controller *mController = nullptr;
     NewNodeExpander *mNewNodeExpander = nullptr;
     ManageShowCollectionProperties *mManagerShowCollectionProperties = nullptr;
 };

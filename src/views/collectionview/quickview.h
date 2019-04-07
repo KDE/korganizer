@@ -23,8 +23,6 @@
 #ifndef KORG_QUICKVIEW_H
 #define KORG_QUICKVIEW_H
 
-#include "controller.h"
-
 #include <EventViews/ViewCalendar>
 
 #include <KCalCore/FreeBusy>
@@ -40,7 +38,7 @@ class Quickview : public QDialog
 {
     Q_OBJECT
 public:
-    Quickview(const KPIM::Person &person, const Akonadi::Collection &col);
+    Quickview(const Akonadi::Collection &col);
     ~Quickview() override;
 
 private Q_SLOTS:
@@ -54,7 +52,6 @@ private:
 
     Ui_quickview *mUi = nullptr;
     EventViews::AgendaView *mAgendaView = nullptr;
-    KPIM::Person mPerson;
     Akonadi::Collection mCollection;
     int mDayRange = 7;
 };

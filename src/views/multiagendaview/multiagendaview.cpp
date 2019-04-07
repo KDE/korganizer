@@ -41,7 +41,6 @@
 #include <QStandardItem>
 #include <KConfigGroup>
 
-using namespace KPIM;
 using namespace KOrg;
 
 static QString generateColumnLabel(int c)

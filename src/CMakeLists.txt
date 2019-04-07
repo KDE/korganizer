@@ -153,7 +153,6 @@ set(korganizerprivate_LIB_SRCS
     actionmanager.cpp
     akonadicollectionview.cpp
     views/collectionview/reparentingmodel.cpp
-    views/collectionview/controller.cpp
     views/collectionview/calendardelegate.cpp
     views/collectionview/quickview.cpp
     calendarview.cpp

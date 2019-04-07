@@ -183,11 +183,7 @@ private Q_SLOTS:
         for (int i = start; i <= end; ++i) {
             const QModelIndex index = mTreeView->model()->index(i, 0, parent);
             // qCDebug(KORGANIZER_LOG) << "expanding " << index.data().toString();
-            if (index.data(NodeTypeRole).toInt() == PersonNodeRole) {
-                mTreeView->collapse(index);
-            } else {
-                mTreeView->expand(index);
-            }
+            mTreeView->expand(index);
             if (mTreeView->model()->hasChildren(index)) {
                 onSourceRowsInserted(index, 0, mTreeView->model()->rowCount(index) - 1);
             }
@@ -272,43 +268,6 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 }
 
 namespace {
-class SortProxyModel : public QSortFilterProxyModel
-{
-public:
-    explicit SortProxyModel(QObject *parent = nullptr)
-        : QSortFilterProxyModel(parent)
-    {
-        setDynamicSortFilter(true);
-    }
-
-    static int score(const QModelIndex &index)
-    {
-        int score = 0;
-        if (index.data(PersonRole).isValid()) {
-            score += 1;
-        }
-        if (index.data(IsSearchResultRole).toBool()) {
-            score += 2;
-        }
-        //Search collection
-        if (index.data(Akonadi::EntityTreeModel::CollectionIdRole).toLongLong() == 1) {
-            score += 3;
-        }
-        return score;
-    }
-
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override
-    {
-        const int leftScore = score(left);
-        const int rightScore = score(right);
-        // qCDebug(KORGANIZER_LOG) << left.data().toString() << leftScore << " : " << right.data().toString() << rightScore;
-        if (leftScore != rightScore) {
-            return leftScore < rightScore;
-        }
-
-        return QString::localeAwareCompare(left.data().toString(), right.data().toString()) < 0;
-    }
-};
 
 class ColorProxyModel : public QSortFilterProxyModel
 {
@@ -387,31 +346,6 @@ protected:
     }
 };
 
-class EnabledModel : public QSortFilterProxyModel
-{
-public:
-    explicit EnabledModel(QObject *parent = nullptr)
-        : QSortFilterProxyModel(parent)
-    {
-    }
-
-protected:
-
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
-    {
-        if (role == EnabledRole) {
-            Akonadi::Collection col
-                = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-            if (col.enabled()) {
-                return Qt::Checked;
-            } else {
-                return Qt::Unchecked;
-            }
-        }
-        return QSortFilterProxyModel::data(index, role);
-    }
-};
-
 class CalendarDelegateModel : public QSortFilterProxyModel
 {
 public:
@@ -433,41 +367,6 @@ protected:
         return true;
     }
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
-    {
-        if (role == Qt::CheckStateRole) {
-            if (sourceModel()->hasChildren(mapToSource(index))
-                && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
-                bool allChecked = checkChildren(index, role, Qt::Checked);
-                bool allUnchecked = checkChildren(index, role, Qt::Unchecked);
-                if (allChecked) {
-                    return Qt::Checked;
-                } else if (allUnchecked) {
-                    return Qt::Unchecked;
-                } else {
-                    return Qt::PartiallyChecked;
-                }
-            }
-        }
-        if (role == EnabledRole) {
-            if (sourceModel()->hasChildren(mapToSource(index))
-                && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
-                bool allChecked = checkChildren(index, role, Qt::Checked);
-                bool allUnchecked = checkChildren(index, role, Qt::Unchecked);
-                // qCDebug(KORGANIZER_LOG) << "person node " << index.data().toString() << allChecked << allUnchecked;
-                if (allChecked) {
-                    return Qt::Checked;
-                } else if (allUnchecked) {
-                    return Qt::Unchecked;
-                } else {
-                    return Qt::PartiallyChecked;
-                }
-            }
-        }
-
-        return QSortFilterProxyModel::data(index, role);
-    }
-
     void setChildren(const QModelIndex &sourceIndex, const QVariant &value, int role) const
     {
         if (!sourceIndex.isValid()) {
@@ -479,19 +378,9 @@ protected:
             setChildren(child, value, role);
         }
     }
-
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override
-    {
-        if (role == Qt::CheckStateRole) {
-            if (sourceModel()->hasChildren(mapToSource(index))
-                && index.data(NodeTypeRole).toInt() == PersonNodeRole) {
-                setChildren(mapToSource(index), value, role);
-            }
-        }
-        return QSortFilterProxyModel::setData(index, value, role);
-    }
 };
-} // anonymous namespace
+
+}
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create(QWidget *parent)
 {
@@ -544,24 +433,12 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     colorProxy->setDynamicSortFilter(true);
     mBaseModel = colorProxy;
 
-    //Model that displays users
-    ReparentingModel *userProxy = new ReparentingModel(this);
-    userProxy->setNodeManager(ReparentingModel::NodeManager::Ptr(new PersonNodeManager(*userProxy)));
-    userProxy->setSourceModel(colorProxy);
-
-    EnabledModel *enabledModel = new EnabledModel(this);
-    enabledModel->setSourceModel(userProxy);
-
     CalendarDelegateModel *calendarDelegateModel = new CalendarDelegateModel(this);
-    calendarDelegateModel->setSourceModel(enabledModel);
+    calendarDelegateModel->setSourceModel(mBaseModel);
 
     //Hide collections that are not required
     CollectionFilter *collectionFilter = new CollectionFilter(this);
     collectionFilter->setSourceModel(calendarDelegateModel);
-
-    SortProxyModel *sortProxy = new SortProxyModel(this);
-    sortProxy->setSourceModel(collectionFilter);
-    sortProxy->setObjectName(QStringLiteral("sortproxy"));
 
     mCollectionView = new Akonadi::EntityTreeView(this);
     mCollectionView->header()->hide();
@@ -572,7 +449,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         connect(delegate, &StyledCalendarDelegate::action, this, &AkonadiCollectionView::onAction);
         mCollectionView->setItemDelegate(delegate);
     }
-    mCollectionView->setModel(sortProxy);
+    mCollectionView->setModel(collectionFilter);
     connect(
         mCollectionView->selectionModel(), &QItemSelectionModel::selectionChanged, this,
         &AkonadiCollectionView::updateMenu);
@@ -592,9 +469,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel,
             &QSortFilterProxyModel::setFilterWildcard);
 
-    SortProxyModel *searchSortProxy = new SortProxyModel(this);
-    searchSortProxy->setSourceModel(filterTreeViewModel);
-
     Akonadi::EntityTreeView *mSearchView = new Akonadi::EntityTreeView(this);
     mSearchView->header()->hide();
     mSearchView->setRootIsDecorated(true);
@@ -603,13 +477,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         connect(delegate, &StyledCalendarDelegate::action, this, &AkonadiCollectionView::onAction);
         mSearchView->setItemDelegate(delegate);
     }
-    mSearchView->setModel(searchSortProxy);
+    mSearchView->setModel(filterTreeViewModel);
     new NewNodeExpander(mSearchView, true, QString());
-
-    mController = new Controller(userProxy, searchProxy, this);
-    connect(searchCol, &QLineEdit::textChanged, mController, &Controller::setSearchString);
-    connect(mController, &Controller::searchIsActive, this,
-            &AkonadiCollectionView::onSearchIsActive);
 
     mStackedWidget = new QStackedWidget(this);
     mStackedWidget->addWidget(mCollectionView);
@@ -617,15 +486,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     mStackedWidget->setCurrentWidget(mCollectionView);
 
     topLayout->addWidget(mStackedWidget);
-
-    KMessageWidget *msgWidget = new KMessageWidget(this);
-    msgWidget->setCloseButtonVisible(false);
-    msgWidget->setMessageType(KMessageWidget::Positive);
-    msgWidget->setObjectName(QStringLiteral("msgwidget"));
-    msgWidget->setVisible(false);
-    msgWidget->setText(i18n("searching..."));
-    connect(mController, &Controller::searching, msgWidget, &KMessageWidget::setVisible);
-    topLayout->addWidget(msgWidget);
 
     connect(mBaseModel, &QAbstractProxyModel::rowsInserted, this,
             &AkonadiCollectionView::rowsInserted);
@@ -1066,73 +926,10 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
 {
     const StyledCalendarDelegate::Action action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
-    case StyledCalendarDelegate::AddToList:
-    {
-        const QVariant var = index.data(PersonRole);
-        if (var.isValid()) {
-            mController->addPerson(var.value<KPIM::Person>());
-        } else {
-            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-            if (col.isValid()) {
-                mController->setCollectionState(col, Controller::Referenced);
-            }
-        }
-        break;
-    }
-    case StyledCalendarDelegate::RemoveFromList:
-    {
-#if 0
-        const QVariant var = index.data(PersonRole);
-        if (var.isValid()) {
-            mController->removePerson(var.value<KPIM::Person>());
-        } else {
-            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-            if (col.isValid()) {
-                mController->setCollectionState(col, Controller::Disabled);
-            }
-        }
-#endif
-        break;
-    }
-    case StyledCalendarDelegate::Enable:
-    {
-        const QVariant var = index.data(PersonRole);
-        if (var.isValid()) {
-            mController->setCollectionState(Akonadi::Collection(
-                                                var.value<KPIM::Person>().
-                                                rootCollection), Controller::Enabled,
-                                            true);
-        } else {
-            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-            if (col.isValid()) {
-                mController->setCollectionState(col, Controller::Enabled);
-            }
-        }
-        break;
-    }
-    case StyledCalendarDelegate::Quickview:
-    {
-        QVariant person = index.data(PersonRole);
-        QModelIndex i = index;
-        while (!person.isValid()) {
-            i = i.parent();
-            if (!i.isValid()) {
-                break;
-            }
-            person = i.data(PersonRole);
-        }
-        if (person.isValid()) {
-            Quickview *quickview = new Quickview(
-                person.value<KPIM::Person>(), CalendarSupport::collectionFromIndex(index));
-            quickview->setAttribute(Qt::WA_DeleteOnClose, true);
-            quickview->show();
-        } else {
-            qCWarning(KORGANIZER_LOG) << "No valid person found for" << index;
-            Quickview *quickview = new Quickview(
-                KPIM::Person(), CalendarSupport::collectionFromIndex(index));
-            quickview->setAttribute(Qt::WA_DeleteOnClose, true);
-            quickview->show();
-        }
+    case StyledCalendarDelegate::Quickview: {
+        Quickview *quickview = new Quickview(CalendarSupport::collectionFromIndex(index));
+        quickview->setAttribute(Qt::WA_DeleteOnClose, true);
+        quickview->show();
         break;
     }
     case StyledCalendarDelegate::Total:

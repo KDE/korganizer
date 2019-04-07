@@ -21,7 +21,6 @@
  */
 
 #include "calendardelegate.h"
-#include "controller.h"
 #include "kohelper.h"
 #include "korganizer_debug.h"
 
@@ -40,14 +39,6 @@
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
-    mPixmap.insert(Enable,
-                   KIconLoader::global()->loadIcon(QStringLiteral("bookmarks"),
-                                                   KIconLoader::Small));
-    mPixmap.insert(RemoveFromList,
-                   KIconLoader::global()->loadIcon(QStringLiteral(
-                                                       "list-remove"), KIconLoader::Small));
-    mPixmap.insert(AddToList,
-                   KIconLoader::global()->loadIcon(QStringLiteral("list-add"), KIconLoader::Small));
     mPixmap.insert(Quickview,
                    KIconLoader::global()->loadIcon(QStringLiteral("quickview"),
                                                    KIconLoader::Small));
@@ -93,37 +84,11 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
     return option;
 }
 
-static bool isChildOfPersonCollection(const QModelIndex &index)
-{
-    QModelIndex parent = index.parent();
-    while (parent.isValid()) {
-        if (parent.data(NodeTypeRole).toInt() == PersonNodeRole) {
-            return true;
-        }
-        parent = parent.parent();
-    }
-    return false;
-}
-
-static Akonadi::Collection personCollection(const QModelIndex &index)
-{
-    QModelIndex parent = index.parent();
-    while (parent.isValid()) {
-        if (parent.data(NodeTypeRole).toInt() == PersonNodeRole) {
-            return CalendarSupport::collectionFromIndex(parent);
-        }
-        parent = parent.parent();
-    }
-    return Akonadi::Collection();
-}
 
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
-    const QStyleOptionViewItem &option, const QModelIndex &index) const
+    const QStyleOptionViewItem &, const QModelIndex &index) const
 {
-    const bool isSearchResult = index.data(IsSearchResultRole).toBool();
-    const bool hover = option.state & QStyle::State_MouseOver;
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-    Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
     // qCDebug(KORGANIZER_LOG) << index.data().toString() << enabled;
     const bool isSearchCollection
         = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
@@ -134,25 +99,6 @@ QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
     const bool isToplevelKolabCollection = (isTopLevelCollection && isKolabCollection);
 
     QList<Action> buttons;
-    if (!isSearchCollection && !isToplevelKolabCollection) {
-        if (isSearchResult) {
-            buttons << AddToList;
-        } else {
-            if (hover) {
-                if (enabled != Qt::Checked) {
-                    buttons << Enable;
-                }
-                //The remove button should not be available for person subfolders
-                if (!isChildOfPersonCollection(index)) {
-                    buttons << RemoveFromList;
-                }
-            } else {
-                if (enabled == Qt::Checked) {
-                    buttons << Enable;
-                }
-            }
-        }
-    }
     if (!isToplevelSearchCollection && !isToplevelKolabCollection) {
         buttons << Quickview;
     }
@@ -167,10 +113,6 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     Q_ASSERT(index.isValid());
 
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-    //We display the toolbuttons while hovering
-    const bool showButtons = option.state & QStyle::State_MouseOver;
-    // const bool enabled = col.shouldList(Akonadi::Collection::ListDisplay);
-    Qt::CheckState enabled = static_cast<Qt::CheckState>(index.data(EnabledRole).toInt());
 
     QStyleOptionViewItem opt = option;
     opt.font = QFont(QFontDatabase::systemFont(QFontDatabase::GeneralFont));
@@ -187,12 +129,6 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         Q_FOREACH (Action action, getActions(option, index)) {
             if (action != Total) {
                 QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), index, i);
-                if (action == Enable && showButtons) {
-                    buttonOption.state = QStyle::State_Active;
-                }
-                if (action == Enable && !showButtons && enabled == Qt::PartiallyChecked) {
-                    buttonOption.state = QStyle::State_Active;
-                }
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             } else {
                 QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), index, i);
@@ -210,14 +146,8 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     //Color indicator
     if (opt.checkState) {
         QColor color = KOHelper::resourceColorKnown(col);
-        if (!color.isValid() && isChildOfPersonCollection(index)) {
-            const Akonadi::Collection parentCol = personCollection(index);
-            if (parentCol.isValid()) {
-                color = KOHelper::resourceColor(parentCol);
-                KOHelper::setResourceColor(col, color);
-            } else {
-                color = KOHelper::resourceColor(col);
-            }
+        if (!color.isValid()) {
+            color = KOHelper::resourceColor(col);
         } else {
             color = KOHelper::resourceColor(col);
         }
@@ -289,6 +219,6 @@ QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option, const
     QSize size = QStyledItemDelegate::sizeHint(option, index);
     // Without this adjustment toplevel resource folders get a slightly greater height,
     // which looks silly and breaks the toolbutton position.
-    size.setHeight(mPixmap.value(AddToList).height() + 4);
+    size.setHeight(mPixmap.value(Quickview).height() + 4);
     return size;
 }
