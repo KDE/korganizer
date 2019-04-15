@@ -407,7 +407,7 @@ public:
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
         mReminderTimeSpin->setToolTip(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
-        connect(mReminderTimeSpin, QOverload<int>::of(&QSpinBox::valueChanged),
+        connect(mReminderTimeSpin, qOverload<int>(&QSpinBox::valueChanged),
                 this, &KOPrefsDialogMain::slotWidChanged);
         remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
@@ -416,7 +416,7 @@ public:
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip());
         mReminderUnitsCombo->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
-        connect(mReminderUnitsCombo, QOverload<int>::of(&KComboBox::activated),
+        connect(mReminderUnitsCombo, qOverload<int>(&KComboBox::activated),
                 this, &KOPrefsDialogMain::slotWidChanged);
         mReminderUnitsCombo->addItem(
             i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
@@ -837,7 +837,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
               "Select here the event category you want to modify. "
               "You can change the selected category color using "
               "the button below."));
-    connect(mCategoryCombo, QOverload<int>::of(&KComboBox::activated),
+    connect(mCategoryCombo, qOverload<int>(&KComboBox::activated),
             this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
     categoryLayout->addWidget(mCategoryCombo, 1, 0);
 
@@ -872,7 +872,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
               "Select the calendar you want to modify. "
               "You can change the selected calendar color using "
               "the button below."));
-    connect(mResourceCombo, QOverload<int>::of(&Akonadi::CollectionComboBox::activated),
+    connect(mResourceCombo, qOverload<int>(&Akonadi::CollectionComboBox::activated),
             this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
     resourceLayout->addWidget(mResourceCombo);
 
@@ -1104,7 +1104,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
 
     // signals and slots connections
 
-    connect(mGroupwarePage->publishDays, QOverload<int>::of(&QSpinBox::valueChanged),
+    connect(mGroupwarePage->publishDays, qOverload<int>(&QSpinBox::valueChanged),
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged,
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
@@ -1124,7 +1124,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged,
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishDelay, QOverload<int>::of(&QSpinBox::valueChanged),
+    connect(mGroupwarePage->publishDelay, qOverload<int>(&QSpinBox::valueChanged),
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled,
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);

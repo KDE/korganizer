@@ -214,7 +214,7 @@ void ActionManager::createCalendarAkonadi()
             this, &ActionManager::slotDefaultResourceChanged);
 
     connect(mCollectionView, &AkonadiCollectionView::colorsChanged,
-            mCalendarView, QOverload<>::of(&CalendarView::updateConfig));
+            mCalendarView, qOverload<>(&CalendarView::updateConfig));
 
     mCollectionViewStateSaver
         = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group("GlobalCollectionView"));
@@ -261,7 +261,7 @@ void ActionManager::initActions()
                                       SLOT(printPreview()));
         mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
     } else {
-        KStandardAction::open(this, QOverload<>::of(&ActionManager::file_open), mACollection);
+        KStandardAction::open(this, qOverload<>(&ActionManager::file_open), mACollection);
         KStandardAction::print(mCalendarView, &CalendarView::print, mACollection);
         KStandardAction::printPreview(mCalendarView, &CalendarView::printPreview, mACollection);
     }
@@ -390,7 +390,7 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     action = new QAction(i18n("&Refresh"), this);
     mACollection->addAction(QStringLiteral("update"), action);
-    connect(action, &QAction::triggered, mCalendarView, QOverload<>::of(&CalendarView::updateView));
+    connect(action, &QAction::triggered, mCalendarView, qOverload<>(&CalendarView::updateView));
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -398,7 +398,7 @@ void ActionManager::initActions()
     mFilterAction->setToolBarMode(KSelectAction::MenuMode);
     mACollection->addAction(QStringLiteral("filter_select"), mFilterAction);
     mFilterAction->setEditable(false);
-    connect(mFilterAction, QOverload<int>::of(&KSelectAction::triggered),
+    connect(mFilterAction, qOverload<int>(&KSelectAction::triggered),
             mCalendarView, &CalendarView::filterActivated);
     connect(mCalendarView, &CalendarView::filtersUpdated,
             this, &ActionManager::setItems);
@@ -553,17 +553,17 @@ void ActionManager::initActions()
     mShowIncidenceAction = new QAction(i18n("&Show"), this);
     mACollection->addAction(QStringLiteral("show_incidence"), mShowIncidenceAction);
     connect(mShowIncidenceAction, &QAction::triggered, mCalendarView,
-            QOverload<>::of(&CalendarView::showIncidence));
+            qOverload<>(&CalendarView::showIncidence));
 
     mEditIncidenceAction = new QAction(i18n("&Edit..."), this);
     mACollection->addAction(QStringLiteral("edit_incidence"), mEditIncidenceAction);
     connect(mEditIncidenceAction, &QAction::triggered, mCalendarView,
-            QOverload<>::of(&CalendarView::editIncidence));
+            qOverload<>(&CalendarView::editIncidence));
 
     mDeleteIncidenceAction = new QAction(i18n("&Delete"), this);
     mACollection->addAction(QStringLiteral("delete_incidence"), mDeleteIncidenceAction);
     connect(mDeleteIncidenceAction, &QAction::triggered, mCalendarView,
-            QOverload<>::of(&CalendarView::deleteIncidence));
+            qOverload<>(&CalendarView::deleteIncidence));
     mACollection->setDefaultShortcut(mDeleteIncidenceAction, QKeySequence(Qt::Key_Delete));
 
     action = new QAction(i18n("&Make Sub-to-do Independent"), this);

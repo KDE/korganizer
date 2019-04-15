@@ -90,8 +90,8 @@ void KODialogManager::showOptionsDialog()
 {
     if (!mOptionsDialog) {
         mOptionsDialog = new KCMultiDialog(mMainView);
-        connect(mOptionsDialog, QOverload<const QByteArray &>::of(&KCMultiDialog::configCommitted),
-                mMainView, QOverload<const QByteArray &>::of(&CalendarView::updateConfig));
+        connect(mOptionsDialog, qOverload<const QByteArray &>(&KCMultiDialog::configCommitted),
+                mMainView, qOverload<const QByteArray &>(&CalendarView::updateConfig));
         QStringList modules;
 
         modules.append(QStringLiteral("korganizer_configmain.desktop"));
@@ -126,7 +126,7 @@ void KODialogManager::showSearchDialog()
         mSearchDialog = new SearchDialog(mMainView);
         //mSearchDialog->setCalendar( mMainView->calendar() );
         connect(mSearchDialog, &SearchDialog::showIncidenceSignal, mMainView,
-                QOverload<>::of(&CalendarView::showIncidence));
+                qOverload<>(&CalendarView::showIncidence));
         connect(mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView,
                 SLOT(editIncidence(Akonadi::Item)));
         connect(mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView,

@@ -89,13 +89,13 @@ KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *pare
 
     action = addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
                        i18n("Create Event"),
-                       this, QOverload<>::of(&KOEventPopupMenu::createEvent));
+                       this, qOverload<>(&KOEventPopupMenu::createEvent));
     action->setObjectName(QStringLiteral("createevent"));
     mTodoOnlyItems.append(action);
 
     action = addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
                        i18n("Create Note"),
-                       this, QOverload<>::of(&KOEventPopupMenu::createNote));
+                       this, qOverload<>(&KOEventPopupMenu::createNote));
     action->setObjectName(QStringLiteral("createnote"));
     //------------------------------------------------------------------------
     addSeparator();

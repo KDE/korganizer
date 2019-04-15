@@ -561,9 +561,9 @@ void SDSummaryWidget::createLabels()
                 mLayout->addWidget(urlLabel, counter, 4);
                 mLabels.append(urlLabel);
 
-                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::leftClickedUrl),
+                connect(urlLabel, qOverload<const QString &>(&KUrlLabel::leftClickedUrl),
                         this, &SDSummaryWidget::mailContact);
-                connect(urlLabel, QOverload<const QString &>::of(&KUrlLabel::rightClickedUrl),
+                connect(urlLabel, qOverload<const QString &>(&KUrlLabel::rightClickedUrl),
                         this, &SDSummaryWidget::popupMenu);
             } else {
                 label = new QLabel(this);
