@@ -49,6 +49,7 @@
 #include "widgets/navigatorbar.h"
 
 #include <AkonadiCore/AttributeFactory>
+#include <AkonadiCore/CollectionIdentificationAttribute>
 
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 #include <Akonadi/Calendar/CalendarClipboard>
@@ -130,6 +131,7 @@ CalendarView::CalendarView(QWidget *parent)
             &CalendarView::onCutFinished);
 
     Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
+    Akonadi::AttributeFactory::registerAttribute<Akonadi::CollectionIdentificationAttribute>();
 
     mViewManager = new KOViewManager(this);
     mDialogManager = new KODialogManager(this);
