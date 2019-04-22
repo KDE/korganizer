@@ -81,7 +81,7 @@ void NoteEditDialogTest::shouldHaveDefaultValuesOnCreation()
 void NoteEditDialogTest::shouldEmitCollectionChanged()
 {
     NoteEditDialog edit;
-    QSignalSpy spy(&edit, SIGNAL(collectionChanged(Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::collectionChanged);
     edit.setCollection(Akonadi::Collection(42));
     QCOMPARE(spy.count(), 1);
     QCOMPARE(spy.at(0).at(0).value<Akonadi::Collection>(), Akonadi::Collection(42));
@@ -91,7 +91,7 @@ void NoteEditDialogTest::shouldNotEmitWhenCollectionIsNotChanged()
 {
     NoteEditDialog edit;
     edit.setCollection(Akonadi::Collection(42));
-    QSignalSpy spy(&edit, SIGNAL(collectionChanged(Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::collectionChanged);
     edit.setCollection(Akonadi::Collection(42));
     QCOMPARE(spy.count(), 0);
 }
@@ -169,7 +169,7 @@ void NoteEditDialogTest::shouldEmitCollectionChangedWhenCurrentCollectionWasChan
                                                                                                      "akonadicombobox"));
     akonadicombobox->setCurrentIndex(0);
     QCOMPARE(akonadicombobox->currentIndex(), 0);
-    QSignalSpy spy(&edit, SIGNAL(collectionChanged(Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::collectionChanged);
     akonadicombobox->setCurrentIndex(3);
     QCOMPARE(akonadicombobox->currentIndex(), 3);
     QCOMPARE(spy.count(), 1);
@@ -193,7 +193,7 @@ void NoteEditDialogTest::shouldEmitCorrectCollection()
     edit.load(item);
     akonadicombobox->setCurrentIndex(3);
     Akonadi::Collection col = akonadicombobox->currentCollection();
-    QSignalSpy spy(&edit, SIGNAL(createNote(Akonadi::Item,Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::createNote);
     QPushButton *ok = edit.findChild<QPushButton *>(QStringLiteral("save-button"));
     QTest::mouseClick(ok, Qt::LeftButton);
     QCOMPARE(spy.count(), 1);
@@ -209,7 +209,7 @@ void NoteEditDialogTest::shouldNotEmitNoteWhenTitleIsEmpty()
     item.setPayload(note.message());
 
     edit.load(item);
-    QSignalSpy spy(&edit, SIGNAL(createNote(Akonadi::Item,Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::createNote);
     QPushButton *ok = edit.findChild<QPushButton *>(QStringLiteral("save-button"));
 
     QLineEdit *notetitle = edit.findChild<QLineEdit *>(QStringLiteral("notetitle"));
@@ -230,7 +230,7 @@ void NoteEditDialogTest::shouldNotEmitNoteWhenTextIsEmpty()
     item.setPayload(note.message());
 
     edit.load(item);
-    QSignalSpy spy(&edit, SIGNAL(createNote(Akonadi::Item,Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::createNote);
     QPushButton *ok = edit.findChild<QPushButton *>(QStringLiteral("save-button"));
 
     //Need to set title to empty, 'cause NoteUtils uses default title: "New Note"
@@ -257,7 +257,7 @@ void NoteEditDialogTest::shouldNoteHasCorrectText()
     item.setPayload(note.message());
 
     edit.load(item);
-    QSignalSpy spy(&edit, SIGNAL(createNote(Akonadi::Item,Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::createNote);
     QPushButton *ok = edit.findChild<QPushButton *>(QStringLiteral("save-button"));
 
     QTest::mouseClick(ok, Qt::LeftButton);
@@ -287,7 +287,7 @@ void NoteEditDialogTest::shouldNoteHasCorrectTitle()
     item.setPayload(note.message());
 
     edit.load(item);
-    QSignalSpy spy(&edit, SIGNAL(createNote(Akonadi::Item,Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::createNote);
     QPushButton *ok = edit.findChild<QPushButton *>(QStringLiteral("save-button"));
 
     QTest::mouseClick(ok, Qt::LeftButton);
@@ -316,7 +316,7 @@ void NoteEditDialogTest::shouldNoteHasCorrectTextFormat()
     item.setPayload(note.message());
 
     edit.load(item);
-    QSignalSpy spy(&edit, SIGNAL(createNote(Akonadi::Item,Akonadi::Collection)));
+    QSignalSpy spy(&edit, &NoteEditDialog::createNote);
     QPushButton *ok = edit.findChild<QPushButton *>(QStringLiteral("save-button"));
 
     QTest::mouseClick(ok, Qt::LeftButton);
