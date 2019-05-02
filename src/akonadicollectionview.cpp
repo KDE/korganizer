@@ -425,7 +425,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     searchCol->setToolTip(i18nc("info:tooltip", "Set search keyword"));
     searchCol->setClearButtonEnabled(true);
     searchCol->setPlaceholderText(i18nc("@info/plain Displayed grayed-out inside the "
-                                        "textbox, verb to search", "Search"));
+                                        "textbox, verb to search", "Search..."));
     topLayout->addWidget(searchCol);
 
     ColorProxyModel *colorProxy = new ColorProxyModel(this);
