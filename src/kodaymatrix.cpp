@@ -243,7 +243,7 @@ void KODayMatrix::updateView(const QDate &actdate)
                 holiStr = holidays.join(i18nc("delimiter for joining holiday names", ","));
             }
             if (holiStr.isEmpty()) {
-                holiStr = QStringLiteral("");
+                holiStr = QLatin1String("");
             }
         }
         mHolidays[i] = holiStr;
