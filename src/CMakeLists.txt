@@ -297,7 +297,7 @@ install(FILES
 
 install(FILES
     data/korganizer.knsrc
-    DESTINATION ${KDE_INSTALL_CONFDIR}
+    DESTINATION ${KDE_INSTALL_KNSRCDIR}
     )
 
 install(PROGRAMS
