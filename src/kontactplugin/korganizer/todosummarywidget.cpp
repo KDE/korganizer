@@ -309,7 +309,7 @@ void TodoSummaryWidget::updateView()
         mLabels.append(noTodos);
     }
 
-    Q_FOREACH (label, mLabels) {   //krazy:exclude=foreach as label is a pointer
+    for (QLabel *label : qAsConst(mLabels)) {
         label->show();
     }
 }

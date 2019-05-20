@@ -484,7 +484,8 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
         QModelIndexList reparented;
         //Check for children to reparent
         {
-            Q_FOREACH (const QModelIndex &descendant, descendants(sourceIndex)) {
+            const auto descendantsItem = descendants(sourceIndex);
+            for (const QModelIndex &descendant : descendantsItem) {
                 if (Node *proxyNode = getReparentNode(descendant)) {
                     qCDebug(KORGANIZER_LOG) << "reparenting " << descendant.data().toString();
                     int targetRow = proxyNode->children.size();
@@ -721,7 +722,7 @@ void ReparentingModel::insertProxyNode(const Node::Ptr &proxyNode)
 void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
 {
     //Reparent source nodes according to the provided rules
-    Q_FOREACH (Node *n, mSourceNodes) {
+    for (Node *n : qAsConst(mSourceNodes)) {
         if (proxyNode->adopts(n->sourceIndex)) {
             //qCDebug(KORGANIZER_LOG) << "reparenting" << n->data(Qt::DisplayRole).toString() << "from" << n->parent->data(Qt::DisplayRole).toString()
             //         << "to" << proxyNode->data(Qt::DisplayRole).toString();
