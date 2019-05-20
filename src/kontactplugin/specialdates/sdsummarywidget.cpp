@@ -234,7 +234,8 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
     // ;)
     BirthdaySearchJob *bJob = qobject_cast<BirthdaySearchJob *>(job);
     if (bJob) {
-        foreach (const Akonadi::Item &item, bJob->items()) {
+        const auto items = bJob->items();
+        for (const Akonadi::Item &item : items) {
             if (item.hasPayload<KContacts::Addressee>()) {
                 const KContacts::Addressee addressee = item.payload<KContacts::Addressee>();
                 const QDate birthday = addressee.birthday().date();

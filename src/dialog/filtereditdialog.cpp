@@ -298,7 +298,7 @@ void FilterEdit::updateSelectedName(const QString &newText)
     }
     bool allOk = true;
 
-    foreach (KCalCore::CalFilter *i, *mFilters) {
+    for (KCalCore::CalFilter *i : qAsConst(*mFilters)) {
         if (i && i->name().isEmpty()) {
             allOk = false;
         }

@@ -128,6 +128,7 @@ configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 set(CMAKE_CXX_STANDARD 14)
+#add_definitions(-DQT_NO_FOREACH)
 add_subdirectory(src)
 add_subdirectory(korgac)
 

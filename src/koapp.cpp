@@ -84,18 +84,19 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     }
     // Check for import, merge or ask
     if (parser.isSet(QStringLiteral("import"))) {
-        // Q_FOREACH, since range-based loops might detach Qt container (QStringList)
-        Q_FOREACH (const QString &url, parser.positionalArguments()) {
+        const auto lst = parser.positionalArguments();
+        for (const QString &url : lst) {
             korg->actionManager()->importURL(QUrl::fromUserInput(url), false);
         }
     } else if (parser.isSet(QStringLiteral("merge"))) {
-        // Q_FOREACH, since range-based loops might detach Qt container (QStringList)
-        Q_FOREACH (const QString &url, parser.positionalArguments()) {
+        const auto lst = parser.positionalArguments();
+        for (const QString &url : lst) {
             korg->actionManager()->importURL(QUrl::fromUserInput(url), true);
         }
     } else {
         // Q_FOREACH, since range-based loops might detach Qt container (QStringList)
-        Q_FOREACH (const QString &url, parser.positionalArguments()) {
+        const auto lst = parser.positionalArguments();
+        for (const QString &url : lst) {
             korg->actionManager()->importCalendar(QUrl::fromUserInput(url));
         }
     }

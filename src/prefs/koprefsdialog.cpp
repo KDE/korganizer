@@ -289,9 +289,10 @@ public:
             mHolidayCheckCombo->addItem(i.key(), i.value());
         }
 
-        QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
-        foreach (KHolidays::HolidayRegion *region, KOGlobals::self()->holidays()) {
-            QString regionStr = region->regionCode();
+        //QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
+        const auto holidays = KOGlobals::self()->holidays();
+        for (KHolidays::HolidayRegion *region : holidays) {
+            const QString regionStr = region->regionCode();
             mHolidayCheckCombo->setItemCheckState(
                 mHolidayCheckCombo->findData(regionStr), Qt::Checked);
         }
@@ -474,7 +475,8 @@ protected:
     void usrWriteConfig() override
     {
         QStringList HolidayRegions;
-        foreach (const QString &str, mHolidayCheckCombo->checkedItems()) {
+        const auto checkedItems = mHolidayCheckCombo->checkedItems();
+        for (const QString &str : checkedItems) {
             int index = mHolidayCheckCombo->findText(str);
             if (index >= 0) {
                 HolidayRegions.append(mHolidayCheckCombo->itemData(index).toString());

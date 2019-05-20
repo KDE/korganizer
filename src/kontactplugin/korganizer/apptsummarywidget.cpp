@@ -134,7 +134,7 @@ void ApptSummaryWidget::updateView()
                                            mShowAnniversariesFromCal);
     QDate currentDate = QDate::currentDate();
 
-    SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(
+    const SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(
                                                                          mDaysAhead - 1),
                                                                      mCalendar);
 
@@ -144,7 +144,7 @@ void ApptSummaryWidget::updateView()
     KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground,
                                    QPalette::Window);
 
-    foreach (SummaryEventInfo *event, events) {
+    for (SummaryEventInfo *event : events) {
         // Optionally, show only my Events
         /*      if ( mShowMineOnly &&
                   !KCalCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, event->ev ) ) {
@@ -243,7 +243,7 @@ void ApptSummaryWidget::updateView()
         mLabels.append(noEvents);
     }
 
-    Q_FOREACH (label, mLabels) {   //krazy:exclude=foreach as label is a pointer
+    for (QLabel *label : qAsConst(mLabels)) {
         label->show();
     }
 }

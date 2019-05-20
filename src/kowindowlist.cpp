@@ -71,7 +71,7 @@ bool KOWindowList::lastInstance()
 
 KOrg::MainWindow *KOWindowList::findInstance(const QUrl &url)
 {
-    foreach (KOrg::MainWindow *inst, mWindowList) {
+    for (KOrg::MainWindow *inst : qAsConst(mWindowList)) {
         if (inst && inst->getCurrentURL() == url) {
             return inst;
         }

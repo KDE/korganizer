@@ -2238,7 +2238,7 @@ void CalendarView::deleteSubTodosIncidence(const Akonadi::Item &todoItem)
         return;
     }
     const Akonadi::Item::List subTodos = mCalendar->childItems(todoItem.id());
-    foreach (const Akonadi::Item &item, subTodos) {
+    for (const Akonadi::Item &item : subTodos) {
         if (CalendarSupport::hasTodo(item)) {
             deleteSubTodosIncidence(item);
         }

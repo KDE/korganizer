@@ -1187,7 +1187,8 @@ void ActionManager::downloadNewStuff()
 {
     QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(mCalendarView);
     dialog->exec();
-    foreach (const KNS3::Entry &e, dialog->installedEntries()) {
+    const auto installedEntries = dialog->installedEntries();
+    for (const KNS3::Entry &e : installedEntries) {
         qCDebug(KORGANIZER_LOG) << " downloadNewStuff :";
         const QStringList lstFile = e.installedFiles();
         if (lstFile.count() != 1) {

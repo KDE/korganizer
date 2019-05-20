@@ -186,7 +186,8 @@ void KCMDesignerFields::delayedInit()
 
 void KCMDesignerFields::deleteFile()
 {
-    foreach (QTreeWidgetItem *item, mPageView->selectedItems()) {
+    const auto selectedItems = mPageView->selectedItems();
+    for (QTreeWidgetItem *item : selectedItems) {
         PageItem *pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
         if (KMessageBox::warningContinueCancel(
                 this,

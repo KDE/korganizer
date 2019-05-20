@@ -126,7 +126,8 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     //Buttons
     {
         int i = 1;
-        Q_FOREACH (Action action, getActions(option, index)) {
+        const auto lstActions = getActions(option, index);
+        for (Action action : lstActions) {
             if (action != Total) {
                 QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), index, i);
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);

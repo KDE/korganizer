@@ -182,7 +182,7 @@ void TodoSummaryWidget::updateView()
 
         QString str;
 
-        Q_FOREACH (const KCalCore::Todo::Ptr &todo, prList) {
+        for (const KCalCore::Todo::Ptr &todo : qAsConst(prList)) {
             bool makeBold = false;
             int daysTo = -1;
 
@@ -316,7 +316,7 @@ void TodoSummaryWidget::updateView()
 
 void TodoSummaryWidget::viewTodo(const QString &uid)
 {
-    Akonadi::Item::Id id = mCalendar->item(uid).id();
+    const Akonadi::Item::Id id = mCalendar->item(uid).id();
 
     if (id != -1) {
         mPlugin->core()->selectPlugin(QStringLiteral("kontact_todoplugin"));  //ensure loaded
