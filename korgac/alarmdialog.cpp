@@ -731,7 +731,7 @@ void AlarmDialog::eventNotification()
                     Person::List::ConstIterator end(addresses.constEnd());
                     for (Person::List::ConstIterator it = addresses.constBegin();
                          it != end; ++it) {
-                        add << (*it)->fullName();
+                        add << (*it).fullName();
                     }
                     to = add.join(QStringLiteral(", "));
                 }

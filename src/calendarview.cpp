@@ -1895,7 +1895,7 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
     bool subtodo = false;
 
     const bool organizerEvents
-        = CalendarSupport::KCalPrefs::instance()->thatIsMe(incidence->organizer()->email());
+        = CalendarSupport::KCalPrefs::instance()->thatIsMe(incidence->organizer().email());
     const bool groupEvents = incidence->attendeeByMails(
         CalendarSupport::KCalPrefs::instance()->allEmails());
 
@@ -1992,10 +1992,8 @@ void CalendarView::takeOverEvent()
         return;
     }
 
-    incidence->setOrganizer(
-        KCalCore::Person::Ptr(new KCalCore::Person(
-                                  CalendarSupport::KCalPrefs::instance()->fullName(),
-                                  CalendarSupport::KCalPrefs::instance()->email())));
+    incidence->setOrganizer(KCalCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(),
+                                             CalendarSupport::KCalPrefs::instance()->email()));
     incidence->recreate();
     incidence->setReadOnly(false);
 

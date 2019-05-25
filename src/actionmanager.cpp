@@ -235,10 +235,9 @@ void ActionManager::createCalendarAkonadi()
             mCalendarView, &CalendarView::resourcesChanged);
     connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
-    calendar()->setOwner(KCalCore::Person::Ptr(new KCalCore::Person(CalendarSupport::KCalPrefs::
-                                                                    instance()->fullName(),
+    calendar()->setOwner(KCalCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(),
                                                                     CalendarSupport::KCalPrefs::
-                                                                    instance()->email())));
+                                                                    instance()->email()));
 }
 
 void ActionManager::initActions()
