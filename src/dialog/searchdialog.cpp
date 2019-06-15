@@ -243,8 +243,8 @@ void SearchDialog::search(const QRegExp &re)
         }
         if (m_ui->attendeeCheck->isChecked()) {
             const KCalCore::Attendee::List lstAttendees = ev->attendees();
-            for (const KCalCore::Attendee::Ptr &attendee : lstAttendees) {
-                if (re.indexIn(attendee->fullName()) != -1) {
+            for (const KCalCore::Attendee &attendee : lstAttendees) {
+                if (re.indexIn(attendee.fullName()) != -1) {
                     mMatchedEvents.append(item);
                     break;
                 }

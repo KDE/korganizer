@@ -61,7 +61,7 @@ MailClient::~MailClient()
 
 bool MailClient::mailAttendees(const KCalCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment, const QString &mailTransport)
 {
-    KCalCore::Attendee::List attendees = incidence->attendees();
+    const KCalCore::Attendee::List attendees = incidence->attendees();
     if (attendees.isEmpty()) {
         qCWarning(KOALARMCLIENT_LOG) << "There are no attendees to e-mail";
         return false;
@@ -72,11 +72,8 @@ bool MailClient::mailAttendees(const KCalCore::IncidenceBase::Ptr &incidence, co
 
     QStringList toList;
     QStringList ccList;
-    const int numberOfAttendees(attendees.count());
-    for (int i = 0; i < numberOfAttendees; ++i) {
-        KCalCore::Attendee::Ptr a = attendees.at(i);
-
-        const QString email = a->email();
+    for (const auto &a : attendees) {
+        const QString email = a.email();
         if (email.isEmpty()) {
             continue;
         }
@@ -90,15 +87,15 @@ bool MailClient::mailAttendees(const KCalCore::IncidenceBase::Ptr &incidence, co
 
         // Build a nice address for this attendee including the CN.
         QString tname, temail;
-        const QString username = KEmailAddress::quoteNameIfNecessary(a->name());
+        const QString username = KEmailAddress::quoteNameIfNecessary(a.name());
         // ignore the return value from extractEmailAddressAndName() because
         // it will always be false since tusername does not contain "@domain".
         KEmailAddress::extractEmailAddressAndName(username, temail /*byref*/, tname /*byref*/);
         tname += QStringLiteral(" <") + email + QLatin1Char('>');
 
         // Optional Participants and Non-Participants are copied on the email
-        if (a->role() == KCalCore::Attendee::OptParticipant
-            || a->role() == KCalCore::Attendee::NonParticipant) {
+        if (a.role() == KCalCore::Attendee::OptParticipant
+            || a.role() == KCalCore::Attendee::NonParticipant) {
             ccList << tname;
         } else {
             toList << tname;

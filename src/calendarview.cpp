@@ -1896,8 +1896,8 @@ void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QD
 
     const bool organizerEvents
         = CalendarSupport::KCalPrefs::instance()->thatIsMe(incidence->organizer().email());
-    const bool groupEvents = incidence->attendeeByMails(
-        CalendarSupport::KCalPrefs::instance()->allEmails());
+    const bool groupEvents = !incidence->attendeeByMails(
+        CalendarSupport::KCalPrefs::instance()->allEmails()).isNull();
 
     if (incidence->type() == KCalCore::Incidence::TypeTodo) {
         todo = true;
