@@ -44,7 +44,6 @@
 #include <QToolTip>
 #include <QMimeData>
 #include <KLocalizedString>
-#include <QLocale>
 
 // ============================================================================
 //  K O D A Y M A T R I X

@@ -30,7 +30,6 @@
 
 #include <QDialog>
 #include <QMenu>
-#include <QPoint>
 #include <QTimer>
 
 namespace Akonadi {

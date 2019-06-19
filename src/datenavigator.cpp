@@ -30,7 +30,6 @@
 #include "korganizer_debug.h"
 
 #include <QDate>
-#include <QLocale>
 
 DateNavigator::DateNavigator(QObject *parent) : QObject(parent)
 {
