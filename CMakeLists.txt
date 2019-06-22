@@ -15,7 +15,7 @@ project(korganizer VERSION ${KDEPIM_VERSION_NUMBER})
 if(POLICY CMP0063)
   cmake_policy(SET CMP0063 NEW)
 endif()
-set(KF5_MIN_VERSION "5.58.0")
+set(KF5_MIN_VERSION "5.59.0")
 
 find_package(ECM ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
@@ -132,11 +132,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_subdirectory(src)
 add_subdirectory(korgac)
 
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES korganizer.renamecategories korganizer.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES korganizer.renamecategories korganizer.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
+install(FILES korganizer.renamecategories korganizer.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
 add_subdirectory(doc)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
