@@ -309,3 +309,10 @@ install(FILES
     org.kde.korganizer.appdata.xml
     DESTINATION ${KDE_INSTALL_METAINFODIR}
     )
+
+configure_file(data/org.kde.korganizer.service.in org.kde.korganizer.service)
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/org.kde.korganizer.service
+    DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
+    )
+

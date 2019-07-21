@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.kde.korganizer
+Exec=${CMAKE_INSTALL_FULL_BINDIR}/korganizer
