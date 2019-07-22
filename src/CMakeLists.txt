@@ -281,11 +281,6 @@ install(FILES
     )
 
 install(FILES
-    dbuscalendar.desktop
-    DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR}
-    )
-
-install(FILES
     korganizer_part.desktop data/webcal.protocol
     DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
     )

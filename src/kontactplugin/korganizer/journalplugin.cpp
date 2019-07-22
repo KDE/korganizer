@@ -124,17 +124,6 @@ void JournalPlugin::slotNewJournal()
     interface()->openJournalEditor(QString(), QDate());
 }
 
-bool JournalPlugin::createDBUSInterface(const QString &serviceType)
-{
-    if (serviceType == QLatin1String("DBUS/Organizer")
-        || serviceType == QLatin1String("DBUS/Calendar")) {
-        if (part()) {
-            return true;
-        }
-    }
-    return false;
-}
-
 bool JournalPlugin::isRunningStandalone() const
 {
     return mUniqueAppWatcher->isRunningStandalone();

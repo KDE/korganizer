@@ -133,17 +133,6 @@ void KOrganizerPlugin::slotNewEvent()
     interface()->openEventEditor(QString());
 }
 
-bool KOrganizerPlugin::createDBUSInterface(const QString &serviceType)
-{
-    if (serviceType == QLatin1String("DBUS/Organizer")
-        || serviceType == QLatin1String("DBUS/Calendar")) {
-        if (part()) {
-            return true;
-        }
-    }
-    return false;
-}
-
 bool KOrganizerPlugin::isRunningStandalone() const
 {
     return mUniqueAppWatcher->isRunningStandalone();
