@@ -41,7 +41,6 @@ public:
     KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &);
     ~KOrganizerPlugin() override;
 
-    bool createDBUSInterface(const QString &serviceType) override;
     bool isRunningStandalone() const override;
     int weight() const override
     {

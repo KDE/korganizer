@@ -139,17 +139,6 @@ void TodoPlugin::slotNewTodo()
     interface()->openTodoEditor(QString());
 }
 
-bool TodoPlugin::createDBUSInterface(const QString &serviceType)
-{
-    if (serviceType == QLatin1String("DBUS/Organizer")
-        || serviceType == QLatin1String("DBUS/Calendar")) {
-        if (part()) {
-            return true;
-        }
-    }
-    return false;
-}
-
 bool TodoPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
     return

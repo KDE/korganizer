@@ -39,7 +39,6 @@ public:
     JournalPlugin(KontactInterface::Core *core, const QVariantList &);
     ~JournalPlugin() override;
 
-    bool createDBUSInterface(const QString &serviceType) override;
     bool isRunningStandalone() const override;
     int weight() const override
     {
