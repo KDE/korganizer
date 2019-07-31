@@ -32,9 +32,9 @@
 
 #include "interfaces/korganizer/calendarviewbase.h"
 
-#include <KCalCore/Incidence>
-#include <KCalCore/Visitor>
-#include <KCalCore/ScheduleMessage>
+#include <KCalendarCore/Incidence>
+#include <KCalendarCore/Visitor>
+#include <KCalendarCore/ScheduleMessage>
 
 #include <Akonadi/Calendar/ITIPHandler>
 
@@ -110,14 +110,14 @@ public:
     explicit CalendarView(QWidget *parent = nullptr);
     ~CalendarView() override;
 
-    class CalendarViewVisitor : public KCalCore::Visitor
+    class CalendarViewVisitor : public KCalendarCore::Visitor
     {
     public:
         CalendarViewVisitor()
         {
         }
 
-        bool act(KCalCore::IncidenceBase::Ptr &incidence, CalendarView *view)
+        bool act(KCalendarCore::IncidenceBase::Ptr &incidence, CalendarView *view)
         {
             mView = view;
             return incidence->accept(*this, incidence);
@@ -350,7 +350,7 @@ public Q_SLOTS:
                  incidence, only the first is added to KOrganizer's calendar.
     */
     bool addIncidence(const QString &ical);
-    bool addIncidence(const KCalCore::Incidence::Ptr &incidence);
+    bool addIncidence(const KCalendarCore::Incidence::Ptr &incidence);
 
     /**
       Cuts the selected incidence using the edit_cut() method
@@ -578,7 +578,7 @@ public Q_SLOTS:
     }
 
     void showErrorMessage(const QString &);
-    void schedule(KCalCore::iTIPMethod, const Akonadi::Item &incidence);
+    void schedule(KCalendarCore::iTIPMethod, const Akonadi::Item &incidence);
     void addIncidenceOn(const Akonadi::Item &incidence, const QDate &);
     void moveIncidenceTo(const Akonadi::Item &incidence, const QDate &);
     void filterActivated(int filterNum);
@@ -610,7 +610,7 @@ protected Q_SLOTS:
      * @p preferredMonth is useful when the datelist crosses months, if valid,
      * any month-like component should honour this
      */
-    void showDates(const KCalCore::DateList &, const QDate &preferredMonth = QDate());
+    void showDates(const KCalendarCore::DateList &, const QDate &preferredMonth = QDate());
 
 public:
     int msgCalModified();
@@ -654,7 +654,7 @@ protected:
       defaults, if invalid values are given) and allow the view to adjust the type.
     */
     void dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bool &allDay);
-    IncidenceEditorNG::IncidenceDialog *newEventEditor(const KCalCore::Event::Ptr &event);
+    IncidenceEditorNG::IncidenceDialog *newEventEditor(const KCalendarCore::Event::Ptr &event);
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 
@@ -716,8 +716,8 @@ private:
     KODialogManager *mDialogManager = nullptr;
 
     // Calendar filters
-    QList<KCalCore::CalFilter *> mFilters;
-    KCalCore::CalFilter *mCurrentFilter = nullptr;
+    QList<KCalendarCore::CalFilter *> mFilters;
+    KCalendarCore::CalFilter *mCurrentFilter = nullptr;
 
     // various housekeeping variables.
     bool mReadOnly;  // flag indicating if calendar is read-only

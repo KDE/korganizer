@@ -40,7 +40,7 @@
 #include <AkonadiCore/Item>
 #include <AkonadiWidgets/TagManagementDialog>
 
-#include <KCalCore/Visitor>
+#include <KCalendarCore/Visitor>
 
 #include <KCMultiDialog>
 #include <QPushButton>
@@ -49,14 +49,14 @@ using namespace KOrg;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 
-class KODialogManager::DialogManagerVisitor : public KCalCore::Visitor
+class KODialogManager::DialogManagerVisitor : public KCalendarCore::Visitor
 {
 public:
     DialogManagerVisitor()
     {
     }
 
-    bool act(KCalCore::IncidenceBase::Ptr &incidence, KODialogManager *manager)
+    bool act(KCalendarCore::IncidenceBase::Ptr &incidence, KODialogManager *manager)
     {
         mDialogManager = manager;
         return incidence->accept(*this, incidence);
@@ -154,7 +154,7 @@ void KODialogManager::showArchiveDialog()
     QApplication::restoreOverrideCursor();
 }
 
-void KODialogManager::showFilterEditDialog(QList<KCalCore::CalFilter *> *filters)
+void KODialogManager::showFilterEditDialog(QList<KCalendarCore::CalFilter *> *filters)
 {
     createCategoryEditor();
     if (!mFilterEditDialog) {
@@ -170,7 +170,7 @@ void KODialogManager::showFilterEditDialog(QList<KCalCore::CalFilter *> *filters
 
 IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog(const Akonadi::Item &item)
 {
-    const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
         return nullptr;
     }

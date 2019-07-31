@@ -67,7 +67,7 @@ public Q_SLOTS:
        from -1, it has the month that the kdatenavigator should show in case
        of ambiguity
     */
-    void selectDates(const KCalCore::DateList &, const QDate &preferredMonth = QDate());
+    void selectDates(const KCalendarCore::DateList &, const QDate &preferredMonth = QDate());
 
     void updateView();
     void updateConfig();
@@ -78,7 +78,7 @@ public Q_SLOTS:
     void goNextMonth();
 
 Q_SIGNALS:
-    void datesSelected(const KCalCore::DateList &, const QDate &preferredMonth);
+    void datesSelected(const KCalendarCore::DateList &, const QDate &preferredMonth);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
     void newEventSignal(const QDate &);
@@ -129,7 +129,7 @@ protected Q_SLOTS:
     void resizeAllContents();
 
 private Q_SLOTS:
-    void handleDatesSelectedSignal(const KCalCore::DateList &);
+    void handleDatesSelectedSignal(const KCalendarCore::DateList &);
     void handleWeekClickedSignal(const QDate &, const QDate &);
 
 private:

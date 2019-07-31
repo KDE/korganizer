@@ -39,10 +39,10 @@ void KoEventPopupMenuTest::createEventFromEvent()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Event::Ptr event(new KCalCore::Event());
+    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Event::eventMimeType());
-    item.setPayload<KCalCore::Event::Ptr>(event);
+    item.setMimeType(KCalendarCore::Event::eventMimeType());
+    item.setPayload<KCalendarCore::Event::Ptr>(event);
 
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
@@ -59,10 +59,10 @@ void KoEventPopupMenuTest::createTodoFromTodo()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Todo::Ptr todo(new KCalCore::Todo());
+    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Todo::todoMimeType());
-    item.setPayload<KCalCore::Todo::Ptr>(todo);
+    item.setMimeType(KCalendarCore::Todo::todoMimeType());
+    item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
@@ -79,10 +79,10 @@ void KoEventPopupMenuTest::createEventFromTodo()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Todo::Ptr todo(new KCalCore::Todo());
+    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Todo::todoMimeType());
-    item.setPayload<KCalCore::Todo::Ptr>(todo);
+    item.setMimeType(KCalendarCore::Todo::todoMimeType());
+    item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
     QDateTime start, end;
     QString summary(QStringLiteral("a test"));
@@ -102,7 +102,7 @@ void KoEventPopupMenuTest::createEventFromTodo()
     IncidenceEditorNG::IncidenceEditor *editor
         = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
-    KCalCore::Event::Ptr event(editor->incidence<KCalCore::Event>());
+    KCalendarCore::Event::Ptr event(editor->incidence<KCalendarCore::Event>());
     QVERIFY(event->uid() != todo->uid());
     QCOMPARE(event->dtStart(), start);
     QCOMPARE(event->dtEnd(), end);
@@ -115,10 +115,10 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Event::Ptr event(new KCalCore::Event());
+    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Event::eventMimeType());
-    item.setPayload<KCalCore::Event::Ptr>(event);
+    item.setMimeType(KCalendarCore::Event::eventMimeType());
+    item.setPayload<KCalendarCore::Event::Ptr>(event);
 
     QDateTime start, end;
     QString summary(QStringLiteral("a test"));
@@ -138,7 +138,7 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     IncidenceEditorNG::IncidenceEditor *editor
         = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
-    KCalCore::Todo::Ptr todo(editor->incidence<KCalCore::Todo>());
+    KCalendarCore::Todo::Ptr todo(editor->incidence<KCalendarCore::Todo>());
     QVERIFY(todo->uid() != event->uid());
     QCOMPARE(todo->dtStart(), start);
     QCOMPARE(todo->dtDue(), end);
@@ -151,10 +151,10 @@ void KoEventPopupMenuTest::createNoteFromEvent()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Event::Ptr event(new KCalCore::Event());
+    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Event::eventMimeType());
-    item.setPayload<KCalCore::Event::Ptr>(event);
+    item.setMimeType(KCalendarCore::Event::eventMimeType());
+    item.setPayload<KCalendarCore::Event::Ptr>(event);
 
     QDateTime start, end;
     QString summary(QStringLiteral("A test"));
@@ -179,7 +179,7 @@ void KoEventPopupMenuTest::createNoteFromEvent()
     QCOMPARE(note.text(), description);
     QCOMPARE(note.textFormat(), Qt::RichText);
     QCOMPARE(note.attachments().count(), 1);
-    QCOMPARE(note.attachments().at(0).mimetype(), KCalCore::Event::eventMimeType());
+    QCOMPARE(note.attachments().at(0).mimetype(), KCalendarCore::Event::eventMimeType());
     QCOMPARE(note.attachments().at(0).url(), (QUrl)item.url());
     QCOMPARE(note.attachments().at(0).data(), QByteArray());
 }
@@ -189,10 +189,10 @@ void KoEventPopupMenuTest::createNoteFromTodo()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Todo::Ptr todo(new KCalCore::Todo());
+    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Todo::todoMimeType());
-    item.setPayload<KCalCore::Todo::Ptr>(todo);
+    item.setMimeType(KCalendarCore::Todo::todoMimeType());
+    item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
     QDateTime start, end;
     QString summary(QStringLiteral("a test"));
@@ -217,7 +217,7 @@ void KoEventPopupMenuTest::createNoteFromTodo()
     QCOMPARE(note.title(), summary);
     QCOMPARE(note.text(), description);
     QCOMPARE(note.attachments().count(), 1);
-    QCOMPARE(note.attachments().at(0).mimetype(), KCalCore::Todo::todoMimeType());
+    QCOMPARE(note.attachments().at(0).mimetype(), KCalendarCore::Todo::todoMimeType());
     QCOMPARE(note.attachments().at(0).url(), (QUrl)item.url());
     QCOMPARE(note.attachments().at(0).data(), QByteArray());
 }
@@ -227,10 +227,10 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Event::Ptr event(new KCalCore::Event());
+    KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Event::eventMimeType());
-    item.setPayload<KCalCore::Event::Ptr>(event);
+    item.setMimeType(KCalendarCore::Event::eventMimeType());
+    item.setPayload<KCalendarCore::Event::Ptr>(event);
 
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
@@ -247,11 +247,11 @@ void KoEventPopupMenuTest::defaultMenuTodoVisible()
     Akonadi::ETMCalendar::Ptr calendar(new Akonadi::ETMCalendar());
     KOEventPopupMenu menu(nullptr);
 
-    KCalCore::Todo::Ptr todo(new KCalCore::Todo());
+    KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
 
     Akonadi::Item item;
-    item.setMimeType(KCalCore::Todo::todoMimeType());
-    item.setPayload<KCalCore::Todo::Ptr>(todo);
+    item.setMimeType(KCalendarCore::Todo::todoMimeType());
+    item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());

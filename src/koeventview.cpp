@@ -164,7 +164,7 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction(const Akonadi::Item &aitem)
 {
-    const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
+    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
     if (!incidence) {
         qCDebug(KORGANIZER_LOG) << "Ouch, null incidence";
         return;
@@ -203,7 +203,7 @@ void KOEventView::finishTypeAhead()
 
 bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDate &date)
 {
-    const KCalCore::Todo::Ptr todo = CalendarSupport::todo(aitem);
+    const KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(aitem);
     if (!todo) {
         return false;
     }

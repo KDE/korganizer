@@ -28,7 +28,7 @@
 
 #include <EventViews/EventView>
 
-#include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
+#include <KCalendarCore/IncidenceBase> //for KCalendarCore::DateList typedef
 
 #include <QDate>
 #include <QObject>
@@ -148,7 +148,7 @@ public:
 
 Q_SIGNALS:
     void configChanged();
-    void datesSelected(const KCalCore::DateList &);
+    void datesSelected(const KCalendarCore::DateList &);
 
 public Q_SLOTS:
     void showWhatsNextView();

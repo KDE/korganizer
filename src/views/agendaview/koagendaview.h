@@ -51,7 +51,7 @@ public:
     Akonadi::Item::List selectedIncidences() override;
 
     /** returns the currently selected incidence's dates */
-    KCalCore::DateList selectedIncidenceDates() override;
+    KCalendarCore::DateList selectedIncidenceDates() override;
 
     /** return the default start/end date/time for new events   */
     bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;

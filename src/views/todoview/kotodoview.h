@@ -45,7 +45,7 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
     Akonadi::Item::List selectedIncidences() override;
-    KCalCore::DateList selectedIncidenceDates() override;
+    KCalendarCore::DateList selectedIncidenceDates() override;
     int currentDateCount() const override
     {
         return 0;

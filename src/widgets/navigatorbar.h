@@ -24,7 +24,7 @@
 #ifndef KORG_NAVIGATORBAR_H
 #define KORG_NAVIGATORBAR_H
 
-#include <KCalCore/IncidenceBase> // for KCalCore::DateList typedef
+#include <KCalendarCore/IncidenceBase> // for KCalendarCore::DateList typedef
 
 #include <QWidget>
 #include <QDate>
@@ -40,7 +40,7 @@ public:
     void showButtons(bool left, bool right);
 
 public Q_SLOTS:
-    void selectDates(const KCalCore::DateList &);
+    void selectDates(const KCalendarCore::DateList &);
 
 Q_SIGNALS:
     void nextMonthClicked();

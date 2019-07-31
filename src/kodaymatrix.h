@@ -29,7 +29,7 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <KCalCore/IncidenceBase> //for KCalCore::DateList typedef
+#include <KCalendarCore/IncidenceBase> //for KCalendarCore::DateList typedef
 
 #include <QFrame>
 #include <QDate>
@@ -125,7 +125,7 @@ public:
      * Adds all actual selected days from mSelStart to mSelEnd to the supplied
      * DateList.
      */
-    void addSelectedDaysTo(KCalCore::DateList &);
+    void addSelectedDaysTo(KCalendarCore::DateList &);
 
     /**
      * Sets the actual to be displayed selection in the day matrix starting
@@ -170,9 +170,9 @@ public:
      *  Reimplemented from Akonadi::ETMCalendar
      *  They set mPendingChanges to true
      */
-    void calendarIncidenceAdded(const KCalCore::Incidence::Ptr &incidence) override;
-    void calendarIncidenceChanged(const KCalCore::Incidence::Ptr &incidence) override;
-    void calendarIncidenceDeleted(const KCalCore::Incidence::Ptr &incidence, const KCalCore::Calendar *calendar) override;
+    void calendarIncidenceAdded(const KCalendarCore::Incidence::Ptr &incidence) override;
+    void calendarIncidenceChanged(const KCalendarCore::Incidence::Ptr &incidence) override;
+    void calendarIncidenceDeleted(const KCalendarCore::Incidence::Ptr &incidence, const KCalendarCore::Calendar *calendar) override;
 
     /** Sets which incidences should be highlighted */
     void setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals);
@@ -202,7 +202,7 @@ Q_SIGNALS:
      *
      * @param daylist list of days that have been selected by the user
      */
-    void selected(const KCalCore::DateList &daylist);
+    void selected(const KCalendarCore::DateList &daylist);
 
     void newEventSignal(const QDate &date);
     void newTodoSignal(const QDate &date);

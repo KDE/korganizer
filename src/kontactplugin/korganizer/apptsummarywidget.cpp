@@ -35,8 +35,8 @@
 #include <AkonadiCore/Collection>
 #include <Akonadi/Calendar/IncidenceChanger>
 
-#include <KCalCore/Calendar>
-#include <KCalCore/Event>
+#include <KCalendarCore/Calendar>
+#include <KCalendarCore/Event>
 
 #include <KontactInterface/Core>
 
@@ -70,7 +70,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     mLayout->setRowStretch(6, 1);
 
     QStringList mimeTypes;
-    mimeTypes << KCalCore::Event::eventMimeType();
+    mimeTypes << KCalendarCore::Event::eventMimeType();
     mCalendar = CalendarSupport::calendarSingleton();
 
     mChanger = new Akonadi::IncidenceChanger(parent);
@@ -147,13 +147,13 @@ void ApptSummaryWidget::updateView()
     for (SummaryEventInfo *event : events) {
         // Optionally, show only my Events
         /*      if ( mShowMineOnly &&
-                  !KCalCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, event->ev ) ) {
+                  !KCalendarCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, event->ev ) ) {
               continue;
             }
             TODO: CalHelper is deprecated, remove this?
         */
 
-        KCalCore::Event::Ptr ev = event->ev;
+        KCalendarCore::Event::Ptr ev = event->ev;
         // print the first of the recurring event series only
         if (ev->recurs()) {
             if (uidList.contains(ev->instanceIdentifier())) {

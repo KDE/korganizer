@@ -158,7 +158,7 @@ Akonadi::Item::List MultiAgendaView::selectedIncidences()
     return d->mMultiAgendaView->selectedIncidences();
 }
 
-KCalCore::DateList MultiAgendaView::selectedIncidenceDates()
+KCalendarCore::DateList MultiAgendaView::selectedIncidenceDates()
 {
     return d->mMultiAgendaView->selectedIncidenceDates();
 }

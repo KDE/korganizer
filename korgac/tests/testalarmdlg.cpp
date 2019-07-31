@@ -26,14 +26,14 @@
 
 #include <AkonadiCore/Item>
 
-#include <KCalCore/Event>
-#include <KCalCore/Todo>
+#include <KCalendarCore/Event>
+#include <KCalendarCore/Todo>
 
 #include <QDateTime>
 #include <QApplication>
 #include <QCommandLineParser>
 
-using namespace KCalCore;
+using namespace KCalendarCore;
 
 static Akonadi::Item::Id id = 1;
 template<class T> Akonadi::Item incidenceToItem(T *incidence)

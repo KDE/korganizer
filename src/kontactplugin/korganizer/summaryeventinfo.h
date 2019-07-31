@@ -43,7 +43,7 @@ public:
                                const Akonadi::ETMCalendar::Ptr &calendar);
     static void setShowSpecialEvents(bool skipBirthdays, bool skipAnniversaries);
 
-    KCalCore::Event::Ptr ev;
+    KCalendarCore::Event::Ptr ev;
     QString startDate;
     QString dateSpan;
     QString daysToGo;
@@ -55,7 +55,7 @@ public:
     bool makeUrgent;
 
 private:
-    static bool skip(const KCalCore::Event::Ptr &event);
+    static bool skip(const KCalendarCore::Event::Ptr &event);
     static bool mShowBirthdays, mShowAnniversaries;
 };
 

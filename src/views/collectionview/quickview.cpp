@@ -28,8 +28,8 @@
 #include <AkonadiCore/changerecorder.h>
 #include <AkonadiCore/itemfetchscope.h>
 
-#include <KCalCore/Event>
-#include <KCalCore/MemoryCalendar>
+#include <KCalendarCore/Event>
+#include <KCalendarCore/MemoryCalendar>
 
 #include <EventViews/AgendaView>
 #include <EventViews/ViewCalendar>
@@ -71,8 +71,8 @@ Quickview::Quickview(const Akonadi::Collection &col)
     Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder(this);
     Akonadi::ItemFetchScope scope;
     const QStringList allMimeTypes
-        = { KCalCore::Event::eventMimeType(), KCalCore::Todo::todoMimeType(),
-            KCalCore::Journal::journalMimeType()};
+        = { KCalendarCore::Event::eventMimeType(), KCalendarCore::Todo::todoMimeType(),
+            KCalendarCore::Journal::journalMimeType()};
 
     scope.fetchFullPayload(true);
     scope.fetchAttribute<Akonadi::EntityDisplayAttribute>();

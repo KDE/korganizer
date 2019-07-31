@@ -31,7 +31,7 @@
 
 #include <KContacts/VCardDrag>
 
-#include <KCalCore/MemoryCalendar>
+#include <KCalendarCore/MemoryCalendar>
 
 #include <KCalUtils/ICalDrag>
 
@@ -181,15 +181,15 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
     }
 
     if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
-        KCalCore::MemoryCalendar::Ptr cal(new KCalCore::MemoryCalendar(QTimeZone::systemTimeZone()));
+        KCalendarCore::MemoryCalendar::Ptr cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
         if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
-            KCalCore::Incidence::List incidences = cal->incidences();
+            KCalendarCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {
                 event->accept();
-                KCalCore::Incidence::Ptr i = incidences.first();
+                KCalendarCore::Incidence::Ptr i = incidences.first();
                 QString summary;
-                if (i->type() == KCalCore::Incidence::TypeJournal) {
+                if (i->type() == KCalendarCore::Incidence::TypeJournal) {
                     summary = i18nc("@item", "Note: %1", i->summary());
                 } else {
                     summary = i->summary();

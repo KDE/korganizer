@@ -121,7 +121,7 @@ Akonadi::Item::List KOTimelineView::selectedIncidences()
     return mTimeLineView->selectedIncidences();
 }
 
-KCalCore::DateList KOTimelineView::selectedIncidenceDates()
+KCalendarCore::DateList KOTimelineView::selectedIncidenceDates()
 {
     return mTimeLineView->selectedIncidenceDates();
 }

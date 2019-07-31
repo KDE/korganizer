@@ -28,7 +28,7 @@
 
 #include <QFrame>
 #include <QDate>
-#include <KCalCore/IncidenceBase> //for DateList typedef
+#include <KCalendarCore/IncidenceBase> //for DateList typedef
 #include <Akonadi/Calendar/ETMCalendar>
 
 class KODayMatrix;
@@ -54,7 +54,7 @@ public:
 
     void setBaseDate(const QDate &);
 
-    KCalCore::DateList selectedDates() const
+    KCalendarCore::DateList selectedDates() const
     {
         return mSelectedDates;
     }
@@ -78,7 +78,7 @@ public:
     QDate month() const;
 
 public Q_SLOTS:
-    void selectDates(const KCalCore::DateList &);
+    void selectDates(const KCalendarCore::DateList &);
     void selectPreviousMonth();
     void selectNextMonth();
     void updateView();
@@ -88,7 +88,7 @@ public Q_SLOTS:
     void setUpdateNeeded();
 
 Q_SIGNALS:
-    void datesSelected(const KCalCore::DateList &);
+    void datesSelected(const KCalendarCore::DateList &);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
     void newEventSignal(const QDate &);
@@ -124,7 +124,7 @@ private:
 
     KODayMatrix *mDayMatrix = nullptr;
 
-    KCalCore::DateList mSelectedDates;
+    KCalendarCore::DateList mSelectedDates;
     QDate mBaseDate;
     Akonadi::ETMCalendar::Ptr mCalendar;
 

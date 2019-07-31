@@ -43,9 +43,9 @@ public:
         return Akonadi::Item::List();
     }
 
-    KCalCore::DateList selectedIncidenceDates() override
+    KCalendarCore::DateList selectedIncidenceDates() override
     {
-        return KCalCore::DateList();
+        return KCalendarCore::DateList();
     }
 
     bool supportsDateNavigation() const override

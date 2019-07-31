@@ -37,7 +37,7 @@
 #include <Akonadi/Contact/ContactSearchJob>
 #include <Akonadi/Contact/ContactViewerDialog>
 
-#include <KCalCore/Calendar>
+#include <KCalendarCore/Calendar>
 
 #include <QMenu>
 #include <KLocalizedString>
@@ -196,7 +196,7 @@ bool SDSummaryWidget::initHolidays()
 }
 
 // number of days remaining in an Event
-int SDSummaryWidget::span(const KCalCore::Event::Ptr &event) const
+int SDSummaryWidget::span(const KCalendarCore::Event::Ptr &event) const
 {
     int span = 1;
     if (event->isMultiDay() && event->allDay()) {
@@ -213,7 +213,7 @@ int SDSummaryWidget::span(const KCalCore::Event::Ptr &event) const
 }
 
 // day of a multiday Event
-int SDSummaryWidget::dayof(const KCalCore::Event::Ptr &event, const QDate &date) const
+int SDSummaryWidget::dayof(const KCalendarCore::Event::Ptr &event, const QDate &date) const
 {
     int dayof = 1;
     QDate d = event->dtStart().date();
@@ -281,13 +281,13 @@ void SDSummaryWidget::createLabels()
     for (dt = QDate::currentDate();
          dt <= QDate::currentDate().addDays(mDaysAhead - 1);
          dt = dt.addDays(1)) {
-        const KCalCore::Event::List events = mCalendar->events(dt, mCalendar->timeZone(),
-                                                               KCalCore::EventSortStartDate,
-                                                               KCalCore::SortDirectionAscending);
-        for (const KCalCore::Event::Ptr &ev : events) {
+        const KCalendarCore::Event::List events = mCalendar->events(dt, mCalendar->timeZone(),
+                                                               KCalendarCore::EventSortStartDate,
+                                                               KCalendarCore::SortDirectionAscending);
+        for (const KCalendarCore::Event::Ptr &ev : events) {
             // Optionally, show only my Events
             /* if ( mShowMineOnly &&
-                    !KCalCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, ev. ) ) {
+                    !KCalendarCore::CalHelper::isMyCalendarIncidence( mCalendarAdaptor, ev. ) ) {
               // FIXME; does isMyCalendarIncidence work !? It's deprecated too.
               continue;
               }

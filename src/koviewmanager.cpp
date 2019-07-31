@@ -617,7 +617,7 @@ QDate KOViewManager::currentSelectionDate()
 {
     QDate qd;
     if (mCurrentView) {
-        KCalCore::DateList qvl = mCurrentView->selectedIncidenceDates();
+        KCalendarCore::DateList qvl = mCurrentView->selectedIncidenceDates();
         if (!qvl.isEmpty()) {
             qd = qvl.first();
         }

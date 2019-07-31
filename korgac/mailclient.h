@@ -24,7 +24,7 @@
 #ifndef CALENDARSUPPORT_MAILCLIENT_H
 #define CALENDARSUPPORT_MAILCLIENT_H
 
-#include <KCalCore/IncidenceBase>
+#include <KCalendarCore/IncidenceBase>
 
 #include <QObject>
 
@@ -47,13 +47,13 @@ public:
     MailClient();
     ~MailClient();
 
-    bool mailAttendees(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment = QString(),
+    bool mailAttendees(const KCalendarCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment = QString(),
                        const QString &mailTransport = QString());
 
-    bool mailOrganizer(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe,
+    bool mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe,
                        const QString &attachment = QString(), const QString &sub = QString(), const QString &mailTransport = QString());
 
-    bool mailTo(const KCalCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients,
+    bool mailTo(const KCalendarCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients,
                 const QString &attachment = QString(), const QString &mailTransport = QString());
 
     /**

@@ -57,9 +57,9 @@
 #include <Akonadi/Calendar/History>
 #include <Akonadi/Calendar/ICalImporter>
 
-#include <KCalCore/FileStorage>
-#include <KCalCore/ICalFormat>
-#include <KCalCore/Person>
+#include <KCalendarCore/FileStorage>
+#include <KCalendarCore/ICalFormat>
+#include <KCalendarCore/Person>
 
 #include <KMime/KMimeMessage>
 #include <KJobWidgets>
@@ -235,7 +235,7 @@ void ActionManager::createCalendarAkonadi()
             mCalendarView, &CalendarView::resourcesChanged);
     connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
-    calendar()->setOwner(KCalCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(),
+    calendar()->setOwner(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(),
                                                                     CalendarSupport::KCalPrefs::
                                                                     instance()->email()));
 }
@@ -1200,16 +1200,16 @@ void ActionManager::downloadNewStuff()
             continue;
         }
 
-        KCalCore::FileStorage storage(calendar());
+        KCalendarCore::FileStorage storage(calendar());
         storage.setFileName(file);
-        storage.setSaveFormat(new KCalCore::ICalFormat);
+        storage.setSaveFormat(new KCalendarCore::ICalFormat);
         if (!storage.load()) {
             KMessageBox::error(mCalendarView, i18n("Could not load calendar %1.", file));
         } else {
             QStringList eventSummaries;
-            const KCalCore::Event::List events = calendar()->events();
+            const KCalendarCore::Event::List events = calendar()->events();
             eventSummaries.reserve(events.count());
-            for (const KCalCore::Event::Ptr &event : events) {
+            for (const KCalendarCore::Event::Ptr &event : events) {
                 eventSummaries.append(event->summary());
             }
 
@@ -1236,7 +1236,7 @@ QString ActionManager::localFileName()
     return mFile;
 }
 
-class ActionManager::ActionStringsVisitor : public KCalCore::Visitor
+class ActionManager::ActionStringsVisitor : public KCalendarCore::Visitor
 {
 public:
     ActionStringsVisitor()
@@ -1246,7 +1246,7 @@ public:
     {
     }
 
-    bool act(KCalCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del)
+    bool act(KCalendarCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del)
     {
         mShow = show;
         mEdit = edit;
@@ -1255,7 +1255,7 @@ public:
     }
 
 protected:
-    bool visit(const KCalCore::Event::Ptr &) override
+    bool visit(const KCalendarCore::Event::Ptr &) override
     {
         if (mShow) {
             mShow->setText(i18n("&Show Event"));
@@ -1269,7 +1269,7 @@ protected:
         return true;
     }
 
-    bool visit(const KCalCore::Todo::Ptr &) override
+    bool visit(const KCalendarCore::Todo::Ptr &) override
     {
         if (mShow) {
             mShow->setText(i18n("&Show To-do"));
@@ -1283,12 +1283,12 @@ protected:
         return true;
     }
 
-    bool visit(const KCalCore::Journal::Ptr &) override
+    bool visit(const KCalendarCore::Journal::Ptr &) override
     {
         return assignDefaultStrings();
     }
 
-    bool visit(const KCalCore::FreeBusy::Ptr &) override   // to inhibit hidden virtual compile warning
+    bool visit(const KCalendarCore::FreeBusy::Ptr &) override   // to inhibit hidden virtual compile warning
     {
         return false;
     }
@@ -1318,7 +1318,7 @@ void ActionManager::processIncidenceSelection(const Akonadi::Item &item, const Q
     //qCDebug(KORGANIZER_LOG) << "ActionManager::processIncidenceSelection()";
     Q_UNUSED(date);
 
-    const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
         enableIncidenceActions(false);
         return;

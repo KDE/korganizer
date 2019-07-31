@@ -33,7 +33,7 @@
 
 class FilterEdit;
 class QPushButton;
-namespace KCalCore {
+namespace KCalendarCore {
 class CalFilter;
 }
 
@@ -51,7 +51,7 @@ class FilterEditDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit FilterEditDialog(QList<KCalCore::CalFilter *> *, QWidget *parent = nullptr);
+    explicit FilterEditDialog(QList<KCalendarCore::CalFilter *> *, QWidget *parent = nullptr);
     ~FilterEditDialog() override;
 
 Q_SIGNALS:
@@ -76,7 +76,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
     Q_OBJECT
 public:
-    explicit FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent);
+    explicit FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *parent);
     ~FilterEdit();
 
     void updateFilterList();
@@ -97,11 +97,11 @@ private:
     void slotHelp();
 
     bool correctName(const QString &newText);
-    void filterSelected(KCalCore::CalFilter *f);
+    void filterSelected(KCalendarCore::CalFilter *f);
 
     QString mNegativeBackground;
-    QList<KCalCore::CalFilter *> *mFilters = nullptr;
-    KCalCore::CalFilter *mCurrent = nullptr;
+    QList<KCalendarCore::CalFilter *> *mFilters = nullptr;
+    KCalendarCore::CalFilter *mCurrent = nullptr;
     KPIM::TagSelectionDialog *mCategorySelectDialog = nullptr;
 };
 

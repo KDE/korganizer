@@ -68,7 +68,7 @@ bool KOHelper::isStandardCalendar(Akonadi::Collection::Id id)
     return id == CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
 }
 
-void KOHelper::showSaveIncidenceErrorMsg(QWidget *parent, const KCalCore::Incidence::Ptr &incidence)
+void KOHelper::showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence)
 {
     KMessageBox::sorry(
         parent,

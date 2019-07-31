@@ -29,7 +29,7 @@
 
 #include "koeventview.h"
 
-#include <KCalCore/Incidence> //for KCalCore::DateList typedef
+#include <KCalendarCore/Incidence> //for KCalendarCore::DateList typedef
 
 namespace EventViews {
 class ListView;
@@ -51,7 +51,7 @@ public:
     int maxDatesHint() const override;
     int currentDateCount() const override;
     Akonadi::Item::List selectedIncidences() override;
-    KCalCore::DateList selectedIncidenceDates() override;
+    KCalendarCore::DateList selectedIncidenceDates() override;
 
     // Shows all incidences of the calendar
     void showAll();
