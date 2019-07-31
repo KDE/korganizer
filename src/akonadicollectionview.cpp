@@ -253,9 +253,9 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 
     if (goodMimeTypes.isEmpty()) {
         goodMimeTypes << QStringLiteral("text/calendar")
-                      << KCalCore::Event::eventMimeType()
-                      << KCalCore::Todo::todoMimeType()
-                      << KCalCore::Journal::journalMimeType();
+                      << KCalendarCore::Event::eventMimeType()
+                      << KCalendarCore::Todo::todoMimeType()
+                      << KCalendarCore::Journal::journalMimeType();
     }
 
     for (int i = 0; i < goodMimeTypes.count(); ++i) {
@@ -554,7 +554,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mActionManager->action(Akonadi::StandardActionManager::CreateCollection)->setProperty(
             "ContentMimeTypes",
             QStringList() << Akonadi::Collection::mimeType()
-                          << KCalCore::Event::eventMimeType());
+                          << KCalendarCore::Event::eventMimeType());
 
         mActionManager->interceptAction(Akonadi::StandardActionManager::CollectionProperties);
         connect(mActionManager->action(

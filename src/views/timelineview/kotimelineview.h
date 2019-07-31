@@ -50,7 +50,7 @@ public:
     ~KOTimelineView() override;
 
     Akonadi::Item::List selectedIncidences() override;
-    KCalCore::DateList selectedIncidenceDates() override;
+    KCalendarCore::DateList selectedIncidenceDates() override;
     int currentDateCount() const override;
     void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;

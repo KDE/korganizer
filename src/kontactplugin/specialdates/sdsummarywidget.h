@@ -26,7 +26,7 @@
 #ifndef SDSUMMARYWIDGET_H
 #define SDSUMMARYWIDGET_H
 
-#include <KCalCore/Event>
+#include <KCalendarCore/Event>
 
 #include <KontactInterface/Summary>
 #include <Akonadi/Calendar/ETMCalendar>
@@ -72,8 +72,8 @@ private:
     void slotBirthdayJobFinished(KJob *job);
     void slotItemFetchJobDone(KJob *job);
 
-    int span(const KCalCore::Event::Ptr &event) const;
-    int dayof(const KCalCore::Event::Ptr &event, const QDate &date) const;
+    int span(const KCalendarCore::Event::Ptr &event) const;
+    int dayof(const KCalendarCore::Event::Ptr &event, const QDate &date) const;
     bool initHolidays();
     void dateDiff(const QDate &date, int &days, int &years) const;
     void createLabels();

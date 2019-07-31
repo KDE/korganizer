@@ -156,7 +156,7 @@ void DateNavigatorContainer::updateConfig()
     }
 }
 
-void DateNavigatorContainer::selectDates(const KCalCore::DateList &dateList, const QDate &preferredMonth)
+void DateNavigatorContainer::selectDates(const KCalendarCore::DateList &dateList, const QDate &preferredMonth)
 {
     if (!dateList.isEmpty()) {
         QDate start(dateList.first());
@@ -255,7 +255,7 @@ void DateNavigatorContainer::resizeAllContents()
 
         mHorizontalCount = horizontalCount;
         mVerticalCount = verticalCount;
-        const KCalCore::DateList dates = mNavigatorView->selectedDates();
+        const KCalendarCore::DateList dates = mNavigatorView->selectedDates();
         if (!dates.isEmpty()) {
             setBaseDates(dates.first());
             selectDates(dates);
@@ -371,7 +371,7 @@ QDate DateNavigatorContainer::monthOfNavigator(int navigatorIndex) const
     }
 }
 
-void DateNavigatorContainer::handleDatesSelectedSignal(const KCalCore::DateList &dateList)
+void DateNavigatorContainer::handleDatesSelectedSignal(const KCalendarCore::DateList &dateList)
 {
     Q_ASSERT(sender());
     // When we have more than one KDateNavigator, both can have the

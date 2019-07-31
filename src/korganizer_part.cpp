@@ -102,7 +102,7 @@ KOrganizerPart::~KOrganizerPart()
 void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date)
 {
     Q_UNUSED(date);
-    const KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (incidence) {
         Q_EMIT textChanged(incidence->summary() + QLatin1String(" / ")
                            +KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().

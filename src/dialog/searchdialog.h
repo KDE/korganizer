@@ -42,7 +42,7 @@ namespace EventViews {
 class ListView;
 }
 
-namespace KCalCore {
+namespace KCalendarCore {
 class Incidence;
 }
 
@@ -56,7 +56,7 @@ public:
     void updateView();
 
 public Q_SLOTS:
-    void changeIncidenceDisplay(KCalCore::Incidence *, int)
+    void changeIncidenceDisplay(KCalendarCore::Incidence *, int)
     {
         updateView();
     }

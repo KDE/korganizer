@@ -45,7 +45,7 @@ public:
     Akonadi::Item::List selectedIncidences() override;
 
     /** Returns dates of the currently selected events */
-    KCalCore::DateList selectedIncidenceDates() override;
+    KCalendarCore::DateList selectedIncidenceDates() override;
 
     QDateTime selectionStart() override;
 

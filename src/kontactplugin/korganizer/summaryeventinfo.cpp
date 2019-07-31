@@ -28,9 +28,9 @@
 
 #include <AkonadiCore/Item>
 
-#include <KCalCore/Calendar>
-#include <KCalCore/Event>
-using namespace KCalCore;
+#include <KCalendarCore/Calendar>
+#include <KCalendarCore/Event>
+using namespace KCalendarCore;
 
 #include <KCalUtils/IncidenceFormatter>
 using namespace KCalUtils;
@@ -47,7 +47,7 @@ bool SummaryEventInfo::mShowAnniversaries = true;
 typedef QHash<QString, QDateTime> DateTimeByUidHash;
 Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid)
 
-static bool eventLessThan(const KCalCore::Event::Ptr &event1, const KCalCore::Event::Ptr &event2)
+static bool eventLessThan(const KCalendarCore::Event::Ptr &event1, const KCalendarCore::Event::Ptr &event2)
 {
     QDateTime kdt1 = sDateTimeByUid()->value(event1->instanceIdentifier());
     QDateTime kdt2 = sDateTimeByUid()->value(event2->instanceIdentifier());
@@ -66,7 +66,7 @@ void SummaryEventInfo::setShowSpecialEvents(bool showBirthdays, bool showAnniver
     mShowAnniversaries = showAnniversaries;
 }
 
-bool SummaryEventInfo::skip(const KCalCore::Event::Ptr &event)
+bool SummaryEventInfo::skip(const KCalendarCore::Event::Ptr &event)
 {
     //simply check categories because the birthdays resource always adds
     //the appropriate category to the event.
@@ -92,14 +92,14 @@ SummaryEventInfo::SummaryEventInfo()
 /**static*/
 SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, const QDate &end, const Akonadi::ETMCalendar::Ptr &calendar)
 {
-    KCalCore::Event::List allEvents = calendar->events();
-    KCalCore::Event::List events;
+    KCalendarCore::Event::List allEvents = calendar->events();
+    KCalendarCore::Event::List events;
     const auto currentDateTime = QDateTime::currentDateTime();
     const QDate currentDate = currentDateTime.date();
 
     sDateTimeByUid()->clear();
     for (int i = 0; i < allEvents.count(); ++i) {
-        KCalCore::Event::Ptr event = allEvents.at(i);
+        KCalendarCore::Event::Ptr event = allEvents.at(i);
         if (skip(event)) {
             continue;
         }
@@ -130,7 +130,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
     std::sort(events.begin(), events.end(), eventLessThan);
 
     SummaryEventInfo::List eventInfoList;
-    KCalCore::Event::Ptr ev;
+    KCalendarCore::Event::Ptr ev;
     eventInfoList.reserve(events.count());
     auto itEnd = events.constEnd();
     for (auto it = events.constBegin(); it != itEnd; ++it) {

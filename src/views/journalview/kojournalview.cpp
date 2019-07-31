@@ -171,11 +171,11 @@ void KOJournalView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
     mJournalView->setCalendar(calendar);
 }
 
-void KOJournalView::printJournal(const KCalCore::Journal::Ptr &journal, bool preview)
+void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview)
 {
     if (journal) {
         CalendarSupport::CalPrinter printer(this, calendar(), true);
-        KCalCore::Incidence::List selectedIncidences;
+        KCalendarCore::Incidence::List selectedIncidences;
         selectedIncidences.append(journal);
 
         const QDate dtStart = journal->dtStart().date();

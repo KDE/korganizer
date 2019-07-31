@@ -29,7 +29,7 @@
 #include <QString>
 
 #include <AkonadiCore/Collection>
-#include <KCalCore/Attendee>
+#include <KCalendarCore/Attendee>
 #include <KIdentityManagement/KIdentityManagement/IdentityManager>
 
 class KJob;
@@ -50,7 +50,7 @@ private:
     void modifyResult(KJob *job);
 
     void setupSearchCollections();
-    void updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status, const QString &name, const QString &displayName);
+    void updateSearchCollection(Akonadi::Collection col, KCalendarCore::Attendee::PartStat status, const QString &name, const QString &displayName);
 
 private:
     KIdentityManagement::IdentityManager *mIdentityManager = nullptr;

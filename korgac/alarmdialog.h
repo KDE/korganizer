@@ -26,7 +26,7 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <KCalCore/Incidence>
+#include <KCalendarCore/Incidence>
 
 #include <QDialog>
 #include <QMenu>
@@ -114,13 +114,13 @@ private:
     void updateButtons();
     typedef QList<ReminderTreeItem *> ReminderList;
 
-    static QDateTime triggerDateForIncidence(const KCalCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
+    static QDateTime triggerDateForIncidence(const KCalendarCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
 
     // Removes each Incidence-X group that has one of the specified uids
     void removeFromConfig(const QList<Akonadi::Item::Id> &);
 
     // Opens through dbus, @deprecated
-    bool openIncidenceEditorThroughKOrganizer(const KCalCore::Incidence::Ptr &incidence);
+    bool openIncidenceEditorThroughKOrganizer(const KCalendarCore::Incidence::Ptr &incidence);
 
     // opens directly
     bool openIncidenceEditorNG(const Akonadi::Item &incidence);

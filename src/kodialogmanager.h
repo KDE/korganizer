@@ -40,7 +40,7 @@ namespace IncidenceEditorNG {
 class IncidenceDialog;
 }
 
-namespace KCalCore {
+namespace KCalendarCore {
 class CalFilter;
 }
 namespace Akonadi {
@@ -74,7 +74,7 @@ public Q_SLOTS:
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog(QList<KCalCore::CalFilter *> *filters);
+    void showFilterEditDialog(QList<KCalendarCore::CalFilter *> *filters);
 
 private Q_SLOTS:
     void slotHelp();

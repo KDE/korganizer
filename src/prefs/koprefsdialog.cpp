@@ -47,8 +47,8 @@
 #include <AkonadiWidgets/ManageAccountWidget>
 #include <akonadi/calendar/calendarsettings.h>  //krazy:exclude=camelcase this is a generated file
 
-#include <KCalCore/Event>
-#include <KCalCore/Journal>
+#include <KCalendarCore/Event>
+#include <KCalendarCore/Journal>
 
 #include <KHolidays/HolidayRegion>
 
@@ -864,9 +864,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     mResourceCombo = new Akonadi::CollectionComboBox(resourceGroup);
     //mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
     QStringList mimetypes;
-    mimetypes << KCalCore::Todo::todoMimeType();
-    mimetypes << KCalCore::Journal::journalMimeType();
-    mimetypes << KCalCore::Event::eventMimeType();
+    mimetypes << KCalendarCore::Todo::todoMimeType();
+    mimetypes << KCalendarCore::Journal::journalMimeType();
+    mimetypes << KCalendarCore::Event::eventMimeType();
 
     mResourceCombo->setMimeTypeFilter(mimetypes);
     mResourceCombo->setWhatsThis(

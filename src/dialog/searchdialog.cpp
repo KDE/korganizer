@@ -166,19 +166,19 @@ void SearchDialog::search(const QRegExp &re)
     const QDate startDt = m_ui->startDate->date();
     const QDate endDt = m_ui->endDate->date();
 
-    KCalCore::Event::List events;
+    KCalendarCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
         events
             = m_calendarview->calendar()->events(
                   startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
     }
 
-    KCalCore::Todo::List todos;
+    KCalendarCore::Todo::List todos;
 
     if (m_ui->todosCheck->isChecked()) {
         if (m_ui->includeUndatedTodos->isChecked()) {
-            const KCalCore::Todo::List alltodos = m_calendarview->calendar()->todos();
-            for (const KCalCore::Todo::Ptr &todo : alltodos) {
+            const KCalendarCore::Todo::List alltodos = m_calendarview->calendar()->todos();
+            for (const KCalendarCore::Todo::Ptr &todo : alltodos) {
                 Q_ASSERT(todo);
                 if ((!todo->hasStartDate() && !todo->hasDueDate())       // undated
                     || (todo->hasStartDate()
@@ -202,7 +202,7 @@ void SearchDialog::search(const QRegExp &re)
         }
     }
 
-    KCalCore::Journal::List journals;
+    KCalendarCore::Journal::List journals;
     if (m_ui->journalsCheck->isChecked()) {
         QDate dt = startDt;
         while (dt <= endDt) {
@@ -212,9 +212,9 @@ void SearchDialog::search(const QRegExp &re)
     }
 
     mMatchedEvents.clear();
-    const KCalCore::Incidence::List incidences
+    const KCalendarCore::Incidence::List incidences
         = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
-    for (const KCalCore::Incidence::Ptr &ev : incidences) {
+    for (const KCalendarCore::Incidence::Ptr &ev : incidences) {
         Q_ASSERT(ev);
         Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());
         if (m_ui->summaryCheck->isChecked()) {
@@ -242,8 +242,8 @@ void SearchDialog::search(const QRegExp &re)
             }
         }
         if (m_ui->attendeeCheck->isChecked()) {
-            const KCalCore::Attendee::List lstAttendees = ev->attendees();
-            for (const KCalCore::Attendee &attendee : lstAttendees) {
+            const KCalendarCore::Attendee::List lstAttendees = ev->attendees();
+            for (const KCalendarCore::Attendee &attendee : lstAttendees) {
                 if (re.indexIn(attendee.fullName()) != -1) {
                     mMatchedEvents.append(item);
                     break;

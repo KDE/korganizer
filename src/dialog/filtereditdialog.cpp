@@ -27,7 +27,7 @@
 #include "filtereditdialog.h"
 #include "korganizer_debug.h"
 
-#include <KCalCore/CalFilter>
+#include <KCalendarCore/CalFilter>
 
 #include <LibkdepimAkonadi/TagWidgets>
 
@@ -38,7 +38,7 @@
 
 #include <QDialogButtonBox>
 
-FilterEditDialog::FilterEditDialog(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
+FilterEditDialog::FilterEditDialog(QList<KCalendarCore::CalFilter *> *filters, QWidget *parent)
     : QDialog(parent)
 {
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
@@ -92,7 +92,7 @@ void FilterEditDialog::setDialogConsistent(bool consistent)
     mApplyButton->setEnabled(consistent);
 }
 
-FilterEdit::FilterEdit(QList<KCalCore::CalFilter *> *filters, QWidget *parent)
+FilterEdit::FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *parent)
     : QWidget(parent)
     , mCurrent(nullptr)
     , mCategorySelectDialog(nullptr)
@@ -130,15 +130,15 @@ void FilterEdit::updateFilterList()
         mDetailsFrame->setEnabled(false);
         Q_EMIT dataConsistent(false);
     } else {
-        QList<KCalCore::CalFilter *>::iterator i;
-        QList<KCalCore::CalFilter *>::iterator end(mFilters->end());
+        QList<KCalendarCore::CalFilter *>::iterator i;
+        QList<KCalendarCore::CalFilter *>::iterator end(mFilters->end());
         for (i = mFilters->begin(); i != end; ++i) {
             if (*i) {
                 mRulesList->addItem((*i)->name());
             }
         }
         if (mRulesList->currentRow() != -1) {
-            KCalCore::CalFilter *f = mFilters->at(mRulesList->currentRow());
+            KCalendarCore::CalFilter *f = mFilters->at(mRulesList->currentRow());
             if (f) {
                 filterSelected(f);
             }
@@ -162,19 +162,19 @@ void FilterEdit::saveChanges()
     mCurrent->setName(mNameLineEdit->text());
     int criteria = 0;
     if (mCompletedCheck->isChecked()) {
-        criteria |= KCalCore::CalFilter::HideCompletedTodos;
+        criteria |= KCalendarCore::CalFilter::HideCompletedTodos;
     }
     if (mRecurringCheck->isChecked()) {
-        criteria |= KCalCore::CalFilter::HideRecurring;
+        criteria |= KCalendarCore::CalFilter::HideRecurring;
     }
     if (mCatShowCheck->isChecked()) {
-        criteria |= KCalCore::CalFilter::ShowCategories;
+        criteria |= KCalendarCore::CalFilter::ShowCategories;
     }
     if (mHideInactiveTodosCheck->isChecked()) {
-        criteria |= KCalCore::CalFilter::HideInactiveTodos;
+        criteria |= KCalendarCore::CalFilter::HideInactiveTodos;
     }
     if (mHideTodosNotAssignedToMeCheck->isChecked()) {
-        criteria |= KCalCore::CalFilter::HideNoMatchingAttendeeTodos;
+        criteria |= KCalendarCore::CalFilter::HideNoMatchingAttendeeTodos;
     }
     mCurrent->setCriteria(criteria);
     mCurrent->setCompletedTimeSpan(mCompletedTimeSpan->value());
@@ -199,7 +199,7 @@ void FilterEdit::filterSelected()
     }
 }
 
-void FilterEdit::filterSelected(KCalCore::CalFilter *filter)
+void FilterEdit::filterSelected(KCalendarCore::CalFilter *filter)
 {
     if (!filter || filter == mCurrent) {
         return;
@@ -212,15 +212,15 @@ void FilterEdit::filterSelected(KCalCore::CalFilter *filter)
     mNameLineEdit->setText(mCurrent->name());
     mNameLineEdit->blockSignals(false);
     mDetailsFrame->setEnabled(true);
-    mCompletedCheck->setChecked(mCurrent->criteria() & KCalCore::CalFilter::HideCompletedTodos);
+    mCompletedCheck->setChecked(mCurrent->criteria() & KCalendarCore::CalFilter::HideCompletedTodos);
     mCompletedTimeSpan->setValue(mCurrent->completedTimeSpan());
-    mRecurringCheck->setChecked(mCurrent->criteria() & KCalCore::CalFilter::HideRecurring);
+    mRecurringCheck->setChecked(mCurrent->criteria() & KCalendarCore::CalFilter::HideRecurring);
     mHideInactiveTodosCheck->setChecked(
-        mCurrent->criteria() & KCalCore::CalFilter::HideInactiveTodos);
+        mCurrent->criteria() & KCalendarCore::CalFilter::HideInactiveTodos);
     mHideTodosNotAssignedToMeCheck->setChecked(
-        mCurrent->criteria() & KCalCore::CalFilter::HideNoMatchingAttendeeTodos);
+        mCurrent->criteria() & KCalendarCore::CalFilter::HideNoMatchingAttendeeTodos);
 
-    if (mCurrent->criteria() & KCalCore::CalFilter::ShowCategories) {
+    if (mCurrent->criteria() & KCalendarCore::CalFilter::ShowCategories) {
         mCatShowCheck->setChecked(true);
     } else {
         mCatHideCheck->setChecked(true);
@@ -248,8 +248,8 @@ void FilterEdit::bNewPressed()
         }
     }
 
-    KCalCore::CalFilter *newFilter
-        = new KCalCore::CalFilter(newFilterName);
+    KCalendarCore::CalFilter *newFilter
+        = new KCalendarCore::CalFilter(newFilterName);
     mFilters->append(newFilter);
     updateFilterList();
     mRulesList->setCurrentRow(mRulesList->count() - 1);
@@ -275,7 +275,7 @@ void FilterEdit::bDeletePressed()
     }
 
     int selected = mRulesList->currentRow();
-    KCalCore::CalFilter *filter = mFilters->at(selected);
+    KCalendarCore::CalFilter *filter = mFilters->at(selected);
     mFilters->removeAll(filter);
     delete filter;
     mCurrent = nullptr;
@@ -298,7 +298,7 @@ void FilterEdit::updateSelectedName(const QString &newText)
     }
     bool allOk = true;
 
-    for (KCalCore::CalFilter *i : qAsConst(*mFilters)) {
+    for (KCalendarCore::CalFilter *i : qAsConst(*mFilters)) {
         if (i && i->name().isEmpty()) {
             allOk = false;
         }

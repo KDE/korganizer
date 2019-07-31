@@ -29,7 +29,7 @@
 #ifndef KORG_DATENAVIGATOR_H
 #define KORG_DATENAVIGATOR_H
 
-#include <KCalCore/IncidenceBase> // for KCalCore::DateList typedef
+#include <KCalendarCore/IncidenceBase> // for KCalendarCore::DateList typedef
 
 #include <QObject>
 #include <QDate>
@@ -45,12 +45,12 @@ public:
     explicit DateNavigator(QObject *parent = nullptr);
     ~DateNavigator();
 
-    KCalCore::DateList selectedDates();
+    KCalendarCore::DateList selectedDates();
 
     int datesCount() const;
 
 public Q_SLOTS:
-    void selectDates(const KCalCore::DateList &, const QDate &preferredMonth = QDate());
+    void selectDates(const KCalendarCore::DateList &, const QDate &preferredMonth = QDate());
     void selectDate(const QDate &);
 
     void selectDates(int count);
@@ -85,7 +85,7 @@ Q_SIGNALS:
     /* preferredMonth is useful when the datelist crosses months,
        if valid, any month-like component should honour it
     */
-    void datesSelected(const KCalCore::DateList &, const QDate &preferredMonth);
+    void datesSelected(const KCalendarCore::DateList &, const QDate &preferredMonth);
 
 protected:
     void emitSelected(const QDate &preferredMonth = QDate());
@@ -99,7 +99,7 @@ private:
     */
     void shiftMonth(const QDate &date, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit, int offset);
 
-    KCalCore::DateList mSelectedDates;
+    KCalendarCore::DateList mSelectedDates;
 
     enum {
         MAX_SELECTABLE_DAYS = 50

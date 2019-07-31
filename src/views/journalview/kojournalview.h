@@ -26,7 +26,7 @@
 #define KORG_VIEWS_KOJOURNALVIEW_H
 
 #include "baseview.h"
-#include <KCalCore/Incidence> // for KCalCore::DateList typedef
+#include <KCalendarCore/Incidence> // for KCalendarCore::DateList typedef
 
 namespace EventViews {
 class JournalView;
@@ -49,9 +49,9 @@ public:
     int currentDateCount() const override;
     Akonadi::Item::List selectedIncidences() override;
 
-    KCalCore::DateList selectedIncidenceDates() override
+    KCalendarCore::DateList selectedIncidenceDates() override
     {
-        return KCalCore::DateList();
+        return KCalendarCore::DateList();
     }
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
@@ -70,7 +70,7 @@ public Q_SLOTS:
     void changeIncidenceDisplay(const Akonadi::Item & incidence,
                                 Akonadi::IncidenceChanger::ChangeType) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
-    void printJournal(const KCalCore::Journal::Ptr &journal, bool preview);
+    void printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview);
 
 private:
     EventViews::JournalView *mJournalView = nullptr;

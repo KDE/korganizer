@@ -38,8 +38,8 @@
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
 
-#include <KCalCore/Event>
-#include <KCalCore/Todo>
+#include <KCalendarCore/Event>
+#include <KCalendarCore/Todo>
 #include <KCalUtils/IncidenceFormatter>
 
 #include <KIdentityManagement/Identity>
@@ -71,7 +71,7 @@
 #include <QToolButton>
 
 using namespace KIdentityManagement;
-using namespace KCalCore;
+using namespace KCalendarCore;
 using namespace KCalUtils;
 
 // fallback defaults
@@ -981,7 +981,7 @@ QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence, 
 
 void AlarmDialog::slotCalendarChanged()
 {
-    KCalCore::Incidence::List incidences = mCalendar->incidences();
+    KCalendarCore::Incidence::List incidences = mCalendar->incidences();
     const Akonadi::Item::List items = mCalendar->itemList(incidences);
     Akonadi::Item::List::ConstIterator end(items.constEnd());
     for (Akonadi::Item::List::ConstIterator it = items.constBegin();

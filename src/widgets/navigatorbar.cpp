@@ -122,7 +122,7 @@ void NavigatorBar::showButtons(bool left, bool right)
     }
 }
 
-void NavigatorBar::selectDates(const KCalCore::DateList &dateList)
+void NavigatorBar::selectDates(const KCalendarCore::DateList &dateList)
 {
     if (!dateList.isEmpty()) {
         mDate = dateList.first();

@@ -40,7 +40,7 @@ DateNavigator::~DateNavigator()
 {
 }
 
-KCalCore::DateList DateNavigator::selectedDates()
+KCalendarCore::DateList DateNavigator::selectedDates()
 {
     return mSelectedDates;
 }
@@ -50,7 +50,7 @@ int DateNavigator::datesCount() const
     return mSelectedDates.count();
 }
 
-void DateNavigator::selectDates(const KCalCore::DateList &dateList, const QDate &preferredMonth)
+void DateNavigator::selectDates(const KCalendarCore::DateList &dateList, const QDate &preferredMonth)
 {
     if (!dateList.isEmpty()) {
         mSelectedDates = dateList;
@@ -80,7 +80,7 @@ void DateNavigator::selectDates(int count)
 
 void DateNavigator::selectDates(const QDate &d, int count, const QDate &preferredMonth)
 {
-    KCalCore::DateList dates;
+    KCalendarCore::DateList dates;
     dates.reserve(count);
 
     for (int i = 0; i < count; ++i) {

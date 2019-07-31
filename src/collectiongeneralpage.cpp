@@ -24,9 +24,9 @@
 #include <EntityDisplayAttribute>
 #include <Akonadi/Calendar/BlockAlarmsAttribute>
 
-#include <KCalCore/Event>
-#include <KCalCore/Journal>
-#include <KCalCore/Todo>
+#include <KCalendarCore/Event>
+#include <KCalendarCore/Journal>
+#include <KCalendarCore/Todo>
 
 #include <KIconButton>
 #include <QLineEdit>
@@ -152,11 +152,11 @@ void CollectionGeneralPage::load(const Akonadi::Collection &collection)
     if (iconName.isEmpty()) {
         const QStringList mimeTypes = collection.contentMimeTypes();
         if (collection.contentMimeTypes().count() > 1
-            || collection.contentMimeTypes().contains(KCalCore::Event::eventMimeType())) {
+            || collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType())) {
             mIconButton->setIcon(QIcon::fromTheme(QStringLiteral("view-pim-calendar")));
-        } else if (collection.contentMimeTypes().contains(KCalCore::Todo::todoMimeType())) {
+        } else if (collection.contentMimeTypes().contains(KCalendarCore::Todo::todoMimeType())) {
             mIconButton->setIcon(QIcon::fromTheme(QStringLiteral("view-pim-tasks")));
-        } else if (collection.contentMimeTypes().contains(KCalCore::Journal::journalMimeType())) {
+        } else if (collection.contentMimeTypes().contains(KCalendarCore::Journal::journalMimeType())) {
             mIconButton->setIcon(QIcon::fromTheme(QStringLiteral("view-pim-journal")));
         } else if (mimeTypes.isEmpty()) {
             mIconButton->setIcon(QIcon::fromTheme(QStringLiteral("folder-grey")));

@@ -34,8 +34,8 @@
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalPrintDefaultPlugins>
 
-#include <KCalCore/CalFormat>
-#include <KCalCore/Incidence>
+#include <KCalendarCore/CalFormat>
+#include <KCalendarCore/Incidence>
 #include <Akonadi/Notes/NoteUtils>
 #include <AkonadiCore/CollectionFetchJob>
 #include <AkonadiCore/CollectionFetchScope>
@@ -136,7 +136,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     const bool hasChangeRights = mCalendar->hasRight(mCurrentIncidence,
                                                      Akonadi::Collection::CanChangeItem);
 
-    KCalCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
+    KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
     Q_ASSERT(incidence);
     if (incidence->recurs()) {
         const QDateTime thisDateTime(qd, {}, Qt::LocalTime);
@@ -154,19 +154,19 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
     for (it = mEditOnlyItems.begin(); it != end; ++it) {
         (*it)->setEnabled(hasChangeRights);
     }
-    mToggleReminder->setVisible((incidence->type() != KCalCore::Incidence::TypeJournal));
+    mToggleReminder->setVisible((incidence->type() != KCalendarCore::Incidence::TypeJournal));
     end = mRecurrenceItems.end();
     for (it = mRecurrenceItems.begin(); it != end; ++it) {
         (*it)->setVisible(incidence->recurs());
     }
     end = mTodoOnlyItems.end();
     for (it = mTodoOnlyItems.begin(); it != end; ++it) {
-        (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeTodo);
+        (*it)->setVisible(incidence->type() == KCalendarCore::Incidence::TypeTodo);
         (*it)->setEnabled(hasChangeRights);
     }
     end = mEventOnlyItems.end();
     for (it = mEventOnlyItems.begin(); it != end; ++it) {
-        (*it)->setVisible(incidence->type() == KCalCore::Incidence::TypeEvent);
+        (*it)->setVisible(incidence->type() == KCalendarCore::Incidence::TypeEvent);
         (*it)->setEnabled(hasChangeRights);
     }
     popup(QCursor::pos());
@@ -199,9 +199,9 @@ void KOEventPopupMenu::print(bool preview)
             &CalendarSupport::CalPrinter::updateConfig);
 
     //Item::List selectedIncidences;
-    KCalCore::Incidence::List selectedIncidences;
-    Q_ASSERT(mCurrentIncidence.hasPayload<KCalCore::Incidence::Ptr>());
-    selectedIncidences.append(mCurrentIncidence.payload<KCalCore::Incidence::Ptr>());
+    KCalendarCore::Incidence::List selectedIncidences;
+    Q_ASSERT(mCurrentIncidence.hasPayload<KCalendarCore::Incidence::Ptr>());
+    selectedIncidences.append(mCurrentIncidence.payload<KCalendarCore::Incidence::Ptr>());
 
     printer.print(CalendarSupport::CalPrinterBase::Incidence,
                   mCurrentDate, mCurrentDate, selectedIncidences, preview);
@@ -286,18 +286,18 @@ void KOEventPopupMenu::createEvent()
     }
 
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
-        KCalCore::Todo::Ptr todo(CalendarSupport::todo(mCurrentIncidence));
-        KCalCore::Event::Ptr event(new KCalCore::Event(*todo));
-        event->setUid(KCalCore::CalFormat::createUniqueId());
+        KCalendarCore::Todo::Ptr todo(CalendarSupport::todo(mCurrentIncidence));
+        KCalendarCore::Event::Ptr event(new KCalendarCore::Event(*todo));
+        event->setUid(KCalendarCore::CalFormat::createUniqueId());
         event->setDtStart(todo->dtStart());
         event->setAllDay(todo->allDay());
         event->setDtEnd(todo->dtDue());
         Akonadi::Item newEventItem;
-        newEventItem.setMimeType(KCalCore::Event::eventMimeType());
-        newEventItem.setPayload<KCalCore::Event::Ptr>(event);
+        newEventItem.setMimeType(KCalendarCore::Event::eventMimeType());
+        newEventItem.setPayload<KCalendarCore::Event::Ptr>(event);
 
         IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
-            true, KCalCore::IncidenceBase::TypeEvent, nullptr, this);
+            true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newEventItem);
         dlg->open();
@@ -314,7 +314,7 @@ void KOEventPopupMenu::createNote()
 {
     // Must be a Incidence
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        KCalCore::Incidence::Ptr incidence(CalendarSupport::incidence(mCurrentIncidence));
+        KCalendarCore::Incidence::Ptr incidence(CalendarSupport::incidence(mCurrentIncidence));
         Akonadi::NoteUtils::NoteMessageWrapper note;
         note.setTitle(incidence->summary());
         note.setText(incidence->description(),
@@ -362,18 +362,18 @@ void KOEventPopupMenu::createTodo()
     }
 
     if (CalendarSupport::hasEvent(mCurrentIncidence)) {
-        KCalCore::Event::Ptr event(CalendarSupport::event(mCurrentIncidence));
-        KCalCore::Todo::Ptr todo(new KCalCore::Todo(*event));
-        todo->setUid(KCalCore::CalFormat::createUniqueId());
+        KCalendarCore::Event::Ptr event(CalendarSupport::event(mCurrentIncidence));
+        KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo(*event));
+        todo->setUid(KCalendarCore::CalFormat::createUniqueId());
         todo->setDtStart(event->dtStart());
         todo->setAllDay(event->allDay());
         todo->setDtDue(event->dtEnd());
         Akonadi::Item newTodoItem;
-        newTodoItem.setMimeType(KCalCore::Todo::todoMimeType());
-        newTodoItem.setPayload<KCalCore::Todo::Ptr>(todo);
+        newTodoItem.setMimeType(KCalendarCore::Todo::todoMimeType());
+        newTodoItem.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
         IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
-            true, KCalCore::IncidenceBase::TypeTodo, nullptr, this);
+            true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newTodoItem);
         dlg->open();

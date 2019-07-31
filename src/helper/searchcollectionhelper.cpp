@@ -33,9 +33,9 @@
 #include <AkonadiCore/SearchCreateJob>
 #include <AkonadiCore/SearchQuery>
 
-#include <KCalCore/Event>
-#include <KCalCore/Journal>
-#include <KCalCore/Todo>
+#include <KCalendarCore/Event>
+#include <KCalendarCore/Journal>
+#include <KCalendarCore/Todo>
 
 #include <KLocalizedString>
 
@@ -84,7 +84,7 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
     updateDeclinedInvitation();
 }
 
-void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCalCore::Attendee::PartStat status, const QString &name, const QString &displayName)
+void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCalendarCore::Attendee::PartStat status, const QString &name, const QString &displayName)
 {
     // Update or create search collections
 
@@ -100,9 +100,9 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
     if (!col.isValid()) {
         Akonadi::SearchCreateJob *job = new Akonadi::SearchCreateJob(name, query);
         job->setRemoteSearchEnabled(false);
-        job->setSearchMimeTypes(QStringList() << KCalCore::Event::eventMimeType()
-                                              << KCalCore::Todo::todoMimeType()
-                                              << KCalCore::Journal::journalMimeType());
+        job->setSearchMimeTypes(QStringList() << KCalendarCore::Event::eventMimeType()
+                                              << KCalendarCore::Todo::todoMimeType()
+                                              << KCalendarCore::Journal::journalMimeType());
         connect(job, &Akonadi::SearchCreateJob::result, this,
                 &SearchCollectionHelper::createSearchJobFinished);
         qCDebug(KORGANIZER_LOG) << "We have to create a " << name << " virtual Collection";
@@ -126,7 +126,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
 
 void SearchCollectionHelper::updateDeclinedInvitation()
 {
-    updateSearchCollection(mDeclineCollection, KCalCore::Attendee::Declined,
+    updateSearchCollection(mDeclineCollection, KCalendarCore::Attendee::Declined,
                            QStringLiteral("DeclinedInvitations"),
                            i18nc("A collection of all declined invidations.",
                                  "Declined Invitations"));
@@ -134,7 +134,7 @@ void SearchCollectionHelper::updateDeclinedInvitation()
 
 void SearchCollectionHelper::updateOpenInvitation()
 {
-    updateSearchCollection(mOpenInvitationCollection, KCalCore::Attendee::NeedsAction,
+    updateSearchCollection(mOpenInvitationCollection, KCalendarCore::Attendee::NeedsAction,
                            QStringLiteral("OpenInvitations"),
                            i18nc("A collection of all open invidations.", "Open Invitations"));
 }

@@ -41,7 +41,7 @@
 
 #include <QApplication>
 
-using namespace KCalCore;
+using namespace KCalendarCore;
 
 KOAlarmClient::KOAlarmClient(QObject *parent)
     : QObject(parent)

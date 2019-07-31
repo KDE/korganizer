@@ -25,7 +25,7 @@
 
 #include <EventViews/ViewCalendar>
 
-#include <KCalCore/FreeBusy>
+#include <KCalendarCore/FreeBusy>
 #include <QDialog>
 
 class Ui_quickview;

@@ -29,7 +29,7 @@
 #include "calendarview.h"
 #include "korganizer.h"
 #include "korganizer-version.h"
-#include <KCalCore/CalFormat>
+#include <KCalendarCore/CalFormat>
 #include "KdepimDBusInterfaces/ReminderClient"
 
 #include "korganizer_debug.h"
@@ -40,7 +40,7 @@ KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     : KontactInterface::PimUniqueApplication(argc, argv)
 {
     QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
-    KCalCore::CalFormat::setApplication(QStringLiteral("KOrganizer"),
+    KCalendarCore::CalFormat::setApplication(QStringLiteral("KOrganizer"),
                                         prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
 }
 

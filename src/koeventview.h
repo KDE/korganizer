@@ -140,7 +140,7 @@ Q_SIGNALS:
      * selected dates has changed.
      *   @param datelist the new list of selected dates
      */
-    void datesSelected(const KCalCore::DateList &datelist);
+    void datesSelected(const KCalendarCore::DateList &datelist);
 
     /**
      * Emitted when an event is moved using the mouse in an agenda

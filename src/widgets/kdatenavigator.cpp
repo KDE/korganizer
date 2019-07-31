@@ -126,7 +126,7 @@ void KDateNavigator::setBaseDate(const QDate &date)
         updateView();
 
         // Use the base date to show the monthname and year in the header
-        KCalCore::DateList dates;
+        KCalendarCore::DateList dates;
         dates.append(date);
         mNavigatorBar->selectDates(dates);
 
@@ -274,7 +274,7 @@ void KDateNavigator::selectMonthHelper(int monthDifference)
 {
     QDate baseDateNextMonth = mBaseDate.addMonths(monthDifference);
 
-    KCalCore::DateList newSelection = mSelectedDates;
+    KCalendarCore::DateList newSelection = mSelectedDates;
     for (int i = 0; i < mSelectedDates.count(); ++i) {
         newSelection[i] = newSelection[i].addMonths(monthDifference);
     }
@@ -296,7 +296,7 @@ void KDateNavigator::selectPreviousMonth()
     selectMonthHelper(-1);
 }
 
-void KDateNavigator::selectDates(const KCalCore::DateList &dateList)
+void KDateNavigator::selectDates(const KCalendarCore::DateList &dateList)
 {
     if (!dateList.isEmpty()) {
         mSelectedDates = dateList;

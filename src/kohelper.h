@@ -29,7 +29,7 @@
 
 #include <AkonadiCore/Collection>
 
-#include <KCalCore/Incidence>
+#include <KCalendarCore/Incidence>
 
 namespace Akonadi {
 class Collection;
@@ -73,7 +73,7 @@ KORGANIZERPRIVATE_EXPORT int yearDiff(const QDate &start, const QDate &end);
 KORGANIZERPRIVATE_EXPORT bool isStandardCalendar(Akonadi::Collection::Id id);
 
 KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(
-    QWidget *parent, const KCalCore::Incidence::Ptr &incidence);
+    QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
 }
 
 #endif

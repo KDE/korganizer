@@ -135,7 +135,7 @@ int MonthView::currentMonth() const
     return mMonthView->currentMonth();
 }
 
-KCalCore::DateList MonthView::selectedIncidenceDates()
+KCalendarCore::DateList MonthView::selectedIncidenceDates()
 {
     return mMonthView->selectedIncidenceDates();
 }

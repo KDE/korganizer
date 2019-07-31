@@ -145,9 +145,9 @@ Akonadi::Item::List KOTodoView::selectedIncidences()
     return mView->selectedIncidences();
 }
 
-KCalCore::DateList KOTodoView::selectedIncidenceDates()
+KCalendarCore::DateList KOTodoView::selectedIncidenceDates()
 {
-    return KCalCore::DateList();
+    return KCalendarCore::DateList();
 }
 
 void KOTodoView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
@@ -207,13 +207,13 @@ void KOTodoView::printTodo(bool preview)
     }
 
     Akonadi::Item todoItem = selectedItems.first();
-    KCalCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
+    KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
     Q_ASSERT(todo);
 
     CalendarSupport::CalPrinter printer(this, calendar(), true);
     connect(this, &KOTodoView::configChanged, &printer, &CalendarSupport::CalPrinter::updateConfig);
 
-    KCalCore::Incidence::List selectedIncidences;
+    KCalendarCore::Incidence::List selectedIncidences;
     selectedIncidences.append(todo);
 
     QDate todoDate;
