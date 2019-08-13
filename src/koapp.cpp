@@ -41,7 +41,7 @@ KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
 {
     const QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
     KCalendarCore::CalFormat::setApplication(QStringLiteral("KOrganizer"),
-                                        prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
+                                             prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
 }
 
 KOrganizerApp::~KOrganizerApp()

@@ -307,8 +307,7 @@ public Q_SLOTS:
       Create new Event from given summary, description, attachment list and
       attendees list
     */
-    void newEvent(const QString &summary, const QString &description = QString(), const QStringList &attachment = QStringList(),
-                  const QStringList &attendees = QStringList(), const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false);
+    void newEvent(const QString &summary, const QString &description = QString(), const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList(), const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false);
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence.
@@ -395,8 +394,7 @@ public Q_SLOTS:
     /** create new todo with parent todo */
     void newSubTodo(const Akonadi::Collection &collection);
 
-    void newTodo(const QString &summary, const QString &description = QString(), const QStringList &attachments = QStringList(),
-                 const QStringList &attendees = QStringList(), const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false);
+    void newTodo(const QString &summary, const QString &description = QString(), const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(), const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false);
 
     void newJournal();
     void newJournal(const QDate &date);
@@ -436,7 +434,7 @@ public Q_SLOTS:
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeIncidenceDisplay(const Akonadi::Item & incidence,
+    void changeIncidenceDisplay(const Akonadi::Item &incidence,
                                 Akonadi::IncidenceChanger::ChangeType);
 
     void slotCreateFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);

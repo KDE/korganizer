@@ -282,8 +282,8 @@ void SDSummaryWidget::createLabels()
          dt <= QDate::currentDate().addDays(mDaysAhead - 1);
          dt = dt.addDays(1)) {
         const KCalendarCore::Event::List events = mCalendar->events(dt, mCalendar->timeZone(),
-                                                               KCalendarCore::EventSortStartDate,
-                                                               KCalendarCore::SortDirectionAscending);
+                                                                    KCalendarCore::EventSortStartDate,
+                                                                    KCalendarCore::SortDirectionAscending);
         for (const KCalendarCore::Event::Ptr &ev : events) {
             // Optionally, show only my Events
             /* if ( mShowMineOnly &&

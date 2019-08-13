@@ -257,7 +257,9 @@ CalendarView::CalendarView(QWidget *parent)
             mDateNavigator, QOverload<const KCalendarCore::DateList &, const QDate &>::of(&DateNavigator::selectDates));
 
     connect(mViewManager, &KOViewManager::datesSelected,
-            mDateNavigator, [this](const KCalendarCore::DateList &dates) { mDateNavigator->selectDates(dates); });
+            mDateNavigator, [this](const KCalendarCore::DateList &dates) {
+        mDateNavigator->selectDates(dates);
+    });
 
     connect(mDateNavigatorContainer, &DateNavigatorContainer::incidenceDropped,
             this, &CalendarView::addIncidenceOn);
@@ -1010,8 +1012,7 @@ void CalendarView::newEvent(const QDateTime &startDtParam, const QDateTime &endD
     eventEditor->selectCollection(defaultCollection(KCalendarCore::Event::eventMimeType()));
 }
 
-void CalendarView::newEvent(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees, const QStringList &attachmentMimetypes,
-                            bool inlineAttachment)
+void CalendarView::newEvent(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees, const QStringList &attachmentMimetypes, bool inlineAttachment)
 {
     // Adjust the start/end date times (i.e. replace invalid values by defaults,
     // and let the view adjust the type.
@@ -1038,8 +1039,7 @@ void CalendarView::newEvent(const QString &summary, const QString &description, 
     newEventEditor(event);
 }
 
-void CalendarView::newTodo(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees, const QStringList &attachmentMimetypes,
-                           bool inlineAttachment)
+void CalendarView::newTodo(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees, const QStringList &attachmentMimetypes, bool inlineAttachment)
 {
     Akonadi::Collection defaultCol = defaultCollection(KCalendarCore::Todo::todoMimeType());
 
@@ -1624,7 +1624,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     occurrenceDate.setDate(date);
     qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalendarCore::Incidence::Ptr newInc(KCalendarCore::Calendar::createException(
-                                        incidence, occurrenceDate, thisAndFuture));
+                                             incidence, occurrenceDate, thisAndFuture));
     if (newInc) {
         mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
@@ -1993,7 +1993,7 @@ void CalendarView::takeOverEvent()
     }
 
     incidence->setOrganizer(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(),
-                                             CalendarSupport::KCalPrefs::instance()->email()));
+                                                  CalendarSupport::KCalPrefs::instance()->email()));
     incidence->recreate();
     incidence->setReadOnly(false);
 

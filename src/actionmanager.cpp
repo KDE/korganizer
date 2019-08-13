@@ -236,8 +236,8 @@ void ActionManager::createCalendarAkonadi()
     connect(mCalendarView, &CalendarView::configChanged, this, &ActionManager::updateConfig);
 
     calendar()->setOwner(KCalendarCore::Person(CalendarSupport::KCalPrefs::instance()->fullName(),
-                                                                    CalendarSupport::KCalPrefs::
-                                                                    instance()->email()));
+                                               CalendarSupport::KCalPrefs::
+                                               instance()->email()));
 }
 
 void ActionManager::initActions()
@@ -1686,8 +1686,7 @@ QWidget *ActionManager::dialogParent()
     return mCalendarView->topLevelWidget();
 }
 
-void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes,
-                                   bool attachmentIsInline)
+void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline)
 {
     Q_UNUSED(summary);
     Q_UNUSED(description);
@@ -1698,8 +1697,7 @@ void ActionManager::openTodoEditor(const QString &summary, const QString &descri
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }
 
-void ActionManager::openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes,
-                                    bool attachmentIsInline)
+void ActionManager::openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline)
 {
     Q_UNUSED(summary);
     Q_UNUSED(description);

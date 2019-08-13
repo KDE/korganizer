@@ -130,8 +130,7 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
                 bccMe, attachment, mailTransport);
 }
 
-bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &attachment,
-                               const QString &sub, const QString &mailTransport)
+bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &attachment, const QString &sub, const QString &mailTransport)
 {
     const QString to = incidence->organizer().fullName();
     QString subject = sub;
@@ -151,8 +150,7 @@ bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidenc
                 bccMe, attachment, mailTransport);
 }
 
-bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients,
-                        const QString &attachment, const QString &mailTransport)
+bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients, const QString &attachment, const QString &mailTransport)
 {
     QString subject;
 
@@ -182,8 +180,7 @@ QStringList extractEmailAndNormalize(const QString &email)
     return normalizedEmail;
 }
 
-bool MailClient::send(const KIdentityManagement::Identity &identity, const QString &from, const QString &_to, const QString &cc, const QString &subject, const QString &body, bool hidden, bool bccMe,
-                      const QString &attachment, const QString &mailTransport)
+bool MailClient::send(const KIdentityManagement::Identity &identity, const QString &from, const QString &_to, const QString &cc, const QString &subject, const QString &body, bool hidden, bool bccMe, const QString &attachment, const QString &mailTransport)
 {
     Q_UNUSED(hidden);
 

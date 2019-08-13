@@ -389,17 +389,17 @@ void KCMDesignerFields::updatePreview()
     if (item) {
         if (item->parent()) {
             const QString details = QStringLiteral("<qt><table>"
-                                             "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
-                                             "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
-                                             "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
-                                             "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
-                                             "</table></qt>")
-                              .arg(i18n("Key:"),
-                                   item->text(0).replace(QLatin1String("X_"), QStringLiteral(
-                                                             "X-")), i18n(
-                                       "Type:"), item->text(1), i18n("Classname:"), item->text(
-                                       2), i18n(
-                                       "Description:"), item->text(3));
+                                                   "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
+                                                   "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
+                                                   "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
+                                                   "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
+                                                   "</table></qt>")
+                                    .arg(i18n("Key:"),
+                                         item->text(0).replace(QLatin1String("X_"), QStringLiteral(
+                                                                   "X-")), i18n(
+                                             "Type:"), item->text(1), i18n("Classname:"), item->text(
+                                             2), i18n(
+                                             "Description:"), item->text(3));
 
             mPageDetails->setText(details);
 

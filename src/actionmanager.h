@@ -151,14 +151,12 @@ public Q_SLOTS:
     void openEventEditor(const QString &summary, const QString &description, const QStringList &attachments);
     void openEventEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees);
     void openEventEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype);
-    void openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes,
-                         bool attachmentIsInline);
+    void openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline);
     void openTodoEditor(const QString &);
     void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachments);
     void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees);
     void openTodoEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype);
-    void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes,
-                        bool attachmentIsInline);
+    void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline);
 
     void openJournalEditor(const QDate &date);
     void openJournalEditor(const QString &text, const QDate &date);

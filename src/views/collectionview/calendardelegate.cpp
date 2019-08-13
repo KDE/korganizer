@@ -84,7 +84,6 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
     return option;
 }
 
-
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
     const QStyleOptionViewItem &, const QModelIndex &index) const
 {

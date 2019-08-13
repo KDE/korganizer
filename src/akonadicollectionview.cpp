@@ -268,7 +268,6 @@ static bool hasCompatibleMimeTypes(const Akonadi::Collection &collection)
 }
 
 namespace {
-
 class ColorProxyModel : public QSortFilterProxyModel
 {
 public:
@@ -379,7 +378,6 @@ protected:
         }
     }
 };
-
 }
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create(QWidget *parent)
@@ -926,7 +924,8 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
 {
     const StyledCalendarDelegate::Action action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
-    case StyledCalendarDelegate::Quickview: {
+    case StyledCalendarDelegate::Quickview:
+    {
         Quickview *quickview = new Quickview(CalendarSupport::collectionFromIndex(index));
         quickview->setAttribute(Qt::WA_DeleteOnClose, true);
         quickview->show();

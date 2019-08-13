@@ -67,7 +67,7 @@ public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) override;
 
-    void changeIncidenceDisplay(const Akonadi::Item & incidence,
+    void changeIncidenceDisplay(const Akonadi::Item &incidence,
                                 Akonadi::IncidenceChanger::ChangeType) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
     void printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview);

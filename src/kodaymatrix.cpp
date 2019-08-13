@@ -349,7 +349,7 @@ void KODayMatrix::updateEvents()
         return;
     }
     const KCalendarCore::Event::List eventlist = mCalendar->events(mDays[0], mDays[NUMDAYS - 1],
-                                                              mCalendar->timeZone());
+                                                                   mCalendar->timeZone());
 
     for (const KCalendarCore::Event::Ptr &event : eventlist) {
         if (mEvents.count() == NUMDAYS) {

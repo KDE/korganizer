@@ -135,8 +135,8 @@ void ApptSummaryWidget::updateView()
     QDate currentDate = QDate::currentDate();
 
     const SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(
-                                                                         mDaysAhead - 1),
-                                                                     mCalendar);
+                                                                               mDaysAhead - 1),
+                                                                           mCalendar);
 
     QPalette todayPalette = palette();
     KColorScheme::adjustBackground(todayPalette, KColorScheme::ActiveBackground, QPalette::Window);
