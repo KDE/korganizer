@@ -45,8 +45,6 @@ using namespace KCalendarCore;
 
 KOAlarmClient::KOAlarmClient(QObject *parent)
     : QObject(parent)
-    , mDocker(nullptr)
-    , mDialog(nullptr)
 {
     new KOrgacAdaptor(this);
     KDBusConnectionPool::threadConnection().registerObject(QStringLiteral("/ac"), this);

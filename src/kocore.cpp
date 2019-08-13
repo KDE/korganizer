@@ -44,7 +44,6 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-    : mCalendarDecorationsLoaded(false)
 {
 }
 

@@ -266,7 +266,7 @@ void KOrganizer::setTitle()
 {
     QString title;
     if (hasDocument()) {
-        QUrl url = mActionManager->url();
+        const QUrl url = mActionManager->url();
 
         if (!url.isEmpty()) {
             if (url.isLocalFile()) {

@@ -141,12 +141,6 @@ private:
 
 KCMDesignerFields::KCMDesignerFields(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
-    , mPageView(nullptr)
-    , mPagePreview(nullptr)
-    , mPageDetails(nullptr)
-    , mDeleteButton(nullptr)
-    , mImportButton(nullptr)
-    , mDesignerButton(nullptr)
 {
     KAboutData *about = new KAboutData(QStringLiteral("KCMDesignerfields"),
                                        i18n("KCMDesignerfields"),
@@ -301,7 +295,7 @@ void KCMDesignerFields::initGUI()
     bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
 
     if (noDesigner) {
-        QString txt
+        const QString txt
             = i18n("<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
                    "installed. You will only be able to import existing designer files.</qt>");
         QLabel *lbl = new QLabel(txt, this);
@@ -336,7 +330,7 @@ void KCMDesignerFields::initGUI()
     hbox = new QHBoxLayout();
     layout->addLayout(hbox);
 
-    QString cwHowto
+    const QString cwHowto
         = i18n("<qt><p>This section allows you to add your own GUI"
                " Elements ('<i>Widgets</i>') to store your own values"
                " into %1. Proceed as described below:</p>"
@@ -394,7 +388,7 @@ void KCMDesignerFields::updatePreview()
 
     if (item) {
         if (item->parent()) {
-            QString details = QStringLiteral("<qt><table>"
+            const QString details = QStringLiteral("<qt><table>"
                                              "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
                                              "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
                                              "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"

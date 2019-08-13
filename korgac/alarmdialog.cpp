@@ -84,7 +84,6 @@ public:
     ReminderTreeItem(const Akonadi::Item &incidence, QTreeWidget *parent)
         : QTreeWidgetItem(parent)
         , mIncidence(incidence)
-        , mNotified(false)
     {
     }
 
@@ -100,7 +99,7 @@ public:
     QDateTime mRemindAt;
     QDateTime mTrigger;
     QDateTime mHappening;
-    bool mNotified;
+    bool mNotified = false;
 };
 
 struct ConfItem {

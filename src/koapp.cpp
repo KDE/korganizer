@@ -39,7 +39,7 @@
 KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     : KontactInterface::PimUniqueApplication(argc, argv)
 {
-    QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
+    const QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
     KCalendarCore::CalFormat::setApplication(QStringLiteral("KOrganizer"),
                                         prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
 }
@@ -94,7 +94,6 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
             korg->actionManager()->importURL(QUrl::fromUserInput(url), true);
         }
     } else {
-        // Q_FOREACH, since range-based loops might detach Qt container (QStringList)
         const auto lst = parser.positionalArguments();
         for (const QString &url : lst) {
             korg->actionManager()->importCalendar(QUrl::fromUserInput(url));

@@ -94,8 +94,6 @@ void FilterEditDialog::setDialogConsistent(bool consistent)
 
 FilterEdit::FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *parent)
     : QWidget(parent)
-    , mCurrent(nullptr)
-    , mCategorySelectDialog(nullptr)
 {
     setupUi(this);
     searchline->setListWidget(mRulesList);
