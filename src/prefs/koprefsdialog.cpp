@@ -29,6 +29,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "ui_kogroupwareprefspage.h"
+#include <KTimeComboBox>
 
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/CategoryConfig>
@@ -56,16 +57,13 @@
 
 #include <KColorButton>
 #include <KComboBox>
-#include <QDialog>
 #include <QHBoxLayout>
 #include <QSpinBox>
 #include <KMessageBox>
 #include <KService>
 
 #include <QTabWidget>
-#include <KTimeComboBox>
 #include <KUrlRequester>
-#include <KWindowSystem>
 #include "korganizer_debug.h"
 #include <QIcon>
 #include <QPushButton>
@@ -75,14 +73,13 @@
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QLabel>
-#include <QListWidget>
 #include <QRadioButton>
-#include <QTimeEdit>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 #include <KLocalizedString>
 #include <QStandardPaths>
 #include <QLocale>
+#include <QTimeEdit>
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     : KPrefsModule(KOPrefs::instance(), parent)
