@@ -39,6 +39,7 @@
 #include <KConfigGroup>
 #include <KGuiItem>
 #include <KSharedConfig>
+#include <KConfigGroup>
 
 #include <QDialogButtonBox>
 #include <QPushButton>
@@ -53,6 +54,9 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
 {
     setWindowTitle(i18n("Search Calendar"));
     setModal(false);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+
 
     QWidget *mainWidget = new QWidget(this);
     m_ui->setupUi(mainWidget);
@@ -73,7 +77,6 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(
         QDialogButtonBox::Close | QDialogButtonBox::Help, this);
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
@@ -260,12 +263,14 @@ void SearchDialog::readConfig()
     if (size.isValid()) {
         resize(size);
     }
+    listView->readSettings(KSharedConfig::openConfig().data());
 }
 
 void SearchDialog::writeConfig()
 {
     KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("SearchDialog"));
     group.writeEntry("Size", size());
+    listView->writeSettings(KSharedConfig::openConfig().data());
     group.sync();
 }
 
