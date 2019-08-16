@@ -143,7 +143,7 @@ void KODialogManager::showArchiveDialog()
         mArchiveDialog
             = new CalendarSupport::ArchiveDialog(mMainView->calendar(),
                                                  mMainView->incidenceChanger());
-        connect(mArchiveDialog, SIGNAL(eventsDeleted()), mMainView, SLOT(updateView()));
+        connect(mArchiveDialog, &CalendarSupport::ArchiveDialog::eventsDeleted, mMainView, qOverload<>(&CalendarView::updateView));
         connect(mArchiveDialog, &CalendarSupport::ArchiveDialog::autoArchivingSettingsModified,
                 mMainView, &CalendarView::slotAutoArchivingSettingsModified);
     }
