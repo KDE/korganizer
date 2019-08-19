@@ -65,6 +65,7 @@
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/IncidenceViewer>
 #include <CalendarSupport/KCalPrefs>
+#include <CalendarSupport/Utils>
 
 #include <IncidenceEditor/IncidenceDefaults>
 #include <IncidenceEditor/IncidenceDialog>
@@ -1350,26 +1351,7 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
     if (alarms.isEmpty()) {
         // Add an alarm if it didn't have one
         KCalendarCore::Alarm::Ptr alm = incidence->newAlarm();
-        alm->setType(KCalendarCore::Alarm::Display);
-        alm->setEnabled(true);
-        int duration; // in secs
-        switch (CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits) {
-        default:
-        case 0: // mins
-            duration = CalendarSupport::KCalPrefs::instance()->mReminderTime * 60;
-            break;
-        case 1: // hours
-            duration = CalendarSupport::KCalPrefs::instance()->mReminderTime * 60 * 60;
-            break;
-        case 2: // days
-            duration = CalendarSupport::KCalPrefs::instance()->mReminderTime * 60 * 60 * 24;
-            break;
-        }
-        if (incidence->type() == KCalendarCore::Incidence::TypeEvent) {
-            alm->setStartOffset(KCalendarCore::Duration(-duration));
-        } else {
-            alm->setEndOffset(KCalendarCore::Duration(-duration));
-        }
+        CalendarSupport::createAlarmReminder(alm, incidence->type());
     }
     mChanger->startAtomicOperation(i18n("Toggle Reminder"));
     mChanger->modifyIncidence(item, oldincidence, this);
