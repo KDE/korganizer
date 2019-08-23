@@ -1057,7 +1057,7 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
         auto winInfo = KWindowInfo(window, NET::WMDesktop);
         int desktop = winInfo.desktop();
         if (KWindowSystem::currentDesktop() == desktop) {
-            KWindowSystem::minimizeWindow(winId(), false);
+            KWindowSystem::minimizeWindow(winId());
         } else {
             KWindowSystem::setCurrentDesktop(desktop);
         }
@@ -1068,7 +1068,7 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
     QDBusReply<int> reply = korganizerObj.call(QStringLiteral("winId"));
     if (reply.isValid()) {
         int window = reply;
-        KWindowSystem::minimizeWindow(winId(), false);
+        KWindowSystem::minimizeWindow(winId());
         KWindowSystem::allowExternalProcessWindowActivation();
         KWindowSystem::activateWindow(reinterpret_cast<WId>(window));
     }
