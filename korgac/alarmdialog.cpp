@@ -612,7 +612,7 @@ void AlarmDialog::showEvent(QShowEvent *event)
     // which happens when a notification appears and the dialog was already
     // up.
     KWindowSystem::setOnAllDesktops(winId(), true);
-    KWindowSystem::unminimizeWindow(winId(), false);
+    KWindowSystem::unminimizeWindow(winId());
     KWindowSystem::setState(winId(), NET::KeepAbove | NET::DemandsAttention);
 }
 
