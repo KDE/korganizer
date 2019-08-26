@@ -329,7 +329,7 @@ void SDSummaryWidget::createLabels()
                     }
 
                     // Append Anniversary Event?
-                    if (mShowAnniversariesFromCal && (itUpper == QStringLiteral("ANNIVERSARY"))) {
+                    if (mShowAnniversariesFromCal && (itUpper == QLatin1String("ANNIVERSARY"))) {
                         SDEntry entry;
                         entry.type = IncidenceTypeEvent;
                         entry.category = CategoryAnniversary;
