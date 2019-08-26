@@ -732,7 +732,7 @@ void AlarmDialog::eventNotification()
                          it != end; ++it) {
                         add << (*it).fullName();
                     }
-                    to = add.join(QStringLiteral(", "));
+                    to = add.join(QLatin1String(", "));
                 }
 
                 QString subject;
