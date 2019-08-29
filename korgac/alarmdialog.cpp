@@ -363,7 +363,7 @@ static QString cleanSummary(const QString &summary)
     retStr.replace(QLatin1Char('\n'), QLatin1Char(' '));
     if (retStr.length() > maxLen) {
         maxLen -= etc.length();
-        retStr = retStr.left(maxLen);
+        retStr.truncate(maxLen);
         retStr += etc;
     }
     return retStr;
