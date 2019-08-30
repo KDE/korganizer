@@ -91,7 +91,7 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
         // ignore the return value from extractEmailAddressAndName() because
         // it will always be false since tusername does not contain "@domain".
         KEmailAddress::extractEmailAddressAndName(username, temail /*byref*/, tname /*byref*/);
-        tname += QStringLiteral(" <") + email + QLatin1Char('>');
+        tname += QLatin1String(" <") + email + QLatin1Char('>');
 
         // Optional Participants and Non-Participants are copied on the email
         if (a.role() == KCalendarCore::Attendee::OptParticipant
