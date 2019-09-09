@@ -312,7 +312,7 @@ void KDateNavigator::selectDates(const KCalendarCore::DateList &dateList)
 
 void KDateNavigator::wheelEvent(QWheelEvent *e)
 {
-    if (e->delta() > 0) {
+    if (e->angleDelta().y() > 0) {
         Q_EMIT goPrevious();
     } else {
         Q_EMIT goNext();

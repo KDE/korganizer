@@ -28,6 +28,8 @@
 #include "korganizer-version.h"
 #include "koalarmclient_debug.h"
 
+#include <QElapsedTimer>
+
 #include <AkonadiCore/Collection>
 
 #include <KCalendarCore/Attendee>
@@ -205,7 +207,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
                                << "\nAttachment:\n" << attachment
                                << "\nmailTransport: " << mailTransport;
 
-    QTime timer;
+    QElapsedTimer timer;
     timer.start();
 
     MailTransport::Transport *transport
