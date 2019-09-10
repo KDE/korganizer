@@ -128,7 +128,10 @@ include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_S
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
+
 set(CMAKE_CXX_STANDARD 14)
 #add_definitions(-DQT_NO_FOREACH)
 add_subdirectory(src)
