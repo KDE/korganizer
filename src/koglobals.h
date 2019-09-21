@@ -27,7 +27,6 @@
 
 #include "korganizerprivate_export.h"
 
-#include <QPixmap>
 #include <QString>
 #include <QDate>
 #include <QMap>
@@ -46,8 +45,6 @@ public:
     static bool reverseLayout();
 
     ~KOGlobals();
-
-    QPixmap smallIcon(const QString &name) const;
 
     QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
 

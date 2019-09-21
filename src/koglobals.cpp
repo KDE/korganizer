@@ -27,8 +27,6 @@
 
 #include <KHolidays/HolidayRegion>
 
-#include <KIconLoader>
-
 #include <QApplication>
 
 class KOGlobalsSingletonPrivate
@@ -56,11 +54,6 @@ KOGlobals::~KOGlobals()
 bool KOGlobals::reverseLayout()
 {
     return QApplication::isRightToLeft();
-}
-
-QPixmap KOGlobals::smallIcon(const QString &name) const
-{
-    return SmallIcon(name);
 }
 
 QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end) const
