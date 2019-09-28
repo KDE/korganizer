@@ -34,9 +34,9 @@
 #include <KCrash>
 int main(int argc, char **argv)
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KOrganizerApp app(argc, &argv);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KCrash::initialize();
     KLocalizedString::setApplicationDomain("korganizer");
     KOrgMigrateApplication migrate;
