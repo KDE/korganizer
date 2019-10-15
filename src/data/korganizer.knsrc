@@ -21,6 +21,6 @@ Name[sv]=Korganizer-kalender
 Name[uk]=Календар KOrganizer
 Name[x-test]=xxKOrganizer Calendarxx
 Name[zh_TW]=KOrganizer 行事曆
-ProvidersUrl=https://autoconfig.kde.org/ocs/providers.xml
 Categories=KOrganizer Calendar
 TargetDir=korganizer
+Uncompress=archive

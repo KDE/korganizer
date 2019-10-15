@@ -7,7 +7,7 @@
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
   Copyright (c) 2010-2019 Laurent Montel <montel@kde.org>
-  Copyright (c) 2012 Allen Winter <winter@kde.org>
+  Copyright (c) 2012-2019 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -1184,7 +1184,8 @@ bool ActionManager::addIncidence(const QString &ical)
 
 void ActionManager::downloadNewStuff()
 {
-    QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(mCalendarView);
+    QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(QStringLiteral("korganizer.knsrc"), mCalendarView);
+    dialog->setTitle(i18nc("@title", "KOrganizer Calendars Add-On Installer"));
     dialog->exec();
     const auto installedEntries = dialog->installedEntries();
     for (const KNS3::Entry &e : installedEntries) {
