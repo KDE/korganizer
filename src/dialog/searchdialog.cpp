@@ -39,7 +39,6 @@
 #include <KConfigGroup>
 #include <KGuiItem>
 #include <KSharedConfig>
-#include <KConfigGroup>
 
 #include <QDialogButtonBox>
 #include <QPushButton>
