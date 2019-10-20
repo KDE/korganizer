@@ -40,7 +40,6 @@
 
 #include <KConfig>
 #include <KConfigGroup>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <QMenu>
 #include <KUrlLabel>
@@ -49,6 +48,7 @@
 #include <QLabel>
 #include <QTextDocument>  // for Qt::mightBeRichText
 #include <QVBoxLayout>
+#include <QStyle>
 
 using namespace KCalUtils;
 
@@ -177,8 +177,7 @@ void TodoSummaryWidget::updateView()
     QLabel *label = nullptr;
 
     if (!prList.isEmpty()) {
-        KIconLoader loader(QStringLiteral("korganizer"));
-        QPixmap pm = loader.loadIcon(QStringLiteral("view-calendar-tasks"), KIconLoader::Small);
+        QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-tasks")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
         QString str;
 
@@ -358,16 +357,14 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     QMenu popup(this);
     QAction *editIt = popup.addAction(i18n("&Edit To-do..."));
     QAction *delIt = popup.addAction(i18n("&Delete To-do"));
-    delIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral(
-                                                       "edit-delete"), KIconLoader::Small));
+    delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
 
     QAction *doneIt = nullptr;
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
     if (!todo->isCompleted()) {
         doneIt = popup.addAction(i18n("&Mark To-do Completed"));
-        doneIt->setIcon(KIconLoader::global()->loadIcon(QStringLiteral("task-complete"),
-                                                        KIconLoader::Small));
+        doneIt->setIcon(QIcon::fromTheme(QStringLiteral("task-complete")));
         doneIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem));
     }
     // TODO: add icons to the menu actions

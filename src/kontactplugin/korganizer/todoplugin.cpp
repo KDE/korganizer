@@ -41,7 +41,6 @@
 #include <KActionCollection>
 #include "korganizerplugin_debug.h"
 #include <QIcon>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <QTemporaryFile>
@@ -55,7 +54,6 @@ TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
     , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
-    KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
     QAction *action
         = new QAction(QIcon::fromTheme(QStringLiteral("task-new")),

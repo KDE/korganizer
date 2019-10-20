@@ -25,7 +25,6 @@
 #include "navigatorbar.h"
 #include "koglobals.h"
 
-#include <KIconLoader>
 #include <KLocalizedString>
 
 #include <QHBoxLayout>
@@ -221,9 +220,7 @@ QToolButton *NavigatorBar::createNavigationButton(const QString &icon, const QSt
 {
     QToolButton *button = new QToolButton(this);
 
-    button->setIcon(
-        KIconLoader::global()->loadIcon(icon, KIconLoader::Desktop, KIconLoader::SizeSmall));
-    button->setIconSize(QSize(KIconLoader::SizeSmall, KIconLoader::SizeSmall));
+    button->setIcon(QIcon::fromTheme(icon));
     button->setToolButtonStyle(Qt::ToolButtonIconOnly);
     button->setAutoRaise(true);
     button->setToolTip(toolTip);

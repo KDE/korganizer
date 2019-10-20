@@ -18,7 +18,6 @@ target_link_libraries(kontact_specialdatesplugin
   KF5::AkonadiCore
   KF5::AkonadiContact
   KF5::CalendarSupport
-  KF5::IconThemes
 )
 
 ########### next target ###############

@@ -42,7 +42,6 @@
 #include <QMenu>
 #include <KLocalizedString>
 #include <KUrlLabel>
-#include <KIconLoader>
 #include <KConfigGroup>
 #include <KConfig>
 #include <QDesktopServices>
@@ -52,6 +51,7 @@
 #include <QEvent>
 #include <QLabel>
 #include <QGridLayout>
+#include <QStyle>
 
 using namespace KHolidays;
 
@@ -463,7 +463,7 @@ void SDSummaryWidget::createLabels()
             }
             label = new QLabel(this);
             if (icon_img.isNull()) {
-                label->setPixmap(KIconLoader::global()->loadIcon(icon_name, KIconLoader::Small));
+                label->setPixmap(QIcon::fromTheme(icon_name).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize)));
             } else {
                 label->setPixmap(QPixmap::fromImage(icon_img));
             }
@@ -691,13 +691,9 @@ void SDSummaryWidget::popupMenu(const QString &url)
 {
     QMenu popup(this);
     const QAction *sendMailAction
-        = popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("mail-message-new"),
-                                                          KIconLoader::Small),
-                          i18n("Send &Mail"));
+        = popup.addAction(QIcon::fromTheme(QStringLiteral("mail-message-new")), i18n("Send &Mail"));
     const QAction *viewContactAction
-        = popup.addAction(KIconLoader::global()->loadIcon(QStringLiteral("view-pim-contacts"),
-                                                          KIconLoader::Small),
-                          i18n("View &Contact"));
+        = popup.addAction(QIcon::fromTheme(QStringLiteral("view-pim-contacts")), i18n("View &Contact"));
 
     const QAction *ret = popup.exec(QCursor::pos());
     if (ret == sendMailAction) {

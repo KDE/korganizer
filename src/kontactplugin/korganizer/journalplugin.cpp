@@ -29,7 +29,6 @@
 #include <KontactInterface/Core>
 
 #include <KActionCollection>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include "korganizerplugin_debug.h"
 #include <QAction>
@@ -42,8 +41,6 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
-
-    KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
     QAction *action
         = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),

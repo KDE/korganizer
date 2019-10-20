@@ -42,7 +42,6 @@
 
 #include <KConfigGroup>
 #include <KColorScheme>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <QMenu>
 #include <KUrlLabel>
@@ -51,6 +50,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QStyle>
 
 ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     : KontactInterface::Summary(parent)
@@ -123,11 +123,9 @@ void ApptSummaryWidget::updateView()
     QLabel *label = nullptr;
     int counter = 0;
 
-    KIconLoader loader(QStringLiteral("korganizer"));
-    QPixmap pm = loader.loadIcon(QStringLiteral("view-calendar-day"), KIconLoader::Small);
-    QPixmap pmb = loader.loadIcon(QStringLiteral("view-calendar-birthday"), KIconLoader::Small);
-    QPixmap pma = loader.loadIcon(QStringLiteral(
-                                      "view-calendar-wedding-anniversary"), KIconLoader::Small);
+    QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-day")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
+    QPixmap pmb = QIcon::fromTheme(QStringLiteral("view-calendar-birthday")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
+    QPixmap pma = QIcon::fromTheme(QStringLiteral("view-calendar-wedding-anniversary")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
     QStringList uidList;
     SummaryEventInfo::setShowSpecialEvents(mShowBirthdaysFromCal,
@@ -275,8 +273,7 @@ void ApptSummaryWidget::popupMenu(const QString &uid)
     QAction *editIt = popup.addAction(i18n("&Edit Appointment..."));
 
     QAction *delIt = popup.addAction(i18n("&Delete Appointment"));
-    delIt->setIcon(KIconLoader::global()->
-                   loadIcon(QStringLiteral("edit-delete"), KIconLoader::Small));
+    delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
 
     Akonadi::Item item = mCalendar->item(uid);
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));

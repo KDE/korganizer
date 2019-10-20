@@ -42,7 +42,6 @@
 #include <KActionCollection>
 #include "korganizerplugin_debug.h"
 #include <QIcon>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <QTemporaryFile>
@@ -57,7 +56,6 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
     , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
-    KIconLoader::global()->addAppDir(QStringLiteral("korganizer"));
 
     QAction *action
         = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
