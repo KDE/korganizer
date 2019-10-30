@@ -128,7 +128,7 @@ void NavigatorBar::selectDates(const KCalendarCore::DateList &dateList)
 
         // set the label text at the top of the navigator
         mMonth->setText(i18nc("monthname", "%1",
-                              QLocale().monthName(mDate.month(), QLocale::LongFormat)));
+                              QLocale().standaloneMonthName(mDate.month(), QLocale::LongFormat)));
         mYear->setText(i18nc("4 digit year", "%1",
                              QLocale().toString(mDate, QLatin1String("yyyy"))));
     }
@@ -145,7 +145,7 @@ void NavigatorBar::selectMonthFromMenu()
     QAction *activateAction = nullptr;
     act.reserve(months);
     for (int i = 1; i <= months; ++i) {
-        QAction *monthAction = menu->addAction(QLocale().monthName(i, QLocale::LongFormat));
+        QAction *monthAction = menu->addAction(QLocale().standaloneMonthName(i, QLocale::LongFormat));
         act.append(monthAction);
         if (i == month) {
             activateAction = monthAction;
