@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 # Do NOT add quote
-set(KDEPIM_DEV_VERSION beta1)
+set(KDEPIM_DEV_VERSION alpha)
 
 # add an extra space
 if(DEFINED KDEPIM_DEV_VERSION)
   set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
 endif()
 
-set(KDEPIM_VERSION_NUMBER "5.12.80")
-set(KDE_APPLICATIONS_VERSION "19.11.80")
+set(KDEPIM_VERSION_NUMBER "5.13.40")
+set(KDE_APPLICATIONS_VERSION "20.03.70")
 
 set(KDEPIM_VERSION "${KDEPIM_VERSION_NUMBER}${KDEPIM_DEV_VERSION} (${KDE_APPLICATIONS_VERSION})")
 
@@ -17,7 +17,7 @@ project(korganizer VERSION ${KDEPIM_VERSION_NUMBER})
 if(POLICY CMP0063)
   cmake_policy(SET CMP0063 NEW)
 endif()
-set(KF5_MIN_VERSION "5.63.0")
+set(KF5_MIN_VERSION "5.64.0")
 
 find_package(ECM ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
@@ -57,7 +57,7 @@ set(KDEPIM_LIB_VERSION "${KDEPIM_VERSION_NUMBER}")
 set(KDEPIM_LIB_SOVERSION "5")
 set(AKONADINOTES_LIB_VERSION "5.12.40")
 
-set(QT_REQUIRED_VERSION "5.11.0")
+set(QT_REQUIRED_VERSION "5.12.0")
 option(KDEPIM_ENTERPRISE_BUILD "Enable features specific to the enterprise branch, which are normally disabled. Also, it disables many components not needed for Kontact such as the Kolab client." FALSE)
 find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED DBus Gui Widgets Test UiTools)
 set(KDEPIM_APPS_LIB_VERSION_LIB "5.12.40")
