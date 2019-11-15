@@ -1376,9 +1376,9 @@ void KOPrefsDialogPlugins::usrWriteConfig()
     EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
     viewPrefs->setSelectedPlugins(selectedPlugins);
 
-    KOPrefs::instance()->setDecorationsAtMonthViewTop(mDecorationsAtMonthViewTop.toList());
-    viewPrefs->setDecorationsAtAgendaViewTop(mDecorationsAtAgendaViewTop.toList());
-    viewPrefs->setDecorationsAtAgendaViewBottom(mDecorationsAtAgendaViewBottom.toList());
+    KOPrefs::instance()->setDecorationsAtMonthViewTop(mDecorationsAtMonthViewTop.values());
+    viewPrefs->setDecorationsAtAgendaViewTop(mDecorationsAtAgendaViewTop.values());
+    viewPrefs->setDecorationsAtAgendaViewBottom(mDecorationsAtAgendaViewBottom.values());
 }
 
 void KOPrefsDialogPlugins::configure()
