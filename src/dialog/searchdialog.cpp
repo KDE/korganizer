@@ -56,7 +56,6 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
-
     QWidget *mainWidget = new QWidget(this);
     m_ui->setupUi(mainWidget);
 
