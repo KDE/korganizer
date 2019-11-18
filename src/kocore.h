@@ -44,9 +44,9 @@ public:
 
     static KOCore *self();
 
-    KService::List availablePlugins();
-    KService::List availableCalendarDecorations();
-    KService::List availableParts();
+    Q_REQUIRED_RESULT KService::List availablePlugins();
+    Q_REQUIRED_RESULT KService::List availableCalendarDecorations();
+    Q_REQUIRED_RESULT KService::List availableParts();
 
     CalendarSupport::Plugin *loadPlugin(const KService::Ptr &service);
     CalendarSupport::Plugin *loadPlugin(const QString &);

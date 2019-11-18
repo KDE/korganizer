@@ -120,17 +120,17 @@ private:
     void removeFromConfig(const QList<Akonadi::Item::Id> &);
 
     // Opens through dbus, @deprecated
-    bool openIncidenceEditorThroughKOrganizer(const KCalendarCore::Incidence::Ptr &incidence);
+    Q_REQUIRED_RESULT bool openIncidenceEditorThroughKOrganizer(const KCalendarCore::Incidence::Ptr &incidence);
 
     // opens directly
-    bool openIncidenceEditorNG(const Akonadi::Item &incidence);
+    Q_REQUIRED_RESULT bool openIncidenceEditorNG(const Akonadi::Item &incidence);
 
-    bool startKOrganizer();
+    Q_REQUIRED_RESULT bool startKOrganizer();
     ReminderTreeItem *searchByItem(const Akonadi::Item &incidence);
     void setTimer();
     void dismiss(const ReminderList &selections);
-    int activeCount();
-    ReminderList selectedItems() const;
+    Q_REQUIRED_RESULT int activeCount();
+    Q_REQUIRED_RESULT ReminderList selectedItems() const;
     void toggleDetails(QTreeWidgetItem *item);
     void showDetails(QTreeWidgetItem *item);
     static bool grabFocus();

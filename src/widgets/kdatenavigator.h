@@ -54,20 +54,20 @@ public:
 
     void setBaseDate(const QDate &);
 
-    KCalendarCore::DateList selectedDates() const
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedDates() const
     {
         return mSelectedDates;
     }
 
-    QSizePolicy sizePolicy() const;
+    Q_REQUIRED_RESULT QSizePolicy sizePolicy() const;
 
     NavigatorBar *navigatorBar() const
     {
         return mNavigatorBar;
     }
 
-    QDate startDate() const;
-    QDate endDate() const;
+    Q_REQUIRED_RESULT QDate startDate() const;
+    Q_REQUIRED_RESULT QDate endDate() const;
     void setHighlightMode(bool highlightEvents, bool highlightTodos, bool highlightJournals) const;
 
     /**
@@ -75,7 +75,7 @@ public:
        It's a QDate instead of uint so it can be easily feed to KCalendarSystem's
        functions.
     */
-    QDate month() const;
+    Q_REQUIRED_RESULT QDate month() const;
 
 public Q_SLOTS:
     void selectDates(const KCalendarCore::DateList &);

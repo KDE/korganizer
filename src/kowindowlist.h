@@ -55,7 +55,7 @@ public:
     /**
       Is there only one instance left?
     */
-    bool lastInstance();
+    Q_REQUIRED_RESULT bool lastInstance();
 
     /**
       Is there a instance with this URL?

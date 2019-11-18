@@ -42,34 +42,34 @@ public:
     ~KOAgendaView() override;
 
     /** Returns maximum number of days supported by the koagendaview */
-    int maxDatesHint() const override;
+    Q_REQUIRED_RESULT int maxDatesHint() const override;
 
     /** Returns number of currently shown dates. */
-    int currentDateCount() const override;
+    Q_REQUIRED_RESULT int currentDateCount() const override;
 
     /** returns the currently selected events */
-    Akonadi::Item::List selectedIncidences() override;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
 
     /** returns the currently selected incidence's dates */
-    KCalendarCore::DateList selectedIncidenceDates() override;
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
 
     /** return the default start/end date/time for new events   */
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
 
-    CalendarSupport::CalPrinter::PrintType printType() const override;
+    Q_REQUIRED_RESULT CalendarSupport::CalPrinter::PrintType printType() const override;
 
     /** start-datetime of selection */
-    QDateTime selectionStart() override;
+    Q_REQUIRED_RESULT QDateTime selectionStart() override;
 
     /** end-datetime of selection */
-    QDateTime selectionEnd() override;
+    Q_REQUIRED_RESULT QDateTime selectionEnd() override;
 
     /** returns true if selection is for whole day */
-    bool selectedIsAllDay();
+    Q_REQUIRED_RESULT bool selectedIsAllDay();
     /** make selected start/end invalid */
     void deleteSelectedDateTime();
     /** returns if only a single cell is selected, or a range of cells */
-    bool selectedIsSingleCell();
+    Q_REQUIRED_RESULT bool selectedIsSingleCell();
 
     /* reimp from BaseView */
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;

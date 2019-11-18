@@ -71,16 +71,16 @@ public:
                      false if the URL should be added as a new resource.
         @return true on success, false if an error occurred
     */
-    bool openURL(const QUrl &url, bool merge = false) override;
+    Q_REQUIRED_RESULT bool openURL(const QUrl &url, bool merge = false) override;
 
     /** Save calendar file to URL of current calendar */
-    bool saveURL() override;
+    Q_REQUIRED_RESULT bool saveURL() override;
 
     /** Save calendar file to URL */
-    bool saveAsURL(const QUrl &url) override;
+    Q_REQUIRED_RESULT bool saveAsURL(const QUrl &url) override;
 
     /** Get current URL */
-    QUrl getCurrentURL() const override;
+    Q_REQUIRED_RESULT QUrl getCurrentURL() const override;
 
     KXMLGUIFactory *mainGuiFactory() override;
     KXMLGUIClient *mainGuiClient() override;

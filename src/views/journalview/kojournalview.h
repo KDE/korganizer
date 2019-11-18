@@ -46,10 +46,10 @@ public:
     explicit KOJournalView(QWidget *parent = nullptr);
     ~KOJournalView() override;
 
-    int currentDateCount() const override;
-    Akonadi::Item::List selectedIncidences() override;
+    Q_REQUIRED_RESULT int currentDateCount() const override;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
 
-    KCalendarCore::DateList selectedIncidenceDates() override
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override
     {
         return KCalendarCore::DateList();
     }
@@ -58,7 +58,7 @@ public:
 
     void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const override;
+    Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
     void updateView() override;

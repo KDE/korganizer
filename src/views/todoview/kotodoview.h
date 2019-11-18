@@ -44,9 +44,9 @@ public:
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;
 
-    Akonadi::Item::List selectedIncidences() override;
-    KCalendarCore::DateList selectedIncidenceDates() override;
-    int currentDateCount() const override
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
+    Q_REQUIRED_RESULT int currentDateCount() const override
     {
         return 0;
     }
@@ -61,17 +61,17 @@ public:
     /** documentation in baseview.h */
     void getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals) override;
 
-    bool usesFullWindow() override;
+    Q_REQUIRED_RESULT bool usesFullWindow() override;
 
     void saveViewState();
     void restoreViewState();
 
-    bool supportsDateRangeSelection() override
+    Q_REQUIRED_RESULT bool supportsDateRangeSelection() override
     {
         return false;
     }
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const override;
+    Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;

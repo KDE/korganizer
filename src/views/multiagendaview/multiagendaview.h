@@ -40,18 +40,18 @@ public:
     explicit MultiAgendaView(QWidget *parent = nullptr);
     ~MultiAgendaView() override;
 
-    Akonadi::Item::List selectedIncidences() override;
-    KCalendarCore::DateList selectedIncidenceDates() override;
-    int currentDateCount() const override;
-    int maxDatesHint() const override;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
+    Q_REQUIRED_RESULT int currentDateCount() const override;
+    Q_REQUIRED_RESULT int maxDatesHint() const override;
 
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
 
     /**
      * reimplemented from KOrg::BaseView
      */
-    bool hasConfigurationDialog() const override;
+    Q_REQUIRED_RESULT bool hasConfigurationDialog() const override;
 
     /**
      * reimplemented from KOrg::BaseView
@@ -68,7 +68,7 @@ public:
 
     void setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) override;
 
-    Akonadi::Collection::Id collectionId() const override;
+    Q_REQUIRED_RESULT Akonadi::Collection::Id collectionId() const override;
 
 public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;

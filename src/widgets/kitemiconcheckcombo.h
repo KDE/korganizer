@@ -39,7 +39,7 @@ public:
     ~KItemIconCheckCombo();
 
     void setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons);
-    QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
+    Q_REQUIRED_RESULT QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
 
 private:
     KItemIconCheckCombo::ViewType mViewType;

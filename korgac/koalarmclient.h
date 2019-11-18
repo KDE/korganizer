@@ -49,8 +49,8 @@ public:
     void hide();
     void show();
     void forceAlarmCheck();
-    QString dumpDebug() const;
-    QStringList dumpAlarms() const;
+    Q_REQUIRED_RESULT QString dumpDebug() const;
+    Q_REQUIRED_RESULT QStringList dumpAlarms() const;
 
 public Q_SLOTS:
     void slotQuit();

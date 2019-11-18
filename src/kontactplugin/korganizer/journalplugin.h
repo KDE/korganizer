@@ -39,13 +39,13 @@ public:
     JournalPlugin(KontactInterface::Core *core, const QVariantList &);
     ~JournalPlugin() override;
 
-    bool isRunningStandalone() const override;
+    Q_REQUIRED_RESULT bool isRunningStandalone() const override;
     int weight() const override
     {
         return 525;
     }
 
-    QStringList invisibleToolbarActions() const override;
+    Q_REQUIRED_RESULT QStringList invisibleToolbarActions() const override;
 
     void select() override;
 

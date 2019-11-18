@@ -39,31 +39,31 @@ public:
     explicit MonthView(QWidget *parent = nullptr);
     ~MonthView() override;
 
-    int currentDateCount() const override;
-    int currentMonth() const;
+    Q_REQUIRED_RESULT int currentDateCount() const override;
+    Q_REQUIRED_RESULT int currentMonth() const;
 
-    Akonadi::Item::List selectedIncidences() override;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
 
     /** Returns dates of the currently selected events */
-    KCalendarCore::DateList selectedIncidenceDates() override;
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
 
-    QDateTime selectionStart() override;
+    Q_REQUIRED_RESULT QDateTime selectionStart() override;
 
-    QDateTime selectionEnd() override;
-    bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
+    Q_REQUIRED_RESULT QDateTime selectionEnd() override;
+    Q_REQUIRED_RESULT bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) override;
 
     /**
      * Returns the average date in the view
      */
-    QDate averageDate() const;
+    Q_REQUIRED_RESULT QDate averageDate() const;
 
-    bool usesFullWindow() override;
+    Q_REQUIRED_RESULT bool usesFullWindow() override;
 
-    bool supportsDateRangeSelection() override;
+    Q_REQUIRED_RESULT bool supportsDateRangeSelection() override;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const override;
+    Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
-    int maxDatesHint() const override;
+    Q_REQUIRED_RESULT int maxDatesHint() const override;
 
     void setTypeAheadReceiver(QObject *o) override;
 

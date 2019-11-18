@@ -46,16 +46,16 @@ public:
 
     ~KOGlobals();
 
-    QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
+    Q_REQUIRED_RESULT QMap<QDate, QStringList> holiday(const QDate &start, const QDate &end) const;
 
-    int firstDayOfWeek() const;
+    Q_REQUIRED_RESULT int firstDayOfWeek() const;
 
     /**
        Returns a list containing work days between @p start and @end.
     */
-    QList<QDate> workDays(const QDate &start, const QDate &end) const;
+    Q_REQUIRED_RESULT QList<QDate> workDays(const QDate &start, const QDate &end) const;
 
-    int getWorkWeekMask();
+    Q_REQUIRED_RESULT int getWorkWeekMask();
 
     /**
        Set which holiday regions the user wants to use.
