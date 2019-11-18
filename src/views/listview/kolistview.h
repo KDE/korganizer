@@ -48,10 +48,10 @@ public:
     explicit KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr, bool nonInteractive = false);
     ~KOListView() override;
 
-    int maxDatesHint() const override;
-    int currentDateCount() const override;
-    Akonadi::Item::List selectedIncidences() override;
-    KCalendarCore::DateList selectedIncidenceDates() override;
+    Q_REQUIRED_RESULT int maxDatesHint() const override;
+    Q_REQUIRED_RESULT int currentDateCount() const override;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override;
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override;
 
     // Shows all incidences of the calendar
     void showAll();
@@ -65,7 +65,7 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &cal) override;
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
-    CalendarSupport::CalPrinterBase::PrintType printType() const override;
+    Q_REQUIRED_RESULT CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
 public Q_SLOTS:
     void updateView() override;

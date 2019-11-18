@@ -53,7 +53,7 @@ public:
         return 3;
     }
 
-    QStringList configModules() const override;
+    Q_REQUIRED_RESULT QStringList configModules() const override;
     void configUpdated();
     void updateSummary(bool force = false) override
     {
@@ -62,7 +62,7 @@ public:
     }
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *e) override;
+    Q_REQUIRED_RESULT bool eventFilter(QObject *obj, QEvent *e) override;
 
 private Q_SLOTS:
     void updateView();

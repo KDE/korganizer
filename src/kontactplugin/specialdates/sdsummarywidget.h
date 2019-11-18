@@ -53,7 +53,7 @@ public:
     SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *parent);
     ~SDSummaryWidget() override;
 
-    QStringList configModules() const override;
+    Q_REQUIRED_RESULT QStringList configModules() const override;
     void configUpdated();
     void updateSummary(bool force = false) override
     {

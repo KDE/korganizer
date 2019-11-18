@@ -48,11 +48,11 @@ public:
     explicit NoteEditDialog(QWidget *parent = nullptr);
     ~NoteEditDialog() override;
 
-    Akonadi::Collection collection() const;
+    Q_REQUIRED_RESULT Akonadi::Collection collection() const;
     void setCollection(const Akonadi::Collection &value);
 
     void load(const Akonadi::Item &item);
-    KMime::Message::Ptr note() const;
+    Q_REQUIRED_RESULT KMime::Message::Ptr note() const;
 
     //Used for tests
     static QAbstractItemModel *_k_noteEditStubModel;

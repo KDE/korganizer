@@ -179,8 +179,8 @@ public:
      */
     void updateHighlightModes();
 
-    QDate startDate() override;
-    QDate endDate() override;
+    Q_REQUIRED_RESULT QDate startDate() override;
+    Q_REQUIRED_RESULT QDate endDate() override;
 
     KOrg::BaseView *currentView() const;
     void addView(KOrg::BaseView *) override;
@@ -196,23 +196,23 @@ public:
      * Returns the item selected in the current view (or an invalid one if none selected)
      * @reimp
      */
-    Akonadi::Item currentSelection() override;
+    Q_REQUIRED_RESULT Akonadi::Item currentSelection() override;
 
     /**
      * Returns a pointer to the incidence selected in the current view. If there
      * is no selection, return the selected todo from the todo list on the left.
      */
-    Akonadi::Item selectedIncidence();
+    Q_REQUIRED_RESULT Akonadi::Item selectedIncidence();
 
     /**
      * Returns true if there's a filter applied.
      */
-    bool isFiltered() const;
+    Q_REQUIRED_RESULT bool isFiltered() const;
 
     /**
      * Returns the name of the current filter.
      */
-    QString currentFilterName() const;
+    Q_REQUIRED_RESULT QString currentFilterName() const;
 
 Q_SIGNALS:
     /** when change is made to options dialog, the topwidget will catch this

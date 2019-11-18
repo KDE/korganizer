@@ -43,11 +43,11 @@ public:
     {
     }
 
-    QColor categoryColor(const QStringList &cats) override;
+    Q_REQUIRED_RESULT QColor categoryColor(const QStringList &cats) override;
 
-    QString holidayString(const QDate &dt) override;
+    Q_REQUIRED_RESULT QString holidayString(const QDate &dt) override;
 
-    QTime dayStart() override
+    Q_REQUIRED_RESULT QTime dayStart() override
     {
         return KOPrefs::instance()->mDayBegins.time();
     }

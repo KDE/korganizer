@@ -45,9 +45,9 @@ public:
     explicit DateNavigator(QObject *parent = nullptr);
     ~DateNavigator();
 
-    KCalendarCore::DateList selectedDates();
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedDates();
 
-    int datesCount() const;
+    Q_REQUIRED_RESULT int datesCount() const;
 
 public Q_SLOTS:
     void selectDates(const KCalendarCore::DateList &, const QDate &preferredMonth = QDate());

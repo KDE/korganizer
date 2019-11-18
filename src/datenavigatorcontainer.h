@@ -59,7 +59,7 @@ public:
        functions.
        An invalid QDate() is returned if the index is too big or too small.
     */
-    QDate monthOfNavigator(int navigatorIndex = 0) const;
+    Q_REQUIRED_RESULT QDate monthOfNavigator(int navigatorIndex = 0) const;
 public Q_SLOTS:
 
     /**

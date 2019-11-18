@@ -144,7 +144,7 @@ public:
     /** Is today visible in the view? Keep this in sync with
      * the values today (below) can take.
      */
-    bool isTodayVisible() const
+    Q_REQUIRED_RESULT bool isTodayVisible() const
     {
         return mToday >= 0;
     }
@@ -156,12 +156,12 @@ public:
      * in the array of visible dates and going from
      * top left (0) to bottom right (41).
      */
-    bool isBeginningOfMonth() const
+    Q_REQUIRED_RESULT bool isBeginningOfMonth() const
     {
         return mToday <= 8;
     }
 
-    bool isEndOfMonth() const
+    Q_REQUIRED_RESULT bool isEndOfMonth() const
     {
         return mToday >= 27;
     }
