@@ -109,6 +109,12 @@ protected:
     void closeEvent(QCloseEvent *) override;
     void showEvent(QShowEvent *event) override;
 
+private Q_SLOTS:
+    void slotDBusNotificationsPropertiesChanged(
+            const QString& interface,
+            const QVariantMap& changedProperties,
+            const QStringList& invalidatedProperties);
+
 private:
     void update();
     void updateButtons();

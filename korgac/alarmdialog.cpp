@@ -30,6 +30,9 @@
 #include "mailclient.h"
 #include "koalarmclient_debug.h"
 
+#include "notifications_interface.h" // DBUS-generated
+#include "dbusproperties.h" // DBUS-generated
+
 #include <CalendarSupport/IncidenceViewer>
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/IdentityManager>
@@ -77,6 +80,9 @@ using namespace KCalUtils;
 // fallback defaults
 static int defSuspendVal = 5;
 static int defSuspendUnit = AlarmDialog::SuspendInMinutes;
+
+static const char s_fdo_notifications_service[] = "org.freedesktop.Notifications";
+static const char s_fdo_notifications_path[] = "/org/freedesktop/Notifications";
 
 class ReminderTreeItem : public QTreeWidgetItem
 {
@@ -332,6 +338,16 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     connect(mUser3Button, &QPushButton::clicked, this, &AlarmDialog::slotUser3);
 
     mIdentityManager = new CalendarSupport::IdentityManager;
+
+    QDBusConnection dbusConn = QDBusConnection::sessionBus();
+    if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
+        OrgFreedesktopDBusPropertiesInterface *propsIface = new OrgFreedesktopDBusPropertiesInterface(
+                QString::fromLatin1(s_fdo_notifications_service),
+                QString::fromLatin1(s_fdo_notifications_path),
+                dbusConn, this);
+        connect(propsIface, &OrgFreedesktopDBusPropertiesInterface::PropertiesChanged,
+                this, &AlarmDialog::slotDBusNotificationsPropertiesChanged);
+    }
 }
 
 AlarmDialog::~AlarmDialog()
@@ -769,6 +785,19 @@ void AlarmDialog::eventNotification()
 
 void AlarmDialog::wakeUp()
 {
+    // Check if notifications are inhibited (e.x. plasma "do not disturb" mode.
+    // In that case, we'll wait until they are allowed again (see slotDBusNotificationsPropertiesChanged)
+    QDBusConnection dbusConn = QDBusConnection::sessionBus();
+    if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
+        OrgFreedesktopNotificationsInterface iface(
+                QString::fromLatin1(s_fdo_notifications_service),
+                QString::fromLatin1(s_fdo_notifications_path),
+                dbusConn);
+        if (iface.inhibited()) {
+            return;
+        }
+    }
+
     bool activeReminders = false;
     QTreeWidgetItemIterator it(mIncidenceTree);
     QTreeWidgetItem *firstItem = nullptr;
@@ -799,6 +828,24 @@ void AlarmDialog::wakeUp()
     showDetails(firstItem);
     Q_EMIT reminderCount(activeCount());
 }
+
+void AlarmDialog::slotDBusNotificationsPropertiesChanged(
+        const QString& interface,
+        const QVariantMap& changedProperties,
+        const QStringList& invalidatedProperties)
+{
+    Q_UNUSED(interface); // always "org.freedesktop.Notifications"
+    Q_UNUSED(invalidatedProperties);
+    const auto it = changedProperties.find(QStringLiteral("Inhibited"));
+    if (it != changedProperties.end()) {
+        const bool inhibited = it.value().toBool();
+        qCDebug(KOALARMCLIENT_LOG) << "Notifications inhibited:" << inhibited;
+        if (!inhibited) {
+            wakeUp();
+        }
+    }
+}
+
 
 void AlarmDialog::slotSave()
 {
