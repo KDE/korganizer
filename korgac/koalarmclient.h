@@ -65,8 +65,8 @@ private:
     void setupAkonadi();
     void slotCommitData(QSessionManager &);
     void showReminder();
-    bool dockerEnabled();
-    bool collectionsAvailable() const;
+    Q_REQUIRED_RESULT bool dockerEnabled();
+    Q_REQUIRED_RESULT bool collectionsAvailable() const;
     void createReminder(const Akonadi::Item &incidence, const QDateTime &dt, const QString &displayText);
     void saveLastCheckTime();
     void createDialog();

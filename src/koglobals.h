@@ -65,7 +65,7 @@ public:
 
     /** return the HolidayRegion object or 0 if none has been defined
     */
-    QList<KHolidays::HolidayRegion *> holidays() const;
+    Q_REQUIRED_RESULT QList<KHolidays::HolidayRegion *> holidays() const;
 
 protected:
     KOGlobals();
