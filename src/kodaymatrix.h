@@ -85,7 +85,7 @@ public:
     /** returns the first and last date of the 6*7 matrix that displays @p month
      * @param month The month we want to get matrix boundaries
      */
-    static QPair<QDate, QDate> matrixLimits(const QDate &month);
+    static Q_REQUIRED_RESULT QPair<QDate, QDate> matrixLimits(const QDate &month);
 
     /**
       Associate a calendar with this day matrix. If there is a calendar, the

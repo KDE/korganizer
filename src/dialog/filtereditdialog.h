@@ -96,7 +96,7 @@ private:
     void editCategorySelection();
     void slotHelp();
 
-    bool correctName(const QString &newText);
+    Q_REQUIRED_RESULT bool correctName(const QString &newText);
     void filterSelected(KCalendarCore::CalFilter *f);
 
     QString mNegativeBackground;
