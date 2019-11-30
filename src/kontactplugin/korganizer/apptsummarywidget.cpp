@@ -26,7 +26,7 @@
 #include "apptsummarywidget.h"
 #include "korganizerplugin.h"
 #include "summaryeventinfo.h"
-
+#include <kwidgetsaddons_version.h>
 #include "korganizerinterface.h"
 
 #include <CalendarSupport/Utils>
@@ -209,11 +209,19 @@ void ApptSummaryWidget::updateView()
         urlLabel->setWordWrap(true);
         mLayout->addWidget(urlLabel, counter, 3);
         mLabels.append(urlLabel);
-
+#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 65, 0)
         connect(urlLabel, QOverload<const QString &>::of(
                     &KUrlLabel::leftClickedUrl), this, &ApptSummaryWidget::viewEvent);
         connect(urlLabel, QOverload<const QString &>::of(
                     &KUrlLabel::rightClickedUrl), this, &ApptSummaryWidget::popupMenu);
+#else
+        connect(urlLabel, &KUrlLabel::leftClickedUrl, this, [this, urlLabel] {
+            viewEvent(urlLabel->url());
+        });
+        connect(urlLabel, &KUrlLabel::rightClickedUrl, this, [this, urlLabel] {
+            popupMenu(urlLabel->url());
+        });
+#endif
         if (!event->summaryTooltip.isEmpty()) {
             urlLabel->setToolTip(event->summaryTooltip);
         }

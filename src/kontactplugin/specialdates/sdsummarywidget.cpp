@@ -27,6 +27,7 @@
 #include "korganizer_kontactplugins_specialdates_debug.h"
 #include <KontactInterface/Core>
 #include <KontactInterface/Plugin>
+#include <kwidgetsaddons_version.h>
 
 #include <CalendarSupport/Utils>
 #include <CalendarSupport/CalendarSingleton>
@@ -561,11 +562,19 @@ void SDSummaryWidget::createLabels()
                 urlLabel->setWordWrap(true);
                 mLayout->addWidget(urlLabel, counter, 4);
                 mLabels.append(urlLabel);
-
+#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 65, 0)
                 connect(urlLabel, qOverload<const QString &>(&KUrlLabel::leftClickedUrl),
                         this, &SDSummaryWidget::mailContact);
                 connect(urlLabel, qOverload<const QString &>(&KUrlLabel::rightClickedUrl),
                         this, &SDSummaryWidget::popupMenu);
+#else
+                connect(urlLabel, &KUrlLabel::leftClickedUrl, this, [this, urlLabel] {
+                    mailContact(urlLabel->url());
+                });
+                connect(urlLabel, &KUrlLabel::rightClickedUrl, this, [this, urlLabel] {
+                    popupMenu(urlLabel->url());
+                });
+#endif
             } else {
                 label = new QLabel(this);
                 label->setText((*addrIt).summary);
