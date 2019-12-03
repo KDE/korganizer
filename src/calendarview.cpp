@@ -838,7 +838,7 @@ void CalendarView::edit_paste()
     QDateTime endDT;
     QDateTime finalDateTime;
     bool useEndTime = false;
-    KCalUtils::DndFactory::PasteFlags pasteFlags = nullptr;
+    KCalUtils::DndFactory::PasteFlags pasteFlags = {};
 
     KOrg::BaseView *curView = mViewManager->currentView();
     KOAgendaView *agendaView = mViewManager->agendaView();
