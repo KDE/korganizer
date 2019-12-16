@@ -749,7 +749,7 @@ void AkonadiCollectionView::updateMenu()
 void AkonadiCollectionView::newCalendar()
 {
     QPointer<Akonadi::AgentTypeDialog> dlg = new Akonadi::AgentTypeDialog(this);
-    dlg->setWindowTitle(i18n("Add Calendar"));
+    dlg->setWindowTitle(i18nc("@title:window", "Add Calendar"));
     dlg->agentFilterProxyModel()->addMimeTypeFilter(QStringLiteral("text/calendar"));
     dlg->agentFilterProxyModel()->addCapabilityFilter(QStringLiteral("Resource"));   // show only resources, no agents
     if (dlg->exec()) {

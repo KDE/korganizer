@@ -45,7 +45,7 @@
 KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget *parent)
     : QDialog(parent)
 {
-    setWindowTitle(i18n("Event Viewer"));
+    setWindowTitle(i18nc("@title:window", "Event Viewer"));
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     mUser1Button = new QPushButton(this);
