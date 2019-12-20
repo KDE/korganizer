@@ -26,7 +26,6 @@
 #include "todosummarywidget.h"
 #include "todoplugin.h"
 #include "korganizerinterface.h"
-#include <kwidgetsaddons_version.h>
 #include <CalendarSupport/Utils>
 #include <CalendarSupport/CalendarSingleton>
 
@@ -281,19 +280,12 @@ void TodoSummaryWidget::updateView()
             urlLabel->setWordWrap(true);
             mLayout->addWidget(urlLabel, counter, 4);
             mLabels.append(urlLabel);
-#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 65, 0)
-            connect(urlLabel, QOverload<const QString &>::of(
-                        &KUrlLabel::leftClickedUrl), this, &TodoSummaryWidget::viewTodo);
-            connect(urlLabel, QOverload<const QString &>::of(
-                        &KUrlLabel::rightClickedUrl), this, &TodoSummaryWidget::popupMenu);
-#else
             connect(urlLabel, &KUrlLabel::leftClickedUrl, this, [this, urlLabel] {
                 viewTodo(urlLabel->url());
             });
             connect(urlLabel, &KUrlLabel::rightClickedUrl, this, [this, urlLabel] {
                 popupMenu(urlLabel->url());
             });
-#endif
             // State text label
             str = stateStr(todo);
             label = new QLabel(str, this);
