@@ -57,7 +57,7 @@ Name[uk]=Клієнт нагадувань KOrganizer
 Name[wa]=Cliyint do rimimbreu d' KOrganizer
 Name[x-test]=xxKOrganizer Reminder Clientxx
 Name[zh_CN]=KOrganizer 提醒客户端
-Name[zh_TW]=KOrganizer 提醒客戶端程式
+Name[zh_TW]=KOrganizer 提醒用戶端程式
 Exec=korgac
 Icon=korgac
 Type=Application
@@ -118,7 +118,7 @@ GenericName[uk]=Фонова служба клієнта нагадування 
 GenericName[wa]=Cliyint do démon do rimimbreu d' KOrganizer
 GenericName[x-test]=xxKOrganizer Reminder Daemon Clientxx
 GenericName[zh_CN]=KOrganizer 提醒守护进程的客户端
-GenericName[zh_TW]=KOrganizr 提醒守護程式客戶端
+GenericName[zh_TW]=KOrganizr 提醒守護程式用戶端
 Terminal=false
 
 X-KDE-autostart-phase=2
