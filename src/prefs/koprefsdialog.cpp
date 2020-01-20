@@ -1355,9 +1355,15 @@ void KOPrefsDialogPlugins::usrReadConfig()
     mDecorations->setExpanded(true);
     mOthers->setExpanded(true);
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();
     mDecorationsAtAgendaViewTop = viewPrefs->decorationsAtAgendaViewTop().toSet();
     mDecorationsAtAgendaViewBottom = viewPrefs->decorationsAtAgendaViewBottom().toSet();
+#else
+    mDecorationsAtMonthViewTop = QSet<QString>(KOPrefs::instance()->decorationsAtMonthViewTop().begin(), KOPrefs::instance()->decorationsAtMonthViewTop().end());
+    mDecorationsAtAgendaViewTop = QSet<QString>(viewPrefs->decorationsAtAgendaViewTop().begin(), KOPrefs::instance()->decorationsAtAgendaViewTop().end());
+    mDecorationsAtAgendaViewBottom = QSet<QString>(viewPrefs->decorationsAtAgendaViewBottom().begin(), KOPrefs::instance()->decorationsAtAgendaViewBottom().end());
+#endif
 }
 
 void KOPrefsDialogPlugins::usrWriteConfig()
