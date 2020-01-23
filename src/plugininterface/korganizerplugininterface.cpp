@@ -23,7 +23,7 @@ KOrganizerPluginInterface::KOrganizerPluginInterface(QObject *parent)
     : PimCommon::PluginInterface(parent)
 {
     setPluginName(QStringLiteral("korganizer"));
-    setServiceTypeName(QStringLiteral("KOrganizer/MainViewPlugin"));
+    setPluginDirectory(QStringLiteral("korganizer/mainview"));
 }
 
 KOrganizerPluginInterface::~KOrganizerPluginInterface()
