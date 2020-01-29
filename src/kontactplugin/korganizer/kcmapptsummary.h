@@ -47,7 +47,7 @@ public:
 
 private Q_SLOTS:
     void modified();
-    void buttonClicked(int id);
+    void buttonClicked(QAbstractButton *button);
     void customDaysChanged(int value);
 
 private:

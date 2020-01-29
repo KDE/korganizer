@@ -58,14 +58,16 @@ KCMApptSummary::KCMApptSummary(QWidget *parent)
 
     customDaysChanged(7);
 
-    connect(mDaysButtonGroup, QOverload<int>::of(
+    //Remove QOverload<QAbstractButton *> when we switch on qt6. For the moment it avoids to add an #ifdef
+    connect(mDaysButtonGroup, QOverload<QAbstractButton *>::of(
                 &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mDaysButtonGroup, QOverload<int>::of(
+    connect(mShowButtonGroup, QOverload<QAbstractButton *>::of(
+                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mGroupwareButtonGroup, QOverload<QAbstractButton *>::of(
+                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+
+    connect(mDaysButtonGroup, QOverload<QAbstractButton *>::of(
                 &QButtonGroup::buttonClicked), this, &KCMApptSummary::buttonClicked);
-    connect(mShowButtonGroup, QOverload<int>::of(
-                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mGroupwareButtonGroup, QOverload<int>::of(
-                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
 
     connect(mCustomDays, QOverload<int>::of(
                 &QSpinBox::valueChanged), this, &KCMApptSummary::modified);
@@ -82,9 +84,11 @@ void KCMApptSummary::modified()
     Q_EMIT changed(true);
 }
 
-void KCMApptSummary::buttonClicked(int id)
+void KCMApptSummary::buttonClicked(QAbstractButton *button)
 {
-    mCustomDays->setEnabled(id == 2);
+    if (button) {
+        mCustomDays->setEnabled(mDaysButtonGroup->id(button) == 2);
+    }
 }
 
 void KCMApptSummary::customDaysChanged(int value)
