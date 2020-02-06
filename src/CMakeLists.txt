@@ -143,9 +143,16 @@ install(TARGETS
     )
 
 ########### next target ###############
+set(korganizerprivate_userfeedback_SRCS)
+if (TARGET KUserFeedbackWidgets)
+    set(korganizerprivate_userfeedback_SRCS ${korganizerprivate_userfeedback_SRCS}
+        userfeedback/userfeedbackmanager.cpp
+        )
+endif()
 
 set(korganizerprivate_LIB_SRCS
     ${korganizer_common_SRCS}
+    ${korganizerprivate_userfeedback_SRCS}
     manageshowcollectionproperties.cpp
     korgmigrateapplication.cpp
     collectiongeneralpage.cpp
@@ -186,6 +193,8 @@ set(korganizerprivate_LIB_SRCS
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
     )
+
+
 
 qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)
 
@@ -228,6 +237,11 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
+set(korganizer_userfeedback_LIB)
+if (TARGET KUserFeedbackWidgets)
+    set(korganizer_userfeedback_LIB KUserFeedbackWidgets)
+endif()
+
 target_link_libraries(korganizerprivate
     PUBLIC
     KF5::PimCommonAkonadi
@@ -257,6 +271,7 @@ target_link_libraries(korganizerprivate
     KF5::WindowSystem
     KF5::Notifications
     KF5::ItemViews
+    ${korganizer_userfeedback_LIB}
     )
 
 target_include_directories(korganizerprivate PUBLIC
