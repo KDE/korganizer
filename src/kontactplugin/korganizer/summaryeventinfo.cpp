@@ -119,7 +119,11 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                 || (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
                 if (eventStart.date() < start) {
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+                    sDateTimeByUid()->insert(event->instanceIdentifier(), QDateTime(start));
+#else
                     sDateTimeByUid()->insert(event->instanceIdentifier(), QDateTime(start.startOfDay()));
+#endif
                 } else {
                     sDateTimeByUid()->insert(event->instanceIdentifier(), eventStart);
                 }
