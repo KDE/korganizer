@@ -723,7 +723,8 @@ void AlarmDialog::eventNotification()
                     program = QLatin1Char('\"') + program + QLatin1Char('\"');
                 }
 
-                QProcess::startDetached(program + QLatin1Char(' ') + alarm->programArguments());
+                //TODO move alarm->programArguments() as argument of QProcess API ?
+                QProcess::startDetached(program + QLatin1Char(' ') + alarm->programArguments(), QStringList());
             } else if (alarm->type() == Alarm::Audio) {
                 beeped = true;
                 Phonon::MediaObject *player
