@@ -36,10 +36,10 @@
 
 #include <KCheckableProxyModel>
 #include <KConfigGroup>
-#include <KDBusConnectionPool>
 #include <KSharedConfig>
 
 #include <QApplication>
+#include <QDBusConnection>
 
 using namespace KCalendarCore;
 
@@ -47,7 +47,7 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
     : QObject(parent)
 {
     new KOrgacAdaptor(this);
-    KDBusConnectionPool::threadConnection().registerObject(QStringLiteral("/ac"), this);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/ac"), this);
     qCDebug(KOALARMCLIENT_LOG);
 
     if (dockerEnabled()) {
