@@ -18,6 +18,12 @@ add_subdirectory(kconf_update)
 
 ########### next target ###############
 
+set(korganizer_userfeedback_LIB)
+if (TARGET KUserFeedbackWidgets)
+    set(korganizer_userfeedback_LIB KUserFeedbackWidgets)
+endif()
+
+
 set(korganizer_common_SRCS)
 if (ECM_VERSION VERSION_LESS "5.68.0")
     ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME org.kde.pim.korganizer)
@@ -54,6 +60,7 @@ target_link_libraries(korganizer
     KF5::PimCommonAkonadi
     KF5::Crash
     KF5::WindowSystem
+    ${korganizer_userfeedback_LIB}
     )
 
 install(TARGETS
@@ -87,6 +94,7 @@ target_link_libraries(kcm_korganizer
     KF5::PimCommon
     KF5::AkonadiWidgets
     KF5::WindowSystem
+    ${korganizer_userfeedback_LIB}
     )
 
 install(TARGETS
@@ -246,10 +254,6 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
-set(korganizer_userfeedback_LIB)
-if (TARGET KUserFeedbackWidgets)
-    set(korganizer_userfeedback_LIB KUserFeedbackWidgets)
-endif()
 
 target_link_libraries(korganizerprivate
     PUBLIC

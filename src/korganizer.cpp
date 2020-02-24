@@ -46,6 +46,12 @@
 #include <KSharedConfig>
 #include <QLabel>
 #include <QStatusBar>
+#ifdef WITH_KUSERFEEDBACK
+#include <KUserFeedback/NotificationPopup>
+#include <KUserFeedback/Provider>
+#include "userfeedback/userfeedbackmanager.h"
+#endif
+
 
 KOrganizer::KOrganizer() : KParts::MainWindow()
     , KOrg::MainWindow()
@@ -63,6 +69,12 @@ KOrganizer::KOrganizer() : KParts::MainWindow()
 
     mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar());
     (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
+
+#ifdef WITH_KUSERFEEDBACK
+    KUserFeedback::NotificationPopup *userFeedBackNotificationPopup = new KUserFeedback::NotificationPopup(this);
+    userFeedBackNotificationPopup->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
+#endif
+
 }
 
 KOrganizer::~KOrganizer()

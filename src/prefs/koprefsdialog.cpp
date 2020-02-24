@@ -80,6 +80,12 @@
 #include <QStandardPaths>
 #include <QLocale>
 #include <QTimeEdit>
+#include <KAboutData>
+
+#ifdef WITH_KUSERFEEDBACK
+#include <KUserFeedback/FeedbackConfigWidget>
+#include "userfeedback/userfeedbackmanager.h"
+#endif
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     : KPrefsModule(KOPrefs::instance(), parent)
@@ -1570,3 +1576,46 @@ QString KOPrefsDesignerFields::applicationName()
 {
     return QStringLiteral("KORGANIZER");
 }
+
+#ifdef WITH_KUSERFEEDBACK
+
+extern "C"
+{
+Q_DECL_EXPORT KCModule *create_korguserfeeback(QWidget *parent, const char *)
+{
+    return new KOPrefsUserFeedBack(parent);
+}
+}
+
+KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &args)
+    : KCModule(parent, args)
+{
+    KAboutData *about = new KAboutData(QStringLiteral("KCMUserFeedBack"),
+                                       i18n("KCMUserFeedBack"),
+                                       QString(),
+                                       i18n("KOrganizer Configure User FeedBack"),
+                                       KAboutLicense::LGPL,
+                                       i18n("(c) 2020 Laurent Montel"));
+    about->addAuthor(i18n("Laurent Montel"), QString(), QStringLiteral("montel@kde.org"));
+    setAboutData(about);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
+
+    mUserFeedbackWidget = new KUserFeedback::FeedbackConfigWidget(this);
+    connect(mUserFeedbackWidget, &KUserFeedback::FeedbackConfigWidget::configurationChanged, this, &KOPrefsUserFeedBack::markAsChanged);
+
+    layout->addWidget(mUserFeedbackWidget);
+    mUserFeedbackWidget->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
+}
+
+void KOPrefsUserFeedBack::load()
+{
+
+}
+
+void KOPrefsUserFeedBack::save()
+{
+    UserFeedBackManager::self()->userFeedbackProvider()->setTelemetryMode(mUserFeedbackWidget->telemetryMode());
+    UserFeedBackManager::self()->userFeedbackProvider()->setSurveyInterval(mUserFeedbackWidget->surveyInterval());
+}
+#endif

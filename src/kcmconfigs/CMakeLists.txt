@@ -7,6 +7,7 @@ install(FILES
   korganizer_configplugins.desktop
   korganizer_configtime.desktop
   korganizer_configviews.desktop
+  korganizer_userfeedback.desktop
   DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
 )
 

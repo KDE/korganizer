@@ -22,10 +22,11 @@
 #define USERFEEDBACKMANAGER_H
 
 #include <QObject>
+#include "korganizer_core_export.h"
 namespace KUserFeedback {
 class Provider;
 }
-class UserFeedBackManager : public QObject
+class KORGANIZER_CORE_EXPORT UserFeedBackManager : public QObject
 {
     Q_OBJECT
 public:

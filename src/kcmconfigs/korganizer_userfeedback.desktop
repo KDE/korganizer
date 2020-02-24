@@ -1,0 +1,17 @@
+[Desktop Entry]
+Icon=preferences-other
+Type=Service
+X-KDE-ServiceTypes=KCModule
+
+X-KDE-ModuleType=Library
+X-KDE-Library=kcm_korganizer
+X-KDE-FactoryName=korguserfeeback
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
+X-KDE-CfgDlgHierarchy=KOrganizer
+X-KDE-Weight=600
+
+Name=UserFeedBack
+Comment=KOrganizer UserFeedBack Configuration
+X-KDE-Keywords=korganizer,userfeedback

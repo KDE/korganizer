@@ -102,7 +102,9 @@ void KODialogManager::showOptionsDialog()
         modules.append(QStringLiteral("korganizer_configfreebusy.desktop"));
         modules.append(QStringLiteral("korganizer_configplugins.desktop"));
         modules.append(QStringLiteral("korganizer_configdesignerfields.desktop"));
-
+#ifdef WITH_KUSERFEEDBACK
+        modules.append(QStringLiteral("korganizer_userfeedback.desktop"));
+#endif
         // add them all
         const QStringList::iterator mitEnd(modules.end());
         for (QStringList::iterator mit = modules.begin(); mit != mitEnd; ++mit) {
