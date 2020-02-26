@@ -163,10 +163,10 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
         setGeometry(mRect);
     }
 
-    int defSuspendVal = generalConfig.readEntry("DefaultSuspendValue", defSuspendVal);
+    defSuspendVal = generalConfig.readEntry("DefaultSuspendValue", defSuspendVal);
     int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
 
-    int defSuspendUnit = generalConfig.readEntry("SuspendUnit", defSuspendUnit);
+    defSuspendUnit = generalConfig.readEntry("SuspendUnit", defSuspendUnit);
     SuspendUnit suspendUnit = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit",
                                                                                defSuspendUnit));
 
