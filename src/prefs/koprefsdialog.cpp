@@ -1362,14 +1362,17 @@ void KOPrefsDialogPlugins::usrReadConfig()
     mOthers->setExpanded(true);
 
     //Disable for the moment it crashs. Not understand why
-#if 1//QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();
     mDecorationsAtAgendaViewTop = viewPrefs->decorationsAtAgendaViewTop().toSet();
     mDecorationsAtAgendaViewBottom = viewPrefs->decorationsAtAgendaViewBottom().toSet();
 #else
-    mDecorationsAtMonthViewTop = QSet<QString>(KOPrefs::instance()->decorationsAtMonthViewTop().begin(), KOPrefs::instance()->decorationsAtMonthViewTop().end());
-    mDecorationsAtAgendaViewTop = QSet<QString>(viewPrefs->decorationsAtAgendaViewTop().begin(), viewPrefs->decorationsAtAgendaViewTop().end());
-    mDecorationsAtAgendaViewBottom = QSet<QString>(viewPrefs->decorationsAtAgendaViewBottom().begin(), viewPrefs->decorationsAtAgendaViewBottom().end());
+    const auto monthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop();
+    mDecorationsAtMonthViewTop = QSet<QString>(monthViewTop.begin(), monthViewTop.end());
+    const auto agendaViewTop = viewPrefs->decorationsAtAgendaViewTop();
+    mDecorationsAtAgendaViewTop = QSet<QString>(agendaViewTop.begin(), agendaViewTop.end());
+    const auto agendaViewBottom = viewPrefs->decorationsAtAgendaViewBottom();
+    mDecorationsAtAgendaViewBottom = QSet<QString>(agendaViewBottom.begin(), agendaViewBottom.end());
 #endif
 }
 
