@@ -577,6 +577,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         mDefaultCalendar->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"),
                                                  mDefaultCalendar);
+        connect(mDefaultCalendar, &QAction::triggered, this,
+                &AkonadiCollectionView::setDefaultCalendar);
 
         mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral(
                                                                    "folder-bookmarks")),
