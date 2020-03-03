@@ -304,6 +304,13 @@ public:
                 }
                 return font;
             }
+        } else if (role == Qt::DisplayRole) {
+            const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+            const Akonadi::Collection::Id colId = collection.id();
+
+            if (colId == CalendarSupport::KCalPrefs::instance()->defaultCalendarId()) {
+                return i18nc("this is the default calendar", "%1 (Default Calendar)", collection.displayName());
+            }
         }
 
         return QSortFilterProxyModel::data(index, role);
