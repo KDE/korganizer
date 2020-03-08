@@ -641,6 +641,19 @@ void AkonadiCollectionView::setDefaultCalendar()
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); //selectedRows()
     Q_ASSERT(index.isValid());
     const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+
+    // Ask if they really want to do this
+    const Akonadi::Collection curCol(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    if (curCol.isValid() &&
+        KMessageBox::warningContinueCancel(
+            this,
+            i18nc("@info",
+                  "Do you really want replace your current default calendar with \"%1\"?",
+                   collection.displayName()),
+            i18nc("@title:window", "Replace Default Calendar?")) != KMessageBox::Continue) {
+              return;
+    }
+
     CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(collection.id());
     CalendarSupport::KCalPrefs::instance()->usrSave();
     updateMenu();
