@@ -750,9 +750,11 @@ void AkonadiCollectionView::updateMenu()
             }
 
             mDisableColor->setEnabled(enableAction);
-            mDefaultCalendar->setEnabled(!KOHelper::isStandardCalendar(collection.id())
-                                         && collection.rights()
-                                         & Akonadi::Collection::CanCreateItem);
+            mDefaultCalendar->setEnabled(
+                !KOHelper::isStandardCalendar(collection.id()) &&
+                (collection.rights() & Akonadi::Collection::CanCreateItem) &&
+                !collection.isVirtual() &&
+                collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType()));
             disableStuff = false;
         }
         bool isOnline;
