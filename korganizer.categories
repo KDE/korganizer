@@ -1,4 +1,0 @@
-org.kde.pim.korganizer korganizer (korganizer) IDENTIFIER [KORGANIZER_LOG]
-org.kde.pim.korganizer_plugin korganizer (korganizer kontact plugins) IDENTIFIER [KORGANIZERPLUGIN_LOG]
-org.kde.pim.korganizer_kontactplugins_specialdates korganizer (kontactplugins korganizer special dates) IDENTIFIER [KORGANIZER_KONTACTPLUGINS_SPECIALDATES_LOG]
-org.kde.pim.koalarmclient korganizer (koalarmclient) IDENTIFIER [KOALARMCLIENT_LOG]

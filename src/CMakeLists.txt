@@ -25,15 +25,11 @@ endif()
 
 
 set(korganizer_common_SRCS)
-if (ECM_VERSION VERSION_LESS "5.68.0")
-    ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME org.kde.pim.korganizer)
-else()
-    ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME org.kde.pim.korganizer
+ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME org.kde.pim.korganizer
         DESCRIPTION "korganizer (korganizer)"
         OLD_CATEGORY_NAMES log_korganizer
         EXPORT KORGANIZER
     )
-endif()
 
 
 set(korganizer_SRCS

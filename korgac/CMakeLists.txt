@@ -12,15 +12,11 @@ endif()
 set(korgac_SRCS
     koalarmclient.cpp
     )
-if (ECM_VERSION VERSION_LESS "5.68.0")
-    ecm_qt_declare_logging_category(korgac_SRCS HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME org.kde.pim.koalarmclient)
-else()
-    ecm_qt_declare_logging_category(korgac_SRCS HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME org.kde.pim.koalarmclient
+ecm_qt_declare_logging_category(korgac_SRCS HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME org.kde.pim.koalarmclient
         DESCRIPTION "korganizer (koalarmclient)"
         OLD_CATEGORY_NAMES log_koalarmclient
         EXPORT KORGANIZER
     )
-endif()
 
 set(korgac_SRCS ${korgac_SRCS} korgacmain.cpp)
 
