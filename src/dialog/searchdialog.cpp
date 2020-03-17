@@ -28,6 +28,7 @@
 
 #include "ui_searchdialog_base.h"
 #include "calendarview.h"
+#include "koeventpopupmenu.h"
 #include "koglobals.h"
 
 #include <CalendarSupport/Utils>
@@ -82,9 +83,9 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     connect(buttonBox, &QDialogButtonBox::helpRequested, this, &SearchDialog::slotHelpRequested);
     mainLayout->addWidget(buttonBox);
     mUser1Button->setDefault(true);
-    KGuiItem::assign(mUser1Button, KGuiItem(i18nc("search in calendar", "&Search")));
+    KGuiItem::assign(mUser1Button, KGuiItem(i18nc("@action:button search in calendar", "&Search")));
     mUser1Button->setIcon(QIcon::fromTheme(QStringLiteral("search")));
-    mUser1Button->setToolTip(i18n("Start searching"));
+    mUser1Button->setToolTip(i18nc("@info:tooltip", "Start the search"));
     mUser1Button->setWhatsThis(
         i18nc("@info:whatsthis",
               "Press this button to start the search."));
@@ -99,12 +100,30 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     connect(listView, &EventViews::ListView::deleteIncidenceSignal, this,
             &SearchDialog::deleteIncidenceSignal);
 
+    m_popupMenu = new KOEventPopupMenu(m_calendarview->calendar(), KOEventPopupMenu::MiniList, this);
+    connect(listView, &EventViews::ListView::showIncidencePopupSignal,
+            m_popupMenu, &KOEventPopupMenu::showIncidencePopup);
+
+    connect(m_popupMenu, &KOEventPopupMenu::showIncidenceSignal, this,
+            &SearchDialog::showIncidenceSignal);
+    connect(m_popupMenu, &KOEventPopupMenu::editIncidenceSignal, this,
+            &SearchDialog::editIncidenceSignal);
+    connect(m_popupMenu, &KOEventPopupMenu::deleteIncidenceSignal, this,
+            &SearchDialog::deleteIncidenceSignal);
+ //   connect(m_popupMenu, &KOEventPopupMenu::toggleAlarmSignal, this,
+ //           &SearchDialog::toggleAlarmSignal);
+ //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
+ //           &SearchDialog::toggleTodoCompletedSignal);
+
+//TODO: refresh search after delete or edit
+
     readConfig();
 }
 
 SearchDialog::~SearchDialog()
 {
     writeConfig();
+    delete m_popupMenu;
     delete m_ui;
 }
 
@@ -128,9 +147,10 @@ void SearchDialog::doSearch()
     if (!re.isValid()) {
         KMessageBox::sorry(
             this,
-            i18n("Invalid search expression, cannot perform the search. "
-                 "Please enter a search expression using the wildcard characters "
-                 "'*' and '?' where needed."));
+            i18nc("@info",
+                  "Invalid search expression, cannot perform the search. "
+                  "Please enter a search expression using the wildcard characters "
+                  "'*' and '?' where needed."));
         return;
     }
 
@@ -140,12 +160,17 @@ void SearchDialog::doSearch()
         m_ui->numItems->setText(QString());
         KMessageBox::information(
             this,
-            i18n("No items were found that match your search pattern."),
-            i18n("Search Results"),
+            i18nc("@info", "No items were found that match your search pattern."),
+            i18nc("@title:window", "Search Results"),
             QStringLiteral("NoSearchResults"));
     } else {
-        m_ui->numItems->setText(i18np("%1 item", "%1 items", mMatchedEvents.count()));
+        m_ui->numItems->setText(i18ncp("@label", "%1 item", "%1 items", mMatchedEvents.count()));
     }
+}
+
+void SearchDialog::popupMenu(const QPoint &point)
+{
+    listView->popupMenu(point);
 }
 
 void SearchDialog::updateView()

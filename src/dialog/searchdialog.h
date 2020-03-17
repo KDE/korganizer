@@ -33,6 +33,7 @@
 
 class QPushButton;
 class CalendarView;
+class KOEventPopupMenu;
 
 namespace Ui {
 class SearchDialog;
@@ -56,6 +57,7 @@ public:
     void updateView();
 
 public Q_SLOTS:
+    void popupMenu(const QPoint &);
     void changeIncidenceDisplay(KCalendarCore::Incidence *, int)
     {
         updateView();
@@ -79,6 +81,7 @@ private:
 
     Ui::SearchDialog *m_ui = nullptr;
     CalendarView *m_calendarview = nullptr; // parent
+    KOEventPopupMenu *m_popupMenu = nullptr;
     Akonadi::Item::List mMatchedEvents;
     EventViews::ListView *listView = nullptr;
     QPushButton *mUser1Button = nullptr;
