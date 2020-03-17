@@ -48,73 +48,129 @@
 #include <IncidenceEditor/IncidenceDialogFactory>
 #include <IncidenceEditor/IncidenceDialog>
 
-KOEventPopupMenu::KOEventPopupMenu(Akonadi::ETMCalendar *calendar, QWidget *parent)
+KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent)
     : QMenu(parent)
-    , mCalendar(calendar)
 {
-    addAction(QIcon::fromTheme(QStringLiteral("document-preview")), i18n("&Show"),
+    init(calendar, MenuStyle::NormalView);
+}
+
+KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle, QWidget *parent)
+    : QMenu(parent)
+{
+    init(calendar, menuStyle);
+}
+
+void KOEventPopupMenu::init(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle)
+{
+    mCalendar = calendar;
+
+    // These actions are always shown, no matter what
+    addAction(QIcon::fromTheme(QStringLiteral("document-preview")),
+              i18nc("@action:inmenu", "&Show"),
               this, &KOEventPopupMenu::popupShow);
-    mEditOnlyItems.append(
-        addAction(QIcon::fromTheme(QStringLiteral("document-edit")), i18n("&Edit..."),
-                  this, &KOEventPopupMenu::popupEdit));
-    mEditOnlyItems.append(addSeparator());
-    addAction(QIcon::fromTheme(QStringLiteral("document-print")), i18n("&Print..."),
+
+    addAction(QIcon::fromTheme(QStringLiteral("document-edit")),
+              i18nc("@action:inmenu", "&Edit..."),
+              this, &KOEventPopupMenu::popupEdit);
+
+    addAction(QIcon::fromTheme(QStringLiteral("edit-delete")),
+              i18nc("@action:inmenu delete this incidence", "&Delete"),
+              this, &KOEventPopupMenu::popupDelete);
+
+    addSeparator();
+
+    addAction(QIcon::fromTheme(QStringLiteral("document-print")),
+              i18nc("@action:inmenu", "&Print..."),
               this, &KOEventPopupMenu::slotPrint);
+
     addAction(QIcon::fromTheme(QStringLiteral("document-print-preview")),
-              i18n("Print Previe&w..."),
+              i18nc("@action:inmenu", "Print Previe&w..."),
               this, &KOEventPopupMenu::printPreview);
 
-    //------------------------------------------------------------------------
+    // Add more menu actions according to Menu style
+    switch(menuStyle) {
+        case MenuStyle::NormalView:
+            appendEditOnlyItems();
+            appendEventOnlyItems();
+            appendTodoOnlyItems();
+            appendReminderOnlyItems();
+            appendRecurrenceOnlyItems();
+            appendShareOnlyItems();
+        default:
+            break;
+    }
+}
+
+void KOEventPopupMenu::appendEditOnlyItems()
+{
     mEditOnlyItems.append(addSeparator());
+
     mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-cut")),
-                                    i18nc("cut this event", "C&ut"),
+                                    i18nc("@action:inmenu cut this incidence", "C&ut"),
                                     this, &KOEventPopupMenu::popupCut));
     mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-copy")),
-                                    i18nc("copy this event", "&Copy"),
+                                    i18nc("@action:inmenu copy this incidence", "&Copy"),
                                     this, &KOEventPopupMenu::popupCopy));
-    // paste is always possible
     mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-paste")),
-                                    i18n("&Paste"),
+                                    i18nc("@action:inmenu", "&Paste"),
                                     this, &KOEventPopupMenu::popupPaste));
-    mEditOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("edit-delete")),
-                                    i18nc("delete this incidence", "&Delete"),
-                                    this, &KOEventPopupMenu::popupDelete));
-    //------------------------------------------------------------------------
-    addSeparator();
-    QAction *action = addAction(QIcon::fromTheme(QStringLiteral("task-new")),
-                                i18n("Create To-do"),
-                                this, &KOEventPopupMenu::createTodo);
-    action->setObjectName(QStringLiteral("createtodo"));
-    mEventOnlyItems.append(action);
+}
 
-    action = addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
-                       i18n("Create Event"),
-                       this, qOverload<>(&KOEventPopupMenu::createEvent));
-    action->setObjectName(QStringLiteral("createevent"));
-    mTodoOnlyItems.append(action);
+void KOEventPopupMenu::appendEventOnlyItems()
+{
+    mEventOnlyItems.append(addSeparator());
 
-    action = addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
-                       i18n("Create Note"),
-                       this, qOverload<>(&KOEventPopupMenu::createNote));
-    action->setObjectName(QStringLiteral("createnote"));
-    //------------------------------------------------------------------------
-    addSeparator();
+    mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-new")),
+                                    i18nc("@action:inmenu", "Create To-do from Event"),
+                                    this, &KOEventPopupMenu::createTodo));
+
+    mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
+                                     i18nc("@action:inmenu", "Create Note for Event"),
+                                     this, qOverload<>(&KOEventPopupMenu::createNote)));
+}
+
+void KOEventPopupMenu::appendTodoOnlyItems()
+{
+    mTodoOnlyItems.append(addSeparator());
+
     mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-complete")),
-                                    i18n("Togg&le To-do Completed"),
+                                    i18nc("@action:inmenu", "Togg&le To-do Completed"),
                                     this, &KOEventPopupMenu::toggleTodoCompleted));
-    mToggleReminder = addAction(QIcon::fromTheme(QStringLiteral("appointment-reminder")),
-                                i18n("&Toggle Reminder"), this, &KOEventPopupMenu::toggleAlarm);
-    mEditOnlyItems.append(mToggleReminder);
-    //------------------------------------------------------------------------
-    mRecurrenceItems.append(addSeparator());
-    mDissociateOccurrences = addAction(i18n("&Dissociate From Recurrence..."),
-                                       this, &KOEventPopupMenu::dissociateOccurrences);
-    mRecurrenceItems.append(mDissociateOccurrences);
 
-    addSeparator();
-    addAction(QIcon::fromTheme(QStringLiteral("mail-forward")),
-              i18n("Send as iCalendar..."),
-              this, &KOEventPopupMenu::forward);
+    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
+                                    i18nc("@action:inmenu", "Create Event from To-do"),
+                                    this, qOverload<>(&KOEventPopupMenu::createEvent)));
+
+    mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
+                                    i18nc("@action:inmenu", "Create Note for To-do"),
+                                    this, qOverload<>(&KOEventPopupMenu::createNote)));
+}
+
+void KOEventPopupMenu::appendReminderOnlyItems()
+{
+    mReminderOnlyItems.append(addSeparator());
+
+    mToggleReminder = addAction(QIcon::fromTheme(QStringLiteral("appointment-reminder")),
+                                i18nc("@action:inmenu", "&Toggle Reminder"),
+                                this, &KOEventPopupMenu::toggleAlarm);
+
+    mReminderOnlyItems.append(mToggleReminder);
+}
+
+void KOEventPopupMenu::appendRecurrenceOnlyItems()
+{
+    mRecurrenceOnlyItems.append(addSeparator());
+    mDissociateOccurrences = addAction(i18nc("@action:inmenu", "&Dissociate From Recurrence..."),
+                                       this, &KOEventPopupMenu::dissociateOccurrences);
+    mRecurrenceOnlyItems.append(mDissociateOccurrences);
+}
+
+void KOEventPopupMenu::appendShareOnlyItems()
+{
+    mShareOnlyItems.append(addSeparator());
+    mShareOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("mail-forward")),
+                                     i18nc("@action:inmenu", "Email as iCalendar..."),
+                                     this, &KOEventPopupMenu::forward));
 }
 
 void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate &qd)
@@ -129,46 +185,75 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
 
     if (!mCalendar) {
         //TODO fix it
-        qCDebug(KORGANIZER_LOG) << "Calendar is 0";
+        qCDebug(KORGANIZER_LOG) << "Calendar is unset";
         return;
     }
 
+    KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
+    Q_ASSERT(incidence);
+
+    // Determine if this Incidence's calendar is writeable.
+    // Else all actions that might modify the Incidence are disabled.
     const bool hasChangeRights = mCalendar->hasRight(mCurrentIncidence,
                                                      Akonadi::Collection::CanChangeItem);
 
-    KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
-    Q_ASSERT(incidence);
-    if (incidence->recurs()) {
-        const QDateTime thisDateTime(qd, {}, Qt::LocalTime);
-        const bool isLastOccurrence
-            = !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
-        const bool isFirstOccurrence
-            = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
-        mDissociateOccurrences->setEnabled(
-            !(isFirstOccurrence && isLastOccurrence) && hasChangeRights);
-    }
-
-    // Enable/Disabled menu items only valid for editable events.
     QList<QAction *>::Iterator it;
-    QList<QAction *>::Iterator end(mEditOnlyItems.end());
+    QList<QAction *>::Iterator end;
+
+    // Enable/Disabled menu edit items
+    end = mEditOnlyItems.end();
     for (it = mEditOnlyItems.begin(); it != end; ++it) {
         (*it)->setEnabled(hasChangeRights);
     }
-    mToggleReminder->setVisible((incidence->type() != KCalendarCore::Incidence::TypeJournal));
-    end = mRecurrenceItems.end();
-    for (it = mRecurrenceItems.begin(); it != end; ++it) {
-        (*it)->setVisible(incidence->recurs());
-    }
-    end = mTodoOnlyItems.end();
-    for (it = mTodoOnlyItems.begin(); it != end; ++it) {
-        (*it)->setVisible(incidence->type() == KCalendarCore::Incidence::TypeTodo);
-        (*it)->setEnabled(hasChangeRights);
-    }
+
+    // Enable/Disable menu items valid for Events only
     end = mEventOnlyItems.end();
     for (it = mEventOnlyItems.begin(); it != end; ++it) {
         (*it)->setVisible(incidence->type() == KCalendarCore::Incidence::TypeEvent);
+        (*it)->setEnabled(true);
+    }
+
+    // Enable/Disable menu items valid for Todos only
+    end = mTodoOnlyItems.end();
+    for (it = mTodoOnlyItems.begin(); it != end; ++it) {
+        (*it)->setVisible(incidence->type() == KCalendarCore::Incidence::TypeTodo);
+        (*it)->setEnabled(true);
+    }
+    if (mToggleReminder) {
+      mToggleReminder->setText(incidence->hasEnabledAlarms() ?
+                               i18nc("@action:inmenu", "&Toggle Reminder Off") :
+                               i18nc("@action:inmenu", "&Toggle Reminder On"));
+    }
+
+    // Enable/Disable menu items valid for reminder Incidences only
+    end = mReminderOnlyItems.end();
+    for (it = mReminderOnlyItems.begin(); it != end; ++it) {
+        (*it)->setVisible(incidence->type() != KCalendarCore::Incidence::TypeJournal);
         (*it)->setEnabled(hasChangeRights);
     }
+
+    // Enable/Disable menu items valid for recurrent Incidences only
+    end = mRecurrenceOnlyItems.end();
+    for (it = mRecurrenceOnlyItems.begin(); it != end; ++it) {
+        (*it)->setVisible(incidence->recurs());
+        (*it)->setEnabled(hasChangeRights);
+    }
+    if (incidence->recurs()) {
+        const QDateTime thisDateTime(qd, {}, Qt::LocalTime);
+        const bool isLastOccurrence = !incidence->recurrence()->getNextDateTime(thisDateTime).isValid();
+        const bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime(thisDateTime).isValid();
+        if (mDissociateOccurrences) {
+            mDissociateOccurrences->setEnabled(!(isFirstOccurrence && isLastOccurrence) && hasChangeRights);
+        }
+    }
+
+    // Enable/Disable menu items valid for sharing Incidences only
+    end = mShareOnlyItems.end();
+    for (it = mShareOnlyItems.begin(); it != end; ++it) {
+        (*it)->setVisible(true);
+        (*it)->setEnabled(true);
+    }
+
     popup(QCursor::pos());
 }
 
@@ -296,8 +381,9 @@ void KOEventPopupMenu::createEvent()
         newEventItem.setMimeType(KCalendarCore::Event::eventMimeType());
         newEventItem.setPayload<KCalendarCore::Event::Ptr>(event);
 
-        IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
-            true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
+        IncidenceEditorNG::IncidenceDialog *dlg =
+            IncidenceEditorNG::IncidenceDialogFactory::create(
+                true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newEventItem);
         dlg->open();
@@ -372,8 +458,9 @@ void KOEventPopupMenu::createTodo()
         newTodoItem.setMimeType(KCalendarCore::Todo::todoMimeType());
         newTodoItem.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
-        IncidenceEditorNG::IncidenceDialog *dlg = IncidenceEditorNG::IncidenceDialogFactory::create(
-            true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
+        IncidenceEditorNG::IncidenceDialog *dlg =
+            IncidenceEditorNG::IncidenceDialogFactory::create(
+                true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newTodoItem);
         dlg->open();

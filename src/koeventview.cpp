@@ -68,7 +68,7 @@ KOEventView::~KOEventView()
 
 KOEventPopupMenu *KOEventView::eventPopup()
 {
-    KOEventPopupMenu *eventPopup = new KOEventPopupMenu(calendar().data(), this);
+    KOEventPopupMenu *eventPopup = new KOEventPopupMenu(calendar(), this);
 
     connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this,
             &KOEventView::editIncidenceSignal);
