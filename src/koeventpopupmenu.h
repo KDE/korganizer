@@ -33,13 +33,34 @@
 #include <Akonadi/Calendar/ETMCalendar>
 
 /**
- * Context menu for event views with standard event actions.
+ * Context menu with standard Incidence actions.
 */
 class KOEventPopupMenu : public QMenu
 {
     Q_OBJECT
 public:
-    explicit KOEventPopupMenu(Akonadi::ETMCalendar *, QWidget *parent = nullptr);
+    /**
+     * The different types of preset menus available.
+     */
+    enum MenuStyle {
+      NormalView = 0, /**< typical menu shown in most views. this is the default menu style */
+      MiniList = 1,   /**< mini-menu with just the basic items, typical in lists */
+    };
+    Q_ENUM(MenuStyle)
+
+    /**
+     * Create an Incidence menu instance with the NormalView style.
+     */
+    explicit KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
+
+    /**
+     * Create an Incidence menu instance with a specified style.
+     */
+    KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle, QWidget *parent = nullptr);
+
+    /**
+     * Change the @p calendar used by the Incidence menu.
+     */
     void setCalendar(const Akonadi::ETMCalendar::Ptr &calendar);
 
 public Q_SLOTS:
@@ -82,6 +103,14 @@ Q_SIGNALS:
     void dissociateOccurrencesSignal(const Akonadi::Item &, const QDate &);
 
 private:
+    void init(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle menuStyle);
+    void appendEditOnlyItems();
+    void appendEventOnlyItems();
+    void appendTodoOnlyItems();
+    void appendReminderOnlyItems();
+    void appendRecurrenceOnlyItems();
+    void appendShareOnlyItems();
+
     void print(bool previous);
 
     Akonadi::ETMCalendar::Ptr mCalendar;
@@ -90,11 +119,13 @@ private:
 
     bool mHasAdditionalItems = false;
     QList<QAction *> mEditOnlyItems;
-    QList<QAction *> mTodoOnlyItems;
     QList<QAction *> mEventOnlyItems;
-    QList<QAction *> mRecurrenceItems;
-    QAction *mDissociateOccurrences = nullptr;
+    QList<QAction *> mTodoOnlyItems;
+    QList<QAction *> mReminderOnlyItems;
+    QList<QAction *> mRecurrenceOnlyItems;
+    QList<QAction *> mShareOnlyItems;
     QAction *mToggleReminder = nullptr;
+    QAction *mDissociateOccurrences = nullptr;
 };
 
 #endif
