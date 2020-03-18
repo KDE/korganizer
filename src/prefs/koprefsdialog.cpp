@@ -1613,7 +1613,7 @@ KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &ar
 
 void KOPrefsUserFeedBack::load()
 {
-
+    mUserFeedbackWidget->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
 }
 
 void KOPrefsUserFeedBack::save()
