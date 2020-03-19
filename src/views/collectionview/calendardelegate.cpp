@@ -35,6 +35,7 @@
 #include <QFontDatabase>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QPainterPath>
 
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
