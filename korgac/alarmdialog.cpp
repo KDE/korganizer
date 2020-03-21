@@ -166,7 +166,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     defSuspendVal = generalConfig.readEntry("DefaultSuspendValue", defSuspendVal);
     int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
 
-    defSuspendUnit = generalConfig.readEntry("SuspendUnit", defSuspendUnit);
+    defSuspendUnit = generalConfig.readEntry("DefaultSuspendUnit", defSuspendUnit);
     SuspendUnit suspendUnit = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit",
                                                                                defSuspendUnit));
 
@@ -846,7 +846,6 @@ void AlarmDialog::slotDBusNotificationsPropertiesChanged(
         }
     }
 }
-
 
 void AlarmDialog::slotSave()
 {
