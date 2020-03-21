@@ -309,7 +309,7 @@ public:
             const Akonadi::Collection::Id colId = collection.id();
 
             if (colId == CalendarSupport::KCalPrefs::instance()->defaultCalendarId()) {
-                return i18nc("this is the default calendar", "%1 (Default Calendar)", collection.displayName());
+                return i18nc("this is the default calendar", "%1 (Default)", collection.displayName());
             }
         }
 
