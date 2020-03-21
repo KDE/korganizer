@@ -146,6 +146,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
         connect(
             calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
             &AlarmDialog::slotCalendarChanged);
+        Akonadi::IncidenceChanger *changer = calendar->incidenceChanger();
+        changer->setShowDialogsOnError(false);
     }
 
     KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
@@ -385,7 +387,9 @@ static QString cleanSummary(const QString &summary)
     return retStr;
 }
 
-void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTime &reminderAt, const QString &displayText)
+void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
+                               const QDateTime &reminderAt,
+                               const QString &displayText)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(incidenceitem);
     ReminderTreeItem *item = searchByItem(incidenceitem);
@@ -780,11 +784,15 @@ void AlarmDialog::eventNotification()
                 }
                 //TODO: support attachments
                 KOrg::MailClient mailer;
-                if (!mailer.send(id, from, to, QString(), subject, body, true, false, QString(),
-                                 MailTransport::TransportManager::self()->defaultTransportName())) {
+                const bool sendStatus =
+                    mailer.send(id, from, to, QString(), subject, body, true, false, QString(),
+                                MailTransport::TransportManager::self()->defaultTransportName());
+                if (!sendStatus) {
                     KNotification::event(QStringLiteral("mailremindersent"),
                         QString(),
-                        i18nc("@info", "<warning>Failed to send the Email reminder for %1</warning>", subject),
+                        i18nc("@info email subject, error message",
+                              "<warning>Failed to send the Email reminder for %1. %2</warning>",
+                              subject, mailer.errorMsg()),
                         QStringLiteral("korgac"),
                         nullptr,
                         KNotification::CloseOnTimeout,
@@ -845,10 +853,9 @@ void AlarmDialog::wakeUp()
     Q_EMIT reminderCount(activeCount());
 }
 
-void AlarmDialog::slotDBusNotificationsPropertiesChanged(
-        const QString& interface,
-        const QVariantMap& changedProperties,
-        const QStringList& invalidatedProperties)
+void AlarmDialog::slotDBusNotificationsPropertiesChanged(const QString &interface,
+                                                         const QVariantMap &changedProperties,
+                                                         const QStringList &invalidatedProperties)
 {
     Q_UNUSED(interface); // always "org.freedesktop.Notifications"
     Q_UNUSED(invalidatedProperties);
@@ -1018,7 +1025,9 @@ void AlarmDialog::accept()
 }
 
 /** static */
-QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence, const QDateTime &reminderAt, QString &displayStr)
+QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
+                                               const QDateTime &reminderAt,
+                                               QString &displayStr)
 {
     QDateTime result;
 
