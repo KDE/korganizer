@@ -146,6 +146,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
         connect(
             calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
             &AlarmDialog::slotCalendarChanged);
+        Akonadi::IncidenceChanger *changer = calendar->incidenceChanger();
+        changer->setShowDialogsOnError(false);
     }
 
     KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
