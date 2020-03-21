@@ -529,12 +529,19 @@ void AlarmDialog::edit()
             KMessageBox::sorry(
                 this,
                 i18nc("@info",
-                      "\"%1\" is a read-only item so modifications are not possible.",
+                      "\"%1\" is a read-only incidence so modifications are not possible.",
                       cleanSummary(incidence->summary())));
             return;
         }
 
-        openIncidenceEditorNG(selection.first()->mIncidence);
+        if (!openIncidenceEditorNG(selection.first()->mIncidence)) {
+            KMessageBox::error(
+                this,
+                i18nc("@info",
+                      "An internal error occurred attempting to modify \"%1\". Unsupported type.",
+                      cleanSummary(incidence->summary())));
+            qCWarning(KOALARMCLIENT_LOG) << "Attempting to edit an unsupported incidence type.";
+        }
     }
 }
 
@@ -773,8 +780,16 @@ void AlarmDialog::eventNotification()
                 }
                 //TODO: support attachments
                 KOrg::MailClient mailer;
-                mailer.send(id, from, to, QString(), subject, body, true, false, QString(),
-                            MailTransport::TransportManager::self()->defaultTransportName());
+                if (!mailer.send(id, from, to, QString(), subject, body, true, false, QString(),
+                                 MailTransport::TransportManager::self()->defaultTransportName())) {
+                    KNotification::event(QStringLiteral("mailremindersent"),
+                        QString(),
+                        i18nc("@info", "<warning>Failed to send the Email reminder for %1</warning>", subject),
+                        QStringLiteral("korgac"),
+                        nullptr,
+                        KNotification::CloseOnTimeout,
+                        QStringLiteral("korgac"));
+                }
             }
         }
     }
@@ -1128,12 +1143,16 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
 bool AlarmDialog::openIncidenceEditorNG(const Akonadi::Item &item)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(item);
-    IncidenceEditorNG::IncidenceDialog *dialog
-        = IncidenceEditorNG::IncidenceDialogFactory::create(
-              false, /*doesn't need initial saving*/
-              incidence->type(), nullptr, this);
-    dialog->load(item);
-    return true;
+    IncidenceEditorNG::IncidenceDialog *dialog =
+        IncidenceEditorNG::IncidenceDialogFactory::create(
+            false, /*doesn't need initial saving*/
+            incidence->type(), nullptr, this);
+    if (!dialog) {
+        return false;
+    } else {
+        dialog->load(item);
+        return true;
+    }
 }
 
 void AlarmDialog::removeFromConfig(const QList<Akonadi::Item::Id> &ids)
