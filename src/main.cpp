@@ -29,6 +29,7 @@
 #include "korganizer_options.h"
 #include "korganizer_debug.h"
 #include "korgmigrateapplication.h"
+#include "userfeedback/korganizeruserfeedbackprovider.h"
 
 #include <KLocalizedString>
 #include <KCrash>
@@ -52,6 +53,13 @@ int main(int argc, char **argv)
     cmdArgs->process(args);
     aboutData.processCommandLine(cmdArgs);
 
+#ifdef WITH_KUSERFEEDBACK
+    if(cmdArgs->isSet(QStringLiteral("feedback"))) {
+        KOrganizerUserFeedbackProvider *userFeedBackProvider = new KOrganizerUserFeedbackProvider(nullptr);
+        QTextStream(stdout) << userFeedBackProvider->describeDataSources() << '\n';
+        return 0;
+    }
+#endif
     if (!KOrganizerApp::start(args)) {
         qCDebug(KORGANIZER_LOG) << "korganizer already running, exiting";
         return 0;

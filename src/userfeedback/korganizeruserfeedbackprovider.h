@@ -17,22 +17,19 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "korganizeruserfeedbackprovider.h"
-#include "userfeedbackmanager.h"
 
-UserFeedBackManager::UserFeedBackManager(QObject *parent)
-    : QObject(parent)
-{
-    mUserFeedbackProvider = new KOrganizerUserFeedbackProvider(this);
-}
+#ifndef KORGANIZERUSERFEEDBACKPROVIDER_H
+#define KORGANIZERUSERFEEDBACKPROVIDER_H
 
-UserFeedBackManager *UserFeedBackManager::self()
-{
-    static UserFeedBackManager s_self;
-    return &s_self;
-}
+#include <KUserFeedback/Provider>
+#include "korganizer_core_export.h"
 
-KUserFeedback::Provider *UserFeedBackManager::userFeedbackProvider() const
+class KORGANIZER_CORE_EXPORT KOrganizerUserFeedbackProvider : public KUserFeedback::Provider
 {
-    return mUserFeedbackProvider;
-}
+    Q_OBJECT
+public:
+    explicit KOrganizerUserFeedbackProvider(QObject *parent = nullptr);
+    ~KOrganizerUserFeedbackProvider();
+};
+
+#endif // KORGANIZERUSERFEEDBACKPROVIDER_H
