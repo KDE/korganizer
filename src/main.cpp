@@ -29,8 +29,10 @@
 #include "korganizer_options.h"
 #include "korganizer_debug.h"
 #include "korgmigrateapplication.h"
-#include "userfeedback/korganizeruserfeedbackprovider.h"
 
+#ifdef WITH_KUSERFEEDBACK
+#include "userfeedback/korganizeruserfeedbackprovider.h"
+#endif
 #include <KLocalizedString>
 #include <KCrash>
 int main(int argc, char **argv)
