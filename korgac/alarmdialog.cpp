@@ -181,10 +181,13 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mOkButton = new QToolButton;
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     mUser1Button = new QPushButton;
+    mUser1Button->setDefault(false);
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
     mUser2Button = new QPushButton;
+    mUser2Button->setDefault(false);
     buttonBox->addButton(mUser2Button, QDialogButtonBox::ActionRole);
     mUser3Button = new QPushButton;
+    mUser3Button->setDefault(false);
     buttonBox->addButton(mUser3Button, QDialogButtonBox::ActionRole);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &AlarmDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &AlarmDialog::reject);
@@ -957,6 +960,10 @@ void AlarmDialog::updateButtons()
         }
     } else {
         mUser1Button->setEnabled(false);
+    }
+    if (enabled) {
+       mIncidenceTree->setFocus();
+       mIncidenceTree->setCurrentItem(selection.first());
     }
 }
 
