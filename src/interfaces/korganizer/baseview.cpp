@@ -57,7 +57,6 @@ public:
 
 BaseView::BaseView(QWidget *parent)
     : QWidget(parent)
-    , mChanger(nullptr)
     , d(new Private(this))
 {
 }
@@ -69,9 +68,7 @@ BaseView::~BaseView()
 
 void BaseView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
-    if (d->calendar != calendar) {
-        d->calendar = calendar;
-    }
+    d->calendar = calendar;
 }
 
 CalendarSupport::CalPrinterBase::PrintType BaseView::printType() const
