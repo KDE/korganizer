@@ -72,6 +72,7 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QToolButton>
+#include <QHeaderView>
 
 using namespace KIdentityManagement;
 using namespace KCalendarCore;
@@ -245,12 +246,20 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
            << i18nc("@title:column happens at date/time", "Date Time")
            << i18nc("@title:column trigger date/time", "Trigger Time"));
     mIncidenceTree->setHeaderLabels(headerLabels);
+
+    QHeaderView *header = mIncidenceTree->header();
+    header->setSectionResizeMode(0, QHeaderView::Stretch);
     mIncidenceTree->headerItem()->setToolTip(
         0,
         i18nc("@info:tooltip", "The event or to-do title"));
+
+    header->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     mIncidenceTree->headerItem()->setToolTip(
         1,
         i18nc("@info:tooltip", "The reminder is set for this date/time"));
+
+    header->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+    header->setStretchLastSection(false);
     mIncidenceTree->headerItem()->setToolTip(
         2,
         i18nc("@info:tooltip", "The date/time the reminder was triggered"));
@@ -378,16 +387,8 @@ ReminderTreeItem *AlarmDialog::searchByItem(const Akonadi::Item &incidence)
 
 static QString cleanSummary(const QString &summary)
 {
-    static QString etc = i18nc("@label an ellipsis", "...");
-    int maxLen = 30;
     QString retStr = summary;
-    retStr.replace(QLatin1Char('\n'), QLatin1Char(' '));
-    if (retStr.length() > maxLen) {
-        maxLen -= etc.length();
-        retStr.truncate(maxLen);
-        retStr += etc;
-    }
-    return retStr;
+    return retStr.replace(QLatin1Char('\n'), QLatin1Char(' '));
 }
 
 void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
