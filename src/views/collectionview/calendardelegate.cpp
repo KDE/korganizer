@@ -149,8 +149,6 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         QColor color = KOHelper::resourceColorKnown(col);
         if (!color.isValid()) {
             color = KOHelper::resourceColor(col);
-        } else {
-            color = KOHelper::resourceColor(col);
         }
         if (color.isValid()) {
             painter->save();
