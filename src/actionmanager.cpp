@@ -918,14 +918,6 @@ bool ActionManager::importURL(const QUrl &url, bool merge)
 
 bool ActionManager::saveURL()
 {
-    QString ext;
-
-    if (mURL.isLocalFile()) {
-        ext = mFile.right(4);
-    } else {
-        ext = mURL.fileName().right(4);
-    }
-
     if (!mCalendarView->saveCalendar(mFile)) {
         qCDebug(KORGANIZER_LOG) << "calendar view save failed.";
         return false;
@@ -935,7 +927,7 @@ bool ActionManager::saveURL()
         auto job = KIO::file_copy(QUrl::fromLocalFile(mFile), mURL);
         KJobWidgets::setWindow(job, view());
         if (!job->exec()) {
-            QString msg = i18n("Cannot upload calendar to '%1'",
+            const QString msg = i18n("Cannot upload calendar to '%1'",
                                mURL.toDisplayString());
             KMessageBox::error(dialogParent(), msg);
             return false;
