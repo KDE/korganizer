@@ -29,23 +29,15 @@
 #include "ui_searchdialog_base.h"
 #include "calendarview.h"
 #include "koeventpopupmenu.h"
-#include "koglobals.h"
-
-#include <CalendarSupport/Utils>
 
 #include <EventViews/ListView>
 #include <PimCommon/PimUtil>
 
 #include <KMessageBox>
-#include <KConfigGroup>
-#include <KGuiItem>
 #include <KSharedConfig>
 
 #include <QDialogButtonBox>
 #include <QPushButton>
-#include <QVBoxLayout>
-
-using namespace KOrg;
 
 SearchDialog::SearchDialog(CalendarView *calendarview)
     : QDialog(calendarview)
@@ -65,7 +57,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     m_ui->startDate->setDate(currDate);
     m_ui->endDate->setDate(currDate.addYears(1));
 
-    connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchTextChanged);
+    connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchPatternChanged);
 
     // Results list view
     QVBoxLayout *layout = new QVBoxLayout;
@@ -110,12 +102,11 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
             &SearchDialog::editIncidenceSignal);
     connect(m_popupMenu, &KOEventPopupMenu::deleteIncidenceSignal, this,
             &SearchDialog::deleteIncidenceSignal);
+    //TODO: add these
  //   connect(m_popupMenu, &KOEventPopupMenu::toggleAlarmSignal, this,
  //           &SearchDialog::toggleAlarmSignal);
  //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
  //           &SearchDialog::toggleTodoCompletedSignal);
-
-//TODO: refresh search after delete or edit
 
     readConfig();
 }
@@ -133,9 +124,9 @@ void SearchDialog::showEvent(QShowEvent *event)
     m_ui->searchEdit->setFocus();
 }
 
-void SearchDialog::searchTextChanged(const QString &_text)
+void SearchDialog::searchPatternChanged(const QString &pattern)
 {
-    mUser1Button->setEnabled(!_text.isEmpty());
+    mUser1Button->setEnabled(!pattern.isEmpty());
 }
 
 void SearchDialog::doSearch()
@@ -156,6 +147,7 @@ void SearchDialog::doSearch()
 
     search(re);
     listView->showIncidences(mMatchedEvents, QDate());
+    updateMatchesText();
     if (mMatchedEvents.isEmpty()) {
         m_ui->numItems->setText(QString());
         KMessageBox::information(
@@ -163,8 +155,6 @@ void SearchDialog::doSearch()
             i18nc("@info", "No items were found that match your search pattern."),
             i18nc("@title:window", "Search Results"),
             QStringLiteral("NoSearchResults"));
-    } else {
-        m_ui->numItems->setText(i18ncp("@label", "%1 item", "%1 items", mMatchedEvents.count()));
     }
 }
 
@@ -173,18 +163,29 @@ void SearchDialog::popupMenu(const QPoint &point)
     listView->popupMenu(point);
 }
 
+void SearchDialog::updateMatchesText()
+{
+    if (mMatchedEvents.isEmpty()) {
+        m_ui->numItems->setText(QString());
+    } else {
+        m_ui->numItems->setText(i18ncp("@label", "%1 match", "%1 matches", mMatchedEvents.count()));
+    }
+}
+
 void SearchDialog::updateView()
 {
     QRegExp re;
     re.setPatternSyntax(QRegExp::Wildcard);   // most people understand these better.
     re.setCaseSensitivity(Qt::CaseInsensitive);
     re.setPattern(m_ui->searchEdit->text());
+    listView->clear();
     if (re.isValid()) {
         search(re);
     } else {
         mMatchedEvents.clear();
     }
     listView->showIncidences(mMatchedEvents, QDate());
+    updateMatchesText();
 }
 
 void SearchDialog::search(const QRegExp &re)
@@ -194,9 +195,9 @@ void SearchDialog::search(const QRegExp &re)
 
     KCalendarCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
-        events
-            = m_calendarview->calendar()->events(
-                  startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+        events =
+            m_calendarview->calendar()->events(
+                startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
     }
 
     KCalendarCore::Todo::List todos;
@@ -206,16 +207,16 @@ void SearchDialog::search(const QRegExp &re)
             const KCalendarCore::Todo::List alltodos = m_calendarview->calendar()->todos();
             for (const KCalendarCore::Todo::Ptr &todo : alltodos) {
                 Q_ASSERT(todo);
-                if ((!todo->hasStartDate() && !todo->hasDueDate())       // undated
-                    || (todo->hasStartDate()
-                        && (todo->dtStart().toLocalTime().date() >= startDt)
-                        && (todo->dtStart().toLocalTime().date() <= endDt))       //start dt in range
-                    || (todo->hasDueDate()
-                        && (todo->dtDue().toLocalTime().date() >= startDt)
-                        && (todo->dtDue().toLocalTime().date() <= endDt))       //due dt in range
-                    || (todo->hasCompletedDate()
-                        && (todo->completed().toLocalTime().date() >= startDt)
-                        && (todo->completed().toLocalTime().date() <= endDt))) {    //completed dt in range
+                if ((!todo->hasStartDate() && !todo->hasDueDate()) || // undated
+                    (todo->hasStartDate() &&
+                       (todo->dtStart().toLocalTime().date() >= startDt) &&
+                       (todo->dtStart().toLocalTime().date() <= endDt)) || //start dt in range
+                    (todo->hasDueDate() &&
+                       (todo->dtDue().toLocalTime().date() >= startDt) &&
+                       (todo->dtDue().toLocalTime().date() <= endDt)) || //due dt in range
+                    (todo->hasCompletedDate() &&
+                       (todo->completed().toLocalTime().date() >= startDt) &&
+                       (todo->completed().toLocalTime().date() <= endDt))) { //completed dt in range
                     todos.append(todo);
                 }
             }

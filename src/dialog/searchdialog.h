@@ -56,12 +56,9 @@ public:
 
     void updateView();
 
-public Q_SLOTS:
-    void popupMenu(const QPoint &);
-    void changeIncidenceDisplay(KCalendarCore::Incidence *, int)
-    {
-        updateView();
-    }
+private Q_SLOTS:
+    void popupMenu(const QPoint &point);
+    void slotHelpRequested();
 
 Q_SIGNALS:
     void showIncidenceSignal(const Akonadi::Item &);
@@ -73,11 +70,11 @@ protected:
     void showEvent(QShowEvent *event) override;
 private:
     void doSearch();
-    void searchTextChanged(const QString &_text);
-    void slotHelpRequested();
-    void search(const QRegExp &);
+    void searchPatternChanged(const QString &pattern);
+    void search(const QRegExp &re);
     void readConfig();
     void writeConfig();
+    void updateMatchesText();
 
     Ui::SearchDialog *m_ui = nullptr;
     CalendarView *m_calendarview = nullptr; // parent
