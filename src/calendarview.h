@@ -214,6 +214,9 @@ public:
      */
     Q_REQUIRED_RESULT QString currentFilterName() const;
 
+    /** query if the calendar is read-only. */
+    Q_REQUIRED_RESULT bool isReadOnly() const;
+
 Q_SIGNALS:
     /** when change is made to options dialog, the topwidget will catch this
      *  and Q_EMIT this signal which notifies all widgets which have registered
@@ -509,8 +512,6 @@ public Q_SLOTS:
     /** Take ownership of selected event. */
     void takeOverEvent();
 
-    /** query if the calendar is read-only. */
-    bool isReadOnly() const;
 
     /** set state of calendar to read-only
         @param readOnly whether the calendar view should be set read-only or not
