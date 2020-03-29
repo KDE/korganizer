@@ -26,7 +26,7 @@ target_link_libraries(testkodaymatrix_us
   Qt5::Test
 )
 
-set(koeventpopupmenutest_SRCS ../koeventpopupmenu.cpp ../kocorehelper.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
+set(koeventpopupmenutest_SRCS ../koeventpopupmenu.cpp ../kocorehelper.cpp ../korganizer_debug.cpp)
 set(koeventpopupmenutest_LIBS Qt5::Test
   Qt5::Gui
   Qt5::Core
@@ -42,22 +42,3 @@ set(koeventpopupmenutest_LIBS Qt5::Test
   korganizerprivate
 )
 add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenutest_SRCS}" "${koeventpopupmenutest_LIBS}")
-
-add_executable(noteeditdialogtest noteeditdialogtest.cpp ../dialog/noteeditdialog.cpp ../korganizer_debug.cpp)
-add_test(NAME noteeditdialogtest COMMAND noteeditdialogtest)
-ecm_mark_as_test(noteeditdialogtest)
-target_link_libraries(noteeditdialogtest
-  Qt5::Test
-  Qt5::Gui
-  Qt5::Core
-  KF5::Mime
-  KF5::AkonadiCore
-  KF5::AkonadiCalendar
-  KF5::AkonadiNotes
-  KF5::CalendarCore
-  KF5::IncidenceEditor
-  KF5::CalendarSupport
-  KF5::AkonadiWidgets
-  korganizer_core
-  korganizerprivate
-  )

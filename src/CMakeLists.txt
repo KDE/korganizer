@@ -1,8 +1,6 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"korganizer\")
 
-include_directories(
-    ${CMAKE_CURRENT_BINARY_DIR}
-    )
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 if(BUILD_TESTING)
     add_subdirectory(tests)
@@ -19,10 +17,9 @@ add_subdirectory(kconf_update)
 ########### next target ###############
 
 set(korganizer_userfeedback_LIB)
-if (TARGET KUserFeedbackWidgets)
+if(TARGET KUserFeedbackWidgets)
     set(korganizer_userfeedback_LIB KUserFeedbackWidgets)
 endif()
-
 
 set(korganizer_common_SRCS)
 ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h IDENTIFIER KORGANIZER_LOG CATEGORY_NAME org.kde.pim.korganizer
@@ -30,7 +27,6 @@ ecm_qt_declare_logging_category(korganizer_common_SRCS HEADER korganizer_debug.h
         OLD_CATEGORY_NAMES log_korganizer
         EXPORT KORGANIZER
     )
-
 
 set(korganizer_SRCS
     main.cpp
@@ -119,7 +115,6 @@ install(TARGETS
     DESTINATION ${KDE_INSTALL_PLUGINDIR}
     )
 
-
 ########### next target ###############
 
 set(korganizer_core_LIB_SRCS
@@ -157,7 +152,7 @@ install(TARGETS
 
 ########### next target ###############
 set(korganizerprivate_userfeedback_SRCS)
-if (TARGET KUserFeedbackWidgets)
+if(TARGET KUserFeedbackWidgets)
     set(korganizerprivate_userfeedback_SRCS ${korganizerprivate_userfeedback_SRCS}
         userfeedback/userfeedbackmanager.cpp
         userfeedback/korganizeruserfeedbackprovider.cpp
@@ -187,7 +182,6 @@ set(korganizerprivate_LIB_SRCS
     kodaymatrix.cpp
     kodialogmanager.cpp
     koeventpopupmenu.cpp
-    dialog/noteeditdialog.cpp
     koeventview.cpp
     dialog/koeventviewerdialog.cpp
     koglobals.cpp
@@ -207,8 +201,6 @@ set(korganizerprivate_LIB_SRCS
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
     )
-
-
 
 qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)
 
@@ -250,7 +242,6 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
-
 
 target_link_libraries(korganizerprivate
     PUBLIC

@@ -24,29 +24,24 @@
 */
 
 #include "koeventpopupmenu.h"
-#include "actionmanager.h"
-#include "kocorehelper.h"
-#include "koglobals.h"
-#include "dialog/noteeditdialog.h"
+#include "korganizer_debug.h"
+#include "actionmanager.h" // needed for finding the schedule_forward action
 
-#include <CalendarSupport/KCalPrefs>
-#include <CalendarSupport/Utils>
+#include <AkonadiCore/ItemCreateJob>
+#include <Akonadi/Notes/NoteUtils>
+
 #include <CalendarSupport/CalPrinter>
-#include <CalendarSupport/CalPrintDefaultPlugins>
+#include <CalendarSupport/NoteEditDialog>
+#include <CalendarSupport/Utils>
+
+#include <KActionCollection> // needed for finding the schedule_forward action
 
 #include <KCalendarCore/CalFormat>
-#include <KCalendarCore/Incidence>
-#include <Akonadi/Notes/NoteUtils>
-#include <AkonadiCore/CollectionFetchJob>
-#include <AkonadiCore/CollectionFetchScope>
-#include <AkonadiCore/ItemCreateJob>
 
-#include <KActionCollection>
-#include <KMime/Message>
-#include "korganizer_debug.h"
-
-#include <IncidenceEditor/IncidenceDialogFactory>
 #include <IncidenceEditor/IncidenceDialog>
+#include <IncidenceEditor/IncidenceDialogFactory>
+
+#include<QCoreApplication>
 
 KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent)
     : QMenu(parent)
@@ -278,12 +273,10 @@ void KOEventPopupMenu::slotPrint()
 
 void KOEventPopupMenu::print(bool preview)
 {
-    KOCoreHelper helper;
     CalendarSupport::CalPrinter printer(this, mCalendar, true);
     connect(this, &KOEventPopupMenu::configChanged, &printer,
             &CalendarSupport::CalPrinter::updateConfig);
 
-    //Item::List selectedIncidences;
     KCalendarCore::Incidence::List selectedIncidences;
     Q_ASSERT(mCurrentIncidence.hasPayload<KCalendarCore::Incidence::Ptr>());
     selectedIncidences.append(mCurrentIncidence.payload<KCalendarCore::Incidence::Ptr>());
@@ -414,8 +407,9 @@ void KOEventPopupMenu::createNote()
         newNoteItem.setMimeType(Akonadi::NoteUtils::noteMimeType());
         newNoteItem.setPayload(note.message());
 
-        NoteEditDialog *noteedit = new NoteEditDialog(this);
-        connect(noteedit, &NoteEditDialog::createNote, this, &KOEventPopupMenu::slotCreateNote);
+        CalendarSupport::NoteEditDialog *noteedit = new CalendarSupport::NoteEditDialog(this);
+        connect(noteedit, &CalendarSupport::NoteEditDialog::createNote,
+                this, &KOEventPopupMenu::slotCreateNote);
         noteedit->load(newNoteItem);
         noteedit->show();
     }
