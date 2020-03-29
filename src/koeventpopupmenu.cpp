@@ -25,7 +25,6 @@
 
 #include "koeventpopupmenu.h"
 #include "korganizer_debug.h"
-#include "actionmanager.h" // needed for finding the schedule_forward action
 
 #include <AkonadiCore/ItemCreateJob>
 #include <Akonadi/Notes/NoteUtils>
@@ -33,8 +32,6 @@
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/NoteEditDialog>
 #include <CalendarSupport/Utils>
-
-#include <KActionCollection> // needed for finding the schedule_forward action
 
 #include <KCalendarCore/CalFormat>
 
@@ -148,7 +145,6 @@ void KOEventPopupMenu::appendReminderOnlyItems()
     mToggleReminder = addAction(QIcon::fromTheme(QStringLiteral("appointment-reminder")),
                                 i18nc("@action:inmenu", "&Toggle Reminder"),
                                 this, &KOEventPopupMenu::toggleAlarm);
-
     mReminderOnlyItems.append(mToggleReminder);
 }
 
@@ -249,6 +245,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
         (*it)->setEnabled(true);
     }
 
+    // Show the menu now
     popup(QCursor::pos());
 }
 
@@ -332,17 +329,13 @@ void KOEventPopupMenu::dissociateOccurrences()
 
 void KOEventPopupMenu::forward()
 {
-    KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
-    if (!w || !CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        return;
-    }
-
-    KActionCollection *ac = w->getActionCollection();
-    QAction *action = ac->action(QStringLiteral("schedule_forward"));
-    if (action) {
-        action->trigger();
-    } else {
-        qCCritical(KORGANIZER_LOG) << "What happened to the schedule_forward action?";
+    if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
+        KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
+        if (incidence) {
+            Akonadi::ITIPHandler handler(this);
+            handler.setCalendar(mCalendar);
+            handler.sendAsICalendar(incidence, this);
+        }
     }
 }
 
