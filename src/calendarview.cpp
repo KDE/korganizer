@@ -1863,20 +1863,6 @@ void CalendarView::eventUpdated(const Akonadi::Item &)
 //  updateView();
 }
 
-void CalendarView::adaptNavigationUnits()
-{
-    if (mViewManager->currentView()->isEventView()) {
-        int days = mViewManager->currentView()->currentDateCount();
-        if (days == 1) {
-            Q_EMIT changeNavStringPrev(i18n("&Previous Day"));
-            Q_EMIT changeNavStringNext(i18n("&Next Day"));
-        } else {
-            Q_EMIT changeNavStringPrev(i18n("&Previous Week"));
-            Q_EMIT changeNavStringNext(i18n("&Next Week"));
-        }
-    }
-}
-
 void CalendarView::processMainViewSelection(const Akonadi::Item &item, const QDate &date)
 {
     if (CalendarSupport::hasIncidence(item)) {

@@ -232,10 +232,6 @@ Q_SIGNALS:
     /** Emitted when state of read-only flag changes */
     void readOnlyChanged(bool);
 
-    /** Emitted when the unit of navigation changes */
-    void changeNavStringPrev(const QString &);
-    void changeNavStringNext(const QString &);
-
     /** Emitted when state of events selection has changed and user is organizer*/
     void organizerEventsSelected(bool);
     /** Emitted when state of events selection has changed and user is attendee*/
@@ -613,11 +609,6 @@ protected Q_SLOTS:
 
 public:
     int msgCalModified();
-
-    /**
-     * Adapts navigation units according to the current view's navigation step size.
-     */
-    void adaptNavigationUnits();
 
     /**
      * Returns the date of the selected incidence.

@@ -184,7 +184,6 @@ void KOViewManager::showView(KOrg::BaseView *view)
     raiseCurrentView();
     mMainView->processIncidenceSelection(Akonadi::Item(), QDate());
     mMainView->updateView();
-    mMainView->adaptNavigationUnits();
     KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
 
     if (w) {

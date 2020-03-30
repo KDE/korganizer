@@ -452,14 +452,6 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("go_previous"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goPrevious);
 
-    // Changing the action text by setText makes the toolbar button disappear.
-    // This has to be fixed first, before the connects below can be reenabled.
-    /*
-    connect( mCalendarView, SIGNAL(changeNavStringPrev(QString)),
-             action, SLOT(setText(QString)) );
-    connect( mCalendarView, SIGNAL(changeNavStringPrev(QString)),
-             this, SLOT(dumpText(QString)) );*/
-
     action
         = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") : QStringLiteral(
                                            "go-next")),
@@ -468,10 +460,6 @@ void ActionManager::initActions()
     setHelpText(action, i18n("Scroll Forward"));
     mACollection->addAction(QStringLiteral("go_next"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goNext);
-    /*
-    connect( mCalendarView,SIGNAL(changeNavStringNext(QString)),
-             action,SLOT(setText(QString)) );
-    */
 
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("&Day"), this);
     mACollection->addAction(QStringLiteral("select_day"), action);
