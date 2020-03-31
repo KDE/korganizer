@@ -52,7 +52,7 @@
 #include <Akonadi/Calendar/StandardCalendarActionManager>
 #include <AkonadiCore/CollectionIdentificationAttribute>
 #include <PimCommonAkonadi/ManageServerSideSubscriptionJob>
-#include "PimCommonAkonadi/MailUtil"
+#include <PimCommonAkonadi/MailUtil>
 
 #include <KActionCollection>
 #include <KCheckableProxyModel>

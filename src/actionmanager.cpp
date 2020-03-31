@@ -41,7 +41,7 @@
 #include "kowindowlist.h"
 #include "kocheckableproxymodel.h"
 #include <KAuthorized>
-#include "KdepimDBusInterfaces/ReminderClient"
+#include <KdepimDBusInterfaces/ReminderClient>
 
 #include <CalendarSupport/CollectionSelection>
 #include <CalendarSupport/EventArchiver>

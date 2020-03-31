@@ -30,7 +30,7 @@
 #include "korganizer.h"
 #include "korganizer-version.h"
 #include <KCalendarCore/CalFormat>
-#include "KdepimDBusInterfaces/ReminderClient"
+#include <KdepimDBusInterfaces/ReminderClient>
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"

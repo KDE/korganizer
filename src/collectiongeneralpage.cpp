@@ -19,7 +19,7 @@
 */
 
 #include "collectiongeneralpage.h"
-#include "PimCommon/PimUtil"
+#include <PimCommon/PimUtil>
 #include <Collection>
 #include <EntityDisplayAttribute>
 #include <Akonadi/Calendar/BlockAlarmsAttribute>
