@@ -347,12 +347,15 @@ void FilterEdit::editCategorySelection()
 
     if (!mCategorySelectDialog) {
         mCategorySelectDialog = new KPIM::TagSelectionDialog(this);
-        mCategorySelectDialog->buttons()->setStandardButtons(
-            QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
-        connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted, this,
-                &FilterEdit::updateCategorySelection);
-        connect(mCategorySelectDialog->buttons()->button(
-                    QDialogButtonBox::Help), &QPushButton::clicked, this, &FilterEdit::slotHelp);
+        QDialogButtonBox *buttons = mCategorySelectDialog->buttons();
+        if (buttons) {
+            buttons->setStandardButtons(
+                QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+            connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted,
+                    this, &FilterEdit::updateCategorySelection);
+            connect(buttons->button(QDialogButtonBox::Help), &QPushButton::clicked,
+                    this, &FilterEdit::slotHelp);
+        }
     }
     mCategorySelectDialog->setSelection(mCurrent->categoryList());
 
