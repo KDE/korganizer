@@ -266,29 +266,66 @@ void ActionManager::initActions()
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /** Import Action **/
+    //TODO: Icon
     mImportAction = new QAction(i18n("Import &Calendar..."), this);
-    setHelpText(mImportAction, i18n("Merge the contents of another iCalendar"));
+    mImportAction->setStatusTip(i18nc("@info:status", "Import a calendar"));
+    mImportAction->setToolTip(i18nc("@info:tooltip", "Import an iCalendar or vCalendar file"));
     mImportAction->setWhatsThis(
-        i18n("Select this menu entry if you would like to merge the contents "
-             "of another iCalendar into your current calendar."));
+        i18nc("@info:whatsthis",
+              "Select this menu entry if you would like to import the contents of an "
+              "iCalendar or vCalendar file into your current calendar collection."));
     mACollection->addAction(QStringLiteral("import_icalendar"), mImportAction);
     connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
+    /** Get Hot New Stuff Action **/
+    //TODO: Icon
     if (KAuthorized::authorize(QStringLiteral("ghns"))) {
         action = new QAction(i18n("Get &Hot New Stuff..."), this);
+        action->setStatusTip(i18nc("@info:status", "Load a calendar from \"Get Hot New Stuff\""));
+        action->setToolTip(i18nc("@info:tooltip",
+                                 "Search \"Get Hot New Stuff\" for calendars to import"));
+        action->setWhatsThis(
+            i18nc("@info:whatsthis",
+                  "This menu entry opens the \"Get Hot New Stuff\" dialog that allows you "
+                  "to search and import fun and useful calendars donated to the community."));
         mACollection->addAction(QStringLiteral("downloadnewstuff"), action);
         connect(action, &QAction::triggered, this, &ActionManager::downloadNewStuff);
     }
 
+    /** Export Action **/
+    //TODO: Icon
     action = new QAction(i18n("Export as &iCalendar..."), this);
+    action->setStatusTip(i18nc("@info:status", "Export calendar to file"));
+    action->setToolTip(i18nc("@info:tooltip", "Export your calendar to an iCalendar file"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Allows you to export your entire calendar collection to one iCalendar file."));
     mACollection->addAction(QStringLiteral("export_icalendar"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::exportICalendar);
 
-    action = new QAction(i18n("Archive O&ld Entries..."), this);
+    /** Archive Action **/
+    //TODO: Icon
+    action = new QAction(i18n("Archive O&ld Incidences..."), this);
+    action->setStatusTip(i18nc("@info:status", "Archive incidences to file"));
+    action->setToolTip(i18nc("@info:tooltip", "Archive old incidences to an iCalendar file"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "This menu entry opens a dialog that allows you to select old events and to-dos "
+              "that you can archive into an iCalendar file.  The archived incidences will "
+              "be removed from your existing calendar collection."));
     mACollection->addAction(QStringLiteral("file_archive"), action);
     connect(action, &QAction::triggered, this, &ActionManager::file_archive);
 
+    /** Purge Todos Action **/
+    //TODO: Icon
     action = new QAction(i18n("Pur&ge Completed To-dos"), mACollection);
+    action->setStatusTip(i18nc("@info:status", "Purge completed to-dos"));
+    action->setToolTip(i18nc("@info:tooltip", "Remove completed to-dos from your calendar"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Allows you to remove all completed to-dos from your calendar collection. "
+              "This action cannot be undone!"));
     mACollection->addAction(QStringLiteral("purge_completed"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::purgeCompleted);
 
@@ -341,59 +378,126 @@ void ActionManager::initActions()
 
     /************************** VIEW MENU *********************************/
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    action
-        = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")), i18n(
-                          "What's &Next"), this);
+    /** Whats Next View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")),
+                         i18n("What's &Next"), this);
+    action->setStatusTip(i18nc("@info:status", "What's Next View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the What's Next View"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Switches to the \"What's Next\" View, which shows your events and to-dos "
+              "that are \"coming soon\" in a short list for quick reading.  All open to-dos "
+              "will be displayed, but only the events from the days selected in the "
+              "Date Navigator sidebar will be shown."));
     mACollection->addAction(QStringLiteral("view_whatsnext"), action);
-    connect(action, &QAction::triggered, mCalendarView->viewManager(),
-            &KOViewManager::showWhatsNextView);
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showWhatsNextView);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18n(
-                             "&Month"), this);
+    /** Month View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-month")),
+                         i18n("&Month"), this);
+    action->setStatusTip(i18nc("@info:status", "Month View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the Month View"));
+    action->setWhatsThis(
+      i18nc("@info:whatsthis",
+            "Switches to the Month View, which shows all the events and due to-dos "
+            "in a familiar monthly calendar layout."));
     mACollection->addAction(QStringLiteral("view_month"), action);
     connect(action, &QAction::triggered,
             mCalendarView->viewManager(), &KOViewManager::showMonthView);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")), i18n(
-                             "&Agenda"), this);
+    /** Agenda View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-agenda")),
+                         i18n("&Agenda"), this);
+    action->setStatusTip(i18nc("@info:status", "Agenda View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the Agenda View"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Switches to the Agenda View, which presents your events or due to-dos "
+              "for one or more days, sorted chronologically.  You can also see the length "
+              "of each event in the day timetable."));
     mACollection->addAction(QStringLiteral("view_agenda"), action);
     connect(action, &QAction::triggered,
             mCalendarView->viewManager(), &KOViewManager::showAgendaView);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-list")), i18n(
-                             "&Event List"), this);
+    /** List View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-list")),
+                         i18n("&Event List"), this);
+    action->setStatusTip(i18nc("@info:status", "List View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the List View"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Switches to the List View, which displays all your to-dos, events and "
+              "journal entries for the dates selected in the Date Navigator as a list."));
     mACollection->addAction(QStringLiteral("view_list"), action);
-    connect(action, &QAction::triggered, mCalendarView->viewManager(),
-            &KOViewManager::showListView);
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showListView);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")), i18n(
-                             "&To-do List"), this);
+    /** Todo View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-tasks")),
+                         i18n("&To-do List"), this);
+    action->setStatusTip(i18nc("@info:status", "To-do List View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the To-do List View"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Switches to the To-do List view, which provides a place for you to "
+              "track tasks that need to be done."));
     mACollection->addAction(QStringLiteral("view_todo"), action);
-    connect(action, &QAction::triggered, mCalendarView->viewManager(),
-            &KOViewManager::showTodoView);
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showTodoView);
 
-    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-journal")), i18n(
-                             "&Journal"), this);
+    /** Journal View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-journal")),
+                         i18n("&Journal"), this);
+    action->setStatusTip(i18nc("@info:status", "Journal View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the Journal View"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Switches to the Journal View, which provides a place for you to record "
+              "your reflections, occurrences or experiences."));
     mACollection->addAction(QStringLiteral("view_journal"), action);
-    connect(action, &QAction::triggered, mCalendarView->viewManager(),
-            &KOViewManager::showJournalView);
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showJournalView);
 
-    action
-        = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-timeline")), i18n(
-                          "Time&line"), this);
+    /** Timeline View Action **/
+    action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-timeline")),
+                         i18n("Time&line"), this);
+    action->setStatusTip(i18nc("@info:status", "Timeline View"));
+    action->setToolTip(i18nc("@info:tooltip", "Switch to the Timeline View"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Switches to the Timeline View, which shows all events for the selected "
+              "timespan in a gantt view. Each calendar is displayed in a separate line."));
     mACollection->addAction(QStringLiteral("view_timeline"), action);
-    connect(action, &QAction::triggered, mCalendarView->viewManager(),
-            &KOViewManager::showTimeLineView);
+    connect(action, &QAction::triggered,
+            mCalendarView->viewManager(), &KOViewManager::showTimeLineView);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    /** Refresh Action **/
+    //TODO: icon
     action = new QAction(i18n("&Refresh"), this);
+    action->setStatusTip(i18nc("@info:status", "Refresh"));
+    action->setToolTip(i18nc("@info:tooltip", "Refresh the display"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "This action will refresh and redraw the current calendar view. "
+              "It does not sync or update any calendar folders."));
     mACollection->addAction(QStringLiteral("update"), action);
-    connect(action, &QAction::triggered, mCalendarView, qOverload<>(&CalendarView::updateView));
+    connect(action, &QAction::triggered,
+            mCalendarView, qOverload<>(&CalendarView::updateView));
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    /** Filter Action **/
+    //TODO: icon
     mFilterAction = new KSelectAction(i18n("F&ilter"), this);
+    mFilterAction->setStatusTip(i18nc("@info:status", "Filter incidences"));
+    mFilterAction->setToolTip(i18nc("@info:tooltip", "Filter incidences from the calendar"));
+    mFilterAction->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Runs user-defined view filters on the calendar collection. Filters must be "
+              "created first. See \"Manage View Filters\" option in the Settings menu."));
     mFilterAction->setToolBarMode(KSelectAction::MenuMode);
     mACollection->addAction(QStringLiteral("filter_select"), mFilterAction);
     mFilterAction->setEditable(false);
@@ -406,8 +510,8 @@ void ActionManager::initActions()
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // TODO: try to find / create better icons for the following 4 actions
-    action
-        = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")), i18n("In Horizontally"), this);
+    action = new QAction(QIcon::fromTheme(QStringLiteral("zoom-in")),
+                         i18n("In Horizontally"), this);
     action->setEnabled(mCalendarView->currentView()->supportsZoom());
     mACollection->addAction(QStringLiteral("zoom_in_horizontally"), action);
     connect(action, &QAction::triggered, mCalendarView->viewManager(),
@@ -436,28 +540,43 @@ void ActionManager::initActions()
     /************************** Actions MENU *********************************/
     bool isRTL = QApplication::isRightToLeft();
 
+    /** Scroll to Today Action **/
     action = new QAction(QIcon::fromTheme(QStringLiteral("go-jump-today")),
                          i18nc("@action Jump to today", "To &Today"), this);
     action->setIconText(i18n("Today"));
-    setHelpText(action, i18n("Scroll to Today"));
+    action->setStatusTip(i18nc("@info:status", "Scroll to Today"));
+    action->setToolTip(i18nc("@info:tooltip", "Scroll the view to today"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Scrolls the current view to the today's date."));
     mACollection->addAction(QStringLiteral("go_today"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
-    action
-        = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next") : QStringLiteral(
-                                           "go-previous")),
-                      i18nc("scroll backward", "&Backward"), this);
+    /** Scroll Backward Action **/
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next") :
+                                                  QStringLiteral("go-previous")),
+                         i18nc("scroll backward", "&Backward"), this);
     action->setIconText(i18nc("scroll backward", "Back"));
-    setHelpText(action, i18n("Scroll Backward"));
+    action->setStatusTip(i18nc("@info:status", "Scroll Backward"));
+    action->setToolTip(i18nc("@info:tooltip", "Scroll the view backward"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Scrolls backward by a day, week, month or year, depending on the "
+              "current calendar view."));
     mACollection->addAction(QStringLiteral("go_previous"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goPrevious);
 
-    action
-        = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") : QStringLiteral(
-                                           "go-next")),
-                      i18nc("scroll forward", "&Forward"), this);
+    /** Scroll Forward Action **/
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") :
+                                                  QStringLiteral("go-next")),
+                         i18nc("scroll forward", "&Forward"), this);
     action->setIconText(i18nc("scoll forward", "Forward"));
-    setHelpText(action, i18n("Scroll Forward"));
+    action->setStatusTip(i18nc("@info:status", "Scroll Forward"));
+    action->setToolTip(i18nc("@info:tooltip", "Scroll the view forward"));
+    action->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Scrolls forward   by a day, week, month or year, depending on the "
+              "current calendar view."));
     mACollection->addAction(QStringLiteral("go_next"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goNext);
 
@@ -491,25 +610,36 @@ void ActionManager::initActions()
             &KOViewManager::selectWeek);
 
     /************************** Actions MENU *********************************/
-    mNewEventAction
-        = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18n(
-                          "New E&vent..."), this);
-    //mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
-    setHelpText(mNewEventAction, i18n("Create a new Event"));
-
+    /** New Event Action **/
+    mNewEventAction = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
+                                  i18n("New E&vent..."), this);
+    mNewEventAction->setStatusTip(i18nc("@info:status", "Create a new Event"));
+    mNewEventAction->setToolTip(i18nc("@info:tooltip", "Create a new Event"));
+    mNewEventAction->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Starts a dialog that allows you to create a new Event with reminders, "
+              "attendees, recurrences and much more."));
     mACollection->addAction(QStringLiteral("new_event"), mNewEventAction);
     connect(mNewEventAction, &QAction::triggered, this,
             &ActionManager::slotNewEvent);
 
+    /** New To-do Action **/
     mNewTodoAction = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18n(
                                      "New &To-do..."), this);
-    //mNewTodoAction->setIconText( i18n( "To-do" ) );
-    setHelpText(mNewTodoAction, i18n("Create a new To-do"));
+    mNewTodoAction->setStatusTip(i18nc("@info:status", "Create a new To-do"));
+    mNewTodoAction->setToolTip(i18nc("@info:tooltip", "Create a new To-do"));
+    mNewTodoAction->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Starts a dialog that allows you to create a new To-do with reminders, "
+              "attendees, recurrences and much more."));
     mACollection->addAction(QStringLiteral("new_todo"), mNewTodoAction);
     connect(mNewTodoAction, &QAction::triggered, this,
             &ActionManager::slotNewTodo);
 
+    /** New Sub-To-do Action **/
+    //TODO: icon
     mNewSubtodoAction = new QAction(i18n("New Su&b-to-do..."), this);
+    //TODO: statustip, tooltip, whatsthis
     mACollection->addAction(QStringLiteral("new_subtodo"), mNewSubtodoAction);
     connect(mNewSubtodoAction, &QAction::triggered, this,
             &ActionManager::slotNewSubTodo);
@@ -517,22 +647,30 @@ void ActionManager::initActions()
     connect(mCalendarView, &CalendarView::todoSelected, mNewSubtodoAction,
             &QAction::setEnabled);
 
-    mNewJournalAction
-        = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18n("New &Journal..."),
-                      this);
-    //mNewJournalAction->setIconText( i18n( "Journal" ) );
-    setHelpText(mNewJournalAction, i18n("Create a new Journal"));
+    /** New Journal Action **/
+    mNewJournalAction = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),
+                                    i18n("New &Journal..."), this);
+    mNewJournalAction->setStatusTip(i18nc("@info:status", "Create a new Journal"));
+    mNewJournalAction->setToolTip(i18nc("@info:tooltip", "Create a new Journal"));
+    mNewJournalAction->setWhatsThis(
+        i18nc("@info:whatsthis",
+               "Starts a dialog that allows you to create a new Journal entry."));
     mACollection->addAction(QStringLiteral("new_journal"), mNewJournalAction);
     connect(mNewJournalAction, &QAction::triggered, this,
             &ActionManager::slotNewJournal);
 
-    mConfigureViewAction
-        = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Configure View..."),
-                      this);
+    /** Configure Current View Action **/
+    mConfigureViewAction = new QAction(QIcon::fromTheme(QStringLiteral("configure")),
+                                       i18n("Configure View..."), this);
     mConfigureViewAction->setIconText(i18n("Configure"));
-    setHelpText(mConfigureViewAction, i18n("Configure the view"));
-    mConfigureViewAction->setEnabled(mCalendarView->currentView()
-                                     && mCalendarView->currentView()->hasConfigurationDialog());
+    mConfigureViewAction->setStatusTip(i18nc("@info:status", "Configure the view"));
+    mConfigureViewAction->setToolTip(i18nc("@info:tooltip", "Configure the current view"));
+    mConfigureViewAction->setWhatsThis(
+        i18nc("@info:whatsthis",
+              "Starts a configuration dialog that allows you to change the settings "
+              "for the current calendar view."));
+    mConfigureViewAction->setEnabled(mCalendarView->currentView() &&
+                                     mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView,
             &CalendarView::configureCurrentView);
@@ -1689,11 +1827,3 @@ void ActionManager::openEventEditor(const QString &summary, const QString &descr
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }
 
-void ActionManager::setHelpText(QAction *act, const QString &text)
-{
-    act->setStatusTip(text);
-    act->setToolTip(text);
-    if (act->whatsThis().isEmpty()) {
-        act->setWhatsThis(text);
-    }
-}
