@@ -85,9 +85,9 @@ KontactInterface::Summary *KOrganizerPlugin::createSummaryWidget(QWidget *parent
     return new ApptSummaryWidget(this, parent);
 }
 
-KParts::ReadOnlyPart *KOrganizerPlugin::createPart()
+KParts::Part *KOrganizerPlugin::createPart()
 {
-    KParts::ReadOnlyPart *part = loadPart();
+    KParts::Part *part = loadPart();
 
     if (!part) {
         return nullptr;

@@ -82,9 +82,9 @@ KontactInterface::Summary *TodoPlugin::createSummaryWidget(QWidget *parent)
     return new TodoSummaryWidget(this, parent);
 }
 
-KParts::ReadOnlyPart *TodoPlugin::createPart()
+KParts::Part *TodoPlugin::createPart()
 {
-    KParts::ReadOnlyPart *part = loadPart();
+    KParts::Part *part = loadPart();
 
     if (!part) {
         return nullptr;
