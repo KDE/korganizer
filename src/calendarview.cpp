@@ -131,6 +131,8 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mCalendarClipboard, &Akonadi::CalendarClipboard::cutFinished, this,
             &CalendarView::onCutFinished);
 
+    mChanger->setEntityTreeModel(mCalendar->entityTreeModel());
+
     Akonadi::AttributeFactory::registerAttribute<PimCommon::ImapAclAttribute>();
     Akonadi::AttributeFactory::registerAttribute<Akonadi::CollectionIdentificationAttribute>();
 
