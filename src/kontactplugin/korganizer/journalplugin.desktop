@@ -3,7 +3,7 @@ Type=Service
 Icon=view-pim-journal
 X-KDE-ServiceTypes=Kontact/Plugin
 
-X-KDE-Library=kontact_journalplugin
+X-KDE-Library=kontact5/kontact_journalplugin
 X-KDE-KontactPluginVersion=10
 X-KDE-KontactPartLibraryName=korganizerpart
 X-KDE-KontactPartExecutableName=korganizer

@@ -31,7 +31,7 @@
 #include <KAboutData>
 #include <KLocalizedString>
 
-EXPORT_KONTACT_PLUGIN(SpecialdatesPlugin, specialdates)
+EXPORT_KONTACT_PLUGIN_WITH_JSON(SpecialdatesPlugin, "specialdatesplugin.json")
 
 SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, nullptr)

@@ -49,7 +49,7 @@
 #include <QDropEvent>
 #include <QStandardPaths>
 
-EXPORT_KONTACT_PLUGIN(KOrganizerPlugin, korganizer)
+EXPORT_KONTACT_PLUGIN_WITH_JSON(KOrganizerPlugin, "korganizerplugin.json")
 
 KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, "korganizer", "calendar")

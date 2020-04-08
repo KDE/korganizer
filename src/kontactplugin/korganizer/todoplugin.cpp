@@ -47,7 +47,7 @@
 
 #include <QDropEvent>
 
-EXPORT_KONTACT_PLUGIN(TodoPlugin, todo)
+EXPORT_KONTACT_PLUGIN_WITH_JSON(TodoPlugin, "todoplugin.json")
 
 TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, "korganizer", "todo")

@@ -3,7 +3,7 @@ Type=Service
 Icon=view-calendar-special-occasion
 X-KDE-ServiceTypes=Kontact/Plugin,KPluginInfo
 
-X-KDE-Library=kontact_specialdatesplugin
+X-KDE-Library=kontact5/kontact_specialdatesplugin
 X-KDE-KontactPluginVersion=10
 X-KDE-KontactPluginHasPart=false
 X-KDE-KontactPluginHasSummary=true

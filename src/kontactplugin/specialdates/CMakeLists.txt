@@ -24,6 +24,8 @@ target_link_libraries(kontact_specialdatesplugin
   KF5::CalendarSupport
 )
 
+kcoreaddons_desktop_to_json(kontact_specialdatesplugin specialdatesplugin.desktop)
+
 ########### next target ###############
 
 set(kcm_sdsummary_PART_SRCS kcmsdsummary.cpp)
@@ -36,7 +38,7 @@ target_link_libraries(kcm_sdsummary Qt5::Widgets KF5::KCMUtils KF5::I18n)
 
 ########### install files ###############
 
-install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact5)
 install(TARGETS kcm_sdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
 install(FILES specialdatesplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/kontact)

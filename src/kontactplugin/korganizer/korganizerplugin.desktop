@@ -3,7 +3,7 @@ Type=Service
 Icon=view-pim-calendar
 X-KDE-ServiceTypes=Kontact/Plugin,KPluginInfo
 
-X-KDE-Library=kontact_korganizerplugin
+X-KDE-Library=kontact5/kontact_korganizerplugin
 X-KDE-KontactPluginVersion=10
 X-KDE-KontactPartLibraryName=korganizerpart
 X-KDE-KontactPartExecutableName=korganizer

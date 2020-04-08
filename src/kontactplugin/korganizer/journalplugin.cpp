@@ -34,7 +34,7 @@
 #include <QAction>
 #include <QIcon>
 
-EXPORT_KONTACT_PLUGIN(JournalPlugin, journal)
+EXPORT_KONTACT_PLUGIN_WITH_JSON(JournalPlugin, "journalplugin.json")
 
 JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     : KontactInterface::Plugin(core, core, "korganizer", "journal")
