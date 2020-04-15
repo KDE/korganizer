@@ -141,6 +141,7 @@ endif()
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054500)
 set(CMAKE_CXX_STANDARD 14)
 #add_definitions(-DQT_NO_FOREACH)
+#add_definitions(-DQT_NO_KEYWORDS)
 add_subdirectory(src)
 add_subdirectory(korgac)
 
