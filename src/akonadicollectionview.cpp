@@ -722,11 +722,8 @@ void AkonadiCollectionView::updateMenu()
         const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
 
         if (collection.isValid() && !collection.contentMimeTypes().isEmpty()) {
-            const QColor defaultColor = KOHelper::resourceColor(collection);
-            enableAction = enableAction && defaultColor.isValid();
             if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
-                enableAction = false;
-                mAssignColor->setEnabled(enableAction);
+                mAssignColor->setEnabled(false);
             }
 
             mDefaultCalendar->setEnabled(
