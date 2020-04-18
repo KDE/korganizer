@@ -572,7 +572,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         connect(mAssignColor, &QAction::triggered, this, &AkonadiCollectionView::assignColor);
 
         mDefaultCalendar = new QAction(mCollectionView);
-        mDefaultCalendar->setText(i18n("Set as &Default Calendar"));
+        mDefaultCalendar->setText(i18n("Set as &Default Folder"));
         mDefaultCalendar->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"),
                                                  mDefaultCalendar);
