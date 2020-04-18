@@ -2,7 +2,7 @@
   This file is part of the KDE reminder agent.
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
+  Copyright (c) 2008-2020 Allen Winter <winter@kde.org>
   Copyright (c) 2009-2010 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
@@ -71,7 +71,6 @@
 #include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
-#include <QToolButton>
 #include <QHeaderView>
 
 using namespace KIdentityManagement;
@@ -144,9 +143,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     //    Ok => Suspend
 
     if (calendar) {
-        connect(
-            calendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
-            &AlarmDialog::slotCalendarChanged);
+        connect(calendar.data(), &Akonadi::ETMCalendar::calendarChanged,
+                this, &AlarmDialog::slotCalendarChanged);
         Akonadi::IncidenceChanger *changer = calendar->incidenceChanger();
         changer->setShowDialogsOnError(false);
     }
@@ -167,11 +165,10 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     }
 
     defSuspendVal = generalConfig.readEntry("DefaultSuspendValue", defSuspendVal);
-    int suspendVal = generalConfig.readEntry("SuspendValue", defSuspendVal);
-
     defSuspendUnit = generalConfig.readEntry("DefaultSuspendUnit", defSuspendUnit);
-    SuspendUnit suspendUnit = static_cast<SuspendUnit>(generalConfig.readEntry("SuspendUnit",
-                                                                               defSuspendUnit));
+
+    int suspendVal = defSuspendVal;
+    int suspendUnit = defSuspendUnit;
 
     QWidget *topBox = new QWidget(this);
     setWindowTitle(i18nc("@title:window", "Reminders"));
@@ -179,7 +176,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(topBox);
-    mOkButton = new QToolButton;
+    mOkButton = new QPushButton;
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     mUser1Button = new QPushButton;
     mUser1Button->setDefault(false);
@@ -321,28 +318,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
               "Each reminder for the selected incidences will be suspended "
               "using this time unit. You can set the number of time units "
               "in the adjacent number entry input."));
-    mSuspendUnit->setCurrentIndex(static_cast<int>(suspendUnit));
-
-    mSuspendMenu = new QMenu();
-    mSuspendMenu->setToolTipsVisible(true);
-    mOkButton->setMenu(mSuspendMenu);
-
-    QAction *mResetSuspendAction = new QAction(i18nc("@action:inmenu", "Reset"));
-    connect(mResetSuspendAction, &QAction::triggered, this, &AlarmDialog::resetSuspend);
-    mResetSuspendAction->setToolTip(i18nc("@info:tooltip",
-                                          "Reset the suspend time to the default value"));
-    mResetSuspendAction->setWhatsThis(i18nc("@info:whatsthis",
-                                            "Reset the suspend time to the default value"));
-    mSuspendMenu->addAction(mResetSuspendAction);
-
-    QAction *mSetDefaultSuspendAction = new QAction(i18nc("@action:inmenu", "Set as Default"));
-    connect(mSetDefaultSuspendAction, &QAction::triggered, this, &AlarmDialog::setDefaultSuspend);
-    mSetDefaultSuspendAction->setToolTip(i18nc("@info:tooltip",
-                                               "Set the current suspend time as the new default"));
-    mSetDefaultSuspendAction->setWhatsThis(i18nc("@info:whatsthis",
-                                                 "Press this button to set the current suspend "
-                                                 "time as the new default value"));
-    mSuspendMenu->addAction(mSetDefaultSuspendAction);
+    mSuspendUnit->setCurrentIndex(suspendUnit);
 
     connect(&mSuspendTimer, &QTimer::timeout, this, &AlarmDialog::wakeUp);
 
@@ -732,9 +708,8 @@ void AlarmDialog::eventNotification()
                 QString program = alarm->programFile();
 
                 // if the program name contains spaces escape it
-                if (program.contains(QLatin1Char(' '))
-                    && !(program.startsWith(QLatin1Char('\"'))
-                         && program.endsWith(QLatin1Char('\"')))) {
+                if (program.contains(QLatin1Char(' ')) &&
+                    !(program.startsWith(QLatin1Char('\"')) && program.endsWith(QLatin1Char('\"')))) {
                     program = QLatin1Char('\"') + program + QLatin1Char('\"');
                 }
 
@@ -898,8 +873,6 @@ void AlarmDialog::slotSave()
     generalConfig.writeEntry("Size", mRect.size());
     generalConfig.writeEntry("DefaultSuspendValue", defSuspendVal);
     generalConfig.writeEntry("DefaultSuspendUnit", defSuspendUnit);
-    generalConfig.writeEntry("SuspendValue", mSuspendSpin->value());
-    generalConfig.writeEntry("SuspendUnit", mSuspendUnit->currentIndex());
 
     config->sync();
 }

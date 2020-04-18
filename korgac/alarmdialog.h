@@ -29,7 +29,6 @@
 #include <KCalendarCore/Incidence>
 
 #include <QDialog>
-#include <QMenu>
 #include <QTimer>
 
 namespace Akonadi {
@@ -52,7 +51,6 @@ class QDateTime;
 class QTreeWidget;
 class QTreeWidgetItem;
 class QSpinBox;
-class QToolButton;
 class AlarmDialog : public QDialog
 {
     Q_OBJECT
@@ -110,17 +108,18 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private Q_SLOTS:
-    void slotDBusNotificationsPropertiesChanged(
-            const QString& interface,
-            const QVariantMap& changedProperties,
-            const QStringList& invalidatedProperties);
+    void slotDBusNotificationsPropertiesChanged(const QString &interface,
+                                                const QVariantMap &changedProperties,
+                                                const QStringList &invalidatedProperties);
 
 private:
     void update();
     void updateButtons();
     typedef QList<ReminderTreeItem *> ReminderList;
 
-    static Q_REQUIRED_RESULT QDateTime triggerDateForIncidence(const KCalendarCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
+    static Q_REQUIRED_RESULT QDateTime triggerDateForIncidence(const KCalendarCore::Incidence::Ptr &inc,
+                                                               const QDateTime &reminderAt,
+                                                               QString &displayStr);
 
     // Removes each Incidence-X group that has one of the specified uids
     void removeFromConfig(const QList<Akonadi::Item::Id> &);
@@ -149,15 +148,12 @@ private:
     QRect mRect;
     QSpinBox *mSuspendSpin = nullptr;
     KComboBox *mSuspendUnit = nullptr;
-    QMenu *mSuspendMenu = nullptr;
-    QAction *mResetSuspendAction = nullptr;
-    QAction *mSetDefaultSuspendAction = nullptr;
     QTimer mSuspendTimer;
     QTreeWidgetItem *mLastItem = nullptr;
     QPushButton *mUser1Button = nullptr;
     QPushButton *mUser2Button = nullptr;
     QPushButton *mUser3Button = nullptr;
-    QToolButton *mOkButton = nullptr;
+    QPushButton *mOkButton = nullptr;
 };
 
 #endif
