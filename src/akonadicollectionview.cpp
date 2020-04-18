@@ -286,16 +286,16 @@ public:
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
 
             if (hasCompatibleMimeTypes(collection)) {
-                if (collection.hasAttribute<Akonadi::EntityDisplayAttribute>()
-                    && !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty()) {
+                if (collection.hasAttribute<Akonadi::EntityDisplayAttribute>() &&
+                    !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty()) {
                     return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
                 }
             }
         } else if (role == Qt::FontRole) {
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
-            if (!collection.contentMimeTypes().isEmpty()
-                && KOHelper::isStandardCalendar(collection.id())
-                && collection.rights() & Akonadi::Collection::CanCreateItem) {
+            if (!collection.contentMimeTypes().isEmpty() &&
+                KOHelper::isStandardCalendar(collection.id()) &&
+                collection.rights() & Akonadi::Collection::CanCreateItem) {
                 QFont font = qvariant_cast<QFont>(QSortFilterProxyModel::data(index, Qt::FontRole));
                 font.setBold(true);
                 if (!mInitDefaultCalendar) {
@@ -309,7 +309,7 @@ public:
             const Akonadi::Collection::Id colId = collection.id();
 
             if (colId == CalendarSupport::KCalPrefs::instance()->defaultCalendarId()) {
-                return i18nc("this is the default calendar", "%1 (Default)", collection.displayName());
+                return i18nc("@item this is the default calendar", "%1 (Default)", collection.displayName());
             }
         }
 
@@ -339,13 +339,15 @@ protected:
     {
         const QModelIndex sourceIndex = sourceModel()->index(row, 0, sourceParent);
         Q_ASSERT(sourceIndex.isValid());
-        const Akonadi::Collection &col
-            = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-        const Akonadi::CollectionIdentificationAttribute *attr
-            = col.attribute<Akonadi::CollectionIdentificationAttribute>();
+
+        const Akonadi::Collection &col =
+            sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        const Akonadi::CollectionIdentificationAttribute *attr =
+            col.attribute<Akonadi::CollectionIdentificationAttribute>();
+
         //We filter the user folders because we insert person nodes for user folders.
-        if ((attr && attr->collectionNamespace().startsWith("usertoplevel"))
-            || col.name().contains(QLatin1String("Other Users"))) {
+        if ((attr && attr->collectionNamespace().startsWith("usertoplevel")) ||
+             col.name().contains(QLatin1String("Other Users"))) {
             return false;
         }
         return true;
@@ -426,7 +428,9 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     topLayout->setContentsMargins(0, 0, 0, 0);
 
     QLineEdit *searchCol = new QLineEdit(this);
-    searchCol->setToolTip(i18nc("info:tooltip", "Set search keyword"));
+    searchCol->setToolTip(i18nc("@info:tooltip", "Set search keyword"));
+    searchCol->setWhatsThis(
+        i18nc("@info:whatsthis", "Lets you search for a keyword in your calendars"));
     searchCol->setClearButtonEnabled(true);
     searchCol->setPlaceholderText(i18nc("@info/plain Displayed grayed-out inside the "
                                         "textbox, verb to search", "Search..."));
@@ -530,8 +534,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardCalendarActionManager::CreateJournal
                         << Akonadi::StandardCalendarActionManager::EditIncidence;
 
-        for (Akonadi::StandardCalendarActionManager::Type calendarAction :
-             qAsConst(calendarActions)) {
+        for (Akonadi::StandardCalendarActionManager::Type calendarAction : qAsConst(calendarActions)) {
             mActionManager->createAction(calendarAction);
         }
 
@@ -562,28 +565,26 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 
         mActionManager->interceptAction(Akonadi::StandardActionManager::CollectionProperties);
         connect(mActionManager->action(
-                    Akonadi::StandardActionManager::CollectionProperties), &QAction::triggered, mManagerShowCollectionProperties,
-                &ManageShowCollectionProperties::showCollectionProperties);
+                    Akonadi::StandardActionManager::CollectionProperties), &QAction::triggered,
+                mManagerShowCollectionProperties, &ManageShowCollectionProperties::showCollectionProperties);
 
         mAssignColor = new QAction(mCollectionView);
-        mAssignColor->setText(i18n("&Set Folder Color..."));
+        mAssignColor->setText(i18nc("@action:inmenu", "&Set Folder Color..."));
         mAssignColor->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("assign_color"), mAssignColor);
         connect(mAssignColor, &QAction::triggered, this, &AkonadiCollectionView::assignColor);
 
         mDefaultCalendar = new QAction(mCollectionView);
-        mDefaultCalendar->setText(i18n("Set as &Default Folder"));
+        mDefaultCalendar->setText(i18nc("@action:inmenu", "Set as &Default Folder"));
         mDefaultCalendar->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("set_standard_calendar"),
                                                  mDefaultCalendar);
         connect(mDefaultCalendar, &QAction::triggered, this,
                 &AkonadiCollectionView::setDefaultCalendar);
 
-        mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral(
-                                                                   "folder-bookmarks")),
-                                              i18n("Serverside Subscription..."), this);
-        xmlclient->actionCollection()->addAction(QStringLiteral(
-                                                     "serverside_subscription"),
+        mServerSideSubscription = new QAction(QIcon::fromTheme(QStringLiteral("folder-bookmarks")),
+                                              i18nc("@action:inmenu", "Serverside Subscription..."), this);
+        xmlclient->actionCollection()->addAction(QStringLiteral("serverside_subscription"),
                                                  mServerSideSubscription);
         connect(mServerSideSubscription, &QAction::triggered, this,
                 &AkonadiCollectionView::slotServerSideSubscription);
@@ -592,7 +593,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 
 AkonadiCollectionView::~AkonadiCollectionView()
 {
-    //Necessary because it's apparently impossible to detect in the note expander when to save the state before view get's deleted
+    // Need this because it seems impossible to detect in the NodeExpander when to save the state
+    // before the view is deleted.
     mNewNodeExpander->saveState();
 }
 
@@ -699,9 +701,8 @@ Akonadi::EntityTreeView *AkonadiCollectionView::view() const
 
 void AkonadiCollectionView::updateView()
 {
-    Q_EMIT resourcesChanged(mSelectionProxyModel
-                            ? mSelectionProxyModel->selectionModel()->hasSelection()
-                            : false);
+    Q_EMIT resourcesChanged(mSelectionProxyModel ?
+                            mSelectionProxyModel->selectionModel()->hasSelection() : false);
 }
 
 void AkonadiCollectionView::updateMenu()
@@ -710,8 +711,7 @@ void AkonadiCollectionView::updateMenu()
         return;
     }
     bool enableAction = mCollectionView->selectionModel()->hasSelection();
-    enableAction = enableAction
-                   && (KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly);
+    enableAction = enableAction && (KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly);
     mAssignColor->setEnabled(enableAction);
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); //selectedRows()
 
@@ -797,8 +797,8 @@ void AkonadiCollectionView::deleteCalendar()
 
     if (KMessageBox::warningContinueCancel(
             this,
-            i18n("Do you really want to delete calendar %1?", displayname),
-            i18n("Delete Calendar"),
+            i18nc("@info", "Do you really want to delete calendar %1?", displayname),
+            i18nc("@title:window", "Delete Calendar"),
             KStandardGuiItem::del(),
             KStandardGuiItem::cancel(),
             QString(),
