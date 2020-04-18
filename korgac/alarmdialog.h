@@ -26,31 +26,29 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <KCalendarCore/Incidence>
-
 #include <QDialog>
 #include <QTimer>
 
-namespace Akonadi {
-class Item;
-}
+class ReminderTreeItem;
 
 namespace KIdentityManagement {
 class IdentityManager;
+}
+
+namespace Akonadi {
+class Item;
 }
 
 namespace CalendarSupport {
 class IncidenceViewer;
 }
 
-class ReminderTreeItem;
-
 class KComboBox;
 
-class QDateTime;
+class QSpinBox;
 class QTreeWidget;
 class QTreeWidgetItem;
-class QSpinBox;
+
 class AlarmDialog : public QDialog
 {
     Q_OBJECT

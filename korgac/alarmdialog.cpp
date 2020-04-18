@@ -24,58 +24,51 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include <config-korganizer.h>
+#include "config-korganizer.h"
 #include "alarmdialog.h"
-#include "korganizer_interface.h"
 #include "mailclient.h"
+#include "korganizer_interface.h"
 #include "koalarmclient_debug.h"
 
 #include "notifications_interface.h" // DBUS-generated
 #include "dbusproperties.h" // DBUS-generated
 
+#include <CalendarSupport/IdentityManager>
 #include <CalendarSupport/IncidenceViewer>
 #include <CalendarSupport/KCalPrefs>
-#include <CalendarSupport/IdentityManager>
 #include <CalendarSupport/Utils>
 
-#include <IncidenceEditor/IncidenceDialog>
-#include <IncidenceEditor/IncidenceDialogFactory>
-
-#include <KCalendarCore/Event>
-#include <KCalendarCore/Todo>
 #include <KCalUtils/IncidenceFormatter>
 
 #include <KIdentityManagement/Identity>
 
-#include <AkonadiCore/Item>
+#include <IncidenceEditor/IncidenceDialog>
+#include <IncidenceEditor/IncidenceDialogFactory>
 
 #include <MailTransport/TransportManager>
-#include <QUrl>
 
 #include <KComboBox>
-#include <QHBoxLayout>
+#include <KConfigGroup>
+#include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
 #include <KSharedConfig>
 #include <KToolInvocation>
 #include <KWindowSystem>
-#include <KIconLoader>
-#include <QIcon>
-#include <phonon/mediaobject.h>
-#include <QLabel>
+
+#include <QDialogButtonBox>
+#include <QHeaderView>
 #include <QKeyEvent>
+#include <QLabel>
+#include <QPushButton>
 #include <QSpinBox>
 #include <QTreeWidget>
 #include <QVBoxLayout>
-#include <KConfigGroup>
-#include <QDialogButtonBox>
-#include <QPushButton>
-#include <QHeaderView>
 
-using namespace KIdentityManagement;
+#include <phonon/mediaobject.h>
+
 using namespace KCalendarCore;
-using namespace KCalUtils;
 
 // fallback defaults
 static int defSuspendVal = 5;
@@ -331,7 +324,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 
     QDBusConnection dbusConn = QDBusConnection::sessionBus();
     if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
-        OrgFreedesktopDBusPropertiesInterface *propsIface = new OrgFreedesktopDBusPropertiesInterface(
+        OrgFreedesktopDBusPropertiesInterface *propsIface =
+            new OrgFreedesktopDBusPropertiesInterface(
                 QString::fromLatin1(s_fdo_notifications_service),
                 QString::fromLatin1(s_fdo_notifications_path),
                 dbusConn, this);
@@ -396,10 +390,11 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
     item->setText(1, displayStr);
 
     item->setText(2, QLocale().toString(item->mTrigger, QLocale::ShortFormat));
-    QString tip
-        = IncidenceFormatter::toolTipStr(
-              CalendarSupport::displayName(mCalendar.data(), incidenceitem.parentCollection()),
-              incidence, item->mRemindAt.date(), true);
+    QString tip =
+        KCalUtils::IncidenceFormatter::toolTipStr(
+            CalendarSupport::displayName(mCalendar.data(),
+                                         incidenceitem.parentCollection()),
+                                         incidence, item->mRemindAt.date(), true);
     if (!item->mDisplayText.isEmpty()) {
         tip += QLatin1String("<br>") + item->mDisplayText;
     }
@@ -726,7 +721,7 @@ void AlarmDialog::eventNotification()
                 player->play();
             } else if (alarm->type() == Alarm::Email) {
                 QString from = CalendarSupport::KCalPrefs::instance()->email();
-                Identity id = mIdentityManager->identityForAddress(from);
+                KIdentityManagement::Identity id = mIdentityManager->identityForAddress(from);
                 QString to;
                 if (alarm->mailAddresses().isEmpty()) {
                     to = from;
@@ -757,7 +752,7 @@ void AlarmDialog::eventNotification()
                     subject = i18nc("@title", "Reminder: %1", alarm->mailSubject());
                 }
 
-                QString body = IncidenceFormatter::mailBodyStr(parent.staticCast<IncidenceBase>());
+                QString body = KCalUtils::IncidenceFormatter::mailBodyStr(parent.staticCast<IncidenceBase>());
                 if (!alarm->mailText().isEmpty()) {
                     body += QLatin1Char('\n') + alarm->mailText();
                 }
