@@ -102,7 +102,6 @@ private Q_SLOTS:
     void deleteCalendarDone(KJob *);
     void rowsInserted(const QModelIndex &, int, int);
     void assignColor();
-    void disableColor();
     void setDefaultCalendar();
     void onSearchIsActive(bool);
     void onAction(const QModelIndex &index, int action);
@@ -116,7 +115,6 @@ private:
     QAbstractProxyModel *mBaseModel = nullptr;
     KCheckableProxyModel *mSelectionProxyModel = nullptr;
     QAction *mAssignColor = nullptr;
-    QAction *mDisableColor = nullptr;
     QAction *mDefaultCalendar = nullptr;
     QAction *mServerSideSubscription = nullptr;
     bool mNotSendAddRemoveSignal;

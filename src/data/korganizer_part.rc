@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="434" translationDomain="korganizer">
+<gui name="korganizer" version="435" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -174,11 +174,7 @@
   <Menu name="akonadi_collectionview_contextmenu">
     <Action name="akonadi_collection_create"/>
     <Action name="akonadi_collection_delete"/>
-    <Separator/>
-      <Menu name="calendar_color"><text>Calendar Colors</text>
-      <Action name="assign_color"/>
-      <Action name="disable_color"/>
-      </Menu>
+    <Action name="assign_color"/>
     <Separator/>
     <Action name="set_standard_calendar"/>
     <Separator/>

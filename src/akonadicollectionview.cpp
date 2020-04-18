@@ -414,7 +414,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     , mBaseModel(nullptr)
     , mSelectionProxyModel(nullptr)
     , mAssignColor(nullptr)
-    , mDisableColor(nullptr)
     , mDefaultCalendar(nullptr)
     , mServerSideSubscription(nullptr)
     , mNotSendAddRemoveSignal(false)
@@ -566,15 +565,8 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                     Akonadi::StandardActionManager::CollectionProperties), &QAction::triggered, mManagerShowCollectionProperties,
                 &ManageShowCollectionProperties::showCollectionProperties);
 
-        mDisableColor = new QAction(mCollectionView);
-        mDisableColor->setText(i18n("&Disable Color"));
-        mDisableColor->setEnabled(false);
-        xmlclient->actionCollection()->addAction(QStringLiteral("disable_color"),
-                                                 mDisableColor);
-        connect(mDisableColor, &QAction::triggered, this, &AkonadiCollectionView::disableColor);
-
         mAssignColor = new QAction(mCollectionView);
-        mAssignColor->setText(i18n("&Assign Color..."));
+        mAssignColor->setText(i18n("&Set Folder Color..."));
         mAssignColor->setEnabled(false);
         xmlclient->actionCollection()->addAction(QStringLiteral("assign_color"), mAssignColor);
         connect(mAssignColor, &QAction::triggered, this, &AkonadiCollectionView::assignColor);
@@ -680,18 +672,6 @@ void AkonadiCollectionView::assignColor()
     }
 }
 
-void AkonadiCollectionView::disableColor()
-{
-    QModelIndex index = mCollectionView->selectionModel()->currentIndex(); //selectedRows()
-    Q_ASSERT(index.isValid());
-    const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
-    Q_ASSERT(collection.isValid());
-    KOHelper::setResourceColor(collection, QColor());
-    updateMenu();
-    updateView();
-    Q_EMIT colorsChanged();
-}
-
 void AkonadiCollectionView::setCollectionSelectionProxyModel(KCheckableProxyModel *m)
 {
     if (mSelectionProxyModel == m) {
@@ -749,7 +729,6 @@ void AkonadiCollectionView::updateMenu()
                 mAssignColor->setEnabled(enableAction);
             }
 
-            mDisableColor->setEnabled(enableAction);
             mDefaultCalendar->setEnabled(
                 !KOHelper::isStandardCalendar(collection.id()) &&
                 (collection.rights() & Akonadi::Collection::CanCreateItem) &&
@@ -764,7 +743,6 @@ void AkonadiCollectionView::updateMenu()
         mServerSideSubscription->setEnabled(false);
     }
     if (disableStuff) {
-        mDisableColor->setEnabled(false);
         mDefaultCalendar->setEnabled(false);
         mAssignColor->setEnabled(false);
     }
