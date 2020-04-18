@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="435" translationDomain="korganizer">
+<gui name="korganizer" version="436" translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Merge/>
@@ -174,20 +174,19 @@
   <Menu name="akonadi_collectionview_contextmenu">
     <Action name="akonadi_collection_create"/>
     <Action name="akonadi_collection_delete"/>
-    <Action name="assign_color"/>
+    <Action name="akonadi_collection_sync"/>
+    <Action name="akonadi_collection_sync_recursive"/>
+    <Action name="akonadi_collection_properties"/>
     <Separator/>
     <Action name="set_standard_calendar"/>
+    <Action name="assign_color"/>
     <Separator/>
     <Action name="akonadi_collection_move_to_menu"/>
     <Action name="akonadi_collection_copy_to_menu"/>
     <Separator/>
     <Action name="akonadi_resource_create"/>
     <Action name="akonadi_resource_delete"/>
-    <Action name="akonadi_collection_sync"/>
     <Action name="akonadi_resource_synchronize"/>
-    <Action name="akonadi_collection_sync_recursive"/>
-    <Separator/>
-    <Action name="akonadi_collection_properties"/>
     <Action name="akonadi_resource_properties"/>
     <Separator/>
     <Action name="serverside_subscription"/>
