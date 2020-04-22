@@ -47,7 +47,6 @@
 
 #include <MailTransport/TransportManager>
 
-#include <KComboBox>
 #include <KConfigGroup>
 #include <KIconLoader>
 #include <KLocalizedString>
@@ -59,6 +58,7 @@
 
 #include <QDialogButtonBox>
 #include <QHeaderView>
+#include <QComboBox>
 #include <QKeyEvent>
 #include <QLabel>
 #include <QPushButton>
@@ -297,7 +297,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 
     l->setBuddy(mSuspendSpin);
 
-    mSuspendUnit = new KComboBox(suspendBox);
+    mSuspendUnit = new QComboBox(suspendBox);
     suspendBoxHBoxLayout->addWidget(mSuspendUnit);
     mSuspendUnit->addItem(i18nc("@item:inlistbox suspend in terms of minutes", "minute(s)"));
     mSuspendUnit->addItem(i18nc("@item:inlistbox suspend in terms of hours", "hour(s)"));

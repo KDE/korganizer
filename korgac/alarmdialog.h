@@ -43,7 +43,7 @@ namespace CalendarSupport {
 class IncidenceViewer;
 }
 
-class KComboBox;
+class QComboBox;
 
 class QSpinBox;
 class QTreeWidget;
@@ -145,7 +145,7 @@ private:
 
     QRect mRect;
     QSpinBox *mSuspendSpin = nullptr;
-    KComboBox *mSuspendUnit = nullptr;
+    QComboBox *mSuspendUnit = nullptr;
     QTimer mSuspendTimer;
     QTreeWidgetItem *mLastItem = nullptr;
     QPushButton *mUser1Button = nullptr;

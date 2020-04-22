@@ -30,6 +30,7 @@
 #include <KCalendarCore/CalFilter>
 
 #include <LibkdepimAkonadi/TagWidgets>
+#include <Libkdepim/LineEditCatchReturnKey>
 
 #include <PimCommon/PimUtil>
 
@@ -97,6 +98,7 @@ FilterEdit::FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *pare
 {
     setupUi(this);
     searchline->setListWidget(mRulesList);
+    new KPIM::LineEditCatchReturnKey(mNameLineEdit, this);
     mDetailsFrame->setEnabled(false);
     mFilters = filters;
     mNewButton->setWhatsThis(
