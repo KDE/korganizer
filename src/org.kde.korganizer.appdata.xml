@@ -22,6 +22,7 @@
   <developer_name xml:lang="pl">Społeczność KDE</developer_name>
   <developer_name xml:lang="pt">A Comunidade do KDE</developer_name>
   <developer_name xml:lang="pt-BR">A comunidade KDE</developer_name>
+  <developer_name xml:lang="ru">Сообщество KDE</developer_name>
   <developer_name xml:lang="sk">KDE Komunita</developer_name>
   <developer_name xml:lang="sv">KDE-gemenskapen</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
@@ -83,6 +84,7 @@
   <summary xml:lang="pl">KOrganizer jest aplikacją kalendarza i planowania</summary>
   <summary xml:lang="pt">O KOrganizer é uma aplicação com componentes de calendários e agendas</summary>
   <summary xml:lang="pt-BR">KOrganizer é um aplicativo de calendário e agenda</summary>
+  <summary xml:lang="ru">KOrganizer — приложение для работы с календарями и расписаниями</summary>
   <summary xml:lang="sk">KOrganizer je aplikácia kalendára a plánovací komponent</summary>
   <summary xml:lang="sl">KOrganizer je program za koledar in razporejanje dogodkov</summary>
   <summary xml:lang="sv">Korganizer är ett kalender- och schemaläggningsprogram</summary>
@@ -170,6 +172,7 @@
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań</li>
       <li xml:lang="pt">Suporte para diversos calendários e listas de itens por-fazer</li>
       <li xml:lang="pt-BR">Suporte a diversos calendários e listas tarefas</li>
+      <li xml:lang="ru">Работа с произвольным числом календарей и списков задач;</li>
       <li xml:lang="sk">Podpora pre viacero kalendárov a zoznamov úloh</li>
       <li xml:lang="sl">Podpora več koledarjem in seznamom opravil</li>
       <li xml:lang="sv">Stöd för flera kalendrar och uppgiftslistor</li>
@@ -197,6 +200,7 @@
       <li xml:lang="pl">Model przechowalni</li>
       <li xml:lang="pt">Modelo de armazenamento</li>
       <li xml:lang="pt-BR">Modelo de armazenamento</li>
+      <li xml:lang="ru">Поддержка различных механизмов хранения данных;</li>
       <li xml:lang="sk">Model úložiska</li>
       <li xml:lang="sl">Model za shranjevanje</li>
       <li xml:lang="sv">Lagringsmodell</li>
@@ -224,6 +228,7 @@
       <li xml:lang="pl">Cofanie i ponawianie</li>
       <li xml:lang="pt">Desfazer e Refazer operações</li>
       <li xml:lang="pt-BR">Suporte para as ações Desfazer e Refazer</li>
+      <li xml:lang="ru">Отмена и возврат действий;</li>
       <li xml:lang="sk">Funkcia Späť a Znova</li>
       <li xml:lang="sl">Uveljavi in razveljavi</li>
       <li xml:lang="sv">Ångra och gör om</li>
@@ -251,6 +256,7 @@
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć</li>
       <li xml:lang="pt">Integração de itens por-fazer com a agenda</li>
       <li xml:lang="pt-BR">Integração de tarefas com a agenda</li>
+      <li xml:lang="ru">Показ задач в расписании на день;</li>
       <li xml:lang="sk">Integrácia úloh s pohľadom agendy</li>
       <li xml:lang="sl">Podpora opravilom s prikazom dnevnega reda</li>
       <li xml:lang="sv">Integrering av uppgifter med agendavyn</li>
@@ -278,6 +284,7 @@
       <li xml:lang="pl">Załączniki dla wydarzeń i zadań</li>
       <li xml:lang="pt">Anexos para os eventos e itens por-fazer</li>
       <li xml:lang="pt-BR">Anexos para eventos e tarefas</li>
+      <li xml:lang="ru">Прикрепление файлов к событиям и задачам;</li>
       <li xml:lang="sk">Prílohy pre udalosti a úlohy</li>
       <li xml:lang="sl">Priloge za dogodke in opravila</li>
       <li xml:lang="sv">Bilagor för händelser och uppgifter</li>
@@ -304,6 +311,7 @@
       <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń</li>
       <li xml:lang="pt">Criação rápida de itens por-fazer e eventos</li>
       <li xml:lang="pt-BR">Criação rápida de tarefas e eventos</li>
+      <li xml:lang="ru">Быстрое создание задач и событий;</li>
       <li xml:lang="sk">Rýchle položky úloh a udalostí</li>
       <li xml:lang="sl">Hitra opravila in vnosi dogodkov</li>
       <li xml:lang="sv">Snabba uppgifts- och händelseposter</li>
@@ -331,6 +339,7 @@
       <li xml:lang="pl">Obsługa wydruku</li>
       <li xml:lang="pt">Suporte para a impressão</li>
       <li xml:lang="pt-BR">Suporte a impressão</li>
+      <li xml:lang="ru">Печать календарей.</li>
       <li xml:lang="sk">Podpora tlače</li>
       <li xml:lang="sl">Podpora tiskanju</li>
       <li xml:lang="sv">Utskriftsstöd</li>
