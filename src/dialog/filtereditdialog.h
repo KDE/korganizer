@@ -37,7 +37,7 @@ namespace KCalendarCore {
 class CalFilter;
 }
 
-namespace KPIM {
+namespace Akonadi {
 class TagSelectionDialog;
 }
 
@@ -102,7 +102,7 @@ private:
     QString mNegativeBackground;
     QList<KCalendarCore::CalFilter *> *mFilters = nullptr;
     KCalendarCore::CalFilter *mCurrent = nullptr;
-    KPIM::TagSelectionDialog *mCategorySelectDialog = nullptr;
+    Akonadi::TagSelectionDialog *mCategorySelectDialog = nullptr;
 };
 
 #endif

@@ -29,8 +29,9 @@
 
 #include <KCalendarCore/CalFilter>
 
-#include <LibkdepimAkonadi/TagWidgets>
 #include <Libkdepim/LineEditCatchReturnKey>
+
+#include <AkonadiWidgets/TagSelectionDialog>
 
 #include <PimCommon/PimUtil>
 
@@ -348,18 +349,23 @@ void FilterEdit::editCategorySelection()
     }
 
     if (!mCategorySelectDialog) {
-        mCategorySelectDialog = new KPIM::TagSelectionDialog(this);
+        mCategorySelectDialog = new Akonadi::TagSelectionDialog(this);
         QDialogButtonBox *buttons = mCategorySelectDialog->buttons();
         if (buttons) {
             buttons->setStandardButtons(
                 QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
-            connect(mCategorySelectDialog, &KPIM::TagSelectionDialog::accepted,
+            connect(mCategorySelectDialog, &Akonadi::TagSelectionDialog::accepted,
                     this, &FilterEdit::updateCategorySelection);
             connect(buttons->button(QDialogButtonBox::Help), &QPushButton::clicked,
                     this, &FilterEdit::slotHelp);
         }
     }
-    mCategorySelectDialog->setSelection(mCurrent->categoryList());
+    Akonadi::Tag::List tags;
+    const auto names = mCurrent->categoryList();
+    tags.resize(names.size());
+    std::transform(names.cbegin(), names.cend(), std::back_inserter(tags),
+                   [](const QString &name) { return Akonadi::Tag{name}; });
+    mCategorySelectDialog->setSelection(tags);
 
     mCategorySelectDialog->show();
 }
@@ -371,7 +377,11 @@ void FilterEdit::slotHelp()
 
 void FilterEdit::updateCategorySelection()
 {
-    const QStringList &categories = mCategorySelectDialog->selection();
+    const auto tags = mCategorySelectDialog->selection();
+    QStringList categories;
+    categories.reserve(tags.size());
+    std::transform(tags.cbegin(), tags.cend(), std::back_inserter(categories),
+                   std::bind(&Akonadi::Tag::name, std::placeholders::_1));
     mCatList->clear();
     mCatList->addItems(categories);
     mCurrent->setCategoryList(categories);
