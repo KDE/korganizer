@@ -34,10 +34,9 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/CategoryConfig>
 
-#include <IncidenceEditor/IncidenceEditorSettings>
-
 #include <LibkdepimAkonadi/TagSelectionCombo>
-#include <LibkdepimAkonadi/TagWidgets>
+
+#include <IncidenceEditor/IncidenceEditorSettings>
 
 #include <AkonadiCore/AgentFilterProxyModel>
 #include <AkonadiCore/AgentInstanceCreateJob>
