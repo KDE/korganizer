@@ -399,9 +399,9 @@ void ActionManager::initActions()
     action->setStatusTip(i18nc("@info:status", "Month View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the Month View"));
     action->setWhatsThis(
-      i18nc("@info:whatsthis",
-            "Switches to the Month View, which shows all the events and due to-dos "
-            "in a familiar monthly calendar layout."));
+        i18nc("@info:whatsthis",
+              "Switches to the Month View, which shows all the events and due to-dos "
+              "in a familiar monthly calendar layout."));
     mACollection->addAction(QStringLiteral("view_month"), action);
     connect(action, &QAction::triggered,
             mCalendarView->viewManager(), &KOViewManager::showMonthView);
@@ -553,8 +553,8 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goToday);
 
     /** Scroll Backward Action **/
-    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next") :
-                                                  QStringLiteral("go-previous")),
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-next")
+                                          : QStringLiteral("go-previous")),
                          i18nc("scroll backward", "&Backward"), this);
     action->setIconText(i18nc("scroll backward", "Back"));
     action->setStatusTip(i18nc("@info:status", "Scroll Backward"));
@@ -567,8 +567,8 @@ void ActionManager::initActions()
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goPrevious);
 
     /** Scroll Forward Action **/
-    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") :
-                                                  QStringLiteral("go-next")),
+    action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous")
+                                          : QStringLiteral("go-next")),
                          i18nc("scroll forward", "&Forward"), this);
     action->setIconText(i18nc("scoll forward", "Forward"));
     action->setStatusTip(i18nc("@info:status", "Scroll Forward"));
@@ -654,7 +654,7 @@ void ActionManager::initActions()
     mNewJournalAction->setToolTip(i18nc("@info:tooltip", "Create a new Journal"));
     mNewJournalAction->setWhatsThis(
         i18nc("@info:whatsthis",
-               "Starts a dialog that allows you to create a new Journal entry."));
+              "Starts a dialog that allows you to create a new Journal entry."));
     mACollection->addAction(QStringLiteral("new_journal"), mNewJournalAction);
     connect(mNewJournalAction, &QAction::triggered, this,
             &ActionManager::slotNewJournal);
@@ -669,8 +669,8 @@ void ActionManager::initActions()
         i18nc("@info:whatsthis",
               "Starts a configuration dialog that allows you to change the settings "
               "for the current calendar view."));
-    mConfigureViewAction->setEnabled(mCalendarView->currentView() &&
-                                     mCalendarView->currentView()->hasConfigurationDialog());
+    mConfigureViewAction->setEnabled(mCalendarView->currentView()
+                                     && mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView,
             &CalendarView::configureCurrentView);
@@ -1054,7 +1054,7 @@ bool ActionManager::saveURL()
         KJobWidgets::setWindow(job, view());
         if (!job->exec()) {
             const QString msg = i18n("Cannot upload calendar to '%1'",
-                               mURL.toDisplayString());
+                                     mURL.toDisplayString());
             KMessageBox::error(dialogParent(), msg);
             return false;
         }
@@ -1826,4 +1826,3 @@ void ActionManager::openEventEditor(const QString &summary, const QString &descr
     Q_UNUSED(attachmentIsInline);
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }
-

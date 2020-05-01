@@ -43,8 +43,8 @@ public:
      * The different types of preset menus available.
      */
     enum MenuStyle {
-      NormalView = 0, /**< typical menu shown in most views. this is the default menu style */
-      MiniList = 1,   /**< mini-menu with just the basic items, typical in lists */
+        NormalView = 0, /**< typical menu shown in most views. this is the default menu style */
+        MiniList = 1, /**< mini-menu with just the basic items, typical in lists */
     };
     Q_ENUM(MenuStyle)
 

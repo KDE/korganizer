@@ -508,7 +508,6 @@ public Q_SLOTS:
     /** Take ownership of selected event. */
     void takeOverEvent();
 
-
     /** set state of calendar to read-only
         @param readOnly whether the calendar view should be set read-only or not
     */

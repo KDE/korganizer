@@ -52,7 +52,6 @@
 #include "userfeedback/userfeedbackmanager.h"
 #endif
 
-
 KOrganizer::KOrganizer() : KParts::MainWindow()
     , KOrg::MainWindow()
 {
@@ -74,7 +73,6 @@ KOrganizer::KOrganizer() : KParts::MainWindow()
     KUserFeedback::NotificationPopup *userFeedBackNotificationPopup = new KUserFeedback::NotificationPopup(this);
     userFeedBackNotificationPopup->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
 #endif
-
 }
 
 KOrganizer::~KOrganizer()

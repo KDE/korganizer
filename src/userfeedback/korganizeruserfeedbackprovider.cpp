@@ -17,7 +17,6 @@
    Boston, MA 02110-1301, USA.
 */
 
-
 #include "korganizeruserfeedbackprovider.h"
 #include <KUserFeedback/ApplicationVersionSource>
 #include <KUserFeedback/PlatformInfoSource>
@@ -50,5 +49,4 @@ KOrganizerUserFeedbackProvider::KOrganizerUserFeedbackProvider(QObject *parent)
 
 KOrganizerUserFeedbackProvider::~KOrganizerUserFeedbackProvider()
 {
-
 }

@@ -38,7 +38,7 @@
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
 
-#include<QCoreApplication>
+#include <QCoreApplication>
 
 KOEventPopupMenu::KOEventPopupMenu(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent)
     : QMenu(parent)
@@ -80,16 +80,16 @@ void KOEventPopupMenu::init(const Akonadi::ETMCalendar::Ptr &calendar, MenuStyle
               this, &KOEventPopupMenu::printPreview);
 
     // Add more menu actions according to Menu style
-    switch(menuStyle) {
-        case MenuStyle::NormalView:
-            appendEditOnlyItems();
-            appendEventOnlyItems();
-            appendTodoOnlyItems();
-            appendReminderOnlyItems();
-            appendRecurrenceOnlyItems();
-            appendShareOnlyItems();
-        default:
-            break;
+    switch (menuStyle) {
+    case MenuStyle::NormalView:
+        appendEditOnlyItems();
+        appendEventOnlyItems();
+        appendTodoOnlyItems();
+        appendReminderOnlyItems();
+        appendRecurrenceOnlyItems();
+        appendShareOnlyItems();
+    default:
+        break;
     }
 }
 
@@ -113,8 +113,8 @@ void KOEventPopupMenu::appendEventOnlyItems()
     mEventOnlyItems.append(addSeparator());
 
     mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("task-new")),
-                                    i18nc("@action:inmenu", "Create To-do from Event"),
-                                    this, &KOEventPopupMenu::createTodo));
+                                     i18nc("@action:inmenu", "Create To-do from Event"),
+                                     this, &KOEventPopupMenu::createTodo));
 
     mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
                                      i18nc("@action:inmenu", "Create Note for Event"),
@@ -211,9 +211,9 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
         (*it)->setEnabled(true);
     }
     if (mToggleReminder) {
-      mToggleReminder->setText(incidence->hasEnabledAlarms() ?
-                               i18nc("@action:inmenu", "&Toggle Reminder Off") :
-                               i18nc("@action:inmenu", "&Toggle Reminder On"));
+        mToggleReminder->setText(incidence->hasEnabledAlarms()
+                                 ? i18nc("@action:inmenu", "&Toggle Reminder Off")
+                                 : i18nc("@action:inmenu", "&Toggle Reminder On"));
     }
 
     // Enable/Disable menu items valid for reminder Incidences only
@@ -367,9 +367,9 @@ void KOEventPopupMenu::createEvent()
         newEventItem.setMimeType(KCalendarCore::Event::eventMimeType());
         newEventItem.setPayload<KCalendarCore::Event::Ptr>(event);
 
-        IncidenceEditorNG::IncidenceDialog *dlg =
-            IncidenceEditorNG::IncidenceDialogFactory::create(
-                true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
+        IncidenceEditorNG::IncidenceDialog *dlg
+            = IncidenceEditorNG::IncidenceDialogFactory::create(
+                  true, KCalendarCore::IncidenceBase::TypeEvent, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newEventItem);
         dlg->open();
@@ -445,9 +445,9 @@ void KOEventPopupMenu::createTodo()
         newTodoItem.setMimeType(KCalendarCore::Todo::todoMimeType());
         newTodoItem.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
-        IncidenceEditorNG::IncidenceDialog *dlg =
-            IncidenceEditorNG::IncidenceDialogFactory::create(
-                true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
+        IncidenceEditorNG::IncidenceDialog *dlg
+            = IncidenceEditorNG::IncidenceDialogFactory::create(
+                  true, KCalendarCore::IncidenceBase::TypeTodo, nullptr, this);
         dlg->setObjectName(QStringLiteral("incidencedialog"));
         dlg->load(newTodoItem);
         dlg->open();

@@ -324,11 +324,11 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 
     QDBusConnection dbusConn = QDBusConnection::sessionBus();
     if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
-        OrgFreedesktopDBusPropertiesInterface *propsIface =
-            new OrgFreedesktopDBusPropertiesInterface(
-                QString::fromLatin1(s_fdo_notifications_service),
-                QString::fromLatin1(s_fdo_notifications_path),
-                dbusConn, this);
+        OrgFreedesktopDBusPropertiesInterface *propsIface
+            = new OrgFreedesktopDBusPropertiesInterface(
+                  QString::fromLatin1(s_fdo_notifications_service),
+                  QString::fromLatin1(s_fdo_notifications_path),
+                  dbusConn, this);
         connect(propsIface, &OrgFreedesktopDBusPropertiesInterface::PropertiesChanged,
                 this, &AlarmDialog::slotDBusNotificationsPropertiesChanged);
     }
@@ -361,9 +361,7 @@ static QString cleanSummary(const QString &summary)
     return retStr.replace(QLatin1Char('\n'), QLatin1Char(' '));
 }
 
-void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
-                               const QDateTime &reminderAt,
-                               const QString &displayText)
+void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem, const QDateTime &reminderAt, const QString &displayText)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(incidenceitem);
     ReminderTreeItem *item = searchByItem(incidenceitem);
@@ -390,11 +388,11 @@ void AlarmDialog::addIncidence(const Akonadi::Item &incidenceitem,
     item->setText(1, displayStr);
 
     item->setText(2, QLocale().toString(item->mTrigger, QLocale::ShortFormat));
-    QString tip =
-        KCalUtils::IncidenceFormatter::toolTipStr(
-            CalendarSupport::displayName(mCalendar.data(),
-                                         incidenceitem.parentCollection()),
-                                         incidence, item->mRemindAt.date(), true);
+    QString tip
+        = KCalUtils::IncidenceFormatter::toolTipStr(
+              CalendarSupport::displayName(mCalendar.data(),
+                                           incidenceitem.parentCollection()),
+              incidence, item->mRemindAt.date(), true);
     if (!item->mDisplayText.isEmpty()) {
         tip += QLatin1String("<br>") + item->mDisplayText;
     }
@@ -703,8 +701,8 @@ void AlarmDialog::eventNotification()
                 QString program = alarm->programFile();
 
                 // if the program name contains spaces escape it
-                if (program.contains(QLatin1Char(' ')) &&
-                    !(program.startsWith(QLatin1Char('\"')) && program.endsWith(QLatin1Char('\"')))) {
+                if (program.contains(QLatin1Char(' '))
+                    && !(program.startsWith(QLatin1Char('\"')) && program.endsWith(QLatin1Char('\"')))) {
                     program = QLatin1Char('\"') + program + QLatin1Char('\"');
                 }
 
@@ -758,19 +756,19 @@ void AlarmDialog::eventNotification()
                 }
                 //TODO: support attachments
                 KOrg::MailClient mailer;
-                const bool sendStatus =
-                    mailer.send(id, from, to, QString(), subject, body, true, false, QString(),
-                                MailTransport::TransportManager::self()->defaultTransportName());
+                const bool sendStatus
+                    = mailer.send(id, from, to, QString(), subject, body, true, false, QString(),
+                                  MailTransport::TransportManager::self()->defaultTransportName());
                 if (!sendStatus) {
                     KNotification::event(QStringLiteral("mailremindersent"),
-                        QString(),
-                        i18nc("@info email subject, error message",
-                              "<warning>Failed to send the Email reminder for %1. %2</warning>",
-                              subject, mailer.errorMsg()),
-                        QStringLiteral("korgac"),
-                        nullptr,
-                        KNotification::CloseOnTimeout,
-                        QStringLiteral("korgac"));
+                                         QString(),
+                                         i18nc("@info email subject, error message",
+                                               "<warning>Failed to send the Email reminder for %1. %2</warning>",
+                                               subject, mailer.errorMsg()),
+                                         QStringLiteral("korgac"),
+                                         nullptr,
+                                         KNotification::CloseOnTimeout,
+                                         QStringLiteral("korgac"));
                 }
             }
         }
@@ -788,9 +786,9 @@ void AlarmDialog::wakeUp()
     QDBusConnection dbusConn = QDBusConnection::sessionBus();
     if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
         OrgFreedesktopNotificationsInterface iface(
-                QString::fromLatin1(s_fdo_notifications_service),
-                QString::fromLatin1(s_fdo_notifications_path),
-                dbusConn);
+            QString::fromLatin1(s_fdo_notifications_service),
+            QString::fromLatin1(s_fdo_notifications_path),
+            dbusConn);
         if (iface.inhibited()) {
             return;
         }
@@ -827,9 +825,7 @@ void AlarmDialog::wakeUp()
     Q_EMIT reminderCount(activeCount());
 }
 
-void AlarmDialog::slotDBusNotificationsPropertiesChanged(const QString &interface,
-                                                         const QVariantMap &changedProperties,
-                                                         const QStringList &invalidatedProperties)
+void AlarmDialog::slotDBusNotificationsPropertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidatedProperties)
 {
     Q_UNUSED(interface); // always "org.freedesktop.Notifications"
     Q_UNUSED(invalidatedProperties);
@@ -931,8 +927,8 @@ void AlarmDialog::updateButtons()
         mUser1Button->setEnabled(false);
     }
     if (enabled) {
-       mIncidenceTree->setFocus();
-       mIncidenceTree->setCurrentItem(selection.first());
+        mIncidenceTree->setFocus();
+        mIncidenceTree->setCurrentItem(selection.first());
     }
 }
 
@@ -1001,9 +997,7 @@ void AlarmDialog::accept()
 }
 
 /** static */
-QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence,
-                                               const QDateTime &reminderAt,
-                                               QString &displayStr)
+QDateTime AlarmDialog::triggerDateForIncidence(const Incidence::Ptr &incidence, const QDateTime &reminderAt, QString &displayStr)
 {
     QDateTime result;
 
@@ -1128,10 +1122,10 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
 bool AlarmDialog::openIncidenceEditorNG(const Akonadi::Item &item)
 {
     Incidence::Ptr incidence = CalendarSupport::incidence(item);
-    IncidenceEditorNG::IncidenceDialog *dialog =
-        IncidenceEditorNG::IncidenceDialogFactory::create(
-            false, /*doesn't need initial saving*/
-            incidence->type(), nullptr, this);
+    IncidenceEditorNG::IncidenceDialog *dialog
+        = IncidenceEditorNG::IncidenceDialogFactory::create(
+              false, /*doesn't need initial saving*/
+              incidence->type(), nullptr, this);
     if (!dialog) {
         return false;
     } else {

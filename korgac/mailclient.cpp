@@ -66,10 +66,7 @@ QString const MailClient::errorMsg()
     return errorString;
 }
 
-bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidence,
-                               const KIdentityManagement::Identity &identity, bool bccMe,
-                               const QString &attachment,
-                               const QString &mailTransport)
+bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment, const QString &mailTransport)
 {
     const KCalendarCore::Attendee::List attendees = incidence->attendees();
     if (attendees.isEmpty()) {
@@ -142,11 +139,7 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
                 bccMe, attachment, mailTransport);
 }
 
-bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidence,
-                               const KIdentityManagement::Identity &identity,
-                               const QString &from, bool bccMe,
-                               const QString &attachment, const QString &sub,
-                               const QString &mailTransport)
+bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &attachment, const QString &sub, const QString &mailTransport)
 {
     const QString to = incidence->organizer().fullName();
     QString subject = sub;
@@ -166,11 +159,7 @@ bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidenc
                 bccMe, attachment, mailTransport);
 }
 
-bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence,
-                        const KIdentityManagement::Identity &identity,
-                        const QString &from, bool bccMe,
-                        const QString &recipients, const QString &attachment,
-                        const QString &mailTransport)
+bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients, const QString &attachment, const QString &mailTransport)
 {
     QString subject;
 
@@ -193,19 +182,14 @@ QStringList extractEmailAndNormalize(const QString &email)
     QStringList normalizedEmail;
     normalizedEmail.reserve(splittedEmail.count());
     for (const QString &email : splittedEmail) {
-        const QString str =
-            KEmailAddress::extractEmailAddress(KEmailAddress::normalizeAddressesAndEncodeIdn(email));
+        const QString str
+            = KEmailAddress::extractEmailAddress(KEmailAddress::normalizeAddressesAndEncodeIdn(email));
         normalizedEmail << str;
     }
     return normalizedEmail;
 }
 
-bool MailClient::send(const KIdentityManagement::Identity &identity,
-                      const QString &from, const QString &_to, const QString &cc,
-                      const QString &subject, const QString &body,
-                      bool hidden, bool bccMe,
-                      const QString &attachment,
-                      const QString &mailTransport)
+bool MailClient::send(const KIdentityManagement::Identity &identity, const QString &from, const QString &_to, const QString &cc, const QString &subject, const QString &body, bool hidden, bool bccMe, const QString &attachment, const QString &mailTransport)
 {
     Q_UNUSED(hidden);
 

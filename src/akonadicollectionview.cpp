@@ -286,16 +286,16 @@ public:
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
 
             if (hasCompatibleMimeTypes(collection)) {
-                if (collection.hasAttribute<Akonadi::EntityDisplayAttribute>() &&
-                    !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty()) {
+                if (collection.hasAttribute<Akonadi::EntityDisplayAttribute>()
+                    && !collection.attribute<Akonadi::EntityDisplayAttribute>()->iconName().isEmpty()) {
                     return collection.attribute<Akonadi::EntityDisplayAttribute>()->icon();
                 }
             }
         } else if (role == Qt::FontRole) {
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
-            if (!collection.contentMimeTypes().isEmpty() &&
-                KOHelper::isStandardCalendar(collection.id()) &&
-                collection.rights() & Akonadi::Collection::CanCreateItem) {
+            if (!collection.contentMimeTypes().isEmpty()
+                && KOHelper::isStandardCalendar(collection.id())
+                && collection.rights() & Akonadi::Collection::CanCreateItem) {
                 QFont font = qvariant_cast<QFont>(QSortFilterProxyModel::data(index, Qt::FontRole));
                 font.setBold(true);
                 if (!mInitDefaultCalendar) {
@@ -340,14 +340,14 @@ protected:
         const QModelIndex sourceIndex = sourceModel()->index(row, 0, sourceParent);
         Q_ASSERT(sourceIndex.isValid());
 
-        const Akonadi::Collection &col =
-            sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-        const Akonadi::CollectionIdentificationAttribute *attr =
-            col.attribute<Akonadi::CollectionIdentificationAttribute>();
+        const Akonadi::Collection &col
+            = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        const Akonadi::CollectionIdentificationAttribute *attr
+            = col.attribute<Akonadi::CollectionIdentificationAttribute>();
 
         //We filter the user folders because we insert person nodes for user folders.
-        if ((attr && attr->collectionNamespace().startsWith("usertoplevel")) ||
-             col.name().contains(QLatin1String("Other Users"))) {
+        if ((attr && attr->collectionNamespace().startsWith("usertoplevel"))
+            || col.name().contains(QLatin1String("Other Users"))) {
             return false;
         }
         return true;
@@ -638,14 +638,14 @@ void AkonadiCollectionView::setDefaultCalendar()
 
     // Ask if they really want to do this
     const Akonadi::Collection curCol(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
-    if (curCol.isValid() &&
-        KMessageBox::warningContinueCancel(
+    if (curCol.isValid()
+        && KMessageBox::warningContinueCancel(
             this,
             i18nc("@info",
                   "Do you really want replace your current default calendar with \"%1\"?",
-                   collection.displayName()),
+                  collection.displayName()),
             i18nc("@title:window", "Replace Default Calendar?")) != KMessageBox::Continue) {
-              return;
+        return;
     }
 
     CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(collection.id());
@@ -701,8 +701,8 @@ Akonadi::EntityTreeView *AkonadiCollectionView::view() const
 
 void AkonadiCollectionView::updateView()
 {
-    Q_EMIT resourcesChanged(mSelectionProxyModel ?
-                            mSelectionProxyModel->selectionModel()->hasSelection() : false);
+    Q_EMIT resourcesChanged(mSelectionProxyModel
+                            ? mSelectionProxyModel->selectionModel()->hasSelection() : false);
 }
 
 void AkonadiCollectionView::updateMenu()
@@ -727,10 +727,10 @@ void AkonadiCollectionView::updateMenu()
             }
 
             mDefaultCalendar->setEnabled(
-                !KOHelper::isStandardCalendar(collection.id()) &&
-                (collection.rights() & Akonadi::Collection::CanCreateItem) &&
-                !collection.isVirtual() &&
-                collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType()));
+                !KOHelper::isStandardCalendar(collection.id())
+                && (collection.rights() & Akonadi::Collection::CanCreateItem)
+                && !collection.isVirtual()
+                && collection.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType()));
             disableStuff = false;
         }
         bool isOnline;

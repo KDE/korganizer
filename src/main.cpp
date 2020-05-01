@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     aboutData.processCommandLine(cmdArgs);
 
 #ifdef WITH_KUSERFEEDBACK
-    if(cmdArgs->isSet(QStringLiteral("feedback"))) {
+    if (cmdArgs->isSet(QStringLiteral("feedback"))) {
         KOrganizerUserFeedbackProvider *userFeedBackProvider = new KOrganizerUserFeedbackProvider(nullptr);
         QTextStream(stdout) << userFeedBackProvider->describeDataSources() << '\n';
         return 0;

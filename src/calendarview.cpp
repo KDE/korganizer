@@ -966,8 +966,8 @@ void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bo
             // use the next quarter hour after the current time.
             // but don't spill over into tomorrow.
             const QTime currentTime = currentDateTime.time();
-            if (!prefTime.isValid() ||
-                (currentTime > prefTime && currentTime < QTime(23, 45))) {
+            if (!prefTime.isValid()
+                || (currentTime > prefTime && currentTime < QTime(23, 45))) {
                 prefTime = nextQuarterHour(currentTime);
             }
         }

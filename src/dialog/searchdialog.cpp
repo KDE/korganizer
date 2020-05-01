@@ -103,10 +103,10 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     connect(m_popupMenu, &KOEventPopupMenu::deleteIncidenceSignal, this,
             &SearchDialog::deleteIncidenceSignal);
     //TODO: add these
- //   connect(m_popupMenu, &KOEventPopupMenu::toggleAlarmSignal, this,
- //           &SearchDialog::toggleAlarmSignal);
- //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
- //           &SearchDialog::toggleTodoCompletedSignal);
+    //   connect(m_popupMenu, &KOEventPopupMenu::toggleAlarmSignal, this,
+    //           &SearchDialog::toggleAlarmSignal);
+    //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
+    //           &SearchDialog::toggleTodoCompletedSignal);
 
     readConfig();
 }
@@ -195,9 +195,9 @@ void SearchDialog::search(const QRegExp &re)
 
     KCalendarCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
-        events =
-            m_calendarview->calendar()->events(
-                startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+        events
+            = m_calendarview->calendar()->events(
+                  startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
     }
 
     KCalendarCore::Todo::List todos;
@@ -207,16 +207,16 @@ void SearchDialog::search(const QRegExp &re)
             const KCalendarCore::Todo::List alltodos = m_calendarview->calendar()->todos();
             for (const KCalendarCore::Todo::Ptr &todo : alltodos) {
                 Q_ASSERT(todo);
-                if ((!todo->hasStartDate() && !todo->hasDueDate()) || // undated
-                    (todo->hasStartDate() &&
-                       (todo->dtStart().toLocalTime().date() >= startDt) &&
-                       (todo->dtStart().toLocalTime().date() <= endDt)) || //start dt in range
-                    (todo->hasDueDate() &&
-                       (todo->dtDue().toLocalTime().date() >= startDt) &&
-                       (todo->dtDue().toLocalTime().date() <= endDt)) || //due dt in range
-                    (todo->hasCompletedDate() &&
-                       (todo->completed().toLocalTime().date() >= startDt) &&
-                       (todo->completed().toLocalTime().date() <= endDt))) { //completed dt in range
+                if ((!todo->hasStartDate() && !todo->hasDueDate())    // undated
+                    || (todo->hasStartDate()
+                        && (todo->dtStart().toLocalTime().date() >= startDt)
+                        && (todo->dtStart().toLocalTime().date() <= endDt)) //start dt in range
+                    || (todo->hasDueDate()
+                        && (todo->dtDue().toLocalTime().date() >= startDt)
+                        && (todo->dtDue().toLocalTime().date() <= endDt)) //due dt in range
+                    || (todo->hasCompletedDate()
+                        && (todo->completed().toLocalTime().date() >= startDt)
+                        && (todo->completed().toLocalTime().date() <= endDt))) { //completed dt in range
                     todos.append(todo);
                 }
             }

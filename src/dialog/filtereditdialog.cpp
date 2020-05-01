@@ -364,7 +364,9 @@ void FilterEdit::editCategorySelection()
     const auto names = mCurrent->categoryList();
     tags.resize(names.size());
     std::transform(names.cbegin(), names.cend(), std::back_inserter(tags),
-                   [](const QString &name) { return Akonadi::Tag{name}; });
+                   [](const QString &name) {
+        return Akonadi::Tag{name};
+    });
     mCategorySelectDialog->setSelection(tags);
 
     mCategorySelectDialog->show();

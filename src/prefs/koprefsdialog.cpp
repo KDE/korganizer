@@ -1620,4 +1620,5 @@ void KOPrefsUserFeedBack::save()
     UserFeedBackManager::self()->userFeedbackProvider()->setTelemetryMode(mUserFeedbackWidget->telemetryMode());
     UserFeedBackManager::self()->userFeedbackProvider()->setSurveyInterval(mUserFeedbackWidget->surveyInterval());
 }
+
 #endif

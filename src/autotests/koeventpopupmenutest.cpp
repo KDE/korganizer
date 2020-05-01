@@ -49,8 +49,8 @@ void KoEventPopupMenuTest::createEventFromEvent()
     QAction *createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
 
-    IncidenceEditorNG::IncidenceDialog *dlg =
-        menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
+    IncidenceEditorNG::IncidenceDialog *dlg
+        = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
     QVERIFY(!dlg);
 }
 
@@ -69,8 +69,8 @@ void KoEventPopupMenuTest::createTodoFromTodo()
     QAction *createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
 
-    IncidenceEditorNG::IncidenceDialog *dlg =
-        menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
+    IncidenceEditorNG::IncidenceDialog *dlg
+        = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
     QVERIFY(!dlg);
 }
 
