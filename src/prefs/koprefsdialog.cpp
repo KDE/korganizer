@@ -266,7 +266,8 @@ public:
         mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
         const QStringList regions = KHolidays::HolidayRegion::regionCodes();
-        QMap<QString, QString> regionsMap;
+        std::vector<std::pair<QString, QString>> regionsMap;
+        regionsMap.reserve(regions.size());
 
         for (const QString &regionCode : regions) {
             const QString name = KHolidays::HolidayRegion::name(regionCode);
@@ -279,15 +280,18 @@ public:
                 label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)",
                               name, languageName);
             }
-            regionsMap.insert(label, regionCode);
+            const auto desc = KHolidays::HolidayRegion::description(regionCode);
+            if (!desc.isEmpty()) {
+                label = i18nc("@item:inlistbox holiday region, region description", "%1 - %2", label, desc);
+            }
+            regionsMap.push_back(std::make_pair(label, regionCode));
         }
+        std::sort(regionsMap.begin(), regionsMap.end(), [](const auto &lhs, const auto &rhs) { return lhs.first < rhs.first; });
 
         mHolidayCheckCombo->clear();
         mHolidayCheckCombo->setDefaultText(i18nc("@item:inlistbox", "Select Holiday Regions"));
-        QMapIterator<QString, QString> i(regionsMap);
-        while (i.hasNext()) {
-            i.next();
-            mHolidayCheckCombo->addItem(i.key(), i.value());
+        for (const auto &entry : regionsMap) {
+            mHolidayCheckCombo->addItem(entry.first, entry.second);
         }
 
         //QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
