@@ -32,6 +32,7 @@
 #include <KColorButton>
 
 class QPushButton;
+class QComboBox;
 
 namespace Ui {
 class KOGroupwarePrefsPage;
@@ -82,7 +83,7 @@ protected Q_SLOTS:
     void updateResourceColor();
 
 private:
-    KComboBox *mCategoryCombo = nullptr;
+    QComboBox *mCategoryCombo = nullptr;
     KColorButton *mCategoryButton = nullptr;
     QHash<QString, QColor> mCategoryDict;
 

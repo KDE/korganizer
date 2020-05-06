@@ -34,8 +34,6 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/CategoryConfig>
 
-#include <LibkdepimAkonadi/TagSelectionCombo>
-
 #include <IncidenceEditor/IncidenceEditorSettings>
 
 #include <AkonadiCore/AgentFilterProxyModel>
@@ -45,6 +43,7 @@
 #include <AkonadiWidgets/AgentTypeDialog>
 #include <AkonadiWidgets/CollectionComboBox>
 #include <AkonadiWidgets/ManageAccountWidget>
+#include <AkonadiWidgets/TagSelectionComboBox>
 #include <akonadi/calendar/calendarsettings.h>  //krazy:exclude=camelcase this is a generated file
 
 #include <KCalendarCore/Event>
@@ -835,7 +834,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     unsetCategoryColor->label()->setWhatsThis(unsetCategoryColor->button()->whatsThis());
     unsetCategoryColor->label()->setToolTip(unsetCategoryColor->button()->toolTip());
 
-    mCategoryCombo = new KPIM::TagCombo(categoryGroup);
+    mCategoryCombo = new Akonadi::TagSelectionComboBox(categoryGroup);
     mCategoryCombo->setWhatsThis(
         i18nc("@info:whatsthis",
               "Select here the event category you want to modify. "
