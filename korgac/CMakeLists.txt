@@ -89,3 +89,9 @@ install(FILES
     org.kde.korganizer.KOrgac.xml
     DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
     )
+
+configure_file(org.kde.korgac.service.in org.kde.korgac.service)
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/org.kde.korgac.service
+    DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
+    )

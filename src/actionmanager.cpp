@@ -40,8 +40,8 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "kocheckableproxymodel.h"
+#include "korgacinterface.h"
 #include <KAuthorized>
-#include <KdepimDBusInterfaces/ReminderClient>
 
 #include <CalendarSupport/CollectionSelection>
 #include <CalendarSupport/EventArchiver>
@@ -1132,10 +1132,13 @@ void ActionManager::updateConfig()
     KOCore::self()->reloadPlugins();
 
     /* Hide/Show the Reminder Daemon */
+    org::kde::korganizer::KOrgac korgacInterface{
+        QStringLiteral("org.kde.korgac"), QStringLiteral("/ac"), QDBusConnection::sessionBus()
+    };
     if (!KOPrefs::instance()->mShowReminderDaemon) {
-        KPIM::ReminderClient::hideDaemon();
+        korgacInterface.hide();
     } else {
-        KPIM::ReminderClient::showDaemon();
+        korgacInterface.show();
     }
 
 // Commented out because it crashes KOrganizer.

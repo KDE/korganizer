@@ -29,12 +29,14 @@
 #include "calendarview.h"
 #include "korganizer.h"
 #include "korganizer-version.h"
+
 #include <KCalendarCore/CalFormat>
-#include <KdepimDBusInterfaces/ReminderClient>
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
+
 #include <QCommandLineParser>
+#include <QDBusConnectionInterface>
 
 KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     : KontactInterface::PimUniqueApplication(argc, argv)
@@ -66,7 +68,7 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     korganizer_options(&parser);
     parser.process(args);
 
-    KPIM::ReminderClient::startDaemon();
+    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.korgac"));
 
     // No filenames given => all other args are meaningless, show main Window
     if (parser.positionalArguments().isEmpty()) {

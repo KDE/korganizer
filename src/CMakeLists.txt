@@ -45,7 +45,6 @@ target_link_libraries(korganizer
     KF5::KontactInterface
     KF5::CalendarCore
     KF5::LibkdepimAkonadi
-    KF5::KdepimDBusInterfaces
     korganizerprivate
     korganizer_interfaces
     korganizer_core
@@ -251,7 +250,6 @@ target_link_libraries(korganizerprivate
     KF5::EventViews
     KF5::IncidenceEditor
     KF5::LibkdepimAkonadi
-    KF5::KdepimDBusInterfaces
     korganizer_core
     korganizer_interfaces
     KF5::AkonadiCore
