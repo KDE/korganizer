@@ -38,6 +38,11 @@
 #include <QCommandLineParser>
 #include <QDBusConnectionInterface>
 
+#include <AkonadiCore/ItemFetchJob>
+#include <AkonadiCore/ItemFetchScope>
+
+#include <KMessageBox>
+
 KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     : KontactInterface::PimUniqueApplication(argc, argv)
 {
@@ -64,11 +69,34 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     }
     first = false;
 
+    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.korgac"));
+
     QCommandLineParser parser;
     korganizer_options(&parser);
     parser.process(args);
 
-    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.korgac"));
+
+    if (parser.isSet(QStringLiteral("view"))) {
+        processCalendar(QUrl(), false);
+        const auto url = QUrl{parser.value(QStringLiteral("view"))};
+        auto fetchJob = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(url), this);
+        fetchJob->fetchScope().fetchFullPayload();
+        connect(fetchJob, &Akonadi::ItemFetchJob::result,
+                this, [](KJob *job) {
+                    if (job->error()) {
+                        KMessageBox::detailedSorry(nullptr, i18n("Failed to retrieve incidence from Akonadi"), job->errorText());
+                        return;
+                    }
+                    auto fetchJob = static_cast<Akonadi::ItemFetchJob*>(job);
+                    if (fetchJob->count() != 1) {
+                        KMessageBox::sorry(nullptr, i18n("Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."));
+                        return;
+                    }
+                    KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
+                    korg->actionManager()->view()->showIncidence(fetchJob->items().first());
+               });
+        return 0;
+    }
 
     // No filenames given => all other args are meaningless, show main Window
     if (parser.positionalArguments().isEmpty()) {
@@ -105,14 +133,16 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     return 0;
 }
 
-void KOrganizerApp::processCalendar(const QUrl &url)
+void KOrganizerApp::processCalendar(const QUrl &url, bool show)
 {
     KOrg::MainWindow *korg = ActionManager::findInstance(url);
     if (!korg) {
         bool hasDocument = !url.isEmpty();
         korg = new KOrganizer();
         korg->init(hasDocument);
-        korg->topLevelWidget()->show();
+        if (show) {
+            korg->topLevelWidget()->show();
+        }
 
         qCDebug(KORGANIZER_LOG) << url.url();
 
@@ -121,7 +151,7 @@ void KOrganizerApp::processCalendar(const QUrl &url)
         } else {
             //      korg->view()->updateView();
         }
-    } else {
+    } else if (show) {
         korg->topLevelWidget()->show();
     }
 }

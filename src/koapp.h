@@ -48,7 +48,7 @@ private:
       Process calendar from URL \arg url. If url is empty open the default
       calendar based on the resource framework.
     */
-    void processCalendar(const QUrl &url);
+    void processCalendar(const QUrl &url, bool show = true);
 };
 
 #endif

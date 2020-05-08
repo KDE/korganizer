@@ -310,7 +310,7 @@ install(FILES
     )
 
 install(PROGRAMS
-    org.kde.korganizer.desktop korganizer-import.desktop
+    org.kde.korganizer.desktop korganizer-import.desktop korganizer-view.desktop
     DESTINATION ${KDE_INSTALL_APPDIR}
     )
 

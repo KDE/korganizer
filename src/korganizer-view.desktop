@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=KOrganizer View
+Comment=Display incidence specified by URL
+Type=Application
+Exec=korganizer --view %u
+Icon=korganizer
+Terminal=false
+NoDisplay=true
+MimeType=application/x-vnd.akonadi.calendar.event;application/x-vnd.akonadi.calendar.journal;application/x-vnd.akonadi.calendar.todo;text/calendar
+
+X-KDE-StartupNotify=true
+X-DBUS-StartupType=Unique
+X-DBUS-ServiceName=org.kde.korganizer

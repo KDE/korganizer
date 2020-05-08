@@ -37,6 +37,9 @@ static void korganizer_options(QCommandLineParser *parser)
     parser->addOption(QCommandLineOption(
                           QStringList() << QStringLiteral("m") << QStringLiteral("merge"),
                               i18n("Merge the specified files into an existing calendar")));
+    parser->addOption(QCommandLineOption(
+                          {QStringLiteral("view")},
+                              i18n("Display the specified incidence (by URL)"), QStringLiteral("url")));
 
     parser->addPositionalArgument(
         QStringLiteral("calendars"),
