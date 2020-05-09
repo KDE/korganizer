@@ -280,10 +280,6 @@ public:
                 label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)",
                               name, languageName);
             }
-            const auto desc = KHolidays::HolidayRegion::description(regionCode);
-            if (!desc.isEmpty()) {
-                label = i18nc("@item:inlistbox holiday region, region description", "%1 - %2", label, desc);
-            }
             regionsMap.push_back(std::make_pair(label, regionCode));
         }
         std::sort(regionsMap.begin(), regionsMap.end(), [](const auto &lhs, const auto &rhs) { return lhs.first < rhs.first; });
