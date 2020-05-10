@@ -87,9 +87,10 @@
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
 
+#include <KDialogJobUiDelegate>
 #include <KMessageBox>
 #include <KNotification>
-#include <KRun>
+#include <KIO/CommandLauncherJob>
 
 #include <QApplication>
 #include <QClipboard>
@@ -1756,7 +1757,10 @@ void CalendarView::schedule(KCalendarCore::iTIPMethod method, const Akonadi::Ite
 
 void CalendarView::openAddressbook()
 {
-    KRun::runCommand(QStringLiteral("kaddressbook"), topLevelWidget());
+    KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(QStringLiteral("kaddressbook"), {}, this);
+    job->setDesktopName(QStringLiteral("org.kde.kaddressbook"));
+    job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
+    job->start();
 }
 
 bool CalendarView::isReadOnly() const

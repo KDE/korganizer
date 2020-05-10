@@ -24,12 +24,12 @@
 
 #include <KAboutData>
 #include "korganizer_debug.h"
+#include <KDialogJobUiDelegate>
 #include <KDirWatch>
 #include <QFileDialog>
 #include <KMessageBox>
-#include <KRun>
+#include <KIO/CommandLauncherJob>
 #include <KShell>
-#include <QStandardPaths>
 #include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
 #include <KIO/MkdirJob>
@@ -41,6 +41,7 @@
 #include <QHeaderView>
 #include <QLabel>
 #include <QPushButton>
+#include <QStandardPaths>
 #include <QTreeWidget>
 #include <QUiLoader>
 #include <QWhatsThis>
@@ -440,8 +441,6 @@ void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
 
 void KCMDesignerFields::startDesigner()
 {
-    QString cmdLine = QStringLiteral("designer");
-
     // check if path exists and create one if not.
     QString cepPath = localUiDir();
     if (!QDir(cepPath).exists()) {
@@ -451,16 +450,19 @@ void KCMDesignerFields::startDesigner()
     // finally jump there
     QDir::setCurrent(QLatin1String(cepPath.toLocal8Bit()));
 
+    QStringList args;
     QTreeWidgetItem *item = nullptr;
     if (mPageView->selectedItems().size() == 1) {
         item = mPageView->selectedItems().first();
     }
     if (item) {
         PageItem *pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
-        cmdLine += QLatin1Char(' ') + KShell::quoteArg(pageItem->path());
+        args.append(pageItem->path());
     }
 
-    KRun::runCommand(cmdLine, topLevelWidget());
+    KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(QStringLiteral("designer"), args, this);
+    job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
+    job->start();
 }
 
 void KCMDesignerFields::showWhatsThis(const QString &href)
