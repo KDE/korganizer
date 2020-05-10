@@ -575,7 +575,7 @@ void ActionManager::initActions()
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view forward"));
     action->setWhatsThis(
         i18nc("@info:whatsthis",
-              "Scrolls forward   by a day, week, month or year, depending on the "
+              "Scrolls forward by a day, week, month or year, depending on the "
               "current calendar view."));
     mACollection->addAction(QStringLiteral("go_next"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::goNext);
