@@ -467,7 +467,7 @@ void ActionManager::initActions()
     action->setWhatsThis(
         i18nc("@info:whatsthis",
               "Switches to the Timeline View, which shows all events for the selected "
-              "timespan in a gantt view. Each calendar is displayed in a separate line."));
+              "timespan in a Gantt view. Each calendar is displayed in a separate line."));
     mACollection->addAction(QStringLiteral("view_timeline"), action);
     connect(action, &QAction::triggered,
             mCalendarView->viewManager(), &KOViewManager::showTimeLineView);
