@@ -1,6 +1,20 @@
 [Desktop Entry]
 Name=KOrganizer View
+Name[ca]=Vista del KOrganizer
+Name[es]=Vista de KOrganizer
+Name[et]=KOrganizeri vaade
+Name[nl]=Beeld KOrganizer
+Name[sv]=Korganizer-vy
+Name[uk]=Перегляд KOrganizer
+Name[x-test]=xxKOrganizer Viewxx
 Comment=Display incidence specified by URL
+Comment[ca]=Mostra la incidència especificada mitjançant un URL
+Comment[es]=Mostrar la incidencia indicada por URL
+Comment[et]=URL-iga määratud sündmuse näitamine
+Comment[nl]=Toon URL van genoemd voorval
+Comment[sv]=Visa förekomst angiven enligt webbadress
+Comment[uk]=Показати подію, яку вказано за допомогою адреси
+Comment[x-test]=xxDisplay incidence specified by URLxx
 Type=Application
 Exec=korganizer --view %u
 Icon=korganizer
