@@ -78,7 +78,7 @@ KOAlarmClient::KOAlarmClient(QObject *parent)
     KConfigGroup alarmGroup(KSharedConfig::openConfig(), "Alarms");
     const int interval = alarmGroup.readEntry("Interval", 60);
     qCDebug(KOALARMCLIENT_LOG) << "KOAlarmClient check interval:" << interval << "seconds.";
-    mLastChecked = alarmGroup.readEntry("CalendarsLastChecked", QDateTime());
+    mLastChecked = alarmGroup.readEntry("CalendarsLastChecked", QDateTime::currentDateTime().addDays(-9));
 
     mCheckTimer.start(1000 * interval);    // interval in seconds
     connect(qApp, &QApplication::commitDataRequest, this, &KOAlarmClient::slotCommitData);
@@ -225,18 +225,13 @@ void KOAlarmClient::checkAlarms()
         const Akonadi::Item::Id id = mCalendar->item(uid).id();
         const Akonadi::Item item = mCalendar->item(id);
 
-        createReminder(item, from, alarm->text());
+        createReminder(item, mLastChecked, alarm->text());
     }
 }
 
 void KOAlarmClient::createReminder(const Akonadi::Item &aitem, const QDateTime &remindAtDate, const QString &displayText)
 {
     if (!CalendarSupport::hasIncidence(aitem)) {
-        return;
-    }
-
-    if (remindAtDate.addDays(10) < mLastChecked) {
-        // ignore reminders more than 10 days old
         return;
     }
 
