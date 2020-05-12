@@ -235,6 +235,11 @@ void KOAlarmClient::createReminder(const Akonadi::Item &aitem, const QDateTime &
         return;
     }
 
+    if (remindAtDate.addDays(10) < mLastChecked) {
+        // ignore reminders more than 10 days old
+        return;
+    }
+
     createDialog();
 
     mDialog->addIncidence(aitem, remindAtDate, displayText);
