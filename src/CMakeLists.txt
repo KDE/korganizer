@@ -199,6 +199,7 @@ set(korganizerprivate_LIB_SRCS
     views/timelineview/kotimelineview.cpp
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
+    pimmessagebox.cpp
     )
 
 qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)

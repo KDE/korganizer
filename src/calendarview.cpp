@@ -47,6 +47,8 @@
 #include "views/monthview/monthview.h"
 #include "views/todoview/kotodoview.h"
 #include "widgets/navigatorbar.h"
+#include "pimmessagebox.h"
+
 
 #include <AkonadiCore/AttributeFactory>
 #include <AkonadiCore/CollectionIdentificationAttribute>
@@ -81,8 +83,6 @@
 #include <KCalUtils/Stringify>
 
 #include <KHolidays/HolidayRegion>
-
-#include <Libkdepim/PIMMessageBox>
 
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
@@ -2395,7 +2395,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
 
                 if (!(isFirst && isLast)) {
                     QDialogButtonBox::StandardButton returnValue
-                        = KPIM::PIMMessageBox::fourBtnMsgBox(
+                        = PIMMessageBox::fourBtnMsgBox(
                               this,
                               QMessageBox::Warning,
                               message,
