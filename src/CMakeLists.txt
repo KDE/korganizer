@@ -44,7 +44,6 @@ add_executable(korganizer ${korganizer_SRCS})
 target_link_libraries(korganizer
     KF5::KontactInterface
     KF5::CalendarCore
-    KF5::LibkdepimAkonadi
     korganizerprivate
     korganizer_interfaces
     korganizer_core
@@ -75,7 +74,6 @@ target_link_libraries(kcm_korganizer
     KF5::CalendarSupport
     KF5::EventViews
     KF5::IncidenceEditor
-    KF5::LibkdepimAkonadi
     korganizer_core
     korganizerprivate
     Qt5::UiTools
@@ -250,7 +248,6 @@ target_link_libraries(korganizerprivate
     KF5::CalendarSupport
     KF5::EventViews
     KF5::IncidenceEditor
-    KF5::LibkdepimAkonadi
     korganizer_core
     korganizer_interfaces
     KF5::AkonadiCore
