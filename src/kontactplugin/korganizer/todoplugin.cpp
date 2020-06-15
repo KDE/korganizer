@@ -27,8 +27,6 @@
 #include "korg_uniqueapp.h"
 #include "todosummarywidget.h"
 
-#include <Libkdepim/MaillistDrag>
-
 #include <KContacts/VCardDrag>
 
 #include <KCalendarCore/MemoryCalendar>
@@ -141,7 +139,6 @@ bool TodoPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
     return
         mimeData->hasText()
-        || KPIM::MailList::canDecode(mimeData)
         || KContacts::VCardDrag::canDecode(mimeData)
         || KCalUtils::ICalDrag::canDecode(mimeData);
 }
@@ -205,31 +202,6 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
         return;
     }
 
-    if (KPIM::MailList::canDecode(md)) {
-        KPIM::MailList mails = KPIM::MailList::fromMimeData(md);
-        event->accept();
-        if (mails.count() != 1) {
-            KMessageBox::sorry(
-                core(),
-                i18nc("@info", "Dropping multiple mails is not supported."));
-        } else {
-            KPIM::MailSummary mail = mails.at(0);
-            QString txt = i18nc("@item", "From: %1\nTo: %2\nSubject: %3",
-                                mail.from(), mail.to(), mail.subject());
-            QString uri = QStringLiteral("kmail:")
-                          +QString::number(mail.serialNumber()) + QLatin1Char('/')
-                          +mail.messageId();
-            QTemporaryFile tf;
-            tf.setAutoRemove(true);
-
-            tf.write(event->mimeData()->data(QStringLiteral("message/rfc822")));
-            interface()->openTodoEditor(
-                i18nc("@item", "Mail: %1", mail.subject()),
-                txt, uri, tf.fileName(), QStringList(), QStringLiteral("message/rfc822"));
-            tf.close();
-        }
-        return;
-    }
     qCWarning(KORGANIZERPLUGIN_LOG)
         << QStringLiteral("Cannot handle drop events of type '%1'.").arg(
         event->mimeData()->formats().join(QLatin1Char(';')));
