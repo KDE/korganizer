@@ -13,7 +13,7 @@ qt5_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_D
 
 add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS})
 
-target_link_libraries(kontact_korganizerplugin KF5::AkonadiCalendar KF5::CalendarUtils KF5::Contacts KF5::CalendarCore KF5::Libkdepim KF5::KontactInterface korganizerprivate KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem KF5::I18n)
+target_link_libraries(kontact_korganizerplugin KF5::AkonadiCalendar KF5::CalendarUtils KF5::Contacts KF5::CalendarCore KF5::KontactInterface korganizerprivate KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem KF5::I18n)
 
 kcoreaddons_desktop_to_json(kontact_korganizerplugin korganizerplugin.desktop)
 
@@ -25,7 +25,7 @@ qt5_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/sr
 
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
 
-target_link_libraries(kontact_todoplugin KF5::AkonadiCalendar  KF5::Contacts KF5::Libkdepim KF5::KontactInterface KF5::CalendarCore KF5::CalendarUtils KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem)
+target_link_libraries(kontact_todoplugin KF5::AkonadiCalendar  KF5::Contacts KF5::KontactInterface KF5::CalendarCore KF5::CalendarUtils KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem)
 
 kcoreaddons_desktop_to_json(kontact_todoplugin todoplugin.desktop)
 
