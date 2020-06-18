@@ -45,6 +45,7 @@ Name[sv]=Korganizers delgränssnitt
 Name[tr]=KOrganizer Part Arayüzü
 Name[uk]=Інтерфейс складової KOrganizer
 Name[wa]=Eterface di KOrganizer Part
+Name[x-test]=xxKOrganizer Part Interfacexx
 Name[zh_CN]=KOrganizer 部件界面
 Name[zh_TW]=KOrganizer 組件介面
 Type=ServiceType
@@ -115,6 +116,7 @@ Comment[uk]=Складова KOrganizer
 Comment[vi]=KOrganizer Part
 Comment[wa]=KOrganizer Part
 Comment[xh]=Indawana yeKOrganizer
+Comment[x-test]=xxKOrganizer Partxx
 Comment[zh_CN]=KOrganizer 部件
 Comment[zh_TW]=KOrganizer 組件
 
