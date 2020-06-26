@@ -160,7 +160,7 @@ void KOEventPopupMenu::appendShareOnlyItems()
 {
     mShareOnlyItems.append(addSeparator());
     mShareOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("mail-forward")),
-                                     i18nc("@action:inmenu", "Email as iCalendar..."),
+                                     i18nc("@action:inmenu", "Send as iCalendar..."),
                                      this, &KOEventPopupMenu::forward));
 }
 
