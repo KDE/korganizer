@@ -79,6 +79,7 @@
 #include <QLocale>
 #include <QTimeEdit>
 #include <KAboutData>
+#include <QButtonGroup>
 
 #ifdef WITH_KUSERFEEDBACK
 #include <KUserFeedback/FeedbackConfigWidget>
@@ -120,6 +121,14 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 //              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
 //              personalFrame);
 //    personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
+    QGroupBox *defaultEmailAttachMethodGroupBox = new QGroupBox(this);
+    QButtonGroup *defaultEmailAttachGroup = new QButtonGroup(this);
+    QRadioButton *askRadioButton = new QRadioButton(i18n("Always ask"), this);
+    defaultEmailAttachGroup->addButton(askRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::Ask);
+    QVBoxLayout *defaultEmailAttachMethodGroupBoxLayout = new QVBoxLayout(defaultEmailAttachMethodGroupBox);
+    defaultEmailAttachMethodGroupBoxLayout->addWidget(askRadioButton);
+
+    personalLayout->addWidget(defaultEmailAttachMethodGroupBox);
     personalLayout->addStretch(1);
 
     // Save Settings
