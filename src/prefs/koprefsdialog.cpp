@@ -1266,7 +1266,7 @@ private:
   Dialog for selecting and configuring KOrganizer plugins
 */
 KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
-    : KPrefsModule(KOPrefs::instance(), parent)
+    : KCModule(parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     mTreeWidget = new QTreeWidget(this);
@@ -1324,7 +1324,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this,
             &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemChanged, this, &KOPrefsDialogPlugins::selectionChanged);
-    connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotWidChanged);
+    connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotConfigChanged);
 
     load();
 
@@ -1337,7 +1337,12 @@ KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
     delete mOthers;
 }
 
-void KOPrefsDialogPlugins::usrReadConfig()
+void KOPrefsDialogPlugins::slotConfigChanged()
+{
+    Q_EMIT markAsChanged();
+}
+
+void KOPrefsDialogPlugins::load()
 {
     mTreeWidget->clear();
     const KService::List plugins = KOCore::self()->availablePlugins() + KOCore::self()->availableParts();
@@ -1386,7 +1391,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
 #endif
 }
 
-void KOPrefsDialogPlugins::usrWriteConfig()
+void KOPrefsDialogPlugins::save()
 {
     QStringList selectedPlugins;
 
@@ -1424,7 +1429,7 @@ void KOPrefsDialogPlugins::configure()
         plugin->configure(this);
         delete plugin;
 
-        slotWidChanged();
+        slotConfigChanged();
     } else {
         KMessageBox::sorry(this,
                            i18nc("@info", "Unable to configure this plugin"),
@@ -1469,7 +1474,7 @@ void KOPrefsDialogPlugins::positioningChanged()
         mDecorationsAtAgendaViewBottom.remove(decoration);
     }
 
-    slotWidChanged();
+    slotConfigChanged();
 }
 
 void KOPrefsDialogPlugins::selectionChanged()
@@ -1535,7 +1540,7 @@ void KOPrefsDialogPlugins::selectionChanged()
         mPositioningGroupBox->show();
     }
 
-    slotWidChanged();
+    slotConfigChanged();
 }
 
 extern "C"

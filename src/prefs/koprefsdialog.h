@@ -125,21 +125,23 @@ private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KCModule
 {
     Q_OBJECT
 public:
     explicit KOPrefsDialogPlugins(QWidget *parent);
     ~KOPrefsDialogPlugins() override;
 
+    void save() override;
+    void load() override;
+
 protected Q_SLOTS:
-    void usrWriteConfig() override;
-    void usrReadConfig() override;
     void configure();
     void selectionChanged();
     void positioningChanged();
 
 private:
+    void slotConfigChanged();
     void buildList();
     QTreeWidget *mTreeWidget = nullptr;
     QLabel *mDescription = nullptr;
