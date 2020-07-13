@@ -48,7 +48,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
 {
     Q_OBJECT
 public:
-    KOPrefsDialogMain(QWidget *parent);
+    explicit KOPrefsDialogMain(QWidget *parent);
 
 protected:
     void usrWriteConfig() override;
@@ -64,7 +64,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsMod
 {
     Q_OBJECT
 public:
-    KOPrefsDialogColorsAndFonts(QWidget *parent);
+    explicit KOPrefsDialogColorsAndFonts(QWidget *parent);
 
 protected:
     void usrWriteConfig() override;
@@ -93,31 +93,35 @@ private:
     QList<KColorButton *> mButtonsDisable; // button that are disabled when using system color
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPIM::KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KCModule
 {
     Q_OBJECT
 public:
-    KOPrefsDialogGroupScheduling(QWidget *parent);
+    explicit KOPrefsDialogGroupScheduling(QWidget *parent);
 
-protected:
-    void usrWriteConfig() override;
-    void usrReadConfig() override;
+    void save() override;
+    void load() override;
+
+private:
+    void slotConfigChanged();
+    QCheckBox *mUseGroupwareCommunicationCheckBox = nullptr;
+    QCheckBox *mBccBox = nullptr;
 };
 
 class KOGroupwarePrefsPage;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPIM::KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KCModule
 {
     Q_OBJECT
 public:
-    KOPrefsDialogGroupwareScheduling(QWidget *parent);
+    explicit KOPrefsDialogGroupwareScheduling(QWidget *parent);
     ~KOPrefsDialogGroupwareScheduling() override;
 
-protected:
-    void usrWriteConfig() override;
-    void usrReadConfig() override;
+    void save() override;
+    void load() override;
 
 private:
+    void slotConfigChanged();
     Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
 };
 
@@ -125,7 +129,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPIM::KPrefsModule
 {
     Q_OBJECT
 public:
-    KOPrefsDialogPlugins(QWidget *parent);
+    explicit KOPrefsDialogPlugins(QWidget *parent);
     ~KOPrefsDialogPlugins() override;
 
 protected Q_SLOTS:

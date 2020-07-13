@@ -1041,7 +1041,7 @@ Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, c
 ////////////////////////////////////////////////////////////////////////////////
 
 KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
-    : KPIM::KPrefsModule(KOPrefs::instance(), parent)
+    : KCModule(parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
 
@@ -1051,14 +1051,15 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     QGridLayout *topLayout = new QGridLayout(topFrame);
     topLayout->setContentsMargins(0, 0, 0, 0);
 
-    KPIM::KPrefsWidBool *useGroupwareBool
-        = addWidBool(
-              CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem(), topFrame);
-    topLayout->addWidget(useGroupwareBool->checkBox(), 0, 0, 1, 2);
+    mUseGroupwareCommunicationCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunicationItem()->label(), this);
+    topLayout->addWidget(mUseGroupwareCommunicationCheckBox, 0, 0, 1, 2);
+    connect(mUseGroupwareCommunicationCheckBox, &QCheckBox::toggled,
+            this, &KOPrefsDialogGroupScheduling::slotConfigChanged);
 
-    KPIM::KPrefsWidBool *bcc
-        = addWidBool(Akonadi::CalendarSettings::self()->bccItem(), topFrame);
-    topLayout->addWidget(bcc->checkBox(), 1, 0, 1, 2);
+    mBccBox = new QCheckBox(Akonadi::CalendarSettings::self()->bccItem()->label(), this);
+    topLayout->addWidget(mBccBox, 1, 0, 1, 2);
+    connect(mBccBox, &QCheckBox::toggled,
+            this, &KOPrefsDialogGroupScheduling::slotConfigChanged);
 
     QLabel *aTransportLabel = new QLabel(
         i18nc("@label", "Mail transport:"), topFrame);
@@ -1069,17 +1070,24 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     tmw->layout()->setContentsMargins(0, 0, 0, 0);
     topLayout->addWidget(tmw, 3, 0, 1, 2);
 
-    //topLayout->setRowStretch( 2, 1 );
-
     load();
 }
 
-void KOPrefsDialogGroupScheduling::usrReadConfig()
+void KOPrefsDialogGroupScheduling::slotConfigChanged()
 {
+    Q_EMIT markAsChanged();
 }
 
-void KOPrefsDialogGroupScheduling::usrWriteConfig()
+void KOPrefsDialogGroupScheduling::save()
 {
+    CalendarSupport::KCalPrefs::instance()->setUseGroupwareCommunication(mUseGroupwareCommunicationCheckBox->isChecked());
+    Akonadi::CalendarSettings::self()->setBcc(mBccBox->isChecked());
+}
+
+void KOPrefsDialogGroupScheduling::load()
+{
+    mUseGroupwareCommunicationCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->useGroupwareCommunication());
+    mBccBox->setChecked(Akonadi::CalendarSettings::self()->bcc());
 }
 
 extern "C"
@@ -1094,7 +1102,7 @@ Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling(QWidget *parent, 
 ////////////////////////////////////////////////////////////////////////////////
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent)
-    : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent)
+    : KCModule(parent)
 {
     mGroupwarePage = new Ui::KOGroupwarePrefsPage();
     QWidget *widget = new QWidget(this);
@@ -1108,31 +1116,31 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     // signals and slots connections
 
     connect(mGroupwarePage->publishDays, qOverload<int>(&QSpinBox::valueChanged),
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->publishUser, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->publishSavePassword, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->retrieveEnable, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->retrieveUser, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->publishDelay, qOverload<int>(&QSpinBox::valueChanged),
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
     connect(mGroupwarePage->publishEnable, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
 
     (new QVBoxLayout(this))->addWidget(widget);
 
@@ -1144,7 +1152,12 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
     delete mGroupwarePage;
 }
 
-void KOPrefsDialogGroupwareScheduling::usrReadConfig()
+void KOPrefsDialogGroupwareScheduling::slotConfigChanged()
+{
+    Q_EMIT changed(true);
+}
+
+void KOPrefsDialogGroupwareScheduling::load()
 {
     mGroupwarePage->publishEnable->setChecked(
         Akonadi::CalendarSettings::self()->freeBusyPublishAuto());
@@ -1175,7 +1188,7 @@ void KOPrefsDialogGroupwareScheduling::usrReadConfig()
         Akonadi::CalendarSettings::self()->freeBusyRetrieveSavePassword());
 }
 
-void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
+void KOPrefsDialogGroupwareScheduling::save()
 {
     Akonadi::CalendarSettings::self()->setFreeBusyPublishAuto(
         mGroupwarePage->publishEnable->isChecked());
@@ -1327,8 +1340,7 @@ KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
 void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
-    KService::List plugins = KOCore::self()->availablePlugins();
-    plugins += KOCore::self()->availableParts();
+    const KService::List plugins = KOCore::self()->availablePlugins() + KOCore::self()->availableParts();
 
     EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
 
@@ -1431,7 +1443,7 @@ void KOPrefsDialogPlugins::positioningChanged()
         return;
     }
 
-    QString decoration = item->service()->desktopEntryName();
+    const QString decoration = item->service()->desktopEntryName();
 
     /*if ( mPositionMonthTop->checkState() == Qt::Checked ) {
       if ( !mDecorationsAtMonthViewTop.contains( decoration ) ) {
