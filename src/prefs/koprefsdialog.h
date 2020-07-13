@@ -44,20 +44,26 @@ class CollectionComboBox;
 
 class QRadioButton;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPIM::KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KCModule
 {
     Q_OBJECT
 public:
     explicit KOPrefsDialogMain(QWidget *parent);
 
-protected:
-    void usrWriteConfig() override;
+    void save() override;
+    void load() override;
 
 protected Q_SLOTS:
     void toggleEmailSettings(bool on);
 
 private:
     QWidget *mUserEmailSettings = nullptr;
+    QCheckBox *mEmailControlCenterCheckBox = nullptr;
+    QLineEdit *mUserName = nullptr;
+    QLineEdit *mUserEmail = nullptr;
+    QCheckBox *mConfirmCheckBox = nullptr;
+    QCheckBox *mDestinationCheckBox = nullptr;
+    QCheckBox *mShowReminderDaemonCheckBox = nullptr;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule

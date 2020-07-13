@@ -86,7 +86,7 @@
 #endif
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
-    : KPrefsModule(KOPrefs::instance(), parent)
+    : KCModule(parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
@@ -99,30 +99,27 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                                                           "preferences-desktop-personal")),
                       i18nc("@title:tab personal settings", "Personal"));
 
-    KPIM::KPrefsWidBool *emailControlCenter
-        = addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(),
-                     personalFrame);
-    connect(emailControlCenter->checkBox(), &QAbstractButton::toggled,
+    mEmailControlCenterCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem()->label(), this);
+    connect(mEmailControlCenterCheckBox, &QAbstractButton::toggled,
             this, &KOPrefsDialogMain::toggleEmailSettings);
-    personalLayout->addWidget(emailControlCenter->checkBox());
+    personalLayout->addWidget(mEmailControlCenterCheckBox);
 
     mUserEmailSettings = new QGroupBox(i18nc("@title:group email settings", "Email Settings"),
                                        personalFrame);
 
     personalLayout->addWidget(mUserEmailSettings);
     QFormLayout *emailSettingsLayout = new QFormLayout(mUserEmailSettings);
-    KPIM::KPrefsWidString *s
-        = addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
-    emailSettingsLayout->addRow(s->label(), s->lineEdit());
+    mUserName = new QLineEdit(this);
+    emailSettingsLayout->addRow(CalendarSupport::KCalPrefs::instance()->userNameItem()->label(), mUserName);
 
-    s = addWidString(CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings);
-    emailSettingsLayout->addRow(s->label(), s->lineEdit());
+    mUserEmail = new QLineEdit(this);
+    emailSettingsLayout->addRow(CalendarSupport::KCalPrefs::instance()->userEmailItem()->label(), mUserEmail);
 
-    KPIM::KPrefsWidRadios *defaultEmailAttachMethod
-        = addWidRadios(
-              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
-              personalFrame);
-    personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
+//    KPIM::KPrefsWidRadios *defaultEmailAttachMethod
+//        = addWidRadios(
+//              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
+//              personalFrame);
+//    personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
     personalLayout->addStretch(1);
 
     // Save Settings
@@ -131,13 +128,12 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                       i18nc("@title:tab", "Save"));
     QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
 
-    KPIM::KPrefsWidBool *confirmItem
-        = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
-    saveLayout->addWidget(confirmItem->checkBox());
-    KPIM::KPrefsWidRadios *destinationItem
-        = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
+    mConfirmCheckBox = new QCheckBox(KOPrefs::instance()->confirmItem()->label(), saveFrame);
+    saveLayout->addWidget(mConfirmCheckBox);
 
-    saveLayout->addWidget(destinationItem->groupBox());
+    mDestinationCheckBox = new QCheckBox(KOPrefs::instance()->destinationItem()->label(), saveFrame);
+    saveLayout->addWidget(mDestinationCheckBox);
+    //saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
 
     // System Tray Settings
@@ -152,10 +148,9 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QVBoxLayout *systrayGroupLayout = new QVBoxLayout;
     systrayGroupBox->setLayout(systrayGroupLayout);
 
-    KPIM::KPrefsWidBool *showReminderDaemonItem
-        = addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
-    systrayGroupLayout->addWidget(showReminderDaemonItem->checkBox());
-    showReminderDaemonItem->checkBox()->setToolTip(
+    mShowReminderDaemonCheckBox = new QCheckBox(KOPrefs::instance()->showReminderDaemonItem()->label(), systrayGroupBox);
+    systrayGroupLayout->addWidget(mShowReminderDaemonCheckBox);
+    mShowReminderDaemonCheckBox->setToolTip(
         i18nc("@info:tooltip", "Enable this setting to show the KOrganizer "
                                "reminder daemon in your system tray (recommended)."));
 
@@ -184,9 +179,24 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     load();
 }
 
-void KOPrefsDialogMain::usrWriteConfig()
+void KOPrefsDialogMain::load()
 {
-    KPIM::KPrefsModule::usrWriteConfig();
+    mEmailControlCenterCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->emailControlCenter());
+    mUserName->setText(CalendarSupport::KCalPrefs::instance()->userName());
+    mUserEmail->setText(CalendarSupport::KCalPrefs::instance()->userEmail());
+    mConfirmCheckBox->setChecked(KOPrefs::instance()->confirm());
+    mDestinationCheckBox->setChecked(KOPrefs::instance()->destination());
+    mShowReminderDaemonCheckBox->setChecked(KOPrefs::instance()->showReminderDaemon());
+}
+
+void KOPrefsDialogMain::save()
+{
+    CalendarSupport::KCalPrefs::instance()->setEmailControlCenter(mEmailControlCenterCheckBox->isChecked());
+    CalendarSupport::KCalPrefs::instance()->setUserName(mUserName->text());
+    CalendarSupport::KCalPrefs::instance()->setUserEmail(mUserEmail->text());
+    KOPrefs::instance()->setConfirm(mConfirmCheckBox->isChecked());
+    KOPrefs::instance()->setDestination(mDestinationCheckBox->isChecked());
+    KOPrefs::instance()->setShowReminderDaemon(mShowReminderDaemonCheckBox->isChecked());
     IncidenceEditorNG::IncidenceEditorSettings::self()->save();
 }
 
@@ -260,7 +270,7 @@ public:
         mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
         holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
         connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged,
-                this, &KOPrefsDialogMain::slotWidChanged);
+                this, &KOPrefsDialogTime::slotWidChanged);
 
         mHolidayCheckCombo->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
         mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
@@ -410,7 +420,7 @@ public:
         mReminderTimeSpin->setToolTip(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
         connect(mReminderTimeSpin, qOverload<int>(&QSpinBox::valueChanged),
-                this, &KOPrefsDialogMain::slotWidChanged);
+                this, &KOPrefsDialogTime::slotWidChanged);
         remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
         mReminderUnitsCombo = new KComboBox(defaultPage);
@@ -419,7 +429,7 @@ public:
         mReminderUnitsCombo->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
         connect(mReminderUnitsCombo, qOverload<int>(&KComboBox::activated),
-                this, &KOPrefsDialogMain::slotWidChanged);
+                this, &KOPrefsDialogTime::slotWidChanged);
         mReminderUnitsCombo->addItem(
             i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
         mReminderUnitsCombo->addItem(
