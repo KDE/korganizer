@@ -142,7 +142,6 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     mDestinationCheckBox = new QCheckBox(KOPrefs::instance()->destinationItem()->label(), saveFrame);
     saveLayout->addWidget(mDestinationCheckBox);
-    //saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
 
     // System Tray Settings
@@ -279,7 +278,7 @@ public:
         mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
         holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
         connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged,
-                this, &KOPrefsDialogTime::slotWidChanged);
+                this, &KOPrefsDialogTime::slotConfigChanged);
 
         mHolidayCheckCombo->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
         mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
@@ -309,7 +308,6 @@ public:
             mHolidayCheckCombo->addItem(entry.first, entry.second);
         }
 
-        //QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
         const auto holidays = KOGlobals::self()->holidays();
         for (KHolidays::HolidayRegion *region : holidays) {
             const QString regionStr = region->regionCode();
@@ -342,13 +340,13 @@ public:
                       "marked with color."));
 
             connect(mWorkDays[ index ], &QCheckBox::stateChanged,
-                    this, &KPIM::KPrefsModule::slotWidChanged);
+                    this, &KOPrefsDialogTime::slotConfigChanged);
 
             workDaysLayout->addWidget(mWorkDays[ index ]);
         }
 
-        KPIM::KPrefsWidCombo *firstDayCombo = addWidCombo(KOPrefs::instance()->weekStartDayItem(),
-                                                          workingHoursGroupBox);
+        mFirstDayCombo = new QComboBox(workingHoursGroupBox);
+
         QHBoxLayout *firstDayLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(firstDayLayout);
         QStringList days;
@@ -359,10 +357,10 @@ public:
              << i18nc("@item:inlistbox", "Friday")
              << i18nc("@item:inlistbox", "Saturday")
              << i18nc("@item:inlistbox", "Sunday");
-        firstDayCombo->comboBox()->addItems(days);
+        mFirstDayCombo->addItems(days);
 
-        firstDayLayout->addWidget(firstDayCombo->label());
-        firstDayLayout->addWidget(firstDayCombo->comboBox());
+        firstDayLayout->addWidget(new QLabel(KOPrefs::instance()->weekStartDayItem()->label(), this));
+        firstDayLayout->addWidget(mFirstDayCombo);
 
         KPIM::KPrefsWidTime *workStart
             = addWidTime(KOPrefs::instance()->workingHoursStartItem());
@@ -382,10 +380,8 @@ public:
         workEndLayout->addWidget(workEnd->label());
         workEndLayout->addWidget(workEnd->timeEdit());
 
-        KPIM::KPrefsWidBool *excludeHolidays
-            = addWidBool(KOPrefs::instance()->excludeHolidaysItem());
-
-        workingHoursLayout->addWidget(excludeHolidays->checkBox());
+        mExcludeHolidaysCheckbox = new QCheckBox(KOPrefs::instance()->excludeHolidaysItem()->label(), this);
+        workingHoursLayout->addWidget(mExcludeHolidaysCheckbox);
 
         regionalLayout->setRowStretch(4, 1);
 
@@ -429,7 +425,7 @@ public:
         mReminderTimeSpin->setToolTip(
             CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
         connect(mReminderTimeSpin, qOverload<int>(&QSpinBox::valueChanged),
-                this, &KOPrefsDialogTime::slotWidChanged);
+                this, &KOPrefsDialogTime::slotConfigChanged);
         remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
         mReminderUnitsCombo = new KComboBox(defaultPage);
@@ -438,7 +434,7 @@ public:
         mReminderUnitsCombo->setWhatsThis(
             CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
         connect(mReminderUnitsCombo, qOverload<int>(&KComboBox::activated),
-                this, &KOPrefsDialogTime::slotWidChanged);
+                this, &KOPrefsDialogTime::slotConfigChanged);
         mReminderUnitsCombo->addItem(
             i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
         mReminderUnitsCombo->addItem(
@@ -457,25 +453,23 @@ public:
                                          QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
             CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
         }
-        QString filter = i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
+        const QString filter = i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
                               "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
-        KUrlRequester *rq = addWidPath(CalendarSupport::KCalPrefs::instance()->audioFilePathItem(),
-                                       nullptr, filter)->urlRequester();
-        rq->setEnabled(cb->isChecked());
+        mUrlRequester = new KUrlRequester(this);
+        mUrlRequester->setFilter(filter);
+        mUrlRequester->setEnabled(cb->isChecked());
 
-        connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
+        connect(cb, &QCheckBox::toggled, mUrlRequester, &KUrlRequester::setEnabled);
 
         QVBoxLayout *audioFileRemindersBox = new QVBoxLayout;
         audioFileRemindersBox->addWidget(cb);
-        audioFileRemindersBox->addWidget(rq);
+        audioFileRemindersBox->addWidget(mUrlRequester);
 
         remindersLayout->addLayout(audioFileRemindersBox, 1, 0);
-        remindersLayout->addWidget(
-            addWidBool(
-                CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem())->checkBox(), 2, 0);
-        remindersLayout->addWidget(
-            addWidBool(
-                CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem())->checkBox(), 3, 0);
+        mDefaultEventRemindersCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem()->label(), this);
+        remindersLayout->addWidget(mDefaultEventRemindersCheckBox, 2, 0);
+        mDefaultTodoRemindersCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem()->label(), this);
+        remindersLayout->addWidget(mDefaultTodoRemindersCheckBox, 3, 0);
 
         defaultLayout->setRowStretch(3, 1);
         load();
@@ -484,6 +478,10 @@ public:
 protected:
     void usrReadConfig() override
     {
+        //TODO mFirstDayCombo
+        //TODO mDefaultEventRemindersCheckBox mDefaultTodoRemindersCheckBox
+        mExcludeHolidaysCheckbox->setChecked(KOPrefs::instance()->excludeHolidays());
+        mUrlRequester->setText(CalendarSupport::KCalPrefs::instance()->audioFilePath());
         mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
         mReminderUnitsCombo->setCurrentIndex(
             CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
@@ -494,6 +492,10 @@ protected:
 
     void usrWriteConfig() override
     {
+        //TODO mFirstDayCombo
+        //TODO mDefaultEventRemindersCheckBox mDefaultTodoRemindersCheckBox
+        //TODO mUrlRequester;
+        KOPrefs::instance()->setExcludeHolidays(mExcludeHolidaysCheckbox->isChecked());
         QStringList HolidayRegions;
         const auto checkedItems = mHolidayCheckCombo->checkedItems();
         for (const QString &str : checkedItems) {
@@ -539,11 +541,20 @@ protected:
     }
 
 private:
+    void slotConfigChanged()
+    {
+        Q_EMIT markAsChanged();
+    }
     QStringList tzonenames;
     KPIM::KCheckComboBox *mHolidayCheckCombo = nullptr;
     QSpinBox *mReminderTimeSpin = nullptr;
     KComboBox *mReminderUnitsCombo = nullptr;
     QCheckBox *mWorkDays[7];
+    QComboBox *mFirstDayCombo = nullptr;
+    QCheckBox *mDefaultEventRemindersCheckBox = nullptr;
+    QCheckBox *mDefaultTodoRemindersCheckBox = nullptr;
+    KUrlRequester *mUrlRequester = nullptr;
+    QCheckBox *mExcludeHolidaysCheckbox = nullptr;
 };
 
 extern "C"
