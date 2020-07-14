@@ -479,7 +479,8 @@ protected:
     void usrReadConfig() override
     {
         //TODO mFirstDayCombo
-        //TODO mDefaultEventRemindersCheckBox mDefaultTodoRemindersCheckBox
+        mDefaultEventRemindersCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->defaultEventReminders());
+        mDefaultTodoRemindersCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->defaultTodoReminders());
         mExcludeHolidaysCheckbox->setChecked(KOPrefs::instance()->excludeHolidays());
         mUrlRequester->setText(CalendarSupport::KCalPrefs::instance()->audioFilePath());
         mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
@@ -493,8 +494,10 @@ protected:
     void usrWriteConfig() override
     {
         //TODO mFirstDayCombo
-        //TODO mDefaultEventRemindersCheckBox mDefaultTodoRemindersCheckBox
         //TODO mUrlRequester;
+        CalendarSupport::KCalPrefs::instance()->setDefaultEventReminders(mDefaultEventRemindersCheckBox->isChecked());
+        CalendarSupport::KCalPrefs::instance()->setDefaultTodoReminders(mDefaultTodoRemindersCheckBox->isChecked());
+
         KOPrefs::instance()->setExcludeHolidays(mExcludeHolidaysCheckbox->isChecked());
         QStringList HolidayRegions;
         const auto checkedItems = mHolidayCheckCombo->checkedItems();
