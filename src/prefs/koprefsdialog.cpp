@@ -254,10 +254,9 @@ public:
 
         QGridLayout *datetimeLayout = new QGridLayout(datetimeGroupBox);
 
-        KPIM::KPrefsWidTime *dayBegins
-            = addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
-        datetimeLayout->addWidget(dayBegins->label(), 1, 0);
-        datetimeLayout->addWidget(dayBegins->timeEdit(), 1, 1);
+        mDayBegin = new KTimeComboBox(this);
+        datetimeLayout->addWidget(new QLabel(KOPrefs::instance()->dayBeginsItem()->label(), this), 1, 0);
+        datetimeLayout->addWidget(mDayBegin, 1, 1);
 
         QGroupBox *holidaysGroupBox
             = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
@@ -362,23 +361,21 @@ public:
         firstDayLayout->addWidget(new QLabel(KOPrefs::instance()->weekStartDayItem()->label(), this));
         firstDayLayout->addWidget(mFirstDayCombo);
 
-        KPIM::KPrefsWidTime *workStart
-            = addWidTime(KOPrefs::instance()->workingHoursStartItem());
+        mWorkStart = new KTimeComboBox(this);
 
         QHBoxLayout *workStartLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(workStartLayout);
 
-        workStartLayout->addWidget(workStart->label());
-        workStartLayout->addWidget(workStart->timeEdit());
+        workStartLayout->addWidget(new QLabel(KOPrefs::instance()->workingHoursStartItem()->label(), this));
+        workStartLayout->addWidget(mWorkStart);
 
-        KPIM::KPrefsWidTime *workEnd
-            = addWidTime(KOPrefs::instance()->workingHoursEndItem());
+        mWorkEnd = new KTimeComboBox(this);
 
         QHBoxLayout *workEndLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(workEndLayout);
 
-        workEndLayout->addWidget(workEnd->label());
-        workEndLayout->addWidget(workEnd->timeEdit());
+        workEndLayout->addWidget(new QLabel(KOPrefs::instance()->workingHoursEndItem()->label(), this));
+        workEndLayout->addWidget(mWorkEnd);
 
         mExcludeHolidaysCheckbox = new QCheckBox(KOPrefs::instance()->excludeHolidaysItem()->label(), this);
         workingHoursLayout->addWidget(mExcludeHolidaysCheckbox);
@@ -479,6 +476,9 @@ protected:
     void usrReadConfig() override
     {
         //TODO mFirstDayCombo
+        mDayBegin->setTime(KOPrefs::instance()->dayBegins().time());
+        mWorkStart->setTime(KOPrefs::instance()->workingHoursStart().time());
+        mWorkEnd->setTime(KOPrefs::instance()->workingHoursEnd().time());
         mDefaultEventRemindersCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->defaultEventReminders());
         mDefaultTodoRemindersCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->defaultTodoReminders());
         mExcludeHolidaysCheckbox->setChecked(KOPrefs::instance()->excludeHolidays());
@@ -494,7 +494,23 @@ protected:
     void usrWriteConfig() override
     {
         //TODO mFirstDayCombo
-        //TODO mUrlRequester;
+        {
+            QDateTime dt(KOPrefs::instance()->dayBegins());
+            dt.setTime(mDayBegin->time());
+            KOPrefs::instance()->setDayBegins(dt);
+        }
+        {
+            QDateTime dt(KOPrefs::instance()->workingHoursStart());
+            dt.setTime(mWorkStart->time());
+            KOPrefs::instance()->setWorkingHoursStart(dt);
+        }
+        {
+            QDateTime dt(KOPrefs::instance()->workingHoursEnd());
+            dt.setTime(mWorkEnd->time());
+            KOPrefs::instance()->setWorkingHoursEnd(dt);
+        }
+
+        CalendarSupport::KCalPrefs::instance()->setAudioFilePath(mUrlRequester->text());
         CalendarSupport::KCalPrefs::instance()->setDefaultEventReminders(mDefaultEventRemindersCheckBox->isChecked());
         CalendarSupport::KCalPrefs::instance()->setDefaultTodoReminders(mDefaultTodoRemindersCheckBox->isChecked());
 
@@ -558,6 +574,9 @@ private:
     QCheckBox *mDefaultTodoRemindersCheckBox = nullptr;
     KUrlRequester *mUrlRequester = nullptr;
     QCheckBox *mExcludeHolidaysCheckbox = nullptr;
+    KTimeComboBox *mDayBegin = nullptr;
+    KTimeComboBox *mWorkStart = nullptr;
+    KTimeComboBox *mWorkEnd = nullptr;
 };
 
 extern "C"
