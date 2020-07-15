@@ -116,6 +116,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     mUserEmail = new QLineEdit(this);
     emailSettingsLayout->addRow(CalendarSupport::KCalPrefs::instance()->userEmailItem()->label(), mUserEmail);
 
+    //FIXME
 //    KPIM::KPrefsWidRadios *defaultEmailAttachMethod
 //        = addWidRadios(
 //              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
@@ -408,9 +409,6 @@ public:
         mDefaultDuration->setMinimumTime(QTime(0, 1));     // [1 min]
         mDefaultDuration->setMaximumTime(QTime(24, 0));     // [24 hr]
         connect(mDefaultDuration, &QTimeEdit::dateTimeChanged, this, &KOPrefsDialogTime::slotConfigChanged);
-//        KPIM::KPrefsWidDuration *defaultDuration
-//            = addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
-//                             QStringLiteral("hh:mm"), defaultPage);
 
         timesLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->defaultDurationItem()->label(), this), 1, 0);
         timesLayout->addWidget(mDefaultDuration, 1, 1);
@@ -616,11 +614,11 @@ Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const char 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-class KOPrefsDialogViews : public KPIM::KPrefsModule
+class KOPrefsDialogViews : public KCModule
 {
 public:
     KOPrefsDialogViews(QWidget *parent)
-        : KPIM::KPrefsModule(KOPrefs::instance(), parent)
+        : KCModule(parent)
         , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
         , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
     {
@@ -629,9 +627,9 @@ public:
         topTopLayout->addWidget(tabWidget);
 
         connect(mMonthIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
-                this, &KPIM::KPrefsModule::slotWidChanged);
+                this, &KOPrefsDialogViews::slotConfigChanged);
         connect(mAgendaIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
-                this, &KPIM::KPrefsModule::slotWidChanged);
+                this, &KOPrefsDialogViews::slotConfigChanged);
 
         // Tab: Views->General
         QFrame *generalFrame = new QFrame(this);
@@ -647,13 +645,12 @@ public:
         QBoxLayout *nextDaysLayout = new QHBoxLayout;
         gdisplayLayout->addLayout(nextDaysLayout);
 
-        KPIM::KPrefsWidInt *nextDays
-            = addWidInt(KOPrefs::instance()->nextXDaysItem());
-        nextDays->spinBox()->setSuffix(
-            i18nc("@label suffix in the N days spin box", " days"));
+        mNextDay = new QSpinBox(this);
+        mNextDay->setSuffix(
+                    i18nc("@label suffix in the N days spin box", " days"));
 
-        nextDaysLayout->addWidget(nextDays->label());
-        nextDaysLayout->addWidget(nextDays->spinBox());
+        nextDaysLayout->addWidget(new QLabel(KOPrefs::instance()->nextXDaysItem()->label(), this));
+        nextDaysLayout->addWidget(mNextDay);
         nextDaysLayout->addStretch(1);
 
 
@@ -723,15 +720,17 @@ public:
         agendaLayout->addWidget(adisplayBox);
 
         // GroupBox: Views->Agenda View->Color Usage
-        agendaLayout->addWidget(
-            addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
+        //FIXME
+//        agendaLayout->addWidget(
+//            addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
 
         mColorBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorBusyDaysEnabledItem()->label(), this);
         agendaLayout->addWidget(mColorBusyDaysEnabledCheckBox);
 
         // GroupBox: Views->Agenda View->Multiple Calendars
-        agendaLayout->addWidget(
-            addWidRadios(KOPrefs::instance()->agendaViewCalendarDisplayItem())->groupBox());
+        //FIXME
+//        agendaLayout->addWidget(
+//            addWidRadios(KOPrefs::instance()->agendaViewCalendarDisplayItem())->groupBox());
 
         agendaLayout->addStretch(1);
 
@@ -765,8 +764,9 @@ public:
         monthLayout->addWidget(mColorMonthBusyDaysEnabledCheckBox);
 
         // GroupBox: Views->Month View->Color Usage
-        monthLayout->addWidget(
-            addWidRadios(KOPrefs::instance()->monthViewColorsItem())->groupBox());
+        //FIXME
+//        monthLayout->addWidget(
+//            addWidRadios(KOPrefs::instance()->monthViewColorsItem())->groupBox());
         monthLayout->addStretch(1);
 
         // Tab: Views->Todo View
@@ -796,8 +796,7 @@ public:
         load();
     }
 
-protected:
-    void usrReadConfig() override
+    void load() override
     {
         KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
             mAgendaIconComboBox->checkedIcons());
@@ -824,13 +823,11 @@ protected:
         mMarcusBainsEnabledCheckbox->setChecked(KOPrefs::instance()->marcusBainsEnabled());
         mMarcusBainsShowSecondsCheckbox->setChecked(KOPrefs::instance()->marcusBainsShowSeconds());
         mSelectionStartsEditorCheckbox->setChecked(KOPrefs::instance()->selectionStartsEditor());
-
         mColorBusyDaysEnabledCheckBox->setChecked(KOPrefs::instance()->colorBusyDaysEnabled());
-
-
+        mNextDay->setValue(KOPrefs::instance()->nextXDays());
     }
 
-    void usrWriteConfig() override
+    void save() override
     {
         KOPrefs::instance()->setEnableToolTips(mEnableToolTipsCheckBox->isChecked());
         KOPrefs::instance()->setTodosUseCategoryColors(mTodosUseCategoryColorsCheckBox->isChecked());
@@ -853,8 +850,13 @@ protected:
         KOPrefs::instance()->setMarcusBainsShowSeconds(mMarcusBainsShowSecondsCheckbox->isChecked());
         KOPrefs::instance()->setSelectionStartsEditor(mSelectionStartsEditorCheckbox->isChecked());
         KOPrefs::instance()->setColorBusyDaysEnabled(mColorBusyDaysEnabledCheckBox->isChecked());
-    }
+        KOPrefs::instance()->setNextXDays(mNextDay->value());
 
+    }
+private:
+    void slotConfigChanged() {
+        Q_EMIT markAsChanged();
+    }
 private:
     KItemIconCheckCombo *mMonthIconComboBox = nullptr;
     KItemIconCheckCombo *mAgendaIconComboBox = nullptr;
@@ -878,8 +880,7 @@ private:
     QCheckBox *mMarcusBainsShowSecondsCheckbox = nullptr;
     QCheckBox *mSelectionStartsEditorCheckbox = nullptr;
     QCheckBox *mColorBusyDaysEnabledCheckBox = nullptr;
-
-
+    QSpinBox *mNextDay = nullptr;
     QSpinBox *mHourSize = nullptr;
 };
 
@@ -914,53 +915,41 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     colorLayout->addWidget(mUseSystemColorCheckBox, 1, 0, 1, 2);
 
     // agenda view background color
-    KPIM::KPrefsWidColor *agendaBgColor
-        = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
-    mAgendaBgColorButton = agendaBgColor->button();
+    mAgendaBgColorButton = new KColorButton(this);
     mButtonsDisable.push_back(mAgendaBgColorButton);
-    colorLayout->addWidget(agendaBgColor->label(), 2, 0);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaGridBackgroundColorItem()->label(), this), 2, 0);
     colorLayout->addWidget(mAgendaBgColorButton, 2, 1);
 
-    KPIM::KPrefsWidColor *viewBgBusyColor
-        = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
-    mViewBgBusyColorButton = viewBgBusyColor->button();
+    mViewBgBusyColorButton = new KColorButton(this);
     mButtonsDisable.push_back(mViewBgBusyColorButton);
-    colorLayout->addWidget(viewBgBusyColor->label(), 3, 0);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->viewBgBusyColorItem()->label(), this), 3, 0);
     colorLayout->addWidget(mViewBgBusyColorButton, 3, 1);
 
     // working hours color
-    KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
-        = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
-    mAgendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
+    mAgendaGridWorkHoursBackgroundColorButton = new KColorButton(this);
     mButtonsDisable.push_back(mAgendaGridWorkHoursBackgroundColorButton);
-    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
-    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->workingHoursColorItem()->label(), this), 4, 0);
+    colorLayout->addWidget(mAgendaGridWorkHoursBackgroundColorButton, 4, 1);
 
     // agenda view Marcus Bains line color
-    KPIM::KPrefsWidColor *mblColor
-        = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
-    colorLayout->addWidget(mblColor->label(), 5, 0);
-    colorLayout->addWidget(mblColor->button(), 5, 1);
+    mAgendaMarcusBainsLineLineColorButton = new KColorButton(this);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem()->label(), this), 5, 0);
+    colorLayout->addWidget(mAgendaMarcusBainsLineLineColorButton, 5, 1);
 
     // Holiday Color
-    KPIM::KPrefsWidColor *holidayColor
-        = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
-    colorLayout->addWidget(holidayColor->label(), 6, 0);
-    colorLayout->addWidget(holidayColor->button(), 6, 1);
+    mAgendaHolidaysBackgroundColorButton = new KColorButton(this);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaHolidaysBackgroundColorItem()->label(), this), 6, 0);
+    colorLayout->addWidget(mAgendaHolidaysBackgroundColorButton, 6, 1);
 
     // Todo due today color
-    KPIM::KPrefsWidColor *todoDueTodayColor
-        = addWidColor(
-              KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
-    colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
-    colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
+    mTodoDueTodayColorButton = new KColorButton(this);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->todoDueTodayColorItem()->label(), this), 7, 0);
+    colorLayout->addWidget(mTodoDueTodayColorButton, 7, 1);
 
     // Todo overdue color
-    KPIM::KPrefsWidColor *todoOverdueColor
-        = addWidColor(
-              KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
-    colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
-    colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
+    mTodoOverdueColorButton = new KColorButton(this);
+    colorLayout->addWidget(new QLabel(KOPrefs::instance()->todoOverdueColorItem()->label(), this), 8, 0);
+    colorLayout->addWidget(mTodoOverdueColorButton, 8, 1);
 
     // categories colors
     QGroupBox *categoryGroup = new QGroupBox(i18nc("@title:group", "Categories"), colorFrame);
@@ -969,13 +958,9 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QGridLayout *categoryLayout = new QGridLayout;
     categoryGroup->setLayout(categoryLayout);
 
-    KPIM::KPrefsWidColor *unsetCategoryColor
-        = addWidColor(
-              CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
-    categoryLayout->addWidget(unsetCategoryColor->label(), 0, 0);
-    categoryLayout->addWidget(unsetCategoryColor->button(), 0, 1);
-    unsetCategoryColor->label()->setWhatsThis(unsetCategoryColor->button()->whatsThis());
-    unsetCategoryColor->label()->setToolTip(unsetCategoryColor->button()->toolTip());
+    mUnsetCategoryColorButton = new KColorButton(this);
+    categoryLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem()->label(), this), 0, 0);
+    categoryLayout->addWidget(mUnsetCategoryColorButton, 0, 1);
 
     mCategoryCombo = new Akonadi::TagSelectionComboBox(categoryGroup);
     mCategoryCombo->setWhatsThis(
@@ -1090,6 +1075,16 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
     }
 
     KOPrefs::instance()->setUseSystemColor(mUseSystemColorCheckBox->isChecked());
+
+    KOPrefs::instance()->setAgendaGridBackgroundColor(mAgendaBgColorButton->color());
+    KOPrefs::instance()->setViewBgBusyColor(mViewBgBusyColorButton->color());
+    KOPrefs::instance()->setWorkingHoursColor(mAgendaGridWorkHoursBackgroundColorButton->color());
+    KOPrefs::instance()->setAgendaMarcusBainsLineLineColor(mAgendaMarcusBainsLineLineColorButton->color());
+    KOPrefs::instance()->setAgendaHolidaysBackgroundColor(mAgendaHolidaysBackgroundColorButton->color());
+    KOPrefs::instance()->setTodoDueTodayColor(mTodoDueTodayColorButton->color());
+    KOPrefs::instance()->setTodoOverdueColor(mTodoOverdueColorButton->color());
+    CalendarSupport::KCalPrefs::instance()->setUnsetCategoryColor(mUnsetCategoryColorButton->color());
+
 }
 
 void KOPrefsDialogColorsAndFonts::usrReadConfig()
@@ -1097,6 +1092,14 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
     updateCategories();
     updateResources();
     mUseSystemColorCheckBox->setChecked(KOPrefs::instance()->useSystemColor());
+    mAgendaBgColorButton->setColor(KOPrefs::instance()->agendaGridBackgroundColor());
+    mViewBgBusyColorButton->setColor(KOPrefs::instance()->viewBgBusyColor());
+    mAgendaGridWorkHoursBackgroundColorButton->setColor(KOPrefs::instance()->workingHoursColor());
+    mAgendaMarcusBainsLineLineColorButton->setColor(KOPrefs::instance()->agendaMarcusBainsLineLineColor());
+    mAgendaHolidaysBackgroundColorButton->setColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
+    mTodoDueTodayColorButton->setColor(KOPrefs::instance()->todoDueTodayColor());
+    mTodoOverdueColorButton->setColor(KOPrefs::instance()->todoOverdueColor());
+    mUnsetCategoryColorButton->setColor(CalendarSupport::KCalPrefs::instance()->unsetCategoryColor());
 }
 
 void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)

@@ -101,6 +101,11 @@ private:
     KColorButton *mAgendaBgColorButton = nullptr;
     KColorButton *mViewBgBusyColorButton = nullptr;
     KColorButton *mAgendaGridWorkHoursBackgroundColorButton = nullptr;
+    KColorButton *mAgendaMarcusBainsLineLineColorButton = nullptr;
+    KColorButton *mAgendaHolidaysBackgroundColorButton = nullptr;
+    KColorButton *mTodoDueTodayColorButton = nullptr;
+    KColorButton *mTodoOverdueColorButton = nullptr;
+    KColorButton *mUnsetCategoryColorButton = nullptr;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KCModule
