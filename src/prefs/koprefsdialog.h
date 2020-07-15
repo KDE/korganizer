@@ -98,6 +98,9 @@ private:
     KColorButton *mResourceButton = nullptr;
     QHash<QString, QColor> mResourceDict;
     QList<KColorButton *> mButtonsDisable; // button that are disabled when using system color
+    KColorButton *mAgendaBgColorButton = nullptr;
+    KColorButton *mViewBgBusyColorButton = nullptr;
+    KColorButton *mAgendaGridWorkHoursBackgroundColorButton = nullptr;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KCModule

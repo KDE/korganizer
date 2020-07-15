@@ -726,8 +726,8 @@ public:
         agendaLayout->addWidget(
             addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
 
-        agendaLayout->addWidget(
-            addWidBool(KOPrefs::instance()->colorBusyDaysEnabledItem())->checkBox());
+        mColorBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorBusyDaysEnabledItem()->label(), this);
+        agendaLayout->addWidget(mColorBusyDaysEnabledCheckBox);
 
         // GroupBox: Views->Agenda View->Multiple Calendars
         agendaLayout->addWidget(
@@ -825,6 +825,8 @@ protected:
         mMarcusBainsShowSecondsCheckbox->setChecked(KOPrefs::instance()->marcusBainsShowSeconds());
         mSelectionStartsEditorCheckbox->setChecked(KOPrefs::instance()->selectionStartsEditor());
 
+        mColorBusyDaysEnabledCheckBox->setChecked(KOPrefs::instance()->colorBusyDaysEnabled());
+
 
     }
 
@@ -850,7 +852,7 @@ protected:
         KOPrefs::instance()->setMarcusBainsEnabled(mMarcusBainsEnabledCheckbox->isChecked());
         KOPrefs::instance()->setMarcusBainsShowSeconds(mMarcusBainsShowSecondsCheckbox->isChecked());
         KOPrefs::instance()->setSelectionStartsEditor(mSelectionStartsEditorCheckbox->isChecked());
-
+        KOPrefs::instance()->setColorBusyDaysEnabled(mColorBusyDaysEnabledCheckBox->isChecked());
     }
 
 private:
@@ -875,6 +877,7 @@ private:
     QCheckBox *mMarcusBainsEnabledCheckbox = nullptr;
     QCheckBox *mMarcusBainsShowSecondsCheckbox = nullptr;
     QCheckBox *mSelectionStartsEditorCheckbox = nullptr;
+    QCheckBox *mColorBusyDaysEnabledCheckBox = nullptr;
 
 
     QSpinBox *mHourSize = nullptr;
@@ -913,23 +916,23 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     // agenda view background color
     KPIM::KPrefsWidColor *agendaBgColor
         = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
-    KColorButton *agendaBgColorButton = agendaBgColor->button();
-    mButtonsDisable.push_back(agendaBgColorButton);
+    mAgendaBgColorButton = agendaBgColor->button();
+    mButtonsDisable.push_back(mAgendaBgColorButton);
     colorLayout->addWidget(agendaBgColor->label(), 2, 0);
-    colorLayout->addWidget(agendaBgColorButton, 2, 1);
+    colorLayout->addWidget(mAgendaBgColorButton, 2, 1);
 
     KPIM::KPrefsWidColor *viewBgBusyColor
         = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
-    KColorButton *viewBgBusyColorButton = viewBgBusyColor->button();
-    mButtonsDisable.push_back(viewBgBusyColorButton);
+    mViewBgBusyColorButton = viewBgBusyColor->button();
+    mButtonsDisable.push_back(mViewBgBusyColorButton);
     colorLayout->addWidget(viewBgBusyColor->label(), 3, 0);
-    colorLayout->addWidget(viewBgBusyColorButton, 3, 1);
+    colorLayout->addWidget(mViewBgBusyColorButton, 3, 1);
 
     // working hours color
     KPIM::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
         = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
-    KColorButton *agendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
-    mButtonsDisable.push_back(agendaGridWorkHoursBackgroundColorButton);
+    mAgendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
+    mButtonsDisable.push_back(mAgendaGridWorkHoursBackgroundColorButton);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
 
@@ -1087,7 +1090,6 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
     }
 
     KOPrefs::instance()->setUseSystemColor(mUseSystemColorCheckBox->isChecked());
-    //mCalendarViewsPrefs->writeConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::usrReadConfig()
@@ -1095,7 +1097,6 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
     updateCategories();
     updateResources();
     mUseSystemColorCheckBox->setChecked(KOPrefs::instance()->useSystemColor());
-    //mCalendarViewsPrefs->readConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)
