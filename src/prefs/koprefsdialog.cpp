@@ -667,16 +667,16 @@ public:
         // GroupBox: Views->General->Date Navigator
         QVBoxLayout *datenavLayout = new QVBoxLayout;
         QGroupBox *datenavBox = new QGroupBox(i18nc("@title:group", "Date Navigator"));
-        datenavLayout->addWidget(
-            addWidBool(KOPrefs::instance()->dailyRecurItem())->checkBox());
-        datenavLayout->addWidget(
-            addWidBool(KOPrefs::instance()->weeklyRecurItem())->checkBox());
-        datenavLayout->addWidget(
-            addWidBool(KOPrefs::instance()->highlightTodosItem())->checkBox());
-        datenavLayout->addWidget(
-            addWidBool(KOPrefs::instance()->highlightJournalsItem())->checkBox());
-        datenavLayout->addWidget(
-            addWidBool(KOPrefs::instance()->weekNumbersShowWorkItem())->checkBox());
+        mDailyRecurCheckbox = new QCheckBox(KOPrefs::instance()->dailyRecurItem()->label(), this);
+        mWeeklyRecurCheckbox = new QCheckBox(KOPrefs::instance()->weeklyRecurItem()->label(), this);
+        mHighlightTodosCheckbox = new QCheckBox(KOPrefs::instance()->highlightTodosItem()->label(), this);
+        mHighlightJournalsCheckbox = new QCheckBox(KOPrefs::instance()->highlightJournalsItem()->label(), this);
+        mWeekNumbersShowWorkCheckbox = new QCheckBox(KOPrefs::instance()->weekNumbersShowWorkItem()->label(), this);
+        datenavLayout->addWidget(mDailyRecurCheckbox);
+        datenavLayout->addWidget(mWeeklyRecurCheckbox);
+        datenavLayout->addWidget(mHighlightTodosCheckbox);
+        datenavLayout->addWidget(mHighlightJournalsCheckbox);
+        datenavLayout->addWidget(mWeekNumbersShowWorkCheckbox);
         datenavBox->setLayout(datenavLayout);
         generalLayout->addWidget(datenavBox);
         generalLayout->addStretch(1);
@@ -749,8 +749,6 @@ public:
         // GroupBox: Views->Month View->Display Options
         QVBoxLayout *mdisplayLayout = new QVBoxLayout;
         QGroupBox *mdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
-        /*mdisplayLayout->addWidget(
-          addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
         mdisplayLayout->addWidget(
             addWidBool(KOPrefs::instance()->showTimeInMonthViewItem())->checkBox());
         mdisplayLayout->addWidget(
@@ -767,8 +765,8 @@ public:
 
         monthLayout->addWidget(mdisplayBox);
 
-        monthLayout->addWidget(
-            addWidBool(KOPrefs::instance()->colorMonthBusyDaysEnabledItem())->checkBox());
+        mColorMonthBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorMonthBusyDaysEnabledItem()->label(), this);
+        monthLayout->addWidget(mColorMonthBusyDaysEnabledCheckBox);
 
         // GroupBox: Views->Month View->Color Usage
         monthLayout->addWidget(
@@ -814,6 +812,12 @@ protected:
         mTodosUseCategoryColorsCheckBox->setChecked(KOPrefs::instance()->todosUseCategoryColors());
         mRecordTodosInJournalsCheckBox->setChecked(KOPrefs::instance()->recordTodosInJournals());
         mSortCompletedTodosSeparatelyCheckBox->setChecked(KOPrefs::instance()->sortCompletedTodosSeparately());
+        mColorMonthBusyDaysEnabledCheckBox->setChecked(KOPrefs::instance()->colorMonthBusyDaysEnabled());
+        mDailyRecurCheckbox->setChecked(KOPrefs::instance()->dailyRecur());
+        mWeeklyRecurCheckbox->setChecked(KOPrefs::instance()->weeklyRecur());
+        mHighlightTodosCheckbox->setChecked(KOPrefs::instance()->highlightTodos());
+        mHighlightJournalsCheckbox->setChecked(KOPrefs::instance()->highlightJournals());
+        mWeekNumbersShowWorkCheckbox->setChecked(KOPrefs::instance()->weekNumbersShowWork());
     }
 
     void usrWriteConfig() override
@@ -822,6 +826,16 @@ protected:
         KOPrefs::instance()->setTodosUseCategoryColors(mTodosUseCategoryColorsCheckBox->isChecked());
         KOPrefs::instance()->setRecordTodosInJournals(mRecordTodosInJournalsCheckBox->isChecked());
         KOPrefs::instance()->setSortCompletedTodosSeparately(mSortCompletedTodosSeparatelyCheckBox->isChecked());
+        KOPrefs::instance()->setColorMonthBusyDaysEnabled(mColorMonthBusyDaysEnabledCheckBox->isChecked());
+
+        KOPrefs::instance()->setDailyRecur(mDailyRecurCheckbox->isChecked());
+        KOPrefs::instance()->setWeeklyRecur(mWeeklyRecurCheckbox->isChecked());
+        KOPrefs::instance()->setHighlightTodos(mHighlightTodosCheckbox->isChecked());
+        KOPrefs::instance()->setHighlightJournals(mHighlightJournalsCheckbox->isChecked());
+        KOPrefs::instance()->setWeekNumbersShowWork(mWeekNumbersShowWorkCheckbox->isChecked());
+
+
+
     }
 
 private:
@@ -831,6 +845,12 @@ private:
     QCheckBox *mTodosUseCategoryColorsCheckBox = nullptr;
     QCheckBox *mRecordTodosInJournalsCheckBox = nullptr;
     QCheckBox *mSortCompletedTodosSeparatelyCheckBox = nullptr;
+    QCheckBox *mColorMonthBusyDaysEnabledCheckBox = nullptr;
+    QCheckBox *mDailyRecurCheckbox = nullptr;
+    QCheckBox *mWeeklyRecurCheckbox = nullptr;
+    QCheckBox *mHighlightTodosCheckbox = nullptr;
+    QCheckBox *mHighlightJournalsCheckbox = nullptr;
+    QCheckBox *mWeekNumbersShowWorkCheckbox = nullptr;
 };
 
 extern "C"
