@@ -656,10 +656,11 @@ public:
         nextDaysLayout->addWidget(nextDays->spinBox());
         nextDaysLayout->addStretch(1);
 
-        gdisplayLayout->addWidget(
-            addWidBool(KOPrefs::instance()->enableToolTipsItem())->checkBox());
-        gdisplayLayout->addWidget(
-            addWidBool(KOPrefs::instance()->todosUseCategoryColorsItem())->checkBox());
+
+        mEnableToolTipsCheckBox = new QCheckBox(KOPrefs::instance()->enableToolTipsItem()->label(), this);
+        mTodosUseCategoryColorsCheckBox = new QCheckBox(KOPrefs::instance()->todosUseCategoryColorsItem()->label(), this);
+        gdisplayLayout->addWidget(mEnableToolTipsCheckBox);
+        gdisplayLayout->addWidget(mTodosUseCategoryColorsCheckBox);
         gdisplayBox->setLayout(gdisplayLayout);
         generalLayout->addWidget(gdisplayBox);
 
@@ -784,16 +785,16 @@ public:
         // GroupBox: Views->Todo View->Display Options
         QVBoxLayout *tdisplayLayout = new QVBoxLayout;
         QGroupBox *tdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
-        tdisplayLayout->addWidget(
-            addWidBool(KOPrefs::instance()->sortCompletedTodosSeparatelyItem())->checkBox());
+        mSortCompletedTodosSeparatelyCheckBox = new QCheckBox(KOPrefs::instance()->sortCompletedTodosSeparatelyItem()->label(), this);
+        tdisplayLayout->addWidget(mSortCompletedTodosSeparatelyCheckBox);
         tdisplayBox->setLayout(tdisplayLayout);
         todoLayout->addWidget(tdisplayBox);
 
         // GroupBox: Views->Todo View->Other
         QVBoxLayout *otherLayout = new QVBoxLayout;
         QGroupBox *otherBox = new QGroupBox(i18nc("@title:group", "Other Options"));
-        otherLayout->addWidget(
-            addWidBool(KOPrefs::instance()->recordTodosInJournalsItem())->checkBox());
+        mRecordTodosInJournalsCheckBox = new QCheckBox(KOPrefs::instance()->recordTodosInJournalsItem()->label(), this);
+        otherLayout->addWidget(mRecordTodosInJournalsCheckBox);
         otherBox->setLayout(otherLayout);
         todoLayout->addWidget(otherBox);
         todoLayout->addStretch(1);
@@ -808,11 +809,28 @@ protected:
             mAgendaIconComboBox->checkedIcons());
         KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(
             mMonthIconComboBox->checkedIcons());
+
+        mEnableToolTipsCheckBox->setChecked(KOPrefs::instance()->enableToolTips());
+        mTodosUseCategoryColorsCheckBox->setChecked(KOPrefs::instance()->todosUseCategoryColors());
+        mRecordTodosInJournalsCheckBox->setChecked(KOPrefs::instance()->recordTodosInJournals());
+        mSortCompletedTodosSeparatelyCheckBox->setChecked(KOPrefs::instance()->sortCompletedTodosSeparately());
+    }
+
+    void usrWriteConfig() override
+    {
+        KOPrefs::instance()->setEnableToolTips(mEnableToolTipsCheckBox->isChecked());
+        KOPrefs::instance()->setTodosUseCategoryColors(mTodosUseCategoryColorsCheckBox->isChecked());
+        KOPrefs::instance()->setRecordTodosInJournals(mRecordTodosInJournalsCheckBox->isChecked());
+        KOPrefs::instance()->setSortCompletedTodosSeparately(mSortCompletedTodosSeparatelyCheckBox->isChecked());
     }
 
 private:
-    KItemIconCheckCombo *mMonthIconComboBox;
-    KItemIconCheckCombo *mAgendaIconComboBox;
+    KItemIconCheckCombo *mMonthIconComboBox = nullptr;
+    KItemIconCheckCombo *mAgendaIconComboBox = nullptr;
+    QCheckBox *mEnableToolTipsCheckBox = nullptr;
+    QCheckBox *mTodosUseCategoryColorsCheckBox = nullptr;
+    QCheckBox *mRecordTodosInJournalsCheckBox = nullptr;
+    QCheckBox *mSortCompletedTodosSeparatelyCheckBox = nullptr;
 };
 
 extern "C"
