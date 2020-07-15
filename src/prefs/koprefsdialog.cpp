@@ -232,11 +232,11 @@ Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const char 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-class KOPrefsDialogTime : public KPIM::KPrefsModule
+class KOPrefsDialogTime : public KCModule
 {
 public:
     KOPrefsDialogTime(QWidget *parent)
-        : KPIM::KPrefsModule(KOPrefs::instance(), parent)
+        : KCModule(parent)
     {
         QVBoxLayout *layout = new QVBoxLayout(this);
         QTabWidget *tabWidget = new QTabWidget(this);
@@ -393,17 +393,20 @@ public:
 
         QGridLayout *timesLayout = new QGridLayout(timesGroupBox);
 
-        KPIM::KPrefsWidTime *defaultTime
-            = addWidTime(CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage);
-        timesLayout->addWidget(defaultTime->label(), 0, 0);
-        timesLayout->addWidget(defaultTime->timeEdit(), 0, 1);
+        mDefaultTime = new KTimeComboBox(this);
+        timesLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->startTimeItem()->label(), this), 0, 0);
+        timesLayout->addWidget(mDefaultTime, 0, 1);
 
-        KPIM::KPrefsWidDuration *defaultDuration
-            = addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
-                             QStringLiteral("hh:mm"), defaultPage);
+        mDefaultDuration = new QTimeEdit(this);
+        mDefaultDuration->setDisplayFormat(QStringLiteral("hh:mm"));
+        mDefaultDuration->setMinimumTime(QTime(0, 1));     // [1 min]
+        mDefaultDuration->setMaximumTime(QTime(24, 0));     // [24 hr]
+//        KPIM::KPrefsWidDuration *defaultDuration
+//            = addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
+//                             QStringLiteral("hh:mm"), defaultPage);
 
-        timesLayout->addWidget(defaultDuration->label(), 1, 0);
-        timesLayout->addWidget(defaultDuration->timeEdit(), 1, 1);
+        timesLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->defaultDurationItem()->label(), this), 1, 0);
+        timesLayout->addWidget(mDefaultDuration, 1, 1);
 
         QGroupBox *remindersGroupBox
             = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
@@ -440,9 +443,7 @@ public:
             i18nc("@item:inlistbox reminder time units in days", "day(s)"));
         remindersLayout->addWidget(mReminderUnitsCombo, 0, 2);
 
-        QCheckBox *cb
-            = addWidBool(
-                  CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
+        mDefaultAudioFileRemindersCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem()->label(), this);
 
         if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
             const QString defAudioFile
@@ -454,12 +455,12 @@ public:
                               "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
         mUrlRequester = new KUrlRequester(this);
         mUrlRequester->setFilter(filter);
-        mUrlRequester->setEnabled(cb->isChecked());
+        mUrlRequester->setEnabled(mDefaultAudioFileRemindersCheckBox->isChecked());
 
-        connect(cb, &QCheckBox::toggled, mUrlRequester, &KUrlRequester::setEnabled);
+        connect(mDefaultAudioFileRemindersCheckBox, &QCheckBox::toggled, mUrlRequester, &KUrlRequester::setEnabled);
 
         QVBoxLayout *audioFileRemindersBox = new QVBoxLayout;
-        audioFileRemindersBox->addWidget(cb);
+        audioFileRemindersBox->addWidget(mDefaultAudioFileRemindersCheckBox);
         audioFileRemindersBox->addWidget(mUrlRequester);
 
         remindersLayout->addLayout(audioFileRemindersBox, 1, 0);
@@ -472,10 +473,14 @@ public:
         load();
     }
 
-protected:
-    void usrReadConfig() override
+    void load() override
     {
         //TODO mFirstDayCombo
+
+        mDefaultAudioFileRemindersCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->defaultAudioFileReminders());
+        mDefaultDuration->setMaximumTime(QTime(24, 0));     // [24 hr]
+        mDefaultDuration->setTime(CalendarSupport::KCalPrefs::instance()->defaultDuration().time());
+        mDefaultTime->setTime(CalendarSupport::KCalPrefs::instance()->startTime().time());
         mDayBegin->setTime(KOPrefs::instance()->dayBegins().time());
         mWorkStart->setTime(KOPrefs::instance()->workingHoursStart().time());
         mWorkEnd->setTime(KOPrefs::instance()->workingHoursEnd().time());
@@ -491,9 +496,20 @@ protected:
         }
     }
 
-    void usrWriteConfig() override
+    void save() override
     {
         //TODO mFirstDayCombo
+        CalendarSupport::KCalPrefs::instance()->setDefaultAudioFileReminders(mDefaultAudioFileRemindersCheckBox->isChecked());
+        {
+            QDateTime dt(CalendarSupport::KCalPrefs::instance()->defaultDuration());
+            dt.setTime(mDefaultDuration->time());
+            CalendarSupport::KCalPrefs::instance()->setDefaultDuration(dt);
+        }
+        {
+            QDateTime dt(CalendarSupport::KCalPrefs::instance()->startTime());
+            dt.setTime(mDefaultTime->time());
+            CalendarSupport::KCalPrefs::instance()->setStartTime(dt);
+        }
         {
             QDateTime dt(KOPrefs::instance()->dayBegins());
             dt.setTime(mDayBegin->time());
@@ -540,7 +556,7 @@ protected:
         KOPrefs::instance()->save();
         CalendarSupport::KCalPrefs::instance()->save();
     }
-
+protected:
     void setCombo(KComboBox *combo, const QString &text, const QStringList *tags = nullptr)
     {
         if (tags) {
@@ -577,6 +593,9 @@ private:
     KTimeComboBox *mDayBegin = nullptr;
     KTimeComboBox *mWorkStart = nullptr;
     KTimeComboBox *mWorkEnd = nullptr;
+    KTimeComboBox *mDefaultTime = nullptr;
+    QTimeEdit *mDefaultDuration = nullptr;
+    QCheckBox *mDefaultAudioFileRemindersCheckBox;
 };
 
 extern "C"
