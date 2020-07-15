@@ -93,6 +93,7 @@ private:
     KColorButton *mCategoryButton = nullptr;
     QHash<QString, QColor> mCategoryDict;
 
+    QCheckBox *mUseSystemColorCheckBox = nullptr;
     Akonadi::CollectionComboBox *mResourceCombo = nullptr;
     KColorButton *mResourceButton = nullptr;
     QHash<QString, QColor> mResourceDict;
