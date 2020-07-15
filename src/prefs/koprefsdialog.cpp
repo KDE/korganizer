@@ -257,6 +257,7 @@ public:
         mDayBegin = new KTimeComboBox(this);
         datetimeLayout->addWidget(new QLabel(KOPrefs::instance()->dayBeginsItem()->label(), this), 1, 0);
         datetimeLayout->addWidget(mDayBegin, 1, 1);
+        connect(mDayBegin, &KTimeComboBox::currentIndexChanged, this, &KOPrefsDialogTime::slotConfigChanged);
 
         QGroupBox *holidaysGroupBox
             = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
@@ -275,6 +276,7 @@ public:
         holidayLabel->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
         mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
+        connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::activated, this, &KOPrefsDialogTime::slotConfigChanged);
         holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
         connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged,
                 this, &KOPrefsDialogTime::slotConfigChanged);
@@ -345,6 +347,7 @@ public:
         }
 
         mFirstDayCombo = new QComboBox(workingHoursGroupBox);
+        connect(mFirstDayCombo, &QComboBox::activated, this, &KOPrefsDialogTime::slotConfigChanged);
 
         QHBoxLayout *firstDayLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(firstDayLayout);
@@ -362,6 +365,7 @@ public:
         firstDayLayout->addWidget(mFirstDayCombo);
 
         mWorkStart = new KTimeComboBox(this);
+        connect(mWorkStart, &KTimeComboBox::activated, this, &KOPrefsDialogTime::slotConfigChanged);
 
         QHBoxLayout *workStartLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(workStartLayout);
@@ -370,6 +374,7 @@ public:
         workStartLayout->addWidget(mWorkStart);
 
         mWorkEnd = new KTimeComboBox(this);
+        connect(mWorkEnd, &KTimeComboBox::activated, this, &KOPrefsDialogTime::slotConfigChanged);
 
         QHBoxLayout *workEndLayout = new QHBoxLayout;
         workingHoursLayout->addLayout(workEndLayout);
@@ -394,6 +399,7 @@ public:
         QGridLayout *timesLayout = new QGridLayout(timesGroupBox);
 
         mDefaultTime = new KTimeComboBox(this);
+        connect(mDefaultTime, &KTimeComboBox::activated, this, &KOPrefsDialogTime::slotConfigChanged);
         timesLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->startTimeItem()->label(), this), 0, 0);
         timesLayout->addWidget(mDefaultTime, 0, 1);
 
@@ -401,6 +407,7 @@ public:
         mDefaultDuration->setDisplayFormat(QStringLiteral("hh:mm"));
         mDefaultDuration->setMinimumTime(QTime(0, 1));     // [1 min]
         mDefaultDuration->setMaximumTime(QTime(24, 0));     // [24 hr]
+        connect(mDefaultDuration, &QTimeEdit::dateTimeChanged, this, &KOPrefsDialogTime::slotConfigChanged);
 //        KPIM::KPrefsWidDuration *defaultDuration
 //            = addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
 //                             QStringLiteral("hh:mm"), defaultPage);
