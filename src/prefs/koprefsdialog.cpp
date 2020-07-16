@@ -81,6 +81,7 @@
 #include <KAboutData>
 #include <QButtonGroup>
 #include <QFontDialog>
+#include <QCheckBox>
 
 #ifdef WITH_KUSERFEEDBACK
 #include <KUserFeedback/FeedbackConfigWidget>
@@ -939,7 +940,7 @@ void FontPreviewButton::selectFont()
 }
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
-    : KPIM::KPrefsModule(KOPrefs::instance(), parent)
+    : KCModule(parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
@@ -1070,41 +1071,29 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     mTimeBarFontButton = new FontPreviewButton(KOPrefs::instance()->agendaTimeLabelsFontItem()->label(), this);
     mTimeBarFontButton->setPreviewText(QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
     fontLayout->addWidget(mTimeBarFontButton);
-
-//    KPIM::KPrefsWidFont *timeBarFont
-//        = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
-//                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
+    connect(mTimeBarFontButton, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
 
     mMonthViewFont = new FontPreviewButton(KOPrefs::instance()->monthViewFontItem()->label(), this);
     mMonthViewFont->setPreviewText(QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
                                    +i18nc("@label", "Event text"));
     fontLayout->addWidget(mMonthViewFont);
-
-//    KPIM::KPrefsWidFont *monthViewFont
-//        = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
-//                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
-//                     +i18nc("@label", "Event text"));
+    connect(mMonthViewFont, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
 
     mAgendaViewFont = new FontPreviewButton(KOPrefs::instance()->agendaViewFontItem()->label(), this);
     mAgendaViewFont->setPreviewText(i18nc("@label", "Event text"));
     fontLayout->addWidget(mAgendaViewFont);
+    connect(mAgendaViewFont, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
 
-//    KPIM::KPrefsWidFont *agendaViewFont
-//        = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
-//                     i18nc("@label", "Event text"));
     mMarcusBainsFont = new FontPreviewButton(KOPrefs::instance()->agendaMarcusBainsLineFontItem()->label(), this);
     mMarcusBainsFont->setPreviewText(QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
     fontLayout->addWidget(mMarcusBainsFont);
-
-//    KPIM::KPrefsWidFont *marcusBainsFont
-//        = addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
-//                     QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+    connect(mMarcusBainsFont, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
 
     fontLayout->addStretch(1);
     load();
 }
 
-void KOPrefsDialogColorsAndFonts::usrWriteConfig()
+void KOPrefsDialogColorsAndFonts::save()
 {
     QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
     while (i != mCategoryDict.constEnd()) {
@@ -1134,7 +1123,7 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
     KOPrefs::instance()->setAgendaMarcusBainsLineFont(mMarcusBainsFont->font());
 }
 
-void KOPrefsDialogColorsAndFonts::usrReadConfig()
+void KOPrefsDialogColorsAndFonts::load()
 {
     updateCategories();
     updateResources();
@@ -1172,7 +1161,7 @@ void KOPrefsDialogColorsAndFonts::updateCategories()
 void KOPrefsDialogColorsAndFonts::setCategoryColor()
 {
     mCategoryDict.insert(mCategoryCombo->currentText(), mCategoryButton->color());
-    slotWidChanged();
+    slotConfigChanged();
 }
 
 void KOPrefsDialogColorsAndFonts::updateCategoryColor()
@@ -1204,7 +1193,7 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
         return;
     }
     mResourceDict.insert(id, mResourceButton->color());
-    slotWidChanged();
+    slotConfigChanged();
 }
 
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
@@ -1224,6 +1213,11 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
         color = KOPrefs::instance()->resourceColor(id);
     }
     mResourceButton->setColor(color);
+}
+
+void KOPrefsDialogColorsAndFonts::slotConfigChanged()
+{
+    Q_EMIT markAsChanged();
 }
 
 extern "C"

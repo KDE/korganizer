@@ -28,11 +28,13 @@
 #include "kcm_korganizer_export.h"
 #include "kcmdesignerfields.h"
 #include <QSet>
-#include <Libkdepim/KPrefsDialog>
 #include <KColorButton>
 
 class QPushButton;
 class QComboBox;
+class QCheckBox;
+class QGroupBox;
+class QLineEdit;
 
 namespace Ui {
 class KOGroupwarePrefsPage;
@@ -81,15 +83,14 @@ private:
     QLabel *mPreview = nullptr;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KCModule
 {
     Q_OBJECT
 public:
     explicit KOPrefsDialogColorsAndFonts(QWidget *parent);
 
-protected:
-    void usrWriteConfig() override;
-    void usrReadConfig() override;
+    void save() override;
+    void load() override;
 
 private Q_SLOTS:
     void useSystemColorToggle(bool useSystemColor);
@@ -104,6 +105,7 @@ protected Q_SLOTS:
     void updateResourceColor();
 
 private:
+    void slotConfigChanged();
     QComboBox *mCategoryCombo = nullptr;
     KColorButton *mCategoryButton = nullptr;
     QHash<QString, QColor> mCategoryDict;
