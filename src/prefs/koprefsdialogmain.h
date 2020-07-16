@@ -1,7 +1,7 @@
 /*
   This file is part of KOrganizer.
 
-  Copyright (c) 2000,2001,2002,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
   This program is free software; you can redistribute it and/or modify
@@ -22,27 +22,14 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_KOPREFSDIALOG_H
-#define KORG_KOPREFSDIALOG_H
 
+#ifndef KOPREFSDIALOGMAIN_H
+#define KOPREFSDIALOGMAIN_H
 #include "kcm_korganizer_export.h"
-#include "kcmdesignerfields.h"
-#include <QSet>
-#include <KColorButton>
 
-class QPushButton;
-class QComboBox;
+#include <KCModule>
 class QCheckBox;
-class QGroupBox;
 class QLineEdit;
-
-
-
-namespace Akonadi {
-class CollectionComboBox;
-}
-
-class QRadioButton;
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KCModule
 {
@@ -67,4 +54,4 @@ private:
 };
 
 
-#endif
+#endif // KOPREFSDIALOGMAIN_H
