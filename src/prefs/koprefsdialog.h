@@ -121,6 +121,10 @@ private:
     KColorButton *mTodoDueTodayColorButton = nullptr;
     KColorButton *mTodoOverdueColorButton = nullptr;
     KColorButton *mUnsetCategoryColorButton = nullptr;
+    FontPreviewButton *mTimeBarFontButton = nullptr;
+    FontPreviewButton *mMonthViewFont = nullptr;
+    FontPreviewButton *mAgendaViewFont = nullptr;
+    FontPreviewButton *mMarcusBainsFont = nullptr;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KCModule

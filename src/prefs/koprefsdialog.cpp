@@ -1065,45 +1065,44 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")),
                       i18nc("@title:tab", "Fonts"));
 
-    QGridLayout *fontLayout = new QGridLayout(fontFrame);
+    QVBoxLayout *fontLayout = new QVBoxLayout(fontFrame);
 
-    KPIM::KPrefsWidFont *timeBarFont
-        = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
-    fontLayout->addWidget(timeBarFont->label(), 0, 0);
-    fontLayout->addWidget(timeBarFont->preview(), 0, 1);
-    fontLayout->addWidget(timeBarFont->button(), 0, 2);
+    mTimeBarFontButton = new FontPreviewButton(KOPrefs::instance()->agendaTimeLabelsFontItem()->label(), this);
+    mTimeBarFontButton->setPreviewText(QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
+    fontLayout->addWidget(mTimeBarFontButton);
 
-    KPIM::KPrefsWidFont *monthViewFont
-        = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
-                     +i18nc("@label", "Event text"));
+//    KPIM::KPrefsWidFont *timeBarFont
+//        = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
+//                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
 
-    fontLayout->addWidget(monthViewFont->label(), 1, 0);
-    fontLayout->addWidget(monthViewFont->preview(), 1, 1);
-    fontLayout->addWidget(monthViewFont->button(), 1, 2);
+    mMonthViewFont = new FontPreviewButton(KOPrefs::instance()->monthViewFontItem()->label(), this);
+    mMonthViewFont->setPreviewText(QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
+                                   +i18nc("@label", "Event text"));
+    fontLayout->addWidget(mMonthViewFont);
 
-    KPIM::KPrefsWidFont *agendaViewFont
-        = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
-                     i18nc("@label", "Event text"));
-    fontLayout->addWidget(agendaViewFont->label(), 2, 0);
-    fontLayout->addWidget(agendaViewFont->preview(), 2, 1);
-    fontLayout->addWidget(agendaViewFont->button(), 2, 2);
+//    KPIM::KPrefsWidFont *monthViewFont
+//        = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
+//                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
+//                     +i18nc("@label", "Event text"));
 
-    KPIM::KPrefsWidFont *marcusBainsFont
-        = addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
-    fontLayout->addWidget(marcusBainsFont->label(), 3, 0);
-    fontLayout->addWidget(marcusBainsFont->preview(), 3, 1);
-    fontLayout->addWidget(marcusBainsFont->button(), 3, 2);
+    mAgendaViewFont = new FontPreviewButton(KOPrefs::instance()->agendaViewFontItem()->label(), this);
+    mAgendaViewFont->setPreviewText(i18nc("@label", "Event text"));
+    fontLayout->addWidget(mAgendaViewFont);
 
-    fontLayout->setColumnStretch(1, 1);
-    fontLayout->setRowStretch(4, 1);
+//    KPIM::KPrefsWidFont *agendaViewFont
+//        = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
+//                     i18nc("@label", "Event text"));
+    mMarcusBainsFont = new FontPreviewButton(KOPrefs::instance()->agendaMarcusBainsLineFontItem()->label(), this);
+    mMarcusBainsFont->setPreviewText(QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+    fontLayout->addWidget(mMarcusBainsFont);
 
+//    KPIM::KPrefsWidFont *marcusBainsFont
+//        = addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
+//                     QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+
+    fontLayout->addStretch(1);
     load();
 }
-
-
 
 void KOPrefsDialogColorsAndFonts::usrWriteConfig()
 {
@@ -1129,7 +1128,10 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
     KOPrefs::instance()->setTodoDueTodayColor(mTodoDueTodayColorButton->color());
     KOPrefs::instance()->setTodoOverdueColor(mTodoOverdueColorButton->color());
     CalendarSupport::KCalPrefs::instance()->setUnsetCategoryColor(mUnsetCategoryColorButton->color());
-
+    KOPrefs::instance()->setAgendaTimeLabelsFont(mTimeBarFontButton->font());
+    KOPrefs::instance()->setMonthViewFont(mMonthViewFont->font());
+    KOPrefs::instance()->setAgendaViewFont(mAgendaViewFont->font());
+    KOPrefs::instance()->setAgendaMarcusBainsLineFont(mMarcusBainsFont->font());
 }
 
 void KOPrefsDialogColorsAndFonts::usrReadConfig()
@@ -1145,6 +1147,10 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
     mTodoDueTodayColorButton->setColor(KOPrefs::instance()->todoDueTodayColor());
     mTodoOverdueColorButton->setColor(KOPrefs::instance()->todoOverdueColor());
     mUnsetCategoryColorButton->setColor(CalendarSupport::KCalPrefs::instance()->unsetCategoryColor());
+    mTimeBarFontButton->setFont(KOPrefs::instance()->agendaTimeLabelsFont());
+    mMonthViewFont->setFont(KOPrefs::instance()->monthViewFont());
+    mAgendaViewFont->setFont(KOPrefs::instance()->agendaViewFont());
+    mMarcusBainsFont->setFont(KOPrefs::instance()->agendaMarcusBainsLineFont());
 }
 
 void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)
