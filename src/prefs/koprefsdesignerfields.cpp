@@ -66,8 +66,3 @@ QString KOPrefsDesignerFields::applicationName()
 {
     return QStringLiteral("KORGANIZER");
 }
-
-KOPrefsDesignerFields::KOPrefsDesignerFields()
-{
-
-}

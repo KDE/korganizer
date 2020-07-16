@@ -161,38 +161,4 @@ private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KCModule
-{
-    Q_OBJECT
-public:
-    explicit KOPrefsDialogPlugins(QWidget *parent);
-    ~KOPrefsDialogPlugins() override;
-
-    void save() override;
-    void load() override;
-
-protected Q_SLOTS:
-    void configure();
-    void selectionChanged();
-    void positioningChanged();
-
-private:
-    void slotConfigChanged();
-    void buildList();
-    QTreeWidget *mTreeWidget = nullptr;
-    QLabel *mDescription = nullptr;
-    QPushButton *mConfigureButton = nullptr;
-    QGroupBox *mPositioningGroupBox = nullptr;
-
-    QRadioButton *mPositionAgendaTop = nullptr;
-    QRadioButton *mPositionAgendaBottom = nullptr;
-    QTreeWidgetItem *mDecorations = nullptr;
-    QTreeWidgetItem *mOthers = nullptr;
-    QSet<QString> mDecorationsAtMonthViewTop;
-    QSet<QString> mDecorationsAtAgendaViewTop;
-    QSet<QString> mDecorationsAtAgendaViewBottom;
-};
-
-
-
 #endif

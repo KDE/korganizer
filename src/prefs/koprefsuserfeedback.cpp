@@ -24,6 +24,13 @@
 */
 
 #include "koprefsuserfeedback.h"
+#include <KAboutData>
+#include <KLocalizedString>
+#ifdef WITH_KUSERFEEDBACK
+#include <KUserFeedback/FeedbackConfigWidget>
+#include "userfeedback/userfeedbackmanager.h"
+#include <QVBoxLayout>
+#endif
 
 #ifdef WITH_KUSERFEEDBACK
 
