@@ -36,9 +36,7 @@ class QCheckBox;
 class QGroupBox;
 class QLineEdit;
 
-namespace Ui {
-class KOGroupwarePrefsPage;
-}
+
 
 namespace Akonadi {
 class CollectionComboBox;
@@ -144,21 +142,5 @@ private:
     QCheckBox *mBccBox = nullptr;
 };
 
-class KOGroupwarePrefsPage;
-
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KCModule
-{
-    Q_OBJECT
-public:
-    explicit KOPrefsDialogGroupwareScheduling(QWidget *parent);
-    ~KOPrefsDialogGroupwareScheduling() override;
-
-    void save() override;
-    void load() override;
-
-private:
-    void slotConfigChanged();
-    Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
-};
 
 #endif
