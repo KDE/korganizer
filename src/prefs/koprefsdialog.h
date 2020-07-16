@@ -193,34 +193,6 @@ private:
     QSet<QString> mDecorationsAtAgendaViewBottom;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
-{
-public:
-    explicit KOPrefsDesignerFields(QWidget *parent = nullptr);
 
-protected:
-    Q_REQUIRED_RESULT QString localUiDir() override;
-    Q_REQUIRED_RESULT QString uiPath() override;
-    void writeActivePages(const QStringList &) override;
-    Q_REQUIRED_RESULT QStringList readActivePages() override;
-    Q_REQUIRED_RESULT QString applicationName() override;
-};
-
-#ifdef WITH_KUSERFEEDBACK
-namespace KUserFeedback {
-class FeedbackConfigWidget;
-}
-class KCM_KORGANIZER_EXPORT KOPrefsUserFeedBack : public KCModule
-{
-public:
-    explicit KOPrefsUserFeedBack(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-
-protected:
-    void load() override;
-    void save() override;
-private:
-    KUserFeedback::FeedbackConfigWidget *mUserFeedbackWidget = nullptr;
-};
-#endif
 
 #endif

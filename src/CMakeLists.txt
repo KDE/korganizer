@@ -61,6 +61,8 @@ install(TARGETS
 
 set(kcm_korganizer_PART_SRCS
     kcmdesignerfields.cpp
+    koprefsuserfeedback.cpp
+    koprefsdesignerfields.cpp
     korganizer_debug.cpp
     prefs/koprefsdialog.cpp
     widgets/kitemiconcheckcombo.cpp
