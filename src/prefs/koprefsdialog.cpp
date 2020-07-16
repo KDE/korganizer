@@ -80,6 +80,7 @@
 #include <QTimeEdit>
 #include <KAboutData>
 #include <QButtonGroup>
+#include <QFontDialog>
 
 #ifdef WITH_KUSERFEEDBACK
 #include <KUserFeedback/FeedbackConfigWidget>
@@ -895,6 +896,48 @@ Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const char
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+FontPreviewButton::FontPreviewButton(const QString &labelStr, QWidget *parent)
+    : QWidget(parent)
+{
+    QHBoxLayout *mainLayout = new QHBoxLayout(this);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
+    QLabel *label = new QLabel(labelStr, this);
+    mainLayout->addWidget(label);
+
+    mPreview = new QLabel(parent);
+    mPreview->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
+    mainLayout->addWidget(mPreview);
+
+    QPushButton *button = new QPushButton(i18n("Choose..."), this);
+    mainLayout->addWidget(button);
+    connect(button, &QPushButton::clicked, this, &FontPreviewButton::selectFont);
+}
+
+void FontPreviewButton::setFont(const QFont &font)
+{
+    mPreview->setFont(font);
+}
+
+QFont FontPreviewButton::font() const
+{
+    return mPreview->font();
+}
+
+void FontPreviewButton::setPreviewText(const QString &str)
+{
+    mPreview->setText(str);
+}
+
+void FontPreviewButton::selectFont()
+{
+    bool ok;
+    QFont myFont = QFontDialog::getFont(&ok, mPreview->font());
+    if (ok) {
+        mPreview->setFont(myFont);
+        Q_EMIT changed();
+    }
+}
+
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     : KPIM::KPrefsModule(KOPrefs::instance(), parent)
 {
@@ -1059,6 +1102,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     load();
 }
+
+
 
 void KOPrefsDialogColorsAndFonts::usrWriteConfig()
 {

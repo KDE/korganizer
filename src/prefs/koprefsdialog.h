@@ -66,6 +66,21 @@ private:
     QCheckBox *mShowReminderDaemonCheckBox = nullptr;
 };
 
+class FontPreviewButton : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit FontPreviewButton(const QString &labelStr, QWidget *parent = nullptr);
+    void setFont(const QFont &font);
+    Q_REQUIRED_RESULT QFont font() const;
+    void setPreviewText(const QString &str);
+Q_SIGNALS:
+    void changed();
+private:
+    void selectFont();
+    QLabel *mPreview = nullptr;
+};
+
 class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPIM::KPrefsModule
 {
     Q_OBJECT
