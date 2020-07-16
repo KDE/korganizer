@@ -58,7 +58,7 @@ QColor KOHelper::resourceColor(const Akonadi::Item &item)
     return EventViews::resourceColor(item, KOPrefs::instance()->eventViewsPreferences());
 }
 
-int KOHelper::yearDiff(const QDate &start, const QDate &end)
+int KOHelper::yearDiff(QDate start, QDate end)
 {
     return end.year() - start.year();
 }

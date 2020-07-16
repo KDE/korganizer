@@ -1435,7 +1435,7 @@ protected:
     QAction *mDelete = nullptr;
 };
 
-void ActionManager::processIncidenceSelection(const Akonadi::Item &item, const QDate &date)
+void ActionManager::processIncidenceSelection(const Akonadi::Item &item, QDate date)
 {
     //qCDebug(KORGANIZER_LOG) << "ActionManager::processIncidenceSelection()";
     Q_UNUSED(date);
@@ -1669,12 +1669,12 @@ void ActionManager::openTodoEditor(const QString &summary, const QString &descri
                            action != KOPrefs::TodoAttachLink);
 }
 
-void ActionManager::openJournalEditor(const QDate &date)
+void ActionManager::openJournalEditor(QDate date)
 {
     mCalendarView->newJournal(date);
 }
 
-void ActionManager::openJournalEditor(const QString &text, const QDate &date)
+void ActionManager::openJournalEditor(const QString &text, QDate date)
 {
     mCalendarView->newJournal(text, date);
 }
@@ -1699,17 +1699,17 @@ void ActionManager::showEventView()
     mCalendarView->viewManager()->showEventView();
 }
 
-void ActionManager::goDate(const QDate &date)
+void ActionManager::goDate(QDate date)
 {
     mCalendarView->goDate(date);
 }
 
-void ActionManager::goDate(const QString &date)
+void ActionManager::goDate(QString date)
 {
     goDate(QLocale().toDate(date));
 }
 
-void ActionManager::showDate(const QDate &date)
+void ActionManager::showDate(QDate date)
 {
     mCalendarView->showDate(date);
 }

@@ -158,17 +158,17 @@ public Q_SLOTS:
     void openTodoEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype);
     void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline);
 
-    void openJournalEditor(const QDate &date);
-    void openJournalEditor(const QString &text, const QDate &date);
+    void openJournalEditor(QDate date);
+    void openJournalEditor(const QString &text, QDate date);
     void openJournalEditor(const QString &text);
 
     void showJournalView();
     void showTodoView();
     void showEventView();
 
-    void goDate(const QDate &);
-    void goDate(const QString &);
-    void showDate(const QDate &date);
+    void goDate(QDate);
+    void goDate(QString);
+    void showDate(QDate date);
 
 public:
     QString localFileName();
@@ -195,7 +195,7 @@ public Q_SLOTS:
     */
     void updateConfig();
 
-    void processIncidenceSelection(const Akonadi::Item &item, const QDate &date);
+    void processIncidenceSelection(const Akonadi::Item &item, QDate date);
     void keyBindings();
 
     /**

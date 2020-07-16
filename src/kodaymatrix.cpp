@@ -140,7 +140,7 @@ void KODayMatrix::addSelectedDaysTo(KCalendarCore::DateList &selDays)
     }
 }
 
-void KODayMatrix::setSelectedDaysFrom(const QDate &start, const QDate &end)
+void KODayMatrix::setSelectedDaysFrom(QDate start, QDate end)
 {
     if (mStartDate.isValid()) {
         mSelStart = mStartDate.daysTo(start);
@@ -183,7 +183,7 @@ void KODayMatrix::setUpdateNeeded()
     mPendingChanges = true;
 }
 
-void KODayMatrix::updateView(const QDate &actdate)
+void KODayMatrix::updateView(QDate actdate)
 {
     if (!actdate.isValid() || NUMDAYS < 1) {
         return;
@@ -884,7 +884,7 @@ void KODayMatrix::resizeEvent(QResizeEvent *)
 }
 
 /* static */
-QPair<QDate, QDate> KODayMatrix::matrixLimits(const QDate &month)
+QPair<QDate, QDate> KODayMatrix::matrixLimits(QDate month)
 {
     QDate d(month.year(), month.month(), 1);
 

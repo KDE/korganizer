@@ -165,12 +165,12 @@ void KOAgendaView::zoomOutVertically()
     d->mAgendaView->zoomOutVertically();
 }
 
-void KOAgendaView::zoomInHorizontally(const QDate &date)
+void KOAgendaView::zoomInHorizontally(QDate date)
 {
     d->mAgendaView->zoomInHorizontally(date);
 }
 
-void KOAgendaView::zoomOutHorizontally(const QDate &date)
+void KOAgendaView::zoomOutHorizontally(QDate date)
 {
     d->mAgendaView->zoomOutHorizontally(date);
 }

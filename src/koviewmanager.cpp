@@ -262,7 +262,7 @@ void KOViewManager::updateView()
     }
 }
 
-void KOViewManager::updateView(const QDate &start, const QDate &end, const QDate &preferredMonth)
+void KOViewManager::updateView(QDate start, QDate end, QDate preferredMonth)
 {
     if (mCurrentView && mCurrentView != mTodoView) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)

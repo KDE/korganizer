@@ -85,7 +85,7 @@ public:
     /** returns the first and last date of the 6*7 matrix that displays @p month
      * @param month The month we want to get matrix boundaries
      */
-    static Q_REQUIRED_RESULT QPair<QDate, QDate> matrixLimits(const QDate &month);
+    static Q_REQUIRED_RESULT QPair<QDate, QDate> matrixLimits(QDate month);
 
     /**
       Associate a calendar with this day matrix. If there is a calendar, the
@@ -101,7 +101,7 @@ public:
      *  @param actdate recalculates the day matrix to show NUMDAYS starting
      *  from this date.
      */
-    void updateView(const QDate &actdate);
+    void updateView(QDate actdate);
 
     /**
       Update incidence states of dates. Depending of the preferences days with
@@ -134,7 +134,7 @@ public:
      * @param start start of the new selection
      * @param end end date of the new selection
      */
-    void setSelectedDaysFrom(const QDate &start, const QDate &end);
+    void setSelectedDaysFrom(QDate start, QDate end);
 
     /**
       Clear all selections.

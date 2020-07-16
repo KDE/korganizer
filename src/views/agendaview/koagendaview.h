@@ -99,8 +99,8 @@ public Q_SLOTS:
     void enableAgendaUpdate(bool enable);
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
-    void zoomInHorizontally(const QDate &date = QDate());
-    void zoomOutHorizontally(const QDate &date = QDate());
+    void zoomInHorizontally(QDate date = QDate());
+    void zoomOutHorizontally(QDate date = QDate());
 
     void zoomInVertically();
     void zoomOutVertically();

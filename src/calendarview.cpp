@@ -258,7 +258,7 @@ CalendarView::CalendarView(QWidget *parent)
             mDateNavigator, &DateNavigator::selectNext);
 
     connect(mDateNavigatorContainer, &DateNavigatorContainer::datesSelected,
-            mDateNavigator, QOverload<const KCalendarCore::DateList &, const QDate &>::of(&DateNavigator::selectDates));
+            mDateNavigator, QOverload<const KCalendarCore::DateList &, QDate >::of(&DateNavigator::selectDates));
 
     connect(mViewManager, &KOViewManager::datesSelected,
             mDateNavigator, [this](const KCalendarCore::DateList &dates) {
@@ -552,12 +552,12 @@ void CalendarView::writeFilterSettings(KConfig *config)
     }
 }
 
-void CalendarView::goDate(const QDate &date)
+void CalendarView::goDate(QDate date)
 {
     mDateNavigator->selectDate(date);
 }
 
-void CalendarView::showDate(const QDate &date)
+void CalendarView::showDate(QDate date)
 {
     int dateCount = mDateNavigator->datesCount();
     if (dateCount == 7) {
@@ -1175,7 +1175,7 @@ void CalendarView::newJournal(const Akonadi::Collection &collection)
     dialog->load(item);
 }
 
-void CalendarView::newJournal(const QString &text, const QDate &date)
+void CalendarView::newJournal(const QString &text, QDate date)
 {
     IncidenceEditorNG::IncidenceDefaults defaults
         = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
@@ -1586,7 +1586,7 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
 #endif
 }
 
-void CalendarView::dissociateOccurrences(const Akonadi::Item &item, const QDate &date)
+void CalendarView::dissociateOccurrences(const Akonadi::Item &item, QDate date)
 {
     const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
 
@@ -2534,7 +2534,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
     mChanger->createIncidence(incidence, Akonadi::Collection(), this);
 }
 
-void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, const QDate &dt)
+void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 {
     if (!CalendarSupport::hasIncidence(itemmove)) {
         KMessageBox::sorry(

@@ -50,8 +50,8 @@ public:
     Q_REQUIRED_RESULT int datesCount() const;
 
 public Q_SLOTS:
-    void selectDates(const KCalendarCore::DateList &, const QDate &preferredMonth = QDate());
-    void selectDate(const QDate &);
+    void selectDates(const KCalendarCore::DateList &, QDate preferredMonth = QDate());
+    void selectDate(QDate);
 
     void selectDates(int count);
     void selectDates(const QDate &, int count, const QDate &preferredMonth = QDate());
@@ -60,9 +60,9 @@ public Q_SLOTS:
     void selectWeek(const QDate &, const QDate &preferredMonth = QDate());
 
     void selectWorkWeek();
-    void selectWorkWeek(const QDate &);
+    void selectWorkWeek(QDate);
 
-    void selectWeekByDay(int weekDay, const QDate &, const QDate &preferredMonth = QDate());
+    void selectWeekByDay(int weekDay, QDate, QDate preferredMonth = QDate());
 
     void selectToday();
 

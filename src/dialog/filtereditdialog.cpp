@@ -182,6 +182,7 @@ void FilterEdit::saveChanges()
 
     QStringList categoryList;
     const int numberOfCat(mCatList->count());
+    categoryList.reserve(numberOfCat);
     for (int i = 0; i < numberOfCat; ++i) {
         QListWidgetItem *item = mCatList->item(i);
         if (item) {

@@ -50,7 +50,7 @@ int DateNavigator::datesCount() const
     return mSelectedDates.count();
 }
 
-void DateNavigator::selectDates(const KCalendarCore::DateList &dateList, const QDate &preferredMonth)
+void DateNavigator::selectDates(const KCalendarCore::DateList &dateList, QDate preferredMonth)
 {
     if (!dateList.isEmpty()) {
         mSelectedDates = dateList;
@@ -58,16 +58,14 @@ void DateNavigator::selectDates(const KCalendarCore::DateList &dateList, const Q
     }
 }
 
-void DateNavigator::selectDate(const QDate &date)
+void DateNavigator::selectDate(QDate date)
 {
-    QDate d = date;
-
-    if (!d.isValid()) {
+    if (!date.isValid()) {
         qCDebug(KORGANIZER_LOG) << "an invalid date was passed as a parameter!";
-        d = QDate::currentDate();
+        date = QDate::currentDate();
     }
     mSelectedDates.clear();
-    mSelectedDates.append(d);
+    mSelectedDates.append(date);
 
     emitSelected();
 }
@@ -91,7 +89,7 @@ void DateNavigator::selectDates(const QDate &d, int count, const QDate &preferre
     emitSelected(preferredMonth);
 }
 
-void DateNavigator::selectWeekByDay(int weekDay, const QDate &d, const QDate &preferredMonth)
+void DateNavigator::selectWeekByDay(int weekDay, QDate d, QDate preferredMonth)
 {
     int dateCount = mSelectedDates.count();
     bool weekStart = (weekDay == KOGlobals::self()->firstDayOfWeek());
@@ -126,7 +124,7 @@ void DateNavigator::selectWorkWeek()
     selectWorkWeek(mSelectedDates.first());
 }
 
-void DateNavigator::selectWorkWeek(const QDate &d)
+void DateNavigator::selectWorkWeek(QDate d)
 {
     const int weekStart = KOGlobals::self()->firstDayOfWeek();
     const int dayOfWeek = d.dayOfWeek();

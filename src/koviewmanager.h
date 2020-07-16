@@ -90,7 +90,7 @@ public:
     void setDocumentId(const QString &);
 
     void updateView();
-    void updateView(const QDate &start, const QDate &end, const QDate &preferredMonth);
+    void updateView(QDate start, QDate end, QDate preferredMonth);
 
     void goMenu(bool enable);
     void raiseCurrentView();

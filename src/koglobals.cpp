@@ -86,7 +86,7 @@ int KOGlobals::firstDayOfWeek() const
     return KOPrefs::instance()->mWeekStartDay + 1;
 }
 
-QList<QDate> KOGlobals::workDays(const QDate &startDate, const QDate &endDate) const
+QList<QDate> KOGlobals::workDays(QDate startDate, QDate endDate) const
 {
     QList<QDate> result;
 

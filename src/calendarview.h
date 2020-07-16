@@ -397,7 +397,7 @@ public Q_SLOTS:
 
     void newJournal();
     void newJournal(const QDate &date);
-    void newJournal(const QString &text, const QDate &date = QDate());
+    void newJournal(const QString &text, QDate date = QDate());
     void newJournal(const Akonadi::Collection &collection);
 
     void configureCurrentView();
@@ -406,7 +406,7 @@ public Q_SLOTS:
     void toggleTodoCompleted(const Akonadi::Item &incidence);
     void copyIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
     void moveIncidenceToResource(const Akonadi::Item &incidence, const Akonadi::Collection &col);
-    void dissociateOccurrences(const Akonadi::Item &incidence, const QDate &date);
+    void dissociateOccurrences(const Akonadi::Item &incidence, QDate date);
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -541,10 +541,10 @@ public Q_SLOTS:
     void showEventViewer(bool);
 
     /** Move the current view date to the specified date */
-    void goDate(const QDate &date);
+    void goDate(QDate date);
 
     /** Show the given date without changing date selection length. */
-    void showDate(const QDate &date);
+    void showDate(QDate date);
 
     /** Move the current view date to today */
     void goToday();
@@ -574,7 +574,7 @@ public Q_SLOTS:
     void showErrorMessage(const QString &);
     void schedule(KCalendarCore::iTIPMethod, const Akonadi::Item &incidence);
     void addIncidenceOn(const Akonadi::Item &incidence, const QDate &);
-    void moveIncidenceTo(const Akonadi::Item &incidence, const QDate &);
+    void moveIncidenceTo(const Akonadi::Item &incidence, QDate);
     void filterActivated(int filterNum);
 
     void resourcesChanged();

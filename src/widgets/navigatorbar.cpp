@@ -130,7 +130,7 @@ void NavigatorBar::selectDates(const KCalendarCore::DateList &dateList)
         mMonth->setText(i18nc("monthname", "%1",
                               QLocale().standaloneMonthName(mDate.month(), QLocale::LongFormat)));
         mYear->setText(i18nc("4 digit year", "%1",
-                             QLocale().toString(mDate, QLatin1String("yyyy"))));
+                             QLocale().toString(mDate, QStringLiteral("yyyy"))));
     }
 }
 

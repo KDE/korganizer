@@ -258,7 +258,7 @@ public:
         mDayBegin = new KTimeComboBox(this);
         datetimeLayout->addWidget(new QLabel(KOPrefs::instance()->dayBeginsItem()->label(), this), 1, 0);
         datetimeLayout->addWidget(mDayBegin, 1, 1);
-        connect(mDayBegin, &KTimeComboBox::currentIndexChanged, this, &KOPrefsDialogTime::slotConfigChanged);
+        connect(mDayBegin, qOverload<int>(&KTimeComboBox::currentIndexChanged), this, &KOPrefsDialogTime::slotConfigChanged);
 
         QGroupBox *holidaysGroupBox
             = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);

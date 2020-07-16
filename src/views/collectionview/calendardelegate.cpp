@@ -49,7 +49,7 @@ StyledCalendarDelegate::~StyledCalendarDelegate()
 {
 }
 
-static QRect enableButtonRect(const QRect &rect, int pos = 1)
+static QRect enableButtonRect(QRect rect, int pos = 1)
 {
     //2px border on each side of the icon
     static int border = 2;
