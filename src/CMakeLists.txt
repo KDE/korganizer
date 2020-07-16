@@ -67,6 +67,8 @@ set(kcm_korganizer_PART_SRCS
     prefs/koprefsdialoggroupwarescheduling.cpp
     korganizer_debug.cpp
     prefs/koprefsdialog.cpp
+    prefs/koprefsdialoggroupscheduling.cpp
+    prefs/koprefsdialogcolorsandfonts.cpp
     widgets/kitemiconcheckcombo.cpp
     )
 

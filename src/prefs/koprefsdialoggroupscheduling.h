@@ -22,49 +22,27 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_KOPREFSDIALOG_H
-#define KORG_KOPREFSDIALOG_H
 
+#ifndef KOPREFSDIALOGGROUPSCHEDULING_H
+#define KOPREFSDIALOGGROUPSCHEDULING_H
 #include "kcm_korganizer_export.h"
-#include "kcmdesignerfields.h"
-#include <QSet>
-#include <KColorButton>
 
-class QPushButton;
-class QComboBox;
+#include <KCModule>
 class QCheckBox;
-class QGroupBox;
-class QLineEdit;
-
-
-
-namespace Akonadi {
-class CollectionComboBox;
-}
-
-class QRadioButton;
-
-class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KCModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KCModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogMain(QWidget *parent);
+    explicit KOPrefsDialogGroupScheduling(QWidget *parent);
 
     void save() override;
     void load() override;
 
-protected Q_SLOTS:
-    void toggleEmailSettings(bool on);
-
 private:
-    QWidget *mUserEmailSettings = nullptr;
-    QCheckBox *mEmailControlCenterCheckBox = nullptr;
-    QLineEdit *mUserName = nullptr;
-    QLineEdit *mUserEmail = nullptr;
-    QCheckBox *mConfirmCheckBox = nullptr;
-    QCheckBox *mDestinationCheckBox = nullptr;
-    QCheckBox *mShowReminderDaemonCheckBox = nullptr;
+    void slotConfigChanged();
+    QCheckBox *mUseGroupwareCommunicationCheckBox = nullptr;
+    QCheckBox *mBccBox = nullptr;
 };
 
 
-#endif
+#endif // KOPREFSDIALOGGROUPSCHEDULING_H
