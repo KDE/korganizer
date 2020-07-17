@@ -27,14 +27,12 @@
 #define KOPREFSUSERFEEDBACK_H
 
 #include <KCModule>
-#include "kcm_korganizer_export.h"
-
 
 #ifdef WITH_KUSERFEEDBACK
 namespace KUserFeedback {
 class FeedbackConfigWidget;
 }
-class KCM_KORGANIZER_EXPORT KOPrefsUserFeedBack : public KCModule
+class KOPrefsUserFeedBack : public KCModule
 {
 public:
     explicit KOPrefsUserFeedBack(QWidget *parent = nullptr, const QVariantList &args = QVariantList());

@@ -26,13 +26,11 @@
 #ifndef KOPREFSDIALOGGROUPWARESCHEDULING_H
 #define KOPREFSDIALOGGROUPWARESCHEDULING_H
 #include <KCModule>
-#include "kcm_korganizer_export.h"
 namespace Ui {
 class KOGroupwarePrefsPage;
 }
-class KOGroupwarePrefsPage;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KCModule
+class KOPrefsDialogGroupwareScheduling : public KCModule
 {
     Q_OBJECT
 public:

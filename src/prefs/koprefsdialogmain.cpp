@@ -59,6 +59,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     mEmailControlCenterCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem()->label(), this);
     connect(mEmailControlCenterCheckBox, &QAbstractButton::toggled,
             this, &KOPrefsDialogMain::toggleEmailSettings);
+    connect(mEmailControlCenterCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
     personalLayout->addWidget(mEmailControlCenterCheckBox);
 
     mUserEmailSettings = new QGroupBox(i18nc("@title:group email settings", "Email Settings"),
@@ -95,9 +96,11 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
 
     mConfirmCheckBox = new QCheckBox(KOPrefs::instance()->confirmItem()->label(), saveFrame);
+    connect(mConfirmCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
     saveLayout->addWidget(mConfirmCheckBox);
 
     mDestinationCheckBox = new QCheckBox(KOPrefs::instance()->destinationItem()->label(), saveFrame);
+    connect(mDestinationCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
     saveLayout->addWidget(mDestinationCheckBox);
     saveLayout->addStretch(1);
 
@@ -114,6 +117,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     systrayGroupBox->setLayout(systrayGroupLayout);
 
     mShowReminderDaemonCheckBox = new QCheckBox(KOPrefs::instance()->showReminderDaemonItem()->label(), systrayGroupBox);
+    connect(mShowReminderDaemonCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
     systrayGroupLayout->addWidget(mShowReminderDaemonCheckBox);
     mShowReminderDaemonCheckBox->setToolTip(
         i18nc("@info:tooltip", "Enable this setting to show the KOrganizer "
@@ -176,6 +180,11 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
         mNameEdit->setText( CalendarSupport::KCalPrefs::instance()->mName );
         mEmailEdit->setText( CalendarSupport::KCalPrefs::instance()->mEmail );
       }*/
+}
+
+void KOPrefsDialogMain::slotConfigChanged()
+{
+    Q_EMIT markAsChanged();
 }
 
 extern "C"

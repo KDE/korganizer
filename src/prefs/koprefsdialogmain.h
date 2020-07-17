@@ -25,13 +25,12 @@
 
 #ifndef KOPREFSDIALOGMAIN_H
 #define KOPREFSDIALOGMAIN_H
-#include "kcm_korganizer_export.h"
 
 #include <KCModule>
 class QCheckBox;
 class QLineEdit;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KCModule
+class KOPrefsDialogMain : public KCModule
 {
     Q_OBJECT
 public:
@@ -42,8 +41,8 @@ public:
 
 protected Q_SLOTS:
     void toggleEmailSettings(bool on);
-
 private:
+    void slotConfigChanged();
     QWidget *mUserEmailSettings = nullptr;
     QCheckBox *mEmailControlCenterCheckBox = nullptr;
     QLineEdit *mUserName = nullptr;

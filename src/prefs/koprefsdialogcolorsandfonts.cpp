@@ -99,7 +99,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     // Use System color
     mUseSystemColorCheckBox = new QCheckBox(KOPrefs::instance()->useSystemColorItem()->label(), colorFrame);
-    QObject::connect(mUseSystemColorCheckBox, &QCheckBox::toggled,
+    connect(mUseSystemColorCheckBox, &QCheckBox::toggled,
                      this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
     colorLayout->addWidget(mUseSystemColorCheckBox, 1, 0, 1, 2);
 

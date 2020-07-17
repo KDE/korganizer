@@ -197,6 +197,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     workEndLayout->addWidget(mWorkEnd);
 
     mExcludeHolidaysCheckbox = new QCheckBox(KOPrefs::instance()->excludeHolidaysItem()->label(), this);
+    connect(mExcludeHolidaysCheckbox, &QCheckBox::clicked, this, &KOPrefsDialogTime::slotConfigChanged);
     workingHoursLayout->addWidget(mExcludeHolidaysCheckbox);
 
     regionalLayout->setRowStretch(4, 1);
@@ -262,7 +263,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     remindersLayout->addWidget(mReminderUnitsCombo, 0, 2);
 
     mDefaultAudioFileRemindersCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem()->label(), this);
-
+    connect(mDefaultAudioFileRemindersCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogTime::slotConfigChanged);
     if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
         const QString defAudioFile
                 = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
@@ -283,8 +284,10 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 
     remindersLayout->addLayout(audioFileRemindersBox, 1, 0);
     mDefaultEventRemindersCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem()->label(), this);
+    connect(mDefaultEventRemindersCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogTime::slotConfigChanged);
     remindersLayout->addWidget(mDefaultEventRemindersCheckBox, 2, 0);
     mDefaultTodoRemindersCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem()->label(), this);
+    connect(mDefaultTodoRemindersCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogTime::slotConfigChanged);
     remindersLayout->addWidget(mDefaultTodoRemindersCheckBox, 3, 0);
 
     defaultLayout->setRowStretch(3, 1);
@@ -293,8 +296,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 
 void KOPrefsDialogTime::load()
 {
-    //TODO mFirstDayCombo
-
+    mFirstDayCombo->setCurrentIndex(KOPrefs::instance()->weekStartDay());
     mDefaultAudioFileRemindersCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->defaultAudioFileReminders());
     mDefaultDuration->setMaximumTime(QTime(24, 0));     // [24 hr]
     mDefaultDuration->setTime(CalendarSupport::KCalPrefs::instance()->defaultDuration().time());
@@ -316,7 +318,8 @@ void KOPrefsDialogTime::load()
 
 void KOPrefsDialogTime::save()
 {
-    //TODO mFirstDayCombo
+    KOPrefs::instance()->setWeekStartDay(mFirstDayCombo->currentIndex());
+
     CalendarSupport::KCalPrefs::instance()->setDefaultAudioFileReminders(mDefaultAudioFileRemindersCheckBox->isChecked());
     {
         QDateTime dt(CalendarSupport::KCalPrefs::instance()->defaultDuration());

@@ -25,11 +25,10 @@
 
 #ifndef KOPREFSDIALOGGROUPSCHEDULING_H
 #define KOPREFSDIALOGGROUPSCHEDULING_H
-#include "kcm_korganizer_export.h"
 
 #include <KCModule>
 class QCheckBox;
-class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KCModule
+class KOPrefsDialogGroupScheduling : public KCModule
 {
     Q_OBJECT
 public:

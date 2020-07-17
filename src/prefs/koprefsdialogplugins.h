@@ -29,7 +29,6 @@
 
 #include <KCModule>
 #include <QSet>
-#include "kcm_korganizer_export.h"
 class QTreeWidget;
 class QLabel;
 class QPushButton;
@@ -37,7 +36,7 @@ class QRadioButton;
 class QGroupBox;
 class QTreeWidgetItem;
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KCModule
+class KOPrefsDialogPlugins : public KCModule
 {
     Q_OBJECT
 public:

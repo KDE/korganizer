@@ -78,6 +78,9 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     mNextDay = new QSpinBox(this);
     mNextDay->setSuffix(
                 i18nc("@label suffix in the N days spin box", " days"));
+    connect(mNextDay, &QSpinBox::valueChanged,
+            this, &KOPrefsDialogViews::slotConfigChanged);
+
 
     nextDaysLayout->addWidget(new QLabel(KOPrefs::instance()->nextXDaysItem()->label(), this));
     nextDaysLayout->addWidget(mNextDay);
@@ -85,7 +88,13 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
 
 
     mEnableToolTipsCheckBox = new QCheckBox(KOPrefs::instance()->enableToolTipsItem()->label(), this);
+    connect(mEnableToolTipsCheckBox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
+
     mTodosUseCategoryColorsCheckBox = new QCheckBox(KOPrefs::instance()->todosUseCategoryColorsItem()->label(), this);
+    connect(mTodosUseCategoryColorsCheckBox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
+
     gdisplayLayout->addWidget(mEnableToolTipsCheckBox);
     gdisplayLayout->addWidget(mTodosUseCategoryColorsCheckBox);
     gdisplayBox->setLayout(gdisplayLayout);
@@ -95,9 +104,17 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QVBoxLayout *datenavLayout = new QVBoxLayout;
     QGroupBox *datenavBox = new QGroupBox(i18nc("@title:group", "Date Navigator"));
     mDailyRecurCheckbox = new QCheckBox(KOPrefs::instance()->dailyRecurItem()->label(), this);
+    connect(mDailyRecurCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     mWeeklyRecurCheckbox = new QCheckBox(KOPrefs::instance()->weeklyRecurItem()->label(), this);
+    connect(mWeeklyRecurCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     mHighlightTodosCheckbox = new QCheckBox(KOPrefs::instance()->highlightTodosItem()->label(), this);
+    connect(mHighlightTodosCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     mHighlightJournalsCheckbox = new QCheckBox(KOPrefs::instance()->highlightJournalsItem()->label(), this);
+    connect(mHighlightJournalsCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     mWeekNumbersShowWorkCheckbox = new QCheckBox(KOPrefs::instance()->weekNumbersShowWorkItem()->label(), this);
     datenavLayout->addWidget(mDailyRecurCheckbox);
     datenavLayout->addWidget(mWeeklyRecurCheckbox);
@@ -131,16 +148,26 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     hourSizeLayout->addStretch(1);
 
     mEnableAgendaItemIconsCheckbox = new QCheckBox(KOPrefs::instance()->enableAgendaItemIconsItem()->label(), this);
+    connect(mEnableAgendaItemIconsCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     adisplayLayout->addWidget(mEnableAgendaItemIconsCheckbox);
     mShowTodosAgendaViewCheckbox = new QCheckBox(KOPrefs::instance()->showTodosAgendaViewItem()->label(), this);
+    connect(mShowTodosAgendaViewCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     adisplayLayout->addWidget(mShowTodosAgendaViewCheckbox);
     mMarcusBainsEnabledCheckbox = new QCheckBox(KOPrefs::instance()->marcusBainsEnabledItem()->label(), this);
+    connect(mMarcusBainsEnabledCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     adisplayLayout->addWidget(mMarcusBainsEnabledCheckbox);
     mMarcusBainsShowSecondsCheckbox = new QCheckBox(KOPrefs::instance()->marcusBainsShowSecondsItem()->label(), this);
+    connect(mMarcusBainsShowSecondsCheckbox, &QCheckBox::clicked,
+            this, &KOPrefsDialogViews::slotConfigChanged);
     adisplayLayout->addWidget(mMarcusBainsShowSecondsCheckbox);
-    connect(mMarcusBainsEnabledCheckbox, &QAbstractButton::toggled,
-            mMarcusBainsShowSecondsCheckbox, &QWidget::setEnabled);
+    connect(mMarcusBainsShowSecondsCheckbox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     mSelectionStartsEditorCheckbox = new QCheckBox(KOPrefs::instance()->selectionStartsEditorItem()->label(), this);
+    connect(mSelectionStartsEditorCheckbox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     adisplayLayout->addWidget(mSelectionStartsEditorCheckbox);
 
     mAgendaIconComboBox->setCheckedIcons(
@@ -155,6 +182,8 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     //            addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
 
     mColorBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorBusyDaysEnabledItem()->label(), this);
+    connect(mColorBusyDaysEnabledCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     agendaLayout->addWidget(mColorBusyDaysEnabledCheckBox);
 
     // GroupBox: Views->Agenda View->Multiple Calendars
@@ -175,12 +204,20 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QVBoxLayout *mdisplayLayout = new QVBoxLayout;
     QGroupBox *mdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
     mShowTimeInMonthViewCheckBox = new QCheckBox(KOPrefs::instance()->showTimeInMonthViewItem()->label(), this);
+    connect(mShowTimeInMonthViewCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     mdisplayLayout->addWidget(mShowTimeInMonthViewCheckBox);
     mEnableMonthItemIconsCheckBox = new QCheckBox(KOPrefs::instance()->enableMonthItemIconsItem()->label(), this);
+    connect(mEnableMonthItemIconsCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     mdisplayLayout->addWidget(mEnableMonthItemIconsCheckBox);
     mShowTodosMonthViewCheckBox = new QCheckBox(KOPrefs::instance()->showTodosMonthViewItem()->label(), this);
+    connect(mShowTodosMonthViewCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     mdisplayLayout->addWidget(mShowTodosMonthViewCheckBox);
     mShowJournalsMonthViewCheckBox = new QCheckBox(KOPrefs::instance()->showJournalsMonthViewItem()->label(), this);
+    connect(mShowJournalsMonthViewCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     mdisplayLayout->addWidget(mShowJournalsMonthViewCheckBox);
     mdisplayBox->setLayout(mdisplayLayout);
 
@@ -191,6 +228,8 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     monthLayout->addWidget(mdisplayBox);
 
     mColorMonthBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorMonthBusyDaysEnabledItem()->label(), this);
+    connect(mColorMonthBusyDaysEnabledCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     monthLayout->addWidget(mColorMonthBusyDaysEnabledCheckBox);
 
     // GroupBox: Views->Month View->Color Usage
@@ -210,6 +249,9 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QVBoxLayout *tdisplayLayout = new QVBoxLayout;
     QGroupBox *tdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
     mSortCompletedTodosSeparatelyCheckBox = new QCheckBox(KOPrefs::instance()->sortCompletedTodosSeparatelyItem()->label(), this);
+    connect(mSortCompletedTodosSeparatelyCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
+
     tdisplayLayout->addWidget(mSortCompletedTodosSeparatelyCheckBox);
     tdisplayBox->setLayout(tdisplayLayout);
     todoLayout->addWidget(tdisplayBox);
@@ -218,6 +260,8 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QVBoxLayout *otherLayout = new QVBoxLayout;
     QGroupBox *otherBox = new QGroupBox(i18nc("@title:group", "Other Options"));
     mRecordTodosInJournalsCheckBox = new QCheckBox(KOPrefs::instance()->recordTodosInJournalsItem()->label(), this);
+    connect(mRecordTodosInJournalsCheckBox, &QAbstractButton::toggled,
+            this, &QWidget::setEnabled);
     otherLayout->addWidget(mRecordTodosInJournalsCheckBox);
     otherBox->setLayout(otherLayout);
     todoLayout->addWidget(otherBox);
@@ -284,6 +328,7 @@ void KOPrefsDialogViews::save()
 
 }
 
-void KOPrefsDialogViews::slotConfigChanged() {
+void KOPrefsDialogViews::slotConfigChanged()
+{
     Q_EMIT markAsChanged();
 }
