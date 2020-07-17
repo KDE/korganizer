@@ -27,9 +27,8 @@
 #define KOPREFSDESIGNERFIELDS_H
 
 #include "kcmdesignerfields.h"
-#include "kcm_korganizer_export.h"
 
-class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KCMDesignerFields
+class KOPrefsDesignerFields : public KCMDesignerFields
 {
 public:
     explicit KOPrefsDesignerFields(QWidget *parent = nullptr);
