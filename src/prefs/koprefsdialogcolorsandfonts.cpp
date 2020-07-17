@@ -106,36 +106,43 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     mAgendaBgColorButton = new KColorButton(this);
     mButtonsDisable.push_back(mAgendaBgColorButton);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaGridBackgroundColorItem()->label(), this), 2, 0);
+    connect(mAgendaBgColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     colorLayout->addWidget(mAgendaBgColorButton, 2, 1);
 
     mViewBgBusyColorButton = new KColorButton(this);
+    connect(mViewBgBusyColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     mButtonsDisable.push_back(mViewBgBusyColorButton);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->viewBgBusyColorItem()->label(), this), 3, 0);
     colorLayout->addWidget(mViewBgBusyColorButton, 3, 1);
 
     // working hours color
     mAgendaGridWorkHoursBackgroundColorButton = new KColorButton(this);
+    connect(mAgendaGridWorkHoursBackgroundColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     mButtonsDisable.push_back(mAgendaGridWorkHoursBackgroundColorButton);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->workingHoursColorItem()->label(), this), 4, 0);
     colorLayout->addWidget(mAgendaGridWorkHoursBackgroundColorButton, 4, 1);
 
     // agenda view Marcus Bains line color
     mAgendaMarcusBainsLineLineColorButton = new KColorButton(this);
+    connect(mAgendaMarcusBainsLineLineColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem()->label(), this), 5, 0);
     colorLayout->addWidget(mAgendaMarcusBainsLineLineColorButton, 5, 1);
 
     // Holiday Color
     mAgendaHolidaysBackgroundColorButton = new KColorButton(this);
+    connect(mAgendaHolidaysBackgroundColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaHolidaysBackgroundColorItem()->label(), this), 6, 0);
     colorLayout->addWidget(mAgendaHolidaysBackgroundColorButton, 6, 1);
 
     // Todo due today color
     mTodoDueTodayColorButton = new KColorButton(this);
+    connect(mTodoDueTodayColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->todoDueTodayColorItem()->label(), this), 7, 0);
     colorLayout->addWidget(mTodoDueTodayColorButton, 7, 1);
 
     // Todo overdue color
     mTodoOverdueColorButton = new KColorButton(this);
+    connect(mTodoOverdueColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     colorLayout->addWidget(new QLabel(KOPrefs::instance()->todoOverdueColorItem()->label(), this), 8, 0);
     colorLayout->addWidget(mTodoOverdueColorButton, 8, 1);
 
@@ -147,6 +154,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     categoryGroup->setLayout(categoryLayout);
 
     mUnsetCategoryColorButton = new KColorButton(this);
+    connect(mUnsetCategoryColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
     categoryLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem()->label(), this), 0, 0);
     categoryLayout->addWidget(mUnsetCategoryColorButton, 0, 1);
 
