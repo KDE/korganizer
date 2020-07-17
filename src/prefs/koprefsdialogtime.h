@@ -70,6 +70,4 @@ private:
     QCheckBox *mDefaultAudioFileRemindersCheckBox;
 };
 
-
-
 #endif // KOPREFSDIALOGTIME_H

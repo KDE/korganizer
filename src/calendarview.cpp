@@ -49,7 +49,6 @@
 #include "widgets/navigatorbar.h"
 #include "pimmessagebox.h"
 
-
 #include <AkonadiCore/AttributeFactory>
 #include <AkonadiCore/CollectionIdentificationAttribute>
 

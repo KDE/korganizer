@@ -97,6 +97,4 @@ private:
     FontPreviewButton *mMarcusBainsFont = nullptr;
 };
 
-
-
 #endif // KOPREFSDIALOGCOLORSANDFONTS_H

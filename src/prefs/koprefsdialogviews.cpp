@@ -38,7 +38,6 @@
 #include "koprefs.h"
 #include <KLocalizedString>
 
-
 extern "C"
 {
 Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const char *)
@@ -77,15 +76,13 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
 
     mNextDay = new QSpinBox(this);
     mNextDay->setSuffix(
-                i18nc("@label suffix in the N days spin box", " days"));
+        i18nc("@label suffix in the N days spin box", " days"));
     connect(mNextDay, &QSpinBox::valueChanged,
             this, &KOPrefsDialogViews::slotConfigChanged);
-
 
     nextDaysLayout->addWidget(new QLabel(KOPrefs::instance()->nextXDaysItem()->label(), this));
     nextDaysLayout->addWidget(mNextDay);
     nextDaysLayout->addStretch(1);
-
 
     mEnableToolTipsCheckBox = new QCheckBox(KOPrefs::instance()->enableToolTipsItem()->label(), this);
     connect(mEnableToolTipsCheckBox, &QCheckBox::clicked,
@@ -141,7 +138,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
 
     mHourSize = new QSpinBox(this);
     mHourSize->setSuffix(
-                i18nc("@label suffix in the hour size spin box", " pixels"));
+        i18nc("@label suffix in the hour size spin box", " pixels"));
 
     hourSizeLayout->addWidget(new QLabel(KOPrefs::instance()->hourSizeItem()->label(), this));
     hourSizeLayout->addWidget(mHourSize);
@@ -171,7 +168,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     adisplayLayout->addWidget(mSelectionStartsEditorCheckbox);
 
     mAgendaIconComboBox->setCheckedIcons(
-                KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons());
+        KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons());
     adisplayLayout->addWidget(mAgendaIconComboBox);
     adisplayBox->setLayout(adisplayLayout);
     agendaLayout->addWidget(adisplayBox);
@@ -222,7 +219,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     mdisplayBox->setLayout(mdisplayLayout);
 
     mMonthIconComboBox->setCheckedIcons(
-                KOPrefs::instance()->eventViewsPreferences()->monthViewIcons());
+        KOPrefs::instance()->eventViewsPreferences()->monthViewIcons());
     mdisplayLayout->addWidget(mMonthIconComboBox);
 
     monthLayout->addWidget(mdisplayBox);
@@ -273,9 +270,9 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
 void KOPrefsDialogViews::load()
 {
     KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
-                mAgendaIconComboBox->checkedIcons());
+        mAgendaIconComboBox->checkedIcons());
     KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(
-                mMonthIconComboBox->checkedIcons());
+        mMonthIconComboBox->checkedIcons());
 
     mEnableToolTipsCheckBox->setChecked(KOPrefs::instance()->enableToolTips());
     mTodosUseCategoryColorsCheckBox->setChecked(KOPrefs::instance()->todosUseCategoryColors());
@@ -325,7 +322,6 @@ void KOPrefsDialogViews::save()
     KOPrefs::instance()->setSelectionStartsEditor(mSelectionStartsEditorCheckbox->isChecked());
     KOPrefs::instance()->setColorBusyDaysEnabled(mColorBusyDaysEnabledCheckBox->isChecked());
     KOPrefs::instance()->setNextXDays(mNextDay->value());
-
 }
 
 void KOPrefsDialogViews::slotConfigChanged()

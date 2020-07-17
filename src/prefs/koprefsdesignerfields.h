@@ -41,5 +41,4 @@ protected:
     Q_REQUIRED_RESULT QString applicationName() override;
 };
 
-
 #endif // KOPREFSDESIGNERFIELDS_H

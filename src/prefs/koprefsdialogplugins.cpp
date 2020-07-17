@@ -23,7 +23,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-
 #include "koprefsdialogplugins.h"
 #include "koprefs.h"
 #include "kocore.h"

@@ -75,7 +75,6 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     korganizer_options(&parser);
     parser.process(args);
 
-
     if (parser.isSet(QStringLiteral("view"))) {
         processCalendar(QUrl(), false);
         const auto url = QUrl{parser.value(QStringLiteral("view"))};
@@ -83,18 +82,18 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
         fetchJob->fetchScope().fetchFullPayload();
         connect(fetchJob, &Akonadi::ItemFetchJob::result,
                 this, [](KJob *job) {
-                    if (job->error()) {
-                        KMessageBox::detailedSorry(nullptr, i18n("Failed to retrieve incidence from Akonadi"), job->errorText());
-                        return;
-                    }
-                    auto fetchJob = static_cast<Akonadi::ItemFetchJob*>(job);
-                    if (fetchJob->count() != 1) {
-                        KMessageBox::sorry(nullptr, i18n("Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."));
-                        return;
-                    }
-                    KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
-                    korg->actionManager()->view()->showIncidence(fetchJob->items().first());
-               });
+            if (job->error()) {
+                KMessageBox::detailedSorry(nullptr, i18n("Failed to retrieve incidence from Akonadi"), job->errorText());
+                return;
+            }
+            auto fetchJob = static_cast<Akonadi::ItemFetchJob *>(job);
+            if (fetchJob->count() != 1) {
+                KMessageBox::sorry(nullptr, i18n("Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."));
+                return;
+            }
+            KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());
+            korg->actionManager()->view()->showIncidence(fetchJob->items().first());
+        });
         return 0;
     }
 

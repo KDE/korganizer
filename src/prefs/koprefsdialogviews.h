@@ -23,7 +23,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-
 #ifndef KOPREFSDIALOGVIEWS_H
 #define KOPREFSDIALOGVIEWS_H
 

@@ -52,5 +52,4 @@ private:
     QCheckBox *mShowReminderDaemonCheckBox = nullptr;
 };
 
-
 #endif // KOPREFSDIALOGMAIN_H

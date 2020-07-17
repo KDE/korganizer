@@ -43,5 +43,4 @@ private:
     QCheckBox *mBccBox = nullptr;
 };
 
-
 #endif // KOPREFSDIALOGGROUPSCHEDULING_H
