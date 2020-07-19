@@ -83,8 +83,21 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QButtonGroup *defaultEmailAttachGroup = new QButtonGroup(this);
     QRadioButton *askRadioButton = new QRadioButton(i18n("Always ask"), this);
     defaultEmailAttachGroup->addButton(askRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::Ask);
+
+    QRadioButton *linkRadioButton = new QRadioButton(i18n("Only attach link to message"), this);
+    defaultEmailAttachGroup->addButton(linkRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::Link);
+
+    QRadioButton *inlineFullRadioButton = new QRadioButton(i18n("Attach complete message"), this);
+    defaultEmailAttachGroup->addButton(inlineFullRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::InlineFull);
+
+    QRadioButton *inlineBodyRadioButton = new QRadioButton(i18n("Attach message without attachments"), this);
+    defaultEmailAttachGroup->addButton(inlineBodyRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::InlineBody);
+
     QVBoxLayout *defaultEmailAttachMethodGroupBoxLayout = new QVBoxLayout(defaultEmailAttachMethodGroupBox);
     defaultEmailAttachMethodGroupBoxLayout->addWidget(askRadioButton);
+    defaultEmailAttachMethodGroupBoxLayout->addWidget(linkRadioButton);
+    defaultEmailAttachMethodGroupBoxLayout->addWidget(inlineFullRadioButton);
+    defaultEmailAttachMethodGroupBoxLayout->addWidget(inlineBodyRadioButton);
 
     personalLayout->addWidget(defaultEmailAttachMethodGroupBox);
     personalLayout->addStretch(1);
@@ -150,6 +163,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
 void KOPrefsDialogMain::load()
 {
+    //TODO Load DefaultEmailAttachMethod
     mEmailControlCenterCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->emailControlCenter());
     mUserName->setText(CalendarSupport::KCalPrefs::instance()->userName());
     mUserEmail->setText(CalendarSupport::KCalPrefs::instance()->userEmail());
@@ -160,6 +174,7 @@ void KOPrefsDialogMain::load()
 
 void KOPrefsDialogMain::save()
 {
+    //TODO Save DefaultEmailAttachMethod
     CalendarSupport::KCalPrefs::instance()->setEmailControlCenter(mEmailControlCenterCheckBox->isChecked());
     CalendarSupport::KCalPrefs::instance()->setUserName(mUserName->text());
     CalendarSupport::KCalPrefs::instance()->setUserEmail(mUserEmail->text());
