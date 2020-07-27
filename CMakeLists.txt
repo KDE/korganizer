@@ -74,8 +74,9 @@ set(LIBKDEPIM_LIB_VERSION_LIB "5.15.40")
 set(LIBINCIDENCEEDITOR_LIB_VERSION_LIB "5.15.40")
 set(CALENDARSUPPORT_LIB_VERSION_LIB "5.15.40")
 set(EVENTVIEW_LIB_VERSION_LIB "5.15.40")
+set(AKONADI_SEARCH_VERSION "5.15.40")
 
-find_package(KF5AkonadiSearch "5.15.40" CONFIG REQUIRED)
+find_package(KF5AkonadiSearch ${AKONADI_SEARCH_VERSION} CONFIG REQUIRED)
 set_package_properties(KF5AkonadiSearch PROPERTIES DESCRIPTION "The Akonadi Search libraries" URL "https://www.kde.org" TYPE REQUIRED PURPOSE "Provides search capabilities in KMail and Akonadi")
 
 # Find KF5 package
