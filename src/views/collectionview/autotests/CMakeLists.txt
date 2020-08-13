@@ -6,7 +6,6 @@ include_directories(
 set(reparentingmodeltest_SRCS
     reparentingmodeltest.cpp
     ../reparentingmodel.cpp
-    modeltest.cpp
     ../../../korganizer_debug.cpp
 )
 
