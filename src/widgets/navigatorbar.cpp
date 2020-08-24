@@ -22,7 +22,7 @@ NavigatorBar::NavigatorBar(QWidget *parent) : QWidget(parent)
     tfont.setPointSize(10);
     tfont.setBold(false);
 
-    bool isRTL = KOGlobals::self()->reverseLayout();
+    const bool isRTL = KOGlobals::self()->reverseLayout();
 
     mPrevYear = createNavigationButton(
         isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),

@@ -26,7 +26,6 @@
 KOEventView::KOEventView(QWidget *parent)
     : KOrg::BaseView(parent)
 {
-    mReturnPressed = false;
     mTypeAhead = false;
     mTypeAheadReceiver = nullptr;
 
