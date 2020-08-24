@@ -44,7 +44,7 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
                       i18nc("@action:inmenu", "New Event..."), this);
     actionCollection()->addAction(QStringLiteral("new_event"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_E));
-    QString str = i18nc("@info:status", "Create a new event");
+    const QString str = i18nc("@info:status", "Create a new event");
     action->setStatusTip(str);
     action->setToolTip(str);
 
