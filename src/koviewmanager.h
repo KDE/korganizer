@@ -183,9 +183,9 @@ private:
 
     KOrg::BaseView *mLastEventView = nullptr;
     QTabWidget *mAgendaViewTabs = nullptr;
-    int mAgendaViewTabIndex;
+    int mAgendaViewTabIndex = 0;
 
-    RangeMode mRangeMode;
+    RangeMode mRangeMode = NO_RANGE;
 };
 
 #endif

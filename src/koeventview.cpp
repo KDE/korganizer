@@ -26,9 +26,6 @@
 KOEventView::KOEventView(QWidget *parent)
     : KOrg::BaseView(parent)
 {
-    mTypeAhead = false;
-    mTypeAheadReceiver = nullptr;
-
     //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(),
     //which triggered finishTypeAhead. But the global focus widget in QApplication is
     //changed later, thus subsequent keyevents still went to this view, triggering

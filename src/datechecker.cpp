@@ -13,7 +13,6 @@
 
 DateChecker::DateChecker(QObject *parent)
     : QObject(parent)
-    , mUpdateTimer(nullptr)
 {
     enableRollover(FollowMonth);
 }

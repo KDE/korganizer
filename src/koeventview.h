@@ -152,7 +152,7 @@ private:
 
 private:
 
-    bool mTypeAhead;
+    bool mTypeAhead = false;
     QObject *mTypeAheadReceiver = nullptr;
     QList<QEvent *> mTypeAheadEvents;
 };

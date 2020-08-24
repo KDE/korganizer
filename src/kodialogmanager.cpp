@@ -54,11 +54,6 @@ KODialogManager::KODialogManager(CalendarView *mainView)
     : QObject()
     , mMainView(mainView)
 {
-    mOptionsDialog = nullptr;
-    mSearchDialog = nullptr;
-    mArchiveDialog = nullptr;
-    mFilterEditDialog = nullptr;
-    mCategoryEditDialog = nullptr;
 }
 
 KODialogManager::~KODialogManager()

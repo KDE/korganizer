@@ -196,7 +196,7 @@ void KOAlarmClient::checkAlarms()
         return;
     }
 
-    QDateTime from = mLastChecked.addSecs(1);
+    const QDateTime from = mLastChecked.addSecs(1);
     mLastChecked = QDateTime::currentDateTime();
 
     qCDebug(KOALARMCLIENT_LOG) << "Check:" << from.toString() << " -" << mLastChecked.toString();

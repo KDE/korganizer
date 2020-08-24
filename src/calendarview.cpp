@@ -84,8 +84,6 @@
 
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)
-    , mCheckableProxyModel(nullptr)
-    , mETMCollectionView(nullptr)
     , mSearchCollectionHelper(this)
 {
     Akonadi::ControlGui::widgetNeedsAkonadi(this);

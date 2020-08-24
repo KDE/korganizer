@@ -78,10 +78,6 @@ KOWindowList *ActionManager::mWindowList = nullptr;
 
 ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget, QObject *parent, KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar)
     : QObject(parent)
-    , mCollectionViewShowAction(nullptr)
-    , mCollectionView(nullptr)
-    , mCollectionViewStateSaver(nullptr)
-    , mCollectionSelectionModelStateSaver(nullptr)
 {
     new KOrgCalendarAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Calendar"), this);
@@ -90,7 +86,6 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget, QObjec
     mACollection = mGUIClient->actionCollection();
     mCalendarView = widget;
     mIsPart = isPart;
-    mTempFile = nullptr;
     mMainWindow = mainWindow;
     mMenuBar = menuBar;
 }
