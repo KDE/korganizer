@@ -1,7 +1,7 @@
 /*
   SPDX-FileCopyrightText: 2014 Sandro Knauß <knauss@kolabsys.com>
 
-  SPDX-License-Identifier: GPL-2.0-only
+  SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 #ifndef KOEVENTPOPUPMENUTESTTEST_H
