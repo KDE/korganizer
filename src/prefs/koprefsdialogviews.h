@@ -28,8 +28,8 @@ public:
 private:
     void slotConfigChanged();
 private:
-    KItemIconCheckCombo *mMonthIconComboBox = nullptr;
-    KItemIconCheckCombo *mAgendaIconComboBox = nullptr;
+    KItemIconCheckCombo *const mMonthIconComboBox;
+    KItemIconCheckCombo *const mAgendaIconComboBox;
     QCheckBox *mEnableToolTipsCheckBox = nullptr;
     QCheckBox *mTodosUseCategoryColorsCheckBox = nullptr;
     QCheckBox *mRecordTodosInJournalsCheckBox = nullptr;

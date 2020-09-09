@@ -13,12 +13,12 @@
 #include "korganizer_options.h"
 #include "korganizer_debug.h"
 #include "korgmigrateapplication.h"
+#include <KLocalizedString>
+#include <KCrash>
 
 #ifdef WITH_KUSERFEEDBACK
 #include "userfeedback/korganizeruserfeedbackprovider.h"
 #endif
-#include <KLocalizedString>
-#include <KCrash>
 int main(int argc, char **argv)
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);

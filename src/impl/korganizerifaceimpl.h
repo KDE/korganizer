@@ -81,7 +81,7 @@ public Q_SLOTS:
     Q_REQUIRED_RESULT bool handleCommandLine(const QStringList &args);
 
 private:
-    ActionManager *mActionManager = nullptr;
+    ActionManager *const mActionManager;
 };
 
 #endif // KORGANIZER_SHARED_H

@@ -34,9 +34,9 @@ private:
     void readConfig();
     void writeConfig();
 
-    Ui_quickview *mUi = nullptr;
+    Ui_quickview *const mUi;
     EventViews::AgendaView *mAgendaView = nullptr;
-    Akonadi::Collection mCollection;
+    const Akonadi::Collection mCollection;
     int mDayRange = 7;
 };
 

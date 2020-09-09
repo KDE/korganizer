@@ -16,14 +16,14 @@
  */
 
 ReparentingModel::Node::Node(ReparentingModel &model)
-    :   parent(nullptr)
+    : parent(nullptr)
     , personModel(model)
     , mIsSourceNode(false)
 {
 }
 
 ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *p, const QModelIndex &srcIndex)
-    :   sourceIndex(srcIndex)
+    : sourceIndex(srcIndex)
     , parent(p)
     , personModel(model)
     , mIsSourceNode(true)

@@ -23,7 +23,7 @@ public:
         delete prefs;
     }
 
-    KOPrefs *prefs = nullptr;
+    KOPrefs *const prefs;
 };
 
 Q_GLOBAL_STATIC(KOPrefsPrivate, sInstance)

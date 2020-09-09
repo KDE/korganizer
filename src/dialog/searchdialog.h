@@ -60,8 +60,8 @@ private:
     void writeConfig();
     void updateMatchesText();
 
-    Ui::SearchDialog *m_ui = nullptr;
-    CalendarView *m_calendarview = nullptr; // parent
+    Ui::SearchDialog *const m_ui;
+    CalendarView *const m_calendarview; // parent
     KOEventPopupMenu *m_popupMenu = nullptr;
     Akonadi::Item::List mMatchedEvents;
     EventViews::ListView *listView = nullptr;

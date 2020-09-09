@@ -26,13 +26,13 @@ class PluginItem : public QTreeWidgetItem
 {
 public:
     PluginItem(QTreeWidget *parent, const KService::Ptr &service)
-        : QTreeWidgetItem(parent, QStringList(service->name()))
+        : QTreeWidgetItem(parent, {service->name()})
         , mService(service)
     {
     }
 
     PluginItem(QTreeWidgetItem *parent, const KService::Ptr &service)
-        : QTreeWidgetItem(parent, QStringList(service->name()))
+        : QTreeWidgetItem(parent, {service->name()})
         , mService(service)
     {
     }
@@ -43,7 +43,7 @@ public:
     }
 
 private:
-    KService::Ptr mService;
+    const KService::Ptr mService;
 };
 
 /**

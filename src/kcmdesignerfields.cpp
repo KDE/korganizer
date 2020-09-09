@@ -40,7 +40,6 @@ public:
     PageItem(QTreeWidget *parent, const QString &path)
         : QTreeWidgetItem(parent)
         , mPath(path)
-        , mIsActive(false)
     {
         setFlags(flags() | Qt::ItemIsUserCheckable);
         setCheckState(0, Qt::Unchecked);
@@ -122,9 +121,9 @@ public:
 
 private:
     QString mName;
-    QString mPath;
+    const QString mPath;
     QPixmap mPreview;
-    bool mIsActive;
+    bool mIsActive = false;
 };
 
 KCMDesignerFields::KCMDesignerFields(QWidget *parent, const QVariantList &args)

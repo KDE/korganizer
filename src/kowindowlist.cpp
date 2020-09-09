@@ -13,7 +13,6 @@
 
 KOWindowList::KOWindowList()
     : QObject(nullptr)
-    , mDefaultWindow(nullptr)
 {
 }
 

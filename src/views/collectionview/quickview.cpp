@@ -32,7 +32,6 @@ Quickview::Quickview(const Akonadi::Collection &col)
     : QDialog()
     , mUi(new Ui_quickview)
     , mCollection(col)
-    , mDayRange(7)
 {
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     QWidget *mainWidget = new QWidget(this);

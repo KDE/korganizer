@@ -169,7 +169,7 @@ private Q_SLOTS:
 private:
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
-    CalendarView *mMainView = nullptr;
+    CalendarView *const mMainView;
 
     KOAgendaView *mAgendaView = nullptr;
     KOrg::MultiAgendaView *mAgendaSideBySideView = nullptr;

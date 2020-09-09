@@ -29,7 +29,7 @@ public:
     Q_REQUIRED_RESULT QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
 
 private:
-    KItemIconCheckCombo::ViewType mViewType;
+    const KItemIconCheckCombo::ViewType mViewType;
 };
 
 #endif // KITEMICONCHECKCOMBO_H

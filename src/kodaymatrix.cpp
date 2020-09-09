@@ -39,7 +39,6 @@ const int KODayMatrix::NUMDAYS = 42;
 KODayMatrix::KODayMatrix(QWidget *parent)
     : QFrame(parent)
     , mStartDate()
-    , mPendingChanges(false)
 {
     // initialize dynamic arrays
     mDays = new QDate[NUMDAYS];

@@ -68,7 +68,7 @@ private:
     class DialogManagerVisitor;
     class EditorDialogVisitor;
 
-    CalendarView *mMainView = nullptr;
+    CalendarView *const mMainView;
     KCMultiDialog *mOptionsDialog = nullptr;
     QPointer<Akonadi::TagManagementDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog = nullptr;
