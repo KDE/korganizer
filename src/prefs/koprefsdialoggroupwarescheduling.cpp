@@ -16,7 +16,7 @@
 #include <CalendarSupport/KCalPrefs>
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent)
-    : KCModule(parent)
+    : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent)
 {
     mGroupwarePage = new Ui::KOGroupwarePrefsPage();
     QWidget *widget = new QWidget(this);
@@ -30,31 +30,31 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     // signals and slots connections
 
     connect(mGroupwarePage->publishDays, qOverload<int>(&QSpinBox::valueChanged),
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUser, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishSavePassword, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveEnable, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveUser, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishDelay, qOverload<int>(&QSpinBox::valueChanged),
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishEnable, &QCheckBox::toggled,
-            this, &KOPrefsDialogGroupwareScheduling::slotConfigChanged);
+            this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 
     (new QVBoxLayout(this))->addWidget(widget);
 
@@ -66,12 +66,7 @@ KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
     delete mGroupwarePage;
 }
 
-void KOPrefsDialogGroupwareScheduling::slotConfigChanged()
-{
-    Q_EMIT changed(true);
-}
-
-void KOPrefsDialogGroupwareScheduling::load()
+void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
     mGroupwarePage->publishEnable->setChecked(
         Akonadi::CalendarSettings::self()->freeBusyPublishAuto());
@@ -102,7 +97,7 @@ void KOPrefsDialogGroupwareScheduling::load()
         Akonadi::CalendarSettings::self()->freeBusyRetrieveSavePassword());
 }
 
-void KOPrefsDialogGroupwareScheduling::save()
+void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
     Akonadi::CalendarSettings::self()->setFreeBusyPublishAuto(
         mGroupwarePage->publishEnable->isChecked());

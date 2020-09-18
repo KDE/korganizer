@@ -30,8 +30,9 @@ Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const char
 }
 }
 
+
 KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
-    : KCModule(parent)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
     , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
     , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 {
@@ -40,9 +41,9 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     topTopLayout->addWidget(tabWidget);
 
     connect(mMonthIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
-            this, &KOPrefsDialogViews::slotConfigChanged);
+            this, &Korganizer::KPrefsModule::slotWidChanged);
     connect(mAgendaIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
-            this, &KOPrefsDialogViews::slotConfigChanged);
+            this, &Korganizer::KPrefsModule::slotWidChanged);
 
     // Tab: Views->General
     QFrame *generalFrame = new QFrame(this);
@@ -58,50 +59,35 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QBoxLayout *nextDaysLayout = new QHBoxLayout;
     gdisplayLayout->addLayout(nextDaysLayout);
 
-    mNextDay = new QSpinBox(this);
-    mNextDay->setSuffix(
-        i18nc("@label suffix in the N days spin box", " days"));
-    connect(mNextDay, &QSpinBox::valueChanged,
-            this, &KOPrefsDialogViews::slotConfigChanged);
+    Korganizer::KPrefsWidInt *nextDays
+            = addWidInt(KOPrefs::instance()->nextXDaysItem());
+    nextDays->spinBox()->setSuffix(
+                i18nc("@label suffix in the N days spin box", " days"));
 
-    nextDaysLayout->addWidget(new QLabel(KOPrefs::instance()->nextXDaysItem()->label(), this));
-    nextDaysLayout->addWidget(mNextDay);
+    nextDaysLayout->addWidget(nextDays->label());
+    nextDaysLayout->addWidget(nextDays->spinBox());
     nextDaysLayout->addStretch(1);
 
-    mEnableToolTipsCheckBox = new QCheckBox(KOPrefs::instance()->enableToolTipsItem()->label(), this);
-    connect(mEnableToolTipsCheckBox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-
-    mTodosUseCategoryColorsCheckBox = new QCheckBox(KOPrefs::instance()->todosUseCategoryColorsItem()->label(), this);
-    connect(mTodosUseCategoryColorsCheckBox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-
-    gdisplayLayout->addWidget(mEnableToolTipsCheckBox);
-    gdisplayLayout->addWidget(mTodosUseCategoryColorsCheckBox);
+    gdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->enableToolTipsItem())->checkBox());
+    gdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->todosUseCategoryColorsItem())->checkBox());
     gdisplayBox->setLayout(gdisplayLayout);
     generalLayout->addWidget(gdisplayBox);
 
     // GroupBox: Views->General->Date Navigator
     QVBoxLayout *datenavLayout = new QVBoxLayout;
     QGroupBox *datenavBox = new QGroupBox(i18nc("@title:group", "Date Navigator"));
-    mDailyRecurCheckbox = new QCheckBox(KOPrefs::instance()->dailyRecurItem()->label(), this);
-    connect(mDailyRecurCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    mWeeklyRecurCheckbox = new QCheckBox(KOPrefs::instance()->weeklyRecurItem()->label(), this);
-    connect(mWeeklyRecurCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    mHighlightTodosCheckbox = new QCheckBox(KOPrefs::instance()->highlightTodosItem()->label(), this);
-    connect(mHighlightTodosCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    mHighlightJournalsCheckbox = new QCheckBox(KOPrefs::instance()->highlightJournalsItem()->label(), this);
-    connect(mHighlightJournalsCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    mWeekNumbersShowWorkCheckbox = new QCheckBox(KOPrefs::instance()->weekNumbersShowWorkItem()->label(), this);
-    datenavLayout->addWidget(mDailyRecurCheckbox);
-    datenavLayout->addWidget(mWeeklyRecurCheckbox);
-    datenavLayout->addWidget(mHighlightTodosCheckbox);
-    datenavLayout->addWidget(mHighlightJournalsCheckbox);
-    datenavLayout->addWidget(mWeekNumbersShowWorkCheckbox);
+    datenavLayout->addWidget(
+                addWidBool(KOPrefs::instance()->dailyRecurItem())->checkBox());
+    datenavLayout->addWidget(
+                addWidBool(KOPrefs::instance()->weeklyRecurItem())->checkBox());
+    datenavLayout->addWidget(
+                addWidBool(KOPrefs::instance()->highlightTodosItem())->checkBox());
+    datenavLayout->addWidget(
+                addWidBool(KOPrefs::instance()->highlightJournalsItem())->checkBox());
+    datenavLayout->addWidget(
+                addWidBool(KOPrefs::instance()->weekNumbersShowWorkItem())->checkBox());
     datenavBox->setLayout(datenavLayout);
     generalLayout->addWidget(datenavBox);
     generalLayout->addStretch(1);
@@ -120,57 +106,47 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QHBoxLayout *hourSizeLayout = new QHBoxLayout;
     adisplayLayout->addLayout(hourSizeLayout);
 
-    mHourSize = new QSpinBox(this);
-    mHourSize->setSuffix(
-        i18nc("@label suffix in the hour size spin box", " pixels"));
+    Korganizer::KPrefsWidInt *hourSize
+            = addWidInt(KOPrefs::instance()->hourSizeItem());
+    hourSize->spinBox()->setSuffix(
+                i18nc("@label suffix in the hour size spin box", " pixels"));
 
-    hourSizeLayout->addWidget(new QLabel(KOPrefs::instance()->hourSizeItem()->label(), this));
-    hourSizeLayout->addWidget(mHourSize);
+    hourSizeLayout->addWidget(hourSize->label());
+    hourSizeLayout->addWidget(hourSize->spinBox());
     hourSizeLayout->addStretch(1);
 
-    mEnableAgendaItemIconsCheckbox = new QCheckBox(KOPrefs::instance()->enableAgendaItemIconsItem()->label(), this);
-    connect(mEnableAgendaItemIconsCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    adisplayLayout->addWidget(mEnableAgendaItemIconsCheckbox);
-    mShowTodosAgendaViewCheckbox = new QCheckBox(KOPrefs::instance()->showTodosAgendaViewItem()->label(), this);
-    connect(mShowTodosAgendaViewCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    adisplayLayout->addWidget(mShowTodosAgendaViewCheckbox);
-    mMarcusBainsEnabledCheckbox = new QCheckBox(KOPrefs::instance()->marcusBainsEnabledItem()->label(), this);
-    connect(mMarcusBainsEnabledCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    adisplayLayout->addWidget(mMarcusBainsEnabledCheckbox);
-    mMarcusBainsShowSecondsCheckbox = new QCheckBox(KOPrefs::instance()->marcusBainsShowSecondsItem()->label(), this);
-    connect(mMarcusBainsShowSecondsCheckbox, &QCheckBox::clicked,
-            this, &KOPrefsDialogViews::slotConfigChanged);
-    adisplayLayout->addWidget(mMarcusBainsShowSecondsCheckbox);
-    connect(mMarcusBainsShowSecondsCheckbox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    mSelectionStartsEditorCheckbox = new QCheckBox(KOPrefs::instance()->selectionStartsEditorItem()->label(), this);
-    connect(mSelectionStartsEditorCheckbox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    adisplayLayout->addWidget(mSelectionStartsEditorCheckbox);
+    adisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->enableAgendaItemIconsItem())->checkBox());
+    adisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->showTodosAgendaViewItem())->checkBox());
+    Korganizer::KPrefsWidBool *marcusBainsEnabled
+            = addWidBool(KOPrefs::instance()->marcusBainsEnabledItem());
+    adisplayLayout->addWidget(marcusBainsEnabled->checkBox());
 
+    Korganizer::KPrefsWidBool *marcusBainsShowSeconds
+            = addWidBool(KOPrefs::instance()->marcusBainsShowSecondsItem());
+    connect(marcusBainsEnabled->checkBox(), &QAbstractButton::toggled,
+            marcusBainsShowSeconds->checkBox(), &QWidget::setEnabled);
+
+    adisplayLayout->addWidget(marcusBainsShowSeconds->checkBox());
+    adisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->selectionStartsEditorItem())->checkBox());
     mAgendaIconComboBox->setCheckedIcons(
-        KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons());
+                KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons());
     adisplayLayout->addWidget(mAgendaIconComboBox);
     adisplayBox->setLayout(adisplayLayout);
     agendaLayout->addWidget(adisplayBox);
 
     // GroupBox: Views->Agenda View->Color Usage
-    //FIXME
-    //        agendaLayout->addWidget(
-    //            addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
+    agendaLayout->addWidget(
+                addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
 
-    mColorBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorBusyDaysEnabledItem()->label(), this);
-    connect(mColorBusyDaysEnabledCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    agendaLayout->addWidget(mColorBusyDaysEnabledCheckBox);
+    agendaLayout->addWidget(
+                addWidBool(KOPrefs::instance()->colorBusyDaysEnabledItem())->checkBox());
 
     // GroupBox: Views->Agenda View->Multiple Calendars
-    //FIXME
-    //        agendaLayout->addWidget(
-    //            addWidRadios(KOPrefs::instance()->agendaViewCalendarDisplayItem())->groupBox());
+    agendaLayout->addWidget(
+                addWidRadios(KOPrefs::instance()->agendaViewCalendarDisplayItem())->groupBox());
 
     agendaLayout->addStretch(1);
 
@@ -184,39 +160,30 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     // GroupBox: Views->Month View->Display Options
     QVBoxLayout *mdisplayLayout = new QVBoxLayout;
     QGroupBox *mdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
-    mShowTimeInMonthViewCheckBox = new QCheckBox(KOPrefs::instance()->showTimeInMonthViewItem()->label(), this);
-    connect(mShowTimeInMonthViewCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    mdisplayLayout->addWidget(mShowTimeInMonthViewCheckBox);
-    mEnableMonthItemIconsCheckBox = new QCheckBox(KOPrefs::instance()->enableMonthItemIconsItem()->label(), this);
-    connect(mEnableMonthItemIconsCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    mdisplayLayout->addWidget(mEnableMonthItemIconsCheckBox);
-    mShowTodosMonthViewCheckBox = new QCheckBox(KOPrefs::instance()->showTodosMonthViewItem()->label(), this);
-    connect(mShowTodosMonthViewCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    mdisplayLayout->addWidget(mShowTodosMonthViewCheckBox);
-    mShowJournalsMonthViewCheckBox = new QCheckBox(KOPrefs::instance()->showJournalsMonthViewItem()->label(), this);
-    connect(mShowJournalsMonthViewCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    mdisplayLayout->addWidget(mShowJournalsMonthViewCheckBox);
+    /*mdisplayLayout->addWidget(
+          addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
+    mdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->showTimeInMonthViewItem())->checkBox());
+    mdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->enableMonthItemIconsItem())->checkBox());
+    mdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->showTodosMonthViewItem())->checkBox());
+    mdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->showJournalsMonthViewItem())->checkBox());
     mdisplayBox->setLayout(mdisplayLayout);
 
     mMonthIconComboBox->setCheckedIcons(
-        KOPrefs::instance()->eventViewsPreferences()->monthViewIcons());
+                KOPrefs::instance()->eventViewsPreferences()->monthViewIcons());
     mdisplayLayout->addWidget(mMonthIconComboBox);
 
     monthLayout->addWidget(mdisplayBox);
 
-    mColorMonthBusyDaysEnabledCheckBox = new QCheckBox(KOPrefs::instance()->colorMonthBusyDaysEnabledItem()->label(), this);
-    connect(mColorMonthBusyDaysEnabledCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    monthLayout->addWidget(mColorMonthBusyDaysEnabledCheckBox);
+    monthLayout->addWidget(
+                addWidBool(KOPrefs::instance()->colorMonthBusyDaysEnabledItem())->checkBox());
 
     // GroupBox: Views->Month View->Color Usage
-    //FIXME
-    //        monthLayout->addWidget(
-    //            addWidRadios(KOPrefs::instance()->monthViewColorsItem())->groupBox());
+    monthLayout->addWidget(
+                addWidRadios(KOPrefs::instance()->monthViewColorsItem())->groupBox());
     monthLayout->addStretch(1);
 
     // Tab: Views->Todo View
@@ -229,21 +196,16 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     // GroupBox: Views->Todo View->Display Options
     QVBoxLayout *tdisplayLayout = new QVBoxLayout;
     QGroupBox *tdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
-    mSortCompletedTodosSeparatelyCheckBox = new QCheckBox(KOPrefs::instance()->sortCompletedTodosSeparatelyItem()->label(), this);
-    connect(mSortCompletedTodosSeparatelyCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-
-    tdisplayLayout->addWidget(mSortCompletedTodosSeparatelyCheckBox);
+    tdisplayLayout->addWidget(
+                addWidBool(KOPrefs::instance()->sortCompletedTodosSeparatelyItem())->checkBox());
     tdisplayBox->setLayout(tdisplayLayout);
     todoLayout->addWidget(tdisplayBox);
 
     // GroupBox: Views->Todo View->Other
     QVBoxLayout *otherLayout = new QVBoxLayout;
     QGroupBox *otherBox = new QGroupBox(i18nc("@title:group", "Other Options"));
-    mRecordTodosInJournalsCheckBox = new QCheckBox(KOPrefs::instance()->recordTodosInJournalsItem()->label(), this);
-    connect(mRecordTodosInJournalsCheckBox, &QAbstractButton::toggled,
-            this, &QWidget::setEnabled);
-    otherLayout->addWidget(mRecordTodosInJournalsCheckBox);
+    otherLayout->addWidget(
+                addWidBool(KOPrefs::instance()->recordTodosInJournalsItem())->checkBox());
     otherBox->setLayout(otherLayout);
     todoLayout->addWidget(otherBox);
     todoLayout->addStretch(1);
@@ -251,64 +213,10 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     load();
 }
 
-void KOPrefsDialogViews::load()
+void KOPrefsDialogViews::usrReadConfig()
 {
     KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(
-        mAgendaIconComboBox->checkedIcons());
+                mAgendaIconComboBox->checkedIcons());
     KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(
-        mMonthIconComboBox->checkedIcons());
-
-    mEnableToolTipsCheckBox->setChecked(KOPrefs::instance()->enableToolTips());
-    mTodosUseCategoryColorsCheckBox->setChecked(KOPrefs::instance()->todosUseCategoryColors());
-    mRecordTodosInJournalsCheckBox->setChecked(KOPrefs::instance()->recordTodosInJournals());
-    mSortCompletedTodosSeparatelyCheckBox->setChecked(KOPrefs::instance()->sortCompletedTodosSeparately());
-    mColorMonthBusyDaysEnabledCheckBox->setChecked(KOPrefs::instance()->colorMonthBusyDaysEnabled());
-    mDailyRecurCheckbox->setChecked(KOPrefs::instance()->dailyRecur());
-    mWeeklyRecurCheckbox->setChecked(KOPrefs::instance()->weeklyRecur());
-    mHighlightTodosCheckbox->setChecked(KOPrefs::instance()->highlightTodos());
-    mHighlightJournalsCheckbox->setChecked(KOPrefs::instance()->highlightJournals());
-    mWeekNumbersShowWorkCheckbox->setChecked(KOPrefs::instance()->weekNumbersShowWork());
-    mShowTimeInMonthViewCheckBox->setChecked(KOPrefs::instance()->showTimeInMonthView());
-    mEnableMonthItemIconsCheckBox->setChecked(KOPrefs::instance()->enableMonthItemIcons());
-    mShowTodosMonthViewCheckBox->setChecked(KOPrefs::instance()->showTodosMonthView());
-    mShowJournalsMonthViewCheckBox->setChecked(KOPrefs::instance()->showJournalsMonthView());
-    mHourSize->setValue(KOPrefs::instance()->hourSize());
-    mEnableAgendaItemIconsCheckbox->setChecked(KOPrefs::instance()->enableAgendaItemIcons());
-    mShowTodosAgendaViewCheckbox->setChecked(KOPrefs::instance()->showTodosAgendaView());
-    mMarcusBainsEnabledCheckbox->setChecked(KOPrefs::instance()->marcusBainsEnabled());
-    mMarcusBainsShowSecondsCheckbox->setChecked(KOPrefs::instance()->marcusBainsShowSeconds());
-    mSelectionStartsEditorCheckbox->setChecked(KOPrefs::instance()->selectionStartsEditor());
-    mColorBusyDaysEnabledCheckBox->setChecked(KOPrefs::instance()->colorBusyDaysEnabled());
-    mNextDay->setValue(KOPrefs::instance()->nextXDays());
-}
-
-void KOPrefsDialogViews::save()
-{
-    KOPrefs::instance()->setEnableToolTips(mEnableToolTipsCheckBox->isChecked());
-    KOPrefs::instance()->setTodosUseCategoryColors(mTodosUseCategoryColorsCheckBox->isChecked());
-    KOPrefs::instance()->setRecordTodosInJournals(mRecordTodosInJournalsCheckBox->isChecked());
-    KOPrefs::instance()->setSortCompletedTodosSeparately(mSortCompletedTodosSeparatelyCheckBox->isChecked());
-    KOPrefs::instance()->setColorMonthBusyDaysEnabled(mColorMonthBusyDaysEnabledCheckBox->isChecked());
-    KOPrefs::instance()->setDailyRecur(mDailyRecurCheckbox->isChecked());
-    KOPrefs::instance()->setWeeklyRecur(mWeeklyRecurCheckbox->isChecked());
-    KOPrefs::instance()->setHighlightTodos(mHighlightTodosCheckbox->isChecked());
-    KOPrefs::instance()->setHighlightJournals(mHighlightJournalsCheckbox->isChecked());
-    KOPrefs::instance()->setWeekNumbersShowWork(mWeekNumbersShowWorkCheckbox->isChecked());
-    KOPrefs::instance()->setShowTimeInMonthView(mShowTimeInMonthViewCheckBox->isChecked());
-    KOPrefs::instance()->setEnableMonthItemIcons(mEnableMonthItemIconsCheckBox->isChecked());
-    KOPrefs::instance()->setShowTodosMonthView(mShowTodosMonthViewCheckBox->isChecked());
-    KOPrefs::instance()->setShowJournalsMonthView(mShowJournalsMonthViewCheckBox->isChecked());
-    KOPrefs::instance()->setHourSize(mHourSize->value());
-    KOPrefs::instance()->setEnableAgendaItemIcons(mEnableAgendaItemIconsCheckbox->isChecked());
-    KOPrefs::instance()->setShowTodosAgendaView(mShowTodosAgendaViewCheckbox->isChecked());
-    KOPrefs::instance()->setMarcusBainsEnabled(mMarcusBainsEnabledCheckbox->isChecked());
-    KOPrefs::instance()->setMarcusBainsShowSeconds(mMarcusBainsShowSecondsCheckbox->isChecked());
-    KOPrefs::instance()->setSelectionStartsEditor(mSelectionStartsEditorCheckbox->isChecked());
-    KOPrefs::instance()->setColorBusyDaysEnabled(mColorBusyDaysEnabledCheckBox->isChecked());
-    KOPrefs::instance()->setNextXDays(mNextDay->value());
-}
-
-void KOPrefsDialogViews::slotConfigChanged()
-{
-    Q_EMIT markAsChanged();
+                mMonthIconComboBox->checkedIcons());
 }

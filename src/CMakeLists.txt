@@ -71,6 +71,7 @@ set(kcm_korganizer_PART_SRCS
     prefs/koprefsdialogmain.cpp
     prefs/koprefsdialogtime.cpp
     prefs/koprefsdialogviews.cpp
+    prefs/kprefsdialog.cpp
     widgets/kitemiconcheckcombo.cpp
     )
 

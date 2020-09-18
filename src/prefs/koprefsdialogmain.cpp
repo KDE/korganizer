@@ -27,7 +27,7 @@
 #include <QLineEdit>
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
-    : KCModule(parent)
+    : KPrefsModule(KOPrefs::instance(), parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
@@ -40,50 +40,30 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                                                           "preferences-desktop-personal")),
                       i18nc("@title:tab personal settings", "Personal"));
 
-    mEmailControlCenterCheckBox = new QCheckBox(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem()->label(), this);
-    connect(mEmailControlCenterCheckBox, &QAbstractButton::toggled,
+    Korganizer::KPrefsWidBool *emailControlCenter
+        = addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(),
+                     personalFrame);
+    connect(emailControlCenter->checkBox(), &QAbstractButton::toggled,
             this, &KOPrefsDialogMain::toggleEmailSettings);
-    connect(mEmailControlCenterCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
-    personalLayout->addWidget(mEmailControlCenterCheckBox);
+    personalLayout->addWidget(emailControlCenter->checkBox());
 
     mUserEmailSettings = new QGroupBox(i18nc("@title:group email settings", "Email Settings"),
                                        personalFrame);
 
     personalLayout->addWidget(mUserEmailSettings);
     QFormLayout *emailSettingsLayout = new QFormLayout(mUserEmailSettings);
-    mUserName = new QLineEdit(this);
-    emailSettingsLayout->addRow(CalendarSupport::KCalPrefs::instance()->userNameItem()->label(), mUserName);
+    Korganizer::KPrefsWidString *s
+        = addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
+    emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
-    mUserEmail = new QLineEdit(this);
-    emailSettingsLayout->addRow(CalendarSupport::KCalPrefs::instance()->userEmailItem()->label(), mUserEmail);
+    s = addWidString(CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings);
+    emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
-    //FIXME
-//    KPIM::KPrefsWidRadios *defaultEmailAttachMethod
-//        = addWidRadios(
-//              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
-//              personalFrame);
-//    personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
-    QGroupBox *defaultEmailAttachMethodGroupBox = new QGroupBox(this);
-    QButtonGroup *defaultEmailAttachGroup = new QButtonGroup(this);
-    QRadioButton *askRadioButton = new QRadioButton(i18n("Always ask"), this);
-    defaultEmailAttachGroup->addButton(askRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::Ask);
-
-    QRadioButton *linkRadioButton = new QRadioButton(i18n("Only attach link to message"), this);
-    defaultEmailAttachGroup->addButton(linkRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::Link);
-
-    QRadioButton *inlineFullRadioButton = new QRadioButton(i18n("Attach complete message"), this);
-    defaultEmailAttachGroup->addButton(inlineFullRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::InlineFull);
-
-    QRadioButton *inlineBodyRadioButton = new QRadioButton(i18n("Attach message without attachments"), this);
-    defaultEmailAttachGroup->addButton(inlineBodyRadioButton, IncidenceEditorNG::IncidenceEditorSettingsBase::EnumDefaultEmailAttachMethod::InlineBody);
-
-    QVBoxLayout *defaultEmailAttachMethodGroupBoxLayout = new QVBoxLayout(defaultEmailAttachMethodGroupBox);
-    defaultEmailAttachMethodGroupBoxLayout->addWidget(askRadioButton);
-    defaultEmailAttachMethodGroupBoxLayout->addWidget(linkRadioButton);
-    defaultEmailAttachMethodGroupBoxLayout->addWidget(inlineFullRadioButton);
-    defaultEmailAttachMethodGroupBoxLayout->addWidget(inlineBodyRadioButton);
-
-    personalLayout->addWidget(defaultEmailAttachMethodGroupBox);
+    Korganizer::KPrefsWidRadios *defaultEmailAttachMethod
+        = addWidRadios(
+              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
+              personalFrame);
+    personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
     personalLayout->addStretch(1);
 
     // Save Settings
@@ -92,13 +72,13 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                       i18nc("@title:tab", "Save"));
     QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
 
-    mConfirmCheckBox = new QCheckBox(KOPrefs::instance()->confirmItem()->label(), saveFrame);
-    connect(mConfirmCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
-    saveLayout->addWidget(mConfirmCheckBox);
+    Korganizer::KPrefsWidBool *confirmItem
+        = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
+    saveLayout->addWidget(confirmItem->checkBox());
+    Korganizer::KPrefsWidRadios *destinationItem
+        = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
 
-    mDestinationCheckBox = new QCheckBox(KOPrefs::instance()->destinationItem()->label(), saveFrame);
-    connect(mDestinationCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
-    saveLayout->addWidget(mDestinationCheckBox);
+    saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
 
     // System Tray Settings
@@ -113,10 +93,10 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QVBoxLayout *systrayGroupLayout = new QVBoxLayout;
     systrayGroupBox->setLayout(systrayGroupLayout);
 
-    mShowReminderDaemonCheckBox = new QCheckBox(KOPrefs::instance()->showReminderDaemonItem()->label(), systrayGroupBox);
-    connect(mShowReminderDaemonCheckBox, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotConfigChanged);
-    systrayGroupLayout->addWidget(mShowReminderDaemonCheckBox);
-    mShowReminderDaemonCheckBox->setToolTip(
+    Korganizer::KPrefsWidBool *showReminderDaemonItem
+        = addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
+    systrayGroupLayout->addWidget(showReminderDaemonItem->checkBox());
+    showReminderDaemonItem->checkBox()->setToolTip(
         i18nc("@info:tooltip", "Enable this setting to show the KOrganizer "
                                "reminder daemon in your system tray (recommended)."));
 
@@ -145,26 +125,9 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     load();
 }
 
-void KOPrefsDialogMain::load()
+void KOPrefsDialogMain::usrWriteConfig()
 {
-    //TODO Load DefaultEmailAttachMethod
-    mEmailControlCenterCheckBox->setChecked(CalendarSupport::KCalPrefs::instance()->emailControlCenter());
-    mUserName->setText(CalendarSupport::KCalPrefs::instance()->userName());
-    mUserEmail->setText(CalendarSupport::KCalPrefs::instance()->userEmail());
-    mConfirmCheckBox->setChecked(KOPrefs::instance()->confirm());
-    mDestinationCheckBox->setChecked(KOPrefs::instance()->destination());
-    mShowReminderDaemonCheckBox->setChecked(KOPrefs::instance()->showReminderDaemon());
-}
-
-void KOPrefsDialogMain::save()
-{
-    //TODO Save DefaultEmailAttachMethod
-    CalendarSupport::KCalPrefs::instance()->setEmailControlCenter(mEmailControlCenterCheckBox->isChecked());
-    CalendarSupport::KCalPrefs::instance()->setUserName(mUserName->text());
-    CalendarSupport::KCalPrefs::instance()->setUserEmail(mUserEmail->text());
-    KOPrefs::instance()->setConfirm(mConfirmCheckBox->isChecked());
-    KOPrefs::instance()->setDestination(mDestinationCheckBox->isChecked());
-    KOPrefs::instance()->setShowReminderDaemon(mShowReminderDaemonCheckBox->isChecked());
+    Korganizer::KPrefsModule::usrWriteConfig();
     IncidenceEditorNG::IncidenceEditorSettings::self()->save();
 }
 
@@ -179,11 +142,6 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
         mNameEdit->setText( CalendarSupport::KCalPrefs::instance()->mName );
         mEmailEdit->setText( CalendarSupport::KCalPrefs::instance()->mEmail );
       }*/
-}
-
-void KOPrefsDialogMain::slotConfigChanged()
-{
-    Q_EMIT markAsChanged();
 }
 
 extern "C"

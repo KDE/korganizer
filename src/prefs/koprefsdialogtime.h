@@ -10,8 +10,7 @@
 #ifndef KOPREFSDIALOGTIME_H
 #define KOPREFSDIALOGTIME_H
 
-#include <KCModule>
-
+#include "kprefsdialog.h"
 class QSpinBox;
 class KComboBox;
 class QCheckBox;
@@ -23,35 +22,24 @@ namespace KPIM {
 class KCheckComboBox;
 }
 
-class KOPrefsDialogTime : public KCModule
+class KOPrefsDialogTime : public Korganizer::KPrefsModule
 {
 public:
-    KOPrefsDialogTime(QWidget *parent);
+    explicit KOPrefsDialogTime(QWidget *parent);
 
-    void load() override;
-
-    void save() override;
 protected:
+    void usrReadConfig() override;
+
+    void usrWriteConfig() override;
+
     void setCombo(KComboBox *combo, const QString &text, const QStringList *tags = nullptr);
 
 private:
-    void slotConfigChanged();
     QStringList tzonenames;
     KPIM::KCheckComboBox *mHolidayCheckCombo = nullptr;
     QSpinBox *mReminderTimeSpin = nullptr;
     KComboBox *mReminderUnitsCombo = nullptr;
     QCheckBox *mWorkDays[7];
-    QComboBox *mFirstDayCombo = nullptr;
-    QCheckBox *mDefaultEventRemindersCheckBox = nullptr;
-    QCheckBox *mDefaultTodoRemindersCheckBox = nullptr;
-    KUrlRequester *mUrlRequester = nullptr;
-    QCheckBox *mExcludeHolidaysCheckbox = nullptr;
-    KTimeComboBox *mDayBegin = nullptr;
-    KTimeComboBox *mWorkStart = nullptr;
-    KTimeComboBox *mWorkEnd = nullptr;
-    KTimeComboBox *mDefaultTime = nullptr;
-    QTimeEdit *mDefaultDuration = nullptr;
-    QCheckBox *mDefaultAudioFileRemindersCheckBox;
 };
 
 #endif // KOPREFSDIALOGTIME_H

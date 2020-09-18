@@ -10,7 +10,7 @@
 #ifndef KOPREFSDIALOGPLUGINS_H
 #define KOPREFSDIALOGPLUGINS_H
 
-#include <KCModule>
+#include "kprefsdialog.h"
 #include <QSet>
 class QTreeWidget;
 class QLabel;
@@ -19,23 +19,21 @@ class QRadioButton;
 class QGroupBox;
 class QTreeWidgetItem;
 
-class KOPrefsDialogPlugins : public KCModule
+class KOPrefsDialogPlugins : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogPlugins(QWidget *parent);
+    KOPrefsDialogPlugins(QWidget *parent);
     ~KOPrefsDialogPlugins() override;
 
-    void save() override;
-    void load() override;
-
 protected Q_SLOTS:
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
     void configure();
     void selectionChanged();
     void positioningChanged();
 
 private:
-    void slotConfigChanged();
     void buildList();
     QTreeWidget *mTreeWidget = nullptr;
     QLabel *mDescription = nullptr;

@@ -10,21 +10,16 @@
 #ifndef KOPREFSDIALOGGROUPSCHEDULING_H
 #define KOPREFSDIALOGGROUPSCHEDULING_H
 
-#include <KCModule>
+#include "kprefsdialog.h"
 class QCheckBox;
-class KOPrefsDialogGroupScheduling : public KCModule
+class KOPrefsDialogGroupScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogGroupScheduling(QWidget *parent);
+    KOPrefsDialogGroupScheduling(QWidget *parent);
 
-    void save() override;
-    void load() override;
-
-private:
-    void slotConfigChanged();
-    QCheckBox *mUseGroupwareCommunicationCheckBox = nullptr;
-    QCheckBox *mBccBox = nullptr;
+protected:
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
 };
-
 #endif // KOPREFSDIALOGGROUPSCHEDULING_H

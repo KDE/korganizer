@@ -10,48 +10,23 @@
 #ifndef KOPREFSDIALOGVIEWS_H
 #define KOPREFSDIALOGVIEWS_H
 
-#include <KCModule>
+#include "kprefsdialog.h"
 
 class KItemIconCheckCombo;
 class QCheckBox;
 class QSpinBox;
 
-class KOPrefsDialogViews : public KCModule
+class KOPrefsDialogViews : public Korganizer::KPrefsModule
 {
-    Q_OBJECT
 public:
-    explicit KOPrefsDialogViews(QWidget *parent);
+    KOPrefsDialogViews(QWidget *parent);
 
-    void load() override;
+protected:
+    void usrReadConfig() override;
 
-    void save() override;
 private:
-    void slotConfigChanged();
-private:
-    KItemIconCheckCombo *const mMonthIconComboBox;
-    KItemIconCheckCombo *const mAgendaIconComboBox;
-    QCheckBox *mEnableToolTipsCheckBox = nullptr;
-    QCheckBox *mTodosUseCategoryColorsCheckBox = nullptr;
-    QCheckBox *mRecordTodosInJournalsCheckBox = nullptr;
-    QCheckBox *mSortCompletedTodosSeparatelyCheckBox = nullptr;
-    QCheckBox *mColorMonthBusyDaysEnabledCheckBox = nullptr;
-    QCheckBox *mDailyRecurCheckbox = nullptr;
-    QCheckBox *mWeeklyRecurCheckbox = nullptr;
-    QCheckBox *mHighlightTodosCheckbox = nullptr;
-    QCheckBox *mHighlightJournalsCheckbox = nullptr;
-    QCheckBox *mWeekNumbersShowWorkCheckbox = nullptr;
-    QCheckBox *mShowTimeInMonthViewCheckBox = nullptr;
-    QCheckBox *mEnableMonthItemIconsCheckBox = nullptr;
-    QCheckBox *mShowTodosMonthViewCheckBox = nullptr;
-    QCheckBox *mShowJournalsMonthViewCheckBox = nullptr;
-    QCheckBox *mEnableAgendaItemIconsCheckbox = nullptr;
-    QCheckBox *mShowTodosAgendaViewCheckbox = nullptr;
-    QCheckBox *mMarcusBainsEnabledCheckbox = nullptr;
-    QCheckBox *mMarcusBainsShowSecondsCheckbox = nullptr;
-    QCheckBox *mSelectionStartsEditorCheckbox = nullptr;
-    QCheckBox *mColorBusyDaysEnabledCheckBox = nullptr;
-    QSpinBox *mNextDay = nullptr;
-    QSpinBox *mHourSize = nullptr;
+    KItemIconCheckCombo *mMonthIconComboBox;
+    KItemIconCheckCombo *mAgendaIconComboBox;
 };
 
 #endif // KOPREFSDIALOGVIEWS_H

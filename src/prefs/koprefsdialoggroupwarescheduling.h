@@ -9,23 +9,23 @@
 
 #ifndef KOPREFSDIALOGGROUPWARESCHEDULING_H
 #define KOPREFSDIALOGGROUPWARESCHEDULING_H
-#include <KCModule>
+#include "kprefsdialog.h"
 namespace Ui {
 class KOGroupwarePrefsPage;
 }
 
-class KOPrefsDialogGroupwareScheduling : public KCModule
+class KOPrefsDialogGroupwareScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogGroupwareScheduling(QWidget *parent);
+    KOPrefsDialogGroupwareScheduling(QWidget *parent);
     ~KOPrefsDialogGroupwareScheduling() override;
 
-    void save() override;
-    void load() override;
+protected:
+    void usrWriteConfig() override;
+    void usrReadConfig() override;
 
 private:
-    void slotConfigChanged();
     Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
 };
 

@@ -10,30 +10,24 @@
 #ifndef KOPREFSDIALOGMAIN_H
 #define KOPREFSDIALOGMAIN_H
 
-#include <KCModule>
+#include "kprefsdialog.h"
 class QCheckBox;
 class QLineEdit;
 
-class KOPrefsDialogMain : public KCModule
+class KOPrefsDialogMain : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogMain(QWidget *parent);
+    KOPrefsDialogMain(QWidget *parent);
 
-    void save() override;
-    void load() override;
+protected:
+    void usrWriteConfig() override;
 
 protected Q_SLOTS:
     void toggleEmailSettings(bool on);
+
 private:
-    void slotConfigChanged();
     QWidget *mUserEmailSettings = nullptr;
-    QCheckBox *mEmailControlCenterCheckBox = nullptr;
-    QLineEdit *mUserName = nullptr;
-    QLineEdit *mUserEmail = nullptr;
-    QCheckBox *mConfirmCheckBox = nullptr;
-    QCheckBox *mDestinationCheckBox = nullptr;
-    QCheckBox *mShowReminderDaemonCheckBox = nullptr;
 };
 
 #endif // KOPREFSDIALOGMAIN_H

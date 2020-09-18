@@ -25,50 +25,9 @@
 #include <TagSelectionComboBox>
 #include <AkonadiCore/EntityTreeModel>
 
-FontPreviewButton::FontPreviewButton(const QString &labelStr, QWidget *parent)
-    : QWidget(parent)
-{
-    QHBoxLayout *mainLayout = new QHBoxLayout(this);
-    mainLayout->setContentsMargins(0, 0, 0, 0);
-    QLabel *label = new QLabel(labelStr, this);
-    mainLayout->addWidget(label);
-
-    mPreview = new QLabel(parent);
-    mPreview->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
-    mainLayout->addWidget(mPreview);
-
-    QPushButton *button = new QPushButton(i18n("Choose..."), this);
-    mainLayout->addWidget(button);
-    connect(button, &QPushButton::clicked, this, &FontPreviewButton::selectFont);
-}
-
-void FontPreviewButton::setFont(const QFont &font)
-{
-    mPreview->setFont(font);
-}
-
-QFont FontPreviewButton::font() const
-{
-    return mPreview->font();
-}
-
-void FontPreviewButton::setPreviewText(const QString &str)
-{
-    mPreview->setText(str);
-}
-
-void FontPreviewButton::selectFont()
-{
-    bool ok;
-    const QFont myFont = QFontDialog::getFont(&ok, mPreview->font());
-    if (ok) {
-        mPreview->setFont(myFont);
-        Q_EMIT changed();
-    }
-}
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
-    : KCModule(parent)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
@@ -81,54 +40,62 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
                       i18nc("@title:tab", "Colors"));
 
     // Use System color
-    mUseSystemColorCheckBox = new QCheckBox(KOPrefs::instance()->useSystemColorItem()->label(), colorFrame);
-    connect(mUseSystemColorCheckBox, &QCheckBox::toggled,
-            this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
-    colorLayout->addWidget(mUseSystemColorCheckBox, 1, 0, 1, 2);
+    Korganizer::KPrefsWidBool *useSystemColorBool
+        = addWidBool(KOPrefs::instance()->useSystemColorItem(), colorFrame);
+
+    QCheckBox *useSystemColorButton = useSystemColorBool->checkBox();
+    QObject::connect(useSystemColorButton, &QCheckBox::toggled,
+                     this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
+    colorLayout->addWidget(useSystemColorBool->checkBox(), 1, 0, 1, 2);
 
     // agenda view background color
-    mAgendaBgColorButton = new KColorButton(this);
-    mButtonsDisable.push_back(mAgendaBgColorButton);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaGridBackgroundColorItem()->label(), this), 2, 0);
-    connect(mAgendaBgColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    colorLayout->addWidget(mAgendaBgColorButton, 2, 1);
+    Korganizer::KPrefsWidColor *agendaBgColor
+        = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
+    KColorButton *agendaBgColorButton = agendaBgColor->button();
+    mButtonsDisable.push_back(agendaBgColorButton);
+    colorLayout->addWidget(agendaBgColor->label(), 2, 0);
+    colorLayout->addWidget(agendaBgColorButton, 2, 1);
 
-    mViewBgBusyColorButton = new KColorButton(this);
-    connect(mViewBgBusyColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    mButtonsDisable.push_back(mViewBgBusyColorButton);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->viewBgBusyColorItem()->label(), this), 3, 0);
-    colorLayout->addWidget(mViewBgBusyColorButton, 3, 1);
+    Korganizer::KPrefsWidColor *viewBgBusyColor
+        = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
+    KColorButton *viewBgBusyColorButton = viewBgBusyColor->button();
+    mButtonsDisable.push_back(viewBgBusyColorButton);
+    colorLayout->addWidget(viewBgBusyColor->label(), 3, 0);
+    colorLayout->addWidget(viewBgBusyColorButton, 3, 1);
 
     // working hours color
-    mAgendaGridWorkHoursBackgroundColorButton = new KColorButton(this);
-    connect(mAgendaGridWorkHoursBackgroundColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    mButtonsDisable.push_back(mAgendaGridWorkHoursBackgroundColorButton);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->workingHoursColorItem()->label(), this), 4, 0);
-    colorLayout->addWidget(mAgendaGridWorkHoursBackgroundColorButton, 4, 1);
+    Korganizer::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
+        = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
+    KColorButton *agendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
+    mButtonsDisable.push_back(agendaGridWorkHoursBackgroundColorButton);
+    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
+    colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
 
     // agenda view Marcus Bains line color
-    mAgendaMarcusBainsLineLineColorButton = new KColorButton(this);
-    connect(mAgendaMarcusBainsLineLineColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem()->label(), this), 5, 0);
-    colorLayout->addWidget(mAgendaMarcusBainsLineLineColorButton, 5, 1);
+    Korganizer::KPrefsWidColor *mblColor
+        = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
+    colorLayout->addWidget(mblColor->label(), 5, 0);
+    colorLayout->addWidget(mblColor->button(), 5, 1);
 
     // Holiday Color
-    mAgendaHolidaysBackgroundColorButton = new KColorButton(this);
-    connect(mAgendaHolidaysBackgroundColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->agendaHolidaysBackgroundColorItem()->label(), this), 6, 0);
-    colorLayout->addWidget(mAgendaHolidaysBackgroundColorButton, 6, 1);
+    Korganizer::KPrefsWidColor *holidayColor
+        = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
+    colorLayout->addWidget(holidayColor->label(), 6, 0);
+    colorLayout->addWidget(holidayColor->button(), 6, 1);
 
     // Todo due today color
-    mTodoDueTodayColorButton = new KColorButton(this);
-    connect(mTodoDueTodayColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->todoDueTodayColorItem()->label(), this), 7, 0);
-    colorLayout->addWidget(mTodoDueTodayColorButton, 7, 1);
+    Korganizer::KPrefsWidColor *todoDueTodayColor
+        = addWidColor(
+              KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
+    colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
+    colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
 
     // Todo overdue color
-    mTodoOverdueColorButton = new KColorButton(this);
-    connect(mTodoOverdueColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    colorLayout->addWidget(new QLabel(KOPrefs::instance()->todoOverdueColorItem()->label(), this), 8, 0);
-    colorLayout->addWidget(mTodoOverdueColorButton, 8, 1);
+    Korganizer::KPrefsWidColor *todoOverdueColor
+        = addWidColor(
+              KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
+    colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
+    colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
     // categories colors
     QGroupBox *categoryGroup = new QGroupBox(i18nc("@title:group", "Categories"), colorFrame);
@@ -137,10 +104,13 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QGridLayout *categoryLayout = new QGridLayout;
     categoryGroup->setLayout(categoryLayout);
 
-    mUnsetCategoryColorButton = new KColorButton(this);
-    connect(mUnsetCategoryColorButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
-    categoryLayout->addWidget(new QLabel(CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem()->label(), this), 0, 0);
-    categoryLayout->addWidget(mUnsetCategoryColorButton, 0, 1);
+    Korganizer::KPrefsWidColor *unsetCategoryColor
+        = addWidColor(
+              CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
+    categoryLayout->addWidget(unsetCategoryColor->label(), 0, 0);
+    categoryLayout->addWidget(unsetCategoryColor->button(), 0, 1);
+    unsetCategoryColor->label()->setWhatsThis(unsetCategoryColor->button()->whatsThis());
+    unsetCategoryColor->label()->setToolTip(unsetCategoryColor->button()->toolTip());
 
     mCategoryCombo = new Akonadi::TagSelectionComboBox(categoryGroup);
     mCategoryCombo->setWhatsThis(
@@ -202,34 +172,45 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")),
                       i18nc("@title:tab", "Fonts"));
 
-    QVBoxLayout *fontLayout = new QVBoxLayout(fontFrame);
+    QGridLayout *fontLayout = new QGridLayout(fontFrame);
 
-    mTimeBarFontButton = new FontPreviewButton(KOPrefs::instance()->agendaTimeLabelsFontItem()->label(), this);
-    mTimeBarFontButton->setPreviewText(QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
-    fontLayout->addWidget(mTimeBarFontButton);
-    connect(mTimeBarFontButton, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
+    Korganizer::KPrefsWidFont *timeBarFont
+        = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
+                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
+    fontLayout->addWidget(timeBarFont->label(), 0, 0);
+    fontLayout->addWidget(timeBarFont->preview(), 0, 1);
+    fontLayout->addWidget(timeBarFont->button(), 0, 2);
 
-    mMonthViewFont = new FontPreviewButton(KOPrefs::instance()->monthViewFontItem()->label(), this);
-    mMonthViewFont->setPreviewText(QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
-                                   +i18nc("@label", "Event text"));
-    fontLayout->addWidget(mMonthViewFont);
-    connect(mMonthViewFont, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
+    Korganizer::KPrefsWidFont *monthViewFont
+        = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
+                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
+                     +i18nc("@label", "Event text"));
 
-    mAgendaViewFont = new FontPreviewButton(KOPrefs::instance()->agendaViewFontItem()->label(), this);
-    mAgendaViewFont->setPreviewText(i18nc("@label", "Event text"));
-    fontLayout->addWidget(mAgendaViewFont);
-    connect(mAgendaViewFont, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
+    fontLayout->addWidget(monthViewFont->label(), 1, 0);
+    fontLayout->addWidget(monthViewFont->preview(), 1, 1);
+    fontLayout->addWidget(monthViewFont->button(), 1, 2);
 
-    mMarcusBainsFont = new FontPreviewButton(KOPrefs::instance()->agendaMarcusBainsLineFontItem()->label(), this);
-    mMarcusBainsFont->setPreviewText(QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
-    fontLayout->addWidget(mMarcusBainsFont);
-    connect(mMarcusBainsFont, &FontPreviewButton::changed, this, &KOPrefsDialogColorsAndFonts::slotConfigChanged);
+    Korganizer::KPrefsWidFont *agendaViewFont
+        = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
+                     i18nc("@label", "Event text"));
+    fontLayout->addWidget(agendaViewFont->label(), 2, 0);
+    fontLayout->addWidget(agendaViewFont->preview(), 2, 1);
+    fontLayout->addWidget(agendaViewFont->button(), 2, 2);
 
-    fontLayout->addStretch(1);
+    Korganizer::KPrefsWidFont *marcusBainsFont
+        = addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
+                     QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+    fontLayout->addWidget(marcusBainsFont->label(), 3, 0);
+    fontLayout->addWidget(marcusBainsFont->preview(), 3, 1);
+    fontLayout->addWidget(marcusBainsFont->button(), 3, 2);
+
+    fontLayout->setColumnStretch(1, 1);
+    fontLayout->setRowStretch(4, 1);
+
     load();
 }
 
-void KOPrefsDialogColorsAndFonts::save()
+void KOPrefsDialogColorsAndFonts::usrWriteConfig()
 {
     QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
     while (i != mCategoryDict.constEnd()) {
@@ -243,39 +224,14 @@ void KOPrefsDialogColorsAndFonts::save()
         ++i;
     }
 
-    KOPrefs::instance()->setUseSystemColor(mUseSystemColorCheckBox->isChecked());
-
-    KOPrefs::instance()->setAgendaGridBackgroundColor(mAgendaBgColorButton->color());
-    KOPrefs::instance()->setViewBgBusyColor(mViewBgBusyColorButton->color());
-    KOPrefs::instance()->setWorkingHoursColor(mAgendaGridWorkHoursBackgroundColorButton->color());
-    KOPrefs::instance()->setAgendaMarcusBainsLineLineColor(mAgendaMarcusBainsLineLineColorButton->color());
-    KOPrefs::instance()->setAgendaHolidaysBackgroundColor(mAgendaHolidaysBackgroundColorButton->color());
-    KOPrefs::instance()->setTodoDueTodayColor(mTodoDueTodayColorButton->color());
-    KOPrefs::instance()->setTodoOverdueColor(mTodoOverdueColorButton->color());
-    CalendarSupport::KCalPrefs::instance()->setUnsetCategoryColor(mUnsetCategoryColorButton->color());
-    KOPrefs::instance()->setAgendaTimeLabelsFont(mTimeBarFontButton->font());
-    KOPrefs::instance()->setMonthViewFont(mMonthViewFont->font());
-    KOPrefs::instance()->setAgendaViewFont(mAgendaViewFont->font());
-    KOPrefs::instance()->setAgendaMarcusBainsLineFont(mMarcusBainsFont->font());
+    //mCalendarViewsPrefs->writeConfig();
 }
 
-void KOPrefsDialogColorsAndFonts::load()
+void KOPrefsDialogColorsAndFonts::usrReadConfig()
 {
     updateCategories();
     updateResources();
-    mUseSystemColorCheckBox->setChecked(KOPrefs::instance()->useSystemColor());
-    mAgendaBgColorButton->setColor(KOPrefs::instance()->agendaGridBackgroundColor());
-    mViewBgBusyColorButton->setColor(KOPrefs::instance()->viewBgBusyColor());
-    mAgendaGridWorkHoursBackgroundColorButton->setColor(KOPrefs::instance()->workingHoursColor());
-    mAgendaMarcusBainsLineLineColorButton->setColor(KOPrefs::instance()->agendaMarcusBainsLineLineColor());
-    mAgendaHolidaysBackgroundColorButton->setColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
-    mTodoDueTodayColorButton->setColor(KOPrefs::instance()->todoDueTodayColor());
-    mTodoOverdueColorButton->setColor(KOPrefs::instance()->todoOverdueColor());
-    mUnsetCategoryColorButton->setColor(CalendarSupport::KCalPrefs::instance()->unsetCategoryColor());
-    mTimeBarFontButton->setFont(KOPrefs::instance()->agendaTimeLabelsFont());
-    mMonthViewFont->setFont(KOPrefs::instance()->monthViewFont());
-    mAgendaViewFont->setFont(KOPrefs::instance()->agendaViewFont());
-    mMarcusBainsFont->setFont(KOPrefs::instance()->agendaMarcusBainsLineFont());
+    //mCalendarViewsPrefs->readConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)
@@ -297,7 +253,7 @@ void KOPrefsDialogColorsAndFonts::updateCategories()
 void KOPrefsDialogColorsAndFonts::setCategoryColor()
 {
     mCategoryDict.insert(mCategoryCombo->currentText(), mCategoryButton->color());
-    slotConfigChanged();
+    slotWidChanged();
 }
 
 void KOPrefsDialogColorsAndFonts::updateCategoryColor()
@@ -329,7 +285,7 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
         return;
     }
     mResourceDict.insert(id, mResourceButton->color());
-    slotConfigChanged();
+    slotWidChanged();
 }
 
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
@@ -349,11 +305,6 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
         color = KOPrefs::instance()->resourceColor(id);
     }
     mResourceButton->setColor(color);
-}
-
-void KOPrefsDialogColorsAndFonts::slotConfigChanged()
-{
-    Q_EMIT markAsChanged();
 }
 
 extern "C"

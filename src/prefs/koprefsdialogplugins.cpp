@@ -50,7 +50,7 @@ private:
   Dialog for selecting and configuring KOrganizer plugins
 */
 KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
-    : KCModule(parent)
+    : KPrefsModule(KOPrefs::instance(), parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     mTreeWidget = new QTreeWidget(this);
@@ -108,7 +108,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this,
             &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemChanged, this, &KOPrefsDialogPlugins::selectionChanged);
-    connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotConfigChanged);
+    connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotWidChanged);
 
     load();
 
@@ -121,15 +121,11 @@ KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
     delete mOthers;
 }
 
-void KOPrefsDialogPlugins::slotConfigChanged()
-{
-    Q_EMIT markAsChanged();
-}
-
-void KOPrefsDialogPlugins::load()
+void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
-    const KService::List plugins = KOCore::self()->availablePlugins() + KOCore::self()->availableParts();
+    KService::List plugins = KOCore::self()->availablePlugins();
+    plugins += KOCore::self()->availableParts();
 
     EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
 
@@ -175,7 +171,7 @@ void KOPrefsDialogPlugins::load()
 #endif
 }
 
-void KOPrefsDialogPlugins::save()
+void KOPrefsDialogPlugins::usrWriteConfig()
 {
     QStringList selectedPlugins;
 
@@ -213,7 +209,7 @@ void KOPrefsDialogPlugins::configure()
         plugin->configure(this);
         delete plugin;
 
-        slotConfigChanged();
+        slotWidChanged();
     } else {
         KMessageBox::sorry(this,
                            i18nc("@info", "Unable to configure this plugin"),
@@ -232,7 +228,7 @@ void KOPrefsDialogPlugins::positioningChanged()
         return;
     }
 
-    const QString decoration = item->service()->desktopEntryName();
+    QString decoration = item->service()->desktopEntryName();
 
     /*if ( mPositionMonthTop->checkState() == Qt::Checked ) {
       if ( !mDecorationsAtMonthViewTop.contains( decoration ) ) {
@@ -258,7 +254,7 @@ void KOPrefsDialogPlugins::positioningChanged()
         mDecorationsAtAgendaViewBottom.remove(decoration);
     }
 
-    slotConfigChanged();
+    slotWidChanged();
 }
 
 void KOPrefsDialogPlugins::selectionChanged()
@@ -324,7 +320,7 @@ void KOPrefsDialogPlugins::selectionChanged()
         mPositioningGroupBox->show();
     }
 
-    slotConfigChanged();
+    slotWidChanged();
 }
 
 extern "C"
