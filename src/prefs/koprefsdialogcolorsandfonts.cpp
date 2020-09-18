@@ -25,7 +25,6 @@
 #include <TagSelectionComboBox>
 #include <AkonadiCore/EntityTreeModel>
 
-
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
 {
