@@ -5,7 +5,7 @@
   SPDX-FileCopyrightText: 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
   SPDX-FileCopyrightText: 2005,2008,2011 Allen Winter <winter@kde.org>
 
-  SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
+  SPDX-License-Identifier: GPL-2.0-or-later
 */
 //krazy:excludeall=tipsandthis
 
