@@ -31,9 +31,12 @@ AlarmDockWindow::AlarmDockWindow()
     const bool grabFocus = config.readEntry("GrabFocus", false);
     const bool alarmsEnabled = config.readEntry("Enabled", true);
 
-    mName = i18nc("@title:window", "KOrganizer Reminder Daemon");
+    // Don't mention Daemon here since it's a technical
+    // term the user doesn't care about
+    mName = i18nc("@title:window", "KOrganizer Reminders");
     setToolTipTitle(mName);
     setToolTipIconByName(QStringLiteral("korgac"));
+    setTitle(mName);
 
     // Set up icons
     KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
