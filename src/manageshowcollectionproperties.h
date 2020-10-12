@@ -29,7 +29,7 @@ private:
     void slotCollectionPropertiesContinued(KJob *job);
     void slotCollectionPropertiesFinished(KJob *job);
     QHash<Akonadi::Collection::Id, QPointer<Akonadi::CollectionPropertiesDialog> > mHashDialogBox;
-    QStringList mPages;
+    const QStringList mPages;
     AkonadiCollectionView *const mCollectionView;
 };
 

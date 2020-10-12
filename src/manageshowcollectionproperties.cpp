@@ -16,12 +16,12 @@
 ManageShowCollectionProperties::ManageShowCollectionProperties(
     AkonadiCollectionView *collectionView, QObject *parent)
     : QObject(parent)
+    , mPages{ QStringLiteral("CalendarSupport::CollectionGeneralPage"),
+               QStringLiteral("Akonadi::CachePolicyPage"),
+               QStringLiteral("PimCommon::CollectionAclPage"),
+               QStringLiteral("Akonadi::CollectionMaintenancePage") }
     , mCollectionView(collectionView)
 {
-    mPages = QStringList() << QStringLiteral("CalendarSupport::CollectionGeneralPage")
-                           << QStringLiteral("Akonadi::CachePolicyPage")
-                           << QStringLiteral("PimCommon::CollectionAclPage")
-                           << QStringLiteral("Akonadi::CollectionMaintenancePage");
 }
 
 ManageShowCollectionProperties::~ManageShowCollectionProperties()
