@@ -14,10 +14,6 @@
 class QSpinBox;
 class KComboBox;
 class QCheckBox;
-class KUrlRequester;
-class KTimeComboBox;
-class QComboBox;
-class QTimeEdit;
 namespace KPIM {
 class KCheckComboBox;
 }

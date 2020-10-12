@@ -11,8 +11,6 @@
 #define KOPREFSDIALOGMAIN_H
 
 #include "kprefsdialog.h"
-class QCheckBox;
-class QLineEdit;
 
 class KOPrefsDialogMain : public Korganizer::KPrefsModule
 {

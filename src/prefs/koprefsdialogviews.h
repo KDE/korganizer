@@ -13,8 +13,6 @@
 #include "kprefsdialog.h"
 
 class KItemIconCheckCombo;
-class QCheckBox;
-class QSpinBox;
 
 class KOPrefsDialogViews : public Korganizer::KPrefsModule
 {

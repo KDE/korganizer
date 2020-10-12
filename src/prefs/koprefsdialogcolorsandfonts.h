@@ -13,10 +13,8 @@
 #include "kprefsdialog.h"
 #include <QWidget>
 
-class QLabel;
 class QComboBox;
 class KColorButton;
-class QCheckBox;
 namespace Akonadi {
 class CollectionComboBox;
 }

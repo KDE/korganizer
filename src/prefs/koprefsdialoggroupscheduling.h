@@ -11,7 +11,6 @@
 #define KOPREFSDIALOGGROUPSCHEDULING_H
 
 #include "kprefsdialog.h"
-class QCheckBox;
 class KOPrefsDialogGroupScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
