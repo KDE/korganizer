@@ -171,7 +171,7 @@ bool KOAlarmClient::collectionsAvailable() const
     for (int row = 0; row < rowCount; ++row) {
         static const int column = 0;
         const QModelIndex index = mETM->index(row, column);
-        bool haveData
+        const bool haveData
             = mETM->data(index, Akonadi::EntityTreeModel::IsPopulatedRole).toBool();
         if (!haveData) {
             return false;

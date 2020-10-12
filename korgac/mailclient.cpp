@@ -110,7 +110,7 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
 
     QString subject;
     if (incidence->type() != KCalendarCore::Incidence::TypeFreeBusy) {
-        KCalendarCore::Incidence::Ptr inc = incidence.staticCast<KCalendarCore::Incidence>();
+        const KCalendarCore::Incidence::Ptr inc = incidence.staticCast<KCalendarCore::Incidence>();
         subject = inc->summary();
     } else {
         subject = i18n("Free Busy Object");
@@ -129,7 +129,7 @@ bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidenc
     QString subject = sub;
 
     if (incidence->type() != KCalendarCore::Incidence::TypeFreeBusy) {
-        KCalendarCore::Incidence::Ptr inc = incidence.staticCast<KCalendarCore::Incidence>();
+        const KCalendarCore::Incidence::Ptr inc = incidence.staticCast<KCalendarCore::Incidence>();
         if (subject.isEmpty()) {
             subject = inc->summary();
         }

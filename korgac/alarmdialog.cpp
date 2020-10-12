@@ -201,9 +201,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     setMinimumSize(280, 160);
     // take out some padding which makes it larger
     topLayout->setSpacing(2);
-    QMargins margins(0, 0, 0, 0);
-    topLayout->setContentsMargins(margins);
-    setContentsMargins(margins);
+    topLayout->setContentsMargins({});
+    setContentsMargins({});
 
     QLabel *label = new QLabel(
         i18nc("@label",
@@ -482,7 +481,7 @@ void AlarmDialog::dismiss(const ReminderList &selections)
 
 void AlarmDialog::edit()
 {
-    ReminderList selection = selectedItems();
+    const ReminderList selection = selectedItems();
     if (selection.count() == 1) {
         Incidence::Ptr incidence = CalendarSupport::incidence(selection.first()->mIncidence);
         if (!mCalendar->hasRight(selection.first()->mIncidence,
