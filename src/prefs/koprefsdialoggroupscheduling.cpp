@@ -45,9 +45,6 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
         = new MailTransport::TransportManagementWidget(topFrame);
     tmw->layout()->setContentsMargins(0, 0, 0, 0);
     topLayout->addWidget(tmw, 3, 0, 1, 2);
-
-    //topLayout->setRowStretch( 2, 1 );
-
     load();
 }
 

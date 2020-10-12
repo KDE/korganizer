@@ -27,8 +27,6 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     mGroupwarePage->groupwareTab->setTabIcon(0, QIcon::fromTheme(QStringLiteral("go-up")));
     mGroupwarePage->groupwareTab->setTabIcon(1, QIcon::fromTheme(QStringLiteral("go-down")));
 
-    // signals and slots connections
-
     connect(mGroupwarePage->publishDays, qOverload<int>(&QSpinBox::valueChanged),
             this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged,
