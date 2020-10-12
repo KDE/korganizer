@@ -73,7 +73,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
 
     QWidget *buttonRow = new QWidget(this);
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
-    buttonRowLayout->setContentsMargins(0, 0, 0, 0);
+    buttonRowLayout->setContentsMargins({});
     mConfigureButton = new QPushButton(buttonRow);
     KGuiItem::assign(mConfigureButton, KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
                                                 QStringLiteral("configure"), QString(),

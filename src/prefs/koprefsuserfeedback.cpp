@@ -38,7 +38,7 @@ KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &ar
     about->addAuthor(i18n("Laurent Montel"), QString(), QStringLiteral("montel@kde.org"));
     setAboutData(about);
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setContentsMargins({});
 
     mUserFeedbackWidget = new KUserFeedback::FeedbackConfigWidget(this);
     connect(mUserFeedbackWidget, &KUserFeedback::FeedbackConfigWidget::configurationChanged, this, &KOPrefsUserFeedBack::markAsChanged);

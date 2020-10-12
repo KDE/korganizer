@@ -16,9 +16,7 @@
  */
 
 ReparentingModel::Node::Node(ReparentingModel &model)
-    : parent(nullptr)
-    , personModel(model)
-    , mIsSourceNode(false)
+    : personModel(model)
 {
 }
 

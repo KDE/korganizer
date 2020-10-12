@@ -135,7 +135,7 @@ CalendarView::CalendarView(QWidget *parent)
     mDateChecker = new DateChecker(this);
 
     QVBoxLayout *topLayout = new QVBoxLayout(this);
-    topLayout->setContentsMargins(0, 0, 0, 0);
+    topLayout->setContentsMargins({});
 
     // create the main layout frames.
     mPanner = new QSplitter(Qt::Horizontal, this);
@@ -157,15 +157,15 @@ CalendarView::CalendarView(QWidget *parent)
 
     mEventViewerBox = new QWidget(mLeftSplitter);
     QVBoxLayout *mEventViewerBoxVBoxLayout = new QVBoxLayout(mEventViewerBox);
-    mEventViewerBoxVBoxLayout->setContentsMargins(0, 0, 0, 0);
-    mEventViewerBoxVBoxLayout->setContentsMargins(0, 0, 0, 0);
+    mEventViewerBoxVBoxLayout->setContentsMargins({});
+    mEventViewerBoxVBoxLayout->setContentsMargins({});
     mEventViewer = new CalendarSupport::IncidenceViewer(mCalendar.data(), mEventViewerBox);
     mEventViewer->setObjectName(QStringLiteral("EventViewer"));
     mEventViewerBoxVBoxLayout->addWidget(mEventViewer);
 
     QWidget *rightBox = new QWidget(mPanner);
     QVBoxLayout *rightBoxVBoxLayout = new QVBoxLayout(rightBox);
-    rightBoxVBoxLayout->setContentsMargins(0, 0, 0, 0);
+    rightBoxVBoxLayout->setContentsMargins({});
     mNavigatorBar = new NavigatorBar(rightBox);
     rightBoxVBoxLayout->addWidget(mNavigatorBar);
     mRightFrame = new QStackedWidget(rightBox);

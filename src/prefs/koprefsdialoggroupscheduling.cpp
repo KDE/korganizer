@@ -26,7 +26,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     topTopLayout->addWidget(topFrame);
 
     QGridLayout *topLayout = new QGridLayout(topFrame);
-    topLayout->setContentsMargins(0, 0, 0, 0);
+    topLayout->setContentsMargins({});
 
     Korganizer::KPrefsWidBool *useGroupwareBool
         = addWidBool(
@@ -43,7 +43,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
 
     MailTransport::TransportManagementWidget *tmw
         = new MailTransport::TransportManagementWidget(topFrame);
-    tmw->layout()->setContentsMargins(0, 0, 0, 0);
+    tmw->layout()->setContentsMargins({});
     topLayout->addWidget(tmw, 3, 0, 1, 2);
     load();
 }

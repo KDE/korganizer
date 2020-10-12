@@ -221,7 +221,6 @@ void ActionManager::createCalendarAkonadi()
 
 void ActionManager::initActions()
 {
-    QAction *action = nullptr;
 
     /*************************** FILE MENU **********************************/
 
@@ -257,6 +256,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("import_icalendar"), mImportAction);
     connect(mImportAction, &QAction::triggered, this, &ActionManager::file_import);
 
+    QAction *action = nullptr;
     /** Get Hot New Stuff Action **/
     //TODO: Icon
     if (KAuthorized::authorize(QStringLiteral("ghns"))) {

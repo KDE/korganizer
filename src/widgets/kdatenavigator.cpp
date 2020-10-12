@@ -25,7 +25,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     , mBaseDate(1970, 1, 1)
 {
     QGridLayout *topLayout = new QGridLayout(this);
-    topLayout->setContentsMargins(0, 0, 0, 0);
+    topLayout->setContentsMargins({});
     topLayout->setSpacing(0);
 
     mNavigatorBar = new NavigatorBar(this);

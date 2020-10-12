@@ -66,7 +66,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     // holiday region selection
     QWidget *holidayRegBox = new QWidget(regionalPage);
     QHBoxLayout *holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
-    holidayRegBoxHBoxLayout->setContentsMargins(0, 0, 0, 0);
+    holidayRegBoxHBoxLayout->setContentsMargins({});
     holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
 
     QLabel *holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);

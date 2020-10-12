@@ -47,7 +47,7 @@ public:
         QVector<Ptr> children;
         Node *parent = nullptr;
         ReparentingModel &personModel;
-        bool mIsSourceNode;
+        bool mIsSourceNode = false;
     };
 
     struct NodeManager {

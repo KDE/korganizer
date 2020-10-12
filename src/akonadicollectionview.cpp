@@ -111,7 +111,7 @@ private Q_SLOTS:
     }
 
 private:
-    QAbstractItemModel *mCheckableProxy = nullptr;
+    QAbstractItemModel *const mCheckableProxy;
 };
 
 /**
@@ -409,7 +409,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);
 
     QVBoxLayout *topLayout = new QVBoxLayout(this);
-    topLayout->setContentsMargins(0, 0, 0, 0);
+    topLayout->setContentsMargins({});
 
     QLineEdit *searchCol = new QLineEdit(this);
     searchCol->setToolTip(i18nc("@info:tooltip", "Set search keyword"));
