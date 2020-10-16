@@ -53,7 +53,6 @@ public:
     ~AlarmDialog();
 
     void addIncidence(const Akonadi::Item &incidence, const QDateTime &reminderAt, const QString &displayText);
-    void setRemindAt(const QDateTime &dt);
     void eventNotification();
 
 public Q_SLOTS:
@@ -108,7 +107,6 @@ private:
     // opens directly
     Q_REQUIRED_RESULT bool openIncidenceEditorNG(const Akonadi::Item &incidence);
 
-    Q_REQUIRED_RESULT bool startKOrganizer();
     ReminderTreeItem *searchByItem(const Akonadi::Item &incidence);
     void setTimer();
     void dismiss(const ReminderList &selections);

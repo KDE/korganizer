@@ -64,11 +64,6 @@ public:
     void readSettings(KConfig *config);
     void writeSettings(KConfig *config);
 
-    /** Read which view was shown last from config file */
-    void readCurrentView(KConfig *config);
-    /** Write which view is currently shown to config file */
-    void writeCurrentView(KConfig *config);
-
     KOrg::BaseView *currentView();
 
     void setDocumentId(const QString &);

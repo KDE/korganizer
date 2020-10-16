@@ -637,7 +637,6 @@ private Q_SLOTS:
     void onTodosPurged(bool success, int numDeleted, int numIgnored);
 
 private:
-    void init();
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
 
