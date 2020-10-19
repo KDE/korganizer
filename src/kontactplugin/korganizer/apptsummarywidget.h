@@ -55,8 +55,6 @@ private Q_SLOTS:
     void removeEvent(const Akonadi::Item &item);
 
 private:
-    void dateDiff(const QDate &date, int &days);
-
     Akonadi::ETMCalendar::Ptr mCalendar;
     Akonadi::IncidenceChanger *mChanger = nullptr;
 

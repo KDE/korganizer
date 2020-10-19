@@ -34,7 +34,6 @@ protected Q_SLOTS:
     void positioningChanged();
 
 private:
-    void buildList();
     QTreeWidget *mTreeWidget = nullptr;
     QLabel *mDescription = nullptr;
     QPushButton *mConfigureButton = nullptr;
