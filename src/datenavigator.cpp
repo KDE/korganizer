@@ -13,7 +13,6 @@
 #include "koglobals.h"
 #include "korganizer_debug.h"
 
-#include <QDate>
 
 DateNavigator::DateNavigator(QObject *parent) : QObject(parent)
 {

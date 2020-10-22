@@ -15,7 +15,6 @@
 
 #include <CalendarSupport/CalPrinter>
 
-#include <EventViews/TodoView>
 
 #include <AkonadiCore/EntityTreeModel>
 

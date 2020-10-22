@@ -16,7 +16,6 @@
 #include <KCalendarCore/MemoryCalendar>
 
 #include <EventViews/AgendaView>
-#include <EventViews/ViewCalendar>
 #include <CalendarSupport/Utils>
 
 #include <KCheckableProxyModel>

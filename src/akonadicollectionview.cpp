@@ -16,7 +16,6 @@
 #include "prefs/koprefs.h"
 #include "koglobals.h"
 #include "manageshowcollectionproperties.h"
-#include "views/collectionview/reparentingmodel.h"
 #include "views/collectionview/calendardelegate.h"
 #include "views/collectionview/quickview.h"
 

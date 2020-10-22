@@ -18,7 +18,6 @@
 
 #include <KCalendarCore/Attendee>
 #include <KCalendarCore/Incidence>
-#include <KCalendarCore/IncidenceBase>
 
 #include <KCalUtils/IncidenceFormatter>
 

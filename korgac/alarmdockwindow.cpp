@@ -10,7 +10,6 @@
 
 #include "alarmdockwindow.h"
 
-#include <QAction>
 #include <KConfigGroup>
 #include <KIconEffect>
 #include <KIconLoader>

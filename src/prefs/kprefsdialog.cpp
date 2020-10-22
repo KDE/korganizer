@@ -13,10 +13,8 @@
 
 #include <KColorButton>
 #include <KComboBox>
-#include <KConfigSkeleton>
 #include <KDateComboBox>
 #include <QFontDialog>
-#include <KLineEdit>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KTimeComboBox>
