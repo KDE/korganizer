@@ -31,7 +31,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     setWindowTitle(i18nc("@title:window", "Search Calendar"));
     setModal(false);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    auto *mainLayout = new QVBoxLayout(this);
 
     QWidget *mainWidget = new QWidget(this);
     m_ui->setupUi(mainWidget);
@@ -44,7 +44,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     connect(m_ui->searchEdit, &QLineEdit::textChanged, this, &SearchDialog::searchPatternChanged);
 
     // Results list view
-    QVBoxLayout *layout = new QVBoxLayout;
+    auto *layout = new QVBoxLayout;
     layout->setContentsMargins({});
     listView = new EventViews::ListView(m_calendarview->calendar(), this);
     layout->addWidget(listView);

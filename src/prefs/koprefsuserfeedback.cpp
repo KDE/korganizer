@@ -37,7 +37,7 @@ KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &ar
                                        i18n("(c) 2020 Laurent Montel"));
     about->addAuthor(i18n("Laurent Montel"), QString(), QStringLiteral("montel@kde.org"));
     setAboutData(about);
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto *layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
 
     mUserFeedbackWidget = new KUserFeedback::FeedbackConfigWidget(this);

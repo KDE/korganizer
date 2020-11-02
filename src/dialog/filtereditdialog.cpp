@@ -28,7 +28,7 @@ FilterEditDialog::FilterEditDialog(QList<KCalendarCore::CalFilter *> *filters, Q
     : QDialog(parent)
 {
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    auto *mainLayout = new QVBoxLayout(this);
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(
         QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply, this);
@@ -234,7 +234,7 @@ void FilterEdit::bNewPressed()
         }
     }
 
-    KCalendarCore::CalFilter *newFilter
+    auto *newFilter
         = new KCalendarCore::CalFilter(newFilterName);
     mFilters->append(newFilter);
     updateFilterList();

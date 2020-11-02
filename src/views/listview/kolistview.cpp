@@ -21,7 +21,7 @@ using namespace KOrg;
 KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent, bool nonInteractive)
     : KOEventView(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto *layout = new QVBoxLayout(this);
     mListView = new EventViews::ListView(calendar, this, nonInteractive);
     mPopupMenu = eventPopup();
     setCalendar(calendar);

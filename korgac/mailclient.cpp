@@ -258,7 +258,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
         message->contentType()->setParameter(QStringLiteral("method"), QStringLiteral("request"));
 
         if (!attachment.isEmpty()) {
-            KMime::Headers::ContentDisposition *disposition
+            auto *disposition
                 = new KMime::Headers::ContentDisposition;
             disposition->setDisposition(KMime::Headers::CDinline);
             message->setHeader(disposition);
@@ -276,8 +276,8 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
         ct->setCategory(KMime::Headers::CCcontainer);
 
         // Set the first multipart, the body message.
-        KMime::Content *bodyMessage = new KMime::Content;
-        KMime::Headers::ContentDisposition *bodyDisposition
+        auto *bodyMessage = new KMime::Content;
+        auto *bodyDisposition
             = new KMime::Headers::ContentDisposition;
         bodyDisposition->setDisposition(KMime::Headers::CDinline);
         bodyMessage->contentType()->setMimeType("text/plain");
@@ -289,8 +289,8 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
 
         // Set the second multipart, the attachment.
         if (!attachment.isEmpty()) {
-            KMime::Content *attachMessage = new KMime::Content;
-            KMime::Headers::ContentDisposition *attachDisposition
+            auto *attachMessage = new KMime::Content;
+            auto *attachDisposition
                 = new KMime::Headers::ContentDisposition;
             attachDisposition->setDisposition(KMime::Headers::CDattachment);
             attachMessage->contentType()->setMimeType("text/calendar");
@@ -309,7 +309,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
     message->assemble();
 
     // Put the newly created item in the MessageQueueJob.
-    MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob(this);
+    auto *qjob = new MailTransport::MessageQueueJob(this);
     qjob->transportAttribute().setTransportId(transportId);
 
     if (identity.disabledFcc()) {

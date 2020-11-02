@@ -20,7 +20,7 @@ using namespace KOrg;
 MonthView::MonthView(QWidget *parent)
     : KOEventView(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto *layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
     mMonthView = new EventViews::MonthView(EventViews::MonthView::Visible, this);
     mMonthView->setPreferences(KOPrefs::instance()->eventViewsPreferences());

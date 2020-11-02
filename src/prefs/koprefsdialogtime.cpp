@@ -36,21 +36,21 @@ Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const char 
 KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    QTabWidget *tabWidget = new QTabWidget(this);
+    auto *layout = new QVBoxLayout(this);
+    auto *tabWidget = new QTabWidget(this);
     layout->addWidget(tabWidget);
 
     QFrame *regionalPage = new QFrame(parent);
     tabWidget->addTab(regionalPage, QIcon::fromTheme(QStringLiteral("flag")),
                       i18nc("@title:tab", "Regional"));
 
-    QGridLayout *regionalLayout = new QGridLayout(regionalPage);
+    auto *regionalLayout = new QGridLayout(regionalPage);
 
     QGroupBox *datetimeGroupBox
         = new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
     regionalLayout->addWidget(datetimeGroupBox, 0, 0);
 
-    QGridLayout *datetimeLayout = new QGridLayout(datetimeGroupBox);
+    auto *datetimeLayout = new QGridLayout(datetimeGroupBox);
 
     Korganizer::KPrefsWidTime *dayBegins
         = addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
@@ -61,11 +61,11 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
         = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
     regionalLayout->addWidget(holidaysGroupBox, 1, 0);
 
-    QGridLayout *holidaysLayout = new QGridLayout(holidaysGroupBox);
+    auto *holidaysLayout = new QGridLayout(holidaysGroupBox);
 
     // holiday region selection
     QWidget *holidayRegBox = new QWidget(regionalPage);
-    QHBoxLayout *holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
+    auto *holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
     holidayRegBoxHBoxLayout->setContentsMargins({});
     holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
 
@@ -148,7 +148,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 
     Korganizer::KPrefsWidCombo *firstDayCombo = addWidCombo(KOPrefs::instance()->weekStartDayItem(),
                                                             workingHoursGroupBox);
-    QHBoxLayout *firstDayLayout = new QHBoxLayout;
+    auto *firstDayLayout = new QHBoxLayout;
     workingHoursLayout->addLayout(firstDayLayout);
     QStringList days;
     days << i18nc("@item:inlistbox", "Monday")
@@ -166,7 +166,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     Korganizer::KPrefsWidTime *workStart
         = addWidTime(KOPrefs::instance()->workingHoursStartItem());
 
-    QHBoxLayout *workStartLayout = new QHBoxLayout;
+    auto *workStartLayout = new QHBoxLayout;
     workingHoursLayout->addLayout(workStartLayout);
 
     workStartLayout->addWidget(workStart->label());
@@ -175,7 +175,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     Korganizer::KPrefsWidTime *workEnd
         = addWidTime(KOPrefs::instance()->workingHoursEndItem());
 
-    QHBoxLayout *workEndLayout = new QHBoxLayout;
+    auto *workEndLayout = new QHBoxLayout;
     workingHoursLayout->addLayout(workEndLayout);
 
     workEndLayout->addWidget(workEnd->label());
@@ -191,13 +191,13 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     QFrame *defaultPage = new QFrame(parent);
     tabWidget->addTab(defaultPage, QIcon::fromTheme(QStringLiteral("draw-eraser")),
                       i18nc("@title:tab", "Default Values"));
-    QGridLayout *defaultLayout = new QGridLayout(defaultPage);
+    auto *defaultLayout = new QGridLayout(defaultPage);
 
     QGroupBox *timesGroupBox
         = new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
     defaultLayout->addWidget(timesGroupBox, 0, 0);
 
-    QGridLayout *timesLayout = new QGridLayout(timesGroupBox);
+    auto *timesLayout = new QGridLayout(timesGroupBox);
 
     Korganizer::KPrefsWidTime *defaultTime
         = addWidTime(CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage);
@@ -215,7 +215,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
         = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
     defaultLayout->addWidget(remindersGroupBox, 1, 0);
 
-    QGridLayout *remindersLayout = new QGridLayout(remindersGroupBox);
+    auto *remindersLayout = new QGridLayout(remindersGroupBox);
 
     QLabel *reminderLabel
         = new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
@@ -264,7 +264,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 
     connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
 
-    QVBoxLayout *audioFileRemindersBox = new QVBoxLayout;
+    auto *audioFileRemindersBox = new QVBoxLayout;
     audioFileRemindersBox->addWidget(cb);
     audioFileRemindersBox->addWidget(rq);
 

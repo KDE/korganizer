@@ -40,9 +40,9 @@ CollectionGeneralPage::CollectionGeneralPage(QWidget *parent)
 
 void CollectionGeneralPage::init(const Akonadi::Collection &collection)
 {
-    QVBoxLayout *topLayout = new QVBoxLayout(this);
+    auto *topLayout = new QVBoxLayout(this);
 
-    QHBoxLayout *hbox = new QHBoxLayout();
+    auto *hbox = new QHBoxLayout();
     topLayout->addItem(hbox);
 
     QLabel *label = new QLabel(i18nc("@label:textbox Name of the folder.", "&Name:"), this);
@@ -86,7 +86,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
 
     if ((collection.parentCollection() != Akonadi::Collection::root())
         && PimCommon::Util::isImapResource(collection.resource())) {
-        const PimCommon::CollectionAnnotationsAttribute *annotationAttribute
+        const auto *annotationAttribute
             = collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
 
         const QMap<QByteArray, QByteArray> annotations
@@ -160,7 +160,7 @@ void CollectionGeneralPage::save(Collection &collection)
         collection.setName(mNameEdit->text());
     }
 
-    BlockAlarmsAttribute *attr
+    auto *attr
         = collection.attribute<BlockAlarmsAttribute>(Collection::AddIfMissing);
     attr->blockEverything(mBlockAlarmsCheckBox->isChecked());
 
@@ -170,7 +170,7 @@ void CollectionGeneralPage::save(Collection &collection)
     } else if (collection.hasAttribute<EntityDisplayAttribute>()) {
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
     }
-    PimCommon::CollectionAnnotationsAttribute *annotationsAttribute
+    auto *annotationsAttribute
         = collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
 
     QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();

@@ -29,7 +29,7 @@ public:
 
     bool operator==(const Node &node) const override
     {
-        const DummyNode *dummyNode = dynamic_cast<const DummyNode *>(&node);
+        const auto *dummyNode = dynamic_cast<const DummyNode *>(&node);
         if (dummyNode) {
             return dummyNode->mUid == mUid;
         }

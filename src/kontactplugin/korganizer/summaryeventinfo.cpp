@@ -136,7 +136,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         }
         bool firstDayOfMultiday = (start == startOfMultiday);
 
-        SummaryEventInfo *summaryEvent = new SummaryEventInfo();
+        auto *summaryEvent = new SummaryEventInfo();
         eventInfoList.append(summaryEvent);
 
         // Event

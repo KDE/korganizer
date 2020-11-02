@@ -153,7 +153,7 @@ KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *par
         return nullptr;
     }
 
-    KOrg::PartFactory *pluginFactory
+    auto *pluginFactory
         = static_cast<KOrg::PartFactory *>(factory);
 
     if (!pluginFactory) {

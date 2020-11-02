@@ -461,7 +461,7 @@ void KODayMatrix::resourcesChanged()
 bool KODayMatrix::event(QEvent *event)
 {
     if (KOPrefs::instance()->mEnableToolTips && event->type() == QEvent::ToolTip) {
-        QHelpEvent *helpEvent = static_cast<QHelpEvent *>(event);
+        auto *helpEvent = static_cast<QHelpEvent *>(event);
 
         // calculate which cell of the matrix the mouse is in
         QRect sz = frameRect();
@@ -655,12 +655,12 @@ void KODayMatrix::dropEvent(QDropEvent *e)
             action = DRAG_MOVE;
         } else {
             QAction *copy = nullptr, *move = nullptr;
-            QMenu *menu = new QMenu(this);
+            auto *menu = new QMenu(this);
             if (exist) {
                 move
                     = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-paste")),
                                       i18n("&Move"));
-                if (/*existingEvent*/ 1) {
+                if (/*existingEvent*/ true) {
                     copy
                         = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")),
                                           i18n("&Copy"));

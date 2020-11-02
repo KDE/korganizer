@@ -58,7 +58,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     mStatusBarExtension = new KParts::StatusBarExtension(this);
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
-    QVBoxLayout *topLayout = new QVBoxLayout(canvas);
+    auto *topLayout = new QVBoxLayout(canvas);
     topLayout->addWidget(mView);
     topLayout->setContentsMargins({});
 

@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-    MyDesignerFields *kcm = new MyDesignerFields();
+    auto *kcm = new MyDesignerFields();
     kcm->show();
 
     app.exec();

@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     parser.addHelpOption();
     parser.process(app);
 
-    Event *e1 = new Event;
+    auto *e1 = new Event;
     e1->setSummary(QStringLiteral("This is a summary."));
     QDateTime now = QDateTime::currentDateTime();
     e1->setDtStart(now);
@@ -49,14 +49,14 @@ int main(int argc, char **argv)
     t1->setDtDue(now);
     t1->newAlarm();
 
-    Event *e2 = new Event;
+    auto *e2 = new Event;
     e2->setSummary(QStringLiteral("This is another summary. "
                                   "But it is a very long summary of total sillyness for no good reason"));
     e2->setDtStart(now.addDays(1));
     e2->setDtEnd(now.addDays(2));
     e2->newAlarm();
 
-    Event *e3 = new Event;
+    auto *e3 = new Event;
     e3->setSummary(QStringLiteral("Meet with Fred"));
     e3->setDtStart(now.addDays(2));
     e3->setDtEnd(now.addDays(3));
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     t3->setDtDue(now);
     t3->newAlarm();
 
-    Event *e4 = new Event;
+    auto *e4 = new Event;
     e4->setSummary(QStringLiteral("Watch TV"));
     e4->setDtStart(now.addSecs(120));
     e4->setDtEnd(now.addSecs(180));

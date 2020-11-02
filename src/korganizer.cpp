@@ -54,7 +54,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow()
     (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
 
 #ifdef WITH_KUSERFEEDBACK
-    KUserFeedback::NotificationPopup *userFeedBackNotificationPopup = new KUserFeedback::NotificationPopup(this);
+    auto *userFeedBackNotificationPopup = new KUserFeedback::NotificationPopup(this);
     userFeedBackNotificationPopup->setFeedbackProvider(UserFeedBackManager::self()->userFeedbackProvider());
 #endif
 }
@@ -86,7 +86,7 @@ void KOrganizer::init(bool document)
 
     bar->addWidget(new QLabel(this));
 
-    KPIM::ProgressStatusBarWidget *progressBar
+    auto *progressBar
         = new KPIM::ProgressStatusBarWidget(statusBar(), this);
 
     bar->addPermanentWidget(progressBar->littleProgress());
@@ -126,7 +126,7 @@ void KOrganizer::initializePluginActions()
 
 void KOrganizer::newMainWindow(const QUrl &url)
 {
-    KOrganizer *korg = new KOrganizer();
+    auto *korg = new KOrganizer();
     if (url.isValid() || url.isEmpty()) {
         korg->init(true);
         if (mActionManager->importURL(url, false) || url.isEmpty()) {

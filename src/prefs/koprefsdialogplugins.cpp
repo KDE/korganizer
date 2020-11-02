@@ -91,7 +91,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
         i18nc("@option:check", "Show at the top of the agenda views"), mPositioningGroupBox);
     mPositionAgendaBottom = new QRadioButton(
         i18nc("@option:check", "Show at the bottom of the agenda views"), mPositioningGroupBox);
-    QVBoxLayout *positioningLayout = new QVBoxLayout(mPositioningGroupBox);
+    auto *positioningLayout = new QVBoxLayout(mPositioningGroupBox);
     //positioningLayout->addWidget( mPositionMonthTop );
     positioningLayout->addWidget(mPositionAgendaTop);
     positioningLayout->addWidget(mPositionAgendaBottom);
@@ -178,7 +178,7 @@ void KOPrefsDialogPlugins::usrWriteConfig()
     for (int i = 0; i < mTreeWidget->topLevelItemCount(); ++i) {
         QTreeWidgetItem *serviceTypeGroup = mTreeWidget->topLevelItem(i);
         for (int j = 0; j < serviceTypeGroup->childCount(); ++j) {
-            PluginItem *item = static_cast<PluginItem *>(serviceTypeGroup->child(j));
+            auto *item = static_cast<PluginItem *>(serviceTypeGroup->child(j));
             if (item->checkState(0) == Qt::Checked) {
                 selectedPlugins.append(item->service()->desktopEntryName());
             }

@@ -14,7 +14,7 @@ KOCheckableProxyModel::KOCheckableProxyModel(QObject *parent) : KCheckableProxyM
 
 bool KOCheckableProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    const Qt::CheckState newState = static_cast<Qt::CheckState>(value.toInt());
+    const auto newState = static_cast<Qt::CheckState>(value.toInt());
     if (role == Qt::CheckStateRole && index.column() == 0) {
         Q_EMIT aboutToToggle(newState);
     }

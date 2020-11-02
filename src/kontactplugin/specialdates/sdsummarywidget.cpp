@@ -102,7 +102,7 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
 {
     mCalendar = CalendarSupport::calendarSingleton();
     // Create the Summary Layout
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    auto *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
@@ -216,7 +216,7 @@ int SDSummaryWidget::dayof(const KCalendarCore::Event::Ptr &event, const QDate &
 void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
 {
     // ;)
-    BirthdaySearchJob *bJob = qobject_cast<BirthdaySearchJob *>(job);
+    auto *bJob = qobject_cast<BirthdaySearchJob *>(job);
     if (bJob) {
         const auto items = bJob->items();
         for (const Akonadi::Item &item : items) {
@@ -537,7 +537,7 @@ void SDSummaryWidget::createLabels()
 
             // Description
             if ((*addrIt).type == IncidenceTypeContact) {
-                KUrlLabel *urlLabel = new KUrlLabel(this);
+                auto *urlLabel = new KUrlLabel(this);
                 urlLabel->installEventFilter(this);
                 urlLabel->setUrl((*addrIt).item.url(Akonadi::Item::UrlWithMimeType).url());
                 urlLabel->setText((*addrIt).addressee.realName());
@@ -620,7 +620,7 @@ void SDSummaryWidget::updateView()
 
     // Search for Birthdays
     if (mShowBirthdaysFromKAB && !mJobRunning) {
-        BirthdaySearchJob *job = new BirthdaySearchJob(this, mDaysAhead);
+        auto *job = new BirthdaySearchJob(this, mDaysAhead);
 
         connect(job, &BirthdaySearchJob::result, this, &SDSummaryWidget::slotBirthdayJobFinished);
         job->start();
@@ -638,7 +638,7 @@ void SDSummaryWidget::mailContact(const QString &url)
         return;
     }
 
-    Akonadi::ItemFetchJob *job = new Akonadi::ItemFetchJob(item, this);
+    auto *job = new Akonadi::ItemFetchJob(item, this);
     job->fetchScope().fetchFullPayload();
     connect(job, &Akonadi::ItemFetchJob::result, this, &SDSummaryWidget::slotItemFetchJobDone);
 }
@@ -691,7 +691,7 @@ void SDSummaryWidget::popupMenu(const QString &url)
 bool SDSummaryWidget::eventFilter(QObject *obj, QEvent *e)
 {
     if (obj->inherits("KUrlLabel")) {
-        KUrlLabel *label = static_cast<KUrlLabel *>(obj);
+        auto *label = static_cast<KUrlLabel *>(obj);
         if (e->type() == QEvent::Enter) {
             Q_EMIT message(i18n("Mail to:\"%1\"", label->text()));
         }

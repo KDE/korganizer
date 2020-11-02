@@ -39,19 +39,19 @@ using namespace Korganizer;
 namespace KPrefsWidFactory {
 KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
 {
-    KConfigSkeleton::ItemBool *boolItem
+    auto *boolItem
         = dynamic_cast<KConfigSkeleton::ItemBool *>(item);
     if (boolItem) {
         return new KPrefsWidBool(boolItem, parent);
     }
 
-    KConfigSkeleton::ItemString *stringItem
+    auto *stringItem
         = dynamic_cast<KConfigSkeleton::ItemString *>(item);
     if (stringItem) {
         return new KPrefsWidString(stringItem, parent);
     }
 
-    KConfigSkeleton::ItemEnum *enumItem
+    auto *enumItem
         = dynamic_cast<KConfigSkeleton::ItemEnum *>(item);
     if (enumItem) {
         QList<KConfigSkeleton::ItemEnum::Choice> choices = enumItem->choices();
@@ -59,7 +59,7 @@ KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
             qCritical() << "Enum has no choices.";
             return nullptr;
         } else {
-            KPrefsWidRadios *radios = new KPrefsWidRadios(enumItem, parent);
+            auto *radios = new KPrefsWidRadios(enumItem, parent);
             QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator it;
             int value = 0;
             QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
@@ -70,7 +70,7 @@ KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
         }
     }
 
-    KConfigSkeleton::ItemInt *intItem = dynamic_cast<KConfigSkeleton::ItemInt *>(item);
+    auto *intItem = dynamic_cast<KConfigSkeleton::ItemInt *>(item);
     if (intItem) {
         return new KPrefsWidInt(intItem, parent);
     }
@@ -431,7 +431,7 @@ KPrefsWidRadios::~KPrefsWidRadios()
 
 void KPrefsWidRadios::addRadio(int value, const QString &text, const QString &toolTip, const QString &whatsThis)
 {
-    QRadioButton *r = new QRadioButton(text, mBox);
+    auto *r = new QRadioButton(text, mBox);
     mBox->layout()->addWidget(r);
     mGroup->addButton(r, value);
     if (!toolTip.isEmpty()) {
@@ -636,42 +636,42 @@ void KPrefsWidManager::addWid(KPrefsWid *wid)
 
 KPrefsWidBool *KPrefsWidManager::addWidBool(KConfigSkeleton::ItemBool *item, QWidget *parent)
 {
-    KPrefsWidBool *w = new KPrefsWidBool(item, parent);
+    auto *w = new KPrefsWidBool(item, parent);
     addWid(w);
     return w;
 }
 
 KPrefsWidTime *KPrefsWidManager::addWidTime(KConfigSkeleton::ItemDateTime *item, QWidget *parent)
 {
-    KPrefsWidTime *w = new KPrefsWidTime(item, parent);
+    auto *w = new KPrefsWidTime(item, parent);
     addWid(w);
     return w;
 }
 
 KPrefsWidDuration *KPrefsWidManager::addWidDuration(KConfigSkeleton::ItemDateTime *item, const QString &format, QWidget *parent)
 {
-    KPrefsWidDuration *w = new KPrefsWidDuration(item, format, parent);
+    auto *w = new KPrefsWidDuration(item, format, parent);
     addWid(w);
     return w;
 }
 
 KPrefsWidDate *KPrefsWidManager::addWidDate(KConfigSkeleton::ItemDateTime *item, QWidget *parent)
 {
-    KPrefsWidDate *w = new KPrefsWidDate(item, parent);
+    auto *w = new KPrefsWidDate(item, parent);
     addWid(w);
     return w;
 }
 
 KPrefsWidColor *KPrefsWidManager::addWidColor(KConfigSkeleton::ItemColor *item, QWidget *parent)
 {
-    KPrefsWidColor *w = new KPrefsWidColor(item, parent);
+    auto *w = new KPrefsWidColor(item, parent);
     addWid(w);
     return w;
 }
 
 KPrefsWidRadios *KPrefsWidManager::addWidRadios(KConfigSkeleton::ItemEnum *item, QWidget *parent)
 {
-    KPrefsWidRadios *w = new KPrefsWidRadios(item, parent);
+    auto *w = new KPrefsWidRadios(item, parent);
     QList<KConfigSkeleton::ItemEnum::Choice2> choices;
     choices = item->choices2();
     QList<KConfigSkeleton::ItemEnum::Choice2>::ConstIterator it;
@@ -686,7 +686,7 @@ KPrefsWidRadios *KPrefsWidManager::addWidRadios(KConfigSkeleton::ItemEnum *item,
 
 KPrefsWidCombo *KPrefsWidManager::addWidCombo(KConfigSkeleton::ItemEnum *item, QWidget *parent)
 {
-    KPrefsWidCombo *w = new KPrefsWidCombo(item, parent);
+    auto *w = new KPrefsWidCombo(item, parent);
     QList<KConfigSkeleton::ItemEnum::Choice> choices;
     choices = item->choices();
     QList<KConfigSkeleton::ItemEnum::Choice>::ConstIterator end(choices.constEnd());
@@ -699,35 +699,35 @@ KPrefsWidCombo *KPrefsWidManager::addWidCombo(KConfigSkeleton::ItemEnum *item, Q
 
 KPrefsWidString *KPrefsWidManager::addWidString(KConfigSkeleton::ItemString *item, QWidget *parent)
 {
-    KPrefsWidString *w = new KPrefsWidString(item, parent, KLineEdit::Normal);
+    auto *w = new KPrefsWidString(item, parent, KLineEdit::Normal);
     addWid(w);
     return w;
 }
 
 KPrefsWidPath *KPrefsWidManager::addWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, const QString &filter, KFile::Modes mode)
 {
-    KPrefsWidPath *w = new KPrefsWidPath(item, parent, filter, mode);
+    auto *w = new KPrefsWidPath(item, parent, filter, mode);
     addWid(w);
     return w;
 }
 
 KPrefsWidString *KPrefsWidManager::addWidPassword(KConfigSkeleton::ItemString *item, QWidget *parent)
 {
-    KPrefsWidString *w = new KPrefsWidString(item, parent, KLineEdit::Password);
+    auto *w = new KPrefsWidString(item, parent, KLineEdit::Password);
     addWid(w);
     return w;
 }
 
 KPrefsWidFont *KPrefsWidManager::addWidFont(KConfigSkeleton::ItemFont *item, QWidget *parent, const QString &sampleText)
 {
-    KPrefsWidFont *w = new KPrefsWidFont(item, parent, sampleText);
+    auto *w = new KPrefsWidFont(item, parent, sampleText);
     addWid(w);
     return w;
 }
 
 KPrefsWidInt *KPrefsWidManager::addWidInt(KConfigSkeleton::ItemInt *item, QWidget *parent)
 {
-    KPrefsWidInt *w = new KPrefsWidInt(item, parent);
+    auto *w = new KPrefsWidInt(item, parent);
     addWid(w);
     return w;
 }

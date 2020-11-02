@@ -54,7 +54,7 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
     if (job->error()) {
         qCWarning(KORGANIZER_LOG) << "Search failed: " << job->errorString();
     } else {
-        Akonadi::CollectionFetchJob *fetchJob = static_cast<Akonadi::CollectionFetchJob *>(job);
+        auto *fetchJob = static_cast<Akonadi::CollectionFetchJob *>(job);
         const Akonadi::Collection::List lstCols = fetchJob->collections();
         for (const Akonadi::Collection &col : lstCols) {
             if (col.name() == QLatin1String("OpenInvitations")) {
@@ -82,7 +82,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
     }
 
     if (!col.isValid()) {
-        Akonadi::SearchCreateJob *job = new Akonadi::SearchCreateJob(name, query);
+        auto *job = new Akonadi::SearchCreateJob(name, query);
         job->setRemoteSearchEnabled(false);
         job->setSearchMimeTypes(QStringList() << KCalendarCore::Event::eventMimeType()
                                               << KCalendarCore::Todo::todoMimeType()
@@ -91,15 +91,15 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
                 &SearchCollectionHelper::createSearchJobFinished);
         qCDebug(KORGANIZER_LOG) << "We have to create a " << name << " virtual Collection";
     } else {
-        Akonadi::PersistentSearchAttribute *attribute
+        auto *attribute
             = col.attribute<Akonadi::PersistentSearchAttribute>(Akonadi::Collection::AddIfMissing);
-        Akonadi::EntityDisplayAttribute *displayname
+        auto *displayname
             = col.attribute<Akonadi::EntityDisplayAttribute >(Akonadi::Collection::AddIfMissing);
         attribute->setQueryString(QString::fromLatin1(query.toJSON()));
         attribute->setRemoteSearchEnabled(false);
         displayname->setDisplayName(displayName);
         col.setEnabled(true);
-        Akonadi::CollectionModifyJob *job = new Akonadi::CollectionModifyJob(col, this);
+        auto *job = new Akonadi::CollectionModifyJob(col, this);
         connect(job, &Akonadi::CollectionModifyJob::result, this,
                 &SearchCollectionHelper::modifyResult);
         qCDebug(KORGANIZER_LOG) << "updating " << name << " (" << col.id()
@@ -125,7 +125,7 @@ void SearchCollectionHelper::updateOpenInvitation()
 
 void SearchCollectionHelper::createSearchJobFinished(KJob *job)
 {
-    Akonadi::SearchCreateJob *createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
+    auto *createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
     const Akonadi::Collection searchCollection = createJob->createdCollection();
     if (job->error()) {
         qCWarning(KORGANIZER_LOG) << "Error occurred " << searchCollection.name()

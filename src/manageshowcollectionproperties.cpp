@@ -38,7 +38,7 @@ void ManageShowCollectionProperties::showCollectionProperties()
         dlg->raise();
         return;
     }
-    Akonadi::CollectionAttributesSynchronizationJob *sync
+    auto *sync
         = new Akonadi::CollectionAttributesSynchronizationJob(col);
     sync->setProperty("collectionId", id);
     connect(sync, &Akonadi::CollectionAttributesSynchronizationJob::result,
@@ -49,7 +49,7 @@ void ManageShowCollectionProperties::showCollectionProperties()
 void ManageShowCollectionProperties::slotCollectionPropertiesContinued(KJob *job)
 {
     if (job) {
-        Akonadi::CollectionAttributesSynchronizationJob *sync
+        auto *sync
             = qobject_cast<Akonadi::CollectionAttributesSynchronizationJob *>(job);
         Q_ASSERT(sync);
         if (sync->property("collectionId") != mCollectionView->currentCalendar().id()) {
@@ -70,7 +70,7 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
         return;
     }
 
-    Akonadi::CollectionFetchJob *fetch = qobject_cast<Akonadi::CollectionFetchJob *>(job);
+    auto *fetch = qobject_cast<Akonadi::CollectionFetchJob *>(job);
     Q_ASSERT(fetch);
     if (fetch->collections().isEmpty()) {
         qCWarning(KORGANIZER_LOG) << "no collection";

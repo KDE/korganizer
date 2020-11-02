@@ -45,7 +45,7 @@ static QRect enableButtonRect(QRect rect, int pos = 1)
 static QStyle *style(const QStyleOptionViewItem &option)
 {
     QWidget const *widget = nullptr;
-    if (const QStyleOptionViewItem *v3 = qstyleoption_cast<const QStyleOptionViewItem *>(&option)) {
+    if (const auto *v3 = qstyleoption_cast<const QStyleOptionViewItem *>(&option)) {
         widget = v3->widget;
     }
     QStyle *style = widget ? widget->style() : QApplication::style();
@@ -61,7 +61,7 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
     option.rect = enableButtonRect(r, pos);
     option.state = QStyle::State_Active | QStyle::State_Enabled;
     option.iconSize = QSize(h, h);
-    QWidget *w = const_cast<QWidget *>(opt.widget);
+    auto *w = const_cast<QWidget *>(opt.widget);
     if (w) {
         const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
         w->setToolTip(CalendarSupport::toolTipString(col));
@@ -164,7 +164,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
     // make sure that we have the right event type
     if ((event->type() == QEvent::MouseButtonRelease)
         || (event->type() == QEvent::MouseButtonPress)) {
-        QMouseEvent *me = static_cast<QMouseEvent *>(event);
+        auto *me = static_cast<QMouseEvent *>(event);
 
         for (int i = 1; i < 4; i++) {
             if (enableButtonRect(option.rect, i).contains(me->pos())) {

@@ -30,12 +30,12 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     : KPrefsModule(KOPrefs::instance(), parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
-    QTabWidget *tabWidget = new QTabWidget(this);
+    auto *tabWidget = new QTabWidget(this);
     topTopLayout->addWidget(tabWidget);
 
     // Personal Settings
     QWidget *personalFrame = new QWidget(this);
-    QVBoxLayout *personalLayout = new QVBoxLayout(personalFrame);
+    auto *personalLayout = new QVBoxLayout(personalFrame);
     tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral(
                                                           "preferences-desktop-personal")),
                       i18nc("@title:tab personal settings", "Personal"));
@@ -51,7 +51,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
                                        personalFrame);
 
     personalLayout->addWidget(mUserEmailSettings);
-    QFormLayout *emailSettingsLayout = new QFormLayout(mUserEmailSettings);
+    auto *emailSettingsLayout = new QFormLayout(mUserEmailSettings);
     Korganizer::KPrefsWidString *s
         = addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
     emailSettingsLayout->addRow(s->label(), s->lineEdit());
@@ -70,7 +70,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QFrame *saveFrame = new QFrame(this);
     tabWidget->addTab(saveFrame, QIcon::fromTheme(QStringLiteral("document-save")),
                       i18nc("@title:tab", "Save"));
-    QVBoxLayout *saveLayout = new QVBoxLayout(saveFrame);
+    auto *saveLayout = new QVBoxLayout(saveFrame);
 
     Korganizer::KPrefsWidBool *confirmItem
         = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
@@ -83,14 +83,14 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
 
     // System Tray Settings
     QFrame *systrayFrame = new QFrame(this);
-    QVBoxLayout *systrayLayout = new QVBoxLayout(systrayFrame);
+    auto *systrayLayout = new QVBoxLayout(systrayFrame);
     tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")),
                       i18nc("@title:tab systray settings", "System Tray"));
 
     QGroupBox *systrayGroupBox
         = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
     systrayLayout->addWidget(systrayGroupBox);
-    QVBoxLayout *systrayGroupLayout = new QVBoxLayout;
+    auto *systrayGroupLayout = new QVBoxLayout;
     systrayGroupBox->setLayout(systrayGroupLayout);
 
     Korganizer::KPrefsWidBool *showReminderDaemonItem
@@ -112,9 +112,9 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     QFrame *calendarFrame = new QFrame(this);
     tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")),
                       i18nc("@title:tab calendar account settings", "Calendars"));
-    QHBoxLayout *calendarFrameLayout = new QHBoxLayout;
+    auto *calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
-    Akonadi::ManageAccountWidget *manageAccountWidget = new Akonadi::ManageAccountWidget(this);
+    auto *manageAccountWidget = new Akonadi::ManageAccountWidget(this);
     manageAccountWidget->setDescriptionLabelText(i18nc("@title", "Calendar Accounts"));
     calendarFrameLayout->addWidget(manageAccountWidget);
 

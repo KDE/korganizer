@@ -45,7 +45,7 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
     : KOEventView(parent)
     , d(new Private(isSideBySide, this))
 {
-    QHBoxLayout *layout = new QHBoxLayout(this);
+    auto *layout = new QHBoxLayout(this);
     layout->setContentsMargins({});
     layout->addWidget(d->mAgendaView);
 

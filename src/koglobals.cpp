@@ -109,7 +109,7 @@ void KOGlobals::setHolidays(const QStringList &regions)
     qDeleteAll(mHolidayRegions);
     mHolidayRegions.clear();
     for (const QString &regionStr : regions) {
-        KHolidays::HolidayRegion *region = new KHolidays::HolidayRegion(regionStr);
+        auto *region = new KHolidays::HolidayRegion(regionStr);
         if (region->isValid()) {
             mHolidayRegions.append(region);
         } else {

@@ -27,7 +27,7 @@ using namespace KOrg;
 KOJournalView::KOJournalView(QWidget *parent)
     : KOrg::BaseView(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto *layout = new QVBoxLayout(this);
     mJournalView = new EventViews::JournalView(this);
 
     layout->addWidget(mJournalView);
