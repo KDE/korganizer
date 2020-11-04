@@ -20,7 +20,7 @@ class ReparentingModel : public QAbstractProxyModel
     Q_OBJECT
 public:
     struct Node {
-        typedef QSharedPointer<Node> Ptr;
+        using Ptr = QSharedPointer<Node>;
         virtual ~Node();
         virtual bool operator==(const Node &) const;
 
@@ -51,7 +51,7 @@ public:
     };
 
     struct NodeManager {
-        typedef QSharedPointer<NodeManager> Ptr;
+        using Ptr = QSharedPointer<NodeManager>;
 
         NodeManager(ReparentingModel &m) : model(m)
         {

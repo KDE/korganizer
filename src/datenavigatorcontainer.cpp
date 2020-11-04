@@ -351,7 +351,7 @@ QDate DateNavigatorContainer::monthOfNavigator(int navigatorIndex) const
     if (navigatorIndex <= mExtraViews.count() && navigatorIndex >= 0) {
         return mExtraViews[navigatorIndex - 1]->month();
     } else {
-        return QDate();
+        return {};
     }
 }
 

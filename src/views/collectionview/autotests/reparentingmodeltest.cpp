@@ -152,7 +152,7 @@ QModelIndex getIndex(const char *string, const QAbstractItemModel &model)
         = model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(
                           string), 1, Qt::MatchRecursive);
     if (list.isEmpty()) {
-        return QModelIndex();
+        return {};
     }
     return list.first();
 }

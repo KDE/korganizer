@@ -608,7 +608,7 @@ ReparentingModel::Node *ReparentingModel::extractNode(const QModelIndex &index) 
 QModelIndex ReparentingModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (row < 0 || column != 0) {
-        return QModelIndex();
+        return {};
     }
     // qCDebug(KORGANIZER_LOG) << parent << row;
     const Node *parentNode;
@@ -630,7 +630,7 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex &pare
 QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
 {
     if (!idx.isValid() || !sourceModel()) {
-        return QModelIndex();
+        return {};
     }
     Node *node = extractNode(idx);
     if (!node->isSourceNode()) {
@@ -655,7 +655,7 @@ QModelIndex ReparentingModel::mapFromSource(const QModelIndex &sourceIndex) cons
 {
     // qCDebug(KORGANIZER_LOG) << sourceIndex << sourceIndex.data().toString();
     if (!sourceIndex.isValid()) {
-        return QModelIndex();
+        return {};
     }
     Node *node = getSourceNode(sourceIndex);
     if (!node) {
@@ -807,7 +807,7 @@ QModelIndex ReparentingModel::index(Node *node) const
 {
     const int r = row(node);
     if (r < 0) {
-        return QModelIndex();
+        return {};
     }
     return createIndex(r, 0, node);
 }
@@ -816,7 +816,7 @@ QModelIndex ReparentingModel::parent(const QModelIndex &child) const
 {
     // qCDebug(KORGANIZER_LOG) << child << child.data().toString();
     if (!child.isValid()) {
-        return QModelIndex();
+        return {};
     }
     const Node *node = extractNode(child);
     return index(node->parent);
@@ -825,7 +825,7 @@ QModelIndex ReparentingModel::parent(const QModelIndex &child) const
 QModelIndex ReparentingModel::buddy(const QModelIndex &index) const
 {
     if (!index.isValid() || !sourceModel()) {
-        return QModelIndex();
+        return {};
     }
     Node *node = extractNode(index);
     if (node->isSourceNode()) {

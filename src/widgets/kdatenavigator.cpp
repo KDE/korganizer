@@ -121,8 +121,8 @@ void KDateNavigator::setBaseDate(const QDate &date)
 
 QSizePolicy KDateNavigator::sizePolicy() const
 {
-    return QSizePolicy(QSizePolicy::MinimumExpanding,
-                       QSizePolicy::MinimumExpanding);
+    return {QSizePolicy::MinimumExpanding,
+                       QSizePolicy::MinimumExpanding};
 }
 
 void KDateNavigator::updateToday()

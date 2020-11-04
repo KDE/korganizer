@@ -94,7 +94,7 @@ private Q_SLOTS:
 private:
     void update();
     void updateButtons();
-    typedef QList<ReminderTreeItem *> ReminderList;
+    using ReminderList = QList<ReminderTreeItem *>;
 
     static Q_REQUIRED_RESULT QDateTime triggerDateForIncidence(const KCalendarCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
 

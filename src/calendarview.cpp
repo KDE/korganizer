@@ -361,7 +361,7 @@ QDate CalendarView::activeIncidenceDate()
         }
     }
 
-    return QDate();
+    return {};
 }
 
 QDate CalendarView::startDate()

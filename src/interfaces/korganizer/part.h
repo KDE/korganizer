@@ -31,7 +31,7 @@ public:
         return QStringLiteral("KOrganizer/Part");
     }
 
-    typedef QList<Part *> List;
+    using List = QList<Part *>;
 
     explicit Part(MainWindow *parent)
         : KParts::Part(parent ? (parent->topLevelWidget()) : nullptr)

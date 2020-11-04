@@ -18,7 +18,7 @@ class SummaryEventInfo
 {
 public:
 
-    typedef QList<SummaryEventInfo *> List;
+    using List = QList<SummaryEventInfo *>;
 
     SummaryEventInfo();
 
