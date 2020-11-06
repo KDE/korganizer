@@ -8,9 +8,9 @@
 #define KORGANIZERUSERFEEDBACKPROVIDER_H
 
 #include <KUserFeedback/Provider>
-#include "korganizer_core_export.h"
+#include "korganizerprivate_export.h"
 
-class KORGANIZER_CORE_EXPORT KOrganizerUserFeedbackProvider : public KUserFeedback::Provider
+class KORGANIZERPRIVATE_EXPORT KOrganizerUserFeedbackProvider : public KUserFeedback::Provider
 {
     Q_OBJECT
 public:
