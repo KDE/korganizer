@@ -1094,7 +1094,7 @@ bool AlarmDialog::openIncidenceEditorThroughKOrganizer(const Incidence::Ptr &inc
         int window = reply;
         KWindowSystem::minimizeWindow(winId());
         KWindowSystem::allowExternalProcessWindowActivation();
-        KWindowSystem::activateWindow(reinterpret_cast<WId>(window));
+        KWindowSystem::activateWindow(static_cast<WId>(window));
     }
 #else
     // TODO (mac)
