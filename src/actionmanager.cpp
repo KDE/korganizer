@@ -1332,7 +1332,7 @@ void ActionManager::downloadNewStuff()
     delete dialog;
 }
 
-QString ActionManager::localFileName()
+QString ActionManager::localFileName() const
 {
     return mFile;
 }
@@ -1341,9 +1341,6 @@ class ActionManager::ActionStringsVisitor : public KCalendarCore::Visitor
 {
 public:
     ActionStringsVisitor()
-        : mShow(nullptr)
-        , mEdit(nullptr)
-        , mDelete(nullptr)
     {
     }
 
@@ -1683,7 +1680,7 @@ void ActionManager::goDate(QDate date)
     mCalendarView->goDate(date);
 }
 
-void ActionManager::goDate(QString date)
+void ActionManager::goDate(const QString &date)
 {
     goDate(QLocale().toDate(date));
 }

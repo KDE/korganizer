@@ -151,11 +151,11 @@ public Q_SLOTS:
     void showEventView();
 
     void goDate(QDate);
-    void goDate(QString);
+    void goDate(const QString &);
     void showDate(QDate date);
 
 public:
-    QString localFileName();
+    QString localFileName() const;
 
     bool queryClose();
 
