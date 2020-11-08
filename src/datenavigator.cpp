@@ -23,7 +23,7 @@ DateNavigator::~DateNavigator()
 {
 }
 
-KCalendarCore::DateList DateNavigator::selectedDates()
+KCalendarCore::DateList DateNavigator::selectedDates() const
 {
     return mSelectedDates;
 }

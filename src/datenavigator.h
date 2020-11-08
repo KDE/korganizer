@@ -29,7 +29,7 @@ public:
     explicit DateNavigator(QObject *parent = nullptr);
     ~DateNavigator();
 
-    Q_REQUIRED_RESULT KCalendarCore::DateList selectedDates();
+    Q_REQUIRED_RESULT KCalendarCore::DateList selectedDates() const;
 
     Q_REQUIRED_RESULT int datesCount() const;
 
