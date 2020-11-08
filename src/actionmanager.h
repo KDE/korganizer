@@ -131,7 +131,7 @@ public:
     bool handleCommandLine(const QStringList &args);
 
 public Q_SLOTS:
-    void openEventEditor(const QString &);
+    void openEventEditor(const QString &summary);
     void openEventEditor(const QString &summary, const QString &description, const QStringList &attachments);
     void openEventEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees);
     void openEventEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype);
