@@ -57,7 +57,7 @@ public Q_SLOTS:
     void printJournal(const KCalendarCore::Journal::Ptr &journal, bool preview);
 
 private:
-    EventViews::JournalView *mJournalView = nullptr;
+    EventViews::JournalView *const mJournalView;
 };
 
 #endif
