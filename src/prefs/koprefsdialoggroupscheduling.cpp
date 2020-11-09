@@ -37,7 +37,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
         = addWidBool(Akonadi::CalendarSettings::self()->bccItem(), topFrame);
     topLayout->addWidget(bcc->checkBox(), 1, 0, 1, 2);
 
-    QLabel *aTransportLabel = new QLabel(
+    auto *aTransportLabel = new QLabel(
         i18nc("@label", "Mail transport:"), topFrame);
     topLayout->addWidget(aTransportLabel, 2, 0, 1, 2);
 

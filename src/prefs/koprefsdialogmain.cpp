@@ -100,7 +100,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
         i18nc("@info:tooltip", "Enable this setting to show the KOrganizer "
                                "reminder daemon in your system tray (recommended)."));
 
-    QLabel *note = new QLabel(
+    auto *note = new QLabel(
         xi18nc("@info",
                "<note>The daemon will continue running even if it is not shown "
                "in the system tray.</note>"));

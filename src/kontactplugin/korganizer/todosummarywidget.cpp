@@ -282,7 +282,7 @@ void TodoSummaryWidget::updateView()
     } //foreach
 
     if (counter == 0) {
-        QLabel *noTodos = new QLabel(
+        auto *noTodos = new QLabel(
             i18np("No pending to-dos due within the next day",
                   "No pending to-dos due within the next %1 days",
                   mDaysToGo), this);

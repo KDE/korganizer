@@ -204,7 +204,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     topLayout->setContentsMargins({});
     setContentsMargins({});
 
-    QLabel *label = new QLabel(
+    auto *label = new QLabel(
         i18nc("@label",
               "Reminders: "
               "Clicking on the title toggles details for item"),
@@ -262,7 +262,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     suspendBoxHBoxLayout->setContentsMargins({});
     topLayout->addWidget(suspendBox);
 
-    QLabel *l = new QLabel(i18nc("@label:spinbox", "Suspend &duration:"), suspendBox);
+    auto *l = new QLabel(i18nc("@label:spinbox", "Suspend &duration:"), suspendBox);
     suspendBoxHBoxLayout->addWidget(l);
 
     mSuspendSpin = new QSpinBox(suspendBox);

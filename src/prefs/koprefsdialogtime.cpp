@@ -69,7 +69,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     holidayRegBoxHBoxLayout->setContentsMargins({});
     holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
 
-    QLabel *holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);
+    auto *holidayLabel = new QLabel(i18nc("@label", "Use holiday region:"), holidayRegBox);
     holidayLabel->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
     holidayLabel->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 

@@ -45,7 +45,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     auto *hbox = new QHBoxLayout();
     topLayout->addItem(hbox);
 
-    QLabel *label = new QLabel(i18nc("@label:textbox Name of the folder.", "&Name:"), this);
+    auto *label = new QLabel(i18nc("@label:textbox Name of the folder.", "&Name:"), this);
     hbox->addWidget(label);
 
     mNameEdit = new QLineEdit(this);

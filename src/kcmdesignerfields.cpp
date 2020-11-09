@@ -339,7 +339,7 @@ void KCMDesignerFields::initGUI()
                " to be edited, set the widget name in Qt Designer.</p></qt>",
                applicationName(), applicationName());
 
-    QLabel *activeLabel = new QLabel(
+    auto *activeLabel = new QLabel(
         i18n("<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto), this);
     activeLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse
                                          |Qt::LinksAccessibleByKeyboard);
