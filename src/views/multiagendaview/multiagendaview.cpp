@@ -314,7 +314,7 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     auto *mainLayout = new QVBoxLayout(this);
     QWidget *widget = new QWidget;
     d->ui.setupUi(widget);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(
+    auto *buttonBox = new QDialogButtonBox(
         QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
     okButton->setDefault(true);

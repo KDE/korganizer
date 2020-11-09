@@ -30,7 +30,7 @@ FilterEditDialog::FilterEditDialog(QList<KCalendarCore::CalFilter *> *filters, Q
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
     auto *mainLayout = new QVBoxLayout(this);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(
+    auto *buttonBox = new QDialogButtonBox(
         QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply, this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mApplyButton = buttonBox->button(QDialogButtonBox::Apply);

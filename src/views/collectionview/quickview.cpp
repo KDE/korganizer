@@ -32,7 +32,7 @@ Quickview::Quickview(const Akonadi::Collection &col)
     , mUi(new Ui_quickview)
     , mCollection(col)
 {
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
+    auto *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     QWidget *mainWidget = new QWidget(this);
     auto *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
