@@ -9,10 +9,8 @@
 
 #include "koprefsdialogmain.h"
 #include "koprefs.h"
-#include <QButtonGroup>
 #include <QFormLayout>
 #include <QGroupBox>
-#include <QRadioButton>
 #include <QTabWidget>
 #include <QVBoxLayout>
 
@@ -24,7 +22,6 @@
 #include <KLocalizedString>
 #include <QLabel>
 #include <QCheckBox>
-#include <QLineEdit>
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     : KPrefsModule(KOPrefs::instance(), parent)

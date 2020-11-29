@@ -25,8 +25,6 @@
 #include "korganizerplugin_debug.h"
 #include <QIcon>
 #include <KLocalizedString>
-#include <KMessageBox>
-#include <QTemporaryFile>
 
 #include <QDropEvent>
 #include <QStandardPaths>
