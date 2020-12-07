@@ -118,7 +118,7 @@ GenericName[uk]=Фонова служба клієнта нагадування 
 GenericName[wa]=Cliyint do démon do rimimbreu d' KOrganizer
 GenericName[x-test]=xxKOrganizer Reminder Daemon Clientxx
 GenericName[zh_CN]=KOrganizer 提醒守护进程的客户端
-GenericName[zh_TW]=KOrganizer 提醒守護程式用戶端
+GenericName[zh_TW]=KOrganizr 提醒守護程式用戶端
 Terminal=false
 
 X-KDE-autostart-phase=2
