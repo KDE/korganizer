@@ -23,7 +23,7 @@ public:
     {
     }
 
-    virtual ~DummyNode()
+    ~DummyNode() override
     {
     }
 

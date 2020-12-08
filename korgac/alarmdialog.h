@@ -50,7 +50,7 @@ public:
     Q_ENUM(SuspendUnit)
 
     explicit AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *parent = nullptr);
-    ~AlarmDialog();
+    ~AlarmDialog() override;
 
     void addIncidence(const Akonadi::Item &incidence, const QDateTime &reminderAt, const QString &displayText);
     void eventNotification();
