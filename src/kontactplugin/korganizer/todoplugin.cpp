@@ -39,7 +39,7 @@ TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
         = new QAction(QIcon::fromTheme(QStringLiteral("task-new")),
                       i18nc("@action:inmenu", "New To-do..."), this);
     actionCollection()->addAction(QStringLiteral("new_todo"), action);
-    actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T));
+    actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_T));
     QString str = i18nc("@info:status", "Create a new to-do");
     action->setStatusTip(str);
     action->setToolTip(str);
