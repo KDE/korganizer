@@ -104,7 +104,7 @@ SearchDialog::~SearchDialog()
 
 void SearchDialog::showEvent(QShowEvent *event)
 {
-    Q_UNUSED(event);
+    Q_UNUSED(event)
     m_ui->searchEdit->setFocus();
 }
 

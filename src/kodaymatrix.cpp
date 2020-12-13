@@ -419,20 +419,20 @@ int KODayMatrix::getDayIndexFrom(int x, int y) const
 
 void KODayMatrix::calendarIncidenceAdded(const KCalendarCore::Incidence::Ptr &incidence)
 {
-    Q_UNUSED(incidence);
+    Q_UNUSED(incidence)
     mPendingChanges = true;
 }
 
 void KODayMatrix::calendarIncidenceChanged(const KCalendarCore::Incidence::Ptr &incidence)
 {
-    Q_UNUSED(incidence);
+    Q_UNUSED(incidence)
     mPendingChanges = true;
 }
 
 void KODayMatrix::calendarIncidenceDeleted(const KCalendarCore::Incidence::Ptr &incidence, const KCalendarCore::Calendar *calendar)
 {
-    Q_UNUSED(incidence);
-    Q_UNUSED(calendar);
+    Q_UNUSED(incidence)
+    Q_UNUSED(calendar)
     mPendingChanges = true;
 }
 
@@ -616,7 +616,7 @@ void KODayMatrix::dragMoveEvent(QDragMoveEvent *e)
 
 void KODayMatrix::dragLeaveEvent(QDragLeaveEvent *dl)
 {
-    Q_UNUSED(dl);
+    Q_UNUSED(dl)
 //  setPalette(oldPalette);
 //  update();
 }

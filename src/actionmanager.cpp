@@ -1414,7 +1414,7 @@ protected:
 void ActionManager::processIncidenceSelection(const Akonadi::Item &item, QDate date)
 {
     //qCDebug(KORGANIZER_LOG) << "ActionManager::processIncidenceSelection()";
-    Q_UNUSED(date);
+    Q_UNUSED(date)
 
     const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
@@ -1786,22 +1786,22 @@ QWidget *ActionManager::dialogParent()
 
 void ActionManager::openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline)
 {
-    Q_UNUSED(summary);
-    Q_UNUSED(description);
-    Q_UNUSED(attachmentUris);
-    Q_UNUSED(attendees);
-    Q_UNUSED(attachmentMimetypes);
-    Q_UNUSED(attachmentIsInline);
+    Q_UNUSED(summary)
+    Q_UNUSED(description)
+    Q_UNUSED(attachmentUris)
+    Q_UNUSED(attendees)
+    Q_UNUSED(attachmentMimetypes)
+    Q_UNUSED(attachmentIsInline)
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }
 
 void ActionManager::openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline)
 {
-    Q_UNUSED(summary);
-    Q_UNUSED(description);
-    Q_UNUSED(attachmentUris);
-    Q_UNUSED(attendees);
-    Q_UNUSED(attachmentMimetypes);
-    Q_UNUSED(attachmentIsInline);
+    Q_UNUSED(summary)
+    Q_UNUSED(description)
+    Q_UNUSED(attachmentUris)
+    Q_UNUSED(attendees)
+    Q_UNUSED(attachmentMimetypes)
+    Q_UNUSED(attachmentIsInline)
     qCWarning(KORGANIZER_LOG) << "Not implemented in korg-desktop";
 }

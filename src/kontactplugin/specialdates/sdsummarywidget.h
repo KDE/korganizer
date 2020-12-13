@@ -41,7 +41,7 @@ public:
     void configUpdated();
     void updateSummary(bool force = false) override
     {
-        Q_UNUSED(force);
+        Q_UNUSED(force)
         updateView();
     }
 

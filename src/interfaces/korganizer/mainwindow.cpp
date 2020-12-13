@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::init(bool hasDocument)
 {
-    Q_UNUSED(hasDocument);
+    Q_UNUSED(hasDocument)
 }
 
 void MainWindow::setHasDocument(bool d)

@@ -615,7 +615,7 @@ void CalendarView::updateConfig(const QByteArray &receiver)
 
 void CalendarView::slotCreateFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
 {
-    Q_UNUSED(changeId);
+    Q_UNUSED(changeId)
     if (resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess) {
         changeIncidenceDisplay(item, Akonadi::IncidenceChanger::ChangeTypeCreate);
         updateUnmanagedViews();
@@ -627,7 +627,7 @@ void CalendarView::slotCreateFinished(int changeId, const Akonadi::Item &item, A
 
 void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
 {
-    Q_UNUSED(changeId);
+    Q_UNUSED(changeId)
     if (resultCode != Akonadi::IncidenceChanger::ResultCodeSuccess) {
         qCCritical(KORGANIZER_LOG) << "Incidence not modified, job reported error: " << errorString;
         return;
@@ -683,7 +683,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
 
 void CalendarView::slotDeleteFinished(int changeId, const QVector<Akonadi::Item::Id> &itemIdList, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString)
 {
-    Q_UNUSED(changeId);
+    Q_UNUSED(changeId)
     if (resultCode == Akonadi::IncidenceChanger::ResultCodeSuccess) {
         for (Akonadi::Item::Id id : itemIdList) {
             Akonadi::Item item = mCalendar->item(id);
@@ -1475,8 +1475,8 @@ void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akon
             i18nc("@title:window", "Copying Failed"));
     }
 #else
-    Q_UNUSED(col);
-    Q_UNUSED(item);
+    Q_UNUSED(col)
+    Q_UNUSED(item)
     qCDebug(KORGANIZER_LOG) << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
@@ -1561,8 +1561,8 @@ void CalendarView::moveIncidenceToResource(const Akonadi::Item &item, const Akon
             i18nc("@title:window", "Moving Failed"));
     }
 #else
-    Q_UNUSED(col);
-    Q_UNUSED(item);
+    Q_UNUSED(col)
+    Q_UNUSED(item)
     qCDebug(KORGANIZER_LOG) << "AKONADI PORT: Disabled code in  " << Q_FUNC_INFO;
 #endif
 }
@@ -2151,13 +2151,13 @@ void CalendarView::deleteIncidence()
 
 void CalendarView::cutIncidence(const Akonadi::Item &incidence)
 {
-    Q_UNUSED(incidence);
+    Q_UNUSED(incidence)
     edit_cut();
 }
 
 void CalendarView::copyIncidence(const Akonadi::Item &incidence)
 {
-    Q_UNUSED(incidence);
+    Q_UNUSED(incidence)
     edit_copy();
 }
 
@@ -2204,7 +2204,7 @@ void CalendarView::showIncidenceContext(const Akonadi::Item &item)
 
 bool CalendarView::editIncidence(const Akonadi::Item &item, bool isCounter)
 {
-    Q_UNUSED(isCounter);
+    Q_UNUSED(isCounter)
     KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
         qCCritical(KORGANIZER_LOG) << "Null incidence";

@@ -168,7 +168,7 @@ void AlarmDockWindow::enableAutostart(bool enable)
 
 void AlarmDockWindow::activate(const QPoint &pos)
 {
-    Q_UNUSED(pos);
+    Q_UNUSED(pos)
     KToolInvocation::startServiceByDesktopName(QStringLiteral("org.kde.korganizer"), QString());
 }
 

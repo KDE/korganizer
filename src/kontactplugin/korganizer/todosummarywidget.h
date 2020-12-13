@@ -44,7 +44,7 @@ public:
 public Q_SLOTS:
     void updateSummary(bool force = false) override
     {
-        Q_UNUSED(force);
+        Q_UNUSED(force)
         updateView();
     }
 

@@ -142,14 +142,14 @@ void KOTodoView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 void KOTodoView::showDates(const QDate &start, const QDate &end, const QDate &)
 {
     // There is nothing to do here for the Todo View
-    Q_UNUSED(start);
-    Q_UNUSED(end);
+    Q_UNUSED(start)
+    Q_UNUSED(end)
 }
 
 void KOTodoView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
-    Q_UNUSED(incidenceList);
-    Q_UNUSED(date);
+    Q_UNUSED(incidenceList)
+    Q_UNUSED(date)
 }
 
 void KOTodoView::updateView()

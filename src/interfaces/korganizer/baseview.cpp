@@ -179,9 +179,9 @@ void BaseView::clearSelection()
 
 bool BaseView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
-    Q_UNUSED(startDt);
-    Q_UNUSED(endDt);
-    Q_UNUSED(allDay);
+    Q_UNUSED(startDt)
+    Q_UNUSED(endDt)
+    Q_UNUSED(allDay)
     return false;
 }
 
@@ -213,7 +213,7 @@ void BaseView::calendarReset()
 
 QPair<QDateTime, QDateTime> BaseView::actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth) const
 {
-    Q_UNUSED(preferredMonth);
+    Q_UNUSED(preferredMonth)
     return qMakePair(start, end);
 }
 

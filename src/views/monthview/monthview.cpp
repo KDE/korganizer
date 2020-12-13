@@ -208,7 +208,7 @@ void MonthView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 
 void MonthView::showDates(const QDate &start, const QDate &end, const QDate &preferredMonth)
 {
-    Q_UNUSED(start);
-    Q_UNUSED(end);
-    Q_UNUSED(preferredMonth);
+    Q_UNUSED(start)
+    Q_UNUSED(end)
+    Q_UNUSED(preferredMonth)
 }

@@ -55,8 +55,8 @@ private:
 
     bool setData(const QVariant &variant, int role) override
     {
-        Q_UNUSED(variant);
-        Q_UNUSED(role);
+        Q_UNUSED(variant)
+        Q_UNUSED(role)
         return false;
     }
 

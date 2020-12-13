@@ -364,9 +364,9 @@ void ReparentingModel::setSourceModel(QAbstractItemModel *sourceModel)
 
 void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, int start, int end)
 {
-    Q_UNUSED(parent);
-    Q_UNUSED(start);
-    Q_UNUSED(end);
+    Q_UNUSED(parent)
+    Q_UNUSED(start)
+    Q_UNUSED(end)
 }
 
 ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
