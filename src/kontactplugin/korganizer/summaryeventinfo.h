@@ -35,8 +35,8 @@ public:
     QString summaryText;
     QString summaryUrl;
     QString summaryTooltip;
-    bool makeBold;
-    bool makeUrgent;
+    bool makeBold = false;
+    bool makeUrgent = false;
 
 private:
     static bool skip(const KCalendarCore::Event::Ptr &event);

@@ -98,7 +98,6 @@ public:
 SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *parent)
     : KontactInterface::Summary(parent)
     , mPlugin(plugin)
-    , mHolidays(nullptr)
 {
     mCalendar = CalendarSupport::calendarSingleton();
     // Create the Summary Layout

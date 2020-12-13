@@ -68,8 +68,6 @@ bool SummaryEventInfo::skip(const KCalendarCore::Event::Ptr &event)
 }
 
 SummaryEventInfo::SummaryEventInfo()
-    : makeBold(false)
-    , makeUrgent(false)
 {
 }
 

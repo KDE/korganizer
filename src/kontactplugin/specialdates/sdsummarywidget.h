@@ -66,7 +66,7 @@ private:
 
     QGridLayout *mLayout = nullptr;
     QList<QLabel *> mLabels;
-    KontactInterface::Plugin *mPlugin = nullptr;
+    KontactInterface::Plugin *const mPlugin;
 
     int mDaysAhead;
     bool mShowBirthdaysFromKAB = false;

@@ -52,8 +52,6 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     mLayout->setSpacing(3);
     mLayout->setRowStretch(6, 1);
 
-    QStringList mimeTypes;
-    mimeTypes << KCalendarCore::Event::eventMimeType();
     mCalendar = CalendarSupport::calendarSingleton();
 
     mChanger = new Akonadi::IncidenceChanger(parent);

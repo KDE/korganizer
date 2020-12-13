@@ -74,7 +74,7 @@ void KCMSDSummary::load()
     KConfig config(QStringLiteral("kcmsdsummaryrc"));
 
     KConfigGroup group = config.group("Days");
-    int days = group.readEntry("DaysToShow", 7);
+    const int days = group.readEntry("DaysToShow", 7);
     if (days == 1) {
         mDateTodayButton->setChecked(true);
     } else if (days == 31) {
