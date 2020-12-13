@@ -140,7 +140,7 @@ public:
         restoreTreeState();
     }
 
-    virtual ~NewNodeExpander()
+    ~NewNodeExpander() override
     {
         //Ideally we'd automatically save the treestate of the parent view here,
         //but that unfortunately doesn't seem to work

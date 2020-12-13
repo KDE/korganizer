@@ -49,7 +49,7 @@ public Q_SLOTS:
                                 Akonadi::IncidenceChanger::ChangeType) override;
 
 private:
-    EventViews::WhatsNextView *mView = nullptr;
+    EventViews::WhatsNextView *const mView;
 };
 
 #endif

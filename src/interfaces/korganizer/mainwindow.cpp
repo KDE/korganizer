@@ -9,7 +9,7 @@
 #include "mainwindow.h"
 
 namespace KOrg {
-MainWindow::MainWindow() : mDocument(true)
+MainWindow::MainWindow()
 {
 }
 

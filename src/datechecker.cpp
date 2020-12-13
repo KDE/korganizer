@@ -66,8 +66,8 @@ void DateChecker::possiblyPastMidnight()
     // Set the timer to go off 1 second after midnight
     // or after 8 minutes, whichever comes first.
     if (mUpdateTimer) {
-        QTime now = QTime::currentTime();
-        QTime midnight = QTime(23, 59, 59);
+        const QTime now = QTime::currentTime();
+        const QTime midnight = QTime(23, 59, 59);
         const int msecsWait = qMin(480000, now.msecsTo(midnight) + 2000);
 
         mUpdateTimer->stop();

@@ -86,7 +86,7 @@ public:
     bool hasDocument() const;
 
 private:
-    bool mDocument;
+    bool mDocument = true;
 };
 }
 

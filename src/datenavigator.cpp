@@ -74,8 +74,8 @@ void DateNavigator::selectDates(const QDate &d, int count, const QDate &preferre
 
 void DateNavigator::selectWeekByDay(int weekDay, QDate d, QDate preferredMonth)
 {
-    int dateCount = mSelectedDates.count();
-    bool weekStart = (weekDay == KOGlobals::self()->firstDayOfWeek());
+    const int dateCount = mSelectedDates.count();
+    const bool weekStart = (weekDay == KOGlobals::self()->firstDayOfWeek());
     if (weekStart && dateCount == 7) {
         selectWeek(d, preferredMonth);
     } else {
@@ -131,9 +131,9 @@ void DateNavigator::selectWorkWeek(QDate d)
 
 void DateNavigator::selectToday()
 {
-    QDate d = QDate::currentDate();
+    const QDate d = QDate::currentDate();
 
-    int dateCount = mSelectedDates.count();
+    const int dateCount = mSelectedDates.count();
 
     if (dateCount == 7) {
         selectWeek(d);
@@ -147,7 +147,7 @@ void DateNavigator::selectToday()
 void DateNavigator::selectPreviousYear()
 {
     QDate firstSelected = mSelectedDates.first();
-    int weekDay = firstSelected.dayOfWeek();
+    const int weekDay = firstSelected.dayOfWeek();
     firstSelected = firstSelected.addYears(-1);
 
     selectWeekByDay(weekDay, firstSelected);

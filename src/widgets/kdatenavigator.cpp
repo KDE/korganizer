@@ -135,18 +135,18 @@ QDate KDateNavigator::startDate() const
 {
     // Find the first day of the week of the current month.
     QDate dayone(mBaseDate.year(), mBaseDate.month(), mBaseDate.day());
-    int d2 = dayone.day();
+    const int d2 = dayone.day();
     dayone = dayone.addDays(-d2 + 1);
 
-    int m_fstDayOfWkCalsys = dayone.dayOfWeek();
-    int weekstart = KOGlobals::self()->firstDayOfWeek();
+    const int m_fstDayOfWkCalsys = dayone.dayOfWeek();
+    const int weekstart = KOGlobals::self()->firstDayOfWeek();
 
     // If month begins on Monday and Monday is first day of week,
     // month should begin on second line. Sunday doesn't have this problem.
-    int nextLine = m_fstDayOfWkCalsys <= weekstart ? 7 : 0;
+    const int nextLine = m_fstDayOfWkCalsys <= weekstart ? 7 : 0;
 
     // update the matrix dates
-    int index = weekstart - m_fstDayOfWkCalsys - nextLine;
+    const int index = weekstart - m_fstDayOfWkCalsys - nextLine;
 
     dayone = dayone.addDays(index);
 

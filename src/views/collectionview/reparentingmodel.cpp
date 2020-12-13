@@ -17,6 +17,7 @@
 
 ReparentingModel::Node::Node(ReparentingModel &model)
     : personModel(model)
+    , mIsSourceNode(false)
 {
 }
 
