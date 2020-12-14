@@ -134,9 +134,9 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     const QSize initialSize(424, 187);
     // split up position and size to be compatible with previous version
     // that only stored the position.
-    QPoint pos = generalConfig.readEntry("Position", QPoint());
+    const QPoint pos = generalConfig.readEntry("Position", QPoint());
     if (!pos.isNull()) {
-        QSize size = generalConfig.readEntry("Size", initialSize);
+        const QSize size = generalConfig.readEntry("Size", initialSize);
         mRect = QRect(pos, size);
         setGeometry(mRect);
     }
