@@ -54,7 +54,7 @@ QString KOrganizerIfaceImpl::getCurrentURLasString() const
 bool KOrganizerIfaceImpl::deleteIncidence(const QString &uid, bool force)
 {
     bool ok;
-    qint64 id = QVariant(uid).toLongLong(&ok);
+    const qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
         qCWarning(KORGANIZER_LOG) << "Invalid uid" << uid;
         return false;
@@ -65,7 +65,7 @@ bool KOrganizerIfaceImpl::deleteIncidence(const QString &uid, bool force)
 bool KOrganizerIfaceImpl::editIncidence(const QString &itemId)
 {
     bool ok;
-    qint64 id = QVariant(itemId).toLongLong(&ok);
+    const qint64 id = QVariant(itemId).toLongLong(&ok);
     if (!ok) {
         qCWarning(KORGANIZER_LOG) << "Invalid item id = " << itemId;
         return false;
@@ -81,7 +81,7 @@ bool KOrganizerIfaceImpl::addIncidence(const QString &uid)
 bool KOrganizerIfaceImpl::showIncidence(const QString &uid)
 {
     bool ok;
-    qint64 id = QVariant(uid).toLongLong(&ok);
+    const qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
         qCWarning(KORGANIZER_LOG) << "Invalid uid" << uid;
         return false;
@@ -92,7 +92,7 @@ bool KOrganizerIfaceImpl::showIncidence(const QString &uid)
 bool KOrganizerIfaceImpl::showIncidenceContext(const QString &uid)
 {
     bool ok;
-    qint64 id = QVariant(uid).toLongLong(&ok);
+    const qint64 id = QVariant(uid).toLongLong(&ok);
     if (!ok) {
         qCWarning(KORGANIZER_LOG) << "Invalid uid" << uid;
         return false;

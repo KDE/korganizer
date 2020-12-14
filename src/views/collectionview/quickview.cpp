@@ -138,7 +138,7 @@ void Quickview::writeConfig()
 
     group.writeEntry("Size", size());
 
-    QList<int> list = mAgendaView->splitter()->sizes();
+    const QList<int> list = mAgendaView->splitter()->sizes();
     group.writeEntry("Separator", list);
 
     group.sync();

@@ -56,7 +56,7 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
 {
     QStyleOptionButton option;
     option.icon = pixmap;
-    QRect r = opt.rect;
+    const QRect r = opt.rect;
     const int h = r.height() - 4;
     option.rect = enableButtonRect(r, pos);
     option.state = QStyle::State_Active | QStyle::State_Enabled;

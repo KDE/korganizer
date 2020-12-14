@@ -166,10 +166,10 @@ void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, boo
 
         //make sure to clear and then restore the view stylesheet, else the view
         //stylesheet is propagated to the child print dialog. see bug 303902
-        const QString ss = styleSheet();
+        const QString css = styleSheet();
         setStyleSheet(QString());
         printer.print(CalendarSupport::CalPrinterBase::Incidence,
                       dtStart, dtStart, selectedIncidences, preview);
-        setStyleSheet(ss);
+        setStyleSheet(css);
     }
 }

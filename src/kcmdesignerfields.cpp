@@ -56,7 +56,7 @@ public:
             setText(0, wdg->windowTitle());
 
             QPixmap pm = wdg->grab();
-            QImage img
+            const QImage img
                 = pm.toImage().scaled(300, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             mPreview = QPixmap::fromImage(img);
 
@@ -183,7 +183,7 @@ void KCMDesignerFields::deleteFile()
 
 void KCMDesignerFields::importFile()
 {
-    QUrl src
+    const QUrl src
         = QFileDialog::getOpenFileUrl(this, i18n("Import Page"),
                                       QUrl::fromLocalFile(QDir::homePath()),
                                       QStringLiteral("%1 (*.ui)").arg(i18n("Designer Files"))
@@ -214,7 +214,7 @@ void KCMDesignerFields::rebuildList()
 {
     // If nothing is initialized there is no need to do something
     if (mPageView) {
-        QStringList ai = saveActivePages();
+        const QStringList ai = saveActivePages();
         updatePreview();
         mPageView->clear();
         loadUiFiles();
@@ -279,7 +279,7 @@ void KCMDesignerFields::initGUI()
     auto *layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
 
-    bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
+    const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
 
     if (noDesigner) {
         const QString txt
@@ -454,7 +454,7 @@ void KCMDesignerFields::startDesigner()
 void KCMDesignerFields::showWhatsThis(const QString &href)
 {
     if (href.startsWith(QLatin1String("whatsthis:"))) {
-        QPoint pos = QCursor::pos();
+        const QPoint pos = QCursor::pos();
         QWhatsThis::showText(pos, href.mid(10), this);
     }
 }
