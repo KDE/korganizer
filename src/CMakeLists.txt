@@ -40,7 +40,9 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korganizer.png"
 ecm_add_app_icon(korganizer_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(korganizer ${korganizer_SRCS})
-
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(korganizer PROPERTIES UNITY_BUILD ON)
+endif()
 target_link_libraries(korganizer
     KF5::KontactInterface
     KF5::CalendarCore
@@ -76,6 +78,10 @@ set(kcm_korganizer_PART_SRCS
     )
 
 add_library(kcm_korganizer MODULE ${kcm_korganizer_PART_SRCS})
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(kcm_korganizer PROPERTIES UNITY_BUILD ON)
+endif()
+
 generate_export_header(kcm_korganizer BASE_NAME kcm_korganizer)
 
 target_link_libraries(kcm_korganizer
@@ -105,6 +111,9 @@ install(TARGETS
 set(korganizerpart_PART_SRCS korganizer_part.cpp korganizer_debug.cpp)
 
 add_library(korganizerpart MODULE ${korganizerpart_PART_SRCS})
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(korganizerpart PROPERTIES UNITY_BUILD ON)
+endif()
 
 target_link_libraries(korganizerpart
     KF5::CalendarSupport
@@ -248,6 +257,10 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     )
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(korganizerprivate PROPERTIES UNITY_BUILD ON)
+endif()
+
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
 target_link_libraries(korganizerprivate
