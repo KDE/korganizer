@@ -54,6 +54,8 @@ static QStyle *style(const QStyleOptionViewItem &option)
 
 static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap, const QModelIndex &index, int pos = 1)
 {
+    Q_UNUSED(index);
+
     QStyleOptionButton option;
     option.icon = pixmap;
     QRect r = opt.rect;
@@ -61,11 +63,6 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
     option.rect = enableButtonRect(r, pos);
     option.state = QStyle::State_Active | QStyle::State_Enabled;
     option.iconSize = QSize(h, h);
-    auto *w = const_cast<QWidget *>(opt.widget);
-    if (w) {
-        const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
-        w->setToolTip(CalendarSupport::toolTipString(col));
-    }
     return option;
 }
 
