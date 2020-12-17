@@ -554,7 +554,7 @@ void CalendarView::goToday()
 
 void CalendarView::goNext()
 {
-    if (dynamic_cast<MonthView *>(mViewManager->currentView())) {
+    if (qobject_cast<MonthView *>(mViewManager->currentView())) {
         const QDate month = mDateNavigatorContainer->monthOfNavigator(0);
         QPair<QDate, QDate> limits = KODayMatrix::matrixLimits(month);
         mDateNavigator->selectNextMonth(month, limits.first, limits.second);
@@ -565,7 +565,7 @@ void CalendarView::goNext()
 
 void CalendarView::goPrevious()
 {
-    if (dynamic_cast<MonthView *>(mViewManager->currentView())) {
+    if (qobject_cast<MonthView *>(mViewManager->currentView())) {
         const QDate month = mDateNavigatorContainer->monthOfNavigator(0);
         QPair<QDate, QDate> limits = KODayMatrix::matrixLimits(month);
         mDateNavigator->selectPreviousMonth(month, limits.first, limits.second);
