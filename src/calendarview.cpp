@@ -2356,16 +2356,12 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                 QString itemFuture(i18n("Also Delete &Future"));     //QT5 was a KGuiItem
 
                 if (!isFirst && !isLast) {
-#pragma message("port QT5")
-                    //QT5 itemFuture.setEnabled( true );
                     message = i18n("The calendar item \"%1\" recurs over multiple dates. "
                                    "Do you want to delete only the current one on %2, also "
                                    "future occurrences, or all its occurrences?",
                                    incidence->summary(),
                                    QLocale::system().toString(itemDate, QLocale::LongFormat));
                 } else {
-#pragma message("port QT5")
-                    //QT5 itemFuture.setEnabled( false );
                     message = i18n("The calendar item \"%1\" recurs over multiple dates. "
                                    "Do you want to delete only the current one on %2 "
                                    "or all its occurrences?",
