@@ -57,7 +57,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     Q_OBJECT
 public:
     explicit AkonadiCollectionView(CalendarView *view, bool hasContextMenu = true, QWidget *parent = nullptr);
-    ~AkonadiCollectionView();
+    ~AkonadiCollectionView() override;
 
     Akonadi::EntityTreeView *view() const;
 
