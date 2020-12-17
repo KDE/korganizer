@@ -192,7 +192,6 @@ set(korganizerprivate_LIB_SRCS
     datenavigatorcontainer.cpp
     dialog/filtereditdialog.cpp
     widgets/kdatenavigator.cpp
-    kocheckableproxymodel.cpp
     kocorehelper.cpp
     kodaymatrix.cpp
     kodialogmanager.cpp

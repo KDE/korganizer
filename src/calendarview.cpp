@@ -20,7 +20,6 @@
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
-#include "kocheckableproxymodel.h"
 #include "kodaymatrix.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
@@ -2675,18 +2674,6 @@ Akonadi::History *CalendarView::history() const
 void CalendarView::onCutFinished()
 {
     checkClipboard();
-}
-
-void CalendarView::setCheckableProxyModel(KOCheckableProxyModel *model)
-{
-    if (mCheckableProxyModel) {
-        mCheckableProxyModel->disconnect(this);
-    }
-
-    mCheckableProxyModel = model;
-    connect(model, &KOCheckableProxyModel::aboutToToggle, this,
-            &CalendarView::onCheckableProxyAboutToToggle);
-    connect(model, &KOCheckableProxyModel::toggled, this, &CalendarView::onCheckableProxyToggled);
 }
 
 void CalendarView::onCheckableProxyAboutToToggle(bool newState)

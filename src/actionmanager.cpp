@@ -23,7 +23,6 @@
 #include "prefs/koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "kocheckableproxymodel.h"
 #include "korgacinterface.h"
 #include <KAuthorized>
 
@@ -73,6 +72,7 @@
 #include <QTimer>
 #include <KSharedConfig>
 #include <QStandardPaths>
+#include <KCheckableProxyModel>
 
 KOWindowList *ActionManager::mWindowList = nullptr;
 

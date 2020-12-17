@@ -31,7 +31,6 @@ class KODialogManager;
 class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
-class KOCheckableProxyModel;
 class AkonadiCollectionView;
 
 namespace CalendarSupport {
@@ -117,7 +116,6 @@ public:
     void showMessage(const QString &message, KMessageWidget::MessageType);
 
     Akonadi::History *history() const;
-    void setCheckableProxyModel(KOCheckableProxyModel *);
 
     KOViewManager *viewManager() const
     {
@@ -704,7 +702,6 @@ private:
     bool mSplitterSizesValid;
 
     Akonadi::CalendarClipboard *mCalendarClipboard = nullptr;
-    KOCheckableProxyModel *mCheckableProxyModel = nullptr;
     AkonadiCollectionView *mETMCollectionView = nullptr;
 
     SearchCollectionHelper mSearchCollectionHelper;
