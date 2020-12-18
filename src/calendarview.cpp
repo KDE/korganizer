@@ -2182,8 +2182,13 @@ void CalendarView::pasteIncidence()
 
 void CalendarView::showIncidence(const Akonadi::Item &item)
 {
-    auto eventViewer = new KOEventViewerDialog(mCalendar.data(), this);
-    eventViewer->setIncidence(item, QDate());
+    showOccurrence(item, QDate());
+}
+
+void CalendarView::showOccurrence(const Akonadi::Item &item, const QDate &date)
+{
+    auto *eventViewer = new KOEventViewerDialog(mCalendar.data(), this);
+    eventViewer->setIncidence(item, date);
     // Disable the Edit button for read-only Incidences.
     if (!mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem)) {
         eventViewer->editButton()->setEnabled(false);

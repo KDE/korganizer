@@ -257,6 +257,12 @@ Q_SIGNALS:
     void showIncidenceSignal(const Akonadi::Item &);
 
     /**
+     * instructs the receiver to show the occurrence of the
+     * incidence on the given date in read-only mode.
+     */
+    void showOccurrenceSignal(const Akonadi::Item &, const QDate &);
+
+    /**
      * instructs the receiver to begin editing the incidence specified in
      * some manner.  Doesn't make sense to connect to more than one
      * receiver.

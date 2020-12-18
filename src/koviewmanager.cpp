@@ -255,6 +255,7 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::incidenceSelected, mMainView, &CalendarView::processMainViewSelection);
 
     // showing/editing/deleting an incidence. The calendar view takes care of the action.
+    connect(view, &BaseView::showOccurrenceSignal, mMainView, &CalendarView::showOccurrence);
     connect(view, &BaseView::showIncidenceSignal, mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
     connect(view, &BaseView::editIncidenceSignal, this, [this](const Akonadi::Item &i) {
         mMainView->editIncidence(i, false);

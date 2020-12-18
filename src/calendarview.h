@@ -307,6 +307,12 @@ public Q_SLOTS:
     void showIncidence();
 
     /**
+     * Create a read-only viewer dialog for the occurrence of the
+     * supplied incidence on the given date.
+     */
+    void showOccurrence(const Akonadi::Item &, const QDate &);
+
+    /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param incidence The incidence to show.

@@ -210,7 +210,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::CollectionCalendar::Ptr
 void KOEventPopupMenu::popupShow()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        Q_EMIT showIncidenceSignal(mCurrentIncidence);
+        Q_EMIT showOccurrenceSignal(mCurrentIncidence, mCurrentDate);
     }
 }
 

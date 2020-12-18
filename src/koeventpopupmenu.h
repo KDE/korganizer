@@ -70,6 +70,7 @@ Q_SIGNALS:
     void configChanged();
     void editIncidenceSignal(const Akonadi::Item &);
     void showIncidenceSignal(const Akonadi::Item &);
+    void showOccurrenceSignal(const Akonadi::Item &, const QDate &);
     void deleteIncidenceSignal(const Akonadi::Item &);
     void cutIncidenceSignal(const Akonadi::Item &);
     void copyIncidenceSignal(const Akonadi::Item &);
