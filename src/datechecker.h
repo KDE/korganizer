@@ -20,7 +20,7 @@ class DateChecker : public QObject
     Q_OBJECT
 public:
     explicit DateChecker(QObject *parent = nullptr);
-    ~DateChecker();
+    ~DateChecker() override;
 
     /**
       The DateChecker automatically checks for

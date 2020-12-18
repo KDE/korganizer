@@ -15,7 +15,7 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerUserFeedbackProvider : public KUserFeed
     Q_OBJECT
 public:
     explicit KOrganizerUserFeedbackProvider(QObject *parent = nullptr);
-    ~KOrganizerUserFeedbackProvider();
+    ~KOrganizerUserFeedbackProvider() override;
 };
 
 #endif // KORGANIZERUSERFEEDBACKPROVIDER_H

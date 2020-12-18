@@ -61,7 +61,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
     Q_OBJECT
 public:
     explicit FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *parent);
-    ~FilterEdit();
+    ~FilterEdit() override;
 
     void updateFilterList();
     void saveChanges();

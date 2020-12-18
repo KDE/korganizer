@@ -16,7 +16,7 @@ class KOPrefsDialogMain : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    KOPrefsDialogMain(QWidget *parent);
+    explicit KOPrefsDialogMain(QWidget *parent);
 
 protected:
     void usrWriteConfig() override;

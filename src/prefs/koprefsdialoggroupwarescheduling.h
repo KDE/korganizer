@@ -18,7 +18,7 @@ class KOPrefsDialogGroupwareScheduling : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    KOPrefsDialogGroupwareScheduling(QWidget *parent);
+    explicit KOPrefsDialogGroupwareScheduling(QWidget *parent);
     ~KOPrefsDialogGroupwareScheduling() override;
 
 protected:

@@ -21,7 +21,7 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
     Q_OBJECT
 public:
     explicit KOrganizerIfaceImpl(ActionManager *mActionManager, QObject *parent = nullptr, const QString &name = QString());
-    ~KOrganizerIfaceImpl();
+    ~KOrganizerIfaceImpl() override;
 
 public Q_SLOTS:
     Q_REQUIRED_RESULT bool openURL(const QString &url);

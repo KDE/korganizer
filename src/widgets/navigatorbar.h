@@ -19,7 +19,7 @@ class NavigatorBar : public QWidget
     Q_OBJECT
 public:
     explicit NavigatorBar(QWidget *parent = nullptr);
-    ~NavigatorBar();
+    ~NavigatorBar() override;
 
     void showButtons(bool left, bool right);
 

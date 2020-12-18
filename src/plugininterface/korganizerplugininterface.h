@@ -14,7 +14,7 @@ class KOrganizerPluginInterface : public PimCommon::PluginInterface
     Q_OBJECT
 public:
     explicit KOrganizerPluginInterface(QObject *parent = nullptr);
-    ~KOrganizerPluginInterface();
+    ~KOrganizerPluginInterface() override;
     static KOrganizerPluginInterface *self();
 };
 

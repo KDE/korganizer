@@ -39,7 +39,7 @@ public:
     {
     }
 
-    virtual ~Part()
+    ~Part() override
     {
     }
 

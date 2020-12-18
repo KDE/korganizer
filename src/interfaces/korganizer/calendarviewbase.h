@@ -25,7 +25,7 @@ public:
     {
     }
 
-    virtual ~CalendarViewBase()
+    ~CalendarViewBase() override
     {
     }
 

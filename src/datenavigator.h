@@ -27,7 +27,7 @@ class DateNavigator : public QObject
     Q_OBJECT
 public:
     explicit DateNavigator(QObject *parent = nullptr);
-    ~DateNavigator();
+    ~DateNavigator() override;
 
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedDates() const;
 

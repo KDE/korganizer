@@ -23,7 +23,7 @@ public:
     };
 
     explicit KItemIconCheckCombo(ViewType viewType, QWidget *parent = nullptr);
-    ~KItemIconCheckCombo();
+    ~KItemIconCheckCombo() override;
 
     void setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons);
     Q_REQUIRED_RESULT QSet<EventViews::EventView::ItemIcon> checkedIcons() const;
