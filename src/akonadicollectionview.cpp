@@ -404,15 +404,6 @@ AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 
 AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContextMenu, QWidget *parent)
     : CalendarViewExtension(parent)
-    , mActionManager(nullptr)
-    , mCollectionView(nullptr)
-    , mBaseModel(nullptr)
-    , mSelectionProxyModel(nullptr)
-    , mAssignColor(nullptr)
-    , mDefaultCalendar(nullptr)
-    , mServerSideSubscription(nullptr)
-    , mNotSendAddRemoveSignal(false)
-    , mWasDefaultCalendar(false)
     , mHasContextMenu(hasContextMenu)
 {
     mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);

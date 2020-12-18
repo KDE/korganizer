@@ -101,9 +101,9 @@ private:
     QAction *mAssignColor = nullptr;
     QAction *mDefaultCalendar = nullptr;
     QAction *mServerSideSubscription = nullptr;
-    bool mNotSendAddRemoveSignal;
-    bool mWasDefaultCalendar;
-    bool mHasContextMenu;
+    bool mNotSendAddRemoveSignal = false;
+    bool mWasDefaultCalendar = false;
+    const  bool mHasContextMenu;
     NewNodeExpander *mNewNodeExpander = nullptr;
     ManageShowCollectionProperties *mManagerShowCollectionProperties = nullptr;
 };
