@@ -52,10 +52,7 @@ KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget
     connect(user2Button, &QPushButton::clicked, this, &KOEventViewerDialog::showIncidenceContext);
 }
 
-KOEventViewerDialog::~KOEventViewerDialog()
-{
-    delete mEventViewer;
-}
+KOEventViewerDialog::~KOEventViewerDialog() = default;
 
 void KOEventViewerDialog::delayedDestruct()
 {
