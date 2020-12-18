@@ -290,7 +290,11 @@ public:
         } else if (role == Qt::DisplayRole) {
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
             const Akonadi::Collection::Id colId = collection.id();
-
+            const Akonadi::AgentInstance instance
+                            = Akonadi::AgentManager::self()->instance(collection.resource());
+            if (!instance.isOnline() && !collection.isVirtual()) {
+                return i18nc("@item this is the default calendar", "%1 (Offline)", collection.displayName());
+            }
             if (colId == CalendarSupport::KCalPrefs::instance()->defaultCalendarId()) {
                 return i18nc("@item this is the default calendar", "%1 (Default)", collection.displayName());
             }
