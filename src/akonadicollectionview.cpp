@@ -335,6 +335,16 @@ protected:
         }
         return true;
     }
+
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
+    {
+        if (role == Qt::ToolTipRole) {
+            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+            return CalendarSupport::toolTipString(col);
+        }
+
+        return QSortFilterProxyModel::data(index, role);
+    };
 };
 
 class CalendarDelegateModel : public QSortFilterProxyModel
