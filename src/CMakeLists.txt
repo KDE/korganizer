@@ -256,9 +256,9 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     )
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
-if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
-    set_target_properties(korganizerprivate PROPERTIES UNITY_BUILD ON)
-endif()
+#if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+#    set_target_properties(korganizerprivate PROPERTIES UNITY_BUILD ON)
+#endif()
 
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 

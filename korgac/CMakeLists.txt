@@ -44,6 +44,9 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korgac.png")
 ecm_add_app_icon(korgac_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(korgac ${korgac_SRCS})
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(korgac PROPERTIES UNITY_BUILD ON)
+endif()
 if( APPLE )
     set_target_properties(korgac PROPERTIES
         MACOSX_BUNDLE_INFO_PLIST ${korganizer_SOURCE_DIR}/korgac/Info.plist.template
