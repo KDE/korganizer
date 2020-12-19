@@ -654,17 +654,20 @@ void ActionManager::initActions()
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView,
             &CalendarView::configureCurrentView);
 
-    mShowIncidenceAction = new QAction(i18n("&Show"), this);
+    mShowIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("document-preview")),
+                                       i18n("&Show"), this);
     mACollection->addAction(QStringLiteral("show_incidence"), mShowIncidenceAction);
     connect(mShowIncidenceAction, &QAction::triggered, mCalendarView,
             qOverload<>(&CalendarView::showIncidence));
 
-    mEditIncidenceAction = new QAction(i18n("&Edit..."), this);
+    mEditIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("document-edit")),
+                                       i18n("&Edit..."), this);
     mACollection->addAction(QStringLiteral("edit_incidence"), mEditIncidenceAction);
     connect(mEditIncidenceAction, &QAction::triggered, mCalendarView,
             qOverload<>(&CalendarView::editIncidence));
 
-    mDeleteIncidenceAction = new QAction(i18n("&Delete"), this);
+    mDeleteIncidenceAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")),
+                                         i18n("&Delete"), this);
     mACollection->addAction(QStringLiteral("delete_incidence"), mDeleteIncidenceAction);
     connect(mDeleteIncidenceAction, &QAction::triggered, mCalendarView,
             qOverload<>(&CalendarView::deleteIncidence));
