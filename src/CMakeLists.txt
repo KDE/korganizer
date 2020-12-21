@@ -222,6 +222,7 @@ qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_agendaitemtheme.cpp PROPERTY SKIP_AUTOMOC ON)
 
+
 ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui
     ui/kogroupwareprefspage.ui
@@ -256,9 +257,13 @@ qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     )
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
-#if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
-#    set_target_properties(korganizerprivate PROPERTIES UNITY_BUILD ON)
-#endif()
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(korganizerprivate PROPERTIES UNITY_BUILD ON)
+    set_source_files_properties(
+        ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp
+        ${CMAKE_CURRENT_BINARY_DIR}/qrc_agendaitemtheme.cpp
+        PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
+endif()
 
 generate_export_header(korganizerprivate BASE_NAME korganizerprivate)
 
