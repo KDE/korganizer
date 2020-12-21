@@ -96,12 +96,12 @@ bool ReminderTreeItem::operator<(const QTreeWidgetItem &other) const
     switch (treeWidget()->sortColumn()) {
     case 1:
     {         // happening datetime
-        const auto *item = static_cast<const ReminderTreeItem *>(&other);
+        const auto item = static_cast<const ReminderTreeItem *>(&other);
         return item->mHappening < mHappening;
     }
     case 2:
     {         // trigger datetime
-        const auto *item = static_cast<const ReminderTreeItem *>(&other);
+        const auto item = static_cast<const ReminderTreeItem *>(&other);
         return item->mTrigger < mTrigger;
     }
     default:
@@ -150,8 +150,8 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     QWidget *topBox = new QWidget(this);
     setWindowTitle(i18nc("@title:window", "Reminders"));
     setWindowIcon(QIcon::fromTheme(QStringLiteral("korgac")));
-    auto *buttonBox = new QDialogButtonBox(this);
-    auto *mainLayout = new QVBoxLayout(this);
+    auto buttonBox = new QDialogButtonBox(this);
+    auto mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(topBox);
     mOkButton = new QPushButton;
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
@@ -195,7 +195,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
                                   "Press this button to suspend the currently selected incidences.  "
                                   "The suspend interval is configurable by the Suspend duration settings."));
 
-    auto *topLayout = new QVBoxLayout(topBox);
+    auto topLayout = new QVBoxLayout(topBox);
     // Try to keep the dialog small and non-obtrusive.
     // the user can resize down to the minimum
     setMinimumSize(280, 160);
@@ -204,7 +204,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     topLayout->setContentsMargins({});
     setContentsMargins({});
 
-    auto *label = new QLabel(
+    auto label = new QLabel(
         i18nc("@label",
               "Reminders: "
               "Clicking on the title toggles details for item"),
@@ -258,11 +258,11 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mLastItem = nullptr;
 
     QWidget *suspendBox = new QWidget(topBox);
-    auto *suspendBoxHBoxLayout = new QHBoxLayout(suspendBox);
+    auto suspendBoxHBoxLayout = new QHBoxLayout(suspendBox);
     suspendBoxHBoxLayout->setContentsMargins({});
     topLayout->addWidget(suspendBox);
 
-    auto *l = new QLabel(i18nc("@label:spinbox", "Suspend &duration:"), suspendBox);
+    auto l = new QLabel(i18nc("@label:spinbox", "Suspend &duration:"), suspendBox);
     suspendBoxHBoxLayout->addWidget(l);
 
     mSuspendSpin = new QSpinBox(suspendBox);
@@ -328,7 +328,7 @@ ReminderTreeItem *AlarmDialog::searchByItem(const Akonadi::Item &incidence)
     ReminderTreeItem *found = nullptr;
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
-        auto *item = static_cast<ReminderTreeItem *>(*it);
+        auto item = static_cast<ReminderTreeItem *>(*it);
         if (item->mIncidence == incidence) {
             found = item;
             break;
@@ -535,7 +535,7 @@ void AlarmDialog::suspend()
         if ((*it)->isSelected() && !(*it)->isDisabled()) {   //suspend selected, non-suspended reminders
             (*it)->setSelected(false);
             (*it)->setDisabled(true);
-            auto *item = static_cast<ReminderTreeItem *>(*it);
+            auto item = static_cast<ReminderTreeItem *>(*it);
             item->mRemindAt = QDateTime::currentDateTime().addSecs(unit * mSuspendSpin->value());
             item->mHappening = item->mRemindAt;
             item->mNotified = false;
@@ -572,7 +572,7 @@ void AlarmDialog::setTimer()
 
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
-        auto *item = static_cast<ReminderTreeItem *>(*it);
+        auto item = static_cast<ReminderTreeItem *>(*it);
         if (item->mRemindAt > QDateTime::currentDateTime()) {
             const int secs = QDateTime::currentDateTime().secsTo(item->mRemindAt);
             nextReminderAt = nextReminderAt <= 0 ? secs : qMin(nextReminderAt, secs);
@@ -609,7 +609,7 @@ void AlarmDialog::show()
     // select the first item that hasn't already been notified
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
-        auto *item = static_cast<ReminderTreeItem *>(*it);
+        auto item = static_cast<ReminderTreeItem *>(*it);
         if (!item->mNotified && !item->isDisabled()) {
             (*it)->setSelected(true);
             break;
@@ -663,7 +663,7 @@ void AlarmDialog::eventNotification()
 
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
-        auto *item = static_cast<ReminderTreeItem *>(*it);
+        auto item = static_cast<ReminderTreeItem *>(*it);
         ++it;
         if (item->isDisabled() || item->mNotified) {
             //skip suspended reminders or reminders that have been notified
@@ -784,7 +784,7 @@ void AlarmDialog::wakeUp()
         if (!firstItem) {
             firstItem = *it;
         }
-        auto *item = static_cast<ReminderTreeItem *>(*it);
+        auto item = static_cast<ReminderTreeItem *>(*it);
         Incidence::Ptr incidence = CalendarSupport::incidence(item->mIncidence);
 
         if (item->mRemindAt <= QDateTime::currentDateTime()) {
@@ -830,7 +830,7 @@ void AlarmDialog::slotSave()
 
     QTreeWidgetItemIterator it(mIncidenceTree);
     while (*it) {
-        auto *item = static_cast<ReminderTreeItem *>(*it);
+        auto item = static_cast<ReminderTreeItem *>(*it);
         KConfigGroup incidenceConfig(config,
                                      QStringLiteral("Incidence-%1").arg(numReminders + 1));
 

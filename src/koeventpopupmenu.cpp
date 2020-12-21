@@ -384,7 +384,7 @@ void KOEventPopupMenu::createNote()
         newNoteItem.setMimeType(Akonadi::NoteUtils::noteMimeType());
         newNoteItem.setPayload(note.message());
 
-        auto *noteedit = new CalendarSupport::NoteEditDialog(this);
+        auto noteedit = new CalendarSupport::NoteEditDialog(this);
         connect(noteedit, &CalendarSupport::NoteEditDialog::createNote,
                 this, &KOEventPopupMenu::slotCreateNote);
         noteedit->load(newNoteItem);
@@ -394,7 +394,7 @@ void KOEventPopupMenu::createNote()
 
 void KOEventPopupMenu::slotCreateNote(const Akonadi::Item &noteItem, const Akonadi::Collection &collection)
 {
-    auto *createJob = new Akonadi::ItemCreateJob(noteItem, collection, this);
+    auto createJob = new Akonadi::ItemCreateJob(noteItem, collection, this);
     connect(createJob, &Akonadi::ItemCreateJob::result, this,
             &KOEventPopupMenu::slotCreateNewNoteJobFinished);
     createJob->start();

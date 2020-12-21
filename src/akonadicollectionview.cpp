@@ -412,10 +412,10 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 {
     mManagerShowCollectionProperties = new ManageShowCollectionProperties(this, this);
 
-    auto *topLayout = new QVBoxLayout(this);
+    auto topLayout = new QVBoxLayout(this);
     topLayout->setContentsMargins({});
 
-    auto *searchCol = new QLineEdit(this);
+    auto searchCol = new QLineEdit(this);
     searchCol->setToolTip(i18nc("@info:tooltip", "Set search keyword"));
     searchCol->setWhatsThis(
         i18nc("@info:whatsthis", "Lets you search for a keyword in your calendars"));
@@ -424,16 +424,16 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                                         "textbox, verb to search", "Search..."));
     topLayout->addWidget(searchCol);
 
-    auto *colorProxy = new ColorProxyModel(this);
+    auto colorProxy = new ColorProxyModel(this);
     colorProxy->setObjectName(QStringLiteral("Show calendar colors"));
     colorProxy->setDynamicSortFilter(true);
     mBaseModel = colorProxy;
 
-    auto *calendarDelegateModel = new CalendarDelegateModel(this);
+    auto calendarDelegateModel = new CalendarDelegateModel(this);
     calendarDelegateModel->setSourceModel(mBaseModel);
 
     //Hide collections that are not required
-    auto *collectionFilter = new CollectionFilter(this);
+    auto collectionFilter = new CollectionFilter(this);
     collectionFilter->setSourceModel(calendarDelegateModel);
 
     mCollectionView = new Akonadi::EntityTreeView(this);
@@ -441,7 +441,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     mCollectionView->setRootIsDecorated(true);
     // mCollectionView->setSorting( true );
     {
-        auto *delegate = new StyledCalendarDelegate(mCollectionView);
+        auto delegate = new StyledCalendarDelegate(mCollectionView);
         connect(delegate, &StyledCalendarDelegate::action, this, &AkonadiCollectionView::onAction);
         mCollectionView->setItemDelegate(delegate);
     }
@@ -453,11 +453,11 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
         = new NewNodeExpander(mCollectionView, false, QStringLiteral("CollectionTreeView"));
 
     //Filter tree view.
-    auto *searchProxy = new ReparentingModel(this);
+    auto searchProxy = new ReparentingModel(this);
     searchProxy->setSourceModel(collectionFilter);
     searchProxy->setObjectName(QStringLiteral("searchProxy"));
 
-    auto *filterTreeViewModel = new QSortFilterProxyModel(this);
+    auto filterTreeViewModel = new QSortFilterProxyModel(this);
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
     filterTreeViewModel->setDynamicSortFilter(true);
@@ -465,11 +465,11 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel,
             &QSortFilterProxyModel::setFilterWildcard);
 
-    auto *mSearchView = new Akonadi::EntityTreeView(this);
+    auto mSearchView = new Akonadi::EntityTreeView(this);
     mSearchView->header()->hide();
     mSearchView->setRootIsDecorated(true);
     {
-        auto *delegate = new StyledCalendarDelegate(mCollectionView);
+        auto delegate = new StyledCalendarDelegate(mCollectionView);
         connect(delegate, &StyledCalendarDelegate::action, this, &AkonadiCollectionView::onAction);
         mSearchView->setItemDelegate(delegate);
     }
@@ -743,7 +743,7 @@ void AkonadiCollectionView::newCalendar()
         mNotSendAddRemoveSignal = true;
         const Akonadi::AgentType agentType = dlg->agentType();
         if (agentType.isValid()) {
-            auto *job = new Akonadi::AgentInstanceCreateJob(agentType,
+            auto job = new Akonadi::AgentInstanceCreateJob(agentType,
                                                                                        this);
             job->configure(this);
             connect(job, &Akonadi::AgentInstanceCreateJob::result, this,
@@ -795,7 +795,7 @@ void AkonadiCollectionView::deleteCalendar()
 
         if (!isTopLevel) {
             // deletes contents
-            auto *job = new Akonadi::CollectionDeleteJob(collection, this);
+            auto job = new Akonadi::CollectionDeleteJob(collection, this);
             connect(job, &Akonadi::AgentInstanceCreateJob::result, this,
                     &AkonadiCollectionView::deleteCalendarDone);
         } else {
@@ -811,7 +811,7 @@ void AkonadiCollectionView::deleteCalendar()
 
 void AkonadiCollectionView::deleteCalendarDone(KJob *job)
 {
-    auto *deletejob = static_cast<Akonadi::CollectionDeleteJob *>(job);
+    auto deletejob = static_cast<Akonadi::CollectionDeleteJob *>(job);
     if (deletejob->error()) {
         qCWarning(KORGANIZER_LOG) << "Delete calendar failed:" << deletejob->errorString();
         mNotSendAddRemoveSignal = false;
@@ -893,9 +893,9 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
 
 Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const
 {
-    auto *proxy = qobject_cast<QAbstractProxyModel *>(mCollectionView->model());
+    auto proxy = qobject_cast<QAbstractProxyModel *>(mCollectionView->model());
     while (proxy) {
-        auto *etm = qobject_cast<Akonadi::EntityTreeModel *>(
+        auto etm = qobject_cast<Akonadi::EntityTreeModel *>(
             proxy->sourceModel());
         if (etm) {
             return etm;

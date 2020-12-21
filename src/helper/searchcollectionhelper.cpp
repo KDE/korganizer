@@ -54,7 +54,7 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
     if (job->error()) {
         qCWarning(KORGANIZER_LOG) << "Search failed: " << job->errorString();
     } else {
-        auto *fetchJob = static_cast<Akonadi::CollectionFetchJob *>(job);
+        auto fetchJob = static_cast<Akonadi::CollectionFetchJob *>(job);
         const Akonadi::Collection::List lstCols = fetchJob->collections();
         for (const Akonadi::Collection &col : lstCols) {
             if (col.name() == QLatin1String("OpenInvitations")) {
@@ -82,7 +82,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
     }
 
     if (!col.isValid()) {
-        auto *job = new Akonadi::SearchCreateJob(name, query);
+        auto job = new Akonadi::SearchCreateJob(name, query);
         job->setRemoteSearchEnabled(false);
         job->setSearchMimeTypes(QStringList() << KCalendarCore::Event::eventMimeType()
                                               << KCalendarCore::Todo::todoMimeType()
@@ -99,7 +99,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
         attribute->setRemoteSearchEnabled(false);
         displayname->setDisplayName(displayName);
         col.setEnabled(true);
-        auto *job = new Akonadi::CollectionModifyJob(col, this);
+        auto job = new Akonadi::CollectionModifyJob(col, this);
         connect(job, &Akonadi::CollectionModifyJob::result, this,
                 &SearchCollectionHelper::modifyResult);
         qCDebug(KORGANIZER_LOG) << "updating " << name << " (" << col.id()
@@ -125,7 +125,7 @@ void SearchCollectionHelper::updateOpenInvitation()
 
 void SearchCollectionHelper::createSearchJobFinished(KJob *job)
 {
-    auto *createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
+    auto createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
     const Akonadi::Collection searchCollection = createJob->createdCollection();
     if (job->error()) {
         qCWarning(KORGANIZER_LOG) << "Error occurred " << searchCollection.name()

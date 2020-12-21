@@ -29,12 +29,12 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
-    auto *tabWidget = new QTabWidget(this);
+    auto tabWidget = new QTabWidget(this);
     topTopLayout->addWidget(tabWidget);
 
     QWidget *colorFrame = new QWidget(this);
     topTopLayout->addWidget(colorFrame);
-    auto *colorLayout = new QGridLayout(colorFrame);
+    auto colorLayout = new QGridLayout(colorFrame);
     tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")),
                       i18nc("@title:tab", "Colors"));
 
@@ -100,7 +100,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QGroupBox *categoryGroup = new QGroupBox(i18nc("@title:group", "Categories"), colorFrame);
     colorLayout->addWidget(categoryGroup, 9, 0, 1, 2);
 
-    auto *categoryLayout = new QGridLayout;
+    auto categoryLayout = new QGridLayout;
     categoryGroup->setLayout(categoryLayout);
 
     Korganizer::KPrefsWidColor *unsetCategoryColor
@@ -171,7 +171,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")),
                       i18nc("@title:tab", "Fonts"));
 
-    auto *fontLayout = new QGridLayout(fontFrame);
+    auto fontLayout = new QGridLayout(fontFrame);
 
     Korganizer::KPrefsWidFont *timeBarFont
         = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,

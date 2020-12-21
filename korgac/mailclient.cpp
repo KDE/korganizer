@@ -276,7 +276,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
         ct->setCategory(KMime::Headers::CCcontainer);
 
         // Set the first multipart, the body message.
-        auto *bodyMessage = new KMime::Content;
+        auto bodyMessage = new KMime::Content;
         auto *bodyDisposition
             = new KMime::Headers::ContentDisposition;
         bodyDisposition->setDisposition(KMime::Headers::CDinline);
@@ -289,7 +289,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
 
         // Set the second multipart, the attachment.
         if (!attachment.isEmpty()) {
-            auto *attachMessage = new KMime::Content;
+            auto attachMessage = new KMime::Content;
             auto *attachDisposition
                 = new KMime::Headers::ContentDisposition;
             attachDisposition->setDisposition(KMime::Headers::CDattachment);
@@ -309,7 +309,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
     message->assemble();
 
     // Put the newly created item in the MessageQueueJob.
-    auto *qjob = new MailTransport::MessageQueueJob(this);
+    auto qjob = new MailTransport::MessageQueueJob(this);
     qjob->transportAttribute().setTransportId(transportId);
 
     if (identity.disabledFcc()) {

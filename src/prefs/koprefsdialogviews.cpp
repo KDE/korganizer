@@ -36,7 +36,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
-    auto *tabWidget = new QTabWidget(this);
+    auto tabWidget = new QTabWidget(this);
     topTopLayout->addWidget(tabWidget);
 
     connect(mMonthIconComboBox, &KPIM::KCheckComboBox::checkedItemsChanged,
@@ -52,7 +52,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QBoxLayout *generalLayout = new QVBoxLayout(generalFrame);
 
     // GroupBox: Views->General->Display Options
-    auto *gdisplayLayout = new QVBoxLayout;
+    auto gdisplayLayout = new QVBoxLayout;
     QGroupBox *gdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
 
     QBoxLayout *nextDaysLayout = new QHBoxLayout;
@@ -75,7 +75,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     generalLayout->addWidget(gdisplayBox);
 
     // GroupBox: Views->General->Date Navigator
-    auto *datenavLayout = new QVBoxLayout;
+    auto datenavLayout = new QVBoxLayout;
     QGroupBox *datenavBox = new QGroupBox(i18nc("@title:group", "Date Navigator"));
     datenavLayout->addWidget(
         addWidBool(KOPrefs::instance()->dailyRecurItem())->checkBox());
@@ -99,10 +99,10 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QBoxLayout *agendaLayout = new QVBoxLayout(agendaFrame);
 
     // GroupBox: Views->Agenda View->Display Options
-    auto *adisplayLayout = new QVBoxLayout;
+    auto adisplayLayout = new QVBoxLayout;
     QGroupBox *adisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
 
-    auto *hourSizeLayout = new QHBoxLayout;
+    auto hourSizeLayout = new QHBoxLayout;
     adisplayLayout->addLayout(hourSizeLayout);
 
     Korganizer::KPrefsWidInt *hourSize
@@ -157,7 +157,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QBoxLayout *monthLayout = new QVBoxLayout(monthFrame);
 
     // GroupBox: Views->Month View->Display Options
-    auto *mdisplayLayout = new QVBoxLayout;
+    auto mdisplayLayout = new QVBoxLayout;
     QGroupBox *mdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
     /*mdisplayLayout->addWidget(
           addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
@@ -193,7 +193,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     QBoxLayout *todoLayout = new QVBoxLayout(todoFrame);
 
     // GroupBox: Views->Todo View->Display Options
-    auto *tdisplayLayout = new QVBoxLayout;
+    auto tdisplayLayout = new QVBoxLayout;
     QGroupBox *tdisplayBox = new QGroupBox(i18nc("@title:group", "Display Options"));
     tdisplayLayout->addWidget(
         addWidBool(KOPrefs::instance()->sortCompletedTodosSeparatelyItem())->checkBox());
@@ -201,7 +201,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
     todoLayout->addWidget(tdisplayBox);
 
     // GroupBox: Views->Todo View->Other
-    auto *otherLayout = new QVBoxLayout;
+    auto otherLayout = new QVBoxLayout;
     QGroupBox *otherBox = new QGroupBox(i18nc("@title:group", "Other Options"));
     otherLayout->addWidget(
         addWidBool(KOPrefs::instance()->recordTodosInJournalsItem())->checkBox());

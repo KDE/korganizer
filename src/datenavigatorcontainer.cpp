@@ -226,7 +226,7 @@ void DateNavigatorContainer::resizeAllContents()
         }
 
         while (count > (mExtraViews.count() + 1)) {
-            auto *n = new KDateNavigator(this);
+            auto n = new KDateNavigator(this);
             mExtraViews.append(n);
             n->setCalendar(mCalendar);
             connectNavigatorView(n);

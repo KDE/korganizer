@@ -40,12 +40,12 @@ CollectionGeneralPage::CollectionGeneralPage(QWidget *parent)
 
 void CollectionGeneralPage::init(const Akonadi::Collection &collection)
 {
-    auto *topLayout = new QVBoxLayout(this);
+    auto topLayout = new QVBoxLayout(this);
 
-    auto *hbox = new QHBoxLayout();
+    auto hbox = new QHBoxLayout();
     topLayout->addItem(hbox);
 
-    auto *label = new QLabel(i18nc("@label:textbox Name of the folder.", "&Name:"), this);
+    auto label = new QLabel(i18nc("@label:textbox Name of the folder.", "&Name:"), this);
     hbox->addWidget(label);
 
     mNameEdit = new QLineEdit(this);

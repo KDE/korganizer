@@ -39,7 +39,7 @@ TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
     : KontactInterface::Summary(parent)
     , mPlugin(plugin)
 {
-    auto *mainLayout = new QVBoxLayout(this);
+    auto mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
@@ -256,7 +256,7 @@ void TodoSummaryWidget::updateView()
                 str = str.toHtmlEscaped();
             }
 
-            auto *urlLabel = new KUrlLabel(this);
+            auto urlLabel = new KUrlLabel(this);
             urlLabel->setText(str);
             urlLabel->setUrl(todo->uid());
             urlLabel->installEventFilter(this);
@@ -282,7 +282,7 @@ void TodoSummaryWidget::updateView()
     } //foreach
 
     if (counter == 0) {
-        auto *noTodos = new QLabel(
+        auto noTodos = new QLabel(
             i18np("No pending to-dos due within the next day",
                   "No pending to-dos due within the next %1 days",
                   mDaysToGo), this);
@@ -365,7 +365,7 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
 bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
 {
     if (obj->inherits("KUrlLabel")) {
-        auto *label = static_cast<KUrlLabel *>(obj);
+        auto label = static_cast<KUrlLabel *>(obj);
         if (e->type() == QEvent::Enter) {
             Q_EMIT message(i18n("Edit To-do: \"%1\"", label->text()));
         }

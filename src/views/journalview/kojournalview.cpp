@@ -28,7 +28,7 @@ KOJournalView::KOJournalView(QWidget *parent)
     : KOrg::BaseView(parent)
     , mJournalView(new EventViews::JournalView(this))
 {
-    auto *layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(this);
 
     layout->addWidget(mJournalView);
 

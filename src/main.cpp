@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 
 #ifdef WITH_KUSERFEEDBACK
     if (cmdArgs->isSet(QStringLiteral("feedback"))) {
-        auto *userFeedBackProvider = new KOrganizerUserFeedbackProvider(nullptr);
+        auto userFeedBackProvider = new KOrganizerUserFeedbackProvider(nullptr);
         QTextStream(stdout) << userFeedBackProvider->describeDataSources() << '\n';
         return 0;
     }

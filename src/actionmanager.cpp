@@ -867,7 +867,7 @@ void ActionManager::slotMergeFinished(bool success, int total)
 {
     Q_ASSERT(sender());
     mImportAction->setEnabled(true);
-    auto *importer = qobject_cast<Akonadi::ICalImporter *>(sender());
+    auto importer = qobject_cast<Akonadi::ICalImporter *>(sender());
 
     if (success) {
         mCalendarView->showMessage(i18np("1 incidence was imported successfully.",
@@ -884,7 +884,7 @@ void ActionManager::slotMergeFinished(bool success, int total)
 void ActionManager::slotNewResourceFinished(bool success)
 {
     Q_ASSERT(sender());
-    auto *importer = qobject_cast<Akonadi::ICalImporter *>(sender());
+    auto importer = qobject_cast<Akonadi::ICalImporter *>(sender());
     mImportAction->setEnabled(true);
     if (success) {
         mCalendarView->showMessage(i18n("New calendar added successfully"),
@@ -999,7 +999,7 @@ void ActionManager::file_archive()
 
 bool ActionManager::importURL(const QUrl &url, bool merge)
 {
-    auto *importer = new Akonadi::ICalImporter();
+    auto importer = new Akonadi::ICalImporter();
     bool jobStarted;
     if (merge) {
         connect(importer, &Akonadi::ICalImporter::importIntoExistingFinished, this,
@@ -1516,7 +1516,7 @@ void ActionManager::openEventEditor(const QString &summary, const QString &descr
         action = IncidenceEditorNG::IncidenceEditorSettings::Link;
     } else if (IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod()
                == IncidenceEditorNG::IncidenceEditorSettings::Ask) {
-        auto *menu = new QMenu(nullptr);
+        auto menu = new QMenu(nullptr);
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         QAction *attachBody = menu->addAction(i18n("Attach inline &without attachments"));
@@ -1553,7 +1553,7 @@ void ActionManager::openEventEditor(const QString &summary, const QString &descr
         if (!f.open(QFile::ReadOnly)) {
             return;
         }
-        auto *msg = new KMime::Message();
+        auto msg = new KMime::Message();
         msg->setContent(f.readAll());
         msg->parse();
         if (msg == msg->textContent() || msg->textContent() == nullptr) {   // no attachments
@@ -1568,7 +1568,7 @@ void ActionManager::openEventEditor(const QString &summary, const QString &descr
                 delete msg;
                 return;
             }
-            auto *newMsg = new KMime::Message();
+            auto newMsg = new KMime::Message();
             newMsg->setHead(msg->head());
             newMsg->setBody(msg->textContent()->body());
             newMsg->parse();
@@ -1613,7 +1613,7 @@ void ActionManager::openTodoEditor(const QString &summary, const QString &descri
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
         action = KOPrefs::TodoAttachLink;
     } else if (KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk) {
-        auto *menu = new QMenu(nullptr);
+        auto menu = new QMenu(nullptr);
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
         QAction *attachInline = menu->addAction(i18n("Attach &inline"));
         menu->addSeparator();

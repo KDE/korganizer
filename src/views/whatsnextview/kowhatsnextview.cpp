@@ -13,7 +13,7 @@ KOWhatsNextView::KOWhatsNextView(QWidget *parent)
     : KOrg::BaseView(parent)
     , mView(new EventViews::WhatsNextView(this))
 {
-    auto *topLayout = new QVBoxLayout(this);
+    auto topLayout = new QVBoxLayout(this);
     topLayout->addWidget(mView);
 
     connect(mView, &EventViews::EventView::incidenceSelected,

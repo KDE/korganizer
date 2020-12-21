@@ -63,7 +63,7 @@ NavigatorBar::NavigatorBar(QWidget *parent) : QWidget(parent)
     mYear->setToolTip(i18n("Select a year"));
 
     // set up control frame layout
-    auto *ctrlLayout = new QHBoxLayout(this);
+    auto ctrlLayout = new QHBoxLayout(this);
     ctrlLayout->setContentsMargins({});
     ctrlLayout->addWidget(mPrevYear);
     ctrlLayout->addWidget(mPrevMonth);
@@ -123,7 +123,7 @@ void NavigatorBar::selectMonthFromMenu()
     int month = mDate.month();
     const int months = 12;
 
-    auto *menu = new QMenu(mMonth);
+    auto menu = new QMenu(mMonth);
     QList<QAction *> act;
 
     QAction *activateAction = nullptr;
@@ -162,7 +162,7 @@ void NavigatorBar::selectYearFromMenu()
     int years = 11;  // odd number (show a few years ago -> a few years from now)
     int minYear = year - (years / 3);
 
-    auto *menu = new QMenu(mYear);
+    auto menu = new QMenu(mYear);
     QList<QAction *> act;
     act.reserve(years);
 
@@ -202,7 +202,7 @@ void NavigatorBar::selectYearFromMenu()
 
 QToolButton *NavigatorBar::createNavigationButton(const QString &icon, const QString &toolTip, const QString &whatsThis)
 {
-    auto *button = new QToolButton(this);
+    auto button = new QToolButton(this);
 
     button->setIcon(QIcon::fromTheme(icon));
     button->setToolButtonStyle(Qt::ToolButtonIconOnly);

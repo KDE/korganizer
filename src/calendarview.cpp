@@ -133,7 +133,7 @@ CalendarView::CalendarView(QWidget *parent)
     mDateNavigator = new DateNavigator(this);
     mDateChecker = new DateChecker(this);
 
-    auto *topLayout = new QVBoxLayout(this);
+    auto topLayout = new QVBoxLayout(this);
     topLayout->setContentsMargins({});
 
     // create the main layout frames.
@@ -155,7 +155,7 @@ CalendarView::CalendarView(QWidget *parent)
     mTodoList->setObjectName(QStringLiteral("todolist"));
 
     mEventViewerBox = new QWidget(mLeftSplitter);
-    auto *mEventViewerBoxVBoxLayout = new QVBoxLayout(mEventViewerBox);
+    auto mEventViewerBoxVBoxLayout = new QVBoxLayout(mEventViewerBox);
     mEventViewerBoxVBoxLayout->setContentsMargins({});
     mEventViewerBoxVBoxLayout->setContentsMargins({});
     mEventViewer = new CalendarSupport::IncidenceViewer(mCalendar.data(), mEventViewerBox);
@@ -163,7 +163,7 @@ CalendarView::CalendarView(QWidget *parent)
     mEventViewerBoxVBoxLayout->addWidget(mEventViewer);
 
     QWidget *rightBox = new QWidget(mPanner);
-    auto *rightBoxVBoxLayout = new QVBoxLayout(rightBox);
+    auto rightBoxVBoxLayout = new QVBoxLayout(rightBox);
     rightBoxVBoxLayout->setContentsMargins({});
     mNavigatorBar = new NavigatorBar(rightBox);
     rightBoxVBoxLayout->addWidget(mNavigatorBar);
@@ -482,7 +482,7 @@ void CalendarView::readFilterSettings(KConfig *config)
     QStringList::ConstIterator it = filterList.constBegin();
     QStringList::ConstIterator end = filterList.constEnd();
     while (it != end) {
-        auto *filter = new KCalendarCore::CalFilter(*it);
+        auto filter = new KCalendarCore::CalFilter(*it);
         KConfigGroup filterConfig(config, QStringLiteral("Filter_") + (*it));
         filter->setCriteria(filterConfig.readEntry("Criteria", 0));
         filter->setCategoryList(filterConfig.readEntry("CategoryList", QStringList()));
@@ -1823,7 +1823,7 @@ void CalendarView::exportICalendar()
                 return;
             }
         }
-        auto *format = new KCalendarCore::ICalFormat;
+        auto format = new KCalendarCore::ICalFormat;
 
         KCalendarCore::FileStorage storage(mCalendar, filename, format);
         if (!storage.save()) {
@@ -2167,7 +2167,7 @@ void CalendarView::pasteIncidence()
 
 void CalendarView::showIncidence(const Akonadi::Item &item)
 {
-    auto *eventViewer = new KOEventViewerDialog(mCalendar.data(), this);
+    auto eventViewer = new KOEventViewerDialog(mCalendar.data(), this);
     eventViewer->setIncidence(item, QDate());
     // Disable the Edit button for read-only Incidences.
     if (!mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem)) {

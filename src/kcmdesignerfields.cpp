@@ -157,7 +157,7 @@ void KCMDesignerFields::delayedInit()
     load();
 
     // Install a dirwatcher that will detect newly created or removed designer files
-    auto *dw = new KDirWatch(this);
+    auto dw = new KDirWatch(this);
     QDir().mkpath(localUiDir());
     dw->addDir(localUiDir(), KDirWatch::WatchFiles);
     connect(dw, &KDirWatch::created, this, &KCMDesignerFields::rebuildList);
@@ -169,7 +169,7 @@ void KCMDesignerFields::deleteFile()
 {
     const auto selectedItems = mPageView->selectedItems();
     for (QTreeWidgetItem *item : selectedItems) {
-        auto *pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
+        auto pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
         if (KMessageBox::warningContinueCancel(
                 this,
                 i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>",
@@ -227,7 +227,7 @@ void KCMDesignerFields::loadActivePages(const QStringList &ai)
     QTreeWidgetItemIterator it(mPageView);
     while (*it) {
         if ((*it)->parent() == nullptr) {
-            auto *item = static_cast<PageItem *>(*it);
+            auto item = static_cast<PageItem *>(*it);
             if (ai.contains(item->name())) {
                 item->setCheckState(0, Qt::Checked);
                 item->setIsActive(true);
@@ -255,7 +255,7 @@ QStringList KCMDesignerFields::saveActivePages()
     QStringList activePages;
     while (*it) {
         if ((*it)->parent() == nullptr) {
-            auto *item = static_cast<PageItem *>(*it);
+            auto item = static_cast<PageItem *>(*it);
             activePages.append(item->name());
         }
 
@@ -276,7 +276,7 @@ void KCMDesignerFields::defaults()
 
 void KCMDesignerFields::initGUI()
 {
-    auto *layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
 
     const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
@@ -289,7 +289,7 @@ void KCMDesignerFields::initGUI()
         layout->addWidget(lbl);
     }
 
-    auto *hbox = new QHBoxLayout();
+    auto hbox = new QHBoxLayout();
     layout->addLayout(hbox);
 
     mPageView = new QTreeWidget(this);
@@ -300,7 +300,7 @@ void KCMDesignerFields::initGUI()
     hbox->addWidget(mPageView);
 
     QGroupBox *box = new QGroupBox(i18n("Preview of Selected Page"), this);
-    auto *boxLayout = new QVBoxLayout(box);
+    auto boxLayout = new QVBoxLayout(box);
 
     mPagePreview = new QLabel(box);
     mPagePreview->setMinimumWidth(300);
@@ -339,7 +339,7 @@ void KCMDesignerFields::initGUI()
                " to be edited, set the widget name in Qt Designer.</p></qt>",
                applicationName(), applicationName());
 
-    auto *activeLabel = new QLabel(
+    auto activeLabel = new QLabel(
         i18n("<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto), this);
     activeLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse
                                          |Qt::LinksAccessibleByKeyboard);
@@ -390,12 +390,12 @@ void KCMDesignerFields::updatePreview()
 
             mPageDetails->setText(details);
 
-            auto *pageItem = static_cast<PageItem *>(item->parent());
+            auto pageItem = static_cast<PageItem *>(item->parent());
             mPagePreview->setWindowIcon(pageItem->preview());
         } else {
             mPageDetails->setText(QString());
 
-            auto *pageItem = static_cast<PageItem *>(item);
+            auto pageItem = static_cast<PageItem *>(item);
             mPagePreview->setWindowIcon(pageItem->preview());
 
             widgetItemSelected = true;
@@ -417,7 +417,7 @@ void KCMDesignerFields::itemClicked(QTreeWidgetItem *item)
         return;
     }
 
-    auto *pageItem = static_cast<PageItem *>(item);
+    auto pageItem = static_cast<PageItem *>(item);
 
     if (pageItem->isOn() != pageItem->isActive()) {
         Q_EMIT changed(true);
@@ -442,7 +442,7 @@ void KCMDesignerFields::startDesigner()
         item = mPageView->selectedItems().first();
     }
     if (item) {
-        auto *pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
+        auto pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
         args.append(pageItem->path());
     }
 

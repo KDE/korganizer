@@ -41,7 +41,7 @@ class MultiAgendaView::Private
 public:
     Private(MultiAgendaView *qq) : q(qq)
     {
-        auto *layout = new QHBoxLayout(q);
+        auto layout = new QHBoxLayout(q);
         mMultiAgendaView = new EventViews::MultiAgendaView(q);
         mMultiAgendaView->setPreferences(KOPrefs::instance()->eventViewsPreferences());
         layout->addWidget(mMultiAgendaView);
@@ -311,10 +311,10 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     , d(new Private(baseModel, this))
 {
     setWindowTitle(i18nc("@title:window", "Configure Side-By-Side View"));
-    auto *mainLayout = new QVBoxLayout(this);
+    auto mainLayout = new QVBoxLayout(this);
     QWidget *widget = new QWidget;
     d->ui.setupUi(widget);
-    auto *buttonBox = new QDialogButtonBox(
+    auto buttonBox = new QDialogButtonBox(
         QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
     okButton->setDefault(true);
@@ -370,7 +370,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
 AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
     KCheckableProxyModel *model)
 {
-    auto *cview = new AkonadiCollectionView(nullptr, false, q);
+    auto cview = new AkonadiCollectionView(nullptr, false, q);
     cview->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     cview->setCollectionSelectionProxyModel(model);
     return cview;
@@ -401,7 +401,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
     } else {
         selections.resize(n);
         for (int i = oldN; i < n; ++i) {
-            auto *item = new QStandardItem;
+            auto item = new QStandardItem;
             item->setEditable(false);
             if (titles.count() <= i) {
                 titles.resize(i + 1);
@@ -411,11 +411,11 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
             item->setData(i, Qt::UserRole);
             listModel.appendRow(item);
 
-            auto *sortProxy = new QSortFilterProxyModel;
+            auto sortProxy = new QSortFilterProxyModel;
             sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
 
-            auto *columnFilterProxy = new KRearrangeColumnsProxyModel(
+            auto columnFilterProxy = new KRearrangeColumnsProxyModel(
                 sortProxy);
             columnFilterProxy->setSourceColumns(
                 QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
@@ -424,7 +424,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
             auto *qsm
                 = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
-            auto *selection = new KCheckableProxyModel;
+            auto selection = new KCheckableProxyModel;
             selection->setSourceModel(columnFilterProxy);
             selection->setSelectionModel(qsm);
 

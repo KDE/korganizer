@@ -32,9 +32,9 @@ Quickview::Quickview(const Akonadi::Collection &col)
     , mUi(new Ui_quickview)
     , mCollection(col)
 {
-    auto *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
+    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
     QWidget *mainWidget = new QWidget(this);
-    auto *mainLayout = new QVBoxLayout(this);
+    auto mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &Quickview::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &Quickview::reject);
@@ -50,7 +50,7 @@ Quickview::Quickview(const Akonadi::Collection &col)
     mUi->mDayBtn->hide();
 
     //create etm for mCollection
-    auto *monitor = new Akonadi::ChangeRecorder(this);
+    auto monitor = new Akonadi::ChangeRecorder(this);
     Akonadi::ItemFetchScope scope;
     const QStringList allMimeTypes
         = { KCalendarCore::Event::eventMimeType(), KCalendarCore::Todo::todoMimeType(),

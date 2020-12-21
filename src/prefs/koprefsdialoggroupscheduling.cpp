@@ -25,7 +25,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     QWidget *topFrame = new QWidget(this);
     topTopLayout->addWidget(topFrame);
 
-    auto *topLayout = new QGridLayout(topFrame);
+    auto topLayout = new QGridLayout(topFrame);
     topLayout->setContentsMargins({});
 
     Korganizer::KPrefsWidBool *useGroupwareBool
@@ -37,7 +37,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
         = addWidBool(Akonadi::CalendarSettings::self()->bccItem(), topFrame);
     topLayout->addWidget(bcc->checkBox(), 1, 0, 1, 2);
 
-    auto *aTransportLabel = new QLabel(
+    auto aTransportLabel = new QLabel(
         i18nc("@label", "Mail transport:"), topFrame);
     topLayout->addWidget(aTransportLabel, 2, 0, 1, 2);
 
