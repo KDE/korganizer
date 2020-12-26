@@ -486,7 +486,7 @@ void ActionManager::initActions()
     connect(mFilterAction, qOverload<int>(&KSelectAction::triggered),
             mCalendarView, &CalendarView::filterActivated);
 #else
-    connect(mFilterAction, &KSelectAction::indexTriggered),
+    connect(mFilterAction, &KSelectAction::indexTriggered,
             mCalendarView, &CalendarView::filterActivated);
 #endif
     connect(mCalendarView, &CalendarView::filtersUpdated,
