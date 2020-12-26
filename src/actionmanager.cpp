@@ -24,6 +24,7 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "korgacinterface.h"
+#include <kwidgetsaddons_version.h>
 #include <KAuthorized>
 
 #include <CalendarSupport/CollectionSelection>
@@ -480,8 +481,14 @@ void ActionManager::initActions()
     mFilterAction->setToolBarMode(KSelectAction::MenuMode);
     mACollection->addAction(QStringLiteral("filter_select"), mFilterAction);
     mFilterAction->setEditable(false);
+
+#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 78, 0)
     connect(mFilterAction, qOverload<int>(&KSelectAction::triggered),
             mCalendarView, &CalendarView::filterActivated);
+#else
+    connect(mFilterAction, &KSelectAction::indexTriggered),
+            mCalendarView, &CalendarView::filterActivated);
+#endif
     connect(mCalendarView, &CalendarView::filtersUpdated,
             this, &ActionManager::setItems);
     connect(mCalendarView, &CalendarView::filterChanged,
