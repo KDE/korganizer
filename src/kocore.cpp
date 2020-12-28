@@ -126,7 +126,7 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(
 
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const QString &name)
 {
-    KService::List list = availableCalendarDecorations();
+    const KService::List list = availableCalendarDecorations();
     KService::List::ConstIterator it;
     KService::List::ConstIterator end(list.constEnd());
     for (it = list.constBegin(); it != end; ++it) {
@@ -191,10 +191,9 @@ KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
 
 KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
 {
-    KService::List list = availableParts();
-    KService::List::ConstIterator it;
+    const KService::List list = availableParts();
     KService::List::ConstIterator end(list.constEnd());
-    for (it = list.constBegin(); it != end; ++it) {
+    for (KService::List::ConstIterator it = list.constBegin(); it != end; ++it) {
         if ((*it)->desktopEntryName() == name) {
             return loadPart(*it, parent);
         }
@@ -205,7 +204,7 @@ KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
 EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
 {
     if (!mCalendarDecorationsLoaded) {
-        QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+        const QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
         mCalendarDecorations.clear();
         const KService::List plugins = availableCalendarDecorations();
@@ -230,12 +229,11 @@ KOrg::Part::List KOCore::loadParts(KOrg::MainWindow *parent)
 {
     KOrg::Part::List parts;
 
-    QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+    const QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
     const KService::List plugins = availableParts();
-    KService::List::ConstIterator it;
     const KService::List::ConstIterator end(plugins.constEnd());
-    for (it = plugins.constBegin(); it != end; ++it) {
+    for (KService::List::ConstIterator it = plugins.constBegin(); it != end; ++it) {
         if (selectedPlugins.contains((*it)->desktopEntryName())) {
             KOrg::Part *part = loadPart(*it, parent);
             if (part) {

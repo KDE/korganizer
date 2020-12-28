@@ -439,7 +439,7 @@ void KCMDesignerFields::startDesigner()
     QStringList args;
     QTreeWidgetItem *item = nullptr;
     if (mPageView->selectedItems().size() == 1) {
-        item = mPageView->selectedItems().first();
+        item = mPageView->selectedItems().constFirst();
     }
     if (item) {
         auto pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);

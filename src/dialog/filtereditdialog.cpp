@@ -93,7 +93,7 @@ FilterEdit::FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *pare
         i18nc("@info:whatsthis",
               "Press this button to remove the currently active filter."));
 
-    connect(mRulesList, qOverload<>(&QListWidget::itemSelectionChanged),
+    connect(mRulesList, &QListWidget::itemSelectionChanged,
             this, qOverload<>(&FilterEdit::filterSelected));
 
     connect(mNewButton, &QPushButton::clicked, this, &FilterEdit::bNewPressed);

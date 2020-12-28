@@ -54,7 +54,7 @@ static QStyle *style(const QStyleOptionViewItem &option)
 
 static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap, const QModelIndex &index, int pos = 1)
 {
-    Q_UNUSED(index);
+    Q_UNUSED(index)
 
     QStyleOptionButton option;
     option.icon = pixmap;
