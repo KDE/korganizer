@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 # Do NOT add quote
 set(KDEPIM_DEV_VERSION alpha)
 
