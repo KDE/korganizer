@@ -1867,12 +1867,12 @@ void CalendarView::processTodoListSelection(const Akonadi::Item &item, const QDa
 
 void CalendarView::processIncidenceSelection(const Akonadi::Item &item, const QDate &date)
 {
-    KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
-    if (item != mSelectedIncidence) {
+    if (item != mSelectedIncidence || date != mSaveDate) {
         // This signal also must be emitted if incidence is 0
         Q_EMIT incidenceSelected(item, date);
     }
 
+    KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (!incidence) {
         mSelectedIncidence = item;
         return;
