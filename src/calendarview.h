@@ -205,9 +205,6 @@ Q_SIGNALS:
      *  for notification to update their settings. */
     void configChanged();
 
-    /** Emitted right before we die */
-    void closed(QWidget *);
-
     /** Emitted when state of modified flag changes */
     void modifiedChanged(bool);
 
@@ -589,8 +586,6 @@ protected Q_SLOTS:
     void showDates(const KCalendarCore::DateList &, const QDate &preferredMonth = QDate());
 
 public:
-    int msgCalModified();
-
     /**
      * Returns the date of the selected incidence.
      *

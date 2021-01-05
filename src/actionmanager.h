@@ -164,7 +164,6 @@ Q_SIGNALS:
       Emitted when the "New" action is activated.
     */
     //void actionNewMainWindow( const QUrl &url = QUrl() );
-    void toggleMenuBar();
     /**
       When change is made to options dialog, the topwidget will catch this
       and Q_EMIT this signal which notifies all widgets which have registered
