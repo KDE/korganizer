@@ -52,8 +52,6 @@ include(ECMFeatureSummary)
 include(ECMCheckOutboundLicense)
 ecm_check_outbound_license(LICENSES GPL-2.0-only FILES ${ALL_CLANG_FORMAT_SOURCE_FILES})
 
-
-
 set(AKONADI_CONTACT_VERSION "6.3.40")
 set(IDENTITYMANAGEMENT_LIB_VERSION "6.3.40")
 set(KMAILTRANSPORT_LIB_VERSION "6.3.40")
@@ -97,11 +95,20 @@ if(TARGET KF6::UserFeedbackWidgets)
    set(KORGANIZER_WITH_KUSERFEEDBACK true)
 endif()
 
+<<<<<<< HEAD
 find_package(KF6DocTools ${KF_MIN_VERSION})
 set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
 )
+=======
+set(PIMCOMMON_LIB_VERSION "5.16.2")
+set(LIBKDEPIM_LIB_VERSION "5.16.2")
+set(LIBINCIDENCEEDITOR_LIB_VERSION "5.16.2")
+set(CALENDARSUPPORT_LIB_VERSION "5.16.2")
+set(EVENTVIEW_LIB_VERSION "5.16.2")
+set(AKONADI_SEARCH_VERSION "5.16.2")
+>>>>>>> 6f045fd71 (GIT_SILENT: Prepare 5.16.2)
 
 
 # Find KdepimLibs Package
