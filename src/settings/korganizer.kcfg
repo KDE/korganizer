@@ -22,8 +22,8 @@
       <label>New Events, To-dos and Journal Entries Should</label>
       <choices>
         <choice name="standardDestination">
-          <label>Be added to the standard calendar</label>
-          <whatsthis>Select this option to always record new events, to-dos and journal entries using the standard calendar.</whatsthis>
+          <label>Be added to the default calendar</label>
+          <whatsthis>Select this option to always record new events, to-dos and journal entries using the current default calendar.</whatsthis>
         </choice>
         <choice name="askDestination">
           <label>Be asked which calendar to use</label>

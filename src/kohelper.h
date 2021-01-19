@@ -54,7 +54,7 @@ KORGANIZERPRIVATE_EXPORT void setResourceColor(const Akonadi::Collection &collec
 KORGANIZERPRIVATE_EXPORT Q_REQUIRED_RESULT int yearDiff(QDate start, QDate end);
 
 /**
-  Return true if it's the standard calendar
+  Return true if it's the standard (that is, the current default) calendar.
 */
 KORGANIZERPRIVATE_EXPORT Q_REQUIRED_RESULT bool isStandardCalendar(Akonadi::Collection::Id id);
 

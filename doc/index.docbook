@@ -2047,7 +2047,7 @@ will not ask before deleting events.</para></listitem>
 <varlistentry>
 <term><guilabel>New Events, To-dos and Journal Entries Should</guilabel></term>
 <listitem><para>This option lets you choose between adding new items to
-the standard calendar or making &korganizer; ask you which calendar should be
+the default calendar or making &korganizer; ask you which calendar should be
 used to save each new item.</para>
 <para>Kolab2 server specificity: It is recommended to choose <guilabel>Be asked
 which calendar to use</guilabel>, if you intend to use the shared folder
