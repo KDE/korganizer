@@ -175,7 +175,7 @@ void AlarmDockWindow::activate(const QPoint &pos)
 void AlarmDockWindow::slotQuit()
 {
     if (mAutostartSet == true) {
-        int result = KMessageBox::warningContinueCancel(
+        const int result = KMessageBox::warningContinueCancel(
             associatedWidget(),
             xi18nc("@info",
                    "Do you want to quit the KOrganizer reminder daemon?<nl/>"
@@ -187,7 +187,7 @@ void AlarmDockWindow::slotQuit()
             Q_EMIT quitSignal();
         }
     } else {
-        int result = KMessageBox::questionYesNoCancel(
+        const int result = KMessageBox::questionYesNoCancel(
             associatedWidget(),
             xi18nc("@info",
                    "Do you want to start the KOrganizer reminder daemon at login?<nl/>"
