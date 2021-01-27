@@ -15,8 +15,8 @@
 
 #include <KCalendarCore/IncidenceBase> // for KCalendarCore::DateList typedef
 
-#include <QObject>
 #include <QDate>
+#include <QObject>
 /**
   This class controls date navigation. All requests to move the views to another
   date are sent to the DateNavigator. The DateNavigator processes the new
@@ -51,12 +51,10 @@ public Q_SLOTS:
     void selectToday();
 
     void selectPreviousYear();
-    void selectPreviousMonth(
-        const QDate &currentMonth = QDate(), const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
+    void selectPreviousMonth(const QDate &currentMonth = QDate(), const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
     void selectPreviousWeek();
     void selectNextWeek();
-    void selectNextMonth(
-        const QDate &currentMonth = QDate(), const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
+    void selectNextMonth(const QDate &currentMonth = QDate(), const QDate &selectionLowerLimit = QDate(), const QDate &selectionUpperLimit = QDate());
     void selectNextYear();
 
     void selectPrevious();
@@ -75,7 +73,6 @@ protected:
     void emitSelected(const QDate &preferredMonth = QDate());
 
 private:
-
     /*
       Selects next month if offset equals 1, or previous month
       if offset equals -1.
@@ -85,9 +82,7 @@ private:
 
     KCalendarCore::DateList mSelectedDates;
 
-    enum {
-        MAX_SELECTABLE_DAYS = 50
-    };
+    enum { MAX_SELECTABLE_DAYS = 50 };
 };
 
 #endif

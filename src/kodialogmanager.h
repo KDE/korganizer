@@ -16,18 +16,22 @@ class CalendarView;
 class FilterEditDialog;
 class SearchDialog;
 
-namespace CalendarSupport {
+namespace CalendarSupport
+{
 class ArchiveDialog;
 }
 
-namespace IncidenceEditorNG {
+namespace IncidenceEditorNG
+{
 class IncidenceDialog;
 }
 
-namespace KCalendarCore {
+namespace KCalendarCore
+{
 class CalFilter;
 }
-namespace Akonadi {
+namespace Akonadi
+{
 class TagManagementDialog;
 }
 

@@ -17,7 +17,7 @@ typedef QPair<QDate, QDate> DateRange;
 void KODayMatrixTest::testMatrixLimits()
 {
     QMap<QDate, DateRange> dates;
-    QLocale::setDefault(QLocale(QStringLiteral("de_DE")));   // week start on Monday
+    QLocale::setDefault(QLocale(QStringLiteral("de_DE"))); // week start on Monday
     dates.insert(QDate(2011, 1, 1), DateRange(QDate(2010, 12, 27), QDate(2011, 2, 6)));
     dates.insert(QDate(2011, 2, 1), DateRange(QDate(2011, 1, 31), QDate(2011, 3, 13)));
     dates.insert(QDate(2011, 3, 1), DateRange(QDate(2011, 2, 28), QDate(2011, 4, 10)));

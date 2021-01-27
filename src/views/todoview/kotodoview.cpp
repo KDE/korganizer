@@ -10,11 +10,10 @@
 */
 
 #include "kotodoview.h"
-#include "prefs/koprefs.h"
 #include "koeventpopupmenu.h"
+#include "prefs/koprefs.h"
 
 #include <CalendarSupport/CalPrinter>
-
 
 #include <AkonadiCore/EntityTreeModel>
 
@@ -24,93 +23,64 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
     : BaseView(parent)
 {
     KOEventPopupMenu *eventPopup = new KOEventPopupMenu(calendar(), this);
-    mView = new EventViews::TodoView(KOPrefs::instance()->eventViewsPreferences(),
-                                     sidebarView, parent);
+    mView = new EventViews::TodoView(KOPrefs::instance()->eventViewsPreferences(), sidebarView, parent);
     auto layout = new QVBoxLayout(this);
     layout->addWidget(mView);
     connect(mView, &EventViews::TodoView::printTodo, this, [this]() {
         printTodo();
     });
     connect(mView, &EventViews::TodoView::printPreviewTodo, this, &KOTodoView::printPreviewTodo);
-    connect(mView, &EventViews::TodoView::purgeCompletedSignal, this,
-            &KOTodoView::purgeCompletedSignal);
+    connect(mView, &EventViews::TodoView::purgeCompletedSignal, this, &KOTodoView::purgeCompletedSignal);
 
-    connect(mView, &EventViews::EventView::incidenceSelected,
-            this, &BaseView::incidenceSelected);
+    connect(mView, &EventViews::EventView::incidenceSelected, this, &BaseView::incidenceSelected);
 
-    connect(mView, &EventViews::EventView::showIncidenceSignal,
-            this, &BaseView::showIncidenceSignal);
+    connect(mView, &EventViews::EventView::showIncidenceSignal, this, &BaseView::showIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::editIncidenceSignal,
-            this, &BaseView::editIncidenceSignal);
+    connect(mView, &EventViews::EventView::editIncidenceSignal, this, &BaseView::editIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &BaseView::deleteIncidenceSignal);
+    connect(mView, &EventViews::EventView::deleteIncidenceSignal, this, &BaseView::deleteIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::cutIncidenceSignal,
-            this, &BaseView::cutIncidenceSignal);
+    connect(mView, &EventViews::EventView::cutIncidenceSignal, this, &BaseView::cutIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::copyIncidenceSignal,
-            this, &BaseView::copyIncidenceSignal);
+    connect(mView, &EventViews::EventView::copyIncidenceSignal, this, &BaseView::copyIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &BaseView::pasteIncidenceSignal);
+    connect(mView, &EventViews::EventView::pasteIncidenceSignal, this, &BaseView::pasteIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::toggleAlarmSignal,
-            this, &BaseView::toggleAlarmSignal);
+    connect(mView, &EventViews::EventView::toggleAlarmSignal, this, &BaseView::toggleAlarmSignal);
 
-    connect(mView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &BaseView::toggleTodoCompletedSignal);
+    connect(mView, &EventViews::EventView::toggleTodoCompletedSignal, this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(mView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &BaseView::copyIncidenceToResourceSignal);
+    connect(mView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &BaseView::moveIncidenceToResourceSignal);
+    connect(mView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &BaseView::dissociateOccurrencesSignal);
+    connect(mView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(mView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(mView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(mView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(mView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(mView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(mView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(mView, &EventViews::EventView::newTodoSignal,
-            this, &BaseView::newTodoSignal);
+    connect(mView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
-    connect(mView, &EventViews::EventView::newSubTodoSignal,
-            this, &BaseView::newSubTodoSignal);
+    connect(mView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
-    connect(mView, &EventViews::TodoView::fullViewChanged,
-            this, &KOTodoView::fullViewChanged);
+    connect(mView, &EventViews::TodoView::fullViewChanged, this, &KOTodoView::fullViewChanged);
 
-    connect(mView, &EventViews::TodoView::unSubTodoSignal,
-            this, &KOTodoView::unSubTodoSignal);
-    connect(mView, &EventViews::TodoView::unAllSubTodoSignal,
-            this, &KOTodoView::unAllSubTodoSignal);
+    connect(mView, &EventViews::TodoView::unSubTodoSignal, this, &KOTodoView::unSubTodoSignal);
+    connect(mView, &EventViews::TodoView::unAllSubTodoSignal, this, &KOTodoView::unAllSubTodoSignal);
 
     connect(mView,
-            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView
-                                                                               ::
-                                                                               createEvent),
+            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView ::createEvent),
             eventPopup,
-            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::
-                                                                           createEvent));
+            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createEvent));
     connect(mView,
-            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView
-                                                                               ::
-                                                                               createNote),
+            static_cast<void (EventViews::TodoView::*)(const Akonadi::Item &)>(&EventViews::TodoView ::createNote),
             eventPopup,
-            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::
-                                                                           createNote));
+            static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createNote));
 }
 
 KOTodoView::~KOTodoView()
@@ -206,8 +176,7 @@ void KOTodoView::printTodo(bool preview)
         todoDate = todo->dtDue().date();
     }
 
-    printer.print(CalendarSupport::CalPrinterBase::Incidence,
-                  todoDate, todoDate, selectedIncidences, preview);
+    printer.print(CalendarSupport::CalPrinterBase::Incidence, todoDate, todoDate, selectedIncidences, preview);
 }
 
 void KOTodoView::getHighlightMode(bool &highlightEvents, bool &highlightTodos, bool &highlightJournals)

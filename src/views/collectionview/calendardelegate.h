@@ -20,10 +20,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
-    enum Action {
-        Quickview,
-        Total
-    };
+    enum Action { Quickview, Total };
 
 Q_SIGNALS:
     void action(const QModelIndex &, int);

@@ -20,8 +20,8 @@
 #include <IncidenceEditor/IncidenceEditorSettings>
 
 #include <KLocalizedString>
-#include <QLabel>
 #include <QCheckBox>
+#include <QLabel>
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     : KPrefsModule(KOPrefs::instance(), parent)
@@ -33,47 +33,35 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     // Personal Settings
     QWidget *personalFrame = new QWidget(this);
     auto personalLayout = new QVBoxLayout(personalFrame);
-    tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral(
-                                                          "preferences-desktop-personal")),
-                      i18nc("@title:tab personal settings", "Personal"));
+    tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-personal")), i18nc("@title:tab personal settings", "Personal"));
 
-    Korganizer::KPrefsWidBool *emailControlCenter
-        = addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(),
-                     personalFrame);
-    connect(emailControlCenter->checkBox(), &QAbstractButton::toggled,
-            this, &KOPrefsDialogMain::toggleEmailSettings);
+    Korganizer::KPrefsWidBool *emailControlCenter = addWidBool(CalendarSupport::KCalPrefs::instance()->emailControlCenterItem(), personalFrame);
+    connect(emailControlCenter->checkBox(), &QAbstractButton::toggled, this, &KOPrefsDialogMain::toggleEmailSettings);
     personalLayout->addWidget(emailControlCenter->checkBox());
 
-    mUserEmailSettings = new QGroupBox(i18nc("@title:group email settings", "Email Settings"),
-                                       personalFrame);
+    mUserEmailSettings = new QGroupBox(i18nc("@title:group email settings", "Email Settings"), personalFrame);
 
     personalLayout->addWidget(mUserEmailSettings);
     auto emailSettingsLayout = new QFormLayout(mUserEmailSettings);
-    Korganizer::KPrefsWidString *s
-        = addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
+    Korganizer::KPrefsWidString *s = addWidString(CalendarSupport::KCalPrefs::instance()->userNameItem(), mUserEmailSettings);
     emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
     s = addWidString(CalendarSupport::KCalPrefs::instance()->userEmailItem(), mUserEmailSettings);
     emailSettingsLayout->addRow(s->label(), s->lineEdit());
 
-    Korganizer::KPrefsWidRadios *defaultEmailAttachMethod
-        = addWidRadios(
-              IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(),
-              personalFrame);
+    Korganizer::KPrefsWidRadios *defaultEmailAttachMethod =
+        addWidRadios(IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
     personalLayout->addStretch(1);
 
     // Save Settings
     QFrame *saveFrame = new QFrame(this);
-    tabWidget->addTab(saveFrame, QIcon::fromTheme(QStringLiteral("document-save")),
-                      i18nc("@title:tab", "Save"));
+    tabWidget->addTab(saveFrame, QIcon::fromTheme(QStringLiteral("document-save")), i18nc("@title:tab", "Save"));
     auto saveLayout = new QVBoxLayout(saveFrame);
 
-    Korganizer::KPrefsWidBool *confirmItem
-        = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
+    Korganizer::KPrefsWidBool *confirmItem = addWidBool(KOPrefs::instance()->confirmItem(), saveFrame);
     saveLayout->addWidget(confirmItem->checkBox());
-    Korganizer::KPrefsWidRadios *destinationItem
-        = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
+    Korganizer::KPrefsWidRadios *destinationItem = addWidRadios(KOPrefs::instance()->destinationItem(), saveFrame);
 
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
@@ -81,34 +69,29 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     // System Tray Settings
     QFrame *systrayFrame = new QFrame(this);
     auto systrayLayout = new QVBoxLayout(systrayFrame);
-    tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")),
-                      i18nc("@title:tab systray settings", "System Tray"));
+    tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")), i18nc("@title:tab systray settings", "System Tray"));
 
-    QGroupBox *systrayGroupBox
-        = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
+    QGroupBox *systrayGroupBox = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
     systrayLayout->addWidget(systrayGroupBox);
     auto systrayGroupLayout = new QVBoxLayout;
     systrayGroupBox->setLayout(systrayGroupLayout);
 
-    Korganizer::KPrefsWidBool *showReminderDaemonItem
-        = addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
+    Korganizer::KPrefsWidBool *showReminderDaemonItem = addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
     systrayGroupLayout->addWidget(showReminderDaemonItem->checkBox());
-    showReminderDaemonItem->checkBox()->setToolTip(
-        i18nc("@info:tooltip", "Enable this setting to show the KOrganizer "
-                               "reminder daemon in your system tray (recommended)."));
+    showReminderDaemonItem->checkBox()->setToolTip(i18nc("@info:tooltip",
+                                                         "Enable this setting to show the KOrganizer "
+                                                         "reminder daemon in your system tray (recommended)."));
 
-    auto note = new QLabel(
-        xi18nc("@info",
-               "<note>The daemon will continue running even if it is not shown "
-               "in the system tray.</note>"));
+    auto note = new QLabel(xi18nc("@info",
+                                  "<note>The daemon will continue running even if it is not shown "
+                                  "in the system tray.</note>"));
     systrayGroupLayout->addWidget(note);
 
     systrayLayout->addStretch(1);
 
-    //Calendar Account
+    // Calendar Account
     QFrame *calendarFrame = new QFrame(this);
-    tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")),
-                      i18nc("@title:tab calendar account settings", "Calendars"));
+    tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")), i18nc("@title:tab calendar account settings", "Calendars"));
     auto calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);
     auto manageAccountWidget = new Akonadi::ManageAccountWidget(this);
@@ -141,8 +124,7 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
       }*/
 }
 
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const char *)
 {
     return new KOPrefsDialogMain(parent);

@@ -15,7 +15,8 @@
 
 #include <KCalendarCore/Incidence>
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Collection;
 class Item;
 }
@@ -25,7 +26,8 @@ class QDate;
 
 // Provides static methods that are useful to all views.
 
-namespace KOHelper {
+namespace KOHelper
+{
 /**
   Returns a nice QColor for text, give the input color &c.
 */
@@ -56,8 +58,7 @@ KORGANIZERPRIVATE_EXPORT Q_REQUIRED_RESULT int yearDiff(QDate start, QDate end);
 */
 KORGANIZERPRIVATE_EXPORT Q_REQUIRED_RESULT bool isStandardCalendar(Akonadi::Collection::Id id);
 
-KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(
-    QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
+KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
 }
 
 #endif

@@ -10,8 +10,7 @@
 #include "koprefsdesignerfields.h"
 #include <CalendarSupport/KCalPrefs>
 #include <QStandardPaths>
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_korgdesignerfields(QWidget *parent, const char *)
 {
     return new KOPrefsDesignerFields(parent);
@@ -25,8 +24,7 @@ KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent)
 
 QString KOPrefsDesignerFields::localUiDir()
 {
-    const QString dir
-        = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + uiPath();
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + uiPath();
     return dir;
 }
 

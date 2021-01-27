@@ -13,8 +13,8 @@
 #include "koglobals.h"
 #include "korganizer_debug.h"
 
-
-DateNavigator::DateNavigator(QObject *parent) : QObject(parent)
+DateNavigator::DateNavigator(QObject *parent)
+    : QObject(parent)
 {
     mSelectedDates.append(QDate::currentDate());
 }
@@ -155,10 +155,7 @@ void DateNavigator::selectPreviousYear()
 
 void DateNavigator::selectPreviousMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit)
 {
-    shiftMonth(currentMonth,
-               selectionLowerLimit,
-               selectionUpperLimit,
-               -1);
+    shiftMonth(currentMonth, selectionLowerLimit, selectionUpperLimit, -1);
 }
 
 void DateNavigator::selectPreviousWeek()
@@ -206,10 +203,7 @@ void DateNavigator::shiftMonth(const QDate &currentMonth, const QDate &selection
 
 void DateNavigator::selectNextMonth(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit)
 {
-    shiftMonth(currentMonth,
-               selectionLowerLimit,
-               selectionUpperLimit,
-               1);
+    shiftMonth(currentMonth, selectionLowerLimit, selectionUpperLimit, 1);
 }
 
 void DateNavigator::selectNextYear()

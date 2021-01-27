@@ -12,8 +12,7 @@
 #include "ui_apptsummaryconfig_base.h"
 #include <KCModule>
 
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_apptsummary(QWidget *parent, const char *);
 }
 

@@ -7,52 +7,50 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later
 */
-//krazy:excludeall=tipsandthis
+// krazy:excludeall=tipsandthis
 
 #include "kprefsdialog.h"
 
 #include <KColorButton>
 #include <KComboBox>
 #include <KDateComboBox>
-#include <QFontDialog>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KTimeComboBox>
 #include <KUrlRequester>
-#include <QUrl>
 #include <QDebug>
+#include <QFontDialog>
+#include <QUrl>
 
+#include <QButtonGroup>
+#include <QCheckBox>
 #include <QFont>
 #include <QFrame>
-#include <QCheckBox>
 #include <QGridLayout>
+#include <QGroupBox>
 #include <QLabel>
 #include <QPushButton>
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QTimeEdit>
-#include <QButtonGroup>
-#include <QGroupBox>
 
 using namespace Korganizer;
 
-namespace KPrefsWidFactory {
+namespace KPrefsWidFactory
+{
 KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
 {
-    auto *boolItem
-        = dynamic_cast<KConfigSkeleton::ItemBool *>(item);
+    auto *boolItem = dynamic_cast<KConfigSkeleton::ItemBool *>(item);
     if (boolItem) {
         return new KPrefsWidBool(boolItem, parent);
     }
 
-    auto *stringItem
-        = dynamic_cast<KConfigSkeleton::ItemString *>(item);
+    auto *stringItem = dynamic_cast<KConfigSkeleton::ItemString *>(item);
     if (stringItem) {
         return new KPrefsWidString(stringItem, parent);
     }
 
-    auto *enumItem
-        = dynamic_cast<KConfigSkeleton::ItemEnum *>(item);
+    auto *enumItem = dynamic_cast<KConfigSkeleton::ItemEnum *>(item);
     if (enumItem) {
         QList<KConfigSkeleton::ItemEnum::Choice> choices = enumItem->choices();
         if (choices.isEmpty()) {
@@ -331,8 +329,8 @@ KPrefsWidDuration::KPrefsWidDuration(KConfigSkeleton::ItemDateTime *item, const 
     } else {
         mTimeEdit->setDisplayFormat(format);
     }
-    mTimeEdit->setMinimumTime(QTime(0, 1));     // [1 min]
-    mTimeEdit->setMaximumTime(QTime(24, 0));     // [24 hr]
+    mTimeEdit->setMinimumTime(QTime(0, 1)); // [1 min]
+    mTimeEdit->setMaximumTime(QTime(24, 0)); // [24 hr]
     connect(mTimeEdit, &QTimeEdit::timeChanged, this, &KPrefsWidDuration::changed);
     QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {
@@ -388,8 +386,7 @@ void KPrefsWidDate::readConfig()
     if (!mItem->value().date().isValid()) {
         mItem->setValue(QDateTime::currentDateTime());
     }
-    mDateEdit->setDate(mItem->value().date().isValid()
-                       ? mItem->value().date() : QDate::currentDate());
+    mDateEdit->setDate(mItem->value().date().isValid() ? mItem->value().date() : QDate::currentDate());
 }
 
 void KPrefsWidDate::writeConfig()
@@ -800,9 +797,9 @@ void KPrefsDialog::autoCreate()
             currentRow = 0;
             mCurrentRows.insert(group, currentRow);
         } else {
-            page = mGroupPages[ group ];
-            layout = mGroupLayouts[ group ];
-            currentRow = mCurrentRows[ group ];
+            page = mGroupPages[group];
+            layout = mGroupLayouts[group];
+            currentRow = mCurrentRows[group];
         }
 
         KPrefsWid *wid = KPrefsWidFactory::create(*it, page);
@@ -810,10 +807,10 @@ void KPrefsDialog::autoCreate()
         if (wid) {
             QList<QWidget *> widgets = wid->widgets();
             if (widgets.count() == 1) {
-                layout->addWidget(widgets[ 0 ], currentRow, currentRow, 0, 1);
+                layout->addWidget(widgets[0], currentRow, currentRow, 0, 1);
             } else if (widgets.count() == 2) {
-                layout->addWidget(widgets[ 0 ], currentRow, 0);
-                layout->addWidget(widgets[ 1 ], currentRow, 1);
+                layout->addWidget(widgets[0], currentRow, 0);
+                layout->addWidget(widgets[1], currentRow, 1);
             } else {
                 qCritical() << "More widgets than expected:" << widgets.count();
             }
@@ -865,12 +862,12 @@ void KPrefsDialog::slotOk()
 
 void KPrefsDialog::slotDefault()
 {
-    if (KMessageBox::warningContinueCancel(
-            this,
-            i18n("You are about to set all preferences to default values. "
-                 "All custom modifications will be lost."),
-            i18n("Setting Default Preferences"),
-            KGuiItem(i18n("Reset to Defaults"))) == KMessageBox::Continue) {
+    if (KMessageBox::warningContinueCancel(this,
+                                           i18n("You are about to set all preferences to default values. "
+                                                "All custom modifications will be lost."),
+                                           i18n("Setting Default Preferences"),
+                                           KGuiItem(i18n("Reset to Defaults")))
+        == KMessageBox::Continue) {
         setDefaults();
     }
 }

@@ -24,13 +24,15 @@ class KOListView;
 class KOTimelineView;
 class KOTodoView;
 class KOWhatsNextView;
-namespace KOrg {
+namespace KOrg
+{
 class BaseView;
 class MultiAgendaView;
 class MonthView;
 }
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 }
 
@@ -45,7 +47,6 @@ class KOViewManager : public QObject
 {
     Q_OBJECT
 public:
-
     enum RangeMode {
         NO_RANGE,
         DAY_RANGE,

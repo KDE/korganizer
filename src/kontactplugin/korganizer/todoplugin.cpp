@@ -19,11 +19,11 @@
 
 #include <KontactInterface/Core>
 
-#include <QAction>
-#include <KActionCollection>
 #include "korganizerplugin_debug.h"
-#include <QIcon>
+#include <KActionCollection>
 #include <KLocalizedString>
+#include <QAction>
+#include <QIcon>
 
 #include <QDropEvent>
 
@@ -35,22 +35,17 @@ TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
-    QAction *action
-        = new QAction(QIcon::fromTheme(QStringLiteral("task-new")),
-                      i18nc("@action:inmenu", "New To-do..."), this);
+    QAction *action = new QAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "New To-do..."), this);
     actionCollection()->addAction(QStringLiteral("new_todo"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_T));
     QString str = i18nc("@info:status", "Create a new to-do");
     action->setStatusTip(str);
     action->setToolTip(str);
 
-    action->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "You will be presented with a dialog where you can create a new to-do item."));
+    action->setWhatsThis(i18nc("@info:whatsthis", "You will be presented with a dialog where you can create a new to-do item."));
     connect(action, &QAction::triggered, this, &TodoPlugin::slotNewTodo);
     insertNewAction(action);
-    mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(
-        new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
+    mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
 
 TodoPlugin::~TodoPlugin()
@@ -70,9 +65,7 @@ KParts::Part *TodoPlugin::createPart()
         return nullptr;
     }
 
-    mIface = new OrgKdeKorganizerCalendarInterface(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral(
-            "/Calendar"), QDBusConnection::sessionBus(), this);
+    mIface = new OrgKdeKorganizerCalendarInterface(QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
@@ -119,10 +112,7 @@ void TodoPlugin::slotNewTodo()
 
 bool TodoPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
-    return
-        mimeData->hasText()
-        || KContacts::VCardDrag::canDecode(mimeData)
-        || KCalUtils::ICalDrag::canDecode(mimeData);
+    return mimeData->hasText() || KContacts::VCardDrag::canDecode(mimeData) || KCalUtils::ICalDrag::canDecode(mimeData);
 }
 
 bool TodoPlugin::isRunningStandalone() const
@@ -152,8 +142,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
             }
         }
 
-        interface()->openTodoEditor(i18nc("@item", "Meeting"),
-                                    QString(), QStringList(), attendees);
+        interface()->openTodoEditor(i18nc("@item", "Meeting"), QString(), QStringList(), attendees);
         return;
     }
 
@@ -184,9 +173,7 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
         return;
     }
 
-    qCWarning(KORGANIZERPLUGIN_LOG)
-        << QStringLiteral("Cannot handle drop events of type '%1'.").arg(
-        event->mimeData()->formats().join(QLatin1Char(';')));
+    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
 }
 
 #include "todoplugin.moc"

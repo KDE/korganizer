@@ -10,15 +10,15 @@
 
 #include "alarmdockwindow.h"
 
+#include "koalarmclient_debug.h"
 #include <KConfigGroup>
 #include <KIconEffect>
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KToolInvocation>
 #include <KSharedConfig>
+#include <KToolInvocation>
 #include <QMenu>
-#include "koalarmclient_debug.h"
 
 AlarmDockWindow::AlarmDockWindow()
     : KStatusNotifierItem(nullptr)
@@ -39,16 +39,13 @@ AlarmDockWindow::AlarmDockWindow()
 
     // Set up icons
     KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
-    const QString iconPath
-        = KIconLoader::global()->iconPath(QStringLiteral("korgac"), KIconLoader::Panel);
+    const QString iconPath = KIconLoader::global()->iconPath(QStringLiteral("korgac"), KIconLoader::Panel);
     const QIcon iconEnabled = QIcon(iconPath);
     if (iconEnabled.isNull()) {
-        KMessageBox::sorry(associatedWidget(),
-                           i18nc("@info", "Cannot load system tray icon."));
+        KMessageBox::sorry(associatedWidget(), i18nc("@info", "Cannot load system tray icon."));
     } else {
         KIconLoader loader;
-        QImage iconDisabled
-            = iconEnabled.pixmap(loader.currentSize(KIconLoader::Panel)).toImage();
+        QImage iconDisabled = iconEnabled.pixmap(loader.currentSize(KIconLoader::Panel)).toImage();
         KIconEffect::toGray(iconDisabled, 1.0);
         mIconDisabled = QIcon(QPixmap::fromImage(iconDisabled));
     }
@@ -56,37 +53,28 @@ AlarmDockWindow::AlarmDockWindow()
     changeSystrayIcon(alarmsEnabled);
 
     // Set up the context menu
-    mSuspendAll
-        = contextMenu()->addAction(i18nc("@action:inmenu", "&Suspend All Reminders"), this,
-                                   &AlarmDockWindow::slotSuspendAll);
-    mDismissAll
-        = contextMenu()->addAction(i18nc("@action:inmenu", "&Dismiss All Reminders"), this,
-                                   &AlarmDockWindow::slotDismissAll);
+    mSuspendAll = contextMenu()->addAction(i18nc("@action:inmenu", "&Suspend All Reminders"), this, &AlarmDockWindow::slotSuspendAll);
+    mDismissAll = contextMenu()->addAction(i18nc("@action:inmenu", "&Dismiss All Reminders"), this, &AlarmDockWindow::slotDismissAll);
     // leave mShow always enabled that way you can get to alarms that are
     // suspended and inactive to dismiss them before they go off again
     // (as opposed to the other two that are initially disabled)
-    mShow
-        = contextMenu()->addAction(i18nc("@action:inmenu", "Show &Reminders"), this,
-                                   &AlarmDockWindow::showReminderSignal);
+    mShow = contextMenu()->addAction(i18nc("@action:inmenu", "Show &Reminders"), this, &AlarmDockWindow::showReminderSignal);
     mSuspendAll->setEnabled(false);
     mDismissAll->setEnabled(false);
 
     contextMenu()->addSeparator();
-    mAlarmsEnabled
-        = contextMenu()->addAction(i18nc("@action:inmenu", "Enable Reminders"));
+    mAlarmsEnabled = contextMenu()->addAction(i18nc("@action:inmenu", "Enable Reminders"));
     connect(mAlarmsEnabled, &QAction::toggled, this, &AlarmDockWindow::toggleAlarmsEnabled);
     mAlarmsEnabled->setCheckable(true);
 
-    mAutostart
-        = contextMenu()->addAction(i18nc("@action:inmenu", "Start Reminder Daemon at Login"));
+    mAutostart = contextMenu()->addAction(i18nc("@action:inmenu", "Start Reminder Daemon at Login"));
     connect(mAutostart, &QAction::toggled, this, &AlarmDockWindow::toggleAutostart);
     mAutostart->setCheckable(true);
 
     mAlarmsEnabled->setChecked(alarmsEnabled);
     mAutostart->setChecked(autostart);
 
-    mGrabFocus
-        = contextMenu()->addAction(i18nc("@action:inmenu", "Reminder Requests Focus"));
+    mGrabFocus = contextMenu()->addAction(i18nc("@action:inmenu", "Reminder Requests Focus"));
     mGrabFocus->setToolTip(i18nc("@info:tooltip",
                                  "When this option is enabled the reminder dialog will "
                                  "automatically receive keyboard focus when it opens."));
@@ -118,10 +106,7 @@ void AlarmDockWindow::slotUpdate(int reminders)
     mSuspendAll->setEnabled(actif);
     mDismissAll->setEnabled(actif);
     if (actif) {
-        setToolTip(QStringLiteral("korgac"), mName, i18ncp("@info:status",
-                                                           "There is 1 active reminder.",
-                                                           "There are %1 active reminders.",
-                                                           reminders));
+        setToolTip(QStringLiteral("korgac"), mName, i18ncp("@info:status", "There is 1 active reminder.", "There are %1 active reminders.", reminders));
     } else {
         setToolTip(QStringLiteral("korgac"), mName, i18nc("@info:status", "No active reminders."));
     }
@@ -175,28 +160,26 @@ void AlarmDockWindow::activate(const QPoint &pos)
 void AlarmDockWindow::slotQuit()
 {
     if (mAutostartSet == true) {
-        const int result = KMessageBox::warningContinueCancel(
-            associatedWidget(),
-            xi18nc("@info",
-                   "Do you want to quit the KOrganizer reminder daemon?<nl/>"
-                   "<note> you will not get calendar reminders unless the daemon is running.</note>"),
-            i18nc("@title:window", "Close KOrganizer Reminder Daemon"),
-            KStandardGuiItem::quit());
+        const int result = KMessageBox::warningContinueCancel(associatedWidget(),
+                                                              xi18nc("@info",
+                                                                     "Do you want to quit the KOrganizer reminder daemon?<nl/>"
+                                                                     "<note> you will not get calendar reminders unless the daemon is running.</note>"),
+                                                              i18nc("@title:window", "Close KOrganizer Reminder Daemon"),
+                                                              KStandardGuiItem::quit());
 
         if (result == KMessageBox::Continue) {
             Q_EMIT quitSignal();
         }
     } else {
-        const int result = KMessageBox::questionYesNoCancel(
-            associatedWidget(),
-            xi18nc("@info",
-                   "Do you want to start the KOrganizer reminder daemon at login?<nl/>"
-                   "<note> you will not get calendar reminders unless the daemon is running.</note>"),
-            i18nc("@title:window", "Close KOrganizer Reminder Daemon"),
-            KGuiItem(i18nc("@action:button start the reminder daemon", "Start")),
-            KGuiItem(i18nc("@action:button do not start the reminder daemon", "Do Not Start")),
-            KStandardGuiItem::cancel(),
-            QStringLiteral("AskForStartAtLogin"));
+        const int result = KMessageBox::questionYesNoCancel(associatedWidget(),
+                                                            xi18nc("@info",
+                                                                   "Do you want to start the KOrganizer reminder daemon at login?<nl/>"
+                                                                   "<note> you will not get calendar reminders unless the daemon is running.</note>"),
+                                                            i18nc("@title:window", "Close KOrganizer Reminder Daemon"),
+                                                            KGuiItem(i18nc("@action:button start the reminder daemon", "Start")),
+                                                            KGuiItem(i18nc("@action:button do not start the reminder daemon", "Do Not Start")),
+                                                            KStandardGuiItem::cancel(),
+                                                            QStringLiteral("AskForStartAtLogin"));
 
         bool autostart = true;
         if (result == KMessageBox::No) {

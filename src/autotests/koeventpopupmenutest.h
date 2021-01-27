@@ -10,7 +10,8 @@
 #include <AkonadiCore/Collection>
 #include <QObject>
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Collection;
 }
 

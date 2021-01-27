@@ -16,7 +16,8 @@
 #include <QMenu>
 #include <QToolButton>
 
-NavigatorBar::NavigatorBar(QWidget *parent) : QWidget(parent)
+NavigatorBar::NavigatorBar(QWidget *parent)
+    : QWidget(parent)
 {
     QFont tfont = font();
     tfont.setPointSize(10);
@@ -24,29 +25,25 @@ NavigatorBar::NavigatorBar(QWidget *parent) : QWidget(parent)
 
     const bool isRTL = KOGlobals::self()->reverseLayout();
 
-    mPrevYear = createNavigationButton(
-        isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
-        i18n("Scroll backward to the previous year"),
-        i18n("Click this button to scroll the display to the "
-             "same approximate day of the previous year"));
+    mPrevYear = createNavigationButton(isRTL ? QStringLiteral("arrow-right-double") : QStringLiteral("arrow-left-double"),
+                                       i18n("Scroll backward to the previous year"),
+                                       i18n("Click this button to scroll the display to the "
+                                            "same approximate day of the previous year"));
 
-    mPrevMonth = createNavigationButton(
-        isRTL ? QStringLiteral("arrow-right") : QStringLiteral("arrow-left"),
-        i18n("Scroll backward to the previous month"),
-        i18n("Click this button to scroll the display to the "
-             "same approximate date of the previous month"));
+    mPrevMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-right") : QStringLiteral("arrow-left"),
+                                        i18n("Scroll backward to the previous month"),
+                                        i18n("Click this button to scroll the display to the "
+                                             "same approximate date of the previous month"));
 
-    mNextMonth = createNavigationButton(
-        isRTL ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right"),
-        i18n("Scroll forward to the next month"),
-        i18n("Click this button to scroll the display to the "
-             "same approximate date of the next month"));
+    mNextMonth = createNavigationButton(isRTL ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right"),
+                                        i18n("Scroll forward to the next month"),
+                                        i18n("Click this button to scroll the display to the "
+                                             "same approximate date of the next month"));
 
-    mNextYear = createNavigationButton(
-        isRTL ? QStringLiteral("arrow-left-double") : QStringLiteral("arrow-right-double"),
-        i18n("Scroll forward to the next year"),
-        i18n("Click this button to scroll the display to the "
-             "same approximate day of the next year"));
+    mNextYear = createNavigationButton(isRTL ? QStringLiteral("arrow-left-double") : QStringLiteral("arrow-right-double"),
+                                       i18n("Scroll forward to the next year"),
+                                       i18n("Click this button to scroll the display to the "
+                                            "same approximate day of the next year"));
 
     // Create month name button
     mMonth = new QToolButton(this);
@@ -111,10 +108,8 @@ void NavigatorBar::selectDates(const KCalendarCore::DateList &dateList)
         mDate = dateList.first();
 
         // set the label text at the top of the navigator
-        mMonth->setText(i18nc("monthname", "%1",
-                              QLocale().standaloneMonthName(mDate.month(), QLocale::LongFormat)));
-        mYear->setText(i18nc("4 digit year", "%1",
-                             QLocale().toString(mDate, QStringLiteral("yyyy"))));
+        mMonth->setText(i18nc("monthname", "%1", QLocale().standaloneMonthName(mDate.month(), QLocale::LongFormat)));
+        mYear->setText(i18nc("4 digit year", "%1", QLocale().toString(mDate, QStringLiteral("yyyy"))));
     }
 }
 
@@ -159,7 +154,7 @@ void NavigatorBar::selectMonthFromMenu()
 void NavigatorBar::selectYearFromMenu()
 {
     int year = mDate.year();
-    int years = 11;  // odd number (show a few years ago -> a few years from now)
+    int years = 11; // odd number (show a few years ago -> a few years from now)
     int minYear = year - (years / 3);
 
     auto menu = new QMenu(mYear);

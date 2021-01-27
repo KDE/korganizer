@@ -17,10 +17,7 @@ class KItemIconCheckCombo : public KPIM::KCheckComboBox
 {
     Q_OBJECT
 public:
-    enum ViewType {
-        AgendaType = 0,
-        MonthType
-    };
+    enum ViewType { AgendaType = 0, MonthType };
 
     explicit KItemIconCheckCombo(ViewType viewType, QWidget *parent = nullptr);
     ~KItemIconCheckCombo() override;

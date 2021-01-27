@@ -11,9 +11,9 @@
 
 #include <KAboutData>
 #include <KAcceleratorManager>
+#include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
-#include <KConfig>
 
 KCModule *create_todosummary(QWidget *parent, const char *)
 {
@@ -37,10 +37,8 @@ KCMTodoSummary::KCMTodoSummary(QWidget *parent)
     connect(mHideInProgressBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
     connect(mHideOverdueBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
 
-    connect(mCustomDays, QOverload<int>::of(
-                &QSpinBox::valueChanged), this, &KCMTodoSummary::modified);
-    connect(mCustomDays, QOverload<int>::of(
-                &QSpinBox::valueChanged), this, &KCMTodoSummary::customDaysChanged);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMTodoSummary::modified);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMTodoSummary::customDaysChanged);
 
     connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
 
@@ -140,17 +138,16 @@ void KCMTodoSummary::defaults()
 
 const KAboutData *KCMTodoSummary::aboutData() const
 {
-    KAboutData *about = new KAboutData(
-        QStringLiteral("kcmtodosummary"),
-        i18n("Pending To-dos Configuration Dialog"),
-        QString(), QString(), KAboutLicense::GPL,
-        i18n("Copyright © 2003–2004 Tobias Koenig\n"
-             "Copyright © 2005–2010 Allen Winter"));
+    KAboutData *about = new KAboutData(QStringLiteral("kcmtodosummary"),
+                                       i18n("Pending To-dos Configuration Dialog"),
+                                       QString(),
+                                       QString(),
+                                       KAboutLicense::GPL,
+                                       i18n("Copyright © 2003–2004 Tobias Koenig\n"
+                                            "Copyright © 2005–2010 Allen Winter"));
 
-    about->addAuthor(i18n("Tobias Koenig"),
-                     QString(), QStringLiteral("tokoe@kde.org"));
-    about->addAuthor(i18n("Allen Winter"),
-                     QString(), QStringLiteral("winter@kde.org"));
+    about->addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
+    about->addAuthor(i18n("Allen Winter"), QString(), QStringLiteral("winter@kde.org"));
 
     return about;
 }

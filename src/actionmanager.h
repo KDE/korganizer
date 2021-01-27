@@ -16,11 +16,11 @@
 #include "korganizerprivate_export.h"
 #include "part.h"
 
-#include <AkonadiCore/Item>
 #include <Akonadi/Calendar/ETMCalendar>
+#include <AkonadiCore/Item>
 
-#include <QUrl>
 #include <KViewStateMaintainer>
+#include <QUrl>
 
 #include <QObject>
 
@@ -28,7 +28,8 @@ class AkonadiCollectionView;
 class CalendarView;
 class KOWindowList;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class ETMViewStateSaver;
 }
 
@@ -112,7 +113,7 @@ public:
       @param ical A calendar in iCalendar format containing the incidence.
     */
     bool addIncidence(const QString &ical);
-    //bool addIncidence( const Akonadi::Item::Id &ical );
+    // bool addIncidence( const Akonadi::Item::Id &ical );
 
     bool showIncidence(Akonadi::Item::Id id);
 
@@ -134,13 +135,33 @@ public Q_SLOTS:
     void openEventEditor(const QString &summary);
     void openEventEditor(const QString &summary, const QString &description, const QStringList &attachments);
     void openEventEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees);
-    void openEventEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype);
-    void openEventEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline);
+    void openEventEditor(const QString &summary,
+                         const QString &description,
+                         const QString &uri,
+                         const QString &file,
+                         const QStringList &attendees,
+                         const QString &attachmentMimetype);
+    void openEventEditor(const QString &summary,
+                         const QString &description,
+                         const QStringList &attachmentUris,
+                         const QStringList &attendees,
+                         const QStringList &attachmentMimetypes,
+                         bool attachmentIsInline);
     void openTodoEditor(const QString &);
     void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachments);
     void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachments, const QStringList &attendees);
-    void openTodoEditor(const QString &summary, const QString &description, const QString &uri, const QString &file, const QStringList &attendees, const QString &attachmentMimetype);
-    void openTodoEditor(const QString &summary, const QString &description, const QStringList &attachmentUris, const QStringList &attendees, const QStringList &attachmentMimetypes, bool attachmentIsInline);
+    void openTodoEditor(const QString &summary,
+                        const QString &description,
+                        const QString &uri,
+                        const QString &file,
+                        const QStringList &attendees,
+                        const QString &attachmentMimetype);
+    void openTodoEditor(const QString &summary,
+                        const QString &description,
+                        const QStringList &attachmentUris,
+                        const QStringList &attendees,
+                        const QStringList &attachmentMimetypes,
+                        bool attachmentIsInline);
 
     void openJournalEditor(QDate date);
     void openJournalEditor(const QString &text, QDate date);
@@ -163,7 +184,7 @@ Q_SIGNALS:
     /**
       Emitted when the "New" action is activated.
     */
-    //void actionNewMainWindow( const QUrl &url = QUrl() );
+    // void actionNewMainWindow( const QUrl &url = QUrl() );
     /**
       When change is made to options dialog, the topwidget will catch this
       and Q_EMIT this signal which notifies all widgets which have registered
@@ -239,14 +260,13 @@ protected Q_SLOTS:
     void updateUndoRedoActions();
 
 protected:
-
     /**
       Return widget used as parent for dialogs and message boxes.
     */
     QWidget *dialogParent();
 
 private Q_SLOTS:
-    void dumpText(const QString &);    // only for debugging purposes
+    void dumpText(const QString &); // only for debugging purposes
 
     void slotDefaultResourceChanged(const Akonadi::Collection &);
     void slotResourcesAddedRemoved();
@@ -270,12 +290,12 @@ private:
     Akonadi::Collection selectedCollection() const;
 
     KOrg::Part::List mParts; // List of parts loaded
-    QUrl mURL;               // URL of calendar file
-    QString mFile;           // Local name of calendar file
-    QString mLastUrl;        // URL of last loaded calendar.
+    QUrl mURL; // URL of calendar file
+    QString mFile; // Local name of calendar file
+    QString mLastUrl; // URL of last loaded calendar.
 
     QTemporaryFile *mTempFile = nullptr;
-    QTimer *mAutoExportTimer = nullptr;    // used if calendar is to be autoexported
+    QTimer *mAutoExportTimer = nullptr; // used if calendar is to be autoexported
     QTimer *mAutoArchiveTimer = nullptr; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances

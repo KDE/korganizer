@@ -8,8 +8,13 @@
 
 #ifndef KORG_INTERFACES_COREHELPER_H
 #define KORG_INTERFACES_COREHELPER_H
-
-namespace KOrg {
+class QColor;
+class QString;
+class QTime;
+class QStringList;
+class QDate;
+namespace KOrg
+{
 class CoreHelper
 {
 public:

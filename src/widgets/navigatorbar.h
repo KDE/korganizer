@@ -10,8 +10,8 @@
 
 #include <KCalendarCore/IncidenceBase> // for KCalendarCore::DateList typedef
 
-#include <QWidget>
 #include <QDate>
+#include <QWidget>
 class QToolButton;
 
 class NavigatorBar : public QWidget

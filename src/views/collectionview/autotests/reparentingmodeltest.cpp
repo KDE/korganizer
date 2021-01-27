@@ -4,12 +4,12 @@
  * SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
  */
 
-#include <QObject>
-#include <QTest>
-#include <QStandardItemModel>
-#include <QSortFilterProxyModel>
-#include "korganizer_debug.h"
 #include "reparentingmodel.h"
+#include "korganizer_debug.h"
+#include <QObject>
+#include <QSortFilterProxyModel>
+#include <QStandardItemModel>
+#include <QTest>
 
 class DummyNode : public ReparentingModel::Node
 {
@@ -38,6 +38,7 @@ public:
 
     QString mUid;
     QString mParent;
+
 private:
     QVariant data(int role) const override
     {
@@ -88,14 +89,10 @@ public:
         : start(0)
         , end(0)
     {
-        connect(&model, &QAbstractItemModel::rowsInserted, this,
-                &ModelSignalSpy::onRowsInserted);
-        connect(&model, &QAbstractItemModel::rowsRemoved, this,
-                &ModelSignalSpy::onRowsRemoved);
-        connect(&model, &QAbstractItemModel::rowsMoved, this,
-                &ModelSignalSpy::onRowsMoved);
-        connect(&model, &QAbstractItemModel::dataChanged, this,
-                &ModelSignalSpy::onDataChanged);
+        connect(&model, &QAbstractItemModel::rowsInserted, this, &ModelSignalSpy::onRowsInserted);
+        connect(&model, &QAbstractItemModel::rowsRemoved, this, &ModelSignalSpy::onRowsRemoved);
+        connect(&model, &QAbstractItemModel::rowsMoved, this, &ModelSignalSpy::onRowsMoved);
+        connect(&model, &QAbstractItemModel::dataChanged, this, &ModelSignalSpy::onDataChanged);
         connect(&model, &QAbstractItemModel::layoutChanged, this, &ModelSignalSpy::onLayoutChanged);
         connect(&model, &QAbstractItemModel::modelReset, this, &ModelSignalSpy::onModelReset);
     }
@@ -148,9 +145,7 @@ public Q_SLOTS:
 
 QModelIndex getIndex(const char *string, const QAbstractItemModel &model)
 {
-    QModelIndexList list
-        = model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(
-                          string), 1, Qt::MatchRecursive);
+    QModelIndexList list = model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(string), 1, Qt::MatchRecursive);
     if (list.isEmpty()) {
         return {};
     }
@@ -159,8 +154,7 @@ QModelIndex getIndex(const char *string, const QAbstractItemModel &model)
 
 QModelIndexList getIndexList(const char *string, const QAbstractItemModel &model)
 {
-    return model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(
-                           string), 1, Qt::MatchRecursive);
+    return model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(string), 1, Qt::MatchRecursive);
 }
 
 class ReparentingModelTest : public QObject
@@ -231,11 +225,10 @@ void ReparentingModelTest::testAddRemoveSourceItem()
     QCOMPARE(spy.start, 1);
     QCOMPARE(spy.end, 1);
 
-    QCOMPARE(spy.mSignals,
-             QStringList() << QStringLiteral("rowsInserted") << QStringLiteral("rowsRemoved"));
+    QCOMPARE(spy.mSignals, QStringList() << QStringLiteral("rowsInserted") << QStringLiteral("rowsRemoved"));
 }
 
-//Ensure the model can deal with rows that are inserted out of order
+// Ensure the model can deal with rows that are inserted out of order
 void ReparentingModelTest::testInsertSourceRow()
 {
     QStandardItemModel sourceModel;
@@ -252,18 +245,16 @@ void ReparentingModelTest::testInsertSourceRow()
     QVERIFY(getIndex("row1", reparentingModel).isValid());
     QVERIFY(getIndex("row2", reparentingModel).isValid());
 
-    //The model does not try to reorder. First come, first serve.
+    // The model does not try to reorder. First come, first serve.
     QCOMPARE(getIndex("row1", reparentingModel).row(), 1);
     QCOMPARE(getIndex("row2", reparentingModel).row(), 0);
-    reparentingModel.setData(reparentingModel.index(1, 0, QModelIndex()), QStringLiteral(
-                                 "row1foo"), Qt::DisplayRole);
-    reparentingModel.setData(reparentingModel.index(0, 0, QModelIndex()), QStringLiteral(
-                                 "row2foo"), Qt::DisplayRole);
+    reparentingModel.setData(reparentingModel.index(1, 0, QModelIndex()), QStringLiteral("row1foo"), Qt::DisplayRole);
+    reparentingModel.setData(reparentingModel.index(0, 0, QModelIndex()), QStringLiteral("row2foo"), Qt::DisplayRole);
     QCOMPARE(row1->data(Qt::DisplayRole).toString(), QStringLiteral("row1foo"));
     QCOMPARE(row2->data(Qt::DisplayRole).toString(), QStringLiteral("row2foo"));
 }
 
-//Ensure the model can deal with rows that are inserted out of order in a subnode
+// Ensure the model can deal with rows that are inserted out of order in a subnode
 void ReparentingModelTest::testInsertSourceRowSubnode()
 {
     QStandardItem *parent = new QStandardItem(QStringLiteral("parent"));
@@ -283,15 +274,11 @@ void ReparentingModelTest::testInsertSourceRowSubnode()
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QVERIFY(getIndex("row1", reparentingModel).isValid());
     QVERIFY(getIndex("row2", reparentingModel).isValid());
-    //The model does not try to reorder. First come, first serve.
+    // The model does not try to reorder. First come, first serve.
     QCOMPARE(getIndex("row1", reparentingModel).row(), 1);
     QCOMPARE(getIndex("row2", reparentingModel).row(), 0);
-    reparentingModel.setData(reparentingModel.index(1, 0, getIndex("parent",
-                                                                   reparentingModel)),
-                             QStringLiteral("row1foo"), Qt::DisplayRole);
-    reparentingModel.setData(reparentingModel.index(0, 0, getIndex("parent",
-                                                                   reparentingModel)),
-                             QStringLiteral("row2foo"), Qt::DisplayRole);
+    reparentingModel.setData(reparentingModel.index(1, 0, getIndex("parent", reparentingModel)), QStringLiteral("row1foo"), Qt::DisplayRole);
+    reparentingModel.setData(reparentingModel.index(0, 0, getIndex("parent", reparentingModel)), QStringLiteral("row2foo"), Qt::DisplayRole);
     QCOMPARE(row1->data(Qt::DisplayRole).toString(), QStringLiteral("row1foo"));
     QCOMPARE(row2->data(Qt::DisplayRole).toString(), QStringLiteral("row2foo"));
 }
@@ -306,8 +293,7 @@ void ReparentingModelTest::testAddRemoveProxyNode()
 
     ModelSignalSpy spy(reparentingModel);
 
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
 
     QTest::qWait(0);
 
@@ -321,8 +307,7 @@ void ReparentingModelTest::testAddRemoveProxyNode()
     QVERIFY(getIndex("row1", reparentingModel).isValid());
     QVERIFY(!getIndex("proxy1", reparentingModel).isValid());
 
-    QCOMPARE(spy.mSignals,
-             QStringList() << QStringLiteral("rowsInserted") << QStringLiteral("rowsRemoved"));
+    QCOMPARE(spy.mSignals, QStringList() << QStringLiteral("rowsInserted") << QStringLiteral("rowsRemoved"));
 }
 
 void ReparentingModelTest::testDeduplicate()
@@ -333,14 +318,13 @@ void ReparentingModelTest::testDeduplicate()
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
 
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("row1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("row1"))));
 
     QTest::qWait(0);
 
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QCOMPARE(getIndexList("row1", reparentingModel).size(), 1);
-    //TODO ensure we actually have the source index and not the proxy index
+    // TODO ensure we actually have the source index and not the proxy index
 }
 
 /**
@@ -356,8 +340,7 @@ void ReparentingModelTest::testDeduplicateNested()
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
 
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("child1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("child1"))));
 
     QTest::qWait(0);
 
@@ -373,8 +356,7 @@ void ReparentingModelTest::testDeduplicateProxyNodeFirst()
     QStandardItemModel sourceModel;
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("row1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("row1"))));
 
     QTest::qWait(0);
 
@@ -382,7 +364,7 @@ void ReparentingModelTest::testDeduplicateProxyNodeFirst()
 
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QCOMPARE(getIndexList("row1", reparentingModel).size(), 1);
-    //TODO ensure we actually have the source index and not the proxy index
+    // TODO ensure we actually have the source index and not the proxy index
 }
 
 /**
@@ -393,8 +375,7 @@ void ReparentingModelTest::testNestedDeduplicateProxyNodeFirst()
     QStandardItemModel sourceModel;
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("child1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("child1"))));
 
     QTest::qWait(0);
 
@@ -404,7 +385,7 @@ void ReparentingModelTest::testNestedDeduplicateProxyNodeFirst()
 
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
     QCOMPARE(getIndexList("child1", reparentingModel).size(), 1);
-    //TODO ensure we actually have the source index and not the proxy index
+    // TODO ensure we actually have the source index and not the proxy index
 }
 
 /**
@@ -415,9 +396,7 @@ void ReparentingModelTest::testUpdateNode()
     QStandardItemModel sourceModel;
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"),
-                                                                       QStringLiteral("blub"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"), QStringLiteral("blub"))));
 
     QTest::qWait(0);
 
@@ -427,10 +406,7 @@ void ReparentingModelTest::testUpdateNode()
     QCOMPARE(reparentingModel.data(index, Qt::UserRole).toString(), QStringLiteral("blub"));
 
     ModelSignalSpy spy(reparentingModel);
-    reparentingModel.updateNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                          QStringLiteral("proxy1"),
-                                                                          QStringLiteral(
-                                                                              "new data"))));
+    reparentingModel.updateNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"), QStringLiteral("new data"))));
     QTest::qWait(0);
 
     QModelIndex i2 = getIndex("proxy1", reparentingModel);
@@ -454,8 +430,7 @@ void ReparentingModelTest::testReparent()
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
 
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
 
     QTest::qWait(0);
 
@@ -535,8 +510,7 @@ void ReparentingModelTest::testReparentResetWithoutCrash()
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
 
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
     QTest::qWait(0);
 
     reparentingModel.setSourceModel(&sourceModel);
@@ -551,8 +525,7 @@ void ReparentingModelTest::testAddReparentedSourceItem()
     QStandardItemModel sourceModel;
 
     ReparentingModel reparentingModel;
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
     reparentingModel.setSourceModel(&sourceModel);
 
     QTest::qWait(0);
@@ -574,8 +547,7 @@ void ReparentingModelTest::testRemoveReparentedSourceItem()
     QStandardItemModel sourceModel;
     sourceModel.appendRow(new QStandardItem(QStringLiteral("orphan")));
     ReparentingModel reparentingModel;
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
     reparentingModel.setSourceModel(&sourceModel);
 
     QTest::qWait(0);
@@ -603,13 +575,12 @@ void ReparentingModelTest::testNestedReparentedSourceItem()
     sourceModel.appendRow(item);
 
     ReparentingModel reparentingModel;
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
     reparentingModel.setSourceModel(&sourceModel);
 
     QTest::qWait(0);
 
-    //toplevel should have both parent and proxy
+    // toplevel should have both parent and proxy
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 2);
     QVERIFY(getIndex("orphan", reparentingModel).isValid());
     QCOMPARE(getIndex("orphan", reparentingModel).parent(), getIndex("proxy1", reparentingModel));
@@ -620,8 +591,7 @@ void ReparentingModelTest::testAddNestedReparentedSourceItem()
     QStandardItemModel sourceModel;
 
     ReparentingModel reparentingModel;
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("proxy1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("proxy1"))));
     reparentingModel.setSourceModel(&sourceModel);
 
     QTest::qWait(0);
@@ -634,12 +604,11 @@ void ReparentingModelTest::testAddNestedReparentedSourceItem()
 
     QTest::qWait(0);
 
-    //toplevel should have both parent and proxy
+    // toplevel should have both parent and proxy
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 2);
     QVERIFY(getIndex("orphan", reparentingModel).isValid());
     QCOMPARE(getIndex("orphan", reparentingModel).parent(), getIndex("proxy1", reparentingModel));
-    QCOMPARE(spy.mSignals,
-             QStringList() << QStringLiteral("rowsInserted") << QStringLiteral("rowsInserted"));
+    QCOMPARE(spy.mSignals, QStringList() << QStringLiteral("rowsInserted") << QStringLiteral("rowsInserted"));
 }
 
 void ReparentingModelTest::testSourceDataChanged()
@@ -673,12 +642,12 @@ void ReparentingModelTest::testSourceLayoutChanged()
     QPersistentModelIndex index1 = reparentingModel.index(0, 0, QModelIndex());
     QPersistentModelIndex index2 = reparentingModel.index(1, 0, QModelIndex());
 
-    //Emits layout changed and sorts the items the other way around
+    // Emits layout changed and sorts the items the other way around
     filter.sort(0, Qt::AscendingOrder);
 
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 2);
     QVERIFY(getIndex("row1", reparentingModel).isValid());
-    //Right now we don't even care about the order
+    // Right now we don't even care about the order
     // QCOMPARE(spy.mSignals, QStringList() << QStringLiteral("layoutChanged"));
     QCOMPARE(index1.data().toString(), QStringLiteral("row2"));
     QCOMPARE(index2.data().toString(), QStringLiteral("row1"));
@@ -687,7 +656,7 @@ void ReparentingModelTest::testSourceLayoutChanged()
 /*
  * This is a very implementation specific test that tries to crash the model
  */
-//Test for invalid implementation of layoutChanged
+// Test for invalid implementation of layoutChanged
 //*have proxy node in model
 //*insert duplicate from source
 //*issue layout changed so the model get's rebuilt
@@ -700,12 +669,11 @@ void ReparentingModelTest::testInvalidLayoutChanged()
     filter.setSourceModel(&sourceModel);
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&filter);
-    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel,
-                                                                       QStringLiteral("row1"))));
+    reparentingModel.addNode(ReparentingModel::Node::Ptr(new DummyNode(reparentingModel, QStringLiteral("row1"))));
 
     QTest::qWait(0);
 
-    //Take reference to proxy node
+    // Take reference to proxy node
     const QModelIndexList row1List = getIndexList("row1", reparentingModel);
     QVERIFY(!row1List.isEmpty());
     QPersistentModelIndex persistentIndex = row1List.first();
@@ -714,11 +682,11 @@ void ReparentingModelTest::testInvalidLayoutChanged()
     sourceModel.appendRow(new QStandardItem(QStringLiteral("row1")));
     sourceModel.appendRow(new QStandardItem(QStringLiteral("row2")));
 
-    //This rebuilds the model and invalidates the reference
-    //Emits layout changed and sorts the items the other way around
+    // This rebuilds the model and invalidates the reference
+    // Emits layout changed and sorts the items the other way around
     filter.sort(0, Qt::AscendingOrder);
 
-    //This fails because the persistenIndex is no longer valid
+    // This fails because the persistenIndex is no longer valid
     persistentIndex.data().toString();
     QVERIFY(!persistentIndex.isValid());
 }
@@ -726,7 +694,8 @@ void ReparentingModelTest::testInvalidLayoutChanged()
 class DummyNodeManager : public ReparentingModel::NodeManager
 {
 public:
-    DummyNodeManager(ReparentingModel &m) : ReparentingModel::NodeManager(m)
+    DummyNodeManager(ReparentingModel &m)
+        : ReparentingModel::NodeManager(m)
     {
     }
 
@@ -734,8 +703,7 @@ private:
     void checkSourceIndex(const QModelIndex &sourceIndex) override
     {
         if (sourceIndex.data().toString() == QLatin1String("personfolder")) {
-            model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model,
-                                                                    QStringLiteral("personnode"))));
+            model.addNode(ReparentingModel::Node::Ptr(new DummyNode(model, QStringLiteral("personnode"))));
         }
     }
 
@@ -752,8 +720,7 @@ void ReparentingModelTest::testAddRemoveNodeByNodeManager()
     QStandardItemModel sourceModel;
     sourceModel.appendRow(new QStandardItem(QStringLiteral("personfolder")));
     ReparentingModel reparentingModel;
-    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(
-                                                                           reparentingModel)));
+    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
     reparentingModel.setSourceModel(&sourceModel);
 
     QTest::qWait(0);
@@ -779,8 +746,7 @@ void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
     QStandardItem *item = new QStandardItem(QStringLiteral("personfolder"));
     sourceModel.appendRow(item);
     ReparentingModel reparentingModel;
-    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(
-                                                                           reparentingModel)));
+    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
     reparentingModel.setSourceModel(&sourceModel);
 
     QTest::qWait(0);
@@ -788,7 +754,7 @@ void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
     QVERIFY(getIndex("personnode", reparentingModel).isValid());
     QVERIFY(getIndex("personfolder", reparentingModel).isValid());
 
-    //Trigger data changed
+    // Trigger data changed
     item->setStatusTip(QStringLiteral("sldkfjlfsj"));
     sourceModel.removeRows(0, 1, QModelIndex());
 
@@ -803,14 +769,13 @@ void ReparentingModelTest::testDataChanged()
     QStandardItem *item = new QStandardItem(QStringLiteral("folder"));
     sourceModel.appendRow(item);
     ReparentingModel reparentingModel;
-    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(
-                                                                           reparentingModel)));
+    reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
     reparentingModel.setSourceModel(&sourceModel);
     ModelSignalSpy spy(reparentingModel);
 
     QTest::qWait(0);
 
-    //Trigger data changed
+    // Trigger data changed
     item->setStatusTip(QStringLiteral("sldkfjlfsj"));
 
     QTest::qWait(0);

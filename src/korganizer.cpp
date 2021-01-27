@@ -15,28 +15,29 @@
 #include "korganizer.h"
 #include "actionmanager.h"
 #include "calendarview.h"
+#include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
 #include "koglobals.h"
-#include "impl/korganizerifaceimpl.h"
 #include "plugininterface/korganizerplugininterface.h"
 
 #include <Libkdepim/ProgressStatusBarWidget>
 #include <Libkdepim/StatusbarProgressWidget>
 
-#include <KActionCollection>
 #include "korganizer_debug.h"
+#include <KActionCollection>
+#include <KSharedConfig>
 #include <KShortcutsDialog>
 #include <KStandardAction>
-#include <KSharedConfig>
 #include <QLabel>
 #include <QStatusBar>
 #ifdef WITH_KUSERFEEDBACK
+#include "userfeedback/userfeedbackmanager.h"
 #include <KUserFeedback/NotificationPopup>
 #include <KUserFeedback/Provider>
-#include "userfeedback/userfeedbackmanager.h"
 #endif
 
-KOrganizer::KOrganizer() : KParts::MainWindow()
+KOrganizer::KOrganizer()
+    : KParts::MainWindow()
     , KOrg::MainWindow()
 {
     // Set this to be the group leader for all subdialogs - this means
@@ -44,7 +45,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow()
     setAttribute(Qt::WA_GroupLeader);
 
     KOCore::self()->addXMLGUIClient(this, this);
-//  setMinimumSize(600,400);  // make sure we don't get resized too small...
+    //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
     mCalendarView = new CalendarView(this);
     mCalendarView->setObjectName(QStringLiteral("KOrganizer::CalendarView"));
@@ -86,13 +87,11 @@ void KOrganizer::init(bool document)
 
     bar->addWidget(new QLabel(this));
 
-    auto *progressBar
-        = new KPIM::ProgressStatusBarWidget(statusBar(), this);
+    auto *progressBar = new KPIM::ProgressStatusBarWidget(statusBar(), this);
 
     bar->addPermanentWidget(progressBar->littleProgress());
 
-    connect(mActionManager->view(), &CalendarView::statusMessage,
-            this, &KOrganizer::showStatusMessage);
+    connect(mActionManager->view(), &CalendarView::statusMessage, this, &KOrganizer::showStatusMessage);
 
     setStandardToolBarMenuEnabled(true);
     setTitle();
@@ -174,8 +173,7 @@ void KOrganizer::initActions()
 
 void KOrganizer::slotEditKeys()
 {
-    KShortcutsDialog::configure(actionCollection(),
-                                KShortcutsEditor::LetterShortcutsAllowed);
+    KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
 }
 
 bool KOrganizer::queryClose()
@@ -273,8 +271,7 @@ void KOrganizer::setTitle()
         }
 
         if (mCalendarView->isReadOnly()) {
-            title += QLatin1String(" [")
-                     + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
+            title += QLatin1String(" [") + i18nc("the calendar is read-only", "read-only") + QLatin1Char(']');
         }
     } else {
         title = i18n("Calendar");

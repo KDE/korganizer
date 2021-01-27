@@ -10,13 +10,14 @@
 
 #include <Akonadi/Calendar/ETMCalendar>
 
-#include <QTimer>
 #include <QDateTime>
 #include <QSessionManager>
+#include <QTimer>
 class AlarmDialog;
 class AlarmDockWindow;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 class EntityTreeModel;
 }
@@ -55,7 +56,7 @@ private:
     void saveLastCheckTime();
     void createDialog();
 
-    AlarmDockWindow *mDocker = nullptr;  // the panel icon
+    AlarmDockWindow *mDocker = nullptr; // the panel icon
     Akonadi::ETMCalendar::Ptr mCalendar;
     Akonadi::EntityTreeModel *mETM = nullptr;
 

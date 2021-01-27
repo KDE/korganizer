@@ -20,8 +20,7 @@ class Q_DECL_HIDDEN BaseView::Private
 public:
     explicit Private(BaseView *qq)
         : q(qq)
-        , mChanges(EventViews::EventView::IncidencesAdded
-                   |EventViews::EventView::DatesChanged)
+        , mChanges(EventViews::EventView::IncidencesAdded | EventViews::EventView::DatesChanged)
         , calendar(nullptr)
     {
         QByteArray cname = q->metaObject()->className();

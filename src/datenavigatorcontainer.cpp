@@ -11,9 +11,9 @@
 */
 
 #include "datenavigatorcontainer.h"
-#include "widgets/kdatenavigator.h"
 #include "kodaymatrix.h"
 #include "koglobals.h"
+#include "widgets/kdatenavigator.h"
 #include "widgets/navigatorbar.h"
 
 #include <KLocalizedString>
@@ -45,23 +45,16 @@ DateNavigatorContainer::~DateNavigatorContainer()
 
 void DateNavigatorContainer::connectNavigatorView(KDateNavigator *v)
 {
-    connect(v, &KDateNavigator::datesSelected,
-            this, &DateNavigatorContainer::handleDatesSelectedSignal);
+    connect(v, &KDateNavigator::datesSelected, this, &DateNavigatorContainer::handleDatesSelectedSignal);
 
-    connect(v, &KDateNavigator::incidenceDropped,
-            this, &DateNavigatorContainer::incidenceDropped);
-    connect(v, &KDateNavigator::incidenceDroppedMove,
-            this, &DateNavigatorContainer::incidenceDroppedMove);
+    connect(v, &KDateNavigator::incidenceDropped, this, &DateNavigatorContainer::incidenceDropped);
+    connect(v, &KDateNavigator::incidenceDroppedMove, this, &DateNavigatorContainer::incidenceDroppedMove);
 
-    connect(v, &KDateNavigator::newEventSignal,
-            this, &DateNavigatorContainer::newEventSignal);
-    connect(v, &KDateNavigator::newTodoSignal,
-            this, &DateNavigatorContainer::newTodoSignal);
-    connect(v, &KDateNavigator::newJournalSignal,
-            this, &DateNavigatorContainer::newJournalSignal);
+    connect(v, &KDateNavigator::newEventSignal, this, &DateNavigatorContainer::newEventSignal);
+    connect(v, &KDateNavigator::newTodoSignal, this, &DateNavigatorContainer::newTodoSignal);
+    connect(v, &KDateNavigator::newJournalSignal, this, &DateNavigatorContainer::newJournalSignal);
 
-    connect(v, &KDateNavigator::weekClicked,
-            this, &DateNavigatorContainer::handleWeekClickedSignal);
+    connect(v, &KDateNavigator::weekClicked, this, &DateNavigatorContainer::handleWeekClickedSignal);
 
     connect(v, &KDateNavigator::goPrevious, this, &DateNavigatorContainer::goPrevious);
     connect(v, &KDateNavigator::goNext, this, &DateNavigatorContainer::goNext);
@@ -158,13 +151,11 @@ void DateNavigatorContainer::selectDates(const KCalendarCore::DateList &dateList
 
         // If the datelist crosses months we won't know which month to show
         // so we read what's in preferredMonth
-        const bool changingMonth = preferredMonth.isValid()
-                                   && mNavigatorView->month().month() != preferredMonth.month();
+        const bool changingMonth = preferredMonth.isValid() && mNavigatorView->month().month() != preferredMonth.month();
 
-        if (start < navfirst     // <- start should always be visible
-            ||  // end is not visible and we have a spare month at the beginning:
-            (end > navlast && start >= navsecond)
-            || changingMonth) {
+        if (start < navfirst // <- start should always be visible
+            || // end is not visible and we have a spare month at the beginning:
+            (end > navlast && start >= navsecond) || changingMonth) {
             if (preferredMonth.isValid()) {
                 setBaseDates(preferredMonth);
             } else {
@@ -214,7 +205,7 @@ void DateNavigatorContainer::resizeAllContents()
 {
     QSize minSize = mNavigatorView->minimumSizeHint();
 
-//  qCDebug(KORGANIZER_LOG) << "  NAVIGATORVIEW minimumSizeHint:" << minSize;
+    //  qCDebug(KORGANIZER_LOG) << "  NAVIGATORVIEW minimumSizeHint:" << minSize;
 
     int verticalCount = size().height() / minSize.height();
     int horizontalCount = size().width() / minSize.width();
@@ -233,7 +224,7 @@ void DateNavigatorContainer::resizeAllContents()
         }
 
         while (count < (mExtraViews.count() + 1)) {
-            delete(mExtraViews.last());
+            delete (mExtraViews.last());
             mExtraViews.removeLast();
         }
 
@@ -261,9 +252,7 @@ void DateNavigatorContainer::resizeAllContents()
         bar->showButtons(true, true);
     }
 
-    mNavigatorView->setGeometry((((KOGlobals::self()->reverseLayout())
-                                  ? (horizontalCount - 1) : 0) * width),
-                                0, width, height);
+    mNavigatorView->setGeometry((((KOGlobals::self()->reverseLayout()) ? (horizontalCount - 1) : 0) * width), 0, width, height);
     for (int i = 0; i < mExtraViews.count(); ++i) {
         int x = (i + 1) % horizontalCount;
         int y = (i + 1) / horizontalCount;
@@ -279,9 +268,7 @@ void DateNavigatorContainer::resizeAllContents()
                 bar->showButtons(false, false);
             }
         }
-        view->setGeometry((((KOGlobals::self()->reverseLayout())
-                            ? (horizontalCount - 1 - x) : x) * width),
-                          y * height, width, height);
+        view->setGeometry((((KOGlobals::self()->reverseLayout()) ? (horizontalCount - 1 - x) : x) * width), y * height, width, height);
     }
 }
 
@@ -310,18 +297,14 @@ void DateNavigatorContainer::goNextMonth()
 {
     const QPair<QDate, QDate> p = dateLimits(1);
 
-    Q_EMIT nextMonthClicked(mNavigatorView->month(),
-                            p.first,
-                            p.second);
+    Q_EMIT nextMonthClicked(mNavigatorView->month(), p.first, p.second);
 }
 
 void DateNavigatorContainer::goPrevMonth()
 {
     const QPair<QDate, QDate> p = dateLimits(-1);
 
-    Q_EMIT prevMonthClicked(mNavigatorView->month(),
-                            p.first,
-                            p.second);
+    Q_EMIT prevMonthClicked(mNavigatorView->month(), p.first, p.second);
 }
 
 QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const

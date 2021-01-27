@@ -13,7 +13,8 @@
 
 #include "baseview.h"
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 }
 
@@ -141,7 +142,7 @@ protected Q_SLOTS:
     virtual void showNewEventPopup();
 
 protected:
-    Akonadi::Item mCurrentIncidence;  // Incidence selected e.g. for a context menu
+    Akonadi::Item mCurrentIncidence; // Incidence selected e.g. for a context menu
 
 private:
     /*
@@ -151,7 +152,6 @@ private:
     void finishTypeAhead();
 
 private:
-
     bool mTypeAhead = false;
     QObject *mTypeAheadReceiver = nullptr;
     QList<QEvent *> mTypeAheadEvents;

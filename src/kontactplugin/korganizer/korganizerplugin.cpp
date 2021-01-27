@@ -20,11 +20,11 @@
 
 #include <KontactInterface/Core>
 
-#include <QAction>
-#include <KActionCollection>
 #include "korganizerplugin_debug.h"
-#include <QIcon>
+#include <KActionCollection>
 #include <KLocalizedString>
+#include <QAction>
+#include <QIcon>
 
 #include <QDropEvent>
 #include <QStandardPaths>
@@ -36,23 +36,18 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
-    QAction *action
-        = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")),
-                      i18nc("@action:inmenu", "New Event..."), this);
+    QAction *action = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18nc("@action:inmenu", "New Event..."), this);
     actionCollection()->addAction(QStringLiteral("new_event"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_E));
     const QString str = i18nc("@info:status", "Create a new event");
     action->setStatusTip(str);
     action->setToolTip(str);
 
-    action->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "You will be presented with a dialog where you can create a new event item."));
+    action->setWhatsThis(i18nc("@info:whatsthis", "You will be presented with a dialog where you can create a new event item."));
     connect(action, &QAction::triggered, this, &KOrganizerPlugin::slotNewEvent);
     insertNewAction(action);
 
-    mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(
-        new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
+    mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
 
 KOrganizerPlugin::~KOrganizerPlugin()
@@ -72,9 +67,7 @@ KParts::Part *KOrganizerPlugin::createPart()
         return nullptr;
     }
 
-    mIface = new OrgKdeKorganizerCalendarInterface(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral(
-            "/Calendar"), QDBusConnection::sessionBus(), this);
+    mIface = new OrgKdeKorganizerCalendarInterface(QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }
@@ -117,8 +110,7 @@ bool KOrganizerPlugin::isRunningStandalone() const
 
 bool KOrganizerPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
-    return mimeData->hasText()
-           || KContacts::VCardDrag::canDecode(mimeData);
+    return mimeData->hasText() || KContacts::VCardDrag::canDecode(mimeData);
 }
 
 void KOrganizerPlugin::processDropEvent(QDropEvent *event)
@@ -142,14 +134,12 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
             }
         }
 
-        interface()->openEventEditor(i18nc("@item", "Meeting"),
-                                     QString(), QStringList(), attendees);
+        interface()->openEventEditor(i18nc("@item", "Meeting"), QString(), QStringList(), attendees);
         return;
     }
 
     if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
-        KCalendarCore::MemoryCalendar::Ptr cal(
-            new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
+        KCalendarCore::MemoryCalendar::Ptr cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
         if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
             KCalendarCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());
@@ -176,9 +166,7 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
         return;
     }
 
-    qCWarning(KORGANIZERPLUGIN_LOG)
-        << QStringLiteral("Cannot handle drop events of type '%1'.").arg(
-        event->mimeData()->formats().join(QLatin1Char(';')));
+    qCWarning(KORGANIZERPLUGIN_LOG) << QStringLiteral("Cannot handle drop events of type '%1'.").arg(event->mimeData()->formats().join(QLatin1Char(';')));
 }
 
 #include "korganizerplugin.moc"

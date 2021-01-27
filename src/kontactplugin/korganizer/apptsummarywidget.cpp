@@ -8,32 +8,32 @@
 */
 
 #include "apptsummarywidget.h"
+#include "korganizerinterface.h"
 #include "korganizerplugin.h"
 #include "summaryeventinfo.h"
-#include "korganizerinterface.h"
 
-#include <CalendarSupport/Utils>
 #include <CalendarSupport/CalendarSingleton>
+#include <CalendarSupport/Utils>
 
-#include <AkonadiCore/Collection>
 #include <Akonadi/Calendar/IncidenceChanger>
+#include <AkonadiCore/Collection>
 
 #include <KCalendarCore/Calendar>
 #include <KCalendarCore/Event>
 
 #include <KontactInterface/Core>
 
-#include <KConfigGroup>
 #include <KColorScheme>
-#include <KLocalizedString>
-#include <QMenu>
-#include <KUrlLabel>
 #include <KConfig>
+#include <KConfigGroup>
+#include <KLocalizedString>
+#include <KUrlLabel>
+#include <QMenu>
 
 #include <QGridLayout>
 #include <QLabel>
-#include <QVBoxLayout>
 #include <QStyle>
+#include <QVBoxLayout>
 
 ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     : KontactInterface::Summary(parent)
@@ -43,8 +43,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
-    QWidget *header = createHeader(
-        this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));
+    QWidget *header = createHeader(this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -56,11 +55,8 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
 
     mChanger = new Akonadi::IncidenceChanger(parent);
 
-    connect(
-        mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
-        &ApptSummaryWidget::updateView);
-    connect(
-        mPlugin->core(), &KontactInterface::Core::dayChanged, this, &ApptSummaryWidget::updateView);
+    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &ApptSummaryWidget::updateView);
+    connect(mPlugin->core(), &KontactInterface::Core::dayChanged, this, &ApptSummaryWidget::updateView);
 
     // Update Configuration
     configUpdated();
@@ -109,19 +105,15 @@ void ApptSummaryWidget::updateView()
     QPixmap pma = QIcon::fromTheme(QStringLiteral("view-calendar-wedding-anniversary")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
     QStringList uidList;
-    SummaryEventInfo::setShowSpecialEvents(mShowBirthdaysFromCal,
-                                           mShowAnniversariesFromCal);
+    SummaryEventInfo::setShowSpecialEvents(mShowBirthdaysFromCal, mShowAnniversariesFromCal);
     QDate currentDate = QDate::currentDate();
 
-    const SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(
-                                                                               mDaysAhead - 1),
-                                                                           mCalendar);
+    const SummaryEventInfo::List events = SummaryEventInfo::eventsForRange(currentDate, currentDate.addDays(mDaysAhead - 1), mCalendar);
 
     QPalette todayPalette = palette();
     KColorScheme::adjustBackground(todayPalette, KColorScheme::ActiveBackground, QPalette::Window);
     QPalette urgentPalette = palette();
-    KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground,
-                                   QPalette::Window);
+    KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
 
     for (SummaryEventInfo *event : events) {
         // Optionally, show only my Events
@@ -214,10 +206,8 @@ void ApptSummaryWidget::updateView()
     qDeleteAll(events);
 
     if (!counter) {
-        QLabel *noEvents = new QLabel(
-            i18np("No upcoming events starting within the next day",
-                  "No upcoming events starting within the next %1 days",
-                  mDaysAhead), this);
+        QLabel *noEvents =
+            new QLabel(i18np("No upcoming events starting within the next day", "No upcoming events starting within the next %1 days", mDaysAhead), this);
         noEvents->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         mLayout->addWidget(noEvents, 0, 0);
         mLabels.append(noEvents);
@@ -233,10 +223,8 @@ void ApptSummaryWidget::viewEvent(const QString &uid)
     Akonadi::Item::Id id = mCalendar->item(uid).id();
 
     if (id != -1) {
-        mPlugin->core()->selectPlugin(QStringLiteral("kontact_korganizerplugin"));   //ensure loaded
-        OrgKdeKorganizerKorganizerInterface korganizer(
-            QStringLiteral("org.kde.korganizer"), QStringLiteral(
-                "/Korganizer"), QDBusConnection::sessionBus());
+        mPlugin->core()->selectPlugin(QStringLiteral("kontact_korganizerplugin")); // ensure loaded
+        OrgKdeKorganizerKorganizerInterface korganizer(QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
         korganizer.editIncidence(QString::number(id));
     }
 }

@@ -15,8 +15,8 @@
 #include <EventViews/AgendaView>
 #include <EventViews/MultiAgendaView>
 
-#include <AkonadiWidgets/EntityTreeView>
 #include <AkonadiCore/EntityTreeModel>
+#include <AkonadiWidgets/EntityTreeView>
 
 #include <KCheckableProxyModel>
 
@@ -24,10 +24,10 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 
+#include <KConfigGroup>
 #include <QHBoxLayout>
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
-#include <KConfigGroup>
 
 using namespace KOrg;
 
@@ -39,7 +39,8 @@ static QString generateColumnLabel(int c)
 class MultiAgendaView::Private
 {
 public:
-    Private(MultiAgendaView *qq) : q(qq)
+    Private(MultiAgendaView *qq)
+        : q(qq)
     {
         auto layout = new QHBoxLayout(q);
         mMultiAgendaView = new EventViews::MultiAgendaView(q);
@@ -60,74 +61,51 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
     : KOEventView(parent)
     , d(new Private(this))
 {
-    connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected,
-            this, &KOEventView::datesSelected);
+    connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::shiftedEvent,
-            this, &KOEventView::shiftedEvent);
+    connect(d->mMultiAgendaView, &EventViews::EventView::shiftedEvent, this, &KOEventView::shiftedEvent);
 
-    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showIncidencePopupSignal,
-            d->mPopup, &KOEventPopupMenu::showIncidencePopup);
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showIncidencePopupSignal, d->mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showNewEventPopupSignal,
-            this, &MultiAgendaView::showNewEventPopup);
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showNewEventPopupSignal, this, &MultiAgendaView::showNewEventPopup);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::incidenceSelected,
-            this, &BaseView::incidenceSelected);
+    connect(d->mMultiAgendaView, &EventViews::EventView::incidenceSelected, this, &BaseView::incidenceSelected);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::showIncidenceSignal,
-            this, &BaseView::showIncidenceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::showIncidenceSignal, this, &BaseView::showIncidenceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::editIncidenceSignal,
-            this, &BaseView::editIncidenceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::editIncidenceSignal, this, &BaseView::editIncidenceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &BaseView::deleteIncidenceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::deleteIncidenceSignal, this, &BaseView::deleteIncidenceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::cutIncidenceSignal,
-            this, &BaseView::cutIncidenceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::cutIncidenceSignal, this, &BaseView::cutIncidenceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::copyIncidenceSignal,
-            this, &BaseView::copyIncidenceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::copyIncidenceSignal, this, &BaseView::copyIncidenceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &BaseView::pasteIncidenceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::pasteIncidenceSignal, this, &BaseView::pasteIncidenceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::toggleAlarmSignal,
-            this, &BaseView::toggleAlarmSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::toggleAlarmSignal, this, &BaseView::toggleAlarmSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &BaseView::toggleTodoCompletedSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::toggleTodoCompletedSignal, this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &BaseView::copyIncidenceToResourceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &BaseView::moveIncidenceToResourceSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &BaseView::dissociateOccurrencesSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(d->mMultiAgendaView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(d->mMultiAgendaView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(d->mMultiAgendaView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::newTodoSignal,
-            this, &BaseView::newTodoSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::newSubTodoSignal,
-            this, &BaseView::newSubTodoSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
-    connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal,
-            this, &BaseView::newJournalSignal);
+    connect(d->mMultiAgendaView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 }
 
 void MultiAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
@@ -233,9 +211,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 
 void MultiAgendaView::showConfigurationDialog(QWidget *parent)
 {
-    QPointer<MultiAgendaViewConfigDialog> dlg(
-        new MultiAgendaViewConfigDialog(d->mMultiAgendaView->calendar()->entityTreeModel(),
-                                        parent));
+    QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mMultiAgendaView->calendar()->entityTreeModel(), parent));
 
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());
@@ -314,8 +290,7 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     auto mainLayout = new QVBoxLayout(this);
     QWidget *widget = new QWidget;
     d->ui.setupUi(widget);
-    auto buttonBox = new QDialogButtonBox(
-        QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
     okButton->setDefault(true);
     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
@@ -325,14 +300,10 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     mainLayout->addWidget(widget);
 
     d->ui.columnList->setModel(&d->listModel);
-    connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged,
-            this, &MultiAgendaViewConfigDialog::currentChanged);
-    connect(d->ui.useCustomRB, &QAbstractButton::toggled,
-            this, &MultiAgendaViewConfigDialog::useCustomToggled);
-    connect(d->ui.columnNumberSB, qOverload<int>(&QSpinBox::valueChanged),
-            this, &MultiAgendaViewConfigDialog::numberOfColumnsChanged);
-    connect(d->ui.titleLE, &QLineEdit::textEdited,
-            this, &MultiAgendaViewConfigDialog::titleEdited);
+    connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged, this, &MultiAgendaViewConfigDialog::currentChanged);
+    connect(d->ui.useCustomRB, &QAbstractButton::toggled, this, &MultiAgendaViewConfigDialog::useCustomToggled);
+    connect(d->ui.columnNumberSB, qOverload<int>(&QSpinBox::valueChanged), this, &MultiAgendaViewConfigDialog::numberOfColumnsChanged);
+    connect(d->ui.titleLE, &QLineEdit::textEdited, this, &MultiAgendaViewConfigDialog::titleEdited);
     d->setUpColumns(numberOfColumns());
     useCustomToggled(false);
 }
@@ -367,8 +338,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
     }
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(
-    KCheckableProxyModel *model)
+AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(KCheckableProxyModel *model)
 {
     auto cview = new AkonadiCollectionView(nullptr, false, q);
     cview->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
@@ -415,14 +385,11 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
             sortProxy->setDynamicSortFilter(true);
             sortProxy->setSourceModel(baseModel);
 
-            auto columnFilterProxy = new KRearrangeColumnsProxyModel(
-                sortProxy);
-            columnFilterProxy->setSourceColumns(
-                QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
+            auto columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
+            columnFilterProxy->setSourceColumns(QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
             columnFilterProxy->setSourceModel(sortProxy);
 
-            auto *qsm
-                = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
+            auto *qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
             auto selection = new KCheckableProxyModel;
             selection->setSourceModel(columnFilterProxy);
@@ -470,9 +437,7 @@ KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column
     }
 
     KCheckableProxyModel *const m = d->selections[column];
-    d->newlyCreated.erase(std::remove(d->newlyCreated.begin(),
-                                      d->newlyCreated.end(), m),
-                          d->newlyCreated.end());
+    d->newlyCreated.erase(std::remove(d->newlyCreated.begin(), d->newlyCreated.end(), m), d->newlyCreated.end());
     return m;
 }
 
@@ -495,9 +460,7 @@ void MultiAgendaViewConfigDialog::setSelectionModel(int column, KCheckableProxyM
     cview->setCollectionSelectionProxyModel(model);
 
     if (d->newlyCreated.contains(m)) {
-        d->newlyCreated.erase(std::remove(d->newlyCreated.begin(),
-                                          d->newlyCreated.end(), m),
-                              d->newlyCreated.end());
+        d->newlyCreated.erase(std::remove(d->newlyCreated.begin(), d->newlyCreated.end(), m), d->newlyCreated.end());
         delete m;
     }
 
@@ -529,7 +492,7 @@ void MultiAgendaViewConfigDialog::setColumnTitle(int column, const QString &titl
     if (QStandardItem *const item = d->listModel.item(column)) {
         item->setText(title);
     }
-    //TODO update LE if item is selected
+    // TODO update LE if item is selected
 }
 
 void MultiAgendaViewConfigDialog::accept()

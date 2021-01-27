@@ -23,8 +23,7 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     addItem(QIcon::fromTheme(QStringLiteral("object-locked")), i18n("Read Only"));
     addItem(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Needs Reply"));
     addItem(QIcon::fromTheme(QStringLiteral("meeting-attending")), i18n("Attending"));
-    addItem(QIcon::fromTheme(QStringLiteral("meeting-attending-tentative")),
-            i18n("Maybe Attending"));
+    addItem(QIcon::fromTheme(QStringLiteral("meeting-attending-tentative")), i18n("Maybe Attending"));
     addItem(QIcon::fromTheme(QStringLiteral("meeting-organizer")), i18n("Organizer"));
 
     // Agenda view doesn't support journals yet
@@ -47,11 +46,7 @@ void KItemIconCheckCombo::setCheckedIcons(const QSet<EventViews::EventView::Item
     const int itemCount = count();
     for (int i = 0; i < itemCount; ++i) {
         if (itemEnabled(i)) {
-            setItemCheckState(
-                i,
-                icons.contains(static_cast<EventViews::EventView::ItemIcon>(i))
-                ? Qt::Checked
-                : Qt::Unchecked);
+            setItemCheckState(i, icons.contains(static_cast<EventViews::EventView::ItemIcon>(i)) ? Qt::Checked : Qt::Unchecked);
         } else {
             setItemCheckState(i, Qt::Unchecked);
         }

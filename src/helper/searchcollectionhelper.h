@@ -18,7 +18,8 @@
 
 class KJob;
 
-namespace KOrg {
+namespace KOrg
+{
 class SearchCollectionHelper : public QObject
 {
     Q_OBJECT

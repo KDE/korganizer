@@ -9,20 +9,21 @@
 
 #include "kcmdesignerfields.h"
 
-#include <KAboutData>
 #include "korganizer_debug.h"
+#include <KAboutData>
 #include <KDialogJobUiDelegate>
 #include <KDirWatch>
-#include <QFileDialog>
-#include <KMessageBox>
 #include <KIO/CommandLauncherJob>
-#include <KShell>
 #include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
 #include <KIO/MkdirJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
+#include <KMessageBox>
+#include <KShell>
+#include <QFileDialog>
 
+#include <QDir>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QHeaderView>
@@ -32,7 +33,6 @@
 #include <QTreeWidget>
 #include <QUiLoader>
 #include <QWhatsThis>
-#include <QDir>
 
 class PageItem : public QTreeWidgetItem
 {
@@ -56,8 +56,7 @@ public:
             setText(0, wdg->windowTitle());
 
             QPixmap pm = wdg->grab();
-            const QImage img
-                = pm.toImage().scaled(300, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            const QImage img = pm.toImage().scaled(300, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             mPreview = QPixmap::fromImage(img);
 
             QMap<QString, QString> allowedTypes;
@@ -77,12 +76,9 @@ public:
                 if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
                     const QString name = it->objectName();
                     if (name.startsWith(QLatin1String("X_"))) {
-                        new QTreeWidgetItem(this, QStringList()
-                                            << name
-                                            << allowedTypes[ QLatin1String(it->metaObject()->
-                                                                           className()) ]
-                                            << QLatin1String(it->metaObject()->className())
-                                            << it->whatsThis());
+                        new QTreeWidgetItem(this,
+                                            QStringList() << name << allowedTypes[QLatin1String(it->metaObject()->className())]
+                                                          << QLatin1String(it->metaObject()->className()) << it->whatsThis());
                     }
                 }
             }
@@ -136,8 +132,7 @@ KCMDesignerFields::KCMDesignerFields(QWidget *parent, const QVariantList &args)
                                        KAboutLicense::LGPL,
                                        i18n("(c) 2004 Tobias Koenig"));
     about->addAuthor(ki18n("Tobias Koenig").toString(), QString(), QStringLiteral("tokoe@kde.org"));
-    about->addAuthor(ki18n("Cornelius Schumacher").toString(), QString(),
-                     QStringLiteral("schumacher@kde.org"));
+    about->addAuthor(ki18n("Cornelius Schumacher").toString(), QString(), QStringLiteral("schumacher@kde.org"));
     setAboutData(about);
 }
 
@@ -170,11 +165,11 @@ void KCMDesignerFields::deleteFile()
     const auto selectedItems = mPageView->selectedItems();
     for (QTreeWidgetItem *item : selectedItems) {
         auto pageItem = static_cast<PageItem *>(item->parent() ? item->parent() : item);
-        if (KMessageBox::warningContinueCancel(
-                this,
-                i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>",
-                     pageItem->text(0)), QString(),
-                KStandardGuiItem::del()) == KMessageBox::Continue) {
+        if (KMessageBox::warningContinueCancel(this,
+                                               i18n("<qt>Do you really want to delete '<b>%1</b>'?</qt>", pageItem->text(0)),
+                                               QString(),
+                                               KStandardGuiItem::del())
+            == KMessageBox::Continue) {
             QFile::remove(pageItem->path());
         }
     }
@@ -183,11 +178,8 @@ void KCMDesignerFields::deleteFile()
 
 void KCMDesignerFields::importFile()
 {
-    const QUrl src
-        = QFileDialog::getOpenFileUrl(this, i18n("Import Page"),
-                                      QUrl::fromLocalFile(QDir::homePath()),
-                                      QStringLiteral("%1 (*.ui)").arg(i18n("Designer Files"))
-                                      );
+    const QUrl src =
+        QFileDialog::getOpenFileUrl(this, i18n("Import Page"), QUrl::fromLocalFile(QDir::homePath()), QStringLiteral("%1 (*.ui)").arg(i18n("Designer Files")));
     QUrl dest = QUrl::fromLocalFile(localUiDir());
     QDir().mkpath(localUiDir());
     dest = dest.adjusted(QUrl::RemoveFilename);
@@ -200,8 +192,7 @@ void KCMDesignerFields::importFile()
 
 void KCMDesignerFields::loadUiFiles()
 {
-    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
-                                                       uiPath(), QStandardPaths::LocateDirectory);
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, uiPath(), QStandardPaths::LocateDirectory);
     for (const QString &dir : dirs) {
         const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.ui"));
         for (const QString &file : fileNames) {
@@ -249,8 +240,7 @@ void KCMDesignerFields::load()
 
 QStringList KCMDesignerFields::saveActivePages()
 {
-    QTreeWidgetItemIterator it(mPageView, QTreeWidgetItemIterator::Checked
-                               |QTreeWidgetItemIterator::Selectable);
+    QTreeWidgetItemIterator it(mPageView, QTreeWidgetItemIterator::Checked | QTreeWidgetItemIterator::Selectable);
 
     QStringList activePages;
     while (*it) {
@@ -282,9 +272,9 @@ void KCMDesignerFields::initGUI()
     const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
 
     if (noDesigner) {
-        const QString txt
-            = i18n("<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
-                   "installed. You will only be able to import existing designer files.</qt>");
+        const QString txt = i18n(
+            "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
+            "installed. You will only be able to import existing designer files.</qt>");
         QLabel *lbl = new QLabel(txt, this);
         layout->addWidget(lbl);
     }
@@ -317,32 +307,31 @@ void KCMDesignerFields::initGUI()
     hbox = new QHBoxLayout();
     layout->addLayout(hbox);
 
-    const QString cwHowto
-        = i18n("<qt><p>This section allows you to add your own GUI"
-               " Elements ('<i>Widgets</i>') to store your own values"
-               " into %1. Proceed as described below:</p>"
-               "<ol>"
-               "<li>Click on '<i>Edit with Qt Designer</i>'</li>"
-               "<li>In the dialog, select '<i>Widget</i>', then click <i>OK</i></li>"
-               "<li>Add your widgets to the form</li>"
-               "<li>Save the file in the directory proposed by Qt Designer</li>"
-               "<li>Close Qt Designer</li>"
-               "</ol>"
-               "<p>In case you already have a designer file (*.ui) located"
-               " somewhere on your hard disk, simply choose '<i>Import Page</i>'</p>"
-               "<p><b>Important:</b> The name of each input widget you place within"
-               " the form must start with '<i>X_</i>'; so if you want the widget to"
-               " correspond to your custom entry '<i>X-Foo</i>', set the widget's"
-               " <i>name</i> property to '<i>X_Foo</i>'.</p>"
-               "<p><b>Important:</b> The widget will edit custom fields with an"
-               " application name of %2.  To change the application name"
-               " to be edited, set the widget name in Qt Designer.</p></qt>",
-               applicationName(), applicationName());
+    const QString cwHowto = i18n(
+        "<qt><p>This section allows you to add your own GUI"
+        " Elements ('<i>Widgets</i>') to store your own values"
+        " into %1. Proceed as described below:</p>"
+        "<ol>"
+        "<li>Click on '<i>Edit with Qt Designer</i>'</li>"
+        "<li>In the dialog, select '<i>Widget</i>', then click <i>OK</i></li>"
+        "<li>Add your widgets to the form</li>"
+        "<li>Save the file in the directory proposed by Qt Designer</li>"
+        "<li>Close Qt Designer</li>"
+        "</ol>"
+        "<p>In case you already have a designer file (*.ui) located"
+        " somewhere on your hard disk, simply choose '<i>Import Page</i>'</p>"
+        "<p><b>Important:</b> The name of each input widget you place within"
+        " the form must start with '<i>X_</i>'; so if you want the widget to"
+        " correspond to your custom entry '<i>X-Foo</i>', set the widget's"
+        " <i>name</i> property to '<i>X_Foo</i>'.</p>"
+        "<p><b>Important:</b> The widget will edit custom fields with an"
+        " application name of %2.  To change the application name"
+        " to be edited, set the widget name in Qt Designer.</p></qt>",
+        applicationName(),
+        applicationName());
 
-    auto activeLabel = new QLabel(
-        i18n("<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto), this);
-    activeLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse
-                                         |Qt::LinksAccessibleByKeyboard);
+    auto activeLabel = new QLabel(i18n("<a href=\"whatsthis:%1\">How does this work?</a>", cwHowto), this);
+    activeLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard);
     connect(activeLabel, &QLabel::linkActivated, this, &KCMDesignerFields::showWhatsThis);
     activeLabel->setContextMenuPolicy(Qt::NoContextMenu);
     hbox->addWidget(activeLabel);
@@ -375,18 +364,21 @@ void KCMDesignerFields::updatePreview()
 
     if (item) {
         if (item->parent()) {
-            const QString details = QStringLiteral("<qt><table>"
-                                                   "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
-                                                   "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
-                                                   "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
-                                                   "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
-                                                   "</table></qt>")
-                                    .arg(i18n("Key:"),
-                                         item->text(0).replace(QLatin1String("X_"), QStringLiteral(
-                                                                   "X-")), i18n(
-                                             "Type:"), item->text(1), i18n("Classname:"), item->text(
-                                             2), i18n(
-                                             "Description:"), item->text(3));
+            const QString details = QStringLiteral(
+                                        "<qt><table>"
+                                        "<tr><td align=\"right\"><b>%1</b></td><td>%2</td></tr>"
+                                        "<tr><td align=\"right\"><b>%3</b></td><td>%4</td></tr>"
+                                        "<tr><td align=\"right\"><b>%5</b></td><td>%6</td></tr>"
+                                        "<tr><td align=\"right\"><b>%7</b></td><td>%8</td></tr>"
+                                        "</table></qt>")
+                                        .arg(i18n("Key:"),
+                                             item->text(0).replace(QLatin1String("X_"), QStringLiteral("X-")),
+                                             i18n("Type:"),
+                                             item->text(1),
+                                             i18n("Classname:"),
+                                             item->text(2),
+                                             i18n("Description:"),
+                                             item->text(3));
 
             mPageDetails->setText(details);
 

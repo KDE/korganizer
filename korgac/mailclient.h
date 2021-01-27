@@ -19,11 +19,13 @@
  * Theres probably non calendaring-specific APIs to send e-mails, so I'd like to keep
  * MailClient private in kdepimlibs.
  */
-namespace KIdentityManagement {
+namespace KIdentityManagement
+{
 class Identity;
 }
 
-namespace KOrg {
+namespace KOrg
+{
 class MailClient : public QObject
 {
     Q_OBJECT
@@ -37,11 +39,27 @@ public:
      */
     Q_REQUIRED_RESULT const QString errorMsg();
 
-    Q_REQUIRED_RESULT bool mailAttendees(const KCalendarCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment = QString(), const QString &mailTransport = QString());
+    Q_REQUIRED_RESULT bool mailAttendees(const KCalendarCore::IncidenceBase::Ptr &,
+                                         const KIdentityManagement::Identity &identity,
+                                         bool bccMe,
+                                         const QString &attachment = QString(),
+                                         const QString &mailTransport = QString());
 
-    Q_REQUIRED_RESULT bool mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &attachment = QString(), const QString &sub = QString(), const QString &mailTransport = QString());
+    Q_REQUIRED_RESULT bool mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &,
+                                         const KIdentityManagement::Identity &identity,
+                                         const QString &from,
+                                         bool bccMe,
+                                         const QString &attachment = QString(),
+                                         const QString &sub = QString(),
+                                         const QString &mailTransport = QString());
 
-    Q_REQUIRED_RESULT bool mailTo(const KCalendarCore::IncidenceBase::Ptr &, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients, const QString &attachment = QString(), const QString &mailTransport = QString());
+    Q_REQUIRED_RESULT bool mailTo(const KCalendarCore::IncidenceBase::Ptr &,
+                                  const KIdentityManagement::Identity &identity,
+                                  const QString &from,
+                                  bool bccMe,
+                                  const QString &recipients,
+                                  const QString &attachment = QString(),
+                                  const QString &mailTransport = QString());
 
     /**
       Sends mail with specified from, to and subject field and body as text.
@@ -60,8 +78,16 @@ public:
       @param mailTransport defines the mail transport method. See here the
       kdepimlibs/mailtransport library.
     */
-    Q_REQUIRED_RESULT bool send(const KIdentityManagement::Identity &identity, const QString &from, const QString &to, const QString &cc, const QString &subject, const QString &body, bool hidden = false, bool bccMe = false,
-                                const QString &attachment = QString(), const QString &mailTransport = QString());
+    Q_REQUIRED_RESULT bool send(const KIdentityManagement::Identity &identity,
+                                const QString &from,
+                                const QString &to,
+                                const QString &cc,
+                                const QString &subject,
+                                const QString &body,
+                                bool hidden = false,
+                                bool bccMe = false,
+                                const QString &attachment = QString(),
+                                const QString &mailTransport = QString());
 
 private:
     QString errorString;

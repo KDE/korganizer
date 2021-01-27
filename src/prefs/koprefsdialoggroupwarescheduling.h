@@ -10,7 +10,8 @@
 #ifndef KOPREFSDIALOGGROUPWARESCHEDULING_H
 #define KOPREFSDIALOGGROUPWARESCHEDULING_H
 #include "kprefsdialog.h"
-namespace Ui {
+namespace Ui
+{
 class KOGroupwarePrefsPage;
 }
 

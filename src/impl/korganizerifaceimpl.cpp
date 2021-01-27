@@ -9,8 +9,8 @@
 
 #include "korganizerifaceimpl.h"
 #include "actionmanager.h"
-#include "korganizeradaptor.h"
 #include "korganizer_debug.h"
+#include "korganizeradaptor.h"
 
 KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager, QObject *parent, const QString &name)
     : QObject(parent)
@@ -18,8 +18,7 @@ KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager, QObject *
 {
     setObjectName(name);
     new KorganizerAdaptor(this);
-    QDBusConnection::sessionBus().registerObject(
-        QStringLiteral("/Korganizer"), this, QDBusConnection::ExportAdaptors);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/Korganizer"), this, QDBusConnection::ExportAdaptors);
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()

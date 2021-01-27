@@ -26,8 +26,7 @@ int main(int argc, char **argv)
     KService::List plugins = KOCore::self()->availablePlugins();
     KService::List::ConstIterator it;
     for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-        qDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
-                 << (*it)->name() << ")";
+        qDebug() << "Plugin:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
         CalendarSupport::Plugin *p = KOCore::self()->loadPlugin(*it);
         if (!p) {
             qDebug() << "Plugin loading failed.";
@@ -38,8 +37,7 @@ int main(int argc, char **argv)
 
     plugins = KOCore::self()->availableParts();
     for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-        qDebug() << "Part:" << (*it)->desktopEntryName() << "("
-                 << (*it)->name() << ")";
+        qDebug() << "Part:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
         KOrg::Part *p = KOCore::self()->loadPart(*it, nullptr);
         if (!p) {
             qDebug() << "Part loading failed.";
@@ -50,8 +48,7 @@ int main(int argc, char **argv)
 
     plugins = KOCore::self()->availableCalendarDecorations();
     for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-        qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
-                 << (*it)->name() << ")";
+        qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
         EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
         if (!p) {
             qDebug() << "Calendar decoration loading failed.";

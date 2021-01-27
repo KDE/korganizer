@@ -14,12 +14,13 @@
 
 #include <KCalendarCore/Todo>
 
-#include <KontactInterface/Summary>
 #include <Akonadi/Calendar/ETMCalendar>
+#include <KontactInterface/Summary>
 
 class TodoPlugin;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class IncidenceChanger;
 }
 

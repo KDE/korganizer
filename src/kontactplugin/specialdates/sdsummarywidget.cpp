@@ -12,29 +12,29 @@
 #include <KontactInterface/Core>
 #include <KontactInterface/Plugin>
 
-#include <CalendarSupport/Utils>
-#include <CalendarSupport/CalendarSingleton>
+#include <Akonadi/Contact/ContactSearchJob>
+#include <Akonadi/Contact/ContactViewerDialog>
+#include <AkonadiCore/EntityDisplayAttribute>
 #include <AkonadiCore/ItemFetchJob>
 #include <AkonadiCore/ItemFetchScope>
 #include <AkonadiCore/SearchQuery>
-#include <AkonadiCore/EntityDisplayAttribute>
-#include <Akonadi/Contact/ContactSearchJob>
-#include <Akonadi/Contact/ContactViewerDialog>
+#include <CalendarSupport/CalendarSingleton>
+#include <CalendarSupport/Utils>
 
 #include <KCalendarCore/Calendar>
 
-#include <QMenu>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KHolidays/HolidayRegion>
 #include <KLocalizedString>
 #include <KUrlLabel>
-#include <KConfigGroup>
-#include <KConfig>
 #include <QDesktopServices>
-#include <KHolidays/HolidayRegion>
+#include <QMenu>
 
 #include <QDate>
 #include <QEvent>
-#include <QLabel>
 #include <QGridLayout>
+#include <QLabel>
 #include <QStyle>
 
 using namespace KHolidays;
@@ -53,27 +53,15 @@ BirthdaySearchJob::BirthdaySearchJob(QObject *parent, int daysInAdvance)
     setMimeTypes({KContacts::Addressee::mimeType()});
 
     Akonadi::SearchQuery query;
-    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().toJulianDay(),
-                  Akonadi::SearchTerm::CondGreaterOrEqual);
-    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().addDays(
-                      daysInAdvance).toJulianDay(),
-                  Akonadi::SearchTerm::CondLessOrEqual);
+    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().toJulianDay(), Akonadi::SearchTerm::CondGreaterOrEqual);
+    query.addTerm(QStringLiteral("birthday"), QDate::currentDate().addDays(daysInAdvance).toJulianDay(), Akonadi::SearchTerm::CondLessOrEqual);
 
     ItemSearchJob::setQuery(query);
 }
 
-enum SDIncidenceType {
-    IncidenceTypeContact,
-    IncidenceTypeEvent
-};
+enum SDIncidenceType { IncidenceTypeContact, IncidenceTypeEvent };
 
-enum SDCategory {
-    CategoryBirthday,
-    CategoryAnniversary,
-    CategoryHoliday,
-    CategorySeasonal,
-    CategoryOther
-};
+enum SDCategory { CategoryBirthday, CategoryAnniversary, CategoryHoliday, CategorySeasonal, CategoryOther };
 
 class SDEntry
 {
@@ -105,9 +93,7 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
-    QWidget *header = createHeader(this,
-                                   QStringLiteral("view-calendar-special-occasion"),
-                                   i18n("Upcoming Special Dates"));
+    QWidget *header = createHeader(this, QStringLiteral("view-calendar-special-occasion"), i18n("Upcoming Special Dates"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -126,11 +112,9 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
     mShowSpecialsFromCal = true;
 
     // Setup the Addressbook
-    connect(mPlugin->core(), &KontactInterface::Core::dayChanged,
-            this, &SDSummaryWidget::updateView);
+    connect(mPlugin->core(), &KontactInterface::Core::dayChanged, this, &SDSummaryWidget::updateView);
 
-    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged,
-            this, &SDSummaryWidget::updateView);
+    connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &SDSummaryWidget::updateView);
 
     // Update Configuration
     configUpdated();
@@ -255,18 +239,15 @@ void SDSummaryWidget::createLabels()
     setUpdatesEnabled(false);
     for (QLabel *label : qAsConst(mLabels)) {
         mLayout->removeWidget(label);
-        delete(label);
+        delete (label);
         update();
     }
     mLabels.clear();
 
     QDate dt;
-    for (dt = QDate::currentDate();
-         dt <= QDate::currentDate().addDays(mDaysAhead - 1);
-         dt = dt.addDays(1)) {
-        const KCalendarCore::Event::List events = mCalendar->events(dt, mCalendar->timeZone(),
-                                                                    KCalendarCore::EventSortStartDate,
-                                                                    KCalendarCore::SortDirectionAscending);
+    for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
+        const KCalendarCore::Event::List events =
+            mCalendar->events(dt, mCalendar->timeZone(), KCalendarCore::EventSortStartDate, KCalendarCore::SortDirectionAscending);
         for (const KCalendarCore::Event::Ptr &ev : events) {
             // Optionally, show only my Events
             /* if ( mShowMineOnly &&
@@ -336,9 +317,9 @@ void SDSummaryWidget::createLabels()
                         entry.summary = ev->summary();
                         entry.desc = ev->description();
                         dateDiff(dt, entry.daysTo, entry.yearsOld);
-                        entry.yearsOld = -1; //ignore age of holidays
+                        entry.yearsOld = -1; // ignore age of holidays
                         entry.span = span(ev);
-                        if (entry.span > 1 && dayof(ev, dt) > 1) {     // skip days 2,3,...
+                        if (entry.span > 1 && dayof(ev, dt) > 1) { // skip days 2,3,...
                             break;
                         }
                         mDates.append(entry);
@@ -354,9 +335,9 @@ void SDSummaryWidget::createLabels()
                         entry.summary = ev->summary();
                         entry.desc = ev->description();
                         dateDiff(dt, entry.daysTo, entry.yearsOld);
-                        entry.yearsOld = -1; //ignore age of special occasions
+                        entry.yearsOld = -1; // ignore age of special occasions
                         entry.span = span(ev);
-                        if (entry.span > 1 && dayof(ev, dt) > 1) {     // skip days 2,3,...
+                        if (entry.span > 1 && dayof(ev, dt) > 1) { // skip days 2,3,...
                             break;
                         }
                         mDates.append(entry);
@@ -370,9 +351,7 @@ void SDSummaryWidget::createLabels()
     // Search for Holidays
     if (mShowHolidays) {
         if (initHolidays()) {
-            for (dt = QDate::currentDate();
-                 dt <= QDate::currentDate().addDays(mDaysAhead - 1);
-                 dt = dt.addDays(1)) {
+            for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
                 QList<Holiday> holidays = mHolidays->holidays(dt);
                 QList<Holiday>::ConstIterator it = holidays.constBegin();
                 for (; it != holidays.constEnd(); ++it) {
@@ -388,7 +367,7 @@ void SDSummaryWidget::createLabels()
                     entry.date = dt;
                     entry.summary = (*it).name();
                     dateDiff(dt, entry.daysTo, entry.yearsOld);
-                    entry.yearsOld = -1; //ignore age of holidays
+                    entry.yearsOld = -1; // ignore age of holidays
                     entry.span = 1;
 
                     mDates.append(entry);
@@ -458,7 +437,7 @@ void SDSummaryWidget::createLabels()
             // Event date
             QString datestr;
 
-            //Muck with the year -- change to the year 'daysTo' days away
+            // Muck with the year -- change to the year 'daysTo' days away
             int year = QDate::currentDate().addDays((*addrIt).daysTo).year();
             QDate sD = QDate(year, (*addrIt).date.month(), (*addrIt).date.day());
 
@@ -481,9 +460,7 @@ void SDSummaryWidget::createLabels()
             // Print the date span for multiday, floating events, for the
             // first day of the event only.
             if ((*addrIt).span > 1) {
-                QString endstr = QLocale::system().toString(sD.addDays(
-                                                                (*addrIt).span - 1),
-                                                            QLocale::LongFormat);
+                QString endstr = QLocale::system().toString(sD.addDays((*addrIt).span - 1), QLocale::LongFormat);
                 datestr += QLatin1String(" -\n ") + endstr;
             }
 
@@ -562,8 +539,7 @@ void SDSummaryWidget::createLabels()
             }
 
             // Age
-            if ((*addrIt).category == CategoryBirthday
-                || (*addrIt).category == CategoryAnniversary) {
+            if ((*addrIt).category == CategoryBirthday || (*addrIt).category == CategoryAnniversary) {
                 label = new QLabel(this);
                 if ((*addrIt).yearsOld <= 0) {
                     label->setText(QString());
@@ -578,10 +554,7 @@ void SDSummaryWidget::createLabels()
             counter++;
         }
     } else {
-        label = new QLabel(
-            i18np("No special dates within the next 1 day",
-                  "No special dates pending within the next %1 days",
-                  mDaysAhead), this);
+        label = new QLabel(i18np("No special dates within the next 1 day", "No special dates pending within the next %1 days", mDaysAhead), this);
         label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         mLayout->addWidget(label, 0, 0);
         mLabels.append(label);
@@ -674,10 +647,8 @@ void SDSummaryWidget::viewContact(const QString &url)
 void SDSummaryWidget::popupMenu(const QString &url)
 {
     QMenu popup(this);
-    const QAction *sendMailAction
-        = popup.addAction(QIcon::fromTheme(QStringLiteral("mail-message-new")), i18n("Send &Mail"));
-    const QAction *viewContactAction
-        = popup.addAction(QIcon::fromTheme(QStringLiteral("view-pim-contacts")), i18n("View &Contact"));
+    const QAction *sendMailAction = popup.addAction(QIcon::fromTheme(QStringLiteral("mail-message-new")), i18n("Send &Mail"));
+    const QAction *viewContactAction = popup.addAction(QIcon::fromTheme(QStringLiteral("view-pim-contacts")), i18n("View &Contact"));
 
     const QAction *ret = popup.exec(QCursor::pos());
     if (ret == sendMailAction) {
@@ -710,14 +681,12 @@ void SDSummaryWidget::dateDiff(const QDate &date, int &days, int &years) const
     if (QDate::isLeapYear(date.year()) && date.month() == 2 && date.day() == 29) {
         currentDate = QDate(date.year(), QDate::currentDate().month(), QDate::currentDate().day());
         if (!QDate::isLeapYear(QDate::currentDate().year())) {
-            eventDate = QDate(date.year(), date.month(), 28);   // celebrate one day earlier ;)
+            eventDate = QDate(date.year(), date.month(), 28); // celebrate one day earlier ;)
         } else {
             eventDate = QDate(date.year(), date.month(), date.day());
         }
     } else {
-        currentDate = QDate(QDate::currentDate().year(),
-                            QDate::currentDate().month(),
-                            QDate::currentDate().day());
+        currentDate = QDate(QDate::currentDate().year(), QDate::currentDate().month(), QDate::currentDate().day());
         eventDate = QDate(QDate::currentDate().year(), date.month(), date.day());
     }
 

@@ -8,25 +8,24 @@
 */
 #include "koprefsdialogtime.h"
 #include "koglobals.h"
-#include <QSpinBox>
-#include <KUrlRequester>
-#include <KLocalizedString>
+#include "koprefs.h"
+#include <CalendarSupport/KCalPrefs>
 #include <KCheckComboBox>
+#include <KComboBox>
+#include <KHolidays/HolidayRegion>
+#include <KLocalizedString>
 #include <KTimeComboBox>
+#include <KUrlRequester>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFrame>
 #include <QGroupBox>
 #include <QLabel>
+#include <QSpinBox>
 #include <QTabWidget>
 #include <QTimeEdit>
 #include <QVBoxLayout>
-#include <KComboBox>
-#include <CalendarSupport/KCalPrefs>
-#include <KHolidays/HolidayRegion>
-#include "koprefs.h"
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const char *)
 {
     return new KOPrefsDialogTime(parent);
@@ -41,24 +40,20 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     layout->addWidget(tabWidget);
 
     QFrame *regionalPage = new QFrame(parent);
-    tabWidget->addTab(regionalPage, QIcon::fromTheme(QStringLiteral("flag")),
-                      i18nc("@title:tab", "Regional"));
+    tabWidget->addTab(regionalPage, QIcon::fromTheme(QStringLiteral("flag")), i18nc("@title:tab", "Regional"));
 
     auto regionalLayout = new QGridLayout(regionalPage);
 
-    QGroupBox *datetimeGroupBox
-        = new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
+    QGroupBox *datetimeGroupBox = new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
     regionalLayout->addWidget(datetimeGroupBox, 0, 0);
 
     auto datetimeLayout = new QGridLayout(datetimeGroupBox);
 
-    Korganizer::KPrefsWidTime *dayBegins
-        = addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
+    Korganizer::KPrefsWidTime *dayBegins = addWidTime(KOPrefs::instance()->dayBeginsItem(), regionalPage);
     datetimeLayout->addWidget(dayBegins->label(), 1, 0);
     datetimeLayout->addWidget(dayBegins->timeEdit(), 1, 1);
 
-    QGroupBox *holidaysGroupBox
-        = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
+    QGroupBox *holidaysGroupBox = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
     regionalLayout->addWidget(holidaysGroupBox, 1, 0);
 
     auto holidaysLayout = new QGridLayout(holidaysGroupBox);
@@ -75,14 +70,13 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 
     mHolidayCheckCombo = new KPIM::KCheckComboBox(holidayRegBox);
     holidayRegBoxHBoxLayout->addWidget(mHolidayCheckCombo);
-    connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged,
-            this, &KOPrefsDialogTime::slotWidChanged);
+    connect(mHolidayCheckCombo, &KPIM::KCheckComboBox::checkedItemsChanged, this, &KOPrefsDialogTime::slotWidChanged);
 
     mHolidayCheckCombo->setToolTip(KOPrefs::instance()->holidaysItem()->toolTip());
     mHolidayCheckCombo->setWhatsThis(KOPrefs::instance()->holidaysItem()->whatsThis());
 
     const QStringList regions = KHolidays::HolidayRegion::regionCodes();
-    std::vector<std::pair<QString, QString> > regionsMap;
+    std::vector<std::pair<QString, QString>> regionsMap;
     regionsMap.reserve(regions.size());
 
     for (const QString &regionCode : regions) {
@@ -93,8 +87,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
         if (languageName.isEmpty()) {
             label = name;
         } else {
-            label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)",
-                          name, languageName);
+            label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)", name, languageName);
         }
         regionsMap.push_back(std::make_pair(label, regionCode));
     }
@@ -108,16 +101,14 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
         mHolidayCheckCombo->addItem(entry.first, entry.second);
     }
 
-    //QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
+    // QString regionStr = KHolidays::HolidayRegion::defaultRegionCode();
     const auto holidays = KOGlobals::self()->holidays();
     for (KHolidays::HolidayRegion *region : holidays) {
         const QString regionStr = region->regionCode();
-        mHolidayCheckCombo->setItemCheckState(
-            mHolidayCheckCombo->findData(regionStr), Qt::Checked);
+        mHolidayCheckCombo->setItemCheckState(mHolidayCheckCombo->findData(regionStr), Qt::Checked);
     }
 
-    QGroupBox *workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Working Period"),
-                                                    regionalPage);
+    QGroupBox *workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Working Period"), regionalPage);
     regionalLayout->addWidget(workingHoursGroupBox, 2, 0);
 
     QBoxLayout *workingHoursLayout = new QVBoxLayout(workingHoursGroupBox);
@@ -128,43 +119,34 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     // Respect start of week setting
     int weekStart = QLocale().firstDayOfWeek();
     for (int i = 0; i < 7; ++i) {
-        QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1,
-                                                QLocale::ShortFormat);
+        QString weekDayName = QLocale().dayName((i + weekStart + 6) % 7 + 1, QLocale::ShortFormat);
         int index = (i + weekStart + 6) % 7;
-        mWorkDays[ index ] = new QCheckBox(weekDayName);
-        mWorkDays[ index ]->setWhatsThis(
-            i18nc("@info:whatsthis",
-                  "Check this box to make KOrganizer mark the "
-                  "working hours for this day of the week. "
-                  "If this is a work day for you, check "
-                  "this box, or the working hours will not be "
-                  "marked with color."));
+        mWorkDays[index] = new QCheckBox(weekDayName);
+        mWorkDays[index]->setWhatsThis(i18nc("@info:whatsthis",
+                                             "Check this box to make KOrganizer mark the "
+                                             "working hours for this day of the week. "
+                                             "If this is a work day for you, check "
+                                             "this box, or the working hours will not be "
+                                             "marked with color."));
 
-        connect(mWorkDays[ index ], &QCheckBox::stateChanged,
-                this, &Korganizer::KPrefsModule::slotWidChanged);
+        connect(mWorkDays[index], &QCheckBox::stateChanged, this, &Korganizer::KPrefsModule::slotWidChanged);
 
-        workDaysLayout->addWidget(mWorkDays[ index ]);
+        workDaysLayout->addWidget(mWorkDays[index]);
     }
 
-    Korganizer::KPrefsWidCombo *firstDayCombo = addWidCombo(KOPrefs::instance()->weekStartDayItem(),
-                                                            workingHoursGroupBox);
+    Korganizer::KPrefsWidCombo *firstDayCombo = addWidCombo(KOPrefs::instance()->weekStartDayItem(), workingHoursGroupBox);
     auto firstDayLayout = new QHBoxLayout;
     workingHoursLayout->addLayout(firstDayLayout);
     QStringList days;
-    days << i18nc("@item:inlistbox", "Monday")
-         << i18nc("@item:inlistbox", "Tuesday")
-         << i18nc("@item:inlistbox", "Wednesday")
-         << i18nc("@item:inlistbox", "Thursday")
-         << i18nc("@item:inlistbox", "Friday")
-         << i18nc("@item:inlistbox", "Saturday")
+    days << i18nc("@item:inlistbox", "Monday") << i18nc("@item:inlistbox", "Tuesday") << i18nc("@item:inlistbox", "Wednesday")
+         << i18nc("@item:inlistbox", "Thursday") << i18nc("@item:inlistbox", "Friday") << i18nc("@item:inlistbox", "Saturday")
          << i18nc("@item:inlistbox", "Sunday");
     firstDayCombo->comboBox()->addItems(days);
 
     firstDayLayout->addWidget(firstDayCombo->label());
     firstDayLayout->addWidget(firstDayCombo->comboBox());
 
-    Korganizer::KPrefsWidTime *workStart
-        = addWidTime(KOPrefs::instance()->workingHoursStartItem());
+    Korganizer::KPrefsWidTime *workStart = addWidTime(KOPrefs::instance()->workingHoursStartItem());
 
     auto workStartLayout = new QHBoxLayout;
     workingHoursLayout->addLayout(workStartLayout);
@@ -172,8 +154,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     workStartLayout->addWidget(workStart->label());
     workStartLayout->addWidget(workStart->timeEdit());
 
-    Korganizer::KPrefsWidTime *workEnd
-        = addWidTime(KOPrefs::instance()->workingHoursEndItem());
+    Korganizer::KPrefsWidTime *workEnd = addWidTime(KOPrefs::instance()->workingHoursEndItem());
 
     auto workEndLayout = new QHBoxLayout;
     workingHoursLayout->addLayout(workEndLayout);
@@ -181,85 +162,65 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     workEndLayout->addWidget(workEnd->label());
     workEndLayout->addWidget(workEnd->timeEdit());
 
-    Korganizer::KPrefsWidBool *excludeHolidays
-        = addWidBool(KOPrefs::instance()->excludeHolidaysItem());
+    Korganizer::KPrefsWidBool *excludeHolidays = addWidBool(KOPrefs::instance()->excludeHolidaysItem());
 
     workingHoursLayout->addWidget(excludeHolidays->checkBox());
 
     regionalLayout->setRowStretch(4, 1);
 
     QFrame *defaultPage = new QFrame(parent);
-    tabWidget->addTab(defaultPage, QIcon::fromTheme(QStringLiteral("draw-eraser")),
-                      i18nc("@title:tab", "Default Values"));
+    tabWidget->addTab(defaultPage, QIcon::fromTheme(QStringLiteral("draw-eraser")), i18nc("@title:tab", "Default Values"));
     auto defaultLayout = new QGridLayout(defaultPage);
 
-    QGroupBox *timesGroupBox
-        = new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
+    QGroupBox *timesGroupBox = new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
     defaultLayout->addWidget(timesGroupBox, 0, 0);
 
     auto timesLayout = new QGridLayout(timesGroupBox);
 
-    Korganizer::KPrefsWidTime *defaultTime
-        = addWidTime(CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage);
+    Korganizer::KPrefsWidTime *defaultTime = addWidTime(CalendarSupport::KCalPrefs::instance()->startTimeItem(), defaultPage);
     timesLayout->addWidget(defaultTime->label(), 0, 0);
     timesLayout->addWidget(defaultTime->timeEdit(), 0, 1);
 
-    Korganizer::KPrefsWidDuration *defaultDuration
-        = addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(),
-                         QStringLiteral("hh:mm"), defaultPage);
+    Korganizer::KPrefsWidDuration *defaultDuration =
+        addWidDuration(CalendarSupport::KCalPrefs::instance()->defaultDurationItem(), QStringLiteral("hh:mm"), defaultPage);
 
     timesLayout->addWidget(defaultDuration->label(), 1, 0);
     timesLayout->addWidget(defaultDuration->timeEdit(), 1, 1);
 
-    QGroupBox *remindersGroupBox
-        = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
+    QGroupBox *remindersGroupBox = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
     defaultLayout->addWidget(remindersGroupBox, 1, 0);
 
     auto remindersLayout = new QGridLayout(remindersGroupBox);
 
-    QLabel *reminderLabel
-        = new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
+    QLabel *reminderLabel = new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
     remindersLayout->addWidget(reminderLabel, 0, 0);
-    reminderLabel->setWhatsThis(
-        CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
+    reminderLabel->setWhatsThis(CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
     mReminderTimeSpin = new QSpinBox(defaultPage);
-    mReminderTimeSpin->setWhatsThis(
-        CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
-    mReminderTimeSpin->setToolTip(
-        CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
-    connect(mReminderTimeSpin, qOverload<int>(&QSpinBox::valueChanged),
-            this, &KOPrefsDialogTime::slotWidChanged);
+    mReminderTimeSpin->setWhatsThis(CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
+    mReminderTimeSpin->setToolTip(CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
+    connect(mReminderTimeSpin, qOverload<int>(&QSpinBox::valueChanged), this, &KOPrefsDialogTime::slotWidChanged);
     remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
     mReminderUnitsCombo = new KComboBox(defaultPage);
-    mReminderUnitsCombo->setToolTip(
-        CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip());
-    mReminderUnitsCombo->setWhatsThis(
-        CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
-    connect(mReminderUnitsCombo, qOverload<int>(&KComboBox::activated),
-            this, &KOPrefsDialogTime::slotWidChanged);
-    mReminderUnitsCombo->addItem(
-        i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
-    mReminderUnitsCombo->addItem(
-        i18nc("@item:inlistbox reminder time units in hours", "hour(s)"));
-    mReminderUnitsCombo->addItem(
-        i18nc("@item:inlistbox reminder time units in days", "day(s)"));
+    mReminderUnitsCombo->setToolTip(CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip());
+    mReminderUnitsCombo->setWhatsThis(CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
+    connect(mReminderUnitsCombo, qOverload<int>(&KComboBox::activated), this, &KOPrefsDialogTime::slotWidChanged);
+    mReminderUnitsCombo->addItem(i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
+    mReminderUnitsCombo->addItem(i18nc("@item:inlistbox reminder time units in hours", "hour(s)"));
+    mReminderUnitsCombo->addItem(i18nc("@item:inlistbox reminder time units in days", "day(s)"));
     remindersLayout->addWidget(mReminderUnitsCombo, 0, 2);
 
-    QCheckBox *cb
-        = addWidBool(
-              CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
+    QCheckBox *cb = addWidBool(CalendarSupport::KCalPrefs::instance()->defaultAudioFileRemindersItem())->checkBox();
 
     if (CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->value().isEmpty()) {
-        const QString defAudioFile
-            = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                     QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
+        const QString defAudioFile =
+            QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sound/") + QLatin1String("KDE-Sys-Warning.ogg"));
         CalendarSupport::KCalPrefs::instance()->audioFilePathItem()->setValue(defAudioFile);
     }
-    QString filter = i18n("*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
-                          "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
-    KUrlRequester *rq = addWidPath(CalendarSupport::KCalPrefs::instance()->audioFilePathItem(),
-                                   nullptr, filter)->urlRequester();
+    QString filter = i18n(
+        "*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra|"
+        "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)");
+    KUrlRequester *rq = addWidPath(CalendarSupport::KCalPrefs::instance()->audioFilePathItem(), nullptr, filter)->urlRequester();
     rq->setEnabled(cb->isChecked());
 
     connect(cb, &QCheckBox::toggled, rq, &KUrlRequester::setEnabled);
@@ -269,12 +230,8 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     audioFileRemindersBox->addWidget(rq);
 
     remindersLayout->addLayout(audioFileRemindersBox, 1, 0);
-    remindersLayout->addWidget(
-        addWidBool(
-            CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem())->checkBox(), 2, 0);
-    remindersLayout->addWidget(
-        addWidBool(
-            CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem())->checkBox(), 3, 0);
+    remindersLayout->addWidget(addWidBool(CalendarSupport::KCalPrefs::instance()->defaultEventRemindersItem())->checkBox(), 2, 0);
+    remindersLayout->addWidget(addWidBool(CalendarSupport::KCalPrefs::instance()->defaultTodoRemindersItem())->checkBox(), 3, 0);
 
     defaultLayout->setRowStretch(3, 1);
     load();
@@ -283,8 +240,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 void KOPrefsDialogTime::usrReadConfig()
 {
     mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
-    mReminderUnitsCombo->setCurrentIndex(
-        CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
+    mReminderUnitsCombo->setCurrentIndex(CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
     for (int i = 0; i < 7; ++i) {
         mWorkDays[i]->setChecked((1 << i) & (KOPrefs::instance()->mWorkWeekMask));
     }
@@ -302,10 +258,8 @@ void KOPrefsDialogTime::usrWriteConfig()
     }
     KOPrefs::instance()->mHolidays = HolidayRegions;
 
-    CalendarSupport::KCalPrefs::instance()->mReminderTime
-        = mReminderTimeSpin->value();
-    CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits
-        = mReminderUnitsCombo->currentIndex();
+    CalendarSupport::KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
+    CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
 
     int mask = 0;
     for (int i = 0; i < 7; ++i) {

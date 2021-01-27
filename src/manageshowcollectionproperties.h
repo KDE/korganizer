@@ -7,10 +7,11 @@
 #ifndef MANAGESHOWCOLLECTIONPROPERTIES_H
 #define MANAGESHOWCOLLECTIONPROPERTIES_H
 
+#include <AkonadiCore/Collection>
 #include <QObject>
 #include <QPointer>
-#include <AkonadiCore/Collection>
-namespace Akonadi {
+namespace Akonadi
+{
 class CollectionPropertiesDialog;
 }
 class KJob;
@@ -28,7 +29,7 @@ public Q_SLOTS:
 private:
     void slotCollectionPropertiesContinued(KJob *job);
     void slotCollectionPropertiesFinished(KJob *job);
-    QHash<Akonadi::Collection::Id, QPointer<Akonadi::CollectionPropertiesDialog> > mHashDialogBox;
+    QHash<Akonadi::Collection::Id, QPointer<Akonadi::CollectionPropertiesDialog>> mHashDialogBox;
     const QStringList mPages;
     AkonadiCollectionView *const mCollectionView;
 };

@@ -7,8 +7,8 @@
 #ifndef KORGANIZERUSERFEEDBACKPROVIDER_H
 #define KORGANIZERUSERFEEDBACKPROVIDER_H
 
-#include <KUserFeedback/Provider>
 #include "korganizerprivate_export.h"
+#include <KUserFeedback/Provider>
 
 class KORGANIZERPRIVATE_EXPORT KOrganizerUserFeedbackProvider : public KUserFeedback::Provider
 {

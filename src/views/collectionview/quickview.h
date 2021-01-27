@@ -14,7 +14,8 @@
 
 class Ui_quickview;
 
-namespace EventViews {
+namespace EventViews
+{
 class AgendaView;
 }
 

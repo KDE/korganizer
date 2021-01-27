@@ -27,16 +27,11 @@ AboutData::AboutData()
                  QString(),
                  QStringLiteral("https://userbase.kde.org/KOrganizer"))
 {
-    addAuthor(i18n("Allen Winter"), i18n("Maintainer"),
-              QStringLiteral("winter@kde.org"));
-    addAuthor(i18n("Reinhold Kainhofer"), i18n("Former Maintainer"),
-              QStringLiteral("reinhold@kainhofer.com"));
-    addAuthor(i18n("Cornelius Schumacher"), i18n("Former Maintainer"),
-              QStringLiteral("schumacher@kde.org"));
-    addAuthor(i18n("Preston Brown"), i18n("Original Author"),
-              QStringLiteral("pbrown@kde.org"));
-    addAuthor(i18n("Laurent Montel"), i18n("Developer"),
-              QStringLiteral("montel@kde.org"));
+    addAuthor(i18n("Allen Winter"), i18n("Maintainer"), QStringLiteral("winter@kde.org"));
+    addAuthor(i18n("Reinhold Kainhofer"), i18n("Former Maintainer"), QStringLiteral("reinhold@kainhofer.com"));
+    addAuthor(i18n("Cornelius Schumacher"), i18n("Former Maintainer"), QStringLiteral("schumacher@kde.org"));
+    addAuthor(i18n("Preston Brown"), i18n("Original Author"), QStringLiteral("pbrown@kde.org"));
+    addAuthor(i18n("Laurent Montel"), i18n("Developer"), QStringLiteral("montel@kde.org"));
     addCredit(i18n("Richard Apodaca"));
     addCredit(i18n("Björn Balazs"));
     addCredit(i18n("Jan-Pascal van Best"));
@@ -60,8 +55,7 @@ AboutData::AboutData()
     addCredit(i18n("Glen Parker"));
     addCredit(i18n("Dan Pilone"));
     addCredit(i18n("Roman Rohr"));
-    addCredit(i18n("Rafał Rzepecki"),
-              i18n("Part of work sponsored by Google with Summer of Code 2005"));
+    addCredit(i18n("Rafał Rzepecki"), i18n("Part of work sponsored by Google with Summer of Code 2005"));
     addCredit(i18n("Don Sanders"));
     addCredit(i18n("Bram Schoenmakers"));
     addCredit(i18n("Günter Schwann"));

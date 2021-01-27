@@ -10,9 +10,9 @@
 
 #include "searchdialog.h"
 
-#include "ui_searchdialog_base.h"
 #include "calendarview.h"
 #include "koeventpopupmenu.h"
+#include "ui_searchdialog_base.h"
 
 #include <EventViews/ListView>
 #include <PimCommon/PimUtil>
@@ -50,8 +50,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     layout->addWidget(listView);
     m_ui->listViewFrame->setLayout(layout);
 
-    auto buttonBox = new QDialogButtonBox(
-        QDialogButtonBox::Close | QDialogButtonBox::Help, this);
+    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close | QDialogButtonBox::Help, this);
     mainLayout->addWidget(mainWidget);
     mUser1Button = new QPushButton;
     buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
@@ -62,31 +61,22 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     KGuiItem::assign(mUser1Button, KGuiItem(i18nc("@action:button search in calendar", "&Search")));
     mUser1Button->setIcon(QIcon::fromTheme(QStringLiteral("search")));
     mUser1Button->setToolTip(i18nc("@info:tooltip", "Start the search"));
-    mUser1Button->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Press this button to start the search."));
+    mUser1Button->setWhatsThis(i18nc("@info:whatsthis", "Press this button to start the search."));
 
     connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
     // Propagate edit and delete event signals from event list view
-    connect(listView, &EventViews::ListView::showIncidenceSignal, this,
-            &SearchDialog::showIncidenceSignal);
-    connect(listView, &EventViews::ListView::editIncidenceSignal, this,
-            &SearchDialog::editIncidenceSignal);
-    connect(listView, &EventViews::ListView::deleteIncidenceSignal, this,
-            &SearchDialog::deleteIncidenceSignal);
+    connect(listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
+    connect(listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
+    connect(listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
 
     m_popupMenu = new KOEventPopupMenu(m_calendarview->calendar(), KOEventPopupMenu::MiniList, this);
-    connect(listView, &EventViews::ListView::showIncidencePopupSignal,
-            m_popupMenu, &KOEventPopupMenu::showIncidencePopup);
+    connect(listView, &EventViews::ListView::showIncidencePopupSignal, m_popupMenu, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(m_popupMenu, &KOEventPopupMenu::showIncidenceSignal, this,
-            &SearchDialog::showIncidenceSignal);
-    connect(m_popupMenu, &KOEventPopupMenu::editIncidenceSignal, this,
-            &SearchDialog::editIncidenceSignal);
-    connect(m_popupMenu, &KOEventPopupMenu::deleteIncidenceSignal, this,
-            &SearchDialog::deleteIncidenceSignal);
-    //TODO: add these
+    connect(m_popupMenu, &KOEventPopupMenu::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
+    connect(m_popupMenu, &KOEventPopupMenu::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
+    connect(m_popupMenu, &KOEventPopupMenu::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
+    // TODO: add these
     //   connect(m_popupMenu, &KOEventPopupMenu::toggleAlarmSignal, this,
     //           &SearchDialog::toggleAlarmSignal);
     //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
@@ -116,16 +106,15 @@ void SearchDialog::searchPatternChanged(const QString &pattern)
 void SearchDialog::doSearch()
 {
     QRegExp re;
-    re.setPatternSyntax(QRegExp::Wildcard);   // most people understand these better.
+    re.setPatternSyntax(QRegExp::Wildcard); // most people understand these better.
     re.setCaseSensitivity(Qt::CaseInsensitive);
     re.setPattern(m_ui->searchEdit->text());
     if (!re.isValid()) {
-        KMessageBox::sorry(
-            this,
-            i18nc("@info",
-                  "Invalid search expression, cannot perform the search. "
-                  "Please enter a search expression using the wildcard characters "
-                  "'*' and '?' where needed."));
+        KMessageBox::sorry(this,
+                           i18nc("@info",
+                                 "Invalid search expression, cannot perform the search. "
+                                 "Please enter a search expression using the wildcard characters "
+                                 "'*' and '?' where needed."));
         return;
     }
 
@@ -134,11 +123,10 @@ void SearchDialog::doSearch()
     updateMatchesText();
     if (mMatchedEvents.isEmpty()) {
         m_ui->numItems->setText(QString());
-        KMessageBox::information(
-            this,
-            i18nc("@info", "No items were found that match your search pattern."),
-            i18nc("@title:window", "Search Results"),
-            QStringLiteral("NoSearchResults"));
+        KMessageBox::information(this,
+                                 i18nc("@info", "No items were found that match your search pattern."),
+                                 i18nc("@title:window", "Search Results"),
+                                 QStringLiteral("NoSearchResults"));
     }
 }
 
@@ -159,7 +147,7 @@ void SearchDialog::updateMatchesText()
 void SearchDialog::updateView()
 {
     QRegExp re;
-    re.setPatternSyntax(QRegExp::Wildcard);   // most people understand these better.
+    re.setPatternSyntax(QRegExp::Wildcard); // most people understand these better.
     re.setCaseSensitivity(Qt::CaseInsensitive);
     re.setPattern(m_ui->searchEdit->text());
     listView->clear();
@@ -179,9 +167,7 @@ void SearchDialog::search(const QRegExp &re)
 
     KCalendarCore::Event::List events;
     if (m_ui->eventsCheck->isChecked()) {
-        events
-            = m_calendarview->calendar()->events(
-                  startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
+        events = m_calendarview->calendar()->events(startDt, endDt, QTimeZone::systemTimeZone(), m_ui->inclusiveCheck->isChecked());
     }
 
     KCalendarCore::Todo::List todos;
@@ -191,16 +177,13 @@ void SearchDialog::search(const QRegExp &re)
             const KCalendarCore::Todo::List alltodos = m_calendarview->calendar()->todos();
             for (const KCalendarCore::Todo::Ptr &todo : alltodos) {
                 Q_ASSERT(todo);
-                if ((!todo->hasStartDate() && !todo->hasDueDate())    // undated
-                    || (todo->hasStartDate()
-                        && (todo->dtStart().toLocalTime().date() >= startDt)
-                        && (todo->dtStart().toLocalTime().date() <= endDt)) //start dt in range
-                    || (todo->hasDueDate()
-                        && (todo->dtDue().toLocalTime().date() >= startDt)
-                        && (todo->dtDue().toLocalTime().date() <= endDt)) //due dt in range
-                    || (todo->hasCompletedDate()
-                        && (todo->completed().toLocalTime().date() >= startDt)
-                        && (todo->completed().toLocalTime().date() <= endDt))) { //completed dt in range
+                if ((!todo->hasStartDate() && !todo->hasDueDate()) // undated
+                    || (todo->hasStartDate() && (todo->dtStart().toLocalTime().date() >= startDt)
+                        && (todo->dtStart().toLocalTime().date() <= endDt)) // start dt in range
+                    || (todo->hasDueDate() && (todo->dtDue().toLocalTime().date() >= startDt)
+                        && (todo->dtDue().toLocalTime().date() <= endDt)) // due dt in range
+                    || (todo->hasCompletedDate() && (todo->completed().toLocalTime().date() >= startDt)
+                        && (todo->completed().toLocalTime().date() <= endDt))) { // completed dt in range
                     todos.append(todo);
                 }
             }
@@ -223,8 +206,7 @@ void SearchDialog::search(const QRegExp &re)
     }
 
     mMatchedEvents.clear();
-    const KCalendarCore::Incidence::List incidences
-        = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
+    const KCalendarCore::Incidence::List incidences = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
     for (const KCalendarCore::Incidence::Ptr &ev : incidences) {
         Q_ASSERT(ev);
         Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());

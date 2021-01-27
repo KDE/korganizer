@@ -45,7 +45,7 @@ public:
     ActionManager *actionManager() override;
     KActionCollection *getActionCollection() const override;
 
-    //void initializePluginActions();
+    // void initializePluginActions();
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
@@ -93,7 +93,7 @@ protected Q_SLOTS:
 
 protected:
     void initActions();
-//    void initViews();
+    //    void initViews();
 
     /** supplied so that close events close calendar properly.*/
     bool queryClose() override;
@@ -103,7 +103,7 @@ protected:
     void readProperties(const KConfigGroup &) override;
 
 private:
-    CalendarView *mCalendarView = nullptr;  // Main view widget
+    CalendarView *mCalendarView = nullptr; // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
     ActionManager *mActionManager = nullptr;

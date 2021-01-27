@@ -5,18 +5,18 @@
  */
 
 #include "quickview.h"
-#include "ui_quickview.h"
 #include "korganizer_debug.h"
+#include "ui_quickview.h"
 
-#include <AkonadiCore/entitydisplayattribute.h>
 #include <AkonadiCore/changerecorder.h>
+#include <AkonadiCore/entitydisplayattribute.h>
 #include <AkonadiCore/itemfetchscope.h>
 
 #include <KCalendarCore/Event>
 #include <KCalendarCore/MemoryCalendar>
 
-#include <EventViews/AgendaView>
 #include <CalendarSupport/Utils>
+#include <EventViews/AgendaView>
 
 #include <KCheckableProxyModel>
 #include <KConfigGroup>
@@ -49,12 +49,10 @@ Quickview::Quickview(const Akonadi::Collection &col)
     mUi->mWeekBtn->hide();
     mUi->mDayBtn->hide();
 
-    //create etm for mCollection
+    // create etm for mCollection
     auto monitor = new Akonadi::ChangeRecorder(this);
     Akonadi::ItemFetchScope scope;
-    const QStringList allMimeTypes
-        = { KCalendarCore::Event::eventMimeType(), KCalendarCore::Todo::todoMimeType(),
-            KCalendarCore::Journal::journalMimeType()};
+    const QStringList allMimeTypes = {KCalendarCore::Event::eventMimeType(), KCalendarCore::Todo::todoMimeType(), KCalendarCore::Journal::journalMimeType()};
 
     scope.fetchFullPayload(true);
     scope.fetchAttribute<Akonadi::EntityDisplayAttribute>();
@@ -68,8 +66,7 @@ Quickview::Quickview(const Akonadi::Collection &col)
         monitor->setMimeTypeMonitored(mimetype, true);
     }
 
-    Akonadi::ETMCalendar::Ptr calendar
-        = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(monitor));
+    Akonadi::ETMCalendar::Ptr calendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(monitor));
 
     calendar->setCollectionFilteringEnabled(false);
     mAgendaView->setCalendar(calendar);
@@ -77,9 +74,7 @@ Quickview::Quickview(const Akonadi::Collection &col)
 
     mUi->calendar->addWidget(mAgendaView);
 
-    setWindowTitle(i18nc("@title:window",
-                         "%1",
-                         CalendarSupport::displayName(calendar.data(), mCollection)));
+    setWindowTitle(i18nc("@title:window", "%1", CalendarSupport::displayName(calendar.data(), mCollection)));
 
     connect(mUi->mTodayBtn, &QPushButton::clicked, this, &Quickview::onTodayClicked);
     connect(mUi->mNextBtn, &QPushButton::clicked, this, &Quickview::onNextClicked);

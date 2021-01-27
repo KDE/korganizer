@@ -8,19 +8,19 @@
 */
 
 #include "koprefsdialogplugins.h"
-#include "koprefs.h"
 #include "kocore.h"
-#include <KGuiItem>
-#include <KService>
-#include <KMessageBox>
-#include <KLocalizedString>
-#include <QLabel>
-#include <QTreeWidget>
-#include <QGroupBox>
-#include <QRadioButton>
-#include <QPushButton>
-#include <QVBoxLayout>
+#include "koprefs.h"
 #include <CalendarSupport/KCalPrefs>
+#include <KGuiItem>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KService>
+#include <QGroupBox>
+#include <QLabel>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QTreeWidget>
+#include <QVBoxLayout>
 
 class PluginItem : public QTreeWidgetItem
 {
@@ -75,24 +75,24 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
     buttonRowLayout->setContentsMargins({});
     mConfigureButton = new QPushButton(buttonRow);
-    KGuiItem::assign(mConfigureButton, KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
-                                                QStringLiteral("configure"), QString(),
-                                                i18nc("@info:whatsthis",
-                                                      "This button allows you to configure"
-                                                      " the plugin that you have selected in the list above")));
+    KGuiItem::assign(mConfigureButton,
+                     KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
+                              QStringLiteral("configure"),
+                              QString(),
+                              i18nc("@info:whatsthis",
+                                    "This button allows you to configure"
+                                    " the plugin that you have selected in the list above")));
     buttonRowLayout->addWidget(mConfigureButton);
     buttonRowLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding));
     topTopLayout->addWidget(buttonRow);
 
     mPositioningGroupBox = new QGroupBox(i18nc("@title:group", "Position"), this);
-    //mPositionMonthTop = new QCheckBox(
-    //i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-    mPositionAgendaTop = new QRadioButton(
-        i18nc("@option:check", "Show at the top of the agenda views"), mPositioningGroupBox);
-    mPositionAgendaBottom = new QRadioButton(
-        i18nc("@option:check", "Show at the bottom of the agenda views"), mPositioningGroupBox);
+    // mPositionMonthTop = new QCheckBox(
+    // i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
+    mPositionAgendaTop = new QRadioButton(i18nc("@option:check", "Show at the top of the agenda views"), mPositioningGroupBox);
+    mPositionAgendaBottom = new QRadioButton(i18nc("@option:check", "Show at the bottom of the agenda views"), mPositioningGroupBox);
     auto positioningLayout = new QVBoxLayout(mPositioningGroupBox);
-    //positioningLayout->addWidget( mPositionMonthTop );
+    // positioningLayout->addWidget( mPositionMonthTop );
     positioningLayout->addWidget(mPositionAgendaTop);
     positioningLayout->addWidget(mPositionAgendaBottom);
     positioningLayout->addStretch(1);
@@ -100,13 +100,10 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
 
     connect(mConfigureButton, &QPushButton::clicked, this, &KOPrefsDialogPlugins::configure);
 
-    connect(mPositionAgendaTop, &QRadioButton::clicked, this,
-            &KOPrefsDialogPlugins::positioningChanged);
-    connect(mPositionAgendaBottom, &QRadioButton::clicked, this,
-            &KOPrefsDialogPlugins::positioningChanged);
+    connect(mPositionAgendaTop, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
+    connect(mPositionAgendaBottom, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
 
-    connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this,
-            &KOPrefsDialogPlugins::selectionChanged);
+    connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this, &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemChanged, this, &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotWidChanged);
 
@@ -131,10 +128,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
     QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
-    mDecorations = new QTreeWidgetItem(mTreeWidget,
-                                       QStringList(i18nc("@title:group", "Calendar Decorations")));
-    mOthers = new QTreeWidgetItem(mTreeWidget,
-                                  QStringList(i18nc("@title:group", "Other Plugins")));
+    mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Calendar Decorations")));
+    mOthers = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Other Plugins")));
 
     KService::List::ConstIterator it;
     KService::List::ConstIterator end(plugins.constEnd());
@@ -204,9 +199,7 @@ void KOPrefsDialogPlugins::configure()
 
         slotWidChanged();
     } else {
-        KMessageBox::sorry(this,
-                           i18nc("@info", "Unable to configure this plugin"),
-                           QStringLiteral("PluginConfigUnable"));
+        KMessageBox::sorry(this, i18nc("@info", "Unable to configure this plugin"), QStringLiteral("PluginConfigUnable"));
     }
 }
 
@@ -253,7 +246,7 @@ void KOPrefsDialogPlugins::positioningChanged()
 void KOPrefsDialogPlugins::selectionChanged()
 {
     mPositioningGroupBox->hide();
-    //mPositionMonthTop->setChecked( false );
+    // mPositionMonthTop->setChecked( false );
     mPositionAgendaTop->setChecked(false);
     mPositionAgendaBottom->setChecked(false);
 
@@ -286,8 +279,7 @@ void KOPrefsDialogPlugins::selectionChanged()
         mConfigureButton->setEnabled(item->checkState(0) == Qt::Checked);
     }
 
-    if (item->service()->hasServiceType(
-            EventViews::CalendarDecoration::Decoration::serviceType())) {
+    if (item->service()->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
         bool hasPosition = false;
         QString decoration = item->service()->desktopEntryName();
         /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
@@ -316,8 +308,7 @@ void KOPrefsDialogPlugins::selectionChanged()
     slotWidChanged();
 }
 
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_korganizerconfigplugins(QWidget *parent, const char *)
 {
     return new KOPrefsDialogPlugins(parent);

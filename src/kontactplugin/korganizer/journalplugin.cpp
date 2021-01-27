@@ -12,9 +12,9 @@
 
 #include <KontactInterface/Core>
 
+#include "korganizerplugin_debug.h"
 #include <KActionCollection>
 #include <KLocalizedString>
-#include "korganizerplugin_debug.h"
 #include <QAction>
 #include <QIcon>
 
@@ -25,24 +25,20 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
-    QAction *action
-        = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")),
-                      i18nc("@action:inmenu", "New Journal..."), this);
+    QAction *action = new QAction(QIcon::fromTheme(QStringLiteral("journal-new")), i18nc("@action:inmenu", "New Journal..."), this);
     actionCollection()->addAction(QStringLiteral("new_journal"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_J));
     QString str = i18nc("@info:status", "Create a new journal");
     action->setStatusTip(str);
     action->setToolTip(str);
 
-    action->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "You will be presented with a dialog where you can create "
-              "a new journal entry."));
+    action->setWhatsThis(i18nc("@info:whatsthis",
+                               "You will be presented with a dialog where you can create "
+                               "a new journal entry."));
     connect(action, &QAction::triggered, this, &JournalPlugin::slotNewJournal);
     insertNewAction(action);
 
-    mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(
-        new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
+    mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
 
 JournalPlugin::~JournalPlugin()
@@ -57,9 +53,7 @@ KParts::Part *JournalPlugin::createPart()
         return nullptr;
     }
 
-    mIface = new OrgKdeKorganizerCalendarInterface(
-        QStringLiteral("org.kde.korganizer"), QStringLiteral(
-            "/Calendar"), QDBusConnection::sessionBus(), this);
+    mIface = new OrgKdeKorganizerCalendarInterface(QStringLiteral("org.kde.korganizer"), QStringLiteral("/Calendar"), QDBusConnection::sessionBus(), this);
 
     return part;
 }

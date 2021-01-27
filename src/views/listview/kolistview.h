@@ -15,11 +15,13 @@
 
 #include <KCalendarCore/Incidence> //for KCalendarCore::DateList typedef
 
-namespace EventViews {
+namespace EventViews
+{
 class ListView;
 }
 
-namespace Akonadi {
+namespace Akonadi
+{
 class IncidenceChanger;
 }
 
@@ -58,8 +60,7 @@ public Q_SLOTS:
 
     void clearSelection() override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &,
-                                Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
 
     void defaultItemAction(const QModelIndex &);
     void defaultItemAction(const Akonadi::Item::Id id);

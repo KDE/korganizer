@@ -11,12 +11,11 @@
 
 #include <KAboutData>
 #include <KAcceleratorManager>
+#include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
-#include <KConfig>
 
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_sdsummary(QWidget *parent, const char *)
 {
     return new KCMSDSummary(parent);
@@ -34,10 +33,8 @@ KCMSDSummary::KCMSDSummary(QWidget *parent)
     connect(mDateMonthButton, &QRadioButton::clicked, this, &KCMSDSummary::modified);
     connect(mDateRangeButton, &QRadioButton::clicked, this, &KCMSDSummary::modified);
 
-    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this,
-            &KCMSDSummary::modified);
-    connect(mCustomDays, QOverload<int>::of(
-                &QSpinBox::valueChanged), this, &KCMSDSummary::customDaysChanged);
+    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMSDSummary::modified);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMSDSummary::customDaysChanged);
 
     connect(mShowBirthdaysFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowAnniversariesFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
@@ -158,17 +155,16 @@ void KCMSDSummary::defaults()
 
 const KAboutData *KCMSDSummary::aboutData() const
 {
-    KAboutData *about = new KAboutData(
-        QStringLiteral("kcmsdsummary"),
-        i18n("Upcoming Special Dates Configuration Dialog"),
-        QString(), QString(), KAboutLicense::GPL,
-        i18n("Copyright © 2004 Tobias Koenig\n"
-             "Copyright © 2004–2010 Allen Winter"));
+    KAboutData *about = new KAboutData(QStringLiteral("kcmsdsummary"),
+                                       i18n("Upcoming Special Dates Configuration Dialog"),
+                                       QString(),
+                                       QString(),
+                                       KAboutLicense::GPL,
+                                       i18n("Copyright © 2004 Tobias Koenig\n"
+                                            "Copyright © 2004–2010 Allen Winter"));
 
-    about->addAuthor(i18n("Tobias Koenig"),
-                     QString(), QStringLiteral("tokoe@kde.org"));
-    about->addAuthor(i18n("Allen Winter"),
-                     QString(), QStringLiteral("winter@kde.org"));
+    about->addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
+    about->addAuthor(i18n("Allen Winter"), QString(), QStringLiteral("winter@kde.org"));
 
     return about;
 }

@@ -11,12 +11,13 @@
 
 #include "mainwindow.h"
 
-#include <KPluginFactory>
 #include <KParts/Part>
+#include <KPluginFactory>
 
 #include <QWidget>
 
-namespace KOrg {
+namespace KOrg
+{
 class Part : public KParts::Part
 {
     Q_OBJECT

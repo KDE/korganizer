@@ -15,11 +15,13 @@
 
 #include "koeventview.h"
 
-namespace Akonadi {
+namespace Akonadi
+{
 class IncidenceChanger;
 }
 
-namespace EventViews {
+namespace EventViews
+{
 class TimelineView;
 }
 
@@ -39,8 +41,7 @@ public:
     void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
-    void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;
     Q_REQUIRED_RESULT int maxDatesHint() const override
     {
         return 0;

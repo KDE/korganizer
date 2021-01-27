@@ -28,74 +28,51 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *paren
 
     layout->addWidget(mListView);
 
-    connect(mListView, &EventViews::ListView::showIncidencePopupSignal,
-            mPopupMenu, &KOEventPopupMenu::showIncidencePopup);
+    connect(mListView, &EventViews::ListView::showIncidencePopupSignal, mPopupMenu, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(mListView, &EventViews::ListView::showNewEventPopupSignal,
-            this, &KOListView::showNewEventPopup);
+    connect(mListView, &EventViews::ListView::showNewEventPopupSignal, this, &KOListView::showNewEventPopup);
 
-    connect(mListView, &EventViews::EventView::datesSelected,
-            this, &KOEventView::datesSelected);
+    connect(mListView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
-    connect(mListView, &EventViews::EventView::shiftedEvent,
-            this, &KOEventView::shiftedEvent);
+    connect(mListView, &EventViews::EventView::shiftedEvent, this, &KOEventView::shiftedEvent);
 
-    connect(mListView, &EventViews::EventView::incidenceSelected,
-            this, &BaseView::incidenceSelected);
+    connect(mListView, &EventViews::EventView::incidenceSelected, this, &BaseView::incidenceSelected);
 
-    connect(mListView, &EventViews::EventView::showIncidenceSignal,
-            this, &BaseView::showIncidenceSignal);
+    connect(mListView, &EventViews::EventView::showIncidenceSignal, this, &BaseView::showIncidenceSignal);
 
-    connect(mListView, &EventViews::EventView::editIncidenceSignal,
-            this, &BaseView::editIncidenceSignal);
+    connect(mListView, &EventViews::EventView::editIncidenceSignal, this, &BaseView::editIncidenceSignal);
 
-    connect(mListView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &BaseView::deleteIncidenceSignal);
+    connect(mListView, &EventViews::EventView::deleteIncidenceSignal, this, &BaseView::deleteIncidenceSignal);
 
-    connect(mListView, &EventViews::EventView::cutIncidenceSignal,
-            this, &BaseView::cutIncidenceSignal);
+    connect(mListView, &EventViews::EventView::cutIncidenceSignal, this, &BaseView::cutIncidenceSignal);
 
-    connect(mListView, &EventViews::EventView::copyIncidenceSignal,
-            this, &BaseView::copyIncidenceSignal);
+    connect(mListView, &EventViews::EventView::copyIncidenceSignal, this, &BaseView::copyIncidenceSignal);
 
-    connect(mListView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &BaseView::pasteIncidenceSignal);
+    connect(mListView, &EventViews::EventView::pasteIncidenceSignal, this, &BaseView::pasteIncidenceSignal);
 
-    connect(mListView, &EventViews::EventView::toggleAlarmSignal,
-            this, &BaseView::toggleAlarmSignal);
+    connect(mListView, &EventViews::EventView::toggleAlarmSignal, this, &BaseView::toggleAlarmSignal);
 
-    connect(mListView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &BaseView::toggleTodoCompletedSignal);
+    connect(mListView, &EventViews::EventView::toggleTodoCompletedSignal, this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(mListView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &BaseView::copyIncidenceToResourceSignal);
+    connect(mListView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mListView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &BaseView::moveIncidenceToResourceSignal);
+    connect(mListView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mListView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &BaseView::dissociateOccurrencesSignal);
+    connect(mListView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mListView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(mListView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(mListView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(mListView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(mListView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(mListView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(mListView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(mListView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(mListView, &EventViews::EventView::newTodoSignal,
-            this, &BaseView::newTodoSignal);
+    connect(mListView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
-    connect(mListView, &EventViews::EventView::newSubTodoSignal,
-            this, &BaseView::newSubTodoSignal);
+    connect(mListView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
-    connect(mListView, &EventViews::EventView::newJournalSignal,
-            this, &BaseView::newJournalSignal);
+    connect(mListView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 }
 
 KOListView::~KOListView()

@@ -10,9 +10,9 @@
 
 #include <KAboutData>
 #include <KAcceleratorManager>
+#include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
-#include <KConfig>
 
 #include <QButtonGroup>
 
@@ -26,37 +26,31 @@ KCMApptSummary::KCMApptSummary(QWidget *parent)
 {
     setupUi(this);
 
-    mDaysButtonGroup = new QButtonGroup(this);   //krazy:exclude=tipsandthis
+    mDaysButtonGroup = new QButtonGroup(this); // krazy:exclude=tipsandthis
     mDaysButtonGroup->addButton(mDateTodayButton, 0);
     mDaysButtonGroup->addButton(mDateMonthButton, 1);
     mDaysButtonGroup->addButton(mDateRangeButton, 2);
 
-    mShowButtonGroup = new QButtonGroup(this);   //krazy:exclude=tipsandthis
+    mShowButtonGroup = new QButtonGroup(this); // krazy:exclude=tipsandthis
     mShowButtonGroup->setExclusive(false);
     mShowButtonGroup->addButton(mShowBirthdaysFromCal);
     mShowButtonGroup->addButton(mShowAnniversariesFromCal);
 
-    mGroupwareButtonGroup = new QButtonGroup(this);   //krazy:exclude=tipsandthis
+    mGroupwareButtonGroup = new QButtonGroup(this); // krazy:exclude=tipsandthis
     mGroupwareButtonGroup->setExclusive(false);
     mGroupwareButtonGroup->addButton(mShowMineOnly);
 
     customDaysChanged(7);
 
-    //Remove QOverload<QAbstractButton *> when we switch on qt6. For the moment it avoids to add an #ifdef
-    connect(mDaysButtonGroup, QOverload<QAbstractButton *>::of(
-                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mShowButtonGroup, QOverload<QAbstractButton *>::of(
-                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mGroupwareButtonGroup, QOverload<QAbstractButton *>::of(
-                &QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    // Remove QOverload<QAbstractButton *> when we switch on qt6. For the moment it avoids to add an #ifdef
+    connect(mDaysButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mShowButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mGroupwareButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
 
-    connect(mDaysButtonGroup, QOverload<QAbstractButton *>::of(
-                &QButtonGroup::buttonClicked), this, &KCMApptSummary::buttonClicked);
+    connect(mDaysButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked), this, &KCMApptSummary::buttonClicked);
 
-    connect(mCustomDays, QOverload<int>::of(
-                &QSpinBox::valueChanged), this, &KCMApptSummary::modified);
-    connect(mCustomDays, QOverload<int>::of(
-                &QSpinBox::valueChanged), this, &KCMApptSummary::customDaysChanged);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMApptSummary::modified);
+    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMApptSummary::customDaysChanged);
 
     KAcceleratorManager::manage(this);
 
@@ -155,12 +149,13 @@ void KCMApptSummary::defaults()
 
 const KAboutData *KCMApptSummary::aboutData() const
 {
-    KAboutData *about = new KAboutData(
-        QStringLiteral("kcmapptsummary"),
-        i18n("Upcoming Events Configuration Dialog"),
-        QString(), QString(), KAboutLicense::GPL,
-        i18n("Copyright © 2003–2004 Tobias Koenig\n"
-             "Copyright © 2005–2010 Allen Winter"));
+    KAboutData *about = new KAboutData(QStringLiteral("kcmapptsummary"),
+                                       i18n("Upcoming Events Configuration Dialog"),
+                                       QString(),
+                                       QString(),
+                                       KAboutLicense::GPL,
+                                       i18n("Copyright © 2003–2004 Tobias Koenig\n"
+                                            "Copyright © 2005–2010 Allen Winter"));
 
     about->addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
     about->addAuthor(i18n("Allen Winter"), QString(), QStringLiteral("winter@kde.org"));

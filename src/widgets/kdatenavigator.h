@@ -10,15 +10,16 @@
 #ifndef KORG_KDATENAVIGATOR_H
 #define KORG_KDATENAVIGATOR_H
 
-#include <QFrame>
-#include <QDate>
-#include <KCalendarCore/IncidenceBase> //for DateList typedef
 #include <Akonadi/Calendar/ETMCalendar>
+#include <KCalendarCore/IncidenceBase> //for DateList typedef
+#include <QDate>
+#include <QFrame>
 
 class KODayMatrix;
 class NavigatorBar;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 }
 
@@ -103,8 +104,8 @@ private:
     void selectMonthHelper(int monthDifference);
     NavigatorBar *mNavigatorBar = nullptr;
 
-    QLabel *mHeadings[ 7 ];
-    QLabel *mWeeknos[ 7 ];
+    QLabel *mHeadings[7];
+    QLabel *mWeeknos[7];
 
     KODayMatrix *mDayMatrix = nullptr;
 

@@ -15,7 +15,8 @@
 
 class QComboBox;
 class KColorButton;
-namespace Akonadi {
+namespace Akonadi
+{
 class CollectionComboBox;
 }
 

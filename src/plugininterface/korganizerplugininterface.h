@@ -7,8 +7,8 @@
 #ifndef KORGANIZERPLUGININTERFACE_H
 #define KORGANIZERPLUGININTERFACE_H
 
-#include <QObject>
 #include <PimCommonAkonadi/PluginInterface>
+#include <QObject>
 class KOrganizerPluginInterface : public PimCommon::PluginInterface
 {
     Q_OBJECT

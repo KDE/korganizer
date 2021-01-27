@@ -17,14 +17,11 @@
 class KOAgendaView::Private
 {
 public:
-    Private(bool isSideBySide, KOAgendaView *parent) : q(parent)
+    Private(bool isSideBySide, KOAgendaView *parent)
+        : q(parent)
     {
-        mAgendaView = new EventViews::AgendaView(KOPrefs::instance()->eventViewsPreferences(),
-                                                 QDate::currentDate(),
-                                                 QDate::currentDate(),
-                                                 true,
-                                                 isSideBySide,
-                                                 parent);
+        mAgendaView =
+            new EventViews::AgendaView(KOPrefs::instance()->eventViewsPreferences(), QDate::currentDate(), QDate::currentDate(), true, isSideBySide, parent);
         mPopup = q->eventPopup();
     }
 
@@ -49,80 +46,55 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
     layout->setContentsMargins({});
     layout->addWidget(d->mAgendaView);
 
-    connect(d->mAgendaView, &EventViews::AgendaView::zoomViewHorizontally,
-            this, &KOAgendaView::zoomViewHorizontally);
+    connect(d->mAgendaView, &EventViews::AgendaView::zoomViewHorizontally, this, &KOAgendaView::zoomViewHorizontally);
 
-    connect(d->mAgendaView, &EventViews::AgendaView::timeSpanSelectionChanged,
-            this, &KOAgendaView::timeSpanSelectionChanged);
+    connect(d->mAgendaView, &EventViews::AgendaView::timeSpanSelectionChanged, this, &KOAgendaView::timeSpanSelectionChanged);
 
-    connect(d->mAgendaView, &EventViews::AgendaView::showIncidencePopupSignal,
-            d->mPopup, &KOEventPopupMenu::showIncidencePopup);
+    connect(d->mAgendaView, &EventViews::AgendaView::showIncidencePopupSignal, d->mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mAgendaView, &EventViews::AgendaView::showNewEventPopupSignal,
-            this, &KOAgendaView::showNewEventPopup);
+    connect(d->mAgendaView, &EventViews::AgendaView::showNewEventPopupSignal, this, &KOAgendaView::showNewEventPopup);
 
-    connect(d->mAgendaView, &EventViews::EventView::datesSelected,
-            this, &KOEventView::datesSelected);
+    connect(d->mAgendaView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
-    connect(d->mAgendaView, &EventViews::EventView::shiftedEvent,
-            this, &KOEventView::shiftedEvent);
+    connect(d->mAgendaView, &EventViews::EventView::shiftedEvent, this, &KOEventView::shiftedEvent);
 
-    connect(d->mAgendaView, &EventViews::EventView::incidenceSelected,
-            this, &KOrg::BaseView::incidenceSelected);
+    connect(d->mAgendaView, &EventViews::EventView::incidenceSelected, this, &KOrg::BaseView::incidenceSelected);
 
-    connect(d->mAgendaView, &EventViews::EventView::showIncidenceSignal,
-            this, &KOrg::BaseView::showIncidenceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::showIncidenceSignal, this, &KOrg::BaseView::showIncidenceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::editIncidenceSignal,
-            this, &KOrg::BaseView::editIncidenceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::editIncidenceSignal, this, &KOrg::BaseView::editIncidenceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &KOrg::BaseView::deleteIncidenceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::deleteIncidenceSignal, this, &KOrg::BaseView::deleteIncidenceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::cutIncidenceSignal,
-            this, &KOrg::BaseView::cutIncidenceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::cutIncidenceSignal, this, &KOrg::BaseView::cutIncidenceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::copyIncidenceSignal,
-            this, &KOrg::BaseView::copyIncidenceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::copyIncidenceSignal, this, &KOrg::BaseView::copyIncidenceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &KOrg::BaseView::pasteIncidenceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::pasteIncidenceSignal, this, &KOrg::BaseView::pasteIncidenceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::toggleAlarmSignal,
-            this, &KOrg::BaseView::toggleAlarmSignal);
+    connect(d->mAgendaView, &EventViews::EventView::toggleAlarmSignal, this, &KOrg::BaseView::toggleAlarmSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &KOrg::BaseView::toggleTodoCompletedSignal);
+    connect(d->mAgendaView, &EventViews::EventView::toggleTodoCompletedSignal, this, &KOrg::BaseView::toggleTodoCompletedSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &KOrg::BaseView::copyIncidenceToResourceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &KOrg::BaseView::copyIncidenceToResourceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &KOrg::BaseView::moveIncidenceToResourceSignal);
+    connect(d->mAgendaView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &KOrg::BaseView::moveIncidenceToResourceSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &KOrg::BaseView::dissociateOccurrencesSignal);
+    connect(d->mAgendaView, &EventViews::EventView::dissociateOccurrencesSignal, this, &KOrg::BaseView::dissociateOccurrencesSignal);
 
-    connect(d->mAgendaView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(d->mAgendaView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(d->mAgendaView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(d->mAgendaView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(d->mAgendaView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(d->mAgendaView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(d->mAgendaView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(d->mAgendaView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(d->mAgendaView, &EventViews::EventView::newTodoSignal,
-            this, &KOrg::BaseView::newTodoSignal);
+    connect(d->mAgendaView, &EventViews::EventView::newTodoSignal, this, &KOrg::BaseView::newTodoSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::newSubTodoSignal,
-            this, &KOrg::BaseView::newSubTodoSignal);
+    connect(d->mAgendaView, &EventViews::EventView::newSubTodoSignal, this, &KOrg::BaseView::newSubTodoSignal);
 
-    connect(d->mAgendaView, &EventViews::EventView::newJournalSignal,
-            this, &KOrg::BaseView::newJournalSignal);
+    connect(d->mAgendaView, &EventViews::EventView::newJournalSignal, this, &KOrg::BaseView::newJournalSignal);
 
     d->mAgendaView->show();
 }

@@ -12,13 +12,13 @@
 #include "koglobals.h"
 #include "widgets/navigatorbar.h"
 
+#include <KLocalizedString>
 #include <QEvent>
+#include <QFontDatabase>
 #include <QGridLayout>
 #include <QLabel>
-#include <QWheelEvent>
-#include <KLocalizedString>
-#include <QFontDatabase>
 #include <QLocale>
+#include <QWheelEvent>
 
 KDateNavigator::KDateNavigator(QWidget *parent)
     : QFrame(parent)
@@ -32,10 +32,8 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     topLayout->addWidget(mNavigatorBar, 0, 0, 1, 8);
 
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, this, &KDateNavigator::prevYearClicked);
-    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this,
-            &KDateNavigator::prevMonthClicked);
-    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this,
-            &KDateNavigator::nextMonthClicked);
+    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, &KDateNavigator::prevMonthClicked);
+    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, &KDateNavigator::nextMonthClicked);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, this, &KDateNavigator::nextYearClicked);
     connect(mNavigatorBar, &NavigatorBar::monthSelected, this, &KDateNavigator::monthSelected);
     connect(mNavigatorBar, &NavigatorBar::yearSelected, this, &KDateNavigator::yearSelected);
@@ -67,8 +65,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     connect(mDayMatrix, &KODayMatrix::selected, this, &KDateNavigator::datesSelected);
 
     connect(mDayMatrix, &KODayMatrix::incidenceDropped, this, &KDateNavigator::incidenceDropped);
-    connect(mDayMatrix, &KODayMatrix::incidenceDroppedMove, this,
-            &KDateNavigator::incidenceDroppedMove);
+    connect(mDayMatrix, &KODayMatrix::incidenceDroppedMove, this, &KDateNavigator::incidenceDroppedMove);
 
     connect(mDayMatrix, &KODayMatrix::newEventSignal, this, &KDateNavigator::newEventSignal);
     connect(mDayMatrix, &KODayMatrix::newTodoSignal, this, &KDateNavigator::newTodoSignal);
@@ -93,9 +90,7 @@ void KDateNavigator::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
     mCalendar = calendar;
 
     if (mCalendar) {
-        connect(
-            mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this,
-            &KDateNavigator::setUpdateNeeded);
+        connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &KDateNavigator::setUpdateNeeded);
     }
 
     mDayMatrix->setCalendar(calendar);
@@ -121,8 +116,7 @@ void KDateNavigator::setBaseDate(const QDate &date)
 
 QSizePolicy KDateNavigator::sizePolicy() const
 {
-    return {QSizePolicy::MinimumExpanding,
-                       QSizePolicy::MinimumExpanding};
+    return {QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding};
 }
 
 void KDateNavigator::updateToday()
@@ -179,8 +173,7 @@ void KDateNavigator::updateDates()
         QString weeknum;
 
         if (weeknumstart != weeknumend) {
-            weeknum = i18nc("start/end week number of line in date picker", "%1/%2",
-                            weeknumstart, weeknumend);
+            weeknum = i18nc("start/end week number of line in date picker", "%1/%2", weeknumstart, weeknumend);
         } else {
             weeknum.setNum(weeknumstart);
         }
@@ -188,11 +181,12 @@ void KDateNavigator::updateDates()
         mWeeknos[i]->setToolTip(i18n("Scroll to week number %1", weeknum));
         mWeeknos[i]->setWhatsThis(
             i18n("Click here to scroll the display to week number %1 "
-                 "of the currently displayed year.", weeknum));
+                 "of the currently displayed year.",
+                 weeknum));
     }
 
-// each updateDates is followed by an updateView -> repaint is issued there !
-//  mDayMatrix->repaint();
+    // each updateDates is followed by an updateView -> repaint is issued there !
+    //  mDayMatrix->repaint();
 }
 
 void KDateNavigator::updateDayMatrix()
@@ -233,14 +227,13 @@ void KDateNavigator::updateConfig()
         QString longDayName = QLocale().dayName(day, QLocale::LongFormat);
         mHeadings[i]->setText(dayName);
         mHeadings[i]->setToolTip(i18n("%1", longDayName));
-        mHeadings[i]->setWhatsThis(
-            i18n("A column header of the %1 dates in the month.", longDayName));
+        mHeadings[i]->setWhatsThis(i18n("A column header of the %1 dates in the month.", longDayName));
     }
     mDayMatrix->setUpdateNeeded();
     updateDayMatrix();
     update();
     // FIXME: Use actual config setting here
-//  setShowWeekNums( true );
+    //  setShowWeekNums( true );
 }
 
 void KDateNavigator::setShowWeekNums(bool enabled)
@@ -265,8 +258,7 @@ void KDateNavigator::selectMonthHelper(int monthDifference)
 
     setBaseDate(baseDateNextMonth);
     mSelectedDates = newSelection;
-    mDayMatrix->setSelectedDaysFrom(*(newSelection.begin()),
-                                    *(--newSelection.end()));
+    mDayMatrix->setSelectedDaysFrom(*(newSelection.begin()), *(--newSelection.end()));
     updateView();
 }
 
@@ -287,8 +279,7 @@ void KDateNavigator::selectDates(const KCalendarCore::DateList &dateList)
 
         updateDates();
 
-        mDayMatrix->setSelectedDaysFrom(*(dateList.begin()),
-                                        *(--dateList.end()));
+        mDayMatrix->setSelectedDaysFrom(*(dateList.begin()), *(--dateList.end()));
 
         updateView();
     }

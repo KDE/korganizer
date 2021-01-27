@@ -14,7 +14,8 @@
 class KOPrefsPrivate
 {
 public:
-    KOPrefsPrivate() : prefs(new KOPrefs)
+    KOPrefsPrivate()
+        : prefs(new KOPrefs)
     {
     }
 
@@ -28,14 +29,14 @@ public:
 
 Q_GLOBAL_STATIC(KOPrefsPrivate, sInstance)
 
-KOPrefs::KOPrefs() : KOPrefsBase()
+KOPrefs::KOPrefs()
+    : KOPrefsBase()
 {
     mEventViewsPrefs = EventViews::PrefsPtr(new EventViews::Prefs(this));
 
     mDefaultMonthViewFont = QFontDatabase::systemFont(QFontDatabase::GeneralFont);
     // make it a bit smaller
-    mDefaultMonthViewFont.setPointSize(
-        qMax(mDefaultMonthViewFont.pointSize() - 2, 6));
+    mDefaultMonthViewFont.setPointSize(qMax(mDefaultMonthViewFont.pointSize() - 2, 6));
 
     KConfigSkeleton::setCurrentGroup(QStringLiteral("General"));
 

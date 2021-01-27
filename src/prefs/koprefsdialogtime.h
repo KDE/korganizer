@@ -14,7 +14,8 @@
 class QSpinBox;
 class KComboBox;
 class QCheckBox;
-namespace KPIM {
+namespace KPIM
+{
 class KCheckComboBox;
 }
 

@@ -12,14 +12,16 @@
 
 #include <KCalendarCore/Event>
 
-#include <KontactInterface/Summary>
 #include <Akonadi/Calendar/ETMCalendar>
+#include <KontactInterface/Summary>
 
-namespace KHolidays {
+namespace KHolidays
+{
 class HolidayRegion;
 }
 
-namespace KontactInterface {
+namespace KontactInterface
+{
 class Plugin;
 }
 

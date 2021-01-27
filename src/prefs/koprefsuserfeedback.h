@@ -13,7 +13,8 @@
 #include <KCModule>
 
 #ifdef WITH_KUSERFEEDBACK
-namespace KUserFeedback {
+namespace KUserFeedback
+{
 class FeedbackConfigWidget;
 }
 class KOPrefsUserFeedBack : public KCModule
@@ -24,6 +25,7 @@ public:
 protected:
     void load() override;
     void save() override;
+
 private:
     KUserFeedback::FeedbackConfigWidget *mUserFeedbackWidget = nullptr;
 };

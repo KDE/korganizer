@@ -24,9 +24,7 @@
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
-    mPixmap.insert(Quickview,
-                   KIconLoader::global()->loadIcon(QStringLiteral("quickview"),
-                                                   KIconLoader::Small));
+    mPixmap.insert(Quickview, KIconLoader::global()->loadIcon(QStringLiteral("quickview"), KIconLoader::Small));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
@@ -35,7 +33,7 @@ StyledCalendarDelegate::~StyledCalendarDelegate()
 
 static QRect enableButtonRect(QRect rect, int pos = 1)
 {
-    //2px border on each side of the icon
+    // 2px border on each side of the icon
     static int border = 2;
     const int side = rect.height() - (2 * border);
     const int offset = side * pos + border * (pos + 1);
@@ -66,15 +64,12 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixm
     return option;
 }
 
-QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(
-    const QStyleOptionViewItem &, const QModelIndex &index) const
+QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &, const QModelIndex &index) const
 {
     const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
     // qCDebug(KORGANIZER_LOG) << index.data().toString() << enabled;
-    const bool isSearchCollection
-        = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
-    const bool isKolabCollection = col.resource().startsWith(QLatin1String(
-                                                                 "akonadi_kolab_resource"));
+    const bool isSearchCollection = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
+    const bool isKolabCollection = col.resource().startsWith(QLatin1String("akonadi_kolab_resource"));
     const bool isTopLevelCollection = (col.parentCollection() == Akonadi::Collection::root());
     const bool isToplevelSearchCollection = (isTopLevelCollection && isSearchCollection);
     const bool isToplevelKolabCollection = (isTopLevelCollection && isKolabCollection);
@@ -104,7 +99,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
 
     QStyle *s = style(option);
 
-    //Buttons
+    // Buttons
     {
         int i = 1;
         const auto lstActions = getActions(option, index);
@@ -125,7 +120,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         }
     }
 
-    //Color indicator
+    // Color indicator
     if (opt.checkState) {
         QColor color = KOHelper::resourceColorKnown(col);
         if (!color.isValid()) {
@@ -159,8 +154,7 @@ bool StyledCalendarDelegate::editorEvent(QEvent *event, QAbstractItemModel *mode
 
     int button = -1;
     // make sure that we have the right event type
-    if ((event->type() == QEvent::MouseButtonRelease)
-        || (event->type() == QEvent::MouseButtonPress)) {
+    if ((event->type() == QEvent::MouseButtonRelease) || (event->type() == QEvent::MouseButtonPress)) {
         auto me = static_cast<QMouseEvent *>(event);
 
         for (int i = 1; i < 4; i++) {

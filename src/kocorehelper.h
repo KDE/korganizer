@@ -11,10 +11,10 @@
 #ifndef KORG_KOCOREHELPER_H
 #define KORG_KOCOREHELPER_H
 
+#include "corehelper.h"
 #include "kocore.h"
 #include "koglobals.h"
 #include "prefs/koprefs.h"
-#include "corehelper.h"
 
 class KOCoreHelper : public KOrg::CoreHelper
 {

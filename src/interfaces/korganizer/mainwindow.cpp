@@ -8,7 +8,8 @@
 
 #include "mainwindow.h"
 
-namespace KOrg {
+namespace KOrg
+{
 MainWindow::MainWindow()
 {
 }

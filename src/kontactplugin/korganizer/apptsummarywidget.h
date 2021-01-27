@@ -10,12 +10,13 @@
 #ifndef SUMMARYWIDGET_H
 #define SUMMARYWIDGET_H
 
-#include <KontactInterface/Summary>
 #include <Akonadi/Calendar/ETMCalendar>
+#include <KontactInterface/Summary>
 
 class KOrganizerPlugin;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 class IncidenceChanger;
 }

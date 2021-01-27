@@ -12,13 +12,14 @@
 #define KORG_AKONADICOLLECTIONVIEW_H
 
 #include "calendarview.h"
-#include <AkonadiCore/Collection>
 #include "views/collectionview/reparentingmodel.h"
+#include <AkonadiCore/Collection>
 
 class AkonadiCollectionView;
 class ManageShowCollectionProperties;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class EntityTreeView;
 class EntityTreeModel;
 class StandardCalendarActionManager;
@@ -90,6 +91,7 @@ private Q_SLOTS:
     void onSearchIsActive(bool);
     void onAction(const QModelIndex &index, int action);
     void slotServerSideSubscription();
+
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
 
@@ -103,7 +105,7 @@ private:
     QAction *mServerSideSubscription = nullptr;
     bool mNotSendAddRemoveSignal = false;
     bool mWasDefaultCalendar = false;
-    const  bool mHasContextMenu;
+    const bool mHasContextMenu;
     NewNodeExpander *mNewNodeExpander = nullptr;
     ManageShowCollectionProperties *mManagerShowCollectionProperties = nullptr;
 };

@@ -13,7 +13,8 @@
 #include "baseview.h"
 #include <Akonadi/Calendar/ETMCalendar>
 
-namespace KOrg {
+namespace KOrg
+{
 /**
   @short interface for main calendar view widget
   @author Cornelius Schumacher
@@ -21,7 +22,8 @@ namespace KOrg {
 class CalendarViewBase : public QWidget
 {
 public:
-    explicit CalendarViewBase(QWidget *parent) : QWidget(parent)
+    explicit CalendarViewBase(QWidget *parent)
+        : QWidget(parent)
     {
     }
 

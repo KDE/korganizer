@@ -19,15 +19,18 @@ class QPushButton;
 class CalendarView;
 class KOEventPopupMenu;
 
-namespace Ui {
+namespace Ui
+{
 class SearchDialog;
 }
 
-namespace EventViews {
+namespace EventViews
+{
 class ListView;
 }
 
-namespace KCalendarCore {
+namespace KCalendarCore
+{
 class Incidence;
 }
 
@@ -52,6 +55,7 @@ Q_SIGNALS:
 protected:
     /*reimp*/
     void showEvent(QShowEvent *event) override;
+
 private:
     void doSearch();
     void searchPatternChanged(const QString &pattern);

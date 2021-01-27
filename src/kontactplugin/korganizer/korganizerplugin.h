@@ -13,7 +13,8 @@
 
 class OrgKdeKorganizerCalendarInterface;
 
-namespace KontactInterface {
+namespace KontactInterface
+{
 class UniqueAppWatcher;
 }
 

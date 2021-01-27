@@ -45,8 +45,7 @@ public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
-    void changeIncidenceDisplay(const Akonadi::Item &,
-                                Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
 
 private:
     EventViews::WhatsNextView *const mView;

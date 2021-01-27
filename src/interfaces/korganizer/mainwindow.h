@@ -20,7 +20,8 @@ class KXMLGUIFactory;
 
 class QWidget;
 
-namespace KOrg {
+namespace KOrg
+{
 class CalendarViewBase;
 
 /**

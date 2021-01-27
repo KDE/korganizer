@@ -11,21 +11,20 @@
 #include "aboutdata.h"
 #include "actionmanager.h"
 #include "calendarview.h"
-#include "kocore.h"
 #include "impl/korganizerifaceimpl.h"
+#include "kocore.h"
 #include <CalendarSupport/Utils>
 
 #include <KCalUtils/IncidenceFormatter>
 
-#include <QStatusBar>
-#include <KParts/StatusBarExtension>
 #include "korganizer_debug.h"
 #include "korgmigrateapplication.h"
+#include <KParts/StatusBarExtension>
+#include <QStatusBar>
 
 #include <QVBoxLayout>
 
-K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();
-                 )
+K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
     : KParts::ReadOnlyPart(parent)
@@ -88,8 +87,7 @@ void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date
     const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
     if (incidence) {
         Q_EMIT textChanged(incidence->summary() + QLatin1String(" / ")
-                           +KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().
-                                                                        toLocalTime().time()));
+                           + KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().toLocalTime().time()));
     } else {
         Q_EMIT textChanged(QString());
     }
@@ -147,10 +145,10 @@ bool KOrganizerPart::openFile()
 // FIXME: This is copied verbatim from the KOrganizer class. Move it to the common base class!
 void KOrganizerPart::setTitle()
 {
-//  qCDebug(KORGANIZER_LOG) <<"KOrganizer::setTitle";
-// FIXME: Inside kontact we want to have different titles depending on the
-//        type of view (calendar, to-do, journal). How can I add the filter
-//        name in that case?
+    //  qCDebug(KORGANIZER_LOG) <<"KOrganizer::setTitle";
+    // FIXME: Inside kontact we want to have different titles depending on the
+    //        type of view (calendar, to-do, journal). How can I add the filter
+    //        name in that case?
     /*
       QString title;
       if ( !hasDocument() ) {

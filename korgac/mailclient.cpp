@@ -8,9 +8,9 @@
 
 #include <config-enterprise.h>
 
-#include "mailclient.h"
-#include "korganizer-version.h"
 #include "koalarmclient_debug.h"
+#include "korganizer-version.h"
+#include "mailclient.h"
 
 #include <QElapsedTimer>
 
@@ -27,16 +27,17 @@
 
 #include <KEmailAddress>
 
-#include <MailTransportAkonadi/MessageQueueJob>
 #include <MailTransport/Transport>
 #include <MailTransport/TransportManager>
+#include <MailTransportAkonadi/MessageQueueJob>
 
 #include <KLocalizedString>
 #include <KProtocolManager>
 
 using namespace KOrg;
 
-MailClient::MailClient() : QObject()
+MailClient::MailClient()
+    : QObject()
 {
 }
 
@@ -49,7 +50,11 @@ QString const MailClient::errorMsg()
     return errorString;
 }
 
-bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, bool bccMe, const QString &attachment, const QString &mailTransport)
+bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidence,
+                               const KIdentityManagement::Identity &identity,
+                               bool bccMe,
+                               const QString &attachment,
+                               const QString &mailTransport)
 {
     const KCalendarCore::Attendee::List attendees = incidence->attendees();
     if (attendees.isEmpty()) {
@@ -85,8 +90,7 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
         tname += QLatin1String(" <") + email + QLatin1Char('>');
 
         // Optional Participants and Non-Participants are copied on the email
-        if (a.role() == KCalendarCore::Attendee::OptParticipant
-            || a.role() == KCalendarCore::Attendee::NonParticipant) {
+        if (a.role() == KCalendarCore::Attendee::OptParticipant || a.role() == KCalendarCore::Attendee::NonParticipant) {
             ccList << tname;
         } else {
             toList << tname;
@@ -115,14 +119,18 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
         subject = i18n("Free Busy Object");
     }
 
-    const QString body
-        = KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
+    const QString body = KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
 
-    return send(identity, from, to, cc, subject, body, false,
-                bccMe, attachment, mailTransport);
+    return send(identity, from, to, cc, subject, body, false, bccMe, attachment, mailTransport);
 }
 
-bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &attachment, const QString &sub, const QString &mailTransport)
+bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidence,
+                               const KIdentityManagement::Identity &identity,
+                               const QString &from,
+                               bool bccMe,
+                               const QString &attachment,
+                               const QString &sub,
+                               const QString &mailTransport)
 {
     const QString to = incidence->organizer().fullName();
     QString subject = sub;
@@ -138,11 +146,16 @@ bool MailClient::mailOrganizer(const KCalendarCore::IncidenceBase::Ptr &incidenc
 
     const QString body = KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
 
-    return send(identity, from, to, QString(), subject, body, false,
-                bccMe, attachment, mailTransport);
+    return send(identity, from, to, QString(), subject, body, false, bccMe, attachment, mailTransport);
 }
 
-bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence, const KIdentityManagement::Identity &identity, const QString &from, bool bccMe, const QString &recipients, const QString &attachment, const QString &mailTransport)
+bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence,
+                        const KIdentityManagement::Identity &identity,
+                        const QString &from,
+                        bool bccMe,
+                        const QString &recipients,
+                        const QString &attachment,
+                        const QString &mailTransport)
 {
     QString subject;
 
@@ -152,11 +165,9 @@ bool MailClient::mailTo(const KCalendarCore::IncidenceBase::Ptr &incidence, cons
     } else {
         subject = i18n("Free Busy Message");
     }
-    const QString body
-        = KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
+    const QString body = KCalUtils::IncidenceFormatter::mailBodyStr(incidence);
 
-    return send(identity, from, recipients, QString(), subject, body, false,
-                bccMe, attachment, mailTransport);
+    return send(identity, from, recipients, QString(), subject, body, false, bccMe, attachment, mailTransport);
 }
 
 QStringList extractEmailAndNormalize(const QString &email)
@@ -165,19 +176,26 @@ QStringList extractEmailAndNormalize(const QString &email)
     QStringList normalizedEmail;
     normalizedEmail.reserve(splittedEmail.count());
     for (const QString &email : splittedEmail) {
-        const QString str
-            = KEmailAddress::extractEmailAddress(KEmailAddress::normalizeAddressesAndEncodeIdn(email));
+        const QString str = KEmailAddress::extractEmailAddress(KEmailAddress::normalizeAddressesAndEncodeIdn(email));
         normalizedEmail << str;
     }
     return normalizedEmail;
 }
 
-bool MailClient::send(const KIdentityManagement::Identity &identity, const QString &from, const QString &_to, const QString &cc, const QString &subject, const QString &body, bool hidden, bool bccMe, const QString &attachment, const QString &mailTransport)
+bool MailClient::send(const KIdentityManagement::Identity &identity,
+                      const QString &from,
+                      const QString &_to,
+                      const QString &cc,
+                      const QString &subject,
+                      const QString &body,
+                      bool hidden,
+                      bool bccMe,
+                      const QString &attachment,
+                      const QString &mailTransport)
 {
     Q_UNUSED(hidden)
 
-    if (!MailTransport::TransportManager::self()->showTransportCreationDialog(
-            nullptr, MailTransport::TransportManager::IfNoTransportExists)) {
+    if (!MailTransport::TransportManager::self()->showTransportCreationDialog(nullptr, MailTransport::TransportManager::IfNoTransportExists)) {
         errorString = i18n("Unable to start the transport manager");
         return false;
     }
@@ -188,31 +206,24 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
     if (to.isEmpty()) {
         to = from;
     }
-    qCDebug(KOALARMCLIENT_LOG) << "\nFrom:" << from
-                               << "\nTo:" << to
-                               << "\nCC:" << cc
-                               << "\nSubject:" << subject << "\nBody: \n" << body
-                               << "\nAttachment:\n" << attachment
-                               << "\nmailTransport: " << mailTransport;
+    qCDebug(KOALARMCLIENT_LOG) << "\nFrom:" << from << "\nTo:" << to << "\nCC:" << cc << "\nSubject:" << subject << "\nBody: \n"
+                               << body << "\nAttachment:\n"
+                               << attachment << "\nmailTransport: " << mailTransport;
 
     QElapsedTimer timer;
     timer.start();
 
-    MailTransport::Transport *transport
-        = MailTransport::TransportManager::self()->transportByName(mailTransport);
+    MailTransport::Transport *transport = MailTransport::TransportManager::self()->transportByName(mailTransport);
 
     if (!transport) {
-        transport = MailTransport::TransportManager::self()->transportById(
-            MailTransport::TransportManager::self()->defaultTransportId(), false);
+        transport = MailTransport::TransportManager::self()->transportById(MailTransport::TransportManager::self()->defaultTransportId(), false);
     }
 
     if (!transport) {
         // TODO: we need better error handling. Currently korganizer says "Error sending invitation".
         // Using a boolean for errors isn't granular enough.
-        qCCritical(KOALARMCLIENT_LOG) << "Error fetching transport; mailTransport"
-                                      << mailTransport
-                                      << MailTransport::TransportManager::self()->
-            defaultTransportName();
+        qCCritical(KOALARMCLIENT_LOG) << "Error fetching transport; mailTransport" << mailTransport
+                                      << MailTransport::TransportManager::self()->defaultTransportName();
         errorString = i18n("Unable to determine a mail transport");
         return false;
     }
@@ -229,7 +240,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
 #else
                                                                 false
 #endif
-                                                                );
+    );
 
     // Now build the message we like to send. The message KMime::Message::Ptr instance
     // will be the root message that has 2 additional message. The body itself and
@@ -239,14 +250,13 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
     message->contentTransferEncoding()->setDecoded(true);
 
     // Set the headers
-    message->userAgent()->fromUnicodeString(
-        KProtocolManager::userAgentForApplication(
-            QStringLiteral("KOrganizer"), QStringLiteral(KORGANIZER_VERSION)), "utf-8");
+    message->userAgent()->fromUnicodeString(KProtocolManager::userAgentForApplication(QStringLiteral("KOrganizer"), QStringLiteral(KORGANIZER_VERSION)),
+                                            "utf-8");
     message->from()->fromUnicodeString(from, "utf-8");
     message->to()->fromUnicodeString(to, "utf-8");
     message->cc()->fromUnicodeString(cc, "utf-8");
     if (bccMe) {
-        message->bcc()->fromUnicodeString(from, "utf-8");   //from==me, right?
+        message->bcc()->fromUnicodeString(from, "utf-8"); // from==me, right?
     }
     message->date()->setDateTime(QDateTime::currentDateTime());
     message->subject()->fromUnicodeString(subject, "utf-8");
@@ -258,8 +268,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
         message->contentType()->setParameter(QStringLiteral("method"), QStringLiteral("request"));
 
         if (!attachment.isEmpty()) {
-            auto *disposition
-                = new KMime::Headers::ContentDisposition;
+            auto *disposition = new KMime::Headers::ContentDisposition;
             disposition->setDisposition(KMime::Headers::CDinline);
             message->setHeader(disposition);
             message->contentTransferEncoding()->setEncoding(KMime::Headers::CEquPr);
@@ -277,8 +286,7 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
 
         // Set the first multipart, the body message.
         auto bodyMessage = new KMime::Content;
-        auto *bodyDisposition
-            = new KMime::Headers::ContentDisposition;
+        auto *bodyDisposition = new KMime::Headers::ContentDisposition;
         bodyDisposition->setDisposition(KMime::Headers::CDinline);
         bodyMessage->contentType()->setMimeType("text/plain");
         bodyMessage->contentType()->setCharset("utf-8");
@@ -290,14 +298,12 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
         // Set the second multipart, the attachment.
         if (!attachment.isEmpty()) {
             auto attachMessage = new KMime::Content;
-            auto *attachDisposition
-                = new KMime::Headers::ContentDisposition;
+            auto *attachDisposition = new KMime::Headers::ContentDisposition;
             attachDisposition->setDisposition(KMime::Headers::CDattachment);
             attachMessage->contentType()->setMimeType("text/calendar");
             attachMessage->contentType()->setCharset("utf-8");
             attachMessage->contentType()->setName(QStringLiteral("cal.ics"), "utf-8");
-            attachMessage->contentType()->setParameter(QStringLiteral("method"),
-                                                       QStringLiteral("request"));
+            attachMessage->contentType()->setParameter(QStringLiteral("method"), QStringLiteral("request"));
             attachMessage->setHeader(attachDisposition);
             attachMessage->contentTransferEncoding()->setEncoding(KMime::Headers::CEquPr);
             attachMessage->setBody(KMime::CRLFtoLF(attachment.toUtf8()));
@@ -313,28 +319,22 @@ bool MailClient::send(const KIdentityManagement::Identity &identity, const QStri
     qjob->transportAttribute().setTransportId(transportId);
 
     if (identity.disabledFcc()) {
-        qjob->sentBehaviourAttribute().setSentBehaviour(
-            MailTransport::SentBehaviourAttribute::Delete);
+        qjob->sentBehaviourAttribute().setSentBehaviour(MailTransport::SentBehaviourAttribute::Delete);
     } else {
         const Akonadi::Collection sentCollection(identity.fcc().toLongLong());
         if (sentCollection.isValid()) {
-            qjob->sentBehaviourAttribute().setSentBehaviour(
-                MailTransport::SentBehaviourAttribute::MoveToCollection);
+            qjob->sentBehaviourAttribute().setSentBehaviour(MailTransport::SentBehaviourAttribute::MoveToCollection);
             qjob->sentBehaviourAttribute().setMoveToCollection(sentCollection);
         } else {
-            qjob->sentBehaviourAttribute().setSentBehaviour(
-                MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection);
+            qjob->sentBehaviourAttribute().setSentBehaviour(MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection);
         }
     }
 
     if (transport->specifySenderOverwriteAddress()) {
         qjob->addressAttribute().setFrom(
-            KEmailAddress::extractEmailAddress(
-                KEmailAddress::normalizeAddressesAndEncodeIdn(transport->senderOverwriteAddress())));
+            KEmailAddress::extractEmailAddress(KEmailAddress::normalizeAddressesAndEncodeIdn(transport->senderOverwriteAddress())));
     } else {
-        qjob->addressAttribute().setFrom(
-            KEmailAddress::extractEmailAddress(
-                KEmailAddress::normalizeAddressesAndEncodeIdn(from)));
+        qjob->addressAttribute().setFrom(KEmailAddress::extractEmailAddress(KEmailAddress::normalizeAddressesAndEncodeIdn(from)));
     }
 
     if (!to.isEmpty()) {

@@ -53,7 +53,8 @@ public:
     struct NodeManager {
         using Ptr = QSharedPointer<NodeManager>;
 
-        NodeManager(ReparentingModel &m) : model(m)
+        NodeManager(ReparentingModel &m)
+            : model(m)
         {
         }
 
@@ -67,7 +68,7 @@ public:
     private:
         friend class ReparentingModel;
 
-        //Allows the implementation to create proxy nodes as necessary
+        // Allows the implementation to create proxy nodes as necessary
         virtual void checkSourceIndex(const QModelIndex & /* sourceIndex */)
         {
         }

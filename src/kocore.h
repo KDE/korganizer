@@ -17,7 +17,8 @@
 
 #include <KService>
 
-namespace KIdentityManagement {
+namespace KIdentityManagement
+{
 class IdentityManager;
 }
 
@@ -35,8 +36,7 @@ public:
     CalendarSupport::Plugin *loadPlugin(const KService::Ptr &service);
     CalendarSupport::Plugin *loadPlugin(const QString &);
 
-    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(
-        const KService::Ptr &service);
+    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KService::Ptr &service);
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const QString &);
 
     KOrg::Part *loadPart(const KService::Ptr &, KOrg::MainWindow *parent);

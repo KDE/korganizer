@@ -12,14 +12,13 @@
 #include <KLocalizedString>
 #include <QVBoxLayout>
 #ifdef WITH_KUSERFEEDBACK
-#include <KUserFeedback/FeedbackConfigWidget>
 #include "userfeedback/userfeedbackmanager.h"
+#include <KUserFeedback/FeedbackConfigWidget>
 #endif
 
 #ifdef WITH_KUSERFEEDBACK
 
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_korguserfeeback(QWidget *parent, const char *)
 {
     return new KOPrefsUserFeedBack(parent);

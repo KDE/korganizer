@@ -27,77 +27,53 @@ MonthView::MonthView(QWidget *parent)
     layout->addWidget(mMonthView);
     mPopup = eventPopup();
 
-    connect(mMonthView, &EventViews::MonthView::showIncidencePopupSignal, mPopup,
-            &KOEventPopupMenu::showIncidencePopup);
+    connect(mMonthView, &EventViews::MonthView::showIncidencePopupSignal, mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this,
-            &MonthView::showNewEventPopup);
+    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
 
-    connect(mMonthView, &EventViews::EventView::datesSelected,
-            this, &KOEventView::datesSelected);
+    connect(mMonthView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
-    connect(mMonthView, &EventViews::EventView::shiftedEvent,
-            this, &KOEventView::shiftedEvent);
+    connect(mMonthView, &EventViews::EventView::shiftedEvent, this, &KOEventView::shiftedEvent);
 
-    connect(mMonthView, &EventViews::EventView::incidenceSelected,
-            this, &BaseView::incidenceSelected);
+    connect(mMonthView, &EventViews::EventView::incidenceSelected, this, &BaseView::incidenceSelected);
 
-    connect(mMonthView, &EventViews::EventView::showIncidenceSignal,
-            this, &BaseView::showIncidenceSignal);
+    connect(mMonthView, &EventViews::EventView::showIncidenceSignal, this, &BaseView::showIncidenceSignal);
 
-    connect(mMonthView, &EventViews::EventView::editIncidenceSignal,
-            this, &BaseView::editIncidenceSignal);
+    connect(mMonthView, &EventViews::EventView::editIncidenceSignal, this, &BaseView::editIncidenceSignal);
 
-    connect(mMonthView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &BaseView::deleteIncidenceSignal);
+    connect(mMonthView, &EventViews::EventView::deleteIncidenceSignal, this, &BaseView::deleteIncidenceSignal);
 
-    connect(mMonthView, &EventViews::EventView::cutIncidenceSignal,
-            this, &BaseView::cutIncidenceSignal);
+    connect(mMonthView, &EventViews::EventView::cutIncidenceSignal, this, &BaseView::cutIncidenceSignal);
 
-    connect(mMonthView, &EventViews::EventView::copyIncidenceSignal,
-            this, &BaseView::copyIncidenceSignal);
+    connect(mMonthView, &EventViews::EventView::copyIncidenceSignal, this, &BaseView::copyIncidenceSignal);
 
-    connect(mMonthView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &BaseView::pasteIncidenceSignal);
+    connect(mMonthView, &EventViews::EventView::pasteIncidenceSignal, this, &BaseView::pasteIncidenceSignal);
 
-    connect(mMonthView, &EventViews::EventView::toggleAlarmSignal,
-            this, &BaseView::toggleAlarmSignal);
+    connect(mMonthView, &EventViews::EventView::toggleAlarmSignal, this, &BaseView::toggleAlarmSignal);
 
-    connect(mMonthView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &BaseView::toggleTodoCompletedSignal);
+    connect(mMonthView, &EventViews::EventView::toggleTodoCompletedSignal, this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(mMonthView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &BaseView::copyIncidenceToResourceSignal);
+    connect(mMonthView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mMonthView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &BaseView::moveIncidenceToResourceSignal);
+    connect(mMonthView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mMonthView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &BaseView::dissociateOccurrencesSignal);
+    connect(mMonthView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mMonthView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(mMonthView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(mMonthView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(mMonthView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(mMonthView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(mMonthView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(mMonthView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(mMonthView, &EventViews::EventView::newTodoSignal,
-            this, &BaseView::newTodoSignal);
+    connect(mMonthView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
-    connect(mMonthView, &EventViews::EventView::newSubTodoSignal,
-            this, &BaseView::newSubTodoSignal);
+    connect(mMonthView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
-    connect(mMonthView, &EventViews::EventView::newJournalSignal,
-            this, &BaseView::newJournalSignal);
+    connect(mMonthView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 
-    connect(mMonthView, &EventViews::MonthView::fullViewChanged,
-            this, &MonthView::fullViewChanged);
+    connect(mMonthView, &EventViews::MonthView::fullViewChanged, this, &MonthView::fullViewChanged);
 }
 
 MonthView::~MonthView()

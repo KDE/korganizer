@@ -16,62 +16,43 @@ KOWhatsNextView::KOWhatsNextView(QWidget *parent)
     auto topLayout = new QVBoxLayout(this);
     topLayout->addWidget(mView);
 
-    connect(mView, &EventViews::EventView::incidenceSelected,
-            this, &KOrg::BaseView::incidenceSelected);
+    connect(mView, &EventViews::EventView::incidenceSelected, this, &KOrg::BaseView::incidenceSelected);
 
-    connect(mView, &EventViews::EventView::showIncidenceSignal,
-            this, &KOrg::BaseView::showIncidenceSignal);
+    connect(mView, &EventViews::EventView::showIncidenceSignal, this, &KOrg::BaseView::showIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::editIncidenceSignal,
-            this, &KOrg::BaseView::editIncidenceSignal);
+    connect(mView, &EventViews::EventView::editIncidenceSignal, this, &KOrg::BaseView::editIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &KOrg::BaseView::deleteIncidenceSignal);
+    connect(mView, &EventViews::EventView::deleteIncidenceSignal, this, &KOrg::BaseView::deleteIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::cutIncidenceSignal,
-            this, &KOrg::BaseView::cutIncidenceSignal);
+    connect(mView, &EventViews::EventView::cutIncidenceSignal, this, &KOrg::BaseView::cutIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::copyIncidenceSignal,
-            this, &KOrg::BaseView::copyIncidenceSignal);
+    connect(mView, &EventViews::EventView::copyIncidenceSignal, this, &KOrg::BaseView::copyIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &KOrg::BaseView::pasteIncidenceSignal);
+    connect(mView, &EventViews::EventView::pasteIncidenceSignal, this, &KOrg::BaseView::pasteIncidenceSignal);
 
-    connect(mView, &EventViews::EventView::toggleAlarmSignal,
-            this, &KOrg::BaseView::toggleAlarmSignal);
+    connect(mView, &EventViews::EventView::toggleAlarmSignal, this, &KOrg::BaseView::toggleAlarmSignal);
 
-    connect(mView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &KOrg::BaseView::toggleTodoCompletedSignal);
+    connect(mView, &EventViews::EventView::toggleTodoCompletedSignal, this, &KOrg::BaseView::toggleTodoCompletedSignal);
 
-    connect(mView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &KOrg::BaseView::copyIncidenceToResourceSignal);
+    connect(mView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &KOrg::BaseView::copyIncidenceToResourceSignal);
 
-    connect(mView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &KOrg::BaseView::moveIncidenceToResourceSignal);
+    connect(mView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &KOrg::BaseView::moveIncidenceToResourceSignal);
 
-    connect(mView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &KOrg::BaseView::dissociateOccurrencesSignal);
+    connect(mView, &EventViews::EventView::dissociateOccurrencesSignal, this, &KOrg::BaseView::dissociateOccurrencesSignal);
 
-    connect(mView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(mView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(mView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(mView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(mView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(mView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(mView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(mView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(mView, &EventViews::EventView::newTodoSignal,
-            this, &KOrg::BaseView::newTodoSignal);
+    connect(mView, &EventViews::EventView::newTodoSignal, this, &KOrg::BaseView::newTodoSignal);
 
-    connect(mView, &EventViews::EventView::newSubTodoSignal,
-            this, &KOrg::BaseView::newSubTodoSignal);
+    connect(mView, &EventViews::EventView::newSubTodoSignal, this, &KOrg::BaseView::newSubTodoSignal);
 
-    connect(mView, &EventViews::EventView::newJournalSignal,
-            this, &KOrg::BaseView::newJournalSignal);
+    connect(mView, &EventViews::EventView::newJournalSignal, this, &KOrg::BaseView::newJournalSignal);
 }
 
 KOWhatsNextView::~KOWhatsNextView()

@@ -14,8 +14,8 @@
 #include <KStartupInfo>
 #include <KWindowSystem>
 
-#include <QDBusMessage>
 #include <QDBusConnection>
+#include <QDBusMessage>
 
 void KOrganizerUniqueAppHandler::loadCommandLineOptions(QCommandLineParser *parser)
 {
@@ -31,8 +31,7 @@ int KOrganizerUniqueAppHandler::activate(const QStringList &args, const QString 
 
     QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.korganizer"),
                                                           QStringLiteral("/Korganizer"),
-                                                          QStringLiteral(
-                                                              "org.kde.korganizer.Korganizer"),
+                                                          QStringLiteral("org.kde.korganizer.Korganizer"),
                                                           QStringLiteral("handleCommandLine"));
     message.setArguments(QList<QVariant>() << (args));
     QDBusConnection::sessionBus().send(message);

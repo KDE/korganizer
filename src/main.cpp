@@ -10,11 +10,11 @@
 #include "aboutdata.h"
 #include "koapp.h"
 #include "korganizer.h"
-#include "korganizer_options.h"
 #include "korganizer_debug.h"
+#include "korganizer_options.h"
 #include "korgmigrateapplication.h"
-#include <KLocalizedString>
 #include <KCrash>
+#include <KLocalizedString>
 
 #ifdef WITH_KUSERFEEDBACK
 #include "userfeedback/korganizeruserfeedbackprovider.h"

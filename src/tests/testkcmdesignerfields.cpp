@@ -15,7 +15,8 @@ class MyDesignerFields : public KCMDesignerFields
 {
     Q_OBJECT
 public:
-    MyDesignerFields() : KCMDesignerFields(nullptr)
+    MyDesignerFields()
+        : KCMDesignerFields(nullptr)
     {
     }
 

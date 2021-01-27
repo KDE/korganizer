@@ -52,15 +52,13 @@ void SummaryEventInfo::setShowSpecialEvents(bool showBirthdays, bool showAnniver
 
 bool SummaryEventInfo::skip(const KCalendarCore::Event::Ptr &event)
 {
-    //simply check categories because the birthdays resource always adds
-    //the appropriate category to the event.
+    // simply check categories because the birthdays resource always adds
+    // the appropriate category to the event.
     QStringList c = event->categories();
-    if (!mShowBirthdays
-        && c.contains(QLatin1String("BIRTHDAY"), Qt::CaseInsensitive)) {
+    if (!mShowBirthdays && c.contains(QLatin1String("BIRTHDAY"), Qt::CaseInsensitive)) {
         return true;
     }
-    if (!mShowAnniversaries
-        && c.contains(QLatin1String("ANNIVERSARY"), Qt::CaseInsensitive)) {
+    if (!mShowAnniversaries && c.contains(QLatin1String("ANNIVERSARY"), Qt::CaseInsensitive)) {
         return true;
     }
 
@@ -89,16 +87,13 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         const auto eventStart = event->dtStart().toLocalTime();
         const auto eventEnd = event->dtEnd().toLocalTime();
         if (event->recurs()) {
-            const auto occurrences = event->recurrence()->timesInInterval(QDateTime(start,
-                                                                                    {}),
-                                                                          QDateTime(end, {}));
+            const auto occurrences = event->recurrence()->timesInInterval(QDateTime(start, {}), QDateTime(end, {}));
             if (!occurrences.isEmpty()) {
                 events << event;
                 sDateTimeByUid()->insert(event->instanceIdentifier(), occurrences.first());
             }
         } else {
-            if ((end >= eventStart.date() && start <= eventEnd.date())
-                || (start >= eventStart.date() && end <= eventEnd.date())) {
+            if ((end >= eventStart.date() && start <= eventEnd.date()) || (start >= eventStart.date() && end <= eventEnd.date())) {
                 events << event;
                 if (eventStart.date() < start) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
@@ -170,9 +165,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false)
-                  +QLatin1String(" -\n ")
-                  +IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
+            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false) + QLatin1String(" -\n ")
+                + IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
         }
         summaryEvent->dateSpan = str;
 
@@ -196,15 +190,13 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                     str = i18nc("eg. in 1 hour 2 minutes", "in ");
                     int hours = secs / 3600;
                     if (hours > 0) {
-                        str += i18ncp("use abbreviation for hour to keep the text short",
-                                      "1 hr", "%1 hrs", hours);
+                        str += i18ncp("use abbreviation for hour to keep the text short", "1 hr", "%1 hrs", hours);
                         str += QLatin1Char(' ');
                         secs -= (hours * 3600);
                     }
                     int mins = secs / 60;
                     if (mins > 0) {
-                        str += i18ncp("use abbreviation for minute to keep the text short",
-                                      "1 min", "%1 mins", mins);
+                        str += i18ncp("use abbreviation for minute to keep the text short", "1 min", "%1 mins", mins);
                         if (hours < 1) {
                             // happens in less than 1 hour
                             summaryEvent->makeUrgent = true;
@@ -235,8 +227,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                 displayName = col.displayName();
             }
         }
-        summaryEvent->summaryTooltip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev,
-                                                                                 start, true);
+        summaryEvent->summaryTooltip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start, true);
 
         // Time range label (only for non-floating events)
         str.clear();
@@ -251,7 +242,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
                     sET = QTime(23, 59);
                 }
             }
-            str = i18nc("Time from - to", "%1 - %2",
+            str = i18nc("Time from - to",
+                        "%1 - %2",
                         QLocale::system().toString(sST, QLocale::ShortFormat),
                         QLocale::system().toString(sET, QLocale::ShortFormat));
             summaryEvent->timeRange = str;
@@ -262,14 +254,11 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
             QDateTime kdt(start, QTime(0, 0, 0));
             kdt = kdt.addSecs(-1);
             QDateTime next = ev->recurrence()->getNextDateTime(kdt);
-            QString tmp = IncidenceFormatter::dateTimeToString(
-                ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
+            QString tmp = IncidenceFormatter::dateTimeToString(ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1String("<br>");
             }
-            summaryEvent->timeRange += QLatin1String("<font size=\"small\"><i>")
-                                       +i18nc("next occurrence", "Next: %1", tmp)
-                                       +QLatin1String("</i></font>");
+            summaryEvent->timeRange += QLatin1String("<font size=\"small\"><i>") + i18nc("next occurrence", "Next: %1", tmp) + QLatin1String("</i></font>");
         }
     }
 

@@ -6,12 +6,12 @@
 
 #include "korganizeruserfeedbackprovider.h"
 #include <KUserFeedback/ApplicationVersionSource>
+#include <KUserFeedback/LocaleInfoSource>
 #include <KUserFeedback/PlatformInfoSource>
-#include <KUserFeedback/ScreenInfoSource>
 #include <KUserFeedback/QtVersionSource>
+#include <KUserFeedback/ScreenInfoSource>
 #include <KUserFeedback/StartCountSource>
 #include <KUserFeedback/UsageTimeSource>
-#include <KUserFeedback/LocaleInfoSource>
 
 KOrganizerUserFeedbackProvider::KOrganizerUserFeedbackProvider(QObject *parent)
     : KUserFeedback::Provider(parent)

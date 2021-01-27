@@ -11,18 +11,20 @@
 
 #include "korganizerprivate_export.h"
 
-#include <QString>
 #include <QDate>
-#include <QMap>
 #include <QList>
+#include <QMap>
+#include <QString>
 
-namespace KHolidays {
+namespace KHolidays
+{
 class HolidayRegion;
 }
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
 {
     friend class KOGlobalsSingletonPrivate;
+
 public:
     static KOGlobals *self();
 
@@ -48,7 +50,7 @@ public:
     void setHolidays(const QStringList &regions);
 
     /** return the HolidayRegion object or 0 if none has been defined
-    */
+     */
     Q_REQUIRED_RESULT QList<KHolidays::HolidayRegion *> holidays() const;
 
 protected:

@@ -16,11 +16,13 @@
 
 class CalendarView;
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 }
 
-namespace KParts {
+namespace KParts
+{
 class StatusBarExtension;
 }
 

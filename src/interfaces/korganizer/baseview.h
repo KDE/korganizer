@@ -12,18 +12,19 @@
 
 #include "korganizer_interfaces_export.h"
 
-#include <EventViews/EventView>
 #include <CalendarSupport/PrintPlugin>
+#include <EventViews/EventView>
 
-#include <Akonadi/Calendar/IncidenceChanger>
 #include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/Calendar/IncidenceChanger>
 
 #include <AkonadiCore/Collection>
 #include <AkonadiCore/Item>
 
 #include <QWidget>
 
-namespace KOrg {
+namespace KOrg
+{
 /**
   This class provides an interface for all views being displayed within the
   main calendar view. It has functions to update the view, to specify date
@@ -221,8 +222,7 @@ public Q_SLOTS:
     /**
       Updates the current display to reflect the changes to one particular incidence.
     */
-    virtual void changeIncidenceDisplay(const Akonadi::Item &,
-                                        Akonadi::IncidenceChanger::ChangeType) = 0;
+    virtual void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) = 0;
 
     /**
       Re-reads the KOrganizer configuration and picks up relevant
@@ -264,18 +264,18 @@ Q_SIGNALS:
     void deleteIncidenceSignal(const Akonadi::Item &);
 
     /**
-    * instructs the receiver to cut the Incidence
-    */
+     * instructs the receiver to cut the Incidence
+     */
     void cutIncidenceSignal(const Akonadi::Item &);
 
     /**
-    * instructs the receiver to copy the incidence
-    */
+     * instructs the receiver to copy the incidence
+     */
     void copyIncidenceSignal(const Akonadi::Item &);
 
     /**
-    * instructs the receiver to paste the incidence
-    */
+     * instructs the receiver to paste the incidence
+     */
     void pasteIncidenceSignal();
 
     /**
@@ -339,7 +339,6 @@ Q_SIGNALS:
     void newJournalSignal(const QDate &);
 
 public:
-
     /**
        Notifies the view that there are pending changes so a redraw is needed.
 
@@ -374,8 +373,7 @@ protected:
      * supported range (e.g., a month view always displays one month).
      * The default implementation returns the range unmodified
      */
-    virtual QPair<QDateTime, QDateTime> actualDateRange(
-        const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) const;
+    virtual QPair<QDateTime, QDateTime> actualDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth = QDate()) const;
 
 protected Q_SLOTS:
     virtual void calendarReset();

@@ -15,15 +15,18 @@
 
 class ReminderTreeItem;
 
-namespace KIdentityManagement {
+namespace KIdentityManagement
+{
 class IdentityManager;
 }
 
-namespace Akonadi {
+namespace Akonadi
+{
 class Item;
 }
 
-namespace CalendarSupport {
+namespace CalendarSupport
+{
 class IncidenceViewer;
 }
 
@@ -42,10 +45,10 @@ public:
      * The suspend time unit.
      */
     enum SuspendUnit {
-        SuspendInMinutes = 0,  ///< Suspend time is in minutes
-        SuspendInHours = 1,    ///< Suspend time is in hours
-        SuspendInDays = 2,     ///< Suspend time is in days
-        SuspendInWeeks = 3     ///< Suspend time is in weeks
+        SuspendInMinutes = 0, ///< Suspend time is in minutes
+        SuspendInHours = 1, ///< Suspend time is in hours
+        SuspendInDays = 2, ///< Suspend time is in days
+        SuspendInWeeks = 3 ///< Suspend time is in weeks
     };
     Q_ENUM(SuspendUnit)
 
@@ -56,12 +59,12 @@ public:
     void eventNotification();
 
 public Q_SLOTS:
-    void slotOk();    // suspend
+    void slotOk(); // suspend
     void slotUser1(); // edit
     void slotUser2(); // dismiss all
     void slotUser3(); // dismiss selected
-    void resetSuspend(); //reset the suspend value to the default
-    void setDefaultSuspend(); //set current suspend value as the default
+    void resetSuspend(); // reset the suspend value to the default
+    void setDefaultSuspend(); // set current suspend value as the default
     void slotSave();
     void wakeUp();
     void show();

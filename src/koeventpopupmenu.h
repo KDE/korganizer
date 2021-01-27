@@ -13,12 +13,12 @@
 #include <QDate>
 #include <QMenu>
 
-#include <AkonadiCore/Item>
 #include <Akonadi/Calendar/ETMCalendar>
+#include <AkonadiCore/Item>
 
 /**
  * Context menu with standard Incidence actions.
-*/
+ */
 class KOEventPopupMenu : public QMenu
 {
     Q_OBJECT

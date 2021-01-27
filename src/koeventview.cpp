@@ -15,8 +15,8 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
-#include <KXMLGUIFactory>
 #include "korganizer_debug.h"
+#include <KXMLGUIFactory>
 
 #include <QApplication>
 #include <QMenu>
@@ -26,14 +26,13 @@
 KOEventView::KOEventView(QWidget *parent)
     : KOrg::BaseView(parent)
 {
-    //AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(),
-    //which triggered finishTypeAhead. But the global focus widget in QApplication is
-    //changed later, thus subsequent keyevents still went to this view, triggering
-    //another editor, for each keypress
-    //Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112)
+    // AKONADI_PORT review: the FocusLineEdit in the editor emits focusReceivedSignal(),
+    // which triggered finishTypeAhead. But the global focus widget in QApplication is
+    // changed later, thus subsequent keyevents still went to this view, triggering
+    // another editor, for each keypress
+    // Thus listen to the global focusChanged() signal (seen with Qt 4.6-stable-patched 20091112)
     //  -Frank
-    connect(qobject_cast<QApplication *>(QApplication::instance()), &QApplication::focusChanged,
-            this, &KOEventView::focusChanged);
+    connect(qobject_cast<QApplication *>(QApplication::instance()), &QApplication::focusChanged, this, &KOEventView::focusChanged);
 }
 
 //---------------------------------------------------------------------------
@@ -48,28 +47,17 @@ KOEventPopupMenu *KOEventView::eventPopup()
 {
     KOEventPopupMenu *eventPopup = new KOEventPopupMenu(calendar(), this);
 
-    connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this,
-            &KOEventView::editIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this,
-            &KOEventView::showIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this,
-            &KOEventView::deleteIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this,
-            &KOEventView::cutIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this,
-            &KOEventView::copyIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this,
-            &KOEventView::pasteIncidenceSignal);
-    connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this,
-            &KOEventView::toggleAlarmSignal);
-    connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
-            &KOEventView::toggleTodoCompletedSignal);
-    connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this,
-            &KOEventView::copyIncidenceToResourceSignal);
-    connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this,
-            &KOEventView::moveIncidenceToResourceSignal);
-    connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this,
-            &KOEventView::dissociateOccurrencesSignal);
+    connect(eventPopup, &KOEventPopupMenu::editIncidenceSignal, this, &KOEventView::editIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::showIncidenceSignal, this, &KOEventView::showIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::deleteIncidenceSignal, this, &KOEventView::deleteIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::cutIncidenceSignal, this, &KOEventView::cutIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::copyIncidenceSignal, this, &KOEventView::copyIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::pasteIncidenceSignal, this, &KOEventView::pasteIncidenceSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleAlarmSignal, this, &KOEventView::toggleAlarmSignal);
+    connect(eventPopup, &KOEventPopupMenu::toggleTodoCompletedSignal, this, &KOEventView::toggleTodoCompletedSignal);
+    connect(eventPopup, &KOEventPopupMenu::copyIncidenceToResourceSignal, this, &KOEventView::copyIncidenceToResourceSignal);
+    connect(eventPopup, &KOEventPopupMenu::moveIncidenceToResourceSignal, this, &KOEventView::moveIncidenceToResourceSignal);
+    connect(eventPopup, &KOEventPopupMenu::dissociateOccurrencesSignal, this, &KOEventView::dissociateOccurrencesSignal);
 
     return eventPopup;
 }
@@ -86,8 +74,7 @@ QMenu *KOEventView::newEventPopup()
         return nullptr; // can happen if called too early
     }
 
-    return static_cast<QMenu *>
-           (client->factory()->container(QStringLiteral("rmb_selection_popup"), client));
+    return static_cast<QMenu *>(client->factory()->container(QStringLiteral("rmb_selection_popup"), client));
 }
 
 //---------------------------------------------------------------------------

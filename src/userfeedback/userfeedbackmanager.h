@@ -7,9 +7,10 @@
 #ifndef USERFEEDBACKMANAGER_H
 #define USERFEEDBACKMANAGER_H
 
-#include <QObject>
 #include "korganizerprivate_export.h"
-namespace KUserFeedback {
+#include <QObject>
+namespace KUserFeedback
+{
 class Provider;
 }
 class KORGANIZERPRIVATE_EXPORT UserFeedBackManager : public QObject

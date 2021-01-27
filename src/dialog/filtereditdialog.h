@@ -17,11 +17,13 @@
 
 class FilterEdit;
 class QPushButton;
-namespace KCalendarCore {
+namespace KCalendarCore
+{
 class CalFilter;
 }
 
-namespace Akonadi {
+namespace Akonadi
+{
 class TagSelectionDialog;
 }
 

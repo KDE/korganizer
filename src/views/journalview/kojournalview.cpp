@@ -14,9 +14,9 @@
 
 #include <EventViews/JournalView>
 
-#include <CalendarSupport/Utils>
-#include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalPrintDefaultPlugins>
+#include <CalendarSupport/CalPrinter>
+#include <CalendarSupport/Utils>
 
 #include <Akonadi/Calendar/ETMCalendar>
 
@@ -32,65 +32,45 @@ KOJournalView::KOJournalView(QWidget *parent)
 
     layout->addWidget(mJournalView);
 
-    connect(mJournalView, &EventViews::JournalView::printJournal,
-            this, &KOJournalView::printJournal);
+    connect(mJournalView, &EventViews::JournalView::printJournal, this, &KOJournalView::printJournal);
 
-    connect(mJournalView, &EventViews::EventView::incidenceSelected,
-            this, &BaseView::incidenceSelected);
+    connect(mJournalView, &EventViews::EventView::incidenceSelected, this, &BaseView::incidenceSelected);
 
-    connect(mJournalView, &EventViews::EventView::showIncidenceSignal,
-            this, &BaseView::showIncidenceSignal);
+    connect(mJournalView, &EventViews::EventView::showIncidenceSignal, this, &BaseView::showIncidenceSignal);
 
-    connect(mJournalView, &EventViews::EventView::editIncidenceSignal,
-            this, &BaseView::editIncidenceSignal);
+    connect(mJournalView, &EventViews::EventView::editIncidenceSignal, this, &BaseView::editIncidenceSignal);
 
-    connect(mJournalView, &EventViews::EventView::deleteIncidenceSignal,
-            this, &BaseView::deleteIncidenceSignal);
+    connect(mJournalView, &EventViews::EventView::deleteIncidenceSignal, this, &BaseView::deleteIncidenceSignal);
 
-    connect(mJournalView, &EventViews::EventView::cutIncidenceSignal,
-            this, &BaseView::cutIncidenceSignal);
+    connect(mJournalView, &EventViews::EventView::cutIncidenceSignal, this, &BaseView::cutIncidenceSignal);
 
-    connect(mJournalView, &EventViews::EventView::copyIncidenceSignal,
-            this, &BaseView::copyIncidenceSignal);
+    connect(mJournalView, &EventViews::EventView::copyIncidenceSignal, this, &BaseView::copyIncidenceSignal);
 
-    connect(mJournalView, &EventViews::EventView::pasteIncidenceSignal,
-            this, &BaseView::pasteIncidenceSignal);
+    connect(mJournalView, &EventViews::EventView::pasteIncidenceSignal, this, &BaseView::pasteIncidenceSignal);
 
-    connect(mJournalView, &EventViews::EventView::toggleAlarmSignal,
-            this, &BaseView::toggleAlarmSignal);
+    connect(mJournalView, &EventViews::EventView::toggleAlarmSignal, this, &BaseView::toggleAlarmSignal);
 
-    connect(mJournalView, &EventViews::EventView::toggleTodoCompletedSignal,
-            this, &BaseView::toggleTodoCompletedSignal);
+    connect(mJournalView, &EventViews::EventView::toggleTodoCompletedSignal, this, &BaseView::toggleTodoCompletedSignal);
 
-    connect(mJournalView, &EventViews::EventView::copyIncidenceToResourceSignal,
-            this, &BaseView::copyIncidenceToResourceSignal);
+    connect(mJournalView, &EventViews::EventView::copyIncidenceToResourceSignal, this, &BaseView::copyIncidenceToResourceSignal);
 
-    connect(mJournalView, &EventViews::EventView::moveIncidenceToResourceSignal,
-            this, &BaseView::moveIncidenceToResourceSignal);
+    connect(mJournalView, &EventViews::EventView::moveIncidenceToResourceSignal, this, &BaseView::moveIncidenceToResourceSignal);
 
-    connect(mJournalView, &EventViews::EventView::dissociateOccurrencesSignal,
-            this, &BaseView::dissociateOccurrencesSignal);
+    connect(mJournalView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mJournalView, SIGNAL(newEventSignal()),
-            SIGNAL(newEventSignal()));
+    connect(mJournalView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
 
-    connect(mJournalView, SIGNAL(newEventSignal(QDate)),
-            SIGNAL(newEventSignal(QDate)));
+    connect(mJournalView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
 
-    connect(mJournalView, SIGNAL(newEventSignal(QDateTime)),
-            SIGNAL(newEventSignal(QDateTime)));
+    connect(mJournalView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
 
-    connect(mJournalView, SIGNAL(newEventSignal(QDateTime,QDateTime)),
-            SIGNAL(newEventSignal(QDateTime,QDateTime)));
+    connect(mJournalView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
 
-    connect(mJournalView, &EventViews::EventView::newTodoSignal,
-            this, &BaseView::newTodoSignal);
+    connect(mJournalView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
-    connect(mJournalView, &EventViews::EventView::newSubTodoSignal,
-            this, &BaseView::newSubTodoSignal);
+    connect(mJournalView, &EventViews::EventView::newSubTodoSignal, this, &BaseView::newSubTodoSignal);
 
-    connect(mJournalView, &EventViews::EventView::newJournalSignal,
-            this, &BaseView::newJournalSignal);
+    connect(mJournalView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 }
 
 KOJournalView::~KOJournalView()
@@ -164,12 +144,11 @@ void KOJournalView::printJournal(const KCalendarCore::Journal::Ptr &journal, boo
 
         const QDate dtStart = journal->dtStart().date();
 
-        //make sure to clear and then restore the view stylesheet, else the view
-        //stylesheet is propagated to the child print dialog. see bug 303902
+        // make sure to clear and then restore the view stylesheet, else the view
+        // stylesheet is propagated to the child print dialog. see bug 303902
         const QString css = styleSheet();
         setStyleSheet(QString());
-        printer.print(CalendarSupport::CalPrinterBase::Incidence,
-                      dtStart, dtStart, selectedIncidences, preview);
+        printer.print(CalendarSupport::CalPrinterBase::Incidence, dtStart, dtStart, selectedIncidences, preview);
         setStyleSheet(css);
     }
 }

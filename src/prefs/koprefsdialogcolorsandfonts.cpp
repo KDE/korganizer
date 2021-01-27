@@ -11,6 +11,7 @@
 #include "koprefs.h"
 #include <KLocalizedString>
 
+#include <AkonadiCore/EntityTreeModel>
 #include <CalendarSupport/KCalPrefs>
 #include <CollectionComboBox>
 #include <KColorButton>
@@ -23,7 +24,6 @@
 #include <QPushButton>
 #include <QTabWidget>
 #include <TagSelectionComboBox>
-#include <AkonadiCore/EntityTreeModel>
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
@@ -35,64 +35,52 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     QWidget *colorFrame = new QWidget(this);
     topTopLayout->addWidget(colorFrame);
     auto colorLayout = new QGridLayout(colorFrame);
-    tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")),
-                      i18nc("@title:tab", "Colors"));
+    tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")), i18nc("@title:tab", "Colors"));
 
     // Use System color
-    Korganizer::KPrefsWidBool *useSystemColorBool
-        = addWidBool(KOPrefs::instance()->useSystemColorItem(), colorFrame);
+    Korganizer::KPrefsWidBool *useSystemColorBool = addWidBool(KOPrefs::instance()->useSystemColorItem(), colorFrame);
 
     QCheckBox *useSystemColorButton = useSystemColorBool->checkBox();
-    QObject::connect(useSystemColorButton, &QCheckBox::toggled,
-                     this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
+    QObject::connect(useSystemColorButton, &QCheckBox::toggled, this, &KOPrefsDialogColorsAndFonts::useSystemColorToggle);
     colorLayout->addWidget(useSystemColorBool->checkBox(), 1, 0, 1, 2);
 
     // agenda view background color
-    Korganizer::KPrefsWidColor *agendaBgColor
-        = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *agendaBgColor = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
     KColorButton *agendaBgColorButton = agendaBgColor->button();
     mButtonsDisable.push_back(agendaBgColorButton);
     colorLayout->addWidget(agendaBgColor->label(), 2, 0);
     colorLayout->addWidget(agendaBgColorButton, 2, 1);
 
-    Korganizer::KPrefsWidColor *viewBgBusyColor
-        = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *viewBgBusyColor = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
     KColorButton *viewBgBusyColorButton = viewBgBusyColor->button();
     mButtonsDisable.push_back(viewBgBusyColorButton);
     colorLayout->addWidget(viewBgBusyColor->label(), 3, 0);
     colorLayout->addWidget(viewBgBusyColorButton, 3, 1);
 
     // working hours color
-    Korganizer::KPrefsWidColor *agendaGridWorkHoursBackgroundColor
-        = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *agendaGridWorkHoursBackgroundColor = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
     KColorButton *agendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
     mButtonsDisable.push_back(agendaGridWorkHoursBackgroundColorButton);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
 
     // agenda view Marcus Bains line color
-    Korganizer::KPrefsWidColor *mblColor
-        = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *mblColor = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
     // Holiday Color
-    Korganizer::KPrefsWidColor *holidayColor
-        = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *holidayColor = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
     colorLayout->addWidget(holidayColor->label(), 6, 0);
     colorLayout->addWidget(holidayColor->button(), 6, 1);
 
     // Todo due today color
-    Korganizer::KPrefsWidColor *todoDueTodayColor
-        = addWidColor(
-              KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *todoDueTodayColor = addWidColor(KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
     colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
     colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
 
     // Todo overdue color
-    Korganizer::KPrefsWidColor *todoOverdueColor
-        = addWidColor(
-              KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *todoOverdueColor = addWidColor(KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
     colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
@@ -103,31 +91,25 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     auto categoryLayout = new QGridLayout;
     categoryGroup->setLayout(categoryLayout);
 
-    Korganizer::KPrefsWidColor *unsetCategoryColor
-        = addWidColor(
-              CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
+    Korganizer::KPrefsWidColor *unsetCategoryColor = addWidColor(CalendarSupport::KCalPrefs::instance()->unsetCategoryColorItem(), categoryGroup);
     categoryLayout->addWidget(unsetCategoryColor->label(), 0, 0);
     categoryLayout->addWidget(unsetCategoryColor->button(), 0, 1);
     unsetCategoryColor->label()->setWhatsThis(unsetCategoryColor->button()->whatsThis());
     unsetCategoryColor->label()->setToolTip(unsetCategoryColor->button()->toolTip());
 
     mCategoryCombo = new Akonadi::TagSelectionComboBox(categoryGroup);
-    mCategoryCombo->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Select here the event category you want to modify. "
-              "You can change the selected category color using "
-              "the button below."));
-    connect(mCategoryCombo, qOverload<int>(&KComboBox::activated),
-            this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
+    mCategoryCombo->setWhatsThis(i18nc("@info:whatsthis",
+                                       "Select here the event category you want to modify. "
+                                       "You can change the selected category color using "
+                                       "the button below."));
+    connect(mCategoryCombo, qOverload<int>(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
     categoryLayout->addWidget(mCategoryCombo, 1, 0);
 
     mCategoryButton = new KColorButton(categoryGroup);
-    mCategoryButton->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Choose here the color of the event category selected "
-              "using the combo box above."));
-    connect(mCategoryButton, &KColorButton::changed, this,
-            &KOPrefsDialogColorsAndFonts::setCategoryColor);
+    mCategoryButton->setWhatsThis(i18nc("@info:whatsthis",
+                                        "Choose here the color of the event category selected "
+                                        "using the combo box above."));
+    connect(mCategoryButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setCategoryColor);
     categoryLayout->addWidget(mCategoryButton, 1, 1);
 
     updateCategoryColor();
@@ -140,65 +122,56 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     resourceGroup->setLayout(resourceLayout);
 
     mResourceCombo = new Akonadi::CollectionComboBox(resourceGroup);
-    //mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
+    // mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
     QStringList mimetypes;
     mimetypes << KCalendarCore::Todo::todoMimeType();
     mimetypes << KCalendarCore::Journal::journalMimeType();
     mimetypes << KCalendarCore::Event::eventMimeType();
 
     mResourceCombo->setMimeTypeFilter(mimetypes);
-    mResourceCombo->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Select the calendar you want to modify. "
-              "You can change the selected calendar color using "
-              "the button below."));
-    connect(mResourceCombo, qOverload<int>(&Akonadi::CollectionComboBox::activated),
-            this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
+    mResourceCombo->setWhatsThis(i18nc("@info:whatsthis",
+                                       "Select the calendar you want to modify. "
+                                       "You can change the selected calendar color using "
+                                       "the button below."));
+    connect(mResourceCombo, qOverload<int>(&Akonadi::CollectionComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateResourceColor);
     resourceLayout->addWidget(mResourceCombo);
 
     mResourceButton = new KColorButton(resourceGroup);
-    mResourceButton->setWhatsThis(
-        i18nc("@info:whatsthis",
-              "Choose here the color of the calendar selected "
-              "using the combo box above."));
-    connect(mResourceButton, &KColorButton::changed, this,
-            &KOPrefsDialogColorsAndFonts::setResourceColor);
+    mResourceButton->setWhatsThis(i18nc("@info:whatsthis",
+                                        "Choose here the color of the calendar selected "
+                                        "using the combo box above."));
+    connect(mResourceButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setResourceColor);
     resourceLayout->addWidget(mResourceButton);
 
     colorLayout->setRowStretch(11, 1);
 
     QWidget *fontFrame = new QWidget(this);
-    tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")),
-                      i18nc("@title:tab", "Fonts"));
+    tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")), i18nc("@title:tab", "Fonts"));
 
     auto fontLayout = new QGridLayout(fontFrame);
 
-    Korganizer::KPrefsWidFont *timeBarFont
-        = addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
+    Korganizer::KPrefsWidFont *timeBarFont =
+        addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame, QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
     fontLayout->addWidget(timeBarFont->label(), 0, 0);
     fontLayout->addWidget(timeBarFont->preview(), 0, 1);
     fontLayout->addWidget(timeBarFont->button(), 0, 2);
 
-    Korganizer::KPrefsWidFont *monthViewFont
-        = addWidFont(KOPrefs::instance()->monthViewFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ')
-                     +i18nc("@label", "Event text"));
+    Korganizer::KPrefsWidFont *monthViewFont =
+        addWidFont(KOPrefs::instance()->monthViewFontItem(),
+                   fontFrame,
+                   QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + QLatin1Char(' ') + i18nc("@label", "Event text"));
 
     fontLayout->addWidget(monthViewFont->label(), 1, 0);
     fontLayout->addWidget(monthViewFont->preview(), 1, 1);
     fontLayout->addWidget(monthViewFont->button(), 1, 2);
 
-    Korganizer::KPrefsWidFont *agendaViewFont
-        = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame,
-                     i18nc("@label", "Event text"));
+    Korganizer::KPrefsWidFont *agendaViewFont = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame, i18nc("@label", "Event text"));
     fontLayout->addWidget(agendaViewFont->label(), 2, 0);
     fontLayout->addWidget(agendaViewFont->preview(), 2, 1);
     fontLayout->addWidget(agendaViewFont->button(), 2, 2);
 
-    Korganizer::KPrefsWidFont *marcusBainsFont
-        = addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame,
-                     QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+    Korganizer::KPrefsWidFont *marcusBainsFont =
+        addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame, QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
     fontLayout->addWidget(marcusBainsFont->label(), 3, 0);
     fontLayout->addWidget(marcusBainsFont->preview(), 3, 1);
     fontLayout->addWidget(marcusBainsFont->button(), 3, 2);
@@ -223,14 +196,14 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
         ++i;
     }
 
-    //mCalendarViewsPrefs->writeConfig();
+    // mCalendarViewsPrefs->writeConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::usrReadConfig()
 {
     updateCategories();
     updateResources();
-    //mCalendarViewsPrefs->readConfig();
+    // mCalendarViewsPrefs->readConfig();
 }
 
 void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)
@@ -260,7 +233,7 @@ void KOPrefsDialogColorsAndFonts::updateCategoryColor()
     const QString cat = mCategoryCombo->currentText();
     QColor color = mCategoryDict.value(cat);
     if (!color.isValid()) {
-        //TODO get this from the tag
+        // TODO get this from the tag
         color = CalendarSupport::KCalPrefs::instance()->categoryColor(cat);
     }
     if (color.isValid()) {
@@ -276,10 +249,7 @@ void KOPrefsDialogColorsAndFonts::updateResources()
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
     bool ok;
-    const QString id
-        = QString::number(mResourceCombo->itemData(
-                              mResourceCombo->currentIndex(),
-                              Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
+    const QString id = QString::number(mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
     if (!ok) {
         return;
     }
@@ -290,10 +260,7 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
     bool ok;
-    const QString id
-        = QString::number(mResourceCombo->itemData(
-                              mResourceCombo->currentIndex(),
-                              Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
+    const QString id = QString::number(mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::EntityTreeModel::CollectionIdRole).toLongLong(&ok));
     if (!ok) {
         return;
     }
@@ -306,8 +273,7 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
     mResourceButton->setColor(color);
 }
 
-extern "C"
-{
+extern "C" {
 Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, const char *)
 {
     return new KOPrefsDialogColorsAndFonts(parent);

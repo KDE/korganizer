@@ -35,7 +35,7 @@ ReparentingModel::Node::Node(ReparentingModel &model, ReparentingModel::Node *p,
 
 ReparentingModel::Node::~Node()
 {
-    //The source index may be invalid meanwhile (it's a persistent index)
+    // The source index may be invalid meanwhile (it's a persistent index)
     personModel.mSourceNodes.removeOne(this);
 }
 
@@ -48,11 +48,11 @@ ReparentingModel::Node::Ptr ReparentingModel::Node::searchNode(ReparentingModel:
 {
     Node::Ptr nodePtr;
     if (node->parent) {
-        //Reparent node
+        // Reparent node
         QVector<Node::Ptr>::iterator it = node->parent->children.begin();
         for (; it != node->parent->children.end(); ++it) {
             if (it->data() == node) {
-                //Reuse smart pointer
+                // Reuse smart pointer
                 nodePtr = *it;
                 node->parent->children.erase(it);
                 break;
@@ -130,7 +130,7 @@ int ReparentingModel::Node::row() const
 }
 
 ReparentingModel::ReparentingModel(QObject *parent)
-    :   QAbstractProxyModel(parent)
+    : QAbstractProxyModel(parent)
     , mRootNode(*this)
     , mNodeManager(NodeManager::Ptr(new NodeManager(*this)))
 {
@@ -138,7 +138,7 @@ ReparentingModel::ReparentingModel(QObject *parent)
 
 ReparentingModel::~ReparentingModel()
 {
-    //Otherwise we cannot guarantee that the nodes reference to *this is always valid
+    // Otherwise we cannot guarantee that the nodes reference to *this is always valid
     mRootNode.children.clear();
     mProxyNodes.clear();
     mSourceNodes.clear();
@@ -146,7 +146,7 @@ ReparentingModel::~ReparentingModel()
 
 bool ReparentingModel::validateNode(const Node *node) const
 {
-    //Expected:
+    // Expected:
     // * Each node tree starts at mRootNode
     // * Each node is listed in the children of it's parent
     // * Root node never leaves the model and thus should never enter this function
@@ -166,7 +166,7 @@ bool ReparentingModel::validateNode(const Node *node) const
             return false;
         }
         if ((intptr_t)(n) < 1000) {
-            //Detect corruptions with unlikely pointers
+            // Detect corruptions with unlikely pointers
             qCWarning(KORGANIZER_LOG) << "corrupt pointer" << depth;
             return false;
         }
@@ -198,7 +198,7 @@ bool ReparentingModel::validateNode(const Node *node) const
         if (n->parent == &mRootNode) {
             return true;
         }
-        //If the parent isn't root there is at least one more level
+        // If the parent isn't root there is at least one more level
         if (!n->parent->parent) {
             qCWarning(KORGANIZER_LOG) << "missing parent parent" << depth;
             return false;
@@ -215,10 +215,10 @@ bool ReparentingModel::validateNode(const Node *node) const
 
 void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
 {
-    //We have to make this check before issuing the async method,
-    //otherwise we run into the problem that while a node is being removed,
-    //the async request could be triggered (due to a changed signal),
-    //resulting in the node getting readded immediately after it had been removed.
+    // We have to make this check before issuing the async method,
+    // otherwise we run into the problem that while a node is being removed,
+    // the async request could be triggered (due to a changed signal),
+    // resulting in the node getting readded immediately after it had been removed.
     for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";
@@ -227,8 +227,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     }
     mNodesToAdd << node;
     qRegisterMetaType<Node::Ptr>("Node::Ptr");
-    QMetaObject::invokeMethod(this, "doAddNode", Qt::QueuedConnection,
-                              QGenericReturnArgument(), Q_ARG(Node::Ptr, node));
+    QMetaObject::invokeMethod(this, "doAddNode", Qt::QueuedConnection, QGenericReturnArgument(), Q_ARG(Node::Ptr, node));
 }
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
@@ -239,9 +238,9 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
             return;
         }
     }
-    //If a datachanged call triggered this through checkSourceIndex, right after a person node has been removed.
-    //We'd end-up re-inserting the node that has just been removed. Therefore removeNode can cancel the pending addNode
-    //call through mNodesToAdd.
+    // If a datachanged call triggered this through checkSourceIndex, right after a person node has been removed.
+    // We'd end-up re-inserting the node that has just been removed. Therefore removeNode can cancel the pending addNode
+    // call through mNodesToAdd.
     bool addNodeAborted = true;
     for (int i = 0; i < mNodesToAdd.size(); ++i) {
         if (*mNodesToAdd.at(i) == *node) {
@@ -283,7 +282,7 @@ void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::removeNode(const ReparentingModel::Node &node)
 {
-    //If there is an addNode in progress for that node, abort it.
+    // If there is an addNode in progress for that node, abort it.
     for (int i = 0; i < mNodesToAdd.size(); ++i) {
         if (*mNodesToAdd.at(i) == node) {
             mNodesToAdd.remove(i);
@@ -291,11 +290,11 @@ void ReparentingModel::removeNode(const ReparentingModel::Node &node)
     }
     for (int i = 0; i < mProxyNodes.size(); ++i) {
         if (*mProxyNodes.at(i) == node) {
-            //TODO: this does not yet take care of un-reparenting reparented nodes.
+            // TODO: this does not yet take care of un-reparenting reparented nodes.
             const Node &n = *mProxyNodes.at(i);
             Node *parentNode = n.parent;
             beginRemoveRows(index(parentNode), n.row(), n.row());
-            parentNode->children.remove(n.row()); //deletes node
+            parentNode->children.remove(n.row()); // deletes node
             mProxyNodes.remove(i);
             endRemoveRows();
             break;
@@ -333,30 +332,19 @@ void ReparentingModel::setSourceModel(QAbstractItemModel *sourceModel)
     beginResetModel();
     QAbstractProxyModel::setSourceModel(sourceModel);
     if (sourceModel) {
-        connect(sourceModel, &QAbstractProxyModel::rowsAboutToBeInserted, this,
-                &ReparentingModel::onSourceRowsAboutToBeInserted);
-        connect(sourceModel, &QAbstractProxyModel::rowsInserted, this,
-                &ReparentingModel::onSourceRowsInserted);
-        connect(sourceModel, &QAbstractProxyModel::rowsAboutToBeRemoved, this,
-                &ReparentingModel::onSourceRowsAboutToBeRemoved);
-        connect(sourceModel, &QAbstractProxyModel::rowsRemoved, this,
-                &ReparentingModel::onSourceRowsRemoved);
-        connect(sourceModel, &QAbstractProxyModel::rowsAboutToBeMoved, this,
-                &ReparentingModel::onSourceRowsAboutToBeMoved);
-        connect(sourceModel, &QAbstractProxyModel::rowsMoved, this,
-                &ReparentingModel::onSourceRowsMoved);
-        connect(sourceModel, &QAbstractProxyModel::modelAboutToBeReset, this,
-                &ReparentingModel::onSourceModelAboutToBeReset);
-        connect(sourceModel, &QAbstractProxyModel::modelReset, this,
-                &ReparentingModel::onSourceModelReset);
-        connect(sourceModel, &QAbstractProxyModel::dataChanged, this,
-                &ReparentingModel::onSourceDataChanged);
-//       connect(sourceModel, &QAbstractProxyModel::headerDataChanged, this, &ReparentingModel::_k_sourceHeaderDataChanged);
-        connect(sourceModel, &QAbstractProxyModel::layoutAboutToBeChanged, this,
-                &ReparentingModel::onSourceLayoutAboutToBeChanged);
-        connect(sourceModel, &QAbstractProxyModel::layoutChanged, this,
-                &ReparentingModel::onSourceLayoutChanged);
-//       connect(sourceModel, &QAbstractProxyModel::destroyed, this, &ReparentingModel::onSourceModelDestroyed);
+        connect(sourceModel, &QAbstractProxyModel::rowsAboutToBeInserted, this, &ReparentingModel::onSourceRowsAboutToBeInserted);
+        connect(sourceModel, &QAbstractProxyModel::rowsInserted, this, &ReparentingModel::onSourceRowsInserted);
+        connect(sourceModel, &QAbstractProxyModel::rowsAboutToBeRemoved, this, &ReparentingModel::onSourceRowsAboutToBeRemoved);
+        connect(sourceModel, &QAbstractProxyModel::rowsRemoved, this, &ReparentingModel::onSourceRowsRemoved);
+        connect(sourceModel, &QAbstractProxyModel::rowsAboutToBeMoved, this, &ReparentingModel::onSourceRowsAboutToBeMoved);
+        connect(sourceModel, &QAbstractProxyModel::rowsMoved, this, &ReparentingModel::onSourceRowsMoved);
+        connect(sourceModel, &QAbstractProxyModel::modelAboutToBeReset, this, &ReparentingModel::onSourceModelAboutToBeReset);
+        connect(sourceModel, &QAbstractProxyModel::modelReset, this, &ReparentingModel::onSourceModelReset);
+        connect(sourceModel, &QAbstractProxyModel::dataChanged, this, &ReparentingModel::onSourceDataChanged);
+        //       connect(sourceModel, &QAbstractProxyModel::headerDataChanged, this, &ReparentingModel::_k_sourceHeaderDataChanged);
+        connect(sourceModel, &QAbstractProxyModel::layoutAboutToBeChanged, this, &ReparentingModel::onSourceLayoutAboutToBeChanged);
+        connect(sourceModel, &QAbstractProxyModel::layoutChanged, this, &ReparentingModel::onSourceLayoutChanged);
+        //       connect(sourceModel, &QAbstractProxyModel::destroyed, this, &ReparentingModel::onSourceModelDestroyed);
     }
 
     rebuildAll();
@@ -373,8 +361,8 @@ void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, 
 ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
 {
     for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
-        //Reparent source nodes according to the provided rules
-        //The proxy can be ignored if it is a duplicate, so only reparent to proxies that are in the model
+        // Reparent source nodes according to the provided rules
+        // The proxy can be ignored if it is a duplicate, so only reparent to proxies that are in the model
         if (proxyNode->parent && proxyNode->adopts(sourceIndex)) {
             Q_ASSERT(validateNode(proxyNode.data()));
             return proxyNode.data();
@@ -429,12 +417,10 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
     for (const QModelIndex &descendant : list) {
         for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
             if (proxyNode->isDuplicateOf(descendant)) {
-                //Removenode from proxy
+                // Removenode from proxy
                 if (!proxyNode->parent) {
-                    qCWarning(KORGANIZER_LOG) <<  objectName()
-                                              <<
-                        "Found proxy that is already not part of the model " << proxyNode->data(
-                        Qt::DisplayRole).toString();
+                    qCWarning(KORGANIZER_LOG) << objectName() << "Found proxy that is already not part of the model "
+                                              << proxyNode->data(Qt::DisplayRole).toString();
                     continue;
                 }
                 const int targetRow = proxyNode->row();
@@ -461,11 +447,11 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
         }
         Q_ASSERT(parentNode);
 
-        //Remove any duplicates that we are going to replace
+        // Remove any duplicates that we are going to replace
         removeDuplicates(sourceIndex);
 
         QModelIndexList reparented;
-        //Check for children to reparent
+        // Check for children to reparent
         {
             const auto descendantsItem = descendants(sourceIndex);
             for (const QModelIndex &descendant : descendantsItem) {
@@ -485,7 +471,7 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
             beginInsertRows(mapFromSource(parent), targetRow, targetRow);
             appendSourceNode(parentNode, sourceIndex, reparented);
             endInsertRows();
-        } else { //Reparented
+        } else { // Reparented
             int targetRow = parentNode->children.size();
             beginInsertRows(index(parentNode), targetRow, targetRow);
             appendSourceNode(parentNode, sourceIndex);
@@ -497,24 +483,24 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
 void ReparentingModel::onSourceRowsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
 {
     // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
-    //we remove in reverse order as otherwise the indexes in parentNode->children wouldn't be correct
+    // we remove in reverse order as otherwise the indexes in parentNode->children wouldn't be correct
     for (int row = end; row >= start; row--) {
         QModelIndex sourceIndex = sourceModel()->index(row, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
 
         const QModelIndex proxyIndex = mapFromSource(sourceIndex);
-        //If the indexes have already been removed (e.g. by removeNode)this can indeed return an invalid index
+        // If the indexes have already been removed (e.g. by removeNode)this can indeed return an invalid index
         if (proxyIndex.isValid()) {
             const Node *node = extractNode(proxyIndex);
             Node *parentNode = node->parent;
             Q_ASSERT(parentNode);
             const int targetRow = node->row();
             beginRemoveRows(index(parentNode), targetRow, targetRow);
-            parentNode->children.remove(targetRow); //deletes node
+            parentNode->children.remove(targetRow); // deletes node
             endRemoveRows();
         }
     }
-    //Allows the node manager to remove nodes that are no longer relevant
+    // Allows the node manager to remove nodes that are no longer relevant
     for (int row = start; row <= end; row++) {
         mNodeManager->checkSourceIndexRemoval(sourceModel()->index(row, 0, parent));
     }
@@ -524,17 +510,25 @@ void ReparentingModel::onSourceRowsRemoved(const QModelIndex & /* parent */, int
 {
 }
 
-void ReparentingModel::onSourceRowsAboutToBeMoved(const QModelIndex & /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, const QModelIndex & /* destParent */, int /* dest */)
+void ReparentingModel::onSourceRowsAboutToBeMoved(const QModelIndex & /* sourceParent */,
+                                                  int /* sourceStart */,
+                                                  int /* sourceEnd */,
+                                                  const QModelIndex & /* destParent */,
+                                                  int /* dest */)
 {
     qCWarning(KORGANIZER_LOG) << "not implemented";
-    //TODO
+    // TODO
     beginResetModel();
 }
 
-void ReparentingModel::onSourceRowsMoved(const QModelIndex & /* sourceParent */, int /* sourceStart */, int /* sourceEnd */, const QModelIndex & /* destParent */, int /* dest */)
+void ReparentingModel::onSourceRowsMoved(const QModelIndex & /* sourceParent */,
+                                         int /* sourceStart */,
+                                         int /* sourceEnd */,
+                                         const QModelIndex & /* destParent */,
+                                         int /* dest */)
 {
     qCWarning(KORGANIZER_LOG) << "not implemented";
-    //TODO
+    // TODO
     endResetModel();
 }
 
@@ -556,11 +550,11 @@ void ReparentingModel::onSourceLayoutAboutToBeChanged()
 
 void ReparentingModel::onSourceLayoutChanged()
 {
-    //By ignoring this we miss structural changes in the sourcemodel, which is mostly ok.
-    //Before we can re-enable this we need to properly deal with skipped duplicates, because
-    //a layout change MUST NOT add/remove new nodes (only shuffling allowed)
+    // By ignoring this we miss structural changes in the sourcemodel, which is mostly ok.
+    // Before we can re-enable this we need to properly deal with skipped duplicates, because
+    // a layout change MUST NOT add/remove new nodes (only shuffling allowed)
     //
-    //Our source indexes are not endagered since we use persistend model indexes anyways
+    // Our source indexes are not endagered since we use persistend model indexes anyways
 
     // rebuildAll();
 
@@ -618,8 +612,8 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex &pare
     } else {
         parentNode = &mRootNode;
     }
-    //At least QAbstractItemView expects that we deal with this properly (see rowsAboutToBeRemoved "find the next visible and enabled item")
-    //Also QAbstractItemModel::match does all kinds of weird shit including passing row=-1
+    // At least QAbstractItemView expects that we deal with this properly (see rowsAboutToBeRemoved "find the next visible and enabled item")
+    // Also QAbstractItemModel::match does all kinds of weird shit including passing row=-1
     if (parentNode->children.size() <= row) {
         return QModelIndex();
     }
@@ -660,7 +654,7 @@ QModelIndex ReparentingModel::mapFromSource(const QModelIndex &sourceIndex) cons
     }
     Node *node = getSourceNode(sourceIndex);
     if (!node) {
-        //This can happen if a source nodes is hidden (person collections)
+        // This can happen if a source nodes is hidden (person collections)
         return QModelIndex();
     }
     Q_ASSERT(validateNode(node));
@@ -675,7 +669,7 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
     }
     for (int i = 0; i < sourceModel()->rowCount(sourceParent); ++i) {
         const QModelIndex &sourceIndex = sourceModel()->index(i, 0, sourceParent);
-        //Skip indexes that should be excluded because they have been reparented
+        // Skip indexes that should be excluded because they have been reparented
         if (skip.contains(sourceIndex)) {
             continue;
         }
@@ -704,18 +698,18 @@ void ReparentingModel::insertProxyNode(const Node::Ptr &proxyNode)
 
 void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
 {
-    //Reparent source nodes according to the provided rules
+    // Reparent source nodes according to the provided rules
     for (Node *n : qAsConst(mSourceNodes)) {
         if (proxyNode->adopts(n->sourceIndex)) {
-            //qCDebug(KORGANIZER_LOG) << "reparenting" << n->data(Qt::DisplayRole).toString() << "from" << n->parent->data(Qt::DisplayRole).toString()
+            // qCDebug(KORGANIZER_LOG) << "reparenting" << n->data(Qt::DisplayRole).toString() << "from" << n->parent->data(Qt::DisplayRole).toString()
             //         << "to" << proxyNode->data(Qt::DisplayRole).toString();
 
-            //WARNING: While a beginMoveRows/endMoveRows would be more suitable, QSortFilterProxyModel can't deal with that. Therefore we
-            //cannot use them.
+            // WARNING: While a beginMoveRows/endMoveRows would be more suitable, QSortFilterProxyModel can't deal with that. Therefore we
+            // cannot use them.
             const int oldRow = n->row();
             beginRemoveRows(index(n->parent), oldRow, oldRow);
             Node::Ptr nodePtr = proxyNode->searchNode(n);
-            //We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
+            // We lie about the row being removed already, but the view can deal with that better than if we call endRemoveRows after beginInsertRows
             endRemoveRows();
 
             const int newRow = proxyNode->children.size();
@@ -738,7 +732,7 @@ void ReparentingModel::rebuildAll()
     rebuildFromSource(&mRootNode, QModelIndex());
     for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
         // qCDebug(KORGANIZER_LOG) << "checking " << proxyNode->data(Qt::DisplayRole).toString();
-        //Avoid inserting a node that is already part of the source model
+        // Avoid inserting a node that is already part of the source model
         if (isDuplicate(proxyNode)) {
             continue;
         }

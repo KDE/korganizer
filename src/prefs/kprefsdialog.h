@@ -11,11 +11,11 @@
 #ifndef KDEPIM_KPREFSDIALOG_H
 #define KDEPIM_KPREFSDIALOG_H
 
+#include <KCModule>
 #include <KConfigSkeleton>
 #include <KFile>
 #include <KLineEdit>
 #include <KPageDialog>
-#include <KCModule>
 
 #include <QVariantList>
 
@@ -32,7 +32,8 @@ class QTimeEdit;
 class QButtonGroup;
 class QGroupBox;
 
-namespace Korganizer {
+namespace Korganizer
+{
 /**
   @short Base class for GUI control elements used by @ref KPrefsDialog.
   @author Cornelius Schumacher

@@ -30,23 +30,16 @@ SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
 {
     mIdentityManager = KIdentityManagement::IdentityManager::self();
     setupSearchCollections();
-    connect(mIdentityManager, QOverload<>::of(
-                &KIdentityManagement::IdentityManager::changed), this,
-            &SearchCollectionHelper::updateOpenInvitation);
-    connect(mIdentityManager, QOverload<>::of(
-                &KIdentityManagement::IdentityManager::changed), this,
-            &SearchCollectionHelper::updateDeclinedInvitation);
+    connect(mIdentityManager, QOverload<>::of(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
+    connect(mIdentityManager, QOverload<>::of(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
 }
 
 void SearchCollectionHelper::setupSearchCollections()
 {
-    //Collection "Search", has always ID 1
-    Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(
-                                                                                1),
-                                                                            Akonadi::CollectionFetchJob::FirstLevel);
+    // Collection "Search", has always ID 1
+    Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(1), Akonadi::CollectionFetchJob::FirstLevel);
     fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
-    connect(fetchJob, &Akonadi::CollectionFetchJob::result, this,
-            &SearchCollectionHelper::onSearchCollectionsFetched);
+    connect(fetchJob, &Akonadi::CollectionFetchJob::result, this, &SearchCollectionHelper::onSearchCollectionsFetched);
 }
 
 void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
@@ -69,7 +62,10 @@ void SearchCollectionHelper::onSearchCollectionsFetched(KJob *job)
     updateDeclinedInvitation();
 }
 
-void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCalendarCore::Attendee::PartStat status, const QString &name, const QString &displayName)
+void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col,
+                                                    KCalendarCore::Attendee::PartStat status,
+                                                    const QString &name,
+                                                    const QString &displayName)
 {
     // Update or create search collections
 
@@ -77,49 +73,43 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col, KCa
     const QStringList lstEmails = mIdentityManager->allEmails();
     for (const QString &email : lstEmails) {
         if (!email.isEmpty()) {
-            query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus,
-                                                       QString(email + QString::number(status))));
+            query.addTerm(Akonadi::IncidenceSearchTerm(Akonadi::IncidenceSearchTerm::PartStatus, QString(email + QString::number(status))));
         }
     }
 
     if (!col.isValid()) {
         auto job = new Akonadi::SearchCreateJob(name, query);
         job->setRemoteSearchEnabled(false);
-        job->setSearchMimeTypes(QStringList() << KCalendarCore::Event::eventMimeType()
-                                              << KCalendarCore::Todo::todoMimeType()
+        job->setSearchMimeTypes(QStringList() << KCalendarCore::Event::eventMimeType() << KCalendarCore::Todo::todoMimeType()
                                               << KCalendarCore::Journal::journalMimeType());
-        connect(job, &Akonadi::SearchCreateJob::result, this,
-                &SearchCollectionHelper::createSearchJobFinished);
+        connect(job, &Akonadi::SearchCreateJob::result, this, &SearchCollectionHelper::createSearchJobFinished);
         qCDebug(KORGANIZER_LOG) << "We have to create a " << name << " virtual Collection";
     } else {
-        auto *attribute
-            = col.attribute<Akonadi::PersistentSearchAttribute>(Akonadi::Collection::AddIfMissing);
-        auto *displayname
-            = col.attribute<Akonadi::EntityDisplayAttribute >(Akonadi::Collection::AddIfMissing);
+        auto *attribute = col.attribute<Akonadi::PersistentSearchAttribute>(Akonadi::Collection::AddIfMissing);
+        auto *displayname = col.attribute<Akonadi::EntityDisplayAttribute>(Akonadi::Collection::AddIfMissing);
         attribute->setQueryString(QString::fromLatin1(query.toJSON()));
         attribute->setRemoteSearchEnabled(false);
         displayname->setDisplayName(displayName);
         col.setEnabled(true);
         auto job = new Akonadi::CollectionModifyJob(col, this);
-        connect(job, &Akonadi::CollectionModifyJob::result, this,
-                &SearchCollectionHelper::modifyResult);
-        qCDebug(KORGANIZER_LOG) << "updating " << name << " (" << col.id()
-                                << ") virtual Collection";
+        connect(job, &Akonadi::CollectionModifyJob::result, this, &SearchCollectionHelper::modifyResult);
+        qCDebug(KORGANIZER_LOG) << "updating " << name << " (" << col.id() << ") virtual Collection";
         qCDebug(KORGANIZER_LOG) << query.toJSON();
     }
 }
 
 void SearchCollectionHelper::updateDeclinedInvitation()
 {
-    updateSearchCollection(mDeclineCollection, KCalendarCore::Attendee::Declined,
+    updateSearchCollection(mDeclineCollection,
+                           KCalendarCore::Attendee::Declined,
                            QStringLiteral("DeclinedInvitations"),
-                           i18nc("A collection of all declined invidations.",
-                                 "Declined Invitations"));
+                           i18nc("A collection of all declined invidations.", "Declined Invitations"));
 }
 
 void SearchCollectionHelper::updateOpenInvitation()
 {
-    updateSearchCollection(mOpenInvitationCollection, KCalendarCore::Attendee::NeedsAction,
+    updateSearchCollection(mOpenInvitationCollection,
+                           KCalendarCore::Attendee::NeedsAction,
                            QStringLiteral("OpenInvitations"),
                            i18nc("A collection of all open invidations.", "Open Invitations"));
 }
@@ -129,8 +119,7 @@ void SearchCollectionHelper::createSearchJobFinished(KJob *job)
     auto createJob = qobject_cast<Akonadi::SearchCreateJob *>(job);
     const Akonadi::Collection searchCollection = createJob->createdCollection();
     if (job->error()) {
-        qCWarning(KORGANIZER_LOG) << "Error occurred " << searchCollection.name()
-                                  << job->errorString();
+        qCWarning(KORGANIZER_LOG) << "Error occurred " << searchCollection.name() << job->errorString();
         return;
     }
     qCDebug(KORGANIZER_LOG) << "Created search folder successfully " << searchCollection.name();

@@ -40,8 +40,7 @@ KService::List KOCore::availablePlugins(const QString &type, int version)
 {
     QString constraint;
     if (version >= 0) {
-        constraint
-            = QStringLiteral("[X-KDE-PluginInterfaceVersion] == %1").arg(QString::number(version));
+        constraint = QStringLiteral("[X-KDE-PluginInterfaceVersion] == %1").arg(QString::number(version));
     }
 
     return KServiceTypeTrader::self()->query(type, constraint);
@@ -49,14 +48,12 @@ KService::List KOCore::availablePlugins(const QString &type, int version)
 
 KService::List KOCore::availablePlugins()
 {
-    return availablePlugins(CalendarSupport::Plugin::serviceType(),
-                            CalendarSupport::Plugin::interfaceVersion());
+    return availablePlugins(CalendarSupport::Plugin::serviceType(), CalendarSupport::Plugin::interfaceVersion());
 }
 
 KService::List KOCore::availableCalendarDecorations()
 {
-    return availablePlugins(EventViews::CalendarDecoration::Decoration::serviceType(),
-                            EventViews::CalendarDecoration::Decoration::interfaceVersion());
+    return availablePlugins(EventViews::CalendarDecoration::Decoration::serviceType(), EventViews::CalendarDecoration::Decoration::interfaceVersion());
 }
 
 KService::List KOCore::availableParts()
@@ -103,8 +100,7 @@ CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
     return nullptr;
 }
 
-EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(
-    const KService::Ptr &service)
+EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
 {
     KPluginLoader loader(*service);
     auto factory = loader.instance();
@@ -153,8 +149,7 @@ KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *par
         return nullptr;
     }
 
-    auto *pluginFactory
-        = static_cast<KOrg::PartFactory *>(factory);
+    auto *pluginFactory = static_cast<KOrg::PartFactory *>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";

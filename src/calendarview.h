@@ -11,14 +11,14 @@
 #ifndef KORG_CALENDARVIEW_H
 #define KORG_CALENDARVIEW_H
 
-#include "korganizerprivate_export.h"
 #include "helper/searchcollectionhelper.h"
+#include "korganizerprivate_export.h"
 
 #include "interfaces/korganizer/calendarviewbase.h"
 
 #include <KCalendarCore/Incidence>
-#include <KCalendarCore/Visitor>
 #include <KCalendarCore/ScheduleMessage>
+#include <KCalendarCore/Visitor>
 
 #include <Akonadi/Calendar/ITIPHandler>
 
@@ -33,16 +33,19 @@ class KOViewManager;
 class NavigatorBar;
 class AkonadiCollectionView;
 
-namespace CalendarSupport {
+namespace CalendarSupport
+{
 class CalPrinter;
 class IncidenceViewer;
 }
 
-namespace IncidenceEditorNG {
+namespace IncidenceEditorNG
+{
 class IncidenceDialog;
 }
 
-namespace Akonadi {
+namespace Akonadi
+{
 class History;
 class IncidenceChanger;
 class CalendarClipboard;
@@ -58,7 +61,8 @@ class CalendarViewExtension : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CalendarViewExtension(QWidget *parent) : QWidget(parent)
+    explicit CalendarViewExtension(QWidget *parent)
+        : QWidget(parent)
     {
     }
 
@@ -148,7 +152,7 @@ public:
     }
 
     // TODO_NG
-    //IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
+    // IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
     Akonadi::IncidenceChanger *incidenceChanger() const override
     {
         return mChanger;
@@ -285,7 +289,12 @@ public Q_SLOTS:
       Create new Event from given summary, description, attachment list and
       attendees list
     */
-    void newEvent(const QString &summary, const QString &description = QString(), const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList(), const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false);
+    void newEvent(const QString &summary,
+                  const QString &description = QString(),
+                  const QStringList &attachment = QStringList(),
+                  const QStringList &attendees = QStringList(),
+                  const QStringList &attachmentMimetypes = QStringList(),
+                  bool inlineAttachment = false);
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence.
@@ -372,7 +381,12 @@ public Q_SLOTS:
     /** create new todo with parent todo */
     void newSubTodo(const Akonadi::Collection &collection);
 
-    void newTodo(const QString &summary, const QString &description = QString(), const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(), const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false);
+    void newTodo(const QString &summary,
+                 const QString &description = QString(),
+                 const QStringList &attachments = QStringList(),
+                 const QStringList &attendees = QStringList(),
+                 const QStringList &attachmentMimetypes = QStringList(),
+                 bool inlineAttachment = false);
 
     void newJournal();
     void newJournal(const QDate &date);
@@ -412,14 +426,16 @@ public Q_SLOTS:
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeIncidenceDisplay(const Akonadi::Item &incidence,
-                                Akonadi::IncidenceChanger::ChangeType);
+    void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType);
 
     void slotCreateFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);
 
     void slotModifyFinished(int changeId, const Akonadi::Item &item, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);
 
-    void slotDeleteFinished(int changeId, const QVector<Akonadi::Item::Id> &itemIdList, Akonadi::IncidenceChanger::ResultCode resultCode, const QString &errorString);
+    void slotDeleteFinished(int changeId,
+                            const QVector<Akonadi::Item::Id> &itemIdList,
+                            Akonadi::IncidenceChanger::ResultCode resultCode,
+                            const QString &errorString);
 
     void startMultiModify(const QString &text);
     void endMultiModify();
@@ -566,7 +582,7 @@ public Q_SLOTS:
      * @param preferredMonth Holds the month that should be selected when
      * the week crosses months.  It's a QDate instead of uint so it can be
      * easily fed to KCalendarSystem's functions.
-    */
+     */
     void selectWeek(const QDate &week, const QDate &preferredMonth);
 
     /**
@@ -643,15 +659,13 @@ private:
      * If mimeType is set, the collection to return will have to support that mime type.
      * If no valid collection is found, an invalid one is returned.
      */
-    Akonadi::Collection defaultCollection(
-        const QLatin1String &mimeType = QLatin1String("")) const;
+    Akonadi::Collection defaultCollection(const QLatin1String &mimeType = QLatin1String("")) const;
 
     /**
      * Creates a new incidence editor and chooses a decent default for the collection
      * in the collection combo.
      */
-    IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(
-        const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection());
+    IncidenceEditorNG::IncidenceDialog *createIncidenceEditor(const Akonadi::Item &item, const Akonadi::Collection &collection = Akonadi::Collection());
 
     CalendarSupport::CalPrinter *mCalPrinter = nullptr;
     Akonadi::TodoPurger *mTodoPurger = nullptr;
@@ -685,7 +699,7 @@ private:
     KCalendarCore::CalFilter *mCurrentFilter = nullptr;
 
     // various housekeeping variables.
-    bool mReadOnly;  // flag indicating if calendar is read-only
+    bool mReadOnly; // flag indicating if calendar is read-only
 
     Akonadi::Item mSelectedIncidence;
     QDate mSaveDate;

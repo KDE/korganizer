@@ -7,19 +7,18 @@
 #include "manageshowcollectionproperties.h"
 #include "akonadicollectionview.h"
 #include "korganizer_debug.h"
-#include <AkonadiWidgets/CollectionPropertiesDialog>
-#include <AkonadiWidgets/CollectionMaintenancePage>
 #include <AkonadiCore/CollectionAttributesSynchronizationJob>
 #include <AkonadiCore/CollectionFetchJob>
 #include <AkonadiCore/CollectionFetchScope>
+#include <AkonadiWidgets/CollectionMaintenancePage>
+#include <AkonadiWidgets/CollectionPropertiesDialog>
 
-ManageShowCollectionProperties::ManageShowCollectionProperties(
-    AkonadiCollectionView *collectionView, QObject *parent)
+ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent)
     : QObject(parent)
-    , mPages{ QStringLiteral("CalendarSupport::CollectionGeneralPage"),
-               QStringLiteral("Akonadi::CachePolicyPage"),
-               QStringLiteral("PimCommon::CollectionAclPage"),
-               QStringLiteral("Akonadi::CollectionMaintenancePage") }
+    , mPages{QStringLiteral("CalendarSupport::CollectionGeneralPage"),
+             QStringLiteral("Akonadi::CachePolicyPage"),
+             QStringLiteral("PimCommon::CollectionAclPage"),
+             QStringLiteral("Akonadi::CollectionMaintenancePage")}
     , mCollectionView(collectionView)
 {
 }
@@ -38,30 +37,24 @@ void ManageShowCollectionProperties::showCollectionProperties()
         dlg->raise();
         return;
     }
-    auto *sync
-        = new Akonadi::CollectionAttributesSynchronizationJob(col);
+    auto *sync = new Akonadi::CollectionAttributesSynchronizationJob(col);
     sync->setProperty("collectionId", id);
-    connect(sync, &Akonadi::CollectionAttributesSynchronizationJob::result,
-            this, &ManageShowCollectionProperties::slotCollectionPropertiesContinued);
+    connect(sync, &Akonadi::CollectionAttributesSynchronizationJob::result, this, &ManageShowCollectionProperties::slotCollectionPropertiesContinued);
     sync->start();
 }
 
 void ManageShowCollectionProperties::slotCollectionPropertiesContinued(KJob *job)
 {
     if (job) {
-        auto *sync
-            = qobject_cast<Akonadi::CollectionAttributesSynchronizationJob *>(job);
+        auto *sync = qobject_cast<Akonadi::CollectionAttributesSynchronizationJob *>(job);
         Q_ASSERT(sync);
         if (sync->property("collectionId") != mCollectionView->currentCalendar().id()) {
             return;
         }
     }
-    Akonadi::CollectionFetchJob *fetch = new Akonadi::CollectionFetchJob(
-        mCollectionView->currentCalendar(),
-        Akonadi::CollectionFetchJob::Base);
+    Akonadi::CollectionFetchJob *fetch = new Akonadi::CollectionFetchJob(mCollectionView->currentCalendar(), Akonadi::CollectionFetchJob::Base);
     fetch->fetchScope().setIncludeStatistics(true);
-    connect(fetch, &KJob::result,
-            this, &ManageShowCollectionProperties::slotCollectionPropertiesFinished);
+    connect(fetch, &KJob::result, this, &ManageShowCollectionProperties::slotCollectionPropertiesFinished);
 }
 
 void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
@@ -81,10 +74,8 @@ void ManageShowCollectionProperties::slotCollectionPropertiesFinished(KJob *job)
     if (!collections.isEmpty()) {
         const Akonadi::Collection collection = collections.first();
 
-        QPointer<Akonadi::CollectionPropertiesDialog> dlg
-            = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
-        dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1",
-                                  collection.name()));
+        QPointer<Akonadi::CollectionPropertiesDialog> dlg = new Akonadi::CollectionPropertiesDialog(collection, mPages, mCollectionView);
+        dlg->setWindowTitle(i18nc("@title:window", "Properties of Calendar Folder %1", collection.name()));
 
         dlg->show();
         mHashDialogBox.insert(collection.id(), dlg);

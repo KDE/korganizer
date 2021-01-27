@@ -17,7 +17,8 @@
 
 #include <QAbstractItemModel>
 
-namespace KOrg {
+namespace KOrg
+{
 /**
   Shows one agenda for every resource side-by-side.
 */
@@ -62,8 +63,7 @@ public Q_SLOTS:
     void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
-    void changeIncidenceDisplay(const Akonadi::Item &,
-                                Akonadi::IncidenceChanger::ChangeType) override;
+    void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
     void updateConfig() override;
 
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;

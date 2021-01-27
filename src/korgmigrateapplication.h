@@ -7,8 +7,8 @@
 #ifndef KORGMIGRATEAPPLICATION_H
 #define KORGMIGRATEAPPLICATION_H
 
-#include <PimCommon/MigrateApplicationFiles>
 #include "korganizerprivate_export.h"
+#include <PimCommon/MigrateApplicationFiles>
 
 class KORGANIZERPRIVATE_EXPORT KOrgMigrateApplication
 {
@@ -16,6 +16,7 @@ public:
     KOrgMigrateApplication();
 
     void migrate();
+
 private:
     void initializeMigrator();
     PimCommon::MigrateApplicationFiles mMigrator;

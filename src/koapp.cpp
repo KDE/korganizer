@@ -11,8 +11,8 @@
 #include "koapp.h"
 #include "actionmanager.h"
 #include "calendarview.h"
-#include "korganizer.h"
 #include "korganizer-version.h"
+#include "korganizer.h"
 
 #include <KCalendarCore/CalFormat>
 
@@ -31,8 +31,7 @@ KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     : KontactInterface::PimUniqueApplication(argc, argv)
 {
     const QString prodId = QStringLiteral("-//K Desktop Environment//NONSGML KOrganizer %1//EN");
-    KCalendarCore::CalFormat::setApplication(QStringLiteral("KOrganizer"),
-                                             prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
+    KCalendarCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
 }
 
 KOrganizerApp::~KOrganizerApp()
@@ -64,8 +63,7 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
         const auto url = QUrl{parser.value(QStringLiteral("view"))};
         auto fetchJob = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(url), this);
         fetchJob->fetchScope().fetchFullPayload();
-        connect(fetchJob, &Akonadi::ItemFetchJob::result,
-                this, [](KJob *job) {
+        connect(fetchJob, &Akonadi::ItemFetchJob::result, this, [](KJob *job) {
             if (job->error()) {
                 KMessageBox::detailedSorry(nullptr, i18n("Failed to retrieve incidence from Akonadi"), job->errorText());
                 return;
