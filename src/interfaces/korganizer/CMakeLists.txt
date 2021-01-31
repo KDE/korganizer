@@ -12,7 +12,7 @@ target_link_libraries(korganizer_interfaces
   KF5::CalendarSupport
   KF5::EventViews
   KF5::AkonadiCore
-  Qt5::PrintSupport
+  Qt::PrintSupport
   KF5::Parts
 )
 

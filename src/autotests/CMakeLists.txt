@@ -11,7 +11,7 @@ target_link_libraries(testkodaymatrix
   KF5::CalendarSupport
   korganizer_core
   korganizerprivate
-  Qt5::Test
+  Qt::Test
 )
 
 add_executable(testkodaymatrix_us testkodaymatrix_us.cpp ../kodaymatrix.cpp)
@@ -23,13 +23,13 @@ target_link_libraries(testkodaymatrix_us
   KF5::CalendarSupport
   korganizer_core
   korganizerprivate
-  Qt5::Test
+  Qt::Test
 )
 
 set(koeventpopupmenutest_SRCS ../koeventpopupmenu.cpp ../kocorehelper.cpp ../korganizer_debug.cpp)
-set(koeventpopupmenutest_LIBS Qt5::Test
-  Qt5::Gui
-  Qt5::Core
+set(koeventpopupmenutest_LIBS Qt::Test
+  Qt::Gui
+  Qt::Core
   KF5::Mime
   KF5::AkonadiWidgets
   KF5::AkonadiCore
