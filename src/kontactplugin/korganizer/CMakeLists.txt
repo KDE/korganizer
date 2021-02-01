@@ -59,7 +59,7 @@ ki18n_wrap_ui(kcm_todosummary_PART_SRCS todosummaryconfig_base.ui)
 
 add_library(kcm_todosummary MODULE ${kcm_todosummary_PART_SRCS})
 
-target_link_libraries(kcm_todosummary Qt::Widgets KF5::KCMUtils KF5::I18n)
+target_link_libraries(kcm_todosummary Qt5::Widgets KF5::KCMUtils KF5::I18n)
 
 ########## Unit Test ###########
 if (BUILD_TESTING)

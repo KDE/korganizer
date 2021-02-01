@@ -34,7 +34,7 @@ ki18n_wrap_ui(kcm_sdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
 add_library(kcm_sdsummary MODULE ${kcm_sdsummary_PART_SRCS})
 
-target_link_libraries(kcm_sdsummary Qt::Widgets KF5::KCMUtils KF5::I18n)
+target_link_libraries(kcm_sdsummary Qt5::Widgets KF5::KCMUtils KF5::I18n)
 
 ########### install files ###############
 
