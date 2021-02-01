@@ -215,9 +215,8 @@ set(korganizerprivate_LIB_SRCS
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
     pimmessagebox.cpp
+    korganizer.qrc
     )
-
-qt5_add_resources(korganizerprivate_LIB_SRCS korganizer.qrc)
 
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_agendaitemtheme.cpp PROPERTY SKIP_AUTOMOC ON)
