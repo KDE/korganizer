@@ -216,6 +216,7 @@ set(korganizerprivate_LIB_SRCS
     views/whatsnextview/kowhatsnextview.cpp
     pimmessagebox.cpp
     korganizer.qrc
+    agendaitem_pixmaps/agendaitemtheme.qrc
     )
 
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)
@@ -229,9 +230,6 @@ ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/searchdialog_base.ui
     views/collectionview/quickview.ui
     )
-
-qt5_add_resources(korganizerprivate_LIB_SRCS
-    agendaitem_pixmaps/agendaitemtheme.qrc)
 
 qt5_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.korganizer.Korganizer.xml impl/korganizerifaceimpl.h
