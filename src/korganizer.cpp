@@ -87,7 +87,7 @@ void KOrganizer::init(bool document)
 
     bar->addWidget(new QLabel(this));
 
-    auto *progressBar = new KPIM::ProgressStatusBarWidget(statusBar(), this);
+    auto progressBar = new KPIM::ProgressStatusBarWidget(statusBar(), this);
 
     bar->addPermanentWidget(progressBar->littleProgress());
 

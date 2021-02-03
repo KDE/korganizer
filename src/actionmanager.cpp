@@ -197,7 +197,7 @@ void ActionManager::createCalendarAkonadi()
 
     mCollectionView->setCollectionSelectionProxyModel(checkableProxy);
 
-    auto *collectionSelection = new CalendarSupport::CollectionSelection(selectionModel);
+    auto collectionSelection = new CalendarSupport::CollectionSelection(selectionModel);
     EventViews::EventView::setGlobalCollectionSelection(collectionSelection);
 
     mCalendarView->readSettings();

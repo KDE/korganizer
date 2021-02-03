@@ -389,7 +389,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
             columnFilterProxy->setSourceColumns(QVector<int>() << Akonadi::ETMCalendar::CollectionTitle);
             columnFilterProxy->setSourceModel(sortProxy);
 
-            auto *qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
+            auto qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
             auto selection = new KCheckableProxyModel;
             selection->setSourceModel(columnFilterProxy);

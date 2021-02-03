@@ -149,7 +149,7 @@ KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *par
         return nullptr;
     }
 
-    auto *pluginFactory = static_cast<KOrg::PartFactory *>(factory);
+    auto pluginFactory = static_cast<KOrg::PartFactory *>(factory);
 
     if (!pluginFactory) {
         qCDebug(KORGANIZER_LOG) << "Cast failed";

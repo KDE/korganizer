@@ -37,7 +37,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
     auto aTransportLabel = new QLabel(i18nc("@label", "Mail transport:"), topFrame);
     topLayout->addWidget(aTransportLabel, 2, 0, 1, 2);
 
-    auto *tmw = new MailTransport::TransportManagementWidget(topFrame);
+    auto tmw = new MailTransport::TransportManagementWidget(topFrame);
     tmw->layout()->setContentsMargins({});
     topLayout->addWidget(tmw, 3, 0, 1, 2);
     load();

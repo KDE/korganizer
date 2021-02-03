@@ -558,7 +558,7 @@ void AkonadiCollectionView::slotServerSideSubscription()
     if (!collection.isValid()) {
         return;
     }
-    auto *job = new PimCommon::ManageServerSideSubscriptionJob(this);
+    auto job = new PimCommon::ManageServerSideSubscriptionJob(this);
     job->setCurrentCollection(collection);
     job->setParentWidget(this);
     job->start();
@@ -701,7 +701,7 @@ void AkonadiCollectionView::newCalendar()
 
 void AkonadiCollectionView::newCalendarDone(KJob *job)
 {
-    auto *createjob = static_cast<Akonadi::AgentInstanceCreateJob *>(job);
+    auto createjob = static_cast<Akonadi::AgentInstanceCreateJob *>(job);
     if (createjob->error()) {
         // TODO(AKONADI_PORT)
         // this should show an error dialog and should be merged

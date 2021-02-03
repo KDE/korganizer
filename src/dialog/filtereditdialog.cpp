@@ -223,7 +223,7 @@ void FilterEdit::bNewPressed()
         }
     }
 
-    auto *newFilter = new KCalendarCore::CalFilter(newFilterName);
+    auto newFilter = new KCalendarCore::CalFilter(newFilterName);
     mFilters->append(newFilter);
     updateFilterList();
     mRulesList->setCurrentRow(mRulesList->count() - 1);
