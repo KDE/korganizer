@@ -62,7 +62,7 @@
 
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
-#include <KNS3/DownloadDialog>
+#include <KNewStuff3/KNS3/QtQuickDialogWrapper>
 #include <KToggleAction>
 #include <KWindowSystem>
 #include <QIcon>
@@ -1132,11 +1132,8 @@ bool ActionManager::addIncidence(const QString &ical)
 
 void ActionManager::downloadNewStuff()
 {
-    QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(QStringLiteral("korganizer.knsrc"), mCalendarView);
-    dialog->setTitle(i18nc("@title", "KOrganizer Calendars Add-On Installer"));
-    dialog->exec();
-    const auto installedEntries = dialog->installedEntries();
-    for (const KNS3::Entry &e : installedEntries) {
+    const auto installedEntries = KNS3::QtQuickDialogWrapper(QStringLiteral("korganizer.knsrc")).exec();
+    for (const auto &e : installedEntries) {
         qCDebug(KORGANIZER_LOG) << " downloadNewStuff :";
         const QStringList lstFile = e.installedFiles();
         if (lstFile.count() != 1) {
@@ -1174,7 +1171,6 @@ void ActionManager::downloadNewStuff()
             }
         }
     }
-    delete dialog;
 }
 
 QString ActionManager::localFileName() const
