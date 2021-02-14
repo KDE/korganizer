@@ -124,13 +124,13 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="categoryCheck">
         <property name="toolTip">
-         <string>Include item categories in your search</string>
+         <string>Include item tags in your search</string>
         </property>
         <property name="whatsThis">
-         <string>Check this box if you want to match item categories against your search pattern.</string>
+         <string>Check this box if you want to match item tags against your search pattern.</string>
         </property>
         <property name="text">
-         <string>Cate&amp;gories</string>
+         <string>Ta&amp;gs</string>
         </property>
        </widget>
       </item>

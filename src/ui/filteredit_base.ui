@@ -225,7 +225,7 @@
         <item row="6" column="0">
          <widget class="QGroupBox" name="mCategoriesButtonGroup">
           <property name="title">
-           <string>Categories</string>
+           <string>Tags</string>
           </property>
           <layout class="QGridLayout">
            <property name="leftMargin">
@@ -269,7 +269,7 @@
            <item row="1" column="0" colspan="2">
             <widget class="QRadioButton" name="mCatHideCheck">
              <property name="whatsThis">
-              <string>When this option is enabled, this filter will show all items which do &lt;i&gt;not&lt;/i&gt; contain the selected categories.</string>
+              <string>When this option is chosen, this filter will show all items which do &lt;i&gt;not&lt;/i&gt; contain any of the selected tags.</string>
              </property>
              <property name="text">
               <string>Show all except selected</string>
@@ -285,7 +285,7 @@
            <item row="0" column="0" colspan="2">
             <widget class="QRadioButton" name="mCatShowCheck">
              <property name="whatsThis">
-              <string>When this option is enabled, this filter will show all items containing at least the selected items.</string>
+              <string>When this option is chosen, this filter will show all items containing any of the selected tags.</string>
              </property>
              <property name="text">
               <string>Show only selected</string>

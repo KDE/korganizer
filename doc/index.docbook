@@ -155,8 +155,8 @@ agenda, use &kmail; to send and receive invitations, &etc;</para>
 <para>Main features of &korganizer;:</para>
 <para><itemizedlist>
 <listitem><para>Create To-dos, schedule events, and write journal entries.</para></listitem>
-<listitem><para>Organize your events and to-dos by grouping the related items in categories.</para></listitem>
-<listitem><para>Highlight categories with colors.</para></listitem>
+<listitem><para>Organize your events and to-dos by grouping the related items with tags.</para></listitem>
+<listitem><para>Highlight tags with colors.</para></listitem>
 <listitem><para>Open multiple calendars, and seamlessly view and edit them.</para></listitem>
 <listitem><para>Reschedule your events by drag-and-drop.</para></listitem>
 <listitem><para>Generate recurring events easily.</para></listitem>
@@ -187,7 +187,7 @@ of &korganizer;!</para>
 
 <para>If you ever worked with a personal information program before, you'll be
 right at home with &korganizer;. You can enter new events, reschedule existing
-events, assign categories to your events, devise new categories, enter and
+events, assign tags to your events, devise new tags, enter and
 modify lists of attendees and their roles, email event invitations
 automatically and exchange data with other &korganizer; calendars, create
 to-dos and write journal entries.</para>
@@ -527,8 +527,8 @@ items from the enabled (checked) resources which are
 item, it won't be in the exported file. To filter out the undesired items
 before exporting them, you can create
 <link linkend="filters-view">filters</link>. Filters are even more effective
-if you classify your events and to-dos in
-<link linkend="categories-view">categories</link>. To enable and disable
+if you classify your events and to-dos with
+<link linkend="categories-view">tags</link>. To enable and disable
 resources, check or uncheck the resource box in the
 <link linkend="managing-resources"><guilabel>Calendar Manager</guilabel> </link>
 sidebar.</para>
@@ -624,8 +624,8 @@ with the list of upcoming events or the list of to-dos, &etc;</para>
 
 <para>To solve the challenge of displaying your information in a useful and
 intuitive fashion, &korganizer; offers different views, filters and search
-capabilities. You can also assign related events and to-dos to
-categories, which will help you to view them later, using filters or
+capabilities. You can also assign tags to related events and to-dos,
+which will help you to view them later, using filters or
 colors.</para>
 
 <sect1 id="description-view">
@@ -726,7 +726,7 @@ menu item.</para>
 <sect2 id="agenda-view">
 <title>Agenda View</title>
 
-<!--TODO: add agenda view options, color of resources and categories-->
+<!--TODO: add agenda view options, color of resources and tags-->
 
 <para>The Agenda view presents your events or due to-dos for one or more days,
 sorted chronologically. You can also see the length of each event in the day
@@ -787,11 +787,11 @@ view.</para></listitem>
 </para></tip>
 
 <para>To help you organize your agenda, the color of the events reflect their
-category, and depending on the <link linkend="config-main-views">&korganizer;
+tags, and depending on the <link linkend="config-main-views">&korganizer;
 view configuration</link>, it may also reflect its
 <link linkend="managing-resources">resource</link>. Therefore, if you assign
-<link linkend="categories-view">categories to events</link> and
-<link linkend="config-main-colors">different colors to categories</link> , you
+<link linkend="categories-view">tags to events</link> and
+<link linkend="config-main-colors">different colors to tags</link> , you
 will be able to quickly identify the type of event by its color.
 </para>
 
@@ -887,11 +887,11 @@ item details. Double click an empty area to create an event, double
 click any calendar item to edit it.</para>
 
 <para>To help you organize your data, the color of the events may
-reflect their category, and its <link linkend="managing-resources">resource</link>,
+reflect their tags, and their <link linkend="managing-resources">resource</link>,
 depending on the <link linkend="config-main-views">&korganizer;
 view configuration</link>. Therefore, if you assign
-<link linkend="categories-view">categories to events</link> and
-<link linkend="config-main-colors">different colors to categories</link>,
+<link linkend="categories-view">tags to events</link> and
+<link linkend="config-main-colors">different colors to tags</link>,
 you can identify the type of event (or resource) by its color.
 </para>
 
@@ -989,25 +989,25 @@ text box and edit it! To remove a journal entry, press the <inlinemediaobject>
 </sect1>
 
 <sect1 id="categories-view">
-<title>Categories</title>
+<title>Tags</title>
 
 <!--TODO: Add screenshot?-->
 
 <para>To help you organize your entries in related groups, you can assign
-categories to events, to-dos and journal entries. If you assign categories, you can use them
+tags to events, to-dos and journal entries. If you assign tags, you can use them
 later when searching, filtering, and displaying events and to-dos.</para>
 
-<para>To assign categories when editing or creating new
+<para>To assign tags when editing or creating new
 <link linkend="entering-data-events-general">events</link> or
-<link linkend="entering-data-to-do-general">to-dos</link>, select a category
-from the drop down box labelled <guilabel>Categories</guilabel>
+<link linkend="entering-data-to-do-general">to-dos</link>, click the
+<guibutton>...</guibutton> button
 in the <guilabel>General</guilabel> tab. You can assign more than
-one category for each item.</para>
+one tag to each item.</para>
 
-<para>To create, delete and edit categories, choose the <menuchoice>
-<guimenu>Settings</guimenu><guimenuitem>Manage Categories...</guimenuitem>
-</menuchoice> menu item to open the <guilabel>Edit Categories</guilabel> dialog.
-If you assign <link linkend="config-main-colors">different colors to categories</link>,
+<para>To create and delete tags, choose the <menuchoice>
+<guimenu>Settings</guimenu><guimenuitem>Manage Tags...</guimenuitem>
+</menuchoice> menu item to open the <guilabel>Manage Tags</guilabel> dialog.
+If you assign <link linkend="config-main-colors">different colors to tags</link>,
 you will be able to quickly identify the type of event by its color, either in
 the Agenda view or in the Month view (depending on the
 <link linkend="config-main-views">&korganizer; view configuration</link>).
@@ -1022,7 +1022,7 @@ the Agenda view or in the Month view (depending on the
 use filters for your calendars. For instance, if you do not want to view
 completed to-dos, you can filter them out, instead of
 <link linkend="managing-purge-archive">purging them</link>. If you assign
-categories, you can use them to create filters.</para>
+tags, you can use them to create filters.</para>
 
 <para>To create, delete and edit filters, choose the <menuchoice>
 <guimenu>Settings</guimenu><guimenuitem>Manage View Filters...</guimenuitem>
@@ -1045,8 +1045,8 @@ If you do not want to use any filter, choose <guilabel>No filter</guilabel>.</pa
 <para>Filters are useful when <link linkend="managing-export">exporting your
 calendar</link>. If you use a filter, only the filtered (visible) items will
 be exported. Also, filters are more effective when the items are already
-classified and organized in <link linkend="categories-view">categories</link>,
-as you can easily create filters based on categories.</para>
+classified and organized in <link linkend="categories-view">tags</link>,
+as you can easily create filters based on tags.</para>
 
 </sect1>
 
@@ -1057,7 +1057,7 @@ as you can easily create filters based on categories.</para>
 <guimenuitem>Find</guimenuitem></menuchoice> menu item
 or press the <keycombo action="simul">&Ctrl;<keycap>F</keycap>
 </keycombo> shortcut to find items (events, to-dos or journal
-entries) according to title, description, and/or categories.
+entries) according to title, description, and/or tags.
 The find action will only search the specified fields.</para>
 
 <tip><para>You can use wildcards if you do not remember the exact summary. If
@@ -1180,17 +1180,17 @@ you.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Categories</guilabel></term>
+<term><guilabel>Tags</guilabel></term>
 <listitem><para>You can assign several
-<link linkend="categories-view">categories</link> to a calendar item. Click the
-drop down box to display all available categories. Check the category boxes to
-assign suitable categories to the event.</para>
-<para>You can also add a new category, modify a category or delete a category in the
-<guilabel>Edit Categories</guilabel> dialog. Open this dialog with <menuchoice>
-<guimenu>Settings</guimenu> <guimenuitem>Manage Categories</guimenuitem></menuchoice>.</para>
+<link linkend="categories-view">tags</link> to a calendar item. Click the
+<guibutton>...</guibutton> button to display all available tags. Check the tag boxes to
+assign suitable tags to the event.</para>
+<para>You can also add a new tag, modify a tag, or delete a tag in the
+<guilabel>Manage Tags</guilabel> dialog. Open this dialog with <menuchoice>
+<guimenu>Settings</guimenu> <guimenuitem>Manage Tags</guimenuitem></menuchoice>.</para>
 
 <tip><para>Your language lesson at work may belong to both Business
-and Education categories, while the anniversary of your marriage belongs to
+and Education tags, while the anniversary of your marriage belongs to
 either Personal or Special Occasion - it is your choice.</para></tip>
 </listitem>
 </varlistentry>
@@ -1899,8 +1899,9 @@ The Plan, Conclusion</userinput> on three separate lines.</para></step>
 reminder time to 15 minutes, just long enough to brew a cup of tea
 prior to the meeting start.</para></step>
 
-<step><para>Select <guilabel>Appointment</guilabel> from the
-<guilabel>Categories</guilabel> drop down box.</para></step>
+<step><para>Go to the <guilabel>General</guilabel> tab.
+Select <guilabel>Appointment</guilabel> from the
+<guilabel>Manage Tags</guilabel> dialog.</para></step>
 
 <step><para>Go to the <guilabel>Recurrence</guilabel> tab and select the
 <guilabel>Weekly</guilabel> repeats.</para>
@@ -2183,8 +2184,8 @@ seconds.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>To-dos use category colors</guilabel></term>
-<listitem><para>Check this box so that to-dos will use category colors and not
+<term><guilabel>To-dos use tag colors</guilabel></term>
+<listitem><para>Check this box so that to-dos will use tag colors and not
 colors specific to their due, due today or overdue state.</para></listitem>
 </varlistentry>
 
@@ -2283,16 +2284,16 @@ plan.</para></listitem>
 <varlistentry>
 <term><guilabel>Color Usage</guilabel></term>
 <listitem>
-<para>Select the <guilabel>Category inside, calendar outside</guilabel> option if you would like to
-draw calendar items in their associated category color, with the item's
+<para>Select the <guilabel>Tag inside, calendar outside</guilabel> option if you would like to
+draw calendar items in their associated tag's color, with the item's
 border drawn in the color of its calendar.</para>
 
-<para>Select the <guilabel>Calendar inside, category outside</guilabel> option if you would like to
+<para>Select the <guilabel>Calendar inside, tag outside</guilabel> option if you would like to
 draw calendar items in their associated calendar color, with the item's
-border drawn in the color of its category.</para>
+border drawn in the color of its tag.</para>
 
-<para>Select the <guilabel>Only category</guilabel> option if you would like to draw calendar items
-(both inside and border) in the color of their associated category.</para>
+<para>Select the <guilabel>Only tag</guilabel> option if you would like to draw calendar items
+(both inside and border) in the color of their associated tag.</para>
 
 <para>Select the <guilabel>Only calendar</guilabel> option if you would like to draw calendar items
 (both inside and border) in the color of their calendar.</para>
@@ -2385,7 +2386,7 @@ a journal entry for every completed to-do.</para></listitem>
 <title>Colors</title>
 
 <para>Choose the color used for holidays, for highlighting, and for specific
-event categories. You can choose a different color for each category. Of course
+event tags. You can choose a different color for each tag. Of course
 too many colors may be confusing, so use common sense. The use of color
 depends also on the <link linkend="config-main-views">view
 preferences.</link></para>
@@ -2439,13 +2440,13 @@ allowing you to select the to-do overdue color.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Categories</guilabel></term>
-<listitem><para>This group allows you to assign a color to each category. Select
-a category in the drop down list, and press the button to open the
+<term><guilabel>Tags</guilabel></term>
+<listitem><para>This group allows you to assign a color to each tag. Select
+a tag in the drop down list, and press the button to open the
 <guilabel>Select Color</guilabel> dialog, allowing you to select the color for
-that category. <link linkend="config-main-views">Depending on the view
+that tag. <link linkend="config-main-views">Depending on the view
 preferences</link>, this color will be used to mark events and to-dos which
-belong to this category in the Agenda and Month views.</para></listitem>
+bear this tag in the Agenda and Month views.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3045,7 +3046,7 @@ Edit</guimenu> <guimenuitem>Find</guimenuitem>
 <listitem><para>Choose <guimenuitem>Find</guimenuitem> from the
 <guimenu>Edit</guimenu> or click the <guiicon>Find</guiicon> icon to
 <action>find events, to-dos and journal entries according to their title,
-description, and/or categories</action>.</para>
+description, and/or tags</action>.</para>
 <para>For more information about this action, please refer to
 <xref linkend="search-view" />.</para>
 </listitem>
@@ -3551,11 +3552,11 @@ and edit filters that will affect which items will be displayed by
 <varlistentry id="menu-settings-edit-categories">
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Manage Categories...</guimenuitem>
+<guimenuitem>Manage Tags...</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Choose this menu item to open the <guilabel>Edit
-Categories</guilabel> dialog</action>. Using this dialog, you can create, delete
-and edit calendar item categories. Categories are used to organize your events and
+<listitem><para><action>Choose this menu item to open the <guilabel>Manage
+Tags</guilabel> dialog</action>. Using this dialog, you can create, delete
+and edit calendar item tags. Tags are used to organize your events and
 to-dos in related groups.</para></listitem>
 </varlistentry>
 

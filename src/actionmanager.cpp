@@ -682,7 +682,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("edit_filters"), action);
     connect(action, &QAction::triggered, mCalendarView, &CalendarView::editFilters);
 
-    action = new QAction(i18n("Manage C&ategories..."), this);
+    action = new QAction(i18n("Manage T&ags..."), this);
     mACollection->addAction(QStringLiteral("edit_categories"), action);
     connect(action, &QAction::triggered, mCalendarView->dialogManager(), &KODialogManager::showCategoryEditDialog);
 

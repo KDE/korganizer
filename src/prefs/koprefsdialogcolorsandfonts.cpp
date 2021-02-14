@@ -85,7 +85,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
     // categories colors
-    QGroupBox *categoryGroup = new QGroupBox(i18nc("@title:group", "Categories"), colorFrame);
+    QGroupBox *categoryGroup = new QGroupBox(i18nc("@title:group", "Tags"), colorFrame);
     colorLayout->addWidget(categoryGroup, 9, 0, 1, 2);
 
     auto categoryLayout = new QGridLayout;
@@ -99,16 +99,16 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     mCategoryCombo = new Akonadi::TagSelectionComboBox(categoryGroup);
     mCategoryCombo->setWhatsThis(i18nc("@info:whatsthis",
-                                       "Select here the event category you want to modify. "
-                                       "You can change the selected category color using "
-                                       "the button below."));
+                                       "Select the tag you want to modify. "
+                                       "You can change the selected tag's color using "
+                                       "the adjacent color button."));
     connect(mCategoryCombo, qOverload<int>(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
     categoryLayout->addWidget(mCategoryCombo, 1, 0);
 
     mCategoryButton = new KColorButton(categoryGroup);
     mCategoryButton->setWhatsThis(i18nc("@info:whatsthis",
-                                        "Choose here the color of the event category selected "
-                                        "using the combo box above."));
+                                        "Choose the color of the tag selected "
+                                        "in the adjacent combo box."));
     connect(mCategoryButton, &KColorButton::changed, this, &KOPrefsDialogColorsAndFonts::setCategoryColor);
     categoryLayout->addWidget(mCategoryButton, 1, 1);
 

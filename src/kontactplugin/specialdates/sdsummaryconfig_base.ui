@@ -136,7 +136,7 @@
          <string>Show birthdays from your calendar</string>
         </property>
         <property name="whatsThis">
-         <string>Enable this option to include birthdays from your calendar in the upcoming special occasions summary. Typically, these are events with the &quot;Birthday&quot; category.</string>
+         <string>Enable this option to include birthdays from your calendar in the upcoming special occasions summary. Typically, these are events with the &quot;Birthday&quot; tag.</string>
         </property>
         <property name="text">
          <string>Show &amp;birthdays</string>
@@ -152,7 +152,7 @@
          <string>Show anniversaries from your calendar</string>
         </property>
         <property name="whatsThis">
-         <string>Enable this option to include anniversaries from your calendar in the upcoming special occasions summary. Typically, these are events with the &quot;Anniversary&quot; category.</string>
+         <string>Enable this option to include anniversaries from your calendar in the upcoming special occasions summary. Typically, these are events with the &quot;Anniversary&quot; tag.</string>
         </property>
         <property name="text">
          <string>Show &amp;anniversaries</string>
@@ -168,7 +168,7 @@
          <string>Show holidays from your calendar</string>
         </property>
         <property name="whatsThis">
-         <string>Enable this option to include holidays from your calendar in the upcoming special occasions summary. These are events from your configured holiday region, or events with the &quot;Holiday&quot; category.</string>
+         <string>Enable this option to include holidays from your calendar in the upcoming special occasions summary. These are events from your configured holiday region, or events with the &quot;Holiday&quot; tag.</string>
         </property>
         <property name="text">
          <string>Show &amp;holidays</string>
@@ -184,7 +184,7 @@
          <string>Show special occasions from your calendar</string>
         </property>
         <property name="whatsThis">
-         <string>Enable this option to include events from your calendar with the &quot;special occasion&quot; category.</string>
+         <string>Enable this option to include events from your calendar with the &quot;special occasion&quot; tag.</string>
         </property>
         <property name="text">
          <string>Show s&amp;pecial occasions</string>
