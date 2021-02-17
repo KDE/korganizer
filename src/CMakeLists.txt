@@ -142,7 +142,9 @@ kconfig_add_kcfg_files(korganizer_core_LIB_SRCS settings/koprefs_base.kcfgc)
 
 add_library(korganizer_core ${korganizer_core_LIB_SRCS})
 generate_export_header(korganizer_core BASE_NAME korganizer_core)
-
+if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+    set_target_properties(korganizer_core PROPERTIES UNITY_BUILD ON)
+endif()
 target_link_libraries(korganizer_core
     PUBLIC
     korganizer_interfaces
