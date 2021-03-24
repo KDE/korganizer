@@ -2294,6 +2294,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
             }
         }
         KCalendarCore::Incidence::Ptr oldIncidence(incidence->clone());
+        KCalendarCore::Recurrence *recur = incidence->recurrence();
         switch (km) {
         case KMessageBox::Ok: // Continue // all
         case KMessageBox::Continue:
@@ -2301,12 +2302,17 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
             break;
 
         case KMessageBox::Yes: // just this one
-            incidence->recurrence()->addExDate(itemDate);
+            if (recur->allDay()) {
+                recur->addExDate(itemDate);
+            } else {
+                auto itemDateTime = recur->startDateTime();
+                itemDateTime.setDate(itemDate);
+                recur->addExDateTime(itemDateTime);
+            }
             mChanger->modifyIncidence(item, oldIncidence, this);
-
             break;
+
         case KMessageBox::No: // all future items
-            KCalendarCore::Recurrence *recur = incidence->recurrence();
             recur->setEndDate(itemDate.addDays(-1));
             mChanger->modifyIncidence(item, oldIncidence, this);
             break;
