@@ -5,8 +5,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORGAC_KOALARMCLIENT_H
-#define KORGAC_KOALARMCLIENT_H
+#pragma once
 
 #include <Akonadi/Calendar/ETMCalendar>
 
@@ -66,4 +65,3 @@ private:
     AlarmDialog *mDialog = nullptr;
 };
 
-#endif

@@ -6,8 +6,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_INTERFACES_PART_H
-#define KORG_INTERFACES_PART_H
+#pragma once
 
 #include "mainwindow.h"
 
@@ -71,4 +70,3 @@ protected:
 };
 }
 
-#endif

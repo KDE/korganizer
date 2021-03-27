@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSUSERFEEDBACK_H
-#define KOPREFSUSERFEEDBACK_H
+#pragma once
 
 #include <KCModule>
 
@@ -31,4 +30,3 @@ private:
 };
 #endif
 
-#endif // KOPREFSUSERFEEDBACK_H

@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
  */
 
-#ifndef KORG_QUICKVIEW_H
-#define KORG_QUICKVIEW_H
+#pragma once
 
 #include <EventViews/ViewCalendar>
 
@@ -41,4 +40,3 @@ private:
     int mDayRange = 7;
 };
 
-#endif // QUICKVIEW_H

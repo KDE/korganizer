@@ -4,8 +4,7 @@
    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KORGANIZERUSERFEEDBACKPROVIDER_H
-#define KORGANIZERUSERFEEDBACKPROVIDER_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 #include <KUserFeedback/Provider>
@@ -18,4 +17,3 @@ public:
     ~KOrganizerUserFeedbackProvider() override;
 };
 
-#endif // KORGANIZERUSERFEEDBACKPROVIDER_H

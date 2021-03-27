@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KORG_KORGANIZERIFACEIMPL_H
-#define KORG_KORGANIZERIFACEIMPL_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 
@@ -84,4 +83,3 @@ private:
     ActionManager *const mActionManager;
 };
 
-#endif // KORGANIZER_SHARED_H

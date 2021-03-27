@@ -7,8 +7,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_KCMDESIGNERFIELDS_H
-#define KORG_KCMDESIGNERFIELDS_H
+#pragma once
 
 #include <KCModule>
 
@@ -59,4 +58,3 @@ private:
     QPushButton *mDesignerButton = nullptr;
 };
 
-#endif

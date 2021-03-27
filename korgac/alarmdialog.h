@@ -5,8 +5,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORGAC_ALARMDIALOG_H
-#define KORGAC_ALARMDIALOG_H
+#pragma once
 
 #include <Akonadi/Calendar/ETMCalendar>
 
@@ -135,4 +134,3 @@ private:
     QPushButton *mOkButton = nullptr;
 };
 
-#endif

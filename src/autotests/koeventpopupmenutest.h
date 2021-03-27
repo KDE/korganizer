@@ -4,8 +4,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KOEVENTPOPUPMENUTESTTEST_H
-#define KOEVENTPOPUPMENUTESTTEST_H
+#pragma once
 
 #include <AkonadiCore/Collection>
 #include <QObject>
@@ -32,4 +31,3 @@ private Q_SLOTS:
     void defaultMenuTodoVisible();
 };
 
-#endif // KOEVENTPOPUPMENUTESTTEST_H

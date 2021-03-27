@@ -6,8 +6,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_KITEMICONCHECKCOMBO_H
-#define KORG_KITEMICONCHECKCOMBO_H
+#pragma once
 
 #include <Libkdepim/KCheckComboBox>
 
@@ -29,4 +28,3 @@ private:
     const KItemIconCheckCombo::ViewType mViewType;
 };
 
-#endif // KITEMICONCHECKCOMBO_H

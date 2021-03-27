@@ -4,8 +4,7 @@
    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KORGMIGRATEAPPLICATION_H
-#define KORGMIGRATEAPPLICATION_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 #include <PimCommon/MigrateApplicationFiles>
@@ -22,4 +21,3 @@ private:
     PimCommon::MigrateApplicationFiles mMigrator;
 };
 
-#endif // KORGMIGRATEAPPLICATION_H

@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KORG_VIEWS_MULTIAGENDAVIEW_H
-#define KORG_VIEWS_MULTIAGENDAVIEW_H
+#pragma once
 
 #include "koeventview.h"
 
@@ -109,4 +108,3 @@ private:
 };
 }
 
-#endif

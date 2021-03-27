@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_VIEWS_MONTHVIEW_H
-#define KORG_VIEWS_MONTHVIEW_H
+#pragma once
 
 #include "koeventview.h"
 
@@ -78,4 +77,3 @@ private:
     KOEventPopupMenu *mPopup = nullptr;
 };
 }
-#endif

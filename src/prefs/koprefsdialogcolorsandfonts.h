@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDIALOGCOLORSANDFONTS_H
-#define KOPREFSDIALOGCOLORSANDFONTS_H
+#pragma once
 #include "kcm_korganizer_export.h"
 #include "kprefsdialog.h"
 #include <QWidget>
@@ -53,4 +52,3 @@ private:
     QList<KColorButton *> mButtonsDisable; // button that are disabled when using system color
 };
 
-#endif // KOPREFSDIALOGCOLORSANDFONTS_H

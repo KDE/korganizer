@@ -6,8 +6,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORGAC_ALARMDOCKWINDOW_H
-#define KORGAC_ALARMDOCKWINDOW_H
+#pragma once
 
 #include <KStatusNotifierItem>
 
@@ -61,4 +60,3 @@ private:
     bool mAutostartSet = false;
 };
 
-#endif

@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDIALOGGROUPWARESCHEDULING_H
-#define KOPREFSDIALOGGROUPWARESCHEDULING_H
+#pragma once
 #include "kprefsdialog.h"
 namespace Ui
 {
@@ -30,4 +29,3 @@ private:
     Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
 };
 
-#endif // KOPREFSDIALOGGROUPWARESCHEDULING_H

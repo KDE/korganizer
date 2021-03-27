@@ -8,8 +8,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORG_VIEWS_KOTODOVIEW_H
-#define KORG_VIEWS_KOTODOVIEW_H
+#pragma once
 
 #include "baseview.h"
 
@@ -82,4 +81,3 @@ private:
     EventViews::TodoView *mView = nullptr;
 };
 
-#endif /*KOTODOVIEW_H*/

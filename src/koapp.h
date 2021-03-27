@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOAPP_H
-#define KORG_KOAPP_H
+#pragma once
 
 #include <KontactInterface/PimUniqueApplication>
 
@@ -35,4 +34,3 @@ private:
     void processCalendar(const QUrl &url, bool show = true);
 };
 
-#endif

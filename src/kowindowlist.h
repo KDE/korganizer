@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOWINDOWLIST_H
-#define KORG_KOWINDOWLIST_H
+#pragma once
 
 #include <QObject>
 
@@ -69,4 +68,3 @@ private:
     KOrg::MainWindow *mDefaultWindow = nullptr;
 };
 
-#endif

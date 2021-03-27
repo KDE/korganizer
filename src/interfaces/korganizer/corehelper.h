@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_INTERFACES_COREHELPER_H
-#define KORG_INTERFACES_COREHELPER_H
+#pragma once
 class QColor;
 class QString;
 class QTime;
@@ -31,4 +30,3 @@ public:
     virtual QTime dayStart() = 0;
 };
 }
-#endif

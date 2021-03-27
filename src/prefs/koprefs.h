@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOPREFS_H
-#define KORG_KOPREFS_H
+#pragma once
 
 #include "koprefs_base.h"
 #include "korganizer_core_export.h"
@@ -61,4 +60,3 @@ public: // Do not use - except in KOPrefsDialogMain
     QString mEmail;
 };
 
-#endif

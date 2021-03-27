@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOGLOBALS_H
-#define KORG_KOGLOBALS_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 
@@ -60,4 +59,3 @@ private:
     QList<KHolidays::HolidayRegion *> mHolidayRegions;
 };
 
-#endif

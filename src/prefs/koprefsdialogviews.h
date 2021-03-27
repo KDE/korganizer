@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDIALOGVIEWS_H
-#define KOPREFSDIALOGVIEWS_H
+#pragma once
 
 #include "kprefsdialog.h"
 
@@ -27,4 +26,3 @@ private:
     KItemIconCheckCombo *mAgendaIconComboBox;
 };
 
-#endif // KOPREFSDIALOGVIEWS_H

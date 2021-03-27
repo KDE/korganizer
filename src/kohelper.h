@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOHELPER_H
-#define KORG_KOHELPER_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 
@@ -61,4 +60,3 @@ KORGANIZERPRIVATE_EXPORT Q_REQUIRED_RESULT bool isStandardCalendar(Akonadi::Coll
 KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
 }
 
-#endif

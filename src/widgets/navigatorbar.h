@@ -5,8 +5,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORG_NAVIGATORBAR_H
-#define KORG_NAVIGATORBAR_H
+#pragma once
 
 #include <KCalendarCore/IncidenceBase> // for KCalendarCore::DateList typedef
 
@@ -52,4 +51,3 @@ private:
     QToolButton *mNextYear = nullptr;
 };
 
-#endif

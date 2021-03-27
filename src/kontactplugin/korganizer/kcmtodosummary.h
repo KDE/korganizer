@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KCMTODOSUMMARY_H
-#define KCMTODOSUMMARY_H
+#pragma once
 
 #include "ui_todosummaryconfig_base.h"
 #include <KCModule>
@@ -35,4 +34,3 @@ private Q_SLOTS:
     void customDaysChanged(int value);
 };
 
-#endif

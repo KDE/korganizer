@@ -4,8 +4,7 @@
    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef USERFEEDBACKMANAGER_H
-#define USERFEEDBACKMANAGER_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 #include <QObject>
@@ -26,4 +25,3 @@ private:
     KUserFeedback::Provider *const mUserFeedbackProvider;
 };
 
-#endif // USERFEEDBACKMANAGER_H

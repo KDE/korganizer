@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDIALOGMAIN_H
-#define KOPREFSDIALOGMAIN_H
+#pragma once
 
 #include "kprefsdialog.h"
 
@@ -28,4 +27,3 @@ private:
     QWidget *mUserEmailSettings = nullptr;
 };
 
-#endif // KOPREFSDIALOGMAIN_H

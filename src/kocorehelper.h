@@ -8,8 +8,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOCOREHELPER_H
-#define KORG_KOCOREHELPER_H
+#pragma once
 
 #include "corehelper.h"
 #include "kocore.h"
@@ -37,4 +36,3 @@ public:
     }
 };
 
-#endif

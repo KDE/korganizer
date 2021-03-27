@@ -8,8 +8,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_CALENDARVIEW_H
-#define KORG_CALENDARVIEW_H
+#pragma once
 
 #include "helper/searchcollectionhelper.h"
 #include "korganizerprivate_export.h"
@@ -716,4 +715,3 @@ private:
     SearchCollectionHelper mSearchCollectionHelper;
 };
 
-#endif

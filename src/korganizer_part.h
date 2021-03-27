@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KORGANIZER_PART_H
-#define KORG_KORGANIZER_PART_H
+#pragma once
 
 #include "mainwindow.h"
 
@@ -92,4 +91,3 @@ Q_SIGNALS:
     void textChanged(const QString &);
 };
 
-#endif

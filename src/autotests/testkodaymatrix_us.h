@@ -6,8 +6,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef TESTKODAYMATRIX_H
-#define TESTKODAYMATRIX_H
+#pragma once
 
 #include <QObject>
 
@@ -18,4 +17,3 @@ private Q_SLOTS:
     void testMatrixLimits();
 };
 
-#endif

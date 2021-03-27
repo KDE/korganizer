@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDIALOGGROUPSCHEDULING_H
-#define KOPREFSDIALOGGROUPSCHEDULING_H
+#pragma once
 
 #include "kprefsdialog.h"
 class KOPrefsDialogGroupScheduling : public Korganizer::KPrefsModule
@@ -21,4 +20,3 @@ protected:
     void usrWriteConfig() override;
     void usrReadConfig() override;
 };
-#endif // KOPREFSDIALOGGROUPSCHEDULING_H

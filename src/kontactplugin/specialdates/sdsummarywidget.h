@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef SDSUMMARYWIDGET_H
-#define SDSUMMARYWIDGET_H
+#pragma once
 
 #include <KCalendarCore/Event>
 
@@ -84,4 +83,3 @@ private:
     KHolidays::HolidayRegion *mHolidays = nullptr;
 };
 
-#endif

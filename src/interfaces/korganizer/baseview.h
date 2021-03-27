@@ -7,8 +7,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_INTERFACES_BASEVIEW_H
-#define KORG_INTERFACES_BASEVIEW_H
+#pragma once
 
 #include "korganizer_interfaces_export.h"
 
@@ -388,4 +387,3 @@ private:
 };
 }
 
-#endif

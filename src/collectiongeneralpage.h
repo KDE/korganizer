@@ -4,8 +4,7 @@
 
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
-#ifndef CALENDARSUPPORT_COLLECTIONGENERALPAGE_H
-#define CALENDARSUPPORT_COLLECTIONGENERALPAGE_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 
@@ -44,4 +43,3 @@ private:
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage)
 }
 
-#endif

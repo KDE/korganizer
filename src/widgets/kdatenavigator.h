@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KDATENAVIGATOR_H
-#define KORG_KDATENAVIGATOR_H
+#pragma once
 
 #include <Akonadi/Calendar/ETMCalendar>
 #include <KCalendarCore/IncidenceBase> //for DateList typedef
@@ -118,4 +117,3 @@ private:
     KDateNavigator &operator=(const KDateNavigator &);
 };
 
-#endif

@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef SPECIALDATES_PLUGIN_H
-#define SPECIALDATES_PLUGIN_H
+#pragma once
 
 #include <KontactInterface/Plugin>
 class KAboutData;
@@ -36,4 +35,3 @@ protected:
     }
 };
 
-#endif

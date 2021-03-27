@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef TODO_SUMMARYWIDGET_H
-#define TODO_SUMMARYWIDGET_H
+#pragma once
 
 #include <AkonadiCore/Item>
 
@@ -90,4 +89,3 @@ private:
     const QString stateStr(const KCalendarCore::Todo::Ptr &todo);
 };
 
-#endif

@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KODIALOGMANAGER_H
-#define KORG_KODIALOGMANAGER_H
+#pragma once
 
 #include "koeventview.h"
 
@@ -80,4 +79,3 @@ private:
     FilterEditDialog *mFilterEditDialog = nullptr;
 };
 
-#endif

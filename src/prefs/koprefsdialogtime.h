@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDIALOGTIME_H
-#define KOPREFSDIALOGTIME_H
+#pragma once
 
 #include "kprefsdialog.h"
 class QSpinBox;
@@ -39,4 +38,3 @@ private:
     QCheckBox *mWorkDays[7];
 };
 
-#endif // KOPREFSDIALOGTIME_H

@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOCORE_H
-#define KORG_KOCORE_H
+#pragma once
 
 #include "korganizer_core_export.h"
 #include "part.h"
@@ -83,4 +82,3 @@ private:
     QMap<QWidget *, KXMLGUIClient *> mXMLGUIClients;
 };
 
-#endif

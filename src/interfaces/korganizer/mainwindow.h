@@ -6,8 +6,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_INTERFACES_MAINWINDOW_H
-#define KORG_INTERFACES_MAINWINDOW_H
+#pragma once
 
 #include "korganizer_interfaces_export.h"
 #include <QString>
@@ -91,4 +90,3 @@ private:
 };
 }
 
-#endif

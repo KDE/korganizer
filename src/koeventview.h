@@ -8,8 +8,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOEVENTVIEW_H
-#define KORG_KOEVENTVIEW_H
+#pragma once
 
 #include "baseview.h"
 
@@ -157,4 +156,3 @@ private:
     QList<QEvent *> mTypeAheadEvents;
 };
 
-#endif

@@ -10,8 +10,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_ACTIONMANAGER_H
-#define KORG_ACTIONMANAGER_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 #include "part.h"
@@ -351,4 +350,3 @@ private:
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver = nullptr;
 };
 
-#endif

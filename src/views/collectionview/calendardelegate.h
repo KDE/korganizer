@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
  */
 
-#ifndef CALENDARDELEGATE_H
-#define CALENDARDELEGATE_H
+#pragma once
 
 #include <QStyledItemDelegate>
 
@@ -33,4 +32,3 @@ private:
     QHash<Action, QPixmap> mPixmap;
 };
 
-#endif

@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KOPREFSDESIGNERFIELDS_H
-#define KOPREFSDESIGNERFIELDS_H
+#pragma once
 
 #include "kcmdesignerfields.h"
 
@@ -25,4 +24,3 @@ protected:
     Q_REQUIRED_RESULT QString applicationName() override;
 };
 
-#endif // KOPREFSDESIGNERFIELDS_H

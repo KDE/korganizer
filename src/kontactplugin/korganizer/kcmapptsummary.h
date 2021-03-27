@@ -6,8 +6,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KCMAPPTSUMMARY_H
-#define KCMAPPTSUMMARY_H
+#pragma once
 
 #include "ui_apptsummaryconfig_base.h"
 #include <KCModule>
@@ -39,4 +38,3 @@ private:
     QButtonGroup *mGroupwareButtonGroup = nullptr;
 };
 
-#endif

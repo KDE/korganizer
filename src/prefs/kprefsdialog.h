@@ -8,8 +8,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KDEPIM_KPREFSDIALOG_H
-#define KDEPIM_KPREFSDIALOG_H
+#pragma once
 
 #include <KCModule>
 #include <KConfigSkeleton>
@@ -797,4 +796,3 @@ protected:
 };
 }
 
-#endif

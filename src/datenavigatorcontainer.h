@@ -10,8 +10,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_DATENAVIGATORCONTAINER_H
-#define KORG_DATENAVIGATORCONTAINER_H
+#pragma once
 
 #include <Akonadi/Calendar/ETMCalendar>
 
@@ -144,4 +143,3 @@ private:
     bool mIgnoreNavigatorUpdates = false;
 };
 
-#endif

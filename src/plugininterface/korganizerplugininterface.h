@@ -4,8 +4,7 @@
    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KORGANIZERPLUGININTERFACE_H
-#define KORGANIZERPLUGININTERFACE_H
+#pragma once
 
 #include <PimCommonAkonadi/PluginInterface>
 #include <QObject>
@@ -18,4 +17,3 @@ public:
     static KOrganizerPluginInterface *self();
 };
 
-#endif // KORGANIZERPLUGININTERFACE_H

@@ -6,8 +6,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_UNIQUEAPP_H
-#define KORG_UNIQUEAPP_H
+#pragma once
 
 #include <KontactInterface/UniqueAppHandler>
 
@@ -28,4 +27,3 @@ public:
     int activate(const QStringList &args, const QString &workingDir) override;
 };
 
-#endif /* KORG_UNIQUEAPP_H */

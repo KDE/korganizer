@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_DATECHECKER_H
-#define KORG_DATECHECKER_H
+#pragma once
 
 #include <QDate>
 #include <QObject>
@@ -64,4 +63,3 @@ private:
     RolloverType mUpdateRollover;
 };
 
-#endif

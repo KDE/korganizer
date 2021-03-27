@@ -5,8 +5,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORG_ABOUTDATA_H
-#define KORG_ABOUTDATA_H
+#pragma once
 
 #include "korganizerprivate_export.h"
 #include <KAboutData>
@@ -20,4 +19,3 @@ public:
 };
 }
 
-#endif

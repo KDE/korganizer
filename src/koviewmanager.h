@@ -7,8 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_KOVIEWMANAGER_H
-#define KORG_KOVIEWMANAGER_H
+#pragma once
 
 #include <EventViews/EventView>
 
@@ -184,4 +183,3 @@ private:
     RangeMode mRangeMode = NO_RANGE;
 };
 
-#endif

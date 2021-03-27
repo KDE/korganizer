@@ -10,8 +10,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#ifndef KORG_DATENAVIGATOR_H
-#define KORG_DATENAVIGATOR_H
+#pragma once
 
 #include <KCalendarCore/IncidenceBase> // for KCalendarCore::DateList typedef
 
@@ -85,4 +84,3 @@ private:
     enum { MAX_SELECTABLE_DAYS = 50 };
 };
 
-#endif

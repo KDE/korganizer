@@ -11,8 +11,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef KORG_KORGANIZER_H
-#define KORG_KORGANIZER_H
+#pragma once
 
 #include "mainwindow.h"
 #include "part.h"
@@ -109,4 +108,3 @@ private:
     ActionManager *mActionManager = nullptr;
 };
 
-#endif

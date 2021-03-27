@@ -7,8 +7,7 @@
 
   SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
-#ifndef SUMMARYEVENTINFO_H
-#define SUMMARYEVENTINFO_H
+#pragma once
 
 #include <Akonadi/Calendar/ETMCalendar>
 
@@ -43,4 +42,3 @@ private:
     static bool mShowBirthdays, mShowAnniversaries;
 };
 
-#endif

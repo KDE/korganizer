@@ -7,8 +7,7 @@
   SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KORG_INTERFACES_CALENDARVIEWBASE_H
-#define KORG_INTERFACES_CALENDARVIEWBASE_H
+#pragma once
 
 #include "baseview.h"
 #include <Akonadi/Calendar/ETMCalendar>
@@ -54,4 +53,3 @@ Q_SIGNALS:
 };
 }
 
-#endif
