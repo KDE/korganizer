@@ -639,6 +639,12 @@ protected:
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 
+    /** Delete the given incidence and, if it is recurring, its instances. */
+    void deleteRecurringIncidence(const Akonadi::Item& todoItem);
+
+    /** Delete the child incidences of the given incidence. */
+    void deleteChildren(const Akonadi::Item& todoItem);
+
 private Q_SLOTS:
     void onCheckableProxyAboutToToggle(bool newState);
     void onCheckableProxyToggled(bool newState);
@@ -647,6 +653,8 @@ private Q_SLOTS:
 private:
     Akonadi::Collection selectedCollection() const;
     Akonadi::Collection::List checkedCollections() const;
+
+    int questionIndependentChildren(const Akonadi::Item &item);
 
     void createPrinter();
 

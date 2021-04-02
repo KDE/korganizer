@@ -81,6 +81,16 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
+// Meaningful aliases for dialog box return codes.
+enum ItemActions {
+    Cancel = KMessageBox::Cancel,  // Do nothing.
+    Current = KMessageBox::Ok,  // Selected recurrence only.
+    AlsoFuture = KMessageBox::No,  // Selected and future recurrences.
+    Parent = KMessageBox::Yes,  // Instance, but not child instances.
+    All = KMessageBox::Continue,  // Instance and child instances.
+};
+
+
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)
     , mSearchCollectionHelper(this)
@@ -2134,8 +2144,14 @@ void CalendarView::deleteSubTodosIncidence(const Akonadi::Item &todoItem)
     if (!todo) {
         return;
     }
+    deleteChildren(todoItem);
+    deleteRecurringIncidence(todoItem);
+}
 
-    if (!todo->hasRecurrenceId()) {
+void CalendarView::deleteChildren(const Akonadi::Item &todoItem)
+{
+    const KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
+    if (todo && !todo->hasRecurrenceId()) {
         const Akonadi::Item::List subTodos = mCalendar->childItems(todoItem.id());
         for (const Akonadi::Item &item : subTodos) {
             if (CalendarSupport::hasTodo(item)) {
@@ -2143,12 +2159,15 @@ void CalendarView::deleteSubTodosIncidence(const Akonadi::Item &todoItem)
             }
         }
     }
+}
 
+void CalendarView::deleteRecurringIncidence(const Akonadi::Item &todoItem)
+{
     if (!mChanger->deletedRecently(todoItem.id())) {
         auto incidence = CalendarSupport::incidence(todoItem);
         if (incidence->recurs()) {
             for (const auto instance : mCalendar->instances(incidence)) {
-                (void) mChanger->deleteIncidence(mCalendar->item(instance), this); //?!
+                (void) mChanger->deleteIncidence(mCalendar->item(instance), this);
             }
         }
         (void) mChanger->deleteIncidence(todoItem, this);
@@ -2194,22 +2213,40 @@ void CalendarView::deleteTodoIncidence(const Akonadi::Item &todoItem, bool force
         if (km == KMessageBox::Yes) {
             startMultiModify(i18n("Delete parent to-do"));
             makeChildrenIndependent(todoItem);
-            if (!mChanger->deletedRecently(todoItem.id())) {
-                auto incidence = CalendarSupport::incidence(todoItem);
-                for (const auto instance : mCalendar->instances(incidence)) {
-                    (void) mChanger->deleteIncidence(mCalendar->item(instance), this);
-                }
-                (void) mChanger->deleteIncidence(todoItem, this);
-            }
 
         } else if (km == KMessageBox::No) {
             startMultiModify(i18n("Delete parent to-do and sub-to-dos"));
             // Delete all
             // we have to hide the delete confirmation for each itemDate
-            deleteSubTodosIncidence(todoItem);
+            deleteChildren(todoItem);
         }
+        deleteRecurringIncidence(todoItem);
         endMultiModify();
     }
+}
+
+int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
+{
+    int km;
+    auto incidence = CalendarSupport::incidence(item);
+    if (!incidence->hasRecurrenceId() && !mCalendar->childItems(item.id()).isEmpty()) {
+        km = KMessageBox::questionYesNoCancel(this,
+                                                i18n("The item \"%1\" has sub-to-dos. "
+                                                    "Do you want to delete just this item and "
+                                                    "make all its sub-to-dos independent, or "
+                                                    "delete the to-do with all its sub-to-dos?",
+                                                    incidence->summary()),
+                                                i18n("KOrganizer Confirmation"),
+                                                KGuiItem(i18n("Delete Only This")),
+                                                KGuiItem(i18n("Delete All")));
+
+        if (km == KMessageBox::No) {
+            km = KMessageBox::Continue;
+        }
+    } else {
+        km = msgItemDelete(item);
+    }
+    return km;
 }
 
 bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
@@ -2244,116 +2281,113 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
         return false;
     }
 
-    // If it is a todo, there are specific delete function
+    QDate itemDate = mViewManager->currentSelectionDate();
 
-    if (incidence && incidence->type() == KCalendarCore::Incidence::TypeTodo) {
-        deleteTodoIncidence(item, force);
-        return true;
+    int km;
+    if (force) {
+        km = ItemActions::All;
+    } else if (!incidence->recurs()) {  // Non-recurring, or instance of recurring.
+        km = questionIndependentChildren(item);
+    } else { // Recurring incidence
+        if (!itemDate.isValid()) {
+            qCDebug(KORGANIZER_LOG) << "Date Not Valid";
+            km = KMessageBox::warningContinueCancel(this,
+                                                    i18n("The calendar item \"%1\" recurs over multiple dates; "
+                                                            "are you sure you want to delete it "
+                                                            "and all its recurrences?",
+                                                            incidence->summary()),
+                                                    i18n("KOrganizer Confirmation"),
+                                                    KGuiItem(i18n("Delete All")));
+        } else {
+            QDateTime itemDateTime(itemDate, {}, Qt::LocalTime);
+            bool isFirst = !incidence->recurrence()->getPreviousDateTime(itemDateTime).isValid();
+            bool isLast = !incidence->recurrence()->getNextDateTime(itemDateTime).isValid();
+
+            QString message;
+            QString itemFuture(i18n("Also Delete &Future")); // QT5 was a KGuiItem
+
+            if (!isFirst && !isLast) {
+                message = i18n(
+                    "The calendar item \"%1\" recurs over multiple dates. "
+                    "Do you want to delete only the current one on %2, also "
+                    "future occurrences, or all its occurrences?",
+                    incidence->summary(),
+                    QLocale::system().toString(itemDate, QLocale::LongFormat));
+            } else {
+                message = i18n(
+                    "The calendar item \"%1\" recurs over multiple dates. "
+                    "Do you want to delete only the current one on %2 "
+                    "or all its occurrences?",
+                    incidence->summary(),
+                    QLocale::system().toString(itemDate, QLocale::LongFormat));
+            }
+
+            if (!(isFirst && isLast)) {
+                QDialogButtonBox::StandardButton returnValue = PIMMessageBox::fourBtnMsgBox(this,
+                                                                                            QMessageBox::Warning,
+                                                                                            message,
+                                                                                            i18n("KOrganizer Confirmation"),
+                                                                                            i18n("Delete C&urrent"),
+                                                                                            itemFuture,
+                                                                                            i18n("Delete &All"));
+                switch (returnValue) {
+                case QDialogButtonBox::Ok:
+                    if (!mCalendar->childItems(item.id()).isEmpty()) {
+                        km = questionIndependentChildren(item);
+                    } else {
+                        km = ItemActions::All;
+                    }
+                    break;
+                case QDialogButtonBox::Yes:
+                    km = ItemActions::Current;
+                    break;
+                case QDialogButtonBox::No:
+                    km = ItemActions::AlsoFuture;
+                    break;
+                case QDialogButtonBox::Cancel:
+                default:
+                    km = KMessageBox::Cancel;
+                    break;
+                }
+            } else {
+                km = questionIndependentChildren(item);
+            }
+        }
     }
 
-    if (incidence->recurs()) {
-        QDate itemDate = mViewManager->currentSelectionDate();
-        int km = KMessageBox::Ok;
-        if (!force) {
-            if (!itemDate.isValid()) {
-                qCDebug(KORGANIZER_LOG) << "Date Not Valid";
-                km = KMessageBox::warningContinueCancel(this,
-                                                        i18n("The calendar item \"%1\" recurs over multiple dates; "
-                                                             "are you sure you want to delete it "
-                                                             "and all its recurrences?",
-                                                             incidence->summary()),
-                                                        i18n("KOrganizer Confirmation"),
-                                                        KGuiItem(i18n("Delete All")));
-            } else {
-                QDateTime itemDateTime(itemDate, {}, Qt::LocalTime);
-                bool isFirst = !incidence->recurrence()->getPreviousDateTime(itemDateTime).isValid();
-                bool isLast = !incidence->recurrence()->getNextDateTime(itemDateTime).isValid();
+    KCalendarCore::Incidence::Ptr oldIncidence(incidence->clone());
+    KCalendarCore::Recurrence *recur = incidence->recurrence();
 
-                QString message;
-                QString itemFuture(i18n("Also Delete &Future")); // QT5 was a KGuiItem
+    switch (km) {
+    case ItemActions::All:
+        startMultiModify(i18n("Delete \"%1\"", incidence->summary()));
+        deleteChildren(item);
+        deleteRecurringIncidence(item);
+        endMultiModify();
+        break;
 
-                if (!isFirst && !isLast) {
-                    message = i18n(
-                        "The calendar item \"%1\" recurs over multiple dates. "
-                        "Do you want to delete only the current one on %2, also "
-                        "future occurrences, or all its occurrences?",
-                        incidence->summary(),
-                        QLocale::system().toString(itemDate, QLocale::LongFormat));
-                } else {
-                    message = i18n(
-                        "The calendar item \"%1\" recurs over multiple dates. "
-                        "Do you want to delete only the current one on %2 "
-                        "or all its occurrences?",
-                        incidence->summary(),
-                        QLocale::system().toString(itemDate, QLocale::LongFormat));
-                }
+    case ItemActions::Parent:
+        startMultiModify(i18n("Delete \"%1\"", incidence->summary()));
+        makeChildrenIndependent(item);
+        deleteRecurringIncidence(item);
+        endMultiModify();
+        break;
 
-                if (!(isFirst && isLast)) {
-                    QDialogButtonBox::StandardButton returnValue = PIMMessageBox::fourBtnMsgBox(this,
-                                                                                                QMessageBox::Warning,
-                                                                                                message,
-                                                                                                i18n("KOrganizer Confirmation"),
-                                                                                                i18n("Delete C&urrent"),
-                                                                                                itemFuture,
-                                                                                                i18n("Delete &All"));
-                    switch (returnValue) {
-                    case QDialogButtonBox::Ok:
-                        km = KMessageBox::Ok;
-                        break;
-                    case QDialogButtonBox::Yes:
-                        km = KMessageBox::Yes;
-                        break;
-                    case QDialogButtonBox::No:
-                        km = KMessageBox::No;
-                        break;
-                    case QDialogButtonBox::Cancel:
-                    default:
-                        km = KMessageBox::Cancel;
-                        break;
-                    }
-                } else {
-                    km = msgItemDelete(item);
-                }
-            }
+    case ItemActions::Current:
+        if (recur->allDay()) {
+            recur->addExDate(itemDate);
+        } else {
+            auto itemDateTime = recur->startDateTime();
+            itemDateTime.setDate(itemDate);
+            recur->addExDateTime(itemDateTime);
         }
-        KCalendarCore::Incidence::Ptr oldIncidence(incidence->clone());
-        KCalendarCore::Recurrence *recur = incidence->recurrence();
-        switch (km) {
-        case KMessageBox::Ok: // Continue // all
-        case KMessageBox::Continue:
-            startMultiModify(i18n("Delete all occurrences"));
-            for (const auto instance : mCalendar->instances(incidence)) {
-                (void) mChanger->deleteIncidence(mCalendar->item(instance), this);
-            }
-            (void) mChanger->deleteIncidence(item, this);
-            endMultiModify();
-            break;
+        (void) mChanger->modifyIncidence(item, oldIncidence, this);
+        break;
 
-        case KMessageBox::Yes: // just this one
-            if (recur->allDay()) {
-                recur->addExDate(itemDate);
-            } else {
-                auto itemDateTime = recur->startDateTime();
-                itemDateTime.setDate(itemDate);
-                recur->addExDateTime(itemDateTime);
-            }
-            mChanger->modifyIncidence(item, oldIncidence, this);
-            break;
-
-        case KMessageBox::No: // all future items
-            recur->setEndDate(itemDate.addDays(-1));
-            mChanger->modifyIncidence(item, oldIncidence, this);
-            break;
-        }
-    } else {
-        bool doDelete = true;
-        if (!force && KOPrefs::instance()->mConfirm) {
-            doDelete = (msgItemDelete(item) == KMessageBox::Continue);
-        }
-        if (doDelete) {
-            mChanger->deleteIncidence(item, this);
-            processIncidenceSelection(Akonadi::Item(), QDate());
-        }
+    case ItemActions::AlsoFuture:
+        recur->setEndDate(itemDate.addDays(-1));
+        (void) mChanger->modifyIncidence(item, oldIncidence, this);
+        break;
     }
     return true;
 }
