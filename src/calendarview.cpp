@@ -623,7 +623,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
                 KCalendarCore::Journal::Ptr journal = CalendarSupport::journal(journalItem);
                 KCalendarCore::Journal::Ptr oldJournal(journal->clone());
                 journal->setDescription(journal->description().append(QLatin1Char('\n') + description));
-                mChanger->modifyIncidence(journalItem, oldJournal, this);
+                (void) mChanger->modifyIncidence(journalItem, oldJournal, this);
             }
         }
     }
@@ -843,7 +843,7 @@ void CalendarView::edit_paste()
             }
 
             pastedEvent->setRelatedTo(QString());
-            mChanger->createIncidence(KCalendarCore::Event::Ptr(pastedEvent->clone()), Akonadi::Collection(), this);
+            (void) mChanger->createIncidence(KCalendarCore::Event::Ptr(pastedEvent->clone()), Akonadi::Collection(), this);
         } else if ((*it)->type() == KCalendarCore::Incidence::TypeTodo) {
             KCalendarCore::Todo::Ptr pastedTodo = (*it).staticCast<KCalendarCore::Todo>();
             Akonadi::Item _selectedTodoItem = selectedTodo();
@@ -856,10 +856,10 @@ void CalendarView::edit_paste()
             }
 
             // When pasting multiple incidences, don't ask which collection to use, for each one
-            mChanger->createIncidence(KCalendarCore::Todo::Ptr(pastedTodo->clone()), Akonadi::Collection(), this);
+            (void) mChanger->createIncidence(KCalendarCore::Todo::Ptr(pastedTodo->clone()), Akonadi::Collection(), this);
         } else if ((*it)->type() == KCalendarCore::Incidence::TypeJournal) {
             // When pasting multiple incidences, don't ask which collection to use, for each one
-            mChanger->createIncidence(KCalendarCore::Incidence::Ptr((*it)->clone()), Akonadi::Collection(), this);
+            (void) mChanger->createIncidence(KCalendarCore::Incidence::Ptr((*it)->clone()), Akonadi::Collection(), this);
         }
     }
 }
@@ -1328,7 +1328,7 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
         CalendarSupport::createAlarmReminder(alm, incidence->type());
     }
     mChanger->startAtomicOperation(i18n("Toggle Reminder"));
-    mChanger->modifyIncidence(item, oldincidence, this);
+    (void) mChanger->modifyIncidence(item, oldincidence, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1356,7 +1356,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
-    mChanger->modifyIncidence(todoItem, oldtodo, this);
+    (void) mChanger->modifyIncidence(todoItem, oldtodo, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1565,7 +1565,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalendarCore::Incidence::Ptr newInc(KCalendarCore::Calendar::createException(incidence, occurrenceDate, thisAndFuture));
     if (newInc) {
-        mChanger->createIncidence(newInc, item.parentCollection(), this);
+        (void) mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
         if (thisAndFuture) {
             KMessageBox::sorry(this, i18n("Dissociating the future occurrences failed."), i18n("Dissociating Failed"));
@@ -2459,7 +2459,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
         todo->setDtDue(due);
     }
 
-    mChanger->createIncidence(incidence, Akonadi::Collection(), this);
+    (void) mChanger->createIncidence(incidence, Akonadi::Collection(), this);
 }
 
 void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
@@ -2495,7 +2495,7 @@ void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 
         todo->setDtDue(due);
     }
-    mChanger->modifyIncidence(itemmove, oldIncidence, this);
+    (void) mChanger->modifyIncidence(itemmove, oldIncidence, this);
 }
 
 void CalendarView::resourcesChanged()

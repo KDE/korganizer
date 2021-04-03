@@ -87,7 +87,7 @@ QStringList JournalPlugin::invisibleToolbarActions() const
 OrgKdeKorganizerCalendarInterface *JournalPlugin::interface()
 {
     if (!mIface) {
-        part();
+        (void) part();
     }
     Q_ASSERT(mIface);
     return mIface;
