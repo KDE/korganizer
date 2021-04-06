@@ -150,8 +150,6 @@ public:
         return mDateNavigator;
     }
 
-    // TODO_NG
-    // IncidenceEditors::IncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
     Akonadi::IncidenceChanger *incidenceChanger() const override
     {
         return mChanger;
@@ -271,22 +269,22 @@ public Q_SLOTS:
     void newEvent(const QDate &);
 
     /**
-       create new event without having a date hint. Takes current date as
-       default hint.
+       Create an event editor dialog for a new event without having a date hint.
+       Uses the current date/time as defaults.
     */
     void newEvent();
 
-    /**
-       create an editeventwin with supplied date/time, and if bool is true,
-       make the event take all day.
-    */
     void newEvent(const QDateTime &startDt);
 
+    /**
+       Create an event editor dialog for a new event with supplied date/times,
+       and if bool is true, make the event take all day.
+    */
     void newEvent(const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false);
 
     /**
-      Create new Event from given summary, description, attachment list and
-      attendees list
+      Create an event editor dialog for a new event from given summary,
+      description, attachment list and attendees list
     */
     void newEvent(const QString &summary,
                   const QString &description = QString(),
@@ -316,10 +314,13 @@ public Q_SLOTS:
     void editIncidence();
 
     /**
-      Delete the supplied incidence. It calls the correct deleteXXX method
-      @param force If true, all recurrences and sub-todos (if applicable) will be
-                   deleted without prompting for confirmation.
-      @param force If true, all recurrences and sub-todos (if applicable) will be
+      Delete the supplied incidence, optionally after asking the user for confirmation.
+      If it recurs, the user can choose to delete a single recurrence, the recurrence
+      and all subsequent recurrences, or all recurrences.
+      If all recurrences are deleted, all dissociated instances will also be deleted.
+      If it has children (e.g. sub-todos) the children will be deleted or made
+      independent as the user chooses.
+      @param force If true, the incidence, instances, and children will be
                    deleted without prompting for confirmation.
     */
     bool deleteIncidence(const Akonadi::Item &item, bool force = false);
@@ -352,15 +353,11 @@ public Q_SLOTS:
     */
     void pasteIncidence();
 
-    /** Delete the supplied todo and all sub-todos */
-    void deleteSubTodosIncidence(const Akonadi::Item &todo);
-
     /**
-      Delete the todo incidence, and its sub-to-dos.
-      @param todo The todo to delete.
-      @param force If true, all sub-todos will be deleted without prompting for confirmation.
-    */
-    void deleteTodoIncidence(const Akonadi::Item &todo, bool force = false);
+      Delete the supplied incidence, including any dissociated instances, and
+      all children (e.g. sub-todos).
+      */
+    void deleteIncidenceFamily(const Akonadi::Item &todo);
 
     /** create new todo */
     void newTodo();
@@ -643,7 +640,7 @@ protected:
     void deleteRecurringIncidence(const Akonadi::Item& todoItem);
 
     /** Delete the child incidences of the given incidence. */
-    void deleteChildren(const Akonadi::Item& todoItem);
+    void deleteChildren(const Akonadi::Item &);
 
 private Q_SLOTS:
     void onCheckableProxyAboutToToggle(bool newState);

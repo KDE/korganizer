@@ -1249,7 +1249,7 @@ bool CalendarView::incidence_unsub(const Akonadi::Item &item)
     const KCalendarCore::Incidence::Ptr inc = CalendarSupport::incidence(item);
 
     if (!inc || inc->relatedTo().isEmpty()) {
-        qCDebug(KORGANIZER_LOG) << "Refusing to unparent this to-do" << inc;
+        qCDebug(KORGANIZER_LOG) << "Refusing to unparent this instance" << inc;
         return false;
     }
 
@@ -2131,32 +2131,28 @@ bool CalendarView::editIncidence(const Akonadi::Item &item, bool isCounter)
     }
 
     IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog(item);
-
-    // connectIncidenceEditor( dialog );         // TODO: This as well
     dialog->load(item, activeIncidenceDate()); // Show the dialog as soon as it loads the item.
 
     return true;
 }
 
-void CalendarView::deleteSubTodosIncidence(const Akonadi::Item &todoItem)
+void CalendarView::deleteIncidenceFamily(const Akonadi::Item &item)
 {
-    const KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
-    if (!todo) {
+    const auto incidence = CalendarSupport::incidence(item);
+    if (!incidence) {
         return;
     }
-    deleteChildren(todoItem);
-    deleteRecurringIncidence(todoItem);
+    deleteChildren(item);
+    deleteRecurringIncidence(item);
 }
 
-void CalendarView::deleteChildren(const Akonadi::Item &todoItem)
+void CalendarView::deleteChildren(const Akonadi::Item &item)
 {
-    const KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
-    if (todo && !todo->hasRecurrenceId()) {
-        const Akonadi::Item::List subTodos = mCalendar->childItems(todoItem.id());
-        for (const Akonadi::Item &item : subTodos) {
-            if (CalendarSupport::hasTodo(item)) {
-                deleteSubTodosIncidence(item);
-            }
+    const auto incidence = CalendarSupport::incidence(item);
+    if (incidence && !incidence->hasRecurrenceId()) {
+        const Akonadi::Item::List childItems = mCalendar->childItems(item.id());
+        for (const Akonadi::Item &c : childItems) {
+            deleteIncidenceFamily(c);
         }
     }
 }
@@ -2171,57 +2167,6 @@ void CalendarView::deleteRecurringIncidence(const Akonadi::Item &todoItem)
             }
         }
         (void) mChanger->deleteIncidence(todoItem, this);
-    }
-}
-
-void CalendarView::deleteTodoIncidence(const Akonadi::Item &todoItem, bool force)
-{
-    const KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
-    if (!todo) {
-        return;
-    }
-
-    // This to-do does not own any sub-to-dos, so just ask for confirmation.
-    if (todo->hasRecurrenceId() || mCalendar->childItems(todoItem.id()).isEmpty()) {
-        bool doDelete = true;
-        if (!force && KOPrefs::instance()->mConfirm) {
-            doDelete = (msgItemDelete(todoItem) == KMessageBox::Continue);
-        }
-        if (doDelete && !mChanger->deletedRecently(todoItem.id())) {
-            startMultiModify(i18n("Delete parent to-do"));
-            deleteSubTodosIncidence(todoItem);
-            endMultiModify();
-        }
-        return;
-    }
-
-    /* Ok, this to-do has sub-to-dos, ask what to do */
-    int km = KMessageBox::No;
-    if (!force) {
-        km = KMessageBox::questionYesNoCancel(this,
-                                              i18n("The item \"%1\" has sub-to-dos. "
-                                                   "Do you want to delete just this item and "
-                                                   "make all its sub-to-dos independent, or "
-                                                   "delete the to-do with all its sub-to-dos?",
-                                                   todo->summary()),
-                                              i18n("KOrganizer Confirmation"),
-                                              KGuiItem(i18n("Delete Only This")),
-                                              KGuiItem(i18n("Delete All")));
-    }
-    if (km != KMessageBox::Cancel) {
-        // Delete only the father
-        if (km == KMessageBox::Yes) {
-            startMultiModify(i18n("Delete parent to-do"));
-            makeChildrenIndependent(todoItem);
-
-        } else if (km == KMessageBox::No) {
-            startMultiModify(i18n("Delete parent to-do and sub-to-dos"));
-            // Delete all
-            // we have to hide the delete confirmation for each itemDate
-            deleteChildren(todoItem);
-        }
-        deleteRecurringIncidence(todoItem);
-        endMultiModify();
     }
 }
 
@@ -2257,7 +2202,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
             qCCritical(KORGANIZER_LOG) << "Null incidence";
             KNotification::beep();
         }
-        qCCritical(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): Unable do delete, incidence is null.";
+        qCCritical(KORGANIZER_LOG) << "CalendarView::deleteIncidence(): Unable to delete, incidence is null.";
         return false;
     }
 
