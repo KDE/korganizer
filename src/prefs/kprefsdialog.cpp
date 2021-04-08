@@ -415,11 +415,7 @@ KPrefsWidRadios::KPrefsWidRadios(KConfigSkeleton::ItemEnum *item, QWidget *paren
     mBox = new QGroupBox(mItem->label(), parent);
     new QVBoxLayout(mBox);
     mGroup = new QButtonGroup(parent);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-    connect(mGroup, qOverload<int>(&QButtonGroup::buttonClicked), this, &KPrefsWidRadios::changed);
-#else
     connect(mGroup, qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked), this, &KPrefsWidRadios::changed);
-#endif
 }
 
 KPrefsWidRadios::~KPrefsWidRadios()

@@ -791,30 +791,18 @@ void CalendarView::edit_paste()
         endDT = agendaView->selectionEnd();
         useEndTime = !agendaView->selectedIsSingleCell();
         if (agendaView->selectedIsAllDay()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-            finalDateTime = QDateTime(date);
-#else
             finalDateTime = QDateTime(date.startOfDay());
-#endif
         } else {
             finalDateTime = QDateTime(date, agendaView->selectionStart().time());
         }
     } else if (curView == monthView && monthView->selectionStart().isValid()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-        finalDateTime = QDateTime(monthView->selectionStart().date());
-#else
         finalDateTime = QDateTime(monthView->selectionStart().date().startOfDay());
-#endif
         pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
     } else if (!mDateNavigator->selectedDates().isEmpty() && curView->supportsDateNavigation()) {
         // default to the selected date from the navigator
         const KCalendarCore::DateList dates = mDateNavigator->selectedDates();
         if (!dates.isEmpty()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-            finalDateTime = QDateTime(dates.first());
-#else
             finalDateTime = QDateTime(dates.first().startOfDay());
-#endif
             pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
         }
     }
@@ -1111,11 +1099,7 @@ void CalendarView::newJournal(const QString &text, QDate date)
     IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
 
     KCalendarCore::Journal::Ptr journal(new KCalendarCore::Journal);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-    defaults.setStartDateTime(QDateTime(date));
-#else
     defaults.setStartDateTime(QDateTime(date.startOfDay()));
-#endif
     defaults.setDefaults(journal);
 
     journal->setSummary(text);
