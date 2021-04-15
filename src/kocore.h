@@ -42,7 +42,7 @@ public:
     KOrg::Part *loadPart(const KService::Ptr &, KOrg::MainWindow *parent);
     KOrg::Part *loadPart(const QString &, KOrg::MainWindow *parent);
 
-    Q_REQUIRED_RESULT EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
+    EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
     Q_REQUIRED_RESULT KOrg::Part::List loadParts(KOrg::MainWindow *parent);
 
     void addXMLGUIClient(QWidget *, KXMLGUIClient *guiclient);

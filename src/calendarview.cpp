@@ -613,7 +613,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
                 KCalendarCore::Journal::Ptr journal = CalendarSupport::journal(journalItem);
                 KCalendarCore::Journal::Ptr oldJournal(journal->clone());
                 journal->setDescription(journal->description().append(QLatin1Char('\n') + description));
-                mChanger->modifyIncidence(journalItem, oldJournal, this);
+                (void) mChanger->modifyIncidence(journalItem, oldJournal, this);
             }
         }
     }
@@ -833,7 +833,7 @@ void CalendarView::edit_paste()
             }
 
             pastedEvent->setRelatedTo(QString());
-            mChanger->createIncidence(KCalendarCore::Event::Ptr(pastedEvent->clone()), Akonadi::Collection(), this);
+            (void) mChanger->createIncidence(KCalendarCore::Event::Ptr(pastedEvent->clone()), Akonadi::Collection(), this);
         } else if ((*it)->type() == KCalendarCore::Incidence::TypeTodo) {
             KCalendarCore::Todo::Ptr pastedTodo = (*it).staticCast<KCalendarCore::Todo>();
             Akonadi::Item _selectedTodoItem = selectedTodo();
@@ -846,10 +846,10 @@ void CalendarView::edit_paste()
             }
 
             // When pasting multiple incidences, don't ask which collection to use, for each one
-            mChanger->createIncidence(KCalendarCore::Todo::Ptr(pastedTodo->clone()), Akonadi::Collection(), this);
+            (void) mChanger->createIncidence(KCalendarCore::Todo::Ptr(pastedTodo->clone()), Akonadi::Collection(), this);
         } else if ((*it)->type() == KCalendarCore::Incidence::TypeJournal) {
             // When pasting multiple incidences, don't ask which collection to use, for each one
-            mChanger->createIncidence(KCalendarCore::Incidence::Ptr((*it)->clone()), Akonadi::Collection(), this);
+            (void) mChanger->createIncidence(KCalendarCore::Incidence::Ptr((*it)->clone()), Akonadi::Collection(), this);
         }
     }
 }
@@ -1245,7 +1245,7 @@ bool CalendarView::incidence_unsub(const Akonadi::Item &item)
 
     KCalendarCore::Incidence::Ptr oldInc(inc->clone());
     inc->setRelatedTo(QString());
-    mChanger->modifyIncidence(item, oldInc, this);
+    (void) mChanger->modifyIncidence(item, oldInc, this);
 
     return true;
 }
@@ -1313,7 +1313,7 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
         CalendarSupport::createAlarmReminder(alm, incidence->type());
     }
     mChanger->startAtomicOperation(i18n("Toggle Reminder"));
-    mChanger->modifyIncidence(item, oldincidence, this);
+    (void) mChanger->modifyIncidence(item, oldincidence, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1341,7 +1341,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
-    mChanger->modifyIncidence(todoItem, oldtodo, this);
+    (void) mChanger->modifyIncidence(todoItem, oldtodo, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1550,7 +1550,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalendarCore::Incidence::Ptr newInc(KCalendarCore::Calendar::createException(incidence, occurrenceDate, thisAndFuture));
     if (newInc) {
-        mChanger->createIncidence(newInc, item.parentCollection(), this);
+        (void) mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
         if (thisAndFuture) {
             KMessageBox::sorry(this, i18n("Dissociating the future occurrences failed."), i18n("Dissociating Failed"));
@@ -2137,7 +2137,7 @@ void CalendarView::deleteSubTodosIncidence(const Akonadi::Item &todoItem)
     }
 
     if (!mChanger->deletedRecently(todoItem.id())) {
-        mChanger->deleteIncidence(todoItem, this);
+        (void) mChanger->deleteIncidence(todoItem, this);
     }
 }
 
@@ -2155,7 +2155,7 @@ void CalendarView::deleteTodoIncidence(const Akonadi::Item &todoItem, bool force
             doDelete = (msgItemDelete(todoItem) == KMessageBox::Continue);
         }
         if (doDelete && !mChanger->deletedRecently(todoItem.id())) {
-            mChanger->deleteIncidence(todoItem, this);
+            (void) mChanger->deleteIncidence(todoItem, this);
         }
         return;
     }
@@ -2178,7 +2178,7 @@ void CalendarView::deleteTodoIncidence(const Akonadi::Item &todoItem, bool force
         startMultiModify(i18n("Delete parent to-do"));
         makeChildrenIndependent(todoItem);
         if (!mChanger->deletedRecently(todoItem.id())) {
-            mChanger->deleteIncidence(todoItem, this);
+            (void) mChanger->deleteIncidence(todoItem, this);
         }
     } else if (km == KMessageBox::No) {
         startMultiModify(i18n("Delete parent to-do and sub-to-dos"));
@@ -2298,7 +2298,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
         switch (km) {
         case KMessageBox::Ok: // Continue // all
         case KMessageBox::Continue:
-            mChanger->deleteIncidence(item, this);
+            (void) mChanger->deleteIncidence(item, this);
             break;
 
         case KMessageBox::Yes: // just this one
@@ -2309,12 +2309,12 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
                 itemDateTime.setDate(itemDate);
                 recur->addExDateTime(itemDateTime);
             }
-            mChanger->modifyIncidence(item, oldIncidence, this);
+            (void) mChanger->modifyIncidence(item, oldIncidence, this);
             break;
 
         case KMessageBox::No: // all future items
             recur->setEndDate(itemDate.addDays(-1));
-            mChanger->modifyIncidence(item, oldIncidence, this);
+            (void) mChanger->modifyIncidence(item, oldIncidence, this);
             break;
         }
     } else {
@@ -2323,7 +2323,7 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
             doDelete = (msgItemDelete(item) == KMessageBox::Continue);
         }
         if (doDelete) {
-            mChanger->deleteIncidence(item, this);
+            (void) mChanger->deleteIncidence(item, this);
             processIncidenceSelection(Akonadi::Item(), QDate());
         }
     }
@@ -2397,7 +2397,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
         todo->setDtDue(due);
     }
 
-    mChanger->createIncidence(incidence, Akonadi::Collection(), this);
+    (void) mChanger->createIncidence(incidence, Akonadi::Collection(), this);
 }
 
 void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
@@ -2433,7 +2433,7 @@ void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 
         todo->setDtDue(due);
     }
-    mChanger->modifyIncidence(itemmove, oldIncidence, this);
+    (void) mChanger->modifyIncidence(itemmove, oldIncidence, this);
 }
 
 void CalendarView::resourcesChanged()
