@@ -33,7 +33,7 @@ KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &ar
                                        QString(),
                                        i18n("KOrganizer Configure User FeedBack"),
                                        KAboutLicense::LGPL,
-                                       i18n("(c) 2020 Laurent Montel"));
+                                       i18n("(c) 2020-2021 Laurent Montel"));
     about->addAuthor(i18n("Laurent Montel"), QString(), QStringLiteral("montel@kde.org"));
     setAboutData(about);
     auto layout = new QVBoxLayout(this);
