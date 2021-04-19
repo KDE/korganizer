@@ -12,7 +12,10 @@
 #include "korganizer.h"
 #include "korganizer_debug.h"
 #include "korganizer_options.h"
+#include <kcoreaddons_version.h>
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include "korgmigrateapplication.h"
+#endif
 #include <KCrash>
 #include <KLocalizedString>
 
@@ -26,8 +29,10 @@ int main(int argc, char **argv)
     KOrganizerApp app(argc, &argv);
     KCrash::initialize();
     KLocalizedString::setApplicationDomain("korganizer");
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
     KOrgMigrateApplication migrate;
     migrate.migrate();
+#endif
 
     KOrg::AboutData aboutData;
     app.setAboutData(aboutData);
