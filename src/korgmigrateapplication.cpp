@@ -5,9 +5,9 @@
 */
 
 #include "korgmigrateapplication.h"
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
 
 #include <Kdelibs4ConfigMigrator>
-
 KOrgMigrateApplication::KOrgMigrateApplication()
 {
     initializeMigrator();
@@ -56,3 +56,4 @@ void KOrgMigrateApplication::initializeMigrator()
     // TODO add folder to migrate
     // If you add new MigrateFileInfo we need to increase "currentVersion"  and initialVersion
 }
+#endif

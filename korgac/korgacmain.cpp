@@ -13,8 +13,10 @@
 #include <KDBusService>
 #include <KLocalizedString>
 
-#include <KCoreAddons/Kdelibs4ConfigMigrator>
-
+#include <kcoreaddons_version.h>
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <Kdelibs4ConfigMigrator>
+#endif
 #include <QApplication>
 #include <QCommandLineParser>
 
@@ -23,10 +25,12 @@ int main(int argc, char **argv)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Kdelibs4ConfigMigrator migrate(QStringLiteral("korgac"));
 
     migrate.setConfigFiles(QStringList() << QStringLiteral("korgacrc"));
     migrate.migrate();
+#endif
 
     KAboutData aboutData(QStringLiteral("korgac"),
                          i18n("KOrganizer Reminder Daemon"),
