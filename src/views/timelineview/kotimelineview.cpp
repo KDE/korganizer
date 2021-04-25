@@ -11,6 +11,7 @@
 
 #include "kotimelineview.h"
 #include "koeventpopupmenu.h"
+#include "prefs/koprefs.h"
 
 #include <EventViews/TimeLineView>
 
@@ -21,7 +22,7 @@ KOTimelineView::KOTimelineView(QWidget *parent)
 {
     auto vbox = new QVBoxLayout(this);
     vbox->setContentsMargins({});
-    mTimeLineView = new EventViews::TimelineView(this);
+    mTimeLineView = new EventViews::TimelineView(KOPrefs::instance()->eventViewsPreferences(), this);
     vbox->addWidget(mTimeLineView);
     mEventPopup = eventPopup();
 
