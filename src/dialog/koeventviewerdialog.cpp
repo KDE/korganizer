@@ -85,7 +85,7 @@ void KOEventViewerDialog::editIncidence()
         // make sure korganizer is running or the part is shown
         const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
         QString error;
-        if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
+        if (!QDBusConnection::sessionBus().interface()->startService(desktopFile).isValid()) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(QStringLiteral("org.kde.korganizer"),
                                                                 QStringLiteral("/Korganizer"),
                                                                 QDBusConnection::sessionBus());
@@ -104,7 +104,7 @@ void KOEventViewerDialog::showIncidenceContext()
         // make sure korganizer is running or the part is shown
         const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
         QString error;
-        if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
+        if (!QDBusConnection::sessionBus().interface()->startService(desktopFile).isValid()) {
             OrgKdeKorganizerKorganizerInterface korganizerIface(QStringLiteral("org.kde.korganizer"),
                                                                 QStringLiteral("/Korganizer"),
                                                                 QDBusConnection::sessionBus());

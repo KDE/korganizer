@@ -18,6 +18,8 @@
 #include <KMessageBox>
 #include <KSharedConfig>
 #include <KToolInvocation>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
 #include <QMenu>
 
 AlarmDockWindow::AlarmDockWindow()
@@ -154,7 +156,7 @@ void AlarmDockWindow::enableAutostart(bool enable)
 void AlarmDockWindow::activate(const QPoint &pos)
 {
     Q_UNUSED(pos)
-    KToolInvocation::startServiceByDesktopName(QStringLiteral("org.kde.korganizer"), QString());
+    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.korganizer"));
 }
 
 void AlarmDockWindow::slotQuit()
