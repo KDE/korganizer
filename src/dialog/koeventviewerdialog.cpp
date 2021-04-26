@@ -19,7 +19,6 @@
 
 #include <KGuiItem>
 #include <KLocalizedString>
-#include <KToolInvocation>
 #include <QDialogButtonBox>
 #include <QIcon>
 #include <QPushButton>

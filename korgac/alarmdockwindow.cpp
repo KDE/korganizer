@@ -17,7 +17,6 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KSharedConfig>
-#include <KToolInvocation>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QMenu>

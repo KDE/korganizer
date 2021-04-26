@@ -37,7 +37,6 @@
 #include <KMessageBox>
 #include <KNotification>
 #include <KSharedConfig>
-#include <KToolInvocation>
 #include <KWindowSystem>
 
 #include <QComboBox>
