@@ -37,7 +37,7 @@ qt5_add_dbus_interfaces(kontact_journalplugin_PART_SRCS ${korganizer_SOURCE_DIR}
 
 add_library(kontact_journalplugin MODULE ${kontact_journalplugin_PART_SRCS})
 
-target_link_libraries(kontact_journalplugin  KF5::KontactInterface KF5::WindowSystem)
+target_link_libraries(kontact_journalplugin KF5::I18n KF5::KontactInterface KF5::WindowSystem)
 
 kcoreaddons_desktop_to_json(kontact_journalplugin journalplugin.desktop)
 
