@@ -29,6 +29,6 @@ protected:
 
 private:
     QList<Action> getActions(const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    QHash<Action, QPixmap> mPixmap;
+    QHash<Action, QIcon> mIcon;
 };
 

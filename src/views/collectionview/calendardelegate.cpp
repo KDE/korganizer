@@ -13,8 +13,6 @@
 #include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/Utils>
 
-#include <KIconLoader>
-
 #include <QApplication>
 #include <QFontDatabase>
 #include <QMouseEvent>
@@ -24,7 +22,7 @@
 StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
-    mPixmap.insert(Quickview, KIconLoader::global()->loadIcon(QStringLiteral("quickview"), KIconLoader::Small));
+    mIcon.insert(Quickview, QIcon::fromTheme(QStringLiteral("quickview")));
 }
 
 StyledCalendarDelegate::~StyledCalendarDelegate()
@@ -50,12 +48,12 @@ static QStyle *style(const QStyleOptionViewItem &option)
     return style;
 }
 
-static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QPixmap &pixmap, const QModelIndex &index, int pos = 1)
+static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QIcon &icon, const QModelIndex &index, int pos = 1)
 {
     Q_UNUSED(index)
 
     QStyleOptionButton option;
-    option.icon = pixmap;
+    option.icon = icon;
     const QRect r = opt.rect;
     const int h = r.height() - 4;
     option.rect = enableButtonRect(r, pos);
@@ -105,7 +103,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
         const auto lstActions = getActions(option, index);
         for (Action action : lstActions) {
             if (action != Total) {
-                QStyleOptionButton buttonOption = buttonOpt(opt, mPixmap.value(action), index, i);
+                QStyleOptionButton buttonOption = buttonOpt(opt, mIcon.value(action), index, i);
                 s->drawControl(QStyle::CE_PushButton, &buttonOption, painter, nullptr);
             } else {
                 QStyleOptionButton buttonOption = buttonOpt(opt, QPixmap(), index, i);
@@ -193,6 +191,6 @@ QSize StyledCalendarDelegate::sizeHint(const QStyleOptionViewItem &option, const
     QSize size = QStyledItemDelegate::sizeHint(option, index);
     // Without this adjustment toplevel resource folders get a slightly greater height,
     // which looks silly and breaks the toolbutton position.
-    size.setHeight(mPixmap.value(Quickview).height() + 4);
+    size.setHeight(qApp->style()->pixelMetric(QStyle::PM_SmallIconSize) + 4);
     return size;
 }
