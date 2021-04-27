@@ -39,16 +39,12 @@ AlarmDockWindow::AlarmDockWindow()
     setTitle(mName);
 
     // Set up icons
-    const QString iconPath = KIconLoader::global()->iconPath(QStringLiteral("korgac"), KIconLoader::Panel);
-    const QIcon iconEnabled = QIcon(iconPath);
-    if (iconEnabled.isNull()) {
-        KMessageBox::sorry(associatedWidget(), i18nc("@info", "Cannot load system tray icon."));
-    } else {
-        KIconLoader loader;
-        QImage iconDisabled = iconEnabled.pixmap(loader.currentSize(KIconLoader::Panel)).toImage();
-        KIconEffect::toGray(iconDisabled, 1.0);
-        mIconDisabled = QIcon(QPixmap::fromImage(iconDisabled));
-    }
+    const QIcon iconEnabled = QIcon::fromTheme(QStringLiteral("korgac"));
+
+    KIconLoader loader;
+    QImage iconDisabled = iconEnabled.pixmap(loader.currentSize(KIconLoader::Panel)).toImage();
+    KIconEffect::toGray(iconDisabled, 1.0);
+    mIconDisabled = QIcon(QPixmap::fromImage(iconDisabled));
 
     changeSystrayIcon(alarmsEnabled);
 
