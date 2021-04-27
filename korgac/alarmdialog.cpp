@@ -32,7 +32,6 @@
 #include <MailTransport/TransportManager>
 
 #include <KConfigGroup>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
@@ -121,8 +120,6 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
         Akonadi::IncidenceChanger *changer = calendar->incidenceChanger();
         changer->setShowDialogsOnError(false);
     }
-
-    KIconLoader::global()->addAppDir(QStringLiteral("korgac"));
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup generalConfig(config, "General");
