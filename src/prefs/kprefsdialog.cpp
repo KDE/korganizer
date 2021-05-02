@@ -40,17 +40,17 @@ namespace KPrefsWidFactory
 {
 KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
 {
-    auto *boolItem = dynamic_cast<KConfigSkeleton::ItemBool *>(item);
+    auto boolItem = dynamic_cast<KConfigSkeleton::ItemBool *>(item);
     if (boolItem) {
         return new KPrefsWidBool(boolItem, parent);
     }
 
-    auto *stringItem = dynamic_cast<KConfigSkeleton::ItemString *>(item);
+    auto stringItem = dynamic_cast<KConfigSkeleton::ItemString *>(item);
     if (stringItem) {
         return new KPrefsWidString(stringItem, parent);
     }
 
-    auto *enumItem = dynamic_cast<KConfigSkeleton::ItemEnum *>(item);
+    auto enumItem = dynamic_cast<KConfigSkeleton::ItemEnum *>(item);
     if (enumItem) {
         QList<KConfigSkeleton::ItemEnum::Choice> choices = enumItem->choices();
         if (choices.isEmpty()) {
@@ -68,7 +68,7 @@ KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
         }
     }
 
-    auto *intItem = dynamic_cast<KConfigSkeleton::ItemInt *>(item);
+    auto intItem = dynamic_cast<KConfigSkeleton::ItemInt *>(item);
     if (intItem) {
         return new KPrefsWidInt(intItem, parent);
     }

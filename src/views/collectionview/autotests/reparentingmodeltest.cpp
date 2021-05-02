@@ -29,7 +29,7 @@ public:
 
     bool operator==(const Node &node) const override
     {
-        const auto *dummyNode = dynamic_cast<const DummyNode *>(&node);
+        const auto dummyNode = dynamic_cast<const DummyNode *>(&node);
         if (dummyNode) {
             return dummyNode->mUid == mUid;
         }
@@ -232,14 +232,14 @@ void ReparentingModelTest::testAddRemoveSourceItem()
 void ReparentingModelTest::testInsertSourceRow()
 {
     QStandardItemModel sourceModel;
-    QStandardItem *row2 = new QStandardItem(QStringLiteral("row2"));
+    auto row2 = new QStandardItem(QStringLiteral("row2"));
     sourceModel.appendRow(row2);
 
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
     ModelSignalSpy spy(reparentingModel);
 
-    QStandardItem *row1 = new QStandardItem(QStringLiteral("row1"));
+    auto row1 = new QStandardItem(QStringLiteral("row1"));
     sourceModel.insertRow(0, row1);
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 2);
     QVERIFY(getIndex("row1", reparentingModel).isValid());
@@ -257,18 +257,18 @@ void ReparentingModelTest::testInsertSourceRow()
 // Ensure the model can deal with rows that are inserted out of order in a subnode
 void ReparentingModelTest::testInsertSourceRowSubnode()
 {
-    QStandardItem *parent = new QStandardItem(QStringLiteral("parent"));
+    auto parent = new QStandardItem(QStringLiteral("parent"));
 
     QStandardItemModel sourceModel;
     sourceModel.appendRow(parent);
-    QStandardItem *row2 = new QStandardItem(QStringLiteral("row2"));
+    auto row2 = new QStandardItem(QStringLiteral("row2"));
     parent->appendRow(row2);
 
     ReparentingModel reparentingModel;
     reparentingModel.setSourceModel(&sourceModel);
     ModelSignalSpy spy(reparentingModel);
 
-    QStandardItem *row1 = new QStandardItem(QStringLiteral("row1"));
+    auto row1 = new QStandardItem(QStringLiteral("row1"));
     parent->insertRow(0, row1);
 
     QCOMPARE(reparentingModel.rowCount(QModelIndex()), 1);
@@ -333,7 +333,7 @@ void ReparentingModelTest::testDeduplicate()
 void ReparentingModelTest::testDeduplicateNested()
 {
     QStandardItemModel sourceModel;
-    QStandardItem *item = new QStandardItem(QStringLiteral("row1"));
+    auto item = new QStandardItem(QStringLiteral("row1"));
     item->appendRow(new QStandardItem(QStringLiteral("child1")));
     sourceModel.appendRow(item);
 
@@ -379,7 +379,7 @@ void ReparentingModelTest::testNestedDeduplicateProxyNodeFirst()
 
     QTest::qWait(0);
 
-    QStandardItem *item = new QStandardItem(QStringLiteral("row1"));
+    auto item = new QStandardItem(QStringLiteral("row1"));
     item->appendRow(new QStandardItem(QStringLiteral("child1")));
     sourceModel.appendRow(item);
 
@@ -459,7 +459,7 @@ void ReparentingModelTest::testReparentSubcollections()
     sourceModel.item(0, 0)->child(0, 0)->appendRow(new QStandardItem(QStringLiteral("sub2")));
     sourceModel.item(0, 0)->appendRow(new QStandardItem(QStringLiteral("col2")));
 
-    DummyNode *node = new DummyNode(reparentingModel, QStringLiteral("col1"));
+    auto node = new DummyNode(reparentingModel, QStringLiteral("col1"));
     node->mUid = QStringLiteral("uid");
     node->mParent = QStringLiteral("col");
 
@@ -570,7 +570,7 @@ void ReparentingModelTest::testRemoveReparentedSourceItem()
 void ReparentingModelTest::testNestedReparentedSourceItem()
 {
     QStandardItemModel sourceModel;
-    QStandardItem *item = new QStandardItem(QStringLiteral("parent"));
+    auto item = new QStandardItem(QStringLiteral("parent"));
     item->appendRow(QList<QStandardItem *>() << new QStandardItem(QStringLiteral("orphan")));
     sourceModel.appendRow(item);
 
@@ -598,7 +598,7 @@ void ReparentingModelTest::testAddNestedReparentedSourceItem()
 
     ModelSignalSpy spy(reparentingModel);
 
-    QStandardItem *item = new QStandardItem(QStringLiteral("parent"));
+    auto item = new QStandardItem(QStringLiteral("parent"));
     item->appendRow(QList<QStandardItem *>() << new QStandardItem(QStringLiteral("orphan")));
     sourceModel.appendRow(item);
 
@@ -614,7 +614,7 @@ void ReparentingModelTest::testAddNestedReparentedSourceItem()
 void ReparentingModelTest::testSourceDataChanged()
 {
     QStandardItemModel sourceModel;
-    QStandardItem *item = new QStandardItem(QStringLiteral("row1"));
+    auto item = new QStandardItem(QStringLiteral("row1"));
     sourceModel.appendRow(item);
 
     ReparentingModel reparentingModel;
@@ -743,7 +743,7 @@ void ReparentingModelTest::testAddRemoveNodeByNodeManager()
 void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
 {
     QStandardItemModel sourceModel;
-    QStandardItem *item = new QStandardItem(QStringLiteral("personfolder"));
+    auto item = new QStandardItem(QStringLiteral("personfolder"));
     sourceModel.appendRow(item);
     ReparentingModel reparentingModel;
     reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));
@@ -766,7 +766,7 @@ void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()
 void ReparentingModelTest::testDataChanged()
 {
     QStandardItemModel sourceModel;
-    QStandardItem *item = new QStandardItem(QStringLiteral("folder"));
+    auto item = new QStandardItem(QStringLiteral("folder"));
     sourceModel.appendRow(item);
     ReparentingModel reparentingModel;
     reparentingModel.setNodeManager(ReparentingModel::NodeManager::Ptr(new DummyNodeManager(reparentingModel)));

@@ -155,13 +155,13 @@ void KCMSDSummary::defaults()
 
 const KAboutData *KCMSDSummary::aboutData() const
 {
-    KAboutData *about = new KAboutData(QStringLiteral("kcmsdsummary"),
-                                       i18n("Upcoming Special Dates Configuration Dialog"),
-                                       QString(),
-                                       QString(),
-                                       KAboutLicense::GPL,
-                                       i18n("Copyright © 2004 Tobias Koenig\n"
-                                            "Copyright © 2004–2010 Allen Winter"));
+    auto about = new KAboutData(QStringLiteral("kcmsdsummary"),
+                                i18n("Upcoming Special Dates Configuration Dialog"),
+                                QString(),
+                                QString(),
+                                KAboutLicense::GPL,
+                                i18n("Copyright © 2004 Tobias Koenig\n"
+                                     "Copyright © 2004–2010 Allen Winter"));
 
     about->addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
     about->addAuthor(i18n("Allen Winter"), QString(), QStringLiteral("winter@kde.org"));

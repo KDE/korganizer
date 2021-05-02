@@ -48,7 +48,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     KOCore::self()->addXMLGUIClient(mTopLevelWidget, this);
 
     // create a canvas to insert our widget
-    QWidget *canvas = new QWidget(parentWidget);
+    auto canvas = new QWidget(parentWidget);
     canvas->setFocusPolicy(Qt::ClickFocus);
     setWidget(canvas);
     mView = new CalendarView(canvas);

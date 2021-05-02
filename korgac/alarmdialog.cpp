@@ -140,7 +140,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     int suspendVal = defSuspendVal;
     int suspendUnit = defSuspendUnit;
 
-    QWidget *topBox = new QWidget(this);
+    auto topBox = new QWidget(this);
     setWindowTitle(i18nc("@title:window", "Reminders"));
     setWindowIcon(QIcon::fromTheme(QStringLiteral("korgac")));
     auto buttonBox = new QDialogButtonBox(this);
@@ -237,7 +237,7 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mDetailView->hide();
     mLastItem = nullptr;
 
-    QWidget *suspendBox = new QWidget(topBox);
+    auto suspendBox = new QWidget(topBox);
     auto suspendBoxHBoxLayout = new QHBoxLayout(suspendBox);
     suspendBoxHBoxLayout->setContentsMargins({});
     topLayout->addWidget(suspendBox);
@@ -281,10 +281,10 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 
     QDBusConnection dbusConn = QDBusConnection::sessionBus();
     if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
-        OrgFreedesktopDBusPropertiesInterface *propsIface = new OrgFreedesktopDBusPropertiesInterface(QString::fromLatin1(s_fdo_notifications_service),
-                                                                                                      QString::fromLatin1(s_fdo_notifications_path),
-                                                                                                      dbusConn,
-                                                                                                      this);
+        auto propsIface = new OrgFreedesktopDBusPropertiesInterface(QString::fromLatin1(s_fdo_notifications_service),
+                                                                    QString::fromLatin1(s_fdo_notifications_path),
+                                                                    dbusConn,
+                                                                    this);
         connect(propsIface, &OrgFreedesktopDBusPropertiesInterface::PropertiesChanged, this, &AlarmDialog::slotDBusNotificationsPropertiesChanged);
     }
 }
@@ -896,7 +896,7 @@ void AlarmDialog::showDetails(QTreeWidgetItem *item)
         return;
     }
 
-    auto *reminderItem = dynamic_cast<ReminderTreeItem *>(item);
+    auto reminderItem = dynamic_cast<ReminderTreeItem *>(item);
 
     if (!reminderItem) {
         mDetailView->setIncidence(Akonadi::Item());

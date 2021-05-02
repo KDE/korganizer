@@ -19,7 +19,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent)
 {
     mGroupwarePage = new Ui::KOGroupwarePrefsPage();
-    QWidget *widget = new QWidget(this);
+    auto widget = new QWidget(this);
     widget->setObjectName(QStringLiteral("KOGrouparePrefsPage"));
 
     mGroupwarePage->setupUi(widget);

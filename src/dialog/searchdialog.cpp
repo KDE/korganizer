@@ -33,7 +33,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
 
     auto mainLayout = new QVBoxLayout(this);
 
-    QWidget *mainWidget = new QWidget(this);
+    auto mainWidget = new QWidget(this);
     m_ui->setupUi(mainWidget);
 
     // Set nice initial start and end dates for the search

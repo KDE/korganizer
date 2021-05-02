@@ -18,7 +18,7 @@ QDialogButtonBox::StandardButton PIMMessageBox::fourBtnMsgBox(QWidget *parent,
                                                               const QString &button3Text,
                                                               KMessageBox::Options options)
 {
-    QDialog *dialog = new QDialog(parent);
+    auto dialog = new QDialog(parent);
     dialog->setWindowTitle(caption);
     auto box = new QDialogButtonBox(QDialogButtonBox::Yes | QDialogButtonBox::No | QDialogButtonBox::Cancel | QDialogButtonBox::Ok, parent);
     dialog->setObjectName(QStringLiteral("PIMMessageBox"));

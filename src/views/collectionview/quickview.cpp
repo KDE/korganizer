@@ -33,12 +33,12 @@ Quickview::Quickview(const Akonadi::Collection &col)
     , mCollection(col)
 {
     auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
-    QWidget *mainWidget = new QWidget(this);
+    auto mainWidget = new QWidget(this);
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(mainWidget);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &Quickview::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &Quickview::reject);
-    QWidget *w = new QWidget(this);
+    auto w = new QWidget(this);
     mUi->setupUi(w);
     mainLayout->addWidget(w);
     mainLayout->addWidget(buttonBox);

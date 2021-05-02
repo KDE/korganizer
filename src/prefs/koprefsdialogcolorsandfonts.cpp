@@ -32,7 +32,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     auto tabWidget = new QTabWidget(this);
     topTopLayout->addWidget(tabWidget);
 
-    QWidget *colorFrame = new QWidget(this);
+    auto colorFrame = new QWidget(this);
     topTopLayout->addWidget(colorFrame);
     auto colorLayout = new QGridLayout(colorFrame);
     tabWidget->addTab(colorFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-color")), i18nc("@title:tab", "Colors"));
@@ -85,7 +85,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
     // categories colors
-    QGroupBox *categoryGroup = new QGroupBox(i18nc("@title:group", "Tags"), colorFrame);
+    auto categoryGroup = new QGroupBox(i18nc("@title:group", "Tags"), colorFrame);
     colorLayout->addWidget(categoryGroup, 9, 0, 1, 2);
 
     auto categoryLayout = new QGridLayout;
@@ -115,7 +115,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
     updateCategoryColor();
 
     // resources colors
-    QGroupBox *resourceGroup = new QGroupBox(i18nc("@title:group", "Resources"), colorFrame);
+    auto resourceGroup = new QGroupBox(i18nc("@title:group", "Resources"), colorFrame);
     colorLayout->addWidget(resourceGroup, 10, 0, 1, 2);
 
     QBoxLayout *resourceLayout = new QHBoxLayout;
@@ -145,7 +145,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
 
     colorLayout->setRowStretch(11, 1);
 
-    QWidget *fontFrame = new QWidget(this);
+    auto fontFrame = new QWidget(this);
     tabWidget->addTab(fontFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-font")), i18nc("@title:tab", "Fonts"));
 
     auto fontLayout = new QGridLayout(fontFrame);

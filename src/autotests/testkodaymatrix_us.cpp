@@ -12,7 +12,7 @@
 #include <QTest>
 QTEST_MAIN(KODayMatrixTest)
 
-typedef QPair<QDate, QDate> DateRange;
+using DateRange = QPair<QDate, QDate>;
 
 void KODayMatrixTest::testMatrixLimits()
 {

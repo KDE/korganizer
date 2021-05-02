@@ -267,7 +267,7 @@ public:
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
             if (!collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar(collection.id())
                 && collection.rights() & Akonadi::Collection::CanCreateItem) {
-                QFont font = qvariant_cast<QFont>(QSortFilterProxyModel::data(index, Qt::FontRole));
+                auto font = qvariant_cast<QFont>(QSortFilterProxyModel::data(index, Qt::FontRole));
                 font.setBold(true);
                 if (!mInitDefaultCalendar) {
                     mInitDefaultCalendar = true;
@@ -315,7 +315,7 @@ protected:
         Q_ASSERT(sourceIndex.isValid());
 
         const Akonadi::Collection &col = sourceIndex.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
-        const auto *attr = col.attribute<Akonadi::CollectionIdentificationAttribute>();
+        const auto attr = col.attribute<Akonadi::CollectionIdentificationAttribute>();
 
         // We filter the user folders because we insert person nodes for user folders.
         if ((attr && attr->collectionNamespace().startsWith("usertoplevel")) || col.name().contains(QLatin1String("Other Users"))) {
@@ -800,7 +800,7 @@ Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
     const QModelIndexList indexes = selectionModel->selectedIndexes();
     for (const QModelIndex &index : indexes) {
         if (index.isValid()) {
-            const Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            const auto collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
             if (collection.isValid()) {
                 collections << collection;
             }
@@ -821,7 +821,7 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
     const QModelIndexList indexes = selectionModel->selectedIndexes();
     for (const QModelIndex &index : indexes) {
         if (index.isValid()) {
-            const Akonadi::Collection c = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            const auto c = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
             if (c.id() == collection.id()) {
                 return true;
             }
@@ -850,7 +850,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const auto action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
     case StyledCalendarDelegate::Quickview: {
-        Quickview *quickview = new Quickview(CalendarSupport::collectionFromIndex(index));
+        auto quickview = new Quickview(CalendarSupport::collectionFromIndex(index));
         quickview->setAttribute(Qt::WA_DeleteOnClose, true);
         quickview->show();
         break;

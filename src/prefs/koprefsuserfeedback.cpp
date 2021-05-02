@@ -28,12 +28,12 @@ Q_DECL_EXPORT KCModule *create_korguserfeeback(QWidget *parent, const char *)
 KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
 {
-    KAboutData *about = new KAboutData(QStringLiteral("KCMUserFeedBack"),
-                                       i18n("KCMUserFeedBack"),
-                                       QString(),
-                                       i18n("KOrganizer Configure User FeedBack"),
-                                       KAboutLicense::LGPL,
-                                       i18n("(c) 2020-2021 Laurent Montel"));
+    auto about = new KAboutData(QStringLiteral("KCMUserFeedBack"),
+                                i18n("KCMUserFeedBack"),
+                                QString(),
+                                i18n("KOrganizer Configure User FeedBack"),
+                                KAboutLicense::LGPL,
+                                i18n("(c) 2020-2021 Laurent Montel"));
     about->addAuthor(i18n("Laurent Montel"), QString(), QStringLiteral("montel@kde.org"));
     setAboutData(about);
     auto layout = new QVBoxLayout(this);

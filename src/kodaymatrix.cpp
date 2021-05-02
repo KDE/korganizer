@@ -612,7 +612,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     if (urls.count() >= 1) {
         QUrl res = urls.at(0);
 
-        Akonadi::ItemFetchJob *job = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(res));
+        auto job = new Akonadi::ItemFetchJob(Akonadi::Item::fromUrl(res));
         job->fetchScope().setAncestorRetrieval(Akonadi::ItemFetchScope::Parent);
         job->fetchScope().fetchFullPayload();
         Akonadi::Item::List items;

@@ -204,7 +204,7 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
         const auto items = bJob->items();
         for (const Akonadi::Item &item : items) {
             if (item.hasPayload<KContacts::Addressee>()) {
-                const KContacts::Addressee addressee = item.payload<KContacts::Addressee>();
+                const auto addressee = item.payload<KContacts::Addressee>();
                 const QDate birthday = addressee.birthday().date();
                 if (birthday.isValid()) {
                     SDEntry entry;
@@ -625,7 +625,7 @@ void SDSummaryWidget::slotItemFetchJobDone(KJob *job)
     if (lst.isEmpty()) {
         return;
     }
-    const KContacts::Addressee contact = lst.first().payload<KContacts::Addressee>();
+    const auto contact = lst.first().payload<KContacts::Addressee>();
 
     QDesktopServices::openUrl(QUrl(contact.fullEmail()));
 }

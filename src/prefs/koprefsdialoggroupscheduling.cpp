@@ -22,7 +22,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
 
-    QWidget *topFrame = new QWidget(this);
+    auto topFrame = new QWidget(this);
     topTopLayout->addWidget(topFrame);
 
     auto topLayout = new QGridLayout(topFrame);

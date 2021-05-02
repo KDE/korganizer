@@ -125,12 +125,12 @@ private:
 KCMDesignerFields::KCMDesignerFields(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
 {
-    KAboutData *about = new KAboutData(QStringLiteral("KCMDesignerfields"),
-                                       i18n("KCMDesignerfields"),
-                                       QString(),
-                                       i18n("Qt Designer Fields Dialog"),
-                                       KAboutLicense::LGPL,
-                                       i18n("(c) 2004 Tobias Koenig"));
+    auto about = new KAboutData(QStringLiteral("KCMDesignerfields"),
+                                i18n("KCMDesignerfields"),
+                                QString(),
+                                i18n("Qt Designer Fields Dialog"),
+                                KAboutLicense::LGPL,
+                                i18n("(c) 2004 Tobias Koenig"));
     about->addAuthor(ki18n("Tobias Koenig").toString(), QString(), QStringLiteral("tokoe@kde.org"));
     about->addAuthor(ki18n("Cornelius Schumacher").toString(), QString(), QStringLiteral("schumacher@kde.org"));
     setAboutData(about);
@@ -275,7 +275,7 @@ void KCMDesignerFields::initGUI()
         const QString txt = i18n(
             "<qt><b>Warning:</b> Qt Designer could not be found. It is probably not "
             "installed. You will only be able to import existing designer files.</qt>");
-        QLabel *lbl = new QLabel(txt, this);
+        auto lbl = new QLabel(txt, this);
         layout->addWidget(lbl);
     }
 
@@ -289,7 +289,7 @@ void KCMDesignerFields::initGUI()
     mPageView->header()->setSectionResizeMode(QHeaderView::Stretch);
     hbox->addWidget(mPageView);
 
-    QGroupBox *box = new QGroupBox(i18n("Preview of Selected Page"), this);
+    auto box = new QGroupBox(i18n("Preview of Selected Page"), this);
     auto boxLayout = new QVBoxLayout(box);
 
     mPagePreview = new QLabel(box);
@@ -438,7 +438,7 @@ void KCMDesignerFields::startDesigner()
         args.append(pageItem->path());
     }
 
-    KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(QStringLiteral("designer"), args, this);
+    auto job = new KIO::CommandLauncherJob(QStringLiteral("designer"), args, this);
     job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
     job->start();
 }

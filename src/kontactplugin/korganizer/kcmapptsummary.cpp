@@ -149,13 +149,13 @@ void KCMApptSummary::defaults()
 
 const KAboutData *KCMApptSummary::aboutData() const
 {
-    KAboutData *about = new KAboutData(QStringLiteral("kcmapptsummary"),
-                                       i18n("Upcoming Events Configuration Dialog"),
-                                       QString(),
-                                       QString(),
-                                       KAboutLicense::GPL,
-                                       i18n("Copyright © 2003–2004 Tobias Koenig\n"
-                                            "Copyright © 2005–2010 Allen Winter"));
+    auto about = new KAboutData(QStringLiteral("kcmapptsummary"),
+                                i18n("Upcoming Events Configuration Dialog"),
+                                QString(),
+                                QString(),
+                                KAboutLicense::GPL,
+                                i18n("Copyright © 2003–2004 Tobias Koenig\n"
+                                     "Copyright © 2005–2010 Allen Winter"));
 
     about->addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
     about->addAuthor(i18n("Allen Winter"), QString(), QStringLiteral("winter@kde.org"));

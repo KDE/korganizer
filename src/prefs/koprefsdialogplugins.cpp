@@ -71,7 +71,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
     mDescription->setSizePolicy(policy);
     topTopLayout->addWidget(mDescription);
 
-    QWidget *buttonRow = new QWidget(this);
+    auto buttonRow = new QWidget(this);
     QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
     buttonRowLayout->setContentsMargins({});
     mConfigureButton = new QPushButton(buttonRow);

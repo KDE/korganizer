@@ -52,7 +52,7 @@ void ManageShowCollectionProperties::slotCollectionPropertiesContinued(KJob *job
             return;
         }
     }
-    Akonadi::CollectionFetchJob *fetch = new Akonadi::CollectionFetchJob(mCollectionView->currentCalendar(), Akonadi::CollectionFetchJob::Base);
+    auto fetch = new Akonadi::CollectionFetchJob(mCollectionView->currentCalendar(), Akonadi::CollectionFetchJob::Base);
     fetch->fetchScope().setIncludeStatistics(true);
     connect(fetch, &KJob::result, this, &ManageShowCollectionProperties::slotCollectionPropertiesFinished);
 }

@@ -39,12 +39,12 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     auto tabWidget = new QTabWidget(this);
     layout->addWidget(tabWidget);
 
-    QFrame *regionalPage = new QFrame(parent);
+    auto regionalPage = new QFrame(parent);
     tabWidget->addTab(regionalPage, QIcon::fromTheme(QStringLiteral("flag")), i18nc("@title:tab", "Regional"));
 
     auto regionalLayout = new QGridLayout(regionalPage);
 
-    QGroupBox *datetimeGroupBox = new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
+    auto datetimeGroupBox = new QGroupBox(i18nc("@title:group", "General Time and Date"), regionalPage);
     regionalLayout->addWidget(datetimeGroupBox, 0, 0);
 
     auto datetimeLayout = new QGridLayout(datetimeGroupBox);
@@ -53,13 +53,13 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     datetimeLayout->addWidget(dayBegins->label(), 1, 0);
     datetimeLayout->addWidget(dayBegins->timeEdit(), 1, 1);
 
-    QGroupBox *holidaysGroupBox = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
+    auto holidaysGroupBox = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
     regionalLayout->addWidget(holidaysGroupBox, 1, 0);
 
     auto holidaysLayout = new QGridLayout(holidaysGroupBox);
 
     // holiday region selection
-    QWidget *holidayRegBox = new QWidget(regionalPage);
+    auto holidayRegBox = new QWidget(regionalPage);
     auto holidayRegBoxHBoxLayout = new QHBoxLayout(holidayRegBox);
     holidayRegBoxHBoxLayout->setContentsMargins({});
     holidaysLayout->addWidget(holidayRegBox, 1, 0, 1, 2);
@@ -108,7 +108,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
         mHolidayCheckCombo->setItemCheckState(mHolidayCheckCombo->findData(regionStr), Qt::Checked);
     }
 
-    QGroupBox *workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Working Period"), regionalPage);
+    auto workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Working Period"), regionalPage);
     regionalLayout->addWidget(workingHoursGroupBox, 2, 0);
 
     QBoxLayout *workingHoursLayout = new QVBoxLayout(workingHoursGroupBox);
@@ -168,11 +168,11 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
 
     regionalLayout->setRowStretch(4, 1);
 
-    QFrame *defaultPage = new QFrame(parent);
+    auto defaultPage = new QFrame(parent);
     tabWidget->addTab(defaultPage, QIcon::fromTheme(QStringLiteral("draw-eraser")), i18nc("@title:tab", "Default Values"));
     auto defaultLayout = new QGridLayout(defaultPage);
 
-    QGroupBox *timesGroupBox = new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
+    auto timesGroupBox = new QGroupBox(i18nc("@title:group", "Appointments"), defaultPage);
     defaultLayout->addWidget(timesGroupBox, 0, 0);
 
     auto timesLayout = new QGridLayout(timesGroupBox);
@@ -187,12 +187,12 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
     timesLayout->addWidget(defaultDuration->label(), 1, 0);
     timesLayout->addWidget(defaultDuration->timeEdit(), 1, 1);
 
-    QGroupBox *remindersGroupBox = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
+    auto remindersGroupBox = new QGroupBox(i18nc("@title:group", "Reminders"), defaultPage);
     defaultLayout->addWidget(remindersGroupBox, 1, 0);
 
     auto remindersLayout = new QGridLayout(remindersGroupBox);
 
-    QLabel *reminderLabel = new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
+    auto reminderLabel = new QLabel(i18nc("@label", "Default reminder time:"), defaultPage);
     remindersLayout->addWidget(reminderLabel, 0, 0);
     reminderLabel->setWhatsThis(CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
     mReminderTimeSpin = new QSpinBox(defaultPage);

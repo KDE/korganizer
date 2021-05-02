@@ -37,7 +37,7 @@ SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
 void SearchCollectionHelper::setupSearchCollections()
 {
     // Collection "Search", has always ID 1
-    Akonadi::CollectionFetchJob *fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(1), Akonadi::CollectionFetchJob::FirstLevel);
+    auto fetchJob = new Akonadi::CollectionFetchJob(Akonadi::Collection(1), Akonadi::CollectionFetchJob::FirstLevel);
     fetchJob->fetchScope().setListFilter(Akonadi::CollectionFetchScope::NoFilter);
     connect(fetchJob, &Akonadi::CollectionFetchJob::result, this, &SearchCollectionHelper::onSearchCollectionsFetched);
 }
@@ -85,8 +85,8 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col,
         connect(job, &Akonadi::SearchCreateJob::result, this, &SearchCollectionHelper::createSearchJobFinished);
         qCDebug(KORGANIZER_LOG) << "We have to create a " << name << " virtual Collection";
     } else {
-        auto *attribute = col.attribute<Akonadi::PersistentSearchAttribute>(Akonadi::Collection::AddIfMissing);
-        auto *displayname = col.attribute<Akonadi::EntityDisplayAttribute>(Akonadi::Collection::AddIfMissing);
+        auto attribute = col.attribute<Akonadi::PersistentSearchAttribute>(Akonadi::Collection::AddIfMissing);
+        auto displayname = col.attribute<Akonadi::EntityDisplayAttribute>(Akonadi::Collection::AddIfMissing);
         attribute->setQueryString(QString::fromLatin1(query.toJSON()));
         attribute->setRemoteSearchEnabled(false);
         displayname->setDisplayName(displayName);

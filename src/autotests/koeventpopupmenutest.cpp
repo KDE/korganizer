@@ -38,7 +38,7 @@ void KoEventPopupMenuTest::createEventFromEvent()
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
 
-    auto *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
+    auto dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
     QVERIFY(!dlg);
 }
 
@@ -57,7 +57,7 @@ void KoEventPopupMenuTest::createTodoFromTodo()
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
 
-    auto *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
+    auto dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>(QStringLiteral("incidencedialog"));
     QVERIFY(!dlg);
 }
 
@@ -83,9 +83,9 @@ void KoEventPopupMenuTest::createEventFromTodo()
     menu.showIncidencePopup(item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
     createevent->trigger();
-    auto *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
+    auto dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
     QVERIFY(dlg);
-    auto *editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
+    auto editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
     KCalendarCore::Event::Ptr event(editor->incidence<KCalendarCore::Event>());
     QVERIFY(event->uid() != todo->uid());
@@ -117,9 +117,9 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     menu.showIncidencePopup(item, QDate());
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     createtodo->trigger();
-    auto *dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
+    auto dlg = menu.findChild<IncidenceEditorNG::IncidenceDialog *>();
     QVERIFY(dlg);
-    auto *editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
+    auto editor = menu.findChild<IncidenceEditorNG::IncidenceEditor *>();
     QVERIFY(editor);
     KCalendarCore::Todo::Ptr todo(editor->incidence<KCalendarCore::Todo>());
     QVERIFY(todo->uid() != event->uid());

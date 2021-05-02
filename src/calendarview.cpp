@@ -161,7 +161,7 @@ CalendarView::CalendarView(QWidget *parent)
     mEventViewer->setObjectName(QStringLiteral("EventViewer"));
     mEventViewerBoxVBoxLayout->addWidget(mEventViewer);
 
-    QWidget *rightBox = new QWidget(mPanner);
+    auto rightBox = new QWidget(mPanner);
     auto rightBoxVBoxLayout = new QVBoxLayout(rightBox);
     rightBoxVBoxLayout->setContentsMargins({});
     mNavigatorBar = new NavigatorBar(rightBox);
@@ -1648,7 +1648,7 @@ void CalendarView::schedule(KCalendarCore::iTIPMethod method, const Akonadi::Ite
 
 void CalendarView::openAddressbook()
 {
-    KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(QStringLiteral("kaddressbook"), {}, this);
+    auto job = new KIO::CommandLauncherJob(QStringLiteral("kaddressbook"), {}, this);
     job->setDesktopName(QStringLiteral("org.kde.kaddressbook"));
     job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
     job->start();

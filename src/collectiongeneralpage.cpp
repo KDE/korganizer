@@ -77,7 +77,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     hbox->addStretch();
 
     if ((collection.parentCollection() != Akonadi::Collection::root()) && PimCommon::Util::isImapResource(collection.resource())) {
-        const auto *annotationAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
+        const auto annotationAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
 
         const QMap<QByteArray, QByteArray> annotations = (annotationAttribute ? annotationAttribute->annotations() : QMap<QByteArray, QByteArray>());
 
@@ -140,7 +140,7 @@ void CollectionGeneralPage::save(Collection &collection)
         collection.setName(mNameEdit->text());
     }
 
-    auto *attr = collection.attribute<BlockAlarmsAttribute>(Collection::AddIfMissing);
+    auto attr = collection.attribute<BlockAlarmsAttribute>(Collection::AddIfMissing);
     attr->blockEverything(mBlockAlarmsCheckBox->isChecked());
 
     if (mIconCheckBox->isChecked()) {
@@ -148,7 +148,7 @@ void CollectionGeneralPage::save(Collection &collection)
     } else if (collection.hasAttribute<EntityDisplayAttribute>()) {
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
     }
-    auto *annotationsAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
+    auto annotationsAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
 
     QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();
 

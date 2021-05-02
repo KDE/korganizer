@@ -31,7 +31,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     topTopLayout->addWidget(tabWidget);
 
     // Personal Settings
-    QWidget *personalFrame = new QWidget(this);
+    auto personalFrame = new QWidget(this);
     auto personalLayout = new QVBoxLayout(personalFrame);
     tabWidget->addTab(personalFrame, QIcon::fromTheme(QStringLiteral("preferences-desktop-personal")), i18nc("@title:tab personal settings", "Personal"));
 
@@ -55,7 +55,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     personalLayout->addStretch(1);
 
     // Save Settings
-    QFrame *saveFrame = new QFrame(this);
+    auto saveFrame = new QFrame(this);
     tabWidget->addTab(saveFrame, QIcon::fromTheme(QStringLiteral("document-save")), i18nc("@title:tab", "Save"));
     auto saveLayout = new QVBoxLayout(saveFrame);
 
@@ -67,11 +67,11 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     saveLayout->addStretch(1);
 
     // System Tray Settings
-    QFrame *systrayFrame = new QFrame(this);
+    auto systrayFrame = new QFrame(this);
     auto systrayLayout = new QVBoxLayout(systrayFrame);
     tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")), i18nc("@title:tab systray settings", "System Tray"));
 
-    QGroupBox *systrayGroupBox = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
+    auto systrayGroupBox = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
     systrayLayout->addWidget(systrayGroupBox);
     auto systrayGroupLayout = new QVBoxLayout;
     systrayGroupBox->setLayout(systrayGroupLayout);
@@ -90,7 +90,7 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
     systrayLayout->addStretch(1);
 
     // Calendar Account
-    QFrame *calendarFrame = new QFrame(this);
+    auto calendarFrame = new QFrame(this);
     tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")), i18nc("@title:tab calendar account settings", "Calendars"));
     auto calendarFrameLayout = new QHBoxLayout;
     calendarFrame->setLayout(calendarFrameLayout);

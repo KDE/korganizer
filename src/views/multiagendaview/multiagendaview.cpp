@@ -288,7 +288,7 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
 {
     setWindowTitle(i18nc("@title:window", "Configure Side-By-Side View"));
     auto mainLayout = new QVBoxLayout(this);
-    QWidget *widget = new QWidget;
+    auto widget = new QWidget;
     d->ui.setupUi(widget);
     auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);

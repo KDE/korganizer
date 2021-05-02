@@ -28,7 +28,7 @@ using namespace KCalUtils;
 bool SummaryEventInfo::mShowBirthdays = true;
 bool SummaryEventInfo::mShowAnniversaries = true;
 
-typedef QHash<QString, QDateTime> DateTimeByUidHash;
+using DateTimeByUidHash = QHash<QString, QDateTime>;
 Q_GLOBAL_STATIC(DateTimeByUidHash, sDateTimeByUid)
 
 static bool eventLessThan(const KCalendarCore::Event::Ptr &event1, const KCalendarCore::Event::Ptr &event2)

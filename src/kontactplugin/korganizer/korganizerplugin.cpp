@@ -36,7 +36,7 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 
-    QAction *action = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18nc("@action:inmenu", "New Event..."), this);
+    auto action = new QAction(QIcon::fromTheme(QStringLiteral("appointment-new")), i18nc("@action:inmenu", "New Event..."), this);
     actionCollection()->addAction(QStringLiteral("new_event"), action);
     actionCollection()->setDefaultShortcut(action, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_E));
     const QString str = i18nc("@info:status", "Create a new event");
