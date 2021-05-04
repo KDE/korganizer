@@ -58,13 +58,16 @@ KOTimelineView::KOTimelineView(QWidget *parent)
 
     connect(mTimeLineView, &EventViews::EventView::dissociateOccurrencesSignal, this, &KOrg::BaseView::dissociateOccurrencesSignal);
 
-    connect(mTimeLineView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
+    connect(mTimeLineView, qOverload<>(&EventViews::TimelineView::newEventSignal), this, qOverload<>(&KOTimelineView::newEventSignal));
 
-    connect(mTimeLineView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
+    connect(mTimeLineView, qOverload<const QDate &>(&EventViews::TimelineView::newEventSignal),
+            this, qOverload<const QDate &>(&KOTimelineView::newEventSignal));
 
-    connect(mTimeLineView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
+    connect(mTimeLineView, qOverload<const QDateTime &>(&EventViews::TimelineView::newEventSignal),
+            this, qOverload<const QDateTime &>(&KOTimelineView::newEventSignal));
 
-    connect(mTimeLineView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
+    connect(mTimeLineView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::TimelineView::newEventSignal),
+            this, qOverload<const QDateTime &, const QDateTime &>(&KOTimelineView::newEventSignal));
 
     connect(mTimeLineView, &EventViews::EventView::newTodoSignal, this, &KOrg::BaseView::newTodoSignal);
 
