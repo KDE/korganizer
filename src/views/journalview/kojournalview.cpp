@@ -58,13 +58,16 @@ KOJournalView::KOJournalView(QWidget *parent)
 
     connect(mJournalView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mJournalView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
+    connect(mJournalView, qOverload<>(&EventViews::JournalView::newEventSignal), this, qOverload<>(&KOJournalView::newEventSignal));
 
-    connect(mJournalView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
+    connect(mJournalView, qOverload<const QDate &>(&EventViews::JournalView::newEventSignal),
+            this, qOverload<const QDate &>(&KOJournalView::newEventSignal));
 
-    connect(mJournalView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
+    connect(mJournalView, qOverload<const QDateTime &>(&EventViews::JournalView::newEventSignal),
+            this, qOverload<const QDateTime &>(&KOJournalView::newEventSignal));
 
-    connect(mJournalView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
+    connect(mJournalView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::JournalView::newEventSignal),
+            this, qOverload<const QDateTime &, const QDateTime &>(&KOJournalView::newEventSignal));
 
     connect(mJournalView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
