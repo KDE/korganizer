@@ -56,13 +56,16 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
 
     connect(mView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
+    connect(mView, qOverload<>(&EventViews::TodoView::newEventSignal), this, qOverload<>(&KOTodoView::newEventSignal));
 
-    connect(mView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
+    connect(mView, qOverload<const QDate &>(&EventViews::TodoView::newEventSignal),
+            this, qOverload<const QDate &>(&KOTodoView::newEventSignal));
 
-    connect(mView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
+    connect(mView, qOverload<const QDateTime &>(&EventViews::TodoView::newEventSignal),
+            this, qOverload<const QDateTime &>(&KOTodoView::newEventSignal));
 
-    connect(mView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
+    connect(mView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::TodoView::newEventSignal),
+            this, qOverload<const QDateTime &, const QDateTime &>(&KOTodoView::newEventSignal));
 
     connect(mView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
