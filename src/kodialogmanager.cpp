@@ -108,9 +108,12 @@ void KODialogManager::showSearchDialog()
     if (!mSearchDialog) {
         mSearchDialog = new SearchDialog(mMainView);
         // mSearchDialog->setCalendar( mMainView->calendar() );
-        connect(mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)), mMainView, SLOT(showIncidence(Akonadi::Item)));
-        connect(mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView, SLOT(editIncidence(Akonadi::Item)));
-        connect(mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)));
+        connect(mSearchDialog, &SearchDialog::showIncidenceSignal,
+                mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
+        connect(mSearchDialog, &SearchDialog::editIncidenceSignal,
+                mMainView, [=](const Akonadi::Item & i){mMainView->editIncidence(i);});
+        connect(mSearchDialog, &SearchDialog::deleteIncidenceSignal,
+                mMainView, [=](const Akonadi::Item & i){mMainView->deleteIncidence(i, false);});
     }
     // make sure the widget is on top again
     mSearchDialog->show();
@@ -164,15 +167,6 @@ void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialo
     if (dialog && view) {
         view->setTypeAheadReceiver(dialog->typeAheadReceiver());
     }
-}
-
-void KODialogManager::connectEditor(IncidenceEditorNG::IncidenceDialog *editor)
-{
-    createCategoryEditor();
-    connect(editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)));
-
-    connect(editor, SIGNAL(dialogClose(Akonadi::Item)), mMainView, SLOT(dialogClosing(Akonadi::Item)));
-    connect(editor, SIGNAL(deleteAttendee(Akonadi::Item)), mMainView, SIGNAL(cancelAttendees(Akonadi::Item)));
 }
 
 void KODialogManager::updateSearchDialog()

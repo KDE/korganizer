@@ -60,13 +60,16 @@ KOListView::KOListView(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *paren
 
     connect(mListView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mListView, SIGNAL(newEventSignal()), SIGNAL(newEventSignal()));
+    connect(mListView, qOverload<>(&EventViews::EventView::newEventSignal), this, qOverload<>(&KOListView::newEventSignal));
 
-    connect(mListView, SIGNAL(newEventSignal(QDate)), SIGNAL(newEventSignal(QDate)));
+    connect(mListView, qOverload<const QDate &>(&EventViews::EventView::newEventSignal),
+            this, qOverload<const QDate &>(&KOListView::newEventSignal));
 
-    connect(mListView, SIGNAL(newEventSignal(QDateTime)), SIGNAL(newEventSignal(QDateTime)));
+    connect(mListView, qOverload<const QDateTime &>(&EventViews::EventView::newEventSignal),
+            this, qOverload<const QDateTime &>(&KOListView::newEventSignal));
 
-    connect(mListView, SIGNAL(newEventSignal(QDateTime, QDateTime)), SIGNAL(newEventSignal(QDateTime, QDateTime)));
+    connect(mListView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::EventView::newEventSignal),
+            this, qOverload<const QDateTime &, const QDateTime &>(&KOListView::newEventSignal));
 
     connect(mListView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 

@@ -186,15 +186,18 @@ CalendarView::CalendarView(QWidget *parent)
     // Signals emitted by mDateNavigator
     connect(mDateNavigator, &DateNavigator::datesSelected, this, &CalendarView::showDates);
 
-    connect(mDateNavigatorContainer, SIGNAL(newEventSignal(QDate)), SLOT(newEvent(QDate)));
-    connect(mDateNavigatorContainer, SIGNAL(newTodoSignal(QDate)), SLOT(newTodo(QDate)));
-    connect(mDateNavigatorContainer, SIGNAL(newJournalSignal(QDate)), SLOT(newJournal(QDate)));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal,
+            this, qOverload<const QDate &>(&CalendarView::newEvent));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newTodoSignal,
+            this, qOverload<const QDate &>(&CalendarView::newTodo));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newJournalSignal,
+            this, qOverload<const QDate &>(&CalendarView::newJournal));
 
     // Signals emitted by mNavigatorBar
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, mDateNavigator, &DateNavigator::selectPreviousYear);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, mDateNavigator, &DateNavigator::selectNextYear);
-    connect(mNavigatorBar, SIGNAL(prevMonthClicked()), mDateNavigator, SLOT(selectPreviousMonth()));
-    connect(mNavigatorBar, SIGNAL(nextMonthClicked()), mDateNavigator, SLOT(selectNextMonth()));
+    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, [=](){mDateNavigator->selectPreviousMonth();});
+    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, [=](){mDateNavigator->selectNextMonth();});
     connect(mNavigatorBar, &NavigatorBar::monthSelected, mDateNavigator, &DateNavigator::selectMonth);
     connect(mNavigatorBar, &NavigatorBar::yearSelected, mDateNavigator, &DateNavigator::selectYear);
 

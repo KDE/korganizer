@@ -49,9 +49,6 @@ public:
 
     IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 
-    // TODO_NG: see if editors-NG have the needed slots.
-    void connectEditor(IncidenceEditorNG::IncidenceDialog *editor);
-
     void updateSearchDialog();
 
     void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *editor, KOEventView *view);

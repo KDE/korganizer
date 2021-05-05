@@ -252,9 +252,9 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::incidenceSelected, mMainView, &CalendarView::processMainViewSelection);
 
     // showing/editing/deleting an incidence. The calendar view takes care of the action.
-    connect(view, SIGNAL(showIncidenceSignal(Akonadi::Item)), mMainView, SLOT(showIncidence(Akonadi::Item)));
-    connect(view, SIGNAL(editIncidenceSignal(Akonadi::Item)), mMainView, SLOT(editIncidence(Akonadi::Item)));
-    connect(view, SIGNAL(deleteIncidenceSignal(Akonadi::Item)), mMainView, SLOT(deleteIncidence(Akonadi::Item)));
+    connect(view, &BaseView::showIncidenceSignal, mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
+    connect(view, &BaseView::editIncidenceSignal, this, [=](const Akonadi::Item &i){mMainView->editIncidence(i, false);});
+    connect(view, &BaseView::deleteIncidenceSignal, this, [=](const Akonadi::Item &i){mMainView->deleteIncidence(i, false);});
     connect(view, &BaseView::copyIncidenceSignal, mMainView, &CalendarView::copyIncidence);
     connect(view, &BaseView::cutIncidenceSignal, mMainView, &CalendarView::cutIncidence);
     connect(view, &BaseView::pasteIncidenceSignal, mMainView, &CalendarView::pasteIncidence);
@@ -265,14 +265,19 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::dissociateOccurrencesSignal, mMainView, &CalendarView::dissociateOccurrences);
 
     // signals to create new incidences
-    connect(view, SIGNAL(newEventSignal()), mMainView, SLOT(newEvent()));
-    connect(view, SIGNAL(newEventSignal(QDateTime)), mMainView, SLOT(newEvent(QDateTime)));
-    connect(view, SIGNAL(newEventSignal(QDateTime, QDateTime)), mMainView, SLOT(newEvent(QDateTime, QDateTime)));
-    connect(view, SIGNAL(newEventSignal(QDate)), mMainView, SLOT(newEvent(QDate)));
+    connect(view, qOverload<>(&BaseView::newEventSignal), mMainView, qOverload<>(&CalendarView::newEvent));
+    connect(view, qOverload<const QDateTime &>(&BaseView::newEventSignal),
+            mMainView, qOverload<const QDateTime &>(&CalendarView::newEvent));
+    connect(view, qOverload<const QDateTime &, const QDateTime &>(&BaseView::newEventSignal),
+            this, [=](const QDateTime &s, const QDateTime &e){mMainView->newEvent(s, e, false);});
+    connect(view, qOverload<const QDate &>(&BaseView::newEventSignal),
+            mMainView, qOverload<const QDate &>(&CalendarView::newEvent));
 
-    connect(view, SIGNAL(newTodoSignal(QDate)), mMainView, SLOT(newTodo(QDate)));
-    connect(view, SIGNAL(newSubTodoSignal(Akonadi::Item)), mMainView, SLOT(newSubTodo(Akonadi::Item)));
-    connect(view, SIGNAL(newJournalSignal(QDate)), mMainView, SLOT(newJournal(QDate)));
+    connect(view, qOverload<const QDate &>(&BaseView::newTodoSignal),
+            mMainView, qOverload<const QDate &>(&CalendarView::newTodo));
+    connect(view, qOverload<const Akonadi::Item &>(&BaseView::newSubTodoSignal),
+            mMainView, qOverload<const Akonadi::Item &>(&CalendarView::newSubTodo));
+    connect(view, &BaseView::newJournalSignal, mMainView, qOverload<const QDate &>(&CalendarView::newJournal));
 
     // reload settings
     connect(mMainView, &CalendarView::configChanged, view, &KOrg::BaseView::updateConfig);
@@ -282,7 +287,7 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::startMultiModify, mMainView, &CalendarView::startMultiModify);
     connect(view, &BaseView::endMultiModify, mMainView, &CalendarView::endMultiModify);
 
-    connect(mMainView, SIGNAL(newIncidenceChanger(Akonadi::IncidenceChanger *)), view, SLOT(setIncidenceChanger(Akonadi::IncidenceChanger *)));
+    connect(mMainView, &CalendarView::newIncidenceChanger, view, &BaseView::setIncidenceChanger);
 
     view->setIncidenceChanger(mMainView->incidenceChanger());
 }
@@ -403,7 +408,8 @@ void KOViewManager::showAgendaView()
 
             addView(mAgendaView, showBoth);
 
-            connect(mAgendaView, SIGNAL(zoomViewHorizontally(QDate, int)), mMainView->dateNavigator(), SLOT(selectDates(QDate, int)));
+            connect(mAgendaView, &KOAgendaView::zoomViewHorizontally,
+                    this, [=](const QDate &d, int n){mMainView->dateNavigator()->selectDates(d, n, QDate());});
             auto config = KSharedConfig::openConfig();
             mAgendaView->readSettings(config.data());
         }
@@ -421,10 +427,6 @@ void KOViewManager::showAgendaView()
             mAgendaSideBySideView->setIdentifier("DefaultAgendaSideBySideView");
             mAgendaSideBySideView->setCalendar(mMainView->calendar());
             addView(mAgendaSideBySideView, showBoth);
-
-            /*
-                connect( mAgendaSideBySideView,SIGNAL(zoomViewHorizontally(QDate,int)),
-                         mMainView->dateNavigator(),SLOT(selectDates(QDate,int)) );*/
         }
         if (showBoth && mAgendaViewTabs->indexOf(mAgendaSideBySideView) < 0) {
             mAgendaViewTabs->addTab(mAgendaSideBySideView, i18n("Calendars Side by Side"));

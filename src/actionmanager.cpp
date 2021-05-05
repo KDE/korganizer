@@ -215,14 +215,10 @@ void ActionManager::initActions()
     //~~~~~~~~~~~~~~~~~~~~~~~ LOADING / SAVING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if (mIsPart) {
         if (mMainWindow->hasDocument()) {
-            QAction *a = mACollection->addAction(KStandardAction::Open, this, SLOT(file_open()));
-            mACollection->addAction(QStringLiteral("korganizer_open"), a);
+            mACollection->addAction(KStandardAction::Open, QStringLiteral("korganizer_open"), this, qOverload<>(&ActionManager::file_open));
         }
-
-        QAction *a = mACollection->addAction(KStandardAction::Print, mCalendarView, SLOT(print()));
-        mACollection->addAction(QStringLiteral("korganizer_print"), a);
-        a = mACollection->addAction(KStandardAction::PrintPreview, mCalendarView, SLOT(printPreview()));
-        mACollection->addAction(QStringLiteral("korganizer_print_preview"), a);
+        mACollection->addAction(KStandardAction::Print, QStringLiteral("korganizer_print"), mCalendarView, &CalendarView::print);
+        mACollection->addAction(KStandardAction::PrintPreview, QStringLiteral("korganizer_print_preview"), mCalendarView, &CalendarView::printPreview);
     } else {
         KStandardAction::open(this, qOverload<>(&ActionManager::file_open), mACollection);
         KStandardAction::print(mCalendarView, &CalendarView::print, mACollection);
@@ -293,26 +289,25 @@ void ActionManager::initActions()
     Akonadi::History *history = mCalendarView->history();
     if (mIsPart) {
         // edit menu
-        mCutAction = mACollection->addAction(KStandardAction::Cut, QStringLiteral("korganizer_cut"), mCalendarView, SLOT(edit_cut()));
-        mCopyAction = mACollection->addAction(KStandardAction::Copy, QStringLiteral("korganizer_copy"), mCalendarView, SLOT(edit_copy()));
-        pasteAction = mACollection->addAction(KStandardAction::Paste, QStringLiteral("korganizer_paste"), mCalendarView, SLOT(edit_paste()));
-        mUndoAction = mACollection->addAction(KStandardAction::Undo, QStringLiteral("korganizer_undo"), history, SLOT(undo()));
-        mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"), history, SLOT(redo()));
+        mCutAction = mACollection->addAction(KStandardAction::Cut, QStringLiteral("korganizer_cut"), mCalendarView, &CalendarView::edit_cut);
+        mCopyAction = mACollection->addAction(KStandardAction::Copy, QStringLiteral("korganizer_copy"), mCalendarView, &CalendarView::edit_copy);
+        pasteAction = mACollection->addAction(KStandardAction::Paste, QStringLiteral("korganizer_paste"), mCalendarView, &CalendarView::edit_paste);
+        mUndoAction = mACollection->addAction(KStandardAction::Undo, QStringLiteral("korganizer_undo"), this, [=](){history->undo();});
+        mRedoAction = mACollection->addAction(KStandardAction::Redo, QStringLiteral("korganizer_redo"), this, [=](){history->redo();});
     } else {
         mCutAction = KStandardAction::cut(mCalendarView, &CalendarView::edit_cut, mACollection);
         mCopyAction = KStandardAction::copy(mCalendarView, &CalendarView::edit_copy, mACollection);
         pasteAction = KStandardAction::paste(mCalendarView, &CalendarView::edit_paste, mACollection);
-        mUndoAction = KStandardAction::undo(history, SLOT(undo()), mACollection);
-        mRedoAction = KStandardAction::redo(history, SLOT(redo()), mACollection);
+        mUndoAction = KStandardAction::undo(this, [=](){history->undo();}, mACollection);
+        mRedoAction = KStandardAction::redo(this, [=](){history->redo();}, mACollection);
     }
     mDeleteAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18n("&Delete"), this);
     mACollection->addAction(QStringLiteral("edit_delete"), mDeleteAction);
     connect(mDeleteAction, &QAction::triggered, mCalendarView, &CalendarView::appointment_delete);
     if (mIsPart) {
-        QAction *a = KStandardAction::find(mCalendarView->dialogManager(), SLOT(showSearchDialog()), mACollection);
-        mACollection->addAction(QStringLiteral("korganizer_find"), a);
+        mACollection->addAction(KStandardAction::Find, QStringLiteral("korganizer_find"), mCalendarView->dialogManager(), &KODialogManager::showSearchDialog);
     } else {
-        KStandardAction::find(mCalendarView->dialogManager(), SLOT(showSearchDialog()), mACollection);
+        KStandardAction::find(mCalendarView->dialogManager(), &KODialogManager::showSearchDialog, mACollection);
     }
     pasteAction->setEnabled(false);
     mUndoAction->setEnabled(false);
@@ -580,36 +575,36 @@ void ActionManager::initActions()
     /************************** SCHEDULE MENU ********************************/
     mPublishEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("&Publish Item Information..."), this);
     mACollection->addAction(QStringLiteral("schedule_publish"), mPublishEvent);
-    connect(mPublishEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_publish()));
+    connect(mPublishEvent, &QAction::triggered, this, [=](bool){mCalendarView->schedule_publish();});
     mPublishEvent->setEnabled(false);
 
     mSendInvitation = new QAction(QIcon::fromTheme(QStringLiteral("mail-send")), i18n("Send &Invitation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_request"), mSendInvitation);
-    connect(mSendInvitation, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_request()));
+    connect(mSendInvitation, &QAction::triggered, this, [=](bool){mCalendarView->schedule_request();});
     mSendInvitation->setEnabled(false);
     connect(mCalendarView, &CalendarView::organizerEventsSelected, mSendInvitation, &QAction::setEnabled);
 
     mRequestUpdate = new QAction(i18n("Re&quest Update"), this);
     mACollection->addAction(QStringLiteral("schedule_refresh"), mRequestUpdate);
-    connect(mRequestUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_refresh()));
+    connect(mRequestUpdate, &QAction::triggered, this, [=](bool){mCalendarView->schedule_refresh();});
     mRequestUpdate->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mRequestUpdate, &QAction::setEnabled);
 
     mSendCancel = new QAction(i18n("Send &Cancellation to Attendees"), this);
     mACollection->addAction(QStringLiteral("schedule_cancel"), mSendCancel);
-    connect(mSendCancel, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_cancel()));
+    connect(mSendCancel, &QAction::triggered, this, [=](bool){mCalendarView->schedule_cancel();});
     mSendCancel->setEnabled(false);
     connect(mCalendarView, &CalendarView::organizerEventsSelected, mSendCancel, &QAction::setEnabled);
 
     mSendStatusUpdate = new QAction(QIcon::fromTheme(QStringLiteral("mail-reply-sender")), i18n("Send Status &Update"), this);
     mACollection->addAction(QStringLiteral("schedule_reply"), mSendStatusUpdate);
-    connect(mSendStatusUpdate, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_reply()));
+    connect(mSendStatusUpdate, &QAction::triggered, this, [=](bool){mCalendarView->schedule_reply();});
     mSendStatusUpdate->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mSendStatusUpdate, &QAction::setEnabled);
 
     mRequestChange = new QAction(i18nc("counter proposal", "Request Chan&ge"), this);
     mACollection->addAction(QStringLiteral("schedule_counter"), mRequestChange);
-    connect(mRequestChange, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_counter()));
+    connect(mRequestChange, &QAction::triggered, this, [=](bool){mCalendarView->schedule_counter();});
     mRequestChange->setEnabled(false);
     connect(mCalendarView, &CalendarView::groupEventsSelected, mRequestChange, &QAction::setEnabled);
 
@@ -620,7 +615,7 @@ void ActionManager::initActions()
 
     mForwardEvent = new QAction(QIcon::fromTheme(QStringLiteral("mail-forward")), i18n("&Send as iCalendar..."), this);
     mACollection->addAction(QStringLiteral("schedule_forward"), mForwardEvent);
-    connect(mForwardEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()));
+    connect(mForwardEvent, &QAction::triggered, this, [=](bool){mCalendarView->schedule_forward();});
     mForwardEvent->setEnabled(false);
 
     action = new QAction(i18n("&Upload Free Busy Information"), this);
@@ -690,7 +685,7 @@ void ActionManager::initActions()
         action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("&Configure KOrganizer..."), this);
         mACollection->addAction(QStringLiteral("korganizer_configure"), action);
         connect(action, &QAction::triggered, mCalendarView, &CalendarView::edit_options);
-        mACollection->addAction(KStandardAction::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"), this, SLOT(keyBindings()));
+        mACollection->addAction(KStandardAction::KeyBindings, QStringLiteral("korganizer_configure_shortcuts"), this, &ActionManager::keyBindings);
     } else {
         KStandardAction::preferences(mCalendarView, &CalendarView::edit_options, mACollection);
         KStandardAction::keyBindings(this, &ActionManager::keyBindings, mACollection);
