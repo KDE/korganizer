@@ -435,7 +435,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
 
 void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start, int end)
 {
-    // qCDebug(KORGANIZER_LOG) << objectName() << parent << start << end;
+    QModelIndexList reparented;
     for (int row = start; row <= end; row++) {
         QModelIndex sourceIndex = sourceModel()->index(row, 0, parent);
         Q_ASSERT(sourceIndex.isValid());
@@ -450,7 +450,7 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
         // Remove any duplicates that we are going to replace
         removeDuplicates(sourceIndex);
 
-        QModelIndexList reparented;
+        reparented.clear();
         // Check for children to reparent
         {
             const auto descendantsItem = descendants(sourceIndex);
