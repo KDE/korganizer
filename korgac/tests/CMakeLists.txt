@@ -15,12 +15,12 @@ set(testalarmdlg_SRCS
     ../mailclient.cpp
     ${korganizer_BINARY_DIR}/korgac/koalarmclient_debug.cpp)
 
-qt5_add_dbus_interface(testalarmdlg_SRCS ${korganizer_xml}
+qt_add_dbus_interface(testalarmdlg_SRCS ${korganizer_xml}
     korganizer_interface
     )
 
-qt5_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.Notifications.xml notifications_interface)
-qt5_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.DBus.Properties.xml dbusproperties)
+qt_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.Notifications.xml notifications_interface)
+qt_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.DBus.Properties.xml dbusproperties)
 
 add_executable(testalarmdlg ${testalarmdlg_SRCS})
 

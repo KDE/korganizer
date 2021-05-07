@@ -29,16 +29,16 @@ set(korgac_SRCS
 
 set(korganizer_xml ../src/data/org.kde.korganizer.Korganizer.xml)
 
-qt5_add_dbus_interface(korgac_SRCS ${korganizer_xml}
+qt_add_dbus_interface(korgac_SRCS ${korganizer_xml}
     korganizer_interface
     )
 
-qt5_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h
+qt_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h
     KOAlarmClient
     )
 
-qt5_add_dbus_interface(korgac_SRCS org.freedesktop.Notifications.xml notifications_interface)
-qt5_add_dbus_interface(korgac_SRCS org.freedesktop.DBus.Properties.xml dbusproperties)
+qt_add_dbus_interface(korgac_SRCS org.freedesktop.Notifications.xml notifications_interface)
+qt_add_dbus_interface(korgac_SRCS org.freedesktop.DBus.Properties.xml dbusproperties)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korgac.png")
 ecm_add_app_icon(korgac_SRCS ICONS ${ICONS_SRCS})

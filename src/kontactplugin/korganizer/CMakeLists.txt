@@ -9,7 +9,7 @@ ecm_qt_declare_logging_category(libcommon_SRCS HEADER korganizerplugin_debug.h I
 
 set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp ${libcommon_SRCS})
 
-qt5_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
+qt_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
 add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS})
 
@@ -21,7 +21,7 @@ kcoreaddons_desktop_to_json(kontact_korganizerplugin korganizerplugin.desktop)
 
 set(kontact_todoplugin_PART_SRCS todoplugin.cpp todosummarywidget.cpp ${libcommon_SRCS})
 
-qt5_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
+qt_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
 
@@ -33,7 +33,7 @@ kcoreaddons_desktop_to_json(kontact_todoplugin todoplugin.desktop)
 
 set(kontact_journalplugin_PART_SRCS journalplugin.cpp ${libcommon_SRCS})
 
-qt5_add_dbus_interfaces(kontact_journalplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml)
+qt_add_dbus_interfaces(kontact_journalplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml)
 
 add_library(kontact_journalplugin MODULE ${kontact_journalplugin_PART_SRCS})
 

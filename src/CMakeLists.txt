@@ -233,25 +233,25 @@ ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     views/collectionview/quickview.ui
     )
 
-qt5_add_dbus_adaptor(korganizerprivate_LIB_SRCS
+qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.korganizer.Korganizer.xml impl/korganizerifaceimpl.h
     KOrganizerIfaceImpl
     )
 
-qt5_add_dbus_adaptor(korganizerprivate_LIB_SRCS
+qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.Korganizer.Calendar.xml actionmanager.h
     ActionManager calendaradaptor KOrgCalendarAdaptor
     )
 
-qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
+qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     data/org.kde.korganizer.Korganizer.xml
     )
 
-qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
+qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     ../korgac/org.kde.korganizer.KOrgac.xml
     )
 
-qt5_add_dbus_interfaces(korganizerprivate_LIB_SRCS
+qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml
     )
 
