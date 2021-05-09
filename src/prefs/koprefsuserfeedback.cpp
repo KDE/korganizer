@@ -10,6 +10,7 @@
 #include "koprefsuserfeedback.h"
 #include <KAboutData>
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <QVBoxLayout>
 #ifdef WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
@@ -18,12 +19,7 @@
 
 #ifdef WITH_KUSERFEEDBACK
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korguserfeeback(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsUserFeedBack(parent, args);
-}
-}
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsUserFeedBack, "korganizer_userfeedback.json")
 
 KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
@@ -56,5 +52,7 @@ void KOPrefsUserFeedBack::save()
     UserFeedBackManager::self()->userFeedbackProvider()->setTelemetryMode(mUserFeedbackWidget->telemetryMode());
     UserFeedBackManager::self()->userFeedbackProvider()->setSurveyInterval(mUserFeedbackWidget->surveyInterval());
 }
+
+#include "koprefsuserfeedback.moc"
 
 #endif

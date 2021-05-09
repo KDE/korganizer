@@ -5,7 +5,7 @@ X-KDE-ServiceTypes=KCModule
 X-DocPath=korganizer/preferences.html
 
 X-KDE-ModuleType=Library
-X-KDE-Library=kcm_korganizer
+X-KDE-Library=korganizer_configdesignerfields
 X-KDE-FactoryName=korgdesignerfields
 X-KDE-ParentApp=kcontactmanager
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin

@@ -13,16 +13,14 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
 #include <QButtonGroup>
 
-KCModule *create_apptsummary(QWidget *parent, const char *)
-{
-    return new KCMApptSummary(parent);
-}
+K_PLUGIN_CLASS_WITH_JSON(KCMApptSummary, "kcmapptsummary.json")
 
-KCMApptSummary::KCMApptSummary(QWidget *parent)
-    : KCModule(parent)
+KCMApptSummary::KCMApptSummary(QWidget *parent, const QVariantList &args)
+    : KCModule(parent, args)
 {
     setupUi(this);
 
@@ -162,3 +160,4 @@ const KAboutData *KCMApptSummary::aboutData() const
 
     return about;
 }
+#include "kcmapptsummary.moc"

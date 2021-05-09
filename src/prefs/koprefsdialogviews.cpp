@@ -14,6 +14,7 @@
 #include "koprefs.h"
 #include "widgets/kitemiconcheckcombo.h"
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <QCheckBox>
 #include <QFrame>
 #include <QGroupBox>
@@ -22,12 +23,7 @@
 #include <QTabWidget>
 #include <QVBoxLayout>
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogViews(parent, args);
-}
-}
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogViews, "korganizer_configviews.json")
 
 KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
@@ -180,3 +176,5 @@ void KOPrefsDialogViews::usrReadConfig()
     KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(mAgendaIconComboBox->checkedIcons());
     KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(mMonthIconComboBox->checkedIcons());
 }
+
+#include "koprefsdialogviews.moc"

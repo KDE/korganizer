@@ -12,16 +12,12 @@
 #include "ui_todosummaryconfig_base.h"
 #include <KCModule>
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_todosummary(QWidget *parent, const char *);
-}
-
 class KCMTodoSummary : public KCModule, public Ui::TodoSummaryConfig_Base
 {
     Q_OBJECT
 
 public:
-    explicit KCMTodoSummary(QWidget *parent = nullptr);
+    explicit KCMTodoSummary(QWidget *parent = nullptr, const QVariantList &args = {});
     ~KCMTodoSummary() override;
 
     void load() override;

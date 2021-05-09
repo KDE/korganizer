@@ -16,7 +16,8 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-K_PLUGIN_FACTORY_WITH_JSON(KCMSDSummaryFactory, "kcmsdsummary.json", registerPlugin<KCMSDSummary>();)
+K_PLUGIN_CLASS_WITH_JSON(KCMSDSummary, "kcmsdsummary.json")
+
 KCMSDSummary::KCMSDSummary(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
 {
@@ -163,4 +164,5 @@ const KAboutData *KCMSDSummary::aboutData() const
 
     return about;
 }
+
 #include "kcmsdsummary.moc"

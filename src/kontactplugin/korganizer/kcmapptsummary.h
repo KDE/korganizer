@@ -11,16 +11,12 @@
 #include "ui_apptsummaryconfig_base.h"
 #include <KCModule>
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_apptsummary(QWidget *parent, const char *);
-}
-
 class KCMApptSummary : public KCModule, public Ui::ApptSummaryConfig_Base
 {
     Q_OBJECT
 
 public:
-    explicit KCMApptSummary(QWidget *parent = nullptr);
+    explicit KCMApptSummary(QWidget *parent = nullptr, const QVariantList &args = {});
 
     void load() override;
     void save() override;

@@ -8,7 +8,6 @@
 */
 
 #pragma once
-#include "kcm_korganizer_export.h"
 #include "kprefsdialog.h"
 #include <QWidget>
 
@@ -23,7 +22,7 @@ class KOPrefsDialogColorsAndFonts : public Korganizer::KPrefsModule
 {
     Q_OBJECT
 public:
-    explicit KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args = {});
+    explicit KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args);
 
 protected:
     void usrWriteConfig() override;

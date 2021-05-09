@@ -10,10 +10,13 @@
 #include "koprefsdialoggroupwarescheduling.h"
 #include "ui_kogroupwareprefspage.h"
 #include <CalendarSupport/KCalPrefs>
+#include <KPluginFactory>
 #include <QIcon>
 #include <QStandardPaths>
 #include <QVBoxLayout>
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupwareScheduling, "korganizer_configfreebusy.json")
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent, const QVariantList &args)
     : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, args)
@@ -94,9 +97,4 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
     Akonadi::CalendarSettings::self()->save();
 }
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigfreebusy(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogGroupwareScheduling(parent, args);
-}
-}
+#include "koprefsdialoggroupwarescheduling.moc"

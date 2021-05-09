@@ -14,6 +14,7 @@
 #include <KComboBox>
 #include <KHolidays/HolidayRegion>
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <KTimeComboBox>
 #include <KUrlRequester>
 #include <QCheckBox>
@@ -25,12 +26,8 @@
 #include <QTabWidget>
 #include <QTimeEdit>
 #include <QVBoxLayout>
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogTime(parent, args);
-}
-}
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogTime, "korganizer_configtime.json")
 
 KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
@@ -289,3 +286,5 @@ void KOPrefsDialogTime::setCombo(KComboBox *combo, const QString &text, const QS
         }
     }
 }
+
+#include "koprefsdialogtime.moc"

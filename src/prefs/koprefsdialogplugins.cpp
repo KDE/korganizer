@@ -14,6 +14,7 @@
 #include <KGuiItem>
 #include <KLocalizedString>
 #include <KMessageBox>
+#include <KPluginFactory>
 #include <KService>
 #include <QGroupBox>
 #include <QLabel>
@@ -45,6 +46,8 @@ public:
 private:
     const KService::Ptr mService;
 };
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogPlugins, "korganizer_configplugins.json")
 
 /**
   Dialog for selecting and configuring KOrganizer plugins
@@ -308,9 +311,4 @@ void KOPrefsDialogPlugins::selectionChanged()
     slotWidChanged();
 }
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigplugins(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogPlugins(parent, args);
-}
-}
+#include "koprefsdialogplugins.moc"

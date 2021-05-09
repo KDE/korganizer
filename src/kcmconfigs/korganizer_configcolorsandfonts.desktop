@@ -4,7 +4,7 @@ Type=Service
 X-KDE-ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
-X-KDE-Library=kcm_korganizer
+X-KDE-Library=korganizer_configcolorsandfonts
 X-KDE-FactoryName=korganizerconfigcolorsandfonts
 X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer

@@ -9,6 +9,7 @@
 
 #include "koprefsdialogmain.h"
 #include "koprefs.h"
+#include <KPluginFactory>
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QTabWidget>
@@ -22,6 +23,8 @@
 #include <KLocalizedString>
 #include <QCheckBox>
 #include <QLabel>
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogMain, "korganizer_configmain.json")
 
 KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent, const QVariantList &args)
     : KPrefsModule(KOPrefs::instance(), parent, args)
@@ -124,9 +127,4 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
       }*/
 }
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogMain(parent, args);
-}
-}
+#include "koprefsdialogmain.moc"

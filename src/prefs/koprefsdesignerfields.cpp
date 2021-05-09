@@ -9,13 +9,10 @@
 
 #include "koprefsdesignerfields.h"
 #include <CalendarSupport/KCalPrefs>
+#include <KPluginFactory>
 #include <QStandardPaths>
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korgdesignerfields(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDesignerFields(parent, args);
-}
-}
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDesignerFields, "korganizer_configdesignerfields.json")
 
 KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent, const QVariantList &args)
     : KCMDesignerFields(parent, args)
@@ -48,3 +45,5 @@ QString KOPrefsDesignerFields::applicationName()
 {
     return QStringLiteral("KORGANIZER");
 }
+
+#include "koprefsdesignerfields.moc"

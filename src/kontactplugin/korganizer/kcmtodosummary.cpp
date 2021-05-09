@@ -14,14 +14,12 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
-KCModule *create_todosummary(QWidget *parent, const char *)
-{
-    return new KCMTodoSummary(parent);
-}
+K_PLUGIN_CLASS_WITH_JSON(KCMTodoSummary, "kcmtodosummary.json")
 
-KCMTodoSummary::KCMTodoSummary(QWidget *parent)
-    : KCModule(parent)
+KCMTodoSummary::KCMTodoSummary(QWidget *parent, const QVariantList &args)
+    : KCModule(parent, args)
 {
     setupUi(this);
 
@@ -151,3 +149,5 @@ const KAboutData *KCMTodoSummary::aboutData() const
 
     return about;
 }
+
+#include "kcmtodosummary.moc"

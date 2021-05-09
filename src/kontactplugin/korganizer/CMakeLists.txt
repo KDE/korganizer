@@ -48,7 +48,7 @@ set(kcm_apptsummary_PART_SRCS kcmapptsummary.cpp)
 ki18n_wrap_ui(kcm_apptsummary_PART_SRCS apptsummaryconfig_base.ui)
 
 add_library(kcm_apptsummary MODULE ${kcm_apptsummary_PART_SRCS})
-
+kcoreaddons_desktop_to_json(kcm_apptsummary "kcmapptsummary.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(kcm_apptsummary  KF5::KCMUtils KF5::I18n)
 
 ########### next target ###############
@@ -58,7 +58,7 @@ set(kcm_todosummary_PART_SRCS kcmtodosummary.cpp)
 ki18n_wrap_ui(kcm_todosummary_PART_SRCS todosummaryconfig_base.ui)
 
 add_library(kcm_todosummary MODULE ${kcm_todosummary_PART_SRCS})
-
+kcoreaddons_desktop_to_json(kcm_todosummary "kcmtodosummary.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(kcm_todosummary Qt::Widgets KF5::KCMUtils KF5::I18n)
 
 ########## Unit Test ###########

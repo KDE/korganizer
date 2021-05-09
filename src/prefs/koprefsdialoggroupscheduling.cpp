@@ -11,11 +11,14 @@
 #include "prefs/koprefs.h"
 #include <CalendarSupport/KCalPrefs>
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <TransportManagementWidget>
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupScheduling, "korganizer_configgroupscheduling.json")
 
 KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
@@ -51,9 +54,4 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
 {
 }
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogGroupScheduling(parent, args);
-}
-}
+#include "koprefsdialoggroupscheduling.moc"

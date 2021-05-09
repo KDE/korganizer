@@ -9,13 +9,13 @@
 
 #include "koprefsdialogcolorsandfonts.h"
 #include "koprefs.h"
-#include <KLocalizedString>
-
 #include <AkonadiCore/EntityTreeModel>
 #include <CalendarSupport/KCalPrefs>
 #include <CollectionComboBox>
 #include <KColorButton>
 #include <KComboBox>
+#include <KLocalizedString>
+#include <KPluginFactory>
 #include <QCheckBox>
 #include <QFontDialog>
 #include <QGroupBox>
@@ -24,6 +24,8 @@
 #include <QPushButton>
 #include <QTabWidget>
 #include <TagSelectionComboBox>
+
+K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogColorsAndFonts, "korganizer_configcolorsandfonts.json")
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
@@ -273,9 +275,4 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
     mResourceButton->setColor(color);
 }
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, const QVariantList &args = {})
-{
-    return new KOPrefsDialogColorsAndFonts(parent, args);
-}
-}
+#include "koprefsdialogcolorsandfonts.moc"
