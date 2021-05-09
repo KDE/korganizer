@@ -33,7 +33,7 @@ set(kcm_sdsummary_PART_SRCS kcmsdsummary.cpp)
 ki18n_wrap_ui(kcm_sdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
 add_library(kcm_sdsummary MODULE ${kcm_sdsummary_PART_SRCS})
-
+kcoreaddons_desktop_to_json(kcm_sdsummary "kcmsdsummary.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(kcm_sdsummary Qt::Widgets KF5::KCMUtils KF5::I18n)
 
 ########### install files ###############

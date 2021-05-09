@@ -17,7 +17,7 @@ class KCMSDSummary : public KCModule, public Ui::SDSummaryConfig_Base
     Q_OBJECT
 
 public:
-    explicit KCMSDSummary(QWidget *parent = nullptr);
+    explicit KCMSDSummary(QWidget *parent = nullptr, const QVariantList &args = {});
 
     void load() override;
     void save() override;

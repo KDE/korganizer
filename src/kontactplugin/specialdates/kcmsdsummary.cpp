@@ -14,16 +14,11 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
-extern "C" {
-Q_DECL_EXPORT KCModule *create_sdsummary(QWidget *parent, const char *)
-{
-    return new KCMSDSummary(parent);
-}
-}
-
-KCMSDSummary::KCMSDSummary(QWidget *parent)
-    : KCModule(parent)
+K_PLUGIN_FACTORY_WITH_JSON(KCMSDSummaryFactory, "kcmsdsummary.json", registerPlugin<KCMSDSummary>();)
+KCMSDSummary::KCMSDSummary(QWidget *parent, const QVariantList &args)
+    : KCModule(parent, args)
 {
     setupUi(this);
 
@@ -168,3 +163,4 @@ const KAboutData *KCMSDSummary::aboutData() const
 
     return about;
 }
+#include "kcmsdsummary.moc"
