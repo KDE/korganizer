@@ -14,7 +14,7 @@
 class KOPrefsDesignerFields : public KCMDesignerFields
 {
 public:
-    explicit KOPrefsDesignerFields(QWidget *parent = nullptr);
+    explicit KOPrefsDesignerFields(QWidget *parent = nullptr, const QVariantList &args = {});
 
 protected:
     Q_REQUIRED_RESULT QString localUiDir() override;

@@ -17,8 +17,8 @@
 #include <TransportManagementWidget>
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
-KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
+KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling(QWidget *parent, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
 
@@ -52,8 +52,8 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
 }
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfiggroupscheduling(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogGroupScheduling(parent);
+    return new KOPrefsDialogGroupScheduling(parent, args);
 }
 }

@@ -21,7 +21,7 @@ class KCheckComboBox;
 class KOPrefsDialogTime : public Korganizer::KPrefsModule
 {
 public:
-    explicit KOPrefsDialogTime(QWidget *parent);
+    explicit KOPrefsDialogTime(QWidget *parent, const QVariantList &args = {});
 
 protected:
     void usrReadConfig() override;

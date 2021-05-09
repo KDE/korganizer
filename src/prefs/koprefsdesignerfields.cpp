@@ -11,14 +11,14 @@
 #include <CalendarSupport/KCalPrefs>
 #include <QStandardPaths>
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korgdesignerfields(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korgdesignerfields(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDesignerFields(parent);
+    return new KOPrefsDesignerFields(parent, args);
 }
 }
 
-KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent)
-    : KCMDesignerFields(parent)
+KOPrefsDesignerFields::KOPrefsDesignerFields(QWidget *parent, const QVariantList &args)
+    : KCMDesignerFields(parent, args)
 {
 }
 

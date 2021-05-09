@@ -19,9 +19,9 @@
 #ifdef WITH_KUSERFEEDBACK
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korguserfeeback(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korguserfeeback(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsUserFeedBack(parent);
+    return new KOPrefsUserFeedBack(parent, args);
 }
 }
 

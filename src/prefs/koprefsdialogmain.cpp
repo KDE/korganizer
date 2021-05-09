@@ -23,8 +23,8 @@
 #include <QCheckBox>
 #include <QLabel>
 
-KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent)
-    : KPrefsModule(KOPrefs::instance(), parent)
+KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent, const QVariantList &args)
+    : KPrefsModule(KOPrefs::instance(), parent, args)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);
@@ -125,8 +125,8 @@ void KOPrefsDialogMain::toggleEmailSettings(bool on)
 }
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfigmain(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogMain(parent);
+    return new KOPrefsDialogMain(parent, args);
 }
 }

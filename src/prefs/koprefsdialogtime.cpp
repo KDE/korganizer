@@ -26,14 +26,14 @@
 #include <QTimeEdit>
 #include <QVBoxLayout>
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfigtime(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogTime(parent);
+    return new KOPrefsDialogTime(parent, args);
 }
 }
 
-KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
+KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
 {
     auto layout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);

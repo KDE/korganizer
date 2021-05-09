@@ -23,14 +23,14 @@
 #include <QVBoxLayout>
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfigviews(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogViews(parent);
+    return new KOPrefsDialogViews(parent, args);
 }
 }
 
-KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
+KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
     , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
     , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 {

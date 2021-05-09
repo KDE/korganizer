@@ -49,8 +49,8 @@ private:
 /**
   Dialog for selecting and configuring KOrganizer plugins
 */
-KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent)
-    : KPrefsModule(KOPrefs::instance(), parent)
+KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &args)
+    : KPrefsModule(KOPrefs::instance(), parent, args)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     mTreeWidget = new QTreeWidget(this);
@@ -309,8 +309,8 @@ void KOPrefsDialogPlugins::selectionChanged()
 }
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigplugins(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfigplugins(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogPlugins(parent);
+    return new KOPrefsDialogPlugins(parent, args);
 }
 }

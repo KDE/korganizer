@@ -25,8 +25,8 @@
 #include <QTabWidget>
 #include <TagSelectionComboBox>
 
-KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent)
-    : Korganizer::KPrefsModule(KOPrefs::instance(), parent)
+KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args)
+    : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
 {
     QBoxLayout *topTopLayout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);
@@ -274,8 +274,8 @@ void KOPrefsDialogColorsAndFonts::updateResourceColor()
 }
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfigcolorsandfonts(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogColorsAndFonts(parent);
+    return new KOPrefsDialogColorsAndFonts(parent, args);
 }
 }

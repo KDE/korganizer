@@ -15,8 +15,8 @@
 #include <QVBoxLayout>
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
-KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent)
-    : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent)
+KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent, const QVariantList &args)
+    : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, args)
 {
     mGroupwarePage = new Ui::KOGroupwarePrefsPage();
     auto widget = new QWidget(this);
@@ -95,8 +95,8 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 }
 
 extern "C" {
-Q_DECL_EXPORT KCModule *create_korganizerconfigfreebusy(QWidget *parent, const char *)
+Q_DECL_EXPORT KCModule *create_korganizerconfigfreebusy(QWidget *parent, const QVariantList &args = {})
 {
-    return new KOPrefsDialogGroupwareScheduling(parent);
+    return new KOPrefsDialogGroupwareScheduling(parent, args);
 }
 }
