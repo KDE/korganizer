@@ -23,6 +23,7 @@ Name[x-test]=xxKOrganizer Viewxx
 Comment=Display incidence specified by URL
 Comment[ca]=Mostra la incidència especificada mitjançant un URL
 Comment[ca@valencia]=Mostra la incidència especificada mitjançant un URL
+Comment[de]=Zeigt durch URL angegebene Ereignisse an
 Comment[el]=Εμφάνιση περιστατικού από URL
 Comment[en_GB]=Display incidence specified by URL
 Comment[es]=Mostrar la incidencia indicada por URL
