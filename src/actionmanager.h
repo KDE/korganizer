@@ -34,9 +34,11 @@ class ETMViewStateSaver;
 
 class QAction;
 class QMenuBar;
+class QToolBar;
 class KSelectAction;
 class QTemporaryFile;
 class KToggleAction;
+class KHamburgerMenu;
 
 /**
   The ActionManager creates all the actions in KOrganizer. This class
@@ -48,7 +50,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 {
     Q_OBJECT
 public:
-    ActionManager(KXMLGUIClient *client, CalendarView *widget, QObject *parent, KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar = nullptr);
+    ActionManager(KXMLGUIClient *client,
+                  CalendarView *widget,
+                  QObject *parent,
+                  KOrg::MainWindow *mainWindow,
+                  bool isPart,
+                  QMenuBar *menuBar = nullptr,
+                  QToolBar *toolBar = nullptr);
     ~ActionManager() override;
 
     /** Perform initialization that requires this* to be full constructed */
@@ -284,6 +292,7 @@ private:
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions(bool enable);
+    void updateHamburgerMenu();
     Akonadi::ETMCalendar::Ptr calendar() const;
 
     Akonadi::Collection selectedCollection() const;
@@ -343,10 +352,12 @@ private:
     KActionCollection *mACollection = nullptr;
     CalendarView *mCalendarView = nullptr;
     KOrg::MainWindow *mMainWindow = nullptr;
+    QToolBar *mToolBar = nullptr;
     bool mIsPart;
 
     AkonadiCollectionView *mCollectionView = nullptr;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver = nullptr;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver = nullptr;
+    KHamburgerMenu *mHamburgerMenu = nullptr;
 };
 

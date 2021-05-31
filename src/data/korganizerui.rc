@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="435"  translationDomain="korganizer">
+<gui name="korganizer" version="436"  translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
@@ -121,6 +121,8 @@
     <Separator/>
     <Action name="select_day"/>
     <Action name="select_week"/>
+    <Spacer/>
+    <Action name="hamburger_menu"/>
   </ToolBar>
 
   <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>
@@ -143,6 +145,7 @@
   <ToolBar noMerge="1" name="filter_toolbar" hidden="true"><text>Filters Toolbar</text>
     <Action name="filter_select"/>
     <Action name="edit_filters"/>
+
   </ToolBar>
 
   <Menu name="rmb_selection_popup">

@@ -28,6 +28,7 @@
 #include <KSharedConfig>
 #include <KShortcutsDialog>
 #include <KStandardAction>
+#include <KToolBar>
 #include <QLabel>
 #include <QStatusBar>
 #ifdef WITH_KUSERFEEDBACK
@@ -51,7 +52,7 @@ KOrganizer::KOrganizer()
     mCalendarView->setObjectName(QStringLiteral("KOrganizer::CalendarView"));
     setCentralWidget(mCalendarView);
 
-    mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar());
+    mActionManager = new ActionManager(this, mCalendarView, this, this, false, menuBar(), toolBar());
     (void)new KOrganizerIfaceImpl(mActionManager, this, QStringLiteral("IfaceImpl"));
 
 #ifdef WITH_KUSERFEEDBACK

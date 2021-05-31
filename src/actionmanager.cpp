@@ -73,10 +73,17 @@
 #include <QApplication>
 #include <QStandardPaths>
 #include <QTimer>
+#include <QToolBar>
 
 KOWindowList *ActionManager::mWindowList = nullptr;
 
-ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget, QObject *parent, KOrg::MainWindow *mainWindow, bool isPart, QMenuBar *menuBar)
+ActionManager::ActionManager(KXMLGUIClient *client,
+                             CalendarView *widget,
+                             QObject *parent,
+                             KOrg::MainWindow *mainWindow,
+                             bool isPart,
+                             QMenuBar *menuBar,
+                             QToolBar *toolBar)
     : QObject(parent)
 {
     new KOrgCalendarAdaptor(this);
@@ -88,6 +95,7 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget, QObjec
     mIsPart = isPart;
     mMainWindow = mainWindow;
     mMenuBar = menuBar;
+    mToolBar = toolBar;
 }
 
 ActionManager::~ActionManager()
@@ -112,7 +120,7 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
         if (mShowMenuBarAction->isChecked()) {
             mMenuBar->show();
         } else {
-            if (!dontShowWarning) {
+            if (!dontShowWarning && (!mToolBar->isVisible() || !mToolBar->actions().contains(mHamburgerMenu))) {
                 const QString accel = mShowMenuBarAction->shortcut().toString();
                 KMessageBox::information(mCalendarView,
                                          i18n("<qt>This will hide the menu bar completely."
@@ -690,6 +698,25 @@ void ActionManager::initActions()
         KStandardAction::preferences(mCalendarView, &CalendarView::edit_options, mACollection);
         KStandardAction::keyBindings(this, &ActionManager::keyBindings, mACollection);
     }
+    mHamburgerMenu = KStandardAction::hamburgerMenu(nullptr, nullptr, mACollection);
+    mHamburgerMenu->setShowMenuBarAction(mShowMenuBarAction);
+    mHamburgerMenu->setMenuBar(mMenuBar);
+    connect(mHamburgerMenu, &KHamburgerMenu::aboutToShowMenu, this, [this]() {
+        updateHamburgerMenu();
+        // Immediately disconnect. We only need to run this once, but on demand.
+        // NOTE: The nullptr at the end disconnects all connections between
+        // q and mHamburgerMenu's aboutToShowMenu signal.
+        disconnect(mHamburgerMenu, &KHamburgerMenu::aboutToShowMenu, this, nullptr);
+    });
+}
+
+void ActionManager::updateHamburgerMenu()
+{
+    QMenu *menu = new QMenu;
+    menu->addAction(mACollection->action(QLatin1String(KStandardAction::name(KStandardAction::Print))));
+    menu->addSeparator();
+    menu->addAction(mACollection->action(QLatin1String(KStandardAction::name(KStandardAction::Quit))));
+    mHamburgerMenu->setMenu(menu);
 }
 
 void ActionManager::setItems(const QStringList &lst, int idx)
