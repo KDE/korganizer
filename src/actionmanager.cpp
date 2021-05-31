@@ -109,11 +109,11 @@ ActionManager::~ActionManager()
 void ActionManager::toggleMenubar(bool dontShowWarning)
 {
     if (mMenuBar) {
-        if (mHideMenuBarAction->isChecked()) {
+        if (mShowMenuBarAction->isChecked()) {
             mMenuBar->show();
         } else {
             if (!dontShowWarning) {
-                const QString accel = mHideMenuBarAction->shortcut().toString();
+                const QString accel = mShowMenuBarAction->shortcut().toString();
                 KMessageBox::information(mCalendarView,
                                          i18n("<qt>This will hide the menu bar completely."
                                               " You can show it again by typing %1.</qt>",
@@ -123,7 +123,7 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
             }
             mMenuBar->hide();
         }
-        KOPrefs::instance()->setShowMenuBar(mHideMenuBarAction->isChecked());
+        KOPrefs::instance()->setShowMenuBar(mShowMenuBarAction->isChecked());
     }
 }
 
@@ -665,8 +665,8 @@ void ActionManager::initActions()
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    mHideMenuBarAction = KStandardAction::showMenubar(this, &ActionManager::toggleMenubar, mACollection);
-    mHideMenuBarAction->setChecked(KOPrefs::instance()->showMenuBar());
+    mShowMenuBarAction = KStandardAction::showMenubar(this, &ActionManager::toggleMenubar, mACollection);
+    mShowMenuBarAction->setChecked(KOPrefs::instance()->showMenuBar());
     toggleMenubar(true);
 
     action = new QAction(i18n("Configure &Date && Time..."), this);

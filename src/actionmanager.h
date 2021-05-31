@@ -305,7 +305,7 @@ private:
     KToggleAction *mCollectionViewShowAction = nullptr;
     KToggleAction *mEventViewerShowAction = nullptr;
 
-    KToggleAction *mHideMenuBarAction = nullptr;
+    KToggleAction *mShowMenuBarAction = nullptr;
 
     QAction *mImportAction = nullptr;
 
