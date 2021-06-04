@@ -335,7 +335,7 @@ install(FILES
     )
 
 install(FILES
-    korganizer_part.desktop data/webcal.protocol
+    korganizer_part.desktop
     DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
     )
 
