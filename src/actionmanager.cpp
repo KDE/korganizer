@@ -698,16 +698,18 @@ void ActionManager::initActions()
         KStandardAction::preferences(mCalendarView, &CalendarView::edit_options, mACollection);
         KStandardAction::keyBindings(this, &ActionManager::keyBindings, mACollection);
     }
-    mHamburgerMenu = KStandardAction::hamburgerMenu(nullptr, nullptr, mACollection);
-    mHamburgerMenu->setShowMenuBarAction(mShowMenuBarAction);
-    mHamburgerMenu->setMenuBar(mMenuBar);
-    connect(mHamburgerMenu, &KHamburgerMenu::aboutToShowMenu, this, [this]() {
-        updateHamburgerMenu();
-        // Immediately disconnect. We only need to run this once, but on demand.
-        // NOTE: The nullptr at the end disconnects all connections between
-        // q and mHamburgerMenu's aboutToShowMenu signal.
-        disconnect(mHamburgerMenu, &KHamburgerMenu::aboutToShowMenu, this, nullptr);
-    });
+    if (mMenuBar) {
+        mHamburgerMenu = KStandardAction::hamburgerMenu(nullptr, nullptr, mACollection);
+        mHamburgerMenu->setShowMenuBarAction(mShowMenuBarAction);
+        mHamburgerMenu->setMenuBar(mMenuBar);
+        connect(mHamburgerMenu, &KHamburgerMenu::aboutToShowMenu, this, [this]() {
+            updateHamburgerMenu();
+            // Immediately disconnect. We only need to run this once, but on demand.
+            // NOTE: The nullptr at the end disconnects all connections between
+            // q and mHamburgerMenu's aboutToShowMenu signal.
+            disconnect(mHamburgerMenu, &KHamburgerMenu::aboutToShowMenu, this, nullptr);
+        });
+    }
 }
 
 void ActionManager::updateHamburgerMenu()
