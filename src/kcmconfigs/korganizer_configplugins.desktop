@@ -11,7 +11,7 @@ X-KDE-ParentApp=korganizer
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=700
-X-DocPath=korganizer/index.html#plugins-chapter
+X-DocPath=korganizer/plugins-chapter.html
 
 Name=Plugins
 Name[af]=Inprop modules
