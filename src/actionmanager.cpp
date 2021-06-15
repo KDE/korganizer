@@ -715,6 +715,9 @@ void ActionManager::initActions()
 void ActionManager::updateHamburgerMenu()
 {
     QMenu *menu = new QMenu;
+
+    menu->addAction(mACollection->action(QStringLiteral("conf_datetime")));
+    menu->addSeparator();
     menu->addAction(mACollection->action(QLatin1String(KStandardAction::name(KStandardAction::Print))));
     menu->addSeparator();
     menu->addAction(mACollection->action(QLatin1String(KStandardAction::name(KStandardAction::Quit))));
