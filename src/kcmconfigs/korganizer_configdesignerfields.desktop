@@ -11,7 +11,6 @@ X-KDE-ParentApp=kcontactmanager
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=800
-X-DocPath=korganizer/config.html
 
 Name=Custom Pages
 Name[af]=Pasmaak Blaaie
