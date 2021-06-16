@@ -81,47 +81,47 @@ target_link_libraries(korganizer_kcm_static
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configcolorsandfonts.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configcolorsandfonts korganizer_kcm_static)
-install(TARGETS korganizer_configcolorsandfonts DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configcolorsandfonts DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configdesignerfields MODULE prefs/koprefsdesignerfields.cpp kcmdesignerfields.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configdesignerfields.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configdesignerfields korganizer_kcm_static)
-install(TARGETS korganizer_configdesignerfields DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configdesignerfields DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configfreebusy MODULE prefs/koprefsdialoggroupwarescheduling.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configfreebusy.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configfreebusy korganizer_kcm_static)
-install(TARGETS korganizer_configfreebusy DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configfreebusy DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configgroupscheduling MODULE prefs/koprefsdialogmain.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configgroupscheduling.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configgroupscheduling korganizer_kcm_static)
-install(TARGETS korganizer_configgroupscheduling DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configgroupscheduling DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configmain MODULE prefs/koprefsdialoggroupscheduling.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configmain.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configmain korganizer_kcm_static)
-install(TARGETS korganizer_configmain DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configmain DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configplugins MODULE prefs/koprefsdialogplugins.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configplugins.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configplugins korganizer_kcm_static)
-install(TARGETS korganizer_configplugins DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configplugins DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configtime MODULE prefs/koprefsdialogtime.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configtime.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configtime korganizer_kcm_static)
-install(TARGETS korganizer_configtime DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configtime DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_configviews MODULE prefs/koprefsdialogviews.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configviews.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configviews korganizer_kcm_static)
-install(TARGETS korganizer_configviews DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_configviews DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 add_library(korganizer_userfeedback MODULE prefs/koprefsuserfeedback.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_userfeedback.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_userfeedback korganizer_kcm_static ${korganizer_userfeedback_LIB})
-install(TARGETS korganizer_userfeedback DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS korganizer_userfeedback DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 ########### next target ###############
 
