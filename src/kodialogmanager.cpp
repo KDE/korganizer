@@ -26,7 +26,11 @@
 
 #include <KCalendarCore/Visitor>
 
+#include <kcmutils_version.h>
+
 #include <KCMultiDialog>
+#include <KPluginLoader>
+#include <KPluginMetaData>
 #include <QPushButton>
 
 using namespace KOrg;
@@ -73,23 +77,13 @@ void KODialogManager::showOptionsDialog()
                 qOverload<const QByteArray &>(&KCMultiDialog::configCommitted),
                 mMainView,
                 qOverload<const QByteArray &>(&CalendarView::updateConfig));
-        QStringList modules;
-
-        modules.append(QStringLiteral("korganizer_configmain.desktop"));
-        modules.append(QStringLiteral("korganizer_configtime.desktop"));
-        modules.append(QStringLiteral("korganizer_configviews.desktop"));
-        modules.append(QStringLiteral("korganizer_configcolorsandfonts.desktop"));
-        modules.append(QStringLiteral("korganizer_configgroupscheduling.desktop"));
-        modules.append(QStringLiteral("korganizer_configfreebusy.desktop"));
-        modules.append(QStringLiteral("korganizer_configplugins.desktop"));
-        modules.append(QStringLiteral("korganizer_configdesignerfields.desktop"));
-#ifdef WITH_KUSERFEEDBACK
-        modules.append(QStringLiteral("korganizer_userfeedback.desktop"));
+        const QVector<KPluginMetaData> availablePlugins = KPluginLoader::findPlugins(QStringLiteral("pim/kcms/korganizer"));
+        for (const KPluginMetaData &metaData : availablePlugins) {
+#if KCMUTILS_VERSION >= QT_VERSION_CHECK(5, 84, 0)
+            mOptionsDialog->addModule(metaData);
+#else
+            mOptionsDialog->addModule(metaData.pluginId());
 #endif
-        // add them all
-        const QStringList::iterator mitEnd(modules.end());
-        for (QStringList::iterator mit = modules.begin(); mit != mitEnd; ++mit) {
-            mOptionsDialog->addModule(*mit);
         }
     }
 
