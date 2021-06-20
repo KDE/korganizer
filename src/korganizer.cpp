@@ -174,7 +174,7 @@ void KOrganizer::initActions()
 
 void KOrganizer::slotEditKeys()
 {
-    KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
+    KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, true /*isModal*/);
 }
 
 bool KOrganizer::queryClose()
