@@ -28,18 +28,18 @@ kcoreaddons_desktop_to_json(kontact_specialdatesplugin specialdatesplugin.deskto
 
 ########### next target ###############
 
-set(kcm_sdsummary_PART_SRCS kcmsdsummary.cpp)
+set(kcmsdsummary_PART_SRCS kcmsdsummary.cpp)
 
-ki18n_wrap_ui(kcm_sdsummary_PART_SRCS sdsummaryconfig_base.ui)
+ki18n_wrap_ui(kcmsdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
-add_library(kcm_sdsummary MODULE ${kcm_sdsummary_PART_SRCS})
-kcoreaddons_desktop_to_json(kcm_sdsummary "kcmsdsummary.desktop" SERVICE_TYPES kcmodule.desktop)
-target_link_libraries(kcm_sdsummary Qt::Widgets KF5::KCMUtils KF5::I18n)
+add_library(kcmsdsummary MODULE ${kcmsdsummary_PART_SRCS})
+kcoreaddons_desktop_to_json(kcmsdsummary "kcmsdsummary.desktop" SERVICE_TYPES kcmodule.desktop)
+target_link_libraries(kcmsdsummary Qt::Widgets KF5::KCMUtils KF5::I18n)
 
 ########### install files ###############
 
 install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact5)
-install(TARGETS kcm_sdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS kcmsdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/summary)
 
 install(FILES specialdatesplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/kontact)
 install(FILES kcmsdsummary.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
