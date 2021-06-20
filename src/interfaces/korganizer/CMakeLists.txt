@@ -22,7 +22,7 @@ set_target_properties(korganizer_interfaces PROPERTIES
 )
 
 install(TARGETS
-  korganizer_interfaces ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+  korganizer_interfaces ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}  LIBRARY NAMELINK_SKIP
 )
 
 install(FILES korganizerpart.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
