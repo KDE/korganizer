@@ -700,9 +700,4 @@ void SDSummaryWidget::dateDiff(const QDate &date, int &days, int &years) const
     }
 }
 
-QStringList SDSummaryWidget::configModules() const
-{
-    return QStringList() << QStringLiteral("kcmsdsummary.desktop");
-}
-
 #include "sdsummarywidget.moc"

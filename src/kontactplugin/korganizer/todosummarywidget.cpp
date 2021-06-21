@@ -361,11 +361,6 @@ bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
     return KontactInterface::Summary::eventFilter(obj, e);
 }
 
-QStringList TodoSummaryWidget::configModules() const
-{
-    return QStringList() << QStringLiteral("kcmtodosummary.desktop");
-}
-
 bool TodoSummaryWidget::startsToday(const KCalendarCore::Todo::Ptr &todo)
 {
     return todo->hasStartDate() && todo->dtStart().date() == QDate::currentDate();

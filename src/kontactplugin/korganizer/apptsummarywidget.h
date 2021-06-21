@@ -37,7 +37,6 @@ public:
         return 3;
     }
 
-    Q_REQUIRED_RESULT QStringList configModules() const override;
     void configUpdated();
     void updateSummary(bool force = false) override
     {

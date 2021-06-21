@@ -270,8 +270,3 @@ bool ApptSummaryWidget::eventFilter(QObject *obj, QEvent *e)
 
     return KontactInterface::Summary::eventFilter(obj, e);
 }
-
-QStringList ApptSummaryWidget::configModules() const
-{
-    return QStringList() << QStringLiteral("kcmapptsummary.desktop");
-}

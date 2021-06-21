@@ -39,8 +39,6 @@ public:
         return 3;
     }
 
-    Q_REQUIRED_RESULT QStringList configModules() const override;
-
 public Q_SLOTS:
     void updateSummary(bool force = false) override
     {
