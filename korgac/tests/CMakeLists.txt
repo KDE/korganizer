@@ -8,12 +8,8 @@ include_directories(
 set(korganizer_xml ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
 ########### next target ###############
+add_executable(testalarmdlg)
 
-set(testalarmdlg_SRCS
-    testalarmdlg.cpp
-    ../alarmdialog.cpp
-    ../mailclient.cpp
-    ${korganizer_BINARY_DIR}/korgac/koalarmclient_debug.cpp)
 
 qt_add_dbus_interface(testalarmdlg_SRCS ${korganizer_xml}
     korganizer_interface
@@ -22,7 +18,12 @@ qt_add_dbus_interface(testalarmdlg_SRCS ${korganizer_xml}
 qt_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.Notifications.xml notifications_interface)
 qt_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.DBus.Properties.xml dbusproperties)
 
-add_executable(testalarmdlg ${testalarmdlg_SRCS})
+target_sources(testalarmdlg PRIVATE
+    testalarmdlg.cpp
+    ../alarmdialog.cpp
+    ../mailclient.cpp
+     ${testalarmdlg_SRCS}
+    ${korganizer_BINARY_DIR}/korgac/koalarmclient_debug.cpp)
 
 target_link_libraries(testalarmdlg
     KF5::AkonadiCalendar

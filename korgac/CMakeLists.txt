@@ -8,24 +8,14 @@ if(BUILD_TESTING)
 endif()
 
 ########### next target ###############
+add_executable(korgac)
 
-set(korgac_SRCS
-    koalarmclient.cpp
-    )
-ecm_qt_declare_logging_category(korgac_SRCS HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME org.kde.pim.koalarmclient
+ecm_qt_declare_logging_category(korgac HEADER koalarmclient_debug.h IDENTIFIER KOALARMCLIENT_LOG CATEGORY_NAME org.kde.pim.koalarmclient
         DESCRIPTION "korganizer (koalarmclient)"
         OLD_CATEGORY_NAMES log_koalarmclient
         EXPORT KORGANIZER
     )
 
-set(korgac_SRCS ${korgac_SRCS} korgacmain.cpp)
-
-set(korgac_SRCS
-    ${korgac_SRCS}
-    alarmdialog.cpp
-    alarmdockwindow.cpp
-    mailclient.cpp
-    )
 
 set(korganizer_xml ../src/data/org.kde.korganizer.Korganizer.xml)
 
@@ -42,8 +32,15 @@ qt_add_dbus_interface(korgac_SRCS org.freedesktop.DBus.Properties.xml dbusproper
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korgac.png")
 ecm_add_app_icon(korgac_SRCS ICONS ${ICONS_SRCS})
+target_sources(korgac PRIVATE
+    korgacmain.cpp
+    alarmdialog.cpp
+    alarmdockwindow.cpp
+    mailclient.cpp
+    koalarmclient.cpp
+    ${korgac_SRCS}
+    )
 
-add_executable(korgac ${korgac_SRCS})
 if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(korgac PROPERTIES UNITY_BUILD ON)
 endif()
