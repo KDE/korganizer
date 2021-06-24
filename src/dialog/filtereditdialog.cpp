@@ -287,7 +287,7 @@ bool FilterEdit::correctName(const QString &newText)
     QString styleSheet;
     if (mNegativeBackground.isEmpty()) {
         const KStatefulBrush bgBrush = KStatefulBrush(KColorScheme::View, KColorScheme::NegativeBackground);
-        mNegativeBackground = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit).color().name());
+        mNegativeBackground = QStringLiteral("QLineEdit{ background-color:%1 }").arg(bgBrush.brush(mNameLineEdit->palette()).color().name());
     }
     if (!newText.isEmpty()) {
         const int val = mRulesList->count();
