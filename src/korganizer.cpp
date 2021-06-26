@@ -178,7 +178,7 @@ void KOrganizer::slotEditKeys()
 #if KXMLGUI_VERSION < QT_VERSION_CHECK(5,84,0)
     KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
 #else
-    KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, true /*isModal*/);
+    KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
 #endif
 }
 
