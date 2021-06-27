@@ -14,6 +14,8 @@ X-KDE-PluginInfo-Name=kontact_korganizerplugin
 X-KDE-PluginInfo-Version=0.1
 X-KDE-PluginInfo-License=GPL
 X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-ConfigModuleNamespace=pim/kcms/korganizer/
+X-KDE-Weight=400
 
 Comment=Kontact KOrganizer Plugin
 Comment[af]=Kontact KOrganizer inprop module

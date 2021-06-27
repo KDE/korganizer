@@ -15,7 +15,7 @@ add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS
 
 target_link_libraries(kontact_korganizerplugin KF5::AkonadiCalendar KF5::CalendarUtils KF5::Contacts KF5::CalendarCore KF5::KontactInterface korganizerprivate KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem KF5::I18n)
 
-kcoreaddons_desktop_to_json(kontact_korganizerplugin korganizerplugin.desktop)
+kcoreaddons_desktop_to_json(kontact_korganizerplugin korganizerplugin.desktop SERVICE_TYPES kcmodule.desktop)
 
 ########### next target ###############
 
