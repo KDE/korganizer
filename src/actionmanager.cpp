@@ -271,11 +271,11 @@ void ActionManager::initActions()
     /** Archive Action **/
     // TODO: Icon
     action = new QAction(i18n("Archive O&ld Incidences..."), this);
-    action->setStatusTip(i18nc("@info:status", "Archive incidences to file"));
-    action->setToolTip(i18nc("@info:tooltip", "Archive old incidences to an iCalendar file"));
+    action->setStatusTip(i18nc("@info:status", "Archive events and to-dos to a file"));
+    action->setToolTip(i18nc("@info:tooltip", "Archive old events and to-dos to an iCalendar file"));
     action->setWhatsThis(i18nc("@info:whatsthis",
                                "This menu entry opens a dialog that allows you to select old events and to-dos "
-                               "that you can archive into an iCalendar file.  The archived incidences will "
+                               "that you can archive into an iCalendar file.  They will "
                                "be removed from your existing calendar collection."));
     mACollection->addAction(QStringLiteral("file_archive"), action);
     connect(action, &QAction::triggered, this, &ActionManager::file_archive);

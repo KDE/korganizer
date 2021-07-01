@@ -555,7 +555,7 @@ items, follow the procedure below:</para>
 
 <procedure>
 <step><para>Choose the <menuchoice><guimenu>File</guimenu><guimenuitem>Archive
-Old Entries...</guimenuitem></menuchoice> menu item.</para></step>
+Old Incidences...</guimenuitem></menuchoice> menu item.</para></step>
 <step><para>Fill in the date in <guilabel>Archive now items older than</guilabel> field or
 use the Calendar Widget to choose the date. Alternatively, you can automatically
 archive all items older than a certain period of time.</para></step>
@@ -2893,7 +2893,7 @@ special events, &etc;</para>
 <varlistentry id="menu-file-archive-old">
 <term><menuchoice>
 <guimenu>File</guimenu>
-<guimenuitem>Archive Old Entries...</guimenuitem>
+<guimenuitem>Archive Old Incidences...</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>From time to time you should delete your old
 events.</action></para>
