@@ -479,7 +479,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardActionManager::SynchronizeResources << Akonadi::StandardActionManager::SynchronizeCollectionTree
                         << Akonadi::StandardActionManager::CopyCollectionToMenu << Akonadi::StandardActionManager::MoveCollectionToMenu;
 
-        for (Akonadi::StandardActionManager::Type standardAction : qAsConst(standardActions)) {
+        for (Akonadi::StandardActionManager::Type standardAction : std::as_const(standardActions)) {
             mActionManager->createAction(standardAction);
         }
 
@@ -488,7 +488,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
                         << Akonadi::StandardCalendarActionManager::CreateSubTodo << Akonadi::StandardCalendarActionManager::CreateJournal
                         << Akonadi::StandardCalendarActionManager::EditIncidence;
 
-        for (Akonadi::StandardCalendarActionManager::Type calendarAction : qAsConst(calendarActions)) {
+        for (Akonadi::StandardCalendarActionManager::Type calendarAction : std::as_const(calendarActions)) {
             mActionManager->createAction(calendarAction);
         }
 

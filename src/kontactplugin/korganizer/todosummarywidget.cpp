@@ -155,7 +155,7 @@ void TodoSummaryWidget::updateView()
 
         QString str;
 
-        for (const KCalendarCore::Todo::Ptr &todo : qAsConst(prList)) {
+        for (const KCalendarCore::Todo::Ptr &todo : std::as_const(prList)) {
             bool makeBold = false;
             int daysTo = -1;
 
@@ -278,7 +278,7 @@ void TodoSummaryWidget::updateView()
         mLabels.append(noTodos);
     }
 
-    for (QLabel *label : qAsConst(mLabels)) {
+    for (QLabel *label : std::as_const(mLabels)) {
         label->show();
     }
 }

@@ -73,7 +73,7 @@ void DateNavigatorContainer::setCalendar(const Akonadi::ETMCalendar::Ptr &calend
 {
     mCalendar = calendar;
     mNavigatorView->setCalendar(calendar);
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->setCalendar(calendar);
         }
@@ -86,7 +86,7 @@ void DateNavigatorContainer::setCalendar(const Akonadi::ETMCalendar::Ptr &calend
 void DateNavigatorContainer::updateDayMatrix()
 {
     mNavigatorView->updateDayMatrix();
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->updateDayMatrix();
         }
@@ -96,7 +96,7 @@ void DateNavigatorContainer::updateDayMatrix()
 void DateNavigatorContainer::updateToday()
 {
     mNavigatorView->updateToday();
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->updateToday();
         }
@@ -106,7 +106,7 @@ void DateNavigatorContainer::updateToday()
 void DateNavigatorContainer::setUpdateNeeded()
 {
     mNavigatorView->setUpdateNeeded();
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->setUpdateNeeded();
         }
@@ -116,7 +116,7 @@ void DateNavigatorContainer::setUpdateNeeded()
 void DateNavigatorContainer::updateView()
 {
     mNavigatorView->updateView();
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->setUpdateNeeded();
         }
@@ -126,7 +126,7 @@ void DateNavigatorContainer::updateView()
 void DateNavigatorContainer::updateConfig()
 {
     mNavigatorView->updateConfig();
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->updateConfig();
         }
@@ -165,7 +165,7 @@ void DateNavigatorContainer::selectDates(const KCalendarCore::DateList &dateList
 
         if (!mIgnoreNavigatorUpdates) {
             mNavigatorView->selectDates(dateList);
-            for (KDateNavigator *n : qAsConst(mExtraViews)) {
+            for (KDateNavigator *n : std::as_const(mExtraViews)) {
                 if (n) {
                     n->selectDates(dateList);
                 }
@@ -181,7 +181,7 @@ void DateNavigatorContainer::setBaseDates(const QDate &start)
         mNavigatorView->setBaseDate(baseDate);
     }
 
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         baseDate = baseDate.addMonths(1);
         if (!mIgnoreNavigatorUpdates) {
             n->setBaseDate(baseDate);
@@ -234,7 +234,7 @@ void DateNavigatorContainer::resizeAllContents()
         if (!dates.isEmpty()) {
             setBaseDates(dates.first());
             selectDates(dates);
-            for (KDateNavigator *n : qAsConst(mExtraViews)) {
+            for (KDateNavigator *n : std::as_const(mExtraViews)) {
                 if (n) {
                     n->show();
                 }
@@ -286,7 +286,7 @@ void DateNavigatorContainer::setHighlightMode(bool highlightEvents, bool highlig
 {
     mNavigatorView->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
 
-    for (KDateNavigator *n : qAsConst(mExtraViews)) {
+    for (KDateNavigator *n : std::as_const(mExtraViews)) {
         if (n) {
             n->setHighlightMode(highlightEvents, highlightTodos, highlightJournals);
         }
@@ -371,7 +371,7 @@ KDateNavigator *DateNavigatorContainer::firstNavigatorForDate(const QDate &date)
             // The date is in the first navigator
             navigator = mNavigatorView;
         } else {
-            for (KDateNavigator *nav : qAsConst(mExtraViews)) {
+            for (KDateNavigator *nav : std::as_const(mExtraViews)) {
                 if (nav) {
                     limits = KODayMatrix::matrixLimits(nav->month());
                     if (date >= limits.first && date <= limits.second) {

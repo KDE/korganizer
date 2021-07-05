@@ -1340,7 +1340,7 @@ void ActionManager::keyBindings()
         dlg.addCollection(mMainWindow->getActionCollection());
     }
 
-    for (KOrg::Part *part : qAsConst(mParts)) {
+    for (KOrg::Part *part : std::as_const(mParts)) {
         if (part) {
             dlg.addCollection(part->actionCollection(), part->shortInfo());
         }

@@ -237,7 +237,7 @@ void SDSummaryWidget::createLabels()
     // Remove all special date labels from the layout and delete them, as we
     // will re-create all labels below.
     setUpdatesEnabled(false);
-    for (QLabel *label : qAsConst(mLabels)) {
+    for (QLabel *label : std::as_const(mLabels)) {
         mLayout->removeWidget(label);
         delete (label);
         update();

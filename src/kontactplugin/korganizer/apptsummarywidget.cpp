@@ -213,7 +213,7 @@ void ApptSummaryWidget::updateView()
         mLabels.append(noEvents);
     }
 
-    for (QLabel *label : qAsConst(mLabels)) {
+    for (QLabel *label : std::as_const(mLabels)) {
         label->show();
     }
 }

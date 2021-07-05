@@ -48,7 +48,7 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
         return holidaysByDate;
     }
 
-    for (const KHolidays::HolidayRegion *region : qAsConst(mHolidayRegions)) {
+    for (const KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
         if (region && region->isValid()) {
             const KHolidays::Holiday::List list = region->holidays(start, end);
             const int listCount(list.count());
@@ -85,7 +85,7 @@ QList<QDate> KOGlobals::workDays(QDate startDate, QDate endDate) const
     }
 
     if (KOPrefs::instance()->mExcludeHolidays) {
-        for (const KHolidays::HolidayRegion *region : qAsConst(mHolidayRegions)) {
+        for (const KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
             const KHolidays::Holiday::List list = region->holidays(startDate, endDate);
             for (int i = 0; i < list.count(); ++i) {
                 const KHolidays::Holiday &h = list.at(i);

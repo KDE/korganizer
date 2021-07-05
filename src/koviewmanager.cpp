@@ -127,7 +127,7 @@ void KOViewManager::writeSettings(KConfig *config)
     }
 
     // write out custom view configuration
-    for (KOrg::BaseView *const view : qAsConst(mViews)) {
+    for (KOrg::BaseView *const view : std::as_const(mViews)) {
         KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
         view->saveConfig(group);
     }
@@ -589,7 +589,7 @@ void KOViewManager::currentAgendaViewTabChanged(int index)
 
 void KOViewManager::addChange(EventViews::EventView::Change change)
 {
-    for (BaseView *view : qAsConst(mViews)) {
+    for (BaseView *view : std::as_const(mViews)) {
         if (view) {
             view->setChanges(view->changes() | change);
         }

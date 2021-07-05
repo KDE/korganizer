@@ -479,7 +479,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
     }
 
     filterList.reserve(mFilters.count());
-    for (KCalendarCore::CalFilter *filter : qAsConst(mFilters)) {
+    for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
         filterList << filter->name();
         KConfigGroup filterConfig(config, QStringLiteral("Filter_") + filter->name());
         filterConfig.writeEntry("Criteria", filter->criteria());
@@ -1838,7 +1838,7 @@ void CalendarView::updateFilter()
     }
 
     filters << i18n("No filter");
-    for (KCalendarCore::CalFilter *filter : qAsConst(mFilters)) {
+    for (KCalendarCore::CalFilter *filter : std::as_const(mFilters)) {
         if (filter) {
             filters << filter->name();
         }

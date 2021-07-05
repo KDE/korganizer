@@ -271,7 +271,7 @@ void FilterEdit::updateSelectedName(const QString &newText)
     }
     bool allOk = true;
 
-    for (KCalendarCore::CalFilter *i : qAsConst(*mFilters)) {
+    for (KCalendarCore::CalFilter *i : std::as_const(*mFilters)) {
         if (i && i->name().isEmpty()) {
             allOk = false;
         }

@@ -210,7 +210,7 @@ void KOPrefsDialogColorsAndFonts::usrReadConfig()
 
 void KOPrefsDialogColorsAndFonts::useSystemColorToggle(bool useSystemColor)
 {
-    for (KColorButton *colorButton : qAsConst(mButtonsDisable)) {
+    for (KColorButton *colorButton : std::as_const(mButtonsDisable)) {
         if (useSystemColor) {
             colorButton->setEnabled(false);
         } else {

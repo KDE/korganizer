@@ -157,7 +157,7 @@ void KOEventView::focusChanged(QWidget *, QWidget *now)
 void KOEventView::finishTypeAhead()
 {
     if (mTypeAheadReceiver) {
-        for (QEvent *e : qAsConst(mTypeAheadEvents)) {
+        for (QEvent *e : std::as_const(mTypeAheadEvents)) {
             QApplication::sendEvent(mTypeAheadReceiver, e);
         }
     }

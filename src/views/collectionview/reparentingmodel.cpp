@@ -120,7 +120,7 @@ int ReparentingModel::Node::row() const
 {
     Q_ASSERT(parent);
     int row = 0;
-    for (const Node::Ptr &node : qAsConst(parent->children)) {
+    for (const Node::Ptr &node : std::as_const(parent->children)) {
         if (node.data() == this) {
             return row;
         }
@@ -180,7 +180,7 @@ bool ReparentingModel::validateNode(const Node *node) const
         }
 
         bool found = false;
-        for (const Node::Ptr &child : qAsConst(n->parent->children)) {
+        for (const Node::Ptr &child : std::as_const(n->parent->children)) {
             if (child.data() == n) {
                 found = true;
             }
@@ -219,7 +219,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     // otherwise we run into the problem that while a node is being removed,
     // the async request could be triggered (due to a changed signal),
     // resulting in the node getting readded immediately after it had been removed.
-    for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
+    for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";
             return;
@@ -232,7 +232,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
 
 void ReparentingModel::doAddNode(const Node::Ptr &node)
 {
-    for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
+    for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";
             return;
@@ -267,7 +267,7 @@ void ReparentingModel::doAddNode(const Node::Ptr &node)
 
 void ReparentingModel::updateNode(const ReparentingModel::Node::Ptr &node)
 {
-    for (const ReparentingModel::Node::Ptr &existing : qAsConst(mProxyNodes)) {
+    for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
         if (*existing == *node) {
             existing->update(node);
             const QModelIndex i = index(existing.data());
@@ -360,7 +360,7 @@ void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, 
 
 ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
 {
-    for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
+    for (const Node::Ptr &proxyNode : std::as_const(mProxyNodes)) {
         // Reparent source nodes according to the provided rules
         // The proxy can be ignored if it is a duplicate, so only reparent to proxies that are in the model
         if (proxyNode->parent && proxyNode->adopts(sourceIndex)) {
@@ -415,7 +415,7 @@ void ReparentingModel::removeDuplicates(const QModelIndex &sourceIndex)
 {
     const QModelIndexList list = QModelIndexList() << sourceIndex << descendants(sourceIndex);
     for (const QModelIndex &descendant : list) {
-        for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
+        for (const Node::Ptr &proxyNode : std::as_const(mProxyNodes)) {
             if (proxyNode->isDuplicateOf(descendant)) {
                 // Removenode from proxy
                 if (!proxyNode->parent) {
@@ -637,7 +637,7 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
 
 ReparentingModel::Node *ReparentingModel::getSourceNode(const QModelIndex &sourceIndex) const
 {
-    for (Node *n : qAsConst(mSourceNodes)) {
+    for (Node *n : std::as_const(mSourceNodes)) {
         if (n->sourceIndex == sourceIndex) {
             return n;
         }
@@ -679,7 +679,7 @@ void ReparentingModel::rebuildFromSource(Node *parentNode, const QModelIndex &so
 
 bool ReparentingModel::isDuplicate(const Node::Ptr &proxyNode) const
 {
-    for (const Node *n : qAsConst(mSourceNodes)) {
+    for (const Node *n : std::as_const(mSourceNodes)) {
         // qCDebug(KORGANIZER_LOG) << index << index.data().toString();
         if (proxyNode->isDuplicateOf(n->sourceIndex)) {
             return true;
@@ -699,7 +699,7 @@ void ReparentingModel::insertProxyNode(const Node::Ptr &proxyNode)
 void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
 {
     // Reparent source nodes according to the provided rules
-    for (Node *n : qAsConst(mSourceNodes)) {
+    for (Node *n : std::as_const(mSourceNodes)) {
         if (proxyNode->adopts(n->sourceIndex)) {
             // qCDebug(KORGANIZER_LOG) << "reparenting" << n->data(Qt::DisplayRole).toString() << "from" << n->parent->data(Qt::DisplayRole).toString()
             //         << "to" << proxyNode->data(Qt::DisplayRole).toString();
@@ -724,13 +724,13 @@ void ReparentingModel::reparentSourceNodes(const Node::Ptr &proxyNode)
 void ReparentingModel::rebuildAll()
 {
     mRootNode.children.clear();
-    for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
+    for (const Node::Ptr &proxyNode : std::as_const(mProxyNodes)) {
         proxyNode->clearHierarchy();
     }
     Q_ASSERT(mSourceNodes.isEmpty());
     mSourceNodes.clear();
     rebuildFromSource(&mRootNode, QModelIndex());
-    for (const Node::Ptr &proxyNode : qAsConst(mProxyNodes)) {
+    for (const Node::Ptr &proxyNode : std::as_const(mProxyNodes)) {
         // qCDebug(KORGANIZER_LOG) << "checking " << proxyNode->data(Qt::DisplayRole).toString();
         // Avoid inserting a node that is already part of the source model
         if (isDuplicate(proxyNode)) {
@@ -789,7 +789,7 @@ int ReparentingModel::row(ReparentingModel::Node *node) const
     }
     Q_ASSERT(validateNode(node));
     int row = 0;
-    for (const Node::Ptr &c : qAsConst(node->parent->children)) {
+    for (const Node::Ptr &c : std::as_const(node->parent->children)) {
         if (c.data() == node) {
             return row;
         }
