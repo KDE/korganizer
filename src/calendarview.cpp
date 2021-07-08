@@ -1338,8 +1338,12 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
 
     if (todo->isCompleted()) {
         todo->setPercentComplete(0);
+        todo->setCompleted(false);
+        todo->setStatus(KCalendarCore::Incidence::StatusNone);
     } else {
+        todo->setPercentComplete(0);
         todo->setCompleted(QDateTime::currentDateTime());
+        todo->setStatus(KCalendarCore::Incidence::StatusCompleted);
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
