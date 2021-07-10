@@ -214,7 +214,7 @@ This will bring up the <link linkend="agenda-view"><guilabel>Agenda View</guilab
 
 <step><para>Select the text area beside the desired
 hour in the main panel that reflects the time of the event. Double click
-this area, or just start typing the title of the event to open the
+this area, or just start typing a summary of the event to open the
 <guilabel>New Event</guilabel> dialog.</para></step>
 
 <step><para><link linkend="entering-data-events">Enter event details</link>.
@@ -259,7 +259,7 @@ view</link>.</para></step>
 <step><para>Select the <menuchoice><guimenu>Actions</guimenu>
 <guimenuitem>New Journal</guimenuitem></menuchoice> menu item.</para></step>
 
-<step><para>Enter journal entry title and text.</para></step>
+<step><para>Enter journal entry summary and text.</para></step>
 
 </procedure>
 
@@ -776,11 +776,11 @@ up-pointing arrow at the top.</para>
 <listitem><para>Double-click any
 open region of time, and &korganizer; will automatically create an event with
 default duration (which is customizable in the preferences dialog).
-You can immediately add the title. The events <quote>snap</quote> to
+You can immediately add the summary. The events <quote>snap</quote> to
 half-hour increments, rounding off to the closest half hour from where you
 clicked.</para></listitem>
 <listitem><para>Select any open region of time, and double click it or start
-writing the title of the event.  &korganizer; will automatically set the
+writing the summary of the event.  &korganizer; will automatically set the
 duration and start time as defined by the selection area in the Agenda
 view.</para></listitem>
 </itemizedlist>
@@ -981,8 +981,7 @@ panel if you press the <inlinemediaobject><imageobject>
 entry will be created. If you want to edit a journal entry, just click the
 text box and edit it! To remove a journal entry, press the <inlinemediaobject>
 <imageobject><imagedata fileref="edit-delete.png" format="PNG"/>
-</imageobject></inlinemediaobject>delete button next to the
-<guilabel>Title</guilabel> of the journal entry.</para>
+</imageobject></inlinemediaobject>delete button in the Journal view.</para>
 
 </sect2>
 
@@ -1056,8 +1055,8 @@ as you can easily create filters based on tags.</para>
 <para>Choose the <menuchoice><guimenu>Edit</guimenu>
 <guimenuitem>Find</guimenuitem></menuchoice> menu item
 or press the <keycombo action="simul">&Ctrl;<keycap>F</keycap>
-</keycombo> shortcut to find items (events, to-dos or journal
-entries) according to title, description, and/or tags.
+</keycombo> shortcut to find events, to-dos, or journal
+entries by their to summaries, descriptions, and/or tags.
 The find action will only search the specified fields.</para>
 
 <tip><para>You can use wildcards if you do not remember the exact summary. If
@@ -1097,7 +1096,7 @@ holidays.</para>
 <para>Entering a new event is very easy. Just choose the
 <menuchoice><guimenu>Actions</guimenu><guimenuitem>New
 Event...</guimenuitem></menuchoice> menu item. A window with
-five tabs at the bottom will appear.</para>
+six tabs at the bottom will appear.</para>
 
 <para>If you wish you can use a different way to create a new event:</para>
 
@@ -1138,9 +1137,9 @@ in the <link linkend="examples-entering-event">Entering event</link> section.
 
 <variablelist>
 <varlistentry>
-<term><guilabel>Title:</guilabel></term>
-<listitem><para>Enter short description of the event into the
-<guilabel>Title</guilabel> field.  This description is the text shown
+<term><guilabel>Summary:</guilabel></term>
+<listitem><para>Enter a short description of the event into the
+<guilabel>Summary</guilabel> field.  This description is the text shown
 on the &korganizer; main panel.</para></listitem>
 </varlistentry>
 
@@ -1596,9 +1595,10 @@ to priority five (medium).</para></listitem>
 empty when entering events and to-dos:</para>
 
 <itemizedlist>
-<listitem><para>In the <guilabel>General</guilabel> Tab, you should at least
-fill the <guilabel>Title</guilabel> field and the description (the large
-rectangle), even though neither is mandatory. If you set a <guilabel>Reminder</guilabel>,
+<listitem><para>You must fill in the <guilabel>Summary</guilabel> field.</para></listitem>
+<listitem><para>The <guilabel>General</guilabel> Tab may be left completely
+empty.</para></listitem>
+<listitem><para>If you set a <guilabel>Reminder</guilabel>,
 you should also specify the time, and
 either the sound to be played or the program to be run.</para></listitem>
 <listitem><para>The <guilabel>Attendees</guilabel> tab may be left completely
@@ -1885,10 +1885,10 @@ appointment should be scheduled <emphasis>(recurred)</emphasis> each Monday.
 <step><para>Choose the <menuchoice><guimenu>Actions</guimenu><guimenuitem>New
 Event...</guimenuitem></menuchoice>, or select the area between
 <emphasis>12 noon</emphasis> and end at<emphasis>1 pm</emphasis>,
-and start typing the event title.</para></step>
+and start typing the event summary.</para></step>
 
-<step><para>Enter a suitable title. It's important to choose the right brief
-description, because this is the only field that can be searched. We suggest
+<step><para>Enter a suitable summary. It's important to choose the right brief
+description, because it appears in many places. We suggest
 that you enter <userinput>Product launch event</userinput>.</para></step>
 
 <step><para>Enter the detailed event program into the largest rectangle
@@ -3045,7 +3045,7 @@ Edit</guimenu> <guimenuitem>Find</guimenuitem>
 </term>
 <listitem><para>Choose <guimenuitem>Find</guimenuitem> from the
 <guimenu>Edit</guimenu> or click the <guiicon>Find</guiicon> icon to
-<action>find events, to-dos and journal entries according to their title,
+<action>find events, to-dos and journal entries according to their summary,
 description, and/or tags</action>.</para>
 <para>For more information about this action, please refer to
 <xref linkend="search-view" />.</para>
