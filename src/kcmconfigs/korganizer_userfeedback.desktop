@@ -12,7 +12,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=600
 
-Name=UserFeedBack
+Name=User Feedback
 Name[ca]=UserFeedBack
 Name[ca@valencia]=UserFeedBack
 Name[de]=UserFeedBack
@@ -35,7 +35,7 @@ Name[sv]=Användaråterkoppling
 Name[uk]=Відгуки користувача
 Name[x-test]=xxUserFeedBackxx
 Name[zh_CN]=用户反馈
-Comment=KOrganizer UserFeedBack Configuration
+Comment=KOrganizer User Feedback Configuration
 Comment[ca]=Configuració de l'UserFeedBack per al KOrganizer
 Comment[ca@valencia]=Configuració de l'UserFeedBack per al KOrganizer
 Comment[de]=Einrichtung von UserFeedBack in KOrganizer
