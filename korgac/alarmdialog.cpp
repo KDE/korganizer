@@ -202,13 +202,13 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     mIncidenceTree = new QTreeWidget(topBox);
     mIncidenceTree->setColumnCount(3);
     mIncidenceTree->setSortingEnabled(true);
-    const QStringList headerLabels = (QStringList(i18nc("@title:column reminder title", "Title"))
+    const QStringList headerLabels = (QStringList(i18nc("@title:column reminder summary", "Summary"))
                                       << i18nc("@title:column happens at date/time", "Date Time") << i18nc("@title:column trigger date/time", "Trigger Time"));
     mIncidenceTree->setHeaderLabels(headerLabels);
 
     QHeaderView *header = mIncidenceTree->header();
     header->setSectionResizeMode(0, QHeaderView::Stretch);
-    mIncidenceTree->headerItem()->setToolTip(0, i18nc("@info:tooltip", "The event or to-do title"));
+    mIncidenceTree->headerItem()->setToolTip(0, i18nc("@info:tooltip", "The event or to-do summary"));
 
     header->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     mIncidenceTree->headerItem()->setToolTip(1, i18nc("@info:tooltip", "The reminder is set for this date/time"));
