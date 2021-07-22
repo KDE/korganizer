@@ -73,10 +73,7 @@ void KODialogManager::showOptionsDialog()
 {
     if (!mOptionsDialog) {
         mOptionsDialog = new KCMultiDialog(mMainView);
-        connect(mOptionsDialog,
-                qOverload<const QByteArray &>(&KCMultiDialog::configCommitted),
-                mMainView,
-                qOverload<const QByteArray &>(&CalendarView::updateConfig));
+        connect(mOptionsDialog, qOverload<>(&KCMultiDialog::configCommitted), mMainView, &CalendarView::updateConfig);
         const QVector<KPluginMetaData> availablePlugins = KPluginLoader::findPlugins(QStringLiteral("pim/kcms/korganizer"));
         for (const KPluginMetaData &metaData : availablePlugins) {
 #if KCMUTILS_VERSION >= QT_VERSION_CHECK(5, 84, 0)

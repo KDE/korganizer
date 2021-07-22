@@ -539,15 +539,6 @@ void CalendarView::goPrevious()
 
 void CalendarView::updateConfig()
 {
-    updateConfig(QByteArray("korganizer"));
-}
-
-void CalendarView::updateConfig(const QByteArray &receiver)
-{
-    if (receiver != "korganizer") {
-        return;
-    }
-
     if (mCalPrinter) {
         mCalPrinter->deleteLater();
         mCalPrinter = nullptr;
