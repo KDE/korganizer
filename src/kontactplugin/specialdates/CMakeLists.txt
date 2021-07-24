@@ -44,5 +44,3 @@ install(TARGETS kcmsdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/summa
 install(FILES specialdatesplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/kontact)
 install(FILES kcmsdsummary.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 
-install(FILES specialdates.setdlg DESTINATION ${KDE_INSTALL_DATADIR}/kontact/ksettingsdialog)
-

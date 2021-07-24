@@ -76,6 +76,3 @@ install(TARGETS kontact_journalplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/konta
 install(FILES korganizerplugin.desktop todoplugin.desktop journalplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/kontact)
 install(FILES kcmapptsummary.desktop kcmtodosummary.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 
-install(FILES korganizer.setdlg DESTINATION ${KDE_INSTALL_DATADIR}/kontact/ksettingsdialog)
-
-
