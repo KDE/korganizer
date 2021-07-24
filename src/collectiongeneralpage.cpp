@@ -20,9 +20,9 @@
 #include <QLineEdit>
 
 #include <QCheckBox>
+#include <QFormLayout>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QVBoxLayout>
 
 #include <PimCommonAkonadi/CollectionAnnotationsAttribute>
 #include <PimCommonAkonadi/CollectionTypeUtil>
@@ -40,33 +40,22 @@ CollectionGeneralPage::CollectionGeneralPage(QWidget *parent)
 
 void CollectionGeneralPage::init(const Akonadi::Collection &collection)
 {
-    auto topLayout = new QVBoxLayout(this);
-
-    auto hbox = new QHBoxLayout();
-    topLayout->addItem(hbox);
-
-    auto label = new QLabel(i18nc("@label:textbox Name of the folder.", "&Name:"), this);
-    hbox->addWidget(label);
+    auto topLayout = new QFormLayout(this);
 
     mNameEdit = new QLineEdit(this);
     mNameEdit->setToolTip(i18nc("@info:tooltip", "Set the folder name"));
     mNameEdit->setWhatsThis(i18nc("@info:whatsthis", "Enter a name here to set the name of this folder."));
-    label->setBuddy(mNameEdit);
-    hbox->addWidget(mNameEdit);
+    topLayout->addRow(i18nc("@label:textbox Name of the folder.", "&Name:"), mNameEdit);
 
     // should replies to mails in this folder be kept in this same folder?
-    hbox = new QHBoxLayout();
-    topLayout->addItem(hbox);
-
     mBlockAlarmsCheckBox = new QCheckBox(i18nc("@option:check", "Block reminders locally"), this);
     mBlockAlarmsCheckBox->setToolTip(i18nc("@info:tooltip", "Ignore reminders from this calendar"));
     mBlockAlarmsCheckBox->setWhatsThis(i18nc("@info:whatsthis",
                                              "Check this box if you do not want to receive reminders from items "
                                              "associated with this calendar."));
-    hbox->addWidget(mBlockAlarmsCheckBox);
+    topLayout->addRow(QString(), mBlockAlarmsCheckBox);
 
-    hbox = new QHBoxLayout();
-    topLayout->addItem(hbox);
+    auto hbox = new QHBoxLayout();
     mIconCheckBox = new QCheckBox(i18nc("@option:check", "&Use custom icon:"), this);
     mIconCheckBox->setToolTip(i18nc("@info:tooltip", "Set a custom icon"));
     mIconCheckBox->setWhatsThis(i18nc("@info:whatsthis", "Check this box if you want to set a custom icon for this folder."));
@@ -75,6 +64,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     hbox->addWidget(mIconCheckBox);
     hbox->addWidget(mIconButton);
     hbox->addStretch();
+    topLayout->addRow(QString(), hbox);
 
     if ((collection.parentCollection() != Akonadi::Collection::root()) && PimCommon::Util::isImapResource(collection.resource())) {
         const auto annotationAttribute = collection.attribute<PimCommon::CollectionAnnotationsAttribute>();
@@ -84,14 +74,11 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
         PimCommon::CollectionTypeUtil collectionUtil;
         const PimCommon::CollectionTypeUtil::IncidencesFor incidencesFor =
             collectionUtil.incidencesForFromString(QLatin1String(annotations.value(PimCommon::CollectionTypeUtil ::kolabIncidencesFor())));
-        hbox = new QHBoxLayout();
-        topLayout->addItem(hbox);
         mIncidencesForComboBox = new PimCommon::IncidencesForWidget(this);
-        hbox->addWidget(mIncidencesForComboBox);
+        topLayout->addRow(PimCommon::IncidencesForWidget::labelName(), mIncidencesForComboBox);
 
         mIncidencesForComboBox->setCurrentIndex(incidencesFor);
     }
-    topLayout->addStretch(100); // eat all superfluous space
 }
 
 CollectionGeneralPage::~CollectionGeneralPage()
