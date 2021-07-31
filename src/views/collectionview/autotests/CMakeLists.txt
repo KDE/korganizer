@@ -3,13 +3,12 @@ include_directories(
   ${korganizer_SOURCE_DIR}/
 )
 
-set(reparentingmodeltest_SRCS
+add_executable(reparentingmodeltest ${reparentingmodeltest_SRCS})
+target_sources(reparentingmodeltest PRIVATE
     reparentingmodeltest.cpp
     ../reparentingmodel.cpp
     ../../../korganizer_debug.cpp
-)
-
-add_executable(reparentingmodeltest ${reparentingmodeltest_SRCS})
+    )
 add_test(NAME reparentingmodeltest COMMAND reparentingmodeltest)
 ecm_mark_as_test(reparentingmodeltest)
 ecm_mark_nongui_executable(reparentingmodeltest)

@@ -1,12 +1,11 @@
 
 ########### next target ###############
 
-set(korganizer_interfaces_LIB_SRCS
-  baseview.cpp
-  mainwindow.cpp
-)
-
-add_library(korganizer_interfaces ${korganizer_interfaces_LIB_SRCS})
+add_library(korganizer_interfaces)
+target_sources(korganizer_interfaces PRIVATE
+    baseview.cpp
+    mainwindow.cpp
+    )
 generate_export_header(korganizer_interfaces BASE_NAME korganizer_interfaces)
 target_link_libraries(korganizer_interfaces
   KF5::CalendarSupport

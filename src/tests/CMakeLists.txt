@@ -7,9 +7,7 @@ include_directories(
 
 ########### next target ###############
 
-set(korgplugins_SRCS korgplugins.cpp)
-
-add_executable(korgplugins ${korgplugins_SRCS})
+add_executable(korgplugins korgplugins.cpp)
 
 target_link_libraries(korgplugins
   korganizerprivate
