@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 # Do NOT add quote
-set(KDEPIM_DEV_VERSION beta)
+set(KDEPIM_DEV_VERSION alpha)
 
 # add an extra space
 if(DEFINED KDEPIM_DEV_VERSION)
