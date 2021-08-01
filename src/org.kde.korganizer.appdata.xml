@@ -83,7 +83,7 @@
   <summary xml:lang="ia">KOrganizer es un application  de calendario e planification</summary>
   <summary xml:lang="id">KOrganizer adalah aplikasi kalender dan penjadwalan</summary>
   <summary xml:lang="it">KOrganizer è un'applicazione per il calendario e la pianificazione</summary>
-  <summary xml:lang="ko">KOrganizer는 달력과 일정 관리 프로그램입니다</summary>
+  <summary xml:lang="ko">KOrganizer는 캘린더와 일정 관리 프로그램입니다</summary>
   <summary xml:lang="nl">KOrganizer is een agenda- en planningstoepassing</summary>
   <summary xml:lang="pl">KOrganizer jest aplikacją kalendarza i planowania</summary>
   <summary xml:lang="pt">O KOrganizer é uma aplicação com componentes de calendários e agendas</summary>
@@ -264,7 +264,7 @@
       <li xml:lang="ia">Integration de actiones de facer con vista de agenda</li>
       <li xml:lang="id">Integrasi kegiatan dengan tampilan agenda</li>
       <li xml:lang="it">Integrazione delle cose da fare con la vista agenda</li>
-      <li xml:lang="ko">일정보기와 통합된 할 일 목록</li>
+      <li xml:lang="ko">일정 보기와 통합된 할 일 목록</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć</li>
       <li xml:lang="pt">Integração de itens por-fazer com a agenda</li>
