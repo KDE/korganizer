@@ -5,7 +5,6 @@ X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=pim/kcms/korganizer/korganizer_configplugins
 X-KDE-FactoryName=korganizerconfigplugins
-X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
