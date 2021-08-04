@@ -5,7 +5,6 @@ X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=pim/kcms/summary/kcmtodosummary
 X-KDE-FactoryName=todosummary
-X-KDE-ParentApp=kontact_summaryplugin
 X-KDE-ParentComponents=kontact_summaryplugin
 X-KDE-CfgDlgHierarchy=KontactSummary
 X-KDE-Weight=450

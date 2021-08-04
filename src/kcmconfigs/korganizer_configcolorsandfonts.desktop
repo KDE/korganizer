@@ -5,7 +5,6 @@ X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=pim/kcms/korganizer/korganizer_configcolorsandfonts
 X-KDE-FactoryName=korganizerconfigcolorsandfonts
-X-KDE-ParentApp=korganizer
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=400
