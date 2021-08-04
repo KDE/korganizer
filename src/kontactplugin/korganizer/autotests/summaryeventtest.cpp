@@ -97,9 +97,9 @@ void SummaryEventTester::test_Multiday()
     event->setSummary(QStringLiteral("Some event in the past"));
     QVERIFY(cal->addEvent(event));
 
-    SummaryEventInfo::List eventsToday = SummaryEventInfo::eventsForDate(today, cal);
+    const SummaryEventInfo::List eventsToday = SummaryEventInfo::eventsForDate(today, cal);
     QCOMPARE(3, eventsToday.size());
-    foreach (const SummaryEventInfo *ev, eventsToday) {
+    for (const SummaryEventInfo *ev : eventsToday) {
         if (ev->summaryText == multidayWithTimeInProgress + QLatin1String(" (2/7)")) {
             QCOMPARE(ev->timeRange,
                      QStringLiteral("%1 - %2").arg(QLocale::system().toString(QTime(0, 0), QLocale::ShortFormat),

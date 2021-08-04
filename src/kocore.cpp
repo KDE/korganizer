@@ -253,7 +253,9 @@ void KOCore::unloadPlugins()
 
 void KOCore::unloadParts(KOrg::MainWindow *parent, KOrg::Part::List &parts)
 {
-    foreach (KOrg::Part *part, parts) {
+    // copy in case caller updates parts on destruction of a part
+    const KOrg::Part::List currentParts = parts;
+    for (KOrg::Part *part : currentParts) {
         parent->mainGuiClient()->removeChildClient(part);
         delete part;
     }
