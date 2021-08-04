@@ -3,7 +3,6 @@ Icon=preferences-plugin
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=pim/kcms/korganizer/korganizer_configplugins
 X-KDE-FactoryName=korganizerconfigplugins
 X-KDE-HasReadOnlyMode=false

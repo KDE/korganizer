@@ -3,7 +3,6 @@ Icon=view-choose
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=pim/kcms/korganizer/korganizer_configviews
 X-KDE-FactoryName=korganizerconfigviews
 X-KDE-HasReadOnlyMode=false

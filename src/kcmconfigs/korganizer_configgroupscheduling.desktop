@@ -3,7 +3,6 @@ Icon=network-workgroup
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=pim/kcms/korganizer/korganizer_configgroupscheduling
 X-KDE-FactoryName=korganizerconfiggroupscheduling
 X-KDE-HasReadOnlyMode=false

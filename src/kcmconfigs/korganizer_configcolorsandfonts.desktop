@@ -3,7 +3,6 @@ Icon=preferences-desktop-color
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=pim/kcms/korganizer/korganizer_configcolorsandfonts
 X-KDE-FactoryName=korganizerconfigcolorsandfonts
 X-KDE-HasReadOnlyMode=false

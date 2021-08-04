@@ -3,7 +3,6 @@ Icon=korg-todo
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=pim/kcms/summary/kcmtodosummary
 X-KDE-FactoryName=todosummary
 X-KDE-ParentApp=kontact_summaryplugin

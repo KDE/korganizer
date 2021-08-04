@@ -3,7 +3,6 @@ Icon=view-calendar-special-occasion
 Type=Service
 X-KDE-ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=pim/kcms/summary/kcmsdsummary
 X-KDE-FactoryName=sdsummary
 X-KDE-ParentApp=kontact_summaryplugin
