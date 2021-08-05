@@ -221,7 +221,7 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
     auto createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
     QVERIFY(!createevent->isVisible());
-    QVERIFY(createnote->isVisible());
+    QVERIFY(!createnote->isVisible());
     QVERIFY(createtodo->isVisible());
 }
 
