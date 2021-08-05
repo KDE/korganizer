@@ -6,7 +6,6 @@ X-KDE-ServiceTypes=KCModule
 X-KDE-Library=pim/kcms/korganizer/korganizer_configfreebusy
 X-KDE-FactoryName=korganizerconfigfreebusy
 X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
-X-KDE-CfgDlgHierarchy=KOrganizer
 X-KDE-Weight=600
 X-DocPath=korganizer/config.html#config-main-free-busy
 
