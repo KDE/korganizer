@@ -5,7 +5,7 @@ X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=pim/kcms/summary/kcmapptsummary
 X-KDE-FactoryName=apptsummary
-X-KDE-ParentComponents=kontact_summaryplugin
+
 X-KDE-Weight=400
 
 Name=Upcoming Events

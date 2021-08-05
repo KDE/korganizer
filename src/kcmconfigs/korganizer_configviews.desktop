@@ -5,7 +5,7 @@ X-KDE-ServiceTypes=KCModule
 
 X-KDE-Library=pim/kcms/korganizer/korganizer_configviews
 X-KDE-FactoryName=korganizerconfigviews
-X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
+
 X-KDE-Weight=300
 X-DocPath=korganizer/config.html#config-main-views
 

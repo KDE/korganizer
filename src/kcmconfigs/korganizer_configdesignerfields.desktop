@@ -6,7 +6,7 @@ X-DocPath=korganizer/preferences.html
 
 X-KDE-Library=pim/kcms/korganizer/korganizer_configdesignerfields
 X-KDE-FactoryName=korgdesignerfields
-X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
+
 X-KDE-Weight=800
 
 Name=Custom Pages
