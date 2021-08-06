@@ -84,11 +84,13 @@ void KOEventPopupMenu::appendEventOnlyItems()
 
     mEventOnlyItems.append(
         addAction(QIcon::fromTheme(QStringLiteral("task-new")), i18nc("@action:inmenu", "Create To-do from Event"), this, &KOEventPopupMenu::createTodo));
+    mEventOnlyItems.last()->setObjectName(QStringLiteral("createtodo")); // id used by unit test
 
     mEventOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
                                      i18nc("@action:inmenu", "Create Note for Event"),
                                      this,
                                      qOverload<>(&KOEventPopupMenu::createNote)));
+    mEventOnlyItems.last()->setObjectName(QStringLiteral("createnoteforevent")); // id used by unit test
 }
 
 void KOEventPopupMenu::appendTodoOnlyItems()
@@ -104,11 +106,13 @@ void KOEventPopupMenu::appendTodoOnlyItems()
                                     i18nc("@action:inmenu", "Create Event from To-do"),
                                     this,
                                     qOverload<>(&KOEventPopupMenu::createEvent)));
+    mTodoOnlyItems.last()->setObjectName(QStringLiteral("createevent")); // id used by unit test
 
     mTodoOnlyItems.append(addAction(QIcon::fromTheme(QStringLiteral("view-pim-notes")),
                                     i18nc("@action:inmenu", "Create Note for To-do"),
                                     this,
                                     qOverload<>(&KOEventPopupMenu::createNote)));
+    mTodoOnlyItems.last()->setObjectName(QStringLiteral("createnotefortodo")); // id used by unit test
 }
 
 void KOEventPopupMenu::appendReminderOnlyItems()
