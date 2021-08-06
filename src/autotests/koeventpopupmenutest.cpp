@@ -151,10 +151,10 @@ void KoEventPopupMenuTest::createNoteFromEvent()
 
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
-    auto createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
+    auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
     QVERIFY(!noteedit);
-    createnote->trigger();
+    createnoteforevent->trigger();
     noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
     QVERIFY(noteedit);
     Akonadi::NoteUtils::NoteMessageWrapper note(noteedit->note());
@@ -189,11 +189,11 @@ void KoEventPopupMenuTest::createNoteFromTodo()
 
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
-    auto createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
+    auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
 
     auto noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
     QVERIFY(!noteedit);
-    createnote->trigger();
+    createnotefortodo->trigger();
     noteedit = menu.findChild<CalendarSupport::NoteEditDialog *>();
     QVERIFY(noteedit);
     Akonadi::NoteUtils::NoteMessageWrapper note(noteedit->note());
@@ -218,11 +218,13 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
-    auto createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
+    auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
+    auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
     QVERIFY(!createevent->isVisible());
-    QVERIFY(!createnote->isVisible());
+    QVERIFY(createnoteforevent->isVisible());
     QVERIFY(createtodo->isVisible());
+    QVERIFY(!createnotefortodo->isVisible());
 }
 
 void KoEventPopupMenuTest::defaultMenuTodoVisible()
@@ -239,11 +241,13 @@ void KoEventPopupMenuTest::defaultMenuTodoVisible()
     menu.setCalendar(calendar);
     menu.showIncidencePopup(item, QDate());
     auto createevent = menu.findChild<QAction *>(QStringLiteral("createevent"));
-    auto createnote = menu.findChild<QAction *>(QStringLiteral("createnote"));
+    auto createnoteforevent = menu.findChild<QAction *>(QStringLiteral("createnoteforevent"));
     auto createtodo = menu.findChild<QAction *>(QStringLiteral("createtodo"));
+    auto createnotefortodo = menu.findChild<QAction *>(QStringLiteral("createnotefortodo"));
     QVERIFY(createevent->isVisible());
-    QVERIFY(createnote->isVisible());
+    QVERIFY(!createnoteforevent->isVisible());
     QVERIFY(!createtodo->isVisible());
+    QVERIFY(createnotefortodo->isVisible());
 }
 
 QTEST_MAIN(KoEventPopupMenuTest)

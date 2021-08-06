@@ -90,6 +90,7 @@ void KOEventPopupMenu::appendEventOnlyItems()
                                      i18nc("@action:inmenu", "Create Note for Event"),
                                      this,
                                      qOverload<>(&KOEventPopupMenu::createNote)));
+    mEventOnlyItems.last()->setObjectName(QStringLiteral("createnoteforevent")); // id used by unit test
 }
 
 void KOEventPopupMenu::appendTodoOnlyItems()
@@ -111,7 +112,7 @@ void KOEventPopupMenu::appendTodoOnlyItems()
                                     i18nc("@action:inmenu", "Create Note for To-do"),
                                     this,
                                     qOverload<>(&KOEventPopupMenu::createNote)));
-    mTodoOnlyItems.last()->setObjectName(QStringLiteral("createnote")); // id used by unit test
+    mTodoOnlyItems.last()->setObjectName(QStringLiteral("createnotefortodo")); // id used by unit test
 }
 
 void KOEventPopupMenu::appendReminderOnlyItems()
