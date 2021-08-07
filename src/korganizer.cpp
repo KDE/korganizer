@@ -31,7 +31,6 @@
 #include <KToolBar>
 #include <QLabel>
 #include <QStatusBar>
-#include <kxmlgui_version.h>
 #ifdef WITH_KUSERFEEDBACK
 #include "userfeedback/userfeedbackmanager.h"
 #include <KUserFeedback/NotificationPopup>
@@ -175,11 +174,7 @@ void KOrganizer::initActions()
 
 void KOrganizer::slotEditKeys()
 {
-#if KXMLGUI_VERSION < QT_VERSION_CHECK(5,84,0)
-    KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
-#else
     KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
-#endif
 }
 
 bool KOrganizer::queryClose()

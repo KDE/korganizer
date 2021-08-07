@@ -26,8 +26,6 @@
 
 #include <KCalendarCore/Visitor>
 
-#include <kcmutils_version.h>
-
 #include <KCMultiDialog>
 #include <KPluginLoader>
 #include <KPluginMetaData>
@@ -76,11 +74,7 @@ void KODialogManager::showOptionsDialog()
         connect(mOptionsDialog, qOverload<>(&KCMultiDialog::configCommitted), mMainView, &CalendarView::updateConfig);
         const QVector<KPluginMetaData> availablePlugins = KPluginLoader::findPlugins(QStringLiteral("pim/kcms/korganizer"));
         for (const KPluginMetaData &metaData : availablePlugins) {
-#if KCMUTILS_VERSION >= QT_VERSION_CHECK(5, 84, 0)
             mOptionsDialog->addModule(metaData);
-#else
-            mOptionsDialog->addModule(metaData.pluginId());
-#endif
         }
     }
 
