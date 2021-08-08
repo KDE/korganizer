@@ -21,16 +21,13 @@
 </author>
 
 <author>
-<firstname>Milos</firstname>
-<surname>Prudek</surname>
+&Milos.Prudek;
+&Milos.Prudek.mail;
 </author>
 
 <author>
-<firstname>Paul</firstname>
-<othername>E.</othername>
-<surname>Ahlquist</surname>
-<lineage>Jr.</lineage>
-<affiliation><address>&Paul.E.Ahlquist.Jr.mail;</address></affiliation>
+&Paul.E.Ahlquist.Jr;
+&Paul.E.Ahlquist.Jr.mail;
 </author>
 
 <author>
@@ -40,9 +37,8 @@
 </author>
 
 <author>
-<firstname>Michel</firstname>
-<surname>Boyer de la Giroday</surname>
-<affiliation><address><email>michel@klaralvdalens-datakonsult.se</email></address></affiliation>
+&Michel.Boyer;
+&Michel.Boyer.mail;
 </author>
 
 <othercredit role="developer">
