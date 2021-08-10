@@ -68,8 +68,8 @@ private:
     Ui::SearchDialog *const m_ui;
     CalendarView *const m_calendarview; // parent
     KOEventPopupMenu *m_popupMenu = nullptr;
-    Akonadi::Item::List mMatchedEvents;
-    EventViews::ListView *listView = nullptr;
-    QPushButton *mUser1Button = nullptr;
+    Akonadi::Item::List m_matchedEvents;
+    EventViews::ListView *m_listView = nullptr;
+    QPushButton *m_user1Button = nullptr;
 };
 

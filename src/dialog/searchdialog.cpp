@@ -47,32 +47,32 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     // Results list view
     auto layout = new QVBoxLayout;
     layout->setContentsMargins({});
-    listView = new EventViews::ListView(m_calendarview->calendar(), this);
-    layout->addWidget(listView);
+    m_listView = new EventViews::ListView(m_calendarview->calendar(), this);
+    layout->addWidget(m_listView);
     m_ui->listViewFrame->setLayout(layout);
 
     auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close | QDialogButtonBox::Help, this);
     mainLayout->addWidget(mainWidget);
-    mUser1Button = new QPushButton;
-    buttonBox->addButton(mUser1Button, QDialogButtonBox::ActionRole);
+    m_user1Button = new QPushButton;
+    buttonBox->addButton(m_user1Button, QDialogButtonBox::ActionRole);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &SearchDialog::reject);
     connect(buttonBox, &QDialogButtonBox::helpRequested, this, &SearchDialog::slotHelpRequested);
     mainLayout->addWidget(buttonBox);
-    mUser1Button->setDefault(true);
-    KGuiItem::assign(mUser1Button, KGuiItem(i18nc("@action:button search in calendar", "&Search")));
-    mUser1Button->setIcon(QIcon::fromTheme(QStringLiteral("search")));
-    mUser1Button->setToolTip(i18nc("@info:tooltip", "Start the search"));
-    mUser1Button->setWhatsThis(i18nc("@info:whatsthis", "Press this button to start the search."));
+    m_user1Button->setDefault(true);
+    KGuiItem::assign(m_user1Button, KGuiItem(i18nc("@action:button search in calendar", "&Search")));
+    m_user1Button->setIcon(QIcon::fromTheme(QStringLiteral("search")));
+    m_user1Button->setToolTip(i18nc("@info:tooltip", "Start the search"));
+    m_user1Button->setWhatsThis(i18nc("@info:whatsthis", "Press this button to start the search."));
 
-    connect(mUser1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
+    connect(m_user1Button, &QPushButton::clicked, this, &SearchDialog::doSearch);
 
     // Propagate edit and delete event signals from event list view
-    connect(listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
-    connect(listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
-    connect(listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
+    connect(m_listView, &EventViews::ListView::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
+    connect(m_listView, &EventViews::ListView::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
+    connect(m_listView, &EventViews::ListView::deleteIncidenceSignal, this, &SearchDialog::deleteIncidenceSignal);
 
     m_popupMenu = new KOEventPopupMenu(m_calendarview->calendar(), KOEventPopupMenu::MiniList, this);
-    connect(listView, &EventViews::ListView::showIncidencePopupSignal, m_popupMenu, &KOEventPopupMenu::showIncidencePopup);
+    connect(m_listView, &EventViews::ListView::showIncidencePopupSignal, m_popupMenu, &KOEventPopupMenu::showIncidencePopup);
 
     connect(m_popupMenu, &KOEventPopupMenu::showIncidenceSignal, this, &SearchDialog::showIncidenceSignal);
     connect(m_popupMenu, &KOEventPopupMenu::editIncidenceSignal, this, &SearchDialog::editIncidenceSignal);
@@ -106,7 +106,7 @@ void SearchDialog::showEvent(QShowEvent *event)
 
 void SearchDialog::searchPatternChanged(const QString &pattern)
 {
-    mUser1Button->setEnabled(!pattern.isEmpty());
+    m_user1Button->setEnabled(!pattern.isEmpty());
 }
 
 void SearchDialog::doSearch()
@@ -125,9 +125,9 @@ void SearchDialog::doSearch()
     }
 
     search(re);
-    listView->showIncidences(mMatchedEvents, QDate());
+    m_listView->showIncidences(m_matchedEvents, QDate());
     updateMatchesText();
-    if (mMatchedEvents.isEmpty()) {
+    if (m_matchedEvents.isEmpty()) {
         m_ui->numItems->setText(QString());
         KMessageBox::information(this,
                                  i18nc("@info", "No items were found that match your search pattern."),
@@ -138,15 +138,15 @@ void SearchDialog::doSearch()
 
 void SearchDialog::popupMenu(const QPoint &point)
 {
-    listView->popupMenu(point);
+    m_listView->popupMenu(point);
 }
 
 void SearchDialog::updateMatchesText()
 {
-    if (mMatchedEvents.isEmpty()) {
+    if (m_matchedEvents.isEmpty()) {
         m_ui->numItems->setText(QString());
     } else {
-        m_ui->numItems->setText(i18ncp("@label", "%1 match", "%1 matches", mMatchedEvents.count()));
+        m_ui->numItems->setText(i18ncp("@label", "%1 match", "%1 matches", m_matchedEvents.count()));
     }
 }
 
@@ -156,13 +156,13 @@ void SearchDialog::updateView()
     re.setPatternSyntax(QRegExp::Wildcard); // most people understand these better.
     re.setCaseSensitivity(Qt::CaseInsensitive);
     re.setPattern(m_ui->searchEdit->text());
-    listView->clear();
+    m_listView->clear();
     if (re.isValid()) {
         search(re);
     } else {
-        mMatchedEvents.clear();
+        m_matchedEvents.clear();
     }
-    listView->showIncidences(mMatchedEvents, QDate());
+    m_listView->showIncidences(m_matchedEvents, QDate());
     updateMatchesText();
 }
 
@@ -211,32 +211,32 @@ void SearchDialog::search(const QRegExp &re)
         }
     }
 
-    mMatchedEvents.clear();
+    m_matchedEvents.clear();
     const KCalendarCore::Incidence::List incidences = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
     for (const KCalendarCore::Incidence::Ptr &ev : incidences) {
         Q_ASSERT(ev);
         Akonadi::Item item = m_calendarview->calendar()->item(ev->uid());
         if (m_ui->summaryCheck->isChecked()) {
             if (re.indexIn(ev->summary()) != -1) {
-                mMatchedEvents.append(item);
+                m_matchedEvents.append(item);
                 continue;
             }
         }
         if (m_ui->descriptionCheck->isChecked()) {
             if (re.indexIn(ev->description()) != -1) {
-                mMatchedEvents.append(item);
+                m_matchedEvents.append(item);
                 continue;
             }
         }
         if (m_ui->categoryCheck->isChecked()) {
             if (re.indexIn(ev->categoriesStr()) != -1) {
-                mMatchedEvents.append(item);
+                m_matchedEvents.append(item);
                 continue;
             }
         }
         if (m_ui->locationCheck->isChecked()) {
             if (re.indexIn(ev->location()) != -1) {
-                mMatchedEvents.append(item);
+                m_matchedEvents.append(item);
                 continue;
             }
         }
@@ -244,7 +244,7 @@ void SearchDialog::search(const QRegExp &re)
             const KCalendarCore::Attendee::List lstAttendees = ev->attendees();
             for (const KCalendarCore::Attendee &attendee : lstAttendees) {
                 if (re.indexIn(attendee.fullName()) != -1) {
-                    mMatchedEvents.append(item);
+                    m_matchedEvents.append(item);
                     break;
                 }
             }
@@ -259,20 +259,20 @@ void SearchDialog::readConfig()
     if (size.isValid()) {
         resize(size);
     }
-    listView->readSettings(KSharedConfig::openConfig().data());
+    m_listView->readSettings(KSharedConfig::openConfig().data());
 }
 
 void SearchDialog::writeConfig()
 {
     KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("SearchDialog"));
     group.writeEntry("Size", size());
-    listView->writeSettings(KSharedConfig::openConfig().data());
+    m_listView->writeSettings(KSharedConfig::openConfig().data());
     group.sync();
 }
 
 void SearchDialog::slotDeleteSelection()
 {
-    const auto selected = listView->selectedIncidences();
+    const auto selected = m_listView->selectedIncidences();
     if (selected.count() > 0) {
         Q_EMIT deleteIncidenceSignal(selected.at(0));
     }
@@ -280,7 +280,7 @@ void SearchDialog::slotDeleteSelection()
 
 void SearchDialog::slotEditSelection()
 {
-    const auto selected = listView->selectedIncidences();
+    const auto selected = m_listView->selectedIncidences();
     if (selected.count() > 0) {
         Q_EMIT editIncidenceSignal(selected.at(0));
     }
