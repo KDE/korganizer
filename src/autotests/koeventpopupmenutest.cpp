@@ -71,7 +71,8 @@ void KoEventPopupMenuTest::createEventFromTodo()
     item.setMimeType(KCalendarCore::Todo::todoMimeType());
     item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
-    QDateTime start, end;
+    QDateTime start;
+    QDateTime end;
     QString summary(QStringLiteral("a test"));
     start = QDateTime::fromSecsSinceEpoch(1402593346);
     end = QDateTime::fromSecsSinceEpoch(1403593346);
@@ -105,7 +106,8 @@ void KoEventPopupMenuTest::createTodoFromEvent()
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
 
-    QDateTime start, end;
+    QDateTime start;
+    QDateTime end;
     QString summary(QStringLiteral("a test"));
     start = QDateTime::fromSecsSinceEpoch(1402593346);
     end = QDateTime::fromSecsSinceEpoch(1403593346);
@@ -139,7 +141,8 @@ void KoEventPopupMenuTest::createNoteFromEvent()
     item.setMimeType(KCalendarCore::Event::eventMimeType());
     item.setPayload<KCalendarCore::Event::Ptr>(event);
 
-    QDateTime start, end;
+    QDateTime start;
+    QDateTime end;
     QString summary(QStringLiteral("A test"));
     QString description(QStringLiteral("A long description"));
     start = QDateTime::fromSecsSinceEpoch(1402593346);
@@ -177,7 +180,8 @@ void KoEventPopupMenuTest::createNoteFromTodo()
     item.setMimeType(KCalendarCore::Todo::todoMimeType());
     item.setPayload<KCalendarCore::Todo::Ptr>(todo);
 
-    QDateTime start, end;
+    QDateTime start;
+    QDateTime end;
     QString summary(QStringLiteral("a test"));
     QString description(QStringLiteral("A long description"));
     start = QDateTime::fromSecsSinceEpoch(1402593346);

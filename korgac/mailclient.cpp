@@ -82,7 +82,8 @@ bool MailClient::mailAttendees(const KCalendarCore::IncidenceBase::Ptr &incidenc
         }
 
         // Build a nice address for this attendee including the CN.
-        QString tname, temail;
+        QString tname;
+        QString temail;
         const QString username = KEmailAddress::quoteNameIfNecessary(a.name());
         // ignore the return value from extractEmailAddressAndName() because
         // it will always be false since tusername does not contain "@domain".

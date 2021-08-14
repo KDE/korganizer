@@ -368,7 +368,8 @@ bool TodoSummaryWidget::startsToday(const KCalendarCore::Todo::Ptr &todo)
 
 const QString TodoSummaryWidget::stateStr(const KCalendarCore::Todo::Ptr &todo)
 {
-    QString str1, str2;
+    QString str1;
+    QString str2;
 
     if (todo->isOpenEnded()) {
         str1 = i18n("open-ended");

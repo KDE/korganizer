@@ -629,7 +629,8 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         } else if (keyboardModifiers & Qt::ShiftModifier) {
             action = DRAG_MOVE;
         } else {
-            QAction *copy = nullptr, *move = nullptr;
+            QAction *copy = nullptr;
+            QAction *move = nullptr;
             auto menu = new QMenu(this);
             if (exist) {
                 move = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-paste")), i18n("&Move"));
@@ -674,7 +675,8 @@ void KODayMatrix::paintEvent(QPaintEvent *)
     const QRect rect = frameRect();
     const int dayHeight = mDaySize.height();
     const int dayWidth = mDaySize.width();
-    int row, column;
+    int row;
+    int column;
     const bool isRTL = KOGlobals::self()->reverseLayout();
 
     QPalette pal = palette();

@@ -309,7 +309,8 @@ void DateNavigatorContainer::goPrevMonth()
 
 QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
 {
-    QDate firstMonth, lastMonth;
+    QDate firstMonth;
+    QDate lastMonth;
     if (mExtraViews.isEmpty()) {
         lastMonth = mNavigatorView->month();
     } else {
