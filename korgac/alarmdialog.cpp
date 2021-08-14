@@ -637,21 +637,9 @@ void AlarmDialog::eventNotification()
         Alarm::List::ConstIterator ait;
         for (ait = alarms.constBegin(); ait != alarms.constEnd(); ++ait) {
             Alarm::Ptr alarm = *ait;
+            // we intentionally ignore Alarm::Procedure here, as that is insecure in the presence of shared calendars
             // FIXME: Check whether this should be done for all multiple alarms
-            if (alarm->type() == Alarm::Procedure) {
-                // FIXME: Add a message box asking whether the procedure should really be executed
-                qCDebug(KOALARMCLIENT_LOG) << "Starting program: '" << alarm->programFile() << "'";
-
-                QString program = alarm->programFile();
-
-                // if the program name contains spaces escape it
-                if (program.contains(QLatin1Char(' ')) && !(program.startsWith(QLatin1Char('\"')) && program.endsWith(QLatin1Char('\"')))) {
-                    program = QLatin1Char('\"') + program + QLatin1Char('\"');
-                }
-
-                // TODO move alarm->programArguments() as argument of QProcess API ?
-                QProcess::startDetached(program + QLatin1Char(' ') + alarm->programArguments(), QStringList());
-            } else if (alarm->type() == Alarm::Audio) {
+            if (alarm->type() == Alarm::Audio) {
                 beeped = true;
                 Phonon::MediaObject *player = Phonon::createPlayer(Phonon::NotificationCategory, QUrl::fromLocalFile(alarm->audioFile()));
                 player->setParent(this);
