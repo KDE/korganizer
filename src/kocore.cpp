@@ -54,21 +54,14 @@ KService::List KOCore::availableCalendarDecorations()
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
 {
     KPluginLoader loader(*service);
-    auto factory = loader.instance();
+    auto factory = loader.factory();
 
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return nullptr;
     }
 
-    auto pluginFactory = qobject_cast<EventViews::CalendarDecoration::DecorationFactory *>(factory);
-
-    if (!pluginFactory) {
-        qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return nullptr;
-    }
-
-    return pluginFactory->createPluginFactory();
+    return factory->create<EventViews::CalendarDecoration::Decoration>();
 }
 
 void KOCore::addXMLGUIClient(QWidget *wdg, KXMLGUIClient *guiclient)
