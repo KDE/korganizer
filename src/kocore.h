@@ -31,7 +31,6 @@ public:
     Q_REQUIRED_RESULT KService::List availableCalendarDecorations();
 
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KService::Ptr &service);
-    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const QString &);
     EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
 
     void addXMLGUIClient(QWidget *, KXMLGUIClient *guiclient);

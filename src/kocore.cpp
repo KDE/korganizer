@@ -71,19 +71,6 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
     return pluginFactory->createPluginFactory();
 }
 
-EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const QString &name)
-{
-    const KService::List list = availableCalendarDecorations();
-    KService::List::ConstIterator it;
-    KService::List::ConstIterator end(list.constEnd());
-    for (it = list.constBegin(); it != end; ++it) {
-        if ((*it)->desktopEntryName() == name) {
-            return loadCalendarDecoration(*it);
-        }
-    }
-    return nullptr;
-}
-
 void KOCore::addXMLGUIClient(QWidget *wdg, KXMLGUIClient *guiclient)
 {
     mXMLGUIClients.insert(wdg, guiclient);
