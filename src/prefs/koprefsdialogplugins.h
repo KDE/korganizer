@@ -41,7 +41,6 @@ private:
     QRadioButton *mPositionAgendaTop = nullptr;
     QRadioButton *mPositionAgendaBottom = nullptr;
     QTreeWidgetItem *mDecorations = nullptr;
-    QTreeWidgetItem *mOthers = nullptr;
     QSet<QString> mDecorationsAtMonthViewTop;
     QSet<QString> mDecorationsAtAgendaViewTop;
     QSet<QString> mDecorationsAtAgendaViewBottom;

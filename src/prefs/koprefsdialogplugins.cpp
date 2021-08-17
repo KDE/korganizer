@@ -118,7 +118,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &
 KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
 {
     delete mDecorations;
-    delete mOthers;
 }
 
 void KOPrefsDialogPlugins::usrReadConfig()
@@ -132,7 +131,6 @@ void KOPrefsDialogPlugins::usrReadConfig()
     QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
     mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Calendar Decorations")));
-    mOthers = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Other Plugins")));
 
     KService::List::ConstIterator it;
     KService::List::ConstIterator end(plugins.constEnd());
@@ -152,7 +150,6 @@ void KOPrefsDialogPlugins::usrReadConfig()
     }
 
     mDecorations->setExpanded(true);
-    mOthers->setExpanded(true);
 
     const auto monthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop();
     mDecorationsAtMonthViewTop = QSet<QString>(monthViewTop.begin(), monthViewTop.end());
