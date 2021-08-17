@@ -23,19 +23,8 @@ int main(int argc, char **argv)
     parser.addHelpOption();
     parser.process(app);
 
-    KService::List plugins = KOCore::self()->availablePlugins();
     KService::List::ConstIterator it;
-    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-        qDebug() << "Plugin:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
-        CalendarSupport::Plugin *p = KOCore::self()->loadPlugin(*it);
-        if (!p) {
-            qDebug() << "Plugin loading failed.";
-        } else {
-            qDebug() << "PLUGIN INFO:" << p->info();
-        }
-    }
-
-    plugins = KOCore::self()->availableParts();
+    KService::List plugins = KOCore::self()->availableParts();
     for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
         qDebug() << "Part:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
         KOrg::Part *p = KOCore::self()->loadPart(*it, nullptr);

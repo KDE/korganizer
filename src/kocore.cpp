@@ -46,11 +46,6 @@ KService::List KOCore::availablePlugins(const QString &type, int version)
     return KServiceTypeTrader::self()->query(type, constraint);
 }
 
-KService::List KOCore::availablePlugins()
-{
-    return availablePlugins(CalendarSupport::Plugin::serviceType(), CalendarSupport::Plugin::interfaceVersion());
-}
-
 KService::List KOCore::availableCalendarDecorations()
 {
     return availablePlugins(EventViews::CalendarDecoration::Decoration::serviceType(), EventViews::CalendarDecoration::Decoration::interfaceVersion());
@@ -59,45 +54,6 @@ KService::List KOCore::availableCalendarDecorations()
 KService::List KOCore::availableParts()
 {
     return availablePlugins(KOrg::Part::serviceType(), KOrg::Part::interfaceVersion());
-}
-
-CalendarSupport::Plugin *KOCore::loadPlugin(const KService::Ptr &service)
-{
-    qCDebug(KORGANIZER_LOG) << service->library();
-
-    if (!service->hasServiceType(CalendarSupport::Plugin::serviceType())) {
-        return nullptr;
-    }
-
-    KPluginLoader loader(*service);
-    auto factory = loader.instance();
-
-    if (!factory) {
-        qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return nullptr;
-    }
-
-    auto pluginFactory = qobject_cast<CalendarSupport::PluginFactory *>(factory);
-
-    if (!pluginFactory) {
-        qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return nullptr;
-    }
-
-    return pluginFactory->createPluginFactory();
-}
-
-CalendarSupport::Plugin *KOCore::loadPlugin(const QString &name)
-{
-    KService::List list = availablePlugins();
-    KService::List::ConstIterator it;
-    KService::List::ConstIterator end(list.constEnd());
-    for (it = list.constBegin(); it != end; ++it) {
-        if ((*it)->desktopEntryName() == name) {
-            return loadPlugin(*it);
-        }
-    }
-    return nullptr;
 }
 
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)

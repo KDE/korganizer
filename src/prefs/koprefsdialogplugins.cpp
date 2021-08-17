@@ -123,7 +123,7 @@ KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
 void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
-    KService::List plugins = KOCore::self()->availablePlugins();
+    KService::List plugins = KOCore::self()->availableCalendarDecorations();
     plugins += KOCore::self()->availableParts();
 
     EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
@@ -191,7 +191,7 @@ void KOPrefsDialogPlugins::configure()
         return;
     }
 
-    CalendarSupport::Plugin *plugin = KOCore::self()->loadPlugin(item->service());
+    EventViews::CalendarDecoration::Decoration *plugin = KOCore::self()->loadCalendarDecoration(item->service());
 
     if (plugin) {
         plugin->configure(this);

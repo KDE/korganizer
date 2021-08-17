@@ -28,12 +28,8 @@ public:
 
     static KOCore *self();
 
-    Q_REQUIRED_RESULT KService::List availablePlugins();
     Q_REQUIRED_RESULT KService::List availableCalendarDecorations();
     Q_REQUIRED_RESULT KService::List availableParts();
-
-    CalendarSupport::Plugin *loadPlugin(const KService::Ptr &service);
-    CalendarSupport::Plugin *loadPlugin(const QString &);
 
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KService::Ptr &service);
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const QString &);
