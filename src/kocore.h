@@ -29,39 +29,18 @@ public:
     static KOCore *self();
 
     Q_REQUIRED_RESULT KService::List availableCalendarDecorations();
-    Q_REQUIRED_RESULT KService::List availableParts();
 
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KService::Ptr &service);
     EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const QString &);
-
-    KOrg::Part *loadPart(const KService::Ptr &, KOrg::MainWindow *parent);
-    KOrg::Part *loadPart(const QString &, KOrg::MainWindow *parent);
-
     EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
-    Q_REQUIRED_RESULT KOrg::Part::List loadParts(KOrg::MainWindow *parent);
 
     void addXMLGUIClient(QWidget *, KXMLGUIClient *guiclient);
     void removeXMLGUIClient(QWidget *);
     KXMLGUIClient *xmlguiClient(QWidget *) const;
 
-    /**
-      Unload the parts in &p parts for this main window. Clears
-      parts.
-        @param parent the parent main window for all parts
-        @param parts the list of parts to be undloaded
-    */
-    void unloadParts(KOrg::MainWindow *parent, KOrg::Part::List &parts);
     void unloadPlugins();
 
     void reloadPlugins();
-
-    /**
-      Unloads the parts from the main window. Loads the parts that
-      are listed in KOPrefs and returns a list of these parts.
-        @param parent the parent main window for all parts
-        @param parts the list of parts to be reloaded
-    */
-    KOrg::Part::List reloadParts(KOrg::MainWindow *parent, KOrg::Part::List &parts);
 
     KIdentityManagement::IdentityManager *identityManager();
 

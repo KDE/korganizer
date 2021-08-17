@@ -77,7 +77,6 @@ void KOrganizer::init(bool document)
     mActionManager->createCalendarAkonadi();
 
     mActionManager->init();
-    mActionManager->loadParts();
 
     KOrganizerPluginInterface::self()->setActionCollection(actionCollection());
     KOrganizerPluginInterface::self()->initializePlugins();

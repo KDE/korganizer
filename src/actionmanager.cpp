@@ -100,9 +100,6 @@ ActionManager::ActionManager(KXMLGUIClient *client,
 
 ActionManager::~ActionManager()
 {
-    // Remove Part plugins
-    KOCore::self()->unloadParts(mMainWindow, mParts);
-
     delete mTempFile;
 
     // Take this window out of the window list.
@@ -999,8 +996,6 @@ void ActionManager::updateConfig()
         korgacInterface.show();
     }
 
-// Commented out because it crashes KOrganizer.
-//  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 #ifdef AKONADI_PORT_DISABLED // shouldn't be required anymore
     if (mCollectionView) {
         mCollectionView->updateView();
@@ -1340,17 +1335,7 @@ void ActionManager::keyBindings()
         dlg.addCollection(mMainWindow->getActionCollection());
     }
 
-    for (KOrg::Part *part : std::as_const(mParts)) {
-        if (part) {
-            dlg.addCollection(part->actionCollection(), part->shortInfo());
-        }
-    }
     dlg.configure();
-}
-
-void ActionManager::loadParts()
-{
-    mParts = KOCore::self()->loadParts(mMainWindow);
 }
 
 void ActionManager::setTitle()

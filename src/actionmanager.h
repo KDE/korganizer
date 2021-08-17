@@ -224,8 +224,6 @@ public Q_SLOTS:
     void saveProperties(KConfigGroup &);
     void readProperties(const KConfigGroup &);
 
-    void loadParts();
-
     void importCalendar(const QUrl &url);
 
 protected Q_SLOTS:
@@ -297,7 +295,6 @@ private:
 
     Akonadi::Collection selectedCollection() const;
 
-    KOrg::Part::List mParts; // List of parts loaded
     QUrl mURL; // URL of calendar file
     QString mFile; // Local name of calendar file
     QString mLastUrl; // URL of last loaded calendar.

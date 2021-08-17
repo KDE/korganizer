@@ -124,7 +124,6 @@ void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
     KService::List plugins = KOCore::self()->availableCalendarDecorations();
-    plugins += KOCore::self()->availableParts();
 
     EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
 

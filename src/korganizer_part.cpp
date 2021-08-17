@@ -72,7 +72,6 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVa
     mActionManager->readSettings();
 
     setXMLFile(QStringLiteral("korganizer_part.rc"), true);
-    mActionManager->loadParts();
     setTitle();
 }
 

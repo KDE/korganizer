@@ -51,11 +51,6 @@ KService::List KOCore::availableCalendarDecorations()
     return availablePlugins(EventViews::CalendarDecoration::Decoration::serviceType(), EventViews::CalendarDecoration::Decoration::interfaceVersion());
 }
 
-KService::List KOCore::availableParts()
-{
-    return availablePlugins(KOrg::Part::serviceType(), KOrg::Part::interfaceVersion());
-}
-
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
 {
     KPluginLoader loader(*service);
@@ -89,32 +84,6 @@ EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const
     return nullptr;
 }
 
-KOrg::Part *KOCore::loadPart(const KService::Ptr &service, KOrg::MainWindow *parent)
-{
-    qCDebug(KORGANIZER_LOG) << service->library();
-
-    if (!service->hasServiceType(KOrg::Part::serviceType())) {
-        return nullptr;
-    }
-
-    KPluginLoader loader(*service);
-    KPluginFactory *factory = loader.factory();
-
-    if (!factory) {
-        qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return nullptr;
-    }
-
-    auto pluginFactory = static_cast<KOrg::PartFactory *>(factory);
-
-    if (!pluginFactory) {
-        qCDebug(KORGANIZER_LOG) << "Cast failed";
-        return nullptr;
-    }
-
-    return pluginFactory->createPluginFactory(parent);
-}
-
 void KOCore::addXMLGUIClient(QWidget *wdg, KXMLGUIClient *guiclient)
 {
     mXMLGUIClients.insert(wdg, guiclient);
@@ -137,18 +106,6 @@ KXMLGUIClient *KOCore::xmlguiClient(QWidget *wdg) const
         return it.value();
     }
 
-    return nullptr;
-}
-
-KOrg::Part *KOCore::loadPart(const QString &name, KOrg::MainWindow *parent)
-{
-    const KService::List list = availableParts();
-    KService::List::ConstIterator end(list.constEnd());
-    for (KService::List::ConstIterator it = list.constBegin(); it != end; ++it) {
-        if ((*it)->desktopEntryName() == name) {
-            return loadPart(*it, parent);
-        }
-    }
     return nullptr;
 }
 
@@ -176,59 +133,11 @@ EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations
     return mCalendarDecorations;
 }
 
-KOrg::Part::List KOCore::loadParts(KOrg::MainWindow *parent)
-{
-    KOrg::Part::List parts;
-
-    const QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
-
-    const KService::List plugins = availableParts();
-    const KService::List::ConstIterator end(plugins.constEnd());
-    for (KService::List::ConstIterator it = plugins.constBegin(); it != end; ++it) {
-        if (selectedPlugins.contains((*it)->desktopEntryName())) {
-            KOrg::Part *part = loadPart(*it, parent);
-            if (part) {
-                if (!parent->mainGuiClient()) {
-                    qCCritical(KORGANIZER_LOG) << "parent has no mainGuiClient.";
-                } else {
-                    parent->mainGuiClient()->insertChildClient(part);
-                    parts.append(part);
-                }
-            }
-        }
-    }
-    return parts;
-}
-
 void KOCore::unloadPlugins()
 {
     qDeleteAll(mCalendarDecorations);
     mCalendarDecorations.clear();
     mCalendarDecorationsLoaded = false;
-}
-
-void KOCore::unloadParts(KOrg::MainWindow *parent, KOrg::Part::List &parts)
-{
-    // copy in case caller updates parts on destruction of a part
-    const KOrg::Part::List currentParts = parts;
-    for (KOrg::Part *part : currentParts) {
-        parent->mainGuiClient()->removeChildClient(part);
-        delete part;
-    }
-    parts.clear();
-}
-
-KOrg::Part::List KOCore::reloadParts(KOrg::MainWindow *parent, KOrg::Part::List &parts)
-{
-    KXMLGUIFactory *factory = parent->mainGuiClient()->factory();
-    factory->removeClient(parent->mainGuiClient());
-
-    unloadParts(parent, parts);
-    const KOrg::Part::List list = loadParts(parent);
-
-    factory->addClient(parent->mainGuiClient());
-
-    return list;
 }
 
 void KOCore::reloadPlugins()

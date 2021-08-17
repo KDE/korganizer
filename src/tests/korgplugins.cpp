@@ -24,18 +24,7 @@ int main(int argc, char **argv)
     parser.process(app);
 
     KService::List::ConstIterator it;
-    KService::List plugins = KOCore::self()->availableParts();
-    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-        qDebug() << "Part:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
-        KOrg::Part *p = KOCore::self()->loadPart(*it, nullptr);
-        if (!p) {
-            qDebug() << "Part loading failed.";
-        } else {
-            qDebug() << "PART INFO:" << p->info();
-        }
-    }
-
-    plugins = KOCore::self()->availableCalendarDecorations();
+    KService::List plugins = KOCore::self()->availableCalendarDecorations();
     for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
         qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
         EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
