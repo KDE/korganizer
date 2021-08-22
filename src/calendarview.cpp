@@ -963,28 +963,18 @@ void CalendarView::newEvent(const QString &summary,
                             const QStringList &attachmentMimetypes,
                             bool inlineAttachment)
 {
-    // Adjust the start/end date times (i.e. replace invalid values by defaults,
-    // and let the view adjust the type.
-    QDateTime startDt;
-    QDateTime endDt;
-    bool allDay = false;
-    dateTimesForNewEvent(startDt, endDt, allDay);
+    Akonadi::Collection defaultCol = defaultCollection(KCalendarCore::Event::eventMimeType());
 
-    IncidenceEditorNG::IncidenceDefaults defaults = IncidenceEditorNG::IncidenceDefaults::minimalIncidenceDefaults();
-    defaults.setStartDateTime(startDt);
-    defaults.setEndDateTime(endDt);
-    // if attach or attendee list is empty, these methods don't do anything, so
-    // it's safe to call them in every case
-    defaults.setAttachments(attachments, attachmentMimetypes, QStringList(), inlineAttachment);
-    defaults.setAttendees(attendees);
-
-    KCalendarCore::Event::Ptr event(new KCalendarCore::Event);
-    defaults.setDefaults(event);
-
-    event->setSummary(summary);
-    event->setDescription(description);
-    event->setAllDay(allDay);
-    newEventEditor(event);
+    IncidenceEditorNG::IncidenceDialogFactory::createEventEditor(summary,
+                                                                 description,
+                                                                 attachments,
+                                                                 attendees,
+                                                                 attachmentMimetypes,
+                                                                 QStringList() /* attachment labels */,
+                                                                 inlineAttachment,
+                                                                 defaultCol,
+                                                                 true /* cleanupAttachmentTempFiles */,
+                                                                 this /* parent */);
 }
 
 void CalendarView::newTodo(const QString &summary,

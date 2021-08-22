@@ -16,7 +16,10 @@
 #include <KCalendarCore/Incidence>
 #include <KCalendarCore/MemoryCalendar>
 
+#include <ItemFetchJob>
+#include <ItemFetchScope>
 #include <KCalUtils/ICalDrag>
+#include <KMime/Message>
 
 #include <KontactInterface/Core>
 
@@ -25,6 +28,7 @@
 #include <KLocalizedString>
 #include <QAction>
 #include <QIcon>
+#include <QTemporaryFile>
 
 #include <QDropEvent>
 #include <QStandardPaths>
@@ -156,6 +160,44 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
                 return;
             }
             // else fall through to text decoding
+        }
+    }
+
+    if (md->hasUrls()) {
+        for (const auto &url : md->urls()) {
+            if (url.scheme() == QStringLiteral("akonadi") && url.hasQuery()) {
+                const QUrlQuery query(url.query());
+                if (!query.queryItemValue(QStringLiteral("item")).isEmpty()
+                    && query.queryItemValue(QStringLiteral("type")) == QStringLiteral("message/rfc822")) {
+                    Akonadi::ItemFetchJob *job =
+                        new Akonadi::ItemFetchJob(Akonadi::Item(static_cast<qint64>(query.queryItemValue(QStringLiteral("item")).toLongLong())));
+                    job->fetchScope().fetchAllAttributes();
+                    job->fetchScope().fetchFullPayload(true);
+                    connect(job, &KJob::result, this, [this, url](KJob *job) {
+                        if (job->error()) {
+                            return;
+                        }
+                        Akonadi::ItemFetchJob *fetchJob = qobject_cast<Akonadi::ItemFetchJob *>(job);
+                        const Akonadi::Item::List items = fetchJob->items();
+                        for (const Akonadi::Item &item : items) {
+                            if (item.mimeType() == QStringLiteral("message/rfc822")) {
+                                auto mail = item.payload<KMime::Message::Ptr>();
+                                interface()->openEventEditor(i18nc("Event from email summary", "Mail: %1", mail->subject()->asUnicodeString()),
+                                                             i18nc("Event from email content",
+                                                                   "<b>From:</b> %1<br /><b>To:</b> %2<br /><b>Subject:</b> %3",
+                                                                   mail->from()->displayString(),
+                                                                   mail->to()->displayString(),
+                                                                   mail->subject()->asUnicodeString()),
+                                                             url.toDisplayString(),
+                                                             QString(),
+                                                             QStringList(),
+                                                             QStringLiteral("message/rfc822"));
+                            }
+                        }
+                    });
+                }
+                return;
+            }
         }
     }
 

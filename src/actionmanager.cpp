@@ -1368,6 +1368,8 @@ void ActionManager::openEventEditor(const QString &summary,
     int action = IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod();
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
         action = IncidenceEditorNG::IncidenceEditorSettings::Link;
+    } else if (file.isEmpty()) {
+        action = KOPrefs::TodoAttachLink;
     } else if (IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethod() == IncidenceEditorNG::IncidenceEditorSettings::Ask) {
         auto menu = new QMenu(nullptr);
         QAction *attachLink = menu->addAction(i18n("Attach as &link"));
@@ -1471,6 +1473,8 @@ void ActionManager::openTodoEditor(const QString &summary,
 {
     int action = KOPrefs::instance()->defaultTodoAttachMethod();
     if (attachmentMimetype != QLatin1String("message/rfc822")) {
+        action = KOPrefs::TodoAttachLink;
+    } else if (file.isEmpty()) {
         action = KOPrefs::TodoAttachLink;
     } else if (KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk) {
         auto menu = new QMenu(nullptr);
