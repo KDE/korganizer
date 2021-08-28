@@ -14,6 +14,8 @@
 
 #include <EventViews/ListView>
 
+#include <KConfigGroup>
+
 #include <QVBoxLayout>
 
 using namespace KOrg;
@@ -146,12 +148,13 @@ void KOListView::popupMenu(const QPoint &point)
 
 void KOListView::readSettings(KConfig *config)
 {
-    mListView->readSettings(config);
+    mListView->readSettings(config->group("ListView Layout"));
 }
 
 void KOListView::writeSettings(KConfig *config)
 {
-    mListView->writeSettings(config);
+    auto cfgGroup = config->group("ListView Layout");
+    mListView->writeSettings(cfgGroup);
 }
 
 void KOListView::clearSelection()
