@@ -30,8 +30,8 @@ SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
 {
     mIdentityManager = KIdentityManagement::IdentityManager::self();
     setupSearchCollections();
-    connect(mIdentityManager, QOverload<>::of(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
-    connect(mIdentityManager, QOverload<>::of(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
+    connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
+    connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);
 }
 
 void SearchCollectionHelper::setupSearchCollections()

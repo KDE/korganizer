@@ -216,7 +216,7 @@ CalendarView::CalendarView(QWidget *parent)
     connect(mDateNavigatorContainer,
             &DateNavigatorContainer::datesSelected,
             mDateNavigator,
-            QOverload<const KCalendarCore::DateList &, QDate>::of(&DateNavigator::selectDates));
+            qOverload<const KCalendarCore::DateList &, QDate>(&DateNavigator::selectDates));
 
     connect(mViewManager, &KOViewManager::datesSelected, mDateNavigator, [this](const KCalendarCore::DateList &dates) {
         mDateNavigator->selectDates(dates);

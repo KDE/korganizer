@@ -35,8 +35,8 @@ KCMTodoSummary::KCMTodoSummary(QWidget *parent, const QVariantList &args)
     connect(mHideInProgressBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
     connect(mHideOverdueBox, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
 
-    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMTodoSummary::modified);
-    connect(mCustomDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &KCMTodoSummary::customDaysChanged);
+    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMTodoSummary::modified);
+    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMTodoSummary::customDaysChanged);
 
     connect(mShowMineOnly, &QCheckBox::stateChanged, this, &KCMTodoSummary::modified);
 
