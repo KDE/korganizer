@@ -45,8 +45,8 @@ private:
 
     QToolButton *mPrevYear = nullptr;
     QToolButton *mPrevMonth = nullptr;
-    QToolButton *mMonth = nullptr;
-    QToolButton *mYear = nullptr;
+    QToolButton *const mMonth;
+    QToolButton *const mYear;
     QToolButton *mNextMonth = nullptr;
     QToolButton *mNextYear = nullptr;
 };

@@ -45,6 +45,6 @@ private:
     void showIncidenceContext();
     void delayedDestruct();
     CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
-    QPushButton *mUser1Button = nullptr;
+    QPushButton *const mUser1Button;
 };
 

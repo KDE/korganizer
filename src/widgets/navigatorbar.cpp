@@ -18,6 +18,8 @@
 
 NavigatorBar::NavigatorBar(QWidget *parent)
     : QWidget(parent)
+    , mMonth(new QToolButton(this))
+    , mYear(new QToolButton(this))
 {
     QFont tfont = font();
     tfont.setPointSize(10);
@@ -46,14 +48,12 @@ NavigatorBar::NavigatorBar(QWidget *parent)
                                             "same approximate day of the next year"));
 
     // Create month name button
-    mMonth = new QToolButton(this);
     mMonth->setPopupMode(QToolButton::InstantPopup);
     mMonth->setAutoRaise(true);
     mMonth->setFont(tfont);
     mMonth->setToolTip(i18n("Select a month"));
 
     // Create year button
-    mYear = new QToolButton(this);
     mYear->setPopupMode(QToolButton::InstantPopup);
     mYear->setAutoRaise(true);
     mYear->setFont(tfont);
