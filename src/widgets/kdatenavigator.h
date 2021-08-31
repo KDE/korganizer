@@ -101,7 +101,7 @@ protected:
 
 private:
     void selectMonthHelper(int monthDifference);
-    NavigatorBar *mNavigatorBar = nullptr;
+    NavigatorBar *const mNavigatorBar;
 
     QLabel *mHeadings[7];
     QLabel *mWeeknos[7];

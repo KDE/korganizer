@@ -55,7 +55,7 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogPlugins, "korganizer_configplugins.json")
 KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &args)
     : KPrefsModule(KOPrefs::instance(), parent, args)
 {
-    QBoxLayout *topTopLayout = new QVBoxLayout(this);
+    auto topTopLayout = new QVBoxLayout(this);
     mTreeWidget = new QTreeWidget(this);
     mTreeWidget->setColumnCount(1);
     mTreeWidget->setHeaderLabel(i18nc("@title:column plugin name", "Name"));

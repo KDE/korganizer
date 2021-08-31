@@ -30,7 +30,7 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogColorsAndFonts, "korganizer_configcolorsan
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const QVariantList &args)
     : Korganizer::KPrefsModule(KOPrefs::instance(), parent, args)
 {
-    QBoxLayout *topTopLayout = new QVBoxLayout(this);
+    auto topTopLayout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);
     topTopLayout->addWidget(tabWidget);
 

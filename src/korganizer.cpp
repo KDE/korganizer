@@ -40,6 +40,7 @@
 KOrganizer::KOrganizer()
     : KParts::MainWindow()
     , KOrg::MainWindow()
+    , mCalendarView(new CalendarView(this))
 {
     // Set this to be the group leader for all subdialogs - this means
     // modal subdialogs will only affect this dialog, not the other windows
@@ -48,7 +49,6 @@ KOrganizer::KOrganizer()
     KOCore::self()->addXMLGUIClient(this, this);
     //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
-    mCalendarView = new CalendarView(this);
     mCalendarView->setObjectName(QStringLiteral("KOrganizer::CalendarView"));
     setCentralWidget(mCalendarView);
 

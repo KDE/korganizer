@@ -22,8 +22,8 @@
 
 DateNavigatorContainer::DateNavigatorContainer(QWidget *parent)
     : QFrame(parent)
+    , mNavigatorView(new KDateNavigator(this))
 {
-    mNavigatorView = new KDateNavigator(this);
     mNavigatorView->setWhatsThis(
         i18n("<qt><p>Select the dates you want to "
              "display in KOrganizer's main view here. Hold the "

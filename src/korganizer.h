@@ -102,7 +102,7 @@ protected:
     void readProperties(const KConfigGroup &) override;
 
 private:
-    CalendarView *mCalendarView = nullptr; // Main view widget
+    CalendarView *const mCalendarView; // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
     ActionManager *mActionManager = nullptr;

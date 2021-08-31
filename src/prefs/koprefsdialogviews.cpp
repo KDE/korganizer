@@ -30,7 +30,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args
     , mMonthIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::MonthType, this))
     , mAgendaIconComboBox(new KItemIconCheckCombo(KItemIconCheckCombo::AgendaType, this))
 {
-    QBoxLayout *topTopLayout = new QVBoxLayout(this);
+    auto topTopLayout = new QVBoxLayout(this);
     auto tabWidget = new QTabWidget(this);
     topTopLayout->addWidget(tabWidget);
 

@@ -26,6 +26,6 @@ protected:
     void usrReadConfig() override;
 
 private:
-    Ui::KOGroupwarePrefsPage *mGroupwarePage = nullptr;
+    Ui::KOGroupwarePrefsPage *const mGroupwarePage;
 };
 

@@ -21,20 +21,20 @@ K_PLUGIN_CLASS_WITH_JSON(KCMApptSummary, "kcmapptsummary.json")
 
 KCMApptSummary::KCMApptSummary(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
+    , mDaysButtonGroup(new QButtonGroup(this)) // krazy:exclude=tipsandthis
+    , mShowButtonGroup(new QButtonGroup(this)) // krazy:exclude=tipsandthis
+    , mGroupwareButtonGroup(new QButtonGroup(this)) // krazy:exclude=tipsandthis
 {
     setupUi(this);
 
-    mDaysButtonGroup = new QButtonGroup(this); // krazy:exclude=tipsandthis
     mDaysButtonGroup->addButton(mDateTodayButton, 0);
     mDaysButtonGroup->addButton(mDateMonthButton, 1);
     mDaysButtonGroup->addButton(mDateRangeButton, 2);
 
-    mShowButtonGroup = new QButtonGroup(this); // krazy:exclude=tipsandthis
     mShowButtonGroup->setExclusive(false);
     mShowButtonGroup->addButton(mShowBirthdaysFromCal);
     mShowButtonGroup->addButton(mShowAnniversariesFromCal);
 
-    mGroupwareButtonGroup = new QButtonGroup(this); // krazy:exclude=tipsandthis
     mGroupwareButtonGroup->setExclusive(false);
     mGroupwareButtonGroup->addButton(mShowMineOnly);
 

@@ -20,8 +20,8 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupwareScheduling, "korganizer_configfre
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *parent, const QVariantList &args)
     : KPrefsModule(CalendarSupport::KCalPrefs::instance(), parent, args)
+    , mGroupwarePage(new Ui::KOGroupwarePrefsPage())
 {
-    mGroupwarePage = new Ui::KOGroupwarePrefsPage();
     auto widget = new QWidget(this);
     widget->setObjectName(QStringLiteral("KOGrouparePrefsPage"));
 

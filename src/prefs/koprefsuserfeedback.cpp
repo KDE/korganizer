@@ -23,6 +23,7 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsUserFeedBack, "korganizer_userfeedback.json")
 
 KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &args)
     : KCModule(parent, args)
+    , mUserFeedbackWidget(new KUserFeedback::FeedbackConfigWidget(this))
 {
     auto about = new KAboutData(QStringLiteral("KCMUserFeedBack"),
                                 i18n("KCMUserFeedBack"),
@@ -35,7 +36,6 @@ KOPrefsUserFeedBack::KOPrefsUserFeedBack(QWidget *parent, const QVariantList &ar
     auto layout = new QVBoxLayout(this);
     layout->setContentsMargins({});
 
-    mUserFeedbackWidget = new KUserFeedback::FeedbackConfigWidget(this);
     connect(mUserFeedbackWidget, &KUserFeedback::FeedbackConfigWidget::configurationChanged, this, &KOPrefsUserFeedBack::markAsChanged);
 
     layout->addWidget(mUserFeedbackWidget);

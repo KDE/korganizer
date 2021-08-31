@@ -27,8 +27,8 @@ using namespace KOrg;
 
 SearchCollectionHelper::SearchCollectionHelper(QObject *parent)
     : QObject(parent)
+    , mIdentityManager(KIdentityManagement::IdentityManager::self())
 {
-    mIdentityManager = KIdentityManagement::IdentityManager::self();
     setupSearchCollections();
     connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateOpenInvitation);
     connect(mIdentityManager, qOverload<>(&KIdentityManagement::IdentityManager::changed), this, &SearchCollectionHelper::updateDeclinedInvitation);

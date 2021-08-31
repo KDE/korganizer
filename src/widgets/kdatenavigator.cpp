@@ -22,13 +22,13 @@
 
 KDateNavigator::KDateNavigator(QWidget *parent)
     : QFrame(parent)
+    , mNavigatorBar(new NavigatorBar(this))
     , mBaseDate(1970, 1, 1)
 {
     auto topLayout = new QGridLayout(this);
     topLayout->setContentsMargins({});
     topLayout->setSpacing(0);
 
-    mNavigatorBar = new NavigatorBar(this);
     topLayout->addWidget(mNavigatorBar, 0, 0, 1, 8);
 
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, this, &KDateNavigator::prevYearClicked);

@@ -131,7 +131,7 @@ private:
      */
     KDateNavigator *firstNavigatorForDate(const QDate &date) const;
 
-    KDateNavigator *mNavigatorView = nullptr;
+    KDateNavigator *const mNavigatorView;
 
     Akonadi::ETMCalendar::Ptr mCalendar;
 

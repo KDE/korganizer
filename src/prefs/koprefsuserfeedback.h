@@ -26,7 +26,7 @@ protected:
     void save() override;
 
 private:
-    KUserFeedback::FeedbackConfigWidget *mUserFeedbackWidget = nullptr;
+    KUserFeedback::FeedbackConfigWidget *const mUserFeedbackWidget;
 };
 #endif
 

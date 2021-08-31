@@ -37,7 +37,7 @@ private:
     void updateSearchCollection(Akonadi::Collection col, KCalendarCore::Attendee::PartStat status, const QString &name, const QString &displayName);
 
 private:
-    KIdentityManagement::IdentityManager *mIdentityManager = nullptr;
+    KIdentityManagement::IdentityManager *const mIdentityManager;
     Akonadi::Collection mOpenInvitationCollection;
     Akonadi::Collection mDeclineCollection;
 };
