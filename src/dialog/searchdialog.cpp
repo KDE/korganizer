@@ -259,14 +259,14 @@ void SearchDialog::readConfig()
     if (size.isValid()) {
         resize(size);
     }
-    m_listView->readSettings(KSharedConfig::openConfig().data());
+    m_listView->readSettings(group);
 }
 
 void SearchDialog::writeConfig()
 {
     KConfigGroup group = KSharedConfig::openConfig()->group(QStringLiteral("SearchDialog"));
     group.writeEntry("Size", size());
-    m_listView->writeSettings(KSharedConfig::openConfig().data());
+    m_listView->writeSettings(group);
     group.sync();
 }
 
