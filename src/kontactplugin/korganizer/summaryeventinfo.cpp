@@ -70,7 +70,7 @@ SummaryEventInfo::SummaryEventInfo()
 }
 
 /**static*/
-SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, const QDate &end, const Akonadi::ETMCalendar::Ptr &calendar)
+SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, const Akonadi::ETMCalendar::Ptr &calendar)
 {
     KCalendarCore::Event::List allEvents = calendar->events();
     KCalendarCore::Event::List events;
@@ -261,7 +261,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(const QDate &start, cons
     return eventInfoList;
 }
 
-SummaryEventInfo::List SummaryEventInfo::eventsForDate(const QDate &date, const Akonadi::ETMCalendar::Ptr &calendar)
+SummaryEventInfo::List SummaryEventInfo::eventsForDate(QDate date, const Akonadi::ETMCalendar::Ptr &calendar)
 {
     return eventsForRange(date, date, calendar);
 }
