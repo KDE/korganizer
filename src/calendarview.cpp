@@ -686,8 +686,6 @@ void CalendarView::changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::In
         mDateNavigatorContainer->updateView();
     }
 
-    mDialogManager->updateSearchDialog();
-
     if (CalendarSupport::hasIncidence(item)) {
         // If there is an event view visible update the display
         mViewManager->currentView()->changeIncidenceDisplay(item, changeType);
