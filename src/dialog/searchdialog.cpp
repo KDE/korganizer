@@ -29,7 +29,7 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     , m_ui(new Ui::SearchDialog)
     , m_calendarview(calendarview)
 {
-    setWindowTitle(i18nc("@title:window", "Search Calendar"));
+    setWindowTitle(i18nc("@title:window", "Find in Calendars"));
     setModal(false);
 
     auto mainLayout = new QVBoxLayout(this);
