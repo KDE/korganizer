@@ -97,7 +97,8 @@ void KODialogManager::showSearchDialog()
 {
     if (!mSearchDialog) {
         mSearchDialog = new SearchDialog(mMainView);
-        // mSearchDialog->setCalendar( mMainView->calendar() );
+        connect(mMainView->calendar().data(), &Akonadi::ETMCalendar::calendarChanged,
+                mSearchDialog, &SearchDialog::updateView);
         connect(mSearchDialog, &SearchDialog::showIncidenceSignal,
                 mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
         connect(mSearchDialog, &SearchDialog::editIncidenceSignal,
