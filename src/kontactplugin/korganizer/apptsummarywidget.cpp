@@ -16,7 +16,7 @@
 #include <CalendarSupport/Utils>
 
 #include <Akonadi/Calendar/IncidenceChanger>
-#include <AkonadiCore/Collection>
+#include <Akonadi/Collection>
 
 #include <KCalendarCore/Calendar>
 #include <KCalendarCore/Event>

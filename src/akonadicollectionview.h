@@ -12,7 +12,7 @@
 
 #include "calendarview.h"
 #include "views/collectionview/reparentingmodel.h"
-#include <AkonadiCore/Collection>
+#include <Akonadi/Collection>
 
 class AkonadiCollectionView;
 class ManageShowCollectionProperties;

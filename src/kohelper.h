@@ -10,7 +10,7 @@
 
 #include "korganizerprivate_export.h"
 
-#include <AkonadiCore/Collection>
+#include <Akonadi/Collection>
 
 #include <KCalendarCore/Incidence>
 

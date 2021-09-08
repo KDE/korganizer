@@ -11,7 +11,7 @@
 #include <QObject>
 #include <QString>
 
-#include <AkonadiCore/Collection>
+#include <Akonadi/Collection>
 #include <KCalendarCore/Attendee>
 #include <KIdentityManagement/KIdentityManagement/IdentityManager>
 

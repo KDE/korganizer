@@ -8,7 +8,7 @@
 #include "collectiongeneralpage.h"
 #include <Akonadi/Calendar/BlockAlarmsAttribute>
 #include <Akonadi/Collection>
-#include <EntityDisplayAttribute>
+#include <Akonadi/EntityDisplayAttribute>
 #include <PimCommon/PimUtil>
 
 #include <KCalendarCore/Event>

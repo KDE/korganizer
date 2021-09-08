@@ -14,7 +14,7 @@
 
 #include <QElapsedTimer>
 
-#include <AkonadiCore/Collection>
+#include <Akonadi/Collection>
 
 #include <KCalendarCore/Attendee>
 #include <KCalendarCore/Incidence>
