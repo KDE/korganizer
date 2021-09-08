@@ -14,10 +14,10 @@
 
 #include <Akonadi/Contact/ContactSearchJob>
 #include <Akonadi/Contact/ContactViewerDialog>
-#include <AkonadiCore/EntityDisplayAttribute>
-#include <AkonadiCore/ItemFetchJob>
-#include <AkonadiCore/ItemFetchScope>
-#include <AkonadiCore/SearchQuery>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/ItemFetchJob>
+#include <Akonadi/ItemFetchScope>
+#include <Akonadi/SearchQuery>
 #include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/Utils>
 

@@ -10,7 +10,7 @@
 
 #include "summaryeventinfo.h"
 
-#include <AkonadiCore/Item>
+#include <Akonadi/Item>
 
 #include <KCalendarCore/Calendar>
 #include <KCalendarCore/Event>

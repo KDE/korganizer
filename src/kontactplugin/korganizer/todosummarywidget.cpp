@@ -14,8 +14,8 @@
 #include <CalendarSupport/Utils>
 
 #include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/ItemFetchScope>
 #include <AkonadiCore/Collection>
-#include <AkonadiCore/ItemFetchScope>
 
 #include <KCalUtils/IncidenceFormatter>
 

@@ -16,7 +16,7 @@
 #include "part.h"
 
 #include <Akonadi/Calendar/ETMCalendar>
-#include <AkonadiCore/Item>
+#include <Akonadi/Item>
 
 #include <KViewStateMaintainer>
 #include <QUrl>

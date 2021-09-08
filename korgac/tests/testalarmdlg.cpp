@@ -8,7 +8,7 @@
 
 #include "../alarmdialog.h" //fullpath since incidenceeditors also has an alarmdialog.h
 
-#include <AkonadiCore/Item>
+#include <Akonadi/Item>
 
 #include <KCalendarCore/Event>
 #include <KCalendarCore/Todo>

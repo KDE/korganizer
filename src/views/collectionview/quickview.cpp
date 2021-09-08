@@ -8,9 +8,9 @@
 #include "korganizer_debug.h"
 #include "ui_quickview.h"
 
-#include <AkonadiCore/changerecorder.h>
-#include <AkonadiCore/entitydisplayattribute.h>
-#include <AkonadiCore/itemfetchscope.h>
+#include <Akonadi/ChangeRecorder>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/ItemFetchScope>
 
 #include <KCalendarCore/Event>
 #include <KCalendarCore/MemoryCalendar>

@@ -32,8 +32,8 @@
 #include "views/todoview/kotodoview.h"
 #include "widgets/navigatorbar.h"
 
-#include <AkonadiCore/AttributeFactory>
-#include <AkonadiCore/CollectionIdentificationAttribute>
+#include <Akonadi/AttributeFactory>
+#include <Akonadi/CollectionIdentificationAttribute>
 
 #include <Akonadi/Calendar/CalendarClipboard>
 #include <Akonadi/Calendar/FreeBusyManager>
@@ -41,9 +41,9 @@
 #include <Akonadi/Calendar/TodoPurger>
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
-#include <AkonadiWidgets/CollectionMaintenancePage>
-#include <AkonadiWidgets/CollectionPropertiesDialog>
-#include <AkonadiWidgets/ControlGui>
+#include <Akonadi/CollectionMaintenancePage>
+#include <Akonadi/CollectionPropertiesDialog>
+#include <Akonadi/ControlGui>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/CalendarSingleton>

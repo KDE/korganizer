@@ -15,7 +15,7 @@
 
 #include <CalendarSupport/CalPrinter>
 
-#include <AkonadiCore/EntityTreeModel>
+#include <Akonadi/EntityTreeModel>
 
 #include <QVBoxLayout>
 

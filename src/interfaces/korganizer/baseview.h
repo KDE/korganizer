@@ -17,8 +17,8 @@
 #include <Akonadi/Calendar/ETMCalendar>
 #include <Akonadi/Calendar/IncidenceChanger>
 
-#include <AkonadiCore/Collection>
-#include <AkonadiCore/Item>
+#include <Akonadi/Collection>
+#include <Akonadi/Item>
 
 #include <QWidget>
 

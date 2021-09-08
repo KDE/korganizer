@@ -17,7 +17,7 @@
 
 #include <CalendarSupport/KCalPrefs>
 
-#include <AkonadiWidgets/ManageAccountWidget>
+#include <Akonadi/ManageAccountWidget>
 #include <IncidenceEditor/IncidenceEditorSettings>
 
 #include <KLocalizedString>

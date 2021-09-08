@@ -8,7 +8,7 @@
 
 #include "korganizerprivate_export.h"
 
-#include <AkonadiWidgets/CollectionPropertiesPage>
+#include <Akonadi/CollectionPropertiesPage>
 
 class QLineEdit;
 class KIconButton;

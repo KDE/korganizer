@@ -10,8 +10,8 @@
 #include "koeventpopupmenu.h"
 #include "korganizer_debug.h"
 
+#include <Akonadi/ItemCreateJob>
 #include <Akonadi/Notes/NoteUtils>
-#include <AkonadiCore/ItemCreateJob>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/NoteEditDialog>

@@ -13,7 +13,7 @@
 #include <QMenu>
 
 #include <Akonadi/Calendar/ETMCalendar>
-#include <AkonadiCore/Item>
+#include <Akonadi/Item>
 
 /**
  * Context menu with standard Incidence actions.

@@ -13,8 +13,8 @@
 #include "koalarmclient_debug.h"
 #include "korgacadaptor.h"
 
-#include <AkonadiCore/EntityTreeModel>
-#include <AkonadiCore/ServerManager>
+#include <Akonadi/EntityTreeModel>
+#include <Akonadi/ServerManager>
 
 #include <CalendarSupport/Utils>
 

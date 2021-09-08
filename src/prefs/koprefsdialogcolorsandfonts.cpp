@@ -9,7 +9,7 @@
 
 #include "koprefsdialogcolorsandfonts.h"
 #include "koprefs.h"
-#include <AkonadiCore/EntityTreeModel>
+#include <Akonadi/EntityTreeModel>
 #include <CalendarSupport/KCalPrefs>
 #include <CollectionComboBox>
 #include <KColorButton>

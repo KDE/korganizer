@@ -22,8 +22,8 @@
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
 
-#include <AkonadiCore/Item>
-#include <AkonadiWidgets/TagManagementDialog>
+#include <Akonadi/Item>
+#include <Akonadi/TagManagementDialog>
 
 #include <KCalendarCore/Visitor>
 

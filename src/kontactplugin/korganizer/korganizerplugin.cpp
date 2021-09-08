@@ -16,8 +16,8 @@
 #include <KCalendarCore/Incidence>
 #include <KCalendarCore/MemoryCalendar>
 
-#include <ItemFetchJob>
-#include <ItemFetchScope>
+#include <Akonadi/ItemFetchJob>
+#include <Akonadi/ItemFetchScope>
 #include <KCalUtils/ICalDrag>
 #include <KMime/Message>
 

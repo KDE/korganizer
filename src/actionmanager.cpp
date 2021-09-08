@@ -35,10 +35,10 @@
 
 #include <Akonadi/Calendar/History>
 #include <Akonadi/Calendar/ICalImporter>
-#include <AkonadiCore/EntityDisplayAttribute>
-#include <AkonadiCore/EntityTreeModel>
-#include <AkonadiWidgets/ETMViewStateSaver>
-#include <AkonadiWidgets/EntityTreeView>
+#include <Akonadi/ETMViewStateSaver>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/EntityTreeModel>
+#include <Akonadi/EntityTreeView>
 
 #include <KCalendarCore/FileStorage>
 #include <KCalendarCore/ICalFormat>

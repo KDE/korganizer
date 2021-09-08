@@ -7,11 +7,11 @@
 #include "manageshowcollectionproperties.h"
 #include "akonadicollectionview.h"
 #include "korganizer_debug.h"
-#include <AkonadiCore/CollectionAttributesSynchronizationJob>
-#include <AkonadiCore/CollectionFetchJob>
-#include <AkonadiCore/CollectionFetchScope>
-#include <AkonadiWidgets/CollectionMaintenancePage>
-#include <AkonadiWidgets/CollectionPropertiesDialog>
+#include <Akonadi/CollectionAttributesSynchronizationJob>
+#include <Akonadi/CollectionFetchJob>
+#include <Akonadi/CollectionFetchScope>
+#include <Akonadi/CollectionMaintenancePage>
+#include <Akonadi/CollectionPropertiesDialog>
 
 ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent)
     : QObject(parent)

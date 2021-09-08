@@ -15,7 +15,7 @@
 
 #include <Libkdepim/LineEditCatchReturnKey>
 
-#include <AkonadiWidgets/TagSelectionDialog>
+#include <Akonadi/TagSelectionDialog>
 
 #include <PimCommon/PimUtil>
 

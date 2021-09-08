@@ -22,18 +22,18 @@
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
+#include <Akonadi/AgentFilterProxyModel>
+#include <Akonadi/AgentInstanceCreateJob>
+#include <Akonadi/AgentManager>
+#include <Akonadi/AgentTypeDialog>
 #include <Akonadi/Calendar/StandardCalendarActionManager>
-#include <AkonadiCore/AgentFilterProxyModel>
-#include <AkonadiCore/AgentInstanceCreateJob>
-#include <AkonadiCore/AgentManager>
-#include <AkonadiCore/CollectionDeleteJob>
-#include <AkonadiCore/CollectionFilterProxyModel>
-#include <AkonadiCore/CollectionIdentificationAttribute>
-#include <AkonadiCore/EntityDisplayAttribute>
-#include <AkonadiCore/EntityTreeModel>
-#include <AkonadiWidgets/AgentTypeDialog>
-#include <AkonadiWidgets/ETMViewStateSaver>
-#include <AkonadiWidgets/EntityTreeView>
+#include <Akonadi/CollectionDeleteJob>
+#include <Akonadi/CollectionFilterProxyModel>
+#include <Akonadi/CollectionIdentificationAttribute>
+#include <Akonadi/ETMViewStateSaver>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/EntityTreeModel>
+#include <Akonadi/EntityTreeView>
 #include <PimCommonAkonadi/MailUtil>
 #include <PimCommonAkonadi/ManageServerSideSubscriptionJob>
 

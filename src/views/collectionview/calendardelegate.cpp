@@ -8,7 +8,7 @@
 #include "kohelper.h"
 #include "korganizer_debug.h"
 
-#include <AkonadiCore/CollectionStatistics>
+#include <Akonadi/CollectionStatistics>
 
 #include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/Utils>

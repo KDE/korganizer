@@ -9,13 +9,13 @@
 #include "searchcollectionhelper.h"
 #include "korganizer_debug.h"
 
-#include <AkonadiCore/CollectionFetchJob>
-#include <AkonadiCore/CollectionFetchScope>
-#include <AkonadiCore/CollectionModifyJob>
-#include <AkonadiCore/EntityDisplayAttribute>
-#include <AkonadiCore/PersistentSearchAttribute>
-#include <AkonadiCore/SearchCreateJob>
-#include <AkonadiCore/SearchQuery>
+#include <Akonadi/CollectionFetchJob>
+#include <Akonadi/CollectionFetchScope>
+#include <Akonadi/CollectionModifyJob>
+#include <Akonadi/EntityDisplayAttribute>
+#include <Akonadi/PersistentSearchAttribute>
+#include <Akonadi/SearchCreateJob>
+#include <Akonadi/SearchQuery>
 
 #include <KCalendarCore/Event>
 #include <KCalendarCore/Journal>

@@ -15,7 +15,7 @@
 #include <CalendarSupport/IncidenceViewer>
 #include <CalendarSupport/Utils>
 
-#include <AkonadiCore/Item>
+#include <Akonadi/Item>
 
 #include <KGuiItem>
 #include <KLocalizedString>

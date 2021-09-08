@@ -15,8 +15,8 @@
 #include <EventViews/AgendaView>
 #include <EventViews/MultiAgendaView>
 
-#include <AkonadiCore/EntityTreeModel>
-#include <AkonadiWidgets/EntityTreeView>
+#include <Akonadi/EntityTreeModel>
+#include <Akonadi/EntityTreeView>
 
 #include <KCheckableProxyModel>
 
