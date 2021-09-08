@@ -35,11 +35,6 @@ public:
 
     Q_REQUIRED_RESULT int firstDayOfWeek() const;
 
-    /**
-       Returns a list containing work days between @p start and @end.
-    */
-    Q_REQUIRED_RESULT QList<QDate> workDays(QDate start, QDate end) const;
-
     Q_REQUIRED_RESULT int getWorkWeekMask();
 
     /**

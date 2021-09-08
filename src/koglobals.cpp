@@ -70,35 +70,6 @@ int KOGlobals::firstDayOfWeek() const
     return KOPrefs::instance()->mWeekStartDay + 1;
 }
 
-QList<QDate> KOGlobals::workDays(QDate startDate, QDate endDate) const
-{
-    QList<QDate> result;
-
-    const int mask(~(KOPrefs::instance()->mWorkWeekMask));
-    const qint64 numDays = startDate.daysTo(endDate) + 1;
-
-    for (int i = 0; i < numDays; ++i) {
-        const QDate date = startDate.addDays(i);
-        if (!(mask & (1 << (date.dayOfWeek() - 1)))) {
-            result.append(date);
-        }
-    }
-
-    if (KOPrefs::instance()->mExcludeHolidays) {
-        for (const KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
-            const KHolidays::Holiday::List list = region->holidays(startDate, endDate);
-            for (int i = 0; i < list.count(); ++i) {
-                const KHolidays::Holiday &h = list.at(i);
-                if (h.dayType() == KHolidays::Holiday::NonWorkday) {
-                    result.removeAll(h.observedStartDate());
-                }
-            }
-        }
-    }
-
-    return result;
-}
-
 int KOGlobals::getWorkWeekMask()
 {
     return KOPrefs::instance()->mWorkWeekMask;

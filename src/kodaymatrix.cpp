@@ -741,7 +741,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
     p.setPen(actcol);
     QPen tmppen;
 
-    const QList<QDate> workDays = KOGlobals::self()->workDays(mDays[0], mDays[NUMDAYS - 1]);
+    const QList<QDate> workDays = CalendarSupport::workDays(mDays[0], mDays[NUMDAYS - 1]);
     for (int i = 0; i < NUMDAYS; ++i) {
         row = i / 7;
         column = isRTL ? 6 - (i - row * 7) : i - row * 7;
