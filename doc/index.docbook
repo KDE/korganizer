@@ -973,7 +973,8 @@ panel if you press the <inlinemediaobject><imageobject>
 <menuchoice><guimenu>View</guimenu><guimenuitem>Journal</guimenuitem>
 </menuchoice> menu item.</para>
 
-<para>When you click the <guilabel>add journal entry</guilabel> link, a new journal
+<para>When you click the <guilabel>New journal ...</guilabel> link (or the
+<guibutton>New Journal ...</guibutton> button), a new journal
 entry will be created. If you want to edit a journal entry, just click the
 text box and edit it! To remove a journal entry, press the <inlinemediaobject>
 <imageobject><imagedata fileref="edit-delete.png" format="PNG"/>
