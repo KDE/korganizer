@@ -27,7 +27,6 @@
 #include <KCalendarCore/Visitor>
 
 #include <KCMultiDialog>
-#include <KPluginLoader>
 #include <KPluginMetaData>
 #include <QPushButton>
 
