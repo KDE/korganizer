@@ -11,7 +11,6 @@
 #include "calendarview.h"
 #include "dialog/filtereditdialog.h"
 #include "dialog/searchdialog.h"
-#include "kcoreaddons_version.h"
 #include "prefs/koprefs.h"
 
 #include <CalendarSupport/ArchiveDialog>
@@ -73,11 +72,7 @@ void KODialogManager::showOptionsDialog()
     if (!mOptionsDialog) {
         mOptionsDialog = new KCMultiDialog(mMainView);
         connect(mOptionsDialog, qOverload<>(&KCMultiDialog::configCommitted), mMainView, &CalendarView::updateConfig);
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5, 86, 0)
-        const QVector<KPluginMetaData> availablePlugins = KPluginLoader::findPlugins(QStringLiteral("pim/kcms/korganizer"));
-#else
         const QVector<KPluginMetaData> availablePlugins = KPluginMetaData::findPlugins(QStringLiteral("pim/kcms/korganizer"));
-#endif
         for (const KPluginMetaData &metaData : availablePlugins) {
             mOptionsDialog->addModule(metaData);
         }
