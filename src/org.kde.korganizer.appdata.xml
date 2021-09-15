@@ -167,7 +167,7 @@
       <li xml:lang="ar">دعم مختلف التّقاويم وقوائم المهامّ</li>
       <li xml:lang="ca">Permet múltiples calendaris i llistes de tasques pendents</li>
       <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de tasques pendents</li>
-      <li xml:lang="cs">Podpora vícero kalendářů a seznamů úkolů</li>
+      <li xml:lang="cs">Podpora vícero kalendářů a seznamů úloh</li>
       <li xml:lang="de">Unterstützt mehrere Kalender und Aufgabenlisten</li>
       <li xml:lang="el">Υποστήριξη για πολλά ημερολόγια και λίστες προς υλοποίηση εργασιών</li>
       <li xml:lang="en-GB">Support for multiple calendars and to-do lists</li>
@@ -254,7 +254,7 @@
       <li xml:lang="ar">تكامل المهامّ مع منظور جدول الأعمال</li>
       <li xml:lang="ca">Integra les tasques pendents amb la vista d'agenda</li>
       <li xml:lang="ca-valencia">Integra les tasques pendents amb la vista d'agenda</li>
-      <li xml:lang="cs">Integrace úkolů s pohledem na agendu</li>
+      <li xml:lang="cs">Integrace úloh s pohledem na agendu</li>
       <li xml:lang="de">Integration von Aufgaben mit Tagesansicht</li>
       <li xml:lang="el">Ενσωμάτωση εργασιών στην προβολή ατζέντας</li>
       <li xml:lang="en-GB">To-do integration with agenda view</li>
@@ -283,7 +283,7 @@
       <li xml:lang="ar">مرفقات للأحداث والمهامّ</li>
       <li xml:lang="ca">Adjunts per als esdeveniments i tasques pendents</li>
       <li xml:lang="ca-valencia">Adjunts per als esdeveniments i tasques pendents</li>
-      <li xml:lang="cs">Přílohy pro události a úkoly</li>
+      <li xml:lang="cs">Přílohy pro události a úlohy</li>
       <li xml:lang="de">Anhänge für Termine und Aufgaben</li>
       <li xml:lang="el">Επισυνάψεις για γεγονότα και εργασίες</li>
       <li xml:lang="en-GB">Attachments for events and to-dos</li>
