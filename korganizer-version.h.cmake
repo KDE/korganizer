@@ -15,10 +15,7 @@
   build against older kdelibs releases.
 */
 
-#ifndef KORGANIZER_VERSION_H
-#define KORGANIZER_VERSION_H
-
+#pragma once
 
 #define KORGANIZER_VERSION "@KDEPIM_VERSION@"
 
-#endif
