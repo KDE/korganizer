@@ -201,7 +201,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent, const QVariantList &args)
     mReminderUnitsCombo = new KComboBox(defaultPage);
     mReminderUnitsCombo->setToolTip(CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->toolTip());
     mReminderUnitsCombo->setWhatsThis(CalendarSupport::KCalPrefs::instance()->reminderTimeUnitsItem()->whatsThis());
-    connect(mReminderUnitsCombo, qOverload<int>(&KComboBox::activated), this, &KOPrefsDialogTime::slotWidChanged);
+    connect(mReminderUnitsCombo, &KComboBox::activated, this, &KOPrefsDialogTime::slotWidChanged);
     mReminderUnitsCombo->addItem(i18nc("@item:inlistbox reminder units in minutes", "minute(s)"));
     mReminderUnitsCombo->addItem(i18nc("@item:inlistbox reminder time units in hours", "hour(s)"));
     mReminderUnitsCombo->addItem(i18nc("@item:inlistbox reminder time units in days", "day(s)"));

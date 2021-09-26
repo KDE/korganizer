@@ -465,7 +465,7 @@ KPrefsWidCombo::KPrefsWidCombo(KConfigSkeleton::ItemEnum *item, QWidget *parent)
 {
     mLabel = new QLabel(mItem->label(), parent);
     mCombo = new KComboBox(parent);
-    connect(mCombo, qOverload<int>(&KComboBox::activated), this, &KPrefsWidCombo::changed);
+    connect(mCombo, &KComboBox::activated, this, &KPrefsWidCombo::changed);
     mLabel->setBuddy(mCombo);
     QString toolTip = mItem->toolTip();
     if (!toolTip.isEmpty()) {

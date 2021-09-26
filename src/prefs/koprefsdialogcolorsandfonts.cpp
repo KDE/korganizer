@@ -104,7 +104,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const 
                                        "Select the tag you want to modify. "
                                        "You can change the selected tag's color using "
                                        "the adjacent color button."));
-    connect(mCategoryCombo, qOverload<int>(&KComboBox::activated), this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
+    connect(mCategoryCombo, &KComboBox::activated, this, &KOPrefsDialogColorsAndFonts::updateCategoryColor);
     categoryLayout->addWidget(mCategoryCombo, 1, 0);
 
     mCategoryButton = new KColorButton(categoryGroup);
