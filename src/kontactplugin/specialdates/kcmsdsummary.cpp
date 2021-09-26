@@ -29,8 +29,8 @@ KCMSDSummary::KCMSDSummary(QWidget *parent, const QVariantList &args)
     connect(mDateMonthButton, &QRadioButton::clicked, this, &KCMSDSummary::modified);
     connect(mDateRangeButton, &QRadioButton::clicked, this, &KCMSDSummary::modified);
 
-    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMSDSummary::modified);
-    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMSDSummary::customDaysChanged);
+    connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMSDSummary::modified);
+    connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMSDSummary::customDaysChanged);
 
     connect(mShowBirthdaysFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);
     connect(mShowAnniversariesFromCalBox, &QCheckBox::stateChanged, this, &KCMSDSummary::modified);

@@ -195,7 +195,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent, const QVariantList &args)
     mReminderTimeSpin = new QSpinBox(defaultPage);
     mReminderTimeSpin->setWhatsThis(CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->whatsThis());
     mReminderTimeSpin->setToolTip(CalendarSupport::KCalPrefs::instance()->reminderTimeItem()->toolTip());
-    connect(mReminderTimeSpin, qOverload<int>(&QSpinBox::valueChanged), this, &KOPrefsDialogTime::slotWidChanged);
+    connect(mReminderTimeSpin, &QSpinBox::valueChanged, this, &KOPrefsDialogTime::slotWidChanged);
     remindersLayout->addWidget(mReminderTimeSpin, 0, 1);
 
     mReminderUnitsCombo = new KComboBox(defaultPage);

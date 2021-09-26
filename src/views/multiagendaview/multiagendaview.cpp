@@ -306,7 +306,7 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     d->ui.columnList->setModel(&d->listModel);
     connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged, this, &MultiAgendaViewConfigDialog::currentChanged);
     connect(d->ui.useCustomRB, &QAbstractButton::toggled, this, &MultiAgendaViewConfigDialog::useCustomToggled);
-    connect(d->ui.columnNumberSB, qOverload<int>(&QSpinBox::valueChanged), this, &MultiAgendaViewConfigDialog::numberOfColumnsChanged);
+    connect(d->ui.columnNumberSB, &QSpinBox::valueChanged, this, &MultiAgendaViewConfigDialog::numberOfColumnsChanged);
     connect(d->ui.titleLE, &QLineEdit::textEdited, this, &MultiAgendaViewConfigDialog::titleEdited);
     d->setUpColumns(numberOfColumns());
     useCustomToggled(false);

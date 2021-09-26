@@ -30,7 +30,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     mGroupwarePage->groupwareTab->setTabIcon(0, QIcon::fromTheme(QStringLiteral("go-up")));
     mGroupwarePage->groupwareTab->setTabIcon(1, QIcon::fromTheme(QStringLiteral("go-down")));
 
-    connect(mGroupwarePage->publishDays, qOverload<int>(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishDays, &QSpinBox::valueChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishUser, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishPassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
@@ -40,7 +40,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling(QWidget *pare
     connect(mGroupwarePage->retrievePassword, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveSavePassword, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->retrieveUrl, &QLineEdit::textChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
-    connect(mGroupwarePage->publishDelay, qOverload<int>(&QSpinBox::valueChanged), this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
+    connect(mGroupwarePage->publishDelay, &QSpinBox::valueChanged, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->fullDomainRetrieval, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
     connect(mGroupwarePage->publishEnable, &QCheckBox::toggled, this, &KOPrefsDialogGroupwareScheduling::slotWidChanged);
 

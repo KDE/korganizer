@@ -41,14 +41,14 @@ KCMApptSummary::KCMApptSummary(QWidget *parent, const QVariantList &args)
     customDaysChanged(7);
 
     // Remove QOverload<QAbstractButton *> when we switch on qt6. For the moment it avoids to add an #ifdef
-    connect(mDaysButtonGroup, qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mShowButtonGroup, qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
-    connect(mGroupwareButtonGroup, qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::modified);
+    connect(mDaysButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::modified);
+    connect(mShowButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::modified);
+    connect(mGroupwareButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::modified);
 
-    connect(mDaysButtonGroup, qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked), this, &KCMApptSummary::buttonClicked);
+    connect(mDaysButtonGroup, &QButtonGroup::buttonClicked, this, &KCMApptSummary::buttonClicked);
 
-    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMApptSummary::modified);
-    connect(mCustomDays, qOverload<int>(&QSpinBox::valueChanged), this, &KCMApptSummary::customDaysChanged);
+    connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMApptSummary::modified);
+    connect(mCustomDays, &QSpinBox::valueChanged, this, &KCMApptSummary::customDaysChanged);
 
     KAcceleratorManager::manage(this);
 
