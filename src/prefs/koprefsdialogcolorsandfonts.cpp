@@ -9,9 +9,10 @@
 
 #include "koprefsdialogcolorsandfonts.h"
 #include "koprefs.h"
+#include <Akonadi/CollectionComboBox>
 #include <Akonadi/EntityTreeModel>
+#include <Akonadi/TagSelectionComboBox>
 #include <CalendarSupport/KCalPrefs>
-#include <CollectionComboBox>
 #include <KColorButton>
 #include <KComboBox>
 #include <KLocalizedString>
@@ -23,7 +24,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QTabWidget>
-#include <TagSelectionComboBox>
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogColorsAndFonts, "korganizer_configcolorsandfonts.json")
 
