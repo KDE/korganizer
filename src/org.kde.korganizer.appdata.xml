@@ -372,7 +372,7 @@
   <url type="help">https://docs.kde.org/?application=korganizer</url>
   <screenshots>
     <screenshot type="default">
-      <image type="source" width="1280" height="720">https://kontact.org/assets/img/appstream/kontact-korganizer.png</image>
+      <image type="source">https://cdn.kde.org/screenshots/korganizer/korganizer.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
