@@ -74,10 +74,10 @@ public:
             const QList<QWidget *> list = wdg->findChildren<QWidget *>();
             for (QWidget *it : list) {
                 if (allowedTypes.contains(QLatin1String(it->metaObject()->className()))) {
-                    const QString name = it->objectName();
-                    if (name.startsWith(QLatin1String("X_"))) {
+                    const QString objectName = it->objectName();
+                    if (objectName.startsWith(QLatin1String("X_"))) {
                         new QTreeWidgetItem(this,
-                                            QStringList() << name << allowedTypes[QLatin1String(it->metaObject()->className())]
+                                            QStringList() << objectName << allowedTypes[QLatin1String(it->metaObject()->className())]
                                                           << QLatin1String(it->metaObject()->className()) << it->whatsThis());
                     }
                 }

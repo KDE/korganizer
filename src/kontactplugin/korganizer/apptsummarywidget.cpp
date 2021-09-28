@@ -97,7 +97,6 @@ void ApptSummaryWidget::updateView()
     //   the summary is the event summary
     //   the time range is the start-end time (only for non-floating events)
 
-    QLabel *label = nullptr;
     int counter = 0;
 
     QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-day")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
@@ -134,7 +133,7 @@ void ApptSummaryWidget::updateView()
         }
 
         // Icon label
-        label = new QLabel(this);
+        auto label = new QLabel(this);
         if (ev->categories().contains(QLatin1String("BIRTHDAY"), Qt::CaseInsensitive)) {
             label->setPixmap(pmb);
         } else if (ev->categories().contains(QLatin1String("ANNIVERSARY"), Qt::CaseInsensitive)) {

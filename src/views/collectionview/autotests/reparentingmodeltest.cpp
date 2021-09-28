@@ -694,7 +694,7 @@ void ReparentingModelTest::testInvalidLayoutChanged()
 class DummyNodeManager : public ReparentingModel::NodeManager
 {
 public:
-    DummyNodeManager(ReparentingModel &m)
+    explicit DummyNodeManager(ReparentingModel &m)
         : ReparentingModel::NodeManager(m)
     {
     }

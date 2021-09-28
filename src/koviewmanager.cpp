@@ -127,9 +127,9 @@ void KOViewManager::writeSettings(KConfig *config)
     }
 
     // write out custom view configuration
-    for (KOrg::BaseView *const view : std::as_const(mViews)) {
-        KConfigGroup group = KSharedConfig::openConfig()->group(view->identifier());
-        view->saveConfig(group);
+    for (KOrg::BaseView *const baseView : std::as_const(mViews)) {
+        KConfigGroup group = KSharedConfig::openConfig()->group(baseView->identifier());
+        baseView->saveConfig(group);
     }
 
     generalConfig.writeEntry("Range Mode", int(mRangeMode));
@@ -389,7 +389,7 @@ void KOViewManager::showAgendaView()
 
     QWidget *parent = mMainView->viewStack();
     if (showBoth) {
-        if (!mAgendaViewTabs && showBoth) {
+        if (!mAgendaViewTabs) {
             mAgendaViewTabs = new QTabWidget(mMainView->viewStack());
             connect(mAgendaViewTabs, &QTabWidget::currentChanged, this, &KOViewManager::currentAgendaViewTabChanged);
             mMainView->viewStack()->addWidget(mAgendaViewTabs);

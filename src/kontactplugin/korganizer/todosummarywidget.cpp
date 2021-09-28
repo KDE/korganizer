@@ -148,8 +148,6 @@ void TodoSummaryWidget::updateView()
     //     not-started (no start date and 0% completed)
 
     int counter = 0;
-    QLabel *label = nullptr;
-
     if (!prList.isEmpty()) {
         QPixmap pm = QIcon::fromTheme(QStringLiteral("view-calendar-tasks")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
@@ -168,7 +166,7 @@ void TodoSummaryWidget::updateView()
             */
 
             // Icon label
-            label = new QLabel(this);
+            auto label = new QLabel(this);
             label->setPixmap(pm);
             label->setMaximumWidth(label->minimumSizeHint().width());
             mLayout->addWidget(label, counter, 0);

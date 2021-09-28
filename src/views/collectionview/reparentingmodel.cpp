@@ -161,10 +161,6 @@ bool ReparentingModel::validateNode(const Node *node) const
     const Node *n = node;
     int depth = 0;
     while (n) {
-        if (!n) {
-            qCWarning(KORGANIZER_LOG) << "nullptr" << depth;
-            return false;
-        }
         if ((intptr_t)(n) < 1000) {
             // Detect corruptions with unlikely pointers
             qCWarning(KORGANIZER_LOG) << "corrupt pointer" << depth;

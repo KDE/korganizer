@@ -1256,8 +1256,8 @@ bool CalendarView::makeChildrenIndependent(const Akonadi::Item &item)
         return false;
     }
 
-    for (const Akonadi::Item &item : subIncs) {
-        incidence_unsub(item);
+    for (const Akonadi::Item &subInc : subIncs) {
+        incidence_unsub(subInc);
     }
 
     return true;

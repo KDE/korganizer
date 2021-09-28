@@ -232,8 +232,6 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
 
 void SDSummaryWidget::createLabels()
 {
-    QLabel *label = nullptr;
-
     // Remove all special date labels from the layout and delete them, as we
     // will re-create all labels below.
     setUpdatesEnabled(false);
@@ -423,7 +421,7 @@ void SDSummaryWidget::createLabels()
                 icon_name = QStringLiteral("view-calendar-special-occasion");
                 break;
             }
-            label = new QLabel(this);
+            auto label = new QLabel(this);
             if (icon_img.isNull()) {
                 label->setPixmap(QIcon::fromTheme(icon_name).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize)));
             } else {
@@ -554,7 +552,7 @@ void SDSummaryWidget::createLabels()
             counter++;
         }
     } else {
-        label = new QLabel(i18np("No special dates within the next 1 day", "No special dates pending within the next %1 days", mDaysAhead), this);
+        auto label = new QLabel(i18np("No special dates within the next 1 day", "No special dates pending within the next %1 days", mDaysAhead), this);
         label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         mLayout->addWidget(label, 0, 0);
         mLabels.append(label);
