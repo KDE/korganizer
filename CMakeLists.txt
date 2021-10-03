@@ -75,9 +75,6 @@ set(CALENDARSUPPORT_LIB_VERSION "5.18.40")
 set(EVENTVIEW_LIB_VERSION "5.18.42")
 set(AKONADI_SEARCH_VERSION "5.18.40")
 
-find_package(KF5AkonadiSearch ${AKONADI_SEARCH_VERSION} CONFIG REQUIRED)
-set_package_properties(KF5AkonadiSearch PROPERTIES DESCRIPTION "The Akonadi Search libraries" URL "ttps://invent.kde.org/pim/akonadi-search" TYPE REQUIRED PURPOSE "Provides search capabilities in pim apps and Akonadi")
-
 # Find KF5 package
 find_package(KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
 find_package(KF5Codecs ${KF5_MIN_VERSION} CONFIG REQUIRED)

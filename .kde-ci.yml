@@ -13,7 +13,6 @@ Dependencies:
     'kde/pim/akonadi-contacts' : '@same'
     'kde/pim/akonadi-mime' : '@same'
     'kde/pim/akonadi-notes' : '@same'
-    'kde/pim/akonadi-search' : '@same'
     'kde/pim/calendarsupport' : '@same'
     'kde/pim/eventviews' : '@same'
     'kde/pim/incidenceeditor' : '@same'
