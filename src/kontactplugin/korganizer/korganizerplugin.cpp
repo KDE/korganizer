@@ -28,7 +28,6 @@
 #include <KLocalizedString>
 #include <QAction>
 #include <QIcon>
-#include <QTemporaryFile>
 
 #include <QDropEvent>
 #include <QStandardPaths>
