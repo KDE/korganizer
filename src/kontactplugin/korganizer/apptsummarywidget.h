@@ -20,7 +20,6 @@ class Item;
 class IncidenceChanger;
 }
 
-class QDate;
 class QGridLayout;
 class QLabel;
 
