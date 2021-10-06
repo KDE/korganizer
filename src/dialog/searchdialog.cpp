@@ -17,6 +17,7 @@
 #include <EventViews/ListView>
 #include <PimCommon/PimUtil>
 
+#include <KConfigGroup>
 #include <KMessageBox>
 #include <KSharedConfig>
 
