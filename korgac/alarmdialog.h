@@ -14,11 +14,6 @@
 
 class ReminderTreeItem;
 
-namespace KIdentityManagement
-{
-class IdentityManager;
-}
-
 namespace Akonadi
 {
 class Item;
@@ -121,7 +116,6 @@ private:
     Akonadi::ETMCalendar::Ptr mCalendar;
     QTreeWidget *mIncidenceTree = nullptr;
     CalendarSupport::IncidenceViewer *mDetailView = nullptr;
-    KIdentityManagement::IdentityManager *mIdentityManager = nullptr;
 
     QRect mRect;
     QSpinBox *mSuspendSpin = nullptr;

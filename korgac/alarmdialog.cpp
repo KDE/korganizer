@@ -12,24 +12,17 @@
 #include "config-korganizer.h"
 #include "koalarmclient_debug.h"
 #include "korganizer_interface.h"
-#include "mailclient.h"
 
 #include "dbusproperties.h" // DBUS-generated
 #include "notifications_interface.h" // DBUS-generated
 
-#include <CalendarSupport/IdentityManager>
 #include <CalendarSupport/IncidenceViewer>
-#include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
 #include <KCalUtils/IncidenceFormatter>
 
-#include <KIdentityManagement/Identity>
-
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
-
-#include <MailTransport/TransportManager>
 
 #include <KConfigGroup>
 #include <KLocalizedString>
@@ -277,8 +270,6 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
     connect(mUser2Button, &QPushButton::clicked, this, &AlarmDialog::slotUser2);
     connect(mUser3Button, &QPushButton::clicked, this, &AlarmDialog::slotUser3);
 
-    mIdentityManager = new CalendarSupport::IdentityManager;
-
     QDBusConnection dbusConn = QDBusConnection::sessionBus();
     if (dbusConn.interface()->isServiceRegistered(QString::fromLatin1(s_fdo_notifications_service))) {
         auto propsIface = new OrgFreedesktopDBusPropertiesInterface(QString::fromLatin1(s_fdo_notifications_service),
@@ -292,7 +283,6 @@ AlarmDialog::AlarmDialog(const Akonadi::ETMCalendar::Ptr &calendar, QWidget *par
 AlarmDialog::~AlarmDialog()
 {
     mIncidenceTree->clear();
-    delete mIdentityManager;
 }
 
 ReminderTreeItem *AlarmDialog::searchByItem(const Akonadi::Item &incidence)
@@ -637,7 +627,7 @@ void AlarmDialog::eventNotification()
         Alarm::List::ConstIterator ait;
         for (ait = alarms.constBegin(); ait != alarms.constEnd(); ++ait) {
             Alarm::Ptr alarm = *ait;
-            // we intentionally ignore Alarm::Procedure here, as that is insecure in the presence of shared calendars
+            // we intentionally ignore Alarm::Procedure and Alarm::Email here, as that is insecure in the presence of shared calendars
             // FIXME: Check whether this should be done for all multiple alarms
             if (alarm->type() == Alarm::Audio) {
                 beeped = true;
@@ -645,59 +635,6 @@ void AlarmDialog::eventNotification()
                 player->setParent(this);
                 connect(player, &Phonon::MediaObject::finished, player, &Phonon::MediaObject::deleteLater);
                 player->play();
-            } else if (alarm->type() == Alarm::Email) {
-                QString from = CalendarSupport::KCalPrefs::instance()->email();
-                KIdentityManagement::Identity id = mIdentityManager->identityForAddress(from);
-                QString to;
-                if (alarm->mailAddresses().isEmpty()) {
-                    to = from;
-                } else {
-                    const Person::List addresses = alarm->mailAddresses();
-                    QStringList add;
-                    add.reserve(addresses.count());
-                    Person::List::ConstIterator end(addresses.constEnd());
-                    for (Person::List::ConstIterator it = addresses.constBegin(); it != end; ++it) {
-                        add << (*it).fullName();
-                    }
-                    to = add.join(QLatin1String(", "));
-                }
-
-                QString subject;
-
-                Akonadi::Item parentItem = mCalendar->item(alarm->parentUid());
-                Incidence::Ptr parent = CalendarSupport::incidence(parentItem);
-
-                if (alarm->mailSubject().isEmpty()) {
-                    if (parent->summary().isEmpty()) {
-                        subject = i18nc("@title", "Reminder");
-                    } else {
-                        subject = i18nc("@title", "Reminder: %1", cleanSummary(parent->summary()));
-                    }
-                } else {
-                    subject = i18nc("@title", "Reminder: %1", alarm->mailSubject());
-                }
-
-                QString body = KCalUtils::IncidenceFormatter::mailBodyStr(parent.staticCast<IncidenceBase>());
-                if (!alarm->mailText().isEmpty()) {
-                    body += QLatin1Char('\n') + alarm->mailText();
-                }
-                // TODO: support attachments
-                KOrg::MailClient mailer;
-                const bool sendStatus =
-                    mailer
-                        .send(id, from, to, QString(), subject, body, true, false, QString(), MailTransport::TransportManager::self()->defaultTransportName());
-                if (!sendStatus) {
-                    KNotification::event(QStringLiteral("mailremindersent"),
-                                         QString(),
-                                         i18nc("@info email subject, error message",
-                                               "<warning>Failed to send the Email reminder for %1. %2</warning>",
-                                               subject,
-                                               mailer.errorMsg()),
-                                         QStringLiteral("korgac"),
-                                         nullptr,
-                                         KNotification::CloseOnTimeout,
-                                         QStringLiteral("korgac"));
-                }
             }
         }
     }

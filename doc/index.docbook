@@ -1298,8 +1298,7 @@ automatically.</para></listitem>
 <para>Use the <guibutton>Configure</guibutton> button to open the
 <guilabel>Edit existing reminder</guilabel> dialog. Using this dialog, you can choose
 how many minutes, hours or days before or after the events start or end you want to be reminded, you can set
-repeating intervals for your reminders, and create special reminders that display text, send emails or play
-sounds.</para>
+repeating intervals for your reminders, and create special reminders that display text or play sounds.</para>
 </listitem>
 </varlistentry>
 

@@ -36,7 +36,6 @@ target_sources(korgac PRIVATE
     korgacmain.cpp
     alarmdialog.cpp
     alarmdockwindow.cpp
-    mailclient.cpp
     koalarmclient.cpp
     ${korgac_SRCS}
     )
@@ -58,15 +57,11 @@ endif()
 
 target_link_libraries(korgac
     KF5::AkonadiCalendar
-    KF5::AkonadiMime
     KF5::CalendarSupport
     KF5::IncidenceEditor
     KF5::AkonadiCore
     KF5::CalendarCore
     KF5::CalendarUtils
-    KF5::IdentityManagement
-    KF5::MailTransportAkonadi
-    KF5::Codecs
     KF5::DBusAddons
     Phonon::phonon4qt5
     KF5::Notifications

@@ -21,13 +21,11 @@ qt_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.DBus.Properties.xml d
 target_sources(testalarmdlg PRIVATE
     testalarmdlg.cpp
     ../alarmdialog.cpp
-    ../mailclient.cpp
      ${testalarmdlg_SRCS}
     ${korganizer_BINARY_DIR}/korgac/koalarmclient_debug.cpp)
 
 target_link_libraries(testalarmdlg
     KF5::AkonadiCalendar
-    KF5::AkonadiMime
     KF5::CalendarSupport
     KF5::IncidenceEditor
     KF5::KIOCore
@@ -36,8 +34,6 @@ target_link_libraries(testalarmdlg
     KF5::AkonadiCore
     KF5::CalendarCore
     KF5::CalendarUtils
-    KF5::IdentityManagement
-    KF5::MailTransport
     Phonon::phonon4qt5
     KF5::Notifications
     KF5::IconThemes
