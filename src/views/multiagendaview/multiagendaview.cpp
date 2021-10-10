@@ -36,10 +36,10 @@ static QString generateColumnLabel(int c)
     return i18n("Agenda %1", c + 1);
 }
 
-class MultiAgendaView::Private
+class KOrg::MultiAgendaViewPrivate
 {
 public:
-    Private(MultiAgendaView *qq)
+    MultiAgendaViewPrivate(MultiAgendaView *qq)
         : q(qq)
     {
         auto layout = new QHBoxLayout(q);
@@ -59,7 +59,7 @@ private:
 
 MultiAgendaView::MultiAgendaView(QWidget *parent)
     : KOEventView(parent)
-    , d(new Private(this))
+    , d(new MultiAgendaViewPrivate(this))
 {
     connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
@@ -245,18 +245,18 @@ void MultiAgendaView::setCustomCollectionSelectionProxyModel(KCheckableProxyMode
     d->mMultiAgendaView->setCustomCollectionSelectionProxyModel(model);
 }
 
-class MultiAgendaViewConfigDialog::Private
+class KOrg::MultiAgendaViewConfigDialogPrivate
 {
 public:
     MultiAgendaViewConfigDialog *const q;
-    explicit Private(QAbstractItemModel *base, MultiAgendaViewConfigDialog *qq)
+    explicit MultiAgendaViewConfigDialogPrivate(QAbstractItemModel *base, MultiAgendaViewConfigDialog *qq)
         : q(qq)
         , baseModel(base)
         , currentColumn(0)
     {
     }
 
-    ~Private()
+    ~MultiAgendaViewConfigDialogPrivate()
     {
         qDeleteAll(newlyCreated);
     }
@@ -285,7 +285,7 @@ void MultiAgendaView::saveConfig(KConfigGroup &configGroup)
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)
     : QDialog(parent)
-    , d(new Private(baseModel, this))
+    , d(new MultiAgendaViewConfigDialogPrivate(baseModel, this))
 {
     setWindowTitle(i18nc("@title:window", "Configure Side-By-Side View"));
     auto mainLayout = new QVBoxLayout(this);
@@ -339,7 +339,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
     }
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(KCheckableProxyModel *model)
+AkonadiCollectionView *MultiAgendaViewConfigDialogPrivate::createView(KCheckableProxyModel *model)
 {
     auto cview = new AkonadiCollectionView(nullptr, false, q);
     cview->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
@@ -347,7 +347,7 @@ AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::createView(KCheckab
     return cview;
 }
 
-void MultiAgendaViewConfigDialog::Private::setUpColumns(int n)
+void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
 {
     Q_ASSERT(n > 0);
     const int oldN = selections.size();
@@ -442,7 +442,7 @@ KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column
     return m;
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialog::Private::view(int index) const
+AkonadiCollectionView *MultiAgendaViewConfigDialogPrivate::view(int index) const
 {
     return qobject_cast<AkonadiCollectionView *>(ui.selectionStack->widget(index));
 }

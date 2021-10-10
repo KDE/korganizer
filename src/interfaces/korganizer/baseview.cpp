@@ -13,12 +13,12 @@
 
 using namespace KOrg;
 
-class Q_DECL_HIDDEN BaseView::Private
+class KOrg::BaseViewPrivate
 {
     BaseView *const q;
 
 public:
-    explicit Private(BaseView *qq)
+    explicit BaseViewPrivate(BaseView *qq)
         : q(qq)
         , mChanges(EventViews::EventView::IncidencesAdded | EventViews::EventView::DatesChanged)
         , calendar(nullptr)
@@ -28,7 +28,7 @@ public:
         identifier = cname + '_' + KRandom::randomString(8).toLatin1();
     }
 
-    ~Private()
+    ~BaseViewPrivate()
     {
     }
 
@@ -43,7 +43,7 @@ public:
 
 BaseView::BaseView(QWidget *parent)
     : QWidget(parent)
-    , d(new Private(this))
+    , d(new BaseViewPrivate(this))
 {
 }
 

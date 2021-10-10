@@ -26,6 +26,8 @@
 
 namespace KOrg
 {
+class BaseViewPrivate;
+
 /**
   This class provides an interface for all views being displayed within the
   main calendar view. It has functions to update the view, to specify date
@@ -383,9 +385,8 @@ protected:
     Akonadi::IncidenceChanger *mChanger = nullptr;
 
 private:
-    class Private;
-    std::unique_ptr<Private> const d;
-    friend class KOrg::BaseView::Private;
+    std::unique_ptr<BaseViewPrivate> const d;
+    friend class KOrg::BaseViewPrivate;
 };
 }
 

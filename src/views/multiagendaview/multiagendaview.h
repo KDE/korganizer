@@ -20,6 +20,8 @@
 
 namespace KOrg
 {
+class MultiAgendaViewPrivate;
+
 /**
   Shows one agenda for every resource side-by-side.
 */
@@ -70,9 +72,10 @@ public Q_SLOTS:
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
 private:
-    class Private;
-    std::unique_ptr<Private> const d;
+    std::unique_ptr<MultiAgendaViewPrivate> const d;
 };
+
+class MultiAgendaViewConfigDialogPrivate;
 
 class MultiAgendaViewConfigDialog : public QDialog, public EventViews::ConfigDialogInterface
 {
@@ -105,8 +108,7 @@ private Q_SLOTS:
     void titleEdited(const QString &text);
 
 private:
-    class Private;
-    std::unique_ptr<Private> const d;
+    std::unique_ptr<MultiAgendaViewConfigDialogPrivate> const d;
 };
 }
 

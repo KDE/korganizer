@@ -14,10 +14,10 @@
 
 #include <QHBoxLayout>
 
-class KOAgendaView::Private
+class KOAgendaViewPrivate
 {
 public:
-    Private(bool isSideBySide, KOAgendaView *parent)
+    KOAgendaViewPrivate(bool isSideBySide, KOAgendaView *parent)
         : q(parent)
     {
         mAgendaView =
@@ -25,7 +25,7 @@ public:
         mPopup = q->eventPopup();
     }
 
-    ~Private()
+    ~KOAgendaViewPrivate()
     {
         delete mAgendaView;
         delete mPopup;
@@ -40,7 +40,7 @@ private:
 
 KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
     : KOEventView(parent)
-    , d(new Private(isSideBySide, this))
+    , d(new KOAgendaViewPrivate(isSideBySide, this))
 {
     auto layout = new QHBoxLayout(this);
     layout->setContentsMargins({});

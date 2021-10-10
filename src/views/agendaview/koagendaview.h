@@ -15,6 +15,8 @@
 
 #include <memory>
 
+class KOAgendaViewPrivate;
+
 /**
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
@@ -96,7 +98,6 @@ Q_SIGNALS:
     void timeSpanSelectionChanged();
 
 private:
-    class Private;
-    std::unique_ptr<Private> const d;
+    std::unique_ptr<KOAgendaViewPrivate> const d;
 };
 
