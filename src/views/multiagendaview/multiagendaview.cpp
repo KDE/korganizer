@@ -118,10 +118,7 @@ void MultiAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
     d->mPopup->setCalendar(cal);
 }
 
-MultiAgendaView::~MultiAgendaView()
-{
-    delete d;
-}
+MultiAgendaView::~MultiAgendaView() = default;
 
 Akonadi::Item::List MultiAgendaView::selectedIncidences()
 {
@@ -505,7 +502,4 @@ void MultiAgendaViewConfigDialog::accept()
     QDialog::accept();
 }
 
-MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog()
-{
-    delete d;
-}
+MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog() = default;

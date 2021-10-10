@@ -47,10 +47,7 @@ BaseView::BaseView(QWidget *parent)
 {
 }
 
-BaseView::~BaseView()
-{
-    delete d;
-}
+BaseView::~BaseView() = default;
 
 void BaseView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {

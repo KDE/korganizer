@@ -22,6 +22,8 @@
 
 #include <QWidget>
 
+#include <memory>
+
 namespace KOrg
 {
 /**
@@ -382,7 +384,7 @@ protected:
 
 private:
     class Private;
-    Private *const d;
+    std::unique_ptr<Private> const d;
     friend class KOrg::BaseView::Private;
 };
 }

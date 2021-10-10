@@ -13,6 +13,8 @@
 
 #include <CalendarSupport/CalPrinter>
 
+#include <memory>
+
 /**
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
@@ -95,6 +97,6 @@ Q_SIGNALS:
 
 private:
     class Private;
-    Private *const d;
+    std::unique_ptr<Private> const d;
 };
 

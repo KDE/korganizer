@@ -16,6 +16,8 @@
 
 #include <QAbstractItemModel>
 
+#include <memory>
+
 namespace KOrg
 {
 /**
@@ -69,7 +71,7 @@ public Q_SLOTS:
 
 private:
     class Private;
-    Private *const d;
+    std::unique_ptr<Private> const d;
 };
 
 class MultiAgendaViewConfigDialog : public QDialog, public EventViews::ConfigDialogInterface
@@ -104,7 +106,7 @@ private Q_SLOTS:
 
 private:
     class Private;
-    Private *const d;
+    std::unique_ptr<Private> const d;
 };
 }
 

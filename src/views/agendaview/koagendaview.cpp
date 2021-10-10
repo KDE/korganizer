@@ -102,10 +102,7 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
     d->mAgendaView->show();
 }
 
-KOAgendaView::~KOAgendaView()
-{
-    delete d;
-}
+KOAgendaView::~KOAgendaView() = default;
 
 void KOAgendaView::setCalendar(const Akonadi::ETMCalendar::Ptr &cal)
 {
