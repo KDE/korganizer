@@ -125,7 +125,7 @@ void KOrganizerApp::processCalendar(const QUrl &url, bool show)
             korg->topLevelWidget()->show();
         }
 
-        qCDebug(KORGANIZER_LOG) << url.url();
+        qCDebug(KORGANIZER_LOG) << "calendar URL" << url.url();
 
         if (hasDocument) {
             korg->openURL(url);

@@ -94,7 +94,7 @@ void SearchCollectionHelper::updateSearchCollection(Akonadi::Collection col,
         auto job = new Akonadi::CollectionModifyJob(col, this);
         connect(job, &Akonadi::CollectionModifyJob::result, this, &SearchCollectionHelper::modifyResult);
         qCDebug(KORGANIZER_LOG) << "updating " << name << " (" << col.id() << ") virtual Collection";
-        qCDebug(KORGANIZER_LOG) << query.toJSON();
+        qCDebug(KORGANIZER_LOG) << "query" << query.toJSON();
     }
 }
 
