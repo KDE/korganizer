@@ -44,8 +44,6 @@ public:
 
 private Q_SLOTS:
     void popupMenu(const QPoint &point);
-    void slotDeleteSelection();
-    void slotEditSelection();
     void slotHelpRequested();
 
 Q_SIGNALS:

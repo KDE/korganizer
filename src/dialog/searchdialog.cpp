@@ -22,7 +22,6 @@
 
 #include <QDialogButtonBox>
 #include <QPushButton>
-#include <QShortcut>
 
 SearchDialog::SearchDialog(CalendarView *calendarview)
     : QDialog(calendarview)
@@ -82,11 +81,6 @@ SearchDialog::SearchDialog(CalendarView *calendarview)
     //           &SearchDialog::toggleAlarmSignal);
     //   connect(m_popupMenu, &KOEventPopupMenu::toggleTodoCompletedSignal, this,
     //           &SearchDialog::toggleTodoCompletedSignal);
-
-    const auto delKey = new QShortcut(QKeySequence(Qt::Key_Delete), this);
-    connect(delKey, &QShortcut::activated, this, &SearchDialog::slotDeleteSelection);
-    const auto retKey = new QShortcut(QKeySequence(Qt::Key_Return), this);
-    connect(retKey, &QShortcut::activated, this, &SearchDialog::slotEditSelection);
 
     readConfig();
 }
@@ -268,22 +262,6 @@ void SearchDialog::writeConfig()
     group.writeEntry("Size", size());
     m_listView->writeSettings(group);
     group.sync();
-}
-
-void SearchDialog::slotDeleteSelection()
-{
-    const auto selected = m_listView->selectedIncidences();
-    if (selected.count() > 0) {
-        Q_EMIT deleteIncidenceSignal(selected.at(0));
-    }
-}
-
-void SearchDialog::slotEditSelection()
-{
-    const auto selected = m_listView->selectedIncidences();
-    if (selected.count() > 0) {
-        Q_EMIT editIncidenceSignal(selected.at(0));
-    }
 }
 
 void SearchDialog::slotHelpRequested()
