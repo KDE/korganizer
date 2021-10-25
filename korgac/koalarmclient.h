@@ -26,7 +26,7 @@ class KOAlarmClient : public QObject
     Q_OBJECT
 public:
     explicit KOAlarmClient(QObject *parent = nullptr);
-    ~KOAlarmClient();
+    ~KOAlarmClient() override;
 
     // DBUS interface
     void quit();

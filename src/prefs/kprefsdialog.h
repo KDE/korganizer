@@ -728,7 +728,7 @@ public:
     /**
       Destructor.
     */
-    virtual ~KPrefsDialog();
+    ~KPrefsDialog() override;
 
     void autoCreate();
 
