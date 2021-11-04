@@ -1710,7 +1710,11 @@ void CalendarView::exportICalendar()
         }
 
         if (QFileInfo::exists(filename)) {
-            if (KMessageBox::No == KMessageBox::warningYesNo(this, i18n("Do you want to overwrite %1?", filename))) {
+            const int answer = KMessageBox::warningContinueCancel(this,
+                                                                  i18n("Do you want to overwrite %1?", filename),
+                                                                  i18nc("@title:window", "Export Calendar"),
+                                                                  KStandardGuiItem::overwrite());
+            if (answer == KMessageBox::Cancel) {
                 return;
             }
         }
