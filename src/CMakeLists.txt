@@ -33,6 +33,9 @@ set(korganizer_SRCS
     korganizer.cpp
     koapp.cpp
     plugininterface/korganizerplugininterface.cpp
+    korganizer.h
+    koapp.h
+    plugininterface/korganizerplugininterface.h
     ${korganizer_common_SRCS}
     )
 
@@ -60,7 +63,7 @@ install(TARGETS
     )
 
 ########### next target ###############
-add_library(korganizer_kcm_static STATIC widgets/kitemiconcheckcombo.cpp prefs/kprefsdialog.cpp ${korganizer_common_SRCS})
+add_library(korganizer_kcm_static STATIC widgets/kitemiconcheckcombo.cpp prefs/kprefsdialog.cpp widgets/kitemiconcheckcombo.h prefs/kprefsdialog.h ${korganizer_common_SRCS})
 
 target_link_libraries(korganizer_kcm_static
     KF5::AkonadiCalendar
@@ -78,54 +81,54 @@ target_link_libraries(korganizer_kcm_static
     KF5::WindowSystem
     )
 
-add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp)
+add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configcolorsandfonts.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configcolorsandfonts korganizer_kcm_static)
 install(TARGETS korganizer_configcolorsandfonts DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configdesignerfields MODULE prefs/koprefsdesignerfields.cpp kcmdesignerfields.cpp)
+add_library(korganizer_configdesignerfields MODULE prefs/koprefsdesignerfields.cpp kcmdesignerfields.cpp prefs/koprefsdesignerfields.h kcmdesignerfields.h)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configdesignerfields.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configdesignerfields korganizer_kcm_static)
 install(TARGETS korganizer_configdesignerfields DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configfreebusy MODULE prefs/koprefsdialoggroupwarescheduling.cpp)
+add_library(korganizer_configfreebusy MODULE prefs/koprefsdialoggroupwarescheduling.h prefs/koprefsdialoggroupwarescheduling.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configfreebusy.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configfreebusy korganizer_kcm_static)
 install(TARGETS korganizer_configfreebusy DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configgroupscheduling MODULE prefs/koprefsdialogmain.cpp)
+add_library(korganizer_configgroupscheduling MODULE prefs/koprefsdialogmain.h prefs/koprefsdialogmain.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configgroupscheduling.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configgroupscheduling korganizer_kcm_static)
 install(TARGETS korganizer_configgroupscheduling DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configmain MODULE prefs/koprefsdialoggroupscheduling.cpp)
+add_library(korganizer_configmain MODULE prefs/koprefsdialoggroupscheduling.h prefs/koprefsdialoggroupscheduling.cpp)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configmain.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configmain korganizer_kcm_static)
 install(TARGETS korganizer_configmain DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configplugins MODULE prefs/koprefsdialogplugins.cpp)
+add_library(korganizer_configplugins MODULE prefs/koprefsdialogplugins.cpp prefs/koprefsdialogplugins.h)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configplugins.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configplugins korganizer_kcm_static)
 install(TARGETS korganizer_configplugins DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configtime MODULE prefs/koprefsdialogtime.cpp)
+add_library(korganizer_configtime MODULE prefs/koprefsdialogtime.cpp prefs/koprefsdialogtime.h)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configtime.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configtime korganizer_kcm_static)
 install(TARGETS korganizer_configtime DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_configviews MODULE prefs/koprefsdialogviews.cpp)
+add_library(korganizer_configviews MODULE prefs/koprefsdialogviews.cpp prefs/koprefsdialogviews.h)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_configviews.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_configviews korganizer_kcm_static)
 install(TARGETS korganizer_configviews DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
-add_library(korganizer_userfeedback MODULE prefs/koprefsuserfeedback.cpp)
+add_library(korganizer_userfeedback MODULE prefs/koprefsuserfeedback.cpp prefs/koprefsuserfeedback.h)
 kcoreaddons_desktop_to_json(korganizer_kcm_static "kcmconfigs/korganizer_userfeedback.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(korganizer_userfeedback korganizer_kcm_static ${korganizer_userfeedback_LIB})
 install(TARGETS korganizer_userfeedback DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
 
 ########### next target ###############
 
-set(korganizerpart_PART_SRCS korganizer_part.cpp korganizer_debug.cpp)
+set(korganizerpart_PART_SRCS korganizer_part.cpp korganizer_part.h korganizer_debug.cpp)
 
 add_library(korganizerpart MODULE ${korganizerpart_PART_SRCS})
 if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
@@ -152,6 +155,8 @@ install(TARGETS
 set(korganizer_core_LIB_SRCS
     prefs/koprefs.cpp
     kocore.cpp
+    prefs/koprefs.h
+    kocore.h
     ${korganizer_common_SRCS}
     )
 
@@ -236,6 +241,45 @@ set(korganizerprivate_LIB_SRCS
     pimmessagebox.cpp
     korganizer.qrc
     agendaitem_pixmaps/agendaitemtheme.qrc
+
+    manageshowcollectionproperties.h
+    korgmigrateapplication.h
+    collectiongeneralpage.h
+    aboutdata.h
+    actionmanager.h
+    akonadicollectionview.h
+    views/collectionview/reparentingmodel.h
+    views/collectionview/calendardelegate.h
+    views/collectionview/quickview.h
+    calendarview.h
+    datechecker.h
+    datenavigator.h
+    datenavigatorcontainer.h
+    dialog/filtereditdialog.h
+    widgets/kdatenavigator.h
+    kocorehelper.h
+    kodaymatrix.h
+    kodialogmanager.h
+    koeventpopupmenu.h
+    koeventview.h
+    dialog/koeventviewerdialog.h
+    koglobals.h
+    kohelper.h
+    impl/korganizerifaceimpl.h
+    koviewmanager.h
+    kowindowlist.h
+    widgets/navigatorbar.h
+    dialog/searchdialog.h
+    helper/searchcollectionhelper.h
+    views/agendaview/koagendaview.h
+    views/journalview/kojournalview.h
+    views/listview/kolistview.h
+    views/monthview/monthview.h
+    views/multiagendaview/multiagendaview.h
+    views/timelineview/kotimelineview.h
+    views/todoview/kotodoview.h
+    views/whatsnextview/kowhatsnextview.h
+    pimmessagebox.h
     )
 
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_korganizer.cpp PROPERTY SKIP_AUTOMOC ON)

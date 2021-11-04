@@ -1,5 +1,5 @@
 ########### next target ###############
-set(libcommon_SRCS korg_uniqueapp.cpp)
+set(libcommon_SRCS korg_uniqueapp.cpp korg_uniqueapp.h)
 ecm_qt_declare_logging_category(libcommon_SRCS HEADER korganizerplugin_debug.h IDENTIFIER KORGANIZERPLUGIN_LOG CATEGORY_NAME org.kde.pim.korganizer_plugin
         DESCRIPTION "korganizer (korganizer kontact plugins)"
         OLD_CATEGORY_NAMES log_korganizer_plugin
@@ -7,7 +7,7 @@ ecm_qt_declare_logging_category(libcommon_SRCS HEADER korganizerplugin_debug.h I
     )
 
 
-set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp ${libcommon_SRCS})
+set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp korganizerplugin.h apptsummarywidget.h summaryeventinfo.h ${libcommon_SRCS})
 
 qt_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
@@ -19,7 +19,7 @@ kcoreaddons_desktop_to_json(kontact_korganizerplugin korganizerplugin.desktop SE
 
 ########### next target ###############
 
-set(kontact_todoplugin_PART_SRCS todoplugin.cpp todosummarywidget.cpp ${libcommon_SRCS})
+set(kontact_todoplugin_PART_SRCS todoplugin.cpp todosummarywidget.cpp todoplugin.h todosummarywidget.h ${libcommon_SRCS})
 
 qt_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
@@ -31,7 +31,7 @@ kcoreaddons_desktop_to_json(kontact_todoplugin todoplugin.desktop)
 
 ########### next target ###############
 
-set(kontact_journalplugin_PART_SRCS journalplugin.cpp ${libcommon_SRCS})
+set(kontact_journalplugin_PART_SRCS journalplugin.cpp journalplugin.h ${libcommon_SRCS})
 
 qt_add_dbus_interfaces(kontact_journalplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml)
 
@@ -43,7 +43,7 @@ kcoreaddons_desktop_to_json(kontact_journalplugin journalplugin.desktop)
 
 ########### next target ###############
 
-set(kcmapptsummary_PART_SRCS kcmapptsummary.cpp)
+set(kcmapptsummary_PART_SRCS kcmapptsummary.cpp kcmapptsummary.h)
 
 ki18n_wrap_ui(kcmapptsummary_PART_SRCS apptsummaryconfig_base.ui)
 
@@ -53,7 +53,7 @@ target_link_libraries(kcmapptsummary  KF5::KCMUtils KF5::I18n)
 
 ########### next target ###############
 
-set(kcmtodosummary_PART_SRCS kcmtodosummary.cpp)
+set(kcmtodosummary_PART_SRCS kcmtodosummary.cpp kcmtodosummary.h)
 
 ki18n_wrap_ui(kcmtodosummary_PART_SRCS todosummaryconfig_base.ui)
 

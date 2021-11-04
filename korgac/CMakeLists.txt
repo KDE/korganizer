@@ -37,6 +37,9 @@ target_sources(korgac PRIVATE
     alarmdialog.cpp
     alarmdockwindow.cpp
     koalarmclient.cpp
+    alarmdialog.h
+    alarmdockwindow.h
+    koalarmclient.h
     ${korgac_SRCS}
     )
 
