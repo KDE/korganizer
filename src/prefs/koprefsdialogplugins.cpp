@@ -16,10 +16,12 @@
 #include <KMessageBox>
 #include <KPluginFactory>
 #include <KService>
+#include <QAction>
 #include <QGroupBox>
+#include <QHeaderView>
 #include <QLabel>
-#include <QPushButton>
 #include <QRadioButton>
+#include <QToolButton>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
@@ -47,6 +49,8 @@ private:
     const KService::Ptr mService;
 };
 
+Q_DECLARE_METATYPE(PluginItem *)
+
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogPlugins, "korganizer_configplugins.json")
 
 /**
@@ -57,8 +61,12 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &
 {
     auto topTopLayout = new QVBoxLayout(this);
     mTreeWidget = new QTreeWidget(this);
-    mTreeWidget->setColumnCount(1);
-    mTreeWidget->setHeaderLabel(i18nc("@title:column plugin name", "Name"));
+    mTreeWidget->setColumnCount(2);
+    mTreeWidget->setHeaderHidden(true);
+    mTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    mTreeWidget->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    mTreeWidget->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    mTreeWidget->header()->setStretchLastSection(false);
     topTopLayout->addWidget(mTreeWidget);
 
     mDescription = new QLabel(this);
@@ -74,21 +82,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &
     mDescription->setSizePolicy(policy);
     topTopLayout->addWidget(mDescription);
 
-    auto buttonRow = new QWidget(this);
-    QBoxLayout *buttonRowLayout = new QHBoxLayout(buttonRow);
-    buttonRowLayout->setContentsMargins({});
-    mConfigureButton = new QPushButton(buttonRow);
-    KGuiItem::assign(mConfigureButton,
-                     KGuiItem(i18nc("@action:button", "Configure &Plugin..."),
-                              QStringLiteral("configure"),
-                              QString(),
-                              i18nc("@info:whatsthis",
-                                    "This button allows you to configure"
-                                    " the plugin that you have selected in the list above")));
-    buttonRowLayout->addWidget(mConfigureButton);
-    buttonRowLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding));
-    topTopLayout->addWidget(buttonRow);
-
     mPositioningGroupBox = new QGroupBox(i18nc("@title:group", "Position"), this);
     // mPositionMonthTop = new QCheckBox(
     // i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
@@ -100,8 +93,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &
     positioningLayout->addWidget(mPositionAgendaBottom);
     positioningLayout->addStretch(1);
     topTopLayout->addWidget(mPositioningGroupBox);
-
-    connect(mConfigureButton, &QPushButton::clicked, this, &KOPrefsDialogPlugins::configure);
 
     connect(mPositionAgendaTop, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
     connect(mPositionAgendaBottom, &QRadioButton::clicked, this, &KOPrefsDialogPlugins::positioningChanged);
@@ -135,7 +126,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
     KService::List::ConstIterator end(plugins.constEnd());
 
     for (it = plugins.constBegin(); it != end; ++it) {
-        QTreeWidgetItem *item = nullptr;
+        PluginItem *item = nullptr;
         if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
             item = new PluginItem(mDecorations, *it);
         } else {
@@ -145,6 +136,22 @@ void KOPrefsDialogPlugins::usrReadConfig()
             item->setCheckState(0, Qt::Checked);
         } else {
             item->setCheckState(0, Qt::Unchecked);
+        }
+        const QVariant variant = (*it)->property(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
+        const bool hasSettings = (variant.isValid() && variant.toBool());
+        if (hasSettings) {
+            auto but = new QToolButton(mTreeWidget);
+            auto act = new QAction(but);
+            const QString decoration = (*it)->desktopEntryName();
+            act->setData(QVariant::fromValue<PluginItem *>(item));
+            but->setDefaultAction(act);
+            but->setIcon(QIcon::fromTheme(QStringLiteral("configure")));
+            but->setFixedWidth(28);
+            but->setToolTip(i18nc("@action", "Configure"));
+            but->setAutoFillBackground(true);
+            but->setEnabled(true);
+            mTreeWidget->setItemWidget(item, 1, but);
+            connect(but, &QToolButton::triggered, this, &KOPrefsDialogPlugins::configureClicked);
         }
     }
 
@@ -179,13 +186,14 @@ void KOPrefsDialogPlugins::usrWriteConfig()
     viewPrefs->setDecorationsAtAgendaViewBottom(mDecorationsAtAgendaViewBottom.values());
 }
 
-void KOPrefsDialogPlugins::configure()
+void KOPrefsDialogPlugins::configureClicked(QAction *action)
 {
-    if (mTreeWidget->selectedItems().count() != 1) {
+    if (!action) {
         return;
     }
 
-    PluginItem *item = static_cast<PluginItem *>(mTreeWidget->selectedItems().last());
+    auto item = action->data().value<PluginItem *>();
+
     if (!item) {
         return;
     }
@@ -250,33 +258,17 @@ void KOPrefsDialogPlugins::selectionChanged()
     mPositionAgendaBottom->setChecked(false);
 
     if (mTreeWidget->selectedItems().count() != 1) {
-        mConfigureButton->setEnabled(false);
         mDescription->setText(QString());
         return;
     }
 
     PluginItem *item = dynamic_cast<PluginItem *>(mTreeWidget->selectedItems().last());
     if (!item) {
-        mConfigureButton->setEnabled(false);
-        mConfigureButton->hide();
         mDescription->setText(QString());
         return;
     }
 
-    QVariant variant = item->service()->property(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
-
-    bool hasSettings = false;
-    if (variant.isValid()) {
-        hasSettings = variant.toBool();
-    }
-
     mDescription->setText(item->service()->comment());
-    if (!hasSettings) {
-        mConfigureButton->hide();
-    } else {
-        mConfigureButton->show();
-        mConfigureButton->setEnabled(item->checkState(0) == Qt::Checked);
-    }
 
     if (item->service()->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
         bool hasPosition = false;

@@ -28,7 +28,7 @@ public:
 protected Q_SLOTS:
     void usrWriteConfig() override;
     void usrReadConfig() override;
-    void configure();
+    void configureClicked(QAction *action);
     void selectionChanged();
     void positioningChanged();
 
