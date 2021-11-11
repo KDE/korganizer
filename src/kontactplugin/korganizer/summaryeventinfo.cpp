@@ -213,6 +213,9 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
             str.append(QStringLiteral(" (%1/%2)").arg(dayof).arg(span));
         }
         summaryEvent->summaryText = str;
+        if (!ev->location().isEmpty()) {
+            summaryEvent->summaryText.append(QStringLiteral(" (%1)").arg(ev->location()));
+        }
         summaryEvent->summaryUrl = ev->uid();
 
         QString displayName;
