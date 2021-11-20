@@ -263,7 +263,7 @@ public:
 
     void setUpColumns(int n);
     AkonadiCollectionView *createView(KCheckableProxyModel *model);
-    AkonadiCollectionView *view(int index) const;
+    Q_REQUIRED_RESULT AkonadiCollectionView *view(int index) const;
     QVector<KCheckableProxyModel *> newlyCreated;
     QVector<KCheckableProxyModel *> selections;
     QVector<QString> titles;

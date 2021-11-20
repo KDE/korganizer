@@ -309,7 +309,7 @@ public:
     }
 
 protected:
-    bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const override
+    Q_REQUIRED_RESULT bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const override
     {
         const QModelIndex sourceIndex = sourceModel()->index(row, 0, sourceParent);
         Q_ASSERT(sourceIndex.isValid());
@@ -324,7 +324,7 @@ protected:
         return true;
     }
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
+    Q_REQUIRED_RESULT QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
     {
         if (role == Qt::ToolTipRole) {
             const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
@@ -344,7 +344,7 @@ public:
     }
 
 protected:
-    bool checkChildren(const QModelIndex &index, int role, const QVariant &value) const
+    Q_REQUIRED_RESULT bool checkChildren(const QModelIndex &index, int role, const QVariant &value) const
     {
         const QModelIndex sourceIndex = mapToSource(index);
         for (int i = 0; i < sourceModel()->rowCount(sourceIndex); ++i) {

@@ -85,17 +85,17 @@ public:
         }
     }
 
-    QString name() const
+    Q_REQUIRED_RESULT QString name() const
     {
         return mName;
     }
 
-    QString path() const
+    Q_REQUIRED_RESULT QString path() const
     {
         return mPath;
     }
 
-    QPixmap preview() const
+    Q_REQUIRED_RESULT QPixmap preview() const
     {
         return mPreview;
     }
@@ -105,12 +105,12 @@ public:
         mIsActive = isActive;
     }
 
-    bool isActive() const
+    Q_REQUIRED_RESULT bool isActive() const
     {
         return mIsActive;
     }
 
-    bool isOn() const
+    Q_REQUIRED_RESULT bool isOn() const
     {
         return checkState(0) == Qt::Checked;
     }

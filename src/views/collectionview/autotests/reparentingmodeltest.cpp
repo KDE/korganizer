@@ -40,7 +40,7 @@ public:
     QString mParent;
 
 private:
-    QVariant data(int role) const override
+    Q_REQUIRED_RESULT QVariant data(int role) const override
     {
         if (role == Qt::DisplayRole) {
             if (mName != mUid) {
