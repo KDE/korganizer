@@ -53,9 +53,7 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
     mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
 
-KOrganizerPlugin::~KOrganizerPlugin()
-{
-}
+KOrganizerPlugin::~KOrganizerPlugin() = default;
 
 KontactInterface::Summary *KOrganizerPlugin::createSummaryWidget(QWidget *parent)
 {
@@ -168,15 +166,14 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
                 const QUrlQuery query(url.query());
                 if (!query.queryItemValue(QStringLiteral("item")).isEmpty()
                     && query.queryItemValue(QStringLiteral("type")) == QStringLiteral("message/rfc822")) {
-                    Akonadi::ItemFetchJob *job =
-                        new Akonadi::ItemFetchJob(Akonadi::Item(static_cast<qint64>(query.queryItemValue(QStringLiteral("item")).toLongLong())));
+                    auto job = new Akonadi::ItemFetchJob(Akonadi::Item(static_cast<qint64>(query.queryItemValue(QStringLiteral("item")).toLongLong())));
                     job->fetchScope().fetchAllAttributes();
                     job->fetchScope().fetchFullPayload(true);
                     connect(job, &KJob::result, this, [this, url](KJob *job) {
                         if (job->error()) {
                             return;
                         }
-                        Akonadi::ItemFetchJob *fetchJob = qobject_cast<Akonadi::ItemFetchJob *>(job);
+                        auto fetchJob = qobject_cast<Akonadi::ItemFetchJob *>(job);
                         const Akonadi::Item::List items = fetchJob->items();
                         for (const Akonadi::Item &item : items) {
                             if (item.mimeType() == QStringLiteral("message/rfc822")) {

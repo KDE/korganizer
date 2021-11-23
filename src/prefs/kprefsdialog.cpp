@@ -79,7 +79,7 @@ KPrefsWid *create(KConfigSkeletonItem *item, QWidget *parent)
 
 QList<QWidget *> KPrefsWid::widgets() const
 {
-    return QList<QWidget *>();
+    return {};
 }
 
 KPrefsWidBool::KPrefsWidBool(KConfigSkeleton::ItemBool *item, QWidget *parent)
@@ -189,9 +189,7 @@ KPrefsWidColor::KPrefsWidColor(KConfigSkeleton::ItemColor *item, QWidget *parent
     }
 }
 
-KPrefsWidColor::~KPrefsWidColor()
-{
-}
+KPrefsWidColor::~KPrefsWidColor() = default;
 
 void KPrefsWidColor::readConfig()
 {
@@ -235,9 +233,7 @@ KPrefsWidFont::KPrefsWidFont(KConfigSkeleton::ItemFont *item, QWidget *parent, c
     }
 }
 
-KPrefsWidFont::~KPrefsWidFont()
-{
-}
+KPrefsWidFont::~KPrefsWidFont() = default;
 
 void KPrefsWidFont::readConfig()
 {
@@ -418,9 +414,7 @@ KPrefsWidRadios::KPrefsWidRadios(KConfigSkeleton::ItemEnum *item, QWidget *paren
     connect(mGroup, &QButtonGroup::buttonClicked, this, &KPrefsWidRadios::changed);
 }
 
-KPrefsWidRadios::~KPrefsWidRadios()
-{
-}
+KPrefsWidRadios::~KPrefsWidRadios() = default;
 
 void KPrefsWidRadios::addRadio(int value, const QString &text, const QString &toolTip, const QString &whatsThis)
 {
@@ -479,9 +473,7 @@ KPrefsWidCombo::KPrefsWidCombo(KConfigSkeleton::ItemEnum *item, QWidget *parent)
     }
 }
 
-KPrefsWidCombo::~KPrefsWidCombo()
-{
-}
+KPrefsWidCombo::~KPrefsWidCombo() = default;
 
 void KPrefsWidCombo::readConfig()
 {
@@ -528,9 +520,7 @@ KPrefsWidString::KPrefsWidString(KConfigSkeleton::ItemString *item, QWidget *par
     }
 }
 
-KPrefsWidString::~KPrefsWidString()
-{
-}
+KPrefsWidString::~KPrefsWidString() = default;
 
 void KPrefsWidString::readConfig()
 {
@@ -579,9 +569,7 @@ KPrefsWidPath::KPrefsWidPath(KConfigSkeleton::ItemPath *item, QWidget *parent, c
     }
 }
 
-KPrefsWidPath::~KPrefsWidPath()
-{
-}
+KPrefsWidPath::~KPrefsWidPath() = default;
 
 void KPrefsWidPath::readConfig()
 {
@@ -765,9 +753,7 @@ KPrefsDialog::KPrefsDialog(KConfigSkeleton *prefs, QWidget *parent, bool modal)
     connect(button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &KPrefsDialog::reject);
 }
 
-KPrefsDialog::~KPrefsDialog()
-{
-}
+KPrefsDialog::~KPrefsDialog() = default;
 
 void KPrefsDialog::autoCreate()
 {

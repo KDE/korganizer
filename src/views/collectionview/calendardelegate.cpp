@@ -25,9 +25,7 @@ StyledCalendarDelegate::StyledCalendarDelegate(QObject *parent)
     mIcon.insert(Quickview, QIcon::fromTheme(QStringLiteral("quickview")));
 }
 
-StyledCalendarDelegate::~StyledCalendarDelegate()
-{
-}
+StyledCalendarDelegate::~StyledCalendarDelegate() = default;
 
 static QRect enableButtonRect(QRect rect, int pos = 1)
 {

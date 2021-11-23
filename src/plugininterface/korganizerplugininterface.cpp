@@ -13,9 +13,7 @@ KOrganizerPluginInterface::KOrganizerPluginInterface(QObject *parent)
     setPluginDirectory(QStringLiteral("korganizer/mainview"));
 }
 
-KOrganizerPluginInterface::~KOrganizerPluginInterface()
-{
-}
+KOrganizerPluginInterface::~KOrganizerPluginInterface() = default;
 
 KOrganizerPluginInterface *KOrganizerPluginInterface::self()
 {

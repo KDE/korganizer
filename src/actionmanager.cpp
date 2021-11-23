@@ -711,7 +711,7 @@ void ActionManager::initActions()
 
 void ActionManager::updateHamburgerMenu()
 {
-    QMenu *menu = new QMenu;
+    auto menu = new QMenu;
 
     menu->addAction(mACollection->action(QStringLiteral("conf_datetime")));
     menu->addSeparator();
@@ -1203,9 +1203,7 @@ QString ActionManager::localFileName() const
 class ActionManager::ActionStringsVisitor : public KCalendarCore::Visitor
 {
 public:
-    ActionStringsVisitor()
-    {
-    }
+    ActionStringsVisitor() = default;
 
     bool act(KCalendarCore::IncidenceBase::Ptr incidence, QAction *show, QAction *edit, QAction *del)
     {
@@ -1322,7 +1320,7 @@ Akonadi::Collection ActionManager::selectedCollection() const
 {
     const QModelIndex index = mCollectionView->view()->currentIndex();
     if (!index.isValid()) {
-        return Akonadi::Collection();
+        return {};
     }
 
     return index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();

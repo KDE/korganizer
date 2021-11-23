@@ -68,9 +68,7 @@ public:
     class Factory
     {
     public:
-        virtual ~Factory()
-        {
-        }
+        virtual ~Factory() = default;
 
         virtual CalendarViewExtension *create(QWidget *parent) = 0;
     };
@@ -99,9 +97,7 @@ public:
     class CalendarViewVisitor : public KCalendarCore::Visitor
     {
     public:
-        CalendarViewVisitor()
-        {
-        }
+        CalendarViewVisitor() = default;
 
         bool act(KCalendarCore::IncidenceBase::Ptr &incidence, CalendarView *view)
         {

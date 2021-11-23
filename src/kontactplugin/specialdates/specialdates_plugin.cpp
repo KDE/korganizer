@@ -23,9 +23,7 @@ SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const QVari
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 }
 
-SpecialdatesPlugin::~SpecialdatesPlugin()
-{
-}
+SpecialdatesPlugin::~SpecialdatesPlugin() = default;
 
 KontactInterface::Summary *SpecialdatesPlugin::createSummaryWidget(QWidget *parentWidget)
 {

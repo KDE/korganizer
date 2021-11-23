@@ -57,9 +57,7 @@ public:
         {
         }
 
-        virtual ~NodeManager()
-        {
-        }
+        virtual ~NodeManager() = default;
 
     protected:
         ReparentingModel &model;

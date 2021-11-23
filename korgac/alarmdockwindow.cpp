@@ -92,9 +92,7 @@ AlarmDockWindow::AlarmDockWindow()
     mAutostartSet = autostartSet;
 }
 
-AlarmDockWindow::~AlarmDockWindow()
-{
-}
+AlarmDockWindow::~AlarmDockWindow() = default;
 
 void AlarmDockWindow::slotUpdate(int reminders)
 {

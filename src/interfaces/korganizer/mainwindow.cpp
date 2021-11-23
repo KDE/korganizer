@@ -10,13 +10,9 @@
 
 namespace KOrg
 {
-MainWindow::MainWindow()
-{
-}
+MainWindow::MainWindow() = default;
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow() = default;
 
 void MainWindow::init(bool hasDocument)
 {

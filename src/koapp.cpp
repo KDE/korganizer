@@ -34,9 +34,7 @@ KOrganizerApp::KOrganizerApp(int &argc, char **argv[])
     KCalendarCore::CalFormat::setApplication(QStringLiteral("KOrganizer"), prodId.arg(QStringLiteral(KORGANIZER_VERSION)));
 }
 
-KOrganizerApp::~KOrganizerApp()
-{
-}
+KOrganizerApp::~KOrganizerApp() = default;
 
 int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
 {

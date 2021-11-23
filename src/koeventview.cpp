@@ -37,9 +37,7 @@ KOEventView::KOEventView(QWidget *parent)
 
 //---------------------------------------------------------------------------
 
-KOEventView::~KOEventView()
-{
-}
+KOEventView::~KOEventView() = default;
 
 //---------------------------------------------------------------------------
 

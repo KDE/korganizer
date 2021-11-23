@@ -39,9 +39,7 @@ public:
     {
     }
 
-    ~Part() override
-    {
-    }
+    ~Part() override = default;
 
     virtual QString info() = 0;
 

@@ -65,9 +65,7 @@ bool SummaryEventInfo::skip(const KCalendarCore::Event::Ptr &event)
     return false;
 }
 
-SummaryEventInfo::SummaryEventInfo()
-{
-}
+SummaryEventInfo::SummaryEventInfo() = default;
 
 /**static*/
 SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, const Akonadi::ETMCalendar::Ptr &calendar)

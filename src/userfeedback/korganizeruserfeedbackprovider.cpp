@@ -33,6 +33,4 @@ KOrganizerUserFeedbackProvider::KOrganizerUserFeedbackProvider(QObject *parent)
     addDataSource(new KUserFeedback::LocaleInfoSource);
 }
 
-KOrganizerUserFeedbackProvider::~KOrganizerUserFeedbackProvider()
-{
-}
+KOrganizerUserFeedbackProvider::~KOrganizerUserFeedbackProvider() = default;

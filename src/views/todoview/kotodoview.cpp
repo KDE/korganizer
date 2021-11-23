@@ -86,9 +86,7 @@ KOTodoView::KOTodoView(bool sidebarView, QWidget *parent)
             static_cast<void (KOEventPopupMenu::*)(const Akonadi::Item &)>(&KOEventPopupMenu::createNote));
 }
 
-KOTodoView::~KOTodoView()
-{
-}
+KOTodoView::~KOTodoView() = default;
 
 void KOTodoView::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {
@@ -103,7 +101,7 @@ Akonadi::Item::List KOTodoView::selectedIncidences()
 
 KCalendarCore::DateList KOTodoView::selectedIncidenceDates()
 {
-    return KCalendarCore::DateList();
+    return {};
 }
 
 void KOTodoView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)

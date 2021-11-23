@@ -77,9 +77,7 @@ KDateNavigator::KDateNavigator(QWidget *parent)
     updateConfig();
 }
 
-KDateNavigator::~KDateNavigator()
-{
-}
+KDateNavigator::~KDateNavigator() = default;
 
 void KDateNavigator::setCalendar(const Akonadi::ETMCalendar::Ptr &calendar)
 {

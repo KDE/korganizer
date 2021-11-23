@@ -27,9 +27,7 @@ KOCore *KOCore::self()
     return mSelf;
 }
 
-KOCore::KOCore()
-{
-}
+KOCore::KOCore() = default;
 
 KOCore::~KOCore()
 {

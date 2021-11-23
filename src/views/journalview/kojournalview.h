@@ -35,7 +35,7 @@ public:
 
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override
     {
-        return KCalendarCore::DateList();
+        return {};
     }
 
     void setCalendar(const Akonadi::ETMCalendar::Ptr &) override;

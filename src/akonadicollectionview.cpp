@@ -252,7 +252,7 @@ public:
     QVariant data(const QModelIndex &index, int role) const override
     {
         if (!index.isValid()) {
-            return QVariant();
+            return {};
         }
         if (role == Qt::DecorationRole) {
             const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);

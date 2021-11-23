@@ -28,9 +28,7 @@ public:
         identifier = cname + '_' + KRandom::randomString(8).toLatin1();
     }
 
-    ~BaseViewPrivate()
-    {
-    }
+    ~BaseViewPrivate() = default;
 
     EventViews::EventView::Changes mChanges;
     Akonadi::ETMCalendar::Ptr calendar;
@@ -66,12 +64,12 @@ Akonadi::ETMCalendar::Ptr BaseView::calendar()
 
 QDateTime BaseView::selectionStart()
 {
-    return QDateTime();
+    return {};
 }
 
 QDateTime BaseView::selectionEnd()
 {
-    return QDateTime();
+    return {};
 }
 
 bool BaseView::isEventView()

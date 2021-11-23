@@ -38,9 +38,7 @@ KOViewManager::KOViewManager(CalendarView *mainView)
 {
 }
 
-KOViewManager::~KOViewManager()
-{
-}
+KOViewManager::~KOViewManager() = default;
 
 KOrg::BaseView *KOViewManager::currentView()
 {
@@ -535,12 +533,12 @@ void KOViewManager::showEventView()
 Akonadi::Item KOViewManager::currentSelection()
 {
     if (!mCurrentView) {
-        return Akonadi::Item();
+        return {};
     }
 
     Akonadi::Item::List incidenceList = mCurrentView->selectedIncidences();
     if (incidenceList.isEmpty()) {
-        return Akonadi::Item();
+        return {};
     }
     return incidenceList.first();
 }

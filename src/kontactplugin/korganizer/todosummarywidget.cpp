@@ -60,9 +60,7 @@ TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
     updateView();
 }
 
-TodoSummaryWidget::~TodoSummaryWidget()
-{
-}
+TodoSummaryWidget::~TodoSummaryWidget() = default;
 
 void TodoSummaryWidget::updateView()
 {

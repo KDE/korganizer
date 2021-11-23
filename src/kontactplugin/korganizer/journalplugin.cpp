@@ -41,9 +41,7 @@ JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
     mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
 }
 
-JournalPlugin::~JournalPlugin()
-{
-}
+JournalPlugin::~JournalPlugin() = default;
 
 KParts::Part *JournalPlugin::createPart()
 {

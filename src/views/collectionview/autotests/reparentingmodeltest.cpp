@@ -23,9 +23,7 @@ public:
     {
     }
 
-    ~DummyNode() override
-    {
-    }
+    ~DummyNode() override = default;
 
     bool operator==(const Node &node) const override
     {
@@ -51,7 +49,7 @@ private:
         } else if (role == Qt::UserRole) {
             return mData;
         }
-        return QVariant();
+        return {};
     }
 
     bool setData(const QVariant &variant, int role) override

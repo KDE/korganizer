@@ -23,12 +23,12 @@ public:
     Q_REQUIRED_RESULT int currentDateCount() const override;
     Q_REQUIRED_RESULT Akonadi::Item::List selectedIncidences() override
     {
-        return Akonadi::Item::List();
+        return {};
     }
 
     Q_REQUIRED_RESULT KCalendarCore::DateList selectedIncidenceDates() override
     {
-        return KCalendarCore::DateList();
+        return {};
     }
 
     Q_REQUIRED_RESULT bool supportsDateNavigation() const override

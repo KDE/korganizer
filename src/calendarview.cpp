@@ -1971,7 +1971,7 @@ Akonadi::Item CalendarView::selectedTodo()
     if (const KCalendarCore::Todo::Ptr t = CalendarSupport::todo(item)) {
         return item;
     }
-    return Akonadi::Item();
+    return {};
 }
 
 void CalendarView::dialogClosing(const Akonadi::Item &)
@@ -2502,7 +2502,7 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1String &mimeTyp
     }
 
     // 5. Return a invalid collection, the editor will use the first one in the combo
-    return Akonadi::Collection();
+    return {};
 }
 
 IncidenceEditorNG::IncidenceDialog *CalendarView::createIncidenceEditor(const Akonadi::Item &item, const Akonadi::Collection &collection)

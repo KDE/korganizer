@@ -17,13 +17,9 @@ namespace KOrg
 class CoreHelper
 {
 public:
-    CoreHelper()
-    {
-    }
+    CoreHelper() = default;
 
-    virtual ~CoreHelper()
-    {
-    }
+    virtual ~CoreHelper() = default;
 
     virtual QColor categoryColor(const QStringList &cats) = 0;
     virtual QString holidayString(const QDate &dt) = 0;

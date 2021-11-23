@@ -62,9 +62,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     configUpdated();
 }
 
-ApptSummaryWidget::~ApptSummaryWidget()
-{
-}
+ApptSummaryWidget::~ApptSummaryWidget() = default;
 
 void ApptSummaryWidget::configUpdated()
 {

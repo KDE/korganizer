@@ -19,9 +19,7 @@ DateNavigator::DateNavigator(QObject *parent)
     mSelectedDates.append(QDate::currentDate());
 }
 
-DateNavigator::~DateNavigator()
-{
-}
+DateNavigator::~DateNavigator() = default;
 
 KCalendarCore::DateList DateNavigator::selectedDates() const
 {

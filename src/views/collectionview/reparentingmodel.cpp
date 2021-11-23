@@ -94,7 +94,7 @@ QVariant ReparentingModel::Node::data(int role) const
     if (sourceIndex.isValid()) {
         return sourceIndex.data(role);
     }
-    return QVariant();
+    return {};
 }
 
 bool ReparentingModel::Node::adopts(const QModelIndex & /* sourceIndex */)
@@ -393,7 +393,7 @@ void ReparentingModel::appendSourceNode(Node *parentNode, const QModelIndex &sou
 QModelIndexList ReparentingModel::descendants(const QModelIndex &sourceIndex)
 {
     if (!sourceModel()) {
-        return QModelIndexList();
+        return {};
     }
     QModelIndexList list;
     if (sourceModel()->hasChildren(sourceIndex)) {
@@ -612,7 +612,7 @@ QModelIndex ReparentingModel::index(int row, int column, const QModelIndex &pare
     // At least QAbstractItemView expects that we deal with this properly (see rowsAboutToBeRemoved "find the next visible and enabled item")
     // Also QAbstractItemModel::match does all kinds of weird shit including passing row=-1
     if (parentNode->children.size() <= row) {
-        return QModelIndex();
+        return {};
     }
     Node *node = parentNode->children.at(row).data();
     Q_ASSERT(validateNode(node));
@@ -626,7 +626,7 @@ QModelIndex ReparentingModel::mapToSource(const QModelIndex &idx) const
     }
     Node *node = extractNode(idx);
     if (!node->isSourceNode()) {
-        return QModelIndex();
+        return {};
     }
     Q_ASSERT(node->sourceIndex.model() == sourceModel());
     return node->sourceIndex;
@@ -652,7 +652,7 @@ QModelIndex ReparentingModel::mapFromSource(const QModelIndex &sourceIndex) cons
     Node *node = getSourceNode(sourceIndex);
     if (!node) {
         // This can happen if a source nodes is hidden (person collections)
-        return QModelIndex();
+        return {};
     }
     Q_ASSERT(validateNode(node));
     return index(node);
@@ -741,7 +741,7 @@ void ReparentingModel::rebuildAll()
 QVariant ReparentingModel::data(const QModelIndex &proxyIndex, int role) const
 {
     if (!proxyIndex.isValid()) {
-        return QVariant();
+        return {};
     }
     const Node *node = extractNode(proxyIndex);
     if (node->isSourceNode()) {

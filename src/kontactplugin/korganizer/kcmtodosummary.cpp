@@ -45,9 +45,7 @@ KCMTodoSummary::KCMTodoSummary(QWidget *parent, const QVariantList &args)
     load();
 }
 
-KCMTodoSummary::~KCMTodoSummary()
-{
-}
+KCMTodoSummary::~KCMTodoSummary() = default;
 
 void KCMTodoSummary::modified()
 {

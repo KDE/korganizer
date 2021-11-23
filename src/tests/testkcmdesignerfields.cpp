@@ -36,7 +36,7 @@ public:
 
     QStringList readActivePages() override
     {
-        return QStringList();
+        return {};
     }
 
     QString applicationName() override

@@ -26,9 +26,7 @@ public:
     {
     }
 
-    ~CalendarViewBase() override
-    {
-    }
+    ~CalendarViewBase() override = default;
 
     virtual Akonadi::ETMCalendar::Ptr calendar() const = 0;
     virtual Akonadi::IncidenceChanger *incidenceChanger() const = 0;

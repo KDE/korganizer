@@ -76,9 +76,7 @@ KOJournalView::KOJournalView(QWidget *parent)
     connect(mJournalView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 }
 
-KOJournalView::~KOJournalView()
-{
-}
+KOJournalView::~KOJournalView() = default;
 
 int KOJournalView::currentDateCount() const
 {

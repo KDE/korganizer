@@ -37,9 +37,7 @@ using namespace KOrg;
 class KODialogManager::DialogManagerVisitor : public KCalendarCore::Visitor
 {
 public:
-    DialogManagerVisitor()
-    {
-    }
+    DialogManagerVisitor() = default;
 
     bool act(KCalendarCore::IncidenceBase::Ptr &incidence, KODialogManager *manager)
     {

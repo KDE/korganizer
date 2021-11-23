@@ -80,9 +80,7 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     }
 }
 
-CollectionGeneralPage::~CollectionGeneralPage()
-{
-}
+CollectionGeneralPage::~CollectionGeneralPage() = default;
 
 void CollectionGeneralPage::load(const Akonadi::Collection &collection)
 {

@@ -18,13 +18,9 @@
 class KOCoreHelper : public KOrg::CoreHelper
 {
 public:
-    KOCoreHelper()
-    {
-    }
+    KOCoreHelper() = default;
 
-    ~KOCoreHelper() override
-    {
-    }
+    ~KOCoreHelper() override = default;
 
     Q_REQUIRED_RESULT QColor categoryColor(const QStringList &cats) override;
 

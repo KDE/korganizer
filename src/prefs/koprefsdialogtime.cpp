@@ -86,7 +86,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QWidget *parent, const QVariantList &args)
         } else {
             label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)", name, languageName);
         }
-        regionsMap.push_back(std::make_pair(label, regionCode));
+        regionsMap.emplace_back(label, regionCode);
     }
     std::sort(regionsMap.begin(), regionsMap.end(), [](const auto &lhs, const auto &rhs) {
         return lhs.first < rhs.first;

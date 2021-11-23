@@ -26,9 +26,7 @@ KOGlobals *KOGlobals::self()
     return &sKOGlobalsSingletonPrivate->instance;
 }
 
-KOGlobals::KOGlobals()
-{
-}
+KOGlobals::KOGlobals() = default;
 
 KOGlobals::~KOGlobals()
 {

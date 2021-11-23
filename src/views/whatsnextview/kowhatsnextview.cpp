@@ -58,9 +58,7 @@ KOWhatsNextView::KOWhatsNextView(QWidget *parent)
     connect(mView, &EventViews::EventView::newJournalSignal, this, &KOrg::BaseView::newJournalSignal);
 }
 
-KOWhatsNextView::~KOWhatsNextView()
-{
-}
+KOWhatsNextView::~KOWhatsNextView() = default;
 
 int KOWhatsNextView::currentDateCount() const
 {

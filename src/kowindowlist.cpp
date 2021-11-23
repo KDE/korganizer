@@ -16,9 +16,7 @@ KOWindowList::KOWindowList()
 {
 }
 
-KOWindowList::~KOWindowList()
-{
-}
+KOWindowList::~KOWindowList() = default;
 
 void KOWindowList::addWindow(KOrg::MainWindow *korg)
 {

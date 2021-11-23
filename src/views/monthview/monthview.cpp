@@ -79,9 +79,7 @@ MonthView::MonthView(QWidget *parent)
     connect(mMonthView, &EventViews::MonthView::fullViewChanged, this, &MonthView::fullViewChanged);
 }
 
-MonthView::~MonthView()
-{
-}
+MonthView::~MonthView() = default;
 
 CalendarSupport::CalPrinterBase::PrintType MonthView::printType() const
 {

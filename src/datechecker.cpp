@@ -17,9 +17,7 @@ DateChecker::DateChecker(QObject *parent)
     enableRollover(FollowMonth);
 }
 
-DateChecker::~DateChecker()
-{
-}
+DateChecker::~DateChecker() = default;
 
 void DateChecker::enableRollover(RolloverType r)
 {

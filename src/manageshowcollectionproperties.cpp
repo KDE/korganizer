@@ -23,9 +23,7 @@ ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollection
 {
 }
 
-ManageShowCollectionProperties::~ManageShowCollectionProperties()
-{
-}
+ManageShowCollectionProperties::~ManageShowCollectionProperties() = default;
 
 void ManageShowCollectionProperties::showCollectionProperties()
 {

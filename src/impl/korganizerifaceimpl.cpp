@@ -21,9 +21,7 @@ KOrganizerIfaceImpl::KOrganizerIfaceImpl(ActionManager *actionManager, QObject *
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Korganizer"), this, QDBusConnection::ExportAdaptors);
 }
 
-KOrganizerIfaceImpl::~KOrganizerIfaceImpl()
-{
-}
+KOrganizerIfaceImpl::~KOrganizerIfaceImpl() = default;
 
 bool KOrganizerIfaceImpl::openURL(const QString &url)
 {

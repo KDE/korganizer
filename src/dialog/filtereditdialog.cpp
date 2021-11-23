@@ -96,9 +96,7 @@ FilterEdit::FilterEdit(QList<KCalendarCore::CalFilter *> *filters, QWidget *pare
     connect(mCompletedCheck, &QCheckBox::toggled, mCompletedTimeSpan, &QSpinBox::setEnabled);
 }
 
-FilterEdit::~FilterEdit()
-{
-}
+FilterEdit::~FilterEdit() = default;
 
 void FilterEdit::updateFilterList()
 {

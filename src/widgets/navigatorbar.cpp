@@ -79,9 +79,7 @@ NavigatorBar::NavigatorBar(QWidget *parent)
     connect(mYear, &QToolButton::clicked, this, &NavigatorBar::selectYearFromMenu);
 }
 
-NavigatorBar::~NavigatorBar()
-{
-}
+NavigatorBar::~NavigatorBar() = default;
 
 void NavigatorBar::showButtons(bool left, bool right)
 {

@@ -37,9 +37,7 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     setAlwaysShowDefaultText(true);
 }
 
-KItemIconCheckCombo::~KItemIconCheckCombo()
-{
-}
+KItemIconCheckCombo::~KItemIconCheckCombo() = default;
 
 void KItemIconCheckCombo::setCheckedIcons(const QSet<EventViews::EventView::ItemIcon> &icons)
 {

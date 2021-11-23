@@ -61,9 +61,7 @@ public:
     {
     }
 
-    ~ReminderTreeItem() override
-    {
-    }
+    ~ReminderTreeItem() override = default;
 
     bool operator<(const QTreeWidgetItem &other) const override;
 
