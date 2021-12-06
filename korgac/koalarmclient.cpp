@@ -194,7 +194,7 @@ void KOAlarmClient::checkAlarms()
     const Alarm::List alarms = mCalendar->alarms(from, mLastChecked, true /* exclude blocked alarms */);
 
     for (const Alarm::Ptr &alarm : alarms) {
-        const QString uid = alarm->customProperty("ETMCalendar", "parentUid");
+        const QString uid = alarm->parentUid();
         const Akonadi::Item::Id id = mCalendar->item(uid).id();
         const Akonadi::Item item = mCalendar->item(id);
 
@@ -294,7 +294,7 @@ QStringList KOAlarmClient::dumpAlarms() const
         lst << QStringLiteral("No alarm found.");
     } else {
         for (const Alarm::Ptr &alarm : alarms) {
-            const QString uid = alarm->customProperty("ETMCalendar", "parentUid");
+            const QString uid = alarm->parentUid();
             const Akonadi::Item::Id id = mCalendar->item(uid).id();
             const Akonadi::Item item = mCalendar->item(id);
 
