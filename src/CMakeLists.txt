@@ -14,7 +14,6 @@ add_subdirectory(sounds)
 add_subdirectory(kcmconfigs)
 add_subdirectory(kontactplugin)
 add_subdirectory(views/collectionview)
-add_subdirectory(kconf_update)
 
 ########### next target ###############
 
