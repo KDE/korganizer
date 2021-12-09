@@ -51,9 +51,7 @@ KService::List KOCore::availableCalendarDecorations()
 
 EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
 {
-    KPluginLoader loader(*service);
-    auto factory = loader.factory();
-
+    KPluginFactory *factory = KPluginFactory::loadFactory(KPluginMetaData(service->library())).plugin;
     if (!factory) {
         qCDebug(KORGANIZER_LOG) << "Factory creation failed";
         return nullptr;
