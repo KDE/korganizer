@@ -1,4 +1,5 @@
-
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: BSD-3-Clause
 ########### next target ###############
 
 add_library(korganizer_interfaces)
