@@ -11,7 +11,6 @@ endif()
 add_subdirectory(interfaces)
 add_subdirectory(pixmaps)
 add_subdirectory(sounds)
-add_subdirectory(kcmconfigs)
 add_subdirectory(kontactplugin)
 add_subdirectory(views/collectionview)
 

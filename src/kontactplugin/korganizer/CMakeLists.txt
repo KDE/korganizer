@@ -66,7 +66,3 @@ install(TARGETS kcmtodosummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/sum
 install(TARGETS kontact_korganizerplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact5)
 install(TARGETS kontact_todoplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact5)
 install(TARGETS kontact_journalplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact5)
-
-install(FILES korganizerplugin.desktop todoplugin.desktop journalplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/kontact)
-install(FILES kcmapptsummary.desktop kcmtodosummary.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
-
