@@ -369,11 +369,6 @@ install(FILES
     )
 
 install(FILES
-    korganizer_part.desktop
-    DESTINATION ${KDE_INSTALL_KSERVICES5DIR}
-    )
-
-install(FILES
     data/org.kde.Korganizer.Calendar.xml data/org.kde.korganizer.Korganizer.xml
     DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR}
     )
