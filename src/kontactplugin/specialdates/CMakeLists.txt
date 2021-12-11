@@ -26,8 +26,6 @@ target_link_libraries(kontact_specialdatesplugin
   KF5::CalendarSupport
 )
 
-kcoreaddons_desktop_to_json(kontact_specialdatesplugin specialdatesplugin.desktop)
-
 ########### next target ###############
 
 set(kcmsdsummary_PART_SRCS kcmsdsummary.cpp kcmsdsummary.h)
@@ -35,7 +33,6 @@ set(kcmsdsummary_PART_SRCS kcmsdsummary.cpp kcmsdsummary.h)
 ki18n_wrap_ui(kcmsdsummary_PART_SRCS sdsummaryconfig_base.ui)
 
 add_library(kcmsdsummary MODULE ${kcmsdsummary_PART_SRCS})
-kcoreaddons_desktop_to_json(kcmsdsummary "kcmsdsummary.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(kcmsdsummary Qt::Widgets KF5::KCMUtils KF5::I18n)
 
 ########### install files ###############

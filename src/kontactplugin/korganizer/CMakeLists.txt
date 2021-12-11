@@ -17,8 +17,6 @@ add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS
 
 target_link_libraries(kontact_korganizerplugin KF5::AkonadiCalendar KF5::CalendarUtils KF5::Contacts KF5::CalendarCore KF5::KontactInterface korganizerprivate KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem KF5::I18n)
 
-kcoreaddons_desktop_to_json(kontact_korganizerplugin korganizerplugin.desktop SERVICE_TYPES kcmodule.desktop)
-
 ########### next target ###############
 
 set(kontact_todoplugin_PART_SRCS todoplugin.cpp todosummarywidget.cpp todoplugin.h todosummarywidget.h ${libcommon_SRCS})
@@ -28,8 +26,6 @@ qt_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
 
 target_link_libraries(kontact_todoplugin KF5::AkonadiCalendar  KF5::Contacts KF5::KontactInterface KF5::CalendarCore KF5::CalendarUtils KF5::CalendarSupport KF5::AkonadiCalendar KF5::WindowSystem)
-
-kcoreaddons_desktop_to_json(kontact_todoplugin todoplugin.desktop)
 
 ########### next target ###############
 
@@ -41,8 +37,6 @@ add_library(kontact_journalplugin MODULE ${kontact_journalplugin_PART_SRCS})
 
 target_link_libraries(kontact_journalplugin KF5::I18n KF5::KontactInterface KF5::WindowSystem)
 
-kcoreaddons_desktop_to_json(kontact_journalplugin journalplugin.desktop)
-
 ########### next target ###############
 
 set(kcmapptsummary_PART_SRCS kcmapptsummary.cpp kcmapptsummary.h)
@@ -50,7 +44,6 @@ set(kcmapptsummary_PART_SRCS kcmapptsummary.cpp kcmapptsummary.h)
 ki18n_wrap_ui(kcmapptsummary_PART_SRCS apptsummaryconfig_base.ui)
 
 add_library(kcmapptsummary MODULE ${kcmapptsummary_PART_SRCS})
-kcoreaddons_desktop_to_json(kcmapptsummary "kcmapptsummary.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(kcmapptsummary  KF5::KCMUtils KF5::I18n)
 
 ########### next target ###############
@@ -60,7 +53,6 @@ set(kcmtodosummary_PART_SRCS kcmtodosummary.cpp kcmtodosummary.h)
 ki18n_wrap_ui(kcmtodosummary_PART_SRCS todosummaryconfig_base.ui)
 
 add_library(kcmtodosummary MODULE ${kcmtodosummary_PART_SRCS})
-kcoreaddons_desktop_to_json(kcmtodosummary "kcmtodosummary.desktop" SERVICE_TYPES kcmodule.desktop)
 target_link_libraries(kcmtodosummary Qt::Widgets KF5::KCMUtils KF5::I18n)
 
 ########## Unit Test ###########
