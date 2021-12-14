@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Main Configuration",
+        "Description[ca]": "Configuració principal del KOrganizer",
+        "Description[nl]": "KOrganizer algemene instellingen",
+        "Description[sv]": "Korganizers huvudinställning",
+        "Description[uk]": "Налаштування особистих даних у KOrganizer",
+        "Description[x-test]": "xxKOrganizer Main Configurationxx",
         "Icon": "korganizer",
         "Name": "General",
         "Name[af]": "Algemeen",

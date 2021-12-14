@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Free/Busy Configuration",
+        "Description[ca]": "Configuració de lliure/ocupat del KOrganizer",
+        "Description[nl]": "KOrganizer vrij/bezet instellen",
+        "Description[sv]": "Inställning av ledig/upptagen i Korganizer",
+        "Description[uk]": "Налаштування вільного/зайнятого часу в KOrganizer",
+        "Description[x-test]": "xxKOrganizer Free/Busy Configurationxx",
         "Icon": "preferences-other",
         "Name": "Free/Busy",
         "Name[af]": "Beskikbaar/Besig",

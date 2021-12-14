@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Configure the Custom Pages",
+        "Description[ca]": "Configura les pàgines personalitzades",
+        "Description[nl]": "Hier kunt u de aangepaste pagina's instellen",
+        "Description[sv]": "Anpassa egna sidor",
+        "Description[uk]": "Налаштування нетипових сторінок",
+        "Description[x-test]": "xxConfigure the Custom Pagesxx",
         "Icon": "configure",
         "Name": "Custom Pages",
         "Name[af]": "Pasmaak Blaaie",

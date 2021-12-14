@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Kontact KOrganizer To-do List Plugin",
+        "Description[ca]": "Connector de la llista de tasques pendents del KOrganizer del Kontact",
+        "Description[nl]": "Kontact KOrganizer takenlijstplug-in",
+        "Description[sv]": "Kontact-insticksprogram för Korganizers uppgiftslista",
+        "Description[uk]": "Додаток списку завдань KOrganizer для Kontact",
+        "Description[x-test]": "xxKontact KOrganizer To-do List Pluginxx",
         "EnabledByDefault": true,
         "Icon": "view-pim-tasks",
         "Id": "kontact_todoplugin",

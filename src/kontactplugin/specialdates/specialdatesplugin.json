@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Special Dates Plugin",
+        "Description[ca]": "Connector de dates especials",
+        "Description[nl]": "Plug-in voor speciale datums",
+        "Description[sv]": "Insticksprogram för speciella datum",
+        "Description[uk]": "Додаток особливих дат",
+        "Description[x-test]": "xxSpecial Dates Pluginxx",
         "EnabledByDefault": true,
         "Icon": "view-calendar-special-occasion",
         "Id": "kontact_specialdatesplugin",

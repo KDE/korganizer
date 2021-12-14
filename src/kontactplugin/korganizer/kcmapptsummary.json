@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Upcoming Events Summary Setup",
+        "Description[ca]": "Configuració del resum dels esdeveniments pròxims",
+        "Description[nl]": "Overzichtsinstellingen aanstaande evenementen",
+        "Description[sv]": "Inställning av översikt över kommande händelser",
+        "Description[uk]": "Зведення налаштування майбутніх подій",
+        "Description[x-test]": "xxUpcoming Events Summary Setupxx",
         "Icon": "korganizer",
         "Name": "Upcoming Events",
         "Name[ar]": "الأحداث القادمة",

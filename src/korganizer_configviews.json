@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "KOrganizer View Configuration",
+        "Description[ca]": "Configuració de la vista del KOrganizer",
+        "Description[nl]": "KOrganizer weergave instellen",
+        "Description[sv]": "Inställning av Korganizers vyer",
+        "Description[uk]": "Налаштування переглядів у KOrganizer",
+        "Description[x-test]": "xxKOrganizer View Configurationxx",
         "Icon": "view-choose",
         "Name": "Views",
         "Name[af]": "Aansigte",

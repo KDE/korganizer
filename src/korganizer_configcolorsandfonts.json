@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Colors and Fonts Configuration",
+        "Description[ca]": "Configuració dels colors i tipus de lletra del KOrganizer",
+        "Description[nl]": "Instellingen voor kleuren en lettertypen in KOrganizer",
+        "Description[sv]": "Inställning av Korganizers färger och teckensnitt",
+        "Description[uk]": "Налаштування кольорів і шрифтів у KOrganizer",
+        "Description[x-test]": "xxKOrganizer Colors and Fonts Configurationxx",
         "Icon": "preferences-desktop-color",
         "Name": "Colors and Fonts",
         "Name[ar]": "الألوان والخطوط",

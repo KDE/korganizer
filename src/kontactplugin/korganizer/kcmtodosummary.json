@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Pending To-dos Summary Setup",
+        "Description[ca]": "Configuració del resum de les tasques pendents inacabades",
+        "Description[nl]": "Overzichtsinstellingen voor openstaande taken",
+        "Description[sv]": "Inställning av översikt över väntande uppgifter",
+        "Description[uk]": "Зведення налаштування призначених завдань",
+        "Description[x-test]": "xxPending To-dos Summary Setupxx",
         "Icon": "korg-todo",
         "Name": "Pending To-dos",
         "Name[ar]": "المهامّ المرجأة",

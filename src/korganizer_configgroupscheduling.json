@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Group Scheduling Configuration",
+        "Description[ca]": "Configuració de la planificació de grups del KOrganizer",
+        "Description[nl]": "KOrganizer groepsplanning instellen",
+        "Description[sv]": "Inställning av Korganizers gruppschemaläggning",
+        "Description[uk]": "Налаштування групового розкладу в KOrganizer",
+        "Description[x-test]": "xxKOrganizer Group Scheduling Configurationxx",
         "Icon": "network-workgroup",
         "Name": "Group Scheduling",
         "Name[af]": "Groep Skedulering",

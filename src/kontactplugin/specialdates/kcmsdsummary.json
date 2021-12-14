@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Upcoming Special Dates Summary Setup",
+        "Description[ca]": "Configuració del resum de les dates especials pròximes",
+        "Description[nl]": "Overzichtsinstellingen aanstaande speciale datums",
+        "Description[sv]": "Inställning av översikt av förestående speciella datum",
+        "Description[uk]": "Зведення налаштування майбутніх особливих дат",
+        "Description[x-test]": "xxUpcoming Special Dates Summary Setupxx",
         "Icon": "view-calendar-special-occasion",
         "Name": "Upcoming Special Dates",
         "Name[ar]": "التّواريخ الخاصّة القادمة",

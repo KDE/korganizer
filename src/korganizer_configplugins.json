@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Plugin Configuration",
+        "Description[ca]": "Configuració dels connectors del KOrganizer",
+        "Description[nl]": "KOrganizer plug-ininstellingen",
+        "Description[sv]": "Korganizers inställning av insticksprogram",
+        "Description[uk]": "Налаштування додатків KOrganizer",
+        "Description[x-test]": "xxKOrganizer Plugin Configurationxx",
         "Icon": "preferences-plugin",
         "Name": "Plugins",
         "Name[af]": "Inprop modules",

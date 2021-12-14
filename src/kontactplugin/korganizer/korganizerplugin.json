@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Kontact KOrganizer Plugin",
+        "Description[ca]": "Connector del KOrganizer del Kontact",
+        "Description[nl]": "Kontact KOrganizer-plug-in",
+        "Description[sv]": "Kontact-insticksprogram för Korganizer",
+        "Description[uk]": "Додаток календаря KOrganizer для Kontact",
+        "Description[x-test]": "xxKontact KOrganizer Pluginxx",
         "EnabledByDefault": true,
         "Icon": "view-pim-calendar",
         "Id": "kontact_korganizerplugin",

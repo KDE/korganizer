@@ -1,6 +1,11 @@
 {
     "KPlugin": {
         "Description": "Kontact KOrganizer Journal Plugin",
+        "Description[ca]": "Connector de diaris del KOrganizer del Kontact",
+        "Description[nl]": "Kontact KOrganizer Journaalplug-in",
+        "Description[sv]": "Kontacts journalinsticksprogram för Korganizer",
+        "Description[uk]": "Додаток журналу для (KOrganizer) Kontact",
+        "Description[x-test]": "xxKontact KOrganizer Journal Pluginxx",
         "EnabledByDefault": true,
         "Icon": "view-pim-journal",
         "Id": "kontact_journalplugin",
