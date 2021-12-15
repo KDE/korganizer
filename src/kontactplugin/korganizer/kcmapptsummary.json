@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "Upcoming Events Summary Setup",
+        "Description[ca@valencia]": "Configuració del resum dels esdeveniments pròxims",
         "Description[ca]": "Configuració del resum dels esdeveniments pròxims",
+        "Description[fr]": "Configuration du résumé des évènements à venir",
+        "Description[it]": "Impostazioni sommario dei prossimi eventi",
         "Description[nl]": "Overzichtsinstellingen aanstaande evenementen",
+        "Description[sl]": "Nastavi povzetek prihodnjih dogodkov",
         "Description[sv]": "Inställning av översikt över kommande händelser",
         "Description[uk]": "Зведення налаштування майбутніх подій",
         "Description[x-test]": "xxUpcoming Events Summary Setupxx",

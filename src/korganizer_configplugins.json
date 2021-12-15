@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Plugin Configuration",
+        "Description[ca@valencia]": "Configuració dels connectors del KOrganizer",
         "Description[ca]": "Configuració dels connectors del KOrganizer",
+        "Description[fr]": "Configuration du module externe « KOrganizer »",
+        "Description[it]": "Configurazione estensioni KOrganizer",
         "Description[nl]": "KOrganizer plug-ininstellingen",
+        "Description[sl]": "Nastavitve vstavka KOrganizerja",
         "Description[sv]": "Korganizers inställning av insticksprogram",
         "Description[uk]": "Налаштування додатків KOrganizer",
         "Description[x-test]": "xxKOrganizer Plugin Configurationxx",

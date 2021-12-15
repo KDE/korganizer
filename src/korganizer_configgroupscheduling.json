@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Group Scheduling Configuration",
+        "Description[ca@valencia]": "Configuració de la planificació de grups del KOrganizer",
         "Description[ca]": "Configuració de la planificació de grups del KOrganizer",
+        "Description[fr]": "Configuration de la planification des groupes de KOrganizer",
+        "Description[it]": "Configurazione del programmatore gruppi di KOrganizer",
         "Description[nl]": "KOrganizer groepsplanning instellen",
+        "Description[sl]": "Nastavitev razporejanja skupin v KOrganizerju",
         "Description[sv]": "Inställning av Korganizers gruppschemaläggning",
         "Description[uk]": "Налаштування групового розкладу в KOrganizer",
         "Description[x-test]": "xxKOrganizer Group Scheduling Configurationxx",

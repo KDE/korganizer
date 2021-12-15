@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "KOrganizer View Configuration",
+        "Description[ca@valencia]": "Configuració de la vista del KOrganizer",
         "Description[ca]": "Configuració de la vista del KOrganizer",
+        "Description[fr]": "Configuration des affichages de KOrganizer",
+        "Description[it]": "Configurazione viste di KOrganizer",
         "Description[nl]": "KOrganizer weergave instellen",
+        "Description[sl]": "Nastavitev prikazov KOrganizerja",
         "Description[sv]": "Inställning av Korganizers vyer",
         "Description[uk]": "Налаштування переглядів у KOrganizer",
         "Description[x-test]": "xxKOrganizer View Configurationxx",

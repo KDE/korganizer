@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Main Configuration",
+        "Description[ca@valencia]": "Configuració principal del KOrganizer",
         "Description[ca]": "Configuració principal del KOrganizer",
+        "Description[fr]": "Configuration principale de KOrganizer",
+        "Description[it]": "Configurazione principale di KOrganizer",
         "Description[nl]": "KOrganizer algemene instellingen",
+        "Description[sl]": "Glavne nastavitve KOrganizerja",
         "Description[sv]": "Korganizers huvudinställning",
         "Description[uk]": "Налаштування особистих даних у KOrganizer",
         "Description[x-test]": "xxKOrganizer Main Configurationxx",

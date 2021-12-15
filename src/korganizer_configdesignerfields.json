@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "Configure the Custom Pages",
+        "Description[ca@valencia]": "Configura les pàgines personalitzades",
         "Description[ca]": "Configura les pàgines personalitzades",
+        "Description[fr]": "Configurer les pages personnalisées",
+        "Description[it]": "Configura le pagine personalizzate",
         "Description[nl]": "Hier kunt u de aangepaste pagina's instellen",
+        "Description[sl]": "Nastavitev strani po meri",
         "Description[sv]": "Anpassa egna sidor",
         "Description[uk]": "Налаштування нетипових сторінок",
         "Description[x-test]": "xxConfigure the Custom Pagesxx",

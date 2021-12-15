@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "KOrganizer User Feedback Configuration",
+        "Description[ca@valencia]": "Configuració dels comentaris d'usuari del KOrganizer",
         "Description[ca]": "Configuració dels comentaris d'usuari del KOrganizer",
+        "Description[fr]": "Configuration pour le retour utilisateur pour KOrganizer",
+        "Description[it]": "Configurazione Segnalazioni degli utenti di KOrganizer",
         "Description[nl]": "KOrganizer instellen voor terugkoppelen door gebruiker",
+        "Description[sl]": "Nastavitve uporabnikovega povratnega odziva v KOrganizerju",
         "Description[sv]": "Inställning av Korganizer användaråterkoppling",
         "Description[uk]": "Налаштування відгуків користувача щодо KOrganizer",
         "Description[x-test]": "xxKOrganizer User Feedback Configurationxx",

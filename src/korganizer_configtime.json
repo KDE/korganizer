@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Time and Date Configuration",
+        "Description[ca@valencia]": "Configuració de la data i hora del KOrganizer",
         "Description[ca]": "Configuració de la data i hora del KOrganizer",
+        "Description[fr]": "Configuration de la date et l'heure de KOrganizer",
+        "Description[it]": "Configurazione data e ora di KOrganizer",
         "Description[nl]": "KOrganizer datum en tijd instellingen",
+        "Description[sl]": "Nastavitev časa in datuma v KOrganizerju",
         "Description[sv]": "Inställning av Korganizers tid och datum",
         "Description[uk]": "Налаштування часу і дати в KOrganizer",
         "Description[x-test]": "xxKOrganizer Time and Date Configurationxx",

@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "Kontact KOrganizer Plugin",
+        "Description[ca@valencia]": "Connector del KOrganizer del Kontact",
         "Description[ca]": "Connector del KOrganizer del Kontact",
+        "Description[fr]": "Module externe « KOrganizer » pour Kontact",
+        "Description[it]": "Estensione per Kontact di KOrganizer",
         "Description[nl]": "Kontact KOrganizer-plug-in",
+        "Description[sl]": "Vstavek Kontact za KOrganizer",
         "Description[sv]": "Kontact-insticksprogram för Korganizer",
         "Description[uk]": "Додаток календаря KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer Pluginxx",

@@ -1,8 +1,12 @@
 {
     "KPlugin": {
         "Description": "Pending To-dos Summary Setup",
+        "Description[ca@valencia]": "Configuració del resum de les tasques pendents inacabades",
         "Description[ca]": "Configuració del resum de les tasques pendents inacabades",
+        "Description[fr]": "Configuration du résumé des tâches à faire",
+        "Description[it]": "Impostazioni sommario cose da fare in scadenza",
         "Description[nl]": "Overzichtsinstellingen voor openstaande taken",
+        "Description[sl]": "Nastavi povzetek čakajočih opravil",
         "Description[sv]": "Inställning av översikt över väntande uppgifter",
         "Description[uk]": "Зведення налаштування призначених завдань",
         "Description[x-test]": "xxPending To-dos Summary Setupxx",
