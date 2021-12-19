@@ -2110,6 +2110,15 @@ bool CalendarView::editIncidence(const Akonadi::Item &item, bool isCounter)
     return true;
 }
 
+void CalendarView::showIncidenceByUid(const QString &uid)
+{
+    const auto item = mCalendar->item(uid);
+    if (item.isValid()) {
+        showIncidenceContext(item);
+        mEventViewer->setIncidence(item);
+    }
+}
+
 void CalendarView::deleteIncidenceFamily(const Akonadi::Item &item)
 {
     const auto incidence = CalendarSupport::incidence(item);

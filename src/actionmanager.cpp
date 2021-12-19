@@ -14,6 +14,7 @@
 #include "actionmanager.h"
 #include "akonadicollectionview.h"
 #include "calendaradaptor.h"
+#include "calendarinterfaceadaptor.h"
 #include "calendarview.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
@@ -74,6 +75,7 @@
 #include <QStandardPaths>
 #include <QTimer>
 #include <QToolBar>
+#include <QWindow>
 
 KOWindowList *ActionManager::mWindowList = nullptr;
 
@@ -87,6 +89,9 @@ ActionManager::ActionManager(KXMLGUIClient *client,
     : QObject(parent)
 {
     new KOrgCalendarAdaptor(this);
+
+    // reminder daemon interface
+    new CalendarInterfaceAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Calendar"), this);
 
     mGUIClient = client;
@@ -1101,6 +1106,20 @@ bool ActionManager::showIncidence(Akonadi::Item::Id id)
 bool ActionManager::showIncidenceContext(Akonadi::Item::Id id)
 {
     return mCalendarView->showIncidenceContext(id);
+}
+
+void ActionManager::showIncidenceByUid(const QString &uid, const QDateTime &occurrence, const QString &xdgActivationToken)
+{
+    mCalendarView->showIncidenceByUid(uid);
+    mCalendarView->showDate(occurrence.date());
+
+    KWindowSystem::setCurrentXdgActivationToken(xdgActivationToken);
+    KOrg::MainWindow *mainWindow = ActionManager::findInstance(QUrl());
+    if (mainWindow) {
+        KWindowSystem::activateWindow(mainWindow->topLevelWidget()->windowHandle());
+        mainWindow->topLevelWidget()->show();
+        mainWindow->topLevelWidget()->windowHandle()->raise();
+    }
 }
 
 bool ActionManager::handleCommandLine(const QStringList &args)

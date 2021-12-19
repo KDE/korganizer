@@ -132,6 +132,12 @@ public:
     bool showIncidenceContext(Akonadi::Item::Id id);
 
     /**
+      Show an incidence in context, given its uid.
+      @param uid the iCal uid of the incidence to show.
+    */
+    void showIncidenceByUid(const QString &uid, const QDateTime &occurence, const QString &xdgActivationToken);
+
+    /**
      * Called by KOrganizerUniqueAppHandler in the kontact plugin
      * Returns true if the command line was successfully handled
      * false otherwise.

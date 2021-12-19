@@ -296,6 +296,10 @@ qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
     data/org.kde.Korganizer.Calendar.xml actionmanager.h
     ActionManager calendaradaptor KOrgCalendarAdaptor
     )
+qt_add_dbus_adaptor(korganizerprivate_LIB_SRCS
+    data/org.kde.calendar.Calendar.xml actionmanager.h
+    ActionManager calendarinterfaceadaptor CalendarInterfaceAdaptor
+    )
 
 qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     data/org.kde.korganizer.Korganizer.xml

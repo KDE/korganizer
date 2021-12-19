@@ -303,6 +303,12 @@ public Q_SLOTS:
     void showIncidenceContext(const Akonadi::Item &incidence);
     bool showIncidenceContext(Akonadi::Item::Id id);
 
+    /**
+      Show an incidence in context, given its uid.
+      @param uid the iCal uid of the incidence to show.
+    */
+    void showIncidenceByUid(const QString &uid);
+
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence(const Akonadi::Item &item, bool isCounter = false) override;
     bool editIncidence(Akonadi::Item::Id id);

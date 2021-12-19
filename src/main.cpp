@@ -15,6 +15,8 @@
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include "korgmigrateapplication.h"
 #endif
+#include <KConfig>
+#include <KConfigGroup>
 #include <KCrash>
 #include <KLocalizedString>
 
@@ -60,6 +62,11 @@ int main(int argc, char **argv)
     if (app.isSessionRestored()) {
         kRestoreMainWindows<KOrganizer>();
     }
+
+    // information for the reminder daemon
+    KConfig cfg(QStringLiteral("defaultcalendarrc"));
+    KConfigGroup grp(&cfg, QStringLiteral("General"));
+    grp.writeEntry(QStringLiteral("ApplicationId"), QStringLiteral("org.kde.korganizer"));
 
     return app.exec();
 }

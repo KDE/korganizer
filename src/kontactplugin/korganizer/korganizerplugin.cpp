@@ -25,6 +25,8 @@
 
 #include "korganizerplugin_debug.h"
 #include <KActionCollection>
+#include <KConfig>
+#include <KConfigGroup>
 #include <KLocalizedString>
 #include <QAction>
 #include <QIcon>
@@ -51,6 +53,12 @@ KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantL
     insertNewAction(action);
 
     mUniqueAppWatcher = new KontactInterface::UniqueAppWatcher(new KontactInterface::UniqueAppHandlerFactory<KOrganizerUniqueAppHandler>(), this);
+
+    // information for the reminder daemon
+    KConfig cfg(QStringLiteral("defaultcalendarrc"));
+    KConfigGroup grp(&cfg, QStringLiteral("General"));
+    grp.writeEntry(QStringLiteral("ApplicationId"), QStringLiteral("org.kde.kontact"));
+    grp.writeEntry(QStringLiteral("KontactPlugin"), QStringLiteral("korganizer"));
 }
 
 KOrganizerPlugin::~KOrganizerPlugin() = default;
