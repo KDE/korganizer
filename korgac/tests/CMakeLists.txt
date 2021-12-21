@@ -23,6 +23,7 @@ qt_add_dbus_interface(testalarmdlg_SRCS ../org.freedesktop.DBus.Properties.xml d
 target_sources(testalarmdlg PRIVATE
     testalarmdlg.cpp
     ../alarmdialog.cpp
+    ../alarmdialog.h
      ${testalarmdlg_SRCS}
     ${korganizer_BINARY_DIR}/korgac/koalarmclient_debug.cpp)
 

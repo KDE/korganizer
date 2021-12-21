@@ -186,6 +186,8 @@ if(TARGET KUserFeedbackWidgets)
     set(korganizerprivate_userfeedback_SRCS ${korganizerprivate_userfeedback_SRCS}
         userfeedback/userfeedbackmanager.cpp
         userfeedback/korganizeruserfeedbackprovider.cpp
+        userfeedback/userfeedbackmanager.h
+        userfeedback/korganizeruserfeedbackprovider.h
         )
 endif()
 
