@@ -12,6 +12,7 @@
         "Description[sv]": "Inställning av Korganizer användaråterkoppling",
         "Description[uk]": "Налаштування відгуків користувача щодо KOrganizer",
         "Description[x-test]": "xxKOrganizer User Feedback Configurationxx",
+        "Description[zh_CN]": "KOrganizer 用户反馈配置",
         "Icon": "preferences-other",
         "Name": "User Feedback",
         "Name[ca@valencia]": "Comentaris de l'usuari",
