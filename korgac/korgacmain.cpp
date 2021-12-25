@@ -35,9 +35,9 @@ int main(int argc, char **argv)
 #endif
 
     KAboutData aboutData(QStringLiteral("korgac"),
-                         i18n("KOrganizer Reminder Daemon"),
+                         i18n("KOrganizer Reminders"),
                          QStringLiteral(KORGANIZER_VERSION),
-                         i18n("KOrganizer Reminder Daemon"),
+                         i18n("KOrganizer Reminders"),
                          KAboutLicense::GPL,
                          i18n("(c) 2003 Cornelius Schumacher"),
                          QString(),
