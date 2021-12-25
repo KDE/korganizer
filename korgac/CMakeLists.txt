@@ -81,8 +81,14 @@ install(TARGETS
     )
 
 install(FILES
-    org.kde.korgac.desktop
+    autostart-org.kde.korgac.desktop
+    RENAME org.kde.korgac.desktop
     DESTINATION ${KDE_INSTALL_AUTOSTARTDIR}
+    )
+
+install(FILES
+    org.kde.korgac.desktop
+    DESTINATION ${KDE_INSTALL_APPDIR}
     )
 
 install(FILES
