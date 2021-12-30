@@ -1,7 +1,21 @@
 [Desktop Entry]
 Name=KOrganizer Reminders
+Name[ca]=Recordatoris del KOrganizer
+Name[ca@valencia]=Recordatoris del KOrganizer
+Name[es]=Recordatorios de KOrganizer
+Name[ia]=Mementos de KOrganizer
+Name[sv]=Korganizers påminnelser
+Name[uk]=Нагадування KOrganizer
+Name[x-test]=xxKOrganizer Remindersxx
 Exec=korgac
 Icon=korgac
 Type=Application
 GenericName=Calendar Reminders
+GenericName[ca]=Recordatoris del calendari
+GenericName[ca@valencia]=Recordatoris del calendari
+GenericName[es]=Recordatorios de calendarios
+GenericName[ia]=Mementos de calendario
+GenericName[sv]=Kalenderpåminnelser
+GenericName[uk]=Нагадування календаря
+GenericName[x-test]=xxCalendar Remindersxx
 NoDisplay=true
