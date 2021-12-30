@@ -96,6 +96,7 @@ SearchDialog::~SearchDialog()
 void SearchDialog::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event)
+    activateWindow();
     m_ui->searchEdit->setFocus();
 }
 
