@@ -2,6 +2,7 @@
 Name=KOrganizer Reminders
 Name[ca]=Recordatoris del KOrganizer
 Name[ca@valencia]=Recordatoris del KOrganizer
+Name[en_GB]=KOrganizer Reminders
 Name[es]=Recordatorios de KOrganizer
 Name[fr]=Rappels de KOrganizer
 Name[ia]=Mementos de KOrganizer
@@ -18,6 +19,7 @@ Type=Application
 GenericName=Calendar Reminders
 GenericName[ca]=Recordatoris del calendari
 GenericName[ca@valencia]=Recordatoris del calendari
+GenericName[en_GB]=Calendar Reminders
 GenericName[es]=Recordatorios de calendarios
 GenericName[fr]=Rappels d'agendas
 GenericName[ia]=Mementos de calendario
