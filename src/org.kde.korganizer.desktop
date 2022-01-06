@@ -216,4 +216,4 @@ X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.korganizer
 Categories=Qt;KDE;Office;Calendar;
 InitialPreference=10
-X-GNOME-SingleWindow=true
+SingleMainWindow=true
