@@ -15,7 +15,7 @@ add_test(NAME reparentingmodeltest COMMAND reparentingmodeltest)
 ecm_mark_as_test(reparentingmodeltest)
 ecm_mark_nongui_executable(reparentingmodeltest)
 target_link_libraries(reparentingmodeltest
-    Qt::Test
-    Qt::Core
-    Qt::Gui
+    Qt${QT_MAJOR_VERSION}::Test
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Gui
 )

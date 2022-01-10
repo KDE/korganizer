@@ -11,6 +11,6 @@ target_link_libraries(
   summaryeventtest
   KF5::CalendarCore
   KF5::CalendarUtils
-  Qt::Test
+  Qt${QT_MAJOR_VERSION}::Test
   KF5::I18n
 )
