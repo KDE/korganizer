@@ -18,8 +18,7 @@
 #include <KCalUtils/IncidenceFormatter>
 
 #include "korganizer_debug.h"
-#include <kcoreaddons_version.h>
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include "korgmigrateapplication.h"
 #endif
 #include <KParts/StatusBarExtension>
@@ -32,7 +31,7 @@ K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
     : KParts::ReadOnlyPart(parent)
 {
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     KOrgMigrateApplication migrate;
     migrate.migrate();
 #endif
