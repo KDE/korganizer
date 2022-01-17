@@ -93,7 +93,7 @@ private:
     void updateButtons();
     using ReminderList = QList<ReminderTreeItem *>;
 
-    static Q_REQUIRED_RESULT QDateTime triggerDateForIncidence(const KCalendarCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
+    Q_REQUIRED_RESULT static QDateTime triggerDateForIncidence(const KCalendarCore::Incidence::Ptr &inc, const QDateTime &reminderAt, QString &displayStr);
 
     // Removes each Incidence-X group that has one of the specified uids
     void removeFromConfig(const QList<Akonadi::Item::Id> &);
@@ -111,7 +111,7 @@ private:
     Q_REQUIRED_RESULT ReminderList selectedItems() const;
     void toggleDetails(QTreeWidgetItem *item);
     void showDetails(QTreeWidgetItem *item);
-    static Q_REQUIRED_RESULT bool grabFocus();
+    Q_REQUIRED_RESULT static bool grabFocus();
 
     Akonadi::ETMCalendar::Ptr mCalendar;
     QTreeWidget *mIncidenceTree = nullptr;
