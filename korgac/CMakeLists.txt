@@ -68,7 +68,7 @@ target_link_libraries(korgac
     KF5::CalendarCore
     KF5::CalendarUtils
     KF5::DBusAddons
-    Phonon::phonon4qt5
+    Phonon::phonon4qt${QT_MAJOR_VERSION}
     KF5::Notifications
     KF5::IconThemes
     KF5::Service
