@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer View Configuration",
+        "Description[az]": "KOrganizer görünşü tənzimləməsi",
         "Description[ca@valencia]": "Configuració de la vista del KOrganizer",
         "Description[ca]": "Configuració de la vista del KOrganizer",
         "Description[en_GB]": "KOrganizer View Configuration",
@@ -19,6 +20,7 @@
         "Name": "Views",
         "Name[af]": "Aansigte",
         "Name[ar]": "المناظير",
+        "Name[az]": "Görünüşlər",
         "Name[bg]": "Изгледи",
         "Name[br]": "Gweloù",
         "Name[bs]": "Pogledi",

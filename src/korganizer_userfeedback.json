@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer User Feedback Configuration",
+        "Description[az]": "KOrganizer istifadəçi rəyi tənzimləməsi",
         "Description[ca@valencia]": "Configuració dels comentaris d'usuari del KOrganizer",
         "Description[ca]": "Configuració dels comentaris d'usuari del KOrganizer",
         "Description[en_GB]": "KOrganizer User Feedback Configuration",
@@ -18,6 +19,7 @@
         "Description[zh_CN]": "KOrganizer 用户反馈配置",
         "Icon": "preferences-other",
         "Name": "User Feedback",
+        "Name[az]": "İstifadəçi Rəyi",
         "Name[ca@valencia]": "Comentaris de l'usuari",
         "Name[ca]": "Comentaris de l'usuari",
         "Name[cs]": "Zpětná vazba uživatele",

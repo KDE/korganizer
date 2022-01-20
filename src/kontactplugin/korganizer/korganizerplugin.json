@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Kontact KOrganizer Plugin",
+        "Description[az]": "Kontact KOrganizer plaqini",
         "Description[ca@valencia]": "Connector del KOrganizer del Kontact",
         "Description[ca]": "Connector del KOrganizer del Kontact",
         "Description[en_GB]": "Kontact KOrganizer Plugin",
@@ -22,6 +23,7 @@
         "Name": "Calendar",
         "Name[af]": "Kalender",
         "Name[ar]": "التّقويم",
+        "Name[az]": "Təqvim",
         "Name[bg]": "Calendar",
         "Name[br]": "Deiziadur",
         "Name[bs]": "Kalendar",

@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KOrganizer Part Interface
 Name[ar]=واجهة «جزء منظّمك»
+Name[az]=KOrganizer tərkib hissələri
 Name[bs]=Dio Sučelja KOrganizatora
 Name[ca]=Interfície de la part del KOrganizer
 Name[ca@valencia]=Interfície de la part del KOrganizer
@@ -54,6 +55,7 @@ X-KDE-ServiceType=KOrganizer/Part
 Comment=KOrganizer Part
 Comment[af]=Korganizer Deel
 Comment[ar]=جزء منظّمك
+Comment[az]=KOrganizer komponenti
 Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
 Comment[bs]=Dio KOrganizatora

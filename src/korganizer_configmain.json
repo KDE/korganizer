@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Main Configuration",
+        "Description[az]": "KOrganizer əsas tənzimləmə",
         "Description[ca@valencia]": "Configuració principal del KOrganizer",
         "Description[ca]": "Configuració principal del KOrganizer",
         "Description[en_GB]": "KOrganizer Main Configuration",
@@ -19,6 +20,7 @@
         "Name": "General",
         "Name[af]": "Algemeen",
         "Name[ar]": "عامّ",
+        "Name[az]": "Əsas",
         "Name[be]": "Агульныя",
         "Name[bg]": "Общи",
         "Name[br]": "Pennañ",

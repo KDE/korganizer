@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Time and Date Configuration",
+        "Description[az]": "KOrganizer vaxt və tarix tənzimləməsi",
         "Description[ca@valencia]": "Configuració de la data i hora del KOrganizer",
         "Description[ca]": "Configuració de la data i hora del KOrganizer",
         "Description[en_GB]": "KOrganizer Time and Date Configuration",
@@ -18,6 +19,7 @@
         "Icon": "preferences-system-time",
         "Name": "Time and Date",
         "Name[ar]": "الوقت والتّاريخ",
+        "Name[az]": "Vaxt və Tarix",
         "Name[bg]": "Дата и час",
         "Name[bs]": "Vrijeme i datum",
         "Name[ca@valencia]": "Hora i data",

@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Upcoming Events Summary Setup",
+        "Description[az]": "Gələcək tədbirlərin xülasəsi ayarları",
         "Description[ca@valencia]": "Configuració del resum dels esdeveniments pròxims",
         "Description[ca]": "Configuració del resum dels esdeveniments pròxims",
         "Description[en_GB]": "Upcoming Events Summary Setup",
@@ -18,6 +19,7 @@
         "Icon": "korganizer",
         "Name": "Upcoming Events",
         "Name[ar]": "الأحداث القادمة",
+        "Name[az]": "Gələcək tədbirlər",
         "Name[bs]": "Nastupajući događaji",
         "Name[ca@valencia]": "Propers esdeveniments",
         "Name[ca]": "Propers esdeveniments",

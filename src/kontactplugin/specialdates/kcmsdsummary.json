@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Upcoming Special Dates Summary Setup",
+        "Description[az]": "Gələcək xüsusi tarizlərin xülasəsi ayarları",
         "Description[ca@valencia]": "Configuració del resum de les dates especials pròximes",
         "Description[ca]": "Configuració del resum de les dates especials pròximes",
         "Description[en_GB]": "Upcoming Special Dates Summary Setup",
@@ -18,6 +19,7 @@
         "Icon": "view-calendar-special-occasion",
         "Name": "Upcoming Special Dates",
         "Name[ar]": "التّواريخ الخاصّة القادمة",
+        "Name[az]": "Gələcək xüsusi tarixlər",
         "Name[bg]": "Special Dates",
         "Name[bs]": "Dolazeći posebni datumi",
         "Name[ca@valencia]": "Dates especials properes",

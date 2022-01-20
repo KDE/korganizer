@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Group Scheduling Configuration",
+        "Description[az]": "KOrganizer qrup planlaşdırma tənzimləməsi",
         "Description[ca@valencia]": "Configuració de la planificació de grups del KOrganizer",
         "Description[ca]": "Configuració de la planificació de grups del KOrganizer",
         "Description[en_GB]": "KOrganizer Group Scheduling Configuration",
@@ -19,6 +20,7 @@
         "Name": "Group Scheduling",
         "Name[af]": "Groep Skedulering",
         "Name[ar]": "جدولة المجموعات",
+        "Name[az]": "Qrup Planlaşdırılması",
         "Name[bg]": "Разписание",
         "Name[bs]": "Grupni raspored",
         "Name[ca@valencia]": "Planificació de grups",

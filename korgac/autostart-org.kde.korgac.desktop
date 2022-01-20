@@ -2,6 +2,7 @@
 Name=KOrganizer Reminder Client
 Name[af]=KOrganizer herhinner kliënt
 Name[ar]=عميل التّذكير لِ‍«منظّمك»
+Name[az]=KOrganizer xatırladıcı müştərisi
 Name[bg]=Клиент за аларма на KOrganizer
 Name[bs]=KOrganizerov Podsjetni klijent
 Name[ca]=Client de l'alarma del KOrganizer
@@ -65,6 +66,7 @@ Type=Application
 GenericName=KOrganizer Reminder Daemon Client
 GenericName[af]=Korganizer herhinner bediener kliënt
 GenericName[ar]=عميل عفريت التّذكير لِ‍«منظّمك»
+GenericName[az]=KOrganizer xatırlatma xidməti müştərisi
 GenericName[bg]=Клиент за демон за аларма на KOrganizer
 GenericName[bs]=KOrganizerov Podsjetni Deamon Klijent
 GenericName[ca]=Client del dimoni d'alarma del KOrganizer

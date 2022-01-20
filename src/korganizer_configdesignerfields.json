@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Configure the Custom Pages",
+        "Description[az]": "Əlavə sahələri tənzimləyin",
         "Description[ca@valencia]": "Configura les pàgines personalitzades",
         "Description[ca]": "Configura les pàgines personalitzades",
         "Description[en_GB]": "Configure the Custom Pages",
@@ -19,6 +20,7 @@
         "Name": "Custom Pages",
         "Name[af]": "Pasmaak Blaaie",
         "Name[ar]": "الصّفحات المخصّصة",
+        "Name[az]": "Əlavə sahələr",
         "Name[bg]": "Потребителски полета",
         "Name[br]": "Pajennoù dre ziouer",
         "Name[bs]": "Korisničke stranice",

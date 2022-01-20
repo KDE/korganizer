@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Free/Busy Configuration",
+        "Description[az]": "KOrganizer Sərbəst/Məşğul tənzimləməsi",
         "Description[ca@valencia]": "Configuració de lliure/ocupat del KOrganizer",
         "Description[ca]": "Configuració de lliure/ocupat del KOrganizer",
         "Description[en_GB]": "KOrganizer Free/Busy Configuration",
@@ -19,6 +20,7 @@
         "Name": "Free/Busy",
         "Name[af]": "Beskikbaar/Besig",
         "Name[ar]": "متفرّغ/مشغول",
+        "Name[az]": "Sərbəst/Məşğul",
         "Name[bg]": "Свободно/заето",
         "Name[bs]": "Slobodno/Zauzeto",
         "Name[ca@valencia]": "Lliure/ocupat",
