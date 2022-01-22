@@ -10,13 +10,13 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include <CalendarSupport/KCalPrefs>
-#include <KCheckComboBox>
 #include <KComboBox>
 #include <KHolidays/HolidayRegion>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KTimeComboBox>
 #include <KUrlRequester>
+#include <Libkdepim/KCheckComboBox>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFrame>
