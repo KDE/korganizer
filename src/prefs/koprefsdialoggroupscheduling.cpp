@@ -12,10 +12,10 @@
 #include <CalendarSupport/KCalPrefs>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <MailTransport/TransportManagementWidget>
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <TransportManagementWidget>
 #include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupScheduling, "korganizer_configgroupscheduling.json")
