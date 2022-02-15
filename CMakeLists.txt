@@ -41,6 +41,7 @@ include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
+include(ECMDeprecationSettings)
 
 
 set(AKONADI_CONTACT_VERSION "5.19.40")
@@ -134,8 +135,7 @@ include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_S
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
+ecm_set_disabled_deprecation_versions(QT 5.15.2 KF 5.88.0)
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
