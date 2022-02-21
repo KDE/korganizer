@@ -11,7 +11,7 @@
 #include "korganizer_debug.h"
 
 #include <Akonadi/ItemCreateJob>
-#include <Akonadi/Notes/NoteUtils>
+#include <Akonadi/NoteUtils>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/NoteEditDialog>

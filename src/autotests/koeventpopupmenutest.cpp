@@ -7,7 +7,7 @@
 #include "koeventpopupmenutest.h"
 #include "koeventpopupmenu.h"
 
-#include <Akonadi/Notes/NoteUtils>
+#include <Akonadi/NoteUtils>
 
 #include <CalendarSupport/NoteEditDialog>
 
