@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 #include <KCalendarCore/IncidenceBase> //for DateList typedef
 #include <QDate>
 #include <QFrame>

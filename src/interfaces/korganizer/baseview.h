@@ -14,8 +14,8 @@
 #include <CalendarSupport/PrintPlugin>
 #include <EventViews/EventView>
 
-#include <Akonadi/Calendar/ETMCalendar>
-#include <Akonadi/Calendar/IncidenceChanger>
+#include <Akonadi/ETMCalendar>
+#include <Akonadi/IncidenceChanger>
 
 #include <Akonadi/Collection>
 #include <Akonadi/Item>

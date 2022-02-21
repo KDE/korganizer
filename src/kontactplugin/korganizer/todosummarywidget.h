@@ -13,7 +13,7 @@
 
 #include <KCalendarCore/Todo>
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 #include <KontactInterface/Summary>
 
 class TodoPlugin;

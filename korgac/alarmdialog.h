@@ -7,7 +7,7 @@
 */
 #pragma once
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 
 #include <QDialog>
 #include <QTimer>

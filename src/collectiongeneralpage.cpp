@@ -6,7 +6,7 @@
 */
 
 #include "collectiongeneralpage.h"
-#include <Akonadi/Calendar/BlockAlarmsAttribute>
+#include <Akonadi/BlockAlarmsAttribute>
 #include <Akonadi/Collection>
 #include <Akonadi/EntityDisplayAttribute>
 #include <PimCommon/PimUtil>

@@ -19,7 +19,7 @@
 #include <KCalendarCore/ScheduleMessage>
 #include <KCalendarCore/Visitor>
 
-#include <Akonadi/Calendar/ITIPHandler>
+#include <Akonadi/ITIPHandler>
 
 #include <CalendarSupport/MessageWidget>
 

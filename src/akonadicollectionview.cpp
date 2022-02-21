@@ -26,7 +26,6 @@
 #include <Akonadi/AgentInstanceCreateJob>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentTypeDialog>
-#include <Akonadi/Calendar/StandardCalendarActionManager>
 #include <Akonadi/CollectionDeleteJob>
 #include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/CollectionIdentificationAttribute>
@@ -34,6 +33,7 @@
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/StandardCalendarActionManager>
 #include <PimCommonAkonadi/MailUtil>
 #include <PimCommonAkonadi/ManageServerSideSubscriptionJob>
 

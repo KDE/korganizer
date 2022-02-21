@@ -35,11 +35,11 @@
 #include <Akonadi/AttributeFactory>
 #include <Akonadi/CollectionIdentificationAttribute>
 
-#include <Akonadi/Calendar/CalendarClipboard>
-#include <Akonadi/Calendar/FreeBusyManager>
-#include <Akonadi/Calendar/IncidenceChanger>
-#include <Akonadi/Calendar/TodoPurger>
-#include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+#include <Akonadi/CalendarClipboard>
+#include <Akonadi/FreeBusyManager>
+#include <Akonadi/IncidenceChanger>
+#include <Akonadi/TodoPurger>
+#include <akonadi/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
 #include <Akonadi/CollectionMaintenancePage>
 #include <Akonadi/CollectionPropertiesDialog>

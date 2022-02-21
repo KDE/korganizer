@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 
 #include <KCalendarCore/IncidenceBase> //for KCalendarCore::DateList typedef
 

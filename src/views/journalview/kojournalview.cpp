@@ -18,7 +18,7 @@
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/Utils>
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 
 #include <QVBoxLayout>
 

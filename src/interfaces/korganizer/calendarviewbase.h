@@ -10,7 +10,7 @@
 #pragma once
 
 #include "baseview.h"
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 
 namespace KOrg
 {

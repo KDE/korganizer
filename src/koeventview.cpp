@@ -11,7 +11,7 @@
 #include "kocore.h"
 #include "koeventpopupmenu.h"
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 

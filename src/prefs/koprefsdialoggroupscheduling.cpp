@@ -16,7 +16,7 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <akonadi/calendar/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
+#include <akonadi/calendarsettings.h> //krazy:exclude=camelcase this is a generated file
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogGroupScheduling, "korganizer_configgroupscheduling.json")
 

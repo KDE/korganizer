@@ -12,7 +12,7 @@
 #include <QDate>
 #include <QMenu>
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 #include <Akonadi/Item>
 
 /**

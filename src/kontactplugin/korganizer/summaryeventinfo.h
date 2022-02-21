@@ -9,7 +9,7 @@
 */
 #pragma once
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 
 class QDate;
 

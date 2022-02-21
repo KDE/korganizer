@@ -11,7 +11,7 @@
 #include "korganizer_debug.h"
 #include "korganizerinterface.h"
 
-#include <Akonadi/Calendar/ETMCalendar>
+#include <Akonadi/ETMCalendar>
 #include <CalendarSupport/IncidenceViewer>
 #include <CalendarSupport/Utils>
 

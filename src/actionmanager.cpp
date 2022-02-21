@@ -34,12 +34,12 @@
 
 #include <IncidenceEditor/IncidenceEditorSettings>
 
-#include <Akonadi/Calendar/History>
-#include <Akonadi/Calendar/ICalImporter>
 #include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/EntityTreeView>
+#include <Akonadi/History>
+#include <Akonadi/ICalImporter>
 
 #include <KCalendarCore/FileStorage>
 #include <KCalendarCore/ICalFormat>
