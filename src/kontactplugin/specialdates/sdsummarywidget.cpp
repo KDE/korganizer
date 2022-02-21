@@ -12,8 +12,8 @@
 #include <KontactInterface/Core>
 #include <KontactInterface/Plugin>
 
-#include <Akonadi/Contact/ContactSearchJob>
-#include <Akonadi/Contact/ContactViewerDialog>
+#include <Akonadi/ContactSearchJob>
+#include <Akonadi/ContactViewerDialog>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
