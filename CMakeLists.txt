@@ -63,7 +63,7 @@ set(QT_REQUIRED_VERSION "5.15.2")
 find_package(Qt${QT_MAJOR_VERSION} ${QT_REQUIRED_VERSION} CONFIG REQUIRED DBus Gui Widgets Test UiTools)
 
 find_package(KUserFeedback 1.2.0 CONFIG) 
-set_package_properties(KUserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional). It can be disable in apps.")
+set_package_properties(KUserFeedback PROPERTIES DESCRIPTION "User Feedback lib" TYPE OPTIONAL PURPOSE "Allow to send Telemetry Information (optional).")
 
 if (TARGET KUserFeedbackWidgets)
     add_definitions(-DWITH_KUSERFEEDBACK)
