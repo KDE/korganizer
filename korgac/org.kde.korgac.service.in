@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.kde.korgac
-Exec=${CMAKE_INSTALL_FULL_BINDIR}/korgac

@@ -19,7 +19,6 @@
 #include "kocore.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
-#include "korgacinterface.h"
 #include "korganizeradaptor.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
@@ -992,14 +991,6 @@ void ActionManager::updateConfig()
     mNextXDays->setText(i18np("&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
 
     KOCore::self()->reloadPlugins();
-
-    /* Hide/Show the Reminder Daemon */
-    org::kde::korganizer::KOrgac korgacInterface{QStringLiteral("org.kde.korgac"), QStringLiteral("/ac"), QDBusConnection::sessionBus()};
-    if (!KOPrefs::instance()->mShowReminderDaemon) {
-        korgacInterface.hide();
-    } else {
-        korgacInterface.show();
-    }
 
 #ifdef AKONADI_PORT_DISABLED // shouldn't be required anymore
     if (mCollectionView) {

@@ -131,7 +131,7 @@ endif()
 
 set(KDEPIM_HAVE_X11 ${X11_FOUND})
 configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
-include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR} ${korgac_SOURCE_DIR} ${korgac_BINARY_DIR})
+include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
 
@@ -151,7 +151,6 @@ endif()
 
 
 add_subdirectory(src)
-add_subdirectory(korgac)
 
 ecm_qt_install_logging_categories(
         EXPORT KORGANIZER

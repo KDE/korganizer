@@ -50,7 +50,7 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
     }
     first = false;
 
-    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.korgac"));
+    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.kalendarac"));
 
     QCommandLineParser parser;
     korganizer_options(&parser);

@@ -69,29 +69,6 @@ KOPrefsDialogMain::KOPrefsDialogMain(QWidget *parent, const QVariantList &args)
     saveLayout->addWidget(destinationItem->groupBox());
     saveLayout->addStretch(1);
 
-    // System Tray Settings
-    auto systrayFrame = new QFrame(this);
-    auto systrayLayout = new QVBoxLayout(systrayFrame);
-    tabWidget->addTab(systrayFrame, QIcon::fromTheme(QStringLiteral("preferences-other")), i18nc("@title:tab systray settings", "System Tray"));
-
-    auto systrayGroupBox = new QGroupBox(i18nc("@title:group", "Show/Hide Options"), systrayFrame);
-    systrayLayout->addWidget(systrayGroupBox);
-    auto systrayGroupLayout = new QVBoxLayout;
-    systrayGroupBox->setLayout(systrayGroupLayout);
-
-    Korganizer::KPrefsWidBool *showReminderDaemonItem = addWidBool(KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox);
-    systrayGroupLayout->addWidget(showReminderDaemonItem->checkBox());
-    showReminderDaemonItem->checkBox()->setToolTip(i18nc("@info:tooltip",
-                                                         "Enable this setting to show the KOrganizer "
-                                                         "reminder daemon in your system tray (recommended)."));
-
-    auto note = new QLabel(xi18nc("@info",
-                                  "<note>The daemon will continue running even if it is not shown "
-                                  "in the system tray.</note>"));
-    systrayGroupLayout->addWidget(note);
-
-    systrayLayout->addStretch(1);
-
     // Calendar Account
     auto calendarFrame = new QFrame(this);
     tabWidget->addTab(calendarFrame, QIcon::fromTheme(QStringLiteral("office-calendar")), i18nc("@title:tab calendar account settings", "Calendars"));

@@ -306,10 +306,6 @@ qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     )
 
 qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
-    ../korgac/org.kde.korganizer.KOrgac.xml
-    )
-
-qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
     ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml
     )
 
