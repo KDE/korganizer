@@ -28,7 +28,6 @@ Dependencies:
     'frameworks/kconfigwidgets': '@latest'
     'frameworks/kcoreaddons': '@latest'
     'frameworks/kcrash': '@latest'
-    'frameworks/kdbusaddons': '@latest'
     'frameworks/kiconthemes': '@latest'
     'frameworks/kitemviews': '@latest'
     'frameworks/kjobwidgets': '@latest'
