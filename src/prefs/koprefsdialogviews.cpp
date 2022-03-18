@@ -104,7 +104,6 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args
 
     adisplayLayout->addWidget(marcusBainsShowSeconds->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->selectionStartsEditorItem())->checkBox());
-    mAgendaIconComboBox->setCheckedIcons(KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons());
     adisplayLayout->addWidget(mAgendaIconComboBox);
     adisplayBox->setLayout(adisplayLayout);
     agendaLayout->addWidget(adisplayBox);
@@ -136,7 +135,6 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showJournalsMonthViewItem())->checkBox());
     mdisplayBox->setLayout(mdisplayLayout);
 
-    mMonthIconComboBox->setCheckedIcons(KOPrefs::instance()->eventViewsPreferences()->monthViewIcons());
     mdisplayLayout->addWidget(mMonthIconComboBox);
 
     monthLayout->addWidget(mdisplayBox);
@@ -172,6 +170,12 @@ KOPrefsDialogViews::KOPrefsDialogViews(QWidget *parent, const QVariantList &args
 }
 
 void KOPrefsDialogViews::usrReadConfig()
+{
+    mAgendaIconComboBox->setCheckedIcons(KOPrefs::instance()->eventViewsPreferences()->agendaViewIcons());
+    mMonthIconComboBox->setCheckedIcons(KOPrefs::instance()->eventViewsPreferences()->monthViewIcons());
+}
+
+void KOPrefsDialogViews::usrWriteConfig()
 {
     KOPrefs::instance()->eventViewsPreferences()->setAgendaViewIcons(mAgendaIconComboBox->checkedIcons());
     KOPrefs::instance()->eventViewsPreferences()->setMonthViewIcons(mMonthIconComboBox->checkedIcons());

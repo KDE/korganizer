@@ -20,6 +20,7 @@ public:
 
 protected:
     void usrReadConfig() override;
+    void usrWriteConfig() override;
 
 private:
     KItemIconCheckCombo *mMonthIconComboBox;
