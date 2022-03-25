@@ -182,4 +182,3 @@ private:
 
     RangeMode mRangeMode = NO_RANGE;
 };
-

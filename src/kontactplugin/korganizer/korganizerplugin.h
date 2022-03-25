@@ -52,4 +52,3 @@ private:
     OrgKdeKorganizerCalendarInterface *mIface = nullptr;
     KontactInterface::UniqueAppWatcher *mUniqueAppWatcher = nullptr;
 };
-

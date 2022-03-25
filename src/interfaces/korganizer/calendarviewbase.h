@@ -50,4 +50,3 @@ Q_SIGNALS:
     virtual void newIncidenceChanger(Akonadi::IncidenceChanger *) = 0;
 };
 }
-

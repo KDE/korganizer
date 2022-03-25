@@ -89,14 +89,14 @@ void KODialogManager::showSearchDialog()
 {
     if (!mSearchDialog) {
         mSearchDialog = new SearchDialog(mMainView);
-        connect(mMainView->calendar().data(), &Akonadi::ETMCalendar::calendarChanged,
-                mSearchDialog, &SearchDialog::updateView);
-        connect(mSearchDialog, &SearchDialog::showIncidenceSignal,
-                mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
-        connect(mSearchDialog, &SearchDialog::editIncidenceSignal,
-                mMainView, [=](const Akonadi::Item & i){mMainView->editIncidence(i);});
-        connect(mSearchDialog, &SearchDialog::deleteIncidenceSignal,
-                mMainView, [=](const Akonadi::Item & i){mMainView->deleteIncidence(i, false);});
+        connect(mMainView->calendar().data(), &Akonadi::ETMCalendar::calendarChanged, mSearchDialog, &SearchDialog::updateView);
+        connect(mSearchDialog, &SearchDialog::showIncidenceSignal, mMainView, qOverload<const Akonadi::Item &>(&CalendarView::showIncidence));
+        connect(mSearchDialog, &SearchDialog::editIncidenceSignal, mMainView, [=](const Akonadi::Item &i) {
+            mMainView->editIncidence(i);
+        });
+        connect(mSearchDialog, &SearchDialog::deleteIncidenceSignal, mMainView, [=](const Akonadi::Item &i) {
+            mMainView->deleteIncidence(i, false);
+        });
     }
     // make sure the widget is on top again
     mSearchDialog->show();

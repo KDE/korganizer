@@ -108,4 +108,3 @@ private:
     NewNodeExpander *mNewNodeExpander = nullptr;
     ManageShowCollectionProperties *mManagerShowCollectionProperties = nullptr;
 };
-

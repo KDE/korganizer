@@ -82,4 +82,3 @@ public Q_SLOTS:
 private:
     ActionManager *const mActionManager;
 };
-

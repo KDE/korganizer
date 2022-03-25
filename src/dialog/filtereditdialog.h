@@ -89,4 +89,3 @@ private:
     KCalendarCore::CalFilter *mCurrent = nullptr;
     Akonadi::TagSelectionDialog *mCategorySelectDialog = nullptr;
 };
-

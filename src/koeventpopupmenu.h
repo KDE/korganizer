@@ -110,4 +110,3 @@ private:
     QAction *mToggleReminder = nullptr;
     QAction *mDissociateOccurrences = nullptr;
 };
-

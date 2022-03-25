@@ -142,4 +142,3 @@ private:
     QVector<Node::Ptr> mNodesToAdd;
     NodeManager::Ptr mNodeManager;
 };
-

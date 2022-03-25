@@ -50,4 +50,3 @@ private:
     QHash<QString, QColor> mResourceDict;
     QList<KColorButton *> mButtonsDisable; // button that are disabled when using system color
 };
-

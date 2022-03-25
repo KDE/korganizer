@@ -638,7 +638,7 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
     /** Delete the given incidence and, if it is recurring, its instances. */
-    void deleteRecurringIncidence(const Akonadi::Item& todoItem);
+    void deleteRecurringIncidence(const Akonadi::Item &todoItem);
 
     /** Delete the child incidences of the given incidence. */
     void deleteChildren(const Akonadi::Item &);
@@ -720,4 +720,3 @@ private:
 
     SearchCollectionHelper mSearchCollectionHelper;
 };
-

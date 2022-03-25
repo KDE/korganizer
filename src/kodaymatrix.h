@@ -322,4 +322,3 @@ private:
     /** Whether days with journals are highlighted */
     bool mHighlightJournals = false;
 };
-

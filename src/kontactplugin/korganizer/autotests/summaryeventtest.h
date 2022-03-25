@@ -17,4 +17,3 @@ private Q_SLOTS:
     void test_eventsForRange_data();
     void test_eventsForRange();
 };
-

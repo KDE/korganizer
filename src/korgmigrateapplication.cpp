@@ -23,7 +23,7 @@ void KOrgMigrateApplication::migrate()
 
     // Migrate folders and files.
     if (mMigrator.checkIfNecessary()) {
-        (void) mMigrator.start();
+        (void)mMigrator.start();
     }
 }
 

@@ -28,4 +28,3 @@ protected:
 private:
     Ui::KOGroupwarePrefsPage *const mGroupwarePage;
 };
-

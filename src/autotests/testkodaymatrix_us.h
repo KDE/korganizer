@@ -16,4 +16,3 @@ class KODayMatrixTest : public QObject
 private Q_SLOTS:
     void testMatrixLimits();
 };
-

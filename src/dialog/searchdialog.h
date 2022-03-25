@@ -70,4 +70,3 @@ private:
     EventViews::ListView *m_listView = nullptr;
     QPushButton *m_user1Button = nullptr;
 };
-

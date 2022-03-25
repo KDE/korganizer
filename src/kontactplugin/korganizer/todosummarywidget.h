@@ -86,4 +86,3 @@ private:
     */
     const QString stateStr(const KCalendarCore::Todo::Ptr &todo);
 };
-

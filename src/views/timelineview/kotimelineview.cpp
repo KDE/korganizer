@@ -60,14 +60,20 @@ KOTimelineView::KOTimelineView(QWidget *parent)
 
     connect(mTimeLineView, qOverload<>(&EventViews::TimelineView::newEventSignal), this, qOverload<>(&KOTimelineView::newEventSignal));
 
-    connect(mTimeLineView, qOverload<const QDate &>(&EventViews::TimelineView::newEventSignal),
-            this, qOverload<const QDate &>(&KOTimelineView::newEventSignal));
+    connect(mTimeLineView,
+            qOverload<const QDate &>(&EventViews::TimelineView::newEventSignal),
+            this,
+            qOverload<const QDate &>(&KOTimelineView::newEventSignal));
 
-    connect(mTimeLineView, qOverload<const QDateTime &>(&EventViews::TimelineView::newEventSignal),
-            this, qOverload<const QDateTime &>(&KOTimelineView::newEventSignal));
+    connect(mTimeLineView,
+            qOverload<const QDateTime &>(&EventViews::TimelineView::newEventSignal),
+            this,
+            qOverload<const QDateTime &>(&KOTimelineView::newEventSignal));
 
-    connect(mTimeLineView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::TimelineView::newEventSignal),
-            this, qOverload<const QDateTime &, const QDateTime &>(&KOTimelineView::newEventSignal));
+    connect(mTimeLineView,
+            qOverload<const QDateTime &, const QDateTime &>(&EventViews::TimelineView::newEventSignal),
+            this,
+            qOverload<const QDateTime &, const QDateTime &>(&KOTimelineView::newEventSignal));
 
     connect(mTimeLineView, &EventViews::EventView::newTodoSignal, this, &KOrg::BaseView::newTodoSignal);
 

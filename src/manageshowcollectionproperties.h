@@ -32,4 +32,3 @@ private:
     const QStringList mPages;
     AkonadiCollectionView *const mCollectionView;
 };
-

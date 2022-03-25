@@ -363,4 +363,3 @@ private:
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver = nullptr;
     KHamburgerMenu *mHamburgerMenu = nullptr;
 };
-

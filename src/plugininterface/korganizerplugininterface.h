@@ -16,4 +16,3 @@ public:
     ~KOrganizerPluginInterface() override;
     static KOrganizerPluginInterface *self();
 };
-

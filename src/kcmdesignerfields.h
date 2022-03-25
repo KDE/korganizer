@@ -57,4 +57,3 @@ private:
     QPushButton *mImportButton = nullptr;
     QPushButton *mDesignerButton = nullptr;
 };
-

@@ -62,4 +62,3 @@ private:
     QDate mLastDayChecked;
     RolloverType mUpdateRollover;
 };
-

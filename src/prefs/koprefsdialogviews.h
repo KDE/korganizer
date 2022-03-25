@@ -26,4 +26,3 @@ private:
     KItemIconCheckCombo *mMonthIconComboBox;
     KItemIconCheckCombo *mAgendaIconComboBox;
 };
-

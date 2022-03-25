@@ -75,4 +75,3 @@ private:
     CalendarSupport::ArchiveDialog *mArchiveDialog = nullptr;
     FilterEditDialog *mFilterEditDialog = nullptr;
 };
-

@@ -84,14 +84,17 @@ KOAgendaView::KOAgendaView(QWidget *parent, bool isSideBySide)
 
     connect(d->mAgendaView, qOverload<>(&EventViews::AgendaView::newEventSignal), this, qOverload<>(&KOAgendaView::newEventSignal));
 
-    connect(d->mAgendaView, qOverload<const QDate &>(&EventViews::AgendaView::newEventSignal),
-            this, qOverload<const QDate &>(&KOAgendaView::newEventSignal));
+    connect(d->mAgendaView, qOverload<const QDate &>(&EventViews::AgendaView::newEventSignal), this, qOverload<const QDate &>(&KOAgendaView::newEventSignal));
 
-    connect(d->mAgendaView, qOverload<const QDateTime &>(&EventViews::AgendaView::newEventSignal),
-            this, qOverload<const QDateTime &>(&KOAgendaView::newEventSignal));
+    connect(d->mAgendaView,
+            qOverload<const QDateTime &>(&EventViews::AgendaView::newEventSignal),
+            this,
+            qOverload<const QDateTime &>(&KOAgendaView::newEventSignal));
 
-    connect(d->mAgendaView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::AgendaView::newEventSignal),
-            this, qOverload<const QDateTime &, const QDateTime &>(&KOAgendaView::newEventSignal));
+    connect(d->mAgendaView,
+            qOverload<const QDateTime &, const QDateTime &>(&EventViews::AgendaView::newEventSignal),
+            this,
+            qOverload<const QDateTime &, const QDateTime &>(&KOAgendaView::newEventSignal));
 
     connect(d->mAgendaView, &EventViews::EventView::newTodoSignal, this, &KOrg::BaseView::newTodoSignal);
 

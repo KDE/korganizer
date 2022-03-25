@@ -100,4 +100,3 @@ Q_SIGNALS:
 private:
     std::unique_ptr<KOAgendaViewPrivate> const d;
 };
-

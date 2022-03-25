@@ -61,14 +61,17 @@ MonthView::MonthView(QWidget *parent)
 
     connect(mMonthView, qOverload<>(&EventViews::MonthView::newEventSignal), this, qOverload<>(&KOrg::MonthView::newEventSignal));
 
-    connect(mMonthView, qOverload<const QDate &>(&EventViews::MonthView::newEventSignal),
-            this, qOverload<const QDate &>(&KOrg::MonthView::newEventSignal));
+    connect(mMonthView, qOverload<const QDate &>(&EventViews::MonthView::newEventSignal), this, qOverload<const QDate &>(&KOrg::MonthView::newEventSignal));
 
-    connect(mMonthView, qOverload<const QDateTime &>(&EventViews::MonthView::newEventSignal),
-            this, qOverload<const QDateTime &>(&KOrg::MonthView::newEventSignal));
+    connect(mMonthView,
+            qOverload<const QDateTime &>(&EventViews::MonthView::newEventSignal),
+            this,
+            qOverload<const QDateTime &>(&KOrg::MonthView::newEventSignal));
 
-    connect(mMonthView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::MonthView::newEventSignal),
-            this, qOverload<const QDateTime &, const QDateTime &>(&KOrg::MonthView::newEventSignal));
+    connect(mMonthView,
+            qOverload<const QDateTime &, const QDateTime &>(&EventViews::MonthView::newEventSignal),
+            this,
+            qOverload<const QDateTime &, const QDateTime &>(&KOrg::MonthView::newEventSignal));
 
     connect(mMonthView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 

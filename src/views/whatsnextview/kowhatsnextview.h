@@ -49,4 +49,3 @@ public Q_SLOTS:
 private:
     EventViews::WhatsNextView *const mView;
 };
-

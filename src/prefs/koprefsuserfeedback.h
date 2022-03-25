@@ -29,4 +29,3 @@ private:
     KUserFeedback::FeedbackConfigWidget *const mUserFeedbackWidget;
 };
 #endif
-

@@ -24,4 +24,3 @@ public:
     void loadCommandLineOptions(QCommandLineParser *parser) override;
     int activate(const QStringList &args, const QString &workingDir) override;
 };
-

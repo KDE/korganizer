@@ -93,17 +93,22 @@ MultiAgendaView::MultiAgendaView(QWidget *parent)
 
     connect(d->mMultiAgendaView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(d->mMultiAgendaView, qOverload<>(&EventViews::MultiAgendaView::newEventSignal),
-            this, qOverload<>(&KOrg::MultiAgendaView::newEventSignal));
+    connect(d->mMultiAgendaView, qOverload<>(&EventViews::MultiAgendaView::newEventSignal), this, qOverload<>(&KOrg::MultiAgendaView::newEventSignal));
 
-    connect(d->mMultiAgendaView, qOverload<const QDate &>(&EventViews::MultiAgendaView::newEventSignal),
-            this, qOverload<const QDate &>(&KOrg::MultiAgendaView::newEventSignal));
+    connect(d->mMultiAgendaView,
+            qOverload<const QDate &>(&EventViews::MultiAgendaView::newEventSignal),
+            this,
+            qOverload<const QDate &>(&KOrg::MultiAgendaView::newEventSignal));
 
-    connect(d->mMultiAgendaView, qOverload<const QDateTime &>(&EventViews::MultiAgendaView::newEventSignal),
-            this, qOverload<const QDateTime &>(&KOrg::MultiAgendaView::newEventSignal));
+    connect(d->mMultiAgendaView,
+            qOverload<const QDateTime &>(&EventViews::MultiAgendaView::newEventSignal),
+            this,
+            qOverload<const QDateTime &>(&KOrg::MultiAgendaView::newEventSignal));
 
-    connect(d->mMultiAgendaView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::MultiAgendaView::newEventSignal),
-            this, qOverload<const QDateTime &, const QDateTime &>(&KOrg::MultiAgendaView::newEventSignal));
+    connect(d->mMultiAgendaView,
+            qOverload<const QDateTime &, const QDateTime &>(&EventViews::MultiAgendaView::newEventSignal),
+            this,
+            qOverload<const QDateTime &, const QDateTime &>(&KOrg::MultiAgendaView::newEventSignal));
 
     connect(d->mMultiAgendaView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 

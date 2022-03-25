@@ -83,13 +83,12 @@
 
 // Meaningful aliases for dialog box return codes.
 enum ItemActions {
-    Cancel = KMessageBox::Cancel,  // Do nothing.
-    Current = KMessageBox::Ok,  // Selected recurrence only.
-    AlsoFuture = KMessageBox::No,  // Selected and future recurrences.
-    Parent = KMessageBox::Yes,  // Instance, but not child instances.
-    All = KMessageBox::Continue,  // Instance and child instances.
+    Cancel = KMessageBox::Cancel, // Do nothing.
+    Current = KMessageBox::Ok, // Selected recurrence only.
+    AlsoFuture = KMessageBox::No, // Selected and future recurrences.
+    Parent = KMessageBox::Yes, // Instance, but not child instances.
+    All = KMessageBox::Continue, // Instance and child instances.
 };
-
 
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)
@@ -186,18 +185,19 @@ CalendarView::CalendarView(QWidget *parent)
     // Signals emitted by mDateNavigator
     connect(mDateNavigator, &DateNavigator::datesSelected, this, &CalendarView::showDates);
 
-    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal,
-            this, qOverload<const QDate &>(&CalendarView::newEvent));
-    connect(mDateNavigatorContainer, &DateNavigatorContainer::newTodoSignal,
-            this, qOverload<const QDate &>(&CalendarView::newTodo));
-    connect(mDateNavigatorContainer, &DateNavigatorContainer::newJournalSignal,
-            this, qOverload<const QDate &>(&CalendarView::newJournal));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newEventSignal, this, qOverload<const QDate &>(&CalendarView::newEvent));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newTodoSignal, this, qOverload<const QDate &>(&CalendarView::newTodo));
+    connect(mDateNavigatorContainer, &DateNavigatorContainer::newJournalSignal, this, qOverload<const QDate &>(&CalendarView::newJournal));
 
     // Signals emitted by mNavigatorBar
     connect(mNavigatorBar, &NavigatorBar::prevYearClicked, mDateNavigator, &DateNavigator::selectPreviousYear);
     connect(mNavigatorBar, &NavigatorBar::nextYearClicked, mDateNavigator, &DateNavigator::selectNextYear);
-    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, [=](){mDateNavigator->selectPreviousMonth();});
-    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, [=](){mDateNavigator->selectNextMonth();});
+    connect(mNavigatorBar, &NavigatorBar::prevMonthClicked, this, [=]() {
+        mDateNavigator->selectPreviousMonth();
+    });
+    connect(mNavigatorBar, &NavigatorBar::nextMonthClicked, this, [=]() {
+        mDateNavigator->selectNextMonth();
+    });
     connect(mNavigatorBar, &NavigatorBar::monthSelected, mDateNavigator, &DateNavigator::selectMonth);
     connect(mNavigatorBar, &NavigatorBar::yearSelected, mDateNavigator, &DateNavigator::selectYear);
 
@@ -617,7 +617,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
                 KCalendarCore::Journal::Ptr journal = CalendarSupport::journal(journalItem);
                 KCalendarCore::Journal::Ptr oldJournal(journal->clone());
                 journal->setDescription(journal->description().append(QLatin1Char('\n') + description));
-                (void) mChanger->modifyIncidence(journalItem, oldJournal, this);
+                (void)mChanger->modifyIncidence(journalItem, oldJournal, this);
             }
         }
     }
@@ -823,7 +823,7 @@ void CalendarView::edit_paste()
             }
 
             pastedEvent->setRelatedTo(QString());
-            (void) mChanger->createIncidence(KCalendarCore::Event::Ptr(pastedEvent->clone()), Akonadi::Collection(), this);
+            (void)mChanger->createIncidence(KCalendarCore::Event::Ptr(pastedEvent->clone()), Akonadi::Collection(), this);
         } else if ((*it)->type() == KCalendarCore::Incidence::TypeTodo) {
             KCalendarCore::Todo::Ptr pastedTodo = (*it).staticCast<KCalendarCore::Todo>();
             Akonadi::Item _selectedTodoItem = selectedTodo();
@@ -836,10 +836,10 @@ void CalendarView::edit_paste()
             }
 
             // When pasting multiple incidences, don't ask which collection to use, for each one
-            (void) mChanger->createIncidence(KCalendarCore::Todo::Ptr(pastedTodo->clone()), Akonadi::Collection(), this);
+            (void)mChanger->createIncidence(KCalendarCore::Todo::Ptr(pastedTodo->clone()), Akonadi::Collection(), this);
         } else if ((*it)->type() == KCalendarCore::Incidence::TypeJournal) {
             // When pasting multiple incidences, don't ask which collection to use, for each one
-            (void) mChanger->createIncidence(KCalendarCore::Incidence::Ptr((*it)->clone()), Akonadi::Collection(), this);
+            (void)mChanger->createIncidence(KCalendarCore::Incidence::Ptr((*it)->clone()), Akonadi::Collection(), this);
         }
     }
 }
@@ -1222,12 +1222,12 @@ bool CalendarView::incidence_unsub(const Akonadi::Item &item)
     for (const auto &instance : mCalendar->instances(inc)) {
         KCalendarCore::Incidence::Ptr oldInstance(instance->clone());
         instance->setRelatedTo(QString());
-        (void) mChanger->modifyIncidence(mCalendar->item(instance), oldInstance, this);
+        (void)mChanger->modifyIncidence(mCalendar->item(instance), oldInstance, this);
     }
 
     KCalendarCore::Incidence::Ptr oldInc(inc->clone());
     inc->setRelatedTo(QString());
-    (void) mChanger->modifyIncidence(item, oldInc, this);
+    (void)mChanger->modifyIncidence(item, oldInc, this);
 
     return true;
 }
@@ -1294,7 +1294,7 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
         CalendarSupport::createAlarmReminder(alm, incidence->type());
     }
     mChanger->startAtomicOperation(i18n("Toggle Reminder"));
-    (void) mChanger->modifyIncidence(item, oldincidence, this);
+    (void)mChanger->modifyIncidence(item, oldincidence, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1326,7 +1326,7 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     }
 
     mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
-    (void) mChanger->modifyIncidence(todoItem, oldtodo, this);
+    (void)mChanger->modifyIncidence(todoItem, oldtodo, this);
     mChanger->endAtomicOperation();
 }
 
@@ -1535,7 +1535,7 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
     qCDebug(KORGANIZER_LOG) << "create exception: " << occurrenceDate;
     KCalendarCore::Incidence::Ptr newInc(KCalendarCore::Calendar::createException(incidence, occurrenceDate, thisAndFuture));
     if (newInc) {
-        (void) mChanger->createIncidence(newInc, item.parentCollection(), this);
+        (void)mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
         if (thisAndFuture) {
             KMessageBox::sorry(this, i18n("Dissociating the future occurrences failed."), i18n("Dissociating Failed"));
@@ -2146,10 +2146,10 @@ void CalendarView::deleteRecurringIncidence(const Akonadi::Item &todoItem)
         auto incidence = CalendarSupport::incidence(todoItem);
         if (incidence->recurs()) {
             for (const auto &instance : mCalendar->instances(incidence)) {
-                (void) mChanger->deleteIncidence(mCalendar->item(instance), this);
+                (void)mChanger->deleteIncidence(mCalendar->item(instance), this);
             }
         }
-        (void) mChanger->deleteIncidence(todoItem, this);
+        (void)mChanger->deleteIncidence(todoItem, this);
     }
 }
 
@@ -2159,14 +2159,14 @@ int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
     auto incidence = CalendarSupport::incidence(item);
     if (!incidence->hasRecurrenceId() && !mCalendar->childItems(item.id()).isEmpty()) {
         km = KMessageBox::questionYesNoCancel(this,
-                                                i18n("The item \"%1\" has sub-to-dos. "
-                                                    "Do you want to delete just this item and "
-                                                    "make all its sub-to-dos independent, or "
-                                                    "delete the to-do with all its sub-to-dos?",
-                                                    incidence->summary()),
-                                                i18n("KOrganizer Confirmation"),
-                                                KGuiItem(i18n("Delete Only This")),
-                                                KGuiItem(i18n("Delete All")));
+                                              i18n("The item \"%1\" has sub-to-dos. "
+                                                   "Do you want to delete just this item and "
+                                                   "make all its sub-to-dos independent, or "
+                                                   "delete the to-do with all its sub-to-dos?",
+                                                   incidence->summary()),
+                                              i18n("KOrganizer Confirmation"),
+                                              KGuiItem(i18n("Delete Only This")),
+                                              KGuiItem(i18n("Delete All")));
 
         if (km == KMessageBox::No) {
             km = KMessageBox::Continue;
@@ -2214,16 +2214,16 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
     int km;
     if (force) {
         km = ItemActions::All;
-    } else if (!incidence->recurs()) {  // Non-recurring, or instance of recurring.
+    } else if (!incidence->recurs()) { // Non-recurring, or instance of recurring.
         km = questionIndependentChildren(item);
     } else { // Recurring incidence
         if (!itemDate.isValid()) {
             qCDebug(KORGANIZER_LOG) << "Date Not Valid";
             km = KMessageBox::warningContinueCancel(this,
                                                     i18n("The calendar item \"%1\" recurs over multiple dates; "
-                                                            "are you sure you want to delete it "
-                                                            "and all its recurrences?",
-                                                            incidence->summary()),
+                                                         "are you sure you want to delete it "
+                                                         "and all its recurrences?",
+                                                         incidence->summary()),
                                                     i18n("KOrganizer Confirmation"),
                                                     KGuiItem(i18n("Delete All")));
         } else {
@@ -2309,12 +2309,12 @@ bool CalendarView::deleteIncidence(const Akonadi::Item &item, bool force)
             itemDateTime.setDate(itemDate);
             recur->addExDateTime(itemDateTime);
         }
-        (void) mChanger->modifyIncidence(item, oldIncidence, this);
+        (void)mChanger->modifyIncidence(item, oldIncidence, this);
         break;
 
     case ItemActions::AlsoFuture:
         recur->setEndDate(itemDate.addDays(-1));
-        (void) mChanger->modifyIncidence(item, oldIncidence, this);
+        (void)mChanger->modifyIncidence(item, oldIncidence, this);
         break;
     }
     return true;
@@ -2387,7 +2387,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
         todo->setDtDue(due);
     }
 
-    (void) mChanger->createIncidence(incidence, Akonadi::Collection(), this);
+    (void)mChanger->createIncidence(incidence, Akonadi::Collection(), this);
 }
 
 void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
@@ -2423,7 +2423,7 @@ void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 
         todo->setDtDue(due);
     }
-    (void) mChanger->modifyIncidence(itemmove, oldIncidence, this);
+    (void)mChanger->modifyIncidence(itemmove, oldIncidence, this);
 }
 
 void CalendarView::resourcesChanged()

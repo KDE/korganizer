@@ -64,4 +64,3 @@ private:
     bool mShowAnniversariesFromCal = false;
     bool mShowMineOnly = false;
 };
-

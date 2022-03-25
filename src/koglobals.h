@@ -53,4 +53,3 @@ protected:
 private:
     QList<KHolidays::HolidayRegion *> mHolidayRegions;
 };
-

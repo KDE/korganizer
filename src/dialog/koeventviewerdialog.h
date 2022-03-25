@@ -47,4 +47,3 @@ private:
     CalendarSupport::IncidenceViewer *mEventViewer = nullptr;
     QPushButton *const mUser1Button;
 };
-

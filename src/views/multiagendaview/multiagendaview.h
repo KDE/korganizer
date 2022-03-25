@@ -111,4 +111,3 @@ private:
     std::unique_ptr<MultiAgendaViewConfigDialogPrivate> const d;
 };
 }
-

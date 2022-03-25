@@ -228,7 +228,7 @@ void ApptSummaryWidget::viewEvent(const QString &uid)
 
 void ApptSummaryWidget::removeEvent(const Akonadi::Item &item)
 {
-    (void) mChanger->deleteIncidence(item);
+    (void)mChanger->deleteIncidence(item);
 }
 
 void ApptSummaryWidget::popupMenu(const QString &uid)

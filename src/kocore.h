@@ -55,4 +55,3 @@ private:
 
     QMap<QWidget *, KXMLGUIClient *> mXMLGUIClients;
 };
-

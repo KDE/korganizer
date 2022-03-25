@@ -39,4 +39,3 @@ private:
     const Akonadi::Collection mCollection;
     int mDayRange = 7;
 };
-

@@ -59,4 +59,3 @@ KORGANIZERPRIVATE_EXPORT Q_REQUIRED_RESULT bool isStandardCalendar(Akonadi::Coll
 
 KORGANIZERPRIVATE_EXPORT void showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence);
 }
-

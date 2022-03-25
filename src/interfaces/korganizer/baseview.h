@@ -389,4 +389,3 @@ private:
     friend class KOrg::BaseViewPrivate;
 };
 }
-

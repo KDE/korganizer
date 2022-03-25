@@ -58,4 +58,3 @@ public Q_SLOTS:
 private:
     EventViews::JournalView *const mJournalView;
 };
-

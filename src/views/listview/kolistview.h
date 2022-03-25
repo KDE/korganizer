@@ -70,4 +70,3 @@ private:
     KOEventPopupMenu *mPopupMenu = nullptr;
     EventViews::ListView *mListView = nullptr;
 };
-

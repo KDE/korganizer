@@ -26,4 +26,3 @@ protected Q_SLOTS:
 private:
     QWidget *mUserEmailSettings = nullptr;
 };
-

@@ -37,4 +37,3 @@ private:
     KComboBox *mReminderUnitsCombo = nullptr;
     QCheckBox *mWorkDays[7];
 };
-

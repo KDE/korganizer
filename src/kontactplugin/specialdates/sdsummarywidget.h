@@ -81,4 +81,3 @@ private:
 
     KHolidays::HolidayRegion *mHolidays = nullptr;
 };
-

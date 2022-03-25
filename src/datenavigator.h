@@ -83,4 +83,3 @@ private:
 
     enum { MAX_SELECTABLE_DAYS = 50 };
 };
-

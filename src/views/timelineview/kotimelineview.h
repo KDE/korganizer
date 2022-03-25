@@ -56,4 +56,3 @@ private:
     KOEventPopupMenu *mEventPopup = nullptr;
     EventViews::TimelineView *mTimeLineView = nullptr;
 };
-

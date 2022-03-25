@@ -107,4 +107,3 @@ private:
 
     ActionManager *mActionManager = nullptr;
 };
-

@@ -28,4 +28,3 @@ static void korganizer_options(QCommandLineParser *parser)
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
 #endif
 }
-

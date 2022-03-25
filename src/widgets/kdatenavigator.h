@@ -116,4 +116,3 @@ private:
     KDateNavigator(const KDateNavigator &);
     KDateNavigator &operator=(const KDateNavigator &);
 };
-

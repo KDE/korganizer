@@ -29,4 +29,3 @@ private Q_SLOTS:
     void modified();
     void customDaysChanged(int value);
 };
-

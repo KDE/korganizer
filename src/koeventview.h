@@ -155,4 +155,3 @@ private:
     QObject *mTypeAheadReceiver = nullptr;
     QList<QEvent *> mTypeAheadEvents;
 };
-

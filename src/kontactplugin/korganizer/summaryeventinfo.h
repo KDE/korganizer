@@ -41,4 +41,3 @@ private:
     static bool skip(const KCalendarCore::Event::Ptr &event);
     static bool mShowBirthdays, mShowAnniversaries;
 };
-

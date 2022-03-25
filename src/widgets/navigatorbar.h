@@ -50,4 +50,3 @@ private:
     QToolButton *mNextMonth = nullptr;
     QToolButton *mNextYear = nullptr;
 };
-

@@ -45,4 +45,3 @@ private:
     QSet<QString> mDecorationsAtAgendaViewTop;
     QSet<QString> mDecorationsAtAgendaViewBottom;
 };
-

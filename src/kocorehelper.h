@@ -31,4 +31,3 @@ public:
         return KOPrefs::instance()->mDayBegins.time();
     }
 };
-

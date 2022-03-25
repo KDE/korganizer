@@ -293,7 +293,7 @@ void TodoSummaryWidget::viewTodo(const QString &uid)
 
 void TodoSummaryWidget::removeTodo(const Akonadi::Item &item)
 {
-    (void) mChanger->deleteIncidence(item);
+    (void)mChanger->deleteIncidence(item);
 }
 
 void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
@@ -305,7 +305,7 @@ void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
         if (!todo->isReadOnly()) {
             KCalendarCore::Todo::Ptr oldTodo(todo->clone());
             todo->setCompleted(QDateTime::currentDateTime());
-            (void) mChanger->modifyIncidence(todoItem, oldTodo);
+            (void)mChanger->modifyIncidence(todoItem, oldTodo);
             updateView();
         }
     }

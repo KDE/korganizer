@@ -34,4 +34,3 @@ protected:
         return nullptr;
     }
 };
-

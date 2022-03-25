@@ -59,4 +59,3 @@ public: // Do not use - except in KOPrefsDialogMain
     QString mName;
     QString mEmail;
 };
-

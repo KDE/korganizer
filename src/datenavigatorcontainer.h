@@ -142,4 +142,3 @@ private:
 
     bool mIgnoreNavigatorUpdates = false;
 };
-

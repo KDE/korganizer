@@ -67,4 +67,3 @@ private:
 
     KOrg::MainWindow *mDefaultWindow = nullptr;
 };
-

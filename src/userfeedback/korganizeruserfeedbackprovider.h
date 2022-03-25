@@ -16,4 +16,3 @@ public:
     explicit KOrganizerUserFeedbackProvider(QObject *parent = nullptr);
     ~KOrganizerUserFeedbackProvider() override;
 };
-

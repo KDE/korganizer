@@ -42,14 +42,17 @@ KOWhatsNextView::KOWhatsNextView(QWidget *parent)
 
     connect(mView, qOverload<>(&EventViews::WhatsNextView::newEventSignal), this, qOverload<>(&KOWhatsNextView::newEventSignal));
 
-    connect(mView, qOverload<const QDate &>(&EventViews::WhatsNextView::newEventSignal),
-            this, qOverload<const QDate &>(&KOWhatsNextView::newEventSignal));
+    connect(mView, qOverload<const QDate &>(&EventViews::WhatsNextView::newEventSignal), this, qOverload<const QDate &>(&KOWhatsNextView::newEventSignal));
 
-    connect(mView, qOverload<const QDateTime &>(&EventViews::WhatsNextView::newEventSignal),
-            this, qOverload<const QDateTime &>(&KOWhatsNextView::newEventSignal));
+    connect(mView,
+            qOverload<const QDateTime &>(&EventViews::WhatsNextView::newEventSignal),
+            this,
+            qOverload<const QDateTime &>(&KOWhatsNextView::newEventSignal));
 
-    connect(mView, qOverload<const QDateTime &, const QDateTime &>(&EventViews::WhatsNextView::newEventSignal),
-            this, qOverload<const QDateTime &, const QDateTime &>(&KOWhatsNextView::newEventSignal));
+    connect(mView,
+            qOverload<const QDateTime &, const QDateTime &>(&EventViews::WhatsNextView::newEventSignal),
+            this,
+            qOverload<const QDateTime &, const QDateTime &>(&KOWhatsNextView::newEventSignal));
 
     connect(mView, &EventViews::EventView::newTodoSignal, this, &KOrg::BaseView::newTodoSignal);
 

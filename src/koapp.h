@@ -33,4 +33,3 @@ private:
     */
     void processCalendar(const QUrl &url, bool show = true);
 };
-

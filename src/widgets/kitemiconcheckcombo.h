@@ -27,4 +27,3 @@ public:
 private:
     const KItemIconCheckCombo::ViewType mViewType;
 };
-

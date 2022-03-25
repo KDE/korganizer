@@ -80,4 +80,3 @@ Q_SIGNALS:
 private:
     EventViews::TodoView *mView = nullptr;
 };
-

@@ -23,4 +23,3 @@ protected:
     Q_REQUIRED_RESULT QStringList readActivePages() override;
     Q_REQUIRED_RESULT QString applicationName() override;
 };
-
