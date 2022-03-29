@@ -14,7 +14,6 @@
 #include "prefs/koprefs.h"
 
 #include <CalendarSupport/ArchiveDialog>
-#include <CalendarSupport/CategoryConfig>
 #include <CalendarSupport/Utils>
 #include <PimCommon/PimUtil>
 
