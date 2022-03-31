@@ -51,6 +51,7 @@ int main(int argc, char **argv)
     if (cmdArgs->isSet(QStringLiteral("feedback"))) {
         auto userFeedBackProvider = new KOrganizerUserFeedbackProvider(nullptr);
         QTextStream(stdout) << userFeedBackProvider->describeDataSources() << '\n';
+        delete userFeedBackProvider;
         return 0;
     }
 #endif
