@@ -124,7 +124,7 @@ void DateNavigator::selectWorkWeek(QDate d)
         }
     }
 
-    emitSelected();
+    emitSelected(/* preferredMonth= */ d);
 }
 
 void DateNavigator::selectToday()
@@ -134,7 +134,7 @@ void DateNavigator::selectToday()
     const int dateCount = mSelectedDates.count();
 
     if (dateCount == 7) {
-        selectWeek(d);
+        selectWeek(d, /* preferredMonth= */ d);
     } else if (dateCount == 5) {
         selectWorkWeek(d);
     } else {
