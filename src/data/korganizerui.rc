@@ -1,5 +1,5 @@
 <!DOCTYPE gui>
-<gui name="korganizer" version="436"  translationDomain="korganizer">
+<gui name="korganizer" version="437"  translationDomain="korganizer">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
@@ -91,6 +91,7 @@
       <Action name="upload_freebusy"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
+      <Action name="colorscheme_menu" />
       <Menu name="sidebar" append="show_merge"><text>&amp;Sidebar</text>
         <Action name="show_datenavigator"/>
         <Action name="show_todoview"/>

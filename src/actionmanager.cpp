@@ -50,6 +50,7 @@
 #include <KMime/KMimeMessage>
 
 #include <KActionCollection>
+#include <KActionMenu>
 #include <KMessageBox>
 #include <KProcess>
 #include <KSelectAction>
@@ -69,6 +70,7 @@
 #include <QTemporaryFile>
 
 #include <KCheckableProxyModel>
+#include <KColorSchemeManager>
 #include <KSharedConfig>
 #include <QApplication>
 #include <QStandardPaths>
@@ -717,6 +719,9 @@ void ActionManager::initActions()
     action = new QAction(i18n("Manage T&ags..."), this);
     mACollection->addAction(QStringLiteral("edit_categories"), action);
     connect(action, &QAction::triggered, mCalendarView->dialogManager(), &KODialogManager::showCategoryEditDialog);
+
+    auto manager = new KColorSchemeManager(this);
+    mACollection->addAction(QStringLiteral("colorscheme_menu"), manager->createSchemeSelectionMenu(this));
 
     if (mIsPart) {
         action = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("&Configure KOrganizer..."), this);
