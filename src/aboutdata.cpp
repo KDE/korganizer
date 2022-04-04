@@ -23,7 +23,7 @@ AboutData::AboutData()
                       "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
                       "Copyright © 2004–2005 Reinhold Kainhofer\n"
                       "Copyright © 2006–2012 Allen Winter\n"
-                      "Copyright © 2012–2021 KOrganizer authors"),
+                      "Copyright © 2012–2022 KOrganizer authors"),
                  QString(),
                  QStringLiteral("https://userbase.kde.org/KOrganizer"))
 {
