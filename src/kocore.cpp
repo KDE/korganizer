@@ -16,6 +16,8 @@
 #include <KServiceTypeTrader>
 #include <KXMLGUIFactory>
 
+#include <QDBusConnectionInterface>
+
 KOCore *KOCore::mSelf = nullptr;
 
 KOCore *KOCore::self()
@@ -27,7 +29,13 @@ KOCore *KOCore::self()
     return mSelf;
 }
 
-KOCore::KOCore() = default;
+KOCore::KOCore()
+{
+    // fallback reminder daemon startup
+    // this should be started by autostart and session management already under normal
+    // circumstances, but another safety net doesn't hurt
+    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.kalendarac"));
+}
 
 KOCore::~KOCore()
 {
