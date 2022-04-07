@@ -20,7 +20,6 @@
 #include "korganizer_options.h"
 
 #include <QCommandLineParser>
-#include <QDBusConnectionInterface>
 
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
@@ -49,8 +48,6 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
         return 0;
     }
     first = false;
-
-    QDBusConnection::sessionBus().interface()->startService(QStringLiteral("org.kde.kalendarac"));
 
     QCommandLineParser parser;
     korganizer_options(&parser);
