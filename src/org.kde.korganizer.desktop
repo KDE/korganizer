@@ -220,3 +220,4 @@ X-DBUS-ServiceName=org.kde.korganizer
 Categories=Qt;KDE;Office;Calendar;
 InitialPreference=10
 SingleMainWindow=true
+Version=1.5
