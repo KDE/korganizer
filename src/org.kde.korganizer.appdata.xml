@@ -379,7 +379,7 @@
       <li xml:lang="zh-CN">打印支持</li>
     </ul>
   </description>
-  <url type="homepage">https://kontact.kde.org/components/korganizer.html</url>
+  <url type="homepage">https://kontact.kde.org/components/korganizer/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=korganizer</url>
   <url type="help">https://docs.kde.org/?application=korganizer</url>
   <screenshots>
