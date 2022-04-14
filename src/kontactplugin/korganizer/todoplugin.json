@@ -95,7 +95,7 @@
             "Kontact/Plugin"
         ],
         "Version": "0.1",
-        "Website": "https://kontact.kde.org/components/korganizer.html"
+        "Website": "https://kontact.kde.org/components/korganizer/"
     },
     "X-KDE-KontactPartExecutableName": "korganizer",
     "X-KDE-KontactPartLibraryName": "korganizerpart",
