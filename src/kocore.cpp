@@ -13,7 +13,6 @@
 #include <CalendarSupport/IdentityManager>
 
 #include "korganizer_debug.h"
-#include <KServiceTypeTrader>
 #include <KXMLGUIFactory>
 
 #include <QDBusConnectionInterface>
@@ -42,30 +41,14 @@ KOCore::~KOCore()
     mSelf = nullptr;
 }
 
-KService::List KOCore::availablePlugins(const QString &type, int version)
+QVector<KPluginMetaData> KOCore::availableCalendarDecorations()
 {
-    QString constraint;
-    if (version >= 0) {
-        constraint = QStringLiteral("[X-KDE-PluginInterfaceVersion] == %1").arg(QString::number(version));
-    }
-
-    return KServiceTypeTrader::self()->query(type, constraint);
+    return KPluginMetaData::findPlugins(QStringLiteral("korganizer"));
 }
 
-KService::List KOCore::availableCalendarDecorations()
+EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KPluginMetaData &service)
 {
-    return availablePlugins(EventViews::CalendarDecoration::Decoration::serviceType(), EventViews::CalendarDecoration::Decoration::interfaceVersion());
-}
-
-EventViews::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(const KService::Ptr &service)
-{
-    KPluginFactory *factory = KPluginFactory::loadFactory(KPluginMetaData(service->library())).plugin;
-    if (!factory) {
-        qCDebug(KORGANIZER_LOG) << "Factory creation failed";
-        return nullptr;
-    }
-
-    return factory->create<EventViews::CalendarDecoration::Decoration>();
+    return KPluginFactory::instantiatePlugin<EventViews::CalendarDecoration::Decoration>(service).plugin;
 }
 
 void KOCore::addXMLGUIClient(QWidget *wdg, KXMLGUIClient *guiclient)
@@ -99,16 +82,12 @@ EventViews::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations
         const QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
         mCalendarDecorations.clear();
-        const KService::List plugins = availableCalendarDecorations();
-        KService::List::ConstIterator it;
-        const KService::List::ConstIterator end(plugins.constEnd());
-        for (it = plugins.constBegin(); it != end; ++it) {
-            if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
-                QString name = (*it)->desktopEntryName();
-                if (selectedPlugins.contains(name)) {
-                    EventViews::CalendarDecoration::Decoration *d = loadCalendarDecoration(*it);
-                    mCalendarDecorations.append(d);
-                }
+        const QVector<KPluginMetaData> plugins = availableCalendarDecorations();
+        for (const auto &plugin : plugins) {
+            QString name = plugin.pluginId();
+            if (selectedPlugins.contains(name)) {
+                EventViews::CalendarDecoration::Decoration *d = loadCalendarDecoration(plugin);
+                mCalendarDecorations.append(d);
             }
         }
         mCalendarDecorationsLoaded = true;

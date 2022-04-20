@@ -14,8 +14,6 @@
 
 #include <EventViews/CalendarDecoration>
 
-#include <KService>
-
 namespace KIdentityManagement
 {
 class IdentityManager;
@@ -28,9 +26,9 @@ public:
 
     static KOCore *self();
 
-    Q_REQUIRED_RESULT KService::List availableCalendarDecorations();
+    Q_REQUIRED_RESULT QVector<KPluginMetaData> availableCalendarDecorations();
 
-    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KService::Ptr &service);
+    EventViews::CalendarDecoration::Decoration *loadCalendarDecoration(const KPluginMetaData &service);
     EventViews::CalendarDecoration::Decoration::List loadCalendarDecorations();
 
     void addXMLGUIClient(QWidget *, KXMLGUIClient *guiclient);
@@ -45,7 +43,6 @@ public:
 
 protected:
     KOCore();
-    KService::List availablePlugins(const QString &type, int pluginInterfaceVersion = -1);
 
 private:
     static KOCore *mSelf;

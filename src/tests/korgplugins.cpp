@@ -13,8 +13,6 @@
 #include <QCommandLineParser>
 #include <QDebug>
 
-#include <KService>
-
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
@@ -23,11 +21,10 @@ int main(int argc, char **argv)
     parser.addHelpOption();
     parser.process(app);
 
-    KService::List::ConstIterator it;
-    KService::List plugins = KOCore::self()->availableCalendarDecorations();
-    for (it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
-        qDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "(" << (*it)->name() << ")";
-        EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
+    const QVector<KPluginMetaData> plugins = KOCore::self()->availableCalendarDecorations();
+    for (const auto &plugin : plugins) {
+        qDebug() << "CalendarDecoration:" << plugin.pluginId() << "(" << plugin.name() << ")";
+        EventViews::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(plugin);
         if (!p) {
             qDebug() << "Calendar decoration loading failed.";
         } else {

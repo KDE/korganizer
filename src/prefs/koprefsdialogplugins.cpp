@@ -15,7 +15,6 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KPluginFactory>
-#include <KService>
 #include <QAction>
 #include <QGroupBox>
 #include <QHeaderView>
@@ -28,25 +27,25 @@
 class PluginItem : public QTreeWidgetItem
 {
 public:
-    PluginItem(QTreeWidget *parent, const KService::Ptr &service)
-        : QTreeWidgetItem(parent, {service->name()})
+    PluginItem(QTreeWidget *parent, const KPluginMetaData &service)
+        : QTreeWidgetItem(parent, {service.name()})
         , mService(service)
     {
     }
 
-    PluginItem(QTreeWidgetItem *parent, const KService::Ptr &service)
-        : QTreeWidgetItem(parent, {service->name()})
+    PluginItem(QTreeWidgetItem *parent, const KPluginMetaData &service)
+        : QTreeWidgetItem(parent, {service.name()})
         , mService(service)
     {
     }
 
-    KService::Ptr service()
+    KPluginMetaData service()
     {
         return mService;
     }
 
 private:
-    const KService::Ptr mService;
+    const KPluginMetaData mService;
 };
 
 Q_DECLARE_METATYPE(PluginItem *)
@@ -114,7 +113,7 @@ KOPrefsDialogPlugins::~KOPrefsDialogPlugins()
 void KOPrefsDialogPlugins::usrReadConfig()
 {
     mTreeWidget->clear();
-    KService::List plugins = KOCore::self()->availableCalendarDecorations();
+    auto plugins = KOCore::self()->availableCalendarDecorations();
 
     EventViews::PrefsPtr viewPrefs = KOPrefs::instance()->eventViewsPreferences();
 
@@ -122,27 +121,20 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
     mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Calendar Decorations")));
 
-    KService::List::ConstIterator it;
-    KService::List::ConstIterator end(plugins.constEnd());
+    for (const KPluginMetaData &plugin : plugins) {
+        PluginItem *item = new PluginItem(mDecorations, plugin);
 
-    for (it = plugins.constBegin(); it != end; ++it) {
-        PluginItem *item = nullptr;
-        if ((*it)->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
-            item = new PluginItem(mDecorations, *it);
-        } else {
-            continue;
-        }
-        if (selectedPlugins.contains((*it)->desktopEntryName())) {
+        if (selectedPlugins.contains(plugin.pluginId())) {
             item->setCheckState(0, Qt::Checked);
         } else {
             item->setCheckState(0, Qt::Unchecked);
         }
-        const QVariant variant = (*it)->property(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
+        const QVariant variant = plugin.value(QStringLiteral("X-KDE-KOrganizer-HasSettings"));
         const bool hasSettings = (variant.isValid() && variant.toBool());
         if (hasSettings) {
             auto but = new QToolButton(mTreeWidget);
             auto act = new QAction(but);
-            const QString decoration = (*it)->desktopEntryName();
+            const QString decoration = plugin.pluginId();
             act->setData(QVariant::fromValue<PluginItem *>(item));
             but->setDefaultAction(act);
             but->setIcon(QIcon::fromTheme(QStringLiteral("configure")));
@@ -174,7 +166,7 @@ void KOPrefsDialogPlugins::usrWriteConfig()
         for (int j = 0; j < serviceTypeGroup->childCount(); ++j) {
             auto item = static_cast<PluginItem *>(serviceTypeGroup->child(j));
             if (item->checkState(0) == Qt::Checked) {
-                selectedPlugins.append(item->service()->desktopEntryName());
+                selectedPlugins.append(item->service().pluginId());
             }
         }
     }
@@ -221,7 +213,7 @@ void KOPrefsDialogPlugins::positioningChanged()
         return;
     }
 
-    QString decoration = item->service()->desktopEntryName();
+    QString decoration = item->service().pluginId();
 
     /*if ( mPositionMonthTop->checkState() == Qt::Checked ) {
       if ( !mDecorationsAtMonthViewTop.contains( decoration ) ) {
@@ -268,19 +260,18 @@ void KOPrefsDialogPlugins::selectionChanged()
         return;
     }
 
-    mDescription->setText(item->service()->comment());
+    mDescription->setText(item->service().description());
 
-    if (item->service()->hasServiceType(EventViews::CalendarDecoration::Decoration::serviceType())) {
-        bool hasPosition = false;
-        QString decoration = item->service()->desktopEntryName();
-        /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
-          mPositionMonthTop->setChecked( true );
-          hasPosition = true;
-        }*/
-        if (mDecorationsAtAgendaViewTop.contains(decoration)) {
-            mPositionAgendaTop->setChecked(true);
-            hasPosition = true;
-        }
+    bool hasPosition = false;
+    QString decoration = item->service().pluginId();
+    /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
+      mPositionMonthTop->setChecked( true );
+      hasPosition = true;
+    }*/
+    if (mDecorationsAtAgendaViewTop.contains(decoration)) {
+        mPositionAgendaTop->setChecked(true);
+        hasPosition = true;
+    }
         if (mDecorationsAtAgendaViewBottom.contains(decoration)) {
             mPositionAgendaBottom->setChecked(true);
             hasPosition = true;
@@ -294,7 +285,6 @@ void KOPrefsDialogPlugins::selectionChanged()
 
         mPositioningGroupBox->setEnabled(item->checkState(0) == Qt::Checked);
         mPositioningGroupBox->show();
-    }
 
     slotWidChanged();
 }
