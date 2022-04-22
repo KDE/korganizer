@@ -11,9 +11,9 @@
 #include "kocore.h"
 #include "koeventpopupmenu.h"
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/ETMCalendar>
 #include <CalendarSupport/KCalPrefs>
-#include <CalendarSupport/Utils>
 
 #include "korganizer_debug.h"
 #include <KXMLGUIFactory>
@@ -127,7 +127,7 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction(const Akonadi::Item &aitem)
 {
-    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(aitem);
+    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(aitem);
     if (!incidence) {
         qCDebug(KORGANIZER_LOG) << "Ouch, null incidence";
         return;
@@ -166,7 +166,7 @@ void KOEventView::finishTypeAhead()
 
 bool KOEventView::usesCompletedTodoPixmap(const Akonadi::Item &aitem, const QDate &date)
 {
-    const KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(aitem);
+    const KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(aitem);
     if (!todo) {
         return false;
     }

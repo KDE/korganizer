@@ -13,8 +13,8 @@
 #include "calendarview.h"
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
-#include <CalendarSupport/Utils>
 
+#include <Akonadi/CalendarUtils>
 #include <KCalUtils/IncidenceFormatter>
 
 #include "korganizer_debug.h"
@@ -87,7 +87,7 @@ KOrganizerPart::~KOrganizerPart()
 void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date)
 {
     Q_UNUSED(date)
-    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (incidence) {
         Q_EMIT textChanged(incidence->summary() + QLatin1String(" / ")
                            + KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().toLocalTime().time()));

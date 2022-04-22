@@ -14,12 +14,12 @@
 #include "prefs/koprefs.h"
 
 #include <CalendarSupport/ArchiveDialog>
-#include <CalendarSupport/Utils>
 #include <PimCommon/PimUtil>
 
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/Item>
 #include <Akonadi/TagManagementDialog>
 
@@ -130,7 +130,7 @@ void KODialogManager::showFilterEditDialog(QList<KCalendarCore::CalFilter *> *fi
 
 IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog(const Akonadi::Item &item)
 {
-    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence) {
         return nullptr;
     }

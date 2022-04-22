@@ -10,6 +10,7 @@
 #include "koeventpopupmenu.h"
 #include "korganizer_debug.h"
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/ItemCreateJob>
 #include <Akonadi/NoteUtils>
 
@@ -154,7 +155,7 @@ void KOEventPopupMenu::showIncidencePopup(const Akonadi::Item &item, const QDate
         return;
     }
 
-    KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
+    KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
     Q_ASSERT(incidence);
 
     // Determine if this Incidence's calendar is writeable.
@@ -300,7 +301,7 @@ void KOEventPopupMenu::dissociateOccurrences()
 void KOEventPopupMenu::forward()
 {
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(mCurrentIncidence);
+        KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(mCurrentIncidence);
         if (incidence) {
             Akonadi::ITIPHandler handler(this);
             handler.setCalendar(mCalendar);
@@ -327,7 +328,7 @@ void KOEventPopupMenu::createEvent()
     }
 
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
-        KCalendarCore::Todo::Ptr todo(CalendarSupport::todo(mCurrentIncidence));
+        KCalendarCore::Todo::Ptr todo(Akonadi::CalendarUtils::todo(mCurrentIncidence));
         KCalendarCore::Event::Ptr event(new KCalendarCore::Event(*todo));
         event->setUid(KCalendarCore::CalFormat::createUniqueId());
         event->setDtStart(todo->dtStart());
@@ -355,7 +356,7 @@ void KOEventPopupMenu::createNote()
 {
     // Must be a Incidence
     if (CalendarSupport::hasIncidence(mCurrentIncidence)) {
-        KCalendarCore::Incidence::Ptr incidence(CalendarSupport::incidence(mCurrentIncidence));
+        KCalendarCore::Incidence::Ptr incidence(Akonadi::CalendarUtils::incidence(mCurrentIncidence));
         Akonadi::NoteUtils::NoteMessageWrapper note;
         note.setTitle(incidence->summary());
         note.setText(incidence->description(), incidence->descriptionIsRich() ? Qt::RichText : Qt::PlainText);
@@ -400,7 +401,7 @@ void KOEventPopupMenu::createTodo()
     }
 
     if (CalendarSupport::hasEvent(mCurrentIncidence)) {
-        KCalendarCore::Event::Ptr event(CalendarSupport::event(mCurrentIncidence));
+        KCalendarCore::Event::Ptr event(Akonadi::CalendarUtils::event(mCurrentIncidence));
         KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo(*event));
         todo->setUid(KCalendarCore::CalFormat::createUniqueId());
         todo->setDtStart(event->dtStart());

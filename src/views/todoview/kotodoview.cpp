@@ -15,6 +15,7 @@
 
 #include <CalendarSupport/CalPrinter>
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/EntityTreeModel>
 
 #include <QVBoxLayout>
@@ -161,7 +162,7 @@ void KOTodoView::printTodo(bool preview)
     }
 
     Akonadi::Item todoItem = selectedItems.first();
-    KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
+    KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
     Q_ASSERT(todo);
 
     CalendarSupport::CalPrinter printer(this, calendar(), true);

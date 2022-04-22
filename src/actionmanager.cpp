@@ -29,10 +29,10 @@
 #include <CalendarSupport/CollectionSelection>
 #include <CalendarSupport/EventArchiver>
 #include <CalendarSupport/KCalPrefs>
-#include <CalendarSupport/Utils>
 
 #include <IncidenceEditor/IncidenceEditorSettings>
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeModel>
@@ -1320,7 +1320,7 @@ void ActionManager::processIncidenceSelection(const Akonadi::Item &item, QDate d
     // qCDebug(KORGANIZER_LOG) << "ActionManager::processIncidenceSelection()";
     Q_UNUSED(date)
 
-    const KCalendarCore::Incidence::Ptr incidence = CalendarSupport::incidence(item);
+    const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence) {
         enableIncidenceActions(false);
         return;

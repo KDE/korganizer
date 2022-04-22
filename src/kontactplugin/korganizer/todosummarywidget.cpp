@@ -11,8 +11,8 @@
 #include "korganizerinterface.h"
 #include "todoplugin.h"
 #include <CalendarSupport/CalendarSingleton>
-#include <CalendarSupport/Utils>
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/ItemFetchScope>
@@ -301,7 +301,7 @@ void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
     Akonadi::Item todoItem = mCalendar->item(id);
 
     if (todoItem.isValid()) {
-        KCalendarCore::Todo::Ptr todo = CalendarSupport::todo(todoItem);
+        KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
         if (!todo->isReadOnly()) {
             KCalendarCore::Todo::Ptr oldTodo(todo->clone());
             todo->setCompleted(QDateTime::currentDateTime());
