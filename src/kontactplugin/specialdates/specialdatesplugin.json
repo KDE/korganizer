@@ -19,6 +19,7 @@
         "Description[ru]": "Особые даты",
         "Description[sl]": "Vstavek za posebne datume",
         "Description[sv]": "Insticksprogram för speciella datum",
+        "Description[tr]": "Özel Tarihler Eklentisi",
         "Description[uk]": "Додаток особливих дат",
         "Description[x-test]": "xxSpecial Dates Pluginxx",
         "EnabledByDefault": true,

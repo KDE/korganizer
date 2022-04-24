@@ -19,6 +19,7 @@
         "Description[ru]": "Настройка дайджеста выполняемых задач",
         "Description[sl]": "Nastavi povzetek čakajočih opravil",
         "Description[sv]": "Inställning av översikt över väntande uppgifter",
+        "Description[tr]": "Bekleyen Yapılacak Ögeler Özet Yapılandırması",
         "Description[uk]": "Зведення налаштування призначених завдань",
         "Description[x-test]": "xxPending To-dos Summary Setupxx",
         "Icon": "korg-todo",

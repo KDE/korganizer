@@ -19,6 +19,7 @@
         "Description[ru]": "Задачи",
         "Description[sl]": "Vstavek Kontact za opravila KOrganizerja",
         "Description[sv]": "Kontact-insticksprogram för Korganizers uppgiftslista",
+        "Description[tr]": "Kontact KOrganizer Yapılacaklar Listesi Eklentisi",
         "Description[uk]": "Додаток списку завдань KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer To-do List Pluginxx",
         "EnabledByDefault": true,

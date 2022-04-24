@@ -19,6 +19,7 @@
         "Description[ru]": "Настройка даты и времени",
         "Description[sl]": "Nastavitev časa in datuma v KOrganizerju",
         "Description[sv]": "Inställning av Korganizers tid och datum",
+        "Description[tr]": "KOrganizer Tarih ve Saat Yapılandırması",
         "Description[uk]": "Налаштування часу і дати в KOrganizer",
         "Description[x-test]": "xxKOrganizer Time and Date Configurationxx",
         "Icon": "preferences-system-time",
