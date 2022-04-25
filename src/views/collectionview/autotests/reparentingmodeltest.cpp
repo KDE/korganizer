@@ -657,7 +657,7 @@ void ReparentingModelTest::testSourceLayoutChanged()
 // Test for invalid implementation of layoutChanged
 //*have proxy node in model
 //*insert duplicate from source
-//*issue layout changed so the model get's rebuilt
+//*issue layout changed so the model gets rebuilt
 //*access node (which is not actually existing anymore)
 // => crash
 void ReparentingModelTest::testInvalidLayoutChanged()
@@ -735,7 +735,7 @@ void ReparentingModelTest::testAddRemoveNodeByNodeManager()
 
 /*
  * This tests a special case that is caused by the delayed doAddNode call,
- * causing a removed node to be readded immediately if it's removed while
+ * causing a removed node to be read immediately if it's removed while
  * a doAddNode call is pending (that can be triggered by dataChanged).
  */
 void ReparentingModelTest::testRemoveNodeByNodeManagerWithDataChanged()

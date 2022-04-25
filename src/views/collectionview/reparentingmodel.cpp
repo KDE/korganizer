@@ -214,7 +214,7 @@ void ReparentingModel::addNode(const ReparentingModel::Node::Ptr &node)
     // We have to make this check before issuing the async method,
     // otherwise we run into the problem that while a node is being removed,
     // the async request could be triggered (due to a changed signal),
-    // resulting in the node getting readded immediately after it had been removed.
+    // resulting in the node getting read immediately after it had been removed.
     for (const ReparentingModel::Node::Ptr &existing : std::as_const(mProxyNodes)) {
         if (*existing == *node) {
             // qCDebug(KORGANIZER_LOG) << "node is already existing";

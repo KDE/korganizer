@@ -94,7 +94,7 @@ public:
      * pixmap.
      *
      * @param todo The to-do associated with the view item.
-     * @param date The date in which the item appears in the view, for non recuring to-dos
+     * @param date The date in which the item appears in the view, for non recurring to-dos
      * this is the same as the start date, but, for recurring to-dos this is the date of
      * a particular occurrence.
      *

@@ -135,7 +135,7 @@ public:
       Show an incidence in context, given its uid.
       @param uid the iCal uid of the incidence to show.
     */
-    void showIncidenceByUid(const QString &uid, const QDateTime &occurence, const QString &xdgActivationToken);
+    void showIncidenceByUid(const QString &uid, const QDateTime &occurrence, const QString &xdgActivationToken);
 
     /**
      * Called by KOrganizerUniqueAppHandler in the kontact plugin

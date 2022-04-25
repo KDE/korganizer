@@ -342,7 +342,7 @@ void ActionManager::initActions()
 
     /************************** VIEW MENU *********************************/
 
-    /** Whats Next View Action **/
+    /** What's Next View Action **/
     action = new QAction(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-events")), i18n("What's &Next"), this);
     action->setStatusTip(i18nc("@info:status", "What's Next View"));
     action->setToolTip(i18nc("@info:tooltip", "Switch to the What's Next View"));
@@ -493,7 +493,7 @@ void ActionManager::initActions()
 
     /** Scroll Forward Action **/
     action = new QAction(QIcon::fromTheme(isRTL ? QStringLiteral("go-previous") : QStringLiteral("go-next")), i18nc("scroll forward", "&Forward"), this);
-    action->setIconText(i18nc("scoll forward", "Forward"));
+    action->setIconText(i18nc("scroll forward", "Forward"));
     action->setStatusTip(i18nc("@info:status", "Scroll Forward"));
     action->setToolTip(i18nc("@info:tooltip", "Scroll the view forward"));
     action->setWhatsThis(i18nc("@info:whatsthis",
