@@ -339,7 +339,7 @@ target_link_libraries(korganizerprivate
     KF5::Mime
     KF5::IdentityManagement
     KF5::KCMUtils
-    KF5::NewStuff
+    KF5::NewStuffWidgets
     KF5::Ldap
     KF5::AkonadiWidgets
     KF5::IconThemes

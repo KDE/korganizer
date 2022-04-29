@@ -253,8 +253,6 @@ protected Q_SLOTS:
     /** Open kcontrol module for configuring date and time formats */
     void configureDateTime();
 
-    void downloadNewStuff();
-
     void toggleDateNavigator();
     void toggleTodoView();
     void toggleEventViewer();
