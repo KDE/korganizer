@@ -8,6 +8,7 @@
 #include "korganizer_debug.h"
 #include "ui_quickview.h"
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/ItemFetchScope>
@@ -15,7 +16,6 @@
 #include <KCalendarCore/Event>
 #include <KCalendarCore/MemoryCalendar>
 
-#include <CalendarSupport/Utils>
 #include <EventViews/AgendaView>
 
 #include <KCheckableProxyModel>
@@ -70,11 +70,11 @@ Quickview::Quickview(const Akonadi::Collection &col)
 
     calendar->setCollectionFilteringEnabled(false);
     mAgendaView->setCalendar(calendar);
-    setWindowTitle(i18nc("@title:window", "%1", CalendarSupport::displayName(calendar.data(), mCollection)));
+    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(calendar.data(), mCollection)));
 
     mUi->calendar->addWidget(mAgendaView);
 
-    setWindowTitle(i18nc("@title:window", "%1", CalendarSupport::displayName(calendar.data(), mCollection)));
+    setWindowTitle(i18nc("@title:window", "%1", Akonadi::CalendarUtils::displayName(calendar.data(), mCollection)));
 
     connect(mUi->mTodayBtn, &QPushButton::clicked, this, &Quickview::onTodayClicked);
     connect(mUi->mNextBtn, &QPushButton::clicked, this, &Quickview::onNextClicked);
