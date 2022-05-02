@@ -42,3 +42,5 @@ Dependencies:
     'frameworks/kdoctools': '@latest'
     'frameworks/kcontacts': '@latest'
     'frameworks/kcalendarcore': '@latest'
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD']
