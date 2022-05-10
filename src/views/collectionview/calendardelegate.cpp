@@ -9,9 +9,7 @@
 #include "korganizer_debug.h"
 
 #include <Akonadi/CollectionStatistics>
-
-#include <CalendarSupport/CalendarSingleton>
-#include <CalendarSupport/Utils>
+#include <Akonadi/CollectionUtils>
 
 #include <QApplication>
 #include <QFontDatabase>
@@ -62,7 +60,7 @@ static QStyleOptionButton buttonOpt(const QStyleOptionViewItem &opt, const QIcon
 
 QList<StyledCalendarDelegate::Action> StyledCalendarDelegate::getActions(const QStyleOptionViewItem &, const QModelIndex &index) const
 {
-    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+    const Akonadi::Collection col = Akonadi::CollectionUtils::fromIndex(index);
     // qCDebug(KORGANIZER_LOG) << index.data().toString() << enabled;
     const bool isSearchCollection = col.resource().startsWith(QLatin1String("akonadi_search_resource"));
     const bool isKolabCollection = col.resource().startsWith(QLatin1String("akonadi_kolab_resource"));
@@ -84,7 +82,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
 {
     Q_ASSERT(index.isValid());
 
-    const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+    const Akonadi::Collection col = Akonadi::CollectionUtils::fromIndex(index);
 
     QStyleOptionViewItem opt = option;
     opt.font = QFont(QFontDatabase::systemFont(QFontDatabase::GeneralFont));

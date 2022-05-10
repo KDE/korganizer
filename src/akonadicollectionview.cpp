@@ -29,6 +29,7 @@
 #include <Akonadi/CollectionDeleteJob>
 #include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/CollectionIdentificationAttribute>
+#include <Akonadi/CollectionUtils>
 #include <Akonadi/ETMViewStateSaver>
 #include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeModel>
@@ -255,7 +256,7 @@ public:
             return {};
         }
         if (role == Qt::DecorationRole) {
-            const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+            const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
 
             if (hasCompatibleMimeTypes(collection)) {
                 if (collection.hasAttribute<Akonadi::EntityDisplayAttribute>()
@@ -264,7 +265,7 @@ public:
                 }
             }
         } else if (role == Qt::FontRole) {
-            const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+            const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
             if (!collection.contentMimeTypes().isEmpty() && KOHelper::isStandardCalendar(collection.id())
                 && collection.rights() & Akonadi::Collection::CanCreateItem) {
                 auto font = qvariant_cast<QFont>(QSortFilterProxyModel::data(index, Qt::FontRole));
@@ -276,7 +277,7 @@ public:
                 return font;
             }
         } else if (role == Qt::DisplayRole) {
-            const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+            const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
             const Akonadi::Collection::Id colId = collection.id();
             const Akonadi::AgentInstance instance = Akonadi::AgentManager::self()->instance(collection.resource());
             if (!instance.isOnline() && !collection.isVirtual()) {
@@ -327,7 +328,7 @@ protected:
     Q_REQUIRED_RESULT QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
     {
         if (role == Qt::ToolTipRole) {
-            const Akonadi::Collection col = CalendarSupport::collectionFromIndex(index);
+            const Akonadi::Collection col = Akonadi::CollectionUtils::fromIndex(index);
             return CalendarSupport::toolTipString(col);
         }
 
@@ -554,7 +555,7 @@ void AkonadiCollectionView::slotServerSideSubscription()
 {
     const QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
-    const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     if (!collection.isValid()) {
         return;
     }
@@ -568,7 +569,7 @@ Akonadi::Collection AkonadiCollectionView::currentCalendar() const
 {
     const QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
-    Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     return collection;
 }
 
@@ -576,7 +577,7 @@ void AkonadiCollectionView::setDefaultCalendar()
 {
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
-    const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
 
     // Ask if they really want to do this
     const Akonadi::Collection curCol(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
@@ -600,7 +601,7 @@ void AkonadiCollectionView::assignColor()
 {
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
-    const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     Q_ASSERT(collection.isValid());
 
     const QColor defaultColor = KOHelper::resourceColor(collection);
@@ -658,7 +659,7 @@ void AkonadiCollectionView::updateMenu()
 
     if (index.isValid()) {
         // Returns an invalid collection on person nodes
-        const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+        const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
 
         if (collection.isValid() && !collection.contentMimeTypes().isEmpty()) {
             if (collection.remoteId() == QLatin1String("akonadi_birthdays_resource")) {
@@ -718,7 +719,7 @@ void AkonadiCollectionView::deleteCalendar()
 {
     QModelIndex index = mCollectionView->selectionModel()->currentIndex(); // selectedRows()
     Q_ASSERT(index.isValid());
-    const Akonadi::Collection collection = CalendarSupport::collectionFromIndex(index);
+    const Akonadi::Collection collection = Akonadi::CollectionUtils::fromIndex(index);
     Q_ASSERT(collection.isValid());
 
     const QString displayname = index.model()->data(index, Qt::DisplayRole).toString();
@@ -850,7 +851,7 @@ void AkonadiCollectionView::onAction(const QModelIndex &index, int a)
     const auto action = static_cast<StyledCalendarDelegate::Action>(a);
     switch (action) {
     case StyledCalendarDelegate::Quickview: {
-        auto quickview = new Quickview(CalendarSupport::collectionFromIndex(index));
+        auto quickview = new Quickview(Akonadi::CollectionUtils::fromIndex(index));
         quickview->setAttribute(Qt::WA_DeleteOnClose, true);
         quickview->show();
         break;
