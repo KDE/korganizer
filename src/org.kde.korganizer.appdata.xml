@@ -384,6 +384,7 @@
   <url type="homepage">https://kontact.kde.org/components/korganizer/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=korganizer</url>
   <url type="help">https://docs.kde.org/?application=korganizer</url>
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <image type="source">https://cdn.kde.org/screenshots/korganizer/korganizer.png</image>
