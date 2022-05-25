@@ -13,6 +13,7 @@
 #include <Akonadi/Item>
 
 #include <QDialog>
+#include <QRegExp>
 
 class QPushButton;
 class CalendarView;

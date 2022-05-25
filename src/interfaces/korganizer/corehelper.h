@@ -7,10 +7,10 @@
 */
 
 #pragma once
+#include <QStringList>
 class QColor;
 class QString;
 class QTime;
-class QStringList;
 class QDate;
 namespace KOrg
 {

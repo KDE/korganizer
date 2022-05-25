@@ -13,7 +13,7 @@
 
 #include <Akonadi/Collection>
 #include <KCalendarCore/Attendee>
-#include <KIdentityManagement/KIdentityManagement/IdentityManager>
+#include <KIdentityManagement/IdentityManager>
 
 class KJob;
 

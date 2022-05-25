@@ -42,9 +42,12 @@ KOrganizer::KOrganizer()
     , KOrg::MainWindow()
     , mCalendarView(new CalendarView(this))
 {
+    // TODO verify how to port WA_GroupLeader to Qt6
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     // Set this to be the group leader for all subdialogs - this means
     // modal subdialogs will only affect this dialog, not the other windows
     setAttribute(Qt::WA_GroupLeader);
+#endif
 
     KOCore::self()->addXMLGUIClient(this, this);
     //  setMinimumSize(600,400);  // make sure we don't get resized too small...
