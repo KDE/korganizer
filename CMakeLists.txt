@@ -134,7 +134,7 @@ configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer
 
 
 ecm_set_disabled_deprecation_versions(QT 5.15.2
-    KF 5.94.0
+    KF 5.95.0
     KCOREADDONS 5.88.0 #KPluginFactory::registerPlugin
 
 )

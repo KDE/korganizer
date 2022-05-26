@@ -11,6 +11,7 @@
 #include "korganizer_kontactplugins_specialdates_debug.h"
 #include <KontactInterface/Core>
 #include <KontactInterface/Plugin>
+#include <kholidays_version.h>
 
 #include <Akonadi/ContactSearchJob>
 #include <Akonadi/ContactViewerDialog>
@@ -350,7 +351,11 @@ void SDSummaryWidget::createLabels()
     if (mShowHolidays) {
         if (initHolidays()) {
             for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
+#if KHOLIDAYS_VERSION < QT_VERSION_CHECK(5, 95, 0)
                 QList<Holiday> holidays = mHolidays->holidays(dt);
+#else
+                QList<Holiday> holidays = mHolidays->rawHolidaysWithAstroSeasons(dt);
+#endif
                 QList<Holiday>::ConstIterator it = holidays.constBegin();
                 for (; it != holidays.constEnd(); ++it) {
                     SDEntry entry;
