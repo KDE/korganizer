@@ -11,7 +11,7 @@
 #include "korganizerinterface.h"
 #include "todoplugin.h"
 #include <CalendarSupport/CalendarSingleton>
-#include <kcalcore_version.h>
+#include <kcalendarcore_version.h>
 
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
@@ -125,7 +125,7 @@ void TodoSummaryWidget::updateView()
         prList.append(todo);
     }
     if (!prList.isEmpty()) {
-#if KCALCORE_VERSION < QT_VERSION_CHECK(5, 95, 0)
+#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(5, 95, 0)
         prList = Akonadi::ETMCalendar::sortTodos(prList, KCalendarCore::TodoSortSummary, KCalendarCore::SortDirectionAscending);
         prList = Akonadi::ETMCalendar::sortTodos(prList, KCalendarCore::TodoSortPriority, KCalendarCore::SortDirectionAscending);
         prList = Akonadi::ETMCalendar::sortTodos(prList, KCalendarCore::TodoSortDueDate, KCalendarCore::SortDirectionAscending);
