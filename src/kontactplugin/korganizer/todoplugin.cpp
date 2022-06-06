@@ -32,8 +32,8 @@
 
 EXPORT_KONTACT_PLUGIN_WITH_JSON(TodoPlugin, "todoplugin.json")
 
-TodoPlugin::TodoPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "todo")
+TodoPlugin::TodoPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
+    : KontactInterface::Plugin(core, core, data, "korganizer", "todo")
     , mIface(nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));

@@ -20,8 +20,8 @@
 
 EXPORT_KONTACT_PLUGIN_WITH_JSON(JournalPlugin, "journalplugin.json")
 
-JournalPlugin::JournalPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "journal")
+JournalPlugin::JournalPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
+    : KontactInterface::Plugin(core, core, data, "korganizer", "journal")
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 

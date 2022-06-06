@@ -22,7 +22,7 @@ class KOrganizerPlugin : public KontactInterface::Plugin
     Q_OBJECT
 
 public:
-    KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &);
+    KOrganizerPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &);
     ~KOrganizerPlugin() override;
 
     Q_REQUIRED_RESULT bool isRunningStandalone() const override;

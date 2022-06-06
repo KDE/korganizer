@@ -36,8 +36,8 @@
 
 EXPORT_KONTACT_PLUGIN_WITH_JSON(KOrganizerPlugin, "korganizerplugin.json")
 
-KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, "korganizer", "calendar")
+KOrganizerPlugin::KOrganizerPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
+    : KontactInterface::Plugin(core, core, data, "korganizer", "calendar")
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 

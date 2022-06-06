@@ -17,8 +17,8 @@
 
 EXPORT_KONTACT_PLUGIN_WITH_JSON(SpecialdatesPlugin, "specialdatesplugin.json")
 
-SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const QVariantList &)
-    : KontactInterface::Plugin(core, core, nullptr)
+SpecialdatesPlugin::SpecialdatesPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &)
+    : KontactInterface::Plugin(core, core, data, nullptr)
 {
     setComponentName(QStringLiteral("korganizer"), i18n("KOrganizer"));
 }

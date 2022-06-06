@@ -20,7 +20,7 @@ class JournalPlugin : public KontactInterface::Plugin
 {
     Q_OBJECT
 public:
-    JournalPlugin(KontactInterface::Core *core, const QVariantList &);
+    JournalPlugin(KontactInterface::Core *core, const KPluginMetaData &data, const QVariantList &);
     ~JournalPlugin() override;
 
     Q_REQUIRED_RESULT bool isRunningStandalone() const override;
