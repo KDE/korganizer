@@ -1,8 +1,9 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Plugin Configuration",
+        "Description[ar]": "ضبط ملحقات «منظّمك»",
         "Description[az]": "KOrganizer plaqin tənzimləməsi",
-        "Description[ca@valencia]": "Configuració dels connectors de KOrganizer",
+        "Description[ca@valencia]": "Configuració dels conectors de KOrganizer",
         "Description[ca]": "Configuració dels connectors del KOrganizer",
         "Description[de]": "Modul-Einrichtung für KOrganizer",
         "Description[en_GB]": "KOrganizer Plugin Configuration",
@@ -28,7 +29,7 @@
         "Name[bg]": "Приставки",
         "Name[br]": "Lugantoù",
         "Name[bs]": "Dodaci",
-        "Name[ca@valencia]": "Connectors",
+        "Name[ca@valencia]": "Conectors",
         "Name[ca]": "Connectors",
         "Name[cs]": "Moduly",
         "Name[cy]": "Ategion",

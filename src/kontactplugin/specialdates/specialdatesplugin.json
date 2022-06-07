@@ -1,8 +1,9 @@
 {
     "KPlugin": {
         "Description": "Special Dates Plugin",
+        "Description[ar]": "ملحقة التّواريخ الخاصّة",
         "Description[az]": "Xüsusi tarixlər plaqini",
-        "Description[ca@valencia]": "Connector de dates especials",
+        "Description[ca@valencia]": "Conector de dates especials",
         "Description[ca]": "Connector de dates especials",
         "Description[de]": "Modul für besondere Termine",
         "Description[en_GB]": "Special Dates Plugin",
