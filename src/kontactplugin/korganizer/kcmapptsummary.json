@@ -1,8 +1,9 @@
 {
     "KPlugin": {
         "Description": "Upcoming Events Summary Setup",
+        "Description[ar]": "إعداد ملخّص الأحداث القادمة",
         "Description[az]": "Gələcək tədbirlərin xülasəsi ayarları",
-        "Description[ca@valencia]": "Configuració del resum dels esdeveniments pròxims",
+        "Description[ca@valencia]": "Configuració del resum dels successos pròxims",
         "Description[ca]": "Configuració del resum dels esdeveniments pròxims",
         "Description[de]": "Einstellung der Übersicht über anstehende Termine",
         "Description[en_GB]": "Upcoming Events Summary Setup",
@@ -27,7 +28,7 @@
         "Name[ar]": "الأحداث القادمة",
         "Name[az]": "Gələcək tədbirlər",
         "Name[bs]": "Nastupajući događaji",
-        "Name[ca@valencia]": "Propers esdeveniments",
+        "Name[ca@valencia]": "Propers successos",
         "Name[ca]": "Propers esdeveniments",
         "Name[cs]": "Nadcházející události",
         "Name[da]": "Kommende begivenheder",

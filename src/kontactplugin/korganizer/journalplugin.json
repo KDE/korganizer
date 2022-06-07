@@ -1,8 +1,9 @@
 {
     "KPlugin": {
         "Description": "Kontact KOrganizer Journal Plugin",
+        "Description[ar]": "ملحقة يوميّة «منظّمك» لِ‍«متراسلك»",
         "Description[az]": "Kontact KOrganizer jurnal plaqini",
-        "Description[ca@valencia]": "Connector de diaris de KOrganizer de Kontact",
+        "Description[ca@valencia]": "Conector de diaris de KOrganizer de Kontact",
         "Description[ca]": "Connector de diaris del KOrganizer del Kontact",
         "Description[de]": "Kontact KOrganizer-Modul für Journaleinträge",
         "Description[en_GB]": "Kontact KOrganizer Journal Plugin",

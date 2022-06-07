@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "KOrganizer Time and Date Configuration",
+        "Description[ar]": "ضبط الوقت والتّاريخ لِ‍«منظّمك»",
         "Description[az]": "KOrganizer vaxt və tarix tənzimləməsi",
         "Description[ca@valencia]": "Configuració de la data i hora de KOrganizer",
         "Description[ca]": "Configuració de la data i hora del KOrganizer",
