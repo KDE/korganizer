@@ -106,7 +106,7 @@
         "Version": "0.1",
         "Website": "https://kontact.kde.org/components/korganizer/"
     },
-    "X-KDE-ConfigModuleNamespace": "pim/kcms/korganizer/",
+    "X-KDE-ConfigModuleNamespace": "pim@QT_MAJOR_VERSION@/kcms/korganizer/",
     "X-KDE-KontactPartExecutableName": "korganizer",
     "X-KDE-KontactPartLibraryName": "korganizerpart",
     "X-KDE-KontactPluginHasSummary": true,

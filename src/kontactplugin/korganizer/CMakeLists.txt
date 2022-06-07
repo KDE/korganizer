@@ -8,6 +8,7 @@ ecm_qt_declare_logging_category(libcommon_SRCS HEADER korganizerplugin_debug.h I
         EXPORT KORGANIZER
     )
 
+configure_file(korganizerplugin.json.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizerplugin.json)
 
 set(kontact_korganizerplugin_PART_SRCS korganizerplugin.cpp apptsummarywidget.cpp summaryeventinfo.cpp korganizerplugin.h apptsummarywidget.h summaryeventinfo.h ${libcommon_SRCS})
 
@@ -61,8 +62,8 @@ if (BUILD_TESTING)
 endif()
 ########### install files ###############
 
-install(TARGETS kcmapptsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/summary)
-install(TARGETS kcmtodosummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/summary)
+install(TARGETS kcmapptsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/summary)
+install(TARGETS kcmtodosummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/summary)
 install(TARGETS kontact_korganizerplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact${QT_MAJOR_VERSION})
 install(TARGETS kontact_todoplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact${QT_MAJOR_VERSION})
 install(TARGETS kontact_journalplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact${QT_MAJOR_VERSION})

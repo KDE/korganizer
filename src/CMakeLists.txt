@@ -83,39 +83,39 @@ target_link_libraries(korganizer_kcm_static
 
 add_library(korganizer_configcolorsandfonts MODULE prefs/koprefsdialogcolorsandfonts.cpp prefs/koprefsdialogcolorsandfonts.h)
 target_link_libraries(korganizer_configcolorsandfonts korganizer_kcm_static)
-install(TARGETS korganizer_configcolorsandfonts DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configcolorsandfonts DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configdesignerfields MODULE prefs/koprefsdesignerfields.cpp kcmdesignerfields.cpp prefs/koprefsdesignerfields.h kcmdesignerfields.h)
 target_link_libraries(korganizer_configdesignerfields korganizer_kcm_static)
-install(TARGETS korganizer_configdesignerfields DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configdesignerfields DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configfreebusy MODULE prefs/koprefsdialoggroupwarescheduling.h prefs/koprefsdialoggroupwarescheduling.cpp)
 target_link_libraries(korganizer_configfreebusy korganizer_kcm_static)
-install(TARGETS korganizer_configfreebusy DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configfreebusy DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configgroupscheduling MODULE prefs/koprefsdialogmain.h prefs/koprefsdialogmain.cpp)
 target_link_libraries(korganizer_configgroupscheduling korganizer_kcm_static)
-install(TARGETS korganizer_configgroupscheduling DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configgroupscheduling DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configmain MODULE prefs/koprefsdialoggroupscheduling.h prefs/koprefsdialoggroupscheduling.cpp)
 target_link_libraries(korganizer_configmain korganizer_kcm_static)
-install(TARGETS korganizer_configmain DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configmain DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configplugins MODULE prefs/koprefsdialogplugins.cpp prefs/koprefsdialogplugins.h)
 target_link_libraries(korganizer_configplugins korganizer_kcm_static)
-install(TARGETS korganizer_configplugins DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configplugins DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configtime MODULE prefs/koprefsdialogtime.cpp prefs/koprefsdialogtime.h)
 target_link_libraries(korganizer_configtime korganizer_kcm_static)
-install(TARGETS korganizer_configtime DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configtime DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_configviews MODULE prefs/koprefsdialogviews.cpp prefs/koprefsdialogviews.h)
 target_link_libraries(korganizer_configviews korganizer_kcm_static)
-install(TARGETS korganizer_configviews DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_configviews DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 add_library(korganizer_userfeedback MODULE prefs/koprefsuserfeedback.cpp prefs/koprefsuserfeedback.h)
 target_link_libraries(korganizer_userfeedback korganizer_kcm_static ${korganizer_userfeedback_LIB})
-install(TARGETS korganizer_userfeedback DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim/kcms/korganizer)
+install(TARGETS korganizer_userfeedback DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/korganizer)
 
 ########### next target ###############
 
