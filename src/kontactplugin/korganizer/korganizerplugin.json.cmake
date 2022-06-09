@@ -110,6 +110,6 @@
     "X-KDE-KontactPartExecutableName": "korganizer",
     "X-KDE-KontactPartLibraryName": "korganizerpart",
     "X-KDE-KontactPluginHasSummary": true,
-    "X-KDE-KontactPluginVersion": 10,
+    "X-KDE-KontactPluginVersion": 11,
     "X-KDE-Weight": 400
 }
