@@ -37,5 +37,5 @@ target_link_libraries(kcmsdsummary Qt${QT_MAJOR_VERSION}::Widgets KF5::KCMUtils 
 
 ########### install files ###############
 
-install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/kontact${QT_MAJOR_VERSION})
+install(TARGETS kontact_specialdatesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kontact)
 install(TARGETS kcmsdsummary DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/kcms/summary)
