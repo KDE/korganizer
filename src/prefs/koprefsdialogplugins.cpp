@@ -272,19 +272,19 @@ void KOPrefsDialogPlugins::selectionChanged()
         mPositionAgendaTop->setChecked(true);
         hasPosition = true;
     }
-        if (mDecorationsAtAgendaViewBottom.contains(decoration)) {
-            mPositionAgendaBottom->setChecked(true);
-            hasPosition = true;
-        }
+    if (mDecorationsAtAgendaViewBottom.contains(decoration)) {
+        mPositionAgendaBottom->setChecked(true);
+        hasPosition = true;
+    }
 
-        if (!hasPosition) {
-            // no position has been selected, so default to Agenda Top
-            mDecorationsAtAgendaViewTop << decoration;
-            mPositionAgendaTop->setChecked(true);
-        }
+    if (!hasPosition) {
+        // no position has been selected, so default to Agenda Top
+        mDecorationsAtAgendaViewTop << decoration;
+        mPositionAgendaTop->setChecked(true);
+    }
 
-        mPositioningGroupBox->setEnabled(item->checkState(0) == Qt::Checked);
-        mPositioningGroupBox->show();
+    mPositioningGroupBox->setEnabled(item->checkState(0) == Qt::Checked);
+    mPositioningGroupBox->show();
 
     slotWidChanged();
 }
