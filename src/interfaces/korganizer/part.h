@@ -54,16 +54,4 @@ public:
 private:
     MainWindow *const mMainWindow;
 };
-
-class PartFactory : public KPluginFactory
-{
-public:
-    virtual Part *createPluginFactory(MainWindow *parent) = 0;
-
-protected:
-    QObject *createObject(QObject *, const char *, const QStringList &) override
-    {
-        return nullptr;
-    }
-};
 }
