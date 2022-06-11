@@ -132,20 +132,4 @@ void KCMTodoSummary::defaults()
     Q_EMIT changed(true);
 }
 
-const KAboutData *KCMTodoSummary::aboutData() const
-{
-    auto about = new KAboutData(QStringLiteral("kcmtodosummary"),
-                                i18n("Pending To-dos Configuration Dialog"),
-                                QString(),
-                                QString(),
-                                KAboutLicense::GPL,
-                                i18n("Copyright © 2003–2004 Tobias Koenig\n"
-                                     "Copyright © 2005–2010 Allen Winter"));
-
-    about->addAuthor(i18n("Tobias Koenig"), QString(), QStringLiteral("tokoe@kde.org"));
-    about->addAuthor(i18n("Allen Winter"), QString(), QStringLiteral("winter@kde.org"));
-
-    return about;
-}
-
 #include "kcmtodosummary.moc"

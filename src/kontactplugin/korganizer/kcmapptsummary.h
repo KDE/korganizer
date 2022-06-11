@@ -21,7 +21,6 @@ public:
     void load() override;
     void save() override;
     void defaults() override;
-    const KAboutData *aboutData() const override;
 
 private Q_SLOTS:
     void modified();
