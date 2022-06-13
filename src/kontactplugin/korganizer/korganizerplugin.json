@@ -3,7 +3,7 @@
         "Description": "Kontact KOrganizer Plugin",
         "Description[ar]": "ملحقة «منظّمك» لِ‍«متراسلك»",
         "Description[az]": "Kontact KOrganizer plaqini",
-        "Description[ca@valencia]": "Conector de KOrganizer de Kontact",
+        "Description[ca@valencia]": "Connector de KOrganizer de Kontact",
         "Description[ca]": "Connector del KOrganizer del Kontact",
         "Description[de]": "KOrganizer-Modul für Kontact",
         "Description[en_GB]": "Kontact KOrganizer Plugin",
