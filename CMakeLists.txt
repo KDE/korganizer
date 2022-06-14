@@ -16,7 +16,7 @@ set(KDEPIM_VERSION "${PIM_VERSION}${KDEPIM_DEV_VERSION} (${RELEASE_SERVICE_VERSI
 
 project(korganizer VERSION ${PIM_VERSION})
 
-set(KF5_MIN_VERSION "5.94.0")
+set(KF5_MIN_VERSION "5.95.0")
 
 find_package(ECM ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
@@ -135,7 +135,6 @@ configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer
 
 ecm_set_disabled_deprecation_versions(QT 5.15.2
     KF 5.95.0
-    KCOREADDONS 5.88.0 #KPluginFactory::registerPlugin (remove it when we depend against kf5.95)
 )
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
