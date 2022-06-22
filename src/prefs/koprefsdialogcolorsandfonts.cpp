@@ -125,11 +125,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QWidget *parent, const 
 
     mResourceCombo = new Akonadi::CollectionComboBox(resourceGroup);
     // mResourceCombo->addExcludedSpecialResources(Akonadi::Collection::SearchResource);
-    QStringList mimetypes;
-    mimetypes << KCalendarCore::Todo::todoMimeType();
-    mimetypes << KCalendarCore::Journal::journalMimeType();
-    mimetypes << KCalendarCore::Event::eventMimeType();
-
+    const QStringList mimetypes{KCalendarCore::Todo::todoMimeType(), KCalendarCore::Journal::journalMimeType(), KCalendarCore::Event::eventMimeType()};
     mResourceCombo->setMimeTypeFilter(mimetypes);
     mResourceCombo->setWhatsThis(i18nc("@info:whatsthis",
                                        "Select the calendar you want to modify. "

@@ -57,9 +57,11 @@ K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogPlugins, "korganizer_configplugins.json")
 */
 KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &args)
     : KPrefsModule(KOPrefs::instance(), parent, args)
+    , mTreeWidget(new QTreeWidget(this))
+    , mDescription(new QLabel(this))
+    , mPositioningGroupBox(new QGroupBox(i18nc("@title:group", "Position"), this))
 {
     auto topTopLayout = new QVBoxLayout(this);
-    mTreeWidget = new QTreeWidget(this);
     mTreeWidget->setColumnCount(2);
     mTreeWidget->setHeaderHidden(true);
     mTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -68,7 +70,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &
     mTreeWidget->header()->setStretchLastSection(false);
     topTopLayout->addWidget(mTreeWidget);
 
-    mDescription = new QLabel(this);
     mDescription->setAlignment(Qt::AlignVCenter);
     mDescription->setWordWrap(true);
     mDescription->setFrameShape(QLabel::Panel);
@@ -81,7 +82,6 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QWidget *parent, const QVariantList &
     mDescription->setSizePolicy(policy);
     topTopLayout->addWidget(mDescription);
 
-    mPositioningGroupBox = new QGroupBox(i18nc("@title:group", "Position"), this);
     // mPositionMonthTop = new QCheckBox(
     // i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
     mPositionAgendaTop = new QRadioButton(i18nc("@option:check", "Show at the top of the agenda views"), mPositioningGroupBox);

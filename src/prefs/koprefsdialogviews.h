@@ -23,6 +23,6 @@ protected:
     void usrWriteConfig() override;
 
 private:
-    KItemIconCheckCombo *mMonthIconComboBox;
-    KItemIconCheckCombo *mAgendaIconComboBox;
+    KItemIconCheckCombo *const mMonthIconComboBox;
+    KItemIconCheckCombo *const mAgendaIconComboBox;
 };

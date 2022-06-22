@@ -33,10 +33,9 @@ protected Q_SLOTS:
     void positioningChanged();
 
 private:
-    QTreeWidget *mTreeWidget = nullptr;
-    QLabel *mDescription = nullptr;
-    QPushButton *mConfigureButton = nullptr;
-    QGroupBox *mPositioningGroupBox = nullptr;
+    QTreeWidget *const mTreeWidget;
+    QLabel *const mDescription;
+    QGroupBox *const mPositioningGroupBox;
 
     QRadioButton *mPositionAgendaTop = nullptr;
     QRadioButton *mPositionAgendaBottom = nullptr;
