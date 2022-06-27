@@ -64,6 +64,7 @@ TodoSummaryWidget::~TodoSummaryWidget() = default;
 
 void TodoSummaryWidget::updateView()
 {
+    // Note: match default entry values with those in KCMTodoSummary::load().
     qDeleteAll(mLabels);
     mLabels.clear();
 

@@ -59,6 +59,8 @@ void KCMTodoSummary::customDaysChanged(int value)
 
 void KCMTodoSummary::load()
 {
+    // Note: match default entry values with those in defaults() and
+    // TodoSummaryWidget::updateView().
     KConfig config(QStringLiteral("kcmtodosummaryrc"));
     KConfigGroup group = config.group("Days");
 
@@ -77,7 +79,7 @@ void KCMTodoSummary::load()
     mHideInProgressBox->setChecked(group.readEntry("InProgress", false));
     mHideOverdueBox->setChecked(group.readEntry("Overdue", false));
     mHideCompletedBox->setChecked(group.readEntry("Completed", true));
-    mHideOpenEndedBox->setChecked(group.readEntry("OpenEnded", false));
+    mHideOpenEndedBox->setChecked(group.readEntry("OpenEnded", true));
     mHideUnstartedBox->setChecked(group.readEntry("NotStarted", false));
 
     group = config.group("Groupware");
@@ -124,7 +126,7 @@ void KCMTodoSummary::defaults()
     mHideInProgressBox->setChecked(false);
     mHideOverdueBox->setChecked(false);
     mHideCompletedBox->setChecked(true);
-    mHideOpenEndedBox->setChecked(false);
+    mHideOpenEndedBox->setChecked(true);
     mHideUnstartedBox->setChecked(false);
 
     mShowMineOnly->setChecked(false);
