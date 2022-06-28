@@ -262,6 +262,10 @@ void SDSummaryWidget::createLabels()
                 continue;
             }
 
+            if (!mShowAnniversariesFromKAB && ev->customProperty("KABC", "ANNIVERSARY") == QLatin1String("YES")) {
+                continue;
+            }
+
             if (!ev->categoriesStr().isEmpty()) {
                 QStringList::ConstIterator it2;
                 const QStringList c = ev->categories();
@@ -291,16 +295,18 @@ void SDSummaryWidget::createLabels()
                     }
 
                     // Append Anniversary Event?
-                    if (mShowAnniversariesFromCal && (itUpper == QLatin1String("ANNIVERSARY"))) {
-                        SDEntry entry;
-                        entry.type = IncidenceTypeEvent;
-                        entry.category = CategoryAnniversary;
-                        entry.date = dt;
-                        entry.summary = ev->summary();
-                        entry.desc = ev->description();
-                        dateDiff(ev->dtStart().date(), entry.daysTo, entry.yearsOld);
-                        entry.span = 1;
-                        if (/*!check( annvRes, dt, ev->summary() )*/ true) {
+                    if (itUpper == QLatin1String("ANNIVERSARY")) {
+                        // !mShowAnniversariesFromKAB was handled above.
+                        const bool isKAB = ev->customProperty("KABC", "ANNIVERSARY") == QLatin1String("YES");
+                        if (isKAB || mShowAnniversariesFromCal) {
+                            SDEntry entry;
+                            entry.type = IncidenceTypeEvent;
+                            entry.category = CategoryAnniversary;
+                            entry.date = dt;
+                            entry.summary = ev->summary();
+                            entry.desc = ev->description();
+                            dateDiff(ev->dtStart().date(), entry.daysTo, entry.yearsOld);
+                            entry.span = 1;
                             mDates.append(entry);
                         }
                         break;
@@ -588,15 +594,16 @@ void SDSummaryWidget::updateView()
      *
      **/
 
-    // Search for Birthdays
-    if (mShowBirthdaysFromKAB && !mJobRunning) {
-        auto job = new BirthdaySearchJob(this, mDaysAhead);
-
-        connect(job, &BirthdaySearchJob::result, this, &SDSummaryWidget::slotBirthdayJobFinished);
-        job->start();
-        mJobRunning = true;
-
-        // The result slot will trigger the rest of the update
+    if (mShowBirthdaysFromKAB) {
+        if (!mJobRunning) {
+            auto job = new BirthdaySearchJob(this, mDaysAhead);
+            connect(job, &BirthdaySearchJob::result, this, &SDSummaryWidget::slotBirthdayJobFinished);
+            job->start();
+            mJobRunning = true;
+            // The result slot will trigger the rest of the update.
+        }
+    } else {
+        createLabels();
     }
 }
 
