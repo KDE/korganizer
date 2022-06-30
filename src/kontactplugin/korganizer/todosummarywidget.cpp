@@ -307,7 +307,6 @@ void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
             KCalendarCore::Todo::Ptr oldTodo(todo->clone());
             todo->setCompleted(QDateTime::currentDateTime());
             (void) mChanger->modifyIncidence(todoItem, oldTodo);
-            updateView();
         }
     }
 }
