@@ -28,9 +28,8 @@ protected:
 
     void usrWriteConfig() override;
 
-    void setCombo(KComboBox *combo, const QString &text, const QStringList *tags = nullptr);
-
 private:
+    void setCombo(KComboBox *combo, const QString &text, const QStringList *tags = nullptr);
     QStringList tzonenames;
     KPIM::KCheckComboBox *mHolidayCheckCombo = nullptr;
     QSpinBox *mReminderTimeSpin = nullptr;

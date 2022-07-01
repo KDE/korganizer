@@ -28,11 +28,11 @@ public:
 protected Q_SLOTS:
     void usrWriteConfig() override;
     void usrReadConfig() override;
+
+private:
     void configureClicked(QAction *action);
     void selectionChanged();
     void positioningChanged();
-
-private:
     QTreeWidget *const mTreeWidget;
     QLabel *const mDescription;
     QGroupBox *const mPositioningGroupBox;

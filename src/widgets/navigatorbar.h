@@ -36,11 +36,9 @@ Q_SIGNALS:
 protected:
     QToolButton *createNavigationButton(const QString &icon, const QString &toolTip, const QString &whatsThis);
 
-private Q_SLOTS:
+private:
     void selectMonthFromMenu();
     void selectYearFromMenu();
-
-private:
     QDate mDate;
 
     QToolButton *mPrevYear = nullptr;

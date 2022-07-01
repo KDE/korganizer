@@ -28,19 +28,14 @@ protected:
     void usrWriteConfig() override;
     void usrReadConfig() override;
 
-private Q_SLOTS:
+private:
     void useSystemColorToggle(bool useSystemColor);
-
-protected Q_SLOTS:
     void updateCategories();
     void setCategoryColor();
     void updateCategoryColor();
-
     void updateResources();
     void setResourceColor();
     void updateResourceColor();
-
-private:
     QComboBox *mCategoryCombo = nullptr;
     KColorButton *mCategoryButton = nullptr;
     QHash<QString, QColor> mCategoryDict;

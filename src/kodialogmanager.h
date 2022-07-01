@@ -60,10 +60,8 @@ public Q_SLOTS:
     void showArchiveDialog();
     void showFilterEditDialog(QList<KCalendarCore::CalFilter *> *filters);
 
-private Q_SLOTS:
-    void slotHelp();
-
 private:
+    void slotHelp();
     void createCategoryEditor();
     class DialogManagerVisitor;
     class EditorDialogVisitor;

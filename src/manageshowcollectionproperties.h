@@ -22,7 +22,7 @@ public:
     explicit ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent = nullptr);
     ~ManageShowCollectionProperties() override;
 
-public Q_SLOTS:
+public:
     void showCollectionProperties();
 
 private:

@@ -25,12 +25,10 @@ public:
     Quickview(const Akonadi::Collection &col);
     ~Quickview() override;
 
-private Q_SLOTS:
+private:
     void onTodayClicked();
     void onNextClicked();
     void onPreviousClicked();
-
-private:
     void readConfig();
     void writeConfig();
 

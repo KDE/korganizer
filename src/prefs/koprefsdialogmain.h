@@ -20,9 +20,7 @@ public:
 protected:
     void usrWriteConfig() override;
 
-protected Q_SLOTS:
-    void toggleEmailSettings(bool on);
-
 private:
+    void toggleEmailSettings(bool on);
     QWidget *mUserEmailSettings = nullptr;
 };
