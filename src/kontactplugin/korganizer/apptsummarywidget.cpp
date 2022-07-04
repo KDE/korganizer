@@ -238,7 +238,7 @@ void ApptSummaryWidget::popupMenu(const QString &uid)
     // FIXME: Should say "Show Appointment" if we don't have rights to edit
     // Doesn't make sense to edit events from birthday resource for example
     QAction *editIt = popup.addAction(i18n("&Edit Appointment..."));
-
+    editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
     QAction *delIt = popup.addAction(i18n("&Delete Appointment"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
 
