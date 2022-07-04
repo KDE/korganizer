@@ -330,18 +330,17 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     Akonadi::Item item = mCalendar->item(uid);
     QMenu popup(this);
     QAction *editIt = popup.addAction(i18n("&Edit To-do..."));
+    editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
     QAction *delIt = popup.addAction(i18n("&Delete To-do"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
-
-    QAction *doneIt = nullptr;
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
+    QAction *doneIt = nullptr;
     if (!todo->isCompleted()) {
         doneIt = popup.addAction(i18n("&Mark To-do Completed"));
         doneIt->setIcon(QIcon::fromTheme(QStringLiteral("task-complete")));
         doneIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem));
     }
-    // TODO: add icons to the menu actions
 
     const QAction *selectedAction = popup.exec(QCursor::pos());
     if (selectedAction == editIt) {
