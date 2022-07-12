@@ -9,7 +9,6 @@
 
 #include "kcmsdsummary.h"
 
-#include <KAboutData>
 #include <KAcceleratorManager>
 #include <KConfig>
 #include <KConfigGroup>

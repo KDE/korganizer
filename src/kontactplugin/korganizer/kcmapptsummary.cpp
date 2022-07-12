@@ -8,7 +8,6 @@
 
 #include "kcmapptsummary.h"
 
-#include <KAboutData>
 #include <KAcceleratorManager>
 #include <KConfig>
 #include <KConfigGroup>

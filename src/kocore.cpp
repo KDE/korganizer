@@ -13,7 +13,6 @@
 #include <CalendarSupport/IdentityManager>
 
 #include "korganizer_debug.h"
-#include <KXMLGUIFactory>
 
 #include <QDBusConnectionInterface>
 

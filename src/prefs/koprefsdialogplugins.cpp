@@ -11,7 +11,6 @@
 #include "kocore.h"
 #include "koprefs.h"
 #include <CalendarSupport/KCalPrefs>
-#include <KGuiItem>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KPluginFactory>
