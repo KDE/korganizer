@@ -34,7 +34,6 @@ Dependencies:
     'frameworks/kcmutils': '@latest'
     'frameworks/knewstuff': '@latest'
     'frameworks/kparts': '@latest'
-    'frameworks/kservice': '@latest'
     'frameworks/kwidgetsaddons': '@latest'
     'frameworks/kwindowsystem': '@latest'
     'frameworks/kxmlgui': '@latest'
