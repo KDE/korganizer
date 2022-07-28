@@ -54,5 +54,5 @@ bool KOHelper::isStandardCalendar(Akonadi::Collection::Id id)
 
 void KOHelper::showSaveIncidenceErrorMsg(QWidget *parent, const KCalendarCore::Incidence::Ptr &incidence)
 {
-    KMessageBox::sorry(parent, i18n("Unable to save %1 \"%2\".", i18n(incidence->typeStr().constData()), incidence->summary()));
+    KMessageBox::error(parent, i18n("Unable to save %1 \"%2\".", i18n(incidence->typeStr().constData()), incidence->summary()));
 }

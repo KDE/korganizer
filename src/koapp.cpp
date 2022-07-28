@@ -65,7 +65,7 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
             }
             auto fetchJob = static_cast<Akonadi::ItemFetchJob *>(job);
             if (fetchJob->count() != 1) {
-                KMessageBox::sorry(nullptr, i18n("Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."));
+                KMessageBox::error(nullptr, i18n("Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."));
                 return;
             }
             KOrg::MainWindow *korg = ActionManager::findInstance(QUrl());

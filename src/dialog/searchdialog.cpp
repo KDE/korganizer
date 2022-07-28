@@ -112,7 +112,7 @@ void SearchDialog::doSearch()
     re.setCaseSensitivity(Qt::CaseInsensitive);
     re.setPattern(m_ui->searchEdit->text());
     if (!re.isValid()) {
-        KMessageBox::sorry(this,
+        KMessageBox::error(this,
                            i18nc("@info",
                                  "Invalid search expression, cannot perform the search. "
                                  "Please enter a search expression using the wildcard characters "

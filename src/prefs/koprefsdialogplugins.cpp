@@ -197,7 +197,7 @@ void KOPrefsDialogPlugins::configureClicked(QAction *action)
 
         slotWidChanged();
     } else {
-        KMessageBox::sorry(this, i18nc("@info", "Unable to configure this plugin"), QStringLiteral("PluginConfigUnable"));
+        KMessageBox::error(this, i18nc("@info", "Unable to configure this plugin"), QStringLiteral("PluginConfigUnable"));
     }
 }
 

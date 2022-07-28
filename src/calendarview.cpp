@@ -801,7 +801,7 @@ void CalendarView::edit_paste()
     }
 
     if (!finalDateTime.isValid() && curView->supportsDateNavigation()) {
-        KMessageBox::sorry(this, i18n("Paste failed: unable to determine a valid target date."));
+        KMessageBox::error(this, i18n("Paste failed: unable to determine a valid target date."));
         return;
     }
 
@@ -1539,9 +1539,9 @@ void CalendarView::dissociateOccurrence(const Akonadi::Item &item, const QDate &
         (void)mChanger->createIncidence(newInc, item.parentCollection(), this);
     } else {
         if (thisAndFuture) {
-            KMessageBox::sorry(this, i18n("Dissociating the future occurrences failed."), i18n("Dissociating Failed"));
+            KMessageBox::error(this, i18n("Dissociating the future occurrences failed."), i18n("Dissociating Failed"));
         } else {
-            KMessageBox::sorry(this, i18n("Dissociating the occurrence failed."), i18n("Dissociating Failed"));
+            KMessageBox::error(this, i18n("Dissociating the occurrence failed."), i18n("Dissociating Failed"));
         }
     }
     endMultiModify();
@@ -2347,7 +2347,7 @@ void CalendarView::warningChangeFailed(const Akonadi::Item &item)
 {
     KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (incidence) {
-        KMessageBox::sorry(this, i18nc("@info", "Unable to edit \"%1\" because it is locked by another process.", incidence->summary()));
+        KMessageBox::error(this, i18nc("@info", "Unable to edit \"%1\" because it is locked by another process.", incidence->summary()));
     }
 }
 
@@ -2359,7 +2359,7 @@ void CalendarView::showErrorMessage(const QString &msg)
 void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 {
     if (!CalendarSupport::hasIncidence(itemadd)) {
-        KMessageBox::sorry(this, i18n("Unable to copy the item to %1.", dt.toString()), i18n("Copying Failed"));
+        KMessageBox::error(this, i18n("Unable to copy the item to %1.", dt.toString()), i18n("Copying Failed"));
         return;
     }
     Akonadi::Item item = mCalendar->item(itemadd.id());
@@ -2394,7 +2394,7 @@ void CalendarView::addIncidenceOn(const Akonadi::Item &itemadd, const QDate &dt)
 void CalendarView::moveIncidenceTo(const Akonadi::Item &itemmove, QDate dt)
 {
     if (!CalendarSupport::hasIncidence(itemmove)) {
-        KMessageBox::sorry(this, i18n("Unable to move the item to  %1.", dt.toString()), i18n("Moving Failed"));
+        KMessageBox::error(this, i18n("Unable to move the item to  %1.", dt.toString()), i18n("Moving Failed"));
         return;
     }
     Akonadi::Item item = mCalendar->item(itemmove.id());

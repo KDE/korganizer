@@ -461,7 +461,7 @@ void KOViewManager::selectWorkWeek()
         QDate date = mMainView->activeDate();
         mMainView->dateNavigator()->selectWorkWeek(date);
     } else {
-        KMessageBox::sorry(mMainView,
+        KMessageBox::error(mMainView,
                            i18n("Unable to display the work week since there are no work days configured. "
                                 "Please properly configure at least 1 work day in the Time and Date preferences."));
     }

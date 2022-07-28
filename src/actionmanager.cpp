@@ -1032,7 +1032,7 @@ bool ActionManager::saveAsURL(const QUrl &url)
         mTempFile = tempFile;
         setTitle();
     } else {
-        KMessageBox::sorry(dialogParent(), i18n("Unable to save calendar to the file %1.", mFile), i18n("Error"));
+        KMessageBox::error(dialogParent(), i18n("Unable to save calendar to the file %1.", mFile), i18n("Error"));
         qCDebug(KORGANIZER_LOG) << "failed";
         mURL = URLOrig;
         mFile = fileOrig;
@@ -1075,7 +1075,7 @@ void ActionManager::configureDateTime()
     proc << QStringLiteral("kcmshell5") << QStringLiteral("formats") << QStringLiteral("translations") << QStringLiteral("clock");
 
     if (!proc.startDetached()) {
-        KMessageBox::sorry(dialogParent(), i18n("Could not start control module for date and time format."));
+        KMessageBox::error(dialogParent(), i18n("Could not start control module for date and time format."));
     }
 }
 
