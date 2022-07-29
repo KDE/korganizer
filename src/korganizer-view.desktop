@@ -2,6 +2,7 @@
 Name=KOrganizer View
 Name[ar]=عرض منظّمك
 Name[az]=KOrganizer görünüşü
+Name[bg]=Изглед на KOrganizer
 Name[ca]=Vista del KOrganizer
 Name[ca@valencia]=Vista de KOrganizer
 Name[da]=KOrganizer-visning
@@ -30,6 +31,7 @@ Name[zh_CN]=KOrganizer 视图
 Comment=Display incidence specified by URL
 Comment[ar]=تعرض الأحداث المحددة بواسطة رابط
 Comment[az]=URL ilə verilmiş hadisəni göstərmək
+Comment[bg]=Показване на събитие според URL адрес
 Comment[ca]=Mostra la incidència especificada mitjançant un URL
 Comment[ca@valencia]=Mostra la incidència especificada mitjançant un URL
 Comment[de]=Zeigt durch URL angegebene Ereignisse an
