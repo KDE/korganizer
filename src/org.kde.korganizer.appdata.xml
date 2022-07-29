@@ -6,6 +6,7 @@
   <developer_name>The KDE Community</developer_name>
   <developer_name xml:lang="ar">مجتمع كدي</developer_name>
   <developer_name xml:lang="az">KDE İcması</developer_name>
+  <developer_name xml:lang="bg">Общността на KDE</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
   <developer_name xml:lang="ca-valencia">La comunitat KDE</developer_name>
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
@@ -36,6 +37,7 @@
   <name>KOrganizer</name>
   <name xml:lang="ar">منظّمك</name>
   <name xml:lang="az">KOrganizer</name>
+  <name xml:lang="bg">KOrganizer</name>
   <name xml:lang="bs">KOrganizator</name>
   <name xml:lang="ca">KOrganizer</name>
   <name xml:lang="ca-valencia">KOrganizer</name>
@@ -74,6 +76,7 @@
   <summary>KOrganizer is a calendar and scheduling application</summary>
   <summary xml:lang="ar">«منظّمك» هو تطبيق تقاويم وجدولة</summary>
   <summary xml:lang="az">KOrganizer, bir təqvim və planlaşdırma tətbiqidir</summary>
+  <summary xml:lang="bg">Програма за календар и разписание</summary>
   <summary xml:lang="ca">El KOrganizer és una aplicació de calendari i planificació de tasques</summary>
   <summary xml:lang="ca-valencia">KOrganizer és una aplicació de calendari i planificació de tasques</summary>
   <summary xml:lang="cs">KOrganizer je aplikace pro kalendáře a plánování</summary>
@@ -107,6 +110,7 @@
     </p>
     <p xml:lang="ar">منظمك هو عنصر التقويم والجدولة في حزمة برامج "مراسلك". يوفر إدارة الأحداث والمهام، وتنبيه بالإخطارات، وتصدير الويب ، ومعالجة البيانات بشبكة شفافة ، وجدولة المجموعة ، واستيراد وتصدير ملفات التقويم والمزيد. إنه قادر على العمل مع مجموعة متنوعة من خدمات التقويم بما في ذلك NextCloud و Kolab وتقويم غوغل وغيرها. منظمط قابل للتخصيص بالكامل وفقًا لاحتياجاتك وهو جزء لا يتجزأ من مجموعة "مراسلك" ، والتي تهدف إلى أن تكون حلاً كاملاً لتنظيم بياناتك الشخصية. يدعم منظمك المعيارين المهيمنين لتخزين وتبادل بيانات التقويم: vCalendar و iCalendar.</p>
     <p xml:lang="az">KOrganizer Kontact-ın təqvim və planlaşdırma komponentidir. O, hadisələrin və tapşırıqların idarə edilməsini, həyəcan bildirişini, veb ixracını, məlumatların şəbəkə ilə şəffaf şəkildə idarə edilməsini, qrup planlaşdırmasını, təqvim fayllarının idxalını və ixracını və s. təmin edir. O, NextCloud, Kolab, Google Calendar və başqaları daxil olmaqla, müxtəlif təqvim xidmətləri ilə birlikdə işləməyi bacarır. KOrganizer sizin ehtiyaclarınıza tam uyğunlaşdırıla bilir və şəxsi məlumatlarınıza görə işləri təşkil etmək üçün tam həll yolu olmaq məqsədi daşıyan Kontact dəstinin ayrılmaz hissəsidir. KOrganizer təqvim məlumatlarının saxlanması və mübadiləsi üçün iki əsas standartı, vCalendar və iCalendar-ı dəstəkləyir.</p>
+    <p xml:lang="bg">KOrganizer е компонентът за календар и планиране на Kontact. Той предоставя управление на събития и задачи, известяване, уеб експорт, мрежово прозрачно обработване на данните, групово планиране, импортиране и експортиране на календарни файлове и др. Той е в състояние да работи съвместно с голямо разнообразие от услуги за календари, включително NextCloud, Kolab, Google Calendar и други. KOrganizer може да се персонализира напълно според вашите нужди и е неразделна част от пакета Kontact, който има за цел да бъде цялостно решение за организиране на личните ви данни. KOrganizer поддържа два доминиращи стандарти за съхранение и обмен на календарни данни - vCalendar и iCalendar.</p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i programació del Kontact. Proporciona gestió dels esdeveniments i tasques, notificació d'alarmes, exportació web, gestió de dades transparent a la xarxa, programació de grups, importació i exportació de fitxers de calendari i molt més. És capaç de treballar juntament amb una àmplia varietat de serveis de calendari, incloent-hi el NextCloud, Kolab, Google Calendar i altres. El KOrganizer és totalment personalitzable segons les vostres necessitats i forma part de la suite Kontact, la qual pretén ser una solució completa per a organitzar les vostres dades personals. El KOrganizer admet els dos estàndards dominants per a emmagatzemar i intercanviar dades de calendari: vCalendar i iCalendar.</p>
     <p xml:lang="ca-valencia">KOrganizer és el component de calendari i programació de Kontact. Proporciona gestió dels esdeveniments i tasques, notificació d'alarmes, exportació web, gestió de dades transparent a la xarxa, programació de grups, importació i exportació de fitxers de calendari i molt més. És capaç de treballar juntament amb una àmplia varietat de serveis de calendari, incloent-hi el NextCloud, Kolab, Google Calendar i altres. KOrganizer és totalment personalitzable segons les vostres necessitats i forma part de la suite Kontact, la qual pretén ser una solució completa per a organitzar les vostres dades personals. KOrganizer admet els dos estàndards dominants per a emmagatzemar i intercanviar dades de calendari: vCalendar i iCalendar.</p>
     <p xml:lang="de">KOrganizer ist die Kalender- und Terminplanungskomponente von Kontact. Sie bietet Verwaltung von Ereignissen und Aufgaben, Erinnerungsbenachrichtigung, Web-Export, Netzwerk-transparente Handhabung von Daten, Gruppenplanung, Import und Export von Kalenderdateien und mehr. Sie ist in der Lage, mit einer Vielzahl von Kalenderdiensten zusammenarbeiten, darunter NextCloud, Kolab, Google Calendar und andere. KOrganizer ist vollständig an Ihre Bedürfnisse anpassbar und ist ein integraler Teil von Kontact, einer umfassenden Lösung für die Organisation Ihrer persönlichen Daten . KOrganizer unterstützt die beiden dominierenden Standards zum Speichern und Austauschen von Kalenderdaten, vCalendar und iCalendar.</p>
@@ -136,6 +140,7 @@
     <p>Features:</p>
     <p xml:lang="ar">الميزات:</p>
     <p xml:lang="az">İmkanlar:</p>
+    <p xml:lang="bg">Функции:</p>
     <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
@@ -175,6 +180,7 @@
       <li>Support for multiple calendars and todo lists</li>
       <li xml:lang="ar">دعم مختلف التّقاويم وقوائم المهامّ</li>
       <li xml:lang="az">Çoxsaylı təqvimlər və tapşırıqlar siyahısı ilə işləməyi dəstəkləyir</li>
+      <li xml:lang="bg">Поддръжка за множество календари и списъци със задачи</li>
       <li xml:lang="ca">Permet múltiples calendaris i llistes de tasques pendents</li>
       <li xml:lang="ca-valencia">Permet múltiples calendaris i llistes de tasques pendents</li>
       <li xml:lang="cs">Podpora vícero kalendářů a seznamů úloh</li>
@@ -205,6 +211,7 @@
       <li>Storage model</li>
       <li xml:lang="ar">نموذج للتّخزين</li>
       <li xml:lang="az">Məlumatların müxtəlif saxlanılma üsulları</li>
+      <li xml:lang="bg">Съхраняване на данните</li>
       <li xml:lang="ca">Model d'emmagatzematge</li>
       <li xml:lang="ca-valencia">Model d'emmagatzematge</li>
       <li xml:lang="cs">Model úložiště</li>
@@ -235,6 +242,7 @@
       <li>Undo and Redo</li>
       <li xml:lang="ar">التّراجع والإعادة</li>
       <li xml:lang="az">Əməlin ləğv edilməsi və geri qaytarılması</li>
+      <li xml:lang="bg">Отменяне и повторение на действия</li>
       <li xml:lang="ca">Fes i desfés</li>
       <li xml:lang="ca-valencia">Fes i Desfés</li>
       <li xml:lang="cs">Zpět a Vpřed</li>
@@ -265,6 +273,7 @@
       <li>Todo integration with agenda view</li>
       <li xml:lang="ar">تكامل المهامّ مع منظور جدول الأعمال</li>
       <li xml:lang="az">Gündəlikdə tapşıqıları göstərmək</li>
+      <li xml:lang="bg">Интеграция на списъка със задачи с дневния ред</li>
       <li xml:lang="ca">Integra les tasques pendents amb la vista d'agenda</li>
       <li xml:lang="ca-valencia">Integra les tasques pendents amb la vista d'agenda</li>
       <li xml:lang="cs">Integrace úloh s pohledem na agendu</li>
@@ -295,6 +304,7 @@
       <li>Attachments for events and todos</li>
       <li xml:lang="ar">مرفقات للأحداث والمهامّ</li>
       <li xml:lang="az">Tədbirlər və tapşırıqlar üçün qoşma fayllar</li>
+      <li xml:lang="bg">Прикачени файлове за събития и задачи</li>
       <li xml:lang="ca">Adjunts per als esdeveniments i tasques pendents</li>
       <li xml:lang="ca-valencia">Adjunts per als esdeveniments i tasques pendents</li>
       <li xml:lang="cs">Přílohy pro události a úlohy</li>
@@ -325,6 +335,7 @@
       <li>Quick todo and event entries</li>
       <li xml:lang="ar">مدخلات مهامّ وأحداث سريعة</li>
       <li xml:lang="az">Tapşırıqların və tədbirlərin cəld yaradılması</li>
+      <li xml:lang="bg">Бързо въвеждане на задачи и събития</li>
       <li xml:lang="ca">Entrades de tasques pendents i esdeveniments ràpids</li>
       <li xml:lang="ca-valencia">Entrades de tasques pendents i esdeveniments ràpids</li>
       <li xml:lang="de">Schnelles Eintragen von Aufgaben und Terminen</li>
@@ -354,6 +365,7 @@
       <li>Print support</li>
       <li xml:lang="ar">دعم الطّباعة</li>
       <li xml:lang="az">Çap dəstəyi</li>
+      <li xml:lang="bg">Поддръжка на отпечатване</li>
       <li xml:lang="ca">Permet la impressió</li>
       <li xml:lang="ca-valencia">Permet la impressió</li>
       <li xml:lang="cs">Podpora tisku</li>
