@@ -22,8 +22,9 @@
 #include "korgmigrateapplication.h"
 #endif
 #include <KParts/StatusBarExtension>
-#include <QStatusBar>
+#include <KPluginFactory>
 
+#include <QStatusBar>
 #include <QVBoxLayout>
 
 K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)

@@ -13,15 +13,18 @@
 #pragma once
 
 #include "korganizerprivate_export.h"
-#include "part.h"
 
 #include <Akonadi/ETMCalendar>
 #include <Akonadi/Item>
 
 #include <KViewStateMaintainer>
+#include <KXMLGUIClient>
+
 #include <QUrl>
 
 #include <QObject>
+
+#include "mainwindow.h"
 
 class AkonadiCollectionView;
 class CalendarView;

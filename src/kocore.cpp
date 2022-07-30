@@ -10,6 +10,8 @@
 #include "kocore.h"
 #include "prefs/koprefs.h"
 
+#include <KPluginFactory>
+
 #include <CalendarSupport/IdentityManager>
 
 #include "korganizer_debug.h"

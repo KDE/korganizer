@@ -14,7 +14,6 @@
 #pragma once
 
 #include "mainwindow.h"
-#include "part.h"
 
 #include <KParts/MainWindow>
 
@@ -103,7 +102,6 @@ protected:
 
 private:
     CalendarView *const mCalendarView; // Main view widget
-    KOrg::Part::List mParts; // List of parts loaded
 
     ActionManager *mActionManager = nullptr;
 };

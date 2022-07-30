@@ -10,7 +10,9 @@
 #pragma once
 
 #include "korganizer_core_export.h"
-#include "part.h"
+
+#include <KPluginMetaData>
+#include <KXMLGUIClient>
 
 #include <EventViews/CalendarDecoration>
 
