@@ -60,7 +60,7 @@ int KOrganizerApp::activate(const QStringList &args, const QString &workingDir)
         fetchJob->fetchScope().fetchFullPayload();
         connect(fetchJob, &Akonadi::ItemFetchJob::result, this, [](KJob *job) {
             if (job->error()) {
-                KMessageBox::detailedSorry(nullptr, i18n("Failed to retrieve incidence from Akonadi"), job->errorText());
+                KMessageBox::detailedError(nullptr, i18n("Failed to retrieve incidence from Akonadi"), job->errorText());
                 return;
             }
             auto fetchJob = static_cast<Akonadi::ItemFetchJob *>(job);
