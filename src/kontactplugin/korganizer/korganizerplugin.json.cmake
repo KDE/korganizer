@@ -100,10 +100,6 @@
         "Name[x-test]": "xxCalendarxx",
         "Name[zh_CN]": "日历",
         "Name[zh_TW]": "行事曆",
-        "ServiceTypes": [
-            "Kontact/Plugin",
-            "KPluginInfo"
-        ],
         "Version": "0.1",
         "Website": "https://kontact.kde.org/components/korganizer/"
     },

@@ -96,9 +96,6 @@
         "Name[x-test]": "xxTo-do Listxx",
         "Name[zh_CN]": "待办事项列表",
         "Name[zh_TW]": "待辦事項清單",
-        "ServiceTypes": [
-            "Kontact/Plugin"
-        ],
         "Version": "0.1",
         "Website": "https://kontact.kde.org/components/korganizer/"
     },

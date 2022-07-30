@@ -97,9 +97,6 @@
         "Name[x-test]": "xxJournalxx",
         "Name[zh_CN]": "日记",
         "Name[zh_TW]": "日誌",
-        "ServiceTypes": [
-            "Kontact/Plugin"
-        ],
         "Version": "0.1",
         "Website": "https://kontact.kde.org/components/korganizer/"
     },

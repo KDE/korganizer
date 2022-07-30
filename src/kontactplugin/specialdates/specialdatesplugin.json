@@ -96,10 +96,6 @@
         "Name[x-test]": "xxSpecial Datesxx",
         "Name[zh_CN]": "特殊日期",
         "Name[zh_TW]": "特殊日期",
-        "ServiceTypes": [
-            "Kontact/Plugin",
-            "KPluginInfo"
-        ],
         "Version": "0.1"
     },
     "X-KDE-KontactPluginHasPart": false,
