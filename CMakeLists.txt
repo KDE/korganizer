@@ -139,10 +139,13 @@ find_package(KPim${KF_MAJOR_VERSION}CalendarSupport ${CALENDARSUPPORT_LIB_VERSIO
 find_package(KPim${KF_MAJOR_VERSION}EventViews ${EVENTVIEW_LIB_VERSION} CONFIG REQUIRED)
 
 if(NOT APPLE)
-  find_package(X11)
+    option(WITHOUT_X11 "Build without X11 integration (skips finding X11)" OFF)
+    if(NOT WITHOUT_X11)
+        find_package(X11)
+        set(KDEPIM_HAVE_X11 ${X11_FOUND})
+    endif()
 endif()
 
-set(KDEPIM_HAVE_X11 ${X11_FOUND})
 configure_file(config-korganizer.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
 include_directories(${korganizer_SOURCE_DIR} ${korganizer_BINARY_DIR})
 configure_file(korganizer-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
