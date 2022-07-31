@@ -10,22 +10,18 @@
 
 #include <CalendarSupport/KCalPrefs>
 
+#include <Akonadi/TagCache>
+
 #include <KLocalizedString>
 
 QColor KOCoreHelper::categoryColor(const QStringList &categories)
 {
-    if (categories.isEmpty()) {
-        return CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
-    }
     // FIXME: Correctly treat events with multiple categories
-    const QString cat = categories.first();
     QColor bgColor;
-    if (cat.isEmpty()) {
-        bgColor = CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
-    } else {
-        bgColor = CalendarSupport::KCalPrefs::instance()->categoryColor(cat);
+    if (!categories.isEmpty()) {
+        bgColor = Akonadi::TagCache::instance()->tagColor(categories.at(0));
     }
-    return bgColor;
+    return bgColor.isValid() ? bgColor : CalendarSupport::KCalPrefs::instance()->unsetCategoryColor();
 }
 
 QString KOCoreHelper::holidayString(const QDate &dt)

@@ -11,6 +11,7 @@
 #include "koprefs.h"
 #include <Akonadi/CollectionComboBox>
 #include <Akonadi/EntityTreeModel>
+#include <Akonadi/TagCache>
 #include <Akonadi/TagSelectionComboBox>
 #include <CalendarSupport/KCalPrefs>
 #include <KColorButton>
@@ -184,7 +185,7 @@ void KOPrefsDialogColorsAndFonts::usrWriteConfig()
 {
     QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
     while (i != mCategoryDict.constEnd()) {
-        CalendarSupport::KCalPrefs::instance()->setCategoryColor(i.key(), i.value());
+        Akonadi::TagCache::instance()->setTagColor(i.key(), i.value());
         ++i;
     }
 
@@ -231,8 +232,7 @@ void KOPrefsDialogColorsAndFonts::updateCategoryColor()
     const QString cat = mCategoryCombo->currentText();
     QColor color = mCategoryDict.value(cat);
     if (!color.isValid()) {
-        // TODO get this from the tag
-        color = CalendarSupport::KCalPrefs::instance()->categoryColor(cat);
+        color = Akonadi::TagCache::instance()->tagColor(cat);
     }
     if (color.isValid()) {
         mCategoryButton->setColor(color);
