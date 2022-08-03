@@ -13,7 +13,6 @@
 #include <QSet>
 class QTreeWidget;
 class QLabel;
-class QPushButton;
 class QRadioButton;
 class QGroupBox;
 class QTreeWidgetItem;
