@@ -193,7 +193,7 @@
       <li xml:lang="fr">Prise en charge de plusieurs calendriers et listes de choses à faire</li>
       <li xml:lang="gl">Compatíbel con varios formatos de calendario e de lista de tarefas.</li>
       <li xml:lang="ia">Supporto per multiple calendatio e lista de actiones de facer</li>
-      <li xml:lang="id">Dukungan multi kalender dan daftar kegiatan</li>
+      <li xml:lang="id">Dukungan multi kalender dan daftar rencana</li>
       <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare</li>
       <li xml:lang="ko">일정 관리 및 할 일 목록 여러 개 지원</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten</li>
@@ -286,7 +286,7 @@
       <li xml:lang="fr">Intégration de listes de choses à faire avec la vue agenda</li>
       <li xml:lang="gl">Integración da lista de tarefas coa vista da axenda.</li>
       <li xml:lang="ia">Integration de actiones de facer con vista de agenda</li>
-      <li xml:lang="id">Integrasi kegiatan dengan tampilan agenda</li>
+      <li xml:lang="id">Integrasi rencana dengan tampilan agenda</li>
       <li xml:lang="it">Integrazione delle cose da fare con la vista agenda</li>
       <li xml:lang="ko">일정 보기와 통합된 할 일 목록</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
@@ -317,7 +317,7 @@
       <li xml:lang="fr">Pièces jointes pour les évènements et les choses à faire</li>
       <li xml:lang="gl">Anexos para eventos e tarefas.</li>
       <li xml:lang="ia">Attachamentos per eventos e actiones de facer</li>
-      <li xml:lang="id">Pelampiran untuk peristiwa dan kegiatan</li>
+      <li xml:lang="id">Pelampiran acara dan rencana</li>
       <li xml:lang="it">Allegati per eventi e cose da fare</li>
       <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken</li>
@@ -347,7 +347,7 @@
       <li xml:lang="fr">Saisie rapide d'évènements et choses à faire</li>
       <li xml:lang="gl">Entradas rápidas de tarefas e eventos.</li>
       <li xml:lang="ia">Rapide actiones de facer e entratas de evento</li>
-      <li xml:lang="id">Entri-entri peristiwa dan kegiatan yang cepat</li>
+      <li xml:lang="id">Entri-entri acara dan rencana yang cepat</li>
       <li xml:lang="it">Voci rapide per cose da fare ed eventi</li>
       <li xml:lang="ko">빠른 할 일과 이벤트 입력</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken</li>
