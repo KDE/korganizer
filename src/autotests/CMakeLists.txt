@@ -4,7 +4,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 ########### next target ###############
 
-add_executable(testkodaymatrix testkodaymatrix.cpp ../kodaymatrix.cpp)
+add_executable(testkodaymatrix testkodaymatrix.cpp testkodaymatrix.h ../kodaymatrix.cpp)
 add_test(NAME testkodaymatrix COMMAND testkodaymatrix)
 ecm_mark_as_test(testkodaymatrix)
 target_link_libraries(testkodaymatrix
@@ -16,7 +16,7 @@ target_link_libraries(testkodaymatrix
   Qt${QT_MAJOR_VERSION}::Test
 )
 
-add_executable(testkodaymatrix_us testkodaymatrix_us.cpp ../kodaymatrix.cpp)
+add_executable(testkodaymatrix_us testkodaymatrix_us.cpp testkodaymatrix_us.h ../kodaymatrix.cpp)
 add_test(NAME testkodaymatrix_us COMMAND testkodaymatrix_us)
 ecm_mark_as_test(testkodaymatrix_us)
 target_link_libraries(testkodaymatrix_us
