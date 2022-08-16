@@ -21,6 +21,7 @@
   <developer_name xml:lang="ia">Le communitate de KDE</developer_name>
   <developer_name xml:lang="id">Komunitas KDE</developer_name>
   <developer_name xml:lang="it">La comunità KDE</developer_name>
+  <developer_name xml:lang="ka">KDE-ის საზოგადოება</developer_name>
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
   <developer_name xml:lang="nl">De KDE gemeenschap</developer_name>
   <developer_name xml:lang="pl">Społeczność KDE</developer_name>
@@ -55,6 +56,7 @@
   <name xml:lang="ia">KOrganizer</name>
   <name xml:lang="id">KOrganizer</name>
   <name xml:lang="it">KOrganizer</name>
+  <name xml:lang="ka">KOrganizer</name>
   <name xml:lang="ko">KOrganizer</name>
   <name xml:lang="lt">KOrganizer</name>
   <name xml:lang="nb">KOrganizer</name>
@@ -91,6 +93,7 @@
   <summary xml:lang="ia">KOrganizer es un application  de calendario e planification</summary>
   <summary xml:lang="id">KOrganizer adalah aplikasi kalender dan penjadwalan</summary>
   <summary xml:lang="it">KOrganizer è un'applicazione per il calendario e la pianificazione</summary>
+  <summary xml:lang="ka">KOrganizer-ი კალენდრის და განრიგის აპლიკაციაა</summary>
   <summary xml:lang="ko">KOrganizer는 캘린더와 일정 관리 프로그램입니다</summary>
   <summary xml:lang="nl">KOrganizer is een agenda- en planningstoepassing</summary>
   <summary xml:lang="pl">KOrganizer jest aplikacją kalendarza i planowania</summary>
@@ -158,6 +161,7 @@
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
+    <p xml:lang="ka">თვისებები:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="lt">Ypatybės:</p>
     <p xml:lang="nb">Egenskaper:</p>
@@ -195,6 +199,7 @@
       <li xml:lang="ia">Supporto per multiple calendatio e lista de actiones de facer</li>
       <li xml:lang="id">Dukungan multi kalender dan daftar rencana</li>
       <li xml:lang="it">Supporto per più calendari e elenchi di cose da fare</li>
+      <li xml:lang="ka">მრავალი კალენდრისა და განრიგის სიების მხარდაჭერა</li>
       <li xml:lang="ko">일정 관리 및 할 일 목록 여러 개 지원</li>
       <li xml:lang="nl">Ondersteuning voor meerdere agenda's en takenlijsten</li>
       <li xml:lang="pl">Obsługa wielu kalendarzy i list zadań</li>
@@ -226,6 +231,7 @@
       <li xml:lang="ia">Modello de immagazinage</li>
       <li xml:lang="id">Model penyimpanan</li>
       <li xml:lang="it">Modello di memorizzazione</li>
+      <li xml:lang="ka">საცავის მოდელი</li>
       <li xml:lang="ko">저장소 모델</li>
       <li xml:lang="nl">Opslagmodel</li>
       <li xml:lang="pl">Model przechowalni</li>
@@ -257,6 +263,7 @@
       <li xml:lang="ia">Annulla e reface</li>
       <li xml:lang="id">Urung dan Ulang</li>
       <li xml:lang="it">Annulla/ripeti</li>
+      <li xml:lang="ka">გაუქმება/გამეორება</li>
       <li xml:lang="ko">실행 취소 및 재실행</li>
       <li xml:lang="nl">Ongedaan maken en opnieuw</li>
       <li xml:lang="pl">Cofanie i ponawianie</li>
@@ -288,6 +295,7 @@
       <li xml:lang="ia">Integration de actiones de facer con vista de agenda</li>
       <li xml:lang="id">Integrasi rencana dengan tampilan agenda</li>
       <li xml:lang="it">Integrazione delle cose da fare con la vista agenda</li>
+      <li xml:lang="ka">განრიგის ინტეგრაცია დღის წესრიგის ხედთან</li>
       <li xml:lang="ko">일정 보기와 통합된 할 일 목록</li>
       <li xml:lang="nl">Taken integreren in agendaoverzicht</li>
       <li xml:lang="pl">Integracja zadań z widokiem rozkładu zajęć</li>
@@ -319,6 +327,7 @@
       <li xml:lang="ia">Attachamentos per eventos e actiones de facer</li>
       <li xml:lang="id">Pelampiran acara dan rencana</li>
       <li xml:lang="it">Allegati per eventi e cose da fare</li>
+      <li xml:lang="ka">ღონისძიებებზე და განრიგებზე მიბმული ფაილები</li>
       <li xml:lang="ko">할 일과 이벤트에 첨부 파일 지원</li>
       <li xml:lang="nl">Aanhangsels voor activiteiten en taken</li>
       <li xml:lang="pl">Załączniki dla wydarzeń i zadań</li>
@@ -349,6 +358,7 @@
       <li xml:lang="ia">Rapide actiones de facer e entratas de evento</li>
       <li xml:lang="id">Entri-entri acara dan rencana yang cepat</li>
       <li xml:lang="it">Voci rapide per cose da fare ed eventi</li>
+      <li xml:lang="ka">განრიგებისა და მოვლენების სწრაფი შექმნა</li>
       <li xml:lang="ko">빠른 할 일과 이벤트 입력</li>
       <li xml:lang="nl">Snel invoeren van activiteiten en taken</li>
       <li xml:lang="pl">Wpisy szybkich zadań i wydarzeń</li>
@@ -380,6 +390,7 @@
       <li xml:lang="ia">Supporto de imprimer</li>
       <li xml:lang="id">Dukungan cetak</li>
       <li xml:lang="it">Supporto per la stampa</li>
+      <li xml:lang="ka">ბეჭდვის მხარდაჭერა</li>
       <li xml:lang="ko">인쇄 지원</li>
       <li xml:lang="nl">Ondersteuning voor afdrukken</li>
       <li xml:lang="pl">Obsługa wydruku</li>
