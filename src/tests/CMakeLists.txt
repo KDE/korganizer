@@ -25,7 +25,7 @@ set_target_properties(testkcmdesignerfields PROPERTIES COMPILE_FLAGS -DTESTKCMDE
 target_link_libraries(testkcmdesignerfields
   KF5::KIOCore
   KF5::I18n
-  Qt${QT_MAJOR_VERSION}::UiTools
+  Qt::UiTools
   KF5::KCMUtils
   KF5::KIOWidgets
 )

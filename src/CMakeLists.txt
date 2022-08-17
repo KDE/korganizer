@@ -72,7 +72,7 @@ target_link_libraries(korganizer_kcm_static
     KF5::IncidenceEditor
     korganizer_core
     korganizerprivate
-    Qt${QT_MAJOR_VERSION}::UiTools
+    Qt::UiTools
     KF5::CalendarCore
     KF5::Holidays
     KF5::MailTransport
