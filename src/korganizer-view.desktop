@@ -63,7 +63,6 @@ Comment[zh_CN]=显示由 URL 指定的事件
 Type=Application
 Exec=korganizer --view %u
 Icon=korganizer
-Terminal=false
 NoDisplay=true
 MimeType=application/x-vnd.akonadi.calendar.event;application/x-vnd.akonadi.calendar.journal;application/x-vnd.akonadi.calendar.todo;text/calendar
 X-KDE-Protocols=akonadi
