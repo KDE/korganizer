@@ -14,6 +14,7 @@
         "Description[ia]": "Plug-in Kontact KOrganizer",
         "Description[id]": "Plugin KOrganizer Kontact",
         "Description[it]": "Estensione per Kontact di KOrganizer",
+        "Description[ka]": "KOrganizer-ის დამატება Kontact-ისთვის",
         "Description[ko]": "Kontact KOrganizer 플러그인",
         "Description[nl]": "Kontact KOrganizer-plug-in",
         "Description[pl]": "Wtyczka Kontact do współpracy z KOrganizerem",
