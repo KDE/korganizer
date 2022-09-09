@@ -85,7 +85,7 @@ Q_SIGNALS:
     void copyIncidenceSignal(const Akonadi::Item &);
     void pasteIncidenceSignal();
     void toggleAlarmSignal(const Akonadi::Item &);
-    void toggleTodoCompletedSignal(const Akonadi::Item &);
+    void toggleOccurrenceCompletedSignal(const Akonadi::Item &, const QDate &);
     void copyIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);
     void moveIncidenceToResourceSignal(const Akonadi::Item &, const Akonadi::Collection &);
     void dissociateOccurrencesSignal(const Akonadi::Item &, const QDate &);

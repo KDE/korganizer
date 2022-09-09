@@ -422,7 +422,7 @@ void KOEventPopupMenu::createTodo()
 void KOEventPopupMenu::toggleTodoCompleted()
 {
     if (CalendarSupport::hasTodo(mCurrentIncidence)) {
-        Q_EMIT toggleTodoCompletedSignal(mCurrentIncidence);
+        Q_EMIT toggleOccurrenceCompletedSignal(mCurrentIncidence, mCurrentDate);
     }
 }
 

@@ -262,6 +262,7 @@ void KOViewManager::connectView(KOrg::BaseView *view)
     connect(view, &BaseView::pasteIncidenceSignal, mMainView, &CalendarView::pasteIncidence);
     connect(view, &BaseView::toggleAlarmSignal, mMainView, &CalendarView::toggleAlarm);
     connect(view, &BaseView::toggleTodoCompletedSignal, mMainView, &CalendarView::toggleTodoCompleted);
+    connect(view, &BaseView::toggleOccurrenceCompletedSignal, mMainView, &CalendarView::toggleOccurrenceCompleted);
     connect(view, &BaseView::copyIncidenceToResourceSignal, mMainView, &CalendarView::copyIncidenceToResource);
     connect(view, &BaseView::moveIncidenceToResourceSignal, mMainView, &CalendarView::moveIncidenceToResource);
     connect(view, &BaseView::dissociateOccurrencesSignal, mMainView, &CalendarView::dissociateOccurrences);

@@ -1331,6 +1331,58 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &todoItem)
     mChanger->endAtomicOperation();
 }
 
+void CalendarView::toggleCompleted(KCalendarCore::Todo::Ptr todo, const QDate &occurrenceDate)
+{
+    if (todo->recurs()) {
+        QDateTime recurrenceId = recurrenceOnDate(todo, occurrenceDate);
+        const auto dtRecurrence = todo->dtRecurrence();
+        if (todo->isCompleted()) {
+            todo->setCompleted(false);
+            todo->setDtRecurrence(recurrenceId);
+        } else if (dtRecurrence <= recurrenceId) {
+            // Occurrence is not complete.
+            const auto dtNextOccurrence = todo->recurrence()->getNextDateTime(recurrenceId);
+            if (dtNextOccurrence.isValid()) {
+                todo->setDtRecurrence(dtNextOccurrence);
+            } else {
+                todo->setDtRecurrence(recurrenceId);
+                todo->setCompleted(true);
+            }
+        } else {
+            todo->setDtRecurrence(recurrenceId);
+        }
+    } else {
+        if (todo->isCompleted()) {
+            todo->setPercentComplete(0);
+            todo->setCompleted(false);
+            todo->setStatus(KCalendarCore::Incidence::StatusNone);
+        } else {
+            todo->setPercentComplete(0);
+            todo->setCompleted(QDateTime::currentDateTime());
+            todo->setStatus(KCalendarCore::Incidence::StatusCompleted);
+        }
+    }
+}
+
+void CalendarView::toggleOccurrenceCompleted(const Akonadi::Item &todoItem, const QDate &occurrenceDate)
+{
+    KCalendarCore::Todo::Ptr todo = Akonadi::CalendarUtils::todo(todoItem);
+    if (!todo) {
+        qWarning(KORGANIZER_LOG) << "item does not contain a todo.";
+        return;
+    }
+    if (todo->recurs() && !occurrenceDate.isValid()) {
+        qWarning(KORGANIZER_LOG) << "todo recurs, but no occurrence date was provided.";
+        return;
+    }
+
+    KCalendarCore::Todo::Ptr oldtodo {todo->clone()};
+    toggleCompleted(todo, occurrenceDate);
+    mChanger->startAtomicOperation(i18n("Toggle To-do Completed"));
+    (void)mChanger->modifyIncidence(todoItem, oldtodo, this);
+    mChanger->endAtomicOperation();
+}
+
 void CalendarView::copyIncidenceToResource(const Akonadi::Item &item, const Akonadi::Collection &col)
 {
 #ifdef AKONADI_PORT_DISABLED
