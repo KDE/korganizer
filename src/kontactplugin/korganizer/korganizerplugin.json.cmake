@@ -26,6 +26,7 @@
         "Description[tr]": "Kontact KOrganizer Eklentisi",
         "Description[uk]": "Додаток календаря KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer Pluginxx",
+        "Description[zh_CN]": "Kontact KOrganizer 插件",
         "EnabledByDefault": true,
         "Icon": "view-pim-calendar",
         "Id": "kontact_korganizerplugin",

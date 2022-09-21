@@ -26,6 +26,7 @@
         "Description[tr]": "KOrganizer Grup Zamanlama Yapılandırması",
         "Description[uk]": "Налаштування групового розкладу в KOrganizer",
         "Description[x-test]": "xxKOrganizer Group Scheduling Configurationxx",
+        "Description[zh_CN]": "Korganizer 组日程安排配置",
         "Icon": "network-workgroup",
         "Name": "Group Scheduling",
         "Name[af]": "Groep Skedulering",

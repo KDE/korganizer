@@ -26,6 +26,7 @@
         "Description[tr]": "Bekleyen Yapılacak Ögeler Özet Yapılandırması",
         "Description[uk]": "Зведення налаштування призначених завдань",
         "Description[x-test]": "xxPending To-dos Summary Setupxx",
+        "Description[zh_CN]": "未决待办事项摘要设置",
         "Icon": "korg-todo",
         "Name": "Pending To-dos",
         "Name[ar]": "المهامّ المرجأة",

@@ -26,6 +26,7 @@
         "Description[tr]": "KOrganizer Uygun/Meşgul Yapılandırması",
         "Description[uk]": "Налаштування вільного/зайнятого часу в KOrganizer",
         "Description[x-test]": "xxKOrganizer Free/Busy Configurationxx",
+        "Description[zh_CN]": "KOrganizer 空闲/忙碌配置",
         "Icon": "preferences-other",
         "Name": "Free/Busy",
         "Name[af]": "Beskikbaar/Besig",

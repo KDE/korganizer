@@ -26,6 +26,7 @@
         "Description[tr]": "Kontact KOrganizer Jurnal Eklentisi",
         "Description[uk]": "Додаток журналу для (KOrganizer) Kontact",
         "Description[x-test]": "xxKontact KOrganizer Journal Pluginxx",
+        "Description[zh_CN]": "Kontact KOrganizer 日记插件",
         "EnabledByDefault": true,
         "Icon": "view-pim-journal",
         "Id": "kontact_journalplugin",
