@@ -26,6 +26,7 @@
         "Description[tr]": "Kontact KOrganizer Yapılacaklar Listesi Eklentisi",
         "Description[uk]": "Додаток списку завдань KOrganizer для Kontact",
         "Description[x-test]": "xxKontact KOrganizer To-do List Pluginxx",
+        "Description[zh_CN]": "Kontact KOrganizer 待办清单插件",
         "EnabledByDefault": true,
         "Icon": "view-pim-tasks",
         "Id": "kontact_todoplugin",

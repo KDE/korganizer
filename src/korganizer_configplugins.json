@@ -26,6 +26,7 @@
         "Description[tr]": "KOrganizer Eklenti Yapılandırması",
         "Description[uk]": "Налаштування додатків KOrganizer",
         "Description[x-test]": "xxKOrganizer Plugin Configurationxx",
+        "Description[zh_CN]": "KOrganizer 插件配置",
         "Icon": "preferences-plugin",
         "Name": "Plugins",
         "Name[af]": "Inprop modules",
