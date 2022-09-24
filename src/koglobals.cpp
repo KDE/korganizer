@@ -9,7 +9,6 @@
 #include "koglobals.h"
 #include "prefs/koprefs.h"
 #include <KHolidays/HolidayRegion>
-#include <kholidays_version.h>
 
 #include <QApplication>
 
@@ -48,11 +47,7 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
 
     for (const KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
         if (region && region->isValid()) {
-#if KHOLIDAYS_VERSION < QT_VERSION_CHECK(5, 95, 0)
-            const KHolidays::Holiday::List list = region->holidays(start, end);
-#else
             const KHolidays::Holiday::List list = region->rawHolidaysWithAstroSeasons(start, end);
-#endif
             const int listCount(list.count());
             for (int i = 0; i < listCount; ++i) {
                 const KHolidays::Holiday &h = list.at(i);

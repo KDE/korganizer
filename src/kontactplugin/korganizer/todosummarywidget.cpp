@@ -11,7 +11,6 @@
 #include "korganizerinterface.h"
 #include "todoplugin.h"
 #include <CalendarSupport/CalendarSingleton>
-#include <kcalendarcore_version.h>
 
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
@@ -126,18 +125,12 @@ void TodoSummaryWidget::updateView()
         prList.append(todo);
     }
     if (!prList.isEmpty()) {
-#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(5, 95, 0)
-        prList = Akonadi::ETMCalendar::sortTodos(prList, KCalendarCore::TodoSortSummary, KCalendarCore::SortDirectionAscending);
-        prList = Akonadi::ETMCalendar::sortTodos(prList, KCalendarCore::TodoSortPriority, KCalendarCore::SortDirectionAscending);
-        prList = Akonadi::ETMCalendar::sortTodos(prList, KCalendarCore::TodoSortDueDate, KCalendarCore::SortDirectionAscending);
-#else
         KCalendarCore::Todo::List todoListSorted1(prList);
         KCalendarCore::Todo::List todoListSorted2(prList);
         KCalendarCore::Todo::List todoListSorted3(prList);
         prList = Akonadi::ETMCalendar::sortTodos(std::move(todoListSorted1), KCalendarCore::TodoSortSummary, KCalendarCore::SortDirectionAscending);
         prList = Akonadi::ETMCalendar::sortTodos(std::move(todoListSorted2), KCalendarCore::TodoSortPriority, KCalendarCore::SortDirectionAscending);
         prList = Akonadi::ETMCalendar::sortTodos(std::move(todoListSorted3), KCalendarCore::TodoSortDueDate, KCalendarCore::SortDirectionAscending);
-#endif
     }
 
     // The to-do print consists of the following fields:
