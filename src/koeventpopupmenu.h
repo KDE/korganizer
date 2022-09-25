@@ -47,7 +47,12 @@ public:
     void setCalendar(const Akonadi::ETMCalendar::Ptr &calendar);
 
 public Q_SLOTS:
+    /**
+     * Display a pop-up menu that operates on the incidence contained in the
+     * given item, and its occurrence displayed on the given date.
+     */
     void showIncidencePopup(const Akonadi::Item &, const QDate &);
+
     void createEvent(const Akonadi::Item &item);
     void createNote(const Akonadi::Item &item);
 

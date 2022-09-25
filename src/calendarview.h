@@ -656,7 +656,12 @@ private:
 
     void createPrinter();
 
-    void dissociateOccurrence(const Akonadi::Item &incidence, const QDate &, bool futureOccurrences);
+    /**
+     * Return the recurrence ID of  the occurrence of @p incidence displayed on @displayDate.
+     */
+    static QDateTime recurrenceOnDate(KCalendarCore::Incidence::Ptr incidence, QDate displayDate);
+
+    void dissociateOccurrence(const Akonadi::Item& item, const QDateTime& recurrenceId, bool thisAndFuture);
 
     /**
      * Returns the default collection.
