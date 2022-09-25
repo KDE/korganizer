@@ -14,7 +14,6 @@
 #include <Akonadi/ItemFetchScope>
 
 #include <KCalendarCore/Event>
-#include <KCalendarCore/MemoryCalendar>
 
 #include <EventViews/AgendaView>
 

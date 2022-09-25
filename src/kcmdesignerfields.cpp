@@ -14,9 +14,7 @@
 #include <KDialogJobUiDelegate>
 #include <KDirWatch>
 #include <KIO/CommandLauncherJob>
-#include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
-#include <KIO/MkdirJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>

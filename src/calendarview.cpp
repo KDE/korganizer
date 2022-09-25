@@ -65,8 +65,6 @@
 #include <KCalUtils/DndFactory>
 #include <KCalUtils/Stringify>
 
-#include <KHolidays/HolidayRegion>
-
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
 

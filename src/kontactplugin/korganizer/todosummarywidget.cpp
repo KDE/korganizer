@@ -17,8 +17,6 @@
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/ItemFetchScope>
 
-#include <KCalUtils/IncidenceFormatter>
-
 #include <KontactInterface/Core>
 
 #include <KConfig>
@@ -32,8 +30,6 @@
 #include <QStyle>
 #include <QTextDocument> // for Qt::mightBeRichText
 #include <QVBoxLayout>
-
-using namespace KCalUtils;
 
 TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
     : KontactInterface::Summary(parent)

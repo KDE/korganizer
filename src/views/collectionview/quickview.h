@@ -8,7 +8,6 @@
 
 #include <EventViews/ViewCalendar>
 
-#include <KCalendarCore/FreeBusy>
 #include <QDialog>
 
 class Ui_quickview;
